@@ -1,0 +1,442 @@
+course_code,lego_id,score,reason
+zho_for_eng,S0007L01,1,today maps only to 今天; context repeats a time word with no fork
+zho_for_eng,S0008L01,1,to explain is 解释 only; context adds no sense choice
+zho_for_eng,S0008L02,2,"my is 我的; the only fork is dropping 的 before Chinese, which context does not settle"
+zho_for_eng,S0008L03,2,meaning as noun is 意思; 含义 is a minor register variant context cannot settle
+zho_for_eng,S0009L02,2,a little is 一点; 有点 or 一些 fork is minor and remember-context does not pick
+zho_for_eng,S0010L02,3,sure forks between 确定 certain and 肯定; not sure if context picks the doubt sense 确定
+zho_for_eng,S0010L04,1,"to remember maps to 记住 here; chunk target is the whole phrase, single sense"
+zho_for_eng,S0010L05,1,the whole sentence is 整个句子 only; context repeats X
+zho_for_eng,S0012L01,1,tomorrow is 明天 only; the guess context adds nothing
+zho_for_eng,S0012L02,2,to guess is 猜; 猜测 is a formal variant the context does not settle
+zho_for_eng,S0012L03,3,what could be 什么 or embedded 什么 versus 哪; in guess-what-happens the context settles 什么
+zho_for_eng,S0012L04,1,"to happen is 发生; 出现 is rare, context fits 发生 only; single equivalent, context gives no extra pick"
+zho_for_eng,S0013L01,2,your is 你的; the 您的 politeness fork is register the context cannot settle
+zho_for_eng,S0013L02,3,very forks 很 versus 非常 versus 太; context with speak well favours the plain adverb 很
+zho_for_eng,S0013L03,3,good forks 好 versus 不错 and 很 pairing; very good context settles the predicate 好
+zho_for_eng,S0015L01,2,with me is 和我 versus 跟我; synonym fork the context cannot settle
+zho_for_eng,S0016L01,2,"he is 他; written form differs only by gender in text, not settled"
+zho_for_eng,S0016L03,2,"together is 一起 versus 一块; synonym fork, context does not decide"
+zho_for_eng,S0016L04,2,to come back is 回来 versus 回去 by direction; speaker position with context leaving the choice open in this sentence
+zho_for_eng,S0017L01,2,"she is 她; gender only, spoken form identical"
+zho_for_eng,S0018L01,2,we forks 我们 versus 咱们 as register; context cannot settle
+zho_for_eng,S0018L02,1,this evening is 今晚 only; context repeats the time
+zho_for_eng,S0018L04,2,six oclock is 六点 versus 六点钟; minor fork not settled
+zho_for_eng,S0019L01,2,but is 但是 versus 可是 versus 不过; synonyms the context cannot settle
+zho_for_eng,S0020L01,2,you is 你 versus 您 by register; context cannot settle
+zho_for_eng,S0020L03,1,"his is 他的; context names the possessed answer, no fork"
+zho_for_eng,S0020L04,1,name is 名字 only; context repeats X
+zho_for_eng,S0021L01,2,why is 为什么 versus 怎么; context cant remember favours 为什么 modestly
+zho_for_eng,S0021L03,1,her is 她的; the possessive is clear from name
+zho_for_eng,S0022L01,1,because is 因为 only; clause context repeats the sense
+zho_for_eng,S0022L02,3,to get to know forks 认识 meet versus 了解 understand; her quickly settles 认识
+zho_for_eng,S0022L03,2,people is 人 versus 人们; number fork the context does not settle
+zho_for_eng,S0030L01,1,yesterday is 昨天 only; context adds nothing
+zho_for_eng,S0030L03,2,a thing is 一件事 versus 东西; abstract thing context favours 事 modestly
+zho_for_eng,S0032L01,2,"to give is 给; only fork is 给 as preposition, context settles little"
+zho_for_eng,S0032L02,3,to look at forks 看 versus 看看; context he wants to look at it settles 看
+zho_for_eng,S0033L01,2,how long forks 多久 versus 多长; before she comes back picks duration 多久
+zho_for_eng,S0034L02,2,quiet forks 安静 versus 不说话; be quiet context leans 安静 but not settled
+zho_for_eng,S0035L01,1,afternoon is 下午 only; context repeats a time word
+zho_for_eng,S0036L01,3,this forks 这个 versus 这; sentence noun context settles 这个
+zho_for_eng,S0036L02,1,to interrupt is 打断 only; no fork
+zho_for_eng,S0036L03,1,story is 故事 only; context reading has no fork
+zho_for_eng,S0037L01,1,last month is 上个月 only; context repeats it
+zho_for_eng,S0037L02,2,carefully is 仔细 versus 小心; looking at an answer picks 仔细
+zho_for_eng,S0038L01,2,a week is 一周 versus 一个星期; synonym fork not settled
+zho_for_eng,S0039L01,2,morning is 早上 versus 上午; context tomorrow morning does not decide
+zho_for_eng,S0039L03,2,"tired is 累; 疲倦 is a rare variant, context adds nothing"
+zho_for_eng,S0042L01,3,than forks 比 comparative versus 而; better than settles 比
+zho_for_eng,S0042L02,1,last night is 昨晚 only; context repeats the time
+zho_for_eng,S0043L02,2,at that time is 当时 versus 那时; synonym fork with context leaving the choice open
+zho_for_eng,S0046L01,2,to worry is 担心 versus 担忧; synonym fork with context leaving the choice open
+zho_for_eng,S0048L01,3,to care about forks 在乎 versus 关心; we dont need to care about this settles 在乎
+zho_for_eng,S0049L01,2,if is 如果 versus 要是 versus 假如; synonyms the context cannot settle
+zho_for_eng,S0049L04,1,like this is 这样 only; context repeats it
+zho_for_eng,S0050L01,2,to finish is 结束 versus 完; about to finish picks 结束 with 尽快
+zho_for_eng,S0051L02,2,friends is 朋友 versus 朋友们; number fork not settled
+zho_for_eng,S0052L01,1,last week is 上周 only; context repeats it
+zho_for_eng,S0052L04,2,"to write is 写; 写作 is a rare variant, context adds nothing"
+zho_for_eng,S0060L01,2,different is 不同 versus 不一样; context different words favours 不同
+zho_for_eng,S0061L03,1,slow is 慢 only; context repeats the sense
+zho_for_eng,S0062L01,1,at the same time is 同时 only; context fits directly
+zho_for_eng,S0065L01,2,"yourself is 自己 versus 你自己; reflexive fork, context settles little"
+zho_for_eng,S0066L02,2,difficult is 难 versus 困难; Is this difficult picks predicate 难
+zho_for_eng,S0068L01,2,looking for is 在找 versus 找; progressive marking not settled
+zho_for_eng,S0069L01,3,that forks 那 versus 那个; copula subject context settles bare 那
+zho_for_eng,S0069L02,2,small is 小 versus 小的; adjective use context does not settle
+zho_for_eng,S0069L04,1,dog is 狗 only; context repeats it
+zho_for_eng,S0070L01,2,"it is 它 versus 他; written animacy fork, context where it was weakly settles"
+zho_for_eng,S0070L02,2,where is 哪里 versus 哪儿; synonym fork with context leaving the choice open
+zho_for_eng,S0070L03,2,"tell is 告诉; 讲 is a rare variant, context adds nothing"
+zho_for_eng,S0071L02,3,anyone forks 任何人 versus 谁; negated let anyone hear settles 任何人
+zho_for_eng,S0073L01,1,thank you very much is 非常感谢; context repeats X
+zho_for_eng,S0073L02,2,more to learn is a free phrase 更多要学; context fixes the reading
+zho_for_eng,S0076L02,2,already is 已经 versus 都 versus 了; context learnt already picks 已经
+zho_for_eng,S0076L03,2,"satisfied is 满意; 满足 is a different sense, context settles 满意"
+zho_for_eng,S0077L01,3,surprised forks 惊讶 versus 吃惊; surprised at how quickly settles 惊讶
+zho_for_eng,S0082L01,2,"wait is 等; 等待 is formal, context cannot settle"
+zho_for_eng,S0082L02,2,why not is 为什么不; asked-me context settles little
+zho_for_eng,S0083L04,1,your friend is 你朋友; context repeats the phrase
+zho_for_eng,S0085L01,3,those forks 那些 versus 那些人; people in context settles 那些人
+zho_for_eng,S0087L01,1,people I dont know is 我不认识的人; context repeats X
+zho_for_eng,S0088L01,3,ready to forks 准备好 versus 愿意; not ready to start settles 准备好
+zho_for_eng,S0092L02,2,keep on is 继续 versus 一直; speaking context favours 继续
+zho_for_eng,S0092L03,2,for a while is 一会儿 versus 一段时间; context settles loosely
+zho_for_eng,S0094L03,3,will work forks 行得通 versus 管用; this way will work settles 行得通
+zho_for_eng,S0095L01,2,ready is 准备好 versus 好了; are you ready fits 准备好
+zho_for_eng,S0095L02,4,take forks 坐 board a bus versus 拿 versus 买; take this is not settled by context
+zho_for_eng,S0095L03,2,bus is 班车 versus 公交车; ready to take the bus favours 班车 weakly
+zho_for_eng,S0095L04,3,next forks 下一班车 versus 下一个; next one mapped to a vehicle wording only loosely settled
+zho_for_eng,S0095L05,1,go home is 回家 only; context fits
+zho_for_eng,S0097L01,2,as soon as is 只要 versus 一...就; ready context does not settle
+zho_for_eng,S0097L02,2,immediately is 马上 versus 立刻; synonyms the context cannot settle
+zho_for_eng,S0098L04,2,something else is 别的 versus 其他; synonym fork with context leaving the choice open
+zho_for_eng,S0100L01,2,worry is 担心 versus 担忧; synonym fork with context leaving the choice open
+zho_for_eng,S0100L02,2,similar is 类似 versus 相似; synonym fork with context leaving the choice open
+zho_for_eng,S0101L04,1,language is 语言 only; context repeats it
+zho_for_eng,S0105L01,2,reason is 原因 versus 理由; the reason were doing this favours 原因
+zho_for_eng,S0108L01,2,midnight is 半夜 versus 午夜; wake at midnight favours 半夜
+zho_for_eng,S0109L01,2,new is 新; the new things context adds no fork
+zho_for_eng,S0110L01,2,"relax is 放松; 休息 is a nearby sense, context favours 放松"
+zho_for_eng,S0111L01,2,new thing is 新东西 versus 新事物; context with context leaving the choice open
+zho_for_eng,S0111L02,1,brain is 大脑 only; context has no fork
+zho_for_eng,S0115L01,2,have a conversation is 进行对话 versus 聊天; formal reading with context leaving the choice open
+zho_for_eng,S0116L02,2,most is 最; context most important picks superlative 最
+zho_for_eng,S0116L03,2,"choice is 选择; make a choice picks the noun, not verb"
+zho_for_eng,S0117L01,2,this time is 这次 versus 这回; synonym fork with context leaving the choice open
+zho_for_eng,S0117L03,2,"chat is 聊天; 谈话 is a variant, context favours 聊天"
+zho_for_eng,S0118L01,1,pub is 酒吧; context repeats it
+zho_for_eng,S0130L02,2,that was a surprise is 那很意外 versus 惊喜; because hes my friend leans surprise
+zho_for_eng,S0132L01,2,exciting is 令人兴奋 versus 刺激; as exciting as picks 兴奋 weakly
+zho_for_eng,S0134L01,3,problem forks 问题 versus 麻烦; not a problem for me settles 问题
+zho_for_eng,S0135L01,2,why you think is 你为什么觉得 versus 认为; tell me context settles 觉得
+zho_for_eng,S0136L01,1,of course is 当然 only; context repeats it
+zho_for_eng,S0137L01,1,perfect is 完美; context needs to be perfect fits
+zho_for_eng,S0138L01,2,"place is 地方; 场所 is formal, context favours 地方"
+zho_for_eng,S0139L01,3,sorry forks 抱歉 apologise versus 对不起 versus 遗憾; Im sorry but picks 抱歉
+zho_for_eng,S0141L01,1,no problem is 没问题; the sentence repeats the idea
+zho_for_eng,S0141L02,1,everything is 一切 versus 都; Everything is okay picks 一切
+zho_for_eng,S0142L01,3,really forks 真 versus 真的 versus 确实; I really dont know picks 真
+zho_for_eng,S0142L03,2,"help out is 帮忙; 帮助 is formal, context favours 帮忙"
+zho_for_eng,S0143L01,2,the same forks 同一件事 versus 一样; same thing context settles the noun reading
+zho_for_eng,S0144L01,1,this morning is 今天早上 only; context repeats it
+zho_for_eng,S0144L02,2,"earlier than is 比我更早; context settles comparison only; single equivalent, context gives no extra pick"
+zho_for_eng,S0146L01,3,since forks 自从 versus 因为; since you left time sense settles 自从
+zho_for_eng,S0147L02,2,kind forks 友善 versus 好心 versus 善良; everyone here favours 友善
+zho_for_eng,S0148L02,2,patient adjective is 有耐心; patient as medical noun does not fit
+zho_for_eng,S0149L01,2,so I is 所以我; connective fork minor
+zho_for_eng,S0149L03,3,finish forks 完成 versus 结束 versus 做完; finish this settles 完成
+zho_for_eng,S0161L03,1,book is 书 only; context repeats it
+zho_for_eng,S0164L01,1,an interesting book is 一本有意思的书; context repeats X
+zho_for_eng,S0168L02,2,help forks 来帮忙 versus 帮助; come and help settles 来帮忙
+zho_for_eng,S0169L01,2,want me to is 想让我; versus 要我 synonym with context leaving the choice open
+zho_for_eng,S0170L01,2,I want you to is 我想让你; versus 我要你 synonym with context leaving the choice open
+zho_for_eng,S0172L01,3,helpful forks 帮助 versus 有帮助 versus 有用; very helpful settles 有帮助
+zho_for_eng,S0175L01,1,"Sunday is 周日 versus 星期天; synonym only, context adds nothing"
+zho_for_eng,S0176L01,2,year is 年 versus 年份; next year favours 年
+zho_for_eng,S0178L01,2,although is 虽然 versus 尽管; synonyms with context leaving the choice open
+zho_for_eng,S0181L01,3,have to take forks 得带 carry versus 得拿 versus 得送; take you settles 带
+zho_for_eng,S0181L03,1,doctor is 医生 only; context repeats it
+zho_for_eng,S0183L01,2,Im afraid is 恐怕 versus 抱歉; I dont know picks 恐怕
+zho_for_eng,S0192L01,1,tomorrow night is 明晚 only; context repeats it
+zho_for_eng,S0193L01,1,too busy is 太忙; context fits directly
+zho_for_eng,S0195L01,1,money is 钱 only; no fork
+zho_for_eng,S0195L02,1,table is 桌子 only; context repeats it
+zho_for_eng,S0197L01,1,teacher is 老师 only; no fork
+zho_for_eng,S0198L01,2,city here maps to 市政府 as the city administration; context settles that over 城市
+zho_for_eng,S0198L03,1,government is 政府 only; no fork
+zho_for_eng,S0200L01,2,make sure is 确保 versus 保证; synonym with context leaving the choice open
+zho_for_eng,S0200L02,1,on time is 按时; context fits directly
+zho_for_eng,S0204L02,3,"arrangements forks 安排 versus 这些; target 这些 is a loose chunk, context does not settle"
+zho_for_eng,S0205L01,2,"forget is 忘; 忘记 is a fuller variant, with context leaving the choice open"
+zho_for_eng,S0210L01,2,discuss is 讨论 versus 商量; with them favours 商量 or 讨论
+zho_for_eng,S0212L01,3,ask for forks 请求 versus 要; ask for help settles 请求 or 求助
+zho_for_eng,S0215L01,1,on Saturday night is 周六晚上; context repeats it
+zho_for_eng,S0217L01,3,drink forks 喝 verb versus 饮料 noun; do you want to drink settles verb 喝
+zho_for_eng,S0218L01,1,on Sunday is 周日; context repeats it
+zho_for_eng,S0219L01,2,comfortable is 舒服 versus 舒适; place favours 舒适 slightly
+zho_for_eng,S0222L02,2,to tell is 告诉 versus 讲; tell me what he wants settles 告诉
+zho_for_eng,S0224L02,2,just started is 刚开始 versus 才开始; context leaves any synonym fork open
+zho_for_eng,S0230L02,2,young is 年轻 versus 小; woman context favours 年轻
+zho_for_eng,S0233L01,1,young woman is 年轻女人; context repeats X
+zho_for_eng,S0234L01,2,"older brother is 哥哥; gender and age sense already settled, no fork"
+zho_for_eng,S0237L01,2,wanted me to is 想让我; synonym with context leaving the choice open
+zho_for_eng,S0238L01,2,wanted you to is 想让你; synonym with context leaving the choice open
+zho_for_eng,S0239L01,2,my mother is 我妈妈 versus 我母亲; register with context leaving the choice open
+zho_for_eng,S0240L01,2,father is 爸爸 versus 父亲; register fork with context leaving the choice open
+zho_for_eng,S0243L01,1,eat is 吃 only; no fork
+zho_for_eng,S0246L01,2,"let her help is 让她帮; 允许 is stiffer, context settles 让"
+zho_for_eng,S0255L01,3,leave forks 离开 versus 走 versus 出发; ready to leave favours 出发 but 离开 not settled
+zho_for_eng,S0256L01,1,less than an hour is 不到一小时; context repeats X
+zho_for_eng,S0257L01,1,blue thing is 蓝色的东西; context repeats X
+zho_for_eng,S0258L01,2,over there is 那边 versus 那里; context leaves any synonym fork open
+zho_for_eng,S0259L01,2,good idea is 好想法 versus 好主意; I think thats picks 好主意 more naturally
+zho_for_eng,S0260L01,1,the faintest idea is 一点头绪; idiom with one rendering
+zho_for_eng,S0261L01,2,"something important is 件重要的事; measure word fork, context settles loosely"
+zho_for_eng,S0262L01,1,which man is 哪个男人; context repeats X
+zho_for_eng,S0263L01,1,who is 谁; context repeats it
+zho_for_eng,S0264L01,2,an old man is 一个老人; versus 老头 register with context leaving the choice open
+zho_for_eng,S0265L01,1,a friend is 一个朋友; context repeats X
+zho_for_eng,S0266L01,2,my father is 我父亲 versus 我爸爸; register fork with context leaving the choice open
+zho_for_eng,S0266L02,3,old friend forks 老朋友 long-time versus 旧朋友; see today picks 老朋友
+zho_for_eng,S0268L01,2,email is 邮件 versus 电子邮件; I got one favours 邮件
+zho_for_eng,S0269L01,2,"wait for is 等; 等待 formal, with context leaving the choice open"
+zho_for_eng,S0270L02,2,worried that is 担心; 担忧 formal variant with context leaving the choice open
+zho_for_eng,S0271L01,2,willing is 愿意 versus 乐意; context leaves any synonym fork open
+zho_for_eng,S0272L02,3,sounds forks 听起来 versus 听上去; sounds like great idea picks 听起来
+zho_for_eng,S0274L01,2,in a few days is 几天后 versus 过几天; leaving in picks 几天后
+zho_for_eng,S0276L01,2,a little while is 一会儿 versus 一段时间; do you have favours 一会儿
+zho_for_eng,S0277L02,1,early next week is 下周初; context repeats it
+zho_for_eng,S0279L01,2,time left is 剩下的时间; not much time left picks 剩下
+zho_for_eng,S0280L01,1,the most important is 最重要的; context repeats X
+zho_for_eng,S0289L01,3,I wonder if forks 我想知道 versus 不知道是否; shes going to be there leans doubt but with context leaving the choice
+zho_for_eng,S0292L01,2,come to the party is 来参加聚会; 来 versus 去 with context leaving the choice open
+zho_for_eng,S0296L01,2,a little more is 多一点 versus 再多一点; time context with context leaving the choice open
+zho_for_eng,S0297L01,3,many forks 很多 versus 许多; many people picks 很多 weakly
+zho_for_eng,S0301L01,2,give is 给; give her this letter picks transfer 给
+zho_for_eng,S0301L02,2,want to look at is 想看; before I go with context leaving the choice open
+zho_for_eng,S0301L03,2,"show you is 给你看; 让你看 variant, with context leaving the choice open"
+zho_for_eng,S0302L01,2,in the city is 在城市里 versus 在市里; context leaves any synonym fork open
+zho_for_eng,S0303L02,2,sit down is 坐下来 versus 坐下; context leaves any synonym fork open
+zho_for_eng,S0304L01,2,work at home is 在家工作; context repeats it
+zho_for_eng,S0310L02,1,that man is 那个男人; context repeats X
+zho_for_eng,S0310L03,2,about that man is 关于那个男人; versus 写 that man with 对 with context leaving the choice open
+zho_for_eng,S0311L02,3,believe forks 相信 trust versus 认为 think; I dont believe that picks 相信
+zho_for_eng,S0311L03,1,three is 三 only; no fork
+zho_for_eng,S0311L05,2,"fact is 事实; 实际 is a variant, context favours 事实"
+zho_for_eng,S0313L01,1,five is 五 only; no fork
+zho_for_eng,S0313L03,2,finish watching is 看完; context leaves any synonym fork open
+zho_for_eng,S0314L01,1,put it on the table is 把它放在桌子上; context repeats X
+zho_for_eng,S0315L02,1,cant afford is 买不起; context fits directly
+zho_for_eng,S0316L01,1,Monday is 周一; no fork
+zho_for_eng,S0321L01,2,"a book is 一本书; measure word fixed, no fork"
+zho_for_eng,S0323L02,3,walk forks 走路 verb versus 步行; do you walk picks 走路
+zho_for_eng,S0324L01,2,hand is 手; no fork
+zho_for_eng,S0324L02,1,both hands is 双手; context repeats X
+zho_for_eng,S0325L01,1,ten is 十 only; no fork
+zho_for_eng,S0326L02,2,sell off is 卖掉; versus 出售 with context leaving the choice open
+zho_for_eng,S0327L02,2,"provide is 提供; no object, with context leaving the choice open"
+zho_for_eng,S0332L01,2,establish is 建立; versus 成立 for a school favours 建立
+zho_for_eng,S0333L01,2,spend time is 花时间; context leaves any synonym fork open
+zho_for_eng,S0334L01,1,cat is 猫 only; no fork
+zho_for_eng,S0334L02,2,let you hold is 让你抱; hold fork 拿 versus 抱 for animals favours 抱
+zho_for_eng,S0341L01,1,several days ago is 几天前; context repeats X
+zho_for_eng,S0341L02,2,have seen is 见过; versus 看过 settles person-seen with many people
+zho_for_eng,S0342L01,2,have spoken is 说过话; context leaves any synonym fork open
+zho_for_eng,S0343L01,1,"economy is 经济 only; single equivalent, context gives no extra pick"
+zho_for_eng,S0345L03,3,to leave forks 离开 versus 走 versus 出发; she wants to leave favours 离开
+zho_for_eng,S0349L01,1,Friday is 周五; no fork
+zho_for_eng,S0349L02,2,evening is 晚上; this evening with context leaving the choice open
+zho_for_eng,S0352L01,2,even if is 即使 versus 就算; synonym with context leaving the choice open
+zho_for_eng,S0353L02,2,to run around is 跑来跑去; context leaves any synonym fork open
+zho_for_eng,S0354L01,2,didnt need to is 没必要 versus 不用; context leaves any synonym fork open
+zho_for_eng,S0354L02,2,angry is 生气 versus 愤怒; appear angry favours 生气
+zho_for_eng,S0360L01,2,else is 别的 versus 其他; context leaves any synonym fork open
+zho_for_eng,S0361L01,2,quiet is 安静; versus 不说话 with context leaving the choice open
+zho_for_eng,S0362L01,1,after you left is 你走后; context repeats X
+zho_for_eng,S0364L01,3,heard that forks 听说 versus 听到; heard that he didnt like picks 听说
+zho_for_eng,S0367L01,1,nobody is 没有人; context repeats it
+zho_for_eng,S0368L01,1,"tomatoes is 西红柿 versus 番茄; synonym only; single equivalent, context gives no extra pick"
+zho_for_eng,S0369L02,2,horses uses measure word 匹; context shows count
+zho_for_eng,S0371L01,1,Wednesday is 周三; no fork
+zho_for_eng,S0376L01,3,anywhere forks 哪儿 versus 任何地方; negated didnt go anywhere picks 哪儿
+zho_for_eng,S0377L01,1,"world is 世界 only; single equivalent, context gives no extra pick"
+zho_for_eng,S0379L01,2,to travel is 旅行 versus 旅游; context leaves any synonym fork open
+zho_for_eng,S0379L02,2,lucky is 幸运 versus 走运; context leaves any synonym fork open
+zho_for_eng,S0379L03,1,"Africa is 非洲 only; single equivalent, context gives no extra pick"
+zho_for_eng,S0380L01,2,to include is 包括; context leaves any synonym fork open
+zho_for_eng,S0383L01,1,garden is 花园 only; no fork
+zho_for_eng,S0384L01,1,a moment ago is 刚才; context repeats it
+zho_for_eng,S0386L01,2,agree is 同意 versus 赞同; context leaves any synonym fork open
+zho_for_eng,S0389L01,2,over there is 那边 versus 那里; context leaves any synonym fork open
+zho_for_eng,S0390L01,2,near is 附近 versus 旁边; entrance context favours 附近
+zho_for_eng,S0391L01,2,"towards the bus is 朝公交车; 向 variant, with context leaving the choice open"
+zho_for_eng,S0392L01,1,post office is 邮局; no fork
+zho_for_eng,S0392L03,2,"child is 孩子; 小孩 variant, with context leaving the choice open"
+zho_for_eng,S0392L04,1,"black hair is 黑头发 only; single equivalent, context gives no extra pick"
+zho_for_eng,S0393L02,1,"green is 绿色 only; single equivalent, context gives no extra pick"
+zho_for_eng,S0393L03,1,"shirt is 衬衫 only; single equivalent, context gives no extra pick"
+zho_for_eng,S0393L04,2,boy is 男孩; 男孩子 variant with context leaving the choice open
+zho_for_eng,S0394L01,1,"yellow is 黄色 only; single equivalent, context gives no extra pick"
+zho_for_eng,S0394L03,2,girl is 女孩; 女孩子 variant with context leaving the choice open
+zho_for_eng,S0395L02,2,turn left is 左转; context leaves any synonym fork open
+zho_for_eng,S0399L01,1,lose hope is 失去希望; context repeats X
+zho_for_eng,S0404L01,2,"shouldnt expect is 不应该指望; versus 期待, with context leaving the choice open"
+zho_for_eng,S0404L02,1,"Thursday is 周四 only; single equivalent, context gives no extra pick"
+zho_for_eng,S0410L01,2,"each other is 互相; versus 彼此, fight context favours 互相"
+zho_for_eng,S0411L02,3,a table forks 一张 as measure word versus 桌子; reserve picks 一张
+zho_for_eng,S0413L02,3,close to forks 靠 versus 靠近 versus 接近; edge context picks 靠
+zho_for_eng,S0414L01,1,a bottle of is 一瓶; context repeats X
+zho_for_eng,S0414L02,1,red wine is 红酒; no fork
+zho_for_eng,S0417L01,3,to kill forks 杀掉 versus 消灭; ants context favours 消灭 over 杀掉
+zho_for_eng,S0417L02,1,"ant is 蚂蚁 only; single equivalent, context gives no extra pick"
+zho_for_eng,S0418L01,1,"community is 社区 only; single equivalent, context gives no extra pick"
+zho_for_eng,S0420L01,2,how old is 多大年纪; age phrase versus 多大 with context leaving the choice open
+zho_for_eng,S0423L01,2,obvious is 明显; context leaves any synonym fork open
+zho_for_eng,S0424L01,2,everybody is 大家 versus 每个人; wasting everybodys time picks 大家
+zho_for_eng,S0425L01,2,make sure is 确保; context leaves any synonym fork open
+zho_for_eng,S0426L01,2,love each other is 彼此相爱; sentence with context leaving the choice open
+zho_for_eng,S0426L02,2,to love each other is 相爱; context leaves any synonym fork open
+zho_for_eng,S0426L03,2,but is 但是 versus 可是; context leaves any synonym fork open
+zho_for_eng,S0427L01,2,bored is 无聊; versus 厌烦 with context leaving the choice open
+zho_for_eng,S0428L01,1,"Tuesday is 周二; single equivalent, context gives no extra pick"
+zho_for_eng,S0433L01,1,"film is 电影; single equivalent, context gives no extra pick"
+zho_for_eng,S0434L03,1,"student is 学生; single equivalent, context gives no extra pick"
+zho_for_eng,S0436L01,2,minimum is 最低; versus 最少 with context leaving the choice open
+zho_for_eng,S0437L01,1,"charity is 慈善; single equivalent, context gives no extra pick"
+zho_for_eng,S0438L01,2,to decide is 决定; context leaves any synonym fork open
+zho_for_eng,S0439L01,1,"to die is 死; single equivalent, context gives no extra pick"
+zho_for_eng,S0443L01,2,same is 同样; versus 一样 with context leaving the choice open
+zho_for_eng,S0443L02,2,keep doing is 继续; context leaves any synonym fork open
+zho_for_eng,S0444L01,2,efficiently is 高效; context leaves any synonym fork open
+zho_for_eng,S0445L02,1,"suitcase is 行李箱; single equivalent, context gives no extra pick"
+zho_for_eng,S0446L02,2,"window is 窗户; 窗 variant, with context leaving the choice open"
+zho_for_eng,S0448L01,2,happy to is 乐意; versus 高兴 with context leaving the choice open
+zho_for_eng,S0449L01,2,"almost is 几乎; versus 差不多, ready context with context leaving the choice open"
+zho_for_eng,S0450L01,1,"train is 火车; single equivalent, context gives no extra pick"
+zho_for_eng,S0455L01,2,tired is 累; context leaves any synonym fork open
+zho_for_eng,S0455L02,1,"because is 因为; single equivalent, context gives no extra pick"
+zho_for_eng,S0455L03,3,to leave forks 离开 versus 走 versus 出发; had to leave favours 离开
+zho_for_eng,S0457L03,1,the number of different areas is 不同领域的数量; context repeats X
+zho_for_eng,S0459L01,1,"blue is 蓝色; single equivalent, context gives no extra pick"
+zho_for_eng,S0460L01,2,shop is 商店 versus 店; context leaves any synonym fork open
+zho_for_eng,S0461L01,1,"postcard is 明信片; single equivalent, context gives no extra pick"
+zho_for_eng,S0462L01,2,grandfather is 爷爷 paternal; maternal 外公 not settled
+zho_for_eng,S0462L02,1,"war is 战争; single equivalent, context gives no extra pick"
+zho_for_eng,S0462L03,2,during is 期间; context leaves any synonym fork open
+zho_for_eng,S0462L04,1,"Italy is 意大利; single equivalent, context gives no extra pick"
+zho_for_eng,S0464L01,2,forgot is 忘了; context leaves any synonym fork open
+zho_for_eng,S0465L01,1,"next time is 下次; single equivalent, context gives no extra pick"
+zho_for_eng,S0466L01,2,wall is 墙; 墙壁 variant with context leaving the choice open
+zho_for_eng,S0467L01,1,"car park is 停车场; single equivalent, context gives no extra pick"
+zho_for_eng,S0467L02,2,next to is 旁边; context leaves any synonym fork open
+zho_for_eng,S0470L02,2,to climb is 爬; context leaves any synonym fork open
+zho_for_eng,S0470L03,2,how high is 多高; context leaves any synonym fork open
+zho_for_eng,S0472L01,2,fact is 事实; context leaves any synonym fork open
+zho_for_eng,S0475L01,2,"many reasons is 很多理由; versus 原因, with context leaving the choice open"
+zho_for_eng,S0477L02,1,"second day is 第二天; single equivalent, context gives no extra pick"
+zho_for_eng,S0478L02,2,heart is 心; context leaves any synonym fork open
+zho_for_eng,S0478L03,1,a kind heart is 善良的心; context repeats X
+zho_for_eng,S0480L02,2,far is 远; context leaves any synonym fork open
+zho_for_eng,S0481L04,2,hope is 希望; context leaves any synonym fork open
+zho_for_eng,S0482L01,2,not serious is 并不认真; context leaves any synonym fork open
+zho_for_eng,S0483L02,2,easy is 容易; versus 简单 with context leaving the choice open
+zho_for_eng,S0484L02,1,"challenge is 挑战; single equivalent, context gives no extra pick"
+zho_for_eng,S0486L01,1,"eyes is 眼睛; single equivalent, context gives no extra pick"
+zho_for_eng,S0487L01,1,"bridge is 桥; single equivalent, context gives no extra pick"
+zho_for_eng,S0488L04,2,the other side is 另一边; context leaves any synonym fork open
+zho_for_eng,S0489L01,1,"coffee is 咖啡; single equivalent, context gives no extra pick"
+zho_for_eng,S0490L03,2,anyone is 任何人; context leaves any synonym fork open
+zho_for_eng,S0491L03,2,the way you try to help is 你努力帮忙的方式; context leaves any synonym fork open
+zho_for_eng,S0492L01,2,which is 哪个; context leaves any synonym fork open
+zho_for_eng,S0492L02,1,"the most interesting is 最有意思; single equivalent, context gives no extra pick"
+zho_for_eng,S0494L02,2,the first is 第一; context leaves any synonym fork open
+zho_for_eng,S0499L01,2,maybe is 也许 versus 可能; context leaves any synonym fork open
+zho_for_eng,S0500L01,2,to sit is 坐; context leaves any synonym fork open
+zho_for_eng,S0500L02,2,girl is 女孩; context leaves any synonym fork open
+zho_for_eng,S0500L03,2,between is 中间; context leaves any synonym fork open
+zho_for_eng,S0501L03,2,if only is 要是; context leaves any synonym fork open
+zho_for_eng,S0507L01,2,city is 城市; context leaves any synonym fork open
+zho_for_eng,S0508L02,2,how youre going to pay is 你怎么付钱; context leaves any synonym fork open
+zho_for_eng,S0508L03,2,"no point is 没有意义; versus 没用, with context leaving the choice open"
+zho_for_eng,S0509L01,1,"bed is 床; single equivalent, context gives no extra pick"
+zho_for_eng,S0510L01,2,safe is 安全; context leaves any synonym fork open
+zho_for_eng,S0510L02,1,"to park the car is 停车; single equivalent, context gives no extra pick"
+zho_for_eng,S0511L03,1,"office is 办公室; single equivalent, context gives no extra pick"
+zho_for_eng,S0511L04,1,everyone in the office is 办公室里的每个人; context repeats X
+zho_for_eng,S0511L05,2,several is 好几个; context leaves any synonym fork open
+zho_for_eng,S0515L01,2,new year is 新年; context leaves any synonym fork open
+zho_for_eng,S0519L01,2,baby is 宝宝; context leaves any synonym fork open
+zho_for_eng,S0520L01,2,the whole is 整个; context leaves any synonym fork open
+zho_for_eng,S0521L01,1,"stay here is 留在这里; single equivalent, context gives no extra pick"
+zho_for_eng,S0522L04,2,stupid is 傻; context leaves any synonym fork open
+zho_for_eng,S0524L01,2,minutes is 分钟; context leaves any synonym fork open
+zho_for_eng,S0524L02,1,"three or four is 三四; single equivalent, context gives no extra pick"
+zho_for_eng,S0527L03,2,told me that funny story is 给我讲了那个有趣的故事; context leaves any synonym fork open
+zho_for_eng,S0529L01,1,"hands is 手; single equivalent, context gives no extra pick"
+zho_for_eng,S0531L03,2,it isnt true that is 并不是; context leaves any synonym fork open
+zho_for_eng,S0532L01,2,unless is 除非; context leaves any synonym fork open
+zho_for_eng,S0532L02,2,luck is 运气; context leaves any synonym fork open
+zho_for_eng,S0534L01,2,dreadful is 糟糕; context leaves any synonym fork open
+zho_for_eng,S0534L02,1,"weather is 天气; single equivalent, context gives no extra pick"
+zho_for_eng,S0536L01,2,used to think is 以前以为; context leaves any synonym fork open
+zho_for_eng,S0537L01,2,but is 但是; context leaves any synonym fork open
+zho_for_eng,S0539L01,2,but is 但是; context leaves any synonym fork open
+zho_for_eng,S0541L01,2,slowly is 慢慢; context leaves any synonym fork open
+zho_for_eng,S0542L01,2,whenever is 每当; context leaves any synonym fork open
+zho_for_eng,S0542L03,2,angry is 生气; context leaves any synonym fork open
+zho_for_eng,S0544L02,2,difficult is 难; context leaves any synonym fork open
+zho_for_eng,S0545L01,2,its your turn to is 该你; context leaves any synonym fork open
+zho_for_eng,S0545L04,1,"clothes is 衣服; single equivalent, context gives no extra pick"
+zho_for_eng,S0545L06,1,"upstairs is 楼上; single equivalent, context gives no extra pick"
+zho_for_eng,S0546L03,1,"dirty is 脏; single equivalent, context gives no extra pick"
+zho_for_eng,S0546L05,1,"wet is 湿; single equivalent, context gives no extra pick"
+zho_for_eng,S0547L02,2,mud is 泥; context leaves any synonym fork open
+zho_for_eng,S0549L03,2,quiet is 安静; context leaves any synonym fork open
+zho_for_eng,S0550L01,2,village is 村子; context leaves any synonym fork open
+zho_for_eng,S0550L02,1,"end is 尽头; single equivalent, context gives no extra pick"
+zho_for_eng,S0551L03,1,"ugly is 丑; single equivalent, context gives no extra pick"
+zho_for_eng,S0552L01,2,the other end is 另一头; context leaves any synonym fork open
+zho_for_eng,S0554L01,1,"towel is 毛巾; single equivalent, context gives no extra pick"
+zho_for_eng,S0556L01,2,late at night is 深夜; context leaves any synonym fork open
+zho_for_eng,S0556L03,1,"music is 音乐; single equivalent, context gives no extra pick"
+zho_for_eng,S0560L02,2,beach is 海滩; context leaves any synonym fork open
+zho_for_eng,S0561L01,2,fast is 快; context leaves any synonym fork open
+zho_for_eng,S0562L01,2,safe is 安全; context leaves any synonym fork open
+zho_for_eng,S0567L01,2,outdoors is 户外; context leaves any synonym fork open
+zho_for_eng,S0567L03,2,children is 孩子们; context leaves any synonym fork open
+zho_for_eng,S0569L02,2,willing is 愿意; context leaves any synonym fork open
+zho_for_eng,S0572L02,2,last time is 上次; context leaves any synonym fork open
+zho_for_eng,S0573L04,2,special is 特别; context leaves any synonym fork open
+zho_for_eng,S0575L01,2,upsetting is 让人很难过; context leaves any synonym fork open
+zho_for_eng,S0577L01,1,"hospital is 医院; single equivalent, context gives no extra pick"
+zho_for_eng,S0578L01,2,warm is 暖和; context leaves any synonym fork open
+zho_for_eng,S0579L01,2,often is 经常; context leaves any synonym fork open
+zho_for_eng,S0580L02,2,a little is 一点; context leaves any synonym fork open
+zho_for_eng,S0582L01,2,to grow up is 长大; context leaves any synonym fork open
+zho_for_eng,S0584L02,2,mountains is 群山; context leaves any synonym fork open
+zho_for_eng,S0585L01,1,"bedroom is 卧室; single equivalent, context gives no extra pick"
+zho_for_eng,S0586L01,2,boiled egg is 水煮蛋; context leaves any synonym fork open
+zho_for_eng,S0587L01,2,supper is 晚饭; context leaves any synonym fork open
+zho_for_eng,S0587L02,1,"egg is 鸡蛋; single equivalent, context gives no extra pick"
+zho_for_eng,S0590L01,2,station is 车站; context leaves any synonym fork open
+zho_for_eng,S0592L03,2,main road is 主干道; context leaves any synonym fork open
+zho_for_eng,S0594L02,2,toys is 玩具; context leaves any synonym fork open
+zho_for_eng,S0595L01,2,to lie down is 躺; context leaves any synonym fork open
+zho_for_eng,S0596L03,2,for a while is 一会儿; context leaves any synonym fork open
+zho_for_eng,S0597L02,2,hundred is 百; context leaves any synonym fork open
+zho_for_eng,S0598L01,2,thousand is 千; context leaves any synonym fork open
+zho_for_eng,S0599L01,2,happy to is 乐意; context leaves any synonym fork open
+zho_for_eng,S0600L01,2,how tired is 有多累; context leaves any synonym fork open
+zho_for_eng,S0602L01,2,in the first place is 一开始; context leaves any synonym fork open
+zho_for_eng,S0603L01,2,at the time is 那时; context leaves any synonym fork open
+zho_for_eng,S0605L03,2,help is 帮助; context leaves any synonym fork open
+zho_for_eng,S0610L01,2,to look for is 找; context leaves any synonym fork open
+zho_for_eng,S0611L02,2,else is 别的; context leaves any synonym fork open
+zho_for_eng,S0613L02,2,house is 房子; context leaves any synonym fork open
+zho_for_eng,S0614L02,2,your family is 你家人; context leaves any synonym fork open
+zho_for_eng,S0614L03,2,its near is 很近; context leaves any synonym fork open
+zho_for_eng,S0615L04,1,"brave is 勇敢; single equivalent, context gives no extra pick"
+zho_for_eng,S0618L01,2,it doesnt feel like is 感觉不像; context leaves any synonym fork open
+zho_for_eng,S0622L01,2,children is 孩子们; context leaves any synonym fork open
+zho_for_eng,S0622L03,2,broken it is 把它弄坏; context leaves any synonym fork open
+zho_for_eng,S0623L03,1,"coffee or tea is 咖啡还是茶; single equivalent, context gives no extra pick"
+zho_for_eng,S0623L04,1,"tea is 茶; single equivalent, context gives no extra pick"
+zho_for_eng,S0626L01,1,"thirsty is 渴; single equivalent, context gives no extra pick"
+zho_for_eng,S0629L02,1,"milk is 牛奶; single equivalent, context gives no extra pick"
+zho_for_eng,S0629L03,1,"sugar is 糖; single equivalent, context gives no extra pick"
+zho_for_eng,S0635L01,1,"Jane is 简; single equivalent, context gives no extra pick"
+zho_for_eng,S0637L01,2,where is 哪里; context leaves any synonym fork open
+zho_for_eng,S0639L03,2,"sir is 先生; vocative, context with you sir settles"
+zho_for_eng,S0640L01,1,"red is 红色; single equivalent, context gives no extra pick"
+zho_for_eng,S0641L01,1,"chair is 椅子; single equivalent, context gives no extra pick"
+zho_for_eng,S0642L04,2,"madam is 女士; vocative, settled"
+zho_for_eng,S0643L01,2,"do you want is 您想要; formal register, sir vocative settles it"
+zho_for_eng,S0656L01,2,you all is 你们; context leaves any synonym fork open
+zho_for_eng,S0659L01,2,could you all is 你们能; context leaves any synonym fork open
+zho_for_eng,S0660L01,2,help you all is 帮你们; context leaves any synonym fork open
+zho_for_eng,S0664L01,2,all ready is 准备好了; context leaves any synonym fork open
+zho_for_eng,S0665L01,2,do you all want to is 你们想; context leaves any synonym fork open
+zho_for_eng,S0666L01,2,what do you all think is 你们觉得; context leaves any synonym fork open
+zho_for_eng,S0668L02,2,youll all is 你们都; context leaves any synonym fork open
