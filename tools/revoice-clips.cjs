@@ -369,6 +369,12 @@ async function relink(links, newId, durationMs) {
   const voices = (course.voice_config || {}).voices || {}
   if (!Object.keys(voices).length) { console.error(`${COURSE} has no voice_config.voices — nothing to target`); process.exit(1) }
 
+  // Voicing policy (Tom 2026-10-11): eligibility by cast date, and xAI is never a target. This tool moves a WHOLE course (no seed filter),
+  // so the 1-100 scope is enforced by charlotte-backfill --seeds; here only eligibility and the xAI ban apply.
+  const policy = require('../services/shared/voicing-policy.cjs')
+  try { await policy.assertRevoiceAllowed({ courseCode: COURSE }) } catch (e) { console.error(e.message); process.exit(3) }
+  for (const [role, v] of Object.entries(voices)) if (/xai/i.test(`${v.provider} ${v.voiceId}`)) { console.error(`Voicing policy (403, xai-banned): ${COURSE} ${role} targets an xAI voice (${v.voiceId}) — xAI is banned on every path.`); process.exit(3) }
+
   console.log(`\nrevoice-clips — ${COURSE}`)
   console.log(`configured voices: ${Object.entries(voices).map(([k, v]) => `${k}=${v.voiceId}/${v.provider}`).join(', ')}`)
   console.log(`storing voice_id in its canonical form (e.g. ${storedVoiceId('eve')}); --spelling ${SPELLING} is accepted and ignored\n`)

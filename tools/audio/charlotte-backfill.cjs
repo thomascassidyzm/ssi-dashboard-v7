@@ -303,7 +303,10 @@ async function main() {
   if (!pass) { console.error(`unknown --voices ${passName}; one of ${Object.keys(PASSES)}`); process.exit(1) }
   const roles = pass.role ? [pass.role] : opt('--roles', 'known,presentation').split(',')
   const budget = Number(opt('--budget', 0)); const dryRun = has('--dry-run')
-  const maxSeed = parseSeedScope(opt('--seeds'))
+  // Voicing policy (Tom 2026-10-11): only a variety cast in Cartesia on/after the cutoff, never one marked done, default scope seeds 1-100.
+  let maxSeed
+  try { maxSeed = await require('../../services/shared/voicing-policy.cjs').assertRevoiceAllowed({ courseCode: course, maxSeed: parseSeedScope(opt('--seeds')) }) }
+  catch (e) { console.error(e.message); process.exit(3) }
   let target = pass.target, language = 'eng'
   if (pass.castGender) {
     language = pass.langs[0]

@@ -316,7 +316,8 @@ async function assertCastVoice(language, voiceId, opts = {}) {
   throw new CastRefusal(msg, v.reason, language, voiceId)
 }
 
-const isCastRefusal = (err) => !!err && err.code === 'VOICE_NOT_CAST'
+// VOICING_POLICY refusals (services/shared/voicing-policy.cjs) are skipped-by-design exactly as an uncast voice is.
+const isCastRefusal = (err) => !!err && (err.code === 'VOICE_NOT_CAST' || err.code === 'VOICING_POLICY')
 
 /**
  * Split a fill pass's items { role, language, voiceId } into those the gate lets
@@ -364,5 +365,5 @@ function limitCastFirst({ cast, uncast, summary }, limit) {
 
 module.exports = {
   limitCastFirst, castAllowsVoice, castKeyOf, castVerdict, partitionByCast, castRowLanguage, assertCastVoice, isCastRefusal, isCartesiaVoice, isAzureVoice,
-  isTomCastRow, courseVoiceProfile, azureOnlyAllows, CastRefusal, useCastRows, useCourseCastRow, useCourseVoiceHolder, useCourseVoiceCensus,
+  courseCastRow, canonVoice, rowIsForKey, isTomCastRow, courseVoiceProfile, azureOnlyAllows, CastRefusal, useCastRows, useCourseCastRow, useCourseVoiceHolder, useCourseVoiceCensus,
 }

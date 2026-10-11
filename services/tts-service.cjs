@@ -29,6 +29,7 @@ const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint, applyElisionSpaceHint } = require('./azure-tts-service.cjs');
 const { identityFromConfig, lookupForRender, clipLibrary } = require('./shared/clip-library.cjs');
 const { assertCastVoice } = require('./shared/voice-cast-gate.cjs');
+const { assertRenderAllowed } = require('./shared/voicing-policy.cjs');
 const { assertMayRerecord } = require('./shared/rerecord-gate.cjs');
 const { spendGuard } = require('./shared/tts-spend-guard.cjs');
 
@@ -1049,6 +1050,8 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     };
   }
   // The intro SLOT (door.intro) is judged against the course's presentation voices, every other line against its lines (cast gate leg b).
+  // The voicing policy (services/shared/voicing-policy.cjs): xAI banned, English known = Charlotte, presentation intros spliced never rendered whole.
+  await assertRenderAllowed({ text, language, voiceId, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro, role: door.slotRole || null, audition: !!door.audition });
   await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro });
   // AFTER the cast gate on purpose (lane review #232): assertMayRerecord RESERVES a use of a max_clips grant, so a render the cast gate
   // is about to refuse must never spend one. No re-recording without Tom's permission (Tom 2026-10-11): a miss that would REPLACE a working clip of
