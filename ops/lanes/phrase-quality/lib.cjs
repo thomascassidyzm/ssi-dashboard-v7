@@ -63,7 +63,23 @@ function zutGroups(rows, courseCode, from, to) {
 // r-2026-10-08); never test/template courses. Arabic is ours.
 const inScope = (c) => ['released', 'beta'].includes(c.status) && !/cym/.test(c.course_code) && !/^zzz_|_template$/.test(c.course_code)
 
+// Tom's priority order (2026-10-11, #463). Target language in the big 10 (variants alongside their parent;
+// Austrian/Swiss German and Cantonese out): (a) every big-10 _for_eng; (b) eng_for_<any known>;
+// (c) spa_for_any; then fra, deu, zho, ara, por, kor, jpn, ita _for_any. Returns a tier number, or null
+// when the course is not a priority course (the lane never queues it). Welsh never; only inScope courses.
+const BIG10 = ['eng', 'fra', 'spa', 'deu', 'zho', 'ara', 'por', 'kor', 'jpn', 'ita']
+const PRIORITY_TARGETS = ['spa', 'fra', 'deu', 'zho', 'ara', 'por', 'kor', 'jpn', 'ita']
+const priorityTier = (code) => {
+  const m = /^([a-z]{3})(?:_([a-z]{2}))?_for_([a-z]{3})$/.exec(code)
+  if (!m || /cym/.test(code)) return null
+  const [, tgt, variant, known] = m
+  if (!BIG10.includes(tgt) || (tgt === 'deu' && ['at', 'ch'].includes(variant)) || tgt === 'yue') return null
+  if (known === 'eng') return tgt === 'eng' ? null : 0
+  if (tgt === 'eng') return 1
+  return 2 + PRIORITY_TARGETS.indexOf(tgt)   // spa 2, fra 3, deu 4, zho 5, ara 6, por 7, kor 8, jpn 9, ita 10
+}
+
 // Tom 2026-10-11 20:57: "no LEGO can end up with < 4 USE phrases is the only hard and fast rule".
 const USE_FLOOR = 4
 
-module.exports = { client, selectAll, zutKey, zutGroups, inScope, USE_FLOOR }
+module.exports = { client, selectAll, zutKey, zutGroups, inScope, priorityTier, USE_FLOOR }

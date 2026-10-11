@@ -1,7 +1,7 @@
 // node ops/lanes/phrase-quality/phrase-quality.test.cjs — no DB; the gate is injected.
 'use strict'
 const assert = require('assert')
-const { zutKey, zutGroups, inScope, USE_FLOOR } = require('./lib.cjs')
+const { zutKey, zutGroups, inScope, priorityTier, USE_FLOOR } = require('./lib.cjs')
 const { plan } = require('./gate-change.cjs')
 
 // REGRESSION (lane review #420): Arabic tashkeel must not split a ZUT group. أريد and أُريد are one
@@ -34,6 +34,12 @@ assert.equal(inScope({ course_code: 'fin_for_eng', status: 'draft' }), false)
   assert.deepEqual(pendingUndo(U).map((l) => l.row_id), ['b'], 'an undone row is not undone twice')
   assert.deepEqual(pendingUndo([...U, { row_id: 'a', action: 'replace', before: { v: 3 } }]).map((l) => l.row_id), ['a', 'b'], 'a re-applied row is undoable again')
 }
+// Tom's priority order (#463)
+assert.equal(priorityTier('spa_mx_for_eng'), 0); assert.equal(priorityTier('por_br_for_eng'), 0); assert.equal(priorityTier('ara_lb_for_eng'), 0)
+assert.equal(priorityTier('deu_at_for_eng'), null); assert.equal(priorityTier('deu_ch_for_eng'), null); assert.equal(priorityTier('yue_for_eng'), null)
+assert.equal(priorityTier('eng_for_hin'), 1); assert.equal(priorityTier('spa_for_jpn'), 2); assert.equal(priorityTier('fra_for_zho'), 3); assert.equal(priorityTier('ita_for_jpn'), 10)
+assert.equal(priorityTier('zho_for_cym'), null); assert.equal(priorityTier('cym_n_for_eng'), null); assert.equal(priorityTier('eng_for_cym'), null)
+assert.equal(priorityTier('hrv_for_eng'), null); assert.equal(priorityTier('cat_for_spa'), null); assert.equal(priorityTier('zho_for_gle'), 5)
 // REGRESSION (#463): a failed restore of an OLDER change must not be hidden by an 'undone' written after the newer one restored.
 ;(async () => {
   const { doneRowIds, undoRows } = require('./ledger.cjs')
