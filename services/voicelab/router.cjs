@@ -59,6 +59,9 @@ const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
  * @param {function} deps.requireDashboardUser  (req,res) -> user|null (responds on failure)
  * @param {object}   [deps.logger]
  */
+/** registry.SLOTS are the phrase-bearing slots; 'presentation' is cast and cleared too, gender-agnostic like guide (cast_voice_role v3). The guard used to reject it, so clearing a presentation slot was unreachable (#273). */
+const isCastableSlot = (slot) => slot === 'presentation' || registry.SLOTS.includes(slot)
+
 function mount (app, deps) {
   const {
     requireAdmin,
@@ -523,8 +526,8 @@ function mount (app, deps) {
       // own gender as a fact and nothing reads it to decide anything. A partial
       // unique index keeps one guide per (language, rank) regardless.
       const slot = String((req.body || {}).slot || 'phrase')
-      if (!registry.SLOTS.includes(slot)) {
-        throw Object.assign(new Error(`slot must be one of ${registry.SLOTS.join(', ')}`), { status: 400 })
+      if (!isCastableSlot(slot)) {
+        throw Object.assign(new Error(`slot must be one of ${[...registry.SLOTS, 'presentation'].join(', ')}`), { status: 400 })
       }
       const gender = slot === 'guide' ? null : (req.body || {}).gender
       if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
@@ -1619,8 +1622,8 @@ function mount (app, deps) {
       const slot = String(req.query.slot || 'phrase')
       const gender = String(req.query.gender || '')
       const rank = Number(req.query.rank)
-      if (!registry.SLOTS.includes(slot)) {
-        throw Object.assign(new Error(`slot must be one of ${registry.SLOTS.join(', ')}`), { status: 400 })
+      if (!isCastableSlot(slot)) {
+        throw Object.assign(new Error(`slot must be one of ${[...registry.SLOTS, 'presentation'].join(', ')}`), { status: 400 })
       }
       // A guide slot is keyed by (language, rank) alone, so clearing one does
       // not need — and must not require — a gender the caller has no business

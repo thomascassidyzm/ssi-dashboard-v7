@@ -88,3 +88,17 @@ describe('PUT /languages/:language/slot — rank moves', () => {
     expect(roles).toHaveLength(2)
   })
 })
+
+describe('DELETE /languages/:language/slot — presentation (#273)', () => {
+  it('clears a presentation rank by slot, language and rank, with no gender', async () => {
+    const res = await fetch(`${base}/api/voicelab/languages/spa_mx/slot?slot=presentation&rank=0`, { method: 'DELETE' })
+    const body = await res.json()
+    expect(body.error).toBeUndefined()
+    expect(res.status).toBe(200)
+    expect(body.slot).toBe('presentation')
+  })
+  it('still refuses an unknown slot', async () => {
+    const res = await fetch(`${base}/api/voicelab/languages/spa_mx/slot?slot=bogus&rank=0`, { method: 'DELETE' })
+    expect(res.status).toBe(400)
+  })
+})
