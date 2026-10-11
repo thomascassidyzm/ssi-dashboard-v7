@@ -33,6 +33,8 @@ const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const clipIndex = require('../shared/clip-index.cjs')
+const voicingPolicy = require('../shared/voicing-policy.cjs')
+const introSplice = require('../shared/intro-splice.cjs')
 const { renderClip, rerecordPatch, roleNativeLanguage, RenderRequestError } = require('../shared/audio-render-entry.cjs')
 const { phraseRenderDoor, PHRASE_REUSE_LOOKUP } = require('../shared/phrase-render-door.cjs')
 const chainContext = require('../shared/chain-context.cjs')
@@ -3337,6 +3339,21 @@ app.post('/generate/:courseCode', async (req, res) => {
         }
       }
 
+      // DICE AND SPLICE (job #516, Tom 2026-10-11): an English-known presentation intro is never rendered whole (the voicing policy
+      // refuses it) — it is spliced from existing Charlotte clips through the same entry the render route uses, rendering only a
+      // piece that exists nowhere. Bound exactly like a rendered presentation clip.
+      if (item.role === 'presentation' && introSplice.planIntro(item.text, course)) {
+        const spliced = await renderClip({ courseCode, role: 'presentation', text: item.text, legoId: item.lego_id || null, language: 'eng',
+          voiceId: voicingPolicy.config.englishVoice, purpose: 'phase8 fill: spliced presentation intro (job #516)', requestedBy: 'phase8-fill' }, buildRenderDeps())
+        if (spliced && spliced.audioId) {
+          await bindPresentationAudio(item, spliced.audioId, spliced.durationMs)
+          results.attached++
+          updateWork(item.text, true)
+          logger.info(`Spliced intro (${spliced.source}): "${item.text.substring(0, 50)}" → ${spliced.audioId}, ${spliced.charsSpent || 0} chars`)
+          return { success: true, item, spliced: true }
+        }
+      }
+
       // Determine TTS provider from voice config
       // Voice format: azure_es-ES-ElviraNeural or elevenlabs_voiceId
       if (typeof item.voiceId !== 'string' || !item.voiceId) {
@@ -5413,9 +5430,8 @@ async function linkClipForRender({ courseCode, text, language, role, voiceId, le
 // services/shared/audio-render-entry.cjs; this handler only wires its deps to
 // the pieces this file already owns. The text is rendered VERBATIM (no gender
 // expansion): the caller names the exact words to be spoken.
-app.post('/render', async (req, res) => {
-  try {
-    const out = await renderClip(req.body || {}, {
+function buildRenderDeps() {
+  const deps = {
       resolve: async ({ courseCode, role, language, voiceId }) => {
         if (isHumanVoiceCourse(courseCode)) throw new RenderRequestError(`${courseCode} is a human-voice-only course — no TTS (Tom's ruling 2026-07-25)`, 409, 'HUMAN_VOICE_COURSE')
         const { data: course } = await supabase.from('courses')
@@ -5495,7 +5511,57 @@ app.post('/render', async (req, res) => {
         await clipIndex.writeThrough(supabase, [{ id: row.id, text, language, voice_id: voiceId, s3_key: s3Key, origin: 'tts' }], 'phase8:render', logger)
         return { audioId: row.id, s3Key, durationMs }
       },
-    })
+  }
+  // DICE AND SPLICE (job #516, Tom 2026-10-11): an English-known presentation intro is built from existing Charlotte clips.
+  deps.spliceIntro = (req) => spliceIntroForRoute(req, deps)
+  return deps
+}
+
+/**
+ * Build one presentation intro by dice and splice (services/shared/intro-splice.cjs) with this service's own pieces. Returns null when
+ * the course is not taught from English or the text is not a standard intro (the caller then carries on down the normal path).
+ * A missing piece (e.g. 'The Spanish for', once per base language) is rendered through the SAME route, so it is library-first,
+ * spend-guarded and cached for every later intro and every variety; the spliced clip is a course_audio row flagged spliced_from.
+ */
+async function spliceIntroForRoute(req, deps) {
+  const { data: course } = await supabase.from('courses').select('course_code, known_lang, target_lang').eq('course_code', req.courseCode).single()
+  if (!course) return null
+  const charlotte = voicingPolicy.config.englishVoice
+  if (req.voiceId && req.voiceId.replace(/^cartesia_/, '') !== charlotte.replace(/^cartesia_/, '')) return null   // a spliced intro is Charlotte's; another voice named = not ours to splice
+  const byText = new Map()
+  const hooks = {
+    findClip: async (text) => {
+      const hit = await lookupSiblingClip(req.courseCode, text, 'eng', charlotte, { includeOwnCourse: true, voiceBound: true })
+      return hit.status === 'error' ? Promise.reject(new Error(hit.error)) : (hit.clip && hit.clip.s3_key ? hit.clip : null)
+    },
+    renderPiece: ({ text, role }) => {
+      if (!byText.has(text)) byText.set(text, renderClip({ courseCode: req.courseCode, role, text, language: 'eng', voiceId: charlotte, job: req.job,
+        purpose: `spliced intro piece for ${req.courseCode} (job #516)`, requestedBy: req.requestedBy || 'intro-splice' }, { ...deps, spliceIntro: null }))
+      return byText.get(text)
+    },
+    fetchObject: async (key) => {
+      const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: key }))
+      return Buffer.from(await r.Body.transformToByteArray())
+    },
+    master: async (wav, text) => masterAudio(wav, text, await voiceConfigService.masteringOptsFor(charlotte)),
+    store: async ({ courseCode, text, legoId, buffer, durationMs, splicedFrom }) => {
+      const s3Key = `mastered/${uuidv4().toUpperCase()}.mp3`
+      await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
+      const { data: row, error } = await supabase.from('course_audio').upsert({
+        course_code: courseCode, text, text_normalized: normalizeForAudio(text), language: 'eng', role: 'presentation', voice_id: charlotte,
+        lego_id: legoId, origin: 'tts', s3_key: s3Key, duration_ms: durationMs, word_boundaries: null, spliced_from: splicedFrom,
+      }, { onConflict: 'course_code,text_normalized,language,role,voice_id' }).select().single()
+      if (error) throw new Error(`course_audio write failed for the spliced intro: ${error.message} (object ${s3Key} is in S3)`)
+      await clipIndex.writeThrough(supabase, [{ id: row.id, text, language: 'eng', voice_id: charlotte, s3_key: s3Key, origin: 'tts' }], 'phase8:splice', logger)
+      return { audioId: row.id, s3Key }
+    },
+  }
+  return introSplice.spliceIntro({ text: req.text, course, courseCode: req.courseCode, legoId: req.legoId, dryRun: req.dryRun }, hooks)
+}
+
+app.post('/render', async (req, res) => {
+  try {
+    const out = await renderClip(req.body || {}, buildRenderDeps())
     res.json(out)
   } catch (error) {
     if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
