@@ -1625,14 +1625,14 @@ function mount (app, deps) {
       // A guide slot is keyed by (language, rank) alone, so clearing one does
       // not need — and must not require — a gender the caller has no business
       // knowing.
-      if (!language || !Number.isInteger(rank) || (slot !== 'guide' && !registry.GENDERS.includes(gender))) {
+      if (!language || !Number.isInteger(rank) || (slot !== 'guide' && slot !== 'presentation' && !registry.GENDERS.includes(gender))) {
         throw Object.assign(new Error('language and rank are required, plus gender for a phrase slot'), { status: 400 })
       }
       let q = supabase()
         .from('voice_language_roles')
         .delete()
         .eq('slot', slot).eq('language', language).eq('rank', rank)
-      if (slot !== 'guide') q = q.eq('gender', gender)
+      if (slot !== 'guide' && slot !== 'presentation') q = q.eq('gender', gender)
       const { error } = await q
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
       logger.log?.(`[voicelab] cleared ${slot} ${language}/${gender || '-'}/rank${rank} by ${who(user)}`)
