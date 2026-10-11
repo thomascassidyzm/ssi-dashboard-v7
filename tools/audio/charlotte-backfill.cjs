@@ -68,6 +68,10 @@ const PASSES = {
   'xai-female': { sql: FEMALE_XAI, target: CHARLOTTE, gender: 'f' },
   male: { sql: MALE_VOICE, target: TOM_001, gender: 'm' },
   'xai-male': { sql: MALE_XAI, target: TOM_001, gender: 'm' },
+  // Tom 2026-10-11 (job #259): the xAI Tom clone clicks at the end of clips, so its English known prompts move to Charlotte (the English voice
+  // ita_for_eng already uses). gender null on purpose: this is Tom's explicit ruling for the known role, so the male-never-Charlotte guard
+  // (which protects target V1/V2 distinctness) does not apply. Run it with --roles known only.
+  'tom-clone-to-charlotte': { sql: `(ca.voice_id in ('xai_gfzdpspr5fdp','gfzdpspr5fdp','${TOM_001}'))`, target: CHARLOTTE, gender: null },
 }
 
 /** Target-voice passes: language + role are fixed by the pass; the new voice is the language's cast voice for the role's gender. */
