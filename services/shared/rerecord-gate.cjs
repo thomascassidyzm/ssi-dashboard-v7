@@ -89,8 +89,9 @@ async function assertMayRerecord(want, store = rerecordStore()) {
   const named = [].concat(want.replacing || []).filter(Boolean).map(String)
   let rows = []
   if (named.length) {
-    rows = await store.replacedRows(named.filter(x => UUID.test(x)), named.filter(x => !UUID.test(x)))
-    if (want.courseCode) rows = rows.filter(r => r.course_code === want.courseCode)
+    if (!want.courseCode) throw new RerecordRefusal(`a render replacing ${named.join(', ')} names no course — the gate cannot check what it replaces`, { replacing: named })
+    rows = (await store.replacedRows(named.filter(x => UUID.test(x)), named.filter(x => !UUID.test(x)), want.courseCode))
+      .filter(r => r.course_code === want.courseCode)
   } else if (want.slotRole && want.voiceBound && want.courseCode) {
     rows = await store.sameWordsOtherVoice(want)
   }
@@ -132,10 +133,11 @@ function supabaseRerecordStore({ supabase } = {}) {
   const COLS = 'id, course_code, role, language, voice_id, text_normalized, s3_key, file_size_bytes'
   const must = (r, what) => { if (r.error) throw new Error(`re-record gate: ${what} unreadable (${r.error.message}) — refusing to render blind`); return r.data || [] }
   return {
-    async replacedRows(ids, keys) {
+    async replacedRows(ids, keys, courseCode) {
       const out = []
       if (ids.length) out.push(...must(await db().from('course_audio').select(COLS).in('id', ids), 'course_audio'))
-      if (keys.length) out.push(...must(await db().from('course_audio').select(COLS).in('s3_key', keys), 'course_audio'))
+      // s3_key has no index on the 2.6M-row table: scope by course (indexed) or the read times out (seen live 2026-10-11).
+      if (keys.length) out.push(...must(await db().from('course_audio').select(COLS).eq('course_code', courseCode).in('s3_key', keys), 'course_audio'))
       return [...new Map(out.map(r => [r.id, r])).values()]
     },
     /** Ids still linked as a phrase's or LEGO's known/target1/target2 clip — the audio a learner hears now. */

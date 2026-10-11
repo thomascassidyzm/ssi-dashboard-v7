@@ -244,7 +244,7 @@ describe('what the door refuses to hand back', () => {
   it('never the clip a regenerate is replacing', async () => {
     const bad = clip({ course: 'eng_for_hin', text: 'a bad take' })
     const { svc, paid } = door([bad])
-    await svc.speak('a bad take', 'cartesia', cfg(CHARLOTTE, 'en', { replacing: [bad.s3_key] }))
+    await svc.speak('a bad take', 'cartesia', cfg(CHARLOTTE, 'en', { courseCode: 'eng_for_hin', replacing: [bad.s3_key] }))
     expect(paid).toHaveLength(1)
   })
 
