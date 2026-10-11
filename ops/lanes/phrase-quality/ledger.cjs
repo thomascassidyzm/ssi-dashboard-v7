@@ -19,4 +19,22 @@ function pendingUndo(lines, only) {
   lines.forEach((l, i) => { if (l.action === 'undone') lastUndone.set(l.row_id, i) })
   return lines.filter((l, i) => l.action !== 'undone' && i > (lastUndone.has(l.row_id) ? lastUndone.get(l.row_id) : -1) && (!only || l.row_id === only)).reverse()
 }
-module.exports = { readLedger, doneRowIds, pendingUndo }
+// Undo, per row (#463): restore a row's pending changes newest-first, stop that row on the first
+// failure, and write ONE 'undone' line for it (carrying the reverted entries' `at`) only after every
+// restore for the row succeeded. A row-wide 'undone' after a partial restore would hide the older
+// change that never came back (apply-staged would then treat the row as open).
+// restore(change) -> error message or falsy; record(line) appends to the ledger; both injected so no DB.
+async function undoRows(lines, only, restore, record, say = () => {}) {
+  const byRow = new Map()
+  for (const l of pendingUndo(lines, only)) { if (!byRow.has(l.row_id)) byRow.set(l.row_id, []); byRow.get(l.row_id).push(l) }
+  for (const [row_id, changes] of byRow) {
+    let failed = false
+    for (const c of changes) {
+      const err = await restore(c)
+      if (err) { say(`${row_id}: ERROR ${err} (older changes for this row left pending)`); failed = true; break }
+      say(`${row_id}: restored ${c.action}`)
+    }
+    if (!failed) record({ row_id, action: 'undone', at: new Date().toISOString(), reverted: changes.map((c) => c.at) })
+  }
+}
+module.exports = { readLedger, doneRowIds, pendingUndo, undoRows }

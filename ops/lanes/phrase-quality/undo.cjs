@@ -5,18 +5,18 @@
 'use strict'
 const fs = require('fs'), path = require('path')
 const { client } = require('./lib.cjs')
-const { readLedger, pendingUndo } = require('./ledger.cjs')
+const { readLedger, pendingUndo, undoRows } = require('./ledger.cjs')
 ;(async () => {
   const course = process.argv[2], APPLY = process.argv.includes('--apply')
   const only = (process.argv.find((a, i) => process.argv[i - 1] === '--row')) || null
   const ledgerPath = path.join(__dirname, 'undo', `${course}.jsonl`)
-  for (const l of pendingUndo(readLedger(ledgerPath), only)) {
-    if (!APPLY) { console.error(`would undo ${l.action} of ${l.row_id}`); continue }
+  const lines = readLedger(ledgerPath)
+  if (!APPLY) { for (const l of pendingUndo(lines, only)) console.error(`would undo ${l.action} of ${l.row_id}`); process.exit(0) }
+  await undoRows(lines, only, async (l) => {
     const { error } = l.action === 'delete'
       ? await client().from('course_practice_phrases').upsert(l.before)
       : await client().from('course_practice_phrases').update(l.before).eq('id', l.row_id)
-    if (!error) fs.appendFileSync(ledgerPath, JSON.stringify({ row_id: l.row_id, action: 'undone', at: new Date().toISOString() }) + '\n')
-    console.error(`${l.row_id}: ${error ? 'ERROR ' + error.message : 'restored'}`)
-  }
+    return error && error.message
+  }, (line) => fs.appendFileSync(ledgerPath, JSON.stringify(line) + '\n'), (m) => console.error(m))
   process.exit(0)
 })().catch((e) => { console.error(e.message); process.exit(1) })
