@@ -2934,6 +2934,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     if (!dryRun && audioNeeds.stalePendingIds?.length) {
       const staleIds = audioNeeds.stalePendingIds
       for (let i = 0; i < staleIds.length; i += 100) {
+        // ALLOW-DELETE: stale PENDING placeholders only (s3_key pending/…, no S3 asset) — see the comment above.
         const { error: purgeError } = await supabase
           .from('course_audio')
           .delete()

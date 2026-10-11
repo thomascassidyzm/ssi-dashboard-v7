@@ -146,7 +146,9 @@ async function main () {
     log.pod_rows_before = refs
 
     // (3) delete — audit trigger keeps each row; FK SET NULL empties the 4 slots
-    const del = await db.query(`DELETE FROM course_audio WHERE id = ANY($1::uuid[]) AND course_code=$2`, [ids, COURSE])
+    // RETIRED (r-2026-10-10-never-delete-audio-clips): this one-shot was applied 2026-09-13; re-running it must not delete clips.
+    throw new Error('retired one-shot: clips are never deleted') // the row delete this applied (course_audio by id) is removed
+    const del = { rowCount: 0 }
     if (del.rowCount !== 46) throw new Error(`deleted ${del.rowCount}, expected 46`)
 
     // (4) re-register the four 3 Sep objects under fresh ids (same bytes, new URL)

@@ -38,6 +38,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') }
 const fs = require('fs')
 const os = require('os')
 const path = require('path')
+const TOMBSTONE = ' ::superseded' // same marker as repair-presentation-clips.cjs
 const { execFile } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
@@ -191,19 +192,15 @@ function sentenceTexts(row) {
     if (!voice) { console.log(`S${j.row.global_order}: ✗ no target voice for "${j.row.speaker}"`); failed++; continue }
     let restoreOnFail = null
     try {
-      // 1. old row dies → id retires, dedup key frees, content_stamp moves.
-      //    NOTE the FK from listening_pod_sentences.target_audio_id is ON
-      //    DELETE SET NULL — the relink below restores it. Deleting before
-      //    rendering is required (the dedup key must free so a NEW id is
-      //    minted), but if the render then fails the old id is already dead:
-      //    the catch below restores the old row from its surviving S3 object
-      //    so a failed job never leaves a dangling link (learned 2026-07-23,
-      //    first run: ffmpeg missing → 2 rows deleted, 0 rendered).
+      // 1. old row is TOMBSTONED, never deleted (Tom, r-2026-10-10-never-delete-audio-clips).
+      //    Renaming its text (the trigger recomputes text_normalized) frees the dedup key so
+      //    a NEW id is minted; the old row and its S3 object stay, unlinked once the pointer
+      //    moves below. No FK is nulled, so a failed render only needs the text put back.
       const { data: oldRow, error: oldErr } = await supabase
         .from('course_audio').select('*').eq('id', j.badId).single()
       if (oldErr) throw new Error(`read ${j.badId}: ${oldErr.message}`)
-      const { error: delErr } = await supabase.from('course_audio').delete().eq('id', j.badId)
-      if (delErr) throw new Error(`delete ${j.badId}: ${delErr.message}`)
+      const { error: delErr } = await supabase.from('course_audio').update({ text: oldRow.text + TOMBSTONE }).eq('id', j.badId)
+      if (delErr) throw new Error(`tombstone ${j.badId}: ${delErr.message}`)
       restoreOnFail = oldRow
 
       // 2. render + gate. First call mints a fresh row (dedup finds nothing);
@@ -264,16 +261,10 @@ function sentenceTexts(row) {
       failed++
       console.log(`S${j.row.global_order} ${j.slot}: ✗ ${e.message.slice(0, 160)}`)
       if (restoreOnFail) {
-        const restoreRow = { ...restoreOnFail }
-        delete restoreRow.text_stripped // GENERATED ALWAYS — insert rejects an explicit value
-        const { error: resErr } = await supabase.from('course_audio').insert(restoreRow)
+        const { error: resErr } = await supabase.from('course_audio').update({ text: restoreOnFail.text }).eq('id', j.badId)
         console.log(resErr
-          ? `S${j.row.global_order} ${j.slot}: RESTORE FAILED for ${j.badId} — DANGLING LINK, fix by hand: ${resErr.message}`
-          : `S${j.row.global_order} ${j.slot}: old row ${j.badId} restored (S3 object untouched)`)
-        // target_audio_id was FK-nulled by the delete; put the link back too.
-        if (!resErr && j.slot === 'take') {
-          await supabase.from('listening_pod_sentences').update({ target_audio_id: j.badId }).eq('id', j.row.id)
-        }
+          ? `S${j.row.global_order} ${j.slot}: RESTORE FAILED for ${j.badId} — text still tombstoned, link intact, fix by hand: ${resErr.message}`
+          : `S${j.row.global_order} ${j.slot}: old row ${j.badId} un-tombstoned (never deleted)`)
       }
     }
   }

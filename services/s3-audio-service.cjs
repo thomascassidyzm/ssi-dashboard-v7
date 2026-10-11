@@ -147,16 +147,9 @@ async function listCourseAudio(courseCode) {
  * @returns {Promise<void>}
  */
 async function deleteAudio(courseCode, uuid) {
-  const key = `courses/${courseCode}/audio/${uuid}.mp3`;
-
-  try {
-    await s3.deleteObject({
-      Bucket: S3_BUCKET,
-      Key: key
-    }).promise();
-  } catch (error) {
-    throw new Error(`Failed to delete ${uuid}.mp3 from S3: ${error.message}`);
-  }
+  // BLOCKED (Tom, r-2026-10-10-never-delete-audio-clips): clips are never deleted. No caller
+  // existed when this was blocked; it throws so a future caller fails loudly instead of deleting.
+  throw new Error(`deleteAudio(${courseCode}, ${uuid}) refused: audio clips are never deleted (r-2026-10-10-never-delete-audio-clips)`);
 }
 
 /**

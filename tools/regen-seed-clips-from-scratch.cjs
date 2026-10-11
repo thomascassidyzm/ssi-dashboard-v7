@@ -521,6 +521,7 @@ async function main () {
         for (const r of relinked.reverse()) {
           if (r.before) await supabase.from(r.table).update(r.before).eq('id', r.rowId)
         }
+        // ALLOW-DELETE: rollback of the row THIS run inserted moments ago; unlinked, never a pre-existing clip.
         if (inserted) await supabase.from('course_audio').delete().eq('id', newId)
         if (tombstoned && old) await supabase.from('course_audio').update({ text: old.text }).eq('id', old.id)
         console.log('      unwound cleanly — old clip still serving')

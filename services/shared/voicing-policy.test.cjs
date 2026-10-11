@@ -95,9 +95,42 @@ describe('never delete a clip; the rerecord gate stays', () => {
   const read = f => fs.readFileSync(path.join(root, f), 'utf8')
   it('the re-voice tools hold no course_audio delete', () => {
     // Any delete shape: sql, supabase .from('course_audio')...delete(), S3 DeleteObject(s)
-    const noDelete = [/delete\s+from\s+course_audio/i, /from\(\s*['"`]course_audio['"`]\s*\)[\s\S]{0,200}?\.delete\s*\(/i, /\bDeleteObjects?(Command)?\b/, /deleteObject/i]
+    const noDelete = [/delete\s+from\s+course_audio/i, /from\(\s*['"`]course_audio['"`]\s*\)[^;]{0,200}?\.delete\s*\(/i, /\bDeleteObjects?(Command)?\b/, /deleteObject/i]
     for (const f of ['tools/audio/charlotte-backfill.cjs', 'services/shared/voicing-policy.cjs', 'tools/revoice-clips.cjs', 'services/shared/revoice-scope.cjs'])
       for (const re of noDelete) expect(read(f), f + ' ' + re).not.toMatch(re)
+  })
+  it('no tool or service deletes a course_audio row or an S3 clip, except the annotated exceptions (r-2026-10-10-never-delete-audio-clips)', () => {
+    // Walk tools/ and services/ (tests exempt: they delete their own fixtures). A delete is allowed only
+    // if an `ALLOW-DELETE:` comment sits within 4 lines above it, saying why (rollback of a row the same
+    // run just created, or a pending placeholder with no S3 asset).
+    const shapes = [/delete\s+from\s+course_audio\b(?!_)/i, /from\(\s*['"`]course_audio['"`]\s*\)[^;]{0,200}?\.delete\s*\(/, /\bDeleteObjects?(Command)?\b/, /\.deleteObjects?\s*\(/]
+    const files = []
+    const walk = d => {
+      for (const e of fs.readdirSync(path.join(root, d), { withFileTypes: true })) {
+        const rel = path.join(d, e.name)
+        if (e.isDirectory()) { if (e.name !== 'node_modules') walk(rel) }
+        else if (/\.(cjs|js|mjs)$/.test(e.name) && !/\.test\.|\.spec\./.test(e.name)) files.push(rel)
+      }
+    }
+    walk('tools'); walk('services')
+    const offenders = []
+    for (const f of files) {
+      const src = read(f)
+      if (!/course_audio|DeleteObject|deleteObject/.test(src)) continue
+      const lines = src.split('\n')
+      lines.forEach((line, i) => {
+        // join the line with the next 3 so a chained .from('course_audio')\n.delete() is seen once, at its start
+        const win = lines.slice(i, i + 4).join('\n')
+        if (!shapes.some(re => { const m = re.exec(win); return m && m.index <= line.length })) return
+        const above = lines.slice(Math.max(0, i - 4), i + 1).join('\n')
+        if (!/ALLOW-DELETE:/.test(above)) offenders.push(f + ':' + (i + 1) + '  ' + line.trim().slice(0, 100))
+      })
+    }
+    expect(offenders).toEqual([])
+  })
+  it('the S3 deleteAudio helpers refuse', async () => {
+    await expect(require('../s3-audio-service.cjs').deleteAudio('x', 'y')).rejects.toThrow(/never deleted/)
+    await expect(require('../s3-service.cjs').deleteAudio('y')).rejects.toThrow(/never deleted/)
   })
   it('the door runs the voicing policy and then the rerecord gate; the re-voice tools call the policy', () => {
     const door = read('services/tts-service.cjs')

@@ -409,6 +409,7 @@ async function apply(sb, plan) {
   for (const p of rewordPending) {
     must(await sb.from('course_audio').update({ text: p.to.text, text_normalized: normalizeForAudio(p.to.text) }).eq('id', p.row.id).eq('text', p.row.text), `reword ${p.row.id}`);
   }
+  // ALLOW-DELETE: pending placeholders only (.like s3_key pending/%) — text rows with no S3 asset, never a rendered clip.
   for (const p of dropPending) must(await sb.from('course_audio').delete().eq('id', p.row.id).like('s3_key', 'pending/%'), `drop placeholder ${p.row.id}`);
   // 3. New pending rows keyed to their LEGO.
   const toInsert = insertRows.map(r => ({ course_code: COURSE, text: r.text, text_normalized: normalizeForAudio(r.text), language: live.course.known_lang, role: 'presentation', voice_id: presVoice, origin: 'tts', s3_key: `pending/${randomUUID().toUpperCase()}.mp3`, lego_id: r.lego_id }));

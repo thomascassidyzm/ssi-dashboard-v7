@@ -219,12 +219,9 @@ async function batchCheckAudio(uuids, bucket = STAGE_BUCKET) {
  * @param {string} bucket - S3 bucket name
  */
 async function deleteAudio(uuid, bucket = STAGE_BUCKET) {
-  const key = `mastered/${uuid}.mp3`;
-
-  await s3.deleteObject({
-    Bucket: bucket,
-    Key: key
-  }).promise();
+  // BLOCKED (Tom, r-2026-10-10-never-delete-audio-clips): clips are never deleted. No caller
+  // existed when this was blocked; it throws so a future caller fails loudly instead of deleting.
+  throw new Error(`deleteAudio(${uuid}, ${bucket}) refused: audio clips are never deleted (r-2026-10-10-never-delete-audio-clips)`);
 }
 
 /**

@@ -323,12 +323,11 @@ async function renderVerified (row, tmpDir) {
         if ((dangling || []).length) throw new Error(`${dangling.length} intro row(s) still point at the old id`)
       }
 
-      // 7. Now — and only now — the old row is unreferenced, so its CASCADE
-      //    has nothing to take with it. Verified again immediately after.
+      // 7. The old row is unreferenced and stays as a tombstone. Links re-verified.
       stage = 'delete-old'
       {
-        const { error: e } = await supabase.from('course_audio').delete().eq('id', id)
-        if (e) throw new Error(`delete old: ${e.message}`)
+        // The old row is NOT deleted (Tom, r-2026-10-10-never-delete-audio-clips): it stays,
+        // tombstoned and unreferenced. Re-check the links anyway so a regression is loud.
         const { data: after } = await supabase.from('lego_introductions')
           .select('id').eq('presentation_audio_id', newId)
         if ((after || []).length !== introCountBefore) {
@@ -351,6 +350,7 @@ async function renderVerified (row, tmpDir) {
         for (const r of relinked) {
           await supabase.from(r.table).update({ presentation_audio_id: old.id }).eq('id', r.rowId)
         }
+        // ALLOW-DELETE: rollback of the row THIS run inserted a moment ago; it has no links and its S3 object was just uploaded by this run. Not a real clip.
         if (inserted) await supabase.from('course_audio').delete().eq('id', newId)
         if (tombstoned) await supabase.from('course_audio')
           .update({ text: old.text }).eq('id', old.id)

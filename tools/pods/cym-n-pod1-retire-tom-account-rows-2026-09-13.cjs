@@ -83,7 +83,9 @@ async function main () {
     if (!sameArr(targets, ['12/8'])) throw new Error(`whole-turn slots on these rows: ${targets}, expected only 12/8`)
     log.pod_rows_before = podRefs
 
-    const del = await db.query(`DELETE FROM course_audio WHERE id = ANY($1::uuid[]) AND course_code=$2`, [ids, COURSE])
+    // RETIRED (r-2026-10-10-never-delete-audio-clips): this one-shot was applied 2026-09-13; re-running it must not delete clips.
+    throw new Error('retired one-shot: clips are never deleted') // the row delete this applied (course_audio by id) is removed
+    const del = { rowCount: 0 }
     if (del.rowCount !== 3) throw new Error(`deleted ${del.rowCount}`)
 
     log.arrays = []

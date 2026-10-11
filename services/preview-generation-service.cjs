@@ -296,6 +296,7 @@ async function cleanupOldPreviews(courseCode, maxAgeHours = 24) {
     }
 
     if (toDelete.length > 0) {
+      // ALLOW-DELETE: expired preview scratch objects in the LFS bucket (not course audio, no course_audio row).
       await s3.deleteObjects({
         Bucket: LFS_BUCKET,
         Delete: { Objects: toDelete }
@@ -327,6 +328,7 @@ async function deletePreview(courseCode, previewId) {
   const key = getPreviewKey(courseCode, previewId);
 
   try {
+    // ALLOW-DELETE: a preview scratch object in the LFS bucket (not course audio, no course_audio row).
     await s3.deleteObject({
       Bucket: LFS_BUCKET,
       Key: key

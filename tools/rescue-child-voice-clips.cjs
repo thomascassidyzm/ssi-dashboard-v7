@@ -40,6 +40,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') }
 const fs = require('fs')
 const os = require('os')
 const path = require('path')
+const TOMBSTONE = ' ::superseded' // same marker as repair-presentation-clips.cjs
 const { execFile } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
@@ -249,11 +250,12 @@ async function rescueCourse(course, log) {
 
     let restoreOnFail = null
     try {
-      // Old row dies first: frees the dedup key and retires the cached-by-id
-      // bytes on devices. FKs are ON DELETE SET NULL; relinks below restore.
+      // Old row is TOMBSTONED, never deleted (Tom, r-2026-10-10-never-delete-audio-clips): renaming
+      // its text frees the dedup key (the trigger recomputes text_normalized) so a NEW id is minted;
+      // the old row and S3 object stay, unlinked once the pointers move below. No FK is nulled.
       // sentence_known_audio_ids is a plain uuid[] (no FK) — repointed below.
-      const { error: delErr } = await supabase.from('course_audio').delete().eq('id', bad.id)
-      if (delErr) throw new Error(`delete ${bad.id}: ${delErr.message}`)
+      const { error: delErr } = await supabase.from('course_audio').update({ text: bad.text + TOMBSTONE }).eq('id', bad.id)
+      if (delErr) throw new Error(`tombstone ${bad.id}: ${delErr.message}`)
       restoreOnFail = bad
 
       // One render per distinct (text, voice-class); dedup inside
@@ -329,14 +331,13 @@ async function rescueCourse(course, log) {
       console.log(`  ✗ ${bad.id}: ${e.message.slice(0, 160)}`)
       log.errors.push({ clip: bad.id, error: e.message })
       if (restoreOnFail) {
-        const restoreRow = { ...restoreOnFail }
-        delete restoreRow.text_stripped // GENERATED ALWAYS — insert rejects an explicit value
-        const { error: resErr } = await supabase.from('course_audio').insert(restoreRow)
+        const { error: resErr } = await supabase.from('course_audio').update({ text: restoreOnFail.text }).eq('id', bad.id)
         console.log(resErr
-          ? `  RESTORE FAILED for ${bad.id} — DANGLING LINKS, fix by hand: ${resErr.message}`
-          : `  old row ${bad.id} restored (S3 object untouched)`)
+          ? `  RESTORE FAILED for ${bad.id} — text still tombstoned, fix by hand: ${resErr.message}`
+          : `  old row ${bad.id} un-tombstoned (never deleted)`)
+        // Links not yet moved still point at the old id; links already moved stay on the new clip.
         if (!resErr) {
-          // known_audio_id FKs were nulled by the delete; put the pod links back.
+          // put any already-moved pod links back on the restored clip.
           for (const st of pods_) {
             if (st.kind === 'known') {
               await supabase.from('listening_pod_sentences').update({ known_audio_id: bad.id }).eq('id', st.sentence.id)
