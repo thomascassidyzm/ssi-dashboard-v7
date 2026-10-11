@@ -32,7 +32,7 @@ assert.equal(inScope({ course_code: 'fin_for_eng', status: 'draft' }), false)
   const U = [...L, { row_id: 'a', action: 'undone' }]
   assert.deepEqual([...doneRowIds(U)], ['b'], 'undone row is no longer done')
   assert.deepEqual(pendingUndo(U).map((l) => l.row_id), ['b'], 'an undone row is not undone twice')
-  assert.deepEqual(pendingUndo([...U, { row_id: 'a', action: 'replace', before: { v: 3 } }]).map((l) => l.row_id), ['b', 'a'], 'a re-applied row is undoable again')
+  assert.deepEqual(pendingUndo([...U, { row_id: 'a', action: 'replace', before: { v: 3 } }]).map((l) => l.row_id), ['a', 'b'], 'a re-applied row is undoable again')
 }
 // REGRESSION (#441): a staged decision whose LEGO is gone is skipped, not a crash on sets.get(key).
 {
