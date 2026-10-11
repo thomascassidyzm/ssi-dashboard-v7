@@ -9,7 +9,7 @@
 const SYNTHESIS_CUES = [
   /\[pause\]/gi,
   /\[break\]/gi,
-  /<break\b[^>]*\/?>/gi,
+  /<break\b[^>\[\]{}]*\/?>/gi,
 ];
 
 function stripSynthesisCues(text) {

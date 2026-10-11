@@ -1309,3 +1309,14 @@ describe('truncationSuspect — the guard priming actually needs', () => {
     expect(V.VERIFY_MIN_SEC_PER_SYLLABLE).toBeLessThan(0.144)
   })
 })
+
+describe('synthesis cue tag body excludes [ ] { } (lane review #214)', () => {
+  const { stripSynthesisCues } = require('./shared/synthesis-cues.cjs')
+  it('still strips a plain break tag', () => {
+    expect(stripSynthesisCues('Ja <break time="500ms"/> gut')).toBe('Ja gut')
+  })
+  it('does not swallow a label bracket inside a break-tag body', () => {
+    expect(stripSynthesisCues('<break [Anna] />')).toContain('[Anna]')
+    expect(stripSynthesisCues('<break {x} />')).toContain('{x}')
+  })
+})
