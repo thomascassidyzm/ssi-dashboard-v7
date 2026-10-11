@@ -70,13 +70,13 @@ const PASSES = {
   'xai-male': { sql: MALE_XAI, target: TOM_001, gender: 'm' },
   // Tom 2026-10-11 (job #259): the xAI Tom clone clicks at the end of clips, so its English known prompts move to Charlotte (the English voice
   // ita_for_eng already uses). gender null on purpose: this is Tom's explicit ruling for the known role, so the male-never-Charlotte guard
-  // (which protects target V1/V2 distinctness) does not apply. Run it with --roles known only.
-  // Tom 2026-10-11 (job #277): "Everything should be Charlotte in first 100 SEEDS" - every English clip not already Charlotte (eve, Azure, bare ids,
-  // clone, tom_001), gender-blind for the same reason as above. Run it with --roles known --seeds 1-100.
-  'all-to-charlotte': { sql: `(ca.voice_id not in ('${CHARLOTTE}','${CHARLOTTE_BARE}'))`, target: CHARLOTTE, gender: null,
+  // (which protects target V1/V2 distinctness) does not apply. role is FIXED to known (#278): without it --roles target2/presentation would render Charlotte over male clips with the guard off.
+  'tom-clone-to-charlotte': { sql: `(ca.voice_id in ('xai_gfzdpspr5fdp','gfzdpspr5fdp','${TOM_001}'))`, target: CHARLOTTE, gender: null, role: 'known' },
+  // Tom 2026-10-11 (job #277): "Everything should be Charlotte in first 100 SEEDS" - every English known clip not already Charlotte (eve, Azure, bare ids,
+  // clone, tom_001), gender-blind for the same reason; role fixed to known. Run it with --seeds 1-100.
+  'all-to-charlotte': { sql: `(ca.voice_id not in ('${CHARLOTTE}','${CHARLOTTE_BARE}'))`, target: CHARLOTTE, gender: null, role: 'known',
     // a pod-fine clip (S0001L05B03) is linked from a known slot but stored with clip role pod_fine_known; "everything" includes it
     alsoClipRoles: { known: ['pod_fine_known'] } },
-  'tom-clone-to-charlotte': { sql: `(ca.voice_id in ('xai_gfzdpspr5fdp','gfzdpspr5fdp','${TOM_001}'))`, target: CHARLOTTE, gender: null },
 }
 
 /** Target-voice passes: language + role are fixed by the pass; the new voice is the language's cast voice for the role's gender. */
