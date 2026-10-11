@@ -12,6 +12,7 @@
 'use strict'
 const fs = require('fs'), path = require('path')
 const { client, USE_FLOOR } = require('./lib.cjs')
+const { readLedger, doneRowIds } = require('./ledger.cjs')
 const { judgeReplacement, loadSets } = require('./gate-change.cjs')
 
 async function main() {
@@ -20,7 +21,7 @@ async function main() {
   const stagedPath = path.join(__dirname, 'staged', `${course}.jsonl`)
   const ledgerPath = path.join(__dirname, 'undo', `${course}.jsonl`)
   const staged = fs.existsSync(stagedPath) ? fs.readFileSync(stagedPath, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l)) : []
-  const done = new Set(fs.existsSync(ledgerPath) ? fs.readFileSync(ledgerPath, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l).row_id) : [])
+  const done = doneRowIds(readLedger(ledgerPath))   // a row whose last ledger line is 'undone' is open again
   const todo = staged.filter((d) => ['replace', 'delete'].includes(d.decision) && !done.has(d.row_id))
   const { makeCourseCtx, checkPhraseSet } = require('../../../tools/phrase-gate/gate-check.cjs')
   const ctx = makeCourseCtx(client(), course)
@@ -31,6 +32,7 @@ async function main() {
     const key = `${d.seed_number}:${d.lego_index}`, set = sets.get(key)
     const { data: row } = await client().from('course_practice_phrases').select('*').eq('id', d.row_id).maybeSingle()
     const say = (outcome, why) => { log.push({ row_id: d.row_id, outcome, why }); console.error(`${d.row_id}: ${outcome}${why ? ' — ' + why : ''}`) }
+    if (!set) { say('skip', 'LEGO no longer exists'); continue }
     if (!row) { say('skip', 'row no longer exists'); continue }
     if (!['build', 'use'].includes(row.phrase_role)) { say('skip', `role ${row.phrase_role}`); continue }
     if (d.before && (row.known_text !== d.before.known || row.target_text !== d.before.target)) { say('skip', 'drift: the live row differs from what was judged'); continue }

@@ -22,6 +22,25 @@ assert.equal(inScope({ course_code: 'cym_s_for_eng', status: 'released' }), fals
 assert.equal(inScope({ course_code: 'ara_eg_for_eng', status: 'beta' }), true)
 assert.equal(inScope({ course_code: 'fin_for_eng', status: 'draft' }), false)
 
+// REGRESSION (#441): undo --apply writes 'undone'; apply-staged then treats the row as open again.
+// Undo of a twice-changed row restores newest-first, and never re-undoes an already undone row.
+{
+  const { doneRowIds, pendingUndo } = require('./ledger.cjs')
+  const L = [{ row_id: 'a', action: 'replace', before: { v: 1 } }, { row_id: 'a', action: 'delete', before: { v: 2 } }, { row_id: 'b', action: 'delete', before: {} }]
+  assert.deepEqual([...doneRowIds(L)].sort(), ['a', 'b'])
+  assert.deepEqual(pendingUndo(L).map((l) => l.before.v ?? 'b'), ['b', 2, 1], 'newest first')
+  const U = [...L, { row_id: 'a', action: 'undone' }]
+  assert.deepEqual([...doneRowIds(U)], ['b'], 'undone row is no longer done')
+  assert.deepEqual(pendingUndo(U).map((l) => l.row_id), ['b'], 'an undone row is not undone twice')
+  assert.deepEqual(pendingUndo([...U, { row_id: 'a', action: 'replace', before: { v: 3 } }]).map((l) => l.row_id), ['b', 'a'], 'a re-applied row is undoable again')
+}
+// REGRESSION (#441): a staged decision whose LEGO is gone is skipped, not a crash on sets.get(key).
+{
+  const src = require('fs').readFileSync(require('path').join(__dirname, 'apply-staged.cjs'), 'utf8')
+  assert.ok(src.includes("if (!set) { say('skip', 'LEGO no longer exists'); continue }"), 'apply-staged guards a missing LEGO set')
+  assert.ok(src.indexOf("if (!set) { say('skip'") < src.indexOf('set.entryBase'), 'the guard precedes every use of set')
+}
+
 ;(async () => {
   assert.equal(USE_FLOOR, 4, 'Tom 20:57: no LEGO below 4 USE phrases')
   const phrases = [
