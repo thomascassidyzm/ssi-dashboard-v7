@@ -115,7 +115,15 @@ async function assertMayRerecord(want, store = rerecordStore()) {
     console.warn(`[rerecord-gate] REFUSED ${msg}`)
     throw new RerecordRefusal(msg, entry)
   }
-  if (!want.dryRun) await store.log({ ...entry, kind: 'permitted', permission_id: p.id, note: `Tom's permission #${p.id}: ${String(p.why).slice(0, 200)}` })
+  if (!want.dryRun) {
+    // Check-then-log across two calls let two concurrent requests both pass a max_clips:1 grant (#229): the use is
+    // reserved in ONE atomic step (the store locks the permission, rechecks the count, inserts), and a spent grant refuses.
+    const used = { ...entry, kind: 'permitted', permission_id: p.id, note: `Tom's permission #${p.id}: ${String(p.why).slice(0, 200)}` }
+    if (!(await store.reserve(p.id, used))) {
+      try { await store.log({ ...entry, kind: 'refused', note: `permission #${p.id} spent by a concurrent request` }) } catch (e) { console.error(`[rerecord-gate] refusal not logged: ${e.message}`) }
+      throw new RerecordRefusal(`${want.courseCode} ${role}: Tom's permission #${p.id} was used up by a concurrent re-record — do not retry or route around this.`, entry)
+    }
+  }
   return p
 }
 
@@ -167,6 +175,12 @@ function supabaseRerecordStore({ supabase } = {}) {
       }
       return perms
     },
+    /** Atomic: public.reserve_rerecord_use locks the permission row, rechecks max_clips, inserts the 'permitted' row. */
+    async reserve(permissionId, entry) {
+      const { data, error } = await db().rpc('reserve_rerecord_use', { p_permission_id: permissionId, p_entry: entry })
+      if (error) throw new Error(`re-record gate: reserve failed (${error.message}) — refusing to render unreserved`)
+      return data === true
+    },
     async log(entry) {
       const { error } = await db().from('tts_rerecord_log').insert(entry)
       if (error) throw new Error(`re-record gate: log write failed (${error.message})`)
@@ -190,6 +204,13 @@ function memoryRerecordStore({ clips = [], permissions = [] } = {}) {
         .map(p => ({ ...p, used: logged.filter(l => l.kind === 'permitted' && l.permission_id === p.id).length }))
     },
     async log(entry) { logged.push(entry) },
+    async reserve(permissionId, entry) {   // synchronous check+push = the atomicity the SQL function gives
+      const p = permissions.find(x => x.id === permissionId)
+      if (!p || p.revoked_at) return false
+      if (p.max_clips != null && logged.filter(l => l.kind === 'permitted' && l.permission_id === permissionId).length >= p.max_clips) return false
+      logged.push(entry)
+      return true
+    },
   }
 }
 

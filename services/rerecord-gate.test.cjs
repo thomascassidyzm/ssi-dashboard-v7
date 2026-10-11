@@ -88,6 +88,19 @@ describe('the door refuses a re-record without Tom\'s permission', () => {
   })
 })
 
+describe('a max_clips grant is spent atomically (#229)', () => {
+  it('two concurrent re-records under max_clips:1: exactly one is accepted', async () => {
+    const mem = gate.memoryRerecordStore({ clips: [row({ id: 'a1' }), row({ id: 'a2', text: 'مرحبا' })], permissions: [permit({ max_clips: 1 })] })
+    // database latency: the count is read, then time passes before the use is written — the window the race lives in
+    const store = { ...mem, async permissions(c) { const r = await mem.permissions(c); await new Promise(res => setTimeout(res, 20)); return r } }
+    const ask = (text, key) => gate.assertMayRerecord({ text, language: 'ara', courseCode: COURSE, replacing: [key] }, store)
+    const results = await Promise.allSettled([ask(WORDS, 'mastered/a1.mp3'), ask('مرحبا', 'mastered/a2.mp3')])
+    expect(results.filter(r => r.status === 'fulfilled')).toHaveLength(1)
+    expect(results.find(r => r.status === 'rejected').reason).toMatchObject({ code: 'RERECORD_NOT_PERMITTED' })
+    expect(mem.logged.filter(l => l.kind === 'permitted')).toHaveLength(1)
+  })
+})
+
 describe('new audio is unaffected', () => {
   it('filling an empty slot (nothing replaced) renders', async () => {
     const { svc, paid } = door([])
