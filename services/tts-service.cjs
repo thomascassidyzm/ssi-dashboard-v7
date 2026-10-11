@@ -29,6 +29,7 @@ const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint, applyElisionSpaceHint } = require('./azure-tts-service.cjs');
 const { identityFromConfig, lookupForRender, clipLibrary } = require('./shared/clip-library.cjs');
 const { assertCastVoice } = require('./shared/voice-cast-gate.cjs');
+const { assertMayRerecord } = require('./shared/rerecord-gate.cjs');
 const { spendGuard } = require('./shared/tts-spend-guard.cjs');
 
 // Shared keep-alive agent for REST TTS providers (xAI, ElevenLabs). Without it
@@ -991,7 +992,14 @@ async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = 
  *                       own clip answers (Tom, 2026-08-07, intros rendered fresh).
  *                       There is no `role`: a clip is language + words + voice,
  *                       and known/target are never told apart (Tom, 2026-09-26 21:45Z);
- *   replacing         — s3 keys / ids a regenerate is replacing; never handed back;
+ *   replacing         — s3 keys / ids a regenerate is replacing; never handed back.
+ *                       Replacing a working clip of the same words is a RE-RECORD and
+ *                       needs Tom's permission (services/shared/rerecord-gate.cjs);
+ *   slotRole          — (with voiceBound) the course role being filled: the same words
+ *                       already in that role in another voice make this a re-voice,
+ *                       i.e. a re-record (/api/audio/render passes it);
+ *   forceRerecord     — the caller is re-recording a named clip whatever the words
+ *                       (a spoken-text pronunciation fix);
  *   language          — the language, when the provider config cannot say it;
  *   voiceBound        — answer only with a clip in THIS voice (pods: a
  *                       conversation's speakers are told apart by voice);
@@ -1040,6 +1048,14 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
       charsSpent: 0,
     };
   }
+  // No re-recording without Tom's permission (Tom 2026-10-11): a miss that would REPLACE a working clip of
+  // these words (door.replacing / door.slotRole / door.forceRerecord) is refused here, dry run or not.
+  await assertMayRerecord({
+    text, language, voiceId,
+    courseCode: door.courseCode || config.courseCode || null,
+    replacing: door.replacing, slotRole: door.slotRole || null, voiceBound: !!door.voiceBound,
+    forceRerecord: !!door.forceRerecord, dryRun: !!door.dryRun, job: door.job || null,
+  });
   // The intro SLOT (door.intro) is judged against the course's presentation voices, every other line against its lines (cast gate leg b).
   await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro });
   if (door.dryRun) {
