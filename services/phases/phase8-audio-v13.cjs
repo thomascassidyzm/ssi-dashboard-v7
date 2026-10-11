@@ -3183,7 +3183,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Process items in parallel with concurrency limit
     logger.info(`Generating ${uniqueNeeded.length} audio files with concurrency=${concurrencyToUse}`)
 
-    const results = { success: 0, failed: 0, errors: [], skippedUncast: 0 }
+    const results = { success: 0, failed: 0, errors: [], skippedUncast: 0, dataErrors: [] }
     // A-137 cross-course reuse: on unless this request asked for fresh bytes.
     const reuseOpts = reuseOptsFromRequest(req)
     results.reuse = newReuseCounters()
@@ -3560,6 +3560,14 @@ app.post('/generate/:courseCode', async (req, res) => {
           // Not cast in Cartesia (Tom 2026-10-10): skipped by design, logged once above.
           results.skippedUncast++
           updateWork(batch[j].text, false, 'skipped: voice not cast')
+        } else if (result.reason?.code === 'NOT_SPEAKABLE') {
+          // The row's TEXT is not an example (a label/marker): a data error to fix in the row,
+          // recorded against it and never sent to TTS. Does not stop the pass.
+          const item = batch[j]
+          results.failed++
+          results.dataErrors.push({ role: item.role, lego_id: item.lego_id || null, phrase_id: item.phrase_id || null, text: item.text.substring(0, 80), error: result.reason.message })
+          updateWork(item.text, false, 'data error: text is not an example')
+          logger.error(`DATA ERROR (not sent to TTS) ${courseCode} ${item.role} ${item.lego_id || item.phrase_id || ''}: "${item.text.substring(0, 40)}" — ${result.reason.message}`)
         } else {
           results.failed++
           const item = batch[j]

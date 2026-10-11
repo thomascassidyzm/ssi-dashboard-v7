@@ -77,10 +77,10 @@ describe('assertAudibleResponse', () => {
 })
 
 describe('gate failures route through the existing retry budget', () => {
-  it('is classified retriable, so generateWithRetry re-rolls it', () => {
+  it('is NOT retriable: silence for these words is a fact about the words (job #174), not a blip', () => {
     let err
     try { xai(2016)() } catch (e) { err = e }
-    expect(isRetriableTtsError(err)).toBe(true)
+    expect(isRetriableTtsError(err)).toBe(false)
   })
 
   it('is not mistaken for a fatal 4xx client error', () => {
@@ -461,5 +461,22 @@ describe('parseCartesiaSse (pure)', () => {
     expect([...r.pcm]).toEqual([1, 2, 3, 4])
     expect(r.wordTimestamps).toBeNull()
     expect(r.error).toBeNull()
+  })
+})
+
+describe('TTS only ever speaks examples (Tom r-2026-10-11)', () => {
+  const { assertSpeakableExample } = require('./tts-service.cjs')
+  it.each(['[progressive]', 'to {masc} go', 'she [was] trying', '...', '  ', '()'])('refuses %j', (t) => {
+    let err
+    try { assertSpeakableExample(t) } catch (e) { err = e }
+    expect(err && err.code).toBe('NOT_SPEAKABLE')
+    expect(isRetriableTtsError(err)).toBe(false)
+  })
+  it.each(['what she was trying to do', 'شفت شو كانت عم تحاول تعمل؟', '三个', "it's 5"])('lets %j through', (t) => {
+    expect(() => assertSpeakableExample(t)).not.toThrow()
+  })
+  it('speak() refuses a label before the provider, library or ledger is touched', async () => {
+    const svc = require('./tts-service.cjs')
+    await expect(svc.speak('[progressive]', 'cartesia', { voiceId: 'x', locale: 'en' })).rejects.toMatchObject({ code: 'NOT_SPEAKABLE' })
   })
 })

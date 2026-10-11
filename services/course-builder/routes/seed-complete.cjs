@@ -22,7 +22,7 @@ const {
 const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
-  checkLegoConflict, isDedupConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss,
+  checkLegoConflict, isDedupConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss, checkNonExampleText,
   loadPairContract, checkKnownSide, isKnownVocabBreach, compileKnownContract, stemKnownGloss, tokenizeKnown,
   checkBuildRecombination, checkBuildBasketTeachesWord,
 } = require('../lib/validation.cjs');
@@ -1211,6 +1211,22 @@ module.exports = function seedCompleteRoutes(ctx) {
           violations: zutViolations,
           methodology: METHODOLOGY_HINTS.zut,
         });
+      }
+
+      // 1a. NON-EXAMPLE TEXT (always runs, even with skip_validation): TTS only ever speaks
+      // examples (Tom, r-2026-10-11-text-sent-to-tts-is-only) — a [label] / {tag} in any known or
+      // target string would be sent to a voice. Describe the intention in words instead.
+      {
+        const nonExample = checkNonExampleText(legos);
+        if (nonExample.length > 0) {
+          errors.push({
+            type: 'non_example_text',
+            message: `${nonExample.length} string(s) hold a [bracketed] or {braced} label — every known/target string is spoken aloud, and only examples are ever spoken`,
+            offenders: nonExample.slice(0, 20),
+            hint: 'Gloss a component with the words it contributes in this sentence (e.g. merge a particle into the word it modifies: "she\'s trying" / "عم تحاول"), never with a label such as [progressive].',
+          });
+          console.log(`✗ ${seedId}: NON-EXAMPLE TEXT - ${nonExample.map(o => `${o.where} ${o.field} "${o.text}"`).join(', ')}`);
+        }
       }
 
       // 1b. LEGO SYLLABLE CAP (cognitive load guard — always runs, even with skip_validation)

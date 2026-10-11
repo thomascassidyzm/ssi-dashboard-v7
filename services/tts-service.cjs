@@ -97,12 +97,41 @@ function assertAudibleResponse(buffer, { provider, bytesPerSecond, text, voiceId
   const bytes = buffer ? buffer.length : 0;
   const floorBytes = Math.round((TTS_MIN_AUDIO_MS / 1000) * bytesPerSecond);
   if (bytes >= floorBytes) return;
-  throw new Error(
+  // Job #174: '[progressive]' (a label, not words) came back as ~45 bytes of
+  // silence three times running, each attempt billed. Silence for THESE words in
+  // THIS voice is a fact about the words, so it is NOT retriable (the "(503)"
+  // marker stays for the message; the flag is what isRetriableTtsError reads).
+  const err = new Error(
     `TTS empty-response gate (503): ${provider} returned ${bytes} bytes, ` +
     `below the ${floorBytes}-byte floor (${TTS_MIN_AUDIO_MS} ms at ${bytesPerSecond} B/s) ` +
     `for voice=${voiceId || '?'} text="${String(text || '').slice(0, 40)}" — ` +
     `provider returned silence, not a render`
   );
+  err.silentResponse = true;
+  throw err;
+}
+
+/**
+ * TTS only ever speaks EXAMPLES (Tom, r-2026-10-11-text-sent-to-tts-is-only:
+ * "We should never have explanations in the text sent to the TTS. We only EVER
+ * have examples."). A bracket or brace is how a label/tag/marker ("[progressive]",
+ * "{masc}") is written, and text with no letter or digit in it is nothing a voice
+ * can say. Either is a DATA error in the row, not a render problem: refused here,
+ * before the library lookup, the ledger and the provider, so it costs nothing and
+ * is never retried. The "(422)" marker makes isRetriableTtsError treat it as a
+ * client error; `code` lets a caller record it against the row.
+ */
+function assertSpeakableExample(text) {
+  const t = String(text == null ? '' : text);
+  const label = /[\[\]{}]/.test(t);
+  const markerOnly = !/[\p{L}\p{N}]/u.test(t);
+  if (!label && !markerOnly) return;
+  const err = new Error(
+    `TTS not-an-example (422): ${label ? 'contains a bracket/brace label' : 'has no speakable words'} — ` +
+    `text="${t.slice(0, 40)}" — TTS only ever speaks examples; fix the row's text`
+  );
+  err.code = 'NOT_SPEAKABLE';
+  throw err;
 }
 
 // Child voices are NEVER allowed (Tom 2026-07-24: no kids' voices, ever — a
@@ -714,6 +743,7 @@ async function renderOnce(text, provider, config) {
  * @returns {boolean} True if the failure looks transient and retriable
  */
 function isRetriableTtsError(error) {
+  if (error && (error.silentResponse || error.code === 'NOT_SPEAKABLE')) return false;
   const msg = (error && error.message) ? error.message : String(error);
 
   // Provider error strings embed the HTTP status as "(NNN)". A 4xx is a real
@@ -973,6 +1003,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
   if (!text || String(text).trim() === '') {
     throw new Error('Text cannot be empty');
   }
+  assertSpeakableExample(text);
   await assertMayRender(provider, config);
 
   const door = config.door || {};
@@ -1063,6 +1094,7 @@ function getVoiceForRole(role, voiceMapping) {
 }
 
 module.exports = {
+  assertSpeakableExample,
   isKnownSideOfHumanVoiceCourse,
   assertConsentedVoice,
   // THE DOOR, and its two old names. The per-provider render functions are

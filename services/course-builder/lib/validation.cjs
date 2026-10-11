@@ -968,6 +968,36 @@ function checkMetadataGloss(legos) {
   return warnings;
 }
 
+// ─── Non-example text (TTS only ever speaks examples) ──────────────────
+// Tom, r-2026-10-11-text-sent-to-tts-is-only: "We should never have explanations
+// in the text sent to the TTS. We only EVER have examples." Every known/target
+// string a seed submits (LEGO, component gloss, BUILD/USE phrase) is later spoken.
+// A bracket or brace is how a label is written ("[progressive]" as the gloss of a
+// particle component reached ara_lb_for_eng S0372L01C03 this way, and the audio
+// pass sent it to the voice). Hard reject at the door of the content, not a warn.
+const NON_EXAMPLE_TEXT = /[\[\]{}]/;
+
+function checkNonExampleText(legos) {
+  const bad = [];
+  const look = (where, field, text) => {
+    if (text != null && NON_EXAMPLE_TEXT.test(String(text))) bad.push({ where, field, text: String(text) });
+  };
+  for (const lego of legos || []) {
+    const id = `L${String(lego.idx ?? lego.lego_index).padStart(2, '0')}`;
+    look(id, 'known', lego.known ?? lego.known_text);
+    look(id, 'target', lego.target ?? lego.target_text);
+    (lego.components || []).forEach((c, i) => { look(`${id} component ${i + 1}`, 'known', c.known); look(`${id} component ${i + 1}`, 'target', c.target); });
+    for (const group of [lego.build, lego.use, lego.phrases]) {
+      (group || []).forEach((p, i) => {
+        const known = Array.isArray(p) ? p[0] : p && (p.known ?? p.known_text);
+        const target = Array.isArray(p) ? p[1] : p && (p.target ?? p.target_text);
+        look(`${id} phrase ${i + 1}`, 'known', known); look(`${id} phrase ${i + 1}`, 'target', target);
+      });
+    }
+  }
+  return bad;
+}
+
 // ─── Known-side reconstructability (both-sides tiling — Principle 1 in full) ───
 // Pure + POSITION-AGNOSTIC: callers pass currentPos + a compiled ctx whose maps
 // use the SAME unit (round for the reorder CLI, seed for generation). A prompt
@@ -1231,6 +1261,7 @@ module.exports = {
   METHODOLOGY_HINTS,
   checkTiling,
   checkMetadataGloss,
+  checkNonExampleText,
   stemKnownGloss,
   tokenizeKnown,
   compileKnownContract,
