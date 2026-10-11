@@ -26,14 +26,15 @@
  * repair-silent-clips re-renders the SAME text at the SAME voice, so the new row
  * collides with the old one on the unique key
  * (course_code, text_normalized, language, role, voice_id) and the old row must
- * be DELETED FIRST. That delete is what makes role='presentation' unsafe there:
+ * be DELETED FIRST (that tool's business; this one never deletes a clip). That delete is what makes role='presentation' unsafe there:
  * lego_introductions.presentation_audio_id is ON DELETE CASCADE, so the delete
  * takes the authored introduction row with it. Hence its blanket refusal.
  *
  * A re-voice CHANGES voice_id, which is a column of that unique key. So the new
  * row does not collide, and it can be INSERTED FIRST — links re-pointed while
- * both rows exist — and the old row deleted LAST, once nothing references it.
- * By then the CASCADE has nothing to cascade to. That inversion is what makes
+ * both rows exist — and the old row is LEFT IN PLACE
+ * (Tom's ruling r-2026-10-10: clips are never deleted; re-voicing adds the new
+ * clip and moves pointers). No delete means the CASCADE can never fire. That is what makes
  * presentation clips safe to move here and unsafe to repair there; it is a
  * property of the operation, not a policy difference, which is why it lives in
  * a separate tool rather than behind a flag on that one.
@@ -53,8 +54,8 @@
  *
  * listening_pod_sentences also has ARRAY audio columns (sentence_audio_ids,
  * sentence_known_audio_ids, takeg_audio_ids) which carry NO foreign key at all,
- * so a delete leaves dangling uuids in them with no error. They are captured
- * before anything is deleted and swapped POSITIONALLY (never appended, never
+ * so a delete would leave dangling uuids in them with no error. They are captured
+ * before pointers move and swapped POSITIONALLY (never appended, never
  * deduped — they are ordered segment indexes), under a drift assertion. This
  * used to be a blanket refusal; on fra_for_eng that refused 65 of 140 clips,
  * every one an English pod line stuck in the French male voice.
@@ -518,16 +519,11 @@ async function relink(links, newId, durationMs) {
       // Only pointers at seeds <= the ceiling move. Pod array slots carry no seed, so they are never moved.
       const { inScope: links, outOfScope: leftBehind } = splitLinks(await captureLinks(row.id), maxSeed)
       const arrayRefs = []
-      const stillUsed = leftBehind.length > 0 || (await arrayReferences(row.id)).length > 0
 
       // ── Merge: the configured-voice clip already exists. Move links, drop dup.
       if (job._merge) {
         await relink(links, job._merge.id, job._merge.duration_ms)
         if (arrayRefs.length) await relinkArrays(arrayRefs, row.id, job._merge.id)
-        if (!stillUsed) {
-          const { error: delErr } = await supabase.from('course_audio').delete().eq('id', row.id)
-          if (delErr) throw new Error(`delete after merge: ${delErr.message}`)
-        }
         merged++
         console.log(`${prefix}: merged into existing ${job._merge.voice_id} clip ${job._merge.id}, ${links.length} link(s) moved`)
         log.push({ id: row.id, action: 'merged', into: job._merge.id, links: links.length })
@@ -561,13 +557,9 @@ async function relink(links, newId, durationMs) {
         await relink(links, newId, rendered.durationMs)
         if (arrayRefs.length) await relinkArrays(arrayRefs, row.id, newId)
       } catch (e) {
-        await supabase.from('course_audio').delete().eq('id', newId)   // roll back
+        // Never delete (ruling r-2026-10-10): the new row stays. A re-run finds it as the
+        // configured-voice clip and takes the merge path, so nothing is rendered twice.
         throw e
-      }
-
-      const { error: delErr } = stillUsed ? { error: null } : await supabase.from('course_audio').delete().eq('id', row.id)
-      if (delErr) {
-        console.log(`${prefix}: re-voiced to ${newId} but old row ${row.id} could not be deleted (${delErr.message}) — links already moved, safe to sweep later`)
       }
 
       revoiced++

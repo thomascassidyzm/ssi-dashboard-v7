@@ -94,7 +94,10 @@ describe('never delete a clip; the rerecord gate stays', () => {
   const root = path.join(__dirname, '../..')
   const read = f => fs.readFileSync(path.join(root, f), 'utf8')
   it('the re-voice tools hold no course_audio delete', () => {
-    for (const f of ['tools/audio/charlotte-backfill.cjs', 'services/shared/voicing-policy.cjs']) expect(read(f)).not.toMatch(/delete\s+from\s+course_audio|from\(['"]course_audio['"]\)\.delete/i)
+    // Any delete shape: sql, supabase .from('course_audio')...delete(), S3 DeleteObject(s)
+    const noDelete = [/delete\s+from\s+course_audio/i, /from\(\s*['"`]course_audio['"`]\s*\)[\s\S]{0,200}?\.delete\s*\(/i, /\bDeleteObjects?(Command)?\b/, /deleteObject/i]
+    for (const f of ['tools/audio/charlotte-backfill.cjs', 'services/shared/voicing-policy.cjs', 'tools/revoice-clips.cjs', 'services/shared/revoice-scope.cjs'])
+      for (const re of noDelete) expect(read(f), f + ' ' + re).not.toMatch(re)
   })
   it('the door runs the voicing policy and then the rerecord gate; the re-voice tools call the policy', () => {
     const door = read('services/tts-service.cjs')
