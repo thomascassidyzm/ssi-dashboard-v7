@@ -91,6 +91,13 @@ const TARGET_PASSES = {
   // other voice (Azure, xAI, or a draft-cast Cartesia voice) is replaced, so target2 is never left on the female voice.
   'deu-target1': { langs: ['deu', 'de'], role: 'target1', castGender: 'f', allVoices: true },
   'deu-target2': { langs: ['deu', 'de'], role: 'target2', castGender: 'm', allVoices: true },
+  // Spanish (job #498, Tom 2026-10-11 22:37Z: only languages he expressly cast with Cartesia on/after 2026-10-09). castLang is the
+  // voice_language_roles key (spa and spa_mx are separate casts); clips are stored as language 'spa'. Rank 0 of each cast: spa = Maite / Thiago,
+  // spa_mx = Ximena / Ramon. Run with --seeds 1-100.
+  'spa-target1': { langs: ['spa', 'es'], castLang: 'spa', role: 'target1', castGender: 'f', allVoices: true },
+  'spa-target2': { langs: ['spa', 'es'], castLang: 'spa', role: 'target2', castGender: 'm', allVoices: true },
+  'spa_mx-target1': { langs: ['spa', 'es'], castLang: 'spa_mx', role: 'target1', castGender: 'f', allVoices: true },
+  'spa_mx-target2': { langs: ['spa', 'es'], castLang: 'spa_mx', role: 'target2', castGender: 'm', allVoices: true },
 }
 for (const [name, t] of Object.entries(TARGET_PASSES)) PASSES[name] = { sql: `(ca.voice_id !~ '^cartesia_')`, target: null, gender: null, ...t }
 // English known prompts for a course re-voiced onto Charlotte (Tom 2026-10-11): every non-Cartesia known clip, either gender, becomes Charlotte.
@@ -310,8 +317,9 @@ async function main() {
   let target = pass.target, language = 'eng'
   if (pass.castGender) {
     language = pass.langs[0]
-    target = await castVoice(pg, language, pass.castGender)
-    if (!target) { console.log(`NO CAST: ${language} has no active Cartesia phrase-slot voice for gender ${pass.castGender}; nothing rendered`); return pg.end() }
+    const castLang = pass.castLang || language
+    target = await castVoice(pg, castLang, pass.castGender)
+    if (!target) { console.log(`NO CAST: ${castLang} has no active Cartesia phrase-slot voice for gender ${pass.castGender}; nothing rendered`); return pg.end() }
   }
   const bare = target ? target.replace(/^cartesia_/, '') : null
   const voiceSql = pass.allVoices && target ? `(ca.voice_id not in ('${target}', '${bare}'))` : pass.sql
