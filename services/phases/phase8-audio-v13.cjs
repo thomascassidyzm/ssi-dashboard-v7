@@ -3565,7 +3565,9 @@ app.post('/generate/:courseCode', async (req, res) => {
           // recorded against it and never sent to TTS. Does not stop the pass.
           const item = batch[j]
           results.failed++
-          results.dataErrors.push({ role: item.role, lego_id: item.lego_id || null, phrase_id: item.phrase_id || null, text: item.text.substring(0, 80), error: result.reason.message })
+          const dataError = { role: item.role, lego_id: item.lego_id || null, phrase_id: item.phrase_id || null, text: item.text.substring(0, 80), error: result.reason.message }
+          results.dataErrors.push(dataError)
+          results.errors.push({ text: item.text.substring(0, 50), role: item.role, error: `DATA ERROR (NOT_SPEAKABLE): ${result.reason.message}` })
           updateWork(item.text, false, 'data error: text is not an example')
           logger.error(`DATA ERROR (not sent to TTS) ${courseCode} ${item.role} ${item.lego_id || item.phrase_id || ''}: "${item.text.substring(0, 40)}" — ${result.reason.message}`)
         } else {
@@ -3681,6 +3683,8 @@ app.post('/generate/:courseCode', async (req, res) => {
       veracity: results.veracity,
       phonologyGate,
       errors: results.errors.slice(0, 10),
+      // Rows whose TEXT is not an example (labels/markers): fix in the row. Uncapped.
+      dataErrors: results.dataErrors,
       linked,
       // Slots this pass filled, by reuse, by render or by the closing linker.
       // A driver re-posting /generate stops on attached === 0: a pass that

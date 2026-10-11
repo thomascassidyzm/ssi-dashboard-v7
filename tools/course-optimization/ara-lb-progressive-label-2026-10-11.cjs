@@ -71,7 +71,7 @@ async function main() {
   void eDel;
   await require('../../services/shared/round-index-refresh.cjs').refreshNow();
   const { queueAudioPass } = require('../../services/shared/audio-pass-queue.cjs');
-  const q = await queueAudioPass(supabase, { courseCode: COURSE, requestedBy: `@${SWEEP}`, reason: 'job #195: S0372L01 component C03 "[progressive]" → "she\'s trying"/عم تحاول; slot needs audio' });
+  const q = await queueAudioPass(supabase, { courseCode: COURSE, requestedBy: `@${SWEEP}`, reason: 'job #195: S0372L01 component C03 "[progressive]" → "she\'s trying"/عم تحاول; slot needs audio', append: true, metadataKey: SWEEP });
   console.log('APPLIED. audio-pass request:', JSON.stringify(q));
   await pg.end();
 }

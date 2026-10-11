@@ -13,6 +13,7 @@
 
 const fetch = require('node-fetch');
 const { wordTimingsFromCartesia } = require('./shared/word-timings.cjs');
+const { stripSynthesisCues } = require('./shared/synthesis-cues.cjs');
 const https = require('https');
 const fs = require('fs');
 const os = require('os');
@@ -122,7 +123,8 @@ function assertAudibleResponse(buffer, { provider, bytesPerSecond, text, voiceId
  * client error; `code` lets a caller record it against the row.
  */
 function assertSpeakableExample(text) {
-  const t = String(text == null ? '' : text);
+  // The curated cues ([pause], [break], <break/>) are stage directions, not labels.
+  const t = stripSynthesisCues(text);
   const label = /[\[\]{}]/.test(t);
   const markerOnly = !/[\p{L}\p{N}]/u.test(t);
   if (!label && !markerOnly) return;
