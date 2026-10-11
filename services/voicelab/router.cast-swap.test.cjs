@@ -27,6 +27,12 @@ function stubSupabase () {
   const table = (name) => {
     const chain = {
       select: () => chain, eq: () => chain, in: () => chain,
+      delete: () => {
+        const f = {}
+        const del = { eq: (k, v) => { f[k] = v; return del }, then: (resolve) => {
+          roles = roles.filter((r) => !Object.entries(f).every(([k, v]) => r[k] === v)); resolve({ error: null }) } }
+        return del
+      },
       limit: async () => ({ data: [], error: null }),
       maybeSingle: async () => ({ data: { voice_id: 'v', gender: 'f' } }),
       upsert: async (row) => {
@@ -91,11 +97,17 @@ describe('PUT /languages/:language/slot — rank moves', () => {
 
 describe('DELETE /languages/:language/slot — presentation (#273)', () => {
   it('clears a presentation rank by slot, language and rank, with no gender', async () => {
+    roles = [
+      { slot: 'presentation', language: 'spa_mx', gender: 'm', rank: 0, voice_id: 'p0' },
+      { slot: 'presentation', language: 'spa_mx', gender: 'f', rank: 1, voice_id: 'p1' },
+      { slot: 'guide', language: 'spa_mx', gender: 'f', rank: 0, voice_id: 'g0' },
+    ]
     const res = await fetch(`${base}/api/voicelab/languages/spa_mx/slot?slot=presentation&rank=0`, { method: 'DELETE' })
     const body = await res.json()
     expect(body.error).toBeUndefined()
     expect(res.status).toBe(200)
     expect(body.slot).toBe('presentation')
+    expect(roles.map((r) => r.voice_id).sort()).toEqual(['g0', 'p1'])
   })
   it('still refuses an unknown slot', async () => {
     const res = await fetch(`${base}/api/voicelab/languages/spa_mx/slot?slot=bogus&rank=0`, { method: 'DELETE' })
