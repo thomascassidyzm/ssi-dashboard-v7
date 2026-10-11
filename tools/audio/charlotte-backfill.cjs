@@ -77,6 +77,10 @@ const PASSES = {
   'all-to-charlotte': { sql: `(ca.voice_id not in ('${CHARLOTTE}','${CHARLOTTE_BARE}'))`, target: CHARLOTTE, gender: null, role: 'known',
     // a pod-fine clip (S0001L05B03) is linked from a known slot but stored with clip role pod_fine_known; "everything" includes it
     alsoClipRoles: { known: ['pod_fine_known'] } },
+  // Tom 2026-10-11 (job #283): "Everything should be Charlotte in first 100 SEEDS" — the introduction (presentation) clips, same old voices as the known pass.
+  // Role fixed to presentation for the same reason as above; run with --seeds 1-100. Intro texts name the language ("The German for..."), so a clip rendered
+  // for another course's language can NEVER be reused here: every clip is rendered whole from its own stored text.
+  'presentation-to-charlotte': { sql: `(ca.voice_id in ('xai_gfzdpspr5fdp','gfzdpspr5fdp','${TOM_001}'))`, target: CHARLOTTE, gender: null, role: 'presentation' },
 }
 
 /** Target-voice passes: language + role are fixed by the pass; the new voice is the language's cast voice for the role's gender. */
