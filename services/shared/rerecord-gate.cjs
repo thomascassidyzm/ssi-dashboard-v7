@@ -78,6 +78,13 @@ function replacedUsable(rows, { text, force = false, linked = new Set() }) {
   return rows.filter(r => isUsable(r) && (force || keys.has(r.text_normalized) || linked.has(r.id)))
 }
 
+/** course_audio.language is stored as 'de' on some old rows and 'deu' on others (charlotte-backfill accepts both); compare as ISO 639-3 or a stored 'de' clip hides from a 'deu' render. */
+function sameLanguage(stored, wanted) {
+  if (!wanted) return true
+  const { toIso3 } = require('../language-code-service.cjs')
+  return toIso3(stored) === toIso3(wanted)
+}
+
 /**
  * The door's question. Returns null when this is not a re-record, or the
  * permission that allows it; throws RerecordRefusal otherwise.
@@ -163,7 +170,7 @@ function supabaseRerecordStore({ supabase } = {}) {
     async sameWordsOtherVoice({ courseCode, slotRole, language, voiceId, text }) {
       const rows = must(await db().from('course_audio').select(COLS).eq('course_code', courseCode).eq('role', slotRole)
         .in('text_normalized', audioKeyCandidates(text)), 'course_audio')
-      return rows.filter(r => (!language || r.language === language) && r.voice_id !== voiceId)
+      return rows.filter(r => sameLanguage(r.language, language) && r.voice_id !== voiceId)
     },
     async permissions(courseCode) {
       const perms = must(await db().from('tts_rerecord_permissions').select('*').eq('course_code', courseCode).is('revoked_at', null), 'tts_rerecord_permissions')
@@ -197,7 +204,7 @@ function memoryRerecordStore({ clips = [], permissions = [] } = {}) {
     async stillLinked(ids) { return new Set(clips.filter(c => c.linked && ids.includes(c.id)).map(c => c.id)) },
     async sameWordsOtherVoice({ courseCode, slotRole, language, voiceId, text }) {
       const k = new Set(audioKeyCandidates(text))
-      return clips.filter(c => c.course_code === courseCode && c.role === slotRole && k.has(c.text_normalized) && (!language || c.language === language) && c.voice_id !== voiceId)
+      return clips.filter(c => c.course_code === courseCode && c.role === slotRole && k.has(c.text_normalized) && sameLanguage(c.language, language) && c.voice_id !== voiceId)
     },
     async permissions(courseCode) {
       return permissions.filter(p => p.course_code === courseCode && !p.revoked_at)

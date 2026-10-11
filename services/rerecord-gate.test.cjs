@@ -184,6 +184,12 @@ describe('every route that names what it replaces reaches the gate', () => {
     expect(speak.indexOf('assertCastVoice(')).toBeLessThan(speak.indexOf('renderWithRetry('))
     expect(speak.indexOf('assertMayRerecord(')).toBeLessThan(speak.indexOf('renderWithRetry('))
   })
+  it('an existing same-words clip stored under a 2-letter code (de) is still seen when the render says deu', async () => {
+    const old = { ...row({ id: '33333333-3333-4333-8333-333333333333', course: 'deu_for_eng', role: 'target2', text: 'Hallo', voice: 'azure_de-DE-ConradNeural', linked: true }), text_normalized: 'hallo', language: 'de' }
+    const store = gate.memoryRerecordStore({ clips: [old], permissions: [] })
+    await expect(gate.assertMayRerecord({ courseCode: 'deu_for_eng', slotRole: 'target2', voiceBound: true, language: 'deu', voiceId: 'cartesia_nico', text: 'Hallo' }, store))
+      .rejects.toMatchObject({ code: 'RERECORD_NOT_PERMITTED' })
+  })
   it('every phase8 /regenerate-* door names what it replaces', () => {
     const src = fs.readFileSync(path.join(__dirname, 'phases/phase8-audio-v13.cjs'), 'utf8')
     const routes = [...src.matchAll(/app\.post\('\/(regenerate-[a-z-]+)\//g)].map(m => m[1])
