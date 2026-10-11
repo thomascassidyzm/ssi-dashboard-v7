@@ -666,12 +666,14 @@ function mount (app, deps) {
       // is what actually keeps the slot single.
       const rowGender = slot === 'guide' ? (registry.GENDERS.includes(voiceGender) ? voiceGender : 'm') : gender
 
-      const { error } = await supabase()
-        .from('voice_language_roles')
-        .upsert({
-          language, gender: rowGender, rank: r, slot, voice_id: slotVoiceId, notes,
-          assigned_by: who(user), updated_at: new Date().toISOString(),
-        }, { onConflict: 'slot,language,gender,rank' })
+      // ATOMIC: a voice holds one rank per (slot, language, gender) (the no_self_backup
+      // index), so promoting a backup to primary — or any move to the other rank — must
+      // leave the old rank and fill the new one in ONE transaction, the displaced voice
+      // taking the vacated rank. A plain upsert of the target rank trips the index (#263).
+      const { data: castOut, error } = await supabase().rpc('cast_voice_role', {
+        p_slot: slot, p_language: language, p_gender: rowGender, p_rank: r,
+        p_voice_id: slotVoiceId, p_notes: notes, p_assigned_by: who(user),
+      })
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
 
       logger.log?.(`[voicelab] cast ${slot} ${language}/${rowGender}/rank${r} = ${slotVoiceId} by ${who(user)}`)
@@ -683,6 +685,7 @@ function mount (app, deps) {
       // screen can show it rather than the operator discovering it at render.
       res.json({
         ok: true, language, slot, gender: rowGender, rank: r, voiceId: slotVoiceId,
+        swapped: !!(castOut && castOut.swapped), displaced: (castOut && castOut.displaced) || null,
         skipped: guard.courses,
         skippedTotal: guard.total,
         reach: guard.reach,
