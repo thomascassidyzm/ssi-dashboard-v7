@@ -91,6 +91,7 @@ const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const { toBcp47 } = require('../services/voice-discovery-service.cjs')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../services/shared/course-version.cjs')
 const { isHumanVoiceCourse } = require('../services/shared/human-voice-courses.cjs')
+const { seedOfLink, splitLinks } = require('../services/shared/revoice-scope.cjs')
 
 const argv = process.argv.slice(2)
 const arg = (f, d = null) => { const i = argv.indexOf(f); return i !== -1 && argv[i + 1] ? argv[i + 1] : d }
@@ -248,7 +249,7 @@ async function calibrate(allClips) {
   }
 }
 
-async function renderVerified(text, voice, language, tmpDir, tag, rateKey) {
+async function renderVerified(text, voice, language, tmpDir, tag, rateKey, door = {}) {
   const rate = msPerChar.get(rateKey) || DEFAULT_MS_PER_CHAR
   const expectedMs = Math.round(rate * String(text || '').length)
   let last = null, lastErr = null
@@ -257,6 +258,8 @@ async function renderVerified(text, voice, language, tmpDir, tag, rateKey) {
       const { audioBuffer } = await ttsService.generateWithRetry(text, voice.provider, {
         voiceId: voice.voiceId,
         language: toBcp47(language),
+        // The policy gate (checkRender) judges Charlotte/known rules from the course and slot role; without them it cannot.
+        courseCode: door.courseCode, slotRole: door.slotRole, intro: !!door.intro,
       })
       // masterAudio can REFUSE a render outright (its tail-defect guard throws
       // "refusing to ship" when a click survives its repair passes). That is a
@@ -288,13 +291,34 @@ async function renderVerified(text, voice, language, tmpDir, tag, rateKey) {
 async function captureLinks(audioId) {
   const links = []
   for (const { table, cols } of LINK_TABLES) {
+    const seedCol = table === 'lego_introductions' ? 'lego_id' : table === 'listening_pod_sentences' ? null : 'seed_number'
     for (const col of cols) {
-      const { data, error } = await supabase.from(table).select('id').eq(col, audioId)
+      const { data, error } = await supabase.from(table).select(seedCol ? `id, ${seedCol}` : 'id').eq(col, audioId)
       if (error) throw new Error(`capture ${table}.${col}: ${error.message}`)
-      for (const r of data || []) links.push({ table, col, rowId: r.id })
+      for (const r of data || []) links.push({ table, col, rowId: r.id, seed: seedOfLink(table, r) })
     }
   }
   return links
+}
+
+/** Ids of the course_audio clips referenced from a seed <= maxSeed: the only clips a seed-ceilinged re-voice may touch. */
+async function clipIdsWithinSeeds(maxSeed) {
+  const ids = new Set()
+  for (const { table, cols } of LINK_TABLES) {
+    if (table === 'listening_pod_sentences') continue    // no seed: never in scope
+    const seedCol = table === 'lego_introductions' ? 'lego_id' : 'seed_number'
+    let from = 0
+    for (;;) {
+      let q = supabase.from(table).select(`${cols.join(',')}, ${seedCol}`).eq('course_code', COURSE)
+      if (table !== 'lego_introductions') q = q.lte('seed_number', maxSeed)
+      const { data, error } = await q.range(from, from + 999)
+      if (error) throw new Error(`scope ${table}: ${error.message}`)
+      for (const r of data) if (seedOfLink(table, r) != null && seedOfLink(table, r) <= maxSeed) for (const c of cols) if (r[c]) ids.add(r[c])
+      if (data.length < 1000) break
+      from += 1000
+    }
+  }
+  return ids
 }
 
 /**
@@ -372,7 +396,8 @@ async function relink(links, newId, durationMs) {
   // Voicing policy (Tom 2026-10-11): eligibility by cast date, and xAI is never a target. This tool moves a WHOLE course (no seed filter),
   // so the 1-100 scope is enforced by charlotte-backfill --seeds; here only eligibility and the xAI ban apply.
   const policy = require('../services/shared/voicing-policy.cjs')
-  try { await policy.assertRevoiceAllowed({ courseCode: COURSE }) } catch (e) { console.error(e.message); process.exit(3) }
+  let maxSeed
+  try { maxSeed = await policy.assertRevoiceAllowed({ courseCode: COURSE }) } catch (e) { console.error(e.message); process.exit(3) }
   for (const [role, v] of Object.entries(voices)) if (/xai/i.test(`${v.provider} ${v.voiceId}`)) { console.error(`Voicing policy (403, xai-banned): ${COURSE} ${role} targets an xAI voice (${v.voiceId}) — xAI is banned on every path.`); process.exit(3) }
 
   console.log(`\nrevoice-clips — ${COURSE}`)
@@ -404,6 +429,11 @@ async function relink(links, newId, durationMs) {
     jobs = all.filter(r => isLegacyVoice(r.voice_id))
   }
   if (ROLES.length) jobs = jobs.filter(r => ROLES.includes(r.role))
+
+  // Seed ceiling: only a clip referenced from a seed <= maxSeed is eligible (a clip used only at seed 101 is left alone).
+  const inCeiling = await clipIdsWithinSeeds(maxSeed)
+  const beyond = jobs.filter(r => !inCeiling.has(r.id))
+  if (beyond.length) { console.log(`SKIPPING ${beyond.length} clip(s) not referenced within seeds 1-${maxSeed} (policy ceiling).`); jobs = jobs.filter(r => inCeiling.has(r.id)) }
 
   // Human-recorded audio is never re-synthesised.
   const human = jobs.filter(r => r.origin === 'human')
@@ -485,15 +515,19 @@ async function relink(links, newId, durationMs) {
       const done = IDS_FILE ? row.voice_id === job._targetVoiceId : !isLegacyVoice(row.voice_id)
       if (done) { console.log(`${prefix}: already on ${row.voice_id} — skip`); return }
 
-      const arrayRefs = await arrayReferences(row.id)
-      const links = await captureLinks(row.id)
+      // Only pointers at seeds <= the ceiling move. Pod array slots carry no seed, so they are never moved.
+      const { inScope: links, outOfScope: leftBehind } = splitLinks(await captureLinks(row.id), maxSeed)
+      const arrayRefs = []
+      const stillUsed = leftBehind.length > 0 || (await arrayReferences(row.id)).length > 0
 
       // ── Merge: the configured-voice clip already exists. Move links, drop dup.
       if (job._merge) {
         await relink(links, job._merge.id, job._merge.duration_ms)
         if (arrayRefs.length) await relinkArrays(arrayRefs, row.id, job._merge.id)
-        const { error: delErr } = await supabase.from('course_audio').delete().eq('id', row.id)
-        if (delErr) throw new Error(`delete after merge: ${delErr.message}`)
+        if (!stillUsed) {
+          const { error: delErr } = await supabase.from('course_audio').delete().eq('id', row.id)
+          if (delErr) throw new Error(`delete after merge: ${delErr.message}`)
+        }
         merged++
         console.log(`${prefix}: merged into existing ${job._merge.voice_id} clip ${job._merge.id}, ${links.length} link(s) moved`)
         log.push({ id: row.id, action: 'merged', into: job._merge.id, links: links.length })
@@ -502,7 +536,7 @@ async function relink(links, newId, durationMs) {
 
       // ── Re-voice: render first, mutate second. A failed render costs nothing.
       const rendered = await renderVerified(row.text, job._target, row.language, tmpDir, row.id,
-        `${row.role}|${job._target.voiceId}`)
+        `${row.role}|${job._target.voiceId}`, { courseCode: COURSE, slotRole: row.role, intro: row.role === 'presentation' })
       chars += String(row.text || '').length
 
       const newId = uuidv4().toUpperCase()
@@ -531,7 +565,7 @@ async function relink(links, newId, durationMs) {
         throw e
       }
 
-      const { error: delErr } = await supabase.from('course_audio').delete().eq('id', row.id)
+      const { error: delErr } = stillUsed ? { error: null } : await supabase.from('course_audio').delete().eq('id', row.id)
       if (delErr) {
         console.log(`${prefix}: re-voiced to ${newId} but old row ${row.id} could not be deleted (${delErr.message}) — links already moved, safe to sweep later`)
       }

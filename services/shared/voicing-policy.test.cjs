@@ -104,3 +104,30 @@ describe('never delete a clip; the rerecord gate stays', () => {
     expect(read('tools/revoice-clips.cjs')).toContain('assertRevoiceAllowed')
   })
 })
+
+describe('revoice-clips honours the policy (Sol review #519)', () => {
+  const fs = require('fs'), path = require('path')
+  const src = fs.readFileSync(path.join(__dirname, '../../tools/revoice-clips.cjs'), 'utf8')
+  const scope = require('./revoice-scope.cjs')
+  it('keeps the seed ceiling assertRevoiceAllowed returns, and selects only clips referenced within it', () => {
+    expect(src).toMatch(/maxSeed = await policy\.assertRevoiceAllowed/)
+    expect(src).toMatch(/clipIdsWithinSeeds\(maxSeed\)/)
+    expect(src).toMatch(/jobs\.filter\(r => inCeiling\.has\(r\.id\)\)/)
+  })
+  it('moves only pointers at seeds <= ceiling; seedless (pod) and later-seed links stay', () => {
+    const links = [
+      { table: 'course_legos', col: 'known_audio_id', rowId: 1, seed: 40 },
+      { table: 'course_practice_phrases', col: 'known_audio_id', rowId: 2, seed: 101 },
+      { table: 'listening_pod_sentences', col: 'known_audio_id', rowId: 3, seed: null },
+      { table: 'lego_introductions', col: 'presentation_audio_id', rowId: 4, seed: scope.seedOfLink('lego_introductions', { lego_id: 'S0100L02' }) },
+    ]
+    const { inScope, outOfScope } = scope.splitLinks(links, 100)
+    expect(inScope.map(l => l.rowId)).toEqual([1, 4])
+    expect(outOfScope.map(l => l.rowId)).toEqual([2, 3])
+    expect(scope.splitLinks(links, null).inScope).toEqual([])
+  })
+  it('passes course, slot role and intro to the TTS door so checkRender can enforce Charlotte/known rules', () => {
+    expect(src).toMatch(/courseCode: door\.courseCode, slotRole: door\.slotRole, intro: !!door\.intro/)
+    expect(src).toMatch(/\{ courseCode: COURSE, slotRole: row\.role, intro: row\.role === 'presentation' \}/)
+  })
+})
