@@ -71,6 +71,11 @@ const PASSES = {
   // Tom 2026-10-11 (job #259): the xAI Tom clone clicks at the end of clips, so its English known prompts move to Charlotte (the English voice
   // ita_for_eng already uses). gender null on purpose: this is Tom's explicit ruling for the known role, so the male-never-Charlotte guard
   // (which protects target V1/V2 distinctness) does not apply. Run it with --roles known only.
+  // Tom 2026-10-11 (job #277): "Everything should be Charlotte in first 100 SEEDS" - every English clip not already Charlotte (eve, Azure, bare ids,
+  // clone, tom_001), gender-blind for the same reason as above. Run it with --roles known --seeds 1-100.
+  'all-to-charlotte': { sql: `(ca.voice_id not in ('${CHARLOTTE}','${CHARLOTTE_BARE}'))`, target: CHARLOTTE, gender: null,
+    // a pod-fine clip (S0001L05B03) is linked from a known slot but stored with clip role pod_fine_known; "everything" includes it
+    alsoClipRoles: { known: ['pod_fine_known'] } },
   'tom-clone-to-charlotte': { sql: `(ca.voice_id in ('xai_gfzdpspr5fdp','gfzdpspr5fdp','${TOM_001}'))`, target: CHARLOTTE, gender: null },
 }
 
@@ -104,14 +109,14 @@ async function slotsFor(pg, course, role) {
 const parseSeedScope = v => { if (v == null) return undefined; const m = /^(?:1-)?(\d+)$/.exec(String(v)); if (!m || !Number(m[1])) throw new Error(`bad --seeds ${v}; use 1-N`); return Number(m[1]) }
 /** Keep only work first heard within seeds 1..maxSeed (a clip shared with later seeds still counts: its first hearing is early). */
 const inSeedScope = (work, maxSeed) => (maxSeed == null ? work : work.filter(w => w.pos != null && w.pos <= maxSeed))
-async function workFor(pg, course, roles, voiceSql = BAD_VOICE, maxSeed, langs = ['eng', 'en']) {
+async function workFor(pg, course, roles, voiceSql = BAD_VOICE, maxSeed, langs = ['eng', 'en'], alsoClipRoles = {}) {
   const out = []
   for (const role of roles) {
     const slots = await slotsFor(pg, course, role)
     const ids = [...new Set(slots.map(s => s.old_id))]
     if (!ids.length) continue
     const { rows } = await pg.query(`select ca.id::text, ca.text, ca.voice_id from course_audio ca
-       where ca.id = any($1::uuid[]) and ca.course_code = $2 and ca.language = any($4::text[]) and ca.origin = 'tts' and ca.role = $3 and ${voiceSql}`, [ids, course, role, langs])
+       where ca.id = any($1::uuid[]) and ca.course_code = $2 and ca.language = any($4::text[]) and ca.origin = 'tts' and ca.role = any($3::text[]) and ${voiceSql}`, [ids, course, [role, ...(alsoClipRoles[role] || [])], langs])
     const bad = new Map(rows.map(r => [r.id, r]))
     const by = new Map()
     for (const s of slots) {
@@ -294,7 +299,7 @@ async function main() {
     target = await castVoice(pg, language, pass.castGender)
     if (!target) { console.log(`NO CAST: ${language} has no active Cartesia phrase-slot voice for gender ${pass.castGender}; nothing rendered`); return pg.end() }
   }
-  const work = await workFor(pg, course, roles, pass.sql, maxSeed, pass.langs)
+  const work = await workFor(pg, course, roles, pass.sql, maxSeed, pass.langs, pass.alsoClipRoles)
   const total = work.reduce((n, x) => n + x.chars, 0)
   console.log(`${course} ${roles}${target && pass.castGender ? ` -> ${target}` : ''}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
   let free = 0, slotsMoved = 0, eventId = null, eventPromise = null, slotRefused = 0
