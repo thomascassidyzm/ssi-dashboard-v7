@@ -87,8 +87,15 @@ const PASSES = {
 const TARGET_PASSES = {
   'ita-target1': { langs: ['ita', 'it'], role: 'target1', castGender: 'f' },
   'ita-target2': { langs: ['ita', 'it'], role: 'target2', castGender: 'm' },
+  // German (job #255, Tom 2026-10-11 "The two German voices are perfect." = the deu cast Viktoria f / Nico m). allVoices: a clip on ANY
+  // other voice (Azure, xAI, or a draft-cast Cartesia voice) is replaced, so target2 is never left on the female voice.
+  'deu-target1': { langs: ['deu', 'de'], role: 'target1', castGender: 'f', allVoices: true },
+  'deu-target2': { langs: ['deu', 'de'], role: 'target2', castGender: 'm', allVoices: true },
 }
 for (const [name, t] of Object.entries(TARGET_PASSES)) PASSES[name] = { sql: `(ca.voice_id !~ '^cartesia_')`, target: null, gender: null, ...t }
+// English known prompts for a course re-voiced onto Charlotte (Tom 2026-10-11): every non-Cartesia known clip, either gender, becomes Charlotte.
+// The route is library-first, so a Charlotte clip of the same words is linked free; only missing ones are rendered.
+PASSES['known-charlotte'] = { sql: `(ca.voice_id !~ '^cartesia_')`, target: CHARLOTTE, gender: null, role: 'known' }
 /** The cast voice (full cartesia_ id) for a language/gender, rank 0 of the phrase slot; null when nobody has cast one. */
 async function castVoice(pg, lang, gender) {
   const { rows: [r] } = await pg.query(`select vlr.voice_id from voice_language_roles vlr join voices v using (voice_id)
@@ -303,7 +310,9 @@ async function main() {
     target = await castVoice(pg, language, pass.castGender)
     if (!target) { console.log(`NO CAST: ${language} has no active Cartesia phrase-slot voice for gender ${pass.castGender}; nothing rendered`); return pg.end() }
   }
-  const work = await workFor(pg, course, roles, pass.sql, maxSeed, pass.langs, pass.alsoClipRoles)
+  const bare = target ? target.replace(/^cartesia_/, '') : null
+  const voiceSql = pass.allVoices && target ? `(ca.voice_id not in ('${target}', '${bare}'))` : pass.sql
+  const work = await workFor(pg, course, roles, voiceSql, maxSeed, pass.langs, pass.alsoClipRoles)
   const total = work.reduce((n, x) => n + x.chars, 0)
   console.log(`${course} ${roles}${target && pass.castGender ? ` -> ${target}` : ''}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
   let free = 0, slotsMoved = 0, eventId = null, eventPromise = null, slotRefused = 0

@@ -1048,7 +1048,10 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
       charsSpent: 0,
     };
   }
-  // No re-recording without Tom's permission (Tom 2026-10-11): a miss that would REPLACE a working clip of
+  // The intro SLOT (door.intro) is judged against the course's presentation voices, every other line against its lines (cast gate leg b).
+  await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro });
+  // AFTER the cast gate on purpose (lane review #232): assertMayRerecord RESERVES a use of a max_clips grant, so a render the cast gate
+  // is about to refuse must never spend one. No re-recording without Tom's permission (Tom 2026-10-11): a miss that would REPLACE a working clip of
   // these words (door.replacing / door.slotRole / door.forceRerecord) is refused here, dry run or not.
   await assertMayRerecord({
     text, language, voiceId,
@@ -1056,8 +1059,6 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     replacing: door.replacing, slotRole: door.slotRole || null, voiceBound: !!door.voiceBound,
     forceRerecord: !!door.forceRerecord, dryRun: !!door.dryRun, job: door.job || null,
   });
-  // The intro SLOT (door.intro) is judged against the course's presentation voices, every other line against its lines (cast gate leg b).
-  await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro });
   if (door.dryRun) {
     doorStats.wouldRender++;
     doorStats.wouldSpendChars += chars;

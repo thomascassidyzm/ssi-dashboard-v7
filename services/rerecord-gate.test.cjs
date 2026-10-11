@@ -175,11 +175,13 @@ describe('what counts as Tom\'s permission', () => {
 })
 
 describe('every route that names what it replaces reaches the gate', () => {
-  it('the door calls assertMayRerecord before the cast gate and before any render', () => {
+  it('the door calls the cast gate BEFORE assertMayRerecord (which reserves a grant use), and both before any render', () => {
     const src = fs.readFileSync(path.join(__dirname, 'tts-service.cjs'), 'utf8')
     const speak = src.slice(src.indexOf('async function speak('), src.indexOf('/** What this process\'s door has done'))
+    expect(speak.indexOf('assertCastVoice(')).toBeGreaterThan(0)
+    expect(speak.indexOf('assertCastVoice(')).toBeLessThan(speak.indexOf('assertMayRerecord('))
     expect(speak.indexOf('assertMayRerecord(')).toBeGreaterThan(0)
-    expect(speak.indexOf('assertMayRerecord(')).toBeLessThan(speak.indexOf('assertCastVoice('))
+    expect(speak.indexOf('assertCastVoice(')).toBeLessThan(speak.indexOf('renderWithRetry('))
     expect(speak.indexOf('assertMayRerecord(')).toBeLessThan(speak.indexOf('renderWithRetry('))
   })
   it('every phase8 /regenerate-* door names what it replaces', () => {
