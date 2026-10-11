@@ -34,6 +34,19 @@ assert.equal(inScope({ course_code: 'fin_for_eng', status: 'draft' }), false)
   assert.deepEqual(pendingUndo(U).map((l) => l.row_id), ['b'], 'an undone row is not undone twice')
   assert.deepEqual(pendingUndo([...U, { row_id: 'a', action: 'replace', before: { v: 3 } }]).map((l) => l.row_id), ['a', 'b'], 'a re-applied row is undoable again')
 }
+// REGRESSION (#463): a failed restore of an OLDER change must not be hidden by an 'undone' written after the newer one restored.
+;(async () => {
+  const { doneRowIds, undoRows } = require('./ledger.cjs')
+  const L = [{ row_id: 'a', action: 'replace', at: 't1', before: { v: 1 } }, { row_id: 'a', action: 'delete', at: 't2', before: { v: 2 } }, { row_id: 'b', action: 'delete', at: 't3', before: { v: 9 } }]
+  const written = [], tried = []
+  await undoRows(L, null, async (c) => { tried.push(c.before.v); return c.before.v === 1 ? 'boom' : null }, (l) => written.push(l))
+  assert.deepEqual(tried, [9, 2, 1], 'b, then a newest-first; a stops at its failure')
+  assert.deepEqual(written.map((w) => w.row_id), ['b'], "no 'undone' for a: its older change did not come back")
+  assert.ok(doneRowIds([...L, ...written]).has('a'), 'a is still done, so apply-staged will not treat it as open')
+  const w2 = []
+  await undoRows([...L, ...written], null, async () => null, (l) => w2.push(l))
+  assert.equal(w2.length, 1); assert.equal(w2[0].row_id, 'a'); assert.deepEqual(w2[0].reverted, ['t2', 't1'])
+})().catch((e) => { console.error(e); process.exit(1) })
 // REGRESSION (#441): a staged decision whose LEGO is gone is skipped, not a crash on sets.get(key).
 {
   const src = require('fs').readFileSync(require('path').join(__dirname, 'apply-staged.cjs'), 'utf8')
