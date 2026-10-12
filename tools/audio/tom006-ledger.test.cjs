@@ -42,3 +42,16 @@ describe('undo coverage (lane reviews #811, #812)', () => {
     makeLog(f, false)({ kind: 'skip' }); expect(fs.readFileSync(f, 'utf8')).toContain('skip'); fs.unlinkSync(f)
   })
 })
+
+import { fadePending, undoRecordable } from './tom006-ledger.cjs'
+describe('undo order and 0-move undos (lane review #815)', () => {
+  it('intros undo is blocked while the fade ledger has applied pairs; free once they are undone', () => {
+    const fade = [R('swap', 'U', 'F', S('k1'))]
+    expect(fadePending(fade)).toBe(1)
+    expect(fadePending([...fade, { kind: 'undo', oldId: 'U', newId: 'F' }])).toBe(0)
+    expect(fadePending([])).toBe(0)
+  })
+  it('a pair that moved 0 slots is never recorded as undone, so it stays in later undo plans', () => {
+    expect(undoRecordable(0)).toBe(false); expect(undoRecordable(2)).toBe(true)
+  })
+})

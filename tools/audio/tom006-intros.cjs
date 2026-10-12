@@ -28,7 +28,7 @@ const setPointer = async (db, s, from, to, ev) => {
   const { data, error } = await db.from(s.tbl).update({ presentation_audio_id: to, last_edit_event_id: ev }).eq('id', s.key).eq('presentation_audio_id', from).select('id')
   if (error) throw new Error(error.message); return data && data.length === 1
 }
-const { ledgerState, undoPlan, makeLog } = require('./tom006-ledger.cjs')
+const { ledgerState, undoPlan, makeLog, fadePending, undoRecordable } = require('./tom006-ledger.cjs')
 const { makeFaded } = require('./tom006-fade-lib.cjs')
 const dryRun = has('--dry-run')
 const log = makeLog(ledger, dryRun)
@@ -46,11 +46,16 @@ const log = makeLog(ledger, dryRun)
     return moved
   }
   if (has('--undo')) {
+    // German's swaps point at UNFADED clips while the fade ledger (tom006-fade.cjs) still has pairs on top of them: undo the fade first (lane review #815)
+    const fadeFile = path.join(dir, `${course}-fade-ledger.jsonl`)
+    const pending = fs.existsSync(fadeFile) ? fadePending(fs.readFileSync(fadeFile, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse)) : 0
+    if (pending) { console.error(`REFUSED: ${pending} faded pairs for ${course} are still applied on top of these swaps; undo the fade first:\n  node tools/audio/tom006-fade.cjs --course ${course} --undo\nthen rerun this undo.`); await pg.end(); process.exit(1) }
     let n = 0
     for (const p of undoPlan(lines())) {
       if (dryRun) { console.log('would undo', p.lego_id, p.newId, '->', p.oldId, p.slots.length, 'slots'); n += p.slots.length; continue }
       let moved = 0; for (const s of p.slots) if (await setPointer(db, s, p.newId, p.oldId, await event())) moved++   // conditional: only slots still on newId move
-      log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved }); n += moved
+      if (undoRecordable(moved)) log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved }); else console.log('0 slots moved, NOT recorded as undone:', p.lego_id, p.newId)
+      n += moved
     }
     if (n && !dryRun) console.log('content_version', await bumpCourseVersion(db, course, 'patch'))
     console.log(dryRun ? 'would undo' : 'undone slots', n); return pg.end()
