@@ -1201,40 +1201,47 @@ async function readStamp (db, tables = STAMP_TABLES) {
 function makeHold ({ build, stamp, ttlMs, checkEveryMs = STAMP_CHECK_EVERY_MS }) {
   let held = null
   let inflight = null
+  // Bumped by invalidate(): a build that started before a write must not
+  // become the post-write view, nor be joined by a GET that follows the write.
+  let generation = 0
   const rebuild = () => {
     if (inflight) return inflight
-    inflight = (async () => {
+    const gen = generation
+    const run = (async () => {
       // Stamp BEFORE the build: a write landing mid-build then shows as a
       // different stamp next check, never as a stale view stamped as fresh.
       const st = await stamp().catch(() => null)
       const value = await build()
       const now = Date.now()
-      held = { value, stamp: st, builtAtMs: now, builtAt: new Date(now).toISOString(), checkedAtMs: now }
-      return held
-    })().finally(() => { inflight = null })
-    return inflight
+      const fresh = { value, stamp: st, builtAtMs: now, builtAt: new Date(now).toISOString(), checkedAtMs: now }
+      if (gen === generation) held = fresh // else: pre-write data, answer the caller but do not keep it
+      return fresh
+    })().finally(() => { if (inflight === run) inflight = null })
+    inflight = run
+    return run
   }
   return {
-    invalidate () { held = null },
+    invalidate () { held = null; inflight = null; generation++ },
     peek () { return held },
     async get ({ refresh = false } = {}) {
-      if (refresh || !held) {
-        const h = await rebuild()
-        return { ...h, cached: false, ageMs: 0 }
+      const h = held
+      if (refresh || !h) {
+        const f = await rebuild()
+        return { ...f, cached: false, ageMs: 0 }
       }
       const now = Date.now()
-      if (now - held.checkedAtMs >= checkEveryMs) {
-        const st = await stamp().catch(() => held.stamp)
-        held.checkedAtMs = now
-        if (st !== held.stamp) {
-          const h = await rebuild()
-          return { ...h, cached: false, ageMs: 0 }
+      if (now - h.checkedAtMs >= checkEveryMs) {
+        const st = await stamp().catch(() => h.stamp)
+        h.checkedAtMs = now // h, not held: invalidate() may have cleared held during the await
+        if (st !== h.stamp || held !== h) {
+          const f = await rebuild()
+          return { ...f, cached: false, ageMs: 0 }
         }
       }
-      const age = now - held.builtAtMs
+      const age = now - h.builtAtMs
       // Past the backstop: answer now with what we hold, rebuild behind it.
       if (age >= ttlMs) rebuild().catch(() => {})
-      return { ...held, cached: true, ageMs: age }
+      return { ...h, cached: true, ageMs: age }
     },
   }
 }
