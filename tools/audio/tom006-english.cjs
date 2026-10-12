@@ -31,12 +31,14 @@ function supa() {
   return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 }
 const setPointer = async (db, s, from, to, ev) => {
-  const col = s.col || 'known_audio_id'
+  const col = colFor(s)
   const { data, error } = await db.from(s.tbl).update({ [col]: to, last_edit_event_id: ev }).eq('id', s.key).eq(col, from).select('id')
   if (error) throw new Error(error.message); return !!data && data.length === 1
 }
 const TABLES = ['course_seeds', 'course_legos', 'course_practice_phrases']
-const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
+// a slot's column: explicit, else inferred from the course (eng_for_X holds English in target2; X_for_eng in known). The #995 recovered rows carry no col.
+const colFor = s => s.col || (String(s.course || String(s.key).split(':')[0]).startsWith('eng_for_') ? 'target2_audio_id' : 'known_audio_id')
+const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
 ;(async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); await pg.query('set statement_timeout=0'); const db = supa()
   const identity = serviceIdentity('tom006-english-813'), events = new Map(), touchedN = new Map()
@@ -58,7 +60,10 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
 
   if (has('--undo')) {
     // The undo set is every INTENT row (journalled before any pointer moved), swap and legacy swap row: slot -> its ORIGINAL from-id; the before-check (newId must still be there) keeps it safe
-    const rows = lines(), orig = new Map()   // slotId -> { s, news:Set }, built in LEDGER ORDER: an 'undone' row removes only what exists so far (lane review #837)
+    // job #995 rebuilt the wiped part of the ledger from content_audit_log: ledger-recovered.jsonl sits beside the live ledger (never overwritten); undo reads BOTH, merged by time
+    const recFile = path.join(dir, 'ledger-recovered.jsonl')
+    const recovered = fs.existsSync(recFile) ? fs.readFileSync(recFile, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
+    const rows = [...recovered, ...lines()].map((e, i) => [e, i]).sort((a, b) => (Date.parse(a[0].at) || 0) - (Date.parse(b[0].at) || 0) || a[1] - b[1]).map(x => x[0]), orig = new Map()   // slotId -> { s, news:Set }, built in LEDGER ORDER: an 'undone' row removes only what exists so far (lane review #837)
     for (const e of rows) {
       if (['intent', 'swap'].includes(e.kind)) for (const s of e.slots || []) { if (!s.from) continue; const k = slotId(s); if (!orig.has(k)) orig.set(k, { s, news: new Set([e.newId]) }); else orig.get(k).news.add(e.newId) }
       else if (e.kind === 'undone') for (const k of e.keys) orig.delete(k)
@@ -67,7 +72,7 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
     try {
       for (const [k, { s, news }] of [...orig].reverse()) {
         // LIVE STATE decides (lane review #856): already back on its old clip = restored; on any clip this job wrote = restore with a before-check; anything else = someone else's edit, left alone and reported
-        const col = s.col || 'known_audio_id'
+        const col = colFor(s)
         const { data: live, error } = await db.from(s.tbl).select(col).eq('id', s.key).maybeSingle(); if (error) throw new Error(error.message)
         const cur = live && live[col]
         if (dryRun) { console.log(cur === s.from ? 'already restored' : news.has(cur) ? 'would undo' : 'would SKIP (changed by someone else)', k, cur, '->', s.from); if (news.has(cur)) n++; continue }
