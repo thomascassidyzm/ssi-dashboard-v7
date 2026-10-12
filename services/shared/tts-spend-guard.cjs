@@ -241,7 +241,7 @@ const TOTAL_DAILY_CAP_CHARS = 1_000_000 // Tom 2026-10-07 (job #147): a runaway 
  * by tools/tts-cap.cjs approve. Job #859 (Tom 2026-10-05): ceiling raised to 1,000,000, JS and DB together; was 300,000 (job #596)
  * (ops/sql/20261005-tts-spend-ceiling-1m.sql v_ceiling).
  */
-const TOTAL_DAILY_CEILING_CHARS = 2_000_000 // Tom 2026-10-07 (job #147): keeps the approved-run tier above the 1M automatic base
+const TOTAL_DAILY_CEILING_CHARS = 3_000_000 // Tom 2026-10-12 (jobs #813/#836: "We dont want to finish with some unspent"): hard ceiling over a Tom-signed run; the automatic cap stays 1M (ops/sql/20261012-tts-spend-ceiling-3m.sql)
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 

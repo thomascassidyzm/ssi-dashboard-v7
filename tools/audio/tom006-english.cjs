@@ -31,12 +31,14 @@ function supa() {
   return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 }
 const setPointer = async (db, s, from, to, ev) => {
-  const col = s.col || 'known_audio_id'
+  const col = colFor(s)
   const { data, error } = await db.from(s.tbl).update({ [col]: to, last_edit_event_id: ev }).eq('id', s.key).eq(col, from).select('id')
   if (error) throw new Error(error.message); return !!data && data.length === 1
 }
 const TABLES = ['course_seeds', 'course_legos', 'course_practice_phrases']
-const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
+// a slot's column: explicit, else inferred from the course (eng_for_X holds English in target2; X_for_eng in known). The #995 recovered rows carry no col.
+const colFor = s => s.col || (String(s.course || String(s.key).split(':')[0]).startsWith('eng_for_') ? 'target2_audio_id' : 'known_audio_id')
+const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
 ;(async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); await pg.query('set statement_timeout=0'); const db = supa()
   const identity = serviceIdentity('tom006-english-813'), events = new Map(), touchedN = new Map()
@@ -58,7 +60,10 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
 
   if (has('--undo')) {
     // The undo set is every INTENT row (journalled before any pointer moved), swap and legacy swap row: slot -> its ORIGINAL from-id; the before-check (newId must still be there) keeps it safe
-    const rows = lines(), orig = new Map()   // slotId -> { s, news:Set }, built in LEDGER ORDER: an 'undone' row removes only what exists so far (lane review #837)
+    // job #995 rebuilt the wiped part of the ledger from content_audit_log: ledger-recovered.jsonl sits beside the live ledger (never overwritten); undo reads BOTH, merged by time
+    const recFile = path.join(dir, 'ledger-recovered.jsonl')
+    const recovered = fs.existsSync(recFile) ? fs.readFileSync(recFile, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
+    const rows = [...recovered, ...lines()].map((e, i) => [e, i]).sort((a, b) => (Date.parse(a[0].at) || 0) - (Date.parse(b[0].at) || 0) || a[1] - b[1]).map(x => x[0]), orig = new Map()   // slotId -> { s, news:Set }, built in LEDGER ORDER: an 'undone' row removes only what exists so far (lane review #837)
     for (const e of rows) {
       if (['intent', 'swap'].includes(e.kind)) for (const s of e.slots || []) { if (!s.from) continue; const k = slotId(s); if (!orig.has(k)) orig.set(k, { s, news: new Set([e.newId]) }); else orig.get(k).news.add(e.newId) }
       else if (e.kind === 'undone') for (const k of e.keys) orig.delete(k)
@@ -67,7 +72,7 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
     try {
       for (const [k, { s, news }] of [...orig].reverse()) {
         // LIVE STATE decides (lane review #856): already back on its old clip = restored; on any clip this job wrote = restore with a before-check; anything else = someone else's edit, left alone and reported
-        const col = s.col || 'known_audio_id'
+        const col = colFor(s)
         const { data: live, error } = await db.from(s.tbl).select(col).eq('id', s.key).maybeSingle(); if (error) throw new Error(error.message)
         const cur = live && live[col]
         if (dryRun) { console.log(cur === s.from ? 'already restored' : news.has(cur) ? 'would undo' : 'would SKIP (changed by someone else)', k, cur, '->', s.from); if (news.has(cur)) n++; continue }
@@ -155,13 +160,16 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
             if (ex) { newId = ex.id; how = 'reuse' }
             else {
               // a dropped connection (Popty restarting on a deploy) is not an answer: wait, check whether the render landed anyway (never re-send a text that succeeded), then retry
-              let res, r, ledgerHits = 0   // back-off 5s, 15s, then 60s on a transient spend-ledger timeout (Watson)
+              let res, r, ledgerHits = 0, transient = 0   // back-off 5s, 15s, then 60s on a transient spend-ledger timeout (Watson)
               for (let attempt = 0; attempt < 8 && !r; attempt++) {
                 try {
                   res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-813' },
                     body: JSON.stringify({ courseCode: q.course, role: q.role, text: q.tx, language: 'eng', voiceId: T6, voiceBound: true, job: '#813', purpose: `#813 Tom-006 male English, stage ${n} (seed ${q.pos})` }) })
                   r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
-                  if (r && r.code === 'LEDGER') {   // the shared spend ledger timed out (DB load): fail-closed, nothing was sent; wait and ask again rather than stop
+                  if (r && (r.code === 'RENDER_FAILED' || (r.error && /socket hang up|ECONNRESET/i.test(r.error)))) {   // a transient DB/connection failure AFTER the paid render may have left a clip in S3 with no row: look for the row first; only then ask again (max 3), never loop
+                    transient++; console.log('render answered with a transient failure, checking before any retry:', q.tx.slice(0, 40), String(r.error || '').slice(0, 120)); await new Promise(z => setTimeout(z, 30000))
+                    const landed = await t6Row(q.t); if (landed) r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; else if (transient < 3) { r = undefined; attempt = Math.min(attempt, 5) } else { r = { ok: false, error: 'persistent transient failure' } }
+                  } else if (r && r.code === 'LEDGER') {   // the shared spend ledger timed out (DB load): fail-closed, nothing was sent; wait and ask again rather than stop
                     const wait = [5000, 15000, 60000][Math.min(ledgerHits++, 2)]; console.log(`spend ledger unreachable, waiting ${wait / 1000}s then asking again:`, q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, wait)); r = undefined; attempt = Math.min(attempt, 5); if (stopFlag) return
                   } else if (r && (r.code === 'DAILY_TOTAL_CAP' || r.code === 'DAILY_CAP')) {   // Tom: guards are not for his directed jobs. Nothing was sent; ask again every 2 minutes (a signed raise or the next UTC day clears it) rather than stop
                     console.log('daily cap holding (' + r.code + '), asking again in 120s:', JSON.stringify(r).slice(0, 160)); log({ kind: 'cap-wait', code: r.code })
