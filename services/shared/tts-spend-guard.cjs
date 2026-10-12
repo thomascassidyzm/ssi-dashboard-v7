@@ -354,7 +354,14 @@ function loadLimits({ budgetPath, envOverride, nowMs }) {
   // spend on all of them. Each provider's own dailyCapChars stays the atomic
   // backstop; the combined sum is read, not locked, so concurrent hosts can
   // overshoot it by at most one in-flight clip each.
-  const combined = file.hold && Number.isFinite(file.hold.combinedDailyCapChars) && file.hold.combinedDailyCapChars > 0 ? file.hold.combinedDailyCapChars : null
+  let combined = file.hold && Number.isFinite(file.hold.combinedDailyCapChars) && file.hold.combinedDailyCapChars > 0 ? file.hold.combinedDailyCapChars : null
+  // A LOOSER combined cap counts only as a signed, dated, expiring raise (hold.raise = { combinedDailyCapChars, by, why, until }), exactly like a provider raise (lane review #874):
+  // a plain looser value in hold.combinedDailyCapChars would never expire. Expired/unsigned raises are ignored and noted; the baseline above holds.
+  if (file.hold && file.hold.raise) {
+    const hr = file.hold.raise, rs = raiseInForce(hr, nowMs)
+    if (rs.ok && Number.isFinite(hr.combinedDailyCapChars) && hr.combinedDailyCapChars > 0) { combined = Math.max(combined || 0, hr.combinedDailyCapChars); notes.push({ kind: 'raise', label: 'hold', field: 'combinedDailyCapChars', value: hr.combinedDailyCapChars, by: hr.by, why: hr.why, until: hr.until }) }
+    else notes.push({ kind: 'ignored', label: 'hold', field: 'combinedDailyCapChars', value: hr.combinedDailyCapChars, why: rs.ok ? 'a combined raise needs a positive combinedDailyCapChars' : rs.why })
+  }
   const hold = file.hold && typeof file.hold.message === 'string' ? { by: file.hold.by || null, since: file.hold.since || null, message: file.hold.message, combinedDailyCapChars: combined } : null
   // JOB-SCOPED RAISES (Tom 2026-09-28, job #578): Tom's explicit go for ONE
   // job above the daily cap must not become a looser cap for everybody. A raise
