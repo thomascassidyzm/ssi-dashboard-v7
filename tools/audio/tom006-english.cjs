@@ -43,12 +43,14 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
   const event = async course => { if (!events.has(course)) events.set(course, await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-english', operation: 'update', detail: { why: 'Tom 2026-10-12 job #813: male English (Tom-006) for lines with no other Cartesia clip; old ids in ledger', ledger } })); return events.get(course) }
   // content_version is bumped AS WE GO (every BUMP_EVERY moved slots per course) and in a finally, so a crash never leaves moved pointers on an old version (lane review #829)
   const BUMP_EVERY = 100; let bumpFailed = 0
-  const touch = async (course, n) => { const v = (touchedN.get(course) || 0) + n; touchedN.set(course, v); if (v >= BUMP_EVERY) await bumpOne(course) }
+  const touchedEver = new Set()   // BACKSTOP (lane review #851): at each stage end and run end every course touched since gets one more bump, whatever the counters say
+  const touch = async (course, n) => { touchedEver.add(course); const v = (touchedN.get(course) || 0) + n; touchedN.set(course, v); if (v >= BUMP_EVERY) await bumpOne(course) }
   const bumpOne = async course => {
     if (dryRun) return; const n = touchedN.get(course) || 0; if (!n) return
-    try { const v = await bumpCourseVersion(db, course, 'patch'); touchedN.set(course, (touchedN.get(course) || 0) - n); log({ kind: 'bumped', course }); console.log('content_version', course, v) }
+    try { const v = await bumpCourseVersion(db, course, 'patch'); if (!v) throw new Error('bumpCourseVersion returned null (it swallows its own errors)'); touchedN.set(course, (touchedN.get(course) || 0) - n); log({ kind: 'bumped', course }); console.log('content_version', course, v) }
     catch (e) { console.log(`BUMP FAILED ${course} (${n} moved slots still unbumped, kept for retry):`, e.message); bumpFailed++ }
   }
+  const bumpBackstop = async () => { if (dryRun) return; for (const c of [...touchedEver]) { touchedN.set(c, Math.max(1, touchedN.get(c) || 0)); await bumpOne(c); if ((touchedN.get(c) || 0) === 0) touchedEver.delete(c) } }
   const bump = async () => { for (const [c, n] of [...touchedN]) if (n > 0) await bumpOne(c) }
 
   // a previous run that died after moving pointers but before bumping: every course with a swap row after its last 'bumped' row is still on an old version
@@ -177,9 +179,10 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
         }
         try { await Promise.all(Array.from({ length: conc }, worker)) } finally { await bump() }
       }
+      await bumpBackstop()
       const rep = `STAGE ${n} ${stopFlag ? 'STOPPED' : dryRun ? 'DRY' : 'DONE'}: texts ${st.texts}: rendered ${st.rendered}, reused ${st.reused} (${st.texts ? Math.round(100 * st.reused / st.texts) : 0}% reuse); slots repointed ${st.slots}; chars rendered ${st.chars}; started ${st.started}`
       console.log(rep); if (!dryRun) fs.writeFileSync(path.join(dir, `stage-${n}.report.txt`), rep + '\n')
       if (stopFlag) break
     }
-  } finally { await bump(); await pg.end() }
+  } finally { await bump(); await bumpBackstop(); await pg.end(); if (bumpFailed) process.exitCode = 3 }
 })().catch(e => { console.error(e); process.exit(1) })
