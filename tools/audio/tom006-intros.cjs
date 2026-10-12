@@ -4,7 +4,7 @@
  * (voice-bound, lang eng, role presentation), verify voice + freshness, repoint presentation_audio_id as each clip lands, bump content_version.
  * Plan: ops/794-tom006-intros/plan.cjs -> <course>.plan.json (as-in only at score 3-5). Old clips are never deleted. Undo ledger: ops/794-tom006-intros/<course>-ledger.jsonl.
  *   node tools/audio/tom006-intros.cjs --course deu_for_eng [--limit N] [--bump-every 20] [--dry-run]
- *   node tools/audio/tom006-intros.cjs --course deu_for_eng --undo
+ *   node tools/audio/tom006-intros.cjs --course deu_for_eng --undo [--dry-run]   (appends {kind:undo} rows; a rerun then re-points to the recorded ids, no render)
  */
 const fs = require('fs'), path = require('path')
 require('dotenv').config({ path: path.join(__dirname, '../../.env.psql'), quiet: true })
@@ -29,25 +29,48 @@ const setPointer = async (db, s, from, to, ev) => {
   const { data, error } = await db.from(s.tbl).update({ presentation_audio_id: to, last_edit_event_id: ev }).eq('id', s.key).eq('presentation_audio_id', from).select('id')
   if (error) throw new Error(error.message); return data && data.length === 1
 }
+const { ledgerState } = require('./tom006-ledger.cjs')
+const dryRun = has('--dry-run')
 ;(async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); const db = supa()
   const identity = serviceIdentity('tom006-intros-794')
-  const event = await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-intros', operation: 'update', detail: { why: 'Tom 2026-10-12 job #794: Tom-006 presentation intros; old ids in ledger', ledger } })
+  let eventId = null   // created lazily: dry-run never writes anything, not even the audit event
+  const event = async () => eventId || (eventId = await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-intros', operation: 'update', detail: { why: 'Tom 2026-10-12 job #794: Tom-006 presentation intros; old ids in ledger', ledger } }))
+  const slotsOf = async oldClip => (await pg.query(`select 'course_legos' tbl, id::text key from course_legos where course_code=$1 and presentation_audio_id::text=$2::text
+      union all select 'course_practice_phrases', id::text from course_practice_phrases where course_code=$1 and presentation_audio_id::text=$2::text and phrase_role is distinct from 'component'`, [course, oldClip])).rows
+  // apply a recorded/rendered swap to its slots; log 'swap' only when EVERY slot moved, else 'partial' (never marked done)
+  const apply = async (entry, slots) => {
+    let moved = 0; for (const s of slots) if (await setPointer(db, s, entry.oldId, entry.newId, await event())) moved++
+    log({ ...entry, kind: moved === slots.length ? 'swap' : 'partial', moved, slots })
+    return moved
+  }
   if (has('--undo')) {
-    let n = 0
-    for (const e of lines().filter(x => x.kind === 'swap').reverse()) { for (const s of e.slots) if (await setPointer(db, s, e.newId, e.oldId, event)) n++ }
-    if (n) console.log('content_version', await bumpCourseVersion(db, course, 'patch')); console.log('undone slots', n); return pg.end()
+    const st = ledgerState(lines()); let n = 0
+    for (const [oldId, cur] of [...st].reverse()) {
+      if (!cur.applied && cur.row.kind !== 'partial') continue
+      const slots = cur.row.slots || []
+      if (dryRun) { console.log('would undo', cur.row.lego_id, cur.newId, '->', oldId, slots.length, 'slots'); n++; continue }
+      let moved = 0; for (const s of slots) if (await setPointer(db, s, cur.newId, oldId, await event())) moved++
+      log({ kind: 'undo', oldId, newId: cur.newId, lego_id: cur.row.lego_id, moved }); n += moved
+    }
+    if (n && !dryRun) console.log('content_version', await bumpCourseVersion(db, course, 'patch'))
+    console.log(dryRun ? 'would undo' : 'undone slots', n); return pg.end()
   }
   const plan = JSON.parse(fs.readFileSync(path.join(dir, `${course}.plan.json`), 'utf8')).filter(o => o.newText && o.oldClip)
-  const done = new Set(lines().filter(x => x.kind === 'swap').map(x => x.oldId))
   const limit = Number(opt('--limit', 1e9)), bumpEvery = Number(opt('--bump-every', 20)); let n = 0, spent = 0, sinceBump = 0
   for (const o of plan) {
     if (n >= limit) break
-    if (done.has(o.oldClip)) continue
-    const { rows: slots } = await pg.query(`select 'course_legos' tbl, id::text key from course_legos where course_code=$1 and presentation_audio_id::text=$2::text
-      union all select 'course_practice_phrases', id::text from course_practice_phrases where course_code=$1 and presentation_audio_id::text=$2::text and phrase_role is distinct from 'component'`, [course, o.oldClip])
-    if (!slots.length) { log({ kind: 'skip', lego_id: o.lego_id, why: 'old clip no longer linked' }); continue }
-    if (has('--dry-run')) { console.log('would render', o.lego_id, o.newText, slots.length, 'slots'); n++; continue }
+    const prior = ledgerState(lines()).get(o.oldClip)
+    if (prior && prior.applied) continue
+    const slots = await slotsOf(o.oldClip)
+    if (!slots.length) { if (!prior) log({ kind: 'skip', lego_id: o.lego_id, why: 'old clip no longer linked' }); continue }
+    // a clip already rendered (crash, partial, or undone): re-point to the RECORDED newId, no new render, no spend
+    if (prior && prior.newId) {
+      if (dryRun) { console.log('would re-point', o.lego_id, 'to recorded', prior.newId); n++; continue }
+      const moved = await apply({ ...prior.row, kind: 'swap', at: undefined }, slots); n++; sinceBump += moved
+      console.log(`${o.lego_id} re-pointed to recorded ${prior.newId} ${moved}/${slots.length}`); continue
+    }
+    if (dryRun) { console.log('would render', o.lego_id, o.newText, slots.length, 'slots'); n++; continue }
     const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-794' },
       body: JSON.stringify({ courseCode: course, role: 'presentation', text: o.newText, language: 'eng', voiceId: T6, voiceBound: true, job: '#794', purpose: `#794 Tom-006 intro ${o.lego_id}` }) })
     const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
@@ -55,12 +78,13 @@ const setPointer = async (db, s, from, to, ev) => {
     const { rows: [ca] } = await pg.query('select id::text, voice_id, text, s3_key, duration_ms, created_at from course_audio where id=$1', [r.audioId])
     const fresh = ca && Date.now() - new Date(ca.created_at).getTime() < 15 * 60e3
     if (!ca || ca.voice_id !== T6 || !ca.s3_key || !(ca.duration_ms > 500)) { log({ kind: 'verify-failed', lego_id: o.lego_id, r, ca }); console.log('VERIFY FAILED — stopping:', o.lego_id, JSON.stringify(ca)); break }
-    log({ kind: 'swap', lego_id: o.lego_id, seed: o.seed, oldId: o.oldClip, newId: r.audioId, oldVoice: o.oldVoice, source: r.source, fresh, charsSpent: r.charsSpent || 0, score: o.score, asIn: o.keepAsIn, text: o.newText, slots: slots.map(s => ({ tbl: s.tbl, key: s.key })) })
-    let moved = 0; for (const s of slots) if (await setPointer(db, s, o.oldClip, r.audioId, event)) moved++
+    const entry = { lego_id: o.lego_id, seed: o.seed, oldId: o.oldClip, newId: r.audioId, oldVoice: o.oldVoice, source: r.source, fresh, charsSpent: r.charsSpent || 0, score: o.score, asIn: o.keepAsIn, text: o.newText }
+    log({ kind: 'render', ...entry, slots })   // write-ahead: the rendered id is on record before any pointer moves
+    const moved = await apply(entry, slots)
     n++; spent += r.charsSpent || 0; sinceBump += moved
     console.log(`${o.lego_id} -> ${r.audioId} (${r.source}${fresh ? ', fresh' : ''}) ${moved}/${slots.length} slots, ${r.charsSpent || 0} chars`)
     if (n === 1 || sinceBump >= bumpEvery) { console.log('content_version', await bumpCourseVersion(db, course, 'patch')); sinceBump = 0 }
   }
-  if (sinceBump) console.log('content_version', await bumpCourseVersion(db, course, 'patch'))
-  console.log(`done ${n} this run, ${spent} chars`); await pg.end()
+  if (sinceBump && !dryRun) console.log('content_version', await bumpCourseVersion(db, course, 'patch'))
+  console.log(`${dryRun ? 'dry run: ' : ''}done ${n} this run, ${spent} chars`); await pg.end()
 })().catch(e => { console.error(e); process.exit(1) })
