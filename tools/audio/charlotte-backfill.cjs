@@ -62,12 +62,14 @@ const MALE_XAI = `(ca.voice_id ~ '^(xai_)?(leo|sal|rex|gfzdpspr5fdp)$')`
 // The general pass is FEMALE ONLY; BAD_VOICE kept as the exported name of "what the Charlotte passes may select".
 const BAD_VOICE = FEMALE_VOICE
 const TOM_001 = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
+// Tom 2026-10-12 (#813, #15, #24): Tom-006 is the male English voice. The male passes render in it, and no Charlotte pass may ever select a Tom-006 clip (voiceGender() is null for Cartesia ids, so the gender-blind passes would).
+const TOM_006 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
 /** Pass table: which old voices a pass selects, which voice it renders in, which gender a swap's OLD voice must have. */
 const PASSES = {
   general: { sql: FEMALE_VOICE, target: CHARLOTTE, gender: 'f' },
   'xai-female': { sql: FEMALE_XAI, target: CHARLOTTE, gender: 'f' },
-  male: { sql: MALE_VOICE, target: TOM_001, gender: 'm' },
-  'xai-male': { sql: MALE_XAI, target: TOM_001, gender: 'm' },
+  male: { sql: MALE_VOICE, target: TOM_006, gender: 'm' },
+  'xai-male': { sql: MALE_XAI, target: TOM_006, gender: 'm' },
   // Tom 2026-10-11 (job #259): the xAI Tom clone clicks at the end of clips, so its English known prompts move to Charlotte (the English voice
   // ita_for_eng already uses). gender null on purpose: this is Tom's explicit ruling for the known role, so the male-never-Charlotte guard
   // (which protects target V1/V2 distinctness) does not apply. role is FIXED to known (#278): without it --roles target2/presentation would render Charlotte over male clips with the guard off.
@@ -211,7 +213,7 @@ function rateRetry(w) { w.rl = (w.rl || 0) + 1; return w.rl < RATE_RETRY_CAP }
  * on the money is spent for good, so a later throw (verify, ledger, DB) must NOT refund it. Only an unsettled clip is refunded.
  * budgetSkipped counts clips passed over because they do not fit the remaining budget: owed work, but not a failure.
  */
-async function runBudgeted(work, { budget, dryRun = false, gender = null, notGender = null, concurrency = 1, render: doRender, verify, commit, backoffMs = 5000 }) {
+async function runBudgeted(work, { budget, dryRun = false, gender = null, notGender = null, neverFrom = null, concurrency = 1, render: doRender, verify, commit, backoffMs = 5000 }) {
   let spent = 0, done = 0, failures = 0, genderSkipped = 0, budgetSkipped = 0
   let live = Math.max(1, concurrency), active = 0, stop = false, idx = 0
   const requeue = []
@@ -241,6 +243,7 @@ async function runBudgeted(work, { budget, dryRun = false, gender = null, notGen
       if (gender && voiceGender(w.oldVoice) !== gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
       // Tom 2026-10-12 (job #15): a MALE English known slot belongs to Tom-006, never Charlotte, whatever the gender-blind pass says; the 2026-10-11 gender-blind passes put 76 male-origin lines on Charlotte
       if (notGender && voiceGender(w.oldVoice) === notGender) { console.log('MALE-ROLE-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
+      if (neverFrom && w.oldVoice === neverFrom) { console.log('NEVER-FROM-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
       if (spent + w.chars > budget) { if (spent === 0 && budget === 0) return null; budgetSkipped++; continue }
       return w
     }
@@ -335,7 +338,7 @@ async function main() {
     if (r.source === 'library') free++
   }
   const { spent, done, genderSkipped, budgetSkipped } = await runBudgeted(work, {
-    budget, dryRun, gender: pass.gender, notGender: pass.target === CHARLOTTE && pass.role === 'known' ? 'm' : null, concurrency: Number(process.env.CONCURRENCY || 1),
+    budget, dryRun, gender: pass.gender, notGender: pass.target === CHARLOTTE && pass.role === 'known' ? 'm' : null, neverFrom: pass.target === CHARLOTTE ? TOM_006 : null, concurrency: Number(process.env.CONCURRENCY || 1),
     render: w => render(course, w, dryRun, target, language), verify: r => verifyNew(pg, r.audioId, target), commit,
   })
   // machine line for the daily driver: work still owed in THIS scope (budget-skipped, failed, verify-failed, refused, unreached); never-doable gender skips excluded
@@ -347,4 +350,4 @@ async function main() {
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { runBudgeted, RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, CHARLOTTE }
+module.exports = { runBudgeted, RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, TOM_006, CHARLOTTE }

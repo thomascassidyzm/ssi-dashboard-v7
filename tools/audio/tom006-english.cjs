@@ -36,6 +36,9 @@ const setPointer = async (db, s, from, to, ev) => {
   if (error) throw new Error(error.message); return !!data && data.length === 1
 }
 const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
+// Job #24 (Tom 2026-10-12: "Female voices are needed for the English for X premium courses"; "we want to keep the gender variance"): English is TWO voices. A line whose
+// current non-Cartesia clip is a FEMALE voice (eve, Sonia, Olivia...) goes to Charlotte, every other line (male or an unlisted voice) to Tom-006 as before.
+const { targetGender, targetVoice } = require('./english-gender-voice.cjs')
 // Job #15 (Tom 2026-10-12): the runner used to see only slots on a NON-Cartesia clip, so a male-role slot that #573's gender-blind passes had moved onto Charlotte
 // counted as finished and was never put back. A slot is MALE-ROLE when its pre-#573 clip was a male voice; those on Charlotte now count as remaining.
 // Female-origin Charlotte slots stay Charlotte (gender variance is wanted). The origin is read from #573's own ledgers, the only record of it.
@@ -139,10 +142,13 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
         select seed_number pos, ${col} aid from course_seeds where course_code=$1 and ${col} is not null and seed_number between $2 and $3
         union all select seed_number, ${col} from course_legos where course_code=$1 and ${col} is not null and seed_number between $2 and $3
         union all select seed_number, ${col} from course_practice_phrases where course_code=$1 and ${col} is not null and seed_number between $2 and $3)
-      select ca.text_normalized t, min(ca.text) tx, min(s.pos) pos, count(*) lines from s join course_audio ca on ca.id=s.aid
+      select ca.text_normalized t, min(ca.text) tx, ca.voice_id voice, min(s.pos) pos, count(*) lines from s join course_audio ca on ca.id=s.aid
       where ca.language in ('eng','en') and ca.role in ('known','target2') and ca.voice_id not like 'cartesia\\_%'
-      group by 1 order by 3, 1`, [code, lo, hi])
-    const out = maleOnly ? [] : rows.filter(r => !otherCartesia.has(r.t)).map(r => ({ ...r, course: code, role: isEngTarget(c) ? 'target2' : 'known' }))
+      group by 1, 3 order by 4, 1`, [code, lo, hi])
+    // one item per (text, target voice): the gender of the line's own current clip decides Charlotte or Tom-006. Male items keep the old rule that a text some other Cartesia voice already speaks is left alone.
+    const folded = new Map()
+    for (const r of rows) { const g = targetGender(r.voice), k = `${r.t}|${g}`, e = folded.get(k) || { t: r.t, tx: r.tx, pos: r.pos, lines: 0, g }; e.lines += Number(r.lines); e.pos = Math.min(e.pos, r.pos); folded.set(k, e) }
+    const out = maleOnly ? [] : [...folded.values()].filter(r => r.g === 'f' || !otherCartesia.has(r.t)).map(r => ({ ...r, course: code, role: isEngTarget(c) ? 'target2' : 'known' }))
     if (!isEngTarget(c)) {   // male-role slots sitting on Charlotte (job #15): looked up by their own ids, never by scanning the course
       const ch = []
       for (const tbl of TABLES) {
@@ -153,24 +159,24 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
         ch.push(...r)
       }
       const by = new Map()
-      for (const r of ch) if (maleKeys.has(r.k)) { const e = by.get(r.t) || { t: r.t, tx: r.tx, pos: r.pos, lines: 0, course: code, role: 'known' }; e.lines++; e.pos = Math.min(e.pos, r.pos); by.set(r.t, e) }
-      for (const e of by.values()) if (!out.some(o => o.t === e.t)) out.push(e)   // (kept even where another course holds a different Cartesia clip of the text: the slot, not the text, is what is owed)
+      for (const r of ch) if (maleKeys.has(r.k)) { const e = by.get(r.t) || { t: r.t, tx: r.tx, pos: r.pos, lines: 0, g: 'm', course: code, role: 'known' }; e.lines++; e.pos = Math.min(e.pos, r.pos); by.set(r.t, e) }
+      for (const e of by.values()) if (!out.some(o => o.t === e.t && o.g === 'm')) out.push(e)   // (kept even where another course holds a different Cartesia clip of the text: the slot, not the text, is what is owed)
     }
     return out
   }
-  const t6Row = async t => (await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id=$2 and s3_key is not null and s3_key not like 'pending/%' and duration_ms>200 order by created_at limit 1`, [t, T6])).rows[0]
+  const clipRow = async (t, voice) => (await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id=$2 and s3_key is not null and s3_key not like 'pending/%' and duration_ms>200 order by created_at limit 1`, [t, voice])).rows[0]
   if (plan) {   // count: distinct texts left to render vs texts that only need repointing (a Tom-006 row exists), chars, slots
     const seen = new Set(); let T = { render: 0, repoint: 0, chars: 0, lines: 0 }
     for (const n of stages) { const a = { render: 0, repoint: 0, chars: 0, lines: 0 }
-      for (const sc of STAGES[n]()) for (const x of (await itemsFor(sc))) { if (seen.has(x.t)) continue; seen.add(x.t); a.lines += Number(x.lines); if (await t6Row(x.t)) a.repoint++; else { a.render++; a.chars += x.tx.length } }
+      for (const sc of STAGES[n]()) for (const x of (await itemsFor(sc))) { const sk = `${x.t}|${x.g}`; if (seen.has(sk)) continue; seen.add(sk); a.lines += Number(x.lines); if (await clipRow(x.t, targetVoice(x.g))) a.repoint++; else { a.render++; a.chars += x.tx.length } }
       console.log(`STAGE ${n}: to render ${a.render} texts / ${a.chars} chars; repoint-only ${a.repoint} texts; lines covered ${a.lines}`); for (const k in T) T[k] += a[k] }
     console.log('TOTAL', JSON.stringify(T)); return pg.end()
   }
-  const oneSlotsOf = async t => {
-    const { rows: olds } = await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id not like 'cartesia\\_%'`, [t])
-    const ids = maleOnly ? [] : olds.map(r => r.id)
+  const oneSlotsOf = async (t, g) => {
+    const { rows: olds } = await pg.query(`select id::text, voice_id from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id not like 'cartesia\\_%'`, [t])
+    const ids = maleOnly ? [] : olds.filter(r => targetGender(r.voice_id) === g).map(r => r.id)   // only the clips of THIS gender move to this item's voice
     const { rows: chs } = await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id=$2`, [t, CHARLOTTE])
-    const chIds = new Set(chs.map(r => r.id)); ids.push(...chIds); if (!ids.length) return []
+    const chIds = new Set(g === 'm' ? chs.map(r => r.id) : []); ids.push(...chIds)   // a Charlotte clip moves only from a male-role slot, and only to Tom-006; if (!ids.length) return []
     const out = []
     for (const tbl of TABLES) for (const col of ['known_audio_id', 'target2_audio_id']) {
       const { rows } = await pg.query(`select x.id::text key, x.course_code course, x.${col}::text "from" from ${tbl} x join courses c on c.course_code=x.course_code
@@ -192,7 +198,7 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
         const worker = async () => {
           while (!stopFlag) {
             const q = queue[idx++]; if (!q) return
-            const ex = await t6Row(q.t); let newId, how
+            const voice = targetVoice(q.g), ex = await clipRow(q.t, voice); let newId, how
             if (ex) { newId = ex.id; how = 'reuse' }
             else {
               // a dropped connection (Popty restarting on a deploy) is not an answer: wait, check whether the render landed anyway (never re-send a text that succeeded), then retry
@@ -200,29 +206,29 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
               for (let attempt = 0; attempt < 8 && !r; attempt++) {
                 try {
                   res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-813' },
-                    body: JSON.stringify({ courseCode: q.course, role: q.role, text: q.tx, language: 'eng', voiceId: T6, voiceBound: true, job: '#813', purpose: `#813 Tom-006 male English, stage ${n} (seed ${q.pos})` }) })
+                    body: JSON.stringify({ courseCode: q.course, role: q.role, text: q.tx, language: 'eng', voiceId: voice, voiceBound: true, job: '#813', purpose: `#813 ${q.g === 'f' ? 'Charlotte female' : 'Tom-006 male'} English, stage ${n} (seed ${q.pos})` }) })
                   r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
                   if (r && (r.code === 'RENDER_FAILED' || (r.error && /socket hang up|ECONNRESET/i.test(r.error)))) {   // a transient DB/connection failure AFTER the paid render may have left a clip in S3 with no row: look for the row first; only then ask again (max 3), never loop
                     transient++; console.log('render answered with a transient failure, checking before any retry:', q.tx.slice(0, 40), String(r.error || '').slice(0, 120)); await new Promise(z => setTimeout(z, 30000))
-                    const landed = await t6Row(q.t); if (landed) r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; else if (transient < 3) { r = undefined; attempt = Math.min(attempt, 5) } else { r = { ok: false, error: 'persistent transient failure' } }
+                    const landed = await clipRow(q.t, voice); if (landed) r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; else if (transient < 3) { r = undefined; attempt = Math.min(attempt, 5) } else { r = { ok: false, error: 'persistent transient failure' } }
                   } else if (r && r.code === 'LEDGER') {   // the shared spend ledger timed out (DB load): fail-closed, nothing was sent; wait and ask again rather than stop
                     const wait = [5000, 15000, 60000][Math.min(ledgerHits++, 2)]; console.log(`spend ledger unreachable, waiting ${wait / 1000}s then asking again:`, q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, wait)); r = undefined; attempt = Math.min(attempt, 5); if (stopFlag) return
                   }   // DAILY_TOTAL_CAP / DAILY_CAP are NOT retried (Watson 2026-10-12: report them): they fall through to the REFUSED stop below, which the wake reports
                 } catch (e) {
                   console.log('connection dropped, checking before any retry:', q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, 30000))
-                  const landed = await t6Row(q.t); if (landed) { r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; res = { ok: true } }
+                  const landed = await clipRow(q.t, voice); if (landed) { r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; res = { ok: true } }
                 }
               }
               if (!r) { console.log('PERSISTENT CONNECTION FAILURE — stopping'); stopFlag = true; return }
               if (r && r.code === 'NOT_SPEAKABLE') { log({ kind: 'unspeakable', t: q.t, text: q.tx, r }); console.log('SKIP unspeakable row text (bracket label, a data defect to fix in the row):', q.tx); continue }   // one bad row never stops the run
               if (!res.ok || !r.ok) { log({ kind: 'refused', t: q.t, r }); console.log('REFUSED — stopping, no retry:', JSON.stringify(r).slice(0, 400)); stopFlag = true; return }
               const { rows: [ca] } = await pg.query('select id::text, voice_id, s3_key, duration_ms from course_audio where id=$1', [r.audioId])
-              if (!ca || ca.voice_id !== T6 || !ca.s3_key || ca.s3_key.startsWith('pending/') || !(ca.duration_ms > 200)) { log({ kind: 'verify-failed', t: q.t, r, ca }); console.log('VERIFY FAILED — stopping:', q.tx, JSON.stringify(ca)); stopFlag = true; return }
+              if (!ca || ca.voice_id !== voice || !ca.s3_key || ca.s3_key.startsWith('pending/') || !(ca.duration_ms > 200)) { log({ kind: 'verify-failed', t: q.t, r, ca }); console.log('VERIFY FAILED — stopping:', q.tx, JSON.stringify(ca)); stopFlag = true; return }
               newId = r.audioId; how = r.source === 'library' ? 'reuse' : 'render'; st.chars += r.charsSpent || 0
               log({ kind: 'render', t: q.t, newId, source: r.source, charsSpent: r.charsSpent || 0 })
             }
-            const slots = await oneSlotsOf(q.t)
-            log({ kind: 'intent', t: q.t, newId, slots, how })   // journalled BEFORE any pointer moves, reuse included: undo reads this
+            const slots = await oneSlotsOf(q.t, q.g)
+            log({ kind: 'intent', t: q.t, newId, slots, how, g: q.g })   // journalled BEFORE any pointer moves, reuse included: undo reads this
             const moved = []
             for (const s of slots) if (await setPointer(db, s, s.from, newId, await event(s.course))) { moved.push(s); await touch(s.course, 1) }
             log({ kind: 'swap', t: q.t, newId, slots: moved, wanted: slots.length, reused: how === 'reuse', stage: n })

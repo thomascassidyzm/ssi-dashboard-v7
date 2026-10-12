@@ -50,8 +50,8 @@ describe('charlotte-backfill gender filter', () => {
   it('every pass renders to its own voice, and only for its own gender', () => {
     expect(m.PASSES.general).toMatchObject({ target: m.CHARLOTTE, gender: 'f' })
     expect(m.PASSES['xai-female']).toMatchObject({ target: m.CHARLOTTE, gender: 'f' })
-    expect(m.PASSES.male).toMatchObject({ target: m.TOM_001, gender: 'm' })
-    expect(m.PASSES['xai-male']).toMatchObject({ target: m.TOM_001, gender: 'm' })
+    expect(m.PASSES.male).toMatchObject({ target: m.TOM_006, gender: 'm' })
+    expect(m.PASSES['xai-male']).toMatchObject({ target: m.TOM_006, gender: 'm' })
   })
 })
 
