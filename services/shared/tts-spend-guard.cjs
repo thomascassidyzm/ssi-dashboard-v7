@@ -625,7 +625,7 @@ function createSpendGuard(opts = {}) {
 
   function limitsNow() {
     const cfg = loadLimits({ budgetPath, envOverride, nowMs: now() })
-    const h = sha(JSON.stringify({ p: cfg.providers, r: cfg.repeat, d: cfg.divergence, j: cfg.jobRaises, x: cfg.repeatExemptions.map(e => [e.job, [...e.texts], e.maxCallsPerText, e.since]) }))
+    const h = sha(JSON.stringify({ p: cfg.providers, r: cfg.repeat, d: cfg.divergence, j: cfg.jobRaises, x: cfg.repeatExemptions.map(e => [e.job, [...e.texts], e.maxCallsPerText, e.since]), hd: cfg.hold && cfg.hold.combinedDailyCapChars, n: cfg.notes }))   // hold + notes in the hash: the combined cap dropping back when its raise expires is a limits change that must be told (lane review #878)
     if (h !== lastLimitsHash) {
       // Every change in the limits in force, and every raise or ignored
       // loosening, is told — ONCE PER HOST per distinct change (limits + notes),
