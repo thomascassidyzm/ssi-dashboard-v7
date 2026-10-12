@@ -5574,7 +5574,7 @@ async function spliceIntroForRoute(req, deps) {
 // A trial clip's bytes (job #748). Read-only, by id; the id is an unguessable UUID and the object lives under trial/.
 app.get('/trial-audio/:id', async (req, res) => {
   try {
-    if (!/^trial_[0-9A-F-]{36}$/i.test(req.params.id)) return res.status(400).json({ ok: false, error: 'not a trial clip id' })
+    if (!/^trial_[0-9A-F-]{36}(_x\d+)?$/i.test(req.params.id)) return res.status(400).json({ ok: false, error: 'not a trial clip id' })
     const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: trialMode.keyFromTrialId(req.params.id) }))
     res.setHeader('Content-Type', 'audio/mpeg'); res.setHeader('Cache-Control', 'no-store')
     res.send(Buffer.from(await r.Body.transformToByteArray()))
