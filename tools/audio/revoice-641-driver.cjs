@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * RESUMABLE DAILY RENDER DRIVER (job #641, Tom 2026-10-12 01:22Z). Renders (render-only: NO pointer moves) the new-voice clips for
+ * RESUMABLE DAILY RENDER DRIVER (job #641, Tom 2026-10-12 01:22Z). Renders and POINTS each clip live the moment it lands (job #669, Tom 2026-10-12 02:03Z; RENDER_ONLY=1 restores the old no-pointer mode; --undo of charlotte-backfill reverts via the swap ledger) the new-voice clips for
  * seeds 1-100 of spa_for_eng, fra_for_eng, spa_mx_for_eng, in Tom's order, inside the 260k chars/UTC-day cap (shared with every agent),
  * and sleeps to the next UTC day at the cap. Re-runs are free for clips already rendered (the route is library-first). Exits 0 when every pass reports OUTSTANDING 0.
  * Repointing is a separate, later step (same commands without --render-only) after the sample page is heard.
@@ -10,7 +10,8 @@ const path = require('path')
 const { spawnSync } = require('child_process')
 const { Client } = require('pg')
 const CAP = Number(process.env.CAP || 260000), MARGIN = Number(process.env.MARGIN || 10000)
-const STAGES = [['spa_for_eng', 'spa-target1'], ['spa_for_eng', 'spa-target2'], ['fra_for_eng', 'fra-target1'], ['fra_for_eng', 'fra-target2'], ['spa_mx_for_eng', 'spa_mx-target1'], ['spa_mx_for_eng', 'spa_mx-target2']]
+// English known lines first (Tom 2026-10-12 02:03Z, job #669: the xAI English is what he is hearing), Charlotte-reuse is free via the library; then the target voices.
+const STAGES = [['spa_for_eng', 'known-charlotte'], ['fra_for_eng', 'known-charlotte'], ['spa_mx_for_eng', 'known-charlotte'], ['spa_for_eng', 'spa-target1'], ['spa_for_eng', 'spa-target2'], ['fra_for_eng', 'fra-target1'], ['fra_for_eng', 'fra-target2'], ['spa_mx_for_eng', 'spa_mx-target1'], ['spa_mx_for_eng', 'spa_mx-target2']]
 const TOOL = path.join(__dirname, 'charlotte-backfill.cjs')
 const log = (...a) => console.log(`[${new Date().toISOString()}]`, ...a)
 const sleep = ms => new Promise(r => setTimeout(r, ms))
@@ -27,7 +28,7 @@ async function spentToday() {
     log(`round start: budget ${budget}`)
     for (const [course, pass] of STAGES) {
       if (budget < 300) { stopped = true; break }
-      const r = spawnSync('node', [TOOL, '--course', course, '--voices', pass, '--seeds', '1-100', '--budget', String(budget), '--render-only'], { encoding: 'utf8', maxBuffer: 1 << 28, env: { ...process.env, CONCURRENCY: process.env.CONCURRENCY || '3' } })
+      const r = spawnSync('node', [TOOL, '--course', course, '--voices', pass, '--seeds', '1-100', '--budget', String(budget), ...(process.env.RENDER_ONLY ? ['--render-only'] : [])], { encoding: 'utf8', maxBuffer: 1 << 28, env: { ...process.env, CONCURRENCY: process.env.CONCURRENCY || '3' } })
       const out = (r.stdout || '') + (r.stderr || '')
       console.log(out.split('\n').filter(l => /^(done|REFUSED|FAIL|VERIFY-FAIL|NO CAST|Error)|old clips linked|5 failures/.test(l)).join('\n'))
       const spent = /(\d+) chars spent/.exec(out); budget -= spent ? Number(spent[1]) : 0
