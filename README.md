@@ -6,12 +6,12 @@
 
 Course production dashboard for SSi language learning system. Content lives in Supabase, audio files in S3.
 
-**v14.0 Features:**
+**Features:**
 - **Course Builder API**: Single endpoint replaces Phases 0-3
 - **Methodology by example**: Agent learns from Welsh/Spanish patterns
 - **Atomic validation**: Tiling, ZUT, vocabulary, phrase counts in one call
 - **Database-first**: All content in Supabase, no JSON files
-- **Audio pipeline**: Phase 8 (TTS) + Phase 9 (manifest) unchanged
+- **Audio pipeline**: Phase 8 renders through the single Popty route (`POST /api/audio/render`, see `CLAUDE.md`); the manifest is legacy
 - QA workflow with sample flagging and real-time status
 - Support for TTS (primary) and human recordings (edge-case languages)
 
@@ -69,10 +69,6 @@ Agent reads brief → POST /api/seed/complete for each seed → Supabase
 Audio Generation: Phase 8 (Port 3465)
 ─────────────────────────────────────
 Supabase content → TTS generation → S3 upload → course_audio table
-
-Manifest Compilation: Phase 9 (Port 3466)
-─────────────────────────────────────────
-course_audio → 100% coverage check → course_manifest.json
 ```
 
 ### S3 Storage
@@ -81,8 +77,7 @@ course_audio → 100% coverage check → course_manifest.json
 S3 (ssi-audio-stage)
     └── courses/{course_code}/
          ├── lego_pairs.json      (Phase 2 output - SSoT)
-         ├── lego_baskets.json    (Phase 3 output - SSoT)
-         └── course_manifest.json (Phase 9 output)
+         └── lego_baskets.json    (Phase 3 output - SSoT)
 
 S3 (ssiborg-assets)
     └── mastered/{uuid}.mp3       (all audio files)
@@ -110,7 +105,6 @@ ssi-learning-app/supabase/schema.sql, which has no `CREATE TABLE ... audio_sampl
 |---------|------|-------------|
 | **Course Builder** | **3471** | **Content creation (replaces Phase 1-3)** |
 | Audio Generator | 3465 | TTS generation → Supabase + S3 |
-| Manifest Compiler | 3466 | Compile manifest from Supabase |
 | Production API | 3470 | QA workflow + WebSocket |
 | Orchestrator | 3456 | Proxy hub for all services |
 
@@ -137,13 +131,6 @@ ssi-learning-app/supabase/schema.sql, which has no `CREATE TABLE ... audio_sampl
 | GET | `/status/:courseCode` | Check job status |
 | GET | `/health` | Health check |
 
-#### Phase 9 Manifest Compiler (port 3466)
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/compile` | Compile manifest from Supabase |
-| GET | `/validate/:courseCode` | Validate audio coverage |
-| GET | `/health` | Health check |
-
 ### Services (systemd)
 
 PM2 is gone (2026-07-30 to 2026-08-07 migration, `docs/DECISIONS.md` "orchestrator off pm2, onto
@@ -160,7 +147,6 @@ systemctl --user status popty-orchestrator.service
 | orchestrator | 3456 | Main proxy hub | Active |
 | **course-builder** | **3471** | **Content creation API** | **Active** |
 | phase8-audio | 3465 | Audio generation (Supabase) | Active |
-| phase9-manifest | 3466 | Manifest compilation (Supabase) | Active |
 | production-api | 3470 | QA workflow + WebSocket | Active |
 | ~~phase1-translation~~ | ~~3457~~ | ~~Translation server~~ | Deprecated |
 | ~~phase2-conflict~~ | ~~3458~~ | ~~Conflict resolution~~ | Deprecated |
@@ -168,10 +154,7 @@ systemctl --user status popty-orchestrator.service
 
 ## Build & Deploy
 
-```bash
-npm run build
-vercel --prod
-```
+`main` auto-deploys to popty.app (`ssi-auto-deploy.timer` runs `tools/deploy/auto-deploy-prod.cjs` on the prod checkout); see `CLAUDE.md` for branch rules. `npm run build` builds the frontend only.
 
 ## Data Sources
 
@@ -182,13 +165,12 @@ vercel --prod
 | Phrases | Course Builder | Supabase: `course_practice_phrases` |
 | Audio metadata | Phase 8 | Supabase: `course_audio` |
 | Audio files | Phase 8 | S3: `mastered/{uuid}.mp3` |
-| Manifest | Phase 9 | S3: `courses/{code}/course_manifest.json` |
 | QA flags | Production API | Supabase: `sample_flags` |
 
 **Not deprecated:** `lego_pairs.json`, `lego_baskets.json` are still read/written live —
 grep finds them in 21 files under `services/` (including active services `orchestrator.cjs`,
 `production-api.cjs`, `manifest-generator.cjs`, `data-finders.cjs`, `s3-service.cjs`,
-`phase9-manifest-compiler.cjs`) plus 34 more under `tools/`, `database/`, `src/`, and `api/`.
+`publish-manifest-service.cjs`) plus 34 more under `tools/`, `database/`, `src/`, and `api/`.
 The Course Builder API path writes seeds/LEGOs/phrases straight to Supabase, but the older
 phase1-3/phase5 basket pipeline these files support has not been removed.
 
@@ -207,4 +189,4 @@ phase1-3/phase5 basket pipeline these files support has not been removed.
 **APML:** v14.0 (Course Builder Consolidation)
 **Pipeline:** v3.0 (Course Builder + Supabase)
 **S3 Bucket:** ssi-audio-stage (eu-west-1)
-**Date:** 2026-09-08
+**Date:** 2026-10-12
