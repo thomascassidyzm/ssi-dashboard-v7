@@ -62,6 +62,10 @@ const GATE_NAMES = [
   'vocab', 'buildRecombination', 'zut', 'knownSide', 'separableContrast',
 ];
 
+// A LEGO's components as a list. Some rows store {} (cat_for_eng S0028L01/L02); iterating that threw
+// "object is not iterable" and failed every later window at the gate (ramp 967).
+const componentList = (c) => (Array.isArray(c) ? c : []);
+
 // ─── Known-side seed context ────────────────────────────────────────────
 // buildKnownSideSeedCtx is route-local in seed-complete.cjs, so this is a
 // faithful copy: same DB read, same stem/carrier/construction position maps.
@@ -77,19 +81,19 @@ async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentL
     if (data.length < 1000) break;
   }
   const cur = (currentLegos || []).map(l => ({
-    target_text: l.target, known_text: l.known, components: l.components || [], seed_number: currentSeed,
+    target_text: l.target, known_text: l.known, components: componentList(l.components), seed_number: currentSeed,
   }));
   const all = [...prior, ...cur];
   const stemFirstPos = new Map();
   const addStem = (s, seed) => { const k = stemKnownGloss(s); if (!k) return; if (!stemFirstPos.has(k) || stemFirstPos.get(k) > seed) stemFirstPos.set(k, seed); };
   for (const l of all) {
     for (const t of tokenizeKnown(l.known_text)) addStem(t, l.seed_number);
-    for (const c of l.components || []) for (const t of tokenizeKnown(c.known)) addStem(t, l.seed_number);
+    for (const c of componentList(l.components)) for (const t of tokenizeKnown(c.known)) addStem(t, l.seed_number);
   }
   const carrierSeed = (carrier) => {
     let min = Infinity;
     for (const l of all) {
-      const hit = l.target_text === carrier || (l.components || []).some(c => c.target === carrier);
+      const hit = l.target_text === carrier || componentList(l.components).some(c => c.target === carrier);
       if (hit && l.seed_number < min) min = l.seed_number;
     }
     return min;
@@ -121,8 +125,8 @@ async function loadTranslationVocab(supabase, courseCode, upToSeedNumber) {
     .lt('seed_number', upToSeedNumber).order('seed_number').order('lego_index');
   for (const lego of legos || []) {
     extractVocab(lego.target_text, chinese).forEach(v => vocabSet.add(v));
-    if (lego.type === 'M' && lego.components) {
-      for (const c of lego.components) extractVocab(c.target, chinese).forEach(v => vocabSet.add(v));
+    if (lego.type === 'M') {
+      for (const c of componentList(lego.components)) extractVocab(c.target, chinese).forEach(v => vocabSet.add(v));
     }
   }
   return vocabSet;
@@ -141,8 +145,8 @@ async function loadSameSeedSiblingVocab(supabase, courseCode, seedNumber, chines
   for (const sl of siblingLegos || []) {
     if (legoIndex != null && !(sl.lego_index < legoIndex)) continue;
     extractVocab(sl.target_text, chinese).forEach(v => vocab.add(v));
-    if (sl.type === 'M' && sl.components) {
-      for (const c of sl.components) extractVocab(c.target, chinese).forEach(v => vocab.add(v));
+    if (sl.type === 'M') {
+      for (const c of componentList(sl.components)) extractVocab(c.target, chinese).forEach(v => vocab.add(v));
     }
   }
   return vocab;
@@ -404,5 +408,5 @@ module.exports = {
   GATE_NAMES, BUILD_MIN, BUILD_MAX,
   makeCourseCtx, checkPhraseSet, failureFeedback,
   // exported for read-only replays (tools/phrase-gate/separable-dry-run.cjs)
-  loadTranslationVocab, loadSameSeedSiblingVocab,
+  loadTranslationVocab, loadSameSeedSiblingVocab, buildKnownSideSeedCtx,
 };

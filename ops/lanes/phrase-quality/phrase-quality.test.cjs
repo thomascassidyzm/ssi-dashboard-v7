@@ -42,7 +42,13 @@ assert.equal(inScope({ course_code: 'fin_for_eng', status: 'draft' }), false)
     { row_id: 'k', decision: 'keep' }, { row_id: 'x', decision: 'delete' }]
   assert.deepEqual(stagedTodo(S, new Set(['x'])).map((d) => d.row_id), ['r', 'd'], 'held, kept and done lines are not applied')
   const src = require('fs').readFileSync(require('path').join(__dirname, 'apply-staged.cjs'), 'utf8')
-  assert.ok(src.includes('stagedTodo(staged, done)'), 'apply-staged selects its work through stagedTodo')
+  assert.ok(src.includes('stagedTodo(staged, done'), 'apply-staged selects its work through stagedTodo')
+  // release-held (967 decision): held replacements join the work, once per row, and done rows stay done
+  const H = [...S, { row_id: 'h', decision: 'replace', hold: 'audio', after: { target: 'later' } }]
+  assert.deepEqual(stagedTodo(H, new Set(['x']), { releaseHeld: true }).map((d) => d.row_id), ['r', 'h', 'd'], 'released: held replacements apply, once each')
+  assert.equal(stagedTodo(H, new Set(['x']), { releaseHeld: true }).find((d) => d.row_id === 'h').after.target, 'later', 'the latest staged line wins')
+  assert.deepEqual(stagedTodo(H, new Set(['h', 'x']), { releaseHeld: true }).map((d) => d.row_id), ['r', 'd'], 'a released row already in the ledger is not applied again')
+  assert.ok(src.includes("'--release-held'"), 'apply-staged has the release flag')
 }
 // REGRESSION (#441): a staged decision whose LEGO is gone is skipped, not a crash on sets.get(key).
 {
@@ -75,3 +81,13 @@ assert.equal(inScope({ course_code: 'fin_for_eng', status: 'draft' }), false)
   assert.equal(d[0].decision, 'skip', 'drift since the models read it → skipped')
   console.log('phrase-quality.test: all green')
 })().catch((e) => { console.error(e); process.exit(1) })
+// release-held (967): only held replacements still open in the ledger are counted, per course
+{
+  const os = require('os'), fs = require('fs'), path = require('path')
+  const d = fs.mkdtempSync(path.join(process.env.TMPDIR || os.tmpdir(), 'rh-'))
+  fs.mkdirSync(path.join(d, 'staged')); fs.mkdirSync(path.join(d, 'undo'))
+  fs.writeFileSync(path.join(d, 'staged', 'c1.jsonl'), [{ row_id: 'a', decision: 'replace', hold: 'audio' }, { row_id: 'b', decision: 'replace', hold: 'audio' }, { row_id: 'a', decision: 'replace', hold: 'audio' }, { row_id: 'z', decision: 'delete' }].map((x) => JSON.stringify(x)).join('\n'))
+  fs.writeFileSync(path.join(d, 'undo', 'c1.jsonl'), JSON.stringify({ row_id: 'b', action: 'replace' }) + '\n')
+  assert.deepEqual(require('./release-held.cjs').heldByCourse(d), { c1: 1 }, 'a row held twice counts once; a row already applied is no longer held')
+}
+console.log('release-held: ok')

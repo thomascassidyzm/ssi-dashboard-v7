@@ -153,8 +153,9 @@ async function push() {
   for (let i = 0; i < 4; i++) {
     let r = await sh('git', ['push', '-q', 'origin', `HEAD:${BRANCH}`])
     if (r.code === 0) { unpushed = 0; lastPush = Date.now(); return true }
-    r = await sh('git', ['pull', '-q', '--rebase', 'origin', BRANCH])
-    if (r.code !== 0) { say('pull --rebase failed:', r.stderr.slice(-300)); await sh('git', ['rebase', '--abort']) }
+    // merge, never rebase: append-only ledgers union-merge (ops/lanes/phrase-quality/.gitattributes)
+    r = await sh('git', ['pull', '-q', '--no-rebase', '--no-edit', 'origin', BRANCH])
+    if (r.code !== 0) { say('PULL FAILED — commits stay local until fixed:', r.stderr.slice(-300)); await sh('git', ['merge', '--abort']) }
   }
   say('push failed four times; commits kept locally, will retry'); return false
 }

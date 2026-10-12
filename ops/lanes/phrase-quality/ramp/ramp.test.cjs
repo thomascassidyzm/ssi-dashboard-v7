@@ -21,3 +21,17 @@ assert.equal(chooseAccount(R({ 'account-5': { blocked: true } }), U({ 'account-3
 assert.equal(chooseAccount(R({ 'account-5': { blocked: true } }), U({ 'account-3': { five_hour_pct: 69 } }), none), 'account-3', 'claude@ at 69% of five hours → used')
 assert.equal(chooseAccount(R({ 'account-5': { blocked: true } }), U({ 'account-3': { five_hour_pct: null } }), none), null, 'claude@ with no five-hour reading → wait')
 console.log('ramp.test: all green')
+
+// The run's pushes are merged with the lane's (and any release job's) appends to the same ledgers, never
+// refused: append-only lane files merge as a union (2026-10-12: 1,445 push attempts failed on a rebase
+// conflict in undo/*.jsonl while another job appended to the same courses).
+{
+  const { execFileSync } = require('child_process')
+  for (const f of ['undo/eng_for_ben.jsonl', 'staged/eng_for_ben.jsonl', 'ramp/log.jsonl']) {
+    const out = execFileSync('git', ['check-attr', 'merge', `ops/lanes/phrase-quality/${f}`], { cwd: require('path').join(__dirname, '../../../..') }).toString()
+    assert.ok(/merge: union/.test(out), `${f} merges as a union`)
+  }
+  const src = require('fs').readFileSync(require('path').join(__dirname, 'run-ramp.cjs'), 'utf8')
+  assert.ok(src.includes("'pull', '-q', '--no-rebase', '--no-edit'") && !src.includes("'--rebase', 'origin'"), 'push() merges, never rebases')
+  console.log('ramp.test: union merge ok')
+}
