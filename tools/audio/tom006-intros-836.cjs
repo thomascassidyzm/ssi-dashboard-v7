@@ -52,7 +52,8 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
   const identity = serviceIdentity('tom006-intros-836'); let eventId = null
   const event = async () => eventId || (eventId = await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-intros-836', operation: 'update', detail: { why: 'Tom 2026-10-12 job #836: Tom-006 faded presentation intros, seeds 101-668; old ids in ledger', ledger } }))
   let touched = 0; const BUMP_EVERY = Number(opt('--bump-every', 100))
-  const bump = async () => { if (dryRun || !touched) return; touched = 0; console.log('content_version', await bumpCourseVersion(db, course, 'patch')) }
+  // the pending count is cleared only AFTER the bump succeeded (lane review #838); on a failure it stays so the next touch or the finally retries, and the error is logged, not swallowed
+  const bump = async () => { if (dryRun || !touched) return; const n = touched; try { console.log('content_version', await bumpCourseVersion(db, course, 'patch')); touched -= n } catch (e) { console.error('BUMP FAILED (kept pending, will retry):', e.message); stopFlag = true } }
   const touch = async k => { touched += k; if (touched >= BUMP_EVERY) await bump() }
 
   if (has('--undo')) {
