@@ -70,8 +70,14 @@ const log = makeLog(ledger, dryRun)
       console.log(`${o.lego_id} re-pointed to recorded ${prior.newId} ${moved}/${slots.length}`); continue
     }
     if (dryRun) { console.log('would render', o.lego_id, o.newText, slots.length, 'slots'); n++; continue }
-    const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-794' },
-      body: JSON.stringify({ courseCode: course, role: 'presentation', text: o.newText, language: 'eng', voiceId: T6, voiceBound: true, job: '#794', purpose: `#794 Tom-006 intro ${o.lego_id}` }) })
+    // a dropped connection (Popty restarting under an auto-deploy) is retried: nothing is charged when the request never landed, and if it did land the same text
+    // is a library hit; a refusal (HTTP 4xx) is never retried
+    const body = JSON.stringify({ courseCode: course, role: 'presentation', text: o.newText, language: 'eng', voiceId: T6, voiceBound: true, job: '#794', purpose: `#794 Tom-006 intro ${o.lego_id}` })
+    let res
+    for (let attempt = 1; ; attempt++) {
+      try { res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-794' }, body }); break }
+      catch (e) { if (attempt >= 8) throw e; console.log(`fetch failed (${attempt}/8): ${e.message}; waiting for Popty`); await new Promise(r => setTimeout(r, 5000 * attempt)) }
+    }
     const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
     if (!res.ok || !r.ok) { log({ kind: 'refused', lego_id: o.lego_id, text: o.newText, r }); console.log('REFUSED — stopping, no retry:', o.lego_id, JSON.stringify(r)); break }
     const { rows: [ca] } = await pg.query('select id::text, voice_id, text, s3_key, duration_ms, created_at from course_audio where id=$1', [r.audioId])
