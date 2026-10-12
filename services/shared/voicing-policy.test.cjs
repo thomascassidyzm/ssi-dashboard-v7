@@ -91,6 +91,13 @@ describe('re-voice eligibility, scope and done', () => {
     expect(checkRevoice({ course: COURSES.spa_mx_for_eng, rows: ROWS, maxSeed: 40 })).toMatchObject({ allowed: true, maxSeed: 40 })
     expect(checkRevoice({ course: COURSES.spa_for_eng, rows: ROWS, maxSeed: 500 })).toMatchObject({ allowed: false, reason: 'revoice-out-of-scope' })
   })
+  it('an ENGLISH re-voice follows the 2026-10-12 ruling, not the target cast date (job #113)', () => {
+    // r-2026-10-12-ssi-audio-revision-of-existing-courses: Charlotte (f) / Tom-006 (m) for English in EXISTING courses, every seed.
+    for (const c of ['ita_for_eng', 'deu_for_eng', 'eng_for_spa']) expect(checkRevoice({ course: COURSES[c] || { course_code: c, known_lang: 'eng', target_lang: c.slice(0, 3) }, rows: ROWS, english: true })).toMatchObject({ allowed: true, maxSeed: null })
+    expect(checkRevoice({ course: COURSES.ita_for_eng, rows: ROWS, english: true, maxSeed: 40 })).toMatchObject({ allowed: true, maxSeed: 40 })
+    // a target-language re-voice is still the cast-date rule
+    expect(checkRevoice({ course: COURSES.ita_for_eng, rows: ROWS, maxSeed: 100 })).toMatchObject({ allowed: false, reason: 'revoice-pre-cutoff' })
+  })
   it('the cutoff is data: moving it moves eligibility', () => {
     expect(checkRevoice({ course: COURSES.deu_for_eng, rows: ROWS, cutoff: '2026-10-07' })).toMatchObject({ allowed: false, reason: 'revoice-done' })
   })

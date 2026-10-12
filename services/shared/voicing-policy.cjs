@@ -129,9 +129,13 @@ async function assertRenderAllowed({ text, language, voiceId, courseCode = null,
  * `rows` = voice_language_roles rows ({language, slot, rank, voice_id, assigned_by, notes, updated_at}).
  * @returns {{allowed:boolean, maxSeed:number|null, reason:string|null, message:string|null, castKey:string}}
  */
-function checkRevoice({ course, rows, maxSeed, cutoff = config.revoice.castCutoff }) {
+function checkRevoice({ course, rows, maxSeed, cutoff = config.revoice.castCutoff, english = false }) {
   const key = castKeyForCourse(course, 'target')
   const no = (reason, message) => ({ ...refuse(reason, message), maxSeed: null, castKey: key })
+  // ENGLISH re-voice (config.revoice.english, Tom 2026-10-12 ~20:20Z): English lines in EXISTING courses move to Charlotte (f) / Tom-006 (m),
+  // every seed, whatever the target's cast date — the cutoff and seeds-1-100 scope were rules for TARGET-language re-voices. Which voice is
+  // still resolveVoice's answer; this only says the re-voice may run. maxSeed null = the whole course.
+  if (english && config.revoice.english && config.revoice.english.ruling) return { ...OK, maxSeed: maxSeed == null ? null : maxSeed, castKey: 'eng', ruling: config.revoice.english.ruling }
   const mine = (rows || []).filter(r => (r.slot == null || r.slot === 'phrase') && Number(r.rank || 0) === 0 && /^cartesia_/.test(String(r.voice_id || '')) && gate.rowIsForKey(r, key))
   const tom = mine.filter(gate.isTomCastRow)
   if (!tom.length) return no('revoice-uncast', `${key} has no Cartesia cast Tom chose, so ${course.course_code} is not re-voiced.`)
@@ -161,10 +165,10 @@ async function castRowsWithDates() {
  * The gate every re-voice tool calls before it plans or renders. Returns the seed ceiling to use (default 1-100 when the
  * caller gave none); throws VoicingRefusal otherwise. `getCourse(code)` returns the courses row (COURSE_CAST_FIELDS).
  */
-async function assertRevoiceAllowed({ courseCode, maxSeed, getCourse }) {
+async function assertRevoiceAllowed({ courseCode, maxSeed, getCourse, english = false }) {
   const course = await (getCourse ? getCourse(courseCode) : gate.courseCastRow(courseCode))
   if (!course) throw new VoicingRefusal(`Voicing policy: no course row for ${courseCode}`, 'revoice-no-course')
-  const v = checkRevoice({ course: { course_code: courseCode, ...course }, rows: await castRowsWithDates(), maxSeed })
+  const v = checkRevoice({ course: { course_code: courseCode, ...course }, rows: english ? [] : await castRowsWithDates(), maxSeed, english })
   if (!v.allowed) throw new VoicingRefusal(v.message, v.reason)
   return v.maxSeed
 }

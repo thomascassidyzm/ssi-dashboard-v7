@@ -100,6 +100,10 @@ const TARGET_PASSES = {
 for (const [name, t] of Object.entries(TARGET_PASSES)) PASSES[name] = { sql: `(ca.voice_id !~ '^cartesia_')`, target: null, gender: null, ...t }
 // English known prompts for a course re-voiced onto Charlotte (Tom 2026-10-11): every non-Cartesia known clip, either gender, becomes Charlotte.
 // The route is library-first, so a Charlotte clip of the same words is linked free; only missing ones are rendered.
+// Tom 2026-10-12 ~20:20Z (job #113, r-2026-10-12-ssi-audio-revision-of-existing-courses): English as TARGET (eng_for_X) needs BOTH voices — target1 is
+// the female slot, so EVERY non-Charlotte English target1 clip becomes Charlotte whatever its old voice (slot gender, as resolveVoice 'english-target').
+// eng_for_X only; target2 (Tom-006) is #813's. A Tom-006 clip is never selected (neverFrom), and resolveVoice is asked before any render.
+PASSES['eng-target1'] = { sql: `(ca.voice_id not in ('${CHARLOTTE}','${CHARLOTTE_BARE}'))`, target: CHARLOTTE, gender: null, role: 'target1', engForXOnly: true }
 PASSES['known-charlotte'] = { sql: `(ca.voice_id !~ '^cartesia_')`, target: CHARLOTTE, gender: null, role: 'known' }
 /** The cast voice (full cartesia_ id) for a language/gender, rank 0 of the phrase slot; null when nobody has cast one. */
 async function castVoice(pg, lang, gender) {
@@ -326,11 +330,12 @@ async function main() {
 
   const passName = opt('--voices', 'general'); const pass = PASSES[passName]
   if (!pass) { console.error(`unknown --voices ${passName}; one of ${Object.keys(PASSES)}`); process.exit(1) }
+  if (pass.engForXOnly && !String(course).startsWith('eng_for_')) { console.error(`--voices ${passName} is for eng_for_X courses only (English as the target); ${course} is not one`); process.exit(1) }
   const roles = pass.role ? [pass.role] : opt('--roles', 'known,presentation').split(',')
   const budget = Number(opt('--budget', 0)); const dryRun = has('--dry-run')
   // Voicing policy (Tom 2026-10-11): only a variety cast in Cartesia on/after the cutoff, never one marked done, default scope seeds 1-100.
   let maxSeed
-  try { maxSeed = await require('../../services/shared/voicing-policy.cjs').assertRevoiceAllowed({ courseCode: course, maxSeed: parseSeedScope(opt('--seeds')) }) }
+  try { maxSeed = await require('../../services/shared/voicing-policy.cjs').assertRevoiceAllowed({ courseCode: course, maxSeed: parseSeedScope(opt('--seeds')), english: !pass.castGender }) }   // English passes follow the 2026-10-12 English ruling (job #113)
   catch (e) { console.error(e.message); process.exit(3) }
   let target = pass.target, language = 'eng'
   if (pass.castGender) {
