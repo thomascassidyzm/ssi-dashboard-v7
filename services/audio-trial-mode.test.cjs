@@ -120,4 +120,20 @@ describe('audio trial mode', () => {
     await expect(renderClip(ask({ trial: true, speed: 1.2 }), deps(svc))).rejects.toThrow(/between/)
     await expect(renderClip(ask({ speed: 0.8 }), deps(svc))).rejects.toThrow(/trial-only/)
   })
+
+  it('trial speed: explicit 1 overrides the voice\'s own speed; non-Cartesia providers refuse explicit speed', async () => {
+    const { svc } = door()
+    let seen = null
+    const spy = { speak: (t, p, c, n) => { seen = c; return svc.speak(t, p, c, n) } }
+    const slowVoice = async () => ({ language: 'deu', voiceId: `cartesia_${UNCAST}`, provider: 'cartesia', providerConfig: { apiKey: 'k', voiceId: UNCAST, locale: 'de-DE', phonologyGate: false, speed: 0.8, door: {} } })
+    await renderClip(ask({ trial: true, speed: 1 }), deps(svc, { ...spy, resolve: slowVoice }))
+    expect(seen.speed).toBe(1)
+    expect(seen.door.skipLibrary).toBe(true)
+    seen = null
+    await renderClip(ask({ trial: true }), deps(svc, { ...spy, resolve: slowVoice }))
+    expect(seen.speed).toBe(0.8)
+    expect(seen.door.skipLibrary).toBe(false)
+    const eleven = async () => ({ language: 'deu', voiceId: 'el_x', provider: 'elevenlabs', providerConfig: { apiKey: 'k', voiceId: 'x', door: {} } })
+    await expect(renderClip(ask({ trial: true, speed: 0.8 }), deps(svc, { resolve: eleven }))).rejects.toThrow(/Cartesia-only/)
+  })
 })

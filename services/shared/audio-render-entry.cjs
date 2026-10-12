@@ -154,9 +154,11 @@ async function trialRender(req, deps) {
   trialMode.assertTrialOpen(deps.now ? deps.now() : new Date())
   const r = await deps.resolve(req)
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
-  // A non-1.0 speed is a different recording of the same words, so the library (keyed on text+voice) must not answer it:
-  // door.skipLibrary. Speed 1.0 / unset keeps the normal trial path, library hit and all.
-  const slowed = req.speed != null && req.speed !== 1
+  // An EXPLICIT speed (1 included: the voice's own settings.speed may be 0.8) is a different recording of the same words, so the
+  // library (keyed on text+voice) must not answer it: door.skipLibrary. Unset keeps the normal trial path, library hit and all.
+  const slowed = req.speed != null
+  // Only Cartesia takes a native speed; tts-service never sends it to ElevenLabs, so honouring it would echo a speed we did not buy.
+  if (slowed && r.provider !== 'cartesia') throw new RenderRequestError(`native trial speed is Cartesia-only — ${r.provider} voices cannot take speed ${req.speed}`, 400, 'SPEED_PROVIDER_UNSUPPORTED')
   const cfg = { ...r.providerConfig, ...(slowed ? { speed: req.speed } : {}), door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, skipLibrary: slowed, job: req.job } }
   const out = await deps.speak(req.text, r.provider, cfg, 1)
   const echo = { trial: true, ...(slowed ? { speed: req.speed } : {}), purpose: req.purpose, requestedBy: req.requestedBy, voiceId: r.voiceId, language: r.language }
