@@ -186,3 +186,10 @@ describe('Tom-006 whole presentation intros (job #794, Tom 2026-10-12)', () => {
     expect(checkRender({ text: whole, language: 'eng', voiceId: 'cartesia_b478fefe-f18a-4f3a-b3d3-cbef52732e2e', course: COURSES.deu_for_eng, role: 'presentation' }).allowed).toBe(false)
   })
 })
+
+describe('Tom-006 whole intro: voice id spelling (review of 96611b7)', () => {
+  it('the bare uuid (no cartesia_ prefix) is the same voice as the prefixed one, as isCharlotte treats it', () => {
+    const whole = `The German for: 'I want', is: <break time="300ms"/>`
+    expect(checkRender({ text: whole, language: 'eng', voiceId: 'd293d509-eb96-4df4-8cfd-80a693aa49a9', course: COURSES.deu_for_eng, role: 'presentation' }).allowed).toBe(true)
+  })
+})
