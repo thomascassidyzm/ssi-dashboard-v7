@@ -50,4 +50,17 @@ describe('voice audit undo recovers from a surviving intent', () => {
     await audit.undo(null, db, file, { dryRun: false })
     expect(state).toEqual({ a: 'old-a', b: 'someone-else' })
   })
+  it('pairs a swap with its intent: a slot the swap omits is left alone even if the pointer equals `to`', async () => {
+    const fs = await import('node:fs'), os = await import('node:os'), path = await import('node:path')
+    const file = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'va-undo-')), 'l.jsonl')
+    const slot = (key) => ({ tbl: 'course_practice_phrases', col: 'target1_audio_id', key, from: 'old-' + key, course: 'fra_for_eng' })
+    // intent lists a,b; another writer moved b to NEW first, so the completed swap lists only a
+    fs.writeFileSync(file, [{ kind: 'intent', to: 'NEW', slots: [slot('a'), slot('b')] }, { kind: 'swap', to: 'NEW', slots: [slot('a')] }].map((r) => JSON.stringify(r)).join('\n') + '\n')
+    const state = { a: 'NEW', b: 'NEW' }
+    const db = { from: () => { let id, to; const q = { update: (u) => { to = u.target1_audio_id; return q }, eq: (c, v) => { if (c === 'id') id = v; if (c === 'target1_audio_id' && state[id] !== v) id = null; return q },
+      select: async () => { if (id) { state[id] = to; return { data: [{ id }], error: null } } return { data: [], error: null } } }; return q } }
+    require('../../services/shared/course-version.cjs').bumpCourseVersion = async () => ({})
+    await audit.undo(null, db, file, { dryRun: false })
+    expect(state).toEqual({ a: 'old-a', b: 'NEW' })
+  })
 })
