@@ -178,10 +178,10 @@ describe('the #738 deu_for_eng clone allowance is retired (superseded by audio t
 describe('Tom-006 whole presentation intros (job #794, Tom 2026-10-12)', () => {
   const T6 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
   const whole = `The German for: 'I want', is: <break time="300ms"/>`
-  it('allowed for deu_for_eng and spa_for_eng presentation only; every other voice, course and role still refused', () => {
+  it('allowed for the eleven premium X_for_eng courses (presentation only; #794, #836); every other voice, course and role still refused', () => {
     expect(checkRender({ text: whole, language: 'eng', voiceId: T6, course: COURSES.deu_for_eng, role: 'presentation' }).allowed).toBe(true)
     expect(checkRender({ text: whole, language: 'eng', voiceId: T6, course: COURSES.spa_for_eng, intro: true }).allowed).toBe(true)
-    expect(checkRender({ text: whole, language: 'eng', voiceId: T6, course: COURSES.por_br_for_eng, role: 'presentation' }).allowed).toBe(false)
+    expect(checkRender({ text: whole, language: 'eng', voiceId: T6, course: { course_code: 'hin_for_eng', known_lang: 'eng', target_lang: 'hin' }, role: 'presentation' }).allowed).toBe(false)
     expect(checkRender({ text: 'hello', language: 'eng', voiceId: T6, course: COURSES.deu_for_eng, role: 'known' }).allowed).toBe(true)   // #813: known prompts now allowed
     expect(checkRender({ text: whole, language: 'eng', voiceId: 'cartesia_b478fefe-f18a-4f3a-b3d3-cbef52732e2e', course: COURSES.deu_for_eng, role: 'presentation' }).allowed).toBe(false)
   })
@@ -206,7 +206,7 @@ describe('Tom-006 whole intros: French and Italian (job #794, Tom 2026-10-12)', 
   it('allowed for fra_for_eng and ita_for_eng presentation; por_br_for_eng still refused', () => {
     expect(checkRender({ text: `The French for: 'I want', is: <break time="300ms"/>`, language: 'eng', voiceId: T6, course: COURSES.fra_for_eng, role: 'presentation' }).allowed).toBe(true)
     expect(checkRender({ text: `The Italian for: 'I want', is: <break time="300ms"/>`, language: 'eng', voiceId: T6, course: COURSES.ita_for_eng, role: 'presentation' }).allowed).toBe(true)
-    expect(checkRender({ text: `The Portuguese for: 'I want', is: <break time="300ms"/>`, language: 'eng', voiceId: T6, course: COURSES.por_br_for_eng, role: 'presentation' }).allowed).toBe(false)
+    expect(checkRender({ text: `The Portuguese for: 'I want', is: <break time="300ms"/>`, language: 'eng', voiceId: T6, course: { course_code: 'hin_for_eng', known_lang: 'eng', target_lang: 'hin' }, role: 'presentation' }).allowed).toBe(false)
   })
 })
 
