@@ -155,13 +155,16 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
             if (ex) { newId = ex.id; how = 'reuse' }
             else {
               // a dropped connection (Popty restarting on a deploy) is not an answer: wait, check whether the render landed anyway (never re-send a text that succeeded), then retry
-              let res, r, ledgerHits = 0   // back-off 5s, 15s, then 60s on a transient spend-ledger timeout (Watson)
+              let res, r, ledgerHits = 0, transient = 0   // back-off 5s, 15s, then 60s on a transient spend-ledger timeout (Watson)
               for (let attempt = 0; attempt < 8 && !r; attempt++) {
                 try {
                   res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-813' },
                     body: JSON.stringify({ courseCode: q.course, role: q.role, text: q.tx, language: 'eng', voiceId: T6, voiceBound: true, job: '#813', purpose: `#813 Tom-006 male English, stage ${n} (seed ${q.pos})` }) })
                   r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
-                  if (r && r.code === 'LEDGER') {   // the shared spend ledger timed out (DB load): fail-closed, nothing was sent; wait and ask again rather than stop
+                  if (r && (r.code === 'RENDER_FAILED' || (r.error && /socket hang up|ECONNRESET/i.test(r.error)))) {   // a transient DB/connection failure AFTER the paid render may have left a clip in S3 with no row: look for the row first; only then ask again (max 3), never loop
+                    transient++; console.log('render answered with a transient failure, checking before any retry:', q.tx.slice(0, 40), String(r.error || '').slice(0, 120)); await new Promise(z => setTimeout(z, 30000))
+                    const landed = await t6Row(q.t); if (landed) r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; else if (transient < 3) { r = undefined; attempt = Math.min(attempt, 5) } else { r = { ok: false, error: 'persistent transient failure' } }
+                  } else if (r && r.code === 'LEDGER') {   // the shared spend ledger timed out (DB load): fail-closed, nothing was sent; wait and ask again rather than stop
                     const wait = [5000, 15000, 60000][Math.min(ledgerHits++, 2)]; console.log(`spend ledger unreachable, waiting ${wait / 1000}s then asking again:`, q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, wait)); r = undefined; attempt = Math.min(attempt, 5); if (stopFlag) return
                   } else if (r && (r.code === 'DAILY_TOTAL_CAP' || r.code === 'DAILY_CAP')) {   // Tom: guards are not for his directed jobs. Nothing was sent; ask again every 2 minutes (a signed raise or the next UTC day clears it) rather than stop
                     console.log('daily cap holding (' + r.code + '), asking again in 120s:', JSON.stringify(r).slice(0, 160)); log({ kind: 'cap-wait', code: r.code })
