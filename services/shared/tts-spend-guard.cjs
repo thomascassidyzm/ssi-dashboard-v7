@@ -125,7 +125,7 @@ function jobMatches(jobText, token) {
  * r-2026-10-04-the-tts-spend-guard-exists: "The guard is to protect runaways. Not work I've
  * commissioned"). Job #656 was refused by the 3-sends repeat limit. A render whose job text names
  * a "#NNN" that is a LIVE surface job skips the repeat limit's low number and the automatic
- * per-provider / daily soft caps (JS dailyCap, and the DB's 260k automatic total cap via
+ * per-provider / daily soft caps (JS dailyCap, and the DB's 1M automatic total cap (Tom 2026-10-07; was 260k) via
  * limits.commissioned). It still meets the hard daily ceiling (1,000,000 in tts_spend_reserve) and
  * a repeat ceiling of its own — 10 identical sends in 24h is a loop, not a commission.
  * The checker verifies ONLY that the #NNN names a live surface job (GET /api/jobs rows carry
