@@ -21,7 +21,7 @@ const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
 const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs')
 const { makeFaded, MARKER } = require('./tom006-fade-lib.cjs')
 const { defaultRange } = require('./tom006-intros-plan.cjs')
-const { ledgerState, undoPlan, undoRecordable, expandLegacyRows } = require('./tom006-ledger.cjs')   // the shared ledger reader (lane reviews #840/#841): pairs keyed oldId|newId
+const { ledgerState, undoPlanMoved, undoRecordable, expandLegacyRows } = require('./tom006-ledger.cjs')   // the shared ledger reader (lane reviews #840/#841): pairs keyed oldId|newId
 const T6 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }, has = f => argv.includes(f)
@@ -57,7 +57,7 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
     // ledger order (latest pair first) via the shared undoPlan; a slot moves back only if it is still on newId; an 'undo' row is recorded only when EVERY slot of the pair moved, so a failed one stays pending
     let n = 0, stuck = 0
     try {
-      for (const p of undoPlan(lines())) {
+      for (const p of undoPlanMoved(lines())) {
         if (dryRun) { console.log('would undo', p.lego_id, p.newId, '->', p.oldId, p.slots.length, 'slots'); n += p.slots.length; continue }
         let moved = 0; for (const sl of p.slots) if (await setPointer(db, sl, p.newId, p.oldId, await event())) moved++
         if (moved === p.slots.length && undoRecordable(moved)) log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved })

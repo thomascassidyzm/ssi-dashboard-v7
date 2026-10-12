@@ -72,3 +72,14 @@ describe('job #836 ledger rules', () => {
     expect(L.undoPlan(rows).map(p => p.oldId)).toEqual(['B', 'A'])
   })
 })
+
+describe('job #836 undo targets the slots that actually moved (lane review #847)', () => {
+  const L = require('./tom006-ledger.cjs')
+  it('a refused slot on the render row is not part of the undo, so one partial swap does not wedge --undo', () => {
+    const a = { tbl: 'course_legos', key: '1' }, b = { tbl: 'course_legos', key: '2' }
+    const rows = [{ kind: 'render', oldId: 'A', newId: 'N', slots: [a, b] }, { kind: 'partial', oldId: 'A', newId: 'N', slots: [a], wanted: 2 }]
+    expect(L.undoPlan(rows)[0].slots).toHaveLength(2)
+    expect(L.undoPlanMoved(rows)[0].slots).toEqual([a])
+    expect(L.undoPlanMoved([...rows, { kind: 'undo', oldId: 'A', newId: 'N' }])).toEqual([])
+  })
+})

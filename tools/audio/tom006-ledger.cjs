@@ -47,4 +47,15 @@ const expandLegacyRows = rows => rows.flatMap(e => {
   return [...by].map(([oldId, slots]) => ({ ...e, kind, oldId, slots }))
 })
 
-module.exports = { fadedAtRender, expandLegacyRows, fadePending, undoRecordable, ledgerState, ledgerPairs, undoPlan, unionSlots, makeLog }
+/** Lane review #847: what --undo must revert for a pair is the slots that ACTUALLY moved (the swap/partial rows' slots, since its last undo), not the intent row's wished-for slots — a refused slot would otherwise wedge the undo forever. */
+function undoPlanMoved(rows) {
+  const moved = new Map()   // pair -> union of moved slots since its last undo
+  for (const e of rows) {
+    const k = `${e.oldId}|${e.newId}`
+    if (e.kind === 'undo') moved.delete(k)
+    else if (['swap', 'partial'].includes(e.kind)) moved.set(k, unionSlots(moved.get(k), e.slots))
+  }
+  return undoPlan(rows).map(p => ({ ...p, slots: moved.get(`${p.oldId}|${p.newId}`) || [] })).filter(p => p.slots.length)
+}
+
+module.exports = { undoPlanMoved, fadedAtRender, expandLegacyRows, fadePending, undoRecordable, ledgerState, ledgerPairs, undoPlan, unionSlots, makeLog }
