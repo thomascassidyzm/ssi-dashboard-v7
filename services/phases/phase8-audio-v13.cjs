@@ -213,6 +213,7 @@ const {
 const { pickCastVoice, providerOfVoice, castVoiceForLanguage } = require('../shared/language-voice-cast.cjs')
 const castGate = require('../shared/voice-cast-gate.cjs')
 const { courseEnglishVoice } = require('../shared/course-english-voice.cjs')
+const { resolveVoice, sameVoice: sameResolvedVoice, loadCast: loadResolvedCast } = require('../shared/resolve-voice.cjs')
 const { providerForVoice } = require('../shared/render-voice-provider.cjs')
 const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
 // The BCP-47 steer a TARGET-side render sends. courses.target_lang carries the
@@ -5435,7 +5436,7 @@ async function linkClipForRender({ courseCode, text, language, role, voiceId, le
 // expansion): the caller names the exact words to be spoken.
 function buildRenderDeps() {
   const deps = {
-      resolve: async ({ courseCode, role, language, voiceId }) => {
+      resolve: async ({ courseCode, role, language, voiceId, trial }) => {
         if (isHumanVoiceCourse(courseCode)) throw new RenderRequestError(`${courseCode} is a human-voice-only course — no TTS (Tom's ruling 2026-07-25)`, 409, 'HUMAN_VOICE_COURSE')
         const { data: course } = await supabase.from('courses')
           .select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect')
@@ -5444,6 +5445,18 @@ function buildRenderDeps() {
         course.voice_config = await voiceConfigService.resolveVoiceConfig({ voiceConfig: course.voice_config, course, courseCode })
         const vc = course.voice_config || {}
         const settings = vc.voices?.[role] || {}
+        // ONE VOICE PER SLOT (Tom 2026-10-12 16:17Z, services/shared/resolve-voice.cjs): where the coded policy answers, the voice is
+        // resolveVoice's — never the caller's pick, the course's habit (courseEnglishVoice) or the stored config. A named voice that
+        // differs is refused HERE, before the library is asked, so no wrong-voice clip is ever linked; an uncast target refuses.
+        // A trial render (job #748) links nothing and is exempt.
+        if (!trial) {
+          const rv = resolveVoice({ course, role, language: language || roleNativeLanguage(role, course) }, await loadResolvedCast())
+          if (rv.status === 'refuse') throw new RenderRequestError(`${rv.message} (resolveVoice ${rv.rule})`, 403, 'VOICE_POLICY')
+          if (rv.status === 'voice') {
+            if (voiceId && !sameResolvedVoice(voiceId, rv.voiceId)) throw new RenderRequestError(`${courseCode} ${role} is ${rv.voiceId} by resolveVoice rule ${rv.rule}; ${voiceId} refused — voices are never hand-picked (tools/audio/voice-audit.cjs moves slots)`, 403, 'VOICE_POLICY')
+            voiceId = rv.voiceId
+          }
+        }
         // A named voice may arrive as the stored, provider-prefixed id (`cartesia_<uuid>`), as a re-record does.
         const named = /^(azure|elevenlabs|xai|cartesia)_(.+)$/.exec(voiceId || '')
         // Presentation clips are known-language audio (the intro is spoken to the learner in their own language),
