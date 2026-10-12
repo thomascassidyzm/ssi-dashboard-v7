@@ -92,8 +92,9 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
   const prior = new Map(); for (const e of lines()) if (e.kind === 'render' && e.text) prior.set(e.text, e)   // a crash after the intent re-points to the recorded id, no new take
   console.log(`${course} seeds ${from}-${to}: ${plan.length} legos, ${items.length} distinct texts${dryRun ? ' (DRY RUN)' : ''}`)
   let idx = 0
-  const worker = async () => {
-    while (!stopFlag) {
+  let cap = Number(opt('--concurrency', 3))
+  const worker = async wi => {
+    while (!stopFlag && wi < cap) {
       const it = items[idx++]; if (!it) return
       const slots = await slotsOf(it.oldClips, it.legoIds)
       if (!slots.length) { st.skipped++; continue }   // already moved (earlier run) or old clip no longer linked in range
@@ -109,9 +110,16 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
           let raw = await t6Row(it.newText), rawId = raw && raw.id
           if (!raw) {
             // a DROPPED CONNECTION (Popty restarts under auto-deploys) is retried; a refusal never is. A take that completed before the drop comes back as source:'library', free.
-            const res = await fetchRetry(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-836' },
-              body: JSON.stringify({ courseCode: course, role: 'presentation', text: it.newText, language: 'eng', voiceId: T6, voiceBound: true, job: JOB, purpose: `#836 Tom-006 intro ${it.first.lego_id}` }) })
-            const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+            // code LEDGER = the shared spend ledger timed out under DB load: transient, NOT a policy refusal. Back off 5s/15s/60s and retry the SAME text; if it repeats, run one fewer worker. Any other refusal still stops the run.
+            let res, r
+            for (let a = 0; ; a++) {
+              res = await fetchRetry(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-836' },
+                body: JSON.stringify({ courseCode: course, role: 'presentation', text: it.newText, language: 'eng', voiceId: T6, voiceBound: true, job: JOB, purpose: `#836 Tom-006 intro ${it.first.lego_id}` }) })
+              r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+              if (!(r && r.code === 'LEDGER') || a >= 3) break
+              if (a >= 1 && cap > 1) { cap--; console.log('ledger timeouts repeat: concurrency now', cap) }
+              console.log('LEDGER timeout, backing off', [5, 15, 60][a], 's'); await new Promise(x => setTimeout(x, [5, 15, 60][a] * 1000))
+            }
             if (!res.ok || !r.ok) { log({ kind: 'refused', lego_id: it.first.lego_id, text: it.newText, r }); console.log('REFUSED — stopping, no retry:', it.first.lego_id, JSON.stringify(r).slice(0, 400)); stopFlag = true; return }
             const { rows: [ca] } = await pg.query('select id::text, voice_id, s3_key, duration_ms from course_audio where id=$1', [r.audioId])
             if (!ca || ca.voice_id !== T6 || !ca.s3_key || ca.s3_key.startsWith('pending/') || !(ca.duration_ms > 500)) { log({ kind: 'verify-failed', text: it.newText, r, ca }); console.log('VERIFY FAILED — stopping:', it.first.lego_id, JSON.stringify(ca)); stopFlag = true; return }
@@ -134,7 +142,7 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
       await touch(moved.length); if (st.n === 1) await bump()   // the first clip bumps at once so the proof clip is in a version
     }
   }
-  try { await Promise.all(Array.from({ length: Number(opt('--concurrency', 3)) }, async () => { try { await worker() } catch (e) { stopFlag = true; console.error(e) } })) } finally { await bump(st.slots > 0); await pg.end() }   // BACKSTOP: one bump at the end of every run that moved a pointer, whatever the counters say
+  try { await Promise.all(Array.from({ length: cap }, async (_, wi) => { try { await worker(wi) } catch (e) { stopFlag = true; console.error(e) } })) } finally { await bump(st.slots > 0); await pg.end() }   // BACKSTOP: one bump at the end of every run that moved a pointer, whatever the counters say
   if (stopFlag && !dryRun) process.exitCode = 2   // any stop (refusal, verify/fade failure, worker crash, SIGTERM) is a non-zero exit: never 'done'
   console.log(`${course} ${stopFlag ? 'STOPPED' : dryRun ? 'DRY' : 'DONE'}: items ${st.n} (rendered ${st.rendered}, reused ${st.reused}, of which faded from an existing raw row ${st.fadedFromExisting}), slots ${st.slots}, chars ${st.chars}, already-moved/skipped ${st.skipped}`)
 })().catch(e => { console.error(e); process.exit(1) })
