@@ -23,7 +23,7 @@ const { judgeReplacement, loadSets } = require('./gate-change.cjs')
 
 async function main() {
   const course = process.argv[2]; const APPLY = process.argv.includes('--apply'), RELEASE = process.argv.includes('--release-held'), DELETE_KEPT = process.argv.includes('--delete-kept')
-  const floor = DELETE_KEPT ? 1 : USE_FLOOR
+  const floor = process.argv.includes('--floor0') ? 0 : DELETE_KEPT ? 1 : USE_FLOOR   // --floor0 (job #184, Tom: never a good reason to keep a bad phrase): a LEGO may end with 0 USE; the DB guard still refuses a LEGO with no practice phrase at all
   if (!course) { console.error('usage: apply-staged.cjs <course> [--apply]'); process.exit(2) }
   const stagedPath = path.join(__dirname, 'staged', `${course}.jsonl`)
   const ledgerPath = path.join(__dirname, 'undo', `${course}.jsonl`)
