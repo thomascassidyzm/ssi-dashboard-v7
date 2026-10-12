@@ -35,45 +35,62 @@ const setPointer = async (db, s, from, to, ev) => {
   const { data, error } = await db.from(s.tbl).update({ [col]: to, last_edit_event_id: ev }).eq('id', s.key).eq(col, from).select('id')
   if (error) throw new Error(error.message); return !!data && data.length === 1
 }
-// ledger state: slots currently moved (renders/swaps minus undos), per text
 const TABLES = ['course_seeds', 'course_legos', 'course_practice_phrases']
+const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
 ;(async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); await pg.query('set statement_timeout=0'); const db = supa()
-  const identity = serviceIdentity('tom006-english-813'), events = new Map(), touched = new Set()
-  const event = async course => { if (!events.has(course)) events.set(course, await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-english', operation: 'update', detail: { why: 'Tom 2026-10-12 job #813: English known prompts with no Cartesia clip -> Tom-006; old ids in ledger', ledger } })); return events.get(course) }
-  const bump = async () => { for (const c of touched) console.log('content_version', c, await bumpCourseVersion(db, c, 'patch')); touched.clear() }
+  const identity = serviceIdentity('tom006-english-813'), events = new Map(), touchedN = new Map()
+  const event = async course => { if (!events.has(course)) events.set(course, await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-english', operation: 'update', detail: { why: 'Tom 2026-10-12 job #813: male English (Tom-006) for lines with no other Cartesia clip; old ids in ledger', ledger } })); return events.get(course) }
+  // content_version is bumped AS WE GO (every BUMP_EVERY moved slots per course) and in a finally, so a crash never leaves moved pointers on an old version (lane review #829)
+  const BUMP_EVERY = 100
+  const touch = async (course, n) => { const v = (touchedN.get(course) || 0) + n; touchedN.set(course, v); if (v >= BUMP_EVERY) await bumpOne(course) }
+  const bumpOne = async course => { if (dryRun) return; touchedN.set(course, 0); console.log('content_version', course, await bumpCourseVersion(db, course, 'patch')) }
+  const bump = async () => { for (const [c, n] of [...touchedN]) if (n > 0) await bumpOne(c) }
 
   if (has('--undo')) {
-    // newest first; a swap row lists {tbl,key,course,from,to}; skip slots already undone (before-state assertion handles it too)
-    const rows = lines().filter(e => e.kind === 'swap'); let n = 0
-    for (const e of rows.reverse()) for (const s of e.slots) {
-      if (dryRun) { console.log('would undo', s.tbl, s.key, e.newId, '->', s.from); n++; continue }
-      if (await setPointer(db, s, e.newId, s.from, await event(s.course))) { touched.add(s.course); n++ }
-    }
-    if (!dryRun) { log({ kind: 'undo', n }); await bump() }
+    // The undo set is every INTENT row (journalled before any pointer moved), swap and legacy swap row: slot -> its ORIGINAL from-id; the before-check (newId must still be there) keeps it safe
+    const rows = lines(), orig = new Map()   // slotId -> { s, cur }
+    for (const e of rows) if (['intent', 'swap'].includes(e.kind)) for (const s of e.slots || []) { if (!s.from) continue; const k = slotId(s); if (!orig.has(k)) orig.set(k, { s, cur: e.newId }); else orig.get(k).cur = e.newId }
+    for (const e of rows) if (e.kind === 'undone') for (const k of e.keys) orig.delete(k)
+    let n = 0; const done = []
+    try {
+      for (const [k, { s, cur }] of [...orig].reverse()) {
+        if (dryRun) { console.log('would undo', k, cur, '->', s.from); n++; continue }
+        if (await setPointer(db, s, cur, s.from, await event(s.course))) { await touch(s.course, 1); n++ }
+        done.push(k)
+      }
+    } finally { if (!dryRun) { log({ kind: 'undone', keys: done }); await bump() } }
     console.log(dryRun ? 'would undo' : 'undone slots', n); return pg.end()
   }
 
-  const stageArg = opt('--stage', 'all'), stages = stageArg === 'all' ? [1, 2, 3] : [Number(stageArg)]
-  const dailyBudget = Number(opt('--daily-budget', 500000)), globalRoom = Number(opt('--global-room', 850000)), conc = Number(opt('--concurrency', 3)), plan = has('--plan')
+  const stageArg = opt('--stage', 'all'), conc = Number(opt('--concurrency', 6)), plan = has('--plan')
   let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log('SIGTERM: finishing in-flight clips, then exit') })
-  const BIG10 = ['fra', 'spa', 'deu', 'zho', 'ara', 'por', 'kor', 'jpn', 'ita']
+  const BIG = ['fra', 'spa', 'deu', 'zho', 'ara', 'por', 'kor', 'jpn', 'ita']
+  const X11 = ['fra_for_eng', 'spa_for_eng', 'spa_mx_for_eng', 'deu_for_eng', 'zho_for_eng', 'ara_for_eng', 'por_for_eng', 'por_br_for_eng', 'kor_for_eng', 'jpn_for_eng', 'ita_for_eng']
+  const HASH818 = ['deu_for_eng', 'spa_for_eng', 'fra_for_eng', 'ita_for_eng']   // seeds 1-100 known prompts belong to #818 (intros to #794)
   const { rows: courses } = await pg.query(`select course_code, known_lang, target_lang, pricing_tier from courses where status in ('released','beta') and (known_lang in ('eng','en') or target_lang in ('eng','en'))`)
+  const byCode = new Map(courses.map(c => [c.course_code, c]))
   const isEngTarget = c => ['eng', 'en'].includes(c.target_lang)
   const colOf = c => isEngTarget(c) ? 'target2_audio_id' : 'known_audio_id'
   const prem = courses.filter(c => c.pricing_tier === 'premium')
-  const lang3 = c => (isEngTarget(c) ? c.known_lang : c.target_lang)
-  const rankBig = c => { const i = BIG10.indexOf(String(c.course_code).replace(/^eng_for_/, '').split('_')[0]); return i < 0 ? 99 : i }
-  const stage3Order = [...prem.filter(c => !isEngTarget(c) && rankBig(c) < 99).sort((a, b) => rankBig(a) - rankBig(b) || a.course_code.localeCompare(b.course_code)),
-    ...prem.filter(c => isEngTarget(c)).sort((a, b) => rankBig(a) - rankBig(b) || a.course_code.localeCompare(b.course_code)),
-    ...prem.filter(c => !isEngTarget(c) && rankBig(c) === 99).sort((a, b) => a.course_code.localeCompare(b.course_code))]
+  const rankBig = c => { const i = BIG.indexOf(String(c.course_code).replace(/^eng_for_/, '').split('_')[0]); return i < 0 ? 99 : i }
   const furthest = new Map((await pg.query(`select e.course_id c, max(substring(e.highest_completed_lego_id from 'S(\\d+)')::int) mx from course_enrollments e join learners l on l.id=e.learner_id
       where e.highest_completed_lego_id is not null and e.total_practice_minutes >= 5 and coalesce(l.display_name,'') <> 'Tom' and coalesce(l.display_name,'') not ilike 'colombo%' group by 1`)).rows.map(r => [r.c, r.mx]))
-  const HASH818 = ['deu_for_eng', 'spa_for_eng', 'fra_for_eng', 'ita_for_eng']
-  const scopeOf = n => n === 1 ? prem.filter(c => !HASH818.includes(c.course_code)).map(c => ({ c, lo: 1, hi: 100 }))
-    : n === 2 ? courses.filter(c => (furthest.get(c.course_code) || 0) > 0).sort((a, b) => (furthest.get(b.course_code) || 0) - (furthest.get(a.course_code) || 0)).map(c => ({ c, lo: 1, hi: furthest.get(c.course_code) }))
-    : stage3Order.map(c => ({ c, lo: 101, hi: 668 }))
-  // texts that already have a Cartesia clip in some voice OTHER than Tom-006 are never touched (loaded once: a per-row NOT EXISTS is minutes per course)
+  const fu = c => furthest.get(c.course_code) || 0
+  const x11 = X11.map(k => byCode.get(k)).filter(Boolean)
+  const nonX11Prem = prem.filter(c => !X11.includes(c.course_code))
+  const engFor = nonX11Prem.filter(isEngTarget).sort((a, b) => rankBig(a) - rankBig(b) || a.course_code.localeCompare(b.course_code))
+  const otherPrem = nonX11Prem.filter(c => !isEngTarget(c))
+  // Tom 2026-10-12 (goal by the 23 Oct reset): the 11 premium X_for_eng courses, seeds 1-668, come before any eng_for_X work; earlier stages stay where they fall inside the 11.
+  const STAGES = {
+    1: () => x11.filter(c => !HASH818.includes(c.course_code)).map(c => ({ c, lo: 1, hi: 100 })),             // seeds 1-100 of the 11 (not #818's four)
+    2: () => x11.filter(c => fu(c) > 100).map(c => ({ c, lo: 101, hi: fu(c) })),                              // up to the furthest real learner, the 11
+    3: () => x11.map(c => ({ c, lo: 101, hi: 668 })),                                                         // the rest of 101-668, the 11
+    4: () => [...engFor, ...otherPrem].map(c => ({ c, lo: 1, hi: 100 })),                                     // seeds 1-100 of every other premium course
+    5: () => [...engFor, ...otherPrem, ...courses.filter(c => c.pricing_tier !== 'premium')].filter(c => fu(c) > 0).map(c => ({ c, lo: 1, hi: fu(c) })),   // up to the furthest learner, everything else with English
+    6: () => [...engFor, ...otherPrem].map(c => ({ c, lo: 101, hi: 668 })),                                   // 101-668, eng_for_X then the rest
+  }
+  const stages = stageArg === 'all' ? [1, 2, 3, 4, 5, 6] : stageArg.split(',').map(Number)
   const otherCartesia = new Set((await pg.query(`select distinct text_normalized t from course_audio where language in ('eng','en') and voice_id like 'cartesia\\_%' and voice_id <> $1`, [T6])).rows.map(r => r.t))
   const itemsFor = async ({ c, lo, hi }) => {
     const col = colOf(c), code = c.course_code
@@ -87,12 +104,13 @@ const TABLES = ['course_seeds', 'course_legos', 'course_practice_phrases']
       group by 1 order by 3, 1`, [code, lo, hi])
     return rows.filter(r => !otherCartesia.has(r.t)).map(r => ({ ...r, course: code, role: isEngTarget(c) ? 'target2' : 'known' }))
   }
-  if (plan) {
-    const seen = new Set(); let tot = 0, totc = 0
-    for (const n of stages) { let t = 0, ch = 0, lines = 0; const per = []
-      for (const sc of scopeOf(n)) { const it = (await itemsFor(sc)).filter(x => !seen.has(x.t)); it.forEach(x => seen.add(x.t)); const cc = it.reduce((a, x) => a + x.tx.length, 0); t += it.length; ch += cc; lines += it.reduce((a, x) => a + Number(x.lines), 0); per.push(`${sc.c.course_code}:${it.length}/${cc}`) }
-      console.log(`STAGE ${n}: new distinct texts ${t}, chars ${ch}, lines covered ${lines}\n  ${per.join('  ')}`); tot += t; totc += ch }
-    console.log('TOTAL distinct texts', tot, 'chars', totc); return pg.end()
+  const t6Row = async t => (await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id=$2 and s3_key is not null and s3_key not like 'pending/%' and duration_ms>200 order by created_at limit 1`, [t, T6])).rows[0]
+  if (plan) {   // count: distinct texts left to render vs texts that only need repointing (a Tom-006 row exists), chars, slots
+    const seen = new Set(); let T = { render: 0, repoint: 0, chars: 0, lines: 0 }
+    for (const n of stages) { const a = { render: 0, repoint: 0, chars: 0, lines: 0 }
+      for (const sc of STAGES[n]()) for (const x of (await itemsFor(sc))) { if (seen.has(x.t)) continue; seen.add(x.t); a.lines += Number(x.lines); if (await t6Row(x.t)) a.repoint++; else { a.render++; a.chars += x.tx.length } }
+      console.log(`STAGE ${n}: to render ${a.render} texts / ${a.chars} chars; repoint-only ${a.repoint} texts; lines covered ${a.lines}`); for (const k in T) T[k] += a[k] }
+    console.log('TOTAL', JSON.stringify(T)); return pg.end()
   }
   const oneSlotsOf = async t => {
     const { rows: olds } = await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id not like 'cartesia\\_%'`, [t])
@@ -105,52 +123,45 @@ const TABLES = ['course_seeds', 'course_legos', 'course_practice_phrases']
     }
     return out
   }
-  const memo = (fn, ms = 15000) => { let at = 0, v; return async () => { if (Date.now() - at > ms) { v = await fn(); at = Date.now() } return v } }
-  const mine = memo(async () => Number((await pg.query(`select coalesce(sum(chars),0) c from tts_spend_ledger where job like '%813%' and at >= date_trunc('day', now() at time zone 'utc') at time zone 'utc'`)).rows[0].c))
-  const globalToday = memo(async () => Number((await pg.query(`select coalesce(sum(chars),0) c from tts_spend_ledger where at >= date_trunc('day', now() at time zone 'utc') at time zone 'utc'`)).rows[0].c))
-  const sleepToTomorrow = async why => { const now = new Date(), next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 5)); console.log(`DAILY LIMIT (${why}): sleeping until ${next.toISOString()}`); while (Date.now() < next.getTime() && !stopFlag) await new Promise(r => setTimeout(r, 30000)) }
-  for (const n of stages) {
-    const st = { texts: 0, rendered: 0, reused: 0, chars: 0, lines: 0, slots: 0, started: new Date().toISOString() }
-    for (const sc of scopeOf(n)) {
-      const queue = await itemsFor(sc); let idx = 0
-      console.log(`stage ${n} ${sc.c.course_code} seeds ${sc.lo}-${sc.hi}: ${queue.length} texts`)
-      const worker = async () => {
-        while (!stopFlag) {
-          const q = queue[idx++]; if (!q) return
-          const { rows: [ex] } = await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id=$2 and s3_key is not null and s3_key not like 'pending/%' and duration_ms>200 order by created_at limit 1`, [q.t, T6])
-          let newId, how
-          if (ex) { newId = ex.id; how = 'reuse' }
-          else {
-            for (;;) {   // daily pacing: wait for tomorrow rather than drain the cap; leave room for other jobs
-              if (stopFlag) return
-              const [m, g] = [await mine(), await globalToday()]
-              if (m + q.tx.length > dailyBudget) { await sleepToTomorrow(`this job ${m}/${dailyBudget}`); continue }
-              if (g + q.tx.length > globalRoom) { await sleepToTomorrow(`all jobs ${g}/${globalRoom}`); continue }
-              break
+  // Tom 2026-10-12: the TTS guards are for runaway agents, not for a job he directs; this job holds a job-scoped approval (tools/tts-cap.cjs approve "#813"). No self-imposed pacing.
+  const finished = []
+  try {
+    for (const n of stages) {
+      const st = { texts: 0, rendered: 0, reused: 0, chars: 0, slots: 0, started: new Date().toISOString() }
+      for (const sc of STAGES[n]()) {
+        if (stopFlag) break
+        const queue = await itemsFor(sc); let idx = 0
+        console.log(`stage ${n} ${sc.c.course_code} seeds ${sc.lo}-${sc.hi}: ${queue.length} texts`)
+        if (dryRun) { st.texts += queue.length; continue }   // a dry run renders nothing, moves nothing, bumps nothing
+        const worker = async () => {
+          while (!stopFlag) {
+            const q = queue[idx++]; if (!q) return
+            const ex = await t6Row(q.t); let newId, how
+            if (ex) { newId = ex.id; how = 'reuse' }
+            else {
+              const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-813' },
+                body: JSON.stringify({ courseCode: q.course, role: q.role, text: q.tx, language: 'eng', voiceId: T6, voiceBound: true, job: '#813', purpose: `#813 Tom-006 male English, stage ${n} (seed ${q.pos})` }) })
+              const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+              if (!res.ok || !r.ok) { log({ kind: 'refused', t: q.t, r }); console.log('REFUSED — stopping, no retry:', JSON.stringify(r).slice(0, 400)); stopFlag = true; return }
+              const { rows: [ca] } = await pg.query('select id::text, voice_id, s3_key, duration_ms from course_audio where id=$1', [r.audioId])
+              if (!ca || ca.voice_id !== T6 || !ca.s3_key || ca.s3_key.startsWith('pending/') || !(ca.duration_ms > 200)) { log({ kind: 'verify-failed', t: q.t, r, ca }); console.log('VERIFY FAILED — stopping:', q.tx, JSON.stringify(ca)); stopFlag = true; return }
+              newId = r.audioId; how = r.source === 'library' ? 'reuse' : 'render'; st.chars += r.charsSpent || 0
+              log({ kind: 'render', t: q.t, newId, source: r.source, charsSpent: r.charsSpent || 0 })
             }
-            const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-813' },
-              body: JSON.stringify({ courseCode: q.course, role: q.role, text: q.tx, language: 'eng', voiceId: T6, voiceBound: true, job: '#813', purpose: `#813 Tom-006 male English, stage ${n} (seed ${q.pos})` }) })
-            const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
-            if (!res.ok || !r.ok) { log({ kind: 'refused', t: q.t, r }); console.log('REFUSED — stopping, no retry:', JSON.stringify(r)); stopFlag = true; return }
-            const { rows: [ca] } = await pg.query('select id::text, voice_id, s3_key, duration_ms from course_audio where id=$1', [r.audioId])
-            if (!ca || ca.voice_id !== T6 || !ca.s3_key || ca.s3_key.startsWith('pending/') || !(ca.duration_ms > 200)) { log({ kind: 'verify-failed', t: q.t, r, ca }); console.log('VERIFY FAILED — stopping:', q.tx, JSON.stringify(ca)); stopFlag = true; return }
-            newId = r.audioId; how = r.source === 'library' ? 'reuse' : 'render'; st.chars += r.charsSpent || 0
-            log({ kind: 'render', t: q.t, newId, source: r.source, charsSpent: r.charsSpent || 0 })
+            const slots = await oneSlotsOf(q.t)
+            log({ kind: 'intent', t: q.t, newId, slots, how })   // journalled BEFORE any pointer moves, reuse included: undo reads this
+            const moved = []
+            for (const s of slots) if (await setPointer(db, s, s.from, newId, await event(s.course))) { moved.push(s); await touch(s.course, 1) }
+            log({ kind: 'swap', t: q.t, newId, slots: moved, wanted: slots.length, reused: how === 'reuse', stage: n })
+            st.texts++; st[how === 'reuse' ? 'reused' : 'rendered']++; st.slots += moved.length
+            if (st.texts % 50 === 0) console.log(`stage ${n} ${q.course} seed ${q.pos}: texts ${st.texts} rendered ${st.rendered} reused ${st.reused} chars ${st.chars}`)
           }
-          const slots = await oneSlotsOf(q.t); const moved = []
-          for (const s of slots) if (await setPointer(db, s, s.from, newId, await event(s.course))) { moved.push(s); touched.add(s.course) }
-          log({ kind: 'swap', t: q.t, newId, slots: moved, wanted: slots.length, reused: how === 'reuse', stage: n })
-          st.texts++; st[how === 'reuse' ? 'reused' : 'rendered']++; st.lines += Number(q.lines); st.slots += moved.length
-          if (st.texts % 25 === 0) console.log(`stage ${n} ${q.course} seed ${q.pos}: texts ${st.texts} rendered ${st.rendered} reused ${st.reused} chars ${st.chars}`)
-          if (st.slots >= 400) { await bump(); st.slots = 0 }   // slots counter reused as bump trigger below
         }
+        try { await Promise.all(Array.from({ length: conc }, worker)) } finally { await bump() }
       }
-      await Promise.all(Array.from({ length: conc }, worker)); await bump()
+      const rep = `STAGE ${n} ${stopFlag ? 'STOPPED' : dryRun ? 'DRY' : 'DONE'}: texts ${st.texts}: rendered ${st.rendered}, reused ${st.reused} (${st.texts ? Math.round(100 * st.reused / st.texts) : 0}% reuse); slots repointed ${st.slots}; chars rendered ${st.chars}; started ${st.started}`
+      console.log(rep); if (!dryRun) fs.writeFileSync(path.join(dir, `stage-${n}.report.txt`), rep + '\n')
       if (stopFlag) break
     }
-    const rep = `STAGE ${n} ${stopFlag ? 'STOPPED' : 'DONE'}: texts handled ${st.texts}: rendered ${st.rendered}, reused ${st.reused} (reuse rate ${st.texts ? Math.round(100 * st.reused / st.texts) : 0}% of texts); chars rendered ${st.chars}; started ${st.started}`
-    console.log(rep); fs.writeFileSync(path.join(dir, `stage-${n}.report.txt`), rep + '\n')
-    if (stopFlag) break
-  }
-  await bump(); await pg.end()
+  } finally { await bump(); await pg.end() }
 })().catch(e => { console.error(e); process.exit(1) })
