@@ -4,7 +4,7 @@
  */
 import { describe, it, expect } from 'vitest'
 import rv from './resolve-voice.cjs'
-const { resolveVoice, checkPointer, POLICY, TOM_006, CHARLOTTE, TOM006_INTRO_COURSES, roleOfColumn, canonVoice } = rv
+const { resolveVoice, applyResolvedVoices, checkPointer, POLICY, TOM_006, CHARLOTTE, TOM006_INTRO_COURSES, roleOfColumn, canonVoice } = rv
 
 const TOM = 'thomas.cassidy+ssi@gmail.com'
 const DRAFT = 'draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue'
@@ -144,5 +144,28 @@ describe('checkPointer: a slot may point only at a clip in the resolved voice', 
     expect(roleOfColumn('presentation_audio_id')).toBe('presentation')
     expect(roleOfColumn('audio_id')).toBe(null)
     expect(canonVoice('D293D509-EB96-4DF4-8CFD-80A693AA49A9')).toBe(TOM_006)
+  })
+})
+
+describe('applyResolvedVoices: the course voice config phase8 renders and links from carries resolveVoice', () => {
+  it('overrides a stored Charlotte known and a stale target, keeps what already agrees, never touches a human-recorded role', () => {
+    const stored = { voices: {
+      known: { voiceId: '71a7ad14-091c-4e8e-a314-022ece01c121', provider: 'cartesia', settings: { speed: 0.9 } },
+      target1: { voiceId: 'cartesia_fra-f0', provider: 'cartesia' },
+      target2: { voiceId: 'azure_fr-FR-HenriNeural', provider: 'azure' },
+      presentation: { voiceId: 'human_take', provider: 'human' } } }
+    const { config, decisions } = applyResolvedVoices({ voiceConfig: stored, course: C.fra_for_eng, cast: CAST, humanRoles: new Set(['presentation']) })
+    expect(config.voices.known).toMatchObject({ voiceId: TOM_006, provider: 'cartesia', resolvedBy: 'english-known', settings: { speed: 1.0 } })
+    expect(config.voices.target1).toBe(stored.voices.target1)
+    expect(config.voices.target2).toMatchObject({ voiceId: 'cartesia_fra-m0' })
+    expect(config.voices.presentation).toBe(stored.voices.presentation)
+    expect(decisions.map((d) => d.role).sort()).toEqual(['known', 'target2'])
+  })
+  it('returns the same object when everything already agrees', () => {
+    const ok = { voices: { known: { voiceId: TOM_006 }, target1: { voiceId: 'cartesia_fra-f0' }, target2: { voiceId: 'cartesia_fra-m0' }, presentation: { voiceId: TOM_006 } } }
+    expect(applyResolvedVoices({ voiceConfig: ok, course: C.fra_for_eng, cast: CAST }).config).toBe(ok)
+  })
+  it('a human recording is never outranked at the pointer either', () => {
+    expect(checkPointer({ course: C.fra_for_eng, role: 'known', clip: { voice_id: 'human_aran', language: 'eng', origin: 'human' } }, CAST)).toMatchObject({ ok: true, human: true })
   })
 })

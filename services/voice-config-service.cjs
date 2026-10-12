@@ -13,6 +13,7 @@ const { createClient } = require('@supabase/supabase-js');
 const { bumpCourseVersion } = require('./shared/course-version.cjs');
 const { voiceSpellings } = require('./shared/clip-identity-lookup.cjs');
 const { selectProvider } = require('./shared/tts-provider-policy.cjs');
+const { applyResolvedVoices } = require('./shared/resolve-voice.cjs');
 const { applyLanguageCast, CAST_ROLES } = require('./shared/language-voice-cast.cjs');
 const voiceLoudness = require('./shared/voice-loudness.cjs');
 const consentGate = require('./shared/voice-consent-gate.cjs');
@@ -332,7 +333,15 @@ async function resolveVoiceConfig({ voiceConfig, course, courseCode }) {
   // The caller's SELECT may not have named the dialect columns; the cache has.
   c = withDialectFields(c, dialects);
 
-  const { config, decisions } = applyLanguageCast({ voiceConfig, course: c, roles, voices, humanRows });
+  const cast0 = applyLanguageCast({ voiceConfig, course: c, roles, voices, humanRows });
+  // THE COURSE VOICE IS resolveVoice's (Tom 2026-10-12 16:17Z, services/shared/resolve-voice.cjs): wherever the coded policy
+  // answers, it overrides the cast overlay and the stored config, so phase8 renders and links in the resolved voice. A role a
+  // human recorded is never outranked.
+  const humanRoles = new Set(cast0.decisions.filter((d) => d.source === 'human-recorded').map((d) => d.role));
+  const resolved = applyResolvedVoices({ voiceConfig: cast0.config, course: c, cast: { roles, voices }, humanRoles });
+  for (const d of resolved.decisions) console.log(`[VoiceConfig] ${c.course_code}: ${d.role} resolveVoice ${d.rule} → ${d.voiceId} (was ${d.replaced})`);
+  const config = resolved.decisions.length ? resolved.config : cast0.config;
+  const decisions = cast0.decisions;
   if (config !== voiceConfig) {
     for (const d of decisions.filter((x) => x.source === 'language-cast')) {
       console.log(`[VoiceConfig] ${c.course_code}: ${d.role} cast from ${d.language}/${d.gender} rank${d.rank} → ${d.voiceId} (was ${d.replaced})`);

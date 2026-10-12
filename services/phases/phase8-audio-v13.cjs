@@ -2162,10 +2162,14 @@ async function linkAudioIds(courseCode) {
   // asks the per-text question (services/shared/known-voice-gender.cjs), so a
   // course with byGender voices links through it and never through the RPC.
   try {
-    const { data: gCourse } = await supabase.from('courses').select('voice_config').eq('course_code', courseCode).single()
+    const { data: gCourse } = await supabase.from('courses').select('course_code, known_lang, target_lang, dialect, voice_pool_key, known_dialect, voice_config').eq('course_code', courseCode).single()
     const gVoices = (gCourse && gCourse.voice_config && gCourse.voice_config.voices) || {}
-    if (knownVoiceGender.roleHasGenderedVoices(gVoices, 'known') || knownVoiceGender.roleHasGenderedVoices(gVoices, 'presentation')) {
-      logger.info(`linkAudioIds: ${courseCode} has gendered known voices — linking through the per-text JS batch, not the one-voice RPC`)
+    // The RPC's voice-match reads the STORED voice_config. Where resolveVoice (or the cast) says otherwise — e.g. a stored Charlotte
+    // English known on an English-known course, which resolveVoice makes Tom-006 (Tom 2026-10-12) — the RPC would link the wrong
+    // voice into every empty slot, so such a course links through the JS batch, which asks the RESOLVED config.
+    const resolvedDiffers = !!gCourse && (await voiceConfigService.resolveVoiceConfig({ voiceConfig: gCourse.voice_config, course: gCourse, courseCode })) !== gCourse.voice_config
+    if (resolvedDiffers || knownVoiceGender.roleHasGenderedVoices(gVoices, 'known') || knownVoiceGender.roleHasGenderedVoices(gVoices, 'presentation')) {
+      logger.info(`linkAudioIds: ${courseCode} ${resolvedDiffers ? 'resolves to voices its stored config does not name' : 'has gendered known voices'} — linking through the per-text JS batch, not the one-voice RPC`)
       const result = await linkAudioIdsBatch(courseCode)
       const presResult = await linkPresentationAudio(courseCode)
       const compPresResult = await linkComponentPresentationAudio(courseCode)
@@ -2455,7 +2459,9 @@ async function linkPresentationAudio(courseCode) {
   // course_audio rows can carry the same tag and the wrong-voiced one can win.
   // Only a clip in the configured presentation voice may claim the slot.
   const { data: presCourse } = await supabase
-    .from('courses').select('voice_config').eq('course_code', courseCode).single()
+    .from('courses').select('course_code, known_lang, target_lang, dialect, voice_pool_key, known_dialect, voice_config').eq('course_code', courseCode).single()
+  // The RESOLVED presentation voice (resolveVoice, Tom 2026-10-12): Tom-006 for the Tom-006 intro courses, Charlotte elsewhere.
+  if (presCourse) presCourse.voice_config = await voiceConfigService.resolveVoiceConfig({ voiceConfig: presCourse.voice_config, course: presCourse, courseCode })
   const wantedPresVoice = resolveVoices(presCourse || {}).presentation
   const presLedger = new RelinkRefusalLedger(courseCode)
 

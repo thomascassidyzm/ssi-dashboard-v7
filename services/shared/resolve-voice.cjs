@@ -147,12 +147,43 @@ function resolveVoice({ course, role, language = null, gender = null } = {}, cas
  */
 function checkPointer({ course, role, clip, gender = null }, cast) {
   if (!clip) return { ok: false, reason: 'no-clip', message: 'no clip to point at' }
+  // A HUMAN RECORDING is never outranked by a TTS policy (Tom 2026-08-31, language-voice-cast.cjs human-voice guard).
+  if (clip.origin === 'human') return { ok: true, human: true, resolution: null }
   const res = resolveVoice({ course, role, language: clip.language, gender }, cast)
   if (res.status === 'no-ruling') return { ok: true, resolution: res }
   if (res.status === 'refuse') return { ok: false, reason: res.reason, resolution: res, message: `${course.course_code} ${role}: ${res.message}` }
   if (sameVoice(clip.voice_id, res.voiceId)) return { ok: true, resolution: res }
   return { ok: false, reason: 'disagrees', resolution: res,
     message: `${course.course_code} ${role}: clip voice ${clip.voice_id} is not the resolved voice ${res.voiceId} (${res.rule}) — use tools/audio/voice-audit.cjs` }
+}
+
+/**
+ * Overlay resolveVoice onto a course's voice config, so everything that reads the config to RENDER or LINK (phase8 /generate,
+ * its linkers, the relink voice guard) asks for the resolved voice. Pure. Roles a human recorded (`humanRoles`) are left alone —
+ * a recording is never outranked. Returns the same object when nothing changes, plus one decision per role that moved.
+ */
+function applyResolvedVoices({ voiceConfig, course, cast, humanRoles = new Set() }) {
+  const decisions = []
+  if (!course) return { config: voiceConfig, decisions }
+  let next = null
+  for (const role of SLOT_ROLES) {
+    if (humanRoles.has(role)) continue
+    const res = resolveVoice({ course, role }, cast)
+    if (res.status !== 'voice') continue
+    const cur = voiceConfig && voiceConfig.voices && voiceConfig.voices[role]
+    if (cur && sameVoice(cur.voiceId || cur.voice_id, res.voiceId)) continue
+    if (!next) next = { ...(voiceConfig || {}), voices: { ...((voiceConfig && voiceConfig.voices) || {}) } }
+    next.voices[role] = {
+      ...(cur || {}),
+      voiceId: res.voiceId,
+      provider: String(res.voiceId).split('_')[0],
+      // the stored speed corrected the REPLACED voice's pace; it does not travel (as applyLanguageCast)
+      settings: { ...((cur && cur.settings) || {}), speed: 1.0 },
+      resolvedBy: res.rule,
+    }
+    decisions.push({ role, rule: res.rule, voiceId: res.voiceId, replaced: (cur && (cur.voiceId || cur.voice_id)) || null })
+  }
+  return { config: next || voiceConfig, decisions }
 }
 
 class VoicePointerRefusal extends Error {
@@ -206,7 +237,7 @@ async function loadCourse(db, courseCode) {
 async function assertPointer(db, { courseCode, col, to }) {
   const role = roleOfColumn(col)
   if (!role || !to) return
-  const { data: clip, error } = await db.from('course_audio').select('id, voice_id, language').eq('id', to).maybeSingle()
+  const { data: clip, error } = await db.from('course_audio').select('id, voice_id, language, origin').eq('id', to).maybeSingle()
   if (error) throw new VoicePointerRefusal(`resolveVoice: cannot read clip ${to} (${error.message})`, 'clip-unreadable')
   const v = checkPointer({ course: await loadCourse(db, courseCode), role, clip }, await loadCast(db))
   if (!v.ok) throw new VoicePointerRefusal(v.message, v.reason)
@@ -228,7 +259,7 @@ async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEve
 }
 
 module.exports = {
-  resolveVoice, checkPointer, assertPointer, setSlotPointer, loadCast, loadCourse, useCast, pickCast,
+  resolveVoice, applyResolvedVoices, checkPointer, assertPointer, setSlotPointer, loadCast, loadCourse, useCast, pickCast,
   canonVoice, sameVoice, roleOfColumn, VoicePointerRefusal,
   POLICY, SLOT_ROLES, SLOT_GENDER, TOM_006, CHARLOTTE, TOM006_INTRO_COURSES, EXPECTED_ENGLISH_TARGET, COURSE_FIELDS,
 }
