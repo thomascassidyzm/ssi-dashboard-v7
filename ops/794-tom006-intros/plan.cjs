@@ -3,6 +3,9 @@ require('dotenv').config({ path: require('path').join(__dirname, '../../.env.psq
 const { Client } = require('pg')
 const fs = require('fs')
 const course = process.argv[2]
+// Hand-written explanatory intros (text the template regex cannot parse, ending in 'is:'): Tom ruled German's two stay alone; Italian's S0085L01 is re-voiced whole
+// with the break tag appended (Watson, lane review #817), else seed 85 would silently stay in the old voice.
+const HANDWRITTEN = new Set(['ita_for_eng'])
 const LANG = { deu_for_eng: 'German', spa_for_eng: 'Spanish', fra_for_eng: 'French', ita_for_eng: 'Italian' }
 ;(async () => {
   const c = new Client({ connectionString: process.env.DATABASE_URL }); await c.connect()
@@ -19,7 +22,8 @@ const LANG = { deu_for_eng: 'German', spa_for_eng: 'Spanish', fra_for_eng: 'Fren
     const x = m ? m[2] : bare ? bare[2] : null, ctx = m ? m[3] : null
     const score = scores[l.lego_id] ?? null
     const keepAsIn = !!(ctx && score >= 3 && score <= 5)
-    const newText = x == null ? null : `The ${LANG[course]} for: '${x}'${keepAsIn ? `, as in — '${ctx}'` : ''}, is: <break time="300ms"/>`
+    const handText = x == null && text && HANDWRITTEN.has(course) && /is:\s*$/.test(text) ? text.replace(/\s+$/, '') + ' <break time="300ms"/>' : null
+    const newText = handText || (x == null ? null : `The ${LANG[course]} for: '${x}'${keepAsIn ? `, as in — '${ctx}'` : ''}, is: <break time="300ms"/>`)
     return { id: l.id, lego_id: l.lego_id, seed: l.seed_number, oldClip: l.presentation_audio_id, oldVoice: cur && cur.voice_id, oldText: text, x, ctx, score, keepAsIn, newText }
   })
   fs.writeFileSync(`${__dirname}/${course}.plan.json`, JSON.stringify(out, null, 1))
