@@ -35,6 +35,17 @@ const bare = v => String(v || '').replace(/^cartesia_/, '')
 const isCharlotte = v => bare(v) === bare(config.englishVoice)
 const isXai = v => /^(xai_|grok)/i.test(String(v || ''))
 
+/**
+ * A live TEMPORARY trial allowance (config.trialAllowances) for this course/voice, presentation slot only, not yet expired.
+ * It lifts ONLY the Charlotte-only refusal; the splice rules and the xAI ban still apply. `now` is injectable for tests.
+ */
+function trialAllowed(course, voiceId, now = new Date()) {
+  const today = now.toISOString().slice(0, 10)
+  return (config.trialAllowances || []).some(a =>
+    a.course === (course && course.course_code) && a.role === 'presentation' && today <= a.expires &&
+    a.voices.some(v => bare(v) === bare(voiceId)))
+}
+
 /** The course is taught FROM English (English is its known side, not its target). */
 function isEnglishKnown(course) {
   const known = lc(course && course.known_lang)
@@ -68,7 +79,7 @@ const FULL_INTRO = /^\s*the\s+[\p{L}][\p{L}' -]*?\s+for\b/iu
  * Pure. May this NEW render happen under the voicing rules? `course` is the courses row (COURSE_CAST_FIELDS) or null (no course).
  * @param {{text:string, language:string, voiceId:string, course?:object|null, intro?:boolean, role?:string|null, audition?:boolean}} r
  */
-function checkRender({ text, language, voiceId, course = null, intro = false, role = null, audition = false }) {
+function checkRender({ text, language, voiceId, course = null, intro = false, role = null, audition = false, now }) {
   if (isXai(voiceId)) return refuse('xai-banned', `${voiceId} is an xAI voice — xAI is banned on every path (Tom 2026-10-10).`)
   const lang = lc(language)
   if (audition || !course || (lang !== 'eng' && lang !== 'en') || !isEnglishKnown(course)) return OK
@@ -76,7 +87,7 @@ function checkRender({ text, language, voiceId, course = null, intro = false, ro
   const knownSide = presentation || role === 'known' || role == null
   if (!knownSide) return OK
   // English as the known side is Charlotte, for every course taught from English (Tom 2026-09-23, 2026-10-11).
-  if (!isCharlotte(voiceId)) return refuse('english-not-charlotte', `the English known side of ${course.course_code || 'this course'} renders in Charlotte only; ${voiceId} refused.`)
+  if (!isCharlotte(voiceId) && !(presentation && trialAllowed(course, voiceId, now))) return refuse('english-not-charlotte', `the English known side of ${course.course_code || 'this course'} renders in Charlotte only; ${voiceId} refused.`)
   if (!presentation) return OK
   const name = introLanguageName(course)
   const fragment = introFragmentText(name)
@@ -151,4 +162,4 @@ async function assertRevoiceAllowed({ courseCode, maxSeed, getCourse }) {
   return v.maxSeed
 }
 
-module.exports = { config, VoicingRefusal, checkRender, assertRenderAllowed, checkRevoice, assertRevoiceAllowed, introSplicePlan, useCourseRow, introFragmentText, introLanguageName, isEnglishKnown, useCastRowsWithDates }
+module.exports = { trialAllowed, config, VoicingRefusal, checkRender, assertRenderAllowed, checkRevoice, assertRevoiceAllowed, introSplicePlan, useCourseRow, introFragmentText, introLanguageName, isEnglishKnown, useCastRowsWithDates }
