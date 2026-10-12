@@ -1,0 +1,5132 @@
+{
+ "course": "afr_for_eng",
+ "seeds": {
+  "10": {
+   "seed": 10,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "not",
+     "target": "nie"
+    },
+    {
+     "idx": 2,
+     "known": "can",
+     "target": "kan"
+    },
+    {
+     "idx": 3,
+     "known": "the whole sentence",
+     "target": "die hele sin"
+    },
+    {
+     "idx": 4,
+     "known": "i'm not sure if",
+     "target": "ek is nie seker of"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "can remember",
+      "target": "kan onthou",
+      "components": [
+       {
+        "known": "can",
+        "target": "kan"
+       },
+       {
+        "known": "remember",
+        "target": "onthou"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "I can remember",
+       "target": "Ek kan onthou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Clean fragment that extends naturally into a sentence. Ek kan onthou matches the known exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "what I can remember",
+       "target": "wat ek kan onthou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment built from taught wat plus the LEGO. Correct verb-final order.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "something I can remember",
+       "target": "iets wat ek kan onthou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural English with a zero relative. Iets wat ek kan onthou is correct Afrikaans with relative wat and a verb-final clause.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "a word I can remember",
+       "target": "'n woord wat ek kan onthou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment. 'n woord wat ek kan onthou is grammatical, verb-final and uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "how I can remember",
+       "target": "hoe ek kan onthou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment that extends easily. Hoe ek kan onthou has correct subordinate word order.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "someone else can remember",
+       "target": "iemand anders kan onthou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment using the taught iemand anders. Iemand anders kan onthou is correct.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I want to say something I can remember.",
+       "target": "Ek wil iets sê wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural sentence on both sides. The extraposed relative clause after sê is normal Afrikaans.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to explain what I can remember.",
+       "target": "Ek probeer verduidelik wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural English. Ek probeer verduidelik wat ek kan onthou is natural colloquial Afrikaans with correct order.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to say what I can remember now.",
+       "target": "Ek wil nou sê wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "In English, 'now' most naturally attaches to 'remember', but the target puts nou with sê. The two sides do not say the same thing.",
+       "keep": false,
+       "why": "Opus: bad — In English, 'now' most naturally attaches to 'remember', but the target puts nou with sê. The two sides do not say the same thing."
+      },
+      {
+       "role": "use",
+       "known": "I'm going to practise with someone else what I can remember.",
+       "target": "Ek gaan met iemand anders oefen wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The English is clunky because the object is shifted after 'with someone else'. That is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The English is clunky because the object is shifted after 'with someone else'. That is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to practise what I can remember today.",
+       "target": "Ek probeer vandag oefen wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "In English, 'today' reads as attaching to 'remember', but the target has vandag oefen. The meaning is ambiguous or mismatched.",
+       "keep": false,
+       "why": "Opus: bad — In English, 'today' reads as attaching to 'remember', but the target has vandag oefen. The meaning is ambiguous or mismatched."
+      },
+      {
+       "role": "use",
+       "known": "I want to learn a word I can remember today.",
+       "target": "Ek wil vandag 'n woord leer wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "In English, 'today' attaches to 'remember', but the target puts vandag with leer. The meaning is mismatched and the sentence is semantically odd.",
+       "keep": false,
+       "why": "Opus: bad — In English, 'today' attaches to 'remember', but the target puts vandag with leer. The meaning is mismatched and the sentence is semantically odd."
+      },
+      {
+       "role": "use",
+       "known": "I'm going to practise with you today what I can remember.",
+       "target": "Ek gaan vandag met jou oefen wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The English is clunky because the object is shifted after 'with you today'. That is not natural tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The English is clunky because the object is shifted after 'with you today'. That is not natural tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I want to say something in Afrikaans that I can remember.",
+       "target": "Ek wil iets in Afrikaans sê wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural on both sides. Ek wil iets in Afrikaans sê wat ek kan onthou has correct word order.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to learn a word that I can remember.",
+       "target": "Ek gaan 'n woord leer wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural sentence. Ek gaan 'n woord leer wat ek kan onthou is grammatical and matches the known.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "to say what I can remember",
+       "target": "te sê wat ek kan onthou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "A grammatical fragment that uses only taught pieces (te sê, wat, ek) plus the LEGO. It extends naturally into a full sentence, and the known and target sides match.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "to practise what I can remember",
+       "target": "oefen wat ek kan onthou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The known side says 'to practise' but the target has bare 'oefen' with no 'te', so the infinitive marker is missing and the pair doesn't match the way P1 does. The fragment is also ambiguous out of context.",
+       "keep": false,
+       "why": "Opus: bad — The known side says 'to practise' but the target has bare 'oefen' with no 'te', so the infinitive marker is missing and the pair doesn't match the way P1 does. The fragment is also ambiguous out of context."
+      },
+      {
+       "role": "use",
+       "known": "I want to say what I can remember.",
+       "target": "Ek wil sê wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Grammatical and natural in both languages, and the two sides match exactly. Uses only taught material plus the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to say what I can remember.",
+       "target": "Ek gaan sê wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'Ek gaan sê wat ek kan onthou' is natural and correct, and it matches the known side exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to say what I can remember.",
+       "target": "Ek probeer sê wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'Ek probeer sê' is natural colloquial Afrikaans and matches the taught 'i'm trying to' = 'ek probeer'. The sentence is complete and accurate.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to explain what I can remember.",
+       "target": "Ek wil verduidelik wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural, grammatical and an exact match. Uses only taught material plus the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to practise what I can remember.",
+       "target": "Ek gaan oefen wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Grammatical and plausible in a language-learning context. 'Ek gaan oefen wat ek kan onthou' matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to say something I can remember.",
+       "target": "Ek probeer iets sê wat ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The English 'trying to say something I can remember' is semantically clunky, so it is not tier 1. It also relies on an implied relative that surfaces as 'wat' in Afrikaans, which weakens the one-to-one tileability.",
+       "keep": false,
+       "why": "Opus: bad — The English 'trying to say something I can remember' is semantically clunky, so it is not tier 1. It also relies on an implied relative that surfaces as 'wat' in Afrikaans, which weakens the one-to-one tileability."
+      },
+      {
+       "role": "use",
+       "known": "I'm going to explain how I can remember.",
+       "target": "Ek gaan verduidelik hoe ek kan onthou.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'Explain how I can remember' is unnatural; a speaker would say 'how I remember'. This is the 'possible but clunky' case, not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Explain how I can remember' is unnatural; a speaker would say 'how I remember'. This is the 'possible but clunky' case, not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  },
+  "27": {
+   "seed": 27,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "too much",
+     "target": "te veel"
+    },
+    {
+     "idx": 2,
+     "known": "time",
+     "target": "tyd"
+    },
+    {
+     "idx": 3,
+     "known": "to take",
+     "target": "neem"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "A",
+      "known": "time",
+      "target": "tyd",
+      "components": null,
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0027L02B01",
+       "role": "build",
+       "known": "too much time",
+       "target": "te veel tyd",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact match, tileable and natural.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. It pairs the LEGO with a taught LEGO, as the seed does.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0027L02B02",
+       "role": "build",
+       "known": "more time",
+       "target": "meer tyd",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Short, natural and correct.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct, short and natural. It extends easily into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0027L02B03",
+       "role": "build",
+       "known": "a lot of time",
+       "target": "baie tyd",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'a lot of' is not a taught gloss; 'baie' is taught as 'very/a lot', so the known side breaks ZUT.",
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'baie tyd' = 'a lot of time'. The known side uses the taught gloss plus a glue word.",
+       "keep": false,
+       "why": "Sonnet: bad — 'a lot of' is not a taught gloss; 'baie' is taught as 'very/a lot', so the known side breaks ZUT."
+      },
+      {
+       "id": "afr_for_eng:S0027L02U01",
+       "role": "use",
+       "known": "too much time is not good",
+       "target": "te veel tyd is nie goed nie",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Correct double negation 'nie goed nie' and natural.",
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, with correct double negation. It is a complete, natural sentence.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "id": "afr_for_eng:S0027L02U03",
+       "role": "use",
+       "known": "why do you want more time?",
+       "target": "waarom wil jy meer tyd?",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'wil jy meer tyd' lacks 'hê', so the target is not properly grammatical.",
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'wil' with a noun object needs 'hê'. It should be 'waarom wil jy meer tyd hê?', which P14 and P21 already cover.",
+       "keep": false,
+       "why": "Sonnet: bad — 'wil jy meer tyd' lacks 'hê', so the target is not properly grammatical."
+      },
+      {
+       "id": "afr_for_eng:S0027L02U04",
+       "role": "use",
+       "known": "I want to spend more time speaking Afrikaans",
+       "target": "ek wil meer tyd Afrikaans praat",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'spend' is not taught and is not reflected in the target. 'meer tyd Afrikaans praat' is also unnatural.",
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'spend' is not taught. The Afrikaans is ungrammatical and does not render 'spend time speaking'.",
+       "keep": false,
+       "why": "Sonnet: bad — 'spend' is not taught and is not reflected in the target. 'meer tyd Afrikaans praat' is also unnatural."
+      },
+      {
+       "role": "build",
+       "known": "time with you",
+       "target": "tyd met jou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Valid fragment that extends naturally, e.g. 'ek wil tyd met jou hê'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "time with me",
+       "target": "tyd met my",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Valid fragment, correct and natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "time to speak",
+       "target": "tyd om te praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct 'om te' infinitive, natural.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "time to learn",
+       "target": "tyd om te leer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "time to answer",
+       "target": "tyd om te antwoord",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. It echoes the seed.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "time to practise",
+       "target": "tyd om te oefen",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I want more time today",
+       "target": "ek wil vandag meer tyd hê",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct word order with 'hê' at the end. Natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "why do you want more time with me?",
+       "target": "waarom wil jy meer tyd met my hê?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "everyone wants more time",
+       "target": "almal wil meer tyd hê",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, and a complete sentence.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure if more time is good",
+       "target": "ek is nie seker of meer tyd goed is nie",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The 'of' clause is correctly verb-final and the double negation is correct. Natural enough.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to answer quickly because too much time is not good",
+       "target": "ek probeer vinnig antwoord omdat te veel tyd nie goed is nie",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'because too much time is not good' is a stilted rationale, not tier-1 natural. 'probeer vinnig antwoord' without 'om te' is also less standard.",
+       "keep": false,
+       "why": "Opus: bad — 'because too much time is not good' is a stilted rationale, not tier-1 natural. 'probeer vinnig antwoord' without 'om te' is also less standard."
+      },
+      {
+       "role": "use",
+       "known": "I like to practise with you but too much time is not good",
+       "target": "ek hou daarvan om met jou te oefen, maar te veel tyd is nie goed nie",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Semantically vague and clunky in both languages: too much time of what?",
+       "keep": false,
+       "why": "Opus: bad — Semantically vague and clunky in both languages: too much time of what?"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to practise now because I want more time tomorrow",
+       "target": "ek gaan nou oefen omdat ek môre meer tyd wil hê",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct verb-final subordinate clause ('môre meer tyd wil hê'). The logic is plausible and the sentence is natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he's going to come back later but I want more time",
+       "target": "hy gaan later terugkom, maar ek wil meer tyd hê",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, with correct word order. A natural single sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "why do you want more time and why now?",
+       "target": "waarom wil jy meer tyd hê, en waarom nou?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, and a single sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 5,
+     "setGates": {}
+    }
+   }
+  },
+  "42": {
+   "seed": 42,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "night",
+     "target": "nag"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "M",
+      "known": "last night",
+      "target": "verlede nag",
+      "components": [
+       {
+        "known": "last",
+        "target": "verlede"
+       },
+       {
+        "known": "night",
+        "target": "nag"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0042L01B01",
+       "role": "build",
+       "known": "last night",
+       "target": "verlede nag",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, correct and natural as a BUILD.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Bare LEGO; correct mapping.",
+       "keep": false,
+       "why": "gate: bareLego"
+      },
+      {
+       "id": "afr_for_eng:S0042L01B03",
+       "role": "build",
+       "known": "last night I started",
+       "target": "verlede nag het ek begin",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Verb-second inversion after the fronted time phrase is correct, and it extends naturally into a full sentence.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct V2 inversion (het ek). Short fragment that extends naturally. Uses only taught material.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "id": "afr_for_eng:S0042L01U01",
+       "role": "use",
+       "known": "I was starting to feel better than last night",
+       "target": "ek het begin om beter te voel as verlede nag",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "It is the seed sentence, with correct 'het begin om ... te voel' and natural wording.",
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Seed sentence. Grammatical and natural, with an exact match between known and target.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "id": "afr_for_eng:S0042L01U02",
+       "role": "use",
+       "known": "I feel better than last night",
+       "target": "ek voel beter as verlede nag",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Correct, natural, and uses only taught words.",
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural on both sides. 'beter as' is correct for 'better than'.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "id": "afr_for_eng:S0042L01U03",
+       "role": "use",
+       "known": "I started to learn Afrikaans last night",
+       "target": "ek het verlede nag begin Afrikaans leer",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Word order is natural and correct, and all the vocabulary is taught.",
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "ZUT clash: 'started to + verb' is rendered here as bare 'begin ... leer', but as 'begin om ... te' in the seed, P14 and P18. One known prompt must map to one target.",
+       "keep": false,
+       "why": "Opus: bad — ZUT clash: 'started to + verb' is rendered here as bare 'begin ... leer', but as 'begin om ... te' in the seed, P14 and P18. One known prompt must map to one target."
+      },
+      {
+       "role": "build",
+       "known": "last night I wanted to",
+       "target": "verlede nag wou ek",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct inversion (wou ek). Fragment that extends naturally.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "last night he started",
+       "target": "verlede nag het hy begin",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct inversion. Fine fragment.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "better than last night",
+       "target": "beter as verlede nag",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct comparative fragment, taken from the seed.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "more than last night",
+       "target": "meer as verlede nag",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct comparative fragment. Extends naturally.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "last night she started",
+       "target": "verlede nag het sy begin",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct inversion. Fine fragment.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "last night I wanted to speak",
+       "target": "verlede nag wou ek praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct inversion with modal plus infinitive. Within the BUILD limits.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "He feels better than last night.",
+       "target": "Hy voel beter as verlede nag.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, with an exact match.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I wanted to speak Afrikaans with you last night.",
+       "target": "Ek wou verlede nag Afrikaans met jou praat.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct time-before-object-before-verb order. Natural, with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "She started to feel tired last night.",
+       "target": "Sy het verlede nag begin om moeg te voel.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'begin om moeg te voel' is clunky. A native speaker would say 'begin moeg word' or 'moeg geword'. This is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'begin om moeg te voel' is clunky. A native speaker would say 'begin moeg word' or 'moeg geword'. This is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "We started to learn Afrikaans last night.",
+       "target": "Ons het verlede nag begin Afrikaans leer.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same ZUT clash as P5: bare 'begin ... leer' conflicts with the 'begin om ... te' pattern used elsewhere for 'started to'.",
+       "keep": false,
+       "why": "Opus: bad — Same ZUT clash as P5: bare 'begin ... leer' conflicts with the 'begin om ... te' pattern used elsewhere for 'started to'."
+      },
+      {
+       "role": "use",
+       "known": "Last night he wanted to help me.",
+       "target": "Verlede nag wou hy my help.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct inversion and order. Natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to feel better than last night.",
+       "target": "Ek wil beter voel as verlede nag.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical. Natural enough on both sides, with an exact match.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "Last night I started to read a story.",
+       "target": "Verlede nag het ek begin om 'n storie te lees.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct inversion and 'begin om ... te lees'. Natural.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "She is more tired than last night.",
+       "target": "Sy is meer moeg as verlede nag.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The standard comparative is 'moeër'. 'meer moeg' is possible but clunky, so this is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The standard comparative is 'moeër'. 'meer moeg' is possible but clunky, so this is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "Last night he wanted to read a story with me.",
+       "target": "Verlede nag wou hy 'n storie met my lees.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, with the verb in final position. Natural, with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "last night she wanted to ask",
+       "target": "verlede nag wou sy vra",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "The fragment is grammatical with correct V2 order after the fronted time phrase (wou sy vra). It uses only taught material and extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "last night we wanted to",
+       "target": "verlede nag wou ons",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Verlede nag wou ons is a correct V2 fragment that matches the known exactly. It uses taught LEGOs and extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "last night I wanted to find out",
+       "target": "verlede nag wou ek uitvind",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "The word order is correct and uitvind correctly ends the clause. It is an exact match, uses only taught material and extends naturally.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "last night I wanted to stop",
+       "target": "verlede nag wou ek ophou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Verlede nag wou ek ophou is grammatical and an exact match. It is a natural fragment built from taught items.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "Last night she wanted to ask me.",
+       "target": "Verlede nag wou sy my vra.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "This is one complete, natural sentence with correct V2 order and the infinitive at the end (wou sy my vra). It is an exact match using only taught words.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "We wanted to meet everyone last night.",
+       "target": "Ons wou verlede nag almal ontmoet.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "The Afrikaans word order is correct, with the time phrase before the object and the infinitive at the end. It is natural, an exact match and fully taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I wanted to explain the whole sentence last night.",
+       "target": "Ek wou verlede nag die hele sin verduidelik.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Ek wou verlede nag die hele sin verduidelik is grammatical and natural. It matches the known exactly and uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Last night he wanted to find out her name.",
+       "target": "Verlede nag wou hy haar naam uitvind.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": true,
+       "opusReason": "This is a correct V2 sentence with the separable verb at the end (haar naam uitvind). It is natural, an exact match and fully taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Last night she wanted to read a story with someone else.",
+       "target": "Verlede nag wou sy 'n storie met iemand anders lees.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Reading a story 'with someone else' is semantically odd, because 'else' implies a contrast that isn't there. The Afrikaans would more naturally be 'saam met'. It is clunky rather than tier 1.",
+       "keep": false,
+       "why": "Opus: bad — Reading a story 'with someone else' is semantically odd, because 'else' implies a contrast that isn't there. The Afrikaans would more naturally be 'saam met'. It is clunky rather than tier 1."
+      },
+      {
+       "role": "use",
+       "known": "Last night we wanted to help everyone.",
+       "target": "Verlede nag wou ons almal help.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The target 'wou ons almal help' is ambiguous: it can also mean 'we all wanted to help', since 'ons almal' means 'all of us'. That violates the one known to one target principle.",
+       "keep": false,
+       "why": "Opus: bad — The target 'wou ons almal help' is ambiguous: it can also mean 'we all wanted to help', since 'ons almal' means 'all of us'. That violates the one known to one target principle."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  },
+  "51": {
+   "seed": 51,
+   "kind": "merge",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "to enjoy",
+     "target": "geniet"
+    },
+    {
+     "idx": 2,
+     "known": "interesting",
+     "target": "interessante"
+    },
+    {
+     "idx": 3,
+     "known": "things",
+     "target": "dinge"
+    },
+    {
+     "idx": 4,
+     "known": "friends",
+     "target": "vriende"
+    },
+    {
+     "idx": 5,
+     "known": "to do",
+     "target": "doen"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "M",
+      "known": "interesting things",
+      "target": "interessante dinge",
+      "components": [
+       {
+        "known": "interesting",
+        "target": "interessante"
+       },
+       {
+        "known": "things",
+        "target": "dinge"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0051L03B01",
+       "role": "build",
+       "known": "interesting things",
+       "target": "interessante dinge",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Clean BUILD, exact target words, one-to-one mapping.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A BUILD must add one to three other taught LEGOs. This is only the bare LEGO.",
+       "keep": false,
+       "why": "Opus: bad — A BUILD must add one to three other taught LEGOs. This is only the bare LEGO."
+      },
+      {
+       "id": "afr_for_eng:S0051L03U03",
+       "role": "use",
+       "known": "many interesting things happen when you learn Afrikaans",
+       "target": "baie interessante dinge gebeur as jy Afrikaans leer",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known side uses 'many', which is not a taught gloss ('baie' is glossed 'very/a lot'), so the prompt is not tileable and breaks ZUT.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'many' is not a taught gloss; baie is taught as 'very/a lot', so this breaks ZUT.",
+       "keep": false,
+       "why": "Sonnet: bad — The known side uses 'many', which is not a taught gloss ('baie' is glossed 'very/a lot'), so the prompt is not tileable and breaks ZUT."
+      },
+      {
+       "id": "afr_for_eng:S0051L03U04",
+       "role": "use",
+       "known": "I enjoy reading about many interesting things",
+       "target": "ek geniet dit om oor baie interessante dinge te lees",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known side lacks 'it', yet the target has 'dit om'. It also uses 'many' and 'about', so the mapping is not exact.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'many' is not a taught gloss for baie, so this breaks ZUT.",
+       "keep": false,
+       "why": "Sonnet: bad — The known side lacks 'it', yet the target has 'dit om'. It also uses 'many' and 'about', so the mapping is not exact."
+      },
+      {
+       "id": "afr_for_eng:S0051L03U05",
+       "role": "use",
+       "known": "she knows many interesting things",
+       "target": "sy weet baie interessante dinge",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known side uses 'many', which is not a taught gloss for 'baie', so the prompt is not tileable.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'many' is not a taught gloss for baie, so this breaks ZUT.",
+       "keep": false,
+       "why": "Sonnet: bad — The known side uses 'many', which is not a taught gloss for 'baie', so the prompt is not tileable."
+      },
+      {
+       "role": "build",
+       "known": "I enjoy interesting things",
+       "target": "ek geniet interessante dinge",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short BUILD, grammatical, and an exact match: geniet + LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "a lot of interesting things",
+       "target": "baie interessante dinge",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'a lot' + glue 'of' maps to baie. Natural fragment that extends easily.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "interesting things here",
+       "target": "interessante dinge hier",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment that extends to 'daar is interessante dinge hier'. Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "to read interesting things",
+       "target": "om interessante dinge te lees",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct om...te construction and a natural fragment. Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "interesting things today",
+       "target": "interessante dinge vandag",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Afrikaans puts the time word before the object (vandag interessante dinge), so this fragment does not extend naturally in this order.",
+       "keep": false,
+       "why": "Opus: bad — Afrikaans puts the time word before the object (vandag interessante dinge), so this fragment does not extend naturally in this order."
+      },
+      {
+       "role": "build",
+       "known": "i'm trying to learn interesting things",
+       "target": "ek probeer interessante dinge leer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'ek probeer ... leer' is an accepted colloquial bare-infinitive form. Short and exact.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I want to read interesting things tomorrow",
+       "target": "ek wil môre interessante dinge lees",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical with correct time-before-object order. Natural, exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I like to read interesting things",
+       "target": "ek hou daarvan om interessante dinge te lees",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses the taught 'ek hou daarvan om te' construction correctly. Natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he knows a lot of interesting things",
+       "target": "hy weet baie interessante dinge",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'a lot of' maps to baie and 'weet' is taught. Natural and grammatical.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "we can learn interesting things here",
+       "target": "ons kan hier interessante dinge leer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct word order (hier before object, verb last). Natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I learn interesting things when I read a story",
+       "target": "ek leer interessante dinge as ek 'n storie lees",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Verb-final subordinate clause after 'as' is correct. Natural, exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "you can learn interesting things with me",
+       "target": "jy kan interessante dinge met my leer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, and 'met my' is a taught chunk. Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to learn interesting things with you",
+       "target": "ek wil interessante dinge met jou leer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, and 'met jou' is a taught chunk. Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "i'm trying to learn interesting things today",
+       "target": "ek probeer vandag interessante dinge leer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct time-before-object order. Natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "she wants to learn interesting things quickly",
+       "target": "sy wil interessante dinge vinnig leer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'learn interesting things quickly' is clunky on both sides. Not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'learn interesting things quickly' is clunky on both sides. Not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  },
+  "66": {
+   "seed": 66,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "difficult",
+     "target": "moeilik"
+    },
+    {
+     "idx": 2,
+     "known": "to find",
+     "target": "vind"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "A",
+      "known": "to find",
+      "target": "vind",
+      "components": null,
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0066L02B01",
+       "role": "build",
+       "known": "find the answer",
+       "target": "die antwoord vind",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Short, natural fragment that extends into 'ek wil die antwoord vind'. The grammar is correct.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct infinitival object-before-verb order, and it extends naturally to '...om die antwoord te vind'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0066L02B02",
+       "role": "build",
+       "known": "I want to find",
+       "target": "ek wil vind",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'ek wil vind' leaves the transitive verb without an object. The fragment can only be completed by inserting an object in the middle, so it does not extend naturally.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It does not extend naturally. Adding an object gives 'ek wil die antwoord vind', with the object inserted before vind, so the fragment 'ek wil vind' is a dead end that teaches a misleading order.",
+       "keep": false,
+       "why": "Sonnet: bad — 'ek wil vind' leaves the transitive verb without an object. The fragment can only be completed by inserting an object in the middle, so it does not extend naturally."
+      },
+      {
+       "id": "afr_for_eng:S0066L02B03",
+       "role": "build",
+       "known": "find something interesting",
+       "target": "iets interessante vind",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "Ungrammatical: it should be 'iets interessants', not 'iets interessante'.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Ungrammatical. After 'iets' the adjective takes -s ('iets interessants'), not 'interessante'. That form is also not taught.",
+       "keep": false,
+       "why": "Sonnet: bad — Ungrammatical: it should be 'iets interessants', not 'iets interessante'."
+      },
+      {
+       "id": "afr_for_eng:S0066L02U01",
+       "role": "use",
+       "known": "it's not difficult to find the answer",
+       "target": "dit is nie moeilik om die antwoord te vind nie",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "This is the seed sentence. The grammar, word order and final 'nie' are all correct.",
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Seed sentence. Correct om...te construction and double negation, and it matches the known exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0066L02U03",
+       "role": "use",
+       "known": "can you find the answer?",
+       "target": "kan jy die antwoord vind?",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural question with correct word order, and it uses only taught vocabulary.",
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural question with correct modal + object + infinitive order.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0066L02U04",
+       "role": "use",
+       "known": "it's important to find enough time to learn",
+       "target": "dit is belangrik om genoeg tyd te vind om te leer",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural and grammatical, uses only taught vocabulary, and is a single sentence.",
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'tyd vind' is idiomatic, the two om...te clauses are correct, and all items are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "find the name",
+       "target": "die naam vind",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical fragment that extends naturally.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "you can find it",
+       "target": "jy kan dit vind",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct modal + object + verb-final order.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "find my friend",
+       "target": "my vriend vind",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical fragment that extends naturally.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "we can find the answer",
+       "target": "ons kan die antwoord vind",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural, and stays within the BUILD size limit.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "i'm trying to find it",
+       "target": "ek probeer dit vind",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'probeer' with a bare infinitive is natural colloquial Afrikaans, and the order is correct.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "find the words",
+       "target": "die woorde vind",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical fragment that extends naturally.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to find the answer now.",
+       "target": "Ek probeer nou die antwoord vind.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural sentence. 'nou' is correctly placed before the object.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Can you help me find the name?",
+       "target": "Kan jy my help om die naam te vind?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'help om ... te vind' is correct and natural, and it matches the known.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want you to find the answer tomorrow.",
+       "target": "Ek wil hê jy moet môre die antwoord vind.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct 'ek wil hê jy moet' construction, with time before object.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "It's easy to find the answer here.",
+       "target": "Dit is maklik om die antwoord hier te vind.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct om...te with an acceptable adverb position, and it matches the known.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure if I can find the story.",
+       "target": "Ek is nie seker of ek die storie kan vind nie.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Verb-final 'of' clause with 'kan' last and closing 'nie'; correct and natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "He wanted to find his friend yesterday.",
+       "target": "Hy wou gister sy vriend vind.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct V2 with 'wou', time before object, and 'sy' meaning his. Natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "It's useful to find friends.",
+       "target": "Dit is nuttig om vriende te vind.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'It's useful to find friends' is a clunky collocation in English (tier 2 at best). When unsure, BAD.",
+       "keep": false,
+       "why": "Opus: bad — 'It's useful to find friends' is a clunky collocation in English (tier 2 at best). When unsure, BAD."
+      },
+      {
+       "role": "use",
+       "known": "I like to find interesting things.",
+       "target": "Ek hou daarvan om interessante dinge te vind.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct 'hou daarvan om ... te' with the inflected attributive adjective. Natural.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      },
+      {
+       "role": "use",
+       "known": "After you finish, you can find the answer.",
+       "target": "Nadat jy klaar is, kan jy die antwoord vind.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Subordinate clause is verb-final, followed by verb-first inversion in the main clause. Correct and natural.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "68": {
+   "seed": 68,
+   "kind": "replace",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "what for",
+     "target": "waarna"
+    },
+    {
+     "idx": 2,
+     "known": "to look for",
+     "target": "soek"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "is_new": true,
+      "idx": 3,
+      "type": "M",
+      "known": "what are you looking for",
+      "target": "waarna soek jy",
+      "components": [
+       {
+        "known": "what for",
+        "target": "waarna"
+       },
+       {
+        "known": "look for",
+        "target": "soek"
+       },
+       {
+        "known": "you",
+        "target": "jy"
+       }
+      ],
+      "change": "add"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "What are you looking for now",
+       "target": "Waarna soek jy nou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and grammatical. Uses only taught 'nou'. The known side matches the target.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "What are you looking for today",
+       "target": "Waarna soek jy vandag",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural. 'vandag' is taught, and the BUILD extends easily.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "What are you looking for here",
+       "target": "Waarna soek jy hier",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural. 'hier' is taught, and the meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "What are you looking for at the moment",
+       "target": "Waarna soek jy op die oomblik",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'op die oomblik' is taught. The target is grammatical and natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "And what are you looking for",
+       "target": "En waarna soek jy",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural fragment with 'En'. It extends into a full sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "What are you looking for, friend",
+       "target": "Waarna soek jy, vriend",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The bare vocative 'friend' / 'vriend' is stilted and unusual in both languages. Since I'm unsure, it counts as BAD.",
+       "keep": false,
+       "why": "Opus: bad — The bare vocative 'friend' / 'vriend' is stilted and unusual in both languages. Since I'm unsure, it counts as BAD."
+      },
+      {
+       "role": "use",
+       "known": "What are you looking for, and can I help?",
+       "target": "Waarna soek jy, en kan ek help?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One natural sentence. 'kan ek help' is idiomatic, and all words are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "What are you looking for in the bag?",
+       "target": "Waarna soek jy in die sak?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural. 'in die sak' uses taught words, and the meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "What are you looking for in the letter?",
+       "target": "Waarna soek jy in die brief?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and plausible. All words are taught, and the meaning matches.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "What are you looking for, and why are you so quiet?",
+       "target": "Waarna soek jy, en waarom is jy so stil?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One sentence. 'waarom is jy so stil' is natural, and all words are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "What are you looking for here this evening?",
+       "target": "Waarna soek jy hier vanaand?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural. The word order 'hier vanaand' is fine, and all words are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "What are you looking for when you read a story?",
+       "target": "Waarna soek jy as jy 'n storie lees?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'as' (when) is taught. The subordinate clause is correctly verb-final, and the sentence is natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "What are you looking for, and how can I help you?",
+       "target": "Waarna soek jy, en hoe kan ek jou help?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and grammatical. 'hoe kan ek jou help' uses only taught words.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "What are you looking for, my friend, and can I help you?",
+       "target": "Waarna soek jy, my vriend, en kan ek jou help?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'my vriend' is a natural vocative. It is one sentence, grammatical, and all words are taught.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "What are you looking for in the story, and what do you think about it?",
+       "target": "Waarna soek jy in die storie, en wat dink jy daaroor?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One sentence. 'wat dink jy daaroor' is idiomatic, all words are taught, and the meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "69": {
+   "seed": 69,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "afternoon",
+     "target": "middag"
+    },
+    {
+     "idx": 2,
+     "known": "young",
+     "target": "jong"
+    },
+    {
+     "idx": 3,
+     "known": "dog",
+     "target": "hond"
+    },
+    {
+     "idx": 4,
+     "known": "to look/watch",
+     "target": "kyk"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "A",
+      "known": "dog",
+      "target": "hond",
+      "components": null,
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0069L03B01",
+       "role": "build",
+       "known": "the young dog",
+       "target": "die jong hond",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Short noun phrase with taught words, one-to-one with the English, and it extends naturally into a sentence.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural noun phrase using the LEGO plus taught 'jong'. It extends easily into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0069L03B02",
+       "role": "build",
+       "known": "a young dog",
+       "target": "'n jong hond",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "'n jong hond is correct and tileable.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct indefinite article and adjective form; all words are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0069L03B03",
+       "role": "build",
+       "known": "the dog is here",
+       "target": "die hond is hier",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Correct, natural and short, and it uses only taught words.",
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short, natural and grammatical, using only taught words.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0069L03U01",
+       "role": "use",
+       "known": "the young dog is here",
+       "target": "die jong hond is hier",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "A complete, correct sentence with correct word order. It is brief but acceptable.",
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One complete natural sentence, longer than its BUILD counterpart, with correct word order.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0069L03U02",
+       "role": "use",
+       "known": "the dog is looking for something",
+       "target": "die hond soek iets",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural. The English progressive 'is looking for' maps to the simple present 'soek', which is normal Afrikaans.",
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'soek' is taught as 'to look for', so 'die hond soek iets' is natural and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0069L03U03",
+       "role": "use",
+       "known": "the young dog is not here",
+       "target": "die jong hond is nie hier nie",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "The double negation 'nie ... nie' is correct and the sentence is natural.",
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct double negation 'nie hier nie'; natural complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "my dog",
+       "target": "my hond",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Simple possessive using taught 'my'.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "her dog",
+       "target": "haar hond",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'haar' is taught as 'her'; natural possessive.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "a dog",
+       "target": "'n hond",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Minimal indefinite noun phrase that is correct and extends naturally.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "the dog is tired",
+       "target": "die hond is moeg",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural predicate with taught 'moeg'.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "the dog is quiet",
+       "target": "die hond is stil",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'stil' means quiet; natural.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "the dog is awake",
+       "target": "die hond is wakker",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'wakker' is taught as 'awake'; natural.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "The dog is tired today.",
+       "target": "Die hond is vandag moeg.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct placement of the time adverb before the predicate adjective; natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I think the dog is tired.",
+       "target": "Ek dink die hond is moeg.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural sentence; the complement clause without 'dat' keeps main-clause word order correctly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "The dog slept the whole night.",
+       "target": "Die hond het die hele nag geslaap.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct perfect tense 'het ... geslaap'; 'die hele nag' is natural and all words are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure if the dog is awake.",
+       "target": "Ek is nie seker of die hond wakker is nie.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Verb-final 'of' clause with correct closing 'nie'; natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "The dog can come back tomorrow.",
+       "target": "Die hond kan môre terugkom.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Grammatical, but 'the dog can come back tomorrow' is an odd thing to say without context and is not clearly tier-1 natural. When unsure, BAD.",
+       "keep": false,
+       "why": "Opus: bad — Grammatical, but 'the dog can come back tomorrow' is an odd thing to say without context and is not clearly tier-1 natural. When unsure, BAD."
+      },
+      {
+       "role": "use",
+       "known": "Why is the dog so quiet?",
+       "target": "Waarom is die hond so stil?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural question with correct inversion; all words taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "She is looking for her dog.",
+       "target": "Sy soek haar hond.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural sentence and an exact match.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      },
+      {
+       "role": "use",
+       "known": "The dog is very tired this evening.",
+       "target": "Die hond is vanaand baie moeg.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct adverb order 'vanaand baie moeg'; natural.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      },
+      {
+       "role": "use",
+       "known": "The dog is not tired.",
+       "target": "Die hond is nie moeg nie.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct double negation; a complete natural sentence.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "108": {
+   "seed": 108,
+   "kind": "merge",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "of",
+     "target": "van"
+    },
+    {
+     "idx": 2,
+     "known": "in the middle of",
+     "target": "middel"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "in the middle of",
+      "target": "in die middel van",
+      "components": [
+       {
+        "known": "in",
+        "target": "in"
+       },
+       {
+        "known": "the",
+        "target": "die"
+       },
+       {
+        "known": "middle",
+        "target": "middel"
+       },
+       {
+        "known": "of",
+        "target": "van"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0108L02B01",
+       "role": "build",
+       "known": "in the middle of the night",
+       "target": "in die middel van die nag",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Short, natural BUILD using only taught words; it extends into a full sentence.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment. It uses the exact LEGO plus taught 'die' and 'nag', and it extends into the seed sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0108L02U01",
+       "role": "use",
+       "known": "we didn't hope to wake in the middle of the night",
+       "target": "ons het nie gehoop om in die middel van die nag wakker te word nie",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "This is the seed sentence. The Afrikaans is grammatical, with the double 'nie' and 'wakker te word', and it matches the known side.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the seed sentence. The Afrikaans is correct, with 'om...te' verb-final order and the double 'nie'. It matches the known side exactly.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "id": "afr_for_eng:S0108L02U02",
+       "role": "use",
+       "known": "we met in the middle of the day",
+       "target": "ons het in die middel van die dag ontmoet",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'ontmoet' needs an object or 'mekaar' in Afrikaans, and 'mekaar' is not taught. 'We met' would be unnatural without it.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Ons het ... ontmoet' with no object is clunky. Natural Afrikaans needs 'mekaar ontmoet', which has not been taught. This is not tier 1.",
+       "keep": false,
+       "why": "Sonnet: bad — 'ontmoet' needs an object or 'mekaar' in Afrikaans, and 'mekaar' is not taught. 'We met' would be unnatural without it."
+      },
+      {
+       "id": "afr_for_eng:S0108L02U03",
+       "role": "use",
+       "known": "i'm in the middle of learning Afrikaans",
+       "target": "ek is in die middel van Afrikaans leer",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'in die middel van Afrikaans leer' is ungrammatical. Natural Afrikaans needs 'besig om ... te leer' or 'daarvan om ... te leer', and neither is taught.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Ungrammatical. Afrikaans would need 'besig om Afrikaans te leer'. 'In die middel van Afrikaans leer' is wrong.",
+       "keep": false,
+       "why": "Sonnet: bad — 'in die middel van Afrikaans leer' is ungrammatical. Natural Afrikaans needs 'besig om ... te leer' or 'daarvan om ... te leer', and neither is taught."
+      },
+      {
+       "role": "build",
+       "known": "in the middle of the day",
+       "target": "in die middel van die dag",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, correct fragment, and it uses only taught words.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "in the middle of the week",
+       "target": "in die middel van die week",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, correct fragment, and it uses only taught words.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "in the middle of this week",
+       "target": "in die middel van hierdie week",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, correct fragment, and it uses taught 'hierdie'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "in the middle of the afternoon",
+       "target": "in die middel van die middag",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Middel van die middag' is awkward and repetitive. 'Middag' also overlaps with midday, so the phrase is ambiguous and clunky. This is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Middel van die middag' is awkward and repetitive. 'Middag' also overlaps with midday, so the phrase is ambiguous and clunky. This is not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "in the middle of the story",
+       "target": "in die middel van die storie",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, correct fragment, and it uses only taught words.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "in the middle of the sentence",
+       "target": "in die middel van die sin",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct fragment that extends naturally into a full sentence, for example one about stopping in the middle of the sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I was tired in the middle of the night",
+       "target": "Ek was moeg in die middel van die nag",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural single sentence that matches the known side and uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "she was awake in the middle of the night",
+       "target": "Sy was wakker in die middel van die nag",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural single sentence that matches the known side exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "why are you awake in the middle of the night",
+       "target": "Waarom is jy wakker in die middel van die nag",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural question. The verb-second order after 'Waarom' is correct, and all words have been taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I slept in the middle of the day",
+       "target": "Ek het in die middel van die dag geslaap",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct perfect tense with 'geslaap' in final position. Natural, and it matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I slept in the middle of the afternoon",
+       "target": "Ek het in die middel van die middag geslaap",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'In die middel van die middag' is clunky and ambiguous in the same way as P8. This is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'In die middel van die middag' is clunky and ambiguous in the same way as P8. This is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "he interrupted me in the middle of the sentence",
+       "target": "Hy het my in die middel van die sin onderbreek",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The English 'in the middle of the sentence' is unnatural without an antecedent. A speaker would say 'a sentence' or 'my sentence'. When unsure, the rule is BAD.",
+       "keep": false,
+       "why": "Opus: bad — The English 'in the middle of the sentence' is unnatural without an antecedent. A speaker would say 'a sentence' or 'my sentence'. When unsure, the rule is BAD."
+      },
+      {
+       "role": "use",
+       "known": "I'm tired in the middle of the week",
+       "target": "Ek is moeg in die middel van die week",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural habitual statement. The Afrikaans is correct and matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to speak Afrikaans with you in the middle of the week",
+       "target": "Ek wil in die middel van die week Afrikaans met jou praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct Afrikaans word order, with the time phrase before the object and the verb final. The sentence is natural and fully taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "we were tired in the middle of the day",
+       "target": "Ons was moeg in die middel van die dag",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural single sentence that matches the known side exactly.",
+       "keep": false,
+       "why": "gate: knownSide"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
+  },
+  "115": {
+   "seed": 115,
+   "kind": "merge",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "conversation",
+     "target": "gesprek"
+    },
+    {
+     "idx": 2,
+     "known": "to conduct/have",
+     "target": "voer"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "have a conversation",
+      "target": "'n gesprek voer",
+      "components": [
+       {
+        "known": "a",
+        "target": "'n"
+       },
+       {
+        "known": "conversation",
+        "target": "gesprek"
+       },
+       {
+        "known": "have",
+        "target": "voer"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0115L02B01",
+       "role": "build",
+       "known": "have a conversation",
+       "target": "'n gesprek voer",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, one-to-one with the known side.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO with nothing added. A BUILD needs the LEGO plus one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is the bare LEGO with nothing added. A BUILD needs the LEGO plus one to three other taught LEGOs."
+      },
+      {
+       "id": "afr_for_eng:S0115L02B03",
+       "role": "build",
+       "known": "conduct a conversation in Afrikaans",
+       "target": "'n gesprek in Afrikaans voer",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'conduct' is not a taught gloss. Known 'conduct a conversation' also competes with 'have a conversation' for the same target, which breaks ZUT.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'conduct' is not a taught gloss. The LEGO's known side is 'have a conversation', so this breaks the one-prompt-one-target rule.",
+       "keep": false,
+       "why": "Sonnet: bad — 'conduct' is not a taught gloss. Known 'conduct a conversation' also competes with 'have a conversation' for the same target, which breaks ZUT."
+      },
+      {
+       "id": "afr_for_eng:S0115L02U01",
+       "role": "use",
+       "known": "I don't feel as if I'm ready to have a conversation",
+       "target": "ek voel nie asof ek gereed is om 'n gesprek te voer nie",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "The seed sentence. The target is grammatical, with the verb-final infinitive clause and the closing nie.",
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the seed sentence. It is grammatical, with verb-final 'gereed is', 'om ... te voer' and the double negation correct, and both sides match.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "id": "afr_for_eng:S0115L02U02",
+       "role": "use",
+       "known": "i'd like to have a conversation in Afrikaans",
+       "target": "ek wil graag 'n gesprek in Afrikaans voer",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'i'd like to' is not a taught gloss and is ambiguous with 'I want'. 'ek wil graag' would not map one-to-one.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'i'd like to' is not a taught gloss. 'graag' is glossed 'gladly' and 'I like to' maps to 'ek hou daarvan om te'. 'I'd like to' could also map to 'ek sou graag wou', so the prompt-to-target mapping is unclear.",
+       "keep": false,
+       "why": "Sonnet: bad — 'i'd like to' is not a taught gloss and is ambiguous with 'I want'. 'ek wil graag' would not map one-to-one."
+      },
+      {
+       "id": "afr_for_eng:S0115L02U03",
+       "role": "use",
+       "known": "i'm looking forward to having a conversation with you",
+       "target": "ek sien uit daarna om 'n gesprek met jou te voer",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Uses the taught 'ek sien uit daarna om ... te' construction. The word order is correct and all vocabulary is taught.",
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Both sides are natural and match exactly. 'ek sien uit daarna om ... te voer' is correct.",
+       "keep": false,
+       "why": "gate: vocab, knownSide"
+      },
+      {
+       "id": "afr_for_eng:S0115L02U04",
+       "role": "use",
+       "known": "I need to practise having a conversation in Afrikaans",
+       "target": "ek moet oefen om 'n gesprek in Afrikaans te voer",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "Known 'need to' is taught as 'hoef', but the target uses 'moet', which is 'must'. This breaks ZUT, and 'practise having' is a clunky mapping.",
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'need to' is taught as 'hoef', but the target uses 'moet', which is 'must'. This creates a mapping conflict.",
+       "keep": false,
+       "why": "Sonnet: bad — Known 'need to' is taught as 'hoef', but the target uses 'moet', which is 'must'. This breaks ZUT, and 'practise having' is a clunky mapping."
+      },
+      {
+       "id": "afr_for_eng:S0115L02U05",
+       "role": "use",
+       "known": "she wants to have a conversation in Afrikaans",
+       "target": "sy wil 'n gesprek in Afrikaans voer",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural and correct. A modal with a final infinitive is fine, and all vocabulary is taught.",
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, and the two sides match exactly.",
+       "keep": false,
+       "why": "gate: vocab, knownSide"
+      },
+      {
+       "role": "build",
+       "known": "have a conversation with you",
+       "target": "'n gesprek met jou voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A short, correct fragment that extends naturally into a full sentence.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "have a conversation now",
+       "target": "nou 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A correct fragment with natural word order. It extends easily, e.g. 'ek wil nou 'n gesprek voer'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "have a conversation with someone else",
+       "target": "'n gesprek met iemand anders voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A correct fragment that only uses taught material.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "I want to have a conversation",
+       "target": "ek wil 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and short, with only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "how to have a conversation",
+       "target": "hoe om 'n gesprek te voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'hoe om 'n gesprek te voer' is correct and matches the taught 'how to' pattern.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "have a conversation later",
+       "target": "later 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A correct fragment that extends naturally.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to have a conversation with you now",
+       "target": "ek wil nou 'n gesprek met jou voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, with correct time-before-object word order, and the meaning matches.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "i'm going to have a conversation with someone else tomorrow",
+       "target": "ek gaan môre 'n gesprek met iemand anders voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and correct, and both sides match.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "why can't I have a conversation with you",
+       "target": "waarom kan ek nie 'n gesprek met jou voer nie",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct question word order and double negation.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "I want you to have a conversation with me",
+       "target": "ek wil hê jy moet 'n gesprek met my voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses the taught 'ek wil hê jy moet' construction correctly.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "he wants to have a conversation with her later",
+       "target": "hy wil later 'n gesprek met haar voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and correct, and the meaning matches.",
+       "keep": false,
+       "why": "gate: vocab, knownSide"
+      },
+      {
+       "role": "use",
+       "known": "i'm looking forward to having a conversation with everyone this evening",
+       "target": "ek sien uit daarna om vanaand 'n gesprek met almal te voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct 'om ... te voer' with natural adverb placement, and the meaning matches.",
+       "keep": false,
+       "why": "gate: vocab, knownSide"
+      },
+      {
+       "role": "use",
+       "known": "we are going to have a conversation this evening at six o'clock",
+       "target": "ons gaan vanaand om sesuur 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Both sides are natural, the target's word order is correct, and all words are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "it's time to have a conversation",
+       "target": "dit is tyd om 'n gesprek te voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'dit is tyd om 'n gesprek te voer' is natural and matches the taught 'it's time to go' pattern.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "i'm not sure if I can have a conversation",
+       "target": "ek is nie seker of ek 'n gesprek kan voer nie",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P22",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct verb-final subordinate clause 'gesprek kan voer' and correct double negation.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "I want to have a conversation now",
+       "target": "ek wil nou 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Grammatical with the right V2 order (wil … nou … voer). Uses only taught material and extends naturally.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "have a conversation tomorrow",
+       "target": "môre 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "A valid BUILD fragment with the correct time-before-object order. It extends naturally, e.g. with 'ek wil'.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "i'm trying to have a conversation",
+       "target": "ek probeer 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'probeer' with a bare infinitive is standard colloquial Afrikaans and matches 'ek probeer' as taught. The meaning is exact.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to have a conversation tomorrow",
+       "target": "ek gaan môre 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "A complete, natural sentence with correct word order (gaan môre … voer). It says exactly what the English says.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to have a conversation before I have to go",
+       "target": "ek wil 'n gesprek voer voordat ek moet gaan",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural, with correct verb-final order in the subordinate clause (voordat ek moet gaan). Uses a taught chunk.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to have a conversation as soon as I am ready",
+       "target": "ek wil 'n gesprek voer sodra ek gereed is",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'sodra ek gereed is' is correctly verb-final. Natural, exact meaning, and all words are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "i'm trying to have a conversation as often as possible",
+       "target": "ek probeer so gereeld as moontlik 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural, with correct placement of the adverbial chunk before the object. Exact meaning.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to have a conversation today",
+       "target": "ek gaan vandag 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": true,
+       "opusReason": "A complete, natural sentence with correct word order and exact meaning.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I wouldn't like to have a conversation now",
+       "target": "ek sou nie nou 'n gesprek wou voer nie",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Correct 'sou … wou' construction with double negation 'nie … nie' and natural word order. The English is natural.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "I gladly want to have a conversation later",
+       "target": "ek wil later graag 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'I gladly want to have a conversation' is not natural English, so it fails tier 1. Using a graag-free prompt or the 'I'd like to' sense would be needed.",
+       "keep": false,
+       "why": "Opus: bad — 'I gladly want to have a conversation' is not natural English, so it fails tier 1. Using a graag-free prompt or the 'I'd like to' sense would be needed."
+      },
+      {
+       "role": "use",
+       "known": "we want to have a conversation this evening",
+       "target": "ons wil vanaand 'n gesprek voer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural, with correct order (wil vanaand … voer). Exact meaning and all words are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  },
+  "122": {
+   "seed": 122,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "easier",
+     "target": "makliker"
+    },
+    {
+     "idx": 2,
+     "known": "excited",
+     "target": "opgewonde"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "excited about",
+      "target": "opgewonde oor",
+      "components": [
+       {
+        "known": "excited",
+        "target": "opgewonde"
+       },
+       {
+        "known": "about",
+        "target": "oor"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0122L02U01",
+       "role": "use",
+       "known": "it's starting to feel easier and I'm excited about how it's going",
+       "target": "dit begin makliker voel en ek is opgewonde oor hoe dit gaan",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural, grammatical Afrikaans that matches the known exactly. It uses only taught vocabulary and is a single sentence.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the seed sentence. It is grammatical and natural, matches the English exactly and contains the LEGO.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "id": "afr_for_eng:S0122L02U04",
+       "role": "use",
+       "known": "i'm excited about what's going to happen",
+       "target": "ek is opgewonde oor wat gaan gebeur",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural and correct, with 'wat gaan gebeur' as a taught chunk. The target matches the known, and it is one sentence.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is natural and complete and reuses the taught chunk 'wat gaan gebeur'. The meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I'm excited about today",
+       "target": "Ek is opgewonde oor vandag",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is a short, natural BUILD that extends cleanly into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "excited about tomorrow",
+       "target": "opgewonde oor môre",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is a natural fragment with only taught vocabulary and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "you are excited about the story",
+       "target": "jy is opgewonde oor die storie",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is grammatical and natural, has correct agreement and uses taught vocabulary only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "they are excited about this week",
+       "target": "hulle is opgewonde oor hierdie week",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is a natural BUILD and 'hierdie week' is taught. The meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he is excited about the car",
+       "target": "hy is opgewonde oor die motor",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is natural and grammatical, and 'motor' is taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "excited about the conversation",
+       "target": "opgewonde oor die gesprek",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is a natural fragment that extends easily into a sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I'm excited about tomorrow because I want to speak Afrikaans with you",
+       "target": "Ek is opgewonde oor môre omdat ek Afrikaans met jou wil praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The verb-final subordinate clause 'omdat ek Afrikaans met jou wil praat' is correct. The sentence is natural and matches the English.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "She is excited about what I want to say",
+       "target": "Sy is opgewonde oor wat ek wil sê",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The meaning is odd: why would she be excited about what I want to say? The English is not tier 1 natural.",
+       "keep": false,
+       "why": "Opus: bad — The meaning is odd: why would she be excited about what I want to say? The English is not tier 1 natural."
+      },
+      {
+       "role": "use",
+       "known": "We are all excited about the new conversation",
+       "target": "Ons is almal opgewonde oor die nuwe gesprek",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'the new conversation' is a contrived referent, so the English sounds unnatural and clunky.",
+       "keep": false,
+       "why": "Opus: bad — 'the new conversation' is a contrived referent, so the English sounds unnatural and clunky."
+      },
+      {
+       "role": "use",
+       "known": "Everyone is excited about what is going to happen tomorrow",
+       "target": "Almal is opgewonde oor wat môre gaan gebeur",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is natural and grammatical, with correct word order in 'wat môre gaan gebeur'. The meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm excited about how I learn Afrikaans now",
+       "target": "Ek is opgewonde oor hoe ek nou Afrikaans leer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'how I learn Afrikaans now' is stilted English, since natural English would be 'how I'm learning'. The sentence is not tier 1 natural.",
+       "keep": false,
+       "why": "Opus: bad — 'how I learn Afrikaans now' is stilted English, since natural English would be 'how I'm learning'. The sentence is not tier 1 natural."
+      },
+      {
+       "role": "use",
+       "known": "They are excited about the interesting things my friends do",
+       "target": "Hulle is opgewonde oor die interessante dinge wat my vriende doen",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The relative clause 'wat my vriende doen' is correct and verb-final. Both sides are natural and taught.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "He was excited about the letter yesterday",
+       "target": "Hy was gister opgewonde oor die brief",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Placing 'gister' after the verb is correct Afrikaans word order. It is natural and the meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Are you excited about this week?",
+       "target": "Is jy opgewonde oor hierdie week?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is a natural question with the correct inverted order and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Are you excited about the next conversation?",
+       "target": "Is jy opgewonde oor die volgende gesprek?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is a natural question in a learning context. It is grammatical and the meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
+  },
+  "131": {
+   "seed": 131,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "there",
+     "target": "daar"
+    },
+    {
+     "idx": 2,
+     "known": "too many",
+     "target": "te veel"
+    },
+    {
+     "idx": 3,
+     "known": "ideas",
+     "target": "idees"
+    },
+    {
+     "idx": 4,
+     "known": "head",
+     "target": "kop"
+    },
+    {
+     "idx": 5,
+     "known": "going around",
+     "target": "rondgaan"
+    }
+   ],
+   "legos": {
+    "5": {
+     "lego": {
+      "idx": 5,
+      "type": "M",
+      "known": "going around in my head",
+      "target": "in my kop rondgaan",
+      "components": [
+       {
+        "known": "in my head",
+        "target": "in my kop"
+       },
+       {
+        "known": "going around",
+        "target": "rondgaan"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0131L05B01",
+       "role": "build",
+       "known": "going around in my head",
+       "target": "in my kop rondgaan",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is only the LEGO itself, with no other taught LEGO, so it is not a BUILD.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the LEGO alone. A BUILD needs the LEGO plus one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Sonnet: bad — It is only the LEGO itself, with no other taught LEGO, so it is not a BUILD."
+      },
+      {
+       "id": "afr_for_eng:S0131L05B02",
+       "role": "build",
+       "known": "ideas going around in my head",
+       "target": "idees wat in my kop rondgaan",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "A short, natural BUILD with idees and wat, and the target is correct.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment that extends to a full sentence. All words are taught, and the relative 'wat' is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0131L05U01",
+       "role": "use",
+       "known": "there are too many ideas going around in my head",
+       "target": "daar is te veel idees wat in my kop rondgaan",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "It is the seed sentence, a natural single sentence, and the target is correct with the verb at the end of the clause.",
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural complete sentence. It matches the known side exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "afr_for_eng:S0131L05U05",
+       "role": "use",
+       "known": "I don't know why so many ideas are going around in my head",
+       "target": "ek weet nie hoekom so baie idees in my kop rondgaan nie",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "The target is natural and grammatical, with the double nie and the verb rondgaan at the end of the subordinate clause. The known side is tileable.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'why' is taught as 'waarom'; 'hoekom' is glossed 'why not', so using it breaks ZUT. 'so many' as 'so baie' is also an untaught combination.",
+       "keep": false,
+       "why": "Opus: bad — 'why' is taught as 'waarom'; 'hoekom' is glossed 'why not', so using it breaks ZUT. 'so many' as 'so baie' is also an untaught combination."
+      },
+      {
+       "role": "build",
+       "known": "too many ideas going around in my head",
+       "target": "te veel idees wat in my kop rondgaan",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment built from taught LEGOs, with a correct relative clause.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "something going around in my head",
+       "target": "iets wat in my kop rondgaan",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'iets wat in my kop rondgaan' is natural and correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "everything going around in my head",
+       "target": "alles wat in my kop rondgaan",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'alles wat in my kop rondgaan' is natural and correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "a few ideas going around in my head",
+       "target": "’n paar idees wat in my kop rondgaan",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'’n paar idees wat in my kop rondgaan' is natural and uses only taught words.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "new ideas going around in my head",
+       "target": "nuwe idees wat in my kop rondgaan",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The attributive 'nuwe' is taught, and the phrase is natural and correct.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "things going around in my head",
+       "target": "dinge wat in my kop rondgaan",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'dinge wat in my kop rondgaan' is natural and correct.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "There is something going around in my head.",
+       "target": "Daar is iets wat in my kop rondgaan.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence, grammatically correct, and it matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I have a few ideas going around in my head.",
+       "target": "Ek het ’n paar idees wat in my kop rondgaan.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural in both languages, and the meaning matches.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I am tired because there are too many ideas going around in my head.",
+       "target": "Ek is moeg omdat daar te veel idees in my kop rondgaan.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The verb correctly goes to the end after 'omdat'. Natural sentence with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to tell you what is going around in my head.",
+       "target": "Ek wil jou vertel wat in my kop rondgaan.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Ek wil jou vertel wat in my kop rondgaan' is natural, and the indirect question has the verb at the end.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I don't know what is going around in my head.",
+       "target": "Ek weet nie wat in my kop rondgaan nie.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Semantically odd: not knowing what is going around in your own head isn't tier-1 natural. When unsure, BAD.",
+       "keep": false,
+       "why": "Opus: bad — Semantically odd: not knowing what is going around in your own head isn't tier-1 natural. When unsure, BAD."
+      },
+      {
+       "role": "use",
+       "known": "I think there are new ideas going around in my head.",
+       "target": "Ek dink daar is nuwe idees wat in my kop rondgaan.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and acceptably natural. The meaning matches.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Yesterday there were interesting ideas going around in my head.",
+       "target": "Gister was daar interessante idees wat in my kop rondgaan.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Tense mismatch: past-tense 'were going around' is rendered with present 'rondgaan'. It should be 'rondgegaan het', which is not taught.",
+       "keep": false,
+       "why": "Opus: bad — Tense mismatch: past-tense 'were going around' is rendered with present 'rondgaan'. It should be 'rondgegaan het', which is not taught."
+      },
+      {
+       "role": "use",
+       "known": "I will tell you later what is going around in my head.",
+       "target": "Ek sal jou later vertel wat in my kop rondgaan.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct word order with 'sal ... later vertel' and a verb-final indirect question. Natural sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure if there are too many ideas going around in my head.",
+       "target": "Ek is nie seker of daar te veel idees in my kop rondgaan nie.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The 'of' clause correctly ends with the verb, and the double negation 'nie...nie' is correct. Natural sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "158": {
+   "seed": 158,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "let's",
+     "target": "kom ons"
+    },
+    {
+     "idx": 2,
+     "known": "about (preposition)",
+     "target": "oor"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "about something else",
+      "target": "oor iets anders",
+      "components": [
+       {
+        "known": "about",
+        "target": "oor"
+       },
+       {
+        "known": "something else",
+        "target": "iets anders"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0158L02B02",
+       "role": "build",
+       "known": "talk about something else",
+       "target": "praat oor iets anders",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Short, natural, tileable fragment that extends into a full sentence. The target is correct.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short, natural BUILD with the LEGO plus praat. It extends easily into a full sentence. 'Talk' is acceptable because the seed itself maps praat to 'talk'.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "id": "afr_for_eng:S0158L02U01",
+       "role": "use",
+       "known": "let's talk about something else",
+       "target": "kom ons praat oor iets anders",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "This is the seed sentence. It is natural, grammatical and exact.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the seed sentence itself. As a USE it is no longer than a BUILD (P1 is the same length), so it adds no practice value.",
+       "keep": false,
+       "why": "Opus: bad — This is the seed sentence itself. As a USE it is no longer than a BUILD (P1 is the same length), so it adds no practice value."
+      },
+      {
+       "id": "afr_for_eng:S0158L02U03",
+       "role": "use",
+       "known": "she wants to talk about something different",
+       "target": "sy wil oor iets anders praat",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known side says 'something different', but the course maps 'iets anders' to 'something else'. That breaks the one-prompt-one-target rule (ZUT).",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "ZUT violation: 'something different' is not the taught gloss. 'iets anders' must be prompted as 'something else'.",
+       "keep": false,
+       "why": "Sonnet: bad — The known side says 'something different', but the course maps 'iets anders' to 'something else'. That breaks the one-prompt-one-target rule (ZUT)."
+      },
+      {
+       "role": "build",
+       "known": "I want to talk about something else",
+       "target": "Ek wil oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, with correct verb-final order after wil. Uses only taught material and the LEGO, and is natural.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "talk about something else now",
+       "target": "praat nou oor iets anders",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural imperative fragment. Placing nou before oor is correct Afrikaans word order.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "about something else with you",
+       "target": "oor iets anders met jou",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "An awkward fragment with no verb. 'oor iets anders met jou' does not extend naturally, because Afrikaans prefers 'met jou oor iets anders praat'.",
+       "keep": false,
+       "why": "Opus: bad — An awkward fragment with no verb. 'oor iets anders met jou' does not extend naturally, because Afrikaans prefers 'met jou oor iets anders praat'."
+      },
+      {
+       "role": "build",
+       "known": "I'm trying to talk about something else",
+       "target": "Ek probeer oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Ek probeer oor iets anders praat' is common, acceptable Afrikaans for 'I'm trying to talk about something else'. Taught material only.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "he wants to talk about something else",
+       "target": "Hy wil oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural, uses taught items, contains the LEGO.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "we can talk about something else",
+       "target": "Ons kan oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural, with correct verb-final order after kan.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I want to talk about something else with you tomorrow",
+       "target": "Ek wil môre oor iets anders met jou praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'oor iets anders met jou praat' is the less natural order. 'Ek wil môre met jou oor iets anders praat' is the expected form, so this is not clearly tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'oor iets anders met jou praat' is the less natural order. 'Ek wil môre met jou oor iets anders praat' is the expected form, so this is not clearly tier 1."
+      },
+      {
+       "role": "use",
+       "known": "Let's talk about something else now",
+       "target": "Kom ons praat nou oor iets anders",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, complete sentence that extends the seed with nou in the correct position.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to talk about something else later",
+       "target": "Ek gaan later oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical: gaan plus later plus verb-final. The known side is natural.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "She can talk about something else with me",
+       "target": "Sy kan oor iets anders met my praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'oor iets anders met my praat' is the less natural order. 'Sy kan met my oor iets anders praat' is expected, so this is not clearly tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'oor iets anders met my praat' is the less natural order. 'Sy kan met my oor iets anders praat' is expected, so this is not clearly tier 1."
+      },
+      {
+       "role": "use",
+       "known": "Everyone wants to talk about something else today",
+       "target": "Almal wil vandag oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural, all taught items, one complete sentence.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "They want to talk about something else now",
+       "target": "Hulle wil nou oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural, all taught items, one complete sentence.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "Can I talk about something else with you?",
+       "target": "Kan ek met jou oor iets anders praat?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The Afrikaans has the natural order 'met jou oor iets anders'. Question inversion is correct, and the meaning matches.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "He wants to talk about something else tomorrow",
+       "target": "Hy wil môre oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural, with correct time-before-preposition order.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "Why do you want to talk about something else?",
+       "target": "Waarom wil jy oor iets anders praat?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct question inversion and verb-final infinitive. Natural and fully taught.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "Let's speak about something else",
+       "target": "Kom ons praat oor iets anders",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "This is the seed with 'speak' for praat. The Afrikaans is correct and it is a valid short BUILD with kom ons and praat.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I want to speak about something else",
+       "target": "Ek wil oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Correct modal structure with the infinitive last. The meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I'm trying to speak about something else",
+       "target": "Ek probeer oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'Ek probeer ... praat' with a bare infinitive is natural and correct, and it maps cleanly to the taught 'i'm trying to'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I'm going to speak about something else",
+       "target": "Ek gaan oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Correct 'gaan' + infinitive with the verb last. The meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I want to speak with you about something else",
+       "target": "Ek wil met jou oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural word order (met jou before oor iets anders, verb last). It is still a short BUILD.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "Let's speak about something else now",
+       "target": "Kom ons praat nou oor iets anders",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'nou' is placed naturally after praat. The meaning is exact.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to speak with you about something else tomorrow",
+       "target": "Ek gaan môre met jou oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Correct time-manner-place order with the verb last. It is a complete natural sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Let's speak about something else after you finish",
+       "target": "Kom ons praat oor iets anders nadat jy klaar is",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": true,
+       "opusReason": "The subordinate clause is verb-final ('klaar is'). The meaning matches and the sentence is natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to speak about something else before I have to go",
+       "target": "Ek gaan oor iets anders praat voordat ek moet gaan",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": true,
+       "opusReason": "The taught chunk 'voordat ek moet gaan' is attached correctly. The sentence is grammatical and natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to speak about something else because I am tired",
+       "target": "Ek wil oor iets anders praat omdat ek moeg is",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'omdat ek moeg is' is correctly verb-final. 'I am tired' is slightly stilted but tileable from taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Let's speak about something else tomorrow morning",
+       "target": "Kom ons praat môreoggend oor iets anders",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'môreoggend' is placed correctly before the prepositional phrase. Natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want you to speak about something else",
+       "target": "Ek wil hê jy moet oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Correct use of the taught construction 'ek wil hê jy moet' with the verb last. It is a complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to speak with you about something else today",
+       "target": "Ek wil vandag met jou oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Correct order (vandag, met jou, oor iets anders, praat). Natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to speak with you about something else now",
+       "target": "Ek probeer nou met jou oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Correct Afrikaans with 'nou' placed naturally. The English is acceptable and tileable.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Why do you want to speak about something else",
+       "target": "Waarom wil jy oor iets anders praat",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 2,
+       "opus": true,
+       "opusReason": "The question has the correct verb-second order with the infinitive last. Natural, and the meaning is exact.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "199": {
+   "seed": 199,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "worked (past)",
+     "target": "gewerk"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "M",
+      "known": "used to work in an office",
+      "target": "vroeër in 'n kantoor gewerk",
+      "components": [
+       {
+        "known": "used to",
+        "target": "vroeër"
+       },
+       {
+        "known": "in an office",
+        "target": "in 'n kantoor"
+       },
+       {
+        "known": "work",
+        "target": "gewerk"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0199L01U01",
+       "role": "use",
+       "known": "my friend used to work in an office",
+       "target": "my vriend het vroeër in 'n kantoor gewerk",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural, grammatical Afrikaans with 'het' plus the exact LEGO words. The English is a tileable gloss, and all vocabulary has been taught. It is a single sentence.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the seed sentence. It is grammatical and natural, contains the LEGO and uses only taught words. Only the capitalisation of 'my' needs fixing.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "I used to work in an office",
+       "target": "Ek het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Ek + het + LEGO is correct Afrikaans word order and natural. It is a short, taught BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "she used to work in an office",
+       "target": "Sy het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. Sy is taught. It is a short BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "my mother used to work in an office",
+       "target": "My ma het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'My ma' is taught. Grammatical and natural.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "he used to work in an office",
+       "target": "Hy het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. Hy is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "we used to work in an office",
+       "target": "Ons het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. Ons is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "my son used to work in an office",
+       "target": "My seun het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'My seun' is taught. Grammatical and natural.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I think my friend used to work in an office",
+       "target": "Ek dink my vriend het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Leaving out 'dat' after 'Ek dink' with main-clause word order is natural Afrikaans. The meaning matches exactly and all words are taught.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "my mother said that she used to work in an office",
+       "target": "My ma het gesê dat sy vroeër in 'n kantoor gewerk het",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The dat-clause correctly puts 'gewerk het' at the end. 'gesê' is taught. One natural sentence.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "yesterday I told her that I used to work in an office",
+       "target": "Gister het ek haar vertel dat ek vroeër in 'n kantoor gewerk het",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Gister het ek' has correct verb-second inversion, the subordinate clause is verb-final, and 'haar vertel' is acceptable. Natural and matches the English.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "is it true that your friend used to work in an office",
+       "target": "Is dit waar dat jou vriend vroeër in 'n kantoor gewerk het",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Is dit waar dat' with a verb-final clause is correct. 'waar' is taught as true, and jou/your is the taught possessive. Natural as a question.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "he used to work in an office, but now he is a teacher",
+       "target": "Hy het vroeër in 'n kantoor gewerk, maar nou is hy onderwyser",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'nou is hy onderwyser' correctly inverts after 'nou' and correctly leaves out the article before a profession. Natural and taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "she used to work in an office, but now she is a doctor",
+       "target": "Sy het vroeër in 'n kantoor gewerk, maar nou is sy dokter",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Same structure as P12, with dokter (taught). Correct and natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "my daughter used to work in an office, but now she is very happy",
+       "target": "My dogter het vroeër in 'n kantoor gewerk, maar nou is sy baie gelukkig",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'nou is sy baie gelukkig' is correct and natural. dogter, baie and gelukkig are all taught.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I hear you used to work in an office",
+       "target": "Ek hoor jy het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Ek hoor jy het...' is a natural colloquial way to report hearsay, and the meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "my teacher said that he used to work in an office",
+       "target": "My onderwyser het gesê dat hy vroeër in 'n kantoor gewerk het",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Verb-final dat-clause and onderwyser are taught. Grammatical and natural.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "they used to work in an office",
+       "target": "Hulle het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "A short, grammatical fragment that uses the taught 'hulle' and 'het'. The LEGO is intact and the phrase extends naturally into a full sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "you used to work in an office",
+       "target": "Jy het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Same pattern as P1 with the taught 'jy'. It is grammatical and short, the LEGO is intact, and the meaning matches the English.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I used to work in an office, but now I am a teacher",
+       "target": "Ek het vroeër in 'n kantoor gewerk, maar nou is ek onderwyser",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural and grammatical. 'nou is ek' has correct V2 inversion, and Afrikaans correctly drops the article before a profession ('ek is onderwyser'). All words are taught, and it is one sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "she used to work in an office, but now she is a teacher",
+       "target": "Sy het vroeër in 'n kantoor gewerk, maar nou is sy onderwyser",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Same structure as P3 with 'sy'. It is grammatical and natural, says exactly what the English says, and uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "they used to work in an office, but now they are happy",
+       "target": "Hulle het vroeër in 'n kantoor gewerk, maar nou is hulle gelukkig",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'happy' maps to both the taught 'bly' and 'gelukkig', so the English prompt does not lead to one target (ZUT). The office-versus-happy contrast is also semantically odd, and when unsure the phrase is BAD.",
+       "keep": false,
+       "why": "Opus: bad — 'happy' maps to both the taught 'bly' and 'gelukkig', so the English prompt does not lead to one target (ZUT). The office-versus-happy contrast is also semantically odd, and when unsure the phrase is BAD."
+      },
+      {
+       "role": "use",
+       "known": "you used to work in an office, but now you are a doctor",
+       "target": "Jy het vroeër in 'n kantoor gewerk, maar nou is jy dokter",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'nou is jy dokter' has correct inversion and correctly omits the article before a profession. It is natural, uses only taught words, and is one sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I hear he used to work in an office",
+       "target": "Ek hoor hy het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'Ek hoor hy het vroeër...' is natural Afrikaans: without 'dat' the clause keeps main-clause word order. It matches the English exactly and uses only taught words.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I hear she used to work in an office",
+       "target": "Ek hoor sy het vroeër in 'n kantoor gewerk",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Same as P7 with 'sy'. It is grammatical, natural and fully taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "202": {
+   "seed": 202,
+   "kind": "replace",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "nobody/no one",
+     "target": "niemand"
+    },
+    {
+     "idx": 2,
+     "known": "to answer",
+     "target": "beantwoord"
+    },
+    {
+     "idx": 3,
+     "known": "question",
+     "target": "vraag"
+    }
+   ],
+   "legos": {
+    "4": {
+     "lego": {
+      "is_new": true,
+      "idx": 4,
+      "type": "M",
+      "known": "answer the question",
+      "target": "die vraag beantwoord",
+      "components": [
+       {
+        "known": "the question",
+        "target": "die vraag"
+       },
+       {
+        "known": "answer",
+        "target": "beantwoord"
+       }
+      ],
+      "change": "add"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "I want to answer the question",
+       "target": "Ek wil die vraag beantwoord",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct, natural fragment that extends into a full sentence. Uses only taught material and contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I'm trying to answer the question",
+       "target": "Ek probeer die vraag beantwoord",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Ek probeer die vraag beantwoord' is natural colloquial Afrikaans and maps to the taught 'ek probeer'. Contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I can answer the question",
+       "target": "Ek kan die vraag beantwoord",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural. Modal plus infinitive word order is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I'm going to answer the question",
+       "target": "Ek gaan die vraag beantwoord",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, with correct 'gaan' plus infinitive.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "Nobody can answer the question",
+       "target": "Niemand kan die vraag beantwoord nie",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct double negation 'Niemand ... nie'. Natural, and taught material only.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "Can you answer the question?",
+       "target": "Kan jy die vraag beantwoord?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural question with correct inversion. Short BUILD.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to answer the question after you finish.",
+       "target": "Ek gaan die vraag beantwoord nadat jy klaar is.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One complete, natural sentence. The subordinate clause 'nadat jy klaar is' uses a taught chunk and is verb-final.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want you to answer the question.",
+       "target": "Ek wil hê jy moet die vraag beantwoord.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses the taught 'ek wil hê jy moet' construction correctly. Natural and complete.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Can you answer the question before I have to go?",
+       "target": "Kan jy die vraag beantwoord voordat ek moet gaan?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural question with the taught chunk 'voordat ek moet gaan'. Grammatical and complete.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure if I can answer the question.",
+       "target": "Ek is nie seker of ek die vraag kan beantwoord nie.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The 'of' clause is verb-final ('die vraag kan beantwoord') and the sentence correctly ends with 'nie'. Natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to answer the question, but it's difficult.",
+       "target": "Ek probeer die vraag beantwoord, maar dit is moeilik.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Two coordinated main clauses with correct word order. 'Dit is moeilik' is taught and natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to answer the question so that everyone can understand.",
+       "target": "Ek wil die vraag beantwoord sodat almal kan verstaan.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The 'sodat' clause is verb-final ('almal kan verstaan'). Natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "We're going to answer the question this evening at six o'clock.",
+       "target": "Ons gaan die vraag beantwoord vanaand om sesuur.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Placing the time adverbials after the infinitive is unnatural. Natural Afrikaans is 'Ons gaan vanaand om sesuur die vraag beantwoord'. This is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — Placing the time adverbials after the infinitive is unnatural. Natural Afrikaans is 'Ons gaan vanaand om sesuur die vraag beantwoord'. This is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I want to answer the question because I want to help.",
+       "target": "Ek wil die vraag beantwoord omdat ek wil help.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The 'omdat' clause is verb-final ('ek wil help'). Grammatical, natural, and taught material only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to answer the question before I have to go.",
+       "target": "Ek wil die vraag beantwoord voordat ek moet gaan.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural sentence using the taught chunk 'voordat ek moet gaan'. Grammatical.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "262": {
+   "seed": 262,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "who",
+     "target": "wie"
+    },
+    {
+     "idx": 2,
+     "known": "with (mee)",
+     "target": "mee"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "you were talking to",
+      "target": "jy mee gepraat het",
+      "components": [
+       {
+        "known": "you",
+        "target": "jy"
+       },
+       {
+        "known": "talking to",
+        "target": "mee gepraat het"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "afr_for_eng:S0262L02B03",
+       "role": "build",
+       "known": "who you talked to yesterday",
+       "target": "wat jy gister mee gepraat het",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known side says 'who', which is taught as 'wie', but the target uses 'wat'. It also says 'talked to' where the LEGO is 'you were talking to'. Both break the one-prompt-one-target rule.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known side uses 'you talked to', not the LEGO's taught gloss 'you were talking to'. The relative 'who' maps to 'wat' here, but 'who' is taught as 'wie', which breaks one-known-to-one-target.",
+       "keep": false,
+       "why": "Sonnet: bad — The known side says 'who', which is taught as 'wie', but the target uses 'wat'. It also says 'talked to' where the LEGO is 'you were talking to'. Both break the one-prompt-one-target rule."
+      },
+      {
+       "id": "afr_for_eng:S0262L02U01",
+       "role": "use",
+       "known": "who was that man you were talking to yesterday?",
+       "target": "wie was daardie man wat jy gister mee gepraat het?",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "This is the seed sentence. It is natural, verb-final, and matches the known side exactly.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the seed sentence. It is grammatical and natural, contains the LEGO and uses only taught material.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "id": "afr_for_eng:S0262L02U03",
+       "role": "use",
+       "known": "I know the man you talked to",
+       "target": "ek ken die man wat jy mee gepraat het",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known side says 'talked to', not the LEGO gloss 'you were talking to'. That would give the same target two different English prompts, which breaks ZUT.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known side says 'you talked to' instead of the LEGO gloss 'you were talking to', so the mapping is inconsistent.",
+       "keep": false,
+       "why": "Sonnet: bad — The known side says 'talked to', not the LEGO gloss 'you were talking to'. That would give the same target two different English prompts, which breaks ZUT."
+      },
+      {
+       "role": "build",
+       "known": "that man you were talking to",
+       "target": "daardie man wat jy mee gepraat het",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural fragment that extends easily into a full sentence. It contains the LEGO and the mapping is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "the woman you were talking to",
+       "target": "die vrou wat jy mee gepraat het",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural fragment that contains the LEGO, with all vocabulary taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "the teacher you were talking to",
+       "target": "die onderwyser wat jy mee gepraat het",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural fragment that contains the LEGO, with all vocabulary taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "the doctor you were talking to",
+       "target": "die dokter wat jy mee gepraat het",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural fragment that contains the LEGO, with all vocabulary taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "my brother you were talking to",
+       "target": "my broer wat jy mee gepraat het",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'my brother you were talking to' is unnatural English, because a restrictive relative clause on a possessed noun is odd.",
+       "keep": false,
+       "why": "Opus: bad — 'my brother you were talking to' is unnatural English, because a restrictive relative clause on a possessed noun is odd."
+      },
+      {
+       "role": "build",
+       "known": "the man you were talking to",
+       "target": "die man wat jy mee gepraat het",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural fragment that contains the LEGO, with all vocabulary taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "Is that the woman you were talking to?",
+       "target": "Is dit die vrou wat jy mee gepraat het?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural question with correct Afrikaans that contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Who is the man you were talking to?",
+       "target": "Wie is die man wat jy mee gepraat het?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural question with correct Afrikaans that contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I know the teacher you were talking to.",
+       "target": "Ek ken die onderwyser wat jy mee gepraat het.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and grammatical, and the mapping is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Is that the doctor you were talking to?",
+       "target": "Is dit die dokter wat jy mee gepraat het?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural question with correct Afrikaans that contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "The man you were talking to is my father.",
+       "target": "Die man wat jy mee gepraat het, is my pa.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, with correct comma placement after the relative clause. Natural.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I don't know the woman you were talking to.",
+       "target": "Ek ken nie die vrou wat jy mee gepraat het nie.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The double negation 'nie...nie' is placed correctly. Natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I think the man you were talking to is a teacher.",
+       "target": "Ek dink die man wat jy mee gepraat het, is 'n onderwyser.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, using only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "The woman you were talking to is very kind.",
+       "target": "Die vrou wat jy mee gepraat het, is baie vriendelik.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, using only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Where is the teacher you were talking to?",
+       "target": "Waar is die onderwyser wat jy mee gepraat het?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural question with correct Afrikaans that contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  }
+ }
+}

@@ -155,7 +155,10 @@ function authorPrompt(c) {
 EXISTING PHRASES that already contain this LEGO (judge each):
 ${c.existing.map((p, i) => `E${i + 1} ${p.role.toUpperCase()}: "${p.known}" => "${p.target}"`).join('\n') || '(none)'}
 
-TASK: (1) judge every existing phrase GOOD or BAD; (2) write NEW phrases so the LEGO ends with up to 4 BUILD and 6 USE that are all GOOD — only phrases you would stake the course on; write fewer rather than any weak one. Never repeat an existing phrase.
+TASK: (1) judge every existing phrase GOOD or BAD; (2) write NEW candidates: ${c.want.build} BUILD and ${c.want.use} USE. An independent judge will reject any that is not clearly good, so write only phrases you would stake the course on — each must still be a real BUILD or USE as defined above. Vary the frames; never repeat an existing phrase.${c.feedback ? `
+
+ALREADY ACCEPTED (do not repeat): ${c.feedback.accepted.map((p) => `"${p.known}" => "${p.target}"`).join('; ') || 'none'}
+REJECTED BY THE JUDGE, with its reason (learn from these): ${c.feedback.rejected.map((p) => `"${p.known}" => "${p.target}" — ${p.why}`).join(' | ')}` : ''}
 Answer: {"judge":[{"ref":"E1","verdict":"GOOD"|"BAD","reason":"..."}],"new":[{"role":"build"|"use","known":"...","target":"..."}]}`
   return { system, user }
 }
@@ -195,31 +198,50 @@ async function author(course) {
       const existing = live.phrases.filter((r) => fromIdx.has(r.lego_index) && ['build', 'use'].includes(r.phrase_role) && checkWordContainment(lego.target, r.target_text))
         .map((r) => ({ id: r.id, role: r.phrase_role, known: r.known_text, target: r.target_text }))
       const t = await taughtBefore(pg, course, p.seed, after, lego.idx)
-      const c = { course, seed: p.seed, seedKnown: live.seed.known_text, seedTarget: live.seed.target_text, seedLegos: after, lego, existing, ...t }
       const label = `S${p.seed}L${lego.idx}`
-      const A = await callClaude('sonnet', authorPrompt(c).system, authorPrompt(c).user, `${label} sonnet`)
-      fs.writeFileSync(path.join(EVIDENCE, `${course}.${label}.sonnet.txt`), A.raw)
-      const sonnetGood = new Map((A.json.judge || []).map((j) => [j.ref, String(j.verdict).toUpperCase() === 'GOOD']))
-      const items = [
-        ...existing.map((e, i) => ({ ...e, source: 'kept', sonnet: sonnetGood.get(`E${i + 1}`) === true })),
-        ...(A.json.new || []).filter((n) => n && ['build', 'use'].includes(n.role) && n.known && n.target).map((n) => ({ role: n.role, known: n.known.trim(), target: n.target.trim(), source: 'new', sonnet: true })),
-      ].map((x, i) => ({ ...x, ref: `P${i + 1}` }))
-      // Opus never sees which phrases Sonnet wrote, nor any of Sonnet's reasons.
-      const B = await callClaude('opus', judgePrompt(c, items).system, judgePrompt(c, items).user, `${label} opus`)
-      fs.writeFileSync(path.join(EVIDENCE, `${course}.${label}.opus.txt`), B.raw)
-      const opus = new Map((B.json.verdicts || []).map((v) => [v.ref, { good: String(v.verdict).toUpperCase() === 'GOOD', reason: v.reason }]))
       const entryBase = { courseCode: course, seedNumber: p.seed, legoIndex: lego.idx, legoId: L.legoId(p.seed, lego.idx), legoKnown: lego.known, legoTarget: lego.target, components: lego.components, seedTarget: live.seed.target_text }
-      for (const it of items) {
-        it.opus = opus.get(it.ref)?.good === true; it.opusReason = opus.get(it.ref)?.reason || 'no verdict'
-        it.sonnetReason = (A.json.judge || []).find((j) => j.ref === `E${existing.findIndex((e) => e.id === it.id) + 1}`)?.reason || null
-        if (!(it.sonnet && it.opus)) { it.keep = false; it.why = !it.sonnet ? 'Sonnet: bad' : `Opus: bad — ${it.opusReason}`; continue }
-        const g = await gate.checkPhraseSet({ ...entryBase, phrases: [{ role: it.role, known: it.known, target: it.target }] }, ctx)
-        const fails = PHRASE_GATES.filter((n) => g.gates?.[n]?.pass === false)
-        it.keep = !fails.length; it.why = fails.length ? `gate: ${fails.join(', ')}` : 'both judges good, gate pass'
+      const items = [], served = {}
+      // Up to two rounds. Round 2 only asks for what is still missing, and shows Sonnet what the judge rejected
+      // and why. Opus never sees which phrases Sonnet wrote, nor any of Sonnet's reasons — every round is judged cold.
+      for (let round = 1; round <= 2; round++) {
+        const keptNow = items.filter((x) => x.keep)
+        const want = { build: Math.max(0, 4 - keptNow.filter((x) => x.role === 'build').length) + 2, use: Math.max(0, 6 - keptNow.filter((x) => x.role === 'use').length) + 3 }
+        if (round === 2 && keptNow.filter((x) => x.role === 'build').length >= 3 && keptNow.filter((x) => x.role === 'use').length >= 5) break
+        const c = { course, seed: p.seed, seedKnown: live.seed.known_text, seedTarget: live.seed.target_text, seedLegos: after, lego, existing: round === 1 ? existing : [], want, ...t,
+          feedback: round === 1 ? null : { accepted: keptNow, rejected: items.filter((x) => !x.keep && x.source === 'new') } }
+        const A = await callClaude('sonnet', authorPrompt(c).system, authorPrompt(c).user, `${label} sonnet r${round}`)
+        fs.writeFileSync(path.join(EVIDENCE, `${course}.${label}.r${round}.sonnet.txt`), A.raw)
+        const sonnetGood = new Map((A.json.judge || []).map((j) => [j.ref, String(j.verdict).toUpperCase() === 'GOOD']))
+        const fresh = [
+          ...c.existing.map((e, i) => ({ ...e, source: 'kept', sonnet: sonnetGood.get(`E${i + 1}`) === true, sonnetReason: (A.json.judge || []).find((j) => j.ref === `E${i + 1}`)?.reason || null })),
+          ...(A.json.new || []).filter((n) => n && ['build', 'use'].includes(n.role) && n.known && n.target).map((n) => ({ role: n.role, known: n.known.trim(), target: n.target.trim(), source: 'new', sonnet: true })),
+        ].filter((x) => !items.some((y) => L.norm(y.target) === L.norm(x.target) && L.norm(y.known) === L.norm(x.known)))
+          .map((x, i) => ({ ...x, ref: `P${i + 1}`, round }))
+        if (!fresh.length) break
+        const B = await callClaude('opus', judgePrompt(c, fresh).system, judgePrompt(c, fresh).user, `${label} opus r${round}`)
+        fs.writeFileSync(path.join(EVIDENCE, `${course}.${label}.r${round}.opus.txt`), B.raw)
+        served.sonnet = A.served; served.opus = B.served
+        const opus = new Map((B.json.verdicts || []).map((v) => [v.ref, { good: String(v.verdict).toUpperCase() === 'GOOD', reason: v.reason }]))
+        for (const it of fresh) {
+          it.opus = opus.get(it.ref)?.good === true; it.opusReason = opus.get(it.ref)?.reason || 'no verdict'
+          if (!(it.sonnet && it.opus)) { it.keep = false; it.why = !it.sonnet ? `Sonnet: bad — ${it.sonnetReason || ''}` : `Opus: bad — ${it.opusReason}` }
+          else {
+            const g = await gate.checkPhraseSet({ ...entryBase, phrases: [{ role: it.role, known: it.known, target: it.target }] }, ctx)
+            const fails = PHRASE_GATES.filter((n) => g.gates?.[n]?.pass === false)
+            it.keep = !fails.length; it.why = fails.length ? `gate: ${fails.join(', ')}` : 'both judges good, gate pass'
+          }
+          // the same normalised target twice under one LEGO teaches nothing new: keep the first
+          if (it.keep && items.some((y) => y.keep && L.norm(y.target) === L.norm(it.target))) { it.keep = false; it.why = 'duplicate target' }
+          items.push(it)
+        }
       }
-      // the same normalised target twice under one LEGO teaches nothing new: keep the first
-      const seen = new Set()
-      for (const it of items.filter((x) => x.keep)) { const k = L.norm(it.target); if (seen.has(k)) { it.keep = false; it.why = 'duplicate target' } seen.add(k) }
+      const A = { served: served.sonnet }, B = { served: served.opus }
+      // Caps: BUILD is "three or four, never five" (Tom 2026-08-28, the gate's buildCountSpec); USE at most 8, so a
+      // LEGO stays within the 13-phrase basket. Phrases already in the course are preferred, then first-judged.
+      for (const [role, cap] of [['build', 4], ['use', 8]]) {
+        const k = items.filter((x) => x.keep && x.role === role).sort((a, b) => (a.source === 'kept' ? 0 : 1) - (b.source === 'kept' ? 0 : 1))
+        for (const x of k.slice(cap)) { x.keep = false; x.why = `good, but over the ${role.toUpperCase()} cap of ${cap}` }
+      }
       const kept = items.filter((x) => x.keep)
       const set = await gate.checkPhraseSet({ ...entryBase, phrases: kept.map(({ role, known, target }) => ({ role, known, target })) }, ctx)
       seedOut.legos[lego.idx] = { lego, served: { sonnet: A.served, opus: B.served }, items, keptBuild: kept.filter((x) => x.role === 'build').length, keptUse: kept.filter((x) => x.role === 'use').length,
@@ -233,6 +255,8 @@ async function author(course) {
 }
 
 // ── apply ─────────────────────────────────────────────────────────────────────────────────────────
+// the course writes apostrophes straight ('n, I'm); a model's curly one would split ZUT and containment keys
+const straight = (t) => String(t || '').replace(/[’‘]/g, "'")
 function appendLedger(course, line) {
   const f = ledgerPath(course); fs.mkdirSync(path.dirname(f), { recursive: true })
   const fd = fs.openSync(f, 'a'); fs.writeSync(fd, JSON.stringify(line) + '\n'); fs.fsyncSync(fd); fs.closeSync(fd)
@@ -286,7 +310,7 @@ async function apply(course) {
         if (r && r.lego_index === l.idx) continue
         const [id] = L.allocateIds(course, p.seed, l.idx, it.role, 1, issued); issued.push(id)
         if (r) { moves.push({ from: r, id }); delPhrase.push(r) }
-        inserts.push({ id, lego: l, role: it.role, known: it.known, target: it.target, position: ++pos, carried: r || null })
+        inserts.push({ id, lego: l, role: it.role, known: straight(it.known), target: straight(it.target), position: ++pos, carried: r || null })
       }
     }
     const line = { seed: p.seed, at: new Date().toISOString(), job: JOB, op: p, before: live, after: after.map((l) => ({ idx: l.idx, known: l.known, target: l.target, change: l.change })), insertedIds: inserts.map((i) => i.id) }
