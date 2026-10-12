@@ -1,0 +1,3947 @@
+{
+"afr_for_eng|afr_for_eng:S0241L01": {
+"lego_target": "dit vir hom gee",
+"seed_target": "Ek wil dit nie vir hom gee nie.",
+"bucket": "B3-interposed-in-order"
+},
+"afr_for_eng|afr_for_eng:S0093L01": {
+"lego_target": "dit is tyd om te gaan",
+"seed_target": "Dit is tyd om nou te gaan.",
+"bucket": "B3-interposed-in-order"
+},
+"afr_for_eng|afr_for_eng:S0175L01": {
+"lego_target": "wat wil jy doen",
+"seed_target": "Wat wil jy Sondagoggend doen?",
+"bucket": "B3-interposed-in-order"
+},
+"afr_for_eng|afr_for_eng:S0225L01": {
+"lego_target": "hy sou jou gee",
+"seed_target": "Hy sou jou 'n antwoord gee as hy kon.",
+"bucket": "B3-interposed-in-order"
+},
+"afr_for_eng|afr_for_eng:S0291L01": {
+"lego_target": "ek hoop ek sal kan",
+"seed_target": "Ek hoop ek sal gou beter kan praat.",
+"bucket": "B3-interposed-in-order"
+},
+"afr_for_eng|afr_for_eng:S0169L01": {
+"lego_target": "jy wil hê ek",
+"seed_target": "Wat wil jy hê ek moet doen?",
+"bucket": "B4-reordered"
+},
+"ara_eg_for_eng|ara_eg_for_eng:S0286L02": {
+"lego_target": "بيحبوا يتكلموا عربي",
+"seed_target": "ناس بتحب تتكلم عربي.",
+"bucket": "B6-partial"
+},
+"ara_eg_for_eng|ara_eg_for_eng:S0277L03": {
+"lego_target": "في أول الأسبوع الجاي",
+"seed_target": "آه عندي اجتماع مهم بدري الأسبوع الجاي.",
+"bucket": "B6-partial"
+},
+"ara_eg_for_eng|ara_eg_for_eng:S0253L02": {
+"lego_target": "المفروض أبقى",
+"seed_target": "المفروض أكون جاهز في كم دقيقة.",
+"bucket": "B6-partial"
+},
+"ara_eg_for_eng|ara_eg_for_eng:S0258L02": {
+"lego_target": "إيه الحاجة دي",
+"seed_target": "إيه الحاجة الزرقا دي اللي هناك؟",
+"bucket": "B3-interposed-in-order"
+},
+"ara_eg_for_eng|ara_eg_for_eng:S0255L02": {
+"lego_target": "إمتى بتفتكر",
+"seed_target": "إنت بتفكر إمتى حاتكون جاهز تمشي؟",
+"bucket": "B5-inflection-stem"
+},
+"ara_eg_for_eng|ara_eg_for_eng:S0274L02": {
+"lego_target": "في كام يوم",
+"seed_target": "إنت لازم تمشي في كم يوم؟",
+"bucket": "B6-partial"
+},
+"ara_eg_for_eng|ara_eg_for_eng:S0273L02": {
+"lego_target": "شغل كتير أوي",
+"seed_target": "لأ للأسف عندي شغل كتير قوي.",
+"bucket": "B6-partial"
+},
+"ara_eg_for_eng|ara_eg_for_eng:S0242L02": {
+"lego_target": "أدي لها",
+"seed_target": "أنا عايز أديها وقت أكتر.",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0536L01": {
+"lego_target": "اعْتَدْتُ أَنْ أَعْتَقِدَ",
+"seed_target": "كُنْتُ أَظُنُّ أَنَّ الجُنونَ شَيْءٌ سَيِّئٌ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0493L01": {
+"lego_target": "مَاذَا سَيَأْتِي",
+"seed_target": "ما الَّذي سَيَأْتي بَعْدَ ذلِكَ؟",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0395L06": {
+"lego_target": "نَحْنُ بِحاجَةٍ إِلى",
+"seed_target": "نَحْتاجُ أَنْ نَنْعَطِفَ يَساراً عِنْدَ الزّاوِيَةِ القادِمَةِ",
+"bucket": "B7-no-relation"
+},
+"ara_for_eng|ara_for_eng:S0531L02": {
+"lego_target": "أَنَّ أَيَّ أَحَدٍ يَسْتَطيعُ",
+"seed_target": "لَيْسَ صَحيحاً أَنَّ أَيَّ شَخْصٍ يَسْتَطيعُ الفَوْزَ بِاللُّعْبَةِ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0572L02": {
+"lego_target": "المَرَّةِ الأَخيرَةِ الَّتي زارونا",
+"seed_target": "هَلْ نَسيتَ ما حَدَثَ آخِرَ مَرَّةٍ زارونا فيها؟",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0548L01": {
+"lego_target": "في الوَقْتِ الحالِيِّ",
+"seed_target": "أَشْعُرُ بِالحُزْنِ الآنَ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0352L02": {
+"lego_target": "لَما اسْتَطاعَ",
+"seed_target": "حَتّى لَوْ أَرادَ لَنْ يَسْتَطيعَ",
+"bucket": "B7-no-relation"
+},
+"ara_for_eng|ara_for_eng:S0540L02": {
+"lego_target": "إِذا أَرَدْتَ المُغادَرَةَ",
+"seed_target": "لا أُمانِعُ إِذا أَرَدْتَ أَنْ تُغادِرَ بِدونِ السَّيّارَةِ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0539L01": {
+"lego_target": "لكِنَّهُ يَتَأَخَّرُ",
+"seed_target": "لكِنَّ الوَقْتَ يَتَأَخَّرُ",
+"bucket": "B5-inflection-stem"
+},
+"ara_for_eng|ara_for_eng:S0559L02": {
+"lego_target": "وَجَدْتَ المَسارَ",
+"seed_target": "هَلْ وَجَدْتَ الطَّريقَ عَبْرَ الغابَةِ؟",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0331L01": {
+"lego_target": "جَميعَ الإِجاباتِ",
+"seed_target": "لا تَسْتَطيعُ أَنْ تُقَدِّمَ كُلَّ الإِجاباتِ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0093L01": {
+"lego_target": "حانَ الوَقْتُ لِلذَّهابِ",
+"seed_target": "حانَ وَقْتُ الذَّهابِ الآن",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0341L01": {
+"lego_target": "مُنْذُ أَيّامٍ قَليلَةٍ",
+"seed_target": "قابَلْتُ شَخْصاً مُنْذُ بِضْعَةِ أَيّامٍ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0521L03": {
+"lego_target": "لِماذا احْتَجْنا إِلى البَقاءِ هُنا",
+"seed_target": "أَخْشى أَنْ تَنْسى لِماذا احْتَجْنا أَنْ نَبْقى هُنا",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0364L02": {
+"lego_target": "لَمْ يُعْجِبْهُ",
+"seed_target": "سَمِعْتُ أَنَّهُ لَمْ يُحِبَّ ذلِكَ المَكانَ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0561L02": {
+"lego_target": "لا يَهُمُّني إِذا كانَ",
+"seed_target": "لا يَهُمُّني إِنْ كانَتْ سَيّارَةً سَريعَةً",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0355L02": {
+"lego_target": "هَلِ اِحْتاجَتْ أَنْ تَتَحَدَّثَ إِلى",
+"seed_target": "هَلِ احْتاجَتْ أَنْ تَتَكَلَّمَ مَعَ تِلْكَ المَرْأَةِ الَّتي تَعْرِفُها؟",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0562L02": {
+"lego_target": "أُريدُ فَقَطْ أَنْ أَصِلَ إِلى هُناكَ",
+"seed_target": "أُريدُ فَقَطْ أَنْ أَصِلَ هُناكَ بِأَمانٍ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0449L02": {
+"lego_target": "إِنَّهُمْ كانوا شِبْهَ مُسْتَعِدّينَ",
+"seed_target": "قالوا إِنَّهُمْ كانوا تَقْريباً مُسْتَعِدّينَ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0524L01": {
+"lego_target": "سَأَتَّصِلُ بِكَ مُجَدَّداً",
+"seed_target": "سَأَتَّصِلُ بِكَ بَعْدَ ثَلاثِ أَوْ أَرْبَعِ دَقائِقَ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0395L04": {
+"lego_target": "الزّاوِيَةِ التّالِيَةِ",
+"seed_target": "نَحْتاجُ أَنْ نَنْعَطِفَ يَساراً عِنْدَ الزّاوِيَةِ القادِمَةِ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0395L01": {
+"lego_target": "عِنْدَ المَدْخَلِ",
+"seed_target": "نَحْتاجُ أَنْ نَنْعَطِفَ يَساراً عِنْدَ الزّاوِيَةِ القادِمَةِ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0564L02": {
+"lego_target": "لَمْ أَكُنْ لِأَسْتَطيعَ ذلِكَ بِدونِ",
+"seed_target": "لَمْ أَكُنْ لِأَسْتَطيعَ بِدونِ مُساعَدَتِكَ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0360L02": {
+"lego_target": "هَلْ قالَ صَديقُكَ أَيَّ شَيْءٍ آخَرَ",
+"seed_target": "هَلْ قالَ صَديقُكَ شَيْئاً آخَرَ؟",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0375L01": {
+"lego_target": "لَمْ أَكُنْ أَعْرِفُ",
+"seed_target": "لا، لَمْ أَعْرِفْ ما كانَتْ تَفْعَلُ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0405L02": {
+"lego_target": "إِذا كانَ عَلَيْنا",
+"seed_target": "هَلْ يَجِبُ أَنْ نَسْأَلَ إِنْ كانَ عَلَيْنا الحَجْزُ؟",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0329L01": {
+"lego_target": "إِنَّهُ مُهِمٌّ",
+"seed_target": "هذا مُهِمٌّ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0536L02": {
+"lego_target": "أَنَّ الجُنونَ كانَ سَيِّئاً",
+"seed_target": "كُنْتُ أَظُنُّ أَنَّ الجُنونَ شَيْءٌ سَيِّئٌ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0571L02": {
+"lego_target": "لَسْتُ مُقْتَنِعاً بِأَنَّ",
+"seed_target": "لَسْتُ مُقْتَنِعاً أَنَّ ذلِكَ سَيَكونُ فِكْرَةً جَيِّدَةً جِدّاً",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0346L03": {
+"lego_target": "أَرَدْتُ مِنْها أَنْ تَعْرِفَ أَنَّني",
+"seed_target": "أَرَدْتُ أَنْ تَعْرِفَ أَنَّني أَحْبَبْتُ كِتابَها",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0527L02": {
+"lego_target": "مَنْ أَخْبَرَني بِتِلْكَ القِصَّةِ المُضْحِكَةِ",
+"seed_target": "خَمِّنْ مَنْ أَخْبَرَني تِلْكَ القِصَّةَ المُضْحِكَةَ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0310L01": {
+"lego_target": "يُمْكِنُها أَنْ تَكْتُبَ",
+"seed_target": "تَسْتَطيعُ أَنْ تَكْتُبَ قِصَّةً عَنْ ذلِكَ الرَّجُلِ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0565L02": {
+"lego_target": "كُنْتُ سَأُفَكِّرُ في الأَمْرِ",
+"seed_target": "كُنْتُ سَأُفَكِّرُ فيهِ بِعِنايَةٍ أَكْثَرَ",
+"bucket": "B6-partial"
+},
+"ara_for_eng|ara_for_eng:S0575L02": {
+"lego_target": "لَقَدْ كانَ مُزْعِجاً",
+"seed_target": "كانَ ذلِكَ مُزْعِجاً",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0276L02": {
+"lego_target": "فيي أضل هون أكتر من هيك",
+"seed_target": "لا فيني أضل هون شوي أكتر.",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0276L01": {
+"lego_target": "فيي أضل هون",
+"seed_target": "لا فيني أضل هون شوي أكتر.",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0219L01": {
+"lego_target": "ترتحت شوي",
+"seed_target": "كان حلو أسترخي شوي.",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0225L02": {
+"lego_target": "لو فيو كان يعطيك جواب",
+"seed_target": "كان رح يعطيك جواب لو كان فيو.",
+"bucket": "B4-reordered"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0251L01": {
+"lego_target": "لحد ما نخلص",
+"seed_target": "ما بدي أعرف قبل ما نخلص.",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0232L01": {
+"lego_target": "مرا كبيرة",
+"seed_target": "بعرف ستة كبيرة فيها تتذكر الجواب.",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0194L02": {
+"lego_target": "بتدور عليه",
+"seed_target": "شو عم تدور عليه؟",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0230L02": {
+"lego_target": "بيدو يشتغل معك",
+"seed_target": "بعرف شاب بدو يشتغل معك.",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0270L03": {
+"lego_target": "لأنو قلقان إنو رح أتأخر",
+"seed_target": "لأني خايف رح أتأخر.",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0253L01": {
+"lego_target": "بعد دقايق",
+"seed_target": "لازم أكون جاهز بشوي دقايق.",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0215L01": {
+"lego_target": "يوم السبت بالليل",
+"seed_target": "طلعت ليلة السبت.",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0281L03": {
+"lego_target": "ما رح يزعلك إذا خلصت قهوتي",
+"seed_target": "ما بيضايقك إذا خلصت قهوتي قبل ما تبدأ؟",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0245L02": {
+"lego_target": "بقد ما عملت بوقت قصير",
+"seed_target": "أنا مبسوط من قديش عملت بوقت قصير.",
+"bucket": "B6-partial"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0296L01": {
+"lego_target": "كنت بدي شوي وقت أكتر",
+"seed_target": "قلت إني بدي شوي وقت أكتر.",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0151L01": {
+"lego_target": "আমি যা ঘটবে বলে আশা করছিলাম তা",
+"seed_target": "যা ঘটবে বলে আমি আশা করছিলাম এটা তা ছিল না।",
+"bucket": "B4-reordered"
+},
+"ben_for_eng|ben_for_eng:S0177L02": {
+"lego_target": "আমি তাকে জিজ্ঞাসা করবো",
+"seed_target": "আমি তাকে জিজ্ঞাসা করব সে কোথায় যেতে চায়।",
+"bucket": "B5-inflection-stem"
+},
+"ben_for_eng|ben_for_eng:S0273L01": {
+"lego_target": "খুব বেশি কাজ",
+"seed_target": "না, দুর্ভাগ্যবশত আমার অনেক বেশি কাজ আছে।",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0170L01": {
+"lego_target": "তুমি কী চাও তা",
+"seed_target": "আমি চাই তুমি আমাকে বলো তোমার কী দরকার।",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0139L02": {
+"lego_target": "আমার যেতে হবে",
+"seed_target": "আমি দুঃখিত যে আমার এত তাড়াতাড়ি যেতে হচ্ছে।",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0161L03": {
+"lego_target": "তুমি কি আমাকে দিতে পারো",
+"seed_target": "তুমি কি রবিবার সকালে আমাকে সেই বইটা দিতে পারবে?",
+"bucket": "B5-inflection-stem"
+},
+"ben_for_eng|ben_for_eng:S0179L02": {
+"lego_target": "তুমি কী করতে যাচ্ছো",
+"seed_target": "তুমি রবিবার দুপুরে কী করবে?",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0190L02": {
+"lego_target": "যদি আমি তোমাকে জিজ্ঞাসা করি",
+"seed_target": "আমি তোমাকে কিছু প্রশ্ন জিজ্ঞাসা করলে তোমার আপত্তি আছে?",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0160L02": {
+"lego_target": "কীভাবে বলে",
+"seed_target": "তুমি বাংলায় এই শব্দটা কীভাবে বলো?",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0085L01": {
+"lego_target": "ওই লোকদের",
+"seed_target": "আমি ওই মানুষদের চিনি না।",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0235L01": {
+"lego_target": "সে তোমাকে কিছু বলতে চেয়েছিল",
+"seed_target": "আমি এমন একজনের সাথে দেখা করেছিলাম যে বলেছিল সে তোমাকে কিছু বলতে চায়।",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0110L03": {
+"lego_target": "আমার বিশ্রাম নিতে ভালো লাগবে",
+"seed_target": "আমরা বন্ধু, আর শেষ করার পরে আমি বিশ্রাম নিতে চাই।",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0168L03": {
+"lego_target": "আর তারপর আমি পারবো",
+"seed_target": "আর তারপর আমি পরে এসে সাহায্য করতে পারব।",
+"bucket": "B5-inflection-stem"
+},
+"ben_for_eng|ben_for_eng:S0157L02": {
+"lego_target": "আমি থাকতে পারবো না",
+"seed_target": "আগামী মাসে আমি সেখানে থাকতে পারব না।",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0186L01": {
+"lego_target": "আলাদা কিছু",
+"seed_target": "তুমি কি আগামী সপ্তাহে অন্য কিছু নিয়ে কথা বলতে চাও?",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0245L02": {
+"lego_target": "আমি যা করেছি",
+"seed_target": "অল্প সময়ে আমি যতটা করেছি তাতে আমি খুশি।",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0120L02": {
+"lego_target": "তুমি ... পছন্দ করো",
+"seed_target": "এটা মজার যে তোমার বাসে যেতে ভালো লাগে।",
+"bucket": "B7-no-relation"
+},
+"ben_for_eng|ben_for_eng:S0281L03": {
+"lego_target": "আমি কি শেষ করলে তোমার আপত্তি আছে",
+"seed_target": "তুমি শুরু করার আগে আমি আমার কফি শেষ করলে তোমার আপত্তি আছে?",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0144L02": {
+"lego_target": "যেমন চেয়েছিলাম তার চেয়ে",
+"seed_target": "আজ সকালে আমি যতটা চেয়েছিলাম তার চেয়ে আগে জেগেছি।",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0176L02": {
+"lego_target": "আমি তাকে জিজ্ঞাসা করবো",
+"seed_target": "আমি তাকে জিজ্ঞাসা করব সে আগামী বছর সাহায্য করতে পারবে কিনা।",
+"bucket": "B5-inflection-stem"
+},
+"ben_for_eng|ben_for_eng:S0180L01": {
+"lego_target": "আমার বইটা",
+"seed_target": "আমি কিছুক্ষণ আমার বই পড়তে চাই।",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0082L03": {
+"lego_target": "আমি অপেক্ষা করবো না",
+"seed_target": "আমি তোমার জন্য অপেক্ষা করব না। কেন না?",
+"bucket": "B5-inflection-stem"
+},
+"ben_for_eng|ben_for_eng:S0040L01": {
+"lego_target": "এই মুহূর্তে",
+"seed_target": "এখন তোমার কেমন লাগছে?",
+"bucket": "B7-no-relation"
+},
+"ben_for_eng|ben_for_eng:S0293L01": {
+"lego_target": "সে আমার সাথে কোথায় দেখা করতে যাচ্ছে",
+"seed_target": "সে আমার সাথে কোথায় দেখা করবে তা আমাকে জানতে হবে।",
+"bucket": "B6-partial"
+},
+"ben_for_eng|ben_for_eng:S0090L02": {
+"lego_target": "তুমি কথা বলতে পারো",
+"seed_target": "তুমি যদি আরও আস্তে বলতে পারো তাহলে খুব ভালো হবে।",
+"bucket": "B6-partial"
+},
+"bul_for_eng|bul_for_eng:S0298L01": {
+"lego_target": "нямам какво да кажа",
+"seed_target": "Нямам повече какво да кажа.",
+"bucket": "B3-interposed-in-order"
+},
+"cat_for_eng|cat_for_eng:S0113L02": {
+"lego_target": "el que vas dir",
+"seed_target": "Per què no puc recordar el que has dit?",
+"bucket": "B6-partial"
+},
+"cat_for_eng|cat_for_eng:S0125L03": {
+"lego_target": "creia que",
+"seed_target": "Crec que la teva idea era molt bona.",
+"bucket": "B5-inflection-stem"
+},
+"cat_for_spa|cat_for_spa:S0055L06": {
+"lego_target": "no gaire bé",
+"seed_target": "No gaudeixo despertant-me quan no vaig dormir gaire bé",
+"bucket": "B3-interposed-in-order"
+},
+"cat_for_spa|cat_for_spa:S0278L01": {
+"lego_target": "vas haver de",
+"seed_target": "vas haver d'acabar tot ahir a la nit?",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0152L01": {
+"lego_target": "co jsi chtěl",
+"seed_target": "Byl bych to udělal jinak, kdybych věděl, co chceš.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0188L01": {
+"lego_target": "nemusím měnit",
+"seed_target": "Takže nepotřebuji nic měnit.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0248L01": {
+"lego_target": "peníze zpět",
+"seed_target": "Myslel jsem, že ten film byl naprostý nesmysl a chci vrátit peníze.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0244L01": {
+"lego_target": "naučil jsem se toho hodně",
+"seed_target": "Už jsem se naučil hodně.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0157L03": {
+"lego_target": "nebudu moct být tam",
+"seed_target": "Příští měsíc tam nebudu moci být.",
+"bucket": "B5-inflection-stem"
+},
+"ces_for_eng|ces_for_eng:S0238L01": {
+"lego_target": "chtěl abys mi to řekl včera",
+"seed_target": "Chtěl, abys mi řekl včera.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0297L01": {
+"lego_target": "moc lidí kteří mluví česky",
+"seed_target": "Neznám mnoho lidí, kteří mluví česky.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0234L01": {
+"lego_target": "včera večer",
+"seed_target": "Minulou noc jsem potkal někoho, kdo pracuje s tvým bratrem.",
+"bucket": "B7-no-relation"
+},
+"ces_for_eng|ces_for_eng:S0294L02": {
+"lego_target": "abych ti zavolal",
+"seed_target": "Nemám dost času, abych tě dnes večer zavolal.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0138L04": {
+"lego_target": "můj přítel chtěl setkat",
+"seed_target": "Tady se chtěl přítel setkat s námi.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0153L03": {
+"lego_target": "neřekl bych to",
+"seed_target": "Nebyl bych to řekl úplně stejným způsobem.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0298L01": {
+"lego_target": "už co říct",
+"seed_target": "Nemám co říct.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0251L02": {
+"lego_target": "nechci to vědět",
+"seed_target": "Nechci to zjistit, dokud neskončíme.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0276L01": {
+"lego_target": "mohu tady zůstat ještě chvíli",
+"seed_target": "Ne, mohu tu zůstat ještě trochu déle.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0210L01": {
+"lego_target": "ten problém",
+"seed_target": "Myslí si, že musíme probrat problém.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0277L01": {
+"lego_target": "na začátku příštího týdne",
+"seed_target": "Ano, mám důležitou schůzku brzy příští týden.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0297L02": {
+"lego_target": "neznám moc lidí kteří",
+"seed_target": "Neznám mnoho lidí, kteří mluví česky.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0290L01": {
+"lego_target": "zajímá mě jestli zná odpověď",
+"seed_target": "Zajímalo by mě, jestli zná odpověď.",
+"bucket": "B5-inflection-stem"
+},
+"ces_for_eng|ces_for_eng:S0170L02": {
+"lego_target": "chtěl bych abyste mi řekl",
+"seed_target": "Rád bych, abys mi řekl, co potřebuješ.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0133L01": {
+"lego_target": "když pracujete společně",
+"seed_target": "Velmi dobře poznáš někoho, když spolu pracujete.",
+"bucket": "B5-inflection-stem"
+},
+"ces_for_eng|ces_for_eng:S0210L02": {
+"lego_target": "potřebujeme probrat",
+"seed_target": "Myslí si, že musíme probrat problém.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0170L01": {
+"lego_target": "co potřebujete",
+"seed_target": "Rád bych, abys mi řekl, co potřebuješ.",
+"bucket": "B5-inflection-stem"
+},
+"ces_for_eng|ces_for_eng:S0278L01": {
+"lego_target": "musel jsi dokončit všechno",
+"seed_target": "Musel jsi vše dokončit minulou noc?",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0269L01": {
+"lego_target": "na svého otce",
+"seed_target": "Proč nechceš čekat na otce?",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0271L01": {
+"lego_target": "chtěl bys s námi přijít",
+"seed_target": "Chtěl bys jít s námi příští měsíc?",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0152L03": {
+"lego_target": "udělal bych to jinak",
+"seed_target": "Byl bych to udělal jinak, kdybych věděl, co chceš.",
+"bucket": "B4-reordered"
+},
+"ces_for_eng|ces_for_eng:S0220L01": {
+"lego_target": "díval ses",
+"seed_target": "Díval jsi se trochu na televizi?",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0236L01": {
+"lego_target": "se pokusí pomoci",
+"seed_target": "Znám někoho, kdo řekl, že se bude snažit pomoci.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0260L02": {
+"lego_target": "ani nejmenší ponětí",
+"seed_target": "Nemám ani ponětí.",
+"bucket": "B6-partial"
+},
+"ces_for_eng|ces_for_eng:S0186L02": {
+"lego_target": "chceš mluvit o něčem jiném",
+"seed_target": "Chceš si příští týden povídat o něčem jiném?",
+"bucket": "B6-partial"
+},
+"dan_for_eng|dan_for_eng:S0015L03": {
+"lego_target": "have dig til at tale",
+"seed_target": "Og jeg vil have at du taler dansk med mig i morgen.",
+"bucket": "B6-partial"
+},
+"deu_for_eng|deu_for_eng:S0311L01": {
+"lego_target": "er konnte nicht",
+"seed_target": "er konnte die drei wichtigsten Fakten nicht glauben",
+"bucket": "B3-interposed-in-order"
+},
+"deu_for_eng|deu_for_eng:S0178L01": {
+"lego_target": "obwohl ich wollte",
+"seed_target": "Ich hatte keine Zeit, obwohl ich dich sehen wollte",
+"bucket": "B3-interposed-in-order"
+},
+"deu_for_eng|deu_for_eng:S0307L03": {
+"lego_target": "dort drüben",
+"seed_target": "Ich kenne diesen jungen Mann, der da drüben sitzt",
+"bucket": "B6-partial"
+},
+"deu_for_eng|deu_for_eng:S0322L02": {
+"lego_target": "dasselbe Buch",
+"seed_target": "Sie hat gesagt, dass sie das gleiche Buch lesen muss",
+"bucket": "B5-inflection-stem"
+},
+"deu_for_eng|deu_for_eng:S0149L01": {
+"lego_target": "ich hoffe du",
+"seed_target": "das ist nicht sehr schwierig, also hoffe ich, dass du bald fertig wirst",
+"bucket": "B4-reordered"
+},
+"deu_for_eng|deu_for_eng:S0293L02": {
+"lego_target": "er wird treffen",
+"seed_target": "Ich muss herausfinden, wo er mich treffen wird",
+"bucket": "B4-reordered"
+},
+"deu_for_eng|deu_for_eng:S0145L01": {
+"lego_target": "warum bist du nicht glücklich",
+"seed_target": "Warum bist du nicht mehr glücklich?",
+"bucket": "B3-interposed-in-order"
+},
+"deu_for_eng|deu_for_eng:S0267L01": {
+"lego_target": "hast du gehört von",
+"seed_target": "hast du von deinem Freund gehört?",
+"bucket": "B4-reordered"
+},
+"deu_for_eng|deu_for_eng:S0214L01": {
+"lego_target": "du hattest eine gute Zeit",
+"seed_target": "hattest du am Wochenende eine gute Zeit?",
+"bucket": "B4-reordered"
+},
+"deu_for_eng|deu_for_eng:S0147L02": {
+"lego_target": "als sie mich gesehen hat",
+"seed_target": "Sie war sehr nett, als sie mich nervös gesehen hat",
+"bucket": "B3-interposed-in-order"
+},
+"deu_for_eng|deu_for_eng:S0151L02": {
+"lego_target": "ich hatte gehofft",
+"seed_target": "das war nicht das, was ich gehofft hatte, dass passieren würde",
+"bucket": "B4-reordered"
+},
+"deu_for_eng|deu_for_eng:S0154L01": {
+"lego_target": "willst du dich treffen",
+"seed_target": "wo willst du dich am Samstagabend treffen?",
+"bucket": "B3-interposed-in-order"
+},
+"deu_for_eng|deu_for_eng:S0227L02": {
+"lego_target": "wird mir sagen",
+"seed_target": "dieser Mann wird mir etwas Neues sagen",
+"bucket": "B3-interposed-in-order"
+},
+"deu_for_eng|deu_for_eng:S0003L02": {
+"lego_target": "wie man spricht",
+"seed_target": "wie man so oft wie möglich spricht",
+"bucket": "B3-interposed-in-order"
+},
+"deu_for_eng|deu_for_eng:S0012L04": {
+"lego_target": "was morgen passiert",
+"seed_target": "Ich möchte nicht raten, was morgen passieren wird",
+"bucket": "B5-inflection-stem"
+},
+"deu_for_eng|deu_for_eng:S0002L03": {
+"lego_target": "Deutsch zu lernen",
+"seed_target": "Ich versuche zu lernen",
+"bucket": "B6-partial"
+},
+"deu_for_eng|deu_for_eng:S0090L02": {
+"lego_target": "das wäre toll",
+"seed_target": "wenn du langsamer sprechen kannst, wäre das toll",
+"bucket": "B4-reordered"
+},
+"deu_for_eng|deu_for_eng:S0076L02": {
+"lego_target": "wie viel ich gelernt habe",
+"seed_target": "Ich bin sehr zufrieden damit, wie viel ich schon gelernt habe",
+"bucket": "B3-interposed-in-order"
+},
+"deu_for_eng|deu_for_eng:S0022L02": {
+"lego_target": "weil ich sprechen will",
+"seed_target": "weil ich Leute treffen will, die Deutsch sprechen",
+"bucket": "B4-reordered"
+},
+"deu_for_eng|deu_for_eng:S0144L02": {
+"lego_target": "früher als ich wollte",
+"seed_target": "Ich bin heute Morgen früher aufgewacht als ich wollte",
+"bucket": "B3-interposed-in-order"
+},
+"deu_for_eng|deu_for_eng:S0188L01": {
+"lego_target": "ich muss mich nicht ändern",
+"seed_target": "also muss ich mich nicht ändern",
+"bucket": "B4-reordered"
+},
+"deu_for_zho|deu_for_zho:S0176L03": {
+"lego_target": "ihn fragen, ob er kann",
+"seed_target": "Ich werde ihn fragen, ob er nächstes Jahr helfen kann.",
+"bucket": "B3-interposed-in-order"
+},
+"ell_for_eng|ell_for_eng:S0161L04": {
+"lego_target": "την Κυριακή το πρωί",
+"seed_target": "Μπορείς να μου δώσεις αυτό το βιβλίο Κυριακή πρωί;",
+"bucket": "B6-partial"
+},
+"ell_for_eng|ell_for_eng:S0207L02": {
+"lego_target": "ό,τι χρειαζόταν",
+"seed_target": "Έχεις κάνει αυτό που χρειαζόταν να κάνεις.",
+"bucket": "B6-partial"
+},
+"ell_for_eng|ell_for_eng:S0192L03": {
+"lego_target": "αύριο το βράδυ",
+"seed_target": "Είμαι απασχολημένος αύριο βράδυ.",
+"bucket": "B6-partial"
+},
+"ell_for_eng|el_for_eng:S0091L02": {
+"lego_target": "να σκεφτείς",
+"seed_target": "Είναι δύσκολο να σκέφτομαι αρκετά γρήγορα για να απαντήσω εγκαίρως.",
+"bucket": "B6-partial"
+},
+"ell_for_eng|ell_for_eng:S0138L02": {
+"lego_target": "να μας συναντήσει",
+"seed_target": "Εδώ ήθελε ο φίλος μου να συναντηθούμε.",
+"bucket": "B6-partial"
+},
+"ell_for_eng|ell_for_eng:S0190L01": {
+"lego_target": "σε πειράζει αν",
+"seed_target": "Σε πειράζει να σου κάνω μερικές ερωτήσεις;",
+"bucket": "B6-partial"
+},
+"ell_for_eng|el_for_eng:S0256L02": {
+"lego_target": "σε λιγότερο από μία ώρα",
+"seed_target": "Νομίζω ότι θα είμαι έτοιμος σε λιγότερο από μια ώρα.",
+"bucket": "B6-partial"
+},
+"ell_for_eng|el_for_eng:S0093L02": {
+"lego_target": "να φύγουμε",
+"seed_target": "Είναι ώρα να φύγω τώρα.",
+"bucket": "B6-partial"
+},
+"ell_for_eng|el_for_eng:S0088L03": {
+"lego_target": "να μιλήσω",
+"seed_target": "Δεν είμαι ακόμα έτοιμος να μιλάω με ανθρώπους που δεν ξέρω.",
+"bucket": "B5-inflection-stem"
+},
+"ell_for_eng|el_for_eng:S0104L01": {
+"lego_target": "πρέπει να",
+"seed_target": "Χρειάζεται να αλλάξουμε αυτό που κάνουμε.",
+"bucket": "B6-partial"
+},
+"ell_for_eng|el_for_eng:S0291L03": {
+"lego_target": "να μιλήσω",
+"seed_target": "Ελπίζω να μπορέσω να μιλάω καλύτερα σύντομα.",
+"bucket": "B5-inflection-stem"
+},
+"ell_for_eng|el_for_eng:S0161L03": {
+"lego_target": "εκείνο το βιβλίο",
+"seed_target": "Μπορείς να μου δώσεις αυτό το βιβλίο Κυριακή πρωί;",
+"bucket": "B6-partial"
+},
+"ell_for_eng|ell_for_eng:S0103L04": {
+"lego_target": "περισσότερες λέξεις",
+"seed_target": "Δεν προσπαθούμε να ακούσουμε πολλές ακόμα λέξεις.",
+"bucket": "B6-partial"
+},
+"ell_for_eng|ell_for_eng:S0153L03": {
+"lego_target": "με τον ίδιο τρόπο",
+"seed_target": "Δεν θα το έλεγα με ακριβώς τον ίδιο τρόπο.",
+"bucket": "B3-interposed-in-order"
+},
+"ell_for_eng|ell_for_eng:S0187L03": {
+"lego_target": "μέχρι στιγμής",
+"seed_target": "Είμαι χαρούμενος μέχρι τώρα.",
+"bucket": "B6-partial"
+},
+"ell_for_eng|el_for_eng:S0091L04": {
+"lego_target": "να απαντήσεις",
+"seed_target": "Είναι δύσκολο να σκέφτομαι αρκετά γρήγορα για να απαντήσω εγκαίρως.",
+"bucket": "B5-inflection-stem"
+},
+"ell_for_eng|el_for_eng:S0190L02": {
+"lego_target": "σε ρωτήσω",
+"seed_target": "Σε πειράζει να σου κάνω μερικές ερωτήσεις;",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_ben|eng_for_ben:S0573L01": {
+"lego_target": "that's the thing",
+"seed_target": "It's the kind of thing that makes the holidays very special.",
+"bucket": "B4-reordered"
+},
+"eng_for_ben|eng_for_ben:S0580L01": {
+"lego_target": "we've wanted to take",
+"seed_target": "We've often wanted to take the children somewhere a little warmer.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_ben|eng_for_ben:S0637L01": {
+"lego_target": "where's her bag",
+"seed_target": "Where is her bag?",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0010L03": {
+"lego_target": "to remember",
+"seed_target": "I'm not sure if I can remember the whole sentence.",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0643L01": {
+"lego_target": "what do you want",
+"seed_target": "Do you want sir",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0647L01": {
+"lego_target": "you can say that",
+"seed_target": "You speak it madam",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0646L01": {
+"lego_target": "you are doing something",
+"seed_target": "You're doing something sir.",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0138L02": {
+"lego_target": "with us",
+"seed_target": "This was where my friend wanted to meet us.",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0211L02": {
+"lego_target": "doesn't want to explain",
+"seed_target": "They told us that they didn't want to explain.",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0638L01": {
+"lego_target": "I'm trying to remember",
+"seed_target": "I'm trying to think.",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0656L01": {
+"lego_target": "with all of you",
+"seed_target": "with you all",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0127L01": {
+"lego_target": "didn't want to see",
+"seed_target": "That isn't why I wanted to see you.",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0043L01": {
+"lego_target": "to think about",
+"seed_target": "I wasn't thinking about how to answer.",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_ben|eng_for_ben:S0665L01": {
+"lego_target": "do you all want to leave",
+"seed_target": "Do you all want to go?",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0662L01": {
+"lego_target": "you all can say that",
+"seed_target": "you all speak it",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0653L01": {
+"lego_target": "do you have any objection",
+"seed_target": "Do you mind madam?",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0585L03": {
+"lego_target": "out of the window",
+"seed_target": "I can see the mountains out of my bedroom window.",
+"bucket": "B4-reordered"
+},
+"eng_for_ben|eng_for_ben:S0493L01": {
+"lego_target": "what is going to come next",
+"seed_target": "What's going to come next?",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0614L02": {
+"lego_target": "near where they live",
+"seed_target": "It's near where your family live.",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0661L01": {
+"lego_target": "you all are doing something",
+"seed_target": "you're all doing something",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0588L01": {
+"lego_target": "to leave home",
+"seed_target": "So I wanted to grow up and leave home.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_ben|eng_for_ben:S0567L02": {
+"lego_target": "watching them play",
+"seed_target": "It's been lovely spending time outdoors watching the children play.",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_deu|eng_for_deu:S0041L04": {
+"lego_target": "to get tired",
+"seed_target": "I feel okay, but I'm starting to feel tired.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0028L02": {
+"lego_target": "as soon as possible",
+"seed_target": "It's useful to start talking as soon as you can.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0108L02": {
+"lego_target": "didn't hope to wake up",
+"seed_target": "We didn't hope to wake in the middle of the night.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0127L01": {
+"lego_target": "not the reason why",
+"seed_target": "That isn't why I wanted to see you.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0105L01": {
+"lego_target": "that's why",
+"seed_target": "That is why he didn't know the answer.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0256L02": {
+"lego_target": "I think I will",
+"seed_target": "I think I'll be ready in less than an hour.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0217L01": {
+"lego_target": "one or two",
+"seed_target": "I had a glass or two of water.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0254L02": {
+"lego_target": "I have been ready",
+"seed_target": "I've been ready since this morning.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0216L01": {
+"lego_target": "I met someone",
+"seed_target": "I saw a few friends.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0245L01": {
+"lego_target": "how much I have done",
+"seed_target": "I'm happy with how much I've done in a short time",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0224L01": {
+"lego_target": "has just started",
+"seed_target": "He's just started to learn.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0007L02": {
+"lego_target": "as well as I can",
+"seed_target": "I want to try as hard as I can today.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0026L02": {
+"lego_target": "the feeling",
+"seed_target": "I like feeling as if I'm nearly ready to go.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0006L02": {
+"lego_target": "to remember something",
+"seed_target": "I'm trying to remember a word.",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0245L02": {
+"lego_target": "I am happy with",
+"seed_target": "I'm happy with how much I've done in a short time",
+"bucket": "B6-partial"
+},
+"eng_for_deu|eng_for_deu:S0242L01": {
+"lego_target": "give to her",
+"seed_target": "I want to give her more time.",
+"bucket": "B4-reordered"
+},
+"eng_for_fra|eng_for_fra:S0073L02": {
+"lego_target": "I've still got a lot to learn",
+"seed_target": "Thank you very much, but I've got more to learn.",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0105L01": {
+"lego_target": "that's why",
+"seed_target": "That is why he didn't know the answer.",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0065L02": {
+"lego_target": "take the time",
+"seed_target": "It's important to take time to test yourself.",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0075L01": {
+"lego_target": "have you still got",
+"seed_target": "Have you got more to learn?",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0076L02": {
+"lego_target": "everything I've already learnt",
+"seed_target": "I'm very happy with how much I've learnt already.",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0091L02": {
+"lego_target": "fast enough",
+"seed_target": "It's difficult to think quickly enough to answer in time.",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0144L01": {
+"lego_target": "I woke up",
+"seed_target": "I woke earlier than I wanted to this morning.",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0075L02": {
+"lego_target": "a lot to learn",
+"seed_target": "Have you got more to learn?",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0153L03": {
+"lego_target": "in the same way",
+"seed_target": "I wouldn't have said it in exactly the same way.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_fra|eng_for_fra:S0108L02": {
+"lego_target": "to wake up",
+"seed_target": "We didn't hope to wake in the middle of the night.",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0128L02": {
+"lego_target": "you look like",
+"seed_target": "You're like someone I used to know.",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0094L02": {
+"lego_target": "for it to work",
+"seed_target": "This is the only way it will work.",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0127L01": {
+"lego_target": "that's not why",
+"seed_target": "That isn't why I wanted to see you.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0293L02": {
+"lego_target": "where it's being held",
+"seed_target": "I have to find out where he's going to meet me.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0286L01": {
+"lego_target": "people who like to",
+"seed_target": "People who like speaking English.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0263L01": {
+"lego_target": "who you're talking about",
+"seed_target": "I don't know who you mean.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0273L01": {
+"lego_target": "I have a lot of work",
+"seed_target": "No unfortunately I've got too much work.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0508L02": {
+"lego_target": "about that",
+"seed_target": "There's no point worrying about how you're going to pay.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0530L01": {
+"lego_target": "so that I",
+"seed_target": "So I can count them",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0564L02": {
+"lego_target": "couldn't have done it",
+"seed_target": "I wouldn't have been able to without your help.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0581L03": {
+"lego_target": "he'd like to know that",
+"seed_target": "He'd like to know a little more about what it's like.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0541L03": {
+"lego_target": "is a good idea",
+"seed_target": "It's a good idea to try and breathe slowly.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0544L01": {
+"lego_target": "whoever said that",
+"seed_target": "Whoever said it would be difficult was absolutely right.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0559L01": {
+"lego_target": "are you",
+"seed_target": "Have you found the path through the wood?",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0295L02": {
+"lego_target": "in one day",
+"seed_target": "I didn't say that I wanted to finish in a day.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0293L01": {
+"lego_target": "I'll have to find out",
+"seed_target": "I have to find out where he's going to meet me.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0289L02": {
+"lego_target": "he'll be there",
+"seed_target": "I wonder if she's going to be there this afternoon.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0171L02": {
+"lego_target": "help you find it",
+"seed_target": "Do you want me to help you look for it?",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0117L02": {
+"lego_target": "I'm doing better",
+"seed_target": "I'm definitely doing better than I was last time we talked to each other.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_guj|eng_for_guj:S0290L01": {
+"lego_target": "she knows",
+"seed_target": "I wonder if he knows the answer.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0266L03": {
+"lego_target": "of my father's",
+"seed_target": "He was an old friend of my father.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0288L01": {
+"lego_target": "most of the people I know",
+"seed_target": "Most people I know like watching television.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0298L01": {
+"lego_target": "I don't have anything left",
+"seed_target": "I've got nothing left to say.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0459L03": {
+"lego_target": "in front of the sign",
+"seed_target": "It wasn't in front of the blue sign.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_guj|eng_for_guj:S0474L03": {
+"lego_target": "I don't want",
+"seed_target": "I don't even want it as a free offer.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_guj|eng_for_guj:S0491L02": {
+"lego_target": "I love that",
+"seed_target": "I love the way you try to help.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0520L01": {
+"lego_target": "with the whole family",
+"seed_target": "It might have happened to the whole family.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0571L03": {
+"lego_target": "would be an idea",
+"seed_target": "I'm not convinced that would be a very good idea.",
+"bucket": "B6-partial"
+},
+"eng_for_guj|eng_for_guj:S0270L02": {
+"lego_target": "I'll be late",
+"seed_target": "Because I'm worried that I'm going to be late.",
+"bucket": "B6-partial"
+},
+"eng_for_hin|eng_for_hin:S0437L03": {
+"lego_target": "as much money as possible",
+"seed_target": "They wanted to raise as much as possible for charity.",
+"bucket": "B6-partial"
+},
+"eng_for_hin|eng_for_hin:S0461L01": {
+"lego_target": "such a shop",
+"seed_target": "A shop where I can buy some postcards.",
+"bucket": "B6-partial"
+},
+"eng_for_hin|eng_for_hin:S0328L01": {
+"lego_target": "she ought to",
+"seed_target": "Yes I think she should.",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0109L01": {
+"lego_target": "we need to work hard",
+"seed_target": "We must work hard to learn a lot of new words.",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0064L03": {
+"lego_target": "it's fun",
+"seed_target": "Learning English isn't easy but it is fun.",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0049L01": {
+"lego_target": "that's how it is",
+"seed_target": "It's like this, if you know what I mean.",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0074L03": {
+"lego_target": "on yourself",
+"seed_target": "Thank you very much for helping me to understand.",
+"bucket": "B7-no-relation"
+},
+"eng_for_ita|eng_for_ita:S0153L01": {
+"lego_target": "I would have said it",
+"seed_target": "I wouldn't have said it in exactly the same way.",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_ita|eng_for_ita:S0072L01": {
+"lego_target": "you're going",
+"seed_target": "I think that you're doing very well.",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0154L01": {
+"lego_target": "saturday evening",
+"seed_target": "Where do you want to meet on Saturday night?",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0159L01": {
+"lego_target": "that's not",
+"seed_target": "That isn't what I'm trying to say.",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0066L01": {
+"lego_target": "it isn't difficult",
+"seed_target": "It's not difficult to find the answer.",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0153L03": {
+"lego_target": "in the same way",
+"seed_target": "I wouldn't have said it in exactly the same way.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_ita|eng_for_ita:S0061L01": {
+"lego_target": "could you say it",
+"seed_target": "Could you say that again a little more slowly?",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0074L02": {
+"lego_target": "so hard",
+"seed_target": "Thank you very much for helping me to understand.",
+"bucket": "B7-no-relation"
+},
+"eng_for_ita|eng_for_ita:S0074L01": {
+"lego_target": "you don't have to be",
+"seed_target": "Thank you very much for helping me to understand.",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0156L01": {
+"lego_target": "to the restaurant",
+"seed_target": "Do you want to go to a restaurant tonight?",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0070L03": {
+"lego_target": "where she was",
+"seed_target": "She didn't want to tell me where it was.",
+"bucket": "B4-reordered"
+},
+"eng_for_ita|eng_for_ita:S0167L01": {
+"lego_target": "do you have to do",
+"seed_target": "What do you need to do tomorrow afternoon?",
+"bucket": "B6-partial"
+},
+"eng_for_ita|eng_for_ita:S0062L01": {
+"lego_target": "to help you",
+"seed_target": "I'm not sure if I can help you at the same time.",
+"bucket": "B6-partial"
+},
+"eng_for_kan|eng_for_kan:S0479L04": {
+"lego_target": "work that I could do",
+"seed_target": "It's the least I could do.",
+"bucket": "B6-partial"
+},
+"eng_for_kan|eng_for_kan:S0485L04": {
+"lego_target": "there's nothing else",
+"seed_target": "Nothing would make me happier than to get away.",
+"bucket": "B6-partial"
+},
+"eng_for_kan|eng_for_kan:S0583L02": {
+"lego_target": "what's it like in the part",
+"seed_target": "What's it like in this part of the world?",
+"bucket": "B4-reordered"
+},
+"eng_for_kan|eng_for_kan:S0447L02": {
+"lego_target": "will be able to drive",
+"seed_target": "Will they be able to drive us home after the meal?",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_kan|eng_for_kan:S0117L04": {
+"lego_target": "I'm doing better",
+"seed_target": "I'm definitely doing better than I was last time we talked to each other.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_kan|eng_for_kan:S0171L01": {
+"lego_target": "to look for it",
+"seed_target": "Do you want me to help you look for it?",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_kan|eng_for_kan:S0544L03": {
+"lego_target": "whoever said that",
+"seed_target": "Whoever said it would be difficult was absolutely right.",
+"bucket": "B6-partial"
+},
+"eng_for_kan|eng_for_kan:S0578L02": {
+"lego_target": "that is more warm",
+"seed_target": "Somewhere warmer.",
+"bucket": "B6-partial"
+},
+"eng_for_kan|eng_for_kan:S0591L03": {
+"lego_target": "towards the shops",
+"seed_target": "She followed me down to the shops.",
+"bucket": "B6-partial"
+},
+"eng_for_kan|eng_for_kan:S0476L03": {
+"lego_target": "for the end of the half",
+"seed_target": "I'm waiting for the end of the second half.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_kor|eng_for_kor:S0090L01": {
+"lego_target": "good",
+"seed_target": "If you can speak more slowly that would be great",
+"bucket": "B7-no-relation"
+},
+"eng_for_kor|eng_for_kor:S0129L02": {
+"lego_target": "I'm happy that you're doing well",
+"seed_target": "I'm so happy that you're doing so well",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_kor|eng_for_kor:S0113L01": {
+"lego_target": "I can't remember",
+"seed_target": "Why can't I remember what you said?",
+"bucket": "B4-reordered"
+},
+"eng_for_kor|eng_for_kor:S0094L02": {
+"lego_target": "the way it will work",
+"seed_target": "This is the only way it will work",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_kor|eng_for_kor:S0109L03": {
+"lego_target": "in order to learn",
+"seed_target": "We must work hard to learn a lot of new words",
+"bucket": "B6-partial"
+},
+"eng_for_kor|eng_for_kor:S0049L01": {
+"lego_target": "that's the sort of thing",
+"seed_target": "It's like this, if you know what I mean",
+"bucket": "B6-partial"
+},
+"eng_for_kor|eng_for_kor:S0059L01": {
+"lego_target": "have to do",
+"seed_target": "I know how to do what I need to do next week",
+"bucket": "B6-partial"
+},
+"eng_for_mar|eng_for_mar:S0029L02": {
+"lego_target": "even better",
+"seed_target": "I'm looking forward to speaking better as soon as I can.",
+"bucket": "B6-partial"
+},
+"eng_for_mar|eng_for_mar:S0018L03": {
+"lego_target": "we need to meet",
+"seed_target": "We want to meet at six o'clock this evening.",
+"bucket": "B6-partial"
+},
+"eng_for_mar|eng_for_mar:S0024L02": {
+"lego_target": "won't be able to remember",
+"seed_target": "I'm not going to be able to remember easily.",
+"bucket": "B6-partial"
+},
+"eng_for_mar|eng_for_mar:S0023L03": {
+"lego_target": "I'm going to start speaking",
+"seed_target": "I'm going to start talking more soon.",
+"bucket": "B6-partial"
+},
+"eng_for_mar|eng_for_mar:S0633L02": {
+"lego_target": "that would be fine",
+"seed_target": "A large glass of water would be fine.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0658L01": {
+"lego_target": "do you all want it",
+"seed_target": "Do you all want?",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0597L02": {
+"lego_target": "he must have heard",
+"seed_target": "I suspect that he's heard a hundred stories about it.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0531L01": {
+"lego_target": "it's not true",
+"seed_target": "It isn't true that anyone can win the game.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0549L01": {
+"lego_target": "because I'll have to stay quiet",
+"seed_target": "Because I have got to be quiet.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0585L02": {
+"lego_target": "from my bedroom window",
+"seed_target": "I can see the mountains out of my bedroom window.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0513L02": {
+"lego_target": "when I turn my head upside down",
+"seed_target": "It hurts most when I move my head up and down.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0520L01": {
+"lego_target": "maybe it happened",
+"seed_target": "It might have happened to the whole family.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0623L01": {
+"lego_target": "would you like",
+"seed_target": "Do you want a cup of coffee or tea?",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0514L01": {
+"lego_target": "I found the right house",
+"seed_target": "I found the perfect house on the first day.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0521L03": {
+"lego_target": "why we had to stay here",
+"seed_target": "I'm afraid that you'll forget why we needed to stay here.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0600L01": {
+"lego_target": "I would have driven",
+"seed_target": "I'd have driven if you'd told me how tired you were.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0635L01": {
+"lego_target": "that's Jane's bag",
+"seed_target": "That is Jane's bag.",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_pan|eng_for_pan:S0619L01": {
+"lego_target": "it's been quite a while",
+"seed_target": "It's a long time since we saw each other.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0506L03": {
+"lego_target": "before we moved away",
+"seed_target": "I used to live around here years ago before we moved.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0599L02": {
+"lego_target": "I would have happily driven",
+"seed_target": "I'd have been happy to drive if you'd told me.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0631L01": {
+"lego_target": "what would you like to have",
+"seed_target": "What would you like?",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0538L02": {
+"lego_target": "like I don't care",
+"seed_target": "I don't want to seem as though I don't care.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0510L01": {
+"lego_target": "she's gone to find",
+"seed_target": "She's gone to look for somewhere safe to park the car.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0568L01": {
+"lego_target": "I hope",
+"seed_target": "I'm expecting to see an improvement next time we meet.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0555L02": {
+"lego_target": "to get a new one",
+"seed_target": "And I'm too tired to fetch a new one.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0624L01": {
+"lego_target": "yes, that would be lovely",
+"seed_target": "Yes, that would be great, please.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0502L01": {
+"lego_target": "she nearly got lost",
+"seed_target": "She almost got lost because she turned left instead of right.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0547L01": {
+"lego_target": "because he's been playing",
+"seed_target": "Because he has been playing in the mud.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0568L02": {
+"lego_target": "there'll be improvement",
+"seed_target": "I'm expecting to see an improvement next time we meet.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0618L01": {
+"lego_target": "it doesn't take much time",
+"seed_target": "It doesn't feel like a long time.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0566L01": {
+"lego_target": "if it were my choice",
+"seed_target": "I'd have thought more if it had been my choice.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0127L02": {
+"lego_target": "not because",
+"seed_target": "That isn't why I wanted to see you.",
+"bucket": "B7-no-relation"
+},
+"eng_for_pan|eng_for_pan:S0175L01": {
+"lego_target": "what to do on Sunday morning",
+"seed_target": "What do you want to do on Sunday morning?",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_pan|eng_for_pan:S0154L02": {
+"lego_target": "where on Saturday night",
+"seed_target": "Where do you want to meet on Saturday night?",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_pan|eng_for_pan:S0637L01": {
+"lego_target": "where's her bag",
+"seed_target": "Where is her bag?",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0564L01": {
+"lego_target": "I couldn't have done it",
+"seed_target": "I wouldn't have been able to without your help.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0566L02": {
+"lego_target": "I'd think about it more",
+"seed_target": "I'd have thought more if it had been my choice.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0598L03": {
+"lego_target": "about their work",
+"seed_target": "He's heard a thousand stories about what they were doing.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0558L01": {
+"lego_target": "it's gotten very late at night",
+"seed_target": "It's so late at night.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0506L02": {
+"lego_target": "a few years ago",
+"seed_target": "I used to live around here years ago before we moved.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0565L01": {
+"lego_target": "I would have thought about it",
+"seed_target": "I'd have thought about it more carefully.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0557L02": {
+"lego_target": "they didn't play music so loud",
+"seed_target": "I wish they wouldn't play such loud music.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0614L02": {
+"lego_target": "your family lives",
+"seed_target": "It's near where your family live.",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_pan|eng_for_pan:S0532L01": {
+"lego_target": "unless he's lucky",
+"seed_target": "Unless they're lucky.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0619L02": {
+"lego_target": "since we met",
+"seed_target": "It's a long time since we saw each other.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0580L03": {
+"lego_target": "somewhere a bit warmer",
+"seed_target": "We've often wanted to take the children somewhere a little warmer.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0529L01": {
+"lego_target": "can you all raise your hands",
+"seed_target": "Can you all put your hands up?",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0514L02": {
+"lego_target": "on the very first day",
+"seed_target": "I found the perfect house on the first day.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0642L01": {
+"lego_target": "how are you feeling",
+"seed_target": "how do you feel madam?",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0563L01": {
+"lego_target": "I couldn't keep walking",
+"seed_target": "I wouldn't have been able to keep going any longer.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0507L01": {
+"lego_target": "we moved into town",
+"seed_target": "We moved to the city.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0538L01": {
+"lego_target": "I don't want to look",
+"seed_target": "I don't want to seem as though I don't care.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0613L01": {
+"lego_target": "we might have bought a house",
+"seed_target": "We probably would have bought a house there.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0511L02": {
+"lego_target": "for the news to reach everyone",
+"seed_target": "The news took several hours to reach everyone in the office.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0588L01": {
+"lego_target": "so I wanted to leave home",
+"seed_target": "So I wanted to grow up and leave home.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_pan|eng_for_pan:S0170L02": {
+"lego_target": "tell me what you need to",
+"seed_target": "I'd like you to tell me what you need.",
+"bucket": "B4-reordered"
+},
+"eng_for_pan|eng_for_pan:S0511L01": {
+"lego_target": "it took several hours",
+"seed_target": "The news took several hours to reach everyone in the office.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0530L01": {
+"lego_target": "so that I can count",
+"seed_target": "So I can count them",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0568L03": {
+"lego_target": "the next time we meet",
+"seed_target": "I'm expecting to see an improvement next time we meet.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0569L02": {
+"lego_target": "how much you're willing to give",
+"seed_target": "Have you decided how much you are willing to pay?",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0576L01": {
+"lego_target": "waiting has been very upsetting",
+"seed_target": "It has been very upsetting waiting.",
+"bucket": "B4-reordered"
+},
+"eng_for_pan|eng_for_pan:S0582L02": {
+"lego_target": "growing up here",
+"seed_target": "What's it like to grow up here?",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_pan|eng_for_pan:S0602L01": {
+"lego_target": "how it first started",
+"seed_target": "How it started in the first place.",
+"bucket": "B4-reordered"
+},
+"eng_for_pan|eng_for_pan:S0611L01": {
+"lego_target": "I'd be prepared to look",
+"seed_target": "I would have been ready to look somewhere else.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0610L01": {
+"lego_target": "he needs to find work",
+"seed_target": "He needs to look for work.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0620L01": {
+"lego_target": "it's been a very long time",
+"seed_target": "It's a very long time since we last saw each other.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0634L01": {
+"lego_target": "I want to have",
+"seed_target": "I'd like one of those.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0540L02": {
+"lego_target": "you want to go without the car",
+"seed_target": "I don't mind if you want to leave without the car.",
+"bucket": "B6-partial"
+},
+"eng_for_pan|eng_for_pan:S0598L01": {
+"lego_target": "she's heard",
+"seed_target": "He's heard a thousand stories about what they were doing.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0295L01": {
+"lego_target": "finish in one day",
+"seed_target": "I didn't say that I wanted to finish in a day.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0244L01": {
+"lego_target": "I've already learnt a lot",
+"seed_target": "I've learnt a lot already",
+"bucket": "B4-reordered"
+},
+"eng_for_por|eng_for_por:S0028L01": {
+"lego_target": "as soon as possible",
+"seed_target": "It's useful to start talking as soon as you can.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0097L02": {
+"lego_target": "when you want",
+"seed_target": "Yes I'm ready to go as soon as you want.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0029L02": {
+"lego_target": "to speak better as soon as possible",
+"seed_target": "I'm looking forward to speaking better as soon as I can.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0108L02": {
+"lego_target": "we didn't hope to wake up",
+"seed_target": "We didn't hope to wake in the middle of the night.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0120L01": {
+"lego_target": "going by bus",
+"seed_target": "It's interesting that you like to go by bus.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0184L03": {
+"lego_target": "a little while ago",
+"seed_target": "Yes I saw them in the office a while ago.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0241L01": {
+"lego_target": "to give him that",
+"seed_target": "I don't want to give it to him.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0246L02": {
+"lego_target": "she was very busy",
+"seed_target": "I wanted her to help you but she was too busy.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0242L01": {
+"lego_target": "to give him more time",
+"seed_target": "I want to give her more time.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0277L02": {
+"lego_target": "at the beginning of next week",
+"seed_target": "Yes I've got an important meeting early next week.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0183L01": {
+"lego_target": "I'm afraid not",
+"seed_target": "No I'm afraid I haven't seen them.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0138L02": {
+"lego_target": "with us",
+"seed_target": "This was where my friend wanted to meet us.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0187L01": {
+"lego_target": "I'm happy with it",
+"seed_target": "I'm happy so far.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0113L01": {
+"lego_target": "I can't remember what you said",
+"seed_target": "Why can't I remember what you said?",
+"bucket": "B4-reordered"
+},
+"eng_for_por|eng_for_por:S0281L01": {
+"lego_target": "finish my coffee before we start",
+"seed_target": "Do you mind if I finish my coffee before you start?",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0272L01": {
+"lego_target": "sounds like a good idea",
+"seed_target": "Yes that sounds like a great idea.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0294L01": {
+"lego_target": "call him tonight",
+"seed_target": "I don't have enough time to call you tonight.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0246L01": {
+"lego_target": "her to help him",
+"seed_target": "I wanted her to help you but she was too busy.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0286L01": {
+"lego_target": "people who enjoy",
+"seed_target": "People who like speaking English.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0112L02": {
+"lego_target": "I wasn't expecting that",
+"seed_target": "That was very interesting, and I wasn't expecting it.",
+"bucket": "B4-reordered"
+},
+"eng_for_por|eng_for_por:S0250L01": {
+"lego_target": "anything more before I answer",
+"seed_target": "Can you tell me something else before I answer?",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0273L01": {
+"lego_target": "I have too much work",
+"seed_target": "No unfortunately I've got too much work.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0122L03": {
+"lego_target": "how it is going",
+"seed_target": "It's starting to feel easier and I'm excited about how it's going.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0249L01": {
+"lego_target": "you to help me before going",
+"seed_target": "I want you to help me before you go.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0237L01": {
+"lego_target": "to tell him",
+"seed_target": "He wanted me to tell you before the weekend.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0127L01": {
+"lego_target": "to see him",
+"seed_target": "That isn't why I wanted to see you.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0120L02": {
+"lego_target": "that you like going by bus",
+"seed_target": "It's interesting that you like to go by bus.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0282L01": {
+"lego_target": "it's not a problem",
+"seed_target": "No that's not a problem.",
+"bucket": "B6-partial"
+},
+"eng_for_por|eng_for_por:S0298L01": {
+"lego_target": "nothing more to say",
+"seed_target": "I've got nothing left to say.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0451L01": {
+"lego_target": "they should have done it",
+"seed_target": "They said what they wanted to do.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0453L02": {
+"lego_target": "they saw them",
+"seed_target": "Did they say who they saw last night?",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_sin|eng_for_sin:S0478L02": {
+"lego_target": "she's very kind at heart",
+"seed_target": "She has such a kind heart.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0461L02": {
+"lego_target": "a shop where you can get",
+"seed_target": "A shop where I can buy some postcards.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0474L02": {
+"lego_target": "even though it's free",
+"seed_target": "I don't even want it as a free offer.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0382L01": {
+"lego_target": "to put that",
+"seed_target": "Did you ask him where he wanted to put it?",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0411L03": {
+"lego_target": "we need, tonight",
+"seed_target": "We would like to reserve a table for four tonight.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0429L01": {
+"lego_target": "that's good for them",
+"seed_target": "Yes that would be perfect for them.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0430L01": {
+"lego_target": "that's not possible",
+"seed_target": "No that wouldn't be possible.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0444L03": {
+"lego_target": "they thought that",
+"seed_target": "Yes they thought it could be done more efficiently.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0484L02": {
+"lego_target": "that's meant to be a challenge",
+"seed_target": "It's meant to be a challenge.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0251L01": {
+"lego_target": "before we finish",
+"seed_target": "I don't want to find out until after we finish.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0236L01": {
+"lego_target": "who said she was going to try",
+"seed_target": "I know someone who said that she was going to try to help.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_sin|eng_for_sin:S0388L01": {
+"lego_target": "that person who works",
+"seed_target": "That person you work with.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0363L01": {
+"lego_target": "to talk a lot",
+"seed_target": "Yes he felt like talking a lot.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0509L02": {
+"lego_target": "you're paying to buy a new bed",
+"seed_target": "I heard that you're going to pay for a new bed.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0425L03": {
+"lego_target": "they want",
+"seed_target": "Yes they need to make sure they understand.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0415L02": {
+"lego_target": "that's not a problem",
+"seed_target": "That wouldn't be a problem if you ask me.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0502L02": {
+"lego_target": "so she got very lost",
+"seed_target": "She almost got lost because she turned left instead of right.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0432L02": {
+"lego_target": "they pretend",
+"seed_target": "They could mean that they want you to ask.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0405L03": {
+"lego_target": "do we need to ask if",
+"seed_target": "Should we ask if we have to book?",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0616L01": {
+"lego_target": "it was very brave of him to say",
+"seed_target": "You were very brave to say you thought that.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0356L03": {
+"lego_target": "yes, they have",
+"seed_target": "Yes they had something important to discuss.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0350L03": {
+"lego_target": "he wants to see",
+"seed_target": "Yes he wanted to see some old friends.",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_sin|eng_for_sin:S0399L02": {
+"lego_target": "we don't need",
+"seed_target": "We don't want to lose hope.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0352L02": {
+"lego_target": "he can't have it",
+"seed_target": "Even if he wanted to he wouldn't be able to.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0475L02": {
+"lego_target": "there are still many reasons",
+"seed_target": "There are many reasons to consider waiting.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0444L02": {
+"lego_target": "it could be done efficiently",
+"seed_target": "Yes they thought it could be done more efficiently.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_sin|eng_for_sin:S0446L02": {
+"lego_target": "they can't break",
+"seed_target": "They won't be able to break that window.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0432L01": {
+"lego_target": "they want to hear you",
+"seed_target": "They could mean that they want you to ask.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0493L01": {
+"lego_target": "what's coming next",
+"seed_target": "What's going to come next?",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_sin|eng_for_sin:S0383L03": {
+"lego_target": "yes, he said that",
+"seed_target": "Yes he said he wanted to put it in the garden.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0668L01": {
+"lego_target": "I hope all of you",
+"seed_target": "I hope you'll all be able to go",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0401L02": {
+"lego_target": "it's better to go home",
+"seed_target": "No it would be better to go straight home.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0455L01": {
+"lego_target": "the child was upset",
+"seed_target": "We had to leave because the children were tired.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0473L01": {
+"lego_target": "I don't want that",
+"seed_target": "I don't want it.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0445L02": {
+"lego_target": "they can carry",
+"seed_target": "They will be able to carry that suitcase.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0355L02": {
+"lego_target": "to talk to her",
+"seed_target": "Did she need to talk to that woman you know?",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0363L02": {
+"lego_target": "he seemed to",
+"seed_target": "Yes he felt like talking a lot.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0359L01": {
+"lego_target": "to turn left",
+"seed_target": "Your friend said that he could turn left.",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0144L02": {
+"lego_target": "I woke up",
+"seed_target": "I woke earlier than I wanted to this morning",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0200L01": {
+"lego_target": "finish on time",
+"seed_target": "they say they want to make sure that we finish everything in time",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0200L03": {
+"lego_target": "they say they want us to",
+"seed_target": "they say they want to make sure that we finish everything in time",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0165L02": {
+"lego_target": "but I don't know if it's",
+"seed_target": "but I'm not sure if it's true",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0138L03": {
+"lego_target": "this is where",
+"seed_target": "this was where my friend wanted to meet us",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0138L02": {
+"lego_target": "meet with us",
+"seed_target": "this was where my friend wanted to meet us",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0129L02": {
+"lego_target": "I'm really glad that",
+"seed_target": "I'm so happy that you're doing so well",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0177L02": {
+"lego_target": "I'll ask him where",
+"seed_target": "I'll ask her where she wants to go",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0171L01": {
+"lego_target": "help you find it",
+"seed_target": "do you want me to help you look for it?",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0111L03": {
+"lego_target": "it changes us",
+"seed_target": "when we learn something new it changes our brain",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0127L02": {
+"lego_target": "that's not why",
+"seed_target": "that isn't why I wanted to see you",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0003L02": {
+"lego_target": "as much as possible",
+"seed_target": "how to speak as often as possible",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0184L03": {
+"lego_target": "a little while ago",
+"seed_target": "yes I saw them in the office a while ago",
+"bucket": "B6-partial"
+},
+"eng_for_spa|eng_for_spa:S0173L02": {
+"lego_target": "no thanks",
+"seed_target": "no thank you I can manage on my own",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_tam|eng_for_tam:S0140L02": {
+"lego_target": "going to be very late",
+"seed_target": "I'm sorry that I can't see what you're trying to show me.",
+"bucket": "B6-partial"
+},
+"eng_for_tam|eng_for_tam:S0140L03": {
+"lego_target": "thought going to be very late",
+"seed_target": "I'm sorry that I can't see what you're trying to show me.",
+"bucket": "B6-partial"
+},
+"eng_for_tam|eng_for_tam:S0112L02": {
+"lego_target": "not expecting",
+"seed_target": "That was very interesting, and I wasn't expecting it.",
+"bucket": "B6-partial"
+},
+"eng_for_tam|eng_for_tam:S0292L02": {
+"lego_target": "hope you'll come to the party",
+"seed_target": "I hope you'll be able to come to the party.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_tam|eng_for_tam:S0126L03": {
+"lego_target": "changes shape",
+"seed_target": "This work is changing the shape of my brain.",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_tam|eng_for_tam:S0111L04": {
+"lego_target": "when learn something new",
+"seed_target": "When we learn something new it changes our brain.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_tam|eng_for_tam:S0500L01": {
+"lego_target": "why don't you want to sit down",
+"seed_target": "Why don't you want to sit between the two girls?",
+"bucket": "B6-partial"
+},
+"eng_for_tel|eng_for_tel:S0599L02": {
+"lego_target": "to drive the car",
+"seed_target": "I'd have been happy to drive if you'd told me.",
+"bucket": "B6-partial"
+},
+"eng_for_tel|eng_for_tel:S0616L02": {
+"lego_target": "to tell you thought that",
+"seed_target": "You were very brave to say you thought that.",
+"bucket": "B6-partial"
+},
+"eng_for_tel|eng_for_tel:S0501L05": {
+"lego_target": "it would be so nice",
+"seed_target": "If only I could trust you to play together without arguing.",
+"bucket": "B7-no-relation"
+},
+"eng_for_tel|eng_for_tel:S0500L03": {
+"lego_target": "between those two girls",
+"seed_target": "Why don't you want to sit between the two girls?",
+"bucket": "B6-partial"
+},
+"eng_for_tel|eng_for_tel:S0459L03": {
+"lego_target": "in front of the sign",
+"seed_target": "It wasn't in front of the blue sign.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_tel|eng_for_tel:S0449L01": {
+"lego_target": "they were ready",
+"seed_target": "They said that they were almost ready.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_tel|eng_for_tel:S0034L02": {
+"lego_target": "when there are other people",
+"seed_target": "He doesn't want to be quiet when other people are here.",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_tel|eng_for_tel:S0129L02": {
+"lego_target": "that I'm very happy",
+"seed_target": "I'm so happy that you're doing so well.",
+"bucket": "B6-partial"
+},
+"eng_for_tel|eng_for_tel:S0602L02": {
+"lego_target": "how it actually started",
+"seed_target": "How it started in the first place.",
+"bucket": "B6-partial"
+},
+"eng_for_urd|eng_for_urd:S0355L02": {
+"lego_target": "needed to talk",
+"seed_target": "Did she need to talk to that woman you know?",
+"bucket": "B5-inflection-stem"
+},
+"eng_for_urd|eng_for_urd:S0294L02": {
+"lego_target": "not enough time to call you",
+"seed_target": "I don't have enough time to call you tonight.",
+"bucket": "B6-partial"
+},
+"eng_for_zho|eng_for_zho:S0055L03": {
+"lego_target": "Doesn't like",
+"seed_target": "I don't enjoy waking up when I didn't sleep very well",
+"bucket": "B6-partial"
+},
+"est_for_eng|est_for_eng:S0080L01": {
+"lego_target": "millal ma olen valmis",
+"seed_target": "Ma pole kindel, millal ma valmis olen.",
+"bucket": "B4-reordered"
+},
+"est_for_eng|est_for_eng:S0236L01": {
+"lego_target": "tunnen kellegagi kes ütles",
+"seed_target": "Kes ütles, et ta hakkab proovima aidata.",
+"bucket": "B6-partial"
+},
+"eus_for_eng|eus_for_eng:S0083L04": {
+"lego_target": "zenuenarekin",
+"seed_target": "Ados nago zure lagunaz esan zenuenareki.",
+"bucket": "B5-inflection-stem"
+},
+"eus_for_eng|eus_for_eng:S0279L01": {
+"lego_target": "ez zegoen",
+"seed_target": "Bai, denbora asko ez zegoelako.",
+"bucket": "B5-inflection-stem"
+},
+"eus_for_eng|eus_for_eng:S0250L01": {
+"lego_target": "erantzun baino lehen",
+"seed_target": "Erantzun aurretik beste zerbait esan al diezadakezu?",
+"bucket": "B6-partial"
+},
+"eus_for_eng|eus_for_eng:S0219L03": {
+"lego_target": "pixka batean",
+"seed_target": "Polita zen pixka bat erlaxatzea.",
+"bucket": "B5-inflection-stem"
+},
+"eus_for_eng|eus_for_eng:S0240L01": {
+"lego_target": "nire aitak",
+"seed_target": "Nire aitari ez zaio gustatzen hitz egiteari uztea.",
+"bucket": "B5-inflection-stem"
+},
+"eus_for_eng|eus_for_eng:S0261L02": {
+"lego_target": "izan daitekeela",
+"seed_target": "Garrantzitsua den zerbait dela uste dut.",
+"bucket": "B7-no-relation"
+},
+"eus_for_eng|eus_for_eng:S0266L02": {
+"lego_target": "lagun zaharra",
+"seed_target": "Nire aitaren lagun zahar bat zen.",
+"bucket": "B5-inflection-stem"
+},
+"eus_for_eng|eus_for_eng:S0212L02": {
+"lego_target": "eskatzea",
+"seed_target": "Laguntza eskatu nahi zuten.",
+"bucket": "B5-inflection-stem"
+},
+"eus_for_eng|eus_for_eng:S0239L03": {
+"lego_target": "nire amak",
+"seed_target": "Nire amari irakurtzea gustatzen zaio.",
+"bucket": "B5-inflection-stem"
+},
+"eus_for_eng|eus_for_eng:S0278L02": {
+"lego_target": "bukatu behar al zenuen",
+"seed_target": "Atzo gauean dena amaitu behar al zenuen?",
+"bucket": "B6-partial"
+},
+"eus_for_eng|eus_for_eng:S0250L02": {
+"lego_target": "esan al didazu",
+"seed_target": "Erantzun aurretik beste zerbait esan al diezadakezu?",
+"bucket": "B6-partial"
+},
+"eus_for_eng|eus_for_eng:S0240L03": {
+"lego_target": "ez du gustatzen",
+"seed_target": "Nire aitari ez zaio gustatzen hitz egiteari uztea.",
+"bucket": "B6-partial"
+},
+"eus_for_spa|eus_for_spa:S0033L03": {
+"lego_target": "euskara ikasi",
+"seed_target": "zenbat denbora daramazu euskara ikasten?",
+"bucket": "B5-inflection-stem"
+},
+"fas_for_eng|fas_for_eng:S0253L02": {
+"lego_target": "باید آماده بشم",
+"seed_target": "چند دقیقه دیگه آماده می‌شم.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0201L04": {
+"lego_target": "قراره",
+"seed_target": "می‌خواستیم بدونیم چی می‌شه.",
+"bucket": "B7-no-relation"
+},
+"fas_for_eng|fas_for_eng:S0207L01": {
+"lego_target": "اونی که باید انجام می‌دادی",
+"seed_target": "کاری که باید می‌کردی رو کردی.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0256L01": {
+"lego_target": "تو کمتر از یه ساعت",
+"seed_target": "فکر می‌کنم کمتر از یه ساعت دیگه آماده می‌شم.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0253L01": {
+"lego_target": "تو چند دقیقه",
+"seed_target": "چند دقیقه دیگه آماده می‌شم.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0249L01": {
+"lego_target": "قبل از رفتنت",
+"seed_target": "می‌خوام قبل از اینکه بری کمکم کنی.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0217L01": {
+"lego_target": "یه یا دو تا",
+"seed_target": "یه یا دو لیوان آب خوردم.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0293L03": {
+"lego_target": "ملاقات کنه",
+"seed_target": "باید بفهمم کجا می‌خواد باهام قرار بذاره.",
+"bucket": "B7-no-relation"
+},
+"fas_for_eng|fas_for_eng:S0261L02": {
+"lego_target": "یه چیز مهمی باشه",
+"seed_target": "فکر می‌کنم شاید یه چیز مهم باشه.",
+"bucket": "B5-inflection-stem"
+},
+"fas_for_eng|fas_for_eng:S0277L03": {
+"lego_target": "اول هفته دیگه",
+"seed_target": "آره اول هفته آینده یه جلسه مهم دارم.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0206L03": {
+"lego_target": "صحبت کردن",
+"seed_target": "از این فرصت که باهات تمرین حرف زدن کنم لذت می‌برم.",
+"bucket": "B7-no-relation"
+},
+"fas_for_eng|fas_for_eng:S0187L01": {
+"lego_target": "تا حالا",
+"seed_target": "تا اینجا خوشحالم.",
+"bucket": "B5-inflection-stem"
+},
+"fas_for_eng|fas_for_eng:S0250L03": {
+"lego_target": "می‌تونی بهم بگی",
+"seed_target": "می‌تونی قبل از اینکه جواب بدم یه چیز دیگه بگی؟",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0286L01": {
+"lego_target": "آدم‌هایی که",
+"seed_target": "آدمایی که دوست دارن فارسی حرف بزنن.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0296L02": {
+"lego_target": "نیاز داشتم",
+"seed_target": "گفتم یه کم وقت بیشتر لازم دارم.",
+"bucket": "B7-no-relation"
+},
+"fas_for_eng|fas_for_eng:S0207L02": {
+"lego_target": "انجام دادی",
+"seed_target": "کاری که باید می‌کردی رو کردی.",
+"bucket": "B7-no-relation"
+},
+"fas_for_eng|fas_for_eng:S0268L03": {
+"lego_target": "برام فرستاد",
+"seed_target": "آره هفته پیش دو تا ایمیل فرستاد.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0245L01": {
+"lego_target": "تو مدت کوتاهی",
+"seed_target": "از اینکه در مدت کوتاهی اینقدر کار کردم خوشحالم.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0266L02": {
+"lego_target": "اون یه دوست قدیمی بابام بود",
+"seed_target": "دوست قدیمی بابام بود.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0281L01": {
+"lego_target": "اشکالی نداره",
+"seed_target": "مشکلی داری اگه قبل از اینکه شروع کنی قهوه‌ام رو تموم کنم؟",
+"bucket": "B7-no-relation"
+},
+"fas_for_eng|fas_for_eng:S0294L03": {
+"lego_target": "به اندازه کافی",
+"seed_target": "امشب وقت کافی ندارم زنگ بزنم.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0269L01": {
+"lego_target": "منتظر بمونی",
+"seed_target": "چرا نمی‌خوای منتظر بابات باشی؟",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0269L02": {
+"lego_target": "چرا نمی‌خوای منتظر بابات بمونی",
+"seed_target": "چرا نمی‌خوای منتظر بابات باشی؟",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0270L03": {
+"lego_target": "دیر می‌کنم",
+"seed_target": "چون نگرانم که دیر بشه.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0273L03": {
+"lego_target": "خیلی زیاد کار دارم",
+"seed_target": "نه متأسفانه خیلی کار دارم.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0282L01": {
+"lego_target": "اشکالی نیست",
+"seed_target": "نه مشکلی نیست.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0244L01": {
+"lego_target": "خیلی چیزا یاد گرفتم",
+"seed_target": "الان خیلی یاد گرفتم.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0232L02": {
+"lego_target": "یادش بمونه",
+"seed_target": "یه خانم پیر می‌شناسم که می‌تونه جواب رو یادش بیاد.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0224L03": {
+"lego_target": "یاد بگیره",
+"seed_target": "تازه شروع کرده به یاد گرفتن.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0225L02": {
+"lego_target": "جوابت رو می‌داد",
+"seed_target": "اگه می‌تونست جواب می‌داد.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0234L02": {
+"lego_target": "یه نفر دیدم",
+"seed_target": "دیشب یه نفر ملاقات کردم که با برادرت کار می‌کنه.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0247L02": {
+"lego_target": "فکر می‌کردم",
+"seed_target": "فکر کردم اون کتاب نسبتاً خوب بود.",
+"bucket": "B6-partial"
+},
+"fas_for_eng|fas_for_eng:S0188L01": {
+"lego_target": "عوضش کنم",
+"seed_target": "پس لازم نیست عوض کنم.",
+"bucket": "B5-inflection-stem"
+},
+"fas_for_eng|fas_for_eng:S0242L01": {
+"lego_target": "می‌خوام بهش وقت بیشتری بدم",
+"seed_target": "می‌خوام بیشتر وقت بهش بدم.",
+"bucket": "B5-inflection-stem"
+},
+"fas_for_eng|fas_for_eng:S0219L01": {
+"lego_target": "یه مدتی",
+"seed_target": "خوب بود یه مدت استراحت کنم.",
+"bucket": "B5-inflection-stem"
+},
+"fra_for_jpn|fra_for_jpn:S0001L02": {
+"lego_target": "parler français",
+"seed_target": "Je veux parler maintenant.",
+"bucket": "B6-partial"
+},
+"fra_for_jpn|fra_for_jpn:S0134L03": {
+"lego_target": "travailler sur",
+"seed_target": "Ce n'est pas un problème quand on travaille sur quelque chose de difficile avec eux.",
+"bucket": "B5-inflection-stem"
+},
+"fra_for_jpn|fra_for_jpn:S0002L02": {
+"lego_target": "j'essaie de",
+"seed_target": "J'essaie d'apprendre.",
+"bucket": "B6-partial"
+},
+"fra_for_jpn|fra_for_jpn:S0001L03": {
+"lego_target": "avec toi",
+"seed_target": "Je veux parler maintenant.",
+"bucket": "B7-no-relation"
+},
+"fra_for_zho|fra_for_zho:S0086L01": {
+"lego_target": "c'est",
+"seed_target": "Ce n'était pas possible, malheureusement.",
+"bucket": "B7-no-relation"
+},
+"fra_for_zho|fra_for_zho:S0034L04": {
+"lego_target": "quand des gens sont là",
+"seed_target": "Il ne veut pas se taire quand d'autres personnes sont là.",
+"bucket": "B6-partial"
+},
+"fra_for_zho|fra_for_zho:S0089L02": {
+"lego_target": "en un peu de temps",
+"seed_target": "Je pense que j'ai beaucoup fait en peu de temps.",
+"bucket": "B6-partial"
+},
+"fra_for_zho|fra_for_zho:S0090L03": {
+"lego_target": "si tu pouvais",
+"seed_target": "Si tu peux parler plus lentement ce serait super.",
+"bucket": "B6-partial"
+},
+"hin_for_eng|hin_for_eng:S0195L04": {
+"lego_target": "ढूंढने",
+"seed_target": "मैं वो पैसे ढूँढने की कोशिश कर रहा हूँ जो मैंने मेज़ पर छोड़े थे।",
+"bucket": "B7-no-relation"
+},
+"hin_for_eng|hin_for_eng:S0058L03": {
+"lego_target": "होता है।",
+"seed_target": "यह दिलचस्प है जब आप काफी शब्द समझते हैं।",
+"bucket": "B7-no-relation"
+},
+"hin_for_eng|hin_for_eng:S0083L04": {
+"lego_target": "आपकी बात",
+"seed_target": "मैं इस बात से सहमत हूँ जो आपने अपने दोस्त के बारे में कहा।",
+"bucket": "B6-partial"
+},
+"hin_for_eng|hin_for_eng:S0110L02": {
+"lego_target": "खत्म होने के बाद",
+"seed_target": "हम दोस्त हैं, और खत्म करने के बाद मैं आराम करना चाहूँगा।",
+"bucket": "B6-partial"
+},
+"hin_for_eng|hin_for_eng:S0040L03": {
+"lego_target": "महसूस करना",
+"seed_target": "आप अभी कैसा महसूस कर रहे हैं?",
+"bucket": "B6-partial"
+},
+"hin_for_eng|hin_for_eng:S0162L02": {
+"lego_target": "उसके बारे में",
+"seed_target": "आप इस बारे में क्या सोचते हैं?",
+"bucket": "B6-partial"
+},
+"hin_for_eng|hin_for_eng:S0041L02": {
+"lego_target": "महसूस कर रहा हूँ।",
+"seed_target": "मैं ठीक महसूस कर रहा हूँ, लेकिन थकान होने लगी है।",
+"bucket": "B5-inflection-stem"
+},
+"hin_for_eng|hin_for_eng:S0056L04": {
+"lego_target": "कर सकता हूँ।",
+"seed_target": "तो मैं याद कर सकता हूँ कि कुछ शब्द कैसे कहते हैं।",
+"bucket": "B5-inflection-stem"
+},
+"hrv_for_eng|hrv_for_eng:S0138L02": {
+"lego_target": "se htio naći",
+"seed_target": "Ovo je mjesto gdje se moj prijatelj htio naći s nama.",
+"bucket": "B3-interposed-in-order"
+},
+"hrv_for_eng|hrv_for_eng:S0036L01": {
+"lego_target": "ne hoćemo",
+"seed_target": "Nećemo prekinuti priču.",
+"bucket": "B7-no-relation"
+},
+"hrv_for_eng|hrv_for_eng:S0034L01": {
+"lego_target": "ne hoće",
+"seed_target": "Neće biti tih kad su ovdje drugi.",
+"bucket": "B7-no-relation"
+},
+"ita_for_eng|ita_for_eng:S0402L04": {
+"lego_target": "per mangiare",
+"seed_target": "sì, sarebbe bello fermarsi da qualche parte a mangiare",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0424L01": {
+"lego_target": "stanno sprecando",
+"seed_target": "no, stanno facendo perdere tempo a tutti",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0384L03": {
+"lego_target": "un momento fa",
+"seed_target": "non potevo essere d'accordo con quello che ha detto poco fa",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0606L02": {
+"lego_target": "quello che so adesso",
+"seed_target": "se avessi saputo allora quello che so ora, avrei aspettato",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0464L03": {
+"lego_target": "lei lo ha dimenticato",
+"seed_target": "le ho detto una volta il numero della mia stanza, ma lo ha dimenticato",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0444L02": {
+"lego_target": "potesse essere fatto",
+"seed_target": "sì, pensavano che si potesse fare in modo più efficiente",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0407L01": {
+"lego_target": "dare un buon esempio",
+"seed_target": "non dovremmo provare a dare il buon esempio?",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0424L02": {
+"lego_target": "il tempo di tutti",
+"seed_target": "no, stanno facendo perdere tempo a tutti",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0459L03": {
+"lego_target": "il cartello blu",
+"seed_target": "non era davanti al cartello blu",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0598L03": {
+"lego_target": "ne ha sentite",
+"seed_target": "ha sentito mille storie su quello che stavano facendo",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0451L01": {
+"lego_target": "quello che volevano fare",
+"seed_target": "hanno detto che cosa volevano fare",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0389L01": {
+"lego_target": "quella persona là",
+"seed_target": "quella persona laggiù",
+"bucket": "B6-partial"
+},
+"ita_for_eng|ita_for_eng:S0600L03": {
+"lego_target": "se me lo avessi detto",
+"seed_target": "avrei guidato se mi avessi detto quanto eri stanco",
+"bucket": "B6-partial"
+},
+"ita_for_jpn|ita_for_jpn:S0016L01": {
+"lego_target": "lui parla",
+"seed_target": "Lui vuole tornare con tutti gli altri più tardi.",
+"bucket": "B6-partial"
+},
+"ita_for_zho|ita_for_zho:S0183L02": {
+"lego_target": "averle viste",
+"seed_target": "No, mi dispiace, non le ho viste.",
+"bucket": "B6-partial"
+},
+"jpn_for_eng|jpn_for_eng:S0240L02": {
+"lego_target": "話すのを止める",
+"seed_target": "父は話すのを止めない",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0062L01": {
+"lego_target": "できるか分からない",
+"seed_target": "同時に手伝えるか分からない",
+"bucket": "B7-no-relation"
+},
+"jpn_for_eng|jpn_for_eng:S0052L02": {
+"lego_target": "手紙を書く",
+"seed_target": "先週、彼は友だちに手紙を書きたかった",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0070L01": {
+"lego_target": "彼女はしたくなかった",
+"seed_target": "彼女は場所を言いたくなかった",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0300L01": {
+"lego_target": "見られる",
+"seed_target": "冷たく見られたくない",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0327L03": {
+"lego_target": "出す必要がある",
+"seed_target": "別の方法を出す必要あると思う？",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0302L02": {
+"lego_target": "住みたい",
+"seed_target": "彼女は都会に住みたくないって言ってた",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0220L02": {
+"lego_target": "テレビ少し見る",
+"seed_target": "テレビ少し見た？",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0355L02": {
+"lego_target": "と話す必要があった",
+"seed_target": "知ってるあの女性と話す必要あった？",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0580L02": {
+"lego_target": "連れて行く",
+"seed_target": "子どもを暖かい所に連れて行きたかった",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0055L01": {
+"lego_target": "よく眠れる",
+"seed_target": "よく眠れなかった朝は好きじゃない",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0070L02": {
+"lego_target": "場所を言う",
+"seed_target": "彼女は場所を言いたくなかった",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0069L02": {
+"lego_target": "子犬を世話する",
+"seed_target": "彼は午後ずっと子犬を世話したくなかった",
+"bucket": "B5-inflection-stem"
+},
+"jpn_for_eng|jpn_for_eng:S0054L03": {
+"lego_target": "時間をあげる",
+"seed_target": "もう少し時間をあげたかった",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0606L02": {
+"lego_target": "알고 있는 걸",
+"seed_target": "지금 아는 걸 그때 알았더라면 기다렸을 거예요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0088L02": {
+"lego_target": "아직 모르는 사람들한테",
+"seed_target": "아직 모르는 사람들과 말할 준비가 안 됐어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0097L02": {
+"lego_target": "원하시면 바로 갈 준비됐어요",
+"seed_target": "네 원하면 바로 갈 준비됐어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0118L01": {
+"lego_target": "기분이 나아요",
+"seed_target": "술집에 있었을 때보다 기분이 더 좋아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0228L01": {
+"lego_target": "그 남자는 막 말하기 연습을 시작했어요",
+"seed_target": "그 남자는 막 말하는 연습을 시작했어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0271L01": {
+"lego_target": "다음 달에 같이 올래요",
+"seed_target": "다음 달에 우리와 같이 오고 싶어요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0240L01": {
+"lego_target": "제 아버지는 말하는 걸 멈추는 것을 좋아하지 않아요",
+"seed_target": "제 아버지는 말하는 걸 멈추는 게 싫어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0163L01": {
+"lego_target": "재미있다고 생각해요",
+"seed_target": "그건 재미있는 것 같아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0207L01": {
+"lego_target": "해야 할 일을 다 했어요",
+"seed_target": "해야 했던 걸 했어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0262L01": {
+"lego_target": "어제 이야기하고 있던 그 남자는 누구였어요",
+"seed_target": "어제 이야기하고 있었던 그 남자 누구였어요?",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0199L01": {
+"lego_target": "제 친구는 사무실에서 일했어요",
+"seed_target": "제 친구는 사무실에서 일했었어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0249L01": {
+"lego_target": "가기 전에 도와주길 바라요",
+"seed_target": "가기 전에 도와주면 좋겠어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0245L01": {
+"lego_target": "짧은 시간에 많이 한 것에 만족해요",
+"seed_target": "짧은 시간에 이만큼 해서 기뻐요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0198L01": {
+"lego_target": "제 딸은 시청에서 일해요",
+"seed_target": "제 딸은 구청에서 일해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0126L01": {
+"lego_target": "이 작업이 바꾸고 있어요",
+"seed_target": "이 일이 뇌의 모양을 바꾸고 있어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0100L02": {
+"lego_target": "비슷한 걸 하는 것에 대해서",
+"seed_target": "비슷한 걸 하는 것에 대해 걱정하면 안 돼요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0276L01": {
+"lego_target": "아니요 조금 더 여기 있을 수 있어요",
+"seed_target": "아니요 여기서 좀 더 있을 수 있어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0152L02": {
+"lego_target": "원하는 걸 알았더라면",
+"seed_target": "뭘 원했는지 알았더라면 다르게 했을 거예요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0146L02": {
+"lego_target": "우리가 고치려고 한 후에",
+"seed_target": "고치려고 한 이후로 아무것도 안 되는 것 같아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0258L01": {
+"lego_target": "저기 그 파란 것은 뭐예요",
+"seed_target": "저기 있는 그 파란 건 뭐예요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0264L01": {
+"lego_target": "늙은 남자",
+"seed_target": "나이 든 남자",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0138L01": {
+"lego_target": "제 친구가 우리를 만나고 싶었던 곳이에요",
+"seed_target": "여기가 친구가 우리를 만나고 싶어했던 곳이에요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0202L01": {
+"lego_target": "아무도 그 질문에 어떻게 대답해야 할지 몰랐어요",
+"seed_target": "아무도 질문에 어떻게 대답해야 하는지 몰랐어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0094L02": {
+"lego_target": "될 수 있는",
+"seed_target": "이게 유일한 방법이에요",
+"bucket": "B7-no-relation"
+},
+"kor_for_eng|kor_for_eng:S0270L01": {
+"lego_target": "늦을까 봐 걱정돼요",
+"seed_target": "늦을까 봐 걱정돼서요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0618L01": {
+"lego_target": "오랜 시간처럼",
+"seed_target": "오래된 것 같지 않아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0123L01": {
+"lego_target": "좋은 생각이에요",
+"seed_target": "그건 좋은 생각인 것 같아요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0149L01": {
+"lego_target": "이건 별로 어렵지 않아요",
+"seed_target": "이건 별로 어렵지 않으니까, 곧 끝나면 좋겠어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0206L01": {
+"lego_target": "같이 말하기 연습할 기회가 즐거워요",
+"seed_target": "같이 말하는 연습을 할 기회가 즐거워요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0169L01": {
+"lego_target": "제가 뭘 하면 돼요",
+"seed_target": "제가 뭘 해 주면 좋겠어요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0134L01": {
+"lego_target": "문제가 아니에요",
+"seed_target": "그들과 어려운 걸 같이 하면 문제가 안 돼요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0142L01": {
+"lego_target": "정말 친절하시고",
+"seed_target": "아주 친절하시네요, 그리고 도와줘서 감사해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0126L02": {
+"lego_target": "제 뇌의 모양을",
+"seed_target": "이 일이 뇌의 모양을 바꾸고 있어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0131L01": {
+"lego_target": "머릿속에 너무 많은 생각이 돌고 있어요",
+"seed_target": "머리에 생각이 너무 많아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0272L01": {
+"lego_target": "네 정말 좋은 생각이에요",
+"seed_target": "네 아주 좋은 생각인 것 같아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0252L01": {
+"lego_target": "언제 시작할 준비가 될 거예요",
+"seed_target": "언제 시작할 준비가 돼요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0582L02": {
+"lego_target": "자라는 게",
+"seed_target": "여기서 자라는 건 어때요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0584L04": {
+"lego_target": "보는 게",
+"seed_target": "매일 아침 일어나서 산을 보는 건 어때요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0644L04": {
+"lego_target": "주시겠어요?",
+"seed_target": "선생님 그거 말해 주실 수 있어요?",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0618L02": {
+"lego_target": "느껴지지 않아요",
+"seed_target": "오래된 것 같지 않아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0600L02": {
+"lego_target": "말해줬으면",
+"seed_target": "얼마나 피곤한지 말해 줬으면 운전했을 거예요",
+"bucket": "B0-space-only"
+},
+"kor_for_eng|kor_for_eng:S0661L03": {
+"lego_target": "하고 계세요",
+"seed_target": "여러분 다 뭔가 하고 있어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0157L01": {
+"lego_target": "거기 있을 수 없을 거예요",
+"seed_target": "다음 달에 거기에 있지 못할 거예요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0099L01": {
+"lego_target": "자신한테 물어봐야 해요",
+"seed_target": "왜 안 되는지 자신에게 물어봐야 해요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0083L03": {
+"lego_target": "말한 거에",
+"seed_target": "친구에 대해 한 말에 동의해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0147L02": {
+"lego_target": "제가 긴장한 걸 봤을 때",
+"seed_target": "그녀는 제가 긴장하는 걸 봤을 때 아주 친절했어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0227L01": {
+"lego_target": "그 남자가 새로운 거 말해 줄 거예요",
+"seed_target": "그 남자는 저한테 새로운 걸 말할 거예요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0294L01": {
+"lego_target": "오늘 밤에 전화할 시간이 없어요",
+"seed_target": "오늘 밤에 전화할 시간이 충분하지 않아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0100L01": {
+"lego_target": "걱정하지 않아도 돼요",
+"seed_target": "비슷한 걸 하는 것에 대해 걱정하면 안 돼요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0299L01": {
+"lego_target": "그는 반을 내고 싶어해요",
+"seed_target": "그는 반만 내고 싶어해요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0108L01": {
+"lego_target": "깨기를 바라지 않았어요",
+"seed_target": "한밤중에 일어나고 싶지 않았어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0239L01": {
+"lego_target": "제 어머니는 읽는 것을 좋아해요",
+"seed_target": "제 어머니는 읽는 걸 좋아해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0190L01": {
+"lego_target": "몇 가지 질문해도 될까요",
+"seed_target": "질문 몇 개 해도 괜찮아요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0266L01": {
+"lego_target": "그는 제 아버지의 오래된 친구였어요",
+"seed_target": "그는 아버지의 오래된 친구였어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0090L01": {
+"lego_target": "더 천천히 말해 주시면",
+"seed_target": "더 천천히 말할 수 있으면 좋겠어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0236L01": {
+"lego_target": "도와주려고 한다고 한 사람을 알아요",
+"seed_target": "도와주려고 할 거라고 한 사람을 알아요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0267L01": {
+"lego_target": "친구한테서 연락 받았어요",
+"seed_target": "친구한테 연락 받았어요?",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0186L01": {
+"lego_target": "다음 주에 다른 거 이야기하고 싶어요",
+"seed_target": "다음 주에 다른 것에 대해 이야기하고 싶어요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0290L01": {
+"lego_target": "그가 답을 알고 있는지 궁금해요",
+"seed_target": "그가 답을 아는지 궁금해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0261L01": {
+"lego_target": "중요한 것일 수도 있다고 생각해요",
+"seed_target": "중요한 거일 수도 있는 것 같아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0209L01": {
+"lego_target": "그들은 그룹으로 만나는 시간을 더 보내고 싶어해요",
+"seed_target": "그들은 같이 모여서 더 많은 시간을 보내고 싶어해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0247L01": {
+"lego_target": "그 책이 꽤 좋다고 생각했어요",
+"seed_target": "그 책이 꽤 좋았다고 생각했어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0129L01": {
+"lego_target": "이렇게 잘하고 있어서 너무 기뻐요",
+"seed_target": "이렇게 잘 하고 있어서 아주 기뻐요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0226L01": {
+"lego_target": "그 남자가 도와주려고 해요",
+"seed_target": "그 남자는 저를 도와주려고 해요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0288L01": {
+"lego_target": "제가 아는 대부분의 사람들은 TV 보는 것을 좋아해요",
+"seed_target": "제가 아는 사람들은 대부분 TV 보는 걸 좋아해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0114L01": {
+"lego_target": "더 못하는 것 같아요",
+"seed_target": "오늘은 어제보다 더 못하고 있는 것 같아요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0210L01": {
+"lego_target": "그들은 우리가 그 문제를 의논해야 한다고 생각해요",
+"seed_target": "그들은 우리가 문제를 논의해야 한다고 생각해요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0281L01": {
+"lego_target": "시작하기 전에 커피 다 마셔도 될까요",
+"seed_target": "시작하기 전에 커피를 다 마셔도 괜찮아요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0633L01": {
+"lego_target": "큰 컵으로",
+"seed_target": "큰 물 한 잔이면 괜찮아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0283L01": {
+"lego_target": "친구 중에 누가 한국어를 해요",
+"seed_target": "친구들 중에 누가 한국어를 말해요?",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0203L01": {
+"lego_target": "제가 도와달라고 하면 어떻게 하실 거예요",
+"seed_target": "제가 도와달라고 하면 어떻게 하겠어요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0092L02": {
+"lego_target": "좀 더",
+"seed_target": "잠시 동안 이걸 계속하고 싶어요",
+"bucket": "B7-no-relation"
+},
+"kor_for_eng|kor_for_eng:S0111L02": {
+"lego_target": "우리 뇌가 바뀌어요",
+"seed_target": "새로운 걸 배우면 뇌가 바뀌어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0084L02": {
+"lego_target": "그가 제 친구에 대해서 말한 거에",
+"seed_target": "그가 제 친구에 대해 한 말에 동의하지 않아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0300L01": {
+"lego_target": "그녀는 불친절해 보이고 싶지 않아요",
+"seed_target": "그녀는 불친절해 보이고 싶어하지 않아요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0122L01": {
+"lego_target": "더 쉬워지기 시작했고",
+"seed_target": "더 쉬워지기 시작하고 있고 어떻게 되고 있는지 신나요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0104L02": {
+"lego_target": "우리가 하고 있는 걸",
+"seed_target": "하고 있는 걸 바꿔야 해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0162L01": {
+"lego_target": "그거에 대해서 어떻게 생각해요",
+"seed_target": "그것에 대해 어떻게 생각해요?",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0250L01": {
+"lego_target": "대답하기 전에 다른 거 말해 줄 수 있어요",
+"seed_target": "제가 대답하기 전에 다른 것도 말해 줄 수 있어요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0200L01": {
+"lego_target": "우리가 제시간에 다 끝내는지 확인하고 싶다고",
+"seed_target": "그들은 우리가 제시간에 다 끝내야 한다고 해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0184L01": {
+"lego_target": "아까 사무실에서 봤어요",
+"seed_target": "네 조금 전에 사무실에서 봤어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0243L01": {
+"lego_target": "같은 음식을 달라고 할 거예요",
+"seed_target": "같은 걸 달라고 할 거예요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0298L01": {
+"lego_target": "더 이상 할 말이 없어요",
+"seed_target": "더 할 말이 없어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0297L01": {
+"lego_target": "한국어를 하는 사람을 많이 몰라요",
+"seed_target": "한국어를 말하는 사람을 많이 알지 못해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0219L01": {
+"lego_target": "잠시 쉴 수 있어서 좋았어요",
+"seed_target": "잠시 쉬니까 좋았어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0143L02": {
+"lego_target": "전에 이야기했던 것과",
+"seed_target": "아까 말했던 것과 같은 거예요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0178L02": {
+"lego_target": "보고 싶었지만",
+"seed_target": "만나고 싶었지만 시간이 없었어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0660L02": {
+"lego_target": "도와드릴 수",
+"seed_target": "여러분을 도와줄 수 있어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0083L02": {
+"lego_target": "친구에 대해서",
+"seed_target": "친구에 대해 한 말에 동의해요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0154L01": {
+"lego_target": "어디에서 만나고 싶어요",
+"seed_target": "토요일 밤에 어디서 만나고 싶어요?",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0135L02": {
+"lego_target": "왜 그게 그렇게 좋다고 생각하는지",
+"seed_target": "왜 그렇게 좋다고 생각하는지 모르겠어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0118L02": {
+"lego_target": "우리가 술집에 있었을 때보다",
+"seed_target": "술집에 있었을 때보다 기분이 더 좋아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0149L02": {
+"lego_target": "그래서 곧 끝나면 좋겠어요",
+"seed_target": "이건 별로 어렵지 않으니까, 곧 끝나면 좋겠어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0096L03": {
+"lego_target": "시간이 좀 더 필요해요",
+"seed_target": "아니요 아직 준비 안 됐어요, 시간이 조금 더 필요해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0279L01": {
+"lego_target": "네 시간이 많이 남지 않았거든요",
+"seed_target": "네 시간이 별로 안 남았으니까요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0130L01": {
+"lego_target": "그건 놀라웠어요",
+"seed_target": "놀라웠어요, 그는 제 친구니까요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0180L01": {
+"lego_target": "좀 제 책을 읽고 싶어요",
+"seed_target": "잠시 동안 책을 읽고 싶어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0280L01": {
+"lego_target": "아니요 제일 중요한 일만 하면 됐어요",
+"seed_target": "아니요 가장 중요한 일만 하면 됐어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0140L02": {
+"lego_target": "보여주려는 걸",
+"seed_target": "보여 주려고 하는 걸 볼 수 없어서 미안해요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0248L01": {
+"lego_target": "그 영화가 완전 쓰레기라고",
+"seed_target": "그 영화는 완전 쓰레기라고 생각했고 돈을 돌려받고 싶어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0257L01": {
+"lego_target": "그 파란 것을 좋아해요",
+"seed_target": "그 파란 거 좋아해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0159L01": {
+"lego_target": "그건 제가 말하려는 게 아니에요",
+"seed_target": "그건 제가 말하려고 하는 게 아니에요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0098L02": {
+"lego_target": "다른 걸 하는 것도",
+"seed_target": "다른 걸 할지 생각해 봐야 해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0251L01": {
+"lego_target": "끝난 후에 알아내고 싶지 않아요",
+"seed_target": "끝난 후까지 알고 싶지 않아요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0120L01": {
+"lego_target": "버스 타는 걸 좋아하는 게",
+"seed_target": "버스로 가는 걸 좋아하는 게 재미있어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0116L01": {
+"lego_target": "제가 할 수 있는 최선의 선택이 아니에요",
+"seed_target": "이건 제가 할 수 있는 최고의 선택이 아니에요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0101L01": {
+"lego_target": "이 언어에 대해서 더 알아가는 게",
+"seed_target": "이 언어에 대해 더 알아가는 게 즐거워요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0213L01": {
+"lego_target": "그들이 뭘 이루려고 하는지 모르겠어요",
+"seed_target": "그들이 뭘 이루려고 하는지 몰라요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0155L01": {
+"lego_target": "몇 분 기다려도 괜찮아요",
+"seed_target": "내일 아침에 몇 분 기다리는 건 괜찮아요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0095L02": {
+"lego_target": "다음 버스 타고",
+"seed_target": "다음 버스로 집에 갈 준비됐어요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0158L01": {
+"lego_target": "다른 거 이야기해요",
+"seed_target": "다른 것에 대해 이야기해요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0624L02": {
+"lego_target": "그거 좋겠어요",
+"seed_target": "네, 그러면 좋겠어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0128L01": {
+"lego_target": "예전에 알던 사람 같아요",
+"seed_target": "전에 알았던 사람 같아요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0221L01": {
+"lego_target": "축구를 보고 그 다음에 영화를 봤어요",
+"seed_target": "축구를 보고 나서 영화를 봤어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0212L01": {
+"lego_target": "그들은 도움을 부탁하고 싶어했어요",
+"seed_target": "그들은 도움을 요청하고 싶어했어요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0256L01": {
+"lego_target": "한 시간 안에 준비될 것 같아요",
+"seed_target": "한 시간도 안 돼서 준비될 것 같아요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0077L02": {
+"lego_target": "이렇게 빨리 이해하기 시작해서",
+"seed_target": "얼마나 빨리 이해하기 시작하고 있는지 놀라워요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0142L02": {
+"lego_target": "도와주셔서 감사해요",
+"seed_target": "아주 친절하시네요, 그리고 도와줘서 감사해요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0113L01": {
+"lego_target": "왜 뭐라고 했는지 기억하지 못해요",
+"seed_target": "왜 뭐라고 했는지 기억 못 해요?",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0136L02": {
+"lego_target": "그녀한테 물어볼 수 있어요",
+"seed_target": "물론 그녀한테 물어봐도 돼요, 제 친구니까요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0286L01": {
+"lego_target": "한국어 말하는 것을 좋아하는 사람들",
+"seed_target": "한국어로 말하는 걸 좋아하는 사람들",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0287L01": {
+"lego_target": "TV 보는 것을 좋아하는 사람을 몇 명이나 알아요",
+"seed_target": "TV 보는 걸 좋아하는 사람을 몇 명이나 알아요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0188L01": {
+"lego_target": "바꿀 필요 없어요",
+"seed_target": "그래서 바꿀 필요는 없어요",
+"bucket": "B5-inflection-stem"
+},
+"kor_for_eng|kor_for_eng:S0074L01": {
+"lego_target": "이해할 수 있게 도와줘서",
+"seed_target": "이해하게 도와줘서 정말 고마워요",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0082L02": {
+"lego_target": "왜 안 해요",
+"seed_target": "기다리지 않을 거예요. 왜요?",
+"bucket": "B6-partial"
+},
+"kor_for_eng|kor_for_eng:S0122L02": {
+"lego_target": "어떻게 되고 있는지 기대돼요",
+"seed_target": "더 쉬워지기 시작하고 있고 어떻게 되고 있는지 신나요",
+"bucket": "B5-inflection-stem"
+},
+"lav_for_eng|lav_for_eng:S0282L01": {
+"lego_target": "tas nav problēma",
+"seed_target": "Nē, tā nav problēma.",
+"bucket": "B6-partial"
+},
+"lit_for_eng|lit_for_eng:S0255L01": {
+"lego_target": "ar manai",
+"seed_target": "Kada manai, kad būsi pasiruošęs išeiti?",
+"bucket": "B6-partial"
+},
+"nep_for_eng|nep_for_eng:S0180L03": {
+"lego_target": "म केही समय मेरो किताब पढ्न चाहन्छु।",
+"seed_target": "म केही समयको लागि आफ्नो किताब पढ्न चाहन्थेँ।",
+"bucket": "B6-partial"
+},
+"nep_for_eng|nep_for_eng:S0171L02": {
+"lego_target": "त्यो खोज्न मद्दत गर्न",
+"seed_target": "के तपाईं मलाई यसलाई खोज्न मद्दत गर्न चाहनुहुन्छ?",
+"bucket": "B6-partial"
+},
+"nep_for_eng|nep_for_eng:S0114L03": {
+"lego_target": "हिजोभन्दा खराब",
+"seed_target": "मलाई लाग्छ म आज हिजो भन्दा खराब गर्दैछु।",
+"bucket": "B0-space-only"
+},
+"nep_for_eng|nep_for_eng:S0151L01": {
+"lego_target": "मैले आशा गरेको कुरा",
+"seed_target": "त्यो मैले आशा गरेको भएको थिएन।",
+"bucket": "B6-partial"
+},
+"nep_for_eng|nep_for_eng:S0162L01": {
+"lego_target": "त्यसबारे",
+"seed_target": "तपाईं यसबारे के सोच्नुहुन्छ?",
+"bucket": "B7-no-relation"
+},
+"nep_for_eng|nep_for_eng:S0173L03": {
+"lego_target": "धन्यवाद, म आफैं सम्हाल्न सक्छु।",
+"seed_target": "धन्यवाद, म आफैं गर्न सक्छु।",
+"bucket": "B6-partial"
+},
+"nep_for_eng|nep_for_eng:S0185L02": {
+"lego_target": "तपाईंले तिनीहरूलाई छोड्नुभयो।",
+"seed_target": "मलाई लाग्छ तपाईंले ती काममा छोड्नुभयो।",
+"bucket": "B6-partial"
+},
+"nep_for_eng|nep_for_eng:S0165L03": {
+"lego_target": "साँचो हो कि होइन।",
+"seed_target": "तर मलाई थाहा छैन यो सत्य हो कि होइन।",
+"bucket": "B6-partial"
+},
+"nep_for_eng|nep_for_eng:S0171L03": {
+"lego_target": "मलाई त्यो खोज्न मद्दत गर्न चाहनुहुन्छ?",
+"seed_target": "के तपाईं मलाई यसलाई खोज्न मद्दत गर्न चाहनुहुन्छ?",
+"bucket": "B6-partial"
+},
+"nep_for_eng|nep_for_eng:S0123L02": {
+"lego_target": "एउटा राम्रो विचार",
+"seed_target": "मलाई लाग्छ यो राम्रो विचार हो।",
+"bucket": "B6-partial"
+},
+"nep_for_eng|nep_for_eng:S0114L04": {
+"lego_target": "आज म हिजोभन्दा खराब गर्दैछु",
+"seed_target": "मलाई लाग्छ म आज हिजो भन्दा खराब गर्दैछु।",
+"bucket": "B6-partial"
+},
+"nld_for_eng|nld_for_eng:S0254L02": {
+"lego_target": "sinds vanochtend",
+"seed_target": "ik ben al klaar since vanochtend",
+"bucket": "B5-inflection-stem"
+},
+"nor_for_eng|nor_for_eng:S0275L01": {
+"lego_target": "litt lenger",
+"seed_target": "Lenger.",
+"bucket": "B6-partial"
+},
+"pol_for_eng|pol_for_eng:S0269L01": {
+"lego_target": "poczekać na",
+"seed_target": "Dlaczego nie chcesz czekać na swojego tatę?",
+"bucket": "B6-partial"
+},
+"pol_for_eng|pol_for_eng:S0278L02": {
+"lego_target": "wczoraj w nocy",
+"seed_target": "Czy musiałeś skończyć wszystko wczoraj wieczorem?",
+"bucket": "B6-partial"
+},
+"pol_for_eng|pol_for_eng:S0288L01": {
+"lego_target": "większość osób które znam",
+"seed_target": "Większość ludzi, których znam, lubi oglądać telewizję.",
+"bucket": "B6-partial"
+},
+"pol_for_eng|pol_for_eng:S0294L03": {
+"lego_target": "dzisiaj wieczorem",
+"seed_target": "Nie mam wystarczająco dużo czasu, żeby do ciebie zadzwonić dziś wieczorem.",
+"bucket": "B6-partial"
+},
+"pol_for_eng|pol_for_eng:S0276L02": {
+"lego_target": "jeszcze trochę",
+"seed_target": "Nie, mogę tu zostać trochę dłużej.",
+"bucket": "B6-partial"
+},
+"pol_for_eng|pol_for_eng:S0291L02": {
+"lego_target": "będę mógł lepiej mówić",
+"seed_target": "Mam nadzieję, że niedługo będę mówić lepiej.",
+"bucket": "B6-partial"
+},
+"pol_for_eng|pol_for_eng:S0245L01": {
+"lego_target": "cieszę się z tego",
+"seed_target": "Jestem zadowolony z tego, ile zrobiłem w krótkim czasie.",
+"bucket": "B6-partial"
+},
+"por_br_for_eng|por_br_for_eng:S0070L03": {
+"lego_target": "onde estava",
+"seed_target": "ela não queria me dizer onde era",
+"bucket": "B6-partial"
+},
+"por_br_for_eng|por_br_for_eng:S0069L03": {
+"lego_target": "cachorro jovem",
+"seed_target": "ele não queria tomar conta do cachorro novo a tarde toda",
+"bucket": "B6-partial"
+},
+"por_br_for_eng|por_br_for_eng:S0056L01": {
+"lego_target": "para poder",
+"seed_target": "para conseguir me lembrar de como dizer algumas palavras",
+"bucket": "B6-partial"
+},
+"por_br_for_eng|por_br_for_eng:S0058L02": {
+"lego_target": "quando você nota",
+"seed_target": "é interessante quando você percebe palavras suficientes",
+"bucket": "B6-partial"
+},
+"por_br_for_eng|por_br_for_eng:S0072L02": {
+"lego_target": "está indo bem",
+"seed_target": "eu acho que você está fazendo muito bem",
+"bucket": "B6-partial"
+},
+"por_for_eng|por_for_eng:S0341L01": {
+"lego_target": "há alguns dias",
+"seed_target": "eu conheci alguém há uns dias",
+"bucket": "B5-inflection-stem"
+},
+"por_for_eng|por_for_eng:S0358L01": {
+"lego_target": "a tua amiga",
+"seed_target": "o teu amigo disse que não conseguia chegar ao topo",
+"bucket": "B6-partial"
+},
+"por_for_eng|por_for_eng:S0403L03": {
+"lego_target": "o máximo de tempo possível",
+"seed_target": "devíamos ficar calados o máximo tempo possível",
+"bucket": "B6-partial"
+},
+"por_for_eng|por_for_eng:S0574L02": {
+"lego_target": "as férias são especiais",
+"seed_target": "as férias são muito especiais para todos",
+"bucket": "B3-interposed-in-order"
+},
+"por_for_eng|por_for_eng:S0352L02": {
+"lego_target": "não conseguiria",
+"seed_target": "mesmo que ele quisesse, não ia conseguir",
+"bucket": "B5-inflection-stem"
+},
+"por_for_eng|por_for_eng:S0315L01": {
+"lego_target": "não conseguia pagar",
+"seed_target": "eu acho que ele não podia pagar o carro que queria",
+"bucket": "B6-partial"
+},
+"por_for_eng|por_for_eng:S0406L01": {
+"lego_target": "vai ficar bem",
+"seed_target": "não, tenho a certeza de que vai correr bem",
+"bucket": "B6-partial"
+},
+"por_for_eng|por_for_eng:S0344L01": {
+"lego_target": "contente em ajudar-te",
+"seed_target": "que disse que tem todo o gosto em ajudar-te",
+"bucket": "B6-partial"
+},
+"por_for_eng|por_for_eng:S0553L02": {
+"lego_target": "a igreja pequena é feia",
+"seed_target": "eu acho que a igreja pequena é muito feia",
+"bucket": "B3-interposed-in-order"
+},
+"por_for_eng|por_for_eng:S0384L02": {
+"lego_target": "há um momento",
+"seed_target": "eu não conseguia concordar com o que ele disse há pouco",
+"bucket": "B6-partial"
+},
+"rus_for_eng|rus_for_eng:S0151L03": {
+"lego_target": "это было не",
+"seed_target": "Это не то, на что я надеялся.",
+"bucket": "B6-partial"
+},
+"rus_for_eng|rus_for_eng:S0251L02": {
+"lego_target": "до тех пор, пока",
+"seed_target": "Я не хочу узнавать до того, как мы закончим.",
+"bucket": "B6-partial"
+},
+"spa_for_zho|spa_for_zho:S0132L02": {
+"lego_target": "una persona",
+"seed_target": "Llegas a conocer a alguien muy bien cuando trabajas juntos.",
+"bucket": "B7-no-relation"
+},
+"spa_mx_for_eng|spa_mx_for_eng:S0241L02": {
+"lego_target": "darle",
+"seed_target": "no quiero dárselo a él",
+"bucket": "B7-no-relation"
+},
+"spa_mx_for_eng|spa_mx_for_eng:S0345L01": {
+"lego_target": "no listo para irse",
+"seed_target": "que dijo que no está listo para irse todavía",
+"bucket": "B3-interposed-in-order"
+},
+"swa_for_eng|swa_for_eng:S0207L02": {
+"lego_target": "ulichohitaji",
+"seed_target": "Umefanya unachohitaji kufanya.",
+"bucket": "B7-no-relation"
+},
+"swa_for_eng|swa_for_eng:S0230L02": {
+"lego_target": "wa kiume",
+"seed_target": "Najua kijana anayetaka kufanya kazi nawe.",
+"bucket": "B7-no-relation"
+},
+"swa_for_eng|swa_for_eng:S0217L05": {
+"lego_target": "za maji",
+"seed_target": "Nilikuwa na glasi moja au mbili ya maji.",
+"bucket": "B6-partial"
+},
+"swa_for_eng|swa_for_eng:S0298L01": {
+"lego_target": "kitu kingine cha",
+"seed_target": "Sina chochote kingine cha kusema.",
+"bucket": "B6-partial"
+},
+"swe_for_eng|swe_for_eng:S0265L01": {
+"lego_target": "en bra vän",
+"seed_target": "En vän.",
+"bucket": "B6-partial"
+},
+"swe_for_eng|swe_for_eng:S0282L01": {
+"lego_target": "inte ett problem",
+"seed_target": "Nej det är inga problem.",
+"bucket": "B6-partial"
+},
+"swe_for_eng|swe_for_eng:S0259L01": {
+"lego_target": "en bra idé",
+"seed_target": "En idé.",
+"bucket": "B6-partial"
+},
+"swe_for_eng|swe_for_eng:S0285L01": {
+"lego_target": "pratar svenska bra",
+"seed_target": "Hon pratar svenska.",
+"bucket": "B6-partial"
+},
+"tha_for_eng|tha_for_eng:S0264L01": {
+"lego_target": "ชายชราที่รู้จัก",
+"seed_target": "ชายชรา",
+"bucket": "B7-no-relation"
+},
+"ukr_for_eng|ukr_for_eng:S0205L02": {
+"lego_target": "яке я хотів",
+"seed_target": "Я забув слово, яке я намагався сказати.",
+"bucket": "B6-partial"
+},
+"zho_for_eng|zho_for_eng:S0293L02": {
+"lego_target": "见你",
+"seed_target": "我得弄清楚他要在哪里见我",
+"bucket": "B5-inflection-stem"
+},
+"zho_for_eng|zho_for_eng:S0259L01": {
+"lego_target": "好想法",
+"seed_target": "一个想法",
+"bucket": "B7-no-relation"
+},
+"zho_for_eng|zho_for_eng:S0337L01": {
+"lego_target": "喜欢玩",
+"seed_target": "你觉得他还能继续玩吗？",
+"bucket": "B7-no-relation"
+},
+"zho_for_eng|zho_for_eng:S0053L04": {
+"lego_target": "把它放进",
+"seed_target": "她想把他的信放进她的包里",
+"bucket": "B5-inflection-stem"
+},
+"zho_for_eng|zho_for_eng:S0025L05": {
+"lego_target": "好吗",
+"seed_target": "你会在我走之前帮我吗？",
+"bucket": "B7-no-relation"
+},
+"zho_for_eng|zho_for_eng:S0091L01": {
+"lego_target": "说得更快",
+"seed_target": "很难想得够快，及时回答",
+"bucket": "B7-no-relation"
+},
+"zho_for_eng|zho_for_eng:S0117L01": {
+"lego_target": "这次",
+"seed_target": "我肯定比上次我们聊天时做得更好",
+"bucket": "B7-no-relation"
+},
+"zho_for_eng|zho_for_eng:S0073L02": {
+"lego_target": "更多要学",
+"seed_target": "非常感谢，但是我还有很多要学",
+"bucket": "B7-no-relation"
+},
+"ara_lb_for_eng|ara_lb_for_eng:S0264L01": {
+"lego_target": "راجل كبير",
+"seed_target": "راجل كبير.",
+"bucket": "B0-space-only"
+},
+"eng_for_ben|eng_for_ben:S0658L01": {
+"lego_target": "what do you all want",
+"seed_target": "Do you all want?",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0088L01": {
+"lego_target": "talk to",
+"seed_target": "I'm not ready to talk to people I don't know yet.",
+"bucket": "B0-space-only"
+},
+"eng_for_ben|eng_for_ben:S0068L01": {
+"lego_target": "looking for",
+"seed_target": "What are you looking for?",
+"bucket": "B0-space-only"
+},
+"eng_for_ben|eng_for_ben:S0659L01": {
+"lego_target": "can you all say that",
+"seed_target": "Could you all say that",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0642L02": {
+"lego_target": "how are you feeling",
+"seed_target": "how do you feel madam?",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0657L01": {
+"lego_target": "how are you all feeling",
+"seed_target": "how do you all feel?",
+"bucket": "B6-partial"
+},
+"eng_for_ben|eng_for_ben:S0092L02": {
+"lego_target": "keep on",
+"seed_target": "I'd like to keep on doing this for a while.",
+"bucket": "B0-space-only"
+},
+"eng_for_deu|eng_for_deu:S0107L03": {
+"lego_target": "what you're doing",
+"seed_target": "We hoped to see what you were doing.",
+"bucket": "B6-partial"
+},
+"eng_for_fra|eng_for_fra:S0031L02": {
+"lego_target": "tonight",
+"seed_target": "You wanted to speak with me tonight.",
+"bucket": "B0-space-only"
+},
+"eng_for_guj|eng_for_guj:S0029L03": {
+"lego_target": "as soon as I can",
+"seed_target": "I'm looking forward to speaking better as soon as I can.",
+"bucket": "B0-space-only"
+},
+"eng_for_guj|eng_for_guj:S0059L03": {
+"lego_target": "what I need to do",
+"seed_target": "I know how to do what I need to do next week.",
+"bucket": "B0-space-only"
+},
+"eng_for_guj|eng_for_guj:S0114L01": {
+"lego_target": "I feel as if",
+"seed_target": "I feel as if I'm doing worse today than yesterday.",
+"bucket": "B0-space-only"
+},
+"eng_for_hin|eng_for_hin:S0007L03": {
+"lego_target": "to try",
+"seed_target": "I want to try as hard as I can today.",
+"bucket": "B0-space-only"
+},
+"eng_for_ita|eng_for_ita:S0040L02": {
+"lego_target": "right now",
+"seed_target": "How do you feel at the moment?",
+"bucket": "B7-no-relation"
+},
+"eng_for_jpn|eng_for_jpn:S0144L01": {
+"lego_target": "I wanted to this morning",
+"seed_target": "I woke earlier than I wanted to this morning",
+"bucket": "B0-space-only"
+},
+"eng_for_kan|eng_for_kan:S0474L02": {
+"lego_target": "even if it's given",
+"seed_target": "I don't even want it as a free offer.",
+"bucket": "B6-partial"
+},
+"eng_for_kan|eng_for_kan:S0578L03": {
+"lego_target": "somewhere warmer",
+"seed_target": "Somewhere warmer.",
+"bucket": "B0-space-only"
+},
+"eng_for_kan|eng_for_kan:S0575L02": {
+"lego_target": "has been upsetting",
+"seed_target": "It's been upsetting.",
+"bucket": "B6-partial"
+},
+"eng_for_kan|eng_for_kan:S0007L03": {
+"lego_target": "as hard as I can",
+"seed_target": "I want to try as hard as I can today.",
+"bucket": "B0-space-only"
+},
+"eng_for_kan|eng_for_kan:S0479L02": {
+"lego_target": "the least",
+"seed_target": "It's the least I could do.",
+"bucket": "B0-space-only"
+},
+"eng_for_pan|eng_for_pan:S0109L02": {
+"lego_target": "we must",
+"seed_target": "We must work hard to learn a lot of new words.",
+"bucket": "B0-space-only"
+},
+"eng_for_pan|eng_for_pan:S0317L02": {
+"lego_target": "she could if she wanted to",
+"seed_target": "Yes I think she could if she wanted to.",
+"bucket": "B0-space-only"
+},
+"eng_for_pan|eng_for_pan:S0591L01": {
+"lego_target": "she followed me",
+"seed_target": "She followed me down to the shops.",
+"bucket": "B0-space-only"
+},
+"eng_for_pan|eng_for_pan:S0339L03": {
+"lego_target": "he's hurt himself",
+"seed_target": "No I think he's hurt himself quite badly.",
+"bucket": "B0-space-only"
+},
+"eng_for_pan|eng_for_pan:S0381L02": {
+"lego_target": "follow us",
+"seed_target": "I didn't ask if he wanted to follow us.",
+"bucket": "B0-space-only"
+},
+"eng_for_sin|eng_for_sin:S0042L03": {
+"lego_target": "last night",
+"seed_target": "I was starting to feel better than last night.",
+"bucket": "B0-space-only"
+},
+"eng_for_sin|eng_for_sin:S0094L03": {
+"lego_target": "will work",
+"seed_target": "This is the only way it will work.",
+"bucket": "B0-space-only"
+},
+"eng_for_sin|eng_for_sin:S0352L01": {
+"lego_target": "even if he wants it",
+"seed_target": "Even if he wanted to he wouldn't be able to.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0480L01": {
+"lego_target": "whatever he says",
+"seed_target": "Whatever he says it's not far ahead now.",
+"bucket": "B0-space-only"
+},
+"eng_for_sin|eng_for_sin:S0483L02": {
+"lego_target": "it's not meant to be easy",
+"seed_target": "Life isn't easy but it's not meant to be easy.",
+"bucket": "B0-space-only"
+},
+"eng_for_sin|eng_for_sin:S0496L03": {
+"lego_target": "I'm not planning to lose",
+"seed_target": "I'm not planning to lose when it really matters.",
+"bucket": "B0-space-only"
+},
+"eng_for_sin|eng_for_sin:S0480L02": {
+"lego_target": "it's not far ahead now",
+"seed_target": "Whatever he says it's not far ahead now.",
+"bucket": "B0-space-only"
+},
+"eng_for_sin|eng_for_sin:S0378L01": {
+"lego_target": "for holidays",
+"seed_target": "No I didn't have enough money for holidays.",
+"bucket": "B0-space-only"
+},
+"eng_for_sin|eng_for_sin:S0450L02": {
+"lego_target": "they have to catch",
+"seed_target": "No they have to catch the train themselves.",
+"bucket": "B0-space-only"
+},
+"eng_for_sin|eng_for_sin:S0468L02": {
+"lego_target": "the big wide world",
+"seed_target": "It's a big world.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0529L01": {
+"lego_target": "can you all raise your hands up",
+"seed_target": "Can you all put your hands up?",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0465L02": {
+"lego_target": "what her name was",
+"seed_target": "Next time I will ask her what her name is.",
+"bucket": "B6-partial"
+},
+"eng_for_sin|eng_for_sin:S0357L01": {
+"lego_target": "to send her a message",
+"seed_target": "No she just wanted to send her a message.",
+"bucket": "B0-space-only"
+},
+"eng_for_spa|eng_for_spa:S0298L01": {
+"lego_target": "I've got nothing left to say",
+"seed_target": "I've got nothing left to say",
+"bucket": "B0-space-only"
+},
+"eng_for_tam|eng_for_tam:S0112L03": {
+"lego_target": "wasn't expecting it to be very interesting",
+"seed_target": "That was very interesting, and I wasn't expecting it.",
+"bucket": "B6-partial"
+},
+"eng_for_tam|eng_for_tam:S0016L05": {
+"lego_target": "later on",
+"seed_target": "He wants to come back with everyone else later on.",
+"bucket": "B0-space-only"
+},
+"eng_for_tam|eng_for_tam:S0121L04": {
+"lego_target": "unusual that you don't use car",
+"seed_target": "It's unusual that you don't like to use your car.",
+"bucket": "B3-interposed-in-order"
+},
+"eng_for_tam|eng_for_tam:S0186L01": {
+"lego_target": "talk about something different",
+"seed_target": "Do you want to talk about something different next week?",
+"bucket": "B0-space-only"
+},
+"eng_for_urd|eng_for_urd:S0030L03": {
+"lego_target": "yesterday",
+"seed_target": "I wanted to ask you something yesterday.",
+"bucket": "B0-space-only"
+},
+"eng_for_zho|eng_for_zho:S0227L01": {
+"lego_target": "That man is going to tell me something new",
+"seed_target": "That man is going to tell me something new",
+"bucket": "B0-space-only"
+},
+"hye_for_eng|hye_for_eng:S0007L03": {
+"lego_target": "որկան կարող եմ",
+"seed_target": "Ես այսոր ուզում եմ փորձել, որկան կարող եմ։",
+"bucket": "B0-space-only"
+},
+"hye_for_eng|hye_for_eng:S0291L02": {
+"lego_target": "կարող լինել շուլով",
+"seed_target": "Ես հույս ունեմ վոր շուլով կարող եմ լինել ավել լավ խոսել։",
+"bucket": "B4-reordered"
+},
+"hye_for_eng|hye_for_eng:S0281L01": {
+"lego_target": "չե խանագարումյ ետե",
+"seed_target": "Քեզ չե խանագարումյ ետե ես իմ կավեյ ավարտածնեմ մինչեվ սկսես?",
+"bucket": "B0-space-only"
+},
+"hye_for_eng|hye_for_eng:S0042L03": {
+"lego_target": "սկսում եի",
+"seed_target": "Ես սկսում եի ավելի լավ զգում կան երեկ գիշեր։",
+"bucket": "B0-space-only"
+},
+"hye_for_eng|hye_for_eng:S0267L02": {
+"lego_target": "կո յնկերից",
+"seed_target": "Լուսել ես կո յնկերից?",
+"bucket": "B0-space-only"
+},
+"hye_for_eng|hye_for_eng:S0283L01": {
+"lego_target": "կո յնկերներից",
+"seed_target": "Կո յնկերներից վորքյ են խոսում հաերենի?",
+"bucket": "B0-space-only"
+},
+"hye_for_eng|hye_for_eng:S0008L03": {
+"lego_target": "տե ինչ եմ ուզում ասել",
+"seed_target": "Ես փորձելու եմ բացատրել, տե ինչ եմ ուզում ասել։",
+"bucket": "B0-space-only"
+},
+"hye_for_eng|hye_for_eng:S0120L01": {
+"lego_target": "հետակրուրի ե վոր",
+"seed_target": "Հետակրուրի ե վոր սիրում ես ավտոբուսով գնալ։",
+"bucket": "B0-space-only"
+},
+"nld_for_eng|nld_for_eng:S0070L02": {
+"lego_target": "te vertellen",
+"seed_target": "ze wilde me niet vertellen waar het was",
+"bucket": "B6-partial"
+},
+"por_for_eng|por_for_eng:S0387L02": {
+"lego_target": "ela tivesse",
+"seed_target": "não, eu não achei que ela tivesse razão",
+"bucket": "B0-space-only"
+}
+}
