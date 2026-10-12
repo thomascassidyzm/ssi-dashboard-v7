@@ -16,4 +16,8 @@ assert.equal(chooseAccount(R(), U(), new Map([['account-5', Date.now() + 60e3]])
 assert.equal(chooseAccount(R({ 'account-5': { blocked: true } }), U({ 'account-3': { weekly_all_pct_used: 90 } }), none), null, 'claude@ at 90% → wait, never mac.com (soonest reset)')
 assert.equal(chooseAccount(R({ 'account-5': { blocked: true } }), { accounts: {} }, none), null, 'claude@ with no weekly reading → wait')
 assert.equal(chooseAccount(R({ 'account-5': { blocked: true }, 'account-3': { blocked: true } }), U(), none), null, 'both shut → wait (null), no fallback')
+// Tom 2026-10-12 (via #967): claude@ only while its five-hour window is under 70%, so Aran and Kai keep one
+assert.equal(chooseAccount(R({ 'account-5': { blocked: true } }), U({ 'account-3': { five_hour_pct: 70 } }), none), null, 'claude@ at 70% of five hours → wait')
+assert.equal(chooseAccount(R({ 'account-5': { blocked: true } }), U({ 'account-3': { five_hour_pct: 69 } }), none), 'account-3', 'claude@ at 69% of five hours → used')
+assert.equal(chooseAccount(R({ 'account-5': { blocked: true } }), U({ 'account-3': { five_hour_pct: null } }), none), null, 'claude@ with no five-hour reading → wait')
 console.log('ramp.test: all green')
