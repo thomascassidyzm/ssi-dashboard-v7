@@ -31,7 +31,7 @@ function stubSupabase () {
     }
     return chain
   }
-  return { from: table }
+  return { from: table, rpc: async () => ({ data: null, error: null }) }
 }
 
 let server, base
@@ -87,5 +87,15 @@ describe('GET /api/voicelab/languages — the hold', () => {
     const after = await languages()
     expect(after.cached).toBe(false)
     expect(reads).toBeGreaterThan(held)
+  })
+
+  it('answers 304 with no body when the screen already holds the current build', async () => {
+    const first = await fetch(`${base}/api/voicelab/languages`)
+    const etag = first.headers.get('etag')
+    expect(etag).toBeTruthy()
+    const again = await fetch(`${base}/api/voicelab/languages`, { headers: { 'if-none-match': etag } })
+    expect(again.status).toBe(304)
+    const forced = await fetch(`${base}/api/voicelab/languages?refresh=1`, { headers: { 'if-none-match': etag } })
+    expect(forced.status).toBe(200)
   })
 })

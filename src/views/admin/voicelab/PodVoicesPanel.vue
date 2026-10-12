@@ -59,8 +59,9 @@ import { api, clipUrl } from './labApi'
 import { languageName } from '@/utils/languageNames'
 import { planPicks, commitPicks } from './stagedPicks'
 
-const rows = ref([])
-const summary = ref(null)
+const heldPods = api.podVoicesHeld()
+const rows = ref((heldPods && heldPods.languages) || [])
+const summary = ref((heldPods && heldPods.summary) || null)
 const loading = ref(true)
 const error = ref('')
 const filter = ref('all')

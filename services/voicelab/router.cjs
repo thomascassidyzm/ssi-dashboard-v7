@@ -234,6 +234,22 @@ function mount (app, deps) {
     next()
   })
 
+  // ── WARM AT BOOT, SO THE FIRST VISIT IS NOT THE COLD ONE ──────────────────
+  // Only on the real client (a test injects its own `supabase` and must see
+  // exactly the reads it counts). Never allowed to throw into startup.
+  if (!deps.supabase && process.env.VOICELAB_PREWARM !== '0') {
+    setTimeout(async () => {
+      try {
+        await params.cartesiaCatalogue()
+        await Promise.all([
+          registry.cachedBuild(supabase(), { cartesiaCatalogue: params._state().CARTESIA_CATALOGUE }),
+          podVoices.cachedBuild(supabase()),
+        ])
+        logger.log?.('[voicelab] registry and pod voices warmed')
+      } catch (e) { logger.log?.(`[voicelab] warm-up skipped: ${e.message}`) }
+    }, 5000).unref?.()
+  }
+
   app.get('/api/voicelab/params', async (req, res) => {
     if (!await requireDashboardUser(req, res)) return
     try {
@@ -247,6 +263,16 @@ function mount (app, deps) {
   // Read-only and spends nothing, so it is open to any dashboard user; the two
   // writes below are admin, because casting a voice is an estate decision.
 
+  // A held view carries the instant it was built as its ETag, so a screen that
+  // already holds it is answered 304 with no body (the 1.4 MB registry never
+  // crosses the wire twice) and any rebuild changes the tag.
+  function sendHeld (req, res, payload) {
+    res.set('ETag', payload.etag)
+    res.set('Cache-Control', 'private, no-cache')
+    if (req.headers['if-none-match'] === payload.etag) return res.status(304).end()
+    res.json(payload)
+  }
+
   app.get('/api/voicelab/languages', async (req, res) => {
     if (!await requireDashboardUser(req, res)) return
     try {
@@ -257,7 +283,7 @@ function mount (app, deps) {
       const { CARTESIA_CATALOGUE } = params._state()
       // Held between loads — see registry.cjs. ?refresh=1 is the Refresh button.
       const refresh = req.query.refresh === '1' || req.query.refresh === 'true'
-      res.json(await registry.cachedBuild(supabase(), { cartesiaCatalogue: CARTESIA_CATALOGUE, refresh }))
+      sendHeld(req, res, await registry.cachedBuild(supabase(), { cartesiaCatalogue: CARTESIA_CATALOGUE, refresh }))
     } catch (err) { fail(res, err, 'languages') }
   })
 
@@ -380,7 +406,7 @@ function mount (app, deps) {
     if (!await requireDashboardUser(req, res)) return
     try {
       const refresh = req.query.refresh === '1' || req.query.refresh === 'true'
-      res.json(await podVoices.cachedBuild(supabase(), { refresh }))
+      sendHeld(req, res, await podVoices.cachedBuild(supabase(), { refresh }))
     } catch (err) { fail(res, err, 'pod-voices') }
   })
 

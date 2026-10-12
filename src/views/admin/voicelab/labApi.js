@@ -39,11 +39,46 @@ async function accessToken () {
   }
 }
 
+// ── WHAT THE SCREEN ALREADY HOLDS (Tom, 2026-10-12) ──────────────────────────
+// "I dont like the way the voice lab refreshes the page every time I visit it,
+// AND it takes freaking ages to load." The two big reads (languages ~1.4 MB,
+// pod voices) are kept in memory and in localStorage, keyed by path and
+// backend. A visit paints from the held copy at once; the fetch behind it
+// sends If-None-Match, so an unchanged estate costs a 304 with no body.
+// Refresh (force) is the only thing that skips the hold. Kept per backend:
+// switching environment must never show another estate's casts.
+const HELD = new Map()
+const heldKey = (k) => `voicelab-held:${labBase()}${k}`
+
+function heldRead (k) {
+  const key = heldKey(k)
+  if (HELD.has(key)) return HELD.get(key)
+  try {
+    const raw = localStorage.getItem(key)
+    if (raw) { const v = JSON.parse(raw); HELD.set(key, v); return v }
+  } catch { /* storage unavailable or corrupt: behave as if nothing held */ }
+  return null
+}
+
+function heldWrite (k, v) {
+  const key = heldKey(k)
+  HELD.set(key, v)
+  try { localStorage.setItem(key, JSON.stringify(v)) } catch { /* over quota: memory copy still serves this tab */ }
+}
+
+/** The last copy this screen got, or null. Synchronous: it is what a visit paints first. */
+export function heldCopy (k) {
+  const v = heldRead(k)
+  return v ? v.data : null
+}
+
 // Every lab endpoint is behind a dashboard session — reads included, because a
 // read here lists what has been spent and what it sounded like. So `auth` is on
 // by default rather than per-call.
-async function call (path, { method = 'GET', body, auth = true } = {}) {
+async function call (path, { method = 'GET', body, auth = true, held = null } = {}) {
   const headers = { 'ngrok-skip-browser-warning': 'true' }
+  const kept = held ? heldRead(held) : null
+  if (kept && kept.etag) headers['If-None-Match'] = kept.etag
   if (body) headers['Content-Type'] = 'application/json'
   if (auth) {
     const token = await accessToken()
@@ -55,6 +90,7 @@ async function call (path, { method = 'GET', body, auth = true } = {}) {
     headers,
     body: body ? JSON.stringify(body) : undefined,
   })
+  if (res.status === 304 && kept) return kept.data
   const ct = res.headers.get('content-type') || ''
   if (!ct.includes('json')) {
     // An HTML body here is the SPA 404 or an ngrok interstitial, never a lab
@@ -67,6 +103,7 @@ async function call (path, { method = 'GET', body, auth = true } = {}) {
   }
   const data = await res.json().catch(() => ({}))
   if (!res.ok) throw Object.assign(new Error(data.error || `HTTP ${res.status}`), { status: res.status, data })
+  if (held && res.headers.get('etag')) heldWrite(held, { etag: res.headers.get('etag'), data })
   return data
 }
 
@@ -95,6 +132,9 @@ async function postForm (path, form) {
   if (!res.ok) throw Object.assign(new Error(data.error || `HTTP ${res.status}`), { status: res.status, data })
   return data
 }
+
+const LANGUAGES_PATH = '/api/voicelab/languages'
+const POD_VOICES_PATH = '/api/voicelab/pod-voices'
 
 export const api = {
   params: () => call('/api/voicelab/params'),
@@ -127,7 +167,8 @@ export const api = {
 
   // The built view is held on the server between loads (registry.cjs). `force`
   // is what the page's Refresh button sends — the one-click way past a hold.
-  languages: ({ force = false } = {}) => call(`/api/voicelab/languages${force ? '?refresh=1' : ''}`),
+  languages: ({ force = false } = {}) => call(`/api/voicelab/languages${force ? '?refresh=1' : ''}`, { held: LANGUAGES_PATH }),
+  languagesHeld: () => heldCopy(LANGUAGES_PATH),
   castSlot: (language, body) =>
     call(`/api/voicelab/languages/${encodeURIComponent(language)}/slot`, { method: 'PUT', body }),
   // `slot` is 'phrase' (the male/female course voices — the default) or 'guide'
@@ -235,7 +276,8 @@ export const api = {
   //
   // `pickPodVoice` writes ONE app_config row. It renders nothing — and it is
   // what phase8 refuses to generate pod audio without.
-  podVoices: ({ force = false } = {}) => call(`/api/voicelab/pod-voices${force ? '?refresh=1' : ''}`),
+  podVoices: ({ force = false } = {}) => call(`/api/voicelab/pod-voices${force ? '?refresh=1' : ''}`, { held: POD_VOICES_PATH }),
+  podVoicesHeld: () => heldCopy(POD_VOICES_PATH),
   podSamples: (language, voiceIds = []) =>
     call(`/api/voicelab/pod-voices/${encodeURIComponent(language)}/samples?voices=${encodeURIComponent(voiceIds.join(','))}`),
   preparePodSamples: (language, voiceIds, { force = false } = {}) =>

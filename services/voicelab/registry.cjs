@@ -1151,12 +1151,99 @@ async function all (db, table, columns) {
 // Staleness is therefore bounded by the TTL and escapable in one click, and
 // `builtAt` travels with the payload so the screen can never lie about how old
 // its answer is.
-let CACHE = null
-
 const CACHE_TTL_MS = Number(process.env.VOICELAB_REGISTRY_TTL_MS || 10 * 60 * 1000)
 
+// ── THE VERSION STAMP (Tom, 2026-10-12) ─────────────────────────────────────
+// "I dont like the way the voice lab refreshes the page every time I visit it,
+// AND it takes freaking ages to load." The TTL alone was both a staleness bug
+// (a cast written by direct SQL sat invisible for up to 10 minutes) and a speed
+// bug (every 10 minutes one unlucky visit paid the whole rebuild). A stamp is
+// the cheap question "has anything the build READS changed?": row count plus
+// newest updated_at of each source table, one light request each, in parallel.
+// A changed stamp (a deletion moves the count, an edit moves updated_at) forces
+// a rebuild whoever wrote it — this router, a tool, or SQL by hand. The TTL is
+// now only the backstop for sources the stamp cannot see (the guide-in-use
+// view, human clip counts), and it is served stale-while-revalidate so nobody
+// ever waits on it.
+// A source whose updated_at is touched by unrelated traffic (courses: something
+// is always writing counters to it) cannot be stamped by the newest timestamp —
+// the stamp would move on every look. Those are stamped by a hash of the
+// columns the build actually reads instead.
+const STAMP_BY_CONTENT = {
+  courses: () => `${COURSE_CAST_FIELDS}, display_name, status, voice_config`,
+  listening_pods: () => 'id, course_code, slug, pod_type, visibility, speakers',
+}
+const STAMP_TABLES = ['courses', 'voices', 'voice_language_roles']
+const STAMP_CHECK_EVERY_MS = Number(process.env.VOICELAB_STAMP_CHECK_MS || 3000)
+
+/** A string that changes when any source row is added, removed or edited. */
+async function readStamp (db, tables = STAMP_TABLES) {
+  const parts = await Promise.all(tables.map(async (t) => {
+    if (STAMP_BY_CONTENT[t]) {
+      // Paging is unordered, so sort before hashing or the stamp flaps.
+      const rows = (await all(db, t, STAMP_BY_CONTENT[t]())).map((r) => JSON.stringify(r)).sort()
+      const h = require('crypto').createHash('sha1').update(JSON.stringify(rows)).digest('hex').slice(0, 16)
+      return `${t}:${rows.length}:${h}`
+    }
+    const { data, error, count } = await db.from(t).select('updated_at', { count: 'exact' })
+      .order('updated_at', { ascending: false, nullsFirst: false }).limit(1)
+    if (error) throw new Error(`stamp ${t}: ${error.message}`)
+    return `${t}:${count ?? ''}:${(data && data[0] && data[0].updated_at) || ''}`
+  }))
+  return parts.join('|')
+}
+
+/**
+ * Hold a built view with a version stamp; shared by this registry and the pod
+ * voices lane so both obey one rule. `build()` makes the value, `stamp()` asks
+ * if the sources moved.
+ */
+function makeHold ({ build, stamp, ttlMs, checkEveryMs = STAMP_CHECK_EVERY_MS }) {
+  let held = null
+  let inflight = null
+  const rebuild = () => {
+    if (inflight) return inflight
+    inflight = (async () => {
+      // Stamp BEFORE the build: a write landing mid-build then shows as a
+      // different stamp next check, never as a stale view stamped as fresh.
+      const st = await stamp().catch(() => null)
+      const value = await build()
+      const now = Date.now()
+      held = { value, stamp: st, builtAtMs: now, builtAt: new Date(now).toISOString(), checkedAtMs: now }
+      return held
+    })().finally(() => { inflight = null })
+    return inflight
+  }
+  return {
+    invalidate () { held = null },
+    peek () { return held },
+    async get ({ refresh = false } = {}) {
+      if (refresh || !held) {
+        const h = await rebuild()
+        return { ...h, cached: false, ageMs: 0 }
+      }
+      const now = Date.now()
+      if (now - held.checkedAtMs >= checkEveryMs) {
+        const st = await stamp().catch(() => held.stamp)
+        held.checkedAtMs = now
+        if (st !== held.stamp) {
+          const h = await rebuild()
+          return { ...h, cached: false, ageMs: 0 }
+        }
+      }
+      const age = now - held.builtAtMs
+      // Past the backstop: answer now with what we hold, rebuild behind it.
+      if (age >= ttlMs) rebuild().catch(() => {})
+      return { ...held, cached: true, ageMs: age }
+    },
+  }
+}
+
+let registryHold = null
+let latest = null
+
 /** Forget the held view. Called by every write path in the lab's router. */
-function invalidate () { CACHE = null }
+function invalidate () { if (registryHold) registryHold.invalidate() }
 
 /**
  * `build`, but served from the held view when one is fresh.
@@ -1167,14 +1254,18 @@ function invalidate () { CACHE = null }
  */
 async function cachedBuild (db, opts = {}) {
   const { refresh = false, ...buildOpts } = opts
-  const age = CACHE ? Date.now() - CACHE.builtAtMs : Infinity
-  if (!refresh && CACHE && age < CACHE_TTL_MS) {
-    return { ...CACHE.payload, builtAt: CACHE.builtAt, cached: true, ageMs: age }
+  // `latest` is what a background rebuild uses: the newest db and catalogue
+  // any caller handed us, never the ones from the first call.
+  latest = { db, buildOpts }
+  if (!registryHold) {
+    registryHold = makeHold({
+      build: () => build(latest.db, latest.buildOpts),
+      stamp: () => readStamp(latest.db),
+      ttlMs: CACHE_TTL_MS,
+    })
   }
-  const payload = await build(db, buildOpts)
-  const now = Date.now()
-  CACHE = { payload, builtAtMs: now, builtAt: new Date(now).toISOString() }
-  return { ...payload, builtAt: CACHE.builtAt, cached: false, ageMs: 0 }
+  const h = await registryHold.get({ refresh })
+  return { ...h.value, builtAt: h.builtAt, cached: h.cached, ageMs: h.ageMs, etag: `"${h.builtAtMs}"` }
 }
 
 /**
@@ -1185,4 +1276,4 @@ async function cachedBuild (db, opts = {}) {
  */
 const SLOTS = Object.freeze(['phrase', 'known', 'guide'])
 
-module.exports = { build, cachedBuild, invalidate, CACHE_TTL_MS, paceOf, describeLanguage, catalogueFacts, catalogueFactsById, providerOfRole, providersInUse, providerDefaultFor, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, ownedCloneIds, ownedFirst, dropRetired, guideVoicesInUse, REQUIRED_RANKS, GUIDE_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }
+module.exports = { build, cachedBuild, invalidate, makeHold, readStamp, CACHE_TTL_MS, paceOf, describeLanguage, catalogueFacts, catalogueFactsById, providerOfRole, providersInUse, providerDefaultFor, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, ownedCloneIds, ownedFirst, dropRetired, guideVoicesInUse, REQUIRED_RANKS, GUIDE_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }

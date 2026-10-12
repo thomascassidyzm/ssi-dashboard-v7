@@ -42,6 +42,7 @@ const AWS_REGION = process.env.AWS_REGION || 'eu-west-1'
 
 /** How many of a pod's opening sentences are read to find a line and a clip. */
 const SENTENCE_WINDOW = 60
+const DESCRIBE_CONCURRENCY = 12
 
 function s3Url (key) {
   if (!key || String(key).startsWith('pending/')) return null
@@ -104,7 +105,12 @@ async function build (db) {
   }
 
   const rows = []
-  for (const group of byLang.values()) rows.push(await describeLanguage(db, group, picks))
+  // One language is a handful of independent reads; run them side by side in
+  // small waves. Sequentially this was ~7-10 s for the estate (Tom, 2026-10-12).
+  const groups = [...byLang.values()]
+  for (let i = 0; i < groups.length; i += DESCRIBE_CONCURRENCY) {
+    rows.push(...await Promise.all(groups.slice(i, i + DESCRIBE_CONCURRENCY).map((g) => describeLanguage(db, g, picks))))
+  }
 
   rows.sort((a, b) =>
     (a.liveCourses > 0 ? 0 : 1) - (b.liveCourses > 0 ? 0 : 1) ||
@@ -273,21 +279,29 @@ async function podLineAndClips (db, podId) {
 }
 
 // ── HELD BETWEEN LOADS ──────────────────────────────────────────────────────
-// The build is ~5 SELECTs plus one small read per language, and the lane asks
-// for it again every time a pick lands. Same hold registry.cjs keeps, same
+// Same hold as registry.cjs (version stamp, stale-while-revalidate), same
 // escape: ?refresh=1, and a write invalidates it so a pick is never stale on
-// the screen that made it.
-const CACHE_TTL_MS = 60 * 1000
-let cache = null
+// the screen that made it. The 60 s TTL this used to have meant most visits
+// paid the full build.
+const CACHE_TTL_MS = Number(process.env.VOICELAB_POD_VOICES_TTL_MS || 10 * 60 * 1000)
+let hold = null
+let latestDb = null
 
 async function cachedBuild (db, { refresh = false } = {}) {
-  if (!refresh && cache && Date.now() - cache.at < CACHE_TTL_MS) return cache.value
-  const value = await build(db)
-  cache = { at: Date.now(), value }
-  return value
+  latestDb = db
+  if (!hold) {
+    const { makeHold, readStamp } = require('./registry.cjs')
+    hold = makeHold({
+      build: () => build(latestDb),
+      stamp: () => readStamp(latestDb, ['courses', 'listening_pods']),
+      ttlMs: CACHE_TTL_MS,
+    })
+  }
+  const h = await hold.get({ refresh })
+  return Object.assign({}, h.value, { builtAt: h.builtAt, etag: `"${h.builtAtMs}"` })
 }
 
-function invalidate () { cache = null }
+function invalidate () { if (hold) hold.invalidate() }
 
 /**
  * The audition line for one language — the SAME line the row shows, so a
