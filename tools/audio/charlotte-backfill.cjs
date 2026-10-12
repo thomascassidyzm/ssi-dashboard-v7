@@ -64,6 +64,9 @@ const BAD_VOICE = FEMALE_VOICE
 const TOM_001 = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
 // Tom 2026-10-12 (#813, #15, #24): Tom-006 is the male English voice. The male passes render in it, and no Charlotte pass may ever select a Tom-006 clip (voiceGender() is null for Cartesia ids, so the gender-blind passes would).
 const TOM_006 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
+// Tom 2026-10-12 (job #52): in an X_for_eng course English is the KNOWN side and is ALL Tom-006. No pass of this tool may put Charlotte on an X_for_eng known slot,
+// whatever --voices / --roles say; gender variance for English is eng_for_X (target2) only. Returns the roles a pass may run for this course.
+const allowedRoles = (course, roles, target) => roles.filter(r => !(r === 'known' && target === CHARLOTTE && /_for_eng$/.test(String(course)) && !String(course).startsWith('eng_for_')))
 /** Pass table: which old voices a pass selects, which voice it renders in, which gender a swap's OLD voice must have. */
 const PASSES = {
   general: { sql: FEMALE_VOICE, target: CHARLOTTE, gender: 'f' },
@@ -320,6 +323,10 @@ async function main() {
   }
   const bare = target ? target.replace(/^cartesia_/, '') : null
   const voiceSql = pass.allVoices && target ? `(ca.voice_id not in ('${target}', '${bare}'))` : pass.sql
+  const ok = allowedRoles(course, roles, target)
+  if (ok.length < roles.length) console.log(`X_FOR_ENG_KNOWN_IS_TOM006: ${course} known slots are Tom-006 only (Tom 2026-10-12, job #52); known role dropped from this Charlotte pass`)
+  if (!ok.length) { console.log('nothing to do'); return pg.end() }
+  roles.length = 0; roles.push(...ok)
   const work = await workFor(pg, course, roles, voiceSql, maxSeed, pass.langs, pass.alsoClipRoles)
   const total = work.reduce((n, x) => n + x.chars, 0)
   console.log(`${course} ${roles}${target && pass.castGender ? ` -> ${target}` : ''}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
@@ -350,4 +357,4 @@ async function main() {
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { runBudgeted, RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, TOM_006, CHARLOTTE }
+module.exports = { allowedRoles, runBudgeted, RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, TOM_006, CHARLOTTE }
