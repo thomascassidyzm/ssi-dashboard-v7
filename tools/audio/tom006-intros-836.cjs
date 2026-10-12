@@ -90,7 +90,7 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
     return rows
   }
   const t6Row = async text => (await pg.query(`select id::text, voice_id, s3_key, duration_ms from course_audio where text=$1 and voice_id=$2 and role='presentation' and language='eng' and s3_key is not null and s3_key not like 'pending/%' and duration_ms > 500 order by created_at limit 1`, [text, T6])).rows[0]
-  const st = { claimed: 0, n: 0, rendered: 0, reused: 0, fadedFromExisting: 0, chars: 0, slots: 0, skipped: 0 }, limit = Number(opt('--limit', 1e9))
+  const st = { unspeakable: [], claimed: 0, n: 0, rendered: 0, reused: 0, fadedFromExisting: 0, chars: 0, slots: 0, skipped: 0 }, limit = Number(opt('--limit', 1e9))
   const prior = new Map(); for (const e of lines()) if (e.kind === 'render' && e.text) prior.set(e.text, e)   // a crash after the intent re-points to the recorded id, no new take
   console.log(`${course} seeds ${from}-${to}: ${plan.length} legos, ${items.length} distinct texts${dryRun ? ' (DRY RUN)' : ''}`)
   let idx = 0
@@ -122,6 +122,8 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
               if (a >= 1 && cap > 1) { cap--; console.log('ledger timeouts repeat: concurrency now', cap) }
               console.log('LEDGER timeout, backing off', [5, 15, 60][a], 's'); await new Promise(x => setTimeout(x, [5, 15, 60][a] * 1000))
             }
+            // NOT_SPEAKABLE (a bracket/brace label inside the LEGO's own known text) is a CONTENT defect the TTS door will never speak: the LEGO keeps its existing intro, the row is logged and listed, the run goes on. Every other refusal still stops it.
+            if (r && r.code === 'NOT_SPEAKABLE') { log({ kind: 'unspeakable', lego_id: it.first.lego_id, text: it.newText, r }); st.unspeakable.push([it.first.lego_id, it.newText]); console.log('UNSPEAKABLE (kept existing intro):', it.first.lego_id, it.newText); continue }
             if (!res.ok || !r.ok) { log({ kind: 'refused', lego_id: it.first.lego_id, text: it.newText, r }); console.log('REFUSED — stopping, no retry:', it.first.lego_id, JSON.stringify(r).slice(0, 400)); stopFlag = true; return }
             const { rows: [ca] } = await pg.query('select id::text, voice_id, s3_key, duration_ms from course_audio where id=$1', [r.audioId])
             if (!ca || ca.voice_id !== T6 || !ca.s3_key || ca.s3_key.startsWith('pending/') || !(ca.duration_ms > 500)) { log({ kind: 'verify-failed', text: it.newText, r, ca }); console.log('VERIFY FAILED — stopping:', it.first.lego_id, JSON.stringify(ca)); stopFlag = true; return }
@@ -146,5 +148,5 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
   }
   try { await Promise.all(Array.from({ length: cap }, async (_, wi) => { try { await worker(wi) } catch (e) { stopFlag = true; console.error(e) } })) } finally { await bump(st.slots > 0); await pg.end() }   // BACKSTOP: one bump at the end of every run that moved a pointer, whatever the counters say
   if (stopFlag && !dryRun) process.exitCode = 2   // any stop (refusal, verify/fade failure, worker crash, SIGTERM) is a non-zero exit: never 'done'
-  console.log(`${course} ${stopFlag ? 'STOPPED' : dryRun ? 'DRY' : 'DONE'}: items ${st.n} (rendered ${st.rendered}, reused ${st.reused}, of which faded from an existing raw row ${st.fadedFromExisting}), slots ${st.slots}, chars ${st.chars}, already-moved/skipped ${st.skipped}`)
+  console.log(`${course} ${stopFlag ? 'STOPPED' : dryRun ? 'DRY' : 'DONE'}: items ${st.n} (rendered ${st.rendered}, reused ${st.reused}, of which faded from an existing raw row ${st.fadedFromExisting}), slots ${st.slots}, chars ${st.chars}, already-moved/skipped ${st.skipped}, unspeakable (kept existing intro) ${st.unspeakable.length}`)
 })().catch(e => { console.error(e); process.exit(1) })
