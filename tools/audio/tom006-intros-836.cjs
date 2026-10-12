@@ -21,13 +21,18 @@ const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
 const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs')
 const { makeFaded, MARKER } = require('./tom006-fade-lib.cjs')
 const { defaultRange } = require('./tom006-intros-plan.cjs')
+const { ledgerState, undoPlan, undoRecordable, expandLegacyRows } = require('./tom006-ledger.cjs')   // the shared ledger reader (lane reviews #840/#841): pairs keyed oldId|newId
 const T6 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }, has = f => argv.includes(f)
 const course = opt('--course'); if (!course) { console.error('--course required'); process.exit(1) }
 const dryRun = has('--dry-run'), JOB = opt('--job', '#813')
 const dir = path.join(__dirname, '../../ops/836-tom006-intros'), ledger = path.join(dir, `${course}-ledger.jsonl`)
-const lines = () => fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
+// Ledger rows are the shared kinds: 'render' (the write-ahead INTENT, one per oldId|newId pair, slots carrying their from-id), 'swap' (every slot moved) / 'partial', 'undo'.
+// Rows written by the first run of this job (kind 'intent'/'swap' with no oldId, slots grouped by from-id) are expanded into the same per-pair rows on read.
+const rawLines = () => fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
+const normalise = expandLegacyRows
+const lines = () => normalise(rawLines())
 const log = e => { if (!dryRun) fs.appendFileSync(ledger, JSON.stringify({ ...e, at: new Date().toISOString() }) + '\n') }
 function supa() {
   if (!process.env.SUPABASE_URL) for (const p of [path.join(__dirname, '../../.env'), '/home/tomcassidy/ssi-dashboard-v7-clean/.env', '/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/.env'])
@@ -49,19 +54,18 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
   const touch = async k => { touched += k; if (touched >= BUMP_EVERY) await bump() }
 
   if (has('--undo')) {
-    // every intent/swap slot -> its ORIGINAL from-id; the before-check (newId must still be on the slot) keeps it safe; 'undone' rows remove slots already reverted
-    const rows = lines(), orig = new Map()
-    for (const e of rows) if (['intent', 'swap'].includes(e.kind)) for (const s of e.slots || []) if (s.from) { const k = `${s.tbl}:${s.key}`; if (!orig.has(k)) orig.set(k, { s, cur: e.newId }); else orig.get(k).cur = e.newId }
-    for (const e of rows) if (e.kind === 'undone') for (const k of e.keys) orig.delete(k)
-    let n = 0; const done = []
+    // ledger order (latest pair first) via the shared undoPlan; a slot moves back only if it is still on newId; an 'undo' row is recorded only when EVERY slot of the pair moved, so a failed one stays pending
+    let n = 0, stuck = 0
     try {
-      for (const [k, { s, cur }] of [...orig].reverse()) {
-        if (dryRun) { console.log('would undo', k, cur, '->', s.from); n++; continue }
-        if (await setPointer(db, s, cur, s.from, await event())) { await touch(1); n++ }
-        done.push(k)
+      for (const p of undoPlan(lines())) {
+        if (dryRun) { console.log('would undo', p.lego_id, p.newId, '->', p.oldId, p.slots.length, 'slots'); n += p.slots.length; continue }
+        let moved = 0; for (const sl of p.slots) if (await setPointer(db, sl, p.newId, p.oldId, await event())) moved++
+        if (moved === p.slots.length && undoRecordable(moved)) log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved })
+        else { stuck += p.slots.length - moved; console.log('UNDO INCOMPLETE (left pending):', p.oldId, '->', p.newId, `${moved}/${p.slots.length}`) }
+        n += moved; await touch(moved)
       }
-    } finally { if (!dryRun) { log({ kind: 'undone', keys: done }); await bump() } }
-    console.log(dryRun ? 'would undo' : 'undone slots', n); return pg.end()
+    } finally { await bump() }
+    console.log(dryRun ? 'would undo' : 'undone slots', n, stuck ? `(${stuck} not on the recorded clip any more)` : ''); await pg.end(); if (stuck) process.exitCode = 2; return
   }
 
   const { from, to } = { ...defaultRange(course), ...(opt('--from') ? { from: Number(opt('--from')) } : {}) }
@@ -75,15 +79,16 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
     return rows
   }
   const t6Row = async text => (await pg.query(`select id::text, voice_id, s3_key, duration_ms from course_audio where text=$1 and voice_id=$2 and role='presentation' and language='eng' and s3_key is not null and s3_key not like 'pending/%' and duration_ms > 500 order by created_at limit 1`, [text, T6])).rows[0]
-  const st = { n: 0, rendered: 0, reused: 0, fadedFromExisting: 0, chars: 0, slots: 0, skipped: 0 }, limit = Number(opt('--limit', 1e9))
-  const prior = new Map(); for (const e of lines()) if (e.kind === 'intent') prior.set(e.text, e)   // a crash after the intent re-points to the recorded id, no new take
+  const st = { claimed: 0, n: 0, rendered: 0, reused: 0, fadedFromExisting: 0, chars: 0, slots: 0, skipped: 0 }, limit = Number(opt('--limit', 1e9))
+  const prior = new Map(); for (const e of lines()) if (e.kind === 'render' && e.text) prior.set(e.text, e)   // a crash after the intent re-points to the recorded id, no new take
   console.log(`${course} seeds ${from}-${to}: ${plan.length} legos, ${items.length} distinct texts${dryRun ? ' (DRY RUN)' : ''}`)
   let idx = 0
   const worker = async () => {
-    while (!stopFlag && st.n < limit) {
+    while (!stopFlag) {
       const it = items[idx++]; if (!it) return
       const slots = await slotsOf(it.oldClips)
       if (!slots.length) { st.skipped++; continue }   // already moved (earlier run) or old clip no longer linked in range
+      if (st.claimed >= limit) return; st.claimed++   // claimed synchronously, so --limit N is exact under concurrency
       if (dryRun) { const f = await t6Row(it.newText + MARKER); const r = f ? null : await t6Row(it.newText); console.log(f ? 'would reuse faded' : r ? 'would fade existing raw' : 'would render', it.first.lego_id, it.newText.length, 'chars', slots.length, 'slots'); st.n++; continue }
       let newId, how, chars = 0
       const pri = prior.get(it.newText)
@@ -108,15 +113,19 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
           if (how === 'reuse') st.fadedFromExisting++
         }
       }
-      log({ kind: 'intent', text: it.newText, newId, how, slots })   // BEFORE any pointer moves, reuse included: undo reads this
+      const pairs = new Map(); for (const sl of slots) { if (!pairs.has(sl.from)) pairs.set(sl.from, []); pairs.get(sl.from).push({ tbl: sl.tbl, key: sl.key, from: sl.from }) }
+      for (const [oldId, ps] of pairs) log({ kind: 'render', oldId, newId, lego_id: it.first.lego_id, text: it.newText, how, slots: ps })   // write-ahead journal, BEFORE any pointer moves, reuse included: undo reads this
       const moved = []
-      for (const s of slots) if (await setPointer(db, s, s.from, newId, await event())) moved.push(s)
-      log({ kind: 'swap', text: it.newText, newId, slots: moved, wanted: slots.length, how })
+      for (const [oldId, ps] of pairs) {
+        const got = []; for (const sl of ps) if (await setPointer(db, sl, oldId, newId, await event())) got.push(sl)
+        moved.push(...got); log({ kind: got.length === ps.length ? 'swap' : 'partial', oldId, newId, lego_id: it.first.lego_id, text: it.newText, how, slots: got, wanted: ps.length })
+      }
       st.n++; st[how === 'render' ? 'rendered' : 'reused']++; st.chars += chars; st.slots += moved.length
       console.log(`${it.first.lego_id} -> ${newId} (${how}) ${moved.length}/${slots.length} slots, ${chars} chars`)
       await touch(moved.length); if (st.n === 1) await bump()   // the first clip bumps at once so the proof clip is in a version
     }
   }
   try { await Promise.all(Array.from({ length: Number(opt('--concurrency', 3)) }, async () => { try { await worker() } catch (e) { stopFlag = true; console.error(e) } })) } finally { await bump(); await pg.end() }
+  if (stopFlag && !dryRun) process.exitCode = 2   // any stop (refusal, verify/fade failure, worker crash, SIGTERM) is a non-zero exit: never 'done'
   console.log(`${course} ${stopFlag ? 'STOPPED' : dryRun ? 'DRY' : 'DONE'}: items ${st.n} (rendered ${st.rendered}, reused ${st.reused}, of which faded from an existing raw row ${st.fadedFromExisting}), slots ${st.slots}, chars ${st.chars}, already-moved/skipped ${st.skipped}`)
 })().catch(e => { console.error(e); process.exit(1) })

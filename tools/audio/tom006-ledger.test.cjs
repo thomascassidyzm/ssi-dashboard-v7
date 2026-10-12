@@ -55,3 +55,20 @@ describe('undo order and 0-move undos (lane review #815)', () => {
     expect(undoRecordable(0)).toBe(false); expect(undoRecordable(2)).toBe(true)
   })
 })
+
+// lane reviews #840/#841 (job #836)
+describe('job #836 ledger rules', () => {
+  const L = require('./tom006-ledger.cjs')
+  it('rawId equal to newId is an unfaded take: only rawId !== newId counts as faded at render time', () => {
+    expect(L.fadedAtRender({ rawId: 'r', newId: 'f' })).toBe(true)
+    expect(L.fadedAtRender({ rawId: 'x', newId: 'x' })).toBe(false)
+    expect(L.fadedAtRender({ newId: 'x' })).toBe(false)
+  })
+  it('first-run intent/swap rows expand into per-old-clip pairs that --undo can replay, newest first', () => {
+    const rows = L.expandLegacyRows([
+      { kind: 'intent', text: 't', newId: 'N', slots: [{ tbl: 'course_legos', key: '1', from: 'A' }, { tbl: 'course_legos', key: '2', from: 'B' }] },
+      { kind: 'swap', text: 't', newId: 'N', wanted: 2, slots: [{ tbl: 'course_legos', key: '1', from: 'A' }] }])
+    expect(rows.map(r => [r.kind, r.oldId])).toEqual([['render', 'A'], ['render', 'B'], ['partial', 'A']])
+    expect(L.undoPlan(rows).map(p => p.oldId)).toEqual(['B', 'A'])
+  })
+})

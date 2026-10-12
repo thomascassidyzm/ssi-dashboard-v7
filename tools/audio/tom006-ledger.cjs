@@ -36,4 +36,15 @@ const fadePending = fadeRows => undoPlan(fadeRows).length
 /** An undo row is recorded only when slots really moved (a 0-move undo must leave the pair in later plans). */
 const undoRecordable = moved => moved > 0
 
-module.exports = { fadePending, undoRecordable, ledgerState, ledgerPairs, undoPlan, unionSlots, makeLog }
+/** A ledger row was faded AT RENDER TIME only when it carries a rawId that differs from its newId (rawId === newId is an unfaded take that still needs the fade tool; lane review #841). */
+const fadedAtRender = row => !!(row && row.rawId && row.rawId !== row.newId)
+
+/** Job #836's first run wrote 'intent'/'swap' rows with no oldId (slots grouped by from-id); expand them into the shared per-pair 'render'/'swap'/'partial' rows. Pure. */
+const expandLegacyRows = rows => rows.flatMap(e => {
+  if (!['intent', 'swap'].includes(e.kind) || e.oldId != null) return [e]
+  const by = new Map(); for (const s of e.slots || []) { if (!by.has(s.from)) by.set(s.from, []); by.get(s.from).push(s) }
+  const kind = e.kind === 'intent' ? 'render' : (e.wanted != null && e.slots.length < e.wanted) ? 'partial' : 'swap'
+  return [...by].map(([oldId, slots]) => ({ ...e, kind, oldId, slots }))
+})
+
+module.exports = { fadedAtRender, expandLegacyRows, fadePending, undoRecordable, ledgerState, ledgerPairs, undoPlan, unionSlots, makeLog }

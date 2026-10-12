@@ -12,7 +12,7 @@ const { createClient } = require('@supabase/supabase-js')
 const { bumpCourseVersion } = require('../../services/shared/course-version.cjs')
 const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
 const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs')
-const { ledgerState, undoPlan, makeLog, undoRecordable } = require('./tom006-ledger.cjs')
+const { ledgerState, undoPlan, makeLog, undoRecordable, fadedAtRender } = require('./tom006-ledger.cjs')
 const { makeFaded } = require('./tom006-fade-lib.cjs')
 const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }, has = f => argv.includes(f)
 const course = opt('--course'); if (!course) { console.error('--course required'); process.exit(1) }
@@ -47,7 +47,7 @@ const setPointer = async (db, s, from, to, ev) => {
     console.log(dryRun ? 'would undo' : 'undone slots', n); return pg.end()
   }
   // the unfaded clips = the current pointers of the Tom-006 swaps (newId of each applied swap in the main ledger, minus any since undone)
-  const targets = [...ledgerState(read(mainLedger))].filter(([, v]) => v.applied && !v.row.rawId).map(([, v]) => v.row)   // rows with a rawId were faded at render time (--fade80): never fade twice
+  const targets = [...ledgerState(read(mainLedger))].filter(([, v]) => v.applied && !fadedAtRender(v.row)).map(([, v]) => v.row)   // only rows whose rawId exists AND differs from newId were faded at render time (--fade80): never fade twice; rawId === newId is an unfaded take
   const limit = Number(opt('--limit', 1e9)), bumpEvery = Number(opt('--bump-every', 25)); let n = 0, sinceBump = 0
   for (const t of targets) {
     if (n >= limit) break
