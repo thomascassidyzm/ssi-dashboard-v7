@@ -98,6 +98,9 @@ const TARGET_PASSES = {
   'spa-target2': { langs: ['spa', 'es'], castLang: 'spa', role: 'target2', castGender: 'm', allVoices: true },
   'spa_mx-target1': { langs: ['spa', 'es'], castLang: 'spa_mx', role: 'target1', castGender: 'f', allVoices: true },
   'spa_mx-target2': { langs: ['spa', 'es'], castLang: 'spa_mx', role: 'target2', castGender: 'm', allVoices: true },
+  // French (job #641, Tom 2026-10-12 01:22Z: "SEEDS 1-100 in the new voices for Spanish, French and Mexican Spanish"). Cast rank 0: Inaya f / Erwan m.
+  'fra-target1': { langs: ['fra', 'fr'], role: 'target1', castGender: 'f', allVoices: true },
+  'fra-target2': { langs: ['fra', 'fr'], role: 'target2', castGender: 'm', allVoices: true },
 }
 for (const [name, t] of Object.entries(TARGET_PASSES)) PASSES[name] = { sql: `(ca.voice_id !~ '^cartesia_')`, target: null, gender: null, ...t }
 // English known prompts for a course re-voiced onto Charlotte (Tom 2026-10-11): every non-Cartesia known clip, either gender, becomes Charlotte.
@@ -111,6 +114,9 @@ async function castVoice(pg, lang, gender) {
 }
 
 const argv = process.argv.slice(2)
+// --render-only (job #641): render the new-voice clips (new course_audio rows, library-first) and ledger them as 'rendered', but move NO pointer.
+// Re-running the same command WITHOUT the flag finds every clip in the library (free) and repoints, so sampling happens between the two.
+const RENDER_ONLY = argv.includes('--render-only')
 const opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }
 const has = f => argv.includes(f)
 
@@ -328,6 +334,7 @@ async function main() {
   console.log(`${course} ${roles}${target && pass.castGender ? ` -> ${target}` : ''}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
   let free = 0, slotsMoved = 0, eventId = null, eventPromise = null, slotRefused = 0
   const commit = async (w, r) => {
+    if (RENDER_ONLY) { fs.appendFileSync(ledger, JSON.stringify({ kind: 'rendered', course, role: w.role, oldId: w.oldId, newId: r.audioId, oldVoice: w.oldVoice, pass: passName, source: r.source, charsSpent: r.charsSpent || 0, text: w.text, pos: w.pos, at: new Date().toISOString() }) + '\n'); if (r.source === 'library') free++; return }
     // write-ahead: the ledger line exists before the first pointer moves
     const entry = { kind: 'swap', course, role: w.role, oldId: w.oldId, newId: r.audioId, oldVoice: w.oldVoice, pass: passName, source: r.source, charsSpent: r.charsSpent || 0, slots: w.slots, text: w.text, at: new Date().toISOString() }
     fs.appendFileSync(ledger, JSON.stringify(entry) + '\n')
