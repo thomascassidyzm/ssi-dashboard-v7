@@ -7,7 +7,7 @@ const createDraftRouter = require('./course-builder/routes/drafts.cjs')
 const source = fs.readFileSync(require.resolve('./production-api.cjs'), 'utf8')
 const gateSource = source.slice(source.indexOf('const PROXY_COURSE_CODE_RE ='), source.indexOf('// Generic proxy function for course-builder routes'))
 
-async function request(courseSegment, allowedCourses = ['spa_for_eng']) {
+async function request(courseSegment, allowedCourses = ['spa_for_eng'], extra = {}) {
   const user = { role: 'editor', email: 'alice@example.test' }
   const gate = vm.runInNewContext(`${gateSource}\nrequireProxyCourseAccess`, {
     isLoopbackDirectRequest: () => false,
@@ -21,7 +21,7 @@ async function request(courseSegment, allowedCourses = ['spa_for_eng']) {
   })
   const router = createDraftRouter({ supabase: { from } })
   const path = `/course/${courseSegment}/drafts`
-  const req = { method: 'GET', url: path, path, headers: {}, query: {} }
+  const req = { method: 'GET', url: path, path, headers: {}, query: {}, ...extra }
   const res = { statusCode: 200, status(n) { this.statusCode = n; return this }, json(body) { this.body = body } }
   await new Promise((resolve, reject) => {
     res.json = function(body) { this.body = body; resolve() }
@@ -46,5 +46,19 @@ describe('course-builder proxy authorisation before decoded routing', () => {
     expect(res.statusCode).toBe(200)
     expect(res.body.course_code).toBe('spa_for_eng')
     expect(from).toHaveBeenCalledWith('course_seed_drafts')
+  })
+  // fetch() re-resolves dot segments before the request reaches the builder, so
+  // spa_for_eng/../fra_for_eng is fra_for_eng upstream.
+  it.each(['spa_for_eng/../fra_for_eng', 'spa_for_eng/%2e%2e/fra_for_eng', 'spa_for_eng/%2E./fra_for_eng', 'spa_for_eng/..%5Cfra_for_eng'])('refuses a dot-segment decoy: %s', async (segment) => {
+    const { res, from } = await request(segment)
+    expect(res.statusCode).toBe(400)
+    expect(from).not.toHaveBeenCalled()
+  })
+  it('refuses when a later course in the body or query is not the editor’s', async () => {
+    for (const extra of [{ body: { course_code: 'fra_for_eng' } }, { query: { course: 'fra_for_eng' } }]) {
+      const { res, from } = await request('spa_for_eng', ['spa_for_eng'], extra)
+      expect(res.statusCode).toBe(403)
+      expect(from).not.toHaveBeenCalled()
+    }
   })
 })

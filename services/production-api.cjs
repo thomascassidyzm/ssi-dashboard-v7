@@ -1657,15 +1657,30 @@ const COURSE_BUILDER_URL = process.env.COURSE_BUILDER_URL || 'http://localhost:3
 // (and, as a fallback, the JSON body) rather than by position.
 const PROXY_COURSE_CODE_RE = /^[a-z0-9_-]+_for_[a-z0-9_-]+$/i
 
-function extractProxyCourseCode(req) {
+// Every course code the request could reach, as the course builder will read it.
+// All of them must pass the scope check, not just the first: a request naming an
+// allowed course first and another later (path then body, or two path segments)
+// must not ride through on the first one. Returns null for a path the gate must
+// refuse outright — a dot segment ("..", "%2e%2e") is re-resolved by fetch() in
+// proxyCourseBuilder, so /api/course/spa_for_eng/../fra_for_eng/drafts reaches
+// fra_for_eng upstream while only spa_for_eng is visible here.
+function extractProxyCourseCodes(req) {
+  const codes = []
   for (const rawSegment of (req.path || '').split('/')) {
     // Express decodes route parameters once; authorise that same course code.
     const seg = decodeURIComponent(rawSegment)
-    if (PROXY_COURSE_CODE_RE.test(seg)) return seg
+    if (seg === '.' || seg === '..' || seg.includes('/') || seg.includes('\\')) return null
+    if (PROXY_COURSE_CODE_RE.test(seg)) codes.push(seg)
   }
-  const bodyCode = req.body && (req.body.course_code || req.body.courseCode)
-  if (typeof bodyCode === 'string' && PROXY_COURSE_CODE_RE.test(bodyCode)) return bodyCode
-  return null
+  const sources = [req.body, req.query]
+  for (const src of sources) {
+    if (!src || typeof src !== 'object') continue
+    for (const key of ['course_code', 'courseCode', 'course']) {
+      const v = src[key]
+      if (typeof v === 'string' && PROXY_COURSE_CODE_RE.test(v)) codes.push(v)
+    }
+  }
+  return codes
 }
 
 // Gate for the course-builder proxy routes. Course Builder (3471) has no auth of
@@ -1682,10 +1697,12 @@ async function requireProxyCourseAccess(req, res, next) {
     const user = await resolveDashboardUserCached(req)
     if (!user) return res.status(401).json({ error: 'Authentication required' })
 
-    const courseCode = extractProxyCourseCode(req)
-    if (courseCode && user.role !== 'admin' && !userCanAccessCourse(user, courseCode)) {
-      logger.warn(`[ProxyScope] DENY ${user.email || 'unknown'} → ${courseCode} (${req.method} ${req.path})`)
-      return res.status(403).json({ error: `No access to course ${courseCode}` })
+    const courseCodes = extractProxyCourseCodes(req)
+    if (courseCodes === null) return res.status(400).json({ error: 'Invalid path' })
+    const denied = user.role === 'admin' ? undefined : courseCodes.find(code => !userCanAccessCourse(user, code))
+    if (denied) {
+      logger.warn(`[ProxyScope] DENY ${user.email || 'unknown'} → ${denied} (${req.method} ${req.path})`)
+      return res.status(403).json({ error: `No access to course ${denied}` })
     }
     req.dashboardUser = user
     next()
