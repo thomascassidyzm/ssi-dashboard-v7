@@ -3,7 +3,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '../../.env.psq
 const { Client } = require('pg')
 const fs = require('fs')
 const course = process.argv[2]
-const LANG = { deu_for_eng: 'German', spa_for_eng: 'Spanish' }
+const LANG = { deu_for_eng: 'German', spa_for_eng: 'Spanish', fra_for_eng: 'French', ita_for_eng: 'Italian' }
 ;(async () => {
   const c = new Client({ connectionString: process.env.DATABASE_URL }); await c.connect()
   const legos = (await c.query(`select id,lego_id,seed_number,known_text,target_text,presentation_audio_id from course_legos where course_code=$1 and seed_number<=100 order by lego_id`, [course])).rows
