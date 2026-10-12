@@ -53,15 +53,20 @@ const setPointer = async (db, s, from, to, ev) => {
   for (const e of lines()) if (e.kind === 'render' && e.key) recorded.set(e.key, e.newId)
   const pairsDone = new Set(ledgerPairs(lines()).filter(p => p.applied).map(p => `${p.oldId}|${p.newId}`))
   const plan = JSON.parse(fs.readFileSync(path.join(dir, 'plan.json'), 'utf8')), limit = Number(opt('--limit', 1e9)), conc = Number(opt('--conc', 5))
-  let n = 0, spent = 0, rendered = 0, moved = 0, stop = false, sinceBump = 0, i = 0
+  const held = []; let n = 0, spent = 0, rendered = 0, moved = 0, stop = false, sinceBump = 0, i = 0
   const one = async p => {
     let newId = recorded.get(p.key)
+    if (!newId) {   // reuse before any send: an existing Tom-006 English clip with this text (punctuation/case-insensitive) is repointed to, never re-rendered
+      const { rows: [ex] } = await pg.query(`select id::text from course_audio where voice_id=$1 and language='eng' and role in ('known','target1','target2') and s3_key is not null and duration_ms>300
+        and regexp_replace(lower(text),'[^a-z0-9 ]','','g')=$2 order by created_at desc limit 1`, [T6, p.key])
+      if (ex) { newId = ex.id; recorded.set(p.key, newId); log({ kind: 'render', key: p.key, text: p.text, newId, oldId: '-', source: 'reused-existing', charsSpent: 0 }) }
+    }
     if (!newId) {
       if (dryRun) { console.log('would render', JSON.stringify(p.text)); return }
       const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-818' },
         body: JSON.stringify({ courseCode: COURSES[0], role: 'known', text: p.text, language: 'eng', voiceId: T6, voiceBound: true, job: '#818', purpose: '#818 Tom-006 English prompt seeds 1-100' }) })
       const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
-      if (!res.ok || !r.ok) { log({ kind: 'refused', key: p.key, text: p.text, r }); console.log('REFUSED — stopping, no retry:', JSON.stringify(r)); stop = true; return }
+      if (!res.ok || !r.ok) { log({ kind: 'refused', key: p.key, text: p.text, r }); console.log('REFUSED —', r.code, p.text); if (r.code === 'REPEAT') { held.push(p.text); return } stop = true; return }   // REPEAT: hold this one text over (never retried, guard untouched); anything else stops the run
       const { rows: [ca] } = await pg.query('select voice_id, role, language, s3_key, duration_ms from course_audio where id=$1', [r.audioId])
       if (!ca || ca.voice_id !== T6 || !ca.s3_key || !(ca.duration_ms > 300)) { log({ kind: 'verify-failed', key: p.key, r, ca }); console.log('VERIFY FAILED — stopping:', p.text, JSON.stringify(ca)); stop = true; return }
       newId = r.audioId; recorded.set(p.key, newId); spent += r.charsSpent || 0; rendered++
@@ -78,5 +83,5 @@ const setPointer = async (db, s, from, to, ev) => {
     while (!stop && n < limit) { const p = queue.shift(); if (!p) return; n++; await one(p); if (n % 200 === 0) console.log(`${n}/${plan.length} items, ${rendered} rendered, ${spent} chars, ${moved} slots moved`); if (sinceBump >= 3000) { sinceBump = 0; await bump() } }
   })
   await Promise.all(workers); if (!dryRun) await bump()
-  console.log(`${dryRun ? 'dry run: ' : ''}${n} items, ${rendered} rendered, ${spent} chars, ${moved} slots moved${stop ? ' (STOPPED)' : ''}`); await pg.end()
+  console.log(`${dryRun ? 'dry run: ' : ''}${n} items, ${rendered} rendered, ${spent} chars, ${moved} slots moved${stop ? ' (STOPPED)' : ''}; held over by REPEAT guard: ${held.length}`); if (held.length) fs.writeFileSync(path.join(dir, 'held-repeat.json'), JSON.stringify(held, null, 1)); await pg.end()
 })().catch(e => { console.error(e); process.exit(1) })
