@@ -1,0 +1,110 @@
+[
+ {
+  "action": "FIX_COMPONENT_TARGET",
+  "id": "eng_for_fra:S0139L01C01",
+  "course": "eng_for_fra",
+  "seed": 139,
+  "known": "je suis",
+  "target_before": "I am",
+  "target_after": "I'm",
+  "seed_target": "I'm sorry that I need to leave so early.",
+  "reason": "(b) The seed contracts 'I am' to \"I'm sorry\", which is contiguous and has the same gloss of 'je suis'.",
+  "audio": {
+   "known_audio_id": "b6663327-29b4-4451-8d6d-fd233fbf8aae",
+   "target1_audio_id": "c0eb6e37-fa92-4836-bc09-d7e83bee3027",
+   "target2_audio_id": "d847e616-800f-4484-b616-7da52ef65ce1",
+   "presentation_audio_id": "5525b510-e9cf-4265-96b6-e1bbd62500f6"
+  },
+  "audio_note": "target changed; linked clip speaks the old text — queue for an audio pass, not rendered here"
+ },
+ {
+  "action": "FIX_COMPONENT_TARGET",
+  "id": "eng_for_fra:S0187L01C01",
+  "course": "eng_for_fra",
+  "seed": 187,
+  "known": "je suis",
+  "target_before": "I am",
+  "target_after": "I'm",
+  "seed_target": "I'm happy so far.",
+  "reason": "(b) The seed contracts 'I am' to \"I'm happy so far\", which is contiguous and has the same gloss of 'je suis'.",
+  "audio": {
+   "known_audio_id": "b6663327-29b4-4451-8d6d-fd233fbf8aae",
+   "target1_audio_id": "c0eb6e37-fa92-4836-bc09-d7e83bee3027",
+   "target2_audio_id": "d847e616-800f-4484-b616-7da52ef65ce1",
+   "presentation_audio_id": "8b5ac482-4bd8-4d2a-9eb0-faee03d3b6bc"
+  },
+  "audio_note": "target changed; linked clip speaks the old text — queue for an audio pass, not rendered here"
+ },
+ {
+  "action": "FIX_COMPONENT_TARGET",
+  "id": "eng_for_fra:S0110L01C01",
+  "course": "eng_for_fra",
+  "seed": 110,
+  "known": "nous sommes",
+  "target_before": "we are",
+  "target_after": "we're",
+  "seed_target": "We're friends, and after we finish I'd like to relax.",
+  "reason": "(b) The seed contracts 'we are' to \"We're friends\", which is contiguous and has the same gloss of 'nous sommes'.",
+  "audio": {
+   "known_audio_id": "1dbda728-ae8d-439c-a069-8cd661321fd6",
+   "target1_audio_id": "05357777-1839-4a5e-b914-d1f529b42cab",
+   "target2_audio_id": "c736c11e-2bed-40f4-9317-d1926ef96199",
+   "presentation_audio_id": "0749bf01-be3b-4a4e-a4b9-33f56c963b5b"
+  },
+  "audio_note": "target changed; linked clip speaks the old text — queue for an audio pass, not rendered here"
+ },
+ {
+  "action": "FIX_COMPONENT_TARGET",
+  "id": "eng_for_fra:S0192L01C01",
+  "course": "eng_for_fra",
+  "seed": 192,
+  "known": "je suis",
+  "target_before": "I am",
+  "target_after": "I'm",
+  "seed_target": "I'm busy tomorrow night.",
+  "reason": "(b) Seed has the contraction 'I'm busy'; 'I'm' is a contiguous substring and still glosses 'je suis'.",
+  "audio": {
+   "known_audio_id": "b6663327-29b4-4451-8d6d-fd233fbf8aae",
+   "target1_audio_id": "c0eb6e37-fa92-4836-bc09-d7e83bee3027",
+   "target2_audio_id": "d847e616-800f-4484-b616-7da52ef65ce1",
+   "presentation_audio_id": "2e655a9d-2076-44bb-936f-008b42cf13cc"
+  },
+  "audio_note": "target changed; linked clip speaks the old text — queue for an audio pass, not rendered here"
+ },
+ {
+  "action": "FIX_COMPONENT_TARGET",
+  "id": "por_br_for_eng:S0104L02C02",
+  "course": "por_br_for_eng",
+  "seed": 104,
+  "known": "need",
+  "target_before": "precisamos de",
+  "target_after": "precisamos",
+  "seed_target": "nós precisamos mudar o que estamos fazendo",
+  "reason": "(b) The seed has \"nós precisamos mudar\" with no \"de\", so \"precisamos\" is the forced substring, and it still glosses \"need\".",
+  "audio": {
+   "known_audio_id": "93380d14-2e7e-457c-8e7c-7d7a6fd5de08",
+   "target1_audio_id": "a1df2e96-0cd0-4857-b14c-b7106eda5546",
+   "target2_audio_id": "da6d0b8a-276d-4b93-97b4-2cf163042d7e",
+   "presentation_audio_id": "38195fdd-7f4d-4517-942c-8a2a9b6938a6"
+  },
+  "audio_note": "target changed; linked clip speaks the old text — queue for an audio pass, not rendered here"
+ },
+ {
+  "action": "FIX_COMPONENT_TARGET",
+  "id": "por_br_for_eng:S0106L03C02",
+  "course": "por_br_for_eng",
+  "seed": 106,
+  "known": "don't need to",
+  "target_before": "não precisamos de",
+  "target_after": "não precisamos",
+  "seed_target": "nós não precisamos nos sentir felizes, só precisamos trabalhar muito",
+  "reason": "(b) The seed has \"não precisamos trabalhar\" with no \"de\", and \"não precisamos\" still glosses \"don't need to\".",
+  "audio": {
+   "known_audio_id": "7696a3a2-d471-40bb-8d69-83f6da9dac81",
+   "target1_audio_id": "28e083e4-0fb8-4e95-9a79-e247e1f7b77b",
+   "target2_audio_id": "33452625-f05f-47da-816b-b5744a8ceb33",
+   "presentation_audio_id": "2ba970b4-e674-4c3e-a949-dc09b3bbb463"
+  },
+  "audio_note": "target changed; linked clip speaks the old text — queue for an audio pass, not rendered here"
+ }
+]
