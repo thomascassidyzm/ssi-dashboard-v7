@@ -168,7 +168,7 @@ systemctl --user status popty-orchestrator.service
 | QA flags | Production API | Supabase: `sample_flags` |
 
 **Not deprecated:** `lego_pairs.json`, `lego_baskets.json` are still read/written live —
-grep finds them in 21 files under `services/` (including active services `orchestrator.cjs`,
+grep finds them in 21 files under `services/` (including active services `orchestration/orchestrator.cjs`,
 `production-api.cjs`, `manifest-generator.cjs`, `data-finders.cjs`, `s3-service.cjs`,
 `publish-manifest-service.cjs`) plus 34 more under `tools/`, `database/`, `src/`, and `api/`.
 The Course Builder API path writes seeds/LEGOs/phrases straight to Supabase, but the older
