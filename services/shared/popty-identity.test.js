@@ -119,3 +119,13 @@ describe('requireAdmin wiring (drift gate on production-api source)', () => {
     expect(fnMatch[1]).not.toMatch(/if \(supabaseUser\) return supabaseUser/)
   })
 })
+
+describe('ssiAdmin flag (2026-10-12)', () => {
+  it('rides a lower-role dashboard row without changing its role', () => {
+    const id = resolvePoptyIdentity({ email: 'a@b.c', dashboardRow: { role: 'editor', courses: [] }, learnerRow: { platform_role: 'ssi_admin' } })
+    expect(id.role).toBe('editor'); expect(id.ssiAdmin).toBe(true)
+  })
+  it('absent for an ordinary editor', () => {
+    expect(resolvePoptyIdentity({ email: 'a@b.c', dashboardRow: { role: 'editor', courses: [] } }).ssiAdmin).toBeUndefined()
+  })
+})

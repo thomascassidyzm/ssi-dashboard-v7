@@ -1699,7 +1699,7 @@ async function requireProxyCourseAccess(req, res, next) {
 
     const courseCodes = extractProxyCourseCodes(req)
     if (courseCodes === null) return res.status(400).json({ error: 'Invalid path' })
-    const denied = user.role === 'admin' ? undefined : courseCodes.find(code => !userCanAccessCourse(user, code))
+    const denied = (user.role === 'admin' || user.ssiAdmin) ? undefined : courseCodes.find(code => !userCanAccessCourse(user, code))
     if (denied) {
       logger.warn(`[ProxyScope] DENY ${user.email || 'unknown'} → ${denied} (${req.method} ${req.path})`)
       return res.status(403).json({ error: `No access to course ${denied}` })

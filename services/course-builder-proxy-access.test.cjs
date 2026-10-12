@@ -8,7 +8,7 @@ const source = fs.readFileSync(require.resolve('./production-api.cjs'), 'utf8')
 const gateSource = source.slice(source.indexOf('const PROXY_COURSE_CODE_RE ='), source.indexOf('// Generic proxy function for course-builder routes'))
 
 async function request(courseSegment, allowedCourses = ['spa_for_eng'], extra = {}) {
-  const user = { role: 'editor', email: 'alice@example.test' }
+  const user = { role: 'editor', email: 'alice@example.test', ...(extra.user || {}) }
   const gate = vm.runInNewContext(`${gateSource}\nrequireProxyCourseAccess`, {
     isLoopbackDirectRequest: () => false,
     resolveDashboardUserCached: async () => user,
@@ -21,7 +21,8 @@ async function request(courseSegment, allowedCourses = ['spa_for_eng'], extra = 
   })
   const router = createDraftRouter({ supabase: { from } })
   const path = `/course/${courseSegment}/drafts`
-  const req = { method: 'GET', url: path, path, headers: {}, query: {}, ...extra }
+  const { user: _u, ...reqExtra } = extra
+  const req = { method: 'GET', url: path, path, headers: {}, query: {}, ...reqExtra }
   const res = { statusCode: 200, status(n) { this.statusCode = n; return this }, json(body) { this.body = body } }
   await new Promise((resolve, reject) => {
     res.json = function(body) { this.body = body; resolve() }
@@ -60,5 +61,22 @@ describe('course-builder proxy authorisation before decoded routing', () => {
       expect(res.statusCode).toBe(403)
       expect(from).not.toHaveBeenCalled()
     }
+  })
+  // Tom 2026-10-12: super admins and every SSi admin reach every course; editors do not.
+  it.each([
+    ['super admin', { role: 'admin', courses: '*' }],
+    ['SSi admin with a lower dashboard role', { role: 'editor', courses: [], ssiAdmin: true }],
+  ])('%s reaches another editor’s course, incl. multi-course requests', async (_, user) => {
+    for (const seg of ['fra_for_eng', 'cym_n_for_eng', 'spa_for_eng_10seeds']) {
+      const { res } = await request(seg, [], { user })
+      expect(res.statusCode).toBe(200)
+    }
+    const { res } = await request('fra_for_eng', [], { user, query: { course: 'spa_for_eng' } })
+    expect(res.statusCode).toBe(200)
+  })
+  it.each([{ role: 'admin', courses: '*' }, { role: 'editor', ssiAdmin: true }])('still refuses dot-segment tricks for %j', async (user) => {
+    const { res, from } = await request('spa_for_eng/../fra_for_eng', [], { user })
+    expect(res.statusCode).toBe(400)
+    expect(from).not.toHaveBeenCalled()
   })
 })
