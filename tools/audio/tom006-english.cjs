@@ -246,5 +246,5 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
       console.log(rep); if (!dryRun) fs.writeFileSync(path.join(dir, `stage-${n}.report.txt`), rep + '\n')
       if (stopFlag) break
     }
-  } finally { await bump(); await bumpBackstop(); await pg.end(); if (bumpFailed) process.exitCode = 3 }
+  } finally { await bump(); await bumpBackstop(); await pg.end(); if (bumpFailed) process.exitCode = 3; else if (!stopFlag && !dryRun && !plan) { try { fs.writeFileSync(path.join(dir, 'complete.txt'), `all stages done ${new Date().toISOString()} (${stages.join(',')})\n`) } catch (e) { /* the marker is only for the supervisor loop */ } } }
 })().catch(e => { console.error(e); process.exit(1) })
