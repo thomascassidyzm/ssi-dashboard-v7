@@ -1,0 +1,4 @@
+# Append-only lane files: concurrent appends (the lane, ramp 967, release jobs) merge as a union.
+undo/*.jsonl merge=union
+staged/*.jsonl merge=union
+ramp/log.jsonl merge=union
