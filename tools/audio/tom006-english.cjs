@@ -174,6 +174,7 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
                 }
               }
               if (!r) { console.log('PERSISTENT CONNECTION FAILURE — stopping'); stopFlag = true; return }
+              if (r && r.code === 'NOT_SPEAKABLE') { log({ kind: 'unspeakable', t: q.t, text: q.tx, r }); console.log('SKIP unspeakable row text (bracket label, a data defect to fix in the row):', q.tx); continue }   // one bad row never stops the run
               if (!res.ok || !r.ok) { log({ kind: 'refused', t: q.t, r }); console.log('REFUSED — stopping, no retry:', JSON.stringify(r).slice(0, 400)); stopFlag = true; return }
               const { rows: [ca] } = await pg.query('select id::text, voice_id, s3_key, duration_ms from course_audio where id=$1', [r.audioId])
               if (!ca || ca.voice_id !== T6 || !ca.s3_key || ca.s3_key.startsWith('pending/') || !(ca.duration_ms > 200)) { log({ kind: 'verify-failed', t: q.t, r, ca }); console.log('VERIFY FAILED — stopping:', q.tx, JSON.stringify(ca)); stopFlag = true; return }
