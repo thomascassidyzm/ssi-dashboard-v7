@@ -58,19 +58,24 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
 
   if (has('--undo')) {
     // The undo set is every INTENT row (journalled before any pointer moved), swap and legacy swap row: slot -> its ORIGINAL from-id; the before-check (newId must still be there) keeps it safe
-    const rows = lines(), orig = new Map()   // slotId -> { s, cur }, built in LEDGER ORDER: an 'undone' row removes only what exists so far, so run -> undo -> re-run -> undo reverts the re-moved slots (lane review #837)
+    const rows = lines(), orig = new Map()   // slotId -> { s, news:Set }, built in LEDGER ORDER: an 'undone' row removes only what exists so far (lane review #837)
     for (const e of rows) {
-      if (['intent', 'swap'].includes(e.kind)) for (const s of e.slots || []) { if (!s.from) continue; const k = slotId(s); if (!orig.has(k)) orig.set(k, { s, cur: e.newId }); else orig.get(k).cur = e.newId }
+      if (['intent', 'swap'].includes(e.kind)) for (const s of e.slots || []) { if (!s.from) continue; const k = slotId(s); if (!orig.has(k)) orig.set(k, { s, news: new Set([e.newId]) }); else orig.get(k).news.add(e.newId) }
       else if (e.kind === 'undone') for (const k of e.keys) orig.delete(k)
     }
-    let n = 0; const done = []
+    let n = 0, skipped = 0; const done = []
     try {
-      for (const [k, { s, cur }] of [...orig].reverse()) {
-        if (dryRun) { console.log('would undo', k, cur, '->', s.from); n++; continue }
-        if (await setPointer(db, s, cur, s.from, await event(s.course))) { await touch(s.course, 1); n++; done.push(k) }   // only successes are recorded undone (a failed conditional update stays pending)
+      for (const [k, { s, news }] of [...orig].reverse()) {
+        // LIVE STATE decides (lane review #856): already back on its old clip = restored; on any clip this job wrote = restore with a before-check; anything else = someone else's edit, left alone and reported
+        const col = s.col || 'known_audio_id'
+        const { data: live, error } = await db.from(s.tbl).select(col).eq('id', s.key).maybeSingle(); if (error) throw new Error(error.message)
+        const cur = live && live[col]
+        if (dryRun) { console.log(cur === s.from ? 'already restored' : news.has(cur) ? 'would undo' : 'would SKIP (changed by someone else)', k, cur, '->', s.from); if (news.has(cur)) n++; continue }
+        if (cur === s.from) { done.push(k); continue }
+        if (news.has(cur) && await setPointer(db, s, cur, s.from, await event(s.course))) { await touch(s.course, 1); n++; done.push(k) } else { skipped++; console.log('SKIPPED', k, 'live', cur) }
       }
-    } finally { if (!dryRun) { log({ kind: 'undone', keys: done }); await bump() } }
-    console.log(dryRun ? 'would undo' : 'undone slots', n); return pg.end()
+    } finally { try { if (!dryRun) { log({ kind: 'undone', keys: done }); await bump(); await bumpBackstop() } } finally { await pg.end(); if (bumpFailed || skipped) process.exitCode = 3 } }
+    console.log(dryRun ? 'would undo' : 'undone slots', n, 'skipped', skipped); return
   }
 
   const stageArg = opt('--stage', 'all'), conc = Number(opt('--concurrency', 6)), plan = has('--plan')
