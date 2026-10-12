@@ -89,8 +89,8 @@ const setPointer = async (db, s, from, to, ev) => {
     }
   }
   const queue = plan.slice(); const workers = Array.from({ length: conc }, async () => {
-    while (!stop && n < limit) { const p = queue.shift(); if (!p) return; n++; await one(p); if (n % 200 === 0) console.log(`${n}/${plan.length} items, ${rendered} rendered, ${spent} chars, ${moved} slots moved`); if (sinceBump >= 3000) { sinceBump = 0; await bump() } }
+    while (!stop && n < limit) { const p = queue.shift(); if (!p) return; n++; await one(p); if (n % 200 === 0) console.log(`${n}/${plan.length} items, ${rendered} rendered, ${spent} chars, ${moved} slots moved`); if (sinceBump >= 400) { sinceBump = 0; await bump() } }
   })
-  await Promise.all(workers); if (!dryRun) await bump()
+  try { await Promise.all(workers) } finally { if (!dryRun) { COURSES.forEach(c => touched.add(c)); await bump() } }   // finally: a crashed worker never leaves moved pointers behind an old content_version; also covers earlier crashed runs
   console.log(`${dryRun ? 'dry run: ' : ''}${n} items, ${rendered} rendered, ${spent} chars, ${moved} slots moved${stop ? ' (STOPPED)' : ''}; held over by REPEAT guard: ${held.length}`); if (held.length) fs.writeFileSync(path.join(dir, 'held-repeat.json'), JSON.stringify(held, null, 1)); await pg.end()
 })().catch(e => { console.error(e); process.exit(1) })
