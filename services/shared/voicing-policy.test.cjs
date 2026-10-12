@@ -17,6 +17,7 @@ const COURSES = {
   deu_for_eng: { course_code: 'deu_for_eng', known_lang: 'eng', target_lang: 'deu' },
   fra_for_eng: { course_code: 'fra_for_eng', known_lang: 'eng', target_lang: 'fra' },
   eng_for_spa: { course_code: 'eng_for_spa', known_lang: 'spa', target_lang: 'eng' },
+  deu_at_for_eng: { course_code: 'deu_at_for_eng', known_lang: 'eng', target_lang: 'deu', voice_pool_key: 'deu_at' },
 }
 const TOM = 'thomas.cassidy+ssi@gmail.com'
 const cast = (language, gender, updated_at) => ({ language, gender, slot: 'phrase', rank: 0, voice_id: `cartesia_${language}-${gender}`, assigned_by: TOM, notes: null, updated_at })
@@ -25,44 +26,59 @@ const ROWS = [cast('spa', 'f', '2026-10-09T10:00:00Z'), cast('spa', 'm', '2026-1
   cast('fra', 'f', '2026-10-08T10:00:00Z'), cast('fra', 'm', '2026-10-07T10:00:00Z')]
 afterEach(() => useCastRowsWithDates(null))
 
+// Splicing applies where resolveVoice answers Charlotte for the intro (intro-charlotte): every English-known course outside the
+// Tom-006 intro list. deu_at_for_eng is such a course, and a regional variety, so it carries the base-language rule too.
 describe('presentation intros are spliced, naming the BASE language', () => {
-  it('spa_mx says "The Spanish for", never "The Mexican Spanish for"', () => {
+  it('spa_mx and deu_at name the base language: "The Spanish for", "The German for", never the variety', () => {
     expect(introSplicePlan(COURSES.spa_mx_for_eng)).toMatchObject({ fragmentText: 'The Spanish for', voiceId: CHARLOTTE, role: 'presentation' })
     expect(introSplicePlan(COURSES.por_br_for_eng).fragmentText).toBe('The Portuguese for')
-    expect(checkRender({ text: 'The Mexican Spanish for', language: 'eng', voiceId: CHARLOTTE, course: COURSES.spa_mx_for_eng, intro: true })).toMatchObject({ allowed: false, reason: 'intro-wrong-language-name' })
+    expect(checkRender({ text: 'The Austrian German for', language: 'eng', voiceId: CHARLOTTE, course: COURSES.deu_at_for_eng, intro: true })).toMatchObject({ allowed: false, reason: 'intro-wrong-language-name' })
   })
   it('the fragment renders; a whole intro does not; a remainder does', () => {
-    const base = { language: 'eng', voiceId: CHARLOTTE, course: COURSES.spa_mx_for_eng, intro: true }
-    expect(checkRender({ ...base, text: 'The Spanish for' }).allowed).toBe(true)
-    expect(checkRender({ ...base, text: 'The Spanish for:' }).allowed).toBe(true)
-    expect(checkRender({ ...base, text: "The Spanish for: 'I want', as in — 'I want to speak with you now', is:" })).toMatchObject({ allowed: false, reason: 'intro-not-spliced' })
+    const base = { language: 'eng', voiceId: CHARLOTTE, course: COURSES.deu_at_for_eng, intro: true }
+    expect(checkRender({ ...base, text: 'The German for' }).allowed).toBe(true)
+    expect(checkRender({ ...base, text: 'The German for:' }).allowed).toBe(true)
+    expect(checkRender({ ...base, text: "The German for: 'I want', as in — 'I want to speak with you now', is:" })).toMatchObject({ allowed: false, reason: 'intro-not-spliced' })
     expect(checkRender({ ...base, text: "'I want', as in — 'I want to speak with you now', is:" }).allowed).toBe(true)
   })
-  it('an intro in a voice other than Charlotte is refused (no target voices, no Tom clone)', () => {
-    expect(checkRender({ text: 'The Spanish for', language: 'eng', voiceId: 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', course: COURSES.spa_for_eng, intro: true })).toMatchObject({ allowed: false, reason: 'english-not-charlotte' })
+  it('an intro in a voice other than the resolved one is refused', () => {
+    expect(checkRender({ text: 'The German for', language: 'eng', voiceId: 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', course: COURSES.deu_at_for_eng, intro: true })).toMatchObject({ allowed: false, reason: 'disagrees-with-resolve-voice' })
+    // a Tom-006 intro course (resolveVoice: intro-tom006) no longer takes Charlotte fragments
+    expect(checkRender({ text: 'The Spanish for', language: 'eng', voiceId: CHARLOTTE, course: COURSES.spa_mx_for_eng, intro: true })).toMatchObject({ allowed: false, reason: 'disagrees-with-resolve-voice' })
   })
   it('a course not taught from English has no splice rule', () => {
     expect(introSplicePlan(COURSES.eng_for_spa)).toBeNull()
   })
   it('the door reads the policy for the intro slot (assertRenderAllowed → course row)', async () => {
     policy.useCourseRow(async c => COURSES[c])
-    await expect(assertRenderAllowed({ text: "The Spanish for: 'x', is:", language: 'eng', voiceId: CHARLOTTE, courseCode: 'spa_mx_for_eng', intro: true })).rejects.toMatchObject({ code: 'VOICING_POLICY', reason: 'intro-not-spliced' })
+    await expect(assertRenderAllowed({ text: "The German for: 'x', is:", language: 'eng', voiceId: CHARLOTTE, courseCode: 'deu_at_for_eng', intro: true })).rejects.toMatchObject({ code: 'VOICING_POLICY', reason: 'intro-not-spliced' })
     policy.useCourseRow(null)
   })
 })
 
-describe('voices: English known = Charlotte, xAI never', () => {
+describe('voices: English known = Tom-006 (resolveVoice), xAI never', () => {
   it('xAI is refused on every path, auditions and no-course renders included', () => {
     for (const voiceId of ['xai_eve', 'xai_gfzdpspr5fdp']) {
       expect(checkRender({ text: 'hola', language: 'spa', voiceId, course: COURSES.spa_for_eng, role: 'target1' })).toMatchObject({ allowed: false, reason: 'xai-banned' })
       expect(checkRender({ text: 'hi', language: 'eng', voiceId, audition: true })).toMatchObject({ allowed: false, reason: 'xai-banned' })
     }
   })
-  it('an English known line in any voice but Charlotte is refused; the target side is left to the cast gate', () => {
-    expect(checkRender({ text: 'I want', language: 'eng', voiceId: 'azure_en-GB-SoniaNeural', course: COURSES.spa_for_eng, role: 'known' })).toMatchObject({ allowed: false, reason: 'english-not-charlotte' })
-    expect(checkRender({ text: 'I want', language: 'eng', voiceId: CHARLOTTE, course: COURSES.spa_for_eng, role: 'known' }).allowed).toBe(true)
+  it('an English known line in any voice but Tom-006 is refused (Charlotte included); with no cast loaded the target side is left to the cast gate', () => {
+    expect(checkRender({ text: 'I want', language: 'eng', voiceId: 'azure_en-GB-SoniaNeural', course: COURSES.spa_for_eng, role: 'known' })).toMatchObject({ allowed: false, reason: 'disagrees-with-resolve-voice' })
+    expect(checkRender({ text: 'I want', language: 'eng', voiceId: CHARLOTTE, course: COURSES.spa_for_eng, role: 'known' })).toMatchObject({ allowed: false, reason: 'disagrees-with-resolve-voice' })
+    expect(checkRender({ text: 'I want', language: 'eng', voiceId: 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9', course: COURSES.spa_for_eng, role: 'known' }).allowed).toBe(true)
     expect(checkRender({ text: 'quiero', language: 'spa', voiceId: 'cartesia_whoever', course: COURSES.spa_for_eng, role: 'target1' }).allowed).toBe(true)
     expect(checkRender({ text: 'I want', language: 'eng', voiceId: 'cartesia_tom', course: COURSES.eng_for_spa, role: 'target1' }).allowed).toBe(true)   // English as the TARGET is not the known side
+  })
+  it('with the cast loaded, a target render must be the cast voice and an uncast target is refused', () => {
+    const cast = { roles: [
+      { language: 'eng', gender: 'f', rank: 0, slot: 'phrase', voice_id: CHARLOTTE, assigned_by: 'kai-ruling-2026-09-23-charlotte-everywhere' },
+      { language: 'eng', gender: 'm', rank: 0, slot: 'phrase', voice_id: 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9', assigned_by: 'tom-ruling-2026-10-12-x' },
+      { language: 'spa', gender: 'f', rank: 0, slot: 'phrase', voice_id: 'cartesia_spa-f', assigned_by: TOM }] }
+    expect(checkRender({ text: 'I want', language: 'eng', voiceId: CHARLOTTE, course: COURSES.eng_for_spa, role: 'target1', cast }).allowed).toBe(true)
+    expect(checkRender({ text: 'I want', language: 'eng', voiceId: CHARLOTTE, course: COURSES.eng_for_spa, role: 'target2', cast })).toMatchObject({ allowed: false, reason: 'disagrees-with-resolve-voice' })
+    expect(checkRender({ text: 'quiero', language: 'spa', voiceId: 'cartesia_spa-f', course: COURSES.spa_for_eng, role: 'target1', cast }).allowed).toBe(true)
+    expect(checkRender({ text: 'quiero', language: 'spa', voiceId: 'azure_es-ES-AlvaroNeural', course: COURSES.spa_for_eng, role: 'target2', cast })).toMatchObject({ allowed: false, reason: 'resolve-uncast' })
   })
 })
 
@@ -170,7 +186,7 @@ describe('revoice-clips honours the policy (Sol review #519)', () => {
 
 describe('the #738 deu_for_eng clone allowance is retired (superseded by audio trial mode, job #748)', () => {
   it('a clone voice is refused for deu_for_eng presentation English again — trial renders go through trial:true instead', () => {
-    expect(checkRender({ text: 'is', language: 'eng', course: COURSES.deu_for_eng, role: 'presentation', voiceId: 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', now: new Date('2026-10-14T00:00:00Z') })).toMatchObject({ allowed: false, reason: 'english-not-charlotte' })
+    expect(checkRender({ text: 'is', language: 'eng', course: COURSES.deu_for_eng, role: 'presentation', voiceId: 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', now: new Date('2026-10-14T00:00:00Z') })).toMatchObject({ allowed: false, reason: 'disagrees-with-resolve-voice' })
     expect(policy.config.trialAllowances).toBeUndefined()
   })
 })
@@ -212,11 +228,12 @@ describe('Tom-006 whole intros: French and Italian (job #794, Tom 2026-10-12)', 
 
 describe('Tom-006 English known prompts (job #813, Tom 2026-10-12)', () => {
   const T6 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
-  it('Tom-006 (prefixed or bare) may record role known in any English-known course; other voices and null role still refused', () => {
+  it('Tom-006 (prefixed or bare) records role known in any English-known course; a null role is the known side, so Tom-006 there too; other voices refused', () => {
     for (const c of ['deu_for_eng', 'spa_for_eng', 'por_br_for_eng']) expect(checkRender({ text: 'I want to go', language: 'eng', voiceId: T6, course: COURSES[c], role: 'known' }).allowed).toBe(true)
     expect(checkRender({ text: 'I want to go', language: 'eng', voiceId: 'd293d509-eb96-4df4-8cfd-80a693aa49a9', course: COURSES.deu_for_eng, role: 'known' }).allowed).toBe(true)
     expect(checkRender({ text: 'I want to go', language: 'eng', voiceId: 'cartesia_b478fefe-f18a-4f3a-b3d3-cbef52732e2e', course: COURSES.deu_for_eng, role: 'known' }).allowed).toBe(false)
-    expect(checkRender({ text: 'I want to go', language: 'eng', voiceId: T6, course: COURSES.deu_for_eng, role: null }).allowed).toBe(false)
+    expect(checkRender({ text: 'I want to go', language: 'eng', voiceId: T6, course: COURSES.deu_for_eng, role: null }).allowed).toBe(true)
+    expect(checkRender({ text: 'I want to go', language: 'eng', voiceId: CHARLOTTE, course: COURSES.deu_for_eng, role: null }).allowed).toBe(false)
     for (const v of ['__proto__', 'constructor']) expect(checkRender({ text: 'x', language: 'eng', voiceId: v, course: COURSES.deu_for_eng, role: 'known' }).allowed).toBe(false)
   })
 })

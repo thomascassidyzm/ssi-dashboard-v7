@@ -138,7 +138,7 @@ async function workFor(pg, course, roles, voiceSql = BAD_VOICE, maxSeed, langs =
     for (const s of slots) {
       const c = bad.get(s.old_id); if (!c) continue
       if (!by.has(s.old_id)) by.set(s.old_id, { oldId: s.old_id, text: c.text, oldVoice: c.voice_id, role, chars: c.text.length, slots: [], pos: s.pos })
-      const w = by.get(s.old_id); w.slots.push({ tbl: s.tbl, key: s.key, col: SLOT_COL[role] }); w.pos = Math.min(w.pos ?? 1e9, s.pos ?? 1e9)
+      const w = by.get(s.old_id); w.slots.push({ tbl: s.tbl, key: s.key, col: SLOT_COL[role], course }); w.pos = Math.min(w.pos ?? 1e9, s.pos ?? 1e9)
     }
     out.push(...by.values())
   }
@@ -179,8 +179,10 @@ function supa() {
   return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 }
 
-async function setPointer(db, s, from, to, eventId) {
+const { mayPoint } = require('../../services/shared/resolve-voice.cjs')   // job #53: every pointer this tool writes is checked against resolveVoice
+async function setPointer(db, s, from, to, eventId, restore = false) {
   const val = to
+  if (!await mayPoint(db, { courseCode: s.course, col: s.col, to, restore })) return false
   const { data, error } = await db.from(s.tbl).update({ [s.col]: val, last_edit_event_id: eventId }).eq('id', s.key).eq(s.col, from).select('id')
   if (error) throw new Error(`${s.tbl}.${s.col} update failed: ${error.message}`)
   return data && data.length === 1
@@ -300,7 +302,7 @@ async function main() {
     for (const e of lines) {
       if (n >= limit) break
       let moved = 0
-      for (const s of e.slots) if (await setPointer(db, s, e.newId, e.oldId, eventId)) moved++
+      for (const s of e.slots) if (await setPointer(db, s, e.newId, e.oldId, eventId, true)) moved++
       fs.appendFileSync(ledger, JSON.stringify({ kind: 'undo', oldId: e.oldId, newId: e.newId, at: new Date().toISOString() }) + '\n')
       if (moved) n++ // a swap whose slots changed nothing is closed in the ledger but not reported as undone
     }

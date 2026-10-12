@@ -115,11 +115,14 @@ describe('spliceIntro — only what exists nowhere is rendered', () => {
 })
 
 describe('the voicing policy still guards the whole intro', () => {
-  it('refuses to render a whole intro but allows the base-language fragment for spa_mx', () => {
-    const base = { language: 'eng', voiceId: policy.config.englishVoice, course: SPA_MX, role: 'presentation' }
-    expect(policy.checkRender({ ...base, text: TEXT_WHOLE }).allowed).toBe(false)
-    expect(policy.checkRender({ ...base, text: 'The Spanish for' }).allowed).toBe(true)
-    expect(policy.checkRender({ ...base, text: 'The Mexican Spanish for' }).allowed).toBe(false)
+  // spa_mx_for_eng is a Tom-006 intro course now (resolveVoice intro-tom006), so the Charlotte splice rule is shown on deu_at_for_eng.
+  it('refuses to render a whole intro but allows the base-language fragment for a Charlotte-intro variety (deu_at)', () => {
+    const DEU_AT = { course_code: 'deu_at_for_eng', known_lang: 'eng', target_lang: 'deu', voice_pool_key: 'deu_at' }
+    const base = { language: 'eng', voiceId: policy.config.englishVoice, course: DEU_AT, role: 'presentation' }
+    expect(policy.checkRender({ ...base, text: "The German for: 'five', is:" }).allowed).toBe(false)
+    expect(policy.checkRender({ ...base, text: 'The German for' }).allowed).toBe(true)
+    expect(policy.checkRender({ ...base, text: 'The Austrian German for' }).allowed).toBe(false)
+    expect(policy.checkRender({ ...base, course: SPA_MX, text: 'The Spanish for' }).allowed).toBe(false)
   })
 })
 const TEXT_WHOLE = "The Spanish for: 'five', is:"

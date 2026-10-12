@@ -213,6 +213,7 @@ const {
 const { pickCastVoice, providerOfVoice, castVoiceForLanguage } = require('../shared/language-voice-cast.cjs')
 const castGate = require('../shared/voice-cast-gate.cjs')
 const { courseEnglishVoice } = require('../shared/course-english-voice.cjs')
+const { resolveVoice, sameVoice: sameResolvedVoice, loadCast: loadResolvedCast } = require('../shared/resolve-voice.cjs')
 const { providerForVoice } = require('../shared/render-voice-provider.cjs')
 const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
 // The BCP-47 steer a TARGET-side render sends. courses.target_lang carries the
@@ -2161,10 +2162,14 @@ async function linkAudioIds(courseCode) {
   // asks the per-text question (services/shared/known-voice-gender.cjs), so a
   // course with byGender voices links through it and never through the RPC.
   try {
-    const { data: gCourse } = await supabase.from('courses').select('voice_config').eq('course_code', courseCode).single()
+    const { data: gCourse } = await supabase.from('courses').select('course_code, known_lang, target_lang, dialect, voice_pool_key, known_dialect, voice_config').eq('course_code', courseCode).single()
     const gVoices = (gCourse && gCourse.voice_config && gCourse.voice_config.voices) || {}
-    if (knownVoiceGender.roleHasGenderedVoices(gVoices, 'known') || knownVoiceGender.roleHasGenderedVoices(gVoices, 'presentation')) {
-      logger.info(`linkAudioIds: ${courseCode} has gendered known voices — linking through the per-text JS batch, not the one-voice RPC`)
+    // The RPC's voice-match reads the STORED voice_config. Where resolveVoice (or the cast) says otherwise — e.g. a stored Charlotte
+    // English known on an English-known course, which resolveVoice makes Tom-006 (Tom 2026-10-12) — the RPC would link the wrong
+    // voice into every empty slot, so such a course links through the JS batch, which asks the RESOLVED config.
+    const resolvedDiffers = !!gCourse && (await voiceConfigService.resolveVoiceConfig({ voiceConfig: gCourse.voice_config, course: gCourse, courseCode })) !== gCourse.voice_config
+    if (resolvedDiffers || knownVoiceGender.roleHasGenderedVoices(gVoices, 'known') || knownVoiceGender.roleHasGenderedVoices(gVoices, 'presentation')) {
+      logger.info(`linkAudioIds: ${courseCode} ${resolvedDiffers ? 'resolves to voices its stored config does not name' : 'has gendered known voices'} — linking through the per-text JS batch, not the one-voice RPC`)
       const result = await linkAudioIdsBatch(courseCode)
       const presResult = await linkPresentationAudio(courseCode)
       const compPresResult = await linkComponentPresentationAudio(courseCode)
@@ -2454,7 +2459,9 @@ async function linkPresentationAudio(courseCode) {
   // course_audio rows can carry the same tag and the wrong-voiced one can win.
   // Only a clip in the configured presentation voice may claim the slot.
   const { data: presCourse } = await supabase
-    .from('courses').select('voice_config').eq('course_code', courseCode).single()
+    .from('courses').select('course_code, known_lang, target_lang, dialect, voice_pool_key, known_dialect, voice_config').eq('course_code', courseCode).single()
+  // The RESOLVED presentation voice (resolveVoice, Tom 2026-10-12): Tom-006 for the Tom-006 intro courses, Charlotte elsewhere.
+  if (presCourse) presCourse.voice_config = await voiceConfigService.resolveVoiceConfig({ voiceConfig: presCourse.voice_config, course: presCourse, courseCode })
   const wantedPresVoice = resolveVoices(presCourse || {}).presentation
   const presLedger = new RelinkRefusalLedger(courseCode)
 
@@ -5435,7 +5442,7 @@ async function linkClipForRender({ courseCode, text, language, role, voiceId, le
 // expansion): the caller names the exact words to be spoken.
 function buildRenderDeps() {
   const deps = {
-      resolve: async ({ courseCode, role, language, voiceId }) => {
+      resolve: async ({ courseCode, role, language, voiceId, trial }) => {
         if (isHumanVoiceCourse(courseCode)) throw new RenderRequestError(`${courseCode} is a human-voice-only course — no TTS (Tom's ruling 2026-07-25)`, 409, 'HUMAN_VOICE_COURSE')
         const { data: course } = await supabase.from('courses')
           .select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect')
@@ -5444,6 +5451,18 @@ function buildRenderDeps() {
         course.voice_config = await voiceConfigService.resolveVoiceConfig({ voiceConfig: course.voice_config, course, courseCode })
         const vc = course.voice_config || {}
         const settings = vc.voices?.[role] || {}
+        // ONE VOICE PER SLOT (Tom 2026-10-12 16:17Z, services/shared/resolve-voice.cjs): where the coded policy answers, the voice is
+        // resolveVoice's — never the caller's pick, the course's habit (courseEnglishVoice) or the stored config. A named voice that
+        // differs is refused HERE, before the library is asked, so no wrong-voice clip is ever linked; an uncast target refuses.
+        // A trial render (job #748) links nothing and is exempt.
+        if (!trial) {
+          const rv = resolveVoice({ course, role, language: language || roleNativeLanguage(role, course) }, await loadResolvedCast())
+          if (rv.status === 'refuse') throw new RenderRequestError(`${rv.message} (resolveVoice ${rv.rule})`, 403, 'VOICE_POLICY')
+          if (rv.status === 'voice') {
+            if (voiceId && !sameResolvedVoice(voiceId, rv.voiceId)) throw new RenderRequestError(`${courseCode} ${role} is ${rv.voiceId} by resolveVoice rule ${rv.rule}; ${voiceId} refused — voices are never hand-picked (tools/audio/voice-audit.cjs moves slots)`, 403, 'VOICE_POLICY')
+            voiceId = rv.voiceId
+          }
+        }
         // A named voice may arrive as the stored, provider-prefixed id (`cartesia_<uuid>`), as a re-record does.
         const named = /^(azure|elevenlabs|xai|cartesia)_(.+)$/.exec(voiceId || '')
         // Presentation clips are known-language audio (the intro is spoken to the learner in their own language),

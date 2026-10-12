@@ -1054,7 +1054,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     };
   }
   // The intro SLOT (door.intro) is judged against the course's presentation voices, every other line against its lines (cast gate leg b).
-  // The voicing policy (services/shared/voicing-policy.cjs): xAI banned, English known = Charlotte, presentation intros spliced never rendered whole.
+  // The voicing policy (services/shared/voicing-policy.cjs): xAI banned, the voice is resolveVoice's (resolve-voice.cjs), Charlotte intros spliced never rendered whole.
   // TRIAL (job #748, services/shared/audio-trial-mode.cjs): until the config expiry a trial render skips the three Tom-rule gates below
   // (voicing policy, cast gate, rerecord gate) — it is stored apart from every course, so none of them has anything to protect. The spend
   // guard in renderWithRetry still runs; assertMayRender above (child voices, consent, retired providers) already ran.
