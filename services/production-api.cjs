@@ -6945,6 +6945,22 @@ require('./api/audio-repair-routes.cjs').mount(app, { requireAdmin, requireDashb
 require('./voicelab/router.cjs').mount(app, { requireAdmin, requireDashboardUser, logger })
 
 // =============================================================================
+// PROCEDURES — /api/procedures/*
+// =============================================================================
+// The admin Procedures panel's door: it launches ONLY procedures declared in
+// services/procedures/registry.cjs (Tom, 2026-10-12), each as its own systemd
+// unit so a run survives a deploy. Admin AND operator (Tom first) gated.
+require('./procedures/router.cjs').mount(app, {
+  requireAdmin,
+  logger,
+  listCourses: async () => {
+    const { data, error } = await supabaseClient.getClient().from('courses').select('course_code')
+    if (error) throw new Error(error.message)
+    return data.map((c) => c.course_code)
+  },
+})
+
+// =============================================================================
 // TAIL-TRUNCATION SCAN — /api/audio/tail-scan/*
 // =============================================================================
 // A whole-course tail scan is one S3 GET plus one ffmpeg decode per clip, so it
