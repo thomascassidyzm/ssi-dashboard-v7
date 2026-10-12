@@ -83,3 +83,12 @@ describe('job #836 undo targets the slots that actually moved (lane review #847)
     expect(L.undoPlanMoved([...rows, { kind: 'undo', oldId: 'A', newId: 'N' }])).toEqual([])
   })
 })
+
+describe('job #836 intent-only pairs stay undoable (lane review #851)', () => {
+  const L = require('./tom006-ledger.cjs')
+  it('a crash after the journal but before any move leaves the intent slots as undo candidates', () => {
+    const a = { tbl: 'course_legos', key: '1', from: 'A' }
+    const plan = L.undoPlanMoved([{ kind: 'render', oldId: 'A', newId: 'N', slots: [a] }])
+    expect(plan).toHaveLength(1); expect(plan[0]).toMatchObject({ intentOnly: true, slots: [{ tbl: 'course_legos', key: '1' }] })
+  })
+})

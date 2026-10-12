@@ -55,7 +55,8 @@ function undoPlanMoved(rows) {
     if (e.kind === 'undo') moved.delete(k)
     else if (['swap', 'partial'].includes(e.kind)) moved.set(k, unionSlots(moved.get(k), e.slots))
   }
-  return undoPlan(rows).map(p => ({ ...p, slots: moved.get(`${p.oldId}|${p.newId}`) || [] })).filter(p => p.slots.length)
+  // a pair with only a render (intent) row — a crash between the journal and the first pointer move — keeps its intent slots as CANDIDATES (intentOnly): undo restores those still on newId and never blocks on the rest (lane review #851)
+  return undoPlan(rows).map(p => { const m = moved.get(`${p.oldId}|${p.newId}`); return m ? { ...p, slots: m, intentOnly: false } : { ...p, intentOnly: true } }).filter(p => p.slots.length)
 }
 
 module.exports = { undoPlanMoved, fadedAtRender, expandLegacyRows, fadePending, undoRecordable, ledgerState, ledgerPairs, undoPlan, unionSlots, makeLog }

@@ -51,9 +51,10 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
   const pointerIs = pointerIsOf(pg)
   const identity = serviceIdentity('tom006-intros-836'); let eventId = null
   const event = async () => eventId || (eventId = await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-intros-836', operation: 'update', detail: { why: 'Tom 2026-10-12 job #836: Tom-006 faded presentation intros, seeds 101-668; old ids in ledger', ledger } }))
-  let touched = 0; const BUMP_EVERY = Number(opt('--bump-every', 100))
+  let touched = 0, forced = false; const BUMP_EVERY = Number(opt('--bump-every', 100))
   // the pending count is cleared only AFTER the bump succeeded (lane review #838); on a failure it stays so the next touch or the finally retries, and the error is logged, not swallowed
-  const bump = async () => { if (dryRun || !touched) return; const n = touched; try { console.log('content_version', await bumpCourseVersion(db, course, 'patch')); touched -= n } catch (e) { console.error('BUMP FAILED (kept pending, will retry):', e.message); stopFlag = true } }
+  // null from bumpCourseVersion is a DB error, not success (lane review #851); the pending count is cleared only after a real bump, so a failure is retried by the next touch / the finally
+  const bump = async (force = false) => { if (dryRun || !(touched || force)) return; const n = touched; const v = await bumpCourseVersion(db, course, 'patch').catch(() => null); if (v) { console.log('content_version', v); touched -= n; forced = false } else { console.error('BUMP FAILED (kept pending, will retry)'); stopFlag = true } }
   const touch = async k => { touched += k; if (touched >= BUMP_EVERY) await bump() }
 
   if (has('--undo')) {
@@ -66,8 +67,8 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
           if (await setPointer(db, sl, p.newId, p.oldId, await event())) moved++
           else if (await pointerIs(sl, p.oldId)) moved++   // already back on oldId counts as restored (lane review #848)
         }
-        if (moved === p.slots.length && undoRecordable(moved)) log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved })
-        else { stuck += p.slots.length - moved; console.log('UNDO INCOMPLETE (left pending):', p.oldId, '->', p.newId, `${moved}/${p.slots.length}`) }
+        if ((moved === p.slots.length || p.intentOnly) && undoRecordable(moved)) log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved })
+        else if (!p.intentOnly) { stuck += p.slots.length - moved; console.log('UNDO INCOMPLETE (left pending):', p.oldId, '->', p.newId, `${moved}/${p.slots.length}`) }
         n += moved; await touch(moved)
       }
     } finally { await bump() }
@@ -131,7 +132,7 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
       await touch(moved.length); if (st.n === 1) await bump()   // the first clip bumps at once so the proof clip is in a version
     }
   }
-  try { await Promise.all(Array.from({ length: Number(opt('--concurrency', 3)) }, async () => { try { await worker() } catch (e) { stopFlag = true; console.error(e) } })) } finally { await bump(); await pg.end() }
+  try { await Promise.all(Array.from({ length: Number(opt('--concurrency', 3)) }, async () => { try { await worker() } catch (e) { stopFlag = true; console.error(e) } })) } finally { await bump(st.slots > 0); await pg.end() }   // BACKSTOP: one bump at the end of every run that moved a pointer, whatever the counters say
   if (stopFlag && !dryRun) process.exitCode = 2   // any stop (refusal, verify/fade failure, worker crash, SIGTERM) is a non-zero exit: never 'done'
   console.log(`${course} ${stopFlag ? 'STOPPED' : dryRun ? 'DRY' : 'DONE'}: items ${st.n} (rendered ${st.rendered}, reused ${st.reused}, of which faded from an existing raw row ${st.fadedFromExisting}), slots ${st.slots}, chars ${st.chars}, already-moved/skipped ${st.skipped}`)
 })().catch(e => { console.error(e); process.exit(1) })
