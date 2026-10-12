@@ -139,9 +139,19 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
             const ex = await t6Row(q.t); let newId, how
             if (ex) { newId = ex.id; how = 'reuse' }
             else {
-              const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-813' },
-                body: JSON.stringify({ courseCode: q.course, role: q.role, text: q.tx, language: 'eng', voiceId: T6, voiceBound: true, job: '#813', purpose: `#813 Tom-006 male English, stage ${n} (seed ${q.pos})` }) })
-              const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+              // a dropped connection (Popty restarting on a deploy) is not an answer: wait, check whether the render landed anyway (never re-send a text that succeeded), then retry
+              let res, r
+              for (let attempt = 0; attempt < 8 && !r; attempt++) {
+                try {
+                  res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-813' },
+                    body: JSON.stringify({ courseCode: q.course, role: q.role, text: q.tx, language: 'eng', voiceId: T6, voiceBound: true, job: '#813', purpose: `#813 Tom-006 male English, stage ${n} (seed ${q.pos})` }) })
+                  r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+                } catch (e) {
+                  console.log('connection dropped, checking before any retry:', q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, 30000))
+                  const landed = await t6Row(q.t); if (landed) { r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; res = { ok: true } }
+                }
+              }
+              if (!r) { console.log('PERSISTENT CONNECTION FAILURE — stopping'); stopFlag = true; return }
               if (!res.ok || !r.ok) { log({ kind: 'refused', t: q.t, r }); console.log('REFUSED — stopping, no retry:', JSON.stringify(r).slice(0, 400)); stopFlag = true; return }
               const { rows: [ca] } = await pg.query('select id::text, voice_id, s3_key, duration_ms from course_audio where id=$1', [r.audioId])
               if (!ca || ca.voice_id !== T6 || !ca.s3_key || ca.s3_key.startsWith('pending/') || !(ca.duration_ms > 200)) { log({ kind: 'verify-failed', t: q.t, r, ca }); console.log('VERIFY FAILED — stopping:', q.tx, JSON.stringify(ca)); stopFlag = true; return }
