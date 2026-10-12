@@ -62,10 +62,36 @@ const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 /** registry.SLOTS are the phrase-bearing slots; 'presentation' is cast and cleared too, gender-agnostic like guide (cast_voice_role v3). The guard used to reject it, so clearing a presentation slot was unreachable (#273). */
 const isCastableSlot = (slot) => slot === 'presentation' || registry.SLOTS.includes(slot)
 
+/**
+ * A gate that remembers who a token belonged to for a few seconds. Each lab
+ * call used to cost ~1 s of auth (Supabase JWT check, dashboard row, learner
+ * row, every course's casting) and paid it TWICE — once at the router's edge,
+ * once in the route — so a warm visit's three reads spent ~6 s on identity
+ * (Tom, 2026-10-12). Only a success is remembered, so a refusal is always
+ * re-asked; the window is short so a changed dashboard_users row bites within
+ * it.
+ */
+const GATE_MEMO_MS = Number(process.env.VOICELAB_GATE_MEMO_MS || 30000)
+function memoGate (gate) {
+  const seen = new Map()
+  return async (req, res) => {
+    const token = req.headers && req.headers.authorization
+    const now = Date.now()
+    const hit = token && seen.get(token)
+    if (hit && hit.exp > now) return hit.user
+    const user = await gate(req, res)
+    if (user && token && GATE_MEMO_MS > 0) {
+      if (seen.size > 200) for (const [k, v] of seen) if (v.exp <= now) seen.delete(k)
+      seen.set(token, { user, exp: now + GATE_MEMO_MS })
+    }
+    return user
+  }
+}
+
 function mount (app, deps) {
+  const requireAdmin = memoGate(deps.requireAdmin)
+  const requireDashboardUser = memoGate(deps.requireDashboardUser)
   const {
-    requireAdmin,
-    requireDashboardUser,
     logger = console,
     // Defaulted rather than required, so mounting this router does not change
     // production-api.cjs's one-line mount call. Lazy for the same reason the
