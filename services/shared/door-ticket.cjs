@@ -31,13 +31,23 @@
  */
 
 const { clipTextKey } = require('./clip-index.cjs')
-const { tryCanonicalVoiceId } = require('./clip-identity.cjs')
+const { tryCanonicalVoiceId, tryCanonicalLanguage } = require('./clip-identity.cjs')
 const chain = require('./chain-context.cjs')
 
 /** A lookup older than this is not evidence about the library now. */
 const TICKET_TTL_MS = 15 * 60 * 1000
 
 const issued = new WeakSet()
+
+/**
+ * TOM'S VOICES SPEAK ENGLISH ONLY (Tom 2026-10-12: "obviously we're not using my voice for non-English - why would you think that?",
+ * r-2026-10-12-ssi-audio-revision-of-existing-courses, job #113). Tom-006, tom_001 and the retired xAI clone, matched in any spelling
+ * (prefixed or bare). Checked here because every paid render in the estate passes ticketProblem, so no caller can route around it.
+ * A line whose language is not stated is refused too: not knowing is not permission.
+ */
+const TOM_VOICES = Object.freeze(['d293d509-eb96-4df4-8cfd-80a693aa49a9', '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', 'gfzdpspr5fdp'])
+const isTomVoice = (v) => TOM_VOICES.includes(String(v || '').trim().toLowerCase().replace(/^(cartesia_|xai_)/, ''))
+const isEnglish = (lang) => { try { return !!lang && tryCanonicalLanguage(String(lang)) === 'eng' } catch { return false } }
 
 /** The voice as both sides compare it: canonical where it can be named, else as given. */
 function voiceKey(v) {
@@ -75,6 +85,7 @@ function ticketProblem(ticket, { voiceId, text, now = Date.now() }) {
   if (now - ticket.issuedAt > TICKET_TTL_MS) return { code: 'NO_DOOR', message: `the clip-library lookup behind this call is ${Math.round((now - ticket.issuedAt) / 60000)} minutes old — look again` }
   if (ticket.textKey !== clipTextKey(text)) return { code: 'NO_DOOR', message: `the lookup was for other words ("${ticket.textKey.slice(0, 40)}") than the ones being sent ("${clipTextKey(text).slice(0, 40)}")` }
   if (ticket.voiceKey !== voiceKey(voiceId)) return { code: 'NO_DOOR', message: `the lookup was for voice ${ticket.voiceKey}, not ${voiceKey(voiceId)}` }
+  if (isTomVoice(voiceId) && !isEnglish(ticket.language)) return { code: 'TOM_VOICE_ENGLISH_ONLY', message: `voice ${voiceId} is Tom's and speaks English only (Tom 2026-10-12) — this line is ${ticket.language || 'of unstated language'}; use the language's own cast voice` }
   if (ticket.inLibrary.length) {
     const c = ticket.inLibrary[0]
     return { code: 'IN_LIBRARY', message: `these words are already in the clip library in this voice (${c.voice_id}, clip ${c.id}${c.course_code ? `, ${c.course_code}` : ''}${ticket.inLibrary.length > 1 ? `, +${ticket.inLibrary.length - 1} more` : ''}) — link it; a regenerate must name the take it replaces` }
@@ -82,4 +93,4 @@ function ticketProblem(ticket, { voiceId, text, now = Date.now() }) {
   return null
 }
 
-module.exports = { issueTicket, ticketProblem, voiceKey, TICKET_TTL_MS }
+module.exports = { issueTicket, ticketProblem, voiceKey, isTomVoice, TICKET_TTL_MS }

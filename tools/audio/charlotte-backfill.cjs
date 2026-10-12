@@ -206,6 +206,13 @@ const undoneSet = lines => {
 }
 
 const RATE_RETRY_CAP = 5
+/**
+ * RENDER/ATTACH BREAKER (job #113; the shape of the #382 phase8 loop, which spent 7.6M chars rendering clips nothing could link):
+ * a PAID render whose clip then moves no slot (verify failed, resolveVoice refused every pointer, before-state gone) is audio
+ * nothing points at. After this many in a row the run stops instead of paying for the next one; tomorrow's run would only meet
+ * the same wall, so the daily driver stops on it too. Library hits cost nothing and never count.
+ */
+const IDLE_RENDER_STOP = 3
 // counts one more rate-limit answer on this clip; true while it may still be requeued
 function rateRetry(w) { w.rl = (w.rl || 0) + 1; return w.rl < RATE_RETRY_CAP }
 
@@ -219,7 +226,12 @@ function rateRetry(w) { w.rl = (w.rl || 0) + 1; return w.rl < RATE_RETRY_CAP }
  * budgetSkipped counts clips passed over because they do not fit the remaining budget: owed work, but not a failure.
  */
 async function runBudgeted(work, { budget, dryRun = false, gender = null, notGender = null, neverFrom = null, concurrency = 1, render: doRender, verify, commit, backoffMs = 5000 }) {
-  let spent = 0, done = 0, failures = 0, genderSkipped = 0, budgetSkipped = 0
+  let spent = 0, done = 0, failures = 0, genderSkipped = 0, budgetSkipped = 0, idleRenders = 0, breaker = null
+  // a paid render that ends with no slot moved; IDLE_RENDER_STOP in a row trips the breaker
+  const idle = (w, r, why) => {
+    if (dryRun || !(r.charsSpent > 0)) return
+    if (++idleRenders >= IDLE_RENDER_STOP && !breaker) { breaker = `${idleRenders} paid renders in a row moved no slot (last: ${w.oldId}, ${why})`; console.log(`RENDER-ATTACH BREAKER: ${breaker} — stopping; rendering audio nothing points at`); stop = true }
+  }
   let live = Math.max(1, concurrency), active = 0, stop = false, idx = 0
   const requeue = []
   const isRate = r => r.status === 429 || /rate.?limit|too many|concurren/i.test(`${r.code || ''} ${r.error || ''}`)
@@ -236,8 +248,10 @@ async function runBudgeted(work, { budget, dryRun = false, gender = null, notGen
     if (dryRun) { spent += (r.wouldSpendChars || 0) - w.chars; w.settled = true; done++; return }
     failures = 0; spent += (r.charsSpent || 0) - w.chars; w.settled = true // true-up of the reservation; the charge is now final
     const bad = await verify(r)
-    if (bad) { console.log('VERIFY-FAIL', w.oldId, '->', r.audioId, bad, '— old pointer kept'); return }
-    await commit(w, r)
+    if (bad) { console.log('VERIFY-FAIL', w.oldId, '->', r.audioId, bad, '— old pointer kept'); idle(w, r, `verify: ${bad}`); return }
+    const moved = await commit(w, r)
+    // commit reports how many slots it moved; a commit that reports nothing (older stubs) is not judged
+    if (typeof moved === 'number') { if (moved > 0) idleRenders = 0; else idle(w, r, 'no slot moved') }
     done++
   }
   const next = () => {
@@ -264,7 +278,7 @@ async function runBudgeted(work, { budget, dryRun = false, gender = null, notGen
     }
     pump()
   })
-  return { spent, done, genderSkipped, budgetSkipped }
+  return { spent, done, genderSkipped, budgetSkipped, breaker }
 }
 
 async function main() {
@@ -306,6 +320,7 @@ async function main() {
       fs.appendFileSync(ledger, JSON.stringify({ kind: 'undo', oldId: e.oldId, newId: e.newId, at: new Date().toISOString() }) + '\n')
       if (moved) n++ // a swap whose slots changed nothing is closed in the ledger but not reported as undone
     }
+    if (n > 0) console.log(`content_version ${course} ${await require('../../services/shared/course-version.cjs').bumpCourseVersion(db, course, 'patch')}`)
     console.log(`undone ${n} swaps`); return pg.end()
   }
 
@@ -340,23 +355,45 @@ async function main() {
     if (!eventId) { eventPromise = eventPromise || recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/charlotte-backfill', operation: 'update',
       detail: { why: 'Tom 2026-10-03 English->Charlotte backfill, job #573; old ids in ledger', ledger } }); eventId = await eventPromise }
     // a slot the DB refuses (e.g. a trigger) is logged and skipped; the old pointer simply stays
+    let movedHere = 0
     for (const s of w.slots) {
-      try { if (await setPointer(db, s, w.oldId, r.audioId, eventId)) slotsMoved++ }
+      try { if (await setPointer(db, s, w.oldId, r.audioId, eventId)) { slotsMoved++; movedHere++ } }
       catch (e) { slotRefused++; console.log('SLOT-REFUSED', s.tbl, s.key, e.message.slice(0, 120)); fs.appendFileSync(ledger, JSON.stringify({ kind: 'slot-refused', oldId: w.oldId, slot: s, error: e.message }) + '\n') }
     }
     if (r.source === 'library') free++
+    return movedHere
   }
-  const { spent, done, genderSkipped, budgetSkipped } = await runBudgeted(work, {
+  // POLICY BEFORE SPEND (job #113): a clip resolveVoice would refuse for these slots is never rendered — it could only end as audio
+  // nothing points at. Checked with the target voice as the clip's voice, per slot column, before the first character is sent.
+  const rv = require('../../services/shared/resolve-voice.cjs')
+  const courseRow = await rv.loadCourse(db, course), cast = await rv.loadCast(db)
+  const policyOk = w => !target || w.slots.every(s => rv.checkPointer({ course: courseRow, role: rv.roleOfColumn(s.col), clip: { voice_id: target, language } }, cast).ok)
+  const refusedByPolicy = work.filter(w => !policyOk(w))
+  if (refusedByPolicy.length) { console.log(`POLICY-SKIP ${refusedByPolicy.length} clips: resolveVoice would refuse ${target} on their slots; not rendered`); work.splice(0, work.length, ...work.filter(policyOk)) }
+  let result
+  try {
+    result = await runBudgeted(work, {
     budget, dryRun, gender: pass.gender, notGender: pass.target === CHARLOTTE && pass.role === 'known' ? 'm' : null, neverFrom: pass.target === CHARLOTTE ? TOM_006 : null, concurrency: Number(process.env.CONCURRENCY || 1),
     render: w => render(course, w, dryRun, target, language), verify: r => verifyNew(pg, r.audioId, target), commit,
   })
+  } finally {
+    // app bundle caches key on courses.content_version: a repoint the version does not announce never reaches a phone that holds the bundle
+    if (slotsMoved > 0 && !dryRun) {
+      const v = await require('../../services/shared/course-version.cjs').bumpCourseVersion(db, course, 'patch')
+      fs.appendFileSync(ledger, JSON.stringify({ kind: 'bumped', course, v, slotsMoved, at: new Date().toISOString() }) + '\n')
+      console.log(`content_version ${course} ${v}`)
+      if (!v) { console.log(`BUMP-FAILED ${course}: pointers moved but content_version did not; bump it by hand`); process.exitCode = 4 }
+    }
+  }
+  const { spent, done, genderSkipped, budgetSkipped, breaker } = result
   // machine line for the daily driver: work still owed in THIS scope (budget-skipped, failed, verify-failed, refused, unreached); never-doable gender skips excluded
   // SKIPPED-BUDGET is the part of OUTSTANDING that is merely unaffordable today (not a failure): the daily driver sleeps to the next UTC day on it
-  console.log(`OUTSTANDING ${Math.max(0, work.length - done - genderSkipped) + slotRefused}`)
+  console.log(`OUTSTANDING ${Math.max(0, work.length - done - genderSkipped) + slotRefused}`)   // POLICY-SKIP clips are never doable (like gender skips): not owed
+  if (breaker) process.exitCode = 5
   console.log(`SKIPPED-BUDGET ${budgetSkipped}`)
   console.log(`done ${done} clips (${free} from library), ${slotsMoved} slots repointed, ${spent} chars spent; ${work.length - done} remain. ledger ${ledger}`)
   await pg.end()
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { allowedRoles, runBudgeted, RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, TOM_006, CHARLOTTE }
+module.exports = { allowedRoles, runBudgeted, RATE_RETRY_CAP, IDLE_RENDER_STOP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, TOM_006, CHARLOTTE }

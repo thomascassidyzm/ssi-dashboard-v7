@@ -51,7 +51,7 @@ function runQueue(queue, budget, run, log = console.log, write = s => process.st
     const scoped = extra.includes('--seeds')
     if (!scoped && scopedOutstanding) { log(`skipping unscoped ${course} ${extra.join(' ')}: seeds 1-${SEED_SCOPE} work remains`); continue }
     const { out, status } = run(course, roles, budget, extra)
-    write(out.split('\n').filter(l => /^(done|REFUSED|FAIL|VERIFY-FAIL|SLOT-REFUSED|5 failures|Error)/.test(l) || /: \d+ old clips/.test(l)).join('\n') + '\n')
+    write(out.split('\n').filter(l => /^(done|REFUSED|FAIL|VERIFY-FAIL|SLOT-REFUSED|5 failures|Error|RENDER-ATTACH BREAKER|POLICY-SKIP|BUMP-FAILED|content_version)/.test(l) || /: \d+ old clips/.test(l)).join('\n') + '\n')
     const m = /(\d+) chars spent/.exec(out); budget -= m ? Number(m[1]) : 0
     const o = /^OUTSTANDING (\d+)/m.exec(out)
     if (scoped && (!o || Number(o[1]) > 0 || status !== 0)) scopedOutstanding = true
