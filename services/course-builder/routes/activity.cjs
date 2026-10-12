@@ -217,6 +217,17 @@ module.exports = function activityRoutes(ctx) {
   // ---------------------------------------------------------------------------
   router.delete('/agents/:pid', (req, res) => {
     const pid = Number(req.params.pid);
+    // Zero and negative PIDs signal process groups; never accept them here.
+    if (!Number.isSafeInteger(pid) || pid <= 0) {
+      return res.status(400).json({ ok: false, error: 'A positive integer PID is required' });
+    }
+    const agent = ctx.activeAgents.get(pid);
+    if (!agent) {
+      return res.status(404).json({ ok: false, error: 'Agent not found' });
+    }
+    if (agent.status !== 'running') {
+      return res.status(409).json({ ok: false, error: 'Agent is not running' });
+    }
     try {
       process.kill(pid, 'SIGTERM');
       markAgentComplete(ctx, pid);
