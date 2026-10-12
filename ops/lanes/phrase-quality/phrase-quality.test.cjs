@@ -42,7 +42,13 @@ assert.equal(inScope({ course_code: 'fin_for_eng', status: 'draft' }), false)
     { row_id: 'k', decision: 'keep' }, { row_id: 'x', decision: 'delete' }]
   assert.deepEqual(stagedTodo(S, new Set(['x'])).map((d) => d.row_id), ['r', 'd'], 'held, kept and done lines are not applied')
   const src = require('fs').readFileSync(require('path').join(__dirname, 'apply-staged.cjs'), 'utf8')
-  assert.ok(src.includes('stagedTodo(staged, done)'), 'apply-staged selects its work through stagedTodo')
+  assert.ok(src.includes('stagedTodo(staged, done'), 'apply-staged selects its work through stagedTodo')
+  // release-held (967 decision): held replacements join the work, once per row, and done rows stay done
+  const H = [...S, { row_id: 'h', decision: 'replace', hold: 'audio', after: { target: 'later' } }]
+  assert.deepEqual(stagedTodo(H, new Set(['x']), { releaseHeld: true }).map((d) => d.row_id), ['r', 'h', 'd'], 'released: held replacements apply, once each')
+  assert.equal(stagedTodo(H, new Set(['x']), { releaseHeld: true }).find((d) => d.row_id === 'h').after.target, 'later', 'the latest staged line wins')
+  assert.deepEqual(stagedTodo(H, new Set(['h', 'x']), { releaseHeld: true }).map((d) => d.row_id), ['r', 'd'], 'a released row already in the ledger is not applied again')
+  assert.ok(src.includes("'--release-held'"), 'apply-staged has the release flag')
 }
 // REGRESSION (#441): a staged decision whose LEGO is gone is skipped, not a crash on sets.get(key).
 {

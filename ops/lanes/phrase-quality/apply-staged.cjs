@@ -8,8 +8,10 @@
 //   - a DELETE re-checks the floor live: never below 4 USE phrases per LEGO (Tom 2026-10-11 20:57)
 //   - only BUILD/USE practice phrases; seeds and LEGOs are never written
 //   - a line carrying "hold" (ramp 967: replacement awaiting audio) is left staged, never applied
+//   - --release-held lifts the audio hold: held replacements are applied like any other, then the course's
+//     audio is QUEUED (audio_pass_requests, fulfilled by phase8 /generate through Popty's one render route)
 //   - a replaced side loses its audio ids, so the normal render voices the new text (no audio here)
-// Usage: node ops/lanes/phrase-quality/apply-staged.cjs <course> [--apply]
+// Usage: node ops/lanes/phrase-quality/apply-staged.cjs <course> [--apply] [--release-held]
 'use strict'
 const fs = require('fs'), path = require('path')
 const { client, USE_FLOOR } = require('./lib.cjs')
@@ -17,13 +19,13 @@ const { readLedger, doneRowIds, stagedTodo } = require('./ledger.cjs')
 const { judgeReplacement, loadSets } = require('./gate-change.cjs')
 
 async function main() {
-  const course = process.argv[2]; const APPLY = process.argv.includes('--apply')
+  const course = process.argv[2]; const APPLY = process.argv.includes('--apply'), RELEASE = process.argv.includes('--release-held')
   if (!course) { console.error('usage: apply-staged.cjs <course> [--apply]'); process.exit(2) }
   const stagedPath = path.join(__dirname, 'staged', `${course}.jsonl`)
   const ledgerPath = path.join(__dirname, 'undo', `${course}.jsonl`)
   const staged = fs.existsSync(stagedPath) ? fs.readFileSync(stagedPath, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l)) : []
   const done = doneRowIds(readLedger(ledgerPath))   // a row whose last ledger line is 'undone' is open again
-  const todo = stagedTodo(staged, done)   // held lines (hold: 'audio') are left staged
+  const todo = stagedTodo(staged, done, { releaseHeld: RELEASE })   // held lines (hold: 'audio') are left staged
   const { makeCourseCtx, checkPhraseSet } = require('../../../tools/phrase-gate/gate-check.cjs')
   const ctx = makeCourseCtx(client(), course)
   const sets = await loadSets(course, todo)
@@ -61,6 +63,12 @@ async function main() {
       set.phrases = set.phrases.map((p) => (p.id === row.id ? { ...p, known: patch.known_text ?? p.known, target: patch.target_text ?? p.target } : p))
     }
     say(action)
+  }
+  const replaced = log.filter((l) => l.outcome === 'replace').length
+  if (APPLY && RELEASE && replaced) {
+    const { queueAudioPass } = require('../../../services/shared/audio-pass-queue.cjs')
+    const q = await queueAudioPass(client(), { courseCode: course, reason: `ramp 967 phrase-quality: ${replaced} released replacement phrase(s) need audio`, requestedBy: '@pq-release-held', append: true, metadataKey: 'pq_release_held', metadata: { rows: log.filter((l) => l.outcome === 'replace').map((l) => l.row_id) } })
+    console.error(`${course}: audio pass ${q.queued ? 'queued' : q.touched ? 'joined existing request' : 'NOT queued: ' + (q.error || q.reason)} (${q.id || '-'})`)
   }
   const n = (k) => log.filter((l) => l.outcome === k).length
   console.error(`${course}: ${APPLY ? '' : 'DRY RUN — '}${n('replace') + n('would replace')} replace, ${n('delete') + n('would delete')} delete, ${n('keep')} kept, ${n('skip')} skipped, ${n('ERROR')} errors`)
