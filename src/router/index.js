@@ -636,7 +636,7 @@ const routes = [
     path: '/admin/procedures',
     name: 'Procedures',
     component: () => import('../views/admin/Procedures.vue'),
-    meta: { title: 'Procedures - Admin', requiresAdmin: true }
+    meta: { title: 'Procedures - Admin', requiresCourseGrant: true }
   },
   {
     path: '/admin/labs',
@@ -1046,6 +1046,13 @@ router.beforeEach(async (to, from, next) => {
   // what stops a non-admin landing on a page made only of refusals.
   if (to.meta.requiresAdmin && !isAdmin.value) {
     return next({ name: 'Home' })
+  }
+
+  // Procedures is open to admins and to editors holding a course grant (the server decides per
+  // course, services/procedures/router.cjs); an editor with no grant at all gets only refusals.
+  if (to.meta.requiresCourseGrant && !isAdmin.value) {
+    const granted = learner.value?.courses
+    if (!(granted === '*' || (Array.isArray(granted) && granted.length))) return next({ name: 'Home' })
   }
 
   // Course scoping: a course-scoped route needs membership of THAT course

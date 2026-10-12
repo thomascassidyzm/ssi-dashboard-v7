@@ -227,7 +227,10 @@ async function loadCast() {
     // A soft read: a missing view leaves the policy and stored-config halves of
     // the guard standing, so Welsh is protected even with no view at all.
     const [roles, voices, humanRows, courses] = await Promise.all([
-      supabase.from('voice_language_roles').select('language, gender, rank, voice_id, slot'),
+      // notes + assigned_by are the AUTHORSHIP resolveVoice judges a cast row by (a Tom-approved row vs a
+      // draft/test row, services/shared/voice-cast-gate.cjs). Omitting them made every target cast look
+      // unauthored and be refused, so a stored male target1 survived a Tom-approved female cast.
+      supabase.from('voice_language_roles').select('language, gender, rank, voice_id, slot, notes, assigned_by'),
       // loudness_offset_db rides on the same read: services/shared/voice-loudness.cjs
       supabase.from('voices').select('voice_id, gender, tts_engine, is_active, display_name, human_name, loudness_offset_db'),
       loadHumanRecordedRoles(supabase),

@@ -1,6 +1,8 @@
 /** tools/audio/voice-audit.cjs — the pure classifier the audit (and its nightly) reports from. */
 import { describe, it, expect } from 'vitest'
 import audit from './voice-audit.cjs'
+import { createRequire } from 'node:module'
+const require = createRequire(import.meta.url)
 import rv from '../../services/shared/resolve-voice.cjs'
 const { classify, render } = audit
 
@@ -30,5 +32,22 @@ describe('voice audit classify', () => {
     expect(out).toMatch(/^fra_for_eng: ok 0 · drift 7/)
     expect(out).toMatch(/drift 7 known: .* -> cartesia_d293d509/)
     expect(out).toMatch(/reuse 1 texts \(2 slots, free\), render 2 texts \(40 chars\)/)
+  })
+})
+
+// job #125: undo read only `swap` entries, so a crash after the write-ahead `intent` left moved slots un-undoable
+describe('voice audit undo recovers from a surviving intent', () => {
+  it('restores slots from an intent with no swap, and only where the pointer still equals `to`', async () => {
+    const fs = await import('node:fs'), os = await import('node:os'), path = await import('node:path')
+    const file = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'va-undo-')), 'l.jsonl')
+    const slot = (key) => ({ tbl: 'course_practice_phrases', col: 'target1_audio_id', key, from: 'old-' + key, course: 'fra_for_eng' })
+    fs.writeFileSync(file, JSON.stringify({ kind: 'intent', to: 'NEW', slots: [slot('a'), slot('b')] }) + '\n')
+    const state = { a: 'NEW', b: 'someone-else' }
+    const db = { from: () => { let id, to; const q = { update: (u) => { to = u.target1_audio_id; return q }, eq: (c, v) => { if (c === 'id') id = v; if (c === 'target1_audio_id' && state[id] !== v) id = null; return q },
+      select: async () => { if (id) { state[id] = to; return { data: [{ id }], error: null } } return { data: [], error: null } } }; return q } }
+    const patchBump = require('../../services/shared/course-version.cjs')
+    patchBump.bumpCourseVersion = async () => ({})
+    await audit.undo(null, db, file, { dryRun: false })
+    expect(state).toEqual({ a: 'old-a', b: 'someone-else' })
   })
 })

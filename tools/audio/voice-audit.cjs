@@ -196,7 +196,12 @@ async function undo(pg, db, file, { dryRun }) {
   const { bumpCourseVersion } = require('../../services/shared/course-version.cjs')
   const rows = fs.readFileSync(file, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse)
   const courses = new Set(); let back = 0, left = 0
-  for (const e of rows.filter((r) => r.kind === 'swap').reverse()) for (const s of e.slots) {
+  // Write-ahead: an `intent` is logged before its slots move, a `swap` after. A crash between them leaves
+  // moved slots with no swap entry, so undo reads intents too; the col === to before-check below makes a
+  // slot that never moved (or moved on since) a no-op. Where a swap exists it repeats its intent: skip it.
+  const swapped = new Set(rows.filter((r) => r.kind === 'swap').map((r) => `${r.to}|${JSON.stringify(r.slots.map((s) => s.key))}`))
+  const entries = rows.filter((r) => r.kind === 'swap' || (r.kind === 'intent' && !swapped.has(`${r.to}|${JSON.stringify(r.slots.map((s) => s.key))}`)))
+  for (const e of entries.reverse()) for (const s of e.slots) {
     if (dryRun) { back++; continue }
     // a RESTORE of the ledgered before-state: the before-check (still on `to`) keeps someone else's later edit safe
     const { data, error } = await db.from(s.tbl).update({ [s.col]: s.from }).eq('id', s.key).eq(s.col, e.to).select('id')
@@ -232,4 +237,4 @@ async function main(argv = process.argv.slice(2)) {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message || e); process.exit(1) })
-module.exports = { classify, render, audit, connect, main, PREMIUM_11, SLOT_COLUMNS }
+module.exports = { classify, render, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }

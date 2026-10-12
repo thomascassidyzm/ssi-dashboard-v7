@@ -370,7 +370,7 @@ export function isPrimaryActive(primaryId, route) {
  * which is for everyone with a Popty login (recordists are exactly who we hand
  * test APKs to).
  */
-export const ADMIN_TERRITORY_OPEN_TO_ALL = ['/builds']
+export const ADMIN_TERRITORY_OPEN_TO_ALL = ['/builds', '/admin/procedures']
 export function isAdminOnlyRoute(route) {
   if (ADMIN_TERRITORY_OPEN_TO_ALL.includes(route.path)) return false
   const section = sectionFor(route)
