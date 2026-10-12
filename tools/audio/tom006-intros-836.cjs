@@ -38,6 +38,7 @@ const setPointer = async (db, s, from, to, ev) => {
   const { data, error } = await db.from(s.tbl).update({ presentation_audio_id: to, last_edit_event_id: ev }).eq('id', s.key).eq('presentation_audio_id', from).select('id')
   if (error) throw new Error(error.message); return !!data && data.length === 1
 }
+const fetchRetry = async (url, init) => { for (let a = 1; ; a++) { try { return await fetch(url, init) } catch (e) { if (a >= 8) throw e; await new Promise(r => setTimeout(r, 15000)) } } }
 let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log('SIGTERM: finishing in-flight clips, then exit') })
 ;(async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); await pg.query('set statement_timeout=0'); const db = supa()
@@ -93,7 +94,8 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
         else {
           let raw = await t6Row(it.newText), rawId = raw && raw.id
           if (!raw) {
-            const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-836' },
+            // a DROPPED CONNECTION (Popty restarts under auto-deploys) is retried; a refusal never is. A take that completed before the drop comes back as source:'library', free.
+            const res = await fetchRetry(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-836' },
               body: JSON.stringify({ courseCode: course, role: 'presentation', text: it.newText, language: 'eng', voiceId: T6, voiceBound: true, job: JOB, purpose: `#836 Tom-006 intro ${it.first.lego_id}` }) })
             const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
             if (!res.ok || !r.ok) { log({ kind: 'refused', lego_id: it.first.lego_id, text: it.newText, r }); console.log('REFUSED — stopping, no retry:', it.first.lego_id, JSON.stringify(r).slice(0, 400)); stopFlag = true; return }
