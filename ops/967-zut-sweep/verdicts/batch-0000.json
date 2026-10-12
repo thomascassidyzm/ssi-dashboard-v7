@@ -1,0 +1,166 @@
+{
+ "batch": 0,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "ara_eg_for_eng:S0106L04C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"اشتغل\" is the lemma/1sg form of \"نشتغل\", which is in the seed; the row is about its sentence."
+  },
+  {
+   "id": "ara_eg_for_eng:S0092L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix \"لـ\" is clitic-fused into \"لمدة\" in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0109L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"أتعلم\" is a different person form of \"نتعلم\", which is in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0052L04C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix \"لـ\" is clitic-fused into \"لصاحبه\" in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0004L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix \"بـ\" is clitic-fused into \"بالعربي\" in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0108L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"أتمنى\" is a different person form of \"نتمنى\", which is in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0108L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"أصحى\" is a different person form of \"نصحى\", which is in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0106L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"أحس\" is a different person form of \"نحس\", which is in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0378L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"الأجازات\" appears only fused with the prefix as \"للأجازات\" in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0507L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"المدينة\" appears only fused with the prefix as \"للمدينة\" in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0560L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"الشط\" appears only fused with the prefix as \"للشط\" in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0323L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"المدرسة\" appears only fused with the prefix as \"للمدرسة\" in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0358L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"القمة\" appears only fused with the prefix as \"للقمة\" in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0520L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"العيلة\" appears only fused with the prefix as \"للعيلة\" in the seed."
+  },
+  {
+   "id": "ara_eg_for_eng:S0437L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"الجمعية الخيرية\" appears only fused with the prefix as \"للجمعية الخيرية\" in the seed."
+  },
+  {
+   "id": "ara_for_eng:S0109L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix \"لِـ\" is clitic-fused into \"لِنَتَعَلَّمَ\" in the seed."
+  },
+  {
+   "id": "ara_for_eng:S0543L01C02",
+   "verdict": "d",
+   "class": "d-seed-outlier",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed and its LEGO use \"عَلى حَقٍّ\", but the row and the practice phrases use \"مُحِقَّةً\", so the seed looks like the odd one out."
+  },
+  {
+   "id": "ara_for_eng:S0025L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"الذَّهاب\" appears only fused with the prefix as \"لِلذَّهاب\" in the seed."
+  },
+  {
+   "id": "ara_for_eng:S0127L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix \"لـ\" is clitic-fused into \"لِهٰذا\" in the seed."
+  },
+  {
+   "id": "ara_for_eng:S0633L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix \"سَـ\" is clitic-fused into \"سَتَكونُ\" in the seed."
+  }
+ ]
+}
