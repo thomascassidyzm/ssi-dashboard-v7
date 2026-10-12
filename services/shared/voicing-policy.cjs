@@ -75,6 +75,8 @@ function checkRender({ text, language, voiceId, course = null, intro = false, ro
   const presentation = !!intro || role === 'presentation'
   const knownSide = presentation || role === 'known' || role == null
   if (!knownSide) return OK
+  // Tom 2026-10-12 (job #794): a named voice may record WHOLE presentation intros for named courses (config.wholeIntroVoices).
+  if (presentation && (config.wholeIntroVoices[bare(voiceId)] || config.wholeIntroVoices[voiceId] || []).includes(course.course_code)) return OK
   // English as the known side is Charlotte, for every course taught from English (Tom 2026-09-23, 2026-10-11).
   if (!isCharlotte(voiceId)) return refuse('english-not-charlotte', `the English known side of ${course.course_code || 'this course'} renders in Charlotte only; ${voiceId} refused.`)
   if (!presentation) return OK

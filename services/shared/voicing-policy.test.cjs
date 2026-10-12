@@ -174,3 +174,15 @@ describe('the #738 deu_for_eng clone allowance is retired (superseded by audio t
     expect(policy.config.trialAllowances).toBeUndefined()
   })
 })
+
+describe('Tom-006 whole presentation intros (job #794, Tom 2026-10-12)', () => {
+  const T6 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
+  const whole = `The German for: 'I want', is: <break time="300ms"/>`
+  it('allowed for deu_for_eng and spa_for_eng presentation only; every other voice, course and role still refused', () => {
+    expect(checkRender({ text: whole, language: 'eng', voiceId: T6, course: COURSES.deu_for_eng, role: 'presentation' }).allowed).toBe(true)
+    expect(checkRender({ text: whole, language: 'eng', voiceId: T6, course: COURSES.spa_for_eng, intro: true }).allowed).toBe(true)
+    expect(checkRender({ text: whole, language: 'eng', voiceId: T6, course: COURSES.fra_for_eng, role: 'presentation' }).allowed).toBe(false)
+    expect(checkRender({ text: 'hello', language: 'eng', voiceId: T6, course: COURSES.deu_for_eng, role: 'known' }).allowed).toBe(false)
+    expect(checkRender({ text: whole, language: 'eng', voiceId: 'cartesia_b478fefe-f18a-4f3a-b3d3-cbef52732e2e', course: COURSES.deu_for_eng, role: 'presentation' }).allowed).toBe(false)
+  })
+})
