@@ -31,4 +31,9 @@ const undoPlan = rows => ledgerPairs(rows).filter(p => p.undoable).reverse()
 /** The ledger appender: a no-op in a dry run (lane review #811: --dry-run wrote a skip row). */
 const makeLog = (file, dry) => e => { if (!dry) require('fs').appendFileSync(file, JSON.stringify({ ...e, at: new Date().toISOString() }) + '\n') }
 
-module.exports = { ledgerState, ledgerPairs, undoPlan, unionSlots, makeLog }
+/** Lane review #815: the intros ledger's newIds are the UNFADED clips for German, so undoing it while the fade ledger still has un-undone pairs moves 0 slots. How many fade pairs are pending? */
+const fadePending = fadeRows => undoPlan(fadeRows).length
+/** An undo row is recorded only when slots really moved (a 0-move undo must leave the pair in later plans). */
+const undoRecordable = moved => moved > 0
+
+module.exports = { fadePending, undoRecordable, ledgerState, ledgerPairs, undoPlan, unionSlots, makeLog }

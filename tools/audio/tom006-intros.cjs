@@ -28,7 +28,7 @@ const setPointer = async (db, s, from, to, ev) => {
   const { data, error } = await db.from(s.tbl).update({ presentation_audio_id: to, last_edit_event_id: ev }).eq('id', s.key).eq('presentation_audio_id', from).select('id')
   if (error) throw new Error(error.message); return data && data.length === 1
 }
-const { ledgerState, undoPlan, makeLog } = require('./tom006-ledger.cjs')
+const { ledgerState, undoPlan, makeLog, fadePending, undoRecordable } = require('./tom006-ledger.cjs')
 const { makeFaded } = require('./tom006-fade-lib.cjs')
 const dryRun = has('--dry-run')
 const log = makeLog(ledger, dryRun)
@@ -46,11 +46,16 @@ const log = makeLog(ledger, dryRun)
     return moved
   }
   if (has('--undo')) {
+    // German's swaps point at UNFADED clips while the fade ledger (tom006-fade.cjs) still has pairs on top of them: undo the fade first (lane review #815)
+    const fadeFile = path.join(dir, `${course}-fade-ledger.jsonl`)
+    const pending = fs.existsSync(fadeFile) ? fadePending(fs.readFileSync(fadeFile, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse)) : 0
+    if (pending) { console.error(`REFUSED: ${pending} faded pairs for ${course} are still applied on top of these swaps; undo the fade first:\n  node tools/audio/tom006-fade.cjs --course ${course} --undo\nthen rerun this undo.`); await pg.end(); process.exit(1) }
     let n = 0
     for (const p of undoPlan(lines())) {
       if (dryRun) { console.log('would undo', p.lego_id, p.newId, '->', p.oldId, p.slots.length, 'slots'); n += p.slots.length; continue }
       let moved = 0; for (const s of p.slots) if (await setPointer(db, s, p.newId, p.oldId, await event())) moved++   // conditional: only slots still on newId move
-      log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved }); n += moved
+      if (undoRecordable(moved)) log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved }); else console.log('0 slots moved, NOT recorded as undone:', p.lego_id, p.newId)
+      n += moved
     }
     if (n && !dryRun) console.log('content_version', await bumpCourseVersion(db, course, 'patch'))
     console.log(dryRun ? 'would undo' : 'undone slots', n); return pg.end()
@@ -70,8 +75,14 @@ const log = makeLog(ledger, dryRun)
       console.log(`${o.lego_id} re-pointed to recorded ${prior.newId} ${moved}/${slots.length}`); continue
     }
     if (dryRun) { console.log('would render', o.lego_id, o.newText, slots.length, 'slots'); n++; continue }
-    const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-794' },
-      body: JSON.stringify({ courseCode: course, role: 'presentation', text: o.newText, language: 'eng', voiceId: T6, voiceBound: true, job: '#794', purpose: `#794 Tom-006 intro ${o.lego_id}` }) })
+    // a dropped connection (Popty restarting under an auto-deploy) is retried: nothing is charged when the request never landed, and if it did land the same text
+    // is a library hit; a refusal (HTTP 4xx) is never retried
+    const body = JSON.stringify({ courseCode: course, role: 'presentation', text: o.newText, language: 'eng', voiceId: T6, voiceBound: true, job: '#794', purpose: `#794 Tom-006 intro ${o.lego_id}` })
+    let res
+    for (let attempt = 1; ; attempt++) {
+      try { res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-794' }, body }); break }
+      catch (e) { if (attempt >= 8) throw e; console.log(`fetch failed (${attempt}/8): ${e.message}; waiting for Popty`); await new Promise(r => setTimeout(r, 5000 * attempt)) }
+    }
     const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
     if (!res.ok || !r.ok) { log({ kind: 'refused', lego_id: o.lego_id, text: o.newText, r }); console.log('REFUSED — stopping, no retry:', o.lego_id, JSON.stringify(r)); break }
     const { rows: [ca] } = await pg.query('select id::text, voice_id, text, s3_key, duration_ms, created_at from course_audio where id=$1', [r.audioId])
