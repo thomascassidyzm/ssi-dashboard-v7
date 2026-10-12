@@ -922,8 +922,7 @@ function createSpendGuard(opts = {}) {
 // ─── Human alert: one line into the command surface's needs-you ────────────
 
 /**
- * POST the alert to the surface (loopback identity, the same way
- * ops/watchdog/holmes-availability-sentinel.sh escalates). Fire-and-forget,
+ * POST the alert to the surface (loopback identity). Fire-and-forget,
  * 5s timeout. TTS_SPEND_ALERTS=0 turns the POST off (the log and the alerts
  * file still carry it).
  */

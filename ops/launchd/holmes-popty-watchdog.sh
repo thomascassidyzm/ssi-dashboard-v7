@@ -15,8 +15,8 @@
 # macOS cron is itself started by launchd (com.vix.cron), so moving this script
 # to cron would buy exactly nothing. The genuinely independent leg — the one
 # that survives Holmes being off, asleep, or wedged — cannot live on Holmes at
-# all, and it doesn't: it is ops/watchdog/holmes-availability-sentinel.sh,
-# running on watson-1, which tells Tom rather than restarting anything.
+# all, and it doesn't: there was a watson-1 sentinel for it, retired with the
+# ngrok tunnel (job #147; see git history of ops/watchdog/).
 #
 # KeepAlive already restarts a process that EXITS. This script exists for the
 # case KeepAlive cannot see: a process that is alive but not serving — node
