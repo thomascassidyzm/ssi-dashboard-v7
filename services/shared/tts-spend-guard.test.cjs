@@ -255,9 +255,30 @@ describe('(f3) a limits change is said once per host, not on every restart (job 
   })
 })
 
+describe('(f4) the combined cap falling back when its raise expires is a limits change (lane review #878)', () => {
+  it('says so once when hold.raise lapses', async () => {
+    const sent = []
+    const b = budgets({ hold: { by: 'Tom', since: '2026-09-28', message: 'held', combinedDailyCapChars: 1000000, raise: { combinedDailyCapChars: 3000000, by: 'Watson for Tom', why: 'test', until: '2026-10-23T00:00:00Z' } }, providers: { cartesia: { monthlyPoolChars: 10 ** 9, dailyCapChars: 10 ** 7, alertDailyChars: 1e9 } } })
+    const limitCards = () => sent.filter(e => String(e.key).startsWith('limits:'))
+    const saved = clock
+    try {
+      clock = Date.parse('2026-10-22T12:00:00Z')
+      const g = guard({ notify: (e) => sent.push(e), budgetPath: b })
+      await call(g, 'before expiry')
+      const before = limitCards().length
+      clock = Date.parse('2026-10-23T00:00:01Z')
+      await call(g, 'after expiry')
+      expect(limitCards().length).toBe(before + 1)
+    } finally { clock = saved }
+  })
+})
+
 describe('(h) the standing hold: 1,000,000 chars a day across all providers (Tom 2026-09-28, jobs #569, #570)', () => {
   // The COMMITTED budget file, not a fixture: this is the rule as it ships.
-  const committed = path.join(__dirname, '..', '..', 'ops', 'tts-spend-budgets.json')
+  const shipped = path.join(__dirname, '..', '..', 'ops', 'tts-spend-budgets.json')
+  // The standing hold is the baseline WITHOUT any temporary signed raise (hold.raise, the Cartesia dailyCapChars raise): a raise for a named job expires on its own date, and these tests must not depend on today's date.
+  const committed = path.join(require('os').tmpdir(), `tts-baseline-hold-${process.pid}.json`)
+  { const d = JSON.parse(fs.readFileSync(shipped, 'utf8')); delete d.hold.raise; if (d.providers.cartesia.raise) delete d.providers.cartesia.raise.dailyCapChars; fs.writeFileSync(committed, JSON.stringify(d)) }
 
   for (const provider of ['cartesia', 'azure', 'xai']) {
     it(`${provider}: a 1,000,001-char day is refused, naming Tom's go`, async () => {

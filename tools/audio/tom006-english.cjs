@@ -163,10 +163,9 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
                   r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
                   if (r && r.code === 'LEDGER') {   // the shared spend ledger timed out (DB load): fail-closed, nothing was sent; wait and ask again rather than stop
                     const wait = [5000, 15000, 60000][Math.min(ledgerHits++, 2)]; console.log(`spend ledger unreachable, waiting ${wait / 1000}s then asking again:`, q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, wait)); r = undefined; attempt = Math.min(attempt, 5); if (stopFlag) return
-                  } else if (r && r.code === 'DAILY_TOTAL_CAP') {   // Tom: the guards are not for his directed jobs; the approval ceiling is 2M/day, so wait for the UTC day to turn rather than stop (nothing was sent: a refusal is not a render)
-                    const now = new Date(), next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 5))
-                    console.log('DAILY_TOTAL_CAP reached — waiting for', next.toISOString(), JSON.stringify(r).slice(0, 200)); log({ kind: 'cap-wait', until: next.toISOString() })
-                    while (Date.now() < next.getTime() && !stopFlag) await new Promise(z => setTimeout(z, 30000)); r = undefined; attempt--; if (stopFlag) return
+                  } else if (r && (r.code === 'DAILY_TOTAL_CAP' || r.code === 'DAILY_CAP')) {   // Tom: guards are not for his directed jobs. Nothing was sent; ask again every 2 minutes (a signed raise or the next UTC day clears it) rather than stop
+                    console.log('daily cap holding (' + r.code + '), asking again in 120s:', JSON.stringify(r).slice(0, 160)); log({ kind: 'cap-wait', code: r.code })
+                    await new Promise(z => setTimeout(z, 120000)); r = undefined; attempt = Math.min(attempt, 5); if (stopFlag) return
                   }
                 } catch (e) {
                   console.log('connection dropped, checking before any retry:', q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, 30000))
