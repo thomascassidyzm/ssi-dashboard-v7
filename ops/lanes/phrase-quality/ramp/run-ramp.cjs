@@ -11,7 +11,7 @@
 //   - windows are claimed in claims.json; the lane honours it once command-surface ramp-967-claims lands.
 //   - the plan never takes a window the lane will reach before 22 Oct (HORIZON) or has already taken.
 // Model calls go through the Claude CLI (CLAUDE.md: never the SDK), on the account the surface's router
-// names (GET /api/routing winner), one process per call, at most CONCURRENCY windows at once.
+// may spend (accounts.cjs: iCloud, then claude@ under 90%), one process per call, at most CONCURRENCY windows at once.
 // Usage: node ops/lanes/phrase-quality/ramp/run-ramp.cjs [--plan] [--only id,id] [--limit N] [--concurrency N] [--no-apply] [--horizon N]
 'use strict'
 const fs = require('fs'), path = require('path'), os = require('os')
@@ -72,20 +72,18 @@ async function makePlan() {
 
 // ── model calls ─────────────────────────────────────────────────────────────────────────────────
 const benched = new Map()   // account name → until (ms)
-let routing = { at: 0, data: null }
+let routing = { at: 0, data: null, usage: null }
+// Tom 2026-10-12: iCloud then claude@ (<90% week) only, else wait — accounts.cjs, tested in ramp.test.cjs
 async function pickAccount() {
   if (Date.now() - routing.at > 120e3) {
+    const h = process.env.CS_CONV ? { 'x-cs-conv': process.env.CS_CONV } : {}
     try {
-      const r = await fetch(`${SURFACE}/api/routing`, { headers: process.env.CS_CONV ? { 'x-cs-conv': process.env.CS_CONV } : {} })
-      routing = { at: Date.now(), data: await r.json() }
-    } catch (e) { say('routing unreadable:', e.message) }
+      const [r, u] = await Promise.all([fetch(`${SURFACE}/api/routing`, { headers: h }), fetch(`${SURFACE}/api/usage`, { headers: h })])
+      routing = { at: Date.now(), data: await r.json(), usage: await u.json() }
+    } catch (e) { say('routing/usage unreadable:', e.message) }
   }
-  const d = routing.data || { accounts: [] }
-  const usable = (n) => { const a = d.accounts.find((x) => x.name === n); return a && !a.blocked && !a.benched && !(benched.get(n) > Date.now()) && fs.existsSync(path.join(ACCTS, n, '.cs-oauth-token')) }
-  const win = d.winner && d.winner.all && d.winner.all.name
-  if (win && usable(win)) return win
-  const alt = d.accounts.filter((a) => usable(a.name)).sort((a, b) => a.resetsAt - b.resetsAt)[0]
-  return alt ? alt.name : null
+  const name = require('./accounts.cjs').chooseAccount(routing.data, routing.usage, benched)
+  return name && fs.existsSync(path.join(ACCTS, name, '.cs-oauth-token')) ? name : null
 }
 const usage = { calls: 0, input: 0, output: 0, cacheRead: 0, byModel: {} }
 async function callClaude(model, { system, user }, label) {
