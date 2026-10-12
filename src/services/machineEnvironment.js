@@ -33,7 +33,15 @@ if (PREVIEW_API) {
 // talks to its preview backend, whatever the browser saved before.
 export const isLocalHost = typeof window !== 'undefined' &&
   (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-export const DEFAULT_ENV = PREVIEW_API ? 'preview' : (import.meta.env.VITE_DEFAULT_ENVIRONMENT || (isLocalHost ? 'api' : 'watson'))
+// A configured default naming a retired machine (tom/kai/ssi, removed with ngrok)
+// must not be dereferenced: it would throw in pinMachineEnvironment() before the
+// app mounts. Anything not in ENVIRONMENTS falls back to the unset behaviour.
+export function resolveDefaultEnv(configured, preview, local) {
+  if (preview) return 'preview'
+  if (configured && ENVIRONMENTS[configured]) return configured
+  return local ? 'api' : 'watson'
+}
+export const DEFAULT_ENV = resolveDefaultEnv(import.meta.env.VITE_DEFAULT_ENVIRONMENT, PREVIEW_API, isLocalHost)
 
 /**
  * SYNCHRONOUS: ensure localStorage is set BEFORE any async code runs (prevents

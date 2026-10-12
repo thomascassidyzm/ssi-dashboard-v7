@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach } from 'vitest'
-import { ENVIRONMENTS, DEFAULT_ENV, pinMachineEnvironment } from '../machineEnvironment.js'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import { ENVIRONMENTS, DEFAULT_ENV, pinMachineEnvironment, resolveDefaultEnv } from '../machineEnvironment.js'
 
 // The ngrok machines (tom/kai/ssi) were retired 2026-10-12: popty.app serves
 // through watson-1's Tailscale Funnel. A browser that saved one of them must
@@ -29,5 +29,29 @@ describe('retired ngrok environments', () => {
     expect(pinMachineEnvironment()).toBe(DEFAULT_ENV)
     expect(localStorage.getItem('ssi_environment')).toBe(DEFAULT_ENV)
     expect(localStorage.getItem('api_base_url')).toBe(ENVIRONMENTS[DEFAULT_ENV].url)
+  })
+})
+
+// Lane review #149: a build with VITE_DEFAULT_ENVIRONMENT=tom/kai/ssi plus empty
+// storage dereferenced a removed environment and threw before main.js mounted.
+describe('retired configured default', () => {
+  it.each(['tom', 'kai', 'ssi'])('"%s" falls back: api on localhost, watson elsewhere', (retired) => {
+    expect(resolveDefaultEnv(retired, '', true)).toBe('api')
+    expect(resolveDefaultEnv(retired, '', false)).toBe('watson')
+  })
+
+  it('keeps a valid configured default and the preview override', () => {
+    expect(resolveDefaultEnv('api', '', false)).toBe('api')
+    expect(resolveDefaultEnv('api', 'https://x', false)).toBe('preview')
+  })
+
+  it.each(['tom', 'kai', 'ssi'])('empty storage + retired default "%s" initialises', async (retired) => {
+    vi.resetModules()
+    vi.stubEnv('VITE_DEFAULT_ENVIRONMENT', retired)
+    globalThis.localStorage = fakeLocalStorage()
+    const m = await import('../machineEnvironment.js')
+    expect(m.ENVIRONMENTS[m.DEFAULT_ENV]).toBeDefined()
+    expect(() => m.pinMachineEnvironment()).not.toThrow()
+    vi.unstubAllEnvs()
   })
 })
