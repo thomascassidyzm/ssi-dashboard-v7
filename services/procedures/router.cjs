@@ -6,8 +6,11 @@
 // those inputs as closed choices, and the registry builds the argv. The page cannot ask for anything
 // the registry did not declare.
 //
-// WHO: Tom first (registry.OPERATORS). Every route is admin-gated AND operator-gated on the server;
-// the page hiding things is courtesy, this is the lock.
+// WHO (Tom, 2026-10-12 16:51Z: "anyone who is ssi admin in general - and a course editor in specific"):
+// an SSi admin may open the panel and run any procedure that names no course; a procedure that names
+// a course needs a grant on THAT course (admin, '*', or the course in the user's list - the same rule
+// as services/shared/content-edit-gate.cjs mayShapeCourse). Enforced here on every route, dry-run and
+// run included; the page hiding things is courtesy, this is the lock.
 //
 // THE PLAN THAT RUNS IS THE PLAN YOU READ. A 'change' procedure runs only against a successful dry
 // run of the same procedure with the same inputs, made within PLAN_TTL_MIN — planMatches() below.
@@ -46,7 +49,7 @@ function undoTarget(run) {
  * @param {object}   [deps.logger]
  * @param {object}   [deps.runner]       injected in tests
  */
-function mount(app, { requireAdmin, listCourses, logger = console, runner: r = runner }) {
+function mount(app, { requireAdmin, requireUser = requireAdmin, listCourses, logger = console, runner: r = runner }) {
   let coursesCache = { at: 0, list: null }
   async function courses() {
     if (coursesCache.list && Date.now() - coursesCache.at < 60000) return coursesCache.list
@@ -54,10 +57,12 @@ function mount(app, { requireAdmin, listCourses, logger = console, runner: r = r
     return coursesCache.list
   }
 
+  // Any signed-in dashboard user may open the panel only if they are an admin or hold a course grant
+  // (a recorder or an empty grant is refused). Per-procedure scope is checked in mayRun().
   async function operator(req, res) {
-    const user = await requireAdmin(req, res)
+    const user = await requireUser(req, res)
     if (!user) return null
-    if (!registry.isOperator(user)) { res.status(403).json({ error: 'Procedures are open to Tom only for now.' }); return null }
+    if (!registry.isAdmin(user) && !registry.grantedCourses(user)) { res.status(403).json({ error: 'Procedures are open to SSi admins and course editors.' }); return null }
     return user
   }
 
@@ -82,6 +87,9 @@ function mount(app, { requireAdmin, listCourses, logger = console, runner: r = r
       build = proc.command(inputs)
     }
 
+    const denied = registry.mayRun(user, proc, inputs)
+    if (denied) { logger.warn?.(`[procedures] REFUSED ${user.email} ${mode} ${proc.id} ${JSON.stringify(inputs)}: ${denied}`); return res.status(403).json({ error: denied }) }
+
     const live = (await r.listRuns({ limit: 60 })).filter((x) => x.state === 'running')
     if (live.length >= MAX_RUNNING) return res.status(429).json({ error: `${live.length} procedures already running; wait for one to finish` })
     const twin = live.find((x) => x.procedure === proc.id && sameInputs(x.inputs, inputs))
@@ -101,8 +109,8 @@ function mount(app, { requireAdmin, listCourses, logger = console, runner: r = r
   })
 
   app.get('/api/procedures/courses', async (req, res) => {
-    if (!(await operator(req, res))) return
-    try { res.json({ courses: await courses() }) } catch (e) { res.status(502).json({ error: `course list: ${e.message}` }) }
+    const user = await operator(req, res); if (!user) return
+    try { const all = await courses(); const g = registry.grantedCourses(user); res.json({ courses: registry.isAdmin(user) || g === '*' ? all : all.filter((c) => g.includes(c)) }) } catch (e) { res.status(502).json({ error: `course list: ${e.message}` }) }
   })
 
   app.post('/api/procedures/:id/dry-run', (req, res) => start(req, res, 'dry-run').catch((e) => res.status(500).json({ error: e.message })))

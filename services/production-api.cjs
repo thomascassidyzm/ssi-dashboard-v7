@@ -6949,9 +6949,10 @@ require('./voicelab/router.cjs').mount(app, { requireAdmin, requireDashboardUser
 // =============================================================================
 // The admin Procedures panel's door: it launches ONLY procedures declared in
 // services/procedures/registry.cjs (Tom, 2026-10-12), each as its own systemd
-// unit so a run survives a deploy. Admin AND operator (Tom first) gated.
+// unit so a run survives a deploy. SSi admins run non-course procedures; a course
+// procedure needs a grant on that course (registry.mayRun, checked on dry-run and run).
 require('./procedures/router.cjs').mount(app, {
-  requireAdmin,
+  requireUser: requireDashboardUser,
   logger,
   listCourses: async () => {
     const { data, error } = await supabaseClient.getClient().from('courses').select('course_code')

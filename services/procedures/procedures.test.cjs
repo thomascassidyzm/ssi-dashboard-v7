@@ -7,6 +7,8 @@ const { systemdRunArgv } = require('./runner.cjs')
 
 const TOM = { email: 'thomas.cassidy+ssi@gmail.com', role: 'admin' }
 const KAI = { email: 'kai@saysomethingin.com', role: 'admin' }
+const EDITOR_FRA = { email: 'ed@example.com', role: 'editor', courses: ['fra_for_eng'] }
+const NOBODY = { email: 'rec@example.com', role: 'recorder', courses: '*' }
 
 function harness(user, launched = []) {
   const routes = {}
@@ -17,7 +19,7 @@ function harness(user, launched = []) {
     readLog: () => ({ text: '', next: 0 }),
     launch: async (x) => { launched.push(x); return { id: 'r1', ...x.record } },
   }
-  mount(app, { requireAdmin: async () => user, listCourses: async () => ['fra_for_eng', 'spa_for_eng'], logger: {}, runner: fakeRunner })
+  mount(app, { requireUser: async () => user, listCourses: async () => ['fra_for_eng', 'spa_for_eng'], logger: {}, runner: fakeRunner })
   const call = async (key, params = {}, body = {}) => {
     let status = 200, json
     const res = { status(s) { status = s; return res }, json(j) { json = j; return res } }
@@ -28,9 +30,36 @@ function harness(user, launched = []) {
 }
 
 describe('procedures', () => {
-  it('refuses an admin who is not an operator', async () => {
-    const { call } = harness(KAI)
+  it('lets any SSi admin open the panel and run a course procedure', async () => {
+    const { call, launched } = harness(KAI)
+    expect((await call('GET /api/procedures')).status).toBe(200)
+    expect((await call('POST /api/procedures/:id/run', { id: 'debut-practice-check' }, { inputs: { course: 'spa_for_eng' } })).status).toBe(202)
+    expect(launched[0].record.by).toBe(KAI.email)
+  })
+
+  it('refuses a non-admin with no course grant, and a recorder, at the door', async () => {
+    expect((await harness({ email: 'x@example.com', role: 'editor', courses: [] }).call('GET /api/procedures')).status).toBe(403)
+    const { call, launched } = harness(NOBODY)
     expect((await call('GET /api/procedures')).status).toBe(403)
+    expect((await call('POST /api/procedures/:id/run', { id: 'debut-practice-check' }, { inputs: { course: 'fra_for_eng' } })).status).toBe(403)
+    expect(launched).toHaveLength(0)
+  })
+
+  it('an editor of course A runs on A but is refused on B, on run and dry-run alike', async () => {
+    const { call, launched } = harness(EDITOR_FRA)
+    expect((await call('POST /api/procedures/:id/run', { id: 'debut-practice-check' }, { inputs: { course: 'fra_for_eng' } })).status).toBe(202)
+    const b = await call('POST /api/procedures/:id/run', { id: 'debut-practice-check' }, { inputs: { course: 'spa_for_eng' } })
+    expect(b.status).toBe(403)
+    expect(b.json.error).toMatch(/not an editor of spa_for_eng/)
+    expect((await call('POST /api/procedures/:id/dry-run', { id: 'phrase-quality-apply' }, { inputs: { course: 'spa_for_eng' } })).status).not.toBe(202)
+    expect(launched).toHaveLength(1)
+    expect((await call('GET /api/procedures/courses')).json.courses).toEqual(['fra_for_eng'])
+  })
+
+  it('an editor is refused a procedure that names no course', async () => {
+    const { call, launched } = harness(EDITOR_FRA)
+    expect((await call('POST /api/procedures/:id/run', { id: 'phrase-quality-status' }, {})).status).toBe(403)
+    expect(launched).toHaveLength(0)
   })
 
   it('runs a report with a validated course and builds the argv itself', async () => {

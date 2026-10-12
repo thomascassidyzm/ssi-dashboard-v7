@@ -123,9 +123,25 @@ const PROCEDURES = [
   },
 ]
 
-// Tom first (2026-10-12). The server refuses everyone else, whatever the page shows.
-const OPERATORS = ['thomas.cassidy+ssi@gmail.com']
-const isOperator = (user) => !!user && OPERATORS.includes(String(user.email || '').toLowerCase())
+// WHO MAY RUN WHAT (Tom, 2026-10-12): an SSi admin runs anything not tied to a course; a course-scoped
+// procedure needs a grant on that course. Admin = the one role gate (popty-identity hasAdminRole, plus
+// the ssiAdmin flag that reaches every course); grant = dashboard_users.courses ('*' or a list).
+const { hasAdminRole } = require('../shared/popty-identity.cjs')
+const isAdmin = (u) => !!u && (hasAdminRole(u) || u.ssiAdmin === true)
+// null = no grant at all (recorders hold none: they never shape a course's text)
+function grantedCourses(u) {
+  if (!u || u.role === 'recorder') return null
+  if (u.courses === '*') return '*'
+  return Array.isArray(u.courses) && u.courses.length ? u.courses : null
+}
+function mayRun(u, proc, inputs) {
+  if (isAdmin(u)) return null
+  const courses = proc.inputs.filter((i) => i.type === 'course').map((i) => inputs[i.name]).filter(Boolean)
+  if (!courses.length) return 'This procedure is not tied to a course: SSi admins only.'
+  const g = grantedCourses(u)
+  const bad = courses.find((c) => g !== '*' && !(g && g.includes(c)))
+  return bad ? `${u.email} is not an editor of ${bad}.` : null
+}
 
 function getProcedure(id) {
   return PROCEDURES.find((p) => p.id === id) || null
@@ -162,4 +178,4 @@ function publicView(proc) {
   return { ...rest, locked: proc.locked || null, hasDryRun: typeof dryRun === 'function', undo: undo ? undo.procedure : null }
 }
 
-module.exports = { PROCEDURES, OPERATORS, REPO_ROOT, COURSE_RE, getProcedure, validateInputs, publicView, isOperator }
+module.exports = { PROCEDURES, isAdmin, grantedCourses, mayRun, REPO_ROOT, COURSE_RE, getProcedure, validateInputs, publicView }
