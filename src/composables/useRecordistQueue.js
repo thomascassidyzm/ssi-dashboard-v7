@@ -346,7 +346,7 @@ export function useRecordistQueue(options = {}) {
         `${apiBase()}/api/recording/voice/${encodeURIComponent(item.voiceId)}/take`,
         {
           method: 'POST',
-          headers: { 'ngrok-skip-browser-warning': 'true' },
+          headers: {},
           body: form,
           ...(ctl ? { signal: ctl.signal } : {}),
         }

@@ -85,12 +85,9 @@ interface EnvironmentSwitcher:
     - "Default environment configurable via VITE_DEFAULT_ENVIRONMENT"
 
   environments:
-    tom:
-      url: "https://popty.ngrok.app"
-      machineProfile: "tom"
-    kai:
-      url: "https://kai-lizard-function.ngrok-free.dev"
-      machineProfile: "kai"
+    watson:
+      url: "https://watson-1.tail4968cb.ts.net:8443"
+      machineProfile: "default"
     api:
       url: "http://localhost:3470"
       machineProfile: "default"
@@ -563,7 +560,7 @@ patterns:
     - "Pinia stores for complex shared state (useProductionStore)"
 
   api_integration:
-    - "Axios for API calls with ngrok-skip-browser-warning header"
+    - "Axios for API calls"
     - "getApiUrl() helper for environment-aware base URL"
     - "Polling with setInterval for real-time updates"
     - "AbortSignal for timeout handling"

@@ -337,7 +337,7 @@ const loadIssues = async () => {
 
       const response = await fetch(
         `${apiBaseUrl}/api/production/${courseCode.value}/feedback/aggregated?${params}`,
-        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+        { headers: {} }
       );
 
       if (!response.ok) throw new Error('Failed to load issues');
@@ -361,7 +361,7 @@ const loadStats = async () => {
       const apiBaseUrl = getApiBaseUrl();
       const response = await fetch(
         `${apiBaseUrl}/api/production/${courseCode.value}/feedback/stats`,
-        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+        { headers: {} }
       );
 
       if (!response.ok) throw new Error('Failed to load stats');
@@ -420,7 +420,6 @@ const confirmResolve = async () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true'
         },
         body: JSON.stringify({
           audioId: issueToResolve.value.audio_id,

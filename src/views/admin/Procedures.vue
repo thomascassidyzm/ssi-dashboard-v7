@@ -129,7 +129,7 @@ async function api(path, init = {}) {
   try { token = await useAuth().getAccessToken() } catch { /* the server answers 401 */ }
   const res = await fetch(`${getApiUrl()}/api/procedures${path}`, {
     ...init,
-    headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true', ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(init.headers || {}) },
+    headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(init.headers || {}) },
   })
   const body = await res.json().catch(() => ({}))
   if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)

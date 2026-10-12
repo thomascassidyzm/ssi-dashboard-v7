@@ -330,7 +330,7 @@ const mode = computed(() => (editing.value || !hasSavedCast.value ? 'editing' : 
 
 async function authedFetch(path, init = {}) {
   const token = await getAccessToken()
-  const headers = { 'ngrok-skip-browser-warning': 'true', 'Content-Type': 'application/json', ...(init.headers || {}) }
+  const headers = { 'Content-Type': 'application/json', ...(init.headers || {}) }
   if (token) headers.Authorization = `Bearer ${token}`
   const res = await fetch(`${getApiUrl()}${path}`, { ...init, headers })
   const body = await res.json().catch(() => ({}))

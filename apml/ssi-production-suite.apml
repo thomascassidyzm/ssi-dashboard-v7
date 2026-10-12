@@ -17,7 +17,7 @@ architecture:
     - Dashboard (popty.app) is deployed on Vercel for global access
     - Content creation requires local machines for Claude Code agents
     - Database (Supabase) is the single source of truth for all content
-    - ngrok tunneling connects dashboard to local orchestrators
+    - Tailscale Funnel on watson-1 connects the dashboard to the production API
 
   components:
     dashboard:
@@ -103,8 +103,7 @@ architecture:
   environment_switcher:
     description: |
       The dashboard includes an environment switcher that allows users to:
-      - Connect to their own local machine's ngrok tunnel
-      - Connect to a teammate's machine (e.g., Kai's)
+      - Connect to the watson-1 cloud machine or a local API
       - Switch between development and production environments
 
     configuration:
@@ -112,13 +111,9 @@ architecture:
         url: "http://localhost:3456"
         description: "Direct local connection"
 
-      - name: "Tom's Machine"
-        url: "https://xxx.ngrok-free.dev"
-        description: "Tom's ngrok tunnel"
-
-      - name: "Kai's Machine"
-        url: "https://yyy.ngrok-free.dev"
-        description: "Kai's ngrok tunnel"
+      - name: "SSi Machine (Cloud)"
+        url: "https://watson-1.tail4968cb.ts.net:8443"
+        description: "watson-1 via Tailscale Funnel"
 
   why_ngrok:
     description: |

@@ -114,7 +114,7 @@ const route = useRoute()
 const store = useProductionStore()
 const { learner, isAdmin } = useAuth()
 const apiBase = getApiUrl()
-const headers = { 'ngrok-skip-browser-warning': 'true' }
+const headers = {}
 
 // ---------------------------------------------------------------------------
 // Live status data — the SAME data the existing pages read, no new state.

@@ -274,7 +274,7 @@ function selectSeed(n) {
 async function fetchQueue() {
   try {
     const resp = await fetch(`${builderApiUrl}/api/golden/review-queue/${props.courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (!resp.ok) throw new Error(await resp.text())
     const data = await resp.json()
@@ -301,7 +301,7 @@ async function submitReview(status) {
   try {
     const resp = await fetch(`${builderApiUrl}/api/golden/review/${props.courseCode}/${selectedDraft.value.seed_number}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status, notes: reviewNotes.value || null })
     })
     if (!resp.ok) throw new Error(await resp.text())

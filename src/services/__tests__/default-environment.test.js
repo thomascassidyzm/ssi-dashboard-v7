@@ -37,7 +37,7 @@ describe('shouldFallBackToDefault', () => {
   })
 
   it('heals from any of the personal dev tunnels', () => {
-    for (const env of ['tom', 'kai', 'ssi']) {
+    for (const env of ["tom", "kai", "ssi"]) {
       expect(shouldFallBackToDefault({ ...base, savedEnv: env, currentEnv: env })).toBe(true)
     }
   })

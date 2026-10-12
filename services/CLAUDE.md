@@ -153,8 +153,8 @@ validator.
 router that lists the stage order. Superseded briefs go to `briefs/deprecated/`.
 
 **`api/`** — a small, odd corner: `audio-repair-routes.cjs` and `audio-tail-scan-routes.cjs` are
-routers mounted elsewhere; `progress-tracker.cjs` (3462) and `ngrok-proxy.cjs` (3463) are their own
-tiny servers. Do not confuse it with the repo-root `/api` (Vercel functions) — different runtime,
+routers mounted elsewhere; `progress-tracker.cjs` (3462) is its own
+tiny server. Do not confuse it with the repo-root `/api` (Vercel functions) — different runtime,
 different deploy, different module system.
 
 **`orchestration/`, `pipeline/`** — one server each, from the older pipeline architecture. Their

@@ -286,7 +286,7 @@ const emit = defineEmits<{ (e: 'started'): void }>()
 
 const { getCourseName, getLanguageName } = useCourses()
 const apiBaseUrl = getApiUrl()
-const HEADERS = { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+const HEADERS = { 'Content-Type': 'application/json' }
 
 const rounds = ref(10)
 const planning = ref(false)

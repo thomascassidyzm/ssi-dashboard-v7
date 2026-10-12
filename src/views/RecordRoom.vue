@@ -353,7 +353,7 @@ function apiBase() {
   return localStorage.getItem('api_base_url') || getApiUrl()
 }
 
-const FETCH_HEADERS = { 'ngrok-skip-browser-warning': 'true' }
+const FETCH_HEADERS = {}
 
 async function loadRoom() {
   if (!props.courseCode) {

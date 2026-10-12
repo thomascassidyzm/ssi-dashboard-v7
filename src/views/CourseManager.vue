@@ -944,7 +944,7 @@ async function fetchPipelineStatus() {
   try {
     const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
     const resp = await fetch(`${builderApiUrl}/api/build/pipeline/${props.courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (resp.ok) {
       pipelineStatus.value = await resp.json()
@@ -961,7 +961,7 @@ async function startPipeline() {
     const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
     const resp = await fetch(`${builderApiUrl}/api/build/pipeline/${props.courseCode}`, {
       method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (resp.ok) {
       await fetchPipelineStatus()
@@ -1000,7 +1000,7 @@ async function executeWipe() {
     const keepAudioParam = wipeKeepAudio.value ? '&keep_audio=true' : ''
     const response = await fetch(`${builderApiUrl}/api/course/${code}/wipe?confirm=yes${keepAudioParam}`, {
       method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
 
     if (!response.ok) throw new Error((await response.clone().json().catch(() => ({}))).error || `HTTP ${response.status}`)
@@ -1027,7 +1027,7 @@ async function fetchSeedGrid() {
   try {
     const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
     const response = await fetch(`${builderApiUrl}/api/build/seed-grid/${code}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (response.ok) {
       const data = await response.json()
@@ -1049,7 +1049,6 @@ async function executeRebuild() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({ from_seed: rebuildFrom.value, to_seed: rebuildTo.value, confirm: true })
     })
@@ -1405,7 +1404,7 @@ async function fetchProgress() {
     try {
       const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
       const response = await fetch(`${builderApiUrl}/api/stats/${code}`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
 
       if (response.ok) {
@@ -1429,7 +1428,7 @@ async function fetchProgress() {
 
       // Also poll build status for parallel build info
       const statusResp = await fetch(`${builderApiUrl}/api/build/status/${code}`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
       if (statusResp.ok) {
         const statusData = await statusResp.json()
@@ -1470,7 +1469,7 @@ async function fetchProgress() {
   try {
     const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
     const response = await fetch(`${apiBase}/api/courses/${code}/progress`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
 
     if (!response.ok) throw new Error('Failed to fetch progress')
@@ -1569,7 +1568,6 @@ async function createCourse() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         courseCode: newCode,
@@ -1608,7 +1606,7 @@ async function fetchPreview() {
     const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
     const mode = seedCount.value === 30 ? 'quick_test' : seedCount.value === 300 ? 'mvp_course' : 'full_course'
     const response = await fetch(`${apiBase}/api/preview/${code}/${targetPhase.number}?mode=${mode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
 
     if (!response.ok) {
@@ -1655,7 +1653,6 @@ async function startPhase() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         courseCode: code,
@@ -1690,7 +1687,6 @@ async function startCourseBuilder() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         terminal: agentEngine.value === 'cli' ? 'iTerm2' : agentEngine.value === 'terminal' ? 'Terminal' : 'iTerm2',
@@ -1740,7 +1736,7 @@ async function stopJob() {
       // This routes through production-api -> orchestrator -> course-builder-api
       const response = await fetch(`${apiBase}/api/mission-control/jobs/${code}-build/stop`, {
         method: 'POST',
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
 
       if (response.ok) {
@@ -1759,7 +1755,7 @@ async function stopJob() {
       // Legacy Phases 1-3 mode: use orchestrator cancel endpoints
       await fetch(`${apiBase}/api/cancel/${code}`, {
         method: 'POST',
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
 
       addEvent('Stop request sent')
@@ -1767,7 +1763,7 @@ async function stopJob() {
       // Also call force-kill to clear any phantom state on phase servers
       await fetch(`${apiBase}/api/force-kill/${code}`, {
         method: 'POST',
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
 
       addEvent('Job stopped')
@@ -1795,7 +1791,7 @@ async function forceKill() {
     const apiBase = localStorage.getItem('api_base_url') || getApiUrl()
     await fetch(`${apiBase}/api/force-kill/${code}`, {
       method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
 
     jobStatus.value = 'idle'
@@ -1821,7 +1817,7 @@ async function clearStaleJob() {
     const phase3Url = import.meta.env.VITE_PHASE3_URL || 'http://localhost:3459'
     await fetch(`${phase3Url}/abort/${code}`, {
       method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
 
     addEvent('Stale job cleared from Phase 3 server')
@@ -1954,7 +1950,7 @@ async function fetchCalibrationReview() {
   try {
     const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
     const resp = await fetch(`${builderApiUrl}/api/golden/review-queue/${code}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (resp.ok) {
       const data = await resp.json()

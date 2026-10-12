@@ -658,7 +658,7 @@ const MAX_CONSECUTIVE_ERRORS = 3
 const pollAudioProgress = async () => {
   try {
     const response = await fetch(`${apiBaseUrl}/api/audio/status`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (response.ok) {
       consecutiveErrors = 0
@@ -699,7 +699,7 @@ const refreshAudioStats = async () => {
   try {
     // Always use the backend API — it calls get_audio_counts RPC directly.
     // Never use sbGetAudioStats (frontend direct Supabase) as it counts differently.
-    const headers = { 'ngrok-skip-browser-warning': 'true' }
+    const headers = {}
     const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/audio-stats?fresh=1`, { headers })
     if (response.ok) {
       const stats = await response.json()
@@ -739,13 +739,13 @@ const stopProgressPolling = () => {
 const fetchGenderPrepStatus = async () => {
   try {
     const response = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/gender-prep/status`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (response.ok) {
       genderPrepStatus.value = await response.json()
       if (genderPrepStatus.value.isGendered && genderPrepStatus.value.processed) {
         const flagResponse = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/gender-prep/flag-count`, {
-          headers: { 'ngrok-skip-browser-warning': 'true' }
+          headers: {}
         })
         if (flagResponse.ok) {
           const flagData = await flagResponse.json()
@@ -769,7 +769,6 @@ const startGenderPrep = async () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       }
     })
     const data = await response.json()
@@ -996,7 +995,6 @@ const previewRegenerate = async () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         role: regenerateRole.value,
@@ -1044,7 +1042,6 @@ const executeRegenerate = async () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         role: regenerateRole.value,
@@ -1107,7 +1104,6 @@ const regenerateFlagged = async () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true'
         },
         body: JSON.stringify({ role, flaggedOnly: true, dryRun: false })
       })

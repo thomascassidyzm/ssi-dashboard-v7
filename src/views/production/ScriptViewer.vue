@@ -1084,7 +1084,7 @@ async function searchJourney(query: string) {
     const apiBaseUrl = getApiBaseUrl();
     const response = await fetch(
       `${apiBaseUrl}/api/production/${courseCode.value}/learning-journey/search?q=${encodeURIComponent(query)}`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      { headers: {} }
     );
     if (!response.ok) throw new Error('Search failed');
     const data = await response.json();
@@ -1479,7 +1479,6 @@ const { getAccessToken } = useAuth();
 const authedFetch = async (path: string, init: RequestInit = {}): Promise<Response> => {
   const token = await getAccessToken();
   const headers: Record<string, string> = {
-    'ngrok-skip-browser-warning': 'true',
     'Content-Type': 'application/json',
     ...((init.headers as Record<string, string>) || {}),
   };
@@ -1538,7 +1537,7 @@ const loadCourseData = async (seedStart?: string, seedEnd?: string) => {
       const url = `${apiBaseUrl}/api/production/${courseCode.value}/script-view?${params.toString()}`;
 
       const response = await fetch(url, {
-        headers: { 'ngrok-skip-browser-warning': 'true' },
+        headers: {},
         signal: AbortSignal.timeout(60000) // 60s per chunk (not 5 min for everything)
       });
 
@@ -1817,7 +1816,7 @@ const fetchAuditionUrl = async (audioUuid: string): Promise<string | null> => {
   try {
     const urlResp = await fetch(
       `${getApiBaseUrl()}/api/production/${courseCode.value}/audio/${audioUuid}/url`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      { headers: {} }
     );
     if (urlResp.ok) {
       const urlData = await urlResp.json();
@@ -2030,7 +2029,7 @@ const onJourneyPresentationEdit = async (item: any) => {
     const apiBaseUrl = getApiBaseUrl();
     const resp = await fetch(
       `${apiBaseUrl}/api/production/${courseCode.value}/presentation/${encodeURIComponent(legoId)}`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      { headers: {} }
     );
     if (resp.ok) {
       const data = await resp.json();
@@ -2061,7 +2060,7 @@ const savePresentationAndRegen = async () => {
       `${apiBaseUrl}/api/audio/regenerate-presentation/${courseCode.value}/${encodeURIComponent(presentationLegoId.value)}`,
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text: presentationText.value.trim() }),
       }
     );
@@ -2081,7 +2080,7 @@ const savePresentationAndRegen = async () => {
       try {
         const urlResp = await fetch(
           `${apiBaseUrl}/api/production/${courseCode.value}/audio/${result.audio_id}/url`,
-          { headers: { 'ngrok-skip-browser-warning': 'true' } }
+          { headers: {} }
         );
         if (urlResp.ok) {
           const urlData = await urlResp.json();
@@ -2207,7 +2206,7 @@ const regenerateLegoAudio = async () => {
       `${apiBaseUrl}/api/audio/regenerate-lego/${courseCode.value}/${encodeURIComponent(legoAudioLegoId.value)}`,
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           roles,
           tts_known_text: legoSpokenKnown.value,
@@ -2255,7 +2254,7 @@ const regenerateLegoAudio = async () => {
         try {
           const urlResp = await fetch(
             `${apiBaseUrl}/api/production/${courseCode.value}/audio/${audioId}/url`,
-            { headers: { 'ngrok-skip-browser-warning': 'true' } }
+            { headers: {} }
           );
           if (urlResp.ok) url = (await urlResp.json()).url || null;
         } catch (e) { /* non-fatal: regen succeeded */ }
@@ -2383,7 +2382,7 @@ const handleKeydown = (event: KeyboardEvent) => {
 const initDefaultSeedRange = async () => {
   try {
     const res = await fetch(`${getApiBaseUrl()}/api/stats/${courseCode.value}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' },
+      headers: {},
       signal: AbortSignal.timeout(10000)
     });
     if (!res.ok) return;

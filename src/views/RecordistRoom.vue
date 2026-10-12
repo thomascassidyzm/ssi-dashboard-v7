@@ -1553,7 +1553,7 @@ async function saveEdit(lineId, text, side = editingSide.value) {
       `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/line/${encodeURIComponent(lineId)}/text`,
       {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        headers: { 'Content-Type': 'application/json' },
         // ONE SIDE PER SAVE. The server unlinks only the take of the side whose
         // words moved (recordist-router.cjs), so a known-side fix never costs
         // him his own take, and the screen below follows the same rule.
@@ -2324,7 +2324,7 @@ async function rerecordAllMine() {
   try {
     const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/rerecord-all`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ confirm: true, asArtist: true, reason: 'Artist pressed Re-record all in the booth' }),
     })
     const body = await res.json().catch(() => ({}))
@@ -2411,7 +2411,7 @@ async function submitSetup() {
   setupError.value = null
   try {
     const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/submit`, {
-      method: 'POST', headers: { 'ngrok-skip-browser-warning': 'true' },
+      method: 'POST', headers: {},
     })
     const body = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(body.error || `Could not submit (${res.status})`)
@@ -2448,7 +2448,7 @@ async function load() {
     const podParam = podScope ? `&pod=${encodeURIComponent(podScope)}` : ''
     const res = await fetch(
       `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      { headers: {} }
     )
     if (res.status === 404) { phase.value = 'unknown'; return }
     if (res.status === 403) {

@@ -350,12 +350,6 @@ configuration SSiDashboard:
   ## ==========================================================================
 
   optional:
-    ngrok:
-      description: "Tunnel for external agent access"
-      variable: "NGROK_URL"
-      format: "https://{subdomain}.ngrok.io"
-      used_for: "Remote agent orchestration"
-
     anthropic:
       description: "Claude API for AI-powered agents"
       variable: "ANTHROPIC_API_KEY"

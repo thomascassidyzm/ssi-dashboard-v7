@@ -195,7 +195,7 @@ function slotPercent(slot) {
 }
 
 async function fetchJson(url, options) {
-  const res = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' }, ...options })
+  const res = await fetch(url, { headers: {}, ...options })
   const data = await res.json().catch(() => ({}))
   if (!res.ok) {
     const err = new Error(data.error || `Request failed (${res.status})`)

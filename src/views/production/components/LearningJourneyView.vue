@@ -832,7 +832,6 @@ const { getAccessToken } = useAuth()
 const mappingFetch = async (path: string, init: RequestInit = {}) => {
   const token = await getAccessToken()
   const headers: Record<string, string> = {
-    'ngrok-skip-browser-warning': 'true',
     'Content-Type': 'application/json',
     ...((init.headers as Record<string, string>) || {}),
   }
@@ -1134,7 +1133,7 @@ async function playTrack(uuid: string) {
     let url = `${apiBaseUrl}/api/production/${props.courseCode}/audio/${uuid}/url`
     const s3Key = introS3KeyMap.value.get(uuid)
     if (s3Key) url += `?s3Key=${encodeURIComponent(s3Key)}`
-    const resp = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+    const resp = await fetch(url, { headers: {} })
     if (!resp.ok) return
     const data = await resp.json()
     if (!data.url) return
@@ -1175,7 +1174,7 @@ const player = useScriptPlayer({
     if (s3Key) {
       url += `?s3Key=${encodeURIComponent(s3Key)}`
     }
-    const resp = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+    const resp = await fetch(url, { headers: {} })
     if (!resp.ok) return null
     const data = await resp.json()
     return data.url

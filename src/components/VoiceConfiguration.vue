@@ -673,7 +673,7 @@ const resolution = ref(null)
 async function loadResolution() {
   try {
     const r = await fetch(`${props.apiBaseUrl}/api/courses/${props.courseCode}/voice-config/resolved`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (!r.ok) { resolution.value = null; return }
     resolution.value = await r.json()
@@ -769,7 +769,7 @@ function cyclePhrase(roleId) {
 async function loadSeedPhrases() {
   try {
     const resp = await fetch(`${props.apiBaseUrl}/api/courses/${props.courseCode}/seed-phrases-preview`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (!resp.ok) return
     const data = await resp.json()
@@ -828,7 +828,7 @@ async function loadConfig() {
     if (!voiceConfig && props.apiBaseUrl) {
       // Fallback to API (handles RLS gaps or missing Supabase config)
       const response = await fetch(`${props.apiBaseUrl}/api/courses/${props.courseCode}/voice-config`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
       if (response.ok) {
         const data = await response.json()
@@ -854,7 +854,6 @@ async function saveConfig() {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify(config.value)
     })
@@ -924,7 +923,7 @@ async function discoverVoices(roleId, provider = 'azure') {
     const langCode = getLanguageForRole(roleId)
     const url = `${props.apiBaseUrl}/api/voices/discover/${langCode}?provider=${provider}`
     const response = await fetch(url, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
 
     if (!response.ok) throw new Error('Failed to discover voices')
@@ -954,7 +953,6 @@ async function previewVoice(voice, roleId) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify(body)
     })
@@ -1007,7 +1005,6 @@ async function testVoice(roleId) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify(body)
     })

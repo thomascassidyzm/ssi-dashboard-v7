@@ -127,7 +127,6 @@ const takes = ref({})
 async function authHeaders() {
   const token = await getAccessToken()
   return {
-    'ngrok-skip-browser-warning': 'true',
     ...(token ? { Authorization: `Bearer ${token}` } : {})
   }
 }

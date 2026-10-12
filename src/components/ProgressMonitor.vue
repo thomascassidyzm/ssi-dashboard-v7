@@ -155,7 +155,7 @@ async function fetchProgress() {
   try {
     const apiBaseUrl = getApiUrl()
     const response = await axios.get(`${apiBaseUrl}/api/courses/${props.courseCode}/progress`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     liveProgress.value = response.data
   } catch (error) {

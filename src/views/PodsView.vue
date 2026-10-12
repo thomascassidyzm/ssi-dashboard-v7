@@ -278,7 +278,7 @@ const genError = ref('')
 
 async function authedFetch(path, init = {}) {
   const token = await getAccessToken()
-  const headers = { 'ngrok-skip-browser-warning': 'true', 'Content-Type': 'application/json', ...(init.headers || {}) }
+  const headers = { 'Content-Type': 'application/json', ...(init.headers || {}) }
   if (token) headers.Authorization = `Bearer ${token}`
   return fetch(`${getApiUrl()}${path}`, { ...init, headers })
 }
@@ -435,7 +435,7 @@ async function loadPods() {
   error.value = null
   try {
     const res = await fetch(`${getApiUrl()}/api/pods/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' },
+      headers: {},
     })
     if (!res.ok) throw new Error(`Failed to load pods (${res.status})`)
     const data = await res.json()

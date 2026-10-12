@@ -92,7 +92,7 @@ const slotCount = computed(() => preview.value ? Object.values(preview.value.slo
 
 async function headers() {
   const token = await getAccessToken()
-  return { 'ngrok-skip-browser-warning': 'true', 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) }
+  return { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) }
 }
 
 async function call(path, method = 'GET', body) {

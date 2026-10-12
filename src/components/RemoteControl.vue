@@ -211,7 +211,6 @@ function apiBase() {
 async function authedFetch(path, init = {}) {
   const token = await getAccessToken()
   const headers = {
-    'ngrok-skip-browser-warning': 'true',
     ...(init.headers || {})
   }
   if (token) headers.Authorization = `Bearer ${token}`

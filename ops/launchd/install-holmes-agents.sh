@@ -1,17 +1,15 @@
 #!/bin/sh
 # install-holmes-agents.sh — make Popty come up by itself on Tom's Mac.
 #
-# One command, pasted once, never thought about again. It installs three
+# One command, pasted once, never thought about again. It installs two
 # per-user LaunchAgents:
 #
 #   com.ssi.popty-production-api   node services/production-api.cjs   (port 3470)
-#   com.ssi.popty-ngrok            ngrok http --url=popty.ngrok.app 3470
-#   com.ssi.popty-watchdog         health-checks both every 2 min, kickstarts on
+#   com.ssi.popty-watchdog         health-checks the API every 2 min, kickstarts on
 #                                  two consecutive misses
 #
 # No sudo. LaunchAgents are per-user by design and that is the correct scope
-# here: these run as Tom, from Tom's checkout, against Tom's .env and Tom's
-# ngrok authtoken. A LaunchDaemon would run as root before login and could not
+# here: these run as Tom, from Tom's checkout, against Tom's .env. A LaunchDaemon would run as root before login and could not
 # read any of them.
 #
 # Idempotent: safe to run any number of times. Every run rewrites the plists
@@ -50,7 +48,7 @@ say "  checkout: $CHECKOUT"
 [ -f "$CHECKOUT/.env" ] || say "  WARNING: no .env in $CHECKOUT — the API will start but Supabase will be uninitialised"
 
 TEMPLATE_DIR="$CHECKOUT/ops/launchd"
-for t in com.ssi.popty-production-api com.ssi.popty-ngrok com.ssi.popty-watchdog; do
+for t in com.ssi.popty-production-api com.ssi.popty-watchdog; do
   [ -f "$TEMPLATE_DIR/$t.plist.template" ] || fail "missing template $TEMPLATE_DIR/$t.plist.template — is this checkout up to date? (git pull)"
 done
 [ -f "$TEMPLATE_DIR/holmes-popty-watchdog.sh" ] || fail "missing $TEMPLATE_DIR/holmes-popty-watchdog.sh — is this checkout up to date? (git pull)"
@@ -77,12 +75,8 @@ find_bin() {
 
 NODE=$(find_bin node) || fail "node not found.
        Install it (brew install node) or put it on PATH, then re-run."
-NGROK=$(find_bin ngrok) || fail "ngrok not found.
-       Install it (brew install ngrok) and authenticate it once
-       (ngrok config add-authtoken <token>), then re-run."
 
 say "  node:  $NODE ($("$NODE" -v 2>/dev/null))"
-say "  ngrok: $NGROK ($("$NGROK" version 2>/dev/null))"
 
 # The templates prepend these to a standard PATH. When the binary already lives
 # on that standard PATH (the usual Homebrew case) prepending it again just
@@ -92,7 +86,6 @@ path_prefix() {  # $1 = dir → "$1:" unless it is already on STD_PATH
   case ":$STD_PATH:" in *":$1:"*) echo "" ;; *) echo "$1:" ;; esac
 }
 NODE_DIR=$(path_prefix "$(dirname "$NODE")")
-NGROK_DIR=$(path_prefix "$(dirname "$NGROK")")
 
 # ── 3. Write the plists ──────────────────────────────────────────────────────
 if [ "$DRY_RUN" = "1" ]; then
@@ -106,9 +99,7 @@ render() {
   label=$1
   sed -e "s|__CHECKOUT__|$CHECKOUT|g" \
       -e "s|__NODE_DIR__|$NODE_DIR|g" \
-      -e "s|__NGROK_DIR__|$NGROK_DIR|g" \
       -e "s|__NODE__|$NODE|g" \
-      -e "s|__NGROK__|$NGROK|g" \
       -e "s|__HOME__|$HOME|g" \
       -e "s|__LOGDIR__|$LOGDIR|g" \
       "$TEMPLATE_DIR/$label.plist.template" > "$PLIST_DIR/$label.plist" \
@@ -116,17 +107,16 @@ render() {
   say "  wrote $PLIST_DIR/$label.plist"
 }
 
-for label in com.ssi.popty-production-api com.ssi.popty-ngrok com.ssi.popty-watchdog; do
+for label in com.ssi.popty-production-api com.ssi.popty-watchdog; do
   render "$label"
 done
 
 # ── 4. Clear anything already holding the ports ──────────────────────────────
-# A hand-started `node services/production-api.cjs` or `ngrok http` from a
-# previous session will hold port 3470 / the reserved domain and the agent will
+# A hand-started `node services/production-api.cjs` from a
+# previous session will hold port 3470 and the agent will
 # throttle-loop behind it. Matched narrowly — this must never reach an unrelated
-# ngrok tunnel or node process.
+# node process.
 if [ "$DRY_RUN" != "1" ]; then
-  pkill -f "ngrok http --url=popty.ngrok.app" 2>/dev/null && say "  stopped a hand-started ngrok tunnel"
   pkill -f "node .*services/production-api.cjs" 2>/dev/null && say "  stopped a hand-started production API"
   sleep 1
 fi
@@ -134,7 +124,7 @@ fi
 # ── 5. Load them ─────────────────────────────────────────────────────────────
 # bootout/bootstrap is the modern (10.11+) API. `launchctl load -w` still works
 # on older macOS and is kept as a documented fallback below.
-for label in com.ssi.popty-production-api com.ssi.popty-ngrok com.ssi.popty-watchdog; do
+for label in com.ssi.popty-production-api com.ssi.popty-watchdog; do
   run launchctl bootout "gui/$UID_NUM/$label" 2>/dev/null
   if [ "$DRY_RUN" = "1" ]; then
     echo "  [dry-run] launchctl bootstrap gui/$UID_NUM $PLIST_DIR/$label.plist"
@@ -172,7 +162,6 @@ probe() {  # $1 = name, $2 = url, $3 = attempts
 }
 
 probe "backend" "http://localhost:3470/health" 15 || rc=1
-probe "tunnel"  "https://popty.ngrok.app/health" 10 || rc=1
 
 say ""
 if [ "$rc" = "0" ]; then
@@ -181,7 +170,6 @@ if [ "$rc" = "0" ]; then
 else
   say "Something is not serving. Look here first, in this order:"
   say "  tail -n 40 $LOGDIR/popty-production-api.err.log"
-  say "  tail -n 40 $LOGDIR/popty-ngrok.err.log"
   say "  launchctl print gui/$UID_NUM/com.ssi.popty-production-api | head -30"
 fi
 exit $rc

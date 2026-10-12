@@ -252,7 +252,7 @@ async function loadVolumes() {
     const base = localStorage.getItem('api_base_url') || getApiUrl()
     const res = await fetch(
       `${base}/api/production/${courseCode}/recording-volumes`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      { headers: {} }
     )
     if (!res.ok) throw new Error(String(res.status))
     const data = await res.json()

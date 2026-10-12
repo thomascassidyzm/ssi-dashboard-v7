@@ -314,7 +314,7 @@ async function loadSeeds() {
     if (search.value) params.set('search', search.value)
 
     const res = await fetch(`${apiBase}/api/course/${props.courseCode}/seed-editor?${params}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (res.ok) {
       const data = await res.json()
@@ -369,7 +369,7 @@ async function saveEdit(seed, field) {
   try {
     const resp = await fetch(`${apiBase}/api/course/${props.courseCode}/translate`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         translations: [{ seed_number: seed.seed_number, [field]: newValue }]
       })
@@ -391,7 +391,7 @@ async function approveSeeds() {
   try {
     const res = await fetch(`${apiBase}/api/course/${props.courseCode}/approve-seeds`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json' }
     })
     if (res.ok) {
       alert('Seeds approved! The course is now ready for building.')
@@ -465,7 +465,7 @@ async function runCascade(dryRun = false) {
   try {
     const resp = await fetch(`${apiBase}/api/course/${props.courseCode}/edit-cascade`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     })
     const json = await resp.json().catch(() => ({}))

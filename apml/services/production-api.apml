@@ -262,7 +262,7 @@ service ProductionAPI:
     get_course_stats:
       path: "GET /api/stats/:courseCode"
       description: "Get detailed stats for a single course"
-      notes: "Mirrors course-builder-api's endpoint for ngrok compatibility"
+      notes: "Mirrors course-builder-api's endpoint"
       response: |
         {
           "course_code": "spa_for_eng",

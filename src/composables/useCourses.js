@@ -85,7 +85,7 @@ async function runLoad() {
       // Fallback: API proxy
       const baseUrl = getApiUrl()
       const res = await fetch(`${baseUrl}/api/courses`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
       if (!res.ok) throw new Error(`Failed to load courses: ${res.status}`)
       const data = await res.json()

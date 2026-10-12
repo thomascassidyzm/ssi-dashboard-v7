@@ -273,7 +273,6 @@ export function useExportWorkflow(courseCode: string) {
         signal: controller.signal,
         headers: {
           'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true',
           ...options.headers
         }
       })
@@ -806,7 +805,6 @@ export function useExportWorkflow(courseCode: string) {
         signal: controller.signal,
         headers: {
           'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true'
         },
         body: JSON.stringify({ fixDurations: true })
       })
@@ -865,7 +863,7 @@ export function useExportWorkflow(courseCode: string) {
       const apiBase = getApiBaseUrl()
       await fetch(`${apiBase}/api/production/${courseCode}/verify-s3`, {
         method: 'DELETE',
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
     } catch (err) {
       console.warn('[ExportWorkflow] Cancel verify failed:', err)
@@ -1038,7 +1036,6 @@ export function useExportWorkflow(courseCode: string) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true'
         }
       })
 
@@ -1144,7 +1141,7 @@ export function useExportWorkflow(courseCode: string) {
       const apiBase = getApiBaseUrl()
       const response = await fetch(`${apiBase}/api/production/${courseCode}/deploy-audio/execute`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ confirmOverwrite: !!confirmation, confirmation })
       })
 
@@ -1212,7 +1209,7 @@ export function useExportWorkflow(courseCode: string) {
       const apiBase = getApiBaseUrl()
       const response = await fetch(`${apiBase}/api/production/${courseCode}/deploy-audio/missing-only`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+        headers: { 'Content-Type': 'application/json' }
       })
 
       if (response.status === 409) {
@@ -1263,7 +1260,7 @@ export function useExportWorkflow(courseCode: string) {
       const apiBase = getApiBaseUrl()
       const response = await fetch(`${apiBase}/api/production/${courseCode}/deploy-audio/new-only`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ newUuids })
       })
 
@@ -1312,7 +1309,7 @@ export function useExportWorkflow(courseCode: string) {
       const apiBase = getApiBaseUrl()
       const response = await fetch(`${apiBase}/api/production/${courseCode}/deploy-audio/new-and-mismatched`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ newUuids, mismatchedUuids })
       })
 

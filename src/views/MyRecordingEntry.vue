@@ -86,7 +86,7 @@ async function load() {
   try {
     const token = await getAccessToken()
     const res = await fetch(`${apiBase()}/api/recording/mine`, {
-      headers: { 'ngrok-skip-browser-warning': 'true', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+      headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}) },
     })
     if (!res.ok) throw new Error(`Could not check your recording voice (${res.status})`)
     const data = await res.json()

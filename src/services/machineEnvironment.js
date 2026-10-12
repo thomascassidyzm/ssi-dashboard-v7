@@ -12,21 +12,6 @@
 export const PREVIEW_API = typeof __POPTY_PREVIEW_API__ !== 'undefined' ? __POPTY_PREVIEW_API__ : ''
 
 export const ENVIRONMENTS = {
-  tom: {
-    name: "Tom's Machine",
-    url: 'https://popty.ngrok.app',
-    machineProfile: 'tom'
-  },
-  kai: {
-    name: "Kai's Machine",
-    url: 'https://kai-lizard-function.ngrok-free.dev',
-    machineProfile: 'kai'
-  },
-  ssi: {
-    name: "SSi Machine",
-    url: 'https://ssi-machine.ngrok.app',
-    machineProfile: 'kai'  // Similar specs to Kai's machine (8GB RAM)
-  },
   watson: {
     name: 'SSi Machine (Cloud)',
     url: 'https://watson-1.tail4968cb.ts.net:8443',  // Tailscale Funnel → production-api :3470 on watson-1
@@ -42,7 +27,7 @@ if (PREVIEW_API) {
   ENVIRONMENTS.preview = { name: 'Preview backend', url: PREVIEW_API, machineProfile: 'default' }
 }
 
-// Default environment can be set via VITE_DEFAULT_ENVIRONMENT in .env (kai, tom, watson or api).
+// Default environment can be set via VITE_DEFAULT_ENVIRONMENT in .env (watson or api).
 // Unset: a local checkout talks to its own API; anything else (popty.app
 // included) talks to watson-1, the always-on cloud machine. A preview build
 // talks to its preview backend, whatever the browser saved before.
@@ -58,7 +43,9 @@ export function pinMachineEnvironment() {
   if (PREVIEW_API) localStorage.setItem('ssi_environment', 'preview')
   const savedEnv = localStorage.getItem('ssi_environment')
   const initialEnv = (savedEnv && ENVIRONMENTS[savedEnv]) ? savedEnv : DEFAULT_ENV
-  if (!savedEnv) {
+  // A retired choice (tom/kai/ssi, the old ngrok machines) is not kept: rewrite it
+  // to the default so every reader of ssi_environment agrees with api_base_url.
+  if (!savedEnv || !ENVIRONMENTS[savedEnv]) {
     localStorage.setItem('ssi_environment', DEFAULT_ENV)
   }
   const expectedUrl = ENVIRONMENTS[initialEnv].url

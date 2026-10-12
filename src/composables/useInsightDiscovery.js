@@ -22,7 +22,7 @@ export function useInsightDiscovery() {
     try {
       const token = await getAccessToken()
       const res = await fetch(`${getApiUrl()}/api/insight-discovery/latest?source=${source}`, {
-        headers: { Authorization: `Bearer ${token}`, 'ngrok-skip-browser-warning': 'true' },
+        headers: { Authorization: `Bearer ${token}` },
       })
       const data = await res.json().catch(() => ({}))
       latest.value = data && data.latest ? data.latest : null
@@ -45,7 +45,6 @@ export function useInsightDiscovery() {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
-          'ngrok-skip-browser-warning': 'true',
         },
         body: JSON.stringify({ demo }),
       })

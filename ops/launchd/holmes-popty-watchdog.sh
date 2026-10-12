@@ -20,8 +20,8 @@
 #
 # KeepAlive already restarts a process that EXITS. This script exists for the
 # case KeepAlive cannot see: a process that is alive but not serving — node
-# wedged, the event loop blocked, ngrok holding a session it can no longer
-# forward. It health-checks the ports and kickstarts on a real miss.
+# wedged, the event loop blocked. It health-checks the port and kickstarts on
+# a real miss.
 
 set -u
 
@@ -73,11 +73,3 @@ check() {
 
 # The backend first. Loopback, so this is purely "is node serving".
 check com.ssi.popty-production-api http://localhost:3470/health "production API"
-
-# Then the tunnel, from the outside in. A 200 here proves the whole chain —
-# ngrok session, reserved domain, forward to 3470. It is checked SECOND and
-# against its own strike counter so that a backend outage (which makes this URL
-# return ngrok's own ERR_NGROK_8012 page) restarts the backend on its own
-# counter and, at worst, bounces a tunnel that was innocent — never the other
-# way round, where a wedged tunnel goes unnoticed because the backend is fine.
-check com.ssi.popty-ngrok https://popty.ngrok.app/health "ngrok tunnel"

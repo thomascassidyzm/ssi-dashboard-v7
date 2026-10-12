@@ -96,7 +96,7 @@ export async function fetchRecordistRawClip(voiceId, lineId) {
   const probe = recordistClipUrl(voiceId, lineId, 'raw')
   if (!probe) return { available: false, url: null, reason: 'no_line', message: 'No line to compare.' }
   try {
-    const res = await fetch(`${probe}&json=1`, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+    const res = await fetch(`${probe}&json=1`, { headers: {} })
     if (res.ok) {
       const data = await res.json()
       return { available: true, url: data.url || probe, reason: null, message: null }
@@ -128,7 +128,7 @@ export async function diagnoseRecordistClip(voiceId, lineId) {
   const url = recordistClipUrl(voiceId, lineId)
   if (!url) return 'No stored clip for this line.'
   try {
-    const res = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+    const res = await fetch(url, { headers: {} })
     if (res.status === 404) return 'The server has no stored clip for this line yet (404). It may not have finished saving.'
     if (res.status === 409) return 'The take is registered but has no processed audio yet (409). Try again in a moment.'
     if (!res.ok) return `The stored clip could not be fetched (${res.status}).`
@@ -150,7 +150,7 @@ export async function diagnoseStoredClip(uuid) {
   const url = storedClipUrl(uuid)
   if (!url) return 'No stored clip for this take.'
   try {
-    const res = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+    const res = await fetch(url, { headers: {} })
     if (res.status === 404) return 'The server has no stored clip for this take (404). It may not have finished saving.'
     if (res.status === 409) return 'The take is registered but has no rendered audio yet (409). Try again in a moment.'
     if (!res.ok) return `The stored clip could not be fetched (${res.status}).`

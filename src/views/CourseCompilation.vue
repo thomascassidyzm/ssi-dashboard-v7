@@ -476,7 +476,6 @@ async function compileCourseJSON() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       }
     })
 
@@ -517,7 +516,6 @@ async function checkAudioStatus() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         sampleIds: Array.from(allSampleIds)
@@ -557,7 +555,6 @@ async function generateMissingAudio() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         courseCode,
@@ -591,7 +588,6 @@ async function pollGenerationProgress(jobId) {
     try {
       const response = await fetch(`${getApiUrl()}/api/audio/generation-status/${jobId}`, {
         headers: {
-          'ngrok-skip-browser-warning': 'true'
         }
       })
 
@@ -644,7 +640,6 @@ async function deployToProduction() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         courseJSON: compiledJSON.value

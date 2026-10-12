@@ -630,7 +630,7 @@ async function audioUrl(id) {
   try {
     const res = await fetch(
       `${getApiBaseUrl()}/api/production/${previewCourse.value}/audio/${id}/url`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      { headers: {} }
     )
     if (!res.ok) return null
     const data = await res.json()

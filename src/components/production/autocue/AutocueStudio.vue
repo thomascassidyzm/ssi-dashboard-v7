@@ -639,7 +639,7 @@ async function loadVoiceIdentity(courseCode) {
   try {
     const base = localStorage.getItem('api_base_url') || getApiUrl()
     const res = await fetch(`${base}/api/courses/${courseCode}/voice-config`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (res.ok) {
       const data = await res.json()

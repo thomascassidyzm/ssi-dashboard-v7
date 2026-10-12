@@ -5272,7 +5272,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // Bust production-api stats cache so dashboard refreshes
     try {
       await fetch(`http://localhost:3470/api/production/${courseCode}/audio-stats?fresh=1`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
     } catch (e) { /* production-api may not be running */ }
 
@@ -6300,7 +6300,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     // 10. Bust production-api stats cache + bump course version (matches bulk path)
     try {
       await fetch(`http://localhost:3470/api/production/${courseCode}/audio-stats?fresh=1`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
     } catch (e) { /* production-api may not be running */ }
     await bumpCourseVersion(supabase, courseCode, 'patch')
@@ -6732,7 +6732,7 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
     // 5. Bust production-api stats cache + bump course version (matches bulk paths).
     try {
       await fetch(`http://localhost:3470/api/production/${courseCode}/audio-stats?fresh=1`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
     } catch (e) { /* production-api may not be running */ }
     await bumpCourseVersion(supabase, courseCode, 'patch')
@@ -7145,7 +7145,7 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
     // Bust production-api stats cache + bump course version (matches neighbours).
     try {
       await fetch(`http://localhost:3470/api/production/${courseCode}/audio-stats?fresh=1`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
     } catch (e) { /* production-api may not be running */ }
     await bumpCourseVersion(supabase, courseCode, 'patch')

@@ -485,7 +485,6 @@ async function loadLegos() {
     const API_BASE_URL = getApiUrl()
     const response = await fetch(`${API_BASE_URL}/api/visualization/legos/${props.courseCode}`, {
       headers: {
-        'ngrok-skip-browser-warning': 'true'
       }
     })
 

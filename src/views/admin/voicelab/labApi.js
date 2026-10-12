@@ -7,8 +7,8 @@
 // talks to it through getApiUrl() — the same base every other Popty screen
 // uses, and the same base the Environment Switcher repoints.
 //
-// WHY THERE IS A FALLBACK, stated rather than hidden: popty.app defaults its
-// API to https://ssi-machine.ngrok.app (Camberley), whose checkout is not
+// WHY THERE IS A FALLBACK, stated rather than hidden: popty.app once defaulted its
+// API to a Camberley ngrok machine, whose checkout is not
 // currently deployable. A backend without /api/voicelab is not a routing bug
 // and must not be reported as one — `probe()` asks the configured backend
 // whether it has the lab, and the screen says which backend answered. The
@@ -76,7 +76,7 @@ export function heldCopy (k) {
 // read here lists what has been spent and what it sounded like. So `auth` is on
 // by default rather than per-call.
 async function call (path, { method = 'GET', body, auth = true, held = null } = {}) {
-  const headers = { 'ngrok-skip-browser-warning': 'true' }
+  const headers = {}
   const kept = held ? heldRead(held) : null
   if (kept && kept.etag) headers['If-None-Match'] = kept.etag
   if (body) headers['Content-Type'] = 'application/json'
@@ -123,7 +123,7 @@ export async function probe () {
  * this is a sibling of `call` rather than a flag on it.
  */
 async function postForm (path, form) {
-  const headers = { 'ngrok-skip-browser-warning': 'true' }
+  const headers = {}
   const token = await accessToken()
   if (!token) throw new Error('Not signed in — every Voice Lab endpoint needs a dashboard session.')
   headers.Authorization = `Bearer ${token}`
@@ -223,7 +223,6 @@ export const api = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true',
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({ voiceIds, force }),
@@ -369,7 +368,7 @@ async function upload (path, formData) {
   if (!token) throw new Error('Not signed in — every Voice Lab endpoint needs a dashboard session.')
   const res = await fetch(`${labBase()}${path}`, {
     method: 'POST',
-    headers: { Authorization: `Bearer ${token}`, 'ngrok-skip-browser-warning': 'true' },
+    headers: { Authorization: `Bearer ${token}` },
     body: formData,
   })
   const data = await res.json().catch(() => ({}))
