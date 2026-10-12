@@ -62,3 +62,12 @@ test('undo re-inserts a JSON array as JSON, and a Postgres array as an array', (
   assert.deepStrictEqual(L.sqlValue(false, ['S0001L01']), ['S0001L01'])           // connected_lego_ids (text[])
   assert.strictEqual(L.sqlValue(true, null), null)
 })
+
+test('a clone keeps the <target>_for_<known> shape the app parses, and never touches Welsh', () => {
+  const { cloneCodeProblems, rewriteId } = require('./clone.cjs')
+  assert.deepStrictEqual(cloneCodeProblems('afr_for_eng', 'afr_pilot_for_eng'), [])
+  assert.ok(cloneCodeProblems('afr_for_eng', 'zzz_afr_for_eng').length)      // target prefix lost
+  assert.ok(cloneCodeProblems('afr_for_eng', 'afr_for_eng_pilot').length)     // known side would read "eng_pilot"
+  assert.ok(cloneCodeProblems('cym_n_for_eng', 'cym_pilot_for_eng').length)
+  assert.strictEqual(rewriteId('afr_for_eng:S0010L02U01', 'afr_for_eng', 'afr_pilot_for_eng'), 'afr_pilot_for_eng:S0010L02U01')
+})

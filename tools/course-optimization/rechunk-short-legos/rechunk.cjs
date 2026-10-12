@@ -384,10 +384,16 @@ async function finish(course, pg, report, what) {
     await refreshNow()
     const { bumpCourseVersion } = require(path.join(REPO, 'services/shared/course-version.cjs'))
     const v = await bumpCourseVersion(supabase(), course, 'patch')
+    // A draft, hidden clone (clone.cjs) never queues audio: it is a preview of the text layer on the source's clips,
+    // and anything it needs voiced is voiced when the change is rolled out to the real course.
+    const { rows: [crs] } = await pg.query('SELECT status, visibility, new_app_status FROM courses WHERE course_code=$1', [course])
+    if (crs && crs.status === 'draft' && crs.new_app_status === 'not_available') { say(`${course}: round index refreshed; content_version → ${v}; draft clone — no audio pass queued`); }
+    else {
     const { queueAudioPass } = require(path.join(REPO, 'services/shared/audio-pass-queue.cjs'))
     const q = await queueAudioPass(supabase(), { courseCode: course, requestedBy: `@${SWEEP}`, append: true, metadataKey: 'rechunk_short_legos',
       reason: `job ${JOB} ${what}: ${wrote.length} seed(s) ${what === 'undo' ? 'restored' : 're-chunked'}; LEGOs, intros and phrases without audio need it (render waits for Tom's approval)`, metadata: { job: JOB, seeds: wrote.map((r) => r.seed) } })
     say(`${course}: round index refreshed; content_version → ${v}; audio pass ${q.queued ? 'queued' : q.touched ? 'joined' : 'NOT queued: ' + (q.error || q.reason)}`)
+    }
   }
   await pg.end()
   fs.mkdirSync(EVIDENCE, { recursive: true })
