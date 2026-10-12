@@ -1,41 +1,43 @@
 {
-  "_read_by": "services/shared/tts-spend-guard.cjs (jobs #425, #430). Characters, not dollars. The committed BASELINE is DEFAULT_BUDGETS in that file; this file may LOWER any limit freely. Anything looser (a higher cap/pool/share/alert line/repeat limit, a shorter repeat window, a different cycleStartDay) counts only inside a raise block: { \"raise\": { \"<field>\": <value>, \"by\": \"<who>\", \"why\": \"<reason>\", \"until\": \"<ISO date, at most 31 days out>\" } } on that provider (or on repeat / divergence). An unsigned, expired or too-long raise is IGNORED and alerted. Every change in the limits in force is alerted and logged in the DB (tts_spend_limit_log). A TTS_SPEND_BUDGETS override file counts only with a top-level signed { by, why, until }.",
-  "hold": {
-    "by": "Tom (via Watson, jobs #569, #570)",
-    "since": "2026-09-28",
-    "combinedDailyCapChars": 1000000,
-    "message": "Tom ruled 2026-10-07 (job #147, r-2026-10-07-tts-daily-cap-is-a-runaway): the automatic daily TTS cap is 1,000,000 characters in total across all providers - a runaway guard far above the monthly average, not the average; Cartesia overage is fine. Going above it needs TOM'S EXPLICIT GO for that job - then a signed raise { dailyCapChars, by, why, until } on the provider and a raised combinedDailyCapChars here. Do not split the job to fit under the cap."
+ "_read_by": "services/shared/tts-spend-guard.cjs (jobs #425, #430). Characters, not dollars. The committed BASELINE is DEFAULT_BUDGETS in that file; this file may LOWER any limit freely. Anything looser (a higher cap/pool/share/alert line/repeat limit, a shorter repeat window, a different cycleStartDay) counts only inside a raise block: { \"raise\": { \"<field>\": <value>, \"by\": \"<who>\", \"why\": \"<reason>\", \"until\": \"<ISO date, at most 31 days out>\" } } on that provider (or on repeat / divergence). An unsigned, expired or too-long raise is IGNORED and alerted. Every change in the limits in force is alerted and logged in the DB (tts_spend_limit_log). A TTS_SPEND_BUDGETS override file counts only with a top-level signed { by, why, until }.",
+ "hold": {
+  "by": "Tom (via Watson, jobs #569, #570)",
+  "since": "2026-09-28",
+  "combinedDailyCapChars": 3000000,
+  "message": "Tom ruled 2026-10-07 (job #147, r-2026-10-07-tts-daily-cap-is-a-runaway): the automatic daily TTS cap is 1,000,000 characters in total across all providers - a runaway guard far above the monthly average, not the average; Cartesia overage is fine. Going above it needs TOM'S EXPLICIT GO for that job - then a signed raise { dailyCapChars, by, why, until } on the provider and a raised combinedDailyCapChars here. Do not split the job to fit under the cap.",
+  "raisedBy": "Watson for Tom, 2026-10-12: combinedDailyCapChars 1,000,000 -> 3,000,000 until 2026-10-23, paired with the signed Cartesia dailyCapChars raise below (rulings r-2026-10-12-tts-spend-guards-d and r-2026-10-12-goal-by-the-23-oct)"
+ },
+ "providers": {
+  "cartesia": {
+   "monthlyPoolChars": 8000000,
+   "raise": {
+    "monthlyPoolChars": 16000000,
+    "by": "Watson for Tom (2026-10-12; rulings r-2026-10-12-tts-spend-guards-d, r-2026-10-12-goal-by-the-23-oct)",
+    "why": "Tom's explicit go for the Tom-006 English run: guards are for runaway agents, not for jobs he directs (r-2026-10-12-tts-spend-guards-d), and the goal is all 668 seeds of the 11 premium X_for_eng courses in Tom-006, prompts plus faded intros, by the 23 Oct reset (r-2026-10-12-goal-by-the-23-oct). Daily cap 3,000,000 on Cartesia with the matching combinedDailyCapChars. Also carries the cycle pool raise to 16M (Cartesia 8M credit grant, 2026-10-09).",
+    "until": "2026-10-23T00:00:00Z",
+    "dailyCapChars": 3000000
+   }
   },
-  "providers": {
-    "cartesia": {
-      "monthlyPoolChars": 8000000,
-      "raise": {
-        "monthlyPoolChars": 16000000,
-        "by": "Tom (2026-10-09, via Watson: Cartesia 8M credit grant after runaway)",
-        "why": "Cartesia granted 8M additional credits after the late-September runaway job (~6.5M spike on ~25 Sept), so this cycle's allowance is 16M, not 8M; the 'overage billing has begun' alert at 8,935,643 was an accounting error. The guard counts our own ledger since the 23rd, so the grant is modelled as a one-cycle pool raise; it expires with the cycle and must be re-signed if the credit carries over.",
-        "until": "2026-10-23T00:00:00Z"
-      }
-    },
-    "azure": {},
-    "elevenlabs": {
-      "retired": "ElevenLabs retired (Tom 2026-09-28): \"We don't use Eleven Labs any more.\" Use Cartesia or Azure.",
-      "dailyCapChars": 0
-    },
-    "xai": {},
-    "google": {
-      "dailyCapChars": 100000,
-      "alertDailyChars": 30000
-    }
+  "azure": {},
+  "elevenlabs": {
+   "retired": "ElevenLabs retired (Tom 2026-09-28): \"We don't use Eleven Labs any more.\" Use Cartesia or Azure.",
+   "dailyCapChars": 0
   },
-  "repeat": {
-    "maxPerKey": 3,
-    "windowHours": 24
-  },
-  "divergence": {
-    "factor": 1.25,
-    "slackChars": 20000,
-    "checkEveryMinutes": 10
-  },
-  "jobRaises": [],
-  "repeatExemptions": []
+  "xai": {},
+  "google": {
+   "dailyCapChars": 100000,
+   "alertDailyChars": 30000
+  }
+ },
+ "repeat": {
+  "maxPerKey": 3,
+  "windowHours": 24
+ },
+ "divergence": {
+  "factor": 1.25,
+  "slackChars": 20000,
+  "checkEveryMinutes": 10
+ },
+ "jobRaises": [],
+ "repeatExemptions": []
 }
