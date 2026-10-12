@@ -44,9 +44,11 @@ const setPointer = async (db, s, from, to, ev) => {
   if (error) throw new Error(error.message); return !!data && data.length === 1
 }
 const fetchRetry = async (url, init) => { for (let a = 1; ; a++) { try { return await fetch(url, init) } catch (e) { if (a >= 8) throw e; await new Promise(r => setTimeout(r, 15000)) } } }
+const pointerIsOf = pg => async (s, id) => (await pg.query(`select 1 from ${s.tbl === 'course_legos' ? 'course_legos' : 'course_practice_phrases'} where id::text=$1 and presentation_audio_id::text=$2`, [s.key, id])).rows.length === 1
 let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log('SIGTERM: finishing in-flight clips, then exit') })
 ;(async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); await pg.query('set statement_timeout=0'); const db = supa()
+  const pointerIs = pointerIsOf(pg)
   const identity = serviceIdentity('tom006-intros-836'); let eventId = null
   const event = async () => eventId || (eventId = await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-intros-836', operation: 'update', detail: { why: 'Tom 2026-10-12 job #836: Tom-006 faded presentation intros, seeds 101-668; old ids in ledger', ledger } }))
   let touched = 0; const BUMP_EVERY = Number(opt('--bump-every', 100))
@@ -59,7 +61,10 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
     try {
       for (const p of undoPlanMoved(lines())) {
         if (dryRun) { console.log('would undo', p.lego_id, p.newId, '->', p.oldId, p.slots.length, 'slots'); n += p.slots.length; continue }
-        let moved = 0; for (const sl of p.slots) if (await setPointer(db, sl, p.newId, p.oldId, await event())) moved++
+        let moved = 0; for (const sl of p.slots) {
+          if (await setPointer(db, sl, p.newId, p.oldId, await event())) moved++
+          else if (await pointerIs(sl, p.oldId)) moved++   // already back on oldId counts as restored (lane review #848)
+        }
         if (moved === p.slots.length && undoRecordable(moved)) log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved })
         else { stuck += p.slots.length - moved; console.log('UNDO INCOMPLETE (left pending):', p.oldId, '->', p.newId, `${moved}/${p.slots.length}`) }
         n += moved; await touch(moved)
