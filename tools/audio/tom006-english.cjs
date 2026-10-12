@@ -69,12 +69,17 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
       else if (e.kind === 'undone') for (const k of e.keys) orig.delete(k)
     }
     let n = 0, skipped = 0; const done = []
+    const liveVal = new Map()
+    { const groups = new Map(); for (const [k, { s }] of orig) { const g = `${s.tbl}|${colFor(s)}`; (groups.get(g) || groups.set(g, []).get(g)).push([k, s.key]) }
+      for (const [g, items] of groups) { const [tbl, col] = g.split('|'); for (let i = 0; i < items.length; i += 300) {
+        const chunk = items.slice(i, i + 300); const { data, error } = await db.from(tbl).select(`id, ${col}`).in('id', chunk.map(x => x[1])); if (error) throw new Error(error.message)
+        const byId = new Map(data.map(r => [r.id, r[col]])); for (const [k, id] of chunk) liveVal.set(k, byId.get(id))
+      } } }
     try {
       for (const [k, { s, news }] of [...orig].reverse()) {
         // LIVE STATE decides (lane review #856): already back on its old clip = restored; on any clip this job wrote = restore with a before-check; anything else = someone else's edit, left alone and reported
         const col = colFor(s)
-        const { data: live, error } = await db.from(s.tbl).select(col).eq('id', s.key).maybeSingle(); if (error) throw new Error(error.message)
-        const cur = live && live[col]
+        const cur = liveVal.get(k)   // preloaded in batches below (one query per slot was ~60,000 round trips)
         if (dryRun) { console.log(cur === s.from ? 'already restored' : news.has(cur) ? 'would undo' : 'would SKIP (changed by someone else)', k, cur, '->', s.from); if (news.has(cur)) n++; continue }
         if (cur === s.from) { done.push(k); continue }
         if (news.has(cur) && await setPointer(db, s, cur, s.from, await event(s.course))) { await touch(s.course, 1); n++; done.push(k) } else { skipped++; console.log('SKIPPED', k, 'live', cur) }
