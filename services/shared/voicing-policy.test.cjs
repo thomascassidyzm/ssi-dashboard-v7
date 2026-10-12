@@ -182,7 +182,7 @@ describe('Tom-006 whole presentation intros (job #794, Tom 2026-10-12)', () => {
     expect(checkRender({ text: whole, language: 'eng', voiceId: T6, course: COURSES.deu_for_eng, role: 'presentation' }).allowed).toBe(true)
     expect(checkRender({ text: whole, language: 'eng', voiceId: T6, course: COURSES.spa_for_eng, intro: true }).allowed).toBe(true)
     expect(checkRender({ text: whole, language: 'eng', voiceId: T6, course: COURSES.por_br_for_eng, role: 'presentation' }).allowed).toBe(false)
-    expect(checkRender({ text: 'hello', language: 'eng', voiceId: T6, course: COURSES.deu_for_eng, role: 'known' }).allowed).toBe(false)
+    expect(checkRender({ text: 'hello', language: 'eng', voiceId: T6, course: COURSES.deu_for_eng, role: 'known' }).allowed).toBe(true)   // #813: known prompts now allowed
     expect(checkRender({ text: whole, language: 'eng', voiceId: 'cartesia_b478fefe-f18a-4f3a-b3d3-cbef52732e2e', course: COURSES.deu_for_eng, role: 'presentation' }).allowed).toBe(false)
   })
 })
@@ -207,5 +207,16 @@ describe('Tom-006 whole intros: French and Italian (job #794, Tom 2026-10-12)', 
     expect(checkRender({ text: `The French for: 'I want', is: <break time="300ms"/>`, language: 'eng', voiceId: T6, course: COURSES.fra_for_eng, role: 'presentation' }).allowed).toBe(true)
     expect(checkRender({ text: `The Italian for: 'I want', is: <break time="300ms"/>`, language: 'eng', voiceId: T6, course: COURSES.ita_for_eng, role: 'presentation' }).allowed).toBe(true)
     expect(checkRender({ text: `The Portuguese for: 'I want', is: <break time="300ms"/>`, language: 'eng', voiceId: T6, course: COURSES.por_br_for_eng, role: 'presentation' }).allowed).toBe(false)
+  })
+})
+
+describe('Tom-006 English known prompts (job #813, Tom 2026-10-12)', () => {
+  const T6 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
+  it('Tom-006 (prefixed or bare) may record role known in any English-known course; other voices and null role still refused', () => {
+    for (const c of ['deu_for_eng', 'spa_for_eng', 'por_br_for_eng']) expect(checkRender({ text: 'I want to go', language: 'eng', voiceId: T6, course: COURSES[c], role: 'known' }).allowed).toBe(true)
+    expect(checkRender({ text: 'I want to go', language: 'eng', voiceId: 'd293d509-eb96-4df4-8cfd-80a693aa49a9', course: COURSES.deu_for_eng, role: 'known' }).allowed).toBe(true)
+    expect(checkRender({ text: 'I want to go', language: 'eng', voiceId: 'cartesia_b478fefe-f18a-4f3a-b3d3-cbef52732e2e', course: COURSES.deu_for_eng, role: 'known' }).allowed).toBe(false)
+    expect(checkRender({ text: 'I want to go', language: 'eng', voiceId: T6, course: COURSES.deu_for_eng, role: null }).allowed).toBe(false)
+    for (const v of ['__proto__', 'constructor']) expect(checkRender({ text: 'x', language: 'eng', voiceId: v, course: COURSES.deu_for_eng, role: 'known' }).allowed).toBe(false)
   })
 })
