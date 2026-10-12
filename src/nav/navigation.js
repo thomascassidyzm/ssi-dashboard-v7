@@ -119,6 +119,21 @@ export const SECTIONS = [
         }
       },
       {
+        // Procedures (Tom, 2026-10-12): the only place a job is started from the
+        // dashboard, and only a registered deterministic one.
+        label: 'Procedures',
+        to: '/admin/procedures',
+        match: ['/admin/procedures*'],
+        hub: {
+          badge: 'run',
+          description: 'Run a registered deterministic job — choose its inputs, read the plan, run it, follow it, undo it.',
+          action: 'Open Procedures',
+          accent: '#ffa630',
+          glow: 'rgba(255, 166, 48, 0.15)',
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="6 4 20 12 6 20 6 4"/></svg>'
+        }
+      },
+      {
         label: 'Insights',
         to: '/insights',
         hub: {
