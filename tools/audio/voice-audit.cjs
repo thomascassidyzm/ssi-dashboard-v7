@@ -232,4 +232,4 @@ async function main(argv = process.argv.slice(2)) {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message || e); process.exit(1) })
-module.exports = { classify, render, audit, main, PREMIUM_11, SLOT_COLUMNS }
+module.exports = { classify, render, audit, connect, main, PREMIUM_11, SLOT_COLUMNS }
