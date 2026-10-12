@@ -41,7 +41,7 @@ const fadedAtRender = row => !!(row && row.rawId && row.rawId !== row.newId)
 
 /** Job #836's first run wrote 'intent'/'swap' rows with no oldId (slots grouped by from-id); expand them into the shared per-pair 'render'/'swap'/'partial' rows. Pure. */
 const expandLegacyRows = rows => rows.flatMap(e => {
-  if (!['intent', 'swap'].includes(e.kind) || e.oldId != null) return [e]
+  if (!['intent', 'swap'].includes(e.kind) || Object.hasOwn(e, 'oldId')) return [e]   // legacy rows have NO oldId key at all; a gap row's oldId is an explicit null
   const by = new Map(); for (const s of e.slots || []) { if (!by.has(s.from)) by.set(s.from, []); by.get(s.from).push(s) }
   const kind = e.kind === 'intent' ? 'render' : (e.wanted != null && e.slots.length < e.wanted) ? 'partial' : 'swap'
   return [...by].map(([oldId, slots]) => ({ ...e, kind, oldId, slots }))

@@ -26,8 +26,8 @@ const T6 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }, has = f => argv.includes(f)
 const course = opt('--course'); if (!course) { console.error('--course required'); process.exit(1) }
-const dryRun = has('--dry-run'), JOB = opt('--job', '#813')
-const dir = path.join(__dirname, '../../ops/836-tom006-intros'), ledger = path.join(dir, `${course}-ledger.jsonl`)
+const dryRun = has('--dry-run'), JOB = opt('--job', '#813'), GAPS = has('--gaps')   // --gaps: is_new LEGOs that have NO intro clip yet (job #836, Watson's decision): a lego slot from null, nothing to replace
+const dir = path.join(__dirname, '../../ops/836-tom006-intros'), ledger = path.join(dir, `${course}${GAPS ? '-gaps' : ''}-ledger.jsonl`)
 // Ledger rows are the shared kinds: 'render' (the write-ahead INTENT, one per oldId|newId pair, slots carrying their from-id), 'swap' (every slot moved) / 'partial', 'undo'.
 // Rows written by the first run of this job (kind 'intent'/'swap' with no oldId, slots grouped by from-id) are expanded into the same per-pair rows on read.
 const rawLines = () => fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
@@ -40,11 +40,12 @@ function supa() {
   return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 }
 const setPointer = async (db, s, from, to, ev) => {
-  const { data, error } = await db.from(s.tbl).update({ presentation_audio_id: to, last_edit_event_id: ev }).eq('id', s.key).eq('presentation_audio_id', from).select('id')
+  const q = db.from(s.tbl).update({ presentation_audio_id: to, last_edit_event_id: ev }).eq('id', s.key)
+  const { data, error } = await (from == null ? q.is('presentation_audio_id', null) : q.eq('presentation_audio_id', from)).select('id')
   if (error) throw new Error(error.message); return !!data && data.length === 1
 }
 const fetchRetry = async (url, init) => { for (let a = 1; ; a++) { try { return await fetch(url, init) } catch (e) { if (a >= 8) throw e; await new Promise(r => setTimeout(r, 15000)) } } }
-const pointerIsOf = pg => async (s, id) => (await pg.query(`select 1 from ${s.tbl === 'course_legos' ? 'course_legos' : 'course_practice_phrases'} where id::text=$1 and presentation_audio_id::text=$2`, [s.key, id])).rows.length === 1
+const pointerIsOf = pg => async (s, id) => (await pg.query(`select 1 from ${s.tbl === 'course_legos' ? 'course_legos' : 'course_practice_phrases'} where id::text=$1 and presentation_audio_id::text ${id == null ? 'is null' : '= $2'}`, id == null ? [s.key] : [s.key, id])).rows.length === 1
 let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log('SIGTERM: finishing in-flight clips, then exit') })
 ;(async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); await pg.query('set statement_timeout=0'); const db = supa()
@@ -76,10 +77,11 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
   }
 
   const { from, to } = { ...defaultRange(course), ...(opt('--from') ? { from: Number(opt('--from')) } : {}) }
-  const plan = JSON.parse(fs.readFileSync(path.join(dir, `${course}.plan.json`), 'utf8')).filter(o => o.newText && o.oldClip && !o.alreadyT6 && o.seed >= from && o.seed <= to)
-  const byText = new Map(); for (const o of plan) { if (!byText.has(o.newText)) byText.set(o.newText, { newText: o.newText, oldClips: new Set(), first: o }); byText.get(o.newText).oldClips.add(o.oldClip) }
+  const plan = JSON.parse(fs.readFileSync(path.join(dir, `${course}.${GAPS ? 'gaps' : 'plan'}.json`), 'utf8')).filter(o => o.newText && (GAPS ? !o.oldClip : o.oldClip && !o.alreadyT6) && (GAPS || (o.seed >= from && o.seed <= to)))
+  const byText = new Map(); for (const o of plan) { if (!byText.has(o.newText)) byText.set(o.newText, { newText: o.newText, oldClips: new Set(), first: o }); byText.get(o.newText).oldClips.add(o.oldClip); byText.get(o.newText).legoIds = [...(byText.get(o.newText).legoIds || []), o.lego_id] }
   const items = [...byText.values()].sort((a, b) => a.first.seed - b.first.seed)
-  const slotsOf = async oldClips => {
+  const slotsOf = async (oldClips, legoIds) => {
+    if (GAPS) return (await pg.query(`select 'course_legos' tbl, id::text key, null::text "from" from course_legos where course_code=$1 and lego_id = any($2::text[]) and presentation_audio_id is null`, [course, legoIds])).rows
     const ids = [...oldClips]
     const { rows } = await pg.query(`select 'course_legos' tbl, id::text key, presentation_audio_id::text "from" from course_legos where course_code=$1 and seed_number between $3 and $4 and presentation_audio_id = any($2::text[])
       union all select 'course_practice_phrases', id::text, presentation_audio_id::text from course_practice_phrases where course_code=$1 and seed_number between $3 and $4 and presentation_audio_id = any($2::uuid[]) and phrase_role is distinct from 'component'`, [course, ids, from, to])
@@ -93,7 +95,7 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
   const worker = async () => {
     while (!stopFlag) {
       const it = items[idx++]; if (!it) return
-      const slots = await slotsOf(it.oldClips)
+      const slots = await slotsOf(it.oldClips, it.legoIds)
       if (!slots.length) { st.skipped++; continue }   // already moved (earlier run) or old clip no longer linked in range
       if (st.claimed >= limit) return; st.claimed++   // claimed synchronously, so --limit N is exact under concurrency
       if (dryRun) { const f = await t6Row(it.newText + MARKER); const r = f ? null : await t6Row(it.newText); console.log(f ? 'would reuse faded' : r ? 'would fade existing raw' : 'would render', it.first.lego_id, it.newText.length, 'chars', slots.length, 'slots'); st.n++; continue }
