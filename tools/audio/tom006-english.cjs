@@ -42,22 +42,30 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
   const identity = serviceIdentity('tom006-english-813'), events = new Map(), touchedN = new Map()
   const event = async course => { if (!events.has(course)) events.set(course, await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-english', operation: 'update', detail: { why: 'Tom 2026-10-12 job #813: male English (Tom-006) for lines with no other Cartesia clip; old ids in ledger', ledger } })); return events.get(course) }
   // content_version is bumped AS WE GO (every BUMP_EVERY moved slots per course) and in a finally, so a crash never leaves moved pointers on an old version (lane review #829)
-  const BUMP_EVERY = 100
+  const BUMP_EVERY = 100; let bumpFailed = 0
   const touch = async (course, n) => { const v = (touchedN.get(course) || 0) + n; touchedN.set(course, v); if (v >= BUMP_EVERY) await bumpOne(course) }
-  const bumpOne = async course => { if (dryRun) return; touchedN.set(course, 0); console.log('content_version', course, await bumpCourseVersion(db, course, 'patch')) }
+  const bumpOne = async course => {
+    if (dryRun) return; const n = touchedN.get(course) || 0; if (!n) return
+    try { const v = await bumpCourseVersion(db, course, 'patch'); touchedN.set(course, (touchedN.get(course) || 0) - n); log({ kind: 'bumped', course }); console.log('content_version', course, v) }
+    catch (e) { console.log(`BUMP FAILED ${course} (${n} moved slots still unbumped, kept for retry):`, e.message); bumpFailed++ }
+  }
   const bump = async () => { for (const [c, n] of [...touchedN]) if (n > 0) await bumpOne(c) }
+
+  // a previous run that died after moving pointers but before bumping: every course with a swap row after its last 'bumped' row is still on an old version
+  if (!dryRun) { const pend = new Set(); for (const e of lines()) { if (e.kind === 'swap') for (const sl of e.slots || []) pend.add(sl.course); else if (e.kind === 'bumped') pend.delete(e.course) }; for (const c of pend) { touchedN.set(c, 1); await bumpOne(c) } }
 
   if (has('--undo')) {
     // The undo set is every INTENT row (journalled before any pointer moved), swap and legacy swap row: slot -> its ORIGINAL from-id; the before-check (newId must still be there) keeps it safe
-    const rows = lines(), orig = new Map()   // slotId -> { s, cur }
-    for (const e of rows) if (['intent', 'swap'].includes(e.kind)) for (const s of e.slots || []) { if (!s.from) continue; const k = slotId(s); if (!orig.has(k)) orig.set(k, { s, cur: e.newId }); else orig.get(k).cur = e.newId }
-    for (const e of rows) if (e.kind === 'undone') for (const k of e.keys) orig.delete(k)
+    const rows = lines(), orig = new Map()   // slotId -> { s, cur }, built in LEDGER ORDER: an 'undone' row removes only what exists so far, so run -> undo -> re-run -> undo reverts the re-moved slots (lane review #837)
+    for (const e of rows) {
+      if (['intent', 'swap'].includes(e.kind)) for (const s of e.slots || []) { if (!s.from) continue; const k = slotId(s); if (!orig.has(k)) orig.set(k, { s, cur: e.newId }); else orig.get(k).cur = e.newId }
+      else if (e.kind === 'undone') for (const k of e.keys) orig.delete(k)
+    }
     let n = 0; const done = []
     try {
       for (const [k, { s, cur }] of [...orig].reverse()) {
         if (dryRun) { console.log('would undo', k, cur, '->', s.from); n++; continue }
-        if (await setPointer(db, s, cur, s.from, await event(s.course))) { await touch(s.course, 1); n++ }
-        done.push(k)
+        if (await setPointer(db, s, cur, s.from, await event(s.course))) { await touch(s.course, 1); n++; done.push(k) }   // only successes are recorded undone (a failed conditional update stays pending)
       }
     } finally { if (!dryRun) { log({ kind: 'undone', keys: done }); await bump() } }
     console.log(dryRun ? 'would undo' : 'undone slots', n); return pg.end()
