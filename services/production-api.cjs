@@ -1699,6 +1699,12 @@ async function requireProxyCourseAccess(req, res, next) {
 
     const courseCodes = extractProxyCourseCodes(req)
     if (courseCodes === null) return res.status(400).json({ error: 'Invalid path' })
+    // Agent PIDs refer to host-wide processes, not to a course named by the
+    // caller. A body/query course must never grant access to these controls.
+    if (/^\/(?:api\/)?agents(?:\/|$)/i.test(req.path || '') &&
+        user.role !== 'admin' && !user.ssiAdmin) {
+      return res.status(403).json({ error: 'Administrator access required for agent controls' })
+    }
     const denied = (user.role === 'admin' || user.ssiAdmin) ? undefined : courseCodes.find(code => !userCanAccessCourse(user, code))
     if (denied) {
       logger.warn(`[ProxyScope] DENY ${user.email || 'unknown'} → ${denied} (${req.method} ${req.path})`)
