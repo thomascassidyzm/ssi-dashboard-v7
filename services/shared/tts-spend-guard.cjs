@@ -196,8 +196,14 @@ function repeatTextKey(text) {
     .replace(/[.,!?;:"'“”‘’()\[\]{}…—–\-।॥¿¡。？！、，]/g, '')
     .trim()
 }
-function repeatKey(provider, voiceId, text) {
-  return crypto.createHash('sha1').update(`${provider}|${voiceId || '?'}|${repeatTextKey(text)}`).digest('hex').slice(0, 20)
+/** A native speed other than 1 is a different recording of the same words (trial renders, job #751), so it is part of the key.
+ *  Absent/1 adds nothing, so every existing key is unchanged. */
+function speedKeyPart(speed) {
+  const n = Number(speed)
+  return speed == null || !Number.isFinite(n) || n === 1 ? '' : `|speed=${n}`
+}
+function repeatKey(provider, voiceId, text, speed) {
+  return crypto.createHash('sha1').update(`${provider}|${voiceId || '?'}|${repeatTextKey(text)}${speedKeyPart(speed)}`).digest('hex').slice(0, 20)
 }
 function textHash(text) {
   return crypto.createHash('sha1').update(String(text || '')).digest('hex').slice(0, 16)
@@ -818,7 +824,7 @@ function createSpendGuard(opts = {}) {
       }
     }
 
-    const key = repeatKey(provider, ctx.voiceId, text)
+    const key = repeatKey(provider, ctx.voiceId, text, ctx.speed)
     const base = {
       at: new Date(now()).toISOString(), provider, voice: ctx.voiceId || null, chars,
       course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null,

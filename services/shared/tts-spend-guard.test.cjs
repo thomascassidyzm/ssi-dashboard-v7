@@ -94,6 +94,14 @@ describe('(b) global budgets: daily cap and a stop share of the monthly pool', (
 })
 
 describe('(c) idempotency: the same words, voice and provider are not bought over and over', () => {
+  it('counts each native speed apart: 1.0, 0.8 and 0.9 pass, a 4th identical render at one speed trips (job #756)', async () => {
+    const g = guard({ budgetPath: budgets({ repeat: { maxPerKey: 3, windowHours: 24 } }) })
+    for (const speed of [undefined, 0.8, 0.9]) for (let i = 0; i < 3; i++) await call(g, 'her name', { speed })
+    await expect(call(g, 'her name', { speed: 0.8 })).rejects.toThrow(/REPEAT.*3 times/)
+    await expect(call(g, 'her name')).rejects.toThrow(/REPEAT.*3 times/)
+    expect(repeatKey('cartesia', 'v', 'x', 1)).toBe(repeatKey('cartesia', 'v', 'x'))
+  })
+
   it('refuses the (maxPerKey+1)th send inside the window, whatever the caller thinks is missing', async () => {
     const g = guard({ budgetPath: budgets({ repeat: { maxPerKey: 3, windowHours: 24 } }) })
     for (let i = 0; i < 3; i++) await call(g, 'her name')

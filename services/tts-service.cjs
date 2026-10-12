@@ -916,6 +916,8 @@ async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = 
       courseCode: door.courseCode || config.courseCode || null, job: door.job || null,
       // Proof that speak() asked the clip library and it had no clip (job #677).
       ticket,
+      // A native speed is a different recording: the repeat limit counts it apart (trial renders, job #751).
+      speed: config.speed,
     });
     doorStats.providerCalls++;
     doorStats.providerChars += String(text).length;
