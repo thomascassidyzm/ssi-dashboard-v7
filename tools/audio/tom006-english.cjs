@@ -36,9 +36,9 @@ const setPointer = async (db, s, from, to, ev) => {
   if (error) throw new Error(error.message); return !!data && data.length === 1
 }
 const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
-// Job #24 (Tom 2026-10-12: "Female voices are needed for the English for X premium courses"; "we want to keep the gender variance"): English is TWO voices. A line whose
-// current non-Cartesia clip is a FEMALE voice (eve, Sonia, Olivia...) goes to Charlotte, every other line (male or an unlisted voice) to Tom-006 as before.
-const { targetGender, targetVoice } = require('./english-gender-voice.cjs')
+// Job #52 (Tom 2026-10-12, superseding #24's reading): X_for_eng English KNOWN lines are ALL Tom-006 — Charlotte, tom_001 and every old voice included, no gender variance.
+// Gender variance is for eng_for_X (English target2) only: female-origin lines there go to Charlotte, the rest to Tom-006. The rule is englishSlotVoice().
+const { targetGender, targetVoice, englishSlotVoice } = require('./english-gender-voice.cjs')
 // Job #15 (Tom 2026-10-12): the runner used to see only slots on a NON-Cartesia clip, so a male-role slot that #573's gender-blind passes had moved onto Charlotte
 // counted as finished and was never put back. A slot is MALE-ROLE when its pre-#573 clip was a male voice; those on Charlotte now count as remaining.
 // Female-origin Charlotte slots stay Charlotte (gender variance is wanted). The origin is read from #573's own ledgers, the only record of it.
@@ -143,12 +143,12 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
         union all select seed_number, ${col} from course_legos where course_code=$1 and ${col} is not null and seed_number between $2 and $3
         union all select seed_number, ${col} from course_practice_phrases where course_code=$1 and ${col} is not null and seed_number between $2 and $3)
       select ca.text_normalized t, min(ca.text) tx, ca.voice_id voice, min(s.pos) pos, count(*) lines from s join course_audio ca on ca.id=s.aid
-      where ca.language in ('eng','en') and ca.role in ('known','target2') and ca.voice_id not like 'cartesia\\_%'
-      group by 1, 3 order by 4, 1`, [code, lo, hi])
+      where ca.language in ('eng','en') and ca.role in ('known','target2') and ${isEngTarget(c) ? "ca.voice_id not like 'cartesia\\_%'" : 'ca.voice_id <> $4'}
+      group by 1, 3 order by 4, 1`, isEngTarget(c) ? [code, lo, hi] : [code, lo, hi, T6])
     // one item per (text, target voice): the gender of the line's own current clip decides Charlotte or Tom-006. Male items keep the old rule that a text some other Cartesia voice already speaks is left alone.
     const folded = new Map()
-    for (const r of rows) { const g = targetGender(r.voice), k = `${r.t}|${g}`, e = folded.get(k) || { t: r.t, tx: r.tx, pos: r.pos, lines: 0, g }; e.lines += Number(r.lines); e.pos = Math.min(e.pos, r.pos); folded.set(k, e) }
-    const out = maleOnly ? [] : [...folded.values()].filter(r => r.g === 'f' || !otherCartesia.has(r.t)).map(r => ({ ...r, course: code, role: isEngTarget(c) ? 'target2' : 'known' }))
+    for (const r of rows) { const g = isEngTarget(c) ? targetGender(r.voice) : 'm', k = `${r.t}|${g}`, e = folded.get(k) || { t: r.t, tx: r.tx, pos: r.pos, lines: 0, g }; e.lines += Number(r.lines); e.pos = Math.min(e.pos, r.pos); folded.set(k, e) }
+    const out = maleOnly ? [] : [...folded.values()].filter(r => !isEngTarget(c) || r.g === 'f' || !otherCartesia.has(r.t)).map(r => ({ ...r, course: code, role: isEngTarget(c) ? 'target2' : 'known' }))
     if (!isEngTarget(c)) {   // male-role slots sitting on Charlotte (job #15): looked up by their own ids, never by scanning the course
       const ch = []
       for (const tbl of TABLES) {
@@ -173,15 +173,16 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
     console.log('TOTAL', JSON.stringify(T)); return pg.end()
   }
   const oneSlotsOf = async (t, g) => {
-    const { rows: olds } = await pg.query(`select id::text, voice_id from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id not like 'cartesia\\_%'`, [t])
-    const ids = maleOnly ? [] : olds.filter(r => targetGender(r.voice_id) === g).map(r => r.id)   // only the clips of THIS gender move to this item's voice
-    const { rows: chs } = await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id=$2`, [t, CHARLOTTE])
-    const chIds = new Set(g === 'm' ? chs.map(r => r.id) : []); ids.push(...chIds)   // a Charlotte clip moves only from a male-role slot, and only to Tom-006; if (!ids.length) return []
+    // every English clip of this text not already on the item's voice; a slot holding one moves only where englishSlotVoice() says it belongs in that voice (job #52):
+    // X_for_eng known -> always Tom-006 (Charlotte and old female clips included); eng_for_X target2 -> by the old clip's gender, Cartesia left alone
+    const voice = targetVoice(g)
+    const { rows: olds } = await pg.query(`select id::text, voice_id from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id <> $2`, [t, voice])
+    const clipVoice = new Map(olds.map(r => [r.id, r.voice_id])); const ids = [...clipVoice.keys()]; if (!ids.length) return []
     const out = []
     for (const tbl of TABLES) for (const col of ['known_audio_id', 'target2_audio_id']) {
       const { rows } = await pg.query(`select x.id::text key, x.course_code course, x.${col}::text "from" from ${tbl} x join courses c on c.course_code=x.course_code
         where x.${col} = any($1::uuid[]) and c.status in ('released','beta')`, [ids])
-      out.push(...rows.filter(r => !chIds.has(r.from) || maleKeys.has(`${tbl}:${r.key}`)).map(r => ({ tbl, col, ...r })))   // a Charlotte clip moves only from a male-role slot
+      out.push(...rows.filter(r => englishSlotVoice({ course: r.course, col, clipVoice: clipVoice.get(r.from) }) === voice).map(r => ({ tbl, col, ...r })))
     }
     return out
   }

@@ -629,6 +629,15 @@ const routes = [
   // `router.push({ name })` keep working across the move, and only the paths
   // are new. Every old /admin/configs* path redirects below, so no bookmark
   // breaks.
+  // Procedures (Tom, 2026-10-12): run Popty's registered deterministic jobs —
+  // inputs, plan, run, progress, result, undo. The server refuses anything not
+  // in services/procedures/registry.cjs.
+  {
+    path: '/admin/procedures',
+    name: 'Procedures',
+    component: () => import('../views/admin/Procedures.vue'),
+    meta: { title: 'Procedures - Admin', requiresAdmin: true }
+  },
   {
     path: '/admin/labs',
     name: 'LabsIndex',
