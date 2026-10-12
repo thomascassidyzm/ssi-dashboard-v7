@@ -61,7 +61,7 @@ function undoPlanMoved(rows) {
 
 /**
  * Undo by construction (lane review #854): no pair bookkeeping. Returns { restore: Map slotKey -> { tbl, key, from }, newIds: Set } from EVERY render/partial/swap row.
- * A slot's restore target is the first from-id recorded for it that is not itself one of this project's new ids (so a re-run chain can never "restore" to our own clip);
+ * A slot's restore target is the from-id of its most recent recorded move that is not itself one of this project's new ids (so a re-run chain can never "restore" to our own clip);
  * a slot whose row carries no per-slot from falls back to the row's oldId. Undo = for each slot whose live pointer is in newIds, set it back to its restore target.
  */
 function restoreMap(rows) {
@@ -70,7 +70,7 @@ function restoreMap(rows) {
     if (e.newId) newIds.add(e.newId)
     for (const s of e.slots || []) { const from = s.from !== undefined ? s.from : e.oldId; if (from === undefined) continue; const k = `${s.tbl}:${s.key}`; if (!firsts.has(k)) firsts.set(k, []); firsts.get(k).push({ tbl: s.tbl, key: s.key, from }) }
   }
-  for (const [k, list] of firsts) restore.set(k, list.find(x => x.from == null || !newIds.has(x.from)) || list[list.length - 1])
+  for (const [k, list] of firsts) restore.set(k, [...list].reverse().find(x => x.from == null || !newIds.has(x.from)) || list[0])   // LATEST move wins (covers an external edit between our moves); a from that is itself one of our clips is skipped back past (lane review #858)
   return { restore, newIds }
 }
 

@@ -104,5 +104,8 @@ describe('job #836 undo by construction (lane review #854)', () => {
     // a re-run chain (slot 1 later moved from our own N to M) still restores to the ORIGINAL A
     const chain = L.restoreMap([{ kind: 'swap', oldId: 'A', newId: 'N', slots: [k1] }, { kind: 'swap', oldId: 'N', newId: 'M', slots: [{ tbl: 'course_legos', key: '1', from: 'N' }] }])
     expect(chain.restore.get('course_legos:1').from).toBe('A')
+    // latest move wins: an external edit to X, then our move X -> M, restores to X
+    const ext = L.restoreMap([{ kind: 'swap', oldId: 'A', newId: 'N', slots: [k1] }, { kind: 'swap', oldId: 'X', newId: 'M', slots: [{ tbl: 'course_legos', key: '1', from: 'X' }] }])
+    expect(ext.restore.get('course_legos:1').from).toBe('X')
   })
 })

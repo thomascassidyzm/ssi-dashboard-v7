@@ -64,12 +64,14 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
     const live = async () => (await pg.query(`select 'course_legos' tbl, id::text key, presentation_audio_id::text cur from course_legos where course_code=$1 and presentation_audio_id::text = any($2::text[])
       union all select 'course_practice_phrases', id::text, presentation_audio_id::text from course_practice_phrases where course_code=$1 and presentation_audio_id::text = any($2::text[])`, [course, ids])).rows
     const onNew = await live(); let n = 0, noTarget = 0
-    for (const sl of onNew) {
-      const r = restore.get(`${sl.tbl}:${sl.key}`); if (!r) { noTarget++; continue }
-      if (dryRun) { console.log('would undo', sl.tbl, sl.key, sl.cur, '->', r.from); n++; continue }
-      if (await setPointer(db, r, sl.cur, r.from, await event())) { n++; await touch(1) }
-    }
-    if (!dryRun) await bump(n > 0)
+    try {
+      for (const sl of onNew) {
+        const r = restore.get(`${sl.tbl}:${sl.key}`); if (!r) { noTarget++; continue }
+        if (dryRun) { console.log('would undo', sl.tbl, sl.key, sl.cur, '->', r.from); n++; continue }
+        if (await setPointer(db, r, sl.cur, r.from, await event())) { n++; await touch(1) }
+      }
+    } finally { await bump(n > 0) }   // a mid-undo throw still bumps content_version for what already moved
+    if (!dryRun && (touched > 0 || stopFlag)) { console.error('content_version bump still pending after undo'); process.exitCode = 2 }
     const left = dryRun ? [] : await live()
     if (!dryRun) log({ kind: 'undo-run', restored: n, left: left.length, noTarget })
     console.log(dryRun ? 'would undo' : 'undone slots', n, `; still on a Tom-006 clip of this project: ${left.length}; with no recorded from-id: ${noTarget}`)
