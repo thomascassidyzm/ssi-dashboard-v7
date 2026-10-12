@@ -176,10 +176,7 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
                     const landed = await t6Row(q.t); if (landed) r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; else if (transient < 3) { r = undefined; attempt = Math.min(attempt, 5) } else { r = { ok: false, error: 'persistent transient failure' } }
                   } else if (r && r.code === 'LEDGER') {   // the shared spend ledger timed out (DB load): fail-closed, nothing was sent; wait and ask again rather than stop
                     const wait = [5000, 15000, 60000][Math.min(ledgerHits++, 2)]; console.log(`spend ledger unreachable, waiting ${wait / 1000}s then asking again:`, q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, wait)); r = undefined; attempt = Math.min(attempt, 5); if (stopFlag) return
-                  } else if (r && (r.code === 'DAILY_TOTAL_CAP' || r.code === 'DAILY_CAP')) {   // Tom: guards are not for his directed jobs. Nothing was sent; ask again every 2 minutes (a signed raise or the next UTC day clears it) rather than stop
-                    console.log('daily cap holding (' + r.code + '), asking again in 120s:', JSON.stringify(r).slice(0, 160)); log({ kind: 'cap-wait', code: r.code })
-                    await new Promise(z => setTimeout(z, 120000)); r = undefined; attempt = Math.min(attempt, 5); if (stopFlag) return
-                  }
+                  }   // DAILY_TOTAL_CAP / DAILY_CAP are NOT retried (Watson 2026-10-12: report them): they fall through to the REFUSED stop below, which the wake reports
                 } catch (e) {
                   console.log('connection dropped, checking before any retry:', q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, 30000))
                   const landed = await t6Row(q.t); if (landed) { r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; res = { ok: true } }
