@@ -76,9 +76,14 @@ const chunks = (a, n) => { const o = []; for (let i = 0; i < a.length; i += n) o
       let newId = have.get(q.t), how = 'reuse'
       if (!newId) {
         const s0 = q.slots[0]; if (dryRun) continue
-        const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-24' },
-          body: JSON.stringify({ courseCode: s0.course, role: s0.col === 'target2_audio_id' ? 'target2' : 'known', text: q.tx, language: 'eng', voiceId: CHARLOTTE, voiceBound: true, job: '#24', purpose: '#24 Charlotte female English (gender variance restore)' }) })
-        const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+        let res, r
+        for (let attempt = 0; attempt < 6; attempt++) {   // a rate limit or a spend-ledger timeout means "ask again later"; any other refusal is the answer
+          res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-24' },
+            body: JSON.stringify({ courseCode: s0.course, role: s0.col === 'target2_audio_id' ? 'target2' : 'known', text: q.tx, language: 'eng', voiceId: CHARLOTTE, voiceBound: true, job: '#813', purpose: '#24 Charlotte female English (gender-variance correction of #813 Tom-006 output)' }) }).catch(() => ({ ok: false, status: 0, json: async () => ({ ok: false, code: 'CONN' }) }))
+          r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+          if (!(r && (r.code === 'LEDGER' || r.code === 'CONN' || res.status === 429 || /rate/i.test(String(r.code || ''))))) break
+          console.log('transient, waiting 30s:', r.code || res.status); await new Promise(z => setTimeout(z, 30000))
+        }
         if (r.code === 'NOT_SPEAKABLE') { log({ kind: 'unspeakable', t: q.t, text: q.tx }); continue }
         if (!res.ok || !r.ok) { log({ kind: 'refused', t: q.t, r }); console.log('REFUSED — stopping, no retry:', JSON.stringify(r).slice(0, 300)); stop = true; return }
         const { rows: [ca] } = await pg.query('select voice_id, s3_key, duration_ms from course_audio where id=$1', [r.audioId])
