@@ -118,7 +118,7 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
               res = await fetchRetry(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-836' },
                 body: JSON.stringify({ courseCode: course, role: 'presentation', text: it.newText, language: 'eng', voiceId: T6, voiceBound: true, job: JOB, purpose: `#836 Tom-006 intro ${it.first.lego_id}` }) })
               r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
-              if (!(r && r.code === 'LEDGER') || a >= 3) break
+              if (!(r && (r.code === 'LEDGER' || r.code === 'RENDER_FAILED')) || a >= 3) break   // RENDER_FAILED = course_audio write timed out under DB load after the (tiny) render; same transient class
               if (a >= 1 && cap > 1) { cap--; console.log('ledger timeouts repeat: concurrency now', cap) }
               console.log('LEDGER timeout, backing off', [5, 15, 60][a], 's'); await new Promise(x => setTimeout(x, [5, 15, 60][a] * 1000))
             }
