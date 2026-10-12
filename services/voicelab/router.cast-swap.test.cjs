@@ -95,6 +95,27 @@ describe('PUT /languages/:language/slot — rank moves', () => {
   })
 })
 
+describe('PUT /languages/:language/slot — presentation is gender-agnostic (#677)', () => {
+  it('casts a presentation voice with no gender, recording the voice\'s own gender', async () => {
+    roles = []
+    const res = await fetch(`${base}/api/voicelab/languages/eng/slot`, {
+      method: 'PUT', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ slot: 'presentation', rank: 0, voiceId: 'cartesia_registered' }),
+    })
+    const body = await res.json()
+    expect(body.error).toBeUndefined()
+    expect(res.status).toBe(200)
+    expect(roles).toEqual([{ slot: 'presentation', language: 'eng', gender: 'f', rank: 0, voice_id: 'cartesia_registered' }])
+  })
+  it('still demands a gender for a phrase cast', async () => {
+    const res = await fetch(`${base}/api/voicelab/languages/eng/slot`, {
+      method: 'PUT', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ slot: 'phrase', rank: 0, voiceId: 'cartesia_registered' }),
+    })
+    expect(res.status).toBe(400)
+  })
+})
+
 describe('DELETE /languages/:language/slot — presentation (#273)', () => {
   it('clears a presentation rank by slot, language and rank, with no gender', async () => {
     roles = [

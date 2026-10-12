@@ -529,11 +529,12 @@ function mount (app, deps) {
       if (!isCastableSlot(slot)) {
         throw Object.assign(new Error(`slot must be one of ${[...registry.SLOTS, 'presentation'].join(', ')}`), { status: 400 })
       }
-      const gender = slot === 'guide' ? null : (req.body || {}).gender
+      const genderAgnostic = slot === 'guide' || slot === 'presentation'
+      const gender = genderAgnostic ? null : (req.body || {}).gender
       if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
 
       // 'known' is gendered exactly like 'phrase' (services/shared/language-voice-cast.cjs KNOWN_SLOT).
-      if (slot !== 'guide' && !registry.GENDERS.includes(gender)) {
+      if (!genderAgnostic && !registry.GENDERS.includes(gender)) {
         throw Object.assign(new Error(`gender must be one of ${registry.GENDERS.join(', ')}`), { status: 400 })
       }
       const r = Number(rank)
@@ -663,11 +664,11 @@ function mount (app, deps) {
         voiceGender = registry.GENDERS.includes(gender) ? gender : null
       }
 
-      // A guide row's gender is the VOICE's own, recorded as a fact and read by
+      // A guide or presentation row's gender (both gender-agnostic; #677) is the VOICE's own, recorded as a fact and read by
       // nothing. Where the voice row carries none — Aran's does not — 'm' is
       // written to satisfy the key's NOT NULL, and the one-guide-per-rank index
       // is what actually keeps the slot single.
-      const rowGender = slot === 'guide' ? (registry.GENDERS.includes(voiceGender) ? voiceGender : 'm') : gender
+      const rowGender = genderAgnostic ? (registry.GENDERS.includes(voiceGender) ? voiceGender : 'm') : gender
 
       // ATOMIC: a voice holds one rank per (slot, language, gender) (the no_self_backup
       // index), so promoting a backup to primary — or any move to the other rank — must
