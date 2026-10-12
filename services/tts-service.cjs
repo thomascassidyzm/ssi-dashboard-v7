@@ -1026,7 +1026,9 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     throw new Error(`TTS door: cannot name this clip (${!language ? 'language' : 'voice id'} unknown; ${provider} ${config.voiceId || config.voiceName || '?'}, text: "${String(text).slice(0, 40)}") — a line the door cannot look up is never rendered. Pass config.door.language.`);
   }
 
-  const lib = clipLibrary();
+  // door.skipLibrary (trial render at a non-1.0 native speed, job #751): same words, different recording — the library cannot answer it.
+  // The lookup still runs (the spend guard demands its ticket) but against an empty library, so it can only miss.
+  const lib = door.skipLibrary ? require('./shared/clip-library.cjs').memoryClipLibrary([]) : clipLibrary();
   const { clip: existing, ticket } = await lookupForRender({
     text,
     language,

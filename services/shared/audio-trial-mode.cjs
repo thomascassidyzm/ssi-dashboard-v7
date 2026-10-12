@@ -41,7 +41,9 @@ function assertNotTrial(...refs) {
   }
 }
 
-const trialKey = uuid => `${TRIAL_KEY_PREFIX}${String(uuid).toUpperCase()}.mp3`
+// A slowed trial (job #751) carries its speed in the key — trial/<UUID>_x80.mp3 for 0.8 — so two speeds of the same words are two objects, never one.
+const speedTag = speed => (speed == null || speed === 1 ? '' : `_x${Math.round(speed * 100)}`)
+const trialKey = (uuid, speed) => `${TRIAL_KEY_PREFIX}${String(uuid).toUpperCase()}${speedTag(speed)}.mp3`
 const trialIdFromKey = key => `${TRIAL_ID_PREFIX}${String(key).slice(TRIAL_KEY_PREFIX.length).replace(/\.mp3$/, '')}`
 const keyFromTrialId = id => `${TRIAL_KEY_PREFIX}${String(id).slice(TRIAL_ID_PREFIX.length)}.mp3`
 

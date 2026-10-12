@@ -32,6 +32,9 @@ const trialMode = require('./audio-trial-mode.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'text', 'purpose', 'requestedBy']
 
+/** Trial renders may slow a read natively (job #751, Tom 2026-10-12): 0.7-1.0 of the voice's pace. */
+const TRIAL_SPEED_MIN = 0.7, TRIAL_SPEED_MAX = 1.0
+
 class RenderRequestError extends Error {
   constructor(message, status = 400, code = 'BAD_REQUEST') { super(message); this.status = status; this.code = code }
 }
@@ -53,6 +56,8 @@ function validate(input) {
     dryRun: !!input.dryRun,
     // TRIAL (job #748, services/shared/audio-trial-mode.cjs): skip the voice gates, store apart from every course, link nothing.
     trial: input.trial === true,
+    // TRIAL ONLY (job #751): a native speed for the provider (Cartesia generation_config.speed) instead of a time-stretch. Null = the voice's own speed.
+    speed: input.speed == null ? null : Number(input.speed),
     // Answer only with a clip in THIS voice. A two-voice phrase's male and female
     // slots are told apart by voice alone; any-voice reuse files one in the other.
     // DEFAULT ON (job #944): reuse matches voice identity; only an explicit voiceBound:false opts out.
@@ -69,6 +74,10 @@ function validate(input) {
     job: input.job ? String(input.job).slice(0, 100) : null,
   }
   if (out.trial && (out.replaceAudioId || out.spokenText || out.legoId)) throw new RenderRequestError('a trial render connects to nothing — replaceAudioId, spokenText and legoId do not apply', 400, 'TRIAL_NO_LINKS')
+  if (out.speed != null) {
+    if (!out.trial) throw new RenderRequestError('speed is a trial-only option — a course render speaks at the course voice\'s own speed', 400, 'SPEED_TRIAL_ONLY')
+    if (!(out.speed >= TRIAL_SPEED_MIN && out.speed <= TRIAL_SPEED_MAX)) throw new RenderRequestError(`speed must be between ${TRIAL_SPEED_MIN} and ${TRIAL_SPEED_MAX}`, 400, 'BAD_SPEED')
+  }
   if (out.job && !/#\d+/.test(out.job)) throw new RenderRequestError('job names the job the way the estate writes it, e.g. "#913"')
   if (out.spokenText && !out.replaceAudioId) throw new RenderRequestError('spokenText only applies to a re-record — name replaceAudioId')
   if (out.spokenText && out.spokenText.length > 1000) throw new RenderRequestError('spokenText longer than 1,000 characters — this is one clip, not a script')
@@ -145,11 +154,14 @@ async function trialRender(req, deps) {
   trialMode.assertTrialOpen(deps.now ? deps.now() : new Date())
   const r = await deps.resolve(req)
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
-  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, job: req.job } }
+  // A non-1.0 speed is a different recording of the same words, so the library (keyed on text+voice) must not answer it:
+  // door.skipLibrary. Speed 1.0 / unset keeps the normal trial path, library hit and all.
+  const slowed = req.speed != null && req.speed !== 1
+  const cfg = { ...r.providerConfig, ...(slowed ? { speed: req.speed } : {}), door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, skipLibrary: slowed, job: req.job } }
   const out = await deps.speak(req.text, r.provider, cfg, 1)
-  const echo = { trial: true, purpose: req.purpose, requestedBy: req.requestedBy, voiceId: r.voiceId, language: r.language }
+  const echo = { trial: true, ...(slowed ? { speed: req.speed } : {}), purpose: req.purpose, requestedBy: req.requestedBy, voiceId: r.voiceId, language: r.language }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
-  const stored = await deps.storeTrial({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+  const stored = await deps.storeTrial({ ...ident, speed: slowed ? req.speed : null, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...stored, ...echo }
 }
 

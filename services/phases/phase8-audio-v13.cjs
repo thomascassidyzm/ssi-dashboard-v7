@@ -5503,9 +5503,9 @@ function buildRenderDeps() {
         return { audioId: replaceAudioId, s3Key: newKey, durationMs, revision: out.revision }
       },
       // TRIAL (job #748): mastered like any clip, kept under trial/ with NO course_audio row and NO clip_index entry.
-      storeTrial: async ({ text, voiceId, audioBuffer }) => {
+      storeTrial: async ({ text, voiceId, audioBuffer, speed }) => {
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
-        const s3Key = trialMode.trialKey(uuidv4())
+        const s3Key = trialMode.trialKey(uuidv4(), speed)
         await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: 'no-store' }))
         const audioId = trialMode.trialIdFromKey(s3Key)
         return { audioId, s3Key, durationMs, playPath: `/api/audio/trial/${audioId}` }

@@ -100,4 +100,22 @@ describe('audio trial mode', () => {
     expect(paid).toEqual([])
     expect(() => trialMode.assertTrialOpen(new Date('2026-10-19T23:59:00Z'))).not.toThrow()
   })
+
+  it('trial speed: reaches the provider, skips the library, is trial-only and range-checked, and keys apart', async () => {
+    const { svc } = door()
+    let seen = null
+    const spy = { speak: (t, p, c, n) => { seen = c; return svc.speak(t, p, c, n) } }
+    const keys = []
+    const out = await renderClip(ask({ trial: true, speed: 0.8 }), deps(svc, { ...spy, storeTrial: async a => { keys.push(a.speed); return { audioId: 'trial_ABC', s3Key: 'trial/ABC.mp3', durationMs: 1, bytes: 1 } } }))
+    expect(seen.speed).toBe(0.8)
+    expect(seen.door.skipLibrary).toBe(true)
+    expect(out.speed).toBe(0.8)
+    expect(keys).toEqual([0.8])
+    expect(trialMode.trialKey('abc', 0.8)).toBe('trial/ABC_x80.mp3')
+    expect(trialMode.trialKey('abc')).toBe('trial/ABC.mp3')
+    expect(trialMode.keyFromTrialId(trialMode.trialIdFromKey(trialMode.trialKey('abc', 0.9)))).toBe('trial/ABC_x90.mp3')
+    await expect(renderClip(ask({ trial: true, speed: 0.5 }), deps(svc))).rejects.toThrow(/between/)
+    await expect(renderClip(ask({ trial: true, speed: 1.2 }), deps(svc))).rejects.toThrow(/between/)
+    await expect(renderClip(ask({ speed: 0.8 }), deps(svc))).rejects.toThrow(/trial-only/)
+  })
 })
