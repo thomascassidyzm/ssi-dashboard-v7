@@ -14,6 +14,7 @@
  */
 
 const { createClient } = require('@supabase/supabase-js')
+const { fetchAllPages } = require('./shared/paged-fetch.cjs')
 const { vaultFetch } = require('./shared/recordist-email-vault.cjs')
 const createLogger = require('./shared/logger.cjs')
 const { generateSampleId, normalizeText: uuidNormalizeText } = require('./uuid-v11.cjs')
@@ -1098,7 +1099,7 @@ async function computeAllCourseContentStats() {
       supabase.from('course_practice_phrases').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
       supabase.from('course_audio').select('*', { count: 'exact', head: true }).eq('course_code', courseCode),
       // Count distinct seed_numbers that have LEGOs (= fully decomposed seeds)
-      supabase.from('course_legos').select('seed_number').eq('course_code', courseCode)
+      fetchAllPages((from, to) => supabase.from('course_legos').select('seed_number').eq('course_code', courseCode).order('id').range(from, to)).then(data => ({ data }))
     ])
 
     // Count unique seed numbers that have LEGOs

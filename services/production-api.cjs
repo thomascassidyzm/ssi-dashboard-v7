@@ -4728,24 +4728,17 @@ function pickServingPodPerCourse (pods) {
 
 /** Page past PostgREST's 1000-row default. Ordered, because offset paging without
  *  an ORDER BY can repeat or skip rows. */
+const { fetchAllPages } = require('./shared/paged-fetch.cjs')
 async function fetchAllPodSentences (supabase, podIds, { withSplitArrays = false } = {}) {
   const cols = 'id, pod_id, scene_number, sentence_number, global_order, beat_label, speaker, ' +
     'target_text, known_text, target_audio_id, known_audio_id' +
     (withSplitArrays ? ', sentence_audio_ids, sentence_known_audio_ids, takeg_audio_ids' : '')
-  const out = []
-  const PAGE = 1000
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await supabase
-      .from('listening_pod_sentences')
-      .select(cols)
-      .in('pod_id', podIds)
-      .order('pod_id').order('global_order')
-      .range(from, from + PAGE - 1)
-    if (error) throw error
-    out.push(...(data || []))
-    if (!data || data.length < PAGE) break
-  }
-  return out
+  return fetchAllPages((from, to) => supabase
+    .from('listening_pod_sentences')
+    .select(cols)
+    .in('pod_id', podIds)
+    .order('pod_id').order('global_order')
+    .range(from, to))
 }
 
 // GET /api/pod-scripts — the fleet index: every course that has a live SERVING
