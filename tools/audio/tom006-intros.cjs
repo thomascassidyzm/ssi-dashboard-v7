@@ -19,7 +19,6 @@ const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f);
 const course = opt('--course'); if (!course) { console.error('--course required'); process.exit(1) }
 const dir = path.join(__dirname, '../../ops/794-tom006-intros'), ledger = path.join(dir, `${course}-ledger.jsonl`)
 const lines = () => fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
-const log = e => fs.appendFileSync(ledger, JSON.stringify({ ...e, at: new Date().toISOString() }) + '\n')
 function supa() {
   if (!process.env.SUPABASE_URL) for (const p of [path.join(__dirname, '../../.env'), '/home/tomcassidy/ssi-dashboard-v7-clean/.env', '/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/.env'])
     if (fs.existsSync(p)) for (const l of fs.readFileSync(p, 'utf8').split('\n')) { const m = /^(SUPABASE_URL|SUPABASE_SERVICE_KEY)=(.*)$/.exec(l.trim()); if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^"|"$/g, '') }
@@ -29,9 +28,10 @@ const setPointer = async (db, s, from, to, ev) => {
   const { data, error } = await db.from(s.tbl).update({ presentation_audio_id: to, last_edit_event_id: ev }).eq('id', s.key).eq('presentation_audio_id', from).select('id')
   if (error) throw new Error(error.message); return data && data.length === 1
 }
-const { ledgerState } = require('./tom006-ledger.cjs')
+const { ledgerState, undoPlan, makeLog } = require('./tom006-ledger.cjs')
 const { makeFaded } = require('./tom006-fade-lib.cjs')
 const dryRun = has('--dry-run')
+const log = makeLog(ledger, dryRun)
 ;(async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); const db = supa()
   const identity = serviceIdentity('tom006-intros-794')
@@ -46,13 +46,11 @@ const dryRun = has('--dry-run')
     return moved
   }
   if (has('--undo')) {
-    const st = ledgerState(lines()); let n = 0
-    for (const [oldId, cur] of [...st].reverse()) {
-      if (!cur.applied && cur.row.kind !== 'partial') continue
-      const slots = cur.row.slots || []
-      if (dryRun) { console.log('would undo', cur.row.lego_id, cur.newId, '->', oldId, slots.length, 'slots'); n++; continue }
-      let moved = 0; for (const s of slots) if (await setPointer(db, s, cur.newId, oldId, await event())) moved++
-      log({ kind: 'undo', oldId, newId: cur.newId, lego_id: cur.row.lego_id, moved }); n += moved
+    let n = 0
+    for (const p of undoPlan(lines())) {
+      if (dryRun) { console.log('would undo', p.lego_id, p.newId, '->', p.oldId, p.slots.length, 'slots'); n += p.slots.length; continue }
+      let moved = 0; for (const s of p.slots) if (await setPointer(db, s, p.newId, p.oldId, await event())) moved++   // conditional: only slots still on newId move
+      log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved }); n += moved
     }
     if (n && !dryRun) console.log('content_version', await bumpCourseVersion(db, course, 'patch'))
     console.log(dryRun ? 'would undo' : 'undone slots', n); return pg.end()

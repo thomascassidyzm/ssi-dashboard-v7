@@ -14,3 +14,31 @@ describe('tom006 ledger state (lane reviews #804, #805)', () => {
     expect(ledgerState([row('swap', 'A'), row('undo', 'A'), row('swap', 'A')]).get('A').applied).toBe(true)
   })
 })
+
+import { undoPlan, ledgerPairs, makeLog } from './tom006-ledger.cjs'
+import fs from 'node:fs'
+import os from 'node:os'
+import path from 'node:path'
+const S = (...k) => k.map(x => ({ tbl: 'course_legos', key: x }))
+const R = (kind, oldId, newId, slots) => ({ kind, oldId, newId, lego_id: 'L', slots })
+describe('undo coverage (lane reviews #811, #812)', () => {
+  it('a retry after a partial swap records only the remaining slot, yet undo covers the slot moved earlier (union, de-duplicated by tbl:key)', () => {
+    const rows = [R('render', 'A', 'N', S('k1', 'k2')), R('partial', 'A', 'N', S('k1', 'k2')), R('swap', 'A', 'N', S('k2'))]
+    const [p] = undoPlan(rows)
+    expect(p.slots.map(s => s.key).sort()).toEqual(['k1', 'k2'])
+    expect(ledgerPairs(rows)[0].applied).toBe(true)
+  })
+  it('a crash mid-swap leaves only a render row (k1 already moved, no completion row): undo still covers it', () => {
+    const [p] = undoPlan([R('render', 'A', 'N', S('k1', 'k2'))])
+    expect(p).toMatchObject({ oldId: 'A', newId: 'N' }); expect(p.slots.length).toBe(2)
+  })
+  it('an undone pair is not planned again; a later render of the same pair is', () => {
+    expect(undoPlan([R('swap', 'A', 'N', S('k1')), { kind: 'undo', oldId: 'A', newId: 'N' }])).toEqual([])
+    expect(undoPlan([R('swap', 'A', 'N', S('k1')), { kind: 'undo', oldId: 'A', newId: 'N' }, R('swap', 'A', 'N', S('k1'))]).length).toBe(1)
+  })
+  it('--dry-run writes no ledger row', () => {
+    const f = path.join(os.tmpdir(), `t006-${process.pid}.jsonl`)
+    makeLog(f, true)({ kind: 'skip' }); expect(fs.existsSync(f)).toBe(false)
+    makeLog(f, false)({ kind: 'skip' }); expect(fs.readFileSync(f, 'utf8')).toContain('skip'); fs.unlinkSync(f)
+  })
+})

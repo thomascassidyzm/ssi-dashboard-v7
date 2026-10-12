@@ -12,14 +12,14 @@ const { createClient } = require('@supabase/supabase-js')
 const { bumpCourseVersion } = require('../../services/shared/course-version.cjs')
 const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
 const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs')
-const { ledgerState } = require('./tom006-ledger.cjs')
+const { ledgerState, undoPlan, makeLog } = require('./tom006-ledger.cjs')
 const { makeFaded } = require('./tom006-fade-lib.cjs')
 const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }, has = f => argv.includes(f)
 const course = opt('--course'); if (!course) { console.error('--course required'); process.exit(1) }
 const dir = path.join(__dirname, '../../ops/794-tom006-intros'), ledger = path.join(dir, `${course}-fade-ledger.jsonl`), mainLedger = path.join(dir, `${course}-ledger.jsonl`)
 const read = f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
-const log = e => fs.appendFileSync(ledger, JSON.stringify({ ...e, at: new Date().toISOString() }) + '\n')
 const dryRun = has('--dry-run')
+const log = makeLog(ledger, dryRun)
 function supa() {
   if (!process.env.SUPABASE_URL) for (const p of ['/home/tomcassidy/ssi-dashboard-v7-clean/.env', '/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/.env'])
     if (fs.existsSync(p)) for (const l of fs.readFileSync(p, 'utf8').split('\n')) { const m = /^(SUPABASE_URL|SUPABASE_SERVICE_KEY)=(.*)$/.exec(l.trim()); if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^"|"$/g, '') }
@@ -37,12 +37,10 @@ const setPointer = async (db, s, from, to, ev) => {
       union all select 'course_practice_phrases', id::text from course_practice_phrases where course_code=$1 and presentation_audio_id::text=$2::text and phrase_role is distinct from 'component'`, [course, id])).rows
   if (has('--undo')) {
     let n = 0
-    for (const [oldId, cur] of [...ledgerState(read(ledger))].reverse()) {
-      if (!cur.applied && cur.row.kind !== 'partial') continue
-      const slots = cur.row.slots || []
-      if (dryRun) { console.log('would undo', cur.row.lego_id, cur.newId, '->', oldId); n++; continue }
-      let moved = 0; for (const s of slots) if (await setPointer(db, s, cur.newId, oldId, await event())) moved++
-      log({ kind: 'undo', oldId, newId: cur.newId, lego_id: cur.row.lego_id, moved }); n += moved
+    for (const p of undoPlan(read(ledger))) {
+      if (dryRun) { console.log('would undo', p.lego_id, p.newId, '->', p.oldId, p.slots.length, 'slots'); n += p.slots.length; continue }
+      let moved = 0; for (const s of p.slots) if (await setPointer(db, s, p.newId, p.oldId, await event())) moved++   // conditional: only slots still on newId move
+      log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved }); n += moved
     }
     if (n && !dryRun) console.log('content_version', await bumpCourseVersion(db, course, 'patch'))
     console.log(dryRun ? 'would undo' : 'undone slots', n); return pg.end()
