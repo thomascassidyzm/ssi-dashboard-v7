@@ -35,6 +35,13 @@ const bare = v => String(v || '').replace(/^cartesia_/, '')
 const isCharlotte = v => bare(v) === bare(config.englishVoice)
 const isXai = v => /^(xai_|grok)/i.test(String(v || ''))
 
+/** Tom 2026-10-12 (#794): a voice recorded for WHOLE presentation intros in named courses. Keys are compared bare (cartesia_ prefix optional, as isCharlotte does); own properties only. */
+function wholeIntroAllowed(voiceId, courseCode) {
+  const table = config.wholeIntroVoices || {}
+  const key = Object.keys(table).find(k => Object.hasOwn(table, k) && bare(k) === bare(voiceId))
+  return !!key && Array.isArray(table[key]) && table[key].includes(courseCode)
+}
+
 /** The course is taught FROM English (English is its known side, not its target). */
 function isEnglishKnown(course) {
   const known = lc(course && course.known_lang)
@@ -76,7 +83,7 @@ function checkRender({ text, language, voiceId, course = null, intro = false, ro
   const knownSide = presentation || role === 'known' || role == null
   if (!knownSide) return OK
   // Tom 2026-10-12 (job #794): a named voice may record WHOLE presentation intros for named courses (config.wholeIntroVoices).
-  if (presentation && (config.wholeIntroVoices[bare(voiceId)] || config.wholeIntroVoices[voiceId] || []).includes(course.course_code)) return OK
+  if (presentation && wholeIntroAllowed(voiceId, course.course_code)) return OK
   // English as the known side is Charlotte, for every course taught from English (Tom 2026-09-23, 2026-10-11).
   if (!isCharlotte(voiceId)) return refuse('english-not-charlotte', `the English known side of ${course.course_code || 'this course'} renders in Charlotte only; ${voiceId} refused.`)
   if (!presentation) return OK
