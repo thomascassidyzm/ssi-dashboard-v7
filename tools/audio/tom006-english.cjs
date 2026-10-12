@@ -81,6 +81,15 @@ const TABLES = ['course_seeds', 'course_legos', 'course_practice_phrases']
       const q = queue[idx++]; if (!q || n >= limit) return
       if (done.has(q.t)) continue
       if (spent + q.tx.length > budget) { stop = true; return }
+      // REUSE FIRST (Tom/Watson 2026-10-12, spend guard tripped on repeats): a Tom-006 known row with this text already exists (another job rendered it) -> repoint only, never render again
+      if (!dryRun) {
+        const { rows: [ex] } = await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role='known' and voice_id=$2 and s3_key is not null and s3_key not like 'pending/%' and duration_ms>200 order by created_at limit 1`, [q.t, T6])
+        if (ex) {
+          const slots = await oneSlotsOf(q.t); log({ kind: 'reuse', t: q.t, newId: ex.id, slots })
+          const moved = []; for (const s of slots) if (await setPointer(db, s, s.from, ex.id, await event(s.course))) { moved.push(s); touched.add(s.course) }
+          log({ kind: 'swap', t: q.t, newId: ex.id, slots: moved, wanted: slots.length, reused: true }); n++; slotsMoved += moved.length; sinceBump += moved.length; continue
+        }
+      }
       spent += q.tx.length   // reserve
       const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-813' },
         body: JSON.stringify({ courseCode: course, role: 'known', text: q.tx, language: 'eng', voiceId: T6, voiceBound: true, job: '#813', dryRun, purpose: `#813 Tom-006 step 1 English known (seed ${q.pos})` }) })
