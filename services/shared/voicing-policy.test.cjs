@@ -168,26 +168,9 @@ describe('revoice-clips honours the policy (Sol review #519)', () => {
   })
 })
 
-describe('TEMPORARY trial allowance: German intros in the clones (jobs #734/#738)', () => {
-  const TOM1 = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', ARAN = 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe'
-  const during = new Date('2026-10-14T00:00:00Z'), after = new Date('2026-10-20T00:00:00Z')
-  const r = (o) => checkRender({ text: 'is', language: 'eng', course: COURSES.deu_for_eng, role: 'presentation', now: during, ...o })
-  it('lets tom_001 and aran voice deu_for_eng presentation English until 2026-10-19', () => {
-    for (const v of [TOM1, ARAN]) expect(r({ voiceId: v })).toMatchObject({ allowed: true })
-    expect(r({ voiceId: ARAN, now: new Date('2026-10-19T23:00:00Z') })).toMatchObject({ allowed: true })
-  })
-  it('expires: the day after, the Charlotte rule applies again', () => {
-    expect(r({ voiceId: TOM1, now: after })).toMatchObject({ allowed: false, reason: 'english-not-charlotte' })
-  })
-  it('is narrow: other course, other voice, non-presentation slot, whole intro, xAI all still refused', () => {
-    expect(r({ voiceId: TOM1, course: COURSES.spa_for_eng })).toMatchObject({ allowed: false, reason: 'english-not-charlotte' })
-    expect(r({ voiceId: 'cartesia_f56e05e2-d043-4b41-a7cb-faf528b99e01' })).toMatchObject({ allowed: false, reason: 'english-not-charlotte' }) // Tom_003 dropped, Tom 03:33Z
-    expect(r({ voiceId: 'azure_en-GB-SoniaNeural' })).toMatchObject({ allowed: false, reason: 'english-not-charlotte' })
-    expect(r({ voiceId: TOM1, role: 'known' })).toMatchObject({ allowed: false, reason: 'english-not-charlotte' })
-    expect(r({ voiceId: TOM1, text: 'The German for house is' })).toMatchObject({ allowed: false, reason: 'intro-not-spliced' })
-    expect(r({ voiceId: 'xai_x' })).toMatchObject({ allowed: false, reason: 'xai-banned' })
-  })
-  it('the fragment itself is allowed in a clone', () => {
-    expect(r({ voiceId: TOM1, text: 'The German for' })).toMatchObject({ allowed: true })
+describe('the #738 deu_for_eng clone allowance is retired (superseded by audio trial mode, job #748)', () => {
+  it('a clone voice is refused for deu_for_eng presentation English again — trial renders go through trial:true instead', () => {
+    expect(checkRender({ text: 'is', language: 'eng', course: COURSES.deu_for_eng, role: 'presentation', voiceId: 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', now: new Date('2026-10-14T00:00:00Z') })).toMatchObject({ allowed: false, reason: 'english-not-charlotte' })
+    expect(policy.config.trialAllowances).toBeUndefined()
   })
 })

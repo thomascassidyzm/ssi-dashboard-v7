@@ -34,6 +34,7 @@ const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const clipIndex = require('../shared/clip-index.cjs')
 const voicingPolicy = require('../shared/voicing-policy.cjs')
+const trialMode = require('../shared/audio-trial-mode.cjs')
 const introSplice = require('../shared/intro-splice.cjs')
 const { renderClip, rerecordPatch, roleNativeLanguage, RenderRequestError } = require('../shared/audio-render-entry.cjs')
 const { phraseRenderDoor, PHRASE_REUSE_LOOKUP } = require('../shared/phrase-render-door.cjs')
@@ -5400,6 +5401,7 @@ app.post('/link-presentation-audio/:courseCode', async (req, res) => {
 
 /** Point ONE course's LEGO at its presentation clip. Idempotent; the old clip row is left alone. */
 async function linkLegoPresentation({ courseCode, legoId, audioId }) {
+  trialMode.assertNotTrial(audioId)   // a trial clip is never connected to a course (job #748)
   const { data, error } = await supabase.from('course_legos').update({ presentation_audio_id: audioId })
     .eq('course_code', courseCode).eq('lego_id', legoId).select('lego_id, presentation_audio_id')
   if (error) throw new Error(`course_legos.presentation_audio_id link failed: ${error.message}`)
@@ -5481,6 +5483,7 @@ function buildRenderDeps() {
       },
       // Make before break: new object uploaded and HEADed alive BEFORE the row points at it; the old object is retained.
       replace: async ({ replaceAudioId, courseCode, text, spokenText, language, voiceId, s3Key, audioBuffer, wordBoundaries, wordTimings, requestedBy, purpose }) => {
+        trialMode.assertNotTrial(replaceAudioId, s3Key)
         let newKey = s3Key, durationMs = null
         const said = spokenText || text
         if (!newKey) {
@@ -5498,6 +5501,14 @@ function buildRenderDeps() {
         })
         // clip_index points at the row by audio_id, and the id never moves — nothing to re-index.
         return { audioId: replaceAudioId, s3Key: newKey, durationMs, revision: out.revision }
+      },
+      // TRIAL (job #748): mastered like any clip, kept under trial/ with NO course_audio row and NO clip_index entry.
+      storeTrial: async ({ text, voiceId, audioBuffer }) => {
+        const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
+        const s3Key = trialMode.trialKey(uuidv4())
+        await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: 'no-store' }))
+        const audioId = trialMode.trialIdFromKey(s3Key)
+        return { audioId, s3Key, durationMs, playPath: `/api/audio/trial/${audioId}` }
       },
       store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries, wordTimings }) => {
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
@@ -5560,12 +5571,23 @@ async function spliceIntroForRoute(req, deps) {
   return introSplice.spliceIntro({ text: req.text, course, courseCode: req.courseCode, legoId: req.legoId, dryRun: req.dryRun }, hooks)
 }
 
+// A trial clip's bytes (job #748). Read-only, by id; the id is an unguessable UUID and the object lives under trial/.
+app.get('/trial-audio/:id', async (req, res) => {
+  try {
+    if (!/^trial_[0-9A-F-]{36}$/i.test(req.params.id)) return res.status(400).json({ ok: false, error: 'not a trial clip id' })
+    const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: trialMode.keyFromTrialId(req.params.id) }))
+    res.setHeader('Content-Type', 'audio/mpeg'); res.setHeader('Cache-Control', 'no-store')
+    res.send(Buffer.from(await r.Body.transformToByteArray()))
+  } catch (e) { res.status(e.name === 'NoSuchKey' ? 404 : 500).json({ ok: false, error: e.message }) }
+})
+
 app.post('/render', async (req, res) => {
   try {
     const out = await renderClip(req.body || {}, buildRenderDeps())
     res.json(out)
   } catch (error) {
     if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
+    if (error && error.name === 'TrialRefusal') return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
     if (error && error.code === 'RERECORD_NOT_PERMITTED') return res.status(403).json({ ok: false, code: error.code, error: error.message })
     // A spend-guard refusal is a 402 carrying its own code; anything else is a 500.
     const refused = /\(402\)/.test(error.message)

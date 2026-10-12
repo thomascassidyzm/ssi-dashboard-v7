@@ -28,6 +28,7 @@
  * end to end without a provider. Nothing here spends a character on its own.
  */
 const chain = require('./chain-context.cjs')
+const trialMode = require('./audio-trial-mode.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'text', 'purpose', 'requestedBy']
 
@@ -50,6 +51,8 @@ function validate(input) {
     voiceId: input.voiceId ? String(input.voiceId) : null,
     legoId: input.legoId ? String(input.legoId) : null,
     dryRun: !!input.dryRun,
+    // TRIAL (job #748, services/shared/audio-trial-mode.cjs): skip the voice gates, store apart from every course, link nothing.
+    trial: input.trial === true,
     // Answer only with a clip in THIS voice. A two-voice phrase's male and female
     // slots are told apart by voice alone; any-voice reuse files one in the other.
     // DEFAULT ON (job #944): reuse matches voice identity; only an explicit voiceBound:false opts out.
@@ -65,6 +68,7 @@ function validate(input) {
     // allowance up to the 300k ceiling instead of the automatic 100k (job #913).
     job: input.job ? String(input.job).slice(0, 100) : null,
   }
+  if (out.trial && (out.replaceAudioId || out.spokenText || out.legoId)) throw new RenderRequestError('a trial render connects to nothing — replaceAudioId, spokenText and legoId do not apply', 400, 'TRIAL_NO_LINKS')
   if (out.job && !/#\d+/.test(out.job)) throw new RenderRequestError('job names the job the way the estate writes it, e.g. "#913"')
   if (out.spokenText && !out.replaceAudioId) throw new RenderRequestError('spokenText only applies to a re-record — name replaceAudioId')
   if (out.spokenText && out.spokenText.length > 1000) throw new RenderRequestError('spokenText longer than 1,000 characters — this is one clip, not a script')
@@ -91,6 +95,7 @@ function validate(input) {
  * had to link 43 by hand). Repoint only — the previous clip is never deleted.
  */
 async function bindPresentation(req, result, deps) {
+  trialMode.assertNotTrial(result.audioId, result.s3Key)
   if (req.role !== 'presentation' || !req.legoId || req.dryRun || !deps.linkLego || !result.audioId) return result
   const { linked } = await deps.linkLego({ courseCode: req.courseCode, legoId: req.legoId, audioId: result.audioId })
   return { ...result, legoLinked: !!linked }
@@ -99,6 +104,7 @@ async function bindPresentation(req, result, deps) {
 async function renderClip(input, deps) {
   const req = validate(input)
   return chain.run(`render:${req.requestedBy}`, async () => {
+    if (req.trial) return trialRender(req, deps)
     if (req.replaceAudioId) return rerecord(req, deps)
     const r = await deps.resolve(req)
     const ident = { ...req, language: r.language, voiceId: r.voiceId }
@@ -129,6 +135,22 @@ async function renderClip(input, deps) {
     const stored = await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
     return bindPresentation(req, { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
   })
+}
+
+/**
+ * A TRIAL render: no library link, no splice, no course row, no pointer. The door runs with door.trial (gates off, cap on);
+ * the clip is stored apart by deps.storeTrial and comes back as trial_<UUID>.
+ */
+async function trialRender(req, deps) {
+  trialMode.assertTrialOpen(deps.now ? deps.now() : new Date())
+  const r = await deps.resolve(req)
+  const ident = { ...req, language: r.language, voiceId: r.voiceId }
+  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, job: req.job } }
+  const out = await deps.speak(req.text, r.provider, cfg, 1)
+  const echo = { trial: true, purpose: req.purpose, requestedBy: req.requestedBy, voiceId: r.voiceId, language: r.language }
+  if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
+  const stored = await deps.storeTrial({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+  return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...stored, ...echo }
 }
 
 /**

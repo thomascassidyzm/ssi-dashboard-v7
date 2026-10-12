@@ -1051,6 +1051,12 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
   }
   // The intro SLOT (door.intro) is judged against the course's presentation voices, every other line against its lines (cast gate leg b).
   // The voicing policy (services/shared/voicing-policy.cjs): xAI banned, English known = Charlotte, presentation intros spliced never rendered whole.
+  // TRIAL (job #748, services/shared/audio-trial-mode.cjs): until the config expiry a trial render skips the three Tom-rule gates below
+  // (voicing policy, cast gate, rerecord gate) — it is stored apart from every course, so none of them has anything to protect. The spend
+  // guard in renderWithRetry still runs; assertMayRender above (child voices, consent, retired providers) already ran.
+  if (door.trial) {
+    require('./shared/audio-trial-mode.cjs').assertTrialOpen();
+  } else {
   await assertRenderAllowed({ text, language, voiceId, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro, role: door.slotRole || null, audition: !!door.audition });
   await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro });
   // AFTER the cast gate on purpose (lane review #232): assertMayRerecord RESERVES a use of a max_clips grant, so a render the cast gate
@@ -1062,6 +1068,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     replacing: door.replacing, slotRole: door.slotRole || null, voiceBound: !!door.voiceBound,
     forceRerecord: !!door.forceRerecord, dryRun: !!door.dryRun, job: door.job || null,
   });
+  }
   if (door.dryRun) {
     doorStats.wouldRender++;
     doorStats.wouldSpendChars += chars;

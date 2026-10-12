@@ -1,19 +1,8 @@
 {
   "_why": "DATA, not code: Tom's voicing rulings of 2026-10-09..11 (rulings store: r-2026-10-11-course-re-voicing-only-courses-whose, r-2026-10-11-presentation-intros-for-english-known-courses, r-2026-10-11-spliced-presentation-intros-name-the-base). Change a ruling by editing this file; services/shared/voicing-policy.cjs is the one reader.",
   "englishVoice": "cartesia_71a7ad14-091c-4e8e-a314-022ece01c121",
-  "_trialAllowancesWhy": "TEMPORARY. Tom ruled 2026-10-12 03:28Z that intros move to his first clone and Aran's clone and asked for a trial (job #734/#738). Each entry lets ONLY these voices voice PRESENTATION/intro English for ONE course until 'expires' (UTC date, inclusive); after that the Charlotte rule applies again unchanged. The splice rules still apply (no whole 'The X for ...' intro). Delete the entry when the trial is settled.",
-  "trialAllowances": [
-    {
-      "course": "deu_for_eng",
-      "role": "presentation",
-      "voices": [
-        "cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2",
-        "cartesia_33890587-a29f-4416-ba61-2615c74f92fe"
-      ],
-      "expires": "2026-10-19",
-      "ruling": "Tom 2026-10-12 03:28Z: German intros trial in tom_001 (Tom 03:33Z: first clone only) and aran_english_003 (jobs #734, #738)"
-    }
-  ],
+  "_audioTrialModeWhy": "TEMPORARY. Tom 2026-10-12 03:44Z (job #748): for one week any voice may record anything — no voicing policy, cast gate or rerecord gate — but only as a TRIAL render (trial:true on POST /api/audio/render), and a trial clip is never connected to a course. 'expires' is a UTC date, inclusive; after it a trial render is refused. The 260k/day spend cap is untouched. Supersedes the #738 deu_for_eng trialAllowances. Reader: services/shared/audio-trial-mode.cjs.",
+  "audioTrialMode": { "expires": "2026-10-19" },
   "revoice": {
     "castCutoff": "2026-10-09",
     "defaultMaxSeed": 100,

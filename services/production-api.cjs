@@ -6635,6 +6635,16 @@ app.post('/api/audio/render', async (req, res) => {
   }
 })
 
+// Listen to a TRIAL clip (job #748): the render answer's playPath. phase8 reads it from S3 trial/; nothing here knows a course.
+app.get('/api/audio/trial/:id', async (req, res) => {
+  try {
+    const r = await fetch(`${process.env.PHASE8_URL || 'http://localhost:3465'}/trial-audio/${encodeURIComponent(req.params.id)}`)
+    if (!r.ok) return res.status(r.status).json({ ok: false, error: `trial clip ${req.params.id} not available` })
+    res.setHeader('Content-Type', 'audio/mpeg'); res.setHeader('Cache-Control', 'no-store')
+    res.send(Buffer.from(await r.arrayBuffer()))
+  } catch (e) { res.status(503).json({ ok: false, error: e.message }) }
+})
+
 // THE IN-TRAY of the same chain (job #703, Tom 2026-09-29): a human recording is added
 // to the library as a NAMED voice — artist, language/dialect, gender, text — through the
 // booth's own take path, then indexed (services/shared/audio-intake-entry.cjs).
