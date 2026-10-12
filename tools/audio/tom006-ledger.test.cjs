@@ -92,3 +92,17 @@ describe('job #836 intent-only pairs stay undoable (lane review #851)', () => {
     expect(plan).toHaveLength(1); expect(plan[0]).toMatchObject({ intentOnly: true, slots: [{ tbl: 'course_legos', key: '1' }] })
   })
 })
+
+describe('job #836 undo by construction (lane review #854)', () => {
+  const L = require('./tom006-ledger.cjs')
+  it('render[k1,k2], partial[k1], render[k2], crash: both slots get a restore target, never pointing at our own clip', () => {
+    const k1 = { tbl: 'course_legos', key: '1', from: 'A' }, k2 = { tbl: 'course_legos', key: '2', from: 'B' }
+    const { restore, newIds } = L.restoreMap([
+      { kind: 'render', oldId: 'A', newId: 'N', slots: [k1, k2] }, { kind: 'partial', oldId: 'A', newId: 'N', slots: [k1], wanted: 2 }, { kind: 'render', oldId: 'B', newId: 'M', slots: [k2] }])
+    expect([...newIds].sort()).toEqual(['M', 'N'])
+    expect(restore.get('course_legos:1').from).toBe('A'); expect(restore.get('course_legos:2').from).toBe('B')
+    // a re-run chain (slot 1 later moved from our own N to M) still restores to the ORIGINAL A
+    const chain = L.restoreMap([{ kind: 'swap', oldId: 'A', newId: 'N', slots: [k1] }, { kind: 'swap', oldId: 'N', newId: 'M', slots: [{ tbl: 'course_legos', key: '1', from: 'N' }] }])
+    expect(chain.restore.get('course_legos:1').from).toBe('A')
+  })
+})

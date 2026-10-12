@@ -21,7 +21,7 @@ const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
 const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs')
 const { makeFaded, MARKER } = require('./tom006-fade-lib.cjs')
 const { defaultRange } = require('./tom006-intros-plan.cjs')
-const { ledgerState, undoPlanMoved, undoRecordable, expandLegacyRows } = require('./tom006-ledger.cjs')   // the shared ledger reader (lane reviews #840/#841): pairs keyed oldId|newId
+const { ledgerState, restoreMap, expandLegacyRows } = require('./tom006-ledger.cjs')   // the shared ledger reader (lane reviews #840/#841): pairs keyed oldId|newId
 const T6 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }, has = f => argv.includes(f)
@@ -59,21 +59,21 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
   const touch = async k => { touched += k; if (touched >= BUMP_EVERY) await bump() }
 
   if (has('--undo')) {
-    // ledger order (latest pair first) via the shared undoPlan; a slot moves back only if it is still on newId; an 'undo' row is recorded only when EVERY slot of the pair moved, so a failed one stays pending
-    let n = 0, stuck = 0
-    try {
-      for (const p of undoPlanMoved(lines())) {
-        if (dryRun) { console.log('would undo', p.lego_id, p.newId, '->', p.oldId, p.slots.length, 'slots'); n += p.slots.length; continue }
-        let moved = 0; for (const sl of p.slots) {
-          if (await setPointer(db, sl, p.newId, p.oldId, await event())) moved++
-          else if (await pointerIs(sl, p.oldId)) moved++   // already back on oldId counts as restored (lane review #848)
-        }
-        if ((moved === p.slots.length || p.intentOnly) && undoRecordable(moved)) log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved })
-        else if (!p.intentOnly) { stuck += p.slots.length - moved; console.log('UNDO INCOMPLETE (left pending):', p.oldId, '->', p.newId, `${moved}/${p.slots.length}`) }
-        n += moved; await touch(moved)
-      }
-    } finally { await bump() }
-    console.log(dryRun ? 'would undo' : 'undone slots', n, stuck ? `(${stuck} not on the recorded clip any more)` : ''); await pg.end(); if (stuck) process.exitCode = 2; return
+    // ROBUST BY CONSTRUCTION (lane review #854): one read of the live state + one union of all from-ids from every ledger row. Every slot currently on a Tom-006 clip this project made goes back to its recorded from-id; then the DB is re-read and any slot still on one is reported (exit 2).
+    const { restore, newIds } = restoreMap(lines()); const ids = [...newIds]
+    const live = async () => (await pg.query(`select 'course_legos' tbl, id::text key, presentation_audio_id::text cur from course_legos where course_code=$1 and presentation_audio_id::text = any($2::text[])
+      union all select 'course_practice_phrases', id::text, presentation_audio_id::text from course_practice_phrases where course_code=$1 and presentation_audio_id::text = any($2::text[])`, [course, ids])).rows
+    const onNew = await live(); let n = 0, noTarget = 0
+    for (const sl of onNew) {
+      const r = restore.get(`${sl.tbl}:${sl.key}`); if (!r) { noTarget++; continue }
+      if (dryRun) { console.log('would undo', sl.tbl, sl.key, sl.cur, '->', r.from); n++; continue }
+      if (await setPointer(db, r, sl.cur, r.from, await event())) { n++; await touch(1) }
+    }
+    if (!dryRun) await bump(n > 0)
+    const left = dryRun ? [] : await live()
+    if (!dryRun) log({ kind: 'undo-run', restored: n, left: left.length, noTarget })
+    console.log(dryRun ? 'would undo' : 'undone slots', n, `; still on a Tom-006 clip of this project: ${left.length}; with no recorded from-id: ${noTarget}`)
+    await pg.end(); if (left.length || noTarget) process.exitCode = 2; return
   }
 
   const { from, to } = { ...defaultRange(course), ...(opt('--from') ? { from: Number(opt('--from')) } : {}) }

@@ -59,4 +59,19 @@ function undoPlanMoved(rows) {
   return undoPlan(rows).map(p => { const m = moved.get(`${p.oldId}|${p.newId}`); return m ? { ...p, slots: m, intentOnly: false } : { ...p, intentOnly: true } }).filter(p => p.slots.length)
 }
 
-module.exports = { undoPlanMoved, fadedAtRender, expandLegacyRows, fadePending, undoRecordable, ledgerState, ledgerPairs, undoPlan, unionSlots, makeLog }
+/**
+ * Undo by construction (lane review #854): no pair bookkeeping. Returns { restore: Map slotKey -> { tbl, key, from }, newIds: Set } from EVERY render/partial/swap row.
+ * A slot's restore target is the first from-id recorded for it that is not itself one of this project's new ids (so a re-run chain can never "restore" to our own clip);
+ * a slot whose row carries no per-slot from falls back to the row's oldId. Undo = for each slot whose live pointer is in newIds, set it back to its restore target.
+ */
+function restoreMap(rows) {
+  const restore = new Map(), newIds = new Set(), firsts = new Map()
+  for (const e of rows) if (['render', 'partial', 'swap'].includes(e.kind)) {
+    if (e.newId) newIds.add(e.newId)
+    for (const s of e.slots || []) { const from = s.from !== undefined ? s.from : e.oldId; if (from === undefined) continue; const k = `${s.tbl}:${s.key}`; if (!firsts.has(k)) firsts.set(k, []); firsts.get(k).push({ tbl: s.tbl, key: s.key, from }) }
+  }
+  for (const [k, list] of firsts) restore.set(k, list.find(x => x.from == null || !newIds.has(x.from)) || list[list.length - 1])
+  return { restore, newIds }
+}
+
+module.exports = { restoreMap, undoPlanMoved, fadedAtRender, expandLegacyRows, fadePending, undoRecordable, ledgerState, ledgerPairs, undoPlan, unionSlots, makeLog }
