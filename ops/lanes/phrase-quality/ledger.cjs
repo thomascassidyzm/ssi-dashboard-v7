@@ -22,5 +22,12 @@ function pendingUndo(lines, only) {
 // what apply-staged.cjs applies: replace/delete lines whose row is not already done, and not on hold.
 // A line with "hold" (ramp 967: a replacement whose new text has no audio yet) stays staged until the
 // hold is lifted; it is never applied by this tool while it carries one.
-const stagedTodo = (staged, done) => staged.filter((d) => ['replace', 'delete'].includes(d.decision) && !d.hold && !done.has(d.row_id))
+// With releaseHeld (apply-staged.cjs --release-held, Tom's ruling r-2026-10-12-for-the-open-ramp-967-decisions)
+// the held replacements are applied too: the hold existed only because the new text had no audio, and the
+// release queues that audio. A row staged twice is applied once (its latest staged line).
+function stagedTodo(staged, done, { releaseHeld = false } = {}) {
+  const latest = new Map()
+  for (const d of staged) if (['replace', 'delete'].includes(d.decision) && (releaseHeld || !d.hold) && !done.has(d.row_id)) latest.set(d.row_id, d)
+  return [...latest.values()]
+}
 module.exports = { readLedger, doneRowIds, pendingUndo, stagedTodo }
