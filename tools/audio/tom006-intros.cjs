@@ -3,7 +3,7 @@
  * Tom-006 whole presentation intros, seeds 1-100 (job #794, Tom 2026-10-12): render each planned intro ONCE through the Popty render route
  * (voice-bound, lang eng, role presentation), verify voice + freshness, repoint presentation_audio_id as each clip lands, bump content_version.
  * Plan: ops/794-tom006-intros/plan.cjs -> <course>.plan.json (as-in only at score 3-5). Old clips are never deleted. Undo ledger: ops/794-tom006-intros/<course>-ledger.jsonl.
- *   node tools/audio/tom006-intros.cjs --course deu_for_eng [--limit N] [--bump-every 20] [--dry-run]
+ *   node tools/audio/tom006-intros.cjs --course deu_for_eng [--limit N] [--bump-every 20] [--dry-run] [--fade80]
  *   node tools/audio/tom006-intros.cjs --course deu_for_eng --undo [--dry-run]   (appends {kind:undo} rows; a rerun then re-points to the recorded ids, no render)
  */
 const fs = require('fs'), path = require('path')
@@ -30,6 +30,7 @@ const setPointer = async (db, s, from, to, ev) => {
   if (error) throw new Error(error.message); return data && data.length === 1
 }
 const { ledgerState } = require('./tom006-ledger.cjs')
+const { makeFaded } = require('./tom006-fade-lib.cjs')
 const dryRun = has('--dry-run')
 ;(async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); const db = supa()
@@ -78,11 +79,17 @@ const dryRun = has('--dry-run')
     const { rows: [ca] } = await pg.query('select id::text, voice_id, text, s3_key, duration_ms, created_at from course_audio where id=$1', [r.audioId])
     const fresh = ca && Date.now() - new Date(ca.created_at).getTime() < 15 * 60e3
     if (!ca || ca.voice_id !== T6 || !ca.s3_key || !(ca.duration_ms > 500)) { log({ kind: 'verify-failed', lego_id: o.lego_id, r, ca }); console.log('VERIFY FAILED — stopping:', o.lego_id, JSON.stringify(ca)); break }
-    const entry = { lego_id: o.lego_id, seed: o.seed, oldId: o.oldClip, newId: r.audioId, oldVoice: o.oldVoice, source: r.source, fresh, charsSpent: r.charsSpent || 0, score: o.score, asIn: o.keepAsIn, text: o.newText }
+    // --fade80 (Tom 2026-10-12): learners never get the unfaded clip — the raw render is faded into a NEW row BEFORE any pointer moves
+    let finalId = r.audioId
+    if (has('--fade80')) {
+      log({ kind: 'raw-render', lego_id: o.lego_id, oldId: o.oldClip, rawId: r.audioId, source: r.source, charsSpent: r.charsSpent || 0 })
+      try { finalId = (await makeFaded(db, r.audioId)).newId } catch (e) { log({ kind: 'fade-failed', lego_id: o.lego_id, rawId: r.audioId, error: e.message }); console.log('FADE FAILED — stopping, nothing repointed:', o.lego_id, e.message); break }
+    }
+    const entry = { lego_id: o.lego_id, seed: o.seed, oldId: o.oldClip, newId: finalId, rawId: r.audioId, oldVoice: o.oldVoice, source: r.source, fresh, charsSpent: r.charsSpent || 0, score: o.score, asIn: o.keepAsIn, text: o.newText }
     log({ kind: 'render', ...entry, slots })   // write-ahead: the rendered id is on record before any pointer moves
     const moved = await apply(entry, slots)
     n++; spent += r.charsSpent || 0; sinceBump += moved
-    console.log(`${o.lego_id} -> ${r.audioId} (${r.source}${fresh ? ', fresh' : ''}) ${moved}/${slots.length} slots, ${r.charsSpent || 0} chars`)
+    console.log(`${o.lego_id} -> ${finalId} (${r.source}${fresh ? ', fresh' : ''}) ${moved}/${slots.length} slots, ${r.charsSpent || 0} chars`)
     if (n === 1 || sinceBump >= bumpEvery) { console.log('content_version', await bumpCourseVersion(db, course, 'patch')); sinceBump = 0 }
   }
   if (sinceBump && !dryRun) console.log('content_version', await bumpCourseVersion(db, course, 'patch'))

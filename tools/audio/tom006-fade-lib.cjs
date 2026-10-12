@@ -43,6 +43,9 @@ function fadeMp3(buf) {
 async function makeFaded(db, srcId) {
   const { data: src, error } = await db.from('course_audio').select('*').eq('id', srcId).single()
   if (error || !src) throw new Error(`source clip ${srcId} unreadable: ${error && error.message}`)
+  // the same text twice in a course (two LEGOs sharing an intro) resolves to one source clip: reuse its faded row rather than collide on the unique key
+  const { data: have } = await db.from('course_audio').select('id, duration_ms, spliced_from').eq('course_code', src.course_code).eq('language', src.language).eq('role', src.role).eq('voice_id', src.voice_id).eq('text', src.text + MARKER).maybeSingle()
+  if (have && have.spliced_from && have.spliced_from.source_id === srcId) return { newId: have.id, durationMs: have.duration_ms, eosMs: have.spliced_from.eos_ms, reused: true }
   const obj = await s3().getObject({ Bucket: BUCKET, Key: src.s3_key }).promise()
   const f = fadeMp3(obj.Body)
   const newId = randomUUID(), key = `mastered/${newId.toUpperCase()}.mp3`
