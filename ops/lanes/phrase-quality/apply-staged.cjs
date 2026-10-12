@@ -11,7 +11,10 @@
 //   - --release-held lifts the audio hold: held replacements are applied like any other, then the course's
 //     audio is QUEUED (audio_pass_requests, fulfilled by phase8 /generate through Popty's one render route)
 //   - a replaced side loses its audio ids, so the normal render voices the new text (no audio here)
-// Usage: node ops/lanes/phrase-quality/apply-staged.cjs <course> [--apply] [--release-held]
+//   - --delete-kept (job #184, Tom: "I'd rather just have fewer phrases than bad ones"): the rows the floor kept
+//     (decision 'keep') are deleted too, down to a floor of 1 USE per LEGO. The learner app's script
+//     generator degrades safely at any USE count (tested), but a LEGO with 0 USE drops out of spaced review for good.
+// Usage: node ops/lanes/phrase-quality/apply-staged.cjs <course> [--apply] [--release-held] [--delete-kept]
 'use strict'
 const fs = require('fs'), path = require('path')
 const { client, USE_FLOOR } = require('./lib.cjs')
@@ -19,11 +22,13 @@ const { readLedger, doneRowIds, stagedTodo } = require('./ledger.cjs')
 const { judgeReplacement, loadSets } = require('./gate-change.cjs')
 
 async function main() {
-  const course = process.argv[2]; const APPLY = process.argv.includes('--apply'), RELEASE = process.argv.includes('--release-held')
+  const course = process.argv[2]; const APPLY = process.argv.includes('--apply'), RELEASE = process.argv.includes('--release-held'), DELETE_KEPT = process.argv.includes('--delete-kept')
+  const floor = DELETE_KEPT ? 1 : USE_FLOOR
   if (!course) { console.error('usage: apply-staged.cjs <course> [--apply]'); process.exit(2) }
   const stagedPath = path.join(__dirname, 'staged', `${course}.jsonl`)
   const ledgerPath = path.join(__dirname, 'undo', `${course}.jsonl`)
-  const staged = fs.existsSync(stagedPath) ? fs.readFileSync(stagedPath, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l)) : []
+  let staged = fs.existsSync(stagedPath) ? fs.readFileSync(stagedPath, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l)) : []
+  if (DELETE_KEPT) staged = staged.filter((d) => d.decision === 'keep').map((d) => ({ ...d, decision: 'delete', why: 'kept-bad deleted (job #184)' }))
   const done = doneRowIds(readLedger(ledgerPath))   // a row whose last ledger line is 'undone' is open again
   const todo = stagedTodo(staged, done, { releaseHeld: RELEASE })   // held lines (hold: 'audio') are left staged
   const { makeCourseCtx, checkPhraseSet } = require('../../../tools/phrase-gate/gate-check.cjs')
@@ -46,9 +51,9 @@ async function main() {
     }
     if (action === 'delete' && row.phrase_role === 'use') {
       const left = set.phrases.filter((p) => p.role === 'use').length
-      if (left - 1 < USE_FLOOR) { say('keep', `floor: ${left - 1} USE would remain`); continue }
+      if (left - 1 < floor) { say('keep', `floor: ${left - 1} USE would remain`); continue }
     }
-    if (!APPLY) { say(`would ${action}`); continue }
+    if (!APPLY) { if (action === 'delete') set.phrases = set.phrases.filter((p) => p.id !== row.id); say(`would ${action}`); continue }   // dry run keeps the per-LEGO count honest
     fs.appendFileSync(ledgerPath, JSON.stringify({ row_id: row.id, action, at: new Date().toISOString(), before: row, after: action === 'replace' ? d.after : null }) + '\n')
     if (action === 'delete') {
       const { error } = await client().from('course_practice_phrases').delete().eq('id', row.id)
