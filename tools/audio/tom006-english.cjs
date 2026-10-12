@@ -46,7 +46,7 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
   const touch = async (course, n) => { const v = (touchedN.get(course) || 0) + n; touchedN.set(course, v); if (v >= BUMP_EVERY) await bumpOne(course) }
   const bumpOne = async course => {
     if (dryRun) return; const n = touchedN.get(course) || 0; if (!n) return
-    try { const v = await bumpCourseVersion(db, course, 'patch'); touchedN.set(course, (touchedN.get(course) || 0) - n); log({ kind: 'bumped', course }); console.log('content_version', course, v) }
+    try { const v = await bumpCourseVersion(db, course, 'patch'); if (!v) throw new Error('bumpCourseVersion returned null (it swallows its own errors)'); touchedN.set(course, (touchedN.get(course) || 0) - n); log({ kind: 'bumped', course }); console.log('content_version', course, v) }
     catch (e) { console.log(`BUMP FAILED ${course} (${n} moved slots still unbumped, kept for retry):`, e.message); bumpFailed++ }
   }
   const bump = async () => { for (const [c, n] of [...touchedN]) if (n > 0) await bumpOne(c) }
