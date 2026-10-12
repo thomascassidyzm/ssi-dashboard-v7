@@ -1,0 +1,166 @@
+{
+ "batch": 34,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_kor:S0004L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'way / how to' offers two values and 'how to' is in the seed, but no single target is forced; the row is about its sentence."
+  },
+  {
+   "id": "eng_for_kor:S0012L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Literal 'want to' for 싶지; the seed renders it as \"wouldn't like to\"."
+  },
+  {
+   "id": "eng_for_kor:S0019L04C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'the act of' glosses the nominaliser 것을, which \"stop talking\" does not render."
+  },
+  {
+   "id": "eng_for_kor:S0010L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'am sure' is a split of \"I'm not sure\": the contraction and the negation are interposed."
+  },
+  {
+   "id": "eng_for_kor:S0023L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'a lot' glosses 많이, but the seed renders 더 많이 as \"more\"."
+  },
+  {
+   "id": "eng_for_kor:S0049L01C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The LEGO \"that's the sort of thing\" disagrees with the seed \"It's like this\"; the row follows the LEGO."
+  },
+  {
+   "id": "eng_for_kor:S0135L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'why so' is split in the seed (\"why you think that it's so good\") by interposed words."
+  },
+  {
+   "id": "eng_for_kor:S0028L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' appears only inside the contraction \"It's useful\"."
+  },
+  {
+   "id": "eng_for_kor:S0003L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'way' is a dictionary gloss of 방법, but the seed renders it as \"how to speak\"."
+  },
+  {
+   "id": "eng_for_kor:S0002L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'am' is fused into the contraction \"I'm trying\"."
+  },
+  {
+   "id": "eng_for_kor:S0202L03C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"wasn't sure\" against the seed's \"was sure\" with the negation carried by \"Nobody\"; the LEGO shares the same mismatch."
+  },
+  {
+   "id": "eng_for_kor:S0005L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'am going to' appears as the contraction \"I'm going to\"; no single value is forced."
+  },
+  {
+   "id": "eng_for_kor:S0008L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'the meaning of' is a literal gloss, but the seed renders 제 말의 의미 as \"what I mean\"."
+  },
+  {
+   "id": "eng_for_kor:S0128L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'find out' is a different sense from the seed's \"know\"; swapping in \"know\" is a sense change, not a forced fix."
+  },
+  {
+   "id": "eng_for_mar:S0582L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "असणे is the lemma of असतं, and the seed has no standalone \"to be\"."
+  },
+  {
+   "id": "eng_for_mar:S0599L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'had told' appears only as the contraction \"you'd told me\"."
+  },
+  {
+   "id": "eng_for_mar:S0510L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'has gone' appears as the contraction \"She's gone\"."
+  },
+  {
+   "id": "eng_for_mar:S0559L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that goes' glosses जाणारी, but the seed renders it as \"through the wood\"."
+  },
+  {
+   "id": "eng_for_mar:S0536L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'before' glosses आधी, but the seed renders it as \"used to\"."
+  },
+  {
+   "id": "eng_for_mar:S0541L02C04",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' appears only inside the contraction \"It's a good idea\"."
+  }
+ ]
+}

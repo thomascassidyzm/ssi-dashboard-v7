@@ -1,0 +1,166 @@
+{
+ "batch": 61,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "lit_for_eng:S0083L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: \"sutinku\" carries \"I\", and the seed target has no separate \"aš\"."
+  },
+  {
+   "id": "lit_for_eng:S0076L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: \"išmokau\" carries \"I\", and the seed target has no \"aš\"."
+  },
+  {
+   "id": "lit_for_eng:S0039L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: \"esu\" carries \"I\", and the seed target has no \"aš\"."
+  },
+  {
+   "id": "lit_for_eng:S0102L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: \"bandome\" carries \"we\", and the seed target has no \"mes\"."
+  },
+  {
+   "id": "lit_for_eng:S0097L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: \"norėsi\" carries \"you\", and the seed target has no \"tu\"."
+  },
+  {
+   "id": "lit_for_eng:S0136L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: \"gali\" carries \"you\", and the seed target has no \"tu\"."
+  },
+  {
+   "id": "lit_for_eng:S0179L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: \"ketini\" carries \"you\", and the seed target has no \"tu\"."
+  },
+  {
+   "id": "lit_for_eng:S0149L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: \"baigsi\" carries \"you\", and the seed target has no \"tu\"."
+  },
+  {
+   "id": "lit_for_eng:S0196L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: \"girdėjai\" carries \"you\", and the seed target has no \"tu\"."
+  },
+  {
+   "id": "nep_for_eng:S0086L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"थियो\" is the positive form of the \"थिएन\" in the seed, so the row is about its own sentence."
+  },
+  {
+   "id": "nld_for_eng:S0048L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row shares \"ik vind het niet\" with the seed but glosses \"fijn\" where the seed has \"erg\", and its known side differs from the LEGO's \"I don't mind\"."
+  },
+  {
+   "id": "nld_for_eng:S0070L02C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches LEGO L2 \"te vertellen\", but the seed has \"vertellen\" with no \"te\"."
+  },
+  {
+   "id": "nld_for_eng:S0051L04C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row shares \"ik vind het\" with the seed but says \"fijn\" where the seed has \"leuk\", and it differs from the LEGO's \"I enjoy\"."
+  },
+  {
+   "id": "por_br_for_eng:S0104L02C02",
+   "verdict": "b",
+   "class": "b-fix",
+   "sibling": null,
+   "fixed_target": "precisamos",
+   "why": "The seed has \"nós precisamos mudar\" with no \"de\", so \"precisamos\" is the forced substring, and it still glosses \"need\"."
+  },
+  {
+   "id": "por_br_for_eng:S0136L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed renders \"her\" as \"pra ela\", so \"lhe\" is a different pronoun and the correct replacement is not uniquely forced."
+  },
+  {
+   "id": "por_br_for_eng:S0106L03C02",
+   "verdict": "b",
+   "class": "b-fix",
+   "sibling": null,
+   "fixed_target": "não precisamos",
+   "why": "The seed has \"não precisamos trabalhar\" with no \"de\", and \"não precisamos\" still glosses \"don't need to\"."
+  },
+  {
+   "id": "por_br_for_eng:S0392L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"em frente dos correios\", where \"de\" is contracted with \"os\"."
+  },
+  {
+   "id": "por_br_for_eng:S0015L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"mim\" is clitic-fused into \"comigo\" in the seed."
+  },
+  {
+   "id": "por_br_for_eng:S0011L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"capaz\" is a literal gloss of \"able\", but the seed renders the phrase as \"conseguir\"."
+  },
+  {
+   "id": "por_br_for_eng:S0162L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"de\" is fused into \"disso\" in the seed (\"acha disso\")."
+  }
+ ]
+}

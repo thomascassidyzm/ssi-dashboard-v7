@@ -1,0 +1,166 @@
+{
+ "batch": 36,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_mar:S0534L02C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'in the weather' glosses हवामानात, which is in the seed ('in this dreadful weather'); words are interposed (this dreadful), so it is discontiguous, not a stray."
+  },
+  {
+   "id": "eng_for_mar:S0524L01C04",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'will call' glosses फोन करेन, which is in the seed as \"I'll call\"; it is a contraction, so the words are not contiguous."
+  },
+  {
+   "id": "eng_for_mar:S0558L01C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'has become' glosses झालाय, which is in the seed as \"It's so late\"; the seed renders it as 'It's', so it is a literal gloss of a word the target sentence does not render."
+  },
+  {
+   "id": "eng_for_mar:S0506L04C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "दुसरीकडे is in the seed's Marathi, and the English 'before we moved' does not render 'elsewhere', so this is a literal gloss of an unrendered word."
+  },
+  {
+   "id": "eng_for_mar:S0528L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'in the room' glosses खोलीत, which is in the seed ('in another room'); the sibling 'another' is interposed, so it is discontiguous, not a stray."
+  },
+  {
+   "id": "eng_for_mar:S0595L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'flat' glosses आडवं, which is in the seed, which renders it as 'lie down'; the row is about its own sentence, so this is a literal gloss."
+  },
+  {
+   "id": "eng_for_mar:S0510L02C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'place' glosses जागा, which is in the seed; the seed renders it as 'somewhere safe', so the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_mar:S0525L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'have been able to finish' glosses संपवता आलंय, which is in the seed as \"you've been able to finish\"; the contraction 've splits it, so it is not contiguous."
+  },
+  {
+   "id": "eng_for_mar:S0597L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to hear' is the lemma of ऐकल्या, which is in the seed as 'he's heard'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_mar:S0552L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "असलेलं is in the seed's Marathi but 'which is' is not rendered in 'The church at the other end of the village is ugly', so it is a literal gloss of an unrendered word."
+  },
+  {
+   "id": "eng_for_mar:S0585L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to be seen' is the lemma of दिसतात, which is in the seed as 'I can see'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_mar:S0505L01C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'won't stay' glosses राहणार नाही, which is in the seed as \"I don't get left behind\"; it is a literal gloss of the seed's own words."
+  },
+  {
+   "id": "eng_for_mar:S0590L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to leave' is the lemma of निघताना, which is in the seed as 'leaving'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_mar:S0572L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to forget' is the lemma of विसरलात, which is in the seed as 'forgotten'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_mar:S0527L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'let's see' glosses बघू, which is in the seed's Marathi, and the English renders it as 'Guess'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_mar:S0532L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'unless are' glosses असल्याशिवाय, which is in the seed as \"Unless they're\"; the words are fused, so they are not contiguous."
+  },
+  {
+   "id": "eng_for_mar:S0508L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'in doing' glosses करण्यात, which is in the seed; the English 'worrying about' does not render the 'in' part."
+  },
+  {
+   "id": "eng_for_mar:S0558L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'very' glosses खूप, which is in the seed; the English renders it as 'so', so it is a literal gloss."
+  },
+  {
+   "id": "eng_for_mar:S0577L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to wait' is the lemma of वाट पाहतोय, which is in the seed as 'waiting'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_mar:S0508L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'about this' glosses याची, which is in the seed's Marathi; the English has 'about how you're going to pay', so it is not rendered contiguously."
+  }
+ ]
+}

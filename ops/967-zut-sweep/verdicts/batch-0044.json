@@ -1,0 +1,166 @@
+{
+ "batch": 44,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_sin:S0428L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'to see' glosses බලන්නයි, which the seed renders as 'visit' (LEGO L2 'to visit us'); the row is about its own sentence, so not provably a cut."
+  },
+  {
+   "id": "eng_for_sin:S0529L01C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row matches its LEGO 'can you all raise your hands up' but the seed says 'Can you all put your hands up', so LEGO and seed disagree."
+  },
+  {
+   "id": "eng_for_sin:S0511L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'for to reach' is the LEGO 'for the news to reach' with 'the news' removed, and the seed has 'took several hours to reach', so the words are interposed or reordered."
+  },
+  {
+   "id": "eng_for_sin:S0427L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'are disappointed' glosses කලකිරිලා ඉන්නා, which the seed renders as 'they're bored'; it is about its own sentence."
+  },
+  {
+   "id": "eng_for_sin:S0435L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'can if want' matches the seed's 'could if they wanted to' but with 'they' elided and the forms changed."
+  },
+  {
+   "id": "eng_for_sin:S0417L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'do need' glosses ඕනේද and the seed has 'Do they want', where 'they' is interposed and 'need' is a different word from 'want'."
+  },
+  {
+   "id": "eng_for_sin:S0384L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to what' glosses දෙයට, but the seed has 'with what he said' and no 'to what'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_sin:S0428L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'do want' glosses ඕනේද and the seed has 'Would they like', which is a different form of the same idea."
+  },
+  {
+   "id": "eng_for_sin:S0426L03C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'are unhappy' is the gloss of දුකෙන් ඉන්නවා, and the seed has 'they're unhappy', the contracted form."
+  },
+  {
+   "id": "eng_for_sin:S0465L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches its LEGO 'what her name was', but the seed has 'what her name is'; the LEGO disagrees with the seed."
+  },
+  {
+   "id": "eng_for_sin:S0351L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to leave alone' is the LEGO 'to leave me alone' with 'me' removed, and the seed has 'to leave me on my own'."
+  },
+  {
+   "id": "eng_for_sin:S0434L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to reduce' glosses අඩු කරන්නේ, and the seed has 'cut'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_sin:S0461L02C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'to get' matches its LEGO 'a shop where you can get', but the seed has 'where I can buy'; the LEGO disagrees with the seed."
+  },
+  {
+   "id": "eng_for_sin:S0398L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to be patient' glosses ඉවසිලිවන්ත වෙන්නයි, and the seed has 'to become more patient', which interposes 'more' and uses 'become'."
+  },
+  {
+   "id": "eng_for_sin:S0365L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'told him what' reorders the seed's 'what she said to him'."
+  },
+  {
+   "id": "eng_for_sin:S0357L01C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to inform' glosses දැනුම් දෙන්නයි, but the seed and its LEGO say 'to send her a message'."
+  },
+  {
+   "id": "eng_for_sin:S0151L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'did' glosses කළ, but the seed has 'was hoping' and no 'did'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_sin:S0489L02C04",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'if don't make' drops 'you' from the seed's 'If you don't make', so the words are interposed."
+  },
+  {
+   "id": "eng_for_sin:S0403L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'need to stay quiet' glosses the same chunk as the seed's 'should remain quiet', using different words."
+  },
+  {
+   "id": "eng_for_spa:S0031L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'this' glosses esta, which the seed renders only inside 'tonight'; the row is about its own sentence and its sibling 'night' is a similar gloss."
+  }
+ ]
+}

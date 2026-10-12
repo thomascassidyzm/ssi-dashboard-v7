@@ -1,0 +1,166 @@
+{
+ "batch": 23,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_jpn:S0181L03C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'go' is the lemma of 'to go'/'take' LEGO 連れて行く; seed has 'take my mother to the doctor', so 'go' is an inflection/part of the LEGO, not an orphan."
+  },
+  {
+   "id": "eng_for_jpn:S0231L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'を' is the object marker inside LEGO 男性を ('man who'); the seed 'an old man who wanted' renders no separate object marker."
+  },
+  {
+   "id": "eng_for_jpn:S0165L02C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I don't understand' glosses わかりません inside its own LEGO, but the seed says 'I'm not sure if it's true'; the row paraphrases the seed's chunk."
+  },
+  {
+   "id": "eng_for_jpn:S0150L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'do' glosses して in 〜していただけますか ('can you'); seed 'can you tell me what your name is?' has no 'do'."
+  },
+  {
+   "id": "eng_for_jpn:S0190L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'okay' glosses いい in してもいい ('do you mind if'); seed 'Do you mind if I ask you some questions?' has no 'okay'."
+  },
+  {
+   "id": "eng_for_jpn:S0143L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'before' glosses 前 within LEGO 前に ('earlier'); seed says 'talking about earlier', not 'before'."
+  },
+  {
+   "id": "eng_for_jpn:S0025L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'earlier' glosses 前に, but the seed's 'before I have to go' renders it as 'before'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_jpn:S0233L05C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'(object)' is a marker gloss for を in LEGO を知っている ('who knows'); the seed 'a young woman who knows your sister' renders no object marker."
+  },
+  {
+   "id": "eng_for_jpn:S0199L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'previously' glosses 以前 in LEGO 以前〜していた ('used to'); the seed 'used to work' does not contain 'previously'."
+  },
+  {
+   "id": "eng_for_jpn:S0107L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'(marker)' glosses を in the seed's 'what you were doing' chunk, which renders no object marker."
+  },
+  {
+   "id": "eng_for_jpn:S0086L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'as it is' is a literal gloss of ながら inside 残念ながら ('unfortunately'); the seed has only 'unfortunately'."
+  },
+  {
+   "id": "eng_for_jpn:S0185L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'leave' is the lemma of 'left' in the seed ('you left them at work')."
+  },
+  {
+   "id": "eng_for_jpn:S0260L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not at all' glosses 全然 inside the idiom 'I don't have the faintest idea'; row is about its own sentence."
+  },
+  {
+   "id": "eng_for_jpn:S0014L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'long' glosses 中 in 一日中 ('all day'); the seed 'speak English all day' does not contain 'long'."
+  },
+  {
+   "id": "eng_for_jpn:S0072L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'doing (from やる, to do)' is an annotated lemma-style gloss of 'doing' in the seed 'you're doing very well'."
+  },
+  {
+   "id": "eng_for_jpn:S0068L01C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'looking for (from 探す, to search)' is an annotated gloss of 'looking for' in the seed 'what are you looking for?'."
+  },
+  {
+   "id": "eng_for_jpn:S0140L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'see (potential)' carries a grammar annotation; the seed 'I can't see' contains 'see' but the row text is not a clean substring."
+  },
+  {
+   "id": "eng_for_jpn:S0136L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'of course (part 1)' is a split-word gloss of もちろん; the seed contains 'of course', so it belongs to its own sentence."
+  },
+  {
+   "id": "eng_for_jpn:S0136L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'of course (part 2)' is a split-word gloss of もちろん; the seed contains 'of course', so it belongs to its own sentence."
+  },
+  {
+   "id": "eng_for_jpn:S0098L04C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'(subject marker)' glosses が in 方がいい ('should'); the seed 'I should consider...' renders no marker."
+  }
+ ]
+}

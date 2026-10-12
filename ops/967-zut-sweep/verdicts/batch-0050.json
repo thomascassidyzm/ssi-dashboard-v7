@@ -1,0 +1,166 @@
+{
+ "batch": 50,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_urd:S0293L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed target 'where he's going to meet me' renders no 'that'; the row glosses the particle کہ in its own LEGO."
+  },
+  {
+   "id": "eng_for_urd:S0291L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I hope I'll be able...' drops 'that'; row glosses the particle کہ from its own LEGO."
+  },
+  {
+   "id": "eng_for_urd:S0275L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed is 'Longer.' and LEGO اور زیادہ => longer; 'even' is a gloss of اور not rendered, so the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_urd:S0340L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'Yes I'm sure he's going to be okay' has no 'that'; row glosses the particle کہ."
+  },
+  {
+   "id": "eng_for_urd:S0339L03C04",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'has' is contracted into \"he's hurt\" in the seed; the auxiliary کیا ہے is part of its own LEGO."
+  },
+  {
+   "id": "eng_for_urd:S0342L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I met someone' renders the postposition سے as nothing; it is in its own LEGO کسی ایسے شخص سے ملا."
+  },
+  {
+   "id": "eng_for_urd:S0359L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "طرف is part of بائیں طرف => left in the seed; 'side' is a literal gloss of a word rendered inside 'left'."
+  },
+  {
+   "id": "eng_for_urd:S0308L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' is contracted in \"she's\" in the seed; the row matches its own LEGO وہ ہے => she's."
+  },
+  {
+   "id": "eng_for_urd:S0318L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed \"I don't think she could\" drops 'that'; row glosses the particle کہ from its own LEGO."
+  },
+  {
+   "id": "eng_for_urd:S0342L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I met someone' does not render 'such'; ایسے is within its own LEGO."
+  },
+  {
+   "id": "eng_for_urd:S0334L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بلی کا بچہ => 'the kitten' in the seed; 'baby' is a literal gloss of a word rendered inside 'kitten'."
+  },
+  {
+   "id": "eng_for_urd:S0317L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'Yes I think she could' has no 'that'; row glosses the particle کہ."
+  },
+  {
+   "id": "eng_for_urd:S0351L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is fused in \"didn't\" in the seed; the row matches its own LEGO نہیں چھوڑنا چاہتا تھا."
+  },
+  {
+   "id": "eng_for_urd:S0352L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is fused in \"wouldn't\" in the seed; the row matches its own LEGO."
+  },
+  {
+   "id": "eng_for_urd:S0363L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'he felt like talking' has no 'was'; کر رہا تھا is within its own LEGO."
+  },
+  {
+   "id": "eng_for_urd:S0358L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is fused in \"couldn't\" in the seed; the row matches its own LEGO نہیں پہنچ سکتی تھی."
+  },
+  {
+   "id": "eng_for_urd:S0323L02C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "جانا => 'go' where the seed says 'walk to school'; the word is in its own LEGO جانے کی ضرورت نہیں."
+  },
+  {
+   "id": "eng_for_urd:S0354L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is fused in \"didn't\" in the seed; the row matches its own LEGO کی ضرورت نہیں تھی."
+  },
+  {
+   "id": "eng_for_urd:S0329L01C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' is contracted in \"It's important\"; the row matches its own LEGO یہ اہم ہے."
+  },
+  {
+   "id": "eng_for_urd:S0345L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'yet' for ابھی; 'now' is another sense of the word in its own LEGO."
+  }
+ ]
+}

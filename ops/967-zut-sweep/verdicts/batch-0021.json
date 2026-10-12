@@ -1,0 +1,166 @@
+{
+ "batch": 21,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_hin:S0385L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "थे is the auxiliary glossed 'were', which the seed 'Did you agree with her?' does not render."
+  },
+  {
+   "id": "eng_for_hin:S0018L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "आज => 'today' is a literal gloss of part of its own LEGO 'आज शाम => this evening'; the seed renders 'this evening'."
+  },
+  {
+   "id": "eng_for_hin:S0290L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "उसे => 'to him' glosses a word that the seed 'he knows the answer' renders as the subject 'he'."
+  },
+  {
+   "id": "eng_for_ita:S0089L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "molto => 'very' is a literal gloss; the seed renders it as 'a lot' in 'a lot in a short time'."
+  },
+  {
+   "id": "eng_for_ita:S0040L02C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The LEGO 'in questo momento => right now' differs from the seed's 'at the moment', so 'this' is not in the seed."
+  },
+  {
+   "id": "eng_for_ita:S0101L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'mi piace' => 'I like' glosses a phrase that the seed renders as 'I'm enjoying'."
+  },
+  {
+   "id": "eng_for_ita:S0016L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "più => 'more' is a literal gloss of part of 'più tardi => later on'; the seed has no 'more'."
+  },
+  {
+   "id": "eng_for_ita:S0057L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'che' => 'that' is a literal gloss of part of 'quello che => what'; the seed has no 'that'."
+  },
+  {
+   "id": "eng_for_ita:S0012L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has 'wouldn't like', with the negation fused into the auxiliary, so \"I'd like\" does not appear."
+  },
+  {
+   "id": "eng_for_ita:S0020L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'in' is a literal gloss of part of 'in fretta => quickly'; the seed has 'quickly'."
+  },
+  {
+   "id": "eng_for_ita:S0157L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"won't be able\", with the negation fused, so \"I'll be able\" does not appear."
+  },
+  {
+   "id": "eng_for_ita:S0090L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has 'speak', not 'to speak'. Changing the target to 'speak' would change the gloss, so it is not a forced fix."
+  },
+  {
+   "id": "eng_for_ita:S0043L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"I wasn't\", with the negation fused into the auxiliary, so 'not' does not appear on its own."
+  },
+  {
+   "id": "eng_for_ita:S0031L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'questa' => 'this' glosses part of 'questa sera => tonight'; the seed renders 'tonight'."
+  },
+  {
+   "id": "eng_for_ita:S0151L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"wasn't\", with the negation fused into the auxiliary, so 'not' does not appear on its own."
+  },
+  {
+   "id": "eng_for_ita:S0051L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'mi piace' => 'I like' glosses a phrase that the seed renders as 'I enjoy'."
+  },
+  {
+   "id": "eng_for_ita:S0007L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "più => 'more' is a literal gloss of part of 'il più che posso => as hard as I can'; the seed has no 'more'."
+  },
+  {
+   "id": "eng_for_ita:S0279L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "molto => 'very' is a literal gloss, but the seed and its LEGO render it as 'much' in 'much time'."
+  },
+  {
+   "id": "eng_for_ita:S0065L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'alla prova' => 'to the test' is a literal gloss of part of 'mettersi alla prova => to test yourself'; the seed has 'test yourself'."
+  },
+  {
+   "id": "eng_for_ita:S0028L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "possibile => 'possible' is a literal gloss of part of 'il prima possibile => as soon as you can'; the seed has no 'possible'."
+  }
+ ]
+}

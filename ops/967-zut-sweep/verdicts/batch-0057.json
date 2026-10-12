@@ -1,0 +1,166 @@
+{
+ "batch": 57,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "hye_for_eng:S0262L02C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'եիտ' (typo for էիր/էիք) and the row 'էր' is a clean form of the word in 'նրանից խոսում եիտ'; the row is about its sentence but the seed spelling is corrupt, so no single forced fix."
+  },
+  {
+   "id": "hye_for_eng:S0016L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'ե' (non-standard spelling) where the row has standard 'է'; the row is about its own LEGO 'Նա ուզում ե', so this is a spelling mismatch of the seed, and 'ե' is not forced as the correct value."
+  },
+  {
+   "id": "hye_for_eng:S0120L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed LEGO reads 'հետակրուրի ե վոր' with non-standard 'ե'; the row 'է' glosses 'it is' for that slot, a spelling variant rather than a forced fix."
+  },
+  {
+   "id": "hye_for_eng:S0285L01C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'Նա խոսում ե հաերենի' uses 'ե' where the row has 'է'; the row is about its sentence and the seed spelling is the outlier."
+  },
+  {
+   "id": "hye_for_eng:S0018L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'վևց' (six) is the base numeral while the seed has 'վեցին' in 'ժամը վեցին'; the row is about its sentence but is an uninflected form."
+  },
+  {
+   "id": "hye_for_eng:S0178L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'ուզում էի' matches its LEGO and practice, but the seed reads 'ուզում եիմ', so the row and seed disagree on the auxiliary spelling and the correct form is not forced."
+  },
+  {
+   "id": "hye_for_eng:S0012L04C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'թե' vs seed 'տե' in 'տե ինչ վաղեն կլինի'; a spelling difference, and the sibling 'վաղը' vs seed 'վաղեն' shows the seed itself is the outlier."
+  },
+  {
+   "id": "hye_for_eng:S0048L02C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'չէ' vs seed 'չի ե' in 'կարևր չի ե սխալներ'; the seed's spelling and wording differ and no single forced fix exists."
+  },
+  {
+   "id": "hye_for_eng:S0212L03C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'էին' vs seed 'եին' in 'ուզում եին'; a spelling variant, with the seed being the outlier."
+  },
+  {
+   "id": "hye_for_eng:S0267L02C01",
+   "verdict": "d",
+   "class": "d-seed-outlier",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'քո' (your) vs seed 'կո յնկերից' where 'կո' is a corrupt form of 'քո'; the seed is the odd one out."
+  },
+  {
+   "id": "hye_for_eng:S0025L04C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'օգնելու' vs seed 'ոգնելու' in 'Դու ոգնելու ես'; a spelling variant, with the seed the outlier."
+  },
+  {
+   "id": "hye_for_eng:S0043L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'էի' vs seed 'եի' in 'Ես չի եի մտածում'; a spelling variant, with the seed the outlier."
+  },
+  {
+   "id": "ita_for_jpn:S0288L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'di' is the uncontracted part of 'delle' (di+le), which is in the seed 'La maggior parte delle persone', so the row is a clitic-fused gloss of its own sentence."
+  },
+  {
+   "id": "ita_for_zho:S0224L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'lui' is the pro-dropped subject of 'Ha appena cominciato', which the Italian seed does not render."
+  },
+  {
+   "id": "ita_for_zho:S0222L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'lui' is the pro-dropped subject of 'Sta cercando di dirmi', which the seed does not render."
+  },
+  {
+   "id": "ita_for_zho:S0071L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'noi' is the pro-dropped subject of 'Non volevamo', which the seed does not render."
+  },
+  {
+   "id": "ita_for_zho:S0086L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'molto' glosses 很 in 很可惜, but the seed renders only 'purtroppo' with no counterpart for 'very'."
+  },
+  {
+   "id": "ita_for_zho:S0009L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'io' is the pro-dropped subject of 'parlo', which the seed does not render."
+  },
+  {
+   "id": "ita_for_zho:S0008L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'io' is the pro-dropped subject of 'Vado'/'intendo', which the seed does not render."
+  },
+  {
+   "id": "ita_for_zho:S0069L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'lui' is the pro-dropped subject of 'Non voleva', which the seed does not render."
+  }
+ ]
+}

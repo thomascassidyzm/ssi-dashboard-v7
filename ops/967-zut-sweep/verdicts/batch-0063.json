@@ -1,0 +1,166 @@
+{
+ "batch": 63,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "spa_for_zho:S0051L05C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'Disfruto haciendo...' is pro-drop; 'yo' glosses 我 in 我喜欢 but the sentence does not render it."
+  },
+  {
+   "id": "spa_for_zho:S0009L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'Hablo un poco...' drops the subject; 'yo' is a literal gloss of 我 in LEGO 我说 => hablo."
+  },
+  {
+   "id": "spa_for_zho:S0031L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'Querías hablar...' is pro-drop; 'tú' glosses 你 in LEGO 你今天晚上想 => querías."
+  },
+  {
+   "id": "spa_for_zho:S0013L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'Hablas español muy bien' has no explicit 'tú'; row glosses 你 in LEGO 你说 => hablas."
+  },
+  {
+   "id": "spa_for_zho:S0020L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'Quieres aprender...' is pro-drop; 'tú' glosses 你 in LEGO 你想 => quieres."
+  },
+  {
+   "id": "spa_mx_for_eng:S0241L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'dar' is fused into 'dárselo' in the seed, so it is not a contiguous substring; the row is about its own LEGO."
+  },
+  {
+   "id": "spa_mx_for_eng:S0018L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'queremos reunirnos...' drops 'nosotros'; row glosses 'we' in LEGO 'we want => queremos'."
+  },
+  {
+   "id": "spa_mx_for_eng:S0020L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'quieres aprender...' is pro-drop; 'tú' glosses 'you' in LEGO 'you want => quieres'."
+  },
+  {
+   "id": "srp_for_eng:S0116L03C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'boji' is the stem remainder of 'najbolji' after 'naj'; it is a sub-word split, not a contiguous word in the seed, and the row matches its own LEGO 'the best => najbolji'."
+  },
+  {
+   "id": "srp_for_eng:S0001L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'Želim da govorim...' renders no 'ja'; row glosses 'I' in LEGO 'I want => želim da'."
+  },
+  {
+   "id": "swa_for_eng:S0073L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'Asante sana', not 'shukrani'; this is a synonym of the same concept in the same LEGO 'thank you => asante', and it is not forced to a single value, so it is Tom's call."
+  },
+  {
+   "id": "swa_for_eng:S0085L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'sijui' is the 1sg negative of the verb whose form in the seed is 'siwajui' (with the object prefix), so it is a different inflected form."
+  },
+  {
+   "id": "tur_for_eng:S0019L03C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'istiyorum' is the positive form of seed 'istemiyorum'; the row glosses 'I want' inside LEGO 'I don't want'."
+  },
+  {
+   "id": "tur_for_eng:S0060L04C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'biliyorum' is the positive form of seed 'bilmiyorum'; the row glosses 'I know' inside LEGO 'I don't know'."
+  },
+  {
+   "id": "tur_for_eng:S0068L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'you want => istiyorsun' has no counterpart in 'Ne arıyorsun?'; it looks like a stray from another sentence, but the LEGO 'are you looking for => arıyorsun' has no component sibling, so (c) is not provable and a human should decide."
+  },
+  {
+   "id": "tur_for_eng:S0031L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'Bu gece' (tonight) and the row says 'bu akşam' (this evening); the seed text forces 'bu gece' but the known gloss differs ('this evening' vs 'tonight'), so a fix would change the gloss; escalate."
+  },
+  {
+   "id": "tur_for_eng:S0045L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'something => bir şey' vs seed 'Her şeyi' (everything); it overlaps with LEGO L1 'everything => her şeyi', but the known and target differ, so it may be a stray, yet (c) is not provable without more evidence."
+  },
+  {
+   "id": "tur_for_eng:S0053L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'to write a letter => mektup yazmak' does not appear in the seed 'Mektubu çantasına koymak istedi', and LEGO L1 'the letter => mektubu' has no component sibling, so (c) is not provable."
+  },
+  {
+   "id": "tur_for_eng:S0057L03C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'hatırlayabiliyorum' (I can remember) is the positive form of seed 'hatırlayamıyorum'; the row glosses inside LEGO 'I can't remember'."
+  },
+  {
+   "id": "tur_for_eng:S0043L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'I started to think => düşünmeye başladım' differs from seed 'düşünmüyordum' in both tense and gloss; the same stem is in the sentence, but the row is not a forced fix, so escalate."
+  }
+ ]
+}

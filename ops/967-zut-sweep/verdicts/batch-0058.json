@@ -1,0 +1,166 @@
+{
+ "batch": 58,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "ita_for_zho:S0072L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Literal gloss of 我 as 'io'; seed 'Penso che tu stia...' drops the pro-drop subject, and the row matches its own LEGO 我觉得."
+  },
+  {
+   "id": "ita_for_zho:S0211L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'loro' glosses 他们 but the seed 'non volevano' drops the pro-drop subject; the row is about its own sentence."
+  },
+  {
+   "id": "ita_for_zho:S0005L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'io' glosses 我 but 'Vado a esercitarmi' drops the pro-drop subject."
+  },
+  {
+   "id": "ita_for_zho:S0223L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'lui' glosses 他 but 'Ti chiederà domani' drops the pro-drop subject."
+  },
+  {
+   "id": "ita_for_zho:S0063L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'tu' glosses 你 but 'Sei sicuro di...' drops the pro-drop subject; the LEGO is also oddly aligned (介意 => sei sicuro di)."
+  },
+  {
+   "id": "jpn_for_eng:S0372L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ようとしてた' is a fragment of 作ろうとしてた; the sentence has 作ろうとしてた, where 作ろ fuses with よう, so the stem is changed and the string is not contiguous."
+  },
+  {
+   "id": "jpn_for_eng:S0158L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'する' is the dictionary form of 'しよう' in 別の話をしよう。"
+  },
+  {
+   "id": "jpn_for_eng:S0175L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'する' is the dictionary form of 'したい' in 何したい。"
+  },
+  {
+   "id": "jpn_for_eng:S0302L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'住む' is the lemma of 住みたくない in the seed."
+  },
+  {
+   "id": "jpn_for_eng:S0300L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'見る' is the lemma of 見られたくない in the seed."
+  },
+  {
+   "id": "jpn_for_eng:S0042L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'いい' is the lemma of 良く in 良くなってきた."
+  },
+  {
+   "id": "jpn_for_eng:S0044L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'いい' is the lemma of 良く in 良くする."
+  },
+  {
+   "id": "kor_for_eng:S0578L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'에' is a particle not in the seed 더 따뜻한 곳; it comes from practice phrases like 곳에, so it is not provably an orphan."
+  },
+  {
+   "id": "kor_for_eng:S0380L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'게' belongs to the 싶은 게 pattern; the seed has 싶어하는지, so it is not contiguous and the row is tied to the sibling 싶은 and the practice phrases."
+  },
+  {
+   "id": "kor_for_eng:S0537L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'었어요' is the past ending fused into 틀렸어요, so it is not contiguous in the seed."
+  },
+  {
+   "id": "lit_for_eng:S0233L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ji' glosses the relative 'she' that the seed renders as kuri, with the subject implicit in pažįsta."
+  },
+  {
+   "id": "lit_for_eng:S0217L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'aš' glosses 'I' but Išgėriau drops the pro-drop subject."
+  },
+  {
+   "id": "lit_for_eng:S0195L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'aš' glosses 'I' but palikau drops the pro-drop subject."
+  },
+  {
+   "id": "lit_for_eng:S0176L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'aš' glosses 'I' but Paklausiu drops the pro-drop subject."
+  },
+  {
+   "id": "lit_for_eng:S0041L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'aš' glosses 'I' (in 'I'm starting to') but pradedu drops the pro-drop subject; the seed's 'aš' sibling is at L1."
+  }
+ ]
+}

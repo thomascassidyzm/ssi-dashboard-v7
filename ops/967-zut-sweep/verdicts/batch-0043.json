@@ -1,0 +1,166 @@
+{
+ "batch": 43,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_sin:S0470L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'do you want to climb'; 'do want to go' has 'you' interposed and 'go' for 'climb', so no single value is forced."
+  },
+  {
+   "id": "eng_for_sin:S0358L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'near' glosses ළඟ, a word of its own LEGO 'ඉහළ ළඟ => the top'; the seed renders it as 'top', not 'near'."
+  },
+  {
+   "id": "eng_for_sin:S0354L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to be' glosses ඉන්නේ in LEGO 'to appear angry'; the seed says 'appear angry' and has no 'to be'."
+  },
+  {
+   "id": "eng_for_sin:S0356L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to do' glosses කරන්නයි, which is part of LEGO 'to discuss' in the seed 'to discuss'; the seed has no 'do'."
+  },
+  {
+   "id": "eng_for_sin:S0370L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'I knew', the row has present 'I know'; the tense differs."
+  },
+  {
+   "id": "eng_for_sin:S0372L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to make' is a synonym gloss of හදන්නයි; the seed says 'create' and the LEGO says 'trying to create'."
+  },
+  {
+   "id": "eng_for_sin:S0434L03C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'Could', the row has 'can'; this is the present form of the modal."
+  },
+  {
+   "id": "eng_for_sin:S0497L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'sounds as though', the row has 'sounds like'; the phrase differs and 'that' is not part of it."
+  },
+  {
+   "id": "eng_for_sin:S0117L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'although ... did' glosses the particle කළාට; the seed ('better than I was last time') does not render it."
+  },
+  {
+   "id": "eng_for_sin:S0379L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to go' glosses යන්නට, but the seed and the LEGO say 'travel'."
+  },
+  {
+   "id": "eng_for_sin:S0406L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has the contraction \"I'm sure\"; 'am sure' is the uncontracted form, and the correct value is not forced."
+  },
+  {
+   "id": "eng_for_sin:S0468L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches its LEGO 'the big wide world', but the seed says 'a big world'."
+  },
+  {
+   "id": "eng_for_sin:S0354L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row says 'didn't want to' while the seed says 'didn't need to'; the LEGO has 'need', so the LEGO and seed agree and the row is the odd one."
+  },
+  {
+   "id": "eng_for_sin:S0387L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' glosses the particle කියලා; the seed 'I didn't think she was right' has no 'that'."
+  },
+  {
+   "id": "eng_for_sin:S0358L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'can't go' against seed \"couldn't reach\"; the modal tense and the verb differ."
+  },
+  {
+   "id": "eng_for_sin:S0498L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row says 'always stands alone', the seed and LEGO say \"standing alone\", and 'always' and the verb form are not in the seed."
+  },
+  {
+   "id": "eng_for_sin:S0378L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has plural 'holidays', the row has 'a holiday'."
+  },
+  {
+   "id": "eng_for_sin:S0398L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'very' glosses ගොඩ, but the seed renders it as 'more' ('more patient')."
+  },
+  {
+   "id": "eng_for_sin:S0413L03C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'could', the row has 'can'; the modal tense differs."
+  },
+  {
+   "id": "eng_for_sin:S0398L03C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row says 'need' while the seed says 'We want to become'; the LEGO says 'we want'."
+  }
+ ]
+}

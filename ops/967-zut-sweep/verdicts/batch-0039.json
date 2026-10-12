@@ -1,0 +1,166 @@
+{
+ "batch": 39,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_pan:S0096L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਹੈ is the copula in 'ਚਾਹੀਦਾ ਹੈ' (I need); a literal gloss 'have' for a word the English seed 'I need a little more time' does not render."
+  },
+  {
+   "id": "eng_for_pan:S0157L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has \"won't be able to\"; the row's \"I'll be able to\" is the affirmative form of the same words, with 'be able to' present but the contraction differs and 'I' sits elsewhere."
+  },
+  {
+   "id": "eng_for_pan:S0163L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਲੱਗਦਾ ਹੈ is part of the LEGO 'I think that' in the seed; 'it seems' is a literal gloss the seed text does not render."
+  },
+  {
+   "id": "eng_for_pan:S0116L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'the best'; 'the most' is a literal gloss of ਸਭ ਤੋਂ, which the sentence renders only as part of 'best'."
+  },
+  {
+   "id": "eng_for_pan:S0106L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਕਰਨੀ is part of 'work hard' in the seed; 'to do' is a literal gloss of a verb the sentence renders as 'work'."
+  },
+  {
+   "id": "eng_for_pan:S0156L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'today' glosses ਅੱਜ inside the LEGO 'tonight', which is in the seed; the seed renders it as 'tonight'."
+  },
+  {
+   "id": "eng_for_pan:S0035L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਵੀ is part of ਕੁਝ ਵੀ => 'anything' in the seed; 'too' is a literal gloss of a particle the sentence does not render separately."
+  },
+  {
+   "id": "eng_for_pan:S0097L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਜਦੋਂ is part of the LEGO 'as soon as you want' in the seed; 'when' is a literal gloss not rendered as such."
+  },
+  {
+   "id": "eng_for_pan:S0367L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਕਿਸੇ ਨੇ is part of the LEGO for 'nobody' in the seed 'No nobody told me'; 'anybody' is a literal gloss the seed does not render."
+  },
+  {
+   "id": "eng_for_pan:S0334L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਬਿੱਲੀ is part of 'the kitten' in the seed; 'cat' is a lemma/literal gloss of a word that is in the LEGO."
+  },
+  {
+   "id": "eng_for_pan:S0367L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਨਹੀਂ is part of 'nobody' in the seed 'No nobody told me'; 'not' is a literal gloss of a negation the sentence renders inside 'nobody'."
+  },
+  {
+   "id": "eng_for_pan:S0387L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has \"didn't\" and the row 'not' is the literal gloss of the negation contracted in 'didn't think'."
+  },
+  {
+   "id": "eng_for_pan:S0518L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has \"couldn't imagine myself\"; row 'not imagine myself' has the words but the negation is contracted into 'couldn't'."
+  },
+  {
+   "id": "eng_for_pan:S0508L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has \"worrying about how you're going to pay\"; row 'worrying about this' has the words but 'this' is a literal gloss of ਇਹ that the sentence does not render."
+  },
+  {
+   "id": "eng_for_pan:S0388L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'That person you work with' has 'with' at the end and no 'whom'; the row is a literal gloss of the relative pronoun with preposition."
+  },
+  {
+   "id": "eng_for_pan:S0554L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has \"isn't dry\"; row 'not dry' has the same words but the negation is contracted into 'isn't'."
+  },
+  {
+   "id": "eng_for_pan:S0359L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਪਾਸੇ is part of ਖੱਬੇ ਪਾਸੇ => 'left' in the seed 'turn left'; 'side' is a literal gloss of a word the translation does not render separately."
+  },
+  {
+   "id": "eng_for_pan:S0592L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'And along the main road.' has 'and' but 'too' is not rendered; the row is a discontiguous literal gloss of ਅਤੇ ... ਵੀ."
+  },
+  {
+   "id": "eng_for_pan:S0008L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਮੇਰਾ is part of the LEGO 'what I mean' in the seed; 'my' is a literal gloss of a possessive the sentence renders as 'I'."
+  },
+  {
+   "id": "eng_for_pan:S0028L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'as soon as you can'; row 'soon as possible' uses 'possible' for ਹੋ ਸਕੇ, which the sentence renders as 'you can'."
+  }
+ ]
+}

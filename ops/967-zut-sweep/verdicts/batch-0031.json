@@ -1,0 +1,166 @@
+{
+ "batch": 31,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_kan:S0333L01C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to spend' is the infinitive of 'spend' in the seed ('can't spend much time'); the infinitive marker is dropped by the translation."
+  },
+  {
+   "id": "eng_for_kan:S0372L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' glosses ಅಂತ, which the seed target 'Did you see what she was trying to create?' does not render."
+  },
+  {
+   "id": "eng_for_kan:S0374L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' glosses ಅಂತ, a particle the seed 'Yes I thought it was very beautiful' leaves unrendered."
+  },
+  {
+   "id": "eng_for_kan:S0384L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to agree' vs seed 'couldn't agree'; the infinitive marker is not in the sentence."
+  },
+  {
+   "id": "eng_for_kan:S0434L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'less' glosses ಕಡಿಮೆ but the seed renders it as 'cut'; the LEGO 'could cut' is the translation choice, so the row is a literal gloss."
+  },
+  {
+   "id": "eng_for_kan:S0434L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'could do' for ಮಾಡಬಹುದಾ: seed has 'Could they cut', so 'could' is present but 'do' is not rendered and 'they' is interposed."
+  },
+  {
+   "id": "eng_for_kan:S0464L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'time' glosses ಸಲ, and the seed's 'once' renders ಒಂದು ಸಲ as one word; the row is about the sentence."
+  },
+  {
+   "id": "eng_for_kan:S0464L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'a' glosses ಒಂದು, and the seed's 'once' renders ಒಂದು ಸಲ as one word; the row is about the sentence."
+  },
+  {
+   "id": "eng_for_kan:S0474L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches its LEGO 'even if it's given', but the seed says 'I don't even want it as a free offer', so the LEGO differs from the seed."
+  },
+  {
+   "id": "eng_for_kan:S0484L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' glosses the particle ಅಂತ, which the seed 'It's meant to be a challenge' does not render."
+  },
+  {
+   "id": "eng_for_kan:S0485L04C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'isn't' glosses ಇಲ್ಲ; the seed 'Nothing would make me happier' encodes the negation in 'Nothing'."
+  },
+  {
+   "id": "eng_for_kan:S0490L03C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'won't trust' vs seed 'will never trust'; 'never' is interposed, so the words are not contiguous."
+  },
+  {
+   "id": "eng_for_kan:S0538L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'without' glosses ಇಲ್ಲದವನ, while the seed renders it as 'don't care'."
+  },
+  {
+   "id": "eng_for_kan:S0548L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'this' glosses ಈ, which the seed 'at the moment' does not render."
+  },
+  {
+   "id": "eng_for_kan:S0545L03C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to go' glosses ಹೋಗೋ, but the seed has 'take'; the 'go' is absorbed into the LEGO 'to take' as a verb-pair."
+  },
+  {
+   "id": "eng_for_kan:S0578L03C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that is more warm' matches its LEGO, while the seed says 'Somewhere warmer', so the LEGO differs from the seed."
+  },
+  {
+   "id": "eng_for_kan:S0575L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'has caused' glosses ಮೂಡಿಸಿದೆ, while the seed says 'It's been upsetting'; the LEGO 'has been upsetting' also differs."
+  },
+  {
+   "id": "eng_for_kan:S0575L02C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'mind' glosses ಬೇಸರ, which the seed 'It's been upsetting' does not render; the LEGO L1 also says 'mind'."
+  },
+  {
+   "id": "eng_for_kan:S0587L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'night' glosses ರಾತ್ರಿ, but the seed renders ರಾತ್ರಿ ಊಟಕ್ಕೆ as 'supper'."
+  },
+  {
+   "id": "eng_for_kan:S0587L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'for the meal' glosses ಊಟಕ್ಕೆ, but the seed renders ರಾತ್ರಿ ಊಟಕ್ಕೆ as 'for supper'."
+  }
+ ]
+}

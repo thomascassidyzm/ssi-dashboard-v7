@@ -1,0 +1,166 @@
+{
+ "batch": 37,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_mar:S0563L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to manage' is the lemma of the 'able to' that the seed renders as 'wouldn't have been able to'; the row is about its sentence."
+  },
+  {
+   "id": "eng_for_mar:S0544L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "असं is the particle in LEGO L2 'असं ज्याने कोणी म्हटलं => whoever said'; the seed target 'Whoever said it would be...' does not render 'that'."
+  },
+  {
+   "id": "eng_for_mar:S0521L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has the contraction \"you'll forget\"; 'will forget' is the uncontracted form, and 'forget' alone would change the gloss."
+  },
+  {
+   "id": "eng_for_mar:S0597L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'suspicion' is the noun form of 'I suspect' in the seed, and it matches LEGO L1."
+  },
+  {
+   "id": "eng_for_mar:S0563L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to keep on' glosses the same चालू ठेवणे as the seed's 'keep going', but no single value is forced by the seed."
+  },
+  {
+   "id": "eng_for_pan:S0376L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed's \"didn't\" is a fused negation contraction, so 'not' is not a contiguous substring."
+  },
+  {
+   "id": "eng_for_pan:S0143L03C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਕਰ ਰਹੇ ਸੀ is glossed 'were doing' while the seed renders it 'were talking about'; the row is about its sentence, and no fix is forced."
+  },
+  {
+   "id": "eng_for_pan:S0325L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਤੇ is in the LEGO, but the seed 'consider ten possible problems' has no 'about'."
+  },
+  {
+   "id": "eng_for_pan:S0329L01C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has the contraction \"It's\", which is fused with 'it's' in sibling C01."
+  },
+  {
+   "id": "eng_for_pan:S0338L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਤਰ੍ਹਾਂ is a literal gloss of a word the seed 'Badly.' does not render."
+  },
+  {
+   "id": "eng_for_pan:S0340L02C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਗਾ is a literal future-suffix gloss of 'will'; the seed renders it as \"going to\" (C03)."
+  },
+  {
+   "id": "eng_for_pan:S0620L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'we met' matches LEGO L2 'we last met'; the seed's 'we last saw each other' is worded differently and no single fix is forced."
+  },
+  {
+   "id": "eng_for_pan:S0155L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'objection not' is a literal gloss of the idiom the seed renders \"I don't mind\" (LEGO L1)."
+  },
+  {
+   "id": "eng_for_pan:S0187L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਹੁਣ is glossed 'now', but the seed's 'so far' renders the whole ਹੁਣ ਤੱਕ idiom."
+  },
+  {
+   "id": "eng_for_pan:S0258L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has the contraction \"What's\", which is fused with 'what' in sibling C01."
+  },
+  {
+   "id": "eng_for_pan:S0293L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਪਵੇਗਾ is glossed 'will have to', but the seed's 'have to' drops the future ('I have to find out')."
+  },
+  {
+   "id": "eng_for_pan:S0109L02C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches its LEGO 'ਕਰਨੀ ਚਾਹੀਦੀ ਹੈ => we must', but the seed target is 'We must work hard to learn...'."
+  },
+  {
+   "id": "eng_for_pan:S0354L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਵਿੱਚ is part of the ਗੁੱਸੇ ਵਿੱਚ LEGO rendered 'angry'; the seed 'appear angry' has no 'in'."
+  },
+  {
+   "id": "eng_for_pan:S0317L02C04",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The LEGO 'ਉਹ ਚਾਹੇ ਤਾਂ ਲੈ ਆ ਸਕਦੀ ਹੈ' differs from the seed's known sentence (ਉਹ ਕਰ ਸਕਦੀ ਹੈ ਜੇ ਉਹ ਚਾਹੁੰਦੀ), and the seed target has no 'bring'."
+  },
+  {
+   "id": "eng_for_pan:S0558L01C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The LEGO target \"it's gotten very late at night\" differs from the seed's \"It's so late at night\"."
+  }
+ ]
+}

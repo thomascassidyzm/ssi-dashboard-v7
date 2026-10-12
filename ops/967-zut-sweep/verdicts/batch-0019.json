@@ -1,0 +1,166 @@
+{
+ "batch": 19,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_guj:S0512L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed renders 'while' for જ્યારે; the row glosses it as 'when', which is not in 'while I fetch the keys' — it belongs to its own sentence, so it's a back-gloss."
+  },
+  {
+   "id": "eng_for_guj:S0525L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કરવા glossed 'to do' while the seed has 'To check' and the LEGO is 'to check if'; this is a literal gloss of a word the translation merged into 'check'."
+  },
+  {
+   "id": "eng_for_guj:S0521L04C04",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "જશો ('will') is the future auxiliary of 'you'll forget'; the seed has it only as the contracted 'you'll', so the word is fused or elided rather than absent."
+  },
+  {
+   "id": "eng_for_guj:S0526L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "મને glossed 'to me' while the seed renders it as 'I'm finding', so the pronoun is rendered as the subject rather than as a separate word."
+  },
+  {
+   "id": "eng_for_guj:S0538L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "મને glossed 'to me' while the seed has 'I don't care'; the row is about its own sentence, and the dative is rendered as the subject 'I'."
+  },
+  {
+   "id": "eng_for_guj:S0525L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'or not' for કે નહીં is a literal gloss; the seed 'To check if you've been able to finish' drops it into 'if', and the row matches its own LEGO's Gujarati."
+  },
+  {
+   "id": "eng_for_guj:S0176L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'or not' for કે નહીં is a literal gloss; the seed 'if he'll be able to help' has no 'or not', and the row sits inside its own LEGO's Gujarati."
+  },
+  {
+   "id": "eng_for_guj:S0073L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "મારે glossed 'I have to' but the seed has 'I've got more to learn'; 'have to' is a paraphrase of the contracted 'I've got', so this is a back-gloss."
+  },
+  {
+   "id": "eng_for_guj:S0090L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ઘણું સારું glossed 'very good' but the seed says 'that would be great'; the row matches its own LEGO's Gujarati and is a literal gloss."
+  },
+  {
+   "id": "eng_for_guj:S0365L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "એ glossed 'it' is a literal gloss of a word the translation drops; the seed 'I didn't hear what she said to him' has no 'it'."
+  },
+  {
+   "id": "eng_for_guj:S0007L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "થઈ શકે glossed 'is possible' while the seed has 'as hard as I can'; this is a literal gloss of a chunk the translation renders idiomatically."
+  },
+  {
+   "id": "eng_for_guj:S0007L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "જેટલું glossed 'as much as' while the seed has 'as hard as I can'; this is a literal gloss, and it is still inside its own LEGO."
+  },
+  {
+   "id": "eng_for_guj:S0183L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કરશો glossed 'will do' is a literal gloss of the verb inside the idiom માફ કરશો, which the seed renders as 'I'm afraid'."
+  },
+  {
+   "id": "eng_for_guj:S0094L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કરશે glossed 'will do' is a literal gloss of the verb in કામ કરશે, which the seed renders as 'will work'."
+  },
+  {
+   "id": "eng_for_hin:S0323L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "जाने glossed 'to go' while the seed has 'walk to school'; this is a literal gloss of a word the translation merged into 'walk'."
+  },
+  {
+   "id": "eng_for_hin:S0008L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "मेरा मतलब glossed 'my meaning' while the seed says 'what I mean'; this is a literal gloss, and it matches its own LEGO."
+  },
+  {
+   "id": "eng_for_hin:S0008L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "क्या है glossed 'what is' while the seed has 'what I mean'; the words are interposed by 'I mean', so the target is discontiguous."
+  },
+  {
+   "id": "eng_for_hin:S0010L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "याद करना glossed 'to remember' is the infinitive of 'I can remember' in the seed, so it is an inflected form of a word that is present."
+  },
+  {
+   "id": "eng_for_hin:S0007L03C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "करना glossed 'to do' while the seed has 'try as hard as I can'; the Hindi seed differs from its LEGOs, so the LEGO and the seed disagree."
+  },
+  {
+   "id": "eng_for_hin:S0176L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'will be able to help' vs the seed's 'he'll be able to help'; the contraction fuses 'will' with the pronoun, so the form is present but the fusion makes it inflected or discontiguous."
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "batch": 53,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_zho:S0220L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'a bit of' and the LEGO is 看了一点 => Watch a bit of; 'A little' is a gloss variant of 一点 that is about this sentence, not an orphan."
+  },
+  {
+   "id": "eng_for_zho:S0090L01C05",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "得 is a manner marker in the LEGO that the English 'speak more slowly' does not render separately."
+  },
+  {
+   "id": "eng_for_zho:S0128L02C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "的 relative marker is in the LEGO 我以前认识的人 but has no English word in 'someone I used to know'."
+  },
+  {
+   "id": "eng_for_zho:S0153L02C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "的 modifier marker is in LEGO 用完全一样的方式 but is not rendered in 'in exactly the same way'."
+  },
+  {
+   "id": "eng_for_zho:S0286L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "的 relative marker is in the LEGO 喜欢说英语的人 but not rendered in 'People who like speaking English'."
+  },
+  {
+   "id": "eng_for_zho:S0105L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "就是 is in the LEGO 那就是为什么 and glossed 'is'; the seed has 'That is why', so 'is (exactly)' is a gloss variant."
+  },
+  {
+   "id": "eng_for_zho:S0295L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "之内 is in the LEGO 一天之内 => In a day; 'in / within' glosses it, with 'within' not in the seed."
+  },
+  {
+   "id": "eng_for_zho:S0293L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "跟我 is in the LEGO 他在哪里跟我见面 and 'with me / me' glosses it; the seed ends 'meet me'."
+  },
+  {
+   "id": "eng_for_zho:S0153L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "用 is in the LEGO 用完全一样的方式 and is glossed 'in (by means of)', while the seed has 'in exactly the same way'."
+  },
+  {
+   "id": "eng_for_zho:S0170L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "让 is in the LEGO 让你告诉我; the seed 'I'd like you to tell me' has 'to', but 'to (have)' is not a substring."
+  },
+  {
+   "id": "eng_for_zho:S0127L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "原因 is in the LEGO 那不是原因 => That isn't why; 'the reason / why' glosses it, but 'the reason' is not in the seed."
+  },
+  {
+   "id": "eng_for_zho:S0282L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "介意 is in the seed and its LEGO, and 'Mind' is a literal gloss of a word the target 'No that's not a problem' does not render."
+  },
+  {
+   "id": "eng_for_zho:S0115L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "进行 is in the LEGO 进行对话 => To have a conversation; the seed has 'to have a conversation', but 'to carry on' is a gloss variant."
+  },
+  {
+   "id": "eng_for_zho:S0128L02C05",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "人 is in the LEGO, and the seed has 'someone', while 'someone / person' includes 'person', which is not in the seed."
+  },
+  {
+   "id": "eng_for_zho:S0080L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "能 is in the LEGO 能准备好, but the seed 'I'll be ready' does not render 'be able to'."
+  },
+  {
+   "id": "eng_for_zho:S0187L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "目前 is in the LEGO => So far; the seed has 'so far', but 'so far / up to now' is a gloss variant with 'up to now' not in the seed."
+  },
+  {
+   "id": "est_for_eng:S0088L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has 'ei ole valmis' as 'pole veel valmis' (contraction plus interposed 'veel'), so no single contiguous substring is forced."
+  },
+  {
+   "id": "eus_for_eng:S0236L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'laguntza' is the noun/lemma of 'laguntzen' in the seed; the LEGO is 'laguntzeko', so this is an inflected form of a word that is present."
+  },
+  {
+   "id": "eus_for_spa:S0036L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ez nahi' is the seed's 'ez dugu ... nahi' with the auxiliary 'dugu' (sibling C01) and object interposed."
+  },
+  {
+   "id": "eus_for_spa:S0034L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ez nahi' is the seed's 'ez du ... nahi' with the auxiliary 'du' (sibling C01) and 'isilik egon' interposed."
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "batch": 16,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_guj:S0114L01C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'I feel as though' matches its own LEGO's concept, but LEGO L1 says 'I feel as if' and seed says 'I feel as if'; the row's 'though' differs from the seed, not a forced single fix of a different known."
+  },
+  {
+   "id": "eng_for_guj:S0247L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'quite' glosses ઠીક ઠીક which the seed renders as 'fairly'; the row is about its sentence, a synonym rather than a forced substring."
+  },
+  {
+   "id": "eng_for_guj:S0214L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ગયો 'passed' is a literal gloss of the verb inside the idiom 'have a good time' (સારો સમય ગયો); the row is about its sentence."
+  },
+  {
+   "id": "eng_for_guj:S0090L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "તો 'then' glosses the conditional particle that the seed renders only inside 'that would be great'; a literal gloss of its own LEGO."
+  },
+  {
+   "id": "eng_for_guj:S0518L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ન 'not' is fused into the seed's \"couldn't\" and is part of LEGO L2 'couldn't imagine'."
+  },
+  {
+   "id": "eng_for_guj:S0342L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કંઈ 'anything' glosses the word the seed renders as 'something'; a different gloss, not a single forced fix."
+  },
+  {
+   "id": "eng_for_guj:S0522L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "આ 'this' is in the LEGO 'let's agree that' but the seed's 'Let's agree that it was...' does not render 'this' as a separate word."
+  },
+  {
+   "id": "eng_for_guj:S0490L03C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કરીશ 'will do' is the literal gloss of the verb inside LEGO 'will never'; seed has 'will never trust', so the words are interposed."
+  },
+  {
+   "id": "eng_for_guj:S0533L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "જે...તે is a discontiguous correlative whose 'that' is not rendered in the seed's 'every word you say'."
+  },
+  {
+   "id": "eng_for_guj:S0512L05C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "આવું 'come' is the literal gloss of part of લઈ આવું, which the seed renders as 'fetch'."
+  },
+  {
+   "id": "eng_for_guj:S0511L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "માટે 'for' glosses the postposition inside પહોંચવા માટે, which the seed renders as 'to reach'."
+  },
+  {
+   "id": "eng_for_guj:S0420L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "તેની 'his' is a literal gloss; the seed's 'how old he is' renders it as 'he'."
+  },
+  {
+   "id": "eng_for_guj:S0183L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "માફ 'forgive' is the literal gloss of the first word of માફ કરશો, which the seed renders as \"I'm afraid\"."
+  },
+  {
+   "id": "eng_for_guj:S0347L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કે 'that' is a particle in the LEGO 'he wanted to know' that the seed's 'He wanted to know what...' does not render."
+  },
+  {
+   "id": "eng_for_guj:S0028L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "જ્યારે 'when' is half of the discontiguous pair rendered as 'as soon as' in the seed."
+  },
+  {
+   "id": "eng_for_guj:S0097L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "જ્યારે 'when' is part of the LEGO rendered 'as soon as you want'; the seed has 'as soon as', not 'when'."
+  },
+  {
+   "id": "eng_for_guj:S0533L03C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'will listen' is the literal gloss of સાંભળશે; the seed has the contraction \"won't listen\"."
+  },
+  {
+   "id": "eng_for_guj:S0513L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ત્યારે '[then]' is a bracketed back-gloss of a correlative the seed 'It hurts most when I move...' does not render."
+  },
+  {
+   "id": "eng_for_guj:S0375L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કે 'that' is a particle in LEGO 'I didn't know' that the seed's 'I didn't know what she was doing' does not render."
+  },
+  {
+   "id": "eng_for_guj:S0380L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કે 'that' is a particle in LEGO 'I asked' that the seed's 'I asked what she wanted...' does not render."
+  }
+ ]
+}

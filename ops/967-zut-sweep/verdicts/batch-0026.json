@@ -1,0 +1,166 @@
+{
+ "batch": 26,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_jpn:S0258L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 何ですか glossed 'what is it?' but the seed renders it as the contraction \"what's\" (LEGO L2 = what's), so the gloss is an uncontracted/expanded form of a word in the sentence."
+  },
+  {
+   "id": "eng_for_kan:S0192L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಇದೆ glossed 'is' but the seed \"I'm busy tomorrow night\" has no separate 'is'; it is folded into the contraction \"I'm\"."
+  },
+  {
+   "id": "eng_for_kan:S0214L02C04",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'did...have...spend' is a discontiguous gloss of ಕಳೀತಾ; the seed has \"Did you have a good time\" with 'spend' not rendered."
+  },
+  {
+   "id": "eng_for_kan:S0504L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಮೇಲೆ 'on' is a literal gloss; the seed renders ಹುಲ್ಲಿನ ಮೇಲೆ as 'across the grass' and 'on' does not appear, though the row concerns this position."
+  },
+  {
+   "id": "eng_for_kan:S0144L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'wake' is the lemma of 'woke' in \"I woke earlier than I wanted to\"."
+  },
+  {
+   "id": "eng_for_kan:S0080L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂತ 'that' is a particle the seed \"I'm not sure when I'll be ready\" does not render."
+  },
+  {
+   "id": "eng_for_kan:S0336L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to open' vs seed \"she can open the door\": 'open' is present but the infinitive 'to' is not."
+  },
+  {
+   "id": "eng_for_kan:S0347L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂತ 'that' is a particle the seed \"He wanted to know what was happening a week ago\" does not render."
+  },
+  {
+   "id": "eng_for_kan:S0469L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'its meaning' is a literal gloss of ಅದರ ಅರ್ಥ, which the seed renders as \"that doesn't mean\"; the row is about its sentence's LEGO."
+  },
+  {
+   "id": "eng_for_kan:S0193L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಇದೆ 'is' is folded into \"I'm\" in the seed \"I'm sorry but I'm too busy today\"."
+  },
+  {
+   "id": "eng_for_kan:S0358L02C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to reach' vs seed \"couldn't reach the top\": 'reach' is present, the infinitive 'to' is not."
+  },
+  {
+   "id": "eng_for_kan:S0146L03C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಹಾಗೆ 'like' is not rendered in \"Nothing seems to be working\"; it belongs to the LEGO's 'seems to' construction."
+  },
+  {
+   "id": "eng_for_kan:S0331L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to provide' vs seed \"She can't provide all the answers\": 'provide' is present, the infinitive 'to' is not."
+  },
+  {
+   "id": "eng_for_kan:S0387L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂತ 'that' is a particle the seed \"No I didn't think she was right\" does not render."
+  },
+  {
+   "id": "eng_for_kan:S0381L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂತ 'that' is a particle the seed \"I didn't ask if he wanted to follow us\" does not render."
+  },
+  {
+   "id": "eng_for_kan:S0366L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂತ 'that' is a particle the seed \"Did you hear what he wanted to grow?\" does not render."
+  },
+  {
+   "id": "eng_for_kan:S0501L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂತ 'that' is a particle the seed \"If only I could trust you to play together...\" does not render."
+  },
+  {
+   "id": "eng_for_kan:S0492L05C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂತ 'that' is a particle the seed \"Which of those places do you think is the most interesting?\" does not render."
+  },
+  {
+   "id": "eng_for_kan:S0043L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂತ 'that' is a particle the seed \"I wasn't thinking about how to answer\" does not render."
+  },
+  {
+   "id": "eng_for_kan:S0578L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that is warm' matches its own LEGO L1, but the seed is \"Somewhere warmer\" and does not contain it."
+  }
+ ]
+}

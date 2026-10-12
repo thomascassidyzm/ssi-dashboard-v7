@@ -1,0 +1,166 @@
+{
+ "batch": 20,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_hin:S0204L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "करना is in its own LEGO 'आपकी मदद करना => to help you' and the seed has करे, but the seed target renders it only as 'help', not 'to do'."
+  },
+  {
+   "id": "eng_for_hin:S0204L03C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'कि वह' is in the seed and its LEGO, but the seed target renders it 'her to', not 'that she'."
+  },
+  {
+   "id": "eng_for_hin:S0364L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "नहीं is in the seed, but the target renders it as the contraction \"didn't\", so the literal 'not' is not a substring."
+  },
+  {
+   "id": "eng_for_hin:S0355L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "जिसे is in the seed, but the English 'that woman you know' leaves the relative pronoun 'whom' unrendered."
+  },
+  {
+   "id": "eng_for_hin:S0365L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "नहीं is in the seed, but the target has \"didn't\", not 'not'."
+  },
+  {
+   "id": "eng_for_hin:S0386L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "था is in the seed, but the target 'agreed' absorbs the tense, so 'was' is not rendered."
+  },
+  {
+   "id": "eng_for_hin:S0224L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"He's just started\", so 'has' is contracted and 'just' sits between the words."
+  },
+  {
+   "id": "eng_for_hin:S0224L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"He's just started\", so 'has' is contracted and 'just' sits between the words."
+  },
+  {
+   "id": "eng_for_hin:S0364L03C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "थी is the auxiliary in \"didn't like\" and the seed target has no separate 'was'."
+  },
+  {
+   "id": "eng_for_hin:S0365L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "कि is in the seed, but the English renders it as 'what', not 'that'."
+  },
+  {
+   "id": "eng_for_hin:S0354L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "में is in the seed, but the target renders 'ग़ुस्से में' as just 'angry', so 'in' is not rendered."
+  },
+  {
+   "id": "eng_for_hin:S0007L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "कोशिश is in the seed, but the target renders it as 'try as hard as I can', not 'effort'."
+  },
+  {
+   "id": "eng_for_hin:S0346L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "हो is in the seed, but the target renders 'पता हो' as 'know', so 'be' is not rendered."
+  },
+  {
+   "id": "eng_for_hin:S0323L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "पैदल is in the seed, but the target renders it as 'walk', not 'on foot'."
+  },
+  {
+   "id": "eng_for_hin:S0597L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"he's heard\", so 'has' is contracted and 'has heard' is not a substring."
+  },
+  {
+   "id": "eng_for_hin:S0012L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "लगाना is in the seed, but the target renders 'अंदाज़ा लगाना' as 'guess', so 'to put' is not rendered."
+  },
+  {
+   "id": "eng_for_hin:S0012L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"I wouldn't like to\", so \"I'd like\" is not contiguous and does not match the negated form."
+  },
+  {
+   "id": "eng_for_hin:S0012L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "नहीं is in the seed, but the target has \"wouldn't\", not 'not'."
+  },
+  {
+   "id": "eng_for_hin:S0012L03C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row says 'what will happen' while the seed and LEGO say \"what's going to happen\", a paraphrase of the same words."
+  },
+  {
+   "id": "eng_for_hin:S0345L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "के लिए is in the seed, but the target 'ready to leave' renders it as 'to', not 'for'."
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "batch": 51,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_urd:S0325L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "پر glossed 'about' but seed renders 'think about'-less 'consider ten possible problems'; the postposition is in LEGO L1 and is a dropped/unrendered word."
+  },
+  {
+   "id": "eng_for_urd:S0145L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "اب is in the seed and LEGO 'any more', but the seed renders it as 'any more' not 'now'."
+  },
+  {
+   "id": "eng_for_urd:S0330L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ہے is in the LEGO 'it's very important' and the seed has 'it's'; 'is' is contracted into 'it's'."
+  },
+  {
+   "id": "eng_for_urd:S0324L02C05",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ہیں is in LEGO L2 but the seed renders it as 'has', so literal 'are' is a back-gloss."
+  },
+  {
+   "id": "eng_for_urd:S0354L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "تھی is in LEGO 'didn't need to' and the seed 'didn't need' renders it in the past-tense auxiliary, not 'was'."
+  },
+  {
+   "id": "eng_for_urd:S0344L01C05",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ہے is in the LEGO and the seed has \"he's happy\"; 'is' is clitic-fused into \"he's\"."
+  },
+  {
+   "id": "eng_for_urd:S0343L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ہے is in LEGO L2 and the seed has \"she's worried\"; 'is' is clitic-fused into \"she's\"."
+  },
+  {
+   "id": "eng_for_urd:S0356L02C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بات in LEGO L2 corresponds to the seed's 'discuss'; 'talk' is a different lemma gloss."
+  },
+  {
+   "id": "eng_for_urd:S0008L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "میرا in LEGO L2 'what I mean' corresponds to the seed's 'I' in 'I mean'; 'my' is a literal gloss of the possessive."
+  },
+  {
+   "id": "eng_for_urd:S0012L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "نہیں is in LEGO L1 and the seed has \"wouldn't\"; 'not' is clitic-fused into \"wouldn't\"."
+  },
+  {
+   "id": "eng_for_urd:S0012L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "چاہوں گا is in LEGO L1 and the seed has \"wouldn't like\"; \"I'd like\" is not contiguous because 'I wouldn't' is interposed."
+  },
+  {
+   "id": "eng_for_urd:S0012L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "لگانا is part of LEGO 'to guess' (اندازہ لگانا); 'to make' is a literal gloss the seed does not render."
+  },
+  {
+   "id": "eng_for_urd:S0030L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "تھا is in LEGO 'I wanted' and the seed has 'wanted'; the past auxiliary 'was' is not rendered."
+  },
+  {
+   "id": "eng_for_urd:S0037L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "سے is in LEGO 'غور سے' = 'carefully'; 'from' is a literal gloss the seed does not render."
+  },
+  {
+   "id": "eng_for_urd:S0040L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "اس is in LEGO 'اس وقت' = 'at the moment'; 'this' is a literal gloss not rendered in the seed."
+  },
+  {
+   "id": "eng_for_urd:S0047L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "میرے is in LEGO 'میرے خیال میں' = 'I think that'; 'my' is a literal gloss the seed does not render."
+  },
+  {
+   "id": "eng_for_urd:S0297L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بہت کم is in the LEGO and the seed has \"don't know many\"; 'not many' is split by 'know'."
+  },
+  {
+   "id": "eng_for_urd:S0316L03C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "کو is in LEGO 'اپنے بھائی کو' = 'her brother'; 'to' is a literal gloss the seed does not render."
+  },
+  {
+   "id": "eng_for_urd:S0317L02C04",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "لا is in LEGO L2 and the seed has 'she could if she wanted to'; 'bring' is not rendered in the seed."
+  },
+  {
+   "id": "eng_for_urd:S0345L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "جانے کے لیے is in the LEGO and the seed has 'to leave'; 'to go' is a different lemma gloss of the same word."
+  }
+ ]
+}

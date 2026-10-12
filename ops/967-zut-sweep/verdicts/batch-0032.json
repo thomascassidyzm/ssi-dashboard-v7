@@ -1,0 +1,166 @@
+{
+ "batch": 32,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_kan:S0592L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row matches its own LEGO L2 'of the main road'; seed has 'along the main road' where 'of' is not rendered, so the words are present but 'of' is dropped."
+  },
+  {
+   "id": "eng_for_kan:S0600L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂತ is a complementiser particle glossed 'that', which the seed 'how tired you were' does not render."
+  },
+  {
+   "id": "eng_for_kan:S0601L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅನ್ನೋ is a quotative particle glossed 'that', which the seed 'about how it all started' does not render."
+  },
+  {
+   "id": "eng_for_kan:S0609L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂದ್ರೆ 'that is' is a literal gloss of a word the seed 'The sensible thing to do would have been' does not render."
+  },
+  {
+   "id": "eng_for_kan:S0619L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has \"It's a long time\" and the row has \"it's been\", an inflected variant of the copula, so no single contiguous seed value is forced."
+  },
+  {
+   "id": "eng_for_kan:S0097L03C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has \"I'm ready\" with 'am' contracted into \"I'm\", so 'am' is not a separate substring."
+  },
+  {
+   "id": "eng_for_kan:S0007L03C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'as possible' differs from the LEGO 'as hard as I can' and the seed 'as hard as I can'; no single forced value."
+  },
+  {
+   "id": "eng_for_kan:S0134L04C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has \"It's not a problem\" with 'is' contracted and 'not' split off, so \"isn't\" is not a contiguous substring."
+  },
+  {
+   "id": "eng_for_kan:S0063L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'helping me', and the row 'to help' is a different inflection of the same verb."
+  },
+  {
+   "id": "eng_for_kan:S0402L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'somewhere' and the row 'anywhere' is a near-synonym of the word in the sentence; the choice is a judgement call."
+  },
+  {
+   "id": "eng_for_kan:S0480L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಹೆಚ್ಚು glossed 'more' where the seed renders the LEGO as 'not far ahead'; the row is about its sentence and the gloss is a policy call."
+  },
+  {
+   "id": "eng_for_kan:S0467L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has \"It's next to\" with 'is' contracted into \"It's\", so 'is' is not a separate substring."
+  },
+  {
+   "id": "eng_for_kan:S0094L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'it will work' and the row 'will do' splits that with 'work' absent, so the words are not contiguous."
+  },
+  {
+   "id": "eng_for_kan:S0146L03C05",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'seems to be working' and the row \"doesn't seem\" is a negated variant; 'Nothing' carries the negation."
+  },
+  {
+   "id": "eng_for_kan:S0135L01C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has \"it's so good\" with 'is' contracted into \"it's\", so 'is good' is not contiguous."
+  },
+  {
+   "id": "eng_for_kan:S0106L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'need to work hard' and the row 'need to do' has 'work hard' interposed."
+  },
+  {
+   "id": "eng_for_kan:S0077L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has \"I'm starting\" and the row \"I'm doing\" glosses ಮಾಡ್ತಿದ್ದೇನೆ literally, which the seed does not render."
+  },
+  {
+   "id": "eng_for_kan:S0479L02C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'most' glosses ಅತ್ಯಂತ literally while the seed and LEGO render it as 'the least'; the LEGOs disagree with the seed."
+  },
+  {
+   "id": "eng_for_kan:S0037L05C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಮಾಡಿದೆ glossed 'did' is a literal gloss of a light verb that the seed 'started to think' does not render."
+  },
+  {
+   "id": "eng_for_kor:S0026L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The stem 좋 split from 좋아요 gives 'like / good'; seed has 'I like', so it is an alternate gloss of a word in the sentence."
+  }
+ ]
+}

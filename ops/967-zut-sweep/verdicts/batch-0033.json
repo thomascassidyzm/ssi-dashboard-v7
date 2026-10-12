@@ -1,0 +1,166 @@
+{
+ "batch": 33,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_kor:S0051L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"(plural)\" glosses the 들 marker, which the seed target \"my friends\" renders only as the plural -s."
+  },
+  {
+   "id": "eng_for_kor:S0010L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"not know\" is a literal gloss of 모르; the seed renders it as \"I'm not sure\"."
+  },
+  {
+   "id": "eng_for_kor:S0005L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"do\" glosses 할, but the seed target has \"I'm going to practise\" with no standalone \"do\"."
+  },
+  {
+   "id": "eng_for_kor:S0029L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"more\" glosses 더, but the seed renders 더 잘 as \"better\"."
+  },
+  {
+   "id": "eng_for_kor:S0029L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"well\" glosses 잘, but the seed renders 더 잘 as \"better\"."
+  },
+  {
+   "id": "eng_for_kor:S0105L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"the reason\" glosses 이유, but the seed target says \"That is why\"."
+  },
+  {
+   "id": "eng_for_kor:S0135L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The words are all in \"you think that it's so good\", but \"that\" and \"so\" sit between them."
+  },
+  {
+   "id": "eng_for_kor:S0097L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"when you want\" is a literal gloss, but the seed target says \"as soon as you want\"."
+  },
+  {
+   "id": "eng_for_kor:S0203L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"how\" glosses 어떻게, but the seed target has \"What would you do\"."
+  },
+  {
+   "id": "eng_for_kor:S0030L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"wanted to (past)\" carries a tense annotation; the seed has \"wanted to\"."
+  },
+  {
+   "id": "eng_for_kor:S0045L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"all\" glosses 모든, but the seed has \"everything\"."
+  },
+  {
+   "id": "eng_for_kor:S0048L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"mind\" is a literal gloss of 신경 쓰지; the seed says \"don't care\"."
+  },
+  {
+   "id": "eng_for_kor:S0055L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"the act of\" glosses 는 것, which the seed renders as \"waking up\"."
+  },
+  {
+   "id": "eng_for_kor:S0037L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"I (past)\" glosses 어요 as pro-drop and tense; the seed has \"I started\"."
+  },
+  {
+   "id": "eng_for_kor:S0008L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"my words\" glosses 제 말, but the seed target says \"what I mean\"."
+  },
+  {
+   "id": "eng_for_kor:S0204L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"the matter of\" glosses 데, which the seed absorbs into \"deal with the arrangements\"."
+  },
+  {
+   "id": "eng_for_kor:S0280L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"only\" and \"the job\" are in the seed but separated by \"had to do the most important\"."
+  },
+  {
+   "id": "eng_for_kor:S0036L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"the (object)\" glosses the 를 particle; the seed has \"the story\"."
+  },
+  {
+   "id": "eng_for_kor:S0053L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"in / to\" glosses the 에 particle; the seed has \"in her bag\", so \"in / to\" is not a substring."
+  },
+  {
+   "id": "eng_for_kor:S0294L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"isn't enough\" is a literal gloss, but the seed says \"don't have enough time\"."
+  }
+ ]
+}

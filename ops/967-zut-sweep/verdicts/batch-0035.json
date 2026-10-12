@@ -1,0 +1,166 @@
+{
+ "batch": 35,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_mar:S0508L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'how you're going to pay' renders पैसे only inside the verb 'pay'; the row is about this sentence and its LEGO."
+  },
+  {
+   "id": "eng_for_mar:S0509L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'you're going to pay for a new bed' has no 'money'; पैसे is glossed literally and belongs to L1."
+  },
+  {
+   "id": "eng_for_mar:S0518L03C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "अशी is in LEGO L3 (myself having) but the seed 'myself having exactly the same problem' does not render 'that'."
+  },
+  {
+   "id": "eng_for_mar:S0518L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "असेल is in L3 glossed 'would have' while the seed has 'having'; a literal gloss, not a stray."
+  },
+  {
+   "id": "eng_for_mar:S0525L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "हे is in L2 हे बघायला (to check), but the seed 'To check if you've been able to finish' does not render 'this'."
+  },
+  {
+   "id": "eng_for_mar:S0521L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "हे is in L2 but the seed 'why we needed to stay here' / 'you'll forget' has no 'this'."
+  },
+  {
+   "id": "eng_for_mar:S0047L05C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Target 'a good thing [is_new=false]' carries a stray annotation; the real text 'a good thing' is in the seed, but the correct value is a judgement call and the row duplicates L2, so it is not a proven cut."
+  },
+  {
+   "id": "eng_for_mar:S0512L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "आणेपर्यंत is in L2 (while I fetch); the seed 'while I fetch the keys' has 'while' where the row says 'until'."
+  },
+  {
+   "id": "eng_for_mar:S0555L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "इतका is in L2 नवीन आणण्याइतका; the seed 'too tired to fetch a new one' has no 'enough'."
+  },
+  {
+   "id": "eng_for_mar:S0573L03C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "बनवणे/'to make' is the lemma form of बनवणारी / 'makes' in the seed, which is L3."
+  },
+  {
+   "id": "eng_for_mar:S0506L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "काही is in L3 काही वर्षांपूर्वी (years ago); the seed's 'years ago' has no 'a few'."
+  },
+  {
+   "id": "eng_for_mar:S0533L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "तो is in L1 तो प्रत्येक शब्द; the seed 'every word you say' has no 'that'."
+  },
+  {
+   "id": "eng_for_mar:S0571L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "खात्री/'certainty' glosses a word inside L1 'I'm not convinced'; it is a related form, not a seed substring."
+  },
+  {
+   "id": "eng_for_mar:S0589L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "सांगणे/'to tell' is the lemma of सांगितलं ('told') in the seed, which is L1."
+  },
+  {
+   "id": "eng_for_mar:S0504L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "पलीकडे is in L2 गवतावरून पलीकडे (across the grass); 'across' is rendered once and 'over' is a literal gloss."
+  },
+  {
+   "id": "eng_for_mar:S0514L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "अगदी is in L2 अगदी योग्य घर (the perfect house); the seed 'the perfect house' has no 'just'."
+  },
+  {
+   "id": "eng_for_mar:S0555L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "खूप is in L1 मी खूप थकलोय; the seed renders it as 'too tired', not 'very'."
+  },
+  {
+   "id": "eng_for_mar:S0544L04C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "तो is in L4 तो अगदी बरोबर होता; the seed 'Whoever said it would be difficult was absolutely right' has no 'he'."
+  },
+  {
+   "id": "eng_for_mar:S0563L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "अजून is in L3 अजून पुढे (any longer); the seed has 'any longer', and 'any more' differs, so the correct value is not forced to one reading."
+  },
+  {
+   "id": "eng_for_mar:S0508L01C04",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "देणार/'going to give' glosses a word the seed renders as 'going to pay'; same LEGO, so not a stray."
+  }
+ ]
+}

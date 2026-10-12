@@ -1,0 +1,166 @@
+{
+ "batch": 28,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_kan:S0059L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅದನ್ನ is part of its own LEGO 'what I need to do' (the Kannada correlative); English 'what I need to do' renders no separate 'that'."
+  },
+  {
+   "id": "eng_for_kan:S0055L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'I don't enjoy' but the row says 'I don't like'; the row glosses the same Kannada chunk, so the real chunk is covered by its own LEGO and this is a synonym, not an orphan."
+  },
+  {
+   "id": "eng_for_kan:S0057L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅದನ್ನ is in its own LEGO 'what I wanted to say'; the seed target renders no 'that'."
+  },
+  {
+   "id": "eng_for_kan:S0070L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಹೇಳೋದು is in the sentence and the seed renders it as 'tell' ('to tell me'); 'to say' is a near-synonym of that word."
+  },
+  {
+   "id": "eng_for_kan:S0066L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಲ್ಲ is in the sentence and is rendered as the contraction in \"It's not difficult\"; 'isn't' is a gloss of the negation, not a substring."
+  },
+  {
+   "id": "eng_for_kan:S0070L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂತ is a quotative particle in the seed sentence and its own LEGO; 'where it was' renders no 'that'."
+  },
+  {
+   "id": "eng_for_kan:S0092L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಸ್ವಲ್ಪ is in the seed and its LEGO 'for a while'; 'a little' is a literal gloss of one word, not rendered as such in 'for a while'."
+  },
+  {
+   "id": "eng_for_kan:S0090L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ತುಂಬಾ is in the sentence and its LEGO, but 'that would be great' renders no 'very'; the translation dropped the word."
+  },
+  {
+   "id": "eng_for_kan:S0092L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅಂತ is a quotative particle in the seed and its own LEGO; \"I'd like\" renders no 'that'."
+  },
+  {
+   "id": "eng_for_kan:S0101L03C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಕೊಡ್ತಿದೆ is part of its own LEGO 'I'm enjoying'; \"'m giving\" is a literal gloss of the idiom ಖುಷಿ ಕೊಡು."
+  },
+  {
+   "id": "eng_for_kan:S0104L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅದನ್ನ is in its own LEGO 'what we're doing'; the seed target renders no 'that'."
+  },
+  {
+   "id": "eng_for_kan:S0108L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಎಚ್ಚರ is in the seed and its LEGO 'to wake'; 'awake' is a literal gloss, while the seed has 'wake'."
+  },
+  {
+   "id": "eng_for_kan:S0108L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಆಗ್ತೀವಿ is in the seed and its LEGO 'to wake'; 'to become' is a literal gloss of the verb in the idiom ಎಚ್ಚರ ಆಗು."
+  },
+  {
+   "id": "eng_for_kan:S0109L02C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಮಾಡಲೇಬೇಕು is in the seed and its LEGO 'must work hard'; 'must do' is a literal gloss, while the seed has 'must work'."
+  },
+  {
+   "id": "eng_for_kan:S0117L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಮಾತಾಡಿಕೊಂಡಿದ್ದಕ್ಕಿಂತ matches its own LEGO, but the seed says 'than I was last time we talked to each other', so 'than talked to each other' is interposed and the LEGO differs from the seed."
+  },
+  {
+   "id": "eng_for_kan:S0146L03C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಮಾಡ್ತಿರೋ is in the sentence and its LEGO; the seed has 'seems to be working', and 'is being' is a literal gloss of the aspect marker."
+  },
+  {
+   "id": "eng_for_kan:S0165L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ನಿಜವೋ ಇಲ್ಲವೋ is in the seed and its LEGO; the seed has \"if it's true\" and renders 'or not' nowhere."
+  },
+  {
+   "id": "eng_for_kan:S0205L01C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಪ್ರಯತ್ನಿಸ್ತಿದ್ದ is in the seed and its LEGO; the seed has 'I was trying', and 'was...trying' has words interposed."
+  },
+  {
+   "id": "eng_for_kan:S0207L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅದನ್ನ is in its own LEGO 'what you needed to do'; the seed target renders no 'that'."
+  },
+  {
+   "id": "eng_for_kan:S0202L01C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಇರಲಿಲ್ಲ is in the seed and its LEGO; the seed has 'Nobody was sure', and 'was...not' is a discontiguous gloss, with the negation folded into 'nobody'."
+  }
+ ]
+}

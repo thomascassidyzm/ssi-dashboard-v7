@@ -1,0 +1,166 @@
+{
+ "batch": 24,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_jpn:S0166L05C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses あまり, which is in the seed's あまり珍しくありません. The target '(not) very' is a parenthesised gloss of 'not very', so the seed's 'not very' is a plausible fix. 'Very' alone is the sibling LEGO's target, so the intended value is not forced."
+  },
+  {
+   "id": "eng_for_jpn:S0082L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The を particle in あなたを待つ is a real part of the sentence, and '(object marker)' is a grammatical label that the English 'I'm not going to wait for you' does not render."
+  },
+  {
+   "id": "eng_for_jpn:S0232L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "を in 女性を is in the seed's known sentence, and '(object marker)' is a grammatical label with no counterpart in 'I know an old woman who can remember the answer'."
+  },
+  {
+   "id": "eng_for_jpn:S0094L04C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "いく is in うまくいく, and its gloss 'go (→ turn out)' is a literal gloss of a word the seed renders as 'it will work'."
+  },
+  {
+   "id": "eng_for_jpn:S0219L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "〜た is the past ending inside 良かった, and 'past' is a grammatical label; the seed's 'It was nice' has no separate word for it."
+  },
+  {
+   "id": "eng_for_jpn:S0128L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "います is in 似ています, and 'are' is a literal gloss. The seed 'you're like' has the contraction \"you're\", so 'are' is not a contiguous substring."
+  },
+  {
+   "id": "eng_for_jpn:S0105L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "知りません is the non-past form of 知りませんでした, which is in the seed. \"don't know\" is a present-tense form of the seed's \"didn't know\"."
+  },
+  {
+   "id": "eng_for_jpn:S0213L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "わかりません is in the seed, but 'I don't understand' is a literal gloss. The seed renders it as \"we don't know\", so the subject differs and the row cannot be fixed to a single value."
+  },
+  {
+   "id": "eng_for_jpn:S0260L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "わかりません is in 全然わかりません, and \"I don't understand\" is a literal gloss. The seed renders the phrase as \"I don't have the faintest idea\"."
+  },
+  {
+   "id": "eng_for_jpn:S0185L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "くる is the lemma of 置いてきた, which is in the seed. 'came' is a literal gloss of that, and the seed renders the whole as 'left'."
+  },
+  {
+   "id": "eng_for_jpn:S0099L04C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "いかない is in うまくいかない, and 'not going' is a literal gloss. The seed renders the whole as \"it's not working\"."
+  },
+  {
+   "id": "eng_for_jpn:S0143L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "に in 前に is a real part of the seed. 'at/in' is a literal gloss that the seed's 'earlier' does not render separately."
+  },
+  {
+   "id": "eng_for_jpn:S0153L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "しなかった is in しなかったでしょう, and \"didn't do\" is a literal gloss of it. The seed renders the phrase as \"wouldn't have said\"."
+  },
+  {
+   "id": "eng_for_jpn:S0100L04C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ような is in 似たような, and 'like' is a literal gloss. The seed renders it as 'similar'."
+  },
+  {
+   "id": "eng_for_jpn:S0094L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "うまく is in うまくいく, and 'well/successfully' is a literal gloss. The seed renders the phrase as 'it will work'."
+  },
+  {
+   "id": "eng_for_jpn:S0099L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "うまく is in うまくいかない, and 'well' is a literal gloss. The seed renders the phrase as \"it's not working\"."
+  },
+  {
+   "id": "eng_for_jpn:S0258L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "は is in は何ですか, and 'topic particle' is a grammatical label. The seed's \"what's\" has no separate word for it."
+  },
+  {
+   "id": "eng_for_jpn:S0144L01C03",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "時間 is in 今朝起きたかった時間, which is in the seed. 'time' is not a substring of 'I woke earlier than I wanted to this morning', which does not render 時間."
+  },
+  {
+   "id": "eng_for_jpn:S0195L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "に in テーブルに is in the seed. '(location marker: on/at)' is a grammatical label; the seed renders it as 'on'."
+  },
+  {
+   "id": "eng_for_jpn:S0210L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "合う is part of 話し合う, which is in the seed. 'together' is a literal gloss, and the seed renders the whole as 'discuss'."
+  }
+ ]
+}

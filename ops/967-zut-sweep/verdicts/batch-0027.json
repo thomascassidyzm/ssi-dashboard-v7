@@ -1,0 +1,166 @@
+{
+ "batch": 27,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_kan:S0585L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed renders ಮಲಗೋ ಕೋಣೆಯ as the compound \"bedroom\"; \"sleeping\" is a literal gloss of one half of it, and the row is still about this sentence."
+  },
+  {
+   "id": "eng_for_kan:S0492L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"those places\", so \"that\" is the singular form of a word that is in the sentence."
+  },
+  {
+   "id": "eng_for_kan:S0584L06C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"to wake up every morning and see the mountains\", so \"seeing\" is an inflected form of \"see\"."
+  },
+  {
+   "id": "eng_for_kan:S0648L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed \"What you said madam\" has no rendering of ಅದು; the row glosses a word the translation dropped, and its own LEGO covers it."
+  },
+  {
+   "id": "eng_for_kan:S0008L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed says \"explain what I mean\", and \"my meaning\" is a literal gloss of ನನ್ನ ಅರ್ಥ that the seed does not render that way."
+  },
+  {
+   "id": "eng_for_kan:S0012L04C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed renders ಇಲ್ಲ only as the n't in \"wouldn't like\", so \"not\" is a literal gloss of a negation that is fused into the contraction."
+  },
+  {
+   "id": "eng_for_kan:S0014L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"all day\" where the row says \"whole\", so it glosses a word the seed renders differently."
+  },
+  {
+   "id": "eng_for_kan:S0015L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"want you to speak\", and \"should speak\" is a literal gloss of ಮಾತಾಡಬೇಕು that the sentence does not render."
+  },
+  {
+   "id": "eng_for_kan:S0017L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed \"find out what the answer is\" has no \"that\"; this is a particle gloss."
+  },
+  {
+   "id": "eng_for_kan:S0027L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"to answer\" where the row says \"to give\", so it is a literal gloss of ಕೊಡೋಕೆ."
+  },
+  {
+   "id": "eng_for_kan:S0028L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed renders ಬೇಗ inside \"as soon as you can\", so \"quickly\" is a literal gloss of a word the sentence does not render that way."
+  },
+  {
+   "id": "eng_for_kan:S0028L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"start talking\", so \"to do\" is a literal gloss of ಮಾಡೋದು that the sentence does not render."
+  },
+  {
+   "id": "eng_for_kan:S0031L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"tonight\", so \"today\" is a literal gloss of ಇವತ್ತು."
+  },
+  {
+   "id": "eng_for_kan:S0034L03C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"doesn't want\", so \"don't want\" is the wrong person of a phrase that is in the sentence. Fixing it would be a judgement call."
+  },
+  {
+   "id": "eng_for_kan:S0035L04C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"doesn't want\", so \"don't want\" is a person-agreement variant of a phrase in the sentence."
+  },
+  {
+   "id": "eng_for_kan:S0035L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"this afternoon\", so \"today\" is a literal gloss of ಇವತ್ತು."
+  },
+  {
+   "id": "eng_for_kan:S0039L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"this morning\", so \"today\" is a literal gloss of ಇವತ್ತು."
+  },
+  {
+   "id": "eng_for_kan:S0040L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"at the moment\", so \"now\" is a literal gloss of ಈಗ."
+  },
+  {
+   "id": "eng_for_kan:S0042L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"last night\", so \"yesterday\" is a literal gloss of ನಿನ್ನೆ."
+  },
+  {
+   "id": "eng_for_kan:S0049L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed says \"if you know what I mean\", and \"my meaning\" is a literal gloss of ನನ್ನ ಅರ್ಥ that the sentence does not render that way."
+  }
+ ]
+}

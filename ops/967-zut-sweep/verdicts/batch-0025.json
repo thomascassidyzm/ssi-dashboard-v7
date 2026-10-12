@@ -1,0 +1,166 @@
+{
+ "batch": 25,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_jpn:S0210L03C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'talk' is the lemma of 話す, a component of 話し合う => 'discuss'; the row is about its own sentence, but 'talk' is not in the seed target 'they think that we need to discuss the problem'."
+  },
+  {
+   "id": "eng_for_jpn:S0218L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "何も glosses 'anything', which the seed 'I didn't do much on Sunday' does not render as a separate word; this is a literal gloss of a word the translation dropped."
+  },
+  {
+   "id": "eng_for_jpn:S0166L05C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'isn't' glosses ありません, but the seed 'my name is not very unusual' has 'is not' rather than the contraction."
+  },
+  {
+   "id": "eng_for_jpn:S0150L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'could you (polite)?' glosses いただけますか, but the seed 'can you tell me what your name is?' has 'can you'; the LEGO also says 'can you', so this is a literal gloss of the polite form."
+  },
+  {
+   "id": "eng_for_jpn:S0072L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The target is a grammatical label '(progressive: -ing / are ~ing)', not text from the seed 'I think that you're doing very well'; it is a gloss of the ている form, which is in the sentence."
+  },
+  {
+   "id": "eng_for_jpn:S0218L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not much' glosses あまり, but the seed 'I didn't do much on Sunday' has 'didn't do much'; the words are present but interposed by the contraction 'didn't'."
+  },
+  {
+   "id": "eng_for_jpn:S0069L05C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": "eng_for_jpn:S0069L05C02",
+   "fixed_target": null,
+   "why": "すべて => 'everything' has no counterpart in 'He didn't want to look after the young dog all afternoon' and looks like a mis-gloss of ずっと ('all'); but the LEGO 午後ずっと => 'all afternoon' is taught by sibling C02 plus the LEGO itself, so a fix to 'all' is possible but not forced, and cutting is not proven."
+  },
+  {
+   "id": "eng_for_jpn:S0141L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "丈夫 => 'strong' is a literal split of 大丈夫, which the seed 'no problem. Everything is okay' renders as 'okay'; the row is about its sentence's word, so this is not a provable orphan."
+  },
+  {
+   "id": "eng_for_jpn:S0141L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ありません => 'there isn't' is a literal gloss of part of 問題ありません => 'no problem', which the seed 'no problem. Everything is okay' contains; 'there isn't' is not a substring."
+  },
+  {
+   "id": "eng_for_jpn:S0199L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "〜ていた => 'was -ing' glosses part of 以前〜していた => 'used to' in the seed 'my friend used to work in an office'; the progressive tense label is not in the seed target."
+  },
+  {
+   "id": "eng_for_jpn:S0263L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "言っている => 'you are saying' is a literal gloss, while the seed 'I don't know who you mean' renders it as 'you mean'; the words are reworded by the translation."
+  },
+  {
+   "id": "eng_for_jpn:S0264L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'a man' is not contiguous in the seed 'an old man' because 'old' is interposed; the row is about its own sentence (男の人 => man), so it is not an orphan."
+  },
+  {
+   "id": "eng_for_jpn:S0250L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "前に => 'earlier' glosses a word the seed 'can you tell me something else before I answer?' renders as 'before'; this is a literal gloss, and the row is about its sentence."
+  },
+  {
+   "id": "eng_for_jpn:S0128L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "前に => 'earlier' glosses a word the seed 'you're like someone I used to know' renders as 'used to'; this is a literal gloss, and the row is about its sentence."
+  },
+  {
+   "id": "eng_for_jpn:S0075L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I've got' glosses ことがあります, while the seed 'Have you got more to learn?' has 'Have you got' as an inverted question; the words 'got' are present but the person and order differ."
+  },
+  {
+   "id": "eng_for_jpn:S0071L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "でした => 'past' is a grammatical label, not text in the seed 'we didn't want to let anyone hear the truth'; it glosses a tense marker the translation renders through 'didn't'."
+  },
+  {
+   "id": "eng_for_jpn:S0075L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "か => 'question' is a label for the question particle, which the seed 'Have you got more to learn?' renders only through word order and the question mark."
+  },
+  {
+   "id": "eng_for_jpn:S0100L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "似た => 'resembling' is a literal gloss of the word that the seed 'you shouldn't worry about doing something similar' renders as 'similar'; it is the lemma-like form, not a substring."
+  },
+  {
+   "id": "eng_for_jpn:S0026L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "です => 'am' is a copula gloss; the seed 'I like feeling as if I'm nearly ready to go' contains 'I'm', not a standalone 'am', and 好きです => 'I like' makes it a back-gloss."
+  },
+  {
+   "id": "eng_for_jpn:S0252L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "できます => 'be able to' glosses a word that the seed 'when will you be ready to start?' renders as 'be ready'; the LEGO says 'be ready', so the row is a literal gloss of the verb."
+  }
+ ]
+}

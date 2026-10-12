@@ -1,0 +1,166 @@
+{
+ "batch": 59,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "lit_for_eng:S0047L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"I\"→\"aš\" glosses the pro-dropped subject of \"manau\" in \"Nes manau, kad klysti yra gerai\"; the sentence has no \"aš\"."
+  },
+  {
+   "id": "lit_for_eng:S0011L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"I'd\"→\"aš\" glosses the subject implied by \"Norėčiau\"; \"aš\" is not in the seed target."
+  },
+  {
+   "id": "lit_for_eng:S0114L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"I\"→\"aš\" is the pro-dropped subject of \"Jaučiu\"; the seed target has no \"aš\"."
+  },
+  {
+   "id": "lit_for_eng:S0023L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"I\"→\"aš\" glosses the subject implied by \"pradėsiu\"; the seed target has no \"aš\"."
+  },
+  {
+   "id": "lit_for_eng:S0168L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"I\"→\"aš\" is the pro-dropped subject of \"galėsiu\"; the seed target has no \"aš\"."
+  },
+  {
+   "id": "lit_for_eng:S0030L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"I\"→\"aš\" glosses the subject implied by \"norėjau\"; the seed target has no \"aš\"."
+  },
+  {
+   "id": "lit_for_eng:S0200L05C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"we\"→\"mes\" glosses the subject implied by \"baigsime\"; the seed target has no \"mes\"."
+  },
+  {
+   "id": "lit_for_eng:S0054L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"we\"→\"mes\" glosses the subject implied by \"Norėjome\"; the seed target has no \"mes\"."
+  },
+  {
+   "id": "lit_for_eng:S0089L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"I\"→\"aš\" glosses the subject implied by \"padariau\"; the seed target has no \"aš\"."
+  },
+  {
+   "id": "lit_for_eng:S0117L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"we\"→\"mes\" glosses the subject implied by \"kalbėjomės\"; the seed target has no \"mes\"."
+  },
+  {
+   "id": "lit_for_eng:S0009L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"I\"→\"aš\" glosses the subject implied by \"kalbu\"; the seed target has no \"aš\"."
+  },
+  {
+   "id": "lit_for_eng:S0041L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"I\"→\"aš\" glosses the subject implied by \"Jaučiuosi\"; the seed target has no \"aš\", and the sibling L2C01 repeats the same gloss."
+  },
+  {
+   "id": "lit_for_eng:S0146L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"we\"→\"mes\" glosses the subject implied by \"bandėme\"; the seed target has no \"mes\"."
+  },
+  {
+   "id": "lit_for_eng:S0107L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"we\"→\"mes\" glosses the subject implied by \"Tikėjomės\"; the seed target has no \"mes\"."
+  },
+  {
+   "id": "lit_for_eng:S0111L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"we\"→\"mes\" glosses the subject implied by \"išmokstame\"; the seed target has no \"mes\"."
+  },
+  {
+   "id": "lit_for_eng:S0074L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"you\"→\"tu\" glosses the subject implied by \"padedi\"; the seed target has no \"tu\"."
+  },
+  {
+   "id": "lit_for_eng:S0162L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"you\"→\"tu\" glosses the subject implied by \"galvoji\"; the seed target \"Ką apie tai galvoji?\" has no \"tu\"."
+  },
+  {
+   "id": "lit_for_eng:S0079L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"you\"→\"tu\" glosses the subject implied by \"pradėjai\"; the seed target has no \"tu\"."
+  },
+  {
+   "id": "lit_for_eng:S0064L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"not\"→\"ne\" is fused into \"nėra\" in the seed target, so \"ne\" is not a contiguous substring."
+  },
+  {
+   "id": "lit_for_eng:S0185L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"you\"→\"tu\" glosses the subject implied by \"palikai\"; the seed target has no \"tu\"."
+  }
+ ]
+}

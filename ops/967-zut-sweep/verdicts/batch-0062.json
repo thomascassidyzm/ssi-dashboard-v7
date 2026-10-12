@@ -1,0 +1,166 @@
+{
+ "batch": 62,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "por_br_for_eng:S0145L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'any more'=>'já' glosses the LEGO's 'não mais' position but seed has 'mais' only, and 'já' appears nowhere; not provably an orphan, since the LEGO 'not any more' covers the seed's 'não está mais', and the right value is not forced."
+  },
+  {
+   "id": "por_br_for_eng:S0532L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'they are' => '(implied)' is a literal gloss of a subject the seed 'a menos que tenha sorte' does not render; it is about its own sentence."
+  },
+  {
+   "id": "por_for_eng:S0111L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'we'=>'nós' glosses the pro-dropped subject of 'aprendemos' in the seed; 'nós' is not rendered."
+  },
+  {
+   "id": "por_for_eng:S0167L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'you'=>'tu' glosses the pro-dropped subject of 'precisas' in the seed; 'tu' is not rendered."
+  },
+  {
+   "id": "por_for_eng:S0015L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'me'=>'mim' is a part of 'comigo' in the seed (clitic-fused); the seed has no standalone 'mim'."
+  },
+  {
+   "id": "por_for_eng:S0271L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'you'=>'tu' glosses the pro-dropped subject of 'gostavas' in the seed; 'tu' is not rendered."
+  },
+  {
+   "id": "por_for_eng:S0011L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'able'=>'capaz' is a dictionary gloss of the word within 'conseguir' in the seed; 'capaz' is not in the sentence."
+  },
+  {
+   "id": "por_for_eng:S0111L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'it'=>'(implied)' glosses a subject the seed 'muda' drops; the row is about its own sentence."
+  },
+  {
+   "id": "por_for_eng:S0273L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'much'=>'muito' is a gloss of part of 'too much'=>'demasiado' in the seed; 'muito' is not in the sentence and is not provably a stray."
+  },
+  {
+   "id": "por_for_eng:S0278L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'teve de' is a different person from the seed's 'tiveste de' (the form is forced), but the known 'did have to' lacks the 'you' that makes it 2sg; I did not treat this as a clean fix since the known and gloss need review."
+  },
+  {
+   "id": "por_for_eng:S0387L02C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'she had'=>'ela tinha' conflicts with the seed's 'ela tivesse' (subjunctive 'she were'); the known 'she had' is itself a different gloss, so the target is not forced."
+  },
+  {
+   "id": "por_for_eng:S0302L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'in'=>'em' is fused into 'numa' in the seed ('viver numa cidade'); the seed has no standalone 'em'."
+  },
+  {
+   "id": "por_for_eng:S0436L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'a number'=>'o número' is not in the seed; the seed has 'um número', so a fix to 'um número' is plausible, but the known 'a number' vs 'o' article choice is not provably forced."
+  },
+  {
+   "id": "por_for_eng:S0392L05C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'em frente de' vs the seed's 'em frente dos': the preposition is fused with the article 'dos', which a sibling row glosses separately."
+  },
+  {
+   "id": "por_for_eng:S0162L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'about'=>'de' is fused into 'disso' (de+isso) in the seed; there is no standalone 'de'."
+  },
+  {
+   "id": "ron_for_eng:S0027L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I like to'=>'îmi place să' is the positive form of the seed's 'nu-mi place să'; the known side is also positive, so the target is not forced and the row could be a stale positive-form leftover."
+  },
+  {
+   "id": "ron_for_eng:S0240L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'îi' is the clitic fused into 'nu-i' in the seed ('nu-i place'); it is not a standalone word."
+  },
+  {
+   "id": "ron_for_eng:S0241L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'îi' is the clitic fused into 'să-i' in the seed ('să-i dau'); it is not a standalone word."
+  },
+  {
+   "id": "spa_for_zho:S0025L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'你'=>'tú' glosses the pro-dropped subject of 'vas a' in the seed; 'tú' is not rendered."
+  },
+  {
+   "id": "spa_for_zho:S0021L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'你'=>'tú' glosses the pro-dropped subject of 'estás aprendiendo' in the seed; 'tú' is not rendered."
+  }
+ ]
+}

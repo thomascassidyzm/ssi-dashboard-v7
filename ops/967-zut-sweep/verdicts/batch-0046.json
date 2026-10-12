@@ -1,0 +1,166 @@
+{
+ "batch": 46,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_spa:S0298L01C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row known 'me queda nada que decir' is in the seed and matches its LEGO, but target 'is there anything left for me to say' is a different rendering of the seed's 'I've got nothing left to say'."
+  },
+  {
+   "id": "eng_for_spa:S0298L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ya no' is in the seed's known, but the target sentence 'I've got nothing left to say' has no 'no longer' (the translation dropped it)."
+  },
+  {
+   "id": "eng_for_spa:S0169L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'haga' is in the known seed and the target has 'do', so 'I do' is a pronoun-added gloss of a word that is in the sentence ('me to do')."
+  },
+  {
+   "id": "eng_for_spa:S0065L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'a prueba' is in the known seed; the target renders it as 'test yourself', so 'to the test' is a literal gloss of words that are not in the target."
+  },
+  {
+   "id": "eng_for_spa:S0275L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'tiempo' is in the known seed 'más tiempo', but the target 'longer' does not contain 'time'."
+  },
+  {
+   "id": "eng_for_spa:S0052L05C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'la semana' is in the known seed; the target says 'last week', not 'the week'."
+  },
+  {
+   "id": "eng_for_spa:S0122L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'más' is in the known seed, but the target has 'easier' rather than a separate 'more'."
+  },
+  {
+   "id": "eng_for_spa:S0059L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'la semana' is in the known seed; the target says 'next week', not 'the week'."
+  },
+  {
+   "id": "eng_for_spa:S0186L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'la semana' is in the known seed; the target says 'next week', not 'the week'."
+  },
+  {
+   "id": "eng_for_spa:S0179L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'por la tarde' is in the known seed; the target says 'on Sunday afternoon', not 'in the afternoon'."
+  },
+  {
+   "id": "eng_for_spa:S0182L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'sitio' is in the known seed; the target says 'anywhere', so 'place' does not appear."
+  },
+  {
+   "id": "eng_for_spa:S0106L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'no' is in the known seed; the target renders it as \"don't\", so 'not' is not a contiguous substring."
+  },
+  {
+   "id": "eng_for_spa:S0156L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'esta' is in the known seed; the target says 'tonight', so 'this' does not appear."
+  },
+  {
+   "id": "eng_for_spa:S0271L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'el mes' is in the known seed; the target says 'next month', not 'the month'."
+  },
+  {
+   "id": "eng_for_spa:S0182L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'en algún' is in the known seed; the target says 'anywhere', so 'in some' does not appear."
+  },
+  {
+   "id": "eng_for_spa:S0192L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'por la noche' is in the known seed; the target says 'tomorrow night', not 'at night'."
+  },
+  {
+   "id": "eng_for_spa:S0098L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'otra' is in the known seed; the target says 'something else', so 'other' does not appear."
+  },
+  {
+   "id": "eng_for_spa:S0155L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'por la mañana' is in the known seed; the target says 'tomorrow morning', not 'in the morning'."
+  },
+  {
+   "id": "eng_for_tam:S0075L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Known 'என்னிடம் இருக்கிறது' (I have) is not in the seed, which says 'உங்களிடம்' (you have), and the LEGO is the 'நீங்கள் இருக்கிறீர்களா' form; this looks like a stray row, but the seed's 'have you got' is only partly covered by a sibling, so cutting is not proven."
+  },
+  {
+   "id": "eng_for_tam:S0112L03C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches its own LEGO L2, but the seed target says \"I wasn't expecting it\", where the row says 'not expecting'; the L3 LEGO paraphrases the seed."
+  }
+ ]
+}

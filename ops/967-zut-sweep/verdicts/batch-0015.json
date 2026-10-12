@@ -1,0 +1,166 @@
+{
+ "batch": 15,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_guj:S0029L03C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row glosses 'જેટલું જલ્દી' as 'as quickly as', which is part of its own LEGO (as soon as I can) but the seed says 'as soon as I can', so it is a literal gloss, not an orphan."
+  },
+  {
+   "id": "eng_for_guj:S0046L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'do not worry' is the uncontracted form of the seed's \"don't worry\", so it is the same words with a contraction difference and is not a stray."
+  },
+  {
+   "id": "eng_for_guj:S0060L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'various different' glosses અલગ-અલગ, but the seed renders it only as 'different'; the row belongs to this sentence."
+  },
+  {
+   "id": "eng_for_guj:S0059L03C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row matches the LEGO's 'what I need to do' content, but the seed has 'I need to do' and the row says \"I've got to do\"; it is a paraphrase of its own chunk."
+  },
+  {
+   "id": "eng_for_guj:S0073L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' is the second half of the LEGO 'મારે છે => I've got', and the seed's \"I've got\" fuses it, so the row is clitic-fused and not an orphan."
+  },
+  {
+   "id": "eng_for_guj:S0087L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'whom' is a relative pronoun that the seed 'people I don't know' leaves out; it is a back-gloss of a dropped word."
+  },
+  {
+   "id": "eng_for_guj:S0117L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'well' is the positive form while the seed has 'better'; it is a different form of the same word."
+  },
+  {
+   "id": "eng_for_guj:S0348L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row says \"what's going to happen\" but the seed has 'what was going to happen'; this is a tense difference, not an orphan."
+  },
+  {
+   "id": "eng_for_guj:S0279L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'very little time' glosses ઘણો ઓછો સમય, while the seed renders it as 'much time' inside a negative; the row belongs to this sentence."
+  },
+  {
+   "id": "eng_for_guj:S0341L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'before' is the literal gloss of પહેલાં; the seed renders it as 'ago'."
+  },
+  {
+   "id": "eng_for_guj:S0507L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'in a city' is the literal gloss of શહેરમાં, while the seed says 'to the city'."
+  },
+  {
+   "id": "eng_for_guj:S0479L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' is the literal gloss of the particle તો, which the seed 'It's the least I could do' does not render."
+  },
+  {
+   "id": "eng_for_guj:S0533L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is the negation fused into the seed's \"won't\", so it is not a contiguous substring."
+  },
+  {
+   "id": "eng_for_guj:S0490L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' belongs to 'will never' in the seed, where negation is fused into 'never'."
+  },
+  {
+   "id": "eng_for_guj:S0521L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to me' glosses મને, which the seed renders inside \"I'm afraid\"."
+  },
+  {
+   "id": "eng_for_guj:S0640L01C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' is fused into the seed's \"It's\"."
+  },
+  {
+   "id": "eng_for_guj:S0049L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'you understand' glosses તમે સમજો, while the seed says 'you know what I mean'; the row belongs to this sentence."
+  },
+  {
+   "id": "eng_for_guj:S0027L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'in giving' is a literal gloss of આપવામાં; the seed renders it as 'to answer'."
+  },
+  {
+   "id": "eng_for_guj:S0526L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'seems' glosses લાગે છે, which the seed renders as \"I'm finding it hard\"; the row belongs to this sentence."
+  },
+  {
+   "id": "eng_for_guj:S0555L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'am tired' is not contiguous in the seed, which reads \"I'm too tired\" with 'too' interposed and 'am' contracted."
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "batch": 42,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_por:S0213L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'não' glossed 'not' is the negation inside 'não sabemos => we don't know'; the English renders it as the contraction \"don't\", so 'not' is a back-gloss."
+  },
+  {
+   "id": "eng_for_por:S0063L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'de que' => 'that' is a particle gloss of LEGO 'tem a certeza de que'; the seed target 'Are you sure you don't mind' has no 'that'."
+  },
+  {
+   "id": "eng_for_por:S0133L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'em' => 'in' is the preposition inside 'em conjunto => together'; the seed target 'work together' renders no 'in'."
+  },
+  {
+   "id": "eng_for_por:S0020L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'the name' is in the LEGO 'o nome dele => his name'; the seed target has 'his name', so the article is dropped/fused into the possessive."
+  },
+  {
+   "id": "eng_for_por:S0012L04C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I'd like' versus seed \"I wouldn't like\": the same words are present but split by the negation, so there is no single correct contiguous value."
+  },
+  {
+   "id": "eng_for_por:S0014L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'o dia' => 'the day' glosses part of 'o dia todo => all day'; the seed target 'all day' has no 'the'."
+  },
+  {
+   "id": "eng_for_sin:S0049L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'විදිහට' => 'way' is part of LEGO 'ඒ විදිහට => like this'; the seed target \"It's like this\" renders no 'way'."
+  },
+  {
+   "id": "eng_for_sin:S0042L03C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ඊයේ' => 'yesterday' matches its LEGO 'ඊයේ රෑ => last night', but the seed target says 'last night' so yesterday is a literal back-gloss."
+  },
+  {
+   "id": "eng_for_sin:S0094L03C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'කරනවා' => 'do' is part of LEGO 'වැඩ කරනවා => will work'; the seed target 'will work' has no 'do', and the LEGO differs from the seed's verb."
+  },
+  {
+   "id": "eng_for_sin:S0352L01C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches its LEGO 'ඔහු ඕනේ නම් => even if he wants it', but the seed target says 'Even if he wanted to', so the LEGO disagrees with the seed."
+  },
+  {
+   "id": "eng_for_sin:S0480L01C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches its LEGO 'whatever he says', but the seed target is 'Whatever he says' and the row gloss is 'even if says something', so the gloss is a literal paraphrase."
+  },
+  {
+   "id": "eng_for_sin:S0483L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'it doesn't need to be' differs from the seed's \"it's not meant to be\" and from its LEGO 'it's not meant to be easy', so a judgement call on the gloss."
+  },
+  {
+   "id": "eng_for_sin:S0496L03C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row 'don't think will lose' is a literal gloss of the LEGO 'I'm not planning to lose', and the seed target says \"I'm not planning to lose\"."
+  },
+  {
+   "id": "eng_for_sin:S0480L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'it's not like before' differs from the seed 'it's not far ahead now' and from its own LEGO, which also says 'far ahead'; the row is about its sentence."
+  },
+  {
+   "id": "eng_for_sin:S0378L01C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ගන්නයි' => 'to take' is part of LEGO 'නිවාඩු ගන්නයි => for holidays'; the seed target says 'for holidays', so the row is a back-gloss."
+  },
+  {
+   "id": "eng_for_sin:S0266L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'a friend' versus seed 'an old friend': 'friend' is present but 'a' is replaced by 'an' and interposed by 'old', so there is no single forced value."
+  },
+  {
+   "id": "eng_for_sin:S0044L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'මට' => 'me' is part of LEGO 'මට අවශ්‍යයි => I need'; the seed target 'Or if I need to improve' has no 'me'."
+  },
+  {
+   "id": "eng_for_sin:S0450L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'want to take' differs from the seed's 'have to catch' and from its LEGO 'they have to catch'; ඕනේ is glossed 'want' where the seed says 'have to'."
+  },
+  {
+   "id": "eng_for_sin:S0421L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is getting weak' vs seed \"he's getting weak\": 'is' is contracted into 'he's', so the words are present but fused."
+  },
+  {
+   "id": "eng_for_sin:S0014L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'කාලේ' => 'time' is part of LEGO 'දවල් කාලේ => all day'; the seed target 'all day' renders no 'time'."
+  }
+ ]
+}

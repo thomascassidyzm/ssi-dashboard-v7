@@ -1,0 +1,166 @@
+{
+ "batch": 18,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_guj:S0028L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "શક્ય 'possible' is a literal gloss of a word the seed ('as soon as you can') renders as 'can', and it matches its own LEGO."
+  },
+  {
+   "id": "eng_for_guj:S0029L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'as is possible' is a literal gloss of 'as soon as I can' and sits inside its own LEGO's span."
+  },
+  {
+   "id": "eng_for_guj:S0229L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કરત 'would do' is the literal verb of the LEGO 'would help you', but the seed has 'would help you' and no 'do'."
+  },
+  {
+   "id": "eng_for_guj:S0105L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "જ 'exactly' is a particle gloss within the LEGO એટલે જ => 'that is why'."
+  },
+  {
+   "id": "eng_for_guj:S0275L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "લાંબું is in the seed's own LEGO (વધારે લાંબું => longer), but its gloss 'time' is wrong. 'Longer' is not forced, so this is not provably a cut or a fix."
+  },
+  {
+   "id": "eng_for_guj:S0115L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કે 'that' is a particle gloss within the LEGO 'I don't feel as if'; the seed renders no 'that'."
+  },
+  {
+   "id": "eng_for_guj:S0512L05C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "લઈ 'bring' is half of the LEGO લઈ આવું => 'fetch'; the seed has 'fetch'."
+  },
+  {
+   "id": "eng_for_guj:S0541L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "લેવાનો 'to take' is part of the LEGO 'to try and breathe'; the seed has no 'take'."
+  },
+  {
+   "id": "eng_for_guj:S0492L05C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'which is the most interesting' has 'do you think' interposed in the seed ('which of those places do you think is the most interesting')."
+  },
+  {
+   "id": "eng_for_guj:S0528L03C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ઓરડામાં 'in the room' sits in the LEGO 'in another room'; the seed says 'in another room', so the gloss differs."
+  },
+  {
+   "id": "eng_for_guj:S0521L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "બીક 'fear' is the noun behind the seed's 'afraid', within its LEGO."
+  },
+  {
+   "id": "eng_for_guj:S0524L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'will call' appears in the seed only as the contraction \"I'll call\"."
+  },
+  {
+   "id": "eng_for_guj:S0145L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "હવે 'now' is a literal gloss within the LEGO હવે વધારે => 'any more'."
+  },
+  {
+   "id": "eng_for_guj:S0366L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કે 'that' is a particle gloss within the LEGO 'did you hear'; the seed has no 'that'."
+  },
+  {
+   "id": "eng_for_guj:S0630L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "મળશે 'get' is the literal verb in the LEGO શું મને મળશે => 'can I have'; the seed says 'have'."
+  },
+  {
+   "id": "eng_for_guj:S0532L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "હોય 'are' appears in the seed only inside the contraction \"they're\"."
+  },
+  {
+   "id": "eng_for_guj:S0080L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'will be ready' appears in the seed only as the contraction \"I'll be ready\"."
+  },
+  {
+   "id": "eng_for_guj:S0347L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "પહેલાં 'before' is the literal gloss of a word the seed renders as 'ago' (LEGO 'a week ago')."
+  },
+  {
+   "id": "eng_for_guj:S0349L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "રાત્રે 'at night' is within the LEGO 'on Friday night'; the seed has 'night' preceded by 'Friday', not 'at night'."
+  },
+  {
+   "id": "eng_for_guj:S0508L01C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "નથી 'there's not' is the negation within the LEGO 'there's no point'; the seed has \"There's no point\"."
+  }
+ ]
+}

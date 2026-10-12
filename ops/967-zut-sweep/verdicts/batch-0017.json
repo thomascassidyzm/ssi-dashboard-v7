@@ -1,0 +1,166 @@
+{
+ "batch": 17,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_guj:S0352L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is the negation inside \"wouldn't\" in the seed target, fused into the contraction, so the words are present but not contiguous."
+  },
+  {
+   "id": "eng_for_guj:S0028L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "હોય glosses 'is', which the seed target \"as soon as you can\" does not render; it is part of LEGO 'શક્ય હોય => you can' in this sentence."
+  },
+  {
+   "id": "eng_for_guj:S0026L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કે 'that' is a literal gloss of a particle that the seed target \"as if I'm nearly\" does not render separately; it is part of LEGO 'એવું કે => as if'."
+  },
+  {
+   "id": "eng_for_guj:S0071L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "કે 'that' is a particle that the seed target \"let anyone hear\" does not render; it belongs to its own LEGO 'કે કોઈ => anyone to'."
+  },
+  {
+   "id": "eng_for_guj:S0008L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'my' is folded into \"what I mean\" in the seed target (LEGO 'મારો અર્થ => what I mean'), so the word is not rendered as its own chunk."
+  },
+  {
+   "id": "eng_for_guj:S0112L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to me' is the literal gloss of મને, which is rendered as the subject \"I\" in \"I wasn't expecting it\"; the row is within its own LEGO."
+  },
+  {
+   "id": "eng_for_guj:S0043L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'was not thinking' is the uncontracted form of the seed's \"wasn't thinking\"; the row matches its own LEGO."
+  },
+  {
+   "id": "eng_for_guj:S0508L03C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'doing' glosses કરવાનો; the seed has \"worrying\" (LEGO 'ચિંતા કરવાનો => worrying'), so this is a literal part-gloss of a word in the sentence."
+  },
+  {
+   "id": "eng_for_guj:S0521L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "છે 'is' is a copula that the seed target \"I'm afraid that\" does not render separately; it sits in its own LEGO 'મને બીક છે કે'."
+  },
+  {
+   "id": "eng_for_guj:S0093L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'has come' is the literal gloss of થઈ ગયો, which the seed \"It's time to go now\" renders as \"it's time\"; the row matches its own LEGO."
+  },
+  {
+   "id": "eng_for_guj:S0015L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that you' is a literal gloss of કે તમે, which the seed renders as \"I want you to\"; the row is part of its own LEGO."
+  },
+  {
+   "id": "eng_for_guj:S0108L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'at night' glosses રાત્રે, but the seed has \"in the middle of the night\" (LEGO 'રાત્રે વચ્ચે'), so the row is about its own sentence and the split is a gloss choice."
+  },
+  {
+   "id": "eng_for_guj:S0118L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'good' glosses સારું, but the seed has \"better\" (LEGO 'મને સારું લાગે છે => I feel better'), so the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_guj:S0116L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "જે 'that' is a relative particle the seed target \"the best choice I could make\" does not render; it belongs to its own LEGO."
+  },
+  {
+   "id": "eng_for_guj:S0088L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to do' glosses કરવા within LEGO 'વાત કરવા => to talk to'; the seed has \"to talk to\", so this is a literal part-gloss."
+  },
+  {
+   "id": "eng_for_guj:S0114L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'badly' is the adverb form of ખરાબ; the seed has \"worse\" (LEGO 'હું ખરાબ કરી રહ્યો છું => I'm doing worse'), so it is an inflection of a word in the sentence."
+  },
+  {
+   "id": "eng_for_guj:S0016L04C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'after' glosses પછી, but the seed has \"later on\" (LEGO 'એ પછી => later on'); the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_guj:S0099L03C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'isn't doing' glosses નથી કરતું; the seed has \"it's not working\" (LEGO 'કામ નથી કરતું'), so it is an inflection/paraphrase within its own LEGO."
+  },
+  {
+   "id": "eng_for_guj:S0061L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'can say' glosses કહી શકો; the seed has \"Could you say\" (LEGO 'શું તમે કહી શકો => could you say'), so this is a different form of words in the sentence."
+  },
+  {
+   "id": "eng_for_guj:S0102L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'like this' glosses આ રીતે, but the seed has \"like that\" (LEGO 'આ રીતે નથી => it's not like that'), so the row is about its own sentence."
+  }
+ ]
+}

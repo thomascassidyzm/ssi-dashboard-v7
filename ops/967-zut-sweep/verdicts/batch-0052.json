@@ -1,0 +1,166 @@
+{
+ "batch": 52,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_urd:S0358L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "تک is the postposition glossed 'up to', which 'reach the top' does not render, but the row belongs to the sentence."
+  },
+  {
+   "id": "eng_for_urd:S0348L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is fused into 'didn't want to know' in the seed, and the row still glosses that negation."
+  },
+  {
+   "id": "eng_for_urd:S0352L02C05",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "تو is glossed 'then', which 'Even if he wanted to' does not render, but the row belongs to its LEGO."
+  },
+  {
+   "id": "eng_for_urd:S0342L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "شخص is glossed 'person' but the seed says 'someone', so the word is back-glossed inside its own LEGO."
+  },
+  {
+   "id": "eng_for_urd:S0353L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row says 'had to' where the seed says 'needed to run', so the sentence's own words disagree with the gloss."
+  },
+  {
+   "id": "eng_for_urd:S0037L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'کر دیا' is glossed 'did', a light verb the seed's 'started to think' does not render separately."
+  },
+  {
+   "id": "eng_for_zho:S0163L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "很 is glossed '(it's)', and the seed has 'I think that it's interesting', so the row belongs to the sentence but is a parenthetical back-gloss."
+  },
+  {
+   "id": "eng_for_zho:S0191L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "完全 is glossed 'completely' but the seed renders 'at all', and the LEGO covers the same words."
+  },
+  {
+   "id": "eng_for_zho:S0126L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The gloss 'is (in the middle of)' adds a parenthetical to the seed's 'is changing', which the sentence does not render."
+  },
+  {
+   "id": "eng_for_zho:S0222L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'Is' is clitic-fused in the seed's \"He's trying\"."
+  },
+  {
+   "id": "eng_for_zho:S0110L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'Are' is clitic-fused in the seed's \"We're friends\"."
+  },
+  {
+   "id": "eng_for_zho:S0075L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row says \"I've got more to learn\" while the seed asks 'Have you got more to learn', and no single correct value is forced."
+  },
+  {
+   "id": "eng_for_zho:S0191L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "不 is glossed 'not' but the seed has \"don't mind at all\", so the negation is fused."
+  },
+  {
+   "id": "eng_for_zho:S0136L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' is clitic-fused in the seed's \"she's my friend\"."
+  },
+  {
+   "id": "eng_for_zho:S0109L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row says 'Have to' while the seed and LEGO say 'must work hard', a synonym mismatch."
+  },
+  {
+   "id": "eng_for_zho:S0227L01C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row's 'something / thing' is a slash gloss, and its LEGO pairs 东西 with the whole sentence, which is malformed."
+  },
+  {
+   "id": "eng_for_zho:S0124L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "那时候 is glossed 'At the time', which the seed 'I thought that was a good idea' does not render, but the row belongs to its LEGO."
+  },
+  {
+   "id": "eng_for_zho:S0012L04C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is going to' is fused into \"what's going to happen\" in the seed."
+  },
+  {
+   "id": "eng_for_zho:S0033L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'A long time' is a literal gloss of 长时间, and the seed renders it as 'How long have you been'."
+  },
+  {
+   "id": "eng_for_zho:S0120L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "这 is glossed 'This', which the seed's \"It's interesting that\" does not render, but the row belongs to its LEGO."
+  }
+ ]
+}

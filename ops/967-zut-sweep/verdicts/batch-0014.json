@@ -1,0 +1,166 @@
+{
+ "batch": 14,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_fra:S0084L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is the gloss of 'pas' from LEGO 'I don't agree'; the seed renders it as the contraction \"don't\", so the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_fra:S0159L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' glosses 'pas' in LEGO 'that isn't'; the seed has the contraction \"isn't\" with no standalone 'not'."
+  },
+  {
+   "id": "eng_for_fra:S0155L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' glosses 'pas' in LEGO 'I don't mind'; the seed has \"don't\", a contraction."
+  },
+  {
+   "id": "eng_for_fra:S0176L03C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'the year' glosses 'l'année', but the seed renders the LEGO as 'next year' with no article, so this is a literal gloss of a word the seed drops."
+  },
+  {
+   "id": "eng_for_fra:S0114L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'well' glosses 'bien' in LEGO 'moins bien' => 'worse'; the seed's \"worse\" fuses 'less' and 'well', so the literal gloss is not in the seed."
+  },
+  {
+   "id": "eng_for_fra:S0022L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' glosses 'que' in LEGO 'parce que' => 'because'; the seed's \"Because\" has no separate 'that'."
+  },
+  {
+   "id": "eng_for_fra:S0183L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to' glosses 'de' in LEGO 'j'ai peur de' => 'I'm afraid'; the seed \"I'm afraid I haven't seen them\" has no 'to'."
+  },
+  {
+   "id": "eng_for_fra:S0039L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'am' glosses 'suis' in LEGO 'je suis' => 'I'm'; the seed has the contraction \"I'm\", so 'am' is fused."
+  },
+  {
+   "id": "eng_for_fra:S0080L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'will be' glosses 'serai' in LEGO 'je serai prêt' => 'I'll be ready'; the seed has \"I'll be ready\", where 'will' is contracted to \"'ll\"."
+  },
+  {
+   "id": "eng_for_fra:S0224L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'has just' glosses 'vient de'; the seed has \"He's just\", with 'has' contracted to \"'s\"."
+  },
+  {
+   "id": "eng_for_fra:S0176L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'will be able to' glosses 'pourra'; the seed has \"he'll be able to\", with 'will' contracted to \"'ll\"."
+  },
+  {
+   "id": "eng_for_fra:S0168L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'will be able to' glosses 'pourrai'; the seed has \"I'll be able to\", with 'will' contracted to \"'ll\"."
+  },
+  {
+   "id": "eng_for_guj:S0016L04C01",
+   "verdict": "d",
+   "class": "d-seed-outlier",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' glosses 'એ' in LEGO 'એ પછી' => 'later on'; the seed has \"later on\" with no 'that', and the known/target sentences disagree on the subject."
+  },
+  {
+   "id": "eng_for_guj:S0106L04C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to do' glosses 'કરવી' in LEGO 'work hard'; the seed renders it as \"work hard\", so 'to do' is the lemma gloss of a verb absorbed into 'work'."
+  },
+  {
+   "id": "eng_for_guj:S0111L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' glosses the auxiliary 'છે' in LEGO 'બદલાય છે' => 'it changes'; the seed \"it changes our brain\" has no 'is'."
+  },
+  {
+   "id": "eng_for_guj:S0028L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'then' glosses 'ત્યારે' in LEGO 'જ્યારે ત્યારે' => 'as soon as'; the seed's \"as soon as you can\" has no 'then'."
+  },
+  {
+   "id": "eng_for_guj:S0128L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'whom' glosses 'જેને' in LEGO 'I used to know'; the seed \"someone I used to know\" has no relative pronoun."
+  },
+  {
+   "id": "eng_for_guj:S0112L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'there wasn't expectation of this' is a literal gloss of 'આની અપેક્ષા નહોતી'; the seed renders it as \"I wasn't expecting it\"."
+  },
+  {
+   "id": "eng_for_guj:S0003L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'in what way' glosses 'રીતે' in LEGO 'કેવી રીતે' => 'how to'; the seed \"how to speak\" has no such phrase."
+  },
+  {
+   "id": "eng_for_guj:S0026L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'like that' glosses 'એવું' in LEGO 'એવું કે' => 'as if'; the seed \"feeling as if\" has no 'like that'."
+  }
+ ]
+}

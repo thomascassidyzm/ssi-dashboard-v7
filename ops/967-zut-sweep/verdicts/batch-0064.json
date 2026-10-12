@@ -1,0 +1,70 @@
+{
+ "batch": 64,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "tur_for_eng:S0047L04C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Known 'I started to think' / 'düşünmeye başladım' has no counterpart in the seed, but it is not provably a stray: the LEGO 'düşünüyorum' (I think) covers the position, and the row could be a tense variant of the same verb, so cutting is not proven; escalate."
+  },
+  {
+   "id": "tur_for_eng:S0063L04C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'yardım edecek misin' (will you help) is a future-tense variant of the seed's 'yardım etmekte' (helping), so the row shares its LEGO's verb 'yardım et-' and is not provably an orphan; not a forced fix."
+  },
+  {
+   "id": "tur_for_eng:S0051L01C01",
+   "verdict": "c",
+   "class": "c-wrong-slot",
+   "sibling": "tur_for_eng:S0051L01C01",
+   "fixed_target": null,
+   "why": "'with you / seninle' has no counterpart in the seed 'arkadaşlarımla' (with my friends) or its LEGO; however no sibling component teaches the chunk, so cutting loses nothing only because LEGO L1 itself already teaches 'arkadaşlarımla'."
+  },
+  {
+   "id": "tur_for_eng:S0058L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'anlıyorsan' (if you understand) is a different inflected form of 'anla-' whereas the seed has 'anladığında'; the row is about the same verb and sentence, so it is not provably an orphan, and the correct target is not forced."
+  },
+  {
+   "id": "tur_for_eng:S0052L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'with my friends / arkadaşlarımla' is a variant of the seed's 'arkadaşına' (to his friend), so it concerns the same word 'arkadaş' at that position, and the correct value is not forced by the known gloss."
+  },
+  {
+   "id": "tur_for_eng:S0012L04C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'istiyorum' (I want) is another inflected form of 'iste-', which is in the seed as 'istemezdim'; the known 'I want' differs from the LEGO gloss, so it is not a forced fix."
+  },
+  {
+   "id": "tur_for_eng:S0030L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'istiyorum' (I want) is the present form of 'iste-', while the seed has 'istedim' (I wanted); the known gloss differs from the seed, so the correct target is not forced."
+  },
+  {
+   "id": "tur_for_eng:S0036L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'istiyoruz' (we want) is the affirmative form of 'iste-', while the seed has the negated 'istemiyoruz'; the known 'we want' also differs from the seed, so the correct target is not forced."
+  }
+ ]
+}

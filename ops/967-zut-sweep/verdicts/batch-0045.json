@@ -1,0 +1,166 @@
+{
+ "batch": 45,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_spa:S0037L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'the month' is not contiguous in seed target 'last month' (the seed renders 'el mes pasado' as 'last month'), but the row glosses words of its own LEGO."
+  },
+  {
+   "id": "eng_for_spa:S0057L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I don't' glosses 'no' of its own LEGO 'no puedo recordar'; the seed has 'I can't remember', where the negation is fused into 'can't'."
+  },
+  {
+   "id": "eng_for_spa:S0100L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' glosses 'no' in LEGO 'no deberías'; the seed fuses it as \"shouldn't\"."
+  },
+  {
+   "id": "eng_for_spa:S0094L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' glosses 'que' of its own LEGO 'que funcione'; the seed 'it will work' does not render the particle."
+  },
+  {
+   "id": "eng_for_spa:S0154L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'at night' glosses 'por la noche' of its own LEGO; the seed has 'on Saturday night', so 'at night' is not present as text."
+  },
+  {
+   "id": "eng_for_spa:S0141L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'there is' glosses 'hay' in LEGO 'no hay problema'; the seed 'no problem' does not render it."
+  },
+  {
+   "id": "eng_for_spa:S0176L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'the year' glosses 'el año' in own LEGO 'el año que viene'; the seed renders it as 'next year'."
+  },
+  {
+   "id": "eng_for_spa:S0284L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'the friend' glosses 'la amiga'; the seed has the reordered possessive \"my sister's friend\" with 'friend' separated from the article."
+  },
+  {
+   "id": "eng_for_spa:S0167L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'in the afternoon' glosses 'por la tarde' of its own LEGO; the seed condenses it to 'tomorrow afternoon'."
+  },
+  {
+   "id": "eng_for_spa:S0215L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'at night' glosses 'por la noche' of its own LEGO; the seed says 'on Saturday night'."
+  },
+  {
+   "id": "eng_for_spa:S0037L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'with' glosses 'con' of own LEGO 'con cuidado'; the seed renders it as 'carefully'."
+  },
+  {
+   "id": "eng_for_spa:S0161L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'in the morning' glosses 'por la mañana' of its own LEGO; the seed says 'on Sunday morning'."
+  },
+  {
+   "id": "eng_for_spa:S0158L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'about other' glosses 'de otra'; the seed has 'about something else', with 'other' not present as a word."
+  },
+  {
+   "id": "eng_for_spa:S0041L04C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'myself' glosses the clitic 'me' in 'cansarme'; the seed has 'feel tired' with no 'myself'."
+  },
+  {
+   "id": "eng_for_spa:S0167L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'you have to' glosses 'tienes que' of own LEGO; the seed says 'you need to do', so 'have to' is not present."
+  },
+  {
+   "id": "eng_for_spa:S0069L01C02",
+   "verdict": "d",
+   "class": "d-seed-outlier",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row and LEGO say 'she'; the seed says \"he didn't want to look after\", so the seed disagrees with its LEGOs; the pronoun conflict needs escalation."
+  },
+  {
+   "id": "eng_for_spa:S0183L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' glosses 'que' in LEGO 'me temo que'; the seed \"I'm afraid I haven't\" has no 'that'."
+  },
+  {
+   "id": "eng_for_spa:S0275L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'more' glosses 'más' of own LEGO 'más tiempo'; the seed renders the phrase as 'longer'."
+  },
+  {
+   "id": "eng_for_spa:S0172L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'much' glosses 'de mucha' of own LEGO 'de mucha ayuda'; the seed says 'very helpful'."
+  },
+  {
+   "id": "eng_for_spa:S0169L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' glosses 'que' in LEGO 'que haga'; the seed 'want me to do' does not render the particle."
+  }
+ ]
+}

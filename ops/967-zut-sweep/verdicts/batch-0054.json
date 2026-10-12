@@ -1,0 +1,166 @@
+{
+ "batch": 54,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eus_for_spa:S0295L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'-ik' is the partitivo suffix fused into 'nuenik' in the seed, so it is a bound morpheme and not a standalone substring."
+  },
+  {
+   "id": "eus_for_spa:S0051L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'-ekin' is a suffix fused into 'lagunekin' in the seed (its own LEGO nire lagunekin), so it is a bound morpheme."
+  },
+  {
+   "id": "eus_for_spa:S0170L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'-a' is the article suffix fused into 'duzuna' in the seed; it is a bound morpheme, not a free substring."
+  },
+  {
+   "id": "eus_for_spa:S0272L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Target 'estupenda' is Spanish copied into the target column; the seed has 'bikaina' for 'estupenda'. Exactly one value is forced, but the row is a known/target copy that needs a judgement call, and it is not provably an orphan."
+  },
+  {
+   "id": "eus_for_spa:S0296L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'-la' is the complementiser suffix fused into 'nuela' in the seed 'behar nuela esan nuen'; it is a bound morpheme."
+  },
+  {
+   "id": "fas_for_eng:S0032L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ام' is a first-person clitic fused into 'بهم' in the seed (به + ـم), so it is not a contiguous substring."
+  },
+  {
+   "id": "fas_for_eng:S0029L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ام' is the copula clitic fused into 'منتظرم' in the seed; the row is a bound morpheme of its own LEGO."
+  },
+  {
+   "id": "fas_for_eng:S0001L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'من' (I) is dropped in the seed 'می‌خوام ...' (pro-drop); the person is carried by the verb ending."
+  },
+  {
+   "id": "fas_for_eng:S0018L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'این' (this) is a separate word that 'امشب' fuses (این + شب); it is not present in the seed as a contiguous substring."
+  },
+  {
+   "id": "fra_for_jpn:S0002L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'j'essaie de' does not appear contiguously: the seed has \"J'essaie d'apprendre\", with 'de' elided to d'."
+  },
+  {
+   "id": "fra_for_zho:S0086L04C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ne' is elided into \"n'était\" in the seed \"Ce n'était pas possible\", so 'ne' is not a contiguous substring."
+  },
+  {
+   "id": "fra_for_zho:S0064L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ne pas' is interposed around 'est' (\"n'est pas\") in the seed, so it is discontiguous and elided."
+  },
+  {
+   "id": "fra_for_zho:S0073L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'je' is elided into \"j'ai\" in the seed \"j'ai encore beaucoup\"."
+  },
+  {
+   "id": "fra_for_zho:S0025L01C08",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'今晚 => ce soir' has no counterpart in the seed or LEGOs, but it is one of several stray siblings (S0025L01C06, C07), apparently from another sentence about speaking French. Cutting requires proof that nothing is lost and a call on the whole cluster, so this is escalated and not cut."
+  },
+  {
+   "id": "fra_for_zho:S0025L01C06",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'法语 => le français' has no counterpart in the seed 'Est-ce que tu vas m'aider avant que je doive partir', but it belongs to a stray cluster (with C07, C08) that should be reviewed together, so it is escalated and not cut."
+  },
+  {
+   "id": "fra_for_zho:S0092L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'je' is elided into \"J'aimerais\" in the seed."
+  },
+  {
+   "id": "fra_for_zho:S0279L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'parce que' is elided to \"parce qu'il\" in the seed \"parce qu'il ne restait pas\"."
+  },
+  {
+   "id": "fra_for_zho:S0029L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'je' is elided into \"J'ai hâte\" in the seed."
+  },
+  {
+   "id": "fra_for_zho:S0025L01C07",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'这个词 => ce mot' has no counterpart in the seed, but it is part of the same stray cluster as C06 and C08, so it is escalated for review together and not cut."
+  },
+  {
+   "id": "fra_for_zho:S0026L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'je' is elided into \"J'aime\" in the seed."
+  }
+ ]
+}

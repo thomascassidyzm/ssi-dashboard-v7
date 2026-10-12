@@ -1,0 +1,166 @@
+{
+ "batch": 22,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_ita:S0010L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'a' => 'to' glosses the particle in 'riesco a ricordare', and the seed target 'I can remember' renders no 'to'."
+  },
+  {
+   "id": "eng_for_ita:S0014L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'tutto' => 'everything' glosses a word of the seed and its LEGO 'tutto il giorno', but the seed renders it as 'all'; the policy for this is Tom's call."
+  },
+  {
+   "id": "eng_for_ita:S0012L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is the literal gloss of 'non', but the seed target has the contraction \"wouldn't\", so 'not' is not a contiguous substring."
+  },
+  {
+   "id": "eng_for_ita:S0157L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' glosses 'non', but the seed target has the contraction \"won't\"."
+  },
+  {
+   "id": "eng_for_ita:S0296L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ho' => 'I have' is the literal gloss of the auxiliary, but the seed target renders 'ho detto' as 'I said'."
+  },
+  {
+   "id": "eng_for_ita:S0065L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to put yourself' glosses 'mettersi' literally, but the seed and its LEGO render 'mettersi alla prova' as 'test yourself'."
+  },
+  {
+   "id": "eng_for_jpn:S0068L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'(progressive: are ~ing)' is a grammatical annotation of 'います' that the seed 'what are you looking for?' does not render as a separate substring."
+  },
+  {
+   "id": "eng_for_jpn:S0098L04C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'いい' => 'good/better' is a part of the LEGO '方がいい' => 'should', and the seed target says 'should consider'."
+  },
+  {
+   "id": "eng_for_jpn:S0068L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'を' => '(object marker)' is a particle with no English counterpart in 'what are you looking for?'."
+  },
+  {
+   "id": "eng_for_jpn:S0098L04C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'方' => 'way/option' is a part of the LEGO '方がいい' => 'should', and the seed target renders it as 'should'."
+  },
+  {
+   "id": "eng_for_jpn:S0086L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not possible' is a gloss of 'できません', while the seed target says \"wasn't possible\"."
+  },
+  {
+   "id": "eng_for_jpn:S0051L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'います' => 'am' glosses the auxiliary of '楽しんでいます', which the seed renders as 'I enjoy'."
+  },
+  {
+   "id": "eng_for_jpn:S0025L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ください' => 'please' belongs to its own LEGO '手伝ってください', but the seed known text is '手伝ってくれますか' and the target has no 'please'."
+  },
+  {
+   "id": "eng_for_jpn:S0140L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ない' => \"can't / not\" glosses the negation in '見えない', and the seed has \"can't see\" with the verb interposed."
+  },
+  {
+   "id": "eng_for_jpn:S0141L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'大' => 'big' is a kanji split of '大丈夫' => 'okay', and the seed target has no 'big'."
+  },
+  {
+   "id": "eng_for_jpn:S0143L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'いた' => 'was' is an auxiliary gloss, and the seed target says 'we were talking'."
+  },
+  {
+   "id": "eng_for_jpn:S0131L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ぐるぐる' => 'around and around' glosses an adverb, and the seed target says 'going around' with no repeat."
+  },
+  {
+   "id": "eng_for_jpn:S0155L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'も' => 'even if / for' glosses a particle in '待っても', and the seed target has 'waiting for'."
+  },
+  {
+   "id": "eng_for_jpn:S0068L01C05",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'か' => '(question marker)' is a particle with no English counterpart in the seed."
+  },
+  {
+   "id": "eng_for_jpn:S0046L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'こと' => '-ing' is the nominaliser inside '間違えること' => 'making mistakes', and '-ing' is not a contiguous substring."
+  }
+ ]
+}

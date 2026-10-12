@@ -1,0 +1,166 @@
+{
+ "batch": 56,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "hrv_for_eng:S0009L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I' -> 'ja' glosses the pro-dropped subject of 'Govorim' in the seed sentence; the row is about its own sentence."
+  },
+  {
+   "id": "hrv_for_eng:S0019L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'hoću' is the affirmative of 'neću' in the seed ('Ali neću prestati'); the row is about its own LEGO and the sentence does not render it."
+  },
+  {
+   "id": "hrv_for_eng:S0018L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'we' -> 'mi' glosses the pro-dropped subject of 'Hoćemo' in the seed."
+  },
+  {
+   "id": "hrv_for_eng:S0021L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'you' -> 'ti' glosses the pro-dropped subject of 'učiš' in 'Zašto učiš njezino ime?'."
+  },
+  {
+   "id": "hrv_for_eng:S0013L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'you' -> 'ti' glosses the pro-dropped subject of 'Govoriš' in the seed."
+  },
+  {
+   "id": "hrv_for_eng:S0016L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'he' -> 'on' glosses the pro-dropped subject of 'Hoće' in the seed."
+  },
+  {
+   "id": "hrv_for_eng:S0023L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I' -> 'ja' glosses the pro-dropped subject of 'ću' in 'Uskoro ću početi...'."
+  },
+  {
+   "id": "hun_for_eng:S0120L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'-val' is the suffix form of 'busszal' in the seed (assimilated v->sz); the row belongs to its own LEGO 'busszal'."
+  },
+  {
+   "id": "hun_for_eng:S0022L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'-kel' is the suffix of 'emberekkel' in the seed (assimilated); the row is about its own LEGO."
+  },
+  {
+   "id": "hun_for_eng:S0001L04C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'-ed' is the 2sg possessive/oblique stem of 'veled' in the seed ('beszélni veled'), and the sibling 'vel' is the same split."
+  },
+  {
+   "id": "hye_for_eng:S0007L03C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row 'որքան' matches the practice phrases, but the LEGO and seed both read 'որկան'; the LEGO and seed disagree with the row, so escalate."
+  },
+  {
+   "id": "hye_for_eng:S0291L02C03",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row 'շուտով' matches the practice phrases, but the seed and LEGO read 'շուլով'; the LEGO and seed differ from the row."
+  },
+  {
+   "id": "hye_for_eng:S0202L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ոք' is the root of the seed's 'վոկ' (a spelling variant); the row is about its own LEGO 'վոչ վոկ' and is not a provable orphan."
+  },
+  {
+   "id": "hye_for_eng:S0281L01C03",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row 'եթե' matches the practice phrases, but the seed and LEGO read 'ետե'; the LEGO and seed differ from the row."
+  },
+  {
+   "id": "hye_for_eng:S0042L03C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row 'էի' matches the practice phrases, but the seed and LEGO read 'եի'; the LEGO and seed differ from the row."
+  },
+  {
+   "id": "hye_for_eng:S0267L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row 'ընկերից' matches the practice phrases, but the seed and LEGO read 'յնկերից' (spoken-form spelling); the LEGO and seed differ from the row."
+  },
+  {
+   "id": "hye_for_eng:S0283L01C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row 'ընկերներից' matches the practice phrases, but the seed and LEGO read 'յնկերներից'; the LEGO and seed differ from the row."
+  },
+  {
+   "id": "hye_for_eng:S0008L03C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row 'թե' matches the practice phrases, but the seed and LEGO read 'տե'; the LEGO and seed differ from the row."
+  },
+  {
+   "id": "hye_for_eng:S0120L01C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row 'հետաքրքիր' matches the practice phrases, but the seed and LEGO read 'հետակրուրի'; the LEGO and seed differ from the row."
+  },
+  {
+   "id": "hye_for_eng:S0283L01C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row 'քո' matches the practice phrases, but the seed and LEGO read 'կո' (fused as 'կո յնկերներից'); the LEGO and seed differ from the row."
+  }
+ ]
+}

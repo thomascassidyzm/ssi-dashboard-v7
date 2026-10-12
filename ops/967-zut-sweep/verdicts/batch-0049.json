@@ -1,0 +1,166 @@
+{
+ "batch": 49,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_tel:S0491L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "చాలా is part of its own LEGO 'నాకు చాలా ఇష్టం => I love', but 'very much' is not rendered in 'I love the way you try to help.'"
+  },
+  {
+   "id": "eng_for_tel:S0498L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has the contraction \"He's standing\", so 'is standing' is clitic-fused rather than a stray row; no single forced substring exists."
+  },
+  {
+   "id": "eng_for_urd:S0218L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not much' is the gloss of the seed's \"didn't do much\", where the negation is fused into 'didn't' and interposed."
+  },
+  {
+   "id": "eng_for_urd:S0340L02C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "گا is the future marker of its own LEGO 'he's going to be okay', but 'will' is not in the seed target."
+  },
+  {
+   "id": "eng_for_urd:S0206L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ملنا is in its own LEGO 'موقع ملنا => the chance to', but 'to get' is not rendered in the seed target."
+  },
+  {
+   "id": "eng_for_urd:S0049L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "میرا is in the LEGO 'میرا مطلب کیا ہے => what I mean', but the seed renders it only as 'I', not 'my'."
+  },
+  {
+   "id": "eng_for_urd:S0288L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "زیادہ is the first half of 'زیادہ تر => most'; the literal gloss 'more' is not in the seed's \"Most people I know\"."
+  },
+  {
+   "id": "eng_for_urd:S0275L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row is part of its own LEGO 'اور زیادہ => longer'; 'more' is a literal gloss not in the seed target \"Longer.\""
+  },
+  {
+   "id": "eng_for_urd:S0338L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "طرح is part of 'بری طرح => badly'; 'way' is a literal gloss not in the seed target \"Badly.\""
+  },
+  {
+   "id": "eng_for_urd:S0288L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "میرے belongs to its LEGO 'میرے جاننے والے => people I know'; 'my' is realised as 'I' inside \"people I know\"."
+  },
+  {
+   "id": "eng_for_urd:S0026L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "کہ is part of its LEGO 'جیسے کہ => feeling as if'; 'that' is not in the seed target."
+  },
+  {
+   "id": "eng_for_urd:S0051L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ہے is part of 'پسند ہے => I enjoy'; the copula 'is' is not rendered in \"I enjoy doing...\"."
+  },
+  {
+   "id": "eng_for_urd:S0035L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بھی is part of 'کچھ بھی => anything'; 'even' is not in the seed target."
+  },
+  {
+   "id": "eng_for_urd:S0355L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "جسے is the relative in its own LEGO; the seed target \"that woman you know\" has no 'whom'."
+  },
+  {
+   "id": "eng_for_urd:S0356L02C04",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "کرنی تھی is in its own LEGO 'کوئی اہم بات کرنی تھی => something important to discuss'; 'needed to' is not in the seed target."
+  },
+  {
+   "id": "eng_for_urd:S0017L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "کرنا is part of 'معلوم کرنا => to find out'; 'to do' is a literal gloss not in the seed target."
+  },
+  {
+   "id": "eng_for_urd:S0334L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بلی is part of 'بلی کا بچہ => the kitten'; 'cat' is a literal gloss not in the seed's \"the kitten\"."
+  },
+  {
+   "id": "eng_for_urd:S0030L03C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches its LEGO 'گزشتہ کل => yesterday', but the seed's known side has just 'کل', so the LEGO disagrees with the seed."
+  },
+  {
+   "id": "eng_for_urd:S0090L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "تو is part of 'تو بہت اچھا ہوگا => that would be great'; 'then' is not in the seed target."
+  },
+  {
+   "id": "eng_for_urd:S0146L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بھی is part of 'کچھ بھی نہیں => nothing'; 'at all' is not in the seed target \"Nothing seems to be working\"."
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "batch": 55,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "fra_for_zho:S0296L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'je' is elided to \"j'ai\" in the seed (\"J'ai dit\"), and the LEGO known 我已经说了 also differs from the seed's 我说."
+  },
+  {
+   "id": "fra_for_zho:S0026L01C08",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'je suis' is not rendered, but 我 and 是 do have counterparts in the seed (\"J'aime\", \"d'être\"), so orphan status is not provable."
+  },
+  {
+   "id": "fra_for_zho:S0114L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'que' is elided in the seed's \"qu'hier\", and no single value is forced."
+  },
+  {
+   "id": "fra_for_zho:S0130L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'parce que' appears as \"parce qu'il\" in the seed, with the elision fused to the following word."
+  },
+  {
+   "id": "fra_for_zho:S0251L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'avant que' appears as \"avant qu'on\" in the seed, with the elision fused to the following word."
+  },
+  {
+   "id": "gle_for_eng:S0044L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"chaithfidh mé\" (lenited), not \"caithfidh mé\"; this is a mutation of the same word."
+  },
+  {
+   "id": "gle_for_eng:S0166L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'mo' is elided to \"m'ainm\" in the seed."
+  },
+  {
+   "id": "gle_for_eng:S0011L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"mhaith\" (lenited) in \"ba mhaith liom\", not \"maith\"."
+  },
+  {
+   "id": "gle_for_eng:S0045L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"chaithfidh mé\" (lenited) in \"Ní chaithfidh mé\", not \"caithfidh mé\"."
+  },
+  {
+   "id": "gle_for_eng:S0013L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'maith' is fused and lenited inside \"han-mhaith\" in the seed."
+  },
+  {
+   "id": "gle_for_eng:S0012L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"mhaith\" (lenited) in \"níor mhaith liom\", not \"maith\"."
+  },
+  {
+   "id": "glg_for_eng:S0190L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'importa' is the lemma form of \"impórtache\" in the seed."
+  },
+  {
+   "id": "glg_for_eng:S0239L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'gusta' is the base form inside the clitic-fused \"gústalle\" in the seed."
+  },
+  {
+   "id": "glg_for_eng:S0026L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'gusta' is the base form inside the clitic-fused \"Gústame\" in the seed."
+  },
+  {
+   "id": "glg_for_eng:S0211L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'dixeron' lacks the accent and clitic of \"Dixéronnos\" in the seed."
+  },
+  {
+   "id": "glg_for_eng:S0241L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'lle' is fused into \"darllo\" in the seed (dar + lle + o)."
+  },
+  {
+   "id": "glg_for_eng:S0001L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed \"Quero falar…\" is pro-drop and does not render 'eu'."
+  },
+  {
+   "id": "hin_for_eng:S0261L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The target 'हो [5]' carries a bracketed marker; the seed has \"हो सकता है\", so this is a policy call on markers."
+  },
+  {
+   "id": "hin_for_eng:S0293L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The target 'पता [5]' carries a bracketed marker; the seed has \"पता लगाना\", so this is a policy call on markers."
+  },
+  {
+   "id": "hrv_for_eng:S0026L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed \"Volim se osjećati…\" is pro-drop and does not render 'ja'."
+  }
+ ]
+}

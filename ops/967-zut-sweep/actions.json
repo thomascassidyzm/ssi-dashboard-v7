@@ -1,0 +1,56 @@
+[
+ {
+  "id": "eng_for_fra:S0139L01C01",
+  "course": "eng_for_fra",
+  "action": "update",
+  "knownBefore": "je suis",
+  "targetBefore": "I am",
+  "fixedTarget": "I'm",
+  "reason": "(b) The seed contracts 'I am' to \"I'm sorry\", which is contiguous and has the same gloss of 'je suis'."
+ },
+ {
+  "id": "eng_for_fra:S0187L01C01",
+  "course": "eng_for_fra",
+  "action": "update",
+  "knownBefore": "je suis",
+  "targetBefore": "I am",
+  "fixedTarget": "I'm",
+  "reason": "(b) The seed contracts 'I am' to \"I'm happy so far\", which is contiguous and has the same gloss of 'je suis'."
+ },
+ {
+  "id": "eng_for_fra:S0110L01C01",
+  "course": "eng_for_fra",
+  "action": "update",
+  "knownBefore": "nous sommes",
+  "targetBefore": "we are",
+  "fixedTarget": "we're",
+  "reason": "(b) The seed contracts 'we are' to \"We're friends\", which is contiguous and has the same gloss of 'nous sommes'."
+ },
+ {
+  "id": "eng_for_fra:S0192L01C01",
+  "course": "eng_for_fra",
+  "action": "update",
+  "knownBefore": "je suis",
+  "targetBefore": "I am",
+  "fixedTarget": "I'm",
+  "reason": "(b) Seed has the contraction 'I'm busy'; 'I'm' is a contiguous substring and still glosses 'je suis'."
+ },
+ {
+  "id": "por_br_for_eng:S0104L02C02",
+  "course": "por_br_for_eng",
+  "action": "update",
+  "knownBefore": "need",
+  "targetBefore": "precisamos de",
+  "fixedTarget": "precisamos",
+  "reason": "(b) The seed has \"nós precisamos mudar\" with no \"de\", so \"precisamos\" is the forced substring, and it still glosses \"need\"."
+ },
+ {
+  "id": "por_br_for_eng:S0106L03C02",
+  "course": "por_br_for_eng",
+  "action": "update",
+  "knownBefore": "don't need to",
+  "targetBefore": "não precisamos de",
+  "fixedTarget": "não precisamos",
+  "reason": "(b) The seed has \"não precisamos trabalhar\" with no \"de\", and \"não precisamos\" still glosses \"don't need to\"."
+ }
+]

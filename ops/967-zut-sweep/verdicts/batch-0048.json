@@ -1,0 +1,166 @@
+{
+ "batch": 48,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_tel:S0487L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'It's under the bridge' renders ఉంది as the contracted 's fused to 'It'; the gloss 'is' is an elided/clitic-fused word of its own sentence."
+  },
+  {
+   "id": "eng_for_tel:S0493L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "తర్వాత glossed 'after' while the seed renders it as 'next' in 'come next'; the row is about its own sentence, so this is a gloss-versus-translation mismatch, not a provable orphan."
+  },
+  {
+   "id": "eng_for_tel:S0544L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "వాళ్ళు 'they' is a literal gloss of a word the seed ('Whoever said it would be difficult was absolutely right') does not render."
+  },
+  {
+   "id": "eng_for_tel:S0571L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "నాకు 'to me' is part of the LEGO 'I'm not convinced', and the seed 'I'm not convinced…' renders it as the first-person subject, not as 'to me'."
+  },
+  {
+   "id": "eng_for_tel:S0578L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'anywhere' glosses ఎక్కడైనా while the seed 'Somewhere warmer' has 'somewhere', a related form of the same word, so the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_tel:S0618L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "లేదు 'not' is fused into 'doesn't' in the seed 'It doesn't feel like a long time', so the word is present but contracted."
+  },
+  {
+   "id": "eng_for_tel:S0128L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ఉన్నావు 'are' is fused into 'You're' in the seed 'You're like someone I used to know', so it is a contraction of a word that is there."
+  },
+  {
+   "id": "eng_for_tel:S0603L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ఆ 'that' is a literal gloss of a demonstrative that the seed renders only as 'the' in 'at the time'."
+  },
+  {
+   "id": "eng_for_tel:S0587L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "రాత్రి 'night' is a literal part of రాత్రి భోజనానికి 'for supper', which the seed renders as 'supper'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_tel:S0308L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ఉంది 'is' is fused into 'she's' in the seed 'Yes she's a friend of my mother', so it is a contracted word of its own sentence."
+  },
+  {
+   "id": "eng_for_tel:S0604L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "పాటు 'along' is a literal gloss of part of తనతో పాటు, which the seed renders as 'with her'."
+  },
+  {
+   "id": "eng_for_tel:S0503L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ఇష్టం 'like' is a literal gloss of the ఇష్టం లేదు chunk, which the seed renders as 'I hate'; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_tel:S0306L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is talking' is split in the seed ('who's talking'), where 's is fused into 'who', so the words are present but contracted."
+  },
+  {
+   "id": "eng_for_tel:S0490L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'will trust' is split in the seed ('I will never trust anyone'), where 'never' sits between 'will' and 'trust'."
+  },
+  {
+   "id": "eng_for_tel:S0496L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'am not planning' is not contiguous in the seed, which has the contraction \"I'm not planning\"."
+  },
+  {
+   "id": "eng_for_tel:S0501L05C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "బాగుండు 'it would be nice' glosses a phrase the seed ('If only I could trust you…') renders as 'If only', so the word was dropped in translation."
+  },
+  {
+   "id": "eng_for_tel:S0552L02C04",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ఉన్న 'which is at' is not contiguous in the seed ('The church at the other end…'), where the relative clause is rendered as 'at' alone."
+  },
+  {
+   "id": "eng_for_tel:S0492L03C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is interesting' is split in the seed ('is the most interesting'), where 'the most' sits between the words."
+  },
+  {
+   "id": "eng_for_tel:S0578L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "చోటు 'place' is a literal gloss of a word the seed 'Somewhere warmer' folds into 'somewhere'."
+  },
+  {
+   "id": "eng_for_tel:S0618L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to feel' is the infinitive of 'feel', which is in the seed 'It doesn't feel like a long time'."
+  }
+ ]
+}

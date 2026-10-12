@@ -1,0 +1,166 @@
+{
+ "batch": 47,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_tam:S0016L05C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'time' glosses நேரம் of its own LEGO 'சற்று நேரம் கழித்து => later on', but the seed renders it as 'later on' with no 'time', so the LEGO is a gloss-split of an idiom and the policy call is Tom's."
+  },
+  {
+   "id": "eng_for_tam:S0121L04C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row matches its own LEGO L3 (don't use your car), but the seed says 'don't like to use your car', so the LEGO differs from the seed."
+  },
+  {
+   "id": "eng_for_tam:S0108L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "இரவு 'night' is in the seed's 'middle of the night', but 'last night' is not a substring; there is no single forced fix, so it is not provable as a cut or a fix."
+  },
+  {
+   "id": "eng_for_tam:S0012L04C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' glosses the negative of விரும்புவதில்லை, which the seed renders as \"wouldn't like to\"; the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_tam:S0151L03C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'will happen' is an inflected form of 'happen' in the seed's 'would happen', and the row matches its own LEGO L1 and L3."
+  },
+  {
+   "id": "eng_for_tam:S0186L01C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row matches its own LEGO, which uses பேசுவோம் ('let's talk'), but the seed uses பேச விரும்புகிறீர்களா ('Do you want to talk'), so the LEGO differs from the seed."
+  },
+  {
+   "id": "eng_for_tam:S0497L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "தெரிகிறது 'seems' glosses a word the seed renders as 'sounds' in 'sounds as though', so it is a lemma or paraphrase gloss of a word in the sentence."
+  },
+  {
+   "id": "eng_for_tam:S0497L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "வேண்டும் 'should' glosses the word the seed renders as 'need to', so the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_tam:S0396L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'other' is part of 'everybody else' (மற்ற அனைவரும்), and the seed has 'else', not 'other'."
+  },
+  {
+   "id": "eng_for_tam:S0500L01C04",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"don't you want to\", with 'you' interposed, so \"don't want to\" is not contiguous."
+  },
+  {
+   "id": "eng_for_tam:S0528L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "வேண்டும் 'should' glosses the word the seed renders as 'supposed to', and the row is within its own LEGO."
+  },
+  {
+   "id": "eng_for_tam:S0573L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has 'makes the holidays very special', so 'makes special' is not contiguous, and it matches its own LEGO."
+  },
+  {
+   "id": "eng_for_tam:S0208L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"didn't want to\", while the row has \"don't want to\", a tense variant of the same phrase."
+  },
+  {
+   "id": "eng_for_tel:S0500L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has 'between the two girls', so 'between two girls' lacks 'the', and it matches its own LEGO L2."
+  },
+  {
+   "id": "eng_for_tel:S0128L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ఒకప్పుడు 'once' glosses the 'used to' in the seed's 'I used to know', so the row is about its own sentence."
+  },
+  {
+   "id": "eng_for_tel:S0340L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "అని 'that' is a particle the seed's \"I'm sure he's going to be okay\" does not render."
+  },
+  {
+   "id": "eng_for_tel:S0522L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "మనం 'we' is folded into \"Let's agree\" in the seed, so it is a gloss of a word the translation dropped."
+  },
+  {
+   "id": "eng_for_tel:S0501L03C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'would play' is an inflected form of the seed's 'to play', and it matches its own LEGO L3."
+  },
+  {
+   "id": "eng_for_tel:S0307L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"is sitting\" is a variant of the seed's \"who's sitting\", where the contraction fuses 'who' and 'is'."
+  },
+  {
+   "id": "eng_for_tel:S0602L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'how ... started' has 'it' interposed, as in the seed's 'How it started', so it is not contiguous."
+  }
+ ]
+}

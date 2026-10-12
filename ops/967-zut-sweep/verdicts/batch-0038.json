@@ -1,0 +1,166 @@
+{
+ "batch": 38,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_pan:S0163L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਮੈਨੂੰ 'to me' glosses a part of LEGO L1 'I think that' (ਮੈਨੂੰ ਲੱਗਦਾ ਹੈ); the seed renders it as 'I think', so this is a literal gloss of a word the sentence does not render."
+  },
+  {
+   "id": "eng_for_pan:S0317L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਕਿ 'that' is the particle in LEGO L1 (…ਸੋਚਦਾ ਹਾਂ ਕਿ); the seed 'Yes I think she could' drops 'that'."
+  },
+  {
+   "id": "eng_for_pan:S0330L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਹੈ 'is' is in LEGO L1 (ਇਹ ਬਹੁਤ ਜ਼ਰੂਰੀ ਹੈ => it's very important); the seed's \"it's\" fuses the copula into ਇਹ, so 'is' is not a separate substring."
+  },
+  {
+   "id": "eng_for_pan:S0334L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਬੱਚਾ 'baby' is part of its own LEGO ਬਿੱਲੀ ਦਾ ਬੱਚਾ => 'the kitten'; the seed's 'kitten' does not contain 'baby', so this is a literal gloss of a word inside the LEGO."
+  },
+  {
+   "id": "eng_for_pan:S0370L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਨਹੀਂ 'not' belongs to LEGO L1 'didn't see anyone'; the seed has \"didn't\", where the negation is fused into the auxiliary."
+  },
+  {
+   "id": "eng_for_pan:S0370L01C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਦੇਖਿਆ 'saw' glosses LEGO L1 'didn't see anyone'; the seed has 'see', so this is an inflected form of a word that is in the sentence."
+  },
+  {
+   "id": "eng_for_pan:S0591L01C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਉਹ ਆਈ 'she came' is a literal gloss of LEGO L1 (ਉਹ ਮੇਰੇ ਪਿੱਛੇ-ਪਿੱਛੇ ਆਈ => she followed me), whose parts are interposed in the seed 'She followed me down'; the row is about its sentence."
+  },
+  {
+   "id": "eng_for_pan:S0117L04C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਕੀਤੀ ਸੀ 'did' glosses part of LEGO L4 'talked to each other'; the seed has 'talked', so this is a lemma/inflection gloss."
+  },
+  {
+   "id": "eng_for_pan:S0323L02C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਜਾਣਾ 'go' is the lemma of ਜਾਣ in LEGO L2, which the seed renders as 'walk to school' with no 'go'."
+  },
+  {
+   "id": "eng_for_pan:S0343L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਹੈ 'is' is in LEGO L2 (ਉਹ ਚਿੰਤਤ ਹੈ => she's worried); the seed's \"she's\" is a contraction, so 'is' is not a separate substring."
+  },
+  {
+   "id": "eng_for_pan:S0318L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਕਿ 'that' is the particle in LEGO L1; the seed 'No I don't think she could' drops 'that'."
+  },
+  {
+   "id": "eng_for_pan:S0091L04C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਤੇ 'on' glosses part of LEGO L4 ਸਮੇਂ ਤੇ => 'in time'; the seed has 'in time', which renders it as 'in'."
+  },
+  {
+   "id": "eng_for_pan:S0141L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਕੋਈ 'any' glosses part of LEGO L1 ਕੋਈ ਗੱਲ ਨਹੀਂ => 'no problem'; the seed has 'No problem', which has no 'any'."
+  },
+  {
+   "id": "eng_for_pan:S0141L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਗੱਲ ਨਹੀਂ 'problem not' glosses LEGO L1 'no problem'; the words are present but reordered."
+  },
+  {
+   "id": "eng_for_pan:S0152L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਤਰੀਕੇ ਨਾਲ 'way' glosses part of LEGO L1 ਵੱਖਰੇ ਤਰੀਕੇ ਨਾਲ => 'differently'; the seed's 'differently' has no 'way'."
+  },
+  {
+   "id": "eng_for_pan:S0035L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਕੁਝ 'something' glosses part of LEGO L3 ਕੁਝ ਵੀ => 'anything'; the seed has 'anything', not 'something'."
+  },
+  {
+   "id": "eng_for_pan:S0139L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਕਰਨਾ 'to do' is the dictionary form inside LEGO L1 ਮਾਫ਼ ਕਰਨਾ => 'I'm sorry'; the seed has no 'do'."
+  },
+  {
+   "id": "eng_for_pan:S0187L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਤੱਕ 'until' glosses part of LEGO L1 ਹੁਣ ਤੱਕ => 'so far'; the seed has 'so far', not 'until'."
+  },
+  {
+   "id": "eng_for_pan:S0119L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਜਾਣ ਤੋਂ 'from leaving' glosses LEGO L2 'before you leave'; the seed has 'before you leave', with the words reordered and inflected."
+  },
+  {
+   "id": "eng_for_pan:S0033L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ਸਮੇਂ ਤੋਂ 'for' glosses part of LEGO L1 ਕਿੰਨੇ ਸਮੇਂ ਤੋਂ => 'how long'; the seed 'How long have you been' has no 'for'."
+  }
+ ]
+}

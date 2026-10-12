@@ -1,0 +1,166 @@
+{
+ "batch": 40,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_pan:S0050L03C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Known 'as quickly as possible' glossed 'as soon as you can' is a near-synonym of the seed's 'as quickly as possible', which the L3 LEGO also covers, so it is about its own sentence and not provably an orphan."
+  },
+  {
+   "id": "eng_for_pan:S0068L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ਰਹੇ ਹੋ' glossed 'are -ing' is a literal gloss of progressive auxiliaries whose English 'are' is in the seed ('What are you looking for?') but not contiguous with 'looking'."
+  },
+  {
+   "id": "eng_for_pan:S0130L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ਦੀ ਗੱਲ' glossed 'a matter of' is a literal gloss of the L1 LEGO 'ਹੈਰਾਨੀ ਦੀ ਗੱਲ => a surprise', so it is about its own sentence."
+  },
+  {
+   "id": "eng_for_pan:S0153L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not in the way' is a gloss of the L2 LEGO 'not in the same way', and the seed has 'in exactly the same way' with 'wouldn't' interposed."
+  },
+  {
+   "id": "eng_for_pan:S0316L03C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ਨੂੰ' glossed 'to' is the dative marker in L3 'ਆਪਣੇ ਭਰਾ ਨੂੰ => her brother', which the English sentence does not render separately."
+  },
+  {
+   "id": "eng_for_pan:S0324L02C05",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ਹਨ' glossed 'are' is the copula inside L2 'ਦੇ ਦੋਵੇਂ ਹੱਥ ਉੱਪਰ ਹਨ', and the seed renders it as 'has ... hands up' with no 'are'."
+  },
+  {
+   "id": "eng_for_pan:S0339L03C04",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches its LEGO L3 'ਉਸਨੇ ਖੁਦ ਨੂੰ ਜ਼ਖ਼ਮੀ ਕੀ ਹੈ', which has a 'ਕੀ ਹੈ' typo, so the LEGO disagrees with the seed's 'ਸੱਟ ਲੱਗੀ ਹੈ'."
+  },
+  {
+   "id": "eng_for_pan:S0344L01C04",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' is the contracted copula in the seed's \"he's happy\", so it is a clitic-fused gloss of ਹੈ and not a defect to cut."
+  },
+  {
+   "id": "eng_for_pan:S0340L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ਕਿ => that' glosses a particle the seed target ('Yes I'm sure he's going to be okay') drops."
+  },
+  {
+   "id": "eng_for_pan:S0367L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ਨਹੀਂ => not' glosses the negation inside 'nobody told me', where the seed's English has no separate 'not'."
+  },
+  {
+   "id": "eng_for_pan:S0365L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is the negation fused into \"didn't hear\" in the seed (\"I didn't hear what she said to him\")."
+  },
+  {
+   "id": "eng_for_pan:S0381L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is the negation fused into \"didn't ask\" in \"I didn't ask if he wanted to follow us.\""
+  },
+  {
+   "id": "eng_for_pan:S0381L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to come' matches the LEGO 'ਸਾਡੇ ਪਿੱਛੇ ਆਉਣਾ', but the seed says 'to follow us', so the LEGO and its row disagree with the seed."
+  },
+  {
+   "id": "eng_for_pan:S0381L02C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'behind us' matches the LEGO 'ਸਾਡੇ ਪਿੱਛੇ', but the seed says 'follow us' and its known says 'ਸਾਡੇ ਨਾਲ', so the LEGO differs from the seed."
+  },
+  {
+   "id": "eng_for_pan:S0503L02C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is mine' glosses 'ਮੇਰਾ ਹੈ', and the seed has the contraction \"that one's mine\", where 'is' is clitic-fused and not contiguous."
+  },
+  {
+   "id": "eng_for_pan:S0599L02C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I would have driven' matches the LEGO 'I would have happily driven', but the seed says \"I'd have been happy to drive\", so the LEGO differs from the seed."
+  },
+  {
+   "id": "eng_for_pan:S0155L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ਕੋਈ => any' is a literal gloss of a word inside L1 'ਕੋਈ ਇਤਰਾਜ਼ ਨਹੀਂ => I don't mind', and the seed's English \"don't mind\" has no 'any'."
+  },
+  {
+   "id": "eng_for_pan:S0048L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ਕੋਈ => any' is a literal gloss of a word inside L2 'ਕੋਈ ਪਰਵਾਹ ਨਹੀਂ => don't care about', and the seed's English has no 'any'."
+  },
+  {
+   "id": "eng_for_pan:S0387L02C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'thought' is the past form of 'think', and the seed has \"didn't think\", so it is an inflected form of a word in the sentence."
+  },
+  {
+   "id": "eng_for_pan:S0107L03C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ਕੀਤੀ ਸੀ => did' is the light verb in 'ਉਮੀਦ ਕੀਤੀ ਸੀ' (we hoped), and the seed's 'hoped' renders it, so the row is about its sentence."
+  }
+ ]
+}

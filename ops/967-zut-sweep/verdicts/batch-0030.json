@@ -1,0 +1,166 @@
+{
+ "batch": 30,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_kan:S0008L03C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row is part of its own LEGO 'what I mean'; the particle ಅಂತ 'that' is not rendered in 'explain what I mean'."
+  },
+  {
+   "id": "eng_for_kan:S0007L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಮಾಡಲು is a word of its own LEGO 'ಪ್ರಯತ್ನ ಮಾಡಲು => to try'; the seed 'try as hard as I can' has no 'to do'."
+  },
+  {
+   "id": "eng_for_kan:S0592L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The genitive 'of' is not rendered in 'along the main road', but the row is part of its own LEGO."
+  },
+  {
+   "id": "eng_for_kan:S0018L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಇವತ್ತು 'today' is rendered as 'this evening' in the seed, so the row glosses a word the sentence renders differently."
+  },
+  {
+   "id": "eng_for_kan:S0394L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಹಾಕಿರೋ 'wearing' is rendered only as 'with' in 'with the yellow dress'; the row is part of its own LEGO."
+  },
+  {
+   "id": "eng_for_kan:S0028L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed says 'as soon as you can', not 'as possible'; the row glosses its own LEGO word literally."
+  },
+  {
+   "id": "eng_for_kan:S0036L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಮಧ್ಯ is a word of its own LEGO 'to interrupt'; the seed has no 'in the middle of'."
+  },
+  {
+   "id": "eng_for_kan:S0147L01C04",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'was ... showed' is the literal gloss of ತೋರಿಸಿದಳು, and the seed renders it as 'was very kind'."
+  },
+  {
+   "id": "eng_for_kan:S0051L03C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed says 'I enjoy doing', not 'I like'; the row is a synonymous gloss within its own LEGO."
+  },
+  {
+   "id": "eng_for_kan:S0062L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಮಾಡೋಕೆ is a word of its own LEGO 'to help'; 'to do' is not in the seed."
+  },
+  {
+   "id": "eng_for_kan:S0074L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಮಾಡಿದ್ದಕ್ಕೆ is part of its own LEGO 'for helping'; the seed has no 'for doing'."
+  },
+  {
+   "id": "eng_for_kan:S0091L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಸರಿಯಾಗಿ is part of its own LEGO 'in time'; 'correctly' is not in the seed."
+  },
+  {
+   "id": "eng_for_kan:S0099L01C04",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed renders ಮಾಡ್ತಿಲ್ಲ as 'not working', not 'isn't doing'; the row is part of its own LEGO."
+  },
+  {
+   "id": "eng_for_kan:S0122L04C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಅನ್ನೋ 'that' is a particle with no rendering in 'about how it's going', but the row is part of its own LEGO."
+  },
+  {
+   "id": "eng_for_kan:S0187L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಇದೆ 'is' is contracted into \"I'm\" in the seed, and sibling C01 already glosses ನನಗೆ as \"I'm\"."
+  },
+  {
+   "id": "eng_for_kan:S0393L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "ಹಾಕಿರೋ 'wearing' is rendered only as 'with' in 'with the green shirt'; the row is part of its own LEGO."
+  },
+  {
+   "id": "eng_for_kan:S0311L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"couldn't believe\" and no infinitive 'to'; the row is part of its own LEGO."
+  },
+  {
+   "id": "eng_for_kan:S0313L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"couldn't watch\" and no infinitive 'to'; the row is part of its own LEGO."
+  },
+  {
+   "id": "eng_for_kan:S0315L05C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed renders the LEGO as \"couldn't afford\", so 'to buy' is a literal gloss with no counterpart."
+  },
+  {
+   "id": "eng_for_kan:S0316L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row's known (ಕರ್ಕೊಂಡು ಬರೋದು) differs from the LEGO's ಕರ್ಕೊಂಡು ಬರಬಹುದಾ, and 'to bring' has no infinitive 'to' in the seed's 'could bring'."
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "batch": 13,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_fra:S0145L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'not happy any more'; 'not' and 'any more' are split by 'happy'."
+  },
+  {
+   "id": "eng_for_fra:S0170L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I'd like you to tell me' renders no 'that'; this is a literal gloss of the particle 'que'."
+  },
+  {
+   "id": "eng_for_fra:S0052L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'last week'; 'the week' is a literal gloss the translation does not render."
+  },
+  {
+   "id": "eng_for_fra:S0192L01C01",
+   "verdict": "b",
+   "class": "b-fix",
+   "sibling": null,
+   "fixed_target": "I'm",
+   "why": "Seed has the contraction 'I'm busy'; 'I'm' is a contiguous substring and still glosses 'je suis'."
+  },
+  {
+   "id": "eng_for_fra:S0105L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'didn't know'; the bare 'not' is a literal gloss of 'pas' fused into 'didn't'."
+  },
+  {
+   "id": "eng_for_fra:S0112L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'wasn't expecting'; 'not' is a literal gloss of 'pas' fused into 'wasn't'."
+  },
+  {
+   "id": "eng_for_fra:S0100L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'shouldn't'; 'not' is a literal gloss of 'pas' fused into the contraction."
+  },
+  {
+   "id": "eng_for_fra:S0169L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'What do you want me to do?' has no 'that'; this is a literal gloss of 'que'."
+  },
+  {
+   "id": "eng_for_fra:S0012L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'wouldn't like'; 'I'd like' is not in the sentence and the forced value is not unique."
+  },
+  {
+   "id": "eng_for_fra:S0105L02C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'didn't know'; 'knew' is a different inflection of 'know'."
+  },
+  {
+   "id": "eng_for_fra:S0151L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'would happen'; 'that it' is a literal gloss of 'qu'il' that the translation does not render."
+  },
+  {
+   "id": "eng_for_fra:S0059L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'next week'; 'the week' is a literal gloss the translation does not render."
+  },
+  {
+   "id": "eng_for_fra:S0136L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'of course'; 'good' is a literal gloss of 'bien' that the translation does not render."
+  },
+  {
+   "id": "eng_for_fra:S0114L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'doing worse'; 'less' is a literal gloss of 'moins' that the translation does not render."
+  },
+  {
+   "id": "eng_for_fra:S0138L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'This was where'; 'there' is a literal gloss of 'là' that is not rendered."
+  },
+  {
+   "id": "eng_for_fra:S0142L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'for helping'; 'me' is a literal gloss of 'm'avoir' that the translation drops."
+  },
+  {
+   "id": "eng_for_fra:S0063L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'you don't mind'; 'it' is a literal gloss of 'ça' that is not rendered."
+  },
+  {
+   "id": "eng_for_fra:S0031L02C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'tonight'; the LEGO 'ce soir-là' differs from the seed's 'ce soir', so the LEGO disagrees with the seed."
+  },
+  {
+   "id": "eng_for_fra:S0164L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'An interesting book' interposes 'interesting' between 'a(n)' and 'book'."
+  },
+  {
+   "id": "eng_for_fra:S0057L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed has 'can't remember'; 'not' is a literal gloss of 'pas' fused into the contraction."
+  }
+ ]
+}
