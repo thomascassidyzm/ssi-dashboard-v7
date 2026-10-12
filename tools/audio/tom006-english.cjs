@@ -100,13 +100,14 @@ const TABLES = ['course_seeds', 'course_legos', 'course_practice_phrases']
     const out = []
     for (const tbl of TABLES) for (const col of ['known_audio_id', 'target2_audio_id']) {
       const { rows } = await pg.query(`select x.id::text key, x.course_code course, x.${col}::text "from" from ${tbl} x join courses c on c.course_code=x.course_code
-        where x.${col}::text = any($1::text[]) and c.status in ('released','beta')`, [ids])
+        where x.${col} = any($1::uuid[]) and c.status in ('released','beta')`, [ids])
       out.push(...rows.map(r => ({ tbl, col, ...r })))
     }
     return out
   }
-  const mine = async () => Number((await pg.query(`select coalesce(sum(chars),0) c from tts_spend_ledger where job like '%813%' and at >= date_trunc('day', now() at time zone 'utc') at time zone 'utc'`)).rows[0].c)
-  const globalToday = async () => Number((await pg.query(`select coalesce(sum(chars),0) c from tts_spend_ledger where at >= date_trunc('day', now() at time zone 'utc') at time zone 'utc'`)).rows[0].c)
+  const memo = (fn, ms = 15000) => { let at = 0, v; return async () => { if (Date.now() - at > ms) { v = await fn(); at = Date.now() } return v } }
+  const mine = memo(async () => Number((await pg.query(`select coalesce(sum(chars),0) c from tts_spend_ledger where job like '%813%' and at >= date_trunc('day', now() at time zone 'utc') at time zone 'utc'`)).rows[0].c))
+  const globalToday = memo(async () => Number((await pg.query(`select coalesce(sum(chars),0) c from tts_spend_ledger where at >= date_trunc('day', now() at time zone 'utc') at time zone 'utc'`)).rows[0].c))
   const sleepToTomorrow = async why => { const now = new Date(), next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 5)); console.log(`DAILY LIMIT (${why}): sleeping until ${next.toISOString()}`); while (Date.now() < next.getTime() && !stopFlag) await new Promise(r => setTimeout(r, 30000)) }
   for (const n of stages) {
     const st = { texts: 0, rendered: 0, reused: 0, chars: 0, lines: 0, slots: 0, started: new Date().toISOString() }
