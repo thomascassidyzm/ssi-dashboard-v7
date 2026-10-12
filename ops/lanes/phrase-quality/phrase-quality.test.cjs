@@ -81,3 +81,13 @@ assert.equal(inScope({ course_code: 'fin_for_eng', status: 'draft' }), false)
   assert.equal(d[0].decision, 'skip', 'drift since the models read it → skipped')
   console.log('phrase-quality.test: all green')
 })().catch((e) => { console.error(e); process.exit(1) })
+// release-held (967): only held replacements still open in the ledger are counted, per course
+{
+  const os = require('os'), fs = require('fs'), path = require('path')
+  const d = fs.mkdtempSync(path.join(process.env.TMPDIR || os.tmpdir(), 'rh-'))
+  fs.mkdirSync(path.join(d, 'staged')); fs.mkdirSync(path.join(d, 'undo'))
+  fs.writeFileSync(path.join(d, 'staged', 'c1.jsonl'), [{ row_id: 'a', decision: 'replace', hold: 'audio' }, { row_id: 'b', decision: 'replace', hold: 'audio' }, { row_id: 'a', decision: 'replace', hold: 'audio' }, { row_id: 'z', decision: 'delete' }].map((x) => JSON.stringify(x)).join('\n'))
+  fs.writeFileSync(path.join(d, 'undo', 'c1.jsonl'), JSON.stringify({ row_id: 'b', action: 'replace' }) + '\n')
+  assert.deepEqual(require('./release-held.cjs').heldByCourse(d), { c1: 1 }, 'a row held twice counts once; a row already applied is no longer held')
+}
+console.log('release-held: ok')
