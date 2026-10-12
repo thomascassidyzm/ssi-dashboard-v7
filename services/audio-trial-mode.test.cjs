@@ -114,6 +114,8 @@ describe('audio trial mode', () => {
     expect(trialMode.trialKey('abc', 0.8)).toBe('trial/ABC_x80.mp3')
     expect(trialMode.trialKey('abc')).toBe('trial/ABC.mp3')
     expect(trialMode.keyFromTrialId(trialMode.trialIdFromKey(trialMode.trialKey('abc', 0.9)))).toBe('trial/ABC_x90.mp3')
+    // the phase8 /trial-audio/:id route must accept a speed-tagged id or the clip can never be played
+    expect(require('fs').readFileSync(require('path').join(__dirname, 'phases/phase8-audio-v13.cjs'), 'utf8')).toContain('(_x\\d+)?$/i.test(req.params.id)')
     await expect(renderClip(ask({ trial: true, speed: 0.5 }), deps(svc))).rejects.toThrow(/between/)
     await expect(renderClip(ask({ trial: true, speed: 1.2 }), deps(svc))).rejects.toThrow(/between/)
     await expect(renderClip(ask({ speed: 0.8 }), deps(svc))).rejects.toThrow(/trial-only/)
