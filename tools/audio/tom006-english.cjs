@@ -161,7 +161,9 @@ const slotId = s => `${s.tbl}:${s.key}:${s.col || 'known_audio_id'}`
                   res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-813' },
                     body: JSON.stringify({ courseCode: q.course, role: q.role, text: q.tx, language: 'eng', voiceId: T6, voiceBound: true, job: '#813', purpose: `#813 Tom-006 male English, stage ${n} (seed ${q.pos})` }) })
                   r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
-                  if (r && r.code === 'DAILY_TOTAL_CAP') {   // Tom: the guards are not for his directed jobs; the approval ceiling is 2M/day, so wait for the UTC day to turn rather than stop (nothing was sent: a refusal is not a render)
+                  if (r && r.code === 'LEDGER') {   // the shared spend ledger timed out (DB load): fail-closed, nothing was sent; wait and ask again rather than stop
+                    console.log('spend ledger unreachable, waiting 60s then asking again:', q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, 60000)); r = undefined; attempt = Math.min(attempt, 5); if (stopFlag) return
+                  } else if (r && r.code === 'DAILY_TOTAL_CAP') {   // Tom: the guards are not for his directed jobs; the approval ceiling is 2M/day, so wait for the UTC day to turn rather than stop (nothing was sent: a refusal is not a render)
                     const now = new Date(), next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 5))
                     console.log('DAILY_TOTAL_CAP reached — waiting for', next.toISOString(), JSON.stringify(r).slice(0, 200)); log({ kind: 'cap-wait', until: next.toISOString() })
                     while (Date.now() < next.getTime() && !stopFlag) await new Promise(z => setTimeout(z, 30000)); r = undefined; attempt--; if (stopFlag) return
