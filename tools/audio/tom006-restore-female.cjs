@@ -81,6 +81,12 @@ const chunks = (a, n) => { const o = []; for (let i = 0; i < a.length; i += n) o
           res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-24' },
             body: JSON.stringify({ courseCode: s0.course, role: s0.col === 'target2_audio_id' ? 'target2' : 'known', text: q.tx, language: 'eng', voiceId: CHARLOTTE, voiceBound: true, job: '#813', purpose: '#24 Charlotte female English (gender-variance correction of #813 Tom-006 output)' }) }).catch(() => ({ ok: false, status: 0, json: async () => ({ ok: false, code: 'CONN' }) }))
           r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+          if (r && (r.code === 'RENDER_FAILED' || /statement timeout|socket hang up|ECONNRESET/i.test(String(r.error || '')))) {   // the paid render may have landed with its row after all: look before asking again (never double-pay)
+            await new Promise(z => setTimeout(z, 30000))
+            const landed = (await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and voice_id=$2 and s3_key is not null and s3_key not like 'pending/%' and duration_ms>200 limit 1`, [q.t, CHARLOTTE])).rows[0]
+            if (landed) { r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; res = { ok: true }; break }
+            console.log('transient render failure, retrying:', String(r.error || '').slice(0, 100)); continue
+          }
           if (!(r && (r.code === 'LEDGER' || r.code === 'CONN' || res.status === 429 || /rate/i.test(String(r.code || ''))))) break
           console.log('transient, waiting 30s:', r.code || res.status); await new Promise(z => setTimeout(z, 30000))
         }
