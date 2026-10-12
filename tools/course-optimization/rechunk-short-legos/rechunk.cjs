@@ -386,7 +386,7 @@ async function finish(course, pg, report, what) {
     const v = await bumpCourseVersion(supabase(), course, 'patch')
     const { queueAudioPass } = require(path.join(REPO, 'services/shared/audio-pass-queue.cjs'))
     const q = await queueAudioPass(supabase(), { courseCode: course, requestedBy: `@${SWEEP}`, append: true, metadataKey: 'rechunk_short_legos',
-      reason: `job ${JOB} ${what}: ${wrote.length} seed(s) re-chunked; changed LEGOs, their intros and new phrases need audio (render waits for Tom's approval)`, metadata: { job: JOB, seeds: wrote.map((r) => r.seed) } })
+      reason: `job ${JOB} ${what}: ${wrote.length} seed(s) ${what === 'undo' ? 'restored' : 're-chunked'}; LEGOs, intros and phrases without audio need it (render waits for Tom's approval)`, metadata: { job: JOB, seeds: wrote.map((r) => r.seed) } })
     say(`${course}: round index refreshed; content_version → ${v}; audio pass ${q.queued ? 'queued' : q.touched ? 'joined' : 'NOT queued: ' + (q.error || q.reason)}`)
   }
   await pg.end()
@@ -418,9 +418,12 @@ async function undo(course) {
       await pg.query('DELETE FROM course_practice_phrases WHERE course_code=$1 AND seed_number=$2', [course, seed])
       await pg.query('DELETE FROM lego_introductions WHERE course_code=$1 AND lego_id = ANY($2)', [course, live.legos.map((x) => x.lego_id)])
       await pg.query('DELETE FROM course_legos WHERE course_code=$1 AND seed_number=$2', [course, seed])
+      // json/jsonb values go back as JSON text (an array there is JSON, not a Postgres array); everything else as read
+      const { rows: jcols } = await pg.query("SELECT table_name, column_name FROM information_schema.columns WHERE table_schema='public' AND table_name = ANY($1) AND data_type IN ('json','jsonb')", [['course_legos', 'course_practice_phrases', 'lego_introductions']])
+      const isJson = (t, k) => jcols.some((j) => j.table_name === t && j.column_name === k)
       const ins = async (table, row, skip = new Set()) => {
         const cols = Object.keys(row).filter((k) => !skip.has(k))
-        await pg.query(`INSERT INTO ${table} (${cols.join(',')}) VALUES (${cols.map((_, i) => '$' + (i + 1)).join(',')})`, cols.map((k) => (row[k] !== null && typeof row[k] === 'object' && !(row[k] instanceof Date) && !Array.isArray(row[k]) ? JSON.stringify(row[k]) : row[k])))
+        await pg.query(`INSERT INTO ${table} (${cols.join(',')}) VALUES (${cols.map((_, i) => '$' + (i + 1)).join(',')})`, cols.map((k) => L.sqlValue(isJson(table, k), row[k])))
       }
       for (const r of l.before.legos) await ins('course_legos', r, LEGO_COLS_SKIP)
       for (const r of l.before.phrases) await ins('course_practice_phrases', r)

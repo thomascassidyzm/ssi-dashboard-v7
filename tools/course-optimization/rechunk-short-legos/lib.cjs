@@ -107,4 +107,10 @@ function allocateIds(course, seed, idx, role, n, existingIds) {
   return Array.from({ length: n }, (_, i) => `${prefix}${String(max + 1 + i).padStart(2, '0')}`)
 }
 
-module.exports = { MAX_LEGO_SYLLABLES, norm, words, multisetContains, legoId, afterLegos, workLegos, checkOp, cursorConflicts, allocateIds }
+// A row read back for undo is re-inserted value by value. A json/jsonb column holds JSON even when the value
+// is an array (course_legos.components); a text[] column (connected_lego_ids) takes a Postgres array.
+function sqlValue(isJsonColumn, v) {
+  return v !== null && v !== undefined && isJsonColumn ? JSON.stringify(v) : v
+}
+
+module.exports = { sqlValue, MAX_LEGO_SYLLABLES, norm, words, multisetContains, legoId, afterLegos, workLegos, checkOp, cursorConflicts, allocateIds }

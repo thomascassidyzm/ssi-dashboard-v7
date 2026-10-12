@@ -55,3 +55,10 @@ test('phrase ids continue after the highest ever issued and never collide', () =
   assert.deepStrictEqual(L.allocateIds('afr_for_eng', 10, 2, 'use', 2, ids), ['afr_for_eng:S0010L02U06', 'afr_for_eng:S0010L02U07'])
   assert.deepStrictEqual(L.allocateIds('afr_for_eng', 10, 2, 'build', 1, ids), ['afr_for_eng:S0010L02B04'])
 })
+
+test('undo re-inserts a JSON array as JSON, and a Postgres array as an array', () => {
+  const components = [{ known: 'of', target: 'van' }]
+  assert.strictEqual(L.sqlValue(true, components), JSON.stringify(components))   // course_legos.components (jsonb)
+  assert.deepStrictEqual(L.sqlValue(false, ['S0001L01']), ['S0001L01'])           // connected_lego_ids (text[])
+  assert.strictEqual(L.sqlValue(true, null), null)
+})
