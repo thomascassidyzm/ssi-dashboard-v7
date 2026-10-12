@@ -1,0 +1,166 @@
+{
+ "batch": 6,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "deu_for_zho:S0209L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'sich treffen' is split in the seed ('sich als Gruppe zu treffen'), with 'als Gruppe' interposed, and the row matches its LEGO."
+  },
+  {
+   "id": "deu_for_zho:S0238L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'sagen' is the lemma of 'sagst' in the seed ('dass du es mir gestern sagst')."
+  },
+  {
+   "id": "deu_for_zho:S0239L03C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'mag' glosses 喜欢, but the seed renders it as the adverb 'gerne' ('liest gerne'), so this is a different form of the same idea."
+  },
+  {
+   "id": "deu_for_zho:S0245L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'glücklich' is not in the seed, which has 'Ich freue mich'. The row is about the sentence and glosses 高兴 loosely; whether to keep it is a policy call."
+  },
+  {
+   "id": "ell_for_eng:S0138L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row 'να συναντήσει' matches its LEGO 'να μας συναντήσει', but the seed has 'να συναντηθούμε', so the LEGO disagrees with the seed."
+  },
+  {
+   "id": "ell_for_eng:S0278L04C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has 'χτες βράδυ' without the article, so 'το βράδυ' is a near-miss gloss of 'night' inside the LEGO 'χτες βράδυ'."
+  },
+  {
+   "id": "ell_for_eng:S0026L05C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": "ell_for_eng:S0026L05C02",
+   "fixed_target": null,
+   "why": "'don't'/'δεν' has no counterpart in the seed, but L5 'ready to => έτοιμος να' is in the LEGO. The row sits at the wrong slot, which looks like a stray, but its known side can't be proven absent from the sentence, so it is not provably cuttable."
+  },
+  {
+   "id": "eng_for_ara:S0164L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": "eng_for_ara:S0164L01C02",
+   "fixed_target": null,
+   "why": "'a book' vs the seed 'An interesting book'. The article differs ('a' vs 'An'), and 'a book' is split by 'interesting', so the target is discontiguous."
+  },
+  {
+   "id": "eng_for_ara:S0016L04C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": "eng_for_ara:S0016L04C02",
+   "fixed_target": null,
+   "why": "'at a time' is not in the seed, which has 'later on'. It is a literal gloss of 'في وقت' in the LEGO 'في وقت لاحق'."
+  },
+  {
+   "id": "eng_for_ara:S0097L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'when' glosses متى, but the seed renders it as 'as soon as you want'."
+  },
+  {
+   "id": "eng_for_ara:S0061L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'time' glosses مرة literally, but the seed renders مرة أخرى as 'again'."
+  },
+  {
+   "id": "eng_for_ara:S0007L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'as much as' glosses بكل ما, but the seed has 'as hard as I can'."
+  },
+  {
+   "id": "eng_for_ara:S0092L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'time' glosses الوقت, but the seed renders لبعض الوقت as 'for a while'."
+  },
+  {
+   "id": "eng_for_ara:S0009L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'of' glosses من, but the seed renders القليل من as 'a little' and has no 'of'."
+  },
+  {
+   "id": "eng_for_ara:S0214L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'you enjoy / have a good time' is a multi-variant gloss. The seed has 'Did you have a good time', so the row is about its sentence."
+  },
+  {
+   "id": "eng_for_ara:S0026L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'about to' glosses على وشك, but the seed has 'nearly ready'."
+  },
+  {
+   "id": "eng_for_ara:S0012L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I'd like' vs the seed 'I wouldn't like'. The contraction and negation differ, and the row is about its own LEGO."
+  },
+  {
+   "id": "eng_for_ara:S0026L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to be' glosses أن أكون, but the seed has 'nearly ready' with no 'to be'."
+  },
+  {
+   "id": "eng_for_ara:S0018L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'the hour' glosses الساعة, but the seed has 'at six o'clock'."
+  },
+  {
+   "id": "eng_for_ara:S0018L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'the sixth' glosses السادسة, but the seed has 'six o'clock'."
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "batch": 12,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_deu:S0214L02C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'had' is the past-participle form; the seed has 'Did you have', so the word is in the sentence only as 'have'."
+  },
+  {
+   "id": "eng_for_deu:S0155L04C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Literal gloss 'makes' of a word the seed renders as the idiom 'I don't mind'."
+  },
+  {
+   "id": "eng_for_fra:S0151L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' glosses 'pas', but the seed renders it as the contraction \"wasn't\"."
+  },
+  {
+   "id": "eng_for_fra:S0149L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' glosses 'que', which the seed leaves unrendered ('I hope you'll')."
+  },
+  {
+   "id": "eng_for_fra:S0106L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' glosses 'pas', but the seed renders it as the contraction \"don't\"."
+  },
+  {
+   "id": "eng_for_fra:S0169L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has 'want me to do'; 'I do' appears in no form there, and the LEGO glosses 'que je fasse' as 'me to do'."
+  },
+  {
+   "id": "eng_for_fra:S0085L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' glosses 'pas', but the seed renders it as the contraction \"don't\"."
+  },
+  {
+   "id": "eng_for_fra:S0108L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' glosses 'pas', but the seed renders it as the contraction \"didn't\"."
+  },
+  {
+   "id": "eng_for_fra:S0094L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'it works' is a different tense of the seed's 'it will work'."
+  },
+  {
+   "id": "eng_for_fra:S0136L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'sure' glosses a word the seed renders only inside 'of course'."
+  },
+  {
+   "id": "eng_for_fra:S0139L01C01",
+   "verdict": "b",
+   "class": "b-fix",
+   "sibling": null,
+   "fixed_target": "I'm",
+   "why": "The seed contracts 'I am' to \"I'm sorry\", which is contiguous and has the same gloss of 'je suis'."
+  },
+  {
+   "id": "eng_for_fra:S0187L01C01",
+   "verdict": "b",
+   "class": "b-fix",
+   "sibling": null,
+   "fixed_target": "I'm",
+   "why": "The seed contracts 'I am' to \"I'm happy so far\", which is contiguous and has the same gloss of 'je suis'."
+  },
+  {
+   "id": "eng_for_fra:S0214L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'this' glosses 'ce', but the seed renders it as 'the' in 'at the weekend'."
+  },
+  {
+   "id": "eng_for_fra:S0261L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"it's\" glosses 'c'est', but the seed renders it as 'it might be'."
+  },
+  {
+   "id": "eng_for_fra:S0087L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'that' glosses 'que', which the seed leaves unrendered ('people I don't know')."
+  },
+  {
+   "id": "eng_for_fra:S0037L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'the month' glosses 'le mois', but the seed renders it as 'last month'."
+  },
+  {
+   "id": "eng_for_fra:S0064L01C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to learn' is the infinitive of the seed's 'Learning'."
+  },
+  {
+   "id": "eng_for_fra:S0069L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' glosses 'pas', but the seed renders it as the contraction \"didn't\"."
+  },
+  {
+   "id": "eng_for_fra:S0110L01C01",
+   "verdict": "b",
+   "class": "b-fix",
+   "sibling": null,
+   "fixed_target": "We're",
+   "why": "The seed contracts 'we are' to \"We're friends\", which is contiguous and has the same gloss of 'nous sommes'."
+  },
+  {
+   "id": "eng_for_fra:S0115L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' glosses 'pas', but the seed renders it as the contraction \"don't\"."
+  }
+ ]
+}

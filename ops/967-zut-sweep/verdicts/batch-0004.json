@@ -1,0 +1,166 @@
+{
+ "batch": 4,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "ara_lb_for_eng:S0587L06C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "على is the preposition fused into عالعشا ('for supper') in the seed, so it is clitic-fused, not absent."
+  },
+  {
+   "id": "ara_lb_for_eng:S0358L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "القمة is in the seed only fused as للقمة (ل + القمة); the row glosses 'the top' correctly."
+  },
+  {
+   "id": "ara_lb_for_eng:S0402L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is a prefix on بمطرح in the seed, so the clitic is fused rather than a separate word."
+  },
+  {
+   "id": "ara_lb_for_eng:S0458L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is the prefix on بكتير in the seed; the row is a clitic split of the word, not a defect."
+  },
+  {
+   "id": "ben_for_eng:S0198L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed renders 'for the council' as the locative কাউন্সিলে, so জন্য glosses a word the target does not render."
+  },
+  {
+   "id": "ben_for_eng:S0289L01C02",
+   "verdict": "d",
+   "class": "d-seed-outlier",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed and LEGO both render 'afternoon' as দুপুরে, while the row says বিকেলে; the row is about this sentence but the lexical choice differs, which needs a human call."
+  },
+  {
+   "id": "ben_for_eng:S0231L01C04",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses 'man (obj)' as লোককে, but the seed uses বৃদ্ধকে for 'old man', so it is the same slot with a different noun and is not provably an orphan."
+  },
+  {
+   "id": "ben_for_eng:S0233L01C04",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses 'woman (obj)' as মহিলাকে, but the seed has যুবতীকে for 'young woman', so it is a synonym-type mismatch at the same position and not a provable orphan."
+  },
+  {
+   "id": "ben_for_eng:S0151L01C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has ঘটবে for 'would happen', so the row's হবে glosses a different word; it is still about this sentence."
+  },
+  {
+   "id": "ben_for_eng:S0248L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses 'completely' as একেবারে, but the seed and LEGO use পুরোপুরি for 'complete', so this is a synonym difference on the same word."
+  },
+  {
+   "id": "cat_for_eng:S0278L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'havies de' is an elided form of 'havies d'acabar-ho' in the seed, so the apostrophe elision breaks contiguity."
+  },
+  {
+   "id": "cat_for_spa:S0178L03C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'fer' is the lemma of 'faràs' in the seed, which is an inflected form."
+  },
+  {
+   "id": "cat_for_spa:S0117L07C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'el' is fused into 'al' in the seed (a + el), so it is a contraction and not an orphan."
+  },
+  {
+   "id": "cat_for_spa:S0063L05C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": "cat_for_spa:S0063L05C02",
+   "fixed_target": null,
+   "why": "'et' is elided as t'importa in the seed, so the clitic is fused with the verb."
+  },
+  {
+   "id": "cat_for_spa:S0141L10C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'et' is elided as t'estic in the seed, so the clitic is fused with the verb."
+  },
+  {
+   "id": "cat_for_spa:S0271L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": "cat_for_spa:S0271L01C02",
+   "fixed_target": null,
+   "why": "'et' is elided as t'agradaria in the seed, so the clitic is fused with the verb."
+  },
+  {
+   "id": "cat_for_spa:S0254L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'des de' is elided to des d'aquest in the seed, so 'de' is fused with the next word."
+  },
+  {
+   "id": "ces_for_eng:S0011L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to be able to' is rendered as 'mohl' in the seed, so 'být' glosses a word the target does not render."
+  },
+  {
+   "id": "ces_for_eng:S0005L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I'm going to' is rendered as 'Budu' in the seed, so 'být' is the lemma behind that future auxiliary."
+  },
+  {
+   "id": "ces_for_eng:S0018L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Czech pro-drops 'we' in 'Chceme', so 'my' glosses a pronoun the target does not render."
+  }
+ ]
+}

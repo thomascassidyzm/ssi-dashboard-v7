@@ -1,0 +1,166 @@
+{
+ "batch": 10,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_deu:S0176L04C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed renders 'kann' as 'be able to', so 'can' is not in 'he'll be able to help'."
+  },
+  {
+   "id": "eng_for_deu:S0157L03C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'nicht' is fused into the contraction \"won't\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0207L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'have' is elided into \"You've\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0178L03C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has \"didn't have\", so 'had' is an inflected form of a word that is in the sentence."
+  },
+  {
+   "id": "eng_for_deu:S0157L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'will' is fused into \"won't\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0169L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed renders 'dass ich' as \"me to do\", so 'I' is not in the sentence."
+  },
+  {
+   "id": "eng_for_deu:S0183L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is fused into \"haven't\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0185L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed renders the perfect as \"you left\" with no 'have'."
+  },
+  {
+   "id": "eng_for_deu:S0258L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' is contracted into \"What's\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0211L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is fused into \"didn't\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0263L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is fused into \"don't\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0276L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed renders 'noch' inside \"for a little longer\", with no 'still'."
+  },
+  {
+   "id": "eng_for_deu:S0282L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' is contracted into \"that's\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0158L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'us' is fused into \"Let's\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0178L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed renders 'keine' as \"didn't have\", so 'no' is not in the sentence."
+  },
+  {
+   "id": "eng_for_deu:S0188L03C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is fused into \"don't\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0213L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is fused into \"don't\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0277L03C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed and LEGO render 'Anfang' as \"early\", so the literal gloss 'beginning' is not in the sentence."
+  },
+  {
+   "id": "eng_for_deu:S0159L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is fused into \"isn't\" in the seed."
+  },
+  {
+   "id": "eng_for_deu:S0208L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed renders 'wie man es sagt' as \"how to say it\", with no 'one'."
+  }
+ ]
+}

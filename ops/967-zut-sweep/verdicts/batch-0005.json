@@ -1,0 +1,166 @@
+{
+ "batch": 5,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "ces_for_eng:S0023L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Literal gloss 'I'->'já' of pro-dropped subject in 'začnu'; the seed 'Brzy začnu víc mluvit' does not render 'já'."
+  },
+  {
+   "id": "ces_for_eng:S0001L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: 'I'->'já' glosses the subject folded into 'chci' in 'Chci s tebou teď mluvit česky'."
+  },
+  {
+   "id": "ces_for_eng:S0013L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: 'you'->'ty' glosses the subject folded into 'mluvíš' in 'Mluvíš česky velmi dobře'."
+  },
+  {
+   "id": "ces_for_eng:S0016L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'he'->'on' glosses the subject folded into 'chce' in 'Chce se vrátit...'; the seed does not render 'on'."
+  },
+  {
+   "id": "ces_for_eng:S0039L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'být' is the lemma of 'jsem' in 'Ale dnes ráno jsem trochu unavený'."
+  },
+  {
+   "id": "ces_for_eng:S0009L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: 'I'->'já' glosses the subject folded into 'mluvím' in 'Teď mluvím trochu česky'."
+  },
+  {
+   "id": "ces_for_eng:S0039L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: 'I'->'já' glosses the subject folded into 'jsem' in the seed 'Ale dnes ráno jsem trochu unavený'."
+  },
+  {
+   "id": "ces_for_eng:S0047L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: 'I'->'já' glosses the subject folded into 'myslím' in 'Protože myslím, že...'."
+  },
+  {
+   "id": "ces_for_eng:S0030L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'se zeptat' is split in the seed 'se tě včera na něco zeptat', with 'tě včera na něco' interposed."
+  },
+  {
+   "id": "ces_for_eng:S0027L01C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'rád' appears in the seed only as 'nerad'; it is the positive stem of the negated form, so this is a policy call and not a provable orphan."
+  },
+  {
+   "id": "ces_for_eng:S0020L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Pro-drop: 'you'->'ty' glosses the subject folded into 'chceš' in 'Chceš rychle zjistit jeho jméno'."
+  },
+  {
+   "id": "dan_for_eng:S0012L04C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The target 'i | morning/tomorrow → morgen' is a malformed annotation; the seed has 'i morgen', and the LEGO 'tomorrow => i morgen' covers it, but the correct value is a judgement call."
+  },
+  {
+   "id": "dan_for_eng:S0007L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The target 'i | day → dag' is a malformed annotation of 'i dag' in the seed; LEGO 'today => i dag' covers it, but the repair is not forced."
+  },
+  {
+   "id": "dan_for_eng:S0030L04C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The target 'i | yesterday → går' is a malformed annotation of 'i går' in the seed; LEGO 'yesterday => i går' covers it, but the repair is not forced."
+  },
+  {
+   "id": "deu_at_for_eng:S0362L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'du' is not in the seed, which has dialect 'wiast gangen bist' with the subject elided, and 'you' glosses the LEGO 'when you left'; policy call."
+  },
+  {
+   "id": "deu_for_zho:S0233L03C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'她'->'sie' glosses the subject of 'kennt' in 'die deine Schwester kennt'; the seed has the relative 'die', not 'sie'."
+  },
+  {
+   "id": "deu_for_zho:S0232L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'mich erinnern' is split in the seed 'sich an die Antwort erinnern'; the reflexive is 'sich' there, not 'mich'."
+  },
+  {
+   "id": "deu_for_zho:S0187L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'bis jetzt' glosses 到目前 in 到目前为止, which the seed renders as 'bisher'; the row is about the sentence, but the repair is a policy call."
+  },
+  {
+   "id": "deu_for_zho:S0006L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'mich an erinnern' is split in the seed 'mich an ein Wort zu erinnern', with 'ein Wort zu' interposed."
+  },
+  {
+   "id": "deu_for_zho:S0237L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'früher' glosses 以前 in 周末以前, which the seed renders as 'vor dem Wochenende'; the row is about the sentence, and the fix is not forced."
+  }
+ ]
+}

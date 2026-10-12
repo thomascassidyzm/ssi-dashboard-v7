@@ -1,0 +1,166 @@
+{
+ "batch": 1,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "ara_for_eng:S0127L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "أَرى is the lemma/1sg form of the verb whose inflected form أَراك is in the seed's LEGO 'I see you'; the row is about its sentence."
+  },
+  {
+   "id": "ara_lb_for_eng:S0069L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is the clitic fused into بالكلب in the seed; a bare prefix is not a contiguous word but is the real component of that LEGO."
+  },
+  {
+   "id": "ara_lb_for_eng:S0325L04C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is the clitic fused into بعشر in the seed target; it genuinely belongs to LEGO 'with ten'."
+  },
+  {
+   "id": "ara_lb_for_eng:S0340L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is the clitic fused into بخير in the seed target."
+  },
+  {
+   "id": "ara_lb_for_eng:S0436L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "على is the base of the clitic-fused عليه in the seed ('over it'); the form changes with the suffix."
+  },
+  {
+   "id": "ara_lb_for_eng:S0458L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is the clitic fused into بالماضي in the seed target."
+  },
+  {
+   "id": "ara_lb_for_eng:S0511L06C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "لـ is the clitic fused into لكل in the seed target ('to everyone')."
+  },
+  {
+   "id": "ara_lb_for_eng:S0013L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is the prefix of بتحكي ('you speak'); the gloss 'you' is for the prefix, which is fused into the seed word."
+  },
+  {
+   "id": "ara_lb_for_eng:S0039L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "هالـ is the clitic fused into هالصبح in the seed target ('this morning')."
+  },
+  {
+   "id": "ara_lb_for_eng:S0035L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "هالـ is the clitic fused into هالبعد in the seed target ('this afternoon')."
+  },
+  {
+   "id": "ara_lb_for_eng:S0024L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is the clitic fused into بمقدوري in the seed target."
+  },
+  {
+   "id": "ara_lb_for_eng:S0020L04C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is the clitic fused into بسرعة in the seed target."
+  },
+  {
+   "id": "ara_lb_for_eng:S0004L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is the clitic fused into بالعربي in the seed target."
+  },
+  {
+   "id": "ara_lb_for_eng:S0264L01C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row رجل (a man) glosses the same chunk as the seed's راجل; the practice phrases use رجل كبير, so the dialect spelling differs from the seed and the LEGO — escalate rather than fix."
+  },
+  {
+   "id": "ara_lb_for_eng:S0027L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "لـ is the clitic fused into لأجاوب in the seed target ('to answer')."
+  },
+  {
+   "id": "ara_lb_for_eng:S0037L04C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is the clitic fused into بعناية in the seed target."
+  },
+  {
+   "id": "ara_lb_for_eng:S0302L04C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بـ is the clitic fused into بالمدينة in the seed target."
+  },
+  {
+   "id": "ara_lb_for_eng:S0314L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "على appears in the seed only contracted and fused as عالطاولة."
+  },
+  {
+   "id": "ara_lb_for_eng:S0001L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I' is pro-dropped in بدي أحكي; أنا is a literal gloss of a word the sentence does not render."
+  },
+  {
+   "id": "ara_lb_for_eng:S0020L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "بدي is the 1sg form of the بدك in the seed ('you want'); an inflected variant of a word in the sentence, and the gloss 'want' is not forced to one value."
+  }
+ ]
+}

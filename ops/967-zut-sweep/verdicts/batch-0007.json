@@ -1,0 +1,166 @@
+{
+ "batch": 7,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_ben:S0019L04C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "থাকা glossed 'keep' is a literal gloss of the continuative in 'stop talking'; the row belongs to this sentence's LEGO."
+  },
+  {
+   "id": "eng_for_ben:S0276L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'more' glosses আরও বেশি inside the LEGO 'for a little longer'; the seed renders it as 'longer'."
+  },
+  {
+   "id": "eng_for_ben:S0064L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'not' is the literal gloss of the negation fused into 'isn't' in the seed."
+  },
+  {
+   "id": "eng_for_ben:S0658L01C03",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches its LEGO 'what do you all want', but the seed target is 'Do you all want?' with no 'what'."
+  },
+  {
+   "id": "eng_for_ben:S0247L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'I used to do' is a literal gloss of করতাম; the seed renders মনে করতাম as 'I thought'."
+  },
+  {
+   "id": "eng_for_ben:S0339L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'has' is the auxiliary fused into the seed's contraction \"he's hurt\"."
+  },
+  {
+   "id": "eng_for_ben:S0462L03C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'did' glosses করেছিলেন, while the seed renders যুদ্ধ করেছিলেন as 'fought'."
+  },
+  {
+   "id": "eng_for_ben:S0485L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'more' glosses বেশি, which the seed renders as the comparative 'happier'."
+  },
+  {
+   "id": "eng_for_ben:S0525L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'everything' glosses সব, which the seed does not render separately ('able to finish')."
+  },
+  {
+   "id": "eng_for_ben:S0532L01C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'win' glosses জেতে, but the seed idiom renders it as 'lucky'."
+  },
+  {
+   "id": "eng_for_ben:S0033L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'for' glosses ধরে, but the seed has 'How long have you been learning' with no 'for'."
+  },
+  {
+   "id": "eng_for_ben:S0510L03C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'place' glosses জায়গা, which the seed renders inside 'somewhere safe'."
+  },
+  {
+   "id": "eng_for_ben:S0083L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'become' glosses হওয়া, which the seed renders inside 'agree with'."
+  },
+  {
+   "id": "eng_for_ben:S0008L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'my' glosses আমার, while the seed renders আমার মানে as 'what I mean'."
+  },
+  {
+   "id": "eng_for_ben:S0194L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"you're\" is the contraction of the seed's separated 'are you' in 'What are you looking for?'."
+  },
+  {
+   "id": "eng_for_ben:S0216L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'happened' glosses হয়েছিল, while the seed renders the phrase as 'I saw'."
+  },
+  {
+   "id": "eng_for_ben:S0308L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'is' is fused into the seed's \"she's\"."
+  },
+  {
+   "id": "eng_for_ben:S0276L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'time' glosses সময়, which the seed renders inside 'for a little longer'."
+  },
+  {
+   "id": "eng_for_ben:S0075L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "\"you've\" is the contraction of the seed's 'Have you got', where the words are split."
+  },
+  {
+   "id": "eng_for_ben:S0048L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'to do' glosses করা, which the seed renders inside 'care about'."
+  }
+ ]
+}

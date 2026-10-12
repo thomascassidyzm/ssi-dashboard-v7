@@ -1,0 +1,166 @@
+{
+ "batch": 3,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "ara_lb_for_eng:S0545L05C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic ل fused into لفوق in the seed text; it is not a standalone substring."
+  },
+  {
+   "id": "ara_lb_for_eng:S0547L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic بـ fused with the article in بالوحل; it belongs to the sentence but is not contiguous."
+  },
+  {
+   "id": "ara_lb_for_eng:S0548L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic بـ fused into بحزن; it is a normal prefix split."
+  },
+  {
+   "id": "ara_lb_for_eng:S0556L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic بـ fused into بوقت."
+  },
+  {
+   "id": "ara_lb_for_eng:S0557L04C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic بـ fused into بهالصوت."
+  },
+  {
+   "id": "ara_lb_for_eng:S0560L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the contracted عالـ in عالشاطئ, which is clitic-fused."
+  },
+  {
+   "id": "ara_lb_for_eng:S0562L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic بـ fused into بأمان."
+  },
+  {
+   "id": "ara_lb_for_eng:S0572L05C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses على, which is fused with the pronoun suffix in علينا (على+نا, ى→ي)."
+  },
+  {
+   "id": "ara_lb_for_eng:S0574L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic لـ fused into للكل."
+  },
+  {
+   "id": "ara_lb_for_eng:S0574L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "الكل appears in the seed only as للكل, where the alif is elided after ل, so it is clitic-fused."
+  },
+  {
+   "id": "ara_lb_for_eng:S0583L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic بـ fused into بهالجزء."
+  },
+  {
+   "id": "ara_lb_for_eng:S0591L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses على, which the seed contracts to عالدكاكين; it is fused, not contiguous."
+  },
+  {
+   "id": "ara_lb_for_eng:S0607L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic بـ fused into بطريقة."
+  },
+  {
+   "id": "ara_lb_for_eng:S0611L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic بـ fused into بمكان."
+  },
+  {
+   "id": "ara_lb_for_eng:S0629L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic بـ fused into بالحليب."
+  },
+  {
+   "id": "ara_lb_for_eng:S0020L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed بدك تتعلم drops the pronoun 'you' (pro-drop), so انت is a back-gloss of an unrendered word."
+  },
+  {
+   "id": "ara_lb_for_eng:S0022L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic بـ fused into بناس."
+  },
+  {
+   "id": "ara_lb_for_eng:S0429L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic لـ fused into لهون."
+  },
+  {
+   "id": "ara_lb_for_eng:S0332L05C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic لـ fused into لأختو."
+  },
+  {
+   "id": "ara_lb_for_eng:S0351L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row glosses the clitic لـ fused into لحالي."
+  }
+ ]
+}

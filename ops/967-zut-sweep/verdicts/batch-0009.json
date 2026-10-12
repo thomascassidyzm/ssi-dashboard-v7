@@ -1,0 +1,166 @@
+{
+ "batch": 9,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_ben:S0631L01C05",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'নেবে'→'will have' glosses a word in the seed known, and its own LEGO says 'what will you have'; the seed target 'What would you like?' renders it differently, so the LEGO, not the row, disagrees with the seed."
+  },
+  {
+   "id": "eng_for_ben:S0659L01C04",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row matches its own LEGO 'can you all say that', but the seed target is 'Could you all say that', so the LEGO differs from the seed and this needs escalating."
+  },
+  {
+   "id": "eng_for_ben:S0323L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'যাওয়া' is a real part of the LEGO 'হেঁটে যাওয়া' and the seed says 'walk to school', so 'to go' is a lemma-style gloss of a word the sentence renders as 'walk'."
+  },
+  {
+   "id": "eng_for_ben:S0578L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'একটু বেশি' is the comparative marker for 'warmer' in the seed ('Somewhere warmer.'), so it is part of the sentence but is fused into the suffix '-er'."
+  },
+  {
+   "id": "eng_for_ben:S0642L02C04",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row matches its LEGO 'how are you feeling', but the seed target is 'how do you feel madam?', so the LEGO and the seed disagree."
+  },
+  {
+   "id": "eng_for_ben:S0657L01C04",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row matches its LEGO 'how are you all feeling', but the seed target is 'how do you all feel?', so the LEGO and the seed disagree."
+  },
+  {
+   "id": "eng_for_ben:S0092L02C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'going' fits its LEGO 'keep on', and the seed says 'keep on doing this', so 'going' is not a contiguous match for 'doing'."
+  },
+  {
+   "id": "eng_for_ben:S0070L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'দেওয়া'→'give' is the literal gloss of the LEGO 'জানানো' ('tell'), which the seed renders as 'tell me', so the row is a lemma-style gloss tied to its own sentence."
+  },
+  {
+   "id": "eng_for_ben:S0091L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'সময়ে'→'on time' glosses 'সময়মতো' in the seed, which the seed target renders as 'in time', so this is a variant gloss of a word that is in the sentence."
+  },
+  {
+   "id": "eng_for_ben:S0643L01C04",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'do want' matches its LEGO 'what do you want', but the seed target is 'Do you want sir', so the LEGO and the seed disagree and the words are interposed."
+  },
+  {
+   "id": "eng_for_deu:S0204L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'dass'→'that' is a particle that the seed target 'I wanted her to help you' does not render, so it is a back-gloss of a dropped word."
+  },
+  {
+   "id": "eng_for_deu:S0027L02C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'brauchen'→'to need' is a lemma-style gloss of a word that the seed target ('taking too much time') renders in a different form."
+  },
+  {
+   "id": "eng_for_deu:S0107L03C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Row 'are doing' matches its LEGO 'what you're doing', but the seed target is 'what you were doing', so the LEGO differs from the seed."
+  },
+  {
+   "id": "eng_for_deu:S0018L04C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'uns'→'us' is the reflexive in 'uns treffen', which the seed target 'meet' leaves unrendered, so it is a back-gloss of a word the translation dropped."
+  },
+  {
+   "id": "eng_for_deu:S0012L01C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'nicht'→'not' is present in the seed as 'wouldn't', so it is fused into a contraction."
+  },
+  {
+   "id": "eng_for_deu:S0018L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'heute'→'today' glosses a word in the seed that the target renders as 'this evening', so it is a literal gloss within the sentence."
+  },
+  {
+   "id": "eng_for_deu:S0011L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'würde'→'would' is a word of the seed known that the target 'I'd like' renders as a contraction."
+  },
+  {
+   "id": "eng_for_deu:S0015L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'dass'→'that' is a particle that the seed target 'I want you to speak' does not render."
+  },
+  {
+   "id": "eng_for_deu:S0216L01C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row's LEGO 'ich habe jemanden getroffen' is a different phrase from the seed, 'Ich habe ein paar Freunde getroffen', and the target 'I saw a few friends' has no 'have', so the LEGO differs from the seed."
+  },
+  {
+   "id": "eng_for_deu:S0188L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'mich'→'myself' is a reflexive that the seed target 'So I don't need to change' does not render, so it is a back-gloss of a dropped word."
+  }
+ ]
+}

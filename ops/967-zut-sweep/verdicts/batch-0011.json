@@ -1,0 +1,166 @@
+{
+ "batch": 11,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_deu:S0208L02C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed target 'I didn't want to ask you' renders 'nicht' as the contraction in 'didn't'; 'not' is not a contiguous substring but the row belongs to its own LEGO."
+  },
+  {
+   "id": "eng_for_deu:S0218L02C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'gemacht' is rendered as 'do' in 'didn't do much'; 'done' is the participle form of a word that is in the sentence."
+  },
+  {
+   "id": "eng_for_deu:S0184L03C03",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I saw them' renders 'gesehen' as 'saw'; 'seen' is the participle of a word in the sentence."
+  },
+  {
+   "id": "eng_for_deu:S0218L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'nicht' is rendered as the contraction in 'didn't do much'; 'not' is a literal gloss of a word that is present in contracted form."
+  },
+  {
+   "id": "eng_for_deu:S0170L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I'd like you to tell me' does not render 'dass' as 'that'; the row is a literal gloss of a dropped particle."
+  },
+  {
+   "id": "eng_for_deu:S0291L01C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I'll be able to speak' contains 'will' only as the contraction 'I'll'; 'will' is fused, not a substring."
+  },
+  {
+   "id": "eng_for_deu:S0184L03C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I saw them' renders perfect 'habe...gesehen' as simple past, so 'have' is not rendered; it is a literal gloss of the auxiliary."
+  },
+  {
+   "id": "eng_for_deu:S0155L04C05",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I don't mind' renders 'macht...aus' idiomatically; 'out' is a literal gloss of the separable particle."
+  },
+  {
+   "id": "eng_for_deu:S0278L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'Did you have to finish' has 'had to' only as 'Did ... have to', interposed by 'you'; the LEGO is 'did you have to'."
+  },
+  {
+   "id": "eng_for_deu:S0255L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'you'll be ready' contains 'will' only fused in the contraction 'you'll'."
+  },
+  {
+   "id": "eng_for_deu:S0105L02C01",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'didn't know' contains 'know'; 'knew' is the past-tense form of a word in the sentence."
+  },
+  {
+   "id": "eng_for_deu:S0169L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'What do you want me to do' has no 'that'; the row glosses a particle the translation dropped."
+  },
+  {
+   "id": "eng_for_deu:S0025L02C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'ihr'/'her' appears nowhere in the seed 'Wirst du mir helfen...' or its LEGOs, but it is attached to LEGO 2 'helfen' and its practice sample is about another sentence; cutting is not provable here so it is left for judgement."
+  },
+  {
+   "id": "eng_for_deu:S0128L01C02",
+   "verdict": "d",
+   "class": "d-inflection",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'used to know' contains 'know'; 'knew' is the past-tense form of a word in the sentence."
+  },
+  {
+   "id": "eng_for_deu:S0153L03C04",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'wouldn't have said' has 'not' only fused in the contraction 'wouldn't'."
+  },
+  {
+   "id": "eng_for_deu:S0155L04C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I don't mind' does not render 'mir' as 'me'; the idiom drops it, so the row is a literal gloss."
+  },
+  {
+   "id": "eng_for_deu:S0105L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'didn't know' renders 'nicht' as the contraction; 'not' is a literal gloss of a word present in fused form."
+  },
+  {
+   "id": "eng_for_deu:S0288L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'Most people I know' renders 'die meisten' as 'most' with no 'the'; the row glosses a word the translation dropped."
+  },
+  {
+   "id": "eng_for_deu:S0155L04C04",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I don't mind' renders 'nichts' only via the idiom; 'nothing' is a literal gloss."
+  },
+  {
+   "id": "eng_for_deu:S0019L02C03",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "Seed 'I don't want to stop talking' renders 'nicht' as the contraction 'don't'; 'not' is a literal gloss of a fused word."
+  }
+ ]
+}

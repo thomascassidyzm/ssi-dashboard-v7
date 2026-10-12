@@ -1,0 +1,166 @@
+{
+ "batch": 2,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "ara_lb_for_eng:S0338L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بشكل in the seed's \"بشكل سيء\", and L2 'badly => بشكل سيء' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0358L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix لـ is fused into للقمة in the seed, and L3 'to the top => للقمة' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0379L04C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix عا is fused into عأفريقيا in the seed, and L4 'to Africa => عأفريقيا' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0378L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix لـ is fused into للإجازة in the seed, and L2 'for holidays => للإجازة' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0378L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "الإجازة appears in the seed only as للإجازة, where the article's alef is elided after ل."
+  },
+  {
+   "id": "ara_lb_for_eng:S0377L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بالدني in the seed, and L2 'in the world => بالدني' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0383L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بالحديقة in the seed, and L1 'in the garden => بالحديقة' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0416L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بطليعة in the seed, and L3 'in the lead => بطليعة' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0411L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix لـ is fused into لأربعة in the seed, and L2 'for four => لأربعة' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0444L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بشكل in the seed, and L3 'in form => بشكل' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0542L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بغضب in the seed, and L3 'with anger => بغضب' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0462L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بإيطاليا in the seed, and L3 'in Italy => بإيطاليا' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0474L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix كـ is fused into كعرض in the seed, and L2 'as offer => كعرض' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0475L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بالانتظار in the seed, and L2 'about waiting => بالانتظار' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0490L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بأي in the seed, and L2 'in anyone => بأي حدا' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0552L01C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بآخر in the seed, and L1 'at the end => بآخر' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0506L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بهالمنطقة in the seed, and L2 'in this area => بهالمنطقة' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0544L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بالكامل in the seed, and L2 'absolutely => بالكامل' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0533L02C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix لـ is fused into لكل in the seed, and L2 'to every word => لكل كلمة' uses it."
+  },
+  {
+   "id": "ara_lb_for_eng:S0534L03C01",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The prefix بـ is fused into بهالطقس in the seed, and L3 'in this weather => بهالطقس' uses it."
+  }
+ ]
+}

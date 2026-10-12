@@ -1,0 +1,166 @@
+{
+ "batch": 8,
+ "model": "sonnet",
+ "verdicts": [
+  {
+   "id": "eng_for_ben:S0088L01C01",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "কারো/someone matches its own LEGO L1, but the seed says 'talk to people I don't know'; the LEGO differs from the seed."
+  },
+  {
+   "id": "eng_for_ben:S0115L02C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "'হচ্ছে না' is part of the seed's 'মনে হচ্ছে না', but the seed renders it as 'I don't feel as if', so 'doesn't seem' is a different rendering of that chunk."
+  },
+  {
+   "id": "eng_for_ben:S0323L01C01",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "হেঁটে is in the seed, which renders it as 'walk to school'; 'on foot' is a different gloss of the same word."
+  },
+  {
+   "id": "eng_for_ben:S0046L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "করা is the light verb in 'চিন্তা করা' (worry about); 'to do' is a literal gloss of a word the seed target does not render."
+  },
+  {
+   "id": "eng_for_ben:S0668L02C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has the contraction \"you'll all be able to go\", so 'will be able to go' is not contiguous. Any substring fix would change the gloss."
+  },
+  {
+   "id": "eng_for_ben:S0063L02C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "কিছু is part of 'কিছু মনে করা না' (don't mind); 'anything' is not rendered in the seed target."
+  },
+  {
+   "id": "eng_for_ben:S0009L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "পারি is the 'can' in 'বলতে পারি', which the seed renders as 'I speak'; 'can' is a back-gloss."
+  },
+  {
+   "id": "eng_for_ben:S0068L01C02",
+   "verdict": "d",
+   "class": "d-lego-paraphrase",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The row matches LEGO খুঁজছি (I'm looking for), but the seed has খুঁজছো / 'are you looking for'; the LEGO disagrees with the seed."
+  },
+  {
+   "id": "eng_for_ben:S0602L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "থেকে is in the seed's 'প্রথম থেকে', which is rendered as the idiom 'in the first place'; 'from' is a literal back-gloss."
+  },
+  {
+   "id": "eng_for_ben:S0247L01C01",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "মনে is in 'মনে করতাম' (I thought); 'in mind' is a literal gloss the seed target does not render."
+  },
+  {
+   "id": "eng_for_ben:S0271L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "চাও is in 'আসতে চাও', rendered in the seed as 'would you like'; 'you want' is a literal gloss."
+  },
+  {
+   "id": "eng_for_ben:S0307L02C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has the contraction \"who's sitting\", so 'is sitting' is not contiguous, and a substring fix would change the gloss."
+  },
+  {
+   "id": "eng_for_ben:S0114L02C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "হচ্ছে is in 'মনে হচ্ছে', rendered as 'I feel as if'; 'it seems' is a literal back-gloss."
+  },
+  {
+   "id": "eng_for_ben:S0103L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "অনেক is in 'আরও অনেক' (many more); 'a lot' is a literal gloss that the seed does not render."
+  },
+  {
+   "id": "eng_for_ben:S0210L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "করা is the light verb in 'আলোচনা করা' (discuss); 'do' is a literal back-gloss."
+  },
+  {
+   "id": "eng_for_ben:S0117L03C02",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "বলেছিলাম is in the seed's 'কথা বলেছিলাম' (we talked); 'we said' is a different gloss of the same verb."
+  },
+  {
+   "id": "eng_for_ben:S0340L01C02",
+   "verdict": "d",
+   "class": "d-backgloss",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The particle যে ('that') is not rendered in the seed target 'I'm sure he's going to be okay'."
+  },
+  {
+   "id": "eng_for_ben:S0633L02C03",
+   "verdict": "d",
+   "class": "d-other",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed target says 'large' for বড়; 'big' is a synonym, and LEGO L1 also uses 'big'."
+  },
+  {
+   "id": "eng_for_ben:S0306L03C02",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed has the contraction \"who's talking\", so 'is talking' is not contiguous, and a substring fix would change the gloss."
+  },
+  {
+   "id": "eng_for_ben:S0630L01C03",
+   "verdict": "d",
+   "class": "d-discontiguous",
+   "sibling": null,
+   "fixed_target": null,
+   "why": "The seed's 'Can I have' interposes 'I' between the words, and 'could' is a different modal; the row follows its LEGO 'could I have'."
+  }
+ ]
+}
