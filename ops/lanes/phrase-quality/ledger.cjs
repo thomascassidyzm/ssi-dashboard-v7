@@ -19,4 +19,8 @@ function pendingUndo(lines, only) {
   lines.forEach((l, i) => { if (l.action === 'undone') lastUndone.set(l.row_id, i) })
   return lines.filter((l, i) => l.action !== 'undone' && i > (lastUndone.has(l.row_id) ? lastUndone.get(l.row_id) : -1) && (!only || l.row_id === only)).reverse()
 }
-module.exports = { readLedger, doneRowIds, pendingUndo }
+// what apply-staged.cjs applies: replace/delete lines whose row is not already done, and not on hold.
+// A line with "hold" (ramp 967: a replacement whose new text has no audio yet) stays staged until the
+// hold is lifted; it is never applied by this tool while it carries one.
+const stagedTodo = (staged, done) => staged.filter((d) => ['replace', 'delete'].includes(d.decision) && !d.hold && !done.has(d.row_id))
+module.exports = { readLedger, doneRowIds, pendingUndo, stagedTodo }

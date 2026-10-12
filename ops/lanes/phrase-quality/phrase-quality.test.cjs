@@ -34,6 +34,16 @@ assert.equal(inScope({ course_code: 'fin_for_eng', status: 'draft' }), false)
   assert.deepEqual(pendingUndo(U).map((l) => l.row_id), ['b'], 'an undone row is not undone twice')
   assert.deepEqual(pendingUndo([...U, { row_id: 'a', action: 'replace', before: { v: 3 } }]).map((l) => l.row_id), ['a', 'b'], 'a re-applied row is undoable again')
 }
+// RAMP 967: a staged line carrying "hold" (a replacement whose new text has no audio yet) is NOT applied;
+// apply-staged takes only un-held replace/delete lines whose row is not already done.
+{
+  const { stagedTodo } = require('./ledger.cjs')
+  const S = [{ row_id: 'r', decision: 'replace' }, { row_id: 'h', decision: 'replace', hold: 'audio' }, { row_id: 'd', decision: 'delete' },
+    { row_id: 'k', decision: 'keep' }, { row_id: 'x', decision: 'delete' }]
+  assert.deepEqual(stagedTodo(S, new Set(['x'])).map((d) => d.row_id), ['r', 'd'], 'held, kept and done lines are not applied')
+  const src = require('fs').readFileSync(require('path').join(__dirname, 'apply-staged.cjs'), 'utf8')
+  assert.ok(src.includes('stagedTodo(staged, done)'), 'apply-staged selects its work through stagedTodo')
+}
 // REGRESSION (#441): a staged decision whose LEGO is gone is skipped, not a crash on sets.get(key).
 {
   const src = require('fs').readFileSync(require('path').join(__dirname, 'apply-staged.cjs'), 'utf8')

@@ -1,3 +1,15 @@
+## 2026-10-12 — Phrase-quality ramp 967: the lane's contract at volume, from one script (job #979)
+
+**Purpose (Tom, 2026-10-12, programme #967):** phrase quality across all SSi courses this fortnight; the lane (24 windows/day) would take ~100 days.
+
+**What runs.** `ops/lanes/phrase-quality/ramp/run-ramp.cjs`, one process, a few windows at once, model calls through the Claude CLI on the account the surface's router names. Per window it does exactly the lane's steps with the lane's own tools: `export-window.cjs` → judge A lists BAD phrases with at most one replacement → judge B reads each line cold in a fresh context, BAD/NOT-BAD, and keeps A's replacement only if it would make exactly that one → `gate-change.cjs` (Popty course-builder replay, floor of 4 USE) → `staged/<course>.jsonl` → `apply-staged.cjs --apply` with the undo ledger. Seeds, LEGOs and component rows untouched; Welsh excluded.
+
+**Second judge: Opus reading cold, first judge: Sonnet.** The lane's rule is two independent judgements. The lane gets independence from family (Codex then Opus); the ramp gets it from a different, stronger model in a fresh context that never sees the window through the first judge's eyes except its listed lines, and that is told it is not there to agree. Opus is the reviewer, as in the lane, so the bar that lands a change is unchanged; Sonnet replaces Codex as the finder because the brief spends Claude capacity, not Codex credits. Better: the same verdict standard at ten times the rate. Simpler: one process instead of two workers per window. Cheaper: no per-window worker start-up, worktree or repo read; tokens spent only on the judging.
+
+**Replacements are held, not applied.** Every replacement the gate passes is staged with `hold: "audio"`: its new text has no audio, and this run renders none. `apply-staged.cjs` skips held lines (`ledger.stagedTodo`, tested). Deletes need no audio and are applied as the lane applies them. Lifting the hold is one edit per line and then the normal apply plus an audio-pass request.
+
+**No double work with the lane.** The ramp never takes a window inside the first 600 items of the lane's queue (origin/main `queue.json`; 24/day reaches ~280 by 22 Oct), never one the lane has taken (`lanes_runs`, read-only), never one with run files already. Claimed windows are listed in `ops/lanes/phrase-quality/claims.json`; the lane honours that file once command-surface branch `ramp-967-pq-claims` is merged.
+
 ## 2026-10-09 — Phrase v4 landed in French and Bengali; new lines voiced (job #993)
 
 **Tom, 2026-10-09 09:32Z:** "Yes. Merge French and Bengali. Then we need to rebuild the audio. Bengali has not been settled so we want to leave the audio for that one for the Bengali voices - unless no options in Cartesia. And English is already settled as Tom and Charlotte in Cartesia".

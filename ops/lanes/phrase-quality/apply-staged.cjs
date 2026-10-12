@@ -7,12 +7,13 @@
 //   - a REPLACE is re-judged by the course-builder gate on live data; failing now → treated as a delete
 //   - a DELETE re-checks the floor live: never below 4 USE phrases per LEGO (Tom 2026-10-11 20:57)
 //   - only BUILD/USE practice phrases; seeds and LEGOs are never written
+//   - a line carrying "hold" (ramp 967: replacement awaiting audio) is left staged, never applied
 //   - a replaced side loses its audio ids, so the normal render voices the new text (no audio here)
 // Usage: node ops/lanes/phrase-quality/apply-staged.cjs <course> [--apply]
 'use strict'
 const fs = require('fs'), path = require('path')
 const { client, USE_FLOOR } = require('./lib.cjs')
-const { readLedger, doneRowIds } = require('./ledger.cjs')
+const { readLedger, doneRowIds, stagedTodo } = require('./ledger.cjs')
 const { judgeReplacement, loadSets } = require('./gate-change.cjs')
 
 async function main() {
@@ -22,7 +23,7 @@ async function main() {
   const ledgerPath = path.join(__dirname, 'undo', `${course}.jsonl`)
   const staged = fs.existsSync(stagedPath) ? fs.readFileSync(stagedPath, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l)) : []
   const done = doneRowIds(readLedger(ledgerPath))   // a row whose last ledger line is 'undone' is open again
-  const todo = staged.filter((d) => ['replace', 'delete'].includes(d.decision) && !done.has(d.row_id))
+  const todo = stagedTodo(staged, done)   // held lines (hold: 'audio') are left staged
   const { makeCourseCtx, checkPhraseSet } = require('../../../tools/phrase-gate/gate-check.cjs')
   const ctx = makeCourseCtx(client(), course)
   const sets = await loadSets(course, todo)
