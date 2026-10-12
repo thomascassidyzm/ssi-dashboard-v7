@@ -21,8 +21,8 @@ const { recordContentEdit } = require('../../services/shared/content-edit-log.cj
 const T6 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }, has = f => argv.includes(f)
-const dryRun = has('--dry-run')
-const dir = path.join(__dirname, '../../ops/813-tom006-english'), ledger = path.join(dir, 'ledger.jsonl')
+const dryRun = has('--dry-run'), maleOnly = has('--male-charlotte-only')   // job #15: only the male-role slots sitting on Charlotte
+const dir = process.env.TOM006_DIR || path.join(__dirname, '../../ops/813-tom006-english'), ledger = path.join(dir, 'ledger.jsonl')   // job #15 uses its own dir so its ledger never collides with the running #813 file
 const lines = () => fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
 const log = e => { if (!dryRun) fs.appendFileSync(ledger, JSON.stringify({ ...e, at: new Date().toISOString() }) + '\n') }
 function supa() {
@@ -34,6 +34,19 @@ const setPointer = async (db, s, from, to, ev) => {
   const col = colFor(s)
   const { data, error } = await db.from(s.tbl).update({ [col]: to, last_edit_event_id: ev }).eq('id', s.key).eq(col, from).select('id')
   if (error) throw new Error(error.message); return !!data && data.length === 1
+}
+const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
+// Job #15 (Tom 2026-10-12): the runner used to see only slots on a NON-Cartesia clip, so a male-role slot that #573's gender-blind passes had moved onto Charlotte
+// counted as finished and was never put back. A slot is MALE-ROLE when its pre-#573 clip was a male voice; those on Charlotte now count as remaining.
+// Female-origin Charlotte slots stay Charlotte (gender variance is wanted). The origin is read from #573's own ledgers, the only record of it.
+const maleRoleCharlotteKeys = () => {
+  const { evidencePath } = require('../lib/evidence-path.cjs'), { voiceGender, pendingSwaps } = require('./charlotte-backfill.cjs'), keys = new Set()
+  for (const c of ['spa_for_eng', 'deu_for_eng', 'fra_for_eng', 'ita_for_eng', 'spa_mx_for_eng', 'zho_for_eng', 'ara_for_eng', 'por_for_eng', 'por_br_for_eng', 'kor_for_eng', 'jpn_for_eng']) {
+    const f = evidencePath(`573/${c}-ledger.jsonl`); if (!fs.existsSync(f)) continue
+    const all = fs.readFileSync(f, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse)
+    for (const e of pendingSwaps(all)) if (e.role === 'known' && e.newId && voiceGender(e.oldVoice) === 'm') for (const sl of e.slots || []) if ((sl.col || 'known_audio_id') === 'known_audio_id') keys.add(`${sl.tbl}:${sl.key}`)
+  }
+  return keys
 }
 const TABLES = ['course_seeds', 'course_legos', 'course_practice_phrases']
 // a slot's column: explicit, else inferred from the course (eng_for_X holds English in target2; X_for_eng in known). The #995 recovered rows carry no col.
@@ -113,13 +126,15 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
     3: () => x11.map(c => ({ c, lo: 101, hi: 668 })),                                                         // the rest of 101-668, the 11
     4: () => [...engFor, ...otherPrem].map(c => ({ c, lo: 1, hi: 100 })),                                     // seeds 1-100 of every other premium course
     5: () => [...engFor, ...otherPrem, ...courses.filter(c => c.pricing_tier !== 'premium')].filter(c => fu(c) > 0).map(c => ({ c, lo: 1, hi: fu(c) })),   // up to the furthest learner, everything else with English
-    6: () => [...engFor, ...otherPrem].map(c => ({ c, lo: 101, hi: 668 })),                                   // 101-668, eng_for_X then the rest
+    6: () => [...engFor, ...otherPrem].map(c => ({ c, lo: 101, hi: 668 })),
+    7: () => x11.map(c => ({ c, lo: 1, hi: 99999 })),                                                         // job #15: whole course, the 11 (puts male-role Charlotte slots back to Tom-006)                                   // 101-668, eng_for_X then the rest
   }
   const stages = stageArg === 'all' ? [1, 2, 3, 4, 5, 6] : stageArg.split(',').map(Number)
-  const otherCartesia = new Set((await pg.query(`select distinct text_normalized t from course_audio where language in ('eng','en') and voice_id like 'cartesia\\_%' and voice_id <> $1`, [T6])).rows.map(r => r.t))
+  const otherCartesia = maleOnly ? new Set() : new Set((await pg.query(`select distinct text_normalized t from course_audio where language in ('eng','en') and voice_id like 'cartesia\\_%' and voice_id <> $1`, [T6])).rows.map(r => r.t))
+  const maleKeys = maleRoleCharlotteKeys()
   const itemsFor = async ({ c, lo, hi }) => {
     const col = colOf(c), code = c.course_code
-    const { rows } = await pg.query(`
+    const { rows } = maleOnly ? { rows: [] } : await pg.query(`
       with s as (
         select seed_number pos, ${col} aid from course_seeds where course_code=$1 and ${col} is not null and seed_number between $2 and $3
         union all select seed_number, ${col} from course_legos where course_code=$1 and ${col} is not null and seed_number between $2 and $3
@@ -127,7 +142,21 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
       select ca.text_normalized t, min(ca.text) tx, min(s.pos) pos, count(*) lines from s join course_audio ca on ca.id=s.aid
       where ca.language in ('eng','en') and ca.role in ('known','target2') and ca.voice_id not like 'cartesia\\_%'
       group by 1 order by 3, 1`, [code, lo, hi])
-    return rows.filter(r => !otherCartesia.has(r.t)).map(r => ({ ...r, course: code, role: isEngTarget(c) ? 'target2' : 'known' }))
+    const out = maleOnly ? [] : rows.filter(r => !otherCartesia.has(r.t)).map(r => ({ ...r, course: code, role: isEngTarget(c) ? 'target2' : 'known' }))
+    if (!isEngTarget(c)) {   // male-role slots sitting on Charlotte (job #15): looked up by their own ids, never by scanning the course
+      const ch = []
+      for (const tbl of TABLES) {
+        const ids = [...maleKeys].filter(k => k.startsWith(tbl + ':')).map(k => k.slice(tbl.length + 1))
+        if (!ids.length) continue
+        const { rows: r } = await pg.query(`select x.seed_number pos, '${tbl}:'||x.id k, ca.text_normalized t, ca.text tx from ${tbl} x join course_audio ca on ca.id=x.${col}
+          where x.id::text = any($1) and x.course_code=$2 and x.seed_number between $3 and $4 and ca.voice_id=$5 and ca.role='known' and ca.language in ('eng','en')`, [ids, code, lo, hi, CHARLOTTE])
+        ch.push(...r)
+      }
+      const by = new Map()
+      for (const r of ch) if (maleKeys.has(r.k)) { const e = by.get(r.t) || { t: r.t, tx: r.tx, pos: r.pos, lines: 0, course: code, role: 'known' }; e.lines++; e.pos = Math.min(e.pos, r.pos); by.set(r.t, e) }
+      for (const e of by.values()) if (!out.some(o => o.t === e.t)) out.push(e)   // (kept even where another course holds a different Cartesia clip of the text: the slot, not the text, is what is owed)
+    }
+    return out
   }
   const t6Row = async t => (await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id=$2 and s3_key is not null and s3_key not like 'pending/%' and duration_ms>200 order by created_at limit 1`, [t, T6])).rows[0]
   if (plan) {   // count: distinct texts left to render vs texts that only need repointing (a Tom-006 row exists), chars, slots
@@ -139,12 +168,14 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
   }
   const oneSlotsOf = async t => {
     const { rows: olds } = await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id not like 'cartesia\\_%'`, [t])
-    const ids = olds.map(r => r.id); if (!ids.length) return []
+    const ids = maleOnly ? [] : olds.map(r => r.id)
+    const { rows: chs } = await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id=$2`, [t, CHARLOTTE])
+    const chIds = new Set(chs.map(r => r.id)); ids.push(...chIds); if (!ids.length) return []
     const out = []
     for (const tbl of TABLES) for (const col of ['known_audio_id', 'target2_audio_id']) {
       const { rows } = await pg.query(`select x.id::text key, x.course_code course, x.${col}::text "from" from ${tbl} x join courses c on c.course_code=x.course_code
         where x.${col} = any($1::uuid[]) and c.status in ('released','beta')`, [ids])
-      out.push(...rows.map(r => ({ tbl, col, ...r })))
+      out.push(...rows.filter(r => !chIds.has(r.from) || maleKeys.has(`${tbl}:${r.key}`)).map(r => ({ tbl, col, ...r })))   // a Charlotte clip moves only from a male-role slot
     }
     return out
   }

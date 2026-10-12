@@ -211,7 +211,7 @@ function rateRetry(w) { w.rl = (w.rl || 0) + 1; return w.rl < RATE_RETRY_CAP }
  * on the money is spent for good, so a later throw (verify, ledger, DB) must NOT refund it. Only an unsettled clip is refunded.
  * budgetSkipped counts clips passed over because they do not fit the remaining budget: owed work, but not a failure.
  */
-async function runBudgeted(work, { budget, dryRun = false, gender = null, concurrency = 1, render: doRender, verify, commit, backoffMs = 5000 }) {
+async function runBudgeted(work, { budget, dryRun = false, gender = null, notGender = null, concurrency = 1, render: doRender, verify, commit, backoffMs = 5000 }) {
   let spent = 0, done = 0, failures = 0, genderSkipped = 0, budgetSkipped = 0
   let live = Math.max(1, concurrency), active = 0, stop = false, idx = 0
   const requeue = []
@@ -239,6 +239,8 @@ async function runBudgeted(work, { budget, dryRun = false, gender = null, concur
       if (!w) return null
       // belt and braces: the SQL and the JS lists agree, but a male slot must never reach Charlotte even if they drift
       if (gender && voiceGender(w.oldVoice) !== gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
+      // Tom 2026-10-12 (job #15): a MALE English known slot belongs to Tom-006, never Charlotte, whatever the gender-blind pass says; the 2026-10-11 gender-blind passes put 76 male-origin lines on Charlotte
+      if (notGender && voiceGender(w.oldVoice) === notGender) { console.log('MALE-ROLE-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
       if (spent + w.chars > budget) { if (spent === 0 && budget === 0) return null; budgetSkipped++; continue }
       return w
     }
@@ -333,7 +335,7 @@ async function main() {
     if (r.source === 'library') free++
   }
   const { spent, done, genderSkipped, budgetSkipped } = await runBudgeted(work, {
-    budget, dryRun, gender: pass.gender, concurrency: Number(process.env.CONCURRENCY || 1),
+    budget, dryRun, gender: pass.gender, notGender: pass.target === CHARLOTTE && pass.role === 'known' ? 'm' : null, concurrency: Number(process.env.CONCURRENCY || 1),
     render: w => render(course, w, dryRun, target, language), verify: r => verifyNew(pg, r.audioId, target), commit,
   })
   // machine line for the daily driver: work still owed in THIS scope (budget-skipped, failed, verify-failed, refused, unreached); never-doable gender skips excluded

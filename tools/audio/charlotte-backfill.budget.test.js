@@ -31,4 +31,10 @@ describe('driver parsePass (job #834)', () => {
     expect(parsePass('OUTSTANDING 2\n').skippedBudget).toBe(0) // old tool output
     expect(parsePass('nothing')).toBeNull()
   })
+  it('notGender m: a male-origin known clip is never rendered to Charlotte, a female one is (job #15)', async () => {
+    const rendered = []
+    const r = await runBudgeted([{ ...clip('m', 10), oldVoice: 'xai_gfzdpspr5fdp' }, clip('f', 10)], { budget: 100, notGender: 'm', render: async w => { rendered.push(w.oldId); return ok(w) }, verify: async () => null, commit: async () => {} })
+    expect(rendered).toEqual(['f'])
+    expect(r.genderSkipped).toBe(1)
+  })
 })
