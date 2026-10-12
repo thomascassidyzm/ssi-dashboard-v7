@@ -222,7 +222,7 @@ onBeforeUnmount(() => clearTimeout(timer))
   background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 0.5rem; padding: 0.55rem 0.7rem; margin-bottom: 0.4rem; cursor: pointer; }
 .proc-item.active { border-color: var(--accent); }
 .proc-item.locked { opacity: 0.6; }
-.proc-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.25rem; min-height: 12rem; }
+.proc-panel { min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 0.75rem; padding: 1.25rem; min-height: 12rem; }
 .proc-panel h2 { font-size: 1.2rem; font-weight: 600; margin: 0 0 0.4rem; }
 .summary { line-height: 1.5; margin: 0 0 1rem; }
 .decl { display: grid; grid-template-columns: 5rem 1fr; gap: 0.3rem 0.75rem; margin: 0 0 1rem; font-size: 0.9rem; }
