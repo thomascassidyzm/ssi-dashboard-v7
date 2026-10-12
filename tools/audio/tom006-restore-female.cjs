@@ -29,18 +29,20 @@ const supa = () => {
   return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 }
 const chunks = (a, n) => { const o = []; for (let i = 0; i < a.length; i += n) o.push(a.slice(i, i + n)); return o }
+const { mayPoint } = require('../../services/shared/resolve-voice.cjs')   // job #53: every pointer this tool writes is checked against resolveVoice
 ;(async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); await pg.query('set statement_timeout=0'); const db = supa()
   const identity = serviceIdentity('tom006-restore-female-24'), events = new Map(), moved = new Map()
   const event = async course => { if (!events.has(course)) events.set(course, await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-restore-female', operation: 'update', detail: { why: 'Tom 2026-10-12 job #24: female English lines back on Charlotte (gender variance)', ledger } })); return events.get(course) }
-  const setPointer = async (s, from, to, ev) => {
+  const setPointer = async (s, from, to, ev, restore = false) => {
+    if (!await mayPoint(db, { courseCode: s.course, col: colFor(s), to, restore })) return false
     const col = colFor(s), { data, error } = await db.from(s.tbl).update({ [col]: to, last_edit_event_id: ev }).eq('id', s.key).eq(col, from).select('id'); if (error) throw new Error(error.message); return !!data && data.length === 1
   }
   const bump = async () => { for (const c of moved.keys()) { if (dryRun) continue; try { const v = await bumpCourseVersion(db, c, 'patch'); if (!v) throw new Error('null'); log({ kind: 'bumped', course: c }); console.log('content_version', c, v) } catch (e) { console.log('BUMP FAILED', c, e.message); process.exitCode = 3 } } moved.clear() }
 
   if (has('--undo')) {   // every swap row: slot back to its Tom-006 id, only where the live value is still the Charlotte id this job wrote
     const rows = readJ(ledger).filter(e => e.kind === 'swap'); let n = 0, skipped = 0
-    try { for (const e of rows.reverse()) for (const s of e.slots) { if (dryRun) { n++; continue } if (await setPointer(s, e.newId, s.from, await event(s.course))) { n++; moved.set(s.course, 1) } else skipped++ } } finally { await bump(); await pg.end() }
+    try { for (const e of rows.reverse()) for (const s of e.slots) { if (dryRun) { n++; continue } if (await setPointer(s, e.newId, s.from, await event(s.course), true)) { n++; moved.set(s.course, 1) } else skipped++ } } finally { await bump(); await pg.end() }
     console.log('undone', n, 'skipped', skipped); return
   }
 

@@ -39,7 +39,9 @@ function supa() {
     if (fs.existsSync(p)) for (const l of fs.readFileSync(p, 'utf8').split('\n')) { const m = /^(SUPABASE_URL|SUPABASE_SERVICE_KEY)=(.*)$/.exec(l.trim()); if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^"|"$/g, '') }
   return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 }
-const setPointer = async (db, s, from, to, ev) => {
+const { mayPoint } = require('../../services/shared/resolve-voice.cjs')   // job #53: every pointer this tool writes is checked against resolveVoice
+const setPointer = async (db, s, from, to, ev, restore = false) => {
+  if (!await mayPoint(db, { courseCode: course, col: 'presentation_audio_id', to, restore })) return false
   const q = db.from(s.tbl).update({ presentation_audio_id: to, last_edit_event_id: ev }).eq('id', s.key)
   const { data, error } = await (from == null ? q.is('presentation_audio_id', null) : q.eq('presentation_audio_id', from)).select('id')
   if (error) throw new Error(error.message); return !!data && data.length === 1
@@ -68,7 +70,7 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
       for (const sl of onNew) {
         const r = restore.get(`${sl.tbl}:${sl.key}`); if (!r) { noTarget++; continue }
         if (dryRun) { console.log('would undo', sl.tbl, sl.key, sl.cur, '->', r.from); n++; continue }
-        if (await setPointer(db, r, sl.cur, r.from, await event())) { n++; await touch(1) }
+        if (await setPointer(db, r, sl.cur, r.from, await event(), true)) { n++; await touch(1) }
       }
     } finally { await bump(n > 0) }   // a mid-undo throw still bumps content_version for what already moved
     if (!dryRun && (touched > 0 || stopFlag)) { console.error('content_version bump still pending after undo'); process.exitCode = 2 }

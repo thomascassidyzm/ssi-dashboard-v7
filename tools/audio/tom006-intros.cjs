@@ -24,7 +24,9 @@ function supa() {
     if (fs.existsSync(p)) for (const l of fs.readFileSync(p, 'utf8').split('\n')) { const m = /^(SUPABASE_URL|SUPABASE_SERVICE_KEY)=(.*)$/.exec(l.trim()); if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^"|"$/g, '') }
   return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 }
-const setPointer = async (db, s, from, to, ev) => {
+const { mayPoint } = require('../../services/shared/resolve-voice.cjs')   // job #53: every pointer this tool writes is checked against resolveVoice
+const setPointer = async (db, s, from, to, ev, restore = false) => {
+  if (!await mayPoint(db, { courseCode: course, col: 'presentation_audio_id', to, restore })) return false
   const { data, error } = await db.from(s.tbl).update({ presentation_audio_id: to, last_edit_event_id: ev }).eq('id', s.key).eq('presentation_audio_id', from).select('id')
   if (error) throw new Error(error.message); return data && data.length === 1
 }
@@ -53,7 +55,7 @@ const log = makeLog(ledger, dryRun)
     let n = 0
     for (const p of undoPlan(lines())) {
       if (dryRun) { console.log('would undo', p.lego_id, p.newId, '->', p.oldId, p.slots.length, 'slots'); n += p.slots.length; continue }
-      let moved = 0; for (const s of p.slots) if (await setPointer(db, s, p.newId, p.oldId, await event())) moved++   // conditional: only slots still on newId move
+      let moved = 0; for (const s of p.slots) if (await setPointer(db, s, p.newId, p.oldId, await event(), true)) moved++   // conditional: only slots still on newId move
       if (undoRecordable(moved)) log({ kind: 'undo', oldId: p.oldId, newId: p.newId, lego_id: p.lego_id, moved }); else console.log('0 slots moved, NOT recorded as undone:', p.lego_id, p.newId)
       n += moved
     }

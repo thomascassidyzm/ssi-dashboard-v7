@@ -244,6 +244,18 @@ async function assertPointer(db, { courseCode, col, to }) {
 }
 
 /**
+ * For tools with their own pointer writer: true when the write may go ahead, false (with one printed line) when resolveVoice refuses
+ * it. A RESTORE of a ledgered before-state (an undo) passes — putting back what was there is not choosing a voice — and so does a null.
+ */
+async function mayPoint(db, { courseCode, col, to, restore = false, log = console.log }) {
+  if (restore || to == null) return true
+  try { await assertPointer(db, { courseCode, col, to }); return true } catch (e) {
+    if (e.code !== 'VOICE_POLICY') throw e
+    log(`REFUSED by resolveVoice (${e.reason}): ${e.message}`); return false
+  }
+}
+
+/**
  * THE guarded pointer write: check, then `update … set col=to where id=key and col=from` (before-state asserted).
  * Returns true when exactly one row moved. Tools that repoint audio call this instead of writing the column themselves.
  */
@@ -259,7 +271,7 @@ async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEve
 }
 
 module.exports = {
-  resolveVoice, applyResolvedVoices, checkPointer, assertPointer, setSlotPointer, loadCast, loadCourse, useCast, pickCast,
+  resolveVoice, applyResolvedVoices, checkPointer, assertPointer, mayPoint, setSlotPointer, loadCast, loadCourse, useCast, pickCast,
   canonVoice, sameVoice, roleOfColumn, VoicePointerRefusal,
   POLICY, SLOT_ROLES, SLOT_GENDER, TOM_006, CHARLOTTE, TOM006_INTRO_COURSES, EXPECTED_ENGLISH_TARGET, COURSE_FIELDS,
 }

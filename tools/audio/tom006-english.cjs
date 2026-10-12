@@ -30,8 +30,10 @@ function supa() {
     if (fs.existsSync(p)) for (const l of fs.readFileSync(p, 'utf8').split('\n')) { const m = /^(SUPABASE_URL|SUPABASE_SERVICE_KEY)=(.*)$/.exec(l.trim()); if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^"|"$/g, '') }
   return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 }
-const setPointer = async (db, s, from, to, ev) => {
+const { mayPoint } = require('../../services/shared/resolve-voice.cjs')   // job #53: every pointer this tool writes is checked against resolveVoice
+const setPointer = async (db, s, from, to, ev, restore = false) => {
   const col = colFor(s)
+  if (!await mayPoint(db, { courseCode: s.course, col, to, restore })) return false
   const { data, error } = await db.from(s.tbl).update({ [col]: to, last_edit_event_id: ev }).eq('id', s.key).eq(col, from).select('id')
   if (error) throw new Error(error.message); return !!data && data.length === 1
 }
@@ -98,7 +100,7 @@ const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
         const cur = liveVal.get(k)   // preloaded in batches below (one query per slot was ~60,000 round trips)
         if (dryRun) { console.log(cur === s.from ? 'already restored' : news.has(cur) ? 'would undo' : 'would SKIP (changed by someone else)', k, cur, '->', s.from); if (news.has(cur)) n++; continue }
         if (cur === s.from) { done.push(k); continue }
-        if (news.has(cur) && await setPointer(db, s, cur, s.from, await event(s.course))) { await touch(s.course, 1); n++; done.push(k) } else { skipped++; console.log('SKIPPED', k, 'live', cur) }
+        if (news.has(cur) && await setPointer(db, s, cur, s.from, await event(s.course), true)) { await touch(s.course, 1); n++; done.push(k) } else { skipped++; console.log('SKIPPED', k, 'live', cur) }
       }
     } finally { try { if (!dryRun) { log({ kind: 'undone', keys: done }); await bump(); await bumpBackstop() } } finally { await pg.end(); if (bumpFailed || skipped) process.exitCode = 3 } }
     console.log(dryRun ? 'would undo' : 'undone slots', n, 'skipped', skipped); return
