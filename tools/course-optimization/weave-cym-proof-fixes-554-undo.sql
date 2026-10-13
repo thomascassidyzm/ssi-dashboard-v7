@@ -10,16 +10,37 @@ BEGIN;
 SET LOCAL statement_timeout = '20min';
 
 DO $$ BEGIN IF to_regclass('backup_cym_proof_fixes_554_legos') IS NULL THEN RAISE EXCEPTION 'not applied (no backup_cym_proof_fixes_554_legos)'; END IF; END $$;
-SET CONSTRAINTS ALL DEFERRED;  -- the debut guard judges the restored seeds at the end, not each delete
+-- The debut guard (debut_keeps_practice) is satisfied step by step rather than at COMMIT: the restored state has old
+-- empty debuts (old seeds 1-137 carry LEGOs with no phrases), which the guard tolerates only as a pre-existing state.
+-- So: every touched LEGO is first marked not-new, the seeds' phrases are deleted under IMMEDIATE checks (a not-new LEGO
+-- needs no practice), and the backup rows are then INSERTED back (an insert is not judged).
+SET CONSTRAINTS ALL IMMEDIATE;
 CREATE TEMP TABLE t_seeds AS SELECT course_code, v::int AS seed_number FROM backup_cym_proof_fixes_554_scope WHERE k = 'seed';
 CREATE TEMP TABLE t_extra AS SELECT v AS id FROM backup_cym_proof_fixes_554_scope WHERE k = 'extra';
 LOCK TABLE course_practice_phrases, course_legos, lego_introductions IN SHARE ROW EXCLUSIVE MODE;
+-- Refuse if another job has edited a touched seed since: a whole-seed restore would silently revert its work.
+CREATE TEMP TABLE ours AS SELECT id FROM content_edit_events WHERE actor_id LIKE 'claude-job-554-%';
+DO $$ BEGIN
+  IF EXISTS (SELECT 1 FROM course_legos l JOIN t_seeds USING (course_code, seed_number)
+             WHERE l.last_edit_event_id IS NOT NULL AND l.last_edit_event_id NOT IN (SELECT id FROM ours)
+               AND NOT EXISTS (SELECT 1 FROM backup_cym_proof_fixes_554_legos b WHERE b.id = l.id AND b.last_edit_event_id IS NOT DISTINCT FROM l.last_edit_event_id))
+  OR EXISTS (SELECT 1 FROM course_practice_phrases p WHERE ((p.course_code, p.seed_number) IN (SELECT course_code, seed_number FROM t_seeds) OR p.id IN (SELECT id FROM t_extra))
+             AND p.last_edit_event_id IS NOT NULL AND p.last_edit_event_id NOT IN (SELECT id FROM ours)
+             AND NOT EXISTS (SELECT 1 FROM backup_cym_proof_fixes_554_phrases b WHERE b.id = p.id AND b.last_edit_event_id IS NOT DISTINCT FROM p.last_edit_event_id)) THEN
+    RAISE EXCEPTION 'another job has edited a touched seed since #554·P: a whole-seed restore would revert it — undo by hand'; END IF;
+END $$;
+UPDATE course_legos l SET is_new = false FROM t_seeds t WHERE l.course_code = t.course_code AND l.seed_number = t.seed_number AND l.is_new;
 DELETE FROM course_practice_phrases p USING t_seeds t WHERE p.course_code = t.course_code AND p.seed_number = t.seed_number;
-DELETE FROM course_practice_phrases WHERE id IN (SELECT id FROM t_extra);
 DELETE FROM lego_introductions i USING t_seeds t WHERE i.course_code = t.course_code AND substr(i.lego_id, 2, 4)::int = t.seed_number;
 DELETE FROM course_legos l USING t_seeds t WHERE l.course_code = t.course_code AND l.seed_number = t.seed_number;
 INSERT INTO course_legos (id, course_code, seed_number, lego_index, type, is_new, known_text, target_text, components, status, release_batch, version, updated_at, created_at, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms, target_text_roman, target_lego_id, known_gloss_segments, last_edit_event_id) SELECT id, course_code, seed_number, lego_index, type, is_new, known_text, target_text, components, status, release_batch, version, updated_at, created_at, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms, target_text_roman, target_lego_id, known_gloss_segments, last_edit_event_id FROM backup_cym_proof_fixes_554_legos;
-INSERT INTO course_practice_phrases SELECT * FROM backup_cym_proof_fixes_554_phrases;
+INSERT INTO course_practice_phrases SELECT b.* FROM backup_cym_proof_fixes_554_phrases b JOIN t_seeds t ON t.course_code = b.course_code AND t.seed_number = b.seed_number;
+-- phrases outside the touched seeds: written back in place (their LEGOs were never touched)
+UPDATE course_practice_phrases p SET target_text = b.target_text, lego_position = b.lego_position, decomposition = b.decomposition,
+  decomposition_course_version = b.decomposition_course_version, display_tiling = b.display_tiling, display_tiling_version = b.display_tiling_version,
+  target1_audio_id = b.target1_audio_id, target2_audio_id = b.target2_audio_id, known_audio_id = b.known_audio_id, presentation_audio_id = b.presentation_audio_id,
+  last_edit_event_id = b.last_edit_event_id
+FROM backup_cym_proof_fixes_554_phrases b WHERE b.id = p.id AND p.id IN (SELECT id FROM t_extra);
 INSERT INTO lego_introductions SELECT * FROM backup_cym_proof_fixes_554_intros;
 UPDATE course_seeds s SET target_text = b.target_text, known_text = b.known_text, last_edit_event_id = b.last_edit_event_id FROM backup_cym_proof_fixes_554_seeds b WHERE s.id = b.id;
 -- the job's flag rows sit at the LEGO's new id (or its old one, where it did not move)
