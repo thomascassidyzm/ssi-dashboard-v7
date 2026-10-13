@@ -57,3 +57,18 @@ describe('isSoftMutationVariant — nasal and aspirate stay NEW (Aran ruling 202
     expect(isSoftMutationVariant(C, 'ei chath hi', 'ei gath hi')).toBe(false);
   });
 });
+
+// Aran's proofing (job #554, 2026-10-13): a LEGO is introduced with its full article ("y peth glas ’na",
+// "y lle ’na") and practised where the article clips after a vowel ("dw i’n hoffi’r peth glas ’na").
+// y / yr / ’r are one word, the article, so the phrase still carries the LEGO.
+describe('welshContainsLego — the article y / yr / ’r is one word', () => {
+  const { welshContainsLego } = require('./welsh-mutation.cjs');
+  it('y peth glas ’na is carried by hoffi’r peth glas ’na', () => {
+    expect(welshContainsLego('cym_sv2_for_eng', 'y peth glas ’na', 'dw i’n hoffi’r peth glas ’na')).toBe(true);
+    expect(welshContainsLego('cym_sv2_for_eng', 'y bws ola’n gadael', 'weles i’r bws ola’n gadael')).toBe(true);
+    expect(welshContainsLego('cym_nv2_for_eng', 'y lle ’na', 'dw i’n hapus efo’r lle ’na')).toBe(true);
+  });
+  it('a different word is still not the LEGO', () => {
+    expect(welshContainsLego('cym_sv2_for_eng', 'y peth glas ’na', 'dw i’n hoffi’r llyfr glas ’na')).toBe(false);
+  });
+});
