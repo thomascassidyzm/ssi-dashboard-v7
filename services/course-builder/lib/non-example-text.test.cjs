@@ -31,4 +31,8 @@ describe('checkNonExampleText: every submitted string is later spoken, so no [la
   it('lets a slash between digits through — 24/7, 3/4 are written numbers, not alternatives', () => {
     expect(checkNonExampleText([{ idx: 1, known: 'three quarters', target: '3/4' }])).toEqual([])
   })
+  it('refuses a word slash even when one neighbour is a digit — "one/1", "1/one" (#528)', () => {
+    const bad = checkNonExampleText([{ idx: 1, known: 'one/1', target: 'een' }, { idx: 2, known: '1/one', target: 'een' }, { idx: 3, known: 'two', target: '2/two' }])
+    expect(bad.map((b) => b.text)).toEqual(['one/1', '1/one', '2/two'])
+  })
 })

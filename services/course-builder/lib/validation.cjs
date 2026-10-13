@@ -982,8 +982,8 @@ function checkMetadataGloss(legos) {
 // zero-explanation gate in apml/services/course-builder-api.apml was never wired into code, this check
 // covered only [] and {}, and the standard TTS path (phase8-audio-from-baskets) quietly stripped (...) so
 // no ear caught it — until the Tom-voice intros spoke the LEGO text verbatim. Disambiguate with natural
-// English words in the prompt, never a note. A slash between digits (3/4, 24/7) is a number, not a list.
-const NON_EXAMPLE_TEXT = /[\[\]{}()（）［］｛｝]|(?<![0-9])\/(?![0-9])/;
+// English words in the prompt, never a note. A slash with a digit on BOTH sides (3/4, 24/7) is a number, not a list; "one/1" and "1/one" are lists (#528).
+const NON_EXAMPLE_TEXT = /[\[\]{}()（）［］｛｝]|(?<![0-9])\/|\/(?![0-9])/;
 
 /** True when one string holds a bracket, parenthesis or slash-separated alternatives — the shared test for every content-writing surface. */
 function hasNonExampleText(text) {

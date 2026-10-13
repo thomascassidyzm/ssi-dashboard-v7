@@ -87,11 +87,30 @@ describe('Intro Lab page', () => {
   })
 
   it('plays the sample captured at Play: switching course mid-play never fetches clips from the new course', async () => {
-    const w = await open()
+    // Hold the FIRST clip request pending, switch course while it is in flight, release it: every clip requested after the
+    // switch must still come from the course the play started on (#528 — the old test never switched course at all).
+    const other = { ...LIST, courseCode: 'other_course', languageName: 'Other', legos: [{ ...LEGO, legoId: 'OTH1' }] }
+    const plain = globalThis.fetch
+    let release, heldOnce = false
+    globalThis.fetch = vi.fn((url, ...rest) => {
+      const u = String(url)
+      if (u.includes('/clip/') && !heldOnce) { heldOnce = true; return new Promise((res) => { release = () => res({ ok: true, arrayBuffer: async () => new ArrayBuffer(8), blob: async () => new Blob(['x']) }) }) }
+      if (u.includes('/other_course/') && !u.includes('/clip/') && !u.includes('/lego/')) return Promise.resolve({ ok: true, json: async () => other })
+      return plain(url, ...rest)
+    })
+    const IntroLab = (await import('./IntroLab.vue')).default
+    let pick
+    const w = mount(IntroLab, { global: { stubs: { RouterLink: true, LabCrumbs: true, CoursePicker: { props: ['modelValue'], emits: ['update:modelValue'], template: '<span/>', mounted() { pick = (c) => this.$emit('update:modelValue', c) } } } } })
+    pick('afr_for_eng'); await flushPromises()
     await w.find('.go').trigger('click')
-    await vi.waitFor(() => expect(w.findAll('.steps li').length).toBe(4))
-    const IntroLabClips = () => globalThis.fetch.mock.calls.map((c) => String(c[0])).filter((u) => u.includes('/clip/'))
-    expect(IntroLabClips().every((u) => u.includes('/afr_for_eng/'))).toBe(true)
+    await vi.waitFor(() => expect(release).toBeTypeOf('function'))
+    pick('other_course'); await flushPromises()
+    release(); await flushPromises()
+    await new Promise((r) => setTimeout(r, 150)); await flushPromises()
+    const clips = globalThis.fetch.mock.calls.map((c) => String(c[0])).filter((u) => u.includes('/clip/'))
+    expect(clips.length).toBeGreaterThan(1)   // requests were made after the switch, not just the held one
+    expect(clips.every((u) => u.includes('/afr_for_eng/'))).toBe(true)
+    expect(clips.some((u) => u.includes('/other_course/'))).toBe(false)
     w.unmount()
   })
 })
