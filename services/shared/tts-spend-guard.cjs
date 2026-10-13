@@ -128,7 +128,7 @@ function jobMatches(jobText, token) {
  * per-provider / daily soft caps (JS dailyCap, and the DB's 1M automatic total cap (Tom 2026-10-07; was 260k) via
  * limits.commissioned). It still meets the hard daily ceiling (1,000,000 in tts_spend_reserve) and
  * a repeat ceiling of its own — 10 identical sends in 24h is a loop, not a commission.
- * The checker verifies ONLY that the #NNN names a live surface job (GET /api/jobs rows carry
+ * It asks the surface for status=running only (unfiltered is ~12.8MB; filtered ~2ms). The checker verifies ONLY that the #NNN names a live surface job (GET /api/jobs rows carry
  * job = the #NNN), never trusting the string alone; it does not verify the job commissioned
  * this particular render. That is the accepted trade-off (Watson): the 10-repeat limit and the
  * 1M ceiling remain the runaway stops. An unreachable surface means unattributed limits apply.
@@ -143,7 +143,7 @@ function surfaceCommissionChecker({ surface = process.env.CS_SURFACE || 'http://
     if (now() - cache.at >= COMMISSIONED_CACHE_MS) {
       const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 3000)
       try {
-        const r = await fetchImpl(`${surface}/api/jobs?owner=all`, { signal: ctl.signal })
+        const r = await fetchImpl(`${surface}/api/jobs?owner=all&status=running`, { signal: ctl.signal })
         if (!r.ok) return false
         const body = await r.json()
         cache = { at: now(), live: new Set((body.jobs || []).filter(j => j && j.status === 'running' && Number.isFinite(Number(j.job))).map(j => Number(j.job))) }

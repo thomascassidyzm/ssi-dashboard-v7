@@ -85,6 +85,12 @@ describe('surfaceCommissionChecker', () => {
     expect(await c('#6560')).toBe(false)
     expect(await c('no number')).toBe(false)
   })
+  it('asks the surface for running jobs only (the unfiltered list is ~12.8MB every 15s)', async () => {
+    const urls = []
+    const c = surfaceCommissionChecker({ now: () => 1, fetchImpl: async (u) => { urls.push(u); return { ok: true, json: async () => ({ jobs: [{ job: 656, status: 'running' }] }) } } })
+    expect(await c('#656')).toBe(true)
+    expect(urls).toEqual(['http://localhost:4317/api/jobs?owner=all&status=running'])
+  })
   it('an unreachable or erroring surface means unattributed limits', async () => {
     expect(await mk([], false)('#656')).toBe(false)
     const down = surfaceCommissionChecker({ now: () => 1, fetchImpl: async () => { throw new Error('down') } })
