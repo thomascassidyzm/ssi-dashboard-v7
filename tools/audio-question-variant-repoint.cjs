@@ -115,22 +115,34 @@ async function main() {
     if (argv.includes('--render-plan') || argv.includes('--render')) {
       const real = argv.includes('--render')
       const maxChars = Number(argv[argv.indexOf('--max-chars') + 1]) || 0
-      if (real && !maxChars) throw new Error('--render needs --max-chars N (the characters you are willing to spend this run)')
+      const libraryOnly = argv.includes('--library-only')   // free: link only clips the library already holds, render nothing
+      if (real && !maxChars && !libraryOnly) throw new Error('--render needs --max-chars N (the characters you are willing to spend this run)')
       const base = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
       const clips = [...p.distinctNeed.entries()]
       const byKey = new Map()
       for (const r of p.need) { const k = `${r.course_code}|${r.language}|${r.role}|${r.voice_id}|${r.want_key}`; (byKey.get(k) || byKey.set(k, []).get(k)).push(r) }
-      const results = []; let spent = 0, i = 0, stopped = null
+      const results = []; let spent = 0, i = 0, stopped = null, retries = 0
       const worker = async () => {
         while (i < clips.length && !stopped) {
           const [key, r] = clips[i++]
-          const body = { courseCode: r.course_code, role: r.role, text: r.txt, voiceId: r.voice_id, language: r.language,
+          const body = { courseCode: r.course_code, role: r.role, text: r.txt, language: r.language,   // no voiceId: the route insists on the course's CURRENT cast voice (old Azure/xai ids are refused)
+                         
                          purpose: '#586: right question/statement variant of a line whose recording was the other one', dryRun: !real }
+          if (real && libraryOnly) {
+            // ask first with a dry run; only a library hit proceeds to the real (free) call
+            const d = await (await fetch(`${base}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-586' }, body: JSON.stringify({ ...body, dryRun: true }) })).json().catch(() => ({}))
+            if (!(d.ok && d.source === 'library')) { results.push({ key, skipped: d.source || d.error || 'no library clip' }); continue }
+          }
           let res, out
           try {
             res = await fetch(`${base}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-586' }, body: JSON.stringify(body), signal: AbortSignal.timeout(120000) })
+            if (!res.ok && res.status >= 502) throw new Error(`HTTP ${res.status}`)
             out = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
-          } catch (e) { results.push({ key, error: `fetch: ${e.message}` }); if (real) stopped = 'Popty unreachable'; continue }
+          } catch (e) {
+            await new Promise(r => setTimeout(r, 15000)); i--   // Popty restarting (a deploy): wait, then retry this clip
+            if (++retries > 40) { stopped = 'Popty unreachable'; }
+            continue
+          }
           const chars = out.charsSpent || 0
           if (real) {
             spent += chars
@@ -138,7 +150,7 @@ async function main() {
               const moved = await repoint(c, byKey.get(key).map(l => ({ ...l, to: out.audioId })), 'render')
               results.push({ key, source: out.source, chars, audioId: out.audioId, moved: moved.moved })
             } else { results.push({ key, error: out.error || out.code || `HTTP ${res.status}` }); if (res.status === 402) stopped = out.code || '402 refusal' }
-            if (spent >= maxChars) stopped = `reached --max-chars ${maxChars}`
+            if (maxChars && spent >= maxChars) stopped = `reached --max-chars ${maxChars}`
           } else results.push({ key, source: out.source || null, wouldSpendChars: out.ok ? (out.wouldSpendChars ?? (out.source === 'rendered' ? r.txt.length : 0)) : null, error: out.ok ? undefined : (out.error || out.code) })
         }
       }
