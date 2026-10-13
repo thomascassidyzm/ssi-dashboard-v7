@@ -40,3 +40,27 @@ describe('LegoProof layout', () => {
     expect(css).toMatch(/--lp-ink:\s*#0b1220/)
   })
 })
+
+// Job #522: the list is the whole course; HC-block rows carry a badge and the All / HC only / Old only filter hides
+// rows without renumbering them.
+describe('LegoProof whole course', () => {
+  it('badges HC rows and filters All / HC only / Old only without renumbering', async () => {
+    const rows = [
+      { id: 'S0001L01', n: 1, cy: 'dw i isio', en: 'I want', isNew: true, hc: false, flagged: false, note: '' },
+      { id: 'S1001L01', n: 2, cy: 'mor aml â phosib', en: 'as often as possible', isNew: true, hc: true, flagged: false, note: '' },
+    ]
+    global.fetch = vi.fn(async () => ({ ok: true, json: async () => ({ legos: structuredClone(rows) }) }))
+    const { default: LegoProof } = await import('./LegoProof.vue')
+    const w = mount(LegoProof)
+    await flushPromises()
+    const ids = () => w.findAll('.row .id').map((e) => e.text())
+    const nums = () => w.findAll('.row .num small').map((e) => e.text())
+    expect(ids()).toEqual(['S0001L01', 'S1001L01'])
+    expect(w.findAll('.row')[0].find('.hc').exists()).toBe(false)
+    expect(w.findAll('.row')[1].find('.hc').text()).toBe('HC')
+    const tap = async (label) => { await w.findAll('.seg.part button').find((b) => b.text() === label).trigger('click') }
+    await tap('HC only'); expect(ids()).toEqual(['S1001L01']); expect(nums()).toEqual(['#2'])
+    await tap('Old only'); expect(ids()).toEqual(['S0001L01'])
+    await tap('All'); expect(ids()).toEqual(['S0001L01', 'S1001L01'])
+  })
+})

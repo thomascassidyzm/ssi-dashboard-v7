@@ -8,6 +8,9 @@
         </div>
       </div>
       <div class="bar">
+        <div class="seg part" role="tablist" aria-label="Which part of the course">
+          <button v-for="p in PARTS" :key="p.key" :class="{ on: part === p.key }" @click="part = p.key">{{ p.label }}</button>
+        </div>
         <button class="pill" :class="{ on: flaggedOnly }" @click="flaggedOnly = !flaggedOnly">⚑ Flagged only</button>
         <button class="pill" :class="{ on: showTaught }" @click="showTaught = !showTaught">Show taught</button>
         <span class="count"><b>{{ flaggedCount }}</b> flagged · {{ newCount }} new</span>
@@ -31,6 +34,7 @@
           <span class="id">{{ l.id }}</span>
           <small v-if="l.n">#{{ l.n }}</small>
           <small v-else>taught</small>
+          <span v-if="l.hc" class="hc" title="Hadau Creiddiol block">HC</span>
         </div>
         <div class="text" @click="toggle(l.id)">
           <div class="cyline">
@@ -53,7 +57,8 @@
 
 <script setup>
 // LEGO proof (job #496). Aran's ask, 2026-10-13: only the Welsh LEGO text, its number on the left, a flag to
-// tick when there is an issue; tap the Welsh to see the English. Every tick and note saves at once (no Submit, so nothing
+// tick when there is an issue; tap the Welsh to see the English. Job #522: the default list is the WHOLE course in the
+// order a learner meets it (row #1 = seed 1's first LEGO), HC-block rows badged, with an All / HC only / Old only filter. Every tick and note saves at once (no Submit, so nothing
 // is lost on a phone). Server side: services/lego-proof/lego-proof-router.cjs.
 import { ref, reactive, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
@@ -63,6 +68,12 @@ const COURSES = [
   { code: 'cym_nv2_for_eng', label: 'North' },
   { code: 'cym_sv2_for_eng', label: 'South' },
 ]
+// The filter only hides rows; numbers come from the server over the whole course, so they never shift.
+const PARTS = [
+  { key: 'all', label: 'All' },
+  { key: 'hc', label: 'HC only' },
+  { key: 'old', label: 'Old only' },
+]
 const route = useRoute()
 const router = useRouter()
 const course = ref(COURSES.some((c) => c.code === route.query.course) ? route.query.course : COURSES[0].code)
@@ -70,6 +81,7 @@ const legos = ref([])
 const loading = ref(false)
 const loadError = ref('')
 const showTaught = ref(false)
+const part = ref('all')
 const flaggedOnly = ref(false)
 const open = reactive({})
 const state = reactive({})
@@ -79,9 +91,10 @@ const exportText = ref(null)
 const exportBox = ref(null)
 
 const base = (code) => `${getApiBaseUrl()}/api/production/${code}/lego-proof`
-const shown = computed(() => legos.value.filter((l) => (showTaught.value || l.isNew || l.flagged) && (!flaggedOnly.value || l.flagged)))
-const flaggedCount = computed(() => legos.value.filter((l) => l.flagged).length)
-const newCount = computed(() => legos.value.filter((l) => l.isNew).length)
+const inPart = computed(() => legos.value.filter((l) => part.value === 'all' || (part.value === 'hc') === !!l.hc))
+const shown = computed(() => inPart.value.filter((l) => (showTaught.value || l.isNew || l.flagged) && (!flaggedOnly.value || l.flagged)))
+const flaggedCount = computed(() => inPart.value.filter((l) => l.flagged).length)
+const newCount = computed(() => inPart.value.filter((l) => l.isNew).length)
 
 function say(text, bad = false) { msg.value = text; msgBad.value = bad }
 
@@ -170,7 +183,7 @@ function exportFlags() {
   const label = COURSES.find((c) => c.code === course.value).label
   const rows = legos.value.filter((l) => l.flagged)
   exportText.value = [`LEGO proof flags — ${course.value} (${label}) — ${rows.length} flagged`, '']
-    .concat(rows.map((l) => `${l.id}${l.n ? ` (#${l.n})` : ' (taught)'}  ${l.cy}  =  ${l.en || '—'}${l.note ? `  — ${l.note}` : ''}`))
+    .concat(rows.map((l) => `${l.id}${l.n ? ` (#${l.n})` : ' (taught)'}${l.hc ? ' HC' : ''}  ${l.cy}  =  ${l.en || '—'}${l.note ? `  — ${l.note}` : ''}`))
     .join('\n')
 }
 async function copyExport() {
@@ -223,6 +236,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .noteinp { flex: 1; min-width: 0; font: inherit; font-size: 16px; color: var(--lp-ink); background: #fff; border: 1px solid #94a3b8; border-radius: 8px; padding: 0.4rem 0.55rem; }
 .noteinp::placeholder { color: #64748b; }
 .state { font-size: 0.7rem; color: var(--lp-muted); white-space: nowrap; }
+/* HC badge in the number column, so the flag stays straight after the Welsh (#509). #1e3a8a on #dbeafe is 9.4:1. */
+.num .hc { align-self: flex-start; margin-top: 0.15rem; font: 700 0.65rem/1 system-ui, sans-serif; letter-spacing: 0.04em; color: #1e3a8a; background: #dbeafe; border-radius: 4px; padding: 0.2rem 0.3rem; }
+.seg.part button { padding: 0.45rem 0.7rem; min-height: 40px; font-size: 0.85rem; }
 .flag { flex: none; width: 48px; height: 48px; margin: -0.6rem 0; padding: 0; border: 0; border-radius: 10px; background: transparent; font-size: 1.6rem; line-height: 1; color: #64748b; }
 .flag:hover { background: rgba(15, 23, 42, 0.06); }
 .flag.on { color: var(--lp-amber); }

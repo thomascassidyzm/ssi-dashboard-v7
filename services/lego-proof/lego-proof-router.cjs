@@ -2,7 +2,9 @@
  * LEGO proof page — HTTP side (job #496, Aran 2026-10-13: "a list showing ONLY the Welsh LEGO text, with the LEGO's
  * number on the left and a flag on the right he can tick to say there is an issue; tapping the Welsh reveals the English").
  *
- *   GET /           the Hadau Creiddiol block's LEGOs in RUNNING ORDER, each with its proof flag (if any).
+ *   GET /           the WHOLE course's LEGOs in RUNNING ORDER (old seeds 1..insert_after, the Hadau Creiddiol block, then
+ *                   the remaining old seeds; dropped seeds excluded), each with its proof flag (if any) and an `hc` mark.
+ *                   Job #522, Aran 2026-10-13: the first row must be the first thing the course teaches, not "mor aml â phosib".
  *   PUT /flag       { legoId, flagged, note } — upsert one flag. Saved the moment it is ticked; there is no Submit.
  *
  * READ-ONLY on course content: course_legos / course_running_order / course_seed_weave are only SELECTed. The one write
@@ -35,13 +37,15 @@ async function allRows(build) {
 
 /**
  * The proof list, pure. `order` is course_running_order rows ({seed_number, position, in_block}); a LEGO whose seed is
- * not IN THE BLOCK of the running order (a dropped seed, or an old seed) is not listed — the builder does not play a
- * dropped seed, so there is nothing to proof. Sorted by the seed's running position, then lego_index.
- * `n` is the LEGO's place among the block's NEW LEGOs (1..N) — the number Aran reads; taught (is_new=false) LEGOs get
- * n = null, so turning "show taught" on never renumbers anything.
+ * absent from the running order (a dropped seed) is not listed — the course does not play it, so there is nothing to
+ * proof. Sorted by the seed's running position, then lego_index.
+ * `n` is the LEGO's place among the WHOLE course's NEW LEGOs (1..N) in running order — the number Aran reads, so #1 is
+ * the first LEGO a learner meets; taught (is_new=false) LEGOs get n = null, so "show taught" and the HC / Old filter
+ * never renumber anything. `hc` is true for a LEGO in the Hadau Creiddiol block (in_block).
  */
 function buildProofList(legos, order, flags) {
-  const posOf = new Map(order.filter((o) => o.in_block).map((o) => [o.seed_number, o.position]))
+  const posOf = new Map(order.map((o) => [o.seed_number, o.position]))
+  const hcSeeds = new Set(order.filter((o) => o.in_block).map((o) => o.seed_number))
   const flagOf = new Map((flags || []).map((f) => [f.lego_id, f]))
   const rows = legos
     .filter((l) => posOf.has(l.seed_number))
@@ -53,6 +57,7 @@ function buildProofList(legos, order, flags) {
       id: l.lego_id,
       n: l.is_new ? ++n : null,
       isNew: !!l.is_new,
+      hc: hcSeeds.has(l.seed_number),
       cy: l.target_text,
       en: l.known_text,
       flagged: !!(f && f.flagged),
@@ -94,9 +99,9 @@ function createLegoProofRouter({ getDb, logger }) {
       if (!weave) return res.status(409).json({ error: `${courseCode} has no Hadau Creiddiol weave row` })
       const [order, legos, flags] = await Promise.all([
         allRows((a, b) => db.from('course_running_order').select('seed_number,position,in_block')
-          .eq('course_code', courseCode).eq('in_block', true).order('seed_number').range(a, b)),
+          .eq('course_code', courseCode).order('seed_number').range(a, b)),
         allRows((a, b) => db.from('course_legos').select('lego_id,seed_number,lego_index,is_new,target_text,known_text')
-          .eq('course_code', courseCode).gte('seed_number', weave.block_start).order('seed_number').order('lego_index').range(a, b)),
+          .eq('course_code', courseCode).order('seed_number').order('lego_index').range(a, b)),
         allRows((a, b) => db.from('lego_proof_flags').select('lego_id,flagged,note,flagged_by,updated_at')
           .eq('course_code', courseCode).order('lego_id').range(a, b)),
       ])

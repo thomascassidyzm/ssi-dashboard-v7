@@ -4,17 +4,21 @@ const { buildProofList, flagRow } = require('./lego-proof-router.cjs')
 const L = (seed, idx, isNew, cy) => ({ lego_id: `S${String(seed).padStart(4, '0')}L${String(idx).padStart(2, '0')}`, seed_number: seed, lego_index: idx, is_new: isNew, target_text: cy, known_text: cy + '-en' })
 
 describe('buildProofList', () => {
-  // The block plays in RUNNING ORDER, not id order, and a dropped seed (absent from course_running_order) is not listed.
+  // The WHOLE course plays in RUNNING ORDER (old seeds, then the HC block, then the remaining old seeds), not id order,
+  // and a dropped seed (absent from course_running_order) is not listed.
   const order = [
-    { seed_number: 1003, position: 140, in_block: true },
-    { seed_number: 1001, position: 141, in_block: true },
-    { seed_number: 12, position: 12, in_block: false },
+    { seed_number: 1, position: 1, in_block: false },
+    { seed_number: 1003, position: 2, in_block: true },
+    { seed_number: 1001, position: 3, in_block: true },
+    { seed_number: 12, position: 4, in_block: false },
   ]
-  const legos = [L(1001, 2, true, 'b'), L(1001, 1, false, 'a'), L(1003, 1, true, 'c'), L(1002, 1, true, 'dropped'), L(12, 1, true, 'old')]
+  const legos = [L(1001, 2, true, 'b'), L(1001, 1, false, 'a'), L(1003, 1, true, 'c'), L(1002, 1, true, 'dropped'), L(12, 1, true, 'old'), L(1, 1, true, 'dw i isio')]
 
-  it('orders by running position then lego index, numbers only the new LEGOs, skips dropped and pre-block seeds', () => {
+  it('lists the whole course from seed 1 in running order, numbers only the new LEGOs, marks HC rows, skips dropped seeds', () => {
     const rows = buildProofList(legos, order, [])
-    expect(rows.map((r) => [r.id, r.n])).toEqual([['S1003L01', 1], ['S1001L01', null], ['S1001L02', 2]])
+    expect(rows.map((r) => [r.id, r.n, r.hc])).toEqual([
+      ['S0001L01', 1, false], ['S1003L01', 2, true], ['S1001L01', null, true], ['S1001L02', 3, true], ['S0012L01', 4, false],
+    ])
   })
 
   it('carries a saved flag and its note onto its LEGO', () => {
