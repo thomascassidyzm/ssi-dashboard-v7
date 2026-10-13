@@ -24,8 +24,9 @@
     </section>
 
     <section v-else-if="phase === 'error'" class="rc-card center">
-      <h2>Couldn't load your lines</h2>
-      <p>{{ loadError }}</p>
+      <h2 v-if="!loadSlow">Couldn't load your lines</h2>
+      <h2 v-else>{{ loadError }}</h2>
+      <p v-if="!loadSlow">{{ loadError }}</p>
       <button class="btn-ghost" @click="load">Try again</button>
     </section>
 
@@ -802,6 +803,7 @@ import { createAdvanceLock } from './recordist/advance-lock'
 import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords } from './recordist/booth-chip-titles.js'
+import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
@@ -820,6 +822,7 @@ const queue = useRecordistQueue({
 
 const phase = ref('loading') // loading | unknown | error | ready | recording | done
 const loadError = ref(null)
+const loadSlow = ref(false)
 const micError = ref(null)
 const voice = ref({ displayName: '', languageName: '', total: 0, recorded: 0, remaining: 0 })
 const lines = ref([])
@@ -2509,6 +2512,7 @@ async function submitSetup() {
 async function load() {
   phase.value = 'loading'
   loadError.value = null
+  loadSlow.value = false
   try {
     // Always ask for the WHOLE queue, recorded lines included, and filter
     // locally: the map draws every line, a tapped recorded line can be read
@@ -2529,19 +2533,21 @@ async function load() {
     // server can narrow the read as well as the draw.
     const podScope = new URLSearchParams(window.location.search).get('pod')
     const podParam = podScope ? `&pod=${encodeURIComponent(podScope)}` : ''
-    const res = await fetch(
+    // Time-limited (20s, one retry): a hung request must not strand the reader
+    // on "Getting your lines…". The body is read inside the timed window.
+    const { res, data: body } = await fetchWithTimeoutRetry(
       `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}`,
-      { headers: {} }
+      { headers: {} },
+      r => (r.ok ? r.json() : r.json().catch(() => ({})))
     )
     if (res.status === 404) { phase.value = 'unknown'; return }
     if (res.status === 403) {
       // The link names a course this voice is not cast on: the server's
       // sentence says so (casting-rights.boothArrival), in words, not a code.
-      const body = await res.json().catch(() => ({}))
       throw new Error(body.error || `This link is for a course you are not cast on (${courseScope}).`)
     }
     if (!res.ok) throw new Error(`Could not load your lines (${res.status})`)
-    const data = await res.json()
+    const data = body
     voice.value = data
     // A QUEUE MAY ASK FOR AUTO-ADVANCE OFF, and one does. Pod and course lines
     // are single sentences, so stopping on a silence is right for them and the
@@ -2582,6 +2588,7 @@ async function load() {
     advanceLock.reset()
     phase.value = 'ready'
   } catch (err) {
+    loadSlow.value = err instanceof LoadTimeoutError
     loadError.value = (err && err.message) || 'Network error'
     phase.value = 'error'
   }
