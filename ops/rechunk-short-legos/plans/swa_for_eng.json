@@ -1,0 +1,702 @@
+{
+ "course": "swa_for_eng",
+ "note": "#688 zero-clash repair: noun-class chunk-ups waiting on a target voice cast for swa. Run with Popty tools/course-optimization/rechunk-short-legos (check, author, apply, fill-audio) once the cast exists.",
+ "seeds": [
+  {
+   "seed": 31,
+   "kind": "merge",
+   "why": "'this' huu clashed with hii; chunk up to the course's own 'tonight' = usiku huu",
+   "delete": [
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "tonight",
+     "target": "usiku huu",
+     "components": [
+      {
+       "known": "night",
+       "target": "usiku"
+      },
+      {
+       "known": "this",
+       "target": "huu"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 37,
+   "kind": "merge",
+   "why": "'that' hilo clashed with kwamba; chunk up to 'about it' = kuhusu hilo, as the course already says",
+   "delete": [
+    3
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "about it",
+     "target": "kuhusu hilo",
+     "components": [
+      {
+       "known": "about",
+       "target": "kuhusu"
+      },
+      {
+       "known": "it",
+       "target": "hilo"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 42,
+   "kind": "grow",
+   "why": "'of' wa clashed with ya; chunk up to the course's own 'last night' = usiku wa jana",
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "last night",
+     "target": "usiku wa jana",
+     "components": [
+      {
+       "known": "night",
+       "target": "usiku"
+      },
+      {
+       "known": "of",
+       "target": "wa"
+      },
+      {
+       "known": "yesterday",
+       "target": "jana"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 51,
+   "kind": "merge",
+   "why": "'interesting' kuvutia and 'my' zangu clashed with ya kuvutia and yangu; chunk up to 'interesting things' and 'my friends', both already course phrases",
+   "delete": [
+    2,
+    3,
+    5
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "interesting things",
+     "target": "mambo ya kuvutia",
+     "components": [
+      {
+       "known": "things",
+       "target": "mambo"
+      },
+      {
+       "known": "of",
+       "target": "ya"
+      },
+      {
+       "known": "interesting",
+       "target": "kuvutia"
+      }
+     ]
+    },
+    "6": {
+     "type": "M",
+     "known": "my friends",
+     "target": "marafiki zangu",
+     "components": [
+      {
+       "known": "friends",
+       "target": "marafiki"
+      },
+      {
+       "known": "my",
+       "target": "zangu"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 62,
+   "kind": "merge",
+   "why": "'that' huo clashed with kwamba; chunk up to the course's own 'at that same time' = wakati huo huo",
+   "delete": [
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "at that same time",
+     "target": "wakati huo huo",
+     "components": [
+      {
+       "known": "time",
+       "target": "wakati"
+      },
+      {
+       "known": "that same",
+       "target": "huo huo"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 109,
+   "kind": "merge",
+   "why": "'new' mapya clashed with kipya; chunk up to the course's own 'many new words' = maneno mengi mapya",
+   "delete": [
+    3
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "many new words",
+     "target": "maneno mengi mapya",
+     "components": [
+      {
+       "known": "words",
+       "target": "maneno"
+      },
+      {
+       "known": "many",
+       "target": "mengi"
+      },
+      {
+       "known": "new",
+       "target": "mapya"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 112,
+   "kind": "merge",
+   "why": "'that' hiyo clashed with kwamba; chunk up to the course's own 'that was' = hiyo ilikuwa",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "that was",
+     "target": "hiyo ilikuwa",
+     "components": [
+      {
+       "known": "that",
+       "target": "hiyo"
+      },
+      {
+       "known": "it was",
+       "target": "ilikuwa"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 121,
+   "kind": "merge",
+   "why": "'your' lako clashed with yako; chunk up to the course's own 'your car' = gari lako",
+   "delete": [
+    4
+   ],
+   "set": {
+    "5": {
+     "type": "M",
+     "known": "your car",
+     "target": "gari lako",
+     "components": [
+      {
+       "known": "car",
+       "target": "gari"
+      },
+      {
+       "known": "your",
+       "target": "lako"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 123,
+   "kind": "merge",
+   "why": "'good' nzuri clashed with zuri; chunk up to the course's own 'a good idea' = wazo nzuri",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "a good idea",
+     "target": "wazo nzuri",
+     "components": [
+      {
+       "known": "idea",
+       "target": "wazo"
+      },
+      {
+       "known": "good",
+       "target": "nzuri"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 125,
+   "kind": "grow",
+   "why": "'it was' lilikuwa clashed with ilikuwa; chunk up to 'your idea was' = wazo lako lilikuwa so the noun carries the class",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "your idea was",
+     "target": "wazo lako lilikuwa",
+     "components": [
+      {
+       "known": "idea",
+       "target": "wazo"
+      },
+      {
+       "known": "your",
+       "target": "lako"
+      },
+      {
+       "known": "it was",
+       "target": "lilikuwa"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 126,
+   "kind": "merge",
+   "why": "'of' la and 'my' wangu clashed with ya and yangu; chunk up to 'of my brain' = la ubongo wangu",
+   "delete": [
+    3
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "of my brain",
+     "target": "la ubongo wangu",
+     "components": [
+      {
+       "known": "of",
+       "target": "la"
+      },
+      {
+       "known": "brain",
+       "target": "ubongo"
+      },
+      {
+       "known": "my",
+       "target": "wangu"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 134,
+   "kind": "grow",
+   "why": "'difficult' kigumu clashed with vigumu; chunk up to the course's own 'something difficult' = kitu kigumu",
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "something difficult",
+     "target": "kitu kigumu",
+     "components": [
+      {
+       "known": "something",
+       "target": "kitu"
+      },
+      {
+       "known": "difficult",
+       "target": "kigumu"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 142,
+   "kind": "merge",
+   "why": "'your' wako clashed with yako; chunk up to the seed's own 'kind of you' = wema wako",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "kind of you",
+     "target": "wema wako",
+     "components": [
+      {
+       "known": "kind",
+       "target": "wema"
+      },
+      {
+       "known": "of you",
+       "target": "wako"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 150,
+   "kind": "merge",
+   "why": "'your' lako clashed with yako; chunk up to the course's own 'your name' = jina lako",
+   "delete": [
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "your name",
+     "target": "jina lako",
+     "components": [
+      {
+       "known": "name",
+       "target": "jina"
+      },
+      {
+       "known": "your",
+       "target": "lako"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 153,
+   "kind": "merge",
+   "why": "'that same' ile ile clashed with kile kile; chunk up to 'in that same way' = kwa njia ile ile",
+   "delete": [
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "in that same way",
+     "target": "kwa njia ile ile",
+     "components": [
+      {
+       "known": "in the way",
+       "target": "kwa njia"
+      },
+      {
+       "known": "that same",
+       "target": "ile ile"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 160,
+   "kind": "merge",
+   "why": "'this' hili clashed with hii; chunk up to the course's own 'this word' = neno hili",
+   "delete": [
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "this word",
+     "target": "neno hili",
+     "components": [
+      {
+       "known": "word",
+       "target": "neno"
+      },
+      {
+       "known": "this",
+       "target": "hili"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 161,
+   "kind": "merge",
+   "why": "'that' hicho clashed with kwamba; chunk up to the course's own 'that book' = kitabu hicho",
+   "delete": [
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "that book",
+     "target": "kitabu hicho",
+     "components": [
+      {
+       "known": "book",
+       "target": "kitabu"
+      },
+      {
+       "known": "that",
+       "target": "hicho"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 162,
+   "kind": "grow",
+   "why": "'that' hilo clashed with kwamba; chunk up to the course's own 'about that' = kuhusu hilo",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "about that",
+     "target": "kuhusu hilo",
+     "components": [
+      {
+       "known": "about",
+       "target": "kuhusu"
+      },
+      {
+       "known": "that",
+       "target": "hilo"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 164,
+   "kind": "grow",
+   "why": "'interesting' cha kuvutia clashed with ya kuvutia; chunk up to the course's own 'an interesting book' = kitabu cha kuvutia",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "an interesting book",
+     "target": "kitabu cha kuvutia",
+     "components": [
+      {
+       "known": "book",
+       "target": "kitabu"
+      },
+      {
+       "known": "of",
+       "target": "cha"
+      },
+      {
+       "known": "interesting",
+       "target": "kuvutia"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 166,
+   "kind": "merge",
+   "why": "'my' langu and 'of' la clashed with yangu and ya; chunk up to the course's own 'my name' = jina langu and 'not very unusual' = si la ajabu sana",
+   "delete": [
+    1,
+    3
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "my name",
+     "target": "jina langu",
+     "components": [
+      {
+       "known": "name",
+       "target": "jina"
+      },
+      {
+       "known": "my",
+       "target": "langu"
+      }
+     ]
+    },
+    "4": {
+     "type": "M",
+     "known": "not very unusual",
+     "target": "si la ajabu sana",
+     "components": [
+      {
+       "known": "not",
+       "target": "si"
+      },
+      {
+       "known": "of",
+       "target": "la"
+      },
+      {
+       "known": "unusual",
+       "target": "ajabu"
+      },
+      {
+       "known": "very",
+       "target": "sana"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 180,
+   "kind": "grow",
+   "why": "'my' changu clashed with yangu; chunk up to the course's own 'my book' = kitabu changu",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "my book",
+     "target": "kitabu changu",
+     "components": [
+      {
+       "known": "book",
+       "target": "kitabu"
+      },
+      {
+       "known": "my",
+       "target": "changu"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 214,
+   "kind": "grow",
+   "why": "'good' mzuri clashed with zuri; chunk up to the course's own 'a good time' = wakati mzuri",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "a good time",
+     "target": "wakati mzuri",
+     "components": [
+      {
+       "known": "time",
+       "target": "wakati"
+      },
+      {
+       "known": "good",
+       "target": "mzuri"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 226,
+   "kind": "merge",
+   "why": "'that' yule clashed with kwamba; chunk up to the course's own 'that person' = yule mtu",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "that person",
+     "target": "yule mtu",
+     "components": [
+      {
+       "known": "that",
+       "target": "yule"
+      },
+      {
+       "known": "person",
+       "target": "mtu"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 243,
+   "kind": "grow",
+   "why": "'that same' kile kile clashed with lile lile; chunk up to the course's own 'that same thing' = kitu kile kile",
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "that same thing",
+     "target": "kitu kile kile",
+     "components": [
+      {
+       "known": "something",
+       "target": "kitu"
+      },
+      {
+       "known": "that same",
+       "target": "kile kile"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 273,
+   "kind": "merge",
+   "why": "'many' nyingi clashed with mengi; chunk up to the seed's own 'I've got too much work' = nina kazi nyingi sana",
+   "delete": [
+    1
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "I've got too much work",
+     "target": "nina kazi nyingi sana",
+     "components": [
+      {
+       "known": "I have",
+       "target": "nina"
+      },
+      {
+       "known": "work",
+       "target": "kazi"
+      },
+      {
+       "known": "much",
+       "target": "nyingi"
+      },
+      {
+       "known": "too",
+       "target": "sana"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 279,
+   "kind": "grow",
+   "why": "'much' mwingi clashed with mengi; chunk up to the course's own 'much time' = muda mwingi",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "much time",
+     "target": "muda mwingi",
+     "components": [
+      {
+       "known": "time",
+       "target": "muda"
+      },
+      {
+       "known": "much",
+       "target": "mwingi"
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

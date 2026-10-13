@@ -1,8 +1,39 @@
 {
  "course": "fas_for_eng",
- "note": "Job #688 zero-clash repair (Tom 2026-10-13: a clash is never accepted, it is resolved; canon r-2026-10-13-no-brackets-or-notes-in-any: chunk up to a bigger LEGO). Each op resolves one accepted clash left by the #585 no-brackets purge.",
+ "note": "#688 zero-clash repair: chunk-ups waiting on a target voice cast for fas. Run with Popty tools/course-optimization/rechunk-short-legos (check, author, apply, fill-audio) once the cast exists.",
  "seeds": [
-  {"seed": 79, "kind": "merge", "why": "'when' interrogative (کی) clashed with the course's 'when' conjunction (وقتی, seeds 34 55 111 133) once its bracket note went; chunking up to the seed's own 'when did you start' gives the English that carries the question.",
-   "delete": [1], "set": {"2": {"type": "M", "known": "when did you start", "target": "کی شروع کردی", "components": [{"known": "when", "target": "کی"}, {"known": "you started", "target": "شروع کردی"}]}}}
+  {
+   "seed": 79,
+   "kind": "merge",
+   "why": "interrogative 'when' clashed with the conjunction 'when'; chunk up to the seed's own 'when did you start'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "when did you start",
+     "target": "کی شروع کردی",
+     "components": [
+      {
+       "known": "when",
+       "target": "کی"
+      },
+      {
+       "known": "you started",
+       "target": "شروع کردی"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 20,
+   "kind": "topup",
+   "why": "BUILD 'his name' -> 'اسمش رو' cannot be cut under the floor; re-author the basket",
+   "topup": [
+    2
+   ]
+  }
  ]
 }

@@ -1,0 +1,1051 @@
+{
+ "course": "por_for_jpn",
+ "seeds": {
+  "136": {
+   "seed": 136,
+   "kind": "replace",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "もちろん",
+     "target": "claro que"
+    },
+    {
+     "idx": 2,
+     "known": "彼女に",
+     "target": "lhe"
+    },
+    {
+     "idx": 3,
+     "known": "あなたはできます",
+     "target": "podes"
+    },
+    {
+     "idx": 4,
+     "known": "質問する",
+     "target": "perguntar"
+    },
+    {
+     "idx": 5,
+     "known": "私の",
+     "target": "minha"
+    },
+    {
+     "idx": 6,
+     "known": "女性の友達",
+     "target": "amiga"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "A",
+      "known": "あなたはできます",
+      "target": "podes",
+      "components": null,
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "por_for_jpn:S0136L03B01",
+       "role": "build",
+       "known": "できる",
+       "target": "podes",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known 'できる' has no 'あなた', so it is ambiguous (consigo, pode, podes) and breaks one-prompt-one-target. The LEGO is 'あなたはできます'.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A BUILD needs the LEGO plus one to three other LEGOs; this is the bare LEGO. 'できる' is also an existing gloss for other targets (puder and others), so it breaks ZUT and drops 'あなたは'.",
+       "keep": false,
+       "why": "Sonnet: bad — The known 'できる' has no 'あなた', so it is ambiguous (consigo, pode, podes) and breaks one-prompt-one-target. The LEGO is 'あなたはできます'."
+      },
+      {
+       "id": "por_for_jpn:S0136L03B02",
+       "role": "build",
+       "known": "彼女にできる",
+       "target": "lhe podes",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known has no 'あなた', so 'podes' (you) is not expressed. The mapping is ambiguous.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'彼女にできる' is unnatural Japanese. It uses 'できる' instead of the taught gloss 'あなたはできます', so the prompt is ambiguous.",
+       "keep": false,
+       "why": "Sonnet: bad — The known has no 'あなた', so 'podes' (you) is not expressed. The mapping is ambiguous."
+      },
+      {
+       "id": "por_for_jpn:S0136L03B03",
+       "role": "build",
+       "known": "もちろん彼女にできる",
+       "target": "claro que lhe podes",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known has no 'あなた', so the 'you' in 'podes' is missing. The same ambiguity as E2.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Uses 'できる' instead of 'あなたはできます', so person and target are ambiguous. The Japanese fragment is unnatural.",
+       "keep": false,
+       "why": "Sonnet: bad — The known has no 'あなた', so the 'you' in 'podes' is missing. The same ambiguity as E2."
+      },
+      {
+       "id": "por_for_jpn:S0136L03U01",
+       "role": "use",
+       "known": "もちろん彼女に言える。",
+       "target": "claro que lhe podes dizer",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known 言える is not a taught gloss and there is no 'あなた'. It does not map one-to-one to 'podes dizer'.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'言える' has no stated subject and could equally map to 'posso dizer'. It does not tile from the taught gloss 'あなたはできます', so ZUT is violated.",
+       "keep": false,
+       "why": "Sonnet: bad — The known 言える is not a taught gloss and there is no 'あなた'. It does not map one-to-one to 'podes dizer'."
+      },
+      {
+       "id": "por_for_jpn:S0136L03U02",
+       "role": "use",
+       "known": "なぜ話せないかわからない。",
+       "target": "não sei porque é que não podes falar",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known has no 'あなた', and 話せない is not a taught gloss. The Japanese does not tile onto 'não sei porque é que não podes falar'.",
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'話せない' has no subject and could be I, he or she, so the target 'não podes' is not uniquely cued. It does not use the LEGO's gloss.",
+       "keep": false,
+       "why": "Sonnet: bad — The known has no 'あなた', and 話せない is not a taught gloss. The Japanese does not tile onto 'não sei porque é que não podes falar'."
+      },
+      {
+       "id": "por_for_jpn:S0136L03U03",
+       "role": "use",
+       "known": "もちろんそれができる。",
+       "target": "claro que podes fazer isso",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known has no 'あなた', so 'podes' is unexpressed. 'それができる' also gives 'fazer isso' only loosely.",
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Ambiguous subject. 'できる' does not tile to the taught gloss 'あなたはできます', so the prompt could map to posso, pode or consigo.",
+       "keep": false,
+       "why": "Sonnet: bad — The known has no 'あなた', so 'podes' is unexpressed. 'それができる' also gives 'fazer isso' only loosely."
+      },
+      {
+       "id": "por_for_jpn:S0136L03U04",
+       "role": "use",
+       "known": "もっと上手にできると信じている。",
+       "target": "acredito que podes fazer melhor",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known has no 'あなた' and says 'believe I can do better' loosely. The target does not mirror it exactly.",
+       "ref": "P7",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same ambiguity: no 'あなたは', so 'できる' could mean many persons. It does not use the LEGO gloss.",
+       "keep": false,
+       "why": "Sonnet: bad — The known has no 'あなた' and says 'believe I can do better' loosely. The target does not mirror it exactly."
+      },
+      {
+       "id": "por_for_jpn:S0136L03U05",
+       "role": "use",
+       "known": "もちろんもっと上手にできる。",
+       "target": "claro que podes fazer muito melhor",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The target adds 'muito', which the known lacks. The known also has no 'あなた'.",
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The target adds 'muito', which is not in the known. The known also lacks 'あなたは' and uses 'できる'.",
+       "keep": false,
+       "why": "Sonnet: bad — The target adds 'muito', which the known lacks. The known also has no 'あなた'."
+      },
+      {
+       "role": "build",
+       "known": "あなたはできます",
+       "target": "podes",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A BUILD must contain the LEGO plus one to three other taught LEGOs; this is the bare LEGO only.",
+       "keep": false,
+       "why": "Opus: bad — A BUILD must contain the LEGO plus one to three other taught LEGOs; this is the bare LEGO only."
+      },
+      {
+       "role": "build",
+       "known": "もちろんあなたはできます",
+       "target": "claro que podes",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Claro que podes' is a natural fragment that extends naturally into a full sentence. It is tileable from taught glosses and exact in meaning.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "あなたはできます 話す",
+       "target": "podes falar",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'あなたはできます 話す' is ungrammatical word salad with a space and an unconjugated verb, not a natural or tileable Japanese prompt.",
+       "keep": false,
+       "why": "Opus: bad — 'あなたはできます 話す' is ungrammatical word salad with a space and an unconjugated verb, not a natural or tileable Japanese prompt."
+      },
+      {
+       "role": "build",
+       "known": "あなたはできます 言う",
+       "target": "podes dizer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same problem: 'あなたはできます 言う' is not grammatical Japanese.",
+       "keep": false,
+       "why": "Opus: bad — Same problem: 'あなたはできます 言う' is not grammatical Japanese."
+      },
+      {
+       "role": "build",
+       "known": "あなたはできます 練習する",
+       "target": "podes praticar",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same problem: 'あなたはできます 練習する' is not grammatical Japanese.",
+       "keep": false,
+       "why": "Opus: bad — Same problem: 'あなたはできます 練習する' is not grammatical Japanese."
+      },
+      {
+       "role": "build",
+       "known": "あなたはできます 質問する",
+       "target": "podes perguntar",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same problem: 'あなたはできます 質問する' is not grammatical Japanese.",
+       "keep": false,
+       "why": "Opus: bad — Same problem: 'あなたはできます 質問する' is not grammatical Japanese."
+      },
+      {
+       "role": "use",
+       "known": "あなたは私と話すことができます。",
+       "target": "podes falar comigo",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Podes falar comigo' is natural and exact. The known uses the taught glosses あなたは, 私と, 話す and こと/できます.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "もちろんあなたは彼女に言うことができます。",
+       "target": "claro que lhe podes dizer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Claro que lhe podes dizer' is natural European Portuguese with correct proclisis after 'que'. The known is tileable and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "もちろんあなたは私を手伝うことができます。",
+       "target": "claro que podes ajudar-me",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Claro que podes ajudar-me' is grammatical in European Portuguese, with enclisis on the infinitive. The known is tileable and the meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "あなたは今日それを説明することができます。",
+       "target": "podes explicar isso hoje",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Podes explicar isso hoje' is natural, and the known maps exactly via taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "あなたは後で私に見せることができます。",
+       "target": "podes mostrar-me mais tarde",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'後で' is the taught gloss for 'depois', not 'mais tarde', so the prompt violates ZUT.",
+       "keep": false,
+       "why": "Opus: bad — '後で' is the taught gloss for 'depois', not 'mais tarde', so the prompt violates ZUT."
+      },
+      {
+       "role": "use",
+       "known": "あなたは私と一緒に練習することができます。",
+       "target": "podes praticar comigo",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Podes praticar comigo' is natural. '私と一緒に' tiles to 'comigo' via the taught と一緒に, and the meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "あなたはここで勉強することができます。",
+       "target": "podes aprender aqui",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Podes aprender aqui' is natural. '勉強する' is the taught gloss for aprender, ここ(で) maps to aqui, and the sentence is complete.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "あなたは明日ポルトガル語で話すことができます。",
+       "target": "podes falar em português amanhã",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P22",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Podes falar em português amanhã' is natural and exact, built from taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "もちろんあなたは彼女に質問することができます。",
+       "target": "claro que lhe podes perguntar",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P23",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Claro que lhe podes perguntar' is the natural core of the seed and uses taught LEGOs. The known is tileable and the meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "あなたは今話すことができます。",
+       "target": "podes falar agora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'podes falar agora' is grammatical, natural European Portuguese and matches the known side exactly. The Japanese tiles from taught glosses (今, 話す, こと, できます). It is a short BUILD containing the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "あなたはここで練習することができます。",
+       "target": "podes praticar aqui",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'podes praticar aqui' is natural and an exact match. ここ comes from the taught ここに, with taught で as glue. It is a short BUILD that extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "あなたは明日練習することができます。",
+       "target": "podes praticar amanhã",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'podes praticar amanhã' is grammatical, natural and an exact match. All glosses are taught. It is a short BUILD containing the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "あなたはそれをもう一度言うことができます。",
+       "target": "podes dizer isso outra vez",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'podes dizer isso outra vez' is natural and an exact match for それをもう一度言う. All pieces are taught. It is a BUILD with the LEGO plus three taught LEGOs.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "あなたは今日私を手伝うことができます。",
+       "target": "podes ajudar-me hoje",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'podes ajudar-me hoje' uses the correct European Portuguese enclisis and matches the known side exactly. The glosses 私を手伝う and 今日 are taught. It is a short BUILD.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "あなたは、あなたが望む時に私とポルトガル語で話すことができます。",
+       "target": "podes falar comigo em português quando quiseres",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'podes falar comigo em português quando quiseres' is one complete, natural sentence with correct subjunctive. The Japanese repeats あなた, which is stilted but tileable from the taught gloss あなたが望む時に. The meaning matches exactly, and it is longer than the BUILDs.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      },
+      {
+       "role": "use",
+       "known": "あなたはそれをもう一度もう少しゆっくり言うことができます。",
+       "target": "podes dizer isso outra vez um pouco mais devagar",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'podes dizer isso outra vez um pouco mais devagar' is one natural, complete sentence that matches the known side exactly. All pieces are taught, including もう少しゆっくり = um pouco mais devagar.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      },
+      {
+       "role": "use",
+       "known": "あなたは今日、私と一緒にポルトガル語を練習することができます。",
+       "target": "podes praticar português comigo hoje",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'podes praticar português comigo hoje' is a natural, complete sentence with correct word order. It matches 今日、私と一緒にポルトガル語を練習する exactly, and all glosses are taught.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    },
+    "7": {
+     "lego": {
+      "is_new": true,
+      "idx": 7,
+      "type": "M",
+      "known": "私の女性の友達",
+      "target": "minha amiga",
+      "components": [
+       {
+        "known": "私の",
+        "target": "minha"
+       },
+       {
+        "known": "女性の友達",
+        "target": "amiga"
+       }
+      ],
+      "change": "add"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "彼女は私の女性の友達です",
+       "target": "Ela é minha amiga",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural. Exact match, contains the LEGO, short BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼女は私の女性の友達ではありません",
+       "target": "Ela não é minha amiga",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct negation and exact match. All material is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の女性の友達の名前",
+       "target": "O nome da minha amiga",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'O nome da minha amiga' is natural and matches the known side. It is a fragment that extends naturally, and 'da' and 名前 are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼女は今私の女性の友達です",
+       "target": "Ela é minha amiga agora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural on both sides, with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼女は私の女性の友達だと思います",
+       "target": "Acho que ela é minha amiga",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Semantically odd: who isn't sure whether someone is their friend? Not tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — Semantically odd: who isn't sure whether someone is their friend? Not tier-1 natural."
+      },
+      {
+       "role": "build",
+       "known": "彼女は私の女性の友達だからです",
+       "target": "Porque ela é minha amiga",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment straight from the seed. Exact match.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "彼女は私の女性の友達で、私は彼女と話したいです",
+       "target": "Ela é minha amiga e quero falar com ela",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One natural sentence with an exact match, using taught vocabulary only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は私の女性の友達で、ポルトガル語を勉強したいです",
+       "target": "Ela é minha amiga e quer aprender português",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The Japanese uses 勉強したいです for a third person, which is unnatural (it needs 〜たがっています). The subject is also ambiguous and could read as 'I want'.",
+       "keep": false,
+       "why": "Opus: bad — The Japanese uses 勉強したいです for a third person, which is unnatural (it needs 〜たがっています). The subject is also ambiguous and could read as 'I want'."
+      },
+      {
+       "role": "use",
+       "known": "彼女は私の女性の友達で、後で戻りたいです",
+       "target": "Ela é minha amiga e quer voltar mais tarde",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same problem: 戻りたいです for a third person is unnatural and the subject is ambiguous.",
+       "keep": false,
+       "why": "Opus: bad — Same problem: 戻りたいです for a third person is unnatural and the subject is ambiguous."
+      },
+      {
+       "role": "use",
+       "known": "彼女は私の女性の友達で、私たちは6時に会いたいです",
+       "target": "Ela é minha amiga e queremos encontrar-nos às seis horas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, with an exact match and taught material only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は私の女性の友達で、私は彼女と話すのが好きです",
+       "target": "Ela é minha amiga e gosto de falar com ela",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural on both sides and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は私の女性の友達で、答えが何か発見したいです",
+       "target": "Ela é minha amiga e quer descobrir qual é a resposta",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Third-person 発見したいです is unnatural Japanese and the subject is ambiguous.",
+       "keep": false,
+       "why": "Opus: bad — Third-person 発見したいです is unnatural Japanese and the subject is ambiguous."
+      },
+      {
+       "role": "use",
+       "known": "彼女は私の女性の友達で、私は明日彼女と話すつもりです",
+       "target": "Ela é minha amiga e vou falar com ela amanhã",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural on both sides and an exact match, using taught material only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は私の女性の友達で、明日私を手伝うでしょう",
+       "target": "Ela é minha amiga e vai ajudar-me amanhã",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "手伝うでしょう without くれる is stilted, and でしょう reads as a hedge ('probably'). Not clearly tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 手伝うでしょう without くれる is stilted, and でしょう reads as a hedge ('probably'). Not clearly tier 1."
+      },
+      {
+       "role": "use",
+       "known": "彼女は私の女性の友達で、私が言いたいことを説明したいです",
+       "target": "Ela é minha amiga e quero explicar o que quero dizer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Non-sequitur: the two clauses don't connect. The Japanese second clause also lacks a clear subject.",
+       "keep": false,
+       "why": "Opus: bad — Non-sequitur: the two clauses don't connect. The Japanese second clause also lacks a clear subject."
+      },
+      {
+       "role": "build",
+       "known": "私の女性の友達はここにいます",
+       "target": "Minha amiga está aqui",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The course is European Portuguese (podes, estou a, autocarro). In EP a possessive in subject position needs the article: 'A minha amiga está aqui'. Bare 'Minha amiga' as subject reads as Brazilian. A predicative use like 'é minha amiga' would avoid this.",
+       "keep": false,
+       "why": "Opus: bad — The course is European Portuguese (podes, estou a, autocarro). In EP a possessive in subject position needs the article: 'A minha amiga está aqui'. Bare 'Minha amiga' as subject reads as Brazilian. A predicative use like 'é minha amiga' would avoid this."
+      },
+      {
+       "role": "build",
+       "known": "私の女性の友達と私",
+       "target": "Minha amiga e eu",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Same subject-position problem: EP says 'A minha amiga e eu'. Without the article it is not tier-1 natural in this EP course.",
+       "keep": false,
+       "why": "Opus: bad — Same subject-position problem: EP says 'A minha amiga e eu'. Without the article it is not tier-1 natural in this EP course."
+      },
+      {
+       "role": "use",
+       "known": "私の女性の友達は今ここにいます",
+       "target": "Minha amiga está aqui agora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The subject lacks the definite article required in EP ('A minha amiga está aqui agora'). Not natural as written.",
+       "keep": false,
+       "why": "Opus: bad — The subject lacks the definite article required in EP ('A minha amiga está aqui agora'). Not natural as written."
+      },
+      {
+       "role": "use",
+       "known": "私の女性の友達はポルトガル語を勉強しています",
+       "target": "Minha amiga está a aprender português",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The structure 'está a aprender português' is fine, but EP requires 'A minha amiga' as subject. The bare possessive is Brazilian-style and inconsistent with the course.",
+       "keep": false,
+       "why": "Opus: bad — The structure 'está a aprender português' is fine, but EP requires 'A minha amiga' as subject. The bare possessive is Brazilian-style and inconsistent with the course."
+      },
+      {
+       "role": "use",
+       "known": "私の女性の友達と私はポルトガル語を勉強したいです",
+       "target": "Minha amiga e eu queremos aprender português",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Same issue: in EP the article is needed ('A minha amiga e eu queremos aprender português'). Without it the phrase is not tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — Same issue: in EP the article is needed ('A minha amiga e eu queremos aprender português'). Without it the phrase is not tier-1 natural."
+      },
+      {
+       "role": "use",
+       "known": "私の女性の友達と私は6時に会いたいです",
+       "target": "Minha amiga e eu queremos encontrar-nos às seis horas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The subject 'Minha amiga e eu' lacks the EP-required article, so it is not natural EP.",
+       "keep": false,
+       "why": "Opus: bad — The subject 'Minha amiga e eu' lacks the EP-required article, so it is not natural EP."
+      },
+      {
+       "role": "use",
+       "known": "私の女性の友達と私はポルトガル語を勉強しようとしています",
+       "target": "Minha amiga e eu estamos a tentar aprender português",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The subject lacks the article required in EP ('A minha amiga e eu estamos a tentar...'). Not tier-1 natural for this course.",
+       "keep": false,
+       "why": "Opus: bad — The subject lacks the article required in EP ('A minha amiga e eu estamos a tentar...'). Not tier-1 natural for this course."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 4,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 4"
+     }
+    }
+   }
+  },
+  "182": {
+   "seed": 182,
+   "kind": "replace",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "君は見た",
+     "target": "viste"
+    },
+    {
+     "idx": 2,
+     "known": "私の",
+     "target": "as minhas"
+    },
+    {
+     "idx": 3,
+     "known": "鍵",
+     "target": "chaves"
+    },
+    {
+     "idx": 4,
+     "known": "どこかで",
+     "target": "em algum lado"
+    }
+   ],
+   "legos": {
+    "5": {
+     "lego": {
+      "is_new": true,
+      "idx": 5,
+      "type": "M",
+      "known": "私の鍵",
+      "target": "as minhas chaves",
+      "components": [
+       {
+        "known": "私の",
+        "target": "as minhas"
+       },
+       {
+        "known": "鍵",
+        "target": "chaves"
+       }
+      ],
+      "change": "add"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "私の鍵を持っています",
+       "target": "Tenho as minhas chaves",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The Japanese is natural and uses only taught material (私の鍵, を, 持っています). The Portuguese 'Tenho as minhas chaves' is grammatical, means the same thing, contains the LEGO, and extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の鍵を持っていない",
+       "target": "Não tenho as minhas chaves",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "持っていない is taught, and the Japanese is natural in the informal register. 'Não tenho as minhas chaves' is correct and matches the meaning. It is a short BUILD containing the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "君は見た 私の鍵",
+       "target": "Viste as minhas chaves",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'君は見た 私の鍵' puts the object after the verb with no particle, which is not Japanese word order. It is a word-by-word mapping, not a tileable natural prompt. As a statement fragment it also does not match how 'Viste as minhas chaves' would naturally be prompted.",
+       "keep": false,
+       "why": "Opus: bad — '君は見た 私の鍵' puts the object after the verb with no particle, which is not Japanese word order. It is a word-by-word mapping, not a tileable natural prompt. As a statement fragment it also does not match how 'Viste as minhas chaves' would naturally be prompted."
+      },
+      {
+       "role": "build",
+       "known": "私の鍵をここに持っています",
+       "target": "Tenho as minhas chaves aqui",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "ここに is taught, and '私の鍵をここに持っています' is acceptable, tileable Japanese for 'I have my keys here.' 'Tenho as minhas chaves aqui' is natural Portuguese with the correct meaning and contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "今日は私の鍵を持っていません。",
+       "target": "Hoje não tenho as minhas chaves.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今日 is taught, は is glue, and 持っていません is the polite form of the taught 持っていない. The Japanese is natural, and 'Hoje não tenho as minhas chaves.' is a correct, natural single sentence with the same meaning.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私の鍵を持っていると思います。",
+       "target": "Acho que tenho as minhas chaves.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "～と思います is taught (acho que), and the Japanese is natural. 'Acho que tenho as minhas chaves.' is grammatical, has the same meaning, and is one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私の鍵を持っているかどうか確かではありません。",
+       "target": "Não tenho a certeza se tenho as minhas chaves.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "かどうか and 確かではありません are taught, and 'não tenho a certeza se' is a taught unit. The Japanese is natural, and the Portuguese is correct and idiomatic with the same meaning. It is one complete sentence containing the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "君は昨日私の鍵を見た？",
+       "target": "Viste as minhas chaves ontem?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "君は, 昨日 and 見た are taught, and '君は昨日私の鍵を見た？' is a natural casual question. 'Viste as minhas chaves ontem?' is natural European Portuguese with the same meaning. It is one complete sentence containing the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の鍵を探している",
+       "target": "Estou a procurar as minhas chaves",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural fragment that can extend into a full sentence. Everything in it is taught: estou a, procurar and the LEGO. The Japanese 私の鍵を探している maps exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の鍵を探したい",
+       "target": "Quero procurar as minhas chaves",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Short, grammatical BUILD. 'Quero procurar as minhas chaves' matches 私の鍵を探したい exactly, and all items are taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "私の鍵を見つけたい",
+       "target": "Quero encontrar as minhas chaves",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Grammatical and natural, and encontrar = 見つける is taught. It matches the known side exactly.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "今、私の鍵を探しています。",
+       "target": "Agora estou a procurar as minhas chaves.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "One complete, natural sentence: 'Agora estou a procurar as minhas chaves.' The Japanese is natural, all vocabulary is taught, and it is longer than the BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "明日、私の鍵を探したいです。",
+       "target": "Amanhã quero procurar as minhas chaves.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Grammatical but pragmatically odd. Saying you 'want' to look for your keys tomorrow is not tier-1 natural; people would say 'vou procurar'. When unsure, it is BAD.",
+       "keep": false,
+       "why": "Opus: bad — Grammatical but pragmatically odd. Saying you 'want' to look for your keys tomorrow is not tier-1 natural; people would say 'vou procurar'. When unsure, it is BAD."
+      },
+      {
+       "role": "use",
+       "known": "今日は私の鍵を探すつもりです。",
+       "target": "Hoje vou procurar as minhas chaves.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural complete sentence. 'Hoje vou procurar as minhas chaves' matches 今日は私の鍵を探すつもりです, and all items are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私の鍵を探すのをやめたくありません。",
+       "target": "Não quero parar de procurar as minhas chaves.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural, grammatical sentence using taught 'não quero' and 'parar de' plus procurar and the LEGO. The Japanese 探すのをやめたくありません maps exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  }
+ }
+}

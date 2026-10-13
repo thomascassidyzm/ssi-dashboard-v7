@@ -1,0 +1,22 @@
+{
+ "course": "hin_for_eng",
+ "note": "#688 zero-clash repair: basket top-ups waiting on the hin target voice cast (draft only). Run with Popty rechunk-short-legos once cast.",
+ "seeds": [
+  {
+   "seed": 146,
+   "kind": "topup",
+   "why": "BUILD 'we did' -> 'हमने की।' shares the LEGO's English; replace it with a fresh gated BUILD",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 85,
+   "kind": "topup",
+   "why": "BUILD 'those people' -> 'उन लोगों' shares the L3 LEGO's English; replace it with a fresh gated BUILD",
+   "topup": [
+    1
+   ]
+  }
+ ]
+}
