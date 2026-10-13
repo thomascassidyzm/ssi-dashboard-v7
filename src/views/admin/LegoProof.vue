@@ -76,23 +76,28 @@ const msgBad = ref(false)
 const exportText = ref(null)
 const exportBox = ref(null)
 
-const base = () => `${getApiBaseUrl()}/api/production/${course.value}/lego-proof`
+const base = (code) => `${getApiBaseUrl()}/api/production/${code}/lego-proof`
 const shown = computed(() => legos.value.filter((l) => (showTaught.value || l.isNew || l.flagged) && (!flaggedOnly.value || l.flagged)))
 const flaggedCount = computed(() => legos.value.filter((l) => l.flagged).length)
 const newCount = computed(() => legos.value.filter((l) => l.isNew).length)
 
 function say(text, bad = false) { msg.value = text; msgBad.value = bad }
 
+// Each load gets a generation number; a response for an older one (a slow North list landing after South) is dropped.
+let loadGen = 0
 async function load() {
+  const gen = ++loadGen
+  const code = course.value
   loading.value = true; loadError.value = ''; legos.value = []
   try {
-    const r = await fetch(base() + '/')
+    const r = await fetch(base(code) + '/')
     const body = await r.json().catch(() => ({}))
+    if (gen !== loadGen) return
     if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
     legos.value = body.legos
   } catch (e) {
-    loadError.value = `Could not load ${course.value}: ${e.message}`
-  } finally { loading.value = false }
+    if (gen === loadGen) loadError.value = `Could not load ${code}: ${e.message}`
+  } finally { if (gen === loadGen) loading.value = false }
 }
 
 function pick(code) {
@@ -100,52 +105,63 @@ function pick(code) {
   course.value = code
   router.replace({ query: { ...route.query, course: code } })
   for (const k of Object.keys(open)) delete open[k]
+  for (const k of Object.keys(state)) delete state[k]
   load()
 }
 
 function toggle(id) { open[id] = !open[id] }
 
 // One save per LEGO at a time; a newer change waits for the one in flight and then sends the latest state.
+// Everything is keyed by COURSE + LEGO id and the course is captured when the change is made: North and South share ids
+// (S1003L03 is in both), so a save still queued when the course is switched must go to the course it was made on.
 const inflight = {}
 const timers = {}
-async function save(l) {
-  if (inflight[l.id]) { inflight[l.id].again = true; return }
-  inflight[l.id] = { again: false }
-  state[l.id] = 'saving…'
+const keyOf = (code, l) => `${code}:${l.id}`
+async function save(code, l) {
+  const k = keyOf(code, l)
+  if (inflight[k]) { inflight[k].again = true; return }
+  inflight[k] = { again: false }
+  const mine = () => course.value === code
+  if (mine()) state[l.id] = 'saving…'
   try {
-    const r = await fetch(base() + '/flag', {
+    const r = await fetch(base(code) + '/flag', {
       method: 'PUT', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ legoId: l.id, flagged: l.flagged, note: l.note }),
     })
     const body = await r.json().catch(() => ({}))
     if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
-    state[l.id] = 'saved ✓'
+    if (mine()) state[l.id] = 'saved ✓'
     if (msgBad.value) say('')
   } catch (e) {
-    state[l.id] = 'NOT saved'
-    say(`${l.id} not saved: ${e.message} — tap the flag again to retry.`, true)
+    if (mine()) state[l.id] = 'NOT saved'
+    say(`${code} ${l.id} not saved: ${e.message} — tap the flag again to retry.`, true)
   } finally {
-    const again = inflight[l.id].again
-    delete inflight[l.id]
-    if (again) save(l)
+    const again = inflight[k].again
+    delete inflight[k]
+    if (again) save(code, l)
   }
 }
 
 function flip(l) {
+  const code = course.value
   l.flagged = !l.flagged
-  clearTimeout(timers[l.id])
-  save(l)
+  clearTimeout(timers[keyOf(code, l)]); delete timers[keyOf(code, l)]
+  save(code, l)
 }
 function onNote(l, v) {
+  const code = course.value
+  const k = keyOf(code, l)
   l.note = v
-  clearTimeout(timers[l.id])
+  clearTimeout(timers[k])
   state[l.id] = '…'
-  timers[l.id] = setTimeout(() => save(l), 700)
+  timers[k] = setTimeout(() => { delete timers[k]; save(code, l) }, 700)
 }
 function saveNow(l) {
-  if (!timers[l.id]) return
-  clearTimeout(timers[l.id]); delete timers[l.id]
-  save(l)
+  const code = course.value
+  const k = keyOf(code, l)
+  if (!timers[k]) return
+  clearTimeout(timers[k]); delete timers[k]
+  save(code, l)
 }
 
 function exportFlags() {
