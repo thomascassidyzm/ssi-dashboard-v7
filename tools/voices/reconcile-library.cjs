@@ -310,11 +310,13 @@ async function indexFromSnapshot(client, snap, rows, wanted) {
  * is simply absent. Job #806.
  */
 const SEEN_FIELDS = ['course_code', 'text', 'language', 'role', 'voice_id', 's3_key', 'origin', 'veracity_pass']
-async function stillAsSeen(client, ids, seenRows) {
+async function stillAsSeen(client, ids, seenRows, { lock = false } = {}) {
   const ok = new Set()
   if (!ids.length) return ok
   const seen = new Map(seenRows.map(r => [r.id, r]))
-  const { rows } = await client.query(`SELECT id, ${SEEN_FIELDS.join(', ')} FROM course_audio WHERE id = ANY($1::uuid[])`, [ids])
+  // lock: called inside the write transaction — FOR SHARE holds every row it
+  // returns until COMMIT; ORDER BY id keeps lock order fixed.
+  const { rows } = await client.query(`SELECT id, ${SEEN_FIELDS.join(', ')} FROM course_audio WHERE id = ANY($1::uuid[])${lock ? ' ORDER BY id FOR SHARE' : ''}`, [ids])
   for (const r of rows) {
     const was = seen.get(r.id)
     if (was && SEEN_FIELDS.every(f => r[f] === was[f])) ok.add(r.id)
@@ -412,11 +414,17 @@ async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sl
       // fail the insert's foreign key and stop the night. So write only for
       // clips still exactly as seen (re-read by primary key: a handful a batch);
       // the rest wait for tomorrow's walk, which sees them as they are.
+      // The check and the writes are ONE transaction, and the check holds FOR
+      // SHARE on the clips it passed, so none can change between being found
+      // as seen and being written (cross-family check #849·P: a separate
+      // re-read left that gap open). Writers to those rows wait milliseconds.
       let asSeen = null
       if (full) {
+        await client.query('BEGIN')
         const ids = [...new Set([...[...toInsert.values()].map(e => e.audio_id), ...staleLog.map(x => x.audio_id)])]
-        asSeen = await stillAsSeen(client, ids, rows)
+        asSeen = await stillAsSeen(client, ids, rows, { lock: true })
       }
+      try {
       const es = [...toInsert.values()].filter(e => !asSeen || asSeen.has(e.audio_id))
       t.changedSinceSnapshot = (t.changedSinceSnapshot || 0) + (toInsert.size - es.length)
       if (es.length) {
@@ -443,6 +451,11 @@ async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sl
           [stale.map(s => s.language), stale.map(s => s.text_key), stale.map(s => s.voice_id), stale.map(s => s.audio_id)])
         t.dropped += r.rowCount
         if (snap) for (const x of stale) snapDrop(snap, x.audio_id, keyOf(x.language, x.text_key, x.voice_id))
+      }
+      if (full) await client.query('COMMIT')
+      } catch (e) {
+        if (full) await client.query('ROLLBACK').catch(() => {})
+        throw e
       }
     }
     if (!full) t.watermark = rows[rows.length - 1].id

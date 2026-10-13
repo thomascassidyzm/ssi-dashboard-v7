@@ -18,4 +18,11 @@ describe('stillAsSeen', () => {
     expect(ok.size).toBe(0)
     expect(asked).toBe(false)
   })
+  it('inside the write transaction it locks what it passes (FOR SHARE, fixed order), so nothing changes before the write', async () => {
+    let sql = ''
+    const client = { query: async (q) => { sql = q; return { rows: [row('a')] } } }
+    const ok = await lib.stillAsSeen(client, ['a'], [row('a')], { lock: true })
+    expect([...ok]).toEqual(['a'])
+    expect(sql).toMatch(/ORDER BY id FOR SHARE$/)
+  })
 })
