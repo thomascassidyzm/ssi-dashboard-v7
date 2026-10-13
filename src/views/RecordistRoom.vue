@@ -24,8 +24,9 @@
     </section>
 
     <section v-else-if="phase === 'error'" class="rc-card center">
-      <h2>Couldn't load your lines</h2>
-      <p>{{ loadError }}</p>
+      <h2 v-if="!loadSlow">Couldn't load your lines</h2>
+      <h2 v-else>{{ loadError }}</h2>
+      <p v-if="!loadSlow">{{ loadError }}</p>
       <button class="btn-ghost" @click="load">Try again</button>
     </section>
 
@@ -60,7 +61,7 @@
         </template>
         <template v-if="navCourses.length">
           <span class="rc-nav-dot">·</span>
-          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ navCourses.length === 1 ? 'Course' : `Course ${c.code}` }}</router-link>
+          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
         </template>
         <span class="rc-nav-dot">·</span>
         <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
@@ -104,7 +105,7 @@
            first pass is never mistaken for all of it. -->
       <div v-if="phrases && (phrases.pass || phrases.finished)" class="volume-card phrase-card" data-test="phrase-batch">
         <template v-if="phrases.pass">
-          <p class="phrase-kicker">Practice phrases · {{ phrases.courseLabel }}</p>
+          <p class="phrase-kicker">Practice phrases · {{ boothCourseWords(phrases.courseCode, phrases.courseLabel) }}</p>
           <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
           <p class="phrase-count">{{ phrases.batchRecorded }} of {{ phrases.batchLines }} recorded in this batch</p>
           <p v-if="phrases.pass === 1" class="volume-note">
@@ -652,7 +653,7 @@
         </template>
         <template v-if="navCourses.length">
           <span class="rc-nav-dot">·</span>
-          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ navCourses.length === 1 ? 'Course' : `Course ${c.code}` }}</router-link>
+          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
         </template>
         <span class="rc-nav-dot">·</span>
         <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
@@ -675,7 +676,7 @@
            first pass is never mistaken for all of it. -->
       <div v-if="phrases && (phrases.pass || phrases.finished)" class="volume-card phrase-card" data-test="phrase-batch">
         <template v-if="phrases.pass">
-          <p class="phrase-kicker">Practice phrases · {{ phrases.courseLabel }}</p>
+          <p class="phrase-kicker">Practice phrases · {{ boothCourseWords(phrases.courseCode, phrases.courseLabel) }}</p>
           <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
           <p class="phrase-count">{{ phrases.batchRecorded }} of {{ phrases.batchLines }} recorded in this batch</p>
           <p v-if="phrases.pass === 1" class="volume-note">
@@ -801,6 +802,8 @@ import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStored
 import { createAdvanceLock } from './recordist/advance-lock'
 import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
+import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords } from './recordist/booth-chip-titles.js'
+import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
@@ -819,6 +822,7 @@ const queue = useRecordistQueue({
 
 const phase = ref('loading') // loading | unknown | error | ready | recording | done
 const loadError = ref(null)
+const loadSlow = ref(false)
 const micError = ref(null)
 const voice = ref({ displayName: '', languageName: '', total: 0, recorded: 0, remaining: 0 })
 const lines = ref([])
@@ -968,6 +972,7 @@ const rosterRows = computed(() => lines.value.map(l => ({
   // groups by its kind exactly as it always did.
   podSlug: l.podSlug || null,
   podTitle: l.podTitle || null,
+  courseCode: l.courseCode || null,
   // HOW IT IS READ. The roster draws it so the two speeds of the minimal set
   // are told apart at a glance, and onNext acts on it below.
   readStyle: l.readStyle || 'natural',
@@ -1018,7 +1023,7 @@ function phrasePlaceWords(pass, batch) {
   const p = phrases.value
   if (!p || !p.pass) return null
   const n = pass === p.pass ? p.batches : null
-  return `Pass ${pass || p.pass} of ${p.passes} · ${p.courseLabel} batch ${batch || p.batch}${n ? ` of ${n}` : ''}`
+  return `Pass ${pass || p.pass} of ${p.passes} · ${boothCourseWords(p.courseCode, p.courseLabel)} batch ${batch || p.batch}${n ? ` of ${n}` : ''}`
 }
 
 const SECTION_ORDER = [
@@ -1104,7 +1109,11 @@ const POD_SECTIONS = {
   'senedd-s4c-steve': { heading: 'SENEDD', blurb: 'The S4C committee session at the Senedd, 11 January 2024 — read in session order.' },
 }
 function podSectionFor(row) {
+  // The booth's own pod names (Aran, 2026-10-13) win over every other heading,
+  // so the section reads the same as its nav chip. Display only.
+  const booth = boothPodHeading(row)
   const named = POD_SECTIONS[row.podSlug]
+  if (booth) return { ...(named || { blurb: 'Your half of this conversation — the other characters are read by someone else.' }), heading: booth }
   if (named) return named
   const blurb = 'Your half of this conversation — the other characters are read by someone else.'
   // A pod line with NO slug at all is the world before this split existed -- an
@@ -1125,9 +1134,10 @@ const navPods = computed(() => {
     if ((l.kind || 'pod') !== 'pod' || !l.podSlug || !l.courseCode) continue
     const key = `${l.courseCode}/${l.podSlug}`
     if (seen.has(key)) continue
-    seen.set(key, { key, label: l.podTitle || l.podSlug, to: `/production/${l.courseCode}/pods/${l.podSlug}` })
+    seen.set(key, { key, row: l, to: `/production/${l.courseCode}/pods/${l.podSlug}` })
   }
-  return [...seen.values()]
+  const keys = [...seen.keys()]
+  return [...seen.values()].map(({ row, ...p }) => ({ ...p, label: boothPodChip(row, keys) }))
 })
 const navCourses = computed(() => {
   const seen = new Map()
@@ -1135,7 +1145,9 @@ const navCourses = computed(() => {
     if (!l.courseCode || seen.has(l.courseCode)) continue
     seen.set(l.courseCode, { code: l.courseCode, to: `/production/${l.courseCode}` })
   }
-  return [...seen.values()]
+  const all = [...seen.values()]
+  const codes = all.map(c => c.code)
+  return all.map(c => ({ ...c, label: boothCourseChip(c.code, codes) }))
 })
 const rosterRef = ref(null)
 // "Lines" is on this page: open the whole list and put it under his thumb.
@@ -1196,7 +1208,7 @@ const notReadyNotes = computed(() => notReady.value
   .filter(n => Number(n.lines) > 0)
   .map(n => ({
     key: n.podId || n.podSlug || 'pod',
-    heading: podSectionFor({ podSlug: n.podSlug, podTitle: n.podTitle }).heading,
+    heading: podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading,
     lines: Number(n.lines),
   })))
 
@@ -1215,7 +1227,7 @@ const handedOnNotes = computed(() => handedOn.value
   .filter(n => Number(n.lines) > 0)
   .map(n => ({
     key: n.podId || n.podSlug || 'pod',
-    heading: podSectionFor({ podSlug: n.podSlug, podTitle: n.podTitle }).heading,
+    heading: podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading,
     castTo: n.castTo || 'somebody else',
     lines: Number(n.lines),
   })))
@@ -2500,6 +2512,7 @@ async function submitSetup() {
 async function load() {
   phase.value = 'loading'
   loadError.value = null
+  loadSlow.value = false
   try {
     // Always ask for the WHOLE queue, recorded lines included, and filter
     // locally: the map draws every line, a tapped recorded line can be read
@@ -2520,19 +2533,21 @@ async function load() {
     // server can narrow the read as well as the draw.
     const podScope = new URLSearchParams(window.location.search).get('pod')
     const podParam = podScope ? `&pod=${encodeURIComponent(podScope)}` : ''
-    const res = await fetch(
+    // Time-limited (20s, one retry): a hung request must not strand the reader
+    // on "Getting your lines…". The body is read inside the timed window.
+    const { res, data: body } = await fetchWithTimeoutRetry(
       `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}`,
-      { headers: {} }
+      { headers: {} },
+      r => (r.ok ? r.json() : r.json().catch(() => ({})))
     )
     if (res.status === 404) { phase.value = 'unknown'; return }
     if (res.status === 403) {
       // The link names a course this voice is not cast on: the server's
       // sentence says so (casting-rights.boothArrival), in words, not a code.
-      const body = await res.json().catch(() => ({}))
       throw new Error(body.error || `This link is for a course you are not cast on (${courseScope}).`)
     }
     if (!res.ok) throw new Error(`Could not load your lines (${res.status})`)
-    const data = await res.json()
+    const data = body
     voice.value = data
     // A QUEUE MAY ASK FOR AUTO-ADVANCE OFF, and one does. Pod and course lines
     // are single sentences, so stopping on a silence is right for them and the
@@ -2573,6 +2588,7 @@ async function load() {
     advanceLock.reset()
     phase.value = 'ready'
   } catch (err) {
+    loadSlow.value = err instanceof LoadTimeoutError
     loadError.value = (err && err.message) || 'Network error'
     phase.value = 'error'
   }
