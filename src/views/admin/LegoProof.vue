@@ -19,9 +19,14 @@
       <p v-if="msg" class="msg" :class="{ bad: msgBad }">{{ msg }}</p>
     </header>
 
-    <div v-if="exportText !== null" class="export">
-      <textarea ref="exportBox" readonly :value="exportText" rows="10"></textarea>
-      <div class="bar"><button class="pill" @click="copyExport">Copy</button><button class="pill" @click="exportText = null">Close</button></div>
+    <!-- A fixed overlay, not an inline block: inline it opened above a long list and, with the page scrolled, was off screen
+         so "nothing happened" (job #551). Always on screen, whatever the scroll position or the clipboard permission. -->
+    <div v-if="exportText !== null" class="export-overlay" role="dialog" aria-label="Flag list" @click.self="exportText = null">
+      <div class="export">
+        <textarea ref="exportBox" readonly :value="exportText" @focus="$event.target.select()"></textarea>
+        <p v-if="msg" class="msg" :class="{ bad: msgBad }">{{ msg }}</p>
+        <div class="bar"><button class="pill" @click="copyExport">Copy</button><button class="pill" @click="downloadExport">Download .txt</button><button class="pill" @click="exportText = null">Close</button></div>
+      </div>
     </div>
 
     <p v-if="loading" class="note">Loading {{ course }}…</p>
@@ -182,12 +187,34 @@ function saveNow(l) {
 function exportFlags() {
   const label = COURSES.find((c) => c.code === course.value).label
   const rows = legos.value.filter((l) => l.flagged)
+  msg.value = ''
   exportText.value = [`LEGO proof flags — ${course.value} (${label}) — ${rows.length} flagged`, '']
-    .concat(rows.map((l) => `${l.id}${l.n ? ` (#${l.n})` : ' (taught)'}${l.hc ? ' HC' : ''}  ${l.cy}  =  ${l.en || '—'}${l.note ? `  — ${l.note}` : ''}`))
+    .concat(rows.length ? rows.map((l) => `${l.id}${l.n ? ` (#${l.n})` : ' (taught)'}${l.hc ? ' HC' : ''}\n  Welsh: ${l.cy}\n  English: ${l.en || '—'}\n  Note: ${l.note || '—'}\n`) : ['(no flags on this course)'])
     .join('\n')
 }
 async function copyExport() {
-  try { await navigator.clipboard.writeText(exportText.value); say('Copied.') } catch { exportBox.value?.select(); say('Select-all is on — copy it from there.') }
+  const box = exportBox.value
+  try {
+    if (!navigator.clipboard?.writeText) throw new Error('no clipboard API')
+    await navigator.clipboard.writeText(exportText.value)
+    say('Copied.')
+    return
+  } catch { /* insecure context or blocked: fall through to select + execCommand */ }
+  try {
+    box?.focus(); box?.select(); box?.setSelectionRange?.(0, exportText.value.length)
+    if (document.execCommand('copy')) { say('Copied.'); return }
+  } catch { /* fall through */ }
+  say('Could not copy automatically — the text is selected, press and hold / Ctrl+C to copy it.', true)
+}
+function downloadExport() {
+  try {
+    const url = URL.createObjectURL(new Blob([exportText.value], { type: 'text/plain;charset=utf-8' }))
+    const a = document.createElement('a')
+    a.href = url; a.download = `lego-proof-flags-${course.value}.txt`
+    document.body.appendChild(a); a.click(); a.remove()
+    setTimeout(() => URL.revokeObjectURL(url), 1000)
+    say('Download started.')
+  } catch (e) { say(`Download failed: ${e.message} — copy the text instead.`, true) }
 }
 
 onMounted(load)
@@ -217,6 +244,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .msg { font-size: 0.85rem; color: var(--lp-good); margin: 0.25rem 0 0; }
 .msg.bad { color: var(--lp-bad); }
 .note { color: var(--lp-muted); padding: 1rem 0.25rem; }
+.export-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(15,23,42,.55); display: flex; align-items: center; justify-content: center; padding: 0.75rem; }
+.export { background: #fff; color: var(--lp-ink); border-radius: 12px; padding: 0.75rem; width: min(900px, 100%); max-height: 100%; display: flex; flex-direction: column; }
+.export textarea { flex: 1; min-height: 50vh; resize: none; }
 .export textarea { width: 100%; font: 0.8rem ui-monospace, monospace; background: #f8fafc; color: var(--lp-ink); border: 1px dashed #94a3b8; border-radius: 8px; padding: 0.5rem; margin-top: 0.5rem; }
 .list { list-style: none; margin: 0; padding: 0; }
 .row { display: flex; align-items: stretch; gap: 0.5rem; border-bottom: 1px solid #e2e8f0; content-visibility: auto; contain-intrinsic-size: auto 60px; }
