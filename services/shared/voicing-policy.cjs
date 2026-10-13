@@ -26,6 +26,7 @@ const config = require('./voicing-policy.config.json')
 const { castKeyForCourse, baseLanguageOfCastKey } = require('./cast-language-key.cjs')
 const gate = require('./voice-cast-gate.cjs')
 const { resolveVoice, sameVoice, loadCast } = require('./resolve-voice.cjs')
+const { isTomCloneVoice, isWelshCourse, WELSH_TOM_MESSAGE } = require('./welsh-no-tom-clone.cjs')
 
 class VoicingRefusal extends Error {
   constructor(message, reason) { super(message); this.name = 'VoicingRefusal'; this.code = 'VOICING_POLICY'; this.status = 403; this.reason = reason }
@@ -79,6 +80,8 @@ const FULL_INTRO = /^\s*the\s+[\p{L}][\p{L}' -]*?\s+for\b/iu
  */
 function checkRender({ text, language, voiceId, course = null, intro = false, role = null, audition = false, now, cast = null }) {
   if (isXai(voiceId)) return refuse('xai-banned', `${voiceId} is an xAI voice — xAI is banned on every path (Tom 2026-10-10).`)
+  // Tom 2026-10-13 (HARD RULE): no Tom clone speaks in a Welsh course. Checked before the audition/no-course shortcuts' reach: only a true audition (no course clip written) passes.
+  if (!audition && isWelshCourse(course) && isTomCloneVoice(voiceId)) return refuse('tom-clone-welsh', WELSH_TOM_MESSAGE(course.course_code, voiceId))
   const lang = lc(language)
   if (audition || !course) return OK
   const presentation = !!intro || role === 'presentation'
@@ -115,6 +118,7 @@ const useCourseRow = fn => { injectedCourse = fn }
 
 /** Throws a VoicingRefusal; async because the course row is read from the DB (cached a minute by the cast gate). */
 async function assertRenderAllowed({ text, language, voiceId, courseCode = null, intro = false, role = null, audition = false }) {
+  if (!audition && isWelshCourse(courseCode) && isTomCloneVoice(voiceId)) throw new VoicingRefusal(refuse('tom-clone-welsh', WELSH_TOM_MESSAGE(courseCode, voiceId)).message, 'tom-clone-welsh')   // by code alone: even a course row that cannot be read
   const needsCourse = !audition && !!courseCode
   const course = needsCourse ? await (injectedCourse ? injectedCourse(courseCode) : gate.courseCastRow(courseCode)) : null
   const cast = course ? await loadCast() : null

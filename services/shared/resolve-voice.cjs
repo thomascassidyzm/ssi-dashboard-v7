@@ -34,6 +34,7 @@ const { tryCanonicalVoiceId, tryCanonicalLanguage } = require('./clip-identity.c
 const { castKeyForCourse } = require('./cast-language-key.cjs')
 const { isTomCastRow, rowIsForKey } = require('./voice-cast-gate.cjs')
 const voicingConfig = require('./voicing-policy.config.json')
+const { isTomCloneVoice, isWelshCourse, WELSH_TOM_MESSAGE } = require('./welsh-no-tom-clone.cjs')
 
 const TOM_006 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
 const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
@@ -54,6 +55,8 @@ const TOM006_INTRO_COURSES = Object.freeze([...((voicingConfig.wholeIntroVoices 
 const EXPECTED_ENGLISH_TARGET = Object.freeze({ f: CHARLOTTE, m: TOM_006 })
 
 const POLICY = Object.freeze([
+  { rule: 'welsh-no-tom-clone', when: 'ANY slot of a Welsh course (cym in the code or either language) whose answer would be a Tom clone', voice: 'REFUSE — never a Tom clone, never a guess',
+    ruling: 'r-2026-10-13-hard-rule-tom-s-voice-clone ("my clone should never have been used for anything in the WELSH courses")' },
   { rule: 'english-known', when: 'English is the KNOWN language, any course, any gender', voice: 'Tom-006',
     ruling: 'r-2026-10-12-in-the-premium-x-for-eng (+ Tom 2026-10-12 16:17Z brief: "English as KNOWN language in ANY course: Tom-006, always")' },
   { rule: 'english-target', when: 'English is the TARGET (eng_for_X), target1/target2', voice: 'English cast at the slot gender: Charlotte (f) / Tom-006 (m)',
@@ -109,7 +112,17 @@ function pickCast(cast, key, gender) {
  * @param {{course:object, role:string, language?:string, gender?:'f'|'m'}} slot
  * @param {{roles:object[], voices?:object[]}|null} cast  voice_language_roles (+ voices) rows; null = cast not loaded
  */
-function resolveVoice({ course, role, language = null, gender = null } = {}, cast = null) {
+function resolveVoice(slot = {}, cast = null) {
+  const res = resolveVoiceUnguarded(slot, cast)
+  // Tom 2026-10-13: a Welsh course never speaks in a Tom clone, whatever the rules below would say.
+  if (res.status === 'voice' && isWelshCourse(slot.course) && isTomCloneVoice(res.voiceId)) {
+    return { status: 'refuse', reason: 'tom-clone-welsh', rule: 'welsh-no-tom-clone', ruling: POLICY.find((p) => p.rule === 'welsh-no-tom-clone').ruling,
+      message: WELSH_TOM_MESSAGE(slot.course.course_code, res.voiceId) }
+  }
+  return res
+}
+
+function resolveVoiceUnguarded({ course, role, language = null, gender = null } = {}, cast = null) {
   if (!course) return noRuling('no course')
   if (!SLOT_ROLES.includes(role)) return noRuling(`role ${role} is not a course slot this policy governs`)
   const knownSide = role === 'known' || role === 'presentation'
@@ -147,6 +160,10 @@ function resolveVoice({ course, role, language = null, gender = null } = {}, cas
  */
 function checkPointer({ course, role, clip, gender = null }, cast) {
   if (!clip) return { ok: false, reason: 'no-clip', message: 'no clip to point at' }
+  // Tom 2026-10-13: a Tom clone never fills a Welsh slot — checked before anything else, whatever the policy answer.
+  if (isWelshCourse(course) && isTomCloneVoice(clip.voice_id)) {
+    return { ok: false, reason: 'tom-clone-welsh', resolution: null, message: WELSH_TOM_MESSAGE(course.course_code, clip.voice_id) }
+  }
   // A HUMAN RECORDING is never outranked by a TTS policy (Tom 2026-08-31, language-voice-cast.cjs human-voice guard).
   if (clip.origin === 'human') return { ok: true, human: true, resolution: null }
   const res = resolveVoice({ course, role, language: clip.language, gender }, cast)
