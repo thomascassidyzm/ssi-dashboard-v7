@@ -31,16 +31,17 @@ const { makePhraseId, computeLegoPosition } = require('../../services/course-bui
 
 const SANDBOXES = ['cym_nv2_for_eng', 'cym_sv2_for_eng'];
 const arg = (k) => { const i = process.argv.indexOf(k); return i === -1 ? null : process.argv[i + 1]; };
+const MAIN = require.main === module;
 const MODE = process.argv[2];
 const COURSE = arg('--course');
-if (!SANDBOXES.includes(COURSE)) throw new Error(`refusing ${COURSE}: this tool writes only to ${SANDBOXES.join(' / ')}`);
+if (MAIN && !SANDBOXES.includes(COURSE)) throw new Error(`refusing ${COURSE}: this tool writes only to ${SANDBOXES.join(' / ')}`);
 const LEGOS = String(arg('--legos') || '').split(',').filter(Boolean).map((s) => s.split(':').map(Number));
-if (!LEGOS.length) throw new Error('say --legos SEED:IDX,...');
+if (MAIN && !LEGOS.length) throw new Error('say --legos SEED:IDX,...');
 const JOB = Number(arg('--job') || 459);
 const ALREADY_TAUGHT = process.argv.includes('--already-taught');
-const OUT = path.join(os.homedir(), `ssi-evidence/ssi-dashboard-v7/job-${JOB}`, COURSE);
+const OUT = path.join(os.homedir(), `ssi-evidence/ssi-dashboard-v7/job-${JOB}`, String(COURSE));
 const fileFor = (s, l) => path.join(OUT, `S${String(s).padStart(4, '0')}L${String(l).padStart(2, '0')}.json`);
-const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } });
+const sb = MAIN ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } }) : null;
 
 async function pageAll(q) {
   const out = [];
@@ -77,6 +78,43 @@ async function generate() {
   }));
 }
 
+/**
+ * The add_rows for every passed pairing. `baskets` maps "seed:hostIndex" to the host's live rows
+ * (id, position, phrase_role); new rows take the next free position and USE number after them.
+ */
+function pairingRows(course, pairings, baskets, job) {
+  const rows = [];
+  // One counter per (seed, host) for the whole run, never per pairing: two pairings carried by
+  // the same host would otherwise both start after the live basket and collide on add_rows.id
+  // (Tom's review of PR #80, job #550: --legos 1092:1,1092:3).
+  const counters = new Map();
+  for (const { s, l, r } of pairings) {
+    const key = `${s}:${r.hostIndex}`;
+    if (!counters.has(key)) {
+      const basket = baskets.get(key) || [];
+      counters.set(key, {
+        pos: Math.max(0, ...basket.map((b) => b.position)),
+        u: Math.max(0, ...basket.filter((b) => b.phrase_role === 'use').map((b) => Number((b.id.match(/U(\d+)$/) || [])[1] || 0))),
+      });
+    }
+    const at = counters.get(key);
+    const taughtId = `S${String(s).padStart(4, '0')}L${String(l).padStart(2, '0')}`;
+    for (const p0 of r.use) {
+      // The English pronoun is "I": the model sometimes writes "i" (job #468: S1563, S1584).
+      const p = { ...p0, known: p0.known.replace(/(^|[\s"(])i(?=[\s’'])/g, '$1I') };
+      rows.push({
+        id: makePhraseId(course, s, r.hostIndex, 'use', ++at.u), seed: s, lego: r.hostIndex, position: ++at.pos,
+        known: p.known, target: p.target, word_count: p.target.length, lego_count: (p.known.match(/\s+/g) || []).length + 1,
+        lego_position: computeLegoPosition(p.target, r.hostTarget), connected: taughtId,
+        metadata: { format: 'build_use', pipeline: 'new-pairing', no_debut: true,
+          new_pairing: { lego_id: taughtId, known: r.legoKnown, target: r.legoTarget, taught_as: { known: r.taughtAs.known_text, target: r.taughtAs.target_text, seed: r.taughtAs.seed_number } },
+          ruling: 'Aran 2026-10-13: same Welsh taught under other English — no intro, 2-3 phrases', job },
+      });
+    }
+  }
+  return rows;
+}
+
 const q = (s) => (s === null || s === undefined ? 'NULL' : `'${String(s).replace(/'/g, "''")}'`);
 
 async function sql() {
@@ -85,28 +123,21 @@ async function sql() {
   const flips = [];
   const rows = [];
   const skipped = [];
+  const pairings = [];
+  const baskets = new Map();
   for (const [s, l] of LEGOS) {
     const r = JSON.parse(fs.readFileSync(fileFor(s, l), 'utf8'));
     if (r.held || r.error || r.blocked || !r.use?.length) { skipped.push(`S${s}L${l}: ${r.held || r.error || 'blocked by the gates'}`); continue; }
     flips.push({ s, l, target: r.legoTarget });
-    const { data: basket } = await sb.from('course_practice_phrases').select('id,position,phrase_role')
-      .eq('course_code', COURSE).eq('seed_number', s).eq('lego_index', r.hostIndex);
-    let pos = Math.max(0, ...basket.map((b) => b.position));
-    let u = Math.max(0, ...basket.filter((b) => b.phrase_role === 'use').map((b) => Number((b.id.match(/U(\d+)$/) || [])[1] || 0)));
-    const taughtId = `S${String(s).padStart(4, '0')}L${String(l).padStart(2, '0')}`;
-    for (const p0 of r.use) {
-      // The English pronoun is "I": the model sometimes writes "i" (job #468: S1563, S1584).
-      const p = { ...p0, known: p0.known.replace(/(^|[\s"(])i(?=[\s’'])/g, '$1I') };
-      rows.push({
-        id: makePhraseId(COURSE, s, r.hostIndex, 'use', ++u), seed: s, lego: r.hostIndex, position: ++pos,
-        known: p.known, target: p.target, word_count: p.target.length, lego_count: (p.known.match(/\s+/g) || []).length + 1,
-        lego_position: computeLegoPosition(p.target, r.hostTarget), connected: taughtId,
-        metadata: { format: 'build_use', pipeline: 'new-pairing', no_debut: true,
-          new_pairing: { lego_id: taughtId, known: r.legoKnown, target: r.legoTarget, taught_as: { known: r.taughtAs.known_text, target: r.taughtAs.target_text, seed: r.taughtAs.seed_number } },
-          ruling: 'Aran 2026-10-13: same Welsh taught under other English — no intro, 2-3 phrases', job: JOB },
-      });
+    const key = `${s}:${r.hostIndex}`;
+    if (!baskets.has(key)) {
+      const { data: basket } = await sb.from('course_practice_phrases').select('id,position,phrase_role')
+        .eq('course_code', COURSE).eq('seed_number', s).eq('lego_index', r.hostIndex);
+      baskets.set(key, basket);
     }
+    pairings.push({ s, l, r });
   }
+  rows.push(...pairingRows(COURSE, pairings, baskets, JOB));
   const tag = COURSE === 'cym_nv2_for_eng' ? 'nv2' : 'sv2';
   const backup = `backup_cym_${tag}_newpairing_${JOB}`;
   const ruling = 'Aran 2026-10-13: a LEGO whose Welsh (identical or soft-mutated) was taught earlier under other English is already taught (no intro) but gets 2-3 practice phrases using the new pairing, under a new sibling LEGO (P25). Rule: services/course-builder/lib/new-pairing.cjs.';
@@ -225,5 +256,9 @@ REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index;
   skipped.forEach((x) => console.log('  ' + x));
 }
 
-(MODE === 'generate' ? generate() : MODE === 'sql' ? sql() : Promise.reject(new Error('mode: generate | sql')))
-  .catch((e) => { console.error(e); process.exit(1); });
+module.exports = { pairingRows };
+
+if (MAIN) {
+  (MODE === 'generate' ? generate() : MODE === 'sql' ? sql() : Promise.reject(new Error('mode: generate | sql')))
+    .catch((e) => { console.error(e); process.exit(1); });
+}

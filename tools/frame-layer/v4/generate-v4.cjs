@@ -107,7 +107,8 @@ const useTooShort = (known, noSpace) => unitsOf(known, noSpace).length < (noSpac
 
 // ---------- target tiling: exact surface forms, see exact-form.cjs (Tom 2026-10-09) ----------
 const { exactFormCheck, tiles } = require('./exact-form.cjs');
-const { isWelshTarget, welshVocabRulePrompt, welshContainsLego } = require('../../../services/course-builder/lib/welsh-mutation.cjs');
+const { welshContainsLego } = require('../../../services/course-builder/lib/welsh-mutation.cjs');
+const { vocabRulePrompt } = require('../../../services/course-builder/lib/taught-words.cjs');
 
 // ---------- the walk-back brief ----------
 function carriersByFrame(chunks, frameIds) {
@@ -153,7 +154,7 @@ NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on t
 
 RAILS (every one is checked mechanically after you write; a phrase that fails is dropped):
 - The phrase contains the LEGO's exact known text AND exact target text, as taught.
-${isWelshTarget(course) ? `- ${welshVocabRulePrompt(course)} A basket may use material from earlier seeds and earlier LEGOs of its own seed, never later ones.` : '- The target is built ONLY from whole taught chunks listed in VOCABULARY — no new word, no re-conjugation, no new contraction. A basket may use chunks from earlier seeds and earlier LEGOs of its own seed, never later ones.'}
+${vocabRulePrompt(course) ? `- ${vocabRulePrompt(course)} A basket may use material from earlier seeds and earlier LEGOs of its own seed, never later ones.` : '- The target is built ONLY from whole taught chunks listed in VOCABULARY — no new word, no re-conjugation, no new contraction. A basket may use chunks from earlier seeds and earlier LEGOs of its own seed, never later ones.'}
 - The known (English) side uses only the English glosses of taught chunks plus plain grammatical glue.
 - ZUT: one English prompt maps to exactly one ${LANG} form, everywhere in the course. Do not write an English line the course already renders another way.
 - No parentheses, no explanations, no grammar labels, anywhere.
@@ -202,7 +203,7 @@ NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on t
 
 RAILS (checked mechanically after you write; a phrase that fails is dropped):
 - The phrase contains the LEGO's exact known text AND exact target text, as taught.
-${isWelshTarget(course) ? `- ${welshVocabRulePrompt(course)} Only material in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it.` : "- The target is built ONLY from whole taught chunks in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it. No new word, no re-conjugation, no new contraction."}
+${vocabRulePrompt(course) ? `- ${vocabRulePrompt(course)} Only material in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it.` : "- The target is built ONLY from whole taught chunks in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it. No new word, no re-conjugation, no new contraction."}
 - The known (${KNOWN}) side uses only the ${KNOWN} glosses of taught chunks plus plain grammatical glue — words the learner has already heard in this course.
 - ZUT: one ${KNOWN} prompt maps to exactly one ${LANG} form, everywhere in the course. Do not write a ${KNOWN} line the course already renders another way.
 - No parentheses, no explanations, no grammar labels.

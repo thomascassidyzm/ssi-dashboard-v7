@@ -449,6 +449,15 @@ module.exports = function(ctx) {
               legoStatuses.set(lego.idx, 'duplicate');
               totalDeduplicated++;
               mutationDuplicates.push({ seed_number: draft.seed_number, lego_idx: lego.idx, known: lego.known, target: lego.target, taught_as: taughtWelsh.target_text, taught_known: taughtWelsh.known_text, taught_at: taughtWelsh.seed_number, rule: 'same-welsh-other-english' });
+              // Not new, but this English is now paired with this Welsh: record it, or a later
+              // draft giving the same English other Welsh escapes the ZUT check above (Tom's
+              // review of PR #80, job #550: 'to get up' → codi, then 'to get up' → cerdded).
+              knownLegoMap.set(normKey, {
+                target_text: lego.target,
+                known_text: lego.known,
+                seed_number: draft.seed_number,
+                lego_index: lego.idx
+              });
               continue;
             }
             legoStatuses.set(lego.idx, 'new');
