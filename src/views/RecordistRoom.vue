@@ -60,7 +60,7 @@
         </template>
         <template v-if="navCourses.length">
           <span class="rc-nav-dot">·</span>
-          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ navCourses.length === 1 ? 'Course' : `Course ${c.code}` }}</router-link>
+          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
         </template>
         <span class="rc-nav-dot">·</span>
         <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
@@ -652,7 +652,7 @@
         </template>
         <template v-if="navCourses.length">
           <span class="rc-nav-dot">·</span>
-          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ navCourses.length === 1 ? 'Course' : `Course ${c.code}` }}</router-link>
+          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
         </template>
         <span class="rc-nav-dot">·</span>
         <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
@@ -801,6 +801,7 @@ import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStored
 import { createAdvanceLock } from './recordist/advance-lock'
 import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
+import { boothCourseChip, boothPodChip } from './recordist/booth-chip-titles.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
@@ -1125,7 +1126,7 @@ const navPods = computed(() => {
     if ((l.kind || 'pod') !== 'pod' || !l.podSlug || !l.courseCode) continue
     const key = `${l.courseCode}/${l.podSlug}`
     if (seen.has(key)) continue
-    seen.set(key, { key, label: l.podTitle || l.podSlug, to: `/production/${l.courseCode}/pods/${l.podSlug}` })
+    seen.set(key, { key, label: boothPodChip(l), to: `/production/${l.courseCode}/pods/${l.podSlug}` })
   }
   return [...seen.values()]
 })
@@ -1135,7 +1136,8 @@ const navCourses = computed(() => {
     if (!l.courseCode || seen.has(l.courseCode)) continue
     seen.set(l.courseCode, { code: l.courseCode, to: `/production/${l.courseCode}` })
   }
-  return [...seen.values()]
+  const all = [...seen.values()]
+  return all.map(c => ({ ...c, label: boothCourseChip(c.code, all.length) }))
 })
 const rosterRef = ref(null)
 // "Lines" is on this page: open the whole list and put it under his thumb.
