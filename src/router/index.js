@@ -682,6 +682,13 @@ const routes = [
     meta: { title: 'Basket Lab - Admin', requiresAuth: true, requiresAdmin: true }
   },
   {
+    // Intro Lab (job #488): the #348 splice lab as a Popty tool, with the LEGO played as the player plays a debut. Read-only.
+    path: '/admin/labs/intro',
+    name: 'IntroLab',
+    component: () => import('../views/admin/IntroLab.vue'),
+    meta: { title: 'Intro Lab - Admin' }
+  },
+  {
     // Capture A/B — record the same line under each mic profile and measure
     // both, on the phone that actually does the recording. It joins the labs
     // here because it IS one; before this it was linked from nowhere in src/.

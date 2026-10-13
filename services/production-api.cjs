@@ -520,6 +520,14 @@ app.use('/api/production/:courseCode/team',
     bumpCourseVersion: require('./shared/course-version.cjs').bumpCourseVersion,
   }))
 
+// Intro lab (job #488): the spliced Tom-voice intro + the player's real debut, for any course. READ-ONLY (SELECTs and a byte
+// proxy). Under /api/production/:courseCode so the app.param course-scope gate fires.
+app.use('/api/production/:courseCode/intro-lab',
+  require('./intro-lab/intro-lab-router.cjs').createIntroLabRouter({
+    getDb: () => supabaseClient.getClient(),
+    logger,
+  }))
+
 // Pod recording coverage (keystone §5): per cast voice (voice_config.podCast)
 // lines recorded / remaining + per-pod breakdown, human-vs-tts per sentence.
 // REGISTERED BEFORE the pods router on purpose: this read-only route relies on
