@@ -1,5 +1,5 @@
 -- Job #554·P: proves the undo BEFORE the apply (run 2026-10-13 13:06Z, PASSED). After the apply, the undo's own dry run is the test
--- (psql -f weave-cym-proof-fixes-554-undo.sql: restores, checks against the backup, rolls back; PASSED 13:2xZ).
+-- (psql -f weave-cym-proof-fixes-554-undo.sql: restores, checks against the backup, rolls back; PASSED after stage 2 and the new-pairing rows were committed).
 -- Original purpose: applies stage 1
 -- committed, they are simply part of the state), runs the undo, checks every touched seed and the extra phrases
 -- equal what they were before, then ROLLS BACK everything. Never commits. Run from this directory:
