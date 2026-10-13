@@ -193,7 +193,12 @@ class TtsSpendGuardError extends Error {
 
 /** The loop key's text: case, punctuation and spacing do not make a new line. */
 function repeatTextKey(text) {
-  return String(text || '').normalize('NFC').toLowerCase()
+  const t = String(text || '').normalize('NFC')
+  // a trailing question mark is part of the line (Tom 2026-10-13); the same rule as text-normalize.cjs
+  return repeatTextKeyBare(t) + (/[?？][.!?。？！\s]*$/.test(t) ? '?' : '')
+}
+function repeatTextKeyBare(t) {
+  return t.toLowerCase()
     .replace(/[\s ]+/g, ' ')
     .replace(/[.,!?;:"'“”‘’()\[\]{}…—–\-।॥¿¡。？！、，]/g, '')
     .trim()

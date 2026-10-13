@@ -120,6 +120,10 @@ describe('(c) idempotency: the same words, voice and provider are not bought ove
   it('keys ignore case, spacing and punctuation but not voice or provider', () => {
     expect(repeatKey('cartesia', 'v', 'Her  name.')).toBe(repeatKey('cartesia', 'v', 'her name'))
     expect(repeatKey('cartesia', 'v', 'her name')).not.toBe(repeatKey('xai', 'v', 'her name'))
+    // Tom 2026-10-13: a question mark makes a different recording, so it is a different line for the loop cap
+    expect(repeatKey('cartesia', 'v', 'Onde era?')).not.toBe(repeatKey('cartesia', 'v', 'onde era'))
+    expect(repeatKey('cartesia', 'v', 'Onde era?')).toBe(repeatKey('cartesia', 'v', 'onde era ?!'))
+    expect(repeatKey('cartesia', 'v', '本当に？')).toBe(repeatKey('cartesia', 'v', '本当に?'))
   })
 })
 

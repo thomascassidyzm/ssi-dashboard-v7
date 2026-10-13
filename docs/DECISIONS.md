@@ -1,3 +1,18 @@
+## 2026-10-13 — A question mark is part of an audio key (job #586)
+
+**Tom, 2026-10-13:** capitalisation does not distinguish recordings, a question mark does: "Onde era?" and "onde era" are separate recordings.
+
+**Why it was broken:** SQL `normalize_text()` stripped `.?!¿¡。？！`, so the `text_normalized` trigger gave the question and the statement the same key and `unique_course_audio_per_voice` made one render overwrite the other (#408/#409). The JS `normalizeForAudio` and the app already kept the `?`, so lookups missed (memory ssi-pod-fine-known-question-lookup-miss).
+
+**Rule now (SQL and `normalizeForDb`, pinned by `text-normalize-sql-parity.test.cjs`):** a trailing run of `. ! ? 。 ？ ！` that contains a `?`/`？` becomes one ASCII `?` (space before it dropped); a run without one is stripped as before. Case folded. Leading `¿ ¡` untouched.
+
+**Applied 2026-10-13 ~14:47Z** by `tools/audio-question-key-backfill.cjs --apply`: one transaction (function swap + re-key + self-check), triggers bypassed, old key of every row in the evidence log (`~/ssi-evidence/ssi-dashboard-v7/tools/audio-question-key-backfill/`), `--undo <log>` restores. Two dry runs on the whole table first; attempt 1 rolled back cleanly on a lock timeout while stamping courses (stamping moved out of the transaction). Gate from the 2026-08-06 backfill precedent kept: no row deleted, no `s3_key` touched, collisions skipped and listed rather than resolved.
+- course_audio re-keyed 202,392 (+2 stragglers on the re-run); shared_audio 95; audio_clips 50,306; clip_index: 11 stale cache rows deleted (a correctly keyed entry already existed), 0 re-keyed.
+- 424 question rows left on their old key: they are the second of two renders of one question (a legacy `x?` row already holds the key). Choosing a winner and repointing the 23 FK tables is a link decision, not made here.
+- Also changed: the TTS spend guard's repeat-cap key now treats a question and its statement as different lines.
+
+**Then** `tools/audio-question-variant-repoint.cjs` finds content slots whose linked recording is the other variant, repoints to a correct row that already exists (free), and bumps `courses.content_version` once per course.
+
 ## 2026-10-09 — Phrase v4 landed in French and Bengali; new lines voiced (job #993)
 
 **Tom, 2026-10-09 09:32Z:** "Yes. Merge French and Bengali. Then we need to rebuild the audio. Bengali has not been settled so we want to leave the audio for that one for the Bengali voices - unless no options in Cartesia. And English is already settled as Tom and Charlotte in Cartesia".

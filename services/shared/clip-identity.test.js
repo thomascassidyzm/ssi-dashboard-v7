@@ -161,9 +161,9 @@ describe('clipIdentity', () => {
     const id = clipIdentity({ language: 'en-GB', text: '  How Long?  ', voiceId: 'en-GB-SoniaNeural' })
     expect(id).toEqual({
       language: 'eng',
-      text_normalized: 'how long',
+      text_normalized: 'how long?',
       voice_id: 'azure_en-GB-SoniaNeural',
-      key: ['eng','how long','azure_en-GB-SoniaNeural'].join('\u001f'),
+      key: ['eng','how long?','azure_en-GB-SoniaNeural'].join('\u001f'),
     })
   })
 

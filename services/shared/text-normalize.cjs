@@ -1,66 +1,46 @@
 /**
  * Canonical text normalization for audio matching.
  *
- * ⚠️ THE DATABASE DOES NOT AGREE WITH normalizeForAudio, AND THE DATABASE WINS.
+ * THE RULE (Tom, 2026-10-13): capitalisation does not distinguish a recording,
+ * a question mark does. "Onde era?" and "onde era" are two recordings (question
+ * intonation vs statement), so a trailing ? is PART OF THE KEY. Everything else
+ * trailing (. ! and the CJK stops) is stripped, case is folded.
  *
- * `course_audio.text_normalized` is written by the BEFORE INSERT OR UPDATE
- * trigger `trg_course_audio_normalize`, which calls the SQL function
- *   normalize_text(t) = rtrim(lower(trim(t)), '.?!¿¡。？！')
- * unconditionally. It overwrites whatever a caller supplied. So the rule this
- * file used to state — "EVERY write to text_normalized MUST use this function"
- * — has not been true since the trigger landed: as of 2026-08-06, of the
- * course_audio rows whose text ends in '?', 154,257 are stored with the '?'
- * STRIPPED and only 5,305 (all written Jan–Feb 2026, before the trigger) keep
- * it. The column therefore holds TWO incompatible conventions and no single
- * exact key can reach both.
+ * This is byte-identical to the SQL function normalize_text(), which the
+ * course_audio / shared_audio BEFORE INSERT OR UPDATE trigger runs and which
+ * feeds UNIQUE (course_code, text_normalized, language, role, voice_id). Before
+ * 2026-10-13 the SQL stripped the ? as well, so rendering the question
+ * overwrote the statement (and vice versa) and the app, which kept the ?,
+ * missed every row (#408/#409). The SQL lives in
+ * database/migrations/20261013_audio_key_keeps_question_mark.sql; the backfill
+ * that re-keyed the stored rows is tools/audio-question-key-backfill.cjs.
  *
- * Consequences that were live bugs, found 2026-08-06:
- *   - reads doing .eq('text_normalized', normalizeForAudio(text)) miss every
- *     question-ending row written since March 2026;
- *   - that included the PRECIOUS-AUDIO GUARD, which therefore could not see
- *     5,090 human recordings and let TTS upsert over them;
- *   - the DB autolink trigger used a third rule again (`lower(trim(text))`,
- *     stripping nothing), fixed in
- *     database/migrations/20260806_audio_link_integrity.sql.
- *
- * Until a gated backfill unifies the column (it feeds
- * UNIQUE (course_code, text_normalized, language, role, voice_id), so it cannot
- * simply be recomputed — see docs/DECISIONS.md 2026-08-06), the rule is:
- *
- *   WRITING a course_audio row  -> the trigger decides; supply anything.
- *   READING / MATCHING against text_normalized -> use audioKeyCandidates()
- *     and match on ANY of them, never on normalizeForAudio alone.
+ * Question detection: a trailing run of [.!?。？！] that CONTAINS a ? or ？ is
+ * collapsed to a single ASCII '?', with any whitespace before it dropped
+ * ("Tu viens ?" and "tu viens?" are one recording). A run with no ? is stripped.
+ * A leading ¿ or ¡ is left alone.
  */
+const QUESTION_TAIL = /\s*[.!?。？！¡]*[?？][.!?。？！]*$/
+const ENDS_IN_QUESTION = /[?？][.!?。？！]*$/
 
-/**
- * The JS-side historical convention: lowercase, trim, collapse internal
- * whitespace, strip trailing . ! 。 ！ but KEEP a trailing ? so that
- * "emin misin" and "emin misin?" could coexist as separate audio (TTS uses ?
- * for question intonation). Only rows written before ~March 2026 are stored
- * this way. Kept for reading those rows, and unchanged for existing callers.
- */
-function normalizeForAudio(text) {
-  if (!text) return ''
-  return text.toLowerCase().trim().replace(/\s+/g, ' ').replace(/[.!。！]+$/, '')
-}
-
-/**
- * Exactly what the database's normalize_text() does, so a JS read can address
- * rows the way they are actually stored. Note rtrim(t, set) in Postgres strips
- * ALL trailing characters in the set, so "what?!" -> "what".
- *
- * Deliberately does NOT collapse internal whitespace — normalize_text() does
- * not either, and this function's whole job is to be byte-identical to it.
- */
+/** The one rule. Does NOT collapse internal whitespace (the SQL does not). */
 function normalizeForDb(text) {
   if (!text) return ''
-  return text.toLowerCase().trim().replace(/[.?!¿¡。？！]+$/, '')
+  const t = text.toLowerCase().trim()
+  if (ENDS_IN_QUESTION.test(t)) return t.replace(QUESTION_TAIL, '?')
+  return t.replace(/[.?!¿¡。？！]+$/, '')
+}
+
+/** Same key, plus internal whitespace collapsed (callers that build keys from loose input). */
+function normalizeForAudio(text) {
+  if (!text) return ''
+  return normalizeForDb(text.replace(/\s+/g, ' '))
 }
 
 /**
- * Every form the same text may be stored under, de-duplicated. Match with
- * `.in('text_normalized', audioKeyCandidates(text))` rather than `.eq(...)`,
- * so a lookup reaches both conventions in the split column.
+ * Every form the same text may be stored under, de-duplicated. Since the
+ * 2026-10-13 backfill there is one convention, so this is normally a single
+ * key; kept as a list so existing `.in('text_normalized', ...)` callers work.
  */
 function audioKeyCandidates(text) {
   return [...new Set([normalizeForDb(text), normalizeForAudio(text)].filter(Boolean))]
