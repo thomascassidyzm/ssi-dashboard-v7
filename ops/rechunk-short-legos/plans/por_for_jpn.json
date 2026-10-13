@@ -1,6 +1,6 @@
 {
  "course": "por_for_jpn",
- "note": "#688 zero-clash repair (job #737): chunk-ups for the gender/number/person clashes the purge accepted; por_for_jpn has a target voice cast, so these run fully (check, author, apply, fill-audio).",
+ "note": "#688 zero-clash repair (job #737): chunk-ups for the gender/number/person clashes the purge accepted; por_for_jpn has a target voice cast, so these run fully (check, author, apply, fill-audio). Status 2026-10-13: all 23 ops authored (baskets in por_for_jpn.baskets.json) and applied; topups for seeds 82, 110, 124 stay live and voiced. The 20 seeds below were UNDONE because fill-audio.cjs breaks on the first presentation refusal (NO_VOICE) and so never voices the new LEGOs. Re-apply with rechunk.cjs apply por_for_jpn --seeds <these> --apply (no re-authoring needed) once fill-audio continues past presentation refusals, then fill-audio --apply.",
  "seeds": [
   {
    "seed": 182,
@@ -510,30 +510,6 @@
       }
      ]
     }
-   ]
-  },
-  {
-   "seed": 82,
-   "kind": "topup",
-   "why": "L3 'なぜですか？' has a bare-copy BUILD that clashes and cannot be cut under the 3-BUILD floor; author fresh BUILDs first",
-   "topup": [
-    3
-   ]
-  },
-  {
-   "seed": 110,
-   "kind": "topup",
-   "why": "L1 '私たちは〜です' has a bare-copy BUILD that clashes and cannot be cut under the 3-BUILD floor; author fresh BUILDs first",
-   "topup": [
-    1
-   ]
-  },
-  {
-   "seed": 124,
-   "kind": "topup",
-   "why": "L2 'それは〜だった' has a bare-copy BUILD that clashes and cannot be cut under the 3-BUILD floor; author fresh BUILDs first",
-   "topup": [
-    2
    ]
   }
  ]

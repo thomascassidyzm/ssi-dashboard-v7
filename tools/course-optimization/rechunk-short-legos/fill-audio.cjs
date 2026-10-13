@@ -74,7 +74,14 @@ async function main() {
       unique.set(key, out)
       if (!APPLY) { report.wouldSpend += out.wouldSpendChars || 0; if (out.source === 'library') report.library++; continue }
       report.charsSpent += out.charsSpent || 0; out.source === 'library' ? report.library++ : report.rendered++
-    } catch (e) { report.failures.push({ key, role: j.role, text: j.text, why: e.message }); say(`STOP: ${e.message}`); break }   // a refusal is the answer
+    } catch (e) {
+      report.failures.push({ key, role: j.role, text: j.text, why: e.message })
+      // #688: a course with no presentation voice (NO_VOICE / VOICING_POLICY / VOICE_POLICY on role presentation) simply has no intro clip, and the player
+      // falls back to the LEGO's known clip. That refusal is still the answer (logged, never retried or re-routed), but it must not stop the LEGO's own
+      // known/target clips, or the round plays silent. Any other refusal still stops the run.
+      if (j.role === 'presentation' && /NO_VOICE|VOICING_POLICY|VOICE_POLICY/.test(e.message)) { say(`intro not voiced (no presentation voice): ${j.key}`); continue }
+      say(`STOP: ${e.message}`); break
+    }
   }
   if (APPLY) {
     ev = await recordContentEdit(R.supabase(), { identity: serviceIdentity('rechunk-short-legos', { role: 'content-sweep' }), courseCode: COURSE, surface: 'tools/course-optimization/rechunk-short-legos/fill-audio.cjs', operation: 'audio-pointer-fill', scope: { seed_numbers: seeds, rows: jobs.length }, detail: { job: JOB } }).catch(() => null)
