@@ -52,6 +52,7 @@ const { courseFamily } = require('../../services/course-builder/lib/course-famil
 const {
   phraseContainsLego, checkSeparableContainment, checkSeparableContrast, checkSeparableLegoShape,
 } = require('../../services/course-builder/lib/separable-verbs.cjs');
+const { loadRunningOrder, filterSeedsBefore, orderKey } = require('../../services/shared/running-order.cjs');
 
 /** Tom's BUILD count, 2026-08-28. Four is the target; three is accepted. */
 const BUILD_MIN = 3;
@@ -65,19 +66,22 @@ const GATE_NAMES = [
 // ─── Known-side seed context ────────────────────────────────────────────
 // buildKnownSideSeedCtx is route-local in seed-complete.cjs, so this is a
 // faithful copy: same DB read, same stem/carrier/construction position maps.
+// Running order (job #949) as in the route: "seed" is the POSITION, checked at ctx.atSeed.
 async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentLegos, contract) {
+  const order = await loadRunningOrder(supabase, courseCode);
+  const atSeed = orderKey(order, currentSeed);
   const prior = [];
   for (let from = 0; ; from += 1000) {
-    const { data, error } = await supabase.from('course_legos')
+    const { data, error } = await filterSeedsBefore(supabase.from('course_legos')
       .select('target_text,known_text,components,seed_number')
-      .eq('course_code', courseCode).lt('seed_number', currentSeed)
+      .eq('course_code', courseCode), order, currentSeed)
       .order('seed_number').order('lego_index').range(from, from + 999);
     if (error) throw new Error(error.message);
-    prior.push(...data);
+    prior.push(...(order ? data.map(l => ({ ...l, seed_number: orderKey(order, l.seed_number) })) : data));
     if (data.length < 1000) break;
   }
   const cur = (currentLegos || []).map(l => ({
-    target_text: l.target, known_text: l.known, components: l.components || [], seed_number: currentSeed,
+    target_text: l.target, known_text: l.known, components: l.components || [], seed_number: atSeed,
   }));
   const all = [...prior, ...cur];
   const stemFirstPos = new Map();
@@ -103,22 +107,24 @@ async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentL
     consPos[con.id] = con.cluster ? (contract.clusterSeeds?.[con.cluster] ?? contract.clusterRounds?.[con.cluster] ?? Infinity) : carrierSeed(con.carrier);
   }
   const unitPos = (contract.glossUnits || []).map(u => ({ phrase: u.phrase, pos: carrierSeed(u.carrier) }));
-  return { ...compileKnownContract(contract), stemFirstPos, consPos, unitPos };
+  return { ...compileKnownContract(contract), stemFirstPos, consPos, unitPos, atSeed };
 }
 
 // ─── Vocab, scoped exactly as seed-complete.cjs scopes it ────────────────
+// "Prior" = earlier in the running order when the course has one (job #949), as vocab-cache does.
 async function loadTranslationVocab(supabase, courseCode, upToSeedNumber) {
   const chinese = isChinese(courseCode);
   const vocabSet = new Set();
+  const order = await loadRunningOrder(supabase, courseCode);
 
-  const { data: seeds } = await supabase.from('course_seeds')
-    .select('target_text').eq('course_code', courseCode)
-    .lt('seed_number', upToSeedNumber).not('target_text', 'is', null);
+  const { data: seeds } = await filterSeedsBefore(supabase.from('course_seeds')
+    .select('target_text').eq('course_code', courseCode), order, upToSeedNumber)
+    .not('target_text', 'is', null);
   for (const seed of seeds || []) extractVocab(seed.target_text, chinese).forEach(v => vocabSet.add(v));
 
-  const { data: legos } = await supabase.from('course_legos')
-    .select('target_text, type, components').eq('course_code', courseCode)
-    .lt('seed_number', upToSeedNumber).order('seed_number').order('lego_index');
+  const { data: legos } = await filterSeedsBefore(supabase.from('course_legos')
+    .select('target_text, type, components').eq('course_code', courseCode), order, upToSeedNumber)
+    .order('seed_number').order('lego_index');
   for (const lego of legos || []) {
     extractVocab(lego.target_text, chinese).forEach(v => vocabSet.add(v));
     if (lego.type === 'M' && lego.components) {
@@ -346,7 +352,7 @@ async function checkPhraseSet(entry, ctx) {
       const advisories = [];
       for (const phrase of [...build, ...use]) {
         if (!phrase.known) continue;
-        for (const p of checkKnownSide(phrase.known, seedNumber, knownCtx)) {
+        for (const p of checkKnownSide(phrase.known, knownCtx.atSeed ?? seedNumber, knownCtx)) {
           (isKnownVocabBreach(p) ? breaches : advisories).push({ known: phrase.known, target: phrase.target, problem: p });
         }
       }
