@@ -79,7 +79,7 @@ async function run({ apply, course }) {
   try {
     await q('BEGIN')
     await q(`SET LOCAL lock_timeout = '20s'`)
-    await q(`SET LOCAL statement_timeout = '20min'`)
+    await q(`SET LOCAL statement_timeout = '90min'`)
     await q(`SET LOCAL session_replication_role = replica`)
 
     // 1. the rule
@@ -117,9 +117,9 @@ async function run({ apply, course }) {
     const undo = await q(`SELECT id, old_key, new_key FROM plan_ca WHERE id NOT IN (SELECT id FROM plan_ca_skip)`)
     log.courseAudioRekeyed = undo.rows
     const upd = await q(`UPDATE course_audio a SET text_normalized = p.new_key
-                           FROM plan_ca p WHERE a.id = p.id AND a.text_normalized = p.old_key
+                           FROM plan_ca p WHERE a.id = p.id AND a.text_normalized = p.old_key AND a.text = p.text
                             AND p.id NOT IN (SELECT id FROM plan_ca_skip)`)
-    if (upd.rowCount !== undo.rowCount) throw new Error(`SELF-CHECK: course_audio updated ${upd.rowCount}, planned ${undo.rowCount} (a row moved under us)`)
+    log.steps.course_audio.movedUnderUs = undo.rowCount - upd.rowCount   // text/key changed by a live writer between plan and update: left for the post-commit re-run
     log.steps.course_audio.updated = upd.rowCount
 
     // 2b. shared_audio (same trigger, same rule)
@@ -170,7 +170,9 @@ async function run({ apply, course }) {
     const left = +(await q(`SELECT count(*) n FROM course_audio a WHERE a.text ${Q} ${course ? 'AND a.course_code = $1' : ''}
                               AND a.text_normalized !~ '[?？]$' AND a.created_at < transaction_timestamp() AND a.id NOT IN (SELECT id FROM plan_ca_skip)`, scopeP)).rows[0].n
     if (left) throw new Error(`SELF-CHECK: ${left} question-text course_audio rows still lack the ? in their key`)
-    const wrong = +(await q(`SELECT count(*) n FROM course_audio WHERE text_normalized ~ '[?？]$' AND text !~ '[?？][.!?。？！[:space:]]*$' ${scope}`, scopeP)).rows[0].n
+    // statement rows carrying a ? key, among the rows THIS run wrote (a concurrent edit can change a row's text under us)
+    const wrote = [...undo.rows.map(r => r.id), ...late.rows.map(r => r.id)]
+    const wrong = +(await q(`SELECT count(*) n FROM course_audio WHERE id = ANY($1::uuid[]) AND text_normalized ~ '[?？]$' AND text !~ '[?？][.!?。？！[:space:]]*$'`, [wrote])).rows[0].n
     if (wrong) throw new Error(`SELF-CHECK: ${wrong} statement rows carry a ? key`)
     log.steps.selfCheck = 'ok'
 
@@ -190,7 +192,7 @@ async function run({ apply, course }) {
     await c.end()
     const f = evidencePath(`tools/audio-question-key-backfill/${apply ? 'applied' : 'dryrun'}-${course || 'all'}-${Date.now()}.json`)
     fs.writeFileSync(f, JSON.stringify(log))
-    const { courseAudioRekeyed, audioClipsRekeyed, clipIndexDeletedStale, skippedCollisionRows, ...summary } = log
+    const { courseAudioRekeyed, audioClipsRekeyed, clipIndexDeletedStale, skippedCollisionRows, courseAudioLate, ...summary } = log
     console.log(JSON.stringify({ ...summary, skippedCollisionRowCount: (skippedCollisionRows || []).length, evidence: f }, null, 2))
   }
 }
