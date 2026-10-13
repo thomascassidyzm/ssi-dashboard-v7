@@ -7,14 +7,13 @@
  *   node tools/voices/reconcile-library.cjs                  # report only, writes nothing
  *   node tools/voices/reconcile-library.cjs --apply          # refresh spoken-text evidence, fill missing, drop stale
  *   node tools/voices/reconcile-library.cjs --after <uuid>   # resume a pkey walk
- *   node tools/voices/reconcile-library.cjs --after-page <n> # resume a physical walk at heap page n
- *   node tools/voices/reconcile-library.cjs --no-snapshot    # physical walk, but probe clip_index per batch
+ *   node tools/voices/reconcile-library.cjs --no-snapshot    # full walk, but probe clip_index per batch
  *   node tools/voices/reconcile-library.cjs --apply --only-evidenced --no-evidence
  *       # seconds, not an hour: only the clips a human or whisper has spoken for (attributions, spoken-text verdicts) —
  *       # what to run right after naming a group
  *
- * Walks course_audio in PHYSICAL order, page range by page range (job #806; a
- * resume or --only-evidenced walks in primary-key order), asks
+ * Walks course_audio with ONE sequential-scan cursor on a read-only snapshot
+ * (job #806; a resume or --only-evidenced walks in primary-key order), asks
  * indexEntryFor with the named-voice resolvers what each clip should be filed
  * under, and compares that with public.clip_index:
  *
@@ -242,23 +241,22 @@ async function indexFromDb(client, ids, entries) {
 }
 
 /**
- * The whole clip_index, read ONCE in physical order (job #806). Probing it per
- * batch by key and by audio_id was ~5 s of random reads per 2,000 clips; one
- * sequential pass is a few seconds for all of it. Key strings are shared by
- * the Set and the Map, so ~2.3M entries cost a few hundred MB, once a night.
+ * The whole clip_index, read ONCE by a sequential-scan cursor on the read
+ * connection (job #806). Probing it per batch by key and by audio_id was ~5 s
+ * of random reads per 2,000 clips; one sequential pass is seconds for all of
+ * it, and a plain seq scan of a table this size reads through Postgres's
+ * small bulk-read ring rather than the shared cache learners use. Key strings
+ * are shared by the Set and the Map: ~2.3M entries, ~1.3 GB RSS, once a night.
  */
-async function loadIndexSnapshot(client, pagesPerQuery = 2000) {
+async function loadIndexSnapshot(rd, fetchSize = 20000) {
   const snap = { held: new Set(), byAudio: new Map(), size: 0 }
-  const pages = async () => Number((await client.query(
-    "SELECT pg_relation_size('public.clip_index') / current_setting('block_size')::int AS n")).rows[0].n)
-  let last = await pages()
-  for (let p = 0; ; p += pagesPerQuery) {
-    if (p >= last) { last = await pages(); if (p >= last) break }
-    const { rows } = await client.query(
-      `SELECT audio_id, language, text_key, voice_id FROM clip_index
-        WHERE ctid >= format('(%s,0)', $1::bigint)::tid AND ctid < format('(%s,0)', $1::bigint + $2::bigint)::tid`, [p, pagesPerQuery])
+  await rd.query('DECLARE ci NO SCROLL CURSOR FOR SELECT audio_id, language, text_key, voice_id FROM clip_index')
+  for (;;) {
+    const { rows } = await rd.query(`FETCH ${fetchSize} FROM ci`)
+    if (!rows.length) break
     for (const r of rows) snapAdd(snap, r.audio_id, keyOf(r.language, r.text_key, r.voice_id))
   }
+  await rd.query('CLOSE ci')
   return snap
 }
 function snapAdd(snap, audioId, key) {
@@ -308,40 +306,42 @@ async function indexFromSnapshot(client, snap, rows, wanted) {
 
 // ── the walk ────────────────────────────────────────────────────────────────
 
-async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sleepMs = SLEEP_MS, maxBatches = Infinity, onlyEvidenced = false, afterPage = 0, snapshot = true } = {}) {
+async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sleepMs = SLEEP_MS, maxBatches = Infinity, onlyEvidenced = false, snapshot = true } = {}) {
   const { resolvers, courseOf } = await loadContext(client)
   const t = { read: 0, ok: 0, missing: 0, stale: 0, unresolvable: 0, awaitingName: 0, notIndexable: {}, inserted: 0, dropped: 0, batches: 0, watermark: after }
   const awaiting = {}
   const staleLog = []
   const unresolvableVoices = {}
-  // PHYSICAL ORDER (job #806). A full walk reads course_audio page by page
-  // (TID Range Scan over ctid ranges): each batch is one contiguous run of the
-  // heap, so the night's walk is sequential IO. The pkey walk it replaces read
-  // the table in uuid order — every row on a different page, ~34M random block
-  // reads a fortnight on a 2 GB instance shared with learners, and it emptied
-  // their cache every night. Rows appended during the walk are reached because
-  // the end page is re-read before stopping; a row that a non-HOT update moves
-  // backwards past the cursor is picked up the next night, as an id inserted
-  // below the uuid watermark always was. --after <uuid> and --only-evidenced
-  // keep the pkey walk (a resume point is a uuid; the evidenced set is small).
-  const physical = !onlyEvidenced && after === NIL
-  const pagesPerBatch = Math.max(1, Math.round(batch / 12)) // ~12 rows/page on course_audio
-  const relPages = async () => Number((await client.query(
-    "SELECT pg_relation_size('public.course_audio') / current_setting('block_size')::int AS n")).rows[0].n)
-  let page = Number(afterPage) || 0, lastPage = physical ? await relPages() : 0
-  t.walk = physical ? 'physical' : 'pkey'
-  const snap = physical && snapshot ? await loadIndexSnapshot(client) : null
-  if (snap) { t.snapshotEntries = snap.size; log(`clip_index snapshot: ${snap.size} entries`) }
+  // ONE SNAPSHOT, TWO SEQUENTIAL SCANS (job #806, adversary #828·P). A full
+  // walk opens a second, READ ONLY REPEATABLE READ connection and reads both
+  // course_audio and clip_index through plain seq-scan cursors: sequential IO
+  // through the bulk-read ring, so the walk no longer empties the 512 MB cache
+  // learners share; and one consistent snapshot, so no row is missed or counted
+  // twice when an update moves it (course_audio updates are almost never HOT).
+  // The pkey walk it replaces read the table in uuid order — every row on a
+  // different page, ~34M random block reads a fortnight. Residue checks and
+  // --apply writes run on the main connection, against the live index. The
+  // cost: the read snapshot holds back vacuum's horizon for the few minutes
+  // the walk takes, at 00:21Z. --after <uuid> and --only-evidenced keep the
+  // pkey walk (a resume point is a uuid; the evidenced set is small).
+  const full = !onlyEvidenced && after === NIL
+  t.walk = full ? 'seqscan' : 'pkey'
+  let rd = null, snap = null
+  if (full) {
+    rd = await connect()
+    await rd.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY')
+    // From block 0 every night, not wherever another scan happens to be: the
+    // walk is then reproducible row for row, and A/B-able (job #806).
+    await rd.query('SET LOCAL synchronize_seqscans = off')
+    if (snapshot) { snap = await loadIndexSnapshot(rd); t.snapshotEntries = snap.size; log(`clip_index snapshot: ${snap.size} entries`) }
+    await rd.query('DECLARE ca NO SCROLL CURSOR FOR SELECT id, course_code, text, language, role, voice_id, s3_key, origin, veracity_pass FROM course_audio')
+  }
+  try {
   for (;;) {
     let rows
-    if (physical) {
-      if (page >= lastPage) { lastPage = await relPages(); if (page >= lastPage) break }
-      ;({ rows } = await client.query(
-        `SELECT id, course_code, text, language, role, voice_id, s3_key, origin, veracity_pass FROM course_audio
-          WHERE ctid >= format('(%s,0)', $1::bigint)::tid AND ctid < format('(%s,0)', $1::bigint + $2::bigint)::tid`, [page, pagesPerBatch]))
-      page += pagesPerBatch
-      t.watermarkPage = page
-      if (!rows.length) { t.batches++; continue }
+    if (full) {
+      ;({ rows } = await rd.query(`FETCH ${Number(batch)} FROM ca`))
+      if (!rows.length) break
     } else {
       ;({ rows } = await client.query(
         `SELECT id, course_code, text, language, role, voice_id, s3_key, origin, veracity_pass FROM course_audio WHERE id > $1${onlyEvidenced ? ' AND id IN (SELECT audio_id FROM clip_spoken_text UNION SELECT audio_id FROM human_clip_attribution)' : ''} ORDER BY id LIMIT $2`, [t.watermark, batch]))
@@ -409,11 +409,14 @@ async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sl
         if (snap) for (const x of stale) snapDrop(snap, x.audio_id, keyOf(x.language, x.text_key, x.voice_id))
       }
     }
-    if (!physical) t.watermark = rows[rows.length - 1].id
+    if (!full) t.watermark = rows[rows.length - 1].id
     t.batches++
-    if (t.batches % 50 === 0) log(`batch ${t.batches} read=${t.read} missing=${t.missing} stale=${t.stale} ${physical ? `page=${page}/${lastPage}` : `watermark=${t.watermark}`}`)
-    if ((!physical && rows.length < batch) || t.batches >= maxBatches) break
+    if (t.batches % 50 === 0) log(`batch ${t.batches} read=${t.read} missing=${t.missing} stale=${t.stale} ${full ? '(seqscan)' : `watermark=${t.watermark}`}`)
+    if (rows.length < batch || t.batches >= maxBatches) break
     await sleep(sleepMs)
+  }
+  } finally {
+    if (rd) { await rd.query('ROLLBACK').catch(() => {}); await rd.end().catch(() => {}) }
   }
   t.drift = t.missing + t.stale
   return { ...t, awaiting, unresolvableVoices }
@@ -426,7 +429,7 @@ async function main() {
     const evidence = args.includes('--no-evidence') ? null : await refreshSpokenEvidence(client, { apply, par: Number(arg('--whisper-par', 2)) })
     log('spoken-text evidence', JSON.stringify(evidence))
     if (args.includes('--evidence-only')) { console.log(JSON.stringify({ apply, evidence }, null, 2)); return }
-    const report = await reconcile(client, { apply, after: arg('--after', NIL), maxBatches: Number(arg('--max-batches', Infinity)), afterPage: Number(arg('--after-page', 0)), snapshot: !args.includes('--no-snapshot'), onlyEvidenced: args.includes('--only-evidenced') })
+    const report = await reconcile(client, { apply, after: arg('--after', NIL), maxBatches: Number(arg('--max-batches', Infinity)), snapshot: !args.includes('--no-snapshot'), onlyEvidenced: args.includes('--only-evidenced') })
     // A read-only run's `missing` after evidence-not-applied is honest: it counts what apply would fix.
     console.log(JSON.stringify({ apply, evidence, ...report }, null, 2))
   } catch (e) {
