@@ -28,13 +28,24 @@ async function main() {
   const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
   const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs')
   const rows = readLedger(), events = new Map(), moved = {}, left = {}
-  for (const r of rows) {
-    const from = back ? r.revert_to : r.cura, to = back ? r.cura : r.revert_to
-    if (!apply) { moved[r.course_code] = (moved[r.course_code] || 0) + 1; continue }
-    if (!events.has(r.course_code)) events.set(r.course_code, await recordContentEdit(db, { identity: serviceIdentity('welsh-tom-clone-revert-606'), courseCode: r.course_code, surface: 'tools:audio/welsh-tom-clone-revert-606', operation: 'update', detail: { why: 'job #606: no Tom clone in a Welsh course; known-side slots back to their human take', ledger: 'ops/welsh-tom-clone-revert-606/ledger.csv' } }))
-    const ok = await rv.setSlotPointer(db, { tbl: r.tbl, key: r.pk, col: 'known_audio_id', from, to, courseCode: r.course_code, editEventId: events.get(r.course_code) })
-    const m = ok ? moved : left; m[r.course_code] = (m[r.course_code] || 0) + 1
+  // Bulk, on the direct connection with no statement timeout: the REST role's 8 s cap cancels single-row updates on these tables (seen 2026-10-13).
+  // Per table, per course: one UPDATE ... FROM the ledger, each row asserting the slot still holds `from`. Destination clips are human takes.
+  const { Client } = require('pg')
+  const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); await pg.query('set statement_timeout=0')
+  for (const course of [...new Set(rows.map(r => r.course_code))]) for (const tbl of ['course_seeds', 'course_legos', 'course_practice_phrases']) {
+    const mine = rows.filter(r => r.course_code === course && r.tbl === tbl)
+    if (!mine.length) continue
+    if (!apply) { moved[course] = (moved[course] || 0) + mine.length; continue }
+    if (!events.has(course)) events.set(course, await recordContentEdit(db, { identity: serviceIdentity('welsh-tom-clone-revert-606'), courseCode: course, surface: 'tools:audio/welsh-tom-clone-revert-606', operation: 'update', detail: { why: 'job #606: no Tom clone in a Welsh course; known-side slots back to their human take', ledger: 'ops/welsh-tom-clone-revert-606/ledger.csv' } }))
+    for (let i = 0; i < mine.length; i += 200) {
+      const chunk = mine.slice(i, i + 200)
+      const pairs = chunk.map(r => (back ? [r.revert_to, r.cura] : [r.cura, r.revert_to]))
+      const res = await pg.query(`update ${tbl} t set known_audio_id = v.to_id::uuid, last_edit_event_id = $4 from unnest($1::text[], $2::text[], $3::text[]) as v(pk, from_id, to_id) where t.id::text = v.pk and t.known_audio_id = v.from_id::uuid`,
+        [chunk.map(r => r.pk), pairs.map(p => p[0]), pairs.map(p => p[1]), events.get(course)])
+      moved[course] = (moved[course] || 0) + res.rowCount; left[course] = (left[course] || 0) + chunk.length - res.rowCount
+    }
   }
+  await pg.end()
   if (apply) for (const c of Object.keys(moved)) { const v = await bumpCourseVersion(db, c, 'patch'); if (!v) throw new Error(`content_version bump failed for ${c}`) }
   console.log(`${apply ? '' : '(dry run) '}${back ? 'undo' : 'revert'}: ${JSON.stringify(moved)}; left (slot changed since): ${JSON.stringify(left)}`)
 }
