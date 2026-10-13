@@ -1,0 +1,148 @@
+-- TEMPLATE: weave-cym-taught-556.cjs sql fills the FLIPS, MOVES, HOMES and KNOWN markers and writes weave-cym-taught-556.sql.
+-- Job #556 (Aran 2026-10-13): seven repeated sandbox LEGOs (each its seed's only new LEGO) are marked already taught
+-- (is_new=false); their practice phrases are MOVED to a home where they play ((a) seed's other new LEGO, (b) original earlier
+-- LEGO, (c) another new LEGO closest to the original position), by #555's move; and an empty known slot on the seven seeds
+-- takes the live sister course's existing HUMAN take of the identical English. Nothing is rendered.
+-- Runs REPEATABLE READ and locks every row it reads: if a flipped LEGO, a moved row, a home's rows or a linked seed changed
+-- since the plan, it aborts. Live cym_n/cym_s, master canonical_seeds, every other sandbox LEGO, seed and phrase are
+-- asserted unchanged. Dry run unless invoked with  -v finish=COMMIT . Undo: weave-cym-taught-556-undo.sql.
+\set ON_ERROR_STOP on
+\if :{?finish}
+\else
+  \set finish ROLLBACK
+\endif
+BEGIN ISOLATION LEVEL REPEATABLE READ;
+SET LOCAL statement_timeout = '20min';
+CREATE TEMP TABLE flips (course_code text, seed_number int, lego_index int, target_text text, PRIMARY KEY (course_code, seed_number, lego_index));
+--@FLIPS@
+CREATE TEMP TABLE moves (old_id text PRIMARY KEY, new_id text UNIQUE, course_code text, seed_number int, lego_index int, position int,
+  lego_position text, metadata jsonb, target_text text, old_version int, old_updated_at timestamptz, home_type text);
+--@MOVES@
+CREATE TEMP TABLE homes (course_code text, seed_number int, lego_index int, target_text text, ids text, PRIMARY KEY (course_code, seed_number, lego_index));
+--@HOMES@
+CREATE TEMP TABLE known_links (seed_id uuid PRIMARY KEY, course_code text, seed_number int, known_text text, audio_id uuid);
+--@KNOWN@
+CREATE TEMP TABLE touched AS SELECT course_code, seed_number, lego_index FROM flips UNION SELECT course_code, seed_number, lego_index FROM homes;
+
+-- Lock what we read; under REPEATABLE READ a row changed by another transaction since our snapshot raises here.
+SELECT count(*) AS locked_legos FROM (SELECT 1 FROM course_legos l JOIN touched t USING (course_code, seed_number, lego_index) FOR UPDATE OF l) x;
+SELECT count(*) AS locked_rows FROM (SELECT 1 FROM course_practice_phrases p JOIN touched t USING (course_code, seed_number, lego_index) FOR UPDATE OF p) x;
+SELECT count(*) AS locked_seeds FROM (SELECT 1 FROM course_seeds s JOIN flips f USING (course_code, seed_number) FOR UPDATE OF s) x;
+
+CREATE FUNCTION pg_temp.fp() RETURNS TABLE(t text, n bigint, h text) LANGUAGE sql AS $$
+  SELECT 'canonical_seeds (master)', count(*), md5(string_agg(md5(x::text), '' ORDER BY x::text)) FROM canonical_seeds x
+  UNION ALL SELECT 'live '||x.course_code||' seeds', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_seeds x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
+  UNION ALL SELECT 'live '||x.course_code||' legos', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_legos x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
+  UNION ALL SELECT 'live '||x.course_code||' phrases', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_practice_phrases x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
+  UNION ALL SELECT 'sandbox '||x.course_code||' other legos', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_legos x
+    WHERE x.course_code IN ('cym_nv2_for_eng','cym_sv2_for_eng') AND (x.course_code, x.seed_number, x.lego_index) NOT IN (SELECT course_code, seed_number, lego_index FROM flips) GROUP BY x.course_code
+  UNION ALL SELECT 'sandbox '||x.course_code||' other seeds', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_seeds x
+    WHERE x.course_code IN ('cym_nv2_for_eng','cym_sv2_for_eng') AND x.id NOT IN (SELECT seed_id FROM known_links) GROUP BY x.course_code
+  UNION ALL SELECT 'sandbox '||x.course_code||' other phrases', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_practice_phrases x
+    WHERE x.course_code IN ('cym_nv2_for_eng','cym_sv2_for_eng') AND (x.course_code, x.seed_number, x.lego_index) NOT IN (SELECT course_code, seed_number, lego_index FROM touched) GROUP BY x.course_code
+$$;
+CREATE TEMP TABLE pre AS SELECT * FROM pg_temp.fp();
+SELECT 'BEFORE' k, * FROM pre ORDER BY t;
+
+DO $$ BEGIN
+  IF to_regclass('backup_cym_taught_556') IS NOT NULL THEN RAISE EXCEPTION 'already applied'; END IF;
+  IF (SELECT count(*) FROM flips) <> 7 THEN RAISE EXCEPTION 'expected 7 LEGOs to flip'; END IF;
+  IF EXISTS (SELECT 1 FROM flips WHERE course_code NOT IN ('cym_nv2_for_eng','cym_sv2_for_eng')) OR EXISTS (SELECT 1 FROM moves WHERE course_code NOT IN ('cym_nv2_for_eng','cym_sv2_for_eng'))
+     OR EXISTS (SELECT 1 FROM known_links WHERE course_code NOT IN ('cym_nv2_for_eng','cym_sv2_for_eng')) THEN RAISE EXCEPTION 'a write is outside the sandboxes'; END IF;
+  IF EXISTS (SELECT 1 FROM flips WHERE seed_number = 15) OR EXISTS (SELECT 1 FROM moves WHERE seed_number = 15) THEN RAISE EXCEPTION 'seed 15 is not to be touched'; END IF;
+  IF (SELECT count(*) FROM flips f JOIN course_legos l USING (course_code, seed_number, lego_index) WHERE l.is_new AND l.target_text = f.target_text) <> 7 THEN
+    RAISE EXCEPTION 'CHANGED UNDER US: a LEGO to flip is gone, already not new, or its Welsh changed — re-plan'; END IF;
+  IF EXISTS (SELECT 1 FROM flips f JOIN course_legos l USING (course_code, seed_number) WHERE l.is_new AND l.lego_index <> f.lego_index) THEN
+    RAISE EXCEPTION 'CHANGED UNDER US: a seed of the seven now has another new LEGO — (a) applies, re-plan'; END IF;
+  IF (SELECT count(*) FROM moves m JOIN course_practice_phrases p ON p.id = m.old_id JOIN flips f ON (f.course_code, f.seed_number, f.lego_index) = (p.course_code, p.seed_number, p.lego_index)
+      WHERE p.course_code = m.course_code AND p.target_text = m.target_text AND p.version = m.old_version AND p.updated_at = m.old_updated_at) <> (SELECT count(*) FROM moves) THEN
+    RAISE EXCEPTION 'CHANGED UNDER US: a phrase to move is gone, not under a flipped LEGO, or was edited since the plan — re-plan'; END IF;
+  IF (SELECT count(*) FROM homes h JOIN course_legos l USING (course_code, seed_number, lego_index) WHERE l.is_new AND l.target_text = h.target_text) <> (SELECT count(*) FROM homes) THEN
+    RAISE EXCEPTION 'CHANGED UNDER US: a home LEGO is missing, not new, or its Welsh changed — re-plan'; END IF;
+  IF EXISTS (SELECT 1 FROM homes h JOIN flips f USING (course_code, seed_number, lego_index)) THEN RAISE EXCEPTION 'a flipped LEGO is a home'; END IF;
+  IF EXISTS (SELECT 1 FROM homes h WHERE h.ids IS DISTINCT FROM (SELECT coalesce(string_agg(p.id, ',' ORDER BY p.id COLLATE "C"), '') FROM course_practice_phrases p
+      WHERE (p.course_code, p.seed_number, p.lego_index) = (h.course_code, h.seed_number, h.lego_index))) THEN
+    RAISE EXCEPTION 'CHANGED UNDER US: the rows under a home LEGO changed since the plan — re-plan'; END IF;
+  IF EXISTS (SELECT 1 FROM moves m JOIN course_practice_phrases p ON p.id = m.new_id) THEN RAISE EXCEPTION 'a new id is taken'; END IF;
+  IF EXISTS (SELECT 1 FROM moves m JOIN course_practice_phrases p USING (course_code, seed_number, lego_index, position)) THEN RAISE EXCEPTION 'a position is taken'; END IF;
+  IF EXISTS (SELECT 1 FROM moves m JOIN course_practice_phrases p USING (course_code, seed_number, lego_index)
+      WHERE lower(trim(p.target_text)) = lower(trim(m.target_text))) THEN RAISE EXCEPTION 'a home already holds the same Welsh'; END IF;
+  IF (SELECT count(*) FROM known_links k JOIN course_seeds s ON s.id = k.seed_id JOIN flips f ON (f.course_code, f.seed_number) = (s.course_code, s.seed_number)
+      WHERE s.course_code = k.course_code AND s.known_audio_id IS NULL AND s.known_text = k.known_text) <> (SELECT count(*) FROM known_links) THEN
+    RAISE EXCEPTION 'CHANGED UNDER US: a known slot to fill is no longer empty or its English changed — re-plan'; END IF;
+  IF (SELECT count(*) FROM known_links k JOIN course_audio a ON a.id = k.audio_id
+      WHERE a.role = 'known' AND a.language = 'eng' AND a.origin = 'human' AND a.course_code IN ('cym_n_for_eng','cym_s_for_eng')) <> (SELECT count(*) FROM known_links) THEN
+    RAISE EXCEPTION 'a known clip is missing or is not a human English take from a live Welsh course'; END IF;
+END $$;
+
+-- The backups: every row under the flipped and home LEGOs, the flipped LEGO rows and the seven seed rows, as they stand now.
+CREATE TABLE backup_cym_taught_556 AS SELECT p.* FROM course_practice_phrases p JOIN touched t USING (course_code, seed_number, lego_index);
+CREATE TABLE backup_cym_taught_556_legos AS SELECT * FROM touched;
+CREATE TABLE backup_cym_taught_556_moves AS SELECT old_id, new_id FROM moves;
+CREATE TABLE backup_cym_taught_556_flips AS SELECT l.* FROM course_legos l JOIN flips f USING (course_code, seed_number, lego_index);
+CREATE TABLE backup_cym_taught_556_seeds AS SELECT s.* FROM course_seeds s WHERE s.id IN (SELECT seed_id FROM known_links);
+REVOKE ALL ON backup_cym_taught_556, backup_cym_taught_556_legos, backup_cym_taught_556_moves, backup_cym_taught_556_flips, backup_cym_taught_556_seeds FROM anon, authenticated;
+
+INSERT INTO content_edit_events (course_code, surface, operation, actor_kind, actor_id, actor_label, actor_verified, actor_role, scope, detail)
+SELECT c, 'sql:job-556 weave-cym-taught', 'weave-taught-and-rehome', 'agent', 'claude-job-556-taught',
+       'agent (claude-job-556-taught)', false, 'creator',
+       jsonb_build_object('lego_keys', (SELECT jsonb_agg(seed_number||':'||lego_index ORDER BY seed_number) FROM flips WHERE course_code = c),
+                          'moves', (SELECT jsonb_agg(jsonb_build_array(old_id, new_id) ORDER BY old_id) FROM moves WHERE course_code = c),
+                          'known_links', (SELECT jsonb_agg(jsonb_build_array(seed_number, audio_id) ORDER BY seed_number) FROM known_links WHERE course_code = c)),
+       jsonb_build_object('ruling', 'Aran 2026-10-13 (job #556): seven repeated LEGOs, each its seed''s only new LEGO, are already taught (is_new=false); their seeds play as whole sentences (seed-sentence review). Phrases moved by #555''s method: (a) seed''s other new LEGO, (b) original earlier LEGO, (c) another new LEGO closest to the original position. Empty known slots on those seeds take the live sister course''s human take of the identical English; nothing rendered.',
+                          'backup', 'backup_cym_taught_556')
+FROM (VALUES ('cym_nv2_for_eng'), ('cym_sv2_for_eng')) v(c);
+CREATE TEMP TABLE ev AS SELECT DISTINCT ON (course_code) course_code, id FROM content_edit_events WHERE detail->>'backup'='backup_cym_taught_556' ORDER BY course_code, occurred_at DESC, id;
+
+UPDATE course_legos l SET is_new = false, last_edit_event_id = ev.id
+FROM flips f JOIN ev USING (course_code)
+WHERE (l.course_code, l.seed_number, l.lego_index) = (f.course_code, f.seed_number, f.lego_index);
+
+UPDATE course_seeds s SET known_audio_id = k.audio_id, last_edit_event_id = ev.id
+FROM known_links k JOIN ev USING (course_code)
+WHERE s.id = k.seed_id AND s.known_audio_id IS NULL;
+
+DELETE FROM course_practice_phrases WHERE id IN (SELECT old_id FROM moves);
+INSERT INTO course_practice_phrases
+SELECT (jsonb_populate_record(b, jsonb_build_object(
+  'id', m.new_id, 'seed_number', m.seed_number, 'lego_index', m.lego_index, 'position', m.position,
+  'lego_id', 'S'||lpad(m.seed_number::text, 4, '0')||'L'||lpad(m.lego_index::text, 2, '0'),
+  'lego_position', m.lego_position, 'metadata', m.metadata, 'decomposition', NULL, 'decomposition_course_version', NULL,
+  'last_edit_event_id', ev.id, 'updated_at', now()))).*
+FROM backup_cym_taught_556 b JOIN moves m ON m.old_id = b.id JOIN ev ON ev.course_code = m.course_code;
+SET CONSTRAINTS ALL IMMEDIATE;
+
+CREATE TEMP TABLE post AS SELECT * FROM pg_temp.fp();
+SELECT 'AFTER' k, * FROM post ORDER BY t;
+DO $$ BEGIN
+  IF EXISTS (SELECT * FROM pre EXCEPT SELECT * FROM post) OR EXISTS (SELECT * FROM post EXCEPT SELECT * FROM pre) THEN
+    RAISE EXCEPTION 'CHECK FAILED: live Welsh, master canonical_seeds, or other sandbox LEGOs/seeds/phrases changed'; END IF;
+  IF EXISTS (SELECT 1 FROM backup_cym_taught_556_flips b JOIN course_legos l ON l.id = b.id
+      WHERE l.is_new OR (to_jsonb(b) - 'version' - 'updated_at' - 'last_edit_event_id' || '{"is_new": false}') <> (to_jsonb(l) - 'version' - 'updated_at' - 'last_edit_event_id')) THEN
+    RAISE EXCEPTION 'CHECK FAILED: a flipped LEGO changed beyond is_new'; END IF;
+  IF EXISTS (SELECT 1 FROM backup_cym_taught_556_seeds b JOIN course_seeds s ON s.id = b.id JOIN known_links k ON k.seed_id = s.id
+      WHERE s.known_audio_id IS DISTINCT FROM k.audio_id OR (to_jsonb(b) - 'version' - 'updated_at' - 'last_edit_event_id' - 'known_audio_id') <> (to_jsonb(s) - 'version' - 'updated_at' - 'last_edit_event_id' - 'known_audio_id')) THEN
+    RAISE EXCEPTION 'CHECK FAILED: a linked seed changed beyond its known clip'; END IF;
+  IF (SELECT count(*) FROM course_practice_phrases p JOIN touched t USING (course_code, seed_number, lego_index)) <> (SELECT count(*) FROM backup_cym_taught_556) THEN
+    RAISE EXCEPTION 'CHECK FAILED: row count under the touched LEGOs'; END IF;
+  IF EXISTS (SELECT b.id, md5(b::text) FROM backup_cym_taught_556 b WHERE b.id NOT IN (SELECT old_id FROM moves)
+             EXCEPT SELECT p.id, md5(p::text) FROM course_practice_phrases p) THEN RAISE EXCEPTION 'CHECK FAILED: a row that stays changed'; END IF;
+  IF EXISTS (SELECT 1 FROM backup_cym_taught_556 b JOIN moves m ON m.old_id = b.id LEFT JOIN course_practice_phrases p ON p.id = m.new_id
+      WHERE p.id IS NULL OR (p.course_code, p.seed_number, p.lego_index, p.known_text, p.target_text, p.phrase_role, p.status, p.known_audio_id, p.target1_audio_id,
+        p.target2_audio_id, p.presentation_audio_id, p.created_at, p.word_count, p.lego_count, p.introduce)
+        IS DISTINCT FROM (m.course_code, m.seed_number, m.lego_index, b.known_text, b.target_text, b.phrase_role, b.status, b.known_audio_id, b.target1_audio_id,
+        b.target2_audio_id, b.presentation_audio_id, b.created_at, b.word_count, b.lego_count, b.introduce)) THEN
+    RAISE EXCEPTION 'CHECK FAILED: a moved row lost its text, role, status or audio'; END IF;
+  IF (SELECT count(*) FROM moves) <> @NMOVES@ OR (SELECT count(*) FROM known_links) <> @NKNOWN@ THEN RAISE EXCEPTION 'CHECK FAILED: plan sizes'; END IF;
+  IF (SELECT count(*) FROM ev) <> 2 THEN RAISE EXCEPTION 'CHECK FAILED: edit events'; END IF;
+  RAISE NOTICE 'ALL CHECKS PASSED';
+END $$;
+SELECT home_type, count(*) FROM moves GROUP BY 1 ORDER BY 1;
+SELECT f.course_code, f.seed_number, s.known_audio_id IS NOT NULL k, s.target1_audio_id IS NOT NULL t1, s.target2_audio_id IS NOT NULL t2
+  FROM flips f JOIN course_seeds s USING (course_code, seed_number) ORDER BY 1, 2;
+SELECT 'finishing with' k, :'finish' v;
+:finish;
+SELECT :'finish' = 'COMMIT' AS do_refresh \gset
+\if :do_refresh
+REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index;
+\endif
