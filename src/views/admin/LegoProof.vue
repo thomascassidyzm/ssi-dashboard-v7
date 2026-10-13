@@ -38,7 +38,7 @@
           <div v-if="l.flagged || l.note" class="notewrap" @click.stop>
             <input class="noteinp" type="text" :value="l.note" maxlength="1000" placeholder="Note (optional)"
                    enterkeyhint="done" @input="onNote(l, $event.target.value)" @blur="saveNow(l)" @keyup.enter="$event.target.blur()" />
-            <small class="state">{{ state[l.id] || '' }}</small>
+            <small class="state">{{ state[saveKey(l.course, l.id)] || '' }}</small>
           </div>
         </div>
         <button class="flag" :class="{ on: l.flagged }" :aria-pressed="l.flagged" :aria-label="(l.flagged ? 'Unflag ' : 'Flag ') + l.id" @click="flip(l)">
@@ -56,6 +56,7 @@
 import { ref, reactive, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiBaseUrl } from '../../services/api'
+import { saveKey, createLoadGate, createSaveQueue } from './legoProofSaves'
 
 const COURSES = [
   { code: 'cym_nv2_for_eng', label: 'North' },
@@ -76,23 +77,28 @@ const msgBad = ref(false)
 const exportText = ref(null)
 const exportBox = ref(null)
 
-const base = () => `${getApiBaseUrl()}/api/production/${course.value}/lego-proof`
+const baseFor = (code) => `${getApiBaseUrl()}/api/production/${code}/lego-proof`
 const shown = computed(() => legos.value.filter((l) => (showTaught.value || l.isNew || l.flagged) && (!flaggedOnly.value || l.flagged)))
 const flaggedCount = computed(() => legos.value.filter((l) => l.flagged).length)
 const newCount = computed(() => legos.value.filter((l) => l.isNew).length)
 
 function say(text, bad = false) { msg.value = text; msgBad.value = bad }
 
+// A slow load for a course the user has since left must not overwrite the list (job #505): only the latest load counts.
+const loadGate = createLoadGate()
 async function load() {
+  const token = loadGate.begin()
+  const code = course.value
   loading.value = true; loadError.value = ''; legos.value = []
   try {
-    const r = await fetch(base() + '/')
+    const r = await fetch(baseFor(code) + '/')
     const body = await r.json().catch(() => ({}))
+    if (!loadGate.isCurrent(token)) return
     if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
-    legos.value = body.legos
+    legos.value = body.legos.map((l) => ({ ...l, course: code }))
   } catch (e) {
-    loadError.value = `Could not load ${course.value}: ${e.message}`
-  } finally { loading.value = false }
+    if (loadGate.isCurrent(token)) loadError.value = `Could not load ${code}: ${e.message}`
+  } finally { if (loadGate.isCurrent(token)) loading.value = false }
 }
 
 function pick(code) {
@@ -105,46 +111,40 @@ function pick(code) {
 
 function toggle(id) { open[id] = !open[id] }
 
-// One save per LEGO at a time; a newer change waits for the one in flight and then sends the latest state.
-const inflight = {}
+// Saves are keyed and addressed by the course the LEGO was loaded for (job #505), so a tab switch mid-save cannot
+// redirect a North flag onto South.
 const timers = {}
-async function save(l) {
-  if (inflight[l.id]) { inflight[l.id].again = true; return }
-  inflight[l.id] = { again: false }
-  state[l.id] = 'saving…'
-  try {
-    const r = await fetch(base() + '/flag', {
-      method: 'PUT', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ legoId: l.id, flagged: l.flagged, note: l.note }),
-    })
-    const body = await r.json().catch(() => ({}))
-    if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
-    state[l.id] = 'saved ✓'
-    if (msgBad.value) say('')
-  } catch (e) {
-    state[l.id] = 'NOT saved'
-    say(`${l.id} not saved: ${e.message} — tap the flag again to retry.`, true)
-  } finally {
-    const again = inflight[l.id].again
-    delete inflight[l.id]
-    if (again) save(l)
-  }
+const sendFlag = async (code, payload) => {
+  const r = await fetch(baseFor(code) + '/flag', {
+    method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+  })
+  const body = await r.json().catch(() => ({}))
+  if (!r.ok) throw new Error(body.error || `HTTP ${r.status}`)
 }
+const queue = createSaveQueue({
+  send: sendFlag,
+  onState: (key, text) => { state[key] = text },
+  onOk: () => { if (msgBad.value) say('') },
+  onError: (key, l, e) => say(`${l.id} not saved: ${e.message} — tap the flag again to retry.`, true),
+})
+const save = (l) => queue.save(l)
 
 function flip(l) {
   l.flagged = !l.flagged
-  clearTimeout(timers[l.id])
+  clearTimeout(timers[saveKey(l.course, l.id)])
   save(l)
 }
 function onNote(l, v) {
   l.note = v
-  clearTimeout(timers[l.id])
-  state[l.id] = '…'
-  timers[l.id] = setTimeout(() => save(l), 700)
+  const k = saveKey(l.course, l.id)
+  clearTimeout(timers[k])
+  state[k] = '…'
+  timers[k] = setTimeout(() => save(l), 700)
 }
 function saveNow(l) {
-  if (!timers[l.id]) return
-  clearTimeout(timers[l.id]); delete timers[l.id]
+  const k = saveKey(l.course, l.id)
+  if (!timers[k]) return
+  clearTimeout(timers[k]); delete timers[k]
   save(l)
 }
 
