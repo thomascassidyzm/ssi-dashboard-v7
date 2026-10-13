@@ -12,7 +12,7 @@
 BEGIN;
 SET LOCAL statement_timeout = '20min';
 CREATE TEMP TABLE legos (course_code text, seed_number int, lego_index int, PRIMARY KEY (course_code, seed_number, lego_index));
-INSERT INTO legos VALUES ('cym_sv2_for_eng',1276,2),('cym_sv2_for_eng',1447,1),('cym_sv2_for_eng',1502,1),('cym_sv2_for_eng',1526,1),('cym_sv2_for_eng',1551,2);
+INSERT INTO legos VALUES ('cym_sv2_for_eng',1276,2),('cym_sv2_for_eng',1447,1),('cym_sv2_for_eng',1502,1);
 CREATE TEMP TABLE add_rows (id text PRIMARY KEY, course_code text, seed_number int, lego_index int, position int, known_text text, target_text text,
   word_count int, lego_count int, phrase_role text, introduce boolean, lego_position text, metadata jsonb);
 INSERT INTO add_rows VALUES
@@ -32,27 +32,10 @@ INSERT INTO add_rows VALUES
   ('cym_sv2_for_eng:S1447L01U04', 'cym_sv2_for_eng', 1447, 1, 7, 'will they be able to do it again?', 'fyddan nhw’n gallu gwneud e eto?', 32, 8, 'use', true, NULL, '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
   ('cym_sv2_for_eng:S1502L01B01', 'cym_sv2_for_eng', 1502, 1, 1, 'she almost answered', 'bu bron iddi ateb', 17, 3, 'build', true, 'middle', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
   ('cym_sv2_for_eng:S1502L01B02', 'cym_sv2_for_eng', 1502, 1, 2, 'she almost spoke', 'bu bron iddi siarad', 19, 3, 'build', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1502L01B03', 'cym_sv2_for_eng', 1502, 1, 3, 'she almost finished', 'bu bron iddi orffen', 19, 3, 'build', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1502L01U01', 'cym_sv2_for_eng', 1502, 1, 4, 'she almost finished speaking', 'bu bron iddi orffen siarad', 26, 4, 'use', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
+  ('cym_sv2_for_eng:S1502L01B03', 'cym_sv2_for_eng', 1502, 1, 3, 'she almost finished', 'bu bron iddi gwpla', 18, 3, 'build', true, 'middle', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
+  ('cym_sv2_for_eng:S1502L01U01', 'cym_sv2_for_eng', 1502, 1, 4, 'she almost finished speaking', 'bu bron iddi gwpla siarad', 25, 4, 'use', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
   ('cym_sv2_for_eng:S1502L01U02', 'cym_sv2_for_eng', 1502, 1, 5, 'she almost remembered', 'bu bron iddi gofio', 18, 3, 'use', true, 'middle', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1502L01U03', 'cym_sv2_for_eng', 1502, 1, 6, 'she almost remembered something else', 'bu bron iddi gofio rhywbeth arall', 33, 5, 'use', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1526L01B01', 'cym_sv2_for_eng', 1526, 1, 1, 'finding it interesting', 'cael hi’n ddiddorol', 19, 3, 'build', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1526L01B02', 'cym_sv2_for_eng', 1526, 1, 2, 'I’m finding it interesting', 'dw i’n cael hi’n ddiddorol', 26, 4, 'build', true, 'middle', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1526L01B03', 'cym_sv2_for_eng', 1526, 1, 3, 'finding it easy', 'cael hi’n hawdd', 15, 3, 'build', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1526L01U01', 'cym_sv2_for_eng', 1526, 1, 4, 'I’m finding it easy', 'dw i’n cael hi’n hawdd', 22, 4, 'use', true, 'middle', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1526L01U02', 'cym_sv2_for_eng', 1526, 1, 5, 'finding it easy to see', 'cael hi’n hawdd i weld', 22, 5, 'use', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1526L01U03', 'cym_sv2_for_eng', 1526, 1, 6, 'I’m finding it easy to see', 'dw i’n cael hi’n hawdd i weld', 29, 6, 'use', true, 'middle', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1526L01U04', 'cym_sv2_for_eng', 1526, 1, 7, 'finding it easy to speak', 'cael hi’n hawdd i siarad', 24, 5, 'use', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1526L01U05', 'cym_sv2_for_eng', 1526, 1, 8, 'I’m finding it easy to speak', 'dw i’n cael hi’n hawdd i siarad', 31, 6, 'use', true, 'middle', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1526L01U06', 'cym_sv2_for_eng', 1526, 1, 9, 'finding it easy to speak Welsh', 'cael hi’n hawdd i siarad Cymraeg', 32, 6, 'use', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1526L01U07', 'cym_sv2_for_eng', 1526, 1, 10, 'finding what you said interesting', 'cael hi’n ddiddorol be’ ddwedest ti', 35, 5, 'use', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1551L02B01', 'cym_sv2_for_eng', 1551, 2, 1, 'this is ugly', 'mae hyn yn salw', 15, 3, 'build', true, 'end', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1551L02B02', 'cym_sv2_for_eng', 1551, 2, 2, 'that’s ugly', 'mae hynny’n salw', 16, 2, 'build', true, NULL, '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1551L02B03', 'cym_sv2_for_eng', 1551, 2, 3, 'the dog is ugly', 'mae’r ci yn salw', 16, 4, 'build', true, 'end', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1551L02U01', 'cym_sv2_for_eng', 1551, 2, 4, 'the cat is ugly', 'mae’r gath yn salw', 18, 4, 'use', true, 'end', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1551L02U02', 'cym_sv2_for_eng', 1551, 2, 5, 'the dog isn’t ugly', 'dyw’r ci ddim yn salw', 21, 4, 'use', true, 'end', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1551L02U03', 'cym_sv2_for_eng', 1551, 2, 6, 'the cat isn’t ugly', 'dyw’r gath ddim yn salw', 23, 4, 'use', true, 'end', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb),
-  ('cym_sv2_for_eng:S1551L02U04', 'cym_sv2_for_eng', 1551, 2, 7, 'the cat isn’t very ugly', 'dyw’r gath ddim yn salw iawn', 28, 5, 'use', true, 'end', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb);
+  ('cym_sv2_for_eng:S1502L01U03', 'cym_sv2_for_eng', 1502, 1, 6, 'she almost remembered something else', 'bu bron iddi gofio rhywbeth arall', 33, 5, 'use', true, 'start', '{"format":"build_use","pipeline":"v2","job":510,"author":"aran"}'::jsonb);
 CREATE FUNCTION pg_temp.fp() RETURNS TABLE(t text, n bigint, h text) LANGUAGE sql AS $$
   SELECT 'canonical_seeds (master)', count(*), md5(string_agg(md5(x::text), '' ORDER BY x::text)) FROM canonical_seeds x
   UNION ALL SELECT 'live '||x.course_code||' seeds', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_seeds x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code

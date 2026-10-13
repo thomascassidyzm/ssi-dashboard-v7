@@ -36,26 +36,35 @@ const EVID = path.join(require('os').homedir(), 'ssi-evidence/ssi-dashboard-v7/j
 
 const { SETS: SETS_504 } = require('./weave-cym-aran-written-504.cjs');
 
-// Aran's rulings of 2026-10-13 on the 9 lines #504 held: write them with the swaps the course teaches (gyda thi -> gyda ti,
-// stopio -> stopo, wedest -> be' ddwedest, hynna -> hynny); gallu and gorffen/orffen are fine as they are. Keyed by the
-// line as #494/#504 had it; value = [Welsh, English].
-const SWAPS = new Map([
+// Aran's rulings of 2026-10-13 on the 9 lines #504 held (updated ruling): thi -> ti, stopio -> stopo, N "gallu cyfrif" -> medru;
+// gallu stays fine; SOUTH uses cwpla (gwpla after "iddi") for "to finish", North keeps orffen. wedest / hynna are NOT written:
+// they are suggested to Aran instead. Keyed by the line as #494/#504 had it; value = [Welsh, English].
+const COMMON = new Map([
   ['dwi\'n moyn aros gyda thi', ['dwi\'n moyn aros gyda ti', 'I want to stay with you']],
   ['dwi ddim yn moyn aros gyda thi', ['dwi ddim yn moyn aros gyda ti', 'I don’t want to stay with you']],
   ['dwi ddim yn moyn aros gyda thi eto', ['dwi ddim yn moyn aros gyda ti eto', 'I don’t want to stay with you again']],
   ['fyddan nhw\'n gallu stopio?', ['fyddan nhw\'n gallu stopo?', 'will they be able to stop?']],
-  ['cael hi\'n ddiddorol be wedest ti', ['cael hi\'n ddiddorol be\' ddwedest ti', 'finding what you said interesting']],
-  ['mae hynna\'n salw', ['mae hynny\'n salw', 'that’s ugly']],
 ]);
-// Lines that go in as they stand (gallu / orffen), identified by their tidied Welsh; they were refused only by the old check.
-const AS_IS = new Set(['bu bron iddi orffen', 'bu bron iddi orffen siarad']);
-// Held again: "dwi'n gallu cyfrif" (N S1496L04) means "I can count" and does not contain the LEGO "yn cyfri’" (matters);
-// a practice line must contain its LEGO, so it cannot go under that LEGO. No swap was listed for it.
-const HOLD = new Map([['dwi\'n gallu cyfrif', 'held: does not contain the LEGO "yn cyfri’" (it is "I can count", not "matters") — Aran to give a line that does']]);
-const SETS = SETS_504.map(([c, s, l, lines]) => [c, s, l, lines.map(([w, k, held]) => (SWAPS.has(w) ? SWAPS.get(w) : HOLD.has(w) ? [w, k, HOLD.get(w)] : [w, k, held]))]);
-// Aran (2026-10-13): these words are fine to use incidentally at that point in the course although the course has not taught them.
+const NORTH_ONLY = new Map([
+  ['dwi\'n gallu cyfrif', ['dwi\'n medru cyfrif', 'I can count']],
+]);
+const SOUTH_ONLY = new Map([
+  ['bu bron iddi orffen', ['bu bron iddi gwpla', 'she almost finished']],
+  ['bu bron iddi orffen siarad', ['bu bron iddi gwpla siarad', 'she almost finished speaking']],
+]);
+const NOT_WRITTEN = new Map([
+  ['cael hi\'n ddiddorol be wedest ti', 'not written: "wedest" is not taught in the South — suggested "be’ ddwedest ti" (S1078), Aran to approve'],
+  ['mae hynna\'n salw', 'not written: "hynna" is not taught at this point in the South — suggested "hynny" (S118), Aran to approve'],
+]);
+const swapFor = (course, w) => (COMMON.get(w) || (course === N ? NORTH_ONLY : SOUTH_ONLY).get(w));
+const SETS = SETS_504.map(([c, s, l, lines]) => [c, s, l, lines.map(([w, k, held]) => {
+  const sw = swapFor(c, w);
+  if (sw) return sw;
+  return NOT_WRITTEN.has(w) && c !== N ? [w, k, NOT_WRITTEN.get(w)] : [w, k, held];
+})]);
+// Aran: these words are fine to use incidentally although the course has not taught them.
 const WAIVED_WORDS = new Set(['orffen', 'gorffen', 'gallu']);
-const NEW_LINES = new Set([...SWAPS.values()].map(([w]) => tidyWelsh(w)).concat([...AS_IS].map(tidyWelsh)));
+const NEW_LINES = new Set(SETS_504.flatMap(([c, , , lines]) => lines.map(([w]) => swapFor(c, w)).filter(Boolean).map(([w]) => `${c}|${tidyWelsh(w)}`)));
 
 const q = (s) => (s === null || s === undefined ? 'NULL' : `'${String(s).replace(/'/g, "''")}'`);
 
@@ -108,7 +117,7 @@ async function sql() {
     let gained = false;
     for (const [raw, known, held] of set) {
       const target = tidyWelsh(raw);
-      const was = course !== N && NEW_LINES.has(target) ? 'new in #510' : 'already in from #504';
+      const was = NEW_LINES.has(`${course}|${target}`) ? 'new in #510' : 'already in from #504';
       const errs = (held ? [{ kind: 'held', why: held }] : await lineChecks(sb, course, s, l, lego, target)).filter((e) => {
         if (e.kind !== 'vocab') return true;
         e.words = e.words.filter((w) => !WAIVED_WORDS.has(w.toLowerCase()));
@@ -164,7 +173,7 @@ async function sql() {
   }
 }
 
-module.exports = { SETS, SWAPS };
+module.exports = { SETS };
 if (require.main === module) {
   (process.argv[2] === 'sql' ? sql() : Promise.reject(new Error('mode: sql'))).catch((e) => { console.error(e); process.exit(1); });
 }
