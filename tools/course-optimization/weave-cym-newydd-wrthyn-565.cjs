@@ -604,12 +604,14 @@ async function generate() {
   const sb = sbClient();
   const { generateLegoPhrases } = require('../../services/course-builder/lib/phrase-generation.cjs');
   fs.mkdirSync(EVID, { recursive: true });
-  for (const c of [N, S]) {
+  const only = process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1] : null;
+  for (const c of [N, S].filter((x) => !only || cc(x) === only)) {
     const lego = await legoIndexOfNew(sb, c);
     if (!lego) { console.log(`${cc(c)} SKIP: stage 1 not applied`); continue; }
     let r;
     try { r = await generateLegoPhrases(sb, c, 1250, lego.lego_index, { debutInSameWrite: !lego.is_new }); } catch (e) { r = { error: e.message }; }
-    const rec = { c, l: lego.lego_index, blocked: r.blocked || !!r.error, error: r.error, failingGates: r.gate?.failingGates, build: r.build, use: r.use };
+    const rec = { c, l: lego.lego_index, blocked: r.blocked || !!r.error, error: r.error, failingGates: r.gate?.failingGates,
+      declarationFloors: r.declarationCheck?.floor_failures, attempts: (r.attempts || []).map((a) => ({ pass: a.overallPass, gates: a.failingGates, floors: a.declarationFloors })), build: r.build, use: r.use };
     fs.writeFileSync(resultFile(c), JSON.stringify(rec, null, 2));
     console.log(`${cc(c)} ${tag(1250, lego.lego_index)}: ${rec.blocked ? `BLOCKED ${rec.error || (rec.failingGates || []).join(',')}` : `${(r.build || []).length}B/${(r.use || []).length}U`}`);
     for (const p of [...(r.build || []), ...(r.use || [])]) console.log(`    ${p.target}  =  ${p.known}`);
@@ -622,7 +624,8 @@ async function sql2() {
     if (!fs.existsSync(resultFile(c))) { held.push(`${cc(c)}: not generated`); continue; }
     const r = JSON.parse(fs.readFileSync(resultFile(c), 'utf8'));
     const lego = await legoIndexOfNew(sb, c);
-    if (r.blocked) { held.push(`${cc(c)}: generator blocked (${r.error || (r.failingGates || []).join(',')})`); }
+    // A blocked basket is the door's content verdict: nothing from it is filed.
+    if (r.blocked) { held.push(`${cc(c)}: generator blocked (${r.error || [...(r.failingGates || []), ...(r.declarationFloors || []).map((f) => JSON.stringify(f))].join(', ') || 'declaration floors'}) — nothing filed`); continue; }
     const C = await loadCourse(sb, c);
     const { data: cur } = await sb.from('course_practice_phrases').select('id,position,phrase_role,target_text').eq('course_code', c).eq('seed_number', 1250).eq('lego_index', lego.lego_index);
     const have = new Set(cur.map((x) => norm(x.target_text)));
