@@ -88,3 +88,36 @@ test('op.seedTarget: a LEGO is checked against the seed sentence as it will read
   assert.ok(L.checkOp(seed42, before42, { set: op.set }, {}).some((p) => /target side has words/.test(p)), 'without seedTarget the old sentence refuses laas')
   assert.deepStrictEqual(L.checkOp(seed42, before42, op, {}), [])
 })
+
+// ── undo safety (lane review #338, job #321) ──────────────────────────────────────────────────────
+test('undo never restores a rolled-back attempt: attempts pair with explicit commit/rollback outcomes', () => {
+  const A = (seed, id, extra = {}) => ({ seed, attemptId: id, before: { x: id }, ...extra })
+  // a committed attempt, then a later attempt on the same seed that rolled back: undo targets the COMMITTED one
+  let m = L.undoableAttempts([A(5, 'a1'), { action: 'committed', seed: 5, attemptId: 'a1', afterDigest: 'd1' }, A(5, 'a2'), { action: 'rolled-back', seed: 5, attemptId: 'a2' }])
+  assert.strictEqual(m.get(5).attemptId, 'a1')
+  // a lone attempt that rolled back (or crashed with no outcome) is never undoable
+  assert.strictEqual(L.undoableAttempts([A(6, 'b1'), { action: 'rolled-back', seed: 6, attemptId: 'b1' }]).has(6), false)
+  assert.strictEqual(L.undoableAttempts([A(7, 'c1')]).has(7), false)
+  // legacy ledger (no attemptId): a rolled-back marker cancels the attempt just before it; an unmarked one counts as committed
+  m = L.undoableAttempts([{ seed: 8, before: { v: 1 } }, { seed: 8, action: 'rolled-back' }])
+  assert.strictEqual(m.has(8), false)
+  assert.strictEqual(L.undoableAttempts([{ seed: 9, before: { v: 1 } }]).has(9), true)
+  // undone removes it
+  assert.strictEqual(L.undoableAttempts([A(5, 'a1'), { action: 'committed', seed: 5, attemptId: 'a1' }, { action: 'undone', seed: 5 }]).has(5), false)
+})
+
+test('undo refuses on drift of ANY row it would overwrite, not just LEGO text', () => {
+  const state = { seed: { seed_number: 4, version: 3 }, legos: [{ lego_index: 1, known_text: 'a', target_text: 'b', target1_audio_id: null }], phrases: [{ id: 'p1', known_text: 'k', target_text: 't', position: 1, target1_audio_id: null }], intros: [] }
+  const d = L.stateDigest(state)
+  // audio pointers, timestamps and the edit-event stamp are not content: filling audio must not trip the guard
+  const filled = JSON.parse(JSON.stringify(state)); filled.phrases[0].target1_audio_id = 'x'; filled.phrases[0].updated_at = 'now'; filled.seed.version = 9
+  assert.strictEqual(L.stateDigest(filled), d)
+  // a phrase edited after the apply IS drift
+  const edited = JSON.parse(JSON.stringify(state)); edited.phrases[0].target_text = 'changed'
+  assert.notStrictEqual(L.stateDigest(edited), d)
+  const added = JSON.parse(JSON.stringify(state)); added.phrases.push({ id: 'p2', known_text: 'k2', target_text: 't2', position: 2 })
+  assert.notStrictEqual(L.stateDigest(added), d)
+  assert.strictEqual(L.driftProblem({ afterDigest: d }, state), null)
+  assert.ok(/drift/.test(L.driftProblem({ afterDigest: d }, edited)))
+  assert.strictEqual(L.driftProblem({}, edited), 'legacy')   // a ledger line with no recorded post-state cannot be checked
+})

@@ -124,4 +124,44 @@ function sqlValue(isJsonColumn, v) {
   return v !== null && v !== undefined && isJsonColumn ? JSON.stringify(v) : v
 }
 
-module.exports = { sqlValue, MAX_LEGO_SYLLABLES, norm, words, multisetContains, legoId, afterLegos, workLegos, checkOp, cursorConflicts, allocateIds }
+
+// ── undo safety (lane review #338) ────────────────────────────────────────────────────────────────
+// The ledger is append-only. An apply writes its attempt line (full before-state, an attemptId) BEFORE the transaction;
+// the outcome is a separate line: {action:'committed', attemptId, afterDigest} after COMMIT, or {action:'rolled-back',
+// attemptId} on failure. Undo restores only an attempt with a committed outcome (an attempt with no outcome crashed
+// mid-flight and is never restored). Legacy lines (before attemptIds): an unmarked attempt counts as committed and a
+// bare rolled-back marker cancels the attempt just before it for that seed.
+function undoableAttempts(lines) {
+  const out = new Map()   // seed -> attempt line carrying { committed: true, afterDigest? }
+  const pending = new Map()   // attemptId -> attempt line
+  for (const l of lines) {
+    if (l.action === 'undone') { out.delete(l.seed); continue }
+    if (l.action === 'committed') { const a = pending.get(l.attemptId); if (a) out.set(a.seed, { ...a, afterDigest: l.afterDigest || a.afterDigest }); continue }
+    if (l.action === 'sealed') { const a = out.get(l.seed); if (a && !a.afterDigest) out.set(l.seed, { ...a, afterDigest: l.afterDigest, sealed: true }); continue }
+    if (l.action === 'rolled-back') {
+      if (l.attemptId) pending.delete(l.attemptId)
+      else out.delete(l.seed)   // legacy marker
+      continue
+    }
+    if (l.before) { if (l.attemptId) pending.set(l.attemptId, l); else out.set(l.seed, l) }
+  }
+  return out
+}
+
+// What a seed holds that undo would overwrite, minus what is not content: audio pointers (fill-audio writes them after an
+// apply), timestamps, the edit-event stamp and the seed's version counter. A later edit to any phrase/LEGO/intro row changes it.
+const VOLATILE = (k) => /_audio_id$/.test(k) || /_duration_ms$/.test(k) || ['updated_at', 'last_edit_event_id', 'version', 'audio_uuid', 'duration_ms'].includes(k)
+function stateDigest({ seed, legos, phrases, intros }) {
+  const strip = (r) => { const o = {}; for (const k of Object.keys(r).sort()) if (!VOLATILE(k)) o[k] = r[k]; return o }
+  const by = (f) => (a, b) => String(f(a)).localeCompare(String(f(b)))
+  const payload = JSON.stringify({ seed: strip(seed || {}), legos: [...legos].map(strip).sort(by((r) => r.lego_index)),
+    phrases: [...phrases].map(strip).sort(by((r) => r.id)), intros: [...(intros || [])].map(strip).sort(by((r) => r.lego_id)) })
+  return require('crypto').createHash('sha256').update(payload).digest('hex')
+}
+// null = no drift; 'legacy' = the ledger line recorded no post-state; otherwise the reason to refuse.
+function driftProblem(attempt, liveState) {
+  if (!attempt.afterDigest) return 'legacy'
+  return stateDigest(liveState) === attempt.afterDigest ? null : 'drift: a row this undo would overwrite changed after the re-chunk (newer edit); not overwriting newer work'
+}
+
+module.exports = { undoableAttempts, stateDigest, driftProblem, sqlValue, MAX_LEGO_SYLLABLES, norm, words, multisetContains, legoId, afterLegos, workLegos, checkOp, cursorConflicts, allocateIds }

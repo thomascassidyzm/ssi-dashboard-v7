@@ -325,7 +325,8 @@ async function apply(course) {
         inserts.push({ id, lego: l, role: it.role, known: straight(it.known), target: straight(it.target), position: ++pos, carried: r || null })
       }
     }
-    const line = { seed: p.seed, at: new Date().toISOString(), job: JOB, op: p, before: live, after: after.map((l) => ({ idx: l.idx, known: l.known, target: l.target, change: l.change })), insertedIds: inserts.map((i) => i.id) }
+    const attemptId = require('crypto').randomUUID()
+    const line = { attemptId, seed: p.seed, at: new Date().toISOString(), job: JOB, op: p, before: live, after: after.map((l) => ({ idx: l.idx, known: l.known, target: l.target, change: l.change })), insertedIds: inserts.map((i) => i.id) }
     const summary = { seed: p.seed, kind: p.kind, deleteLegos: (p.delete || []).map((i) => L.legoId(p.seed, i)), changeLegos: Object.keys(p.set || {}).map((i) => L.legoId(p.seed, Number(i))), addLegos: (p.add || []).map((a) => L.legoId(p.seed, a.idx)), deletePhrases: delPhrase.length, insertPhrases: inserts.length, moved: moves.length, retainedFlagged: retained.length }
     if (!APPLY) { report.push({ ...summary, outcome: 'would apply' }); continue }
     if (!identity) {
@@ -381,11 +382,13 @@ async function apply(course) {
       }
       await pg.query('UPDATE course_seeds SET approved_at=NULL, last_edit_event_id=$1, updated_at=now() WHERE course_code=$2 AND seed_number=$3', [ev, course, p.seed])
       await pg.query('COMMIT')   // the deferred DEBUT_WITHOUT_PRACTICE guard runs here
+      // the explicit outcome undo pairs with the attempt, and the full post-apply state undo must still find (lane review #338)
+      appendLedger(course, { action: 'committed', seed: p.seed, attemptId, at: new Date().toISOString(), afterDigest: L.stateDigest(await loadSeed(pg, course, p.seed)) })
       report.push({ ...summary, outcome: 'applied', event: ev })
       say(`${tag}: applied (${p.kind})`)
     } catch (e) {
       await pg.query('ROLLBACK').catch(() => {})
-      appendLedger(course, { seed: p.seed, at: new Date().toISOString(), action: 'rolled-back', why: e.message })
+      appendLedger(course, { seed: p.seed, at: new Date().toISOString(), action: 'rolled-back', attemptId, why: e.message })
       report.push({ ...summary, outcome: 'ERROR', why: e.message }); say(`${tag}: ROLLED BACK — ${e.message}`)
     }
   }
@@ -427,8 +430,7 @@ const LEGO_COLS_SKIP = new Set(['lego_id'])   // generated
 async function undo(course) {
   const lines = fs.readFileSync(ledgerPath(course), 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l))
   const pg = await pgClient(), report = []
-  const latest = new Map()
-  for (const l of lines) { if (l.action === 'rolled-back') continue; if (l.action === 'undone') latest.delete(l.seed); else if (l.before) latest.set(l.seed, l) }
+  const latest = L.undoableAttempts(lines)   // committed attempts only; rolled-back and crashed ones are never restored
   for (const [seed, l] of latest) {
     if (SEEDS && !SEEDS.has(seed)) continue
     const live = await loadSeed(pg, course, seed)
@@ -438,6 +440,11 @@ async function undo(course) {
     if (!APPLY) { report.push({ seed, outcome: 'would undo' }); continue }
     try {
       await pg.query('BEGIN')
+      await pg.query('SELECT 1 FROM course_legos WHERE course_code=$1 AND seed_number=$2 FOR UPDATE', [course, seed])
+      // inside the transaction, so nothing can slip in between the check and the overwrite: refuse on drift of ANY row we would overwrite
+      const drift = L.driftProblem(l, await loadSeed(pg, course, seed))
+      if (drift && drift !== 'legacy') { await pg.query('ROLLBACK'); report.push({ seed, outcome: 'skip', why: drift }); continue }
+      if (drift === 'legacy' && !argv.includes('--legacy-shape-only')) { await pg.query('ROLLBACK'); report.push({ seed, outcome: 'skip', why: 'this ledger line recorded no post-apply state; run "seal" first (or pass --legacy-shape-only to accept the LEGO-shape guard alone)' }); continue }
       await pg.query('DELETE FROM course_practice_phrases WHERE course_code=$1 AND seed_number=$2', [course, seed])
       await pg.query('DELETE FROM lego_introductions WHERE course_code=$1 AND lego_id = ANY($2)', [course, live.legos.map((x) => x.lego_id)])
       await pg.query('DELETE FROM course_legos WHERE course_code=$1 AND seed_number=$2', [course, seed])
@@ -461,8 +468,22 @@ async function undo(course) {
   await finish(course, pg, report, 'undo')
 }
 
+// seal: for ledger lines written before post-apply digests existed, record the seed's CURRENT state as the baseline undo
+// protects. Honest scope: that is "as of now", not "as of the apply" — anything edited in between is accepted.
+async function seal(course) {
+  const lines = fs.readFileSync(ledgerPath(course), 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)), pg = await pgClient()
+  for (const [seed, l] of L.undoableAttempts(lines)) {
+    if (l.afterDigest || (SEEDS && !SEEDS.has(seed))) continue
+    const live = await loadSeed(pg, course, seed)
+    if (JSON.stringify(live.legos.map((x) => ({ idx: x.lego_index, known: x.known_text, target: x.target_text }))) !== JSON.stringify(l.after.map((x) => ({ idx: x.idx, known: x.known, target: x.target })))) { say(`S${seed}: not sealed — LEGOs no longer read as the re-chunk left them`); continue }
+    if (APPLY) appendLedger(course, { action: 'sealed', seed, at: new Date().toISOString(), afterDigest: L.stateDigest(live) })
+    say(`S${seed}: ${APPLY ? 'sealed' : 'would seal'}`)
+  }
+  await pg.end()
+}
+
 if (require.main === module) {
-  const fn = { check, author, apply, undo }[CMD]
+  const fn = { check, author, apply, undo, seal }[CMD]
   if (!fn || !COURSE) { console.error('usage: rechunk.cjs check|author|apply|undo <course> [--seeds a,b] [--apply]'); process.exit(2) }
   if (/cym/.test(COURSE)) { console.error('Welsh is out of scope (Tom): never re-chunk a cym course.'); process.exit(2) }
   fn(COURSE).then(() => { if (!process.exitCode) process.exitCode = 0 }).catch((e) => { console.error(e.stack || e.message); process.exit(1) })
