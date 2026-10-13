@@ -450,7 +450,7 @@ ${o.legoEdits.map((e) => `  IF NOT EXISTS (SELECT 1 FROM course_legos WHERE id =
 ${o.legoMoves.map((m) => `  IF NOT EXISTS (SELECT 1 FROM course_legos WHERE id = ${q(m.id)} AND lego_index = ${m.a} AND target_text = ${q(m.target)} AND version = ${m.version}) THEN RAISE EXCEPTION 'CHANGED UNDER US: ${cc(m.c)} ${tag(m.s, m.a)}'; END IF;
   IF EXISTS (SELECT 1 FROM course_legos WHERE course_code = ${q(m.c)} AND seed_number = ${m.s} AND lego_index >= ${m.b}) THEN RAISE EXCEPTION '${cc(m.c)} ${tag(m.s, m.b)} is taken'; END IF;`).join('\n')}
   IF EXISTS (SELECT 1 FROM course_legos WHERE (course_code, seed_number, lego_index) IN (${o.adds.map((a) => `(${q(a.c)}, ${a.s}, ${a.l + 1})`).join(', ')}) AND NOT is_new) THEN RAISE EXCEPTION 'cyn i … ateb is not new'; END IF;
-${Object.entries(NEWYDD_SEED).map(([c, s]) => `  IF NOT EXISTS (SELECT 1 FROM course_legos WHERE course_code = ${q(c)} AND seed_number = ${s} AND lego_index = 1 AND is_new AND target_text = ${q(NEWYDD_LEGO[c])}) THEN RAISE EXCEPTION '${cc(c)} 'newydd' LEGO at seed ${s} is not new'; END IF;`).join('\n')}
+${Object.entries(NEWYDD_SEED).map(([c, s]) => `  IF NOT EXISTS (SELECT 1 FROM course_legos WHERE course_code = ${q(c)} AND seed_number = ${s} AND lego_index = 1 AND is_new AND target_text = ${q(NEWYDD_LEGO[c])}) THEN RAISE EXCEPTION '${cc(c)} newydd LEGO at seed ${s} is not new'; END IF;`).join('\n')}
 END $$;
 
 -- The backup: every row of every touched seed (seed row, LEGOs, phrases, intros, proof flags) as it stands now.
@@ -557,7 +557,7 @@ DELETE FROM course_practice_phrases x USING t_seeds t WHERE (t.c, t.s) = (x.cour
 DELETE FROM lego_introductions x USING t_seeds t WHERE t.c = x.course_code AND substr(x.lego_id, 2, 4)::int = t.s;
 DELETE FROM lego_proof_flags x USING t_seeds t WHERE t.c = x.course_code AND substr(x.lego_id, 2, 4)::int = t.s;
 DELETE FROM course_legos x USING t_seeds t WHERE (t.c, t.s) = (x.course_code, x.seed_number);
-INSERT INTO course_legos SELECT * FROM ${BACKUP}_legos;
+INSERT INTO course_legos (id, course_code, seed_number, lego_index, type, is_new, known_text, target_text, components, status, release_batch, version, updated_at, created_at, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms, target_text_roman, target_lego_id, known_gloss_segments, last_edit_event_id) SELECT id, course_code, seed_number, lego_index, type, is_new, known_text, target_text, components, status, release_batch, version, updated_at, created_at, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms, target_text_roman, target_lego_id, known_gloss_segments, last_edit_event_id FROM ${BACKUP}_legos;
 INSERT INTO course_practice_phrases SELECT * FROM ${BACKUP}_phrases;
 INSERT INTO lego_introductions SELECT * FROM ${BACKUP}_intros;
 INSERT INTO lego_proof_flags SELECT * FROM ${BACKUP}_flags;
