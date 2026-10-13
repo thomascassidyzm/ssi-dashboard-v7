@@ -21,8 +21,12 @@ describe('booth chip titles', () => {
     expect(codes.map(c => boothCourseChip(c, codes)))
       .toEqual(['Old Welsh — North', 'New Welsh — North', 'New Welsh — South', 'Old Welsh — South'])
   })
-  it('leaves an unnamed pod (the Health sets) on its own title', () => {
-    expect(boothPodChip({ courseCode: 'cym_n_for_eng', podSlug: 'health', podTitle: 'Health — ward and surgery' })).toBe('Health — ward and surgery')
+  it('names the Health pods Health (scripts) / Health (test)', () => {
+    expect(boothPodChip({ courseCode: 'cym_n_for_eng', podSlug: 'health', podTitle: 'Health — ward and surgery' })).toBe('Health (scripts)')
+    expect(boothPodChip({ courseCode: 'cym_n_for_eng', podSlug: 'health-ladder-pilot', podTitle: 'Health ladder pilot — seed-and-splice (job #993)' })).toBe('Health (test)')
+  })
+  it('an unnamed pod keeps its own title', () => {
+    expect(boothPodChip({ courseCode: 'cym_n_for_eng', podSlug: 'guess', podTitle: 'Guess' })).toBe('Guess')
   })
   it('an unmapped course keeps the old label rather than vanishing', () => {
     expect(boothCourseChip('xyz_for_eng', ['xyz_for_eng'])).toBe('Course')

@@ -11,8 +11,7 @@
  * Anything not in these maps keeps the label it had before, so a new course or
  * pod is never hidden — it is just named by its code until someone names it.
  *
- * NOT RENAMED: the Health pods (health, health-ladder-pilot) and the
- * guess-game pod — nobody has chosen a booth name for them yet.
+ * NOT RENAMED: the guess-game pod — nobody has chosen a booth name for it yet.
  */
 
 // Aran's own words, 2026-10-13. North and South use the same words; only a
@@ -29,6 +28,13 @@ export const BOOTH_COURSE_TITLES = {
 export const BOOTH_POD_TITLES = {
   'cym_n_for_eng/pod-1': { title: 'Welsh Pod1', dialect: 'North' },
   'cym_s_for_eng/pod-1': { title: 'Welsh Pod1', dialect: 'South' },
+}
+
+// Pods named by slug alone, whichever course holds them (no dialect to add).
+// Aran, 2026-10-13: display only — the pod rows and ids are untouched.
+export const BOOTH_POD_SLUG_TITLES = {
+  health: 'Health (scripts)',
+  'health-ladder-pilot': 'Health (test)',
 }
 
 function named(entry, shownDialects) {
@@ -50,5 +56,5 @@ export function boothCourseChip(courseCode, allCodes = [courseCode]) {
 export function boothPodChip({ courseCode, podSlug, podTitle } = {}, allKeys = [`${courseCode}/${podSlug}`]) {
   const entry = BOOTH_POD_TITLES[`${courseCode}/${podSlug}`]
   if (entry) return named(entry, dialectsOf(allKeys, BOOTH_POD_TITLES))
-  return podTitle || podSlug
+  return BOOTH_POD_SLUG_TITLES[podSlug] || podTitle || podSlug
 }
