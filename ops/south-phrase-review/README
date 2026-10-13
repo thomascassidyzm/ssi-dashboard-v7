@@ -1,0 +1,5 @@
+Job #804·P (Aran): read-only review of South Welsh practice phrases (cym_sv2_for_eng) as shown on popty.app/proof/phrases.
+Working dir is ~/.tmpbig/spr (rows, shards, per-shard outputs). This dir is the committed backup of the brief and tools.
+Regenerates: rows.json (GET :3470/api/production/cym_sv2_for_eng/phrase-proof/), lego_en.raw (psql course_legos known_text),
+contain.json (contain.py rows.json contain.json), shards (build_shards.py), merged JSON + review batches (merge.py).
+Does NOT regenerate: ~/.tmpbig/spr/out/shard-XX*.json — the shard reviewers' judgements.

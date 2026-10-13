@@ -1,0 +1,37 @@
+# Merge out/shard-XX.json (+ .legos.json) into ~/.tmpbig/south-phrase-review-2026-10-13.json and build review batches.
+# Page text is trusted over worker-copied text. Re-runnable.
+import json,os,collections
+B=os.path.expanduser('~/.tmpbig/spr')
+d=json.load(open(B+'/rows.json'));byn={p['n']:p for p in d['phrases']};L=d['legos']
+flags=[];legos=[];missing=[]
+for i in range(1,13):
+  f=f'{B}/out/shard-{i:02d}.json'
+  if not os.path.exists(f): missing.append(i); continue
+  for x in json.load(open(f)):
+    p=byn[int(x['n'])]; hc=int(p['id'][1:5])>=1001
+    x={'n':p['n'],'id':p['id'],'welsh':p['cy'],'english':p['en'],'lego':L[p['l']]['cy'],'cat':int(x['cat']),
+       'sev':'High' if str(x.get('sev','')).lower().startswith('h') else 'Check','reason':x.get('reason',''),'fix':(x.get('fix') or '').strip()}
+    if x['cat']==4 and not hc: continue   # Aran ruling (a): OLD rows never cat 4
+    flags.append(x)
+  lf=f'{B}/out/shard-{i:02d}.legos.json'
+  if os.path.exists(lf): legos+=json.load(open(lf))
+flags.sort(key=lambda x:(x['n'],x['cat']))
+NAMES={1:'Unnatural Welsh',2:'Mutation',3:'English ≠ Welsh',4:'LEGO not in phrase',5:'Northern form',6:'Odd sense',7:'Exact duplicate'}
+json.dump({'course':'cym_sv2_for_eng','rows':len(byn),'missing_shards':missing,'category_names':NAMES,'lego_wide':legos,'flags':flags},
+  open(os.path.expanduser('~/.tmpbig/south-phrase-review-2026-10-13.json'),'w'),ensure_ascii=False,indent=1)
+SHORT={1:'Welsh',2:'Mutation',3:'English',4:'LEGO',5:'Northern form',6:'Sense',7:'Duplicate'}
+items=[];seen=collections.Counter()
+for x in flags:
+  base=f"{x['id']}#{x['n']}"; seen[base]+=1; iid=base if seen[base]==1 else f"{base}-{seen[base]}"
+  tag='likely wrong' if x['sev']=='High' else 'check'
+  fix=x['fix']
+  items.append({'id':iid,'n':x['n'],'source':f"#{x['n']} [{tag} · {SHORT[x['cat']]}]\n{x['welsh']}\n{x['english']}\nWhy: {x['reason']}",
+    'proposed':fix or x['welsh'],'options':['Keep as it is','Remove this phrase'] if fix else ['Remove this phrase']})
+batches=[items[i:i+60] for i in range(0,len(items),60)]
+out=[]
+for k,b in enumerate(batches,1):
+  out.append({'title':f"South phrases, review batch {k} of {len(batches)} (#{b[0]['n']}–#{b[-1]['n']}). Accept = use the wording shown",
+              'items':[{kk:v for kk,v in it.items() if kk!='n'} for it in b]})
+json.dump(out,open(B+'/review-batches.json','w'),ensure_ascii=False)
+print('flags',len(flags),'legos',len(legos),'missing',missing,'batches',len(out))
+print(sorted(collections.Counter((x['cat'],x['sev']) for x in flags).items()))
