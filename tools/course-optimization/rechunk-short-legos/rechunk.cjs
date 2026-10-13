@@ -450,4 +450,4 @@ if (require.main === module) {
   if (/cym/.test(COURSE)) { console.error('Welsh is out of scope (Tom): never re-chunk a cym course.'); process.exit(2) }
   fn(COURSE).then(() => { if (!process.exitCode) process.exitCode = 0 }).catch((e) => { console.error(e.stack || e.message); process.exit(1) })
 }
-module.exports = { authorPrompt, judgePrompt }
+module.exports = { authorPrompt, judgePrompt, callClaude, languages, pgClient, loadSeed, asBefore, planPath, RUBRIC_DIGEST }

@@ -1,0 +1,107 @@
+{
+ "course": "jpn_for_eng",
+ "note": "Job #321 wave 1. Debut LEGOs (is_new, seed 4+) with fewer than 4 USE phrases. Proposed by Sonnet, judged cold by Opus, checked by checkOp; a rejected or refused op falls back to topup.",
+ "seeds": [
+  {
+   "seed": 4,
+   "kind": "topup",
+   "why": "何か and 日本語で are each a sound, flexible unit a learner could want to say, so the cut stays and L2 and L3 just need fresh good phrases.",
+   "topup": [
+    2,
+    3
+   ]
+  },
+  {
+   "seed": 6,
+   "kind": "topup",
+   "why": "Both LEGOs are sound, flexible units, and 'a word' = 言葉を and 'am trying to remember' = 思い出そうとしてる each express something a learner would want to say, so the cut stays and they only need fresh good phrases.",
+   "topup": [
+    1,
+    2
+   ]
+  },
+  {
+   "seed": 19,
+   "kind": "topup",
+   "why": "話すのは is a usable topic-marked unit, and merging it with やめたくない would make a chunk of 11 syllables, over the 8-syllable limit, so keep the cut and write fresh phrases.",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 23,
+   "kind": "topup",
+   "why": "\"start speaking\" = 話し始める is a sound, flexible verb unit that learners already stand on, so it keeps its cut and only needs more good phrases.",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 30,
+   "kind": "topup",
+   "why": "L1 is a sound, flexible unit (something I wanted to ask), and the only problem is that it has few phrases, so it needs fresh good ones and not a new cut.",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 44,
+   "kind": "topup",
+   "why": "良くする is a sound, flexible unit (make something better); it only needs more good BUILD and USE phrases, not a different cut.",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 46,
+   "kind": "topup",
+   "why": "間違えることは works as a flexible topic chunk, and merging it with 気にしてない would be about 14 syllables, over the 8-syllable limit, so the cut stays and L2 only needs fresh phrases.",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 49,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    2
+   ],
+   "fellBackBecause": "checkOp refused: L3 \"to understand\" → \"分かる\": known side has words its seed does not say (L26); L3 \"to understand\" → \"分かる\": an A-LEGO is one word (L4); L4 \"for people\" → \"人には\": known side has words its seed does not say (L26)"
+  },
+  {
+   "seed": 52,
+   "kind": "topup",
+   "why": "友だちに is a sound, flexible unit; merging it with 手紙を書く would give a target of about 11 syllables, over the 8-syllable limit, so L3 only needs fresh phrases.",
+   "topup": [
+    3
+   ]
+  },
+  {
+   "seed": 53,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    3
+   ],
+   "fellBackBecause": "checkOp refused: L3 \"put in her bag\" → \"バッグに入れる\": target side has words its seed does not say (L26)"
+  },
+  {
+   "seed": 54,
+   "kind": "topup",
+   "why": "\"give you time\" = 時間をあげる is already a sound, flexible unit a learner would want to say, so it needs fresh good phrases rather than a new cut.",
+   "topup": [
+    3
+   ]
+  },
+  {
+   "seed": 58,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    2
+   ],
+   "fellBackBecause": "Opus rejected: The grow pairs the known 'enough' with 少し, both in the new LEGO ('when you understand enough' = 少し分かると) and as an explicit component. 少し means 'a little', not 'enough', which in Japanese is usually 十分. That pair is a mistranslation and not ZUT-safe: once 'enough' is taught as 少し, any later 'enough' prompt that needs 十分 will collide, and learners will produce 少し where they mean 'enough'. The seed's loose English gloss is fixed, but a reusable LEGO must not be built on it. Chunking up further to 言葉が少し分かると is 11 morae, over the 8-syllable limit. Meanwhile 分かると is already a sound, flexible unit of intention ('when you understand/know'). It extends naturally into many full sentences, e.g. 日本語が分かると楽しい or 意味が分かると簡単です, so the thin practice set is fixable with fresh phrases. The right move is topup on L2, not this grow."
+  }
+ ]
+}

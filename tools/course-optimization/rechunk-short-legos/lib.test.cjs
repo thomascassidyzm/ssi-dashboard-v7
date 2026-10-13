@@ -71,3 +71,12 @@ test('a clone keeps the <target>_for_<known> shape the app parses, and never tou
   assert.ok(cloneCodeProblems('cym_n_for_eng', 'cym_pilot_for_eng').length)
   assert.strictEqual(rewriteId('afr_for_eng:S0010L02U01', 'afr_for_eng', 'afr_pilot_for_eng'), 'afr_pilot_for_eng:S0010L02U01')
 })
+
+test('unspaced scripts are checked by character, not as one giant word (job #321)', () => {
+  const seed = { known_text: 'I speak a little Chinese now', target_text: '我现在会说一点中文' }
+  const before = [{ idx: 1, type: 'A', known: 'can', target: '会', is_new: true }]
+  const ok = { set: { 1: { type: 'M', known: 'speak', target: '会说', components: [{ known: 'a', target: '会' }, { known: 'b', target: '说' }] } } }
+  assert.deepStrictEqual(L.checkOp(seed, before, ok, {}).filter((p) => /target side|coverage/.test(p)), [])
+  const bad = { set: { 1: { type: 'M', known: 'speak', target: '会读', components: [{ known: 'a', target: '会' }, { known: 'b', target: '读' }] } } }
+  assert.ok(L.checkOp(seed, before, bad, {}).some((p) => /target side has words/.test(p)))
+})

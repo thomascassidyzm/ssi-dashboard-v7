@@ -23,7 +23,14 @@
 const MAX_LEGO_SYLLABLES = 8
 
 const norm = (s) => String(s || '').toLowerCase().normalize('NFC').replace(/[’‘]/g, "'").replace(/[.,!?;:"«»()¿¡]+/g, ' ').replace(/\s+/g, ' ').trim()
-const words = (s) => norm(s).split(' ').filter(Boolean)
+const CJK = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u
+// Unspaced scripts (Chinese, Japanese) have no words to split on: the unit is the character, and the CJK
+// punctuation (，。、？！：；「」…) is not one. Without this a whole sentence counts as ONE word and every
+// containment / coverage check on zho and jpn is meaningless (job #321).
+const words = (s) => {
+  const n = norm(s)
+  return CJK.test(n) ? [...n.replace(/[，。、？！：；「」『』…・\s]/gu, '')] : n.split(' ').filter(Boolean)
+}
 function multisetContains(hay, needle) {
   const have = new Map()
   for (const w of words(hay)) have.set(w, (have.get(w) || 0) + 1)
@@ -75,7 +82,7 @@ function checkOp(seedRow, before, op, { estimateSyllables, courseCode } = {}) {
   for (const l of after.filter((x) => x.change !== 'keep')) {
     const tag = `L${l.idx} "${l.known}" → "${l.target}"`
     if (!l.known || !l.target) { problems.push(`${tag}: empty side`); continue }
-    if (!multisetContains(seedRow.known_text, l.known)) problems.push(`${tag}: known side has words its seed does not say (L26)`)
+    if (!multisetContains(`${seedRow.known_text} ${before.map((b) => b.known).join(' ')}`, l.known)) problems.push(`${tag}: known side has words its seed does not say (L26)`)
     if (!multisetContains(seedRow.target_text, l.target)) problems.push(`${tag}: target side has words its seed does not say (L26)`)
     if (estimateSyllables) { const n = estimateSyllables(l.target, courseCode); if (n > MAX_LEGO_SYLLABLES) problems.push(`${tag}: ${n} syllables, cap ${MAX_LEGO_SYLLABLES} (L3)`) }
     if (l.type === 'M' && !(Array.isArray(l.components) && l.components.length >= 2)) problems.push(`${tag}: an M-LEGO carries components (L4)`)

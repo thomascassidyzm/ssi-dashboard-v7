@@ -1,0 +1,32 @@
+{
+ "course": "ita_for_eng",
+ "note": "Job #321 wave 1. Debut LEGOs (is_new, seed 4+) with fewer than 4 USE phrases. Proposed by Sonnet, judged cold by Opus, checked by checkOp; a rejected or refused op falls back to topup.",
+ "seeds": [
+  {
+   "seed": 53,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    2
+   ],
+   "fellBackBecause": "Opus rejected: 'to put' = 'mettere' is already a sound, flexible LEGO: a real unit of intention, an infinitive that combines with many verbs. Its lack of USE phrases most likely comes from limited taught vocabulary at seed 53, not from a bad cut. The rule says not to change a LEGO that is already sound, so the right action is a topup with fresh phrases. Phrases like 'she wanted to put his letter in her bag' build from taught LEGOs alone. The merge also deletes L1 'she wanted to' = 'voleva', which already has 8 good USE phrases. That changes something that was fine and leaves a learner-useful unit as a hidden component. Chunking up is only justified when the short LEGO cannot be practised, and that is not shown here."
+  },
+  {
+   "seed": 190,
+   "kind": "topup",
+   "why": "'ti dispiace se ti faccio' is a sound, flexible unit that a learner would want to say, and merging it with 'domande' would exceed 8 syllables, so I keep the cut and write fresh phrases, including USE ones that pair it with the already taught 'domande'.",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 376,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    1
+   ],
+   "fellBackBecause": "checkOp refused: L2 \"I didn't go anywhere\" → \"non sono andato da nessuna parte\": 11 syllables, cap 8 (L3)"
+  }
+ ]
+}
