@@ -601,6 +601,7 @@ app.use('/api/recording',
     requireAdmin,
     requireDashboardUser,
     handleRecordingUpload,
+    warmPhrasePlan: true,
   }))
 
 // Android test-build distribution. Same auth shape as the recordist routes
