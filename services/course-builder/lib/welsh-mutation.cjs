@@ -117,8 +117,8 @@ function isSameWelsh(courseCode, targetA, targetB) {
  * ruling on that word). The builder's general gate instead TILES a phrase from whole LEGO /
  * component / seed chunks, so a word met only inside a bigger chunk ("trio" inside "dw i’n trio",
  * old seeds 1-137 have no components at all) read as untaught. For Welsh, this word-level reading
- * is the rule; checkVocabViolations falls back to it when tiling fails. Canon K29 (Kai) is the
- * stricter, component-only reading — Aran owns the Welsh course and ruled the wider one.
+ * is the rule; checkVocabViolations falls back to it when tiling fails. Canon K29 now carries this as
+ * its Welsh reading (Aran, methodology lead, 2026-10-13); Kai's component test governs other languages.
  *
  * A token is split at a clitic apostrophe: "nhw’n" → "nhw" + "’n", "mae’r" → "mae" + "’r";
  * a trailing apostrophe ("cyfri’", "be’") stays on its word.
@@ -176,5 +176,15 @@ function welshContainsLego(courseCode, legoTarget, phraseTarget) {
   return false;
 }
 
+/**
+ * The same rule in the words a phrase generator is given (v3 build-prompt, v4, build-escalation).
+ * Aran (methodology lead), 2026-10-13. Kept here, beside welshUntaughtWords, so the prompt and the
+ * check that grades it cannot drift apart. Empty for every non-Welsh course.
+ */
+function welshVocabRulePrompt(courseCode) {
+  if (!isWelshTarget(courseCode)) return '';
+  return `WELSH VOCABULARY RULE (Aran, methodology lead, 2026-10-13): the Welsh side may use ANY Welsh word taught earlier in the course running order — including a word the learner met only inside a bigger chunk ("trio" is available once "dw i'n trio" has been taught). A soft-mutated form of a taught word is the same word (cael/gael, calon/galon). Any other form is still NEW until that exact form has been taught: no nasal or aspirate mutation the course has not taught (nghath, chath), no untaught conjugation, plural or contraction ("we hoped" is not licensed by "to hope").`;
+}
+
 module.exports = { isSoftMutationVariant, isSameWelsh, softEquivalentWords, softRadicals, isWelshTarget,
-  welshPieces, welshTaughtKeys, welshUntaughtWords, welshContainsLego };
+  welshPieces, welshTaughtKeys, welshUntaughtWords, welshContainsLego, welshVocabRulePrompt };

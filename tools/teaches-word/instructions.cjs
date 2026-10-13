@@ -8,6 +8,10 @@
  *        no exceptions. K6 and K7 are known-side latitude only."
  *   P2  "Phrases tile from WHOLE already-introduced chunks, never re-split into words… if a
  *        wording needs a form you have not introduced as a whole chunk, it fails."
+ *        (Welsh, Aran 2026-10-13: any Welsh word taught earlier may be used, even one met only
+ *        inside a chunk, and a soft mutation is the same word — that widens what OTHER words a
+ *        Welsh phrase may draw on; it does not change this reader's question, which is whether
+ *        the sentence carries the word its lesson teaches, in the form taught.)
  *   K6  "The known side MAY use uninstructed forms of taught words; only genuinely different
  *        WORDS are defects… the known can use a different case, or conjugation, contraction,
  *        gender or whatever if it needs, even if it isn't introduced… They'll try with the
@@ -26,7 +30,8 @@ const TARGET_RULES = `You are checking the TARGET side: the sentence in the lang
 THE TARGET SIDE IS STRICT. The methodology canon puts it this way: "The TARGET side stays strict,
 always. Every target sentence tiles from taught chunks, no exceptions." And: "Phrases tile from
 WHOLE already-introduced chunks, never re-split into words... if a wording needs a form you have
-not introduced as a whole chunk, it fails."
+not introduced as a whole chunk, it fails." (For Welsh, a word taught earlier may be used even if
+it was met only inside a bigger chunk, and a soft mutation is the same word — Aran, 2026-10-13.)
 
 So the test is: does the sentence contain the taught word IN THE EXACT FORM IT WAS TAUGHT?
 Teach the form, get the form.
