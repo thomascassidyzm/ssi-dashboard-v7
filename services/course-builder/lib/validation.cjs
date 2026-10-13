@@ -305,6 +305,7 @@ function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
       chunksByFirstWord.get(first).push(words);
     }
 
+    let welshKeys = null;
     for (const phrase of phrases) {
       const normalized = normalizeForContainment(phrase.target);
       const phraseWords = normalized.split(' ').filter(w => w);
@@ -328,6 +329,16 @@ function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
           }
           if (match) dp[i + len] = true;
         }
+      }
+
+      if (!dp[n] && isWelshTarget(courseCode)) {
+        // Welsh: any word taught earlier counts, inside a bigger chunk or soft-mutated (Aran,
+        // 2026-10-13, job #504; welsh-mutation.cjs welshUntaughtWords). Only the words no earlier
+        // LEGO, component or seed sentence carries are a violation.
+        welshKeys = welshKeys || welshTaughtKeys(vocabSet);
+        const untaught = welshUntaughtWords(phrase.target, welshKeys);
+        if (untaught.length) violations.push({ phrase: phrase.target, unknown: untaught.join(' ') });
+        continue;
       }
 
       if (!dp[n]) {
@@ -583,7 +594,7 @@ function _clearGenderVariantLicenceCache() { _genderLicenceCache.clear(); }
 // these functions have always run. sector-helix §5b/§6; course-family.cjs.
 const { zutScope } = require('./course-family.cjs');
 const { loadRunningOrder, filterSeedsBefore } = require('../../shared/running-order.cjs');
-const { isSoftMutationVariant } = require('./welsh-mutation.cjs');
+const { isSoftMutationVariant, isWelshTarget, welshTaughtKeys, welshUntaughtWords } = require('./welsh-mutation.cjs');
 
 /**
  * Check for LEGO conflicts before insertion.

@@ -60,6 +60,7 @@
 'use strict';
 
 const { normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
+const { welshContainsLego } = require('./welsh-mutation.cjs');
 
 // ─── The seeds the ruling names ───────────────────────────────────────────
 
@@ -390,6 +391,9 @@ function verbIsFree(policy, lemma) {
  * Returns {pass, reason?, verb?, wanted?, found?} so a gate can say WHY.
  */
 function checkSeparableContainment({ courseCode, seedNumber, legoTarget, phraseTarget, baseline = checkWordContainment }) {
+  // Welsh: a soft-mutated / elided spelling of the LEGO's words still contains it (Aran,
+  // 2026-10-13, job #504: calon/galon, cael/gael, cyfrif/cyfri'). Only ever admits more.
+  if (welshContainsLego(courseCode, legoTarget, phraseTarget)) return { pass: true, applies: false, welsh: true };
   const policy = separablePolicy(courseCode, seedNumber);
   if (!policy.applies) return { pass: !!baseline(legoTarget, phraseTarget), applies: false };
   const legoVerbs = separableVerbsIn(legoTarget);
