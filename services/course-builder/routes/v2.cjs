@@ -686,12 +686,19 @@ module.exports = function(ctx) {
         console.log(`  Debut moved earlier: S${l.seed_number}L${l.lego_index} "${l.known_text}" is no longer new`);
       }
 
-      // STEP 6: Cleanup drafts
-      const { error: deleteError } = await ctx.supabase
-        .from('course_seed_drafts')
-        .delete()
-        .eq('course_code', courseCode);
-      if (deleteError) console.warn(`  Draft cleanup failed: ${deleteError.message}`);
+      // STEP 6: Cleanup drafts -- only the versions read in STEP 1. A builder may have saved a
+      // new seed or revised a draft while this ran, and drafts STEP 1 never loaded (collision,
+      // rework) were not promoted; deleting any of those loses work. Unversioned rows are kept.
+      for (const draft of drafts) {
+        if (!draft.updated_at) continue;
+        const { error: deleteError } = await ctx.supabase
+          .from('course_seed_drafts')
+          .delete()
+          .eq('course_code', courseCode)
+          .eq('seed_number', draft.seed_number)
+          .eq('updated_at', draft.updated_at);
+        if (deleteError) console.warn(`  Draft cleanup failed: ${deleteError.message}`);
+      }
 
       // Invalidate vocab cache
       invalidateVocabCache(ctx, courseCode);
