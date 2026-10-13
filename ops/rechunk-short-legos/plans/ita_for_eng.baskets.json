@@ -1,0 +1,899 @@
+{
+ "course": "ita_for_eng",
+ "seeds": {
+  "53": {
+   "seed": 53,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "she wanted to",
+     "target": "voleva"
+    },
+    {
+     "idx": 2,
+     "known": "to put",
+     "target": "mettere"
+    },
+    {
+     "idx": 3,
+     "known": "his letter",
+     "target": "la sua lettera"
+    },
+    {
+     "idx": 4,
+     "known": "in her bag",
+     "target": "nella sua borsa"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "to put",
+      "target": "mettere",
+      "components": null,
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "ita_for_eng:S0053L02B01",
+       "role": "build",
+       "known": "to put",
+       "target": "mettere",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Direct one-to-one gloss of the LEGO; a valid minimal BUILD.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO. A BUILD must be the LEGO plus one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is the bare LEGO. A BUILD must be the LEGO plus one to three other taught LEGOs."
+      },
+      {
+       "id": "ita_for_eng:S0053L02B02",
+       "role": "build",
+       "known": "I want to put",
+       "target": "voglio mettere",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "'voglio' is taught; natural fragment that extends into a full sentence, and the target matches the known.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, uses only taught material, and extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "ita_for_eng:S0053L02B03",
+       "role": "build",
+       "known": "she wanted to put",
+       "target": "voleva mettere",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "'voleva' is taught; correct and a natural fragment, and it matches the seed.",
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. It matches the seed chunk, with the subject omitted as usual in Italian.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I can put",
+       "target": "posso mettere",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'posso mettere' is correct, natural and taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I don't want to put",
+       "target": "non voglio mettere",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'non voglio mettere' is correct and natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I wanted to put",
+       "target": "volevo mettere",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'volevo mettere' is correct and natural.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "he wants to put",
+       "target": "vuole mettere",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'vuole mettere' is correct, and 'he wants' is a taught gloss.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "we want to put",
+       "target": "vogliamo mettere",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'vogliamo mettere' is correct and natural.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "I need to put",
+       "target": "ho bisogno di mettere",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'ho bisogno di mettere' is grammatical, uses a taught construction and extends naturally.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I don't want to put anything",
+       "target": "non voglio mettere niente",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'put' needs a place. 'I don't want to put anything' as a complete sentence is incomplete and unnatural in both languages.",
+       "keep": false,
+       "why": "Opus: bad — 'put' needs a place. 'I don't want to put anything' as a complete sentence is incomplete and unnatural in both languages."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to put something",
+       "target": "sto provando a mettere qualcosa",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'put something' with no location is incomplete. This is not a natural tier-1 sentence.",
+       "keep": false,
+       "why": "Opus: bad — 'put something' with no location is incomplete. This is not a natural tier-1 sentence."
+      },
+      {
+       "role": "use",
+       "known": "I can put something later on",
+       "target": "posso mettere qualcosa più tardi",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "There is no destination for 'put', so the sentence is clunky and incomplete.",
+       "keep": false,
+       "why": "Opus: bad — There is no destination for 'put', so the sentence is clunky and incomplete."
+      },
+      {
+       "role": "use",
+       "known": "I wanted to put something yesterday",
+       "target": "volevo mettere qualcosa ieri",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'put something yesterday' has no location, so the sentence is unnatural and incomplete.",
+       "keep": false,
+       "why": "Opus: bad — 'put something yesterday' has no location, so the sentence is unnatural and incomplete."
+      },
+      {
+       "role": "use",
+       "known": "we don't want to put anything today",
+       "target": "non vogliamo mettere niente oggi",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'put anything today' has no place, so it is unnatural as a full sentence.",
+       "keep": false,
+       "why": "Opus: bad — 'put anything today' has no place, so it is unnatural as a full sentence."
+      },
+      {
+       "role": "use",
+       "known": "I don't need to put everything now",
+       "target": "non ho bisogno di mettere tutto adesso",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'put everything now' needs a location to be natural.",
+       "keep": false,
+       "why": "Opus: bad — 'put everything now' needs a location to be natural."
+      },
+      {
+       "role": "use",
+       "known": "she wanted to put a letter yesterday",
+       "target": "voleva mettere una lettera ieri",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'put a letter yesterday' has no place. It is incomplete in both languages.",
+       "keep": false,
+       "why": "Opus: bad — 'put a letter yesterday' has no place. It is incomplete in both languages."
+      },
+      {
+       "role": "use",
+       "known": "he wants to put a letter tomorrow",
+       "target": "vuole mettere una lettera domani",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'put a letter tomorrow' has no destination and is unnatural.",
+       "keep": false,
+       "why": "Opus: bad — 'put a letter tomorrow' has no destination and is unnatural."
+      },
+      {
+       "role": "use",
+       "known": "I need to put everything soon",
+       "target": "ho bisogno di mettere tutto presto",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'put everything soon' has no location, so it is unnatural and incomplete.",
+       "keep": false,
+       "why": "Opus: bad — 'put everything soon' has no location, so it is unnatural and incomplete."
+      },
+      {
+       "role": "build",
+       "known": "I'm trying to put",
+       "target": "sto provando a mettere",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Short BUILD from taught 'sto provando a' plus the LEGO. It is grammatical, the meaning matches exactly, and it extends naturally, e.g. 'I'm trying to put it in my bag'.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "I'd like to put",
+       "target": "mi piacerebbe mettere",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Short BUILD from taught 'mi piacerebbe' plus the LEGO. It is grammatical and natural Italian, matches the known side exactly, and extends naturally into a full sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I'd like to be able to put everything in Italian",
+       "target": "mi piacerebbe poter mettere tutto in italiano",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Using 'put' to mean 'translate' is marginal in English ('put everything in Italian'). 'Mettere tutto in italiano' is not natural Italian for this; a speaker would say 'dire' or 'tradurre tutto in italiano'. It also misuses the LEGO's physical-placement sense from the seed. Not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — Using 'put' to mean 'translate' is marginal in English ('put everything in Italian'). 'Mettere tutto in italiano' is not natural Italian for this; a speaker would say 'dire' or 'tradurre tutto in italiano'. It also misuses the LEGO's physical-placement sense from the seed. Not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure if I can put the whole sentence in Italian",
+       "target": "non sono sicuro se posso mettere tutta la frase in italiano",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'Mettere tutta la frase in italiano' has the same problem: it is not a natural Italian way to say 'translate or express the sentence in Italian'. The English 'put the whole sentence in Italian' is also borderline. When unsure, it is bad.",
+       "keep": false,
+       "why": "Opus: bad — 'Mettere tutta la frase in italiano' has the same problem: it is not a natural Italian way to say 'translate or express the sentence in Italian'. The English 'put the whole sentence in Italian' is also borderline. When unsure, it is bad."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 0,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 0"
+     }
+    }
+   }
+  },
+  "190": {
+   "seed": 190,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "do you mind if I ask you",
+     "target": "ti dispiace se ti faccio"
+    },
+    {
+     "idx": 2,
+     "known": "questions",
+     "target": "domande"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "M",
+      "known": "do you mind if I ask you",
+      "target": "ti dispiace se ti faccio",
+      "components": [
+       {
+        "known": "do you mind if i ask you",
+        "target": "ti dispiace se ti faccio"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "ita_for_eng:S0190L01B01",
+       "role": "build",
+       "known": "do you mind if I ask you",
+       "target": "ti dispiace se ti faccio",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, a clean fragment that extends naturally into a full question.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is the bare LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs."
+      },
+      {
+       "id": "ita_for_eng:S0190L01B05",
+       "role": "build",
+       "known": "yes but do you mind if I ask you",
+       "target": "sì ma ti dispiace se ti faccio",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "'sì ma' + LEGO is natural, tileable, and extends into a full sentence.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'sì ma ti dispiace se ti faccio' is natural and an exact match for the known side. It extends naturally to '...alcune domande?'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "ita_for_eng:S0190L01B06",
+       "role": "build",
+       "known": "tomorrow morning do you mind if I ask you",
+       "target": "domani mattina ti dispiace se ti faccio",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "A fronted 'domani mattina' before the question is stilted in Italian, and the English lead-in is awkward.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A fronted 'tomorrow morning' before 'do you mind' is clunky and its scope is ambiguous: is it the minding or the asking that happens tomorrow? It is natural only after the object, so it is not tier 1.",
+       "keep": false,
+       "why": "Sonnet: bad — A fronted 'domani mattina' before the question is stilted in Italian, and the English lead-in is awkward."
+      },
+      {
+       "id": "ita_for_eng:S0190L01B07",
+       "role": "build",
+       "known": "on Sunday afternoon do you mind if I ask you",
+       "target": "domenica pomeriggio ti dispiace se ti faccio",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "Same problem as E3: a fronted time phrase makes it unnatural, so it isn't clearly good.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A fronted 'on Sunday afternoon' before 'do you mind if I ask you' is clunky and its scope is ambiguous. It is not tier 1.",
+       "keep": false,
+       "why": "Sonnet: bad — Same problem as E3: a fronted time phrase makes it unnatural, so it isn't clearly good."
+      },
+      {
+       "id": "ita_for_eng:S0190L01B08",
+       "role": "build",
+       "known": "okay do you mind if I ask you",
+       "target": "bene ti dispiace se ti faccio",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'okay' as an interjection is not reliably 'bene' (natural would be 'va bene'), so it breaks the one-prompt-to-one-target mapping.",
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'okay' => 'bene' breaks ZUT: 'bene' is taught as 'well', and 'okay' would more naturally be 'va bene'. The mapping is unsure.",
+       "keep": false,
+       "why": "Sonnet: bad — 'okay' as an interjection is not reliably 'bene' (natural would be 'va bene'), so it breaks the one-prompt-to-one-target mapping."
+      },
+      {
+       "role": "build",
+       "known": "but do you mind if I ask you",
+       "target": "ma ti dispiace se ti faccio",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'ma ti dispiace se ti faccio' is natural, correct and taught material only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "now do you mind if I ask you",
+       "target": "adesso ti dispiace se ti faccio",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'adesso ti dispiace se ti faccio' works as a natural discourse opener and extends naturally to a full question.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "so do you mind if I ask you",
+       "target": "quindi ti dispiace se ti faccio",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Sentence-initial 'so' = 'quindi' is consistent with the taught 'quindi spero'. It is natural and correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "and now do you mind if I ask you",
+       "target": "e adesso ti dispiace se ti faccio",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'e adesso ti dispiace se ti faccio' is natural, an exact match and taught material only.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "but now do you mind if I ask you",
+       "target": "ma adesso ti dispiace se ti faccio",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'ma adesso ti dispiace se ti faccio' is natural and correct.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "so now do you mind if I ask you",
+       "target": "quindi adesso ti dispiace se ti faccio",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'quindi adesso ti dispiace se ti faccio' is natural and an exact match, with 'quindi' as the established initial 'so'.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "and then do you mind if I ask you",
+       "target": "e poi ti dispiace se ti faccio",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Sequential 'and then' clashes with the present-tense request 'do you mind if I ask you'. English would say 'and then would you mind…' or 'and then can I ask you…', so the known side is clunky, not tier 1. Italian 'e poi ti dispiace se ti faccio…' is only marginally natural. When unsure, BAD.",
+       "keep": false,
+       "why": "Opus: bad — Sequential 'and then' clashes with the present-tense request 'do you mind if I ask you'. English would say 'and then would you mind…' or 'and then can I ask you…', so the known side is clunky, not tier 1. Italian 'e poi ti dispiace se ti faccio…' is only marginally natural. When unsure, BAD."
+      },
+      {
+       "role": "build",
+       "known": "then do you mind if I ask you",
+       "target": "poi ti dispiace se ti faccio",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": false,
+       "opusReason": "At the start of a question, 'then do you mind if I ask you…' naturally reads as 'in that case', which is Italian 'allora', not 'poi'. So the target does not say exactly what the natural known side means. Read sequentially, the English is unnatural.",
+       "keep": false,
+       "why": "Opus: bad — At the start of a question, 'then do you mind if I ask you…' naturally reads as 'in that case', which is Italian 'allora', not 'poi'. So the target does not say exactly what the natural known side means. Read sequentially, the English is unnatural."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 0,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 0"
+     }
+    }
+   }
+  },
+  "376": {
+   "seed": 376,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "I didn't go",
+     "target": "non sono andato"
+    },
+    {
+     "idx": 2,
+     "known": "anywhere",
+     "target": "da nessuna parte"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "M",
+      "known": "I didn't go",
+      "target": "non sono andato",
+      "components": [
+       {
+        "known": "I didn't go",
+        "target": "non sono andato"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "ita_for_eng:S0376L01B01",
+       "role": "build",
+       "known": "I didn't go",
+       "target": "non sono andato",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, short and natural.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the LEGO on its own. A BUILD must add one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is the LEGO on its own. A BUILD must add one to three other taught LEGOs."
+      },
+      {
+       "id": "ita_for_eng:S0376L01B02",
+       "role": "build",
+       "known": "I didn't go anywhere",
+       "target": "non sono andato da nessuna parte",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'da nessuna parte' is the next LEGO and is not taught yet. Also 'anywhere' is already glossed as 'da qualche parte', which breaks ZUT.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'da nessuna parte' is L2 and is not yet taught. Also, 'anywhere' is already mapped to 'da qualche parte', so this breaks ZUT.",
+       "keep": false,
+       "why": "Sonnet: bad — 'da nessuna parte' is the next LEGO and is not taught yet. Also 'anywhere' is already glossed as 'da qualche parte', which breaks ZUT."
+      },
+      {
+       "id": "ita_for_eng:S0376L01B03",
+       "role": "build",
+       "known": "I didn't go anywhere yesterday",
+       "target": "non sono andato da nessuna parte ieri",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "Uses 'da nessuna parte', which is not taught yet.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Uses 'da nessuna parte', which is untaught. 'anywhere' also conflicts with its earlier mapping to 'da qualche parte'.",
+       "keep": false,
+       "why": "Sonnet: bad — Uses 'da nessuna parte', which is not taught yet."
+      },
+      {
+       "id": "ita_for_eng:S0376L01U01",
+       "role": "use",
+       "known": "I didn't go to see the film",
+       "target": "non sono andato a vedere il film",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Uses only taught words (a, vedere, il, film). The target is natural and matches the known.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Only 'un film' is taught. 'il film' and 'the film' are not taught, and 'andare a vedere' is not a taught construction.",
+       "keep": false,
+       "why": "Opus: bad — Only 'un film' is taught. 'il film' and 'the film' are not taught, and 'andare a vedere' is not a taught construction."
+      },
+      {
+       "id": "ita_for_eng:S0376L01U04",
+       "role": "use",
+       "known": "I didn't go anywhere with her",
+       "target": "non sono andato da nessuna parte con lei",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "Uses 'da nessuna parte', which is not taught yet.",
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Uses 'da nessuna parte', which is untaught, and creates the same ZUT conflict over 'anywhere'.",
+       "keep": false,
+       "why": "Sonnet: bad — Uses 'da nessuna parte', which is not taught yet."
+      },
+      {
+       "id": "ita_for_eng:S0376L01U05",
+       "role": "use",
+       "known": "I wanted to go somewhere but I didn't go anywhere",
+       "target": "volevo andare da qualche parte ma non sono andato da nessuna parte",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "Uses 'da nessuna parte', which is not taught yet. 'somewhere' and 'anywhere' also clash with the existing 'da qualche parte' gloss.",
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Uses 'da nessuna parte', which is untaught. 'anywhere' conflicts with 'da qualche parte', and both 'somewhere' and 'andare da qualche parte' are untaught.",
+       "keep": false,
+       "why": "Sonnet: bad — Uses 'da nessuna parte', which is not taught yet. 'somewhere' and 'anywhere' also clash with the existing 'da qualche parte' gloss."
+      },
+      {
+       "role": "build",
+       "known": "I didn't go yesterday",
+       "target": "non sono andato ieri",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural, uses only taught material, and extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I didn't go last month",
+       "target": "non sono andato il mese scorso",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct Italian. 'il mese scorso' is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I didn't go with you",
+       "target": "non sono andato con te",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. 'con te' is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I didn't go last week",
+       "target": "non sono andato la settimana scorsa",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. 'la settimana scorsa' is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I didn't go this morning",
+       "target": "non sono andato stamattina",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. 'stamattina' is taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "I didn't go with my friends",
+       "target": "non sono andato con i miei amici",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. 'con i miei amici' is taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I didn't go with my friends last week",
+       "target": "non sono andato con i miei amici la settimana scorsa",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One complete, natural sentence using only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I didn't go because I wanted to speak with you",
+       "target": "non sono andato perché volevo parlare con te",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural. Every element is taught and the meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I didn't go yesterday because I didn't want to",
+       "target": "non sono andato ieri perché non volevo",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, and 'non volevo' renders 'I didn't want to' correctly. All elements are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I didn't go last night because I wanted to relax",
+       "target": "non sono andato ieri sera perché volevo rilassarmi",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. 'ieri sera' and 'rilassarmi' are both taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I didn't go to the doctor with my mother last week",
+       "target": "non sono andato dal medico con mia madre la settimana scorsa",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. 'dal medico', 'mia madre' and 'la settimana scorsa' are all taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I didn't go with you because I had to work",
+       "target": "non sono andato con te perché dovevo lavorare",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. 'dovevo lavorare' is built from taught pieces.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I didn't go last month because I didn't have time",
+       "target": "non sono andato il mese scorso perché non avevo tempo",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. 'non avevo tempo' is built from taught pieces.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I didn't go with her because I didn't want to",
+       "target": "non sono andato con lei perché non volevo",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. 'lei' and 'non volevo' are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I didn't go to see the film with you",
+       "target": "non sono andato a vedere il film con te",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'il film' and 'the film' are untaught (only 'un film' is), and 'andare a vedere' is not a taught construction.",
+       "keep": false,
+       "why": "Opus: bad — 'il film' and 'the film' are untaught (only 'un film' is), and 'andare a vedere' is not a taught construction."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  }
+ }
+}

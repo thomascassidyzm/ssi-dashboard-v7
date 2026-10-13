@@ -287,6 +287,18 @@ async function apply(course) {
     const after = L.afterLegos(before, p)
     const changedIdx = new Set(after.filter((l) => l.change !== 'keep').map((l) => l.idx))
     const keepIds = new Set(work.flatMap((l) => b.legos[l.idx].items.filter((x) => x.keep && x.id).map((x) => x.id)))
+    // NEVER-WORSE (job #321): on a LEGO whose cut is unchanged (top-up), the pair may flag live phrases bad but find no
+    // better ones in a role (an early seed with a handful of taught words). Deleting them would leave the LEGO with fewer
+    // phrases than it had, which is worse for the learner than the flagged ones — so in that role the live phrases stay,
+    // new good ones are still added, and the report names what was retained.
+    const retained = []
+    for (const l of work.filter((x) => !changedIdx.has(x.idx))) {
+      for (const role of ['build', 'use']) {
+        const live_ = live.phrases.filter((r) => r.lego_index === l.idx && r.phrase_role === role)
+        const kept_ = b.legos[l.idx].items.filter((x) => x.keep && x.role === role)
+        if (live_.length && kept_.length < live_.length) for (const r of live_) if (!keepIds.has(r.id)) { keepIds.add(r.id); retained.push(r.id) }
+      }
+    }
     // rows to delete: every phrase of a deleted LEGO, every component row of a changed LEGO, every BUILD/USE
     // phrase of a changed or topped-up LEGO that was not kept (a top-up keeps only what both judges passed)
     const workIdx = new Set(work.map((l) => l.idx))
@@ -314,7 +326,7 @@ async function apply(course) {
       }
     }
     const line = { seed: p.seed, at: new Date().toISOString(), job: JOB, op: p, before: live, after: after.map((l) => ({ idx: l.idx, known: l.known, target: l.target, change: l.change })), insertedIds: inserts.map((i) => i.id) }
-    const summary = { seed: p.seed, kind: p.kind, deleteLegos: (p.delete || []).map((i) => L.legoId(p.seed, i)), changeLegos: Object.keys(p.set || {}).map((i) => L.legoId(p.seed, Number(i))), addLegos: (p.add || []).map((a) => L.legoId(p.seed, a.idx)), deletePhrases: delPhrase.length, insertPhrases: inserts.length, moved: moves.length }
+    const summary = { seed: p.seed, kind: p.kind, deleteLegos: (p.delete || []).map((i) => L.legoId(p.seed, i)), changeLegos: Object.keys(p.set || {}).map((i) => L.legoId(p.seed, Number(i))), addLegos: (p.add || []).map((a) => L.legoId(p.seed, a.idx)), deletePhrases: delPhrase.length, insertPhrases: inserts.length, moved: moves.length, retainedFlagged: retained.length }
     if (!APPLY) { report.push({ ...summary, outcome: 'would apply' }); continue }
     if (!identity) {
       const { serviceIdentity } = require(path.join(REPO, 'services/shared/editor-identity.cjs'))
@@ -450,4 +462,4 @@ if (require.main === module) {
   if (/cym/.test(COURSE)) { console.error('Welsh is out of scope (Tom): never re-chunk a cym course.'); process.exit(2) }
   fn(COURSE).then(() => { if (!process.exitCode) process.exitCode = 0 }).catch((e) => { console.error(e.stack || e.message); process.exit(1) })
 }
-module.exports = { authorPrompt, judgePrompt, callClaude, languages, pgClient, loadSeed, asBefore, planPath, RUBRIC_DIGEST }
+module.exports = { supabase, authorPrompt, judgePrompt, callClaude, languages, pgClient, loadSeed, asBefore, planPath, RUBRIC_DIGEST }

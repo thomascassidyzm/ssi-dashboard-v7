@@ -1,0 +1,4604 @@
+{
+ "course": "jpn_for_eng",
+ "seeds": {
+  "4": {
+   "seed": 4,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "want to try saying",
+     "target": "言ってみたい"
+    },
+    {
+     "idx": 2,
+     "known": "something",
+     "target": "何か"
+    },
+    {
+     "idx": 3,
+     "known": "in Japanese",
+     "target": "日本語で"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "A",
+      "known": "something",
+      "target": "何か",
+      "components": [],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "say something",
+       "target": "何か言う",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "何か言う is a correct, natural fragment. It maps exactly to 'say something' and extends easily into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "do something",
+       "target": "何かやる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "何かやる is a natural fragment that matches 'do something' exactly, using only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "am trying something",
+       "target": "何かやってみてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "何かやってみてる naturally means 'am trying (out) something'. It is grammatical and uses taught pieces only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "want to try saying something",
+       "target": "何か言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "何か言ってみたい is natural and maps exactly to 'want to try saying something'. It also mirrors the seed.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "do something together",
+       "target": "一緒に何かやる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "一緒に何かやる is natural, has correct word order and matches 'do something together'.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "now, say something",
+       "target": "今、何か言う",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The English 'now, say something' reads as an imperative. 今、何か言う is a plain non-imperative form, so the meaning doesn't match. 'Say' as a command would need 言って.",
+       "keep": false,
+       "why": "Opus: bad — The English 'now, say something' reads as an imperative. 今、何か言う is a plain non-imperative form, so the meaning doesn't match. 'Say' as a command would need 言って."
+      },
+      {
+       "role": "use",
+       "known": "now, want to try saying something",
+       "target": "今、何か言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今、何か言ってみたい is a complete, natural subject-dropped sentence. It matches the controlled-language English prompt and uses only taught LEGOs.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "now, am trying something together",
+       "target": "今、一緒に何かやってみてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今、一緒に何かやってみてる is natural ('we're trying something together now'). It is one complete sentence, uses taught material only and the meaning matches.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "now, do something together",
+       "target": "今、一緒に何かやる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The English reads as an imperative or suggestion. 今、一緒に何かやる as a statement is odd and needs question intonation or やろう to work, so the target and prompt don't map cleanly.",
+       "keep": false,
+       "why": "Opus: bad — The English reads as an imperative or suggestion. 今、一緒に何かやる as a statement is odd and needs question intonation or やろう to work, so the target and prompt don't map cleanly."
+      },
+      {
+       "role": "use",
+       "known": "want to try saying something together",
+       "target": "一緒に何か言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "一緒に何か言ってみたい is natural and complete, and matches 'want to try saying something together' exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "want to speak something",
+       "target": "何か話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": false,
+       "opusReason": "何か話したい is natural Japanese, but it means 'want to talk about something'. The English 'want to speak something' is not natural and suggests speaking a language, so the known side does not cleanly match the target.",
+       "keep": false,
+       "why": "Opus: bad — 何か話したい is natural Japanese, but it means 'want to talk about something'. The English 'want to speak something' is not natural and suggests speaking a language, so the known side does not cleanly match the target."
+      },
+      {
+       "role": "build",
+       "known": "now, am trying something",
+       "target": "今、何かやってみてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "今、何かやってみてる is natural and grammatical. It is a short BUILD with the LEGO plus two taught LEGOs, and the stilted but tileable English matches it exactly.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "now, want to speak something together",
+       "target": "今、一緒に何か話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The Japanese is fine, but the English 'want to speak something together' is not a natural tier-1 sentence. It also misrepresents 話す here, which means 'talk about'.",
+       "keep": false,
+       "why": "Opus: bad — The Japanese is fine, but the English 'want to speak something together' is not a natural tier-1 sentence. It also misrepresents 話す here, which means 'talk about'."
+      },
+      {
+       "role": "use",
+       "known": "as much as possible, want to try saying something",
+       "target": "できるだけ、何か言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": false,
+       "opusReason": "できるだけ ('as much as possible') sits awkwardly with the single, vague 何か in both languages. The result is clunky rather than tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — できるだけ ('as much as possible') sits awkwardly with the single, vague 何か in both languages. The result is clunky rather than tier-1 natural."
+      },
+      {
+       "role": "use",
+       "known": "as much as possible, want to speak something together",
+       "target": "できるだけ、一緒に何か話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": false,
+       "opusReason": "It has the same できるだけ + 何か semantic clash. It also inherits the unnatural 'speak something' known side.",
+       "keep": false,
+       "why": "Opus: bad — It has the same できるだけ + 何か semantic clash. It also inherits the unnatural 'speak something' known side."
+      },
+      {
+       "role": "use",
+       "known": "now, am trying something as much as possible",
+       "target": "今、できるだけ何かやってみてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": false,
+       "opusReason": "今、できるだけ何かやってみてる is semantically odd: 'trying something as much as possible' is not natural in either language. Not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 今、できるだけ何かやってみてる is semantically odd: 'trying something as much as possible' is not natural in either language. Not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 3,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 3"
+     }
+    },
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "A",
+      "known": "in Japanese",
+      "target": "日本語で",
+      "components": [],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "want to speak in Japanese",
+       "target": "日本語で話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short, natural BUILD. The LEGO plus 話したい gives correct Japanese that matches the known side exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "say something in Japanese",
+       "target": "日本語で何か言う",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment that extends easily into a full sentence. It uses only taught LEGOs and is a correct mapping.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "want to try saying something in Japanese",
+       "target": "日本語で何か言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The LEGO plus two taught LEGOs. Correct, natural Japanese that matches the known side exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "speak in Japanese together",
+       "target": "一緒に日本語で話す",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "一緒に日本語で話す is natural, and the known side tiles cleanly from taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "speak in Japanese a lot",
+       "target": "日本語でたくさん話す",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "日本語でたくさん話す is natural. The English is slightly stilted but tileable and accurate.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "speak in Japanese as much as possible",
+       "target": "できるだけ日本語で話す",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "できるだけ日本語で話す is natural and idiomatic. The mapping is exact.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "now, want to speak in Japanese together",
+       "target": "今、一緒に日本語で話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One complete, natural sentence. 今、一緒に日本語で話したい matches the known side, and it is clearly longer than the BUILDs.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "want to speak in Japanese as much as possible",
+       "target": "できるだけ日本語で話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Grammatical, but it is only P6 with 話したい swapped in. That is BUILD length, not longer than a BUILD as USE requires.",
+       "keep": false,
+       "why": "Opus: bad — Grammatical, but it is only P6 with 話したい swapped in. That is BUILD length, not longer than a BUILD as USE requires."
+      },
+      {
+       "role": "use",
+       "known": "want to speak a lot in Japanese",
+       "target": "日本語でたくさん話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Grammatical, but it is only P5 with 話したい swapped in. That is BUILD length and not a proper USE expansion.",
+       "keep": false,
+       "why": "Opus: bad — Grammatical, but it is only P5 with 話したい swapped in. That is BUILD length and not a proper USE expansion."
+      },
+      {
+       "role": "use",
+       "known": "now, want to try saying something in Japanese",
+       "target": "今、日本語で何か言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence that extends the seed with 今. The mapping is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "want to try saying something in Japanese together",
+       "target": "一緒に日本語で何か言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "一緒に日本語で何か言ってみたい is natural Japanese, and the known side matches it with taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "now, am trying to do something in Japanese",
+       "target": "今、日本語で何かやってみてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Am trying to do' breaks ZUT: やってみてる was taught as 'am trying', so 'to do' adds an untiled やる. 'Do something in Japanese' is also vague and clunky in both languages.",
+       "keep": false,
+       "why": "Opus: bad — 'Am trying to do' breaks ZUT: やってみてる was taught as 'am trying', so 'to do' adds an untiled やる. 'Do something in Japanese' is also vague and clunky in both languages."
+      },
+      {
+       "role": "use",
+       "known": "now, want to speak a lot in Japanese",
+       "target": "今、日本語でたくさん話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今、日本語でたくさん話したい is natural, and the mapping is exact and longer than a BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "together, want to speak in Japanese as much as possible",
+       "target": "一緒に、できるだけ日本語で話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The fronted 'together,' makes the English clunky rather than natural as said, so it fails tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The fronted 'together,' makes the English clunky rather than natural as said, so it fails tier 1."
+      },
+      {
+       "role": "use",
+       "known": "now, am trying to do something in Japanese together",
+       "target": "今、一緒に日本語で何かやってみてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same problem as P12: 'am trying to do' does not tile onto やってみてる. 'Do something in Japanese together' is also vague and unnatural.",
+       "keep": false,
+       "why": "Opus: bad — Same problem as P12: 'am trying to do' does not tile onto やってみてる. 'Do something in Japanese together' is also vague and unnatural."
+      },
+      {
+       "role": "build",
+       "known": "say a lot in Japanese",
+       "target": "日本語でたくさん言う",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": false,
+       "opusReason": "たくさん言う with no object is unnatural in Japanese. Speaking a lot is たくさん話す, and 'say a lot in Japanese' is clunky in English too. It's not a clean fragment to extend.",
+       "keep": false,
+       "why": "Opus: bad — たくさん言う with no object is unnatural in Japanese. Speaking a lot is たくさん話す, and 'say a lot in Japanese' is clunky in English too. It's not a clean fragment to extend."
+      },
+      {
+       "role": "build",
+       "known": "say something in Japanese together",
+       "target": "一緒に日本語で何か言う",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Short, grammatical BUILD with the LEGO plus taught 一緒に, 何か and 言う. It extends naturally, e.g. 一緒に日本語で何か言おう. The meaning matches.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "now, want to speak a lot in Japanese together",
+       "target": "今、一緒に日本語でたくさん話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "One natural sentence: 今、一緒に日本語でたくさん話したい. It uses only taught material and contains 日本語で. The meaning matches, and the subjectless known side is the course's controlled form.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "now, want to try saying something in Japanese together",
+       "target": "今、一緒に日本語で何か言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural sentence that extends the seed with 今 and 一緒に. It is grammatical, contains the LEGO and matches the known side exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "now, want to speak in Japanese as much as possible",
+       "target": "今、できるだけ日本語で話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "今、できるだけ日本語で話したい is natural and grammatical. It uses only taught items, matches the known side and contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "want to speak in Japanese together as much as possible",
+       "target": "できるだけ一緒に日本語で話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "できるだけ一緒に日本語で話したい is natural. The scope of 'as much as possible' is the same in both languages, and it uses only taught items with the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "now, want to speak in Japanese together as much as possible",
+       "target": "今、できるだけ一緒に日本語で話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": false,
+       "opusReason": "今 (this moment) clashes with できるだけ (an ongoing 'as much as possible'), so the sentence is a little clunky in both languages. It is also nearly a duplicate of P6, and when unsure the phrase is BAD.",
+       "keep": false,
+       "why": "Opus: bad — 今 (this moment) clashes with できるだけ (an ongoing 'as much as possible'), so the sentence is a little clunky in both languages. It is also nearly a duplicate of P6, and when unsure the phrase is BAD."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "6": {
+   "seed": 6,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "a word",
+     "target": "言葉を"
+    },
+    {
+     "idx": 2,
+     "known": "am trying to remember",
+     "target": "思い出そうとしてる"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "A",
+      "known": "a word",
+      "target": "言葉を",
+      "components": [],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "now, a word",
+       "target": "今、言葉を",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A short fragment that mirrors the seed's opening. It extends naturally to 今、言葉を思い出そうとしてる, and both sides are tileable from taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "say a word",
+       "target": "言葉を言う",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "言葉を言う is a grammatical BUILD fragment that maps directly to 'say a word' and uses only taught LEGOs.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "want to try saying a word",
+       "target": "言葉を言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "言葉を言ってみたい is grammatical and an exact mapping of taught pieces. It extends naturally into a sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "say a word together",
+       "target": "一緒に言葉を言う",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Say a word together' is unnatural, ambiguous English. It is unclear who is together and what is meant, so the known side is not natural.",
+       "keep": false,
+       "why": "Opus: bad — 'Say a word together' is unnatural, ambiguous English. It is unclear who is together and what is meant, so the known side is not natural."
+      },
+      {
+       "role": "build",
+       "known": "say a word in Japanese",
+       "target": "日本語で言葉を言う",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "日本語で言葉を言う is a grammatical fragment and an exact match for 'say a word in Japanese'. All parts are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "say a word later",
+       "target": "あとで言葉を言う",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "あとで言葉を言う is grammatical and an exact mapping. It is short and extends into a full sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "Now, I want to try saying a word.",
+       "target": "今、言葉を言ってみたい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今、言葉を言ってみたい。 is one complete natural sentence that matches the known exactly. All material is taught.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I want to try saying a word in Japanese.",
+       "target": "日本語で言葉を言ってみたい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "日本語で言葉を言ってみたい。 is natural in a learner context, an exact match, and a single complete sentence.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "Later, I want to try saying a word together.",
+       "target": "あとで一緒に言葉を言ってみたい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Want to try saying a word together' is clunky, unnatural English (together with whom?). It is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Want to try saying a word together' is clunky, unnatural English (together with whom?). It is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "Now, I want to try saying a word in Japanese.",
+       "target": "今、日本語で言葉を言ってみたい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今、日本語で言葉を言ってみたい。 is grammatical with natural word order and is an exact match. It is one sentence.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I want to try saying a word together.",
+       "target": "一緒に言葉を言ってみたい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'I want to try saying a word together' is unnatural English and ambiguous without a companion. It is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'I want to try saying a word together' is unnatural English and ambiguous without a companion. It is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "Later, I'll say a word in Japanese.",
+       "target": "あとで日本語で言葉を言う。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The plain-form declaration あとで日本語で言葉を言う。 reads as an odd, stilted statement in both languages. That is doubtful naturalness, so it is BAD.",
+       "keep": false,
+       "why": "Opus: bad — The plain-form declaration あとで日本語で言葉を言う。 reads as an odd, stilted statement in both languages. That is doubtful naturalness, so it is BAD."
+      },
+      {
+       "role": "use",
+       "known": "Now, I want to try saying a word together.",
+       "target": "今、一緒に言葉を言ってみたい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Saying a word together' is unnatural English. It is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Saying a word together' is unnatural English. It is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "Later, I want to try saying a word.",
+       "target": "あとで言葉を言ってみたい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "あとで言葉を言ってみたい。 is a natural single sentence that matches the known exactly, using taught material.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "Later, I want to try saying a word in Japanese together.",
+       "target": "あとで一緒に日本語で言葉を言ってみたい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Saying a word in Japanese together' is clunky, overloaded English and unnatural. It is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Saying a word in Japanese together' is clunky, overloaded English and unnatural. It is not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "say a word now",
+       "target": "今、言葉を言う",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Bare 言葉を言う with no modifier is unnatural in Japanese. Speakers would say 何か言う or 一言言う, so 今、言葉を言う sounds stilted. The English 'say a word now' is also ambiguous, since it idiomatically means 'speak at all'. Not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — Bare 言葉を言う with no modifier is unnatural in Japanese. Speakers would say 何か言う or 一言言う, so 今、言葉を言う sounds stilted. The English 'say a word now' is also ambiguous, since it idiomatically means 'speak at all'. Not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "want to try saying a word later",
+       "target": "あとで言葉を言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": false,
+       "opusReason": "It has the same problem: bare 言葉を言ってみたい with no specific word or modifier sounds odd, as if trying out an unspecified word. Grammatical but not natural as said, and natural use would need 'that word' or 'this word', which aren't taught.",
+       "keep": false,
+       "why": "Opus: bad — It has the same problem: bare 言葉を言ってみたい with no specific word or modifier sounds odd, as if trying out an unspecified word. Grammatical but not natural as said, and natural use would need 'that word' or 'this word', which aren't taught."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 0,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 0"
+     }
+    },
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "am trying to remember",
+      "target": "思い出そうとしてる",
+      "components": [
+       {
+        "known": "remember",
+        "target": "思い出す"
+       },
+       {
+        "known": "am trying to remember",
+        "target": "思い出そうとしてる"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "jpn_for_eng:S0006L02B01",
+       "role": "build",
+       "known": "am trying to remember",
+       "target": "思い出そうとしてる",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, natural informal fragment, and it extends naturally into a full sentence.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is only the bare LEGO. A BUILD must combine the LEGO with one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is only the bare LEGO. A BUILD must combine the LEGO with one to three other taught LEGOs."
+      },
+      {
+       "role": "build",
+       "known": "I'm trying to remember now",
+       "target": "今、思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今、思い出そうとしてる is natural and matches the known. Everything is taught and it extends naturally into a full sentence.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "am trying to remember a word",
+       "target": "言葉を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "言葉を思い出そうとしてる is natural and exact. It is the core chunk of the seed and is fully taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "am trying to remember something",
+       "target": "何か思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "何か思い出そうとしてる is natural for 'trying to remember something'. All parts are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "am trying to remember Japanese",
+       "target": "日本語を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "日本語を思い出そうとしてる is natural, for example when relearning Japanese, and the mapping is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "am trying to remember as much as possible",
+       "target": "できるだけ思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "できるだけ思い出そうとしてる is natural for 'trying to remember as much as possible'. All parts are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "am trying to remember in Japanese",
+       "target": "日本語で思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Trying to remember in Japanese' is odd in both languages. 日本語で attaches to the act of remembering, which is not a natural tier-1 phrase.",
+       "keep": false,
+       "why": "Opus: bad — 'Trying to remember in Japanese' is odd in both languages. 日本語で attaches to the act of remembering, which is not a natural tier-1 phrase."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to remember something in Japanese",
+       "target": "日本語で何か思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "日本語で何か思い出そうとしてる is unclear: it reads as 'remembering in Japanese' rather than 'remembering a Japanese thing'. It is clunky and the meaning mapping is not reliable.",
+       "keep": false,
+       "why": "Opus: bad — 日本語で何か思い出そうとしてる is unclear: it reads as 'remembering in Japanese' rather than 'remembering a Japanese thing'. It is clunky and the meaning mapping is not reliable."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to remember as much Japanese as possible",
+       "target": "できるだけ日本語を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "できるだけ日本語を思い出そうとしてる is natural and exact for 'as much Japanese as possible'. It is one complete sentence.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to remember a word in Japanese",
+       "target": "日本語で言葉を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'A word in Japanese' would be 日本語の言葉. In 日本語で言葉を思い出そうとしてる, 日本語で modifies the verb, so the phrase is clunky and does not say exactly what the known says.",
+       "keep": false,
+       "why": "Opus: bad — 'A word in Japanese' would be 日本語の言葉. In 日本語で言葉を思い出そうとしてる, 日本語で modifies the verb, so the phrase is clunky and does not say exactly what the known says."
+      },
+      {
+       "role": "use",
+       "known": "Now I'm trying to remember a word in Japanese",
+       "target": "今、日本語で言葉を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It has the same 日本語で problem as P10, so it is clunky and not an exact match.",
+       "keep": false,
+       "why": "Opus: bad — It has the same 日本語で problem as P10, so it is clunky and not an exact match."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to remember a word to say in Japanese",
+       "target": "日本語で言う言葉を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It relies on a relative clause (言う言葉), which is not shown as a taught construction. The known 'a word to say in Japanese' is also slightly stilted. Unsure, so BAD.",
+       "keep": false,
+       "why": "Opus: bad — It relies on a relative clause (言う言葉), which is not shown as a taught construction. The known 'a word to say in Japanese' is also slightly stilted. Unsure, so BAD."
+      },
+      {
+       "role": "use",
+       "known": "Now I'm trying to remember as much Japanese as possible",
+       "target": "今、できるだけ日本語を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今、できるだけ日本語を思い出そうとしてる is natural, exact and one sentence. All parts are taught.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to remember a word to say now",
+       "target": "今、言う言葉を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "今 is ambiguous: it can attach to 言う or to 思い出そうとしてる. 'A word to say now' is clunky and also relies on an untaught relative clause.",
+       "keep": false,
+       "why": "Opus: bad — 今 is ambiguous: it can attach to 言う or to 思い出そうとしてる. 'A word to say now' is clunky and also relies on an untaught relative clause."
+      },
+      {
+       "role": "build",
+       "known": "am trying to remember together",
+       "target": "一緒に思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The fragment starts with 'am', so its only natural completion is 'I am trying to remember together'. A lone 'I' doing something 'together' is unnatural in English, so this does not extend naturally into a full sentence.",
+       "keep": false,
+       "why": "Opus: bad — The fragment starts with 'am', so its only natural completion is 'I am trying to remember together'. A lone 'I' doing something 'together' is unnatural in English, so this does not extend naturally into a full sentence."
+      },
+      {
+       "role": "build",
+       "known": "am trying to remember a lot",
+       "target": "たくさん思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'Trying to remember a lot' is vague in English, and たくさん思い出そうとしてる is clunky and unidiomatic in Japanese. This is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Trying to remember a lot' is vague in English, and たくさん思い出そうとしてる is clunky and unidiomatic in Japanese. This is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "Now I'm trying to remember a word",
+       "target": "今、言葉を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "今、言葉を思い出そうとしてる is natural and grammatical. The known side is tileable from taught glosses and matches exactly.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "Now I'm trying to remember something",
+       "target": "今、何か思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "今、何か思い出そうとしてる is natural, and 何か without を is idiomatic. The meaning matches exactly and uses only taught material.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "Now I'm trying to remember Japanese",
+       "target": "今、日本語を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "日本語を思い出そうとしてる naturally means trying to recall the language. Both sides are natural and match.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "Now I'm trying to remember as much as possible",
+       "target": "今、できるだけ思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "今、できるだけ思い出そうとしてる is natural. 'Trying to remember as much as possible' matches it and is idiomatic English.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "Now I'm trying to remember a lot",
+       "target": "今、たくさん思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": false,
+       "opusReason": "たくさん思い出そうとしてる is clunky, and 'remember a lot' is ambiguous in English. This is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — たくさん思い出そうとしてる is clunky, and 'remember a lot' is ambiguous in English. This is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to remember a word together",
+       "target": "一緒に言葉を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'I'm trying to remember a word together' is unnatural English, because a single 'I' cannot do something 'together'. The Japanese implies 'we' or 'with someone', so the two sides do not match exactly.",
+       "keep": false,
+       "why": "Opus: bad — 'I'm trying to remember a word together' is unnatural English, because a single 'I' cannot do something 'together'. The Japanese implies 'we' or 'with someone', so the two sides do not match exactly."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to remember something together",
+       "target": "一緒に何か思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Same problem as P8: 'I'm ... together' is unnatural English and does not match the Japanese.",
+       "keep": false,
+       "why": "Opus: bad — Same problem as P8: 'I'm ... together' is unnatural English and does not match the Japanese."
+      },
+      {
+       "role": "use",
+       "known": "Now I'm trying to remember a word together",
+       "target": "今、一緒に言葉を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Same problem as P8: 'I'm ... together' is unnatural English and does not match the Japanese.",
+       "keep": false,
+       "why": "Opus: bad — Same problem as P8: 'I'm ... together' is unnatural English and does not match the Japanese."
+      },
+      {
+       "role": "use",
+       "known": "Now I'm trying to remember Japanese together",
+       "target": "今、一緒に日本語を思い出そうとしてる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Same problem as P8: 'I'm ... together' is unnatural English and does not match the Japanese.",
+       "keep": false,
+       "why": "Opus: bad — Same problem as P8: 'I'm ... together' is unnatural English and does not match the Japanese."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 0,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 0"
+     }
+    }
+   }
+  },
+  "19": {
+   "seed": 19,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "don't want to stop",
+     "target": "やめたくない"
+    },
+    {
+     "idx": 2,
+     "known": "as for speaking",
+     "target": "話すのは"
+    },
+    {
+     "idx": 3,
+     "known": "but",
+     "target": "でも"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "A",
+      "known": "as for speaking",
+      "target": "話すのは",
+      "components": [],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "as for speaking, good at",
+       "target": "話すのは上手",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "話すのは上手 is a grammatical contrastive fragment meaning '(is) good at speaking'. It extends naturally into a full sentence and uses only taught LEGOs.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "as for speaking, really good at",
+       "target": "話すのはすごく上手",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Same frame as P1 with すごく. It is grammatical, natural and tileable from taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he, as for speaking, good at",
+       "target": "彼は話すのは上手",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "彼は…話すのは上手 uses a topic plus a contrastive は, which is natural in speech. The known side tiles from taught glosses and the fragment extends naturally.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "she, as for speaking, good at",
+       "target": "彼女は話すのは上手",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Same as P3 with 彼女. It is grammatical and natural.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "as for speaking, don't want to stop",
+       "target": "話すのはやめたくない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the seed core and is fully natural. It maps exactly to the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "in Japanese, as for speaking",
+       "target": "日本語で話すのは",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "日本語で話すのは is a natural topic fragment, 'speaking in Japanese,…'. It extends naturally into a sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "today, as for speaking, don't want to stop",
+       "target": "今日は話すのはやめたくない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今日は話すのはやめたくない is a complete, natural sentence: 'today I don't want to stop talking'. It uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "tomorrow too, as for speaking, don't want to stop",
+       "target": "明日も話すのはやめたくない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "明日も with やめたくない is semantically odd: not wanting to stop talking 'tomorrow too' is clunky, not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 明日も with やめたくない is semantically odd: not wanting to stop talking 'tomorrow too' is clunky, not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "with everyone, as for speaking, don't want to stop",
+       "target": "みんなと話すのはやめたくない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "みんなと話すのはやめたくない means 'I don't want to stop talking with everyone'. It is natural, complete and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "in Japanese, as for speaking, don't want to stop",
+       "target": "日本語で話すのはやめたくない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "日本語で話すのはやめたくない means 'I don't want to stop speaking in Japanese'. It is natural and complete.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he, in Japanese, as for speaking, really good at",
+       "target": "彼は日本語で話すのはすごく上手",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "彼は日本語で話すのはすごく上手 is grammatical and natural in casual speech, with contrastive は. It is a complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "she, in Japanese, as for speaking, really good at",
+       "target": "彼女は日本語で話すのはすごく上手",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Same as P11 with 彼女. It is natural and complete.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "he, with everyone, as for speaking, really good at",
+       "target": "彼はみんなと話すのはすごく上手",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "彼はみんなと話すのはすごく上手 means 'he's really good at talking with everyone'. It is natural and uses taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "today, in Japanese, as for speaking, don't want to stop",
+       "target": "今日は日本語で話すのはやめたくない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今日は日本語で話すのはやめたくない is a natural complete sentence. It is exact and longer than its BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "tomorrow too, with everyone, as for speaking, don't want to stop",
+       "target": "明日もみんなと話すのはやめたくない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It has the same 明日も + やめたくない oddity as P8: not wanting to stop talking 'tomorrow too' is clunky, not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — It has the same 明日も + やめたくない oddity as P8: not wanting to stop talking 'tomorrow too' is clunky, not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
+  },
+  "23": {
+   "seed": 23,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "start speaking",
+     "target": "話し始める"
+    },
+    {
+     "idx": 2,
+     "known": "more",
+     "target": "もっと"
+    },
+    {
+     "idx": 3,
+     "known": "soon",
+     "target": "もうすぐ"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "M",
+      "known": "start speaking",
+      "target": "話し始める",
+      "components": [
+       {
+        "known": "speak",
+        "target": "話す"
+       },
+       {
+        "known": "start speaking",
+        "target": "話し始める"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "jpn_for_eng:S0023L01B01",
+       "role": "build",
+       "known": "start speaking",
+       "target": "話し始める",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is only the bare LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs, and this has none.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the bare LEGO, and the known and target match exactly.",
+       "keep": false,
+       "why": "Sonnet: bad — It is only the bare LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs, and this has none."
+      },
+      {
+       "role": "build",
+       "known": "start speaking now",
+       "target": "今話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今 plus the LEGO is natural and extends easily into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "start speaking in Japanese",
+       "target": "日本語で話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "日本語で話し始める is natural and is a direct match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "start speaking together",
+       "target": "一緒に話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "一緒に話し始める is natural, and the gloss 'together' has been taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "start speaking later",
+       "target": "あとで話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "あとで話し始める is natural, and the gloss 'later' has been taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "start speaking with everyone",
+       "target": "みんなと話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "みんなと話し始める is natural, and the gloss 'with everyone' has been taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "start speaking at six o'clock",
+       "target": "6時に話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "6時に話し始める is natural, and the gloss 'at six o'clock' has been taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "Now I start speaking in Japanese",
+       "target": "今、日本語で話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今、日本語で話し始める works as a natural announcement. The known side is acceptable as controlled English, and it is one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I start speaking with everyone later",
+       "target": "あとでみんなと話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "あとでみんなと話し始める is natural. The simple present with 'later' reads as scheduled future and can be tiled from taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "He starts speaking at six o'clock",
+       "target": "彼は6時に話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "彼は6時に話し始める is natural, and the English is natural as scheduled present.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "This evening he starts speaking with everyone",
+       "target": "今夜、彼はみんなと話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今夜、彼はみんなと話し始める is natural, all its parts are taught, and it is one sentence.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I start speaking in Japanese tomorrow too",
+       "target": "明日も日本語で話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Saying you will 'start speaking' again tomorrow is semantically odd, because a start is a one-time event. 明日も…話し始める is unnatural as said.",
+       "keep": false,
+       "why": "Opus: bad — Saying you will 'start speaking' again tomorrow is semantically odd, because a start is a one-time event. 明日も…話し始める is unnatural as said."
+      },
+      {
+       "role": "use",
+       "known": "I start speaking with everyone at six o'clock",
+       "target": "6時にみんなと話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "6時にみんなと話し始める is natural, and the known and target match exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "He starts speaking in Japanese later",
+       "target": "彼はあとで日本語で話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "彼はあとで日本語で話し始める is natural and grammatical, and it matches the known side.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "Because I start speaking now, I remember a lot",
+       "target": "今話し始めるから、たくさん覚える",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The causal link is illogical and clunky in both languages. Starting to speak now does not make you remember a lot, and 今話し始めるから、たくさん覚える is not tier 1 natural.",
+       "keep": false,
+       "why": "Opus: bad — The causal link is illogical and clunky in both languages. Starting to speak now does not make you remember a lot, and 今話し始めるから、たくさん覚える is not tier 1 natural."
+      },
+      {
+       "role": "use",
+       "known": "Today we start speaking together",
+       "target": "今日は一緒に話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今日は一緒に話し始める is natural with the subject omitted. 'We' is a glue pronoun, and 'today' and 'together' have been taught.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "start speaking with other people",
+       "target": "他の人とも話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural Japanese and grammatical. The fragment uses the taught 他の人とも with its taught gloss 'with other people'. It contains the LEGO and extends naturally into a full sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "start speaking a little",
+       "target": "少し話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "少し話し始める is grammatical and natural. It is a short fragment of two taught pieces plus the LEGO, and the known side maps exactly.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "This evening I start speaking in Japanese",
+       "target": "今夜、日本語で話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "One complete sentence. 'This evening I start…' is a natural scheduled-future present in English. 今夜、日本語で話し始める is natural, matches exactly and uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I start speaking in Japanese at six o'clock",
+       "target": "6時に日本語で話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Scheduled present with a clock time is natural English. 6時に日本語で話し始める is grammatical and natural, and maps exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Now I start speaking together with everyone",
+       "target": "今、みんなと一緒に話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'Now I start speaking together with everyone' is clunky English that reads like stage narration. Natural English would be 'Now I'll start…', so the known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Now I start speaking together with everyone' is clunky English that reads like stage narration. Natural English would be 'Now I'll start…', so the known side is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I start speaking with other people later",
+       "target": "あとで他の人とも話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'I start speaking with other people later' is unnatural English, since simple present with 'later' needs 'I'll start'. Also, the 'too' sense of も is lost in the known side.",
+       "keep": false,
+       "why": "Opus: bad — 'I start speaking with other people later' is unnatural English, since simple present with 'later' needs 'I'll start'. Also, the 'too' sense of も is lost in the known side."
+      },
+      {
+       "role": "use",
+       "known": "I start speaking together with everyone at six o'clock",
+       "target": "6時にみんなと一緒に話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Scheduled present with 'at six o'clock' is natural. 6時にみんなと一緒に話し始める is grammatical and natural, and maps piece by piece to taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Now I start speaking in Japanese with everyone",
+       "target": "今、みんなと日本語で話し始める",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'Now I start speaking in Japanese with everyone' has the same unnatural 'Now I start' framing, so the known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Now I start speaking in Japanese with everyone' has the same unnatural 'Now I start' framing, so the known side is not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
+  },
+  "30": {
+   "seed": 30,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "there was something I wanted to ask",
+     "target": "聞きたいことがあった"
+    },
+    {
+     "idx": 2,
+     "known": "yesterday",
+     "target": "昨日"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "M",
+      "known": "there was something I wanted to ask",
+      "target": "聞きたいことがあった",
+      "components": [
+       {
+        "known": "ask / listen",
+        "target": "聞く"
+       },
+       {
+        "known": "there was something I wanted to ask",
+        "target": "聞きたいことがあった"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "jpn_for_eng:S0030L01B01",
+       "role": "build",
+       "known": "there was something I wanted to ask",
+       "target": "聞きたいことがあった",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The phrase is just the LEGO alone. A BUILD needs the LEGO plus one to three other taught LEGOs.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the LEGO alone. A BUILD must add one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Sonnet: bad — The phrase is just the LEGO alone. A BUILD needs the LEGO plus one to three other taught LEGOs."
+      },
+      {
+       "id": "jpn_for_eng:S0030L01U02",
+       "role": "use",
+       "known": "there was something I wanted to ask",
+       "target": "聞きたいことがあった",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is identical to E1 and only the bare LEGO. It is not a longer, fuller sentence than a BUILD, so it adds nothing as a USE.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the LEGO alone. A USE must be a longer complete sentence than a BUILD, and this is no longer than P1.",
+       "keep": false,
+       "why": "Sonnet: bad — It is identical to E1 and only the bare LEGO. It is not a longer, fuller sentence than a BUILD, so it adds nothing as a USE."
+      },
+      {
+       "role": "build",
+       "known": "but there was something I wanted to ask",
+       "target": "でも、聞きたいことがあった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is the LEGO plus taught でも, is grammatical and natural, and extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "today, there was something I wanted to ask",
+       "target": "今日は、聞きたいことがあった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今日は聞きたいことがあった is natural ('today I had something I wanted to ask'). It uses the taught 今日は/today and is short and extendable.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "because there was something I wanted to ask",
+       "target": "聞きたいことがあったから",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "聞きたいことがあったから is a natural subordinate fragment. It uses taught から/because and matches the known.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "before I go, there was something I wanted to ask",
+       "target": "行く前に、聞きたいことがあった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The English mixes tenses: 'before I go, there was'. The Japanese reads as 'before going/leaving, there was something I wanted to ask' (a past event), so the known is unnatural and does not map cleanly.",
+       "keep": false,
+       "why": "Opus: bad — The English mixes tenses: 'before I go, there was'. The Japanese reads as 'before going/leaving, there was something I wanted to ask' (a past event), so the known is unnatural and does not map cleanly."
+      },
+      {
+       "role": "build",
+       "known": "there was something I wanted to ask people",
+       "target": "人に聞きたいことがあった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": false,
+       "opusReason": "人に聞きたいことがあった means 'there was something I wanted to ask someone/others'. The taught gloss 'to people' gives the stilted 'ask people', which is not an exact or natural mapping. When unsure, it is BAD.",
+       "keep": false,
+       "why": "Opus: bad — 人に聞きたいことがあった means 'there was something I wanted to ask someone/others'. The taught gloss 'to people' gives the stilted 'ask people', which is not an exact or natural mapping. When unsure, it is BAD."
+      },
+      {
+       "role": "use",
+       "known": "because there was something I wanted to ask, I want to meet her",
+       "target": "聞きたいことがあったから、彼女に会いたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The English 'because there was something I wanted to ask, I want to meet her' has a past/present clash and is clunky, not tier 1. The natural English would be 'there's something I want to ask'.",
+       "keep": false,
+       "why": "Opus: bad — The English 'because there was something I wanted to ask, I want to meet her' has a past/present clash and is clunky, not tier 1. The natural English would be 'there's something I want to ask'."
+      },
+      {
+       "role": "use",
+       "known": "because there was something I wanted to ask, I want to meet her quickly",
+       "target": "聞きたいことがあったから、早く彼女に会いたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It has the same tense clash as P8, and 'meet her quickly' is unnatural English for 早く会いたい ('want to see her soon').",
+       "keep": false,
+       "why": "Opus: bad — It has the same tense clash as P8, and 'meet her quickly' is unnatural English for 早く会いたい ('want to see her soon')."
+      },
+      {
+       "role": "use",
+       "known": "today, because there was something I wanted to ask, I want to meet her",
+       "target": "今日は聞きたいことがあったから、彼女に会いたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It has the same tense clash as P8. 'today, because there was..., I want to meet her' is clunky, and the scope of 今日は is ambiguous.",
+       "keep": false,
+       "why": "Opus: bad — It has the same tense clash as P8. 'today, because there was..., I want to meet her' is clunky, and the scope of 今日は is ambiguous."
+      },
+      {
+       "role": "build",
+       "known": "this evening, there was something I wanted to ask",
+       "target": "今夜、聞きたいことがあった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": false,
+       "opusReason": "今夜 means tonight and usually points to the present or future. Pairing it with past あった ('tonight, there was something I wanted to ask') is odd in Japanese; a speaker would use さっき or 今晩 in a clearly past context. The English 'this evening, there was something I wanted to ask' is also clunky, so it is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 今夜 means tonight and usually points to the present or future. Pairing it with past あった ('tonight, there was something I wanted to ask') is odd in Japanese; a speaker would use さっき or 今晩 in a clearly past context. The English 'this evening, there was something I wanted to ask' is also clunky, so it is not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "all day, there was something I wanted to ask",
+       "target": "一日中、聞きたいことがあった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": false,
+       "opusReason": "一日中、聞きたいことがあった is borderline. The natural way to say this is ずっと聞きたいことがあった ('I've been wanting to ask all day'). 'All day, there was something I wanted to ask' is stilted English that a speaker wouldn't say. Unsure, so BAD.",
+       "keep": false,
+       "why": "Opus: bad — 一日中、聞きたいことがあった is borderline. The natural way to say this is ずっと聞きたいことがあった ('I've been wanting to ask all day'). 'All day, there was something I wanted to ask' is stilted English that a speaker wouldn't say. Unsure, so BAD."
+      },
+      {
+       "role": "build",
+       "known": "at six o'clock, there was something I wanted to ask",
+       "target": "6時に、聞きたいことがあった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": false,
+       "opusReason": "6時に marks a point in time, and it doesn't combine naturally with the existential 聞きたいことがあった. 'At six o'clock, there was something I wanted to ask' is unnatural in both languages.",
+       "keep": false,
+       "why": "Opus: bad — 6時に marks a point in time, and it doesn't combine naturally with the existential 聞きたいことがあった. 'At six o'clock, there was something I wanted to ask' is unnatural in both languages."
+      },
+      {
+       "role": "use",
+       "known": "but this evening, there was something I wanted to ask",
+       "target": "でも、今夜、聞きたいことがあった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": false,
+       "opusReason": "It has the same 今夜 + past-tense oddity as P1, and adding でも doesn't fix it. The sentence is not natural tier 1, and it is barely longer than a BUILD.",
+       "keep": false,
+       "why": "Opus: bad — It has the same 今夜 + past-tense oddity as P1, and adding でも doesn't fix it. The sentence is not natural tier 1, and it is barely longer than a BUILD."
+      }
+     ],
+     "keptBuild": 3,
+     "keptUse": 0,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 0"
+     }
+    }
+   }
+  },
+  "44": {
+   "seed": 44,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "whether I need to",
+     "target": "必要があるかどうか"
+    },
+    {
+     "idx": 2,
+     "known": "make better",
+     "target": "良くする"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "make better",
+      "target": "良くする",
+      "components": [
+       {
+        "known": "good",
+        "target": "いい"
+       },
+       {
+        "known": "make better",
+        "target": "良くする"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "jpn_for_eng:S0044L02B01",
+       "role": "build",
+       "known": "make better",
+       "target": "良くする",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is just the bare LEGO with no other taught LEGO, so it is not a real BUILD, which needs the LEGO plus one to three others.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Bare LEGO. Correct mapping and a valid fragment.",
+       "keep": false,
+       "why": "Sonnet: bad — It is just the bare LEGO with no other taught LEGO, so it is not a real BUILD, which needs the LEGO plus one to three others."
+      },
+      {
+       "role": "build",
+       "known": "more make better",
+       "target": "もっと良くする",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'more make better' is ungrammatical English word order, not a tileable fragment that extends naturally. The Japanese もっと良くする is fine, but the known side fails.",
+       "keep": false,
+       "why": "Opus: bad — 'more make better' is ungrammatical English word order, not a tileable fragment that extends naturally. The Japanese もっと良くする is fine, but the known side fails."
+      },
+      {
+       "role": "build",
+       "known": "as much as possible make better",
+       "target": "できるだけ良くする",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'as much as possible make better' is unnatural English word order. The natural form would put the adverbial after the verb phrase.",
+       "keep": false,
+       "why": "Opus: bad — 'as much as possible make better' is unnatural English word order. The natural form would put the adverbial after the verb phrase."
+      },
+      {
+       "role": "build",
+       "known": "quickly make better",
+       "target": "早く良くする",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'quickly make better' is an acceptable fragment that extends to 'quickly make it better'. 早く良くする is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "make better now",
+       "target": "今良くする",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'make better now' is a natural fragment. 今良くする is correct and uses taught 今.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "need to make better",
+       "target": "良くする必要がある",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'need to make better' maps exactly to 良くする必要がある. Both are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "whether I need to make better",
+       "target": "良くする必要があるかどうか",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Mirrors the seed. 良くする必要があるかどうか is grammatical and matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I need to make better tomorrow too",
+       "target": "明日も良くする必要がある",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Transitive 'make better' has no object, so 'I need to make better tomorrow too' is not natural English and fails tier 1 for a USE sentence.",
+       "keep": false,
+       "why": "Opus: bad — Transitive 'make better' has no object, so 'I need to make better tomorrow too' is not natural English and fails tier 1 for a USE sentence."
+      },
+      {
+       "role": "use",
+       "known": "I need to make better as much as possible",
+       "target": "できるだけ良くする必要がある",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "No object for 'make better'. The English sentence is unnatural and not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — No object for 'make better'. The English sentence is unnatural and not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I need to make better quickly",
+       "target": "早く良くする必要がある",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "No object for 'make better'. The English sentence is unnatural and not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — No object for 'make better'. The English sentence is unnatural and not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I need to make better this evening",
+       "target": "今夜良くする必要がある",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "No object for 'make better'. The English sentence is unnatural and not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — No object for 'make better'. The English sentence is unnatural and not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I need to make better this afternoon",
+       "target": "今日の午後良くする必要がある",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "No object for 'make better'. The English sentence is unnatural and not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — No object for 'make better'. The English sentence is unnatural and not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I need to make better together with everyone",
+       "target": "みんなと一緒に良くする必要がある",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "No object for 'make better'. The English sentence is unnatural, and 'together with everyone' is also awkward here.",
+       "keep": false,
+       "why": "Opus: bad — No object for 'make better'. The English sentence is unnatural, and 'together with everyone' is also awkward here."
+      },
+      {
+       "role": "use",
+       "known": "today I need to make something better",
+       "target": "今日は何か良くする必要がある",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Inserting 'something' splits the 'make better' gloss, so the prompt is not cleanly tileable. In the Japanese, 何か without を can read as adverbial 'somehow', so the mapping is not unambiguous. Unsure, therefore bad.",
+       "keep": false,
+       "why": "Opus: bad — Inserting 'something' splits the 'make better' gloss, so the prompt is not cleanly tileable. In the Japanese, 何か without を can read as adverbial 'somehow', so the mapping is not unambiguous. Unsure, therefore bad."
+      },
+      {
+       "role": "use",
+       "known": "he wants to know whether I need to make better",
+       "target": "彼は良くする必要があるかどうか知りたがってる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'whether I need to make better' has no object, so the full English sentence is unnatural. The Japanese also drops the 'I' subject of the embedded clause, which makes it ambiguous.",
+       "keep": false,
+       "why": "Opus: bad — 'whether I need to make better' has no object, so the full English sentence is unnatural. The Japanese also drops the 'I' subject of the embedded clause, which makes it ambiguous."
+      },
+      {
+       "role": "use",
+       "known": "I need to make better more",
+       "target": "もっと良くする必要がある",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'I need to make better more' is ungrammatical English with no object. The Japanese もっと良くする means 'make even better', so the two sides do not match cleanly.",
+       "keep": false,
+       "why": "Opus: bad — 'I need to make better more' is ungrammatical English with no object. The Japanese もっと良くする means 'make even better', so the two sides do not match cleanly."
+      },
+      {
+       "role": "build",
+       "known": "make better together",
+       "target": "一緒に良くする",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "一緒に良くする is grammatical and natural, with the object dropped as Japanese normally allows. It means exactly 'make better together' and contains the LEGO 良くする plus the taught 一緒に. The known side is stilted but tileable from taught glosses, and the fragment extends naturally into a full sentence, e.g. 一緒に良くしよう / 'let's make it better together'.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "make better later",
+       "target": "あとで良くする",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "あとで良くする is grammatical and natural, meaning 'make (it) better later' or 'I'll improve it later'. It contains the LEGO plus the taught あとで. The known side 'make better later' uses only taught glosses, and the BUILD is short and extends naturally into a full sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 0,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 0"
+     }
+    }
+   }
+  },
+  "46": {
+   "seed": 46,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "don't worry about",
+     "target": "気にしてない"
+    },
+    {
+     "idx": 2,
+     "known": "making mistakes",
+     "target": "間違えることは"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "making mistakes",
+      "target": "間違えることは",
+      "components": [
+       {
+        "known": "make a mistake",
+        "target": "間違える"
+       },
+       {
+        "known": "making mistakes",
+        "target": "間違えることは"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "jpn_for_eng:S0046L02B01",
+       "role": "build",
+       "known": "making mistakes",
+       "target": "間違えることは",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is only the LEGO on its own. A BUILD must combine the LEGO with one to three other taught LEGOs, so this does not meet the definition.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO with no other taught LEGO. A BUILD needs the LEGO plus one to three others.",
+       "keep": false,
+       "why": "Sonnet: bad — It is only the LEGO on its own. A BUILD must combine the LEGO with one to three other taught LEGOs, so this does not meet the definition."
+      },
+      {
+       "role": "build",
+       "known": "don't worry about making mistakes",
+       "target": "間違えることは気にしてない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The seed fragment uses the LEGO plus 気にしてない. It is grammatical, natural and maps exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "don't want to think about making mistakes",
+       "target": "間違えることは考えたくない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "間違えることは考えたくない is natural for 'don't want to think about making mistakes'. It uses taught pieces and extends naturally.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I don't like making mistakes",
+       "target": "間違えることは好きじゃない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "間違えることは好きじゃない is natural, and the dropped subject matches 'I'. Exact meaning.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he doesn't worry about making mistakes",
+       "target": "彼は間違えることは気にしてない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "彼は…は気にしてない is natural topic plus contrast. It maps exactly to 'he doesn't worry about making mistakes'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "but she doesn't like making mistakes",
+       "target": "でも彼女は間違えることは好きじゃない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "でも, 彼女は, the LEGO and 好きじゃない make three other LEGOs. It is natural and exact.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "I don't really like making mistakes",
+       "target": "間違えることはあまり好きじゃない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "あまり…好きじゃない correctly renders 'don't really like'. Natural and short.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "today I don't worry about making mistakes",
+       "target": "今日は間違えることは気にしてない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "As a USE it is barely longer than the BUILDs, and shorter than P6. 'Today I don't worry about…' is also clunky English.",
+       "keep": false,
+       "why": "Opus: bad — As a USE it is barely longer than the BUILDs, and shorter than P6. 'Today I don't worry about…' is also clunky English."
+      },
+      {
+       "role": "use",
+       "known": "because he doesn't worry about making mistakes, he is speaking a lot of Japanese",
+       "target": "彼は間違えることは気にしてないから、日本語をたくさん話してる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The から clause and 日本語をたくさん話してる are natural, the meaning is exact and it is one sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "because I don't worry about making mistakes, I want to speak in Japanese with everyone",
+       "target": "間違えることは気にしてないから、みんなと日本語で話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is natural, the causal logic is coherent, it uses only taught material and maps exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "because I don't worry about making mistakes, I want to try saying something in Japanese",
+       "target": "間違えることは気にしてないから、何か日本語で言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "何か日本語で言ってみたい is natural, the logic is coherent and the meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "because today I don't worry about making mistakes, I am speaking more",
+       "target": "今日は間違えることは気にしてないから、もっと話してる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The Japanese is natural, and the English is slightly stilted but tileable. The logic is coherent and the meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "because she doesn't worry about making mistakes, she is speaking with other people",
+       "target": "彼女は間違えることは気にしてないから、他の人とも話してる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "他の人とも follows its taught gloss 'with other people'. It is natural and coherent.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "because I don't worry about making mistakes, I will try speaking later",
+       "target": "間違えることは気にしてないから、あとで話してみる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The causal logic is odd: not worrying about mistakes doesn't motivate speaking 'later'. Not tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — The causal logic is odd: not worrying about mistakes doesn't motivate speaking 'later'. Not tier-1 natural."
+      },
+      {
+       "role": "use",
+       "known": "because I don't worry about making mistakes, I want to speak Japanese together",
+       "target": "間違えることは気にしてないから、一緒に日本語を話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'I want to speak Japanese together' has no partner and is unnatural English. The Japanese likewise dangles.",
+       "keep": false,
+       "why": "Opus: bad — 'I want to speak Japanese together' has no partner and is unnatural English. The Japanese likewise dangles."
+      },
+      {
+       "role": "use",
+       "known": "because I don't want to think about making mistakes, I am speaking as much as possible",
+       "target": "間違えることは考えたくないから、できるだけ話してる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The causal link between not wanting to think about mistakes and speaking as much as possible is strained. Not clearly tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The causal link between not wanting to think about mistakes and speaking as much as possible is strained. Not clearly tier 1."
+      },
+      {
+       "role": "build",
+       "known": "he doesn't like making mistakes",
+       "target": "彼は間違えることは好きじゃない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "彼は + LEGO + 好きじゃない is grammatical and natural. The contrastive こと/は pattern matches the seed. It is a short BUILD with taught pieces.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "I wasn't thinking about making mistakes",
+       "target": "間違えることは考えてなかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "間違えることは考えてなかった ('hadn't been thinking about making mistakes') is natural, uses taught 考えてなかった, and matches the known side.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "because I don't worry about making mistakes, I will try explaining what I want to say",
+       "target": "間違えることは気にしてないから、言いたいことを説明してみる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "One natural sentence with a clear causal link. All pieces are taught, and the Japanese matches the English exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "because I don't like making mistakes, I want to remember the whole sentence",
+       "target": "間違えることは好きじゃないから、文を全部覚えたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "The causal logic is plausible: memorise the whole sentence to avoid errors. 文を全部覚えたい reuses the taught 文を/全部/覚える pattern, and it is one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "because I don't like making mistakes, I want to remember his name quickly",
+       "target": "間違えることは好きじゃないから、彼の名前を早く覚えたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The causal link is weak. Disliking mistakes doesn't naturally explain wanting to learn his name 'quickly', so the sentence reads as clunky rather than tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The causal link is weak. Disliking mistakes doesn't naturally explain wanting to learn his name 'quickly', so the sentence reads as clunky rather than tier 1."
+      },
+      {
+       "role": "use",
+       "known": "because he doesn't worry about making mistakes, he is speaking all day",
+       "target": "彼は間違えることは気にしてないから、一日中話してる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "彼は…気にしてないから、一日中話してる is natural, uses only taught material, and matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "because I don't worry about making mistakes, I want to speak with everyone tomorrow too",
+       "target": "間違えることは気にしてないから、明日もみんなと話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural causal sentence. 明日もみんなと話したい is all taught and matches the English exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "49": {
+   "seed": 49,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "feeling",
+     "target": "感じ"
+    },
+    {
+     "idx": 2,
+     "known": "people who understand",
+     "target": "分かる人には"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "people who understand",
+      "target": "分かる人には",
+      "components": [
+       {
+        "known": "understand",
+        "target": "分かる"
+       },
+       {
+        "known": "people who understand",
+        "target": "分かる人には"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "jpn_for_eng:S0049L02B01",
+       "role": "build",
+       "known": "people who understand",
+       "target": "分かる人には",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is only the bare LEGO with no other taught LEGO added, so it does not meet the BUILD definition of the LEGO plus one to three other taught LEGOs.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO. A BUILD must add one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Sonnet: bad — It is only the bare LEGO with no other taught LEGO added, so it does not meet the BUILD definition of the LEGO plus one to three other taught LEGOs."
+      },
+      {
+       "role": "build",
+       "known": "people who understand, really good",
+       "target": "分かる人にはすごくいい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known 'people who understand, really good' is not natural English. The target fragment is vague about what is good, so the mapping is unclear.",
+       "keep": false,
+       "why": "Opus: bad — The known 'people who understand, really good' is not natural English. The target fragment is vague about what is good, so the mapping is unclear."
+      },
+      {
+       "role": "build",
+       "known": "people who understand, understand",
+       "target": "分かる人には分かる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かる人には分かる is a natural set expression and leads straight into the seed (…感じ). The known side is stilted but tileable.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "people who understand, okay",
+       "target": "分かる人には大丈夫",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'People who understand, okay' is ambiguous and clunky. 分かる人には大丈夫 has no clear meaning on its own.",
+       "keep": false,
+       "why": "Opus: bad — 'People who understand, okay' is ambiguous and clunky. 分かる人には大丈夫 has no clear meaning on its own."
+      },
+      {
+       "role": "build",
+       "known": "people who understand, can speak",
+       "target": "分かる人には話せる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かる人には話せる ('I can tell people who understand') is natural Japanese. The known side is tileable.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "people who understand, wanted to show",
+       "target": "分かる人には見せたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かる人には見せたかった ('I wanted to show people who understand') is natural and maps cleanly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "people who understand, want to speak",
+       "target": "分かる人には話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かる人には話したい ('I want to tell people who understand') is natural and maps cleanly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "because people who understand understand, I don't need to explain",
+       "target": "分かる人には分かるから、説明する必要はない。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The Japanese is natural and idiomatic, it is one sentence, and the known side matches exactly.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "today, people who understand, I want to speak in Japanese",
+       "target": "今日は分かる人には日本語で話したい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今日は分かる人には日本語で話したい is natural, uses only taught material, and says what the known says.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "people who understand, even if I make mistakes it's okay",
+       "target": "分かる人には、間違えても大丈夫。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Using には with 間違えても大丈夫 is awkward. It would naturally be 分かる人となら or 分かる人の前なら. Since this is uncertain, it is BAD.",
+       "keep": false,
+       "why": "Opus: bad — Using には with 間違えても大丈夫 is awkward. It would naturally be 分かる人となら or 分かる人の前なら. Since this is uncertain, it is BAD."
+      },
+      {
+       "role": "use",
+       "known": "later, people who understand, I want to show the answer",
+       "target": "あとで分かる人には答えを見せたい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "あとで分かる人には is ambiguous: it can parse as 'people who will understand later'. The meaning is not secured.",
+       "keep": false,
+       "why": "Opus: bad — あとで分かる人には is ambiguous: it can parse as 'people who will understand later'. The meaning is not secured."
+      },
+      {
+       "role": "use",
+       "known": "I think people who understand understand the whole",
+       "target": "分かる人には全部分かると思う。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Understand the whole' with no noun is not natural English. The target 全部 means 'everything', so the known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Understand the whole' with no noun is not natural English. The target 全部 means 'everything', so the known side is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "yesterday, people who understand, I wanted to show the whole",
+       "target": "昨日、分かる人には全部見せたかった。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'I wanted to show the whole' is not natural English. 全部 here means 'everything'.",
+       "keep": false,
+       "why": "Opus: bad — 'I wanted to show the whole' is not natural English. 全部 here means 'everything'."
+      },
+      {
+       "role": "use",
+       "known": "people who understand, I can speak all day",
+       "target": "分かる人には、一日中話せる。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "には with 一日中話せる is unnatural for 'with people who understand I can talk all day'. It would need 分かる人となら.",
+       "keep": false,
+       "why": "Opus: bad — には with 一日中話せる is unnatural for 'with people who understand I can talk all day'. It would need 分かる人となら."
+      },
+      {
+       "role": "use",
+       "known": "people who understand, I want to try saying something",
+       "target": "分かる人には何か言ってみたい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かる人には何か言ってみたい ('I want to try saying something to people who understand') is natural and is one sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "people who understand, I will try speaking in Japanese",
+       "target": "分かる人には、日本語で話してみる。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かる人には、日本語で話してみる is natural, one sentence, and maps exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "people who understand, wanted to speak",
+       "target": "分かる人には話したかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The English 'people who understand, wanted to speak' reads as if those people are the ones who wanted to speak. The target means 'I wanted to speak TO people who understand' (contrastive には), so the two sides say different things. The prompt invites 分かる人は話したかった.",
+       "keep": false,
+       "why": "Opus: bad — The English 'people who understand, wanted to speak' reads as if those people are the ones who wanted to speak. The target means 'I wanted to speak TO people who understand' (contrastive には), so the two sides say different things. The prompt invites 分かる人は話したかった."
+      },
+      {
+       "role": "build",
+       "known": "people who understand, wanted to show the answer",
+       "target": "分かる人には答えを見せたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Same mismatch: the English suggests the people wanted to show the answer, but the target means 'I wanted to show the answer to people who understand.' The prompt does not carry the に/は role and does not map unambiguously to the target.",
+       "keep": false,
+       "why": "Opus: bad — Same mismatch: the English suggests the people wanted to show the answer, but the target means 'I wanted to show the answer to people who understand.' The prompt does not carry the に/は role and does not map unambiguously to the target."
+      },
+      {
+       "role": "build",
+       "known": "people who understand, I want to speak in Japanese",
+       "target": "分かる人には日本語で話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The dangling 'people who understand,' followed by 'I want to speak in Japanese' does not express 'to (at least) people who understand.' The Japanese is acceptable, but the known side does not say what the target says and is not something an English speaker would naturally say.",
+       "keep": false,
+       "why": "Opus: bad — The dangling 'people who understand,' followed by 'I want to speak in Japanese' does not express 'to (at least) people who understand.' The Japanese is acceptable, but the known side does not say what the target says and is not something an English speaker would naturally say."
+      },
+      {
+       "role": "use",
+       "known": "yesterday, people who understand, I wanted to speak in Japanese",
+       "target": "昨日、分かる人には日本語で話したかった。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": false,
+       "opusReason": "This USE prompt is not tier-1 natural English: 'yesterday, people who understand, I wanted to...' is a list of fragments. It also does not convey the target's 'to people who understand.'",
+       "keep": false,
+       "why": "Opus: bad — This USE prompt is not tier-1 natural English: 'yesterday, people who understand, I wanted to...' is a list of fragments. It also does not convey the target's 'to people who understand.'"
+      },
+      {
+       "role": "use",
+       "known": "yesterday, people who understand, I wanted to show the answer",
+       "target": "昨日、分かる人には答えを見せたかった。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The prompt is unnatural fragment-stacking and loses the dative/contrastive meaning of 分かる人には. As a USE sentence it fails the tier-1 bar.",
+       "keep": false,
+       "why": "Opus: bad — The prompt is unnatural fragment-stacking and loses the dative/contrastive meaning of 分かる人には. As a USE sentence it fails the tier-1 bar."
+      },
+      {
+       "role": "use",
+       "known": "people who understand, I want to speak a little in Japanese",
+       "target": "分かる人には日本語で少し話したい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The known side is unnatural and does not say 'to people who understand.' A comma-topic fragment is not an acceptable USE sentence.",
+       "keep": false,
+       "why": "Opus: bad — The known side is unnatural and does not say 'to people who understand.' A comma-topic fragment is not an acceptable USE sentence."
+      },
+      {
+       "role": "use",
+       "known": "people who understand, I want to speak a lot",
+       "target": "分かる人にはたくさん話したい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The English is ambiguous and unnatural, and the prompt could be read as the people wanting to speak. The Japanese 'I want to talk a lot to people who understand' is not what the prompt says.",
+       "keep": false,
+       "why": "Opus: bad — The English is ambiguous and unnatural, and the prompt could be read as the people wanting to speak. The Japanese 'I want to talk a lot to people who understand' is not what the prompt says."
+      },
+      {
+       "role": "use",
+       "known": "today, people who understand, I want to try saying something",
+       "target": "今日は分かる人には何か言ってみたい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The Japanese 今日は分かる人には何か言ってみたい stacks two は phrases and is clunky. The English is unnatural fragment-stacking that misses the 'to' meaning.",
+       "keep": false,
+       "why": "Opus: bad — The Japanese 今日は分かる人には何か言ってみたい stacks two は phrases and is clunky. The English is unnatural fragment-stacking that misses the 'to' meaning."
+      },
+      {
+       "role": "use",
+       "known": "as much as possible, people who understand, I want to speak in Japanese",
+       "target": "できるだけ分かる人には日本語で話したい。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": false,
+       "opusReason": "できるだけ before 分かる人には makes the scope unclear (as much as possible to people who understand? as many such people as possible?). The English is unnatural and not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — できるだけ before 分かる人には makes the scope unclear (as much as possible to people who understand? as many such people as possible?). The English is unnatural and not tier 1."
+      }
+     ],
+     "keptBuild": 3,
+     "keptUse": 3,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 3"
+     }
+    }
+   }
+  },
+  "52": {
+   "seed": 52,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "wanted to",
+     "target": "たかった"
+    },
+    {
+     "idx": 2,
+     "known": "write a letter",
+     "target": "手紙を書く"
+    },
+    {
+     "idx": 3,
+     "known": "to his friend",
+     "target": "友だちに"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "M",
+      "known": "to his friend",
+      "target": "友だちに",
+      "components": [
+       {
+        "known": "to his friend",
+        "target": "友だちに"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "jpn_for_eng:S0052L03B01",
+       "role": "build",
+       "known": "to his friend",
+       "target": "友だちに",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is just the LEGO on its own, with no other taught LEGO, so it is not a BUILD. E2 is an exact duplicate of it.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The bare LEGO is a valid minimal BUILD. It is the exact target with its exact gloss.",
+       "keep": false,
+       "why": "Sonnet: bad — It is just the LEGO on its own, with no other taught LEGO, so it is not a BUILD. E2 is an exact duplicate of it."
+      },
+      {
+       "id": "jpn_for_eng:S0052L03B02",
+       "role": "build",
+       "known": "to his friend",
+       "target": "友だちに",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It repeats E1 exactly and is only the bare LEGO, not a BUILD.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Exact duplicate of P1. It adds nothing, and fewer phrases beats redundant ones.",
+       "keep": false,
+       "why": "Sonnet: bad — It repeats E1 exactly and is only the bare LEGO, not a BUILD."
+      },
+      {
+       "id": "jpn_for_eng:S0052L03B03",
+       "role": "build",
+       "known": "to my friend",
+       "target": "友だちに",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'my friend' and 'his friend' would both map to 友だちに, which breaks one known prompt to one target. 'my' is also not a taught gloss, and the phrase is just the bare LEGO.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "ZUT violation. 友だちに is taught as 'to his friend', so mapping it to 'to my friend' gives one target two known prompts. 'to my friend' is also not a taught gloss.",
+       "keep": false,
+       "why": "Sonnet: bad — 'my friend' and 'his friend' would both map to 友だちに, which breaks one known prompt to one target. 'my' is also not a taught gloss, and the phrase is just the bare LEGO."
+      },
+      {
+       "role": "build",
+       "known": "wanted to speak to his friend",
+       "target": "友だちに話したかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Built from the taught glosses 'wanted to speak' and 'to his friend'. 友だちに話したかった is natural Japanese for wanting to speak to or tell a friend.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "write a letter to his friend",
+       "target": "友だちに手紙を書く",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "LEGO plus 'write a letter'. Correct particles and verb-final order, and it extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "wanted to write a letter to his friend",
+       "target": "友だちに手紙を書きたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "LEGO plus 'write a letter' plus 'wanted to'. 書きたかった is the correct combination of the taught pieces and matches the seed.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "wanted to show a letter to his friend",
+       "target": "手紙を友だちに見せたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses taught 'wanted to show' and 'letter'. 手紙を友だちに見せたかった is grammatical and natural, and the meaning matches.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "he wanted to speak to his friend",
+       "target": "彼は友だちに話したかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "彼は plus the LEGO plus 話したかった. 'his' is naturally implied in Japanese, and the BUILD is short and tileable.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he wanted to write a letter to his friend",
+       "target": "彼は友だちに手紙を書きたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "LEGO plus three taught LEGOs. Grammatical, and a natural core of the seed sentence.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "yesterday he wanted to write a letter to his friend",
+       "target": "昨日、彼は友だちに手紙を書きたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One complete natural sentence. 昨日 is taught, it is longer than the BUILDs, and the meaning matches exactly.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "yesterday he wanted to speak to his friend",
+       "target": "昨日、彼は友だちに話したかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Complete natural sentence using only taught material. 昨日 with past たかった is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "yesterday he wanted to show a letter to his friend",
+       "target": "昨日、彼は友だちに手紙を見せたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Complete natural sentence. 友だちに手紙を見せたかった is grammatical and the meaning matches.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "last month he wanted to write a letter to his friend",
+       "target": "先月、彼は友だちに手紙を書きたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "先月 is taught and fits the past tense. Natural on both sides and one sentence.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "last month he wanted to speak to his friend",
+       "target": "先月、彼は友だちに話したかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Complete natural sentence using only taught material, with an exact meaning match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "this afternoon he wanted to write a letter to his friend",
+       "target": "今日の午後、彼は友だちに手紙を書きたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今日の午後 is taught. Natural sentence with correct past desiderative.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "this afternoon he wanted to speak to his friend",
+       "target": "今日の午後、彼は友だちに話したかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Complete natural sentence using only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "all day he wanted to speak to his friend",
+       "target": "一日中、彼は友だちに話したかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "一日中 is taught. 'All day he wanted to speak to his friend' is natural, and the Japanese is grammatical and says exactly that.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "last month he wanted to show a letter to his friend",
+       "target": "先月、彼は友だちに手紙を見せたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Complete natural sentence. Grammatical, and the meaning matches.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "want to speak to his friend",
+       "target": "友だちに話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Grammatical fragment with natural 友だちに話したい. It contains the LEGO, uses only taught material and extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "will try speaking to his friend",
+       "target": "友だちに話してみる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "友だちに話してみる is grammatical and natural, and the known side tiles from taught glosses. It is a short BUILD with the LEGO.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "wanted to show to his friend",
+       "target": "友だちに見せたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "友だちに見せたかった is grammatical. The known side is a fragment missing its object, which is acceptable for a BUILD that extends naturally to 'wanted to show it to his friend'.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "this evening he wants to speak to his friend",
+       "target": "今夜、彼は友だちに話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Bare 〜たい with a third-person subject in a present declarative (彼は…話したい) is unnatural or wrong in Japanese; it would need 話したがってる.",
+       "keep": false,
+       "why": "Opus: bad — Bare 〜たい with a third-person subject in a present declarative (彼は…話したい) is unnatural or wrong in Japanese; it would need 話したがってる."
+      },
+      {
+       "role": "use",
+       "known": "tomorrow too he wants to speak to his friend",
+       "target": "明日も、彼は友だちに話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Same third-person 〜たい problem (彼は…話したい). The comma after 明日も also makes it awkward.",
+       "keep": false,
+       "why": "Opus: bad — Same third-person 〜たい problem (彼は…話したい). The comma after 明日も also makes it awkward."
+      },
+      {
+       "role": "use",
+       "known": "later he will speak to his friend",
+       "target": "あとで、彼は友だちに話す",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "あとで、彼は友だちに話す is grammatical and natural, matches the known side, and is one complete sentence containing the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "today he wants to speak to his friend",
+       "target": "今日は、彼は友だちに話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Third-person 〜たい problem (彼は…話したい), plus the doubled topic 今日は、彼は is clunky.",
+       "keep": false,
+       "why": "Opus: bad — Third-person 〜たい problem (彼は…話したい), plus the doubled topic 今日は、彼は is clunky."
+      },
+      {
+       "role": "use",
+       "known": "he wanted to speak to his friend quickly",
+       "target": "彼は早く友だちに話したかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": false,
+       "opusReason": "早く here means 'soon or as early as possible', not 'quickly' in manner, so the meaning drifts. 'Wanted to speak to his friend quickly' is also not tier-1 natural English. When unsure, BAD.",
+       "keep": false,
+       "why": "Opus: bad — 早く here means 'soon or as early as possible', not 'quickly' in manner, so the meaning drifts. 'Wanted to speak to his friend quickly' is also not tier-1 natural English. When unsure, BAD."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 5,
+     "setGates": {}
+    }
+   }
+  },
+  "53": {
+   "seed": 53,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "put in",
+     "target": "入れる"
+    },
+    {
+     "idx": 2,
+     "known": "that letter",
+     "target": "その手紙"
+    },
+    {
+     "idx": 3,
+     "known": "in her bag",
+     "target": "バッグに"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "M",
+      "known": "in her bag",
+      "target": "バッグに",
+      "components": [
+       {
+        "known": "in her bag",
+        "target": "バッグに"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "jpn_for_eng:S0053L03B01",
+       "role": "build",
+       "known": "in her bag",
+       "target": "バッグに",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, tileable known, and the target is correct and natural as a fragment.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO with no other taught LEGO, so it is not a BUILD.",
+       "keep": false,
+       "why": "Opus: bad — This is the bare LEGO with no other taught LEGO, so it is not a BUILD."
+      },
+      {
+       "id": "jpn_for_eng:S0053L03B02",
+       "role": "build",
+       "known": "in her bag",
+       "target": "バッグに",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "Exact duplicate of E1, so it adds nothing.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It duplicates P1 and is also the bare LEGO with no other LEGO.",
+       "keep": false,
+       "why": "Sonnet: bad — Exact duplicate of E1, so it adds nothing."
+      },
+      {
+       "id": "jpn_for_eng:S0053L03B03",
+       "role": "build",
+       "known": "in my bag",
+       "target": "バッグに",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'my bag' is not a taught gloss, and it maps to the same target as 'in her bag'. That breaks the one-prompt-one-target rule.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'my' is not taught, and mapping 'in my bag' to the same target as 'in her bag' breaks ZUT.",
+       "keep": false,
+       "why": "Sonnet: bad — 'my bag' is not a taught gloss, and it maps to the same target as 'in her bag'. That breaks the one-prompt-one-target rule."
+      },
+      {
+       "role": "build",
+       "known": "put in her bag",
+       "target": "バッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the LEGO plus taught 入れる. It is short and tileable, and it extends naturally.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "put that letter in her bag",
+       "target": "その手紙をバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It combines taught LEGOs with the correct particles and maps exactly.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "want to put in her bag",
+       "target": "バッグに入れたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The -たい construction is taught (話したい), and 入れたい is grammatical and maps exactly.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "don't want to put in her bag",
+       "target": "バッグに入れたくない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The -たくない construction is taught (考えたくない), and the phrase is grammatical and maps exactly.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "later, put in her bag",
+       "target": "あとでバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known 'later, put in her bag' is awkward and comma-joined, so it is not natural.",
+       "keep": false,
+       "why": "Opus: bad — The known 'later, put in her bag' is awkward and comma-joined, so it is not natural."
+      },
+      {
+       "role": "build",
+       "known": "wanted to put in her bag",
+       "target": "バッグに入れたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It mirrors the seed's たかった and is grammatical and exact.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "yesterday she put that letter in her bag",
+       "target": "彼女は昨日その手紙をバッグに入れた",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The past -た is taught, the sentence is natural and complete, and the mapping is exact.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "this evening she wants to put that letter in her bag",
+       "target": "彼女は今夜その手紙をバッグに入れたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A third-person present statement with 入れたい is unnatural in Japanese; it would need 入れたがってる.",
+       "keep": false,
+       "why": "Opus: bad — A third-person present statement with 入れたい is unnatural in Japanese; it would need 入れたがってる."
+      },
+      {
+       "role": "use",
+       "known": "she will put that letter in her bag later",
+       "target": "彼女はあとでその手紙をバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The sentence is natural and complete, and あとで maps to 'later'.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "she doesn't want to put that letter in her bag",
+       "target": "彼女はその手紙をバッグに入れたくない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A third-person 入れたくない as a plain statement is unnatural; it would need 入れたがらない or similar.",
+       "keep": false,
+       "why": "Opus: bad — A third-person 入れたくない as a plain statement is unnatural; it would need 入れたがらない or similar."
+      },
+      {
+       "role": "use",
+       "known": "she wanted to quickly put that letter in her bag",
+       "target": "彼女は早くその手紙をバッグに入れたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It follows the seed's third-person past たかった pattern, and 早く maps to 'quickly'. It is natural and exact.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "she will put that letter in her bag this afternoon",
+       "target": "彼女は今日の午後その手紙をバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The sentence is natural and complete, and 今日の午後 maps to 'this afternoon'.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "yesterday she wanted to put that letter in her bag",
+       "target": "彼女は昨日その手紙をバッグに入れたかった",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It is the seed sentence plus 昨日, and it is natural and exact.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "use",
+       "known": "she wants to put that letter in her bag now",
+       "target": "彼女は今その手紙をバッグに入れたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A third-person present 入れたい is unnatural as a plain statement.",
+       "keep": false,
+       "why": "Opus: bad — A third-person present 入れたい is unnatural as a plain statement."
+      },
+      {
+       "role": "use",
+       "known": "she will soon put that letter in her bag",
+       "target": "彼女はもうすぐその手紙をバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": false,
+       "opusReason": "もうすぐ with a simple volitional action like 入れる sounds odd; すぐ would be natural. This is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — もうすぐ with a simple volitional action like 入れる sounds odd; すぐ would be natural. This is not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "put in her bag later",
+       "target": "あとでバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "あとでバッグに入れる is natural and matches the English. The fragment extends easily into a sentence, uses only taught material and contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "put all in her bag",
+       "target": "全部バッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'put all in her bag' is not natural English (it would be 'put it all in'). 'all' is also not a taught gloss for 全部; the taught gloss is 'the whole'.",
+       "keep": false,
+       "why": "Opus: bad — 'put all in her bag' is not natural English (it would be 'put it all in'). 'all' is also not a taught gloss for 全部; the taught gloss is 'the whole'."
+      },
+      {
+       "role": "build",
+       "known": "put a lot in her bag",
+       "target": "たくさんバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "たくさんバッグに入れる is natural and matches 'put a lot in her bag'. Everything is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "put in her bag at six o'clock",
+       "target": "6時にバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "6時にバッグに入れる is grammatical and natural; the two に particles have clearly different roles. The English matches and uses taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "put more in her bag",
+       "target": "もっとバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "もっとバッグに入れる is natural and matches 'put more in her bag'.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "before I go, I will put it in her bag",
+       "target": "行く前にバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "行く前にバッグに入れる is one complete, natural sentence. Dropping the object for 'it' is normal in Japanese. The meaning matches and everything is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I will put all in her bag this evening",
+       "target": "今夜全部バッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'put all in her bag' is unnatural English, and 'all' is not the taught gloss of 全部.",
+       "keep": false,
+       "why": "Opus: bad — 'put all in her bag' is unnatural English, and 'all' is not the taught gloss of 全部."
+      },
+      {
+       "role": "use",
+       "known": "I will put a lot in her bag later",
+       "target": "あとでたくさんバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": true,
+       "opusReason": "あとでたくさんバッグに入れる is natural, one sentence, and matches the English exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I will put a little in her bag now",
+       "target": "今少しバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": false,
+       "opusReason": "今少し can be read as the fixed expression 'a little more', so 'now / a little' is ambiguous in this order. It is not clearly tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 今少し can be read as the fixed expression 'a little more', so 'now / a little' is ambiguous in this order. It is not clearly tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I will put it in her bag at six o'clock tomorrow too",
+       "target": "明日も6時にバッグに入れる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 2,
+       "opus": true,
+       "opusReason": "明日も6時にバッグに入れる is natural, one sentence, and matches 'at six o'clock tomorrow too'. Everything is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 3,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 3"
+     }
+    }
+   }
+  },
+  "54": {
+   "seed": 54,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "a little more",
+     "target": "もう少し"
+    },
+    {
+     "idx": 2,
+     "known": "give",
+     "target": "あげる"
+    },
+    {
+     "idx": 3,
+     "known": "give you time",
+     "target": "時間をあげる"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "M",
+      "known": "give you time",
+      "target": "時間をあげる",
+      "components": [
+       {
+        "known": "time",
+        "target": "時間を"
+       },
+       {
+        "known": "give",
+        "target": "あげる"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "jpn_for_eng:S0054L03B01",
+       "role": "build",
+       "known": "give you time",
+       "target": "時間をあげる",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, short, natural, and the known and target match one-to-one.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is the bare LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs."
+      },
+      {
+       "id": "jpn_for_eng:S0054L03B02",
+       "role": "build",
+       "known": "going to give you time",
+       "target": "時間をあげる",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known 'going to' has no counterpart in the target. The same target also serves E1, which breaks one prompt to one target.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'going to' is not a taught gloss or construction, and no other LEGO is added. It also breaks ZUT, because a different known prompt maps to the same target as P1.",
+       "keep": false,
+       "why": "Sonnet: bad — The known 'going to' has no counterpart in the target. The same target also serves E1, which breaks one prompt to one target."
+      },
+      {
+       "id": "jpn_for_eng:S0054L03B03",
+       "role": "build",
+       "known": "I'm going to give you time",
+       "target": "時間をあげる",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'I'm going to' is not a taught gloss and is not expressed in the target. It collides with E1, E2 and E4, so the prompt-to-target mapping is not unique.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It adds no other taught LEGO. 'I'm going to' is untaught, and the same target already has the prompt 'give you time', which breaks ZUT.",
+       "keep": false,
+       "why": "Sonnet: bad — 'I'm going to' is not a taught gloss and is not expressed in the target. It collides with E1, E2 and E4, so the prompt-to-target mapping is not unique."
+      },
+      {
+       "id": "jpn_for_eng:S0054L03U01",
+       "role": "use",
+       "known": "I'm going to give you time",
+       "target": "時間をあげる",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It duplicates E3 and is not a longer, richer sentence than a BUILD. The target does not say 'going to'.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A USE must be longer than a BUILD and add material. This is just the LEGO with an untaught 'I'm going to', and it duplicates P3.",
+       "keep": false,
+       "why": "Sonnet: bad — It duplicates E3 and is not a longer, richer sentence than a BUILD. The target does not say 'going to'."
+      },
+      {
+       "id": "jpn_for_eng:S0054L03U08",
+       "role": "use",
+       "known": "can I give you time?",
+       "target": "時間をあげる？",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'can I' is not taught and the target has no permission or ability meaning. The target only adds a question mark, so it does not say what the known says.",
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The target does not say what the known says. 'Can I give you time?' would be あげようか or あげてもいい？, not 時間をあげる？.",
+       "keep": false,
+       "why": "Sonnet: bad — 'can I' is not taught and the target has no permission or ability meaning. The target only adds a question mark, so it does not say what the known says."
+      },
+      {
+       "role": "build",
+       "known": "today, give you time",
+       "target": "今日は時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今日は時間をあげる is natural ('I'll give you time today'). The known is tileable and extends into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "later, give you time",
+       "target": "あとで時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "あとで時間をあげる is natural and matches the known. Only taught material is used.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "this evening, give you time",
+       "target": "今夜時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今夜時間をあげる is natural and matches the known. Only taught material is used.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "tomorrow too, give you time",
+       "target": "明日も時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "明日も時間をあげる is natural ('I'll give you time tomorrow too') and is tileable.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "as much as possible, give you time",
+       "target": "できるだけ時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "できるだけ時間をあげる is natural ('I'll give you as much time as possible'). Only taught material is used.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "before I go, give you time",
+       "target": "行く前に時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Giving someone time 'before I go' is semantically odd and unlikely to be said. Since I'm unsure it's natural, it counts as bad.",
+       "keep": false,
+       "why": "Opus: bad — Giving someone time 'before I go' is semantically odd and unlikely to be said. Since I'm unsure it's natural, it counts as bad."
+      },
+      {
+       "role": "use",
+       "known": "give you time is important",
+       "target": "時間をあげるのが大事",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known 'give you time is important' is ungrammatical English. A USE needs a natural complete sentence.",
+       "keep": false,
+       "why": "Opus: bad — The known 'give you time is important' is ungrammatical English. A USE needs a natural complete sentence."
+      },
+      {
+       "role": "use",
+       "known": "because it takes time, give you time",
+       "target": "時間がかかるから、時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known is a clunky, non-natural sentence. The Japanese is a redundant 時間…時間, so this is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The known is a clunky, non-natural sentence. The Japanese is a redundant 時間…時間, so this is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "as much as possible, give you time this evening",
+       "target": "今夜できるだけ時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known is clunky with an awkward order, so it is not tier 1. The Japanese also reorders 今夜 and できるだけ relative to the prompt.",
+       "keep": false,
+       "why": "Opus: bad — The known is clunky with an awkward order, so it is not tier 1. The Japanese also reorders 今夜 and できるだけ relative to the prompt."
+      },
+      {
+       "role": "build",
+       "known": "now, give you time",
+       "target": "今時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Short BUILD fragment that tiles cleanly from 'now' and 'give you time'. 今時間をあげる extends naturally into a full sentence, 'I'll give you time now'.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "more, give you time",
+       "target": "もっと時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'more, give you time' is not natural English. The natural form is 'give you more time', and the known side should not be broken to force the tiling.",
+       "keep": false,
+       "why": "Opus: bad — 'more, give you time' is not natural English. The natural form is 'give you more time', and the known side should not be broken to force the tiling."
+      },
+      {
+       "role": "use",
+       "known": "I will give you time to think",
+       "target": "考える時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "考える時間をあげる is natural and grammatical. The noun-modifying verb plus 時間 matches 'time to think', the known side uses only taught glosses, and it is one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I will give you time to answer",
+       "target": "答える時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "答える時間をあげる is natural and means exactly 'I will give you time to answer'. Uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I will give you time to remember",
+       "target": "思い出す時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "思い出す時間をあげる is natural and matches 'I will give you time to remember'. Uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I will give you time to speak",
+       "target": "話す時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "話す時間をあげる is natural and matches 'I will give you time to speak'. Uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I will give you time to speak Japanese",
+       "target": "日本語を話す時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "日本語を話す時間をあげる is grammatical and natural, means exactly 'I will give you time to speak Japanese', and is longer than a BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I don't need to give you time",
+       "target": "時間をあげる必要はない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": true,
+       "opusReason": "時間をあげる必要はない is natural Japanese for 'I don't need to give you time'. 'don't need to' and 必要はない are both taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I need to give you more time",
+       "target": "もっと時間をあげる必要がある",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": true,
+       "opusReason": "もっと時間をあげる必要がある is natural and means exactly 'I need to give you more time'. もっと, 必要がある and the LEGO are all taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "because you are tired, I will give you time",
+       "target": "疲れてるから時間をあげる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Meaning is incomplete in both languages: time for what? 'because you are tired, I will give you time' is clunky English, and the Japanese is only marginally natural. Unsure, so BAD.",
+       "keep": false,
+       "why": "Opus: bad — Meaning is incomplete in both languages: time for what? 'because you are tired, I will give you time' is clunky English, and the Japanese is only marginally natural. Unsure, so BAD."
+      },
+      {
+       "role": "use",
+       "known": "I think I will give you time",
+       "target": "時間をあげると思う",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'I think I will give you time' and 時間をあげると思う are possible but clunky. Hedging your own intention to give time is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'I think I will give you time' and 時間をあげると思う are possible but clunky. Hedging your own intention to give time is not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  },
+  "58": {
+   "seed": 58,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "understand",
+     "target": "分かる"
+    },
+    {
+     "idx": 2,
+     "known": "when you understand",
+     "target": "分かると"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "when you understand",
+      "target": "分かると",
+      "components": [
+       {
+        "known": "when you understand",
+        "target": "分かると"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "jpn_for_eng:S0058L02B01",
+       "role": "build",
+       "known": "when you understand",
+       "target": "分かると",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact gloss of the LEGO, natural, and one-to-one with the target.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is only the LEGO. A BUILD must add one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is only the LEGO. A BUILD must add one to three other taught LEGOs."
+      },
+      {
+       "id": "jpn_for_eng:S0058L02B02",
+       "role": "build",
+       "known": "when I understand",
+       "target": "分かると",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'when I understand' is not the taught gloss. It also maps a second known prompt onto the same target, which breaks ZUT.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A second known prompt, 'when I understand', would map to the same target. That breaks ZUT, and the phrase also adds no other LEGO.",
+       "keep": false,
+       "why": "Sonnet: bad — 'when I understand' is not the taught gloss. It also maps a second known prompt onto the same target, which breaks ZUT."
+      },
+      {
+       "id": "jpn_for_eng:S0058L02B03",
+       "role": "build",
+       "known": "if you understand",
+       "target": "分かると",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'if you understand' uses an untaught gloss and gives a second known prompt for the same target, which breaks ZUT.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known prompt 'if you understand' differs from the taught gloss 'when you understand', which breaks ZUT. It is also only the bare LEGO.",
+       "keep": false,
+       "why": "Sonnet: bad — 'if you understand' uses an untaught gloss and gives a second known prompt for the same target, which breaks ZUT."
+      },
+      {
+       "role": "build",
+       "known": "when you understand a little",
+       "target": "少し分かると",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "少し分かると is natural, matches the known exactly and uses taught 少し. It is a fragment that extends naturally, as in the seed.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "when you understand a lot",
+       "target": "たくさん分かると",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "たくさん分かると is grammatical and natural, matches the known and uses taught vocabulary.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "when you understand, it's interesting",
+       "target": "分かると面白い",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かると面白い is a natural generic と-conditional with a stative result. It matches the known exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "when you understand, you can speak",
+       "target": "分かると話せる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かると話せる works because a potential-form result is fine after と. It is natural and matches the known.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "when you understand, it's more interesting",
+       "target": "分かるともっと面白い",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かるともっと面白い is natural and exact, with all pieces taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "when you understand, I want to speak",
+       "target": "分かると話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The と-conditional cannot take a volitional or desire main clause (〜たい), so the Japanese is ungrammatical. The known also mixes 'you' and 'I' awkwardly.",
+       "keep": false,
+       "why": "Opus: bad — The と-conditional cannot take a volitional or desire main clause (〜たい), so the Japanese is ungrammatical. The known also mixes 'you' and 'I' awkwardly."
+      },
+      {
+       "role": "use",
+       "known": "when you understand a little, I want to speak with other people",
+       "target": "少し分かると他の人とも話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The main clause 話したい is a desire after と, which is ungrammatical. Also, 他の人とも means 'with other people too', and the known drops 'too'.",
+       "keep": false,
+       "why": "Opus: bad — The main clause 話したい is a desire after と, which is ungrammatical. Also, 他の人とも means 'with other people too', and the known drops 'too'."
+      },
+      {
+       "role": "use",
+       "known": "when you understand, you can speak well in Japanese",
+       "target": "分かると日本語でうまく話せる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かると日本語でうまく話せる is one complete sentence with a potential result, which is acceptable after と. It matches the known and uses taught pieces.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "when you understand, I want to try saying something",
+       "target": "分かると何か言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "言ってみたい is a desire predicate after と, which is ungrammatical. The 'you'/'I' mismatch makes the known unnatural.",
+       "keep": false,
+       "why": "Opus: bad — 言ってみたい is a desire predicate after と, which is ungrammatical. The 'you'/'I' mismatch makes the known unnatural."
+      },
+      {
+       "role": "use",
+       "known": "when you understand, it's really interesting",
+       "target": "分かるとすごく面白い",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かるとすごく面白い is a natural, complete sentence that is longer than the BUILD 分かると面白い. It matches the known exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "when you understand, I don't want to stop",
+       "target": "分かるとやめたくない",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "やめたくない is a desire expression after と, which is unnatural or ungrammatical. The 'you'/'I' switch makes the known clunky.",
+       "keep": false,
+       "why": "Opus: bad — やめたくない is a desire expression after と, which is unnatural or ungrammatical. The 'you'/'I' switch makes the known clunky."
+      },
+      {
+       "role": "use",
+       "known": "when you understand, you can speak with everyone",
+       "target": "分かるとみんなと話せる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かるとみんなと話せる is natural, complete and exact, with all pieces taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "when you understand a little, I want to try saying something in Japanese",
+       "target": "少し分かると日本語で何か言ってみたい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The と-conditional is followed by a desire predicate (言ってみたい), which is ungrammatical. The person mismatch makes the known unnatural.",
+       "keep": false,
+       "why": "Opus: bad — The と-conditional is followed by a desire predicate (言ってみたい), which is ungrammatical. The person mismatch makes the known unnatural."
+      },
+      {
+       "role": "use",
+       "known": "when you understand, you can speak a little more",
+       "target": "分かるともう少し話せる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "分かるともう少し話せる is a natural, complete sentence that matches the known exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "when you understand, I want to speak all day",
+       "target": "分かると一日中話したい",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": false,
+       "opusReason": "話したい is a desire main clause after と, which is ungrammatical. The 'you'/'I' mismatch makes the known unnatural.",
+       "keep": false,
+       "why": "Opus: bad — 話したい is a desire main clause after と, which is ungrammatical. The 'you'/'I' mismatch makes the known unnatural."
+      },
+      {
+       "role": "build",
+       "known": "when you understand a little, it's interesting",
+       "target": "少し分かると面白い",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Grammatical and natural. Close to the seed and maps exactly. Uses only taught 少し and 面白い; 'it's' is glue. A valid short BUILD.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "when you understand a lot, you can speak",
+       "target": "たくさん分かると話せる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Grammatical and natural conditional with たくさん and 話せる, both taught. Meaning matches exactly. A short BUILD that is already a full clause.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "when you understand a little, you can speak with everyone in Japanese",
+       "target": "少し分かると日本語でみんなと話せる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "One natural sentence. Word order 日本語でみんなと話せる is fine. All pieces are taught and the meaning matches. A plausible encouraging statement.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "when you understand a lot, you can speak with everyone all day",
+       "target": "たくさん分かるとみんなと一日中話せる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Grammatical, but 'understand a lot, so you can speak with everyone all day' is a strained cause and effect. 一日中 adds an odd claim, making this clunky rather than tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — Grammatical, but 'understand a lot, so you can speak with everyone all day' is a strained cause and effect. 一日中 adds an odd claim, making this clunky rather than tier-1 natural."
+      },
+      {
+       "role": "use",
+       "known": "when you understand a little more, it's more interesting",
+       "target": "もう少し分かるともっと面白い",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Very natural: もう少し分かるともっと面白い. Taught pieces only and an exact match. One complete sentence, longer than a BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "when you understand, you can speak well with everyone",
+       "target": "分かるとみんなとうまく話せる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural Japanese with taught pieces みんなと, うまく and 話せる. The known side is tileable and the meaning matches. One complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "when you understand a little, you can speak well with everyone in Japanese",
+       "target": "少し分かると日本語でみんなとうまく話せる",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'Understand only a little, so you can speak well with everyone in Japanese' is semantically contradictory and unnatural. Not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Understand only a little, so you can speak well with everyone in Japanese' is semantically contradictory and unnatural. Not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  }
+ }
+}

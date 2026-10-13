@@ -1,0 +1,1154 @@
+{
+ "course": "fra_for_eng",
+ "seeds": {
+  "4": {
+   "seed": 4,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "to say",
+     "target": "dire"
+    },
+    {
+     "idx": 2,
+     "known": "something",
+     "target": "quelque chose"
+    },
+    {
+     "idx": 3,
+     "known": "in French",
+     "target": "en français"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "A",
+      "known": "to say",
+      "target": "dire",
+      "components": null,
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "fra_for_eng:S0004L01B01",
+       "role": "build",
+       "known": "I want to say",
+       "target": "je veux dire",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Literal 'I want to say' is grammatical, uses only taught pieces, and extends naturally (je veux dire comment...).",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural. The fragment extends naturally into a full sentence such as 'je veux dire quelque chose'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "fra_for_eng:S0004L01B02",
+       "role": "build",
+       "known": "how to say",
+       "target": "comment dire",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "'comment dire' is the exact natural equivalent of 'how to say' and uses only taught words.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is an exact chunk of the seed. It is idiomatic and maps one-to-one.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I'm trying to say",
+       "target": "j'essaie de dire",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural. It extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I want to say now",
+       "target": "je veux dire maintenant",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'I want to say now' is stilted, with 'now' dangling. 'je veux dire maintenant' is also readily heard as 'I mean now', which is ambiguous.",
+       "keep": false,
+       "why": "Opus: bad — 'I want to say now' is stilted, with 'now' dangling. 'je veux dire maintenant' is also readily heard as 'I mean now', which is ambiguous."
+      },
+      {
+       "role": "build",
+       "known": "I'm trying to say now",
+       "target": "j'essaie de dire maintenant",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'I'm trying to say now' is awkward, with unclear scope for 'now'. Transitive 'dire' is left with no object, so it is clunky.",
+       "keep": false,
+       "why": "Opus: bad — 'I'm trying to say now' is awkward, with unclear scope for 'now'. Transitive 'dire' is left with no object, so it is clunky."
+      },
+      {
+       "role": "build",
+       "known": "to say often",
+       "target": "dire souvent",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'to say often' is not a natural English fragment. 'dire souvent' with no object doesn't extend cleanly.",
+       "keep": false,
+       "why": "Opus: bad — 'to say often' is not a natural English fragment. 'dire souvent' with no object doesn't extend cleanly."
+      },
+      {
+       "role": "build",
+       "known": "to say as often as possible",
+       "target": "dire aussi souvent que possible",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'dire' needs an object, so 'dire aussi souvent que possible' is clunky in both languages. It is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'dire' needs an object, so 'dire aussi souvent que possible' is clunky in both languages. It is not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "I want to say often",
+       "target": "je veux dire souvent",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'je veux dire souvent' reads as 'I mean often', which is ambiguous. 'I want to say often' is also stilted.",
+       "keep": false,
+       "why": "Opus: bad — 'je veux dire souvent' reads as 'I mean often', which is ambiguous. 'I want to say often' is also stilted."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to say how I want to speak French.",
+       "target": "j'essaie de dire comment je veux parler français.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical. 'dire comment' plus a finite clause is natural, and the French says exactly what the English says. It is one sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to say how I'm trying to learn.",
+       "target": "je veux dire comment j'essaie d'apprendre.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, natural and faithful. It is one complete sentence using only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to say how to speak French.",
+       "target": "j'essaie de dire comment parler français.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'I'm trying to say how to speak French' is clunky. Natural speech would use 'explain' or 'tell someone'. This is 'possible but clunky', not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'I'm trying to say how to speak French' is clunky. Natural speech would use 'explain' or 'tell someone'. This is 'possible but clunky', not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I want to say how to learn now.",
+       "target": "je veux dire comment apprendre maintenant.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Clunky. The scope of 'now' is ambiguous, and 'say how to learn' is unnatural.",
+       "keep": false,
+       "why": "Opus: bad — Clunky. The scope of 'now' is ambiguous, and 'say how to learn' is unnatural."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to say how to speak French with you.",
+       "target": "j'essaie de dire comment parler français avec toi.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It has the same clunky 'say how to speak French' structure as P11. 'avec toi' is also ambiguous: is it 'say with you' or 'speak with you'?",
+       "keep": false,
+       "why": "Opus: bad — It has the same clunky 'say how to speak French' structure as P11. 'avec toi' is also ambiguous: is it 'say with you' or 'speak with you'?"
+      },
+      {
+       "role": "use",
+       "known": "I want to say how to speak French as often as possible.",
+       "target": "je veux dire comment parler français aussi souvent que possible.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Clunky 'say how to speak'. The scope of 'as often as possible' is ambiguous, and the sentence is overlong and unnatural.",
+       "keep": false,
+       "why": "Opus: bad — Clunky 'say how to speak'. The scope of 'as often as possible' is ambiguous, and the sentence is overlong and unnatural."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to say how to learn now.",
+       "target": "j'essaie de dire comment apprendre maintenant.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Clunky 'say how to learn'. The scope of 'now' is ambiguous.",
+       "keep": false,
+       "why": "Opus: bad — Clunky 'say how to learn'. The scope of 'now' is ambiguous."
+      },
+      {
+       "role": "use",
+       "known": "I want to say how I'm trying to learn now.",
+       "target": "je veux dire comment j'essaie d'apprendre maintenant.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural. 'now' attaches naturally to 'I'm trying to learn', and the French mirrors the English exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to say how I want to learn as often as possible.",
+       "target": "j'essaie de dire comment je veux apprendre aussi souvent que possible.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'how I want to learn as often as possible' is semantically odd and has ambiguous scope. It is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'how I want to learn as often as possible' is semantically odd and has ambiguous scope. It is not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "I want to say how",
+       "target": "je veux dire comment",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'je veux dire' is the fixed French idiom for 'I mean', so 'je veux dire comment' reads as 'I mean how'. It does not reliably say 'I want to say how' and breaks the one-prompt-one-target mapping.",
+       "keep": false,
+       "why": "Opus: bad — 'je veux dire' is the fixed French idiom for 'I mean', so 'je veux dire comment' reads as 'I mean how'. It does not reliably say 'I want to say how' and breaks the one-prompt-one-target mapping."
+      },
+      {
+       "role": "build",
+       "known": "I'm trying to say how",
+       "target": "j'essaie de dire comment",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "A natural, grammatical fragment that extends naturally ('j'essaie de dire comment je veux apprendre'). It is exact to the known side, uses only taught material and contains 'dire'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "to say how I want to learn",
+       "target": "dire comment je veux apprendre",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "A short infinitive fragment that is grammatical and natural, with normal word order in the indirect question. It is exact to the known side, uses only taught items and extends naturally into a full sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I want to say how I want to speak French.",
+       "target": "je veux dire comment je veux parler français.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'je veux dire comment...' is heard as 'I mean how I want to speak French' because of the 'je veux dire' idiom, so the meaning does not match. The 'je veux' repetition is also clunky.",
+       "keep": false,
+       "why": "Opus: bad — 'je veux dire comment...' is heard as 'I mean how I want to speak French' because of the 'je veux dire' idiom, so the meaning does not match. The 'je veux' repetition is also clunky."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to say how I want to learn.",
+       "target": "j'essaie de dire comment je veux apprendre.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "One complete, natural sentence. It is grammatical, exact to the known side, uses only taught material and contains 'dire'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to say how I'm trying to speak French.",
+       "target": "je veux dire comment j'essaie de parler français.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'je veux dire comment...' reads idiomatically as 'I mean how I'm trying to speak French', so it does not say what the known side says.",
+       "keep": false,
+       "why": "Opus: bad — 'je veux dire comment...' reads idiomatically as 'I mean how I'm trying to speak French', so it does not say what the known side says."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to say how I'm trying to learn.",
+       "target": "j'essaie de dire comment j'essaie d'apprendre.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The repeated 'I'm trying to... I'm trying to' is clunky and not tier-1 natural in either language.",
+       "keep": false,
+       "why": "Opus: bad — The repeated 'I'm trying to... I'm trying to' is clunky and not tier-1 natural in either language."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to say how I'm trying to speak French.",
+       "target": "j'essaie de dire comment j'essaie de parler français.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The repeated 'j'essaie de... j'essaie de' is stilted and only 'possible but clunky', so it is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The repeated 'j'essaie de... j'essaie de' is stilted and only 'possible but clunky', so it is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I want to say how I want to learn now.",
+       "target": "je veux dire comment je veux apprendre maintenant.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The 'je veux dire' = 'I mean' idiom makes the meaning ambiguous. 'maintenant' can also attach to either clause, and the 'je veux' repetition is clunky.",
+       "keep": false,
+       "why": "Opus: bad — The 'je veux dire' = 'I mean' idiom makes the meaning ambiguous. 'maintenant' can also attach to either clause, and the 'je veux' repetition is clunky."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 4,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 4"
+     }
+    }
+   }
+  },
+  "225": {
+   "seed": 225,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "would give",
+     "target": "donnerait"
+    },
+    {
+     "idx": 2,
+     "known": "could",
+     "target": "pouvait"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "M",
+      "known": "he would give you",
+      "target": "il vous donnerait",
+      "components": [
+       {
+        "known": "he",
+        "target": "il"
+       },
+       {
+        "known": "you",
+        "target": "vous"
+       },
+       {
+        "known": "would give",
+        "target": "donnerait"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "fra_for_eng:S0225L01B03",
+       "role": "build",
+       "known": "he would give you",
+       "target": "il vous donnerait",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, short fragment, and the target matches the known word for word.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO with no other taught LEGO. A BUILD needs the LEGO plus one to three other LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is the bare LEGO with no other taught LEGO. A BUILD needs the LEGO plus one to three other LEGOs."
+      },
+      {
+       "id": "fra_for_eng:S0225L01U01",
+       "role": "use",
+       "known": "he would give you his book if you wanted it",
+       "target": "il vous donnerait son livre si vous le vouliez",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural conditional with 'si' plus the imparfait. Every word is taught, and 'le' correctly stands for 'it' (the book).",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, grammatical conditional sentence. Every piece is taught (son livre, si, vous vouliez, le) and the known side maps exactly.",
+       "keep": false,
+       "why": "gate: vocab"
+      },
+      {
+       "role": "build",
+       "known": "he would give you a word",
+       "target": "il vous donnerait un mot",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'He would give you a word' is odd in English without context. It also invites confusion with the idiom 'give you my word', so it isn't tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'He would give you a word' is odd in English without context. It also invites confusion with the idiom 'give you my word', so it isn't tier 1."
+      },
+      {
+       "role": "build",
+       "known": "he would give you an answer",
+       "target": "il vous donnerait une réponse",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment that extends easily into a full sentence. 'une réponse' is taught and the meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he would give you some time",
+       "target": "il vous donnerait du temps",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'il vous donnerait du temps' is natural, taught and matches the known side exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he would give you his name",
+       "target": "il vous donnerait son nom",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'son nom' is taught, the phrase is natural and the meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he would give you the keys",
+       "target": "il vous donnerait les clés",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'les clés' is taught, the phrase is natural and the meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he would give you his letter",
+       "target": "il vous donnerait sa lettre",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'sa lettre' is taught and agrees correctly. The phrase is natural and the meaning is exact.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "he would give you his name if you wanted it",
+       "target": "il vous donnerait son nom si vous le vouliez",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'if you wanted it' about a person's name is clunky in both languages. It is possible but not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'if you wanted it' about a person's name is clunky in both languages. It is possible but not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "he would give you some time if you wanted it",
+       "target": "il vous donnerait du temps si vous le vouliez",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The French is wrong. Partitive 'du temps' must be taken up with 'en' ('si vous en vouliez'), not 'le'. 'if you wanted it' about time is also clunky in English.",
+       "keep": false,
+       "why": "Opus: bad — The French is wrong. Partitive 'du temps' must be taken up with 'en' ('si vous en vouliez'), not 'le'. 'if you wanted it' about time is also clunky in English."
+      },
+      {
+       "role": "use",
+       "known": "he would give you the answer tomorrow morning",
+       "target": "il vous donnerait la réponse demain matin",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A standalone conditional with only a time adverb reads like an incomplete or reported clause. Without context it is not clearly tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — A standalone conditional with only a time adverb reads like an incomplete or reported clause. Without context it is not clearly tier-1 natural."
+      },
+      {
+       "role": "use",
+       "known": "I think that he would give you the answer",
+       "target": "je pense qu'il vous donnerait la réponse",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence that is grammatical in French ('je pense qu'il vous donnerait la réponse'). All parts are taught and the mapping is exact.",
+       "keep": false,
+       "why": "gate: containment, vocab"
+      },
+      {
+       "role": "use",
+       "known": "I know that he would give you the keys",
+       "target": "je sais qu'il vous donnerait les clés",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence that is grammatical. All parts are taught and the mapping is exact.",
+       "keep": false,
+       "why": "gate: containment, vocab"
+      },
+      {
+       "role": "use",
+       "known": "he would give you the keys this evening",
+       "target": "il vous donnerait les clés ce soir",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A bare conditional plus a time expression sounds like a fragment of reported speech that needs a condition. It is not tier 1 when standing alone.",
+       "keep": false,
+       "why": "Opus: bad — A bare conditional plus a time expression sounds like a fragment of reported speech that needs a condition. It is not tier 1 when standing alone."
+      },
+      {
+       "role": "use",
+       "known": "he would give you his book in the office",
+       "target": "il vous donnerait son livre au bureau",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A bare conditional plus a place expression feels incomplete, as if a condition is missing. Unsure means bad.",
+       "keep": false,
+       "why": "Opus: bad — A bare conditional plus a place expression feels incomplete, as if a condition is missing. Unsure means bad."
+      },
+      {
+       "role": "use",
+       "known": "he would give you an interesting book tomorrow",
+       "target": "il vous donnerait un livre intéressant demain",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A bare conditional plus 'tomorrow' feels incomplete without a condition or reporting frame. It is not clearly tier 1.",
+       "keep": false,
+       "why": "Opus: bad — A bare conditional plus 'tomorrow' feels incomplete without a condition or reporting frame. It is not clearly tier 1."
+      },
+      {
+       "role": "use",
+       "known": "he would give you his letter tomorrow morning",
+       "target": "il vous donnerait sa lettre demain matin",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A bare conditional plus 'tomorrow morning' reads like a reported-speech fragment. It is not clearly natural standing alone.",
+       "keep": false,
+       "why": "Opus: bad — A bare conditional plus 'tomorrow morning' reads like a reported-speech fragment. It is not clearly natural standing alone."
+      },
+      {
+       "role": "build",
+       "known": "he would give you the answer",
+       "target": "il vous donnerait la réponse",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Short, natural fragment that extends easily into a full sentence. 'la réponse' is taught, and the LEGO is present.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "he would give you his book",
+       "target": "il vous donnerait son livre",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'son livre' is built from taught 'son' and 'livre', glossed by 'his' and 'book'. It is natural and correct.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "he would give you the keys if I asked him",
+       "target": "il vous donnerait les clés si je lui demandais",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural single sentence. 'les clés', 'si', 'je lui demandais' and 'if I asked him' all tile from taught material. Dropping 'le' before 'lui demandais' is normal informal speech.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "if I asked him, he would give you the answer",
+       "target": "si je lui demandais, il vous donnerait la réponse",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural conditional sentence with the correct imperfect/conditional sequence. All vocabulary is taught and the LEGO is present.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he would give you his name if I asked him",
+       "target": "il vous donnerait son nom si je lui demandais",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'son nom' = 'his name' is taught. The sentence is natural and correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he would give you everything if I asked him",
+       "target": "il vous donnerait tout si je lui demandais",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'tout' = 'everything' is taught. The sentence is natural and grammatical.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "if I asked him, he would give you more time",
+       "target": "si je lui demandais, il vous donnerait plus de temps",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'plus de temps' = 'more time' tiles from taught pieces. It is natural and correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he would give you his book if I asked him",
+       "target": "il vous donnerait son livre si je lui demandais",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural and correct. All pieces are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "if I asked him, he would give you his letter",
+       "target": "si je lui demandais, il vous donnerait sa lettre",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": true,
+       "opusReason": "'sa lettre' = 'his letter' is taught, with correct agreement. The sentence is natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he would give you a lot of time if I asked him",
+       "target": "il vous donnerait beaucoup de temps si je lui demandais",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'give you a lot of time if I asked him' is a clunky, unclear collocation in both languages. This is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'give you a lot of time if I asked him' is a clunky, unclear collocation in both languages. This is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "he would give you the same thing if I asked him",
+       "target": "il vous donnerait la même chose si je lui demandais",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'the same thing' has no referent in a standalone sentence, so the sentence feels contextless and odd. This is not tier 1 natural.",
+       "keep": false,
+       "why": "Opus: bad — 'the same thing' has no referent in a standalone sentence, so the sentence feels contextless and odd. This is not tier 1 natural."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  },
+  "600": {
+   "seed": 600,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "tired",
+     "target": "fatigué"
+    },
+    {
+     "idx": 2,
+     "known": "driven",
+     "target": "conduit"
+    },
+    {
+     "idx": 3,
+     "known": "how much",
+     "target": "à quel point"
+    },
+    {
+     "idx": 4,
+     "known": "you were tired",
+     "target": "tu étais fatigué"
+    },
+    {
+     "idx": 5,
+     "known": "if you told me",
+     "target": "si tu m'avais dit"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "M",
+      "known": "how much",
+      "target": "à quel point",
+      "components": [
+       {
+        "known": "how (degree)",
+        "target": "à quel point"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "fra_for_eng:S0600L03B01",
+       "role": "build",
+       "known": "how much",
+       "target": "à quel point",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is only the LEGO on its own. A BUILD must combine the LEGO with one to three other taught LEGOs.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the LEGO alone. A BUILD must add one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Sonnet: bad — It is only the LEGO on its own. A BUILD must combine the LEGO with one to three other taught LEGOs."
+      },
+      {
+       "id": "fra_for_eng:S0600L03B02",
+       "role": "build",
+       "known": "I know how much",
+       "target": "je sais à quel point",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "It is a tileable fragment, the target is exact, and it extends naturally into a full sentence.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short fragment built from taught 'je sais'. It extends naturally and both sides match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "fra_for_eng:S0600L03B03",
+       "role": "build",
+       "known": "do you know how much?",
+       "target": "tu sais à quel point ?",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'tu sais à quel point ?' is not natural as a standalone question. 'Do you know' also maps to other targets in the course, which breaks ZUT.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "As a standalone question, 'do you know how much?' reads as asking about a quantity, not a degree. 'tu sais à quel point ?' also cannot stand as a finished question.",
+       "keep": false,
+       "why": "Sonnet: bad — 'tu sais à quel point ?' is not natural as a standalone question. 'Do you know' also maps to other targets in the course, which breaks ZUT."
+      },
+      {
+       "id": "fra_for_eng:S0600L03U01",
+       "role": "use",
+       "known": "I know how much it matters",
+       "target": "je sais à quel point c'est important",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'it matters' was taught as 'ça compte', but the target uses 'c'est important'. The known side does not say what the target says.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known says 'it matters' but the target says 'c'est important' ('it's important'). The meaning does not map exactly.",
+       "keep": false,
+       "why": "Sonnet: bad — 'it matters' was taught as 'ça compte', but the target uses 'c'est important'. The known side does not say what the target says."
+      },
+      {
+       "id": "fra_for_eng:S0600L03U03",
+       "role": "use",
+       "known": "she knows how much",
+       "target": "elle sait à quel point",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is labelled USE but is a fragment rather than a full natural sentence, so it is not longer than a BUILD.",
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Labelled USE but it is only a fragment, not a complete sentence.",
+       "keep": false,
+       "why": "Sonnet: bad — It is labelled USE but is a fragment rather than a full natural sentence, so it is not longer than a BUILD."
+      },
+      {
+       "id": "fra_for_eng:S0600L03U05",
+       "role": "use",
+       "known": "he knows how much",
+       "target": "il sait à quel point",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is labelled USE but is a fragment rather than a full natural sentence, so it is not longer than a BUILD.",
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Labelled USE but it is only a fragment, not a complete sentence.",
+       "keep": false,
+       "why": "Sonnet: bad — It is labelled USE but is a fragment rather than a full natural sentence, so it is not longer than a BUILD."
+      },
+      {
+       "role": "build",
+       "known": "you know how much",
+       "target": "tu sais à quel point",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Taught pieces 'tu' and 'sais'. It extends naturally and is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I don't know how much",
+       "target": "je ne sais pas à quel point",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Built from taught 'je ne sais pas'. It extends naturally and is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I wonder how much",
+       "target": "je me demande à quel point",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Built from taught 'je me demande'. It is natural and correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I know how much you want",
+       "target": "je sais à quel point tu veux",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'I know how much you want' on its own reads as a quantity ('combien tu veux'). It is ambiguous for this degree LEGO.",
+       "keep": false,
+       "why": "Opus: bad — 'I know how much you want' on its own reads as a quantity ('combien tu veux'). It is ambiguous for this degree LEGO."
+      },
+      {
+       "role": "build",
+       "known": "she knows how much I want",
+       "target": "elle sait à quel point je veux",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'how much I want' on its own reads as a quantity. It is ambiguous for this degree LEGO.",
+       "keep": false,
+       "why": "Opus: bad — 'how much I want' on its own reads as a quantity. It is ambiguous for this degree LEGO."
+      },
+      {
+       "role": "build",
+       "known": "he knows how much you like",
+       "target": "il sait à quel point tu aimes",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'how much you like' clearly means degree. It extends naturally and the target is correct.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I know how much you want to learn",
+       "target": "je sais à quel point tu veux apprendre",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence with a clear degree reading. The target is correct and matches.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I wonder how much you want to speak French",
+       "target": "je me demande à quel point tu veux parler français",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Complete sentence using taught material. The target is grammatical and matches.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "you know how much I like to speak French",
+       "target": "tu sais à quel point j'aime parler français",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. 'j'aime parler français' is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "she knows how much I want to learn",
+       "target": "elle sait à quel point je veux apprendre",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence with a degree reading. The target is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he knows how much I want to speak with you",
+       "target": "il sait à quel point je veux parler avec toi",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. The target is correct and matches.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I don't know how much he wants to learn",
+       "target": "je ne sais pas à quel point il veut apprendre",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": false,
+       "opusReason": "After 'I don't know', 'how much he wants to learn' can easily mean the amount he wants to learn ('combien'). It is ambiguous, so not tier 1 for this LEGO.",
+       "keep": false,
+       "why": "Opus: bad — After 'I don't know', 'how much he wants to learn' can easily mean the amount he wants to learn ('combien'). It is ambiguous, so not tier 1 for this LEGO."
+      },
+      {
+       "role": "use",
+       "known": "I know how much you want to speak French with me",
+       "target": "je sais à quel point tu veux parler français avec moi",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. The target is correct and fully taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I know how much you like to speak French",
+       "target": "je sais à quel point tu aimes parler français",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. The target is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "she knows how much you want to learn",
+       "target": "elle sait à quel point tu veux apprendre",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence with a degree reading. The target is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  }
+ }
+}
