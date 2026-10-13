@@ -382,15 +382,24 @@ async function apply(course) {
       }
       await pg.query('UPDATE course_seeds SET approved_at=NULL, last_edit_event_id=$1, updated_at=now() WHERE course_code=$2 AND seed_number=$3', [ev, course, p.seed])
       await pg.query('COMMIT')   // the deferred DEBUT_WITHOUT_PRACTICE guard runs here
-      // the explicit outcome undo pairs with the attempt, and the full post-apply state undo must still find (lane review #338)
-      appendLedger(course, { action: 'committed', seed: p.seed, attemptId, at: new Date().toISOString(), afterDigest: L.stateDigest(await loadSeed(pg, course, p.seed)) })
-      report.push({ ...summary, outcome: 'applied', event: ev })
-      say(`${tag}: applied (${p.kind})`)
     } catch (e) {
       await pg.query('ROLLBACK').catch(() => {})
       appendLedger(course, { seed: p.seed, at: new Date().toISOString(), action: 'rolled-back', attemptId, why: e.message })
       report.push({ ...summary, outcome: 'ERROR', why: e.message }); say(`${tag}: ROLLED BACK — ${e.message}`)
+      continue
     }
+    // COMMITTED. Nothing below may call this attempt rolled back: the rows are live. If the post-state read or ledger write
+    // fails, the attempt stays outcome-less in the ledger (undo never restores it until a committed line is added by hand) and says so.
+    try {
+      // the explicit outcome undo pairs with the attempt, and the full post-apply state undo must still find (lane review #338)
+      appendLedger(course, { action: 'committed', seed: p.seed, attemptId, at: new Date().toISOString(), afterDigest: L.stateDigest(await loadSeed(pg, course, p.seed)) })
+    } catch (e) {
+      report.push({ ...summary, outcome: 'applied', event: ev, warning: `COMMITTED but the ledger outcome was not written (${e.message}); undo will not restore it until a committed line is appended by hand` })
+      say(`${tag}: COMMITTED, but recording the outcome failed — ${e.message}`)
+      continue
+    }
+    report.push({ ...summary, outcome: 'applied', event: ev })
+    say(`${tag}: applied (${p.kind})`)
   }
   await finish(course, pg, report, 'rechunk')
   return report
@@ -441,6 +450,10 @@ async function undo(course) {
     try {
       await pg.query('BEGIN')
       await pg.query('SELECT 1 FROM course_legos WHERE course_code=$1 AND seed_number=$2 FOR UPDATE', [course, seed])
+      // lock every row family the drift check reads and the overwrite replaces, not only the LEGOs
+      await pg.query('SELECT 1 FROM course_practice_phrases WHERE course_code=$1 AND seed_number=$2 FOR UPDATE', [course, seed])
+      await pg.query('SELECT 1 FROM lego_introductions WHERE course_code=$1 AND lego_id = ANY($2) FOR UPDATE', [course, live.legos.map((x) => x.lego_id)])
+      await pg.query('SELECT 1 FROM course_seeds WHERE course_code=$1 AND seed_number=$2 FOR UPDATE', [course, seed])
       // inside the transaction, so nothing can slip in between the check and the overwrite: refuse on drift of ANY row we would overwrite
       const drift = L.driftProblem(l, await loadSeed(pg, course, seed))
       if (drift && drift !== 'legacy') { await pg.query('ROLLBACK'); report.push({ seed, outcome: 'skip', why: drift }); continue }
