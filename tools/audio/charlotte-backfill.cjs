@@ -153,8 +153,10 @@ async function workFor(pg, course, roles, voiceSql = BAD_VOICE, maxSeed, langs =
   return inSeedScope(out, maxSeed).sort((a, b) => (a.pos ?? 1e9) - (b.pos ?? 1e9) || a.oldId.localeCompare(b.oldId))
 }
 
+// A dropped connection (Popty restarts under auto-deploys) is retried; an answer, including a refusal, never is (job #287: a restart failed 1,400 clips as 'fetch failed').
+const fetchRetry = async (url, init) => { for (let a = 1; ; a++) { try { return await fetch(url, init) } catch (e) { if (a >= 8) throw e; await new Promise(r => setTimeout(r, 15000)) } } }
 async function render(course, w, dryRun, target = CHARLOTTE, language = 'eng') {
-  const res = await fetch(`${POPTY}/api/audio/render`, {
+  const res = await fetchRetry(`${POPTY}/api/audio/render`, {
     method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': `job-${JOB.replace('#', '')}-charlotte-backfill` },
     body: JSON.stringify({ courseCode: course, role: w.role, text: w.text, language, voiceId: target, job: JOB, dryRun,
       purpose: language !== 'eng' ? `Tom 2026-10-04: ${language} ${w.role} Azure/xAI -> cast Cartesia voice, pilot job #626` : target === CHARLOTTE ? 'Tom 2026-10-03: English re-render on Charlotte (xAI clicks / Azure replacement), job #573' : 'Tom 2026-10-04: English male slot re-render on tom_001, job #573/#614' }),

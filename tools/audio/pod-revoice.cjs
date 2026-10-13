@@ -27,6 +27,8 @@ const has = f => argv.includes(f)
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 const AUDIO_BASE = process.env.LEARNER_AUDIO_BASE || 'https://saysomethingin.app/api/audio'
 const JOB = process.env.BACKFILL_JOB || '#641'
+// A dropped connection (Popty restarts under auto-deploys) is retried; an answer, including a refusal, never is (job #287: a restart failed 1,400 clips as 'fetch failed').
+const fetchRetry = async (url, init) => { for (let a = 1; ; a++) { try { return await fetch(url, init) } catch (e) { if (a >= 8) throw e; await new Promise(r => setTimeout(r, 15000)) } } }
 const bare = v => String(v || '').replace(/^cartesia_/, '')
 // azure/xAI names -> sex; anything not here is reported and skipped, never guessed
 const FEMALE = /(carlota|dalia|elvira|paloma|raquel|brenda|eve|ara|nova|sonia|olivia)/i, MALE = /(luciano|jorge|alvaro|marcos|duarte|julio|leo|rex|sal|ryan|tom)/i
@@ -73,7 +75,7 @@ async function main() {
   const budget = Number(opt('--budget', 0)), dryRun = has('--dry-run'), renderOnly = has('--render-only')
   let moved = 0
   const render = async w => {
-    const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': `job-${JOB.replace('#', '')}-pod-revoice` },
+    const res = await fetchRetry(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': `job-${JOB.replace('#', '')}-pod-revoice` },
       body: JSON.stringify({ courseCode: course, role: w.role, text: w.text, language: w.language, voiceId: w.target, job: JOB, dryRun,
         purpose: `Tom GO: ${podId} target lines -> cast voice (${cast}), job ${JOB}` }) })
     return { status: res.status, ...(await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))) }
