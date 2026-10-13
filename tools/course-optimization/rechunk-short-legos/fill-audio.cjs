@@ -36,8 +36,8 @@ async function render(body) {
 
 async function main() {
   const ledger = fs.readFileSync(path.join(REPO, 'ops/rechunk-short-legos/undo', `${COURSE}.jsonl`), 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l))
-  const latest = new Map()
-  for (const l of ledger) { if (l.action === 'rolled-back') continue; if (l.action === 'undone') latest.delete(l.seed); else if (l.before) latest.set(l.seed, l) }
+  const L = require('./lib.cjs')
+  const latest = L.undoableAttempts(ledger)   // committed attempts only: a rolled-back or crashed attempt wrote nothing to fill
   const seeds = [...latest.keys()]
   const pg = await R.pgClient()
   const { rows: [crs] } = await pg.query('SELECT known_lang, target_lang FROM courses WHERE course_code=$1', [COURSE])
@@ -88,7 +88,10 @@ async function main() {
       const sets = [`${j.col}=$1`]; const vals = [out.audioId]
       if (durCol && dur) { sets.push(`${durCol}=$${vals.length + 1}`); vals.push(Math.round(dur)) }
       vals.push(COURSE, j.key)
-      const u = await pg.query(`UPDATE ${table} SET ${sets.join(',')} WHERE course_code=$${vals.length - 1} AND ${idCol}=$${vals.length} AND ${j.col} IS NULL`, vals)
+      // the text the clip was rendered from rides in the predicate: a row whose text changed during the render keeps its slot empty
+      const textCol = j.role === 'known' ? 'known_text' : 'target_text'
+      vals.push(j.text)
+      const u = await pg.query(`UPDATE ${table} SET ${sets.join(',')} WHERE course_code=$${vals.length - 2} AND ${idCol}=$${vals.length - 1} AND ${j.col} IS NULL AND ${textCol}=$${vals.length}`, vals)
       report.linked += u.rowCount
     }
     for (const l of legos) {   // mirror the lego_introductions row the apply dropped

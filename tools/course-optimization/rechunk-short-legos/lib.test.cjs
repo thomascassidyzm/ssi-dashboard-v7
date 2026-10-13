@@ -121,3 +121,14 @@ test('undo refuses on drift of ANY row it would overwrite, not just LEGO text', 
   assert.ok(/drift/.test(L.driftProblem({ afterDigest: d }, edited)))
   assert.strictEqual(L.driftProblem({}, edited), 'legacy')   // a ledger line with no recorded post-state cannot be checked
 })
+
+test('(#539a) the digest ignores lego_introductions, but a ledger digest written WITH intros still verifies', () => {
+  const state = { seed: { seed_number: 4 }, legos: [{ lego_index: 1, known_text: 'a', target_text: 'b' }], phrases: [], intros: [] }
+  const d = L.stateDigest(state)
+  const mirrored = JSON.parse(JSON.stringify(state)); mirrored.intros.push({ lego_id: 'S0004L01', audio_uuid: 'u' })
+  assert.strictEqual(L.stateDigest(mirrored), d)
+  assert.strictEqual(L.driftProblem({ afterDigest: d }, mirrored), null)
+  const old = L.stateDigest(state, { withIntros: true })   // what apply recorded before this fix
+  assert.strictEqual(L.driftProblem({ afterDigest: old }, state), null)
+  assert.ok(/drift/.test(L.driftProblem({ afterDigest: old }, mirrored)))   // old lines keep their old strictness
+})

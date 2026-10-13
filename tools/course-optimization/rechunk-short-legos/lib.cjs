@@ -151,17 +151,21 @@ function undoableAttempts(lines) {
 // What a seed holds that undo would overwrite, minus what is not content: audio pointers (fill-audio writes them after an
 // apply), timestamps, the edit-event stamp and the seed's version counter. A later edit to any phrase/LEGO/intro row changes it.
 const VOLATILE = (k) => /_audio_id$/.test(k) || /_duration_ms$/.test(k) || ['updated_at', 'last_edit_event_id', 'version', 'audio_uuid', 'duration_ms'].includes(k)
-function stateDigest({ seed, legos, phrases, intros }) {
+// lego_introductions are NOT in the digest: apply drops them and fill-audio mirrors them back (audio, not content), so
+// counting them made undo refuse after fill-audio. Undo still restores them from the ledger's before-state.
+function stateDigest({ seed, legos, phrases, intros }, { withIntros = false } = {}) {
   const strip = (r) => { const o = {}; for (const k of Object.keys(r).sort()) if (!VOLATILE(k)) o[k] = r[k]; return o }
   const by = (f) => (a, b) => String(f(a)).localeCompare(String(f(b)))
   const payload = JSON.stringify({ seed: strip(seed || {}), legos: [...legos].map(strip).sort(by((r) => r.lego_index)),
-    phrases: [...phrases].map(strip).sort(by((r) => r.id)), intros: [...(intros || [])].map(strip).sort(by((r) => r.lego_id)) })
+    phrases: [...phrases].map(strip).sort(by((r) => r.id)),
+    ...(withIntros ? { intros: [...(intros || [])].map(strip).sort(by((r) => r.lego_id)) } : {}) })
   return require('crypto').createHash('sha256').update(payload).digest('hex')
 }
 // null = no drift; 'legacy' = the ledger line recorded no post-state; otherwise the reason to refuse.
 function driftProblem(attempt, liveState) {
   if (!attempt.afterDigest) return 'legacy'
-  return stateDigest(liveState) === attempt.afterDigest ? null : 'drift: a row this undo would overwrite changed after the re-chunk (newer edit); not overwriting newer work'
+  // ledger lines written before the intro exclusion carry a digest that includes intros: still honoured, in their old strict form
+  return (stateDigest(liveState) === attempt.afterDigest || stateDigest(liveState, { withIntros: true }) === attempt.afterDigest) ? null : 'drift: a row this undo would overwrite changed after the re-chunk (newer edit); not overwriting newer work'
 }
 
 module.exports = { undoableAttempts, stateDigest, driftProblem, sqlValue, MAX_LEGO_SYLLABLES, norm, words, multisetContains, legoId, afterLegos, workLegos, checkOp, cursorConflicts, allocateIds }
