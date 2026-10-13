@@ -12,8 +12,10 @@ ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --qu
 # S3 credentials (the spoken-text check HEADs objects) and the database URL
 EnvironmentFile=/home/tomcassidy/SSi/ssi-dashboard-v7-clean/.env
 ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/voices/nightly.cjs
-# One walk over ~2.6M rows in 2,000-row pkey batches with a pause between them
-# (~50 min); the live Supabase is shared by learners, staging, Popty and red, so
+# One walk over ~2.9M rows by a sequential-scan cursor on a read-only snapshot,
+# against a clip_index
+# snapshot read once (~1.3 GB RSS for a few minutes; job #806), pausing between
+# batches (~5-10 min, was ~50 in pkey order); the live Supabase is shared by learners, staging, Popty and red, so
 # this takes the back seat and has a hard cap.
 Nice=15
 IOSchedulingClass=idle
