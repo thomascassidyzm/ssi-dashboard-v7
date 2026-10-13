@@ -1,0 +1,401 @@
+{
+ "course": "fas_for_eng",
+ "seeds": {
+  "79": {
+   "seed": 79,
+   "kind": "merge",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "when",
+     "target": "کی"
+    },
+    {
+     "idx": 2,
+     "known": "you started",
+     "target": "شروع کردی"
+    },
+    {
+     "idx": 3,
+     "known": "learning",
+     "target": "یاد گرفتن"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "when did you start",
+      "target": "کی شروع کردی",
+      "components": [
+       {
+        "known": "when",
+        "target": "کی"
+       },
+       {
+        "known": "you started",
+        "target": "شروع کردی"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "fas_for_eng:S0079L02U01",
+       "role": "use",
+       "known": "when did you start?",
+       "target": "کی شروع کردی؟",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is only the bare LEGO. A USE has to be a fuller sentence, longer than a BUILD, and this is shorter than any BUILD.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO. A USE must be a full sentence longer than a BUILD.",
+       "keep": false,
+       "why": "Sonnet: bad — It is only the bare LEGO. A USE has to be a fuller sentence, longer than a BUILD, and this is shorter than any BUILD."
+      },
+      {
+       "id": "fas_for_eng:S0079L02U04",
+       "role": "use",
+       "known": "I know when you started",
+       "target": "می‌دونم کی شروع کردی",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "The Persian is natural and grammatical, it says exactly what the English says, and it uses only taught vocabulary.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Grammatical and natural, but it is only the LEGO plus one LEGO. That is BUILD length, the same as P6, so it fails the USE length rule.",
+       "keep": false,
+       "why": "Opus: bad — Grammatical and natural, but it is only the LEGO plus one LEGO. That is BUILD length, the same as P6, so it fails the USE length rule."
+      },
+      {
+       "id": "fas_for_eng:S0079L02U05",
+       "role": "use",
+       "known": "since when did you start?",
+       "target": "از کی شروع کردی؟",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The English 'since when did you start?' is unnatural, and 'از کی شروع کردی' is not a natural Persian rendering. It also adds a word that is not taught.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'since when did you start' is unnatural English, and 'since when' is not a taught gloss.",
+       "keep": false,
+       "why": "Sonnet: bad — The English 'since when did you start?' is unnatural, and 'از کی شروع کردی' is not a natural Persian rendering. It also adds a word that is not taught."
+      },
+      {
+       "role": "build",
+       "known": "when did you start learning?",
+       "target": "کی شروع کردی یاد گرفتن؟",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the seed sentence. It is natural colloquial Tehrani and the known side tiles from taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "when did you start learning Persian?",
+       "target": "کی شروع کردی فارسی یاد گرفتن؟",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'شروع کردی فارسی یاد گرفتن' with the object inserted is clunky. Natural forms would be 'فارسی یاد بگیری' or 'به فارسی یاد گرفتن'. When unsure, it is BAD.",
+       "keep": false,
+       "why": "Opus: bad — 'شروع کردی فارسی یاد گرفتن' with the object inserted is clunky. Natural forms would be 'فارسی یاد بگیری' or 'به فارسی یاد گرفتن'. When unsure, it is BAD."
+      },
+      {
+       "role": "build",
+       "known": "I don't know when you started",
+       "target": "نمی‌دونم کی شروع کردی",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'نمی‌دونم کی شروع کردی' is natural, matches the known side exactly and uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I don't remember when you started",
+       "target": "یادم نمیاد کی شروع کردی",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'یادم نمیاد کی شروع کردی' is natural and matches the known side. Every piece is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I'm not sure when you started",
+       "target": "مطمئن نیستم کی شروع کردی",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'مطمئن نیستم کی شروع کردی' is natural and exact, with taught material only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I want to know when you started",
+       "target": "می‌خوام بدونم کی شروع کردی",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'می‌خوام بدونم کی شروع کردی' is natural and exact. Both 'want' and 'know' are taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I don't remember when you started learning Persian",
+       "target": "یادم نمیاد کی شروع کردی فارسی یاد گرفتن",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It contains the clunky 'شروع کردی فارسی یاد گرفتن' construction.",
+       "keep": false,
+       "why": "Opus: bad — It contains the clunky 'شروع کردی فارسی یاد گرفتن' construction."
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure when you started learning",
+       "target": "مطمئن نیستم کی شروع کردی یاد گرفتن",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "It embeds the seed pattern naturally under 'مطمئن نیستم'. It is one complete sentence and longer than a BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I don't know when you started learning Persian",
+       "target": "نمی‌دونم کی شروع کردی فارسی یاد گرفتن",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It contains the clunky 'شروع کردی فارسی یاد گرفتن' construction.",
+       "keep": false,
+       "why": "Opus: bad — It contains the clunky 'شروع کردی فارسی یاد گرفتن' construction."
+      },
+      {
+       "role": "use",
+       "known": "I think I know when you started",
+       "target": "فکر کنم می‌دونم کی شروع کردی",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'فکر کنم می‌دونم کی شروع کردی' is natural colloquial Persian and matches the known side. All of it is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I still don't know when you started",
+       "target": "هنوز نمی‌دونم کی شروع کردی",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'still' is not a taught gloss; هنوز was taught as 'yet'. This breaks the one-to-one mapping (ZUT).",
+       "keep": false,
+       "why": "Opus: bad — 'still' is not a taught gloss; هنوز was taught as 'yet'. This breaks the one-to-one mapping (ZUT)."
+      },
+      {
+       "role": "use",
+       "known": "I want to know when you started learning Persian",
+       "target": "می‌خوام بدونم کی شروع کردی فارسی یاد گرفتن",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It contains the clunky 'شروع کردی فارسی یاد گرفتن' construction.",
+       "keep": false,
+       "why": "Opus: bad — It contains the clunky 'شروع کردی فارسی یاد گرفتن' construction."
+      },
+      {
+       "role": "use",
+       "known": "I know when you started learning",
+       "target": "می‌دونم کی شروع کردی یاد گرفتن",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'می‌دونم کی شروع کردی یاد گرفتن' embeds the seed pattern naturally. It is one sentence and longer than a BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I don't know when you started, but I'm happy",
+       "target": "نمی‌دونم کی شروع کردی ولی خوشحالم",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The two clauses are semantically odd together. 'but I'm happy' does not follow naturally, so this is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The two clauses are semantically odd together. 'but I'm happy' does not follow naturally, so this is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I don't remember when you started, but I think it was last month",
+       "target": "یادم نمیاد کی شروع کردی ولی فکر کنم ماه پیش بود",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'it was' (بود) is not taught.",
+       "keep": false,
+       "why": "Opus: bad — 'it was' (بود) is not taught."
+      },
+      {
+       "role": "build",
+       "known": "and when did you start?",
+       "target": "و کی شروع کردی؟",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural fragment. و + LEGO is grammatical colloquial Persian, the meaning matches exactly, and it extends naturally into a full sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "when did you start talking?",
+       "target": "کی شروع کردی حرف زدن؟",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Uses the seed's own colloquial postposed-infinitive pattern (شروع کردی + infinitive), and حرف زدن is taught. The known side is natural and tileable, and the meaning matches.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I'd like to know when you started",
+       "target": "دوست دارم بدونم کی شروع کردی",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "دوست دارم بدونم + embedded question is natural Tehrani speech. All pieces are taught, it is one complete sentence, and the meaning matches.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I wanted to ask when you started",
+       "target": "می‌خواستم بپرسم کی شروع کردی",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "می‌خواستم بپرسم کی شروع کردی is very natural, an exact match, all taught, and one sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I wanted to know when you started",
+       "target": "می‌خواستم بدونم کی شروع کردی",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "می‌خواستم بدونم کی شروع کردی is natural and an exact match. All material is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'd like to know when you started learning",
+       "target": "دوست دارم بدونم کی شروع کردی یاد گرفتن",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Embeds the seed's exact pattern (کی شروع کردی یاد گرفتن) after دوست دارم بدونم. It is natural colloquial speech and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I wanted to ask when you started learning",
+       "target": "می‌خواستم بپرسم کی شروع کردی یاد گرفتن",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "می‌خواستم بپرسم + the seed's pattern is natural, all taught, and one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I wanted to know when you started talking",
+       "target": "می‌خواستم بدونم کی شروع کردی حرف زدن",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": true,
+       "opusReason": "می‌خواستم بدونم کی شروع کردی حرف زدن follows the seed's colloquial pattern. The meaning matches and all words are taught.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  }
+ }
+}
