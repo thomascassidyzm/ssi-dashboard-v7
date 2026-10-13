@@ -39,19 +39,24 @@ function dbUrl() {
 /** Every wrong-variant link, with the correct-variant row if one already exists in the same course+language+role+voice. */
 const WRONG_SQL = (scope) => `
   WITH links AS (
-    SELECT 'seed' AS kind, id, course_code, 'known' AS side, known_text AS txt, known_audio_id AS aid FROM course_seeds WHERE known_audio_id IS NOT NULL
-    UNION ALL SELECT 'seed', id, course_code, 'target1', target_text, target1_audio_id FROM course_seeds WHERE target1_audio_id IS NOT NULL
-    UNION ALL SELECT 'seed', id, course_code, 'target2', target_text, target2_audio_id FROM course_seeds WHERE target2_audio_id IS NOT NULL
-    UNION ALL SELECT 'lego', id, course_code, 'known', known_text, known_audio_id FROM course_legos WHERE known_audio_id IS NOT NULL
-    UNION ALL SELECT 'lego', id, course_code, 'target1', target_text, target1_audio_id FROM course_legos WHERE target1_audio_id IS NOT NULL
-    UNION ALL SELECT 'lego', id, course_code, 'target2', target_text, target2_audio_id FROM course_legos WHERE target2_audio_id IS NOT NULL
-    UNION ALL SELECT 'phrase', id, course_code, 'known', known_text, known_audio_id FROM course_practice_phrases WHERE known_audio_id IS NOT NULL
-    UNION ALL SELECT 'phrase', id, course_code, 'target1', target_text, target1_audio_id FROM course_practice_phrases WHERE target1_audio_id IS NOT NULL
-    UNION ALL SELECT 'phrase', id, course_code, 'target2', target_text, target2_audio_id FROM course_practice_phrases WHERE target2_audio_id IS NOT NULL)
+    SELECT 'seed' AS kind, id::text AS id, course_code, 'known' AS side, known_text AS txt, known_audio_id AS aid FROM course_seeds WHERE known_audio_id IS NOT NULL
+    UNION ALL SELECT 'seed', id::text, course_code, 'target1', target_text, target1_audio_id FROM course_seeds WHERE target1_audio_id IS NOT NULL
+    UNION ALL SELECT 'seed', id::text, course_code, 'target2', target_text, target2_audio_id FROM course_seeds WHERE target2_audio_id IS NOT NULL
+    UNION ALL SELECT 'lego', id::text, course_code, 'known', known_text, known_audio_id FROM course_legos WHERE known_audio_id IS NOT NULL
+    UNION ALL SELECT 'lego', id::text, course_code, 'target1', target_text, target1_audio_id FROM course_legos WHERE target1_audio_id IS NOT NULL
+    UNION ALL SELECT 'lego', id::text, course_code, 'target2', target_text, target2_audio_id FROM course_legos WHERE target2_audio_id IS NOT NULL
+    UNION ALL SELECT 'phrase', id::text, course_code, 'known', known_text, known_audio_id FROM course_practice_phrases WHERE known_audio_id IS NOT NULL
+    UNION ALL SELECT 'phrase', id::text, course_code, 'target1', target_text, target1_audio_id FROM course_practice_phrases WHERE target1_audio_id IS NOT NULL
+    UNION ALL SELECT 'phrase', id::text, course_code, 'target2', target_text, target2_audio_id FROM course_practice_phrases WHERE target2_audio_id IS NOT NULL)
   SELECT l.kind, l.id::text AS row_id, l.course_code, l.side, l.txt, l.aid, a.language, a.role, a.voice_id, a.origin, a.text AS audio_text,
          normalize_text(l.txt) AS want_key,
          (SELECT o.id FROM course_audio o WHERE o.course_code = l.course_code AND o.language = a.language AND o.role = a.role AND o.voice_id = a.voice_id
-             AND o.text_normalized = normalize_text(l.txt) AND o.s3_key NOT LIKE 'pending/%' AND o.s3_key <> '' LIMIT 1) AS existing
+             AND o.text_normalized = normalize_text(l.txt) AND o.id <> l.aid AND (o.text ${QUESTION}) = (l.txt ${QUESTION})
+             AND o.s3_key NOT LIKE 'pending/%' AND o.s3_key <> '' LIMIT 1) AS existing,
+         -- the key the right variant would take is held by a row of the WRONG variant (one of the duplicate question
+         -- renders the key backfill left at the stripped key): rendering would overwrite it, so this link waits for a dedupe
+         EXISTS (SELECT 1 FROM course_audio o WHERE o.course_code = l.course_code AND o.language = a.language AND o.role = a.role AND o.voice_id = a.voice_id
+             AND o.text_normalized = normalize_text(l.txt) AND (o.text ${QUESTION}) <> (l.txt ${QUESTION})) AS blocked
     FROM links l JOIN course_audio a ON a.id = l.aid
    WHERE (l.txt ${QUESTION}) <> (a.text ${QUESTION}) ${scope ? 'AND l.course_code = $1' : ''}`
 
@@ -59,10 +64,11 @@ async function plan(c, course) {
   const rows = (await c.query(WRONG_SQL(course), course ? [course] : [])).rows
   const human = rows.filter(r => r.origin === 'human')
   const todo = rows.filter(r => r.origin !== 'human')
+  const blocked = todo.filter(r => r.blocked && !r.existing)
   const reuse = todo.filter(r => r.existing)
-  const need = todo.filter(r => !r.existing)
+  const need = todo.filter(r => !r.existing && !r.blocked)
   const distinctNeed = new Map(need.map(r => [`${r.course_code}|${r.language}|${r.role}|${r.voice_id}|${r.want_key}`, r]))
-  return { rows, human, reuse, need, distinctNeed }
+  return { rows, human, reuse, need, blocked, distinctNeed }
 }
 
 async function repoint(c, links, label) {
@@ -98,13 +104,51 @@ async function main() {
     const p = await plan(c, course)
     const summary = {
       wrongLinks: p.rows.length, distinctWrongAudioRows: new Set(p.rows.map(r => r.aid)).size,
-      humanLeftAlone: p.human.length, repointableNow: p.reuse.length,
+      humanLeftAlone: p.human.length, blockedByDuplicateRow: p.blocked.length, repointableNow: p.reuse.length,
       needAudioLinks: p.need.length, needAudioDistinctClips: p.distinctNeed.size,
       needAudioChars: [...p.distinctNeed.values()].reduce((n, r) => n + r.txt.length, 0),
     }
     const ev = evidencePath(`tools/audio-question-variant-repoint/plan-${course || 'all'}-${Date.now()}.json`)
     fs.writeFileSync(ev, JSON.stringify({ summary, human: p.human, need: [...p.distinctNeed.values()] }))
     console.log(JSON.stringify({ ...summary, evidence: ev }, null, 2))
+
+    if (argv.includes('--render-plan') || argv.includes('--render')) {
+      const real = argv.includes('--render')
+      const maxChars = Number(argv[argv.indexOf('--max-chars') + 1]) || 0
+      if (real && !maxChars) throw new Error('--render needs --max-chars N (the characters you are willing to spend this run)')
+      const base = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
+      const clips = [...p.distinctNeed.entries()]
+      const byKey = new Map()
+      for (const r of p.need) { const k = `${r.course_code}|${r.language}|${r.role}|${r.voice_id}|${r.want_key}`; (byKey.get(k) || byKey.set(k, []).get(k)).push(r) }
+      const results = []; let spent = 0, i = 0, stopped = null
+      const worker = async () => {
+        while (i < clips.length && !stopped) {
+          const [key, r] = clips[i++]
+          const body = { courseCode: r.course_code, role: r.role, text: r.txt, voiceId: r.voice_id, language: r.language,
+                         purpose: '#586: right question/statement variant of a line whose recording was the other one', dryRun: !real }
+          let res, out
+          try {
+            res = await fetch(`${base}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-586' }, body: JSON.stringify(body), signal: AbortSignal.timeout(120000) })
+            out = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+          } catch (e) { results.push({ key, error: `fetch: ${e.message}` }); if (real) stopped = 'Popty unreachable'; continue }
+          const chars = out.charsSpent || 0
+          if (real) {
+            spent += chars
+            if (out.ok && out.audioId) {
+              const moved = await repoint(c, byKey.get(key).map(l => ({ ...l, to: out.audioId })), 'render')
+              results.push({ key, source: out.source, chars, audioId: out.audioId, moved: moved.moved })
+            } else { results.push({ key, error: out.error || out.code || `HTTP ${res.status}` }); if (res.status === 402) stopped = out.code || '402 refusal' }
+            if (spent >= maxChars) stopped = `reached --max-chars ${maxChars}`
+          } else results.push({ key, source: out.source || null, wouldSpendChars: out.ok ? (out.wouldSpendChars ?? (out.source === 'rendered' ? r.txt.length : 0)) : null, error: out.ok ? undefined : (out.error || out.code) })
+        }
+      }
+      await Promise.all(Array.from({ length: real ? 1 : 3 }, worker))
+      const tally = results.reduce((t, x) => { const k = x.error ? 'error' : x.source; t[k] = (t[k] || 0) + 1; return t }, {})
+      const wouldChars = results.reduce((n, x) => n + (x.wouldSpendChars || 0), 0)
+      const ev2 = evidencePath(`tools/audio-question-variant-repoint/${real ? 'rendered' : 'render-plan'}-${Date.now()}.json`)
+      fs.writeFileSync(ev2, JSON.stringify({ tally, spent, wouldChars, stopped, results }))
+      console.log(JSON.stringify({ mode: real ? 'render' : 'render-plan', tally, charsSpent: spent, wouldSpendChars: wouldChars, stopped, evidence: ev2 }, null, 2))
+    }
 
     if (argv.includes('--repoint')) {
       const out = await repoint(c, p.reuse.map(r => ({ ...r, to: r.existing })), 'reuse')
