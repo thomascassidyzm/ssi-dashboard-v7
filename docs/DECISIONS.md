@@ -1635,3 +1635,15 @@ Same chain as German (#216): `tools/pods/pod-rerecord.cjs fra_for_eng snapshot|r
 - Fix in `publish`: the library lookup used an exact `text_normalized` eq, but the database stores it punctuation-stripped ("et vous ") and PostgREST drops
   trailing spaces, so repeated sentences missed the dedup and hit `unique_course_audio_per_voice`. Now prefix-ilike + comparison on letters/digits in JS.
 - Not live: the switch plan is built (231/231 rows); going live is `switch-pod-clip-pointers.cjs <plan> --apply` after Tom listens.
+
+## 2026-10-13 — Human-take lock moves into Postgres; 209 Welsh Tom-clone slots emptied (Tom GO "yes to both")
+
+- The 209 Welsh known-side slots #606 could not revert (no human take on record) are now NULL, no voice substituted
+  (`tools/audio/welsh-tom-clone-empty-606.cjs`; whole rows in `backup_cym_tom_clone_empty_606`; `--undo --apply` restores).
+  The learner app drops a cycle whose known audio is missing (generateLearningScript `emitItem`), so the cost is that cycle until a human take lands.
+- Trigger `human_take_lock` (`database/migrations/20261013_human_take_lock.sql`, rollback beside it) on course_seeds, course_legos,
+  course_practice_phrases, lego_introductions refuses repointing a human take (origin human / `human_` voice) to a synthetic clip, for every writer,
+  raw SQL included. Override: `SET LOCAL popty.tom_human_take_approval = 'tom:YYYY-MM-DD:<what>'` — the same token shape as #609's code guard.
+  Why: a code guard cannot stop the next script that writes straight to the database. Proof: `tools/audio/human-take-lock-check.cjs` (rolled back).
+- Consequence for code: a JS writer passing `tomApproval` through supabase-js cannot set the session token, so an approved human→synthetic
+  repoint must now run on the direct connection with `SET LOCAL`.
