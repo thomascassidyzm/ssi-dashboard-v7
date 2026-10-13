@@ -66,6 +66,10 @@ const R2 = {
   [N]: { s: 1250, seedWas: 'fedri di ddeud rhywbeth arall wrtha i cyn i mi ateb?', prev: [2, 'rhywbeth arall'], next: [3, 'cyn i mi ateb'] },
   [S]: { s: 1250, seedWas: 'alli di ddweud rhywbeth arall wrtha i cyn i fi ateb?', prev: [3, 'rhywbeth arall'], next: [4, 'cyn i fi ateb'] },
 };
+// Aran 2026-10-13 (second ruling): North seed 15 would be identical to seed 14 after ruling 1, so it is DROPPED from the
+// North running order (course_seed_weave_drops, the mechanism the weave's other drops use). Row and seed id kept; its
+// text still follows ruling 1 so the row is coherent; its phrases move under seed 14 as planned. South seed 15 stays.
+const DROPS = [{ c: N, s: 15, reason: 'Aran 2026-10-13: after newydd ddechrau → wedi dechrau it is identical to seed 14 (dw i wedi dechrau cofio); dropped, not kept as a duplicate (job #565)' }];
 const NEW_LEGO = { type: 'M', known: 'to them', target: 'wrthyn nhw', components: [{ known: 'to them', target: 'wrthyn nhw' }] };
 // Aran's four held sentences (job #555 left them under taught LEGOs), and the home Aran named for each.
 const HELD = [
@@ -137,15 +141,27 @@ async function phrasesWhere(sb, course, col, pattern) {
 }
 
 async function build(sb) {
-  const out = { seedEdits: [], legoEdits: [], phraseEdits: [], moves: [], held: [], legoMoves: [], adds: [], knownLinks: [], connRewrites: [],
+  const out = { drops: DROPS, seedEdits: [], legoEdits: [], phraseEdits: [], moves: [], held: [], legoMoves: [], adds: [], knownLinks: [], connRewrites: [],
     noHome: [], warnings: [], zut: [], snapshot: {} };
   for (const c of [N, S]) {
     const C = await loadCourse(sb, c);
+    // The drop, applied to the running order the plan reasons over (the view numbers kept seeds 1..n, so later ones move up).
+    for (const d of DROPS.filter((x) => x.c === c)) {
+      const p = C.order.positionOf.get(d.s);
+      if (p === undefined) { out.warnings.push(`${cc(c)} seed ${d.s} is already out of the running order`); continue; }
+      C.order.positionOf.delete(d.s);
+      for (const [k, v] of C.order.positionOf) if (v > p) C.order.positionOf.set(k, v - 1);
+      C.order.seeds = C.order.seeds.filter((x) => x !== d.s);
+    }
+    const dropped = (s) => DROPS.some((d) => d.c === c && d.s === s);
     const seedRow = (s) => C.seeds.find((x) => x.seed_number === s);
     const legoRow = (s, l) => C.legos.find((x) => x.seed_number === s && x.lego_index === l);
     const cut = C.pos(NEWYDD_SEED[c]);
     const plays = (s) => C.pos(s) !== undefined;
     const before = (s) => plays(s) && C.pos(s) < cut;
+    // A dropped seed 15 still takes ruling 1's text (its row stays coherent); its position for re-homing is seed 14's.
+    const before15 = (s) => before(s) || (s === 15 && dropped(15));
+    const posOr = (s) => C.pos(s) ?? (s === 15 ? C.pos(14) + 0.5 : undefined);
 
     // ── preconditions, read live ────────────────────────────────────────────────────────────────
     const nl = legoRow(NEWYDD_SEED[c], 1);
@@ -168,20 +184,20 @@ async function build(sb) {
 
     // ── Ruling 1 on seeds and LEGOs (virtual state updated as we go, so the checks see the new course) ──
     for (const x of C.seeds) {
-      if (!before(x.seed_number) || !R1_TARGET.test(x.target_text)) { R1_TARGET.lastIndex = 0; continue; }
+      if (!before15(x.seed_number) || !R1_TARGET.test(x.target_text)) { R1_TARGET.lastIndex = 0; continue; }
       R1_TARGET.lastIndex = 0;
-      const e = { c, s: x.seed_number, id: x.id, version: x.version, pos: C.pos(x.seed_number), was: [x.target_text, x.known_text],
+      const e = { c, s: x.seed_number, id: x.id, version: x.version, pos: C.pos(x.seed_number) ?? 'dropped', was: [x.target_text, x.known_text],
         now: [r1Target(x.target_text), r1Known(x.known_text)], why: 'ruling 1' };
       if (e.now[1] === e.was[1]) out.warnings.push(`${cc(c)} seed ${x.seed_number}: English has no 'just started': "${x.known_text}"`);
       out.seedEdits.push(e);
       x.target_text = e.now[0]; x.known_text = e.now[1];
     }
     for (const x of C.legos) {
-      if (!before(x.seed_number) || !/newydd ddechrau/i.test(x.target_text + JSON.stringify(x.components || []))) continue;
+      if (!before15(x.seed_number) || !/newydd ddechrau/i.test(x.target_text + JSON.stringify(x.components || []))) continue;
       const now = [r1Target(x.target_text), r1Known(x.known_text)];
       const comps = x.components ? x.components.map((k) => ({ known: r1Known(k.known), target: r1Target(k.target) })) : x.components;
       // Taught already when an earlier NEW LEGO carries the same Welsh and English (S0014L01 for S0015L01).
-      const earlier = C.legos.find((y) => y.is_new && before(y.seed_number) && C.pos(y.seed_number) < C.pos(x.seed_number)
+      const earlier = C.legos.find((y) => y.is_new && before(y.seed_number) && C.pos(y.seed_number) < posOr(x.seed_number)
         && norm(y.target_text) === norm(now[0]) && norm(y.known_text) === norm(now[1]));
       out.legoEdits.push({ c, s: x.seed_number, l: x.lego_index, id: x.id, version: x.version, was: [x.target_text, x.known_text, x.is_new],
         now: [...now, earlier ? false : x.is_new], components: comps, compsWas: x.components, taughtAt: earlier ? tag(earlier.seed_number, earlier.lego_index) : null });
@@ -245,7 +261,7 @@ async function build(sb) {
 
     const reCheck = []; // edited phrases that stay put: checked once all moves are planned
     for (const r of [...rows.values()].sort((a, b) => (C.pos(a.seed_number) ?? 1e9) - (C.pos(b.seed_number) ?? 1e9) || a.id.localeCompare(b.id))) {
-      const edit = before(r.seed_number) && /newydd ddechrau/i.test(r.target_text);
+      const edit = before15(r.seed_number) && /newydd ddechrau/i.test(r.target_text);
       const now = edit ? [r1Target(r.target_text), r1Known(r.known_text)] : [r.target_text, r.known_text];
       if (edit && now[1] === r.known_text) out.warnings.push(`${cc(c)} ${r.id}: English has no 'just started': "${r.known_text}"`);
       out.snapshot[c][r.id] = { target: r.target_text, version: r.version };
@@ -254,11 +270,11 @@ async function build(sb) {
       const conn = r.connected_lego_ids && r.connected_lego_ids.includes('S0015L01') && edit
         ? r.connected_lego_ids.map((x) => (x === 'S0015L01' ? 'S0014L01' : x)).filter((x, i, a) => a.indexOf(x) === i) : r.connected_lego_ids;
       if (isSrc) {
-        const h = findHome(now[0], 15, 1, C.pos(15), legoAt(14, 1));
-        if (!h) { out.noHome.push({ c, id: r.id, was: [r.target_text, r.known_text], now, why: checkAt(C, 14, 1, legoAt(14, 1).target_text, now[0]) }); if (edit) out.phraseEdits.push({ c, id: r.id, was: [r.target_text, r.known_text], now, conn, stays: true, pos: C.pos(r.seed_number) }); continue; }
+        const h = findHome(now[0], 15, 1, posOr(15), legoAt(14, 1));
+        if (!h) { out.noHome.push({ c, id: r.id, was: [r.target_text, r.known_text], now, why: checkAt(C, 14, 1, legoAt(14, 1).target_text, now[0]) }); if (edit) out.phraseEdits.push({ c, id: r.id, was: [r.target_text, r.known_text], now, conn, stays: true, pos: C.pos(r.seed_number) ?? 'dropped' }); continue; }
         if (await homeHolds(h.home.seed_number, h.home.lego_index, now[0])) {
           out.noHome.push({ c, id: r.id, was: [r.target_text, r.known_text], now, dupAt: tag(h.home.seed_number, h.home.lego_index) });
-          if (edit) out.phraseEdits.push({ c, id: r.id, was: [r.target_text, r.known_text], now, conn, stays: true, pos: C.pos(r.seed_number) });
+          if (edit) out.phraseEdits.push({ c, id: r.id, was: [r.target_text, r.known_text], now, conn, stays: true, pos: C.pos(r.seed_number) ?? 'dropped' });
           continue;
         }
         const slot = await claim(h.home.seed_number, h.home.lego_index, r.phrase_role);
@@ -329,7 +345,7 @@ async function build(sb) {
     }
 
     // ── known clips for the changed seeds, library first ──
-    for (const e of out.seedEdits.filter((x) => x.c === c)) {
+    for (const e of out.seedEdits.filter((x) => x.c === c && !dropped(x.s))) {
       const seed = seedRow(e.s);
       const { data: clips, error } = await sb.from('course_audio').select('id,voice_id,origin,text,course_code')
         .in('course_code', [LIVE[N], LIVE[S]]).eq('role', 'known').eq('origin', 'human');
@@ -343,6 +359,7 @@ async function build(sb) {
   const touched = new Set();
   const t = (c, s) => touched.add(`${c}|${s}`);
   for (const e of out.seedEdits) t(e.c, e.s);
+  for (const d of DROPS) t(d.c, d.s);
   for (const e of out.legoEdits) t(e.c, e.s);
   for (const e of out.phraseEdits) t(e.c, Number(e.id.split(':')[1].slice(1, 5)));
   for (const m of out.moves) { t(m.c, m.s); t(m.c, Number(m.oldId.split(':')[1].slice(1, 5))); }
@@ -354,6 +371,8 @@ async function build(sb) {
 }
 
 function printPlan(o) {
+  console.log('── DROPPED FROM THE RUNNING ORDER');
+  for (const d of o.drops) console.log(`${cc(d.c)} seed ${d.s}: ${d.reason}`);
   console.log('── SEEDS');
   for (const e of o.seedEdits) console.log(`${cc(e.c)} seed ${e.s} @${e.pos} [${e.why}]  "${e.was[0]}" / ${e.was[1]}  →  "${e.now[0]}" / ${e.now[1]}`);
   console.log('── LEGOs');
@@ -384,6 +403,8 @@ function fingerprintFn() {
   UNION ALL SELECT 'live '||x.course_code||' seeds', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_seeds x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
   UNION ALL SELECT 'live '||x.course_code||' legos', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_legos x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
   UNION ALL SELECT 'live '||x.course_code||' phrases', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_practice_phrases x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
+  UNION ALL SELECT 'weave drops '||x.course_code, count(*), md5(string_agg(md5(row(x.course_code, x.seed_number, x.reason, x.decided_by)::text), '' ORDER BY x.seed_number)) FROM course_seed_weave_drops x
+    WHERE (x.course_code, x.seed_number) NOT IN (SELECT c, s FROM t_seeds) GROUP BY x.course_code
   UNION ALL SELECT 'sandbox '||x.course_code||' other seeds', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_seeds x
     WHERE x.course_code IN ('cym_nv2_for_eng','cym_sv2_for_eng') AND (x.course_code, x.seed_number) NOT IN (SELECT c, s FROM t_seeds) GROUP BY x.course_code
   UNION ALL SELECT 'sandbox '||x.course_code||' other legos', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_legos x
@@ -423,6 +444,7 @@ DO $$ BEGIN
   IF EXISTS (SELECT 1 FROM t_seeds WHERE c NOT IN ('cym_nv2_for_eng','cym_sv2_for_eng')) THEN RAISE EXCEPTION 'a touched seed is outside the sandboxes'; END IF;
   IF (SELECT count(*) FROM snap n JOIN course_practice_phrases p ON p.id = n.id AND p.target_text = n.target_text AND p.version = n.version) <> (SELECT count(*) FROM snap) THEN
     RAISE EXCEPTION 'CHANGED UNDER US: a phrase this edits or moves is gone or was edited since the plan — re-plan'; END IF;
+${o.drops.map((d) => `  IF EXISTS (SELECT 1 FROM course_seed_weave_drops WHERE course_code = ${q(d.c)} AND seed_number = ${d.s}) THEN RAISE EXCEPTION '${cc(d.c)} seed ${d.s} is already dropped'; END IF;`).join('\n')}
 ${o.seedEdits.map((e) => `  IF NOT EXISTS (SELECT 1 FROM course_seeds WHERE id = ${q(e.id)} AND target_text = ${q(e.was[0])} AND known_text = ${q(e.was[1])} AND version = ${e.version}) THEN RAISE EXCEPTION 'CHANGED UNDER US: ${cc(e.c)} seed ${e.s}'; END IF;`).join('\n')}
 ${o.legoEdits.map((e) => `  IF NOT EXISTS (SELECT 1 FROM course_legos WHERE id = ${q(e.id)} AND target_text = ${q(e.was[0])} AND is_new = ${e.was[2]} AND version = ${e.version}) THEN RAISE EXCEPTION 'CHANGED UNDER US: ${cc(e.c)} ${tag(e.s, e.l)}'; END IF;`).join('\n')}
 ${o.legoMoves.map((m) => `  IF NOT EXISTS (SELECT 1 FROM course_legos WHERE id = ${q(m.id)} AND lego_index = ${m.a} AND target_text = ${q(m.target)} AND version = ${m.version}) THEN RAISE EXCEPTION 'CHANGED UNDER US: ${cc(m.c)} ${tag(m.s, m.a)}'; END IF;
@@ -438,7 +460,8 @@ CREATE TABLE ${BACKUP}_phrases AS SELECT x.* FROM course_practice_phrases x JOIN
 CREATE TABLE ${BACKUP}_intros AS SELECT x.* FROM lego_introductions x JOIN t_seeds t ON t.c = x.course_code AND substr(x.lego_id, 2, 4)::int = t.s;
 CREATE TABLE ${BACKUP}_flags AS SELECT x.* FROM lego_proof_flags x JOIN t_seeds t ON t.c = x.course_code AND substr(x.lego_id, 2, 4)::int = t.s;
 CREATE TABLE ${BACKUP}_touched AS SELECT * FROM t_seeds;
-REVOKE ALL ON ${BACKUP}_seeds, ${BACKUP}_legos, ${BACKUP}_phrases, ${BACKUP}_intros, ${BACKUP}_flags, ${BACKUP}_touched FROM anon, authenticated;
+CREATE TABLE ${BACKUP}_drops AS SELECT x.* FROM course_seed_weave_drops x JOIN t_seeds t ON (t.c, t.s) = (x.course_code, x.seed_number);
+REVOKE ALL ON ${BACKUP}_seeds, ${BACKUP}_legos, ${BACKUP}_phrases, ${BACKUP}_intros, ${BACKUP}_flags, ${BACKUP}_touched, ${BACKUP}_drops FROM anon, authenticated;
 
 INSERT INTO content_edit_events (course_code, surface, operation, actor_kind, actor_id, actor_label, actor_verified, actor_role, scope, detail)
 SELECT c, 'sql:job-565 weave-cym-newydd-wrthyn', 'weave-newydd-wrthyn-rulings', 'agent', 'claude-job-565-newydd-wrthyn', 'agent (claude-job-565-newydd-wrthyn)', false, 'creator',
@@ -470,6 +493,8 @@ BEGIN
   UPDATE course_legos SET id = old_uuid WHERE id = new_uuid;
 END $f$;
 `);
+  lines.push('-- 0. DROP (Aran 2026-10-13): North seed 15 leaves the running order; row and id kept');
+  for (const d of o.drops) lines.push(`INSERT INTO course_seed_weave_drops (course_code, seed_number, reason, decided_by) VALUES (${q(d.c)}, ${d.s}, ${q(d.reason)}, 'aran (job-565)');`);
   lines.push('-- 1. RULING 2: the cyn i … ateb LEGO moves up one; the new LEGO wrthyn nhw takes its index');
   for (const m of o.legoMoves) lines.push(`SELECT pg_temp.move_lego(${q(m.c)}, ${m.s}, ${m.a}, ${m.b}, ${ev(m.c)});`);
   for (const a of o.adds) lines.push(`INSERT INTO course_legos (course_code, seed_number, lego_index, type, is_new, known_text, target_text, components, status, release_batch, last_edit_event_id)
@@ -510,6 +535,8 @@ DO $$ BEGIN
       AND s.target_text ~* 'newydd ddechrau' AND r.position < (SELECT position FROM course_running_order r2 WHERE r2.course_code = s.course_code AND r2.seed_number = CASE s.course_code WHEN 'cym_nv2_for_eng' THEN 64 ELSE 62 END)) THEN
     RAISE EXCEPTION 'CHECK FAILED: a seed before the newydd seed still says newydd ddechrau'; END IF;
   IF EXISTS (SELECT 1 FROM course_seeds WHERE course_code IN ('cym_nv2_for_eng','cym_sv2_for_eng') AND seed_number = 1250 AND target_text !~ 'wrthyn nhw') THEN RAISE EXCEPTION 'CHECK FAILED: seed 1250'; END IF;
+  IF EXISTS (SELECT 1 FROM course_running_order WHERE course_code = 'cym_nv2_for_eng' AND seed_number = 15) THEN RAISE EXCEPTION 'CHECK FAILED: North seed 15 still in the running order'; END IF;
+  IF NOT EXISTS (SELECT 1 FROM course_running_order WHERE course_code = 'cym_sv2_for_eng' AND seed_number = 15) THEN RAISE EXCEPTION 'CHECK FAILED: South seed 15 left the running order'; END IF;
   RAISE NOTICE 'ALL CHECKS PASSED';
 END $$;
 SELECT course_code, seed_number, target_text, known_text, known_audio_id IS NOT NULL k, target1_audio_id IS NOT NULL t1, target2_audio_id IS NOT NULL t2 FROM course_seeds
@@ -534,6 +561,8 @@ INSERT INTO course_legos SELECT * FROM ${BACKUP}_legos;
 INSERT INTO course_practice_phrases SELECT * FROM ${BACKUP}_phrases;
 INSERT INTO lego_introductions SELECT * FROM ${BACKUP}_intros;
 INSERT INTO lego_proof_flags SELECT * FROM ${BACKUP}_flags;
+DELETE FROM course_seed_weave_drops x USING t_seeds t WHERE (t.c, t.s) = (x.course_code, x.seed_number);
+INSERT INTO course_seed_weave_drops SELECT * FROM ${BACKUP}_drops;
 UPDATE course_seeds x SET known_text = b.known_text, target_text = b.target_text, known_audio_id = b.known_audio_id, target1_audio_id = b.target1_audio_id,
   target2_audio_id = b.target2_audio_id, last_edit_event_id = b.last_edit_event_id FROM ${BACKUP}_seeds b WHERE b.id = x.id;
 SET CONSTRAINTS ALL IMMEDIATE;
@@ -544,7 +573,7 @@ DO $$ BEGIN
      IS DISTINCT FROM (SELECT md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM ${BACKUP}_phrases x) THEN RAISE EXCEPTION 'UNDO CHECK FAILED: phrases'; END IF;
   RAISE NOTICE 'RESTORED: % seeds, % LEGOs, % phrases byte-identical to the backup', (SELECT count(*) FROM ${BACKUP}_seeds), (SELECT count(*) FROM ${BACKUP}_legos), (SELECT count(*) FROM ${BACKUP}_phrases);
 END $$;
-DROP TABLE ${BACKUP}_seeds, ${BACKUP}_legos, ${BACKUP}_phrases, ${BACKUP}_intros, ${BACKUP}_flags, ${BACKUP}_touched;
+DROP TABLE ${BACKUP}_seeds, ${BACKUP}_legos, ${BACKUP}_phrases, ${BACKUP}_intros, ${BACKUP}_flags, ${BACKUP}_touched, ${BACKUP}_drops;
 `;
 }
 
@@ -688,6 +717,8 @@ DO $$ BEGIN
   IF ${LEGOS_STATE('course_legos')} IS DISTINCT FROM ${LEGOS_STATE('before_legos')} THEN RAISE EXCEPTION 'TEST FAILED: LEGOs'; END IF;
   IF ${PHR_STATE('course_practice_phrases')} IS DISTINCT FROM ${PHR_STATE('before_phrases')} THEN RAISE EXCEPTION 'TEST FAILED: phrases'; END IF;
   IF EXISTS (SELECT * FROM pre EXCEPT SELECT * FROM pg_temp.fp()) THEN RAISE EXCEPTION 'TEST FAILED: fingerprint'; END IF;
+  IF NOT EXISTS (SELECT 1 FROM course_running_order WHERE course_code = 'cym_nv2_for_eng' AND seed_number = 15) THEN RAISE EXCEPTION 'TEST FAILED: North seed 15 not back in the running order'; END IF;
+  IF EXISTS (SELECT 1 FROM course_seed_weave_drops WHERE course_code = 'cym_nv2_for_eng' AND seed_number = 15) THEN RAISE EXCEPTION 'TEST FAILED: drop row survived the undo'; END IF;
   RAISE NOTICE 'TEST PASSED: apply then undo leaves every touched seed as it was';
 END $$;
 ROLLBACK;
