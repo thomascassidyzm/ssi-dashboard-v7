@@ -1221,9 +1221,9 @@ module.exports = function seedCompleteRoutes(ctx) {
         if (nonExample.length > 0) {
           errors.push({
             type: 'non_example_text',
-            message: `${nonExample.length} string(s) hold a [bracketed] or {braced} label — every known/target string is spoken aloud, and only examples are ever spoken`,
+            message: `${nonExample.length} string(s) hold a bracket, parenthetical note or slash-separated alternatives — every known/target string is spoken aloud, and only examples are ever spoken`,
             offenders: nonExample.slice(0, 20),
-            hint: 'Gloss a component with the words it contributes in this sentence (e.g. merge a particle into the word it modifies: "she\'s trying" / "عم تحاول"), never with a label such as [progressive].',
+            hint: 'No brackets, no "(note)", no "a/b" lists. Gloss a component with the words it contributes in this sentence (e.g. merge a particle into the word it modifies: "she\'s trying" / "عم تحاول"); to keep two senses apart, change the English to natural words that carry the sense ("to know someone"), never a note.',
           });
           console.log(`✗ ${seedId}: NON-EXAMPLE TEXT - ${nonExample.map(o => `${o.where} ${o.field} "${o.text}"`).join(', ')}`);
         }

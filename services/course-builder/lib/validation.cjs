@@ -975,7 +975,20 @@ function checkMetadataGloss(legos) {
 // A bracket or brace is how a label is written ("[progressive]" as the gloss of a
 // particle component reached ara_lb_for_eng S0372L01C03 this way, and the audio
 // pass sent it to the voice). Hard reject at the door of the content, not a warn.
-const NON_EXAMPLE_TEXT = /[\[\]{}]/;
+//
+// #486 (Tom, r-2026-10-13 no brackets: "No brackets anywhere!!!! ... We do not explain anything."): the
+// same door now refuses ( ) too, half- and full-width, and a slash between two glosses ("very/a lot").
+// Until then afr_for_eng went in with 132 LEGOs glossed "interesting (predicative)" / "to make/do": the
+// zero-explanation gate in apml/services/course-builder-api.apml was never wired into code, this check
+// covered only [] and {}, and the standard TTS path (phase8-audio-from-baskets) quietly stripped (...) so
+// no ear caught it — until the Tom-voice intros spoke the LEGO text verbatim. Disambiguate with natural
+// English words in the prompt, never a note. A slash between digits (3/4, 24/7) is a number, not a list.
+const NON_EXAMPLE_TEXT = /[\[\]{}()（）［］｛｝]|(?<![0-9])\/(?![0-9])/;
+
+/** True when one string holds a bracket, parenthesis or slash-separated alternatives — the shared test for every content-writing surface. */
+function hasNonExampleText(text) {
+  return text != null && NON_EXAMPLE_TEXT.test(String(text));
+}
 
 function checkNonExampleText(legos) {
   const bad = [];
@@ -1262,6 +1275,7 @@ module.exports = {
   checkTiling,
   checkMetadataGloss,
   checkNonExampleText,
+  hasNonExampleText,
   stemKnownGloss,
   tokenizeKnown,
   compileKnownContract,
