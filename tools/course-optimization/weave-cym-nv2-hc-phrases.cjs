@@ -66,7 +66,8 @@ async function pending() {
   const done = new Set(phr.map((p) => `${p.seed_number}:${p.lego_index}`));
   // Aran, 2026-10-08: the same Welsh (identical or soft-mutated) taught EARLIER in the running
   // order under other English is already taught (welsh-mutation.cjs isSameWelsh, the rule v2
-  // finalize now applies). A LEGO that rule catches gets no phrases here; it is named, not flipped.
+  // finalize now applies). A LEGO that rule catches gets no basket here; it is named, not flipped.
+  // Its 2-3 new-pairing phrases (Aran, 2026-10-13) come from weave-cym-new-pairing-phrases.cjs.
   const all = await pageAll(() => sb.from('course_legos').select('seed_number,lego_index,known_text,target_text')
     .eq('course_code', COURSE).order('seed_number').order('lego_index'));
   const key = (l) => [pos.get(l.seed_number) ?? Infinity, l.lego_index];
