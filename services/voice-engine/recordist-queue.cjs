@@ -315,6 +315,12 @@ async function resolveRecordist(db, voiceIdParam, { cache, course } = {}) {
         languageName: languageName(policy.language),
         humanOnly: !!policy.human_only,
         spellings: recordedSpellings(entry.voiceId, merged),
+        // A CAST-ON-ONLY reader is confined to the courses its castOn names, at
+        // every door that already confines a cast-only voice (castCourses):
+        // the queue's course list, the booth arrival, the re-record take.
+        ...(entry.onlyCastOn === true
+          ? { castCourses: [...new Set(castOnEntries(entry.castOn).map((c) => c.courseCode))] }
+          : {}),
       }
     }
   }
@@ -597,7 +603,9 @@ async function voiceRegister(db, language, { cache } = {}) {
     // First named wins, so a second voice of one gender added to the policy
     // later never silently takes over the lines the first was carrying.
     const bucket = bucketKey(v.dialect, v.gender)
-    if (v.gender && !policyByBucket.has(bucket)) policyByBucket.set(bucket, v)
+    // A cast-on-only reader carries no (dialect, gender) by default — see
+    // policyVoiceList. It owns its own spelling and nothing else.
+    if (v.gender && !v.onlyCastOn && !policyByBucket.has(bucket)) policyByBucket.set(bucket, v)
   }
   for (const [spelling] of aliasOwner) spellings.add(spelling)
   return { policy, policyVoices, aliasOwner, policyByBucket, spellings }
@@ -934,7 +942,50 @@ function seedCastEntry(course, policyVoices) {
       if (entry.voiceId === declared || aliases.has(declared)) { out[role] = entry; break }
     }
   }
+  // THE POLICY-SIDE CAST, second and never over the course's own. See
+  // castOnEntries: it names a slot the course row does not, and it FILLS ONLY.
+  for (const entry of policyVoices) {
+    for (const c of entry.castOn || []) {
+      if (c.courseCode !== course.course_code || out[c.role]) continue
+      // A target-side reading is still bound by the dialect ruling (2026-08-19):
+      // a Northern voice cast on a Southern course is refused here, not obeyed.
+      // The known side is a different language with one dialect, so it is not.
+      if (c.role !== 'known' && canonicalDialect(entry.dialect) !== courseDialect(course)) continue
+      out[c.role] = { ...entry, fillOnly: true }
+    }
+  }
   return out
+}
+
+/**
+ * THE POLICY-SIDE SEED CAST — `castOn` on a language_recording_policy voice.
+ *
+ * Aran, 2026-10-13 (job #588): he will record the ~700 English seed sentences of
+ * the four Welsh courses that have no take, and Dan and Eleri are to fill the
+ * live Southern course's empty seed slots. Neither could be cast the usual way
+ * (courses.voice_config.voices[role]) without editing LIVE course rows that
+ * phase 8, the casting gate and the course-order script all read, and a live
+ * cast there also DISPLACES non-policy clips (linkSeedTake replaces a
+ * legacy_import holder) — on live cym_s_for_eng that is the original
+ * recordings, and linking into live courses is Tom's call, pending.
+ *
+ * So the cast is declared beside the voice, in the one table that says who reads
+ * a language:  voices[slot].castOn = [{courseCode, role}], role one of
+ * known / target1 / target2. It is read by seedCastEntry, so the queue, the
+ * linker and the take route — all three ask seedCastEntry — cannot disagree.
+ * Such a cast is FILL-ONLY, and that is the rule rather than a caution: it asks
+ * for, and links into, EMPTY slots only. A slot that already holds any clip is
+ * left exactly as it is and is not counted as work.
+ *
+ * The role names the SIDE, and the side names the language: a `known` castOn is
+ * read by a voice of the course's KNOWN language (English, for these courses),
+ * and its takes are filed under that language (script-take-filing.cjs).
+ */
+function castOnEntries(raw) {
+  if (!Array.isArray(raw)) return []
+  return raw
+    .map((c) => ({ courseCode: String((c && c.courseCode) || '').trim(), role: String((c && c.role) || '').trim() }))
+    .filter((c) => c.courseCode && ['known', 'target1', 'target2'].includes(c.role))
 }
 
 /** The language's policy voices, flattened to {voiceId, gender, dialect, aliases}. */
@@ -949,6 +1000,12 @@ function policyVoiceList(policy) {
       gender: String(entry.gender || slot.split(':')[0] || '').toLowerCase(),
       dialect: canonicalDialect(entry.dialect),
       aliases: Array.isArray(entry.aliases) ? entry.aliases : [],
+      castOn: castOnEntries(entry.castOn),
+      // A voice that reads ONLY what its castOn names — never the language's
+      // pods, re-records or seed slots by gender. Aran's English voice is one:
+      // without this, every gender-only male pod cast on an eng_for_* course
+      // would route to him through policyByBucket (lineVoiceId rule 3).
+      onlyCastOn: entry.onlyCastOn === true,
     })
   }
   return out
@@ -1039,6 +1096,142 @@ async function fetchSeeds(db, courseCodes) {
 }
 
 /**
+ * A seed a recordist may be asked to read: signed off (RECORDABLE_SEED_STATUSES),
+ * OR SERVED — in its course's running order, which is what the player walks on a
+ * course that has one. A seed the learner hears is not a draft in any sense that
+ * matters to the booth: cym_nv2_for_eng serves seed 315 as status 'draft', and
+ * until this its whole sentence could never be recorded (job #588).
+ */
+function isRecordableSeed(seed, runningOrder) {
+  if (RECORDABLE_SEED_STATUSES.has(seed.status)) return true
+  return !!(runningOrder && runningOrder.positions.has(`${seed.course_code}:${seed.seed_number}`))
+}
+
+/** Seeds of a course that has a running order but does not serve them sort after it. */
+const UNSERVED_SEED_OFFSET = 1e6
+
+/**
+ * Where a seed is served: its running-order position on a course that has one;
+ * its seed number on a course that has none (the player's own fallback); after
+ * everything served when its course has an order that leaves it out.
+ */
+function seedPosition(seed, runningOrder) {
+  const at = runningOrder && runningOrder.positions.get(`${seed.course_code}:${seed.seed_number}`)
+  if (at != null) return at
+  if (runningOrder && runningOrder.courses.has(seed.course_code)) return UNSERVED_SEED_OFFSET + seed.seed_number
+  return seed.seed_number
+}
+
+/** course_running_order for a set of courses: {positions: Map<'course:seed', position>, courses: Set}. */
+async function fetchRunningOrder(db, courseCodes) {
+  const positions = new Map()
+  const courses = new Set()
+  if (!courseCodes.length) return { positions, courses }
+  let rows
+  try {
+    rows = await pagedRead((from, to) => db
+      .from('course_running_order')
+      .select('course_code, seed_number, position')
+      .in('course_code', courseCodes)
+      .order('course_code', { ascending: true })
+      .order('position', { ascending: true })
+      .range(from, to))
+  } catch (err) {
+    throw new Error(`running order read failed: ${err.message}`)
+  }
+  for (const r of rows) {
+    courses.add(r.course_code)
+    const key = `${r.course_code}:${r.seed_number}`
+    if (!positions.has(key)) positions.set(key, r.position)
+  }
+  return { positions, courses }
+}
+
+/**
+ * The courses whose KNOWN side this language's policy voices read by castOn
+ * (castOnEntries), keyed by course code — only where the course's known_lang IS
+ * this language, so an English voice can never be cast on a course whose known
+ * side is Spanish. `castOnOnly` is true when every voice of the language is a
+ * cast-on-only reader (policyVoiceList `onlyCastOn`).
+ */
+async function castOnKnownSideCourses(db, language, { cache } = {}) {
+  const voices = policyVoiceList((await loadPolicies(db, { cache })).find((row) => {
+    try { return canonicalLanguage(row.language) === language } catch { return false }
+  }))
+  const castOnOnly = voices.length > 0 && voices.every((v) => v.onlyCastOn)
+  const wanted = new Set(voices.flatMap((v) => v.castOn.filter((c) => c.role === 'known').map((c) => c.courseCode)))
+  const known = new Map()
+  if (!wanted.size) return { known, castOnOnly }
+  const { data, error } = await memoRead(cache, 'courses:list', () => db
+    .from('courses')
+    .select('course_code, target_lang, known_lang, voice_config, dialect'))
+  if (error) throw new Error(`course list failed: ${error.message}`)
+  for (const c of data || []) {
+    if (!wanted.has(c.course_code)) continue
+    let side = null
+    try { side = canonicalLanguage(c.known_lang) } catch { side = null }
+    if (side === language) known.set(c.course_code, c)
+  }
+  return { known, castOnOnly }
+}
+
+/**
+ * Normalised texts (audioKeyCandidates spellings) that already have a USABLE
+ * human take in `language` and `role` by a voice OUTSIDE `ownVoices`, filed
+ * under one of `courseCodes`. Usable is the bar job #580 linked by: origin
+ * 'human', not a known size under 2000 bytes, a positive duration, and not
+ * failed by veracity.
+ *
+ * ONE COURSE PER READ, FILTERED ON THAT INDEX'S OWN COLUMNS ONLY, and that is
+ * the index rather than taste: course_code (equality), text_normalized and role
+ * are exactly idx_course_audio_text_lookup, which answers 80 texts in ~20ms.
+ * Asked across courses, or with language/origin in the filter, the planner
+ * drifts onto (text_normalized, language) — 1.4s for four texts, 3-8s for some
+ * chunks — and the queue build hit the statement timeout on the live table. The courses searched are the
+ * castOn courses themselves — where the known side's own recordings are filed:
+ * on 2026-10-13 every human English known clip on the estate (12,938) was in
+ * cym_n_for_eng or cym_s_for_eng.
+ *
+ * Chunked by text, 80 to a read, for the reason audioVoicesById pages by 100:
+ * PostgREST echoes the whole `in.(...)` filter back in a response header.
+ */
+async function usableHumanTakeKeys(db, language, role, texts, ownVoices, courseCodes) {
+  const keys = [...new Set(texts.flatMap((t) => audioKeyCandidates(String(t || '').trim())).filter(Boolean))]
+  const out = new Set()
+  const PAGE = 80
+  const reads = []
+  for (const courseCode of courseCodes) {
+    for (let i = 0; i < keys.length; i += PAGE) reads.push({ courseCode, chunk: keys.slice(i, i + PAGE) })
+  }
+  const BATCH = 4
+  for (let i = 0; i < reads.length; i += BATCH) {
+    const results = await Promise.all(reads.slice(i, i + BATCH).map(({ courseCode, chunk }) => db
+      .from('course_audio')
+      .select('text_normalized, language, origin, voice_id, file_size_bytes, duration_ms, veracity_pass')
+      .eq('course_code', courseCode)
+      .eq('role', role)
+      .in('text_normalized', chunk)))
+    for (const { data, error } of results) {
+      if (error) throw new Error(`usable take lookup failed: ${error.message}`)
+      for (const row of data || []) {
+        // language and origin are checked HERE, not in the query: put in the
+        // query they tempt the planner onto (text_normalized, language) for some
+        // chunks, which took 3-8s each on the live table.
+        if (row.language !== language || row.origin !== 'human') continue
+        if (ownVoices.has(row.voice_id)) continue
+        // #580's own bar, NULL-tolerant the way its SQL was: the original
+        // recordings (legacy_import) carry no file_size_bytes at all, and an
+        // unknown size is not a dead clip -- a known size under 2000 is.
+        if (row.file_size_bytes != null && row.file_size_bytes < 2000) continue
+        if (!(row.duration_ms > 0) || row.veracity_pass === false) continue
+        out.add(row.text_normalized)
+      }
+    }
+  }
+  return out
+}
+
+/**
  * voice_id of each of a set of course_audio rows, in one paged read.
  *
  * PAGE is 100, not 500, and that is not a taste call. PostgREST echoes the
@@ -1095,6 +1288,8 @@ function queueSortTier(line) {
 
 /** The body of work a line belongs to: its pod, or failing that its course. */
 function queueSortGroup(line) {
+  // A line that is one body of work across courses says so (the known side).
+  if (typeof line.sortGroup === 'string') return line.sortGroup
   const kind = line.kind || 'pod'
   if (kind === 'pod' || kind === 'takeg') {
     return `${line.courseCode || ''}\u0000${line.podSlug || line.podId || ''}`
@@ -1132,19 +1327,26 @@ function canonicalOwnerBucket(clipVoiceId, aliasOwner, dialect) {
 }
 
 async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED, cache } = {}) {
-  const courses = await coursesForLanguage(db, language, { cache })
+  // A language whose every policy voice is a CAST-ON-ONLY reader (English: Aran,
+  // reading the known side of the Welsh courses) has no target-side work at all
+  // -- no pod, re-record or seed slot of an eng_for_* course is anybody's here --
+  // so its own courses are not read. Only its castOn courses are.
+  const { known: knownSideCourses, castOnOnly } = await castOnKnownSideCourses(db, language, { cache })
+  const courses = castOnOnly ? [] : await coursesForLanguage(db, language, { cache })
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
   // The dialect of each course rides along so the queue can say which courses
   // it serves a given voice (finishQueue `courses`): a policy voice reads its
   // own dialect only.
   const courseDialects = new Map(courses.map((c) => [c.course_code, courseDialect(c)]))
-  const empty = { byBucket: new Map(), notReady: new Map(), handedOn: new Map(), untranslatedUncast: 0, uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, takeGUnalignable: 0, quarry: null, courses: [...byCourse.keys()], courseDialects }
-  if (!courses.length) return empty
+  const empty = { byBucket: new Map(), notReady: new Map(), handedOn: new Map(), untranslatedUncast: 0, uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, takeGUnalignable: 0, knownLinkable: 0, quarry: null, courses: [...byCourse.keys()], courseDialects }
+  if (!courses.length && !knownSideCourses.size) return empty
 
-  const { data: pods, error: podErr } = await db
-    .from('listening_pods')
-    .select('id, course_code, slug, title, metadata')
-    .in('course_code', [...byCourse.keys()])
+  const { data: pods, error: podErr } = byCourse.size
+    ? await db
+      .from('listening_pods')
+      .select('id, course_code, slug, title, metadata')
+      .in('course_code', [...byCourse.keys()])
+    : { data: [], error: null }
   if (podErr) throw new Error(`pod list failed: ${podErr.message}`)
   const podById = new Map((pods || []).map((p) => [p.id, p]))
   // A language whose courses have no pods still has SEEDS (pdc_for_eng is the
@@ -1682,8 +1884,16 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // pod take links a pod sentence FK and would leave the seed's own FK empty --
   // the two look identical on screen and are different rows to fill.
   const { policyVoices } = register
+  let knownLinkable = 0
   if (policyVoices.length) {
-    const seeds = await fetchSeeds(db, [...byCourse.keys()])
+    // Every course whose seeds this language reads: its own (target side) and
+    // the courses a castOn names for the KNOWN side (castOnKnownSideCourses).
+    const seedCourses = new Map([...byCourse.entries(), ...knownSideCourses.entries()])
+    const seeds = await fetchSeeds(db, [...seedCourses.keys()])
+    // WHERE EACH SEED IS SERVED: its course_running_order position. Read for
+    // two reasons -- a served seed is recordable whatever its status (see
+    // isRecordableSeed), and the known side is read in course order.
+    const runningOrder = await fetchRunningOrder(db, [...seedCourses.keys()])
     const seedsByCourse = new Map()
     for (const seed of seeds) {
       if (!seedsByCourse.has(seed.course_code)) seedsByCourse.set(seed.course_code, [])
@@ -1701,12 +1911,26 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     }
     const clipVoice = await audioVoicesById(db, linkedIds)
 
+    // THE KNOWN SIDE'S "NO USABLE TAKE" RULE (Aran, 2026-10-13). An English
+    // sentence that already has a healthy human take -- anybody's but this
+    // language's own policy voices' -- is a LINK to make, not a line to read
+    // again: it is counted (`knownLinkable`) and never queued. Linking it is a
+    // separate, deliberate act (job #580 did the sandboxes; the live courses
+    // wait on Tom).
+    const knownTaken = knownSideCourses.size
+      ? await usableHumanTakeKeys(db, language, 'known',
+        seeds.filter((x) => knownSideCourses.has(x.course_code)).map((x) => x.known_text),
+        new Set(policyVoices.flatMap((v) => [v.voiceId, ...(v.aliases || [])])),
+        [...knownSideCourses.keys()])
+      : new Set()
+
     const seedSeen = new Map()   // `${voice} ${role} ${text}` -> representative, language-wide
-    for (const [courseCode, course] of byCourse.entries()) {
-      const roles = [...SEED_TARGET_ROLES]
+    for (const [courseCode, course] of seedCourses.entries()) {
+      const knownSideOnly = !byCourse.has(courseCode)
+      const roles = knownSideOnly ? ['known'] : [...SEED_TARGET_ROLES]
       // The one exception, and it is checked here rather than trusted from a
       // client: a fixture course's KNOWN side is recordable.
-      if (isTestFixtureCourse(courseCode)) roles.push('known')
+      if (!knownSideOnly && isTestFixtureCourse(courseCode)) roles.push('known')
       const courseSeeds = seedsByCourse.get(courseCode) || []
       if (!courseSeeds.length) continue
 
@@ -1721,19 +1945,28 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
         if (!byBucket.has(bucket)) byBucket.set(bucket, [])
         // The seed slot is cast to ONE policy voice by name (seedCastEntry),
         // so the owner is read straight off the cast, never off the gender.
-        const voiceId = seedCastEntry(course, policyVoices)[role].voiceId
+        const cast = seedCastEntry(course, policyVoices)[role]
+        const voiceId = cast.voiceId
+        // A known side read across courses is ONE body of work in course order,
+        // not four blocks one per course (Aran: the earliest seeds first).
+        const crossCourse = knownSideOnly && role === 'known'
 
         for (const seed of courseSeeds) {
           // A recordist is never asked to record a sentence nobody has signed
-          // off. Machine-drafted seeds (job #740: 697 Welsh drafts, for Aran to
-          // review in the Seed Editor) carry target_text but status 'draft'.
-          if (!RECORDABLE_SEED_STATUSES.has(seed.status)) continue
+          // off -- unless the course SERVES it (isRecordableSeed).
+          if (!isRecordableSeed(seed, runningOrder)) continue
           const text = String((role === 'known' ? seed.known_text : seed.target_text) || '').trim()
           if (!text) continue
+          // FILL-ONLY: a policy-side cast never asks for a slot that already
+          // holds a clip, whoever's (castOnEntries).
+          if (cast.fillOnly && seed[`${role}_audio_id`]) continue
+          if (crossCourse && audioKeyCandidates(text).some((k) => knownTaken.has(k))) { knownLinkable += 1; continue }
           const fkVoice = clipVoice.get(seed[`${role}_audio_id`]) || null
           const key = `${voiceId}\u0000${role} ${normalizeForDb(text)}`
+          const position = seedPosition(seed, runningOrder)
           if (seedSeen.has(key)) {
             const rep = seedSeen.get(key)
+            if (crossCourse && position < rep.seedOrder) rep.seedOrder = position
             rep.duplicateOf.push({ seedId: seed.id, courseCode, role })
             // Recorded means EVERY copy's slot is filled by this voice. A rep
             // that is linked while its duplicate is not would otherwise read as
@@ -1750,7 +1983,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             // After every pod line and every wanted re-record, in seed order,
             // stably: a recordist's list must not reshuffle between loads.
             order: Number.MAX_SAFE_INTEGER,
-            seedOrder: seed.seed_number,
+            // The known side across courses: its earliest SERVED position over
+            // every copy (lowered above as copies collapse in).
+            seedOrder: crossCourse ? position : seed.seed_number,
+            ...(crossCourse ? { sortGroup: '' } : {}),
             text,
             // The crib. On the known-side line the target is the crib, and on a
             // target line the known side is -- each says what the other is.
@@ -1897,7 +2133,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // but the queue is now ordered by one rule rather than by two.
   for (const lines of byBucket.values()) lines.sort(compareQueueLines)
 
-  return { byBucket, notReady, handedOn, untranslatedUncast, uncast, crossLanguage, duplicatesCollapsed, takeGUnalignable, quarry: quarryStats, courses: [...byCourse.keys()], courseDialects }
+  return { byBucket, notReady, handedOn, untranslatedUncast, uncast, crossLanguage, duplicatesCollapsed, takeGUnalignable, knownLinkable, quarry: quarryStats, courses: [...byCourse.keys(), ...knownSideCourses.keys()], courseDialects }
 }
 
 /**
@@ -2551,6 +2787,15 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   const key = normalizeForDb(text)
 
   const courses = await coursesForLanguage(db, recordist.language)
+  // THE KNOWN SIDE OF ANOTHER LANGUAGE'S COURSES, where a castOn names this
+  // language's voice for it (castOnKnownSideCourses) — English takes reaching
+  // the Welsh courses' known_audio_id. The fixture's known side is already in
+  // `courses`, because a fixture's known line is read by its target voice.
+  if (role === 'known') {
+    const { known } = await castOnKnownSideCourses(db, recordist.language)
+    const have = new Set(courses.map((c) => c.course_code))
+    for (const [code, c] of known) if (!have.has(code)) courses.push(c)
+  }
   // ONLY THE COURSES WHOSE SEED SLOT IS CAST TO THIS VOICE, by the same rule
   // that put them in the queue (seedCastEntry: the slot names a voice id).
   // Before this, a take was linked into EVERY course of the language holding
@@ -2559,8 +2804,10 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   // exist and are left alone; this stops the ninth.
   const { voices: policyVoices, spellings: policySpellings } =
     await policyVoicesForLanguage(db, recordist.language)
+  const fillOnlyCourses = new Set()
   const mineCourses = courses.filter((c) => {
     const cast = seedCastEntry(c, policyVoices)[role]
+    if (cast && cast.fillOnly) fillOnlyCourses.add(c.course_code)
     return !!cast && recordist.spellings.includes(cast.voiceId)
   })
   const siblings = await fetchSeeds(db, mineCourses.map((c) => c.course_code))
@@ -2578,6 +2825,9 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   for (const row of candidates) {
     const current = row[`${role}_audio_id`]
     if (current === audioId) continue
+    // FILL-ONLY (castOnEntries): a policy-side cast fills empty slots and moves
+    // nothing — not an imported clip, not a synthesised one, not anybody's.
+    if (current && fillOnlyCourses.has(row.course_code)) continue
     const holder = owners.get(current) || null
     if (current && !recordist.spellings.includes(holder)) {
       // ANOTHER RECORDIST'S CLIP IS NOT OURS TO MOVE, and that is still the
@@ -2744,6 +2994,10 @@ module.exports = {
   invalidateLanguageQueueCache,
   linkSeedTake,
   seedCastEntry,
+  castOnEntries,
+  castOnKnownSideCourses,
+  isRecordableSeed,
+  seedPosition,
   policyVoiceList,
   parseSeedLineId,
   seedLineId,

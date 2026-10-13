@@ -624,41 +624,48 @@ module.exports = function createRecordistRouter({
     if (seedErr && seedErr.code !== '22P02') throw new Error(`seed lookup failed: ${seedErr.message}`)
     if (!seed) { res.status(404).json({ error: `No seed ${parsed.seedId}` }); return null }
 
-    // THE KNOWN-SIDE EXCEPTION, CHECKED ON THE SERVER. The booth has no login,
-    // so the client's word for "this is a test course" is a suggestion. Only a
-    // zzz_ fixture may have its English side recorded (Tom, 2026-09-02).
-    if (parsed.role === 'known' && !isTestFixtureCourse(seed.course_code)) {
+    const { data: course, error: cErr } = await db()
+      .from('courses').select('course_code, voice_config, target_lang, known_lang, dialect').eq('course_code', seed.course_code).maybeSingle()
+    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    if (!course) { res.status(404).json({ error: `No course ${seed.course_code}` }); return null }
+
+    const policies = await loadPolicies(db())
+    const policy = policies.find((row) => row.language === recordist.language)
+    const cast = seedCastEntry(course, policyVoiceList(policy))
+
+    // THE KNOWN SIDE, CHECKED ON THE SERVER. The booth has no login, so the
+    // client's word for "this is a test course" is a suggestion. A live course's
+    // known side is recorded only where the known language's policy CASTS a
+    // voice on it by castOn (Aran's English, job #588); otherwise only a zzz_
+    // fixture records its English (Tom, 2026-09-02).
+    const fixture = isTestFixtureCourse(seed.course_code)
+    const knownCastOn = parsed.role === 'known' && !fixture && !!(cast.known && cast.known.fillOnly)
+    if (parsed.role === 'known' && !fixture && !knownCastOn) {
       res.status(403).json({
-        error: 'The known side of a live course is not recorded here. Only a test fixture course records its English.',
+        error: 'The known side of a live course is not recorded here unless its known language casts a reader on it. Only a test fixture course records its English otherwise.',
         reason: 'known_side_live_course',
         courseCode: seed.course_code,
       })
       return null
     }
 
-    const { data: course, error: cErr } = await db()
-      .from('courses').select('course_code, voice_config, target_lang').eq('course_code', seed.course_code).maybeSingle()
-    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
-    if (!course) { res.status(404).json({ error: `No course ${seed.course_code}` }); return null }
-
     // WRONG LANGUAGE, said in those words. Checked before the cast, because the
     // cast is resolved against the RECORDIST's own language policy: a Welsh
     // voice pointed at a zzz seed would otherwise be told "nobody is cast",
-    // which is false and sends whoever reads it to change the wrong thing.
+    // which is false and sends whoever reads it to change the wrong thing. The
+    // language is the SIDE's: a castOn known line speaks the course's known_lang.
+    const sideLang = knownCastOn ? course.known_lang : course.target_lang
     let courseLanguage = null
-    try { courseLanguage = canonicalLanguage(course.target_lang) } catch { courseLanguage = null }
+    try { courseLanguage = canonicalLanguage(sideLang) } catch { courseLanguage = null }
     if (courseLanguage !== recordist.language) {
       res.status(403).json({
-        error: `That seed belongs to ${seed.course_code}, which is ${course.target_lang}, not ${recordist.language}.`,
+        error: `That seed belongs to ${seed.course_code}, which is ${sideLang}, not ${recordist.language}.`,
         reason: 'wrong_language',
         courseCode: seed.course_code,
       })
       return null
     }
 
-    const policies = await loadPolicies(db())
-    const policy = policies.find((row) => row.language === recordist.language)
-    const cast = seedCastEntry(course, policyVoiceList(policy))
     const castVoice = cast[parsed.role]
     if (!castVoice || !recordist.spellings.includes(castVoice.voiceId)) {
       res.status(403).json({
