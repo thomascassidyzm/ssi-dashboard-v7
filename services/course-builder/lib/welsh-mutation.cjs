@@ -135,7 +135,9 @@ function welshPieces(text) {
 }
 
 // The clitic forms that ARE a full word: "’n" is "yn", "’r" is "yr". Used for containment only.
-const CLITIC_FULL = new Map([["'n", 'yn'], ["'r", 'yr']]);
+// "y" is the same article as "yr" / "’r" (Aran's proofing, job #554: a LEGO introduced as
+// "y peth glas ’na" is practised as "hoffi’r peth glas ’na").
+const CLITIC_FULL = new Map([["'n", 'yn'], ["'r", 'yr'], ['y', 'yr']]);
 
 /** Every spelling this piece is the same taught word as: soft radicals, and final f ↔ apostrophe. */
 function pieceKeys(w) {

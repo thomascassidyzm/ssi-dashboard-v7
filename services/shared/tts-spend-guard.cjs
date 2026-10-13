@@ -88,7 +88,9 @@ const UNKNOWN_PROVIDER_BUDGET = Object.freeze({ monthlyPoolChars: 200_000, cycle
 // was quarantined 3× on its LEGO slot, then re-rolled 3× more on a phrase slot with
 // the same words, because a rejected take never reaches the library. After three
 // takes of the same words in one voice, a fourth needs a human to listen first.
-const DEFAULT_REPEAT = Object.freeze({ maxPerKey: 3, windowHours: 24 })
+// maxPerKey 5 (job #590, Tom 2026-10-13, ruling "TTS spend guard repeat limit 5 per
+// 24h"): 3 stopped legitimate re-voice runs; a sixth identical send is still a loop.
+const DEFAULT_REPEAT = Object.freeze({ maxPerKey: 5, windowHours: 24 })
 /** Pool shares at which a human is told, whatever the stop share is. */
 const POOL_ALERT_SHARES = [0.5, 0.8]
 /** cycleCapChars for a provider whose allowance may be overrun (overageAllowed): no cycle stop. */
@@ -123,12 +125,12 @@ function jobMatches(jobText, token) {
 /**
  * COMMISSIONED WORK PASSES; ONLY RUNAWAYS STOP (Tom 2026-10-04, ruling
  * r-2026-10-04-the-tts-spend-guard-exists: "The guard is to protect runaways. Not work I've
- * commissioned"). Job #656 was refused by the 3-sends repeat limit. A render whose job text names
+ * commissioned"). Job #656 was refused by the (then) 3-sends repeat limit. A render whose job text names
  * a "#NNN" that is a LIVE surface job skips the repeat limit's low number and the automatic
  * per-provider / daily soft caps (JS dailyCap, and the DB's 1M automatic total cap (Tom 2026-10-07; was 260k) via
  * limits.commissioned). It still meets the hard daily ceiling (1,000,000 in tts_spend_reserve) and
  * a repeat ceiling of its own — 10 identical sends in 24h is a loop, not a commission.
- * The checker verifies ONLY that the #NNN names a live surface job (GET /api/jobs rows carry
+ * It asks the surface for status=running only (unfiltered is ~12.8MB; filtered ~2ms). The checker verifies ONLY that the #NNN names a live surface job (GET /api/jobs rows carry
  * job = the #NNN), never trusting the string alone; it does not verify the job commissioned
  * this particular render. That is the accepted trade-off (Watson): the 10-repeat limit and the
  * 1M ceiling remain the runaway stops. An unreachable surface means unattributed limits apply.
@@ -143,7 +145,7 @@ function surfaceCommissionChecker({ surface = process.env.CS_SURFACE || 'http://
     if (now() - cache.at >= COMMISSIONED_CACHE_MS) {
       const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 3000)
       try {
-        const r = await fetchImpl(`${surface}/api/jobs?owner=all`, { signal: ctl.signal })
+        const r = await fetchImpl(`${surface}/api/jobs?owner=all&status=running`, { signal: ctl.signal })
         if (!r.ok) return false
         const body = await r.json()
         cache = { at: now(), live: new Set((body.jobs || []).filter(j => j && j.status === 'running' && Number.isFinite(Number(j.job))).map(j => Number(j.job))) }
