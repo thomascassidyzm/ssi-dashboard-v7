@@ -173,7 +173,7 @@ async function sql() {
   }
 }
 
-module.exports = { SETS };
+module.exports = { SETS, lineChecks };
 if (require.main === module) {
   (process.argv[2] === 'sql' ? sql() : Promise.reject(new Error('mode: sql'))).catch((e) => { console.error(e); process.exit(1); });
 }

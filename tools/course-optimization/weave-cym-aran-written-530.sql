@@ -1,0 +1,86 @@
+-- TEMPLATE: weave-cym-aran-written-530.cjs sql fills the LEGOS and ROWS markers and writes weave-cym-aran-written-530.sql.
+-- Job #530 (Aran 2026-10-13): the last 3 practice lines #510 held, ADDED after the existing rows of their 3 LEGOs, filed as #510
+-- files its lines (role use). Nothing existing is edited or deleted. One row (N S1496L04 "dw i'n medru cyfrif") is an explicit
+-- logged override of the containment check, recorded in its metadata.override. Live cym_n/cym_s, master canonical_seeds,
+-- sandbox LEGOs, every other sandbox phrase and the EXISTING rows under the 3 LEGOs are asserted unchanged.
+-- Dry run unless invoked with  -v finish=COMMIT . Undo: weave-cym-aran-written-530-undo.sql.
+\set ON_ERROR_STOP on
+\if :{?finish}
+\else
+  \set finish ROLLBACK
+\endif
+BEGIN;
+SET LOCAL statement_timeout = '20min';
+CREATE TEMP TABLE legos (course_code text, seed_number int, lego_index int, PRIMARY KEY (course_code, seed_number, lego_index));
+INSERT INTO legos VALUES ('cym_sv2_for_eng',1526,1),('cym_sv2_for_eng',1551,2),('cym_nv2_for_eng',1496,4);
+CREATE TEMP TABLE add_rows (id text PRIMARY KEY, course_code text, seed_number int, lego_index int, position int, known_text text, target_text text,
+  word_count int, lego_count int, phrase_role text, introduce boolean, lego_position text, metadata jsonb);
+INSERT INTO add_rows VALUES
+  ('cym_sv2_for_eng:S1526L01U07', 'cym_sv2_for_eng', 1526, 1, 10, 'finding what you said interesting', 'cael hi’n ddiddorol be’ ddwedest ti', 35, 5, 'use', true, 'start', '{"format":"build_use","pipeline":"v2","job":530,"author":"aran"}'::jsonb),
+  ('cym_sv2_for_eng:S1551L02U04', 'cym_sv2_for_eng', 1551, 2, 7, 'that’s ugly', 'mae hynny’n salw', 16, 2, 'use', true, NULL, '{"format":"build_use","pipeline":"v2","job":530,"author":"aran"}'::jsonb),
+  ('cym_nv2_for_eng:S1496L04U03', 'cym_nv2_for_eng', 1496, 4, 7, 'I can count', 'dw i’n medru cyfrif', 19, 3, 'use', true, NULL, '{"format":"build_use","pipeline":"v2","job":530,"author":"aran","override":{"check":"containment","by":"Aran","on":"2026-10-13","reason":"deliberate surprise theory: shows the added meaning of the word (cyfrif = matter / count); rare but fine here. Line does not contain the LEGO text \"yn cyfri''\"."}}'::jsonb);
+CREATE FUNCTION pg_temp.fp() RETURNS TABLE(t text, n bigint, h text) LANGUAGE sql AS $$
+  SELECT 'canonical_seeds (master)', count(*), md5(string_agg(md5(x::text), '' ORDER BY x::text)) FROM canonical_seeds x
+  UNION ALL SELECT 'live '||x.course_code||' seeds', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_seeds x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
+  UNION ALL SELECT 'live '||x.course_code||' legos', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_legos x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
+  UNION ALL SELECT 'live '||x.course_code||' phrases', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_practice_phrases x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
+  UNION ALL SELECT 'sandbox '||x.course_code||' legos', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_legos x WHERE x.course_code IN ('cym_nv2_for_eng','cym_sv2_for_eng') GROUP BY x.course_code
+  UNION ALL SELECT 'sandbox '||x.course_code||' other phrases', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_practice_phrases x
+    WHERE x.course_code IN ('cym_nv2_for_eng','cym_sv2_for_eng') AND (x.course_code, x.seed_number, x.lego_index) NOT IN (SELECT course_code, seed_number, lego_index FROM legos) GROUP BY x.course_code
+$$;
+CREATE TEMP TABLE pre AS SELECT * FROM pg_temp.fp();
+SELECT 'BEFORE' k, * FROM pre ORDER BY t;
+
+DO $$ BEGIN
+  IF to_regclass('backup_cym_aran_written_530') IS NOT NULL THEN RAISE EXCEPTION 'already applied'; END IF;
+  IF to_regclass('backup_cym_aran_written_510') IS NULL THEN RAISE EXCEPTION '#510 is not applied'; END IF;
+  IF EXISTS (SELECT 1 FROM add_rows WHERE course_code NOT IN ('cym_nv2_for_eng','cym_sv2_for_eng')) THEN RAISE EXCEPTION 'a row is outside the sandboxes'; END IF;
+  IF (SELECT count(*) FROM legos g JOIN course_legos l USING (course_code, seed_number, lego_index) WHERE l.is_new) <> (SELECT count(*) FROM legos) THEN
+    RAISE EXCEPTION 'a listed LEGO is missing or not new'; END IF;
+  IF EXISTS (SELECT 1 FROM add_rows a JOIN course_practice_phrases p ON p.id=a.id) THEN RAISE EXCEPTION 'a phrase id is taken'; END IF;
+  IF EXISTS (SELECT 1 FROM add_rows a JOIN course_practice_phrases p USING (course_code, seed_number, lego_index, position)) THEN RAISE EXCEPTION 'a position is taken'; END IF;
+  IF EXISTS (SELECT 1 FROM add_rows a WHERE a.position <= (SELECT max(p.position) FROM course_practice_phrases p WHERE (p.course_code,p.seed_number,p.lego_index)=(a.course_code,a.seed_number,a.lego_index))) THEN
+    RAISE EXCEPTION 'a new row would not file after the existing ones'; END IF;
+  IF EXISTS (SELECT 1 FROM add_rows a LEFT JOIN legos g USING (course_code, seed_number, lego_index) WHERE g.seed_number IS NULL) THEN RAISE EXCEPTION 'a row is not under a listed LEGO'; END IF;
+END $$;
+
+-- The backup: every row under the 3 LEGOs as it stands now, and the LEGO list.
+CREATE TABLE backup_cym_aran_written_530 AS SELECT p.* FROM course_practice_phrases p JOIN legos g USING (course_code, seed_number, lego_index);
+CREATE TABLE backup_cym_aran_written_530_legos AS SELECT * FROM legos;
+REVOKE ALL ON backup_cym_aran_written_530, backup_cym_aran_written_530_legos FROM anon, authenticated;
+
+INSERT INTO content_edit_events (course_code, surface, operation, actor_kind, actor_id, actor_label, actor_verified, actor_role, scope, detail)
+SELECT c, 'sql:job-530 weave-cym-aran-written', 'weave-aran-written-phrases', 'agent', 'claude-job-530-aran-written',
+       'agent (claude-job-530-aran-written)', false, 'creator',
+       jsonb_build_object('lego_keys', (SELECT jsonb_agg(seed_number||':'||lego_index ORDER BY seed_number) FROM legos WHERE course_code=c),
+                          'phrase_ids', (SELECT jsonb_agg(id ORDER BY id) FROM add_rows WHERE course_code=c)),
+       jsonb_build_object('ruling', 'Job #530 (Aran 2026-10-13): the last 3 held lines, added after the existing rows. The two South lines are the doc suggestions; N S1496L04 "dw i''n medru cyfrif" is an explicit logged override of the containment check (deliberate surprise theory). English as in #510''s doc.',
+                          'author_welsh', 'Aran', 'backup', 'backup_cym_aran_written_530')
+FROM (SELECT DISTINCT course_code AS c FROM legos) v;
+CREATE TEMP TABLE ev AS SELECT DISTINCT ON (course_code) course_code, id FROM content_edit_events WHERE detail->>'backup'='backup_cym_aran_written_530' ORDER BY course_code, occurred_at DESC, id;
+
+INSERT INTO course_practice_phrases (id, course_code, seed_number, lego_index, position, known_text, target_text, word_count, lego_count,
+  phrase_role, introduce, connected_lego_ids, lego_position, metadata, status, version, last_edit_event_id)
+SELECT a.id, a.course_code, a.seed_number, a.lego_index, a.position, a.known_text, a.target_text, a.word_count, a.lego_count,
+  a.phrase_role, a.introduce, '{}'::text[], a.lego_position, a.metadata, 'draft', 1, ev.id
+FROM add_rows a JOIN ev USING (course_code);
+SET CONSTRAINTS ALL IMMEDIATE;
+
+CREATE TEMP TABLE post AS SELECT * FROM pg_temp.fp();
+SELECT 'AFTER' k, * FROM post ORDER BY t;
+DO $$ BEGIN
+  IF EXISTS (SELECT * FROM pre EXCEPT SELECT * FROM post) OR EXISTS (SELECT * FROM post EXCEPT SELECT * FROM pre) THEN
+    RAISE EXCEPTION 'CHECK FAILED: live Welsh, master canonical_seeds, sandbox LEGOs or other sandbox phrases changed'; END IF;
+  IF (SELECT count(*) FROM course_practice_phrases p JOIN legos g USING (course_code, seed_number, lego_index))
+     <> (SELECT count(*) FROM backup_cym_aran_written_530) + (SELECT count(*) FROM add_rows) THEN RAISE EXCEPTION 'CHECK FAILED: row count under the LEGOs'; END IF;
+  IF EXISTS (SELECT b.id, md5(b::text) FROM backup_cym_aran_written_530 b EXCEPT SELECT p.id, md5(p::text) FROM course_practice_phrases p) THEN RAISE EXCEPTION 'CHECK FAILED: an existing row changed'; END IF;
+  IF (SELECT count(*) FROM ev) <> (SELECT count(DISTINCT course_code) FROM legos) THEN RAISE EXCEPTION 'CHECK FAILED: edit events'; END IF;
+  RAISE NOTICE 'ALL CHECKS PASSED';
+END $$;
+SELECT (SELECT count(*) FROM backup_cym_aran_written_530) AS existing_rows_kept, (SELECT count(*) FROM add_rows) AS written_rows;
+SELECT 'finishing with' k, :'finish' v;
+:finish;
+SELECT :'finish' = 'COMMIT' AS do_refresh \gset
+\if :do_refresh
+REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index;
+\endif
