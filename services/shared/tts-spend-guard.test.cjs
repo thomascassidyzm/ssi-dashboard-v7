@@ -102,6 +102,12 @@ describe('(c) idempotency: the same words, voice and provider are not bought ove
     expect(repeatKey('cartesia', 'v', 'x', 1)).toBe(repeatKey('cartesia', 'v', 'x'))
   })
 
+  it('the committed default allows 5 identical sends in 24h and refuses the 6th (Tom 2026-10-13, job #590)', async () => {
+    const g = guard({ budgetPath: budgets({}) })
+    for (let i = 0; i < 5; i++) await call(g, 'her name')
+    await expect(call(g, 'her name')).rejects.toThrow(/REPEAT.*5 times/)
+  })
+
   it('refuses the (maxPerKey+1)th send inside the window, whatever the caller thinks is missing', async () => {
     const g = guard({ budgetPath: budgets({ repeat: { maxPerKey: 3, windowHours: 24 } }) })
     for (let i = 0; i < 3; i++) await call(g, 'her name')
@@ -119,7 +125,7 @@ describe('(c) idempotency: the same words, voice and provider are not bought ove
 
 describe('(c2) Tom-signed repeat exemption: one job, named words, once each, nothing else looser', () => {
   const exemption = (o = {}) => ({ job: '#700', texts: ['her name'], by: 'Tom (explicit go in chat, 2026-09-29 00:44Z, via Watson)', why: 'finish the Italian audio', until: '2026-09-27T00:00:00Z', ...o })
-  const capped = async (g) => { for (let i = 0; i < 3; i++) await call(g, 'her name') }
+  const capped = async (g) => { for (let i = 0; i < 5; i++) await call(g, 'her name') }
   it('lets the named job send the named words once past the cap, then refuses a second, and never opens the cap for anyone else or any other words', async () => {
     const g = guard({ budgetPath: budgets({ repeatExemptions: [exemption()] }) })
     await capped(g)
@@ -127,7 +133,7 @@ describe('(c2) Tom-signed repeat exemption: one job, named words, once each, not
     await expect(call(g, 'her name', { job: '#7000·I' })).rejects.toThrow(/REPEAT/)
     await expect(call(g, 'her name', { job: '#700·I' })).resolves.toBeTruthy()
     await expect(call(g, 'her name', { job: '#700·I' })).rejects.toThrow(/exempt call/)
-    for (let i = 0; i < 3; i++) await call(g, 'his name')
+    for (let i = 0; i < 5; i++) await call(g, 'his name')
     await expect(call(g, 'his name', { job: '#700·I' })).rejects.toThrow(/REPEAT/)
   })
   it('is ignored unless Tom signed it', async () => {

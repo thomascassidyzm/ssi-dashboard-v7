@@ -49,6 +49,22 @@ async function allRows(build) {
 }
 
 /**
+ * A course's phrases fetched in seed-number chunks (each an index range scan), a few chunks at a time. One query paged by
+ * OFFSET over the whole course hit the DB statement timeout on the live server (8 s on page 1 ordered by id, 1-7 s per
+ * deep page otherwise); 20-seed chunks come back in about a second each and rarely need a second page.
+ */
+async function phrasesBySeedChunks(chunkQuery, maxSeed, size = 20, parallel = 6) {
+  const starts = []
+  for (let lo = 1; lo <= maxSeed; lo += size) starts.push(lo)
+  const out = []
+  for (let i = 0; i < starts.length; i += parallel) {
+    const got = await Promise.all(starts.slice(i, i + parallel).map((lo) => allRows(chunkQuery(lo, lo + size))))
+    for (const rows of got) out.push(...rows)
+  }
+  return out
+}
+
+/**
  * The proof list, pure. A phrase is listed when its seed is in the running order (a dropped seed does not play), its
  * LEGO is new (taught LEGOs are not practised), and its role is build or use. Sorted by the seed's running position,
  * then lego_index, then position. `n` is 1..N over the whole course — the running number Aran reads, and what the belt
@@ -102,16 +118,19 @@ function createPhraseProofRouter({ getDb, logger }) {
     try {
       const db = getDb()
       const { courseCode } = req.params
-      const [order, legos, phrases, flags] = await Promise.all([
+      const [order, legos, flags] = await Promise.all([
         allRows((a, b) => db.from('course_running_order').select('seed_number,position')
           .eq('course_code', courseCode).order('seed_number').range(a, b)),
         allRows((a, b) => db.from('course_legos').select('lego_id,seed_number,lego_index,is_new,target_text')
           .eq('course_code', courseCode).order('seed_number').order('lego_index').range(a, b)),
-        allRows((a, b) => db.from('course_practice_phrases').select('id,seed_number,lego_index,position,phrase_role,target_text,known_text')
-          .eq('course_code', courseCode).in('phrase_role', PLAYED_ROLES).order('id').range(a, b)),
         allRows((a, b) => db.from('phrase_proof_flags').select('phrase_id,flagged,note')
           .eq('course_code', courseCode).order('phrase_id').range(a, b)),
       ])
+      const maxSeed = order.reduce((m, o) => Math.max(m, o.seed_number), 0)
+      const phrases = await phrasesBySeedChunks((lo, hi) => (a, b) => db.from('course_practice_phrases')
+        .select('id,seed_number,lego_index,position,phrase_role,target_text,known_text')
+        .eq('course_code', courseCode).gte('seed_number', lo).lt('seed_number', hi).in('phrase_role', PLAYED_ROLES)
+        .order('seed_number').order('lego_index').order('position').range(a, b), maxSeed)
       res.set('Cache-Control', 'no-store')
       res.json({ courseCode, ...buildPhraseList(courseCode, phrases, legos, order, flags) })
     } catch (e) {
@@ -144,4 +163,4 @@ function createPhraseProofRouter({ getDb, logger }) {
   return router
 }
 
-module.exports = { createPhraseProofRouter, buildPhraseList, flagRow }
+module.exports = { createPhraseProofRouter, buildPhraseList, flagRow, phrasesBySeedChunks }

@@ -46,3 +46,21 @@ describe('flagRow', () => {
     expect(flagRow(C, { phraseId: 'S0001L02B01', flagged: true }, null).status).toBe(401)
   })
 })
+
+describe('phrasesBySeedChunks', () => {
+  // The live GET timed out paging the whole course by OFFSET; it now reads bounded seed ranges. Every seed 1..maxSeed
+  // must fall in exactly one range, ranges come back in seed order, and a range over 1000 rows still pages.
+  it('covers every seed once, in order, and pages a full chunk', async () => {
+    const { phrasesBySeedChunks } = require('./phrase-proof-router.cjs')
+    const seen = []
+    const rows = await phrasesBySeedChunks((lo, hi) => async (a, b) => {
+      seen.push([lo, hi, a])
+      const all = lo === 21 ? Array.from({ length: 1500 }, (_, i) => ({ seed_number: 21, i })) : [{ seed_number: lo }]
+      return { data: all.slice(a, b + 1), error: null }
+    }, 65, 20, 2)
+    expect([...new Set(seen.map(([lo, hi]) => `${lo}-${hi}`))]).toEqual(['1-21', '21-41', '41-61', '61-81'])
+    expect(seen.filter(([lo]) => lo === 21).map(([, , a]) => a).slice(0, 2)).toEqual([0, 1000])   // later pages ask ahead in parallel
+    expect(rows.length).toBe(1 + 1500 + 1 + 1)
+    expect(rows.map((r) => r.seed_number)).toEqual([...rows.map((r) => r.seed_number)].sort((x, y) => x - y))
+  })
+})

@@ -38,3 +38,16 @@ describe('PhraseProof', () => {
     w.unmount()
   })
 })
+
+// Live on popty.app, Popty's own navbar is sticky at top: 0 above every page. A proof header also stuck at top: 0 slid
+// under it once scrolled, leaving Flagged only / Export out of reach mid-list (seen live, job #562). Both proof pages
+// must stick below the navbar's published height. jsdom has no layout, so this reads the rule itself.
+import { readFileSync } from 'node:fs'
+describe('proof page headers sit under the Popty navbar', () => {
+  for (const f of ['PhraseProof.vue', 'LegoProof.vue']) {
+    it(f, () => {
+      const src = readFileSync(new URL('./' + f, import.meta.url), 'utf8')
+      expect(src).toMatch(/\.top \{ position: sticky; top: var\(--app-navbar-height, 0px\);/)
+    })
+  }
+})
