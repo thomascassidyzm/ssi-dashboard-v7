@@ -37,7 +37,7 @@ const { evidencePath } = require('../lib/evidence-path.cjs')
 
 const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
 const CHARLOTTE_BARE = CHARLOTTE.replace(/^cartesia_/, '')
-const JOB = '#573'
+const JOB = process.env.BACKFILL_JOB || '#573'
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 const AUDIO_BASE = process.env.LEARNER_AUDIO_BASE || 'https://saysomethingin.app/api/audio'
 const SLOT_COL = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id', presentation: 'presentation_audio_id' }
@@ -96,6 +96,11 @@ const TARGET_PASSES = {
   // other voice (Azure, xAI, or a draft-cast Cartesia voice) is replaced, so target2 is never left on the female voice.
   'deu-target1': { langs: ['deu', 'de'], role: 'target1', castGender: 'f', allVoices: true },
   'deu-target2': { langs: ['deu', 'de'], role: 'target2', castGender: 'm', allVoices: true },
+  // Portuguese (job #287, Tom 2026-10-13 GO re-voice Portuguese). European (por) and Brazilian (por_br) are SEPARATE cast entities though both
+  // courses' clips are language 'por' (r-2026-10-13-each-ssi-language-option-is-its): castByCourse reads the cast key from the course row
+  // (por_for_eng -> 'por', por_br_for_eng -> 'por_br'). allVoices because each course holds the OTHER variety's Cartesia clips (Brazilian Eloa in por_for_eng).
+  'por-target1': { langs: ['por', 'pt', 'pt-PT', 'pt-BR'], role: 'target1', castGender: 'f', allVoices: true, castByCourse: true },
+  'por-target2': { langs: ['por', 'pt', 'pt-PT', 'pt-BR'], role: 'target2', castGender: 'm', allVoices: true, castByCourse: true },
 }
 for (const [name, t] of Object.entries(TARGET_PASSES)) PASSES[name] = { sql: `(ca.voice_id !~ '^cartesia_')`, target: null, gender: null, ...t }
 // English known prompts for a course re-voiced onto Charlotte (Tom 2026-10-11): every non-Cartesia known clip, either gender, becomes Charlotte.
@@ -111,6 +116,9 @@ async function castVoice(pg, lang, gender) {
 const argv = process.argv.slice(2)
 const opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }
 const has = f => argv.includes(f)
+// --render-only (job #287, from #641): render the new-voice clips (library-first) and ledger them as 'rendered', but move NO pointer.
+// Re-running without the flag finds every clip in the library (free) and repoints, so a course changes voice in one step, after the new clips exist.
+const RENDER_ONLY = has('--render-only')
 
 async function slotsFor(pg, course, role) {
   const col = SLOT_COL[role]
@@ -147,7 +155,7 @@ async function workFor(pg, course, roles, voiceSql = BAD_VOICE, maxSeed, langs =
 
 async function render(course, w, dryRun, target = CHARLOTTE, language = 'eng') {
   const res = await fetch(`${POPTY}/api/audio/render`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-573-charlotte-backfill' },
+    method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': `job-${JOB.replace('#', '')}-charlotte-backfill` },
     body: JSON.stringify({ courseCode: course, role: w.role, text: w.text, language, voiceId: target, job: JOB, dryRun,
       purpose: language !== 'eng' ? `Tom 2026-10-04: ${language} ${w.role} Azure/xAI -> cast Cartesia voice, pilot job #626` : target === CHARLOTTE ? 'Tom 2026-10-03: English re-render on Charlotte (xAI clicks / Azure replacement), job #573' : 'Tom 2026-10-04: English male slot re-render on tom_001, job #573/#614' }),
   })
@@ -320,8 +328,13 @@ async function main() {
   let target = pass.target, language = 'eng'
   if (pass.castGender) {
     language = pass.langs[0]
-    target = await castVoice(pg, language, pass.castGender)
-    if (!target) { console.log(`NO CAST: ${language} has no active Cartesia phrase-slot voice for gender ${pass.castGender}; nothing rendered`); return pg.end() }
+    let castLang = language
+    if (pass.castByCourse) {
+      const { rows: [crow] } = await pg.query('select course_code, known_lang, target_lang, voice_pool_key, dialect, known_dialect from courses where course_code=$1', [course])
+      castLang = require('../../services/shared/cast-language-key.cjs').castKeyForCourse(crow, 'target')
+    }
+    target = await castVoice(pg, castLang, pass.castGender)
+    if (!target) { console.log(`NO CAST: ${castLang} has no active Cartesia phrase-slot voice for gender ${pass.castGender}; nothing rendered`); return pg.end() }
   }
   const bare = target ? target.replace(/^cartesia_/, '') : null
   const voiceSql = pass.allVoices && target ? `(ca.voice_id not in ('${target}', '${bare}'))` : pass.sql
@@ -334,6 +347,7 @@ async function main() {
   console.log(`${course} ${roles}${target && pass.castGender ? ` -> ${target}` : ''}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
   let free = 0, slotsMoved = 0, eventId = null, eventPromise = null, slotRefused = 0
   const commit = async (w, r) => {
+    if (RENDER_ONLY) { fs.appendFileSync(ledger, JSON.stringify({ kind: 'rendered', course, role: w.role, oldId: w.oldId, newId: r.audioId, oldVoice: w.oldVoice, pass: passName, source: r.source, charsSpent: r.charsSpent || 0, text: w.text, pos: w.pos, at: new Date().toISOString() }) + '\n'); if (r.source === 'library') free++; return }
     // write-ahead: the ledger line exists before the first pointer moves
     const entry = { kind: 'swap', course, role: w.role, oldId: w.oldId, newId: r.audioId, oldVoice: w.oldVoice, pass: passName, source: r.source, charsSpent: r.charsSpent || 0, slots: w.slots, text: w.text, at: new Date().toISOString() }
     fs.appendFileSync(ledger, JSON.stringify(entry) + '\n')
@@ -352,6 +366,8 @@ async function main() {
   })
   // machine line for the daily driver: work still owed in THIS scope (budget-skipped, failed, verify-failed, refused, unreached); never-doable gender skips excluded
   // SKIPPED-BUDGET is the part of OUTSTANDING that is merely unaffordable today (not a failure): the daily driver sleeps to the next UTC day on it
+  // an audio repoint is invisible to phones holding the bundle until content_version moves (memory ssi-audio-repoint-must-bump-content-version)
+  if (slotsMoved && !dryRun) { const v = await require('../../services/shared/course-version.cjs').bumpCourseVersion(db, course, 'patch'); console.log('content_version', v); if (!v) process.exitCode = 3 }
   console.log(`OUTSTANDING ${Math.max(0, work.length - done - genderSkipped) + slotRefused}`)
   console.log(`SKIPPED-BUDGET ${budgetSkipped}`)
   console.log(`done ${done} clips (${free} from library), ${slotsMoved} slots repointed, ${spent} chars spent; ${work.length - done} remain. ledger ${ledger}`)
@@ -359,4 +375,4 @@ async function main() {
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { allowedRoles, runBudgeted, RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, TOM_006, CHARLOTTE }
+module.exports = { supa, allowedRoles, runBudgeted, RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, TOM_006, CHARLOTTE }
