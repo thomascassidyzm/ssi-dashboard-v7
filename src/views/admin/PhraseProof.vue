@@ -190,13 +190,16 @@ function onWindowResize() {
 
 // Keep his place: the id of the top row, per course, so a reload lands on the same phrase.
 const placeKey = (code) => `phraseProof:place:${code}`
+// How much of the viewport's top the two sticky bars (Popty's navbar + this page's header) cover once scrolled.
+const navbarH = () => parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--app-navbar-height')) || 0
+const coveredTop = () => navbarH() + (topEl.value?.offsetHeight || 0)
 let placeTimer = 0
 function rememberPlace() {
   if (flaggedOnly.value || loading.value || !shown.value.length) return
   clearTimeout(placeTimer)
   const code = course.value
   placeTimer = setTimeout(() => {
-    const p = shown.value[rowAt(tops.value, viewTop.value + (topEl.value?.offsetHeight || 0))]
+    const p = shown.value[rowAt(tops.value, viewTop.value + coveredTop())]
     try { if (p && course.value === code) localStorage.setItem(placeKey(code), p.id) } catch { /* private mode */ }
   }, 400)
 }
@@ -205,7 +208,7 @@ async function restorePlace() {
   try { id = localStorage.getItem(placeKey(course.value)) } catch { /* ignore */ }
   const i = id ? shown.value.findIndex((p) => p.id === id) : -1
   await nextTick()
-  if (i > 0) window.scrollTo(0, listTop() + tops.value[i] - (topEl.value?.offsetHeight || 0))
+  if (i > 0) window.scrollTo(0, listTop() + tops.value[i] - coveredTop())
   else window.scrollTo(0, 0)
   readView()
 }
@@ -359,7 +362,9 @@ onBeforeUnmount(() => {
   max-width: 760px; min-height: 100vh; margin: 0 auto; padding: 0 0.5rem 5rem;
   background: var(--pp-bg); color: var(--pp-ink); color-scheme: light;
 }
-.top { position: sticky; top: 0; z-index: 5; background: var(--pp-bg); padding: 0.5rem 0.25rem 0.35rem; border-bottom: 1px solid var(--pp-line); }
+/* Sticks UNDER Popty's own sticky navbar, which publishes its height as --app-navbar-height; at top: 0 the navbar
+   covered this header once scrolled, so Flagged only / Export were out of reach mid-list. */
+.top { position: sticky; top: var(--app-navbar-height, 0px); z-index: 5; background: var(--pp-bg); padding: 0.5rem 0.25rem 0.35rem; border-bottom: 1px solid var(--pp-line); }
 .bar { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; margin: 0.2rem 0; }
 h1 { font-size: 1.15rem; margin: 0; flex: 1; color: var(--pp-ink); }
 button { font: inherit; color: inherit; cursor: pointer; }
