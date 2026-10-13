@@ -696,6 +696,13 @@ const routes = [
     meta: { title: 'LEGO proof', requiresAuth: true }
   },
   {
+    // Phrase proof (job #562): Aran flags Welsh relaunch practice phrases with an issue. Saves each tick at once; no course writes.
+    path: '/proof/phrases',
+    name: 'PhraseProof',
+    component: () => import('../views/admin/PhraseProof.vue'),
+    meta: { title: 'Phrase proof', requiresAuth: true }
+  },
+  {
     // Capture A/B — record the same line under each mic profile and measure
     // both, on the phone that actually does the recording. It joins the labs
     // here because it IS one; before this it was linked from nowhere in src/.
