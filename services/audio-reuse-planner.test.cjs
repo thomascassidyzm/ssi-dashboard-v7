@@ -311,6 +311,8 @@ describe('applyReusePlan — make before break, delete never', () => {
     const api = {
       from (table) {
         return {
+          // the human-take guard reads the clips involved; none of these fixtures is a human take
+          select () { const q = {}; const r = { eq (k, v) { q[k] = v; return r }, maybeSingle: () => Promise.resolve({ data: (api.clips || {})[q.id] || null, error: null }) }; return r },
           update (patch) {
             return { eq (col, val) { calls.updates.push({ table, patch, col, val }); return Promise.resolve({ error: null }) } }
           },
@@ -388,6 +390,17 @@ describe('applyReusePlan — make before break, delete never', () => {
     expect(typeof planner.applyReusePlan).toBe('function')
     // and the render path still linked its holders
     expect(db.calls.updates.some(u => u.patch.known_audio_id === 'rendered-id')).toBe(true)
+  })
+
+  it('NEVER relinks a holder whose current clip is a human take onto a synthetic one (Tom HARD RULE 2026-10-13)', async () => {
+    const db = makeDb()
+    db.clips = { human1: { id: 'human1', voice_id: 'human_aran_cym_n', origin: 'legacy_import' }, own: { id: 'own', voice_id: 'cartesia_x', origin: 'tts' } }
+    const p = basePlan([{ ...clip(), decision: 'REUSE_OWN', reason: 'x',
+      holders: [{ table: 'course_legos', id: 'l1', column: 'known_audio_id', currentAudioId: 'human1' }],
+      reuseSource: { audioId: 'own', courseCode: 'fra_for_eng', s3Key: 'mastered/OK.mp3' } }])
+    const log = await applyReusePlan(db, p, { dryRun: false, bumpStamp: false, headObject: async () => ({ exists: true, size: 20000 }) })
+    expect(db.calls.updates).toHaveLength(0)
+    expect(JSON.stringify(log.errors)).toMatch(/human/i)
   })
 
   it('a holder already pointing at the right row is left untouched', async () => {

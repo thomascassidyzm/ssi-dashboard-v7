@@ -182,7 +182,7 @@ function supa() {
 const { mayPoint } = require('../../services/shared/resolve-voice.cjs')   // job #53: every pointer this tool writes is checked against resolveVoice
 async function setPointer(db, s, from, to, eventId, restore = false) {
   const val = to
-  if (!await mayPoint(db, { courseCode: s.course, col: s.col, to, restore })) return false
+  if (!await mayPoint(db, { courseCode: s.course, col: s.col, to, restore, tbl: s.tbl, key: s.key, from })) return false
   const { data, error } = await db.from(s.tbl).update({ [s.col]: val, last_edit_event_id: eventId }).eq('id', s.key).eq(s.col, from).select('id')
   if (error) throw new Error(`${s.tbl}.${s.col} update failed: ${error.message}`)
   return data && data.length === 1

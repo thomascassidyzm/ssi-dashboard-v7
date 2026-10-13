@@ -102,3 +102,29 @@ describe('the shared pointer gate (resolve-voice) enforces it before any voice p
     rv.useCast(null)
   })
 })
+
+describe('rows addressed by (course, seed, lego) rather than id (the phase-8 intro binder)', () => {
+  const rows = [{ presentation_audio_id: 'sasha' }]
+  const db = { from(tbl) { const api = { select() { return api }, eq() { return api }, maybeSingle: async () => ({ data: tbl === 'course_audio' ? null : null, error: null }),
+    then(res) { return Promise.resolve({ data: tbl === 'course_legos' ? rows : [], error: null }).then(res) } }; if (tbl === 'course_audio') { let id; api.eq = (k, v) => { id = v; return api }; api.maybeSingle = async () => ({ data: allClips[id] || null, error: null }) } return api } }
+  it('refuses when ANY matched row holds a human take', async () => {
+    await expect(g.assertNotReplacingHuman(db, { tbl: 'course_legos', match: { course_code: 'x', seed_number: 1, lego_index: 1 }, col: 'presentation_audio_id', to: 'clone' }))
+      .rejects.toMatchObject({ code: 'HUMAN_TAKE' })
+    expect(await g.mayReplace(db, { tbl: 'course_legos', match: { course_code: 'x' }, col: 'presentation_audio_id', to: 'clone' }, () => {})).toBe(false)
+  })
+})
+
+describe('every writer that overwrites a live audio pointer asks the guard (a removal fails here)', () => {
+  const fs = require('node:fs'), path = require('node:path')
+  const ROOT = path.join(__dirname, '../..')
+  const CALLERS = [
+    'services/shared/resolve-voice.cjs',          // assertPointer: voice-audit --fix, tom006-*, charlotte-backfill, revoice-clips, setSlotPointer
+    'services/phases/phase8-audio-v13.cjs',       // intro binders (the FK linker and attach are null-only and cannot overwrite)
+    'services/audio-reuse-planner.cjs',           // relinkHolders
+    'tools/repair-presentation-clips.cjs',        // intro repair/remake
+    'tools/regen-seed-clips-from-scratch.cjs',    // seed-clip regen + relink-to-live
+  ]
+  it.each(CALLERS)('%s references human-take-guard', (f) => {
+    expect(fs.readFileSync(path.join(ROOT, f), 'utf8')).toMatch(/human-take-guard\.cjs/)
+  })
+})

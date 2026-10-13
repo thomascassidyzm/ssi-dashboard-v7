@@ -72,6 +72,7 @@ process.env.PHASE8_NO_LISTEN = '1'
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const { toBcp47 } = require('../services/voice-discovery-service.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId, canonicalVoiceId } = require('../services/shared/clip-identity.cjs')
+const { assertNotReplacingHuman } = require('../services/shared/human-take-guard.cjs')
 
 const arg = (f) => { const i = process.argv.indexOf(f); return i > -1 ? process.argv[i + 1] : null }
 const COURSE = process.argv[2]
@@ -298,12 +299,14 @@ async function renderVerified (row, tmpDir) {
       //    course_legos column carries no FK but is what cycles.ts reads.
       stage = 'repoint'
       for (const r of intros || []) {
+        await assertNotReplacingHuman(supabase, { tbl: 'lego_introductions', key: r.id, col: 'presentation_audio_id', to: newId })   // Tom's HARD RULE 2026-10-13
         const { error: e } = await supabase.from('lego_introductions')
           .update({ presentation_audio_id: newId }).eq('id', r.id)
         if (e) throw new Error(`repoint lego_introductions#${r.id}: ${e.message}`)
         relinked.push({ table: 'lego_introductions', rowId: r.id })
       }
       for (const r of legos || []) {
+        await assertNotReplacingHuman(supabase, { tbl: 'course_legos', key: r.id, col: 'presentation_audio_id', to: newId })   // Tom's HARD RULE 2026-10-13
         const { error: e } = await supabase.from('course_legos')
           .update({ presentation_audio_id: newId }).eq('id', r.id)
         if (e) throw new Error(`repoint course_legos#${r.id}: ${e.message}`)

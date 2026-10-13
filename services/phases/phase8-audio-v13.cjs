@@ -214,6 +214,7 @@ const { pickCastVoice, providerOfVoice, castVoiceForLanguage } = require('../sha
 const castGate = require('../shared/voice-cast-gate.cjs')
 const { courseEnglishVoice } = require('../shared/course-english-voice.cjs')
 const { resolveVoice, sameVoice: sameResolvedVoice, loadCast: loadResolvedCast } = require('../shared/resolve-voice.cjs')
+const { mayReplace: mayReplaceHumanTake } = require('../shared/human-take-guard.cjs')
 const { providerForVoice } = require('../shared/render-voice-provider.cjs')
 const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
 // The BCP-47 steer a TARGET-side render sends. courses.target_lang carries the
@@ -2523,6 +2524,8 @@ async function linkPresentationAudio(courseCode) {
     const seedNumber = parseInt(legoMatch[1], 10)
     const legoIndex = parseInt(legoMatch[2], 10)
 
+    // A HUMAN-recorded intro is never replaced by a synthetic one (Tom's HARD RULE 2026-10-13, shared/human-take-guard.cjs).
+    if (!await mayReplaceHumanTake(supabase, { tbl: 'course_legos', match: { course_code: courseCode, seed_number: seedNumber, lego_index: legoIndex }, col: 'presentation_audio_id', to: presId }, (l) => logger.warn(l))) continue
     const { error } = await supabase
       .from('course_legos')
       .update({ presentation_audio_id: presId })
@@ -3225,19 +3228,22 @@ app.post('/generate/:courseCode', async (req, res) => {
     // the component phrase FK. One helper so the projections never diverge.
     const bindPresentationAudio = async (item, audioRowId, durationMs) => {
       if (item.lego_id) {
+        let humanHeld = false
         const legoMatch = item.lego_id.match(/S(\d+)L(\d+)/)
         if (legoMatch) {
-          const { error: updateError } = await supabase
+          const legoSlot = { course_code: courseCode, seed_number: parseInt(legoMatch[1], 10), lego_index: parseInt(legoMatch[2], 10) }
+          humanHeld = !await mayReplaceHumanTake(supabase, { tbl: 'course_legos', match: legoSlot, col: 'presentation_audio_id', to: audioRowId }, (l) => logger.warn(l))
+          const { error: updateError } = humanHeld ? { error: null } : await supabase
             .from('course_legos')
             .update({ presentation_audio_id: audioRowId })
             .eq('course_code', courseCode)
-            .eq('seed_number', parseInt(legoMatch[1], 10))
-            .eq('lego_index', parseInt(legoMatch[2], 10))
+            .eq('seed_number', legoSlot.seed_number)
+            .eq('lego_index', legoSlot.lego_index)
           if (updateError) {
             logger.warn(`Could not update course_legos.presentation_audio_id for ${item.lego_id}: ${updateError.message}`)
           }
         }
-        const { error: introError } = await supabase
+        const { error: introError } = humanHeld ? { error: null } : await supabase   // the projection follows the FK: a held human intro stays in both
           .from('lego_introductions')
           .upsert({
             course_code: courseCode,
@@ -3250,7 +3256,8 @@ app.post('/generate/:courseCode', async (req, res) => {
           logger.warn(`Could not upsert lego_introductions for ${item.lego_id}: ${introError.message}`)
         }
       } else if (item.phrase_id) {
-        const { error: phraseError } = await supabase
+        const phraseHumanHeld = !await mayReplaceHumanTake(supabase, { tbl: 'course_practice_phrases', key: item.phrase_id, col: 'presentation_audio_id', to: audioRowId }, (l) => logger.warn(l))
+        const { error: phraseError } = phraseHumanHeld ? { error: null } : await supabase
           .from('course_practice_phrases')
           .update({ presentation_audio_id: audioRowId })
           .eq('id', item.phrase_id)
