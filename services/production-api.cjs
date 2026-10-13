@@ -536,6 +536,14 @@ app.use('/api/production/:courseCode/lego-proof',
     logger,
   }))
 
+// Phrase proof (job #562): the practice-phrase sibling of the LEGO proof page, same two sandboxes. Read-only on course
+// content; writes only phrase_proof_flags. Under /api/production/:courseCode so the app.param course-scope gate fires.
+app.use('/api/production/:courseCode/phrase-proof',
+  require('./phrase-proof/phrase-proof-router.cjs').createPhraseProofRouter({
+    getDb: () => supabaseClient.getClient(),
+    logger,
+  }))
+
 // Pod recording coverage (keystone §5): per cast voice (voice_config.podCast)
 // lines recorded / remaining + per-pod breakdown, human-vs-tts per sentence.
 // REGISTERED BEFORE the pods router on purpose: this read-only route relies on
