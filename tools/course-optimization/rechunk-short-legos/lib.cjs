@@ -95,7 +95,9 @@ function checkOp(seedRow, before, op, { estimateSyllables, courseCode } = {}) {
   }
   // Coverage never shrinks: every seed word a LEGO covered before is still covered by some LEGO after.
   const covered = (ls) => { const s = new Set(); for (const l of ls) for (const w of words(l.target)) s.add(w); return s }
-  const was = covered(before), now = covered(after)
+  // only words the seed actually says: a LEGO whose target is not in its own seed (a stale cut, #688 tel S592, rus S228) may be retargeted to the seed's form
+  const seedWords = new Set(words(seedRow.target_text))
+  const was = new Set([...covered(before)].filter((w) => seedWords.has(w))), now = covered(after)
   for (const w of was) if (!now.has(w)) problems.push(`coverage: "${w}" was taught by a LEGO of this seed and no longer is (S3/L27)`)
   return problems
 }
