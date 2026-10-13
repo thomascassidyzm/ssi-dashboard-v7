@@ -3997,6 +3997,303 @@
      "setGates": {}
     }
    }
+  },
+  "290": {
+   "seed": 290,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "彼は知っている",
+     "target": "sabe"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "M",
+      "known": "彼は知っている",
+      "target": "ele sabe",
+      "components": [
+       {
+        "known": "彼は",
+        "target": "ele"
+       },
+       {
+        "known": "知っている",
+        "target": "sabe"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "por_for_jpn:S0290L01B03",
+       "role": "build",
+       "known": "彼は知っている",
+       "target": "ele sabe",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, a clean fragment that extends naturally into a sentence.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO with no other taught LEGO. A BUILD needs the LEGO plus one to three others.",
+       "keep": false,
+       "why": "Opus: bad — This is the bare LEGO with no other taught LEGO. A BUILD needs the LEGO plus one to three others."
+      },
+      {
+       "id": "por_for_jpn:S0290L01U01",
+       "role": "use",
+       "known": "彼が答えを知っているか気になる。",
+       "target": "pergunto-me se ele sabe a resposta",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "彼が答えを知っているか気になる maps to pergunto-me se ele sabe a resposta. The grammar is right, the wording is natural, and it is one sentence.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Seed sentence. The Japanese is natural, and 'Pergunto-me se ele sabe a resposta' matches it exactly using taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "por_for_jpn:S0290L01U03",
+       "role": "use",
+       "known": "彼がポルトガル語を話せるか気になる。",
+       "target": "pergunto-me se ele sabe falar português",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known side says 話せる (can speak) and has no 知っている, so it does not map one-to-one to 'ele sabe'. This breaks ZUT.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known side uses 話せる, not the LEGO gloss 知っている, so the prompt does not tile to 'ele sabe'. 話せる would also map to 'consegue falar', which breaks ZUT.",
+       "keep": false,
+       "why": "Sonnet: bad — The known side says 話せる (can speak) and has no 知っている, so it does not map one-to-one to 'ele sabe'. This breaks ZUT."
+      },
+      {
+       "id": "por_for_jpn:S0290L01U05",
+       "role": "use",
+       "known": "彼はポルトガル語をとても上手に話せる。",
+       "target": "ele sabe falar português muito bem",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known side uses 話せる and not 知っている. The Portuguese is natural, but the prompt does not tile the LEGO, so the mapping is ambiguous.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known side uses 話せる rather than 知っている, so the LEGO is not prompted. 'Sabe falar' is an untaught mapping and is ambiguous with 'consegue falar'.",
+       "keep": false,
+       "why": "Sonnet: bad — The known side uses 話せる and not 知っている. The Portuguese is natural, but the prompt does not tile the LEGO, so the mapping is ambiguous."
+      },
+      {
+       "role": "build",
+       "known": "彼は答えを知っている",
+       "target": "ele sabe a resposta",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Ele sabe a resposta' is a clean, natural match for 彼は答えを知っている.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼は本当のことを知っている",
+       "target": "ele sabe a verdade",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "本当のこと is the taught gloss for 'a verdade'. Natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼はすべて知っている",
+       "target": "ele sabe tudo",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "すべて is the taught gloss for 'tudo'. 'Ele sabe tudo' is natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼はもう知っている",
+       "target": "ele já sabe",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Ele já sabe' is natural and matches 彼はもう知っている.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼は彼女の名前を知っている",
+       "target": "ele sabe o nome dela",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'O nome dela' is taught. 'Ele sabe o nome dela' is natural and exact.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "彼はそれを知っている",
+       "target": "ele sabe isso",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Ele sabe isso' is natural and matches 彼はそれを知っている.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "彼は答えを知っていると思う。",
+       "target": "acho que ele sabe a resposta",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One complete sentence. 'Acho que ele sabe a resposta' is natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼が本当のことを知っているか気になる。",
+       "target": "pergunto-me se ele sabe a verdade",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and exact, with the same taught frame as the seed.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼がもう知っているか気になる。",
+       "target": "pergunto-me se ele já sabe",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Pergunto-me se ele já sabe' is natural and matches the Japanese.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼は私が言いたいことを知っている。",
+       "target": "ele sabe o que quero dizer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses the taught chunk 私が言いたいこと = 'o que quero dizer'. Natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼は何が起こるか知っている。",
+       "target": "ele sabe o que vai acontecer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses the taught chunk 何が起こるか = 'o que vai acontecer'. Natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼は私がやるべきことを知っている。",
+       "target": "ele sabe o que preciso de fazer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses the taught chunk やるべきこと = 'o que preciso de fazer'. 私が makes the subject explicit, and the sentence is grammatical and natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼は彼女の名前を知っていると思う。",
+       "target": "acho que ele sabe o nome dela",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Acho que ele sabe o nome dela' is natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼はすべて知っていると思う。",
+       "target": "acho que ele sabe tudo",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Acho que ele sabe tudo' is natural and exact.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      },
+      {
+       "role": "use",
+       "known": "彼は本当のことを知っていると思う。",
+       "target": "acho que ele sabe a verdade",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Acho que ele sabe a verdade' is natural and exact.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
   }
  }
 }
