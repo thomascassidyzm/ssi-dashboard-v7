@@ -15,6 +15,13 @@
  * `offending` names the forms that failed step 1, which is what a reader needs
  * to see ("espérions", not "an untaught word").
  *
+ * WELSH (Aran, methodology lead, 2026-10-13): step 2 does not apply. A Welsh phrase may use
+ * ANY word taught earlier, including one met only inside a bigger chunk ("trio" after
+ * "dw i'n trio"), and a soft-mutated form is the same word (cael/gael). Nasal and aspirate
+ * forms (nghath, chath) and other inflections are still new until that exact form is taught —
+ * Tom's "we hoped vs to hope" still holds. Pass { courseCode } and a Welsh target that fails
+ * the tiling is re-read word by word by the live builder's own rule (welshUntaughtWords).
+ *
  * Space-delimited targets tile by word. Pass { noSpace: true } for scripts written
  * without spaces (zho, jpn, yue, tha...): chunks and target are then tiled by character,
  * still from WHOLE taught chunks.
@@ -53,10 +60,17 @@ function tiles(target, vocabTargets, { noSpace = false } = {}) {
   return { ok: false, untiled: [...new Set(words.filter(w => !owned.has(w)))] };
 }
 
+const { isWelshTarget, welshTaughtKeys, welshUntaughtWords } = require('../../../services/course-builder/lib/welsh-mutation.cjs');
+
 /** @returns {{ok:boolean, offending:string[], reason:string|null, tiling?:string[]}} */
-function exactFormCheck(target, vocabTargets, opts) {
+function exactFormCheck(target, vocabTargets, opts = {}) {
   const t = tiles(target, vocabTargets, opts);
   if (t.ok) return { ok: true, offending: [], reason: null, tiling: t.tiling };
+  if (opts.courseCode && isWelshTarget(opts.courseCode)) {
+    const untaught = welshUntaughtWords(target, welshTaughtKeys(vocabTargets));
+    if (!untaught.length) return { ok: true, offending: [], reason: null, welsh: true };
+    return { ok: false, offending: untaught, reason: `Welsh word never taught (not even soft-mutated): ${untaught.join(' ')}` };
+  }
   const offending = t.untiled;
   return {
     ok: false,

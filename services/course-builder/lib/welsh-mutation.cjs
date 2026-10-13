@@ -86,4 +86,105 @@ function isSoftMutationVariant(courseCode, targetA, targetB) {
   return ta.every((w, i) => w === tb[i] || softEquivalentWords(w, tb[i]));
 }
 
-module.exports = { isSoftMutationVariant, softEquivalentWords, softRadicals, isWelshTarget };
+/**
+ * SAME WELSH = ALREADY TAUGHT, WHATEVER THE ENGLISH SAYS (Aran, 2026-10-08 11:59Z, job #429):
+ * "LEGOs with the same Welsh (identical, or a soft-mutated form) as one taught earlier in the
+ * running order count as ALREADY TAUGHT, even when the English label differs" — e.g. "to get up"
+ * = codi after "to raise" = codi; "we'd like" = bydden ni'n licio after "we would like".
+ *
+ * KNOWN HAZARD, kept because the ruling names soft mutation explicitly: across DIFFERENT English
+ * the soft fold can join two different words — "awn ni?" (shall we go) reads as the soft form of
+ * "cawn ni" (could we have), and a homograph like nôl (fetch / back) is "identical". With the
+ * same English (the 2026-10-07 rule) that cannot happen; here it can. Reported to Aran with the
+ * cases found in cym_nv2/cym_sv2, not filtered silently.
+ *
+ * False for every non-Welsh course, so the caller behaves exactly as before there.
+ */
+function isSameWelsh(courseCode, targetA, targetB) {
+  if (!isWelshTarget(courseCode)) return false;
+  const a = String(targetA || '').split(/\s+/).map(normWord).filter(Boolean).join(' ');
+  const b = String(targetB || '').split(/\s+/).map(normWord).filter(Boolean).join(' ');
+  if (!a || !b) return false;
+  return a === b || isSoftMutationVariant(courseCode, targetA, targetB);
+}
+
+
+/**
+ * WHAT A WELSH PRACTICE PHRASE MAY USE (Aran, 2026-10-13, job #504): "any Welsh taught earlier
+ * in the course" — every word of every LEGO, component and seed sentence before this point in the
+ * running order, plus the current LEGO — and a soft-mutated form is the same taught word
+ * (cael/gael, calon/galon), as is a final f dropped to an apostrophe (cyfrif/cyfri’, Aran's
+ * ruling on that word). The builder's general gate instead TILES a phrase from whole LEGO /
+ * component / seed chunks, so a word met only inside a bigger chunk ("trio" inside "dw i’n trio",
+ * old seeds 1-137 have no components at all) read as untaught. For Welsh, this word-level reading
+ * is the rule; checkVocabViolations falls back to it when tiling fails. Canon K29 now carries this as
+ * its Welsh reading (Aran, methodology lead, 2026-10-13); Kai's component test governs other languages.
+ *
+ * A token is split at a clitic apostrophe: "nhw’n" → "nhw" + "’n", "mae’r" → "mae" + "’r";
+ * a trailing apostrophe ("cyfri’", "be’") stays on its word.
+ */
+function welshPieces(text) {
+  const out = [];
+  const toks = String(text || '').toLowerCase().replace(/[’‘`´]/g, "'").replace(/[.,!?;:¿¡«»"“”()]/g, ' ')
+    .split(/\s+/).filter(Boolean);
+  for (const t of toks) {
+    const m = t.match(/^([^']+)('[^']+)$/);
+    if (m) out.push(m[1], m[2]); else out.push(t);
+  }
+  return out.map(w => w.replace(/^'+(?=\p{L}{2})/u, '')).filter(w => w && w !== "'");
+}
+
+// The clitic forms that ARE a full word: "’n" is "yn", "’r" is "yr". Used for containment only.
+const CLITIC_FULL = new Map([["'n", 'yn'], ["'r", 'yr']]);
+
+/** Every spelling this piece is the same taught word as: soft radicals, and final f ↔ apostrophe. */
+function pieceKeys(w) {
+  const keys = new Set();
+  const forms = [w];
+  if (/\p{L}'$/u.test(w)) forms.push(w.slice(0, -1) + 'f');
+  for (const f of forms) for (const r of softRadicals(f)) keys.add(r);
+  return keys;
+}
+
+/** The set of taught keys from every text of a vocabulary (LEGO, component and seed targets). */
+function welshTaughtKeys(texts) {
+  const keys = new Set();
+  for (const t of texts) for (const p of welshPieces(t)) for (const k of pieceKeys(p)) keys.add(k);
+  return keys;
+}
+
+/** The phrase's words NOT taught by `taughtKeys` (welshTaughtKeys), in order; [] when all taught. */
+function welshUntaughtWords(phraseTarget, taughtKeys) {
+  return welshPieces(phraseTarget).filter(p => ![...pieceKeys(p)].some(k => taughtKeys.has(k)));
+}
+
+/**
+ * The phrase carries the LEGO's words, contiguous and in order, each equal up to a soft mutation,
+ * a final-f elision, or a clitic ("’n" = "yn"): "calon mor garedig" carries "galon mor garedig",
+ * "ti’n cyfrif" carries "yn cyfri’". Welsh only; only ever ADDS to the exact containment check.
+ */
+function welshContainsLego(courseCode, legoTarget, phraseTarget) {
+  if (!isWelshTarget(courseCode)) return false;
+  const full = (p) => CLITIC_FULL.get(p) || p;
+  const lego = welshPieces(legoTarget).map(full);
+  const phrase = welshPieces(phraseTarget).map(full);
+  if (!lego.length) return false;
+  const same = (a, b) => { const ka = pieceKeys(a); return [...pieceKeys(b)].some(k => ka.has(k)); };
+  for (let i = 0; i + lego.length <= phrase.length; i++) {
+    if (lego.every((w, j) => same(w, phrase[i + j]))) return true;
+  }
+  return false;
+}
+
+/**
+ * The same rule in the words a phrase generator is given (v3 build-prompt, v4, build-escalation).
+ * Aran (methodology lead), 2026-10-13. Kept here, beside welshUntaughtWords, so the prompt and the
+ * check that grades it cannot drift apart. Empty for every non-Welsh course.
+ */
+function welshVocabRulePrompt(courseCode) {
+  if (!isWelshTarget(courseCode)) return '';
+  return `WELSH VOCABULARY RULE (Aran, methodology lead, 2026-10-13): the Welsh side may use ANY Welsh word taught earlier in the course running order — including a word the learner met only inside a bigger chunk ("trio" is available once "dw i'n trio" has been taught). A soft-mutated form of a taught word is the same word (cael/gael, calon/galon). Any other form is still NEW until that exact form has been taught: no nasal or aspirate mutation the course has not taught (nghath, chath), no untaught conjugation, plural or contraction ("we hoped" is not licensed by "to hope").`;
+}
+
+module.exports = { isSoftMutationVariant, isSameWelsh, softEquivalentWords, softRadicals, isWelshTarget,
+  welshPieces, welshTaughtKeys, welshUntaughtWords, welshContainsLego, welshVocabRulePrompt };

@@ -31,7 +31,7 @@ function regateRows(rows, data, opts = {}) {
     const vocab = availableVocab({ legos: data.legos, components: data.components, seed: r.seed_number, legoIndex: +r.lego_index });
     vocab.push({ target_text: r.lego_target });
     vocab.push(...data.components.filter(x => x.seed_number === r.seed_number && +x.lego_index === +r.lego_index));
-    const c = exactFormCheck(r.target_text, vocab.map(v => v.target_text), { noSpace: !!opts.noSpace });
+    const c = exactFormCheck(r.target_text, vocab.map(v => v.target_text), { noSpace: !!opts.noSpace, courseCode: opts.courseCode });
     if (c.ok) kept.push(r); else cut.push({ ...r, exact_form: { offending: c.offending, reason: c.reason } });
   }
   return { kept, cut };
@@ -56,7 +56,7 @@ async function main() {
     const data = loadCourse(course);
     await tagCourse(course, data);
     await ensureTagged(staged.rows.map(r => r.known_text), { knownLanguage: knownLanguageName(course) });
-    const { kept, cut } = regateRows(staged.rows, data, { noSpace: NO_SPACE.has(targetLangOf(course)) });
+    const { kept, cut } = regateRows(staged.rows, data, { noSpace: NO_SPACE.has(targetLangOf(course)), courseCode: course });
     const inv = inventory(course, data);
     const covers = (rows, w) => {
       const available = availableAt(inv, w.end);

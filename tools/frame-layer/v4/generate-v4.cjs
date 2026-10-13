@@ -107,6 +107,7 @@ const useTooShort = (known, noSpace) => unitsOf(known, noSpace).length < (noSpac
 
 // ---------- target tiling: exact surface forms, see exact-form.cjs (Tom 2026-10-09) ----------
 const { exactFormCheck, tiles } = require('./exact-form.cjs');
+const { isWelshTarget, welshVocabRulePrompt, welshContainsLego } = require('../../../services/course-builder/lib/welsh-mutation.cjs');
 
 // ---------- the walk-back brief ----------
 function carriersByFrame(chunks, frameIds) {
@@ -152,7 +153,7 @@ NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on t
 
 RAILS (every one is checked mechanically after you write; a phrase that fails is dropped):
 - The phrase contains the LEGO's exact known text AND exact target text, as taught.
-- The target is built ONLY from whole taught chunks listed in VOCABULARY — no new word, no re-conjugation, no new contraction. A basket may use chunks from earlier seeds and earlier LEGOs of its own seed, never later ones.
+${isWelshTarget(course) ? `- ${welshVocabRulePrompt(course)} A basket may use material from earlier seeds and earlier LEGOs of its own seed, never later ones.` : '- The target is built ONLY from whole taught chunks listed in VOCABULARY — no new word, no re-conjugation, no new contraction. A basket may use chunks from earlier seeds and earlier LEGOs of its own seed, never later ones.'}
 - The known (English) side uses only the English glosses of taught chunks plus plain grammatical glue.
 - ZUT: one English prompt maps to exactly one ${LANG} form, everywhere in the course. Do not write an English line the course already renders another way.
 - No parentheses, no explanations, no grammar labels, anywhere.
@@ -201,7 +202,7 @@ NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on t
 
 RAILS (checked mechanically after you write; a phrase that fails is dropped):
 - The phrase contains the LEGO's exact known text AND exact target text, as taught.
-- The target is built ONLY from whole taught chunks in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it. No new word, no re-conjugation, no new contraction.
+${isWelshTarget(course) ? `- ${welshVocabRulePrompt(course)} Only material in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it.` : "- The target is built ONLY from whole taught chunks in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it. No new word, no re-conjugation, no new contraction."}
 - The known (${KNOWN}) side uses only the ${KNOWN} glosses of taught chunks plus plain grammatical glue — words the learner has already heard in this course.
 - ZUT: one ${KNOWN} prompt maps to exactly one ${LANG} form, everywhere in the course. Do not write a ${KNOWN} line the course already renders another way.
 - No parentheses, no explanations, no grammar labels.
@@ -275,14 +276,14 @@ function gate(cands, { course, data, newLegos, liveZut, available, additive = fa
     if (!known || !target) reasons.push('empty side');
     if (/[()]/.test(known + target)) reasons.push('parentheses');
     if (!norm(known).includes(norm(lego.known_text))) reasons.push(`known side does not contain the LEGO "${lego.known_text}"`);
-    if (!norm(target).includes(norm(lego.target_text))) reasons.push(`target does not contain the LEGO "${lego.target_text}"`);
+    if (!norm(target).includes(norm(lego.target_text)) && !welshContainsLego(course, lego.target_text, target)) reasons.push(`target does not contain the LEGO "${lego.target_text}"`);
     if (known && hasOpener(known)) reasons.push('stapled opener (the frame tagger marks a detachable interjection at the front)');
     // per-basket vocabulary window
     const vocab = availableVocab({ legos: data.legos, components: data.components, seed: lego.seed_number, legoIndex: +lego.lego_index });
     vocab.push({ known_text: lego.known_text, target_text: lego.target_text });
     vocab.push(...data.components.filter(x => x.seed_number === lego.seed_number && +x.lego_index === +lego.lego_index));
     // Scripts without spaces cannot be word-tiled here; Popty's vocab gate (tools/phrase-gate) tiles them by character.
-    const t = NO_SPACE.has(targetLangOf(course)) ? { ok: true } : exactFormCheck(target, vocab.map(v => v.target_text));
+    const t = NO_SPACE.has(targetLangOf(course)) ? { ok: true } : exactFormCheck(target, vocab.map(v => v.target_text), { courseCode: course });
     if (!t.ok) reasons.push(t.offending.length ? `target uses untaught words: ${t.offending.join(' ')}` : t.reason);
     const knownNoSpace = NO_SPACE.has(knownLangOf(course));
     let badKnown;
