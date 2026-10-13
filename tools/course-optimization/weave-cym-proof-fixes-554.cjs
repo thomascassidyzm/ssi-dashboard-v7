@@ -552,6 +552,15 @@ async function generate() {
   }));
 }
 
+// Read by a person before filing (job #554·P). Lines dropped from a generated basket, with why.
+const DROP_LINES = new Map([
+  ['oedd o isio ymarfer achos mae o newydd ddechrau', "uses 'newydd ddechrau' — this job keeps clear of seed 15 / 'dw i newydd ddechrau' entirely"],
+  ['dweud wrtha i beth oedd e’n moyn', "an infinitive used as a command ('tell me…' is 'dwed wrtha i'), not good Welsh"],
+  ['oedd e’n moyn i fi ddweud wnes i gwrdd â dy chwaer di neithiwr', "reported speech without 'bo’ fi wedi…' — clumsy, not a model line"],
+]);
+// English side: the pronoun I and the language name are capitalised (the model sometimes writes "i’m", "welsh").
+const tidyKnown = (k) => k.replace(/(^|[\s"(,])i(?=[\s’']|$)/g, '$1I').replace(/\bwelsh\b/g, 'Welsh');
+
 async function sql2() {
   const { lineChecks } = require('./weave-cym-aran-written-510.cjs');
   const rows = [];
@@ -565,7 +574,10 @@ async function sql2() {
     // Second check, the Welsh per-line gate (welshUntaughtWords / welshContainsLego), on every line before it is filed.
     const lego = { target_text: x.target };
     const ok = { build: [], use: [] };
-    for (const role of ['build', 'use']) for (const p of r[role]) {
+    for (const role of ['build', 'use']) for (const p0 of r[role]) {
+      const p = { ...p0, known: tidyKnown(p0.known) };
+      const why = DROP_LINES.get(p.target) || (/newydd ddechrau/.test(p.target) ? "uses 'newydd ddechrau' (seed 15 rule)" : null);
+      if (why) { held.push(`${x.c} ${tag(x.s, x.l)} line "${p.target}" DROPPED: ${why}`); continue; }
       const errs = await lineChecks(sb, x.c, x.s, x.l, lego, p.target);
       if (errs.length) held.push(`${x.c} ${tag(x.s, x.l)} line "${p.target}": ${JSON.stringify(errs)}`); else ok[role].push(p);
     }
