@@ -379,7 +379,7 @@ function relinkArrays(refs, oldId, newId) {
 async function relink(links, newId, durationMs) {
   for (const l of links) {
     // job #53: the new clip must be the slot's resolveVoice voice (a refusal leaves the slot on its old clip, said out loud)
-    if (/_audio_id$/.test(l.col) && !await require('../services/shared/resolve-voice.cjs').mayPoint(supabase, { courseCode: COURSE, col: l.col, to: newId })) continue
+    if (/_audio_id$/.test(l.col) && !await require('../services/shared/resolve-voice.cjs').mayPoint(supabase, { courseCode: COURSE, col: l.col, to: newId, tbl: l.table, key: l.rowId })) continue
     const patch = { [l.col]: newId }
     const spec = LINK_TABLES.find(t => t.table === l.table)
     const m = /^(target[12])_audio_id$/.exec(l.col)

@@ -34,6 +34,8 @@ const { tryCanonicalVoiceId, tryCanonicalLanguage } = require('./clip-identity.c
 const { castKeyForCourse } = require('./cast-language-key.cjs')
 const { isTomCastRow, rowIsForKey } = require('./voice-cast-gate.cjs')
 const voicingConfig = require('./voicing-policy.config.json')
+const { isTomCloneVoice, isWelshCourse, WELSH_TOM_MESSAGE } = require('./welsh-no-tom-clone.cjs')
+const { assertNotReplacingHuman } = require('./human-take-guard.cjs')
 
 const TOM_006 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
 const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
@@ -54,6 +56,8 @@ const TOM006_INTRO_COURSES = Object.freeze([...((voicingConfig.wholeIntroVoices 
 const EXPECTED_ENGLISH_TARGET = Object.freeze({ f: CHARLOTTE, m: TOM_006 })
 
 const POLICY = Object.freeze([
+  { rule: 'welsh-no-tom-clone', when: 'ANY slot of a Welsh course (cym in the code or either language) whose answer would be a Tom clone', voice: 'REFUSE — never a Tom clone, never a guess',
+    ruling: 'r-2026-10-13-hard-rule-tom-s-voice-clone ("my clone should never have been used for anything in the WELSH courses")' },
   { rule: 'english-known', when: 'English is the KNOWN language, any course, any gender', voice: 'Tom-006',
     ruling: 'r-2026-10-12-in-the-premium-x-for-eng (+ Tom 2026-10-12 16:17Z brief: "English as KNOWN language in ANY course: Tom-006, always")' },
   { rule: 'english-target', when: 'English is the TARGET (eng_for_X), target1/target2', voice: 'English cast at the slot gender: Charlotte (f) / Tom-006 (m)',
@@ -109,7 +113,17 @@ function pickCast(cast, key, gender) {
  * @param {{course:object, role:string, language?:string, gender?:'f'|'m'}} slot
  * @param {{roles:object[], voices?:object[]}|null} cast  voice_language_roles (+ voices) rows; null = cast not loaded
  */
-function resolveVoice({ course, role, language = null, gender = null } = {}, cast = null) {
+function resolveVoice(slot = {}, cast = null) {
+  const res = resolveVoiceUnguarded(slot, cast)
+  // Tom 2026-10-13: a Welsh course never speaks in a Tom clone, whatever the rules below would say.
+  if (res.status === 'voice' && isWelshCourse(slot.course) && isTomCloneVoice(res.voiceId)) {
+    return { status: 'refuse', reason: 'tom-clone-welsh', rule: 'welsh-no-tom-clone', ruling: POLICY.find((p) => p.rule === 'welsh-no-tom-clone').ruling,
+      message: WELSH_TOM_MESSAGE(slot.course.course_code, res.voiceId) }
+  }
+  return res
+}
+
+function resolveVoiceUnguarded({ course, role, language = null, gender = null } = {}, cast = null) {
   if (!course) return noRuling('no course')
   if (!SLOT_ROLES.includes(role)) return noRuling(`role ${role} is not a course slot this policy governs`)
   const knownSide = role === 'known' || role === 'presentation'
@@ -147,6 +161,10 @@ function resolveVoice({ course, role, language = null, gender = null } = {}, cas
  */
 function checkPointer({ course, role, clip, gender = null }, cast) {
   if (!clip) return { ok: false, reason: 'no-clip', message: 'no clip to point at' }
+  // Tom 2026-10-13: a Tom clone never fills a Welsh slot — checked before anything else, whatever the policy answer.
+  if (isWelshCourse(course) && isTomCloneVoice(clip.voice_id)) {
+    return { ok: false, reason: 'tom-clone-welsh', resolution: null, message: WELSH_TOM_MESSAGE(course.course_code, clip.voice_id) }
+  }
   // A HUMAN RECORDING is never outranked by a TTS policy (Tom 2026-08-31, language-voice-cast.cjs human-voice guard).
   if (clip.origin === 'human') return { ok: true, human: true, resolution: null }
   const res = resolveVoice({ course, role, language: clip.language, gender }, cast)
@@ -234,9 +252,11 @@ async function loadCourse(db, courseCode) {
  * Throws VoicePointerRefusal unless `to` (a course_audio id) may fill `col` on a row of `courseCode`.
  * Reads the clip, the course and the cast; a failed read refuses.
  */
-async function assertPointer(db, { courseCode, col, to }) {
+async function assertPointer(db, { courseCode, col, to, tbl, key, from, tomApproval, restore = false }) {
   const role = roleOfColumn(col)
   if (!role || !to) return
+  // FIRST, whatever the voice policy says: a HUMAN take is never replaced by a synthetic clip (Tom's HARD RULE 2026-10-13, human-take-guard.cjs).
+  await assertNotReplacingHuman(db, { tbl, key, col, from, to, tomApproval, restore })
   const { data: clip, error } = await db.from('course_audio').select('id, voice_id, language, origin').eq('id', to).maybeSingle()
   if (error) throw new VoicePointerRefusal(`resolveVoice: cannot read clip ${to} (${error.message})`, 'clip-unreadable')
   const v = checkPointer({ course: await loadCourse(db, courseCode), role, clip }, await loadCast(db))
@@ -247,10 +267,10 @@ async function assertPointer(db, { courseCode, col, to }) {
  * For tools with their own pointer writer: true when the write may go ahead, false (with one printed line) when resolveVoice refuses
  * it. A RESTORE of a ledgered before-state (an undo) passes — putting back what was there is not choosing a voice — and so does a null.
  */
-async function mayPoint(db, { courseCode, col, to, restore = false, log = console.log }) {
+async function mayPoint(db, { courseCode, col, to, tbl, key, from, tomApproval, restore = false, log = console.log }) {
   if (restore || to == null) return true
-  try { await assertPointer(db, { courseCode, col, to }); return true } catch (e) {
-    if (e.code !== 'VOICE_POLICY') throw e
+  try { await assertPointer(db, { courseCode, col, to, tbl, key, from, tomApproval }); return true } catch (e) {
+    if (e.code !== 'VOICE_POLICY' && e.code !== 'HUMAN_TAKE') throw e
     log(`REFUSED by resolveVoice (${e.reason}): ${e.message}`); return false
   }
 }
@@ -259,9 +279,9 @@ async function mayPoint(db, { courseCode, col, to, restore = false, log = consol
  * THE guarded pointer write: check, then `update … set col=to where id=key and col=from` (before-state asserted).
  * Returns true when exactly one row moved. Tools that repoint audio call this instead of writing the column themselves.
  */
-async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEventId = null }) {
+async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEventId = null, tomApproval }) {
   if (!['course_seeds', 'course_legos', 'course_practice_phrases'].includes(tbl)) throw new Error(`setSlotPointer: not a slot table: ${tbl}`)
-  await assertPointer(db, { courseCode, col, to })
+  await assertPointer(db, { courseCode, col, to, tbl, key, from: from === undefined ? null : from, tomApproval })
   const patch = { [col]: to, ...(editEventId ? { last_edit_event_id: editEventId } : {}) }
   let q = db.from(tbl).update(patch).eq('id', key)
   q = from == null ? q.is(col, null) : q.eq(col, from)

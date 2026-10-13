@@ -95,8 +95,12 @@ function isLineRecorded(line, { recordedKeys, spellings }) {
   if (slots.some(mine)) return true
   // BY TEXT: a stored take of these words by this voice, in this language. Not
   // for a fixture's KNOWN-side line — that is filed under the course's known
-  // language and the target-language key set cannot vouch for it.
-  if (line.role === 'known') return false
+  // language and the target-language key set cannot vouch for it. A known line
+  // READ BY A VOICE OF THE KNOWN LANGUAGE (Aran's English, job #619) says so with
+  // `knownByText`: its recordist's key set IS that language's, so it can vouch —
+  // and must, for a line whose slot is deliberately not filled by the take (a
+  // synthetic-held slot while replacement is switched off).
+  if (line.role === 'known' && !line.knownByText) return false
   if (recordedKeys && audioKeyCandidates(line.text).some((k) => recordedKeys.has(k))) return true
   return false
 }

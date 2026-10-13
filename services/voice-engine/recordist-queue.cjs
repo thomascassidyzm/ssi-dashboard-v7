@@ -111,6 +111,7 @@ const { canonicalDialect, courseDialect, bucketKey } = require('../shared/dialec
 const { isLineRecorded } = require('./take-selection.cjs')
 const { soloReaders, isSoloReaderPod } = require('../shared/pod-solo-readers.cjs')
 const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
+const phraseQueue = require('./phrase-queue.cjs')
 const langService = require('../language-code-service.cjs')
 
 /**
@@ -315,6 +316,12 @@ async function resolveRecordist(db, voiceIdParam, { cache, course } = {}) {
         languageName: languageName(policy.language),
         humanOnly: !!policy.human_only,
         spellings: recordedSpellings(entry.voiceId, merged),
+        // A CAST-ON-ONLY reader is confined to the courses its castOn names, at
+        // every door that already confines a cast-only voice (castCourses):
+        // the queue's course list, the booth arrival, the re-record take.
+        ...(entry.onlyCastOn === true
+          ? { castCourses: [...new Set(castOnEntries(entry.castOn).map((c) => c.courseCode))] }
+          : {}),
       }
     }
   }
@@ -597,7 +604,9 @@ async function voiceRegister(db, language, { cache } = {}) {
     // First named wins, so a second voice of one gender added to the policy
     // later never silently takes over the lines the first was carrying.
     const bucket = bucketKey(v.dialect, v.gender)
-    if (v.gender && !policyByBucket.has(bucket)) policyByBucket.set(bucket, v)
+    // A cast-on-only reader carries no (dialect, gender) by default — see
+    // policyVoiceList. It owns its own spelling and nothing else.
+    if (v.gender && !v.onlyCastOn && !policyByBucket.has(bucket)) policyByBucket.set(bucket, v)
   }
   for (const [spelling] of aliasOwner) spellings.add(spelling)
   return { policy, policyVoices, aliasOwner, policyByBucket, spellings }
@@ -934,8 +943,80 @@ function seedCastEntry(course, policyVoices) {
       if (entry.voiceId === declared || aliases.has(declared)) { out[role] = entry; break }
     }
   }
+  // THE POLICY-SIDE CAST, second and never over the course's own. See
+  // castOnEntries: it names a slot the course row does not, and it FILLS ONLY.
+  for (const entry of policyVoices) {
+    for (const c of entry.castOn || []) {
+      if (c.courseCode !== course.course_code || out[c.role]) continue
+      // A target-side reading is still bound by the dialect ruling (2026-08-19):
+      // a Northern voice cast on a Southern course is refused here, not obeyed.
+      // The known side is a different language with one dialect, so it is not.
+      if (c.role !== 'known' && canonicalDialect(entry.dialect) !== courseDialect(course)) continue
+      out[c.role] = { ...entry, fillOnly: true, synthetic: c.synthetic || null,
+        syntheticSeeds: c.synthetic && c.syntheticSeeds ? new Set(c.syntheticSeeds) : null }
+    }
+  }
   return out
 }
+
+/**
+ * THE POLICY-SIDE SEED CAST — `castOn` on a language_recording_policy voice.
+ *
+ * Aran, 2026-10-13 (job #588): he will record the ~700 English seed sentences of
+ * the four Welsh courses that have no take, and Dan and Eleri are to fill the
+ * live Southern course's empty seed slots. Neither could be cast the usual way
+ * (courses.voice_config.voices[role]) without editing LIVE course rows that
+ * phase 8, the casting gate and the course-order script all read, and a live
+ * cast there also DISPLACES non-policy clips (linkSeedTake replaces a
+ * legacy_import holder) — on live cym_s_for_eng that is the original
+ * recordings, and linking into live courses is Tom's call, pending.
+ *
+ * So the cast is declared beside the voice, in the one table that says who reads
+ * a language:  voices[slot].castOn = [{courseCode, role}], role one of
+ * known / target1 / target2. It is read by seedCastEntry, so the queue, the
+ * linker and the take route — all three ask seedCastEntry — cannot disagree.
+ * Such a cast is FILL-ONLY, and that is the rule rather than a caution: it asks
+ * for, and links into, EMPTY slots only. A slot that already holds any clip is
+ * left exactly as it is and is not counted as work.
+ *
+ * The role names the SIDE, and the side names the language: a `known` castOn is
+ * read by a voice of the course's KNOWN language (English, for these courses),
+ * and its takes are filed under that language (script-take-filing.cjs).
+ */
+function castOnEntries(raw) {
+  if (!Array.isArray(raw)) return []
+  return raw
+    .map((c) => ({
+      courseCode: String((c && c.courseCode) || '').trim(),
+      role: String((c && c.role) || '').trim(),
+      ...(SYNTHETIC_MODES.includes(c && c.synthetic) ? { synthetic: c.synthetic } : {}),
+      ...(Array.isArray(c && c.syntheticSeeds) ? { syntheticSeeds: c.syntheticSeeds.map(String) } : {}),
+    }))
+    .filter((c) => c.courseCode && ['known', 'target1', 'target2'].includes(c.role))
+}
+
+/**
+ * QUEUE A SLOT HELD ONLY BY SYNTHETIC SPEECH (Aran, 2026-10-13, job #619).
+ * Fill-only leaves every filled slot alone, so a live slot holding a TTS clip
+ * (cym_n_for_eng's English prompts: Tom-006 / the old xAI Tom, the clones Tom
+ * ruled out of Welsh the same day) was in nobody's queue. A castOn entry may say
+ *
+ *   synthetic: 'queue'     — QUEUE such a slot's line for this voice, even where
+ *                            some other speaker's human take of the words exists
+ *                            (the slot is asking for THIS voice). The line counts
+ *                            as recorded by its text (take-selection knownByText).
+ *   syntheticSeeds: [ids]  — seeds whose slot HELD synthetic speech and was since
+ *                            emptied (job #606, Tom's GO 2026-10-13: no human take
+ *                            → emptied, no synthetic stand-in). Queued the same way.
+ *                            Written from #606's committed ledger
+ *                            (ops/welsh-tom-clone-revert-606/no-human-take.csv) by
+ *                            tools/recording/welsh-phrase-queues-619.cjs.
+ *
+ * QUEUEING ONLY. Nothing here changes what a take LINKS: linkSeedTake is exactly
+ * the fill-only linker it was (#588). Replacing synthetic English on live North
+ * is Tom's approved job #621, and it owns that.
+ */
+const SYNTHETIC_MODES = ['queue']
 
 /** The language's policy voices, flattened to {voiceId, gender, dialect, aliases}. */
 function policyVoiceList(policy) {
@@ -949,6 +1030,12 @@ function policyVoiceList(policy) {
       gender: String(entry.gender || slot.split(':')[0] || '').toLowerCase(),
       dialect: canonicalDialect(entry.dialect),
       aliases: Array.isArray(entry.aliases) ? entry.aliases : [],
+      castOn: castOnEntries(entry.castOn),
+      // A voice that reads ONLY what its castOn names — never the language's
+      // pods, re-records or seed slots by gender. Aran's English voice is one:
+      // without this, every gender-only male pod cast on an eng_for_* course
+      // would route to him through policyByBucket (lineVoiceId rule 3).
+      onlyCastOn: entry.onlyCastOn === true,
     })
   }
   return out
@@ -1039,6 +1126,142 @@ async function fetchSeeds(db, courseCodes) {
 }
 
 /**
+ * A seed a recordist may be asked to read: signed off (RECORDABLE_SEED_STATUSES),
+ * OR SERVED — in its course's running order, which is what the player walks on a
+ * course that has one. A seed the learner hears is not a draft in any sense that
+ * matters to the booth: cym_nv2_for_eng serves seed 315 as status 'draft', and
+ * until this its whole sentence could never be recorded (job #588).
+ */
+function isRecordableSeed(seed, runningOrder) {
+  if (RECORDABLE_SEED_STATUSES.has(seed.status)) return true
+  return !!(runningOrder && runningOrder.positions.has(`${seed.course_code}:${seed.seed_number}`))
+}
+
+/** Seeds of a course that has a running order but does not serve them sort after it. */
+const UNSERVED_SEED_OFFSET = 1e6
+
+/**
+ * Where a seed is served: its running-order position on a course that has one;
+ * its seed number on a course that has none (the player's own fallback); after
+ * everything served when its course has an order that leaves it out.
+ */
+function seedPosition(seed, runningOrder) {
+  const at = runningOrder && runningOrder.positions.get(`${seed.course_code}:${seed.seed_number}`)
+  if (at != null) return at
+  if (runningOrder && runningOrder.courses.has(seed.course_code)) return UNSERVED_SEED_OFFSET + seed.seed_number
+  return seed.seed_number
+}
+
+/** course_running_order for a set of courses: {positions: Map<'course:seed', position>, courses: Set}. */
+async function fetchRunningOrder(db, courseCodes) {
+  const positions = new Map()
+  const courses = new Set()
+  if (!courseCodes.length) return { positions, courses }
+  let rows
+  try {
+    rows = await pagedRead((from, to) => db
+      .from('course_running_order')
+      .select('course_code, seed_number, position')
+      .in('course_code', courseCodes)
+      .order('course_code', { ascending: true })
+      .order('position', { ascending: true })
+      .range(from, to))
+  } catch (err) {
+    throw new Error(`running order read failed: ${err.message}`)
+  }
+  for (const r of rows) {
+    courses.add(r.course_code)
+    const key = `${r.course_code}:${r.seed_number}`
+    if (!positions.has(key)) positions.set(key, r.position)
+  }
+  return { positions, courses }
+}
+
+/**
+ * The courses whose KNOWN side this language's policy voices read by castOn
+ * (castOnEntries), keyed by course code — only where the course's known_lang IS
+ * this language, so an English voice can never be cast on a course whose known
+ * side is Spanish. `castOnOnly` is true when every voice of the language is a
+ * cast-on-only reader (policyVoiceList `onlyCastOn`).
+ */
+async function castOnKnownSideCourses(db, language, { cache } = {}) {
+  const voices = policyVoiceList((await loadPolicies(db, { cache })).find((row) => {
+    try { return canonicalLanguage(row.language) === language } catch { return false }
+  }))
+  const castOnOnly = voices.length > 0 && voices.every((v) => v.onlyCastOn)
+  const wanted = new Set(voices.flatMap((v) => v.castOn.filter((c) => c.role === 'known').map((c) => c.courseCode)))
+  const known = new Map()
+  if (!wanted.size) return { known, castOnOnly }
+  const { data, error } = await memoRead(cache, 'courses:list', () => db
+    .from('courses')
+    .select('course_code, target_lang, known_lang, voice_config, dialect'))
+  if (error) throw new Error(`course list failed: ${error.message}`)
+  for (const c of data || []) {
+    if (!wanted.has(c.course_code)) continue
+    let side = null
+    try { side = canonicalLanguage(c.known_lang) } catch { side = null }
+    if (side === language) known.set(c.course_code, c)
+  }
+  return { known, castOnOnly }
+}
+
+/**
+ * Normalised texts (audioKeyCandidates spellings) that already have a USABLE
+ * human take in `language` and `role` by a voice OUTSIDE `ownVoices`, filed
+ * under one of `courseCodes`. Usable is the bar job #580 linked by: origin
+ * 'human', not a known size under 2000 bytes, a positive duration, and not
+ * failed by veracity.
+ *
+ * ONE COURSE PER READ, FILTERED ON THAT INDEX'S OWN COLUMNS ONLY, and that is
+ * the index rather than taste: course_code (equality), text_normalized and role
+ * are exactly idx_course_audio_text_lookup, which answers 80 texts in ~20ms.
+ * Asked across courses, or with language/origin in the filter, the planner
+ * drifts onto (text_normalized, language) — 1.4s for four texts, 3-8s for some
+ * chunks — and the queue build hit the statement timeout on the live table. The courses searched are the
+ * castOn courses themselves — where the known side's own recordings are filed:
+ * on 2026-10-13 every human English known clip on the estate (12,938) was in
+ * cym_n_for_eng or cym_s_for_eng.
+ *
+ * Chunked by text, 80 to a read, for the reason audioVoicesById pages by 100:
+ * PostgREST echoes the whole `in.(...)` filter back in a response header.
+ */
+async function usableHumanTakeKeys(db, language, role, texts, ownVoices, courseCodes) {
+  const keys = [...new Set(texts.flatMap((t) => audioKeyCandidates(String(t || '').trim())).filter(Boolean))]
+  const out = new Set()
+  const PAGE = 80
+  const reads = []
+  for (const courseCode of courseCodes) {
+    for (let i = 0; i < keys.length; i += PAGE) reads.push({ courseCode, chunk: keys.slice(i, i + PAGE) })
+  }
+  const BATCH = 4
+  for (let i = 0; i < reads.length; i += BATCH) {
+    const results = await Promise.all(reads.slice(i, i + BATCH).map(({ courseCode, chunk }) => db
+      .from('course_audio')
+      .select('text_normalized, language, origin, voice_id, file_size_bytes, duration_ms, veracity_pass')
+      .eq('course_code', courseCode)
+      .eq('role', role)
+      .in('text_normalized', chunk)))
+    for (const { data, error } of results) {
+      if (error) throw new Error(`usable take lookup failed: ${error.message}`)
+      for (const row of data || []) {
+        // language and origin are checked HERE, not in the query: put in the
+        // query they tempt the planner onto (text_normalized, language) for some
+        // chunks, which took 3-8s each on the live table.
+        if (row.language !== language || row.origin !== 'human') continue
+        if (ownVoices.has(row.voice_id)) continue
+        // #580's own bar, NULL-tolerant the way its SQL was: the original
+        // recordings (legacy_import) carry no file_size_bytes at all, and an
+        // unknown size is not a dead clip -- a known size under 2000 is.
+        if (row.file_size_bytes != null && row.file_size_bytes < 2000) continue
+        if (!(row.duration_ms > 0) || row.veracity_pass === false) continue
+        out.add(row.text_normalized)
+      }
+    }
+  }
+  return out
+}
+
+/**
  * voice_id of each of a set of course_audio rows, in one paged read.
  *
  * PAGE is 100, not 500, and that is not a taste call. PostgREST echoes the
@@ -1063,6 +1286,21 @@ async function audioVoicesById(db, ids) {
   for (const { data, error } of results) {
     if (error) throw new Error(`seed clip voice read failed: ${error.message}`)
     for (const row of data || []) out.set(row.id, row.voice_id)
+  }
+  return out
+}
+
+/** origin ('human' | 'tts' | …) of each of a set of course_audio rows. Paged by 100 for audioVoicesById's reason. */
+async function audioOriginsById(db, ids) {
+  const wanted = [...new Set((ids || []).filter(Boolean))]
+  const out = new Map()
+  const chunks = []
+  for (let i = 0; i < wanted.length; i += 100) chunks.push(wanted.slice(i, i + 100))
+  const results = await Promise.all(chunks.map((chunk) =>
+    db.from('course_audio').select('id, origin').in('id', chunk)))
+  for (const { data, error } of results) {
+    if (error) throw new Error(`clip origin read failed: ${error.message}`)
+    for (const row of data || []) out.set(row.id, row.origin || null)
   }
   return out
 }
@@ -1095,6 +1333,8 @@ function queueSortTier(line) {
 
 /** The body of work a line belongs to: its pod, or failing that its course. */
 function queueSortGroup(line) {
+  // A line that is one body of work across courses says so (the known side).
+  if (typeof line.sortGroup === 'string') return line.sortGroup
   const kind = line.kind || 'pod'
   if (kind === 'pod' || kind === 'takeg') {
     return `${line.courseCode || ''}\u0000${line.podSlug || line.podId || ''}`
@@ -1132,19 +1372,26 @@ function canonicalOwnerBucket(clipVoiceId, aliasOwner, dialect) {
 }
 
 async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED, cache } = {}) {
-  const courses = await coursesForLanguage(db, language, { cache })
+  // A language whose every policy voice is a CAST-ON-ONLY reader (English: Aran,
+  // reading the known side of the Welsh courses) has no target-side work at all
+  // -- no pod, re-record or seed slot of an eng_for_* course is anybody's here --
+  // so its own courses are not read. Only its castOn courses are.
+  const { known: knownSideCourses, castOnOnly } = await castOnKnownSideCourses(db, language, { cache })
+  const courses = castOnOnly ? [] : await coursesForLanguage(db, language, { cache })
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
   // The dialect of each course rides along so the queue can say which courses
   // it serves a given voice (finishQueue `courses`): a policy voice reads its
   // own dialect only.
   const courseDialects = new Map(courses.map((c) => [c.course_code, courseDialect(c)]))
-  const empty = { byBucket: new Map(), notReady: new Map(), handedOn: new Map(), untranslatedUncast: 0, uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, takeGUnalignable: 0, quarry: null, courses: [...byCourse.keys()], courseDialects }
-  if (!courses.length) return empty
+  const empty = { byBucket: new Map(), notReady: new Map(), handedOn: new Map(), untranslatedUncast: 0, uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, takeGUnalignable: 0, knownLinkable: 0, quarry: null, courses: [...byCourse.keys()], courseDialects }
+  if (!courses.length && !knownSideCourses.size) return empty
 
-  const { data: pods, error: podErr } = await db
-    .from('listening_pods')
-    .select('id, course_code, slug, title, metadata')
-    .in('course_code', [...byCourse.keys()])
+  const { data: pods, error: podErr } = byCourse.size
+    ? await db
+      .from('listening_pods')
+      .select('id, course_code, slug, title, metadata')
+      .in('course_code', [...byCourse.keys()])
+    : { data: [], error: null }
   if (podErr) throw new Error(`pod list failed: ${podErr.message}`)
   const podById = new Map((pods || []).map((p) => [p.id, p]))
   // A language whose courses have no pods still has SEEDS (pdc_for_eng is the
@@ -1682,8 +1929,16 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // pod take links a pod sentence FK and would leave the seed's own FK empty --
   // the two look identical on screen and are different rows to fill.
   const { policyVoices } = register
+  let knownLinkable = 0
   if (policyVoices.length) {
-    const seeds = await fetchSeeds(db, [...byCourse.keys()])
+    // Every course whose seeds this language reads: its own (target side) and
+    // the courses a castOn names for the KNOWN side (castOnKnownSideCourses).
+    const seedCourses = new Map([...byCourse.entries(), ...knownSideCourses.entries()])
+    const seeds = await fetchSeeds(db, [...seedCourses.keys()])
+    // WHERE EACH SEED IS SERVED: its course_running_order position. Read for
+    // two reasons -- a served seed is recordable whatever its status (see
+    // isRecordableSeed), and the known side is read in course order.
+    const runningOrder = await fetchRunningOrder(db, [...seedCourses.keys()])
     const seedsByCourse = new Map()
     for (const seed of seeds) {
       if (!seedsByCourse.has(seed.course_code)) seedsByCourse.set(seed.course_code, [])
@@ -1700,13 +1955,45 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       linkedIds.push(seed.known_audio_id, seed.target1_audio_id, seed.target2_audio_id)
     }
     const clipVoice = await audioVoicesById(db, linkedIds)
+    // The ORIGIN of every clip a castOn-with-`synthetic` slot holds, so a slot
+    // held only by synthetic speech can be told from one holding a human take.
+    // Read only for those (course, role) slots: one live course's prompts today.
+    const syntheticIds = new Set()
+    {
+      const wantOrigin = []
+      for (const seed of seeds) {
+        const course = seedCourses.get(seed.course_code)
+        if (!course) continue
+        const cast = seedCastEntry(course, policyVoices)
+        for (const role of ['known', 'target1', 'target2']) {
+          if (cast[role] && cast[role].synthetic && seed[`${role}_audio_id`]) wantOrigin.push(seed[`${role}_audio_id`])
+        }
+      }
+      for (const [id, origin] of (await audioOriginsById(db, wantOrigin)).entries()) {
+        if (origin && origin !== 'human') syntheticIds.add(id)
+      }
+    }
+
+    // THE KNOWN SIDE'S "NO USABLE TAKE" RULE (Aran, 2026-10-13). An English
+    // sentence that already has a healthy human take -- anybody's but this
+    // language's own policy voices' -- is a LINK to make, not a line to read
+    // again: it is counted (`knownLinkable`) and never queued. Linking it is a
+    // separate, deliberate act (job #580 did the sandboxes; the live courses
+    // wait on Tom).
+    const knownTaken = knownSideCourses.size
+      ? await usableHumanTakeKeys(db, language, 'known',
+        seeds.filter((x) => knownSideCourses.has(x.course_code)).map((x) => x.known_text),
+        new Set(policyVoices.flatMap((v) => [v.voiceId, ...(v.aliases || [])])),
+        [...knownSideCourses.keys()])
+      : new Set()
 
     const seedSeen = new Map()   // `${voice} ${role} ${text}` -> representative, language-wide
-    for (const [courseCode, course] of byCourse.entries()) {
-      const roles = [...SEED_TARGET_ROLES]
+    for (const [courseCode, course] of seedCourses.entries()) {
+      const knownSideOnly = !byCourse.has(courseCode)
+      const roles = knownSideOnly ? ['known'] : [...SEED_TARGET_ROLES]
       // The one exception, and it is checked here rather than trusted from a
       // client: a fixture course's KNOWN side is recordable.
-      if (isTestFixtureCourse(courseCode)) roles.push('known')
+      if (!knownSideOnly && isTestFixtureCourse(courseCode)) roles.push('known')
       const courseSeeds = seedsByCourse.get(courseCode) || []
       if (!courseSeeds.length) continue
 
@@ -1721,19 +2008,34 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
         if (!byBucket.has(bucket)) byBucket.set(bucket, [])
         // The seed slot is cast to ONE policy voice by name (seedCastEntry),
         // so the owner is read straight off the cast, never off the gender.
-        const voiceId = seedCastEntry(course, policyVoices)[role].voiceId
+        const cast = seedCastEntry(course, policyVoices)[role]
+        const voiceId = cast.voiceId
+        // A known side read across courses is ONE body of work in course order,
+        // not four blocks one per course (Aran: the earliest seeds first).
+        const crossCourse = knownSideOnly && role === 'known'
 
         for (const seed of courseSeeds) {
           // A recordist is never asked to record a sentence nobody has signed
-          // off. Machine-drafted seeds (job #740: 697 Welsh drafts, for Aran to
-          // review in the Seed Editor) carry target_text but status 'draft'.
-          if (!RECORDABLE_SEED_STATUSES.has(seed.status)) continue
+          // off -- unless the course SERVES it (isRecordableSeed).
+          if (!isRecordableSeed(seed, runningOrder)) continue
           const text = String((role === 'known' ? seed.known_text : seed.target_text) || '').trim()
           if (!text) continue
+          // FILL-ONLY: a policy-side cast never asks for a slot that already
+          // holds a clip, whoever's (castOnEntries) -- unless the cast says to
+          // queue a slot held only by SYNTHETIC speech (SYNTHETIC_MODES).
+          const syntheticHeld = !!(cast.fillOnly && cast.synthetic &&
+            (syntheticIds.has(seed[`${role}_audio_id`]) || (cast.syntheticSeeds && cast.syntheticSeeds.has(seed.id))))
+          if (cast.fillOnly && seed[`${role}_audio_id`] && !syntheticHeld) continue
+          // A synthetic-held line is queued even where some other human take of
+          // the text exists: that take is another speaker's, and the slot is
+          // asking for this voice (Aran reads the North English prompts).
+          if (crossCourse && !syntheticHeld && audioKeyCandidates(text).some((k) => knownTaken.has(k))) { knownLinkable += 1; continue }
           const fkVoice = clipVoice.get(seed[`${role}_audio_id`]) || null
           const key = `${voiceId}\u0000${role} ${normalizeForDb(text)}`
+          const position = seedPosition(seed, runningOrder)
           if (seedSeen.has(key)) {
             const rep = seedSeen.get(key)
+            if (crossCourse && position < rep.seedOrder) rep.seedOrder = position
             rep.duplicateOf.push({ seedId: seed.id, courseCode, role })
             // Recorded means EVERY copy's slot is filled by this voice. A rep
             // that is linked while its duplicate is not would otherwise read as
@@ -1741,6 +2043,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             rep.seedFilledBy.push(fkVoice)
             // One copy still new makes the shared line new.
             if (seed.status !== 'released') rep.seedExisting = false
+            if (syntheticHeld) { rep.syntheticHeld = (rep.syntheticHeld || 0) + 1; rep.knownByText = role === 'known' || rep.knownByText }
             duplicatesCollapsed += 1
             continue
           }
@@ -1750,7 +2053,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             // After every pod line and every wanted re-record, in seed order,
             // stably: a recordist's list must not reshuffle between loads.
             order: Number.MAX_SAFE_INTEGER,
-            seedOrder: seed.seed_number,
+            // The known side across courses: its earliest SERVED position over
+            // every copy (lowered above as copies collapse in).
+            seedOrder: crossCourse ? position : seed.seed_number,
+            ...(crossCourse ? { sortGroup: '' } : {}),
             text,
             // The crib. On the known-side line the target is the crib, and on a
             // target line the known side is -- each says what the other is.
@@ -1773,6 +2079,11 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             // seed. The recordist's screen words the two differently.
             seedExisting: seed.status === 'released',
             rerecordWanted: false,
+            // How many copies of this line sit in a slot held only by synthetic
+            // speech, and -- for a known line -- that its own recordist's key set
+            // may vouch for it (take-selection knownByText): such a slot is not
+            // moved by the take while the switch is off, so the slot cannot.
+            ...(syntheticHeld ? { syntheticHeld: 1, knownByText: role === 'known' } : {}),
           }
           seedSeen.set(key, line)
           byBucket.get(bucket).push(line)
@@ -1897,7 +2208,298 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // but the queue is now ordered by one rule rather than by two.
   for (const lines of byBucket.values()) lines.sort(compareQueueLines)
 
-  return { byBucket, notReady, handedOn, untranslatedUncast, uncast, crossLanguage, duplicatesCollapsed, takeGUnalignable, quarry: quarryStats, courses: [...byCourse.keys()], courseDialects }
+  return { byBucket, notReady, handedOn, untranslatedUncast, uncast, crossLanguage, duplicatesCollapsed, takeGUnalignable, knownLinkable, quarry: quarryStats, courses: [...byCourse.keys(), ...knownSideCourses.keys()], courseDialects }
+}
+
+
+// ── FOURTH SOURCE: PRACTICE PHRASES, two passes, in batches (job #619) ───────
+//
+// The rules are in phrase-queue.cjs (pure); this is the read, the cache, the
+// serve and the link. Kept OUT of buildLanguageLines on purpose: that read is
+// kept warm every minute for every language, and ~32k phrase rows a minute is
+// load nobody asked for. Phrase CONTENT changes rarely, and whether a line is
+// recorded is answered fresh on every request from the reader's own takes
+// (recordedTextKeys, by text), so the plan may be a few minutes old without a
+// reader ever being asked for a line they have read.
+
+const PHRASE_PLAN_TTL_MS = 5 * 60_000
+const PHRASE_PLANS = new WeakMap() // db -> { plan, at, building, languages, languagesAt }
+
+/** Every row of a query, paged 1000 at a time (PostgREST's cap). */
+async function allPages(build) {
+  const out = []
+  for (let from = 0; ; from += 1000) {
+    let { data, error } = await build(from, from + 999)
+    if (error) ({ data, error } = await build(from, from + 999))
+    if (error) throw new Error(error.message)
+    out.push(...(data || []))
+    if (!data || data.length < 1000) return out
+  }
+}
+
+/**
+ * One course's phrases, in 50-seed chunks, 8 at a time: each chunk is an index
+ * range scan. One OFFSET-paged read of the course hit the 8 s statement timeout
+ * (phrase-proof-router, job #562); this reads both sandboxes in ~2.3 s.
+ */
+async function readCoursePhrases(db, courseCode, maxSeed) {
+  const starts = []
+  for (let lo = 1; lo <= maxSeed; lo += 50) starts.push(lo)
+  const out = []
+  for (let i = 0; i < starts.length; i += 8) {
+    const got = await Promise.all(starts.slice(i, i + 8).map((lo) => allPages((a, b) => db
+      .from('course_practice_phrases')
+      .select('id, seed_number, lego_index, position, phrase_role, target_text, known_text, known_audio_id, target1_audio_id, target2_audio_id')
+      .eq('course_code', courseCode).gte('seed_number', lo).lt('seed_number', lo + 50)
+      .in('phrase_role', ['build', 'use', 'practice'])
+      .order('seed_number').order('lego_index').order('position')
+      .range(a, b))))
+    for (const rows of got) out.push(...rows)
+  }
+  return out
+}
+
+/** The canonical languages the phrase-queue courses are read in, cached with the plan. */
+async function phraseQueueLanguages(db) {
+  const e = PHRASE_PLANS.get(db) || {}
+  if (e.languages && Date.now() - e.languagesAt < PHRASE_PLAN_TTL_MS) return e.languages
+  const { data, error } = await db.from('courses').select('course_code, target_lang, known_lang')
+    .in('course_code', Object.keys(phraseQueue.PHRASE_QUEUE_COURSES))
+  if (error) throw new Error(`phrase course read failed: ${error.message}`)
+  const langs = new Set()
+  for (const c of data || []) {
+    for (const l of [c.target_lang, c.known_lang]) { try { langs.add(canonicalLanguage(l)) } catch { /* not a language */ } }
+  }
+  e.languages = langs
+  e.languagesAt = Date.now()
+  PHRASE_PLANS.set(db, e)
+  return langs
+}
+
+/**
+ * THE PLAN: every phrase line of every phrase-queue course, keyed by the voice
+ * that reads it. The cast is the seed cast (seedCastEntry) — target1/target2 from
+ * the course's voice_config, the known side from a castOn of the known
+ * language's policy — so a phrase is read by exactly who reads its seed.
+ */
+async function buildPhrasePlan(db) {
+  const policies = await loadPolicies(db)
+  const voicesFor = (lang) => policyVoiceList(policies.find((row) => {
+    try { return canonicalLanguage(row.language) === lang } catch { return false }
+  }))
+  const { data: courses, error } = await db.from('courses')
+    .select('course_code, voice_config, target_lang, known_lang, dialect')
+    .in('course_code', Object.keys(phraseQueue.PHRASE_QUEUE_COURSES))
+  if (error) throw new Error(`phrase course read failed: ${error.message}`)
+
+  const casts = []
+  const allSpellings = new Set()
+  for (const course of courses || []) {
+    let tl = null, kl = null
+    try { tl = canonicalLanguage(course.target_lang) } catch { tl = null }
+    try { kl = canonicalLanguage(course.known_lang) } catch { kl = null }
+    const t = tl ? seedCastEntry(course, voicesFor(tl)) : {}
+    const k = kl ? seedCastEntry(course, voicesFor(kl)) : {}
+    const roles = {}
+    for (const role of ['target1', 'target2']) if (t[role] && t[role].voiceId) roles[role] = { entry: t[role], language: tl }
+    if (k.known && k.known.voiceId) roles.known = { entry: k.known, language: kl }
+    for (const r of Object.values(roles)) {
+      r.spellings = [r.entry.voiceId, ...(r.entry.aliases || [])]
+      for (const sp of r.spellings) allSpellings.add(sp)
+    }
+    if (Object.keys(roles).length) casts.push({ course, roles })
+  }
+
+  // WHOSE TAKE A FILLED SLOT HOLDS, for the cast voices only: every clip by any
+  // spelling of them. A slot holding a clip not in this map is somebody else's
+  // (an imported original, a synthetic clip) and is never this queue's work.
+  const ownClips = new Map()
+  if (allSpellings.size) {
+    const rows = await allPages((a, b) => db.from('course_audio').select('id, voice_id')
+      .in('voice_id', [...allSpellings]).order('id').range(a, b))
+    for (const r of rows) ownClips.set(r.id, r.voice_id)
+  }
+
+  const byVoice = new Map()
+  const knownByVoice = new Map()
+  const batchCounts = {}
+  const stats = {}
+  await Promise.all(casts.map(async ({ course, roles }) => {
+    const code = course.course_code
+    const [order, legos, flags] = await Promise.all([
+      allPages((a, b) => db.from('course_running_order').select('seed_number, position')
+        .eq('course_code', code).order('position').range(a, b)),
+      allPages((a, b) => db.from('course_legos').select('seed_number, lego_index, is_new, known_text, target_text')
+        .eq('course_code', code).order('seed_number').order('lego_index').range(a, b)),
+      allPages((a, b) => db.from('phrase_proof_flags').select('phrase_id, flagged')
+        .eq('course_code', code).order('phrase_id').range(a, b)),
+    ])
+    const positions = new Map()
+    for (const o of order) if (!positions.has(o.seed_number)) positions.set(o.seed_number, o.position)
+    const maxSeed = order.reduce((m, o) => Math.max(m, o.seed_number), 0)
+    const phrases = maxSeed ? await readCoursePhrases(db, code, maxSeed) : []
+    const planRoles = {}
+    for (const [role, r] of Object.entries(roles)) {
+      planRoles[role] = {
+        holderOf: (p, rl) => { const id = p[`${rl}_audio_id`]; return id ? (ownClips.get(id) || 'other') : '' },
+        isMine: (v) => r.spellings.includes(v),
+      }
+    }
+    const plan = phraseQueue.planCourse({
+      courseCode: code, positions, legos, phrases, roles: planRoles,
+      flagged: new Set(flags.filter((f) => f.flagged).map((f) => f.phrase_id)),
+    })
+    batchCounts[code] = plan.batches
+    stats[code] = plan.stats
+    for (const [role, r] of Object.entries(roles)) {
+      const lines = plan.linesByRole[role].map((l) => ({ ...l, voiceId: r.entry.voiceId, language: r.language }))
+      if (role === 'known') {
+        if (!knownByVoice.has(r.entry.voiceId)) knownByVoice.set(r.entry.voiceId, [])
+        knownByVoice.get(r.entry.voiceId).push(lines)
+      } else {
+        if (!byVoice.has(r.entry.voiceId)) byVoice.set(r.entry.voiceId, [])
+        byVoice.get(r.entry.voiceId).push(...lines)
+      }
+    }
+  }))
+  // The known side is ONE line per text across both courses (mergeAcrossCourses).
+  for (const [voiceId, lists] of knownByVoice) {
+    if (!byVoice.has(voiceId)) byVoice.set(voiceId, [])
+    byVoice.get(voiceId).push(...phraseQueue.mergeAcrossCourses(lists))
+  }
+  return { byVoice, batchCounts, stats, builtAt: new Date().toISOString() }
+}
+
+/**
+ * The plan, from the cache. Stale-while-revalidate: past its TTL the old plan is
+ * served while a new one is built, so only the very first read is cold.
+ */
+function getPhrasePlan(db) {
+  let e = PHRASE_PLANS.get(db)
+  if (!e) { e = {}; PHRASE_PLANS.set(db, e) }
+  if (e.plan && Date.now() - e.at < PHRASE_PLAN_TTL_MS) return Promise.resolve(e.plan)
+  if (!e.building) {
+    e.building = buildPhrasePlan(db).then((plan) => {
+      e.plan = plan; e.at = Date.now(); e.building = null
+      return plan
+    }, (err) => { e.building = null; throw err })
+    // A background refresh that fails must not become an unhandled rejection.
+    if (e.plan) e.building.catch((err) => console.warn(`[Recordist] phrase plan refresh failed: ${err.message}`))
+  }
+  return e.plan ? Promise.resolve(e.plan) : e.building
+}
+
+/** Mark the plan stale (a phrase take landed): the next read refreshes it behind the stale copy. */
+function invalidatePhrasePlan(db) {
+  const e = PHRASE_PLANS.get(db)
+  if (e) e.at = 0
+}
+
+/** A phrase line as isLineRecorded reads it: any copy's slot, or a take of the text. */
+function phraseLineRecorded(line, recordedKeys, spellings) {
+  return isLineRecorded({
+    role: line.role,
+    text: line.text,
+    filledBy: line.copies.map((c) => c.holder),
+    // The known side is read by a voice OF the known language, so its own key
+    // set vouches for the text (take-selection knownByText).
+    knownByText: true,
+  }, { recordedKeys, spellings })
+}
+
+/** One served phrase line, on the wire in finishQueue's shape. */
+function phraseWireLine(line, recordist) {
+  return {
+    id: line.id,
+    order: Number.MAX_SAFE_INTEGER,
+    text: line.text,
+    knownText: line.knownText,
+    speaker: null,
+    courseCode: line.courseCode,
+    recorded: !!line.recorded,
+    clipUrl: line.recorded ? `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(line.id)}/clip` : null,
+    rerecordWanted: false,
+    alsoFills: Math.max(0, line.copies.length - 1),
+    kind: 'phrase',
+    podId: null,
+    podSlug: null,
+    podTitle: null,
+    role: line.role,
+    rerecordReason: null,
+    seedNumber: line.seedNumber || null,
+    seedExisting: null,
+    readStyle: 'natural',
+    quarrySource: null,
+    takeGChunks: null,
+    // A practice phrase is course content built by the course builder; its
+    // text is changed there (proof page / builder), never from the booth.
+    canEditText: false,
+    context: null,
+    duplicateSentenceIds: [],
+    phrasePass: line.pass,
+    phraseBatch: line.batch,
+    phraseRole: line.phraseRole,
+  }
+}
+
+/**
+ * Add this reader's CURRENT phrase batch to their queue: the first batch, pass 1
+ * first, holding a line they have not read (phraseQueue.servePhraseBatch). Its
+ * lines are appended after everything else (seeds included), and `phrases`
+ * carries the words the booth shows: pass, batch, how far through.
+ */
+async function withPhraseBatch(db, recordist, queue, { includeRecorded = false, recordedKeys } = {}) {
+  try {
+    const langs = await phraseQueueLanguages(db)
+    if (!langs.has(recordist.language)) return queue
+    const plan = await getPhrasePlan(db)
+    const mine = recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])
+    if (!mine.length) return queue
+    const keys = recordedKeys || await recordedTextKeys(db, recordist)
+    const { lines, summary } = phraseQueue.servePhraseBatch(
+      mine, (l) => phraseLineRecorded(l, keys, recordist.spellings), plan.batchCounts)
+    let recorded = 0
+    for (const line of lines) {
+      if (line.recorded) recorded += 1
+      if (!line.recorded || includeRecorded) queue.lines.push(phraseWireLine(line, recordist))
+    }
+    queue.total += lines.length
+    queue.recorded += recorded
+    queue.remaining = queue.total - queue.recorded
+    queue.phrases = summary
+    return queue
+  } catch (err) {
+    // The phrase batch is an addition to this screen. A failed read must not
+    // take the reader's pods and seeds down with it — it fails as an absence,
+    // and says so on the wire.
+    console.warn(`[Recordist] phrase batch unavailable for ${recordist.voiceId}: ${err.message}`)
+    queue.phrases = { unavailable: true }
+    return queue
+  }
+}
+
+/**
+ * Point every EMPTY slot of this phrase line's copies at a new take. FILL-EMPTY
+ * ONLY, by a conditional update (`slot IS NULL`), so a slot that gained a clip
+ * since the plan was read — anybody's — is never overwritten. Nothing is deleted.
+ * The copies come from the server's own plan, never from the client.
+ */
+async function linkPhraseTake({ db, recordist, phraseId, role, audioId, logger = console }) {
+  const out = { linked: [] }
+  if (!audioId || !phraseQueue.PHRASE_ROLES.includes(role)) return out
+  const plan = await getPhrasePlan(db)
+  const mine = recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])
+  const line = mine.find((l) => l.role === role && l.copies.some((c) => c.phraseId === phraseId))
+  const copies = line ? line.copies.map((c) => c.phraseId) : [phraseId]
+  const col = `${role}_audio_id`
+  for (const id of copies) {
+    const { data, error } = await db.from('course_practice_phrases')
+      .update({ [col]: audioId }).eq('id', id).is(col, null).select('id, course_code')
+    if (error) { logger.error(`[Recordist] phrase link failed for ${id}: ${error.message}`); continue }
+    for (const row of data || []) out.linked.push({ phraseId: row.id, courseCode: row.course_code })
+  }
+  invalidatePhrasePlan(db)
+  return out
 }
 
 /**
@@ -1943,7 +2545,9 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.
-  return finishQueue(db, recordist, mine, language, { includeRecorded, maskRejectedHistory })
+  const recordedKeys = await recordedTextKeys(db, recordist)
+  const queue = await finishQueue(db, recordist, mine, language, { includeRecorded, maskRejectedHistory, recordedKeys })
+  return withPhraseBatch(db, recordist, queue, { includeRecorded, recordedKeys })
 }
 
 /**
@@ -1951,8 +2555,8 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
  * shape them for the wire. Split out so buildQueue and buildCoverage share one
  * definition of `recorded`.
  */
-async function finishQueue(db, recordist, mine, language, { includeRecorded = false, maskRejectedHistory = true } = {}) {
-  const recordedKeys = await recordedTextKeys(db, recordist)
+async function finishQueue(db, recordist, mine, language, { includeRecorded = false, maskRejectedHistory = true, recordedKeys: knownKeys = null } = {}) {
+  const recordedKeys = knownKeys || await recordedTextKeys(db, recordist)
 
   let recorded = 0
   const lines = []
@@ -2551,6 +3155,15 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   const key = normalizeForDb(text)
 
   const courses = await coursesForLanguage(db, recordist.language)
+  // THE KNOWN SIDE OF ANOTHER LANGUAGE'S COURSES, where a castOn names this
+  // language's voice for it (castOnKnownSideCourses) — English takes reaching
+  // the Welsh courses' known_audio_id. The fixture's known side is already in
+  // `courses`, because a fixture's known line is read by its target voice.
+  if (role === 'known') {
+    const { known } = await castOnKnownSideCourses(db, recordist.language)
+    const have = new Set(courses.map((c) => c.course_code))
+    for (const [code, c] of known) if (!have.has(code)) courses.push(c)
+  }
   // ONLY THE COURSES WHOSE SEED SLOT IS CAST TO THIS VOICE, by the same rule
   // that put them in the queue (seedCastEntry: the slot names a voice id).
   // Before this, a take was linked into EVERY course of the language holding
@@ -2559,8 +3172,10 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   // exist and are left alone; this stops the ninth.
   const { voices: policyVoices, spellings: policySpellings } =
     await policyVoicesForLanguage(db, recordist.language)
+  const fillOnlyCourses = new Set()
   const mineCourses = courses.filter((c) => {
     const cast = seedCastEntry(c, policyVoices)[role]
+    if (cast && cast.fillOnly) fillOnlyCourses.add(c.course_code)
     return !!cast && recordist.spellings.includes(cast.voiceId)
   })
   const siblings = await fetchSeeds(db, mineCourses.map((c) => c.course_code))
@@ -2578,6 +3193,9 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   for (const row of candidates) {
     const current = row[`${role}_audio_id`]
     if (current === audioId) continue
+    // FILL-ONLY (castOnEntries): a policy-side cast fills empty slots and moves
+    // nothing — not an imported clip, not a synthesised one, not anybody's.
+    if (current && fillOnlyCourses.has(row.course_code)) continue
     const holder = owners.get(current) || null
     if (current && !recordist.spellings.includes(holder)) {
       // ANOTHER RECORDIST'S CLIP IS NOT OURS TO MOVE, and that is still the
@@ -2744,6 +3362,10 @@ module.exports = {
   invalidateLanguageQueueCache,
   linkSeedTake,
   seedCastEntry,
+  castOnEntries,
+  castOnKnownSideCourses,
+  isRecordableSeed,
+  seedPosition,
   policyVoiceList,
   parseSeedLineId,
   seedLineId,
@@ -2765,4 +3387,13 @@ module.exports = {
   voiceTextKey,
   voiceRegister,
   linesForVoice,
+  audioOriginsById,
+  SYNTHETIC_MODES,
+  // Practice phrases (job #619).
+  buildPhrasePlan,
+  getPhrasePlan,
+  invalidatePhrasePlan,
+  withPhraseBatch,
+  linkPhraseTake,
+  phraseLineRecorded,
 }

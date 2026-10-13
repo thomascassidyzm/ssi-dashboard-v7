@@ -35,7 +35,7 @@ const { mayPoint } = require('../../services/shared/resolve-voice.cjs')   // job
   const identity = serviceIdentity('tom006-restore-female-24'), events = new Map(), moved = new Map()
   const event = async course => { if (!events.has(course)) events.set(course, await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-restore-female', operation: 'update', detail: { why: 'Tom 2026-10-12 job #24: female English lines back on Charlotte (gender variance)', ledger } })); return events.get(course) }
   const setPointer = async (s, from, to, ev, restore = false) => {
-    if (!await mayPoint(db, { courseCode: s.course, col: colFor(s), to, restore })) return false
+    if (!await mayPoint(db, { courseCode: s.course, col: colFor(s), to, restore, tbl: s.tbl, key: s.key, from })) return false
     const col = colFor(s), { data, error } = await db.from(s.tbl).update({ [col]: to, last_edit_event_id: ev }).eq('id', s.key).eq(col, from).select('id'); if (error) throw new Error(error.message); return !!data && data.length === 1
   }
   const bump = async () => { for (const c of moved.keys()) { if (dryRun) continue; try { const v = await bumpCourseVersion(db, c, 'patch'); if (!v) throw new Error('null'); log({ kind: 'bumped', course: c }); console.log('content_version', c, v) } catch (e) { console.log('BUMP FAILED', c, e.message); process.exitCode = 3 } } moved.clear() }

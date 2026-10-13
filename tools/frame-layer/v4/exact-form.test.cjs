@@ -34,7 +34,10 @@ test('accents are not folded: "espere" is not "espéré"', () => {
   assert.strictEqual(exactFormCheck('j\'espère', ['j\'espere']).ok, false);
 });
 
-test('known words in an untaught chunk order still fail the whole-chunk tiling', () => {
+test('known words in an untaught chunk order fail the whole-chunk tiling when no course is named', () => {
   const r = exactFormCheck('vendre nous', ['nous', 'vendre l\'entreprise']);
   assert.strictEqual(r.ok, false);
+  // With the course named, words are read one by one (Aran/Tom 2026-10-13, job #587).
+  assert.strictEqual(exactFormCheck('vendre nous', ['nous', 'vendre l\'entreprise'], { courseCode: 'fra_for_eng' }).ok, true);
+  assert.strictEqual(exactFormCheck('nous espérions vendre', FRENCH_TAUGHT, { courseCode: 'fra_for_eng' }).ok, false);
 });

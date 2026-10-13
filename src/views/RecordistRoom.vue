@@ -97,6 +97,33 @@
         </div>
       </div>
 
+      <!-- THE PRACTICE-PHRASE BATCH (Aran, 2026-10-13, job #619). Phrases come
+           in two passes and ~200-line batches, one batch at a time, and the
+           reader must be able to SEE that: which pass, which batch of how many,
+           how far through, and that the rest of the phrases come later — so the
+           first pass is never mistaken for all of it. -->
+      <div v-if="phrases && (phrases.pass || phrases.finished)" class="volume-card phrase-card" data-test="phrase-batch">
+        <template v-if="phrases.pass">
+          <p class="phrase-kicker">Practice phrases · {{ phrases.courseLabel }}</p>
+          <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
+          <p class="phrase-count">{{ phrases.batchRecorded }} of {{ phrases.batchLines }} recorded in this batch</p>
+          <p v-if="phrases.pass === 1" class="volume-note">
+            This first pass is the phrases the app plays first: up to {{ phrases.firstPass.build }} build and
+            {{ phrases.firstPass.use }} use phrases for each new LEGO.
+            The remaining {{ phrases.laterPassLines.toLocaleString() }} phrases come on a second pass, later.
+          </p>
+          <p v-else class="volume-note">This second pass is the rest of the practice phrases, after the first pass.</p>
+          <p class="volume-note">
+            {{ phrases.batch < phrases.batches ? `When this batch is finished, batch ${phrases.batch + 1} opens here the next time you open this page.` : (phrases.pass === 1 ? 'This is the last batch of the first pass.' : 'This is the last batch.') }}
+            <template v-if="phrases.batchHeld"> {{ phrases.batchHeld }} {{ phrases.batchHeld === 1 ? 'phrase in this batch is' : 'phrases in this batch are' }} held back until {{ phrases.batchHeld === 1 ? 'its' : 'their' }} proof flag is cleared.</template>
+          </p>
+        </template>
+        <template v-else>
+          <h3 class="phrase-title">Practice phrases — all recorded</h3>
+          <p class="volume-note">Both passes are finished. Thank you.</p>
+        </template>
+      </div>
+
       <RecordistRoster
         ref="rosterRef"
         :sections="rosterSections"
@@ -641,6 +668,33 @@
 
       <p class="state-pill" :class="activityState.cls">{{ activityState.words }}</p>
 
+      <!-- THE PRACTICE-PHRASE BATCH (Aran, 2026-10-13, job #619). Phrases come
+           in two passes and ~200-line batches, one batch at a time, and the
+           reader must be able to SEE that: which pass, which batch of how many,
+           how far through, and that the rest of the phrases come later — so the
+           first pass is never mistaken for all of it. -->
+      <div v-if="phrases && (phrases.pass || phrases.finished)" class="volume-card phrase-card" data-test="phrase-batch">
+        <template v-if="phrases.pass">
+          <p class="phrase-kicker">Practice phrases · {{ phrases.courseLabel }}</p>
+          <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
+          <p class="phrase-count">{{ phrases.batchRecorded }} of {{ phrases.batchLines }} recorded in this batch</p>
+          <p v-if="phrases.pass === 1" class="volume-note">
+            This first pass is the phrases the app plays first: up to {{ phrases.firstPass.build }} build and
+            {{ phrases.firstPass.use }} use phrases for each new LEGO.
+            The remaining {{ phrases.laterPassLines.toLocaleString() }} phrases come on a second pass, later.
+          </p>
+          <p v-else class="volume-note">This second pass is the rest of the practice phrases, after the first pass.</p>
+          <p class="volume-note">
+            {{ phrases.batch < phrases.batches ? `When this batch is finished, batch ${phrases.batch + 1} opens here the next time you open this page.` : (phrases.pass === 1 ? 'This is the last batch of the first pass.' : 'This is the last batch.') }}
+            <template v-if="phrases.batchHeld"> {{ phrases.batchHeld }} {{ phrases.batchHeld === 1 ? 'phrase in this batch is' : 'phrases in this batch are' }} held back until {{ phrases.batchHeld === 1 ? 'its' : 'their' }} proof flag is cleared.</template>
+          </p>
+        </template>
+        <template v-else>
+          <h3 class="phrase-title">Practice phrases — all recorded</h3>
+          <p class="volume-note">Both passes are finished. Thank you.</p>
+        </template>
+      </div>
+
       <RecordistRoster
         ref="rosterRef"
         :sections="rosterSections"
@@ -958,6 +1012,15 @@ function sectionKeyOf(l) {
   return kind === 'seed' && l.seedExisting ? 'seedexisting' : kind
 }
 
+// "Pass 1 of 2 · North batch 3 of 30" — the words a phrase line carries on the
+// stage and its section carries on the map, from the server's own summary.
+function phrasePlaceWords(pass, batch) {
+  const p = phrases.value
+  if (!p || !p.pass) return null
+  const n = pass === p.pass ? p.batches : null
+  return `Pass ${pass || p.pass} of ${p.passes} · ${p.courseLabel} batch ${batch || p.batch}${n ? ` of ${n}` : ''}`
+}
+
 const SECTION_ORDER = [
   // POD-1 IS ITS NAME. Tom, 2026-09-02: "we're interested in the PODS — the
   // conversations — we should call it POD-1, because that's the name we've been
@@ -1015,6 +1078,9 @@ const SECTION_ORDER = [
   // "Aran's are all junk. All clipped badly at either or both ends" off his own
   // screen on the morning of the session.
   { key: 'rerecord', heading: 'MORE LINES', blurb: 'Single lines from the course that still need a recording — some from the conversations, some on their own.' },
+  // AFTER THE SEEDS, because a phrase is built from a seed's LEGOs. One batch at
+  // a time (job #619); the heading names the pass and the batch (rosterSections).
+  { key: 'phrase', heading: 'PRACTICE PHRASES', blurb: 'Practice phrases, in course order, one batch at a time. The first pass is the phrases the app plays first; the rest come on a second pass later.' },
 ]
 // ONE POD IS NOT EVERY POD. Tom, 2026-09-04: "Aran's lines are now confusing -
 // this special senedd pod lines are mixed in with his recorded already POD
@@ -1108,7 +1174,8 @@ const rosterSections = computed(() => {
     // The 'pod' slot in the order is where the pod groups go, in queue order.
     if (s.key === 'pod') { for (const g of byPod.values()) out.push(g); continue }
     const rows = byKind.get(s.key)
-    if (rows.length) out.push({ ...s, rows })
+    if (rows.length && s.key === 'phrase' && phrasePlaceWords()) out.push({ ...s, heading: `PRACTICE PHRASES · ${phrasePlaceWords()}`, rows })
+    else if (rows.length) out.push({ ...s, rows })
   }
   if (other.length) out.push({ key: 'other', heading: 'Everything else', blurb: 'Lines that do not fall into the groups above.', rows: other })
   return out
@@ -1232,6 +1299,11 @@ const lineKindWords = computed(() => {
     const n = Array.isArray(l.takeGChunks) ? l.takeGChunks.length : 0
     const marks = n > 1 ? `${n - 1} pause${n > 2 ? 's' : ''}` : 'a pause'
     return `The same line again - pause clearly at each ${'…'} (${marks}), then tap Next`
+  }
+  if (l.kind === 'phrase') {
+    const side = l.role === 'known' ? ' - English side' : (l.role === 'target2' ? ' - second voice' : '')
+    const where = phrasePlaceWords(l.phrasePass, l.phraseBatch)
+    return `Practice phrase${where ? ` · ${where}` : ''}${side}`
   }
   if (l.kind !== 'seed') return null
   if (l.seedExisting) {
@@ -1751,7 +1823,7 @@ const alreadyRecorded = computed(() => lines.value.filter(l => l.clipUrl))
 // row needs from this screen is to SAY which category it is, so a list mixing
 // conversations, chunks and seed sentences reads as one thing rather than as an
 // unexplained jumble.
-const KIND_WORDS = { pod: 'POD-1', seed: 'NEW SEEDS', seedexisting: 'Whole sentences — seeds already in the course', quarry: 'The minimal set', rerecord: 'MORE LINES' }
+const KIND_WORDS = { pod: 'POD-1', seed: 'NEW SEEDS', seedexisting: 'Whole sentences — seeds already in the course', quarry: 'The minimal set', rerecord: 'MORE LINES', phrase: 'PRACTICE PHRASES' }
 function kindWords(l) {
   // A pod line is named by ITS OWN pod, not by the word "pod": this list is
   // searchable, and "senedd" has to find the Senedd lines in it.
@@ -2133,6 +2205,8 @@ const isGappedLine = computed(() => !!current.value && current.value.readStyle =
 const SEED_VOLUMES = [30, 50, 100, 150, 300]
 const maxSeed = ref(null)
 const quarry = ref(null)
+// THE PRACTICE-PHRASE BATCH SUMMARY, straight off the wire (job #619).
+const phrases = ref(null)
 // LINES OF HIS THAT HAVE NO TARGET TEXT YET, per pod, straight off the wire.
 // See the note where it is read in load(), and the words it becomes below.
 const notReady = ref([])
@@ -2472,6 +2546,7 @@ async function load() {
     // requested rather than the one it got is the kind of quiet lie this booth
     // has been bitten by before.
     quarry.value = data.quarry || null
+    phrases.value = data.phrases || null
     if (data.quarry && data.quarry.maxSeed) maxSeed.value = data.quarry.maxSeed
     // WORK OF HIS THAT HAS NO WORDS YET. Straight off the wire and never
     // derived from `lines`: these are precisely the lines that are NOT in
@@ -2705,6 +2780,9 @@ kbd {
   background: rgba(255, 255, 255, 0.04);
 }
 .volume-card h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+.phrase-kicker { margin: 0 0 0.2rem; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-paper-dim, #c1c1bb); }
+.phrase-title { font-size: 1.15rem; }
+.phrase-count { margin: 0 0 0.55rem; font-size: 0.9rem; font-weight: 600; }
 .volume-note { margin: 0 0 0.7rem; font-size: 0.85rem; line-height: 1.5; color: var(--color-paper-dim, #c1c1bb); }
 .volume-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
 .volume-label { font-size: 0.85rem; color: var(--color-paper-dim, #c1c1bb); margin-right: 0.25rem; }

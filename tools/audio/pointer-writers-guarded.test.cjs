@@ -67,9 +67,9 @@ describe('mayPoint: the guard the tools call', () => {
   it('refuses Charlotte onto an X_for_eng known slot, allows Tom-006, lets an undo restore, never blocks a null', async () => {
     rv.useCast({ roles: [], voices: [] })
     const said = []
-    expect(await rv.mayPoint(db, { courseCode: 'fra_for_eng', col: 'known_audio_id', to: 'charlotte', log: (l) => said.push(l) })).toBe(false)
+    expect(await rv.mayPoint(db, { courseCode: 'fra_for_eng', col: 'known_audio_id', from: null, to: 'charlotte', log: (l) => said.push(l) })).toBe(false)
     expect(said[0]).toMatch(/REFUSED by resolveVoice/)
-    expect(await rv.mayPoint(db, { courseCode: 'fra_for_eng', col: 'known_audio_id', to: 'tom006' })).toBe(true)
+    expect(await rv.mayPoint(db, { courseCode: 'fra_for_eng', col: 'known_audio_id', from: null, to: 'tom006' })).toBe(true)
     expect(await rv.mayPoint(db, { courseCode: 'fra_for_eng', col: 'known_audio_id', to: 'charlotte', restore: true })).toBe(true)
     expect(await rv.mayPoint(db, { courseCode: 'fra_for_eng', col: 'known_audio_id', to: null })).toBe(true)
   })
