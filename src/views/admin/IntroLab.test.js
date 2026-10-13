@@ -19,7 +19,7 @@ const DETAIL = { lego: LEGO, tomLegoId: null, donor: null, plans: { easy: {
 beforeEach(() => {
   globalThis.fetch = vi.fn(async (url) => {
     const u = String(url)
-    if (u.includes('/clip/')) return { ok: true, arrayBuffer: async () => new ArrayBuffer(8) }
+    if (u.includes('/clip/')) return { ok: true, arrayBuffer: async () => new ArrayBuffer(8), blob: async () => new Blob(['x']) }
     return { ok: true, json: async () => (u.includes('/lego/') ? DETAIL : LIST) }
   })
   globalThis.AudioContext = class {
@@ -29,7 +29,10 @@ beforeEach(() => {
     createBuffer() { return { copyToChannel() {} } }
     createBufferSource() { return { connect() {}, start() { setTimeout(() => this.onended && this.onended(), 5) }, stop() {} } }
   }
-  globalThis.Audio = class { play() { setTimeout(() => this.onended && this.onended(), 5); return Promise.resolve() } pause() {} }
+  globalThis.URL.createObjectURL = () => 'blob:x'
+  globalThis.URL.revokeObjectURL = () => {}
+  globalThis.audioSrcs = []
+  globalThis.Audio = class { constructor(src) { globalThis.audioSrcs.push(src) } play() { setTimeout(() => this.onended && this.onended(), 5); return Promise.resolve() } pause() {} }
 })
 
 async function open() {
@@ -61,6 +64,9 @@ describe('Intro Lab page', () => {
     await vi.waitFor(() => expect(w.findAll('.steps li').length).toBe(8))
     const all = w.findAll('.steps li').map((l) => l.text())
     expect(all.slice(4)).toEqual(['debut: known prompt at 1×', 'debut: hold 5773 ms (debut pause (computePauseDuration))', 'debut: target voice 1 at 0.8×', 'debut: target voice 2 at 0.8×'])
+    // An <audio> element cannot send the Authorization header: every clip must arrive as a blob, never as the gated API URL.
+    expect(globalThis.audioSrcs.length).toBeGreaterThan(0)
+    expect(globalThis.audioSrcs.every((u) => u.startsWith('blob:'))).toBe(true)
     w.unmount()
   })
 })

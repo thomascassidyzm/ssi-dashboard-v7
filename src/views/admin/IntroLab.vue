@@ -244,8 +244,20 @@ function playClip(el) {
     el.play().catch(res)
   })
 }
-function makeClip(id, speed) {
-  const el = new Audio(clipUrl(id))
+// An <audio> element cannot send the dashboard's Authorization header, and the clip route is auth-gated (it only opens
+// without a token for same-host callers). So the bytes come through the authenticated fetch and play from a blob URL.
+const blobUrls = new Map()
+async function blobUrl(id) {
+  const key = course.value + id
+  if (blobUrls.has(key)) return blobUrls.get(key)
+  const r = await fetch(clipUrl(id))
+  if (!r.ok) throw new Error(`clip ${id.slice(0, 8)} → HTTP ${r.status}`)
+  const u = URL.createObjectURL(await r.blob())
+  blobUrls.set(key, u)
+  return u
+}
+async function makeClip(id, speed) {
+  const el = new Audio(await blobUrl(id))
   el.preload = 'auto'; el.playbackRate = speed; el.preservesPitch = true
   return el
 }
@@ -305,8 +317,10 @@ async function sequenceFor(d) {
 function stepOf(c, cycle) {
   if (c.kind === 'silence') return { label: `${cycle}: hold ${c.ms} ms (${c.why})`, run: (id) => sleep(c.ms, id) }
   const name = { prompt: 'known prompt', voice1: 'target voice 1', voice2: 'target voice 2' }[c.kind]
-  const el = c.audioId ? makeClip(c.audioId, c.speed) : null
-  return { label: `${cycle}: ${name} at ${c.speed}×`, run: () => (el ? playClip(el) : Promise.resolve()) }
+  // Fetched now (so the whole sequence is ready before the first sound), played later.
+  const ready = c.audioId ? makeClip(c.audioId, c.speed) : Promise.resolve(null)
+  ready.catch(() => {})
+  return { label: `${cycle}: ${name} at ${c.speed}×`, run: async () => { const el = await ready; if (el) await playClip(el) } }
 }
 
 async function runLego(id, d, tag) {
@@ -373,7 +387,7 @@ const line = computed(() => {
 })
 async function copy() { try { await navigator.clipboard.writeText(line.value); say('Copied.') } catch { say('Select the text and copy it.', true) } }
 
-onBeforeUnmount(stop)
+onBeforeUnmount(() => { stop(); for (const u of blobUrls.values()) URL.revokeObjectURL(u); blobUrls.clear() })
 </script>
 
 <style scoped>
