@@ -3,9 +3,10 @@ import { createRequire } from 'node:module'
 const R = createRequire(import.meta.url)('./intro-lab-router.cjs')
 
 // A fake db that answers the two queries clipIsReadable makes.
-function fakeDb({ spliceHit = false } = {}) {
+function fakeDb({ spliceHit = false, legoRef = false } = {}) {
+  const lq = { select: () => lq, eq: () => lq, or: () => lq, limit: () => Promise.resolve({ data: legoRef ? [{ lego_id: 'S0007L02' }] : [], error: null }) }
   const q = { select: () => q, eq: () => q, contains: (_c, v) => { if (typeof v !== 'string') throw new Error('invalid input syntax for type json'); return q }, limit: () => Promise.resolve({ data: spliceHit ? [{ id: 'x' }] : [], error: null }) }
-  return { from: () => q }
+  return { from: (t) => (t === 'course_legos' ? lq : q) }
 }
 const TOM = 'd293d509-aaaa'
 
@@ -27,5 +28,10 @@ describe('intro lab clip authorisation', () => {
   })
   it('allows a piece this course\'s own intro was spliced from', async () => {
     expect(await R.clipIsReadable(fakeDb({ spliceHit: true }), 'afr_for_eng', 'p', { course_code: 'other', role: 'known', voice_id: 'v' })).toBe(true)
+  })
+  it('allows a library-reused clip from another course when this course\'s own LEGO points at it (job #519), and still refuses an unreferenced one', async () => {
+    const clip = { course_code: 'deu_for_eng', role: 'known', voice_id: 'v' }
+    expect(await R.clipIsReadable(fakeDb({ legoRef: true }), 'afr_for_eng', 'k', clip)).toBe(true)
+    expect(await R.clipIsReadable(fakeDb(), 'afr_for_eng', 'k', clip)).toBe(false)
   })
 })
