@@ -1,6 +1,619 @@
 {
  "course": "por_for_jpn",
  "seeds": {
+  "109": {
+   "seed": 109,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "私たちは〜しなければなりません",
+     "target": "temos de"
+    },
+    {
+     "idx": 2,
+     "known": "たくさんの",
+     "target": "muitas"
+    },
+    {
+     "idx": 3,
+     "known": "新しい",
+     "target": "novas"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "M",
+      "known": "新しい言葉",
+      "target": "palavras novas",
+      "components": [
+       {
+        "known": "言葉",
+        "target": "palavras"
+       },
+       {
+        "known": "新しい",
+        "target": "novas"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "por_for_jpn:S0109L03B02",
+       "role": "build",
+       "known": "新しい言葉",
+       "target": "palavras novas",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, short and tileable.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO with no other taught LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is the bare LEGO with no other taught LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs."
+      },
+      {
+       "id": "por_for_jpn:S0109L03B03",
+       "role": "build",
+       "known": "たくさんの新しい言葉",
+       "target": "muitas palavras novas",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Combines the taught LEGOs たくさんの=muitas and 新しい言葉=palavras novas. Natural fragment.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short, natural fragment. It combines muitas with the LEGO and the known side matches taught glosses exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "por_for_jpn:S0109L03U01",
+       "role": "use",
+       "known": "たくさんの新しい言葉を学ぶためにたくさん働かなければなりません。",
+       "target": "temos de trabalhar muito para aprender muitas palavras novas",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "たくさん for 'muito' clashes with たくさんの=muitas, which breaks one-prompt-one-target. 学ぶ is not a taught gloss either.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Known uses 学ぶ, but aprender is taught as 勉強する. 学ぶ is not a taught gloss, so this breaks ZUT consistency.",
+       "keep": false,
+       "why": "Sonnet: bad — たくさん for 'muito' clashes with たくさんの=muitas, which breaks one-prompt-one-target. 学ぶ is not a taught gloss either."
+      },
+      {
+       "id": "por_for_jpn:S0109L03U02",
+       "role": "use",
+       "known": "この言語についてたくさんの新しい言葉を発見する必要があると思います。",
+       "target": "acho que precisamos de descobrir muitas palavras novas sobre esta língua",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known puts 'about this language' first, but the target puts 'sobre esta língua' last. Word order does not match, and 発見する is stilted.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Descobrir muitas palavras novas sobre esta língua' is semantically odd and not tier-1 natural in either language.",
+       "keep": false,
+       "why": "Sonnet: bad — The known puts 'about this language' first, but the target puts 'sobre esta língua' last. Word order does not match, and 発見する is stilted."
+      },
+      {
+       "id": "por_for_jpn:S0109L03U03",
+       "role": "use",
+       "known": "好きな時にたくさんの新しい言葉を聞きたいのですが。",
+       "target": "gostaria de ouvir muitas palavras novas quando quiseres",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "好きな時に is not the taught gloss for 'quando quiseres'. 聞きたいのですが is also not a clear match for 'gostaria de ouvir'.",
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "聞く is the taught gloss for perguntar, not ouvir. 好きな時に is not the taught gloss for quando quiseres (あなたが望む時に). The sentence is also odd.",
+       "keep": false,
+       "why": "Sonnet: bad — 好きな時に is not the taught gloss for 'quando quiseres'. 聞きたいのですが is also not a clear match for 'gostaria de ouvir'."
+      },
+      {
+       "id": "por_for_jpn:S0109L03U04",
+       "role": "use",
+       "known": "だから新しい言葉を学ぶためにたくさん働かなければなりません。",
+       "target": "É por isso que temos de trabalhar muito para aprender palavras novas",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The target has a capital É, and 学ぶ is not a taught gloss. The known 'たくさん' maps loosely to 'muito'.",
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "学ぶ is not taught. だから does not map to the taught gloss for é por isso que (そういうわけで).",
+       "keep": false,
+       "why": "Sonnet: bad — The target has a capital É, and 学ぶ is not a taught gloss. The known 'たくさん' maps loosely to 'muito'."
+      },
+      {
+       "id": "por_for_jpn:S0109L03U05",
+       "role": "use",
+       "known": "しばらくの間たくさんの新しい言葉を学ぶだけでいいです。",
+       "target": "só precisamos de aprender muitas palavras novas por algum tempo",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "だけでいいです does not mean 'só precisamos de'. The target adds meaning and the sentence is clunky.",
+       "ref": "P7",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'We only need to learn many new words for a while' is unnatural, and the known side is clunky.",
+       "keep": false,
+       "why": "Sonnet: bad — だけでいいです does not mean 'só precisamos de'. The target adds meaning and the sentence is clunky."
+      },
+      {
+       "role": "build",
+       "known": "いくつかの新しい言葉",
+       "target": "algumas palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Algumas palavras novas' is natural, and いくつかの is a taught gloss.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "もっと新しい言葉",
+       "target": "mais palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "もっと新しい言葉 naturally reads as 'newer words', so the known side is ambiguous with 'mais palavras novas'.",
+       "keep": false,
+       "why": "Opus: bad — もっと新しい言葉 naturally reads as 'newer words', so the known side is ambiguous with 'mais palavras novas'."
+      },
+      {
+       "role": "build",
+       "known": "新しい言葉を勉強する",
+       "target": "aprender palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses the taught gloss 勉強する for aprender. The fragment is natural and extends easily into a sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "新しい言葉を練習する",
+       "target": "praticar palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Praticar palavras novas' is natural, and the glosses are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "新しい言葉を書く",
+       "target": "escrever palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Escrever palavras novas' is a natural fragment with taught glosses.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "新しい言葉を読む",
+       "target": "ler palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Ler palavras novas' is an acceptable fragment with taught glosses.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "今日、新しい言葉を練習したいです。",
+       "target": "hoje quero praticar palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. Known and target match exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "明日、新しい言葉を練習するつもりです。",
+       "target": "amanhã vou praticar palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. つもりです maps to vou.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "新しい言葉を書くことは難しいです。",
+       "target": "escrever palavras novas é difícil",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Writing new words is difficult' is a semantically odd claim, and the fronted infinitive is clunky. Not clearly tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Writing new words is difficult' is a semantically odd claim, and the fronted infinitive is clunky. Not clearly tier 1."
+      },
+      {
+       "role": "use",
+       "known": "新しい言葉を勉強することは面白いです。",
+       "target": "aprender palavras novas é interessante",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural sentence. Known matches target and all glosses are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は新しい言葉を読みたくない。",
+       "target": "ela não quer ler palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'She doesn't want to read new words' is semantically odd and not tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — 'She doesn't want to read new words' is semantically odd and not tier-1 natural."
+      },
+      {
+       "role": "use",
+       "known": "新しい言葉を勉強するのは大切です。",
+       "target": "é importante aprender palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'É importante aprender palavras novas' is natural and matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私たちは新しい言葉を勉強しようとしています。",
+       "target": "estamos a tentar aprender palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural sentence. 私たちは〜しようとしています maps to estamos a tentar.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼は新しい言葉を書きたい。",
+       "target": "ele quer escrever palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'He wants to write new words' is semantically odd and not tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — 'He wants to write new words' is semantically odd and not tier-1 natural."
+      },
+      {
+       "role": "use",
+       "known": "新しい言葉を勉強する時間です。",
+       "target": "é hora de aprender palavras novas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P22",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'É hora de aprender palavras novas' is natural. 〜する時間です is a taught gloss.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
+  },
+  "134": {
+   "seed": 134,
+   "kind": "replace",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "一つの",
+     "target": "um"
+    },
+    {
+     "idx": 2,
+     "known": "〜の中で",
+     "target": "em"
+    },
+    {
+     "idx": 3,
+     "known": "問題",
+     "target": "problema"
+    },
+    {
+     "idx": 4,
+     "known": "難しい",
+     "target": "difícil"
+    },
+    {
+     "idx": 5,
+     "known": "彼らと",
+     "target": "eles"
+    }
+   ],
+   "legos": {
+    "6": {
+     "lego": {
+      "is_new": true,
+      "idx": 6,
+      "type": "M",
+      "known": "問題ありません",
+      "target": "não é um problema",
+      "components": [
+       {
+        "known": "〜ではない",
+        "target": "não é"
+       },
+       {
+        "known": "一つの",
+        "target": "um"
+       },
+       {
+        "known": "問題",
+        "target": "problema"
+       }
+      ],
+      "change": "add"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "今、問題ありません。",
+       "target": "Não é um problema agora.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short, natural fragment that extends to a full sentence. The Portuguese is grammatical and matches the known 'no problem now'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "でも問題ありません。",
+       "target": "Mas não é um problema.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural on both sides and an exact match. Mas and the LEGO are both taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "明日、問題ありません。",
+       "target": "Não é um problema amanhã.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'明日、問題ありません' naturally reads as 'tomorrow is fine/works'. 'Não é um problema amanhã' is an odd, non-equivalent rendering.",
+       "keep": false,
+       "why": "Opus: bad — '明日、問題ありません' naturally reads as 'tomorrow is fine/works'. 'Não é um problema amanhã' is an odd, non-equivalent rendering."
+      },
+      {
+       "role": "build",
+       "known": "今日、問題ありません。",
+       "target": "Não é um problema hoje.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same issue as P3. '今日、問題ありません' suggests 'today is fine', which 'Não é um problema hoje' doesn't capture naturally. The pairing is ambiguous.",
+       "keep": false,
+       "why": "Opus: bad — Same issue as P3. '今日、問題ありません' suggests 'today is fine', which 'Não é um problema hoje' doesn't capture naturally. The pairing is ambiguous."
+      },
+      {
+       "role": "build",
+       "known": "はい、問題ありません。",
+       "target": "Sim, não é um problema.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural Japanese and an acceptable Portuguese equivalent. Contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼らと問題ありません。",
+       "target": "Não é um problema com eles.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'彼らと問題ありません' is unnatural Japanese (it would need 彼らとは). 'Não é um problema com eles' is also clunky and ambiguous.",
+       "keep": false,
+       "why": "Opus: bad — '彼らと問題ありません' is unnatural Japanese (it would need 彼らとは). 'Não é um problema com eles' is also clunky and ambiguous."
+      },
+      {
+       "role": "use",
+       "known": "少し待つのは問題ありません。",
+       "target": "Esperar um pouco não é um problema.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, complete sentence using only taught material (esperar, um pouco). Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "他の人がいる時に問題ありません。",
+       "target": "Não é um problema quando há outras pessoas.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'他の人がいる時に問題ありません' is unnatural without は or でも. It is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — '他の人がいる時に問題ありません' is unnatural without は or でも. It is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "彼らと働くのは問題ありません。",
+       "target": "Trabalhar com eles não é um problema.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural on both sides with taught vocabulary (trabalhar, com eles). Exact meaning match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "ポルトガル語で答えるのは問題ありません。",
+       "target": "Responder em português não é um problema.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and grammatical. Responder and em português are taught. Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "間違えることは問題ありません。",
+       "target": "Cometer erros não é um problema.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural on both sides and an exact match. Cometer erros is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "あなたを手伝いたいので、問題ありません。",
+       "target": "Não é um problema porque quero ajudar-te.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural sentence on both sides, and the meaning matches. Porque and ajudar-te are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "少しポルトガル語を話すのは問題ありません。",
+       "target": "Falar um pouco de português não é um problema.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and grammatical. 'Falar um pouco de português' is taught. Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "遅く家に行くのは問題ありません。",
+       "target": "Ir para casa mais tarde não é um problema.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'家に行く' is unnatural for going home (家に帰る). '遅く' (late) also doesn't match 'mais tarde' (later).",
+       "keep": false,
+       "why": "Opus: bad — '家に行く' is unnatural for going home (家に帰る). '遅く' (late) also doesn't match 'mais tarde' (later)."
+      },
+      {
+       "role": "use",
+       "known": "明日あなたと話すのは問題ありません。",
+       "target": "Falar contigo amanhã não é um problema.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural on both sides with taught vocabulary (falar contigo amanhã). Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 3,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  },
   "136": {
    "seed": 136,
    "kind": "replace",
@@ -795,6 +1408,936 @@
     }
    }
   },
+  "141": {
+   "seed": 141,
+   "kind": "replace",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "〜です",
+     "target": "está"
+    },
+    {
+     "idx": 2,
+     "known": "すべて",
+     "target": "tudo"
+    },
+    {
+     "idx": 3,
+     "known": "上手に",
+     "target": "bem"
+    }
+   ],
+   "legos": {
+    "4": {
+     "lego": {
+      "is_new": true,
+      "idx": 4,
+      "type": "M",
+      "known": "全部大丈夫です",
+      "target": "está tudo bem",
+      "components": [
+       {
+        "known": "〜です",
+        "target": "está"
+       },
+       {
+        "known": "すべて",
+        "target": "tudo"
+       },
+       {
+        "known": "大丈夫",
+        "target": "bem"
+       }
+      ],
+      "change": "add"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "今、全部大丈夫です。",
+       "target": "Agora está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and grammatical. The prompt maps exactly to the target, and 今 is taught as agora.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "今日、全部大丈夫です。",
+       "target": "Hoje está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and grammatical. 今日 is taught as hoje, and the two sides match exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "明日、全部大丈夫です。",
+       "target": "Amanhã está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The meaning is future ('tomorrow everything will be fine'). Present-tense 'Amanhã está tudo bem' is clunky; a natural speaker would say 'vai estar tudo bem'. That is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The meaning is future ('tomorrow everything will be fine'). Present-tense 'Amanhã está tudo bem' is clunky; a natural speaker would say 'vai estar tudo bem'. That is not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "もちろん、全部大丈夫です。",
+       "target": "Claro que está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "もちろん is taught as 'claro que', and 'Claro que está tudo bem' is natural and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "はい、全部大丈夫です。",
+       "target": "Sim, está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, very common reply. Both pieces are taught and the sides match exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "ありがとう、全部大丈夫です。",
+       "target": "Obrigado, está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, common reply. 'Obrigado' is the default form and ありがとう is taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "あなたが終わったら、全部大丈夫です。",
+       "target": "Depois de terminares, está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The meaning is odd: 'after you finish, everything is fine' would naturally be future ('vai estar tudo bem'). As written it is possible but clunky, not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The meaning is odd: 'after you finish, everything is fine' would naturally be future ('vai estar tudo bem'). As written it is possible but clunky, not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "私たちが一緒に働く時、全部大丈夫です。",
+       "target": "Quando trabalhamos juntos, está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural complete sentence. 一緒に, 働く and 時 are taught, and it maps exactly to 'Quando trabalhamos juntos, está tudo bem'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私がポルトガル語で話す時、全部大丈夫です。",
+       "target": "Quando falo em português, está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural enough. ポルトガル語で maps to 'em português' per the taught gloss, and the sides match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "あなたと話す時、全部大丈夫です。",
+       "target": "Quando falo contigo, está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural complete sentence. あなたと maps to contigo, and the implied first-person subject matches 'falo'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "ありがとう、今、全部大丈夫です。",
+       "target": "Obrigado, agora está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One natural sentence, longer than a BUILD, using only taught material, with an exact match between the sides.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "もちろん、今日は全部大丈夫です。",
+       "target": "Claro que hoje está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Of course today everything is fine' is semantically odd: the contrastive 今日は combined with もちろん sounds unnatural on both sides. Not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Of course today everything is fine' is semantically odd: the contrastive 今日は combined with もちろん sounds unnatural on both sides. Not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "でも、全部大丈夫です。",
+       "target": "Mas está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Short, natural BUILD. でも maps to mas, which is taught. The Portuguese is correct and matches the known exactly. It extends naturally into a full sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "ここで、全部大丈夫です。",
+       "target": "Aqui está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The Japanese 'ここで、全部大丈夫です' is unnatural; a speaker would say ここは全部大丈夫です. The known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — The Japanese 'ここで、全部大丈夫です' is unnatural; a speaker would say ここは全部大丈夫です. The known side is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "あなたといる時、全部大丈夫です。",
+       "target": "Quando estou contigo, está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural Japanese built from taught pieces (あなたと, いる, 時). 'Quando estou contigo, está tudo bem.' is correct, natural European Portuguese and says exactly what the known says. It is one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私たちが一緒にいる時、全部大丈夫です。",
+       "target": "Quando estamos juntos, está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural Japanese using taught 一緒に, いる and 時. 'Quando estamos juntos, está tudo bem.' is grammatical, natural and an exact match. It is one sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "あなたが私と話す時、全部大丈夫です。",
+       "target": "Quando falas comigo, está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural Japanese with taught 私と and 話す. 'Quando falas comigo, está tudo bem.' is correct informal Portuguese and an exact match. It is one sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私たちがここで働く時、全部大丈夫です。",
+       "target": "Quando trabalhamos aqui, está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Grammatical, but 'when we work here, everything is fine' is a semantically odd thing to say. It is possible but clunky, not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — Grammatical, but 'when we work here, everything is fine' is a semantically odd thing to say. It is possible but clunky, not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "私が少し話す時、全部大丈夫です。",
+       "target": "Quando falo um pouco, está tudo bem.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'When I speak a little, everything is fine' is semantically strange and not something a speaker would naturally say. It is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'When I speak a little, everything is fine' is semantically strange and not something a speaker would naturally say. It is not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  },
+  "147": {
+   "seed": 147,
+   "kind": "merge",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "〜でした",
+     "target": "foi"
+    },
+    {
+     "idx": 2,
+     "known": "親切な",
+     "target": "simpática"
+    },
+    {
+     "idx": 3,
+     "known": "私を",
+     "target": "me"
+    },
+    {
+     "idx": 4,
+     "known": "彼女は見た",
+     "target": "viu"
+    },
+    {
+     "idx": 5,
+     "known": "〜を感じている",
+     "target": "a sentir-me"
+    },
+    {
+     "idx": 6,
+     "known": "緊張した",
+     "target": "nervoso"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "とても親切でした",
+      "target": "foi muito simpática",
+      "components": [
+       {
+        "known": "〜でした",
+        "target": "foi"
+       },
+       {
+        "known": "とても",
+        "target": "muito"
+       },
+       {
+        "known": "親切な",
+        "target": "simpática"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "por_for_jpn:S0147L02B03",
+       "role": "build",
+       "known": "とても親切でした",
+       "target": "foi muito simpática",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, short fragment that extends naturally into a sentence.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A BUILD must be the LEGO plus one to three other taught LEGOs. This is the bare LEGO alone.",
+       "keep": false,
+       "why": "Opus: bad — A BUILD must be the LEGO plus one to three other taught LEGOs. This is the bare LEGO alone."
+      },
+      {
+       "id": "por_for_jpn:S0147L02U01",
+       "role": "use",
+       "known": "彼女はとても親切でした。",
+       "target": "ela foi muito simpática",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural, grammatical, and the target matches the known exactly.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Only the LEGO plus 'ela', so it is BUILD-sized. A USE must be longer than a BUILD, and this is effectively the core of P7 and P8.",
+       "keep": false,
+       "why": "Opus: bad — Only the LEGO plus 'ela', so it is BUILD-sized. A USE must be longer than a BUILD, and this is effectively the core of P7 and P8."
+      },
+      {
+       "id": "por_for_jpn:S0147L02U02",
+       "role": "use",
+       "known": "もちろん彼女はとても親切でした。",
+       "target": "claro que ela foi muito simpática",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "もちろん = claro que is taught, and the sentence is natural and correct.",
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'claro que ela foi muito simpática' is natural and grammatical, and it matches もちろん彼女はとても親切でした. All material is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "por_for_jpn:S0147L02U03",
+       "role": "use",
+       "known": "あなたの方からとても親切だったと思います。",
+       "target": "acho que foi muito simpática da tua parte",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known uses 親切だった rather than the taught でした. Also 'simpática da tua parte' forces a female addressee that the known never states.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "あなたの方からとても親切だったと思います is unnatural Japanese. The feminine 'simpática' addressed to 'you' adds an unflagged gender assumption.",
+       "keep": false,
+       "why": "Sonnet: bad — The known uses 親切だった rather than the taught でした. Also 'simpática da tua parte' forces a female addressee that the known never states."
+      },
+      {
+       "id": "por_for_jpn:S0147L02U04",
+       "role": "use",
+       "known": "彼女はとても親切だったようです。",
+       "target": "parece que ela foi muito simpática",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known uses だったようです rather than the taught LEGO form, which weakens the one-to-one mapping. The 'parece que' frame is not clearly tileable.",
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "彼女はとても親切だったようです is natural and maps cleanly to 'parece que ela foi muito simpática' using the taught 'parece que' = 〜のようです.",
+       "keep": false,
+       "why": "Sonnet: bad — The known uses だったようです rather than the taught LEGO form, which weakens the one-to-one mapping. The 'parece que' frame is not clearly tileable."
+      },
+      {
+       "id": "por_for_jpn:S0147L02U05",
+       "role": "use",
+       "known": "彼女は起きてからとても親切でした。",
+       "target": "ela foi muito simpática desde que acordei",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "起きてから does not say who woke up, but 'desde que acordei' makes it 'I'. The mapping is ambiguous and the sentence is clunky.",
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The meanings differ: the Japanese implies she woke up, while 'desde que acordei' means I woke up. Also, 'foi' with 'desde que' is unnatural; it would need 'tem sido'.",
+       "keep": false,
+       "why": "Sonnet: bad — 起きてから does not say who woke up, but 'desde que acordei' makes it 'I'. The mapping is ambiguous and the sentence is clunky."
+      },
+      {
+       "role": "build",
+       "known": "でも彼女はとても親切でした",
+       "target": "mas ela foi muito simpática",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A short, natural fragment that extends naturally into a full sentence. Taught material only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "そして彼女はとても親切でした",
+       "target": "e ela foi muito simpática",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural fragment that extends naturally into a full sentence. Taught material only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "昨日彼女はとても親切でした",
+       "target": "ontem ela foi muito simpática",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, correct BUILD with exact correspondence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "今朝彼女はとても親切でした",
+       "target": "esta manhã ela foi muito simpática",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, correct BUILD with exact correspondence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼女はパブでとても親切でした",
+       "target": "ela foi muito simpática no pub",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, correct BUILD. 'no pub' is taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "彼女は昨夜とても親切でした",
+       "target": "ela foi muito simpática ontem à noite",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, correct BUILD. 'ontem à noite' is taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "彼女は昨日とても親切でした。",
+       "target": "ela foi muito simpática ontem",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Not longer than a BUILD. It is the same content as P9 and adds nothing as a USE.",
+       "keep": false,
+       "why": "Opus: bad — Not longer than a BUILD. It is the same content as P9 and adds nothing as a USE."
+      },
+      {
+       "role": "use",
+       "known": "彼女は今朝とても親切でした。",
+       "target": "ela foi muito simpática esta manhã",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Not longer than a BUILD. It is the same content as P10 and adds nothing as a USE.",
+       "keep": false,
+       "why": "Opus: bad — Not longer than a BUILD. It is the same content as P10 and adds nothing as a USE."
+      },
+      {
+       "role": "use",
+       "known": "彼女は先月とても親切でした。",
+       "target": "ela foi muito simpática no mês passado",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'ela foi muito simpática no mês passado' is a natural complete sentence, longer than the builds, with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は昨夜パブでとても親切でした。",
+       "target": "ela foi muito simpática no pub ontem à noite",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural complete sentence with an exact match to 彼女は昨夜パブでとても親切でした.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "前回、彼女はとても親切でした。",
+       "target": "da última vez ela foi muito simpática",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'da última vez ela foi muito simpática' is natural and matches 前回、彼女はとても親切でした.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "もちろん彼女は前回とても親切でした。",
+       "target": "claro que ela foi muito simpática da última vez",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural complete sentence with an exact match. All material is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は昨日とても親切でしたと思います。",
+       "target": "acho que ela foi muito simpática ontem",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": false,
+       "opusReason": "とても親切でしたと思います is ungrammatical and unnatural Japanese; it should be 親切だったと思います. The known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — とても親切でしたと思います is ungrammatical and unnatural Japanese; it should be 親切だったと思います. The known side is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "もちろん彼女は昨日とても親切でした。",
+       "target": "claro que ela foi muito simpática ontem",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'claro que ela foi muito simpática ontem' is natural with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は昨夜とても親切でしたと思います。",
+       "target": "acho que ela foi muito simpática ontem à noite",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": false,
+       "opusReason": "でしたと思います is unnatural Japanese; it should be だったと思います. The known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — でしたと思います is unnatural Japanese; it should be だったと思います. The known side is not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
+  },
+  "177": {
+   "seed": 177,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "彼女は〜したい",
+     "target": "quer"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "M",
+      "known": "どこに行きたいか",
+      "target": "onde quer ir",
+      "components": [
+       {
+        "known": "どこに",
+        "target": "onde"
+       },
+       {
+        "known": "〜したい",
+        "target": "quer"
+       },
+       {
+        "known": "行く",
+        "target": "ir"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "por_for_jpn:S0177L01U01",
+       "role": "use",
+       "known": "どこに行きたいか彼女に聞きます。",
+       "target": "vou perguntar-lhe onde quer ir",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural single sentence. 'vou perguntar-lhe' is taught and the Japanese maps cleanly to it. The target is grammatical and matches the known.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known side '聞きます' has no つもり, but the target uses 'vou', so they don't match. The phrase is also just the seed, no longer than a BUILD, and unpunctuated.",
+       "keep": false,
+       "why": "Opus: bad — The known side '聞きます' has no つもり, but the target uses 'vou', so they don't match. The phrase is also just the seed, no longer than a BUILD, and unpunctuated."
+      },
+      {
+       "id": "por_for_jpn:S0177L01U02",
+       "role": "use",
+       "known": "どこに行きたいかわかりません。",
+       "target": "não sei onde quer ir",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "わかりません is already used in the course for 'não tenho a certeza', so mapping it to 'não sei' breaks one-prompt-one-target. 'sei' is taught as 知っている, so 知りません is the safe gloss.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'わかりません' is already tied to 'não tenho a certeza se', and 'não sei' is glossed as 知りません, so this breaks ZUT. It is also too short to count as a USE.",
+       "keep": false,
+       "why": "Sonnet: bad — わかりません is already used in the course for 'não tenho a certeza', so mapping it to 'não sei' breaks one-prompt-one-target. 'sei' is taught as 知っている, so 知りません is the safe gloss."
+      },
+      {
+       "role": "build",
+       "known": "どこに行きたいか知っています。",
+       "target": "Sei onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Sei onde quer ir' matches '知っています' and is natural. It is a short BUILD that extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "どこに行きたいか発見するつもりです。",
+       "target": "Vou descobrir onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'発見する' is unnatural Japanese for finding out where someone wants to go, so the known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — '発見する' is unnatural Japanese for finding out where someone wants to go, so the known side is not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "どこに行きたいか彼女に聞く。",
+       "target": "Perguntar-lhe onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is a valid infinitive fragment, and 彼女に maps to lhe. It extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "どこに行きたいか知りません。",
+       "target": "Não sei onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Não sei onde quer ir' is natural and correctly glossed by 知りません.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "どこに行きたいか知りたいです。",
+       "target": "Quero saber onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Quero saber onde quer ir' is natural and matches '知りたいです'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "後でどこに行きたいか彼女に聞きます。",
+       "target": "Mais tarde vou perguntar-lhe onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known side lacks つもり for 'vou', and '後で' is glossed as 'depois', not 'mais tarde'. The phrase is also too long for a BUILD.",
+       "keep": false,
+       "why": "Opus: bad — The known side lacks つもり for 'vou', and '後で' is glossed as 'depois', not 'mais tarde'. The phrase is also too long for a BUILD."
+      },
+      {
+       "role": "use",
+       "known": "明日、どこに行きたいか彼女に聞くつもりです。",
+       "target": "Amanhã vou perguntar-lhe onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is a natural, complete sentence with an exact match between the two sides.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "今、どこに行きたいか知りたいです。",
+       "target": "Agora quero saber onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is a natural, complete sentence that matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "まだどこに行きたいか知りません。",
+       "target": "Ainda não sei onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Ainda não sei onde quer ir' is natural and matches 'まだ…知りません'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "今夜、どこに行きたいか彼女に聞くつもりです。",
+       "target": "Esta noite vou perguntar-lhe onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is a natural, complete sentence with an exact match between the two sides.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "来週、どこに行きたいか彼女に聞くつもりです。",
+       "target": "Na semana que vem vou perguntar-lhe onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is a natural, complete sentence with an exact match between the two sides.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "昨日、どこに行きたいか彼女に聞きたかったです。",
+       "target": "Ontem queria perguntar-lhe onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Ontem queria perguntar-lhe onde quer ir' is natural and matches '聞きたかったです'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "午後に、どこに行きたいか彼女に聞くつもりです。",
+       "target": "À tarde vou perguntar-lhe onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'À tarde' matches '午後に', and the sentence is natural and complete.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "今日、どこに行きたいか発見するつもりです。",
+       "target": "Hoje vou descobrir onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'発見する' is unnatural Japanese in this context, so the known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — '発見する' is unnatural Japanese in this context, so the known side is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "今、どこに行きたいか彼女に聞くつもりです。",
+       "target": "Agora vou perguntar-lhe onde quer ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is a natural, complete sentence with an exact match between the two sides.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
   "182": {
    "seed": 182,
    "kind": "replace",
@@ -1047,6 +2590,227 @@
     }
    }
   },
+  "222": {
+   "seed": 222,
+   "kind": "replace",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "彼は〜しようとしています",
+     "target": "está a tentar"
+    },
+    {
+     "idx": 2,
+     "known": "私に言う・私に伝える",
+     "target": "dizer-me"
+    },
+    {
+     "idx": 3,
+     "known": "彼女は〜したい",
+     "target": "quer"
+    }
+   ],
+   "legos": {
+    "4": {
+     "lego": {
+      "is_new": true,
+      "idx": 4,
+      "type": "M",
+      "known": "何が欲しいか",
+      "target": "o que quer",
+      "components": [
+       {
+        "known": "何が",
+        "target": "o que"
+       },
+       {
+        "known": "欲しい",
+        "target": "quer"
+       }
+      ],
+      "change": "add"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "何が欲しいかを発見する",
+       "target": "descobrir o que quer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "発見する is unnatural Japanese for 'find out what someone wants'; it means to discover something new. As a prompt it is not tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — 発見する is unnatural Japanese for 'find out what someone wants'; it means to discover something new. As a prompt it is not tier-1 natural."
+      },
+      {
+       "role": "build",
+       "known": "何が欲しいかを知りたいです",
+       "target": "Quero saber o que quer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural BUILD. The known side maps cleanly to 'Quero saber o que quer' and contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼に何が欲しいか聞くつもりです",
+       "target": "Vou perguntar-lhe o que quer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural Japanese and natural European Portuguese. The enclisis 'perguntar-lhe' is correct, and the meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "何が欲しいかを知る必要があります",
+       "target": "Preciso de saber o que quer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and grammatical. 'Preciso de saber' is taught, and the phrase contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "何が欲しいかを発見しようとしています",
+       "target": "Estou a tentar descobrir o que quer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same unnatural 発見する for 'find out' as P1. The Japanese prompt is not natural.",
+       "keep": false,
+       "why": "Opus: bad — Same unnatural 発見する for 'find out' as P1. The Japanese prompt is not natural."
+      },
+      {
+       "role": "build",
+       "known": "何が欲しいか私に言う",
+       "target": "dizer-me o que quer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A valid fragment that extends into the seed sentence. 'dizer-me o que quer' is correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼は何が欲しいか私に伝えようとしています。",
+       "target": "Está a tentar dizer-me o que quer.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the seed sentence: correct, natural and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼は何が欲しいか私に伝えたくありません。",
+       "target": "Ele não quer dizer-me o que quer.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Third-person 〜たくありません without がる/ようです is marked and unnatural in Japanese. 'não quer dizer-me o que quer' is also clunky with the repeated quer.",
+       "keep": false,
+       "why": "Opus: bad — Third-person 〜たくありません without がる/ようです is marked and unnatural in Japanese. 'não quer dizer-me o que quer' is also clunky with the repeated quer."
+      },
+      {
+       "role": "use",
+       "known": "明日、彼に何が欲しいか聞くつもりです。",
+       "target": "Amanhã vou perguntar-lhe o que quer.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, grammatical, one complete sentence and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "行く前に何が欲しいかを知る必要があります。",
+       "target": "Preciso de saber o que quer antes de ir.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural sentence with taught pieces (antes de, ir, preciso de saber). The Portuguese mirrors the Japanese.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "今日、私は何が欲しいかを発見するつもりです。",
+       "target": "Hoje vou descobrir o que quer.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Unnatural 発見する again. With 私は and no other subject, 欲しい reads as 'what I want', which would be 'o que quero', so it does not match 'o que quer'.",
+       "keep": false,
+       "why": "Opus: bad — Unnatural 発見する again. With 私は and no other subject, 欲しい reads as 'what I want', which would be 'o que quero', so it does not match 'o que quer'."
+      },
+      {
+       "role": "use",
+       "known": "私は彼に何が欲しいか聞こうとしています。",
+       "target": "Estou a tentar perguntar-lhe o que quer.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "聞こうとしています maps to 'Estou a tentar perguntar-lhe'. Natural and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は何が欲しいか私に伝えようとしています。",
+       "target": "Ela está a tentar dizer-me o que quer.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct variant of the seed with ela. Natural and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 5,
+     "setGates": {}
+    }
+   }
+  },
   "239": {
    "seed": 239,
    "kind": "replace",
@@ -1291,6 +3055,941 @@
        "opusReason": "falar com outra pessoa (singular, 'another person') is unnatural for a general liking; it should be outras pessoas. The Portuguese is not tier 1.",
        "keep": false,
        "why": "Opus: bad — falar com outra pessoa (singular, 'another person') is unnatural for a general liking; it should be outras pessoas. The Portuguese is not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
+  },
+  "240": {
+   "seed": 240,
+   "kind": "replace",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "私の",
+     "target": "meu"
+    },
+    {
+     "idx": 2,
+     "known": "父",
+     "target": "pai"
+    },
+    {
+     "idx": 3,
+     "known": "やめる",
+     "target": "parar de"
+    }
+   ],
+   "legos": {
+    "4": {
+     "lego": {
+      "is_new": true,
+      "idx": 4,
+      "type": "M",
+      "known": "私の父",
+      "target": "o meu pai",
+      "components": [
+       {
+        "known": "私の",
+        "target": "o meu"
+       },
+       {
+        "known": "父",
+        "target": "pai"
+       }
+      ],
+      "change": "add"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "私の父は話したい",
+       "target": "O meu pai quer falar",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Third-person ～たい in 私の父は話したい is unnatural Japanese. It should be 話したがっている. The known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — Third-person ～たい in 私の父は話したい is unnatural Japanese. It should be 話したがっている. The known side is not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "私の父は働いています",
+       "target": "O meu pai trabalha",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses taught trabalha. The Portuguese is grammatical, the gloss matches, and it is a short BUILD that extends naturally.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の父は先生です",
+       "target": "O meu pai é professor",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'O meu pai é professor' is correct and natural, and all words are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の父は話すのが好きです",
+       "target": "O meu pai gosta de falar",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses taught gosta de + falar. It is grammatical and matches the known side exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の父は疲れています",
+       "target": "O meu pai está cansado",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses taught está and cansado, and the agreement is correct. The known side is natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の父と私",
+       "target": "O meu pai e eu",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment that extends easily into a full sentence. 'O meu pai e eu' is correct.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "私の父は私とポルトガル語を話したい。",
+       "target": "O meu pai quer falar português comigo.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Third-person ～たい ending the sentence (私の父は…話したい。) is unnatural Japanese, so the known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — Third-person ～たい ending the sentence (私の父は…話したい。) is unnatural Japanese, so the known side is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "私の父は今日働いています。",
+       "target": "O meu pai trabalha hoje.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One complete, natural sentence, and the target matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私の父は今話したくありません。",
+       "target": "O meu pai não quer falar agora.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Third-person 話したくありません is unnatural. Standard Japanese needs 話したがりません, as in the seed itself.",
+       "keep": false,
+       "why": "Opus: bad — Third-person 話したくありません is unnatural. Standard Japanese needs 話したがりません, as in the seed itself."
+      },
+      {
+       "role": "use",
+       "known": "私の父はポルトガル語を話すのが好きです。",
+       "target": "O meu pai gosta de falar português.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and grammatical, with an exact match between known and target. Longer than the BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私の父はポルトガル語を勉強しようとしています。",
+       "target": "O meu pai está a tentar aprender português.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses taught 勉強する=aprender and ～しようとしています=está a tentar. Both sides are natural and correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "昨日私の父は疲れていました。",
+       "target": "Ontem o meu pai estava cansado.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'Ontem o meu pai estava cansado.' is natural, the tense matches, and all words are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私の父は明日ポルトガル語を勉強したい。",
+       "target": "O meu pai quer aprender português amanhã.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Sentence-final third-person ～たい (勉強したい) is unnatural Japanese, so the known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — Sentence-final third-person ～たい (勉強したい) is unnatural Japanese, so the known side is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "私の父は皆と一緒に話すのが好きです。",
+       "target": "O meu pai gosta de falar com toda a gente.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Tileable from the taught gloss 皆と一緒に. It is acceptable Japanese and correct Portuguese.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私の父は他の人と話したい。",
+       "target": "O meu pai quer falar com outra pessoa.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Third-person ～たい (話したい。) is unnatural Japanese, so the known side is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — Third-person ～たい (話したい。) is unnatural Japanese, so the known side is not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 5,
+     "setGates": {}
+    }
+   }
+  },
+  "246": {
+   "seed": 246,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "彼女は",
+     "target": "ela"
+    },
+    {
+     "idx": 2,
+     "known": "彼女があなたを手伝う",
+     "target": "te ajudasse"
+    },
+    {
+     "idx": 3,
+     "known": "でも",
+     "target": "mas"
+    },
+    {
+     "idx": 4,
+     "known": "〜すぎる",
+     "target": "demasiado"
+    },
+    {
+     "idx": 5,
+     "known": "忙しい",
+     "target": "ocupada"
+    }
+   ],
+   "legos": {
+    "5": {
+     "lego": {
+      "idx": 5,
+      "type": "M",
+      "known": "忙しすぎました",
+      "target": "demasiado ocupada",
+      "components": [
+       {
+        "known": "〜すぎる",
+        "target": "demasiado"
+       },
+       {
+        "known": "忙しい",
+        "target": "ocupada"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "por_for_jpn:S0246L05B02",
+       "role": "build",
+       "known": "彼女は忙しすぎた。",
+       "target": "ela estava demasiado ocupada",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Short, natural and tileable. The past tense 'estava' and feminine 'ocupada' match the known side.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short, grammatical fragment that extends naturally. Known and target match, and the phrase contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "por_for_jpn:S0246L05B03",
+       "role": "build",
+       "known": "彼女にあなたを手伝ってほしかったけど忙しすぎた。",
+       "target": "queria que ela te ajudasse mas estava demasiado ocupada",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "This is the seed sentence. It is too long to be a BUILD, and the known side drops the subject of 忙しすぎた.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is essentially the whole seed sentence. It uses four other LEGOs (queria que, ela, te ajudasse, mas), which is too many and too long for a BUILD.",
+       "keep": false,
+       "why": "Sonnet: bad — This is the seed sentence. It is too long to be a BUILD, and the known side drops the subject of 忙しすぎた."
+      },
+      {
+       "id": "por_for_jpn:S0246L05U01",
+       "role": "use",
+       "known": "今彼女にあなたを手伝ってほしかったけど忙しすぎた。",
+       "target": "queria que ela te ajudasse mas estava demasiado ocupada agora",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known 今 sits at the front of a past-tense wish, while the target puts 'agora' at the end where it modifies 'ocupada'. The two sides do not map one to one.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Adding 今/agora to a past-tense wish is unnatural, and its scope is ambiguous on both sides. It is not tier 1.",
+       "keep": false,
+       "why": "Sonnet: bad — The known 今 sits at the front of a past-tense wish, while the target puts 'agora' at the end where it modifies 'ocupada'. The two sides do not map one to one."
+      },
+      {
+       "id": "por_for_jpn:S0246L05U02",
+       "role": "use",
+       "known": "彼女は昨日忙しすぎた。",
+       "target": "ela estava demasiado ocupada ontem",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural, exact mapping, and the word order is fine.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Grammatical, but as a USE it is no longer than the BUILDs (it is the same shape as P7–P12). It fails the requirement that a USE be longer than a BUILD.",
+       "keep": false,
+       "why": "Opus: bad — Grammatical, but as a USE it is no longer than the BUILDs (it is the same shape as P7–P12). It fails the requirement that a USE be longer than a BUILD."
+      },
+      {
+       "id": "por_for_jpn:S0246L05U03",
+       "role": "use",
+       "known": "彼女は忙しすぎたと思う。",
+       "target": "acho que ela estava demasiado ocupada",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural. 'acho que ela estava demasiado ocupada' maps exactly to the known side.",
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence that is longer than the BUILDs. 彼女は忙しすぎたと思う = acho que ela estava demasiado ocupada.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "por_for_jpn:S0246L05U04",
+       "role": "use",
+       "known": "母は忙しすぎた。",
+       "target": "a minha mãe estava demasiado ocupada",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is too short to count as a USE. It also maps 母 onto 'a minha mãe', which adds 'minha' that the known side does not express, and this breaks ZUT.",
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Too short for a USE, with the same length as a BUILD. The bare 'was too busy' with nothing added reads like a fragment.",
+       "keep": false,
+       "why": "Sonnet: bad — It is too short to count as a USE. It also maps 母 onto 'a minha mãe', which adds 'minha' that the known side does not express, and this breaks ZUT."
+      },
+      {
+       "role": "build",
+       "known": "彼女は今日忙しすぎた。",
+       "target": "ela estava demasiado ocupada hoje",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short BUILD. Grammatical and matching: hoje with estava works for a time earlier today.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼女は昨夜忙しすぎた。",
+       "target": "ela estava demasiado ocupada ontem à noite",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short BUILD. Grammatical, natural and matching.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼女は今朝忙しすぎた。",
+       "target": "ela estava demasiado ocupada esta manhã",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short BUILD. Grammatical, natural and matching.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "彼女は先週忙しすぎた。",
+       "target": "ela estava demasiado ocupada na semana passada",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short BUILD. Grammatical, natural and matching.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "彼女は先月忙しすぎた。",
+       "target": "ela estava demasiado ocupada no mês passado",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short BUILD. Grammatical, natural and matching.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "彼女は日曜日に忙しすぎた。",
+       "target": "ela estava demasiado ocupada no domingo",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short BUILD. 日曜日に = no domingo. Natural and matching.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "彼女は昨日忙しすぎたと思う。",
+       "target": "acho que ela estava demasiado ocupada ontem",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence, longer than a BUILD. Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は今朝忙しすぎたと思う。",
+       "target": "acho que ela estava demasiado ocupada esta manhã",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence, longer than a BUILD. Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は先週忙しすぎたと思う。",
+       "target": "acho que ela estava demasiado ocupada na semana passada",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence, longer than a BUILD. Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は昨夜忙しすぎたと思う。",
+       "target": "acho que ela estava demasiado ocupada ontem à noite",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence, longer than a BUILD. Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "彼女は忙しすぎたと知っていました。",
+       "target": "sabia que ela estava demasiado ocupada",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "忙しすぎたと知っていました is stilted; a native would say 忙しすぎるのを知っていました. The tense also mismatches: the embedded past 忙しすぎた suggests an earlier time, while the Portuguese imperfect is simultaneous. Unsure, so BAD.",
+       "keep": false,
+       "why": "Opus: bad — 忙しすぎたと知っていました is stilted; a native would say 忙しすぎるのを知っていました. The tense also mismatches: the embedded past 忙しすぎた suggests an earlier time, while the Portuguese imperfect is simultaneous. Unsure, so BAD."
+      },
+      {
+       "role": "use",
+       "known": "彼女は昨日忙しすぎたと知っていました。",
+       "target": "sabia que ela estava demasiado ocupada ontem",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same problems as P17: unnatural と知っていました and a mismatched tense relation.",
+       "keep": false,
+       "why": "Opus: bad — Same problems as P17: unnatural と知っていました and a mismatched tense relation."
+      },
+      {
+       "role": "use",
+       "known": "彼女は今日忙しすぎたと思う。",
+       "target": "acho que ela estava demasiado ocupada hoje",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. 今日忙しすぎたと思う = acho que ela estava demasiado ocupada hoje.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
+  },
+  "256": {
+   "seed": 256,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "私は〜でしょう",
+     "target": "estarei"
+    },
+    {
+     "idx": 2,
+     "known": "〜以内に・〜未満で",
+     "target": "em menos de"
+    },
+    {
+     "idx": 3,
+     "known": "一時間",
+     "target": "hora"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "M",
+      "known": "一時間",
+      "target": "uma hora",
+      "components": [
+       {
+        "known": "一つの",
+        "target": "uma"
+       },
+       {
+        "known": "時間",
+        "target": "hora"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "por_for_jpn:S0256L03B01",
+       "role": "build",
+       "known": "一時間。",
+       "target": "uma hora",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Bare LEGO, tileable and unambiguous.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "BUILD must combine the LEGO with one to three other taught LEGOs. This is the bare LEGO alone.",
+       "keep": false,
+       "why": "Opus: bad — BUILD must combine the LEGO with one to three other taught LEGOs. This is the bare LEGO alone."
+      },
+      {
+       "id": "por_for_jpn:S0256L03B02",
+       "role": "build",
+       "known": "一時間以内に。",
+       "target": "em menos de uma hora",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Taught LEGO 'em menos de' plus the LEGO; a clean build.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment that extends into a full sentence. It uses taught L2 with the LEGO and matches the known side exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "por_for_jpn:S0256L03B03",
+       "role": "build",
+       "known": "一時間以内に準備ができると思います。",
+       "target": "acho que estarei pronto em menos de uma hora",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "It is the seed sentence: acho que + estarei + pronto + em menos de + uma hora, all taught.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the full seed sentence, not a short BUILD. It adds too many other LEGOs (acho que, estarei, pronto, em menos de).",
+       "keep": false,
+       "why": "Opus: bad — This is the full seed sentence, not a short BUILD. It adds too many other LEGOs (acho que, estarei, pronto, em menos de)."
+      },
+      {
+       "id": "por_for_jpn:S0256L03U01",
+       "role": "use",
+       "known": "一時間以内に準備ができているでしょう。",
+       "target": "estarei pronto em menos de uma hora",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known has no subject, so 'estarei' is not clearly fixed. 準備ができている conflicts with E3's 準備ができる, which breaks one prompt to one target. It is also hardly longer than E3.",
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One complete, natural sentence. 準備ができているでしょう maps to estarei pronto, and the meaning matches.",
+       "keep": false,
+       "why": "Sonnet: bad — The known has no subject, so 'estarei' is not clearly fixed. 準備ができている conflicts with E3's 準備ができる, which breaks one prompt to one target. It is also hardly longer than E3."
+      },
+      {
+       "id": "por_for_jpn:S0256L03U02",
+       "role": "use",
+       "known": "一時間以上待てない。",
+       "target": "não consigo esperar mais de uma hora",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'mais de' (以上) is not a taught LEGO, and 待てない is a potential form that the known glosses do not support. This is not a safe one-to-one mapping.",
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "以上 / 'mais de' is not taught on the known side. Also, 以上 technically means 'or more', so it is not an exact match for 'mais de'.",
+       "keep": false,
+       "why": "Sonnet: bad — 'mais de' (以上) is not a taught LEGO, and 待てない is a potential form that the known glosses do not support. This is not a safe one-to-one mapping."
+      },
+      {
+       "id": "por_for_jpn:S0256L03U03",
+       "role": "use",
+       "known": "もう一時間以上ここにいます。",
+       "target": "estou aqui há mais de uma hora",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known 'もう...います' does not map cleanly to 'há mais de'. 'mais de' is untaught, and the 'há' + present construction is not taught.",
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "以上 is untaught, and the もう…以上 construction is not tileable from taught glosses.",
+       "keep": false,
+       "why": "Sonnet: bad — The known 'もう...います' does not map cleanly to 'há mais de'. 'mais de' is untaught, and the 'há' + present construction is not taught."
+      },
+      {
+       "id": "por_for_jpn:S0256L03U04",
+       "role": "use",
+       "known": "一時間以内に出られると思う。",
+       "target": "acho que posso sair em menos de uma hora",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The potential 出られる is not covered by taught glosses, and 思う/'posso sair' is a loose mapping. It is risky.",
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural on both sides. acho que + posso sair + em menos de uma hora all tile from taught material.",
+       "keep": false,
+       "why": "Sonnet: bad — The potential 出られる is not covered by taught glosses, and 思う/'posso sair' is a loose mapping. It is risky."
+      },
+      {
+       "id": "por_for_jpn:S0256L03U05",
+       "role": "use",
+       "known": "一時間以内にこれを終わりたい。",
+       "target": "quero terminar isto em menos de uma hora",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "All vocabulary is taught: quero, terminar, isto, em menos de. It is natural, and the known maps one-to-one.",
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "これを終わりたい is ungrammatical Japanese: 終わる is intransitive, so it would need 終わらせたい or 終えたい.",
+       "keep": false,
+       "why": "Opus: bad — これを終わりたい is ungrammatical Japanese: 終わる is intransitive, so it would need 終わらせたい or 終えたい."
+      },
+      {
+       "role": "build",
+       "known": "一時間待つ。",
+       "target": "esperar uma hora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short, natural BUILD that extends easily into a sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "一時間が必要です。",
+       "target": "preciso de uma hora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "一時間が必要です maps cleanly to 'preciso de uma hora'. It is natural and uses taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "一時間持っています。",
+       "target": "tenho uma hora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "一時間持っています is unnatural Japanese. Time is expressed with あります, not 持っています.",
+       "keep": false,
+       "why": "Opus: bad — 一時間持っています is unnatural Japanese. Time is expressed with あります, not 持っています."
+      },
+      {
+       "role": "build",
+       "known": "一時間話す。",
+       "target": "falar uma hora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'falar uma hora' is acceptable colloquial Portuguese and matches 一時間話す.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "一時間練習する。",
+       "target": "praticar uma hora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "'praticar uma hora' is natural and matches 一時間練習する.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "一時間待ちたくありません。",
+       "target": "não quero esperar uma hora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, short, and an exact match. It extends easily into a full sentence.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "これを終わらせるために一時間が必要です。",
+       "target": "Preciso de uma hora para terminar isto.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence on both sides with an exact meaning match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "これを一時間以内に終わらせるつもりです。",
+       "target": "Vou terminar isto em menos de uma hora.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "つもりです maps to vou as taught. The sentence is natural and complete.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私は一時間待ちたくありません。",
+       "target": "Não quero esperar uma hora.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It is effectively identical to BUILD P14 and no longer than it, so it fails the USE requirement of being longer than a BUILD.",
+       "keep": false,
+       "why": "Opus: bad — It is effectively identical to BUILD P14 and no longer than it, so it fails the USE requirement of being longer than a BUILD."
+      },
+      {
+       "role": "use",
+       "known": "私は一時間待たなければなりません。",
+       "target": "Tenho de esperar uma hora.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. 待たなければなりません maps to 'tenho de esperar' as taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "一時間が必要だと思います。",
+       "target": "Acho que preciso de uma hora.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "これを一時間以内に終わらせようとしています。",
+       "target": "Estou a tentar terminar isto em menos de uma hora.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. しようとしています maps to 'estou a tentar' as taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "今日一時間ポルトガル語を練習したいです。",
+       "target": "Quero praticar português uma hora hoje.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Quero praticar português uma hora hoje' has clunky Portuguese word order. It is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Quero praticar português uma hora hoje' has clunky Portuguese word order. It is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "一時間待つつもりだと思います。",
+       "target": "Acho que vou esperar uma hora.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P22",
+       "round": 1,
+       "opus": false,
+       "opusReason": "待つつもりだと思います ('I think I intend to wait') is unnatural Japanese.",
+       "keep": false,
+       "why": "Opus: bad — 待つつもりだと思います ('I think I intend to wait') is unnatural Japanese."
+      },
+      {
+       "role": "use",
+       "known": "一時間が必要かどうかわかりません。",
+       "target": "Não tenho a certeza se preciso de uma hora.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P23",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural on both sides. The taught mapping わかりません to 'não tenho a certeza' holds, and the meaning is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
       }
      ],
      "keptBuild": 4,

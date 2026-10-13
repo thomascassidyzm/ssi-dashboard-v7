@@ -1,0 +1,1916 @@
+{
+ "course": "rus_for_eng",
+ "note": "#688 zero-clash repair: chunk-ups waiting on a target voice cast for rus. Run with Popty tools/course-optimization/rechunk-short-legos (check, author, apply, fill-audio) once the cast exists.",
+ "seeds": [
+  {
+   "seed": 109,
+   "kind": "grow",
+   "why": "'must' 1pl against 1sg должен and gen.pl 'new': chunk up to the seed's 'we must' and 'new words'",
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "we must",
+     "target": "Мы должны",
+     "components": [
+      {
+       "known": "we",
+       "target": "Мы"
+      },
+      {
+       "known": "must",
+       "target": "должны"
+      }
+     ]
+    },
+    "2": {
+     "type": "M",
+     "known": "new words",
+     "target": "новых слов",
+     "components": [
+      {
+       "known": "new",
+       "target": "новых"
+      },
+      {
+       "known": "words",
+       "target": "слов"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 208,
+   "kind": "grow",
+   "why": "imperfective спрашивать against perfective спросить 'to ask': chunk up to the seed's 'to ask you'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "to ask you",
+     "target": "спрашивать тебя",
+     "components": [
+      {
+       "known": "to ask",
+       "target": "спрашивать"
+      },
+      {
+       "known": "you",
+       "target": "тебя"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 77,
+   "kind": "grow",
+   "why": "imperfective понимать against perfective понять 'to understand': chunk up to the seed's 'I'm starting to understand'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "I'm starting to understand",
+     "target": "я начинаю понимать",
+     "components": [
+      {
+       "known": "I'm starting",
+       "target": "я начинаю"
+      },
+      {
+       "known": "to understand",
+       "target": "понимать"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 125,
+   "kind": "merge",
+   "why": "feminine была 'was', твоя 'your' and хорошей 'good' against other forms: re-chunk to the seed's 'your idea' + 'was very good'",
+   "delete": [
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "your idea",
+     "target": "твоя идея",
+     "components": [
+      {
+       "known": "your",
+       "target": "твоя"
+      },
+      {
+       "known": "idea",
+       "target": "идея"
+      }
+     ]
+    },
+    "4": {
+     "type": "M",
+     "known": "was very good",
+     "target": "была очень хорошей",
+     "components": [
+      {
+       "known": "was",
+       "target": "была"
+      },
+      {
+       "known": "very",
+       "target": "очень"
+      },
+      {
+       "known": "good",
+       "target": "хорошей"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 230,
+   "kind": "grow",
+   "why": "masculine relative который against кто 'who': chunk up to the seed's 'who wants'",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "who wants",
+     "target": "который хочет",
+     "components": [
+      {
+       "known": "who",
+       "target": "который"
+      },
+      {
+       "known": "wants",
+       "target": "хочет"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 232,
+   "kind": "merge",
+   "why": "feminine relative которая 'who' and accusative старую/женщину: chunk up to 'who can' and 'an old woman'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "who can",
+     "target": "которая может",
+     "components": [
+      {
+       "known": "who",
+       "target": "которая"
+      },
+      {
+       "known": "can",
+       "target": "может"
+      }
+     ]
+    },
+    "2": {
+     "type": "M",
+     "known": "an old woman",
+     "target": "старую женщину",
+     "components": [
+      {
+       "known": "old",
+       "target": "старую"
+      },
+      {
+       "known": "woman",
+       "target": "женщину"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 22,
+   "kind": "grow",
+   "why": "plural relative которые against кто 'who': chunk up to the seed's 'who speak'",
+   "set": {
+    "5": {
+     "type": "M",
+     "known": "who speak",
+     "target": "которые говорят",
+     "components": [
+      {
+       "known": "who",
+       "target": "которые"
+      },
+      {
+       "known": "speak",
+       "target": "говорят"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 286,
+   "kind": "grow",
+   "why": "plural relative которые 'who' against кто; the seed itself says которым, so re-chunk to the seed's 'who like'",
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "who like",
+     "target": "которым нравится",
+     "components": [
+      {
+       "known": "who",
+       "target": "которым"
+      },
+      {
+       "known": "like",
+       "target": "нравится"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 116,
+   "kind": "grow",
+   "why": "masculine relative который against какой 'which': chunk up to the seed's 'which I could make'",
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "which I could make",
+     "target": "который я мог бы сделать",
+     "components": [
+      {
+       "known": "which",
+       "target": "который"
+      },
+      {
+       "known": "I could",
+       "target": "я мог бы"
+      },
+      {
+       "known": "make",
+       "target": "сделать"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 205,
+   "kind": "merge",
+   "why": "neuter relative которое against какой 'which': chunk up to the seed's 'the word which'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "the word which",
+     "target": "слово, которое",
+     "components": [
+      {
+       "known": "word",
+       "target": "слово"
+      },
+      {
+       "known": "which",
+       "target": "которое"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 233,
+   "kind": "grow",
+   "why": "accusative молодую against молодой 'young': chunk up to the seed's 'a young woman'",
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "a young woman",
+     "target": "молодую женщину",
+     "components": [
+      {
+       "known": "young",
+       "target": "молодую"
+      },
+      {
+       "known": "woman",
+       "target": "женщину"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 266,
+   "kind": "merge",
+   "why": "instrumental старым/другом against старый 'old' and друг 'friend': merge to the seed's 'an old friend'",
+   "delete": [
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "an old friend",
+     "target": "старым другом",
+     "components": [
+      {
+       "known": "old",
+       "target": "старым"
+      },
+      {
+       "known": "friend",
+       "target": "другом"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 88,
+   "kind": "grow",
+   "why": "instrumental людьми against люди 'people': chunk up to the seed's 'to people' = с людьми",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "to people",
+     "target": "с людьми",
+     "components": [
+      {
+       "known": "to",
+       "target": "с"
+      },
+      {
+       "known": "people",
+       "target": "людьми"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 211,
+   "kind": "grow",
+   "why": "imperfective объяснять against perfective объяснить 'to explain': chunk up to the seed's 'want to explain'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "want to explain",
+     "target": "хотят объяснять",
+     "components": [
+      {
+       "known": "want",
+       "target": "хотят"
+      },
+      {
+       "known": "to explain",
+       "target": "объяснять"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 161,
+   "kind": "merge",
+   "why": "accusative ту/книгу against та/книга and дать: merge to the seed's 'to give me that book'",
+   "delete": [
+    1,
+    2
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "to give me that book",
+     "target": "дать мне ту книгу",
+     "components": [
+      {
+       "known": "to give",
+       "target": "дать"
+      },
+      {
+       "known": "me",
+       "target": "мне"
+      },
+      {
+       "known": "that",
+       "target": "ту"
+      },
+      {
+       "known": "book",
+       "target": "книгу"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 247,
+   "kind": "merge",
+   "why": "feminine та 'that' against тот/то: merge to the seed's 'that book was'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "that book was",
+     "target": "та книга была",
+     "components": [
+      {
+       "known": "that",
+       "target": "та"
+      },
+      {
+       "known": "book",
+       "target": "книга"
+      },
+      {
+       "known": "was",
+       "target": "была"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 229,
+   "kind": "merge",
+   "why": "feminine могла, та, помогла against мог, тот, помог: chunk up to the seed's 'if she could', 'that woman', 'would help'",
+   "delete": [
+    2
+   ],
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "if she could",
+     "target": "если бы могла",
+     "components": [
+      {
+       "known": "if",
+       "target": "если"
+      },
+      {
+       "known": "could",
+       "target": "бы могла"
+      }
+     ]
+    },
+    "3": {
+     "type": "M",
+     "known": "that woman",
+     "target": "та женщина",
+     "components": [
+      {
+       "known": "that",
+       "target": "та"
+      },
+      {
+       "known": "woman",
+       "target": "женщина"
+      }
+     ]
+    },
+    "4": {
+     "type": "M",
+     "known": "would help",
+     "target": "помогла бы",
+     "components": [
+      {
+       "known": "helped",
+       "target": "помогла"
+      },
+      {
+       "known": "would",
+       "target": "бы"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 227,
+   "kind": "grow",
+   "why": "masculine тот against та/то 'that': chunk up to the seed's 'that man'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "that man",
+     "target": "тот мужчина",
+     "components": [
+      {
+       "known": "that",
+       "target": "тот"
+      },
+      {
+       "known": "man",
+       "target": "мужчина"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 134,
+   "kind": "merge",
+   "why": "instrumental чем-то/трудным against что-то/трудно: merge to the seed's 'something difficult'",
+   "delete": [
+    4
+   ],
+   "set": {
+    "5": {
+     "type": "M",
+     "known": "something difficult",
+     "target": "чем-то трудным",
+     "components": [
+      {
+       "known": "something",
+       "target": "чем-то"
+      },
+      {
+       "known": "difficult",
+       "target": "трудным"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 126,
+   "kind": "merge",
+   "why": "эта, моего, мозга against этот, мой, мозг: merge to the seed's 'this work' and 'of my brain'",
+   "delete": [
+    1,
+    3
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "this work",
+     "target": "эта работа",
+     "components": [
+      {
+       "known": "this",
+       "target": "эта"
+      },
+      {
+       "known": "work",
+       "target": "работа"
+      }
+     ]
+    },
+    "5": {
+     "type": "M",
+     "known": "of my brain",
+     "target": "моего мозга",
+     "components": [
+      {
+       "known": "my",
+       "target": "моего"
+      },
+      {
+       "known": "brain",
+       "target": "мозга"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 182,
+   "kind": "merge",
+   "why": "plural мои against мой 'my': merge to the seed's 'my keys'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "my keys",
+     "target": "мои ключи",
+     "components": [
+      {
+       "known": "my",
+       "target": "мои"
+      },
+      {
+       "known": "keys",
+       "target": "ключи"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 136,
+   "kind": "merge",
+   "why": "feminine моя and можешь against мой and the seed's ты можешь: chunk up to 'she's my friend' and 'you can'",
+   "delete": [
+    2
+   ],
+   "set": {
+    "6": {
+     "type": "M",
+     "known": "she's my friend",
+     "target": "она моя подруга",
+     "components": [
+      {
+       "known": "she",
+       "target": "она"
+      },
+      {
+       "known": "my",
+       "target": "моя"
+      },
+      {
+       "known": "friend",
+       "target": "подруга"
+      }
+     ]
+    },
+    "3": {
+     "type": "M",
+     "known": "you can",
+     "target": "ты можешь",
+     "components": [
+      {
+       "known": "you",
+       "target": "ты"
+      },
+      {
+       "known": "can",
+       "target": "можешь"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 166,
+   "kind": "merge",
+   "why": "neuter моё/необычное against мой/необычно: chunk up to the seed's 'my name' and 'very unusual'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "my name",
+     "target": "моё имя",
+     "components": [
+      {
+       "known": "my",
+       "target": "моё"
+      },
+      {
+       "known": "name",
+       "target": "имя"
+      }
+     ]
+    },
+    "3": {
+     "type": "M",
+     "known": "very unusual",
+     "target": "очень необычное",
+     "components": [
+      {
+       "known": "very",
+       "target": "очень"
+      },
+      {
+       "known": "unusual",
+       "target": "необычное"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 281,
+   "kind": "merge",
+   "why": "свой against мой 'my': merge to the seed's 'my coffee'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "my coffee",
+     "target": "свой кофе",
+     "components": [
+      {
+       "known": "my",
+       "target": "свой"
+      },
+      {
+       "known": "coffee",
+       "target": "кофе"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 84,
+   "kind": "grow",
+   "why": "prepositional моём against мой 'my': chunk up to the seed's 'about my friend'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "about my friend",
+     "target": "о моём друге",
+     "components": [
+      {
+       "known": "about",
+       "target": "о"
+      },
+      {
+       "known": "my",
+       "target": "моём"
+      },
+      {
+       "known": "friend",
+       "target": "друге"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 180,
+   "kind": "grow",
+   "why": "accusative свою against мой 'my': chunk up to the seed's 'my book'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "my book",
+     "target": "свою книгу",
+     "components": [
+      {
+       "known": "my",
+       "target": "свою"
+      },
+      {
+       "known": "book",
+       "target": "книгу"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 181,
+   "kind": "merge",
+   "why": "accusative мою/маму against мой/мама: merge to the seed's 'to take my mother'",
+   "delete": [
+    2,
+    3
+   ],
+   "set": {
+    "5": {
+     "type": "M",
+     "known": "to take my mother",
+     "target": "отвезти мою маму",
+     "components": [
+      {
+       "known": "to take",
+       "target": "отвезти"
+      },
+      {
+       "known": "my",
+       "target": "мою"
+      },
+      {
+       "known": "mother",
+       "target": "маму"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 248,
+   "kind": "grow",
+   "why": "plural свои against мой 'my': chunk up to the seed's 'my money'",
+   "set": {
+    "5": {
+     "type": "M",
+     "known": "my money",
+     "target": "свои деньги",
+     "components": [
+      {
+       "known": "my",
+       "target": "свои"
+      },
+      {
+       "known": "money",
+       "target": "деньги"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 284,
+   "kind": "merge",
+   "why": "знаешь, подругу, моей against the seed's ты знаешь, подруга, мой: chunk up to 'you know' and 'my sister's friend'",
+   "delete": [
+    3
+   ],
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "you know",
+     "target": "ты знаешь",
+     "components": [
+      {
+       "known": "you",
+       "target": "ты"
+      },
+      {
+       "known": "know",
+       "target": "знаешь"
+      }
+     ]
+    },
+    "4": {
+     "type": "M",
+     "known": "my sister's friend",
+     "target": "подругу моей сестры",
+     "components": [
+      {
+       "known": "friend",
+       "target": "подругу"
+      },
+      {
+       "known": "my",
+       "target": "моей"
+      },
+      {
+       "known": "sister's",
+       "target": "сестры"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 196,
+   "kind": "merge",
+   "why": "accusative идею against идея 'idea': merge to the seed's 'the latest idea'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "the latest idea",
+     "target": "последнюю идею",
+     "components": [
+      {
+       "known": "latest",
+       "target": "последнюю"
+      },
+      {
+       "known": "idea",
+       "target": "идею"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 261,
+   "kind": "grow",
+   "why": "neuter важное against важно 'important': chunk up to the seed's 'something important'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "something important",
+     "target": "что-то важное",
+     "components": [
+      {
+       "known": "something",
+       "target": "что-то"
+      },
+      {
+       "known": "important",
+       "target": "важное"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 277,
+   "kind": "grow",
+   "why": "feminine важная against важно 'important': chunk up to the seed's 'an important meeting'",
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "an important meeting",
+     "target": "важная встреча",
+     "components": [
+      {
+       "known": "important",
+       "target": "важная"
+      },
+      {
+       "known": "meeting",
+       "target": "встреча"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 246,
+   "kind": "grow",
+   "why": "feminine занята against занят 'busy': chunk up to the seed's 'was too busy'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "was too busy",
+     "target": "была слишком занята",
+     "components": [
+      {
+       "known": "was",
+       "target": "была"
+      },
+      {
+       "known": "too",
+       "target": "слишком"
+      },
+      {
+       "known": "busy",
+       "target": "занята"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 241,
+   "kind": "grow",
+   "why": "imperfective давать against perfective дать 'to give': chunk up to the seed's 'to give it'",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "to give it",
+     "target": "давать это",
+     "components": [
+      {
+       "known": "to give",
+       "target": "давать"
+      },
+      {
+       "known": "it",
+       "target": "это"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 188,
+   "kind": "grow",
+   "why": "reflexive меняться against изменить 'to change': chunk up to the seed's 'don't need to change'",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "don't need to change",
+     "target": "не нужно меняться",
+     "components": [
+      {
+       "known": "don't",
+       "target": "не"
+      },
+      {
+       "known": "need",
+       "target": "нужно"
+      },
+      {
+       "known": "to change",
+       "target": "меняться"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 73,
+   "kind": "grow",
+   "why": "dative многому against много 'much': chunk up to the seed's 'much to learn'",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "much to learn",
+     "target": "многому нужно учиться",
+     "components": [
+      {
+       "known": "much",
+       "target": "многому"
+      },
+      {
+       "known": "need",
+       "target": "нужно"
+      },
+      {
+       "known": "to learn",
+       "target": "учиться"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 298,
+   "kind": "grow",
+   "why": "нечего against ничего 'nothing': chunk up to the seed's 'nothing to say'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "nothing to say",
+     "target": "нечего сказать",
+     "components": [
+      {
+       "known": "nothing",
+       "target": "нечего"
+      },
+      {
+       "known": "to say",
+       "target": "сказать"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 67,
+   "kind": "grow",
+   "why": "остановиться against переставать 'to stop': chunk up to the seed's 'you want to stop'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "you want to stop",
+     "target": "ты хочешь остановиться",
+     "components": [
+      {
+       "known": "you",
+       "target": "ты"
+      },
+      {
+       "known": "want",
+       "target": "хочешь"
+      },
+      {
+       "known": "to stop",
+       "target": "остановиться"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 65,
+   "kind": "grow",
+   "why": "perfective потратить against тратить 'to spend': chunk up to the seed's 'to take time'",
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "to take time",
+     "target": "потратить время",
+     "components": [
+      {
+       "known": "to take",
+       "target": "потратить"
+      },
+      {
+       "known": "time",
+       "target": "время"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 132,
+   "kind": "grow",
+   "why": "менее against меньше 'less': chunk up to the seed's 'less exciting'",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "less exciting",
+     "target": "менее интересно",
+     "components": [
+      {
+       "known": "less",
+       "target": "менее"
+      },
+      {
+       "known": "exciting",
+       "target": "интересно"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 251,
+   "kind": "grow",
+   "why": "imperfective узнавать against perfective узнать 'to find out': chunk up to the seed's 'don't want to find out'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "don't want to find out",
+     "target": "не хочу узнавать",
+     "components": [
+      {
+       "known": "don't",
+       "target": "не"
+      },
+      {
+       "known": "want",
+       "target": "хочу"
+      },
+      {
+       "known": "to find out",
+       "target": "узнавать"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 101,
+   "kind": "grow",
+   "why": "imperfective узнавать against perfective узнать 'to find out': chunk up to the seed's 'enjoying finding out'",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "enjoying finding out",
+     "target": "нравится узнавать",
+     "components": [
+      {
+       "known": "enjoying",
+       "target": "нравится"
+      },
+      {
+       "known": "finding out",
+       "target": "узнавать"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 119,
+   "kind": "grow",
+   "why": "спрошу 'I will ask' against its BUILD я спрошу: chunk up to the seed's 'I will ask'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "I will ask",
+     "target": "я спрошу",
+     "components": [
+      {
+       "known": "I",
+       "target": "я"
+      },
+      {
+       "known": "will ask",
+       "target": "спрошу"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 295,
+   "kind": "grow",
+   "why": "говорил against сказал 'I said': chunk up to the seed's 'I didn't say'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "I didn't say",
+     "target": "я не говорил",
+     "components": [
+      {
+       "known": "I",
+       "target": "я"
+      },
+      {
+       "known": "didn't",
+       "target": "не"
+      },
+      {
+       "known": "say",
+       "target": "говорил"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 255,
+   "kind": "grow",
+   "why": "думаешь against the course's ты думаешь 'you think': chunk up to the seed's 'you think'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "you think",
+     "target": "ты думаешь",
+     "components": [
+      {
+       "known": "you",
+       "target": "ты"
+      },
+      {
+       "known": "think",
+       "target": "думаешь"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 262,
+   "kind": "grow",
+   "why": "которым glossed 'with whom' without с: chunk up to the seed's 'with whom' = с которым",
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "with whom",
+     "target": "с которым",
+     "components": [
+      {
+       "known": "with",
+       "target": "с"
+      },
+      {
+       "known": "whom",
+       "target": "которым"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 87,
+   "kind": "grow",
+   "why": "genitive plural которых against кого 'whom': chunk up to the seed's 'whom I don't know'",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "whom I don't know",
+     "target": "которых я не знаю",
+     "components": [
+      {
+       "known": "whom",
+       "target": "которых"
+      },
+      {
+       "known": "I",
+       "target": "я"
+      },
+      {
+       "known": "don't know",
+       "target": "не знаю"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 288,
+   "kind": "merge",
+   "why": "которых against кого 'whom': merge to the seed's 'most people whom'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "most people whom",
+     "target": "большинству людей, которых",
+     "components": [
+      {
+       "known": "most",
+       "target": "большинству"
+      },
+      {
+       "known": "people",
+       "target": "людей"
+      },
+      {
+       "known": "whom",
+       "target": "которых"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 186,
+   "kind": "merge",
+   "why": "следующей against следующем 'next': merge to the course's 'next week' = на следующей неделе",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "next week",
+     "target": "на следующей неделе",
+     "components": [
+      {
+       "known": "on",
+       "target": "на"
+      },
+      {
+       "known": "next",
+       "target": "следующей"
+      },
+      {
+       "known": "week",
+       "target": "неделе"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 157,
+   "kind": "merge",
+   "why": "следующем месяце 'next month' against в следующем месяце: merge to the course's 'next month'",
+   "delete": [
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "next month",
+     "target": "в следующем месяце",
+     "components": [
+      {
+       "known": "in",
+       "target": "в"
+      },
+      {
+       "known": "next",
+       "target": "следующем"
+      },
+      {
+       "known": "month",
+       "target": "месяце"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 103,
+   "kind": "grow",
+   "why": "намного glossed 'much more' against its BUILD намного больше: chunk up to the seed's 'much more'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "much more",
+     "target": "намного больше",
+     "components": [
+      {
+       "known": "much",
+       "target": "намного"
+      },
+      {
+       "known": "more",
+       "target": "больше"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 270,
+   "kind": "grow",
+   "why": "опоздаю and беспокоюсь against their own я-forms: chunk up to the seed's 'I'm going to be late' and 'I'm worried'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "I'm going to be late",
+     "target": "я опоздаю",
+     "components": [
+      {
+       "known": "I",
+       "target": "я"
+      },
+      {
+       "known": "going to be late",
+       "target": "опоздаю"
+      }
+     ]
+    },
+    "2": {
+     "type": "M",
+     "known": "I'm worried",
+     "target": "я беспокоюсь",
+     "components": [
+      {
+       "known": "I",
+       "target": "я"
+      },
+      {
+       "known": "worried",
+       "target": "беспокоюсь"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 173,
+   "kind": "grow",
+   "why": "справлюсь against its USE Я справлюсь: chunk up to the seed's 'I'll manage' = я справлюсь",
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "i'll manage",
+     "target": "я справлюсь",
+     "components": [
+      {
+       "known": "I",
+       "target": "я"
+      },
+      {
+       "known": "will manage",
+       "target": "справлюсь"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 76,
+   "kind": "grow",
+   "why": "счастлив against счастливыми 'happy': chunk up to the seed's 'I'm very happy'",
+   "set": {
+    "5": {
+     "type": "M",
+     "known": "I'm very happy",
+     "target": "я очень счастлив",
+     "components": [
+      {
+       "known": "I",
+       "target": "я"
+      },
+      {
+       "known": "very",
+       "target": "очень"
+      },
+      {
+       "known": "happy",
+       "target": "счастлив"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 145,
+   "kind": "grow",
+   "why": "счастлив against счастливыми 'happy': chunk up to the seed's 'not happy'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "not happy",
+     "target": "не счастлив",
+     "components": [
+      {
+       "known": "not",
+       "target": "не"
+      },
+      {
+       "known": "happy",
+       "target": "счастлив"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 51,
+   "kind": "merge",
+   "why": "plural интересные against интересная 'interesting': merge to the seed's 'interesting things'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "interesting things",
+     "target": "интересные вещи",
+     "components": [
+      {
+       "known": "interesting",
+       "target": "интересные"
+      },
+      {
+       "known": "things",
+       "target": "вещи"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 112,
+   "kind": "grow",
+   "why": "genitive этого against этот 'this': chunk up to the seed's 'I wasn't expecting it'",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "I wasn't expecting it",
+     "target": "я этого не ожидал",
+     "components": [
+      {
+       "known": "I",
+       "target": "я"
+      },
+      {
+       "known": "it",
+       "target": "этого"
+      },
+      {
+       "known": "wasn't expecting",
+       "target": "не ожидал"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 115,
+   "kind": "grow",
+   "why": "dative разговору against разговоре 'conversation': chunk up to the seed's 'ready to have a conversation'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "ready to have a conversation",
+     "target": "готов к разговору",
+     "components": [
+      {
+       "known": "ready",
+       "target": "готов"
+      },
+      {
+       "known": "to",
+       "target": "к"
+      },
+      {
+       "known": "conversation",
+       "target": "разговору"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 131,
+   "kind": "grow",
+   "why": "у меня glossed 'I have' against у меня есть: re-chunk to the seed's own 'in my head' = у меня в голове",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "in my head",
+     "target": "у меня в голове",
+     "components": [
+      {
+       "known": "at me",
+       "target": "у меня"
+      },
+      {
+       "known": "in",
+       "target": "в"
+      },
+      {
+       "known": "head",
+       "target": "голове"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 206,
+   "kind": "grow",
+   "why": "нравится against the course's мне нравится 'I like': chunk up to the seed's мне нравится",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "I like",
+     "target": "мне нравится",
+     "components": [
+      {
+       "known": "to me",
+       "target": "мне"
+      },
+      {
+       "known": "pleases",
+       "target": "нравится"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 133,
+   "kind": "merge",
+   "why": "accusative кого-то against кто-то 'someone': merge to the seed's 'you get to know someone'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "you get to know someone",
+     "target": "ты узнаёшь кого-то",
+     "components": [
+      {
+       "known": "you get to know",
+       "target": "ты узнаёшь"
+      },
+      {
+       "known": "someone",
+       "target": "кого-то"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 210,
+   "kind": "merge",
+   "why": "accusative эту/проблему against этот/проблема: merge to the seed's 'this problem'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "this problem",
+     "target": "эту проблему",
+     "components": [
+      {
+       "known": "this",
+       "target": "эту"
+      },
+      {
+       "known": "problem",
+       "target": "проблему"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 234,
+   "kind": "merge",
+   "why": "instrumental твоим against твою 'your': merge to the seed's 'with your brother'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "with your brother",
+     "target": "с твоим братом",
+     "components": [
+      {
+       "known": "with",
+       "target": "с"
+      },
+      {
+       "known": "your",
+       "target": "твоим"
+      },
+      {
+       "known": "brother",
+       "target": "братом"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 98,
+   "kind": "merge",
+   "why": "neuter другое against другие 'other': merge to the seed's 'into something else'",
+   "delete": [
+    3
+   ],
+   "set": {
+    "5": {
+     "type": "M",
+     "known": "into something else",
+     "target": "во что-то другое",
+     "components": [
+      {
+       "known": "into",
+       "target": "во"
+      },
+      {
+       "known": "something",
+       "target": "что-то"
+      },
+      {
+       "known": "else",
+       "target": "другое"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 144,
+   "kind": "grow",
+   "why": "этим 'this' (not in its seed) against этот: re-chunk to the seed's 'this morning' = сегодня утром; BUILD 'morning' = утром is a bare copy of its LEGO, now 'in the morning', and clashes with утра; under the BUILD floor, so the basket is re-authored",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "this morning",
+     "target": "сегодня утром",
+     "components": [
+      {
+       "known": "today",
+       "target": "сегодня"
+      },
+      {
+       "known": "in the morning",
+       "target": "утром"
+      }
+     ]
+    }
+   },
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 228,
+   "kind": "grow",
+   "why": "практиковаться is not in its seed, which says практиковать, the form the course already teaches as 'to practise': retarget the LEGO and re-author its basket",
+   "set": {
+    "1": {
+     "type": "A",
+     "known": "to practise",
+     "target": "практиковать"
+    }
+   }
+  },
+  {
+   "seed": 222,
+   "kind": "grow",
+   "why": "рассказать is not in its seed, which says сказать, the form the course already teaches as 'to tell': retarget the LEGO and re-author its basket",
+   "set": {
+    "1": {
+     "type": "A",
+     "known": "to tell",
+     "target": "сказать"
+    }
+   }
+  },
+  {
+   "seed": 138,
+   "kind": "grow",
+   "why": "хотела is not in its seed, which says мой друг хотел, the form the course already teaches as 'wanted': retarget the LEGO and re-author its basket",
+   "set": {
+    "4": {
+     "type": "A",
+     "known": "wanted",
+     "target": "хотел"
+    }
+   }
+  },
+  {
+   "seed": 140,
+   "kind": "grow",
+   "why": "видеть is not in its seed, which says не могу увидеть, the form the course already teaches as 'to see': retarget the LEGO and re-author its basket",
+   "set": {
+    "1": {
+     "type": "A",
+     "known": "to see",
+     "target": "увидеть"
+    }
+   }
+  },
+  {
+   "seed": 221,
+   "kind": "topup",
+   "why": "BUILD 'then' = потом is a bare copy of its LEGO 'afterwards' and clashes with тогда; cutting leaves 2 BUILD under the floor, so the basket is re-authored",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 291,
+   "kind": "topup",
+   "why": "BUILD 'i'll manage' = смогу is a bare copy of its LEGO and clashes with справлюсь; under the BUILD floor, so the basket is re-authored",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 153,
+   "kind": "topup",
+   "why": "BUILD 'I said' = сказал is a bare copy of its LEGO 'said' and clashes with я сказал; under the BUILD floor, so the basket is re-authored",
+   "topup": [
+    4
+   ]
+  },
+  {
+   "seed": 272,
+   "kind": "topup",
+   "why": "BUILD 'great' = отличная is a bare copy of its LEGO 'excellent' and clashes with здорово; under the BUILD floor, so the basket is re-authored",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 209,
+   "kind": "topup",
+   "why": "BUILDs 'to spend' = проводить and 'meeting' = встречаясь are bare copies of their LEGOs and clash with тратить and встреча; under the BUILD floor, so both baskets are re-authored",
+   "topup": [
+    3
+   ]
+  },
+  {
+   "seed": 201,
+   "kind": "topup",
+   "why": "BUILD 'was' = было is a bare copy of its LEGO, now 'it was', and clashes with был; under the BUILD floor, so the basket is re-authored",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 224,
+   "kind": "topup",
+   "why": "BUILD 'to learn' = учиться is a bare copy of its LEGO, now 'to study', and clashes with учить; under the BUILD floor, so the basket is re-authored",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 263,
+   "kind": "topup",
+   "why": "BUILD 'who' = кого is a bare copy of its LEGO 'whom' and clashes with кто; under the BUILD floor, so the basket is re-authored",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 269,
+   "kind": "topup",
+   "why": "BUILD 'dad' = папу is a bare copy of its LEGO 'father' and clashes with папа; under the BUILD floor, so the basket is re-authored",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 218,
+   "kind": "topup",
+   "why": "BUILD 'did' = делал is a bare copy of its LEGO, now 'was doing', and clashes with сделал; under the BUILD floor, so the basket is re-authored",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 167,
+   "kind": "topup",
+   "why": "BUILD 'what you need' = тебе нужно is a bare copy of its LEGO, now 'you need', and clashes with что тебе нужно; under the BUILD floor, so the basket is re-authored",
+   "topup": [
+    3
+   ]
+  },
+  {
+   "seed": 289,
+   "kind": "topup",
+   "why": "BUILD 'if' = ли is a bare copy of its LEGO 'whether' and clashes with если; under the BUILD floor, so the basket is re-authored",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 216,
+   "kind": "topup",
+   "why": "BUILD 'friends' = друзей is a bare copy of its LEGO, now 'of friends', and clashes with друзья; under the BUILD floor, so the basket is re-authored",
+   "topup": [
+    1
+   ]
+  }
+ ]
+}
