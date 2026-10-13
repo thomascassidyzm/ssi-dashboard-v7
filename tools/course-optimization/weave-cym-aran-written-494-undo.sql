@@ -1,0 +1,34 @@
+-- TEMPLATE: weave-cym-aran-written-494.cjs sql fills the ROWS marker and writes weave-cym-aran-written-494-undo.sql.
+-- Undo of weave-cym-aran-written-494.sql (job #494): deletes exactly the rows it added (they were the only rows under
+-- those 17 LEGOs) and drops backup_cym_aran_written_494, in one transaction. Refuses if any added row was edited since.
+-- NB the deferred debut_keeps_practice trigger refuses a NEW LEGO left with no practice, so this undo can only COMMIT
+-- if those LEGOs are no longer new or have other practice by then; otherwise it fails loudly and changes nothing.
+-- Dry run unless -v finish=COMMIT.
+\set ON_ERROR_STOP on
+\if :{?finish}
+\else
+  \set finish ROLLBACK
+\endif
+BEGIN;
+DO $$ BEGIN
+  IF to_regclass('backup_cym_aran_written_494') IS NULL THEN RAISE EXCEPTION 'not applied (no backup_cym_aran_written_494)'; END IF;
+END $$;
+CREATE TEMP TABLE undo_ev AS SELECT id FROM content_edit_events WHERE detail->>'backup'='backup_cym_aran_written_494';
+CREATE TEMP TABLE added (id text PRIMARY KEY);
+INSERT INTO added VALUES ('cym_nv2_for_eng:S1087L02C01'), ('cym_nv2_for_eng:S1087L02C02'), ('cym_nv2_for_eng:S1087L02B01'), ('cym_nv2_for_eng:S1087L02B02'), ('cym_nv2_for_eng:S1087L02B03'), ('cym_nv2_for_eng:S1478L02C01'), ('cym_nv2_for_eng:S1478L02C02'), ('cym_nv2_for_eng:S1478L02B01'), ('cym_nv2_for_eng:S1478L02B02'), ('cym_nv2_for_eng:S1497L02C01'), ('cym_nv2_for_eng:S1497L02C02'), ('cym_nv2_for_eng:S1497L02B01'), ('cym_nv2_for_eng:S1497L02B02'), ('cym_nv2_for_eng:S1497L02B03'), ('cym_nv2_for_eng:S1497L02U01'), ('cym_nv2_for_eng:S1497L02U02'), ('cym_nv2_for_eng:S1502L01C01'), ('cym_nv2_for_eng:S1502L01C02'), ('cym_nv2_for_eng:S1502L01B01'), ('cym_nv2_for_eng:S1502L01B02'), ('cym_nv2_for_eng:S1502L01B03'), ('cym_nv2_for_eng:S1502L01U01'), ('cym_nv2_for_eng:S1502L01U02'), ('cym_nv2_for_eng:S1502L01U03'), ('cym_sv2_for_eng:S1054L02B01'), ('cym_sv2_for_eng:S1054L02B02'), ('cym_sv2_for_eng:S1054L02B03'), ('cym_sv2_for_eng:S1054L02U01'), ('cym_sv2_for_eng:S1054L02U02'), ('cym_sv2_for_eng:S1054L02U03'), ('cym_sv2_for_eng:S1054L02U04'), ('cym_sv2_for_eng:S1208L04B01'), ('cym_sv2_for_eng:S1208L04B02'), ('cym_sv2_for_eng:S1208L04B03'), ('cym_sv2_for_eng:S1276L02B01'), ('cym_sv2_for_eng:S1276L02B02'), ('cym_sv2_for_eng:S1276L02B03'), ('cym_sv2_for_eng:S1276L02U01'), ('cym_sv2_for_eng:S1286L02B01'), ('cym_sv2_for_eng:S1286L02B02'), ('cym_sv2_for_eng:S1286L02B03'), ('cym_sv2_for_eng:S1286L02U01'), ('cym_sv2_for_eng:S1428L01B01'), ('cym_sv2_for_eng:S1428L01B02'), ('cym_sv2_for_eng:S1428L01B03'), ('cym_sv2_for_eng:S1428L01U01'), ('cym_sv2_for_eng:S1428L01U02'), ('cym_sv2_for_eng:S1428L01U03'), ('cym_sv2_for_eng:S1428L01U04'), ('cym_sv2_for_eng:S1447L01B01'), ('cym_sv2_for_eng:S1447L01B02'), ('cym_sv2_for_eng:S1502L01B01'), ('cym_sv2_for_eng:S1502L01B02'), ('cym_sv2_for_eng:S1502L01B03'), ('cym_sv2_for_eng:S1502L01U01'), ('cym_sv2_for_eng:S1512L04B01'), ('cym_sv2_for_eng:S1512L04B02'), ('cym_sv2_for_eng:S1512L04B03'), ('cym_sv2_for_eng:S1512L04U01');
+DO $$ BEGIN
+  IF (SELECT count(*) FROM added) <> (SELECT count(*) FROM backup_cym_aran_written_494)
+     OR EXISTS (SELECT id FROM added EXCEPT SELECT id FROM backup_cym_aran_written_494) THEN RAISE EXCEPTION 'row list differs from the backup'; END IF;
+  IF (SELECT count(*) FROM course_practice_phrases p JOIN added a USING (id) WHERE p.last_edit_event_id IN (SELECT id FROM undo_ev)) <> (SELECT count(*) FROM added) THEN
+    RAISE EXCEPTION 'an added phrase is missing or was edited since: undo by hand'; END IF;
+END $$;
+DELETE FROM course_practice_phrases WHERE course_code IN ('cym_nv2_for_eng','cym_sv2_for_eng') AND id IN (SELECT id FROM added);
+SELECT count(*) AS deleted FROM added;
+DROP TABLE backup_cym_aran_written_494;
+SET CONSTRAINTS ALL IMMEDIATE;
+SELECT 'finishing with' k, :'finish' v;
+:finish;
+SELECT :'finish' = 'COMMIT' AS do_refresh \gset
+\if :do_refresh
+REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index;
+\endif
