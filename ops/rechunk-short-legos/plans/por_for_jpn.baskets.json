@@ -1046,6 +1046,258 @@
      "setGates": {}
     }
    }
+  },
+  "239": {
+   "seed": 239,
+   "kind": "replace",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "私の",
+     "target": "minha"
+    },
+    {
+     "idx": 2,
+     "known": "母",
+     "target": "mãe"
+    },
+    {
+     "idx": 3,
+     "known": "彼は〜が好きです",
+     "target": "gosta de"
+    },
+    {
+     "idx": 4,
+     "known": "読む",
+     "target": "ler"
+    }
+   ],
+   "legos": {
+    "5": {
+     "lego": {
+      "is_new": true,
+      "idx": 5,
+      "type": "M",
+      "known": "私の母",
+      "target": "a minha mãe",
+      "components": [
+       {
+        "known": "私の",
+        "target": "a minha"
+       },
+       {
+        "known": "母",
+        "target": "mãe"
+       }
+      ],
+      "change": "add"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "私の母は話したい。",
+       "target": "A minha mãe quer falar.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Portuguese is correct. The known side follows the taught 彼女は～したい pattern, which is stilted but tileable. Valid fragment that extends naturally.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の母は戻りたい。",
+       "target": "A minha mãe quer voltar.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Portuguese is correct. The known side tiles the taught glosses 戻る and ～したい. Short BUILD with the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の母は読むのが好きです。",
+       "target": "A minha mãe gosta de ler.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Portuguese is correct. 読むのが好きです tiles the taught ～するのが好きです and maps to gosta de ler.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の母は勉強したい。",
+       "target": "A minha mãe quer aprender.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "勉強する is the taught gloss for aprender. Portuguese is correct and short.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "私の母はすべて知りたい。",
+       "target": "A minha mãe quer saber tudo.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "すべて maps to tudo and 知る maps to saber. Portuguese is grammatical and natural.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "私の母はやめたくない。",
+       "target": "A minha mãe não quer parar.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "やめたくない maps to não quer parar, and the negation is correct. Natural BUILD.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "今、私の母と話したい。",
+       "target": "Quero falar com a minha mãe agora.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete Portuguese sentence. The known side is stilted with 私の母 but tileable, and the meaning matches.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "明日私の母を手伝うつもりです。",
+       "target": "Vou ajudar a minha mãe amanhã.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "つもりです maps to vou, 手伝う to ajudar and 明日 to amanhã. The sentence is natural and complete.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私は私の母を手伝おうとしています。",
+       "target": "Estou a tentar ajudar a minha mãe.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "～しようとしています maps to estou a tentar. Portuguese is natural. 私は私の is stilted but tileable.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私の母は後で戻りたい。",
+       "target": "A minha mãe quer voltar mais tarde.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "後で was taught as the gloss for depois, not mais tarde, so this breaks the one-prompt-one-target (ZUT) rule. もっと遅く would be the tileable prompt.",
+       "keep": false,
+       "why": "Opus: bad — 後で was taught as the gloss for depois, not mais tarde, so this breaks the one-prompt-one-target (ZUT) rule. もっと遅く would be the tileable prompt."
+      },
+      {
+       "role": "use",
+       "known": "私の母は読むのをやめたくない。",
+       "target": "A minha mãe não quer parar de ler.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Uses parar de ler with correct negation. Natural complete sentence that matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私の母はポルトガル語で話したい。",
+       "target": "A minha mãe quer falar em português.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "ポルトガル語で maps to em português. Correct and natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私の母はもうすぐポルトガル語を勉強したい。",
+       "target": "A minha mãe quer aprender português em breve.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "もうすぐ combined with したい is awkward in Japanese. The placement of em breve is also clunky, so this is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — もうすぐ combined with したい is awkward in Japanese. The placement of em breve is also clunky, so this is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "私の母は一日中話したい。",
+       "target": "A minha mãe quer falar todo o dia.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "一日中 maps to todo o dia. Grammatical, and the meaning matches.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "私の母は他の人と話すのが好きです。",
+       "target": "A minha mãe gosta de falar com outra pessoa.",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "falar com outra pessoa (singular, 'another person') is unnatural for a general liking; it should be outras pessoas. The Portuguese is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — falar com outra pessoa (singular, 'another person') is unnatural for a general liking; it should be outras pessoas. The Portuguese is not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
   }
  }
 }
