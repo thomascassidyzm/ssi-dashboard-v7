@@ -7,17 +7,14 @@
  *   English on both known sides), and the queue code reads that cast (services/voice-engine/phrase-queue.cjs).
  *   The dry run reports what each reader is served.
  *
- *   THE NORTH ENGLISH PROMPTS HELD BY SYNTHETIC SPEECH (task B) need ONE policy write: the eng castOn entry for
- *   live cym_n_for_eng's known side gains `synthetic: 'queue'` — the line enters /r/human_aran_eng, and a take
- *   NEVER moves the live slot (recordist-queue.cjs SYNTHETIC_MODES). Replacing the synthetic clip on record is
- *   Tom's switch and stays OFF:
+ *   THE NORTH ENGLISH PROMPTS THAT HELD SYNTHETIC SPEECH (task B) need ONE policy write: the eng castOn entry for
+ *   live cym_n_for_eng's known side gains `synthetic: 'queue'` + `syntheticSeeds` (#606's emptied seeds), so the
+ *   lines enter /r/human_aran_eng. QUEUE ONLY: what a take links is unchanged (recordist-queue.cjs SYNTHETIC_MODES);
+ *   replacing synthetic English on live North is Tom's approved job #621.
  *
- *   node tools/recording/welsh-phrase-queues-619.cjs                          # dry run: phrase batches + task B lines, no write
- *   node tools/recording/welsh-phrase-queues-619.cjs --apply                  # backup, then write synthetic:'queue'
- *   node tools/recording/welsh-phrase-queues-619.cjs --replace-synthetic on   # TOM'S YES ONLY: dry run of the switch;
- *   node tools/recording/welsh-phrase-queues-619.cjs --replace-synthetic on --apply   #   add --apply to throw it
- *   node tools/recording/welsh-phrase-queues-619.cjs --replace-synthetic off --apply  # back to queue-only
- *   node tools/recording/welsh-phrase-queues-619.cjs --undo [--apply]         # restore the eng row from the pre-apply backup
+ *   node tools/recording/welsh-phrase-queues-619.cjs                  # dry run: phrase batches + task B lines, no write
+ *   node tools/recording/welsh-phrase-queues-619.cjs --apply          # backup, then write the castOn entry
+ *   node tools/recording/welsh-phrase-queues-619.cjs --undo [--apply] # restore the eng row from the pre-apply backup
  *
  * Backups: table backup_language_recording_policy_619 (one row per write, label + voices) and
  *          ~/ssi-evidence/ssi-dashboard-v7/tools/recording/welsh-phrase-queues-619-backup.json
@@ -154,9 +151,7 @@ async function main() {
     return
   }
 
-  const flip = argv.indexOf('--replace-synthetic')
-  const mode = flip >= 0 ? ({ on: 'replace', off: 'queue' })[argv[flip + 1]] : 'queue'
-  if (!mode) throw new Error('--replace-synthetic takes on|off')
+  const mode = 'queue'
   const voices = withSyntheticMode(eng.voices, mode)
   const proposed = rows.map((r) => (r.language === 'eng' ? { ...r, voices } : r))
   if (!apply) {
@@ -164,10 +159,7 @@ async function main() {
     console.log(`\n(dry run — nothing written; would set ${LIVE_NORTH} known castOn synthetic: '${mode}')`)
     return
   }
-  if (mode === 'replace' && !argv.includes('--tom-said-yes')) {
-    throw new Error("replace mode replaces live cym_n_for_eng English prompts on record: Tom's call. Add --tom-said-yes once he has.")
-  }
-  await backup(flip >= 0 ? `pre-switch-${mode}` : 'pre-apply', eng)
+  await backup('pre-apply', eng)
   console.log('backup written (table backup_language_recording_policy_619 + ' + BACKUP_JSON + ')')
   const { error: e } = await db.from('language_recording_policy').update({ voices }).eq('language', 'eng')
   if (e) throw e

@@ -10,8 +10,8 @@
 //   - Deduped by exact text; FILL-EMPTY ONLY — a slot already holding somebody
 //     else's clip is never work and never overwritten.
 //   - Live courses' phrases are never queued or recorded here.
-//   - castOn `synthetic: 'queue'` queues a TTS-held seed slot but never moves it;
-//     'replace' (Tom's switch, off) replaces a synthetic holder and never a human one.
+//   - castOn `synthetic: 'queue'` (+ syntheticSeeds) QUEUES a TTS-held or #606-emptied
+//     seed slot for Aran. Linking is untouched: live replacement is Tom's job #621.
 'use strict'
 
 const fs = require('fs')
@@ -339,38 +339,13 @@ test('synthetic: queue → the TTS-held line is queued, the take never moves the
   assert.deepEqual(after.lines.map((l) => l.text), [], 'recorded by its text: never asked for twice')
 })
 
-test('synthetic: replace → a take replaces a SYNTHETIC holder, never a human one', async () => {
-  const t = syntheticFixture('replace')
+test('syntheticSeeds: a slot #606 EMPTIED of synthetic speech is queued for Aran, even beside another speaker\'s take', async () => {
+  const t = syntheticFixture('queue')
+  t.language_recording_policy[0].voices['m:known'].castOn[0].syntheticSeeds = ['n1']
+  t.course_seeds[0].known_audio_id = null   // emptied by #606 on Tom's GO
   const db = stubDb(t)
-  const aran = await resolveRecordist(db, ARAN_ENG)
-  const out = await linkSeedTake({ db, recordist: aran, seedId: 'n1', role: 'known', audioId: 'aran_hello', logger: QUIET })
-  assert.deepEqual(out.linked.map((l) => [l.seedId, l.from]), [['n1', 'tom006']])
-  assert.equal(t.course_seeds[0].known_audio_id, 'aran_hello')
-  const out2 = await linkSeedTake({ db, recordist: aran, seedId: 'n2', role: 'known', audioId: 'aran_thanks', logger: QUIET })
-  assert.deepEqual(out2.linked, [])
-  assert.equal(t.course_seeds[1].known_audio_id, 'human_old', 'a human take is never replaced, switch or no switch')
-})
-
-test('syntheticSeeds: a slot #606 EMPTIED of synthetic speech is queued (even beside another speaker\'s take) and not filled while the switch is off', async () => {
-  const fx = (mode) => {
-    const t = syntheticFixture(mode)
-    t.language_recording_policy[0].voices['m:known'].castOn[0].syntheticSeeds = ['n1']
-    t.course_seeds[0].known_audio_id = null   // emptied by #606 on Tom's GO
-    return t
-  }
-  const t = fx('queue')
-  const db = stubDb(t)
-  const aran = await resolveRecordist(db, ARAN_ENG)
-  const q = await buildQueue(db, aran)
+  const q = await buildQueue(db, await resolveRecordist(db, ARAN_ENG))
   assert.deepEqual(q.lines.map((l) => l.text), ['Hello'], 'queued although "other" (legacy) holds a usable take of Hello')
-  const out = await linkSeedTake({ db, recordist: aran, seedId: 'n1', role: 'known', audioId: 'aran_hello', logger: QUIET })
-  assert.deepEqual(out.linked, [], 'switch off: the emptied live slot is not filled')
-  assert.equal(t.course_seeds[0].known_audio_id, null)
-
-  const on = fx('replace')
-  const db2 = stubDb(on)
-  const out2 = await linkSeedTake({ db: db2, recordist: await resolveRecordist(db2, ARAN_ENG), seedId: 'n1', role: 'known', audioId: 'aran_hello', logger: QUIET })
-  assert.deepEqual(out2.linked.map((l) => l.seedId), ['n1'], 'switch on: the take fills it')
 
   const plain = syntheticFixture(null)
   plain.course_seeds[0].known_audio_id = null

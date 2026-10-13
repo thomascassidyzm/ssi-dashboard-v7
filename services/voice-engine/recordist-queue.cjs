@@ -996,34 +996,27 @@ function castOnEntries(raw) {
 }
 
 /**
- * A SLOT HELD ONLY BY SYNTHETIC SPEECH (Aran, 2026-10-13, job #619). Fill-only
- * leaves every filled slot alone, so a seed whose live slot holds a TTS clip
- * (live cym_n_for_eng's English prompts: Tom-006 / the old xAI Tom, the clones
- * Tom ruled out of Welsh the same day) was in nobody's queue. A castOn entry may
- * now say what to do with such a slot:
+ * QUEUE A SLOT HELD ONLY BY SYNTHETIC SPEECH (Aran, 2026-10-13, job #619).
+ * Fill-only leaves every filled slot alone, so a live slot holding a TTS clip
+ * (cym_n_for_eng's English prompts: Tom-006 / the old xAI Tom, the clones Tom
+ * ruled out of Welsh the same day) was in nobody's queue. A castOn entry may say
  *
- *   synthetic: 'queue'   — QUEUE the line for this voice, but a take NEVER moves
- *                          the slot: the TTS clip keeps playing. The take is filed
- *                          and fills any EMPTY copy of the text, and the line
- *                          counts as recorded by its text (knownByText).
- *   synthetic: 'replace' — the same, and a take also REPLACES a synthetic holder
- *                          (never a human one; the old clip is kept, only
- *                          unlinked). This is the switch, and it is OFF until Tom
- *                          says yes: replacing a live course's served clip is his
- *                          call (tools/recording/welsh-phrase-queues-619.cjs
- *                          --replace-synthetic on).
+ *   synthetic: 'queue'     — QUEUE such a slot's line for this voice, even where
+ *                            some other speaker's human take of the words exists
+ *                            (the slot is asking for THIS voice). The line counts
+ *                            as recorded by its text (take-selection knownByText).
+ *   syntheticSeeds: [ids]  — seeds whose slot HELD synthetic speech and was since
+ *                            emptied (job #606, Tom's GO 2026-10-13: no human take
+ *                            → emptied, no synthetic stand-in). Queued the same way.
+ *                            Written from #606's committed ledger
+ *                            (ops/welsh-tom-clone-revert-606/no-human-take.csv) by
+ *                            tools/recording/welsh-phrase-queues-619.cjs.
  *
- * `syntheticSeeds: [seedId…]` names slots that HELD synthetic speech and were
- * since emptied (job #606, Tom's GO 2026-10-13: a Welsh known slot with no human
- * take is emptied, never given a synthetic stand-in). They are treated exactly as
- * synthetic-held: queued for this voice — even where some other speaker's human
- * take of the words exists — and, while the switch is 'queue', a take does NOT
- * fill them either. The list is written by tools/recording/welsh-phrase-queues-619.cjs
- * from #606's committed ledger (ops/welsh-tom-clone-revert-606/no-human-take.csv).
- *
- * Absent: plain fill-only, exactly as before.
+ * QUEUEING ONLY. Nothing here changes what a take LINKS: linkSeedTake is exactly
+ * the fill-only linker it was (#588). Replacing synthetic English on live North
+ * is Tom's approved job #621, and it owns that.
  */
-const SYNTHETIC_MODES = ['queue', 'replace']
+const SYNTHETIC_MODES = ['queue']
 
 /** The language's policy voices, flattened to {voiceId, gender, dialect, aliases}. */
 function policyVoiceList(policy) {
@@ -3180,18 +3173,9 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   const { voices: policyVoices, spellings: policySpellings } =
     await policyVoicesForLanguage(db, recordist.language)
   const fillOnlyCourses = new Set()
-  // Courses whose castOn says a take REPLACES a slot held only by synthetic
-  // speech (SYNTHETIC_MODES 'replace'). 'queue' is not here: it queues the line
-  // and leaves the slot alone, which is the switch in its OFF position.
-  const replaceSyntheticCourses = new Set()
-  // Slots once held by synthetic speech and since emptied (castOn syntheticSeeds):
-  // while the switch is 'queue' a take does not fill them — Tom's call.
-  const heldEmptySeeds = new Set()
   const mineCourses = courses.filter((c) => {
     const cast = seedCastEntry(c, policyVoices)[role]
     if (cast && cast.fillOnly) fillOnlyCourses.add(c.course_code)
-    if (cast && cast.fillOnly && cast.synthetic === 'replace') replaceSyntheticCourses.add(c.course_code)
-    if (cast && cast.fillOnly && cast.synthetic === 'queue' && cast.syntheticSeeds) for (const id of cast.syntheticSeeds) heldEmptySeeds.add(id)
     return !!cast && recordist.spellings.includes(cast.voiceId)
   })
   const siblings = await fetchSeeds(db, mineCourses.map((c) => c.course_code))
@@ -3205,24 +3189,13 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
     const voices = await audioVoicesById(db, held)
     for (const [id, voice] of voices.entries()) owners.set(id, voice)
   }
-  const heldInReplace = candidates
-    .filter((row) => replaceSyntheticCourses.has(row.course_code))
-    .map((row) => row[`${role}_audio_id`]).filter(Boolean)
-  const origins = heldInReplace.length ? await audioOriginsById(db, heldInReplace) : new Map()
 
   for (const row of candidates) {
     const current = row[`${role}_audio_id`]
     if (current === audioId) continue
     // FILL-ONLY (castOnEntries): a policy-side cast fills empty slots and moves
-    // nothing — not an imported clip, not a synthesised one, not anybody's —
-    // except a SYNTHETIC holder where the cast's switch is 'replace'. A human
-    // holder is never replaced here, switch or no switch.
-    if (current && fillOnlyCourses.has(row.course_code)) {
-      const origin = origins.get(current)
-      const syntheticHolder = replaceSyntheticCourses.has(row.course_code) && !!origin && origin !== 'human'
-      if (!syntheticHolder) continue
-    }
-    if (!current && heldEmptySeeds.has(row.id)) continue
+    // nothing — not an imported clip, not a synthesised one, not anybody's.
+    if (current && fillOnlyCourses.has(row.course_code)) continue
     const holder = owners.get(current) || null
     if (current && !recordist.spellings.includes(holder)) {
       // ANOTHER RECORDIST'S CLIP IS NOT OURS TO MOVE, and that is still the
