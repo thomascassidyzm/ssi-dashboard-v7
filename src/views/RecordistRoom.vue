@@ -1126,9 +1126,10 @@ const navPods = computed(() => {
     if ((l.kind || 'pod') !== 'pod' || !l.podSlug || !l.courseCode) continue
     const key = `${l.courseCode}/${l.podSlug}`
     if (seen.has(key)) continue
-    seen.set(key, { key, label: boothPodChip(l), to: `/production/${l.courseCode}/pods/${l.podSlug}` })
+    seen.set(key, { key, row: l, to: `/production/${l.courseCode}/pods/${l.podSlug}` })
   }
-  return [...seen.values()]
+  const keys = [...seen.keys()]
+  return [...seen.values()].map(({ row, ...p }) => ({ ...p, label: boothPodChip(row, keys) }))
 })
 const navCourses = computed(() => {
   const seen = new Map()
@@ -1137,7 +1138,8 @@ const navCourses = computed(() => {
     seen.set(l.courseCode, { code: l.courseCode, to: `/production/${l.courseCode}` })
   }
   const all = [...seen.values()]
-  return all.map(c => ({ ...c, label: boothCourseChip(c.code, all.length) }))
+  const codes = all.map(c => c.code)
+  return all.map(c => ({ ...c, label: boothCourseChip(c.code, codes) }))
 })
 const rosterRef = ref(null)
 // "Lines" is on this page: open the whole list and put it under his thumb.

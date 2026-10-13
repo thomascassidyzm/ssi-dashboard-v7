@@ -250,7 +250,7 @@ describe('the recordist edits their own lines', () => {
     const nav = w.find('.rc-nav')
     expect(nav.exists()).toBe(true)
     // The course chip is named in plain words, never by its code (Aran, 2026-10-13).
-    expect(nav.text()).toMatch(/Booth.*Lines.*Pods.*Welsh North — current course \(live\)/s)
+    expect(nav.text()).toMatch(/Booth.*Lines.*Pods.*Old Welsh/s)
     expect(nav.text()).not.toContain(COURSE)
     expect(nav.find('.is-here').attributes('href')).toBe(`/r/${VOICE}`)
     // Every pod this voice is cast in, to its drafts page: by the pod's own
@@ -258,7 +258,7 @@ describe('the recordist edits their own lines', () => {
     const pods = nav.findAll('.rc-nav-pod').map(a => [a.text(), a.attributes('href')])
     expect(pods).toEqual([
       ['Senedd', `/production/${COURSE}/pods/senedd`],
-      ['Listening pods — North, pod 1', `/production/${COURSE}/pods/pod-1`],
+      ['Welsh Pod1', `/production/${COURSE}/pods/pod-1`],
     ])
     expect(nav.find('.rc-nav-course').attributes('href')).toBe(`/production/${COURSE}`)
     // "Lines" opens the whole list on this page.
