@@ -176,14 +176,25 @@ async function run({ apply, course }) {
     if (wrong) throw new Error(`SELF-CHECK: ${wrong} statement rows carry a ? key`)
     log.steps.selfCheck = 'ok'
 
-    // 6. freshness stamp for touched courses (triggers were bypassed)
-    const courses = [...new Set(undo.rows.length ? (await q(`SELECT DISTINCT course_code FROM plan_ca WHERE id NOT IN (SELECT id FROM plan_ca_skip)`)).rows.map(r => r.course_code) : [])]
-    if (courses.length) await q(`UPDATE courses SET content_stamp = now(), audio_stamp = now() WHERE course_code = ANY($1)`, [courses])
+    // 6. freshness stamp for touched courses (triggers were bypassed). Done AFTER the commit, one short statement
+    // per course with retries: a live writer holding a `courses` row lock must never roll back the whole backfill
+    // (it did, once: lock timeout on the stamp, after a clean self-check).
+    const courses = (await q(`SELECT DISTINCT course_code FROM plan_ca WHERE id NOT IN (SELECT id FROM plan_ca_skip)`)).rows.map(r => r.course_code)
     log.touchedCourses = courses
-
     log.skippedCollisionRows = skipped
     log.seconds = Math.round((Date.now() - t0) / 1000)
-    if (apply) { await q('COMMIT'); log.committed = true } else { await q('ROLLBACK'); log.committed = false }
+    if (apply) {
+      await q('COMMIT'); log.committed = true
+      log.stampFailed = []
+      for (const code of courses) {
+        let ok = false
+        for (let i = 0; i < 6 && !ok; i++) {
+          try { await q(`UPDATE courses SET content_stamp = now(), audio_stamp = now() WHERE course_code = $1`, [code]); ok = true }
+          catch (e) { await new Promise(r => setTimeout(r, 5000)) }
+        }
+        if (!ok) log.stampFailed.push(code)
+      }
+    } else { await q('ROLLBACK'); log.committed = false }
   } catch (e) {
     try { await q('ROLLBACK') } catch (_) { /* already gone */ }
     log.error = e.message
