@@ -173,7 +173,10 @@ function retryPrompt(basePrompt, phrases, reasons) {
 }
 
 async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, opts = {}) {
-  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true } = opts;
+  // debutInSameWrite: the caller flips this not-new LEGO back to NEW in the same transaction
+  // that writes the basket (the debut_keeps_practice trigger refuses either half alone), so
+  // the P25 refusal below does not apply to it. Job #468: a sole-new LEGO of its seed.
+  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true, debutInSameWrite = false } = opts;
   const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
 
   // A NOT-NEW LEGO GETS NO PHRASES (Tom, 2026-09-30; canon P25). The player builds
@@ -182,7 +185,7 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   // before paying for a model call: phrases worth drilling go under a NEW LEGO.
   // A Welsh not-new LEGO whose Welsh was taught under OTHER English is a new pairing: its few
   // phrases come from generatePairingPhrases below, filed under a new sibling (Aran, 2026-10-13).
-  if (lego && lego.is_new === false && !lego.proposed) {
+  if (lego && lego.is_new === false && !lego.proposed && !debutInSameWrite) {
     return {
       courseCode, seedNumber, legoIndex: Number(legoIndex), legoId: lego.lego_id,
       legoKnown: lego.known_text, legoTarget: lego.target_text,
