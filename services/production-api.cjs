@@ -528,6 +528,14 @@ app.use('/api/production/:courseCode/intro-lab',
     logger,
   }))
 
+// LEGO proof (job #496): Aran's flag-a-LEGO list for the Welsh relaunch sandboxes. Read-only on course content; writes
+// only lego_proof_flags. Under /api/production/:courseCode so the app.param course-scope gate fires.
+app.use('/api/production/:courseCode/lego-proof',
+  require('./lego-proof/lego-proof-router.cjs').createLegoProofRouter({
+    getDb: () => supabaseClient.getClient(),
+    logger,
+  }))
+
 // Pod recording coverage (keystone §5): per cast voice (voice_config.podCast)
 // lines recorded / remaining + per-pod breakdown, human-vs-tts per sentence.
 // REGISTERED BEFORE the pods router on purpose: this read-only route relies on

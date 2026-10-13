@@ -689,6 +689,13 @@ const routes = [
     meta: { title: 'Intro Lab - Admin' }
   },
   {
+    // LEGO proof (job #496): Aran flags Welsh relaunch LEGOs with an issue. Saves each tick at once; no course writes.
+    path: '/proof/legos',
+    name: 'LegoProof',
+    component: () => import('../views/admin/LegoProof.vue'),
+    meta: { title: 'LEGO proof', requiresAuth: true }
+  },
+  {
     // Capture A/B — record the same line under each mic profile and measure
     // both, on the phone that actually does the recording. It joins the labs
     // here because it IS one; before this it was linked from nowhere in src/.
