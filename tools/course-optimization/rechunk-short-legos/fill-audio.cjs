@@ -21,10 +21,17 @@ const EVIDENCE = path.join(os.homedir(), 'ssi-evidence', 'ssi-dashboard-v7', 'op
 const say = (...a) => console.error(...a)
 
 async function render(body) {
-  const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify({ ...body, dryRun: !APPLY, purpose: `job 321 re-chunk wave 1: ${body.purpose}` }) })
-  const out = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
-  if (!res.ok || !out.ok) { const e = new Error(`render refused (${res.status}): ${JSON.stringify(out).slice(0, 300)}`); e.refusal = out; throw e }
-  return out
+  // Transport trouble (Popty restarting, phase8 503) is retried; a REFUSAL (402/403/409...) is the answer and is never retried.
+  for (let attempt = 1; ; attempt++) {
+    let res, out
+    try {
+      res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify({ ...body, voiceBound: false, dryRun: !APPLY, purpose: `job 321 re-chunk wave 1: ${body.purpose}` }) })
+      out = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+    } catch (e) { if (attempt < 6) { await new Promise((r) => setTimeout(r, 5000 * attempt)); continue } throw e }
+    if (res.status === 503 && attempt < 6) { await new Promise((r) => setTimeout(r, 5000 * attempt)); continue }
+    if (!res.ok || !out.ok) { const e = new Error(`render refused (${res.status}): ${JSON.stringify(out).slice(0, 300)}`); e.refusal = out; throw e }
+    return out
+  }
 }
 
 async function main() {
@@ -103,5 +110,4 @@ async function main() {
   fs.writeFileSync(path.join(EVIDENCE, `${COURSE}.fill-audio.${APPLY ? 'applied' : 'dryrun'}.${Date.now()}.json`), JSON.stringify(report, null, 1))
   say(JSON.stringify(report))
 }
-function R.supabase() { const e = R.env; return R.supabase() }
 main().catch((e) => { console.error(e.stack || e.message); process.exit(1) })
