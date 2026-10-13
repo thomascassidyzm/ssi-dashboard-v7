@@ -79,4 +79,11 @@ test('unspaced scripts are checked by character, not as one giant word (job #321
   assert.deepStrictEqual(L.checkOp(seed, before, ok, {}).filter((p) => /target side|coverage/.test(p)), [])
   const bad = { set: { 1: { type: 'M', known: 'speak', target: '会读', components: [{ known: 'a', target: '会' }, { known: 'b', target: '读' }] } } }
   assert.ok(L.checkOp(seed, before, bad, {}).some((p) => /target side has words/.test(p)))
+
+test('op.seedTarget: a LEGO is checked against the seed sentence as it will read (S42 laas nag, job #329)', () => {
+  const seed42 = { known_text: 'I was starting to feel better than last night.', target_text: 'Ek het begin om beter te voel as verlede nag.' }
+  const before42 = [{ idx: 1, type: 'A', known: 'night', target: 'nag', is_new: true }]
+  const op = { seedTarget: 'Ek het begin om beter te voel as laas nag.', set: { 1: { type: 'M', known: 'last night', target: 'laas nag', components: [{ known: 'last', target: 'laas' }, { known: 'night', target: 'nag' }] } } }
+  assert.ok(L.checkOp(seed42, before42, { set: op.set }, {}).some((p) => /target side has words/.test(p)), 'without seedTarget the old sentence refuses laas')
+  assert.deepStrictEqual(L.checkOp(seed42, before42, op, {}), [])
 })
