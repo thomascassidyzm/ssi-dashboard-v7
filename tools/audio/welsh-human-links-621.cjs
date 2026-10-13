@@ -28,7 +28,7 @@ const { normalizeForDb } = require('../../services/shared/text-normalize.cjs')
 const COURSE = 'cym_n_for_eng'
 const TABLES = ['course_seeds', 'course_legos', 'course_practice_phrases']
 const ITEMS = {
-  catrin: { col: 'target1_audio_id', textCol: 'target_text', role: 'target1', language: 'cym', voices: ['human_catrinlliar_cym_n', 'legacy_import'], courses: ['cym_n_for_eng'] },
+  catrin: { col: 'target1_audio_id', textCol: 'target_text', role: 'target1', language: 'cym', voices: ['human_catrinlliar_cym_n', 'legacy_import'], courses: ['cym_n_for_eng'], commas: true },
   // The old South course's English is the same narrator: 4,366 of the 4,640 texts both old courses hold are the SAME s3 file
   // (4,617 within 30 ms), so its English-only lines are Aran's too. North clips are preferred; South fills what North lacks.
   aran: { col: 'known_audio_id', textCol: 'known_text', role: 'known', language: 'eng', voices: ['human_aran_cym_n', 'legacy_import'], courses: ['cym_n_for_eng', 'cym_s_for_eng'] },
@@ -40,7 +40,7 @@ const CENSUS = '/home/tomcassidy/ssi-evidence/ssi-dashboard-v7/609/census-slots.
 
 /** Same text: Popty's normalizeForDb, with curly apostrophes folded to straight and whitespace runs collapsed (seeds are
  *  stored with ’, takes with '). Nothing else is loosened. */
-const sameTextKey = (t) => normalizeForDb(String(t || '').replace(/[\u2018\u2019]/g, "'").replace(/\s+/g, ' '))
+const sameTextKey = (t, commas = false) => normalizeForDb(String(t || '').replace(/[\u2018\u2019]/g, "'").replace(commas ? /\s*,\s*/g : /(?!)/g, ' ').replace(/\s+/g, ' '))
 
 const HEAD = ['course_code', 'tbl', 'pk', 'col', 'from', 'to', 'clip_voice', 'key']
 const csvCell = (v) => { const s = v == null ? '' : String(v); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s }
@@ -58,11 +58,11 @@ function parseCsv(text) {
 const readLedger = (item) => parseCsv(fs.readFileSync(ledgerPath(item), 'utf8'))
 
 /** Pick one clip per normalised text: an explicitly-voiced take over a legacy one, then the newest. Pure. */
-function pickClips(clips, voices, courses = []) {
+function pickClips(clips, voices, courses = [], commas = false) {
   const rank = (c) => voices.indexOf(c.voice_id) + voices.length * Math.max(0, courses.indexOf(c.course_code))
   const best = new Map()
   for (const c of clips) {
-    const k = sameTextKey(c.text)
+    const k = sameTextKey(c.text, commas)
     if (!k) continue
     const cur = best.get(k)
     if (!cur || rank(c) < rank(cur) || (rank(c) === rank(cur) && String(c.created_at) > String(cur.created_at))) best.set(k, c)
@@ -71,12 +71,12 @@ function pickClips(clips, voices, courses = []) {
 }
 
 /** Empty slots whose text has a take. Pure. `owned` = "tbl:pk:col" keys another job owns. */
-function planMoves({ slots, best, col, owned = new Set() }) {
+function planMoves({ slots, best, col, owned = new Set(), commas = false }) {
   const moves = [], misses = []
   for (const s of slots) {
     if (s.current != null) continue
     if (owned.has(`${s.tbl}:${s.pk}:${col}`)) continue
-    const k = sameTextKey(s.text)
+    const k = sameTextKey(s.text, commas)
     const clip = k && best.get(k)
     if (!clip) { misses.push(s); continue }
     moves.push({ course_code: COURSE, tbl: s.tbl, pk: s.pk, col, from: '', to: clip.id, clip_voice: `${clip.voice_id}@${clip.course_code || COURSE}`, key: k })
@@ -103,8 +103,8 @@ async function plan(item) {
   await pg.end()
   const owned = new Set()
   if (fs.existsSync(CENSUS)) for (const r of parseCsv(fs.readFileSync(CENSUS, 'utf8'))) if (r.course_code === COURSE) owned.add(`${r.table_name}:${r.primary_key}:${r.col}`)
-  const best = pickClips(clips, cfg.voices, cfg.courses)
-  const { moves, misses } = planMoves({ slots, best, col: cfg.col, owned })
+  const best = pickClips(clips, cfg.voices, cfg.courses, !!cfg.commas)
+  const { moves, misses } = planMoves({ slots, best, col: cfg.col, owned, commas: !!cfg.commas })
   // The gate, per move: #609 human-take guard, Welsh Tom-clone refusal, cast. A refusal drops the move and is reported.
   const db = require('@supabase/supabase-js').createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } })
   const rv = require('../../services/shared/resolve-voice.cjs')
