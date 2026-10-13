@@ -304,6 +304,24 @@ async function indexFromSnapshot(client, snap, rows, wanted) {
   return { held, ownKeys }
 }
 
+/**
+ * Of these clip ids, the ones whose course_audio row still holds exactly what
+ * the walk's snapshot read (every field indexEntryFor looks at). A deleted row
+ * is simply absent. Job #806.
+ */
+const SEEN_FIELDS = ['course_code', 'text', 'language', 'role', 'voice_id', 's3_key', 'origin', 'veracity_pass']
+async function stillAsSeen(client, ids, seenRows) {
+  const ok = new Set()
+  if (!ids.length) return ok
+  const seen = new Map(seenRows.map(r => [r.id, r]))
+  const { rows } = await client.query(`SELECT id, ${SEEN_FIELDS.join(', ')} FROM course_audio WHERE id = ANY($1::uuid[])`, [ids])
+  for (const r of rows) {
+    const was = seen.get(r.id)
+    if (was && SEEN_FIELDS.every(f => r[f] === was[f])) ok.add(r.id)
+  }
+  return ok
+}
+
 // ── the walk ────────────────────────────────────────────────────────────────
 
 async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sleepMs = SLEEP_MS, maxBatches = Infinity, onlyEvidenced = false, snapshot = true } = {}) {
@@ -386,18 +404,36 @@ async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sl
     }
 
     if (apply) {
-      const es = [...toInsert.values()]
+      // The full walk reads a SNAPSHOT up to the whole walk old, but these
+      // writes land on live data (job #806, adversary round 2): a clip whose
+      // words or voice changed meanwhile would be filed under its OLD key —
+      // library-first reuse would then serve audio that says something else —
+      // and its correct entry dropped as stale; a clip deleted meanwhile would
+      // fail the insert's foreign key and stop the night. So write only for
+      // clips still exactly as seen (re-read by primary key: a handful a batch);
+      // the rest wait for tomorrow's walk, which sees them as they are.
+      let asSeen = null
+      if (full) {
+        const ids = [...new Set([...[...toInsert.values()].map(e => e.audio_id), ...staleLog.map(x => x.audio_id)])]
+        asSeen = await stillAsSeen(client, ids, rows)
+      }
+      const es = [...toInsert.values()].filter(e => !asSeen || asSeen.has(e.audio_id))
+      t.changedSinceSnapshot = (t.changedSinceSnapshot || 0) + (toInsert.size - es.length)
       if (es.length) {
         const col = f => es.map(e => e[f])
         const r = await client.query(
           `INSERT INTO clip_index (language, text_key, voice_id, audio_id, origin, indexed_by)
-           SELECT * FROM unnest($1::text[], $2::text[], $3::text[], $4::uuid[], $5::text[], $6::text[])
+           SELECT k.* FROM unnest($1::text[], $2::text[], $3::text[], $4::uuid[], $5::text[], $6::text[])
+                    AS k(language, text_key, voice_id, audio_id, origin, indexed_by)
+             JOIN course_audio ca ON ca.id = k.audio_id
            ON CONFLICT (language, text_key, voice_id) DO NOTHING RETURNING 1`,
           [col('language'), col('text_key'), col('voice_id'), col('audio_id'), col('origin'), col('indexed_by')])
         t.inserted += r.rowCount
         if (snap) for (const e of es) snapAdd(snap, e.audio_id, keyOf(e.language, e.text_key, e.voice_id))
       }
-      const stale = staleLog.splice(0)
+      const staleAll = staleLog.splice(0)
+      const stale = staleAll.filter(x => !asSeen || asSeen.has(x.audio_id))
+      t.changedSinceSnapshot += staleAll.length - stale.length
       if (stale.length) {
         fs.mkdirSync(EVIDENCE_DIR, { recursive: true })
         fs.appendFileSync(path.join(EVIDENCE_DIR, 'clip_index-stale-dropped.jsonl'), stale.map(s => JSON.stringify(s)).join('\n') + '\n')
@@ -413,7 +449,10 @@ async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sl
     t.batches++
     if (t.batches % 50 === 0) log(`batch ${t.batches} read=${t.read} missing=${t.missing} stale=${t.stale} ${full ? '(seqscan)' : `watermark=${t.watermark}`}`)
     if (rows.length < batch || t.batches >= maxBatches) break
-    await sleep(sleepMs)
+    // The pause throttled the pkey walk's random reads; the full walk reads
+    // sequentially, and pausing only lengthens the read snapshot's hold on
+    // vacuum (1,445 x 300 ms = 7 min idle in transaction).
+    if (!full) await sleep(sleepMs)
   }
   } finally {
     if (rd) { await rd.query('ROLLBACK').catch(() => {}); await rd.end().catch(() => {}) }
@@ -439,4 +478,4 @@ async function main() {
 }
 
 if (require.main === module) main()
-module.exports = { reconcile, loadIndexSnapshot, indexFromSnapshot, refreshSpokenEvidence, loadContext, connect, CANDIDATES_SQL, judgeHeard }
+module.exports = { reconcile, stillAsSeen, loadIndexSnapshot, indexFromSnapshot, refreshSpokenEvidence, loadContext, connect, CANDIDATES_SQL, judgeHeard }
