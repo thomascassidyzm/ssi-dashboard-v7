@@ -16,17 +16,15 @@
  */
 
 export const BOOTH_COURSE_TITLES = {
-  cym_n_for_eng: 'Welsh North — current course (live)',
-  cym_nv2_for_eng: 'Welsh North — new course',
-  cym_s_for_eng: 'Welsh South — current course (live)',
-  cym_sv2_for_eng: 'Welsh South — new course',
+  cym_n_for_eng: 'Old Welsh',
+  cym_nv2_for_eng: 'New Welsh',
+  cym_s_for_eng: 'Old Welsh',
+  cym_sv2_for_eng: 'New Welsh',
 }
 
-// Keyed `${courseCode}/${podSlug}`: every course's core pod is `pod-1`.
-export const BOOTH_POD_TITLES = {
-  'cym_n_for_eng/pod-1': 'Listening pods — North, pod 1',
-  'cym_s_for_eng/pod-1': 'Listening pods — South, pod 1',
-}
+// Welsh North and South listening pods are 'Welsh Pod<n>' (Aran, 2026-10-13);
+// every course's core pod is `pod-1`.
+const WELSH_POD_COURSES = new Set(['cym_n_for_eng', 'cym_s_for_eng'])
 
 export function boothCourseChip(courseCode, courseCount) {
   const named = BOOTH_COURSE_TITLES[courseCode]
@@ -35,5 +33,7 @@ export function boothCourseChip(courseCode, courseCount) {
 }
 
 export function boothPodChip({ courseCode, podSlug, podTitle } = {}) {
-  return BOOTH_POD_TITLES[`${courseCode}/${podSlug}`] || podTitle || podSlug
+  const n = WELSH_POD_COURSES.has(courseCode) && /^pod-(\d+)$/.exec(podSlug || '')
+  if (n) return `Welsh Pod${n[1]}`
+  return podTitle || podSlug
 }
