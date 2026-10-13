@@ -57,6 +57,10 @@ function workLegos(before, op) {
 // Every rule an op must satisfy before anything is written. estimateSyllables is injected (language-config).
 function checkOp(seedRow, before, op, { estimateSyllables, courseCode } = {}) {
   const problems = []
+  // op.seedTarget (job #329, Tom 2026-10-13): the seed's TARGET sentence is rewritten in the same op — used when the
+  // seed says a form the course already teaches differently elsewhere (S42 'verlede nag' vs S234 'laas nag', ZUT). The
+  // LEGOs are checked against the sentence as it will read, never the old one.
+  if (op.seedTarget) seedRow = { ...seedRow, target_text: op.seedTarget }
   const beforeIdx = new Set(before.map((l) => l.idx))
   for (const i of op.delete || []) if (!beforeIdx.has(i)) problems.push(`delete L${i}: no such LEGO`)
   for (const i of Object.keys(op.set || {}).map(Number)) {

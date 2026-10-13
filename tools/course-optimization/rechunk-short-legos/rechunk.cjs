@@ -199,7 +199,7 @@ async function author(course) {
         .map((r) => ({ id: r.id, role: r.phrase_role, known: r.known_text, target: r.target_text }))
       const t = await taughtBefore(pg, course, p.seed, after, lego.idx)
       const label = `S${p.seed}L${lego.idx}`
-      const entryBase = { courseCode: course, seedNumber: p.seed, legoIndex: lego.idx, legoId: L.legoId(p.seed, lego.idx), legoKnown: lego.known, legoTarget: lego.target, components: lego.components, seedTarget: live.seed.target_text }
+      const entryBase = { courseCode: course, seedNumber: p.seed, legoIndex: lego.idx, legoId: L.legoId(p.seed, lego.idx), legoKnown: lego.known, legoTarget: lego.target, components: lego.components, seedTarget: p.seedTarget || live.seed.target_text }
       const items = [], served = {}
       // Up to two rounds. Round 2 only asks for what is still missing, and shows Sonnet what the judge rejected
       // and why. Opus never sees which phrases Sonnet wrote, nor any of Sonnet's reasons — every round is judged cold.
@@ -207,7 +207,7 @@ async function author(course) {
         const keptNow = items.filter((x) => x.keep)
         const want = { build: Math.max(0, 4 - keptNow.filter((x) => x.role === 'build').length) + 2, use: Math.max(0, 6 - keptNow.filter((x) => x.role === 'use').length) + 3 }
         if (round === 2 && keptNow.filter((x) => x.role === 'build').length >= 3 && keptNow.filter((x) => x.role === 'use').length >= 5) break
-        const c = { course, seed: p.seed, seedKnown: live.seed.known_text, seedTarget: live.seed.target_text, seedLegos: after, lego, existing: round === 1 ? existing : [], want, ...t,
+        const c = { course, seed: p.seed, seedKnown: live.seed.known_text, seedTarget: p.seedTarget || live.seed.target_text, seedLegos: after, lego, existing: round === 1 ? existing : [], want, ...t,
           feedback: round === 1 ? null : { accepted: keptNow, rejected: items.filter((x) => !x.keep && x.source === 'new') } }
         const A = await callClaude('sonnet', authorPrompt(c).system, authorPrompt(c).user, `${label} sonnet r${round}`)
         fs.writeFileSync(path.join(EVIDENCE, `${course}.${label}.r${round}.sonnet.txt`), A.raw)
@@ -362,6 +362,11 @@ async function apply(course) {
           [i.id, course, p.seed, i.lego.idx, i.position, i.known, i.target, i.target.length, ((i.known || '').match(/\s+/g) || []).length + 1, JSON.stringify(meta), i.role,
             computeLegoPosition(i.target, i.lego.target), L.legoId(p.seed, i.lego.idx), c ? c.known_audio_id : null, c ? c.target1_audio_id : null, c ? c.target2_audio_id : null, c ? c.target1_duration_ms : null, c ? c.target2_duration_ms : null, ev])
       }
+      if (p.seedTarget) {
+        // the seed sentence changes with the cut; its target clips speak the old words, so they are unlinked (the clips are kept — O11) and re-rendered by the audio route
+        const u = await pg.query('UPDATE course_seeds SET target_text=$1, target1_audio_id=NULL, target2_audio_id=NULL, target_text_roman=NULL WHERE course_code=$2 AND seed_number=$3 AND target_text=$4', [p.seedTarget, course, p.seed, live.seed.target_text])
+        if (u.rowCount !== 1) throw new Error(`S${p.seed}: seed target update ${u.rowCount}`)
+      }
       await pg.query('UPDATE course_seeds SET approved_at=NULL, last_edit_event_id=$1, updated_at=now() WHERE course_code=$2 AND seed_number=$3', [ev, course, p.seed])
       await pg.query('COMMIT')   // the deferred DEBUT_WITHOUT_PRACTICE guard runs here
       report.push({ ...summary, outcome: 'applied', event: ev })
@@ -435,7 +440,7 @@ async function undo(course) {
       for (const r of l.before.phrases) await ins('course_practice_phrases', r)
       for (const r of l.before.intros) await ins('lego_introductions', r)
       for (const t of l.before.audioTags) await pg.query('UPDATE course_audio SET lego_id=$1 WHERE id=$2', [t.lego_id, t.id])
-      await pg.query('UPDATE course_seeds SET approved_at=$1 WHERE course_code=$2 AND seed_number=$3', [l.before.seed.approved_at, course, seed])
+      await pg.query('UPDATE course_seeds SET approved_at=$1, target_text=$4, target1_audio_id=$5, target2_audio_id=$6, target_text_roman=$7 WHERE course_code=$2 AND seed_number=$3', [l.before.seed.approved_at, course, seed, l.before.seed.target_text, l.before.seed.target1_audio_id, l.before.seed.target2_audio_id, l.before.seed.target_text_roman])
       await pg.query('COMMIT')
       appendLedger(course, { seed, at: new Date().toISOString(), action: 'undone' })
       report.push({ seed, outcome: 'undone' })
