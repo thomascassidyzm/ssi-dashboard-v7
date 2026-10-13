@@ -53,7 +53,8 @@ const SPECIMEN_COURSE = 'spa_for_eng';
 // DEPRECATED EMPTY OBJECT at runtime, so it returns the raw ISO code. Go through
 // the same CSV service getLanguageName uses, by flipping the course code.
 const { getLanguageName, DIALECT_NAMES } = require('../../services/course-builder/lib/language-config.cjs');
-const { welshVocabRulePrompt } = require('../../services/course-builder/lib/welsh-mutation.cjs');
+const { vocabRulePrompt } = require('../../services/course-builder/lib/taught-words.cjs');
+const { isWelshTarget } = require('../../services/course-builder/lib/welsh-mutation.cjs');
 
 function knownLanguageName(courseCode) {
   const known = String(courseCode || '').split('_for_')[1] || 'eng';
@@ -207,8 +208,8 @@ ${avail.truncated ? `\n(showing the ${avail.total - avail.truncated} most recent
 \`\`\`
 ${avail.text}
 \`\`\`
-${welshVocabRulePrompt(courseCode) ? `
-${welshVocabRulePrompt(courseCode)} So for this course a tile may also be ONE WORD lifted from inside an AVAILABLE item (soft-mutated if the sentence needs it) — give that item's lego id.
+${vocabRulePrompt(courseCode) ? `
+${vocabRulePrompt(courseCode)} So a tile may also be ONE WORD lifted from inside an AVAILABLE item${isWelshTarget(courseCode) ? ' (soft-mutated if the sentence needs it)' : ''} — give that item's lego id.
 ` : ''}
 ## BLOCKED — NOT YET. Do not reach for any of these.
 

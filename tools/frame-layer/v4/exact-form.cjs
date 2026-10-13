@@ -15,16 +15,19 @@
  * `offending` names the forms that failed step 1, which is what a reader needs
  * to see ("espérions", not "an untaught word").
  *
- * WELSH (Aran, methodology lead, 2026-10-13): step 2 does not apply. A Welsh phrase may use
- * ANY word taught earlier, including one met only inside a bigger chunk ("trio" after
- * "dw i'n trio"), and a soft-mutated form is the same word (cael/gael). Nasal and aspirate
- * forms (nghath, chath) and other inflections are still new until that exact form is taught —
- * Tom's "we hoped vs to hope" still holds. Pass { courseCode } and a Welsh target that fails
- * the tiling is re-read word by word by the live builder's own rule (welshUntaughtWords).
+ * EVERY LANGUAGE (Aran, methodology lead, confirmed by Tom, 2026-10-13; job #587): step 2
+ * does not apply. A phrase may use ANY word taught earlier, including one met only inside a
+ * bigger chunk ("find" after "to find out"; "trio" after "dw i'n trio"). Step 1 still holds:
+ * every other form is new until that exact form is taught — Tom's "we hoped vs to hope". Welsh
+ * also folds a soft-mutated form into the same word (cael/gael); nasal and aspirate forms are
+ * still new. Pass { courseCode } and a target that fails the tiling is re-read word by word by
+ * the live builder's own rule (services/course-builder/lib/taught-words.cjs). Without a
+ * courseCode we cannot tokenise per language, so only the whole-chunk tiling runs.
  *
  * Space-delimited targets tile by word. Pass { noSpace: true } for scripts written
  * without spaces (zho, jpn, yue, tha...): chunks and target are then tiled by character,
- * still from WHOLE taught chunks.
+ * still from WHOLE taught chunks — the word-level reading above is NOT applied to them,
+ * because we have no tokeniser we trust for those scripts.
  */
 // Own normaliser, not availability.norm: that one turns combining marks (\p{M}: Devanagari,
 // Bengali, Tamil vowel signs) into spaces, so a form differing only by a vowel sign
@@ -60,16 +63,19 @@ function tiles(target, vocabTargets, { noSpace = false } = {}) {
   return { ok: false, untiled: [...new Set(words.filter(w => !owned.has(w)))] };
 }
 
-const { isWelshTarget, welshTaughtKeys, welshUntaughtWords } = require('../../../services/course-builder/lib/welsh-mutation.cjs');
+const { isWelshTarget } = require('../../../services/course-builder/lib/welsh-mutation.cjs');
+const { wordLevelApplies, taughtWordKeys, untaughtWords } = require('../../../services/course-builder/lib/taught-words.cjs');
 
 /** @returns {{ok:boolean, offending:string[], reason:string|null, tiling?:string[]}} */
 function exactFormCheck(target, vocabTargets, opts = {}) {
   const t = tiles(target, vocabTargets, opts);
   if (t.ok) return { ok: true, offending: [], reason: null, tiling: t.tiling };
-  if (opts.courseCode && isWelshTarget(opts.courseCode)) {
-    const untaught = welshUntaughtWords(target, welshTaughtKeys(vocabTargets));
-    if (!untaught.length) return { ok: true, offending: [], reason: null, welsh: true };
-    return { ok: false, offending: untaught, reason: `Welsh word never taught (not even soft-mutated): ${untaught.join(' ')}` };
+  if (!opts.noSpace && wordLevelApplies(opts.courseCode)) {
+    const untaught = untaughtWords(target, taughtWordKeys(vocabTargets, opts.courseCode), opts.courseCode);
+    if (!untaught.length) return { ok: true, offending: [], reason: null, wordLevel: true, welsh: isWelshTarget(opts.courseCode) };
+    return { ok: false, offending: untaught, reason: isWelshTarget(opts.courseCode)
+      ? `Welsh word never taught (not even soft-mutated): ${untaught.join(' ')}`
+      : `form never taught as this exact word: ${untaught.join(' ')}` };
   }
   const offending = t.untiled;
   return {

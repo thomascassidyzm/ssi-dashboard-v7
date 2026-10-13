@@ -26,8 +26,11 @@ describe('Welsh vocab gate — any earlier Welsh, mutation-equivalent', () => {
   it('a soft-mutated form of a taught word passes (cael → gael)', () => {
     expect(checkVocabViolations([{ target: 'dw i’n trio gael' }], taught, C, { seedNumber: 1201 })).toEqual([]);
   });
-  it('a non-Welsh course still tiles whole chunks only', () => {
-    expect(checkVocabViolations([{ target: 'ffrindiau ydyn nhw' }], taught, 'spa_for_eng', { seedNumber: 1201 })).toHaveLength(1);
+  // Since 2026-10-13 (Aran, confirmed by Tom, job #587) every language reads words, not whole
+  // chunks — but only Welsh folds the soft mutation.
+  it('a non-Welsh course reads words too, without the soft-mutation fold', () => {
+    expect(checkVocabViolations([{ target: 'ffrindiau ydyn nhw' }], taught, 'spa_for_eng', { seedNumber: 1201 })).toEqual([]);
+    expect(checkVocabViolations([{ target: 'dw i’n trio gael' }], taught, 'spa_for_eng', { seedNumber: 1201 })).toHaveLength(1);
   });
 });
 

@@ -126,6 +126,19 @@ describe('v2 finalize: same Welsh, other English (Aran 2026-10-08)', () => {
     expect(demoted).toEqual([expect.objectContaining({ seed_number: 258, lego_index: 1, is_new: false })]);
   });
 
+  // Tom's review of PR #80 (job #550): the dedup above skipped recording the English, so a later
+  // draft giving the same English other Welsh escaped ZUT collision detection.
+  it('a deduplicated same-Welsh pairing still claims its English: a later fork is a collision', async () => {
+    const first = { ...draft, submission_data: { legos: [{ idx: 1, type: 'A', known: 'to get up', target: 'codi' }] } };
+    const fork = { ...draft, seed_number: 1002, known_text: 'to get up', target_text: 'cerdded',
+      submission_data: { legos: [{ idx: 1, type: 'A', known: 'to get up', target: 'cerdded' }] } };
+    const taught = [{ known_text: 'to raise', target_text: 'codi', seed_number: 1, lego_index: 1, is_new: true }];
+    const order3 = [ { seed_number: 1, position: 1 }, { seed_number: 1001, position: 2 }, { seed_number: 1002, position: 3 } ];
+    const { res } = await finalize({ course_seed_drafts: [first, fork], course_legos: taught, course_running_order: order3 }, C);
+    expect(res.statusCode).toBe(409);
+    expect(JSON.stringify(res.body)).toMatch(/cerdded/);
+  });
+
   it('isSameWelsh: identical or soft-mutated, Welsh courses only', () => {
     expect(isSameWelsh(C, 'codi', 'codi')).toBe(true);
     expect(isSameWelsh(C, 'bydden ni’n licio', "bydden ni'n licio")).toBe(true);
