@@ -86,4 +86,26 @@ function isSoftMutationVariant(courseCode, targetA, targetB) {
   return ta.every((w, i) => w === tb[i] || softEquivalentWords(w, tb[i]));
 }
 
-module.exports = { isSoftMutationVariant, softEquivalentWords, softRadicals, isWelshTarget };
+/**
+ * SAME WELSH = ALREADY TAUGHT, WHATEVER THE ENGLISH SAYS (Aran, 2026-10-08 11:59Z, job #429):
+ * "LEGOs with the same Welsh (identical, or a soft-mutated form) as one taught earlier in the
+ * running order count as ALREADY TAUGHT, even when the English label differs" — e.g. "to get up"
+ * = codi after "to raise" = codi; "we'd like" = bydden ni'n licio after "we would like".
+ *
+ * KNOWN HAZARD, kept because the ruling names soft mutation explicitly: across DIFFERENT English
+ * the soft fold can join two different words — "awn ni?" (shall we go) reads as the soft form of
+ * "cawn ni" (could we have), and a homograph like nôl (fetch / back) is "identical". With the
+ * same English (the 2026-10-07 rule) that cannot happen; here it can. Reported to Aran with the
+ * cases found in cym_nv2/cym_sv2, not filtered silently.
+ *
+ * False for every non-Welsh course, so the caller behaves exactly as before there.
+ */
+function isSameWelsh(courseCode, targetA, targetB) {
+  if (!isWelshTarget(courseCode)) return false;
+  const a = String(targetA || '').split(/\s+/).map(normWord).filter(Boolean).join(' ');
+  const b = String(targetB || '').split(/\s+/).map(normWord).filter(Boolean).join(' ');
+  if (!a || !b) return false;
+  return a === b || isSoftMutationVariant(courseCode, targetA, targetB);
+}
+
+module.exports = { isSoftMutationVariant, isSameWelsh, softEquivalentWords, softRadicals, isWelshTarget };
