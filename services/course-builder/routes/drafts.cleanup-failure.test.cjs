@@ -4,6 +4,7 @@ const makeRouter = require('./drafts.cjs')
 async function finalize(failure) {
   const writes = []
   const draft = {
+    updated_at: '2026-10-13T10:00:00.000Z',
     seed_number: 1, known_text: 'I want coffee', target_text: 'quiero café',
     submission_data: { legos: [{ idx: 1, known: 'I want', target: 'quiero',
       build: [], use: [{ known: 'I want coffee', target: 'quiero café' }] }] },

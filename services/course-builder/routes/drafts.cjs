@@ -602,13 +602,21 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
       // =====================================================================
       // STEP 6: Cleanup drafts + report
       // =====================================================================
-      const { error: deleteError } = await ctx.supabase
-        .from('course_seed_drafts')
-        .delete()
-        .eq('course_code', courseCode);
+      // Delete only the versions read in STEP 1. A builder may have saved a
+      // new seed or revised an existing draft while finalisation was writing.
+      // Keep unversioned legacy rows rather than risk discarding newer work.
+      for (const draft of drafts) {
+        if (!draft.updated_at) continue;
+        const { error: deleteError } = await ctx.supabase
+          .from('course_seed_drafts')
+          .delete()
+          .eq('course_code', courseCode)
+          .eq('seed_number', draft.seed_number)
+          .eq('updated_at', draft.updated_at);
 
-      if (deleteError) {
-        console.warn(`  \u26a0 Draft cleanup failed: ${deleteError.message}`);
+        if (deleteError) {
+          console.warn(`  \u26a0 Draft cleanup failed: ${deleteError.message}`);
+        }
       }
 
       // Invalidate vocab cache since we just wrote a bunch of LEGOs
