@@ -83,8 +83,9 @@ async function clipIsReadable(db, courseCode, audioId, clip) {
   if (SHARED_SPLICE_IDS.has(audioId)) return true
   if (DONOR_COURSES.includes(clip.course_code) && clip.role === 'presentation' && isTom(clip.voice_id)) return true
   // A piece (lego / context / is / cut-body) the #364 remake took from elsewhere and recorded in this course's own splice record.
+  // The containment value is a JSON STRING: supabase-js turns a JS array into a Postgres array literal {..}, which jsonb rejects (500).
   const { data, error } = await db.from('course_audio').select('id').eq('course_code', courseCode).eq('role', 'presentation')
-    .contains('spliced_from', [{ audio_id: audioId }]).limit(1)
+    .contains('spliced_from', JSON.stringify([{ audio_id: audioId }])).limit(1)
   if (error) throw new Error(error.message)
   return !!(data && data[0])
 }

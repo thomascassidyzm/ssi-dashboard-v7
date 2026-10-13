@@ -4,7 +4,7 @@ const R = createRequire(import.meta.url)('./intro-lab-router.cjs')
 
 // A fake db that answers the two queries clipIsReadable makes.
 function fakeDb({ spliceHit = false } = {}) {
-  const q = { select: () => q, eq: () => q, contains: () => q, limit: () => Promise.resolve({ data: spliceHit ? [{ id: 'x' }] : [], error: null }) }
+  const q = { select: () => q, eq: () => q, contains: (_c, v) => { if (typeof v !== 'string') throw new Error('invalid input syntax for type json'); return q }, limit: () => Promise.resolve({ data: spliceHit ? [{ id: 'x' }] : [], error: null }) }
   return { from: () => q }
 }
 const TOM = 'd293d509-aaaa'
