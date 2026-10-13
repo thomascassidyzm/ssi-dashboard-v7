@@ -258,9 +258,10 @@ function checkPhraseComplexity(phrases, courseCode, seedNumber = 999) {
  * Returns array of violations: [{ phrase, unknown: [...] }]
  *
  * vocabSet contains complete LEGO targets and component targets.
- * A phrase must be tileable entirely from these chunks — no word-level splitting,
- * no free recombination. This prevents conjugations, inversions, and contractions
- * that were never actually taught in any LEGO.
+ * A phrase that tiles entirely from these chunks passes. One that does not is then read
+ * word by word (taught-words.cjs, Aran/Tom 2026-10-13): any word met earlier, even only
+ * inside a bigger chunk, is taught; a form never met in that exact spelling is not, so
+ * untaught conjugations and contractions still fail. Scripts without spaces keep tiling only.
  *
  * For space-delimited languages: DP word-sequence tiling against known chunks.
  * For Chinese/Japanese (no spaces): DP character-sequence tiling.
@@ -305,7 +306,7 @@ function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
       chunksByFirstWord.get(first).push(words);
     }
 
-    let welshKeys = null;
+    let wordKeys = null;
     for (const phrase of phrases) {
       const normalized = normalizeForContainment(phrase.target);
       const phraseWords = normalized.split(' ').filter(w => w);
@@ -331,12 +332,13 @@ function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
         }
       }
 
-      if (!dp[n] && isWelshTarget(courseCode)) {
-        // Welsh: any word taught earlier counts, inside a bigger chunk or soft-mutated (Aran,
-        // 2026-10-13, job #504; welsh-mutation.cjs welshUntaughtWords). Only the words no earlier
-        // LEGO, component or seed sentence carries are a violation.
-        welshKeys = welshKeys || welshTaughtKeys(vocabSet);
-        const untaught = welshUntaughtWords(phrase.target, welshKeys);
+      if (!dp[n] && wordLevelApplies(courseCode)) {
+        // Every language: any word taught earlier counts, even one met only inside a bigger chunk
+        // (Aran, methodology lead, confirmed by Tom, 2026-10-13, job #587; taught-words.cjs) —
+        // Welsh also folds a soft-mutated form. Only the words no earlier LEGO, component or seed
+        // sentence carries, in that exact form, are a violation.
+        wordKeys = wordKeys || taughtWordKeys(vocabSet, courseCode);
+        const untaught = untaughtWords(phrase.target, wordKeys, courseCode);
         if (untaught.length) violations.push({ phrase: phrase.target, unknown: untaught.join(' ') });
         continue;
       }
@@ -594,7 +596,8 @@ function _clearGenderVariantLicenceCache() { _genderLicenceCache.clear(); }
 // these functions have always run. sector-helix §5b/§6; course-family.cjs.
 const { zutScope } = require('./course-family.cjs');
 const { loadRunningOrder, filterSeedsBefore } = require('../../shared/running-order.cjs');
-const { isSoftMutationVariant, isWelshTarget, welshTaughtKeys, welshUntaughtWords } = require('./welsh-mutation.cjs');
+const { isSoftMutationVariant } = require('./welsh-mutation.cjs');
+const { wordLevelApplies, taughtWordKeys, untaughtWords } = require('./taught-words.cjs');
 
 /**
  * Check for LEGO conflicts before insertion.

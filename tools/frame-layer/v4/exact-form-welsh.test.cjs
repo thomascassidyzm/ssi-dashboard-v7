@@ -14,8 +14,11 @@ test('"trio" is accepted after "dw i’n trio" (met only inside the chunk)', () 
   assert.strictEqual(r.ok, true);
 });
 
-test('the same line is still rejected for a non-Welsh course (whole chunks only)', () => {
-  assert.strictEqual(exactFormCheck('mae trio', TAUGHT, { courseCode: 'spa_for_eng' }).ok, false);
+// Since 2026-10-13 (Aran, confirmed by Tom, job #587) every language reads words; with no
+// courseCode the language is unknown, so only whole-chunk tiling runs.
+test('a non-Welsh course reads words too, but folds no mutation; no courseCode = whole chunks only', () => {
+  assert.strictEqual(exactFormCheck('mae trio', TAUGHT, { courseCode: 'spa_for_eng' }).ok, true);
+  assert.strictEqual(exactFormCheck('dw i’n trio gael', TAUGHT, { courseCode: 'spa_for_eng' }).ok, false);
   assert.strictEqual(exactFormCheck('mae trio', TAUGHT).ok, false);
 });
 
@@ -39,16 +42,19 @@ test('nasal and aspirate forms are NOT folded: still new until that form is taug
   assert.strictEqual(exactFormCheck('mae chath', [...TAUGHT, 'ei chath hi'], { courseCode: C }).ok, true);
 });
 
-// The prompts say the same rule the check grades (welshVocabRulePrompt), Welsh only.
-test('generator prompts give Welsh courses Aran\'s rule and everyone else "whole taught chunks"', () => {
+// The prompts say the same rule the check grades (taught-words.cjs vocabRulePrompt): every
+// space-separated course, with the soft-mutation note for Welsh only; no-space scripts keep chunks.
+test('generator prompts give every course the word rule, Welsh the mutation note, Chinese whole chunks', () => {
   const { buildEscalationPrompt } = require('../../../services/course-builder/lib/build-escalation.cjs');
   const { buildGapPrompt } = require('./generate-v4.cjs');
   const esc = (courseCode) => buildEscalationPrompt({ courseCode, lego: { known: 'I try', target: 'dw i’n trio' }, usePhrases: [], priorPairs: [], need: 3 });
   assert.match(esc('cym_sv2_for_eng'), /ANY Welsh word taught earlier/);
   assert.doesNotMatch(esc('cym_sv2_for_eng'), /ONLY whole chunks/);
-  assert.match(esc('spa_for_eng'), /ONLY whole chunks/);
-  assert.doesNotMatch(esc('spa_for_eng'), /Welsh/);
+  assert.match(esc('spa_for_eng'), /ANY Spanish word taught earlier/);
+  assert.doesNotMatch(esc('spa_for_eng'), /Welsh|mutat/);
+  assert.match(esc('zho_for_eng'), /ONLY whole chunks/);
   const gap = (course) => buildGapPrompt({ course, region: [1, 2], seeds: [], newLegos: [], allChunks: [], missing: [], carriers: {} });
   assert.match(gap('cym_sv2_for_eng'), /ANY Welsh word taught earlier/);
-  assert.match(gap('fra_for_eng'), /whole taught chunks in VOCABULARY/);
+  assert.match(gap('fra_for_eng'), /ANY French word taught earlier/);
+  assert.match(gap('zho_for_eng'), /whole taught chunks in VOCABULARY/);
 });

@@ -13,7 +13,7 @@
 
 const { claudeChat } = require('../../shared/claude-cli.cjs');
 const { getLanguageName } = require('./language-config.cjs');
-const { isWelshTarget, welshVocabRulePrompt } = require('./welsh-mutation.cjs');
+const { vocabRulePrompt } = require('./taught-words.cjs');
 
 /**
  * Build the regeneration prompt for one lego's BUILD basket.
@@ -41,8 +41,8 @@ THE NEW LEGO (must appear whole, unmodified, in every phrase):
 
 BUILD phrase rules (ralph-methodology):
 - Each BUILD phrase = the new LEGO plugging into PREVIOUSLY-INTRODUCED material below. Fragments are fine, but they must be extensible into full natural sentences.
-${isWelshTarget(courseCode)
-    ? `- ${welshVocabRulePrompt(courseCode)} No invented fillers.`
+${vocabRulePrompt(courseCode)
+    ? `- ${vocabRulePrompt(courseCode)} No invented fillers.`
     : '- Use ONLY whole chunks from the introduced vocabulary list — no new words, no re-conjugation, no invented fillers.'}
 - NEVER the bare LEGO alone. NEVER the LEGO (or a USE phrase) with a short tacked-on tag like ", yes / , here / , again / , please" — that is the template-stamp defect you are fixing.
 - Do not duplicate any USE phrase below.
