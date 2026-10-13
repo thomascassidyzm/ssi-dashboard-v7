@@ -35,6 +35,7 @@ const { castKeyForCourse } = require('./cast-language-key.cjs')
 const { isTomCastRow, rowIsForKey } = require('./voice-cast-gate.cjs')
 const voicingConfig = require('./voicing-policy.config.json')
 const { isTomCloneVoice, isWelshCourse, WELSH_TOM_MESSAGE } = require('./welsh-no-tom-clone.cjs')
+const { assertNotReplacingHuman } = require('./human-take-guard.cjs')
 
 const TOM_006 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
 const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
@@ -251,9 +252,11 @@ async function loadCourse(db, courseCode) {
  * Throws VoicePointerRefusal unless `to` (a course_audio id) may fill `col` on a row of `courseCode`.
  * Reads the clip, the course and the cast; a failed read refuses.
  */
-async function assertPointer(db, { courseCode, col, to }) {
+async function assertPointer(db, { courseCode, col, to, tbl, key, from, tomApproval, restore = false }) {
   const role = roleOfColumn(col)
   if (!role || !to) return
+  // FIRST, whatever the voice policy says: a HUMAN take is never replaced by a synthetic clip (Tom's HARD RULE 2026-10-13, human-take-guard.cjs).
+  await assertNotReplacingHuman(db, { tbl, key, col, from, to, tomApproval, restore })
   const { data: clip, error } = await db.from('course_audio').select('id, voice_id, language, origin').eq('id', to).maybeSingle()
   if (error) throw new VoicePointerRefusal(`resolveVoice: cannot read clip ${to} (${error.message})`, 'clip-unreadable')
   const v = checkPointer({ course: await loadCourse(db, courseCode), role, clip }, await loadCast(db))
@@ -264,10 +267,10 @@ async function assertPointer(db, { courseCode, col, to }) {
  * For tools with their own pointer writer: true when the write may go ahead, false (with one printed line) when resolveVoice refuses
  * it. A RESTORE of a ledgered before-state (an undo) passes — putting back what was there is not choosing a voice — and so does a null.
  */
-async function mayPoint(db, { courseCode, col, to, restore = false, log = console.log }) {
+async function mayPoint(db, { courseCode, col, to, tbl, key, from, tomApproval, restore = false, log = console.log }) {
   if (restore || to == null) return true
-  try { await assertPointer(db, { courseCode, col, to }); return true } catch (e) {
-    if (e.code !== 'VOICE_POLICY') throw e
+  try { await assertPointer(db, { courseCode, col, to, tbl, key, from, tomApproval }); return true } catch (e) {
+    if (e.code !== 'VOICE_POLICY' && e.code !== 'HUMAN_TAKE') throw e
     log(`REFUSED by resolveVoice (${e.reason}): ${e.message}`); return false
   }
 }
@@ -276,9 +279,9 @@ async function mayPoint(db, { courseCode, col, to, restore = false, log = consol
  * THE guarded pointer write: check, then `update … set col=to where id=key and col=from` (before-state asserted).
  * Returns true when exactly one row moved. Tools that repoint audio call this instead of writing the column themselves.
  */
-async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEventId = null }) {
+async function setSlotPointer(db, { tbl, key, col, from, to, courseCode, editEventId = null, tomApproval }) {
   if (!['course_seeds', 'course_legos', 'course_practice_phrases'].includes(tbl)) throw new Error(`setSlotPointer: not a slot table: ${tbl}`)
-  await assertPointer(db, { courseCode, col, to })
+  await assertPointer(db, { courseCode, col, to, tbl, key, from: from === undefined ? null : from, tomApproval })
   const patch = { [col]: to, ...(editEventId ? { last_edit_event_id: editEventId } : {}) }
   let q = db.from(tbl).update(patch).eq('id', key)
   q = from == null ? q.is(col, null) : q.eq(col, from)

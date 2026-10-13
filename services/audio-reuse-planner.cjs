@@ -95,6 +95,7 @@ const {
   voiceCandidates,
 } = require('./shared/relink-voice-guard.cjs')
 const createLogger = require('./shared/logger.cjs')
+const { assertNotReplacingHuman } = require('./shared/human-take-guard.cjs')
 
 const logger = createLogger('AudioReusePlanner')
 
@@ -1662,6 +1663,8 @@ async function relinkHolders(supabase, clip, audioId, { dryRun = true } = {}) {
       updated.push({ ...holder, to: audioId, applied: false })
       continue
     }
+    // Tom's HARD RULE 2026-10-13: a human take is never replaced by a synthetic clip (shared/human-take-guard.cjs).
+    await assertNotReplacingHuman(supabase, { tbl: holder.table, key: holder.id, col: holder.column, from: holder.currentAudioId, to: audioId })
     const { error } = await supabase
       .from(holder.table)
       .update({ [holder.column]: audioId })
