@@ -1,5 +1,5 @@
 /**
- * Intro lab — HTTP side (job #488). READ-ONLY: pure SELECTs and a byte proxy. No writes, no TTS, no S3 puts.
+ * Intro lab — HTTP side (job #488, narrowed by #501). READ-ONLY: pure SELECTs and a byte proxy. No writes, no TTS, no S3 puts.
  *
  * Tom, 2026-10-13: the #348 intro lab "should be a Popty tool" and "should also have the target LEGO". This is the data
  * the page (src/views/admin/IntroLab.vue) needs for ANY course:
@@ -7,8 +7,8 @@
  *   GET /                 the course's LEGOs (lean), the Tom-006 frame clip for its language if there is one, the six
  *                         tails, the Easy / Fast mode config, and the speed each target voice plays at.
  *   GET /lego/:legoId     one LEGO in full: how its CURRENT intro was spliced (course_audio.spliced_from, written by the
- *                         #364 remake), a cut donor if there is one, and the player's intro + debut cycles as an ordered
- *                         list of clips / silences (player-debut.cjs — the player's own rules, not guesses).
+ *                         #364 remake), a cut donor if there is one, and the player's intro cycle (intro, voice 1, voice 2) as an
+ *                         ordered list of clips / silences (player-debut.cjs — the player's own rules, not guesses).
  *   GET /clip/:audioId    the clip's bytes, same-origin. The browser must DECODE these to splice them, and the signed S3
  *                         redirect that /api/production/audio/:uuid/stream gives is not CORS-readable.
  *
@@ -22,7 +22,7 @@
 'use strict'
 
 const express = require('express')
-const { targetSpeedConfigFrom, debutPlan } = require('./player-debut.cjs')
+const { targetSpeedConfigFrom, modeConfigsFrom, introPlan } = require('./player-debut.cjs')
 
 const TOM_VOICE = 'd293d509' // Cartesia Tom-006, the English male voice presentation intros are spliced from (ruling 2026-10-12)
 
@@ -72,15 +72,31 @@ function recipeOf(splicedFrom) {
   }
 }
 
+// Cross-course clips the lab legitimately plays: the six tails and the "as in" joiner (rendered once, in one course, shared), and the
+// continuous Tom-006 presentation intros in DONOR_COURSES that a cut is made from (the donor search in /lego/:legoId).
+const SHARED_SPLICE_IDS = new Set([...TAILS.map((t) => t.id), AS_IN_PIECE_ID])
+const DONOR_COURSES = ['deu_for_eng']
+
+/** May this course's lab read this clip? Its own audio; the shared splice pieces; a donor; a piece its own intros were spliced from. */
+async function clipIsReadable(db, courseCode, audioId, clip) {
+  if (clip.course_code === courseCode) return true
+  if (SHARED_SPLICE_IDS.has(audioId)) return true
+  if (DONOR_COURSES.includes(clip.course_code) && clip.role === 'presentation' && isTom(clip.voice_id)) return true
+  // A piece (lego / context / is / cut-body) the #364 remake took from elsewhere and recorded in this course's own splice record.
+  const { data, error } = await db.from('course_audio').select('id').eq('course_code', courseCode).eq('role', 'presentation')
+    .contains('spliced_from', [{ audio_id: audioId }]).limit(1)
+  if (error) throw new Error(error.message)
+  return !!(data && data[0])
+}
+
 function createIntroLabRouter({ getDb, logger }) {
   const router = express.Router({ mergeParams: true })
   const log = logger || console
 
   async function modeConfigs(db) {
-    const { data, error } = await db.from('algorithm_config').select('key,config').in('key', ['normal_mode', 'fast_mode'])
+    const { data, error } = await db.from('algorithm_config').select('key,config').in('key', ['easy_mode', 'fast_mode', 'normal_mode'])
     if (error) throw new Error(error.message)
-    const by = Object.fromEntries((data || []).map((r) => [r.key, r.config]))
-    return { easy: by.normal_mode || {}, fast: by.fast_mode || {} }
+    return modeConfigsFrom(data)
   }
 
   async function voicePace(db, courseCode) {
@@ -131,7 +147,7 @@ function createIntroLabRouter({ getDb, logger }) {
       const speeds = {}
       for (const mode of ['easy', 'fast']) {
         const cfg = targetSpeedConfigFrom(course.voice_config, pace, mode)
-        const plan = debutPlan({ lego: {}, speedConfig: cfg, modeCfg: modes[mode] })
+        const plan = introPlan({ lego: {}, speedConfig: cfg })
         speeds[mode] = { target1: plan.speeds.target1, target2: plan.speeds.target2 }
       }
       const shaped = legos.map((l) => legoShape(l, presById.get(l.presentation_audio_id)))
@@ -207,11 +223,10 @@ function createIntroLabRouter({ getDb, logger }) {
         if (d) donor = { audioId: d.id, from: d.course_code, starts: d.word_timings.starts, ends: d.word_timings.ends }
       }
 
-      const modes = await modeConfigs(db)
       const pace = await voicePace(db, courseCode)
       const plans = {}
       for (const mode of ['easy', 'fast']) {
-        plans[mode] = debutPlan({ lego, speedConfig: targetSpeedConfigFrom(course.voice_config, pace, mode), modeCfg: modes[mode] })
+        plans[mode] = introPlan({ lego, speedConfig: targetSpeedConfigFrom(course.voice_config, pace, mode) })
       }
       res.json({ courseCode, lego, tomLegoId, donor, plans })
     } catch (e) {
@@ -222,11 +237,15 @@ function createIntroLabRouter({ getDb, logger }) {
 
   router.get('/clip/:audioId', async (req, res) => {
     try {
-      const { audioId } = req.params
+      const { courseCode, audioId } = req.params
       if (!UUID.test(audioId)) return res.status(400).json({ error: 'audioId must be a uuid' })
-      const { data, error } = await getDb().from('course_audio').select('s3_key').eq('id', audioId).maybeSingle()
+      const db = getDb()
+      const { data, error } = await db.from('course_audio').select('s3_key,course_code,role,voice_id').eq('id', audioId).maybeSingle()
       if (error) throw new Error(error.message)
       if (!data || !data.s3_key || data.s3_key.startsWith('pending/')) return res.status(404).json({ error: `no rendered clip ${audioId}` })
+      // The :courseCode gate authorised the CALLER for this course; the clip must belong to it too, or any course's audio is
+      // readable through any course the caller may open. Same 404 as a missing clip, so ids of other courses are not confirmed.
+      if (!(await clipIsReadable(db, courseCode, audioId, data))) return res.status(404).json({ error: `no rendered clip ${audioId}` })
       const s3 = require('../s3-production-service.cjs')
       const url = await s3.getAudioSignedUrl(audioId, 600, { s3Key: data.s3_key })
       const r = await fetch(url)
@@ -243,4 +262,4 @@ function createIntroLabRouter({ getDb, logger }) {
   return router
 }
 
-module.exports = { createIntroLabRouter, recipeOf, languageNameFromIntro, TAILS, AS_IN_PIECE_ID }
+module.exports = { createIntroLabRouter, clipIsReadable, SHARED_SPLICE_IDS, recipeOf, languageNameFromIntro, TAILS, AS_IN_PIECE_ID }

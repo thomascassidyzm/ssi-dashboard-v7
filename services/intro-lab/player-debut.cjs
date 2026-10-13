@@ -1,14 +1,13 @@
 /**
  * The player's debut, in numbers — a port of what ssi-learning-app does when it plays one LEGO's
- * intro cycle and debut cycle. READ-ONLY lab support; nothing here touches course data.
+ * intro cycle. READ-ONLY lab support; nothing here touches course data.
  *
  * Every rule below is copied from the player source, not guessed (function names are the player's):
  *   packages/core/src/script/voicePace.ts        targetPace, effectivePaceRatio, paceMultiplier, playbackSpeedForVoice
- *   packages/core/src/script/computePauseDuration.ts   computePauseDuration
+ *   packages/player-vue/src/composables/useAlgorithmConfig.ts  DEFAULT_EASY/FAST, the easy_mode/fast_mode keys
  *   packages/player-vue/src/providers/toSimpleRounds.ts  courseVoiceSpeedFor, computeCycleSpeed, intro lingerMs 2000,
- *                                                        intro pauseDuration 0, debut pause = computePauseDuration
+ *                                                        intro pauseDuration 0
  *   packages/player-vue/src/components/LearningPlayer.vue  currentTargetSpeedConfig (where the inputs come from),
- *                                                        getPostVoice2GapMs (Easy holds a gap after voice2)
  * If the player's rule moves, player-debut.test.cjs holds the worked numbers that will say so.
  */
 'use strict'
@@ -96,26 +95,33 @@ function cycleSpeed(config, slot) {
   return { speed: clamp(round2(base * speed), MIN_SPEED, base), reason }
 }
 
-/** computePauseDuration (core): k × the mean target clip length + a reaction beat, clamped. */
-function computePauseDuration(t1Ms, t2Ms, cfg) {
-  const a = t1Ms > 0 ? t1Ms : 0
-  const b = t2Ms > 0 ? t2Ms : 0
-  const answer = a > 0 || b > 0 ? Math.max(0, (a + b) / 2) : 2500
-  const calc = (cfg.pause_k ?? 2.8) * answer + (cfg.pause_reaction_ms ?? 800)
-  return Math.max(cfg.min_pause_ms ?? 1000, Math.min(cfg.max_pause_ms ?? 15000, Math.round(calc)))
+/**
+ * The mode config the player runs on: algorithm_config row merged OVER the player's baked defaults, field by field
+ * (useAlgorithmConfig.ts: `{ ...DEFAULT_EASY, ...(loaded.easy_mode || {}) }`). Easy's key is `easy_mode`. `normal_mode` is
+ * NOT Easy: it is only Fast's legacy fallback (`loaded.fast_mode || loaded.normal_mode`), so an old DB still gives Fast its tuned row.
+ * The intro cycle itself reads none of these (the player's MODE_BYPASS_TYPES skips the mode gap for intro cycles); they are
+ * returned so the page can show what the mode is.
+ */
+const MODE_DEFAULTS = {
+  easy: { playback_speed: 1.0, min_pause_ms: 2000, max_pause_ms: 15000, post_voice2_gap_ms: 1000 },
+  fast: { playback_speed: 1.0, min_pause_ms: 700, max_pause_ms: 15000, post_voice2_gap_ms: 0 },
+}
+function modeConfigsFrom(rows) {
+  const by = Object.fromEntries((rows || []).map((r) => [r.key, r.config]))
+  return {
+    easy: { ...MODE_DEFAULTS.easy, ...(by.easy_mode || {}) },
+    fast: { ...MODE_DEFAULTS.fast, ...(by.fast_mode || by.normal_mode || {}) },
+  }
 }
 
 /**
- * What the player does for one LEGO at its debut, as a list of clips to play in order.
- *   INTRO cycle : presentation clip (1.0×) → target1 → target2 (Easy 0.8× etc., NO pause) → 2000 ms linger.
- *   DEBUT cycle : known clip (1.0×) → pause (computePauseDuration) → target1 → target2 → the mode's post-voice2 gap.
- * `modeCfg` is the algorithm_config row for the mode (normal_mode = Easy, fast_mode = Fast).
+ * What the player does for one LEGO's INTRO cycle, as a list of clips to play in order (Tom, 2026-10-13: the lab is "just the
+ * intro from parts tool including the LEGO in both target voices" — no prompt/response/debut cycle):
+ *   presentation clip (1.0×) → target1 → target2 (Easy 0.8× etc., NO pause) → 2000 ms linger.
  */
-function debutPlan({ lego, speedConfig, modeCfg }) {
+function introPlan({ lego, speedConfig }) {
   const s1 = cycleSpeed(speedConfig, 'target1')
   const s2 = cycleSpeed(speedConfig, 'target2')
-  const pause = computePauseDuration(lego.target1DurationMs || 0, lego.target2DurationMs || 0, modeCfg || {})
-  const gap = toNumber(modeCfg && modeCfg.post_voice2_gap_ms)
   return {
     speeds: { target1: s1, target2: s2 },
     intro: [
@@ -124,15 +130,8 @@ function debutPlan({ lego, speedConfig, modeCfg }) {
       { kind: 'voice2', audioId: lego.target2AudioId, speed: s2.speed },
       { kind: 'silence', ms: INTRO_LINGER_MS, why: 'intro lingerMs' },
     ],
-    debut: [
-      { kind: 'prompt', audioId: lego.knownAudioId, speed: 1.0 },
-      { kind: 'silence', ms: pause, why: 'debut pause (computePauseDuration)' },
-      { kind: 'voice1', audioId: lego.target1AudioId, speed: s1.speed },
-      { kind: 'voice2', audioId: lego.target2AudioId, speed: s2.speed },
-      ...(gap && gap > 0 ? [{ kind: 'silence', ms: gap, why: 'post-voice2 gap' }] : []),
-    ],
   }
 }
 
 module.exports = { MIN_SPEED, MAX_SPEED, INTRO_LINGER_MS, targetPaceFor, effectivePaceRatio, voicePaceForSlot,
-  targetSpeedConfigFrom, cycleSpeed, computePauseDuration, debutPlan }
+  targetSpeedConfigFrom, cycleSpeed, modeConfigsFrom, introPlan }

@@ -3,8 +3,8 @@
     <LabCrumbs :trail="[{ label: 'Home', to: '/' }, { label: 'Admin', to: '/admin' }, { label: 'Labs', to: '/admin/labs' }, { label: 'Intro Lab' }]" />
     <h1>Intro Lab</h1>
     <p class="sub">
-      The spliced Tom-voice intro, then the LEGO exactly as the player plays it at its debut. Pick a course and a LEGO (or a
-      sample set), drag any setting and it plays again on release. Read-only: nothing here writes course data or renders audio.
+      The spliced Tom-voice intro, then the LEGO in target voice 1 and target voice 2, exactly as the player's intro cycle plays
+      them. Pick a course and a LEGO (or a sample set), drag any setting and it plays again on release. Read-only: nothing here writes course data or renders audio.
     </p>
 
     <section class="card">
@@ -76,10 +76,6 @@
             </select>
           </label>
         </div>
-        <div class="row">
-          <label class="chk"><input type="checkbox" v-model="withIntro" @change="settle"> Intro cycle (intro → voice 1 → voice 2 → 2 s hold)</label>
-          <label class="chk"><input type="checkbox" v-model="withDebut" @change="settle"> Then the debut cycle (known → pause → voice 1 → voice 2)</label>
-        </div>
       </section>
 
       <section class="card">
@@ -115,9 +111,8 @@
       </section>
 
       <p class="note foot">
-        Intro cycle and debut cycle follow the player: toSimpleRounds.ts (intro prompt 1.0×, no pause, 2000 ms hold; debut pause =
-        computePauseDuration), voicePace.ts and the course’s by-ear speed for the voices, and the Easy / Fast config rows in
-        algorithm_config. Levelling is the shipped introAssembly maths: −14 dBFS, 250 ms end silence. The target voices are played
+        The cycle follows the player’s intro cycle: toSimpleRounds.ts (intro 1.0×, no pause, 2000 ms hold), voicePace.ts and the
+        course’s by-ear speed for the voices, and the Easy / Fast config rows in algorithm_config. Levelling is the shipped introAssembly maths: −14 dBFS, 250 ms end silence. The target voices are played
         through the browser’s pitch-preserving rate, as the player does.
       </p>
     </template>
@@ -140,8 +135,6 @@ const loadError = ref('')
 const setKey = ref('spread')
 const source = ref('as-built')
 const mode = ref('easy')
-const withIntro = ref(true)
-const withDebut = ref(false)
 const auto = ref(true)
 const s = reactive({ ...HOUSE })
 const status = ref('')
@@ -152,7 +145,14 @@ const stepNow = ref(-1)
 const sgn = (v) => (v > 0 ? '+' : '') + v
 const shortKnown = (l) => (l.known.length > 16 ? l.known.slice(0, 15) + '…' : l.known)
 const recipeLabel = (r) => ({ bare: 'bare', cut: 'as-in, cut from one recording', pieces: 'as-in, joined from pieces' }[r] || r)
-const base = (p) => `${getApiBaseUrl()}/api/production/${course.value}/intro-lab${p}`
+const baseFor = (code, p) => `${getApiBaseUrl()}/api/production/${code}/intro-lab${p}`
+const base = (p) => baseFor(course.value, p)
+// Generation guard: every load that lands asynchronously (course list, one LEGO) takes a ticket first and is dropped if a newer
+// pick has been made since, so a slow answer for the OLD course/LEGO can never overwrite the new one.
+let courseGen = 0
+let legoGen = 0
+// What a playback is built from, captured BEFORE it starts: switching course mid-play must not mix courses into one sample.
+const snapshot = () => ({ course: course.value, data: data.value })
 
 // ---- sample sets --------------------------------------------------------------------------------------------------
 const spread = (list, n) => {
@@ -174,31 +174,41 @@ const runList = computed(() => (sets.value.find((x) => x.key === setKey.value) |
 
 async function onCourse(code) {
   stop()
+  const gen = ++courseGen
+  legoGen++
   course.value = code || ''
   data.value = null; detail.value = null; loadError.value = ''
-  if (!course.value) return
+  if (!course.value) { loading.value = false; return }
+  const mine = course.value
   loading.value = true
   try {
-    const r = await fetch(base('/'))
+    const r = await fetch(baseFor(mine, '/'))
     if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || `HTTP ${r.status}`)
-    data.value = await r.json()
+    const body = await r.json()
+    if (gen !== courseGen) return // a newer course was picked while this one loaded
+    data.value = body
     setKey.value = 'spread'
     source.value = data.value.counts.bare + data.value.counts.cut + data.value.counts.pieces ? 'as-built' : (data.value.frame ? 'splice' : 'current')
     if (runList.value.length) await pickLego(runList.value[0].legoId, false)
   } catch (e) {
-    loadError.value = `Could not load ${course.value}: ${e.message}`
-  } finally { loading.value = false }
+    if (gen === courseGen) loadError.value = `Could not load ${mine}: ${e.message}`
+  } finally { if (gen === courseGen) loading.value = false }
 }
 
 function pickSet(k) { setKey.value = k; if (runList.value.length) pickLego(runList.value[0].legoId, true) }
 
 async function pickLego(id, play) {
   stop()
+  const gen = ++legoGen
+  const mine = course.value
   legoId.value = id
   detail.value = null
-  const r = await fetch(base('/lego/' + encodeURIComponent(id)))
+  const r = await fetch(baseFor(mine, '/lego/' + encodeURIComponent(id)))
+  if (gen !== legoGen) return
   if (!r.ok) { say(`Could not load ${id}`, true); return }
-  detail.value = await r.json()
+  const body = await r.json()
+  if (gen !== legoGen) return // a newer LEGO or course was picked while this one loaded
+  detail.value = body
   if (play && auto.value) playOne()
 }
 
@@ -209,11 +219,11 @@ let run = 0
 let current = null // { stop() } of whatever is sounding
 
 const ac = () => { if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)(); return ctx }
-const clipUrl = (id) => base('/clip/' + id)
-async function pcm(id) {
-  const key = course.value + id
+const clipUrl = (id, code) => baseFor(code, '/clip/' + id)
+async function pcm(id, snap) {
+  const key = snap.course + id
   if (pcmCache.has(key)) return pcmCache.get(key)
-  const r = await fetch(clipUrl(id))
+  const r = await fetch(clipUrl(id, snap.course))
   if (!r.ok) throw new Error(`clip ${id.slice(0, 8)} → HTTP ${r.status}`)
   const buf = await ac().decodeAudioData(await r.arrayBuffer())
   const x = buf.getChannelData(0)
@@ -247,84 +257,81 @@ function playClip(el) {
 // An <audio> element cannot send the dashboard's Authorization header, and the clip route is auth-gated (it only opens
 // without a token for same-host callers). So the bytes come through the authenticated fetch and play from a blob URL.
 const blobUrls = new Map()
-async function blobUrl(id) {
-  const key = course.value + id
+async function blobUrl(id, snap) {
+  const key = snap.course + id
   if (blobUrls.has(key)) return blobUrls.get(key)
-  const r = await fetch(clipUrl(id))
+  const r = await fetch(clipUrl(id, snap.course))
   if (!r.ok) throw new Error(`clip ${id.slice(0, 8)} → HTTP ${r.status}`)
   const u = URL.createObjectURL(await r.blob())
   blobUrls.set(key, u)
   return u
 }
-async function makeClip(id, speed) {
-  const el = new Audio(await blobUrl(id))
+async function makeClip(id, speed, snap) {
+  const el = new Audio(await blobUrl(id, snap))
   el.preload = 'auto'; el.playbackRate = speed; el.preservesPitch = true
   return el
 }
 
 /** The spliced (or shipped) intro as a Float32Array, plus a note saying what was actually made. */
-async function makeIntro(d) {
+async function makeIntro(d, snap) {
   const lego = d.lego
-  const fallback = async (why) => ({ x: await pcm(lego.presentationAudioId), note: `shipped intro (${why})` })
+  const dat = snap.data
+  const fallback = async (why) => ({ x: await pcm(lego.presentationAudioId, snap), note: `shipped intro (${why})` })
   if (!lego.presentationAudioId) throw new Error('this LEGO has no intro clip')
   const kindOf = (k) => (lego.built ? lego.built.pieces.find((p) => p.kind === k || p.kind.startsWith(k + ':')) : null)
   const sr = ac().sampleRate
   let want = source.value
   if (want === 'current') return fallback('as chosen')
-  if (want === 'as-built' && !lego.built) want = data.value.frame ? 'splice' : 'current'
-  if (want !== 'current' && !data.value.frame && !(want === 'as-built' && lego.built)) return fallback('no Tom frame for this course')
-  const frameId = data.value.frame ? data.value.frame.audioId : (kindOf('frame') || {}).audioId
+  if (want === 'as-built' && !lego.built) want = dat.frame ? 'splice' : 'current'
+  if (want !== 'current' && !dat.frame && !(want === 'as-built' && lego.built)) return fallback('no Tom frame for this course')
+  const frameId = dat.frame ? dat.frame.audioId : (kindOf('frame') || {}).audioId
   if (!frameId) return fallback('no Tom frame for this course')
-  const frame = await pcm(frameId)
+  const frame = await pcm(frameId, snap)
   if (want === 'as-built') {
     const r = lego.built.recipe
     if (r === 'cut') {
       if (!d.donor) return fallback('cut donor missing')
-      return { x: buildIntro('cut', { frame, donor: await pcm(d.donor.audioId), donorStart: d.donor.starts[3], donorEnd: d.donor.ends[d.donor.ends.length - 1] }, s, sr), note: 'rebuilt: cut as-in' }
+      return { x: buildIntro('cut', { frame, donor: await pcm(d.donor.audioId, snap), donorStart: d.donor.starts[3], donorEnd: d.donor.ends[d.donor.ends.length - 1] }, s, sr), note: 'rebuilt: cut as-in' }
     }
     if (r === 'pieces') {
       const need = ['lego', 'asin', 'context', 'is'].map(kindOf)
       if (need.some((p) => !p)) return fallback('pieces missing')
-      const [l, a, c, i] = await Promise.all(need.map((p) => pcm(p.audioId)))
+      const [l, a, c, i] = await Promise.all(need.map((p) => pcm(p.audioId, snap)))
       return { x: buildIntro('pieces', { frame, lego: l, asIn: a, context: c, is: i }, s, sr), note: 'rebuilt: joined as-in' }
     }
     const l = kindOf('lego'), t = kindOf('tail')
     if (!l || !t) return fallback('pieces missing')
-    return { x: buildIntro('bare', { frame, lego: await pcm(l.audioId), tail: await pcm(t.audioId) }, s, sr), note: `rebuilt: bare, ${t.kind.slice(5)}` }
+    return { x: buildIntro('bare', { frame, lego: await pcm(l.audioId, snap), tail: await pcm(t.audioId, snap) }, s, sr), note: `rebuilt: bare, ${t.kind.slice(5)}` }
   }
   if (want === 'cut') {
     if (!d.donor) return fallback('no continuous intro to cut this LEGO from')
-    return { x: buildIntro('cut', { frame, donor: await pcm(d.donor.audioId), donorStart: d.donor.starts[3], donorEnd: d.donor.ends[d.donor.ends.length - 1] }, s, sr), note: `cut from ${d.donor.from}` }
+    return { x: buildIntro('cut', { frame, donor: await pcm(d.donor.audioId, snap), donorStart: d.donor.starts[3], donorEnd: d.donor.ends[d.donor.ends.length - 1] }, s, sr), note: `cut from ${d.donor.from}` }
   }
   if (!d.tomLegoId) return fallback('no Tom-006 reading of this LEGO to splice')
-  const tail = data.value.tails.find((t) => t.key === s.tail) || data.value.tails[0]
-  return { x: buildIntro('bare', { frame, lego: await pcm(d.tomLegoId), tail: await pcm(tail.id) }, s, sr), note: `spliced, tail “${tail.label}”` }
+  const tail = dat.tails.find((t) => t.key === s.tail) || dat.tails[0]
+  return { x: buildIntro('bare', { frame, lego: await pcm(d.tomLegoId, snap), tail: await pcm(tail.id, snap) }, s, sr), note: `spliced, tail “${tail.label}”` }
 }
 
-/** The ordered cycle list for one LEGO: what plays, with the player's own speeds and pauses. */
-async function sequenceFor(d) {
+/** The ordered cycle list for one LEGO: what plays, with the player's own speeds. Intro, voice 1, voice 2, hold — nothing else. */
+async function sequenceFor(d, snap) {
   const plan = d.plans[mode.value]
-  const list = []
-  if (withIntro.value) {
-    const intro = await makeIntro(d)
-    const secs = (intro.x.length / ac().sampleRate).toFixed(2)
-    list.push({ label: `Intro — ${intro.note} (${secs} s, 1.0×)`, run: () => playBuffer(intro.x) })
-    for (const c of plan.intro.slice(1)) list.push(stepOf(c, 'intro'))
-  }
-  if (withDebut.value) for (const c of plan.debut) list.push(stepOf(c, 'debut'))
+  const intro = await makeIntro(d, snap)
+  const secs = (intro.x.length / ac().sampleRate).toFixed(2)
+  const list = [{ label: `Intro — ${intro.note} (${secs} s, 1.0×)`, run: () => playBuffer(intro.x) }]
+  for (const c of plan.intro.slice(1)) list.push(stepOf(c, snap))
   return list
 }
-function stepOf(c, cycle) {
-  if (c.kind === 'silence') return { label: `${cycle}: hold ${c.ms} ms (${c.why})`, run: (id) => sleep(c.ms, id) }
-  const name = { prompt: 'known prompt', voice1: 'target voice 1', voice2: 'target voice 2' }[c.kind]
+function stepOf(c, snap) {
+  if (c.kind === 'silence') return { label: `hold ${c.ms} ms (${c.why})`, run: (id) => sleep(c.ms, id) }
+  const name = { voice1: 'target voice 1', voice2: 'target voice 2' }[c.kind]
   // Fetched now (so the whole sequence is ready before the first sound), played later.
-  const ready = c.audioId ? makeClip(c.audioId, c.speed) : Promise.resolve(null)
+  const ready = c.audioId ? makeClip(c.audioId, c.speed, snap) : Promise.resolve(null)
   ready.catch(() => {})
-  return { label: `${cycle}: ${name} at ${c.speed}×`, run: async () => { const el = await ready; if (el) await playClip(el) } }
+  return { label: `${name} at ${c.speed}×`, run: async () => { const el = await ready; if (el) await playClip(el) } }
 }
 
-async function runLego(id, d, tag) {
-  const seq = await sequenceFor(d)
+async function runLego(id, d, tag, snap) {
+  const seq = await sequenceFor(d, snap)
   if (id !== run) return false
   steps.value = seq.map((x) => x.label)
   for (let i = 0; i < seq.length; i++) {
@@ -340,26 +347,31 @@ async function playOne() {
   stop()
   if (!detail.value) return
   const id = ++run
+  const snap = snapshot()
+  const d = detail.value
   await ac().resume()
   try {
     say('Preparing…')
-    if (await runLego(id, detail.value, '')) say('Done.')
+    if (await runLego(id, d, '', snap)) say('Done.')
   } catch (e) { if (id === run) say(e.message, true) }
 }
 
 async function playRun() {
   stop()
   const id = ++run
-  await ac().resume()
+  const snap = snapshot()
   const list = runList.value
+  await ac().resume()
   try {
     for (let i = 0; i < list.length && id === run; i++) {
       legoId.value = list[i].legoId
       say(`Loading ${list[i].legoId}…`)
-      const r = await fetch(base('/lego/' + encodeURIComponent(list[i].legoId)))
+      const r = await fetch(baseFor(snap.course, '/lego/' + encodeURIComponent(list[i].legoId)))
       if (!r.ok || id !== run) continue
-      detail.value = await r.json()
-      if (!(await runLego(id, detail.value, `${i + 1}/${list.length} `))) return
+      const d = await r.json()
+      if (id !== run) return
+      detail.value = d
+      if (!(await runLego(id, d, `${i + 1}/${list.length} `, snap))) return
       await sleep(900, id)
     }
     if (id === run) say(`Done — ${list.length} LEGOs.`)
@@ -383,7 +395,7 @@ const line = computed(() => {
   const tail = data.value.tails.find((t) => t.key === s.tail)
   return `course=${course.value} lego=${detail.value.lego.legoId} source=${source.value} mode=${mode.value} tail="${tail ? tail.label : s.tail}" ` +
     `gapFrameToLego=${s.g1}ms gapLegoToTail=${s.g2}ms gapInPieces=${s.inGap}ms legoEmphasis=${sgn(s.em)}dB tailLevel=${sgn(s.tl)}dB fade=${s.fd}ms trimEdges=${s.trim} ` +
-    `intro=${withIntro.value} debut=${withDebut.value} (overall -14 dBFS, 250 ms end silence)`
+    `(intro, voice 1, voice 2; overall -14 dBFS, 250 ms end silence)`
 })
 async function copy() { try { await navigator.clipboard.writeText(line.value); say('Copied.') } catch { say('Select the text and copy it.', true) } }
 
