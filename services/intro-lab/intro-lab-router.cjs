@@ -82,6 +82,13 @@ async function clipIsReadable(db, courseCode, audioId, clip) {
   if (clip.course_code === courseCode) return true
   if (SHARED_SPLICE_IDS.has(audioId)) return true
   if (DONOR_COURSES.includes(clip.course_code) && clip.role === 'presentation' && isTom(clip.voice_id)) return true
+  // A library-reused clip (rendered for another course, same words, linked here by the library-first route): readable when this
+  // course's own LEGO rows point at it. Refusal here was the "no rendered clip" 404 on 13 afr known clips (job #519); the player
+  // reads them fine by id.
+  const ref = await db.from('course_legos').select('lego_id').eq('course_code', courseCode)
+    .or(`known_audio_id.eq.${audioId},target1_audio_id.eq.${audioId},target2_audio_id.eq.${audioId}`).limit(1)
+  if (ref.error) throw new Error(ref.error.message)
+  if (ref.data && ref.data[0]) return true
   // A piece (lego / context / is / cut-body) the #364 remake took from elsewhere and recorded in this course's own splice record.
   // The containment value is a JSON STRING: supabase-js turns a JS array into a Postgres array literal {..}, which jsonb rejects (500).
   const { data, error } = await db.from('course_audio').select('id').eq('course_code', courseCode).eq('role', 'presentation')
