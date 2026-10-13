@@ -10,7 +10,7 @@ const { isChinese, getLanguageName } = require('../lib/language-config.cjs');
 const { loadCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cjs');
 const { getCheckpointStatus, CHECKPOINT_SEEDS } = require('../lib/checkpoint.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
-const { calculateLegoBalanceScores } = require('../lib/validation.cjs');
+const { calculateLegoBalanceScores, hasNonExampleText } = require('../lib/validation.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 const { fetchCanonicalSeeds } = require('../lib/canonical-source.cjs');
 
@@ -930,6 +930,11 @@ USE:
 
     if (!target_text && !known_text) {
       return res.status(400).json({ error: 'target_text or known_text is required' });
+    }
+
+    // #486: every known/target string is spoken aloud; no brackets, notes or a/b lists (see checkNonExampleText)
+    if (hasNonExampleText(target_text) || hasNonExampleText(known_text)) {
+      return res.status(400).json({ error: 'NON_EXAMPLE_TEXT', message: 'known_text/target_text must be plain speakable text: no brackets, (notes) or slash-separated alternatives' });
     }
 
     const updateFields = { status: 'released' };

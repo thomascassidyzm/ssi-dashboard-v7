@@ -26,21 +26,27 @@ describe('player debut port', () => {
     const cfg = P.targetSpeedConfigFrom({ voices: { target1: { voiceId: 'v', settings: { speed: 0.9 } } } }, null, 'easy')
     expect(P.cycleSpeed(cfg, 'target1').speed).toBe(1.0)
   })
-  it('pause = 2.8 × mean answer + 800, clamped to 1000..15000', () => {
-    const cfg = { pause_k: 2.8, pause_reaction_ms: 800, min_pause_ms: 1000, max_pause_ms: 15000 }
-    expect(P.computePauseDuration(1000, 3000, cfg)).toBe(6400)
-    expect(P.computePauseDuration(0, 0, cfg)).toBe(7800)
-    expect(P.computePauseDuration(100, 100, cfg)).toBe(1080)
-  })
-  it('intro cycle: presentation, t1, t2, then a 2000 ms linger with no pause; debut has the pause', () => {
-    const plan = P.debutPlan({
-      lego: { presentationAudioId: 'p', knownAudioId: 'k', target1AudioId: 'a', target2AudioId: 'b', target1DurationMs: 1000, target2DurationMs: 3000 },
+  it('intro cycle: presentation, voice 1, voice 2, then a 2000 ms linger — no prompt/response/debut cycle, no pause', () => {
+    const plan = P.introPlan({
+      lego: { presentationAudioId: 'p', knownAudioId: 'k', target1AudioId: 'a', target2AudioId: 'b' },
       speedConfig: P.targetSpeedConfigFrom(mk(), null, 'easy'),
-      modeCfg: { pause_k: 2.8, pause_reaction_ms: 800, min_pause_ms: 1000, max_pause_ms: 15000, post_voice2_gap_ms: 1500 },
     })
     expect(plan.intro.map((c) => c.kind)).toEqual(['prompt', 'voice1', 'voice2', 'silence'])
+    expect(plan.intro.map((c) => c.audioId)).toEqual(['p', 'a', 'b', undefined])
     expect(plan.intro[3].ms).toBe(2000)
-    expect(plan.debut.map((c) => c.kind)).toEqual(['prompt', 'silence', 'voice1', 'voice2', 'silence'])
-    expect(plan.debut[1].ms).toBe(6400)
+    expect(plan.debut).toBeUndefined()
+    expect(P.debutPlan).toBeUndefined()
+  })
+  it('Easy reads easy_mode, never normal_mode; normal_mode only backs Fast; rows merge over the defaults', () => {
+    const m = P.modeConfigsFrom([
+      { key: 'normal_mode', config: { min_pause_ms: 111 } },
+      { key: 'easy_mode', config: { post_voice2_gap_ms: 1500 } },
+    ])
+    expect(m.easy.post_voice2_gap_ms).toBe(1500)
+    expect(m.easy.min_pause_ms).toBe(2000) // default, not normal_mode's 111
+    expect(m.fast.min_pause_ms).toBe(111) // Fast's legacy fallback
+    const both = P.modeConfigsFrom([{ key: 'normal_mode', config: { min_pause_ms: 111 } }, { key: 'fast_mode', config: { min_pause_ms: 222 } }])
+    expect(both.fast.min_pause_ms).toBe(222)
+    expect(both.easy.min_pause_ms).toBe(2000)
   })
 })
