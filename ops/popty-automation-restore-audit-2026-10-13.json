@@ -1,0 +1,47 @@
+{
+  "job": 842,
+  "date": "2026-10-13",
+  "decision": "Leave all three hooks paused: job 821's restart exclusions are not on their deployed code paths.",
+  "source_audit": "origin/cs/821-popty-popty-phase8-audio-must-no:ops/tts-pause-audit-2026-10-13.json (PR 85)",
+  "observed_checkouts": {
+    "/home/tomcassidy/SSi/ssi-dashboard-v7-clean": "6bfaa1f437ceb7bc0e42d494949951bbb6c39534",
+    "/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod": "959b8b0855aa5cd288ce6e671a23af814f90f366"
+  },
+  "hooks": [
+    {
+      "hook": "popty-services-watchdog cron, every 2 minutes",
+      "deployed_script": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean/ops/watchdog/popty-services-watchdog.sh",
+      "renders_directly": false,
+      "starts_tts_units": ["popty-phase8-audio", "popty-orchestrator"],
+      "mechanism": "Two missed health checks trigger systemctl --user restart; also resurrects the user manager.",
+      "decision": "Left commented out. The deployed script still checks Phase 8 and orchestrator; 821 removes both checks only on its branch."
+    },
+    {
+      "hook": "popty-staleness-watchdog cron, every 10 minutes",
+      "deployed_script": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/ops/watchdog/popty-staleness-watchdog.sh",
+      "renders_directly": false,
+      "starts_tts_units": ["popty-phase8-audio"],
+      "mechanism": "SERVICES includes Phase 8; fallback WorkingDirectory attribution includes it even while stopped, then restart_services restarts MY_UNITS after a permitted pull. This host selects systemd, not the script's broader pm2 restart-all fallback.",
+      "decision": "Left commented out. The deployed SERVICES list still includes Phase 8; 821's exclusion has not landed here."
+    },
+    {
+      "hook": "ssi-auto-deploy.timer and ssi-auto-deploy.service",
+      "deployed_script": "/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/tools/deploy/auto-deploy-prod.cjs",
+      "renders_directly": false,
+      "starts_tts_units": ["popty-phase8-audio"],
+      "mechanism": "Timer invokes the oneshot service every 2 minutes. UNITS includes Phase 8; restart logic starts inactive units even without a new deploy. ExecStartPre bootstraps only if the existing script is missing.",
+      "decision": "Left timer disabled/inactive and service disabled/inactive. The deployed UNITS list still includes Phase 8; 821's exclusion has not landed here."
+    }
+  ],
+  "tts_verification": {
+    "popty-phase8-audio": "inactive, static, Restart=no, no WantedBy or RequiredBy",
+    "popty-staging-phase8": "inactive, static, Restart=no, no WantedBy or RequiredBy",
+    "popty-orchestrator": "inactive, static, Restart=no, no WantedBy or RequiredBy",
+    "voicelab-playground": "inactive, static, Restart=no, no WantedBy or RequiredBy",
+    "cs-long-791-go*": "No loaded units or installed unit files",
+    "popty-staging-api": "Live unit already has no Wants/After dependency on staging Phase 8; that correction alone does not protect the three hooks."
+  },
+  "live_changes": [],
+  "repository_change": "This audit only; no executable changes and no tests run for the read-only inspection.",
+  "gap": "Restoration is blocked until 821's hook exclusions are present on both actual cron/deploy paths and rechecked. No watchdog or deploy script was executed, no TTS rendered, and no data or unit files deleted."
+}
