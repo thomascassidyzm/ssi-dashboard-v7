@@ -230,7 +230,8 @@ onMounted(load)
   max-width: 760px; min-height: 100vh; margin: 0 auto; padding: 0 0.5rem 5rem;
   background: var(--lp-bg); color: var(--lp-ink); color-scheme: light;
 }
-.top { position: sticky; top: 0; z-index: 5; background: var(--lp-bg); padding: 0.6rem 0.25rem 0.4rem; border-bottom: 1px solid var(--lp-line); }
+/* Under Popty's sticky navbar (it publishes --app-navbar-height); at top: 0 the navbar covered this header (#562). */
+.top { position: sticky; top: var(--app-navbar-height, 0px); z-index: 5; background: var(--lp-bg); padding: 0.6rem 0.25rem 0.4rem; border-bottom: 1px solid var(--lp-line); }
 .bar { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin: 0.25rem 0; }
 h1 { font-size: 1.2rem; margin: 0; flex: 1; color: var(--lp-ink); }
 button { font: inherit; color: inherit; cursor: pointer; }
