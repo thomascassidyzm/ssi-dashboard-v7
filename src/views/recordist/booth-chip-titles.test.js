@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { boothCourseChip, boothPodChip } from './booth-chip-titles.js'
+import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords } from './booth-chip-titles.js'
 
 // Aran's chosen titles, 2026-10-13.
 describe('booth chip titles', () => {
@@ -31,5 +31,22 @@ describe('booth chip titles', () => {
   it('an unmapped course keeps the old label rather than vanishing', () => {
     expect(boothCourseChip('xyz_for_eng', ['xyz_for_eng'])).toBe('Course')
     expect(boothCourseChip('xyz_for_eng', ['xyz_for_eng', 'abc'])).toBe('Course xyz_for_eng')
+  })
+})
+
+describe('booth section headings use the same names as the chips', () => {
+  it('Health pods read Health (scripts) / Health (test) as headings too', () => {
+    expect(boothPodHeading({ courseCode: 'cym_n_for_eng', podSlug: 'health' })).toBe('Health (scripts)')
+    expect(boothPodHeading({ courseCode: 'cym_n_for_eng', podSlug: 'health-ladder-pilot' })).toBe('Health (test)')
+  })
+  it('the core pod reads Welsh Pod1, without a dialect', () => {
+    expect(boothPodHeading({ courseCode: 'cym_s_for_eng', podSlug: 'pod-1' })).toBe('Welsh Pod1')
+  })
+  it('an unnamed pod has no booth heading, so it keeps its own', () => {
+    expect(boothPodHeading({ courseCode: 'x', podSlug: 'guess' })).toBeNull()
+  })
+  it('course words in a sentence carry the dialect', () => {
+    expect(boothCourseWords('cym_nv2_for_eng', 'North')).toBe('New Welsh — North')
+    expect(boothCourseWords('zzz', 'Zed')).toBe('Zed')
   })
 })

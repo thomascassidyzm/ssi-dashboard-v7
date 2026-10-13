@@ -58,3 +58,20 @@ export function boothPodChip({ courseCode, podSlug, podTitle } = {}, allKeys = [
   if (entry) return named(entry, dialectsOf(allKeys, BOOTH_POD_TITLES))
   return BOOTH_POD_SLUG_TITLES[podSlug] || podTitle || podSlug
 }
+
+// A pod's SECTION HEADING on the booth page: the same words as its chip, so the
+// page reads one way. Null when the pod has no booth name — the caller then
+// keeps the heading it always had. A heading is keyed by pod slug alone (the
+// queue's pod groups span courses), so it never adds the dialect.
+export function boothPodHeading({ courseCode, podSlug } = {}) {
+  if (BOOTH_POD_SLUG_TITLES[podSlug]) return BOOTH_POD_SLUG_TITLES[podSlug]
+  const entry = BOOTH_POD_TITLES[`${courseCode}/${podSlug}`]
+  return entry ? entry.title : null
+}
+
+// Where a course's own name is wanted in a sentence ("Pass 1 of 2 · New Welsh —
+// North batch 3 of 30"): always with the dialect, the phrase queue spans both.
+export function boothCourseWords(courseCode, fallback) {
+  const entry = BOOTH_COURSE_TITLES[courseCode]
+  return entry ? `${entry.title} — ${entry.dialect}` : (fallback || courseCode)
+}

@@ -104,7 +104,7 @@
            first pass is never mistaken for all of it. -->
       <div v-if="phrases && (phrases.pass || phrases.finished)" class="volume-card phrase-card" data-test="phrase-batch">
         <template v-if="phrases.pass">
-          <p class="phrase-kicker">Practice phrases · {{ phrases.courseLabel }}</p>
+          <p class="phrase-kicker">Practice phrases · {{ boothCourseWords(phrases.courseCode, phrases.courseLabel) }}</p>
           <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
           <p class="phrase-count">{{ phrases.batchRecorded }} of {{ phrases.batchLines }} recorded in this batch</p>
           <p v-if="phrases.pass === 1" class="volume-note">
@@ -675,7 +675,7 @@
            first pass is never mistaken for all of it. -->
       <div v-if="phrases && (phrases.pass || phrases.finished)" class="volume-card phrase-card" data-test="phrase-batch">
         <template v-if="phrases.pass">
-          <p class="phrase-kicker">Practice phrases · {{ phrases.courseLabel }}</p>
+          <p class="phrase-kicker">Practice phrases · {{ boothCourseWords(phrases.courseCode, phrases.courseLabel) }}</p>
           <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
           <p class="phrase-count">{{ phrases.batchRecorded }} of {{ phrases.batchLines }} recorded in this batch</p>
           <p v-if="phrases.pass === 1" class="volume-note">
@@ -801,7 +801,7 @@ import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStored
 import { createAdvanceLock } from './recordist/advance-lock'
 import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
-import { boothCourseChip, boothPodChip } from './recordist/booth-chip-titles.js'
+import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords } from './recordist/booth-chip-titles.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
@@ -969,6 +969,7 @@ const rosterRows = computed(() => lines.value.map(l => ({
   // groups by its kind exactly as it always did.
   podSlug: l.podSlug || null,
   podTitle: l.podTitle || null,
+  courseCode: l.courseCode || null,
   // HOW IT IS READ. The roster draws it so the two speeds of the minimal set
   // are told apart at a glance, and onNext acts on it below.
   readStyle: l.readStyle || 'natural',
@@ -1019,7 +1020,7 @@ function phrasePlaceWords(pass, batch) {
   const p = phrases.value
   if (!p || !p.pass) return null
   const n = pass === p.pass ? p.batches : null
-  return `Pass ${pass || p.pass} of ${p.passes} · ${p.courseLabel} batch ${batch || p.batch}${n ? ` of ${n}` : ''}`
+  return `Pass ${pass || p.pass} of ${p.passes} · ${boothCourseWords(p.courseCode, p.courseLabel)} batch ${batch || p.batch}${n ? ` of ${n}` : ''}`
 }
 
 const SECTION_ORDER = [
@@ -1105,7 +1106,11 @@ const POD_SECTIONS = {
   'senedd-s4c-steve': { heading: 'SENEDD', blurb: 'The S4C committee session at the Senedd, 11 January 2024 — read in session order.' },
 }
 function podSectionFor(row) {
+  // The booth's own pod names (Aran, 2026-10-13) win over every other heading,
+  // so the section reads the same as its nav chip. Display only.
+  const booth = boothPodHeading(row)
   const named = POD_SECTIONS[row.podSlug]
+  if (booth) return { ...(named || { blurb: 'Your half of this conversation — the other characters are read by someone else.' }), heading: booth }
   if (named) return named
   const blurb = 'Your half of this conversation — the other characters are read by someone else.'
   // A pod line with NO slug at all is the world before this split existed -- an
@@ -1200,7 +1205,7 @@ const notReadyNotes = computed(() => notReady.value
   .filter(n => Number(n.lines) > 0)
   .map(n => ({
     key: n.podId || n.podSlug || 'pod',
-    heading: podSectionFor({ podSlug: n.podSlug, podTitle: n.podTitle }).heading,
+    heading: podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading,
     lines: Number(n.lines),
   })))
 
@@ -1219,7 +1224,7 @@ const handedOnNotes = computed(() => handedOn.value
   .filter(n => Number(n.lines) > 0)
   .map(n => ({
     key: n.podId || n.podSlug || 'pod',
-    heading: podSectionFor({ podSlug: n.podSlug, podTitle: n.podTitle }).heading,
+    heading: podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading,
     castTo: n.castTo || 'somebody else',
     lines: Number(n.lines),
   })))
