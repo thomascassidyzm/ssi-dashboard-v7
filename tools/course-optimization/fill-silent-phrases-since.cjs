@@ -25,8 +25,12 @@ function asks(rows) {
 }
 
 async function call(body, url = process.env.POPTY_URL || 'http://localhost:3470') {
-  const r = await fetch(`${url}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'fill-silent-phrases-since (job #431)' }, body: JSON.stringify(body) });
-  return { status: r.status, body: await r.json().catch(() => ({})) };
+  // A hung or dropped request (Popty restarts on every main push) is recorded as status 0, never retried here;
+  // the next run's dry pass finds the clip in the library if the server finished it anyway.
+  try {
+    const r = await fetch(`${url}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'fill-silent-phrases-since (job #431)' }, body: JSON.stringify(body), signal: AbortSignal.timeout(120000) });
+    return { status: r.status, body: await r.json().catch(() => ({})) };
+  } catch (e) { return { status: 0, body: { ok: false, error: String(e.cause && e.cause.code || e.name) } }; }
 }
 
 async function main() {
