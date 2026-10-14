@@ -103,7 +103,12 @@ function planAnswers(answers, items) {
       continue;
     }
     if (a.choice === 'own') {
-      if (looksLikeInstruction(a.text)) {
+      // Welsh followed by "- and also change the English to '…'": both fields set exactly
+      const both = /^(.*?)\s+[-–—]\s*and also change the English to\s*['‘](.+?)['’]\s*$/is.exec(a.text);
+      if (both && !looksLikeInstruction(both[1])) {
+        plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: curly(both[1].trim()) });
+        plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: curly(both[2]) });
+      } else if (looksLikeInstruction(a.text)) {
         if (/capitali[sz]ation/i.test(a.text) && /english/i.test(a.text)) plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: null, transform: 'capitaliseEnglish' });
         else if (/rhai to unrhyw/i.test(a.text)) {
           // 'change rhai to unrhyw and change some to any': word swaps in the Welsh and the English of the row
@@ -118,6 +123,13 @@ function planAnswers(answers, items) {
             plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: curly(e[1]) });
           } else if (e && !w) {
             plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: curly(e[1]) });
+          } else if (/^change to ['‘]([^'’]+)['’]\s*$/i.test(a.text.trim())) {
+            // "change to 'ar yr ochr arall'": the Welsh swaps in the new wording for the stretch it differs from
+            plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: null, replaceStretch: curly(/['‘]([^'’]+)['’]/.exec(a.text)[1]) });
+          } else if (/^change ['‘]?([\p{L}]+)['’]? to ['‘]?([\p{L}]+)['’]?\s*$/iu.test(a.text.trim())) {
+            // "change rhai to rai": whole-word swap in the Welsh
+            const m2 = /^change ['‘]?([\p{L}]+)['’]? to ['‘]?([\p{L}]+)['’]?\s*$/iu.exec(a.text.trim());
+            plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: null, swapWord: [m2[1], m2[2]] });
           } else plan.push({ itemId: a.id, rowShort, action: 'skip', why: `instruction not understood: "${a.text}"` });
         }
       } else plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: curly(a.text.trim()) });
@@ -193,6 +205,18 @@ async function main() {
     }
     const base = e.set[p.field] ?? row[p.field];
     if (p.swap) p.to = base.replace(p.swap[0], p.swap[1]);
+    if (p.swapWord) p.to = base.replace(new RegExp(`(?<![\\p{L}’'])${p.swapWord[0]}(?![\\p{L}’'])`, 'u'), p.swapWord[1]);
+    if (p.replaceStretch) {
+      // drop each one word of the new wording in turn; the remainder that already sits in the text is the stretch it replaces
+      const ws = p.replaceStretch.split(' ');
+      let hit = null;
+      for (let k = 0; k < ws.length && !hit; k++) {
+        const old = ws.filter((_, j) => j !== k).join(' ');
+        if (new RegExp(`(?<![\\p{L}’'])${old}(?![\\p{L}’'])`, 'u').test(base)) hit = old;
+      }
+      if (!hit) { report.unapplied.push(`${p.itemId}: could not find what "${p.replaceStretch}" replaces in "${base}"`); continue; }
+      p.to = base.replace(hit, p.replaceStretch);
+    }
     const to = p.transform === 'capitaliseEnglish' ? capitaliseEnglish(base) : p.to;
     if (to === base) { report.noop.push(`${p.itemId}: ${p.field} already "${to}"`); continue; }
     e.set[p.field] = to; e.items.push(p.itemId); edits.set(id, e);
