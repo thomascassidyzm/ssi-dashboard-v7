@@ -97,6 +97,20 @@ async function clipIsReadable(db, courseCode, audioId, clip) {
   return !!(data && data[0])
 }
 
+// The CACHED pace, not course_voice_pace(): the raw function re-tallies every
+// lego and phrase of the course on each call (~1 s; 3,247 calls since 26 Sep).
+// course_voice_pace_cached (ssi-learning-app migration 20261025c, live since
+// 13 Oct) returns the same jsonb from a tally kept on courses.content_stamp —
+// the very call the player's bundle makes, so the lab and the player agree.
+async function voicePace(db, courseCode) {
+  try {
+    const { data, error } = await db.rpc('course_voice_pace_cached', { p_course_code: courseCode })
+    return error ? null : data
+  } catch (e) {
+    return null // the player treats an unavailable pace as "uncorrected"; so do we, and say so in the reason
+  }
+}
+
 function createIntroLabRouter({ getDb, logger }) {
   const router = express.Router({ mergeParams: true })
   const log = logger || console
@@ -105,15 +119,6 @@ function createIntroLabRouter({ getDb, logger }) {
     const { data, error } = await db.from('algorithm_config').select('key,config').in('key', ['easy_mode', 'fast_mode', 'normal_mode'])
     if (error) throw new Error(error.message)
     return modeConfigsFrom(data)
-  }
-
-  async function voicePace(db, courseCode) {
-    try {
-      const { data, error } = await db.rpc('course_voice_pace', { p_course_code: courseCode })
-      return error ? null : data
-    } catch (e) {
-      return null // the player treats an unavailable pace as "uncorrected"; so do we, and say so in the reason
-    }
   }
 
   async function courseRow(db, courseCode) {
@@ -270,4 +275,4 @@ function createIntroLabRouter({ getDb, logger }) {
   return router
 }
 
-module.exports = { createIntroLabRouter, clipIsReadable, SHARED_SPLICE_IDS, recipeOf, languageNameFromIntro, TAILS, AS_IN_PIECE_ID }
+module.exports = { createIntroLabRouter, voicePace, clipIsReadable, SHARED_SPLICE_IDS, recipeOf, languageNameFromIntro, TAILS, AS_IN_PIECE_ID }

@@ -35,3 +35,12 @@ describe('intro lab clip authorisation', () => {
     expect(await R.clipIsReadable(fakeDb(), 'afr_for_eng', 'k', clip)).toBe(false)
   })
 })
+
+describe('intro lab voice pace', () => {
+  it('asks the cached pace, not the ~1 s raw re-tally', async () => {
+    const asked = []
+    const db = { rpc: (fn, args) => { asked.push([fn, args]); return Promise.resolve({ data: { ok: 1 }, error: null }) } }
+    expect(await R.voicePace(db, 'spa_for_eng')).toEqual({ ok: 1 })
+    expect(asked).toEqual([['course_voice_pace_cached', { p_course_code: 'spa_for_eng' }]])
+  })
+})
