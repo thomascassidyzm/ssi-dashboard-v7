@@ -3538,7 +3538,7 @@ kbd {
 .sheet .sheet-body { max-width: none; }
 
 @media (min-width: 900px) {
-  .sheet-scrim, :root[data-theme="light"] .sheet-scrim { top: 0; background: transparent; }
+  .sheet-scrim { top: 0; background: transparent; }
   .sheet {
     left: auto; right: 0; top: 0; bottom: 0; width: 420px; max-height: none; border-radius: 0;
     border-bottom: 0; border-left: 1px solid var(--line, #334155); box-shadow: -8px 0 24px rgba(0, 0, 0, 0.3);
@@ -3582,6 +3582,7 @@ kbd {
 :root[data-theme="light"] .status, :root[data-theme="light"] .transport, :root[data-theme="light"] .sheet-head { background: #fff; }
 :root[data-theme="light"] .sheet { background: #f8fafc; color: #0f172a; border-color: #c9d8ea; box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22); }
 :root[data-theme="light"] .sheet-scrim { background: rgba(15, 23, 42, 0.35); }
+@media (min-width: 900px) { :root[data-theme="light"] .sheet-scrim { background: transparent; } }
 :root[data-theme="light"] .mic { background: #e8f7f0; color: #065f46; }
 :root[data-theme="light"] .mic.is-paused, :root[data-theme="light"] .mic.is-editing, :root[data-theme="light"] .mic.is-arming { background: #eef0f3; color: #475569; }
 :root[data-theme="light"] .mic.is-playing { background: #fef6e0; color: #92400e; }
