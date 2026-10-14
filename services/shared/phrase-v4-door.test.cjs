@@ -70,6 +70,21 @@ describe('gateStagedRows: the existing gates are re-run at the door, not trusted
   it('passes rows that clear every gate', async () => {
     expect((await run([row('use', 'I am here', 'je suis ici')], deps())).refused).toEqual([])
   })
+  it('refuses conflicting translations within the incoming batch even when neither is stored', async () => {
+    const staged = [row('use', 'I am here', 'je suis ici'), row('use', 'I am here', 'je suis là')]
+    // The stored-course checks pass: this known text has no existing translation.
+    const { refused } = await run(staged, deps())
+    expect(refused).toHaveLength(2)
+  })
+  it('refuses a BUILD comma-tag rejection without treating it as merely a basket floor', async () => {
+    const { checkBuildRecombination } = require('../course-builder/lib/validation.cjs')
+    const staged = row('build', 'am, here', 'suis, ici')
+    const g = checkBuildRecombination({ idx: 2, target: 'suis', build: [{ known: staged.known_text, target: staged.target_text }], use: [] }, C, 351, new Set(['ici']))
+    expect(g.rejects[0].class).toBe('comma-tag')
+    const bad = { ...passing, gates: { ...passing.gates, buildRecombination: { pass: false, ...g } } }
+    const { refused } = await run([staged], deps({ checkPhraseSet: async () => bad }))
+    expect(refused).toHaveLength(1)
+  })
   it('vocab-only-from-earlier-seeds: a vocab failure refuses the row with the gate named', async () => {
     const bad = { ...passing, gates: { ...passing.gates, vocab: { pass: false, unknown: ['demain'] } } }
     const { refused } = await run([row('use', 'tomorrow I am', 'demain je suis')], deps({ checkPhraseSet: async () => bad }))
