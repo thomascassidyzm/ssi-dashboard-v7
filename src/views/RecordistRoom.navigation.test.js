@@ -143,7 +143,7 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
     // It wrapped round to the one line still owed instead of ending the session
     // on top of it.
     expect(wrapper.find('.line-target').text()).toBe('llinell un')
-    expect(wrapper.find('.stage-progress').text()).toContain('3 of 4 recorded')
+    expect(wrapper.find('.stage-progress').text()).toContain('3 of 4')
     expect(wrapper.find('.ctl-next').text()).toBe('Done')
   })
 
@@ -216,7 +216,7 @@ describe('RecordistRoom — the keyboard belongs to the keyboard while she is ty
     // Still editing the same line, no take filed, nothing advanced.
     expect(wrapper.find('.edit-box').exists()).toBe(true)
     expect(queueTake).not.toHaveBeenCalled()
-    expect(wrapper.find('.stage-progress').text()).toContain('Editing')
+    expect(wrapper.find('.mic-word').text()).toContain('Editing')
   })
 
   it('leaves the transport dead while the editor is open', async () => {

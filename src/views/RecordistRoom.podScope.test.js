@@ -72,9 +72,12 @@ async function openBooth() {
   await flushPromises()
   return w
 }
+// The line Start opens on is drawn above the button since job #424, not inside its label.
 const startText = (w) => {
   const b = w.findAll('button').find(b => b.text().startsWith('Start recording') || b.text() === 'Nothing left to read')
-  return b ? b.text() : null
+  if (!b) return null
+  const line = w.find('[data-test="ready-line"]')
+  return line.exists() ? `${b.text()} — ${line.text()}` : b.text()
 }
 
 describe('RecordistRoom — ?pod= starts the run in that pod', () => {

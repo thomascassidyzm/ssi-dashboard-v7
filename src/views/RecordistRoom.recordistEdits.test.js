@@ -136,9 +136,13 @@ function counts(w) {
   const m = strip.exists() && /(\d+) recorded · (-?\d+) still to read/.exec(strip.text())
   return m ? { recorded: Number(m[1]), stillToRead: Number(m[2]) } : null
 }
+// Since job #424 the line Start opens on is drawn big above the button (the batch page IS the
+// reading screen) instead of squeezed into its label, so "what Start names" is button + line.
 function startButton(w) {
   const b = w.find('.btn-begin')
-  return b.exists() ? { text: b.text(), disabled: b.attributes('disabled') !== undefined } : null
+  if (!b.exists()) return null
+  const line = w.find('[data-test="ready-line"]')
+  return { text: line.exists() ? `${b.text()} — ${line.text()}` : b.text(), disabled: b.attributes('disabled') !== undefined }
 }
 async function start(w) {
   mic.heard.value = true

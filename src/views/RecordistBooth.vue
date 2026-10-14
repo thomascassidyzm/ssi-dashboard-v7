@@ -1,6 +1,6 @@
 <template>
   <!-- data-surface: greppable in the served bundle, so "did it ship?" is answerable without a login -->
-  <div class="booth-tabs-page" data-surface="booth-language-tabs-2026-10-14">
+  <div class="booth-tabs-page" :class="{ fit: fitted }" data-surface="booth-language-tabs-2026-10-14">
     <nav v-if="tabs.length > 1 && !recording" class="booth-tabs" role="tablist" aria-label="Which voice you are recording" data-test="booth-tabs">
       <button
         v-for="t in tabs"
@@ -54,6 +54,9 @@ const tabs = ref(loadTabsSnapshot(props.voiceId) || [])
 const phases = reactive({})
 // Mid-take, the other tabs wait: a take is finished (and kept) before you can leave it.
 const recording = computed(() => phases[active.value] === 'recording')
+// The batch page, the live stage and the done screen are one viewport tall (job #424): this page
+// is the column that height is measured in, with the tabs (when shown) taking their share of it.
+const fitted = computed(() => ['ready', 'recording', 'done'].includes(phases[active.value]))
 // The app's top bar steps out while a take is live (navbarMode, job #411).
 watch(recording, (on) => { boothMicLive.value = on }, { immediate: true })
 onUnmounted(() => { boothMicLive.value = false })
@@ -110,6 +113,10 @@ watch(() => props.voiceId, (v, was) => {
   background: var(--color-shadow, #1e293b);
   border-bottom: 1px solid var(--color-graphite, #475569);
 }
+/* One viewport tall, under the app bar: the tabs keep their height and the booth gets the rest. */
+.booth-tabs-page.fit { display: flex; flex-direction: column; min-height: 0; height: calc(100dvh - var(--app-navbar-height, 0px)); overflow: hidden; }
+.booth-tabs-page.fit > .booth-tabs { flex: none; position: relative; }
+.booth-tabs-page.fit > .recordist { flex: 1 1 0; height: auto; min-height: 0; }
 .booth-tab {
   position: relative;
   min-width: 5.5rem;
