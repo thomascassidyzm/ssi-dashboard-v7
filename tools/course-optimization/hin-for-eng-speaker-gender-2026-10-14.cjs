@@ -297,7 +297,7 @@ async function main() {
       process.exitCode = missing.length ? 1 : 0;
       return;
     }
-    const log = { sweep: SWEEP, job: JOB, at: new Date().toISOString(), expansions: p.expansions, skipped: p.skipped };
+    const log = { sweep: SWEEP, job: JOB, at: new Date().toISOString(), plan: p.expansions, skipped: p.skipped };
     const snap = evidencePath(`tools/course-optimization/${SWEEP}/before-${log.at.replace(/[:.]/g, '-')}.json`);
     fs.writeFileSync(snap, JSON.stringify((await pg.query(`SELECT * FROM course_gender_expansions WHERE course_code=$1`, [COURSE])).rows, null, 1));
     if (process.env.APPLY === '1') {
