@@ -2766,7 +2766,7 @@ const batchHeader = computed(() => {
   const parts = [courseWordsFor(t.courseCode), t.short]
   if (t.kind === 'phrase') parts.push(b ? `${b.courseLabel ? `${b.courseLabel} ` : ''}batch ${b.batch} of ${t.batches.length}` : null)
   else if (t.batches.length > 1) parts.push(`batch ${batchScope.value.batch} of ${t.batches.length}`)
-  else parts[1] = t.title.replace(`${parts[0]}: `, '')
+  else if (t.kind !== 'seed' && t.kind !== 'lego') parts[1] = t.title.replace(`${parts[0]}: `, '') // a script names itself
   parts.push(left)
   return parts.filter(Boolean).join(' · ')
 })
