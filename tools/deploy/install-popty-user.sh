@@ -47,6 +47,7 @@ stage() {
     [[ -n "$d" && -e "$d" ]] && chmod -R g+rwX "$d"
   done
   chmod -R g+rX $TH/.local/state/ssi-tts-spend/tom-stop   # Tom's audio stop must be visible to the guard
+  chmod g+x $TH/.cache && chmod -R g+rX $TH/.cache/cs-model-catalog   # claude-cli.cjs reads the model catalog
   chmod 0640 $TH/.cs-cron-session                         # the DB watchdog posts its notices with it
 
   install -m 0644 "$SRC"/*.service "$SRC"/*.timer /etc/systemd/system/
