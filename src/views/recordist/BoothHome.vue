@@ -108,6 +108,9 @@
             </div>
           </template>
 
+          <!-- The team, for Tom, Aran and Kai only (job #379): self-contained, see BoothTeamStats. -->
+          <BoothTeamStats />
+
           <p v-for="m in notes" :key="m" class="bh-note">{{ m }}</p>
         </div>
 
@@ -124,6 +127,7 @@
 <script setup>
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import BoothTicks from './BoothTicks.vue'
+import BoothTeamStats from './BoothTeamStats.vue'
 import { groupTracks, upNext, batchOpenable, trackLocked } from './booth-home.js'
 
 const props = defineProps({

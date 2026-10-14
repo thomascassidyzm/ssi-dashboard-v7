@@ -24,6 +24,14 @@
  *   - SESSION TIME — first-to-last take of each sitting, a sitting being takes less than
  *     SESSION_GAP_MS apart. It cannot see the minutes before the first take or after the last, so a
  *     one-take sitting counts as zero. It is a floor on time spent at the booth, not a stopwatch.
+ *
+ * PROJECTS (Aran, 2026-10-14, job #379): "I don't know what Booth lines mean. I need to see which
+ * project they've been working on: is it Pod1, is it new seeds, is it new or old practice
+ * phrases." So every artist's work is split the way the booth's own home screen splits it — one
+ * project per card of buildHomeTracks (booth-home.cjs), with practice phrases split per course and
+ * pass — and each is named in plain words (projectLabel). A take is filed under the project whose
+ * line has its words; a take whose words are on no line of the queue today (an old pod line, the
+ * anthem, a welcome) is filed under "earlier lines" for its course, so no work disappears.
  */
 
 'use strict'
@@ -160,8 +168,174 @@ function isTestVoice(v) {
   return v.language === 'zzz' || /test|e2e|thomas_cassidy/i.test(`${v.voiceId} ${v.name || ''}`)
 }
 
+/**
+ * How the booth's courses are named to Aran. The two v2 relaunch sandboxes are the NEW courses
+ * (their sentences, LEGOs and practice phrases are new reading — booth-home.cjs `newCourse`); the
+ * two live courses are the old ones. Anything else is named by its own code.
+ */
+const COURSE_PLACES = Object.freeze({
+  cym_n_for_eng: { place: 'North Welsh', fresh: false },
+  cym_nv2_for_eng: { place: 'North Welsh', fresh: true },
+  cym_s_for_eng: { place: 'South Welsh', fresh: false },
+  cym_sv2_for_eng: { place: 'South Welsh', fresh: true },
+})
+
+/**
+ * WHAT "POD 1" IS: the pod with slug `pod-1`, every course's core pod (Tom, 2026-09-13). For the
+ * Welsh readers it is the pod-1 of the two LIVE courses (cym_n_for_eng, cym_s_for_eng) — the
+ * POD-1 conversations, each reader voicing their half. The other pods are named for what they are.
+ */
+const POD_NAMES = Object.freeze({
+  'pod-1': 'Pod 1',
+  health: 'Health scripts',
+  'health-ladder-pilot': 'Health scripts (test)',
+  'senedd-s4c-steve': 'Senedd session',
+  'guess-i-love-you': 'guess-game line',
+})
+
+/** What kind of reading each line kind is, for a project's name. */
+const KIND_WORDS = Object.freeze({
+  quarry: 'minimal set (LEGOs and words)',
+  rerecord: 're-recordings',
+  lego: 'LEGOs',
+})
+
+/**
+ * A voice reads the KNOWN side of a course when the course is not of its own language: Aran's
+ * English voice (eng) reads the English of the cym_* courses. Course codes start with their
+ * target language, so a cym course read by an eng voice is known-side reading.
+ */
+function isKnownSide(courseCode, language) {
+  return !!(courseCode && language && !String(courseCode).startsWith(`${language}_`))
+}
+
+/**
+ * A project's plain name, e.g. "North Welsh: Pod 1", "North Welsh: new sentences",
+ * "South Welsh: new practice phrases, pass 1", "English known lines: North Welsh old sentences".
+ * @param {{kind:string, courseCode?:string, podSlug?:string, podTitle?:string, pass?:number,
+ *          newCourse?:boolean, seedExisting?:boolean|null, other?:boolean}} p
+ */
+function projectLabel(p, language) {
+  const c = COURSE_PLACES[p.courseCode] || null
+  const place = c ? c.place : (p.courseCode || 'Other')
+  const fresh = c ? c.fresh : !!p.newCourse
+  let what
+  if (p.other) what = 'earlier lines, not in the queue now'
+  else if (p.kind === 'pod' || p.kind === 'takeg') what = POD_NAMES[p.podSlug] || String(p.podTitle || '').replace(/\s*\(job #[^)]*\)/gi, '').trim() || p.podSlug || 'Pod 1'
+  else if (p.kind === 'seed') what = (fresh || p.newCourse || p.seedExisting === false) ? 'new sentences' : 'old sentences'
+  else if (p.kind === 'phrase') what = `${fresh ? 'new' : 'old'} practice phrases, pass ${p.pass || 1}`
+  else if (p.kind === 'lego') what = `${fresh ? 'new' : 'old'} LEGOs`
+  else what = KIND_WORDS[p.kind] || 'other lines'
+  return isKnownSide(p.courseCode, language) ? `English known lines: ${place} ${what}` : `${place}: ${what}`
+}
+
+/** The project a phrase-plan line belongs to: practice phrases split by course and pass. */
+const phraseProjectKey = (courseCode, pass) => `phrase.${courseCode}.${pass || 1}`
+const otherProjectKey = (courseCode) => `other.${courseCode || 'none'}`
+
+/**
+ * Words → project, for filing takes. Queue lines first (pods, sentences, LEGOs…), then the phrase
+ * plan; a text on several lines keeps every project it is on, and a take prefers the one in its
+ * own course (filePosition).
+ * @param {object[]} lines the queue's wire lines (recorded included); phrase lines are skipped,
+ *   the plan carries all of them
+ * @param {object[]} phraseLines this voice's phrase-plan lines {text, courseCode, pass}
+ * @param {(line:object) => string} trackKeyOf booth-home's card key
+ * @param {(text:string) => string[]} keysOf audioKeyCandidates
+ */
+function lineIndex(lines, phraseLines, trackKeyOf, keysOf) {
+  const idx = new Map()
+  const add = (text, project, courseCode) => {
+    for (const k of keysOf(text || '')) {
+      if (!idx.has(k)) idx.set(k, [])
+      idx.get(k).push({ project, courseCode })
+    }
+  }
+  for (const l of lines || []) if ((l.kind || 'pod') !== 'phrase') add(l.text, trackKeyOf(l), l.courseCode)
+  for (const l of phraseLines || []) add(l.text, phraseProjectKey(l.courseCode, l.pass), l.courseCode)
+  return idx
+}
+
+/** Which project a take is: the line with its words in its own course, else any, else "earlier". */
+function projectOfTake(take, idx, keysOf) {
+  const hits = keysOf(take.text_normalized || take.text || '').flatMap((k) => idx.get(k) || [])
+  const hit = hits.find((h) => h.courseCode === take.course_code) || hits[0]
+  return hit ? hit.project : otherProjectKey(take.course_code)
+}
+
+/**
+ * Every project of one artist, with done/total from the queue and activity from the takes.
+ * Order: worked on most recently first, then the not-yet-started in the booth's own order, then
+ * earlier lines that are no longer in the queue.
+ *
+ * @param {object} a
+ * @param {object[]} a.tracks buildHomeTracks output (its phrase tracks are replaced per course)
+ * @param {object[]} a.phraseBatches the queue's phraseBatchList ({courseCode, pass, total, recorded, held})
+ * @param {object[]} a.takes this artist's takes, each with `project` already filed
+ * @param {string} a.language the voice's language
+ */
+function artistProjects({ tracks = [], phraseBatches = [], takes = [], language = null, now = Date.now() }) {
+  const out = new Map()
+  for (const t of tracks) {
+    if (t.kind === 'phrase') continue
+    out.set(t.key, {
+      key: t.key, kind: t.kind, courseCode: t.courseCode, podSlug: t.podSlug || null,
+      label: projectLabel(t, language), total: t.total, recorded: t.recorded, other: false,
+    })
+  }
+  for (const b of phraseBatches || []) {
+    const key = phraseProjectKey(b.courseCode, b.pass)
+    if (!out.has(key)) {
+      out.set(key, {
+        key, kind: 'phrase', courseCode: b.courseCode, pass: b.pass, podSlug: null,
+        label: projectLabel({ kind: 'phrase', courseCode: b.courseCode, pass: b.pass }, language),
+        total: 0, recorded: 0, held: 0, batches: 0, batchesDone: 0, other: false,
+      })
+    }
+    const p = out.get(key)
+    p.total += b.total
+    p.recorded += b.recorded
+    p.held += b.held || 0
+    p.batches += 1
+    if (b.recorded + (b.held || 0) >= b.total) p.batchesDone += 1
+  }
+  const byProject = new Map()
+  for (const t of takes) {
+    if (!byProject.has(t.project)) byProject.set(t.project, [])
+    byProject.get(t.project).push(t)
+  }
+  for (const [key, list] of byProject) {
+    if (out.has(key)) continue
+    // Filed against a queue project this artist no longer has (a phrase project whose plan
+    // failed to read, say) or against no line at all: shown as earlier lines of that course.
+    const courseCode = list[0].course_code || null
+    const okey = key.startsWith('other.') ? key : otherProjectKey(courseCode)
+    if (!out.has(okey)) {
+      out.set(okey, { key: okey, kind: 'other', courseCode, podSlug: null, label: projectLabel({ other: true, courseCode }, language), total: null, recorded: null, other: true })
+    }
+    if (okey !== key) byProject.set(okey, [...(byProject.get(okey) || []), ...list])
+  }
+  const order = [...out.keys()]
+  const rows = [...out.values()].map((p) => {
+    const a = summarizeTakes(byProject.get(p.key) || [], now)
+    return { ...p, activity: { takes: a.takes, takesToday: a.takesToday, takes7d: a.takes7d, lastActive: a.lastActive } }
+  })
+  return rows.sort((x, y) => (x.other - y.other) ||
+    String(y.activity.lastActive || '').localeCompare(String(x.activity.lastActive || '')) ||
+    (order.indexOf(x.key) - order.indexOf(y.key)))
+}
+
 module.exports = {
   GOD_ADMIN_EMAILS,
+  COURSE_PLACES,
+  POD_NAMES,
+  isKnownSide,
+  projectLabel,
+  phraseProjectKey,
+  otherProjectKey,
+  lineIndex,
+  projectOfTake,
+  artistProjects,
   SESSION_GAP_MS,
   DAY_TZ,
   isGodAdmin,

@@ -15,10 +15,25 @@
 
 const express = require('express')
 const queue = require('./recordist-queue.cjs')
+const boothHome = require('./booth-home.cjs')
 const ov = require('./booth-artist-overview.cjs')
+const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
 
 const TAKES_TTL_MS = 60 * 1000
 const PAGE = 1000
+/** Queues built at once for the overview: each is a recorded-keys read on the shared live DB. */
+const QUEUE_CONCURRENCY = 4
+/** Latest takes sent per project in the drilldown, each with a signed URL. */
+const TAKES_PER_PROJECT = 10
+
+async function mapLimit(items, limit, fn) {
+  const out = new Array(items.length)
+  let next = 0
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (next < items.length) { const i = next++; out[i] = await fn(items[i], i) }
+  }))
+  return out
+}
 
 module.exports = function createBoothArtistsRouter({
   getDb,
@@ -60,7 +75,7 @@ module.exports = function createBoothArtistsRouter({
     const rows = []
     for (let from = 0; ; from += PAGE) {
       const page = () => db().from('course_audio')
-        .select('id, voice_id, course_code, role, text, created_at, duration_ms, s3_key')
+        .select('id, voice_id, course_code, role, text, text_normalized, created_at, duration_ms, s3_key')
         .eq('origin', 'human').like('voice_id', 'human_%')
         .order('created_at', { ascending: false }).order('id')
         .range(from, from + PAGE - 1)
@@ -118,18 +133,41 @@ module.exports = function createBoothArtistsRouter({
     return voices
   }
 
-  /** Practice-phrase batches for a voice the phrase plan names; null when it has none. */
-  async function phrasesFor(artist) {
-    if (!artist.recordist) return null
-    const plan = await queue.getPhrasePlan(db())
-    const mine = artist.recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])
-    if (!mine.length) return null
-    const keys = await queue.recordedTextKeys(db(), artist.recordist)
-    const batches = ov.phraseBatches(mine, (l) => queue.phraseLineRecorded(l, keys, artist.recordist.spellings))
-    return { batches, passes: ov.phrasePasses(batches) }
+  /**
+   * One artist's work split by PROJECT (Aran, job #379): the booth's own queue for this voice —
+   * the same buildQueue + buildHomeTracks the booth's home screen draws — plus the phrase plan's
+   * lines, so every take can be filed under the project its words belong to. Read-only.
+   */
+  async function workFor(artist) {
+    let tracks = []
+    let phraseBatches = []
+    let lines = []
+    let phraseLines = []
+    if (artist.recordist) {
+      const q = await queue.buildQueue(db(), artist.recordist, { includeRecorded: true })
+      lines = q.lines || []
+      phraseBatches = q.phraseBatches || []
+      tracks = boothHome.buildHomeTracks(lines, q.phrases, phraseBatches)
+      if (phraseBatches.length) {
+        const plan = await queue.getPhrasePlan(db())
+        phraseLines = artist.recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])
+      }
+    }
+    const idx = ov.lineIndex(lines, phraseLines, boothHome.trackKeyOf, audioKeyCandidates)
+    const takes = artist.takes.map((t) => ({ ...t, project: ov.projectOfTake(t, idx, audioKeyCandidates) }))
+    return { takes, phraseBatches, projects: ov.artistProjects({ tracks, phraseBatches, takes, language: artist.language, now: now() }) }
   }
 
-  function headline(artist, phrases, t) {
+  /** A queue that cannot be built is reported, never fatal: the takes still show, as earlier lines. */
+  async function safeWorkFor(artist) {
+    try { return await workFor(artist) } catch (err) {
+      logger.warn(`[BoothArtists] queue for ${artist.voiceId}: ${err.message}`)
+      const takes = artist.takes.map((t) => ({ ...t, project: ov.otherProjectKey(t.course_code) }))
+      return { takes, phraseBatches: [], projects: ov.artistProjects({ takes, language: artist.language, now: now() }), queueUnavailable: true }
+    }
+  }
+
+  function headline(artist, work, t) {
     return {
       voiceId: artist.voiceId,
       name: artist.name,
@@ -141,7 +179,8 @@ module.exports = function createBoothArtistsRouter({
       noQueue: !!artist.noQueue,
       isTest: ov.isTestVoice(artist),
       lines: artist.lines,
-      phrases: phrases ? { passes: phrases.passes } : null,
+      projects: work.projects,
+      queueUnavailable: !!work.queueUnavailable,
       activity: ov.summarizeTakes(artist.takes, t),
     }
   }
@@ -155,13 +194,7 @@ module.exports = function createBoothArtistsRouter({
       }
       const t = now()
       const voices = await gather()
-      const artists = await Promise.all([...voices.values()].map(async (a) => {
-        const phrases = await phrasesFor(a).catch((err) => {
-          logger.warn(`[BoothArtists] phrases for ${a.voiceId}: ${err.message}`)
-          return { unavailable: true }
-        })
-        return headline(a, phrases && !phrases.unavailable ? phrases : null, t)
-      }))
+      const artists = await mapLimit([...voices.values()], QUEUE_CONCURRENCY, async (a) => headline(a, await safeWorkFor(a), t))
       artists.sort((a, b) => (a.isTest - b.isTest) || (a.noQueue - b.noQueue) ||
         String(b.activity.lastActive || '').localeCompare(String(a.activity.lastActive || '')))
       const body = { generatedAt: new Date(t).toISOString(), sessionGapMinutes: ov.SESSION_GAP_MS / 60000, timeZone: ov.DAY_TZ, artists }
@@ -180,10 +213,20 @@ module.exports = function createBoothArtistsRouter({
       const artist = voices.get(req.params.voiceId) ||
         [...voices.values()].find((a) => a.recordist && a.recordist.spellings.includes(req.params.voiceId))
       if (!artist) return res.status(404).json({ error: `No recording artist ${req.params.voiceId}` })
-      const phrases = await phrasesFor(artist).catch(() => null)
-      const recent = artist.takes.slice(0, 40)
+      const work = await safeWorkFor(artist)
+      const labelOf = new Map(work.projects.map((p) => [p.key, p.label]))
+      // The latest 40 overall, and the latest few of every project, so a project worked on
+      // last month still has takes to hear. Takes arrive newest first.
+      const perProject = new Map()
+      const recent = work.takes.filter((r, i) => {
+        const n = perProject.get(r.project) || 0
+        perProject.set(r.project, n + 1)
+        return i < 40 || n < TAKES_PER_PROJECT
+      })
       const signed = await Promise.all(recent.map(async (r) => ({
         audioId: r.id,
+        project: r.project,
+        projectLabel: labelOf.get(r.project) || null,
         courseCode: r.course_code,
         role: r.role,
         text: r.text,
@@ -199,8 +242,8 @@ module.exports = function createBoothArtistsRouter({
         generatedAt: new Date(t).toISOString(),
         sessionGapMinutes: ov.SESSION_GAP_MS / 60000,
         timeZone: ov.DAY_TZ,
-        artist: headline(artist, phrases, t),
-        phraseBatches: phrases ? phrases.batches : [],
+        artist: headline(artist, work, t),
+        phraseBatches: work.phraseBatches.map((b) => ({ ...b, project: ov.phraseProjectKey(b.courseCode, b.pass) })),
         daily: ov.dailyActivity(artist.takes, t, 30),
         sessions,
         recentTakes: signed,
