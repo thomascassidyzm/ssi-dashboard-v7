@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Option B — Script</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* OPTION B — SCRIPT. The batch IS the page: one numbered list, like a script on a stand. The line
+   being read is the big highlighted row; the ones just read sit above it with their save state, the
+   next ones below. The transport stays ABOVE the words (Aran, 2026-09-11) in a sticky bar. While the
+   mic is live NO row is tappable; Pause opens every read row's Play and Read again — that is where a
+   mistake is fixed. On desktop the batch map sits in a left rail. */
+.wrap > * { min-width: 0; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 12px 16px 60px; display: grid; gap: 18px; }
+@media (min-width: 900px) { .wrap { grid-template-columns: 280px 1fr; } .rail { display: block !important; } }
+.rail { display: none; position: sticky; top: 12px; align-self: start; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.rail h3 { margin: 0 0 4px; font-size: 15px; }
+.rail p { margin: 0 0 10px; color: var(--muted); font-size: 13px; }
+.squares { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
+.squares i { aspect-ratio: 1; border: 1px solid var(--line); border-radius: 3px; background: #fff; }
+.squares i.s { background: var(--green); border-color: var(--green); }
+.squares i.u { background: #f3d58a; border-color: #e8c25d; }
+.squares i.c { outline: 2px solid var(--ink); outline-offset: 1px; }
+.bar-top { position: sticky; top: 0; z-index: 5; background: rgba(246,247,249,.97); backdrop-filter: blur(6px); padding: 10px 0; border-bottom: 1px solid var(--line); }
+.bar-top .r1 { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
+.bar-top .r1 .where-plain { flex: 1; min-width: 0; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-top .count { font-size: 13px; font-weight: 700; color: #334155; white-space: nowrap; }
+.ctl { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 8px; }
+.ctl .btn { padding: 14px 8px; }
+.ready-cta { display: grid; gap: 8px; }
+.script { list-style: none; margin: 14px 0 0; padding: 0; }
+.script li { display: grid; grid-template-columns: 34px minmax(0,1fr) auto; gap: 8px; padding: 10px 6px; border-radius: 12px; align-items: start; transition: background .2s; }
+.script li .no { color: var(--faint); font-size: 13px; padding-top: 3px; text-align: right; font-variant-numeric: tabular-nums; }
+.script li .t { font-size: 17px; line-height: 1.4; color: #334155; }
+.script li .k { display: block; font-size: 13px; color: var(--faint); margin-top: 2px; }
+.script li.read .t { color: var(--muted); }
+.script li.later .t { color: var(--faint); }
+.script li .acts { display: flex; gap: 6px; align-items: center; }
+.script li .acts .btn { display: none; }
+body.paused .script li.read .acts .btn, body.ready .script li.read .acts .btn { display: inline-block; }
+.script li.cur { scroll-margin-top: 190px; background: #fff; border: 2px solid var(--green); padding: 18px 14px; margin: 6px 0; grid-template-columns: 1fr; }
+.script li.cur .no { display: none; }
+.script li.cur .t { font-size: clamp(26px, 6.6vw, 40px); line-height: 1.25; color: var(--ink); font-weight: 500; }
+.script li.cur .k { font-size: 16px; color: var(--muted); margin-top: 10px; }
+.script li.cur .kind { margin: 0 0 8px; }
+body.paused .script li.cur { border-color: var(--line); }
+body.paused .script li.cur .t { color: var(--faint); }
+.pnote { background: #eef0f3; border-radius: 10px; padding: 10px 12px; font-size: 14px; font-weight: 600; color: #334155; margin-top: 10px; }
+.stopwrap { text-align: center; margin-top: 26px; }
+.kbd { color: var(--faint); font-size: 12px; margin-top: 8px; }
+@media (max-width: 899px) { .kbd { display: none; } .script li { grid-template-columns: 26px minmax(0,1fr); } .script li .acts { grid-column: 2; } .script li .acts:empty { display: none; } }
+</style></head>
+<body class="ready">
+<header class="app-navbar" id="nav"></header>
+<div class="booth-tabs" id="tabs"></div>
+<div class="wrap">
+  <aside class="rail">
+    <h3>Batch 1 · 100 sentences</h3><p id="railp"></p>
+    <div class="squares" id="sq"></div>
+  </aside>
+  <main>
+    <div class="where" id="where"><button class="back">‹ Back to home</button><p class="title" id="hdr"></p></div>
+    <div class="bar-top" id="bartop">
+      <div class="r1"><span class="mic" id="mic"><span class="dot"></span><span id="micw">Not recording</span><canvas id="wave"></canvas></span>
+        <p class="where-plain" id="hdr2"></p><span class="count" id="count"></span></div>
+      <div class="bar" style="margin-bottom:10px"><i id="prog" style="width:0"></i></div>
+      <div class="ready-cta" id="cta"><button class="btn primary" id="go" style="padding:18px;font-size:19px">Start at line 1</button>
+        <label style="font-size:14px;color:#334155"><input type="checkbox" checked> Move on by itself when I stop speaking · <span style="color:var(--green);font-weight:700">Phone mic ▾</span></label></div>
+      <div class="ctl hidden" id="ctl"><button class="btn" id="pause">Pause</button><button class="btn" id="again">Again</button><button class="btn primary" id="next">Next</button></div>
+      <div class="pnote hidden" id="pnote">Paused — nothing is being recorded. Tap any line you've read to hear it or read it again.</div>
+    </div>
+    <ol class="script" id="script"></ol>
+    <div class="stopwrap"><button class="btn small ghost hidden" id="stop">Stop here — it's all saved</button>
+      <p class="kbd"><kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause</p></div>
+  </main>
+</div>
+<div class="mock-tag">Option B · Script (mockup)</div>
+<script src="lines.js"></script><script src="shared.js"></script>
+<script>
+const B = window.BOOTH, L = B.lines, $ = (id) => document.getElementById(id);
+let i = 0, state = 'ready', redo = null;
+B.navbar($('nav')); B.tabs($('tabs'));
+$('hdr').textContent = B.header + ' · 100 left';
+function render() {
+  const n = B.recordedCount(), live = state === 'live';
+  document.body.className = state;
+  ['nav', 'tabs', 'where'].forEach((id) => $(id).classList.toggle('hidden', state !== 'ready'));
+  $('hdr2').textContent = state === 'ready' ? '' : B.header;
+  $('count').textContent = `${n} of ${B.batchTotal}`;
+  $('prog').style.width = (n / B.batchTotal * 100) + '%';
+  $('cta').classList.toggle('hidden', state !== 'ready'); $('ctl').classList.toggle('hidden', state === 'ready');
+  $('stop').classList.toggle('hidden', state === 'ready'); $('pnote').classList.toggle('hidden', state !== 'paused');
+  $('mic').className = 'mic' + (live ? '' : ' paused'); $('micw').textContent = live ? 'Recording' : (state === 'paused' ? 'Paused' : 'Not recording');
+  $('pause').textContent = state === 'paused' ? 'Resume' : 'Pause';
+  $('again').disabled = $('next').disabled = state === 'paused';
+  $('railp').textContent = `${n} recorded · ${B.batchTotal - n} to read`;
+  $('sq').innerHTML = Array.from({ length: 100 }, (_, k) => `<i class="${B.takes[k] === 'saved' ? 's' : B.takes[k] ? 'u' : ''} ${k === i && state !== 'ready' ? 'c' : ''}"></i>`).join('');
+  const from = Math.max(0, i - 2), to = Math.min(L.length, i + 6);
+  $('script').innerHTML = L.slice(state === 'ready' ? 0 : from, state === 'ready' ? 8 : to).map((l, j) => {
+    const k = (state === 'ready' ? 0 : from) + j;
+    const cls = state !== 'ready' && k === i ? 'cur' : (B.takes[k] ? 'read' : (k > i ? 'later' : ''));
+    const st = B.takes[k] ? `<span class="take-state ${B.takes[k] === 'saved' ? 'saved' : 'up'}">${B.takes[k] === 'saved' ? 'SAVED' : 'ON ITS WAY'}</span>` : '';
+    return `<li class="${cls}"><span class="no">${k + 1}</span><span>${cls === 'cur' ? `<p class="kind">Line ${k + 1} · ${B.kindWords(l)}</p>` : ''}<span class="t">${B.esc(l.t)}</span><span class="k">${B.esc(l.k)}</span></span>
+      <span class="acts">${st}<button class="btn small" data-play="${k}">▶</button><button class="btn small" data-redo="${k}">Read again</button></span></li>`;
+  }).join('');
+}
+$('go').onclick = () => { state = 'live'; render(); B.wave($('wave'), () => state === 'live'); };
+$('next').onclick = () => { B.file(i, render); if (redo !== null) { i = redo; redo = null; } else i = Math.min(i + 1, L.length - 1); render(); };
+$('again').onclick = () => { document.querySelector('.cur .t').animate([{ opacity: .2 }, { opacity: 1 }], 400); };
+$('pause').onclick = () => { state = state === 'paused' ? 'live' : 'paused'; render(); };
+$('script').onclick = (e) => {
+  const r = e.target.closest('[data-redo]'); const p = e.target.closest('[data-play]');
+  if (p) { p.textContent = '❚❚'; setTimeout(() => (p.textContent = '▶'), 1500); }
+  if (r) { redo = i; i = +r.dataset.redo; state = 'live'; render(); }
+};
+$('stop').onclick = () => { state = 'ready'; i = B.recordedCount(); render(); };
+document.addEventListener('keydown', (e) => { if (state === 'ready') return;
+  if (e.code === 'Space') { e.preventDefault(); $('next').click(); } if (e.key === 'r') $('again').click(); if (e.key === 'p') $('pause').click(); });
+render();
+</script>
+</body></html>

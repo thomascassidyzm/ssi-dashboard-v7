@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Option A — Prompter</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* OPTION A — PROMPTER. One line fills the screen. Occasional controls (Stop, Pause, Hear it) live in
+   the TOP strip; the transport (Back · Again · Next) is pinned to the BOTTOM edge and is the only
+   thing under the thumb. Settings are set BEFORE Start, in one folded row, not after it. */
+.page { max-width: 760px; margin: 0 auto; padding: 14px 16px 120px; }
+.ready h1 { font-size: 24px; margin: 18px 0 4px; }
+.ready .sub { color: var(--muted); margin: 0 0 12px; }
+.ready .bar { margin: 4px 0 18px; }
+.start { width: 100%; padding: 20px; font-size: 20px; border-radius: 16px; }
+.first { margin: 10px 2px 0; color: var(--muted); font-size: 15px; }
+.first b { color: var(--ink); font-weight: 600; }
+.setrow { margin-top: 18px; border: 1px solid var(--line); background: #fff; border-radius: 12px; padding: 12px 14px; display: flex; justify-content: space-between; gap: 10px; align-items: center; font-size: 14px; color: #334155; }
+.setrow .chg { color: var(--green); font-weight: 700; background: none; border: 0; }
+.settings { border: 1px solid var(--line); border-top: 0; border-radius: 0 0 12px 12px; background: #fff; padding: 6px 14px 12px; margin-top: -8px; font-size: 14px; }
+.settings label { display: flex; gap: 10px; padding: 8px 0; align-items: flex-start; }
+.peek { margin-top: 22px; }
+.peek h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 0 0 8px; }
+.peek ol { margin: 0; padding-left: 22px; color: #334155; font-size: 15px; line-height: 1.55; }
+
+/* Live */
+.strip { position: sticky; top: 0; z-index: 5; background: rgba(246,247,249,.96); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.strip .row1 { display: flex; align-items: center; gap: 8px; padding: 10px 14px 6px; max-width: 760px; margin: 0 auto; }
+.strip .row1 .where-plain { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 13px; }
+.strip .row2 { display: flex; align-items: center; gap: 10px; padding: 0 14px 10px; max-width: 760px; margin: 0 auto; }
+.strip .row2 .bar { flex: 1; }
+.strip .count { font-size: 13px; font-weight: 700; color: #334155; white-space: nowrap; }
+.topbtn { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 7px 11px; font-size: 14px; font-weight: 600; color: #334155; white-space: nowrap; }
+.stage { max-width: 760px; margin: 0 auto; padding: 8vh 22px 160px; min-height: 70vh; }
+.stage .crib { font-size: 18px; }
+.hear { margin: 26px 0 0; font-size: 14px; color: var(--muted); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.transport { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: #fff; border-top: 1px solid var(--line); padding: 12px 14px calc(12px + env(safe-area-inset-bottom)); }
+.transport .in { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: 64px 1fr 2fr; gap: 10px; }
+.transport .btn { padding: 18px 10px; font-size: 18px; }
+.transport .next { font-size: 21px; }
+.kbd { text-align: center; color: var(--faint); font-size: 12px; margin-top: 8px; }
+.paused-veil .line-big, .paused-veil .crib { color: var(--faint); }
+.paused-note { background: #eef0f3; border-radius: 12px; padding: 12px 14px; margin-bottom: 18px; color: #334155; font-weight: 600; }
+.done h2 { margin: 18px 0 6px; }
+.done ul { list-style: none; padding: 0; margin: 14px 0; }
+.done li { display: flex; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid #eceff3; font-size: 15px; }
+.done li span.t { flex: 1; }
+@media (min-width: 900px) {
+  .stage { padding-top: 12vh; }
+  .line-big { font-size: 48px; }
+  .kbd { display: block; }
+}
+@media (max-width: 899px) { .kbd { display: none; } }
+</style></head>
+<body>
+<header class="app-navbar" id="nav"></header>
+<div class="booth-tabs" id="tabs"></div>
+
+<!-- READY: the batch, opened from the booth home -->
+<main class="page ready" id="ready">
+  <div class="where"><button class="back">‹ Back to home</button><p class="title" id="hdr"></p></div>
+  <h1>100 sentences to read</h1>
+  <p class="sub">0 recorded · about 25 minutes · it saves as you go</p>
+  <div class="bar"><i style="width:0%"></i></div>
+  <button class="btn primary start" id="go">Start recording</button>
+  <p class="first">First line: <b id="firstline"></b></p>
+  <div class="setrow"><span>Moves on when you stop · Phone mic</span><button class="chg" id="chg">Change</button></div>
+  <div class="settings hidden" id="settings">
+    <label><input type="checkbox" checked> <span><b>Move on by itself when I stop speaking</b><br><small>Turn off in a noisy room and tap Next instead.</small></span></label>
+    <label><input type="radio" name="s" checked> <span><b>Phone</b> — hold it at texting distance</span></label>
+    <label><input type="radio" name="s"> <span><b>Plugged-in microphone</b></span></label>
+  </div>
+  <div class="peek"><h3>In this batch</h3><ol id="peek"></ol></div>
+</main>
+
+<!-- LIVE -->
+<div id="live" class="hidden">
+  <div class="strip">
+    <div class="row1">
+      <button class="topbtn" id="stop">Stop here</button>
+      <p class="where-plain" id="hdr2"></p>
+      <button class="topbtn" id="pause">Pause</button>
+    </div>
+    <div class="row2">
+      <span class="mic" id="mic"><span class="dot"></span><span id="micw">Recording</span><canvas id="wave"></canvas></span>
+      <div class="bar"><i id="prog"></i></div>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+  <main class="stage" id="stage">
+    <div class="paused-note hidden" id="pnote">Paused — nothing is being recorded. That attempt was thrown away.</div>
+    <p class="kind" id="kind"></p>
+    <p class="line-big" id="line"></p>
+    <p class="crib" id="crib"></p>
+    <p class="hear hidden" id="hear"><span>Just read: <b id="lastt"></b></span> <span class="take-state up" id="lasts">ON ITS WAY</span> <button class="btn small" id="play">▶ Hear it</button></p>
+  </main>
+  <div class="transport"><div class="in">
+    <button class="btn" id="back" title="Back">‹</button>
+    <button class="btn" id="again">Again</button>
+    <button class="btn primary next" id="next">Next</button>
+  </div><p class="kbd"><kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>B</kbd> back · <kbd>P</kbd> pause</p></div>
+</div>
+
+<!-- DONE -->
+<main class="page done hidden" id="done">
+  <div class="where"><button class="back">‹ Back to home</button><p class="title" id="hdr3"></p></div>
+  <h2 id="donehead"></h2>
+  <p class="sub" style="color:var(--muted)">Every take is saved. Tap one to hear it, or read it again.</p>
+  <button class="btn primary start">Carry on: batch 2 ›</button>
+  <ul id="donelist"></ul>
+</main>
+<div class="mock-tag">Option A · Prompter (mockup)</div>
+
+<script src="lines.js"></script><script src="shared.js"></script>
+<script>
+const B = window.BOOTH, L = B.lines, $ = (id) => document.getElementById(id);
+let i = 0, paused = false, last = -1;
+B.navbar($('nav')); B.tabs($('tabs'));
+$('hdr').textContent = B.header + ' · 100 left';
+$('firstline').textContent = L[0].t;
+$('peek').innerHTML = L.slice(0, 5).map((l) => `<li>${B.esc(l.t)}</li>`).join('') + '<li style="color:var(--faint)">…and 95 more</li>';
+$('chg').onclick = () => $('settings').classList.toggle('hidden');
+function render() {
+  const n = B.recordedCount();
+  $('hdr2').textContent = B.header;
+  $('count').textContent = `${n} of ${B.batchTotal}`;
+  $('prog').style.width = (n / B.batchTotal * 100) + '%';
+  $('kind').textContent = B.kindWords(L[i]);
+  $('line').textContent = L[i].t; $('crib').textContent = L[i].k;
+  $('mic').className = 'mic' + (paused ? ' paused' : '');
+  $('micw').textContent = paused ? 'Paused' : 'Recording';
+  $('pause').textContent = paused ? 'Resume' : 'Pause';
+  $('next').textContent = paused ? 'Resume' : 'Next';
+  $('again').disabled = paused; $('back').disabled = i === 0;
+  $('stage').classList.toggle('paused-veil', paused); $('pnote').classList.toggle('hidden', !paused);
+  if (last >= 0) { $('hear').classList.remove('hidden'); $('lastt').textContent = L[last].t;
+    const s = B.takes[last]; $('lasts').className = 'take-state ' + (s === 'saved' ? 'saved' : 'up'); $('lasts').textContent = s === 'saved' ? 'SAVED' : 'ON ITS WAY'; }
+  $('play').disabled = !paused && false;
+}
+function live(on) {
+  $('nav').classList.toggle('hidden', on); $('tabs').classList.toggle('hidden', on);
+  $('ready').classList.toggle('hidden', on); $('live').classList.toggle('hidden', !on);
+}
+$('go').onclick = () => { live(true); render(); B.wave($('wave'), () => !paused); };
+$('next').onclick = () => { if (paused) { paused = false; return render(); } B.file(i, render); last = i; i = Math.min(i + 1, L.length - 1); render(); };
+$('again').onclick = () => { $('line').animate([{ opacity: .2 }, { opacity: 1 }], 400); };
+$('back').onclick = () => { if (i > 0) { i--; render(); } };
+$('pause').onclick = () => { paused = !paused; render(); };
+$('play').onclick = () => { $('play').textContent = '❚❚ Playing'; setTimeout(() => $('play').textContent = '▶ Hear it', 1600); };
+$('stop').onclick = () => {
+  $('live').classList.add('hidden'); $('nav').classList.remove('hidden'); $('tabs').classList.remove('hidden'); $('done').classList.remove('hidden');
+  $('hdr3').textContent = B.header + ` · ${B.batchTotal - B.recordedCount()} left`;
+  $('donehead').textContent = `You read ${B.recordedCount()} lines`;
+  $('donelist').innerHTML = Object.keys(B.takes).map((k) => `<li><span class="t">${B.esc(L[k].t)}</span><span class="take-state saved">SAVED</span><button class="btn small">▶</button><button class="btn small">Read again</button></li>`).join('');
+};
+document.addEventListener('keydown', (e) => { if ($('live').classList.contains('hidden')) return;
+  if (e.code === 'Space') { e.preventDefault(); $('next').click(); } if (e.key === 'r') $('again').click(); if (e.key === 'p') $('pause').click(); if (e.key === 'b') $('back').click(); });
+</script>
+</body></html>

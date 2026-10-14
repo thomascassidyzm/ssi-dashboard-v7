@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Option C — Sets of ten</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* OPTION C — SETS OF TEN. A 100-line batch is ten sets of ten. Inside a set: one line on a card, ten
+   dots for where you are, one big round button that means "done, next". After the tenth line the mic
+   switches OFF and a check screen lists the ten takes — hear any, read any again — before the next
+   set. Mistakes are fixed there, with the mic off, never mid-flow. Pause sits top-right, far from
+   the thumb; the round button is the only thing at the bottom. */
+.page { max-width: 720px; margin: 0 auto; padding: 14px 16px 40px; }
+.sets { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 16px 0; }
+.set { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 10px 6px; text-align: center; font-size: 13px; color: var(--muted); }
+.set b { display: block; font-size: 17px; color: var(--ink); }
+.set.now { border: 2px solid var(--green); }
+.set.done { background: var(--green-bg); border-color: #a8dcc5; }
+.set .mini { height: 4px; border-radius: 4px; background: #e5e9ef; margin-top: 6px; overflow: hidden; }
+.set .mini i { display: block; height: 100%; background: var(--green); }
+.go { width: 100%; padding: 20px; font-size: 20px; border-radius: 16px; }
+.opts { margin-top: 12px; font-size: 14px; color: #334155; display: grid; gap: 6px; }
+
+.top { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); background: #fff; }
+.top .where-plain { flex: 1; min-width: 0; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topbtn { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 7px 11px; font-size: 14px; font-weight: 600; color: #334155; }
+.dots { display: flex; justify-content: center; gap: 8px; padding: 16px 0 4px; }
+.dots i { width: 12px; height: 12px; border-radius: 50%; background: #dfe4ea; }
+.dots i.d { background: var(--green); } .dots i.c { background: #fff; outline: 3px solid var(--green); }
+.setlabel { text-align: center; color: var(--muted); font-size: 13px; margin: 4px 0 0; }
+.card { margin: 20px 16px; background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 28px 22px; min-height: 42vh; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 6px 20px rgba(15,23,42,.06); max-width: 760px; }
+@media (min-width: 900px) { .card { margin: 28px auto; } }
+.foot { position: fixed; left: 0; right: 0; bottom: 0; padding: 14px 16px calc(18px + env(safe-area-inset-bottom)); display: flex; justify-content: center; align-items: center; gap: 22px; background: linear-gradient(transparent, var(--bg) 30%); }
+.round { width: 96px; height: 96px; border-radius: 50%; border: 0; background: var(--green); color: #fff; font-weight: 800; font-size: 18px; box-shadow: 0 6px 18px rgba(8,120,87,.35); }
+.side { width: 64px; height: 64px; border-radius: 50%; border: 1px solid var(--line); background: #fff; font-weight: 700; font-size: 13px; color: #334155; }
+.side.ghost { visibility: hidden; }
+.hint { position: fixed; bottom: 4px; left: 0; right: 0; text-align: center; color: var(--faint); font-size: 12px; }
+@media (max-width: 899px) { .hint { display: none; } }
+body.paused .card { opacity: .5; }
+.pnote { margin: 10px 16px 0; background: #eef0f3; border-radius: 12px; padding: 10px 12px; font-weight: 600; font-size: 14px; color: #334155; text-align: center; }
+
+.check h2 { margin: 18px 0 4px; }
+.check .sub { color: var(--muted); margin: 0 0 14px; }
+.check ul { list-style: none; padding: 0; margin: 0 0 20px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+.check li { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: center; padding: 12px; border-bottom: 1px solid #eef1f4; }
+.check li:last-child { border-bottom: 0; }
+.check li .no { color: var(--faint); font-size: 13px; }
+.check li .t { font-size: 15px; line-height: 1.35; }
+.check li .a { display: flex; gap: 6px; align-items: center; }
+@media (max-width: 899px) { .check li { grid-template-columns: 22px minmax(0,1fr); } .check li .a { grid-column: 2; } }
+</style></head>
+<body>
+<header class="app-navbar" id="nav"></header>
+<div class="booth-tabs" id="tabs"></div>
+
+<main class="page" id="ready">
+  <div class="where"><button class="back">‹ Back to home</button><p class="title" id="hdr"></p></div>
+  <div class="sets" id="sets"></div>
+  <button class="btn primary go" id="go">Start set 1 — ten lines</button>
+  <div class="opts"><label><input type="checkbox" checked> Move on by itself when I stop speaking</label>
+    <label><input type="radio" name="m" checked> Phone mic &nbsp; <input type="radio" name="m"> Plugged-in mic</label></div>
+</main>
+
+<div id="live" class="hidden">
+  <div class="top"><span class="mic" id="mic"><span class="dot"></span><span id="micw">Recording</span><canvas id="wave"></canvas></span>
+    <p class="where-plain" id="hdr2"></p><button class="topbtn" id="pause">Pause</button></div>
+  <div class="dots" id="dots"></div><p class="setlabel" id="setlabel"></p>
+  <div class="pnote hidden" id="pnote">Paused — nothing is being recorded. Resume reads this line again from the start.</div>
+  <div class="card"><p class="kind" id="kind"></p><p class="line-big" id="line"></p><p class="crib" id="crib"></p></div>
+  <div class="foot"><button class="side" id="again">Again</button><button class="round" id="next">Next</button><button class="side ghost">·</button></div>
+  <p class="hint"><kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause</p>
+</div>
+
+<main class="page check hidden" id="check">
+  <div class="where"><button class="back">‹ Back to home</button><p class="title" id="hdr3"></p></div>
+  <h2 id="checkhead"></h2>
+  <p class="sub">Microphone off. Hear any take, or read one again. Then carry on.</p>
+  <ul id="checklist"></ul>
+  <button class="btn primary go" id="nextset">Sounds right — start set 2</button>
+  <p style="text-align:center"><button class="btn ghost small" id="stop">Stop for now — it's all saved</button></p>
+</main>
+<div class="mock-tag">Option C · Sets of ten (mockup)</div>
+
+<script src="lines.js"></script><script src="shared.js"></script>
+<script>
+const B = window.BOOTH, L = B.lines, $ = (id) => document.getElementById(id);
+let i = 0, paused = false, redoing = null, waveOn = false;
+B.navbar($('nav')); B.tabs($('tabs'));
+$('hdr').textContent = B.header + ' · 100 left';
+function sets() { $('sets').innerHTML = Array.from({ length: 10 }, (_, s) => {
+  const got = Object.keys(B.takes).filter((k) => Math.floor(k / 10) === s).length;
+  return `<div class="set ${got === 10 ? 'done' : (s === Math.floor(i / 10) ? 'now' : '')}"><b>${s + 1}</b>${got}/10<div class="mini"><i style="width:${got * 10}%"></i></div></div>`; }).join(''); }
+function show(id) { ['ready', 'live', 'check'].forEach((x) => $(x).classList.toggle('hidden', x !== id));
+  $('nav').classList.toggle('hidden', id === 'live'); $('tabs').classList.toggle('hidden', id === 'live'); }
+function render() {
+  const pos = i % 10;
+  $('hdr2').textContent = B.header;
+  $('dots').innerHTML = Array.from({ length: 10 }, (_, k) => `<i class="${k < pos ? 'd' : (k === pos ? 'c' : '')}"></i>`).join('');
+  $('setlabel').textContent = redoing !== null ? `Reading line ${i + 1} again` : `Set ${Math.floor(i / 10) + 1} of 10 · line ${pos + 1} of 10 · ${B.recordedCount()} of 100 in the batch`;
+  $('kind').textContent = B.kindWords(L[i]); $('line').textContent = L[i].t; $('crib').textContent = L[i].k;
+  $('mic').className = 'mic' + (paused ? ' paused' : ''); $('micw').textContent = paused ? 'Paused' : 'Recording';
+  $('pause').textContent = paused ? 'Resume' : 'Pause'; document.body.classList.toggle('paused', paused);
+  $('pnote').classList.toggle('hidden', !paused); $('next').textContent = paused ? 'Resume' : 'Next'; $('again').disabled = paused;
+}
+function check() {
+  show('check'); const s = Math.floor((i - 1) / 10);
+  $('hdr3').textContent = B.header + ` · ${100 - B.recordedCount()} left`;
+  $('checkhead').textContent = `Set ${s + 1} done — ten takes`;
+  $('nextset').textContent = `Sounds right — start set ${s + 2}`;
+  $('checklist').innerHTML = L.slice(s * 10, s * 10 + 10).map((l, j) => { const k = s * 10 + j, st = B.takes[k];
+    return `<li><span class="no">${j + 1}</span><span class="t">${B.esc(l.t)}</span><span class="a"><span class="take-state ${st === 'saved' ? 'saved' : 'up'}">${st === 'saved' ? 'SAVED' : 'ON ITS WAY'}</span><button class="btn small" data-play>▶</button><button class="btn small" data-redo="${k}">Again</button></span></li>`; }).join('');
+}
+function startLive() { show('live'); render(); if (!waveOn) { B.wave($('wave'), () => !paused); waveOn = true; } }
+$('go').onclick = startLive;
+$('next').onclick = () => {
+  if (paused) { paused = false; return render(); }
+  B.file(i, () => { if (!$('check').classList.contains('hidden')) check(); });
+  if (redoing !== null) { i = redoing; redoing = null; return check(); }
+  i++; if (i % 10 === 0) return check(); render();
+};
+$('again').onclick = () => $('line').animate([{ opacity: .2 }, { opacity: 1 }], 400);
+$('pause').onclick = () => { paused = !paused; render(); };
+$('checklist').onclick = (e) => { const r = e.target.closest('[data-redo]'), p = e.target.closest('[data-play]');
+  if (p) { p.textContent = '❚❚'; setTimeout(() => (p.textContent = '▶'), 1500); }
+  if (r) { redoing = i; i = +r.dataset.redo; startLive(); } };
+$('nextset').onclick = startLive;
+$('stop').onclick = () => { show('ready'); sets(); };
+document.addEventListener('keydown', (e) => { if ($('live').classList.contains('hidden')) return;
+  if (e.code === 'Space') { e.preventDefault(); $('next').click(); } if (e.key === 'r') $('again').click(); if (e.key === 'p') $('pause').click(); });
+sets();
+</script>
+</body></html>

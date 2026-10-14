@@ -1,0 +1,63 @@
+/* Booth recording screen — design mockups (job #419). Light mode only, as Aran uses it.
+   Not live code: nothing here is imported by the app. */
+:root {
+  --ink: #0f172a; --muted: #64748b; --faint: #94a3b8; --line: #d6dce5; --bg: #f6f7f9; --card: #fff;
+  --green: #087857; --green-ink: #065f46; --green-bg: #e8f7f0; --head-bg: #eef4fb; --head-line: #c9d8ea;
+  --red: #c0262d; --red-bg: #fdecec; --amber: #a16207; --amber-bg: #fef6e0;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+button { font: inherit; cursor: pointer; }
+.hidden { display: none !important; }
+
+/* The main Popty navbar (#411). Drawn on the batch page; gone while the mic is live. */
+.app-navbar { background: #fff; border-bottom: 1px solid var(--line); }
+.app-navbar .in { display: flex; align-items: center; gap: 18px; padding: 0 16px; height: 52px; max-width: 1280px; margin: 0 auto; }
+.app-navbar .brand { font-weight: 800; font-size: 19px; letter-spacing: -.01em; }
+.app-navbar nav { display: flex; gap: 4px; overflow-x: auto; flex: 1; }
+.app-navbar nav a { padding: 7px 11px; border-radius: 8px; color: var(--muted); text-decoration: none; font-size: 14px; white-space: nowrap; }
+.app-navbar nav a.on { background: var(--green-bg); color: var(--green-ink); font-weight: 600; }
+.app-navbar .acct { font-size: 14px; color: var(--muted); white-space: nowrap; }
+
+/* Language tabs (#392): one per voice, hidden while recording. */
+.booth-tabs { display: flex; gap: 6px; padding: 10px 16px 0; max-width: 1280px; margin: 0 auto; }
+.booth-tab { border: 1px solid var(--line); background: #fff; color: var(--muted); padding: 8px 16px; border-radius: 999px; font-size: 15px; }
+.booth-tab.on { background: var(--ink); color: #fff; border-color: var(--ink); font-weight: 600; }
+
+/* Where-am-I header (#378). */
+.where { background: var(--head-bg); border: 1px solid var(--head-line); border-radius: 12px; padding: 12px 14px; }
+.where .back { color: var(--green); font-weight: 700; background: none; border: 0; padding: 0; font-size: 15px; }
+.where .title { margin: 6px 0 0; font-weight: 700; font-size: 16px; line-height: 1.35; }
+.where-plain { font-weight: 700; font-size: 14px; color: #334155; margin: 0; line-height: 1.3; }
+
+/* One mic signal: state word + level trace, never two pills saying different things. */
+.mic { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 5px 10px 5px 8px; font-size: 13px; font-weight: 700; background: var(--green-bg); color: var(--green-ink); }
+.mic .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(8,120,87,.5); animation: pulse 1.4s infinite; }
+.mic canvas { width: 72px; height: 20px; display: block; }
+.mic.paused { background: #eef0f3; color: var(--muted); }
+.mic.paused .dot { background: var(--faint); animation: none; }
+.mic.loud { background: var(--red-bg); color: var(--red); }
+.mic.loud .dot { background: var(--red); }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(8,120,87,.45); } 70% { box-shadow: 0 0 0 8px rgba(8,120,87,0); } 100% { box-shadow: 0 0 0 0 rgba(8,120,87,0); } }
+
+.bar { height: 6px; background: #e5e9ef; border-radius: 99px; overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--green); border-radius: 99px; transition: width .3s; }
+
+.btn { border-radius: 14px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-weight: 700; padding: 14px 18px; font-size: 17px; }
+.btn.primary { background: var(--green); border-color: var(--green); color: #fff; }
+.btn.ghost { background: transparent; }
+.btn.small { padding: 8px 12px; font-size: 14px; border-radius: 10px; font-weight: 600; }
+.btn:disabled { opacity: .35; cursor: default; }
+kbd { font: 11px/1 ui-monospace, monospace; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 2px 5px; color: var(--muted); background: #fff; }
+
+.line-big { font-size: clamp(28px, 7.4vw, 46px); line-height: 1.22; font-weight: 500; letter-spacing: -.01em; margin: 0; }
+.crib { color: var(--muted); font-size: 17px; line-height: 1.4; margin: 14px 0 0; }
+.kind { color: var(--faint); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 10px; }
+.toast { font-size: 14px; color: var(--green-ink); }
+.take-state { font-size: 12px; font-weight: 700; letter-spacing: .03em; padding: 2px 7px; border-radius: 6px; }
+.take-state.saved { background: var(--green-bg); color: var(--green-ink); }
+.take-state.up { background: var(--amber-bg); color: var(--amber); }
+
+/* Mockup chrome: a label so a screenshot says which option it is. */
+.mock-tag { position: fixed; right: 0; top: 40%; writing-mode: vertical-rl; border-radius: 6px 0 0 6px; z-index: 99; background: rgba(15,23,42,.78); color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 6px; pointer-events: none; }
