@@ -225,7 +225,7 @@ async function checkCourse(pg, courseCode, opts = {}) {
             li.presentation_audio_id AS li_link, ali.text AS li_text,
             s.known_text AS seed_known
        FROM course_legos x
-       LEFT JOIN course_audio a ON x.presentation_audio_id ~* '^[0-9a-f-]{36}$' AND a.id = x.presentation_audio_id::uuid
+       LEFT JOIN course_audio a ON a.id = x.presentation_audio_id::uuid
        LEFT JOIN lego_introductions li ON li.course_code = x.course_code AND li.lego_id = x.lego_id
        LEFT JOIN course_audio ali ON ali.id = li.presentation_audio_id
        LEFT JOIN course_seeds s ON s.course_code = x.course_code AND s.seed_number = x.seed_number
