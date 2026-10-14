@@ -53,18 +53,21 @@ module.exports = function createBoothArtistsRouter({
     }
   })
 
-  // Every stored human take, once a minute at most. ~4k rows estate-wide on 2026-10-14
-  // (origin='human' is indexed; the voice filter trims legacy_import).
+  // Every stored human take, once a minute at most. ~3.6k rows estate-wide on 2026-10-14.
   let takesCache = null
   async function allHumanTakes() {
     if (takesCache && now() - takesCache.at < TAKES_TTL_MS) return takesCache.rows
     const rows = []
     for (let from = 0; ; from += PAGE) {
-      const { data, error } = await db().from('course_audio')
+      const page = () => db().from('course_audio')
         .select('id, voice_id, course_code, role, text, created_at, duration_ms, s3_key')
         .eq('origin', 'human').like('voice_id', 'human_%')
         .order('created_at', { ascending: false }).order('id')
         .range(from, from + PAGE - 1)
+      // ~50ms warm, but 5s+ on a cold cache (it walks the 44k origin='human' rows, 39k of
+      // them legacy_import): one retry on a statement timeout, as for coverage.
+      let { data, error } = await page()
+      if (error && /timeout/i.test(error.message || '')) ({ data, error } = await page())
       if (error) throw new Error(`takes read failed: ${error.message}`)
       rows.push(...(data || []))
       if ((data || []).length < PAGE) break
@@ -76,7 +79,15 @@ module.exports = function createBoothArtistsRouter({
   /** Coverage voices + their spellings, and every take filed under the canonical voice. */
   async function gather() {
     const d = db()
-    const [coverage, takes] = await Promise.all([queue.buildCoverage(d), allHumanTakes()])
+    // buildCoverage has been seen to lose a cold race with the 8s statement timeout
+    // ("recorded lookup failed: canceling statement…", 2026-10-14). One retry, as
+    // recordedTextKeys does; the second read runs on a warm cache.
+    const coverageOnce = () => queue.buildCoverage(d).catch((err) => {
+      if (!/timeout/i.test(err.message || '')) throw err
+      logger.warn(`[BoothArtists] coverage timed out cold, retrying once: ${err.message}`)
+      return queue.buildCoverage(d)
+    })
+    const [coverage, takes] = await Promise.all([coverageOnce(), allHumanTakes()])
     const languages = Array.isArray(coverage) ? coverage : (coverage.languages || [])
     const voices = new Map() // canonical voiceId → artist
     const spellingOf = new Map() // any spelling → canonical
