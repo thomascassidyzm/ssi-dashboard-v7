@@ -1,6 +1,6 @@
 <template>
   <!-- data-surface: a marker a human can grep for in the served bundle to prove this shipped -->
-  <div class="recordist" :class="{ fit: fitPhase }" data-surface="one-recordist-surface-2026-08-14" :data-durable-takes="DURABLE_TAKES_FEATURE">
+  <div class="recordist" :class="{ fit: fitPhase, live: phase === 'recording' }" data-surface="one-recordist-surface-2026-08-14" :data-durable-takes="DURABLE_TAKES_FEATURE">
     <!-- IS MY WORK SAFE? Answered in words, at the top, in every phase.
          Before 2026-09-03 the only answer on this screen was "Saving…" on the
          done card, an artist could not tell a take that was on its way from one
@@ -3341,6 +3341,11 @@ kbd {
   overflow: hidden;
 }
 .recordist.fit > .safety-banner { flex: none; margin: 0.5rem 0.75rem 0; padding: 0.45rem 0.75rem; }
+/* While he reads, an upload that is simply on its way is one line, not three: takes go up after
+   every line, and the reassurance is said in full on the batch page and the done screen. A take
+   at risk or refused keeps its whole sentence. */
+.recordist.fit.live > .safety-banner.waiting { flex-direction: row; padding: 0.3rem 0.75rem; }
+.recordist.fit.live > .safety-banner.waiting span { display: none; }
 
 .where {
   flex: none; display: flex; align-items: center; gap: 0.5rem;
