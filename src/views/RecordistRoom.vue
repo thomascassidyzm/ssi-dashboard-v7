@@ -1,6 +1,6 @@
 <template>
   <!-- data-surface: a marker a human can grep for in the served bundle to prove this shipped -->
-  <div class="recordist" :class="{ fit: fitPhase, live: phase === 'recording' }" data-surface="one-recordist-surface-2026-08-14" :data-durable-takes="DURABLE_TAKES_FEATURE">
+  <div class="recordist" :class="{ fit: fitPhase, live: phase === 'recording', 'sheet-open': sheetOpen && phase !== 'recording' }" data-surface="one-recordist-surface-2026-08-14" :data-durable-takes="DURABLE_TAKES_FEATURE">
     <!-- IS MY WORK SAFE? Answered in words, at the top, in every phase.
          Before 2026-09-03 the only answer on this screen was "Saving…" on the
          done card, an artist could not tell a take that was on its way from one
@@ -57,7 +57,7 @@
       <!-- THE ONE WHERE-AM-I ROW (job #378). ‹ on its left goes home; the words say where he is.
            While the mic is live it is words only: no link and no button near anything he reads
            (the ‹ and the sheet's opener go), and Stop here is the stage's way out. -->
-      <header class="where" :class="{ live: phase === 'recording' }" data-test="where">
+      <header ref="whereRef" class="where" :class="{ live: phase === 'recording' }" data-test="where">
         <button v-if="phase !== 'recording'" type="button" class="where-home" data-test="back-home" title="Back to home" aria-label="Back to home" @click="goHome">‹</button>
         <p class="where-words" :data-test="phase === 'recording' ? 'stage-where' : 'batch-where'">{{ whereWords }}</p>
         <button v-if="phase !== 'recording'" type="button" class="where-more" data-test="open-sheet" aria-label="Lines and settings" @click="openSheet()"><span class="wm-long">Lines &amp; settings</span><span class="wm-short" aria-hidden="true">☰</span></button>
@@ -380,10 +380,14 @@
            Drawn while the batch page or the done screen is up, shown on a tap; never while the
            mic is live. It is v-show, not v-if, so the map's open sections and a half-typed
            filter survive closing it. -->
-      <div v-if="phase !== 'recording'" v-show="sheetOpen" class="sheet" role="dialog" aria-label="Lines and settings" data-test="sheet">
-        <div class="sheet-head">
+      <!-- A SIDEBAR on a desktop (the line stays in view, pushed to the left), a DROPDOWN under the
+           where-am-I row on a phone. Closes by the ✕, a click/tap on the dimmed area, Esc, or a
+           swipe up on the head/grab bar. Never a full page. -->
+      <div v-if="phase !== 'recording'" v-show="sheetOpen" class="sheet-scrim" data-test="sheet-scrim" @click="closeSheet"></div>
+      <div v-if="phase !== 'recording'" v-show="sheetOpen" class="sheet" :style="{ '--sheet-top': sheetTop + 'px' }" role="dialog" aria-label="Lines and settings" data-test="sheet">
+        <div class="sheet-head" data-test="sheet-head" @touchstart.passive="swipeStart" @touchend.passive="swipeEnd">
           <p class="sheet-title">Lines &amp; settings</p>
-          <button type="button" class="sheet-close" data-test="close-sheet" @click="sheetOpen = false">Close</button>
+          <button type="button" class="sheet-close" data-test="close-sheet" aria-label="Close lines and settings" @click="closeSheet"><span aria-hidden="true">✕</span><span class="sc-word"> Close</span></button>
         </div>
         <div class="sheet-body">
           <!-- THE NAV (Tom, 2026-09-12): the whole list, each pod this voice is cast in and the
@@ -1387,13 +1391,32 @@ function railClass(l, i) {
 // settings; the where-am-I row's button opens it at the top.
 const sheetOpen = ref(false)
 const settingsRef = ref(null)
+const whereRef = ref(null)
+// The phone dropdown hangs from the bottom of the where-am-I row (and any banner above it).
+const sheetTop = ref(44)
+function closeSheet() { sheetOpen.value = false }
+let swipeY = null
+function swipeStart(e) { swipeY = e.touches && e.touches[0] ? e.touches[0].clientY : null }
+function swipeEnd(e) {
+  const t = e.changedTouches && e.changedTouches[0]
+  if (swipeY !== null && t && swipeY - t.clientY > 40) closeSheet()
+  swipeY = null
+}
+function onSheetKey(e) { if (e.key === 'Escape') closeSheet() }
+watch(sheetOpen, (open) => {
+  if (open) window.addEventListener('keydown', onSheetKey)
+  else window.removeEventListener('keydown', onSheetKey)
+})
+onBeforeUnmount(() => window.removeEventListener('keydown', onSheetKey))
 function openSheet(at) {
+  const w = whereRef.value
+  if (w) sheetTop.value = w.offsetTop + w.offsetHeight
   sheetOpen.value = true
   if (at === 'settings') nextTick(() => { const el = settingsRef.value; if (el && el.scrollIntoView) el.scrollIntoView({ block: 'start' }) })
 }
 // A line tapped on the map opens the mic on it: the sheet steps out of the way first.
 function recordFromSheet(lineId) {
-  sheetOpen.value = false
+  closeSheet()
   return recordOne(lineId)
 }
 watch(phase, (p) => { if (p === 'recording') sheetOpen.value = false })
@@ -3490,10 +3513,16 @@ kbd {
 .recordist.fit .done-list li { background: transparent; border-radius: 0; border-bottom: 1px solid var(--line, #334155); padding: 0.45rem 0; }
 .again-btn { min-height: 36px; }
 
-/* THE SHEET: everything that is not the line, over the whole screen, its own scroll. */
+/* THE SHEET: everything that is not the line. A dropdown from the where-am-I row on a phone, a
+   right-hand sidebar that pushes the stage over on a desktop (Aran, 2026-10-14, job #437). */
+.recordist.fit { position: relative; }
+.sheet-scrim { position: absolute; left: 0; right: 0; bottom: 0; top: var(--sheet-top, 44px); z-index: 190; background: rgba(2, 6, 23, 0.55); }
 .sheet {
-  position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column;
+  position: absolute; left: 0; right: 0; top: var(--sheet-top, 44px); z-index: 200;
+  max-height: 72%; display: flex; flex-direction: column;
   background: var(--canvas, #0f172a); color: var(--ink, #f1f5f9);
+  border-bottom: 1px solid var(--line, #334155); border-radius: 0 0 16px 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
 }
 .sheet-head {
   flex: none; display: flex; align-items: center; gap: 0.75rem;
@@ -3501,13 +3530,21 @@ kbd {
 }
 .sheet-title { flex: 1; margin: 0; font-weight: 700; font-size: 1rem; }
 .sheet-close {
-  flex: none; min-height: 40px; padding: 0 1rem; border-radius: 10px; cursor: pointer;
+  flex: none; min-height: 40px; min-width: 40px; padding: 0 1rem; border-radius: 10px; cursor: pointer;
   font: inherit; font-weight: 700; color: var(--canvas, #0f172a); background: var(--accent-2, #34d399); border: 0;
 }
 .sheet-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0.75rem 1rem 2rem; width: 100%; max-width: 900px; margin: 0 auto; }
 .sheet-settings h3 { margin: 1rem 0 0.5rem; font-size: 1rem; }
+.sheet .sheet-body { max-width: none; }
 
 @media (min-width: 900px) {
+  .sheet-scrim { top: 0; background: transparent; }
+  .sheet {
+    left: auto; right: 0; top: 0; bottom: 0; width: 420px; max-height: none; border-radius: 0;
+    border-bottom: 0; border-left: 1px solid var(--line, #334155); box-shadow: -8px 0 24px rgba(0, 0, 0, 0.3);
+  }
+  /* Push, not cover: the line re-centres in what is left, so it stays readable. */
+  .recordist.fit.sheet-open { padding-right: 420px; box-sizing: border-box; }
   .rail {
     flex: none; display: grid; grid-template-columns: repeat(10, 14px); grid-auto-rows: 14px; gap: 4px;
     align-content: center; list-style: none; margin: 0; padding: 1rem 1.25rem; overflow: hidden;
@@ -3543,6 +3580,8 @@ kbd {
 :root[data-theme="light"] .where { background: #eef4fb; border-bottom-color: #c9d8ea; }
 :root[data-theme="light"] .where-words { color: #1e293b; }
 :root[data-theme="light"] .status, :root[data-theme="light"] .transport, :root[data-theme="light"] .sheet-head { background: #fff; }
+:root[data-theme="light"] .sheet { background: #f8fafc; color: #0f172a; border-color: #c9d8ea; box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22); }
+:root[data-theme="light"] .sheet-scrim { background: rgba(15, 23, 42, 0.35); }
 :root[data-theme="light"] .mic { background: #e8f7f0; color: #065f46; }
 :root[data-theme="light"] .mic.is-paused, :root[data-theme="light"] .mic.is-editing, :root[data-theme="light"] .mic.is-arming { background: #eef0f3; color: #475569; }
 :root[data-theme="light"] .mic.is-playing { background: #fef6e0; color: #92400e; }

@@ -100,6 +100,27 @@ describe('RecordistRoom — the prompter layout', () => {
     expect(shown()).toBe(true)
   })
 
+  it('Lines & settings is a side panel / dropdown closed by ✕, the dimmed area, Esc or a swipe up; never open while live', async () => {
+    const w = await readyPage()
+    const shown = () => !(w.find('[data-test="sheet"]').attributes('style') || '').includes('display: none')
+    const open = async () => { await w.find('[data-test="open-sheet"]').trigger('click'); expect(shown()).toBe(true) }
+    await open()
+    expect(w.find('.recordist').classes()).toContain('sheet-open')
+    expect(w.find('[data-test="close-sheet"]').text()).toContain('✕')
+    await w.find('[data-test="close-sheet"]').trigger('click'); expect(shown()).toBe(false)
+    await open(); await w.find('[data-test="sheet-scrim"]').trigger('click'); expect(shown()).toBe(false)
+    await open(); window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' })); await flushPromises(); expect(shown()).toBe(false)
+    await open()
+    const head = w.find('[data-test="sheet-head"]')
+    await head.trigger('touchstart', { touches: [{ clientY: 300 }] })
+    await head.trigger('touchend', { changedTouches: [{ clientY: 200 }] })
+    expect(shown()).toBe(false)
+    // Live: neither the sheet nor its scrim exists.
+    await w.find('.btn-begin').trigger('click'); await flushPromises()
+    expect(w.find('[data-test="sheet"]').exists()).toBe(false)
+    expect(w.find('[data-test="sheet-scrim"]').exists()).toBe(false)
+  })
+
   it('while live: words-only where row, one status row, Back · Again · Next at the bottom, no sheet', async () => {
     const w = await readyPage()
     await w.find('.btn-begin').trigger('click')
