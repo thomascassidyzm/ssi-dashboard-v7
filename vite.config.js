@@ -144,6 +144,7 @@ export default defineConfig({
       'ops/watchdog/holmes-availability-sentinel.test.cjs',
       'services/voice-engine/clone-source.test.cjs',
       'services/voice-engine/recordist-clip-variant.test.cjs',
+      'services/voice-engine/recordist-latest-takes-gate.test.cjs',
       'services/voice-engine/recordist-queue.test.cjs',
       'tools/audio-regen-probe/*.test.cjs',
       'tools/distinctions/*.test.cjs',
