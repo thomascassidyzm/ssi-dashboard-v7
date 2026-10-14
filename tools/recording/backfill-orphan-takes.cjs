@@ -133,8 +133,8 @@ async function probeDuration(key) {
                                 from course_audio where s3_key = any($1)`, [keys])
     for (const r of q.rows) existingByKey.set(r.s3_key, r)
   }
-  const byUuid = await pg.query(`select id from course_audio where id::text = any($1)`,
-    [takes.map(t => t.audio_uuid)])
+  const byUuid = await pg.query(`select id from course_audio where id = ANY($1::uuid[])`,
+    [takes.map(t => t.audio_uuid).filter(u => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(u || ''))])
   const filedUuids = new Set(byUuid.rows.map(r => r.id))
 
   const orphans = takes.filter(t => !existingByKey.has(t.ctx.s3_key) && !filedUuids.has(t.audio_uuid))

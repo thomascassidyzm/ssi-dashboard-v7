@@ -112,7 +112,7 @@ async function main() {
     // the clips the LEGO will point at: B02's three (library) + the new intro — alive and saying the right words
     const { rows: [b2] } = await pg.query('SELECT known_audio_id, target1_audio_id, target2_audio_id, target1_duration_ms, target2_duration_ms FROM course_practice_phrases WHERE id=$1', [B02]);
     const ids = b2 ? [b2.known_audio_id, b2.target1_audio_id, b2.target2_audio_id, NEW_INTRO.id] : [NEW_INTRO.id];
-    const { rows: clips } = await pg.query('SELECT id::text, role, voice_id, text, s3_key, duration_ms FROM course_audio WHERE id::text = ANY($1)', [ids]);
+    const { rows: clips } = await pg.query('SELECT id::text, role, voice_id, text, s3_key, duration_ms FROM course_audio WHERE id = ANY($1::uuid[])', [ids]);
     const C = Object.fromEntries(clips.map((c) => [c.id, c]));
     const want = b2 ? [[b2.known_audio_id, 'known', LEGO.to.known], [b2.target1_audio_id, 'target1', LEGO.to.target], [b2.target2_audio_id, 'target2', LEGO.to.target], [NEW_INTRO.id, 'presentation', NEW_INTRO.text]] : [];
     for (const [id, role, text] of want) { const c = C[id]; if (!c || !c.s3_key || c.role !== role || norm(c.text) !== norm(text)) D.problems.push(`clip ${id} (${role}) missing or not "${text}"`); }

@@ -19,7 +19,7 @@ async function main() {
   const course = opt('--course'), maxSeed = Number(opt('--seeds', 100))
   const pg = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } }); await pg.connect()
   const { rows: [crs] } = await pg.query('select course_code, known_lang, target_lang from courses where course_code=$1', [course])
-  const { rows } = await pg.query(`select l.lego_id, ca.text from course_legos l join course_audio ca on ca.id::text = l.presentation_audio_id::text
+  const { rows } = await pg.query(`select l.lego_id, ca.text from course_legos l join course_audio ca on ca.id = l.presentation_audio_id::uuid
     where l.course_code=$1 and l.seed_number <= $2 order by l.seed_number, l.lego_index`, [course, maxSeed])
   const voices = [policy.config.englishVoice, policy.config.englishVoice.replace(/^cartesia_/, '')]
   const plans = rows.map(r => ({ ...r, plan: planIntro(r.text, crs) }))

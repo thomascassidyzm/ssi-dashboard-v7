@@ -78,7 +78,7 @@ const HOLD = {
 async function load(pg) {
   const q = async (sql, a) => (await pg.query(sql, a)).rows;
   const legos = await q(`SELECT l.lego_id, l.seed_number, l.lego_index, l.is_new, l.known_text, l.target_text, l.components, l.known_audio_id, l.presentation_audio_id, a.text AS intro
-    FROM course_legos l LEFT JOIN course_audio a ON a.id::text = l.presentation_audio_id WHERE l.course_code=$1`, [COURSE]);
+    FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1`, [COURSE]);
   const phrases = await q('SELECT id, seed_number, lego_index, phrase_role, known_text, target_text, known_audio_id FROM course_practice_phrases WHERE course_code=$1', [COURSE]);
   return { legos, phrases };
 }

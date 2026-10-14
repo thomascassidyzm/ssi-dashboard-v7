@@ -173,7 +173,9 @@ natural 1.0×). It has nothing to do with pod cadence, i.e. how often a pod play
 - `.cjs` + `require`, always (see above). Config as JSON next to the module that loads it.
 - `require('./shared/logger.cjs')('ServiceName')` for logging, not bare `console.log`.
 - `dotenv` from the repo-root `.env`; `.env.psql` holds `DATABASE_URL` for direct SQL and is
-  provisioned per machine by scp, never by git.
+  provisioned per machine by scp, never by git. It is the capped `agent_script` login (5 s, no DDL,
+  job #384); a service that needs the owner reads `~/.config/ssi-db/owner.env`. Ad-hoc SQL goes
+  through `shared/agent-db.cjs`, which refuses `id::text = …` and friends before sending.
 - **Never `@anthropic-ai/sdk`.** All LLM calls go through the Claude CLI — `shared/claude-cli.cjs`,
   or the pattern in `gender-prep-coordinator.cjs`. The SDK is in `package.json` for the dashboard's
   env switcher only. A past SDK module quietly billed ~$38/day.

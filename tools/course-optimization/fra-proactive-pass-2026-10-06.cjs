@@ -185,7 +185,7 @@ async function load(pg) {
   const q = async (s, a) => (await pg.query(s, a)).rows;
   const seeds = await q('SELECT seed_number, known_text, target_text, approved_at FROM course_seeds WHERE course_code=$1 ORDER BY seed_number', [COURSE]);
   const legos = await q(`SELECT l.id, l.lego_id, l.seed_number, l.lego_index, l.is_new, l.known_text, l.target_text, l.presentation_audio_id, a.text AS intro
-    FROM course_legos l LEFT JOIN course_audio a ON a.id::text = l.presentation_audio_id WHERE l.course_code=$1 ORDER BY l.seed_number, l.lego_index`, [COURSE]);
+    FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1 ORDER BY l.seed_number, l.lego_index`, [COURSE]);
   const phrases = await q(`SELECT id, split_part(id, ':', 2) AS sid, substr(split_part(id, ':', 2), 1, 8) AS lego_id, seed_number, lego_index, position, phrase_role, known_text, target_text,
     known_audio_id, target1_audio_id, target2_audio_id FROM course_practice_phrases WHERE course_code=$1 ORDER BY seed_number, lego_index, position`, [COURSE]);
   return { seeds, legos, phrases };
@@ -231,7 +231,7 @@ const INTRO_VOICE = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2';
 /** PASS=intro-voice: re-render, on INTRO_VOICE, every K41 intro this job made in another voice (make-before-break: the
  *  route binds the new clip to the LEGO; the old clip is kept, never deleted). */
 async function introVoice(pg, APPLY, log) {
-  const { rows } = await pg.query(`SELECT l.lego_id, a.text, a.voice_id FROM course_legos l JOIN course_audio a ON a.id::text = l.presentation_audio_id
+  const { rows } = await pg.query(`SELECT l.lego_id, a.text, a.voice_id FROM course_legos l JOIN course_audio a ON a.id = l.presentation_audio_id::uuid
     WHERE l.course_code=$1 AND l.lego_id = ANY($2) AND a.voice_id <> $3 ORDER BY l.lego_id`, [COURSE, K41_LEGOS, INTRO_VOICE]);
   console.log(`INTRO-VOICE: ${rows.length} intros not on ${INTRO_VOICE}`);
   if (!APPLY) return;

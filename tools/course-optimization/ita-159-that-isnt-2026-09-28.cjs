@@ -270,7 +270,7 @@ async function applyIntro(pg, supabase, log) {
     if (castRow) await pg.query(`DELETE FROM voice_language_roles WHERE slot=$1 AND language=$2 AND gender=$3 AND rank=$4 AND voice_id=$5 AND assigned_by=$6`, [TEMP_ROW.slot, TEMP_ROW.language, TEMP_ROW.gender, TEMP_ROW.rank, TEMP_ROW.voice_id, SWEEP]);
     log.castAfter = await engCast(); log.castRestored = sameCast(log.castBefore, log.castAfter);
   }
-  const { rows: [chk] } = await pg.query('SELECT l.presentation_audio_id, a.text FROM course_legos l LEFT JOIN course_audio a ON a.id::text=l.presentation_audio_id WHERE l.course_code=$1 AND l.lego_id=$2', [COURSE, INTRO.legoId]);
+  const { rows: [chk] } = await pg.query('SELECT l.presentation_audio_id, a.text FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1 AND l.lego_id=$2', [COURSE, INTRO.legoId]);
   log.intro.linkedText = chk?.text || null; log.intro.mirrors = !!chk?.text && chk.text === INTRO.text;
 }
 

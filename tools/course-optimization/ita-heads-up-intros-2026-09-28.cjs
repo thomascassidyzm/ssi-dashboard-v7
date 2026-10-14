@@ -154,7 +154,7 @@ async function apply(pg, supabase, log) {
         await pg.query('UPDATE lego_introductions SET presentation_audio_id=$1, audio_uuid=$1, updated_at=now() WHERE course_code=$2 AND lego_id=$3', [audioId, COURSE, l.legoId]);
         entry.audioId = audioId; entry.result = how;
       } catch (e) { entry.result = `SILENT — render refused: ${e.message}`; }
-      const { rows: [chk] } = await pg.query('SELECT l.presentation_audio_id, a.text FROM course_legos l LEFT JOIN course_audio a ON a.id::text=l.presentation_audio_id WHERE l.course_code=$1 AND l.lego_id=$2', [COURSE, l.legoId]);
+      const { rows: [chk] } = await pg.query('SELECT l.presentation_audio_id, a.text FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1 AND l.lego_id=$2', [COURSE, l.legoId]);
       entry.linkedText = chk?.text || null; entry.mirrors = !!chk?.text && chk.text === l.text;
     }
   } finally {

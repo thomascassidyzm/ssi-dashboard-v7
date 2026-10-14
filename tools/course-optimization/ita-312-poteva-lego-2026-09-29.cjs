@@ -240,7 +240,7 @@ async function verifyAudio(pg) {
     if (r.x1 && !/Elsa|xai_|elevenlabs/.test(r.v1 || '')) probs.push(`${id}: target1 voice ${r.v1}`);
     if (r.x2 && !/Benigno|xai_|elevenlabs/.test(r.v2 || '')) probs.push(`${id}: target2 voice ${r.v2}`);
   }
-  const { rows: [p] } = await pg.query(`SELECT a.text FROM course_legos l LEFT JOIN course_audio a ON a.id::text=l.presentation_audio_id::text WHERE l.course_code=$1 AND l.lego_id=$2`, [COURSE, NEW_LEGO.id]);
+  const { rows: [p] } = await pg.query(`SELECT a.text FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1 AND l.lego_id=$2`, [COURSE, NEW_LEGO.id]);
   if (!p?.text) probs.push(`${NEW_LEGO.id}: intro SILENT`); else if (p.text !== NEW_LEGO.intro) probs.push(`${NEW_LEGO.id}: intro clip says "${p.text}"`);
   return { rows: rows.length, probs };
 }
