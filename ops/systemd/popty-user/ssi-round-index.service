@@ -1,0 +1,30 @@
+# System unit (job #391): the nightly round-map rebuild needs the owner login, which only popty reads.
+[Unit]
+Description=Nightly rebuild of the round map the learner app walks (course_round_index), user popty
+
+[Service]
+Type=oneshot
+# RUNS AS ITS OWN UNIX USER (job #391, Tom 2026-10-14): popty, so a worker running as
+# tomcassidy cannot read the Supabase service key, the provider keys or the DB owner login.
+# Those live in /etc/popty (popty:popty, 0700/0600). Primary group tomcassidy + UMask 0002 so
+# what Popty writes in the shared places (prod checkout data/ logs/, ~/.local/state, VFS_ROOT,
+# ~/ssi-evidence) stays writable by the tomcassidy tools that share them. HOME stays Tom's:
+# whisper, lame, the claude binary, the spend ledger and the model catalog are found from it.
+User=popty
+Group=tomcassidy
+UMask=0002
+Environment=HOME=/home/tomcassidy
+EnvironmentFile=/etc/popty/popty.env
+Environment=ROUND_INDEX_ENV_PSQL=/etc/popty/owner.env
+Environment="PATH=/home/tomcassidy/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/snap/bin"
+WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod
+Environment=NODE_OPTIONS=--max-old-space-size=4096
+OOMScoreAdjust=500
+ExecStart=/usr/bin/node /home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/tools/round-index/nightly.cjs
+Nice=15
+IOSchedulingClass=idle
+CPUWeight=20
+TimeoutStartSec=30min
+SuccessExitStatus=0 2
+StandardOutput=append:/home/tomcassidy/.local/log/ssi-round-index-unit.log
+StandardError=append:/home/tomcassidy/.local/log/ssi-round-index-unit.log

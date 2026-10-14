@@ -126,13 +126,16 @@ async function notify(text) {
   } catch (e) { log(`notice FAILED: ${e.message}\n${text}`); }
 }
 
+// Popty's units are system units run as `popty` since job #391; scopeArgs finds out.
+const { scopeArgs } = require('../lib/unit-scope.cjs');
+
 function isActive(unit) {
-  try { execFileSync('systemctl', ['--user', 'is-active', '--quiet', unit]); return true; }
+  try { execFileSync('systemctl', [...scopeArgs(unit), 'is-active', '--quiet', unit]); return true; }
   catch { return false; }
 }
 
 function restartUnit(unit) {
-  execFileSync('systemctl', ['--user', 'restart', unit], { stdio: 'pipe' });
+  execFileSync('systemctl', [...scopeArgs(unit), 'restart', unit], { stdio: 'pipe' });
   // Give the ExecStartPre syntax guard + startup a moment, then check it held.
   const deadline = Date.now() + 15000;
   let active = false;

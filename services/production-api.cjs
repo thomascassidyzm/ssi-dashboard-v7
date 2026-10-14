@@ -4323,7 +4323,7 @@ async function getDirectAudioStats(courseCode) {
     throw new Error(
       `phase 8 audio service (localhost:3465) is unreachable (${reason}) — ` +
       `audio stats cannot be computed without it. ` +
-      `Check: systemctl --user status popty-phase8-audio`
+      `Check: systemctl status popty-phase8-audio`
     )
   }
   if (phase8Resp.status >= 400) {

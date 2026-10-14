@@ -1,0 +1,16 @@
+# System unit (job #391): the DB watchdog cancels agent queries, which needs the owner login,
+# which only popty reads now. Code is command-surface's (ops/db-watchdog.cjs), unchanged.
+[Unit]
+Description=DB watchdog — cancel and name any agent query on the shared SSi DB running past 5 s (job #384), user popty
+
+[Service]
+Type=oneshot
+User=popty
+Group=tomcassidy
+UMask=0002
+Environment=HOME=/home/tomcassidy
+WorkingDirectory=/home/tomcassidy/command-surface
+EnvironmentFile=/etc/popty/owner.env
+ExecStart=/usr/bin/node /home/tomcassidy/command-surface/ops/db-watchdog.cjs
+TimeoutStartSec=45
+Nice=5

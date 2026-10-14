@@ -1,0 +1,8 @@
+// Job #391: tomcassidy (auto-deploy, the audio stop) may start/stop/restart Popty's system
+// units without sudo. Managing a unit does not let it read /etc/popty.
+polkit.addRule(function(action, subject) {
+  if (action.id == "org.freedesktop.systemd1.manage-units" && subject.user == "tomcassidy") {
+    var unit = action.lookup("unit") || "";
+    if (/^(popty-[a-z0-9-]+|ssi-round-index|cs-db-watchdog)\.(service|timer)$/.test(unit)) return polkit.Result.YES;
+  }
+});
