@@ -113,8 +113,8 @@ async function main() {
       report.contentVersion = await bumpCourseVersion(R.supabase(), COURSE, 'patch')
     }
   }
-  const { rows: still } = await pg.query(`SELECT count(*)::int n FROM course_practice_phrases WHERE course_code=$1 AND id = ANY($2) AND (known_audio_id IS NULL OR target1_audio_id IS NULL OR target2_audio_id IS NULL)`, [COURSE, [...insertedIds]])
-  report.phraseRowsStillSilent = still[0].n
+  const { rows: still } = await pg.query(`SELECT count(*)::int n FROM course_practice_phrases WHERE course_code=$1 AND id = ANY($2) AND phrase_role IN ('build','use') AND (known_audio_id IS NULL OR target1_audio_id IS NULL OR target2_audio_id IS NULL)`, [COURSE, [...insertedIds]])
+  report.phraseRowsStillSilent = still[0].n   // BUILD/USE only: component rows carry no audio by design (skipped at runtime)
   await pg.end()
   fs.mkdirSync(EVIDENCE, { recursive: true })
   fs.writeFileSync(path.join(EVIDENCE, `${COURSE}.fill-audio.${APPLY ? 'applied' : 'dryrun'}.${Date.now()}.json`), JSON.stringify(report, null, 1))
