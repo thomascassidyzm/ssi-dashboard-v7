@@ -2015,11 +2015,16 @@ module.exports = function createRecordistRouter({
         }
       }
       const limit = Math.min(Math.max(parseInt(req.query.limit, 10) || 10, 1), 50)
-      const { data, error } = await db()
+      // ?q= finds an older take by its words ("did they ever record X?") when the
+      // newest 50 are all from today. Wildcards are stripped, so it is a plain substring.
+      const q = typeof req.query.q === 'string' ? req.query.q.replace(/[%_,()*\\]/g, ' ').trim().slice(0, 80) : ''
+      let takesQuery = db()
         .from('course_audio')
         .select('id, course_code, role, text, s3_key, created_at')
         .eq('language', recordist.language)
         .in('voice_id', recordist.spellings)
+      if (q) takesQuery = takesQuery.ilike('text', `%${q}%`)
+      const { data, error } = await takesQuery
         .order('created_at', { ascending: false })
         .limit(limit)
       if (error) throw new Error(`latest takes read failed: ${error.message}`)
