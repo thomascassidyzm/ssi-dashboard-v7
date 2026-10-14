@@ -3880,6 +3880,9 @@ app.patch('/api/production/:courseCode/pod/:podId/solo-readers', async (req, res
       recordEdit: req.contentEdit ? (e) => req.contentEdit.record(e) : null,
     })
     if (!out.ok || !out.changed) req.contentEdit?.wroteNothing()
+    // The per-language queue read is cached 60s and re-warmed in the background; a changed reader
+    // list must drop it so the next booth load stops serving the line (job #413).
+    if (out.ok && out.changed && !dryRun) require('./voice-engine/recordist-queue-cache.cjs').invalidateLanguageQueueCache()
     const { status, ...body } = out
     res.status(out.ok ? 200 : (status || 409)).json(body)
   } catch (error) {
