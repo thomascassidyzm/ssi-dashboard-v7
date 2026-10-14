@@ -17,6 +17,10 @@ const sign = (o = {}) => signHeader({ secret, agentId: 'aran-watson', method: 'P
 const verifier = () => createAgentAdminVerifier({ key, now: () => T * 1000, logger: quiet })
 
 describe('agent admin identity', () => {
+  it('accepts a dotted agent id accepted by the signing helper', () => {
+    const header = sign({ agentId: 'cs.425' })
+    expect(verifier().check(req(header), SCOPES.VOICE_SLOT_WRITE).ok).toBe(true)
+  })
   it('ignores a request with no header (the normal admin path)', () => {
     expect(verifier().check(req(null), SCOPES.VOICE_SLOT_WRITE)).toBe(null)
   })

@@ -150,6 +150,7 @@ describe('course-edit-ops', () => {
     expect(out.undo_ops[0].op).toBe('phrase.insert')
     await run(db, out.undo_ops)
     expect(db.tables.course_practice_phrases[0].target_text).toBe('rhai o’r ardaloedd')
+    expect(db.tables.course_qa_flags).toEqual([{ phrase_id: `${C}:S0001L01U01` }])
   })
 
   it('phrase.insert refuses an id that already exists', async () => {

@@ -10,7 +10,7 @@ const B = '22222222-2222-4222-8222-222222222222'
 const C = '33333333-3333-4333-8333-333333333333'
 
 // Just enough supabase-js: from().select().eq()/.is().maybeSingle(), from().update().eq()/.is().select().
-function fakeDb(tables, { raceOn = null } = {}) {
+function fakeDb(tables, { raceOn = null, beforeWrite = null } = {}) {
   const writes = []
   const db = {
     writes,
@@ -26,6 +26,7 @@ function fakeDb(tables, { raceOn = null } = {}) {
         maybeSingle() { return Promise.resolve({ data: rows()[0] || null, error: null }) },
       }
       function apply() {
+        if (beforeWrite) beforeWrite(table, tables)
         if (raceOn && patch[raceOn]) return { data: [], error: null }
         const hit = rows()
         hit.forEach((r) => Object.assign(r, patch))
@@ -52,6 +53,16 @@ const bumps = []
 const bump = async (db, course, level) => { bumps.push([course, level]); return '1.0.1' }
 
 describe('linkClips', () => {
+  it('refuses linking after the slot text changes while its audio pointer remains null', async () => {
+    const t = world()
+    const db = fakeDb(t, { beforeWrite(table, tables) {
+      if (table === 'course_seeds') tables.course_seeds[0].known_text = 'I want to learn Welsh'
+    } })
+    const out = await linkClips({ db, courseCode: 'cym_nv2_for_eng',
+      links: [{ seedNumber: 12, role: 'known', audioId: A }], bump })
+    expect(out.linked).toBe(0)
+    expect(t.course_seeds[0].known_audio_id).toBeNull()
+  })
   it('fills an empty seed slot, records one event, bumps content_version once', async () => {
     const t = world(); const db = fakeDb(t); bumps.length = 0
     const events = []
