@@ -120,7 +120,8 @@ function welshExpandEin(text, legoTargets) {
     const m = toks[ti].match(/^(.*?\p{L})['’‘`´]n([^\p{L}'’]*)$/u);
     if (!m || !YN_HOST_FINAL.test(m[1].toLowerCase())) return;
     const after = wordIdx.slice(k + 1).map(j => wordsOf(toks[j])).flat();
-    if (!tails.some(t => t.every((w, j) => after[j] === w))) return;
+    // the tail's last word may carry its own clitic: "rhai ni’n moyn" still holds "rhai ni"
+    if (!tails.some(t => t.every((w, j) => after[j] === w || (j === t.length - 1 && after[j] && after[j].startsWith(`${w}'`))))) return;
     toks[ti] = `${m[1]} ein${m[2]}`;
   });
   return toks.join('');
