@@ -594,6 +594,17 @@ app.use('/api/production/:courseCode/audio-preview',
 // carries (/languages) take requireAdmin.
 // Mounted AFTER handleRecordingUpload is defined (hoisted function declaration),
 // which it calls rather than duplicating the upload seam.
+// The recording-artists overview (Aran, 2026-10-14, job #350): God admins only,
+// gated server-side inside the router. Under /api/recording so popty.app's
+// same-origin rewrite reaches it; mounted first so nothing link-is-identity
+// below can ever answer for it.
+app.use('/api/recording/admin',
+  require('./voice-engine/booth-artists-router.cjs')({
+    getDb: () => (supabaseClient.isInitialized() ? supabaseClient.getClient() : null),
+    logger,
+    requireAdmin,
+  }))
+
 app.use('/api/recording',
   require('./voice-engine/recordist-router.cjs')({
     getDb: () => (supabaseClient.isInitialized() ? supabaseClient.getClient() : null),
