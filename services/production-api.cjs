@@ -204,6 +204,17 @@ app.use('/api/basket-lab', basketLabGate.gate, require('../labs/basket-lab/serve
 app.use(express.json({ limit: '50mb' }))  // Large limit for manifests with 20k+ audio entries
 app.use(require('./shared/chain-context.cjs').middleware)   // every Popty request is inside the one audio chain (job #702)
 
+// AGENT FRONT DOOR (Tom 2026-10-14, r-2026-10-14-kai-is-team-his-agents-get): a
+// signed same-host agent holding scope admin:all may call EVERY route under these
+// prefixes, read and write, as an attributed admin. Verified once here (the
+// signature is single-use), stamped on req.agentAdmin, logged with its identity.
+// Routes keep their own dry-run/undo; an agent gets no way round those.
+const AGENT_PREFIXES = ['/api/admin', '/api/voicelab']
+app.use(require('./shared/agent-admin-identity.cjs').agentFrontDoor(
+  require('./shared/agent-admin-identity.cjs').createAgentAdminVerifier({ logger }),
+  { prefixes: AGENT_PREFIXES, logger },
+))
+
 // Disable ALL caching on API responses during development
 app.use((req, res, next) => {
   res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate')
@@ -361,6 +372,10 @@ function userCanAccessCourse(user, courseCode) {
 // Helper: extract session from Authorization header and verify dashboard access
 // Tries Supabase JWT first, falls back to old session-based auth
 async function requireAdmin(req, res) {
+  // A signed agent identity holding admin:all, already verified by the front
+  // door (agentFrontDoor below) — attributed, logged, same-host only.
+  const agent = agentAdminIdentity.agentFromRequest(req)
+  if (agent) return agent
   const token = req.headers.authorization?.replace('Bearer ', '')
   if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
 
@@ -374,6 +389,8 @@ async function requireAdmin(req, res) {
 
 // Like requireAdmin but allows any dashboard user (editor, recorder, admin)
 async function requireDashboardUser(req, res) {
+  const agent = agentAdminIdentity.agentFromRequest(req)
+  if (agent) return agent
   const token = req.headers.authorization?.replace('Bearer ', '')
   if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
 
@@ -8137,8 +8154,7 @@ async function courseEditConnect() {
   return client
 }
 
-async function runCourseEdit(req, res, ops, { apply }) {
-  const { courseCode } = req.params
+async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.courseCode, extra = {} }) {
   let plans
   try {
     plans = courseEditOps.planOps(ops, courseCode)
@@ -8193,6 +8209,7 @@ async function runCourseEdit(req, res, ops, { apply }) {
       undo_ops: out.undo_ops,
       undo_file: undoFile ? path.basename(undoFile) : null,
       ...(undoFileError ? { undo_file_error: undoFileError } : {}),
+      ...extra,
       ...(out.applied ? {} : { note: 'Dry run: the transaction ran and was rolled back. Send "apply": true to commit.' }),
     })
   } catch (err) {
@@ -8234,6 +8251,87 @@ app.post('/api/production/:courseCode/edit-batch', async (req, res) => {
     }
   }
   return runCourseEdit(req, res, ops, { apply: body.apply === true })
+})
+
+// ─── ADMIN EDIT DOORS FOR AGENTS (Tom 2026-10-14, r-2026-10-14-kai-is-team-his-agents-get) ─
+// Both ride the course-edit engine: one transaction, a DRY RUN unless "apply": true,
+// a derived undo (undo_file, replayed through edit-batch), a before-state assertion.
+// They live under /api/admin so a signed agent holding admin:all reaches them
+// (agentFrontDoor); an admin session reaches them as before.
+async function pageAll(build) {
+  const out = []
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await build().range(from, from + 999)
+    if (error) throw error
+    out.push(...(data || []))
+    if (!data || data.length < 1000) return out
+  }
+}
+
+const ADMIN_COURSE_CODE = /^[a-z]{2,4}_for_[a-z]{2,4}$/
+
+// POST /api/admin/recompute-decompositions
+//   {courseCode, phrase_ids?: [..], seeds?: [..], apply?: bool}
+// Word-tile decomposition recomputed CONTENT-keyed (stored gloss vs the LEGO's
+// current known_text) for the listed phrases, or every phrase of the listed seeds.
+// Sets decomposition + decomposition_course_version only. Port of
+// tools/course-optimization/refresh-stale-phrase-decompositions.cjs.
+app.post('/api/admin/recompute-decompositions', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const body = req.body || {}
+  const courseCode = String(body.courseCode || '')
+  const refuse = (status, error, code = 'BAD_REQUEST') => { req.contentEdit?.wroteNothing(); return res.status(status).json({ error, code }) }
+  if (!ADMIN_COURSE_CODE.test(courseCode)) return refuse(400, 'courseCode required (e.g. fra_for_eng)')
+  const phraseIds = Array.isArray(body.phrase_ids) ? [...new Set(body.phrase_ids.map(String))] : []
+  let seeds = []
+  try { seeds = body.seeds === undefined ? [] : require('./shared/seed-approval.cjs').parseSeedList(body.seeds) } catch (e) { return refuse(400, e.message) }
+  if (!phraseIds.length && !seeds.length) return refuse(400, 'give "phrase_ids" and/or "seeds": this door never sweeps a whole course')
+  if (phraseIds.some(id => !id.startsWith(courseCode + ':'))) return refuse(400, `every phrase id must start "${courseCode}:"`)
+  try {
+    const sb = supabaseClient.getClient()
+    const { data: course, error: cErr } = await sb.from('courses').select('version').eq('course_code', courseCode).maybeSingle()
+    if (cErr) throw cErr
+    if (!course) return refuse(404, `course not found: ${courseCode}`, 'NOT_FOUND')
+    const cols = 'id, seed_number, lego_index, target_text, decomposition'
+    const phrases = new Map()
+    for (let i = 0; i < phraseIds.length; i += 200) {
+      for (const r of await pageAll(() => sb.from('course_practice_phrases').select(cols).eq('course_code', courseCode).in('id', phraseIds.slice(i, i + 200)))) phrases.set(r.id, r)
+    }
+    for (let i = 0; i < seeds.length; i += 100) {
+      for (const r of await pageAll(() => sb.from('course_practice_phrases').select(cols).eq('course_code', courseCode).in('seed_number', seeds.slice(i, i + 100)))) phrases.set(r.id, r)
+    }
+    const missing = phraseIds.filter(id => !phrases.has(id))
+    const legos = await pageAll(() => sb.from('course_legos').select('seed_number, lego_index, target_text, known_text').eq('course_code', courseCode))
+    const plan = require('./shared/decomposition-refresh.cjs').planRecompute({
+      courseCode, legos, phrases: [...phrases.values()].filter(p => p.decomposition), courseVersion: course.version ?? null,
+    })
+    const extra = { summary: plan.summary, rows: plan.rows, missing_phrase_ids: missing }
+    if (!plan.ops.length) {
+      req.contentEdit?.wroteNothing()
+      return res.json({ ok: true, dryRun: body.apply !== true, applied: false, results: [], undo_ops: [], ...extra, note: 'Nothing stale to rewrite.' })
+    }
+    return runCourseEdit(req, res, plan.ops, { apply: body.apply === true, courseCode, extra })
+  } catch (err) {
+    req.contentEdit?.wroteNothing()
+    logger.error('[recompute-decompositions]', err?.message || err)
+    res.status(500).json({ error: err?.message || 'unknown error' })
+  }
+})
+
+// POST /api/admin/unapprove-seeds  {courseCode, seeds:[..], apply?: bool}
+// approved_at = NULL on the listed seeds; decomposition, LEGOs and phrases are
+// untouched. Dry run unless "apply": true; the undo re-stamps the old approved_at.
+app.post('/api/admin/unapprove-seeds', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const body = req.body || {}
+  const courseCode = String(body.courseCode || '')
+  const approval = require('./shared/seed-approval.cjs')
+  let seeds
+  try {
+    if (!ADMIN_COURSE_CODE.test(courseCode)) throw Object.assign(new Error('courseCode required (e.g. fra_for_eng)'), { code: 'BAD_REQUEST' })
+    seeds = approval.parseSeedList(body.seeds)
+  } catch (e) { req.contentEdit?.wroteNothing(); return res.status(400).json({ error: e.message, code: e.code }) }
+  return runCourseEdit(req, res, approval.planUnapprove(seeds), { apply: body.apply === true, courseCode })
 })
 
 // Update a LEGO. Same door as lego.update; camelCase accepted for old callers.

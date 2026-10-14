@@ -31,6 +31,10 @@ const fs = require('fs');
 const SCOPES = Object.freeze({
   VOICE_SLOT_WRITE: 'voice-slot:write',
   TAKES_READ: 'takes:read',
+  // Kai's agents (Tom 2026-10-14, r-2026-10-14-kai-is-team-his-agents-get): the
+  // whole /api/admin and /api/voicelab surface, read and write. A key carrying
+  // it satisfies EVERY narrower scope too.
+  ADMIN_ALL: 'admin:all',
 });
 
 const HEADER = 'x-agent-admin';
@@ -64,6 +68,15 @@ function loadKey(file) {
   const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
   if (!raw || typeof raw.secret !== 'string' || raw.secret.length < 32) throw new Error('agent-admin key file has no usable secret');
   return { secret: raw.secret, scopes: Array.isArray(raw.scopes) ? raw.scopes : [] };
+}
+
+/** The verified agent user for a request the front door admitted with admin:all, else null. */
+function agentFromRequest(req) {
+  return req.agentAdmin && keyHasScope(req.agentAdmin.scopes, SCOPES.ADMIN_ALL) ? req.agentAdmin.user : null;
+}
+
+function keyHasScope(scopes, scope) {
+  return Array.isArray(scopes) && (scopes.includes(scope) || scopes.includes(SCOPES.ADMIN_ALL));
 }
 
 /**
@@ -103,20 +116,49 @@ function createAgentAdminVerifier({ keyFile = process.env.POPTY_AGENT_ADMIN_KEY_
     if (seen.has(sig)) return fail(401, 'signature already used');
     for (const [s, exp] of seen) if (exp <= now()) seen.delete(s);
     seen.set(sig, now() + (MAX_SKEW_S * 2) * 1000);
-    if (!k.scopes.includes(scope)) return fail(403, `the agent key does not carry scope ${scope}`);
+    // scope null = judge the signature only and hand back what the key carries,
+    // so the front-door middleware can verify ONCE (a signature is single-use)
+    // and each gate asks keyHasScope() afterwards.
+    if (scope && !keyHasScope(k.scopes, scope)) return fail(403, `the agent key does not carry scope ${scope}`);
 
-    logger.info?.(`[AgentAdmin] ${agentId} ${req.method} ${path} scope=${scope}`);
+    logger.info?.(`[AgentAdmin] ${agentId} ${req.method} ${path} scope=${scope || 'verified'}`);
     return {
       ok: true,
       agent: agentId,
       scope,
+      scopes: k.scopes,
       // Admin-shaped so existing handlers that read user.email / role keep working,
       // and the attribution is unmistakable in every log line that prints it.
-      user: { kind: 'agent', id: agentId, email: `agent:${agentId}`, name: `agent ${agentId}`, role: 'admin', verified: false, viaAgentKey: true },
+      user: { kind: 'agent', id: agentId, email: `agent:${agentId}`, name: `agent ${agentId}`, role: 'admin', courses: '*', verified: false, viaAgentKey: true },
     };
   }
 
   return { check };
+}
+
+/**
+ * THE FRONT DOOR for whole path prefixes (/api/admin, /api/voicelab): an
+ * x-agent-admin request is verified once, here, and — if the key carries
+ * admin:all — stamped on req.agentAdmin so every existing gate (requireAdmin,
+ * requireDashboardUser, requireAdminOrAgent) admits it as an attributed admin.
+ * A request with no header passes through untouched; one that fails verification
+ * is answered here and never falls back to another door. The verified agent id
+ * becomes x-agent-id so the content-edit gate records it, and every call's
+ * outcome is logged with the identity.
+ */
+function agentFrontDoor(verifier, { prefixes, logger = console }) {
+  return function frontDoor(req, res, next) {
+    if (!req.headers[HEADER]) return next();
+    const p = req.path || '';
+    if (!prefixes.some((x) => p === x || p.startsWith(x + '/'))) return next();
+    const r = verifier.check(req, null);
+    if (!r.ok) return res.status(r.status).json({ error: r.error, code: 'AGENT_IDENTITY_REFUSED' });
+    req.agentAdmin = r;
+    req.headers['x-agent-id'] = r.agent;
+    res.setHeader('x-agent-admin-by', r.agent);
+    res.on('finish', () => logger.info?.(`[AgentAdmin] ${r.agent} ${req.method} ${req.originalUrl} -> ${res.statusCode}`));
+    next();
+  };
 }
 
 /**
@@ -125,6 +167,12 @@ function createAgentAdminVerifier({ keyFile = process.env.POPTY_AGENT_ADMIN_KEY_
  */
 function adminOrAgent(verifier, requireAdmin) {
   return async function gate(req, res, scope) {
+    // Already judged by the front-door middleware: use that verdict, never a
+    // second check (the signature is single-use).
+    if (req.agentAdmin) {
+      if (!keyHasScope(req.agentAdmin.scopes, scope)) { res.status(403).json({ error: `the agent key does not carry scope ${scope}`, code: 'AGENT_IDENTITY_REFUSED' }); return null; }
+      return req.agentAdmin.user;
+    }
     const r = verifier.check(req, scope);
     if (!r) return requireAdmin(req, res);
     if (!r.ok) { res.status(r.status).json({ error: r.error, code: 'AGENT_IDENTITY_REFUSED' }); return null; }
@@ -133,4 +181,4 @@ function adminOrAgent(verifier, requireAdmin) {
   };
 }
 
-module.exports = { SCOPES, HEADER, signHeader, createAgentAdminVerifier, adminOrAgent, loadKey, bodyDigest };
+module.exports = { SCOPES, HEADER, signHeader, createAgentAdminVerifier, adminOrAgent, agentFrontDoor, keyHasScope, agentFromRequest, loadKey, bodyDigest };

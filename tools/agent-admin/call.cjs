@@ -5,7 +5,10 @@
 // Your agent id is recorded in Popty's log and in every response's "by" field —
 // use a stable, honest one (job label or Watson name). The request is signed for
 // this method + path + body only and is good for 60 s, once. Scopes the key
-// carries: voice-slot:write, takes:read. Popty is http://localhost:3470.
+// carries: voice-slot:write, takes:read, and admin:all = EVERY /api/admin and
+// /api/voicelab route, read and write (Kai's agents; e.g. POST /api/admin/unapprove-seeds,
+// POST /api/admin/recompute-decompositions — both dry-run unless "apply":true).
+// Popty is http://localhost:3470.
 'use strict';
 const { execFileSync } = require('child_process');
 const path = require('path');

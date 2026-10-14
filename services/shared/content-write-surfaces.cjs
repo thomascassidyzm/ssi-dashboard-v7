@@ -97,6 +97,9 @@ const PRODUCTION_API = [
   { method: 'DELETE', path: '/api/production/:courseCode/phrases/:phraseId',  operation: 'phrase-delete' },
   { method: 'POST',   path: '/api/production/:courseCode/phrases/batch-delete', operation: 'phrase-delete' },
   { method: 'POST',   path: '/api/admin/decomposition-backfill',             operation: 'decomposition-backfill' },
+  // Kai's agents (r-2026-10-14-kai-is-team-his-agents-get): the two admin edit doors.
+  { method: 'POST',   path: '/api/admin/recompute-decompositions',          operation: 'decomposition-recompute' },
+  { method: 'POST',   path: '/api/admin/unapprove-seeds',                   operation: 'unapprove' },
   // The course-edit door (job #391): the routes agents use since #388 took their
   // SQL write away. Every op runs in shared/course-edit-ops.cjs, which can touch
   // course_legos, so all of them are lego writers for the round map.
