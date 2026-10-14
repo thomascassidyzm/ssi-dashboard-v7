@@ -49,7 +49,7 @@ log() { echo "$(date) popty-staleness: $*" >> "$LOG"; }
 # Every Popty service that reports a build sha on /health. Which of these
 # actually belong to THIS checkout is decided below, from what they report —
 # not assumed here.
-SERVICES="popty-production-api:3470 popty-course-builder-api:3471"
+SERVICES="popty-production-api:3470 popty-course-builder-api:3471 popty-phase8-audio:3465"
 
 # ── Supervisor detection ─────────────────────────────────────────────────────
 # One script, two estates: watson-1 is systemd --user, Camberley is pm2. Detect
