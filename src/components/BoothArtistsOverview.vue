@@ -62,20 +62,23 @@
 
               <template v-if="detail[a.voiceId].phraseBatches.length">
                 <h3>Practice phrases by batch</h3>
-                <div class="batches">
-                  <div v-for="b in detail[a.voiceId].phraseBatches" :key="`${b.courseCode}-${b.pass}-${b.batch}`"
-                       class="batch" :class="{ done: b.recorded + b.held >= b.total, started: b.recorded > 0 && b.recorded + b.held < b.total }"
-                       :title="`${courseLabel(b.courseCode)} pass ${b.pass} batch ${b.batch}: ${b.recorded} of ${b.total} read${b.held ? `, ${b.held} held by a proof flag` : ''}`">
-                    <span>{{ b.batch }}</span>
+                <div v-for="g in batchGroups(detail[a.voiceId].phraseBatches)" :key="g.key" class="batch-group">
+                  <span class="batch-label">{{ g.label }} · {{ g.done }}/{{ g.batches.length }} batches</span>
+                  <div class="batches">
+                    <div v-for="b in g.batches" :key="b.batch"
+                         class="batch" :class="{ done: b.recorded + b.held >= b.total, started: b.recorded > 0 && b.recorded + b.held < b.total }"
+                         :title="`${g.label} batch ${b.batch}: ${b.recorded} of ${b.total} read${b.held ? `, ${b.held} held by a proof flag` : ''}`">
+                      <span>{{ b.batch }}</span>
+                    </div>
                   </div>
                 </div>
-                <p class="note">Each square is one batch (~200 lines), pass 1 first. Filled = finished, outlined = started. Tap and hold for numbers.</p>
+                <p class="note">Each square is one batch (~200 lines). Filled = finished, outlined = started. Tap and hold for numbers.</p>
               </template>
 
               <h3>Recent sittings</h3>
               <table v-if="detail[a.voiceId].sessions.length" class="tbl">
                 <tr v-for="s in detail[a.voiceId].sessions.slice(0, 8)" :key="s.start">
-                  <td>{{ fmtWhen(s.start) }}</td><td class="n">{{ s.takes }} takes</td><td class="n">{{ fmtDur(s.spanMs) }}</td>
+                  <td>{{ fmtWhen(s.start) }}</td><td class="n">{{ s.takes }} {{ s.takes === 1 ? 'take' : 'takes' }}</td><td class="n">{{ fmtDur(s.spanMs) }}</td>
                 </tr>
               </table>
               <p v-else class="note">No takes yet.</p>
@@ -198,6 +201,19 @@ function kindRows(a) {
 
 function courseLabel(c) { return COURSE_LABELS[c] || c }
 
+/** One row of squares per course and pass, so batch 3 of pass 2 never reads as batch 3 of pass 1. */
+function batchGroups(batches) {
+  const groups = new Map()
+  for (const b of batches) {
+    const key = `${b.courseCode}-${b.pass}`
+    if (!groups.has(key)) groups.set(key, { key, label: `${courseLabel(b.courseCode)} pass ${b.pass}`, batches: [], done: 0 })
+    const g = groups.get(key)
+    g.batches.push(b)
+    if (b.recorded + b.held >= b.total) g.done += 1
+  }
+  return [...groups.values()]
+}
+
 function pct(n, total, text = false) {
   if (!total) return text ? '—' : '0%'
   const p = Math.max(0, Math.min(100, (n / total) * 100))
@@ -223,10 +239,10 @@ function shortDate(d) {
 function lastActiveLabel(a) {
   const t = a.activity.lastActive
   if (!t) return 'not started'
+  if (a.activity.takesToday) return 'active today'
   const days = Math.floor((Date.now() - Date.parse(t)) / 86400000)
-  if (a.activity.takesToday) return `active today`
-  if (days < 1) return 'active yesterday'
-  return `last ${days}d ago`
+  if (days < 1) return 'active in the last day'
+  return `last active ${days}d ago`
 }
 
 /** A bar with 4px rounded top corners anchored to the baseline, with a 2px gap either side. */
@@ -274,7 +290,7 @@ h3 { font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem; margin: 1rem 0
 .q-fill { display: block; height: 100%; background: var(--color-emerald, #06ffa5); }
 .q-num { font-family: 'IBM Plex Mono', monospace; color: var(--color-paper-dim, #c1c1bb); }
 .drill { padding: 0 1rem 1rem; border-top: 1px solid var(--color-graphite, #475569); }
-.chart { width: 100%; max-width: 640px; height: auto; display: block; }
+.chart { width: 100%; max-width: 420px; height: auto; display: block; }
 .chart .axis { stroke: var(--color-graphite, #475569); stroke-width: 1; }
 .chart .bar { fill: var(--color-emerald, #06ffa5); }
 .chart .hit { fill: transparent; }
@@ -283,6 +299,8 @@ h3 { font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem; margin: 1rem 0
 .tbl { border-collapse: collapse; font-size: 0.78rem; width: 100%; max-width: 420px; }
 .tbl td { padding: 0.25rem 0.4rem 0.25rem 0; border-bottom: 1px solid var(--color-graphite, #475569); }
 .tbl .n { text-align: right; font-family: 'IBM Plex Mono', monospace; color: var(--color-paper-dim, #c1c1bb); }
+.batch-group { margin-bottom: 0.5rem; }
+.batch-label { display: block; font-size: 0.72rem; color: var(--color-paper-dim, #c1c1bb); margin-bottom: 0.2rem; }
 .batches { display: flex; flex-wrap: wrap; gap: 3px; }
 .batch { width: 22px; height: 22px; border-radius: 4px; border: 1px solid var(--color-graphite, #475569); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: var(--color-paper-dim, #c1c1bb); font-family: 'IBM Plex Mono', monospace; }
 .batch.started { border-color: var(--color-emerald, #06ffa5); color: var(--color-emerald, #06ffa5); }
