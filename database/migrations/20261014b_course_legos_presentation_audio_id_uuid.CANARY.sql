@@ -33,7 +33,8 @@ DECLARE t record;
 BEGIN
   FOR t IN SELECT tgname, pg_get_triggerdef(oid) def FROM pg_trigger
             WHERE tgrelid = 'public.course_legos'::regclass AND NOT tgisinternal
-              AND tgname IN ('trg_null_lego_audio_on_text_change', 'human_take_lock', 'course_legos_pull_duration') LOOP
+              AND (tgname IN ('trg_null_lego_audio_on_text_change', 'human_take_lock', 'course_legos_pull_duration')
+                   OR pg_get_triggerdef(oid) ~ 'presentation_audio_id') LOOP
     EXECUTE replace(t.def, 'ON public.course_legos', 'ON canary_387.course_legos');
     RAISE NOTICE 'copied trigger %', t.tgname;
   END LOOP;
@@ -60,8 +61,36 @@ SELECT course_code, lego_id, id, presentation_audio_id AS unparseable
    AND presentation_audio_id !~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$';
 
 -- 3. The conversion itself, timed (this is the lock window tonight, plus ANALYZE).
+-- Triggers whose definition names the column (UPDATE OF ... / WHEN) block ALTER ... TYPE.
+-- Save their exact definitions, drop them, and re-create them verbatim after the ALTER.
+CREATE TEMP TABLE _387_trg (name text, def text);
+DO $$
+DECLARE t record;
+BEGIN
+  FOR t IN SELECT tg.tgname, pg_get_triggerdef(tg.oid) def FROM pg_trigger tg
+            WHERE tg.tgrelid = 'canary_387.course_legos'::regclass AND NOT tg.tgisinternal
+              AND (pg_get_triggerdef(tg.oid) ~ 'presentation_audio_id'
+                   OR (SELECT attnum FROM pg_attribute WHERE attrelid = 'canary_387.course_legos'::regclass AND attname = 'presentation_audio_id') = ANY (tg.tgattr::int2[])) LOOP
+    INSERT INTO _387_trg VALUES (t.tgname, t.def);
+    EXECUTE format('DROP TRIGGER %I ON canary_387.course_legos', t.tgname);
+    RAISE NOTICE 'dropped trigger % for the ALTER: %', t.tgname, t.def;
+  END LOOP;
+END $$;
+
 ALTER TABLE canary_387.course_legos
   ALTER COLUMN presentation_audio_id TYPE uuid USING presentation_audio_id::uuid;
+
+DO $$
+DECLARE t record;
+BEGIN
+  FOR t IN SELECT * FROM _387_trg LOOP
+    EXECUTE t.def;
+    RAISE NOTICE 're-created trigger %', t.name;
+  END LOOP;
+  IF (SELECT count(*) FROM _387_trg) <> (SELECT count(*) FROM pg_trigger tg JOIN _387_trg s ON s.name = tg.tgname
+                                          WHERE tg.tgrelid = 'canary_387.course_legos'::regclass) THEN
+    RAISE EXCEPTION 'not every dropped trigger was re-created'; END IF;
+END $$;
 ANALYZE canary_387.course_legos;
 
 DO $$
@@ -146,8 +175,37 @@ BEGIN
 END $$;
 
 -- 7. Rollback rehearsal: back to text, values identical to the live column.
+DROP TABLE _387_trg;
+-- Triggers whose definition names the column (UPDATE OF ... / WHEN) block ALTER ... TYPE.
+-- Save their exact definitions, drop them, and re-create them verbatim after the ALTER.
+CREATE TEMP TABLE _387_trg (name text, def text);
+DO $$
+DECLARE t record;
+BEGIN
+  FOR t IN SELECT tg.tgname, pg_get_triggerdef(tg.oid) def FROM pg_trigger tg
+            WHERE tg.tgrelid = 'canary_387.course_legos'::regclass AND NOT tg.tgisinternal
+              AND (pg_get_triggerdef(tg.oid) ~ 'presentation_audio_id'
+                   OR (SELECT attnum FROM pg_attribute WHERE attrelid = 'canary_387.course_legos'::regclass AND attname = 'presentation_audio_id') = ANY (tg.tgattr::int2[])) LOOP
+    INSERT INTO _387_trg VALUES (t.tgname, t.def);
+    EXECUTE format('DROP TRIGGER %I ON canary_387.course_legos', t.tgname);
+    RAISE NOTICE 'dropped trigger % for the ALTER: %', t.tgname, t.def;
+  END LOOP;
+END $$;
+
 ALTER TABLE canary_387.course_legos
   ALTER COLUMN presentation_audio_id TYPE text USING presentation_audio_id::text;
+
+DO $$
+DECLARE t record;
+BEGIN
+  FOR t IN SELECT * FROM _387_trg LOOP
+    EXECUTE t.def;
+    RAISE NOTICE 're-created trigger %', t.name;
+  END LOOP;
+  IF (SELECT count(*) FROM _387_trg) <> (SELECT count(*) FROM pg_trigger tg JOIN _387_trg s ON s.name = tg.tgname
+                                          WHERE tg.tgrelid = 'canary_387.course_legos'::regclass) THEN
+    RAISE EXCEPTION 'not every dropped trigger was re-created'; END IF;
+END $$;
 DO $$
 BEGIN
   IF EXISTS (SELECT 1 FROM canary_387.course_legos c JOIN public.course_legos p USING (id)

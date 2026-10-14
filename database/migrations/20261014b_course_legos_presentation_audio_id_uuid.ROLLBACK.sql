@@ -22,8 +22,36 @@ END $$;
 CREATE TEMP TABLE _387_rb ON COMMIT DROP AS
 SELECT count(presentation_audio_id) n FROM public.course_legos;
 
+-- Triggers whose definition names the column (UPDATE OF ... / WHEN) block ALTER ... TYPE.
+-- Save their exact definitions, drop them, and re-create them verbatim after the ALTER.
+CREATE TEMP TABLE _387_trg (name text, def text) ON COMMIT DROP;
+DO $$
+DECLARE t record;
+BEGIN
+  FOR t IN SELECT tg.tgname, pg_get_triggerdef(tg.oid) def FROM pg_trigger tg
+            WHERE tg.tgrelid = 'public.course_legos'::regclass AND NOT tg.tgisinternal
+              AND (pg_get_triggerdef(tg.oid) ~ 'presentation_audio_id'
+                   OR (SELECT attnum FROM pg_attribute WHERE attrelid = 'public.course_legos'::regclass AND attname = 'presentation_audio_id') = ANY (tg.tgattr::int2[])) LOOP
+    INSERT INTO _387_trg VALUES (t.tgname, t.def);
+    EXECUTE format('DROP TRIGGER %I ON public.course_legos', t.tgname);
+    RAISE NOTICE 'dropped trigger % for the ALTER: %', t.tgname, t.def;
+  END LOOP;
+END $$;
+
 ALTER TABLE public.course_legos
   ALTER COLUMN presentation_audio_id TYPE text USING presentation_audio_id::text;
+
+DO $$
+DECLARE t record;
+BEGIN
+  FOR t IN SELECT * FROM _387_trg LOOP
+    EXECUTE t.def;
+    RAISE NOTICE 're-created trigger %', t.name;
+  END LOOP;
+  IF (SELECT count(*) FROM _387_trg) <> (SELECT count(*) FROM pg_trigger tg JOIN _387_trg s ON s.name = tg.tgname
+                                          WHERE tg.tgrelid = 'public.course_legos'::regclass) THEN
+    RAISE EXCEPTION 'not every dropped trigger was re-created'; END IF;
+END $$;
 
 \ir 20261014b_link_audio_to_content_uuid.ROLLBACK.fn.sql
 
