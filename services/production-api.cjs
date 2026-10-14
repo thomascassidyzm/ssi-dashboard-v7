@@ -181,7 +181,7 @@ if (process.env.POPTY_PREVIEW === '1') {
 app.use(cors({
   origin: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning', 'x-booth-key'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning', 'x-booth-key', 'x-booth-keys'],
   credentials: true
 }))
 // ── THE BASKET LAB, mounted BEFORE the body parser ──────────────────────────

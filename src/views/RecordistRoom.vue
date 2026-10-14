@@ -819,7 +819,7 @@
 // costs them a session. The queue is BY LANGUAGE: one Welsh recordist gets one
 // Welsh queue, however many courses those lines happen to serve, which is why
 // no course code appears anywhere on this page.
-import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick, inject } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, onActivated, onDeactivated, watch, nextTick, inject } from 'vue'
 import { routerKey, routeLocationKey } from 'vue-router'
 import { recordingApiBase as apiBase, withBoothKey } from '@/services/recordingApi'
 import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecorder'
@@ -837,10 +837,13 @@ import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
 import BoothHome from './recordist/BoothHome.vue'
 import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot } from './recordist/booth-home.js'
+import { headerLanguage } from './recordist/booth-tabs.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
+// The page around a booth with language tabs (RecordistBooth.vue) holds the other tabs still mid-take.
+const emit = defineEmits(['phase'])
 // THE ADDRESS SAYS WHERE HE IS (job #347): home, a card's batches, or one batch.
 // Read through the router when there is one, and straight off the address bar
 // when there is not (a unit test mounts the booth bare), so the booth still
@@ -2195,7 +2198,8 @@ function stopWave() {
 watch(phase, (p) => {
   if (p === 'recording') nextTick(startWave)
   else stopWave()
-})
+  emit('phase', p)
+}, { immediate: true })
 
 // What the recorder can honestly say about whether this line was read: true,
 // false, or null for "no idea". Null is what a meter that is not delivering
@@ -2764,9 +2768,14 @@ const batchHeader = computed(() => {
   if (!t) return phase.value === 'loading' ? 'Opening your batch…' : left
   const b = t.batches.find(x => x.n === batchScope.value.batch)
   const parts = [courseWordsFor(t.courseCode), t.short]
+  // WHICH LANGUAGE, in so many words (job #392): with Welsh and English one tab apart, the header
+  // says it, unless the course words already begin with it ("English for New Welsh — North").
+  const h = homeSummary.value
+  const tongue = h ? headerLanguage(parts[0], h.language, h.languageName) : ''
+  if (tongue) parts.unshift(tongue)
   if (t.kind === 'phrase') parts.push(b ? `${b.courseLabel ? `${b.courseLabel} ` : ''}batch ${b.batch} of ${t.batches.length}` : null)
   else if (t.batches.length > 1) parts.push(`batch ${batchScope.value.batch} of ${t.batches.length}`)
-  else if (t.kind !== 'seed' && t.kind !== 'lego') parts[1] = t.title.replace(`${parts[0]}: `, '') // a script names itself
+  else if (t.kind !== 'seed' && t.kind !== 'lego') parts[parts.length - 1] = t.title.replace(`${courseWordsFor(t.courseCode)}: `, '') // a script names itself
   parts.push(left)
   return parts.filter(Boolean).join(' · ')
 })
@@ -2953,7 +2962,26 @@ onBeforeUnmount(() => {
   forgetLocalTakes()
 })
 
-watch(() => [props.voiceId, addressQuery.value.track, addressQuery.value.batch, addressQuery.value.course, addressQuery.value.pod], enter, { immediate: true })
+// ONE OF SEVERAL TABS (job #392). Under RecordistBooth this booth is kept alive while another
+// voice's tab is showing, and the address then belongs to that voice: a booth only follows the
+// address while the address names it, and coming back to the same place it left is not a move.
+let enteredAt = null
+watch(() => [props.voiceId, addressQuery.value.track, addressQuery.value.batch, addressQuery.value.course, addressQuery.value.pod], (at) => {
+  const named = route && route.params && route.params.voiceId
+  if (named && named !== props.voiceId) return
+  const key = JSON.stringify(at)
+  if (key === enteredAt) return
+  enteredAt = key
+  enter()
+}, { immediate: true })
+onActivated(() => {
+  window.addEventListener('keydown', onKey)
+  rememberBooth(props.voiceId)
+})
+onDeactivated(() => {
+  window.removeEventListener('keydown', onKey)
+  stopPlayback()
+})
 </script>
 
 <style scoped>

@@ -485,7 +485,8 @@ const routes = [
   {
     path: '/r/:voiceId',
     name: 'RecordistRoom',
-    component: () => import('../views/RecordistRoom.vue'),
+    // One page per PERSON, a tab per voice (job #392); each tab is the booth below, unchanged.
+    component: () => import('../views/RecordistBooth.vue'),
     props: true,
     meta: { title: 'Recording', public: true }
   },

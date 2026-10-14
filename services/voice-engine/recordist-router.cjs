@@ -90,6 +90,7 @@ const { bucketKey } = require('../shared/dialect.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
 const { isGodAdmin } = require('./booth-god-admins.cjs')
 const boothLinks = require('./booth-link-keys.cjs')
+const { boothTabs, parseHeldKeys } = require('./booth-tabs.cjs')
 
 const MAX_TAKE_BYTES = 60 * 1024 * 1024
 
@@ -421,6 +422,23 @@ module.exports = function createRecordistRouter({
       res.json(casting)
     } catch (err) {
       logger.error(`[Recordist] casting lookup: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // THE PERSON'S OTHER VOICES, as tabs on one booth page (Aran, 2026-10-14, job #392). Only the
+  // voices this caller could open on their own (their key in x-booth-keys, or signed in as the
+  // artist / a God admin) are listed; booth-tabs.cjs says who counts as the same person.
+  router.get('/voice/:voiceId/tabs', async (req, res) => {
+    try {
+      const user = identifyCaller && req.headers.authorization ? await identifyCaller(req).catch(() => null) : null
+      const out = await boothTabs({
+        db: db(), voiceId: req.params.voiceId, user, heldKeys: parseHeldKeys(req.headers['x-booth-keys']), store: keys, isGodAdmin,
+      })
+      if (!out) return res.status(404).json({ error: `No recording voice ${req.params.voiceId}.` })
+      res.json(out)
+    } catch (err) {
+      logger.error(`[Recordist] tabs: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })
     }
   })

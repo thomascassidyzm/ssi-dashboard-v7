@@ -148,6 +148,7 @@ export default defineConfig({
       'services/voice-engine/recordist-queue.test.cjs',
       'services/voice-engine/booth-home.test.cjs',
       'services/voice-engine/booth-queue-cache.test.cjs',
+      'services/voice-engine/booth-tabs.test.cjs',
       'tools/audio-regen-probe/*.test.cjs',
       'tools/distinctions/*.test.cjs',
       'tools/frame-layer/derive-and-baskets.test.cjs',
