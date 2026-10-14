@@ -721,6 +721,34 @@ function parseSeedLineId(lineId) {
 function seedLineId(seedId, role) { return `${SEED_LINE_PREFIX}${seedId}:${role}` }
 
 /**
+ * THE COURSES WHOSE LEGOS ARE QUEUED IN THE BOOTH (job #366, Aran 2026-10-14).
+ * An allowlist, and the census is why: run dry over every human-cast course on
+ * 2026-10-14, an ungated LEGO line put two lines on LIVE cym_n_for_eng (for
+ * Catrin and for Aran) and ~1,291 / ~888 distinct texts on the South / North
+ * sandbox voices. The brief's rule — any live course gaining any, or any voice
+ * gaining more than ~20 — gates the feature to the two Welsh sandboxes. A live
+ * course's LEGO slots are never queued here.
+ */
+const LEGO_QUEUE_COURSES = Object.freeze(['cym_sv2_for_eng', 'cym_nv2_for_eng'])
+function isLegoQueueCourse(courseCode) { return LEGO_QUEUE_COURSES.includes(String(courseCode || '')) }
+
+/** The synthetic line id a LEGO slot wears on the wire: `lego:<course_legos.id>:<role>`. */
+const LEGO_LINE_PREFIX = 'lego:'
+function legoLineId(legoRowId, role) { return `${LEGO_LINE_PREFIX}${legoRowId}:${role}` }
+/** `lego:<rowId>:<role>` → {legoRowId, role}; null for anything else (target roles only). */
+function parseLegoLineId(lineId) {
+  const raw = String(lineId || '')
+  if (!raw.startsWith(LEGO_LINE_PREFIX)) return null
+  const rest = raw.slice(LEGO_LINE_PREFIX.length)
+  const at = rest.lastIndexOf(':')
+  if (at <= 0) return null
+  const legoRowId = rest.slice(0, at)
+  const role = rest.slice(at + 1)
+  if (!legoRowId || !SEED_TARGET_ROLES.includes(role)) return null
+  return { legoRowId, role }
+}
+
+/**
  * THE MINIMAL SET's line ids.
  *
  *   quarry:<courseCode>:lego:<legoId>
@@ -1125,6 +1153,22 @@ async function fetchSeeds(db, courseCodes) {
   }
 }
 
+async function fetchLegos(db, courseCodes) {
+  if (!courseCodes.length) return []
+  try {
+    return await pagedRead((from, to) => db
+      .from('course_legos')
+      .select('id, course_code, seed_number, lego_index, lego_id, known_text, target_text, target1_audio_id, target2_audio_id')
+      .in('course_code', courseCodes)
+      .order('course_code', { ascending: true })
+      .order('seed_number', { ascending: true })
+      .order('lego_index', { ascending: true })
+      .range(from, to))
+  } catch (err) {
+    throw new Error(`lego read failed: ${err.message}`)
+  }
+}
+
 /**
  * A seed a recordist may be asked to read: signed off (RECORDABLE_SEED_STATUSES),
  * OR SERVED — in its course's running order, which is what the player walks on a
@@ -1324,7 +1368,8 @@ async function audioOriginsById(db, ids) {
 // A TAKE G SITS WITH ITS OWN POD LINE, not in a section of its own: it is the
 // same sentence read a second way, and separating them would have the recordist
 // read 57 sentences and then read the same 57 again an hour later.
-const QUEUE_SORT_TIER = { pod: 0, takeg: 0, quarry: 1, rerecord: 2, seed: 3 }
+// A LEGO line sits after the seeds: a LEGO is a piece of a seed already read.
+const QUEUE_SORT_TIER = { pod: 0, takeg: 0, quarry: 1, rerecord: 2, seed: 3, lego: 4 }
 
 function queueSortTier(line) {
   const tier = QUEUE_SORT_TIER[line.kind || 'pod']
@@ -2091,6 +2136,78 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       }
     }
 
+    // ── FIFTH SOURCE: LEGOS WITH AN EMPTY TARGET SLOT (job #366) ────────────
+    //
+    // Aran, 2026-10-14: a LEGO corrected in a sandbox ('ein rhai ni', South
+    // S0181L02) had its target1/target2 links emptied and no way back into a
+    // booth — this file built seed and phrase lines only, and the quarry (the
+    // one route that reaches course_legos) is test-fixture only.
+    //
+    // A LEGO row of a LEGO_QUEUE_COURSES course, of a seed the course serves
+    // (isRecordableSeed), whose target1 or target2 slot is EMPTY, is a line for
+    // the voice cast on that role — the seed's own cast (seedCastEntry), so the
+    // queue, the take route and linkLegoTake cannot disagree. FILL-ONLY by
+    // construction: a filled slot is not work, whoever's clip fills it, and a
+    // take is never linked over one. Collapsed by exact text per (voice, role),
+    // like a seed: one take fills every empty copy. Scored by its own slots
+    // (slotFilledBy, empty at build time), never by "a take of these words
+    // exists" — a take only counts here once it is linked, so a line cannot
+    // drop off the queue while its slot is still silent.
+    const legoCourses = [...byCourse.keys()].filter(isLegoQueueCourse)
+    const legoRows = legoCourses.length ? await fetchLegos(db, legoCourses) : []
+    const seedByKey = new Map(seeds.map((s) => [`${s.course_code}:${s.seed_number}`, s]))
+    // Course order: the seed's served position, then the LEGO's place in it.
+    // Sorted BEFORE collapsing, so the line a text keeps is its earliest-served copy.
+    const servedLegos = []
+    for (const lego of legoRows) {
+      const seed = seedByKey.get(`${lego.course_code}:${lego.seed_number}`)
+      if (!byCourse.has(lego.course_code) || !seed || !isRecordableSeed(seed, runningOrder)) continue
+      servedLegos.push({ lego, seed, at: seedPosition(seed, runningOrder) * 100 + lego.lego_index })
+    }
+    servedLegos.sort((a, b) => a.at - b.at)
+    const legoSeen = new Map()
+    for (const { lego, at } of servedLegos) {
+      const course = byCourse.get(lego.course_code)
+      const text = String(lego.target_text || '').trim()
+      if (!text) continue
+      const cast = seedCastEntry(course, policyVoices)
+      for (const role of SEED_TARGET_ROLES) {
+        if (lego[`${role}_audio_id`]) continue
+        const bucket = seedBucketFor(course, role, policyVoices)
+        if (!bucket) continue
+        const voiceId = cast[role].voiceId
+        const key = `${voiceId}\u0000${role} ${normalizeForDb(text)}`
+        if (legoSeen.has(key)) {
+          legoSeen.get(key).duplicateOf.push({ legoRowId: lego.id, courseCode: lego.course_code, role })
+          duplicatesCollapsed += 1
+          continue
+        }
+        const line = {
+          id: legoLineId(lego.id, role),
+          podId: null,
+          order: Number.MAX_SAFE_INTEGER,
+          seedOrder: at,
+          text,
+          knownText: lego.known_text || null,
+          speaker: null,
+          courseCode: lego.course_code,
+          voiceId,
+          textNormalized: normalizeForDb(text),
+          duplicateOf: [],
+          kind: 'lego',
+          role,
+          legoRowId: lego.id,
+          legoId: lego.lego_id || null,
+          seedNumber: lego.seed_number,
+          slotFilledBy: [],
+          rerecordWanted: false,
+        }
+        legoSeen.set(key, line)
+        if (!byBucket.has(bucket)) byBucket.set(bucket, [])
+        byBucket.get(bucket).push(line)
+      }
+    }
+
     // ── THE MINIMAL PHRASE SET ──────────────────────────────────────────────
     // Tom, 2026-09-02: "ideally I just want the minimal phrase set, that I can
     // record so we can test the dice and splice approach."
@@ -2649,6 +2766,9 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // Which kind of quarry piece: a LEGO of the course, or a single word no
         // LEGO covers. Null on every other kind of line.
         quarrySource: line.quarrySource || null,
+        // The LEGO's own id (S0181L02) on a 'lego' line, so the booth can say
+        // which piece of which seed it is. Null on every other kind.
+        legoId: line.kind === 'lego' ? (line.legoId || null) : null,
         // THE SEAMS THIS TAKE G MUST CARRY, in order — {target, known} per unit,
         // straight off the sentence's own atom_map_fine. On the wire because the
         // booth draws them as the pause marks, and because the aligner gates on
@@ -3246,6 +3366,47 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
 }
 
 /**
+ * Point every EMPTY `role` slot of this LEGO's text, in the LEGO-queue courses
+ * cast to this recordist for that role, at a new take (job #366). The LEGO
+ * twin of linkPhraseTake: FILL-EMPTY ONLY, by a conditional update (`slot IS
+ * NULL`), so a slot that gained any clip since the queue was read is never
+ * overwritten, and nothing is deleted. Sets `role`'s slot and no other — a
+ * target1 take never reaches target2, nor the presentation clip. The take is
+ * already filed (with its provenance) by the upload seam before this runs.
+ */
+async function linkLegoTake({ db, recordist, legoRowId, role, audioId, logger = console }) {
+  const out = { linked: [] }
+  if (!audioId || !SEED_TARGET_ROLES.includes(role)) return out
+  const { data: lego, error } = await db.from('course_legos')
+    .select('id, course_code, target_text').eq('id', legoRowId).maybeSingle()
+  if (error) throw new Error(`lego read failed: ${error.message}`)
+  if (!lego || !isLegoQueueCourse(lego.course_code)) return out
+  const key = normalizeForDb(String(lego.target_text || '').trim())
+  if (!key) return out
+
+  const courses = await coursesForLanguage(db, recordist.language)
+  const { voices: policyVoices } = await policyVoicesForLanguage(db, recordist.language)
+  const mine = courses.filter((c) => {
+    if (!isLegoQueueCourse(c.course_code)) return false
+    const cast = seedCastEntry(c, policyVoices)[role]
+    return !!cast && recordist.spellings.includes(cast.voiceId)
+  }).map((c) => c.course_code)
+  if (!mine.includes(lego.course_code)) return out
+
+  const col = `${role}_audio_id`
+  const copies = (await fetchLegos(db, mine))
+    .filter((r) => !r[col] && normalizeForDb(String(r.target_text || '').trim()) === key)
+  for (const row of copies) {
+    const { data, error: upErr } = await db.from('course_legos')
+      .update({ [col]: audioId }).eq('id', row.id).is(col, null).select('id, course_code')
+    if (upErr) { logger.error(`[Recordist] lego link failed for ${row.id}: ${upErr.message}`); continue }
+    for (const r of data || []) out.linked.push({ legoRowId: r.id, courseCode: r.course_code })
+  }
+  if (out.linked.length) invalidateLanguageQueueCache(recordist.language)
+  return out
+}
+
+/**
  * `keep` is the propagation's failure list, and it is what makes retirement
  * CONDITIONAL: a want is retired only on a line the take actually reached.
  *   keep.sentenceIds   — pod lines whose target want must stay (un-propagated
@@ -3382,6 +3543,12 @@ module.exports = {
   buildLanguageLines,
   invalidateLanguageQueueCache,
   linkSeedTake,
+  // LEGO lines (job #366).
+  LEGO_QUEUE_COURSES,
+  isLegoQueueCourse,
+  legoLineId,
+  parseLegoLineId,
+  linkLegoTake,
   seedCastEntry,
   castOnEntries,
   castOnKnownSideCourses,

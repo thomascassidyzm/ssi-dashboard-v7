@@ -1134,6 +1134,9 @@ const SECTION_ORDER = [
   // "Aran's are all junk. All clipped badly at either or both ends" off his own
   // screen on the morning of the session.
   { key: 'rerecord', heading: 'MORE LINES', blurb: 'Single lines from the course that still need a recording — some from the conversations, some on their own.' },
+  // A LEGO WHOSE TAKE IS MISSING (job #366) — a piece of a seed, read whole at
+  // natural pace. Usually a LEGO that was corrected and so lost its old clip.
+  { key: 'lego', heading: 'LEGOS', blurb: 'Single LEGOs from the course that still need your voice — usually ones whose words were corrected. Read each one at your natural pace.' },
   // AFTER THE SEEDS, because a phrase is built from a seed's LEGOs. One batch at
   // a time (job #619); the heading names the pass and the batch (rosterSections).
   { key: 'phrase', heading: 'PRACTICE PHRASES', blurb: 'Practice phrases, in course order, one batch at a time. The first pass is the phrases the app plays first; the rest come on a second pass later.' },
@@ -1367,6 +1370,10 @@ const lineKindWords = computed(() => {
     const side = l.role === 'known' ? ' - English side' : (l.role === 'target2' ? ' - second voice' : '')
     const where = phrasePlaceWords(l.phrasePass, l.phraseBatch)
     return `Practice phrase${where ? ` · ${where}` : ''}${side}`
+  }
+  if (l.kind === 'lego') {
+    const which = l.legoId || (l.seedNumber ? `seed ${l.seedNumber}` : null)
+    return `LEGO${which ? ` ${which}` : ''}${l.role === 'target2' ? ' - second voice' : ''}`
   }
   if (l.kind !== 'seed') return null
   if (l.seedExisting) {
