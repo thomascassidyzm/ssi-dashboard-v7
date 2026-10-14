@@ -100,6 +100,8 @@ const PRODUCTION_API = [
   // Kai's agents (r-2026-10-14-kai-is-team-his-agents-get): the two admin edit doors.
   { method: 'POST',   path: '/api/admin/recompute-decompositions',          operation: 'decomposition-recompute' },
   { method: 'POST',   path: '/api/admin/unapprove-seeds',                   operation: 'unapprove' },
+  // Phrase v4's gap-fill landing (job #517): phrase.insert ops through the course-edit engine.
+  { method: 'POST',   path: '/api/admin/phrase-v4/gap-fill',                operation: 'phrase-v4-gap-fill' },
   // The course-edit door (job #391): the routes agents use since #388 took their
   // SQL write away. Every op runs in shared/course-edit-ops.cjs, which can touch
   // course_legos, so all of them are lego writers for the round map.

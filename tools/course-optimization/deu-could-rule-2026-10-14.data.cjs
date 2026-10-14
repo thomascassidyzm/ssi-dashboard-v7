@@ -10,7 +10,7 @@
 //   id       'seed:311' | LEGO id (S0311L01) | phrase id (S0311L01B02, components S0311L01C01)
 //   tranche  1 = applied by job #489 (seeds 310, 311, 313, 315, 316 — the debut, inside the 5k-char cap)
 //            2 = planned, same rule, waiting on the next spend OK (seeds 148, 312, 314 and rows after seed 318 — tranche 1
-//                alone came to ~4.9k chars, tranche 1+these to 6.3k, over the job's 5k stop)
+//                alone came to ~4.9k chars, tranche 1+these to 6.3k, over the job's 5k stop; tranche 2 alone is ~5.1k)
 //   action   fix (to = [english, german]; null keeps a side) | delete (practice phrase only, never a LEGO)
 //   LEGO fixes may carry extra fields as a 7th element: { components, intro }
 // Rows that need Kai's ruling are NOT here: they are in HELD below, and the review page lists them one at a time.
