@@ -98,6 +98,35 @@ function welshExpandYn(text) {
 }
 
 /**
+ * 'n AFTER A VOWEL MAY ALSO BE ein, but ONLY in front of a taught "ein X" LEGO (Aran, Welsh method
+ * lead, 2026-10-14, job #348): the South LEGO "ein rhai ni | ours" is practised and sewn into seeds
+ * as "ma’n rhai ni" (mae ein rhai ni), "cofio’n rhai ni". A bare ’n is never taught, and ’n is NOT
+ * read as ein in general — welshExpandYn above still owns every other ’n. This reads "host’n" as
+ * "host ein" only when the words that follow it begin the rest of a LEGO whose Welsh starts with
+ * "ein" ("’n rhai ni" before "ein rhai ni"). `legoTargets`: any iterable of LEGO/vocab Welsh texts.
+ */
+const wordsOf = (t) => String(t || '').toLowerCase().replace(/[’‘`´]/g, "'").replace(/[.,!?;:¿¡«»"“”()]/g, ' ').split(/\s+/).filter(Boolean);
+
+function welshExpandEin(text, legoTargets) {
+  const tails = [];
+  for (const l of legoTargets || []) {
+    const w = wordsOf(l);
+    if (w[0] === 'ein' && w.length > 1) tails.push(w.slice(1));
+  }
+  if (!tails.length) return String(text || '');
+  const toks = String(text || '').split(/(\s+)/);
+  const wordIdx = toks.map((t, i) => (/\S/.test(t) ? i : -1)).filter(i => i >= 0);
+  wordIdx.forEach((ti, k) => {
+    const m = toks[ti].match(/^(.*?\p{L})['’‘`´]n([^\p{L}'’]*)$/u);
+    if (!m || !YN_HOST_FINAL.test(m[1].toLowerCase())) return;
+    const after = wordIdx.slice(k + 1).map(j => wordsOf(toks[j])).flat();
+    if (!tails.some(t => t.every((w, j) => after[j] === w))) return;
+    toks[ti] = `${m[1]} ein${m[2]}`;
+  });
+  return toks.join('');
+}
+
+/**
  * True when two DIFFERENT target texts are the same words in the same order, each word equal or
  * a soft-mutation variant of its partner. False for non-Welsh courses and for identical texts
  * (identical is the caller's ordinary duplicate).
@@ -203,7 +232,8 @@ function welshContainsLego(courseCode, legoTarget, phraseTarget) {
   if (!isWelshTarget(courseCode)) return false;
   const full = (p) => CLITIC_FULL.get(p) || p;
   const lego = welshPieces(legoTarget).map(full);
-  const phrase = welshPieces(phraseTarget).map(full);
+  // A taught "ein X" LEGO is carried by "host’n X" (welshExpandEin; narrow, only before that LEGO's own tail).
+  const phrase = welshPieces(welshExpandEin(phraseTarget, [legoTarget])).map(full);
   if (!lego.length) return false;
   const same = (a, b) => { const ka = pieceKeys(a); return [...pieceKeys(b)].some(k => ka.has(k)); };
   for (let i = 0; i + lego.length <= phrase.length; i++) {
@@ -213,4 +243,4 @@ function welshContainsLego(courseCode, legoTarget, phraseTarget) {
 }
 
 module.exports = { isSoftMutationVariant, isSameWelsh, softEquivalentWords, softRadicals, isWelshTarget,
-  welshExpandYn, welshPieces, welshTaughtKeys, welshUntaughtWords, welshContainsLego };
+  welshExpandYn, welshExpandEin, welshPieces, welshTaughtKeys, welshUntaughtWords, welshContainsLego };
