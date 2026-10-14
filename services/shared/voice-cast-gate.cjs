@@ -115,6 +115,16 @@ function isTomCastRow(row) {
   return /^\s*Tom('s)?\b/.test(notes)
 }
 
+/**
+ * Languages where ANY non-banned provider's Tom-cast Voice Lab row counts as the
+ * cast (job #448: cat is cast Azure Alba/Enric). Deliberately scoped to cat: the
+ * Voice Lab read routes refuse an agent identity, so which other languages hold a
+ * non-Cartesia cast row could not be listed; widen this set only after that list
+ * is read and ruled on.
+ */
+const CAST_ANY_PROVIDER = new Set(['cat'])
+const castCountsVoice = (language, voiceId) => isCartesiaVoice(voiceId) || (CAST_ANY_PROVIDER.has(language) && !isBannedVoice(voiceId))
+
 const canonVoice = (v) => (v ? (tryCanonicalVoiceId(v) || String(v)) : null)
 
 /**
@@ -125,13 +135,13 @@ const canonVoice = (v) => (v ? (tryCanonicalVoiceId(v) || String(v)) : null)
  *   reaches these)
  */
 function castAllowsVoice(language, voiceId, rows) {
-  const mine = (rows || []).filter(r => rowIsForKey(r, language) && isCartesiaVoice(canonVoice(r.voice_id)))
+  const mine = (rows || []).filter(r => rowIsForKey(r, language) && castCountsVoice(language, canonVoice(r.voice_id)))
   const cast = [...new Set(mine.filter(isTomCastRow).map(r => canonVoice(r.voice_id)))]
   const draftOnly = [...new Set(mine.filter(r => !isTomCastRow(r)).map(r => canonVoice(r.voice_id)))].filter(v => !cast.includes(v))
   const base = { cast, draftOnly }
   if (isBannedVoice(voiceId)) return { ...base, allowed: false, reason: 'banned-provider' }
   if (!cast.length) return { ...base, allowed: false, reason: draftOnly.length ? 'draft-cast' : 'uncast' }
-  if (!isCartesiaVoice(voiceId)) return { ...base, allowed: false, reason: 'not-cartesia' }
+  if (!castCountsVoice(language, voiceId)) return { ...base, allowed: false, reason: 'not-cartesia' }
   if (!cast.includes(voiceId)) return { ...base, allowed: false, reason: 'not-in-cast' }
   return { ...base, allowed: true, reason: null }
 }
