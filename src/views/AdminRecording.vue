@@ -189,8 +189,9 @@ async function load() {
   }
 }
 
-// The newest stored takes of one recordist, playable. Link-is-identity, like the
-// booth itself, so no bearer token is needed or sent.
+// The newest stored takes of one recordist, playable. Signed in: artists must
+// never see each other's work, so the server answers only Tom and Aran (or the
+// artist themselves) and a 403 here means "not yours to hear" (job #371).
 async function toggleTakes(voiceId) {
   if (takes.value[voiceId]) {
     const { [voiceId]: _closed, ...rest } = takes.value
@@ -199,7 +200,8 @@ async function toggleTakes(voiceId) {
   }
   takes.value = { ...takes.value, [voiceId]: { loading: true, error: null, items: [] } }
   try {
-    const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/latest-takes?limit=20`)
+    const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/latest-takes?limit=20`, { headers: await authHeaders() })
+    if (res.status === 403) throw new Error('Only Tom and Aran can hear another artist’s takes.')
     if (!res.ok) throw new Error(`Could not load takes (${res.status})`)
     const data = await res.json()
     takes.value = { ...takes.value, [voiceId]: { loading: false, error: null, items: data.takes || [] } }
