@@ -97,6 +97,13 @@ const PRODUCTION_API = [
   { method: 'DELETE', path: '/api/production/:courseCode/phrases/:phraseId',  operation: 'phrase-delete' },
   { method: 'POST',   path: '/api/production/:courseCode/phrases/batch-delete', operation: 'phrase-delete' },
   { method: 'POST',   path: '/api/admin/decomposition-backfill',             operation: 'decomposition-backfill' },
+  // The course-edit door (job #391): the routes agents use since #388 took their
+  // SQL write away. Every op runs in shared/course-edit-ops.cjs, which can touch
+  // course_legos, so all of them are lego writers for the round map.
+  { method: 'POST',   path: '/api/production/:courseCode/edit',              operation: 'course-edit', legos: true },
+  { method: 'POST',   path: '/api/production/:courseCode/edit-batch',        operation: 'course-edit', legos: true },
+  { method: 'PATCH',  path: '/api/production/:courseCode/lego/:legoId',      operation: 'lego-edit', legos: true },
+  { method: 'DELETE', path: '/api/production/:courseCode/seed/:seedNumber',  operation: 'seed-deprecate' },
 ].map(r => ({ ...r, service: 'production-api' }));
 
 const SURFACES = [...COURSE_BUILDER, ...RECORD_ONLY, ...PRODUCTION_API];

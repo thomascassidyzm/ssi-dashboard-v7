@@ -169,6 +169,16 @@ describe('content-write surface manifest', () => {
     ['POST /api/build/redo-undo/:courseCode',
       'restores the snapshotted legos through lib/redo-snapshot.cjs restoreSnapshot(), '
       + 'so course_legos is never named in the route source'],
+    ['POST /api/build/rebuild/:courseCode',
+      'deletes legos through shared/wipe-seed-teaching.cjs wipeSeedTeaching() (job #912)'],
+    ['POST /api/build/redo/:courseCode',
+      'deletes legos through shared/wipe-seed-teaching.cjs wipeSeedTeaching() (job #912)'],
+    ['POST /api/production/:courseCode/edit',
+      'every op runs in shared/course-edit-ops.cjs (lego.update, audio.link on a lego), not in the route source'],
+    ['POST /api/production/:courseCode/edit-batch',
+      'every op runs in shared/course-edit-ops.cjs (lego.update, audio.link on a lego), not in the route source'],
+    ['PATCH /api/production/:courseCode/lego/:legoId',
+      'a lego.update op run by shared/course-edit-ops.cjs'],
   ]);
 
   it('flags every route that writes course_legos, and only those', () => {
