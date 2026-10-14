@@ -69,14 +69,43 @@ function isWelshTarget(courseCode) {
 const PREVERBAL = new Set(['mi', 'fe']);
 
 /**
+ * 'n AFTER A VOWEL IS yn (Aran, Welsh method lead, 2026-10-14, job #338; canon K43):
+ *   "the particle 'yn' contracts to 'n after a vowel (di'n, dw i'n, mae'n, wyt ti'n …). This is a
+ *    regular rule": a taught "yn X" covers "’n X" after a vowel-final word, for ANY X, and the
+ *   reverse. RECOGNITION ONLY — a bare "’n X" LEGO is still never taught (teach "yn barod", never
+ *   "’n barod"); this only stops the matchers calling the contracted form untaught.
+ *
+ * welshExpandYn rewrites every vowel-final "host’n" (either apostrophe) as "host yn", and a
+ * free-standing "’n" as "yn", so a matcher can compare both texts in their expanded shape.
+ * Every caller keeps its old exact match and only ADDS this one. Not expanded: a consonant-final
+ * host (the rule is "after a vowel"), and "o’n", which in these courses is the verb oeddwn /
+ * oedden ("o’n ni angen", "o’n i’n meddwl") — reading it as o + yn would license an untaught
+ * verb form from the preposition "o".
+ */
+const YN_HOST_FINAL = /[aeiouwyâêîôûŵŷáéíóúàèìòùäëïöü]$/u;
+const NOT_YN_HOSTS = new Set(['o']);
+
+function welshExpandYn(text) {
+  return String(text || '').split(/(\s+)/).map((tok) => {
+    const m = tok.match(/^(.*?)['’‘`´]([nN])([^\p{L}'’]*)$/u);
+    if (!m) return tok;
+    const [, host, n, trail] = m;
+    const core = host.toLowerCase().replace(/^[^\p{L}]+/u, '');
+    if (!core) return host + (n === 'N' ? 'Yn' : 'yn') + trail; // free-standing ’n
+    if (!YN_HOST_FINAL.test(core) || NOT_YN_HOSTS.has(core)) return tok;
+    return `${host} yn${trail}`;
+  }).join('');
+}
+
+/**
  * True when two DIFFERENT target texts are the same words in the same order, each word equal or
  * a soft-mutation variant of its partner. False for non-Welsh courses and for identical texts
  * (identical is the caller's ordinary duplicate).
  */
 function isSoftMutationVariant(courseCode, targetA, targetB) {
   if (!isWelshTarget(courseCode)) return false;
-  let ta = String(targetA || '').split(/\s+/).map(normWord).filter(Boolean);
-  let tb = String(targetB || '').split(/\s+/).map(normWord).filter(Boolean);
+  let ta = welshExpandYn(targetA).split(/\s+/).map(normWord).filter(Boolean);
+  let tb = welshExpandYn(targetB).split(/\s+/).map(normWord).filter(Boolean);
   // Identical texts are the caller's ordinary duplicate — judged BEFORE the particle is stripped,
   // so that "mi fedra i" vs "fedra i" (particle the only difference) still folds.
   if (ta.join(' ') === tb.join(' ')) return false;
@@ -102,8 +131,9 @@ function isSoftMutationVariant(courseCode, targetA, targetB) {
  */
 function isSameWelsh(courseCode, targetA, targetB) {
   if (!isWelshTarget(courseCode)) return false;
-  const a = String(targetA || '').split(/\s+/).map(normWord).filter(Boolean).join(' ');
-  const b = String(targetB || '').split(/\s+/).map(normWord).filter(Boolean).join(' ');
+  // "’n barod" after a vowel and "yn barod" are the same Welsh (welshExpandYn, Aran 2026-10-14).
+  const a = welshExpandYn(targetA).split(/\s+/).map(normWord).filter(Boolean).join(' ');
+  const b = welshExpandYn(targetB).split(/\s+/).map(normWord).filter(Boolean).join(' ');
   if (!a || !b) return false;
   return a === b || isSoftMutationVariant(courseCode, targetA, targetB);
 }
@@ -145,6 +175,9 @@ function pieceKeys(w) {
   const keys = new Set();
   const forms = [w];
   if (/\p{L}'$/u.test(w)) forms.push(w.slice(0, -1) + 'f');
+  // The clitic "’n" and the full particle "yn" are one taught word (welshExpandYn, Aran 2026-10-14).
+  if (w === "'n") forms.push('yn');
+  else if (w === 'yn') forms.push("'n");
   for (const f of forms) for (const r of softRadicals(f)) keys.add(r);
   return keys;
 }
@@ -180,4 +213,4 @@ function welshContainsLego(courseCode, legoTarget, phraseTarget) {
 }
 
 module.exports = { isSoftMutationVariant, isSameWelsh, softEquivalentWords, softRadicals, isWelshTarget,
-  welshPieces, welshTaughtKeys, welshUntaughtWords, welshContainsLego };
+  welshExpandYn, welshPieces, welshTaughtKeys, welshUntaughtWords, welshContainsLego };

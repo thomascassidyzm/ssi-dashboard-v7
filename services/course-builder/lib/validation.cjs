@@ -6,6 +6,7 @@
 
 const { isChinese, getTargetLang, getCharThresholds, getGoldenSeedCount, CHARS_PER_SYLLABLE, PREPOSITIONS } = require('./language-config.cjs');
 const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
+const { isWelshTarget, welshExpandYn } = require('./welsh-mutation.cjs');
 const { augmentVocabForSeparables, separableTilingPieces, phraseContainsLego } = require('./separable-verbs.cjs');
 // KNOWN-side mirror of the target-side lego_containment check: a BUILD phrase must contain the
 // known-side word its LEGO teaches, tolerating inflection but never a different lexeme (2026-08-26).
@@ -150,9 +151,16 @@ function checkTiling(seedTarget, legos, courseCode, existingVocab, opts = {}) {
       }
     }
 
+    // Welsh: "’n" after a vowel IS the taught "yn" (Aran, 2026-10-14, job #338; welshExpandYn).
+    // A seed word "di’n" is tiled when "di" and "yn" are, and a LEGO/component that carries "’n"
+    // lends "yn" — the old exact word match is kept and this only adds to it.
+    const welsh = isWelshTarget(courseCode);
+    const expandedWords = (text) => normalizeForStorage(welshExpandYn(text), false).split(' ').filter(w => w);
+    if (welsh) for (const entry of [...legoTargets]) for (const w of expandedWords(entry)) wordSet.add(w);
+
     const seedNorm = normalizeForStorage(seedTarget, false);
     const seedWords = seedNorm.split(' ').filter(w => w);
-    const untiled = seedWords.filter(w => !wordSet.has(w));
+    const untiled = seedWords.filter(w => !wordSet.has(w) && !(welsh && expandedWords(w).every(x => wordSet.has(x))));
 
     if (untiled.length > 0) {
       return {
@@ -306,20 +314,28 @@ function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
       chunksByFirstWord.get(first).push(words);
     }
 
-    let wordKeys = null;
-    for (const phrase of phrases) {
-      const normalized = normalizeForContainment(phrase.target);
-      const phraseWords = normalized.split(' ').filter(w => w);
-      const n = phraseWords.length;
-      if (n === 0) continue;
+    // Welsh: "’n" after a vowel IS "yn" (Aran, 2026-10-14, job #338; welshExpandYn). Every chunk
+    // is also indexed in its expanded shape, and a phrase the exact tiling refuses is tiled again
+    // expanded, so "mae dy goffi di’n barod" tiles from "dy goffi di" + "yn barod" in context.
+    const welsh = isWelshTarget(courseCode);
+    const expandedChunks = new Map();
+    if (welsh) {
+      for (const legoTarget of vocabSet) {
+        const words = normalizeForContainment(welshExpandYn(legoTarget)).split(' ').filter(w => w);
+        if (words.length === 0) continue;
+        if (!expandedChunks.has(words[0])) expandedChunks.set(words[0], []);
+        expandedChunks.get(words[0]).push(words);
+      }
+    }
 
-      // dp[i] = true means phraseWords[0..i-1] can be tiled by known chunks
+    // dp[i] = true means phraseWords[0..i-1] can be tiled by known chunks
+    const tile = (phraseWords, byFirst) => {
+      const n = phraseWords.length;
       const dp = new Array(n + 1).fill(false);
       dp[0] = true;
-
       for (let i = 0; i < n; i++) {
         if (!dp[i]) continue;
-        const candidates = chunksByFirstWord.get(phraseWords[i]);
+        const candidates = byFirst.get(phraseWords[i]);
         if (!candidates) continue;
         for (const chunk of candidates) {
           const len = chunk.length;
@@ -330,6 +346,21 @@ function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
           }
           if (match) dp[i + len] = true;
         }
+      }
+      return dp;
+    };
+
+    let wordKeys = null;
+    for (const phrase of phrases) {
+      const normalized = normalizeForContainment(phrase.target);
+      const phraseWords = normalized.split(' ').filter(w => w);
+      const n = phraseWords.length;
+      if (n === 0) continue;
+
+      const dp = tile(phraseWords, chunksByFirstWord);
+      if (!dp[n] && welsh) {
+        const expanded = normalizeForContainment(welshExpandYn(phrase.target)).split(' ').filter(w => w);
+        if (tile(expanded, expandedChunks)[expanded.length]) continue;
       }
 
       if (!dp[n] && wordLevelApplies(courseCode)) {

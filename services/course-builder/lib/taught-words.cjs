@@ -101,7 +101,7 @@ function vocabRulePrompt(courseCode) {
     ? '("trio" is available once "dw i\'n trio" has been taught)'
     : '(once "to find out" has been taught, "find" and "out" are available on their own, even in another meaning)';
   const mutation = welsh
-    ? ' A soft-mutated form of a taught word is the same word (cael/gael, calon/galon), but no nasal or aspirate mutation the course has not taught (nghath, chath).'
+    ? ' A soft-mutated form of a taught word is the same word (cael/gael, calon/galon), but no nasal or aspirate mutation the course has not taught (nghath, chath). After a vowel, \'n is the same word as yn: a taught "yn barod" may be said "mae\'n barod" / "di\'n barod", and the reverse.'
     : '';
   return `VOCABULARY RULE (Aran, methodology lead, confirmed by Tom, 2026-10-13): the ${lang} side may use ANY ${lang} word taught earlier in the course running order — including a word the learner met only inside a bigger chunk ${example}.${mutation} Any other form is still NEW until that exact form has been taught: no untaught conjugation, plural, contraction or other inflection ("we hoped" is not licensed by "to hope").`;
 }
