@@ -61,6 +61,16 @@ assert.deepStrictEqual(p1.batches.map((b) => b.current), [true, false])
 assert.deepStrictEqual(p2.batches.map((b) => b.current), [false])
 assert.strictEqual(p1.total, 3)
 assert.strictEqual(trackKeyOf(lines[lines.length - 1]), 'phrase.1')
-assert.deepStrictEqual(selectBatch(lines, 'phrase.1', 1).map((l) => l.id), ['phrase:a:target2'])
+const servedFirst = { phrases: { pass: 1, batch: 1, courseCode: 'cym_nv2_for_eng' }, phraseBatches: batchList }
+assert.deepStrictEqual(selectBatch(lines, 'phrase.1', 1, servedFirst).map((l) => l.id), ['phrase:a:target2'])
+
+// #365: once batch 1 is done the queue serves batch 2, which is card n=2. The queue's lines are
+// that batch alone, so opening card 2 must return them (it used to index a one-batch array → []),
+// and a card that is not the served batch returns nothing.
+const servedSecond = { phrases: { pass: 1, batch: 2, courseCode: 'cym_nv2_for_eng' }, phraseBatches: batchList }
+const p1Later = buildHomeTracks(lines, servedSecond.phrases, batchList).find((t) => t.key === 'phrase.1')
+assert.deepStrictEqual(p1Later.batches.filter((b) => b.current).map((b) => b.n), [2])
+assert.deepStrictEqual(selectBatch(lines, 'phrase.1', 2, servedSecond).map((l) => l.id), ['phrase:a:target2'], 'the served batch opens by its card number')
+assert.deepStrictEqual(selectBatch(lines, 'phrase.1', 1, servedSecond), [], 'an unserved batch serves nothing')
 
 console.log('booth-home: all assertions passed')

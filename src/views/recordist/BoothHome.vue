@@ -172,7 +172,12 @@ function batchWords(t, b) {
   if (t.kind === 'phrase') {
     if (trackLocked(t, props.tracks)) return `${n(b.total)} phrases · opens when pass 1 is finished`
     if (b.recorded >= b.total) return `${n(b.total)} phrases · all recorded`
-    if (!b.current) return `${n(b.total)} phrases · opens when the batch before it is done`
+    // Only the batch the queue serves opens (its card number is what the batch fetch matches);
+    // a later one names the batch it waits on.
+    if (!b.current) {
+      const prev = t.batches[t.batches.indexOf(b) - 1]
+      return `${n(b.total)} phrases · ${prev ? `opens after ${batchName(t, prev)}` : 'opens when the batch before it is done'}`
+    }
     return `${done}${b.held ? ` · ${b.held} held back for proofing` : ''}`
   }
   if (t.batches.length > 1) return `Sentences ${n(b.from)}–${n(b.to)} · ${done}`

@@ -408,6 +408,12 @@ module.exports = function createRecordistRouter({
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
       const queue = await buildQueue(db(), recordist, { includeRecorded: true })
+      // The home screen is where he now ARRIVES, so the arrival is counted here
+      // too, exactly as the full-queue and batch reads count it (#365 found it
+      // skipped). Unscoped, so nothing is refused: the queue is his own courses.
+      await castingRights.boothArrival({
+        db: db(), recordist, courseCodes: queue.courses, method: req.method, path: req.originalUrl || req.path, logger,
+      })
       const setupRow = await loadSetupRow(recordist.voiceId)
       res.json({
         home: true,
@@ -484,7 +490,7 @@ module.exports = function createRecordistRouter({
       // agree. Only what goes over the wire narrows; the queue is the queue.
       const trackScope = typeof req.query.track === 'string' && req.query.track.trim() ? req.query.track.trim() : null
       const lines = trackScope
-        ? boothHome.selectBatch(inScope(queue.lines), trackScope, parseInt(req.query.batch, 10))
+        ? boothHome.selectBatch(inScope(queue.lines), trackScope, parseInt(req.query.batch, 10), { phrases: queue.phrases, phraseBatches: queue.phraseBatches })
         : inScope(queue.lines)
       // Scoped counts are counted over the lines on the wire (the booth always
       // asks includeRecorded=1, so they are the scope's whole tally there).

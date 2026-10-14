@@ -120,7 +120,7 @@ function buildHomeTracks(lines, phrases = null, phraseBatches = null) {
           total: b.total,
           recorded: b.recorded,
           held: b.held,
-          current: !!(phrases.pass === pass && phrases.batch === b.batch && phrases.courseCode === b.courseCode),
+          current: isServedPhraseBatch(phrases, pass, b),
         })),
       })
     }
@@ -128,16 +128,42 @@ function buildHomeTracks(lines, phrases = null, phraseBatches = null) {
   return tracks
 }
 
+/** Is this plan batch the one the queue is serving now? Same test the card's `current` uses. */
+const isServedPhraseBatch = (phrases, pass, b) =>
+  !!(phrases && phrases.pass === pass && phrases.batch === b.batch && phrases.courseCode === b.courseCode)
+
+/**
+ * The card number (`n`, 1-based within its pass) of the phrase batch the queue serves now, or
+ * null when the pass has no served batch. A phrase card numbers its batches over the WHOLE plan
+ * (buildHomeTracks) while the queue only ever carries the served batch's lines, so a batch
+ * number from the card has to be matched against the plan, never used as an index into the
+ * served lines — #365 found batch 2+ coming back empty that way.
+ */
+function servedPhraseBatchN(trackKey, phrases, phraseBatches) {
+  const pass = Number(String(trackKey).split('.')[1])
+  if (!phrases || phrases.unavailable || !Array.isArray(phraseBatches)) return null
+  const i = phraseBatches.filter((b) => b.pass === pass).findIndex((b) => isServedPhraseBatch(phrases, pass, b))
+  return i >= 0 ? i + 1 : null
+}
+
 /**
  * The lines of ONE batch, for the booth's record screen. Unknown track or batch → [].
- * Phrase tracks return what the queue serves, which is only ever the current batch.
+ *
+ * PHRASE TRACKS: the queue holds only the batch it is serving, so asking for that batch's card
+ * number returns its lines and asking for any other returns [] (that batch is locked on the
+ * card, "opens after batch N"). Which batch is served is the queue's rule and is unchanged.
+ *
+ * @param {{phrases?: object, phraseBatches?: object[]}} [ctx] the queue's phrase summary and plan
  */
-function selectBatch(lines, trackKey, batchN) {
+function selectBatch(lines, trackKey, batchN, ctx = {}) {
   const trackLines = lines.filter((l) => trackKeyOf(l) === trackKey)
   if (!trackLines.length) return []
-  const batches = chunkTrack(trackKey, trackLines)
   const n = Number.isFinite(batchN) && batchN >= 1 ? batchN : 1
+  if (trackKey.startsWith('phrase.')) {
+    return n === servedPhraseBatchN(trackKey, ctx.phrases, ctx.phraseBatches) ? trackLines : []
+  }
+  const batches = chunkTrack(trackKey, trackLines)
   return batches[n - 1] || []
 }
 
-module.exports = { SEED_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch }
+module.exports = { SEED_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch, servedPhraseBatchN }
