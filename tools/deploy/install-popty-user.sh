@@ -56,27 +56,38 @@ stage() {
   echo "staged: user popty, /etc/popty, units installed (not started)"
 }
 
+# A tomcassidy user unit that still exists could start a second copy on the same port; mask
+# cannot replace a real unit file, so the file is renamed out of the way (history kept).
+retire_user_unit() {
+  local f=$TH/.config/systemd/user/$1
+  as_tom systemctl --user disable --now "$1" 2>/dev/null || true
+  [[ -f $f ]] && mv "$f" "$f.pre-391"
+  [[ -d $f.d ]] && mv "$f.d" "$f.d.pre-391"
+  return 0
+}
+
 cutover() {
   stage
-  # The user units hold the ports; stop and mask them so nothing restarts a second copy.
+  # The .env must leave BEFORE the system units start: release-notes.cjs reads it directly and a
+  # file popty cannot read is a crash at boot (seen 2026-10-14 on the first cutover: ~1 min down).
+  mv -n $PROD/.env /etc/popty/pre-391/prod.env 2>/dev/null || true
+  git config --system --get-all safe.directory | grep -qx "$PROD" || git config --system --add safe.directory "$PROD"
   for u in "${UNITS[@]}"; do
-    as_tom systemctl --user stop $u.service || true
-    as_tom systemctl --user mask $u.service || true
+    retire_user_unit $u.service
     systemctl enable $u.service
-    if [[ $u == popty-phase8-audio ]]; then systemctl start $u.service; else systemctl restart $u.service; fi
+    systemctl restart $u.service
   done
   for t in "${ONESHOTS[@]}"; do
-    as_tom systemctl --user disable --now $t.timer || true
-    as_tom systemctl --user mask $t.service $t.timer || true
+    retire_user_unit $t.timer; retire_user_unit $t.service
     systemctl enable --now $t.timer
   done
+  as_tom systemctl --user daemon-reload
   sleep 8
   local bad=0
   for u in "${UNITS[@]}"; do systemctl is-active --quiet $u.service || { echo "NOT ACTIVE: $u"; bad=1; }; done
-  if (( bad )); then echo "cutover incomplete: tomcassidy's secret copies left in place"; exit 2; fi
+  if (( bad )); then echo "cutover incomplete: owner.env left in place; roll back with: systemctl stop the popty units, restore the .pre-391 user units"; exit 2; fi
 
-  # Make-before-break: only now remove the copies tomcassidy can read.
-  mv -n $PROD/.env /etc/popty/pre-391/prod.env 2>/dev/null || true
+  # Make-before-break: only now remove the owner login tomcassidy can read.
   mv -n $TH/.config/ssi-db/owner.env /etc/popty/pre-391/owner.env 2>/dev/null || true
   mv -n $TH/.config/ssi-db/ssi-learning-app.env.pre-384 /etc/popty/pre-391/ 2>/dev/null || true
   chown -R popty:popty /etc/popty/pre-391 && chmod -R go-rwx /etc/popty/pre-391
