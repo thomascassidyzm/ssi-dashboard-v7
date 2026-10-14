@@ -3850,7 +3850,8 @@ app.delete('/api/production/:courseCode/phrases/:phraseId', async (req, res) => 
 // Batch delete practice phrases
 // Point seed / LEGO / phrase audio slots at clips that already exist (job #388). Fill-only unless
 // replace:true + expectCurrent; text must match; never deletes a clip. Rules: services/shared/link-clip.cjs.
-// Body: { links: [{ seedNumber | legoId | phraseId, role, audioId, replace?, expectCurrent? }], dryRun? }
+// Body: { links: [{ seedNumber | legoId | phraseId | podSentenceId, role, audioId, replace?, expectCurrent?, allowDraft? }], dryRun? }
+// A pod sentence takes role 'target' or 'known' (job #391).
 app.post('/api/production/:courseCode/link-clip', async (req, res) => {
   if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
   try {
@@ -3864,6 +3865,31 @@ app.post('/api/production/:courseCode/link-clip', async (req, res) => {
     res.status(out.code === 'NO_LINKS' || out.code === 'TOO_MANY' ? 400 : out.ok ? 200 : 409).json(out)
   } catch (error) {
     logger.error('link-clip failed:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Set a listening pod's metadata.solo_readers (job #391): ["voice_id", …] makes the pod read solo by
+// those voices; [] clears it so the pod is cast by its speakers again. :podId is the full pod id
+// (URL-encoded) or the bare slug. Body: { solo_readers: [...], dryRun? }. Rules: shared/pod-solo-readers-edit.cjs.
+app.patch('/api/production/:courseCode/pod/:podId/solo-readers', async (req, res) => {
+  if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
+  try {
+    const dryRun = !!(req.body && req.body.dryRun)
+    if (dryRun) req.contentEdit?.wroteNothing()
+    const out = await require('./shared/pod-solo-readers-edit.cjs').setSoloReaders({
+      db: supabaseClient.getClient(),
+      courseCode: req.params.courseCode,
+      podId: req.params.podId,
+      soloReaders: req.body && req.body.solo_readers,
+      dryRun,
+      recordEdit: req.contentEdit ? (e) => req.contentEdit.record(e) : null,
+    })
+    if (!out.ok || !out.changed) req.contentEdit?.wroteNothing()
+    const { status, ...body } = out
+    res.status(out.ok ? 200 : (status || 409)).json(body)
+  } catch (error) {
+    logger.error('pod solo-readers failed:', error)
     res.status(500).json({ error: error.message })
   }
 })

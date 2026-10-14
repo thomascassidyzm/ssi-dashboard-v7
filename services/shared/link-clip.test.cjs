@@ -106,3 +106,50 @@ describe('linkClips', () => {
     expect(seed.results[0].code).toBe('BAD_ROLE')
   })
 })
+
+// Job #391: a pod sentence is a slot too, and a pod's solo readers can be set through Popty.
+describe('pod sentences and solo readers (job #391)', () => {
+  const D = '44444444-4444-4444-8444-444444444444'
+  const podWorld = () => ({
+    listening_pods: [
+      { id: 'cym_s_for_eng:guess-i-love-you', course_code: 'cym_s_for_eng', metadata: { job: '867', solo_readers: ['human_dan_cym_s'] }, updated_at: 't0' },
+      { id: 'cym_n_for_eng:guess-i-love-you', course_code: 'cym_n_for_eng', metadata: {}, updated_at: 't0' },
+    ],
+    listening_pod_sentences: [
+      { id: 'cym_s_for_eng:guess-i-love-you:1', pod_id: 'cym_s_for_eng:guess-i-love-you', known_text: 'I love you', target_text: "Rwy'n dy garu di", target_text_draft: false, target_audio_id: null, known_audio_id: null },
+      { id: 'cym_n_for_eng:guess-i-love-you:1', pod_id: 'cym_n_for_eng:guess-i-love-you', known_text: 'I love you', target_text: "Dw i'n dy garu di", target_text_draft: true, target_audio_id: null, known_audio_id: null },
+    ],
+    course_audio: [{ id: D, text: "Rwy'n dy garu di", voice_id: 'human_dan_cym_s' }, { id: A, text: "Dw i'n dy garu di", voice_id: 'human_aran_cym_n' }],
+  })
+  const { setSoloReaders } = require('./pod-solo-readers-edit.cjs')
+
+  it('links a clip to a pod sentence target slot, only within its own course', async () => {
+    const t = podWorld(); const db = fakeDb(t)
+    const wrong = await linkClips({ db, courseCode: 'cym_n_for_eng', links: [{ podSentenceId: 'cym_s_for_eng:guess-i-love-you:1', role: 'target', audioId: D }], bump })
+    expect(wrong.results[0].code).toBe('NO_SLOT')
+    const out = await linkClips({ db, courseCode: 'cym_s_for_eng', links: [{ podSentenceId: 'cym_s_for_eng:guess-i-love-you:1', role: 'target', audioId: D }], bump })
+    expect(out.ok).toBe(true)
+    expect(t.listening_pod_sentences[0].target_audio_id).toBe(D)
+    const bad = await linkClips({ db, courseCode: 'cym_s_for_eng', links: [{ podSentenceId: 'cym_s_for_eng:guess-i-love-you:1', role: 'target1', audioId: D }], bump })
+    expect(bad.results[0].code).toBe('BAD_ROLE')
+  })
+
+  it('refuses a target clip on a draft line unless allowDraft', async () => {
+    const t = podWorld(); const db = fakeDb(t)
+    const link = { podSentenceId: 'cym_n_for_eng:guess-i-love-you:1', role: 'target', audioId: A }
+    expect((await linkClips({ db, courseCode: 'cym_n_for_eng', links: [link], bump })).results[0].code).toBe('DRAFT_TEXT')
+    expect((await linkClips({ db, courseCode: 'cym_n_for_eng', links: [{ ...link, allowDraft: true }], bump })).ok).toBe(true)
+  })
+
+  it('sets solo_readers to [] keeping every other metadata key, by slug or full id', async () => {
+    const t = podWorld(); const db = fakeDb(t)
+    const dry = await setSoloReaders({ db, courseCode: 'cym_s_for_eng', podId: 'guess-i-love-you', soloReaders: [], dryRun: true })
+    expect(dry).toMatchObject({ ok: true, changed: true, before: ['human_dan_cym_s'], after: [] })
+    expect(t.listening_pods[0].metadata.solo_readers).toEqual(['human_dan_cym_s'])
+    const out = await setSoloReaders({ db, courseCode: 'cym_s_for_eng', podId: 'cym_s_for_eng:guess-i-love-you', soloReaders: [] })
+    expect(out.ok).toBe(true)
+    expect(t.listening_pods[0].metadata).toEqual({ job: '867', solo_readers: [] })
+    expect((await setSoloReaders({ db, courseCode: 'cym_n_for_eng', podId: 'cym_s_for_eng:guess-i-love-you', soloReaders: [] })).code).toBe('NO_POD')
+    expect((await setSoloReaders({ db, courseCode: 'cym_s_for_eng', podId: 'guess-i-love-you', soloReaders: 'x' })).code).toBe('BAD_READERS')
+  })
+})

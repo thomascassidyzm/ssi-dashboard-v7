@@ -28,5 +28,10 @@ assert.ok(bare.held[0].why.includes('no practice phrase'));
 // moving EARLIER may never add an untaught word: seed 300's sentence under seed 301 says contento, taught only at 301
 const late = run([row('S0301L01U05', 300, 'why are you not happy any more', 'ya no estás contento')]);
 assert.ok(late.held[0] && late.held[0].why.includes('contento'), JSON.stringify(late));
+// a NOT-NEW LEGO does not teach (P25): spa S0085L01 "I know | conozco" is not new and played only at S0230, so conozco is first taught at 230
+const cz = [L(85, 1, false, 'I know', 'conozco'), L(230, 1, true, 'I know', 'conozco')];
+assert.deepStrictEqual(T.firstIntro(cz).get('conozco'), [230, 1]);
+assert.deepStrictEqual(T.untaughtAt('conozco a ese hombre', cz[0], T.firstIntro(cz)).includes('conozco'), true);
+assert.deepStrictEqual(T.firstIntro([L(85, 1, true, 'I know', 'conozco'), L(230, 1, false, 'I know', 'conozco')]).get('conozco'), [85, 1]);
 assert.strictEqual(T.nextFreeId('S0195L02', 'use', new Set(['S0195L02U01']), new Set(['S0195L02U02'])), 'S0195L02U03');
 console.log('ok');

@@ -62,10 +62,16 @@ const sidOf = (course, id) => id.slice(course.length + 1);
 const legoOf = (sid) => sid.slice(0, 8);
 const pairKey = (k, t) => `${words(k).join(' ')}|${words(t).join(' ')}`;
 
-/** first introduction of every target word: [seed, lego_index] of the earliest LEGO (or M-component) containing it */
+/**
+ * first introduction of every target word: [seed, lego_index] of the earliest LEGO (or M-component) containing it.
+ * Only a NEW LEGO teaches: a not-new LEGO is never played (P25), so a word whose earliest LEGO is not new is
+ * not taught there (spa_for_eng S0085L01 "I know | conozco", not new, left conozco "taught" at 85 while it was
+ * first played at S0230 — job #412).
+ */
 function firstIntro(legos) {
   const first = new Map();
   for (const l of legos) {
+    if (l.is_new === false) continue;
     const texts = [l.target_text];
     if (l.type === 'M' && Array.isArray(l.components)) for (const c of l.components) if (c && c.target) texts.push(c.target);
     for (const t of texts) for (const w of words(t)) { const pos = [l.seed_number, l.lego_index]; if (!first.has(w) || before(pos, first.get(w))) first.set(w, pos); }
@@ -76,7 +82,7 @@ const untaughtAt = (text, lego, first) => [...new Set(words(text))].filter((w) =
 /** known-side first introduction, the same way, over LEGO known texts */
 function firstIntroKnown(legos) {
   const first = new Map();
-  for (const l of legos) for (const w of words(l.known_text)) { const pos = [l.seed_number, l.lego_index]; if (!first.has(w) || before(pos, first.get(w))) first.set(w, pos); }
+  for (const l of legos) if (l.is_new !== false) for (const w of words(l.known_text)) { const pos = [l.seed_number, l.lego_index]; if (!first.has(w) || before(pos, first.get(w))) first.set(w, pos); }
   return first;
 }
 // Read by hand on 2026-10-06 and held: the rule would move them, but the move is not clear.
