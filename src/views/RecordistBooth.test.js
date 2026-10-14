@@ -84,4 +84,16 @@ describe('RecordistBooth', () => {
     expect(wrapper.find('.booth-tab.on').text()).toBe('English')
     expect(wrapper.find('.room').attributes('data-voice')).toBe('human_aran_eng')
   })
+
+  it('the language bar steps out while a take is live and returns after (job #421)', async () => {
+    const { wrapper } = await open('/r/human_aran_cym_n', TABS)
+    const room = wrapper.findComponent({ name: 'RecordistRoom' })
+    expect(wrapper.find('[data-test="booth-tabs"]').exists()).toBe(true)
+    room.vm.$emit('phase', 'recording')
+    await flushPromises()
+    expect(wrapper.find('[data-test="booth-tabs"]').exists()).toBe(false)
+    room.vm.$emit('phase', 'idle')
+    await flushPromises()
+    expect(wrapper.find('[data-test="booth-tabs"]').exists()).toBe(true)
+  })
 })

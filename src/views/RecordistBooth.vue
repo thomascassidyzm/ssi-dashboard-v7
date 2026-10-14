@@ -1,7 +1,7 @@
 <template>
   <!-- data-surface: greppable in the served bundle, so "did it ship?" is answerable without a login -->
   <div class="booth-tabs-page" data-surface="booth-language-tabs-2026-10-14">
-    <nav v-if="tabs.length > 1" class="booth-tabs" role="tablist" aria-label="Which voice you are recording" data-test="booth-tabs">
+    <nav v-if="tabs.length > 1 && !recording" class="booth-tabs" role="tablist" aria-label="Which voice you are recording" data-test="booth-tabs">
       <button
         v-for="t in tabs"
         :key="t.voiceId"
@@ -96,35 +96,45 @@ watch(() => props.voiceId, (v, was) => {
 
 <style scoped>
 .booth-tabs-page { min-height: 100vh; background: var(--color-void, #0f172a); }
+/* A slim second navbar (Aran 2026-10-14, job #421): same family as AppNavbar's sub-row -
+   small Josefin type, a hairline under it, the active language marked by an underline, not a fill.
+   Gone while a take is live, as the app's own bar is (navbarMode, job #411). */
 .booth-tabs {
   display: flex;
-  gap: 0.4rem;
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 0.6rem 1rem 0;
+  justify-content: center;
+  gap: 0.25rem;
   position: sticky;
   top: 0;
   z-index: 5;
-  background: inherit;
+  padding: 0 1rem;
+  background: var(--color-shadow, #1e293b);
+  border-bottom: 1px solid var(--color-graphite, #475569);
 }
 .booth-tab {
-  flex: 1 1 0;
-  min-height: 48px;
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-paper, #f7f7f2);
-  background: var(--color-shadow, #1e293b);
-  border: 1px solid var(--color-graphite, #475569);
-  border-radius: 12px;
+  position: relative;
+  min-width: 5.5rem;
+  min-height: 40px; /* full-width row on a phone gives a wide, 40px-tall target */
+  padding: 0 0.875rem;
+  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-paper-dim, #c1c1bb);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
-.booth-tab.on { color: var(--color-void, #0f172a); background: var(--color-tungsten, #ffa630); border-color: var(--color-tungsten, #ffa630); }
+.booth-tab:hover { color: var(--color-paper, #f7f7f2); }
+.booth-tab.on { color: var(--color-paper, #f7f7f2); font-weight: 600; box-shadow: inset 0 -2px 0 var(--color-tungsten, #ffa630); }
+.booth-tab:focus-visible { outline: 2px solid var(--color-tungsten, #ffa630); outline-offset: -2px; }
 .booth-tab:disabled { opacity: 0.45; cursor: not-allowed; }
-@media (min-width: 900px) { .booth-tabs { max-width: none; padding: 0.8rem 2rem 0; } }
-@media (max-width: 480px) { .booth-tabs { padding: 0.5rem 0.6rem 0; } }
+@media (max-width: 480px) { .booth-tabs { padding: 0; } .booth-tab { flex: 1 1 0; } }
 
 :root[data-theme="light"] .booth-tabs-page { background: var(--surface); }
-:root[data-theme="light"] .booth-tab { color: #1f2937; background: #fff; border-color: var(--line, #d4d4cf); }
-:root[data-theme="light"] .booth-tab.on { color: #fff; background: #1d4ed8; border-color: #1d4ed8; }
+:root[data-theme="light"] .booth-tabs { background: #fff; border-bottom-color: var(--line, #d4d4cf); }
+:root[data-theme="light"] .booth-tab { color: #4b5563; }
+:root[data-theme="light"] .booth-tab:hover { color: #1f2937; }
+:root[data-theme="light"] .booth-tab.on { color: #1d4ed8; box-shadow: inset 0 -2px 0 #1d4ed8; }
 </style>
