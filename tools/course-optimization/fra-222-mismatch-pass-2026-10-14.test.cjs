@@ -65,3 +65,12 @@ test('ZUT gate holds a change whose English opens a NEW strict group, and lets t
   assert.deepStrictEqual(p.held.map((c) => [c.id, c.rule]), [['S0403L01U04', 'K2']]);
   assert.deepStrictEqual(z, { before: 0, after: 0 });
 });
+
+test('a re-run skips what an earlier run already applied, so its expect never trips on our own edits', () => {
+  const d = db();
+  d.phrases = d.phrases.filter((p) => !p.id.endsWith('S0407L01U05'));
+  d.phrases[0].target_text = 'nous devrions partir';
+  const p = T.plan(d, [['S0403L01U04', 'real', 'fix', [null, 'nous devrions partir'], 'K16', 'x'], ['S0407L01U05', 'real', 'delete', null, 'R0.3', 'x']]);
+  assert.strictEqual(p.phrases.length + p.deletes.length, 0);
+  assert.strictEqual(p.skipped.length, 2);
+});

@@ -9,7 +9,7 @@
 // Seed 18 rows are skipped (job #449 owns seed 18) and so are rows whose fix hangs on seed 18's "nous rencontrer".
 module.exports = [
   // ── added (72) ──
-  ['S0022L02', 'real', 'held', null, 'L26', 'LEGO "to meet someone | rencontrer": "someone" is not in seed 22 and not in the French; plain "to meet" would clash with seed 18\'s "to meet | nous rencontrer", which job #449 is changing right now. Proposal: "to meet | rencontrer" once #449 lands.'],
+  ['S0022L02', 'real', 'fix', ['to meet', null], 'L26', 'LEGO "to meet someone | rencontrer": "someone" is not in seed 22 and not in the French. Applied in a second run, after job #449 re-cut seed 18 to "we want to meet | nous voulons nous rencontrer", which freed "to meet". Intro re-rendered (O13)'],
   ['S0022L02B01', 'real', 'fix', [null, "je veux rencontrer quelqu'un"], 'K2', 'someone = quelqu\'un is taught at seed 5, so the learner says it; the French gains it (both sides now say "someone")'],
   ['S0022L02B02', 'real', 'fix', [null, "j'aimerais rencontrer quelqu'un"], 'K2', 'as B01'],
   ['S0022L02B03', 'real', 'fix', [null, "il veut rencontrer quelqu'un"], 'K2', 'as B01'],

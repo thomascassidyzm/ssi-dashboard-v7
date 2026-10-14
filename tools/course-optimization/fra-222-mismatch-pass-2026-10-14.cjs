@@ -50,14 +50,17 @@ function plan(db, verdicts = VERDICTS) {
       if (p.phrase_role === 'component') throw new Error(`${id}: components are not in this pass`);
       if (action === 'delete') { out.deletes.push({ id, before: [p.known_text, p.target_text], rule, why }); continue; }
       const after = [to[0] ?? p.known_text, to[1] ?? p.target_text];
+      if (after[0] === p.known_text && after[1] === p.target_text) { out.skipped.push({ id, verdict, why: 'already reads this way (an earlier run applied it)' }); continue; }
       out.phrases.push({ id, before: [p.known_text, p.target_text], after, rule, why });
     } else if (L[id]) {
       if (action === 'delete') throw new Error(`${id}: a LEGO is never deleted`);
       const l = L[id];
       const after = [to[0] ?? l.known_text, to[1] ?? l.target_text];
+      if (after[0] === l.known_text && after[1] === l.target_text) { out.skipped.push({ id, verdict, why: 'already reads this way (an earlier run applied it)' }); continue; }
       const intro = l.is_new && after[0] !== l.known_text ? introFor(I[id] && I[id].text, l.known_text, after[0]) : null;
       out.legos.push({ id, before: [l.known_text, l.target_text], after, intro, rule, why });
-    } else throw new Error(`${id}: not in the dump (verdict says ${action})`);
+    } else if (action === 'delete') out.skipped.push({ id, verdict, why: 'already deleted (an earlier run)' });
+    else throw new Error(`${id}: not in the dump (verdict says ${action})`);
   }
   return out;
 }
