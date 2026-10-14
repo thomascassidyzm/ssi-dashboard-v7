@@ -161,9 +161,12 @@ function phrasePasses(batches) {
   return out
 }
 
-/** A test voice or a fixture, kept out of the headline list (shown below it). */
+/**
+ * A test voice or a fixture, kept out of the headline list (shown below it). Tom's own
+ * thomas.cassidy+… logins (Rhian Recorder, Tom Builder on Catalan) are test accounts too.
+ */
 function isTestVoice(v) {
-  return v.language === 'zzz' || /test|e2e/i.test(`${v.voiceId} ${v.name || ''}`)
+  return v.language === 'zzz' || /test|e2e|thomas_cassidy/i.test(`${v.voiceId} ${v.name || ''}`)
 }
 
 module.exports = {
