@@ -157,7 +157,7 @@ async function verify(pg, db) {
   for (const [k, s] of byKnown) if (s.size > 1) out.push(`E ZUT "${k}" → ${[...s].join(' / ')}`);
   for (const l of LEGO_EDITS) if (l.keepIntro && db.legoById.get(l.lego).presentation_audio_id !== l.keepIntro) out.push(`${l.cls} ${l.lego} intro not linked to ${l.keepIntro}`);
   // C/D/E intros: the linked clip says the line, and is not one of the hallucinated xAI clips
-  const { rows: intro } = await pg.query(`SELECT l.lego_id, a.text, a.voice_id FROM course_legos l LEFT JOIN course_audio a ON a.id::text=l.presentation_audio_id WHERE l.course_code=$1 AND l.lego_id = ANY($2)`, [COURSE, INTROS.map((i) => i.lego)]);
+  const { rows: intro } = await pg.query(`SELECT l.lego_id, a.text, a.voice_id FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1 AND l.lego_id = ANY($2)`, [COURSE, INTROS.map((i) => i.lego)]);
   for (const i of INTROS) { const r = intro.find((x) => x.lego_id === i.lego); if (!r || r.text !== i.text || /^xai_|^eve$/.test(r.voice_id || '')) out.push(`${i.cls} intro ${i.lego} links "${r && r.text}" (${r && r.voice_id})`); }
   return out;
 }

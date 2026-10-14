@@ -185,7 +185,7 @@ async function load(pg) {
   const q = (sql) => pg.query(sql, [COURSE]).then((r) => r.rows);
   const seeds = await q('SELECT seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id, approved_at FROM course_seeds WHERE course_code=$1 ORDER BY seed_number');
   const legos = await q(`SELECT l.lego_id, l.seed_number, l.lego_index, l.is_new, l.known_text, l.target_text, l.components, l.presentation_audio_id, a.text AS intro
-    FROM course_legos l LEFT JOIN course_audio a ON a.id::text = l.presentation_audio_id WHERE l.course_code=$1 ORDER BY l.seed_number, l.lego_index`);
+    FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1 ORDER BY l.seed_number, l.lego_index`);
   const phrases = await q('SELECT id, seed_number, lego_index, position, phrase_role, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id FROM course_practice_phrases WHERE course_code=$1 ORDER BY seed_number, lego_index, position');
   const guarded = new Set((await q('SELECT lego_id FROM human_authored_presentations WHERE course_code=$1')).map((r) => r.lego_id));
   return { seeds, legos, phrases, guarded };

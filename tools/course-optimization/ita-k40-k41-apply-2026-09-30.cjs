@@ -56,7 +56,7 @@ async function readLive(pg) {
   const legoIds = [...new Set([...Object.keys(P.K40_LEGOS), ...Object.keys(P.K41_LEGOS)])];
   const { rows: ph } = await pg.query(`SELECT id, seed_number, lego_index, phrase_role, known_text, target_text, presentation_audio_id FROM course_practice_phrases WHERE course_code=$1 AND id = ANY($2)`, [COURSE, [...phraseIds].map(full)]);
   const { rows: lg } = await pg.query(`SELECT l.lego_id, l.seed_number, l.lego_index, l.is_new, l.known_text, l.target_text, l.components, l.presentation_audio_id, a.text AS intro
-    FROM course_legos l LEFT JOIN course_audio a ON a.id::text = l.presentation_audio_id WHERE l.course_code=$1 AND l.lego_id = ANY($2)`, [COURSE, legoIds]);
+    FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1 AND l.lego_id = ANY($2)`, [COURSE, legoIds]);
   const { rows: sd } = await pg.query(`SELECT seed_number, known_text, target_text, approved_at FROM course_seeds WHERE course_code=$1 AND seed_number = ANY($2)`, [COURSE, Object.keys(P.SEEDS).map(Number)]);
   const { rows: guarded } = await pg.query('SELECT lego_id FROM human_authored_presentations WHERE course_code=$1', [COURSE]);
   const live = {};

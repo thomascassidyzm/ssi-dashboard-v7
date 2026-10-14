@@ -249,7 +249,7 @@ async function verifyAudio(pg) {
     if (norm(a.text) !== norm(r.target_text)) probs.push(`${id}: target1 clip says "${a.text}"`);
     if (norm(b.text) !== norm(r.target_text)) probs.push(`${id}: target2 clip says "${b.text}"`);
   }
-  const [p] = await q(`SELECT a.text FROM course_legos l LEFT JOIN course_audio a ON a.id::text=l.presentation_audio_id WHERE l.course_code=$1 AND l.lego_id=$2`, [COURSE, L02.id]);
+  const [p] = await q(`SELECT a.text FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1 AND l.lego_id=$2`, [COURSE, L02.id]);
   if (!p?.text) probs.push(`${L02.id}: intro SILENT`); else if (p.text !== L02.intro) probs.push(`${L02.id}: intro clip says "${p.text}"`);
   return { rows, probs };
 }

@@ -72,7 +72,7 @@ async function silentSlots(db) {
   const r = await db.query(
     `SELECT l.lego_id, l.presentation_audio_id, a.s3_key
        FROM course_legos l
-       LEFT JOIN course_audio a ON a.id::text = l.presentation_audio_id
+       LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid
       WHERE l.course_code = $1
       ORDER BY l.lego_id`, [COURSE])
   return r.rows.filter(row =>
@@ -82,7 +82,7 @@ async function silentSlots(db) {
 async function audibleClip(db, legoId) {
   const r = await db.query(
     `SELECT a.s3_key, a.text, a.origin FROM course_legos l
-       JOIN course_audio a ON a.id::text = l.presentation_audio_id
+       JOIN course_audio a ON a.id = l.presentation_audio_id::uuid
       WHERE l.course_code = $1 AND l.lego_id = $2`, [COURSE, legoId])
   return r.rows[0] || null
 }

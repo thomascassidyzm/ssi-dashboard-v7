@@ -185,7 +185,7 @@ async function guardLive(pg, log) {
   const { rows: marks } = await pg.query('SELECT lego_id, text, author FROM human_authored_presentations WHERE course_code=$1 AND lego_id LIKE $2', [COURSE, 'S0131%']);
   log.marksBefore = marks;
   for (const m of marks) if (m.lego_id === 'S0131L03' && norm(m.text) !== norm(INTRO_L03.text)) problems.push(`S0131L03 is already guarded with another author's line: "${m.text}" (${m.author}) — report, do not overwrite`);
-  const { rows: intros } = await pg.query(`SELECT l.lego_id, a.id, a.text, a.voice_id, a.s3_key FROM course_legos l LEFT JOIN course_audio a ON a.id::text=l.presentation_audio_id WHERE l.course_code=$1 AND l.seed_number=$2 ORDER BY 1`, [COURSE, SEED]);
+  const { rows: intros } = await pg.query(`SELECT l.lego_id, a.id, a.text, a.voice_id, a.s3_key FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1 AND l.seed_number=$2 ORDER BY 1`, [COURSE, SEED]);
   log.introsBefore = intros;
   // ZUT against the course for every AFTER pair (K2: one known → two targets is a hold; the other direction is listed)
   const clashes = [];
@@ -330,7 +330,7 @@ async function introL03(pg, supabase, log) {
       await pg.query('UPDATE lego_introductions SET presentation_audio_id=$1, audio_uuid=$1, updated_at=now() WHERE course_code=$2 AND lego_id=$3', [audioId, COURSE, INTRO_L03.legoId]);
       entry.audioId = audioId;
     } catch (e) { entry.result = `SILENT — render refused: ${e.message}`; }
-    const { rows: [chk] } = await pg.query('SELECT l.presentation_audio_id, a.text FROM course_legos l LEFT JOIN course_audio a ON a.id::text=l.presentation_audio_id WHERE l.course_code=$1 AND l.lego_id=$2', [COURSE, INTRO_L03.legoId]);
+    const { rows: [chk] } = await pg.query('SELECT l.presentation_audio_id, a.text FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1 AND l.lego_id=$2', [COURSE, INTRO_L03.legoId]);
     entry.linkedText = chk?.text || null; entry.mirrors = !!chk?.text && chk.text === INTRO_L03.text;
   } finally {
     if (castRow) await pg.query(`DELETE FROM voice_language_roles WHERE slot=$1 AND language=$2 AND gender=$3 AND rank=$4 AND voice_id=$5 AND assigned_by=$6`, [TEMP_ROW.slot, TEMP_ROW.language, TEMP_ROW.gender, TEMP_ROW.rank, TEMP_ROW.voice_id, SWEEP]);

@@ -157,7 +157,7 @@ function audit({ legos, phrases, changes }) {
 async function main() {
   const { Client } = require('pg');
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect();
-  const legos = (await pg.query(`SELECT l.lego_id, l.seed_number, l.lego_index, l.is_new, l.known_text, l.target_text, l.components, a.text AS intro FROM course_legos l LEFT JOIN course_audio a ON a.id::text = l.presentation_audio_id WHERE l.course_code=$1 ORDER BY seed_number, lego_index`, [COURSE])).rows;
+  const legos = (await pg.query(`SELECT l.lego_id, l.seed_number, l.lego_index, l.is_new, l.known_text, l.target_text, l.components, a.text AS intro FROM course_legos l LEFT JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1 ORDER BY seed_number, lego_index`, [COURSE])).rows;
   const phrases = (await pg.query(`SELECT id, seed_number, lego_index, position, known_text, target_text, phrase_role FROM course_practice_phrases WHERE course_code=$1 ORDER BY seed_number, lego_index, position`, [COURSE])).rows;
   const events = (await pg.query(`SELECT occurred_at, surface, operation, scope, detail FROM content_edit_events WHERE course_code=$1 AND occurred_at >= $2 AND (operation LIKE '%lego%' OR operation='seed-edit') ORDER BY occurred_at`, [COURSE, SINCE])).rows;
   const live = Object.fromEntries(legos.map((l) => [l.lego_id, l]));

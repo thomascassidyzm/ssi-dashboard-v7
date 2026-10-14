@@ -182,7 +182,7 @@ async function load(pg) {
     phrases: await q("SELECT *, split_part(id,':',2) sid FROM course_practice_phrases WHERE course_code=$1"),
     legos: await q('SELECT * FROM course_legos WHERE course_code=$1'),
     seeds: await q('SELECT seed_number, known_text, target_text, approved_at FROM course_seeds WHERE course_code=$1'),
-    intros: await q('SELECT l.lego_id, a.text FROM course_legos l JOIN course_audio a ON a.id::text = l.presentation_audio_id WHERE l.course_code=$1'),
+    intros: await q('SELECT l.lego_id, a.text FROM course_legos l JOIN course_audio a ON a.id = l.presentation_audio_id::uuid WHERE l.course_code=$1'),
   };
 }
 

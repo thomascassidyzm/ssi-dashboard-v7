@@ -16,7 +16,7 @@ Environment=NODE_OPTIONS=--max-old-space-size=4096
 # "cannot read .../ssi-dashboard-v7-clean-prod/.env.psql (ENOENT)": the code
 # loaded, fired on every write, and refreshed nothing. Verified live on a
 # throwaway write, 2026-09-20. Same line, same reason, as ssi-round-index.service.
-Environment=ROUND_INDEX_ENV_PSQL=/home/tomcassidy/SSi/ssi-dashboard-v7-clean/.env.psql
+Environment=ROUND_INDEX_ENV_PSQL=/home/tomcassidy/.config/ssi-db/owner.env
 Environment=PRODUCTION_API_PORT=3470
 # ONE-WRITER GUARD — Camberley Mac is the live production writer.
 # Leave this off on watson-1 until real cutover. See docs/watson-1-environment.md
