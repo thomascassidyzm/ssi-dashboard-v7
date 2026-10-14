@@ -12,11 +12,11 @@
       </div>
 
       <!-- Center: persistent primary nav -->
-      <nav v-if="mode === 'full'" class="navbar-tabs">
+      <nav v-if="mode === 'full' || recordingLink" class="navbar-tabs">
         <!-- An editor's always-there way back to the three cards (Tom, 2026-09-25):
              first in the row every page carries, so it is there at 390 too. -->
         <router-link
-          v-if="!isAdmin"
+          v-if="!isAdmin && mode === 'full'"
           :to="homeTo"
           class="tab-item navbar-home"
           :class="{ active: route.name === 'LeaderJourney' }"
@@ -26,13 +26,23 @@
           Home
         </router-link>
         <router-link
-          v-for="tab in primaryTabs"
+          v-for="tab in (mode === 'full' ? primaryTabs : [])"
           :key="tab.label"
           :to="tab.to"
           class="tab-item"
           :class="{ active: tab.active }"
         >
           {{ tab.label }}
+        </router-link>
+        <!-- Their own booth, for a login that holds a recording voice (job #411). -->
+        <router-link
+          v-if="recordingLink"
+          :to="recordingLink.to"
+          class="tab-item"
+          :class="{ active: recordingLink.active }"
+          data-nav="recording"
+        >
+          {{ recordingLink.label }}
         </router-link>
       </nav>
 
@@ -143,7 +153,8 @@ import { useAuth } from '../composables/useAuth'
 import EnvironmentSwitcher from './EnvironmentSwitcher.vue'
 import RemoteControl from './RemoteControl.vue'
 import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
-import { primaryTabs as declaredPrimaryTabs, sectionTabs as declaredSectionTabs, editorHomeTo, navbarMode } from '../nav/navigation'
+import { primaryTabs as declaredPrimaryTabs, sectionTabs as declaredSectionTabs, editorHomeTo, navbarMode, recordingTab } from '../nav/navigation'
+import { useMyRecordingVoices } from '../composables/useMyRecordingVoices'
 import { boothMicLive } from '../nav/boothMic'
 
 const route = useRoute()
@@ -267,6 +278,8 @@ const mode = computed(() => navbarMode(route, {
   isRecorder: isRecorder.value,
   micLive: boothMicLive.value
 }))
+const { voices: myVoices } = useMyRecordingVoices()
+const recordingLink = computed(() => recordingTab(route, { isAuthenticated: isAuthenticated.value, voices: myVoices.value }))
 // The booth is public, so the router guard never signs anyone in on it: ask here,
 // or Aran opening his own /r/ link would be shown the signed-out bar.
 watch(isBoothPage, (on) => { if (on) initAuth() }, { immediate: true })

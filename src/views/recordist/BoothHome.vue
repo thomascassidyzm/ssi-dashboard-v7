@@ -3,11 +3,8 @@
        "Up next" on top and Option C's tickable boxes down the side. Draws from the summary only;
        a batch's lines are fetched when he opens it. Decisions live in booth-home.js. -->
   <div class="bh" data-surface="booth-home-2026-10-14">
-    <nav class="rc-nav" aria-label="Booth navigation">
-      <span class="rc-nav-item is-here" aria-current="page">Booth</span>
-      <span class="rc-nav-dot">·</span>
-      <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
-    </nav>
+    <!-- The Booth · Popty row that stood here went when Popty's own top bar came onto the booth
+         (job #411, Aran: "one navigation"). -->
 
     <!-- ONE PIECE OF WORK, its batches listed. -->
     <section v-if="openTrack" class="bh-track">
@@ -210,11 +207,6 @@ function cardPill(t) {
 
 <style scoped>
 .bh { padding-top: 0.75rem; }
-.rc-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.5rem; margin: 0 0 0.6rem; font-size: 0.95rem; }
-.rc-nav-item { display: inline-block; min-height: 40px; line-height: 40px; padding: 0 0.6rem; border-radius: 8px; color: var(--color-emerald, #06ffa5); background: rgba(6, 255, 165, 0.08); text-decoration: none; font-weight: 600; }
-.rc-nav-item.is-here { color: var(--color-paper, #f5f5f0); background: rgba(255, 255, 255, 0.12); }
-.rc-nav-dot { color: var(--color-paper-dim, #c1c1bb); opacity: 0.6; }
-.rc-nav-home { opacity: 0.75; font-weight: 500; }
 .bh-h1 { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0.25rem 0 0.2rem; }
 .bh-h2 { font-family: 'Josefin Sans', sans-serif; font-size: 1.3rem; margin: 0.2rem 0 0.3rem; }
 .bh-h3 { display: block; font-size: 1.05rem; font-weight: 700; margin: 0.1rem 0 0.25rem; color: var(--color-paper, #f7f7f2); }
@@ -267,4 +259,8 @@ function cardPill(t) {
 :root[data-theme="light"] .bh-done, :root[data-theme="light"] .bh-plan-toggle { border-color: var(--line); }
 :root[data-theme="light"] .bh-hero { background: #e6eefb; border-color: #93b4e6; }
 :root[data-theme="light"] .bh-kind.k-lego { background: #fce7f3; color: #9d174d; }
+
+/* WHITE ON EVERY GREEN BUTTON in light mode (Aran, 2026-10-14, job #411: dark text on the green
+   "did not read well"). #fff on --accent-2 #047857 is 5.48:1, WCAG AA for any text size. */
+:root[data-theme="light"] .bh-go, :root[data-theme="light"] .bh-brow.next .bh-bn { color: #fff; }
 </style>

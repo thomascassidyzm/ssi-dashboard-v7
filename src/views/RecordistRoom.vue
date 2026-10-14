@@ -66,8 +66,8 @@
            stage: a link within reach of a thumb while the mic is live is a
            lost take. Those pages carry "← Back to the booth" (booth-pointer.js). -->
       <nav class="rc-nav" aria-label="Booth navigation">
-        <router-link :to="`/r/${voiceId}`" class="rc-nav-item is-here" aria-current="page">Booth</router-link>
-        <span class="rc-nav-dot">·</span>
+        <!-- Booth and Popty left this row when Popty's own top bar came onto the booth (job #411,
+             Aran: "one navigation"); its way home is the Back to home just below. -->
         <button type="button" class="rc-nav-item rc-nav-btn" @click="goToLines">Lines</button>
         <template v-if="navPods.length">
           <span class="rc-nav-dot">·</span>
@@ -78,13 +78,13 @@
           <span class="rc-nav-dot">·</span>
           <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
         </template>
-        <span class="rc-nav-dot">·</span>
-        <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
       </nav>
       <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back. -->
-      <div v-if="batchScope" class="batch-head" data-test="batch-head">
+      <!-- Back to home is here on every ready and done card, batch or not: a private-link artist
+           with no Popty login has no other way to their booth's home (job #411). -->
+      <div class="batch-head" data-test="batch-head">
         <button type="button" class="batch-back" data-test="back-home" @click="goHome">‹ Back to home</button>
-        <p class="batch-title" data-test="batch-where">{{ batchHeader }}</p>
+        <p v-if="batchScope" class="batch-title" data-test="batch-where">{{ batchHeader }}</p>
       </div>
       <h1 class="rc-hello">Hello {{ voice.displayName }}</h1>
       <p class="rc-progress-line">{{ queueHeadline }}</p>
@@ -667,8 +667,8 @@
            stage: a link within reach of a thumb while the mic is live is a
            lost take. Those pages carry "← Back to the booth" (booth-pointer.js). -->
       <nav class="rc-nav" aria-label="Booth navigation">
-        <router-link :to="`/r/${voiceId}`" class="rc-nav-item is-here" aria-current="page">Booth</router-link>
-        <span class="rc-nav-dot">·</span>
+        <!-- Booth and Popty left this row when Popty's own top bar came onto the booth (job #411,
+             Aran: "one navigation"); its way home is the Back to home just below. -->
         <button type="button" class="rc-nav-item rc-nav-btn" @click="goToLines">Lines</button>
         <template v-if="navPods.length">
           <span class="rc-nav-dot">·</span>
@@ -679,13 +679,13 @@
           <span class="rc-nav-dot">·</span>
           <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
         </template>
-        <span class="rc-nav-dot">·</span>
-        <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
       </nav>
       <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back. -->
-      <div v-if="batchScope" class="batch-head" data-test="batch-head">
+      <!-- Back to home is here on every ready and done card, batch or not: a private-link artist
+           with no Popty login has no other way to their booth's home (job #411). -->
+      <div class="batch-head" data-test="batch-head">
         <button type="button" class="batch-back" data-test="back-home" @click="goHome">‹ Back to home</button>
-        <p class="batch-title" data-test="batch-where">{{ batchHeader }}</p>
+        <p v-if="batchScope" class="batch-title" data-test="batch-where">{{ batchHeader }}</p>
       </div>
       <h2>{{ doneHeadline }}</h2>
       <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
@@ -3069,10 +3069,8 @@ onDeactivated(() => {
   cursor: pointer;
 }
 .rc-nav-item:hover, .rc-nav-item:focus-visible { background: rgba(6, 255, 165, 0.2); }
-.rc-nav-item.is-here { color: var(--color-paper, #f5f5f0); background: rgba(255, 255, 255, 0.12); cursor: default; }
 .rc-nav-word { color: var(--color-paper-dim, #c1c1bb); font-weight: 600; }
 .rc-nav-dot { color: var(--color-paper-dim, #c1c1bb); opacity: 0.6; }
-.rc-nav-home { opacity: 0.75; font-weight: 500; }
 .rc-hello { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0 0 0.35rem; }
 .rc-card h2 { font-family: 'Josefin Sans', sans-serif; font-size: 1.3rem; margin: 0 0 0.6rem; }
 .rc-card h3 { font-size: 0.95rem; margin: 1.25rem 0 0.35rem; }
@@ -3513,4 +3511,8 @@ kbd {
 :root[data-theme="light"] .safety-banner.waiting { background: #dbe9fb; border-color: #2563eb; color: #14306e; }
 :root[data-theme="light"] .safety-banner.risk { background: #fbe2df; border-color: #b91c1c; color: #7a1512; }
 :root[data-theme="light"] .safety-banner.refused { background: #fbeed6; border-color: #b45309; color: #6b3c06; }
+
+/* WHITE ON EVERY GREEN BUTTON in light mode (Aran, 2026-10-14, job #411: dark text on the green
+   "did not read well"). #fff on --accent-2 #047857 is 5.48:1, WCAG AA for any text size. */
+:root[data-theme="light"] .btn-begin, :root[data-theme="light"] .ctl-next, :root[data-theme="light"] .volume-btn.on { color: #fff; }
 </style>

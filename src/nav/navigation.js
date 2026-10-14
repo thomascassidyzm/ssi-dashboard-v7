@@ -466,3 +466,18 @@ export function navbarMode(route, viewer = {}) {
   if (route?.meta?.public === true || viewer.isRecorder) return 'hidden'
   return 'full'
 }
+
+/**
+ * THE RECORDING LINK (job #411, Aran 2026-10-14): on every page the navbar shows, for a signed-in
+ * login that holds at least one recording voice — and for nobody else. It goes to /my-recording,
+ * the login door that opens their own booth with a tab per voice. `voices` is
+ * GET /api/recording/mine's list (useMyRecordingVoices). Null means no link.
+ */
+export function recordingTab(route, viewer = {}) {
+  if (!viewer.isAuthenticated || !Array.isArray(viewer.voices) || !viewer.voices.length) return null
+  return {
+    label: 'Recording',
+    to: '/my-recording',
+    active: route?.name === 'RecordistRoom' || route?.name === 'MyRecording'
+  }
+}

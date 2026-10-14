@@ -5,7 +5,7 @@
 // open, and nothing tappable may sit on screen mid-take.
 import { describe, it, expect } from 'vitest'
 import router from '../router/index.js'
-import { navbarMode } from './navigation.js'
+import { navbarMode, recordingTab } from './navigation.js'
 
 const booth = router.resolve('/r/human_aran_cym_n')
 const mine = router.resolve('/my-recording')
@@ -41,5 +41,26 @@ describe('the booth pages show the main navbar', () => {
     expect(navbarMode(router.resolve('/login'), signedOut)).toBe('hidden')
     expect(navbarMode(router.resolve('/courses'), recorder)).toBe('hidden')
     expect(navbarMode(router.resolve('/courses'), admin)).toBe('full')
+  })
+})
+
+describe('the Recording link', () => {
+  const voice = [{ voiceId: 'human_aran_cym_n' }]
+
+  it('shows, on any page, for a signed-in login holding a recording voice, and goes to their own booth', () => {
+    const tab = recordingTab(router.resolve('/courses'), { isAuthenticated: true, voices: voice })
+    expect(tab).toEqual({ label: 'Recording', to: '/my-recording', active: false })
+    expect(router.resolve(tab.to).name).toBe('MyRecording')
+  })
+
+  it('lights up on the booth and on the login door onto it', () => {
+    expect(recordingTab(booth, { isAuthenticated: true, voices: voice }).active).toBe(true)
+    expect(recordingTab(mine, { isAuthenticated: true, voices: voice }).active).toBe(true)
+  })
+
+  it('is hidden for a login with no voice, and for anyone signed out — even holding a booth link', () => {
+    expect(recordingTab(booth, { isAuthenticated: true, voices: [] })).toBeNull()
+    expect(recordingTab(booth, { isAuthenticated: false, voices: voice })).toBeNull()
+    expect(recordingTab(booth, { isAuthenticated: false })).toBeNull()
   })
 })

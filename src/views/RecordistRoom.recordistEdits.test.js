@@ -244,15 +244,16 @@ describe('the recordist edits their own lines', () => {
     expect(server.takes.filter(t => t.lineId === 'A' && t.text === 'Bore da i chi.')).toHaveLength(1)
   })
 
-  it('the nav row names Booth · Lines · Pods · the course and resolves them for this voice', async () => {
+  it('the nav row names Lines · Pods · the course and resolves them for this voice', async () => {
     const w = openBooth()
     await until(() => counts(w) !== null, 'the ready card')
     const nav = w.find('.rc-nav')
     expect(nav.exists()).toBe(true)
     // The course chip is named in plain words, never by its code (Aran, 2026-10-13).
-    expect(nav.text()).toMatch(/Booth.*Lines.*Pods.*Old Welsh/s)
+    expect(nav.text()).toMatch(/Lines.*Pods.*Old Welsh/s)
+    // Booth and Popty went to Popty's top bar (job #411): one navigation.
+    expect(nav.text()).not.toMatch(/Booth|Popty/)
     expect(nav.text()).not.toContain(COURSE)
-    expect(nav.find('.is-here').attributes('href')).toBe(`/r/${VOICE}`)
     // Every pod this voice is cast in, to its drafts page: by the pod's own
     // title, unless the booth has a plainer name for it (booth-chip-titles.js).
     const pods = nav.findAll('.rc-nav-pod').map(a => [a.text(), a.attributes('href')])
