@@ -74,3 +74,12 @@ test('a re-run skips what an earlier run already applied, so its expect never tr
   assert.strictEqual(p.phrases.length + p.deletes.length, 0);
   assert.strictEqual(p.skipped.length, 2);
 });
+
+test('with clip ids, every changed slot gets an audio.link AFTER the text in the same batch (the trigger would leave it silent)', () => {
+  const p = T.plan(db(), [['S0403L01U04', 'real', 'fix', [null, 'nous devrions partir'], 'K16', 'x'], ['S0412L03', 'real', 'fix', ['to them', null], 'L11', 'x']]);
+  const clips = new Map([['target1\u0000nous devrions partir', 'a1'], ['target2\u0000nous devrions partir', 'a2'], ['known\u0000to them', 'k'], ["presentation\u0000The French for: 'to them', is:", 'p']]);
+  const ops = T.editOps(p, clips);
+  assert.deepStrictEqual(ops.map((o) => o.op), ['lego.update', 'phrase.update', 'audio.link', 'audio.link', 'audio.link', 'audio.link']);
+  assert.deepStrictEqual(ops.filter((o) => o.op === 'audio.link').map((o) => `${o.slot}=${o.audio_id}`), ['known=k', 'presentation=p', 'target1=a1', 'target2=a2']);
+  assert.throws(() => T.editOps(p, new Map()), /no clip/);
+});

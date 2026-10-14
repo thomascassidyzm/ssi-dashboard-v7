@@ -112,11 +112,32 @@ function clipAsks(p) {
   return [...m.values()];
 }
 
-/** The edit-batch ops; `expect` pins each row to the dump. */
-function editOps(p) {
+/** The edit-batch ops; `expect` pins each row to the dump. `clips` (role\u0000text → audioId) adds an audio.link for every
+ *  slot whose words changed, in the SAME transaction after the text: the text-change trigger does not re-point a slot to a
+ *  clip in another voice, so without these the row would go silent (the #452 preview showed 34 such rows). */
+function editOps(p, clips = null) {
+  const links = [];
+  const link = (target, key, slot, role, text) => {
+    if (!clips) return;
+    const audio_id = clips.get(`${role}\u0000${text}`);
+    if (!audio_id) throw new Error(`${key[target === 'lego' ? 'lego_id' : 'phrase_id']}: no clip for ${role} "${text}"`);
+    links.push({ op: 'audio.link', target, ...key, slot, audio_id });
+  };
+  for (const c of p.legos) {
+    const key = { lego_id: c.id };
+    if (c.after[0] !== c.before[0]) link('lego', key, 'known', 'known', c.after[0]);
+    if (c.after[1] !== c.before[1]) { link('lego', key, 'target1', 'target1', c.after[1]); link('lego', key, 'target2', 'target2', c.after[1]); }
+    if (c.intro) link('lego', key, 'presentation', 'presentation', c.intro);
+  }
+  for (const c of p.phrases) {
+    const key = { phrase_id: `${COURSE}:${c.id}` };
+    if (c.after[0] !== c.before[0]) link('phrase', key, 'known', 'known', c.after[0]);
+    if (c.after[1] !== c.before[1]) { link('phrase', key, 'target1', 'target1', c.after[1]); link('phrase', key, 'target2', 'target2', c.after[1]); }
+  }
   return [
     ...p.legos.map((c) => ({ op: 'lego.update', lego_id: c.id, set: { known_text: c.after[0], target_text: c.after[1] }, expect: { known_text: c.before[0], target_text: c.before[1] } })),
     ...p.phrases.map((c) => ({ op: 'phrase.update', phrase_id: `${COURSE}:${c.id}`, set: { known_text: c.after[0], target_text: c.after[1] }, expect: { known_text: c.before[0], target_text: c.before[1] } })),
+    ...links,
     ...p.deletes.map((c) => ({ op: 'phrase.delete', phrase_id: `${COURSE}:${c.id}`, expect: { known_text: c.before[0], target_text: c.before[1] } })),
   ];
 }
@@ -161,7 +182,7 @@ async function main() {
   const refused = new Set();
   for (const a of log.asks) {
     if (a.dry.status !== 200 || a.dry.error) { a.ids.forEach((i) => refused.add(i)); continue; }
-    if (a.dry.source === 'library' && a.role !== 'presentation') { a.real = { skipped: 'library — the text-change trigger links it' }; continue; }
+    // a library hit is asked for real too (0 chars) — that is how its clip id comes back for the audio.link below
     const r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, ...(a.legoId ? { legoId: a.legoId } : {}) });
     a.real = { status: r.status, source: r.body.source, audioId: r.body.audioId, charsSpent: r.body.charsSpent, error: r.status === 200 && r.body.ok ? undefined : r.body };
     if (a.real.error) { a.ids.forEach((i) => refused.add(i)); console.log('  REFUSED', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 200)); if (r.status === 402) break; }
@@ -174,7 +195,8 @@ async function main() {
   if (!APPLY) return console.log('render log:', save('rendered'));
 
   // 3. the edit door: preview, then apply; keep the undo
-  const ops = editOps(p);
+  const clips = new Map(log.asks.filter((a) => a.real && a.real.audioId).map((a) => [`${a.role}\u0000${a.text}`, a.real.audioId]));
+  const ops = editOps(p, clips);
   const prev = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops });
   const silent = (r) => (r.results || []).filter((x) => x.after && ['known_audio_id', 'target1_audio_id', 'target2_audio_id'].some((c) => c in x.after && !x.after[c])).map((x) => x.key);
   log.preview = { status: prev.status, results: prev.body.results, silentAfter: silent(prev.body), error: prev.status === 200 ? undefined : prev.body };
