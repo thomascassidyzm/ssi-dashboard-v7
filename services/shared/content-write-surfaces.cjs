@@ -97,6 +97,11 @@ const PRODUCTION_API = [
   { method: 'DELETE', path: '/api/production/:courseCode/phrases/:phraseId',  operation: 'phrase-delete' },
   { method: 'POST',   path: '/api/production/:courseCode/phrases/batch-delete', operation: 'phrase-delete' },
   { method: 'POST',   path: '/api/admin/decomposition-backfill',             operation: 'decomposition-backfill' },
+  // Job #388: the agent doors for Aran's Welsh v2 edits once agent_script lost content writes.
+  // lego PATCH and seed DELETE (a status flip to deprecated) existed before but ran with no editor identity.
+  { method: 'POST',   path: '/api/production/:courseCode/link-clip',          operation: 'audio-link' },
+  { method: 'PATCH',  path: '/api/production/:courseCode/lego/:legoId',       operation: 'lego-update', legos: true },
+  { method: 'DELETE', path: '/api/production/:courseCode/seed/:seedNumber',   operation: 'seed-delete' },
 ].map(r => ({ ...r, service: 'production-api' }));
 
 const SURFACES = [...COURSE_BUILDER, ...RECORD_ONLY, ...PRODUCTION_API];

@@ -1,5 +1,8 @@
 /**
- * The ONE door for agent and ad-hoc SQL against the shared SSi database (job #384, 2026-10-14).
+ * The door for COMMITTED tools that query the shared SSi database (job #384, 2026-10-14).
+ * Tom's HARD RULE the same day: no agent touches the DB with hand-written code — a scratch script
+ * that requires this file is still hand-written and the surface's guard refuses it. Use it from a
+ * tool that is merged to main and run unchanged.
  *
  * Why it exists. On 2026-10-14 a worker's scratch script looked clips up with
  * `course_audio WHERE id::text = ANY($1)`. Casting the COLUMN stops Postgres using the primary key,
@@ -80,7 +83,7 @@ function agentUrl(envFile = process.env.AGENT_DB_ENV || path.join(__dirname, '..
 }
 
 /** A connected pg Client whose query() refuses index-defeating SQL before sending it. */
-async function connect({ url = agentUrl(), app = `agent:${path.basename(require.main ? require.main.filename : 'repl')}` } = {}) {
+async function connect({ url = agentUrl(), app = process.env.PGAPPNAME || `agent:${path.basename(require.main ? require.main.filename : 'repl')}` } = {}) {
   const { Client } = require('pg')
   const client = new Client({ connectionString: url, application_name: app.slice(0, 63) })
   await client.connect()
