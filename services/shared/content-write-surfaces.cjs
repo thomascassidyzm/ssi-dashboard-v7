@@ -104,6 +104,8 @@ const PRODUCTION_API = [
   { method: 'POST',   path: '/api/production/:courseCode/edit-batch',        operation: 'course-edit', legos: true },
   { method: 'PATCH',  path: '/api/production/:courseCode/lego/:legoId',      operation: 'lego-edit', legos: true },
   { method: 'DELETE', path: '/api/production/:courseCode/seed/:seedNumber',  operation: 'seed-deprecate' },
+  // Job #388: fill-only clip linking over the Supabase client (services/shared/link-clip.cjs).
+  { method: 'POST',   path: '/api/production/:courseCode/link-clip',          operation: 'audio-link' },
 ].map(r => ({ ...r, service: 'production-api' }));
 
 const SURFACES = [...COURSE_BUILDER, ...RECORD_ONLY, ...PRODUCTION_API];

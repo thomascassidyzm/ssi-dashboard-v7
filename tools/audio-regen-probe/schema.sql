@@ -337,7 +337,7 @@ BEGIN
   ELSIF NEW.role = 'presentation' THEN
     -- course_legos.presentation_audio_id is a TEXT column (see note 4 below),
     -- hence the cast; course_practice_phrases' is uuid.
-    UPDATE course_legos SET presentation_audio_id = NEW.id::text
+    UPDATE course_legos SET presentation_audio_id = NEW.id
       WHERE course_code = NEW.course_code AND presentation_audio_id IS NULL
         AND normalize_text(target_text) = NEW.text_normalized;
     UPDATE course_practice_phrases SET presentation_audio_id = NEW.id

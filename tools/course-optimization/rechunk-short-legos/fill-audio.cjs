@@ -97,7 +97,7 @@ async function main() {
     for (const l of legos) {   // mirror the lego_introductions row the apply dropped
       const { rows: [c] } = await pg.query('SELECT presentation_audio_id FROM course_legos WHERE course_code=$1 AND lego_id=$2', [COURSE, l.lego_id])
       if (!c || !c.presentation_audio_id) continue
-      const { rows: [a] } = await pg.query('SELECT duration_ms FROM course_audio WHERE id::text=$1', [String(c.presentation_audio_id)])
+      const { rows: [a] } = await pg.query('SELECT duration_ms FROM course_audio WHERE id=$1::uuid', [String(c.presentation_audio_id)])
       await pg.query(`INSERT INTO lego_introductions (course_code, lego_id, audio_uuid, duration_ms, version, presentation_audio_id)
         SELECT $1,$2,$3::uuid,$4,1,$3::uuid WHERE NOT EXISTS (SELECT 1 FROM lego_introductions WHERE course_code=$1 AND lego_id=$2)`, [COURSE, l.lego_id, c.presentation_audio_id, a ? a.duration_ms : null])
     }

@@ -3831,6 +3831,26 @@ app.delete('/api/production/:courseCode/phrases/:phraseId', async (req, res) => 
 })
 
 // Batch delete practice phrases
+// Point seed / LEGO / phrase audio slots at clips that already exist (job #388). Fill-only unless
+// replace:true + expectCurrent; text must match; never deletes a clip. Rules: services/shared/link-clip.cjs.
+// Body: { links: [{ seedNumber | legoId | phraseId, role, audioId, replace?, expectCurrent? }], dryRun? }
+app.post('/api/production/:courseCode/link-clip', async (req, res) => {
+  if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
+  try {
+    const out = await require('./shared/link-clip.cjs').linkClips({
+      db: supabaseClient.getClient(),
+      courseCode: req.params.courseCode,
+      links: req.body && req.body.links,
+      dryRun: !!(req.body && req.body.dryRun),
+      recordEdit: req.contentEdit ? (e) => req.contentEdit.record(e) : null,
+    })
+    res.status(out.code === 'NO_LINKS' || out.code === 'TOO_MANY' ? 400 : out.ok ? 200 : 409).json(out)
+  } catch (error) {
+    logger.error('link-clip failed:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
 app.post('/api/production/:courseCode/phrases/batch-delete', async (req, res) => {
   try {
     const { courseCode } = req.params

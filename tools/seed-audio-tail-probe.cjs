@@ -75,7 +75,7 @@ with links as (
   union all select 'lego', l.lego_id,'known', l.known_audio_id from course_legos l where l.course_code=$1 and l.seed_number=$2
   union all select 'lego', l.lego_id,'target1', l.target1_audio_id from course_legos l where l.course_code=$1 and l.seed_number=$2
   union all select 'lego', l.lego_id,'target2', l.target2_audio_id from course_legos l where l.course_code=$1 and l.seed_number=$2
-  union all select 'lego', l.lego_id,'presentation', nullif(l.presentation_audio_id,'')::uuid from course_legos l where l.course_code=$1 and l.seed_number=$2
+  union all select 'lego', l.lego_id,'presentation', l.presentation_audio_id::uuid from course_legos l where l.course_code=$1 and l.seed_number=$2
   union all select 'phrase', p.id,'known', p.known_audio_id from course_practice_phrases p where p.course_code=$1 and p.seed_number=$2
   union all select 'phrase', p.id,'target1', p.target1_audio_id from course_practice_phrases p where p.course_code=$1 and p.seed_number=$2
   union all select 'phrase', p.id,'target2', p.target2_audio_id from course_practice_phrases p where p.course_code=$1 and p.seed_number=$2

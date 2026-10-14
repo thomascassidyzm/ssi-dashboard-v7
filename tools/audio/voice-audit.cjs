@@ -38,7 +38,7 @@ const SLOT_COLUMNS = Object.freeze({
 /** The 11 premium courses taught from English (Tom's "big" X_for_eng set, as tools/audio/tom006-english.cjs X11). */
 const PREMIUM_11 = Object.freeze(['fra_for_eng', 'spa_for_eng', 'spa_mx_for_eng', 'deu_for_eng', 'zho_for_eng', 'ara_for_eng', 'por_for_eng', 'por_br_for_eng', 'kor_for_eng', 'jpn_for_eng', 'ita_for_eng'])
 /** course_legos.presentation_audio_id is TEXT, every other pointer a uuid: compare as uuid. */
-const ptr = (tbl, col) => (tbl === 'course_legos' && col === 'presentation_audio_id' ? `nullif(x.${col}, '')::uuid` : `x.${col}`)
+const ptr = (tbl, col) => (tbl === 'course_legos' && col === 'presentation_audio_id' ? `x.${col}::uuid` : `x.${col}`)
 const usable = (alias) => `${alias}.s3_key is not null and ${alias}.s3_key not like 'pending/%' and coalesce(${alias}.duration_ms, 0) > 200`
 
 /**
