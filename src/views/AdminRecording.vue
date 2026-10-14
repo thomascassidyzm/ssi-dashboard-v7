@@ -3,6 +3,8 @@
     <h1>Human recording</h1>
     <p class="lede">Which languages we record with people instead of TTS, how far each one has got, and the link to send the recordist.</p>
 
+    <BoothArtistsOverview />
+
     <div v-if="loading" class="ar-spinner"></div>
     <p v-else-if="error" class="ar-error">{{ error }}</p>
 
@@ -108,6 +110,7 @@
 import { ref, onMounted } from 'vue'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useAuth } from '@/composables/useAuth'
+import BoothArtistsOverview from '@/components/BoothArtistsOverview.vue'
 
 const { getAccessToken } = useAuth()
 
