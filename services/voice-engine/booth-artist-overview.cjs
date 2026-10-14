@@ -6,12 +6,11 @@
  * Read-only. Nothing here writes a row.
  *
  * WHO MAY SEE IT. Recording artists must never see each other's work, and Popty's `admin` role is
- * wider than "Tom and Aran": on 2026-10-14 it is seven accounts, one of them Kai, who is also a
- * recording artist (human_kai_fin). So the gate is the estate's ONE admin gate (hasAdminRole, via
- * production-api's requireAdmin) AND a named God-admin list. No such list existed anywhere in
- * Popty when this was written — the learners `educational_role = 'god'` value the identity
- * resolver honours is held by nobody — so this is the list, in one place, and widening it is a
- * one-line change here that a test pins.
+ * wider than the people who should see everything (seven accounts on 2026-10-14). So the gate is
+ * the estate's ONE admin gate (hasAdminRole, via production-api's requireAdmin) AND the named
+ * God-admin list in booth-god-admins.cjs — Tom, Aran and, since job #371, Kai. No such list
+ * existed anywhere in Popty when this was written — the learners `educational_role = 'god'` value
+ * the identity resolver honours is held by nobody — so that file is the list, in one place.
  *
  * WHAT THE NUMBERS ARE, each a different measure, never blended:
  *   - LINES DONE / TOTAL — the booth's own definition of recorded (a take exists for the line),
@@ -29,22 +28,14 @@
 
 'use strict'
 
-const { hasAdminRole } = require('../shared/popty-identity.cjs')
-
-/** Tom's Popty login and Aran's — the two people Aran named on 2026-10-14. */
-const GOD_ADMIN_EMAILS = Object.freeze(['thomas.cassidy+ssi@gmail.com', 'aran@hey.com'])
+// The one God-admin list, shared with the latest-takes route (job #371).
+const { GOD_ADMIN_EMAILS, isGodAdmin } = require('./booth-god-admins.cjs')
 
 /** Takes closer together than this are one sitting at the booth. */
 const SESSION_GAP_MS = 15 * 60 * 1000
 
 /** The team records in Wales; "today" and the day chart are London days. */
 const DAY_TZ = 'Europe/London'
-
-function isGodAdmin(identity) {
-  if (!hasAdminRole(identity)) return false
-  const email = String(identity.email || '').trim().toLowerCase()
-  return GOD_ADMIN_EMAILS.includes(email)
-}
 
 /** 'human_archived-20a3405f-human_tom_zzz' → { voiceId: 'human_tom_zzz', archived: true }. */
 function baseVoice(voiceId) {

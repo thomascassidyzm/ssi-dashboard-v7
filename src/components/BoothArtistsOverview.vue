@@ -1,5 +1,5 @@
 <template>
-  <!-- RECORDING ARTISTS, for Tom and Aran only (Aran, 2026-10-14, job #350). The server refuses
+  <!-- RECORDING ARTISTS, for Tom, Aran and Kai only (Aran, 2026-10-14, job #350). The server refuses
        everyone else (services/voice-engine/booth-artists-router.cjs); on a 401/403 this section
        draws nothing at all, so the other admins who open this page see the page they always had. -->
   <section v-if="state !== 'hidden'" class="artists">
@@ -7,7 +7,7 @@
       <h2>Recording artists</h2>
       <button v-if="state === 'ready'" class="refresh" @click="load(true)">Refresh</button>
     </div>
-    <p class="lede">How each reader is getting on. Seen only by Tom and Aran.</p>
+    <p class="lede">How each reader is getting on. Seen only by Tom, Aran and Kai.</p>
 
     <div v-if="state === 'loading'" class="ba-loading">Loading every artist… (up to 20 seconds the first time)</div>
     <p v-else-if="state === 'error'" class="ba-error">{{ error }}</p>
@@ -318,5 +318,19 @@ h3 { font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem; margin: 1rem 0
 .key dt { font-weight: 600; color: var(--color-paper, #f7f7f2); margin-top: 0.5rem; }
 .key dd { margin: 0.1rem 0 0; }
 summary { cursor: pointer; min-height: 32px; display: list-item; }
-:root[data-theme="light"] .card { border-color: var(--line); }
+/* Light mode (Aran reads in it, job #371). The palette tokens flip on their own; what does not is
+   graphite as a border (slate-200, near-invisible on white), the pink error ink and the white
+   hover wash, so those three are re-said here the way the booth page re-says them. */
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .drill,
+:root[data-theme="light"] .q-bar,
+:root[data-theme="light"] .tbl td,
+:root[data-theme="light"] .batch,
+:root[data-theme="light"] .take { border-color: var(--line); }
+:root[data-theme="light"] .batch.started,
+:root[data-theme="light"] .batch.done { border-color: var(--color-emerald); }
+:root[data-theme="light"] .card { box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06); }
+:root[data-theme="light"] .chart .axis { stroke: var(--line); }
+:root[data-theme="light"] .chart .hit:hover { fill: rgba(15, 23, 42, 0.06); }
+:root[data-theme="light"] .ba-error { color: var(--danger); }
 </style>

@@ -109,5 +109,5 @@ test('a God admin hears any artist; a plain admin hears only their own', async (
 })
 
 test('the God-admin list is pinned', () => {
-  assert.deepStrictEqual([...GOD_ADMIN_EMAILS].sort(), ['aran@hey.com', 'thomas.cassidy+ssi@gmail.com'])
+  assert.deepStrictEqual([...GOD_ADMIN_EMAILS].sort(), ['aran@hey.com', 'kai@saysomethingin.com', 'thomas.cassidy+ssi@gmail.com'])
 })

@@ -12,8 +12,11 @@
 
 const { hasAdminRole } = require('../shared/popty-identity.cjs')
 
-/** Tom's Popty login and Aran's — the two people Aran named on 2026-10-14. */
-const GOD_ADMIN_EMAILS = Object.freeze(['thomas.cassidy+ssi@gmail.com', 'aran@hey.com'])
+/**
+ * Tom's Popty login and Aran's — the two people Aran named on 2026-10-14 — and Kai's, added by
+ * Aran the same day (job #371). kai@saysomethingin.com is Kai's admin row in dashboard_users.
+ */
+const GOD_ADMIN_EMAILS = Object.freeze(['thomas.cassidy+ssi@gmail.com', 'aran@hey.com', 'kai@saysomethingin.com'])
 
 function isGodAdmin(identity) {
   if (!hasAdminRole(identity)) return false

@@ -193,7 +193,7 @@ async function load() {
 }
 
 // The newest stored takes of one recordist, playable. Signed in: artists must
-// never see each other's work, so the server answers only Tom and Aran (or the
+// never see each other's work, so the server answers only Tom, Aran and Kai (or the
 // artist themselves) and a 403 here means "not yours to hear" (job #371).
 async function toggleTakes(voiceId) {
   if (takes.value[voiceId]) {
@@ -204,7 +204,7 @@ async function toggleTakes(voiceId) {
   takes.value = { ...takes.value, [voiceId]: { loading: true, error: null, items: [] } }
   try {
     const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/latest-takes?limit=20`, { headers: await authHeaders() })
-    if (res.status === 403) throw new Error('Only Tom and Aran can hear another artist’s takes.')
+    if (res.status === 403) throw new Error('Only Tom, Aran and Kai can hear another artist’s takes.')
     if (!res.ok) throw new Error(`Could not load takes (${res.status})`)
     const data = await res.json()
     takes.value = { ...takes.value, [voiceId]: { loading: false, error: null, items: data.takes || [] } }
@@ -303,4 +303,5 @@ h1 { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0 0 0.3
 :root[data-theme="light"] .open-btn { color: #065f46; border-color: #047857; }
 
 :root[data-theme="light"] .lang, :root[data-theme="light"] .bar { border-color: var(--line); }
+:root[data-theme="light"] .ar-error { color: var(--danger); }
 </style>

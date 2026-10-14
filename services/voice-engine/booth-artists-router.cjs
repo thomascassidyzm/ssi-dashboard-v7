@@ -43,7 +43,7 @@ module.exports = function createBoothArtistsRouter({
       if (!user) return // requireAdmin has already answered 401/403
       if (!ov.isGodAdmin(user)) {
         logger.warn(`[BoothArtists] refused ${user.email || 'unknown'} (admin, not a God admin)`)
-        return res.status(403).json({ error: 'Only Tom and Aran can see every recording artist.' })
+        return res.status(403).json({ error: 'Only Tom, Aran and Kai can see every recording artist.' })
       }
       req.godAdmin = user
       next()
