@@ -1,6 +1,6 @@
 // The booth home screen's decisions (job #347): Up next order, ticks, phrase locking.
 import { describe, it, expect } from 'vitest'
-import { upNext, groupTracks, batchTickId, trackLocked, firstOpenBatch } from './booth-home.js'
+import { upNext, groupTracks, batchTickId, trackLocked, firstOpenBatch, splitTicked, shownBatches, loadSummarySnapshot, saveSummarySnapshot } from './booth-home.js'
 
 const seeds = (key, newCourse, batches) => ({
   key, kind: 'seed', newCourse, seedExisting: true,
@@ -54,5 +54,33 @@ describe('groups', () => {
   })
   it('opens the current phrase batch from its card', () => {
     expect(firstOpenBatch(tracks[3], tracks).n).toBe(1)
+  })
+})
+
+// Job #378 (Aran, 2026-10-14).
+const legos = { key: 'lego.cym_nv2_for_eng', kind: 'lego', newCourse: true, total: 300, recorded: 100,
+  batches: [{ n: 1, total: 100, recorded: 100 }, { n: 2, total: 100, recorded: 0 }, { n: 3, total: 100, recorded: 0 }] }
+describe('LEGOs, ticks hiding cards, and the kept home screen (job #378)', () => {
+  const withLegos = [...tracks, legos]
+  it('puts LEGOs after new sentences and before practice phrases', () => {
+    expect(groupTracks(withLegos).main.map(t => t.key)).toEqual(['seed.cym_nv2_for_eng', 'lego.cym_nv2_for_eng', 'phrase.1', 'phrase.2'])
+    expect(upNext(withLegos, new Set(['seed.cym_nv2_for_eng'])).track.key).toBe('lego.cym_nv2_for_eng')
+    expect(upNext(withLegos, new Set(['seed.cym_nv2_for_eng', batchTickId('lego.cym_nv2_for_eng', 2)])).batch.n).toBe(3)
+  })
+  it('hides an unticked card and an unticked batch, and shows them again when ticked', () => {
+    const off = new Set(['lego.cym_nv2_for_eng', batchTickId('seed.cym_nv2_for_eng', 2)])
+    const { shown, hidden } = splitTicked(withLegos, off)
+    expect(hidden.map(t => t.key)).toEqual(['lego.cym_nv2_for_eng'])
+    expect(shown.some(t => t.key === 'lego.cym_nv2_for_eng')).toBe(false)
+    expect(shownBatches(tracks[2], off).map(b => b.n)).toEqual([1, 3])
+    expect(splitTicked(withLegos, new Set()).hidden).toEqual([])
+  })
+  it('keeps the last home screen per voice and reads it back', () => {
+    const mem = new Map()
+    const storage = { getItem: k => mem.get(k) ?? null, setItem: (k, v) => mem.set(k, v) }
+    saveSummarySnapshot('human_aran_cym_n', { tracks: [legos] }, storage, 1000)
+    expect(loadSummarySnapshot('human_aran_cym_n', storage, 2000).tracks[0].key).toBe('lego.cym_nv2_for_eng')
+    expect(loadSummarySnapshot('human_aran_eng', storage, 2000)).toBe(null)
+    expect(loadSummarySnapshot('human_aran_cym_n', storage, 1000 + 8 * 24 * 3600 * 1000)).toBe(null)
   })
 })

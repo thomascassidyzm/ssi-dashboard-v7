@@ -11,7 +11,7 @@
 
     <!-- ONE PIECE OF WORK, its batches listed. -->
     <section v-if="openTrack" class="bh-track">
-      <button type="button" class="bh-back" @click="$emit('home')">‹ All your recording</button>
+      <button type="button" class="bh-back" @click="$emit('home')">‹ Back to home</button>
       <span class="bh-kind" :class="openTrack.cls">{{ openTrack.short }}</span>
       <h1 class="bh-h1">{{ openTrack.title }}</h1>
       <p class="bh-sub">{{ openTrack.what }}</p>
@@ -20,7 +20,7 @@
       <p v-if="openTrack.kind === 'phrase'" class="bh-sub">One batch opens at a time. When a batch is finished, the next one opens.</p>
       <div class="bh-list">
         <button
-          v-for="b in openTrack.batches" :key="b.n" type="button"
+          v-for="b in openBatches" :key="b.n" type="button"
           class="bh-brow"
           :class="{ lock: !canOpen(openTrack, b), next: isUpNext(openTrack, b), full: b.recorded >= b.total }"
           :disabled="!canOpen(openTrack, b)"
@@ -35,6 +35,9 @@
           <span v-if="canOpen(openTrack, b)" class="bh-pill">›</span>
         </button>
       </div>
+      <p v-if="openBatches.length < openTrack.batches.length" class="bh-note" data-test="hidden-batches">
+        {{ openTrack.batches.length - openBatches.length }} unticked {{ openTrack.batches.length - openBatches.length === 1 ? 'batch is' : 'batches are' }} hidden. Tick {{ openTrack.batches.length - openBatches.length === 1 ? 'it' : 'them' }} under “What I'm doing” to show {{ openTrack.batches.length - openBatches.length === 1 ? 'it' : 'them' }} again.
+      </p>
     </section>
 
     <!-- HOME -->
@@ -99,6 +102,10 @@
             </div>
           </template>
 
+          <p v-if="groups.hidden.length" class="bh-note" data-test="hidden-cards">
+            Hidden because you unticked {{ groups.hidden.length === 1 ? 'it' : 'them' }}: {{ groups.hidden.map(t => t.title).join(', ') }}. Tick {{ groups.hidden.length === 1 ? 'it' : 'them' }} under “What I'm doing” to show {{ groups.hidden.length === 1 ? 'it' : 'them' }} again.
+          </p>
+
           <template v-if="groups.finished.length">
             <h3 class="bh-sec">Finished ✓</h3>
             <div class="bh-done">
@@ -124,7 +131,7 @@
 <script setup>
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import BoothTicks from './BoothTicks.vue'
-import { groupTracks, upNext, batchOpenable, trackLocked } from './booth-home.js'
+import { groupTracks, upNext, batchOpenable, trackLocked, splitTicked, shownBatches } from './booth-home.js'
 
 const props = defineProps({
   displayName: { type: String, default: '' },
@@ -140,18 +147,25 @@ defineEmits(['open', 'card', 'home', 'tick'])
 const n = (x) => Number(x || 0).toLocaleString('en-GB')
 const pct = (x) => `${x.total ? Math.max(Math.round(100 * x.recorded / x.total), x.recorded ? 1 : 0) : 0}%`
 const withLock = (t) => ({ ...t, locked: trackLocked(t, props.tracks) })
-const groups = computed(() => {
+// Unticked cards are hidden (job #378); the tick list still holds them, so ticking brings them back.
+const allGroups = computed(() => {
   const g = groupTracks(props.tracks)
   return { main: g.main.map(withLock), other: g.other.map(withLock), finished: g.finished }
 })
+const groups = computed(() => {
+  const main = splitTicked(allGroups.value.main, props.unticked)
+  const other = splitTicked(allGroups.value.other, props.unticked)
+  return { main: main.shown, other: other.shown, finished: allGroups.value.finished, hidden: [...main.hidden, ...other.hidden] }
+})
 const next = computed(() => upNext(props.tracks, props.unticked))
 const ticked = (id) => !props.unticked.has(id)
-const tickables = computed(() => [...groups.value.main, ...groups.value.other])
+const tickables = computed(() => [...allGroups.value.main, ...allGroups.value.other])
 const tickedCount = computed(() => tickables.value.filter((t) => ticked(t.key)).length)
 const openTrack = computed(() => {
   const t = props.trackKey && props.tracks.find((x) => x.key === props.trackKey)
   return t ? withLock(t) : null
 })
+const openBatches = computed(() => (openTrack.value ? shownBatches(openTrack.value, props.unticked) : []))
 // Wide screens show the list down the side; a phone keeps it folded under Up next.
 const isWide = () => typeof window !== 'undefined' && window.innerWidth >= 900
 const wide = ref(isWide())
@@ -180,7 +194,7 @@ function batchWords(t, b) {
     }
     return `${done}${b.held ? ` · ${b.held} held back for proofing` : ''}`
   }
-  if (t.batches.length > 1) return `Sentences ${n(b.from)}–${n(b.to)} · ${done}`
+  if (t.batches.length > 1) return `${t.kind === 'lego' ? 'LEGOs' : 'Sentences'} ${n(b.from)}–${n(b.to)} · ${done}`
   return done
 }
 function cardPill(t) {
@@ -206,6 +220,7 @@ function cardPill(t) {
 .bh-kind.k-sent { background: #1e3a5f; color: #93c5fd; }
 .bh-kind.k-p1 { background: #3b2f0b; color: #fcd34d; }
 .bh-kind.k-p2 { background: #2e1f47; color: #c4b5fd; }
+.bh-kind.k-lego { background: #3a1d2e; color: #f9a8d4; }
 .bh-bar { display: block; height: 8px; background: var(--color-graphite, #475569); border-radius: 99px; overflow: hidden; margin: 0.5rem 0 0.25rem; }
 .bh-bar > i { display: block; height: 100%; background: var(--color-emerald, #06ffa5); }
 .bh-row { display: flex; align-items: center; gap: 0.75rem; justify-content: space-between; }
@@ -247,4 +262,5 @@ function cardPill(t) {
 :root[data-theme="light"] .bh-card, :root[data-theme="light"] .bh-side, :root[data-theme="light"] .bh-list,
 :root[data-theme="light"] .bh-done, :root[data-theme="light"] .bh-plan-toggle { border-color: var(--line); }
 :root[data-theme="light"] .bh-hero { background: #e6eefb; border-color: #93b4e6; }
+:root[data-theme="light"] .bh-kind.k-lego { background: #fce7f3; color: #9d174d; }
 </style>

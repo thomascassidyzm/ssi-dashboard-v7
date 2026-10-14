@@ -83,8 +83,8 @@
       </nav>
       <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back. -->
       <div v-if="batchScope" class="batch-head" data-test="batch-head">
-        <button type="button" class="batch-back" @click="goHome">‹ All your recording</button>
-        <p v-if="batchTitle" class="batch-title">{{ batchTitle }}</p>
+        <button type="button" class="batch-back" data-test="back-home" @click="goHome">‹ Back to home</button>
+        <p class="batch-title" data-test="batch-where">{{ batchHeader }}</p>
       </div>
       <h1 class="rc-hello">Hello {{ voice.displayName }}</h1>
       <p class="rc-progress-line">{{ queueHeadline }}</p>
@@ -425,6 +425,10 @@
               : (recorder.meterTrusted.value ? `Mic live · ${micDb}` : 'Level meter not reading — every take will be saved'))) }}
         </span>
       </div>
+      <!-- WHERE HE IS, while he reads (job #378, Aran: "make it clear which option he came in
+           from and is working on"). Words only: no link within reach of a thumb while the mic is
+           live (the rule on the nav above); Stop here is this stage's way out. -->
+      <p v-if="batchScope" class="stage-where" data-test="stage-where">{{ batchHeader }}</p>
       <!-- THE SWITCH, WHERE HE CAN REACH IT MID-SESSION. Aran, 2026-09-10: "if
            I pause for thought, it starts flicking through items". The rule he
            asks for is already the rule — nothing advances until the meter has
@@ -680,8 +684,8 @@
       </nav>
       <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back. -->
       <div v-if="batchScope" class="batch-head" data-test="batch-head">
-        <button type="button" class="batch-back" @click="goHome">‹ All your recording</button>
-        <p v-if="batchTitle" class="batch-title">{{ batchTitle }}</p>
+        <button type="button" class="batch-back" data-test="back-home" @click="goHome">‹ Back to home</button>
+        <p class="batch-title" data-test="batch-where">{{ batchHeader }}</p>
       </div>
       <h2>{{ doneHeadline }}</h2>
       <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
@@ -801,7 +805,7 @@
       </div>
 
       <button v-if="nextBatchN" class="btn-begin" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Carry on: batch {{ nextBatchN }} ›</button>
-      <button v-if="batchScope" class="btn-ghost" @click="goHome">Back to all your recording</button>
+      <button v-if="batchScope" class="btn-ghost" @click="goHome">Back to home</button>
       <button class="btn-ghost" @click="backToStart">Back to my lines</button>
     </section>
   </div>
@@ -832,7 +836,7 @@ import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
 import BoothHome from './recordist/BoothHome.vue'
-import { loadUnticked, saveUnticked } from './recordist/booth-home.js'
+import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot } from './recordist/booth-home.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
@@ -2686,21 +2690,37 @@ const batchScope = computed(() => {
 })
 const homeTrackKey = computed(() => (batchScope.value ? null : queryStr(addressQuery.value.track)))
 
+// A reader of a course's KNOWN side (Aran's English booth reads the English of the Welsh
+// courses) is told so on every card and header (job #378): "English for New Welsh — North".
+function courseWordsFor(courseCode) {
+  const words = boothCourseWords(courseCode, 'Course')
+  const h = homeSummary.value
+  const lang = h && h.language
+  if (!lang || !courseCode || courseCode.startsWith(`${lang}_`) || !courseCode.endsWith(`_for_${lang}`)) return words
+  return `${h.languageName || lang} for ${words}`
+}
 function describeTrack(t) {
   if (t.kind === 'seed') {
     const isNew = !!(t.newCourse || t.seedExisting === false)
     const old = SECTION_ORDER.find(x => x.key === 'seedexisting')
     return {
       short: isNew ? 'New sentences' : 'Sentences', cls: 'k-sent',
-      title: `${boothCourseWords(t.courseCode, 'Course')}: whole sentences`,
+      title: `${courseWordsFor(t.courseCode)}: whole sentences`,
       what: isNew ? 'Read each new course sentence once, at your natural pace.' : old.blurb,
+    }
+  }
+  if (t.kind === 'lego') {
+    return {
+      short: 'LEGOs', cls: 'k-lego',
+      title: `${courseWordsFor(t.courseCode)}: LEGOs`,
+      what: 'The pieces each new sentence is built from, one at a time. Read each once, at your natural pace.',
     }
   }
   if (t.kind === 'phrase') {
     const fp = (homeSummary.value && homeSummary.value.phrases && homeSummary.value.phrases.firstPass) || { build: 4, use: 3 }
     return {
       short: `Phrases · pass ${t.pass}`, cls: t.pass === 1 ? 'k-p1' : 'k-p2',
-      title: `${boothCourseWords(t.courseCode, 'Course')}: practice phrases, pass ${t.pass}`,
+      title: `${courseWordsFor(t.courseCode)}: practice phrases, pass ${t.pass}`,
       what: t.pass === 1
         ? `The phrases the app plays first: up to ${fp.build} build and ${fp.use} use phrases for each new LEGO.`
         : 'The rest of the practice phrases. Opens when pass 1 is finished.',
@@ -2735,12 +2755,20 @@ const homeNotes = computed(() => {
   return out
 })
 const scopedTrack = computed(() => batchScope.value && homeTracks.value.find(t => t.key === batchScope.value.track))
-const batchTitle = computed(() => {
+// THE PERSISTENT HEADER inside a batch (job #378): which course, which section, which batch,
+// how many left — "New Welsh — North · New sentences · batch 3 of 7 · 41 left". The count is the
+// lines on screen still to read, so it moves as he reads.
+const batchHeader = computed(() => {
   const t = scopedTrack.value
-  if (!t) return null
+  const left = `${remainingToRead.value.toLocaleString('en-GB')} left`
+  if (!t) return phase.value === 'loading' ? 'Opening your batch…' : left
   const b = t.batches.find(x => x.n === batchScope.value.batch)
-  if (t.kind === 'phrase') return `${t.title}${b ? ` · ${b.courseLabel || ''} batch ${b.batch}`.replace('  ', ' ') : ''}`
-  return t.batches.length > 1 ? `${t.title} · Batch ${batchScope.value.batch} of ${t.batches.length}${b ? ` (sentences ${b.from}–${b.to})` : ''}` : t.title
+  const parts = [courseWordsFor(t.courseCode), t.short]
+  if (t.kind === 'phrase') parts.push(b ? `${b.courseLabel ? `${b.courseLabel} ` : ''}batch ${b.batch} of ${t.batches.length}` : null)
+  else if (t.batches.length > 1) parts.push(`batch ${batchScope.value.batch} of ${t.batches.length}`)
+  else parts[1] = t.title.replace(`${parts[0]}: `, '')
+  parts.push(left)
+  return parts.filter(Boolean).join(' · ')
 })
 // After a batch: the next one of the same card, if it has lines to read. Never a
 // practice-phrase batch — the queue opens those itself, one at a time.
@@ -2769,21 +2797,57 @@ async function fetchSummary() {
     { headers: {} },
     r => (r.ok ? r.json() : r.json().catch(() => ({})))
   )
-  return res.ok && data && data.home && !data.setupLocked ? data : null
+  const ok = res.ok && data && data.home && !data.setupLocked ? data : null
+  // Kept on this device so the next arrival draws at once (job #378). A summary that
+  // cannot be a home screen clears it, so the snapshot never outlives its reason.
+  if (ok) saveSummarySnapshot(props.voiceId, ok)
+  else if (res.status !== 0 && res.status < 500) saveSummarySnapshot(props.voiceId, null)
+  return ok
 }
 
+// THE HOME SCREEN AT ONCE, then the truth (Aran, 2026-10-14, job #378: "still takes a LONG
+// time to load even if I just go to another tab and then come back"). A phone coming back to
+// the tab often reloads it — the app reloads when a new build has landed, and a phone throws
+// background tabs away — and every reload waited on a whole-queue summary (1-5 s on the
+// server, plus a public hop that adds 1-8 s of its own). Now: whatever home screen this page
+// or this device last had is drawn straight away, and the server's answer replaces it when it
+// lands. A summary the server marks `fresh: false` (served from its cache while it rebuilds)
+// is asked for once more a few seconds later, so the counts settle without a reload.
 let homeFor = null
-async function loadHome() {
-  // Moving between the home screen and a card's batch list needs no new read.
-  if (phase.value === 'home' && homeSummary.value && homeFor === props.voiceId) return
-  phase.value = 'loading'
-  let data = null
-  try { data = await fetchSummary() } catch { data = null }
-  if (!data) { homeSummary.value = null; return load() }
+let refreshTimer = null
+function applySummary(data) {
   homeSummary.value = data
   homeFor = props.voiceId
   voice.value = { ...voice.value, displayName: data.displayName, languageName: data.languageName }
-  // Takes left on this device by an earlier session start going up from here too.
+}
+async function refreshHome(again = true) {
+  let data = null
+  try { data = await fetchSummary() } catch { data = null }
+  if (!data) return false
+  if (homeFor === props.voiceId || !homeSummary.value) applySummary(data)
+  clearTimeout(refreshTimer)
+  if (again && data.fresh === false) refreshTimer = setTimeout(() => { if (phase.value === 'home') refreshHome(false) }, 4000)
+  return true
+}
+async function loadHome() {
+  // Moving between the home screen and a card's batch list needs no new read.
+  if (phase.value === 'home' && homeSummary.value && homeFor === props.voiceId) return
+  if (homeFor !== props.voiceId) homeSummary.value = null
+  const shown = homeSummary.value || loadSummarySnapshot(props.voiceId)
+  if (shown) {
+    applySummary(shown)
+    phase.value = 'home'
+    // Takes left on this device by an earlier session start going up from here too.
+    Promise.resolve(queue.attach(props.voiceId)).catch(() => {})
+    refreshHome().then((ok) => {
+      // The server says this voice no longer has a home screen (a pack, a locked setup
+      // check): the snapshot was cleared, so leave it for the one-screen booth.
+      if (!ok && phase.value === 'home' && !loadSummarySnapshot(props.voiceId)) { homeSummary.value = null; load() }
+    })
+    return
+  }
+  phase.value = 'loading'
+  if (!(await refreshHome())) { homeSummary.value = null; return load() }
   await queue.attach(props.voiceId)
   phase.value = 'home'
 }
@@ -2801,7 +2865,11 @@ async function enter() {
   if (isDoorLink()) return load()
   if (batchScope.value) {
     // The batch's own name comes from the summary; fetched alongside, never waited on.
-    if (!homeSummary.value) fetchSummary().then(d => { if (d) homeSummary.value = d }).catch(() => {})
+    if (!homeSummary.value) {
+      const kept = loadSummarySnapshot(props.voiceId)
+      if (kept) applySummary(kept)
+      fetchSummary().then(d => { if (d) applySummary(d) }).catch(() => {})
+    }
     return load()
   }
   return loadHome()
@@ -2945,6 +3013,9 @@ watch(() => [props.voiceId, addressQuery.value.track, addressQuery.value.batch, 
 .batch-head { margin: -0.4rem 0 0.9rem; }
 .batch-back { background: none; border: 0; font: inherit; font-weight: 600; color: var(--color-emerald, #06ffa5); padding: 0.3rem 0; min-height: 44px; cursor: pointer; }
 .rc-card p.batch-title { margin: 0; font-size: 1rem; font-weight: 600; color: var(--color-paper, #f7f7f2); }
+.batch-head { border: 1px solid var(--color-graphite, #475569); border-radius: 12px; padding: 0.2rem 0.8rem 0.6rem; }
+.stage-where { margin: 0.4rem 0 0; font-size: 0.85rem; font-weight: 600; color: var(--color-paper-dim, #c1c1bb); text-align: center; }
+:root[data-theme="light"] .batch-head { border-color: var(--line, #d4d4cf); background: #eef4fb; }
 /* Small, muted, above everything and out of the flow of the work: it is the
    door, not part of the job. */
 .rc-nav {
