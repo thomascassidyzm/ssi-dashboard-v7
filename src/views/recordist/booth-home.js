@@ -105,6 +105,20 @@ export function saveUnticked(voiceId, off, storage = globalThis.localStorage) {
   try { storage && storage.setItem(tickKey(voiceId), JSON.stringify([...off])) } catch { /* private mode */ }
 }
 
+// WHICH SECTIONS' BATCH LISTS ARE OPEN in the tick panel (job #392): shut unless he opened one,
+// remembered per section key on this device. Section keys name the course, so one list serves
+// every voice's booth.
+const TICKS_OPEN_KEY = 'popty.boothTicksOpen'
+export function loadTicksOpen(storage = globalThis.localStorage) {
+  try {
+    const arr = JSON.parse((storage && storage.getItem(TICKS_OPEN_KEY)) || '[]')
+    return Array.isArray(arr) ? arr.filter((k) => typeof k === 'string') : []
+  } catch { return [] }
+}
+export function saveTicksOpen(keys, storage = globalThis.localStorage) {
+  try { storage && storage.setItem(TICKS_OPEN_KEY, JSON.stringify([...new Set(keys)])) } catch { /* private mode */ }
+}
+
 // THE LAST HOME SCREEN, kept on this device (job #378). A phone coming back to the tab often
 // reloads the page; the home screen is drawn from this at once and replaced by the server's
 // answer when it lands, so a reload is never a blank "Getting your lines…" again.
