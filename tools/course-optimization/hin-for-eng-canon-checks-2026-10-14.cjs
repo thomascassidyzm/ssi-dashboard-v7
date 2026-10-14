@@ -67,6 +67,9 @@ const INTRO_HELD = new Set(['S0019L02', 'S0030L01', 'S0091L03', 'S0110L02', 'S01
 
 const ENGLISH = [
   { id: 'S0090L01U01', target: 'अगर यह संभव है तो अच्छा है।', before: "if it's possible that's great", after: "if it's possible that's good", why: 'अच्छा है is "good"; "great" is बहुत अच्छा (S0090L04)' },
+  { id: 'S0090L02U01', target: 'थोड़ा धीरे बोल सकते हैं।', before: 'speak slowly', after: 'you can speak a little slowly', why: 'ZUT with S0090L02B02 "speak slowly | धीरे बोल"; the Hindi says थोड़ा … सकते हैं' },
+  { id: 'S0090L02U03', target: 'तो इसके बारे में बोल सकते हैं।', before: 'so speak about this', after: 'so you can speak about this', why: 'the Hindi says सकते हैं (you can)' },
+  { id: 'S0090L02U04', target: 'या थोड़ा धीरे इसके बारे में बोल सकते हैं।', before: 'or speak about this slowly', after: 'or you can speak about this a little slowly', why: 'the Hindi says थोड़ा … सकते हैं' },
   { id: 'S0090L03U01', target: 'अगर आप धीरे बोल सकें तो अच्छा है।', before: 'if you can speak slowly', after: "if you can speak slowly that's good", why: 'ZUT with S0090L02U02 "if you can speak slowly | अगर आप धीरे बोल सकते हैं।" — the Hindi adds तो अच्छा है' },
   { id: 'S0090L03U02', target: 'अगर आप शुरू कर सकें तो अच्छा है।', before: 'if you can start', after: "if you can start that's good", why: 'the Hindi says तो अच्छा है, the English did not' },
   { id: 'S0090L03U03', target: 'तो अगर आप कर सकें तो अच्छा है।', before: 'so if you can', after: "so if you can do it that's good", why: 'the Hindi says कर सकें … तो अच्छा है' },
