@@ -19,11 +19,16 @@
           <span class="bt-when" :class="{ today: a.activity.takesToday }">{{ lastActive(a) }}</span>
         </span>
         <span class="bt-meta">{{ a.languageName }}<template v-if="a.dialect && a.dialect !== 'standard'"> · {{ a.dialect }}</template> · {{ a.activity.takes7d }} {{ a.activity.takes7d === 1 ? 'take' : 'takes' }} this week</span>
-        <template v-if="a.focus">
-          <span class="bt-proj">{{ a.focus.label }}</span>
-          <span class="bt-bar"><i :style="{ width: pct(a.focus) }"></i></span>
-          <span class="bt-meta">{{ n(a.focus.recorded) }} of {{ n(a.focus.total) }} recorded<template v-if="a.projects.length > 1"> · {{ a.projects.length }} projects ›</template></span>
-        </template>
+        <!-- EVERY PROJECT, one row each, untouched ones included (Aran, job #393). -->
+        <span v-for="r in a.rows" :key="r.key" class="bt-row" :class="{ other: r.other, done: r.done }" :data-test="`team-${a.voiceId}-${r.key}`">
+          <span class="bt-proj">{{ r.label }}</span>
+          <span v-if="!r.other" class="bt-bar"><i :style="{ width: pct(r) }"></i></span>
+          <span class="bt-meta">
+            <template v-if="r.other">{{ n(r.takes) }} {{ r.takes === 1 ? 'take' : 'takes' }}</template>
+            <template v-else>{{ n(r.recorded) }} of {{ n(r.total) }}</template>
+            · {{ n(r.takes7d) }} this week · {{ r.lastActive ? `last ${r.when}` : r.when }}
+          </span>
+        </span>
       </router-link>
     </div>
   </section>
@@ -34,7 +39,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useAuth } from '@/composables/useAuth'
-import { showsTeamSection, teamCards } from './team-stats.js'
+import { showsTeamSection, teamCards, whenLabel } from './team-stats.js'
 
 const route = useRoute()
 const { getAccessToken } = useAuth()
@@ -47,13 +52,7 @@ const signInTo = computed(() => ({ path: '/login', query: { redirect: route.full
 
 const n = (x) => Number(x || 0).toLocaleString('en-GB')
 const pct = (p) => `${p.total ? Math.max(Math.round(100 * p.recorded / p.total), p.recorded ? 1 : 0) : 0}%`
-function lastActive(a) {
-  const t = a.activity.lastActive
-  if (!t) return 'not started'
-  if (a.activity.takesToday) return 'today'
-  const days = Math.floor((Date.now() - Date.parse(t)) / 86400000)
-  return days < 1 ? 'in the last day' : days === 1 ? 'yesterday' : `${days}d ago`
-}
+const lastActive = (a) => whenLabel(a.activity)
 
 onMounted(async () => {
   if (!showsTeamSection(voiceId.value)) return // an ordinary reader's booth: nothing, no call
@@ -78,7 +77,7 @@ onMounted(async () => {
 .bt-sec { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--color-paper-dim, #c1c1bb); margin: 1.4rem 0 0.3rem; }
 .bt-sub { color: var(--color-paper-dim, #c1c1bb); font-size: 0.9rem; margin: 0; }
 .bt-link { display: inline-block; min-height: 44px; line-height: 44px; color: var(--color-emerald, #06ffa5); font-weight: 600; text-decoration: none; }
-.bt-grid { display: grid; gap: 0.6rem; grid-template-columns: 1fr 1fr; }
+.bt-grid { display: grid; gap: 0.6rem; grid-template-columns: 1fr 1fr; align-items: start; }
 .bt-card { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; padding: 0.75rem; border-radius: 14px; text-decoration: none; color: inherit; background: var(--color-shadow, #1e293b); border: 1px solid var(--color-graphite, #475569); }
 .bt-card:hover { border-color: var(--color-emerald, #06ffa5); }
 .bt-top { display: flex; justify-content: space-between; align-items: baseline; gap: 0.4rem; }
@@ -86,10 +85,15 @@ onMounted(async () => {
 .bt-when { font-size: 0.72rem; color: var(--color-paper-dim, #c1c1bb); white-space: nowrap; }
 .bt-when.today { color: var(--color-emerald, #06ffa5); font-weight: 600; }
 .bt-meta { font-size: 0.74rem; color: var(--color-paper-dim, #c1c1bb); line-height: 1.35; }
-.bt-proj { font-size: 0.8rem; font-weight: 600; margin-top: 0.35rem; color: var(--color-paper, #f7f7f2); line-height: 1.3; }
+.bt-row { display: flex; flex-direction: column; padding-top: 0.45rem; margin-top: 0.35rem; border-top: 1px solid var(--color-graphite, #475569); }
+.bt-proj { font-size: 0.8rem; font-weight: 600; color: var(--color-paper, #f7f7f2); line-height: 1.3; }
+.bt-row.other .bt-proj { font-weight: 500; color: var(--color-paper-dim, #c1c1bb); }
+.bt-row.done .bt-bar > i { background: var(--color-paper-dim, #c1c1bb); }
 .bt-bar { display: block; height: 6px; background: var(--color-graphite, #475569); border-radius: 99px; overflow: hidden; margin: 0.2rem 0 0.1rem; }
 .bt-bar > i { display: block; height: 100%; background: var(--color-emerald, #06ffa5); }
-@media (max-width: 360px) { .bt-grid { grid-template-columns: 1fr; } }
+/* A card now holds every project, so a phone gets one card per row. */
+@media (max-width: 640px) { .bt-grid { grid-template-columns: 1fr; } }
 :root[data-theme="light"] .bt-card { border-color: var(--line); box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06); }
 :root[data-theme="light"] .bt-bar { background: var(--line); }
+:root[data-theme="light"] .bt-row { border-top-color: var(--line); }
 </style>
