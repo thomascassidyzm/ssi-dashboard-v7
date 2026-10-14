@@ -223,7 +223,9 @@ async function main() {
   const clips = new Map(log.asks.filter((a) => a.real && a.real.audioId).map((a) => [`${a.role}\u0000${a.text}${a.role === 'presentation' ? `\u0000${a.legoId || ''}` : ''}`, a.real.audioId]));
   const ops = editOps(p, clips);
   const prev = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops });
-  const silent = (r) => (r.results || []).filter((x) => x.after && ['known_audio_id', 'target1_audio_id', 'target2_audio_id'].some((c) => c in x.after && !x.after[c])).map((x) => x.key);
+  // a row is silent if its LAST result (after its audio.link ops) leaves a known/target slot empty; a phrase has no intro
+  const silent = (r) => [...new Map((r.results || []).map((x) => [JSON.stringify(x.key), x])).values()]
+    .filter((x) => x.after && ['known_audio_id', 'target1_audio_id', 'target2_audio_id'].some((c) => c in x.after && !x.after[c])).map((x) => x.key);
   log.preview = { status: prev.status, results: prev.body.results, silentAfter: silent(prev.body), error: prev.status === 200 ? undefined : prev.body };
   console.log(`edit-batch preview: HTTP ${prev.status}; ${(prev.body.results || []).length} results; ${log.preview.silentAfter.length} rows would have a silent slot ${JSON.stringify(prev.body.error || '').slice(0, 300)}`);
   if (prev.status !== 200 || prev.body.ok === false) return console.log('preview refused:', save('preview-refused'));
