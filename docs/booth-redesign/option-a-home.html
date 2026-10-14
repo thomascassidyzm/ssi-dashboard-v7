@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Booth option A — Home screen</title><link rel="stylesheet" href="common.css">
+<style>
+.sec-h{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#94a3b8;margin:22px 0 4px}
+.brow{display:flex;align-items:center;gap:12px;padding:12px 4px;border-top:1px solid #293548;cursor:pointer}
+.brow:hover{background:#243146}.brow.lock{cursor:default}.brow.lock:hover{background:none}
+.bn{width:44px;height:44px;border-radius:10px;background:#334155;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.brow.next .bn{background:#34d399;color:#052e1f}
+@media(min-width:900px){.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}.wrap{max-width:1000px}}
+</style></head><body><script src="data.js"></script><script src="common.js"></script><script>
+const card = (t) => {
+  const left = t.total - t.done, nb = t.batches.length;
+  return `<div class="card ${t.locked ? 'lock' : 'tap'}" ${t.locked ? '' : `onclick="go('job/${t.id}')"`}>
+    <span class="kind ${kindClass(t)}">${t.short || 'Script'}</span>
+    <h2>${esc(t.title)}</h2><div class="sub">${esc(t.what)}</div>${bar(t.done, t.total)}
+    <div class="row"><div class="grow sub">${n(t.done)} of ${n(t.total)} recorded</div><div class="pill">${t.locked ? '🔒 after pass 1' : nb > 1 ? nb + ' batches ›' : n(left) + ' left ›'}</div></div></div>`;
+};
+function home() {
+  return `<div class="mock-tag">OPTION A · HOME SCREEN · mockup with real lines</div><div class="wrap">
+  <h1>Hello ${B.voice}</h1><div class="sub">Pick what you want to record. Everything is saved as you go.</div>
+  <div class="sec-h">New Welsh — North</div><div class="grid2">${B.main.map(card).join('')}</div>
+  <div class="sec-h">Other scripts</div><div class="grid2">${B.other.map(card).join('')}</div>
+  <div class="sec-h">Finished ✓</div><div class="card">${B.finished.map(f => `<div class="row" style="padding:4px 0"><span class="tick">✓</span><span class="grow">${esc(f.title)}</span><span class="pill">${n(f.total)} ${f.total === 1 ? "line" : "lines"}</span></div>`).join('')}</div>
+  <div class="sub" style="text-align:center;margin:20px 0">Microphone and settings ›</div></div>`;
+}
+function job(id) {
+  const t = track(id);
+  const firstOpen = t.batches.findIndex(b => b.done < b.size);
+  const rows = t.batches.map((b, i) => {
+    const locked = t.oneAtATime && i > firstOpen, next = i === firstOpen;
+    return `<div class="brow ${locked ? 'lock' : ''} ${next ? 'next' : ''}" ${locked ? '' : `onclick="go('batch/${id}/${b.n}')"`}>
+      <div class="bn">${b.n}</div><div class="grow"><div><b>Batch ${b.n}</b>${b.label ? ' · ' + b.label : ''}</div>
+      <div class="sub">${locked ? `🔒 opens when batch ${b.n - 1} is done · ${b.approx ? 'about ' : ''}${b.size} lines` : `${b.done} of ${b.size} recorded`}${next ? ' · <b style="color:#34d399">next</b>' : ''}</div></div>${locked ? '' : '<span class="pill">›</span>'}</div>`;
+  }).join('');
+  return `<div class="mock-tag">OPTION A · ONE PIECE OF WORK</div><div class="wrap"><span class="back" onclick="go('')">‹ Home</span>
+    <span class="kind ${kindClass(t)}">${t.short || 'Script'}</span><h1>${esc(t.title)}</h1><div class="sub">${esc(t.what)}</div>
+    ${bar(t.done, t.total)}<div class="sub">${n(t.done)} of ${n(t.total)} recorded${t.waiting ? ` · ${t.waiting} more lines still being written` : ''}</div>
+    <div class="card" style="padding:4px 12px">${rows}</div></div>`;
+}
+function batch(id, bn) {
+  const t = track(id), b = t.batches[bn - 1];
+  const nb = t.batches.length;
+  return `<div class="mock-tag">OPTION A · ONE BATCH</div><div class="wrap"><span class="back" onclick="go('${nb > 1 ? 'job/' + id : ''}')">‹ ${nb > 1 ? esc(t.short) : 'Home'}</span>
+    <span class="kind ${kindClass(t)}">${t.short || 'Script'}</span><h1>${nb > 1 ? `Batch ${bn} of ${nb}` : esc(t.title)}</h1>
+    <div class="sub">${b.label ? b.label + ' · ' : ''}${b.size} lines · ${b.done} recorded</div>${bar(b.done, b.size)}
+    <button class="btn" style="margin:14px 0" onclick="go('rec/${id}/${bn}/0')">Record this batch</button>
+    <div class="sub">Or tap any line to start from it.</div>${lineList(b.lines)}</div>`;
+}
+route((h) => {
+  const p = h.split('/');
+  if (p[0] === 'job') return job(p[1]);
+  if (p[0] === 'batch') return batch(p[1], +p[2]);
+  if (p[0] === 'rec') { const t = track(p[1]), b = t.batches[p[2] - 1], i = +p[3];
+    return stage(b, i, `<b>${esc(t.short)}</b>${t.batches.length > 1 ? ` · Batch ${p[2]} of ${t.batches.length}` : ''}`, `rec/${p[1]}/${p[2]}/${Math.min(i + 1, b.size - 1)}`, `batch/${p[1]}/${p[2]}`); }
+  return home();
+});
+</script></body></html>

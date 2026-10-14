@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Booth option C — Progress map</title><link rel="stylesheet" href="common.css">
+<style>
+.stepc{position:relative;padding-left:46px;margin:18px 0}
+.stepc:before{content:"";position:absolute;left:17px;top:38px;bottom:-22px;width:2px;background:#334155}
+.stepc:last-child:before{display:none}
+.dot{position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;background:#334155;display:flex;align-items:center;justify-content:center;font-weight:800}
+.stepc.now .dot{background:#34d399;color:#052e1f}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px;margin-top:10px}
+.tile{border:1px solid #475569;border-radius:9px;padding:6px 4px 5px;text-align:center;font-size:13px;font-weight:700;cursor:pointer;background:#1e293b}
+.tile small{display:block;font-weight:400;color:#94a3b8;font-size:10px}
+.tile .bar{height:4px;margin:4px 0 0}
+.tile.open{border-color:#34d399;box-shadow:0 0 0 2px #34d39955}.tile.lockd{opacity:.35;cursor:default}
+.tile.full{background:#14532d;border-color:#22c55e}
+.chk{display:flex;gap:10px;align-items:center;padding:10px 4px;border-top:1px solid #293548;cursor:pointer}.chk:hover{background:#243146}
+.box{width:22px;height:22px;border:2px solid #64748b;border-radius:6px;flex:none;display:flex;align-items:center;justify-content:center;font-size:14px}
+.box.ok{border-color:#34d399;background:#34d399;color:#052e1f}
+@media(min-width:900px){.wrap{max-width:1120px}.cols{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:start}.side{position:sticky;top:12px}}
+</style></head><body><script src="data.js"></script><script src="common.js"></script><script>
+const firstOpen = (t) => t.locked ? -1 : t.batches.findIndex(b => b.done < b.size);
+function map() {
+  const steps = B.main.map((t, si) => {
+    const fo = firstOpen(t);
+    const tiles = t.batches.map((b, i) => {
+      const lockd = t.locked || (t.oneAtATime && i > fo), open = i === fo, full = b.done >= b.size;
+      return `<div class="tile ${lockd ? 'lockd' : ''} ${open ? 'open' : ''} ${full ? 'full' : ''}" ${lockd ? '' : `onclick="go('b/${t.id}/${b.n}')"`}>${b.n}<small>${full ? '✓' : lockd ? '🔒' : b.done + '/' + b.size}</small></div>`;
+    }).join('');
+    return `<div class="stepc ${fo === 0 && si === B.main.findIndex(x => firstOpen(x) >= 0) ? 'now' : ''}"><div class="dot">${si + 1}</div>
+      <span class="kind ${kindClass(t)}">${esc(t.short)}</span><h2>${esc(t.title)}</h2><div class="sub">${esc(t.what)}</div>
+      ${bar(t.done, t.total)}<div class="sub">${n(t.done)} of ${n(t.total)} lines · ${t.batches.length} batches${t.oneAtATime ? ' · one batch opens at a time' : ''}${t.locked ? ' · 🔒 opens when pass 1 is finished' : ''}</div>
+      <div class="tiles">${tiles}</div></div>`;
+  }).join('');
+  const side = `<div class="card side"><h2>Other scripts</h2><div class="sub" style="margin-bottom:6px">Smaller jobs, any time.</div>
+    ${B.other.map(t => `<div class="chk" onclick="go('b/${t.id}/1')"><div class="box"></div><div class="grow"><b>${esc(t.title)}</b><div class="sub">${n(t.total - t.done)} left of ${n(t.total)}${t.waiting ? ` · ${t.waiting} still being written` : ''}</div></div><span class="pill">›</span></div>`).join('')}
+    ${B.finished.map(f => `<div class="chk" style="cursor:default"><div class="box ok">✓</div><div class="grow">${esc(f.title)}<div class="sub">${n(f.total)} ${f.total === 1 ? "line" : "lines"}</div></div></div>`).join('')}</div>`;
+  return `<div class="mock-tag">OPTION C · PROGRESS MAP · mockup with real lines</div><div class="wrap">
+    <h1>${B.voice}'s recording map</h1><div class="sub">New Welsh — North, in the order it gets built. Green outline = open now. Tap a batch.</div>
+    <div class="cols"><div>${steps}</div>${side}</div></div>`;
+}
+function bpage(id, bn) {
+  const t = track(id), b = t.batches[bn - 1], nb = t.batches.length;
+  return `<div class="mock-tag">OPTION C · A BATCH FROM THE MAP</div><div class="wrap"><span class="back" onclick="go('')">‹ Map</span>
+    <span class="kind ${kindClass(t)}">${esc(t.short || 'Script')}</span><h1>${esc(t.title)}${nb > 1 ? ` — batch ${bn} of ${nb}` : ''}</h1>
+    <div class="sub">${b.label ? b.label + ' · ' : ''}${b.size} lines · ${b.done} recorded</div>${bar(b.done, b.size)}
+    <button class="btn" style="margin:14px 0" onclick="go('rec/${id}/${bn}/0')">Record ${nb > 1 ? 'batch ' + bn : 'these lines'}</button>
+    ${b.lines ? lineList(b.lines) : '<p class="sub">(Mockup: the live booth only sends the batch that is open now.)</p>'}</div>`;
+}
+route((h) => {
+  const p = h.split('/');
+  if (p[0] === 'b') return bpage(p[1], +p[2]);
+  if (p[0] === 'rec') { const t = track(p[1]), b = t.batches[p[2] - 1], i = +p[3];
+    return stage(b, i, `<b>Step: ${esc(t.short)}</b>${t.batches.length > 1 ? ` · Batch ${p[2]} of ${t.batches.length}` : ''}`, `rec/${p[1]}/${p[2]}/${Math.min(i + 1, b.size - 1)}`, `b/${p[1]}/${p[2]}`); }
+  return map();
+});
+</script></body></html>

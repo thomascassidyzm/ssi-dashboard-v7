@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Booth option B — Your next batch</title><link rel="stylesheet" href="common.css">
+<style>
+.hero{background:linear-gradient(160deg,#1e3a5f,#1e293b 60%);border:1px solid #34507a;border-radius:18px;padding:20px;margin:14px 0}
+.hero h1{font-size:26px}.big{font-size:34px;font-weight:800;line-height:1;white-space:nowrap}
+.preview{margin:14px 0;border-left:3px solid #34d399;padding-left:12px}
+.preview .cy{font-size:16px}.preview div{margin:4px 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.step{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:10px;font-size:13px}
+.step b{display:block;font-size:14px}.step.now{border-color:#34d399}
+.opt{display:flex;gap:12px;align-items:center;padding:14px 4px;border-top:1px solid #293548;cursor:pointer}.opt:hover{background:#243146}
+@media(min-width:900px){.wrap{max-width:820px}}
+</style></head><body><script src="data.js"></script><script src="common.js"></script><script>
+// What "next" means is a choice for Aran; the mock defaults to the first unfinished batch of the first New Welsh step.
+const openBatch = (t) => { const i = t.batches.findIndex(b => b.done < b.size); return i < 0 ? null : t.batches[i]; };
+const defaultNext = () => { for (const t of B.main) if (!t.locked && openBatch(t)) return [t.id, openBatch(t).n]; };
+function next(id, bn) {
+  if (!id) [id, bn] = defaultNext();
+  const t = track(id), b = t.batches[bn - 1], nb = t.batches.length;
+  const kindWords = { sent: 'whole sentences', p1: 'practice phrases', p2: 'practice phrases' }[id] || 'a script';
+  return `<div class="mock-tag">OPTION B · YOUR NEXT BATCH · mockup with real lines</div><div class="wrap">
+  <div class="sub">Hello ${B.voice}</div>
+  <div class="hero"><span class="kind ${kindClass(t)}">Up next</span>
+    <h1>${esc(t.title)}</h1>
+    <div class="sub">You are recording <b style="color:#fff">${kindWords}</b>. ${esc(t.what)}</div>
+    <div class="row" style="margin-top:14px"><div class="big">${nb > 1 ? `Batch ${bn}` : b.size}</div><div class="sub">${nb > 1 ? `of ${nb}${b.label ? '<br>' + b.label : ''}` : 'lines left'}</div></div>
+    ${bar(b.done, b.size)}<div class="sub">${b.done} of ${b.size} lines recorded in this batch</div>
+    <div class="preview"><div class="sub">It starts with:</div>${b.lines.slice(0, 3).map(l => `<div><div class="cy">${esc(l.cy)}</div><div class="en">${esc(l.en)}</div></div>`).join('')}</div>
+    <button class="btn" onclick="go('rec/${id}/${bn}/0')">Start batch ${nb > 1 ? bn : ''}</button>
+  </div>
+  <button class="btn ghost" onclick="go('choose')">Record something else instead</button>
+  <div class="card"><h3>Your New Welsh, step by step</h3><div class="steps">${B.main.map(m => `<div class="step ${m.id === id ? 'now' : ''} ${m.locked ? 'lock' : ''}"><b>${esc(m.short)}</b>${m.locked ? '🔒 after pass 1' : `${n(m.done)} / ${n(m.total)}`}${bar(m.done, m.total)}${m.batches.length} batches</div>`).join('')}</div></div>
+  <div class="sub" style="text-align:center;margin:16px 0">Microphone and settings ›</div></div>`;
+}
+function choose() {
+  const rows = [...B.main, ...B.other].map(t => {
+    const b = !t.locked && openBatch(t);
+    return `<div class="opt ${b ? '' : 'lock'}" ${b ? `onclick="go('next/${t.id}/${b.n}')"` : ''}><div class="grow"><span class="kind ${kindClass(t)}">${t.short || 'Script'}</span><div><b>${esc(t.title)}</b></div>
+      <div class="sub">${t.locked ? '🔒 opens when pass 1 is finished' : t.batches.length > 1 ? `Batch ${b.n} of ${t.batches.length} · ${b.size} lines` : `${b.size} lines left`}</div></div>${b ? '<span class="pill">›</span>' : ''}</div>`;
+  }).join('');
+  return `<div class="mock-tag">OPTION B · CHOOSE SOMETHING ELSE</div><div class="wrap"><span class="back" onclick="go('')">‹ Back</span><h1>What would you like to record?</h1>
+    <div class="sub">Each one opens at the next line you haven't read.</div><div class="card" style="padding:4px 12px">${rows}</div>
+    <div class="sub">Finished: ${B.finished.map(f => esc(f.title)).join(' · ')} ✓</div></div>`;
+}
+function done(id, bn) {
+  const t = track(id), nb = t.batches.length, nx = t.batches[bn];
+  return `<div class="mock-tag">OPTION B · END OF A BATCH</div><div class="wrap" style="text-align:center;padding-top:60px">
+    <div class="big">✓</div><h1>Batch ${bn} done</h1><div class="sub">${esc(t.short)} · ${bn} of ${nb} batches finished</div>
+    ${nx ? `<button class="btn" style="margin:24px 0 10px" onclick="go('rec/${id}/${bn + 1}/0')">Carry on: batch ${bn + 1}</button>` : ''}
+    <button class="btn ghost" onclick="go('')">Have a break — back to the start</button></div>`;
+}
+route((h) => {
+  const p = h.split('/');
+  if (p[0] === 'choose') return choose();
+  if (p[0] === 'done') return done(p[1], +p[2]);
+  if (p[0] === 'next') return next(p[1], +p[2]);
+  if (p[0] === 'rec') { const t = track(p[1]), b = t.batches[p[2] - 1], i = +p[3];
+    const last = i + 1 >= b.size;
+    return stage(b, i, `<b>${esc(t.short)}</b>${t.batches.length > 1 ? ` · Batch ${p[2]} of ${t.batches.length}` : ''}`, last ? `done/${p[1]}/${p[2]}` : `rec/${p[1]}/${p[2]}/${i + 1}`, `next/${p[1]}/${p[2]}`); }
+  return next();
+});
+</script></body></html>
