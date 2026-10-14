@@ -19,7 +19,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function dbUrl() {
   if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
-  const f = [path.join(__dirname, '../../.env.psql'), '/home/tomcassidy/SSi/ssi-dashboard-v7-clean/.env.psql'].find(fs.existsSync);
+  // It writes course_legos inside a rolled-back transaction, which the agent login may not do (job #388),
+  // so it runs on the owner login.
+  const f = [path.join(process.env.HOME || '', '.config/ssi-db/owner.env')].find(fs.existsSync);
   const m = f && fs.readFileSync(f, 'utf8').match(/DATABASE_URL=(.+)/);
   return m ? m[1].trim().replace(/^["']|["']$/g, '') : null;
 }

@@ -13,6 +13,8 @@
  *   2. connect()   — a pg Client on the agent login whose query() runs lintSql() on every statement.
  *   3. the login   — .env.psql now holds `agent_script`, capped at statement_timeout 5 s, so even
  *                    SQL that never came through here cannot run long (owner login: services only).
+ *                    It is also READ-ONLY on course content (job #388): writes to course_audio/seeds/
+ *                    legos/practice_phrases/gender_expansions/courses are refused — call Popty instead.
  *
  * Use it:
  *   const db = require('<popty>/services/shared/agent-db.cjs')
