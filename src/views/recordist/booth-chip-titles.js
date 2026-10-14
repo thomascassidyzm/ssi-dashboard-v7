@@ -75,3 +75,10 @@ export function boothCourseWords(courseCode, fallback) {
   const entry = BOOTH_COURSE_TITLES[courseCode]
   return entry ? `${entry.title} — ${entry.dialect}` : (fallback || courseCode)
 }
+
+// THE RELAUNCH SANDBOXES, whose sentences are NEW reading in the booth even though their seed
+// rows already exist in the course (Aran, 2026-10-14, job #347: #335 found his 640 new North
+// sentences filed under "seeds already in the course — not new"). The same two courses the
+// server's phrase queue records (services/voice-engine/phrase-queue.cjs PHRASE_QUEUE_COURSES).
+export const BOOTH_NEW_COURSES = new Set(['cym_nv2_for_eng', 'cym_sv2_for_eng'])
+export function isBoothNewCourse(courseCode) { return BOOTH_NEW_COURSES.has(courseCode) }

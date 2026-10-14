@@ -61,6 +61,7 @@ const {
 } = require('./recordist-queue.cjs')
 const { enableRewarmAfterInvalidate } = require('./recordist-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
+const boothHome = require('./booth-home.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
 const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
 const { isSoloReaderPod, soloReaders, soloReaderIndex, soloReaderTakeGIds } = require('../shared/pod-solo-readers.cjs')
@@ -394,6 +395,41 @@ module.exports = function createRecordistRouter({
     }
   })
 
+  // THE HOME SCREEN'S SUMMARY (Aran, 2026-10-14, job #347): sections, batches
+  // and counts — no lines. The booth page used to open by fetching all of them
+  // (2060 lines, 2.2MB for Aran) and drawing every one; it now draws its home
+  // screen from this and fetches one batch's lines when he opens it. Same queue,
+  // same counts, same recorded flag (booth-home.cjs reads them, never decides).
+  // A recording pack keeps its own one-screen flow: `home: false` says so.
+  router.get('/voice/:voiceId/summary', async (req, res) => {
+    try {
+      const pack = await resolveAnyPack(req.params.voiceId)
+      if (pack) return res.json({ home: false, reason: 'pack' })
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+      const queue = await buildQueue(db(), recordist, { includeRecorded: true })
+      const setupRow = await loadSetupRow(recordist.voiceId)
+      res.json({
+        home: true,
+        setupLocked: setupCheck.locksScript(setupRow),
+        voiceId: recordist.voiceId,
+        displayName: recordist.displayName,
+        language: recordist.language,
+        languageName: recordist.languageName,
+        dialect: recordist.dialect,
+        total: queue.total,
+        recorded: queue.recorded,
+        phrases: queue.phrases || null,
+        notReady: queue.notReady || [],
+        handedOn: queue.handedOn || [],
+        tracks: boothHome.buildHomeTracks(queue.lines, queue.phrases, queue.phraseBatches),
+      })
+    } catch (err) {
+      logger.error(`[Recordist] summary: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
   router.get('/voice/:voiceId', async (req, res) => {
     try {
       const pack = await resolveAnyPack(req.params.voiceId)
@@ -442,10 +478,17 @@ module.exports = function createRecordistRouter({
       const inScope = (rows) => (rows || [])
         .filter((r) => (!scoped || r.courseCode === scoped) && inPod(r))
       const forCourse = inScope
-      const lines = inScope(queue.lines)
+      // ONE BATCH FROM THE HOME SCREEN (job #347): ?track=<key>&batch=<n> is the
+      // slice of the queue a home-screen card opens — cut by the same function
+      // the summary counted it with (booth-home.cjs), so the card and the batch
+      // agree. Only what goes over the wire narrows; the queue is the queue.
+      const trackScope = typeof req.query.track === 'string' && req.query.track.trim() ? req.query.track.trim() : null
+      const lines = trackScope
+        ? boothHome.selectBatch(inScope(queue.lines), trackScope, parseInt(req.query.batch, 10))
+        : inScope(queue.lines)
       // Scoped counts are counted over the lines on the wire (the booth always
       // asks includeRecorded=1, so they are the scope's whole tally there).
-      const narrowed = Boolean(scoped || podScope)
+      const narrowed = Boolean(scoped || podScope || trackScope)
       const recordedInScope = narrowed ? lines.filter((l) => l.recorded).length : queue.recorded
       const totalInScope = narrowed ? lines.length : queue.total
       const setupRow = await loadSetupRow(recordist.voiceId)
@@ -459,6 +502,8 @@ module.exports = function createRecordistRouter({
         // Echoed back for the same reason maxSeed is: a screen that reports the
         // scope it ASKED for rather than the one it got is a quiet lie.
         pod: podScope,
+        track: trackScope,
+        batch: trackScope ? (parseInt(req.query.batch, 10) || 1) : null,
         voiceId: recordist.voiceId,
         displayName: recordist.displayName,
         language: recordist.language,

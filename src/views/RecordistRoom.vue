@@ -30,6 +30,21 @@
       <button class="btn-ghost" @click="load">Try again</button>
     </section>
 
+    <!-- ── Home: the cards, Up next and the ticks (job #347) ───────────── -->
+    <BoothHome
+      v-else-if="phase === 'home' && homeSummary"
+      :display-name="homeSummary.displayName"
+      :tracks="homeTracks"
+      :unticked="unticked"
+      :track-key="homeTrackKey"
+      :main-heading="homeMainHeading"
+      :notes="homeNotes"
+      @open="openBatch"
+      @card="openCard"
+      @home="goHome"
+      @tick="setTick"
+    />
+
     <!-- ── Ready ─────────────────────────────────────────────────────────── -->
     <section v-else-if="phase === 'ready'" class="rc-card">
       <!-- THE WAY BACK. Aran, 2026-09-10: "When I go to /r/human_aran_cym_n
@@ -66,6 +81,11 @@
         <span class="rc-nav-dot">·</span>
         <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
       </nav>
+      <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back. -->
+      <div v-if="batchScope" class="batch-head" data-test="batch-head">
+        <button type="button" class="batch-back" @click="goHome">‹ All your recording</button>
+        <p v-if="batchTitle" class="batch-title">{{ batchTitle }}</p>
+      </div>
       <h1 class="rc-hello">Hello {{ voice.displayName }}</h1>
       <p class="rc-progress-line">{{ queueHeadline }}</p>
 
@@ -103,7 +123,7 @@
            reader must be able to SEE that: which pass, which batch of how many,
            how far through, and that the rest of the phrases come later — so the
            first pass is never mistaken for all of it. -->
-      <div v-if="phrases && (phrases.pass || phrases.finished)" class="volume-card phrase-card" data-test="phrase-batch">
+      <div v-if="showPhraseCard" class="volume-card phrase-card" data-test="phrase-batch">
         <template v-if="phrases.pass">
           <p class="phrase-kicker">Practice phrases · {{ boothCourseWords(phrases.courseCode, phrases.courseLabel) }}</p>
           <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
@@ -658,6 +678,11 @@
         <span class="rc-nav-dot">·</span>
         <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
       </nav>
+      <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back. -->
+      <div v-if="batchScope" class="batch-head" data-test="batch-head">
+        <button type="button" class="batch-back" @click="goHome">‹ All your recording</button>
+        <p v-if="batchTitle" class="batch-title">{{ batchTitle }}</p>
+      </div>
       <h2>{{ doneHeadline }}</h2>
       <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
       <!-- "Keep this page open until everything has saved" was the honest thing
@@ -674,7 +699,7 @@
            reader must be able to SEE that: which pass, which batch of how many,
            how far through, and that the rest of the phrases come later — so the
            first pass is never mistaken for all of it. -->
-      <div v-if="phrases && (phrases.pass || phrases.finished)" class="volume-card phrase-card" data-test="phrase-batch">
+      <div v-if="showPhraseCard" class="volume-card phrase-card" data-test="phrase-batch">
         <template v-if="phrases.pass">
           <p class="phrase-kicker">Practice phrases · {{ boothCourseWords(phrases.courseCode, phrases.courseLabel) }}</p>
           <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
@@ -775,6 +800,8 @@
         <strong>{{ setupRecorded }} of {{ lines.length }} recorded, record at least {{ SETUP_MIN_SUBMIT }}.</strong>
       </div>
 
+      <button v-if="nextBatchN" class="btn-begin" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Carry on: batch {{ nextBatchN }} ›</button>
+      <button v-if="batchScope" class="btn-ghost" @click="goHome">Back to all your recording</button>
       <button class="btn-ghost" @click="backToStart">Back to my lines</button>
     </section>
   </div>
@@ -788,7 +815,8 @@
 // costs them a session. The queue is BY LANGUAGE: one Welsh recordist gets one
 // Welsh queue, however many courses those lines happen to serve, which is why
 // no course code appears anywhere on this page.
-import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick, inject } from 'vue'
+import { routerKey, routeLocationKey } from 'vue-router'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecorder'
 import { loadBoothSettings, saveBoothSettings, micKeyFor } from './recordist/booth-settings.js'
@@ -802,11 +830,31 @@ import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStored
 import { createAdvanceLock } from './recordist/advance-lock'
 import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
-import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords } from './recordist/booth-chip-titles.js'
+import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
+import BoothHome from './recordist/BoothHome.vue'
+import { loadUnticked, saveUnticked } from './recordist/booth-home.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
+// THE ADDRESS SAYS WHERE HE IS (job #347): home, a card's batches, or one batch.
+// Read through the router when there is one, and straight off the address bar
+// when there is not (a unit test mounts the booth bare), so the booth still
+// keeps no hard router dependency.
+const router = inject(routerKey, null)
+const route = inject(routeLocationKey, null)
+const addressTick = ref(0)
+const addressQuery = computed(() => {
+  if (route) return route.query
+  void addressTick.value
+  return Object.fromEntries(new URLSearchParams(window.location.search))
+})
+function goToAddress(query) {
+  if (router) return router.push({ query })
+  const qs = new URLSearchParams(query).toString()
+  window.history.pushState({}, '', `${window.location.pathname}${qs ? `?${qs}` : ''}`)
+  addressTick.value += 1
+}
 
 const recorder = useTapRecorder()
 // The queue asks the ROOM whether a line is recorded on the server, so a
@@ -820,7 +868,7 @@ const queue = useRecordistQueue({
   },
 })
 
-const phase = ref('loading') // loading | unknown | error | ready | recording | done
+const phase = ref('loading') // loading | unknown | error | home | ready | recording | done
 const loadError = ref(null)
 const loadSlow = ref(false)
 const micError = ref(null)
@@ -1012,9 +1060,12 @@ const rosterRows = computed(() => lines.value.map(l => ({
 // three, and an empty heading reading "0 lines" is a question with no answer.
 // The roster section a line belongs to: its kind, except that a seed already
 // released in the course is its own section (see SECTION_ORDER).
+// A RELAUNCH SANDBOX'S SENTENCES ARE NEW, though their seed rows exist in that
+// course (Aran, 2026-10-14, job #347): #335 found his 640 new North sentences
+// under "seeds already in the course … They are not new". Display only.
 function sectionKeyOf(l) {
   const kind = l.kind || 'pod'
-  return kind === 'seed' && l.seedExisting ? 'seedexisting' : kind
+  return kind === 'seed' && l.seedExisting && !isBoothNewCourse(l.courseCode) ? 'seedexisting' : kind
 }
 
 // "Pass 1 of 2 · North batch 3 of 30" — the words a phrase line carries on the
@@ -2533,10 +2584,13 @@ async function load() {
     // server can narrow the read as well as the draw.
     const podScope = new URLSearchParams(window.location.search).get('pod')
     const podParam = podScope ? `&pod=${encodeURIComponent(podScope)}` : ''
+    // ONE BATCH from the home screen (job #347): only its lines come over the wire.
+    const b = batchScope.value
+    const batchParam = b ? `&track=${encodeURIComponent(b.track)}&batch=${b.batch}` : ''
     // Time-limited (20s, one retry): a hung request must not strand the reader
     // on "Getting your lines…". The body is read inside the timed window.
     const { res, data: body } = await fetchWithTimeoutRetry(
-      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}`,
+      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}${batchParam}`,
       { headers: {} },
       r => (r.ok ? r.json() : r.json().catch(() => ({})))
     )
@@ -2592,6 +2646,158 @@ async function load() {
     loadError.value = (err && err.message) || 'Network error'
     phase.value = 'error'
   }
+}
+
+// ── THE HOME SCREEN (Aran, 2026-10-14, job #347) ────────────────────────────
+//
+// The page used to open by fetching his whole queue — 2060 lines, 2.2MB — and
+// drawing every one, then put Start on the first unread line in queue order (a
+// Health test line). It now opens on a home screen drawn from a SUMMARY
+// (/summary: cards, batches, counts) and fetches one batch's lines when he opens
+// it, so Start lands in the batch he chose. The address carries where he is —
+// ?track=<card> lists a card's batches, &batch=<n> opens one — so Back works.
+//
+// A course or pod link (?course= / ?pod=) is a door from another page and keeps
+// the one-screen booth it always opened. So do a recording pack and a script
+// still behind its setup check, and anything that cannot get a summary at all:
+// the home screen is an addition, never a new way for the booth to fail.
+const homeSummary = ref(null)
+const unticked = ref(loadUnticked(props.voiceId))
+function setTick(id, on) {
+  const next = new Set(unticked.value)
+  if (on) next.delete(id); else next.add(id)
+  unticked.value = next
+  saveUnticked(props.voiceId, next)
+}
+const queryStr = (v) => (typeof v === 'string' && v.trim() ? v.trim() : null)
+const isDoorLink = () => !!(queryStr(addressQuery.value.course) || queryStr(addressQuery.value.pod))
+const batchScope = computed(() => {
+  const track = queryStr(addressQuery.value.track)
+  const batch = parseInt(addressQuery.value.batch, 10)
+  if (isDoorLink() || !track || !Number.isFinite(batch) || batch < 1) return null
+  return { track, batch }
+})
+const homeTrackKey = computed(() => (batchScope.value ? null : queryStr(addressQuery.value.track)))
+
+function describeTrack(t) {
+  if (t.kind === 'seed') {
+    const isNew = !!(t.newCourse || t.seedExisting === false)
+    const old = SECTION_ORDER.find(x => x.key === 'seedexisting')
+    return {
+      short: isNew ? 'New sentences' : 'Sentences', cls: 'k-sent',
+      title: `${boothCourseWords(t.courseCode, 'Course')}: whole sentences`,
+      what: isNew ? 'Read each new course sentence once, at your natural pace.' : old.blurb,
+    }
+  }
+  if (t.kind === 'phrase') {
+    const fp = (homeSummary.value && homeSummary.value.phrases && homeSummary.value.phrases.firstPass) || { build: 4, use: 3 }
+    return {
+      short: `Phrases · pass ${t.pass}`, cls: t.pass === 1 ? 'k-p1' : 'k-p2',
+      title: `${boothCourseWords(t.courseCode, 'Course')}: practice phrases, pass ${t.pass}`,
+      what: t.pass === 1
+        ? `The phrases the app plays first: up to ${fp.build} build and ${fp.use} use phrases for each new LEGO.`
+        : 'The rest of the practice phrases. Opens when pass 1 is finished.',
+    }
+  }
+  if (t.podSlug) {
+    const sec = podSectionFor({ courseCode: t.courseCode, podSlug: t.podSlug, podTitle: t.podTitle })
+    return { short: 'Script', cls: 'k-other', title: sec.heading, what: sec.blurb }
+  }
+  const named = SECTION_ORDER.find(x => x.key === t.kind)
+  return { short: 'Lines', cls: 'k-other', title: named ? named.heading : 'Everything else', what: named ? named.blurb : '' }
+}
+const homeTracks = computed(() => ((homeSummary.value && homeSummary.value.tracks) || []).map(t => ({ ...t, ...describeTrack(t) })))
+const homeMainHeading = computed(() => {
+  const codes = new Set(homeTracks.value.filter(t => t.kind === 'phrase' || t.newCourse).map(t => t.courseCode))
+  return codes.size === 1 ? boothCourseWords([...codes][0], 'New work') : 'New work'
+})
+const homeNotes = computed(() => {
+  const h = homeSummary.value
+  if (!h) return []
+  const out = []
+  for (const n of (h.notReady || [])) {
+    if (!(Number(n.lines) > 0)) continue
+    const where = podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading
+    out.push(`${n.lines} more ${n.lines === 1 ? 'line' : 'lines'} of ${where} ${n.lines === 1 ? 'is' : 'are'} still being written — nothing of yours has gone missing.`)
+  }
+  for (const n of (h.handedOn || [])) {
+    if (!(Number(n.lines) > 0)) continue
+    const where = podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading
+    out.push(`You recorded ${n.lines} more ${n.lines === 1 ? 'line' : 'lines'} of ${where} that ${n.lines === 1 ? 'has' : 'have'} since been given to ${n.castTo || 'somebody else'}. Your takes are still there.`)
+  }
+  return out
+})
+const scopedTrack = computed(() => batchScope.value && homeTracks.value.find(t => t.key === batchScope.value.track))
+const batchTitle = computed(() => {
+  const t = scopedTrack.value
+  if (!t) return null
+  const b = t.batches.find(x => x.n === batchScope.value.batch)
+  if (t.kind === 'phrase') return `${t.title}${b ? ` · ${b.courseLabel || ''} batch ${b.batch}`.replace('  ', ' ') : ''}`
+  return t.batches.length > 1 ? `${t.title} · Batch ${batchScope.value.batch} of ${t.batches.length}${b ? ` (sentences ${b.from}–${b.to})` : ''}` : t.title
+})
+// After a batch: the next one of the same card, if it has lines to read. Never a
+// practice-phrase batch — the queue opens those itself, one at a time.
+const nextBatchN = computed(() => {
+  const t = scopedTrack.value
+  if (!t || t.kind === 'phrase') return null
+  const later = t.batches.find(b => b.n > batchScope.value.batch && b.recorded < b.total)
+  return later ? later.n : null
+})
+const showPhraseCard = computed(() => !!(phrases.value && (phrases.value.pass || phrases.value.finished)) &&
+  (!batchScope.value || batchScope.value.track.startsWith('phrase.')))
+
+function openBatch(track, n) { goToAddress({ track, batch: String(n) }) }
+function goHome() { goToAddress({}) }
+function openCard(key) {
+  const t = homeTracks.value.find(x => x.key === key)
+  if (!t) return
+  // A script is one batch: straight in. Sentences and phrases list their batches.
+  if (t.kind !== 'phrase' && t.batches.length === 1) return openBatch(key, 1)
+  goToAddress({ track: key })
+}
+
+async function fetchSummary() {
+  const { res, data } = await fetchWithTimeoutRetry(
+    `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/summary`,
+    { headers: {} },
+    r => (r.ok ? r.json() : r.json().catch(() => ({})))
+  )
+  return res.ok && data && data.home && !data.setupLocked ? data : null
+}
+
+let homeFor = null
+async function loadHome() {
+  // Moving between the home screen and a card's batch list needs no new read.
+  if (phase.value === 'home' && homeSummary.value && homeFor === props.voiceId) return
+  phase.value = 'loading'
+  let data = null
+  try { data = await fetchSummary() } catch { data = null }
+  if (!data) { homeSummary.value = null; return load() }
+  homeSummary.value = data
+  homeFor = props.voiceId
+  voice.value = { ...voice.value, displayName: data.displayName, languageName: data.languageName }
+  // Takes left on this device by an earlier session start going up from here too.
+  await queue.attach(props.voiceId)
+  phase.value = 'home'
+}
+
+// Where the address says he is. A recording in progress is finished first (its
+// take kept), so Back on a phone mid-line never drops a take.
+let entering = 0
+async function enter() {
+  const mine = ++entering
+  if (phase.value === 'recording') {
+    try { await onFinish() } catch { /* the stream is gone; carry on */ }
+  }
+  if (mine !== entering) return
+  stopPlayback()
+  if (isDoorLink()) return load()
+  if (batchScope.value) {
+    // The batch's own name comes from the summary; fetched alongside, never waited on.
+    if (!homeSummary.value) fetchSummary().then(d => { if (d) homeSummary.value = d }).catch(() => {})
+    return load()
+  }
+  return loadHome()
 }
 
 // ── The booth remembers how you left it ─────────────────────────────────────
@@ -2672,7 +2878,7 @@ onBeforeUnmount(() => {
   forgetLocalTakes()
 })
 
-watch(() => props.voiceId, load, { immediate: true })
+watch(() => [props.voiceId, addressQuery.value.track, addressQuery.value.batch, addressQuery.value.course, addressQuery.value.pod], enter, { immediate: true })
 </script>
 
 <style scoped>
@@ -2728,6 +2934,10 @@ watch(() => props.voiceId, load, { immediate: true })
 .safety-banner.waiting { background: #15243f; border-color: #3b6fb5; color: #dbe9ff; }
 .safety-banner.risk { background: #3a1512; border-color: #d0574c; color: #ffdad5; }
 .safety-banner.refused { background: #3a2a0d; border-color: #e8a02a; color: #ffe9c2; }
+/* ONE BATCH (job #347): where he is and the way back to the home screen. */
+.batch-head { margin: -0.4rem 0 0.9rem; }
+.batch-back { background: none; border: 0; font: inherit; font-weight: 600; color: var(--color-emerald, #06ffa5); padding: 0.3rem 0; min-height: 44px; cursor: pointer; }
+.rc-card p.batch-title { margin: 0; font-size: 1rem; font-weight: 600; color: var(--color-paper, #f7f7f2); }
 /* Small, muted, above everything and out of the flow of the work: it is the
    door, not part of the job. */
 .rc-nav {

@@ -2456,8 +2456,10 @@ async function withPhraseBatch(db, recordist, queue, { includeRecorded = false, 
     const mine = recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])
     if (!mine.length) return queue
     const keys = recordedKeys || await recordedTextKeys(db, recordist)
-    const { lines, summary } = phraseQueue.servePhraseBatch(
-      mine, (l) => phraseLineRecorded(l, keys, recordist.spellings), plan.batchCounts)
+    const isRec = (l) => phraseLineRecorded(l, keys, recordist.spellings)
+    const { lines, summary } = phraseQueue.servePhraseBatch(mine, isRec, plan.batchCounts)
+    // Every batch, counted, for the booth's home screen (job #347). Serves nothing.
+    queue.phraseBatches = phraseQueue.phraseBatchList(mine, isRec)
     let recorded = 0
     for (const line of lines) {
       if (line.recorded) recorded += 1

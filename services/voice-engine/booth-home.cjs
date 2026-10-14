@@ -1,0 +1,143 @@
+/**
+ * booth-home.cjs — THE BOOTH'S HOME SCREEN: what a reader has to record, as cards and batches,
+ * without sending them every line.
+ *
+ * Aran, 2026-10-14 (job #347, choosing Option A of the #335 mockups): the booth page opened by
+ * fetching his WHOLE queue — 2060 lines, 2.2MB — and drawing every line, then dropped him on the
+ * first unread line in queue order, which was a Health test line, not the 640 new sentences he
+ * came to read. The home screen asks for a SUMMARY instead (this file), and the reader opens ONE
+ * batch, whose lines alone come over the wire (`selectBatch`).
+ *
+ * DISPLAY AND TRANSPORT ONLY. Which lines are in the queue, their order, and what counts as
+ * recorded are decided upstream (recordist-queue.cjs, phrase-queue.cjs) and are read here, never
+ * re-decided: a track is a run of the queue's own lines in the queue's own order, a batch is a
+ * slice of that run, and `recorded` is the wire line's own flag.
+ *
+ * ONE DEFINITION, TWO CALLERS: the summary and the batch read both cut with `trackKeyOf` and
+ * `chunkTrack`, so the batch a card promises is the batch that loads.
+ *
+ * Pure: no I/O.
+ */
+'use strict'
+
+const { isPhraseQueueCourse } = require('./phrase-queue.cjs')
+
+/**
+ * New sentences are read in batches of this many lines (Aran, 2026-10-14: "split the 640 new
+ * North sentences into batches of about 100"). The cut is over every line, recorded or not, in
+ * queue order, so a batch never changes under a reader while they record it.
+ */
+const SEED_BATCH_LINES = 100
+
+/** Which card a wire line belongs to. URL-safe: course codes and pod slugs are [a-z0-9_-]. */
+function trackKeyOf(line) {
+  const kind = line.kind || 'pod'
+  if (kind === 'phrase') return `phrase.${line.phrasePass || 1}`
+  if (kind === 'seed') return `seed.${line.courseCode || 'all'}`
+  // A Take G line is the same pod line read with gaps, queued straight after it, so it is part
+  // of its pod's script rather than a card of its own.
+  if ((kind === 'pod' || kind === 'takeg') && line.podSlug) return `pod.${line.podSlug}`
+  return `${kind}.${line.courseCode || 'all'}`
+}
+
+/** A track's lines cut into batches. Only sentence tracks are cut; a script is read whole. */
+function chunkTrack(key, lines) {
+  if (!key.startsWith('seed.') || lines.length <= SEED_BATCH_LINES) return [lines]
+  const out = []
+  for (let i = 0; i < lines.length; i += SEED_BATCH_LINES) out.push(lines.slice(i, i + SEED_BATCH_LINES))
+  return out
+}
+
+function groupTracks(lines) {
+  const byKey = new Map()
+  for (const line of lines) {
+    const key = trackKeyOf(line)
+    if (!byKey.has(key)) byKey.set(key, [])
+    byKey.get(key).push(line)
+  }
+  return byKey
+}
+
+const countRecorded = (lines) => lines.reduce((n, l) => n + (l.recorded ? 1 : 0), 0)
+
+/**
+ * The home screen's whole payload.
+ *
+ * @param {object[]} lines the queue's wire lines, recorded ones INCLUDED, in queue order
+ * @param {object|null} phrases the queue's phrase summary (servePhraseBatch), or null
+ * @param {object[]|null} phraseBatches every phrase batch of this reader (phraseBatchList)
+ * @returns {object[]} tracks, in first-appearance (queue) order
+ */
+function buildHomeTracks(lines, phrases = null, phraseBatches = null) {
+  const tracks = []
+  for (const [key, trackLines] of groupTracks(lines)) {
+    if (key.startsWith('phrase.')) continue // drawn from the whole plan below, not the one served batch
+    const first = trackLines[0]
+    let at = 0
+    const batches = chunkTrack(key, trackLines).map((b, i) => {
+      const from = at + 1
+      at += b.length
+      return { n: i + 1, from, to: at, total: b.length, recorded: countRecorded(b) }
+    })
+    tracks.push({
+      key,
+      kind: first.kind || 'pod',
+      courseCode: first.courseCode || null,
+      podSlug: first.podSlug || null,
+      podTitle: first.podTitle || null,
+      // A sentence of a course whose phrases this booth records (the v2 relaunch sandboxes) is
+      // NEW reading, even though its seed row already exists in that course. #335 found these
+      // 640 new North sentences filed under "seeds already in the course — not new".
+      newCourse: isPhraseQueueCourse(first.courseCode),
+      seedExisting: (first.kind === 'seed') ? trackLines.every((l) => !!l.seedExisting) : null,
+      total: trackLines.length,
+      recorded: countRecorded(trackLines),
+      batches,
+    })
+  }
+  if (phrases && !phrases.unavailable && Array.isArray(phraseBatches) && phraseBatches.length) {
+    for (const pass of [1, 2]) {
+      const mine = phraseBatches.filter((b) => b.pass === pass)
+      if (!mine.length) continue
+      const total = mine.reduce((n, b) => n + b.total, 0)
+      const recorded = mine.reduce((n, b) => n + b.recorded, 0)
+      tracks.push({
+        key: `phrase.${pass}`,
+        kind: 'phrase',
+        pass,
+        courseCode: mine[0].courseCode,
+        total,
+        recorded,
+        // ONE BATCH AT A TIME, the queue's rule (servePhraseBatch): only the batch it is serving
+        // now can be opened; the rest are shown, counted, and locked until their turn.
+        batches: mine.map((b, i) => ({
+          n: i + 1,
+          batch: b.batch,
+          courseCode: b.courseCode,
+          courseLabel: b.courseLabel,
+          firstSeed: b.firstSeed,
+          lastSeed: b.lastSeed,
+          total: b.total,
+          recorded: b.recorded,
+          held: b.held,
+          current: !!(phrases.pass === pass && phrases.batch === b.batch && phrases.courseCode === b.courseCode),
+        })),
+      })
+    }
+  }
+  return tracks
+}
+
+/**
+ * The lines of ONE batch, for the booth's record screen. Unknown track or batch → [].
+ * Phrase tracks return what the queue serves, which is only ever the current batch.
+ */
+function selectBatch(lines, trackKey, batchN) {
+  const trackLines = lines.filter((l) => trackKeyOf(l) === trackKey)
+  if (!trackLines.length) return []
+  const batches = chunkTrack(trackKey, trackLines)
+  const n = Number.isFinite(batchN) && batchN >= 1 ? batchN : 1
+  return batches[n - 1] || []
+}
+
+module.exports = { SEED_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch }
