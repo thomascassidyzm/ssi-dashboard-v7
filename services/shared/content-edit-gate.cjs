@@ -107,7 +107,7 @@ function mode() {
 // sync. Anything NOT listed here does — a new surface is covered by default.
 const NO_TEXT_OPERATIONS = new Set([
   'approve', 'flag', 'unflag', 'qa-mark-checked', 'qa-reset', 'phrase-delete',
-  'course-wipe', 'course-delete', 'reset-translations', 'seed-deprecate',
+  'course-wipe', 'course-delete', 'reset-translations', 'seed-deprecate', 'pod-solo-readers',
 ]);
 
 function contentEditGate({ supabase, service, logger = console }) {
