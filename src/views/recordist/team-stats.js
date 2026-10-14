@@ -28,9 +28,19 @@ export function teamCards(artists, ownVoiceId) {
     .map((a) => ({ ...a, focus: focusProject(a.projects) }))
 }
 
-/** The project a card shows: the one worked on most recently, else the first not yet finished. */
+/**
+ * The project a card shows: the one worked on most recently, else the first unfinished one of
+ * more than one line, else the first unfinished. A trial script ("(test)") or a one-line project
+ * never heads a card while real work exists (Aran, 2026-10-14: Catrin's card led with her trial
+ * Health script, Eleri's with the single guess-game line queued before her Pod 1).
+ */
 export function focusProject(projects) {
-  const real = (projects || []).filter((p) => !p.other)
-  return real.find((p) => p.activity && p.activity.lastActive) ||
-    real.find((p) => p.total > 0 && p.recorded < p.total) || real[0] || null
+  const all = (projects || []).filter((p) => !p.other)
+  const real = all.filter((p) => !/\(test\)/i.test(p.label || '') && p.total !== 1)
+  const pick = (list) => {
+    const worked = list.filter((p) => p.activity && p.activity.lastActive)
+      .sort((a, b) => Date.parse(b.activity.lastActive) - Date.parse(a.activity.lastActive))
+    return worked[0] || list.find((p) => p.total > 0 && p.recorded < p.total) || list[0] || null
+  }
+  return pick(real) || pick(all)
 }

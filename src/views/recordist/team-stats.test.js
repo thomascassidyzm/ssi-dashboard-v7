@@ -27,4 +27,17 @@ describe('team stats on a God admin booth (job #379)', () => {
     expect(focusProject([p('done', 5, 5), p('seed', 0, 206)]).key).toBe('seed')
     expect(focusProject([])).toBe(null)
   })
+
+  it('a trial script or a one-line project never heads a card while real work exists (Aran, 2026-10-14)', () => {
+    const t = (key, label, recorded, total, lastActive = null) => ({ ...p(key, recorded, total, lastActive), label })
+    // Catrin: the trial script was touched two minutes after the real one.
+    expect(focusProject([t('trial', 'North Welsh: Health scripts (test)', 9, 9, '2026-10-06T16:05:00Z'),
+      t('health', 'North Welsh: Health scripts', 217, 217, '2026-10-06T16:03:00Z'),
+      t('pod', 'North Welsh: Pod 1', 89, 89, '2026-09-11T13:23:00Z')]).key).toBe('health')
+    // Eleri: nothing started — Pod 1, not the one guess-game line queued before it.
+    expect(focusProject([t('guess', 'South Welsh: guess-game line', 0, 1), t('pod', 'South Welsh: Pod 1', 0, 151),
+      t('seed', 'South Welsh: old sentences', 0, 206)]).key).toBe('pod')
+    // Kai: the one line is all there is, so it still heads his card.
+    expect(focusProject([t('guess', 'North Welsh: guess-game line', 0, 1)]).key).toBe('guess')
+  })
 })
