@@ -39,7 +39,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useAuth } from '@/composables/useAuth'
-import { showsTeamSection, teamCards, whenLabel } from './team-stats.js'
+import { showsTeamSection, teamCards, whenLabel, loadTeamSnapshot, saveTeamSnapshot, clearTeamSnapshot } from './team-stats.js'
 
 const route = useRoute()
 const { getAccessToken } = useAuth()
@@ -54,22 +54,39 @@ const n = (x) => Number(x || 0).toLocaleString('en-GB')
 const pct = (p) => `${p.total ? Math.max(Math.round(100 * p.recorded / p.total), p.recorded ? 1 : 0) : 0}%`
 const lastActive = (a) => whenLabel(a.activity)
 
-onMounted(async () => {
-  if (!showsTeamSection(voiceId.value)) return // an ordinary reader's booth: nothing, no call
+// The team is NEVER allowed to slow the booth itself (job #416): the last cards are drawn from
+// this device at once, and the server is asked only once the browser is idle after the booth has
+// drawn. The server's answer replaces the cards behind them.
+const whenIdle = (fn) => (typeof requestIdleCallback === 'function'
+  ? requestIdleCallback(fn, { timeout: 2500 })
+  : setTimeout(fn, 600))
+
+async function refresh() {
   const token = await getAccessToken().catch(() => null)
-  if (!token) { state.value = 'signin'; return }
-  state.value = 'loading'
+  if (!token) { clearTeamSnapshot(); artists.value = []; state.value = 'signin'; return }
+  const drawn = state.value === 'ready'
+  if (!drawn) state.value = 'loading'
   try {
     const res = await fetch(`${apiBase()}/api/recording/admin/artists`, { headers: { Authorization: `Bearer ${token}` } })
     // Signed in, but not as Tom, Aran or Kai: the server refused, and the booth shows nothing.
-    if (res.status === 401 || res.status === 403) { state.value = 'hidden'; return }
+    if (res.status === 401 || res.status === 403) { clearTeamSnapshot(); artists.value = []; state.value = 'hidden'; return }
     if (!res.ok) throw new Error(`Could not load the team (${res.status})`)
     artists.value = (await res.json()).artists || []
+    saveTeamSnapshot(artists.value)
     state.value = cards.value.length ? 'ready' : 'hidden'
   } catch (err) {
+    if (drawn) return // the saved cards stay; a failed refresh is not worth replacing them with an error
     error.value = (err && err.message) || 'Could not load the team'
     state.value = 'error'
   }
+}
+
+onMounted(() => {
+  if (!showsTeamSection(voiceId.value)) return // an ordinary reader's booth: nothing, no call
+  const saved = loadTeamSnapshot()
+  if (saved) { artists.value = saved; if (cards.value.length) state.value = 'ready' }
+  if (state.value !== 'ready') state.value = 'loading'
+  whenIdle(refresh)
 })
 </script>
 

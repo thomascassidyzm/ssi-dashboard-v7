@@ -89,3 +89,25 @@ export function whenLabel(activity, now = Date.now()) {
   const days = Math.floor((now - Date.parse(t)) / 86400000)
   return days < 1 ? 'in the last day' : days === 1 ? 'yesterday' : `${days}d ago`
 }
+
+// THE LAST CARDS, kept on this device (Aran, 2026-10-14, job #416: "the team cards take quite a
+// while to load"). The overview is built server-side from every reader's queue (~15s cold), so the
+// cards are drawn from the last answer at once and replaced when the server's answer lands — the
+// pattern job #378 gave the booth home. Only a God admin's successful fetch ever writes it, and a
+// 401/403 or a missing sign-in clears it, so it is never shown to someone the server refuses.
+const SNAP_KEY = 'booth.team.cards'
+export const TEAM_SNAPSHOT_MAX_AGE_MS = 7 * 24 * 3600 * 1000
+export function loadTeamSnapshot(storage = globalThis.localStorage, now = Date.now()) {
+  try {
+    const raw = storage && storage.getItem(SNAP_KEY)
+    const snap = raw ? JSON.parse(raw) : null
+    if (!snap || !Array.isArray(snap.artists) || now - snap.at > TEAM_SNAPSHOT_MAX_AGE_MS) return null
+    return snap.artists
+  } catch { return null }
+}
+export function saveTeamSnapshot(artists, storage = globalThis.localStorage, now = Date.now()) {
+  try { storage && storage.setItem(SNAP_KEY, JSON.stringify({ at: now, artists })) } catch { /* private mode / full */ }
+}
+export function clearTeamSnapshot(storage = globalThis.localStorage) {
+  try { storage && storage.removeItem(SNAP_KEY) } catch { /* private mode */ }
+}

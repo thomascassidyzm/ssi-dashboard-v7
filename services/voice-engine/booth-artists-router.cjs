@@ -20,6 +20,7 @@ const queue = require('./recordist-queue.cjs')
 const boothHome = require('./booth-home.cjs')
 const ov = require('./booth-artist-overview.cjs')
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
+const { shared: sharedSummaryCache } = require('./booth-artists-summary-cache.cjs')
 
 const TAKES_TTL_MS = 60 * 1000
 const PAGE = 1000
@@ -45,6 +46,7 @@ module.exports = function createBoothArtistsRouter({
   now = () => Date.now(),
   boothKeys = null,
   boothKeyGate = null,
+  summaryCache = sharedSummaryCache,
 } = {}) {
   if (typeof requireAdmin !== 'function') throw new Error('booth-artists-router needs requireAdmin')
   const router = express.Router()
@@ -189,21 +191,21 @@ module.exports = function createBoothArtistsRouter({
     }
   }
 
-  // The overview is ~15s cold (coverage + the phrase plan), so it is kept a minute.
-  let overviewCache = null
+  // The overview is ~15s cold (coverage + the phrase plan), so it is kept (job #416): a minute
+  // fresh, ten more served stale with a rebuild behind it, one build shared by every caller, and
+  // dropped + re-warmed on any write this process makes (booth-artists-summary-cache.cjs).
+  async function buildOverview() {
+    const t = now()
+    const voices = await gather()
+    const artists = await mapLimit([...voices.values()], QUEUE_CONCURRENCY, async (a) => headline(a, await safeWorkFor(a), t))
+    artists.sort((a, b) => (a.isTest - b.isTest) || (a.noQueue - b.noQueue) ||
+      String(b.activity.lastActive || '').localeCompare(String(a.activity.lastActive || '')))
+    return { generatedAt: new Date(t).toISOString(), sessionGapMinutes: ov.SESSION_GAP_MS / 60000, timeZone: ov.DAY_TZ, artists }
+  }
   router.get('/artists', async (req, res) => {
     try {
-      if (overviewCache && now() - overviewCache.at < TAKES_TTL_MS && req.query.fresh === undefined) {
-        return res.json(overviewCache.body)
-      }
-      const t = now()
-      const voices = await gather()
-      const artists = await mapLimit([...voices.values()], QUEUE_CONCURRENCY, async (a) => headline(a, await safeWorkFor(a), t))
-      artists.sort((a, b) => (a.isTest - b.isTest) || (a.noQueue - b.noQueue) ||
-        String(b.activity.lastActive || '').localeCompare(String(a.activity.lastActive || '')))
-      const body = { generatedAt: new Date(t).toISOString(), sessionGapMinutes: ov.SESSION_GAP_MS / 60000, timeZone: ov.DAY_TZ, artists }
-      overviewCache = { at: now(), body }
-      res.json(body)
+      const got = await summaryCache.get(buildOverview, { fresh: req.query.fresh !== undefined })
+      res.set('X-Overview-Age-Ms', String(got.ageMs)).json(got.value)
     } catch (err) {
       logger.error(`[BoothArtists] overview: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })

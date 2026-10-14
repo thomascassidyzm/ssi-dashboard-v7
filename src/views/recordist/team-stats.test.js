@@ -66,3 +66,18 @@ describe('team stats on a God admin booth (job #379)', () => {
       t('seed', 'South Welsh: old sentences', 0, 206)]).map((r) => r.key)).toEqual(['pod', 'seed', 'guess'])
   })
 })
+
+import { loadTeamSnapshot, saveTeamSnapshot, clearTeamSnapshot, TEAM_SNAPSHOT_MAX_AGE_MS } from './team-stats.js'
+import { describe as d2, it as i2, expect as e2 } from 'vitest'
+const memStore = () => { const m = new Map(); return { getItem: (k) => (m.has(k) ? m.get(k) : null), setItem: (k, v) => m.set(k, v), removeItem: (k) => m.delete(k) } }
+d2('team card snapshot on the device (job #416)', () => {
+  i2('draws back what was saved, until it is a week old or cleared', () => {
+    const s = memStore()
+    e2(loadTeamSnapshot(s)).toBeNull()
+    saveTeamSnapshot([{ voiceId: 'v', name: 'Dan' }], s, 1000)
+    e2(loadTeamSnapshot(s, 2000)).toEqual([{ voiceId: 'v', name: 'Dan' }])
+    e2(loadTeamSnapshot(s, 1000 + TEAM_SNAPSHOT_MAX_AGE_MS + 1)).toBeNull()
+    clearTeamSnapshot(s)
+    e2(loadTeamSnapshot(s, 2000)).toBeNull()
+  })
+})

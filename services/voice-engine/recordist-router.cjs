@@ -65,6 +65,7 @@ const {
   warmLanguageQueues,
 } = require('./recordist-queue.cjs')
 const { enableRewarmAfterInvalidate, onLanguageQueueInvalidated } = require('./recordist-queue-cache.cjs')
+const { invalidateArtistSummaries } = require('./booth-artists-summary-cache.cjs')
 const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const boothHome = require('./booth-home.cjs')
@@ -449,12 +450,12 @@ module.exports = function createRecordistRouter({
   // (booth-queue-cache.cjs says how fresh it is kept). Any write this process
   // makes for the voice drops it, and so does any invalidation of its language.
   const boothQueue = createBoothQueueCache()
-  onLanguageQueueInvalidated((language) => boothQueue.invalidateLanguage(language))
+  onLanguageQueueInvalidated((language) => { boothQueue.invalidateLanguage(language); invalidateArtistSummaries() })
   router.use('/voice/:voiceId', (req, res, next) => {
     if (req.method !== 'GET' && req.method !== 'HEAD' && req.method !== 'OPTIONS') {
       const voiceId = req.params.voiceId
       boothQueue.invalidateVoice(voiceId)
-      res.on('finish', () => boothQueue.invalidateVoice(voiceId))
+      res.on('finish', () => { boothQueue.invalidateVoice(voiceId); invalidateArtistSummaries() }) // the team cards' counts (job #416)
     }
     next()
   })
