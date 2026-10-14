@@ -22,7 +22,7 @@ const course = 'afr_for_eng', ledger = path.join(__dirname, 'fade-ledger.jsonl')
     if (dry) { console.log('would fade', r.lego_id, r.old); n++; continue }
     const f = await makeFaded(db, r.old)
     ev = ev || await recordContentEdit(db, { identity: serviceIdentity('afr-tom006-fade-329'), courseCode: course, surface: 'ops/afr-cast-329/fade-intros', operation: 'update', detail: { why: 'job #329: 80 ms fade on new afr Tom-006 intros; old ids in ledger', ledger } })
-    if (!await mayPoint(db, { courseCode: course, col: 'presentation_audio_id', to: f.newId })) { console.log('mayPoint refused', r.lego_id); continue }
+    if (!await mayPoint(db, { courseCode: course, col: 'presentation_audio_id', to: f.newId, tbl: 'course_legos', key: r.key, from: r.old })) { console.log('mayPoint refused', r.lego_id); continue }
     const { data, error } = await db.from('course_legos').update({ presentation_audio_id: f.newId, last_edit_event_id: ev }).eq('id', r.key).eq('presentation_audio_id', r.old).select('id')
     if (error || !data || data.length !== 1) { console.log('pointer not moved', r.lego_id, error && error.message); continue }
     fs.appendFileSync(ledger, JSON.stringify({ kind: 'swap', lego_id: r.lego_id, oldId: r.old, newId: f.newId, eosMs: f.eosMs, durationMs: f.durationMs }) + '\n')
