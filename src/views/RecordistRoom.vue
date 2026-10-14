@@ -60,7 +60,7 @@
       <header class="where" :class="{ live: phase === 'recording' }" data-test="where">
         <button v-if="phase !== 'recording'" type="button" class="where-home" data-test="back-home" title="Back to home" aria-label="Back to home" @click="goHome">‹</button>
         <p class="where-words" :data-test="phase === 'recording' ? 'stage-where' : 'batch-where'">{{ whereWords }}</p>
-        <button v-if="phase !== 'recording'" type="button" class="where-more" data-test="open-sheet" @click="openSheet()">Lines &amp; settings</button>
+        <button v-if="phase !== 'recording'" type="button" class="where-more" data-test="open-sheet" aria-label="Lines and settings" @click="openSheet()"><span class="wm-long">Lines &amp; settings</span><span class="wm-short" aria-hidden="true">☰</span></button>
       </header>
 
       <!-- ONE STATUS ROW, live only: Stop · the mic · the count · Pause, with the progress bar as
@@ -2872,7 +2872,7 @@ onDeactivated(() => {
   font-size: 0.95rem;
 }
 .rc-nav-item {
-  display: inline-block;
+  display: inline-flex; align-items: center;
   min-height: 40px;
   line-height: 40px;
   padding: 0 0.6rem;
@@ -3358,6 +3358,7 @@ kbd {
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .where.live { padding-left: 1rem; }
+.wm-short { display: none; font-size: 1.1rem; line-height: 1; }
 .where.live .where-words { font-weight: 600; color: var(--muted, #94a3b8); }
 .where-more {
   flex: none; background: none; border: 1px solid var(--line, #334155); border-radius: 999px;
@@ -3407,8 +3408,8 @@ kbd {
 }
 /* Centred in what is left, and still readable from the top when a long line fills it: the
    auto margins centre a short block and collapse to nothing for a tall one. */
-.centre-line > :first-child { margin-top: auto; }
-.centre-line > :last-child { margin-bottom: auto; }
+.recordist.fit .centre .centre-line > :first-child { margin-top: auto; }
+.recordist.fit .centre .centre-line > :last-child { margin-bottom: auto; }
 .recordist.fit .line-well {
   min-height: 0; padding: 0; border-radius: 12px; background: transparent; box-shadow: none;
 }
@@ -3521,7 +3522,11 @@ kbd {
   .mic .meter { width: 40px; }
   .status { gap: 0.35rem; padding: 0.4rem 0.5rem; }
   .status .btn-finish, .status .ctl-pause { padding: 0 0.6rem; }
-  .where-more { padding: 0 0.6rem; }
+  .where-more { padding: 0; width: 40px; min-height: 40px; }
+  .wm-long { display: none; }
+  .wm-short { display: inline; }
+  /* Off the stage the words may take two lines: which batch matters more than a tidy row. */
+  .where:not(.live) .where-words { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.3; }
 }
 /* A short phone screen (iPhone SE and the like): the line gives way first, never the transport. */
 @media (max-height: 640px) {
