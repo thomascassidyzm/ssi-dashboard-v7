@@ -22,3 +22,9 @@ test('ops shift top-down so no two rows share a position', () => {
   const ops = M.textOps(pre).filter((o) => o.op === 'phrase.update');
   assert.deepStrictEqual(ops.map((o) => o.set.position), [5, 4]);
 });
+
+test('audio linking refuses a render map missing a required clip before a batch can be emitted', () => {
+  const complete = Object.fromEntries(M.wanted(pre).map((r) => [`${r.role}|${r.text}`, '11111111-1111-4111-8111-111111111111']));
+  delete complete['target2|ausmachen'];
+  assert.throws(() => M.linkOps(pre, complete));
+});
