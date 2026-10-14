@@ -30,7 +30,7 @@
 // is the exact lie useStoredClip.js exists to prevent.
 
 import { ref, reactive } from 'vue'
-import { recordingApiBase as apiBase } from '@/services/recordingApi'
+import { recordingApiBase as apiBase, withBoothKey } from '@/services/recordingApi'
 import { openTakeStore, createTakeStore, createMemoryBackend, DURABLE_TAKES_FEATURE } from '@/services/takeStore'
 
 export { DURABLE_TAKES_FEATURE }
@@ -343,7 +343,7 @@ export function useRecordistQueue(options = {}) {
     let res
     try {
       res = await fetch(
-        `${apiBase()}/api/recording/voice/${encodeURIComponent(item.voiceId)}/take`,
+        withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(item.voiceId)}/take`, item.voiceId),
         {
           method: 'POST',
           headers: {},

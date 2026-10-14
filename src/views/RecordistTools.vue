@@ -18,8 +18,9 @@
           <span v-if="check.verdictThresholds" class="rt-device"><br>Benchmark: accepted takes (Dan, Aran, Catrin, Tom) sit at noise floor -120 to -80 dB (retry above {{ check.verdictThresholds.NOISE_FLOOR_MAX_DB }}), clean by 61 to 107 dB (retry below {{ check.verdictThresholds.CLEAN_SNR_MIN_DB }}), loudest half-second -23 to -6 dB (retry below {{ check.verdictThresholds.SPEECH_MIN_DB }}), clipped samples at most 0.021% (retry above {{ check.verdictThresholds.CLIP_FRAC_MAX_PCT }}%).</span>
         </p>
         <p v-else class="rt-device">No auto-verdict yet: no take has been measured (or too few could be), so listen yourself.</p>
-        <p class="rt-link">Artist link: <code>{{ origin }}/r/{{ check.packVoiceId }}</code>
-          <button class="rt-mini" @click="copy(`${origin}/r/${check.packVoiceId}`)">{{ copied ? 'Copied' : 'Copy' }}</button></p>
+        <p class="rt-link">Artist link: <code>{{ setupLink }}</code>
+          <button class="rt-mini" @click="copy(setupLink)">{{ copied ? 'Copied' : 'Copy' }}</button>
+          <span v-if="!check.boothKey" class="rt-device"> — no private key yet: make one under Private booth links on Human recording, or this link stops working when grace mode ends.</span></p>
         <ol class="rt-items">
           <li v-for="it in check.items" :key="it.id">
             <div class="rt-text">{{ it.text }}</div>
@@ -67,7 +68,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { recordingApiBase as apiBase } from '@/services/recordingApi'
+import { recordingApiBase as apiBase, privateBoothLink } from '@/services/recordingApi'
 import { useAuth } from '@/composables/useAuth'
 
 const { getAccessToken } = useAuth()
@@ -88,6 +89,7 @@ const busy = ref(false)
 const note = ref('')
 const copied = ref(false)
 
+const setupLink = computed(() => (check.value ? privateBoothLink(origin, check.value.packVoiceId, check.value.boothKey) : ''))
 const slotCount = computed(() => preview.value ? Object.values(preview.value.slots).reduce((a, b) => a + b, 0) : 0)
 
 async function headers() {

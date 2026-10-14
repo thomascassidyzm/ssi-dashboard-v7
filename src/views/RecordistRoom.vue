@@ -821,7 +821,7 @@
 // no course code appears anywhere on this page.
 import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick, inject } from 'vue'
 import { routerKey, routeLocationKey } from 'vue-router'
-import { recordingApiBase as apiBase } from '@/services/recordingApi'
+import { recordingApiBase as apiBase, withBoothKey } from '@/services/recordingApi'
 import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecorder'
 import { loadBoothSettings, saveBoothSettings, micKeyFor } from './recordist/booth-settings.js'
 import { useRecordistQueue, DURABLE_TAKES_FEATURE } from '@/composables/useRecordistQueue'
@@ -1696,7 +1696,7 @@ async function saveEdit(lineId, text, side = editingSide.value) {
   editError.value = null
   try {
     const res = await fetch(
-      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/line/${encodeURIComponent(lineId)}/text`,
+      withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/line/${encodeURIComponent(lineId)}/text`, props.voiceId),
       {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -2470,7 +2470,7 @@ async function rerecordAllMine() {
   rerecordBusy.value = true
   rerecordError.value = null
   try {
-    const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/rerecord-all`, {
+    const res = await fetch(withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/rerecord-all`, props.voiceId), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ confirm: true, asArtist: true, reason: 'Artist pressed Re-record all in the booth' }),
@@ -2558,7 +2558,7 @@ async function submitSetup() {
   setupSubmitting.value = true
   setupError.value = null
   try {
-    const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/submit`, {
+    const res = await fetch(withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/submit`, props.voiceId), {
       method: 'POST', headers: {},
     })
     const body = await res.json().catch(() => ({}))
@@ -2601,7 +2601,7 @@ async function load() {
     // Time-limited (20s, one retry): a hung request must not strand the reader
     // on "Getting your lines…". The body is read inside the timed window.
     const { res, data: body } = await fetchWithTimeoutRetry(
-      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}${batchParam}`,
+      withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}${batchParam}`, props.voiceId),
       { headers: {} },
       r => (r.ok ? r.json() : r.json().catch(() => ({})))
     )
@@ -2793,7 +2793,7 @@ function openCard(key) {
 
 async function fetchSummary() {
   const { res, data } = await fetchWithTimeoutRetry(
-    `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/summary`,
+    withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/summary`, props.voiceId),
     { headers: {} },
     r => (r.ok ? r.json() : r.json().catch(() => ({})))
   )

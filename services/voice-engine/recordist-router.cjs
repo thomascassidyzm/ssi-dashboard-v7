@@ -11,6 +11,8 @@
  * policy table, and every take is attributed to that voice from the first tap.
  * Aran gets a link, taps it, and reads. Nothing else. The admin routes (4/5)
  * keep the estate's normal auth, because they change what everyone else sees.
+ * Since job #380 (Aran, 2026-10-14) the link carries a PRIVATE KEY (?k=) and
+ * every /voice/:voiceId route checks it first — booth-link-keys.cjs.
  *
  *   GET  /mine                              which voice(s) the SIGNED-IN user reads
  *   GET  /voice/:voiceId                    the by-language queue (recordist-queue.cjs)
@@ -87,6 +89,7 @@ const { resolveCurrentClip } = require('./take-selection.cjs')
 const { bucketKey } = require('../shared/dialect.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
 const { isGodAdmin } = require('./booth-god-admins.cjs')
+const boothLinks = require('./booth-link-keys.cjs')
 
 const MAX_TAKE_BYTES = 60 * 1024 * 1024
 
@@ -148,6 +151,13 @@ module.exports = function createRecordistRouter({
   // first Welsh reader of the day does not pay its ~3-10 s cold read on top of
   // the language read. Production passes true; tests leave it off.
   warmPhrasePlan = false,
+  // PRIVATE BOOTH LINKS (job #380): the per-voice key gate on every /voice/:voiceId route. Production
+  // builds it once (production-api.cjs) so the admin panel can read its grace log; left out, the
+  // router builds its own over the same DB. `identifyCaller` resolves a signed-in caller WITHOUT
+  // answering, for the God-admin / own-voice bypass; `boothKeys` is the key store.
+  boothKeys = null,
+  boothKeyGate = null,
+  identifyCaller = null,
 }) {
   const router = express.Router()
 
@@ -166,6 +176,17 @@ module.exports = function createRecordistRouter({
     }, 15_000)
     if (typeof t.unref === 'function') t.unref()
   }
+
+  const keys = boothKeys || boothLinks.createBoothKeyStore({ getDb })
+  const ownsVoice = async (user, voiceKeyId) => {
+    if (!user || !user.email) return false
+    return (await voicesForEmail(db(), user.email)).some((v) => v.voiceId === voiceKeyId)
+  }
+  // THE BOOTH KEY GATE, before every /voice/:voiceId route below (booth-link-keys.cjs): the link is
+  // still the identity, but only with its private key, or for a signed-in God admin / the artist.
+  router.use('/voice/:voiceId', boothKeyGate || boothLinks.createBoothKeyGate({
+    store: keys, identify: identifyCaller, isGodAdmin, ownsVoice, logger,
+  }))
 
   /** Resolve :voiceId or answer 404 — the only gate routes 1-3 have, by design. */
   async function recordistOr404(req, res) {
@@ -366,10 +387,14 @@ module.exports = function createRecordistRouter({
       const user = await requireDashboardUser(req, res)
       if (!user) return // requireDashboardUser has already answered 401/403
       const voices = await voicesForEmail(db(), user.email)
+      // Their own private link key (job #380), so the login door opens the booth with it.
+      const keyOf = async (voiceId) => keys.keyFor(voiceId).catch(() => null)
+      const withKeys = await Promise.all(voices.map(async (v) => ({ v, boothKey: await keyOf(v.voiceId) })))
       res.json({
         email: user.email,
         name: user.name || null,
-        voices: voices.map((v) => ({
+        voices: withKeys.map(({ v, boothKey }) => ({
+          boothKey,
           voiceId: v.voiceId,
           displayName: v.displayName,
           language: v.language,
@@ -2442,6 +2467,9 @@ module.exports = function createRecordistRouter({
         submittedAt: row.submitted_at, reviewedBy: row.reviewed_by, reviewedAt: row.reviewed_at, note: row.review_note,
         packVoiceId: pack.voiceId, items,
         autoVerdict: setupCheck.isMeasuredVerdict(verdict) ? verdict : null, verdictThresholds: setupCheck.SETUP_VERDICT,
+        // The artist link's private key (job #380) — only to a caller who passed the gate WITH a key
+        // or signed in; never to a grace-mode id-only request.
+        boothKey: ['key', 'signed_in'].includes(req.boothAccess) ? await keys.keyFor(row.voice_id).catch(() => null) : null,
       })
     } catch (err) {
       logger.error(`[Recordist] setup-check review: ${err.message}`)
