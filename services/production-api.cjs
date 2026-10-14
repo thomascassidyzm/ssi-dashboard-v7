@@ -7024,7 +7024,7 @@ require('./api/audio-repair-routes.cjs').mount(app, { requireAdmin, requireDashb
 // an experiment. Reads are open to dashboard users; POST /runs and /rerun are
 // admin-only because they are the calls that spend money. It writes no course_audio
 // and no algorithm_config — /export hands a config back for a human to apply.
-require('./voicelab/router.cjs').mount(app, { requireAdmin, requireDashboardUser, logger })
+require('./voicelab/router.cjs').mount(app, { requireAdmin, requireAdminOrAgent, requireDashboardUser, logger })
 
 // =============================================================================
 // PROCEDURES — /api/procedures/*

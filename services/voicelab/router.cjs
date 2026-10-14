@@ -60,6 +60,7 @@ const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
  * @param {object}   [deps.logger]
  */
 /** registry.SLOTS are the phrase-bearing slots; 'presentation' is cast and cleared too, gender-agnostic like guide (cast_voice_role v3). The guard used to reject it, so clearing a presentation slot was unreachable (#273). */
+const AGENT_SLOT_PATH = /^\/languages\/[^/]+\/slot$/
 const isCastableSlot = (slot) => slot === 'presentation' || registry.SLOTS.includes(slot)
 
 /**
@@ -242,6 +243,15 @@ function mount (app, deps) {
     if (req.method === 'OPTIONS') return next()
     if (COMMUNITY_DOORS.some(([m, re]) => m === req.method && re.test(req.path))) return next()
     allowQueryToken(req)
+    // THE SANCTIONED AGENT DOOR, ONE ROUTE WIDE (job #445, Tom 2026-10-14):
+    // a signed same-host call (tools/agent-admin/call.cjs) holding scope
+    // voice-slot:write may PUT a cast slot and nothing else in the lab. The
+    // signature is single-use, so it is judged here once and the route reads
+    // req.agentAdmin rather than asking again.
+    if (deps.requireAdminOrAgent && req.headers['x-agent-admin'] && req.method === 'PUT' && AGENT_SLOT_PATH.test(req.path)) {
+      if (!(await deps.requireAdminOrAgent(req, res, 'voice-slot:write'))) return
+      return next()
+    }
     if (!(await requireAdmin(req, res))) return
     next()
   })
@@ -566,7 +576,7 @@ function mount (app, deps) {
   }
 
   app.put('/api/voicelab/languages/:language/slot', async (req, res) => {
-    const user = await requireAdmin(req, res)
+    const user = req.agentAdmin ? req.agentAdmin.user : await requireAdmin(req, res)
     if (!user) return
     try {
       const language = String(req.params.language || '').trim()
