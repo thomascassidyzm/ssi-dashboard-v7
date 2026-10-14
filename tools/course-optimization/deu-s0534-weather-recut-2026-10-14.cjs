@@ -261,7 +261,7 @@ function editOps(dump, audioMap) {
     for (const [slot, col] of Object.entries(SLOT_COL)) {
       if (!src[col]) continue;
       ops.push({ op: 'audio.link', target: 'lego', lego_id: id, slot, audio_id: src[col] });
-      if (slot === 'presentation') ops.push({ op: 'audio.update', audio_id: src[col], expect: { lego_id: clipsFrom }, set: { lego_id: id } });
+      if (slot === 'presentation') ops.push({ op: 'audio.update', audio_id: src[col], set: { lego_id: id } }); // some intro clips carry no lego_id at all
     }
   }
   for (const r of slotRequests()) {
