@@ -51,7 +51,7 @@ test('ops pin every row (expect), link each changed slot in the same batch, and 
   assert.ok(ops.some((o) => o.op === 'lego.update' && o.set.components));
   assert.deepStrictEqual(ops.filter((o) => o.op === 'phrase.delete').map((o) => o.phrase_id), ['deu_for_eng:S0311L04U01']);
   const comp = T.plan(before(), only(['S0311L01', 'S0311L01C01'])).phrases[0];
-  assert.strictEqual(comp.intro, "The German for: 'he said', as in — 'he said he couldn't', is:");
+  assert.strictEqual(comp.intro, undefined); // Popty refuses a presentation bind on a component row
   assert.throws(() => T.plan(before(), [['S0311L01', 1, 'delete', null, 'x', 'y']]), /never/);
   assert.throws(() => T.plan(before(), [['seed:311', 1, 'delete', null, 'x', 'y']]), /never/);
 });

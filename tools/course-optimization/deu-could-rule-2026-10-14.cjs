@@ -78,13 +78,8 @@ function plan(db, rows = DATA.ROWS, tranches = [1]) {
     if (S[id]) { c.seed = row.seed_number; out.seeds.push(c); continue; }
     out.phrases.push(c);
   }
-  // a re-texted component tile gets its intro re-said in the component shape ("…, as in — '<its LEGO>', is:") so the
-  // intro-mirror check stays clean; components are never played, so this is bookkeeping, rendered without a LEGO bind
-  for (const c of out.phrases) {
-    if (P[c.id].phrase_role !== 'component' || c.after[0] === c.before[0]) continue;
-    const lego = out.legos.find((l) => l.id === c.id.slice(0, 8)) || { after: [L[c.id.slice(0, 8)].known_text] };
-    c.intro = `The German for: '${c.after[0]}', as in — '${lego.after[0]}', is:`;
-  }
+  // Component tiles get NO intro: Popty refuses to bind presentation audio to a component row ("Components are never
+  // introduced", Tom 2026-08-06) — the edit door said so on #489's first preview.
   return out;
 }
 
