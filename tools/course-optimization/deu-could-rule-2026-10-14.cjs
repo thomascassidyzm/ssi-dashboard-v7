@@ -78,6 +78,13 @@ function plan(db, rows = DATA.ROWS, tranches = [1]) {
     if (S[id]) { c.seed = row.seed_number; out.seeds.push(c); continue; }
     out.phrases.push(c);
   }
+  // a re-texted component tile gets its intro re-said in the component shape ("…, as in — '<its LEGO>', is:") so the
+  // intro-mirror check stays clean; components are never played, so this is bookkeeping, rendered without a LEGO bind
+  for (const c of out.phrases) {
+    if (P[c.id].phrase_role !== 'component' || c.after[0] === c.before[0]) continue;
+    const lego = out.legos.find((l) => l.id === c.id.slice(0, 8)) || { after: [L[c.id.slice(0, 8)].known_text] };
+    c.intro = `The German for: '${c.after[0]}', as in — '${lego.after[0]}', is:`;
+  }
   return out;
 }
 
@@ -125,7 +132,7 @@ function clipAsks(p) {
   for (const c of [...p.seeds, ...p.phrases, ...p.legos]) {
     if (c.after[0] !== c.before[0]) add('known', c.after[0], c.id);
     if (c.after[1] !== c.before[1]) { add('target1', c.after[1], c.id); add('target2', c.after[1], c.id); }
-    if (c.intro) add('presentation', c.intro, c.id, c.id);
+    if (c.intro) add('presentation', c.intro, c.id, c.id.length === 8 ? c.id : null);
   }
   return [...m.values()];
 }
@@ -136,14 +143,14 @@ function editOps(p, clips = null) {
   const links = [];
   const link = (target, key, slot, text, legoId) => {
     if (!clips) return;
-    const audio_id = clips.get(`${slot}\u0000${text}${slot === 'presentation' ? `\u0000${legoId}` : ''}`);
+    const audio_id = clips.get(`${slot}\u0000${text}${slot === 'presentation' ? `\u0000${legoId || ''}` : ''}`);
     if (!audio_id) throw new Error(`${JSON.stringify(key)}: no clip for ${slot} "${text}"`);
     links.push({ op: 'audio.link', target, ...key, slot, audio_id });
   };
   const slots = (target, key, c) => {
     if (c.after[0] !== c.before[0]) link(target, key, 'known', c.after[0]);
     if (c.after[1] !== c.before[1]) { link(target, key, 'target1', c.after[1]); link(target, key, 'target2', c.after[1]); }
-    if (c.intro) link(target, key, 'presentation', c.intro, c.id);
+    if (c.intro) link(target, key, 'presentation', c.intro, c.id.length === 8 ? c.id : null);
   };
   for (const c of p.seeds) slots('seed', { seed_number: c.seed }, c);
   for (const c of p.legos) slots('lego', { lego_id: c.id }, c);
@@ -218,7 +225,7 @@ async function main() {
   if (!APPLY) return console.log('render log:', save('rendered'));
 
   // 3. the edit door: preview, then apply; keep the undo
-  const clips = new Map(log.asks.filter((a) => a.real && a.real.audioId).map((a) => [`${a.role}\u0000${a.text}${a.role === 'presentation' ? `\u0000${a.legoId}` : ''}`, a.real.audioId]));
+  const clips = new Map(log.asks.filter((a) => a.real && a.real.audioId).map((a) => [`${a.role}\u0000${a.text}${a.role === 'presentation' ? `\u0000${a.legoId || ''}` : ''}`, a.real.audioId]));
   const ops = editOps(p, clips);
   const prev = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops });
   const silent = (r) => (r.results || []).filter((x) => x.after && ['known_audio_id', 'target1_audio_id', 'target2_audio_id'].some((c) => c in x.after && !x.after[c])).map((x) => x.key);

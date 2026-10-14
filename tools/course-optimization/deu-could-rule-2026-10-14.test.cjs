@@ -43,13 +43,15 @@ test('S0311L01 grows to Kai\'s frame inside the 8-syllable cap, with components 
 test('ops pin every row (expect), link each changed slot in the same batch, and a LEGO or seed is never deleted', () => {
   const p = T.plan(before(), only(['seed:311', 'S0311L01', 'S0311L04U01']));
   const asks = T.clipAsks(p);
-  const clips = new Map(asks.map((a, i) => [`${a.role}\u0000${a.text}${a.role === 'presentation' ? `\u0000${a.legoId}` : ''}`, `clip-${i}`]));
+  const clips = new Map(asks.map((a, i) => [`${a.role}\u0000${a.text}${a.role === 'presentation' ? `\u0000${a.legoId || ''}` : ''}`, `clip-${i}`]));
   const ops = T.editOps(p, clips);
   assert.ok(ops.filter((o) => o.op !== 'audio.link').every((o) => o.expect));
   assert.deepStrictEqual(ops.filter((o) => o.op === 'audio.link' && o.target === 'seed').map((o) => o.slot), ['known', 'target1', 'target2']);
   assert.deepStrictEqual(ops.filter((o) => o.op === 'audio.link' && o.target === 'lego').map((o) => o.slot), ['known', 'target1', 'target2', 'presentation']);
   assert.ok(ops.some((o) => o.op === 'lego.update' && o.set.components));
   assert.deepStrictEqual(ops.filter((o) => o.op === 'phrase.delete').map((o) => o.phrase_id), ['deu_for_eng:S0311L04U01']);
+  const comp = T.plan(before(), only(['S0311L01', 'S0311L01C01'])).phrases[0];
+  assert.strictEqual(comp.intro, "The German for: 'he said', as in — 'he said he couldn't', is:");
   assert.throws(() => T.plan(before(), [['S0311L01', 1, 'delete', null, 'x', 'y']]), /never/);
   assert.throws(() => T.plan(before(), [['seed:311', 1, 'delete', null, 'x', 'y']]), /never/);
 });

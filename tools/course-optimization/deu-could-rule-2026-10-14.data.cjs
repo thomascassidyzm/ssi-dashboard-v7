@@ -79,7 +79,7 @@ const ROWS = [
   ['S0316L01U04', T1, 'fix', [null, 'denkst du, dass er sich das Auto leisten könnte?'], 'K45', 'do you think + could → könnte; he + könnte'],
   ['S0316L01U06', T1, 'fix', [null, 'denkst du, dass er das andere Zimmer benutzen könnte?'], 'K45', 'do you think + could → könnte; he + könnte'],
   ['S0316L02U01', T1, 'fix', ['he could bring along something', 'er könnte etwas mitbringen'], 'K45', 'pronoun swap: he + könnte'],
-  ['S0316L02U06', T1, 'fix', ["yesterday she couldn't bring anything along", 'gestern konnte sie nichts mitbringen'], 'K45', 'past marker; English made natural'],
+  ['S0316L02U06', T2, 'fix', ["yesterday she couldn't bring anything along", 'gestern konnte sie nichts mitbringen'], 'K45', 'past marker; English made natural'],
   ['S0316L03U04', T1, 'fix', ["she said she couldn't bring her brother", 'sie hat gesagt, sie konnte ihren Bruder nicht mitbringen'], 'K45', 'frame added'],
   ['S0316L04U06', T1, 'delete', null, 'K9', '"I could not believe she could bring her brother on Monday" mixes both forms in one garbled sentence; 7 other USE rows stay'],
   // ── seed 148: "when I couldn't answer | als ich nicht antworten konnte" is already K40-shaped (als); its basket is not ──
