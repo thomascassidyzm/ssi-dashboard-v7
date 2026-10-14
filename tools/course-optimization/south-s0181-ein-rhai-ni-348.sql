@@ -3,8 +3,14 @@
 -- practice phrases keep their spoken "ma’n rhai ni" (the tiler/containment read ’n as ein in front of an "ein …" LEGO,
 -- welshExpandEin). Audio links are NOT touched (make-before-break): the new words are queued for a new render.
 -- Sandbox only. Dry run unless psql -v finish=COMMIT.
--- UNDO: UPDATE course_legos l SET target_text=b.target_text, last_edit_event_id=b.last_edit_event_id, version=b.version
---       FROM backup_south_s0181_348_legos b WHERE l.id=b.id;  then REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index;
+-- UNDO (text AND audio links). The text-change trigger runs on the target_text UPDATE and NULLs the presentation link even when the
+--   same UPDATE sets it (tested, job #363), so restore in TWO statements, in this order:
+--   1) UPDATE course_legos l SET target_text=b.target_text, last_edit_event_id=b.last_edit_event_id, version=b.version,
+--        target1_audio_id=b.target1_audio_id, target2_audio_id=b.target2_audio_id
+--      FROM backup_south_s0181_348_legos b WHERE l.id=b.id;
+--   2) UPDATE course_legos l SET presentation_audio_id=b.presentation_audio_id
+--      FROM backup_south_s0181_348_legos b WHERE l.id=b.id;
+--   then REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index;
 \set ON_ERROR_STOP on
 \if :{?finish}
 \else
