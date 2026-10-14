@@ -40,7 +40,8 @@ const LINES = [
 
 async function main() {
   const db = APPLY ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY) : null
-  for (const l of LINES) {
+  const only = (process.argv.find((a) => a.startsWith('--course=')) || '').slice(9)
+  for (const l of LINES.filter((x) => !only || x.course === only)) {
     const podId = `${l.course}:${SLUG}`
     const pod = {
       id: podId, course_code: l.course, pod_type: 'choice', slug: SLUG, pod_order: 901,
