@@ -57,6 +57,9 @@ const {
   invalidateLanguageQueueCache,
   linkPhraseTake,
   getPhrasePlan,
+  isLegoQueueCourse,
+  parseLegoLineId,
+  linkLegoTake,
   warmLanguageQueues,
 } = require('./recordist-queue.cjs')
 const { enableRewarmAfterInvalidate } = require('./recordist-queue-cache.cjs')
@@ -1424,6 +1427,132 @@ module.exports = function createRecordistRouter({
   }
 
   /**
+   * Resolve a LEGO line (`lego:<course_legos.id>:<role>`, job #366): the row, its
+   * course, and whether this recordist is the voice cast on that role. Read from
+   * the row, never trusted from the client. Only LEGO_QUEUE_COURSES (the Welsh
+   * sandboxes) take a LEGO take here; a live course's LEGO slots are refused.
+   */
+  async function resolveLegoLine(res, recordist, parsed) {
+    const { data: lego, error } = await db()
+      .from('course_legos')
+      .select('id, course_code, seed_number, lego_index, lego_id, known_text, target_text, target1_audio_id, target2_audio_id')
+      .eq('id', parsed.legoRowId)
+      .maybeSingle()
+    if (error) throw new Error(`lego lookup failed: ${error.message}`)
+    if (!lego) { res.status(404).json({ error: `No LEGO ${parsed.legoRowId}` }); return null }
+    if (!isLegoQueueCourse(lego.course_code)) {
+      res.status(403).json({
+        error: `LEGOs of ${lego.course_code} are not recorded in the booth.`,
+        reason: 'lego_course_not_queued',
+        courseCode: lego.course_code,
+      })
+      return null
+    }
+    const { data: course, error: cErr } = await db()
+      .from('courses').select('course_code, voice_config, target_lang, known_lang, dialect').eq('course_code', lego.course_code).maybeSingle()
+    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    if (!course) { res.status(404).json({ error: `No course ${lego.course_code}` }); return null }
+    let courseLanguage = null
+    try { courseLanguage = canonicalLanguage(course.target_lang) } catch { courseLanguage = null }
+    if (courseLanguage !== recordist.language) {
+      res.status(403).json({ error: `That LEGO is ${course.target_lang}, not ${recordist.language}.`, reason: 'wrong_language', courseCode: lego.course_code })
+      return null
+    }
+    const policies = await loadPolicies(db())
+    const policy = policies.find((row) => row.language === recordist.language)
+    const castVoice = seedCastEntry(course, policyVoiceList(policy))[parsed.role]
+    if (!castVoice || !recordist.spellings.includes(castVoice.voiceId)) {
+      res.status(403).json({
+        error: castVoice
+          ? `${lego.course_code} casts ${castVoice.voiceId} to read its ${parsed.role} LEGOs, not you.`
+          : `${lego.course_code} has nobody cast to read its ${parsed.role} side.`,
+        reason: castVoice ? 'not_your_slot' : 'uncast_slot',
+        courseCode: lego.course_code,
+        role: parsed.role,
+      })
+      return null
+    }
+    return { lego, course, text: String(lego.target_text || '').trim(), role: parsed.role }
+  }
+
+  /**
+   * A take for a LEGO: the phrase take's seam exactly — script-mode filing mints
+   * the clip (with its provenance) first, then linkLegoTake points every EMPTY
+   * copy of the text's `role` slot at it. Make-before-break, fill-empty only.
+   */
+  async function recordLegoTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = await resolveLegoLine(res, recordist, parsed)
+    if (!resolved) return
+    if (!resolved.text) return res.status(409).json({ error: 'That LEGO has no text to read.', reason: 'empty_line' })
+    if (text && text.trim() && text.trim() !== resolved.text) {
+      return res.status(409).json({
+        error: 'The text on this line has changed since the queue was loaded -- reload before recording it.',
+        expected: resolved.text,
+        received: text.trim(),
+      })
+    }
+    const { res: innerRes, captured } = captureResponse()
+    await handleRecordingUpload({
+      params: { courseCode: resolved.lego.course_code },
+      headers: { authorization: req.headers.authorization },
+      socket: req.socket,
+      recordistVoiceId: recordist.voiceId,
+      body: {
+        audioData: audioBase64,
+        mimeType,
+        metadata: {
+          mode: 'script',
+          cadence: 'natural',
+          role: parsed.role,
+          kind: parsed.role,
+          text: resolved.text,
+          voiceId: recordist.voiceId,
+          legoId: resolved.lego.lego_id,
+          seedNumber: resolved.lego.seed_number,
+        },
+        provenance: {
+          recorded_by: recordist.email || recordist.displayName,
+          mode: 'recordist',
+          recording_device: device || null,
+        },
+      },
+    }, innerRes)
+    if (captured.status >= 400 || !captured.body || !captured.body.success) {
+      return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
+    }
+    const filing = captured.body.filing || null
+    const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
+    let linked = { linked: [] }
+    if (audioId) {
+      try {
+        linked = await linkLegoTake({ db: db(), recordist, legoRowId: resolved.lego.id, role: parsed.role, audioId, logger })
+      } catch (linkErr) {
+        logger.error(`[Recordist] lego link failed (take is stored and filed): ${linkErr.message}`)
+      }
+    } else {
+      logger.error(`[Recordist] lego take for ${resolved.lego.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
+    }
+    return res.json({
+      ok: true,
+      audioId,
+      kind: 'lego',
+      role: parsed.role,
+      legoId: resolved.lego.lego_id,
+      seedNumber: resolved.lego.seed_number,
+      clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(parsed.raw)}/clip`,
+      alsoFilled: Math.max(0, linked.linked.length - 1),
+      rawKey: captured.body.rawKey || null,
+      filing,
+    })
+  }
+
+  async function legoClipResponse(req, res, recordist, parsed) {
+    const resolved = await resolveLegoLine(res, recordist, parsed)
+    if (!resolved) return
+    return slotClipResponse(req, res, recordist, resolved.lego[`${parsed.role}_audio_id`], resolved.text)
+  }
+
+  /**
    * Play a phrase line's take: its own slot when this voice holds it, otherwise
    * this voice's newest take of the same words (resolveCurrentClip's recordist
    * mode) — the take exists even where a copy's slot was already filled.
@@ -1431,8 +1560,13 @@ module.exports = function createRecordistRouter({
   async function phraseClipResponse(req, res, recordist, parsed) {
     const resolved = await resolvePhraseLine(res, recordist, parsed)
     if (!resolved) return
+    return slotClipResponse(req, res, recordist, resolved.phrase[`${parsed.role}_audio_id`], resolved.text)
+  }
+
+  /** A course-row slot's take — a phrase's or a LEGO's — by the same resolver rule. */
+  async function slotClipResponse(req, res, recordist, slotAudioId, slotText) {
     const clip = await resolveCurrentClip(db(), {
-      sentence: { slot_audio_id: resolved.phrase[`${parsed.role}_audio_id`], slot_text: resolved.text },
+      sentence: { slot_audio_id: slotAudioId, slot_text: slotText },
       track: 'slot',
       language: recordist.language,
       restrictToVoices: recordist.spellings,
@@ -1524,6 +1658,12 @@ module.exports = function createRecordistRouter({
       const phraseLine = phraseQueue.parsePhraseLineId(lineId)
       if (phraseLine) {
         return await recordPhraseTake({ req, res, recordist, parsed: { ...phraseLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
+
+      // A LEGO slot (job #366). `lego:...` is not a uuid either.
+      const legoLine = parseLegoLineId(lineId)
+      if (legoLine) {
+        return await recordLegoTake({ req, res, recordist, parsed: { ...legoLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
 
       // A MINIMAL-SET piece. Same reasoning as the seed branch: `quarry:...` is
@@ -1775,6 +1915,9 @@ module.exports = function createRecordistRouter({
       const phraseLine = phraseQueue.parsePhraseLineId(req.params.lineId)
       if (phraseLine) return await phraseClipResponse(req, res, recordist, { ...phraseLine, raw: req.params.lineId })
 
+      const legoLine = parseLegoLineId(req.params.lineId)
+      if (legoLine) return await legoClipResponse(req, res, recordist, { ...legoLine, raw: req.params.lineId })
+
       const takeGLine = parseTakeGLineId(req.params.lineId)
       if (takeGLine) return await takeGClipResponse(req, res, recordist, { ...takeGLine, raw: req.params.lineId })
 
@@ -1943,6 +2086,13 @@ module.exports = function createRecordistRouter({
         return res.status(403).json({
           error: 'A practice phrase is course content -- flag it on the phrase proof page; it is not changed from the booth.',
           reason: 'phrase_line',
+        })
+      }
+      // A LEGO is course content: its words are changed by the builder.
+      if (parseLegoLineId(lineId)) {
+        return res.status(403).json({
+          error: 'A LEGO is course content -- its words are changed in the course, not from the booth.',
+          reason: 'lego_line',
         })
       }
       // A minimal-set piece is a SPAN of course content -- a LEGO, or a single
