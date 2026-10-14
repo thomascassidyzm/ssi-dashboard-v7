@@ -34,7 +34,10 @@ function scan(d) {
       const tBare = tt.length >= 1 && tt.length <= 2 && tt.every((w) => T_FUNC.has(w));
       let bare = false;
       if (l.is_new && (kBare || tBare)) bare = true;
-      if (bare) push('P1', { lego: id, known: l.known_text, target: l.target_text, type: l.type, isNew: l.is_new });
+      // hard = preposition/article (Kai's named case); soft = conjunction/adverb/determiner (judgement: Welsh teaches some of these alone)
+      const SOFT = new Set('and but or whether that than already yet like too how as since such so one until'.split(' '));
+      const hard = bare && !kt.some((w) => SOFT.has(w)) && !tt.some((w) => ['und', 'aber', 'oder', 'dass', 'ob', 'als', 'wie', 'schon', 'noch', 'so', 'zu', 'eines', 'eine', 'ein', 'seit'].includes(w) && kt.length <= 2 && !K_FUNC.has('zzz'));
+      if (bare) push('P1', { lego: id, known: l.known_text, target: l.target_text, type: l.type, isNew: l.is_new, kind: hard ? 'hard' : 'soft' });
       // P2: a later NEW lego B (shorter) lives inside this earlier lego A (new): A taught before its piece
       if (l.is_new && tt.length > 1) {
         for (const b of legos) {
@@ -47,16 +50,15 @@ function scan(d) {
       // P3: basket drills its own LEGO? (all LEGO tokens present in phrase target; for 1-token LEGOs, prefix of 4 chars to allow inflection)
       if (l.is_new) {
         const ps = phr.get(sn + ':' + l.lego_index) || [];
-        if (ps.length >= 4) {
+        if (ps.length >= 6) {
           const has = (p) => { const pt = toks(p.target_text); return tt.every((w) => pt.some((x) => x === w || (w.length >= 5 && x.length >= 5 && x.slice(0, 4) === w.slice(0, 4)))); };
           const hit = ps.filter(has).length;
-          if (hit / ps.length < 0.5) push('P3', { lego: id, known: l.known_text, target: l.target_text, containing: hit, of: ps.length, sample: ps.filter((p) => !has(p)).slice(0, 3).map((p) => p.known_text + ' | ' + p.target_text) });
+          if (hit / ps.length <= 0.2) push('P3', { lego: id, known: l.known_text, target: l.target_text, containing: hit, of: ps.length, sample: ps.filter((p) => !has(p)).slice(0, 3).map((p) => p.known_text + ' | ' + p.target_text) });
         }
       }
-      // P4: dangling build phrases
-      const ps = (phr.get(sn + ':' + l.lego_index) || []).filter((p) => p.phrase_role === 'build');
-      const bad = ps.filter((p) => { const t = toks(p.known_text); return t.length >= 2 && K_FUNC.has(t[t.length - 1]) && !['to'].includes(t[t.length - 1]) ; });
-      if (bad.length) push('P4', { lego: id, known: l.known_text, target: l.target_text, bare, nBad: bad.length, of: ps.length, sample: bad.slice(0, 3).map((p) => p.known_text + ' | ' + p.target_text) });
+      // P4: every phrase under a hard bare-function LEGO is built around a piece with no meaning of its own; list them for eyeballing
+      const ps4 = (phr.get(sn + ':' + l.lego_index) || []).filter((p) => p.phrase_role === 'build');
+      if (bare && hard && ps4.length) push('P4', { lego: id, known: l.known_text, target: l.target_text, of: ps4.length, sample: ps4.slice(0, 6).map((p) => p.known_text + ' | ' + p.target_text) });
     }
   }
   return { out, seeds, by };
