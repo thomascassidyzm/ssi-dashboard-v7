@@ -6,7 +6,7 @@ const OUT = process.argv[2]; const DIR = path.resolve(__dirname, '..');
 const W = (p, ms = 700) => p.waitForTimeout(ms);
 const OPTS = {
   a: { file: 'option-a-prompter.html', flow: async (p, shot) => {
-    await shot('1-ready'); await p.click('#chg'); await W(p, 900); await p.click('#chg');
+    await shot('1-ready'); await W(p, 900);
     await p.click('#go'); await W(p, 1500); await shot('2-live');
     for (let k = 0; k < 3; k++) { await p.click('#next'); await W(p, 1100); }
     await W(p, 900); await shot('3-live-after-3');
@@ -26,7 +26,7 @@ const OPTS = {
     await shot('3-live-line5'); await p.click('#pause'); await W(p, 900); await shot('4-paused'); await p.click('#pause'); await W(p, 600);
     for (let k = 0; k < 6; k++) { await p.click('#next'); await W(p, 500); }
     await W(p, 1600); await shot('5-set-check');
-    await p.click('[data-redo="3"]'); await W(p, 1300); await p.click('#next'); await W(p, 1700); await p.click('#nextset'); await W(p, 1300); } },
+    await p.click('[data-redo="3"]'); await W(p, 1300); await p.click('#next'); await W(p, 1700); await p.click('#go'); await W(p, 1300); } },
 };
 (async () => {
   const b = await chromium.launch();

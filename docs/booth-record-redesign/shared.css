@@ -61,3 +61,32 @@ kbd { font: 11px/1 ui-monospace, monospace; border: 1px solid var(--line); borde
 
 /* Mockup chrome: a label so a screenshot says which option it is. */
 .mock-tag { position: fixed; right: 0; top: 40%; writing-mode: vertical-rl; border-radius: 6px 0 0 6px; z-index: 99; background: rgba(15,23,42,.78); color: #fff; font-size: 11px; padding: 3px 7px; border-radius: 6px; pointer-events: none; }
+
+/* ── Compact pass (Aran, 2026-10-14: "a lot of dead space, and unnecessary navigation") ──
+   The navigation is the Popty navbar plus ONE where-am-I row, and nothing else: no breadcrumb
+   row, no separate tabs row, no "Back to home" card. The language tabs (#392) fold into the right
+   end of the where-am-I row as a two-way switch; home is the ‹ at its left end. While the mic is
+   live the row keeps its words and loses both (no link near the thumb, tabs hidden while
+   recording). Pages are one viewport tall, and the line is centred in what is left. */
+html, body { height: 100%; }
+body.app { display: flex; flex-direction: column; min-height: 100dvh; height: 100dvh; overflow: hidden; }
+.wherebar { display: flex; align-items: center; gap: 8px; padding: 7px 12px; background: var(--head-bg); border-bottom: 1px solid var(--head-line); flex: none; }
+.wherebar .home { color: var(--green); font-weight: 800; background: none; border: 0; font-size: 20px; line-height: 1; padding: 2px 6px 4px 2px; }
+.wherebar .t { flex: 1; min-width: 0; margin: 0; font-weight: 700; font-size: 14px; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: #fff; flex: none; }
+.seg button { border: 0; background: none; padding: 5px 11px; font-size: 13px; color: var(--muted); }
+.seg button.on { background: var(--ink); color: #fff; font-weight: 600; }
+.wherebar.live .home, .wherebar.live .seg { display: none; }
+.app-navbar { flex: none; }
+.fill { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.center-line { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 12px 20px; max-width: 900px; width: 100%; margin: 0 auto; overflow: auto; }
+.meta { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
+.meta .bar { flex: 1; }
+.meta b { color: #334155; }
+.setline { font-size: 13px; color: var(--muted); text-align: center; margin: 8px 0 0; }
+.setline button { background: none; border: 0; color: var(--green); font-weight: 700; font-size: 13px; padding: 0; }
+@media (max-width: 500px) {
+  .mic canvas { width: 40px; }
+  .topbtn { padding: 6px 8px !important; }
+  .line-big { font-size: 33px; }
+}

@@ -3,115 +3,106 @@
 <title>Option B — Script</title>
 <link rel="stylesheet" href="shared.css">
 <style>
-/* OPTION B — SCRIPT. The batch IS the page: one numbered list, like a script on a stand. The line
-   being read is the big highlighted row; the ones just read sit above it with their save state, the
-   next ones below. The transport stays ABOVE the words (Aran, 2026-09-11) in a sticky bar. While the
-   mic is live NO row is tappable; Pause opens every read row's Play and Read again — that is where a
-   mistake is fixed. On desktop the batch map sits in a left rail. */
-.wrap > * { min-width: 0; }
-.wrap { max-width: 1180px; margin: 0 auto; padding: 12px 16px 60px; display: grid; gap: 18px; }
-@media (min-width: 900px) { .wrap { grid-template-columns: 280px 1fr; } .rail { display: block !important; } }
-.rail { display: none; position: sticky; top: 12px; align-self: start; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
-.rail h3 { margin: 0 0 4px; font-size: 15px; }
-.rail p { margin: 0 0 10px; color: var(--muted); font-size: 13px; }
-.squares { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
+/* OPTION B — SCRIPT. The batch IS the page, like a script on a stand, one viewport tall. The line
+   being read is a big highlighted card held in the CENTRE of the scrolling script; lines just read
+   sit above it with their save state, the next ones below. The transport stays ABOVE the words
+   (Aran, 2026-09-11) in one compact row. Navigation is the Popty navbar + the one where-am-I row;
+   while live both step aside for a single status row. While the mic is live no row is tappable;
+   Pause opens every read row's ▶ and Again. On desktop the batch's 100 squares sit in a left rail. */
+.cols { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 900px) { .cols { grid-template-columns: 240px minmax(0, 1fr); } .rail { display: block !important; } }
+.rail { display: none; border-right: 1px solid var(--line); background: #fff; padding: 12px; overflow: auto; }
+.rail h3 { margin: 0 0 2px; font-size: 14px; }
+.rail p { margin: 0 0 8px; color: var(--muted); font-size: 12px; }
+.squares { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
 .squares i { aspect-ratio: 1; border: 1px solid var(--line); border-radius: 3px; background: #fff; }
 .squares i.s { background: var(--green); border-color: var(--green); }
 .squares i.u { background: #f3d58a; border-color: #e8c25d; }
 .squares i.c { outline: 2px solid var(--ink); outline-offset: 1px; }
-.bar-top { position: sticky; top: 0; z-index: 5; background: rgba(246,247,249,.97); backdrop-filter: blur(6px); padding: 10px 0; border-bottom: 1px solid var(--line); }
-.bar-top .r1 { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
-.bar-top .r1 .where-plain { flex: 1; min-width: 0; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.bar-top .count { font-size: 13px; font-weight: 700; color: #334155; white-space: nowrap; }
-.ctl { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 8px; }
-.ctl .btn { padding: 14px 8px; }
-.ready-cta { display: grid; gap: 8px; }
-.script { list-style: none; margin: 14px 0 0; padding: 0; }
-.script li { display: grid; grid-template-columns: 34px minmax(0,1fr) auto; gap: 8px; padding: 10px 6px; border-radius: 12px; align-items: start; transition: background .2s; }
-.script li .no { color: var(--faint); font-size: 13px; padding-top: 3px; text-align: right; font-variant-numeric: tabular-nums; }
-.script li .t { font-size: 17px; line-height: 1.4; color: #334155; }
-.script li .k { display: block; font-size: 13px; color: var(--faint); margin-top: 2px; }
-.script li.read .t { color: var(--muted); }
+.main { display: flex; flex-direction: column; min-height: 0; }
+.status { flex: none; display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: #fff; border-bottom: 1px solid var(--line); position: relative; }
+.status .count { margin-left: auto; font-size: 13px; font-weight: 700; color: #334155; white-space: nowrap; }
+.status .edge { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: #e5e9ef; }
+.status .edge i { display: block; height: 100%; background: var(--green); transition: width .3s; }
+.ctl { flex: none; display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 8px; padding: 8px 12px; background: var(--bg); border-bottom: 1px solid var(--line); }
+.ctl .btn { padding: 13px 8px; }
+.ctl.one { grid-template-columns: 1fr; }
+.pnote { flex: none; background: #eef0f3; padding: 7px 12px; font-size: 13px; font-weight: 600; color: #334155; }
+.script { flex: 1; min-height: 0; overflow: auto; list-style: none; margin: 0; padding: 30vh 12px 30vh; scroll-behavior: smooth; }
+.script li { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 8px; padding: 7px 6px; border-radius: 12px; align-items: start; }
+.script li .no { color: var(--faint); font-size: 12px; padding-top: 3px; text-align: right; font-variant-numeric: tabular-nums; }
+.script li .t { font-size: 16px; line-height: 1.35; color: var(--muted); }
+.script li .k { display: block; font-size: 12px; color: var(--faint); margin-top: 1px; }
 .script li.later .t { color: var(--faint); }
 .script li .acts { display: flex; gap: 6px; align-items: center; }
 .script li .acts .btn { display: none; }
-body.paused .script li.read .acts .btn, body.ready .script li.read .acts .btn { display: inline-block; }
-.script li.cur { scroll-margin-top: 190px; background: #fff; border: 2px solid var(--green); padding: 18px 14px; margin: 6px 0; grid-template-columns: 1fr; }
+body.paused .script li .acts .btn, body.ready .script li .acts .btn { display: inline-block; }
+.script li.cur { background: #fff; border: 2px solid var(--green); padding: 16px 14px; margin: 8px 0; grid-template-columns: minmax(0, 1fr); }
 .script li.cur .no { display: none; }
-.script li.cur .t { font-size: clamp(26px, 6.6vw, 40px); line-height: 1.25; color: var(--ink); font-weight: 500; }
-.script li.cur .k { font-size: 16px; color: var(--muted); margin-top: 10px; }
-.script li.cur .kind { margin: 0 0 8px; }
+.script li.cur .t { font-size: clamp(26px, 6.6vw, 42px); line-height: 1.22; color: var(--ink); font-weight: 500; }
+.script li.cur .k { font-size: 16px; color: var(--muted); margin-top: 8px; }
+.script li.cur .kind { margin: 0 0 6px; }
+body.ready .script { padding-top: 10px; }
 body.paused .script li.cur { border-color: var(--line); }
 body.paused .script li.cur .t { color: var(--faint); }
-.pnote { background: #eef0f3; border-radius: 10px; padding: 10px 12px; font-size: 14px; font-weight: 600; color: #334155; margin-top: 10px; }
-.stopwrap { text-align: center; margin-top: 26px; }
-.kbd { color: var(--faint); font-size: 12px; margin-top: 8px; }
-@media (max-width: 899px) { .kbd { display: none; } .script li { grid-template-columns: 26px minmax(0,1fr); } .script li .acts { grid-column: 2; } .script li .acts:empty { display: none; } }
+.foot { flex: none; display: flex; justify-content: center; gap: 14px; align-items: center; padding: 6px; font-size: 12px; color: var(--faint); border-top: 1px solid var(--line); background: #fff; }
+@media (max-width: 899px) { .foot .kbd { display: none; } .script li { grid-template-columns: 22px minmax(0, 1fr); } .script li .acts { grid-column: 2; } .script li .acts:empty { display: none; } .script li.cur { grid-template-columns: minmax(0,1fr); } }
 </style></head>
-<body class="ready">
+<body class="app ready">
 <header class="app-navbar" id="nav"></header>
-<div class="booth-tabs" id="tabs"></div>
-<div class="wrap">
-  <aside class="rail">
-    <h3>Batch 1 · 100 sentences</h3><p id="railp"></p>
-    <div class="squares" id="sq"></div>
-  </aside>
-  <main>
-    <div class="where" id="where"><button class="back">‹ Back to home</button><p class="title" id="hdr"></p></div>
-    <div class="bar-top" id="bartop">
-      <div class="r1"><span class="mic" id="mic"><span class="dot"></span><span id="micw">Not recording</span><canvas id="wave"></canvas></span>
-        <p class="where-plain" id="hdr2"></p><span class="count" id="count"></span></div>
-      <div class="bar" style="margin-bottom:10px"><i id="prog" style="width:0"></i></div>
-      <div class="ready-cta" id="cta"><button class="btn primary" id="go" style="padding:18px;font-size:19px">Start at line 1</button>
-        <label style="font-size:14px;color:#334155"><input type="checkbox" checked> Move on by itself when I stop speaking · <span style="color:var(--green);font-weight:700">Phone mic ▾</span></label></div>
-      <div class="ctl hidden" id="ctl"><button class="btn" id="pause">Pause</button><button class="btn" id="again">Again</button><button class="btn primary" id="next">Next</button></div>
-      <div class="pnote hidden" id="pnote">Paused — nothing is being recorded. Tap any line you've read to hear it or read it again.</div>
+<div id="where"></div>
+<div class="cols">
+  <aside class="rail"><h3>Batch 1 · 100 sentences</h3><p id="railp"></p><div class="squares" id="sq"></div></aside>
+  <div class="main">
+    <div class="status hidden" id="status">
+      <span class="mic" id="mic"><span class="dot"></span><span id="micw">Recording</span><canvas id="wave"></canvas></span>
+      <span class="count" id="count"></span><span class="edge"><i id="prog" style="width:0"></i></span>
     </div>
+    <div class="ctl one" id="cta"><button class="btn primary" id="go">Start at line 1</button></div>
+    <div class="ctl hidden" id="ctl"><button class="btn" id="pause">Pause</button><button class="btn" id="again">Again</button><button class="btn primary" id="next">Next</button></div>
+    <div class="pnote hidden" id="pnote">Paused — nothing is being recorded. Tap ▶ or Again on any line you've read.</div>
     <ol class="script" id="script"></ol>
-    <div class="stopwrap"><button class="btn small ghost hidden" id="stop">Stop here — it's all saved</button>
-      <p class="kbd"><kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause</p></div>
-  </main>
+    <div class="foot"><span id="setl">Moves on when you stop · Phone mic · <b style="color:var(--green)">Change</b></span>
+      <button class="btn small ghost hidden" id="stop">Stop here</button><span class="kbd"><kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause</span></div>
+  </div>
 </div>
 <div class="mock-tag">Option B · Script (mockup)</div>
 <script src="lines.js"></script><script src="shared.js"></script>
 <script>
 const B = window.BOOTH, L = B.lines, $ = (id) => document.getElementById(id);
-let i = 0, state = 'ready', redo = null;
-B.navbar($('nav')); B.tabs($('tabs'));
-$('hdr').textContent = B.header + ' · 100 left';
+let i = 0, state = 'ready', redo = null, waveOn = false;
+B.navbar($('nav'));
 function render() {
-  const n = B.recordedCount(), live = state === 'live';
-  document.body.className = state;
-  ['nav', 'tabs', 'where'].forEach((id) => $(id).classList.toggle('hidden', state !== 'ready'));
-  $('hdr2').textContent = state === 'ready' ? '' : B.header;
-  $('count').textContent = `${n} of ${B.batchTotal}`;
-  $('prog').style.width = (n / B.batchTotal * 100) + '%';
-  $('cta').classList.toggle('hidden', state !== 'ready'); $('ctl').classList.toggle('hidden', state === 'ready');
-  $('stop').classList.toggle('hidden', state === 'ready'); $('pnote').classList.toggle('hidden', state !== 'paused');
-  $('mic').className = 'mic' + (live ? '' : ' paused'); $('micw').textContent = live ? 'Recording' : (state === 'paused' ? 'Paused' : 'Not recording');
+  const n = B.recordedCount(), live = state !== 'ready';
+  document.body.className = 'app ' + state;
+  B.wherebar($('where'), live, B.batchTotal - n);
+  $('nav').classList.toggle('hidden', live); $('status').classList.toggle('hidden', !live);
+  $('count').textContent = `${n} of ${B.batchTotal}`; $('prog').style.width = (n / B.batchTotal * 100) + '%';
+  $('go').textContent = `Start at line ${i + 1}`; $('cta').classList.toggle('hidden', live); $('ctl').classList.toggle('hidden', !live);
+  $('stop').classList.toggle('hidden', !live); $('setl').classList.toggle('hidden', live); $('pnote').classList.toggle('hidden', state !== 'paused');
+  $('mic').className = 'mic' + (state === 'live' ? '' : ' paused'); $('micw').textContent = state === 'paused' ? 'Paused' : 'Recording';
   $('pause').textContent = state === 'paused' ? 'Resume' : 'Pause';
   $('again').disabled = $('next').disabled = state === 'paused';
   $('railp').textContent = `${n} recorded · ${B.batchTotal - n} to read`;
-  $('sq').innerHTML = Array.from({ length: 100 }, (_, k) => `<i class="${B.takes[k] === 'saved' ? 's' : B.takes[k] ? 'u' : ''} ${k === i && state !== 'ready' ? 'c' : ''}"></i>`).join('');
-  const from = Math.max(0, i - 2), to = Math.min(L.length, i + 6);
-  $('script').innerHTML = L.slice(state === 'ready' ? 0 : from, state === 'ready' ? 8 : to).map((l, j) => {
-    const k = (state === 'ready' ? 0 : from) + j;
-    const cls = state !== 'ready' && k === i ? 'cur' : (B.takes[k] ? 'read' : (k > i ? 'later' : ''));
-    const st = B.takes[k] ? `<span class="take-state ${B.takes[k] === 'saved' ? 'saved' : 'up'}">${B.takes[k] === 'saved' ? 'SAVED' : 'ON ITS WAY'}</span>` : '';
-    return `<li class="${cls}"><span class="no">${k + 1}</span><span>${cls === 'cur' ? `<p class="kind">Line ${k + 1} · ${B.kindWords(l)}</p>` : ''}<span class="t">${B.esc(l.t)}</span><span class="k">${B.esc(l.k)}</span></span>
-      <span class="acts">${st}<button class="btn small" data-play="${k}">▶</button><button class="btn small" data-redo="${k}">Read again</button></span></li>`;
+  $('sq').innerHTML = Array.from({ length: 100 }, (_, k) => `<i class="${B.takes[k] === 'saved' ? 's' : B.takes[k] ? 'u' : ''} ${k === i ? 'c' : ''}"></i>`).join('');
+  $('script').innerHTML = L.map((l, k) => {
+    const cls = k === i ? 'cur' : (B.takes[k] ? 'read' : (k > i ? 'later' : ''));
+    const st = B.takes[k] ? `<span class="take-state ${B.takes[k] === 'saved' ? 'saved' : 'up'}">${B.takes[k] === 'saved' ? 'SAVED' : 'ON ITS WAY'}</span><button class="btn small" data-play="${k}">▶</button><button class="btn small" data-redo="${k}">Again</button>` : '';
+    return `<li class="${cls}" id="row${k}"><span class="no">${k + 1}</span><span>${cls === 'cur' ? `<p class="kind">Line ${k + 1} · ${B.kindWords(l)}</p>` : ''}<span class="t">${B.esc(l.t)}</span><span class="k">${B.esc(l.k)}</span></span><span class="acts">${st}</span></li>`;
   }).join('');
+  const cur = $('row' + i), sc = $('script');
+  sc.scrollTop = cur.offsetTop - sc.offsetTop - (sc.clientHeight - cur.offsetHeight) / 2;
 }
-$('go').onclick = () => { state = 'live'; render(); B.wave($('wave'), () => state === 'live'); };
+$('go').onclick = () => { state = 'live'; render(); if (!waveOn) { B.wave($('wave'), () => state === 'live'); waveOn = true; } };
 $('next').onclick = () => { B.file(i, render); if (redo !== null) { i = redo; redo = null; } else i = Math.min(i + 1, L.length - 1); render(); };
-$('again').onclick = () => { document.querySelector('.cur .t').animate([{ opacity: .2 }, { opacity: 1 }], 400); };
+$('again').onclick = () => document.querySelector('.cur .t').animate([{ opacity: .2 }, { opacity: 1 }], 400);
 $('pause').onclick = () => { state = state === 'paused' ? 'live' : 'paused'; render(); };
 $('script').onclick = (e) => {
-  const r = e.target.closest('[data-redo]'); const p = e.target.closest('[data-play]');
+  const r = e.target.closest('[data-redo]'), p = e.target.closest('[data-play]');
   if (p) { p.textContent = '❚❚'; setTimeout(() => (p.textContent = '▶'), 1500); }
   if (r) { redo = i; i = +r.dataset.redo; state = 'live'; render(); }
 };
-$('stop').onclick = () => { state = 'ready'; i = B.recordedCount(); render(); };
+$('stop').onclick = () => { state = 'ready'; render(); };
 document.addEventListener('keydown', (e) => { if (state === 'ready') return;
   if (e.code === 'Space') { e.preventDefault(); $('next').click(); } if (e.key === 'r') $('again').click(); if (e.key === 'p') $('pause').click(); });
 render();

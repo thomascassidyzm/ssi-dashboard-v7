@@ -14,6 +14,15 @@
     el.innerHTML = TABS.map((t) => `<button class="booth-tab ${t === B.activeTab ? 'on' : ''}">${t}</button>`).join('');
   };
 
+  // The ONE where-am-I row (#378), with the language switch (#392) folded into its right end.
+  // Live: words only — no home link, no switch.
+  B.whereText = (left, live) => `${live ? B.activeTab + ' · ' : ''}New Welsh — North · New sentences · batch 1 of 7 · ${left} left`;
+  B.wherebar = function (el, live, left) {
+    el.className = 'wherebar' + (live ? ' live' : '');
+    el.innerHTML = `<button class="home" title="Back to home">‹</button><p class="t">${B.whereText(left, live)}</p>
+      <span class="seg">${TABS.map((t) => `<button class="${t === B.activeTab ? 'on' : ''}">${t}</button>`).join('')}</span>`;
+  };
+
   // A level trace from a canvas: busy while "speaking", flat while paused.
   B.wave = function (canvas, isLive) {
     const ctx = canvas.getContext('2d');
