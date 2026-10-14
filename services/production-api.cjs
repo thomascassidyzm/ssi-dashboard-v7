@@ -8154,7 +8154,7 @@ async function courseEditConnect() {
   return client
 }
 
-async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.courseCode, extra = {} }) {
+async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.courseCode, extra = {}, onApplied = null, eventDetail = {} }) {
   let plans
   try {
     plans = courseEditOps.planOps(ops, courseCode)
@@ -8176,7 +8176,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
           phrase_ids: [...new Set(ops.map(o => o.phrase_id || (o.op === 'phrase.insert' ? o.row?.id : null)).filter(Boolean))],
           rows: ops.length,
         },
-        detail: { ops: ops.slice(0, 50).map(o => o.op), op_count: ops.length },
+        detail: { ops: ops.slice(0, 50).map(o => o.op), op_count: ops.length, ...eventDetail },
       }),
     })
     let undoFile = null, undoFileError = null
@@ -8185,6 +8185,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
       // learner app keys its cached course bundle on it, and no trigger bumps it.
       await require('./shared/course-version.cjs').bumpCourseVersion(supabaseClient.getClient(), courseCode, 'patch').catch(e =>
         logger.warn(`[course-edit] content_version bump failed for ${courseCode}: ${e.message}`))
+      if (onApplied) await Promise.resolve(onApplied(out)).catch(e => logger.warn(`[course-edit] after-apply hook failed for ${courseCode}: ${e.message}`))
       if (out.undo_ops.length) {
         try {
           const name = `${new Date().toISOString().replace(/[:.]/g, '-')}-${req.contentEdit?.eventId || 'noevent'}.json`
@@ -8314,6 +8315,91 @@ app.post('/api/admin/recompute-decompositions', async (req, res) => {
   } catch (err) {
     req.contentEdit?.wroteNothing()
     logger.error('[recompute-decompositions]', err?.message || err)
+    res.status(500).json({ error: err?.message || 'unknown error' })
+  }
+})
+
+// ─── PHRASE v4 DOORS (job #517, r-2026-10-14-phrase-v4-is-the-phrase-builder) ──
+// v4 reads a course and lands its gap-fill phrases through these, not psql (#384).
+// Logic, and why it is shaped this way: services/shared/phrase-v4-door.cjs.
+// GET  /api/admin/phrase-v4/courses          every course with status + BUILD/USE count
+// GET  /api/admin/phrase-v4/course/:code     {course, seeds, legos, phrases} (?maxSeed=N)
+// POST /api/admin/phrase-v4/gap-fill         {courseCode, rows, tom_go?, apply?}
+app.get('/api/admin/phrase-v4/courses', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    res.json({ courses: await require('./shared/phrase-v4-door.cjs').listCourses(supabaseClient.getClient()) })
+  } catch (err) {
+    logger.error('[phrase-v4/courses]', err?.message || err)
+    res.status(500).json({ error: err?.message || 'unknown error' })
+  }
+})
+
+app.get('/api/admin/phrase-v4/course/:courseCode', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  if (!ADMIN_COURSE_CODE.test(req.params.courseCode)) return res.status(400).json({ error: 'courseCode required (e.g. fra_for_eng)', code: 'BAD_REQUEST' })
+  try {
+    const maxSeed = req.query.maxSeed === undefined ? 9999 : Number(req.query.maxSeed)
+    if (!Number.isInteger(maxSeed) || maxSeed < 1) return res.status(400).json({ error: 'maxSeed must be a positive integer', code: 'BAD_REQUEST' })
+    const data = await require('./shared/phrase-v4-door.cjs').readCourse(supabaseClient.getClient(), req.params.courseCode, { maxSeed })
+    if (!data) return res.status(404).json({ error: `no course ${req.params.courseCode}`, code: 'NOT_FOUND' })
+    res.json(data)
+  } catch (err) {
+    logger.error('[phrase-v4/course]', err?.message || err)
+    res.status(500).json({ error: err?.message || 'unknown error' })
+  }
+})
+
+// READ-ONLY: Popty's per-phrase gates + whole-course ZUT over staged rows (gap-fill-course.cjs's
+// gate stage asks this; the apply door asks the same question again). Body {courseCode, rows} (≤ 200).
+app.post('/api/admin/phrase-v4/gate', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const door = require('./shared/phrase-v4-door.cjs')
+  const body = req.body || {}
+  const courseCode = String(body.courseCode || '')
+  try {
+    if (!Array.isArray(body.rows) || body.rows.length > 200) return res.status(400).json({ error: '"rows" must be an array of at most 200 staged rows', code: 'BAD_REQUEST' })
+    const sb = supabaseClient.getClient()
+    const data = ADMIN_COURSE_CODE.test(courseCode) && !/^cym/.test(courseCode) ? await door.readCourse(sb, courseCode, { componentsOnly: true }) : null
+    const bad = body.rows.length ? door.precheck({ courseCode, rows: body.rows, course: data && data.course, apply: false }) : null
+    if (bad) return res.status(bad.status).json({ error: bad.error, code: bad.code })
+    const { refused } = await door.gateStagedRows({ sb, courseCode, rows: body.rows, data,
+      deps: { ...require('../tools/phrase-gate/gate-check.cjs'), checkPhraseZUT: require('./course-builder/lib/validation.cjs').checkPhraseZUT } })
+    res.json({ checked: body.rows.length, refused })
+  } catch (err) {
+    logger.error('[phrase-v4/gate]', err?.message || err)
+    res.status(500).json({ error: err?.message || 'unknown error' })
+  }
+})
+
+// Preview unless "apply": true. Preview = every gate re-run + the real insert transaction rolled back.
+app.post('/api/admin/phrase-v4/gap-fill', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const door = require('./shared/phrase-v4-door.cjs')
+  const body = req.body || {}
+  const courseCode = String(body.courseCode || '')
+  const apply = body.apply === true
+  const refuse = (status, error, code, more = {}) => { req.contentEdit?.wroteNothing(); return res.status(status).json({ error, code, applied: false, ...more }) }
+  try {
+    const sb = supabaseClient.getClient()
+    const data = ADMIN_COURSE_CODE.test(courseCode) && !/^cym/.test(courseCode) ? await door.readCourse(sb, courseCode, { componentsOnly: true }) : null
+    const bad = door.precheck({ courseCode, rows: body.rows, course: data && data.course, apply, tomGo: body.tom_go })
+    if (bad) return refuse(bad.status, bad.error, bad.code)
+    const { refused } = await door.gateStagedRows({ sb, courseCode, rows: body.rows, data,
+      deps: { ...require('../tools/phrase-gate/gate-check.cjs'), checkPhraseZUT: require('./course-builder/lib/validation.cjs').checkPhraseZUT } })
+    if (refused.length) return refuse(409, `${refused.length} staged row(s) fail a gate; nothing was written. Cut them from the staged file and send again.`, 'GATE_REFUSED', { refused: refused.slice(0, 50), refused_count: refused.length })
+    const existing = await door.readTouchedPhrases(sb, courseCode, body.rows)
+    const { rows, skipped } = door.planInsert(courseCode, body.rows, existing)
+    const plan = { course: courseCode, status: data.course.status, to_insert: rows.length, skipped: skipped.length,
+      by_role: { build: rows.filter(r => r.phrase_role === 'build').length, use: rows.filter(r => r.phrase_role === 'use').length } }
+    if (!rows.length) return refuse(200, 'Nothing to insert: every staged row is already on its LEGO.', 'NOTHING_TO_DO', { plan, ok: true })
+    return runCourseEdit(req, res, door.toInsertOps(rows), {
+      apply, courseCode, extra: { plan, skipped: skipped.slice(0, 50), tom_go: body.tom_go || null }, eventDetail: { tom_go: body.tom_go || null, pipeline: 'v4-gap', staged_at: body.staged_at || null },
+      onApplied: () => require('./shared/audio-pass-queue.cjs').queueAudioPass(sb, { courseCode, reason: 'v4 gap fill (#924)', requestedBy: req.editorIdentity?.id || null, metadata: { rowsTouched: rows.length } }),
+    })
+  } catch (err) {
+    req.contentEdit?.wroteNothing()
+    logger.error('[phrase-v4/gap-fill]', err?.message || err)
     res.status(500).json({ error: err?.message || 'unknown error' })
   }
 })
