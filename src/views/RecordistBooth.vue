@@ -38,10 +38,11 @@
  * Which tabs appear is the server's answer (GET …/voice/:voiceId/tabs, booth-tabs.cjs): only the
  * voices this caller could open on their own. A one-voice artist gets one, and sees no tab bar.
  */
-import { ref, reactive, computed, watch } from 'vue'
+import { ref, reactive, computed, watch, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import RecordistRoom from './RecordistRoom.vue'
 import { recordingApiBase as apiBase, withBoothKey, rememberBoothKey } from '@/services/recordingApi'
+import { boothMicLive } from '@/nav/boothMic'
 import { tabLabel, heldKeysHeader, loadTabsSnapshot, saveTabsSnapshot } from './recordist/booth-tabs.js'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
@@ -53,6 +54,9 @@ const tabs = ref(loadTabsSnapshot(props.voiceId) || [])
 const phases = reactive({})
 // Mid-take, the other tabs wait: a take is finished (and kept) before you can leave it.
 const recording = computed(() => phases[active.value] === 'recording')
+// The app's top bar steps out while a take is live (navbarMode, job #411).
+watch(recording, (on) => { boothMicLive.value = on }, { immediate: true })
+onUnmounted(() => { boothMicLive.value = false })
 /** voiceId → the query it was last on, so a tab comes back where you left it. */
 const placeOf = {}
 

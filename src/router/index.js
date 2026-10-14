@@ -488,7 +488,8 @@ const routes = [
     // One page per PERSON, a tab per voice (job #392); each tab is the booth below, unchanged.
     component: () => import('../views/RecordistBooth.vue'),
     props: true,
-    meta: { title: 'Recording', public: true }
+    // boothNav: Popty's own top bar, cut to this viewer's role, gone while the mic is live (job #411).
+    meta: { title: 'Recording', public: true, boothNav: true }
   },
 
   // ============================================
@@ -510,7 +511,7 @@ const routes = [
     path: '/my-recording',
     name: 'MyRecording',
     component: () => import('../views/MyRecordingEntry.vue'),
-    meta: { title: 'My lines to record', requiresAuth: true }
+    meta: { title: 'My lines to record', requiresAuth: true, boothNav: true }
   },
 
   // Record Room — the OLD recording shell. Kept alive so nothing Aran already

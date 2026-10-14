@@ -333,7 +333,7 @@ export const OUTSIDE_NAV = [
   { path: '/quality/:courseCode/learned-rules', why: 'learned rules — opened from the quality dashboard' },
   { path: '/recursive-upregulation', why: 'methodology explainer, linked from the Pedagogy page' },
   { path: '/audio-preview', why: 'estate audio preview entry — opened by URL' },
-  { path: '/my-recording', why: 'a recordist\'s own room — the navbar is hidden for recorders' },
+  { path: '/my-recording', why: 'a recordist\'s own room — booth navbar (navbarMode): the main bar, cut down for a recorder' },
   { path: '/record/:courseCode?', why: 'the Record Room shell — the navbar is hidden for recorders' },
   { path: '/:pathMatch(.*)*', why: 'the 404 catch-all' }
 ]
@@ -443,4 +443,26 @@ export function editorHomeTo(route, viewer = {}) {
   const courses = Array.isArray(viewer.courses) ? viewer.courses : []
   const code = route?.params?.courseCode || (courses.length === 1 ? courses[0] : null)
   return code ? { path: `/production/${code}/journey`, query: { cards: 'all' } } : '/'
+}
+
+/**
+ * WHICH NAVBAR A PAGE SHOWS (job #411, Aran 2026-10-14: the booth pages "need to have the same
+ * top navbar as the main Popty"). One answer for AppNavbar, so the rule is testable here:
+ *   'full'    — the main Popty bar, exactly as it is filtered for this viewer's role.
+ *   'minimal' — the same bar with nothing in it this viewer cannot use: the wordmark, and the
+ *               account menu if they are signed in. For a booth visitor main Popty has no bar to
+ *               copy — a signed-out artist on a private link (#380) or a 'recorder' login is
+ *               refused every console page — so they get no tabs, no course switcher, no Deploy.
+ *   'hidden'  — no bar.
+ * Booth pages declare `meta.boothNav`. While the mic is live the bar goes entirely: no link
+ * within reach of a thumb mid-take is the booth's own rule (RecordistRoom, the stage).
+ * viewer: { isAuthenticated, isAdmin, isRecorder, micLive }.
+ */
+export function navbarMode(route, viewer = {}) {
+  if (route?.meta?.boothNav) {
+    if (viewer.micLive) return 'hidden'
+    return viewer.isAuthenticated && !viewer.isRecorder ? 'full' : 'minimal'
+  }
+  if (route?.meta?.public === true || viewer.isRecorder) return 'hidden'
+  return 'full'
 }

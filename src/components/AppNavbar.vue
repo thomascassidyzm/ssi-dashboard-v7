@@ -1,9 +1,10 @@
 <template>
-  <header v-if="!isHidden" ref="navbarRef" class="app-navbar">
+  <header v-if="mode !== 'hidden'" ref="navbarRef" class="app-navbar" :class="{ 'navbar-booth': isBoothPage }" :data-navbar-mode="mode">
     <div class="navbar-inner">
       <!-- Left: Popty brand (→ Home) + course breadcrumb -->
       <div class="navbar-left">
-        <router-link :to="homeTo" class="navbar-brand">Popty</router-link>
+        <span v-if="mode === 'minimal' && !isAuthenticated" class="navbar-brand">Popty</span>
+        <router-link v-else :to="mode === 'minimal' ? { name: 'MyRecording' } : homeTo" class="navbar-brand">Popty</router-link>
         <span v-if="courseCrumb" class="navbar-crumb">
           <span class="crumb-sep">/</span>
           <span class="crumb-current">{{ courseCrumb }}</span>
@@ -11,7 +12,7 @@
       </div>
 
       <!-- Center: persistent primary nav -->
-      <nav class="navbar-tabs">
+      <nav v-if="mode === 'full'" class="navbar-tabs">
         <!-- An editor's always-there way back to the three cards (Tom, 2026-09-25):
              first in the row every page carries, so it is there at 390 too. -->
         <router-link
@@ -37,6 +38,7 @@
 
       <!-- Right: Summary + Env + Course Switcher + User -->
       <div class="navbar-right">
+        <template v-if="mode === 'full'">
         <span v-if="showSummary && !loading" class="course-summary">
           <span class="summary-value">{{ courseCount }}</span> courses
           <span class="summary-sep">&middot;</span>
@@ -49,6 +51,7 @@
           <RemoteControl />
         </div>
         <CourseSwitcherDropdown />
+        </template>
         <div v-if="isAuthenticated" class="user-menu" ref="userMenuRef">
           <button @click="showUserMenu = !showUserMenu" class="avatar-btn">
             {{ userInitial }}
@@ -74,7 +77,7 @@
     </div>
 
     <!-- Contextual second row: per-section sub-navigation -->
-    <div v-if="sectionTabs.length" class="navbar-subbar">
+    <div v-if="mode === 'full' && sectionTabs.length" class="navbar-subbar">
       <nav class="navbar-subtabs">
         <router-link
           v-for="tab in sectionTabs"
@@ -133,19 +136,20 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watchEffect, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useCourses } from '../composables/useCourses'
 import { useAuth } from '../composables/useAuth'
 import EnvironmentSwitcher from './EnvironmentSwitcher.vue'
 import RemoteControl from './RemoteControl.vue'
 import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
-import { primaryTabs as declaredPrimaryTabs, sectionTabs as declaredSectionTabs, editorHomeTo } from '../nav/navigation'
+import { primaryTabs as declaredPrimaryTabs, sectionTabs as declaredSectionTabs, editorHomeTo, navbarMode } from '../nav/navigation'
+import { boothMicLive } from '../nav/boothMic'
 
 const route = useRoute()
 const router = useRouter()
 const { courses, loading, loadCourses, courseCount, inProductionCount, getCourseName } = useCourses()
-const { isAuthenticated, isAdmin, isRecorder, hasDashboardAccess, user, learner, hasPassword, updatePassword, logout, getAccessToken } = useAuth()
+const { isAuthenticated, isAdmin, isRecorder, hasDashboardAccess, user, learner, hasPassword, updatePassword, logout, getAccessToken, initAuth } = useAuth()
 
 // Theme: 'dark' (default) | 'light'. Persisted; applied on <html data-theme>.
 // Initial state set by main.js before mount; the menu item flips it here.
@@ -254,9 +258,18 @@ const courseCode = computed(() => route.params.courseCode || null)
 const isCreateMode = computed(() => courseCode.value === 'new')
 const isCoursesBoard = computed(() => route.path === '/courses')
 
-// Hide on auth routes — and for recorders, who live in the Record Room shell
-// and never see the admin console chrome.
-const isHidden = computed(() => route.meta.public === true || isRecorder.value)
+// Hidden on auth routes and for recorders; on the booth pages, the bar for this
+// viewer's role, gone while the mic is live. The rule is navbarMode's.
+const isBoothPage = computed(() => route.meta.boothNav === true)
+const mode = computed(() => navbarMode(route, {
+  isAuthenticated: isAuthenticated.value,
+  isAdmin: isAdmin.value,
+  isRecorder: isRecorder.value,
+  micLive: boothMicLive.value
+}))
+// The booth is public, so the router guard never signs anyone in on it: ask here,
+// or Aran opening his own /r/ link would be shown the signed-out bar.
+watch(isBoothPage, (on) => { if (on) initAuth() }, { immediate: true })
 
 // Show the course-count chip only on the Courses library.
 const showSummary = computed(() => isCoursesBoard.value)
@@ -318,6 +331,12 @@ onUnmounted(() => {
   background: var(--color-shadow, var(--surface));
   border-bottom: 1px solid var(--color-graphite, var(--surface-3));
   padding: 0 1.5rem;
+}
+/* On the booth the bar scrolls away with the page instead of staying pinned: the
+   booth's own language tabs, batch headers and peek slot are pinned to the top of
+   the screen, and a phone has no height to spare above the line being read. */
+.app-navbar.navbar-booth {
+  position: relative;
 }
 
 .navbar-inner {
