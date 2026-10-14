@@ -24,7 +24,7 @@
  * driver (tools/course-optimization/weave-cym-new-pairing-phrases.cjs) do the I/O.
  * Test: services/course-builder/lib/new-pairing.test.cjs
  */
-const { isSameWelsh, isWelshTarget, welshExpandYn } = require('./welsh-mutation.cjs');
+const { isSameWelsh, isWelshTarget, welshExpandYn, welshExpandEin } = require('./welsh-mutation.cjs');
 
 /** Aran: "a few (2-3)". Three is asked for; two is accepted. */
 const NEW_PAIRING_PHRASES = { min: 2, max: 3 };
@@ -63,7 +63,7 @@ function hostFor(seedLegos, taughtIndex) {
 /** Does `phraseTarget` contain `legoTarget` as a run of words, each equal up to a soft mutation? */
 function containsWelsh(courseCode, legoTarget, phraseTarget) {
   // Both sides expanded, so "di’n barod" carries "yn barod" (Aran, 2026-10-14; welshExpandYn).
-  const p = welshExpandYn(phraseTarget).split(/\s+/).filter(Boolean);
+  const p = welshExpandYn(welshExpandEin(phraseTarget, [legoTarget])).split(/\s+/).filter(Boolean);
   const n = welshExpandYn(legoTarget).split(/\s+/).filter(Boolean).length;
   for (let i = 0; i + n <= p.length; i++) {
     if (isSameWelsh(courseCode, p.slice(i, i + n).join(' '), legoTarget)) return true;
