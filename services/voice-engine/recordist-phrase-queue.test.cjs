@@ -245,7 +245,7 @@ test('a phrase take fills EMPTY copies only — a slot that gained a clip is nev
   // The S0002 copy of "mor aml heno" gains somebody's clip after the plan was read.
   const later = t.course_practice_phrases.find((p) => p.id === `${N}:S0002L01U02`)
   later.target1_audio_id = 'someone_else'
-  const out = await linkPhraseTake({ db, recordist: catrin, phraseId: `${N}:S1001L01B05`, role: 'target1', audioId: 'catrin_new', logger: QUIET })
+  const out = await linkPhraseTake({ db, recordist: catrin, phraseId: `${N}:S1001L01B05`, role: 'target1', audioId: 'catrin_new', text: 'mor aml heno', logger: QUIET })
   assert.deepEqual(out.linked.map((l) => l.phraseId), [`${N}:S1001L01B05`])
   assert.equal(later.target1_audio_id, 'someone_else')
   assert.equal(t.course_practice_phrases.find((p) => p.id === `${N}:S1001L01B05`).target1_audio_id, 'catrin_new')
@@ -352,4 +352,23 @@ test('syntheticSeeds: a slot #606 EMPTIED of synthetic speech is queued for Aran
   const db3 = stubDb(plain)
   const q3 = await buildQueue(db3, await resolveRecordist(db3, ARAN_ENG))
   assert.deepEqual(q3.lines.map((l) => l.text), [], 'without the list, a usable take elsewhere makes it a link, not a line (#588)')
+})
+
+
+test('a cached phrase copy edited after planning never receives the old words', async () => {
+  for (const role of ['target1', 'target2', 'known']) {
+    const t = fixture()
+    const db = stubDb(t)
+    const recordist = await resolveRecordist(db, role === 'known' ? ARAN_ENG : role === 'target1' ? CATRIN : ARAN_CYM)
+    await buildQueue(db, recordist)
+    const first = t.course_practice_phrases.find(p => p.id === `${N}:S1001L01B05`)
+    const later = t.course_practice_phrases.find(p => p.id === `${N}:S0002L01U02`)
+    const side = role === 'known' ? 'known_text' : 'target_text'
+    const text = first[side]
+    later[side] = role === 'known' ? 'as often tomorrow' : 'mor aml yfory'
+    const out = await linkPhraseTake({ db, recordist, phraseId: first.id, role, audioId: 'heno_take', text, logger: QUIET })
+    assert.equal(first[`${role}_audio_id`], 'heno_take')
+    assert.equal(later[`${role}_audio_id`], null, role)
+    assert.deepEqual(out.linked.map(l => l.phraseId), [first.id])
+  }
 })

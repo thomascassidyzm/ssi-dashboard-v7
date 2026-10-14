@@ -1397,7 +1397,7 @@ module.exports = function createRecordistRouter({
     let linked = { linked: [] }
     if (audioId) {
       try {
-        linked = await linkPhraseTake({ db: db(), recordist, phraseId: resolved.phrase.id, role: parsed.role, audioId, logger })
+        linked = await linkPhraseTake({ db: db(), recordist, phraseId: resolved.phrase.id, role: parsed.role, audioId, text: resolved.text, logger })
       } catch (linkErr) {
         logger.error(`[Recordist] phrase link failed (take is stored and filed): ${linkErr.message}`)
       }
