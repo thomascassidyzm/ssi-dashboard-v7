@@ -80,6 +80,7 @@ const {
   buildPackQueue,
 } = require('./clone-source-store.cjs')
 const { canonicalLanguage, canonicalVoiceId, ClipIdentityError } = require('../shared/clip-identity.cjs')
+const { patchVoiceSlot } = require('../shared/policy-voice-patch.cjs')
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { resolveCurrentClip } = require('./take-selection.cjs')
 const { bucketKey } = require('../shared/dialect.cjs')
@@ -135,6 +136,10 @@ module.exports = function createRecordistRouter({
   getDb,
   logger = console,
   requireAdmin,
+  // (req,res,scope) -> user|null: an admin session OR a signed same-host agent
+  // holding `scope` (services/shared/agent-admin-identity.cjs). Falls back to
+  // plain requireAdmin when not wired, so tests and old mounts are unchanged.
+  requireAdminOrAgent = (req, res) => (requireAdmin ? requireAdmin(req, res) : { email: 'test' }),
   // Resolves ANY signed-in dashboard identity (recorder, editor, admin). Only
   // /mine takes it: that route answers "which voice am I?", which is a question
   // about the caller and cannot be answered without knowing who the caller is.
@@ -1993,11 +1998,15 @@ module.exports = function createRecordistRouter({
       if (typeof requireDashboardUser !== 'function') {
         return res.status(501).json({ error: 'Sign-in is not wired up on this service.' })
       }
-      const user = await requireDashboardUser(req, res)
+      // A signed agent holding takes:read reads any voice's takes (job #410);
+      // otherwise a signed-in person, as before.
+      const agent = req.headers['x-agent-admin'] ? await requireAdminOrAgent(req, res, 'takes:read') : null
+      if (req.headers['x-agent-admin'] && !agent) return // the gate has answered
+      const user = agent || await requireDashboardUser(req, res)
       if (!user) return // requireDashboardUser has already answered 401/403
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
-      if (!isGodAdmin(user)) {
+      if (!agent && !isGodAdmin(user)) {
         const mine = await voicesForEmail(db(), user.email)
         const spellings = new Set([recordist.voiceId, ...(recordist.spellings || [])])
         if (!mine.some((v) => spellings.has(v.voiceId))) {
@@ -2441,8 +2450,8 @@ module.exports = function createRecordistRouter({
   // ── 5. the policy itself (admin) ───────────────────────────────────────────
   router.get('/languages', async (req, res) => {
     try {
-      if (requireAdmin && !(await requireAdmin(req, res))) return
-      const rows = await loadPolicies(db())
+      if (requireAdmin && !(await requireAdminOrAgent(req, res, 'voice-slot:write'))) return
+      const rows = await loadPolicies(db(), { includeRetired: true })
       res.json(rows.map((r) => ({
         language: r.language,
         languageName: languageName(r.language),
@@ -2547,6 +2556,45 @@ module.exports = function createRecordistRouter({
       })
     } catch (err) {
       logger.error(`[Recordist] policy write: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // ── 5b. ONE voice slot, without rewriting the list (job #410) ──────────────
+  // PATCH /languages/:language/voice/:voiceId  { email?, active?, slot? }
+  // Only the named entry changes; every other reader is carried over untouched.
+  // active:false retires the slot (see policy-voice-patch.cjs) — takes stay.
+  // Compare-and-swap on updated_at, so a concurrent PUT is never overwritten.
+  router.patch('/languages/:language/voice/:voiceId', async (req, res) => {
+    try {
+      const who = await requireAdminOrAgent(req, res, 'voice-slot:write')
+      if (!who) return
+      let language
+      try { language = canonicalLanguage(req.params.language) } catch (e) {
+        if (e instanceof ClipIdentityError) return res.status(400).json({ error: e.message })
+        throw e
+      }
+      const { data: row, error: readErr } = await db()
+        .from('language_recording_policy').select('*').eq('language', language).maybeSingle()
+      if (readErr) throw new Error(`policy read failed: ${readErr.message}`)
+      if (!row) return res.status(404).json({ error: `no recording policy for ${language}` })
+      const { email, active, slot } = req.body || {}
+      const out = patchVoiceSlot(row.voices, req.params.voiceId, { email, active, slot })
+      if (!out.ok) return res.status(out.status).json({ error: out.error })
+      if (!Object.keys(out.changed).length) return res.json({ ok: true, unchanged: true, language, slot: out.slot, voiceId: req.params.voiceId })
+      const { data, error } = await db()
+        .from('language_recording_policy')
+        .update({ voices: out.voices })
+        .eq('language', language).eq('updated_at', row.updated_at)
+        .select('language').maybeSingle()
+      if (error) throw new Error(`policy write failed: ${error.message}`)
+      if (!data) return res.status(409).json({ error: 'the policy changed while this was applied — read it again and retry' })
+      invalidateLanguageQueueCache()
+      const shown = { ...out.changed, ...(out.changed.email ? { email: '(set)' } : {}) }
+      logger.log(`[Recordist] voice slot ${language}/${out.slot} ${req.params.voiceId} ${JSON.stringify(shown)} by ${who.email}`)
+      res.json({ ok: true, language, slot: out.slot, voiceId: req.params.voiceId, changed: out.changed, by: who.email })
+    } catch (err) {
+      logger.error(`[Recordist] voice slot patch: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })
     }
   })

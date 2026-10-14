@@ -413,6 +413,22 @@ const requireAdminOrLoopback = createControlPlaneGate({
 })
 const requireSameHost = loopbackOnly(isLoopbackDirectRequest)
 
+// The sanctioned door for an AGENT at an admin route (job #410): a signed
+// same-host call holding a named scope, attributed and logged. Routes opt in
+// by calling requireAdminOrAgent(req, res, scope); everything else stays
+// admin-session only. See services/shared/agent-admin-identity.cjs.
+const agentAdminIdentity = require('./shared/agent-admin-identity.cjs')
+const requireAdminOrAgent = agentAdminIdentity.adminOrAgent(
+  agentAdminIdentity.createAgentAdminVerifier({ logger }),
+  requireAdmin,
+)
+require('./shared/pod-agent-edits.cjs').mount(app, {
+  gate: requireAdminOrAgent,
+  getDb: () => supabaseClient.getClient(),
+  logger,
+  onSlotChanged: () => require('./voice-engine/recordist-queue-cache.cjs').invalidateLanguageQueueCache(),
+})
+
 // Softer sibling of the control-plane gate: ANY signed-in dashboard user, or a
 // same-host mesh caller. Used on writes that editors legitimately perform
 // (creating a course, stopping a build, pushing course-configs, flipping a
@@ -599,6 +615,7 @@ app.use('/api/recording',
     getDb: () => (supabaseClient.isInitialized() ? supabaseClient.getClient() : null),
     logger,
     requireAdmin,
+    requireAdminOrAgent,
     requireDashboardUser,
     handleRecordingUpload,
     warmPhrasePlan: true,
