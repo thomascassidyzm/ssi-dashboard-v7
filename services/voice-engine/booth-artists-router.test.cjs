@@ -1,7 +1,8 @@
 // Job #350 (Aran 2026-10-14): the recording-artists overview is God-admin only, enforced on the
-// SERVER. Proves: no token = 401, a recordist/editor = 403, an admin who is not Tom or Aran
-// (Kai — an admin AND a recording artist) = 403, Aran = 200 with the numbers; and that the
+// SERVER. Proves: no token = 401, a recordist/editor = 403, an admin who is not a God admin
+// = 403, Aran and Kai = 200 with the numbers; and that the
 // session/time maths says what booth-artist-overview.cjs says it does.
+// Job #371 (Aran 2026-10-14): Kai added to the God admins; another admin (Nick) is still 403.
 'use strict'
 
 const test = require('node:test')
@@ -32,6 +33,7 @@ function fakeDb() {
 const USERS = {
   aran: { email: 'aran@hey.com', role: 'admin' },
   kai: { email: 'kai@saysomethingin.com', role: 'admin' },
+  nick: { email: 'nick@saysomethingin.com', role: 'admin' },
   catrin: { email: 'catrinlliar@gmail.com', role: 'recorder' },
 }
 // production-api's requireAdmin, in miniature: 401 without a token, 403 for a non-admin.
@@ -63,11 +65,16 @@ test('no token is 401, a recordist is 403, and nothing is read for either', asyn
   assert.strictEqual((await get('/artists/human_dan_cym_s', 'catrin')).status, 403)
 })
 
-test('an admin who is not a God admin is refused — Kai is an admin and a recording artist', async () => {
-  const r = await get('/artists', 'kai')
+test('an admin who is not a God admin is refused', async () => {
+  const r = await get('/artists', 'nick')
   assert.strictEqual(r.status, 403)
   assert.strictEqual(r.json.artists, undefined)
-  assert.strictEqual((await get('/artists/human_dan_cym_s', 'kai')).status, 403)
+  assert.strictEqual((await get('/artists/human_dan_cym_s', 'nick')).status, 403)
+})
+
+test('Kai is a God admin (Aran, job #371)', async () => {
+  assert.strictEqual((await get('/artists', 'kai')).status, 200)
+  assert.strictEqual((await get('/artists/human_dan_cym_s', 'kai')).status, 200)
 })
 
 test('Aran sees every artist, with archived takes folded into their voice', async () => {
@@ -86,8 +93,8 @@ test('Aran sees every artist, with archived takes folded into their voice', asyn
   assert.strictEqual(d.json.daily[29].takes, 2)
 })
 
-test('the God-admin list is exactly Tom and Aran', () => {
-  assert.deepStrictEqual([...ov.GOD_ADMIN_EMAILS].sort(), ['aran@hey.com', 'thomas.cassidy+ssi@gmail.com'])
+test('the God-admin list is exactly Tom, Aran and Kai', () => {
+  assert.deepStrictEqual([...ov.GOD_ADMIN_EMAILS].sort(), ['aran@hey.com', 'kai@saysomethingin.com', 'thomas.cassidy+ssi@gmail.com'])
   assert.strictEqual(ov.isGodAdmin({ email: 'Aran@Hey.com', role: 'admin' }), true)
   assert.strictEqual(ov.isGodAdmin({ email: 'aran@hey.com', role: 'editor' }), false)
 })

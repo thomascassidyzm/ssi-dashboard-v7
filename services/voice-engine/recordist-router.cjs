@@ -16,7 +16,7 @@
  *   GET  /voice/:voiceId                    the by-language queue (recordist-queue.cjs)
  *   POST /voice/:voiceId/take               a take → the EXISTING upload seam
  *   GET  /voice/:voiceId/line/:lineId/clip  the STORED bytes, for playback
- *   GET  /voice/:voiceId/latest-takes       newest stored takes, signed URLs (admin page)
+ *   GET  /voice/:voiceId/latest-takes       newest stored takes, signed URLs (signed in: own voice or God admin)
  *   GET  /coverage                          per-language bar (every human_only language)
  *   GET  /languages  PUT /languages/:language   the policy itself (admin)
  *
@@ -82,6 +82,7 @@ const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { resolveCurrentClip } = require('./take-selection.cjs')
 const { bucketKey } = require('../shared/dialect.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
+const { isGodAdmin } = require('./booth-god-admins.cjs')
 
 const MAX_TAKE_BYTES = 60 * 1024 * 1024
 
@@ -1887,12 +1888,31 @@ module.exports = function createRecordistRouter({
   // assigned recordist has just made. The line-keyed clip route above answers
   // "play this line"; this answers "what did they record last", straight from
   // course_audio by recording time, so it covers every kind of take (pod, seed,
-  // quarry, re-record) without walking the queue. Link-is-identity, exactly as
-  // the clip route: the voice id is the claim and the same signed URLs are minted.
+  // quarry, re-record) without walking the queue.
+  //
+  // NOT link-is-identity (Aran, 2026-10-14, job #371): artists must never see
+  // each other's work, and this route lists AND signs a voice's takes, so a
+  // booth link with the voice id swapped handed anyone another artist's
+  // recordings. The booth page never calls it — only /admin/recording does —
+  // so it needs a signed-in caller who either reads this voice themselves
+  // (voicesForEmail, the same resolution /mine uses) or is a God admin.
   router.get('/voice/:voiceId/latest-takes', async (req, res) => {
     try {
+      if (typeof requireDashboardUser !== 'function') {
+        return res.status(501).json({ error: 'Sign-in is not wired up on this service.' })
+      }
+      const user = await requireDashboardUser(req, res)
+      if (!user) return // requireDashboardUser has already answered 401/403
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
+      if (!isGodAdmin(user)) {
+        const mine = await voicesForEmail(db(), user.email)
+        const spellings = new Set([recordist.voiceId, ...(recordist.spellings || [])])
+        if (!mine.some((v) => spellings.has(v.voiceId))) {
+          logger.warn(`[Recordist] latest-takes: refused ${user.email || 'unknown'} for ${recordist.voiceId}`)
+          return res.status(403).json({ error: 'You can only see your own recent takes.' })
+        }
+      }
       const limit = Math.min(Math.max(parseInt(req.query.limit, 10) || 10, 1), 50)
       const { data, error } = await db()
         .from('course_audio')
