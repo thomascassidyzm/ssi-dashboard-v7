@@ -259,7 +259,7 @@ async function guardLive(pg, db) {
   const u05 = db.phrases.find((p) => p.sid === EDIT_223.id);
   if (!u05 || u05.known_text !== EDIT_223.before[0] || u05.target_text !== EDIT_223.before[1]) problems.push(`${EDIT_223.id} does not hold its BEFORE text`);
   // new ids must never have been used (progress and history are keyed on ids)
-  const { rows: ev } = await pg.query('SELECT scope, detail FROM content_edit_events WHERE course_code=$1', [COURSE]);
+  const { rows: ev } = await pg.query('SELECT scope, detail FROM content_edit_events WHERE course_code=$1 AND surface<>$2', [COURSE, SURFACE]); // this tool's own events (a rolled-back attempt) do not count
   const used = new Set(); for (const r of ev) for (const m of JSON.stringify([r.scope, r.detail]).match(/S0190L0[12][BUC]\d{2}/g) || []) used.add(m);
   for (const r of NEW_190.filter((x) => !x.keep)) if (used.has(r.id) || db.phrases.some((p) => p.sid === r.id)) problems.push(`${r.id} was used before — pick another id`);
   const { rows: marks } = await pg.query("SELECT lego_id FROM human_authored_presentations WHERE course_code=$1 AND lego_id LIKE 'S0190%'", [COURSE]);
@@ -343,6 +343,8 @@ async function apply(pg, db) {
           [l.id, COURSE, old.presentation_audio_id, oldText, l.intro, `${SWEEP}: LEGO re-cut (job ${JOB}, event ${ev.lego}); clip detached, asset kept`]);
       }
     }
+    // Park seed 190's rows clear of the final positions ((seed, lego_index, position) is unique).
+    await pg.query('UPDATE course_practice_phrases SET position=position+1000 WHERE course_code=$1 AND seed_number=190', [COURSE]);
     // 2. Replacements first: new rows, then in-place re-texts (a side whose words did not change keeps its clip).
     for (const r of adds) {
       const lego = legoOf(r);
@@ -395,10 +397,17 @@ async function render(body) {
   return res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }));
 }
 
+/** One short-lived connection per write: the pooler drops a connection left idle while a render runs. */
+async function q1(sql, args) {
+  const { Client } = require('pg');
+  const c = new Client({ connectionString: process.env.DATABASE_URL }); await c.connect();
+  try { return await c.query(sql, args); } finally { await c.end(); }
+}
+
 async function audio(pg, { dry }) {
   const log = [];
-  const { rows: ph } = await pg.query("SELECT id, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id FROM course_practice_phrases WHERE course_code=$1 AND (seed_number=190 OR id=$2) ORDER BY id", [COURSE, `${COURSE}:${EDIT_223.id}`]);
-  const { rows: lg } = await pg.query('SELECT lego_id, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id FROM course_legos WHERE course_code=$1 AND seed_number=190 ORDER BY lego_id', [COURSE]);
+  const { rows: ph } = await q1("SELECT id, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id FROM course_practice_phrases WHERE course_code=$1 AND (seed_number=190 OR id=$2) ORDER BY id", [COURSE, `${COURSE}:${EDIT_223.id}`]);
+  const { rows: lg } = await q1('SELECT lego_id, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id FROM course_legos WHERE course_code=$1 AND seed_number=190 ORDER BY lego_id', [COURSE]);
   const slots = [];
   const push = (table, key, r) => { for (const [role, col, textCol] of [['known', 'known_audio_id', 'known_text'], ['target1', 'target1_audio_id', 'target_text'], ['target2', 'target2_audio_id', 'target_text']]) if (!r[col]) slots.push({ table, key, keyVal: r[key], role, col, text: r[textCol], textCol }); };
   for (const r of ph) push('course_practice_phrases', 'id', r);
@@ -407,7 +416,7 @@ async function audio(pg, { dry }) {
     const out = await render({ role: s.role, text: s.text, dryRun: dry });
     let linked = null;
     if (!dry && out.ok && out.audioId) {
-      const u = await pg.query(`UPDATE ${s.table} SET ${s.col}=$1 WHERE course_code=$2 AND ${s.key}=$3 AND ${s.col} IS NULL AND ${s.textCol}=$4`, [out.audioId, COURSE, s.keyVal, s.text]);
+      const u = await q1(`UPDATE ${s.table} SET ${s.col}=$1 WHERE course_code=$2 AND ${s.key}=$3 AND ${s.col} IS NULL AND ${s.textCol}=$4`, [out.audioId, COURSE, s.keyVal, s.text]);
       linked = u.rowCount === 1 ? 'linked' : 'slot already filled (autolink)';
     }
     log.push({ slot: `${s.keyVal.replace(`${COURSE}:`, '')} ${s.role}`, text: s.text, source: out.source, chars: out.wouldSpendChars || out.charsSpent || 0, audioId: out.audioId || null, linked, error: out.ok ? undefined : (out.code || out.error) });
@@ -417,10 +426,10 @@ async function audio(pg, { dry }) {
     if (row?.presentation_audio_id) { log.push({ slot: `${l.id} presentation`, text: l.intro, source: 'already linked', chars: 0, audioId: row.presentation_audio_id }); continue; }
     const out = await render({ role: 'presentation', text: l.intro, legoId: l.id, dryRun: dry });
     if (!dry && out.ok && out.audioId) {
-      const { rows: [a] } = await pg.query('SELECT duration_ms FROM course_audio WHERE id::text=$1', [out.audioId]);
-      await pg.query(`INSERT INTO lego_introductions (course_code, lego_id, presentation_audio_id, audio_uuid, duration_ms, updated_at) VALUES ($1,$2,$3,$3,$4,now())
+      const { rows: [a] } = await q1('SELECT duration_ms FROM course_audio WHERE id::text=$1', [out.audioId]);
+      await q1(`INSERT INTO lego_introductions (course_code, lego_id, presentation_audio_id, audio_uuid, duration_ms, updated_at) VALUES ($1,$2,$3,$3,$4,now())
         ON CONFLICT (course_code, lego_id) DO UPDATE SET presentation_audio_id=EXCLUDED.presentation_audio_id, audio_uuid=EXCLUDED.audio_uuid, duration_ms=COALESCE(EXCLUDED.duration_ms, lego_introductions.duration_ms), updated_at=now()`, [COURSE, l.id, out.audioId, a?.duration_ms || null]);
-      await pg.query('UPDATE course_audio SET lego_id=$1 WHERE id::text=$2 AND (lego_id IS NULL OR lego_id<>$1)', [l.id, out.audioId]);
+      await q1('UPDATE course_audio SET lego_id=$1 WHERE id::text=$2 AND (lego_id IS NULL OR lego_id<>$1)', [l.id, out.audioId]);
     }
     log.push({ slot: `${l.id} presentation`, text: l.intro, source: out.source, chars: out.wouldSpendChars || out.charsSpent || 0, audioId: out.audioId || null, legoLinked: out.legoLinked, error: out.ok ? undefined : (out.code || out.error) });
   }
@@ -429,7 +438,8 @@ async function audio(pg, { dry }) {
 
 async function main() {
   const { Client } = require('pg');
-  const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect();
+  let pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect();
+  pg.on('error', (e) => console.error(`pg: ${e.message}`));
   try {
     const plan = checkPlan();
     console.log(plan.length ? `PLAN BREAKS ITS OWN RULES:\n  ${plan.join('\n  ')}` : 'plan: LEGOs tile seed 190, components tile, every row contains its LEGO both sides, no later sibling, no duplicates, baskets fed, seed sentence + "later" phrase present, no K44 defect');
@@ -453,6 +463,8 @@ async function main() {
         for (const x of real) console.log(`  ${x.slot.padEnd(22)} ${String(x.source).padEnd(12)} ${String(x.chars).padStart(4)}  ${x.audioId || ''} ${x.linked || (x.legoLinked ? 'lego linked' : '')}${x.error ? `  ERROR ${x.error}` : ''}`);
         console.log(`spent ${real.reduce((n, x) => n + (x.source === 'rendered' ? x.chars || 0 : 0), 0)} chars`);
       }
+      await pg.end().catch(() => {});
+      pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect();
       db = await load(pg);
     }
     const problems = verify(db);
