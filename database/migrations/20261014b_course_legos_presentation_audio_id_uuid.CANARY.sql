@@ -17,7 +17,15 @@ CREATE SCHEMA canary_387;
 REVOKE ALL ON SCHEMA canary_387 FROM PUBLIC;
 
 CREATE TABLE canary_387.course_legos (LIKE public.course_legos INCLUDING ALL);
-INSERT INTO canary_387.course_legos SELECT * FROM public.course_legos;
+-- Generated columns (lego_id) cannot be inserted: copy the stored columns by name.
+DO $$
+DECLARE cols text;
+BEGIN
+  SELECT string_agg(quote_ident(column_name), ', ' ORDER BY ordinal_position) INTO cols
+    FROM information_schema.columns
+   WHERE table_schema = 'public' AND table_name = 'course_legos' AND is_generated = 'NEVER';
+  EXECUTE format('INSERT INTO canary_387.course_legos (%s) SELECT %s FROM public.course_legos', cols, cols);
+END $$;
 
 -- Copy the row triggers that read or write presentation_audio_id onto the copy.
 DO $$
