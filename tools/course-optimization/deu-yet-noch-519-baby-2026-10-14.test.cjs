@@ -5,6 +5,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const T = require('./deu-yet-noch-519-baby-2026-10-14.cjs');
+const M = require('../../services/shared/intro-mirror.cjs');
 
 const C = 'deu_for_eng';
 const lid = (s, i) => `S${String(s).padStart(4, '0')}L${String(i).padStart(2, '0')}`;
@@ -16,7 +17,6 @@ function preDump() {
     L(478, 1, 'she has', 'sie hat'), L(420, 3, 'he', 'er'), L(372, 2, 'tried', 'versucht'), L(517, 2, 'gone', 'gegangen'),
     L(629, 3, 'but', 'aber'), L(268, 2, 'sent', 'geschickt'), L(565, 1, 'about it', 'darüber')];
   const phrases = [
-    Ph('S0519L04B01', 'yet', 'noch'),
     Ph('S0519L04B02', 'not yet', 'noch nicht'), Ph('S0519L04B03', 'she has not yet', 'sie hat noch nicht'),
     Ph('S0519L04U01', 'she has not tried yet', 'sie hat es noch nicht versucht'),
     Ph('S0519L04U03', 'he has not done it yet', 'er hat das noch nicht gemacht'),
@@ -78,4 +78,17 @@ test('only the changed sides ask for audio', () => {
   assert.equal(r.filter((x) => x.phrase_id.endsWith('S0268L02U03')).map((x) => x.role).join(), 'known');
   assert.equal(r.filter((x) => x.phrase_id.endsWith('S0519L02U01')).map((x) => x.role).join(), 'known,target1,target2');
   assert.deepEqual(T.linkOps({ 'known|their new baby': 'a1' }), [{ op: 'audio.link', target: 'phrase', phrase_id: `${C}:S0519L02B01`, slot: 'known', audio_id: 'a1' }]);
+});
+
+test('the intro reads as a mirror of "yet" under the course template (the house colon and dash made it read as the chunk)', () => {
+  const compiled = M.compileTemplate("The {target_lang_name} for: '{known}', as in — '{seed}', is:", { knownLang: 'eng' });
+  assert.equal(M.verdict({ introText: T.INTRO.text, knownText: 'yet', compiled }).status, 'mirror');
+  const dashed = T.INTRO.text.replace("German for '", "German for: '").replace("as in '", "as in — '"); // run 1's clip
+  assert.deepEqual(M.verdict({ introText: dashed, knownText: 'yet', compiled }).reasons, ['chunk']);
+});
+
+test('a re-run on the landed course emits nothing', () => {
+  const post = T.applyPlan(preDump());
+  assert.deepEqual(T.textOps(post), []);
+  assert.deepEqual(T.slotRequests(post), []);
 });

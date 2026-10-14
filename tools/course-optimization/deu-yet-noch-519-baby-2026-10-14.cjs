@@ -13,7 +13,7 @@
 //     anywhere has told the learner that this "yet" is schon (U07's gekommen is taught by no new LEGO at all).
 //  3. P25: S0519L04's basket goes dark, so each noch-nicht drill row moves under a NEW LEGO it contains on both
 //     sides at whose seed every word is taught — the nearest such LEGO to round 1073; none fits → deleted.
-//     S0519L04B01 "yet | noch" is the LEGO's own row and stays (spa #412 precedent).
+//     S0519L04B01 "yet | noch" (the LEGO's own row) is deleted in run 2: it could only duplicate S0060L01 itself.
 //  4. S0519L02 "their new baby | ihr neues Baby": the LEGO grew but the basket still drilled "a new one | ein
 //     neues". Every row is rewritten (same ids, same positions) to contain the whole LEGO, from taught words.
 //  5. S0519L04U08 is seed 431's sentence (P26), sitting in a basket that now goes dark. Seed 431's own LEGOs are
@@ -45,7 +45,7 @@ const COURSE = 'deu_for_eng';
 const P = (s) => `${COURSE}:${s}`;
 const sid = (id) => id.slice(COURSE.length + 1);
 
-const INTRO = { lego: 'S0060L01', text: "The German for: 'yet', when really you mean 'not yet', as in — 'I haven't slept yet', is:",
+const INTRO = { lego: 'S0060L01', text: "The German for 'yet', when really you mean 'not yet', as in 'I haven't slept yet', is:",
   example: { known: "I haven't slept yet", target: 'ich habe noch nicht geschlafen' } };
 const FLIPS = { S0519L04: false };
 
@@ -59,7 +59,13 @@ const MOVES = [
   ['S0519L04U06', 'S0517L02', 'use'],     // she has not yet gone
   ['S0519L04U08', 'S0629L03', 'use'],     // seed 431's sentence (P26: S0060L01 is earlier but "they" is not taught until seed 87)
 ];
+// Run 2 (same day): S0519L04B01 "yet | noch" is the LEGO's own row; its only possible home would duplicate S0060L01
+// itself, and left behind it is a dark basket (check-debut-practice "dark 1") — rule 3 says drop it.
+// The intro is now Kai's punctuation verbatim — "The German for 'yet', … as in '…', is:" — with no colon after "for" and
+// no dash after "as in": with either, intro-mirror read the line as the house template (frame B, or frame A lazily)
+// and took "yet', when really you mean 'not yet…" for the quoted chunk. Run 1's clip carried both and was MISMATCH.
 const DELETES = [
+  ['S0519L04B01', 'yet', 'noch'],
   ['S0519L04U02', 'have you tried yet?', 'hast du es schon versucht?'],
   ['S0519L04U07', 'has she come yet?', 'ist sie schon gekommen?'],
   ['S0519L04U04', 'she has not come yet', 'sie ist noch nicht gekommen'], // gekommen: taught by no new LEGO anywhere
@@ -179,7 +185,7 @@ function invariants(d) {
   }
   // S0519L04's dark basket keeps only its own LEGO row
   const left = d.phrases.filter((p) => legoOfPhrase(p) === 'S0519L04' && p.phrase_role !== 'component').map((p) => sid(p.id));
-  if (left.join() !== 'S0519L04B01') problems.push(`S0519L04 still holds ${left.join(', ')}`);
+  if (left.length) problems.push(`S0519L04 still holds ${left.join(', ')}`);
   // every S0519L02 row drills the whole LEGO
   for (const p of d.phrases.filter((x) => legoOfPhrase(x) === 'S0519L02' && x.phrase_role !== 'component'))
     if (!T.containsWords(p.target_text, 'ihr neues Baby')) problems.push(`${sid(p.id)} does not drill "ihr neues Baby"`);
@@ -194,13 +200,16 @@ function checkPlan(dump) {
   for (const id of Object.keys(FLIPS)) { const l = dump.legos.find((x) => x.lego_id === id); if (!l || l.known_text !== 'yet' || l.target_text !== 'noch') problems.push(`${id} drifted`); }
   const L60 = dump.legos.find((l) => l.lego_id === INTRO.lego);
   if (!L60 || !L60.is_new || L60.known_text !== 'yet' || L60.target_text !== 'noch') problems.push(`${INTRO.lego} is not the new "yet | noch"`);
-  for (const [s, fk, ft] of [...REWRITES, ...DELETES]) {
+  // a re-run finds earlier steps already landed: each row is either as it was or as the plan leaves it
+  for (const [s, fk, ft, k, t] of REWRITES) {
     const p = live.get(s);
     if (!p) problems.push(`${s} not in dump`);
-    else if (p.known_text !== fk || p.target_text !== ft) problems.push(`${s} drifted: "${p.known_text} | ${p.target_text}"`);
+    else if (!(p.known_text === fk && p.target_text === ft) && !(p.known_text === k && p.target_text === t)) problems.push(`${s} drifted: "${p.known_text} | ${p.target_text}"`);
   }
-  for (const [s] of MOVES) if (!live.has(s)) problems.push(`${s} not in dump`);
-  for (const [s, [a]] of Object.entries(POSITIONS)) if (live.get(s)?.position !== a) problems.push(`${s} position drifted`);
+  for (const [s, fk, ft] of DELETES) { const p = live.get(s); if (p && (p.known_text !== fk || p.target_text !== ft)) problems.push(`${s} drifted`); }
+  const movedFrom = new Set(dump.phrases.map((p) => p.metadata && p.metadata.moved_from).filter(Boolean));
+  for (const [s] of MOVES) if (!live.has(s) && !movedFrom.has(s)) problems.push(`${s} neither in place nor moved`);
+  for (const [s, [a, b]] of Object.entries(POSITIONS)) if (![a, b].includes(live.get(s)?.position)) problems.push(`${s} position drifted`);
 
   const post = applyPlan(dump);
   const byId = new Map(post.legos.map((l) => [l.lego_id, l]));
@@ -237,34 +246,40 @@ function checkPlan(dump) {
 }
 
 // ── edit-batch ──
+/** Only what has not landed yet (re-runs are safe: run 1 applied 68 ops, run 2 added the B01 delete). */
 function textOps(dump) {
   const post = applyPlan(dump);
+  const live = new Map(dump.phrases.map((p) => [sid(p.id), p]));
   const ops = [];
-  for (const [id, v] of Object.entries(FLIPS)) ops.push({ op: 'lego.update', lego_id: id, expect: { is_new: !v }, set: { is_new: v } });
-  for (const [s, [a, b]] of Object.entries(POSITIONS)) ops.push({ op: 'phrase.update', phrase_id: P(s), expect: { position: a }, set: { position: b } });
+  for (const [id, v] of Object.entries(FLIPS)) if (dump.legos.find((l) => l.lego_id === id).is_new !== v) ops.push({ op: 'lego.update', lego_id: id, expect: { is_new: !v }, set: { is_new: v } });
+  // highest first: (seed, lego, position) is unique, so each step down needs the place below it already vacated
+  for (const [s, [a, b]] of Object.entries(POSITIONS).sort((x, y) => y[1][1] - x[1][1])) if (live.get(s).position !== b) ops.push({ op: 'phrase.update', phrase_id: P(s), expect: { position: a }, set: { position: b } });
   for (const i of post.inserts) {
     const was = dump.phrases.find((p) => p.id === P(i.from));
     ops.push({ op: 'phrase.insert', row: i.row });
     ops.push({ op: 'phrase.delete', phrase_id: was.id, expect: { known_text: was.known_text, target_text: was.target_text } });
   }
-  for (const [s, fk, ft] of DELETES) ops.push({ op: 'phrase.delete', phrase_id: P(s), expect: { known_text: fk, target_text: ft } });
+  for (const [s, fk, ft] of DELETES) if (live.has(s)) ops.push({ op: 'phrase.delete', phrase_id: P(s), expect: { known_text: fk, target_text: ft } });
   for (const [s, fk, ft, k, t] of REWRITES) {
+    if (live.get(s).known_text === k && live.get(s).target_text === t) continue;
     const set = {}; if (k !== fk) set.known_text = k; if (t !== ft) set.target_text = t;
     ops.push({ op: 'phrase.update', phrase_id: P(s), expect: { known_text: fk, target_text: ft }, set });
   }
   return ops;
 }
 /** Slots whose words change: known if the English changed, both target slots if the German changed. */
-function slotRequests() {
+function slotRequests(dump = null) {
   const out = [];
+  const done = (s, k, t) => dump && dump.phrases.some((p) => p.id === P(s) && p.known_text === k && p.target_text === t);
   for (const [s, fk, ft, k, t] of REWRITES) {
+    if (done(s, k, t)) continue;
     if (k !== fk) out.push({ phrase_id: P(s), role: 'known', text: k });
     if (t !== ft) out.push({ phrase_id: P(s), role: 'target1', text: t }, { phrase_id: P(s), role: 'target2', text: t });
   }
   return out;
 }
-function linkOps(audioMap) {
-  return slotRequests().filter((r) => audioMap[`${r.role}|${r.text}`])
+function linkOps(audioMap, dump = null) {
+  return slotRequests(dump).filter((r) => audioMap[`${r.role}|${r.text}`])
     .map((r) => ({ op: 'audio.link', target: 'phrase', phrase_id: r.phrase_id, slot: r.role, audio_id: audioMap[`${r.role}|${r.text}`] }));
 }
 
@@ -283,12 +298,12 @@ if (require.main === module) {
     const pr = invariants(dump); console.log(pr.length ? pr.join('\n') : 'course holds the rulings'); process.exit(pr.length ? 2 : 0);
   } else if (cmd === 'ops') {
     const audio = opt('--audio') ? JSON.parse(fs.readFileSync(opt('--audio'), 'utf8')) : {};
-    const ops = [...textOps(dump), ...linkOps(audio)];
+    const ops = [...textOps(dump), ...linkOps(audio, dump)];
     fs.writeFileSync(opt('--out') || 'ops.json', JSON.stringify({ ops }, null, 1));
-    console.log(`${ops.length} ops (${linkOps(audio).length} audio links of ${slotRequests().length} changed slots)`);
+    console.log(`${ops.length} ops (${linkOps(audio, dump).length} audio links of ${slotRequests(dump).length} changed slots)`);
   } else if (cmd === 'renders') {
     const apply = rest.includes('--apply');
-    const reqs = slotRequests().filter((r, i, a) => a.findIndex((x) => x.role === r.role && x.text === r.text) === i);
+    const reqs = slotRequests(dump).filter((r, i, a) => a.findIndex((x) => x.role === r.role && x.text === r.text) === i);
     if (rest.includes('--intro')) reqs.push({ role: 'presentation', text: INTRO.text, lego_id: INTRO.lego });
     const map = {}; let chars = 0, refused = 0;
     for (const r of reqs) {
