@@ -208,6 +208,7 @@ import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 import { getApiUrl } from '../services/api'
 import { rememberedBooth } from '../views/recordist/booth-pointer.js'
+import { withBoothKey, rememberBoothKey } from '../services/recordingApi'
 
 const router = useRouter()
 
@@ -217,8 +218,11 @@ onMounted(async () => {
   const fromLink = redirect.match(/^\/r\/([^/?#]+)/)
   const voiceId = (fromLink && decodeURIComponent(fromLink[1])) || rememberedBooth()
   if (!voiceId) return
+  // A private booth link (job #380) carries its key: keep it, and present it.
+  const linkKey = fromLink ? new URLSearchParams(redirect.split('?')[1] || '').get('k') : null
+  if (linkKey) rememberBoothKey(voiceId, linkKey)
   try {
-    const resp = await fetch(`${getApiUrl()}/api/recording/voice/${encodeURIComponent(voiceId)}/casting`)
+    const resp = await fetch(withBoothKey(`${getApiUrl()}/api/recording/voice/${encodeURIComponent(voiceId)}/casting`, voiceId))
     if (resp.ok) boothCasting.value = await resp.json()
   } catch { /* no line rather than a broken page */ }
 })

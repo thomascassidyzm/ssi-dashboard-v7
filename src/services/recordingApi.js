@@ -67,3 +67,51 @@ export function recordingApiBase() {
 export function recordingUrl(path) {
   return `${recordingApiBase()}${path}`
 }
+
+// ── PRIVATE BOOTH LINKS (Aran, 2026-10-14, job #380) ─────────────────────────
+// A booth link is /r/<voice>?k=<key>, and every /api/recording/voice/<voice>/…
+// call must carry that key (services/voice-engine/booth-link-keys.cjs). The key
+// is read off the page URL the first time and kept in localStorage PER VOICE, so
+// a refresh, a tab return or a home-screen icon saved without the query string
+// still works. It travels as ?k= on every call because an <audio src> cannot
+// send a header. A setup-check pack (pack-setup-<voice>) is the same artist's
+// booth and uses the same key.
+const BOOTH_KEY_STORE = 'popty.boothKey.'
+const SETUP_PACK_PREFIX = 'pack-setup-'
+
+export function boothKeyId(voiceId) {
+  const v = String(voiceId == null ? '' : voiceId).trim()
+  return v.startsWith(SETUP_PACK_PREFIX) ? v.slice(SETUP_PACK_PREFIX.length) : v
+}
+
+export function rememberBoothKey(voiceId, key) {
+  if (!voiceId || !key || typeof localStorage === 'undefined') return
+  try { localStorage.setItem(BOOTH_KEY_STORE + boothKeyId(voiceId), key) } catch { /* private mode: the URL still carries it */ }
+}
+
+/** The key for this voice's booth: the page URL's ?k= (remembered), else the remembered one. */
+export function boothKey(voiceId) {
+  if (!voiceId) return null
+  if (typeof window !== 'undefined' && window.location) {
+    const m = window.location.pathname.match(/^\/r\/([^/?#]+)/)
+    const fromUrl = new URLSearchParams(window.location.search).get('k')
+    if (m && fromUrl && boothKeyId(decodeURIComponent(m[1])) === boothKeyId(voiceId)) {
+      rememberBoothKey(voiceId, fromUrl)
+      return fromUrl
+    }
+  }
+  try { return (typeof localStorage !== 'undefined' && localStorage.getItem(BOOTH_KEY_STORE + boothKeyId(voiceId))) || null } catch { return null }
+}
+
+/** Append this voice's booth key to a booth API URL (unchanged when none is held). */
+export function withBoothKey(url, voiceId) {
+  const key = boothKey(voiceId)
+  if (!url || !key) return url
+  return `${url}${url.includes('?') ? '&' : '?'}k=${encodeURIComponent(key)}`
+}
+
+/** The private link to send an artist. */
+export function privateBoothLink(origin, voiceId, key) {
+  const base = `${origin}/r/${encodeURIComponent(voiceId)}`
+  return key ? `${base}?k=${encodeURIComponent(key)}` : base
+}

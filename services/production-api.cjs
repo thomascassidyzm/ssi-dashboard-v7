@@ -181,7 +181,7 @@ if (process.env.POPTY_PREVIEW === '1') {
 app.use(cors({
   origin: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning', 'x-booth-key'],
   credentials: true
 }))
 // ── THE BASKET LAB, mounted BEFORE the body parser ──────────────────────────
@@ -598,11 +598,39 @@ app.use('/api/production/:courseCode/audio-preview',
 // gated server-side inside the router. Under /api/recording so popty.app's
 // same-origin rewrite reaches it; mounted first so nothing link-is-identity
 // below can ever answer for it.
+// PRIVATE BOOTH LINKS (Aran, 2026-10-14, job #380): one key store and one gate,
+// shared by the booth routes (which check the key) and the God-admin panel (which
+// shows, copies and regenerates links, and reads the gate's grace-mode log).
+// identifyCaller resolves a signed-in caller WITHOUT answering, for the bypass.
+const boothLinks = require('./voice-engine/booth-link-keys.cjs')
+const boothKeys = boothLinks.createBoothKeyStore({
+  getDb: () => (supabaseClient.isInitialized() ? supabaseClient.getClient() : null),
+})
+async function identifyCaller(req) {
+  const token = req.headers.authorization?.replace('Bearer ', '')
+  if (!token) return null
+  return (await verifySupabaseJWT(token)) || (await authValidateSession(token)) || null
+}
+const boothKeyGate = boothLinks.createBoothKeyGate({
+  store: boothKeys,
+  identify: identifyCaller,
+  isGodAdmin: require('./voice-engine/booth-god-admins.cjs').isGodAdmin,
+  ownsVoice: async (user, voiceKeyId) => {
+    if (!user || !user.email || !supabaseClient.isInitialized()) return false
+    const { voicesForEmail } = require('./voice-engine/recordist-queue.cjs')
+    return (await voicesForEmail(supabaseClient.getClient(), user.email)).some((v) => v.voiceId === voiceKeyId)
+  },
+  logger,
+})
+logger.info(`[BoothKey] private booth links: grace ${boothKeyGate.graceOn() ? 'ON (id-only links served and logged)' : 'OFF (id-only links refused)'}`)
+
 app.use('/api/recording/admin',
   require('./voice-engine/booth-artists-router.cjs')({
     getDb: () => (supabaseClient.isInitialized() ? supabaseClient.getClient() : null),
     logger,
     requireAdmin,
+    boothKeys,
+    boothKeyGate,
   }))
 
 app.use('/api/recording',
@@ -613,6 +641,9 @@ app.use('/api/recording',
     requireDashboardUser,
     handleRecordingUpload,
     warmPhrasePlan: true,
+    boothKeys,
+    boothKeyGate,
+    identifyCaller,
   }))
 
 // Android test-build distribution. Same auth shape as the recordist routes
