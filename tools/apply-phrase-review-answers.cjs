@@ -105,7 +105,15 @@ function planAnswers(answers, items) {
     if (a.choice === 'own') {
       if (looksLikeInstruction(a.text)) {
         if (/capitali[sz]ation/i.test(a.text) && /english/i.test(a.text)) plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: null, transform: 'capitaliseEnglish' });
-        else plan.push({ itemId: a.id, rowShort, action: 'skip', why: `instruction not understood: "${a.text}"` });
+        else {
+          // explicit values: "change Welsh to '…' and the English to '…'" sets both fields exactly
+          const w = /\bWelsh to '([^']+)'/i.exec(a.text.replace(/[‘]/g, "'"));
+          const e = /\bEnglish to '([^']+)'/i.exec(a.text.replace(/[‘]/g, "'"));
+          if (w && e) {
+            plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: curly(w[1]) });
+            plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: curly(e[1]) });
+          } else plan.push({ itemId: a.id, rowShort, action: 'skip', why: `instruction not understood: "${a.text}"` });
+        }
       } else plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: curly(a.text.trim()) });
       continue;
     }
