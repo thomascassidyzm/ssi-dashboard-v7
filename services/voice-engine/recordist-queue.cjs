@@ -2551,6 +2551,25 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
 }
 
 /**
+ * Read the human-recorded languages' queues once, shortly after boot, so the
+ * first reader after every deploy does not wait for the cold language read
+ * (~2-6 s). Goes through the same cache a booth request uses, so a request
+ * landing mid-warm joins this read. Cast-only languages (English reading the
+ * Welsh known side) have no target-side work and are cheap.
+ */
+async function warmLanguageQueues(db) {
+  const policies = await loadPolicies(db)
+  const languages = policies
+    .filter((p) => p.language && p.language !== 'zzz' && (p.human_only === true ||
+      Object.values(p.voices || {}).some((v) => v && v.onlyCastOn === true)))
+    .map((p) => p.language)
+  for (const language of languages) {
+    await cachedLanguageLines(db, language, { quarryMaxSeed: undefined, cache: new Map() })
+  }
+  return languages
+}
+
+/**
  * Score a gender's lines against what this recordist has already recorded, and
  * shape them for the wire. Split out so buildQueue and buildCoverage share one
  * definition of `recorded`.
@@ -3371,6 +3390,7 @@ module.exports = {
   seedLineId,
   SEED_LINE_PREFIX,
   buildQueue,
+  warmLanguageQueues,
   buildCoverage,
   // Exported for the coverage-count test: this is the one definition of
   // "recorded" that Tom's admin page and a recordist's own screen share.
