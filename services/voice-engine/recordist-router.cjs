@@ -62,7 +62,8 @@ const {
   linkLegoTake,
   warmLanguageQueues,
 } = require('./recordist-queue.cjs')
-const { enableRewarmAfterInvalidate } = require('./recordist-queue-cache.cjs')
+const { enableRewarmAfterInvalidate, onLanguageQueueInvalidated } = require('./recordist-queue-cache.cjs')
+const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const boothHome = require('./booth-home.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
@@ -399,6 +400,36 @@ module.exports = function createRecordistRouter({
     }
   })
 
+  // ── ONE VOICE'S QUEUE, CACHED (job #378) ────────────────────────────────
+  // Aran's tab-return reloads rebuilt his whole queue every time. The home
+  // screen and the batch a card opens now share one cached build per voice
+  // (booth-queue-cache.cjs says how fresh it is kept). Any write this process
+  // makes for the voice drops it, and so does any invalidation of its language.
+  const boothQueue = createBoothQueueCache()
+  onLanguageQueueInvalidated((language) => boothQueue.invalidateLanguage(language))
+  router.use('/voice/:voiceId', (req, res, next) => {
+    if (req.method !== 'GET' && req.method !== 'HEAD' && req.method !== 'OPTIONS') {
+      const voiceId = req.params.voiceId
+      boothQueue.invalidateVoice(voiceId)
+      res.on('finish', () => boothQueue.invalidateVoice(voiceId))
+    }
+    next()
+  })
+  /** {value: {recordist, queue, setupRow}, fresh, ageMs}, or null for an unknown voice. */
+  async function homeQueueFor(voiceIdParam, { allowStale = false } = {}) {
+    const got = await boothQueue.get(voiceIdParam, async () => {
+      const recordist = await resolveRecordist(db(), voiceIdParam, {})
+      if (!recordist) return null
+      const [queue, setupRow] = await Promise.all([
+        buildQueue(db(), recordist, { includeRecorded: true }),
+        loadSetupRow(recordist.voiceId),
+      ])
+      return { recordist, queue, setupRow }
+    }, { allowStale })
+    if (!got.value) { boothQueue.invalidateVoice(voiceIdParam); return null }
+    return got
+  }
+
   // THE HOME SCREEN'S SUMMARY (Aran, 2026-10-14, job #347): sections, batches
   // and counts — no lines. The booth page used to open by fetching all of them
   // (2060 lines, 2.2MB for Aran) and drawing every one; it now draws its home
@@ -409,18 +440,23 @@ module.exports = function createRecordistRouter({
     try {
       const pack = await resolveAnyPack(req.params.voiceId)
       if (pack) return res.json({ home: false, reason: 'pack' })
-      const recordist = await recordistOr404(req, res)
-      if (!recordist) return
-      const queue = await buildQueue(db(), recordist, { includeRecorded: true })
+      // FROM THE VOICE'S QUEUE CACHE (job #378): a stale entry is served at once and
+      // marked `fresh: false` (the page asks again shortly), a fresh one as it is.
+      const cached = await homeQueueFor(req.params.voiceId, { allowStale: true })
+      if (!cached) return res.status(404).json({ error: `No recording voice ${req.params.voiceId}.` })
+      const { recordist, queue, setupRow } = cached.value
       // The home screen is where he now ARRIVES, so the arrival is counted here
       // too, exactly as the full-queue and batch reads count it (#365 found it
       // skipped). Unscoped, so nothing is refused: the queue is his own courses.
-      await castingRights.boothArrival({
+      // Not awaited (job #378): the count is a record, and nothing on this
+      // answer depends on it.
+      castingRights.boothArrival({
         db: db(), recordist, courseCodes: queue.courses, method: req.method, path: req.originalUrl || req.path, logger,
-      })
-      const setupRow = await loadSetupRow(recordist.voiceId)
+      }).catch((e) => logger.warn(`[Recordist] summary arrival not counted: ${e.message}`))
       res.json({
         home: true,
+        fresh: cached.fresh,
+        ageMs: cached.ageMs,
         setupLocked: setupCheck.locksScript(setupRow),
         voiceId: recordist.voiceId,
         displayName: recordist.displayName,
@@ -453,7 +489,15 @@ module.exports = function createRecordistRouter({
       // surface and an unbounded ceiling is a language-wide scan on tap.
       const askedSeed = parseInt(req.query.maxSeed, 10)
       const quarryMaxSeed = Number.isFinite(askedSeed) ? Math.min(Math.max(askedSeed, 1), 1000) : undefined
-      const queue = await buildQueue(db(), recordist, { includeRecorded, quarryMaxSeed })
+      // ONE BATCH FROM THE HOME SCREEN reads the same cached build the summary
+      // counted (job #378), fresh only: a reader about to record must not be
+      // handed a stale recorded flag. Any other shape of read builds its own.
+      const homeBatchRead = includeRecorded && quarryMaxSeed === undefined && typeof req.query.track === 'string' &&
+        !(typeof req.query.course === 'string' && req.query.course.trim()) && !(typeof req.query.pod === 'string' && req.query.pod.trim())
+      const cachedHome = homeBatchRead ? await homeQueueFor(req.params.voiceId) : null
+      const queue = cachedHome && cachedHome.value.recordist.voiceId === recordist.voiceId
+        ? cachedHome.value.queue
+        : await buildQueue(db(), recordist, { includeRecorded, quarryMaxSeed })
       // A COURSE LINK. The community course editor's "Copy link" is
       // /r/:voiceId?course=<code> (PodCastPanel): the same booth, the same
       // voice, scoped to the lines of THAT course. The language-wide link

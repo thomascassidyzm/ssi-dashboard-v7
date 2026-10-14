@@ -29,6 +29,20 @@ const { isPhraseQueueCourse } = require('./phrase-queue.cjs')
  */
 const SEED_BATCH_LINES = 100
 
+/**
+ * LEGOs are read in batches of this many too (Aran, 2026-10-14, job #378: every new-course LEGO
+ * without a recording needs one — about 1,291 lines each for Dan and Eleri — "in batches of
+ * about 100 in course order"). Same cut as sentences: every line, in queue order.
+ */
+const LEGO_BATCH_LINES = 100
+
+/** The batch size of a track, or 0 for a track that is read whole (a script). */
+function batchSizeOf(key) {
+  if (key.startsWith('seed.')) return SEED_BATCH_LINES
+  if (key.startsWith('lego.')) return LEGO_BATCH_LINES
+  return 0
+}
+
 /** Which card a wire line belongs to. URL-safe: course codes and pod slugs are [a-z0-9_-]. */
 function trackKeyOf(line) {
   const kind = line.kind || 'pod'
@@ -40,11 +54,12 @@ function trackKeyOf(line) {
   return `${kind}.${line.courseCode || 'all'}`
 }
 
-/** A track's lines cut into batches. Only sentence tracks are cut; a script is read whole. */
+/** A track's lines cut into batches. Sentence and LEGO tracks are cut; a script is read whole. */
 function chunkTrack(key, lines) {
-  if (!key.startsWith('seed.') || lines.length <= SEED_BATCH_LINES) return [lines]
+  const size = batchSizeOf(key)
+  if (!size || lines.length <= size) return [lines]
   const out = []
-  for (let i = 0; i < lines.length; i += SEED_BATCH_LINES) out.push(lines.slice(i, i + SEED_BATCH_LINES))
+  for (let i = 0; i < lines.length; i += size) out.push(lines.slice(i, i + size))
   return out
 }
 
@@ -166,4 +181,4 @@ function selectBatch(lines, trackKey, batchN, ctx = {}) {
   return batches[n - 1] || []
 }
 
-module.exports = { SEED_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch, servedPhraseBatchN }
+module.exports = { SEED_BATCH_LINES, LEGO_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch, servedPhraseBatchN }

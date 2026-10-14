@@ -73,4 +73,16 @@ assert.deepStrictEqual(p1Later.batches.filter((b) => b.current).map((b) => b.n),
 assert.deepStrictEqual(selectBatch(lines, 'phrase.1', 2, servedSecond).map((l) => l.id), ['phrase:a:target2'], 'the served batch opens by its card number')
 assert.deepStrictEqual(selectBatch(lines, 'phrase.1', 1, servedSecond), [], 'an unserved batch serves nothing')
 
+// #378: LEGO lines (the gated 'lego' kind, #366) are a card of their own, cut into batches of
+// 100 in queue order like new sentences, and the card and the batch agree.
+const lego = (i) => ({ id: `lego:${i}:target1`, kind: 'lego', role: 'target1', courseCode: 'cym_sv2_for_eng', recorded: i < 5 })
+const withLegos = [...lines.filter((l) => l.kind !== 'phrase'), ...Array.from({ length: 1291 }, (_, i) => lego(i))]
+const legoTrack = buildHomeTracks(withLegos).find((t) => t.key === 'lego.cym_sv2_for_eng')
+assert.ok(legoTrack, 'LEGOs get their own card')
+assert.strictEqual(legoTrack.kind, 'lego')
+assert.strictEqual(legoTrack.newCourse, true)
+assert.strictEqual(legoTrack.batches.length, 13)
+assert.deepStrictEqual([legoTrack.batches[0].from, legoTrack.batches[12].to, legoTrack.batches[12].total], [1, 1291, 91])
+assert.deepStrictEqual(selectBatch(withLegos, 'lego.cym_sv2_for_eng', 13).map((l) => l.id)[0], 'lego:1200:target1')
+
 console.log('booth-home: all assertions passed')
