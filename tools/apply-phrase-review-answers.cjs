@@ -112,6 +112,8 @@ function planAnswers(answers, items) {
           if (w && e) {
             plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: curly(w[1]) });
             plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: curly(e[1]) });
+          } else if (e && !w) {
+            plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: curly(e[1]) });
           } else plan.push({ itemId: a.id, rowShort, action: 'skip', why: `instruction not understood: "${a.text}"` });
         }
       } else plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: curly(a.text.trim()) });
