@@ -8076,41 +8076,151 @@ app.get('/api/production/:courseCode/progress', async (req, res) => {
   }
 })
 
-// Update a LEGO in database
-app.patch('/api/production/:courseCode/lego/:legoId', async (req, res) => {
-  const { courseCode, legoId } = req.params
-  const updates = req.body
+// ─── THE COURSE-EDIT DOOR (job #391, 2026-10-14) ──────────────────────────────
+// Since job #388 agents cannot write course tables by SQL. These routes are how
+// they edit instead: one op vocabulary (services/shared/course-edit-ops.cjs), one
+// transaction per request, a dry run that is the real transaction rolled back, and
+// an undo derived from the before/after rows. All of them sit behind the
+// editor-identity gate (content-write-surfaces.cjs) and, being under
+// /api/production/:courseCode, behind the course-scope gate too.
+const courseEditOps = require('./shared/course-edit-ops.cjs')
+
+function courseEditUndoDir(courseCode) {
+  const root = process.env.COURSE_EDIT_UNDO_DIR
+    || path.dirname(require('../tools/lib/evidence-path.cjs').evidencePath('ops/course-edit-undo/.keep'))
+  const dir = path.join(root, courseCode)
+  fs.mkdirpSync(dir)
+  return dir
+}
+
+async function courseEditConnect() {
+  const { Client } = require('pg')
+  const client = new Client({ connectionString: require('./shared/round-index-refresh.cjs').databaseUrl() })
+  await client.connect()
+  return client
+}
+
+async function runCourseEdit(req, res, ops, { apply }) {
+  const { courseCode } = req.params
+  let plans
   try {
-    // Parse legoId: "S0001L02" -> seedNumber=1, legoIndex=2
-    const seedNumber = courseDataService.parseSeedNumber(legoId)
-    const legoIndex = courseDataService.parseLegoIndex(legoId)
-
-    if (!seedNumber || !legoIndex) {
-      return res.status(400).json({ error: `Invalid legoId format: ${legoId}` })
-    }
-
-    const result = await courseDataService.updateLego(courseCode, seedNumber, legoIndex, updates)
-    res.json({
-      success: true,
-      lego: result
-    })
-  } catch (error) {
-    logger.error(`Error updating lego ${legoId}:`, error.message)
-    res.status(500).json({ error: error.message })
+    plans = courseEditOps.planOps(ops, courseCode)
+  } catch (err) {
+    req.contentEdit?.wroteNothing()
+    return res.status(400).json({ error: err.message, code: err.code || 'BAD_OP', index: err.index })
   }
+  if (!apply) req.contentEdit?.wroteNothing()
+  try {
+    const out = await courseEditOps.runPlans({
+      connect: courseEditConnect,
+      courseCode,
+      plans,
+      apply,
+      eventId: () => req.contentEdit.record({
+        scope: {
+          seed_numbers: [...new Set(ops.map(o => Number(o.seed_number || o.row?.seed_number)).filter(Number.isFinite))],
+          lego_ids: [...new Set(ops.map(o => o.lego_id).filter(Boolean))],
+          phrase_ids: [...new Set(ops.map(o => o.phrase_id || (o.op === 'phrase.insert' ? o.row?.id : null)).filter(Boolean))],
+          rows: ops.length,
+        },
+        detail: { ops: ops.slice(0, 50).map(o => o.op), op_count: ops.length },
+      }),
+    })
+    let undoFile = null, undoFileError = null
+    if (out.applied) {
+      // A committed edit moves nothing on a phone until content_version moves: the
+      // learner app keys its cached course bundle on it, and no trigger bumps it.
+      await require('./shared/course-version.cjs').bumpCourseVersion(supabaseClient.getClient(), courseCode, 'patch').catch(e =>
+        logger.warn(`[course-edit] content_version bump failed for ${courseCode}: ${e.message}`))
+      if (out.undo_ops.length) {
+        try {
+          const name = `${new Date().toISOString().replace(/[:.]/g, '-')}-${req.contentEdit?.eventId || 'noevent'}.json`
+          undoFile = path.join(courseEditUndoDir(courseCode), name)
+          fs.writeFileSync(undoFile, JSON.stringify({
+            course_code: courseCode, event_id: req.contentEdit?.eventId || null,
+            actor: req.editorIdentity?.id || null, created_at: new Date().toISOString(),
+            how_to_undo: `POST /api/production/${courseCode}/edit-batch {"undo_file":"${name}","apply":true}`,
+            undo_ops: out.undo_ops,
+          }, null, 2))
+          fs.chmodSync(undoFile, 0o664)
+        } catch (e) { undoFileError = e.message; undoFile = null }
+      }
+      logger.info(`[course-edit] ${courseCode}: ${ops.length} op(s) applied by ${req.editorIdentity?.id} (event ${req.contentEdit?.eventId})`)
+    }
+    res.json({
+      ok: true,
+      dryRun: !out.applied,
+      applied: out.applied,
+      event_id: out.applied ? (req.contentEdit?.eventId || null) : null,
+      results: out.results,
+      undo_ops: out.undo_ops,
+      undo_file: undoFile ? path.basename(undoFile) : null,
+      ...(undoFileError ? { undo_file_error: undoFileError } : {}),
+      ...(out.applied ? {} : { note: 'Dry run: the transaction ran and was rolled back. Send "apply": true to commit.' }),
+    })
+  } catch (err) {
+    // A database refusal (a guard trigger such as #912's debut-practice guard, a
+    // constraint) is the answer, not a crash: 409 with Postgres's own words.
+    const refusedByDb = !!err.severity && /^[0-9A-Z]{5}$/.test(String(err.code || ''))
+    const status = err.code === 'NOT_FOUND' ? 404 : ((err instanceof courseEditOps.EditOpError || refusedByDb) ? 409 : 500)
+    if (status !== 500) req.contentEdit?.wroteNothing()
+    logger.warn(`[course-edit] ${courseCode}: refused/failed — ${err.message}`)
+    res.status(status).json({ error: err.message, code: err.code || 'EDIT_FAILED', index: err.index, applied: false })
+  }
+}
+
+// The vocabulary, read-only.
+app.get('/api/production/:courseCode/edit-ops', (req, res) => {
+  res.json({ ops: courseEditOps.OP_HELP, max_ops: courseEditOps.MAX_OPS,
+    single: `POST /api/production/${req.params.courseCode}/edit  {op…}  (applies; "dryRun": true to preview)`,
+    batch: `POST /api/production/${req.params.courseCode}/edit-batch  {"ops":[…]}  (dry run unless "apply": true)` })
+})
+
+// ONE op, applied unless it says dryRun:true.
+app.post('/api/production/:courseCode/edit', async (req, res) => {
+  const { dryRun, ...op } = req.body || {}
+  return runCourseEdit(req, res, [op], { apply: dryRun !== true })
+})
+
+// MANY ops, one transaction, a DRY RUN unless "apply": true. "undo_file" replays
+// an undo written by an earlier apply of this course.
+app.post('/api/production/:courseCode/edit-batch', async (req, res) => {
+  const body = req.body || {}
+  let ops = body.ops
+  if (body.undo_file) {
+    const name = path.basename(String(body.undo_file))
+    try {
+      ops = JSON.parse(fs.readFileSync(path.join(courseEditUndoDir(req.params.courseCode), name), 'utf8')).undo_ops
+    } catch (e) {
+      req.contentEdit?.wroteNothing()
+      return res.status(404).json({ error: `undo_file ${name}: ${e.message}`, code: 'NO_UNDO_FILE' })
+    }
+  }
+  return runCourseEdit(req, res, ops, { apply: body.apply === true })
+})
+
+// Update a LEGO. Same door as lego.update; camelCase accepted for old callers.
+app.patch('/api/production/:courseCode/lego/:legoId', async (req, res) => {
+  const set = {}
+  for (const [k, v] of Object.entries(req.body || {})) set[k.replace(/[A-Z]/g, c => '_' + c.toLowerCase())] = v
+  delete set.dry_run
+  const key = /^[0-9a-f-]{36}$/i.test(req.params.legoId) ? { id: req.params.legoId } : { lego_id: req.params.legoId }
+  return runCourseEdit(req, res, [{ op: 'lego.update', ...key, set }], { apply: req.body?.dryRun !== true })
 })
 
 // Delete a seed from database (soft delete by removing from course)
 app.delete('/api/production/:courseCode/seed/:seedNumber', async (req, res) => {
   const { courseCode, seedNumber } = req.params
   try {
+    const eventId = req.contentEdit ? await req.contentEdit.record({ scope: { seed_numbers: [parseInt(seedNumber)] } }) : null
     const result = await courseDataService.deleteSeed(courseCode, parseInt(seedNumber))
     if (!result) {
       return res.status(404).json({ error: `Seed ${seedNumber} not found in course ${courseCode}` })
     }
     res.json({
       success: true,
-      deleted: courseDataService.formatSeedId(parseInt(seedNumber))
+      deleted: courseDataService.formatSeedId(parseInt(seedNumber)),
+      event_id: eventId
     })
   } catch (error) {
     logger.error(`Error deleting seed ${seedNumber} from ${courseCode}:`, error.message)

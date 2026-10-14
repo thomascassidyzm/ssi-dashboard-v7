@@ -97,11 +97,15 @@ const PRODUCTION_API = [
   { method: 'DELETE', path: '/api/production/:courseCode/phrases/:phraseId',  operation: 'phrase-delete' },
   { method: 'POST',   path: '/api/production/:courseCode/phrases/batch-delete', operation: 'phrase-delete' },
   { method: 'POST',   path: '/api/admin/decomposition-backfill',             operation: 'decomposition-backfill' },
-  // Job #388: the agent doors for Aran's Welsh v2 edits once agent_script lost content writes.
-  // lego PATCH and seed DELETE (a status flip to deprecated) existed before but ran with no editor identity.
+  // The course-edit door (job #391): the routes agents use since #388 took their
+  // SQL write away. Every op runs in shared/course-edit-ops.cjs, which can touch
+  // course_legos, so all of them are lego writers for the round map.
+  { method: 'POST',   path: '/api/production/:courseCode/edit',              operation: 'course-edit', legos: true },
+  { method: 'POST',   path: '/api/production/:courseCode/edit-batch',        operation: 'course-edit', legos: true },
+  { method: 'PATCH',  path: '/api/production/:courseCode/lego/:legoId',      operation: 'lego-edit', legos: true },
+  { method: 'DELETE', path: '/api/production/:courseCode/seed/:seedNumber',  operation: 'seed-deprecate' },
+  // Job #388: fill-only clip linking over the Supabase client (services/shared/link-clip.cjs).
   { method: 'POST',   path: '/api/production/:courseCode/link-clip',          operation: 'audio-link' },
-  { method: 'PATCH',  path: '/api/production/:courseCode/lego/:legoId',       operation: 'lego-update', legos: true },
-  { method: 'DELETE', path: '/api/production/:courseCode/seed/:seedNumber',   operation: 'seed-delete' },
 ].map(r => ({ ...r, service: 'production-api' }));
 
 const SURFACES = [...COURSE_BUILDER, ...RECORD_ONLY, ...PRODUCTION_API];
