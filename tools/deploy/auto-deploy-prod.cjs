@@ -35,8 +35,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PROD_DIR = '/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod';
-// r-2026-10-13: Phase 8 is manual-only while TTS is paused.
-const UNITS = ['popty-production-api', 'popty-course-builder-api'];
+const UNITS = ['popty-production-api', 'popty-course-builder-api', 'popty-phase8-audio'];
 const SURFACE = process.env.CS_SURFACE || 'http://localhost:4317';
 const CHANNEL_CWD = '/home/tomcassidy/SSi/ssi-dashboard-v7-clean';
 const LOG = process.env.AUTO_DEPLOY_LOG || '/home/tomcassidy/.local/log/ssi-auto-deploy.log';
