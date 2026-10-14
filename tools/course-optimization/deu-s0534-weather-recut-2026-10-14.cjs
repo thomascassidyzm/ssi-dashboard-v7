@@ -2,6 +2,9 @@
 'use strict';
 // tools/course-optimization/deu-s0534-weather-recut-2026-10-14.cjs  (job #499)
 //
+// STEP 1 of 2. Kai then re-ordered (weather before dreadful): the live order is set by deu-s0534-reorder-2026-10-14.cjs,
+// whose `verify` supersedes this file's (this file's ORDER is the step-1 state).
+//
 // KAI'S RULING, 2026-10-14, deu_for_eng seed 534
 //   "let's not go outside in this dreadful weather | lass uns bei diesem schrecklichen Wetter nicht nach draußen gehen"
 // The Welsh courses are the model: every LEGO is a sayable piece, a preposition rides with its phrase ("to the city |
