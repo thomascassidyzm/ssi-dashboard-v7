@@ -225,4 +225,15 @@ describe('cat: a Tom-cast Azure row is the cast (job #448)', () => {
   it('still bans xAI in cat', () => {
     expect(gate.castAllowsVoice('cat', 'xai_x', [{ language: 'cat', voice_id: 'xai_x', assigned_by: 'thomas.cassidy+ssi@gmail.com', notes: '' }])).toMatchObject({ allowed: false, reason: 'banned-provider' })
   })
+  it('does not let a held Azure voice outside the cast bypass the mixed-course refusal', async () => {
+    const OUTSIDE = 'azure_ca-ES-JoanaNeural'
+    useCastRows(rows)
+    useCourseVoiceHolder(async () => true)
+    useCourseVoiceCensus(async () => [
+      { role: 'known', language: 'cat', voice_id: OUTSIDE, clips: 5 },
+      { role: 'known', language: 'cat', voice_id: 'cartesia_old', clips: 5 },
+    ])
+    expect(await castVerdict('cat', OUTSIDE, { courseCode: 'eng_for_cat', role: 'known' }))
+      .toMatchObject({ allowed: false, reason: 'not-in-cast' })
+  })
 })
