@@ -13,7 +13,7 @@
 // every studio. Never resolve a playback URL by hand anywhere else.
 
 import { getApiUrl } from '@/services/api'
-import { recordingApiBase } from '@/services/recordingApi'
+import { recordingApiBase, withBoothKey } from '@/services/recordingApi'
 
 // A marker a human can grep for in the served bundle to prove this shipped.
 export const STORED_CLIP_FEATURE = 'stored-clip-playback-2026-08-14'
@@ -72,7 +72,8 @@ export function recordistClipUrl(voiceId, lineId, variant = 'processed') {
   const base = `${recordingApiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/line/${encodeURIComponent(lineId)}/clip`
   // The default is left bare so every URL this app has ever built stays
   // byte-identical: `?variant=processed` and no query at all are the same route.
-  return variant === 'raw' ? `${base}?variant=raw` : base
+  // The booth's private key rides as ?k= (job #380): an <audio src> cannot send a header.
+  return withBoothKey(variant === 'raw' ? `${base}?variant=raw` : base, voiceId)
 }
 
 // What the raw side is, and what its absence means. Both are stated in the same

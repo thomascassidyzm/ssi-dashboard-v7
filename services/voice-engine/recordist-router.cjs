@@ -11,6 +11,8 @@
  * policy table, and every take is attributed to that voice from the first tap.
  * Aran gets a link, taps it, and reads. Nothing else. The admin routes (4/5)
  * keep the estate's normal auth, because they change what everyone else sees.
+ * Since job #380 (Aran, 2026-10-14) the link carries a PRIVATE KEY (?k=) and
+ * every /voice/:voiceId route checks it first — booth-link-keys.cjs.
  *
  *   GET  /mine                              which voice(s) the SIGNED-IN user reads
  *   GET  /voice/:voiceId                    the by-language queue (recordist-queue.cjs)
@@ -57,9 +59,13 @@ const {
   invalidateLanguageQueueCache,
   linkPhraseTake,
   getPhrasePlan,
+  isLegoQueueCourse,
+  parseLegoLineId,
+  linkLegoTake,
   warmLanguageQueues,
 } = require('./recordist-queue.cjs')
-const { enableRewarmAfterInvalidate } = require('./recordist-queue-cache.cjs')
+const { enableRewarmAfterInvalidate, onLanguageQueueInvalidated } = require('./recordist-queue-cache.cjs')
+const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const boothHome = require('./booth-home.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
@@ -83,6 +89,7 @@ const { resolveCurrentClip } = require('./take-selection.cjs')
 const { bucketKey } = require('../shared/dialect.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
 const { isGodAdmin } = require('./booth-god-admins.cjs')
+const boothLinks = require('./booth-link-keys.cjs')
 
 const MAX_TAKE_BYTES = 60 * 1024 * 1024
 
@@ -144,6 +151,13 @@ module.exports = function createRecordistRouter({
   // first Welsh reader of the day does not pay its ~3-10 s cold read on top of
   // the language read. Production passes true; tests leave it off.
   warmPhrasePlan = false,
+  // PRIVATE BOOTH LINKS (job #380): the per-voice key gate on every /voice/:voiceId route. Production
+  // builds it once (production-api.cjs) so the admin panel can read its grace log; left out, the
+  // router builds its own over the same DB. `identifyCaller` resolves a signed-in caller WITHOUT
+  // answering, for the God-admin / own-voice bypass; `boothKeys` is the key store.
+  boothKeys = null,
+  boothKeyGate = null,
+  identifyCaller = null,
 }) {
   const router = express.Router()
 
@@ -162,6 +176,17 @@ module.exports = function createRecordistRouter({
     }, 15_000)
     if (typeof t.unref === 'function') t.unref()
   }
+
+  const keys = boothKeys || boothLinks.createBoothKeyStore({ getDb })
+  const ownsVoice = async (user, voiceKeyId) => {
+    if (!user || !user.email) return false
+    return (await voicesForEmail(db(), user.email)).some((v) => v.voiceId === voiceKeyId)
+  }
+  // THE BOOTH KEY GATE, before every /voice/:voiceId route below (booth-link-keys.cjs): the link is
+  // still the identity, but only with its private key, or for a signed-in God admin / the artist.
+  router.use('/voice/:voiceId', boothKeyGate || boothLinks.createBoothKeyGate({
+    store: keys, identify: identifyCaller, isGodAdmin, ownsVoice, logger,
+  }))
 
   /** Resolve :voiceId or answer 404 — the only gate routes 1-3 have, by design. */
   async function recordistOr404(req, res) {
@@ -362,10 +387,14 @@ module.exports = function createRecordistRouter({
       const user = await requireDashboardUser(req, res)
       if (!user) return // requireDashboardUser has already answered 401/403
       const voices = await voicesForEmail(db(), user.email)
+      // Their own private link key (job #380), so the login door opens the booth with it.
+      const keyOf = async (voiceId) => keys.keyFor(voiceId).catch(() => null)
+      const withKeys = await Promise.all(voices.map(async (v) => ({ v, boothKey: await keyOf(v.voiceId) })))
       res.json({
         email: user.email,
         name: user.name || null,
-        voices: voices.map((v) => ({
+        voices: withKeys.map(({ v, boothKey }) => ({
+          boothKey,
           voiceId: v.voiceId,
           displayName: v.displayName,
           language: v.language,
@@ -396,6 +425,36 @@ module.exports = function createRecordistRouter({
     }
   })
 
+  // ── ONE VOICE'S QUEUE, CACHED (job #378) ────────────────────────────────
+  // Aran's tab-return reloads rebuilt his whole queue every time. The home
+  // screen and the batch a card opens now share one cached build per voice
+  // (booth-queue-cache.cjs says how fresh it is kept). Any write this process
+  // makes for the voice drops it, and so does any invalidation of its language.
+  const boothQueue = createBoothQueueCache()
+  onLanguageQueueInvalidated((language) => boothQueue.invalidateLanguage(language))
+  router.use('/voice/:voiceId', (req, res, next) => {
+    if (req.method !== 'GET' && req.method !== 'HEAD' && req.method !== 'OPTIONS') {
+      const voiceId = req.params.voiceId
+      boothQueue.invalidateVoice(voiceId)
+      res.on('finish', () => boothQueue.invalidateVoice(voiceId))
+    }
+    next()
+  })
+  /** {value: {recordist, queue, setupRow}, fresh, ageMs}, or null for an unknown voice. */
+  async function homeQueueFor(voiceIdParam, { allowStale = false } = {}) {
+    const got = await boothQueue.get(voiceIdParam, async () => {
+      const recordist = await resolveRecordist(db(), voiceIdParam, {})
+      if (!recordist) return null
+      const [queue, setupRow] = await Promise.all([
+        buildQueue(db(), recordist, { includeRecorded: true }),
+        loadSetupRow(recordist.voiceId),
+      ])
+      return { recordist, queue, setupRow }
+    }, { allowStale })
+    if (!got.value) { boothQueue.invalidateVoice(voiceIdParam); return null }
+    return got
+  }
+
   // THE HOME SCREEN'S SUMMARY (Aran, 2026-10-14, job #347): sections, batches
   // and counts — no lines. The booth page used to open by fetching all of them
   // (2060 lines, 2.2MB for Aran) and drawing every one; it now draws its home
@@ -406,18 +465,23 @@ module.exports = function createRecordistRouter({
     try {
       const pack = await resolveAnyPack(req.params.voiceId)
       if (pack) return res.json({ home: false, reason: 'pack' })
-      const recordist = await recordistOr404(req, res)
-      if (!recordist) return
-      const queue = await buildQueue(db(), recordist, { includeRecorded: true })
+      // FROM THE VOICE'S QUEUE CACHE (job #378): a stale entry is served at once and
+      // marked `fresh: false` (the page asks again shortly), a fresh one as it is.
+      const cached = await homeQueueFor(req.params.voiceId, { allowStale: true })
+      if (!cached) return res.status(404).json({ error: `No recording voice ${req.params.voiceId}.` })
+      const { recordist, queue, setupRow } = cached.value
       // The home screen is where he now ARRIVES, so the arrival is counted here
       // too, exactly as the full-queue and batch reads count it (#365 found it
       // skipped). Unscoped, so nothing is refused: the queue is his own courses.
-      await castingRights.boothArrival({
+      // Not awaited (job #378): the count is a record, and nothing on this
+      // answer depends on it.
+      castingRights.boothArrival({
         db: db(), recordist, courseCodes: queue.courses, method: req.method, path: req.originalUrl || req.path, logger,
-      })
-      const setupRow = await loadSetupRow(recordist.voiceId)
+      }).catch((e) => logger.warn(`[Recordist] summary arrival not counted: ${e.message}`))
       res.json({
         home: true,
+        fresh: cached.fresh,
+        ageMs: cached.ageMs,
         setupLocked: setupCheck.locksScript(setupRow),
         voiceId: recordist.voiceId,
         displayName: recordist.displayName,
@@ -450,7 +514,15 @@ module.exports = function createRecordistRouter({
       // surface and an unbounded ceiling is a language-wide scan on tap.
       const askedSeed = parseInt(req.query.maxSeed, 10)
       const quarryMaxSeed = Number.isFinite(askedSeed) ? Math.min(Math.max(askedSeed, 1), 1000) : undefined
-      const queue = await buildQueue(db(), recordist, { includeRecorded, quarryMaxSeed })
+      // ONE BATCH FROM THE HOME SCREEN reads the same cached build the summary
+      // counted (job #378), fresh only: a reader about to record must not be
+      // handed a stale recorded flag. Any other shape of read builds its own.
+      const homeBatchRead = includeRecorded && quarryMaxSeed === undefined && typeof req.query.track === 'string' &&
+        !(typeof req.query.course === 'string' && req.query.course.trim()) && !(typeof req.query.pod === 'string' && req.query.pod.trim())
+      const cachedHome = homeBatchRead ? await homeQueueFor(req.params.voiceId) : null
+      const queue = cachedHome && cachedHome.value.recordist.voiceId === recordist.voiceId
+        ? cachedHome.value.queue
+        : await buildQueue(db(), recordist, { includeRecorded, quarryMaxSeed })
       // A COURSE LINK. The community course editor's "Copy link" is
       // /r/:voiceId?course=<code> (PodCastPanel): the same booth, the same
       // voice, scoped to the lines of THAT course. The language-wide link
@@ -1476,6 +1548,132 @@ module.exports = function createRecordistRouter({
   }
 
   /**
+   * Resolve a LEGO line (`lego:<course_legos.id>:<role>`, job #366): the row, its
+   * course, and whether this recordist is the voice cast on that role. Read from
+   * the row, never trusted from the client. Only LEGO_QUEUE_COURSES (the Welsh
+   * sandboxes) take a LEGO take here; a live course's LEGO slots are refused.
+   */
+  async function resolveLegoLine(res, recordist, parsed) {
+    const { data: lego, error } = await db()
+      .from('course_legos')
+      .select('id, course_code, seed_number, lego_index, lego_id, known_text, target_text, target1_audio_id, target2_audio_id')
+      .eq('id', parsed.legoRowId)
+      .maybeSingle()
+    if (error) throw new Error(`lego lookup failed: ${error.message}`)
+    if (!lego) { res.status(404).json({ error: `No LEGO ${parsed.legoRowId}` }); return null }
+    if (!isLegoQueueCourse(lego.course_code)) {
+      res.status(403).json({
+        error: `LEGOs of ${lego.course_code} are not recorded in the booth.`,
+        reason: 'lego_course_not_queued',
+        courseCode: lego.course_code,
+      })
+      return null
+    }
+    const { data: course, error: cErr } = await db()
+      .from('courses').select('course_code, voice_config, target_lang, known_lang, dialect').eq('course_code', lego.course_code).maybeSingle()
+    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    if (!course) { res.status(404).json({ error: `No course ${lego.course_code}` }); return null }
+    let courseLanguage = null
+    try { courseLanguage = canonicalLanguage(course.target_lang) } catch { courseLanguage = null }
+    if (courseLanguage !== recordist.language) {
+      res.status(403).json({ error: `That LEGO is ${course.target_lang}, not ${recordist.language}.`, reason: 'wrong_language', courseCode: lego.course_code })
+      return null
+    }
+    const policies = await loadPolicies(db())
+    const policy = policies.find((row) => row.language === recordist.language)
+    const castVoice = seedCastEntry(course, policyVoiceList(policy))[parsed.role]
+    if (!castVoice || !recordist.spellings.includes(castVoice.voiceId)) {
+      res.status(403).json({
+        error: castVoice
+          ? `${lego.course_code} casts ${castVoice.voiceId} to read its ${parsed.role} LEGOs, not you.`
+          : `${lego.course_code} has nobody cast to read its ${parsed.role} side.`,
+        reason: castVoice ? 'not_your_slot' : 'uncast_slot',
+        courseCode: lego.course_code,
+        role: parsed.role,
+      })
+      return null
+    }
+    return { lego, course, text: String(lego.target_text || '').trim(), role: parsed.role }
+  }
+
+  /**
+   * A take for a LEGO: the phrase take's seam exactly — script-mode filing mints
+   * the clip (with its provenance) first, then linkLegoTake points every EMPTY
+   * copy of the text's `role` slot at it. Make-before-break, fill-empty only.
+   */
+  async function recordLegoTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = await resolveLegoLine(res, recordist, parsed)
+    if (!resolved) return
+    if (!resolved.text) return res.status(409).json({ error: 'That LEGO has no text to read.', reason: 'empty_line' })
+    if (text && text.trim() && text.trim() !== resolved.text) {
+      return res.status(409).json({
+        error: 'The text on this line has changed since the queue was loaded -- reload before recording it.',
+        expected: resolved.text,
+        received: text.trim(),
+      })
+    }
+    const { res: innerRes, captured } = captureResponse()
+    await handleRecordingUpload({
+      params: { courseCode: resolved.lego.course_code },
+      headers: { authorization: req.headers.authorization },
+      socket: req.socket,
+      recordistVoiceId: recordist.voiceId,
+      body: {
+        audioData: audioBase64,
+        mimeType,
+        metadata: {
+          mode: 'script',
+          cadence: 'natural',
+          role: parsed.role,
+          kind: parsed.role,
+          text: resolved.text,
+          voiceId: recordist.voiceId,
+          legoId: resolved.lego.lego_id,
+          seedNumber: resolved.lego.seed_number,
+        },
+        provenance: {
+          recorded_by: recordist.email || recordist.displayName,
+          mode: 'recordist',
+          recording_device: device || null,
+        },
+      },
+    }, innerRes)
+    if (captured.status >= 400 || !captured.body || !captured.body.success) {
+      return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
+    }
+    const filing = captured.body.filing || null
+    const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
+    let linked = { linked: [] }
+    if (audioId) {
+      try {
+        linked = await linkLegoTake({ db: db(), recordist, legoRowId: resolved.lego.id, role: parsed.role, audioId, logger })
+      } catch (linkErr) {
+        logger.error(`[Recordist] lego link failed (take is stored and filed): ${linkErr.message}`)
+      }
+    } else {
+      logger.error(`[Recordist] lego take for ${resolved.lego.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
+    }
+    return res.json({
+      ok: true,
+      audioId,
+      kind: 'lego',
+      role: parsed.role,
+      legoId: resolved.lego.lego_id,
+      seedNumber: resolved.lego.seed_number,
+      clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(parsed.raw)}/clip`,
+      alsoFilled: Math.max(0, linked.linked.length - 1),
+      rawKey: captured.body.rawKey || null,
+      filing,
+    })
+  }
+
+  async function legoClipResponse(req, res, recordist, parsed) {
+    const resolved = await resolveLegoLine(res, recordist, parsed)
+    if (!resolved) return
+    return slotClipResponse(req, res, recordist, resolved.lego[`${parsed.role}_audio_id`], resolved.text)
+  }
+
+  /**
    * Play a phrase line's take: its own slot when this voice holds it, otherwise
    * this voice's newest take of the same words (resolveCurrentClip's recordist
    * mode) — the take exists even where a copy's slot was already filled.
@@ -1483,8 +1681,13 @@ module.exports = function createRecordistRouter({
   async function phraseClipResponse(req, res, recordist, parsed) {
     const resolved = await resolvePhraseLine(res, recordist, parsed)
     if (!resolved) return
+    return slotClipResponse(req, res, recordist, resolved.phrase[`${parsed.role}_audio_id`], resolved.text)
+  }
+
+  /** A course-row slot's take — a phrase's or a LEGO's — by the same resolver rule. */
+  async function slotClipResponse(req, res, recordist, slotAudioId, slotText) {
     const clip = await resolveCurrentClip(db(), {
-      sentence: { slot_audio_id: resolved.phrase[`${parsed.role}_audio_id`], slot_text: resolved.text },
+      sentence: { slot_audio_id: slotAudioId, slot_text: slotText },
       track: 'slot',
       language: recordist.language,
       restrictToVoices: recordist.spellings,
@@ -1576,6 +1779,12 @@ module.exports = function createRecordistRouter({
       const phraseLine = phraseQueue.parsePhraseLineId(lineId)
       if (phraseLine) {
         return await recordPhraseTake({ req, res, recordist, parsed: { ...phraseLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
+
+      // A LEGO slot (job #366). `lego:...` is not a uuid either.
+      const legoLine = parseLegoLineId(lineId)
+      if (legoLine) {
+        return await recordLegoTake({ req, res, recordist, parsed: { ...legoLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
 
       // A MINIMAL-SET piece. Same reasoning as the seed branch: `quarry:...` is
@@ -1827,6 +2036,9 @@ module.exports = function createRecordistRouter({
       const phraseLine = phraseQueue.parsePhraseLineId(req.params.lineId)
       if (phraseLine) return await phraseClipResponse(req, res, recordist, { ...phraseLine, raw: req.params.lineId })
 
+      const legoLine = parseLegoLineId(req.params.lineId)
+      if (legoLine) return await legoClipResponse(req, res, recordist, { ...legoLine, raw: req.params.lineId })
+
       const takeGLine = parseTakeGLineId(req.params.lineId)
       if (takeGLine) return await takeGClipResponse(req, res, recordist, { ...takeGLine, raw: req.params.lineId })
 
@@ -2014,6 +2226,13 @@ module.exports = function createRecordistRouter({
         return res.status(403).json({
           error: 'A practice phrase is course content -- flag it on the phrase proof page; it is not changed from the booth.',
           reason: 'phrase_line',
+        })
+      }
+      // A LEGO is course content: its words are changed by the builder.
+      if (parseLegoLineId(lineId)) {
+        return res.status(403).json({
+          error: 'A LEGO is course content -- its words are changed in the course, not from the booth.',
+          reason: 'lego_line',
         })
       }
       // A minimal-set piece is a SPAN of course content -- a LEGO, or a single
@@ -2248,6 +2467,9 @@ module.exports = function createRecordistRouter({
         submittedAt: row.submitted_at, reviewedBy: row.reviewed_by, reviewedAt: row.reviewed_at, note: row.review_note,
         packVoiceId: pack.voiceId, items,
         autoVerdict: setupCheck.isMeasuredVerdict(verdict) ? verdict : null, verdictThresholds: setupCheck.SETUP_VERDICT,
+        // The artist link's private key (job #380) — only to a caller who passed the gate WITH a key
+        // or signed in; never to a grace-mode id-only request.
+        boothKey: ['key', 'signed_in'].includes(req.boothAccess) ? await keys.keyFor(row.voice_id).catch(() => null) : null,
       })
     } catch (err) {
       logger.error(`[Recordist] setup-check review: ${err.message}`)

@@ -3,16 +3,16 @@
        new sentences. Ticks steer Up next only (booth-home.js). -->
   <div class="bt">
     <h3 class="bt-h">What I'm doing</h3>
-    <p class="bt-sub">Tick what you are recording. Up next only offers ticked work.</p>
+    <p class="bt-sub">Tick what you are recording. Unticked work is hidden from the cards, and Up next only offers ticked work.</p>
     <template v-for="t in tickables" :key="t.key">
       <label class="bt-chk" :data-test="`tick-${t.key}`">
         <input type="checkbox" :checked="ticked(t.key)" :disabled="t.locked" @change="$emit('tick', t.key, $event.target.checked)" />
         <span class="bt-grow"><b>{{ t.title }}</b><small>{{ (t.total - t.recorded).toLocaleString('en-GB') }} left of {{ t.total.toLocaleString('en-GB') }}{{ t.locked ? ' · opens after pass 1' : '' }}</small></span>
       </label>
-      <template v-if="t.kind === 'seed' && t.batches.length > 1 && ticked(t.key)">
+      <template v-if="hasBatchTicks(t) && ticked(t.key)">
         <label v-for="b in t.batches.filter(b => b.recorded < b.total)" :key="b.n" class="bt-chk bt-sub-row">
           <input type="checkbox" :checked="ticked(batchTickId(t.key, b.n))" @change="$emit('tick', batchTickId(t.key, b.n), $event.target.checked)" />
-          <span class="bt-grow">{{ batchName(t, b) }}<small>Sentences {{ b.from }}–{{ b.to }} · {{ b.total - b.recorded }} left</small></span>
+          <span class="bt-grow">{{ batchName(t, b) }}<small>{{ t.kind === 'lego' ? 'LEGOs' : 'Sentences' }} {{ b.from }}–{{ b.to }} · {{ b.total - b.recorded }} left</small></span>
         </label>
       </template>
     </template>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { batchTickId } from './booth-home.js'
+import { batchTickId, hasBatchTicks } from './booth-home.js'
 defineProps({
   tickables: { type: Array, required: true },
   ticked: { type: Function, required: true },

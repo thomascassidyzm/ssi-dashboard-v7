@@ -5,6 +5,8 @@
 
     <BoothArtistsOverview />
 
+    <BoothPrivateLinks :voices="linkVoices" @links="privateKeys = $event" />
+
     <div v-if="loading" class="ar-spinner"></div>
     <p v-else-if="error" class="ar-error">{{ error }}</p>
 
@@ -107,10 +109,11 @@
 // the link to send each recordist. No per-course toggles, no per-pod gating, no
 // per-clip approval — every one of those was a decision nobody was making, on a
 // screen someone still had to read.
-import { ref, onMounted } from 'vue'
-import { recordingApiBase as apiBase } from '@/services/recordingApi'
+import { ref, computed, onMounted } from 'vue'
+import { recordingApiBase as apiBase, privateBoothLink } from '@/services/recordingApi'
 import { useAuth } from '@/composables/useAuth'
 import BoothArtistsOverview from '@/components/BoothArtistsOverview.vue'
+import BoothPrivateLinks from '@/components/BoothPrivateLinks.vue'
 
 const { getAccessToken } = useAuth()
 
@@ -160,9 +163,13 @@ function kindParts(voice) {
 
 // The link IS the recordist's identity, so it must be an absolute URL to THIS
 // origin — a relative path pasted into a message goes nowhere.
+// Since job #380 that means the PRIVATE link, with its key, once the God-admin
+// links panel has loaded it; without one it is the bare link grace mode still opens.
 function recordLink(voiceId) {
-  return `${window.location.origin}/r/${encodeURIComponent(voiceId)}`
+  return privateBoothLink(window.location.origin, voiceId, privateKeys.value[voiceId])
 }
+const privateKeys = ref({})
+const linkVoices = computed(() => rows.value.flatMap((r) => (r.voices || []).map((v) => ({ voiceId: v.voiceId, name: `${v.name || v.voiceId} · ${r.languageName || r.language}` }))))
 
 async function copyLink(voiceId) {
   const link = recordLink(voiceId)

@@ -65,7 +65,7 @@
 import { ref, reactive, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '@/composables/useAuth'
-import { recordingApiBase as apiBase } from '@/services/recordingApi'
+import { recordingApiBase as apiBase, rememberBoothKey } from '@/services/recordingApi'
 
 const router = useRouter()
 const { getAccessToken } = useAuth()
@@ -76,8 +76,12 @@ const me = reactive({ email: '', name: '', voices: [] })
 
 const firstName = computed(() => (me.email || '').split('@')[0])
 
+// The signed-in artist's own private link key comes back from /mine (job #380):
+// remembered for the booth and put on the address, so the booth opens as the link would.
 function go(voiceId) {
-  router.replace({ name: 'RecordistRoom', params: { voiceId } })
+  const key = (me.voices.find((v) => v.voiceId === voiceId) || {}).boothKey || null
+  if (key) rememberBoothKey(voiceId, key)
+  router.replace({ name: 'RecordistRoom', params: { voiceId }, ...(key ? { query: { k: key } } : {}) })
 }
 
 async function load() {

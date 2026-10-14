@@ -97,6 +97,11 @@ function languageLinesCacheKey(language, quarryMaxSeed) {
   return `${language}::${quarryMaxSeed == null ? 'default' : quarryMaxSeed}`
 }
 
+// Anything built ON TOP of a language's lines (the booth's per-voice queue cache, job #378)
+// is dropped with them: one invalidation, every layer.
+const INVALIDATE_LISTENERS = new Set()
+function onLanguageQueueInvalidated(fn) { INVALIDATE_LISTENERS.add(fn); return () => INVALIDATE_LISTENERS.delete(fn) }
+
 /**
  * Drop the cached read for one language (or, with no argument, every
  * language) on the db client it was last read against. Call this from any
@@ -104,6 +109,7 @@ function languageLinesCacheKey(language, quarryMaxSeed) {
  */
 function invalidateLanguageQueueCache(language) {
   scheduleRewarm(language)
+  for (const fn of INVALIDATE_LISTENERS) { try { fn(language) } catch { /* a listener never blocks a write */ } }
   if (!language) {
     for (const db of LAST_DB_FOR_LANGUAGE.values()) BY_DB.delete(db)
     LAST_DB_FOR_LANGUAGE.clear()
@@ -177,4 +183,4 @@ function scheduleRewarm(language) {
   REWARM_TIMERS.set(language, timer)
 }
 
-module.exports = { enableRewarmAfterInvalidate, invalidateLanguageQueueCache, cachedLanguageLines, stopAllWarming, LANGUAGE_LINES_TTL_MS, KEEP_WARM_LEAD_MS, KEEP_WARM_IDLE_MS }
+module.exports = { onLanguageQueueInvalidated, enableRewarmAfterInvalidate, invalidateLanguageQueueCache, cachedLanguageLines, stopAllWarming, LANGUAGE_LINES_TTL_MS, KEEP_WARM_LEAD_MS, KEEP_WARM_IDLE_MS }
