@@ -247,7 +247,7 @@ function cardPill(t) {
 .bh-note { color: var(--color-paper-dim, #c1c1bb); font-size: 0.85rem; margin: 0.9rem 0 0; }
 .bh-plan-toggle { display: block; width: 100%; min-height: 44px; margin: 0.4rem 0 0; text-align: left; font: inherit; font-weight: 600; color: var(--color-paper, #f7f7f2); background: transparent; border: 1px solid var(--color-graphite, #475569); border-radius: 10px; padding: 0 0.8rem; cursor: pointer; }
 .bh-side { background: var(--color-shadow, #1e293b); border: 1px solid var(--color-graphite, #475569); border-radius: 14px; padding: 0.9rem; margin-top: 0.5rem; }
-.bh-back { background: none; border: 0; font: inherit; color: var(--color-paper-dim, #c1c1bb); padding: 0.4rem 0; min-height: 44px; cursor: pointer; }
+.bh-back { display: block; background: none; border: 0; font: inherit; color: var(--color-paper-dim, #c1c1bb); padding: 0.4rem 0; min-height: 44px; cursor: pointer; }
 .bh-list { background: var(--color-shadow, #1e293b); border: 1px solid var(--color-graphite, #475569); border-radius: 14px; padding: 0.2rem 0.75rem; margin-top: 0.9rem; }
 .bh-brow { display: flex; width: 100%; gap: 0.75rem; align-items: center; padding: 0.7rem 0.2rem; background: none; border: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
 .bh-brow + .bh-brow { border-top: 1px solid var(--color-graphite, #475569); }
