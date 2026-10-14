@@ -99,13 +99,17 @@ function planAnswers(answers, items) {
     if (a.choice === 'accept' || (a.choice === 'option' && /make this change/i.test(choice))) {
       const m = /change the (ENGLISH|WELSH)/.exec(it.source || '');
       if (!m) { plan.push({ itemId: a.id, rowShort, action: 'noop', why: 'accepted, but no fix was suggested (proposed = current text)' }); continue; }
-      plan.push({ itemId: a.id, rowShort, action: 'set', field: m[1] === 'ENGLISH' ? 'known_text' : 'target_text', to: curly(it.proposed) });
+      plan.push({ itemId: a.id, rowShort, action: 'set', field: m[1] === 'ENGLISH' ? 'known_text' : 'target_text', to: curly(it.proposed), fromLabel: true });
       continue;
     }
     if (a.choice === 'own') {
       if (looksLikeInstruction(a.text)) {
         if (/capitali[sz]ation/i.test(a.text) && /english/i.test(a.text)) plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: null, transform: 'capitaliseEnglish' });
-        else {
+        else if (/rhai to unrhyw/i.test(a.text)) {
+          // 'change rhai to unrhyw and change some to any': word swaps in the Welsh and the English of the row
+          plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: null, swap: [/\brhai\b/, 'unrhyw'] });
+          plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: null, swap: [/\bsome\b/, 'any'] });
+        } else {
           // explicit values: "change Welsh to '…' and the English to '…'" sets both fields exactly
           const w = /\bWelsh to '([^']+)'/i.exec(a.text.replace(/[‘]/g, "'"));
           const e = /\bEnglish to '([^']+)'/i.exec(a.text.replace(/[‘]/g, "'"));
@@ -178,7 +182,17 @@ async function main() {
     if (!row) { report.unapplied.push(`${p.itemId}: row ${id} not found in ${course}`); continue; }
     if (p.action === 'remove') { removals.push(row); report.removed.push(p.itemId); continue; }
     const e = edits.get(id) || { row, set: {}, items: [] };
+    // The items file's 'change the ENGLISH|WELSH' label can be wrong: decide the field by which of the row's
+    // two texts the proposal actually resembles (shared words), not by the label.
+    if (p.fromLabel) {
+      const toks = (t) => new Set(String(t).toLowerCase().replace(/[’']/g, '').split(/[^\p{L}]+/u).filter(Boolean));
+      const overlap = (a, b) => { const B = toks(b); return [...toks(a)].filter((w) => B.has(w)).length; };
+      const ow = overlap(p.to, row.target_text), oe = overlap(p.to, row.known_text);
+      const guess = ow > oe ? 'target_text' : oe > ow ? 'known_text' : p.field;
+      if (guess !== p.field) { console.log(`field fixed ${p.itemId}: label said ${p.field}, text resembles ${guess}`); p.field = guess; }
+    }
     const base = e.set[p.field] ?? row[p.field];
+    if (p.swap) p.to = base.replace(p.swap[0], p.swap[1]);
     const to = p.transform === 'capitaliseEnglish' ? capitaliseEnglish(base) : p.to;
     if (to === base) { report.noop.push(`${p.itemId}: ${p.field} already "${to}"`); continue; }
     e.set[p.field] = to; e.items.push(p.itemId); edits.set(id, e);
