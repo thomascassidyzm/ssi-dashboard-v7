@@ -3,7 +3,6 @@ import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
 const { signHeader, createAgentAdminVerifier, adminOrAgent, SCOPES } = require('./agent-admin-identity.cjs')
 const { patchVoiceSlot, withoutRetired } = require('./policy-voice-patch.cjs')
-const { parseSoloReaders, judgeLink } = require('./pod-agent-edits.cjs')
 
 const secret = 'a'.repeat(64)
 const T = 1_800_000_000
@@ -39,7 +38,7 @@ describe('agent admin identity', () => {
     expect(v.check(req(h), SCOPES.VOICE_SLOT_WRITE).error).toMatch(/already used/)
     expect(verifier().check(req(sign({ ts: T - 120 })), SCOPES.VOICE_SLOT_WRITE).error).toMatch(/expired/)
     expect(verifier().check(req(sign(), { headers: { 'x-agent-admin': sign(), 'x-forwarded-for': '1.2.3.4' } }), SCOPES.VOICE_SLOT_WRITE).status).toBe(403)
-    expect(verifier().check(req(sign()), SCOPES.POD_WRITE).status).toBe(403)
+    expect(verifier().check(req(sign()), "nope:write").status).toBe(403)
   })
   it('a failed agent attempt never falls through to the admin gate', async () => {
     let asked = false
@@ -72,21 +71,5 @@ describe('voice slot patch', () => {
     expect(patchVoiceSlot(voices, 'nobody', { active: false }).status).toBe(404)
     expect(patchVoiceSlot(voices, 'human_aran_eng', { email: 'a name' }).status).toBe(400)
     expect(patchVoiceSlot(voices, 'human_aran_eng', {}).status).toBe(400)
-  })
-})
-
-describe('pod edits', () => {
-  it('parses solo readers, [] clears', () => {
-    expect(parseSoloReaders({ soloReaders: [] })).toEqual({ ok: true, readers: [] })
-    expect(parseSoloReaders({ soloReaders: ['a_b', 'a_b'] }).readers).toEqual(['a_b'])
-    expect(parseSoloReaders({}).ok).toBe(false)
-  })
-  it('links only a clip that speaks the line, fill-only by default', () => {
-    const sentence = { target_text: 'Rwy’n dy garu di.', target_audio_id: null }
-    const clip = { id: 'c1', text: 'rwy’n dy garu di' }
-    expect(judgeLink({ sentence, clip }).ok).toBe(true)
-    expect(judgeLink({ sentence, clip: { id: 'c2', text: 'something else' } }).status).toBe(409)
-    expect(judgeLink({ sentence: { ...sentence, target_audio_id: 'old' }, clip }).status).toBe(409)
-    expect(judgeLink({ sentence: { ...sentence, target_audio_id: 'old' }, clip, replace: true, expectCurrent: 'old' }).ok).toBe(true)
   })
 })

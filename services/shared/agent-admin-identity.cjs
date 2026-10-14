@@ -31,7 +31,6 @@ const fs = require('fs');
 const SCOPES = Object.freeze({
   VOICE_SLOT_WRITE: 'voice-slot:write',
   TAKES_READ: 'takes:read',
-  POD_WRITE: 'pod:write',
 });
 
 const HEADER = 'x-agent-admin';

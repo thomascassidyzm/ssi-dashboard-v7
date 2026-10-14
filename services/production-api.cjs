@@ -422,12 +422,6 @@ const requireAdminOrAgent = agentAdminIdentity.adminOrAgent(
   agentAdminIdentity.createAgentAdminVerifier({ logger }),
   requireAdmin,
 )
-require('./shared/pod-agent-edits.cjs').mount(app, {
-  gate: requireAdminOrAgent,
-  getDb: () => supabaseClient.getClient(),
-  logger,
-  onSlotChanged: () => require('./voice-engine/recordist-queue-cache.cjs').invalidateLanguageQueueCache(),
-})
 
 // Softer sibling of the control-plane gate: ANY signed-in dashboard user, or a
 // same-host mesh caller. Used on writes that editors legitimately perform
