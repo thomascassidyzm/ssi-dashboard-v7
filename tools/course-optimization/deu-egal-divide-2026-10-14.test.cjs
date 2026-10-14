@@ -28,3 +28,28 @@ test('a personal egal glossed "matter" is caught, an impersonal one glossed "car
   assert.ok(M.invariants(mk("I don't care", 'es ist egal')).some((x) => /impersonal egal/.test(x)));
   assert.ok(!M.invariants(mk('she told me it did not matter', 'sie hat mir gesagt, dass es egal war')).some((x) => /egal glossed/.test(x)));
 });
+
+test('rewritten German requests both target clips, including a moved row', () => {
+  const rewrites = M.REWRITES.filter((r) => r[2] !== r[4]);
+  const dump = {
+    seeds: [],
+    legos: [...pre.legos, L('S0001L01', 1, 1,
+      'I don\'t care about that she said no matter what',
+      'Das ist mir egal sie hat gesagt was', true)],
+    phrases: rewrites.map(([id, known_text, target_text]) => ({
+      id: `deu_for_eng:${id}`, seed_number: Number(id.slice(1, 5)),
+      lego_index: 1, position: 4, phrase_role: 'use', known_text, target_text,
+      target1_audio_id: '11111111-1111-4111-8111-111111111111',
+      target2_audio_id: '22222222-2222-4222-8222-222222222222',
+    })),
+  };
+  const post = M.applyPlan(dump);
+  assert.ok(post.inserts.some((i) => i.from === 'S0593L01U04'));
+  const expected = rewrites.flatMap(([id, , , , text]) => {
+    const moved = post.inserts.find((i) => i.from === id);
+    return ['target1', 'target2'].map((role) => ({
+      role, text, phrase: moved ? moved.row.id : `deu_for_eng:${id}`,
+    }));
+  });
+  assert.deepStrictEqual(M.wanted(dump).filter((r) => r.role.startsWith('target')), expected);
+});
