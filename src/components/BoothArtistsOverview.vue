@@ -14,7 +14,7 @@
 
     <template v-else>
       <ul class="cards">
-        <li v-for="a in mainArtists" :key="a.voiceId" class="card" :class="{ open: openId === a.voiceId }">
+        <li v-for="a in mainArtists" :key="a.voiceId" :id="`artist-${a.voiceId}`" class="card" :class="{ open: openId === a.voiceId }">
           <button class="card-btn" @click="toggle(a.voiceId)" :aria-expanded="openId === a.voiceId">
             <div class="card-top">
               <span class="name">{{ a.name }}</span>
@@ -27,11 +27,17 @@
               <div class="stat"><span class="v">{{ fmtDur(a.activity.audioMs) }}</span><span class="k">audio kept</span></div>
               <div class="stat"><span class="v">{{ fmtDur(a.activity.sessionMs) }}</span><span class="k">at the booth</span></div>
             </div>
-            <div v-for="q in queues(a)" :key="q.key" class="q">
-              <span class="q-label">{{ q.label }}</span>
-              <span class="q-bar"><span class="q-fill" :style="{ width: pct(q.done, q.total) }"></span></span>
-              <span class="q-num">{{ q.done.toLocaleString() }} / {{ q.total.toLocaleString() }}</span>
+            <!-- ONE ROW PER PROJECT (Aran, job #379: "which project they've been working on"),
+                 most recently worked on first, named in plain words by the server. -->
+            <div v-for="p in a.projects" :key="p.key" class="q" :class="{ 'q-other': p.other }">
+              <span class="q-label">{{ p.label }}</span>
+              <template v-if="!p.other">
+                <span class="q-bar"><span class="q-fill" :style="{ width: pct(p.recorded, p.total) }"></span></span>
+                <span class="q-num">{{ p.recorded.toLocaleString() }} / {{ p.total.toLocaleString() }}</span>
+              </template>
+              <span class="q-meta">{{ projectActivity(p) }}</span>
             </div>
+            <p v-if="a.queueUnavailable" class="note">Their queue could not be read just now, so every take shows as earlier lines.</p>
           </button>
 
           <div v-if="openId === a.voiceId" class="drill">
@@ -53,27 +59,36 @@
                 <text :x="CHART_W" y="10" class="tick" text-anchor="end">max {{ detail[a.voiceId].maxTakes }}</text>
               </svg>
 
-              <template v-if="kindRows(a).length">
-                <h3>Lines by queue</h3>
-                <table class="tbl">
-                  <tr v-for="k in kindRows(a)" :key="k.key"><td>{{ k.label }}</td><td class="n">{{ k.done }} / {{ k.total }}</td><td class="n">{{ pct(k.done, k.total, true) }}</td></tr>
-                </table>
-              </template>
-
-              <template v-if="detail[a.voiceId].phraseBatches.length">
-                <h3>Practice phrases by batch</h3>
-                <div v-for="g in batchGroups(detail[a.voiceId].phraseBatches)" :key="g.key" class="batch-group">
-                  <span class="batch-label">{{ g.label }} · {{ g.done }}/{{ g.batches.length }} batches</span>
+              <h3>By project</h3>
+              <div v-for="p in a.projects" :key="p.key" class="proj">
+                <div class="proj-head">
+                  <span class="proj-name">{{ p.label }}</span>
+                  <span class="proj-num">{{ p.other ? `${p.activity.takes} takes` : `${p.recorded.toLocaleString()} / ${p.total.toLocaleString()} · ${pct(p.recorded, p.total, true)}` }}</span>
+                </div>
+                <span class="proj-meta">{{ projectActivity(p, true) }}</span>
+                <template v-if="projectBatches(a.voiceId, p.key).length">
                   <div class="batches">
-                    <div v-for="b in g.batches" :key="b.batch"
+                    <div v-for="b in projectBatches(a.voiceId, p.key)" :key="b.batch"
                          class="batch" :class="{ done: b.recorded + b.held >= b.total, started: b.recorded > 0 && b.recorded + b.held < b.total }"
-                         :title="`${g.label} batch ${b.batch}: ${b.recorded} of ${b.total} read${b.held ? `, ${b.held} held by a proof flag` : ''}`">
+                         :title="`Batch ${b.batch}: ${b.recorded} of ${b.total} read${b.held ? `, ${b.held} held by a proof flag` : ''}`">
                       <span>{{ b.batch }}</span>
                     </div>
                   </div>
-                </div>
-                <p class="note">Each square is one batch (~200 lines). Filled = finished, outlined = started. Tap and hold for numbers.</p>
-              </template>
+                  <p class="note">{{ p.batchesDone }} of {{ p.batches }} batches finished. Each square is one batch (~200 lines): filled = finished, outlined = started.</p>
+                </template>
+                <template v-if="projectTakes(a.voiceId, p.key).length">
+                  <button class="link" @click="toggleProject(a.voiceId, p.key)" :aria-expanded="isProjectOpen(a.voiceId, p.key)">
+                    {{ isProjectOpen(a.voiceId, p.key) ? 'Hide' : 'Hear' }} the latest {{ projectTakes(a.voiceId, p.key).length }} {{ projectTakes(a.voiceId, p.key).length === 1 ? 'take' : 'takes' }}
+                  </button>
+                  <ul v-if="isProjectOpen(a.voiceId, p.key)" class="takes">
+                    <li v-for="t in projectTakes(a.voiceId, p.key)" :key="t.audioId" class="take">
+                      <span class="take-meta">{{ fmtWhen(t.recordedAt) }}<template v-if="t.durationMs"> · {{ (t.durationMs / 1000).toFixed(1) }}s</template><template v-if="t.archived"> · archived by Re-record all</template></span>
+                      <span class="take-text">{{ t.text }}</span>
+                      <audio v-if="t.url" :src="t.url" controls preload="none"></audio>
+                    </li>
+                  </ul>
+                </template>
+              </div>
 
               <h3>Recent sittings</h3>
               <table v-if="detail[a.voiceId].sessions.length" class="tbl">
@@ -86,7 +101,7 @@
               <h3>Latest takes</h3>
               <ul class="takes">
                 <li v-for="t in detail[a.voiceId].recentTakes.slice(0, takeLimit)" :key="t.audioId" class="take">
-                  <span class="take-meta">{{ fmtWhen(t.recordedAt) }} · {{ t.courseCode }} · {{ t.role }}<template v-if="t.durationMs"> · {{ (t.durationMs / 1000).toFixed(1) }}s</template><template v-if="t.archived"> · archived by Re-record all</template></span>
+                  <span class="take-meta">{{ fmtWhen(t.recordedAt) }} · {{ t.projectLabel || t.courseCode }}<template v-if="t.durationMs"> · {{ (t.durationMs / 1000).toFixed(1) }}s</template><template v-if="t.archived"> · archived by Re-record all</template></span>
                   <span class="take-text">{{ t.text }}</span>
                   <audio v-if="t.url" :src="t.url" controls preload="none"></audio>
                 </li>
@@ -110,7 +125,10 @@
       <details class="key">
         <summary>What the numbers mean</summary>
         <dl>
-          <dt>Lines x / y</dt><dd>Lines in that queue with a take, out of all lines in it — the booth's own count. POD-1, new sentences and minimal set come from the booth's queue; practice phrases are pass 1 and pass 2 of the phrase batches.</dd>
+          <dt>Projects</dt><dd>Each piece of work the reader is cast on, split the way their booth splits it: Pod 1 and the other scripts, old sentences (already in the live course), new sentences, new practice phrases by pass. "New" means the North and South relaunch courses; "old" the live courses. "English known lines" is the English side of the Welsh courses.</dd>
+          <dt>x / y</dt><dd>Lines in that project with a take, out of all lines in it — the booth's own count, the same as the reader's own home screen.</dd>
+          <dt>This week, last</dt><dd>Takes filed under the project in the last 7 days, and the time of its latest take. A take is filed under the project whose line has its words.</dd>
+          <dt>Earlier lines</dt><dd>Takes whose words are on no line of the reader's queue today — an old version of a pod line, a retired script. Counted so no work disappears; there is no total to finish.</dd>
           <dt>Takes</dt><dd>Clips kept, timestamped when each was first saved. Reading a line again replaces its clip and keeps the old time, so re-reads are not counted. Takes later archived by "Re-record all" still count as work done.</dd>
           <dt>Audio kept</dt><dd>Total length of those clips — speech actually kept, not time spent.</dd>
           <dt>At the booth</dt><dd>First to last take of each sitting (a gap of {{ data.sessionGapMinutes }} minutes or more starts a new sitting). The minutes before the first take and after the last are invisible, so a one-take sitting counts as zero. Read it as "at least".</dd>
@@ -122,7 +140,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
+import { useRoute } from 'vue-router'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useAuth } from '@/composables/useAuth'
 
@@ -134,13 +153,13 @@ const data = ref({ artists: [] })
 const openId = ref(null)
 const detail = ref({})
 const takeLimit = ref(10)
+const openProjects = ref({})
+const route = useRoute()
 
 const CHART_W = 300
 const CHART_H = 70
 const colW = CHART_W / 30
 
-const KIND_LABELS = { pod: 'POD-1', takeg: 'Take G', seed: 'New sentences', quarry: 'Minimal set', rerecord: 'Re-recording' }
-const COURSE_LABELS = { cym_nv2_for_eng: 'North', cym_sv2_for_eng: 'South' }
 
 const mainArtists = computed(() => data.value.artists.filter((a) => !a.isTest && !a.noQueue))
 const otherArtists = computed(() => data.value.artists.filter((a) => a.isTest || a.noQueue))
@@ -182,36 +201,34 @@ async function toggle(voiceId) {
   }
 }
 
-/** The headline bars: the booth queue as one, then each phrase pass. Empty queues are not drawn. */
-function queues(a) {
-  const out = []
-  if (a.lines && a.lines.total) out.push({ key: 'lines', label: 'Booth lines', done: a.lines.withTake, total: a.lines.total })
-  const passes = (a.phrases && a.phrases.passes) || {}
-  for (const p of Object.keys(passes).sort()) {
-    if (passes[p].total) out.push({ key: `p${p}`, label: `Phrases pass ${p}`, done: passes[p].recorded, total: passes[p].total })
-  }
-  return out
+function ago(iso) {
+  const days = Math.floor((Date.now() - Date.parse(iso)) / 86400000)
+  if (days < 1) return 'today'
+  if (days === 1) return 'yesterday'
+  return `${days}d ago`
 }
 
-function kindRows(a) {
-  const kinds = (a.lines && a.lines.kinds) || {}
-  return Object.keys(KIND_LABELS).filter((k) => kinds[k] && kinds[k].total)
-    .map((k) => ({ key: k, label: KIND_LABELS[k], done: kinds[k].withTake ?? 0, total: kinds[k].total }))
+/** "12 this week · last 2d ago", or "not started". */
+function projectActivity(p, long = false) {
+  const act = p.activity || {}
+  if (!act.lastActive) return 'not started'
+  const week = `${act.takes7d.toLocaleString()} this week`
+  const last = long ? `last take ${fmtWhen(act.lastActive)}` : `last ${ago(act.lastActive)}`
+  return p.other ? `${act.takes.toLocaleString()} takes · ${last}` : `${week} · ${last}`
 }
 
-function courseLabel(c) { return COURSE_LABELS[c] || c }
-
-/** One row of squares per course and pass, so batch 3 of pass 2 never reads as batch 3 of pass 1. */
-function batchGroups(batches) {
-  const groups = new Map()
-  for (const b of batches) {
-    const key = `${b.courseCode}-${b.pass}`
-    if (!groups.has(key)) groups.set(key, { key, label: `${courseLabel(b.courseCode)} pass ${b.pass}`, batches: [], done: 0 })
-    const g = groups.get(key)
-    g.batches.push(b)
-    if (b.recorded + b.held >= b.total) g.done += 1
-  }
-  return [...groups.values()]
+function projectBatches(voiceId, key) {
+  const d = detail.value[voiceId]
+  return d && d.phraseBatches ? d.phraseBatches.filter((b) => b.project === key) : []
+}
+function projectTakes(voiceId, key) {
+  const d = detail.value[voiceId]
+  return d && d.recentTakes ? d.recentTakes.filter((t) => t.project === key).slice(0, 10) : []
+}
+const isProjectOpen = (voiceId, key) => !!openProjects.value[`${voiceId}/${key}`]
+function toggleProject(voiceId, key) {
+  const k = `${voiceId}/${key}`
+  openProjects.value = { ...openProjects.value, [k]: !openProjects.value[k] }
 }
 
 function pct(n, total, text = false) {
@@ -255,7 +272,16 @@ function barPath(i, v, max) {
   return `M${x},${CHART_H} V${y + r} Q${x},${y} ${x + r},${y} H${x + w - r} Q${x + w},${y} ${x + w},${y + r} V${CHART_H} Z`
 }
 
-onMounted(() => load())
+// A tap on a booth's team card arrives as ?artist=<voiceId>: open that artist and bring it into view.
+onMounted(async () => {
+  await load()
+  const want = typeof route.query.artist === 'string' ? route.query.artist : null
+  if (state.value !== 'ready' || !want || !data.value.artists.some((a) => a.voiceId === want)) return
+  toggle(want)
+  await nextTick()
+  const el = document.getElementById(`artist-${want}`)
+  if (el) el.scrollIntoView({ block: 'start' })
+})
 </script>
 
 <style scoped>
@@ -284,8 +310,17 @@ h3 { font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem; margin: 1rem 0
 .stat { display: flex; flex-direction: column; }
 .stat .v { font-family: 'IBM Plex Mono', monospace; font-size: 1.05rem; }
 .stat .k { font-size: 0.66rem; color: var(--color-paper-dim, #c1c1bb); }
-.q { display: grid; grid-template-columns: 7.5rem 1fr auto; align-items: center; gap: 0.5rem; font-size: 0.74rem; margin-top: 0.3rem; }
-.q-label { color: var(--color-paper-dim, #c1c1bb); }
+.q { display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 0.5rem; row-gap: 0.15rem; font-size: 0.74rem; margin-top: 0.55rem; }
+.q-label { grid-column: 1 / -1; color: var(--color-paper, #f7f7f2); font-weight: 600; }
+.q-meta { grid-column: 1 / -1; color: var(--color-paper-dim, #c1c1bb); font-size: 0.68rem; }
+.q-other .q-label { font-weight: 500; color: var(--color-paper-dim, #c1c1bb); }
+.proj { padding: 0.5rem 0; border-bottom: 1px solid var(--color-graphite, #475569); max-width: 520px; }
+.proj-head { display: flex; justify-content: space-between; gap: 0.6rem; align-items: baseline; }
+.proj-name { font-size: 0.85rem; font-weight: 600; }
+.proj-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.74rem; color: var(--color-paper-dim, #c1c1bb); white-space: nowrap; }
+.proj-meta { display: block; font-size: 0.72rem; color: var(--color-paper-dim, #c1c1bb); margin: 0.1rem 0 0.3rem; }
+.proj .batches { margin-top: 0.3rem; }
+.link { background: none; border: 0; padding: 0.3rem 0; min-height: 34px; font: inherit; font-size: 0.78rem; font-weight: 600; color: var(--color-emerald, #06ffa5); cursor: pointer; }
 .q-bar { height: 8px; border-radius: 4px; background: var(--color-void, #0f172a); border: 1px solid var(--color-graphite, #475569); overflow: hidden; }
 .q-fill { display: block; height: 100%; background: var(--color-emerald, #06ffa5); }
 .q-num { font-family: 'IBM Plex Mono', monospace; color: var(--color-paper-dim, #c1c1bb); }
@@ -299,8 +334,6 @@ h3 { font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem; margin: 1rem 0
 .tbl { border-collapse: collapse; font-size: 0.78rem; width: 100%; max-width: 420px; }
 .tbl td { padding: 0.25rem 0.4rem 0.25rem 0; border-bottom: 1px solid var(--color-graphite, #475569); }
 .tbl .n { text-align: right; font-family: 'IBM Plex Mono', monospace; color: var(--color-paper-dim, #c1c1bb); }
-.batch-group { margin-bottom: 0.5rem; }
-.batch-label { display: block; font-size: 0.72rem; color: var(--color-paper-dim, #c1c1bb); margin-bottom: 0.2rem; }
 .batches { display: flex; flex-wrap: wrap; gap: 3px; }
 .batch { width: 22px; height: 22px; border-radius: 4px; border: 1px solid var(--color-graphite, #475569); display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: var(--color-paper-dim, #c1c1bb); font-family: 'IBM Plex Mono', monospace; }
 .batch.started { border-color: var(--color-emerald, #06ffa5); color: var(--color-emerald, #06ffa5); }
@@ -326,7 +359,8 @@ summary { cursor: pointer; min-height: 32px; display: list-item; }
 :root[data-theme="light"] .q-bar,
 :root[data-theme="light"] .tbl td,
 :root[data-theme="light"] .batch,
-:root[data-theme="light"] .take { border-color: var(--line); }
+:root[data-theme="light"] .take,
+:root[data-theme="light"] .proj { border-color: var(--line); }
 :root[data-theme="light"] .batch.started,
 :root[data-theme="light"] .batch.done { border-color: var(--color-emerald); }
 :root[data-theme="light"] .card { box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06); }

@@ -15,15 +15,26 @@ queue.buildCoverage = async () => [{
   voices: [{ voiceId: 'human_dan_cym_s', name: 'Dan', total: 10, withTake: 4, kinds: { pod: { total: 10, withTake: 4 } } }],
 }]
 queue.resolveRecordist = async (_db, id) => (id === 'human_dan_cym_s' ? { voiceId: id, language: 'cym', spellings: [id] } : null)
-queue.getPhrasePlan = async () => ({ byVoice: new Map() })
+queue.getPhrasePlan = async () => ({ byVoice: new Map([['human_dan_cym_s', [
+  { text: 'dw i wedi dechrau', courseCode: 'cym_sv2_for_eng', pass: 1 },
+]]]) })
+// Dan's queue as the booth sees it (job #379): Pod 1 of the live South course, and one phrase batch.
+queue.buildQueue = async () => ({
+  lines: [
+    { kind: 'pod', podSlug: 'pod-1', courseCode: 'cym_s_for_eng', text: 'Bore da', recorded: true },
+    { kind: 'pod', podSlug: 'pod-1', courseCode: 'cym_s_for_eng', text: 'Shwmae', recorded: false },
+  ],
+  phrases: { pass: 1, batch: 1, courseCode: 'cym_sv2_for_eng' },
+  phraseBatches: [{ pass: 1, batch: 1, courseCode: 'cym_sv2_for_eng', courseLabel: 'South', total: 200, recorded: 1, held: 0 }],
+})
 const ov = require('./booth-artist-overview.cjs')
 const createRouter = require('./booth-artists-router.cjs')
 
 const NOW = Date.parse('2026-10-14T12:00:00Z')
 const rows = [
-  { id: 'a', voice_id: 'human_dan_cym_s', created_at: '2026-10-14T10:00:00Z', duration_ms: 2000, s3_key: null },
-  { id: 'b', voice_id: 'human_dan_cym_s', created_at: '2026-10-14T10:05:00Z', duration_ms: 3000, s3_key: null },
-  { id: 'c', voice_id: 'human_archived-20a3405f-human_dan_cym_s', created_at: '2026-10-01T09:00:00Z', duration_ms: null, s3_key: null },
+  { id: 'a', voice_id: 'human_dan_cym_s', course_code: 'cym_s_for_eng', text: 'Bore da', created_at: '2026-10-14T10:00:00Z', duration_ms: 2000, s3_key: null },
+  { id: 'b', voice_id: 'human_dan_cym_s', course_code: 'cym_sv2_for_eng', text: 'Dw i wedi dechrau.', created_at: '2026-10-14T10:05:00Z', duration_ms: 3000, s3_key: null },
+  { id: 'c', voice_id: 'human_archived-20a3405f-human_dan_cym_s', course_code: 'cym_s_for_eng', text: 'Croeso i gêm', created_at: '2026-10-01T09:00:00Z', duration_ms: null, s3_key: null },
 ]
 function fakeDb() {
   const q = { select: () => q, eq: () => q, like: () => q, order: () => q, range: async () => ({ data: rows, error: null }) }
@@ -91,6 +102,35 @@ test('Aran sees every artist, with archived takes folded into their voice', asyn
   assert.strictEqual(d.status, 200)
   assert.strictEqual(d.json.daily.length, 30)
   assert.strictEqual(d.json.daily[29].takes, 2)
+})
+
+test('work is split by project in plain words, each take filed under its line (Aran, job #379)', async () => {
+  const r = await get('/artists', 'aran')
+  const dan = r.json.artists.find((a) => a.voiceId === 'human_dan_cym_s')
+  const by = Object.fromEntries(dan.projects.map((p) => [p.label, p]))
+  assert.deepStrictEqual(Object.keys(by), [
+    'South Welsh: new practice phrases, pass 1', 'South Welsh: Pod 1', 'South Welsh: earlier lines, not in the queue now',
+  ])
+  assert.deepStrictEqual([by['South Welsh: Pod 1'].recorded, by['South Welsh: Pod 1'].total], [1, 2])
+  assert.strictEqual(by['South Welsh: Pod 1'].activity.takesToday, 1)
+  assert.deepStrictEqual([by['South Welsh: new practice phrases, pass 1'].recorded, by['South Welsh: new practice phrases, pass 1'].total], [1, 200])
+  assert.strictEqual(by['South Welsh: earlier lines, not in the queue now'].total, null)
+  assert.strictEqual(by['South Welsh: earlier lines, not in the queue now'].activity.takes, 1)
+  assert.strictEqual(dan.lines.withTake, 4)
+  const d = await get('/artists/human_dan_cym_s', 'aran')
+  // (the fake DB hands rows back in the order written, not newest first)
+  assert.deepStrictEqual(d.json.recentTakes.map((t) => t.projectLabel), [
+    'South Welsh: Pod 1', 'South Welsh: new practice phrases, pass 1', 'South Welsh: earlier lines, not in the queue now',
+  ])
+  assert.strictEqual(d.json.phraseBatches[0].project, 'phrase.cym_sv2_for_eng.1')
+})
+
+test('project names: Pod 1, old and new sentences, LEGOs, and the English known side', () => {
+  assert.strictEqual(ov.projectLabel({ kind: 'pod', podSlug: 'pod-1', courseCode: 'cym_n_for_eng' }, 'cym'), 'North Welsh: Pod 1')
+  assert.strictEqual(ov.projectLabel({ kind: 'seed', courseCode: 'cym_nv2_for_eng', newCourse: true, seedExisting: false }, 'cym'), 'North Welsh: new sentences')
+  assert.strictEqual(ov.projectLabel({ kind: 'seed', courseCode: 'cym_n_for_eng', seedExisting: true }, 'cym'), 'North Welsh: old sentences')
+  assert.strictEqual(ov.projectLabel({ kind: 'lego', courseCode: 'cym_nv2_for_eng' }, 'cym'), 'North Welsh: new LEGOs')
+  assert.strictEqual(ov.projectLabel({ kind: 'seed', courseCode: 'cym_sv2_for_eng', seedExisting: true }, 'eng'), 'English known lines: South Welsh new sentences')
 })
 
 test('the God-admin list is exactly Tom, Aran and Kai', () => {
