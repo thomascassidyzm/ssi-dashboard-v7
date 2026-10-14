@@ -169,6 +169,9 @@ describe('content-write surface manifest', () => {
     ['POST /api/build/redo-undo/:courseCode',
       'restores the snapshotted legos through lib/redo-snapshot.cjs restoreSnapshot(), '
       + 'so course_legos is never named in the route source'],
+    ['PATCH /api/production/:courseCode/lego/:legoId',
+      'edits the lego through course-data-service.cjs updateLego(), so course_legos is never '
+      + 'named in the route source (job #388)'],
   ]);
 
   it('flags every route that writes course_legos, and only those', () => {
