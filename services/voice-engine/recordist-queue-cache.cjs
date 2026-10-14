@@ -103,6 +103,7 @@ function languageLinesCacheKey(language, quarryMaxSeed) {
  * write path that can change what a language's queue looks like.
  */
 function invalidateLanguageQueueCache(language) {
+  scheduleRewarm(language)
   if (!language) {
     for (const db of LAST_DB_FOR_LANGUAGE.values()) BY_DB.delete(db)
     LAST_DB_FOR_LANGUAGE.clear()
@@ -141,4 +142,39 @@ function cachedLanguageLines(db, language, quarryMaxSeed, read) {
   return promise
 }
 
-module.exports = { invalidateLanguageQueueCache, cachedLanguageLines, stopAllWarming, LANGUAGE_LINES_TTL_MS, KEEP_WARM_LEAD_MS, KEEP_WARM_IDLE_MS }
+// RE-WARM AFTER A TAKE (job #337, Aran's slow booth). Every upload invalidates
+// the language read above, so the recordist's NEXT page load -- the reload after
+// a take is the commonest one -- paid the whole cold read (~2-6 s). Off by
+// default so a test that counts reads sees none it did not ask for; production
+// switches it on (recordist-router, `warmPhrasePlan`). Debounced: a run of takes
+// is one re-read, started once they stop, and only for a read someone asked for
+// inside the keep-warm window.
+const REWARM_DEBOUNCE_MS = 2_000
+let rewarmEnabled = false
+const REWARM_TIMERS = new Map() // language -> timer
+
+function enableRewarmAfterInvalidate() { rewarmEnabled = true }
+
+function scheduleRewarm(language) {
+  if (!rewarmEnabled || !language) return
+  clearTimeout(REWARM_TIMERS.get(language))
+  const timer = setTimeout(() => {
+    REWARM_TIMERS.delete(language)
+    for (const [key, w] of WARM) {
+      if (!key.startsWith(`${language}::`) || Date.now() - w.lastAskedAt > KEEP_WARM_IDLE_MS) continue
+      const forDb = BY_DB.get(w.db) || new Map()
+      BY_DB.set(w.db, forDb)
+      const hit = forDb.get(key)
+      if (hit && hit.expiresAt > Date.now()) continue // a request got there first
+      let promise
+      try { promise = w.read() } catch { continue }
+      forDb.set(key, { promise, expiresAt: Date.now() + LANGUAGE_LINES_TTL_MS })
+      promise.catch(() => { if (forDb.get(key)?.promise === promise) forDb.delete(key) })
+      scheduleWarm(key)
+    }
+  }, REWARM_DEBOUNCE_MS)
+  if (typeof timer.unref === 'function') timer.unref()
+  REWARM_TIMERS.set(language, timer)
+}
+
+module.exports = { enableRewarmAfterInvalidate, invalidateLanguageQueueCache, cachedLanguageLines, stopAllWarming, LANGUAGE_LINES_TTL_MS, KEEP_WARM_LEAD_MS, KEEP_WARM_IDLE_MS }

@@ -57,7 +57,9 @@ const {
   invalidateLanguageQueueCache,
   linkPhraseTake,
   getPhrasePlan,
+  warmLanguageQueues,
 } = require('./recordist-queue.cjs')
+const { enableRewarmAfterInvalidate } = require('./recordist-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
 const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
@@ -149,7 +151,11 @@ module.exports = function createRecordistRouter({
     return client
   }
   if (warmPhrasePlan) {
+    // Job #337: the language read was cold after every deploy and after every
+    // take. Warm it at boot beside the plan, and re-warm it after a take.
+    enableRewarmAfterInvalidate()
     const t = setTimeout(() => {
+      try { warmLanguageQueues(db()).catch((e) => logger.warn(`[Recordist] language queue warm failed: ${e.message}`)) } catch (e) { logger.warn(`[Recordist] language queue warm skipped: ${e.message}`) }
       try { getPhrasePlan(db()).catch((e) => logger.warn(`[Recordist] phrase plan warm failed: ${e.message}`)) } catch (e) { logger.warn(`[Recordist] phrase plan warm skipped: ${e.message}`) }
     }, 15_000)
     if (typeof t.unref === 'function') t.unref()
