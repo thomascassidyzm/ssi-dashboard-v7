@@ -3,6 +3,8 @@ Description=Fast-forward the served Popty checkout to origin/main and restart it
 Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/tools/deploy/auto-deploy-prod.cjs
 
 [Service]
+# Job #391: Popty runs as `popty` (group tomcassidy); files git lays down must stay group-writable.
+UMask=0002
 Type=oneshot
 # Runs out of the PROD checkout, same reasoning as ssi-round-index.service:
 # the shared dev checkout is where live sessions work and is routinely left

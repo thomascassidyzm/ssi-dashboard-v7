@@ -11,7 +11,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-const { query } = require('./db.cjs');
+const { listCourses } = require('./db.cjs');
 const { EVIDENCE, WEAK } = require('./measure.cjs');
 
 // Sequential blue ramp (dataviz reference palette, steps 100..700), binned by the
@@ -31,7 +31,7 @@ const esc = (s) => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;');
 function load() {
   const files = fs.readdirSync(EVIDENCE).filter(f => f.startsWith('measure-') && f.endsWith('.json'));
   const ms = files.map(f => JSON.parse(fs.readFileSync(path.join(EVIDENCE, f), 'utf8')));
-  const status = new Map(query(`select course_code, status, new_app_status from courses`).map(r => [r.course_code, r]));
+  const status = new Map(listCourses().map(r => [r.course_code, r]));
   return ms.map(m => ({ m, s: status.get(m.course) || {} }))
     .sort((a, b) => (a.m.summary.mean_w20 ?? 1) - (b.m.summary.mean_w20 ?? 1));
 }

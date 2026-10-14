@@ -208,3 +208,21 @@ describe('a named course with no course row (lane review #728)', () => {
     await expect(castVerdict('fra', 'cartesia_f', { courseCode: 'fra_ca_for_eng' })).rejects.toThrow(/no course row/)
   })
 })
+
+describe('cat: a Tom-cast Azure row is the cast (job #448)', () => {
+  const ALBA = 'azure_ca-ES-AlbaNeural'
+  const rows = [
+    { language: 'cat', voice_id: ALBA, assigned_by: 'thomas.cassidy+ssi@gmail.com', notes: '' },
+    { language: 'cat', voice_id: 'azure_ca-ES-EnricNeural', assigned_by: 'thomas.cassidy+ssi@gmail.com', notes: '' },
+    { language: 'ita', voice_id: 'azure_it-IT-ElsaNeural', assigned_by: 'thomas.cassidy+ssi@gmail.com', notes: '' },
+  ]
+  it('allows the cast Azure voice for cat', () => {
+    expect(gate.castAllowsVoice('cat', ALBA, rows)).toMatchObject({ allowed: true })
+  })
+  it('does not open any other language to a non-Cartesia cast row', () => {
+    expect(gate.castAllowsVoice('ita', 'azure_it-IT-ElsaNeural', rows)).toMatchObject({ allowed: false, reason: 'uncast' })
+  })
+  it('still bans xAI in cat', () => {
+    expect(gate.castAllowsVoice('cat', 'xai_x', [{ language: 'cat', voice_id: 'xai_x', assigned_by: 'thomas.cassidy+ssi@gmail.com', notes: '' }])).toMatchObject({ allowed: false, reason: 'banned-provider' })
+  })
+})

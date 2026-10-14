@@ -15,14 +15,13 @@
  */
 const fs = require('fs');
 const path = require('path');
-const { query } = require('./db.cjs');
+const { listCourses } = require('./db.cjs');
 const { measure, EVIDENCE, WEAK } = require('./measure.cjs');
 
 const SKIP = new Set(['eng_template', 'zzz_test2_for_eng']); // fixtures, not courses
 
 function courses(min) {
-  return query(`select course_code, count(*)::int n from course_practice_phrases where phrase_role in ('build','use')
-    group by 1 having count(*) >= ${+min} order by 2`).filter(r => !SKIP.has(r.course_code)).map(r => r.course_code);
+  return listCourses().filter(r => r.phrases >= +min && !SKIP.has(r.course_code)).sort((a, b) => a.phrases - b.phrases).map(r => r.course_code);
 }
 
 function fold(files) {

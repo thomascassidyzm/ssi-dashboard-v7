@@ -1,49 +1,63 @@
 /**
- * READ-ONLY course data for the v4 frame tools, via psql and .env.psql.
+ * COURSE DATA for the v4 frame tools — READ through Popty, never SQL.
  *
- * Why psql and not supabase-js: one SELECT returning json_agg is one round
- * trip, no 1,000-row paging, and the connection string is the repo's own
- * .env.psql (gitignored, provisioned per machine). Nothing here writes: every
- * query is a SELECT and the role is whatever .env.psql grants.
+ * Job #517 (Tom 2026-10-14, hard rule #384): no hand-written code against the
+ * shared database. This used to be psql with inline SELECTs, which the guard
+ * refuses. Reads now come from Popty's phrase-v4 read routes
+ * (services/shared/phrase-v4-door.cjs), and writes land through the gap-fill door
+ * (apply-gap-fill.cjs), as the logged agent named by V4_AGENT_ID (default
+ * "phrase-v4"). The call is signed by tools/agent-admin/call.cjs, so the key
+ * never reaches this process.
+ *
+ * Kept SYNCHRONOUS on purpose: every v4 tool calls loadCourse() inline, and the
+ * signing helper is a child process anyway. The result shape is unchanged.
  */
 const { execFileSync } = require('child_process');
-const fs = require('fs');
 const path = require('path');
+const fs = require('fs');
+const os = require('os');
 
-const ROOT = path.join(__dirname, '..', '..', '..');
+const CALL = path.join(__dirname, '..', '..', 'agent-admin', 'call.cjs');
+const agentId = () => process.env.V4_AGENT_ID || 'phrase-v4';
 
-function databaseUrl() {
-  if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
-  const env = fs.readFileSync(path.join(ROOT, '.env.psql'), 'utf8');
-  const m = env.match(/DATABASE_URL\s*=\s*"?([^"\n]+)"?/);
-  if (!m) throw new Error('.env.psql carries no DATABASE_URL');
-  return m[1].trim();
+/** One signed call to Popty. Throws with Popty's own words on a non-2xx. */
+function popty(method, urlPath, body) {
+  const args = [CALL, '--agent', agentId()];
+  // A body goes by file: a staged gap fill is far past the ~128 KB one argv entry may carry.
+  let bodyFile = null;
+  if (body !== undefined) {
+    bodyFile = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'v4-popty-')), 'body.json');
+    fs.writeFileSync(bodyFile, JSON.stringify(body));
+    args.push('--body-file', bodyFile);
+  }
+  args.push(method, urlPath);
+  let out;
+  try {
+    out = execFileSync('node', args, { encoding: 'utf8', maxBuffer: 1024 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'] });
+  } catch (e) {
+    // call.cjs prints the response body to stdout and exits 1 on a refusal: that body is the answer.
+    const text = String(e.stdout || '').trim();
+    let parsed = null; try { parsed = JSON.parse(text); } catch { /* not json */ }
+    const err = new Error(`Popty ${method} ${urlPath}: ${parsed && parsed.error ? parsed.error : (text || e.stderr || e.message).toString().slice(0, 400)}`);
+    err.body = parsed;
+    throw err;
+  } finally {
+    if (bodyFile) fs.rmSync(path.dirname(bodyFile), { recursive: true, force: true });
+  }
+  return JSON.parse(out.trim() || 'null');
 }
 
-/** Run one SELECT and return its rows as objects. */
-function query(sql, params = []) {
-  if (!/^\s*(select|with)\b/i.test(sql)) throw new Error('read-only: only SELECT/WITH is allowed here');
-  const wrapped = `select coalesce(json_agg(q), '[]'::json) from (${sql}) q`;
-  const args = ['-X', '-A', '-t', '-q', '-v', 'ON_ERROR_STOP=1'];
-  for (let i = 0; i < params.length; i++) args.push('-v', `p${i + 1}=${params[i]}`);
-  args.push('-c', wrapped, databaseUrl());
-  const out = execFileSync('psql', args, { encoding: 'utf8', maxBuffer: 512 * 1024 * 1024 });
-  return JSON.parse(out.trim() || '[]');
+/** Every course with status and BUILD+USE phrase count. */
+function listCourses() {
+  return popty('GET', '/api/admin/phrase-v4/courses').courses;
 }
-
-const lit = (s) => `'${String(s).replace(/'/g, "''")}'`;
 
 function loadCourse(course, { maxSeed = 9999 } = {}) {
-  const seeds = query(`select seed_number, known_text, target_text from course_seeds
-    where course_code=${lit(course)} and seed_number<=${+maxSeed} order by seed_number`);
-  const legos = query(`select id, seed_number, lego_index, known_text, target_text, type, is_new
-    from course_legos where course_code=${lit(course)} and seed_number<=${+maxSeed} order by seed_number, lego_index`);
-  const phrases = query(`select id, seed_number, lego_index, position, phrase_role, known_text, target_text,
-    metadata->>'pipeline' as pipeline from course_practice_phrases
-    where course_code=${lit(course)} and seed_number<=${+maxSeed} order by seed_number, lego_index, position`);
-  return { course, seeds, legos,
-    components: phrases.filter(p => p.phrase_role === 'component'),
-    phrases: phrases.filter(p => p.phrase_role === 'build' || p.phrase_role === 'use') };
+  const qs = maxSeed === 9999 ? '' : `?maxSeed=${+maxSeed}`;
+  const d = popty('GET', `/api/admin/phrase-v4/course/${encodeURIComponent(course)}${qs}`);
+  return { course, seeds: d.seeds, legos: d.legos,
+    components: d.phrases.filter(p => p.phrase_role === 'component'),
+    phrases: d.phrases.filter(p => p.phrase_role === 'build' || p.phrase_role === 'use') };
 }
 
-module.exports = { query, loadCourse, lit };
+module.exports = { popty, loadCourse, listCourses };

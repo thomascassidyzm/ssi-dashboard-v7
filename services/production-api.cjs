@@ -204,6 +204,17 @@ app.use('/api/basket-lab', basketLabGate.gate, require('../labs/basket-lab/serve
 app.use(express.json({ limit: '50mb' }))  // Large limit for manifests with 20k+ audio entries
 app.use(require('./shared/chain-context.cjs').middleware)   // every Popty request is inside the one audio chain (job #702)
 
+// AGENT FRONT DOOR (Tom 2026-10-14, r-2026-10-14-kai-is-team-his-agents-get): a
+// signed same-host agent holding scope admin:all may call EVERY route under these
+// prefixes, read and write, as an attributed admin. Verified once here (the
+// signature is single-use), stamped on req.agentAdmin, logged with its identity.
+// Routes keep their own dry-run/undo; an agent gets no way round those.
+const AGENT_PREFIXES = ['/api/admin', '/api/voicelab']
+app.use(require('./shared/agent-admin-identity.cjs').agentFrontDoor(
+  require('./shared/agent-admin-identity.cjs').createAgentAdminVerifier({ logger }),
+  { prefixes: AGENT_PREFIXES, logger },
+))
+
 // Disable ALL caching on API responses during development
 app.use((req, res, next) => {
   res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate')
@@ -361,6 +372,10 @@ function userCanAccessCourse(user, courseCode) {
 // Helper: extract session from Authorization header and verify dashboard access
 // Tries Supabase JWT first, falls back to old session-based auth
 async function requireAdmin(req, res) {
+  // A signed agent identity holding admin:all, already verified by the front
+  // door (agentFrontDoor below) — attributed, logged, same-host only.
+  const agent = agentAdminIdentity.agentFromRequest(req)
+  if (agent) return agent
   const token = req.headers.authorization?.replace('Bearer ', '')
   if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
 
@@ -374,6 +389,8 @@ async function requireAdmin(req, res) {
 
 // Like requireAdmin but allows any dashboard user (editor, recorder, admin)
 async function requireDashboardUser(req, res) {
+  const agent = agentAdminIdentity.agentFromRequest(req)
+  if (agent) return agent
   const token = req.headers.authorization?.replace('Bearer ', '')
   if (!token) { res.status(401).json({ error: 'Authentication required' }); return null }
 
@@ -412,6 +429,16 @@ const requireAdminOrLoopback = createControlPlaneGate({
   requireAdmin,
 })
 const requireSameHost = loopbackOnly(isLoopbackDirectRequest)
+
+// The sanctioned door for an AGENT at an admin route (job #410): a signed
+// same-host call holding a named scope, attributed and logged. Routes opt in
+// by calling requireAdminOrAgent(req, res, scope); everything else stays
+// admin-session only. See services/shared/agent-admin-identity.cjs.
+const agentAdminIdentity = require('./shared/agent-admin-identity.cjs')
+const requireAdminOrAgent = agentAdminIdentity.adminOrAgent(
+  agentAdminIdentity.createAgentAdminVerifier({ logger }),
+  requireAdmin,
+)
 
 // Softer sibling of the control-plane gate: ANY signed-in dashboard user, or a
 // same-host mesh caller. Used on writes that editors legitimately perform
@@ -599,6 +626,7 @@ app.use('/api/recording',
     getDb: () => (supabaseClient.isInitialized() ? supabaseClient.getClient() : null),
     logger,
     requireAdmin,
+    requireAdminOrAgent,
     requireDashboardUser,
     handleRecordingUpload,
     warmPhrasePlan: true,
@@ -3833,7 +3861,8 @@ app.delete('/api/production/:courseCode/phrases/:phraseId', async (req, res) => 
 // Batch delete practice phrases
 // Point seed / LEGO / phrase audio slots at clips that already exist (job #388). Fill-only unless
 // replace:true + expectCurrent; text must match; never deletes a clip. Rules: services/shared/link-clip.cjs.
-// Body: { links: [{ seedNumber | legoId | phraseId, role, audioId, replace?, expectCurrent? }], dryRun? }
+// Body: { links: [{ seedNumber | legoId | phraseId | podSentenceId, role, audioId, replace?, expectCurrent?, allowDraft? }], dryRun? }
+// A pod sentence takes role 'target' or 'known' (job #391).
 app.post('/api/production/:courseCode/link-clip', async (req, res) => {
   if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
   try {
@@ -3847,6 +3876,31 @@ app.post('/api/production/:courseCode/link-clip', async (req, res) => {
     res.status(out.code === 'NO_LINKS' || out.code === 'TOO_MANY' ? 400 : out.ok ? 200 : 409).json(out)
   } catch (error) {
     logger.error('link-clip failed:', error)
+    res.status(500).json({ error: error.message })
+  }
+})
+
+// Set a listening pod's metadata.solo_readers (job #391): ["voice_id", …] makes the pod read solo by
+// those voices; [] clears it so the pod is cast by its speakers again. :podId is the full pod id
+// (URL-encoded) or the bare slug. Body: { solo_readers: [...], dryRun? }. Rules: shared/pod-solo-readers-edit.cjs.
+app.patch('/api/production/:courseCode/pod/:podId/solo-readers', async (req, res) => {
+  if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
+  try {
+    const dryRun = !!(req.body && req.body.dryRun)
+    if (dryRun) req.contentEdit?.wroteNothing()
+    const out = await require('./shared/pod-solo-readers-edit.cjs').setSoloReaders({
+      db: supabaseClient.getClient(),
+      courseCode: req.params.courseCode,
+      podId: req.params.podId,
+      soloReaders: req.body && req.body.solo_readers,
+      dryRun,
+      recordEdit: req.contentEdit ? (e) => req.contentEdit.record(e) : null,
+    })
+    if (!out.ok || !out.changed) req.contentEdit?.wroteNothing()
+    const { status, ...body } = out
+    res.status(out.ok ? 200 : (status || 409)).json(body)
+  } catch (error) {
+    logger.error('pod solo-readers failed:', error)
     res.status(500).json({ error: error.message })
   }
 })
@@ -4323,7 +4377,7 @@ async function getDirectAudioStats(courseCode) {
     throw new Error(
       `phase 8 audio service (localhost:3465) is unreachable (${reason}) — ` +
       `audio stats cannot be computed without it. ` +
-      `Check: systemctl --user status popty-phase8-audio`
+      `Check: systemctl status popty-phase8-audio`
     )
   }
   if (phase8Resp.status >= 400) {
@@ -6987,7 +7041,7 @@ require('./api/audio-repair-routes.cjs').mount(app, { requireAdmin, requireDashb
 // an experiment. Reads are open to dashboard users; POST /runs and /rerun are
 // admin-only because they are the calls that spend money. It writes no course_audio
 // and no algorithm_config — /export hands a config back for a human to apply.
-require('./voicelab/router.cjs').mount(app, { requireAdmin, requireDashboardUser, logger })
+require('./voicelab/router.cjs').mount(app, { requireAdmin, requireAdminOrAgent, requireDashboardUser, logger })
 
 // =============================================================================
 // PROCEDURES — /api/procedures/*
@@ -8100,8 +8154,7 @@ async function courseEditConnect() {
   return client
 }
 
-async function runCourseEdit(req, res, ops, { apply }) {
-  const { courseCode } = req.params
+async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.courseCode, extra = {}, onApplied = null, eventDetail = {} }) {
   let plans
   try {
     plans = courseEditOps.planOps(ops, courseCode)
@@ -8123,7 +8176,7 @@ async function runCourseEdit(req, res, ops, { apply }) {
           phrase_ids: [...new Set(ops.map(o => o.phrase_id || (o.op === 'phrase.insert' ? o.row?.id : null)).filter(Boolean))],
           rows: ops.length,
         },
-        detail: { ops: ops.slice(0, 50).map(o => o.op), op_count: ops.length },
+        detail: { ops: ops.slice(0, 50).map(o => o.op), op_count: ops.length, ...eventDetail },
       }),
     })
     let undoFile = null, undoFileError = null
@@ -8132,6 +8185,7 @@ async function runCourseEdit(req, res, ops, { apply }) {
       // learner app keys its cached course bundle on it, and no trigger bumps it.
       await require('./shared/course-version.cjs').bumpCourseVersion(supabaseClient.getClient(), courseCode, 'patch').catch(e =>
         logger.warn(`[course-edit] content_version bump failed for ${courseCode}: ${e.message}`))
+      if (onApplied) await Promise.resolve(onApplied(out)).catch(e => logger.warn(`[course-edit] after-apply hook failed for ${courseCode}: ${e.message}`))
       if (out.undo_ops.length) {
         try {
           const name = `${new Date().toISOString().replace(/[:.]/g, '-')}-${req.contentEdit?.eventId || 'noevent'}.json`
@@ -8156,6 +8210,7 @@ async function runCourseEdit(req, res, ops, { apply }) {
       undo_ops: out.undo_ops,
       undo_file: undoFile ? path.basename(undoFile) : null,
       ...(undoFileError ? { undo_file_error: undoFileError } : {}),
+      ...extra,
       ...(out.applied ? {} : { note: 'Dry run: the transaction ran and was rolled back. Send "apply": true to commit.' }),
     })
   } catch (err) {
@@ -8197,6 +8252,172 @@ app.post('/api/production/:courseCode/edit-batch', async (req, res) => {
     }
   }
   return runCourseEdit(req, res, ops, { apply: body.apply === true })
+})
+
+// ─── ADMIN EDIT DOORS FOR AGENTS (Tom 2026-10-14, r-2026-10-14-kai-is-team-his-agents-get) ─
+// Both ride the course-edit engine: one transaction, a DRY RUN unless "apply": true,
+// a derived undo (undo_file, replayed through edit-batch), a before-state assertion.
+// They live under /api/admin so a signed agent holding admin:all reaches them
+// (agentFrontDoor); an admin session reaches them as before.
+async function pageAll(build) {
+  const out = []
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await build().range(from, from + 999)
+    if (error) throw error
+    out.push(...(data || []))
+    if (!data || data.length < 1000) return out
+  }
+}
+
+const ADMIN_COURSE_CODE = /^[a-z]{2,4}_for_[a-z]{2,4}$/
+
+// POST /api/admin/recompute-decompositions
+//   {courseCode, phrase_ids?: [..], seeds?: [..], apply?: bool}
+// Word-tile decomposition recomputed CONTENT-keyed (stored gloss vs the LEGO's
+// current known_text) for the listed phrases, or every phrase of the listed seeds.
+// Sets decomposition + decomposition_course_version only. Port of
+// tools/course-optimization/refresh-stale-phrase-decompositions.cjs.
+app.post('/api/admin/recompute-decompositions', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const body = req.body || {}
+  const courseCode = String(body.courseCode || '')
+  const refuse = (status, error, code = 'BAD_REQUEST') => { req.contentEdit?.wroteNothing(); return res.status(status).json({ error, code }) }
+  if (!ADMIN_COURSE_CODE.test(courseCode)) return refuse(400, 'courseCode required (e.g. fra_for_eng)')
+  const phraseIds = Array.isArray(body.phrase_ids) ? [...new Set(body.phrase_ids.map(String))] : []
+  let seeds = []
+  try { seeds = body.seeds === undefined ? [] : require('./shared/seed-approval.cjs').parseSeedList(body.seeds) } catch (e) { return refuse(400, e.message) }
+  if (!phraseIds.length && !seeds.length) return refuse(400, 'give "phrase_ids" and/or "seeds": this door never sweeps a whole course')
+  if (phraseIds.some(id => !id.startsWith(courseCode + ':'))) return refuse(400, `every phrase id must start "${courseCode}:"`)
+  try {
+    const sb = supabaseClient.getClient()
+    const { data: course, error: cErr } = await sb.from('courses').select('version').eq('course_code', courseCode).maybeSingle()
+    if (cErr) throw cErr
+    if (!course) return refuse(404, `course not found: ${courseCode}`, 'NOT_FOUND')
+    const cols = 'id, seed_number, lego_index, target_text, decomposition'
+    const phrases = new Map()
+    for (let i = 0; i < phraseIds.length; i += 200) {
+      for (const r of await pageAll(() => sb.from('course_practice_phrases').select(cols).eq('course_code', courseCode).in('id', phraseIds.slice(i, i + 200)))) phrases.set(r.id, r)
+    }
+    for (let i = 0; i < seeds.length; i += 100) {
+      for (const r of await pageAll(() => sb.from('course_practice_phrases').select(cols).eq('course_code', courseCode).in('seed_number', seeds.slice(i, i + 100)))) phrases.set(r.id, r)
+    }
+    const missing = phraseIds.filter(id => !phrases.has(id))
+    const legos = await pageAll(() => sb.from('course_legos').select('seed_number, lego_index, target_text, known_text').eq('course_code', courseCode))
+    const plan = require('./shared/decomposition-refresh.cjs').planRecompute({
+      courseCode, legos, phrases: [...phrases.values()].filter(p => p.decomposition), courseVersion: course.version ?? null,
+    })
+    const extra = { summary: plan.summary, rows: plan.rows, missing_phrase_ids: missing }
+    if (!plan.ops.length) {
+      req.contentEdit?.wroteNothing()
+      return res.json({ ok: true, dryRun: body.apply !== true, applied: false, results: [], undo_ops: [], ...extra, note: 'Nothing stale to rewrite.' })
+    }
+    return runCourseEdit(req, res, plan.ops, { apply: body.apply === true, courseCode, extra })
+  } catch (err) {
+    req.contentEdit?.wroteNothing()
+    logger.error('[recompute-decompositions]', err?.message || err)
+    res.status(500).json({ error: err?.message || 'unknown error' })
+  }
+})
+
+// ─── PHRASE v4 DOORS (job #517, r-2026-10-14-phrase-v4-is-the-phrase-builder) ──
+// v4 reads a course and lands its gap-fill phrases through these, not psql (#384).
+// Logic, and why it is shaped this way: services/shared/phrase-v4-door.cjs.
+// GET  /api/admin/phrase-v4/courses          every course with status + BUILD/USE count
+// GET  /api/admin/phrase-v4/course/:code     {course, seeds, legos, phrases} (?maxSeed=N)
+// POST /api/admin/phrase-v4/gap-fill         {courseCode, rows, tom_go?, apply?}
+app.get('/api/admin/phrase-v4/courses', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    res.json({ courses: await require('./shared/phrase-v4-door.cjs').listCourses(supabaseClient.getClient()) })
+  } catch (err) {
+    logger.error('[phrase-v4/courses]', err?.message || err)
+    res.status(500).json({ error: err?.message || 'unknown error' })
+  }
+})
+
+app.get('/api/admin/phrase-v4/course/:courseCode', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  if (!ADMIN_COURSE_CODE.test(req.params.courseCode)) return res.status(400).json({ error: 'courseCode required (e.g. fra_for_eng)', code: 'BAD_REQUEST' })
+  try {
+    const maxSeed = req.query.maxSeed === undefined ? 9999 : Number(req.query.maxSeed)
+    if (!Number.isInteger(maxSeed) || maxSeed < 1) return res.status(400).json({ error: 'maxSeed must be a positive integer', code: 'BAD_REQUEST' })
+    const data = await require('./shared/phrase-v4-door.cjs').readCourse(supabaseClient.getClient(), req.params.courseCode, { maxSeed })
+    if (!data) return res.status(404).json({ error: `no course ${req.params.courseCode}`, code: 'NOT_FOUND' })
+    res.json(data)
+  } catch (err) {
+    logger.error('[phrase-v4/course]', err?.message || err)
+    res.status(500).json({ error: err?.message || 'unknown error' })
+  }
+})
+
+// READ-ONLY: Popty's per-phrase gates + whole-course ZUT over staged rows (gap-fill-course.cjs's
+// gate stage asks this; the apply door asks the same question again). Body {courseCode, rows} (≤ 200).
+app.post('/api/admin/phrase-v4/gate', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const door = require('./shared/phrase-v4-door.cjs')
+  const body = req.body || {}
+  const courseCode = String(body.courseCode || '')
+  try {
+    if (!Array.isArray(body.rows) || body.rows.length > 200) return res.status(400).json({ error: '"rows" must be an array of at most 200 staged rows', code: 'BAD_REQUEST' })
+    const sb = supabaseClient.getClient()
+    const data = ADMIN_COURSE_CODE.test(courseCode) && !/^cym/.test(courseCode) ? await door.readCourse(sb, courseCode, { componentsOnly: true }) : null
+    const bad = body.rows.length ? door.precheck({ courseCode, rows: body.rows, course: data && data.course, apply: false }) : null
+    if (bad) return res.status(bad.status).json({ error: bad.error, code: bad.code })
+    const { refused } = await door.gateStagedRows({ sb, courseCode, rows: body.rows, data,
+      deps: { ...require('../tools/phrase-gate/gate-check.cjs'), checkPhraseZUT: require('./course-builder/lib/validation.cjs').checkPhraseZUT } })
+    res.json({ checked: body.rows.length, refused })
+  } catch (err) {
+    logger.error('[phrase-v4/gate]', err?.message || err)
+    res.status(500).json({ error: err?.message || 'unknown error' })
+  }
+})
+
+// Preview unless "apply": true. Preview = every gate re-run + the real insert transaction rolled back.
+app.post('/api/admin/phrase-v4/gap-fill', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const door = require('./shared/phrase-v4-door.cjs')
+  const body = req.body || {}
+  const courseCode = String(body.courseCode || '')
+  const apply = body.apply === true
+  const refuse = (status, error, code, more = {}) => { req.contentEdit?.wroteNothing(); return res.status(status).json({ error, code, applied: false, ...more }) }
+  try {
+    const sb = supabaseClient.getClient()
+    const data = ADMIN_COURSE_CODE.test(courseCode) && !/^cym/.test(courseCode) ? await door.readCourse(sb, courseCode, { componentsOnly: true }) : null
+    const bad = door.precheck({ courseCode, rows: body.rows, course: data && data.course, apply, tomGo: body.tom_go })
+    if (bad) return refuse(bad.status, bad.error, bad.code)
+    const { refused } = await door.gateStagedRows({ sb, courseCode, rows: body.rows, data,
+      deps: { ...require('../tools/phrase-gate/gate-check.cjs'), checkPhraseZUT: require('./course-builder/lib/validation.cjs').checkPhraseZUT } })
+    if (refused.length) return refuse(409, `${refused.length} staged row(s) fail a gate; nothing was written. Cut them from the staged file and send again.`, 'GATE_REFUSED', { refused: refused.slice(0, 50), refused_count: refused.length })
+    const existing = await door.readTouchedPhrases(sb, courseCode, body.rows)
+    const { rows, skipped } = door.planInsert(courseCode, body.rows, existing)
+    const plan = { course: courseCode, status: data.course.status, to_insert: rows.length, skipped: skipped.length,
+      by_role: { build: rows.filter(r => r.phrase_role === 'build').length, use: rows.filter(r => r.phrase_role === 'use').length } }
+    if (!rows.length) return refuse(200, 'Nothing to insert: every staged row is already on its LEGO.', 'NOTHING_TO_DO', { plan, ok: true })
+    return runCourseEdit(req, res, door.toInsertOps(rows), {
+      apply, courseCode, extra: { plan, skipped: skipped.slice(0, 50), tom_go: body.tom_go || null }, eventDetail: { tom_go: body.tom_go || null, pipeline: 'v4-gap', staged_at: body.staged_at || null },
+      onApplied: () => require('./shared/audio-pass-queue.cjs').queueAudioPass(sb, { courseCode, reason: 'v4 gap fill (#924)', requestedBy: req.editorIdentity?.id || null, metadata: { rowsTouched: rows.length } }),
+    })
+  } catch (err) {
+    req.contentEdit?.wroteNothing()
+    logger.error('[phrase-v4/gap-fill]', err?.message || err)
+    res.status(500).json({ error: err?.message || 'unknown error' })
+  }
+})
+
+// POST /api/admin/unapprove-seeds  {courseCode, seeds:[..], apply?: bool}
+// approved_at = NULL on the listed seeds; decomposition, LEGOs and phrases are
+// untouched. Dry run unless "apply": true; the undo re-stamps the old approved_at.
+app.post('/api/admin/unapprove-seeds', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  const body = req.body || {}
+  const courseCode = String(body.courseCode || '')
+  const approval = require('./shared/seed-approval.cjs')
+  let seeds
+  try {
+    if (!ADMIN_COURSE_CODE.test(courseCode)) throw Object.assign(new Error('courseCode required (e.g. fra_for_eng)'), { code: 'BAD_REQUEST' })
+    seeds = approval.parseSeedList(body.seeds)
+  } catch (e) { req.contentEdit?.wroteNothing(); return res.status(400).json({ error: e.message, code: e.code }) }
+  return runCourseEdit(req, res, approval.planUnapprove(seeds), { apply: body.apply === true, courseCode })
 })
 
 // Update a LEGO. Same door as lego.update; camelCase accepted for old callers.
