@@ -6,7 +6,7 @@
 
 const { isChinese, getTargetLang, getCharThresholds, getGoldenSeedCount, CHARS_PER_SYLLABLE, PREPOSITIONS } = require('./language-config.cjs');
 const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
-const { isWelshTarget, welshExpandYn } = require('./welsh-mutation.cjs');
+const { isWelshTarget, welshExpandYn, welshExpandEin } = require('./welsh-mutation.cjs');
 const { augmentVocabForSeparables, separableTilingPieces, phraseContainsLego } = require('./separable-verbs.cjs');
 // KNOWN-side mirror of the target-side lego_containment check: a BUILD phrase must contain the
 // known-side word its LEGO teaches, tolerating inflection but never a different lexeme (2026-08-26).
@@ -158,7 +158,9 @@ function checkTiling(seedTarget, legos, courseCode, existingVocab, opts = {}) {
     const expandedWords = (text) => normalizeForStorage(welshExpandYn(text), false).split(' ').filter(w => w);
     if (welsh) for (const entry of [...legoTargets]) for (const w of expandedWords(entry)) wordSet.add(w);
 
-    const seedNorm = normalizeForStorage(seedTarget, false);
+    // A taught "ein X" LEGO is read first: "ma’n rhai ni" tiles as ma + ein rhai ni, not ma + yn
+    // (Aran, 2026-10-14, job #348; welshExpandEin only fires in front of that LEGO's own tail).
+    const seedNorm = normalizeForStorage(welsh ? welshExpandEin(seedTarget, legoTargets) : seedTarget, false);
     const seedWords = seedNorm.split(' ').filter(w => w);
     const untiled = seedWords.filter(w => !wordSet.has(w) && !(welsh && expandedWords(w).every(x => wordSet.has(x))));
 
@@ -352,7 +354,7 @@ function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
 
     let wordKeys = null;
     for (const phrase of phrases) {
-      const normalized = normalizeForContainment(phrase.target);
+      const normalized = normalizeForContainment(welsh ? welshExpandEin(phrase.target, vocabSet) : phrase.target);
       const phraseWords = normalized.split(' ').filter(w => w);
       const n = phraseWords.length;
       if (n === 0) continue;
