@@ -60,8 +60,16 @@ async function main() {
     const r = await call({ courseCode: course, role: a.role, text: a.text, purpose: PURPOSE });
     if (r.status !== 200 || !r.body.ok) { tally.refused.push({ ...a, status: r.status, answer: r.body }); console.log('  REFUSED', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body)); if (r.status === 402) break; continue; }
     if (r.body.source === 'rendered') { tally.rendered++; tally.spent += r.body.charsSpent || 0; }
+    // The route stores the clip but does not point these phrase rows at it: fill the slots through link-clip (fill-only, text-checked).
+    const url = process.env.POPTY_URL || 'http://localhost:3470';
+    try {
+      const l = await fetch(`${url}/api/production/${course}/link-clip`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'fill-silent-phrases-since (job #431)' }, body: JSON.stringify({ links: a.ids.map((phraseId) => ({ phraseId, role: a.role, audioId: r.body.audioId })) }), signal: AbortSignal.timeout(120000) });
+      const lj = await l.json().catch(() => ({}));
+      tally.linked = (tally.linked || 0) + (lj.linked || 0);
+      if (!l.ok) console.log('  LINK-REFUSED', a.role, JSON.stringify(a.text), l.status, JSON.stringify(lj).slice(0, 300));
+    } catch (e) { console.log('  LINK-FAILED', a.role, JSON.stringify(a.text), String(e.cause && e.cause.code || e.name)); }
   }
-  console.log(`DONE: rendered ${tally.rendered} (${tally.spent} chars), refused ${tally.refused.length}`);
+  console.log(`DONE: rendered ${tally.rendered} (${tally.spent} chars), slots linked ${tally.linked || 0}, refused ${tally.refused.length}`);
 }
 module.exports = { asks };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
