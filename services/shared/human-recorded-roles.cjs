@@ -246,15 +246,29 @@ function humanRecordedForLanguage({ language, slot = 'phrase', courses = [], hum
  * @param {object} db - a supabase client
  * @returns {Promise<object[]>}
  */
+// Remembered for a minute (job #806): every cast resolution asked, ~925 times
+// a day, for an answer that changes only when a person records. Failures are
+// not remembered, so a missing view is re-asked next time.
+const HUMAN_ROLES_MEMO_MS = 60_000
+let humanRolesMemo = null
+function clearHumanRecordedRolesMemo() { humanRolesMemo = null }
+
 async function loadHumanRecordedRoles(db) {
+  if (humanRolesMemo && humanRolesMemo.db === db && Date.now() - humanRolesMemo.at < HUMAN_ROLES_MEMO_MS) return humanRolesMemo.rows
+  const rows = await readHumanRecordedRoles(db)
+  if (rows.ok) humanRolesMemo = { db, at: Date.now(), rows: rows.data }
+  return rows.data
+}
+
+async function readHumanRecordedRoles(db) {
   try {
     const { data, error } = await db
       .from('course_human_recorded_roles')
       .select('course_code, role, target_lang, known_lang, clips, voices, a_voice_id');
-    if (error) return [];
-    return data || [];
+    if (error) return { ok: false, data: [] };
+    return { ok: true, data: data || [] };
   } catch (e) {
-    return [];
+    return { ok: false, data: [] };
   }
 }
 
@@ -262,6 +276,7 @@ module.exports = {
   humanRolesForCourse,
   humanRecordedForLanguage,
   loadHumanRecordedRoles,
+  clearHumanRecordedRolesMemo,
   PHRASE_ROLES,
   TARGET_ROLES,
 };

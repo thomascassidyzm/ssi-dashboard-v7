@@ -11,7 +11,7 @@
  *     "adds":    [{ "phrase_role": "use", "known_text": "...", "target_text": "...", "target_text_roman": "..." }],
  *     "deletes": ["...U03"],
  *     "lego_edits": [{ "known_text": "..." }],   // re-gloss the LEGO itself (target unchanged);
- *                                                 // nulls known + presentation audio (intro speaks the known)
+ *                                                 // nulls the known clip; the old intro is kept (stale) until re-spoken
  *     "notes": "why"
  *   }]
  * }
@@ -185,10 +185,17 @@ async function vocabUpTo(course, seed, legoIndex) {
       snapshot.before.push({ _table: 'course_legos', ...legoRow });
       const { error: lue } = await sb.from('course_legos').update({
         known_text: le.known_text,
-        known_audio_id: null, presentation_audio_id: null,
+        known_audio_id: null,
         version: (legoRow.version || 0) + 1,
       }).eq('id', legoRow.id);
       if (lue) throw new Error(`lego update S${b.seed}L${b.lego_index}: ${lue.message}`);
+      // INTRO GUARD (Tom: nothing interrupts learning, a stale intro beats none; ssi-learning-app job #787). The DB trigger nulls the
+      // intro when the words move; put the old one straight back (stale, speaks the old gloss) until a re-speak swaps it.
+      if (legoRow.presentation_audio_id) {
+        const { error: ke } = await sb.from('course_legos').update({ presentation_audio_id: legoRow.presentation_audio_id }).eq('id', legoRow.id).is('presentation_audio_id', null);
+        if (ke) throw new Error(`intro keep S${b.seed}L${b.lego_index}: ${ke.message}`);
+        snapshot.actions.push({ op: 'intro_kept_stale', id: legoRow.id, presentation_audio_id: legoRow.presentation_audio_id });
+      }
       snapshot.actions.push({ op: 'lego_update', id: legoRow.id });
       console.log(`◆ S${b.seed}L${b.lego_index} LEGO  "${legoRow.known_text}" → "${le.known_text}"`);
     }

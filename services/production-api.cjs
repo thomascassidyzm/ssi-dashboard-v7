@@ -520,6 +520,30 @@ app.use('/api/production/:courseCode/team',
     bumpCourseVersion: require('./shared/course-version.cjs').bumpCourseVersion,
   }))
 
+// Intro lab (job #488): the spliced Tom-voice intro + the player's real debut, for any course. READ-ONLY (SELECTs and a byte
+// proxy). Under /api/production/:courseCode so the app.param course-scope gate fires.
+app.use('/api/production/:courseCode/intro-lab',
+  require('./intro-lab/intro-lab-router.cjs').createIntroLabRouter({
+    getDb: () => supabaseClient.getClient(),
+    logger,
+  }))
+
+// LEGO proof (job #496): Aran's flag-a-LEGO list for the Welsh relaunch sandboxes. Read-only on course content; writes
+// only lego_proof_flags. Under /api/production/:courseCode so the app.param course-scope gate fires.
+app.use('/api/production/:courseCode/lego-proof',
+  require('./lego-proof/lego-proof-router.cjs').createLegoProofRouter({
+    getDb: () => supabaseClient.getClient(),
+    logger,
+  }))
+
+// Phrase proof (job #562): the practice-phrase sibling of the LEGO proof page, same two sandboxes. Read-only on course
+// content; writes only phrase_proof_flags. Under /api/production/:courseCode so the app.param course-scope gate fires.
+app.use('/api/production/:courseCode/phrase-proof',
+  require('./phrase-proof/phrase-proof-router.cjs').createPhraseProofRouter({
+    getDb: () => supabaseClient.getClient(),
+    logger,
+  }))
+
 // Pod recording coverage (keystone §5): per cast voice (voice_config.podCast)
 // lines recorded / remaining + per-pod breakdown, human-vs-tts per sentence.
 // REGISTERED BEFORE the pods router on purpose: this read-only route relies on
@@ -577,6 +601,7 @@ app.use('/api/recording',
     requireAdmin,
     requireDashboardUser,
     handleRecordingUpload,
+    warmPhrasePlan: true,
   }))
 
 // Android test-build distribution. Same auth shape as the recordist routes
@@ -1650,20 +1675,37 @@ app.get('/api/stats/:courseCode', async (req, res) => {
 // Course Builder runs on a separate service that handles osascript/iTerm launch
 const COURSE_BUILDER_URL = process.env.COURSE_BUILDER_URL || 'http://localhost:3471'
 
-// Course-code shape, e.g. spa_for_eng / eng_for_jpn. The proxy mounts below are
+// Course-code shape, including dialect and seed-count suffixes. The proxy mounts below are
 // wildcards (/api/build/*, /api/v2/*, …) so the app.param('courseCode') gate
 // never fires for them, and :courseCode sits in varying path positions. We
 // locate the scoped course by matching this shape against the path segments
 // (and, as a fallback, the JSON body) rather than by position.
-const PROXY_COURSE_CODE_RE = /^[a-z]{2,4}_for_[a-z]{2,4}$/
+const PROXY_COURSE_CODE_RE = /^[a-z0-9_-]+_for_[a-z0-9_-]+$/i
 
-function extractProxyCourseCode(req) {
-  for (const seg of (req.path || '').split('/')) {
-    if (PROXY_COURSE_CODE_RE.test(seg)) return seg
+// Every course code the request could reach, as the course builder will read it.
+// All of them must pass the scope check, not just the first: a request naming an
+// allowed course first and another later (path then body, or two path segments)
+// must not ride through on the first one. Returns null for a path the gate must
+// refuse outright — a dot segment ("..", "%2e%2e") is re-resolved by fetch() in
+// proxyCourseBuilder, so /api/course/spa_for_eng/../fra_for_eng/drafts reaches
+// fra_for_eng upstream while only spa_for_eng is visible here.
+function extractProxyCourseCodes(req) {
+  const codes = []
+  for (const rawSegment of (req.path || '').split('/')) {
+    // Express decodes route parameters once; authorise that same course code.
+    const seg = decodeURIComponent(rawSegment)
+    if (seg === '.' || seg === '..' || seg.includes('/') || seg.includes('\\')) return null
+    if (PROXY_COURSE_CODE_RE.test(seg)) codes.push(seg)
   }
-  const bodyCode = req.body && (req.body.course_code || req.body.courseCode)
-  if (typeof bodyCode === 'string' && PROXY_COURSE_CODE_RE.test(bodyCode)) return bodyCode
-  return null
+  const sources = [req.body, req.query]
+  for (const src of sources) {
+    if (!src || typeof src !== 'object') continue
+    for (const key of ['course_code', 'courseCode', 'course']) {
+      const v = src[key]
+      if (typeof v === 'string' && PROXY_COURSE_CODE_RE.test(v)) codes.push(v)
+    }
+  }
+  return codes
 }
 
 // Gate for the course-builder proxy routes. Course Builder (3471) has no auth of
@@ -1680,10 +1722,12 @@ async function requireProxyCourseAccess(req, res, next) {
     const user = await resolveDashboardUserCached(req)
     if (!user) return res.status(401).json({ error: 'Authentication required' })
 
-    const courseCode = extractProxyCourseCode(req)
-    if (courseCode && user.role !== 'admin' && !userCanAccessCourse(user, courseCode)) {
-      logger.warn(`[ProxyScope] DENY ${user.email || 'unknown'} → ${courseCode} (${req.method} ${req.path})`)
-      return res.status(403).json({ error: `No access to course ${courseCode}` })
+    const courseCodes = extractProxyCourseCodes(req)
+    if (courseCodes === null) return res.status(400).json({ error: 'Invalid path' })
+    const denied = (user.role === 'admin' || user.ssiAdmin) ? undefined : courseCodes.find(code => !userCanAccessCourse(user, code))
+    if (denied) {
+      logger.warn(`[ProxyScope] DENY ${user.email || 'unknown'} → ${denied} (${req.method} ${req.path})`)
+      return res.status(403).json({ error: `No access to course ${denied}` })
     }
     req.dashboardUser = user
     next()
@@ -2244,16 +2288,7 @@ app.post('/api/voices/preview', async (req, res) => {
       })
       audioBuffer = result.audioBuffer
     } else if (provider === 'xai') {
-      const apiKey = process.env.XAI_API_KEY
-      if (!apiKey) {
-        return res.status(500).json({ success: false, error: 'xAI not configured (XAI_API_KEY not set)' })
-      }
-      const result = await ttsService.generateWithRetry(text, 'xai', {
-        apiKey,
-        voiceId,
-        language: language || 'auto',
-      })
-      audioBuffer = result.audioBuffer
+      return res.status(403).json({ success: false, error: 'xAI voice generation is banned (Tom 2026-10-10)' })
     } else {
       return res.status(400).json({ success: false, error: `Unknown provider: ${provider}` })
     }
@@ -6619,8 +6654,20 @@ app.post('/api/audio/render', async (req, res) => {
     res.status(response.status).json(response.data)
   } catch (error) {
     logger.error('Render proxy error:', error)
-    res.status(500).json({ ok: false, error: error.message || 'Phase 8 audio server not reachable' })
+    // Phase 8 restarting/down is retryable (voice-gap-fill re-asks on 503), not a 500.
+    const status = require('./shared/phase8-transport-error.cjs').isPhase8TransportError(error) ? 503 : 500
+    res.status(status).json({ ok: false, error: error.message || 'Phase 8 audio server not reachable' })
   }
+})
+
+// Listen to a TRIAL clip (job #748): the render answer's playPath. phase8 reads it from S3 trial/; nothing here knows a course.
+app.get('/api/audio/trial/:id', async (req, res) => {
+  try {
+    const r = await fetch(`${process.env.PHASE8_URL || 'http://localhost:3465'}/trial-audio/${encodeURIComponent(req.params.id)}`)
+    if (!r.ok) return res.status(r.status).json({ ok: false, error: `trial clip ${req.params.id} not available` })
+    res.setHeader('Content-Type', 'audio/mpeg'); res.setHeader('Cache-Control', 'no-store')
+    res.send(Buffer.from(await r.arrayBuffer()))
+  } catch (e) { res.status(503).json({ ok: false, error: e.message }) }
 })
 
 // THE IN-TRAY of the same chain (job #703, Tom 2026-09-29): a human recording is added
@@ -6921,6 +6968,23 @@ require('./api/audio-repair-routes.cjs').mount(app, { requireAdmin, requireDashb
 // admin-only because they are the calls that spend money. It writes no course_audio
 // and no algorithm_config — /export hands a config back for a human to apply.
 require('./voicelab/router.cjs').mount(app, { requireAdmin, requireDashboardUser, logger })
+
+// =============================================================================
+// PROCEDURES — /api/procedures/*
+// =============================================================================
+// The admin Procedures panel's door: it launches ONLY procedures declared in
+// services/procedures/registry.cjs (Tom, 2026-10-12), each as its own systemd
+// unit so a run survives a deploy. SSi admins run non-course procedures; a course
+// procedure needs a grant on that course (registry.mayRun, checked on dry-run and run).
+require('./procedures/router.cjs').mount(app, {
+  requireUser: requireDashboardUser,
+  logger,
+  listCourses: async () => {
+    const { data, error } = await supabaseClient.getClient().from('courses').select('course_code')
+    if (error) throw new Error(error.message)
+    return data.map((c) => c.course_code)
+  },
+})
 
 // =============================================================================
 // TAIL-TRUNCATION SCAN — /api/audio/tail-scan/*

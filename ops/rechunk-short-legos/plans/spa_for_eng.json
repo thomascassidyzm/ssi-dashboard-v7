@@ -1,0 +1,31 @@
+{
+ "course": "spa_for_eng",
+ "note": "Job #321 wave 1. Debut LEGOs (is_new, seed 4+) with fewer than 4 USE phrases. Proposed by Sonnet, judged cold by Opus, checked by checkOp; a rejected or refused op falls back to topup.",
+ "seeds": [
+  {
+   "seed": 8,
+   "kind": "topup",
+   "why": "'lo que quiero decir' = 'what I mean' is a sound, flexible unit that people really want to say, so keep the cut and write fresh phrases.",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 427,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    1
+   ],
+   "fellBackBecause": "Opus rejected: Chunking up is the right instinct: bare 'pensaras' glossed 'you thought' is wrong (that maps to pensaste or pensabas), and the imperfect subjunctive cannot stand alone. But the proposed pair is not ZUT-safe. 'you to think' maps just as naturally, and more often, to 'que pienses' after a present trigger, as in 'I want you to think' = 'quiero que pienses'. The imperfect form is only fixed by a conditional or past trigger, so one known now has two targets across the course. 'you to think' is also not a real unit of intention a learner would want to say; it is an infinitive fragment that only exists inside a larger frame. The merge should include the trigger that fixes the tense, for example 'they'd like you to think' = 'les gustaría que pensaras', or 'they wouldn't like you to think' = 'no les gustaría que pensaras'. That gives a sound, practisable LEGO with one-to-one mapping."
+  },
+  {
+   "seed": 529,
+   "kind": "topup",
+   "why": "'levantar las manos' is a sound, flexible unit a learner would want to say, and a bigger merge would run past 8 syllables, so it only needs fresh phrases.",
+   "topup": [
+    2
+   ]
+  }
+ ]
+}

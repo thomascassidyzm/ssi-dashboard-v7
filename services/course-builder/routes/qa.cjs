@@ -14,6 +14,7 @@ const path = require('path');
 const { claudeConfigExport } = require('../../shared/claude-config.cjs');
 const { getGoldenSeedCount, getLanguageName } = require('../lib/language-config.cjs');
 const { spawnParallelQAAgent } = require('../lib/agent-spawner.cjs');
+const { hasNonExampleText } = require('../lib/validation.cjs');
 const { advancePipeline, setPipelineStage } = require('../lib/pipeline.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
@@ -1156,6 +1157,11 @@ end tell`;
         return res.status(400).json({
           error: 'Must provide known_text and/or target_text to update'
         });
+      }
+
+      // #486: every known/target string is spoken aloud; no brackets, notes or a/b lists (see checkNonExampleText)
+      if (hasNonExampleText(known_text) || hasNonExampleText(target_text)) {
+        return res.status(400).json({ error: 'NON_EXAMPLE_TEXT', message: 'known_text/target_text must be plain speakable text: no brackets, (notes) or slash-separated alternatives' });
       }
 
       // Get current phrase for logging

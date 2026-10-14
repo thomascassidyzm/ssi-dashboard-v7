@@ -1,0 +1,54 @@
+{
+ "course": "fra_for_eng",
+ "note": "Job #321 wave 1. Debut LEGOs (is_new, seed 4+) with fewer than 4 USE phrases. Proposed by Sonnet, judged cold by Opus, checked by checkOp; a rejected or refused op falls back to topup.",
+ "seeds": [
+  {
+   "seed": 4,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    1
+   ],
+   "fellBackBecause": "L31: S0615L01 is not-new on the pair \"to say\" → \"dire\" that the replace would remove"
+  },
+  {
+   "seed": 225,
+   "kind": "grow",
+   "why": "'donnerait' alone is a bare conditional form that supports few natural phrases, so I grew it to 'il vous donnerait', a flexible chunk that is easy to practise and extends into the full sentence.",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "he would give you",
+     "target": "il vous donnerait",
+     "components": [
+      {
+       "known": "he",
+       "target": "il"
+      },
+      {
+       "known": "you",
+       "target": "vous"
+      },
+      {
+       "known": "would give",
+       "target": "donnerait"
+      }
+     ]
+    }
+   },
+   "judged": {
+    "opus": "APPROVE",
+    "reason": "The grow is a better split. 'donnerait' alone glossed as 'would give' is weak: 'would give' also maps to 'donnerais', so the English prompt does not fix the person. It also leaves the object clitic 'vous' stranded, and that clitic cannot be practised on its own. 'il vous donnerait' = 'he would give you' is a natural unit of intention. It is grammatical, with the clitic correctly placed before the conditional verb. Its prompt pins the person, so one known maps to one target, and it extends directly into the seed ('il vous donnerait une réponse', '...s'il pouvait'). Coverage is preserved and extended, and it uses only seed words. At 5 syllables it is within the limit. The components are correct. 'vous' follows the seed's own text, which cannot be changed. L2 is untouched."
+   }
+  },
+  {
+   "seed": 600,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    3
+   ],
+   "fellBackBecause": "Opus rejected: The diagnosis is fair: 'à quel point' glossed 'how much' is a weak LEGO, since 'how much' maps to 'combien'. But the merged target 'à quel point tu étais fatigué' is à-quel-point-tu-é-tais-fa-ti-gué, which is 9 syllables. That breaks the hard limit of 8 syllables per target. The component gloss 'how' = 'à quel point' is also not ZUT-safe, because 'how' already maps to 'comment' across the course. Coverage would be preserved, but the op produces an over-length LEGO, so a different re-chunk or a better gloss for L3 is needed."
+  }
+ ]
+}

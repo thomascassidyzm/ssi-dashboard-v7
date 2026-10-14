@@ -7,15 +7,13 @@ import { supabase, isConfigured as isSupabaseConfigured, getAllCourses } from '.
 export const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMIT__ : 'dev'
 
 // Default API URL for local development
-// IMPORTANT: NO hardcoded ngrok URLs - different machines have different tunnels!
 // Use EnvironmentSwitcher to set the API URL for remote access.
 const DEFAULT_LOCAL_URL = 'http://localhost:3470'
 
 /**
  * Get the API base URL - central helper for all API calls
- * Priority: localStorage > localhost default > ngrok relative > empty (requires EnvironmentSwitcher)
+ * Priority: localStorage > localhost default > popty.app default > empty (requires EnvironmentSwitcher)
  *
- * NO HARDCODING of ngrok URLs - each machine has its own tunnel.
  * For Vercel/static hosting, user MUST use EnvironmentSwitcher to set the backend URL.
  */
 export function getApiUrl() {
@@ -30,13 +28,8 @@ export function getApiUrl() {
     return DEFAULT_LOCAL_URL
   }
 
-  // 3. ngrok - use relative URL (same origin proxies to backend)
-  if (typeof window !== 'undefined' && window.location.hostname.includes('ngrok')) {
-    return ''  // Relative URL - ngrok tunnel handles it
-  }
-
   // 4. popty.app (Vercel) - default to watson-1, the always-on cloud machine.
-  // Override via EnvironmentSwitcher to point at a dev box (e.g. popty.ngrok.app).
+  // Override via EnvironmentSwitcher to point at a dev box.
   if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') {
     return 'https://watson-1.tail4968cb.ts.net:8443'
   }
@@ -68,7 +61,7 @@ export { getProductionApiUrl, getApiBaseUrl }
 export async function fetchJson(url, init = {}) {
   const res = await fetch(url, {
     ...init,
-    headers: { 'ngrok-skip-browser-warning': 'true', ...(init.headers || {}) },
+    headers: { ...(init.headers || {}) },
   })
   const ct = res.headers.get('content-type') || ''
   if (!res.ok) {
@@ -92,7 +85,6 @@ const api = axios.create({
   timeout: 3600000, // 1 hour - audio generation can take a very long time
   headers: {
     'Content-Type': 'application/json',
-    'ngrok-skip-browser-warning': 'true'
   }
 })
 
@@ -168,7 +160,7 @@ export default {
       try {
         // Fetch seeds with nested legos and basket_phrases from production API
         const seedsRes = await fetch(`${productionApiUrl}/api/production/${courseCode}/seeds`, {
-          headers: { 'ngrok-skip-browser-warning': 'true' }
+          headers: {}
         })
 
         if (!seedsRes.ok) {
@@ -189,7 +181,7 @@ export default {
           const orchestratorUrl = getApiUrl()
           try {
             const coursesRes = await fetch(`${orchestratorUrl}/api/courses`, {
-              headers: { 'ngrok-skip-browser-warning': 'true' }
+              headers: {}
             })
             if (coursesRes.ok) {
               const coursesData = await coursesRes.json()
@@ -327,7 +319,7 @@ export default {
         let dbStats = null
         try {
           const statsRes = await fetch(`${productionApiUrl}/api/production/${courseCode}/stats`, {
-            headers: { 'ngrok-skip-browser-warning': 'true' }
+            headers: {}
           })
           if (statsRes.ok) {
             const statsData = await statsRes.json()
@@ -545,7 +537,7 @@ export default {
         try {
           const productionApiUrl = getProductionApiUrl()
           const statsRes = await fetch(`${productionApiUrl}/api/production/course-stats`, {
-            headers: { 'ngrok-skip-browser-warning': 'true' }
+            headers: {}
           })
           if (statsRes.ok) {
             const statsData = await statsRes.json()
@@ -1253,7 +1245,7 @@ export default {
       try {
         // Try production API (database-first)
         const dbResponse = await fetch(`${productionApiUrl}/api/production/${courseCode}/seed/${seedId}/baskets`, {
-          headers: { 'ngrok-skip-browser-warning': 'true' }
+          headers: {}
         });
 
         if (dbResponse.ok) {

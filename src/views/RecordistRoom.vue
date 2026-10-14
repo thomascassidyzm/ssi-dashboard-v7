@@ -24,10 +24,26 @@
     </section>
 
     <section v-else-if="phase === 'error'" class="rc-card center">
-      <h2>Couldn't load your lines</h2>
-      <p>{{ loadError }}</p>
+      <h2 v-if="!loadSlow">Couldn't load your lines</h2>
+      <h2 v-else>{{ loadError }}</h2>
+      <p v-if="!loadSlow">{{ loadError }}</p>
       <button class="btn-ghost" @click="load">Try again</button>
     </section>
+
+    <!-- ── Home: the cards, Up next and the ticks (job #347) ───────────── -->
+    <BoothHome
+      v-else-if="phase === 'home' && homeSummary"
+      :display-name="homeSummary.displayName"
+      :tracks="homeTracks"
+      :unticked="unticked"
+      :track-key="homeTrackKey"
+      :main-heading="homeMainHeading"
+      :notes="homeNotes"
+      @open="openBatch"
+      @card="openCard"
+      @home="goHome"
+      @tick="setTick"
+    />
 
     <!-- ── Ready ─────────────────────────────────────────────────────────── -->
     <section v-else-if="phase === 'ready'" class="rc-card">
@@ -60,11 +76,16 @@
         </template>
         <template v-if="navCourses.length">
           <span class="rc-nav-dot">·</span>
-          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ navCourses.length === 1 ? 'Course' : `Course ${c.code}` }}</router-link>
+          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
         </template>
         <span class="rc-nav-dot">·</span>
         <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
       </nav>
+      <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back. -->
+      <div v-if="batchScope" class="batch-head" data-test="batch-head">
+        <button type="button" class="batch-back" @click="goHome">‹ All your recording</button>
+        <p v-if="batchTitle" class="batch-title">{{ batchTitle }}</p>
+      </div>
       <h1 class="rc-hello">Hello {{ voice.displayName }}</h1>
       <p class="rc-progress-line">{{ queueHeadline }}</p>
 
@@ -95,6 +116,33 @@
             @click="setVolume(n)"
           >{{ n }}</button>
         </div>
+      </div>
+
+      <!-- THE PRACTICE-PHRASE BATCH (Aran, 2026-10-13, job #619). Phrases come
+           in two passes and ~200-line batches, one batch at a time, and the
+           reader must be able to SEE that: which pass, which batch of how many,
+           how far through, and that the rest of the phrases come later — so the
+           first pass is never mistaken for all of it. -->
+      <div v-if="showPhraseCard" class="volume-card phrase-card" data-test="phrase-batch">
+        <template v-if="phrases.pass">
+          <p class="phrase-kicker">Practice phrases · {{ boothCourseWords(phrases.courseCode, phrases.courseLabel) }}</p>
+          <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
+          <p class="phrase-count">{{ phrases.batchRecorded }} of {{ phrases.batchLines }} recorded in this batch</p>
+          <p v-if="phrases.pass === 1" class="volume-note">
+            This first pass is the phrases the app plays first: up to {{ phrases.firstPass.build }} build and
+            {{ phrases.firstPass.use }} use phrases for each new LEGO.
+            The remaining {{ phrases.laterPassLines.toLocaleString() }} phrases come on a second pass, later.
+          </p>
+          <p v-else class="volume-note">This second pass is the rest of the practice phrases, after the first pass.</p>
+          <p class="volume-note">
+            {{ phrases.batch < phrases.batches ? `When this batch is finished, batch ${phrases.batch + 1} opens here the next time you open this page.` : (phrases.pass === 1 ? 'This is the last batch of the first pass.' : 'This is the last batch.') }}
+            <template v-if="phrases.batchHeld"> {{ phrases.batchHeld }} {{ phrases.batchHeld === 1 ? 'phrase in this batch is' : 'phrases in this batch are' }} held back until {{ phrases.batchHeld === 1 ? 'its' : 'their' }} proof flag is cleared.</template>
+          </p>
+        </template>
+        <template v-else>
+          <h3 class="phrase-title">Practice phrases — all recorded</h3>
+          <p class="volume-note">Both passes are finished. Thank you.</p>
+        </template>
       </div>
 
       <RecordistRoster
@@ -155,6 +203,11 @@
         <template v-if="voice.setupCheck.status === 'submitted'">
           <strong>Thank you — your setup check is with us.</strong>
           <span>We'll listen and open your full script as soon as it is approved. Nothing more to do.</span>
+          <span v-if="voice.setupCheck.autoVerdict && voice.setupCheck.autoVerdict.verdict === 'pass'" class="setup-note setup-verdict-pass">Our quick sound check: your recording sounds good.</span>
+          <template v-else-if="voice.setupCheck.autoVerdict && voice.setupCheck.autoVerdict.verdict === 'retry'">
+            <span class="setup-note setup-verdict-retry">Our quick sound check suggests a small change, so please try again:</span>
+            <span v-for="r in voice.setupCheck.autoVerdict.reasons" :key="r" class="setup-note setup-verdict-reason">{{ r }}</span>
+          </template>
         </template>
         <template v-else>
           <strong>First, a 10-phrase setup check.</strong>
@@ -167,6 +220,15 @@
         <template v-if="voice.pack.setup.status === 'submitted'">
           <strong>Submitted — thank you.</strong>
           <span>We'll open your full script once we've listened. You can close this page.</span>
+          <span v-if="voice.pack.setup.autoVerdict && voice.pack.setup.autoVerdict.verdict === 'pass'" class="setup-note setup-verdict-pass">Our quick sound check: your recording sounds good.</span>
+          <template v-else-if="voice.pack.setup.autoVerdict && voice.pack.setup.autoVerdict.verdict === 'retry'">
+            <span class="setup-note setup-verdict-retry">Our quick sound check suggests a small change, so please try again:</span>
+            <span v-for="r in voice.pack.setup.autoVerdict.reasons" :key="r" class="setup-note setup-verdict-reason">{{ r }}</span>
+            <button v-if="readyCanSubmit" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
+              {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
+            </button>
+            <span v-if="setupError" class="setup-note">{{ setupError }}</span>
+          </template>
         </template>
         <template v-else>
           <strong>{{ voice.recorded }} of {{ voice.total }} recorded{{ voice.recorded >= SETUP_MIN_SUBMIT || queue.pendingCount.value > 0 ? '' : `, record at least ${SETUP_MIN_SUBMIT}` }}.</strong>
@@ -223,7 +285,7 @@
         <label class="toggle-row">
           <input type="radio" name="setup" value="phone" v-model="captureProfile" />
           <span><strong>Phone?</strong>
-            <small>Hold at comfortable reading distance so you can clearly see the phone screen. About the distance you hold the phone when texting.</small></span>
+            <small>Hold at comfortable reading distance so you can clearly see the phone screen. About the distance you hold the phone when texting. iPhone 16 or later for best results.</small></span>
         </label>
         <label class="toggle-row">
           <input type="radio" name="setup" value="pro" v-model="captureProfile" />
@@ -611,11 +673,16 @@
         </template>
         <template v-if="navCourses.length">
           <span class="rc-nav-dot">·</span>
-          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ navCourses.length === 1 ? 'Course' : `Course ${c.code}` }}</router-link>
+          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
         </template>
         <span class="rc-nav-dot">·</span>
         <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
       </nav>
+      <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back. -->
+      <div v-if="batchScope" class="batch-head" data-test="batch-head">
+        <button type="button" class="batch-back" @click="goHome">‹ All your recording</button>
+        <p v-if="batchTitle" class="batch-title">{{ batchTitle }}</p>
+      </div>
       <h2>{{ doneHeadline }}</h2>
       <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
       <!-- "Keep this page open until everything has saved" was the honest thing
@@ -626,6 +693,33 @@
       <p v-if="queue.pendingCount.value > 0" class="note">{{ doneNote }}</p>
 
       <p class="state-pill" :class="activityState.cls">{{ activityState.words }}</p>
+
+      <!-- THE PRACTICE-PHRASE BATCH (Aran, 2026-10-13, job #619). Phrases come
+           in two passes and ~200-line batches, one batch at a time, and the
+           reader must be able to SEE that: which pass, which batch of how many,
+           how far through, and that the rest of the phrases come later — so the
+           first pass is never mistaken for all of it. -->
+      <div v-if="showPhraseCard" class="volume-card phrase-card" data-test="phrase-batch">
+        <template v-if="phrases.pass">
+          <p class="phrase-kicker">Practice phrases · {{ boothCourseWords(phrases.courseCode, phrases.courseLabel) }}</p>
+          <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
+          <p class="phrase-count">{{ phrases.batchRecorded }} of {{ phrases.batchLines }} recorded in this batch</p>
+          <p v-if="phrases.pass === 1" class="volume-note">
+            This first pass is the phrases the app plays first: up to {{ phrases.firstPass.build }} build and
+            {{ phrases.firstPass.use }} use phrases for each new LEGO.
+            The remaining {{ phrases.laterPassLines.toLocaleString() }} phrases come on a second pass, later.
+          </p>
+          <p v-else class="volume-note">This second pass is the rest of the practice phrases, after the first pass.</p>
+          <p class="volume-note">
+            {{ phrases.batch < phrases.batches ? `When this batch is finished, batch ${phrases.batch + 1} opens here the next time you open this page.` : (phrases.pass === 1 ? 'This is the last batch of the first pass.' : 'This is the last batch.') }}
+            <template v-if="phrases.batchHeld"> {{ phrases.batchHeld }} {{ phrases.batchHeld === 1 ? 'phrase in this batch is' : 'phrases in this batch are' }} held back until {{ phrases.batchHeld === 1 ? 'its' : 'their' }} proof flag is cleared.</template>
+          </p>
+        </template>
+        <template v-else>
+          <h3 class="phrase-title">Practice phrases — all recorded</h3>
+          <p class="volume-note">Both passes are finished. Thank you.</p>
+        </template>
+      </div>
 
       <RecordistRoster
         ref="rosterRef"
@@ -706,6 +800,8 @@
         <strong>{{ setupRecorded }} of {{ lines.length }} recorded, record at least {{ SETUP_MIN_SUBMIT }}.</strong>
       </div>
 
+      <button v-if="nextBatchN" class="btn-begin" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Carry on: batch {{ nextBatchN }} ›</button>
+      <button v-if="batchScope" class="btn-ghost" @click="goHome">Back to all your recording</button>
       <button class="btn-ghost" @click="backToStart">Back to my lines</button>
     </section>
   </div>
@@ -719,7 +815,8 @@
 // costs them a session. The queue is BY LANGUAGE: one Welsh recordist gets one
 // Welsh queue, however many courses those lines happen to serve, which is why
 // no course code appears anywhere on this page.
-import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick, inject } from 'vue'
+import { routerKey, routeLocationKey } from 'vue-router'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecorder'
 import { loadBoothSettings, saveBoothSettings, micKeyFor } from './recordist/booth-settings.js'
@@ -733,9 +830,31 @@ import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStored
 import { createAdvanceLock } from './recordist/advance-lock'
 import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
+import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
+import BoothHome from './recordist/BoothHome.vue'
+import { loadUnticked, saveUnticked } from './recordist/booth-home.js'
+import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
+// THE ADDRESS SAYS WHERE HE IS (job #347): home, a card's batches, or one batch.
+// Read through the router when there is one, and straight off the address bar
+// when there is not (a unit test mounts the booth bare), so the booth still
+// keeps no hard router dependency.
+const router = inject(routerKey, null)
+const route = inject(routeLocationKey, null)
+const addressTick = ref(0)
+const addressQuery = computed(() => {
+  if (route) return route.query
+  void addressTick.value
+  return Object.fromEntries(new URLSearchParams(window.location.search))
+})
+function goToAddress(query) {
+  if (router) return router.push({ query })
+  const qs = new URLSearchParams(query).toString()
+  window.history.pushState({}, '', `${window.location.pathname}${qs ? `?${qs}` : ''}`)
+  addressTick.value += 1
+}
 
 const recorder = useTapRecorder()
 // The queue asks the ROOM whether a line is recorded on the server, so a
@@ -749,8 +868,9 @@ const queue = useRecordistQueue({
   },
 })
 
-const phase = ref('loading') // loading | unknown | error | ready | recording | done
+const phase = ref('loading') // loading | unknown | error | home | ready | recording | done
 const loadError = ref(null)
+const loadSlow = ref(false)
 const micError = ref(null)
 const voice = ref({ displayName: '', languageName: '', total: 0, recorded: 0, remaining: 0 })
 const lines = ref([])
@@ -900,6 +1020,7 @@ const rosterRows = computed(() => lines.value.map(l => ({
   // groups by its kind exactly as it always did.
   podSlug: l.podSlug || null,
   podTitle: l.podTitle || null,
+  courseCode: l.courseCode || null,
   // HOW IT IS READ. The roster draws it so the two speeds of the minimal set
   // are told apart at a glance, and onNext acts on it below.
   readStyle: l.readStyle || 'natural',
@@ -939,9 +1060,21 @@ const rosterRows = computed(() => lines.value.map(l => ({
 // three, and an empty heading reading "0 lines" is a question with no answer.
 // The roster section a line belongs to: its kind, except that a seed already
 // released in the course is its own section (see SECTION_ORDER).
+// A RELAUNCH SANDBOX'S SENTENCES ARE NEW, though their seed rows exist in that
+// course (Aran, 2026-10-14, job #347): #335 found his 640 new North sentences
+// under "seeds already in the course … They are not new". Display only.
 function sectionKeyOf(l) {
   const kind = l.kind || 'pod'
-  return kind === 'seed' && l.seedExisting ? 'seedexisting' : kind
+  return kind === 'seed' && l.seedExisting && !isBoothNewCourse(l.courseCode) ? 'seedexisting' : kind
+}
+
+// "Pass 1 of 2 · North batch 3 of 30" — the words a phrase line carries on the
+// stage and its section carries on the map, from the server's own summary.
+function phrasePlaceWords(pass, batch) {
+  const p = phrases.value
+  if (!p || !p.pass) return null
+  const n = pass === p.pass ? p.batches : null
+  return `Pass ${pass || p.pass} of ${p.passes} · ${boothCourseWords(p.courseCode, p.courseLabel)} batch ${batch || p.batch}${n ? ` of ${n}` : ''}`
 }
 
 const SECTION_ORDER = [
@@ -1001,6 +1134,9 @@ const SECTION_ORDER = [
   // "Aran's are all junk. All clipped badly at either or both ends" off his own
   // screen on the morning of the session.
   { key: 'rerecord', heading: 'MORE LINES', blurb: 'Single lines from the course that still need a recording — some from the conversations, some on their own.' },
+  // AFTER THE SEEDS, because a phrase is built from a seed's LEGOs. One batch at
+  // a time (job #619); the heading names the pass and the batch (rosterSections).
+  { key: 'phrase', heading: 'PRACTICE PHRASES', blurb: 'Practice phrases, in course order, one batch at a time. The first pass is the phrases the app plays first; the rest come on a second pass later.' },
 ]
 // ONE POD IS NOT EVERY POD. Tom, 2026-09-04: "Aran's lines are now confusing -
 // this special senedd pod lines are mixed in with his recorded already POD
@@ -1024,7 +1160,11 @@ const POD_SECTIONS = {
   'senedd-s4c-steve': { heading: 'SENEDD', blurb: 'The S4C committee session at the Senedd, 11 January 2024 — read in session order.' },
 }
 function podSectionFor(row) {
+  // The booth's own pod names (Aran, 2026-10-13) win over every other heading,
+  // so the section reads the same as its nav chip. Display only.
+  const booth = boothPodHeading(row)
   const named = POD_SECTIONS[row.podSlug]
+  if (booth) return { ...(named || { blurb: 'Your half of this conversation — the other characters are read by someone else.' }), heading: booth }
   if (named) return named
   const blurb = 'Your half of this conversation — the other characters are read by someone else.'
   // A pod line with NO slug at all is the world before this split existed -- an
@@ -1045,9 +1185,10 @@ const navPods = computed(() => {
     if ((l.kind || 'pod') !== 'pod' || !l.podSlug || !l.courseCode) continue
     const key = `${l.courseCode}/${l.podSlug}`
     if (seen.has(key)) continue
-    seen.set(key, { key, label: l.podTitle || l.podSlug, to: `/production/${l.courseCode}/pods/${l.podSlug}` })
+    seen.set(key, { key, row: l, to: `/production/${l.courseCode}/pods/${l.podSlug}` })
   }
-  return [...seen.values()]
+  const keys = [...seen.keys()]
+  return [...seen.values()].map(({ row, ...p }) => ({ ...p, label: boothPodChip(row, keys) }))
 })
 const navCourses = computed(() => {
   const seen = new Map()
@@ -1055,7 +1196,9 @@ const navCourses = computed(() => {
     if (!l.courseCode || seen.has(l.courseCode)) continue
     seen.set(l.courseCode, { code: l.courseCode, to: `/production/${l.courseCode}` })
   }
-  return [...seen.values()]
+  const all = [...seen.values()]
+  const codes = all.map(c => c.code)
+  return all.map(c => ({ ...c, label: boothCourseChip(c.code, codes) }))
 })
 const rosterRef = ref(null)
 // "Lines" is on this page: open the whole list and put it under his thumb.
@@ -1094,7 +1237,8 @@ const rosterSections = computed(() => {
     // The 'pod' slot in the order is where the pod groups go, in queue order.
     if (s.key === 'pod') { for (const g of byPod.values()) out.push(g); continue }
     const rows = byKind.get(s.key)
-    if (rows.length) out.push({ ...s, rows })
+    if (rows.length && s.key === 'phrase' && phrasePlaceWords()) out.push({ ...s, heading: `PRACTICE PHRASES · ${phrasePlaceWords()}`, rows })
+    else if (rows.length) out.push({ ...s, rows })
   }
   if (other.length) out.push({ key: 'other', heading: 'Everything else', blurb: 'Lines that do not fall into the groups above.', rows: other })
   return out
@@ -1115,7 +1259,7 @@ const notReadyNotes = computed(() => notReady.value
   .filter(n => Number(n.lines) > 0)
   .map(n => ({
     key: n.podId || n.podSlug || 'pod',
-    heading: podSectionFor({ podSlug: n.podSlug, podTitle: n.podTitle }).heading,
+    heading: podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading,
     lines: Number(n.lines),
   })))
 
@@ -1134,7 +1278,7 @@ const handedOnNotes = computed(() => handedOn.value
   .filter(n => Number(n.lines) > 0)
   .map(n => ({
     key: n.podId || n.podSlug || 'pod',
-    heading: podSectionFor({ podSlug: n.podSlug, podTitle: n.podTitle }).heading,
+    heading: podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading,
     castTo: n.castTo || 'somebody else',
     lines: Number(n.lines),
   })))
@@ -1218,6 +1362,11 @@ const lineKindWords = computed(() => {
     const n = Array.isArray(l.takeGChunks) ? l.takeGChunks.length : 0
     const marks = n > 1 ? `${n - 1} pause${n > 2 ? 's' : ''}` : 'a pause'
     return `The same line again - pause clearly at each ${'…'} (${marks}), then tap Next`
+  }
+  if (l.kind === 'phrase') {
+    const side = l.role === 'known' ? ' - English side' : (l.role === 'target2' ? ' - second voice' : '')
+    const where = phrasePlaceWords(l.phrasePass, l.phraseBatch)
+    return `Practice phrase${where ? ` · ${where}` : ''}${side}`
   }
   if (l.kind !== 'seed') return null
   if (l.seedExisting) {
@@ -1539,7 +1688,7 @@ async function saveEdit(lineId, text, side = editingSide.value) {
       `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/line/${encodeURIComponent(lineId)}/text`,
       {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        headers: { 'Content-Type': 'application/json' },
         // ONE SIDE PER SAVE. The server unlinks only the take of the side whose
         // words moved (recordist-router.cjs), so a known-side fix never costs
         // him his own take, and the screen below follows the same rule.
@@ -1737,7 +1886,7 @@ const alreadyRecorded = computed(() => lines.value.filter(l => l.clipUrl))
 // row needs from this screen is to SAY which category it is, so a list mixing
 // conversations, chunks and seed sentences reads as one thing rather than as an
 // unexplained jumble.
-const KIND_WORDS = { pod: 'POD-1', seed: 'NEW SEEDS', seedexisting: 'Whole sentences — seeds already in the course', quarry: 'The minimal set', rerecord: 'MORE LINES' }
+const KIND_WORDS = { pod: 'POD-1', seed: 'NEW SEEDS', seedexisting: 'Whole sentences — seeds already in the course', quarry: 'The minimal set', rerecord: 'MORE LINES', phrase: 'PRACTICE PHRASES' }
 function kindWords(l) {
   // A pod line is named by ITS OWN pod, not by the word "pod": this list is
   // searchable, and "senedd" has to find the Senedd lines in it.
@@ -2119,6 +2268,8 @@ const isGappedLine = computed(() => !!current.value && current.value.readStyle =
 const SEED_VOLUMES = [30, 50, 100, 150, 300]
 const maxSeed = ref(null)
 const quarry = ref(null)
+// THE PRACTICE-PHRASE BATCH SUMMARY, straight off the wire (job #619).
+const phrases = ref(null)
 // LINES OF HIS THAT HAVE NO TARGET TEXT YET, per pod, straight off the wire.
 // See the note where it is read in load(), and the words it becomes below.
 const notReady = ref([])
@@ -2310,7 +2461,7 @@ async function rerecordAllMine() {
   try {
     const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/rerecord-all`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ confirm: true, asArtist: true, reason: 'Artist pressed Re-record all in the booth' }),
     })
     const body = await res.json().catch(() => ({}))
@@ -2366,7 +2517,13 @@ const setupSubmitting = ref(false)
 const SETUP_MIN_SUBMIT = 5
 const setupOpen = computed(() => {
   const setup = voice.value.pack && voice.value.pack.setup
-  return !!setup && (setup.status === 'open' || setup.status === 'changes')
+  return !!setup && (setup.status === 'open' || setup.status === 'changes' || setupRetryAsked.value)
+})
+// A submitted check whose automatic verdict said "try again" is the artist's to
+// re-record and resubmit (the server re-judges on every submit).
+const setupRetryAsked = computed(() => {
+  const setup = voice.value.pack && voice.value.pack.setup
+  return !!setup && setup.status === 'submitted' && !!setup.autoVerdict && setup.autoVerdict.verdict === 'retry'
 })
 // A partial session (record 1 of 10, stop) must NOT read as finished (review
 // #846): a take counts once it is on the server or saved here.
@@ -2391,7 +2548,7 @@ async function submitSetup() {
   setupError.value = null
   try {
     const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/submit`, {
-      method: 'POST', headers: { 'ngrok-skip-browser-warning': 'true' },
+      method: 'POST', headers: {},
     })
     const body = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(body.error || `Could not submit (${res.status})`)
@@ -2406,6 +2563,7 @@ async function submitSetup() {
 async function load() {
   phase.value = 'loading'
   loadError.value = null
+  loadSlow.value = false
   try {
     // Always ask for the WHOLE queue, recorded lines included, and filter
     // locally: the map draws every line, a tapped recorded line can be read
@@ -2426,19 +2584,24 @@ async function load() {
     // server can narrow the read as well as the draw.
     const podScope = new URLSearchParams(window.location.search).get('pod')
     const podParam = podScope ? `&pod=${encodeURIComponent(podScope)}` : ''
-    const res = await fetch(
-      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+    // ONE BATCH from the home screen (job #347): only its lines come over the wire.
+    const b = batchScope.value
+    const batchParam = b ? `&track=${encodeURIComponent(b.track)}&batch=${b.batch}` : ''
+    // Time-limited (20s, one retry): a hung request must not strand the reader
+    // on "Getting your lines…". The body is read inside the timed window.
+    const { res, data: body } = await fetchWithTimeoutRetry(
+      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}${batchParam}`,
+      { headers: {} },
+      r => (r.ok ? r.json() : r.json().catch(() => ({})))
     )
     if (res.status === 404) { phase.value = 'unknown'; return }
     if (res.status === 403) {
       // The link names a course this voice is not cast on: the server's
       // sentence says so (casting-rights.boothArrival), in words, not a code.
-      const body = await res.json().catch(() => ({}))
       throw new Error(body.error || `This link is for a course you are not cast on (${courseScope}).`)
     }
     if (!res.ok) throw new Error(`Could not load your lines (${res.status})`)
-    const data = await res.json()
+    const data = body
     voice.value = data
     // A QUEUE MAY ASK FOR AUTO-ADVANCE OFF, and one does. Pod and course lines
     // are single sentences, so stopping on a silence is right for them and the
@@ -2452,6 +2615,7 @@ async function load() {
     // requested rather than the one it got is the kind of quiet lie this booth
     // has been bitten by before.
     quarry.value = data.quarry || null
+    phrases.value = data.phrases || null
     if (data.quarry && data.quarry.maxSeed) maxSeed.value = data.quarry.maxSeed
     // WORK OF HIS THAT HAS NO WORDS YET. Straight off the wire and never
     // derived from `lines`: these are precisely the lines that are NOT in
@@ -2478,9 +2642,162 @@ async function load() {
     advanceLock.reset()
     phase.value = 'ready'
   } catch (err) {
+    loadSlow.value = err instanceof LoadTimeoutError
     loadError.value = (err && err.message) || 'Network error'
     phase.value = 'error'
   }
+}
+
+// ── THE HOME SCREEN (Aran, 2026-10-14, job #347) ────────────────────────────
+//
+// The page used to open by fetching his whole queue — 2060 lines, 2.2MB — and
+// drawing every one, then put Start on the first unread line in queue order (a
+// Health test line). It now opens on a home screen drawn from a SUMMARY
+// (/summary: cards, batches, counts) and fetches one batch's lines when he opens
+// it, so Start lands in the batch he chose. The address carries where he is —
+// ?track=<card> lists a card's batches, &batch=<n> opens one — so Back works.
+//
+// A course or pod link (?course= / ?pod=) is a door from another page and keeps
+// the one-screen booth it always opened. So do a recording pack and a script
+// still behind its setup check, and anything that cannot get a summary at all:
+// the home screen is an addition, never a new way for the booth to fail.
+const homeSummary = ref(null)
+const unticked = ref(loadUnticked(props.voiceId))
+function setTick(id, on) {
+  const next = new Set(unticked.value)
+  if (on) next.delete(id); else next.add(id)
+  unticked.value = next
+  saveUnticked(props.voiceId, next)
+}
+const queryStr = (v) => (typeof v === 'string' && v.trim() ? v.trim() : null)
+const isDoorLink = () => !!(queryStr(addressQuery.value.course) || queryStr(addressQuery.value.pod))
+const batchScope = computed(() => {
+  const track = queryStr(addressQuery.value.track)
+  const batch = parseInt(addressQuery.value.batch, 10)
+  if (isDoorLink() || !track || !Number.isFinite(batch) || batch < 1) return null
+  return { track, batch }
+})
+const homeTrackKey = computed(() => (batchScope.value ? null : queryStr(addressQuery.value.track)))
+
+function describeTrack(t) {
+  if (t.kind === 'seed') {
+    const isNew = !!(t.newCourse || t.seedExisting === false)
+    const old = SECTION_ORDER.find(x => x.key === 'seedexisting')
+    return {
+      short: isNew ? 'New sentences' : 'Sentences', cls: 'k-sent',
+      title: `${boothCourseWords(t.courseCode, 'Course')}: whole sentences`,
+      what: isNew ? 'Read each new course sentence once, at your natural pace.' : old.blurb,
+    }
+  }
+  if (t.kind === 'phrase') {
+    const fp = (homeSummary.value && homeSummary.value.phrases && homeSummary.value.phrases.firstPass) || { build: 4, use: 3 }
+    return {
+      short: `Phrases · pass ${t.pass}`, cls: t.pass === 1 ? 'k-p1' : 'k-p2',
+      title: `${boothCourseWords(t.courseCode, 'Course')}: practice phrases, pass ${t.pass}`,
+      what: t.pass === 1
+        ? `The phrases the app plays first: up to ${fp.build} build and ${fp.use} use phrases for each new LEGO.`
+        : 'The rest of the practice phrases. Opens when pass 1 is finished.',
+    }
+  }
+  if (t.podSlug) {
+    const sec = podSectionFor({ courseCode: t.courseCode, podSlug: t.podSlug, podTitle: t.podTitle })
+    return { short: 'Script', cls: 'k-other', title: sec.heading, what: sec.blurb }
+  }
+  const named = SECTION_ORDER.find(x => x.key === t.kind)
+  return { short: 'Lines', cls: 'k-other', title: named ? named.heading : 'Everything else', what: named ? named.blurb : '' }
+}
+const homeTracks = computed(() => ((homeSummary.value && homeSummary.value.tracks) || []).map(t => ({ ...t, ...describeTrack(t) })))
+const homeMainHeading = computed(() => {
+  const codes = new Set(homeTracks.value.filter(t => t.kind === 'phrase' || t.newCourse).map(t => t.courseCode))
+  return codes.size === 1 ? boothCourseWords([...codes][0], 'New work') : 'New work'
+})
+const homeNotes = computed(() => {
+  const h = homeSummary.value
+  if (!h) return []
+  const out = []
+  for (const n of (h.notReady || [])) {
+    if (!(Number(n.lines) > 0)) continue
+    const where = podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading
+    out.push(`${n.lines} more ${n.lines === 1 ? 'line' : 'lines'} of ${where} ${n.lines === 1 ? 'is' : 'are'} still being written — nothing of yours has gone missing.`)
+  }
+  for (const n of (h.handedOn || [])) {
+    if (!(Number(n.lines) > 0)) continue
+    const where = podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading
+    out.push(`You recorded ${n.lines} more ${n.lines === 1 ? 'line' : 'lines'} of ${where} that ${n.lines === 1 ? 'has' : 'have'} since been given to ${n.castTo || 'somebody else'}. Your takes are still there.`)
+  }
+  return out
+})
+const scopedTrack = computed(() => batchScope.value && homeTracks.value.find(t => t.key === batchScope.value.track))
+const batchTitle = computed(() => {
+  const t = scopedTrack.value
+  if (!t) return null
+  const b = t.batches.find(x => x.n === batchScope.value.batch)
+  if (t.kind === 'phrase') return `${t.title}${b ? ` · ${b.courseLabel || ''} batch ${b.batch}`.replace('  ', ' ') : ''}`
+  return t.batches.length > 1 ? `${t.title} · Batch ${batchScope.value.batch} of ${t.batches.length}${b ? ` (sentences ${b.from}–${b.to})` : ''}` : t.title
+})
+// After a batch: the next one of the same card, if it has lines to read. Never a
+// practice-phrase batch — the queue opens those itself, one at a time.
+const nextBatchN = computed(() => {
+  const t = scopedTrack.value
+  if (!t || t.kind === 'phrase') return null
+  const later = t.batches.find(b => b.n > batchScope.value.batch && b.recorded < b.total)
+  return later ? later.n : null
+})
+const showPhraseCard = computed(() => !!(phrases.value && (phrases.value.pass || phrases.value.finished)) &&
+  (!batchScope.value || batchScope.value.track.startsWith('phrase.')))
+
+function openBatch(track, n) { goToAddress({ track, batch: String(n) }) }
+function goHome() { goToAddress({}) }
+function openCard(key) {
+  const t = homeTracks.value.find(x => x.key === key)
+  if (!t) return
+  // A script is one batch: straight in. Sentences and phrases list their batches.
+  if (t.kind !== 'phrase' && t.batches.length === 1) return openBatch(key, 1)
+  goToAddress({ track: key })
+}
+
+async function fetchSummary() {
+  const { res, data } = await fetchWithTimeoutRetry(
+    `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/summary`,
+    { headers: {} },
+    r => (r.ok ? r.json() : r.json().catch(() => ({})))
+  )
+  return res.ok && data && data.home && !data.setupLocked ? data : null
+}
+
+let homeFor = null
+async function loadHome() {
+  // Moving between the home screen and a card's batch list needs no new read.
+  if (phase.value === 'home' && homeSummary.value && homeFor === props.voiceId) return
+  phase.value = 'loading'
+  let data = null
+  try { data = await fetchSummary() } catch { data = null }
+  if (!data) { homeSummary.value = null; return load() }
+  homeSummary.value = data
+  homeFor = props.voiceId
+  voice.value = { ...voice.value, displayName: data.displayName, languageName: data.languageName }
+  // Takes left on this device by an earlier session start going up from here too.
+  await queue.attach(props.voiceId)
+  phase.value = 'home'
+}
+
+// Where the address says he is. A recording in progress is finished first (its
+// take kept), so Back on a phone mid-line never drops a take.
+let entering = 0
+async function enter() {
+  const mine = ++entering
+  if (phase.value === 'recording') {
+    try { await onFinish() } catch { /* the stream is gone; carry on */ }
+  }
+  if (mine !== entering) return
+  stopPlayback()
+  if (isDoorLink()) return load()
+  if (batchScope.value) {
+    // The batch's own name comes from the summary; fetched alongside, never waited on.
+    if (!homeSummary.value) fetchSummary().then(d => { if (d) homeSummary.value = d }).catch(() => {})
+    return load()
+  }
+  return loadHome()
 }
 
 // ── The booth remembers how you left it ─────────────────────────────────────
@@ -2561,7 +2878,7 @@ onBeforeUnmount(() => {
   forgetLocalTakes()
 })
 
-watch(() => props.voiceId, load, { immediate: true })
+watch(() => [props.voiceId, addressQuery.value.track, addressQuery.value.batch, addressQuery.value.course, addressQuery.value.pod], enter, { immediate: true })
 </script>
 
 <style scoped>
@@ -2617,6 +2934,10 @@ watch(() => props.voiceId, load, { immediate: true })
 .safety-banner.waiting { background: #15243f; border-color: #3b6fb5; color: #dbe9ff; }
 .safety-banner.risk { background: #3a1512; border-color: #d0574c; color: #ffdad5; }
 .safety-banner.refused { background: #3a2a0d; border-color: #e8a02a; color: #ffe9c2; }
+/* ONE BATCH (job #347): where he is and the way back to the home screen. */
+.batch-head { margin: -0.4rem 0 0.9rem; }
+.batch-back { background: none; border: 0; font: inherit; font-weight: 600; color: var(--color-emerald, #06ffa5); padding: 0.3rem 0; min-height: 44px; cursor: pointer; }
+.rc-card p.batch-title { margin: 0; font-size: 1rem; font-weight: 600; color: var(--color-paper, #f7f7f2); }
 /* Small, muted, above everything and out of the flow of the work: it is the
    door, not part of the job. */
 .rc-nav {
@@ -2685,6 +3006,9 @@ kbd {
   background: rgba(255, 255, 255, 0.04);
 }
 .volume-card h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+.phrase-kicker { margin: 0 0 0.2rem; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-paper-dim, #c1c1bb); }
+.phrase-title { font-size: 1.15rem; }
+.phrase-count { margin: 0 0 0.55rem; font-size: 0.9rem; font-weight: 600; }
 .volume-note { margin: 0 0 0.7rem; font-size: 0.85rem; line-height: 1.5; color: var(--color-paper-dim, #c1c1bb); }
 .volume-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
 .volume-label { font-size: 0.85rem; color: var(--color-paper-dim, #c1c1bb); margin-right: 0.25rem; }

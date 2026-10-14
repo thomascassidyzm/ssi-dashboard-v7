@@ -362,7 +362,7 @@ async function loadStats() {
     } else {
       const apiBase = getApiUrl()
       const res = await fetch(`${apiBase}/api/stats/${props.courseCode}`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
       if (res.ok) {
         const data = await res.json()
@@ -466,7 +466,6 @@ async function loadPodDrafts() {
     const token = await getAccessToken()
     const res = await fetch(`${getApiUrl()}/api/production/${props.courseCode}/pods/drafts`, {
       headers: {
-        'ngrok-skip-browser-warning': 'true',
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
     })

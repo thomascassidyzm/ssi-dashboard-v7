@@ -13,6 +13,7 @@ const { createClient } = require('@supabase/supabase-js');
 const { bumpCourseVersion } = require('./shared/course-version.cjs');
 const { voiceSpellings } = require('./shared/clip-identity-lookup.cjs');
 const { selectProvider } = require('./shared/tts-provider-policy.cjs');
+const { applyResolvedVoices } = require('./shared/resolve-voice.cjs');
 const { applyLanguageCast, CAST_ROLES } = require('./shared/language-voice-cast.cjs');
 const voiceLoudness = require('./shared/voice-loudness.cjs');
 const consentGate = require('./shared/voice-consent-gate.cjs');
@@ -122,8 +123,7 @@ const DEFAULT_VOICE_CONFIG = {
       regionEnvVar: 'AZURE_SPEECH_REGION'
     },
     xai: {
-      enabled: true,
-      apiKeyEnvVar: 'XAI_API_KEY'
+      enabled: false // banned by Tom 2026-10-10; no key is read
     }
   },
 
@@ -227,7 +227,10 @@ async function loadCast() {
     // A soft read: a missing view leaves the policy and stored-config halves of
     // the guard standing, so Welsh is protected even with no view at all.
     const [roles, voices, humanRows, courses] = await Promise.all([
-      supabase.from('voice_language_roles').select('language, gender, rank, voice_id, slot'),
+      // notes + assigned_by are the AUTHORSHIP resolveVoice judges a cast row by (a Tom-approved row vs a
+      // draft/test row, services/shared/voice-cast-gate.cjs). Omitting them made every target cast look
+      // unauthored and be refused, so a stored male target1 survived a Tom-approved female cast.
+      supabase.from('voice_language_roles').select('language, gender, rank, voice_id, slot, notes, assigned_by'),
       // loudness_offset_db rides on the same read: services/shared/voice-loudness.cjs
       supabase.from('voices').select('voice_id, gender, tts_engine, is_active, display_name, human_name, loudness_offset_db'),
       loadHumanRecordedRoles(supabase),
@@ -333,7 +336,15 @@ async function resolveVoiceConfig({ voiceConfig, course, courseCode }) {
   // The caller's SELECT may not have named the dialect columns; the cache has.
   c = withDialectFields(c, dialects);
 
-  const { config, decisions } = applyLanguageCast({ voiceConfig, course: c, roles, voices, humanRows });
+  const cast0 = applyLanguageCast({ voiceConfig, course: c, roles, voices, humanRows });
+  // THE COURSE VOICE IS resolveVoice's (Tom 2026-10-12 16:17Z, services/shared/resolve-voice.cjs): wherever the coded policy
+  // answers, it overrides the cast overlay and the stored config, so phase8 renders and links in the resolved voice. A role a
+  // human recorded is never outranked.
+  const humanRoles = new Set(cast0.decisions.filter((d) => d.source === 'human-recorded').map((d) => d.role));
+  const resolved = applyResolvedVoices({ voiceConfig: cast0.config, course: c, cast: { roles, voices }, humanRoles });
+  for (const d of resolved.decisions) console.log(`[VoiceConfig] ${c.course_code}: ${d.role} resolveVoice ${d.rule} → ${d.voiceId} (was ${d.replaced})`);
+  const config = resolved.decisions.length ? resolved.config : cast0.config;
+  const decisions = cast0.decisions;
   if (config !== voiceConfig) {
     for (const d of decisions.filter((x) => x.source === 'language-cast')) {
       console.log(`[VoiceConfig] ${c.course_code}: ${d.role} cast from ${d.language}/${d.gender} rank${d.rank} → ${d.voiceId} (was ${d.replaced})`);
@@ -821,12 +832,11 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles, opts = {}) {
     // for one of those clips looked like when it was made.
     //
     // voiceId may be a preset ('eve'|'ara'|'leo'|'rex'|'sal') OR a custom
-    // cloned voice id (e.g. 'gfzdpspr5fdp') — generateXai passes it through
+    // cloned voice id (e.g. 'gfzdpspr5fdp') — (xAI banned 2026-10-10; this branch only describes historic clips) it was passed through
     // verbatim. xAI has no speed param on /v1/tts; speed is applied downstream
     // in masterAudio, so it's advisory here (kept for symmetry with other roles).
     return {
       provider: 'xai',
-      apiKey: process.env.XAI_API_KEY,
       voiceId: voiceConfig.voiceId,
       language: voiceConfig.language || 'auto',
       speed: effectiveSpeed

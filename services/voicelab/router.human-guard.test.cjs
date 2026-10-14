@@ -57,7 +57,8 @@ function stubSupabase () {
     }
     return chain
   }
-  return { from: table }
+  // the cast goes through the atomic cast_voice_role function (#263)
+  return { from: table, rpc: async (fn, args) => { upserts.push({ table: 'voice_language_roles', row: { fn, ...args } }); return { data: {}, error: null } } }
 }
 
 let server

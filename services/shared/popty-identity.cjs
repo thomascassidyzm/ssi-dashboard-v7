@@ -27,8 +27,14 @@
 function resolvePoptyIdentity({ email, dashboardRow = null, learnerRow = null }) {
   if (!email) return null
 
+  // Tom 2026-10-12: super admins AND all SSi admins reach every course. An SSi
+  // admin who also holds a lower-role dashboard_users row keeps that role for
+  // admin-only surfaces, but carries this flag so COURSE access is never narrowed.
+  const ssiAdmin = !!learnerRow && (learnerRow.platform_role === 'ssi_admin' || learnerRow.educational_role === 'god')
+
   if (dashboardRow) {
     return {
+      ...(ssiAdmin ? { ssiAdmin: true } : {}),
       name: dashboardRow.name || learnerRow?.display_name || email,
       email,
       role: dashboardRow.role,

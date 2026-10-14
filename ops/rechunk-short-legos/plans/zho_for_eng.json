@@ -1,0 +1,111 @@
+{
+ "course": "zho_for_eng",
+ "note": "Job #321 wave 1. Debut LEGOs (is_new, seed 4+) with fewer than 4 USE phrases. Proposed by Sonnet, judged cold by Opus, checked by checkOp; a rejected or refused op falls back to topup.",
+ "seeds": [
+  {
+   "seed": 9,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    1
+   ],
+   "fellBackBecause": "Opus rejected: Chunking up the bare modal 会 into 会说 is the right idea. 会 alone is not a unit of intention, and 会说 is a natural, practisable chunk that keeps the seed covered. The problem is the known gloss 'speak' for 会说, which is not ZUT-safe. 'Speak' is the natural gloss for plain 说 or 讲, which will almost certainly appear elsewhere in the course, so one known prompt would map to two targets. 会说 means 'can speak' or 'know how to speak', and glossing it as 'speak' also misrepresents what it says. The pair needs a distinct, accurate known such as 'can speak'. If that conflicts with tiling the seed's English, the re-chunk needs rethinking rather than approving an ambiguous gloss."
+  },
+  {
+   "seed": 10,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    4,
+    5
+   ],
+   "fellBackBecause": "checkOp refused: L6 \"remember\" → \"记住\": an A-LEGO is one word (L4)"
+  },
+  {
+   "seed": 11,
+   "kind": "grow",
+   "why": "之后 is a postposition that only works after a clause, so it can't be practised alone; chunking up to 'after you finish' = 你说完之后 gives a usable, flexible unit.",
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "after you finish",
+     "target": "你说完之后",
+     "components": [
+      {
+       "known": "you finish",
+       "target": "你说完"
+      },
+      {
+       "known": "after",
+       "target": "之后"
+      }
+     ]
+    }
+   },
+   "judged": {
+    "opus": "APPROVE",
+    "reason": "之后 is a postposition that has to follow a clause, so on its own it is not a unit of intention, and that is why it has 0 USE phrases. Chunking up first is what Tom's rule asks for. 你说完之后 'after you finish' is a real, flexible chunk the learner wants to say. It is grammatical, uses only words from the seed and is 5 syllables. It also improves coverage: 你说完 was not covered by any LEGO before, and now it is, with nothing lost. 'After you finish' is exactly how the seed's own known side renders it, so the pairing is faithful. It can extend naturally, for example 你说完之后我说 or 你说完之后我也能说. Nothing that was already sound has been changed. One ZUT caveat for later: if another seed glosses 'finish' as 做完 or 完成, the prompts would need disambiguating. Within this seed the mapping is consistent."
+   }
+  },
+  {
+   "seed": 12,
+   "kind": "topup",
+   "why": "发生 'to happen' is a sound, flexible verb that learners can use with many subjects, so the cut stays and it only needs more good phrases.",
+   "topup": [
+    4
+   ]
+  },
+  {
+   "seed": 13,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    1
+   ],
+   "fellBackBecause": "Opus rejected: The op fixes a real problem: 你的 is not a good standalone unit, and 中文/说得 were not covered. But the new pair breaks ZUT and is not a real unit. (1) Known 'you speak Chinese' is a complete English sentence whose natural Mandarin is 你说中文. Mapping it to 你的中文说得 collides with that and teaches a wrong equivalence. (2) 你的中文说得 cannot be said alone, because 得 demands a following complement, so it ends mid-utterance and is not a unit of intention. (3) The component gloss 'you'=你的 is wrong, since 你的 means 'your'. (4) It strands 很 and 好 as separate LEGOs, which forces phrases like '你的中文说得 + 很' that only exist inside this one sentence. A better chunk-up would be the whole seed 你的中文说得很好 (8 syllables, within the limit), or 'your Chinese' = 你的中文 plus 'speak very well' = 说得很好. Either option keeps known and target honest and practisable."
+  },
+  {
+   "seed": 14,
+   "kind": "topup",
+   "why": "\"说中文吗\" (do you speak Chinese?) is a sound, flexible question chunk, and 你 can be dropped in casual speech. It only needs fresh good phrases, and merging with 你一整天都 would exceed 8 syllables.",
+   "topup": [
+    3
+   ]
+  },
+  {
+   "seed": 16,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    1
+   ],
+   "fellBackBecause": "Opus rejected: 他 'he' is already a sound, flexible LEGO. It is a real unit of intention, and it tiles naturally with the taught 晚点, 一起 and 回来, as in 他晚点回来 'he's coming back later' and 他一起回来 'he's coming back together'. Being flagged short only means it needs more good phrases, so the correct op is a topup, not a grow. Growing it to 他想 changes a LEGO that was fine. It also adds a ZUT risk: 'he wants to' could equally map to 他要 elsewhere in the course, and 他想 also reads as 'he thinks' or 'he misses'. That makes the new pair less clean than the bare pronoun. Keep the cut and write fresh phrases."
+  },
+  {
+   "seed": 17,
+   "kind": "topup",
+   "why": "答案 is a concrete, flexible noun that works in many frames, so it only needs more good phrases rather than a new cut.",
+   "topup": [
+    3
+   ]
+  },
+  {
+   "seed": 33,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    2
+   ],
+   "fellBackBecause": "checkOp refused: coverage: \"了\" was taught by a LEGO of this seed and no longer is (S3/L27)"
+  },
+  {
+   "seed": 531,
+   "kind": "topup",
+   "why": "fallback: keep the cut, author fresh good phrases",
+   "topup": [
+    3
+   ],
+   "fellBackBecause": "Opus rejected: The merge changes things that were fine and creates a worse unit. L3 '并不是' = 'it isn't true that' already has 3 USE phrases, so it is practicable and should not be deleted. L4 '每个人' = 'everyone' is a sound, flexible LEGO that simply lacks phrases; the right op for it is a topup, not a merge. The new pair 'it isn't true that anyone' = '并不是每个人' is not a natural unit of intention: it is a fragment that splits mid-clause. It is also not ZUT-safe. The component re-glosses 每个人 as 'anyone' while the course teaches it as 'everyone', so two known prompts would point at one target, and 'anyone' could equally map to 任何人 or 谁都. Coverage would be preserved, but the split is worse than the current one."
+  }
+ ]
+}

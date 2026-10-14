@@ -168,7 +168,6 @@ async function checkAuditStaleness() {
     const base = localStorage.getItem('api_base_url') || 'http://localhost:3470'
     const r = await fetch(`${base}/api/admin/audit-stats`, {
       headers: {
-        'ngrok-skip-browser-warning': 'true',
         ...(token ? { Authorization: `Bearer ${token}` } : {})
       }
     })

@@ -244,10 +244,10 @@ async function fetchFlags() {
     } else {
       const [flagsResp, summaryResp] = await Promise.all([
         fetch(`${builderApiUrl}/api/qa/flags/${props.courseCode}?status=open`, {
-          headers: { 'ngrok-skip-browser-warning': 'true' }
+          headers: {}
         }),
         fetch(`${builderApiUrl}/api/qa/summary/${props.courseCode}`, {
-          headers: { 'ngrok-skip-browser-warning': 'true' }
+          headers: {}
         })
       ])
 
@@ -283,7 +283,7 @@ async function approveAll() {
   try {
     const resp = await fetch(`${builderApiUrl}/api/qa/approve/${props.courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ dismiss_flag_ids: [...dismissed.value] })
     })
     if (!resp.ok) throw new Error(await resp.text())

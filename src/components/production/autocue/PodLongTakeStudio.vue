@@ -583,7 +583,7 @@ async function loadPlan() {
   loadError.value = null
   try {
     const url = `${apiBase()}/api/production/${props.courseCode}/pods/recording-plan?voiceId=${encodeURIComponent(props.voiceId)}`
-    const res = await fetch(url, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+    const res = await fetch(url, { headers: {} })
     if (res.status === 404) { phase.value = 'no-plan'; return }
     if (!res.ok) {
       const data = await res.json().catch(() => ({}))

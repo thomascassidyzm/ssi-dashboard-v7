@@ -88,17 +88,16 @@ const RAW_READ_SURFACES = [
   // ── phase8-audio-v13.cjs ────────────────────────────────────────────────
   {
     file: 'services/phases/phase8-audio-v13.cjs',
+    scope: 'getAudioNeeds()',
+    disposition: 'caller-resolved',
+    note: 'reads course.voice_config off the course it is handed; its call sites resolve that course at their fetch (resolveVoiceConfig, which carries resolveVoice since job #53).',
+  },
+  {
+    file: 'services/phases/phase8-audio-v13.cjs',
     scope: 'classifyEnglishCopyBucket()',
     disposition: 'caller-resolved',
     note: 'reached only through getAudioNeeds(), whose four call sites all resolve at their fetch.',
     callersOf: 'getAudioNeeds',
-  },
-  {
-    file: 'services/phases/phase8-audio-v13.cjs',
-    scope: 'linkPresentationAudio()',
-    disposition: 'presentation',
-    note: 'the presentation relink voice gate (Kai, 2026-08-19): only a clip in the '
-      + 'configured presentation voice may claim a lego\'s slot.',
   },
   {
     file: 'services/phases/phase8-audio-v13.cjs',
@@ -111,12 +110,6 @@ const RAW_READ_SURFACES = [
     scope: 'POST /regenerate-presentations/:courseCode',
     disposition: 'presentation',
     note: 'the presentation voice id for pending rows, and the presentation relink gate.',
-  },
-  {
-    file: 'services/phases/phase8-audio-v13.cjs',
-    scope: 'POST /regenerate-presentation/:courseCode/:legoId',
-    disposition: 'presentation',
-    note: 'renders ONE intro clip, presentation role only.',
   },
 
   // ── presentation-author.cjs ─────────────────────────────────────────────

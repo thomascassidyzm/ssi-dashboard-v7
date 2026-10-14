@@ -1,0 +1,41 @@
+import { describe, it, expect } from 'vitest'
+const { buildProofList, flagRow } = require('./lego-proof-router.cjs')
+
+const L = (seed, idx, isNew, cy) => ({ lego_id: `S${String(seed).padStart(4, '0')}L${String(idx).padStart(2, '0')}`, seed_number: seed, lego_index: idx, is_new: isNew, target_text: cy, known_text: cy + '-en' })
+
+describe('buildProofList', () => {
+  // The WHOLE course plays in RUNNING ORDER (old seeds, then the HC block, then the remaining old seeds), not id order,
+  // and a dropped seed (absent from course_running_order) is not listed.
+  const order = [
+    { seed_number: 1, position: 1, in_block: false },
+    { seed_number: 1003, position: 2, in_block: true },
+    { seed_number: 1001, position: 3, in_block: true },
+    { seed_number: 12, position: 4, in_block: false },
+  ]
+  const legos = [L(1001, 2, true, 'b'), L(1001, 1, false, 'a'), L(1003, 1, true, 'c'), L(1002, 1, true, 'dropped'), L(12, 1, true, 'old'), L(1, 1, true, 'dw i isio')]
+
+  it('lists the whole course from seed 1 in running order, numbers only the new LEGOs, marks HC rows, skips dropped seeds', () => {
+    const rows = buildProofList(legos, order, [])
+    expect(rows.map((r) => [r.id, r.n, r.hc])).toEqual([
+      ['S0001L01', 1, false], ['S1003L01', 2, true], ['S1001L01', null, true], ['S1001L02', 3, true], ['S0012L01', 4, false],
+    ])
+  })
+
+  it('carries a saved flag and its note onto its LEGO', () => {
+    const rows = buildProofList(legos, order, [{ lego_id: 'S1001L02', flagged: true, note: 'mutation', flagged_by: 'aran@hey.com' }])
+    expect(rows.find((r) => r.id === 'S1001L02')).toMatchObject({ flagged: true, note: 'mutation', by: 'aran@hey.com' })
+    expect(rows.find((r) => r.id === 'S1003L01')).toMatchObject({ flagged: false, note: '' })
+  })
+})
+
+describe('flagRow', () => {
+  it('refuses a malformed id, a non-boolean flag and an anonymous caller', () => {
+    expect(flagRow('c', { legoId: '1087.2', flagged: true }, 'a').error).toMatch(/S1087L02/)
+    expect(flagRow('c', { legoId: 'S1087L02', flagged: 'yes' }, 'a').error).toMatch(/true or false/)
+    expect(flagRow('c', { legoId: 'S1087L02', flagged: true }, null).status).toBe(401)
+  })
+  it('stores an empty note as null and records who flagged', () => {
+    expect(flagRow('c', { legoId: 'S1087L02', flagged: true, note: '  ' }, 'aran@hey.com').row)
+      .toMatchObject({ course_code: 'c', lego_id: 'S1087L02', flagged: true, note: null, flagged_by: 'aran@hey.com' })
+  })
+})

@@ -566,7 +566,6 @@ async function runValidation() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         manifest: parsedManifest.value,
@@ -612,7 +611,6 @@ async function startImport() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         manifest: parsedManifest.value,

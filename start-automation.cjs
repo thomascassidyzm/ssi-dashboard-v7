@@ -52,7 +52,7 @@ if (!fs.existsSync(VFS_ROOT)) {
 // Smart defaults - everything derives from BASE_PORT
 const BASE_PORT = parseInt(process.env.BASE_PORT || '3456');
 const CHECKPOINT_MODE = process.env.CHECKPOINT_MODE || 'gated';
-const NGROK_URL = process.env.NGROK_URL || `http://localhost:${BASE_PORT}`;
+const ORCHESTRATOR_BASE_URL = `http://localhost:${BASE_PORT}`;
 
 // Start layered services (microservices architecture)
 startLayeredServices();
@@ -137,8 +137,8 @@ for (const [key, config] of Object.entries(SERVICES)) {
       VFS_ROOT: VFS_ROOT,
       CHECKPOINT_MODE: CHECKPOINT_MODE,
       SERVICE_NAME: config.name,
-      // Phase servers need to know orchestrator (use ngrok URL for external agents)
-      ORCHESTRATOR_URL: NGROK_URL,
+      // Phase servers need to know the orchestrator
+      ORCHESTRATOR_URL: ORCHESTRATOR_BASE_URL,
       // APML v9.0 Service Mesh URLs
       PHASE1_TRANSLATION_URL: `http://localhost:${BASE_PORT + 1}`,  // 3457 - Translation
       PHASE1_LEGO_URL: `http://localhost:${BASE_PORT + 2}`,         // 3458 - LEGO Extraction (+ conflict resolution)

@@ -40,9 +40,10 @@ function clip({ course, text, language = 'eng', voice = CHARLOTTE, role = 'known
 
 /** The door with the provider stubbed: returns { svc, paid } where paid lists every provider call. */
 let restoreFetch = null
-function door(rows, castRows = []) {
+function door(rows, castRows = null) {
   clipLib.useClipLibrary(clipLib.memoryClipLibrary(rows, (row) => Buffer.from(`bytes-of-${row.id}`)))
-  castGate.useCastRows(castRows)
+  // A staged cast is Tom's cast (cast gate v2 counts only Tom-authored, non-draft rows).
+  castGate.useCastRows(castRows && castRows.map(r => ({ assigned_by: 'thomas.cassidy+ssi@gmail.com', ...r })))
   const nodeFetch = require('node-fetch')
   const mod = require.cache[require.resolve('node-fetch')]
   const original = mod.exports
@@ -178,10 +179,21 @@ describe('ruling: a voice change never re-renders existing audio (Tom, 2026-09-2
     expect(paid).toHaveLength(1)
   })
 
-  it('a language with no cast rows is not gated (the stored-config leg, unchanged)', async () => {
+  // Tom 2026-10-10 (r-2026-10-10-no-clip-is-rendered-in-any): until then a language
+  // with no cast rows was ungated, which is how eng_for_sin / eng_for_urd got 669
+  // Azure known clips under job #355. Now: no Cartesia cast, no render, any provider.
+  it('a language with no Cartesia cast renders nothing (was: ungated)', async () => {
     const { svc, paid } = door([], [{ language: 'eng', voice_id: `cartesia_${CHARLOTTE}` }])
-    await svc.speak('नमस्ते', 'cartesia', cfg(KRITI, 'hi-IN'))
-    expect(paid).toHaveLength(1)
+    await expect(svc.speak('नमस्ते', 'cartesia', cfg(KRITI, 'hi-IN'))).rejects.toMatchObject({ code: 'VOICE_NOT_CAST', reason: 'uncast' })
+    expect(paid).toHaveLength(0)
+  })
+
+  it('a language with no Cartesia cast still answers from the library (existing clips are never gated)', async () => {
+    const rows = [clip({ course: 'eng_for_hin', text: 'नमस्ते', language: 'hin', voice: KRITI })]
+    const { svc, paid } = door(rows, [{ language: 'eng', voice_id: `cartesia_${CHARLOTTE}` }])
+    const out = await svc.speak('नमस्ते', 'cartesia', cfg(KRITI, 'hi-IN'))
+    expect(out.existingClip.id).toBe(rows[0].id)
+    expect(paid).toHaveLength(0)
   })
 })
 
@@ -232,7 +244,7 @@ describe('what the door refuses to hand back', () => {
   it('never the clip a regenerate is replacing', async () => {
     const bad = clip({ course: 'eng_for_hin', text: 'a bad take' })
     const { svc, paid } = door([bad])
-    await svc.speak('a bad take', 'cartesia', cfg(CHARLOTTE, 'en', { replacing: [bad.s3_key] }))
+    await svc.speak('a bad take', 'cartesia', cfg(CHARLOTTE, 'en', { courseCode: 'eng_for_hin', replacing: [bad.s3_key] }))
     expect(paid).toHaveLength(1)
   })
 

@@ -344,7 +344,7 @@ const getSignedAudioUrl = async (uuid: string, s3Key?: string | null): Promise<s
     // Use the signed URL endpoint
     const response = await fetch(
       `${apiBaseUrl}/api/production/${courseCode}/audio/${uuid}/url`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      { headers: {} }
     );
 
     if (!response.ok) {
@@ -368,7 +368,7 @@ const fetchAudioUuid = async (apiBaseUrl: string, courseCode: string, text: stri
   try {
     const response = await fetch(
       `${apiBaseUrl}/api/production/${courseCode}/audio/by-text?text=${encodeURIComponent(text)}&role=${role}`,
-      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+      { headers: {} }
     );
     if (!response.ok) return null;
     const data = await response.json();

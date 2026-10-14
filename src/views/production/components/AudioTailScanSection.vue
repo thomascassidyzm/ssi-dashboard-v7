@@ -332,7 +332,7 @@ const CATEGORIES = [
 const OUTLIER_RATE = 0.15
 const POLL_MS = 2000
 
-const HEADERS = { 'ngrok-skip-browser-warning': 'true' }
+const HEADERS = {}
 const api = () => getApiUrl()
 
 const maxSeed = ref('')

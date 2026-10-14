@@ -219,7 +219,7 @@ const props = defineProps<{
 
 const { getCourseName, getLanguageName } = useCourses()
 const apiBaseUrl = getApiUrl()
-const HEADERS = { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+const HEADERS = { 'Content-Type': 'application/json' }
 
 const measuring = ref(false)
 const coverage = ref<any>(null)

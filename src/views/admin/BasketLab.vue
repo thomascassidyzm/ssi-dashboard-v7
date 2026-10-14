@@ -79,7 +79,7 @@ const entered = ref(false)
 const ticket = ref(null)
 async function mintTicket () {
   const r = await fetch(`${apiBase.value}/api/basket-lab-ticket`, {
-    method: 'POST', headers: { 'ngrok-skip-browser-warning': 'true' }
+    method: 'POST', headers: {}
   })
   if (!r.ok) throw new Error(`ticket ${r.status}`)
   return (await r.json()).ticket
@@ -101,7 +101,7 @@ onMounted(async () => {
     // /lab/courses is the lab's own cheapest read — it answers only if the
     // production API is running code that has this mount in it.
     const r = await fetch(`${apiBase.value}/api/basket-lab/lab/courses`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     reachable.value = r.ok
     if (r.ok) ticket.value = await mintTicket()

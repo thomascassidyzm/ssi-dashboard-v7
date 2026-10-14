@@ -1,6 +1,6 @@
 /**
  * Commissioned jobs pass; only runaways stop (job #661, Tom 2026-10-04).
- * A render whose job text names a LIVE surface job skips the 3-sends repeat limit and the
+ * A render whose job text names a LIVE surface job skips the 5-sends repeat limit and the
  * automatic soft caps; it still meets a 10-send loop stop and the 1,000,000 hard ceiling.
  * Run: npx vitest run services/shared/tts-spend-commissioned.test.cjs
  */
@@ -28,16 +28,16 @@ function setup(liveJobs = [656]) {
 }
 
 describe('commissioned jobs', () => {
-  it('a live job is not stopped by the 3-sends repeat limit, but a 10-send loop is', async () => {
+  it('a live job is not stopped by the 5-sends repeat limit, but a 10-send loop is', async () => {
     const { call } = setup()
     for (let i = 0; i < COMMISSIONED_REPEAT_MAX; i++) await call('same words', '#656·I')
     await expect(call('same words', '#656·I')).rejects.toMatchObject({ code: 'REPEAT' })
   })
-  it('an unattributed render, and a number that is not live, keep the 3-sends limit', async () => {
+  it('an unattributed render, and a number that is not live, keep the 5-sends limit', async () => {
     const { call } = setup()
-    for (let i = 0; i < 3; i++) await call('words a', null)
+    for (let i = 0; i < 5; i++) await call('words a', null)
     await expect(call('words a', null)).rejects.toMatchObject({ code: 'REPEAT' })
-    for (let i = 0; i < 3; i++) await call('words b', '#999')
+    for (let i = 0; i < 5; i++) await call('words b', '#999')
     await expect(call('words b', '#999')).rejects.toMatchObject({ code: 'REPEAT' })
   })
   it('skips the automatic 260k total cap but not the 1M ceiling', async () => {
@@ -84,6 +84,12 @@ describe('surfaceCommissionChecker', () => {
     expect(await c('#659')).toBe(false)
     expect(await c('#6560')).toBe(false)
     expect(await c('no number')).toBe(false)
+  })
+  it('asks the surface for running jobs only (the unfiltered list is ~12.8MB every 15s)', async () => {
+    const urls = []
+    const c = surfaceCommissionChecker({ now: () => 1, fetchImpl: async (u) => { urls.push(u); return { ok: true, json: async () => ({ jobs: [{ job: 656, status: 'running' }] }) } } })
+    expect(await c('#656')).toBe(true)
+    expect(urls).toEqual(['http://localhost:4317/api/jobs?owner=all&status=running'])
   })
   it('an unreachable or erroring surface means unattributed limits', async () => {
     expect(await mk([], false)('#656')).toBe(false)

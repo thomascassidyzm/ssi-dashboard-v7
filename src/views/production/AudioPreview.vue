@@ -357,7 +357,7 @@ const filterTotal = computed(() => {
 const roleParam = computed(() => role.value === 'all' ? '' : `&role=${encodeURIComponent(role.value)}`)
 
 function apiHeaders () {
-  return { 'ngrok-skip-browser-warning': 'true' }
+  return {}
 }
 
 function registerClip (el, i) {

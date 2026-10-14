@@ -66,9 +66,9 @@ const JUDGE_MODEL = 'sonnet'
 
 // ─── Words ────────────────────────────────────────────────────────────────
 
-/** Mirrors the DB's normalize_text(): trim, lower, strip terminal punctuation. Whitespace runs collapse too. */
+/** Mirrors the DB's normalize_text() (a trailing ? is kept — Tom 2026-10-13). Whitespace runs collapse too. */
 function normaliseWords(t) {
-  return String(t == null ? '' : t).trim().toLowerCase().replace(/\s+/g, ' ').replace(/[.?!¿¡。？！]+$/, '')
+  return normalizeForAudio(String(t == null ? '' : t))
 }
 function sameWords(a, b) { return normaliseWords(a) === normaliseWords(b) }
 

@@ -3,7 +3,7 @@
     <h2 class="section-title">Backend recovery</h2>
     <p class="section-blurb">
       What to do when popty.app's <strong>backend</strong> goes down (the site
-      itself is on Vercel and stays up; the SSi Machine behind the ngrok tunnel
+      itself is on Vercel and stays up; the SSi Machine behind the Tailscale Funnel
       is what fails). This page is served from Vercel, so it stays reachable
       <em>during</em> an outage — keep the steps here, not on the machine. Live
       health re-checks every 30s.
@@ -39,7 +39,7 @@
         <CopyLine :text="`ssh tomcassidy@toms-air`" />
         <p class="step-note">enter your Mac login password, then:</p>
         <CopyLine :text="`pm2 restart all`" />
-        <p class="step-note">Wait ~10s and re-check above. This restarts the app <em>and</em> the ngrok tunnel.</p>
+        <p class="step-note">Wait ~10s and re-check above. This restarts the app.</p>
       </li>
 
       <li>
@@ -48,7 +48,7 @@
         <CopyLine :text="`curl -s -o /dev/null -w &quot;%{http_code}\\n&quot; http://localhost:3470/health`" />
         <CopyLine :text="`pm2 logs production-api --err --lines 30`" />
         <ul class="branch">
-          <li><strong>/health = 200</strong> but site still down → it's the tunnel: <code>pm2 restart ngrok</code></li>
+          <li><strong>/health = 200</strong> but site still down → it's the tunnel: check Tailscale Funnel with <code>tailscale funnel status</code></li>
           <li><strong>/health ≠ 200</strong> → it's the app: <code>pm2 restart production-api</code> (the watchdog also auto-fixes app crashes within ~3 min)</li>
         </ul>
       </li>
@@ -121,7 +121,7 @@ async function checkHealth() {
       method: 'GET',
       cache: 'no-store',
       signal: ctrl.signal,
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     health.value = r.ok ? 'up' : 'down'
     if (!r.ok) lastError.value = `HTTP ${r.status}`

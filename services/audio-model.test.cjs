@@ -44,7 +44,7 @@ let restoreFetch = null
 function door(rows, { index = indexOf(rows), courses = [] } = {}) {
   const lib = clipLib.indexedMemoryClipLibrary({ index, rows, courses }, r => Buffer.from(`bytes-of-${r.id}`))
   clipLib.useClipLibrary(lib)
-  castGate.useCastRows([])
+  castGate.useCastRows(null)  // the cast gate is not what this file tests
   const nodeFetch = require('node-fetch')
   const mod = require.cache[require.resolve('node-fetch')]
   const original = mod.exports

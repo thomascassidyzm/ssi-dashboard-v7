@@ -13,6 +13,7 @@
 
 const fetch = require('node-fetch');
 const { wordTimingsFromCartesia } = require('./shared/word-timings.cjs');
+const { stripSynthesisCues } = require('./shared/synthesis-cues.cjs');
 const https = require('https');
 const fs = require('fs');
 const os = require('os');
@@ -28,6 +29,8 @@ const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint, applyElisionSpaceHint } = require('./azure-tts-service.cjs');
 const { identityFromConfig, lookupForRender, clipLibrary } = require('./shared/clip-library.cjs');
 const { assertCastVoice } = require('./shared/voice-cast-gate.cjs');
+const { assertRenderAllowed } = require('./shared/voicing-policy.cjs');
+const { assertMayRerecord } = require('./shared/rerecord-gate.cjs');
 const { spendGuard } = require('./shared/tts-spend-guard.cjs');
 
 // Shared keep-alive agent for REST TTS providers (xAI, ElevenLabs). Without it
@@ -50,22 +53,6 @@ const ttsKeepAliveAgent = new https.Agent({
 // kernel-panicked (watchdogd starvation, 3 panics, each mid-guj). AbortSignal
 // actually tears the request down and frees the socket and buffers.
 const TTS_FETCH_TIMEOUT_MS = Number(process.env.TTS_FETCH_TIMEOUT_MS || 90_000);
-
-// Bounded xAI concurrency: phase8 fans out at up to 20 clips, which xAI's
-// /v1/tts answers by queueing until requests blow the timeout (the guj passes
-// ran at ~50%+ "Timed out after 120s"). A few at a time keeps each request
-// inside the timeout instead of timing out en masse and re-stampeding.
-const XAI_MAX_CONCURRENT = Number(process.env.XAI_TTS_CONCURRENCY || 4);
-let xaiActive = 0;
-const xaiQueue = [];
-function xaiSlotAcquire() {
-  if (xaiActive < XAI_MAX_CONCURRENT) { xaiActive++; return Promise.resolve(); }
-  return new Promise(resolve => xaiQueue.push(resolve));
-}
-function xaiRelease() {
-  const next = xaiQueue.shift();
-  if (next) next(); else xaiActive--;
-}
 
 // ---- Empty-response gate ---------------------------------------------------
 // The 2026-08-03 French batch wrote 567 target2 + ~75 known clips that are
@@ -113,82 +100,42 @@ function assertAudibleResponse(buffer, { provider, bytesPerSecond, text, voiceId
   const bytes = buffer ? buffer.length : 0;
   const floorBytes = Math.round((TTS_MIN_AUDIO_MS / 1000) * bytesPerSecond);
   if (bytes >= floorBytes) return;
-  throw new Error(
+  // Job #174: '[progressive]' (a label, not words) came back as ~45 bytes of
+  // silence three times running, each attempt billed. Silence for THESE words in
+  // THIS voice is a fact about the words, so it is NOT retriable (the "(503)"
+  // marker stays for the message; the flag is what isRetriableTtsError reads).
+  const err = new Error(
     `TTS empty-response gate (503): ${provider} returned ${bytes} bytes, ` +
     `below the ${floorBytes}-byte floor (${TTS_MIN_AUDIO_MS} ms at ${bytesPerSecond} B/s) ` +
     `for voice=${voiceId || '?'} text="${String(text || '').slice(0, 40)}" — ` +
     `provider returned silence, not a render`
   );
-}
-
-// ---- xAI adaptive pacing ---------------------------------------------------
-// The concurrency cap above bounds INSTANTANEOUS load. The 08-03 signature was
-// different: degradation climbing with SUSTAINED run length and recovering when
-// the run tailed off. A concurrency cap alone cannot see that, so we watch the
-// gate's own failure rate and slow down exactly when the provider is misbehaving
-// — free on a healthy run, and the only signal we have, since we cannot see
-// xAI's side.
-//
-// We stay on xAI deliberately (Tom 2026-08-04: the cost and the voices are worth
-// it). The job of this code is to make xAI's bad minutes survivable, NEVER to
-// route around xAI.
-const XAI_STUB_WINDOW = Number(process.env.XAI_STUB_WINDOW || 50);
-const XAI_STUB_RATE_LIMIT = Number(process.env.XAI_STUB_RATE_LIMIT || 0.04);
-const XAI_COOLDOWN_MS = Number(process.env.XAI_COOLDOWN_MS || 60_000);
-const XAI_MIN_GAP_MS = Number(process.env.XAI_MIN_GAP_MS || 0);
-
-const xaiOutcomes = [];          // rolling window of booleans: true = audible
-let xaiCooldownUntil = 0;
-let xaiNextSlotAt = 0;
-const xaiHealth = { requests: 0, stubs: 0, cooldowns: 0 };
-
-/** Record one xAI response outcome and trip a cooldown if the stub rate spikes. */
-function recordXaiOutcome(audible) {
-  xaiHealth.requests++;
-  if (!audible) xaiHealth.stubs++;
-  xaiOutcomes.push(!!audible);
-  if (xaiOutcomes.length > XAI_STUB_WINDOW) xaiOutcomes.shift();
-  if (xaiOutcomes.length < XAI_STUB_WINDOW) return;
-
-  const stubs = xaiOutcomes.filter(ok => !ok).length;
-  const rate = stubs / xaiOutcomes.length;
-  if (rate < XAI_STUB_RATE_LIMIT || Date.now() < xaiCooldownUntil) return;
-
-  xaiCooldownUntil = Date.now() + XAI_COOLDOWN_MS;
-  xaiHealth.cooldowns++;
-  // Clear the window so the same spike can't re-trip the cooldown immediately —
-  // the next window is measured on post-cooldown behaviour.
-  xaiOutcomes.length = 0;
-  console.warn(
-    `[xAI TTS] stub rate ${(rate * 100).toFixed(1)}% over the last ${XAI_STUB_WINDOW} responses ` +
-    `— provider is degrading. Pausing xAI renders for ${Math.round(XAI_COOLDOWN_MS / 1000)}s.`
-  );
-}
-
-/** Health counters for a batch report. */
-function getXaiHealth() {
-  return { ...xaiHealth, stubRate: xaiHealth.requests ? xaiHealth.stubs / xaiHealth.requests : 0 };
+  err.silentResponse = true;
+  throw err;
 }
 
 /**
- * Acquire an xAI request slot, honouring the concurrency cap, the optional
- * inter-request gap, and any active degradation cooldown.
- *
- * The waits happen while HOLDING the slot, which is the point: during a cooldown
- * every slot sleeps, so the whole run pauses rather than queueing more load onto
- * a provider that is already failing.
+ * TTS only ever speaks EXAMPLES (Tom, r-2026-10-11-text-sent-to-tts-is-only:
+ * "We should never have explanations in the text sent to the TTS. We only EVER
+ * have examples."). A bracket or brace is how a label/tag/marker ("[progressive]",
+ * "{masc}") is written, and text with no letter or digit in it is nothing a voice
+ * can say. Either is a DATA error in the row, not a render problem: refused here,
+ * before the library lookup, the ledger and the provider, so it costs nothing and
+ * is never retried. The "(422)" marker makes isRetriableTtsError treat it as a
+ * client error; `code` lets a caller record it against the row.
  */
-async function xaiAcquire() {
-  await xaiSlotAcquire();
-  for (;;) {
-    const now = Date.now();
-    const waitUntil = Math.max(xaiCooldownUntil, XAI_MIN_GAP_MS ? xaiNextSlotAt : 0);
-    if (waitUntil <= now) {
-      if (XAI_MIN_GAP_MS) xaiNextSlotAt = now + XAI_MIN_GAP_MS;
-      return;
-    }
-    await new Promise(resolve => setTimeout(resolve, waitUntil - now));
-  }
+function assertSpeakableExample(text) {
+  // The curated cues ([pause], [break], <break/>) are stage directions, not labels.
+  const t = stripSynthesisCues(text);
+  const label = /[\[\]{}]/.test(t);
+  const markerOnly = !/[\p{L}\p{N}]/u.test(t);
+  if (!label && !markerOnly) return;
+  const err = new Error(
+    `TTS not-an-example (422): ${label ? 'contains a bracket/brace label' : 'has no speakable words'} — ` +
+    `text="${t.slice(0, 40)}" — TTS only ever speaks examples; fix the row's text`
+  );
+  err.code = 'NOT_SPEAKABLE';
+  throw err;
 }
 
 // Child voices are NEVER allowed (Tom 2026-07-24: no kids' voices, ever — a
@@ -511,104 +458,6 @@ async function generateAzure(text, config) {
 }
 
 /**
- * Generate speech using xAI TTS
- * @param {string} text - Text to synthesize (may include expressive markup like [laugh], <whisper>)
- * @param {object} config - xAI configuration
- * @param {string} config.apiKey - xAI API key
- * @param {string} config.voiceId - Preset voice id ('eve' | 'ara' | 'leo' | 'rex' | 'sal', case-insensitive) OR a custom cloned voice_id (e.g. Tom's clones 'gfzdpspr5fdp', 'bedd6226') — xAI accepts both, this is not a fixed enum
- * @param {string} config.language - BCP-47 language code (e.g., 'es', 'en', 'pt-BR', 'ar-EG', 'auto')
- * @param {number} config.speed - Speech speed multiplier (applied client-side via SSML-like wrapping if supported)
- * @param {string} config.codec - Output codec: 'mp3' (default) | 'wav' | 'pcm' | 'mulaw' | 'alaw'
- * @param {number} config.sampleRate - Sample rate in Hz (default: 24000)
- * @param {number} config.bitRate - Bit rate in bps (default: 128000)
- * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data. Word boundaries are null — xAI does not provide them.
- */
-async function generateXai(text, config) {
-  const {
-    apiKey,
-    voiceId = 'eve',
-    codec = 'mp3',
-    sampleRate = 24000,
-    bitRate = 128000
-  } = config;
-
-  if (!apiKey) {
-    throw new Error('xAI API key is required');
-  }
-
-  if (text.length > 15000) {
-    throw new Error(`xAI TTS REST request limited to 15000 characters; got ${text.length}. Use streaming endpoint for longer content.`);
-  }
-
-  // A MISSING language is a HARD FAIL, never a warn. The multilingual voices are
-  // English-dominant and unsteered they read cross-language words with English
-  // phonology ('come stai' → English 'come'; ita pilot 2026-07-10), so a render
-  // that forgot to say which language it wanted is a defect, not a default. It
-  // used to default to 'auto' and log a warning nobody read — which is how a
-  // silently-wrong clip could reach a learner.
-  //
-  // An EXPLICIT 'auto' is still allowed: it is deliberate, Tom-validated tuning
-  // for pod explainers (tools/pod-voice-coverage.cjs resolveExplainerLanguage,
-  // 2026-06-07), where the cue is chosen, not forgotten. Warned, not failed.
-  if (!config.language) {
-    throw new Error(`xAI TTS requires an explicit BCP-47 language (voice ${voiceId}, text: "${String(text).slice(0, 40)}") — pass 'auto' deliberately if that is really what you want`);
-  }
-  const language = config.language;
-  if (language === 'auto') {
-    console.warn(`[xAI TTS] explicit language='auto' for voice ${voiceId} — English phonology is possible on cross-language text (text: "${String(text).slice(0, 40)}")`);
-  }
-
-  // Note: xAI currently does not document a speed parameter on the /v1/tts endpoint.
-  // Speed control is handled downstream via audio-processing (masterAudio stage).
-  // Expressive markup ([laugh], [sigh], <whisper>, <emphasis>) passes through text as-is.
-
-  const body = {
-    text,
-    voice_id: voiceId,
-    language,
-    output_format: {
-      codec,
-      sample_rate: sampleRate,
-      bit_rate: bitRate
-    }
-  };
-
-  await xaiAcquire();
-  try {
-    const response = await fetch('https://api.x.ai/v1/tts', {
-      method: 'POST',
-      agent: ttsKeepAliveAgent,
-      signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`xAI TTS API error (${response.status}): ${errorText}`);
-    }
-
-    const arrayBuffer = await response.arrayBuffer();
-    const audioBuffer = Buffer.from(arrayBuffer);
-    // Bit rate is ours to set (default 128 kbps), so the floor tracks it rather
-    // than assuming a constant.
-    const bytesPerSecond = Math.max(1, Math.round(bitRate / 8));
-    const audible = audioBuffer.length >= Math.round((TTS_MIN_AUDIO_MS / 1000) * bytesPerSecond);
-    recordXaiOutcome(audible);
-    assertAudibleResponse(audioBuffer, {
-      provider: 'xai', bytesPerSecond, text, voiceId,
-    });
-    return { audioBuffer, wordBoundaries: null };
-  } finally {
-    xaiRelease();
-  }
-}
-
-
-/**
  * Cartesia's default speed. Pinned, not left unset, and that is a measurement
  * rather than a preference: Cartesia carries no seed parameter and wanders
  * take-to-take on short text — median spread ~26% silence-trimmed, worst case
@@ -871,7 +720,8 @@ async function renderOnce(text, provider, config) {
       return await generateAzure(text, config);
 
     case 'xai':
-      return await generateXai(text, config);
+      // xAI voice generation is BANNED (Tom 2026-10-10). No renderer exists.
+      throw new Error('xAI TTS is banned (403): voice generation through xAI was removed 2026-10-10 (Tom). Existing xai_ clips still play; none is re-rendered.');
 
     case 'cartesia':
       return await generateCartesia(text, config);
@@ -897,6 +747,7 @@ async function renderOnce(text, provider, config) {
  * @returns {boolean} True if the failure looks transient and retriable
  */
 function isRetriableTtsError(error) {
+  if (error && (error.silentResponse || error.code === 'NOT_SPEAKABLE')) return false;
   const msg = (error && error.message) ? error.message : String(error);
 
   // Provider error strings embed the HTTP status as "(NNN)". A 4xx is a real
@@ -1065,6 +916,8 @@ async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = 
       courseCode: door.courseCode || config.courseCode || null, job: door.job || null,
       // Proof that speak() asked the clip library and it had no clip (job #677).
       ticket,
+      // A native speed is a different recording: the repeat limit counts it apart (trial renders, job #751).
+      speed: config.speed,
     });
     doorStats.providerCalls++;
     doorStats.providerChars += String(text).length;
@@ -1142,7 +995,14 @@ async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = 
  *                       own clip answers (Tom, 2026-08-07, intros rendered fresh).
  *                       There is no `role`: a clip is language + words + voice,
  *                       and known/target are never told apart (Tom, 2026-09-26 21:45Z);
- *   replacing         — s3 keys / ids a regenerate is replacing; never handed back;
+ *   replacing         — s3 keys / ids a regenerate is replacing; never handed back.
+ *                       Replacing a working clip of the same words is a RE-RECORD and
+ *                       needs Tom's permission (services/shared/rerecord-gate.cjs);
+ *   slotRole          — (with voiceBound) the course role being filled: the same words
+ *                       already in that role in another voice make this a re-voice,
+ *                       i.e. a re-record (/api/audio/render passes it);
+ *   forceRerecord     — the caller is re-recording a named clip whatever the words
+ *                       (a spoken-text pronunciation fix);
  *   language          — the language, when the provider config cannot say it;
  *   voiceBound        — answer only with a clip in THIS voice (pods: a
  *                       conversation's speakers are told apart by voice);
@@ -1156,6 +1016,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
   if (!text || String(text).trim() === '') {
     throw new Error('Text cannot be empty');
   }
+  assertSpeakableExample(text);
   await assertMayRender(provider, config);
 
   const door = config.door || {};
@@ -1167,7 +1028,9 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     throw new Error(`TTS door: cannot name this clip (${!language ? 'language' : 'voice id'} unknown; ${provider} ${config.voiceId || config.voiceName || '?'}, text: "${String(text).slice(0, 40)}") — a line the door cannot look up is never rendered. Pass config.door.language.`);
   }
 
-  const lib = clipLibrary();
+  // door.skipLibrary (trial render at a non-1.0 native speed, job #751): same words, different recording — the library cannot answer it.
+  // The lookup still runs (the spend guard demands its ticket) but against an empty library, so it can only miss.
+  const lib = door.skipLibrary ? require('./shared/clip-library.cjs').memoryClipLibrary([]) : clipLibrary();
   const { clip: existing, ticket } = await lookupForRender({
     text,
     language,
@@ -1190,7 +1053,26 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
       charsSpent: 0,
     };
   }
-  await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null });
+  // The intro SLOT (door.intro) is judged against the course's presentation voices, every other line against its lines (cast gate leg b).
+  // The voicing policy (services/shared/voicing-policy.cjs): xAI banned, the voice is resolveVoice's (resolve-voice.cjs), Charlotte intros spliced never rendered whole.
+  // TRIAL (job #748, services/shared/audio-trial-mode.cjs): until the config expiry a trial render skips the three Tom-rule gates below
+  // (voicing policy, cast gate, rerecord gate) — it is stored apart from every course, so none of them has anything to protect. The spend
+  // guard in renderWithRetry still runs; assertMayRender above (child voices, consent, retired providers) already ran.
+  if (door.trial) {
+    require('./shared/audio-trial-mode.cjs').assertTrialOpen();
+  } else {
+  await assertRenderAllowed({ text, language, voiceId, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro, role: door.slotRole || null, audition: !!door.audition });
+  await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro });
+  // AFTER the cast gate on purpose (lane review #232): assertMayRerecord RESERVES a use of a max_clips grant, so a render the cast gate
+  // is about to refuse must never spend one. No re-recording without Tom's permission (Tom 2026-10-11): a miss that would REPLACE a working clip of
+  // these words (door.replacing / door.slotRole / door.forceRerecord) is refused here, dry run or not.
+  await assertMayRerecord({
+    text, language, voiceId,
+    courseCode: door.courseCode || config.courseCode || null,
+    replacing: door.replacing, slotRole: door.slotRole || null, voiceBound: !!door.voiceBound,
+    forceRerecord: !!door.forceRerecord, dryRun: !!door.dryRun, job: door.job || null,
+  });
+  }
   if (door.dryRun) {
     doorStats.wouldRender++;
     doorStats.wouldSpendChars += chars;
@@ -1245,6 +1127,7 @@ function getVoiceForRole(role, voiceMapping) {
 }
 
 module.exports = {
+  assertSpeakableExample,
   isKnownSideOfHumanVoiceCourse,
   assertConsentedVoice,
   // THE DOOR, and its two old names. The per-provider render functions are
@@ -1270,8 +1153,6 @@ module.exports = {
   PHONO_SAMPLE_EVERY,
   // empty-response gate + xAI pacing internals, exported for tests/tools
   assertAudibleResponse,
-  recordXaiOutcome,
-  getXaiHealth,
   TTS_MIN_AUDIO_MS,
   CHILD_VOICE_IDS,
   assertNotHumanVoiceCourse

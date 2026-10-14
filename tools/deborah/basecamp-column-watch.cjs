@@ -538,9 +538,9 @@ function updateProgressLedger(newProgress) {
  *   CS_CRON_USER=kai CS_SESSION_FILE=/home/tomcassidy/.cs-cron-session-kai \
  *     node /home/tomcassidy/command-surface/ops/cs-cron-session.js
  */
-async function publishToShelf(markdown, summary, fallbackUrl) {
+async function publishToShelf(markdown, findings, fallbackUrl) {
   const surface = process.env.CS_SURFACE || 'http://localhost:4317';
-  const out = { published: false, carded: false };
+  const out = { published: false, posted: false };
 
   // A doc is filed under the AUTHENTICATED CALLER's user id, and an unattended cron
   // process on this box carries no identity, so it resolves to Tom. Publishing the
@@ -571,22 +571,40 @@ async function publishToShelf(markdown, summary, fallbackUrl) {
     } catch (e) { out.why = `publish-doc failed: ${e.message}`; }
   }
 
-  // The card is what actually causes work — a file written into the repo is inert until
-  // somebody happens to read it, which is precisely how the eight findings went unread.
-  // "needs":"kai" addresses it to Kai's board whichever identity the run carries.
-  try {
-    const r = await fetch(`${surface}/api/needs-you`, {
-      method: 'POST', headers, signal: AbortSignal.timeout(20000),
-      // A card with nowhere to tap is a card nobody acts on. Prefer the published
-      // digest; failing that, link her actual Basecamp card — Kai has Basecamp on his
-      // phone, so that is a real destination rather than a repo path he cannot open.
-      body: JSON.stringify({ text: summary, needs: 'kai', ...((out.url || fallbackUrl) ? { url: out.url || fallbackUrl } : {}) }),
-    });
-    out.carded = r.ok;
-    if (!r.ok) out.cardWhy = `needs-you ${r.status}: ${(await r.text()).slice(0, 200)}`;
-  } catch (e) { out.cardWhy = `needs-you failed: ${e.message}`; }
-
+  // Kai ruled (2026-10-14) that findings arrive as a message in his Watson conversation,
+  // not as a needs-you card. The post is ONE small function so a named-sender door can
+  // replace it later without touching anything else.
+  const text = buildWatsonMessage(findings, out.url || fallbackUrl);
+  if (DRY_RUN) { out.wouldSend = text; return out; }
+  Object.assign(out, await postToWatson(text, headers, surface));
   return out;
+}
+
+// ── The Watson post ──────────────────────────────────────────────────────────
+const WATSON_JOB_ID = process.env.DEBORAH_WATCH_WATSON_JOB || '81891a84-9a75-4abb-b20d-0967b6cfc97b';
+const WATSON_FIRST_LINE = '[Automated Deborah review-column check — not typed by Kai]';
+
+/** Mechanical on purpose: header line, her NEW findings verbatim, digest link. No prose of ours. */
+function buildWatsonMessage(findings, url) {
+  const L = [WATSON_FIRST_LINE, ''];
+  for (const f of findings) {
+    const ref = [f.seed != null ? `S${f.seed}` : null, f.round != null ? `R${f.round}` : null].filter(Boolean).join(' ') || '—';
+    L.push(`- ${f.course_code || f.card_title} | ${ref} | ${f.note || f.verbatim}`);
+  }
+  if (url) L.push('', url);
+  return L.join('\n');
+}
+
+/** The swap point if Watson ships a named-sender door. Needs Kai's session cookie in headers. */
+async function postToWatson(text, headers, surface) {
+  if (!headers.Cookie) return { posted: false, postWhy: 'no Kai session cookie (DEBORAH_WATCH_SESSION) — nothing posted; the repo queue file still exists' };
+  try {
+    const r = await fetch(`${surface}/api/reply`, {
+      method: 'POST', headers, signal: AbortSignal.timeout(20000),
+      body: JSON.stringify({ jobId: WATSON_JOB_ID, text }),
+    });
+    return r.ok ? { posted: true } : { posted: false, postWhy: `reply ${r.status}: ${(await r.text()).slice(0, 200)}` };
+  } catch (e) { return { posted: false, postWhy: `reply failed: ${e.message}` }; }
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
@@ -604,6 +622,8 @@ async function publishToShelf(markdown, summary, fallbackUrl) {
 
   if (DRY_RUN) {
     process.stderr.write('\n[dry-run] nothing written; state not advanced\n');
+    if (d.newFindings.length) process.stderr.write(`[dry-run] message that would be posted to Watson ${WATSON_JOB_ID}:\n${buildWatsonMessage(d.newFindings, '<digest url>')}\n`);
+    else process.stderr.write('[dry-run] no new findings — nothing would be posted\n');
     return;
   }
 
@@ -619,17 +639,13 @@ async function publishToShelf(markdown, summary, fallbackUrl) {
   }
 
   if (d.newFindings.length || d.newProgress.length) {
-    const courses = [...new Set(d.newFindings.map((f) => f.course_code || f.card_title))];
-    const summary = `Deborah's review column: ${d.newFindings.length} new finding(s) across ${courses.length} course(s)`
-      + `${courses.length ? ' — ' + courses.join(', ') : ''}`
-      + `${d.newProgress.length ? `; ${d.newProgress.length} progress marker(s)` : ''}.`;
     if (NO_NOTIFY) {
-      process.stderr.write('[no-notify] surface publish and card suppressed by flag\n');
-    } else {
-      const firstCard = report.cards.find((c) => c.card_id === (d.newFindings[0] || {}).card_id);
-      const pub = await publishToShelf(markdown, summary.slice(0, 300), firstCard && firstCard.url);
+      process.stderr.write('[no-notify] surface publish and Watson post suppressed by flag\n');
+    } else if (d.newFindings.length) {
+      const firstCard = report.cards.find((c) => c.card_id === d.newFindings[0].card_id);
+      const pub = await publishToShelf(markdown, d.newFindings, firstCard && firstCard.url);
       process.stderr.write(pub.published ? `[published] ${pub.url}\n` : `[not published] ${pub.why}\n`);
-      process.stderr.write(pub.carded ? '[carded] posted to Kai\'s board\n' : `[no card] ${pub.cardWhy || 'unknown'}\n`);
+      process.stderr.write(pub.posted ? '[posted] message sent to Kai\'s Watson\n' : `[not posted] ${pub.postWhy || 'unknown'}\n`);
     }
   } else {
     process.stderr.write('[quiet] nothing new — nothing published\n');

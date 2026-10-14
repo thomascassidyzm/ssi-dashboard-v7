@@ -116,12 +116,12 @@ describe('base cap and hard ceiling match the DB', () => {
     expect(TOTAL_DAILY_CAP_CHARS).toBe(1000000)
     expect(sql).toMatch(/greatest\(1000000, v_raised\)/)
   })
-  it('is 2000000, the DB v_ceiling, never above it', async () => {
+  it('is 3000000, the DB v_ceiling, never above it', async () => {
     const { TOTAL_DAILY_CEILING_CHARS } = await import('./tts-spend-guard.cjs')
     const fs = await import('node:fs')
-    const sql = fs.readFileSync(new URL('../../ops/sql/20261007-tts-spend-base-1m.sql', import.meta.url), 'utf8')
+    const sql = fs.readFileSync(new URL('../../ops/sql/20261012-tts-spend-ceiling-3m.sql', import.meta.url), 'utf8')
     const db = Number(/v_ceiling constant bigint := (\d+)/.exec(sql)[1])
-    expect(db).toBe(2000000)
+    expect(db).toBe(3000000)
     expect(TOTAL_DAILY_CEILING_CHARS).toBeLessThanOrEqual(db)
   })
 })

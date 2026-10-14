@@ -399,7 +399,7 @@ const bulkDone = ref(0)
 const bulkTotal = ref(0)
 
 async function authHeaders() {
-  const h = { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+  const h = { 'Content-Type': 'application/json' }
   try {
     const token = await getAccessToken?.()
     if (token) h.Authorization = `Bearer ${token}`
@@ -615,7 +615,7 @@ async function loadCourses() {
       // Fallback: API proxy
       const baseUrl = getApiUrl()
       const res = await fetch(`${baseUrl}/api/courses`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
       if (!res.ok) throw new Error(`Failed to load courses: ${res.status}`)
       const data = await res.json()
@@ -631,7 +631,7 @@ async function loadCourses() {
       async function fetchStats(code) {
         try {
           const res = await fetch(`${baseUrl}/api/courses/${code}/stats`, {
-            headers: { 'ngrok-skip-browser-warning': 'true' }
+            headers: {}
           })
           if (res.ok) {
             const { stats: courseStats } = await res.json()

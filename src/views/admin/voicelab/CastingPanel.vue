@@ -38,8 +38,12 @@ import {
 
 defineProps({ params: { type: Object, default: null } })
 
-const langs = ref([])
-const pods = ref(new Map())
+// A visit paints from the last copy this browser held (labApi.js) and revalidates
+// behind it; nothing blanks and nothing waits (Tom, 2026-10-12).
+const heldLangs = api.languagesHeld()
+const heldPods = api.podVoicesHeld()
+const langs = ref(heldLangs ? heldLangs.languages || [] : [])
+const pods = ref(new Map(((heldPods && heldPods.languages) || []).map((r) => [r.language, r])))
 const loading = ref(true)
 const refreshing = ref(false)
 const baseOf = (l) => (l && l.dialectOf ? langs.value.find((x) => x.code === l.dialectOf) || null : null)

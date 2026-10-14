@@ -528,24 +528,7 @@ function normalise (s) {
  * This changes the COMPARISON only. The clip is still rendered from the full cue
  * text — the beat is wanted — and nothing about the operating point moves.
  */
-const SYNTHESIS_CUES = [
-  /\[pause\]/gi,
-  /\[break\]/gi,
-  /<break\b[^>]*\/?>/gi,
-]
-
-/**
- * The text with the synthesiser's stage directions removed, for comparison.
- * A no-op — the same string back — for text that carries no cues, which is
- * every clip outside the pods.
- * @param {string} text
- * @returns {string}
- */
-function stripSynthesisCues (text) {
-  let out = String(text == null ? '' : text)
-  for (const re of SYNTHESIS_CUES) out = out.replace(re, ' ')
-  return out.replace(/\s+/g, ' ').trim()
-}
+const { SYNTHESIS_CUES, stripSynthesisCues } = require('./shared/synthesis-cues.cjs')
 
 /** Levenshtein distance, two-row. */
 function levenshtein (a, b) {

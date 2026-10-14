@@ -416,7 +416,7 @@ async function loadBrief() {
   try {
     const apiBase = getApiUrl()
     const res = await fetch(`${apiBase}/api/language-brief/${props.knownCode}/${props.targetCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
 
     if (res.ok) {
@@ -443,7 +443,6 @@ async function generateBrief() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         known_code: props.knownCode,
@@ -496,7 +495,6 @@ async function pasteJson() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         known_code: props.knownCode,
@@ -534,7 +532,6 @@ async function saveBrief() {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({ brief: editableBrief.value })
     })

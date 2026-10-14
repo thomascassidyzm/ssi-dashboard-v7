@@ -153,7 +153,7 @@ const groups = computed(() => buildGroups(CORPORA, {
 const { getAccessToken } = useAuth()
 async function authedFetch (path, init = {}) {
   const token = await getAccessToken()
-  const headers = { 'ngrok-skip-browser-warning': 'true', 'Content-Type': 'application/json', ...(init.headers || {}) }
+  const headers = { 'Content-Type': 'application/json', ...(init.headers || {}) }
   if (token) headers.Authorization = `Bearer ${token}`
   return fetch(`${getApiUrl()}${path}`, { ...init, headers })
 }

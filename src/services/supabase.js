@@ -144,7 +144,7 @@ async function fetchFromServer(path) {
     if (!session?.access_token) return null
     const { getApiUrl } = await import('./api.js')
     const res = await fetch(`${getApiUrl()}${path}`, {
-      headers: { Authorization: `Bearer ${session.access_token}`, 'ngrok-skip-browser-warning': 'true' }
+      headers: { Authorization: `Bearer ${session.access_token}` }
     })
     return res.ok ? await res.json() : null
   } catch {

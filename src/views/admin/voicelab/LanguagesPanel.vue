@@ -157,7 +157,7 @@ const props = defineProps({
   params: { type: Object, default: null },
 })
 
-const data = ref(null)
+const data = ref(api.languagesHeld())
 const loading = ref(true)
 const error = ref('')
 const filter = ref('all')

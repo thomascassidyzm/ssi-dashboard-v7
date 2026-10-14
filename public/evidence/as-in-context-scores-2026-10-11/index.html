@@ -1,0 +1,635 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Presentation intros: scoring the "as in" context (deu + spa, seeds 1-100)</title><style>
+body{font:15px/1.5 system-ui,sans-serif;max-width:1200px;margin:2rem auto;padding:0 1rem;color:#1d1d1f}
+h1{font-size:1.6rem} h2{font-size:1.2rem;margin-top:2.2rem} .note{color:#555;font-size:.92rem}
+.dist{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.bar-row{display:flex;align-items:center;gap:.5rem;margin:.25rem 0;font-variant-numeric:tabular-nums}
+.bar-row .lab{width:5.5rem} .bar{background:#4a6fa5;height:14px;border-radius:2px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin-top:.5rem}
+th,td{border-bottom:1px solid #e3e3e3;padding:.35rem .5rem;text-align:left;vertical-align:top}
+th{cursor:pointer;background:#f5f6f8;position:sticky;top:0;user-select:none} th:hover{background:#e9ecf2}
+td.num{text-align:center;font-variant-numeric:tabular-nums}
+.ex{margin:.4rem 0 .9rem} .ex li{margin:.15rem 0} .s{display:inline-block;min-width:1.6rem;text-align:center;font-weight:600;background:#eef;border-radius:3px;margin-right:.4rem}
+.wrap{max-height:none}
+</style></head><body>
+<h1>Presentation intros: how much does the "as in" context do?</h1>
+<p class="note">Read-only scoring of every presentation intro in deu_for_eng and spa_for_eng, seeds 1-100. Text is read from the live <code>course_audio</code> row each intro points to (<code>lego_introductions</code>). Scale: <b>5</b> = the context is needed to disambiguate X (X alone has several senses, a homograph, or a word-choice the sentence settles); <b>1</b> = X is unambiguous on its own and the context is unnecessary. 2–4 between.</p>
+<p class="note"><b>Coverage.</b> 480 intros in scope. 337 carry an "as in" context and are scored. 143 have no context to score (Frame A, bare "The X for: …"): 68 German, 75 Spanish, counting three exceptions — German S0083L01 has a long preamble, and Spanish S0062L01 and S0098L02 have empty intro text in the audio row.</p>
+<p class="note"><b>Judgement call to check.</b> Where X is ambiguous only in register or gender (du/Sie, dein/Ihr, amigo/amiga), the context sentence cannot settle it, so those score 2, not 4–5. 31 of the 80 items at score 2 are of this kind. If register should count as "needed", those rows move up.</p>
+<h2>Score distribution</h2><div class="dist">
+<div><div><b>German (deu_for_eng)</b> — 166 scored</div>
+<div class="bar-row"><span class="lab">score 5</span><span class="bar" style="width:10px"></span><span>3</span></div>
+<div class="bar-row"><span class="lab">score 4</span><span class="bar" style="width:32px"></span><span>9</span></div>
+<div class="bar-row"><span class="lab">score 3</span><span class="bar" style="width:60px"></span><span>17</span></div>
+<div class="bar-row"><span class="lab">score 2</span><span class="bar" style="width:128px"></span><span>36</span></div>
+<div class="bar-row"><span class="lab">score 1</span><span class="bar" style="width:360px"></span><span>101</span></div>
+</div>
+<div><div><b>Spanish (spa_for_eng)</b> — 171 scored</div>
+<div class="bar-row"><span class="lab">score 5</span><span class="bar" style="width:7px"></span><span>2</span></div>
+<div class="bar-row"><span class="lab">score 4</span><span class="bar" style="width:46px"></span><span>12</span></div>
+<div class="bar-row"><span class="lab">score 3</span><span class="bar" style="width:77px"></span><span>20</span></div>
+<div class="bar-row"><span class="lab">score 2</span><span class="bar" style="width:170px"></span><span>44</span></div>
+<div class="bar-row"><span class="lab">score 1</span><span class="bar" style="width:360px"></span><span>93</span></div>
+</div>
+</div>
+<h2>Examples at each score</h2><p class="note">First eight in seed order at each score, per course. Score 5 has fewer than eight in at least one course, so all are shown.</p>
+<h3>Score 5</h3>
+<div class="ex"><b>German (deu_for_eng)</b> — 3 at this score, showing 3<ul>
+<li><span class="s">5</span><b>S0047L02</b> "that" — as in "because I think that it&#x27;s a good thing to make mistakes"<br><span class="note">that&quot; = dass, das or dieser; context settles dass</span></li>
+<li><span class="s">5</span><b>S0090L01</b> "can" — as in "You can speak German if you want to practise enough"<br><span class="note">can&quot; = können (ability) or dürfen (permission); context shows können</span></li>
+<li><span class="s">5</span><b>S0094L03</b> "will" — as in "I know it will help me understand what people are saying"<br><span class="note">will&quot; = werden (future) or wollen; context shows future</span></li>
+</ul></div>
+<div class="ex"><b>Spanish (spa_for_eng)</b> — 2 at this score, showing 2<ul>
+<li><span class="s">5</span><b>S0004L01</b> "in" — as in "how to say something in Spanish"<br><span class="note">in&quot; = en, a, dentro de; context settles en</span></li>
+<li><span class="s">5</span><b>S0061L02</b> "that" — as in "could you say that again a little more slowly?"<br><span class="note">that&quot; = eso, ese or que; context settles eso</span></li>
+</ul></div>
+<h3>Score 4</h3>
+<div class="ex"><b>German (deu_for_eng)</b> — 9 at this score, showing 8<ul>
+<li><span class="s">4</span><b>S0005L02</b> "I&#x27;m going to" — as in "I&#x27;m going to practise with you"<br><span class="note">I&#x27;m going to&quot; reads as future or movement; context settles future</span></li>
+<li><span class="s">4</span><b>S0033L01</b> "long" — as in "how long do you want to try before I have to go?"<br><span class="note">long&quot; = lang (length) or lange (duration); context settles duration</span></li>
+<li><span class="s">4</span><b>S0036L02</b> "the story" — as in "I like the story, and I want to read more this afternoon"<br><span class="note">the story&quot; = Geschichte or Stockwerk; context settles Geschichte</span></li>
+<li><span class="s">4</span><b>S0037L01</b> "have" — as in "I have time this afternoon, and I want to read the story"<br><span class="note">have&quot; = haben / have to / past auxiliary; context shows possession</span></li>
+<li><span class="s">4</span><b>S0045L02</b> "to know" — as in "I don&#x27;t need to know everything"<br><span class="note">to know&quot; = wissen or kennen; context settles facts</span></li>
+<li><span class="s">4</span><b>S0052L02</b> "a letter" — as in "I want to write you a letter soon"<br><span class="note">a letter&quot; = Brief or Buchstabe; context settles Brief</span></li>
+<li><span class="s">4</span><b>S0060L01</b> "yet" — as in "one can learn German well but it is not yet easy to speak it"<br><span class="note">yet&quot; = noch (not yet) or schon/trotzdem; context settles noch</span></li>
+<li><span class="s">4</span><b>S0094L01</b> "the only way" — as in "I think it is the only way to learn German well"<br><span class="note">the only way&quot; = Weg or Art; context settles Art</span></li>
+</ul></div>
+<div class="ex"><b>Spanish (spa_for_eng)</b> — 12 at this score, showing 8<ul>
+<li><span class="s">4</span><b>S0003L01</b> "how" — as in "how to speak as frequently as possible"<br><span class="note">how&quot; = cómo or other question senses; context settles cómo</span></li>
+<li><span class="s">4</span><b>S0005L02</b> "I&#x27;m going to" — as in "I&#x27;m going to practise speaking with someone else"<br><span class="note">I&#x27;m going to&quot; reads as future or movement; context settles future</span></li>
+<li><span class="s">4</span><b>S0018L02</b> "to meet" — as in "we want to meet at six o&#x27;clock this evening"<br><span class="note">to meet&quot; = conocer or quedar/encontrarse; context settles quedar</span></li>
+<li><span class="s">4</span><b>S0033L01</b> "how long" — as in "how long have you been learning Spanish?"<br><span class="note">how long&quot; = cuánto tiempo or cuán largo; context settles time</span></li>
+<li><span class="s">4</span><b>S0036L03</b> "the story" — as in "we don&#x27;t want to interrupt the story"<br><span class="note">the story&quot; = historia or piso; context settles historia</span></li>
+<li><span class="s">4</span><b>S0044L02</b> "I need" — as in "or if I need to improve"<br><span class="note">I need&quot; = necesitar or tener que; context shows necesitar</span></li>
+<li><span class="s">4</span><b>S0045L01</b> "to know" — as in "I don&#x27;t need to know everything"<br><span class="note">to know&quot; = saber or conocer; context settles saber</span></li>
+<li><span class="s">4</span><b>S0052L02</b> "letter" — as in "he wanted to write a letter to his friend last week"<br><span class="note">letter&quot; = carta or letra; context settles carta</span></li>
+</ul></div>
+<h3>Score 3</h3>
+<div class="ex"><b>German (deu_for_eng)</b> — 17 at this score, showing 8<ul>
+<li><span class="s">3</span><b>S0010L01</b> "not" — as in "I&#x27;m not sure if I can remember the whole sentence"<br><span class="note">not&quot; = nicht / kein / nichts; sentence shows verb negation</span></li>
+<li><span class="s">3</span><b>S0010L02</b> "I can" — as in "I&#x27;m not sure if I can remember the whole sentence"<br><span class="note">I can&quot; = ability or permission (kann / darf); context shows ability</span></li>
+<li><span class="s">3</span><b>S0011L03</b> "finished" — as in "I am not finished today"<br><span class="note">finished&quot; = fertig (ready) or beendet (over); context settles it</span></li>
+<li><span class="s">3</span><b>S0013L02</b> "well" — as in "you speak German very well"<br><span class="note">well&quot; = gut or gesund/brunnen; context settles the adverb</span></li>
+<li><span class="s">3</span><b>S0018L02</b> "to meet" — as in "I would like to meet her today"<br><span class="note">to meet&quot; = treffen or kennenlernen; context picks encounter</span></li>
+<li><span class="s">3</span><b>S0019L01</b> "but" — as in "but she wants to come back"<br><span class="note">but&quot; = aber or sondern (not X but Y); context shows aber</span></li>
+<li><span class="s">3</span><b>S0019L02</b> "to stop" — as in "I don&#x27;t want to stop learning"<br><span class="note">to stop&quot; = aufhören or anhalten; context shows aufhören</span></li>
+<li><span class="s">3</span><b>S0030L02</b> "to ask" — as in "I wanted to ask more, but I don&#x27;t want to need too much time"<br><span class="note">to ask&quot; = fragen or bitten; context shows fragen</span></li>
+</ul></div>
+<div class="ex"><b>Spanish (spa_for_eng)</b> — 20 at this score, showing 8<ul>
+<li><span class="s">3</span><b>S0013L01</b> "very well" — as in "you speak Spanish very well"<br><span class="note">very well&quot; = muy bien or vale; context settles the adverb</span></li>
+<li><span class="s">3</span><b>S0019L01</b> "but" — as in "but I don&#x27;t want to stop talking"<br><span class="note">but&quot; = pero or sino; context shows pero</span></li>
+<li><span class="s">3</span><b>S0019L03</b> "to stop talking" — as in "but I don&#x27;t want to stop talking"<br><span class="note">to stop talking&quot; = parar or dejar de; context settles dejar de</span></li>
+<li><span class="s">3</span><b>S0022L03</b> "to meet people" — as in "because I want to meet people who speak Spanish"<br><span class="note">to meet people&quot; = conocer or encontrar; context adds little</span></li>
+<li><span class="s">3</span><b>S0030L02</b> "to ask" — as in "I wanted to ask you something yesterday"<br><span class="note">to ask&quot; = preguntar or pedir; context shows preguntar</span></li>
+<li><span class="s">3</span><b>S0034L02</b> "to be quiet" — as in "he doesn&#x27;t want to be quiet when other people are here"<br><span class="note">to be quiet&quot; = callarse or ser/estar tranquilo; context leaves it open</span></li>
+<li><span class="s">3</span><b>S0035L03</b> "anything" — as in "She doesn&#x27;t want to read anything this afternoon"<br><span class="note">anything&quot; = nada or cualquier cosa; context settles nada</span></li>
+<li><span class="s">3</span><b>S0049L02</b> "you know" — as in "it&#x27;s like this, if you know what I mean"<br><span class="note">you know&quot; = sabes or filler; context partly settles</span></li>
+</ul></div>
+<h3>Score 2</h3>
+<div class="ex"><b>German (deu_for_eng)</b> — 36 at this score, showing 8<ul>
+<li><span class="s">2</span><b>S0001L03</b> "German" — as in "I want to speak German"<br><span class="note">German&quot; can be the language or a person; context mildly helps</span></li>
+<li><span class="s">2</span><b>S0001L05</b> "with you" — as in "I want to speak with you"<br><span class="note">with you&quot; is register-ambiguous (dir/Ihnen); context cannot settle it</span></li>
+<li><span class="s">2</span><b>S0004L02</b> "to say" — as in "I&#x27;m trying to say something now"<br><span class="note">to say&quot; vs &quot;to tell&quot;; context weakly settles it</span></li>
+<li><span class="s">2</span><b>S0004L03</b> "in German" — as in "I want to say something in German to you"<br><span class="note">in German&quot; is almost always the language; context adds little</span></li>
+<li><span class="s">2</span><b>S0006L02</b> "to remember" — as in "I want to remember how to say something in German"<br><span class="note">to remember&quot; can mean recall or remind; context adds little</span></li>
+<li><span class="s">2</span><b>S0007L02</b> "to try" — as in "I want to try now"<br><span class="note">to try&quot; vs &quot;to taste&quot;; context does not separate them</span></li>
+<li><span class="s">2</span><b>S0009L01</b> "a little" — as in "I&#x27;m going to try to learn a little today"<br><span class="note">a little&quot; = some vs a little bit; context adds little</span></li>
+<li><span class="s">2</span><b>S0011L04</b> "you are" — as in "You are finished now"<br><span class="note">you are&quot; is register-ambiguous (du/Sie); context cannot settle it</span></li>
+</ul></div>
+<div class="ex"><b>Spanish (spa_for_eng)</b> — 44 at this score, showing 8<ul>
+<li><span class="s">2</span><b>S0001L03</b> "Spanish" — as in "I want to speak Spanish with you now"<br><span class="note">Spanish&quot; = language or person; context mildly settles</span></li>
+<li><span class="s">2</span><b>S0001L04</b> "with you" — as in "I want to speak Spanish with you now"<br><span class="note">with you&quot; is register-ambiguous (contigo/usted); context cannot settle it</span></li>
+<li><span class="s">2</span><b>S0002L01</b> "to learn" — as in "I&#x27;m trying to learn"<br><span class="note">to learn&quot; = aprender or enterarse; context adds little</span></li>
+<li><span class="s">2</span><b>S0004L03</b> "to say" — as in "how to say something in Spanish"<br><span class="note">to say&quot; = decir (vs contar); context adds little</span></li>
+<li><span class="s">2</span><b>S0006L01</b> "to remember" — as in "I&#x27;m trying to remember a word"<br><span class="note">to remember&quot; = recordar or acordarse; context adds little</span></li>
+<li><span class="s">2</span><b>S0007L01</b> "to try" — as in "I want to try as hard as I can today"<br><span class="note">to try&quot; = intentar or probar; context adds little</span></li>
+<li><span class="s">2</span><b>S0009L02</b> "a little" — as in "I speak a little Spanish now"<br><span class="note">a little&quot; = un poco or poco; context adds little</span></li>
+<li><span class="s">2</span><b>S0011L02</b> "to be able to" — as in "I&#x27;d like to be able to speak after you finish"<br><span class="note">to be able to&quot; = poder or saber; context adds little</span></li>
+</ul></div>
+<h3>Score 1</h3>
+<div class="ex"><b>German (deu_for_eng)</b> — 101 at this score, showing 8<ul>
+<li><span class="s">1</span><b>S0001L01</b> "I want" — as in "I want to speak German with you"<br><span class="note">I want&quot; has one clear sense</span></li>
+<li><span class="s">1</span><b>S0001L02</b> "to speak" — as in "I want to speak German with you now"<br><span class="note">to speak&quot; has one clear sense</span></li>
+<li><span class="s">1</span><b>S0001L04</b> "now" — as in "I want to speak German now"<br><span class="note">now&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0002L01</b> "to learn" — as in "I want to learn German with you now"<br><span class="note">to learn&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0002L03</b> "to learn German" — as in "I&#x27;m trying to learn German with you"<br><span class="note">to learn German&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0003L01</b> "as often as possible" — as in "I&#x27;m trying to learn German as often as possible"<br><span class="note">as often as possible&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0003L02</b> "how to speak" — as in "I&#x27;m trying to learn how to speak"<br><span class="note">how to speak&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0004L01</b> "something" — as in "I want to learn something with you"<br><span class="note">something&quot; is unambiguous</span></li>
+</ul></div>
+<div class="ex"><b>Spanish (spa_for_eng)</b> — 93 at this score, showing 8<ul>
+<li><span class="s">1</span><b>S0001L01</b> "I want" — as in "I want to speak Spanish with you now"<br><span class="note">I want&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0001L02</b> "to speak" — as in "I want to speak Spanish with you now"<br><span class="note">to speak&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0001L05</b> "now" — as in "I want to speak Spanish with you now"<br><span class="note">now&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0003L02</b> "frequently" — as in "how to speak as frequently as possible"<br><span class="note">frequently&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0004L02</b> "something" — as in "how to say something in Spanish"<br><span class="note">something&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0005L01</b> "to practise" — as in "I&#x27;m going to practise speaking with someone else"<br><span class="note">to practise&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0005L03</b> "speaking" — as in "I&#x27;m going to practise speaking with someone else"<br><span class="note">speaking&quot; is unambiguous</span></li>
+<li><span class="s">1</span><b>S0005L04</b> "with someone else" — as in "I&#x27;m going to practise speaking with someone else"<br><span class="note">with someone else&quot; is unambiguous</span></li>
+</ul></div>
+<h2>Full table (click a header to sort)</h2>
+<p class="note">All 480 intros. Rows with no context have an empty score and sort last.</p>
+<table id="t"><thead><tr><th data-i="0">course</th><th data-i="1">seed</th><th data-i="2">lego_id</th><th data-i="3">X</th><th data-i="4">context</th><th data-i="5">score</th><th data-i="6">reason</th></tr></thead><tbody>
+<tr><td>deu_for_eng</td><td class="num">1</td><td>S0001L01</td><td>I want</td><td>I want to speak German with you</td><td class="num">1</td><td>I want&quot; has one clear sense</td></tr>
+<tr><td>deu_for_eng</td><td class="num">1</td><td>S0001L02</td><td>to speak</td><td>I want to speak German with you now</td><td class="num">1</td><td>to speak&quot; has one clear sense</td></tr>
+<tr><td>deu_for_eng</td><td class="num">1</td><td>S0001L03</td><td>German</td><td>I want to speak German</td><td class="num">2</td><td>German&quot; can be the language or a person; context mildly helps</td></tr>
+<tr><td>deu_for_eng</td><td class="num">1</td><td>S0001L04</td><td>now</td><td>I want to speak German now</td><td class="num">1</td><td>now&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">1</td><td>S0001L05</td><td>with you</td><td>I want to speak with you</td><td class="num">2</td><td>with you&quot; is register-ambiguous (dir/Ihnen); context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">2</td><td>S0002L01</td><td>to learn</td><td>I want to learn German with you now</td><td class="num">1</td><td>to learn&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">2</td><td>S0002L02</td><td>I&#x27;m trying to</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">2</td><td>S0002L03</td><td>to learn German</td><td>I&#x27;m trying to learn German with you</td><td class="num">1</td><td>to learn German&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">3</td><td>S0003L01</td><td>as often as possible</td><td>I&#x27;m trying to learn German as often as possible</td><td class="num">1</td><td>as often as possible&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">3</td><td>S0003L02</td><td>how to speak</td><td>I&#x27;m trying to learn how to speak</td><td class="num">1</td><td>how to speak&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">3</td><td>S0003L03</td><td>how to speak as often as possible</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">4</td><td>S0004L01</td><td>something</td><td>I want to learn something with you</td><td class="num">1</td><td>something&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">4</td><td>S0004L02</td><td>to say</td><td>I&#x27;m trying to say something now</td><td class="num">2</td><td>to say&quot; vs &quot;to tell&quot;; context weakly settles it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">4</td><td>S0004L03</td><td>in German</td><td>I want to say something in German to you</td><td class="num">2</td><td>in German&quot; is almost always the language; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">4</td><td>S0004L04</td><td>how to say something in German</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">5</td><td>S0005L01</td><td>to practise</td><td>I want to practise with you</td><td class="num">1</td><td>to practise&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">5</td><td>S0005L02</td><td>I&#x27;m going to</td><td>I&#x27;m going to practise with you</td><td class="num">4</td><td>I&#x27;m going to&quot; reads as future or movement; context settles future</td></tr>
+<tr><td>deu_for_eng</td><td class="num">5</td><td>S0005L03</td><td>with someone else</td><td>I&#x27;m going to learn with someone else</td><td class="num">1</td><td>with someone else&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">5</td><td>S0005L04</td><td>to practise speaking</td><td>I&#x27;m going to practise speaking in German</td><td class="num">1</td><td>to practise speaking&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">6</td><td>S0006L01</td><td>a word</td><td>I&#x27;m trying to learn a word</td><td class="num">1</td><td>a word&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">6</td><td>S0006L02</td><td>to remember</td><td>I want to remember how to say something in German</td><td class="num">2</td><td>to remember&quot; can mean recall or remind; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">6</td><td>S0006L03</td><td>to remember a word</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">7</td><td>S0007L01</td><td>today</td><td>I&#x27;m going to say something in German today</td><td class="num">1</td><td>today&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">7</td><td>S0007L02</td><td>to try</td><td>I want to try now</td><td class="num">2</td><td>to try&quot; vs &quot;to taste&quot;; context does not separate them</td></tr>
+<tr><td>deu_for_eng</td><td class="num">7</td><td>S0007L03</td><td>as hard as I can</td><td>I&#x27;m going to try as hard as I can today</td><td class="num">1</td><td>as hard as I can&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">8</td><td>S0008L01</td><td>to explain</td><td>I&#x27;m going to try to explain something in German</td><td class="num">1</td><td>to explain&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">8</td><td>S0008L02</td><td>what I mean</td><td>I want to explain what I mean now</td><td class="num">1</td><td>what I mean&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">9</td><td>S0009L01</td><td>a little</td><td>I&#x27;m going to try to learn a little today</td><td class="num">2</td><td>a little&quot; = some vs a little bit; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">9</td><td>S0009L02</td><td>I speak</td><td>I speak German now</td><td class="num">1</td><td>I speak&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">10</td><td>S0010L01</td><td>not</td><td>I&#x27;m not sure if I can remember the whole sentence</td><td class="num">3</td><td>not&quot; = nicht / kein / nichts; sentence shows verb negation</td></tr>
+<tr><td>deu_for_eng</td><td class="num">10</td><td>S0010L02</td><td>I can</td><td>I&#x27;m not sure if I can remember the whole sentence</td><td class="num">3</td><td>I can&quot; = ability or permission (kann / darf); context shows ability</td></tr>
+<tr><td>deu_for_eng</td><td class="num">10</td><td>S0010L03</td><td>the whole sentence</td><td>I&#x27;m not sure if I can remember the whole sentence</td><td class="num">1</td><td>the whole sentence&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">10</td><td>S0010L04</td><td>whether</td><td>I&#x27;m going to say whether I can practise today</td><td class="num">1</td><td>whether&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">10</td><td>S0010L05</td><td>I&#x27;m not sure</td><td>I&#x27;m not sure if I can remember the whole sentence</td><td class="num">1</td><td>I&#x27;m not sure&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">11</td><td>S0011L01</td><td>I&#x27;d like</td><td>I&#x27;d like to be able to speak after you finish</td><td class="num">1</td><td>I&#x27;d like&quot; is unambiguous; context not needed</td></tr>
+<tr><td>deu_for_eng</td><td class="num">11</td><td>S0011L02</td><td>to be able to</td><td>I&#x27;d like to be able to speak after you finish</td><td class="num">1</td><td>to be able to&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">11</td><td>S0011L03</td><td>finished</td><td>I am not finished today</td><td class="num">3</td><td>finished&quot; = fertig (ready) or beendet (over); context settles it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">11</td><td>S0011L04</td><td>you are</td><td>You are finished now</td><td class="num">2</td><td>you are&quot; is register-ambiguous (du/Sie); context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">11</td><td>S0011L05</td><td>when you are finished</td><td>I&#x27;d like to be able to speak when you are finished</td><td class="num">1</td><td>when you are finished&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">12</td><td>S0012L01</td><td>to guess</td><td>I wouldn&#x27;t like to guess what&#x27;s going to happen tomorrow</td><td class="num">1</td><td>to guess&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">12</td><td>S0012L02</td><td>tomorrow</td><td>I wouldn&#x27;t like to guess what&#x27;s going to happen tomorrow</td><td class="num">1</td><td>tomorrow&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">12</td><td>S0012L03</td><td>happens</td><td>I&#x27;m going to guess what happens</td><td class="num">1</td><td>happens&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">12</td><td>S0012L04</td><td>what&#x27;s going to happen tomorrow</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">13</td><td>S0013L01</td><td>you speak</td><td>you speak German very well</td><td class="num">2</td><td>you speak&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">13</td><td>S0013L02</td><td>well</td><td>you speak German very well</td><td class="num">3</td><td>well&quot; = gut or gesund/brunnen; context settles the adverb</td></tr>
+<tr><td>deu_for_eng</td><td class="num">13</td><td>S0013L03</td><td>very</td><td>you speak German very well</td><td class="num">1</td><td>very&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">14</td><td>S0014L01</td><td>do you speak</td><td>do you speak German all day?</td><td class="num">2</td><td>do you speak&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">14</td><td>S0014L02</td><td>all day</td><td>do you speak German all day?</td><td class="num">1</td><td>all day&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">15</td><td>S0015L01</td><td>and</td><td>and I want you to speak German with me tomorrow</td><td class="num">1</td><td>and&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">16</td><td>S0016L01</td><td>he wants</td><td>and he wants to speak German with you tomorrow</td><td class="num">1</td><td>he wants&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">16</td><td>S0016L02</td><td>later on</td><td>I&#x27;d like to learn a little later on</td><td class="num">1</td><td>later on&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">16</td><td>S0016L03</td><td>to come back</td><td>he wants to come back and speak German</td><td class="num">1</td><td>to come back&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">16</td><td>S0016L04</td><td>with everyone else</td><td>I&#x27;d like to be able to come back with everyone else</td><td class="num">1</td><td>with everyone else&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">17</td><td>S0017L01</td><td>she wants</td><td>and she wants to speak German with you tomorrow</td><td class="num">1</td><td>she wants&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">17</td><td>S0017L02</td><td>to find out</td><td>I want to find out what happens</td><td class="num">2</td><td>to find out&quot; vs &quot;to discover&quot;; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">17</td><td>S0017L03</td><td>is</td><td>She is finished now</td><td class="num">2</td><td>is&quot; is mostly copula; context confirms it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">17</td><td>S0017L04</td><td>the answer</td><td>I&#x27;d like to be able to find out the answer</td><td class="num">1</td><td>the answer&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">18</td><td>S0018L01</td><td>we want</td><td>we want to speak German</td><td class="num">1</td><td>we want&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">18</td><td>S0018L02</td><td>to meet</td><td>I would like to meet her today</td><td class="num">3</td><td>to meet&quot; = treffen or kennenlernen; context picks encounter</td></tr>
+<tr><td>deu_for_eng</td><td class="num">18</td><td>S0018L03</td><td>each other</td><td>she wants to find out if we want to meet each other</td><td class="num">1</td><td>each other&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">18</td><td>S0018L04</td><td>this evening</td><td>he wants to find out the answer this evening</td><td class="num">1</td><td>this evening&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">18</td><td>S0018L05</td><td>at six o&#x27;clock</td><td>he wants to come back at six o&#x27;clock this evening</td><td class="num">1</td><td>at six o&#x27;clock&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">19</td><td>S0019L01</td><td>but</td><td>but she wants to come back</td><td class="num">3</td><td>but&quot; = aber or sondern (not X but Y); context shows aber</td></tr>
+<tr><td>deu_for_eng</td><td class="num">19</td><td>S0019L02</td><td>to stop</td><td>I don&#x27;t want to stop learning</td><td class="num">3</td><td>to stop&quot; = aufhören or anhalten; context shows aufhören</td></tr>
+<tr><td>deu_for_eng</td><td class="num">20</td><td>S0020L01</td><td>you want</td><td>you want to come back later on</td><td class="num">2</td><td>you want&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">20</td><td>S0020L02</td><td>his name</td><td>I want to remember his name</td><td class="num">1</td><td>his name&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">20</td><td>S0020L03</td><td>quickly</td><td>she wants to come back quickly</td><td class="num">1</td><td>quickly&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">21</td><td>S0021L01</td><td>why</td><td>Why do you want to learn his name quickly?</td><td class="num">1</td><td>why&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">21</td><td>S0021L02</td><td>are you learning</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">21</td><td>S0021L03</td><td>her name</td><td>Why are you learning her name?</td><td class="num">1</td><td>her name&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">22</td><td>S0022L01</td><td>people</td><td>I&#x27;d like to meet people tomorrow</td><td class="num">2</td><td>people&quot; = Leute or Menschen; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">22</td><td>S0022L02</td><td>because I want to speak</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">22</td><td>S0022L03</td><td>who speak German</td><td>we want to meet people who speak German</td><td class="num">1</td><td>who speak German&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">23</td><td>S0023L01</td><td>soon</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">23</td><td>S0023L02</td><td>to start</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">23</td><td>S0023L03</td><td>more</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">24</td><td>S0024L01</td><td>easily</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">25</td><td>S0025L01</td><td>are you going to</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">25</td><td>S0025L02</td><td>to help</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">25</td><td>S0025L03</td><td>me</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">25</td><td>S0025L04</td><td>to go</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">25</td><td>S0025L05</td><td>before I have to go</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">26</td><td>S0026L01</td><td>to like</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">26</td><td>S0026L02</td><td>the feeling</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">26</td><td>S0026L03</td><td>nearly</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">26</td><td>S0026L04</td><td>ready</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">26</td><td>S0026L05</td><td>to be</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">27</td><td>S0027L01</td><td>it</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">27</td><td>S0027L02</td><td>too much</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">27</td><td>S0027L03</td><td>time</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">27</td><td>S0027L04</td><td>to answer</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">27</td><td>S0027L05</td><td>to need</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">28</td><td>S0028L01</td><td>useful</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">28</td><td>S0028L02</td><td>early</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">29</td><td>S0029L01</td><td>I&#x27;m looking forward to</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">29</td><td>S0029L02</td><td>better</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">30</td><td>S0030L01</td><td>wanted</td><td>I wanted to speak better, and I&#x27;m looking forward to trying</td><td class="num">1</td><td>wanted&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">30</td><td>S0030L02</td><td>to ask</td><td>I wanted to ask more, but I don&#x27;t want to need too much time</td><td class="num">3</td><td>to ask&quot; = fragen or bitten; context shows fragen</td></tr>
+<tr><td>deu_for_eng</td><td class="num">30</td><td>S0030L03</td><td>yesterday</td><td>but I wanted to start yesterday, and it is useful</td><td class="num">1</td><td>yesterday&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">30</td><td>S0030L04</td><td>wanted you</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">31</td><td>S0031L01</td><td>you wanted</td><td>you wanted to speak German with me, and I like the feeling</td><td class="num">2</td><td>you wanted&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">32</td><td>S0032L01</td><td>to show</td><td>she wanted to show me the answer, and I like the feeling</td><td class="num">2</td><td>to show&quot; has several senses; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">33</td><td>S0033L01</td><td>long</td><td>how long do you want to try before I have to go?</td><td class="num">4</td><td>long&quot; = lang (length) or lange (duration); context settles duration</td></tr>
+<tr><td>deu_for_eng</td><td class="num">33</td><td>S0033L02</td><td>already</td><td>she is already nearly ready, but he wanted to show me something</td><td class="num">1</td><td>already&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">34</td><td>S0034L01</td><td>quiet</td><td>I don&#x27;t want to be quiet</td><td class="num">3</td><td>quiet&quot; = leise or ruhig; context leaves it open</td></tr>
+<tr><td>deu_for_eng</td><td class="num">34</td><td>S0034L02</td><td>to be quiet</td><td>I want to be quiet when you&#x27;re speaking</td><td class="num">2</td><td>to be quiet&quot; is idiomatic; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">34</td><td>S0034L03</td><td>here</td><td>I want to speak German here</td><td class="num">1</td><td>here&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">34</td><td>S0034L04</td><td>when other people</td><td>Do you want to be quiet when other people are speaking?</td><td class="num">1</td><td>when other people&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">34</td><td>S0034L05</td><td>are here</td><td>he wants to speak when other people are here</td><td class="num">1</td><td>are here&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">35</td><td>S0035L01</td><td>to read</td><td>She wanted to read yesterday, but she wanted to go early</td><td class="num">1</td><td>to read&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">35</td><td>S0035L02</td><td>nothing</td><td>I want nothing more, because I&#x27;m already nearly ready</td><td class="num">1</td><td>nothing&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">35</td><td>S0035L03</td><td>this afternoon</td><td>I want to be here this afternoon, and I&#x27;m looking forward to speaking</td><td class="num">1</td><td>this afternoon&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">36</td><td>S0036L01</td><td>to interrupt</td><td>other people don&#x27;t want to interrupt, and we are already here</td><td class="num">1</td><td>to interrupt&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">36</td><td>S0036L02</td><td>the story</td><td>I like the story, and I want to read more this afternoon</td><td class="num">4</td><td>the story&quot; = Geschichte or Stockwerk; context settles Geschichte</td></tr>
+<tr><td>deu_for_eng</td><td class="num">37</td><td>S0037L01</td><td>have</td><td>I have time this afternoon, and I want to read the story</td><td class="num">4</td><td>have&quot; = haben / have to / past auxiliary; context shows possession</td></tr>
+<tr><td>deu_for_eng</td><td class="num">37</td><td>S0037L02</td><td>started</td><td>because I have started to read, I want to try more</td><td class="num">2</td><td>started&quot; intransitive or transitive; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">37</td><td>S0037L03</td><td>to think about it</td><td>because I have time, I want to try to think about it</td><td class="num">1</td><td>to think about it&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">37</td><td>S0037L04</td><td>last month</td><td>last month I started to learn German, and I like the feeling</td><td class="num">1</td><td>last month&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">38</td><td>S0038L01</td><td>I learn</td><td>I learn German, and I like the feeling of speaking better</td><td class="num">2</td><td>I learn&quot; is mostly unambiguous; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">38</td><td>S0038L02</td><td>for about a week</td><td>for about a week I have been trying to think about it</td><td class="num">1</td><td>for about a week&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">39</td><td>S0039L01</td><td>tired</td><td>I am a little tired this morning, but I want to learn more German</td><td class="num">1</td><td>tired&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">40</td><td>S0040L01</td><td>you feel</td><td>how do you feel at the moment?</td><td class="num">2</td><td>you feel&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">40</td><td>S0040L02</td><td>at the moment</td><td>how do you feel at the moment?</td><td class="num">1</td><td>at the moment&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">41</td><td>S0041L01</td><td>I feel</td><td>I feel okay, but I&#x27;m starting to feel tired</td><td class="num">1</td><td>I feel&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">41</td><td>S0041L02</td><td>okay</td><td>I feel okay, but I&#x27;m starting to feel tired</td><td class="num">1</td><td>okay&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">42</td><td>S0042L01</td><td>was starting</td><td>I was starting to feel better than last night</td><td class="num">1</td><td>was starting&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">42</td><td>S0042L02</td><td>to feel</td><td>I was starting to feel better than last night</td><td class="num">1</td><td>to feel&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">42</td><td>S0042L03</td><td>than</td><td>I was starting to feel better than last night</td><td class="num">1</td><td>than&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">42</td><td>S0042L04</td><td>last night</td><td>I was starting to feel better than last night</td><td class="num">1</td><td>last night&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">43</td><td>S0043L01</td><td>thought about</td><td>Because I haven&#x27;t thought about it, I don&#x27;t want to answer</td><td class="num">2</td><td>thought about&quot; = considered; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">43</td><td>S0043L02</td><td>how to answer</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">44</td><td>S0044L01</td><td>or</td><td>or if I need to improve</td><td class="num">1</td><td>or&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">44</td><td>S0044L02</td><td>to improve</td><td>or if I need to improve</td><td class="num">1</td><td>to improve&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">45</td><td>S0045L01</td><td>everything</td><td>I don&#x27;t need to know everything</td><td class="num">1</td><td>everything&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">45</td><td>S0045L02</td><td>to know</td><td>I don&#x27;t need to know everything</td><td class="num">4</td><td>to know&quot; = wissen or kennen; context settles facts</td></tr>
+<tr><td>deu_for_eng</td><td class="num">46</td><td>S0046L01</td><td>I make</td><td>I make nothing at the moment, because I am a little tired</td><td class="num">3</td><td>I make&quot; = machen / produce / earn; context settles machen</td></tr>
+<tr><td>deu_for_eng</td><td class="num">46</td><td>S0046L02</td><td>no worries</td><td>I have no worries, and I have thought about it for a long time</td><td class="num">1</td><td>no worries&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">46</td><td>S0046L03</td><td>about mistakes</td><td>I have no worries about mistakes, and I feel better than yesterday</td><td class="num">1</td><td>about mistakes&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">47</td><td>S0047L01</td><td>I think</td><td>because I think that it&#x27;s a good thing to make mistakes</td><td class="num">2</td><td>I think&quot; = denken or glauben; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">47</td><td>S0047L02</td><td>that</td><td>because I think that it&#x27;s a good thing to make mistakes</td><td class="num">5</td><td>that&quot; = dass, das or dieser; context settles dass</td></tr>
+<tr><td>deu_for_eng</td><td class="num">48</td><td>S0048L01</td><td>don&#x27;t care</td><td>I don&#x27;t care what I should say, because I want to try</td><td class="num">2</td><td>don&#x27;t care&quot; = egal or nicht kümmern; context settles it weakly</td></tr>
+<tr><td>deu_for_eng</td><td class="num">48</td><td>S0048L02</td><td>to make</td><td>I think that it is okay to make mistakes when I speak German</td><td class="num">3</td><td>to make&quot; = machen; context shows Fehler machen</td></tr>
+<tr><td>deu_for_eng</td><td class="num">49</td><td>S0049L01</td><td>you know</td><td>you know what I should do, and I want to find out the answer</td><td class="num">3</td><td>you know&quot; = knowledge or filler, and register; context partly settles</td></tr>
+<tr><td>deu_for_eng</td><td class="num">50</td><td>S0050L01</td><td>to become</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">51</td><td>S0051L01</td><td>I enjoy doing</td><td>I enjoy doing a lot with someone else</td><td class="num">1</td><td>I enjoy doing&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">51</td><td>S0051L02</td><td>interesting things</td><td>I enjoy doing interesting things with someone else</td><td class="num">1</td><td>interesting things&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">51</td><td>S0051L03</td><td>with my friends</td><td>i&#x27;m going to practise with my friends</td><td class="num">1</td><td>with my friends&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">52</td><td>S0052L01</td><td>to write</td><td>I am going to write now</td><td class="num">1</td><td>to write&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">52</td><td>S0052L02</td><td>a letter</td><td>I want to write you a letter soon</td><td class="num">4</td><td>a letter&quot; = Brief or Buchstabe; context settles Brief</td></tr>
+<tr><td>deu_for_eng</td><td class="num">52</td><td>S0052L03</td><td>to his friend</td><td>I want to write to his friend soon</td><td class="num">1</td><td>to his friend&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">52</td><td>S0052L04</td><td>last week</td><td>He wanted to write a letter last week</td><td class="num">1</td><td>last week&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">53</td><td>S0053L01</td><td>she wanted</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">53</td><td>S0053L02</td><td>to put</td><td>She wanted to put everything here</td><td class="num">3</td><td>to put&quot; = legen / stellen / stecken; context does not pick the verb</td></tr>
+<tr><td>deu_for_eng</td><td class="num">53</td><td>S0053L03</td><td>in her bag</td><td>She will put that in her bag</td><td class="num">1</td><td>in her bag&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">54</td><td>S0054L01</td><td>we wanted</td><td>We wanted to speak with you</td><td class="num">1</td><td>we wanted&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">54</td><td>S0054L02</td><td>to give</td><td>We wanted to give you something</td><td class="num">1</td><td>to give&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">55</td><td>S0055L01</td><td>waking up</td><td>I like waking up early</td><td class="num">2</td><td>waking up&quot; = aufwachen; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">55</td><td>S0055L02</td><td>slept</td><td>He slept well yesterday</td><td class="num">1</td><td>slept&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">56</td><td>S0056L01</td><td>so</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">56</td><td>S0056L02</td><td>myself</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">56</td><td>S0056L03</td><td>one</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">56</td><td>S0056L04</td><td>a few words</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">56</td><td>S0056L05</td><td>says</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">57</td><td>S0057L01</td><td>shall</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">57</td><td>S0057L02</td><td>what</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">58</td><td>S0058L01</td><td>interesting</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">58</td><td>S0058L02</td><td>you understand</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">58</td><td>S0058L03</td><td>enough</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">59</td><td>S0059L01</td><td>I know</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">59</td><td>S0059L02</td><td>next week</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">60</td><td>S0060L01</td><td>yet</td><td>one can learn German well but it is not yet easy to speak it</td><td class="num">4</td><td>yet&quot; = noch (not yet) or schon/trotzdem; context settles noch</td></tr>
+<tr><td>deu_for_eng</td><td class="num">60</td><td>S0060L02</td><td>different words</td><td>It is interesting to learn different words in German</td><td class="num">1</td><td>different words&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">61</td><td>S0061L01</td><td>could you</td><td>Could you help me learn German?</td><td class="num">2</td><td>could you&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">61</td><td>S0061L02</td><td>again</td><td>I would like to practice that again</td><td class="num">1</td><td>again&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">61</td><td>S0061L04</td><td>slowly</td><td>She would like to read more slowly</td><td class="num">1</td><td>slowly&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">62</td><td>S0062L01</td><td>I&#x27;m not sure if</td><td>I&#x27;m not sure if she is already ready</td><td class="num">1</td><td>I&#x27;m not sure if&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">62</td><td>S0062L02</td><td>at the same time</td><td>I try to learn and speak at the same time</td><td class="num">2</td><td>at the same time&quot; = gleichzeitig or zugleich; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">63</td><td>S0063L01</td><td>are you sure</td><td>I am not sure, but are you sure that you want to start soon?</td><td class="num">2</td><td>are you sure&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">63</td><td>S0063L02</td><td>you don&#x27;t mind</td><td>are you sure you don&#x27;t mind helping me?</td><td class="num">2</td><td>you don&#x27;t mind&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">64</td><td>S0064L01</td><td>learning German</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">64</td><td>S0064L02</td><td>easy</td><td>It is not easy but I try</td><td class="num">1</td><td>easy&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">64</td><td>S0064L03</td><td>it is fun</td><td>It is fun to show my friends what I know about German and to talk about it with all of them</td><td class="num">1</td><td>it is fun&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">65</td><td>S0065L01</td><td>it&#x27;s important to take time to test yourself</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">66</td><td>S0066L01</td><td>it&#x27;s not difficult to find the answer</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">67</td><td>S0067L01</td><td>Why do you want to stop</td><td>Why do you want to stop talking with me when you know I can help you learn German very well today?</td><td class="num">2</td><td>why do you want to stop&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">68</td><td>S0068L02</td><td>are you looking for</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">69</td><td>S0069L01</td><td>he didn&#x27;t want to look after the young dog all afternoon</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">70</td><td>S0070L01</td><td>she didn&#x27;t want to tell me where it was</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">71</td><td>S0071L01</td><td>we didn&#x27;t want to let anyone hear the truth</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">72</td><td>S0072L01</td><td>you&#x27;re doing</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">73</td><td>S0073L01</td><td>thank you very much, but I&#x27;ve got more to learn</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">74</td><td>S0074L01</td><td>thank you very much for helping me to understand</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">75</td><td>S0075L01</td><td>have you got more to learn</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">76</td><td>S0076L01</td><td>I&#x27;m very happy with</td><td>I&#x27;m very happy with how much I&#x27;ve learnt already</td><td class="num">1</td><td>I&#x27;m very happy with&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">76</td><td>S0076L02</td><td>how much I&#x27;ve learnt</td><td>I&#x27;m very happy with how much I&#x27;ve learnt already</td><td class="num">1</td><td>how much I&#x27;ve learnt&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">77</td><td>S0077L01</td><td>I&#x27;m surprised at how quickly I&#x27;m starting</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">78</td><td>S0078L01</td><td>I don&#x27;t understand what you said</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">79</td><td>S0079L01</td><td>when did you start to learn</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">80</td><td>S0080L01</td><td>I&#x27;m not sure when I&#x27;ll be ready</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">81</td><td>S0081L01</td><td>when do you want</td><td>when do you want to speak German?</td><td class="num">2</td><td>when do you want&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">81</td><td>S0081L02</td><td>the newspaper</td><td>I think the newspaper is here but I cannot remember where it is right now</td><td class="num">1</td><td>the newspaper&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">82</td><td>S0082L01</td><td>I&#x27;m not going to wait for you</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">83</td><td>S0083L01</td><td>to agree</td><td></td><td class="num"></td><td>preamble intro (non-template); no as-in clause</td></tr>
+<tr><td>deu_for_eng</td><td class="num">83</td><td>S0083L02</td><td>about your friend</td><td>if you don&#x27;t mind, we&#x27;ll talk about your friend</td><td class="num">2</td><td>about your friend&quot; dein/Ihr is register-ambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">84</td><td>S0084L01</td><td>about my friend</td><td>What did you say about my friend?</td><td class="num">1</td><td>about my friend&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">84</td><td>S0084L02</td><td>he said</td><td>I don&#x27;t agree with what he said</td><td class="num">1</td><td>he said&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">85</td><td>S0085L01</td><td>those people</td><td>I think those people understand German very well and can help you learn it much better than me</td><td class="num">1</td><td>those people&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">85</td><td>S0085L02</td><td>I know those people</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">86</td><td>S0086L01</td><td>unfortunately</td><td>Unfortunately I cannot come back today</td><td class="num">1</td><td>unfortunately&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">87</td><td>S0087L01</td><td>they are people I don&#x27;t know</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">88</td><td>S0088L01</td><td>with people</td><td>I would like to speak with people who can speak German</td><td class="num">1</td><td>with people&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">88</td><td>S0088L02</td><td>talk</td><td>We can talk about it later</td><td class="num">2</td><td>talk&quot; = sprechen or reden; context shows reden</td></tr>
+<tr><td>deu_for_eng</td><td class="num">89</td><td>S0089L02</td><td>done</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">90</td><td>S0090L01</td><td>can</td><td>You can speak German if you want to practise enough</td><td class="num">5</td><td>can&quot; = können (ability) or dürfen (permission); context shows können</td></tr>
+<tr><td>deu_for_eng</td><td class="num">90</td><td>S0090L02</td><td>that would be great</td><td>That would be great because I want to know the answer</td><td class="num">1</td><td>that would be great&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">91</td><td>S0091L01</td><td>to think</td><td>I want to think about it because it is very important</td><td class="num">3</td><td>to think&quot; = denken or nachdenken; context shows nachdenken</td></tr>
+<tr><td>deu_for_eng</td><td class="num">91</td><td>S0091L02</td><td>in time</td><td>I want to finish it in time so we can talk later</td><td class="num">3</td><td>in time&quot; = rechtzeitig or mit der Zeit; context settles it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">92</td><td>S0092L01</td><td>a while</td><td>I need to wait for a while</td><td class="num">2</td><td>a while&quot; is clear enough; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">92</td><td>S0092L02</td><td>to keep on doing</td><td>I know I need to keep on doing it today</td><td class="num">1</td><td>to keep on doing&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">93</td><td>S0093L01</td><td>time to go</td><td>He says it is time to go</td><td class="num">1</td><td>time to go&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">94</td><td>S0094L01</td><td>the only way</td><td>I think it is the only way to learn German well</td><td class="num">4</td><td>the only way&quot; = Weg or Art; context settles Art</td></tr>
+<tr><td>deu_for_eng</td><td class="num">94</td><td>S0094L02</td><td>to work</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">94</td><td>S0094L03</td><td>will</td><td>I know it will help me understand what people are saying</td><td class="num">5</td><td>will&quot; = werden (future) or wollen; context shows future</td></tr>
+<tr><td>deu_for_eng</td><td class="num">95</td><td>S0095L01</td><td>on the next bus</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>deu_for_eng</td><td class="num">95</td><td>S0095L02</td><td>go home</td><td>She would like to go home early today</td><td class="num">1</td><td>go home&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">96</td><td>S0096L01</td><td>no</td><td>no I do not know that</td><td class="num">2</td><td>no&quot; = nein or kein; context shows nein</td></tr>
+<tr><td>deu_for_eng</td><td class="num">96</td><td>S0096L02</td><td>I need</td><td>I need to practise more</td><td class="num">4</td><td>I need&quot; = brauchen or müssen; context shows müssen</td></tr>
+<tr><td>deu_for_eng</td><td class="num">97</td><td>S0097L01</td><td>yes</td><td>yes I want to speak German with my friends</td><td class="num">1</td><td>yes&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">97</td><td>S0097L02</td><td>as soon as</td><td>I will read the letter as soon as I get home</td><td class="num">1</td><td>as soon as&quot; is unambiguous</td></tr>
+<tr><td>deu_for_eng</td><td class="num">98</td><td>S0098L01</td><td>I should consider</td><td>I think I should consider what you told me yesterday</td><td class="num">3</td><td>I should consider&quot; = sollte or in Betracht ziehen; context partly settles</td></tr>
+<tr><td>deu_for_eng</td><td class="num">98</td><td>S0098L02</td><td>playing</td><td>I know that playing is a lot of fun</td><td class="num">3</td><td>playing&quot; = spielen (game) or musizieren; context leaves it open</td></tr>
+<tr><td>deu_for_eng</td><td class="num">99</td><td>S0099L01</td><td>you should</td><td>I think you should practise more if you want to learn German</td><td class="num">2</td><td>you should&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>deu_for_eng</td><td class="num">99</td><td>S0099L02</td><td>it works</td><td>I think it works better when you want to learn something</td><td class="num">2</td><td>it works&quot; = funktioniert or arbeitet; context adds little</td></tr>
+<tr><td>deu_for_eng</td><td class="num">100</td><td>S0100L01</td><td>similar</td><td>I want to find something similar because this is interesting</td><td class="num">1</td><td>similar&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">1</td><td>S0001L01</td><td>I want</td><td>I want to speak Spanish with you now</td><td class="num">1</td><td>I want&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">1</td><td>S0001L02</td><td>to speak</td><td>I want to speak Spanish with you now</td><td class="num">1</td><td>to speak&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">1</td><td>S0001L03</td><td>Spanish</td><td>I want to speak Spanish with you now</td><td class="num">2</td><td>Spanish&quot; = language or person; context mildly settles</td></tr>
+<tr><td>spa_for_eng</td><td class="num">1</td><td>S0001L04</td><td>with you</td><td>I want to speak Spanish with you now</td><td class="num">2</td><td>with you&quot; is register-ambiguous (contigo/usted); context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">1</td><td>S0001L05</td><td>now</td><td>I want to speak Spanish with you now</td><td class="num">1</td><td>now&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">2</td><td>S0002L01</td><td>to learn</td><td>I&#x27;m trying to learn</td><td class="num">2</td><td>to learn&quot; = aprender or enterarse; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">2</td><td>S0002L02</td><td>I&#x27;m trying to</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">3</td><td>S0003L01</td><td>how</td><td>how to speak as frequently as possible</td><td class="num">4</td><td>how&quot; = cómo or other question senses; context settles cómo</td></tr>
+<tr><td>spa_for_eng</td><td class="num">3</td><td>S0003L02</td><td>frequently</td><td>how to speak as frequently as possible</td><td class="num">1</td><td>frequently&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">3</td><td>S0003L03</td><td>as frequently as possible</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">4</td><td>S0004L01</td><td>in</td><td>how to say something in Spanish</td><td class="num">5</td><td>in&quot; = en, a, dentro de; context settles en</td></tr>
+<tr><td>spa_for_eng</td><td class="num">4</td><td>S0004L02</td><td>something</td><td>how to say something in Spanish</td><td class="num">1</td><td>something&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">4</td><td>S0004L03</td><td>to say</td><td>how to say something in Spanish</td><td class="num">2</td><td>to say&quot; = decir (vs contar); context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">5</td><td>S0005L01</td><td>to practise</td><td>I&#x27;m going to practise speaking with someone else</td><td class="num">1</td><td>to practise&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">5</td><td>S0005L02</td><td>I&#x27;m going to</td><td>I&#x27;m going to practise speaking with someone else</td><td class="num">4</td><td>I&#x27;m going to&quot; reads as future or movement; context settles future</td></tr>
+<tr><td>spa_for_eng</td><td class="num">5</td><td>S0005L03</td><td>speaking</td><td>I&#x27;m going to practise speaking with someone else</td><td class="num">1</td><td>speaking&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">5</td><td>S0005L04</td><td>with someone else</td><td>I&#x27;m going to practise speaking with someone else</td><td class="num">1</td><td>with someone else&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">6</td><td>S0006L01</td><td>to remember</td><td>I&#x27;m trying to remember a word</td><td class="num">2</td><td>to remember&quot; = recordar or acordarse; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">6</td><td>S0006L02</td><td>a word</td><td>I&#x27;m trying to remember a word</td><td class="num">1</td><td>a word&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">7</td><td>S0007L01</td><td>to try</td><td>I want to try as hard as I can today</td><td class="num">2</td><td>to try&quot; = intentar or probar; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">7</td><td>S0007L02</td><td>today</td><td>I want to try as hard as I can today</td><td class="num">1</td><td>today&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">7</td><td>S0007L03</td><td>as hard as I can</td><td>I want to try as hard as I can today</td><td class="num">1</td><td>as hard as I can&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">8</td><td>S0008L01</td><td>to explain</td><td>I&#x27;m going to try to explain what I mean</td><td class="num">1</td><td>to explain&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">8</td><td>S0008L02</td><td>what I mean</td><td>I&#x27;m going to try to explain what I mean</td><td class="num">1</td><td>what I mean&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">9</td><td>S0009L01</td><td>I speak</td><td>I speak a little Spanish now</td><td class="num">1</td><td>I speak&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">9</td><td>S0009L02</td><td>a little</td><td>I speak a little Spanish now</td><td class="num">2</td><td>a little&quot; = un poco or poco; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">10</td><td>S0010L01</td><td>I can</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">10</td><td>S0010L02</td><td>I&#x27;m not sure</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">10</td><td>S0010L03</td><td>if</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">10</td><td>S0010L04</td><td>the whole sentence</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">11</td><td>S0011L01</td><td>I&#x27;d like</td><td>I&#x27;d like to be able to speak after you finish</td><td class="num">1</td><td>I&#x27;d like&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">11</td><td>S0011L02</td><td>to be able to</td><td>I&#x27;d like to be able to speak after you finish</td><td class="num">2</td><td>to be able to&quot; = poder or saber; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">11</td><td>S0011L03</td><td>after you finish</td><td>I&#x27;d like to be able to speak after you finish</td><td class="num">2</td><td>after you finish&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">12</td><td>S0012L01</td><td>tomorrow</td><td>I wouldn&#x27;t like to guess what&#x27;s going to happen tomorrow</td><td class="num">1</td><td>tomorrow&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">12</td><td>S0012L02</td><td>to guess</td><td>I wouldn&#x27;t like to guess what&#x27;s going to happen tomorrow</td><td class="num">2</td><td>to guess&quot; = adivinar or suponer; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">12</td><td>S0012L03</td><td>what&#x27;s going to happen</td><td>I wouldn&#x27;t like to guess what&#x27;s going to happen tomorrow</td><td class="num">1</td><td>what&#x27;s going to happen&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">12</td><td>S0012L04</td><td>I wouldn&#x27;t like</td><td>I wouldn&#x27;t like to guess what&#x27;s going to happen tomorrow</td><td class="num">1</td><td>I wouldn&#x27;t like&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">13</td><td>S0013L01</td><td>very well</td><td>you speak Spanish very well</td><td class="num">3</td><td>very well&quot; = muy bien or vale; context settles the adverb</td></tr>
+<tr><td>spa_for_eng</td><td class="num">13</td><td>S0013L02</td><td>you speak</td><td>you speak Spanish very well</td><td class="num">2</td><td>you speak&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">14</td><td>S0014L01</td><td>all day</td><td>Do you speak Spanish all day?</td><td class="num">1</td><td>all day&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">15</td><td>S0015L01</td><td>with me</td><td>and I want you to speak Spanish with me tomorrow</td><td class="num">1</td><td>with me&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">15</td><td>S0015L02</td><td>I want you to speak</td><td>and I want you to speak Spanish with me tomorrow</td><td class="num">2</td><td>I want you to speak&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">15</td><td>S0015L03</td><td>and</td><td>and I want you to speak Spanish with me tomorrow</td><td class="num">1</td><td>and&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">16</td><td>S0016L01</td><td>he wants</td><td>he wants to come back with everyone else later on</td><td class="num">1</td><td>he wants&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">16</td><td>S0016L02</td><td>to come back</td><td>he wants to come back with everyone else later on</td><td class="num">1</td><td>to come back&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">16</td><td>S0016L03</td><td>with everyone else</td><td>he wants to come back with everyone else later on</td><td class="num">1</td><td>with everyone else&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">16</td><td>S0016L04</td><td>later on</td><td>he wants to come back with everyone else later on</td><td class="num">1</td><td>later on&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">17</td><td>S0017L01</td><td>she wants</td><td>She wants to find out what the answer is</td><td class="num">1</td><td>she wants&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">17</td><td>S0017L02</td><td>to find out</td><td>She wants to find out what the answer is</td><td class="num">2</td><td>to find out&quot; = averiguar or enterarse; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">17</td><td>S0017L03</td><td>what the answer is</td><td>She wants to find out what the answer is</td><td class="num">1</td><td>what the answer is&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">18</td><td>S0018L01</td><td>we want</td><td>we want to meet at six o&#x27;clock this evening</td><td class="num">1</td><td>we want&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">18</td><td>S0018L02</td><td>to meet</td><td>we want to meet at six o&#x27;clock this evening</td><td class="num">4</td><td>to meet&quot; = conocer or quedar/encontrarse; context settles quedar</td></tr>
+<tr><td>spa_for_eng</td><td class="num">18</td><td>S0018L03</td><td>at six</td><td>we want to meet at six o&#x27;clock this evening</td><td class="num">1</td><td>at six&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">18</td><td>S0018L04</td><td>this evening</td><td>we want to meet at six o&#x27;clock this evening</td><td class="num">1</td><td>this evening&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">19</td><td>S0019L01</td><td>but</td><td>but I don&#x27;t want to stop talking</td><td class="num">3</td><td>but&quot; = pero or sino; context shows pero</td></tr>
+<tr><td>spa_for_eng</td><td class="num">19</td><td>S0019L02</td><td>I don&#x27;t want</td><td>but I don&#x27;t want to stop talking</td><td class="num">1</td><td>I don&#x27;t want&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">19</td><td>S0019L03</td><td>to stop talking</td><td>but I don&#x27;t want to stop talking</td><td class="num">3</td><td>to stop talking&quot; = parar or dejar de; context settles dejar de</td></tr>
+<tr><td>spa_for_eng</td><td class="num">20</td><td>S0020L01</td><td>you want</td><td>you want to learn his name quickly</td><td class="num">2</td><td>you want&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">20</td><td>S0020L02</td><td>his name</td><td>you want to learn his name quickly</td><td class="num">1</td><td>his name&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">20</td><td>S0020L03</td><td>quickly</td><td>you want to learn his name quickly</td><td class="num">1</td><td>quickly&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">21</td><td>S0021L01</td><td>why</td><td>Why are you learning her name?</td><td class="num">2</td><td>why&quot; = por qué or para qué; context settles por qué</td></tr>
+<tr><td>spa_for_eng</td><td class="num">21</td><td>S0021L02</td><td>are you learning</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">21</td><td>S0021L03</td><td>her name</td><td>Why are you learning her name?</td><td class="num">1</td><td>her name&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">22</td><td>S0022L01</td><td>because</td><td>because I want to meet people who speak Spanish</td><td class="num">1</td><td>because&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">22</td><td>S0022L02</td><td>people who speak</td><td>because I want to meet people who speak Spanish</td><td class="num">1</td><td>people who speak&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">22</td><td>S0022L03</td><td>to meet people</td><td>because I want to meet people who speak Spanish</td><td class="num">3</td><td>to meet people&quot; = conocer or encontrar; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">23</td><td>S0023L01</td><td>to start talking</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">23</td><td>S0023L02</td><td>soon</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">24</td><td>S0024L01</td><td>I am not going to be able to</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">24</td><td>S0024L02</td><td>easily</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">25</td><td>S0025L01</td><td>are you going to</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">25</td><td>S0025L02</td><td>to help me</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">25</td><td>S0025L03</td><td>before I have to go</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">26</td><td>S0026L01</td><td>I like</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">26</td><td>S0026L02</td><td>nearly</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">26</td><td>S0026L03</td><td>feeling as if I were</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">26</td><td>S0026L04</td><td>ready to go</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">27</td><td>S0027L01</td><td>too much</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">27</td><td>S0027L02</td><td>taking too much time</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">27</td><td>S0027L03</td><td>in order to answer</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">28</td><td>S0028L01</td><td>it&#x27;s useful</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">28</td><td>S0028L02</td><td>as soon as possible</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">29</td><td>S0029L01</td><td>better</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">29</td><td>S0029L02</td><td>I&#x27;m looking forward to</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">30</td><td>S0030L01</td><td>I wanted</td><td>I wanted to ask you something yesterday</td><td class="num">1</td><td>I wanted&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">30</td><td>S0030L02</td><td>to ask</td><td>I wanted to ask you something yesterday</td><td class="num">3</td><td>to ask&quot; = preguntar or pedir; context shows preguntar</td></tr>
+<tr><td>spa_for_eng</td><td class="num">30</td><td>S0030L03</td><td>yesterday</td><td>I wanted to ask you something yesterday</td><td class="num">1</td><td>yesterday&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">30</td><td>S0030L04</td><td>to ask you</td><td>I wanted to ask you something yesterday</td><td class="num">2</td><td>to ask you&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">31</td><td>S0031L01</td><td>you wanted</td><td>you wanted to speak with me tonight</td><td class="num">2</td><td>you wanted&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">31</td><td>S0031L02</td><td>with me</td><td>he wants to practice with me</td><td class="num">1</td><td>with me&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">31</td><td>S0031L03</td><td>tonight</td><td>you wanted to speak with me tonight</td><td class="num">1</td><td>tonight&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">32</td><td>S0032L01</td><td>to show me</td><td>did you want to show me something?</td><td class="num">1</td><td>to show me&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">33</td><td>S0033L01</td><td>how long</td><td>how long have you been learning Spanish?</td><td class="num">4</td><td>how long&quot; = cuánto tiempo or cuán largo; context settles time</td></tr>
+<tr><td>spa_for_eng</td><td class="num">33</td><td>S0033L02</td><td>you&#x27;ve been learning</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">34</td><td>S0034L01</td><td>he doesn&#x27;t want</td><td>he doesn&#x27;t want to be quiet when other people are here</td><td class="num">1</td><td>he doesn&#x27;t want&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">34</td><td>S0034L02</td><td>to be quiet</td><td>he doesn&#x27;t want to be quiet when other people are here</td><td class="num">3</td><td>to be quiet&quot; = callarse or ser/estar tranquilo; context leaves it open</td></tr>
+<tr><td>spa_for_eng</td><td class="num">34</td><td>S0034L03</td><td>when other people are here</td><td>he doesn&#x27;t want to be quiet when other people are here</td><td class="num">1</td><td>when other people are here&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">35</td><td>S0035L01</td><td>she doesn&#x27;t want</td><td>She doesn&#x27;t want to read anything this afternoon</td><td class="num">1</td><td>she doesn&#x27;t want&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">35</td><td>S0035L02</td><td>to read</td><td>She doesn&#x27;t want to read anything this afternoon</td><td class="num">1</td><td>to read&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">35</td><td>S0035L03</td><td>anything</td><td>She doesn&#x27;t want to read anything this afternoon</td><td class="num">3</td><td>anything&quot; = nada or cualquier cosa; context settles nada</td></tr>
+<tr><td>spa_for_eng</td><td class="num">35</td><td>S0035L04</td><td>this afternoon</td><td>She doesn&#x27;t want to read anything this afternoon</td><td class="num">1</td><td>this afternoon&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">36</td><td>S0036L01</td><td>we don&#x27;t want</td><td>we don&#x27;t want to interrupt the story</td><td class="num">1</td><td>we don&#x27;t want&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">36</td><td>S0036L02</td><td>to interrupt</td><td>we don&#x27;t want to interrupt the story</td><td class="num">1</td><td>to interrupt&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">36</td><td>S0036L03</td><td>the story</td><td>we don&#x27;t want to interrupt the story</td><td class="num">4</td><td>the story&quot; = historia or piso; context settles historia</td></tr>
+<tr><td>spa_for_eng</td><td class="num">37</td><td>S0037L01</td><td>I started to</td><td>I started to think about it carefully last month</td><td class="num">1</td><td>I started to&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">37</td><td>S0037L02</td><td>to think about it</td><td>I started to think about it carefully last month</td><td class="num">1</td><td>to think about it&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">37</td><td>S0037L03</td><td>carefully</td><td>I started to think about it carefully last month</td><td class="num">1</td><td>carefully&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">37</td><td>S0037L04</td><td>last month</td><td>I started to think about it carefully last month</td><td class="num">1</td><td>last month&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">38</td><td>S0038L01</td><td>I&#x27;ve been learning all day</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">38</td><td>S0038L02</td><td>more or less</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">38</td><td>S0038L03</td><td>a week</td><td>I&#x27;ve been learning for about a week</td><td class="num">1</td><td>a week&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">39</td><td>S0039L01</td><td>but I&#x27;m</td><td>but I&#x27;m a little tired this morning</td><td class="num">1</td><td>but I&#x27;m&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">39</td><td>S0039L02</td><td>a little tired</td><td>but I&#x27;m a little tired this morning</td><td class="num">1</td><td>a little tired&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">39</td><td>S0039L03</td><td>this morning</td><td>but I&#x27;m a little tired this morning</td><td class="num">1</td><td>this morning&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">40</td><td>S0040L01</td><td>do you feel</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">40</td><td>S0040L02</td><td>at the moment</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">41</td><td>S0041L01</td><td>I feel</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">41</td><td>S0041L02</td><td>tired</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">41</td><td>S0041L03</td><td>I&#x27;m starting to</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">41</td><td>S0041L04</td><td>to feel</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">42</td><td>S0042L01</td><td>I was starting to</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">42</td><td>S0042L02</td><td>better than</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">42</td><td>S0042L03</td><td>last night</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">43</td><td>S0043L01</td><td>I wasn&#x27;t thinking</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">43</td><td>S0043L02</td><td>to answer</td><td>I wasn&#x27;t thinking about how to answer</td><td class="num">2</td><td>to answer&quot; = responder or contestar; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">44</td><td>S0044L01</td><td>or</td><td>or if I need to improve</td><td class="num">1</td><td>or&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">44</td><td>S0044L02</td><td>I need</td><td>or if I need to improve</td><td class="num">4</td><td>I need&quot; = necesitar or tener que; context shows necesitar</td></tr>
+<tr><td>spa_for_eng</td><td class="num">44</td><td>S0044L03</td><td>to improve</td><td>or if I need to improve</td><td class="num">1</td><td>to improve&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">45</td><td>S0045L01</td><td>to know</td><td>I don&#x27;t need to know everything</td><td class="num">4</td><td>to know&quot; = saber or conocer; context settles saber</td></tr>
+<tr><td>spa_for_eng</td><td class="num">46</td><td>S0046L01</td><td>I don&#x27;t worry about</td><td>but I don&#x27;t worry about making mistakes</td><td class="num">1</td><td>I don&#x27;t worry about&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">46</td><td>S0046L02</td><td>making mistakes</td><td>but I don&#x27;t worry about making mistakes</td><td class="num">1</td><td>making mistakes&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">47</td><td>S0047L01</td><td>I think that</td><td>because I think that it&#x27;s a good thing to make mistakes</td><td class="num">2</td><td>I think that&quot; = creo or pienso; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">47</td><td>S0047L02</td><td>good</td><td>because I think that it&#x27;s a good thing to make mistakes</td><td class="num">2</td><td>good&quot; = bueno or bien; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">48</td><td>S0048L01</td><td>I don&#x27;t care</td><td>I don&#x27;t care about making mistakes</td><td class="num">2</td><td>I don&#x27;t care&quot; = no me importa or no me preocupa; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">49</td><td>S0049L01</td><td>it&#x27;s like this</td><td>It&#x27;s like this, if you know what I mean</td><td class="num">1</td><td>it&#x27;s like this&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">49</td><td>S0049L02</td><td>you know</td><td>it&#x27;s like this, if you know what I mean</td><td class="num">3</td><td>you know&quot; = sabes or filler; context partly settles</td></tr>
+<tr><td>spa_for_eng</td><td class="num">50</td><td>S0050L01</td><td>to finish</td><td>I&#x27;m not trying to finish as quickly as possible</td><td class="num">2</td><td>to finish&quot; = terminar or acabar; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">50</td><td>S0050L02</td><td>as quickly as possible</td><td>I&#x27;m not trying to finish as quickly as possible</td><td class="num">1</td><td>as quickly as possible&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">51</td><td>S0051L01</td><td>I enjoy doing</td><td>I enjoy doing interesting things with my friends</td><td class="num">2</td><td>I enjoy doing&quot; = disfrutar, gustar or encantar; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">51</td><td>S0051L02</td><td>interesting things</td><td>I enjoy doing interesting things with my friends</td><td class="num">1</td><td>interesting things&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">51</td><td>S0051L03</td><td>my friends</td><td>I enjoy doing interesting things with my friends</td><td class="num">1</td><td>my friends&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">52</td><td>S0052L01</td><td>to write</td><td>he wanted to write a letter to his friend last week</td><td class="num">1</td><td>to write&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">52</td><td>S0052L02</td><td>letter</td><td>he wanted to write a letter to his friend last week</td><td class="num">4</td><td>letter&quot; = carta or letra; context settles carta</td></tr>
+<tr><td>spa_for_eng</td><td class="num">52</td><td>S0052L03</td><td>last week</td><td>He wanted to write a letter to his friend last week.</td><td class="num">1</td><td>last week&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">52</td><td>S0052L04</td><td>last week</td><td>he wanted to write a letter to his friend last week</td><td class="num">1</td><td>last week&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">53</td><td>S0053L01</td><td>to put</td><td>She wanted to put his letter in her bag</td><td class="num">3</td><td>to put&quot; = poner or meter; context shows meter</td></tr>
+<tr><td>spa_for_eng</td><td class="num">53</td><td>S0053L02</td><td>bag</td><td>She wanted to put his letter in her bag</td><td class="num">3</td><td>bag&quot; = bolsa or bolso; context partly settles</td></tr>
+<tr><td>spa_for_eng</td><td class="num">54</td><td>S0054L01</td><td>we wanted to give you</td><td>We wanted to give you a little more time.</td><td class="num">2</td><td>we wanted to give you&quot; is register-ambiguous (te/les); context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">54</td><td>S0054L02</td><td>to give you</td><td>we wanted to give you a little more time</td><td class="num">2</td><td>to give you&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">55</td><td>S0055L01</td><td>waking up</td><td>I don&#x27;t enjoy waking up when I didn&#x27;t sleep very well</td><td class="num">2</td><td>waking up&quot; = despertarse; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">55</td><td>S0055L02</td><td>I slept</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">56</td><td>S0056L01</td><td>a few words</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">57</td><td>S0057L01</td><td>I can&#x27;t remember how to say what I wanted to say</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">58</td><td>S0058L01</td><td>it&#x27;s interesting when</td><td>It&#x27;s interesting when you understand enough words.</td><td class="num">1</td><td>it&#x27;s interesting when&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">58</td><td>S0058L02</td><td>you understand</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">58</td><td>S0058L03</td><td>enough words</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">59</td><td>S0059L01</td><td>I know</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">59</td><td>S0059L02</td><td>to do</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">59</td><td>S0059L03</td><td>next week</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">60</td><td>S0060L01</td><td>different words</td><td>I don&#x27;t know how to say enough different words yet</td><td class="num">1</td><td>different words&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">60</td><td>S0060L02</td><td>enough different words</td><td>I don&#x27;t know how to say enough different words yet.</td><td class="num">1</td><td>enough different words&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">61</td><td>S0061L01</td><td>could you</td><td>could you say that again a little more slowly?</td><td class="num">2</td><td>could you&quot; is register-ambiguous and poder; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">61</td><td>S0061L02</td><td>that</td><td>could you say that again a little more slowly?</td><td class="num">5</td><td>that&quot; = eso, ese or que; context settles eso</td></tr>
+<tr><td>spa_for_eng</td><td class="num">61</td><td>S0061L03</td><td>again</td><td>could you say that again a little more slowly?</td><td class="num">1</td><td>again&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">61</td><td>S0061L04</td><td>slowly</td><td>could you say that again a little more slowly?</td><td class="num">1</td><td>slowly&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">62</td><td>S0062L01</td><td></td><td></td><td class="num"></td><td>empty intro text in course_audio; no intro to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">63</td><td>S0063L01</td><td>are you sure you don&#x27;t mind helping me</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">64</td><td>S0064L01</td><td>easy</td><td>learning Spanish isn&#x27;t easy but it is fun</td><td class="num">1</td><td>easy&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">64</td><td>S0064L02</td><td>fun</td><td>learning Spanish isn&#x27;t easy but it is fun</td><td class="num">1</td><td>fun&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">65</td><td>S0065L01</td><td>important</td><td>It&#x27;s important to take time to test yourself</td><td class="num">1</td><td>important&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">65</td><td>S0065L02</td><td>to test yourself</td><td>It&#x27;s important to take time to test yourself</td><td class="num">2</td><td>to test yourself&quot; is register-ambiguous and reflexive; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">66</td><td>S0066L01</td><td>difficult</td><td>It&#x27;s not difficult to find the answer</td><td class="num">1</td><td>difficult&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">66</td><td>S0066L02</td><td>to find</td><td>It&#x27;s not difficult to find the answer</td><td class="num">2</td><td>to find&quot; = encontrar or hallar; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">67</td><td>S0067L01</td><td>why do you want to stop</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">68</td><td>S0068L01</td><td>what are you looking for</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">69</td><td>S0069L01</td><td>the dog</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">69</td><td>S0069L02</td><td>young</td><td>he didn&#x27;t want to look after the young dog all afternoon</td><td class="num">2</td><td>young&quot; = joven or jóven; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">69</td><td>S0069L03</td><td>to look after</td><td>he didn&#x27;t want to look after the young dog all afternoon</td><td class="num">3</td><td>to look after&quot; = cuidar or vigilar; context settles cuidar</td></tr>
+<tr><td>spa_for_eng</td><td class="num">70</td><td>S0070L01</td><td>to tell me</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">70</td><td>S0070L02</td><td>where</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">71</td><td>S0071L01</td><td>we wanted</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">71</td><td>S0071L02</td><td>heard the truth</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">71</td><td>S0071L03</td><td>anyone</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">71</td><td>S0071L04</td><td>to let that</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">72</td><td>S0072L01</td><td>it</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">72</td><td>S0072L02</td><td>you&#x27;re doing it</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">73</td><td>S0073L01</td><td>thank you very much</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">74</td><td>S0074L01</td><td>have you got</td><td>Have you got more to learn?</td><td class="num">3</td><td>have you got&quot; = tener or conseguir; context shows tener</td></tr>
+<tr><td>spa_for_eng</td><td class="num">74</td><td>S0074L02</td><td>to understand</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">75</td><td>S0075L01</td><td>you have</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">76</td><td>S0076L01</td><td>I&#x27;m surprised at</td><td>I&#x27;m surprised at how quickly I&#x27;m starting to understand.</td><td class="num">1</td><td>I&#x27;m surprised at&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">76</td><td>S0076L02</td><td>how quickly</td><td>I&#x27;m surprised at how quickly I&#x27;m starting to understand.</td><td class="num">2</td><td>how quickly&quot; = qué rápido or cómo de rápido; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">76</td><td>S0076L03</td><td>I have learned</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">77</td><td>S0077L01</td><td>it surprises</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">77</td><td>S0077L02</td><td>how quickly</td><td>I&#x27;m surprised at how quickly I&#x27;m starting to understand</td><td class="num">2</td><td>how quickly&quot; = qué rápido or cómo de rápido; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">77</td><td>S0077L03</td><td>starting to understand</td><td>I&#x27;m surprised at how quickly I&#x27;m starting to understand</td><td class="num">1</td><td>starting to understand&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">78</td><td>S0078L01</td><td>I understand</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">78</td><td>S0078L02</td><td>you said</td><td>I don&#x27;t understand what you said</td><td class="num">2</td><td>you said&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">79</td><td>S0079L01</td><td>when</td><td>when did you start to learn?</td><td class="num">4</td><td>when&quot; = cuándo (question) or cuando; context settles the question</td></tr>
+<tr><td>spa_for_eng</td><td class="num">79</td><td>S0079L02</td><td>did you start</td><td>when did you start to learn?</td><td class="num">2</td><td>did you start&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">80</td><td>S0080L01</td><td>I will be</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">81</td><td>S0081L01</td><td>when</td><td>Do you know when you want to start?</td><td class="num">4</td><td>when&quot; = cuándo or cuando; context settles the question</td></tr>
+<tr><td>spa_for_eng</td><td class="num">82</td><td>S0082L01</td><td>to wait for you</td><td>I&#x27;m not going to wait for you. Why not?</td><td class="num">2</td><td>to wait for you&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">83</td><td>S0083L01</td><td>in agreement</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">83</td><td>S0083L02</td><td>what he said</td><td>I don&#x27;t agree with what he said about my friend.</td><td class="num">2</td><td>what he said&quot; = lo que or qué; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">83</td><td>S0083L03</td><td>about your friend</td><td>I agree with what you said about your friend</td><td class="num">2</td><td>about your friend&quot; tu/su and register; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">84</td><td>S0084L01</td><td>he said</td><td>I don&#x27;t agree with what he said about my friend</td><td class="num">1</td><td>he said&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">84</td><td>S0084L02</td><td>my friend</td><td>I don&#x27;t agree with what he said about my friend</td><td class="num">2</td><td>my friend&quot; gender (amigo/amiga) not settled by context</td></tr>
+<tr><td>spa_for_eng</td><td class="num">85</td><td>S0085L01</td><td>it wasn&#x27;t possible</td><td>It wasn&#x27;t possible, unfortunately.</td><td class="num">1</td><td>it wasn&#x27;t possible&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">85</td><td>S0085L02</td><td>those people</td><td>I don&#x27;t know those people</td><td class="num">1</td><td>those people&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">86</td><td>S0086L01</td><td>they are people</td><td>They are people I don&#x27;t know.</td><td class="num">3</td><td>they are&quot; = son or están; context does not settle ser/estar</td></tr>
+<tr><td>spa_for_eng</td><td class="num">86</td><td>S0086L02</td><td>unfortunately</td><td>it wasn&#x27;t possible, unfortunately</td><td class="num">1</td><td>unfortunately&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">87</td><td>S0087L01</td><td>they are people who</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">88</td><td>S0088L01</td><td>ready</td><td>I&#x27;m not ready to talk to people I don&#x27;t know yet</td><td class="num">2</td><td>ready&quot; = listo or preparado; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">88</td><td>S0088L02</td><td>yet</td><td>I&#x27;m not ready to talk to people I don&#x27;t know yet</td><td class="num">4</td><td>yet&quot; = todavía or ya; context settles todavía</td></tr>
+<tr><td>spa_for_eng</td><td class="num">89</td><td>S0089L01</td><td>I&#x27;ve done</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">89</td><td>S0089L02</td><td>speak more slowly</td><td>If you can speak more slowly that would be great.</td><td class="num">1</td><td>speak more slowly&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">89</td><td>S0089L03</td><td>that would be great</td><td>If you can speak more slowly that would be great.</td><td class="num">1</td><td>that would be great&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">90</td><td>S0090L01</td><td>it&#x27;s difficult to</td><td>It&#x27;s difficult to think quickly enough to answer in time.</td><td class="num">1</td><td>it&#x27;s difficult to&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">90</td><td>S0090L02</td><td>think quickly enough</td><td>It&#x27;s difficult to think quickly enough to answer in time.</td><td class="num">1</td><td>think quickly enough&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">90</td><td>S0090L03</td><td>to answer in time</td><td>It&#x27;s difficult to think quickly enough to answer in time.</td><td class="num">2</td><td>to answer in time&quot; = responder or contestar; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">90</td><td>S0090L04</td><td>would be</td><td>if you can speak more slowly that would be great</td><td class="num">3</td><td>would be&quot; = sería or estaría; context settles ser</td></tr>
+<tr><td>spa_for_eng</td><td class="num">90</td><td>S0090L05</td><td>great</td><td>if you can speak more slowly that would be great</td><td class="num">3</td><td>great&quot; = gran or genial; context settles genial</td></tr>
+<tr><td>spa_for_eng</td><td class="num">91</td><td>S0091L02</td><td>quickly enough</td><td>It&#x27;s difficult to think quickly enough to answer in time</td><td class="num">1</td><td>quickly enough&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">91</td><td>S0091L03</td><td>this for a while</td><td>I&#x27;d like to keep on doing this for a while.</td><td class="num">2</td><td>this for a while&quot; is clear enough; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">92</td><td>S0092L01</td><td>to continue</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">92</td><td>S0092L02</td><td>this</td><td>I&#x27;d like to keep on doing this for a while</td><td class="num">3</td><td>this&quot; = esto or este; gender choice; context settles esto</td></tr>
+<tr><td>spa_for_eng</td><td class="num">92</td><td>S0092L03</td><td>a while</td><td>I&#x27;d like to keep on doing this for a while</td><td class="num">2</td><td>a while&quot; is clear enough; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">93</td><td>S0093L01</td><td>time to go</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">94</td><td>S0094L01</td><td>the only way</td><td>this is the only way it will work</td><td class="num">3</td><td>the only way&quot; = manera or camino; context settles manera</td></tr>
+<tr><td>spa_for_eng</td><td class="num">94</td><td>S0094L02</td><td>it will work</td><td>this is the only way it will work</td><td class="num">3</td><td>it will work&quot; = will as future; work = funciona or trabaja; context partly settles</td></tr>
+<tr><td>spa_for_eng</td><td class="num">95</td><td>S0095L01</td><td>go home</td><td>are you ready to go home on the next bus?</td><td class="num">1</td><td>go home&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">95</td><td>S0095L02</td><td>the next bus</td><td>are you ready to go home on the next bus?</td><td class="num">1</td><td>the next bus&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">96</td><td>S0096L01</td><td>yet</td><td>I don&#x27;t know yet how to say enough words</td><td class="num">4</td><td>yet&quot; = todavía or ya; context settles todavía</td></tr>
+<tr><td>spa_for_eng</td><td class="num">96</td><td>S0096L02</td><td>a little more time</td><td>no I&#x27;m not ready yet, I need a little more time</td><td class="num">1</td><td>a little more time&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">97</td><td>S0097L01</td><td>yes</td><td>yes I&#x27;m ready to go as soon as you want</td><td class="num">1</td><td>yes&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">97</td><td>S0097L02</td><td>whenever you want</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">98</td><td>S0098L01</td><td>should</td><td>I should consider playing something else</td><td class="num">3</td><td>should&quot; = debería or debo; context settles debería</td></tr>
+<tr><td>spa_for_eng</td><td class="num">98</td><td>S0098L02</td><td></td><td></td><td class="num"></td><td>empty intro text in course_audio; no intro to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">98</td><td>S0098L03</td><td>play</td><td>I should consider playing something else</td><td class="num">3</td><td>play&quot; = jugar or tocar; context leaves it open</td></tr>
+<tr><td>spa_for_eng</td><td class="num">98</td><td>S0098L04</td><td>different</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">99</td><td>S0099L01</td><td>you should</td><td>you should ask yourself why it&#x27;s not working</td><td class="num">2</td><td>you should&quot; is register-ambiguous; context cannot settle it</td></tr>
+<tr><td>spa_for_eng</td><td class="num">99</td><td>S0099L02</td><td>it&#x27;s not working</td><td>you should ask yourself why it&#x27;s not working</td><td class="num">2</td><td>it&#x27;s not working&quot; = no funciona or no trabaja; context adds little</td></tr>
+<tr><td>spa_for_eng</td><td class="num">100</td><td>S0100L01</td><td>to worry</td><td></td><td class="num"></td><td>no as-in clause (Frame A); nothing to score</td></tr>
+<tr><td>spa_for_eng</td><td class="num">100</td><td>S0100L02</td><td>about doing</td><td>you shouldn&#x27;t worry about doing something similar</td><td class="num">1</td><td>about doing&quot; is unambiguous</td></tr>
+<tr><td>spa_for_eng</td><td class="num">100</td><td>S0100L03</td><td>similar</td><td>you shouldn&#x27;t worry about doing something similar</td><td class="num">1</td><td>similar&quot; is unambiguous</td></tr>
+</tbody></table>
+<script>
+(function(){
+  var t=document.getElementById('t'), tb=t.tBodies[0], dir={};
+  t.tHead.rows[0].cells.forEach(function(th){
+    th.addEventListener('click', function(){
+      var i=+th.dataset.i, d=dir[i]=!dir[i];
+      var rows=Array.prototype.slice.call(tb.rows);
+      rows.sort(function(a,b){
+        var x=a.cells[i].textContent, y=b.cells[i].textContent;
+        if(i===1||i===5){
+          var nx=x===''?Infinity:+x, ny=y===''?Infinity:+y;
+          if(nx===ny) return 0;
+          return d? (nx<ny?-1:1) : (nx<ny?1:-1);
+        }
+        return d? x.localeCompare(y) : y.localeCompare(x);
+      });
+      rows.forEach(function(r){tb.appendChild(r);});
+    });
+  });
+})();
+</script>
+</body></html>

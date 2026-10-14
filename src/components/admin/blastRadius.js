@@ -103,6 +103,7 @@ export const LAB_BLAST_RADIUS = {
   scripts: { tier: 'deferred', writes: 'POST /api/canonical-script — a versioned save onto canonical_pod_scenarios.english_text, the English master every course flexes from. No generated pod changes until re-translation.' },
   vad: { tier: 'none', writes: 'POST /api/vad-recordings — stores admin takes + scores under s3://ssi-audio-stage/vad-lab/. No learner-facing code reads that prefix.' },
   basket: { tier: 'none', writes: 'nothing — mounted readOnly: true at services/production-api.cjs:176' },
+  intro: { tier: 'none', writes: 'nothing — SELECTs on course_legos / course_audio plus a byte proxy of existing clips; mixing happens in the browser. Nothing stored, no audio rendered.' },
   'capture-ab': { tier: 'none', writes: 'nothing — records in the browser, decodes, prints numbers. Nothing uploaded, nothing stored.' },
 }
 

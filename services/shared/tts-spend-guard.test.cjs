@@ -94,6 +94,20 @@ describe('(b) global budgets: daily cap and a stop share of the monthly pool', (
 })
 
 describe('(c) idempotency: the same words, voice and provider are not bought over and over', () => {
+  it('counts each native speed apart: 1.0, 0.8 and 0.9 pass, a 4th identical render at one speed trips (job #756)', async () => {
+    const g = guard({ budgetPath: budgets({ repeat: { maxPerKey: 3, windowHours: 24 } }) })
+    for (const speed of [undefined, 0.8, 0.9]) for (let i = 0; i < 3; i++) await call(g, 'her name', { speed })
+    await expect(call(g, 'her name', { speed: 0.8 })).rejects.toThrow(/REPEAT.*3 times/)
+    await expect(call(g, 'her name')).rejects.toThrow(/REPEAT.*3 times/)
+    expect(repeatKey('cartesia', 'v', 'x', 1)).toBe(repeatKey('cartesia', 'v', 'x'))
+  })
+
+  it('the committed default allows 5 identical sends in 24h and refuses the 6th (Tom 2026-10-13, job #590)', async () => {
+    const g = guard({ budgetPath: budgets({}) })
+    for (let i = 0; i < 5; i++) await call(g, 'her name')
+    await expect(call(g, 'her name')).rejects.toThrow(/REPEAT.*5 times/)
+  })
+
   it('refuses the (maxPerKey+1)th send inside the window, whatever the caller thinks is missing', async () => {
     const g = guard({ budgetPath: budgets({ repeat: { maxPerKey: 3, windowHours: 24 } }) })
     for (let i = 0; i < 3; i++) await call(g, 'her name')
@@ -106,12 +120,16 @@ describe('(c) idempotency: the same words, voice and provider are not bought ove
   it('keys ignore case, spacing and punctuation but not voice or provider', () => {
     expect(repeatKey('cartesia', 'v', 'Her  name.')).toBe(repeatKey('cartesia', 'v', 'her name'))
     expect(repeatKey('cartesia', 'v', 'her name')).not.toBe(repeatKey('xai', 'v', 'her name'))
+    // Tom 2026-10-13: a question mark makes a different recording, so it is a different line for the loop cap
+    expect(repeatKey('cartesia', 'v', 'Onde era?')).not.toBe(repeatKey('cartesia', 'v', 'onde era'))
+    expect(repeatKey('cartesia', 'v', 'Onde era?')).toBe(repeatKey('cartesia', 'v', 'onde era ?!'))
+    expect(repeatKey('cartesia', 'v', '本当に？')).toBe(repeatKey('cartesia', 'v', '本当に?'))
   })
 })
 
 describe('(c2) Tom-signed repeat exemption: one job, named words, once each, nothing else looser', () => {
   const exemption = (o = {}) => ({ job: '#700', texts: ['her name'], by: 'Tom (explicit go in chat, 2026-09-29 00:44Z, via Watson)', why: 'finish the Italian audio', until: '2026-09-27T00:00:00Z', ...o })
-  const capped = async (g) => { for (let i = 0; i < 3; i++) await call(g, 'her name') }
+  const capped = async (g) => { for (let i = 0; i < 5; i++) await call(g, 'her name') }
   it('lets the named job send the named words once past the cap, then refuses a second, and never opens the cap for anyone else or any other words', async () => {
     const g = guard({ budgetPath: budgets({ repeatExemptions: [exemption()] }) })
     await capped(g)
@@ -119,7 +137,7 @@ describe('(c2) Tom-signed repeat exemption: one job, named words, once each, not
     await expect(call(g, 'her name', { job: '#7000·I' })).rejects.toThrow(/REPEAT/)
     await expect(call(g, 'her name', { job: '#700·I' })).resolves.toBeTruthy()
     await expect(call(g, 'her name', { job: '#700·I' })).rejects.toThrow(/exempt call/)
-    for (let i = 0; i < 3; i++) await call(g, 'his name')
+    for (let i = 0; i < 5; i++) await call(g, 'his name')
     await expect(call(g, 'his name', { job: '#700·I' })).rejects.toThrow(/REPEAT/)
   })
   it('is ignored unless Tom signed it', async () => {
@@ -247,9 +265,30 @@ describe('(f3) a limits change is said once per host, not on every restart (job 
   })
 })
 
+describe('(f4) the combined cap falling back when its raise expires is a limits change (lane review #878)', () => {
+  it('says so once when hold.raise lapses', async () => {
+    const sent = []
+    const b = budgets({ hold: { by: 'Tom', since: '2026-09-28', message: 'held', combinedDailyCapChars: 1000000, raise: { combinedDailyCapChars: 3000000, by: 'Watson for Tom', why: 'test', until: '2026-10-23T00:00:00Z' } }, providers: { cartesia: { monthlyPoolChars: 10 ** 9, dailyCapChars: 10 ** 7, alertDailyChars: 1e9 } } })
+    const limitCards = () => sent.filter(e => String(e.key).startsWith('limits:'))
+    const saved = clock
+    try {
+      clock = Date.parse('2026-10-22T12:00:00Z')
+      const g = guard({ notify: (e) => sent.push(e), budgetPath: b })
+      await call(g, 'before expiry')
+      const before = limitCards().length
+      clock = Date.parse('2026-10-23T00:00:01Z')
+      await call(g, 'after expiry')
+      expect(limitCards().length).toBe(before + 1)
+    } finally { clock = saved }
+  })
+})
+
 describe('(h) the standing hold: 1,000,000 chars a day across all providers (Tom 2026-09-28, jobs #569, #570)', () => {
   // The COMMITTED budget file, not a fixture: this is the rule as it ships.
-  const committed = path.join(__dirname, '..', '..', 'ops', 'tts-spend-budgets.json')
+  const shipped = path.join(__dirname, '..', '..', 'ops', 'tts-spend-budgets.json')
+  // The standing hold is the baseline WITHOUT any temporary signed raise (hold.raise, the Cartesia dailyCapChars raise): a raise for a named job expires on its own date, and these tests must not depend on today's date.
+  const committed = path.join(require('os').tmpdir(), `tts-baseline-hold-${process.pid}.json`)
+  { const d = JSON.parse(fs.readFileSync(shipped, 'utf8')); delete d.hold.raise; if (d.providers.cartesia.raise) delete d.providers.cartesia.raise.dailyCapChars; fs.writeFileSync(committed, JSON.stringify(d)) }
 
   for (const provider of ['cartesia', 'azure', 'xai']) {
     it(`${provider}: a 1,000,001-char day is refused, naming Tom's go`, async () => {

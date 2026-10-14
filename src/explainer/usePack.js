@@ -21,7 +21,7 @@ const refreshError = ref(null)
 async function fetchLivePack() {
   try {
     const res = await fetch(`${apiBase()}/api/explainer/pack`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' },
+      headers: {},
     })
     if (!res.ok) return
     const pack = await res.json()
@@ -46,7 +46,7 @@ export function usePack() {
     try {
       const res = await fetch(`${apiBase()}/api/explainer/refresh`, {
         method: 'POST',
-        headers: { Authorization: `Bearer ${token}`, 'ngrok-skip-browser-warning': 'true' },
+        headers: { Authorization: `Bearer ${token}` },
       })
       const body = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(body.error || `refresh failed (${res.status})`)

@@ -66,6 +66,7 @@ async function swapClipInPlace ({
   if (!audioId) throw new Error('swapClipInPlace: audioId is required')
   if (!newS3Key) throw new Error('swapClipInPlace: newS3Key is required')
   if (!acceptedBy) throw new Error('swapClipInPlace: acceptedBy is required (history column is NOT NULL)')
+  require('./audio-trial-mode.cjs').assertNotTrial(audioId, newS3Key)   // a trial clip is never connected to a course (job #748)
 
   // Make before break: prove the new bytes are really in the bucket BEFORE the
   // row is pointed at them.

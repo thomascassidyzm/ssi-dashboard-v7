@@ -1215,7 +1215,7 @@ async function fetchProgress() {
       }
     } else {
       const apiBase = getApiUrl()
-      const statsResponse = await fetch(`${apiBase}/api/stats/${courseCode}`, { headers: { 'ngrok-skip-browser-warning': 'true' } })
+      const statsResponse = await fetch(`${apiBase}/api/stats/${courseCode}`, { headers: {} })
       if (statsResponse.ok) {
         const data = await statsResponse.json()
         const totalSeeds = data.total_seeds || seedCount.value
@@ -1246,7 +1246,7 @@ async function fetchSeedGrid() {
     } else {
       const apiBase = getApiUrl()
       const response = await fetch(`${apiBase}/api/build/seed-grid/${courseCode}`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
       if (response.ok) {
         const data = await response.json()
@@ -1269,7 +1269,6 @@ async function createCourse() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         courseCode,
@@ -1301,7 +1300,7 @@ async function startTranslation() {
     const apiBase = getApiUrl()
     const result = await fetchJson(`${apiBase}/api/build/translate/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json' }
     })
     if (result.ok) {
       translateSpawned.value = true
@@ -1330,7 +1329,7 @@ async function confirmResetTranslations() {
     const apiBase = getApiUrl()
     const result = await fetchJson(`${apiBase}/api/course/${courseCode}/reset-translations`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json' }
     })
     if (result.ok) {
       console.log(`[reset] Wiped ${result.seeds_reset} translations for ${courseCode}`)
@@ -1354,7 +1353,7 @@ async function startBuildTeam() {
     const apiBase = getApiUrl()
     const result = await fetchJson(`${apiBase}/api/build/team-start/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ targetSeeds: seedCount.value })
     })
     if (result.ok) {
@@ -1391,7 +1390,7 @@ async function startFinalPass(mode = 'all') {
 
     const result = await fetchJson(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json' }
     })
     if (result.ok) {
       finalPassSpawned.value = true
@@ -1415,12 +1414,12 @@ async function massApproveSeeds() {
     const apiBase = getApiUrl()
     const result = await fetchJson(`${apiBase}/api/build/mass-approve/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json' }
     })
     if (result.ok) {
       // Refresh the seed grid
       const data = await fetchJson(`${apiBase}/api/build/seed-grid/${courseCode}`, {
-        headers: { 'ngrok-skip-browser-warning': 'true' }
+        headers: {}
       })
       seedGrid.value = data.seeds || []
     } else {
@@ -1452,7 +1451,7 @@ async function checkComponentGaps() {
   try {
     const apiBase = getApiUrl()
     const data = await fetchJson(`${apiBase}/api/build/component-gaps/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     componentGaps.value = data
   } catch (err) {
@@ -1471,7 +1470,7 @@ async function startComponentBackfill() {
     const apiBase = getApiUrl()
     const result = await fetchJson(`${apiBase}/api/build/component-backfill/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json' }
     })
     if (result.ok) {
       componentBackfillSpawnedMsgCount = orchestratorMessages.value.length
@@ -1494,7 +1493,7 @@ async function checkZutCollisions() {
   try {
     const apiBase = getApiUrl()
     const data = await fetchJson(`${apiBase}/api/build/zut-collisions/${courseCode}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     zutCollisions.value = data
   } catch (err) {
@@ -1512,7 +1511,7 @@ async function startZutResolve() {
     const apiBase = getApiUrl()
     const result = await fetchJson(`${apiBase}/api/build/zut-resolve/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json' }
     })
     if (result.ok) {
       zutResolveSpawnedMsgCount = orchestratorMessages.value.length
@@ -1547,7 +1546,7 @@ async function startBackfillPhrases() {
     const apiBase = getApiUrl()
     const result = await fetchJson(`${apiBase}/api/build/backfill-phrases/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json' }
     })
     if (result.ok) {
       backfillPhrasesSpawned.value = true
@@ -1571,7 +1570,7 @@ async function startGenderPrep() {
     const apiBase = getApiUrl()
     const result = await fetchJson(`${apiBase}/api/production/${courseCode}/gender-prep/start`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' }
+      headers: { 'Content-Type': 'application/json' }
     })
     if (result.ok !== false) {
       genderSpawnedMsgCount = orchestratorMessages.value.length
@@ -1593,7 +1592,7 @@ async function stopBuilder() {
     const apiBase = getApiUrl()
     await fetch(`${apiBase}/api/build/stop/${effectiveCourseCode.value}`, {
       method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     progress.value.status = 'idle'
   } catch (error) {
@@ -1606,7 +1605,7 @@ async function forceResetBuilder() {
     const apiBase = getApiUrl()
     await fetch(`${apiBase}/api/build/stop/${effectiveCourseCode.value}`, {
       method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
   } catch (error) {
     console.warn('Stop API call failed during force reset:', error)
@@ -1630,7 +1629,7 @@ async function killAgent(pid) {
     const apiBase = getApiUrl()
     const result = await fetchJson(`${apiBase}/api/agents/${pid}`, {
       method: 'DELETE',
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (result.ok) {
       fetchProgress()
@@ -1673,7 +1672,7 @@ async function selectSeed(seedNum) {
       seedViewPhrases.value = [...legoMap.values()].sort((a, b) => a.lego_index - b.lego_index)
     } else {
       const apiBase = getApiUrl()
-      const h = { 'ngrok-skip-browser-warning': 'true' }
+      const h = {}
       const [legosResp, phrasesResp, seedsResp] = await Promise.all([
         fetch(`${apiBase}/api/legos/${courseCode}?seed=${seedNum}`, { headers: h }),
         fetch(`${apiBase}/api/phrases/${courseCode}?seed_min=${seedNum}&seed_max=${seedNum}&limit=300`, { headers: h }),
@@ -1720,7 +1719,7 @@ async function approveSeed() {
     const apiBase = getApiUrl()
     await fetch(`${apiBase}/api/orchestrator/chat/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ role: 'human', message: `Approved seed ${seedNum}`, action: 'approve', metadata: { seed_number: seedNum } })
     })
     seedReviewNotes.value = ''
@@ -1748,7 +1747,7 @@ async function redoSeed() {
     const notes = seedReviewNotes.value.trim()
     await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ seeds: [seedNum], notes })
     })
     seedReviewNotes.value = ''
@@ -1779,7 +1778,7 @@ async function undoRedo() {
     const apiBase = getApiUrl()
     const resp = await fetch(`${apiBase}/api/build/redo-undo/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ seed: seedNum })
     })
     const body = await resp.json().catch(() => ({}))
@@ -1806,7 +1805,7 @@ async function redoAllFlagged() {
     const apiBase = getApiUrl()
     await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ seeds: flaggedSeeds, notes: 'Redo all flagged seeds' })
     })
     // Optimistically mark all flagged as building
@@ -1857,7 +1856,7 @@ async function sendChat() {
         const notes = notesMatch?.[1]?.trim() || ''
         await fetch(`${apiBase}/api/build/redo/${courseCode}`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ seeds: seedNums, notes })
         })
         // Optimistically update grid
@@ -1878,7 +1877,7 @@ async function sendChat() {
         for (const seedNum of seedNums) {
           const resp = await fetch(`${apiBase}/api/build/redo-undo/${courseCode}`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ seed: seedNum })
           })
           const body = await resp.json().catch(() => ({}))
@@ -1891,7 +1890,7 @@ async function sendChat() {
 
     await fetch(`${apiBase}/api/orchestrator/chat/${courseCode}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ role: 'human', message: text })
     })
     // Refresh to get server-assigned ID and pick up any agent response
@@ -1940,7 +1939,7 @@ async function loadLanguages() {
   try {
     const apiBase = getApiUrl()
     const response = await fetch(`${apiBase}/api/languages?tts=true&format=legacy`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' }
+      headers: {}
     })
     if (response.ok) {
       languages.value = await response.json()

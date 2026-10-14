@@ -1,0 +1,3254 @@
+{
+ "course": "zho_for_eng",
+ "seeds": {
+  "9": {
+   "seed": 9,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "can",
+     "target": "会"
+    },
+    {
+     "idx": 2,
+     "known": "a little",
+     "target": "一点"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "A",
+      "known": "can",
+      "target": "会",
+      "components": null,
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "I can speak Chinese",
+       "target": "我会说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural core use of 会 for a learned skill. The English is natural and the mapping is exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I can speak Chinese now",
+       "target": "我现在会说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, and 现在 sits correctly before 会. It is close to the seed and maps exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "You can speak Chinese",
+       "target": "你会说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural ability statement with 会. Exact mapping.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "Now you can speak Chinese",
+       "target": "你现在会说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "你现在会说中文 is natural and correctly says 'now you can speak Chinese'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I can use a word",
+       "target": "我会用一个词",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Use a word' is not a learned skill, so 会 tends to read as 'will', and the phrase is odd in both languages.",
+       "keep": false,
+       "why": "Opus: bad — 'Use a word' is not a learned skill, so 会 tends to read as 'will', and the phrase is odd in both languages."
+      },
+      {
+       "role": "build",
+       "known": "I can explain a word",
+       "target": "我会解释一个词",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "我会解释一个词 most readily reads as 'I will explain a word'. The ability meaning with an unspecified 'a word' is unnatural.",
+       "keep": false,
+       "why": "Opus: bad — 我会解释一个词 most readily reads as 'I will explain a word'. The ability meaning with an unspecified 'a word' is unnatural."
+      },
+      {
+       "role": "use",
+       "known": "I can speak Chinese with you now",
+       "target": "我现在会和你说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Ability does not depend on who you talk to. 会和你说中文 reads as 'will speak Chinese with you'; the natural choice here would be 能 or 可以.",
+       "keep": false,
+       "why": "Opus: bad — Ability does not depend on who you talk to. 会和你说中文 reads as 'will speak Chinese with you'; the natural choice here would be 能 or 可以."
+      },
+      {
+       "role": "use",
+       "known": "I can speak Chinese with someone else",
+       "target": "我会和别人说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "会和别人说中文 reads as future 'will'. The English 'with someone else' is also stilted for an ability statement.",
+       "keep": false,
+       "why": "Opus: bad — 会和别人说中文 reads as future 'will'. The English 'with someone else' is also stilted for an ability statement."
+      },
+      {
+       "role": "use",
+       "known": "I can explain my meaning in Chinese",
+       "target": "我会用中文解释我的意思",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known side 'explain my meaning' is clunky, not tier 1. 会 is also ambiguous between 'can' and 'will' here.",
+       "keep": false,
+       "why": "Opus: bad — The known side 'explain my meaning' is clunky, not tier 1. 会 is also ambiguous between 'can' and 'will' here."
+      },
+      {
+       "role": "use",
+       "known": "You can explain a word in Chinese",
+       "target": "你会用中文解释一个词",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "An unspecified 'a word' makes this unnatural, and 会 is ambiguous with 'will'. It is not clearly tier 1.",
+       "keep": false,
+       "why": "Opus: bad — An unspecified 'a word' makes this unnatural, and 会 is ambiguous with 'will'. It is not clearly tier 1."
+      },
+      {
+       "role": "use",
+       "known": "You can practise with someone else in Chinese",
+       "target": "你会用中文和别人练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "会…和别人练习 reads as 'will practise with others'. Permission or opportunity would need 可以 or 能, not 会.",
+       "keep": false,
+       "why": "Opus: bad — 会…和别人练习 reads as 'will practise with others'. Permission or opportunity would need 可以 or 能, not 会."
+      },
+      {
+       "role": "use",
+       "known": "Now you can speak Chinese with someone else",
+       "target": "你现在会和别人说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "With an interlocutor attached, 会 reads as 'will' rather than ability. The natural phrasing would be 可以 or 能.",
+       "keep": false,
+       "why": "Opus: bad — With an interlocutor attached, 会 reads as 'will' rather than ability. The natural phrasing would be 可以 or 能."
+      },
+      {
+       "role": "use",
+       "known": "Now I can practise with you in Chinese",
+       "target": "我现在会用中文和你练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "现在会…和你练习 reads as 'will practise now', not ability. 'Can' in the sense of opportunity needs 可以 or 能.",
+       "keep": false,
+       "why": "Opus: bad — 现在会…和你练习 reads as 'will practise now', not ability. 'Can' in the sense of opportunity needs 可以 or 能."
+      },
+      {
+       "role": "use",
+       "known": "Now I can practise with someone else in Chinese",
+       "target": "我现在会用中文和别人练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same problem as P13: 会 here means 'will' rather than 'can'.",
+       "keep": false,
+       "why": "Opus: bad — Same problem as P13: 会 here means 'will' rather than 'can'."
+      },
+      {
+       "role": "use",
+       "known": "I can explain a word in Chinese",
+       "target": "我会用中文解释一个词",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "An unspecified 'a word' is unnatural, and 我会解释 is easily read as 'I will explain'. Unsure means BAD.",
+       "keep": false,
+       "why": "Opus: bad — An unspecified 'a word' is unnatural, and 我会解释 is easily read as 'I will explain'. Unsure means BAD."
+      },
+      {
+       "role": "build",
+       "known": "I can speak",
+       "target": "我会说",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Correct, natural fragment that contains 会 and extends naturally, e.g. 我会说中文. The known side uses only taught glosses.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "Now I can speak",
+       "target": "我现在会说",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "我现在会说 is the right Mandarin word order for 'Now I can speak' and contains 会. It is a natural fragment that extends to the seed sentence, and every word is taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I can speak Chinese, I want to practise with you",
+       "target": "我会说中文,我想和你练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The English is a comma splice: two independent clauses joined only by a comma. That is not one natural tier-1 sentence. The target also uses a half-width comma instead of ，. Linking the clauses would need an untaught 'so' (所以).",
+       "keep": false,
+       "why": "Opus: bad — The English is a comma splice: two independent clauses joined only by a comma. That is not one natural tier-1 sentence. The target also uses a half-width comma instead of ，. Linking the clauses would need an untaught 'so' (所以)."
+      },
+      {
+       "role": "use",
+       "known": "You can speak Chinese, I want to practise with you",
+       "target": "你会说中文,我想和你练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Same comma-splice problem: two independent clauses, not one natural English sentence. The causal link is only implied, so it reads clunky, and the target uses a half-width comma.",
+       "keep": false,
+       "why": "Opus: bad — Same comma-splice problem: two independent clauses, not one natural English sentence. The causal link is only implied, so it reads clunky, and the target uses a half-width comma."
+      },
+      {
+       "role": "use",
+       "known": "Now I can speak Chinese, I want to practise",
+       "target": "我现在会说中文,我想练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": false,
+       "opusReason": "Another comma splice: 'Now I can speak Chinese' and 'I want to practise' are two sentences joined by a comma. This breaks the one-sentence, tier-1-natural USE rule, and the target uses a half-width comma.",
+       "keep": false,
+       "why": "Opus: bad — Another comma splice: 'Now I can speak Chinese' and 'I want to practise' are two sentences joined by a comma. This breaks the one-sentence, tier-1-natural USE rule, and the target uses a half-width comma."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 0,
+     "setGates": {
+      "buildUseFloors": "USE: need 5+, got 0"
+     }
+    }
+   }
+  },
+  "10": {
+   "seed": 10,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "not",
+     "target": "不"
+    },
+    {
+     "idx": 2,
+     "known": "sure",
+     "target": "确定"
+    },
+    {
+     "idx": 3,
+     "known": "whether can",
+     "target": "能不能"
+    },
+    {
+     "idx": 4,
+     "known": "remember the whole sentence",
+     "target": "记住整个句子"
+    },
+    {
+     "idx": 5,
+     "known": "the whole sentence",
+     "target": "整个句子"
+    }
+   ],
+   "legos": {
+    "4": {
+     "lego": {
+      "idx": 4,
+      "type": "M",
+      "known": "remember the whole sentence",
+      "target": "记住整个句子",
+      "components": [
+       {
+        "known": "remember",
+        "target": "记住"
+       },
+       {
+        "known": "the whole sentence",
+        "target": "整个句子"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "I want to remember the whole sentence",
+       "target": "我想记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我想记住整个句子 is grammatical, natural and matches the known side exactly. It is a short BUILD made only of taught LEGOs.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I can remember the whole sentence",
+       "target": "我能记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我能记住整个句子 is natural and correct. It is a short BUILD made only of taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I'm going to remember the whole sentence",
+       "target": "我要记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我要 matches the taught gloss 'I'm going to'. The phrase is natural and correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "now remember the whole sentence",
+       "target": "现在记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "现在记住整个句子 works as a natural imperative fragment and extends easily into a full sentence. The known side tiles from taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I want to try to remember the whole sentence",
+       "target": "我想试试记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "试试 followed by a verb phrase is normal colloquial Mandarin. The phrase is natural, correct and built from taught LEGOs.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "today I want to remember the whole sentence",
+       "target": "今天我想记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今天我想记住整个句子 is natural, uses correct time-word placement and matches the known side.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure whether I can remember the whole sentence",
+       "target": "我不确定我能不能记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the seed sentence itself. It is grammatical and natural, and the known side tiles from 'not', 'sure' and 'whether can'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "today I'm going to try to remember the whole sentence",
+       "target": "今天我要试试记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今天我要试试记住整个句子 is one natural sentence that matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to remember the whole sentence as much as possible",
+       "target": "我想尽可能记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Remember the whole sentence as much as possible' contradicts itself, because something whole is not done 'as much as possible'. The English is not tier 1, and 尽可能记住整个句子 is clunky.",
+       "keep": false,
+       "why": "Opus: bad — 'Remember the whole sentence as much as possible' contradicts itself, because something whole is not done 'as much as possible'. The English is not tier 1, and 尽可能记住整个句子 is clunky."
+      },
+      {
+       "role": "use",
+       "known": "now I want to try to remember the whole sentence in Chinese",
+       "target": "现在我想试试用中文记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Remember the whole sentence in Chinese' does not make sense, because you don't remember something 'in' a language. 用中文记住整个句子 is unnatural.",
+       "keep": false,
+       "why": "Opus: bad — 'Remember the whole sentence in Chinese' does not make sense, because you don't remember something 'in' a language. 用中文记住整个句子 is unnatural."
+      },
+      {
+       "role": "use",
+       "known": "I'm going to try to remember the whole sentence in Chinese",
+       "target": "我要试试用中文记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same problem as P10: 用中文记住 ('remember in Chinese') is semantically odd and not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — Same problem as P10: 用中文记住 ('remember in Chinese') is semantically odd and not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "today I'm not sure whether I can remember the whole sentence",
+       "target": "今天我不确定我能不能记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Putting 今天 at the front is natural. The sentence is plausible and matches the known side exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure whether you can remember the whole sentence",
+       "target": "我不确定你能不能记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我不确定你能不能记住整个句子 is natural and correct. It only swaps in the taught word 你.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "today I want to remember the whole sentence as much as possible",
+       "target": "今天我想尽可能记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It has the same contradictory 'as much as possible' plus 'whole sentence' combination as P9, so it is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — It has the same contradictory 'as much as possible' plus 'whole sentence' combination as P9, so it is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "now I'm going to try to remember the whole sentence",
+       "target": "现在我要试试记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "现在我要试试记住整个句子 is one natural sentence that matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 5,
+     "setGates": {}
+    },
+    "5": {
+     "lego": {
+      "idx": 5,
+      "type": "M",
+      "known": "the whole sentence",
+      "target": "整个句子",
+      "components": [
+       {
+        "known": "whole",
+        "target": "整个"
+       },
+       {
+        "known": "sentence",
+        "target": "句子"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "zho_for_eng:S0010L05B01",
+       "role": "build",
+       "known": "the whole sentence",
+       "target": "整个句子",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO, short fragment, one-to-one mapping, natural and correct.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO with no other taught LEGO. A BUILD must be the LEGO plus one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is the bare LEGO with no other taught LEGO. A BUILD must be the LEGO plus one to three other taught LEGOs."
+      },
+      {
+       "role": "build",
+       "known": "I want the whole sentence",
+       "target": "我要整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "我要 is taught as 'I'm going to' and 'I want' is 我想, so this prompt breaks ZUT. 'I want the whole sentence' is also an odd thing to say.",
+       "keep": false,
+       "why": "Opus: bad — 我要 is taught as 'I'm going to' and 'I want' is 我想, so this prompt breaks ZUT. 'I want the whole sentence' is also an odd thing to say."
+      },
+      {
+       "role": "build",
+       "known": "I want to speak the whole sentence",
+       "target": "我想说整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我想说整个句子 is grammatical and natural, and it matches the tileable known side 'I want to speak'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I can use the whole sentence",
+       "target": "我能用整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我能用整个句子 is grammatical, and every piece is taught (能 = can, 用 = use).",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I cannot explain the whole sentence",
+       "target": "我不能解释整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我不能解释整个句子 is natural and matches the known side exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I want to practise the whole sentence",
+       "target": "我想练习整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我想练习整个句子 is natural and matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I'm going to try the whole sentence",
+       "target": "我要试试整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我要试试整个句子 is natural, and 我要 is used as 'I'm going to', consistent with its taught gloss.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "Today I want to practise the whole sentence",
+       "target": "今天我想练习整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今天我想练习整个句子 is one complete natural sentence with correct word order.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I can speak the whole sentence in Chinese",
+       "target": "我能用中文说整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我能用中文说整个句子 is natural and correctly places 用中文 before the verb. The known side tiles from taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Now I can explain the whole sentence",
+       "target": "现在我能解释整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "现在我能解释整个句子 is a natural complete sentence that matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I often practise the whole sentence with someone else",
+       "target": "我经常和别人练习整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我经常和别人练习整个句子 is natural, with correct adverb and prepositional-phrase order.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Now I'm going to try the whole sentence with you",
+       "target": "现在我要和你试试整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "现在我要和你试试整个句子 is natural and matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure whether I can explain the whole sentence",
+       "target": "我不确定我能不能解释整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This follows the seed pattern with 解释 in place of 记住. It is grammatical, natural and fully taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Today I'm going to learn the whole sentence",
+       "target": "今天我要学习整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今天我要学习整个句子 is natural and matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I cannot explain the whole sentence in Chinese",
+       "target": "我不能用中文解释整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我不能用中文解释整个句子 is natural with correct order, and it matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I often practise the whole sentence in Chinese",
+       "target": "我经常用中文练习整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我经常用中文练习整个句子 is natural with correct order, and it matches the known side.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "11": {
+   "seed": 11,
+   "kind": "grow",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "hope",
+     "target": "希望"
+    },
+    {
+     "idx": 2,
+     "known": "able to",
+     "target": "能"
+    },
+    {
+     "idx": 3,
+     "known": "I too can speak",
+     "target": "我也能说"
+    },
+    {
+     "idx": 4,
+     "known": "after",
+     "target": "之后"
+    }
+   ],
+   "legos": {
+    "4": {
+     "lego": {
+      "idx": 4,
+      "type": "M",
+      "known": "after you finish",
+      "target": "你说完之后",
+      "components": [
+       {
+        "known": "you finish",
+        "target": "你说完"
+       },
+       {
+        "known": "after",
+        "target": "之后"
+       }
+      ],
+      "is_new": true,
+      "change": "set"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "after you finish, I too can speak",
+       "target": "你说完之后我也能说",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The Chinese is grammatical and matches the seed chunk. The English uses taught glosses and the stilted 'I too' is an allowed tileable form. It contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "after you finish, I want to try",
+       "target": "你说完之后我想试试",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and accurate. It uses only taught material and contains the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "after you finish, I can speak Chinese",
+       "target": "你说完之后我能说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'I can speak Chinese' reads as ability, which makes no sense as depending on you finishing. The intended 'get to speak' sense is ambiguous on the known side.",
+       "keep": false,
+       "why": "Opus: bad — 'I can speak Chinese' reads as ability, which makes no sense as depending on you finishing. The intended 'get to speak' sense is ambiguous on the known side."
+      },
+      {
+       "role": "build",
+       "known": "after you finish, I'm going to explain",
+       "target": "你说完之后我要解释",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural sequence, grammatical and accurate. It uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "after you finish, I'm going to practise",
+       "target": "你说完之后我要练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and accurate. It uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "after you finish, I cannot speak",
+       "target": "你说完之后我不能说",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Semantically odd in both languages. 'I cannot speak after you finish' is not a natural thing to say.",
+       "keep": false,
+       "why": "Opus: bad — Semantically odd in both languages. 'I cannot speak after you finish' is not a natural thing to say."
+      },
+      {
+       "role": "use",
+       "known": "After you finish, I hope I too can speak.",
+       "target": "你说完之后我希望我也能说",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Fronting the time clause before 希望 makes the hoping itself seem to happen after you finish. The repeated 我 is clunky, and the natural order is 我希望你说完之后我也能说.",
+       "keep": false,
+       "why": "Opus: bad — Fronting the time clause before 希望 makes the hoping itself seem to happen after you finish. The repeated 我 is clunky, and the natural order is 我希望你说完之后我也能说."
+      },
+      {
+       "role": "use",
+       "known": "After you finish, I want to speak Chinese with you.",
+       "target": "你说完之后我想和你说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, grammatical and an exact match. It uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "After you finish, I'm going to practise in Chinese.",
+       "target": "你说完之后我要用中文练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "用中文练习 is natural and matches 'practise in Chinese'. It is one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "After you finish, I'm going to explain my meaning.",
+       "target": "你说完之后我要解释我的意思",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "解释我的意思 is natural and 'explain my meaning' is acceptable English. Accurate, one sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "After you finish, I'm not sure whether I can remember the whole sentence.",
+       "target": "你说完之后我不确定能不能记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and grammatical. 不确定能不能 matches 'not sure whether I can', and it is one sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "After you finish, I want to try to remember the whole sentence.",
+       "target": "你说完之后我想试试记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "试试记住整个句子 is borderline; 试着记住 or 试试能不能记住 would be more natural. Since it is not clearly tier 1, it is BAD.",
+       "keep": false,
+       "why": "Opus: bad — 试试记住整个句子 is borderline; 试着记住 or 试试能不能记住 would be more natural. Since it is not clearly tier 1, it is BAD."
+      },
+      {
+       "role": "use",
+       "known": "After you finish, I want to learn a little Chinese.",
+       "target": "你说完之后我想学习一点中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Wanting to learn a little Chinese is an odd thing to make contingent on someone finishing speaking. Not tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — Wanting to learn a little Chinese is an odd thing to make contingent on someone finishing speaking. Not tier-1 natural."
+      },
+      {
+       "role": "use",
+       "known": "After you finish, I want to practise with someone else.",
+       "target": "你说完之后我想和别人练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, and it matches the known side. It uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "After you finish, I want to try to speak Chinese now.",
+       "target": "你说完之后我现在想试试说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'After you finish' clashes with 'now' (之后 vs 现在), so the sentence is contradictory and unnatural.",
+       "keep": false,
+       "why": "Opus: bad — 'After you finish' clashes with 'now' (之后 vs 现在), so the sentence is contradictory and unnatural."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 5,
+     "setGates": {}
+    }
+   }
+  },
+  "12": {
+   "seed": 12,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "tomorrow",
+     "target": "明天"
+    },
+    {
+     "idx": 2,
+     "known": "to guess",
+     "target": "猜"
+    },
+    {
+     "idx": 3,
+     "known": "what",
+     "target": "什么"
+    },
+    {
+     "idx": 4,
+     "known": "to happen",
+     "target": "发生"
+    }
+   ],
+   "legos": {
+    "4": {
+     "lego": {
+      "idx": 4,
+      "type": "A",
+      "known": "to happen",
+      "target": "发生",
+      "components": null,
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "what happens now",
+       "target": "现在发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "In English, 'what happens now' usually means 'what do we do next'. The Chinese 现在发生什么 doesn't mean that. It is also an awkward fragment, since a native speaker would say 现在发生了什么 or 接下来会发生什么.",
+       "keep": false,
+       "why": "Opus: bad — In English, 'what happens now' usually means 'what do we do next'. The Chinese 现在发生什么 doesn't mean that. It is also an awkward fragment, since a native speaker would say 现在发生了什么 or 接下来会发生什么."
+      },
+      {
+       "role": "build",
+       "known": "what happens tomorrow",
+       "target": "明天发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "For a future event, Mandarin strongly expects 会: 明天会发生什么. The bare 明天发生什么 is clunky, so it is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — For a future event, Mandarin strongly expects 会: 明天会发生什么. The bare 明天发生什么 is clunky, so it is not tier 1."
+      },
+      {
+       "role": "build",
+       "known": "what happens today",
+       "target": "今天发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "今天发生什么 has no aspect marker and sounds unnatural. It would normally be 今天发生了什么 ('what happened today'), which is not what the known side says. The English 'what happens today' is also stilted.",
+       "keep": false,
+       "why": "Opus: bad — 今天发生什么 has no aspect marker and sounds unnatural. It would normally be 今天发生了什么 ('what happened today'), which is not what the known side says. The English 'what happens today' is also stilted."
+      },
+      {
+       "role": "build",
+       "known": "what happens after",
+       "target": "之后发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "之后发生什么 needs 了 for a past event or 会 for a future one to sound natural. As written it is clunky and ambiguous.",
+       "keep": false,
+       "why": "Opus: bad — 之后发生什么 needs 了 for a past event or 会 for a future one to sound natural. As written it is clunky and ambiguous."
+      },
+      {
+       "role": "build",
+       "known": "I'm not sure what happens",
+       "target": "我不确定发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "我不确定发生什么 is unnatural. A native speaker would say 我不确定发生了什么 or 我不确定会发生什么.",
+       "keep": false,
+       "why": "Opus: bad — 我不确定发生什么 is unnatural. A native speaker would say 我不确定发生了什么 or 我不确定会发生什么."
+      },
+      {
+       "role": "build",
+       "known": "I want to guess what happens",
+       "target": "我想猜发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Both sides are awkward. 我想猜发生什么 lacks 会 or 了, and 'I want to guess what happens' is clunky in English.",
+       "keep": false,
+       "why": "Opus: bad — Both sides are awkward. 我想猜发生什么 lacks 会 or 了, and 'I want to guess what happens' is clunky in English."
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure what's going to happen tomorrow",
+       "target": "我不确定明天会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The Chinese is natural and grammatical, and it matches the known side exactly. Every target word has been taught: 我, 不, 确定, 明天, 会, 发生, 什么. It is one complete sentence and contains 发生.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to guess what's going to happen tomorrow",
+       "target": "我想猜明天会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The Chinese is natural and mirrors the seed: 我想 maps to 'I want' and 猜 to 'to guess'. All vocabulary has been taught, the meaning matches, it is one complete sentence, and it contains 发生.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure what happens now",
+       "target": "我不确定现在发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "我不确定现在发生什么 is unnatural. A native speaker would say 现在发生了什么 or 正在发生什么. The English 'what happens now' also doesn't match the intended meaning.",
+       "keep": false,
+       "why": "Opus: bad — 我不确定现在发生什么 is unnatural. A native speaker would say 现在发生了什么 or 正在发生什么. The English 'what happens now' also doesn't match the intended meaning."
+      },
+      {
+       "role": "build",
+       "known": "what's going to happen",
+       "target": "会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "会发生什么 is the seed's own construction. It is natural and grammatical, contains 发生, and is a fragment that extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "what's going to happen tomorrow",
+       "target": "明天会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "The time word 明天 sits correctly before 会. It is natural, matches the known side, and uses taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "what's going to happen today",
+       "target": "今天会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "今天会发生什么 is natural and grammatical, matches the known side exactly, and uses taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "what's going to happen after",
+       "target": "之后会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": false,
+       "opusReason": "A dangling 'what's going to happen after' is a clunky prompt; natural English would be 'afterwards' or 'after that'. Because the known side is not clearly tier 1, it is rejected.",
+       "keep": false,
+       "why": "Opus: bad — A dangling 'what's going to happen after' is a clunky prompt; natural English would be 'afterwards' or 'after that'. Because the known side is not clearly tier 1, it is rejected."
+      },
+      {
+       "role": "build",
+       "known": "I'm not sure what's going to happen",
+       "target": "我不确定会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "我不确定会发生什么 is natural and grammatical, maps exactly to the known side, and uses only taught LEGOs.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I want to guess what's going to happen",
+       "target": "我想猜会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "我想猜会发生什么 is grammatical and acceptable, matches the known side, and uses taught material.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure what's going to happen today",
+       "target": "我不确定今天会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "It is one complete, natural sentence with correct time-word placement, and it says exactly what the known side says.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure what's going to happen after",
+       "target": "我不确定之后会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The known side ends in a dangling 'after', which is clunky English for 之后 ('afterwards'). It is not tier 1 on the known side.",
+       "keep": false,
+       "why": "Opus: bad — The known side ends in a dangling 'after', which is clunky English for 之后 ('afterwards'). It is not tier 1 on the known side."
+      },
+      {
+       "role": "use",
+       "known": "I'm not sure whether you can guess what's going to happen tomorrow",
+       "target": "我不确定你能不能猜明天会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'Whether you can guess' implies guessing correctly, which a native speaker would express as 猜到 or 猜出. 你能不能猜明天会发生什么 is clunky and does not quite say the same thing, and the sentence is also long and heavy.",
+       "keep": false,
+       "why": "Opus: bad — 'Whether you can guess' implies guessing correctly, which a native speaker would express as 猜到 or 猜出. 你能不能猜明天会发生什么 is clunky and does not quite say the same thing, and the sentence is also long and heavy."
+      },
+      {
+       "role": "use",
+       "known": "I want to guess what's going to happen today",
+       "target": "我想猜今天会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 2,
+       "opus": true,
+       "opusReason": "我想猜今天会发生什么 is natural, grammatical and an exact match. It is one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I hope you can guess what's going to happen tomorrow",
+       "target": "我希望你能猜明天会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'I hope you can guess' means guessing successfully, which is naturally 猜到 or 猜出. 你能猜明天会发生什么 is off for that meaning.",
+       "keep": false,
+       "why": "Opus: bad — 'I hope you can guess' means guessing successfully, which is naturally 猜到 or 猜出. 你能猜明天会发生什么 is off for that meaning."
+      },
+      {
+       "role": "use",
+       "known": "Now I want to try to guess what's going to happen tomorrow",
+       "target": "我现在想试试猜明天会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 2,
+       "opus": true,
+       "opusReason": "我现在想试试猜明天会发生什么 is natural spoken Mandarin with 现在 placed correctly after the subject. It matches the known side and uses taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to try to guess what's going to happen today",
+       "target": "我想试试猜今天会发生什么",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 2,
+       "opus": true,
+       "opusReason": "我想试试猜今天会发生什么 is natural and grammatical, says exactly what the known side says, and is one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
+  },
+  "13": {
+   "seed": 13,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "your",
+     "target": "你的"
+    },
+    {
+     "idx": 2,
+     "known": "very",
+     "target": "很"
+    },
+    {
+     "idx": 3,
+     "known": "good",
+     "target": "好"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "M",
+      "known": "your",
+      "target": "你的",
+      "components": null,
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "zho_for_eng:S0013L01B01",
+       "role": "build",
+       "known": "your",
+       "target": "你的",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is only the bare LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs, so this one does not meet the definition.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A BUILD must combine the LEGO with one to three other taught LEGOs. This is the bare LEGO alone.",
+       "keep": false,
+       "why": "Sonnet: bad — It is only the bare LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs, so this one does not meet the definition."
+      },
+      {
+       "role": "build",
+       "known": "your meaning",
+       "target": "你的意思",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "你的意思 is a natural, very common chunk. The known side is stilted but tileable, and it extends naturally into a full sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "your sentence",
+       "target": "你的句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical, exact match, uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "your Chinese",
+       "target": "你的中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, and it is the exact chunk from the seed.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "your whole sentence",
+       "target": "你的整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "你的整个句子 is grammatical and exact, using taught pieces.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I can remember your word",
+       "target": "我能记住你的词",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Your word' in English means a promise, so the known side is misleading and 你的词 is vague. 'Can' is also ambiguous between 会 and 能.",
+       "keep": false,
+       "why": "Opus: bad — 'Your word' in English means a promise, so the known side is misleading and 你的词 is vague. 'Can' is also ambiguous between 会 and 能."
+      },
+      {
+       "role": "build",
+       "known": "I want to explain your sentence",
+       "target": "我想解释你的句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我想解释你的句子 is natural and matches the known side exactly.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "Now I can remember your whole sentence",
+       "target": "我现在能记住你的整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "One natural sentence with correct time-word placement. 能记住 matches 'can remember' as taught earlier.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to learn your Chinese",
+       "target": "我想学习你的中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Learn your Chinese' is semantically odd in both languages. It is not tier 1 natural.",
+       "keep": false,
+       "why": "Opus: bad — 'Learn your Chinese' is semantically odd in both languages. It is not tier 1 natural."
+      },
+      {
+       "role": "use",
+       "known": "Tomorrow I'm going to try your word",
+       "target": "明天我要试试你的词",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Try your word' is unnatural in English. 试试你的词 is also odd in Chinese.",
+       "keep": false,
+       "why": "Opus: bad — 'Try your word' is unnatural in English. 试试你的词 is also odd in Chinese."
+      },
+      {
+       "role": "use",
+       "known": "Today I want to use your sentence",
+       "target": "今天我想用你的句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今天我想用你的句子 is grammatical and plausible, with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I also want to remember your sentence",
+       "target": "我也想记住你的句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我也想记住你的句子 is natural, with correct 也 placement and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to guess your meaning",
+       "target": "我想猜你的意思",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Guess your meaning' is clunky English. The natural phrasing is 'guess what you mean', which is not tileable, so this is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Guess your meaning' is clunky English. The natural phrasing is 'guess what you mean', which is not tileable, so this is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I cannot remember your whole sentence",
+       "target": "我不能记住你的整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Natural Mandarin would be 我记不住. 不能记住 is possible but clunky, so it is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — Natural Mandarin would be 我记不住. 不能记住 is possible but clunky, so it is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "Now I'm going to use your word",
+       "target": "我现在要用你的词",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Your word' has the promise sense in English, so the known side is misleading and the sentence is not natural.",
+       "keep": false,
+       "why": "Opus: bad — 'Your word' has the promise sense in English, so the known side is misleading and the sentence is not natural."
+      },
+      {
+       "role": "use",
+       "known": "I often use your sentence",
+       "target": "我经常用你的句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我经常用你的句子 is grammatical, with correct adverb placement and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "now your sentence",
+       "target": "现在你的句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'now your sentence' is a fragment that does not extend naturally into a full sentence, and 现在你的句子 is equally unnatural as a chunk. It fails the BUILD requirement.",
+       "keep": false,
+       "why": "Opus: bad — 'now your sentence' is a fragment that does not extend naturally into a full sentence, and 现在你的句子 is equally unnatural as a chunk. It fails the BUILD requirement."
+      },
+      {
+       "role": "build",
+       "known": "I'm going to practise your sentence",
+       "target": "我要练习你的句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Short and natural. The Chinese is grammatical and matches the English exactly. It uses only taught LEGOs (我要, 练习, 句子) plus 你的.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I hope I can remember your whole sentence",
+       "target": "我希望我能记住你的整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": false,
+       "opusReason": "你的整个句子 is clunky in Mandarin; a native speaker would say 你说的整个句子 or 你的整句话. The English 'your whole sentence' is also slightly odd. This is not clearly tier 1, so it is BAD when in doubt.",
+       "keep": false,
+       "why": "Opus: bad — 你的整个句子 is clunky in Mandarin; a native speaker would say 你说的整个句子 or 你的整句话. The English 'your whole sentence' is also slightly odd. This is not clearly tier 1, so it is BAD when in doubt."
+      },
+      {
+       "role": "use",
+       "known": "Tomorrow I'm going to practise your sentence",
+       "target": "明天我要练习你的句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Grammatical, natural sentence with the time word first. 明天我要练习你的句子 matches the known side exactly. All vocabulary is taught and it is longer than the BUILD.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Today I'm going to explain your sentence",
+       "target": "今天我要解释你的句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Natural and grammatical. 今天我要解释你的句子 matches the English exactly. All vocabulary is taught and it contains 你的.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I hope I can use your sentence tomorrow",
+       "target": "我希望我明天能用你的句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "我希望我明天能用你的句子 is grammatical, with the time word correctly placed before 能. It matches the English, which is natural. All vocabulary is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "Tomorrow I also want to use your sentence",
+       "target": "明天我也想用你的句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "明天我也想用你的句子 is natural, with 也 before 想 as required. The English is slightly stilted but tileable from taught glosses and maps one-to-one. It is one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "14": {
+   "seed": 14,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "all day",
+     "target": "一整天"
+    },
+    {
+     "idx": 2,
+     "known": "all day long",
+     "target": "一整天都"
+    },
+    {
+     "idx": 3,
+     "known": "do you speak Chinese?",
+     "target": "说中文吗"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "M",
+      "known": "do you speak Chinese?",
+      "target": "说中文吗",
+      "components": [
+       {
+        "known": "speak",
+        "target": "说",
+        "introduce": false
+       },
+       {
+        "known": "Chinese",
+        "target": "中文",
+        "introduce": false
+       },
+       {
+        "known": "(yes/no question)",
+        "target": "吗",
+        "introduce": false
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "zho_for_eng:S0014L03B01",
+       "role": "build",
+       "known": "do you speak Chinese?",
+       "target": "说中文吗",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is only the bare LEGO with no other taught LEGO, so it is not a real BUILD. It also just restates the LEGO's own gloss.",
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "This is the LEGO itself, a valid fragment that extends naturally to 你说中文吗.",
+       "keep": false,
+       "why": "Sonnet: bad — It is only the bare LEGO with no other taught LEGO, so it is not a real BUILD. It also just restates the LEGO's own gloss."
+      },
+      {
+       "role": "build",
+       "known": "do you speak Chinese now?",
+       "target": "现在说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "现在说中文吗 is a natural fragment that extends to 你现在说中文吗. The meaning matches and all words are taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "do you often speak Chinese?",
+       "target": "经常说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "经常说中文吗 is natural, matches 'do you often speak Chinese?' and uses only taught words.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "do you speak Chinese today?",
+       "target": "今天说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "今天说中文吗 is a natural fragment. The known side is slightly stilted but tileable, and the meaning matches.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "do you speak Chinese tomorrow?",
+       "target": "明天说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'do you speak Chinese tomorrow?' is not natural English for a future one-off; it would be 'will you speak'. The known side is unclear, so it is not a safe ZUT prompt.",
+       "keep": false,
+       "why": "Opus: bad — 'do you speak Chinese tomorrow?' is not natural English for a future one-off; it would be 'will you speak'. The known side is unclear, so it is not a safe ZUT prompt."
+      },
+      {
+       "role": "build",
+       "known": "do you speak Chinese with someone else?",
+       "target": "和别人说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "和别人说中文吗 is a correct coverb order and natural. It matches the known side and uses only taught pieces.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "do you speak Chinese all day long today?",
+       "target": "今天一整天都说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A USE must be a complete sentence, but the subject 你 is dropped even though the known side says 'you'. The English 'all day long today' is also clunky, not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — A USE must be a complete sentence, but the subject 你 is dropped even though the known side says 'you'. The English 'all day long today' is also clunky, not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "do you speak Chinese all day long tomorrow?",
+       "target": "明天一整天都说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It has the same subject-less USE problem as P7. 'do you speak Chinese ... tomorrow' is also unnatural English for a future event.",
+       "keep": false,
+       "why": "Opus: bad — It has the same subject-less USE problem as P7. 'do you speak Chinese ... tomorrow' is also unnatural English for a future event."
+      },
+      {
+       "role": "use",
+       "known": "do you often speak Chinese with someone else?",
+       "target": "经常和别人说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "As a complete USE sentence it lacks 你, which is taught and implied by 'you'. It should be 你经常和别人说中文吗. Without it, it is a fragment, not a full sentence.",
+       "keep": false,
+       "why": "Opus: bad — As a complete USE sentence it lacks 你, which is taught and implied by 'you'. It should be 你经常和别人说中文吗. Without it, it is a fragment, not a full sentence."
+      },
+      {
+       "role": "use",
+       "known": "after today, do you often speak Chinese with someone else?",
+       "target": "今天之后经常和别人说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The English is not natural: 'after today' with present-habitual 'do you often speak' clashes in tense. The target also lacks 你, so it is not a clean complete sentence.",
+       "keep": false,
+       "why": "Opus: bad — The English is not natural: 'after today' with present-habitual 'do you often speak' clashes in tense. The target also lacks 你, so it is not a clean complete sentence."
+      },
+      {
+       "role": "build",
+       "known": "do you also speak Chinese?",
+       "target": "你也说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "你也说中文吗 is natural and grammatical. It matches the known exactly, uses only taught material plus the LEGO, and is a short BUILD.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "do you speak Chinese all day long?",
+       "target": "一整天都说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Dropping the subject is natural in Mandarin, and the 'you' already sits inside the LEGO's own gloss. 一整天都 tiles to 'all day long'. A valid BUILD fragment that extends to the seed.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "can you speak Chinese?",
+       "target": "你会说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": false,
+       "opusReason": "The sentence is fine, but it is no longer than the BUILD P1 (same length and pattern). A USE must be longer than a BUILD.",
+       "keep": false,
+       "why": "Opus: bad — The sentence is fine, but it is no longer than the BUILD P1 (same length and pattern). A USE must be longer than a BUILD."
+      },
+      {
+       "role": "use",
+       "known": "do you also want to speak Chinese?",
+       "target": "你也想说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "你也想说中文吗 is natural and matches the known exactly. It uses only taught vocabulary, contains the LEGO and is one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "do you want to speak Chinese now?",
+       "target": "你现在想说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "你现在想说中文吗 puts the time word in the natural position. It matches the known and is natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "do you want to speak Chinese today?",
+       "target": "你今天想说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "你今天想说中文吗 is natural, matches the known and uses taught material only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "do you want to speak Chinese tomorrow?",
+       "target": "你明天想说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "你明天想说中文吗 is natural, matches the known and uses taught material only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "don't you want to speak Chinese?",
+       "target": "你不想说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": true,
+       "opusReason": "你不想说中文吗 is a natural negative question that matches 'don't you want to speak Chinese?'. Taught material only.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "do you want to speak Chinese with someone else?",
+       "target": "你想和别人说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": true,
+       "opusReason": "你想和别人说中文吗 is natural and has correct word order. It matches the known exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "do you want to speak Chinese as much as possible?",
+       "target": "你想尽可能说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 2,
+       "opus": false,
+       "opusReason": "尽可能说中文 without 多 is not tier-1 natural for 'as much as possible'; natives would say 尽可能多说中文. The English is also slightly clunky. When unsure, BAD.",
+       "keep": false,
+       "why": "Opus: bad — 尽可能说中文 without 多 is not tier-1 natural for 'as much as possible'; natives would say 尽可能多说中文. The English is also slightly clunky. When unsure, BAD."
+      },
+      {
+       "role": "use",
+       "known": "do you want to speak Chinese all day long?",
+       "target": "你想一整天都说中文吗",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 2,
+       "opus": true,
+       "opusReason": "你想一整天都说中文吗 is natural and grammatical. It matches the known, contains the LEGO and is one complete sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  },
+  "16": {
+   "seed": 16,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "he",
+     "target": "他"
+    },
+    {
+     "idx": 2,
+     "known": "later",
+     "target": "晚点"
+    },
+    {
+     "idx": 3,
+     "known": "together",
+     "target": "一起"
+    },
+    {
+     "idx": 4,
+     "known": "to come back",
+     "target": "回来"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "A",
+      "known": "he",
+      "target": "他",
+      "components": null,
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "he wants",
+       "target": "他想",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "他想 is the natural opening of a full sentence. 'he wants' tiles from taught glosses.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "he speaks Chinese",
+       "target": "他说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "他说中文 is a natural, grammatical short build with an exact meaning match.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "he is going to practise",
+       "target": "他要练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "他要练习 correctly renders 'he is going to practise' and extends naturally.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he also speaks Chinese",
+       "target": "他也说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "也 is placed correctly before the verb. The known side is natural and uses three other taught LEGOs.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "he is not sure",
+       "target": "他不确定",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "他不确定 is natural and exact. It extends naturally, for example with 他能不能…",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he wants to speak Chinese",
+       "target": "他想说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "他想说中文 is natural and exact, built from three taught LEGOs.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "he wants to speak Chinese with me",
+       "target": "他想和我说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "和我 is placed correctly before the verb phrase. This is a natural complete sentence with an exact match.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "he often speaks Chinese with me",
+       "target": "他经常和我说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The order 经常 + 和我 + 说中文 is natural and exact.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "he is going to practise Chinese tomorrow",
+       "target": "他明天要练习中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Placing the time word 明天 before 要 is natural. Exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he wants to speak Chinese with you",
+       "target": "他想和你说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, grammatical and exact.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "he also wants to speak Chinese with someone else",
+       "target": "他也想和别人说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "他也想和别人说中文 is natural. 别人 matches the taught gloss 'someone else'.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "he hopes to speak Chinese",
+       "target": "他希望说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "希望说中文 is clunky; natural Mandarin would say 希望能说中文. The English 'hopes to speak Chinese' is also stilted, so this is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 希望说中文 is clunky; natural Mandarin would say 希望能说中文. The English 'hopes to speak Chinese' is also stilted, so this is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "he often uses Chinese",
+       "target": "他经常用中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It is barely longer than a BUILD such as P6, and 'often uses Chinese' is vague. Not a clearly strong USE sentence.",
+       "keep": false,
+       "why": "Opus: bad — It is barely longer than a BUILD such as P6, and 'often uses Chinese' is vague. Not a clearly strong USE sentence."
+      },
+      {
+       "role": "use",
+       "known": "he is going to learn Chinese today",
+       "target": "他今天要学习中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "他今天要学习中文 is a natural, complete sentence with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he often speaks Chinese with someone else",
+       "target": "他经常和别人说中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural word order with an exact match.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "he is very good",
+       "target": "他很好",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "他很好 is natural and maps 很 to 'very' and 好 to 'good' using taught glosses. As a BUILD it extends naturally, e.g. 他很好，也很努力.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he is going to try",
+       "target": "他要试试",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": true,
+       "opusReason": "他要试试 is natural and matches the taught gloss of 要 as 'going to'. It is a short BUILD that extends easily.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "he is going to practise with me",
+       "target": "他要和我练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 2,
+       "opus": true,
+       "opusReason": "他要和我练习 is grammatical and natural, with correct order (subject, 要, 和我, verb). It uses only taught material.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "he is going to explain",
+       "target": "他要解释",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 2,
+       "opus": true,
+       "opusReason": "他要解释 is a natural fragment that extends into a full sentence, e.g. 他要解释他的意思. It matches the known side exactly.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "he is going to practise Chinese with me tomorrow",
+       "target": "他明天要和我练习中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 2,
+       "opus": true,
+       "opusReason": "The time word comes after the subject, then 要, then 和我, then the verb and object. The sentence is natural and complete, and the known side is natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he is going to learn Chinese with you today",
+       "target": "他今天要和你学习中文",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 2,
+       "opus": true,
+       "opusReason": "他今天要和你学习中文 is natural Mandarin with correct word order. The English is natural and fully tileable from taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he is going to practise with someone else tomorrow",
+       "target": "他明天要和别人练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 2,
+       "opus": true,
+       "opusReason": "他明天要和别人练习 is natural and complete. 'Practise with someone else' is a taught gloss and sounds natural in English.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he is going to remember the whole sentence today",
+       "target": "他今天要记住整个句子",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 2,
+       "opus": true,
+       "opusReason": "他今天要记住整个句子 is natural, with 要记住 meaning 'is going to remember'. The English is acceptable and tileable from taught glosses.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he is going to explain my meaning tomorrow",
+       "target": "他明天要解释我的意思",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'Explain my meaning' is unnatural English; people say 'explain what I mean'. The known side is therefore not tier 1, even though the Chinese is acceptable.",
+       "keep": false,
+       "why": "Opus: bad — 'Explain my meaning' is unnatural English; people say 'explain what I mean'. The known side is therefore not tier 1, even though the Chinese is acceptable."
+      },
+      {
+       "role": "use",
+       "known": "he is going to practise all day tomorrow",
+       "target": "他明天要练习一整天",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 2,
+       "opus": true,
+       "opusReason": "他明天要练习一整天 correctly places the duration complement after the verb and is natural. The English is natural too.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "he is going to practise in Chinese with me today",
+       "target": "他今天要和我用中文练习",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'Practise in Chinese with me' has no object, so the English is clunky and not clearly tier 1. 他今天要和我用中文练习 is grammatical but stacks two adverbial phrases awkwardly. When unsure, BAD.",
+       "keep": false,
+       "why": "Opus: bad — 'Practise in Chinese with me' has no object, so the English is clunky and not clearly tier 1. 他今天要和我用中文练习 is grammatical but stacks two adverbial phrases awkwardly. When unsure, BAD."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 7,
+     "setGates": {}
+    }
+   }
+  },
+  "17": {
+   "seed": 17,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "she",
+     "target": "她"
+    },
+    {
+     "idx": 2,
+     "known": "to find out",
+     "target": "弄清楚"
+    },
+    {
+     "idx": 3,
+     "known": "answer",
+     "target": "答案"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "A",
+      "known": "answer",
+      "target": "答案",
+      "components": null,
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "role": "build",
+       "known": "your answer",
+       "target": "你的答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 1,
+       "opus": true,
+       "opusReason": "你的答案 is natural and matches 'your answer' exactly. It uses only taught material plus the LEGO.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "my answer",
+       "target": "我的答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我的答案 is natural and matches 'my answer' exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "a good answer",
+       "target": "一个好答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "一个好答案 is natural and tiles from 一个, 好 and 答案. It matches 'a good answer'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "to find out the answer",
+       "target": "弄清楚答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "弄清楚答案 is a natural verb-object pairing and matches 'to find out the answer'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "to guess the answer",
+       "target": "猜答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "猜答案 is natural and matches 'to guess the answer'.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "remember the answer",
+       "target": "记住答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "记住答案 is natural and matches 'remember the answer'.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "she wants to find out the answer",
+       "target": "她想弄清楚答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "她想弄清楚答案 is one complete, natural sentence that matches the known side exactly.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "he also wants to find out the answer",
+       "target": "他也想弄清楚答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "他也想弄清楚答案 is natural, with 也 correctly placed before 想. It matches the known side exactly.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to try to find out the answer today",
+       "target": "我今天要试试弄清楚答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": false,
+       "opusReason": "试试 directly followed by a verb phrase, as in 要试试弄清楚答案, is clunky. Natural Mandarin would use 试着 or rephrase, so this is not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 试试 directly followed by a verb phrase, as in 要试试弄清楚答案, is clunky. Natural Mandarin would use 试着 or rephrase, so this is not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "I hope your answer is very good",
+       "target": "我希望你的答案很好",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我希望你的答案很好 is grammatical and natural, with 很 linking to the predicate adjective. It matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "tomorrow I want to find out the answer",
+       "target": "明天我想弄清楚答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "明天我想弄清楚答案 is natural, with the time word up front, and matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to come back later to find out the answer",
+       "target": "我晚点要回来弄清楚答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我晚点要回来弄清楚答案 is a natural serial-verb sentence and matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I want to remember your answer",
+       "target": "我想记住你的答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我想记住你的答案 is natural and matches 'I want to remember your answer'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I hope I can remember the answer",
+       "target": "我希望我能记住答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我希望我能记住答案 is natural and matches 'I hope I can remember the answer'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "now I want to guess the answer",
+       "target": "我现在想猜答案",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我现在想猜答案 is natural, with 现在 correctly after the subject, and matches the known side.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
+  },
+  "33": {
+   "seed": 33,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "how long",
+     "target": "多久"
+    },
+    {
+     "idx": 2,
+     "known": "how long have you been learning Chinese?",
+     "target": "你学习中文多久了"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "how long have you been learning Chinese?",
+      "target": "你学习中文多久了",
+      "components": [
+       {
+        "known": "you",
+        "target": "你"
+       },
+       {
+        "known": "learning Chinese",
+        "target": "学习中文"
+       },
+       {
+        "known": "how long",
+        "target": "多久",
+        "introduce": false
+       },
+       {
+        "known": "completed-so-far marker",
+        "target": "了",
+        "introduce": false
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "zho_for_eng:S0033L02U01",
+       "role": "use",
+       "known": "how long have you been learning Chinese",
+       "target": "你学习中文多久了",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The phrase is just the LEGO itself, with no frame around it. It is no longer than a BUILD, so it doesn't work as a USE sentence.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is just the bare LEGO. A USE must be longer than a BUILD and add context.",
+       "keep": false,
+       "why": "Sonnet: bad — The phrase is just the LEGO itself, with no frame around it. It is no longer than a BUILD, so it doesn't work as a USE sentence."
+      },
+      {
+       "role": "build",
+       "known": "but how long have you been learning Chinese?",
+       "target": "但是你学习中文多久了",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Short, natural extension. 但是 plus the LEGO is grammatical and matches the known side.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "now how long have you been learning Chinese?",
+       "target": "现在你学习中文多久了",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'now how long have you been learning Chinese?' is clunky English. 现在 + 多久了 means 'by now', which the known side does not clearly convey.",
+       "keep": false,
+       "why": "Opus: bad — 'now how long have you been learning Chinese?' is clunky English. 现在 + 多久了 means 'by now', which the known side does not clearly convey."
+      },
+      {
+       "role": "build",
+       "known": "I want to ask, how long have you been learning Chinese?",
+       "target": "我想问，你学习中文多久了",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural on both sides. 我想问 is a taught LEGO plus a taught piece, and the target is correct.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "he asked me, how long have you been learning Chinese?",
+       "target": "他问我，你学习中文多久了",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural reported direct question. 他问我，你学习中文多久了 is grammatical and the meaning matches.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "build",
+       "known": "she asked you, how long have you been learning Chinese?",
+       "target": "她问你，你学习中文多久了",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'she asked you, how long have you been learning Chinese?' is an odd thing to say to the person who was asked. It is not tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — 'she asked you, how long have you been learning Chinese?' is an odd thing to say to the person who was asked. It is not tier-1 natural."
+      },
+      {
+       "role": "build",
+       "known": "I also want to ask, how long have you been learning Chinese?",
+       "target": "我也想问，你学习中文多久了",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "我也想问 plus the LEGO is natural, correct and within BUILD length.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I want to ask you, how long have you been learning Chinese?",
+       "target": "我想问你，你学习中文多久了？",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Complete, natural sentence. The target is correct and the meaning matches.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "yesterday she asked me, how long have you been learning Chinese?",
+       "target": "昨天她问我，你学习中文多久了。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. Time word, then subject, then 问我 is the correct order.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I want to ask you a thing: how long have you been learning Chinese?",
+       "target": "我想问你一件事：你学习中文多久了？",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The known side is slightly stilted but tileable. 我想问你一件事：你学习中文多久了？ is very natural Chinese.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "he also wants to ask you, how long have you been learning Chinese?",
+       "target": "他也想问你，你学习中文多久了。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "他也想问你 plus the LEGO is natural and grammatical, and the meaning matches.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "we all want to ask you, how long have you been learning Chinese?",
+       "target": "我们都想问你，你学习中文多久了。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'all' is not a taught gloss for 都; only 'all day' and 'throughout' were taught. The prompt does not tile, so the zero-uncertainty mapping is at risk.",
+       "keep": false,
+       "why": "Opus: bad — 'all' is not a taught gloss for 都; only 'all day' and 'throughout' were taught. The prompt does not tile, so the zero-uncertainty mapping is at risk."
+      },
+      {
+       "role": "use",
+       "known": "today he asked me, how long have you been learning Chinese?",
+       "target": "今天他问我，你学习中文多久了。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. 今天他问我 plus the LEGO is correct.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "yesterday he asked you, how long have you been learning Chinese?",
+       "target": "昨天他问你，你学习中文多久了。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Same issue as P6: 'he asked you, how long have you been learning Chinese?' is odd when said to the person asked.",
+       "keep": false,
+       "why": "Opus: bad — Same issue as P6: 'he asked you, how long have you been learning Chinese?' is odd when said to the person asked."
+      },
+      {
+       "role": "use",
+       "known": "but I want to ask you, how long have you been learning Chinese?",
+       "target": "但是我想问你，你学习中文多久了？",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. 但是我想问你 plus the LEGO is correct.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I very much want to ask you, how long have you been learning Chinese?",
+       "target": "我很想问你，你学习中文多久了？",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'I very much want to ask you' is clunky English, not tier-1 natural, even though 我很想问你 is fine Chinese.",
+       "keep": false,
+       "why": "Opus: bad — 'I very much want to ask you' is clunky English, not tier-1 natural, even though 我很想问你 is fine Chinese."
+      },
+      {
+       "role": "use",
+       "known": "your Chinese is very good, how long have you been learning Chinese?",
+       "target": "你的中文很好，你学习中文多久了？",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P1",
+       "round": 2,
+       "opus": true,
+       "opusReason": "Every word is taught material (你的, 中文, 很, 好 plus the LEGO). The Chinese is grammatical and is a natural compliment-plus-question, joined by a comma into one sentence. It means exactly what the English says, and the English prompt is natural and tileable.",
+       "keep": false,
+       "why": "gate: knownSide"
+      },
+      {
+       "role": "use",
+       "known": "I like your Chinese, how long have you been learning Chinese?",
+       "target": "我喜欢你的中文，你学习中文多久了？",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 2,
+       "opus": false,
+       "opusReason": "'I like your Chinese' / 我喜欢你的中文 is not a natural compliment on someone's language ability in either language. It is possible but clunky and could be read as liking their particular variety of Chinese. That makes it not tier 1, and when unsure, it is BAD.",
+       "keep": false,
+       "why": "Opus: bad — 'I like your Chinese' / 我喜欢你的中文 is not a natural compliment on someone's language ability in either language. It is possible but clunky and could be read as liking their particular variety of Chinese. That makes it not tier 1, and when unsure, it is BAD."
+      }
+     ],
+     "keptBuild": 0,
+     "keptUse": 0,
+     "setGates": {
+      "buildCountSpec": "0 BUILD phrases — below the 3 the validator itself requires",
+      "buildUseFloors": "BUILD: need 3+, got 0",
+      "buildRecombination": true
+     }
+    }
+   }
+  },
+  "531": {
+   "seed": 531,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "game",
+     "target": "比赛"
+    },
+    {
+     "idx": 2,
+     "known": "to win",
+     "target": "赢得"
+    },
+    {
+     "idx": 3,
+     "known": "it isn't true that",
+     "target": "并不是"
+    },
+    {
+     "idx": 4,
+     "known": "everyone",
+     "target": "每个人"
+    }
+   ],
+   "legos": {
+    "3": {
+     "lego": {
+      "idx": 3,
+      "type": "M",
+      "known": "it isn't true that",
+      "target": "并不是",
+      "components": [
+       {
+        "known": "really (emphasis)",
+        "target": "并",
+        "introduce": false
+       },
+       {
+        "known": "isn't",
+        "target": "不是"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "zho_for_eng:S0531L03B01",
+       "role": "build",
+       "known": "it isn't true that",
+       "target": "并不是",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "It is only the bare LEGO with no other taught LEGO, so it is not a real BUILD. A BUILD needs the LEGO plus one to three other taught LEGOs.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A BUILD must contain the LEGO plus one to three other taught LEGOs. This is the bare LEGO with nothing added.",
+       "keep": false,
+       "why": "Sonnet: bad — It is only the bare LEGO with no other taught LEGO, so it is not a real BUILD. A BUILD needs the LEGO plus one to three other taught LEGOs."
+      },
+      {
+       "role": "build",
+       "known": "it isn't true that I'm tired",
+       "target": "并不是我累了",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是我累了 is a natural 'it's not that I'm tired' fragment that extends easily. Everything in it is taught, and it is short.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "it isn't true that he doesn't know",
+       "target": "并不是他不知道",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是他不知道 is idiomatic, matches the English exactly, uses only taught material and is the right length.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "it isn't true that I don't want to",
+       "target": "并不是我不想",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是我不想 is very natural spoken Mandarin. The ellipsis matches 'I don't want to'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "it isn't true that she doesn't care about you",
+       "target": "并不是她不在乎你",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P5",
+       "round": 1,
+       "opus": false,
+       "opusReason": "It adds four other LEGOs (她, 不, 在乎, 你), which is over the BUILD limit of three. It is too long for a BUILD.",
+       "keep": false,
+       "why": "Opus: bad — It adds four other LEGOs (她, 不, 在乎, 你), which is over the BUILD limit of three. It is too long for a BUILD."
+      },
+      {
+       "role": "build",
+       "known": "it isn't true that we can't",
+       "target": "并不是我们不能",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是我们不能 is a natural elliptical fragment that maps one-to-one onto the English. It is short.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "it isn't true that you don't need",
+       "target": "并不是你不需要",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'you don't need' leaves a transitive verb with no object. Unlike 'don't want to', this ellipsis is not natural in English, and 并不是你不需要 also sounds cut off. When unsure, it is BAD.",
+       "keep": false,
+       "why": "Opus: bad — 'you don't need' leaves a transitive verb with no object. Unlike 'don't want to', this ellipsis is not natural in English, and 并不是你不需要 also sounds cut off. When unsure, it is BAD."
+      },
+      {
+       "role": "use",
+       "known": "It isn't true that I don't want to help you.",
+       "target": "并不是我不想帮你。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是我不想帮你。 is a natural, complete sentence, matches the English exactly and uses only taught material.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "It isn't true that he doesn't know the answer.",
+       "target": "并不是他不知道答案。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是他不知道答案。 is natural and complete. It is an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "It isn't true that she doesn't like Chinese.",
+       "target": "并不是她不喜欢中文。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是她不喜欢中文。 is natural and complete. It is an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "It isn't true that we can't speak Chinese today.",
+       "target": "并不是我们今天不能说中文。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是我们今天不能说中文。 is grammatical, with correct time-word placement before 不能. It is natural and complete.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "It isn't true that I don't care about my friends.",
+       "target": "并不是我不在乎我的朋友。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是我不在乎我的朋友。 is natural and an exact match on both sides.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "It isn't true that he doesn't want to come back tomorrow.",
+       "target": "并不是他明天不想回来。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是他明天不想回来。 has correct word order, is natural and says exactly what the English says.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "It isn't true that I don't know why.",
+       "target": "并不是我不知道为什么。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是我不知道为什么。 is a very natural complete sentence that matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "It isn't true that they don't want to meet this evening.",
+       "target": "并不是他们今晚不想见面。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是他们今晚不想见面。 is natural and correctly ordered. It is an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "It isn't true that you can't remember my name.",
+       "target": "并不是你记不住我的名字。",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "并不是你记不住我的名字。 uses the taught chunk 记不住 'can't remember'. It is natural, complete and an exact match.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  }
+ }
+}

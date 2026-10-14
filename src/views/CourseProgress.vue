@@ -225,7 +225,6 @@ async function fetchProgress() {
   try {
     const response = await fetch(`${apiUrl.value}/api/courses/${courseCode.value}/progress`, {
       headers: {
-        'ngrok-skip-browser-warning': 'true'
       }
     })
 

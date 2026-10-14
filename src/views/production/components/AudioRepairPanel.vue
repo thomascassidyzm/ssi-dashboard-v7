@@ -395,7 +395,7 @@ const audioEl = ref(null)
 const playingKey = ref(null)
 const playingUrl = ref(null)
 
-const HEADERS = { 'ngrok-skip-browser-warning': 'true' }
+const HEADERS = {}
 
 // Cache key for the player: id + revision, so accepting a candidate forces a
 // fresh element rather than replaying the superseded bytes from the HTTP cache.

@@ -70,8 +70,13 @@ function keyFiles() {
   })
 }
 
+/** xAI voice generation is BANNED (Tom 2026-10-10): XAI_API_KEY is an alert in ANY file, guarded checkout or not, placeholder or not. */
+const BANNED_KEY_LINE = /^\s*(?:export\s+)?XAI_API_KEY\s*=/
+const bannedKeyLines = (file) => {
+  try { return fs.readFileSync(file, 'utf8').split('\n').filter(l => BANNED_KEY_LINE.test(l)) } catch { return [] }
+}
 const liveKeyLines = (file) => {
   try { return fs.readFileSync(file, 'utf8').split('\n').filter(l => { const k = l.match(TTS_KEY_LINE); return k && k[2].trim() && !k[2].includes(PLACEHOLDER_MARK) }) } catch { return [] }
 }
 
-module.exports = { HOME, TTS_KEY_LINE, PLACEHOLDER, PLACEHOLDER_MARK, isGuardedCheckout, checkoutOf, mayHoldLiveKey, liveKeyLines, keyFiles, VAULT }
+module.exports = { HOME, TTS_KEY_LINE, PLACEHOLDER, PLACEHOLDER_MARK, isGuardedCheckout, checkoutOf, mayHoldLiveKey, liveKeyLines, bannedKeyLines, BANNED_KEY_LINE, keyFiles, VAULT }

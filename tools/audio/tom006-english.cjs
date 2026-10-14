@@ -1,0 +1,250 @@
+#!/usr/bin/env node
+/**
+ * Tom-006 ENGLISH, step 1 (job #813, Tom 2026-10-12, r-2026-10-12-tom-006-english-order): every live English KNOWN prompt whose text has NO Cartesia clip in any voice
+ * gets ONE Tom-006 take (Cartesia d293d509), RAW (no fade: the 80 ms fade is for intros only). Existing Cartesia clips are never touched. Reuse is by (language, text)
+ * across courses, so a rendered text repoints EVERY live (released/beta) course's known slot that holds a non-Cartesia clip of that text. Old rows are never deleted.
+ * Queue = the --course's known slots in first-heard seed order; one render per distinct text through Popty's ONE route (voice-bound, no retry on refusal).
+ * Ledger (write-ahead): ops/813-tom006-english/ledger.jsonl.   Undo: --undo (appends {kind:undo}, repoints back with before-state asserted, bumps versions).
+ *   node tools/audio/tom006-english.cjs --stage 1|2|3|all [--daily-budget 500000] [--global-room 850000] [--concurrency 3] [--plan] [--dry-run]
+ * Order (Tom 2026-10-12, r-2026-10-12-tom-006-male-english-order-follows): stage 1 = seeds 1-100 of premium courses (not deu/spa/fra/ita_for_eng, which #818 does); stage 2 = up to the furthest seed a real
+ * learner reached, per live course with English; stage 3 = seeds 101-668 of premium courses, X_for_eng big 10 first then eng_for_X. Scope = the MALE English voice: X_for_eng known prompts + eng_for_X target2 lines.
+ * REUSE FIRST by text: any existing Tom-006 row is repointed to, never re-rendered. Pacing: daily budget (this job's ledger chars today UTC) and a global room (all-provider chars today), then sleep to next UTC day.
+ *   node tools/audio/tom006-english.cjs --undo [--dry-run]
+ */
+const fs = require('fs'), path = require('path')
+for (const p of [path.join(__dirname, '../../.env.psql'), '/home/tomcassidy/ssi-dashboard-v7-clean/.env.psql']) if (fs.existsSync(p)) { require('dotenv').config({ path: p, quiet: true }); break }
+const { Client } = require('pg')
+const { createClient } = require('@supabase/supabase-js')
+const { bumpCourseVersion } = require('../../services/shared/course-version.cjs')
+const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
+const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs')
+const T6 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
+const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
+const argv = process.argv.slice(2), opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }, has = f => argv.includes(f)
+const dryRun = has('--dry-run'), maleOnly = has('--male-charlotte-only')   // job #15: only the male-role slots sitting on Charlotte
+const dir = process.env.TOM006_DIR || path.join(__dirname, '../../ops/813-tom006-english'), ledger = path.join(dir, 'ledger.jsonl')   // job #15 uses its own dir so its ledger never collides with the running #813 file
+const lines = () => fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
+const log = e => { if (!dryRun) fs.appendFileSync(ledger, JSON.stringify({ ...e, at: new Date().toISOString() }) + '\n') }
+function supa() {
+  if (!process.env.SUPABASE_URL) for (const p of [path.join(__dirname, '../../.env'), '/home/tomcassidy/ssi-dashboard-v7-clean/.env'])
+    if (fs.existsSync(p)) for (const l of fs.readFileSync(p, 'utf8').split('\n')) { const m = /^(SUPABASE_URL|SUPABASE_SERVICE_KEY)=(.*)$/.exec(l.trim()); if (m && !process.env[m[1]]) process.env[m[1]] = m[2].replace(/^"|"$/g, '') }
+  return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
+}
+const { mayPoint } = require('../../services/shared/resolve-voice.cjs')   // job #53: every pointer this tool writes is checked against resolveVoice
+const setPointer = async (db, s, from, to, ev, restore = false) => {
+  const col = colFor(s)
+  if (!await mayPoint(db, { courseCode: s.course, col, to, restore })) return false
+  const { data, error } = await db.from(s.tbl).update({ [col]: to, last_edit_event_id: ev }).eq('id', s.key).eq(col, from).select('id')
+  if (error) throw new Error(error.message); return !!data && data.length === 1
+}
+const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
+// Job #52 (Tom 2026-10-12, superseding #24's reading): X_for_eng English KNOWN lines are ALL Tom-006 — Charlotte, tom_001 and every old voice included, no gender variance.
+// Gender variance is for eng_for_X (English target2) only: female-origin lines there go to Charlotte, the rest to Tom-006. The rule is englishSlotVoice().
+const { targetGender, targetVoice, englishSlotVoice } = require('./english-gender-voice.cjs')
+// Job #15 (Tom 2026-10-12): the runner used to see only slots on a NON-Cartesia clip, so a male-role slot that #573's gender-blind passes had moved onto Charlotte
+// counted as finished and was never put back. A slot is MALE-ROLE when its pre-#573 clip was a male voice; those on Charlotte now count as remaining.
+// Female-origin Charlotte slots stay Charlotte (gender variance is wanted). The origin is read from #573's own ledgers, the only record of it.
+const maleRoleCharlotteKeys = () => {
+  const { evidencePath } = require('../lib/evidence-path.cjs'), { voiceGender, pendingSwaps } = require('./charlotte-backfill.cjs'), keys = new Set()
+  for (const c of ['spa_for_eng', 'deu_for_eng', 'fra_for_eng', 'ita_for_eng', 'spa_mx_for_eng', 'zho_for_eng', 'ara_for_eng', 'por_for_eng', 'por_br_for_eng', 'kor_for_eng', 'jpn_for_eng']) {
+    const f = evidencePath(`573/${c}-ledger.jsonl`); if (!fs.existsSync(f)) continue
+    const all = fs.readFileSync(f, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse)
+    for (const e of pendingSwaps(all)) if (e.role === 'known' && e.newId && voiceGender(e.oldVoice) === 'm') for (const sl of e.slots || []) if ((sl.col || 'known_audio_id') === 'known_audio_id') keys.add(`${sl.tbl}:${sl.key}`)
+  }
+  return keys
+}
+const TABLES = ['course_seeds', 'course_legos', 'course_practice_phrases']
+// a slot's column: explicit, else inferred from the course (eng_for_X holds English in target2; X_for_eng in known). The #995 recovered rows carry no col.
+const colFor = s => s.col || (String(s.course || String(s.key).split(':')[0]).startsWith('eng_for_') ? 'target2_audio_id' : 'known_audio_id')
+const slotId = s => `${s.tbl}:${s.key}:${colFor(s)}`
+;(async () => {
+  const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); await pg.query('set statement_timeout=0'); const db = supa()
+  const identity = serviceIdentity('tom006-english-813'), events = new Map(), touchedN = new Map()
+  const event = async course => { if (!events.has(course)) events.set(course, await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/tom006-english', operation: 'update', detail: { why: 'Tom 2026-10-12 job #813: male English (Tom-006) for lines with no other Cartesia clip; old ids in ledger', ledger } })); return events.get(course) }
+  // content_version is bumped AS WE GO (every BUMP_EVERY moved slots per course) and in a finally, so a crash never leaves moved pointers on an old version (lane review #829)
+  const BUMP_EVERY = 100; let bumpFailed = 0
+  const touchedEver = new Set()   // BACKSTOP (lane review #851): at each stage end and run end every course touched since gets one more bump, whatever the counters say
+  const touch = async (course, n) => { touchedEver.add(course); const v = (touchedN.get(course) || 0) + n; touchedN.set(course, v); if (v >= BUMP_EVERY) await bumpOne(course) }
+  const bumpOne = async course => {
+    if (dryRun) return; const n = touchedN.get(course) || 0; if (!n) return
+    try { const v = await bumpCourseVersion(db, course, 'patch'); if (!v) throw new Error('bumpCourseVersion returned null (it swallows its own errors)'); touchedN.set(course, (touchedN.get(course) || 0) - n); log({ kind: 'bumped', course }); console.log('content_version', course, v) }
+    catch (e) { console.log(`BUMP FAILED ${course} (${n} moved slots still unbumped, kept for retry):`, e.message); bumpFailed++ }
+  }
+  const bumpBackstop = async () => { if (dryRun) return; for (const c of [...touchedEver]) { touchedN.set(c, Math.max(1, touchedN.get(c) || 0)); await bumpOne(c); if ((touchedN.get(c) || 0) === 0) touchedEver.delete(c) } }
+  const bump = async () => { for (const [c, n] of [...touchedN]) if (n > 0) await bumpOne(c) }
+
+  // a previous run that died after moving pointers but before bumping: every course with a swap row after its last 'bumped' row is still on an old version
+  if (!dryRun) { const pend = new Set(); for (const e of lines()) { if (e.kind === 'swap') for (const sl of e.slots || []) pend.add(sl.course); else if (e.kind === 'bumped') pend.delete(e.course) }; for (const c of pend) { touchedN.set(c, 1); await bumpOne(c) } }
+
+  if (has('--undo')) {
+    // The undo set is every INTENT row (journalled before any pointer moved), swap and legacy swap row: slot -> its ORIGINAL from-id; the before-check (newId must still be there) keeps it safe
+    // job #995 rebuilt the wiped part of the ledger from content_audit_log: ledger-recovered.jsonl sits beside the live ledger (never overwritten); undo reads BOTH, merged by time
+    const recFile = path.join(dir, 'ledger-recovered.jsonl')
+    const recovered = fs.existsSync(recFile) ? fs.readFileSync(recFile, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
+    const rows = [...recovered, ...lines()].map((e, i) => [e, i]).sort((a, b) => (Date.parse(a[0].at) || 0) - (Date.parse(b[0].at) || 0) || a[1] - b[1]).map(x => x[0]), orig = new Map()   // slotId -> { s, news:Set }, built in LEDGER ORDER: an 'undone' row removes only what exists so far (lane review #837)
+    for (const e of rows) {
+      if (['intent', 'swap'].includes(e.kind)) for (const s of e.slots || []) { if (!s.from) continue; const k = slotId(s); if (!orig.has(k)) orig.set(k, { s, news: new Set([e.newId]) }); else orig.get(k).news.add(e.newId) }
+      else if (e.kind === 'undone') for (const k of e.keys) orig.delete(k)
+    }
+    let n = 0, skipped = 0; const done = []
+    const liveVal = new Map()
+    { const groups = new Map(); for (const [k, { s }] of orig) { const g = `${s.tbl}|${colFor(s)}`; (groups.get(g) || groups.set(g, []).get(g)).push([k, s.key]) }
+      for (const [g, items] of groups) { const [tbl, col] = g.split('|'); for (let i = 0; i < items.length; i += 300) {
+        const chunk = items.slice(i, i + 300); const { data, error } = await db.from(tbl).select(`id, ${col}`).in('id', chunk.map(x => x[1])); if (error) throw new Error(error.message)
+        const byId = new Map(data.map(r => [r.id, r[col]])); for (const [k, id] of chunk) liveVal.set(k, byId.get(id))
+      } } }
+    try {
+      for (const [k, { s, news }] of [...orig].reverse()) {
+        // LIVE STATE decides (lane review #856): already back on its old clip = restored; on any clip this job wrote = restore with a before-check; anything else = someone else's edit, left alone and reported
+        const col = colFor(s)
+        const cur = liveVal.get(k)   // preloaded in batches below (one query per slot was ~60,000 round trips)
+        if (dryRun) { console.log(cur === s.from ? 'already restored' : news.has(cur) ? 'would undo' : 'would SKIP (changed by someone else)', k, cur, '->', s.from); if (news.has(cur)) n++; continue }
+        if (cur === s.from) { done.push(k); continue }
+        if (news.has(cur) && await setPointer(db, s, cur, s.from, await event(s.course), true)) { await touch(s.course, 1); n++; done.push(k) } else { skipped++; console.log('SKIPPED', k, 'live', cur) }
+      }
+    } finally { try { if (!dryRun) { log({ kind: 'undone', keys: done }); await bump(); await bumpBackstop() } } finally { await pg.end(); if (bumpFailed || skipped) process.exitCode = 3 } }
+    console.log(dryRun ? 'would undo' : 'undone slots', n, 'skipped', skipped); return
+  }
+
+  const stageArg = opt('--stage', 'all'), conc = Number(opt('--concurrency', 6)), plan = has('--plan')
+  let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log('SIGTERM: finishing in-flight clips, then exit') })
+  const BIG = ['fra', 'spa', 'deu', 'zho', 'ara', 'por', 'kor', 'jpn', 'ita']
+  const X11 = ['fra_for_eng', 'spa_for_eng', 'spa_mx_for_eng', 'deu_for_eng', 'zho_for_eng', 'ara_for_eng', 'por_for_eng', 'por_br_for_eng', 'kor_for_eng', 'jpn_for_eng', 'ita_for_eng']
+  const HASH818 = ['deu_for_eng', 'spa_for_eng', 'fra_for_eng', 'ita_for_eng']   // seeds 1-100 known prompts belong to #818 (intros to #794)
+  const { rows: courses } = await pg.query(`select course_code, known_lang, target_lang, pricing_tier from courses where status in ('released','beta') and (known_lang in ('eng','en') or target_lang in ('eng','en'))`)
+  const byCode = new Map(courses.map(c => [c.course_code, c]))
+  const isEngTarget = c => ['eng', 'en'].includes(c.target_lang)
+  const colOf = c => isEngTarget(c) ? 'target2_audio_id' : 'known_audio_id'
+  const prem = courses.filter(c => c.pricing_tier === 'premium')
+  const rankBig = c => { const i = BIG.indexOf(String(c.course_code).replace(/^eng_for_/, '').split('_')[0]); return i < 0 ? 99 : i }
+  const furthest = new Map((await pg.query(`select e.course_id c, max(substring(e.highest_completed_lego_id from 'S(\\d+)')::int) mx from course_enrollments e join learners l on l.id=e.learner_id
+      where e.highest_completed_lego_id is not null and e.total_practice_minutes >= 5 and coalesce(l.display_name,'') <> 'Tom' and coalesce(l.display_name,'') not ilike 'colombo%' group by 1`)).rows.map(r => [r.c, r.mx]))
+  const fu = c => furthest.get(c.course_code) || 0
+  const x11 = X11.map(k => byCode.get(k)).filter(Boolean)
+  const nonX11Prem = prem.filter(c => !X11.includes(c.course_code))
+  const engFor = nonX11Prem.filter(isEngTarget).sort((a, b) => rankBig(a) - rankBig(b) || a.course_code.localeCompare(b.course_code))
+  const otherPrem = nonX11Prem.filter(c => !isEngTarget(c))
+  // Tom 2026-10-12 (goal by the 23 Oct reset): the 11 premium X_for_eng courses, seeds 1-668, come before any eng_for_X work; earlier stages stay where they fall inside the 11.
+  const STAGES = {
+    1: () => x11.filter(c => !HASH818.includes(c.course_code)).map(c => ({ c, lo: 1, hi: 100 })),             // seeds 1-100 of the 11 (not #818's four)
+    2: () => x11.filter(c => fu(c) > 100).map(c => ({ c, lo: 101, hi: fu(c) })),                              // up to the furthest real learner, the 11
+    3: () => x11.map(c => ({ c, lo: 101, hi: 668 })),                                                         // the rest of 101-668, the 11
+    4: () => [...engFor, ...otherPrem].map(c => ({ c, lo: 1, hi: 100 })),                                     // seeds 1-100 of every other premium course
+    5: () => [...engFor, ...otherPrem, ...courses.filter(c => c.pricing_tier !== 'premium')].filter(c => fu(c) > 0).map(c => ({ c, lo: 1, hi: fu(c) })),   // up to the furthest learner, everything else with English
+    6: () => [...engFor, ...otherPrem].map(c => ({ c, lo: 101, hi: 668 })),
+    7: () => x11.map(c => ({ c, lo: 1, hi: 99999 })),                                                         // job #15: whole course, the 11 (puts male-role Charlotte slots back to Tom-006)                                   // 101-668, eng_for_X then the rest
+  }
+  const stages = stageArg === 'all' ? [1, 2, 3, 4, 5, 6] : stageArg.split(',').map(Number)
+  const otherCartesia = maleOnly ? new Set() : new Set((await pg.query(`select distinct text_normalized t from course_audio where language in ('eng','en') and voice_id like 'cartesia\\_%' and voice_id <> $1`, [T6])).rows.map(r => r.t))
+  const maleKeys = maleRoleCharlotteKeys()
+  const itemsFor = async ({ c, lo, hi }) => {
+    const col = colOf(c), code = c.course_code
+    const { rows } = maleOnly ? { rows: [] } : await pg.query(`
+      with s as (
+        select seed_number pos, ${col} aid from course_seeds where course_code=$1 and ${col} is not null and seed_number between $2 and $3
+        union all select seed_number, ${col} from course_legos where course_code=$1 and ${col} is not null and seed_number between $2 and $3
+        union all select seed_number, ${col} from course_practice_phrases where course_code=$1 and ${col} is not null and seed_number between $2 and $3)
+      select ca.text_normalized t, min(ca.text) tx, ca.voice_id voice, min(s.pos) pos, count(*) lines from s join course_audio ca on ca.id=s.aid
+      where ca.language in ('eng','en') and ca.role in ('known','target2') and ${isEngTarget(c) ? "ca.voice_id not like 'cartesia\\_%'" : 'ca.voice_id <> $4'}
+      group by 1, 3 order by 4, 1`, isEngTarget(c) ? [code, lo, hi] : [code, lo, hi, T6])
+    // one item per (text, target voice): the gender of the line's own current clip decides Charlotte or Tom-006. Male items keep the old rule that a text some other Cartesia voice already speaks is left alone.
+    const folded = new Map()
+    for (const r of rows) { const g = isEngTarget(c) ? targetGender(r.voice) : 'm', k = `${r.t}|${g}`, e = folded.get(k) || { t: r.t, tx: r.tx, pos: r.pos, lines: 0, g }; e.lines += Number(r.lines); e.pos = Math.min(e.pos, r.pos); folded.set(k, e) }
+    const out = maleOnly ? [] : [...folded.values()].filter(r => !isEngTarget(c) || r.g === 'f' || !otherCartesia.has(r.t)).map(r => ({ ...r, course: code, role: isEngTarget(c) ? 'target2' : 'known' }))
+    if (!isEngTarget(c)) {   // male-role slots sitting on Charlotte (job #15): looked up by their own ids, never by scanning the course
+      const ch = []
+      for (const tbl of TABLES) {
+        const ids = [...maleKeys].filter(k => k.startsWith(tbl + ':')).map(k => k.slice(tbl.length + 1))
+        if (!ids.length) continue
+        const { rows: r } = await pg.query(`select x.seed_number pos, '${tbl}:'||x.id k, ca.text_normalized t, ca.text tx from ${tbl} x join course_audio ca on ca.id=x.${col}
+          where x.id::text = any($1) and x.course_code=$2 and x.seed_number between $3 and $4 and ca.voice_id=$5 and ca.role='known' and ca.language in ('eng','en')`, [ids, code, lo, hi, CHARLOTTE])
+        ch.push(...r)
+      }
+      const by = new Map()
+      for (const r of ch) if (maleKeys.has(r.k)) { const e = by.get(r.t) || { t: r.t, tx: r.tx, pos: r.pos, lines: 0, g: 'm', course: code, role: 'known' }; e.lines++; e.pos = Math.min(e.pos, r.pos); by.set(r.t, e) }
+      for (const e of by.values()) if (!out.some(o => o.t === e.t && o.g === 'm')) out.push(e)   // (kept even where another course holds a different Cartesia clip of the text: the slot, not the text, is what is owed)
+    }
+    return out
+  }
+  const clipRow = async (t, voice) => (await pg.query(`select id::text from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id=$2 and s3_key is not null and s3_key not like 'pending/%' and duration_ms>200 order by created_at limit 1`, [t, voice])).rows[0]
+  if (plan) {   // count: distinct texts left to render vs texts that only need repointing (a Tom-006 row exists), chars, slots
+    const seen = new Set(); let T = { render: 0, repoint: 0, chars: 0, lines: 0 }
+    for (const n of stages) { const a = { render: 0, repoint: 0, chars: 0, lines: 0 }
+      for (const sc of STAGES[n]()) for (const x of (await itemsFor(sc))) { const sk = `${x.t}|${x.g}`; if (seen.has(sk)) continue; seen.add(sk); a.lines += Number(x.lines); if (await clipRow(x.t, targetVoice(x.g))) a.repoint++; else { a.render++; a.chars += x.tx.length } }
+      console.log(`STAGE ${n}: to render ${a.render} texts / ${a.chars} chars; repoint-only ${a.repoint} texts; lines covered ${a.lines}`); for (const k in T) T[k] += a[k] }
+    console.log('TOTAL', JSON.stringify(T)); return pg.end()
+  }
+  const oneSlotsOf = async (t, g) => {
+    // every English clip of this text not already on the item's voice; a slot holding one moves only where englishSlotVoice() says it belongs in that voice (job #52):
+    // X_for_eng known -> always Tom-006 (Charlotte and old female clips included); eng_for_X target2 -> by the old clip's gender, Cartesia left alone
+    const voice = targetVoice(g)
+    const { rows: olds } = await pg.query(`select id::text, voice_id from course_audio where text_normalized=$1 and language in ('eng','en') and role in ('known','target2') and voice_id <> $2`, [t, voice])
+    const clipVoice = new Map(olds.map(r => [r.id, r.voice_id])); const ids = [...clipVoice.keys()]; if (!ids.length) return []
+    const out = []
+    for (const tbl of TABLES) for (const col of ['known_audio_id', 'target2_audio_id']) {
+      const { rows } = await pg.query(`select x.id::text key, x.course_code course, x.${col}::text "from" from ${tbl} x join courses c on c.course_code=x.course_code
+        where x.${col} = any($1::uuid[]) and c.status in ('released','beta')`, [ids])
+      out.push(...rows.filter(r => englishSlotVoice({ course: r.course, col, clipVoice: clipVoice.get(r.from) }) === voice).map(r => ({ tbl, col, ...r })))
+    }
+    return out
+  }
+  // Tom 2026-10-12: the TTS guards are for runaway agents, not for a job he directs; this job holds a job-scoped approval (tools/tts-cap.cjs approve "#813"). No self-imposed pacing.
+  const finished = []
+  try {
+    for (const n of stages) {
+      const st = { texts: 0, rendered: 0, reused: 0, chars: 0, slots: 0, started: new Date().toISOString() }
+      for (const sc of STAGES[n]()) {
+        if (stopFlag) break
+        const queue = await itemsFor(sc); let idx = 0
+        console.log(`stage ${n} ${sc.c.course_code} seeds ${sc.lo}-${sc.hi}: ${queue.length} texts`)
+        if (dryRun) { st.texts += queue.length; continue }   // a dry run renders nothing, moves nothing, bumps nothing
+        const worker = async () => {
+          while (!stopFlag) {
+            const q = queue[idx++]; if (!q) return
+            const voice = targetVoice(q.g), ex = await clipRow(q.t, voice); let newId, how
+            if (ex) { newId = ex.id; how = 'reuse' }
+            else {
+              // a dropped connection (Popty restarting on a deploy) is not an answer: wait, check whether the render landed anyway (never re-send a text that succeeded), then retry
+              let res, r, ledgerHits = 0, transient = 0   // back-off 5s, 15s, then 60s on a transient spend-ledger timeout (Watson)
+              for (let attempt = 0; attempt < 8 && !r; attempt++) {
+                try {
+                  res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-813' },
+                    body: JSON.stringify({ courseCode: q.course, role: q.role, text: q.tx, language: 'eng', voiceId: voice, voiceBound: true, job: '#813', purpose: `#813 ${q.g === 'f' ? 'Charlotte female' : 'Tom-006 male'} English, stage ${n} (seed ${q.pos})` }) })
+                  r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+                  if (r && (r.code === 'RENDER_FAILED' || (r.error && /socket hang up|ECONNRESET/i.test(r.error)))) {   // a transient DB/connection failure AFTER the paid render may have left a clip in S3 with no row: look for the row first; only then ask again (max 3), never loop
+                    transient++; console.log('render answered with a transient failure, checking before any retry:', q.tx.slice(0, 40), String(r.error || '').slice(0, 120)); await new Promise(z => setTimeout(z, 30000))
+                    const landed = await clipRow(q.t, voice); if (landed) r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; else if (transient < 3) { r = undefined; attempt = Math.min(attempt, 5) } else { r = { ok: false, error: 'persistent transient failure' } }
+                  } else if (r && r.code === 'LEDGER') {   // the shared spend ledger timed out (DB load): fail-closed, nothing was sent; wait and ask again rather than stop
+                    const wait = [5000, 15000, 60000][Math.min(ledgerHits++, 2)]; console.log(`spend ledger unreachable, waiting ${wait / 1000}s then asking again:`, q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, wait)); r = undefined; attempt = Math.min(attempt, 5); if (stopFlag) return
+                  }   // DAILY_TOTAL_CAP / DAILY_CAP are NOT retried (Watson 2026-10-12: report them): they fall through to the REFUSED stop below, which the wake reports
+                } catch (e) {
+                  console.log('connection dropped, checking before any retry:', q.tx.slice(0, 40)); await new Promise(z => setTimeout(z, 30000))
+                  const landed = await clipRow(q.t, voice); if (landed) { r = { ok: true, audioId: landed.id, source: 'library', charsSpent: 0 }; res = { ok: true } }
+                }
+              }
+              if (!r) { console.log('PERSISTENT CONNECTION FAILURE — stopping'); stopFlag = true; return }
+              if (r && r.code === 'NOT_SPEAKABLE') { log({ kind: 'unspeakable', t: q.t, text: q.tx, r }); console.log('SKIP unspeakable row text (bracket label, a data defect to fix in the row):', q.tx); continue }   // one bad row never stops the run
+              if (!res.ok || !r.ok) { log({ kind: 'refused', t: q.t, r }); console.log('REFUSED — stopping, no retry:', JSON.stringify(r).slice(0, 400)); stopFlag = true; return }
+              const { rows: [ca] } = await pg.query('select id::text, voice_id, s3_key, duration_ms from course_audio where id=$1', [r.audioId])
+              if (!ca || ca.voice_id !== voice || !ca.s3_key || ca.s3_key.startsWith('pending/') || !(ca.duration_ms > 200)) { log({ kind: 'verify-failed', t: q.t, r, ca }); console.log('VERIFY FAILED — stopping:', q.tx, JSON.stringify(ca)); stopFlag = true; return }
+              newId = r.audioId; how = r.source === 'library' ? 'reuse' : 'render'; st.chars += r.charsSpent || 0
+              log({ kind: 'render', t: q.t, newId, source: r.source, charsSpent: r.charsSpent || 0 })
+            }
+            const slots = await oneSlotsOf(q.t, q.g)
+            log({ kind: 'intent', t: q.t, newId, slots, how, g: q.g })   // journalled BEFORE any pointer moves, reuse included: undo reads this
+            const moved = []
+            for (const s of slots) if (await setPointer(db, s, s.from, newId, await event(s.course))) { moved.push(s); await touch(s.course, 1) }
+            log({ kind: 'swap', t: q.t, newId, slots: moved, wanted: slots.length, reused: how === 'reuse', stage: n })
+            st.texts++; st[how === 'reuse' ? 'reused' : 'rendered']++; st.slots += moved.length
+            if (st.texts % 50 === 0) console.log(`stage ${n} ${q.course} seed ${q.pos}: texts ${st.texts} rendered ${st.rendered} reused ${st.reused} chars ${st.chars}`)
+          }
+        }
+        try { await Promise.all(Array.from({ length: conc }, worker)) } finally { await bump() }
+      }
+      await bumpBackstop()
+      const rep = `STAGE ${n} ${stopFlag ? 'STOPPED' : dryRun ? 'DRY' : 'DONE'}: texts ${st.texts}: rendered ${st.rendered}, reused ${st.reused} (${st.texts ? Math.round(100 * st.reused / st.texts) : 0}% reuse); slots repointed ${st.slots}; chars rendered ${st.chars}; started ${st.started}`
+      console.log(rep); if (!dryRun) fs.writeFileSync(path.join(dir, `stage-${n}.report.txt`), rep + '\n')
+      if (stopFlag) break
+    }
+  } finally { await bump(); await bumpBackstop(); await pg.end(); if (bumpFailed) process.exitCode = 3; else if (!stopFlag && !dryRun && !plan) { try { fs.writeFileSync(path.join(dir, 'complete.txt'), `all stages done ${new Date().toISOString()} (${stages.join(',')})\n`) } catch (e) { /* the marker is only for the supervisor loop */ } } }
+})().catch(e => { console.error(e); process.exit(1) })

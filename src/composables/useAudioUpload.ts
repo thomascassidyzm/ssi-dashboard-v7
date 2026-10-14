@@ -251,7 +251,6 @@ export function useUploadQueue() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true'
         },
         body: JSON.stringify({
           uuid: item.uuid,

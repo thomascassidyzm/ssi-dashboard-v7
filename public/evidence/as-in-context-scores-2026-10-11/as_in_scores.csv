@@ -1,0 +1,481 @@
+course,seed,lego_id,X,context,score,reason
+deu_for_eng,1,S0001L01,I want,I want to speak German with you,1,"I want"" has one clear sense"
+deu_for_eng,1,S0001L02,to speak,I want to speak German with you now,1,"to speak"" has one clear sense"
+deu_for_eng,1,S0001L03,German,I want to speak German,2,"German"" can be the language or a person; context mildly helps"
+deu_for_eng,1,S0001L04,now,I want to speak German now,1,"now"" is unambiguous"
+deu_for_eng,1,S0001L05,with you,I want to speak with you,2,"with you"" is register-ambiguous (dir/Ihnen); context cannot settle it"
+deu_for_eng,2,S0002L01,to learn,I want to learn German with you now,1,"to learn"" is unambiguous"
+deu_for_eng,2,S0002L02,I'm trying to,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,2,S0002L03,to learn German,I'm trying to learn German with you,1,"to learn German"" is unambiguous"
+deu_for_eng,3,S0003L01,as often as possible,I'm trying to learn German as often as possible,1,"as often as possible"" is unambiguous"
+deu_for_eng,3,S0003L02,how to speak,I'm trying to learn how to speak,1,"how to speak"" is unambiguous"
+deu_for_eng,3,S0003L03,how to speak as often as possible,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,4,S0004L01,something,I want to learn something with you,1,"something"" is unambiguous"
+deu_for_eng,4,S0004L02,to say,I'm trying to say something now,2,"to say"" vs ""to tell""; context weakly settles it"
+deu_for_eng,4,S0004L03,in German,I want to say something in German to you,2,"in German"" is almost always the language; context adds little"
+deu_for_eng,4,S0004L04,how to say something in German,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,5,S0005L01,to practise,I want to practise with you,1,"to practise"" is unambiguous"
+deu_for_eng,5,S0005L02,I'm going to,I'm going to practise with you,4,"I'm going to"" reads as future or movement; context settles future"
+deu_for_eng,5,S0005L03,with someone else,I'm going to learn with someone else,1,"with someone else"" is unambiguous"
+deu_for_eng,5,S0005L04,to practise speaking,I'm going to practise speaking in German,1,"to practise speaking"" is unambiguous"
+deu_for_eng,6,S0006L01,a word,I'm trying to learn a word,1,"a word"" is unambiguous"
+deu_for_eng,6,S0006L02,to remember,I want to remember how to say something in German,2,"to remember"" can mean recall or remind; context adds little"
+deu_for_eng,6,S0006L03,to remember a word,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,7,S0007L01,today,I'm going to say something in German today,1,"today"" is unambiguous"
+deu_for_eng,7,S0007L02,to try,I want to try now,2,"to try"" vs ""to taste""; context does not separate them"
+deu_for_eng,7,S0007L03,as hard as I can,I'm going to try as hard as I can today,1,"as hard as I can"" is unambiguous"
+deu_for_eng,8,S0008L01,to explain,I'm going to try to explain something in German,1,"to explain"" is unambiguous"
+deu_for_eng,8,S0008L02,what I mean,I want to explain what I mean now,1,"what I mean"" is unambiguous"
+deu_for_eng,9,S0009L01,a little,I'm going to try to learn a little today,2,"a little"" = some vs a little bit; context adds little"
+deu_for_eng,9,S0009L02,I speak,I speak German now,1,"I speak"" is unambiguous"
+deu_for_eng,10,S0010L01,not,I'm not sure if I can remember the whole sentence,3,"not"" = nicht / kein / nichts; sentence shows verb negation"
+deu_for_eng,10,S0010L02,I can,I'm not sure if I can remember the whole sentence,3,"I can"" = ability or permission (kann / darf); context shows ability"
+deu_for_eng,10,S0010L03,the whole sentence,I'm not sure if I can remember the whole sentence,1,"the whole sentence"" is unambiguous"
+deu_for_eng,10,S0010L04,whether,I'm going to say whether I can practise today,1,"whether"" is unambiguous"
+deu_for_eng,10,S0010L05,I'm not sure,I'm not sure if I can remember the whole sentence,1,"I'm not sure"" is unambiguous"
+deu_for_eng,11,S0011L01,I'd like,I'd like to be able to speak after you finish,1,"I'd like"" is unambiguous; context not needed"
+deu_for_eng,11,S0011L02,to be able to,I'd like to be able to speak after you finish,1,"to be able to"" is unambiguous"
+deu_for_eng,11,S0011L03,finished,I am not finished today,3,"finished"" = fertig (ready) or beendet (over); context settles it"
+deu_for_eng,11,S0011L04,you are,You are finished now,2,"you are"" is register-ambiguous (du/Sie); context cannot settle it"
+deu_for_eng,11,S0011L05,when you are finished,I'd like to be able to speak when you are finished,1,"when you are finished"" is unambiguous"
+deu_for_eng,12,S0012L01,to guess,I wouldn't like to guess what's going to happen tomorrow,1,"to guess"" is unambiguous"
+deu_for_eng,12,S0012L02,tomorrow,I wouldn't like to guess what's going to happen tomorrow,1,"tomorrow"" is unambiguous"
+deu_for_eng,12,S0012L03,happens,I'm going to guess what happens,1,"happens"" is unambiguous"
+deu_for_eng,12,S0012L04,what's going to happen tomorrow,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,13,S0013L01,you speak,you speak German very well,2,"you speak"" is register-ambiguous; context cannot settle it"
+deu_for_eng,13,S0013L02,well,you speak German very well,3,"well"" = gut or gesund/brunnen; context settles the adverb"
+deu_for_eng,13,S0013L03,very,you speak German very well,1,"very"" is unambiguous"
+deu_for_eng,14,S0014L01,do you speak,do you speak German all day?,2,"do you speak"" is register-ambiguous; context cannot settle it"
+deu_for_eng,14,S0014L02,all day,do you speak German all day?,1,"all day"" is unambiguous"
+deu_for_eng,15,S0015L01,and,and I want you to speak German with me tomorrow,1,"and"" is unambiguous"
+deu_for_eng,16,S0016L01,he wants,and he wants to speak German with you tomorrow,1,"he wants"" is unambiguous"
+deu_for_eng,16,S0016L02,later on,I'd like to learn a little later on,1,"later on"" is unambiguous"
+deu_for_eng,16,S0016L03,to come back,he wants to come back and speak German,1,"to come back"" is unambiguous"
+deu_for_eng,16,S0016L04,with everyone else,I'd like to be able to come back with everyone else,1,"with everyone else"" is unambiguous"
+deu_for_eng,17,S0017L01,she wants,and she wants to speak German with you tomorrow,1,"she wants"" is unambiguous"
+deu_for_eng,17,S0017L02,to find out,I want to find out what happens,2,"to find out"" vs ""to discover""; context adds little"
+deu_for_eng,17,S0017L03,is,She is finished now,2,"is"" is mostly copula; context confirms it"
+deu_for_eng,17,S0017L04,the answer,I'd like to be able to find out the answer,1,"the answer"" is unambiguous"
+deu_for_eng,18,S0018L01,we want,we want to speak German,1,"we want"" is unambiguous"
+deu_for_eng,18,S0018L02,to meet,I would like to meet her today,3,"to meet"" = treffen or kennenlernen; context picks encounter"
+deu_for_eng,18,S0018L03,each other,she wants to find out if we want to meet each other,1,"each other"" is unambiguous"
+deu_for_eng,18,S0018L04,this evening,he wants to find out the answer this evening,1,"this evening"" is unambiguous"
+deu_for_eng,18,S0018L05,at six o'clock,he wants to come back at six o'clock this evening,1,"at six o'clock"" is unambiguous"
+deu_for_eng,19,S0019L01,but,but she wants to come back,3,"but"" = aber or sondern (not X but Y); context shows aber"
+deu_for_eng,19,S0019L02,to stop,I don't want to stop learning,3,"to stop"" = aufhören or anhalten; context shows aufhören"
+deu_for_eng,20,S0020L01,you want,you want to come back later on,2,"you want"" is register-ambiguous; context cannot settle it"
+deu_for_eng,20,S0020L02,his name,I want to remember his name,1,"his name"" is unambiguous"
+deu_for_eng,20,S0020L03,quickly,she wants to come back quickly,1,"quickly"" is unambiguous"
+deu_for_eng,21,S0021L01,why,Why do you want to learn his name quickly?,1,"why"" is unambiguous"
+deu_for_eng,21,S0021L02,are you learning,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,21,S0021L03,her name,Why are you learning her name?,1,"her name"" is unambiguous"
+deu_for_eng,22,S0022L01,people,I'd like to meet people tomorrow,2,"people"" = Leute or Menschen; context adds little"
+deu_for_eng,22,S0022L02,because I want to speak,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,22,S0022L03,who speak German,we want to meet people who speak German,1,"who speak German"" is unambiguous"
+deu_for_eng,23,S0023L01,soon,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,23,S0023L02,to start,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,23,S0023L03,more,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,24,S0024L01,easily,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,25,S0025L01,are you going to,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,25,S0025L02,to help,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,25,S0025L03,me,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,25,S0025L04,to go,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,25,S0025L05,before I have to go,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,26,S0026L01,to like,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,26,S0026L02,the feeling,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,26,S0026L03,nearly,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,26,S0026L04,ready,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,26,S0026L05,to be,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,27,S0027L01,it,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,27,S0027L02,too much,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,27,S0027L03,time,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,27,S0027L04,to answer,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,27,S0027L05,to need,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,28,S0028L01,useful,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,28,S0028L02,early,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,29,S0029L01,I'm looking forward to,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,29,S0029L02,better,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,30,S0030L01,wanted,"I wanted to speak better, and I'm looking forward to trying",1,"wanted"" is unambiguous"
+deu_for_eng,30,S0030L02,to ask,"I wanted to ask more, but I don't want to need too much time",3,"to ask"" = fragen or bitten; context shows fragen"
+deu_for_eng,30,S0030L03,yesterday,"but I wanted to start yesterday, and it is useful",1,"yesterday"" is unambiguous"
+deu_for_eng,30,S0030L04,wanted you,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,31,S0031L01,you wanted,"you wanted to speak German with me, and I like the feeling",2,"you wanted"" is register-ambiguous; context cannot settle it"
+deu_for_eng,32,S0032L01,to show,"she wanted to show me the answer, and I like the feeling",2,"to show"" has several senses; context adds little"
+deu_for_eng,33,S0033L01,long,how long do you want to try before I have to go?,4,"long"" = lang (length) or lange (duration); context settles duration"
+deu_for_eng,33,S0033L02,already,"she is already nearly ready, but he wanted to show me something",1,"already"" is unambiguous"
+deu_for_eng,34,S0034L01,quiet,I don't want to be quiet,3,"quiet"" = leise or ruhig; context leaves it open"
+deu_for_eng,34,S0034L02,to be quiet,I want to be quiet when you're speaking,2,"to be quiet"" is idiomatic; context adds little"
+deu_for_eng,34,S0034L03,here,I want to speak German here,1,"here"" is unambiguous"
+deu_for_eng,34,S0034L04,when other people,Do you want to be quiet when other people are speaking?,1,"when other people"" is unambiguous"
+deu_for_eng,34,S0034L05,are here,he wants to speak when other people are here,1,"are here"" is unambiguous"
+deu_for_eng,35,S0035L01,to read,"She wanted to read yesterday, but she wanted to go early",1,"to read"" is unambiguous"
+deu_for_eng,35,S0035L02,nothing,"I want nothing more, because I'm already nearly ready",1,"nothing"" is unambiguous"
+deu_for_eng,35,S0035L03,this afternoon,"I want to be here this afternoon, and I'm looking forward to speaking",1,"this afternoon"" is unambiguous"
+deu_for_eng,36,S0036L01,to interrupt,"other people don't want to interrupt, and we are already here",1,"to interrupt"" is unambiguous"
+deu_for_eng,36,S0036L02,the story,"I like the story, and I want to read more this afternoon",4,"the story"" = Geschichte or Stockwerk; context settles Geschichte"
+deu_for_eng,37,S0037L01,have,"I have time this afternoon, and I want to read the story",4,"have"" = haben / have to / past auxiliary; context shows possession"
+deu_for_eng,37,S0037L02,started,"because I have started to read, I want to try more",2,"started"" intransitive or transitive; context adds little"
+deu_for_eng,37,S0037L03,to think about it,"because I have time, I want to try to think about it",1,"to think about it"" is unambiguous"
+deu_for_eng,37,S0037L04,last month,"last month I started to learn German, and I like the feeling",1,"last month"" is unambiguous"
+deu_for_eng,38,S0038L01,I learn,"I learn German, and I like the feeling of speaking better",2,"I learn"" is mostly unambiguous; context adds little"
+deu_for_eng,38,S0038L02,for about a week,for about a week I have been trying to think about it,1,"for about a week"" is unambiguous"
+deu_for_eng,39,S0039L01,tired,"I am a little tired this morning, but I want to learn more German",1,"tired"" is unambiguous"
+deu_for_eng,40,S0040L01,you feel,how do you feel at the moment?,2,"you feel"" is register-ambiguous; context cannot settle it"
+deu_for_eng,40,S0040L02,at the moment,how do you feel at the moment?,1,"at the moment"" is unambiguous"
+deu_for_eng,41,S0041L01,I feel,"I feel okay, but I'm starting to feel tired",1,"I feel"" is unambiguous"
+deu_for_eng,41,S0041L02,okay,"I feel okay, but I'm starting to feel tired",1,"okay"" is unambiguous"
+deu_for_eng,42,S0042L01,was starting,I was starting to feel better than last night,1,"was starting"" is unambiguous"
+deu_for_eng,42,S0042L02,to feel,I was starting to feel better than last night,1,"to feel"" is unambiguous"
+deu_for_eng,42,S0042L03,than,I was starting to feel better than last night,1,"than"" is unambiguous"
+deu_for_eng,42,S0042L04,last night,I was starting to feel better than last night,1,"last night"" is unambiguous"
+deu_for_eng,43,S0043L01,thought about,"Because I haven't thought about it, I don't want to answer",2,"thought about"" = considered; context adds little"
+deu_for_eng,43,S0043L02,how to answer,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,44,S0044L01,or,or if I need to improve,1,"or"" is unambiguous"
+deu_for_eng,44,S0044L02,to improve,or if I need to improve,1,"to improve"" is unambiguous"
+deu_for_eng,45,S0045L01,everything,I don't need to know everything,1,"everything"" is unambiguous"
+deu_for_eng,45,S0045L02,to know,I don't need to know everything,4,"to know"" = wissen or kennen; context settles facts"
+deu_for_eng,46,S0046L01,I make,"I make nothing at the moment, because I am a little tired",3,"I make"" = machen / produce / earn; context settles machen"
+deu_for_eng,46,S0046L02,no worries,"I have no worries, and I have thought about it for a long time",1,"no worries"" is unambiguous"
+deu_for_eng,46,S0046L03,about mistakes,"I have no worries about mistakes, and I feel better than yesterday",1,"about mistakes"" is unambiguous"
+deu_for_eng,47,S0047L01,I think,because I think that it's a good thing to make mistakes,2,"I think"" = denken or glauben; context adds little"
+deu_for_eng,47,S0047L02,that,because I think that it's a good thing to make mistakes,5,"that"" = dass, das or dieser; context settles dass"
+deu_for_eng,48,S0048L01,don't care,"I don't care what I should say, because I want to try",2,"don't care"" = egal or nicht kümmern; context settles it weakly"
+deu_for_eng,48,S0048L02,to make,I think that it is okay to make mistakes when I speak German,3,"to make"" = machen; context shows Fehler machen"
+deu_for_eng,49,S0049L01,you know,"you know what I should do, and I want to find out the answer",3,"you know"" = knowledge or filler, and register; context partly settles"
+deu_for_eng,50,S0050L01,to become,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,51,S0051L01,I enjoy doing,I enjoy doing a lot with someone else,1,"I enjoy doing"" is unambiguous"
+deu_for_eng,51,S0051L02,interesting things,I enjoy doing interesting things with someone else,1,"interesting things"" is unambiguous"
+deu_for_eng,51,S0051L03,with my friends,i'm going to practise with my friends,1,"with my friends"" is unambiguous"
+deu_for_eng,52,S0052L01,to write,I am going to write now,1,"to write"" is unambiguous"
+deu_for_eng,52,S0052L02,a letter,I want to write you a letter soon,4,"a letter"" = Brief or Buchstabe; context settles Brief"
+deu_for_eng,52,S0052L03,to his friend,I want to write to his friend soon,1,"to his friend"" is unambiguous"
+deu_for_eng,52,S0052L04,last week,He wanted to write a letter last week,1,"last week"" is unambiguous"
+deu_for_eng,53,S0053L01,she wanted,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,53,S0053L02,to put,She wanted to put everything here,3,"to put"" = legen / stellen / stecken; context does not pick the verb"
+deu_for_eng,53,S0053L03,in her bag,She will put that in her bag,1,"in her bag"" is unambiguous"
+deu_for_eng,54,S0054L01,we wanted,We wanted to speak with you,1,"we wanted"" is unambiguous"
+deu_for_eng,54,S0054L02,to give,We wanted to give you something,1,"to give"" is unambiguous"
+deu_for_eng,55,S0055L01,waking up,I like waking up early,2,"waking up"" = aufwachen; context adds little"
+deu_for_eng,55,S0055L02,slept,He slept well yesterday,1,"slept"" is unambiguous"
+deu_for_eng,56,S0056L01,so,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,56,S0056L02,myself,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,56,S0056L03,one,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,56,S0056L04,a few words,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,56,S0056L05,says,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,57,S0057L01,shall,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,57,S0057L02,what,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,58,S0058L01,interesting,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,58,S0058L02,you understand,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,58,S0058L03,enough,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,59,S0059L01,I know,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,59,S0059L02,next week,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,60,S0060L01,yet,one can learn German well but it is not yet easy to speak it,4,"yet"" = noch (not yet) or schon/trotzdem; context settles noch"
+deu_for_eng,60,S0060L02,different words,It is interesting to learn different words in German,1,"different words"" is unambiguous"
+deu_for_eng,61,S0061L01,could you,Could you help me learn German?,2,"could you"" is register-ambiguous; context cannot settle it"
+deu_for_eng,61,S0061L02,again,I would like to practice that again,1,"again"" is unambiguous"
+deu_for_eng,61,S0061L04,slowly,She would like to read more slowly,1,"slowly"" is unambiguous"
+deu_for_eng,62,S0062L01,I'm not sure if,I'm not sure if she is already ready,1,"I'm not sure if"" is unambiguous"
+deu_for_eng,62,S0062L02,at the same time,I try to learn and speak at the same time,2,"at the same time"" = gleichzeitig or zugleich; context adds little"
+deu_for_eng,63,S0063L01,are you sure,"I am not sure, but are you sure that you want to start soon?",2,"are you sure"" is register-ambiguous; context cannot settle it"
+deu_for_eng,63,S0063L02,you don't mind,are you sure you don't mind helping me?,2,"you don't mind"" is register-ambiguous; context cannot settle it"
+deu_for_eng,64,S0064L01,learning German,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,64,S0064L02,easy,It is not easy but I try,1,"easy"" is unambiguous"
+deu_for_eng,64,S0064L03,it is fun,It is fun to show my friends what I know about German and to talk about it with all of them,1,"it is fun"" is unambiguous"
+deu_for_eng,65,S0065L01,it's important to take time to test yourself,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,66,S0066L01,it's not difficult to find the answer,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,67,S0067L01,Why do you want to stop,Why do you want to stop talking with me when you know I can help you learn German very well today?,2,"why do you want to stop"" is register-ambiguous; context cannot settle it"
+deu_for_eng,68,S0068L02,are you looking for,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,69,S0069L01,he didn't want to look after the young dog all afternoon,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,70,S0070L01,she didn't want to tell me where it was,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,71,S0071L01,we didn't want to let anyone hear the truth,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,72,S0072L01,you're doing,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,73,S0073L01,"thank you very much, but I've got more to learn",,,no as-in clause (Frame A); nothing to score
+deu_for_eng,74,S0074L01,thank you very much for helping me to understand,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,75,S0075L01,have you got more to learn,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,76,S0076L01,I'm very happy with,I'm very happy with how much I've learnt already,1,"I'm very happy with"" is unambiguous"
+deu_for_eng,76,S0076L02,how much I've learnt,I'm very happy with how much I've learnt already,1,"how much I've learnt"" is unambiguous"
+deu_for_eng,77,S0077L01,I'm surprised at how quickly I'm starting,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,78,S0078L01,I don't understand what you said,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,79,S0079L01,when did you start to learn,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,80,S0080L01,I'm not sure when I'll be ready,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,81,S0081L01,when do you want,when do you want to speak German?,2,"when do you want"" is register-ambiguous; context cannot settle it"
+deu_for_eng,81,S0081L02,the newspaper,I think the newspaper is here but I cannot remember where it is right now,1,"the newspaper"" is unambiguous"
+deu_for_eng,82,S0082L01,I'm not going to wait for you,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,83,S0083L01,to agree,,,preamble intro (non-template); no as-in clause
+deu_for_eng,83,S0083L02,about your friend,"if you don't mind, we'll talk about your friend",2,"about your friend"" dein/Ihr is register-ambiguous"
+deu_for_eng,84,S0084L01,about my friend,What did you say about my friend?,1,"about my friend"" is unambiguous"
+deu_for_eng,84,S0084L02,he said,I don't agree with what he said,1,"he said"" is unambiguous"
+deu_for_eng,85,S0085L01,those people,I think those people understand German very well and can help you learn it much better than me,1,"those people"" is unambiguous"
+deu_for_eng,85,S0085L02,I know those people,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,86,S0086L01,unfortunately,Unfortunately I cannot come back today,1,"unfortunately"" is unambiguous"
+deu_for_eng,87,S0087L01,they are people I don't know,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,88,S0088L01,with people,I would like to speak with people who can speak German,1,"with people"" is unambiguous"
+deu_for_eng,88,S0088L02,talk,We can talk about it later,2,"talk"" = sprechen or reden; context shows reden"
+deu_for_eng,89,S0089L02,done,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,90,S0090L01,can,You can speak German if you want to practise enough,5,"can"" = können (ability) or dürfen (permission); context shows können"
+deu_for_eng,90,S0090L02,that would be great,That would be great because I want to know the answer,1,"that would be great"" is unambiguous"
+deu_for_eng,91,S0091L01,to think,I want to think about it because it is very important,3,"to think"" = denken or nachdenken; context shows nachdenken"
+deu_for_eng,91,S0091L02,in time,I want to finish it in time so we can talk later,3,"in time"" = rechtzeitig or mit der Zeit; context settles it"
+deu_for_eng,92,S0092L01,a while,I need to wait for a while,2,"a while"" is clear enough; context adds little"
+deu_for_eng,92,S0092L02,to keep on doing,I know I need to keep on doing it today,1,"to keep on doing"" is unambiguous"
+deu_for_eng,93,S0093L01,time to go,He says it is time to go,1,"time to go"" is unambiguous"
+deu_for_eng,94,S0094L01,the only way,I think it is the only way to learn German well,4,"the only way"" = Weg or Art; context settles Art"
+deu_for_eng,94,S0094L02,to work,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,94,S0094L03,will,I know it will help me understand what people are saying,5,"will"" = werden (future) or wollen; context shows future"
+deu_for_eng,95,S0095L01,on the next bus,,,no as-in clause (Frame A); nothing to score
+deu_for_eng,95,S0095L02,go home,She would like to go home early today,1,"go home"" is unambiguous"
+deu_for_eng,96,S0096L01,no,no I do not know that,2,"no"" = nein or kein; context shows nein"
+deu_for_eng,96,S0096L02,I need,I need to practise more,4,"I need"" = brauchen or müssen; context shows müssen"
+deu_for_eng,97,S0097L01,yes,yes I want to speak German with my friends,1,"yes"" is unambiguous"
+deu_for_eng,97,S0097L02,as soon as,I will read the letter as soon as I get home,1,"as soon as"" is unambiguous"
+deu_for_eng,98,S0098L01,I should consider,I think I should consider what you told me yesterday,3,"I should consider"" = sollte or in Betracht ziehen; context partly settles"
+deu_for_eng,98,S0098L02,playing,I know that playing is a lot of fun,3,"playing"" = spielen (game) or musizieren; context leaves it open"
+deu_for_eng,99,S0099L01,you should,I think you should practise more if you want to learn German,2,"you should"" is register-ambiguous; context cannot settle it"
+deu_for_eng,99,S0099L02,it works,I think it works better when you want to learn something,2,"it works"" = funktioniert or arbeitet; context adds little"
+deu_for_eng,100,S0100L01,similar,I want to find something similar because this is interesting,1,"similar"" is unambiguous"
+spa_for_eng,1,S0001L01,I want,I want to speak Spanish with you now,1,"I want"" is unambiguous"
+spa_for_eng,1,S0001L02,to speak,I want to speak Spanish with you now,1,"to speak"" is unambiguous"
+spa_for_eng,1,S0001L03,Spanish,I want to speak Spanish with you now,2,"Spanish"" = language or person; context mildly settles"
+spa_for_eng,1,S0001L04,with you,I want to speak Spanish with you now,2,"with you"" is register-ambiguous (contigo/usted); context cannot settle it"
+spa_for_eng,1,S0001L05,now,I want to speak Spanish with you now,1,"now"" is unambiguous"
+spa_for_eng,2,S0002L01,to learn,I'm trying to learn,2,"to learn"" = aprender or enterarse; context adds little"
+spa_for_eng,2,S0002L02,I'm trying to,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,3,S0003L01,how,how to speak as frequently as possible,4,"how"" = cómo or other question senses; context settles cómo"
+spa_for_eng,3,S0003L02,frequently,how to speak as frequently as possible,1,"frequently"" is unambiguous"
+spa_for_eng,3,S0003L03,as frequently as possible,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,4,S0004L01,in,how to say something in Spanish,5,"in"" = en, a, dentro de; context settles en"
+spa_for_eng,4,S0004L02,something,how to say something in Spanish,1,"something"" is unambiguous"
+spa_for_eng,4,S0004L03,to say,how to say something in Spanish,2,"to say"" = decir (vs contar); context adds little"
+spa_for_eng,5,S0005L01,to practise,I'm going to practise speaking with someone else,1,"to practise"" is unambiguous"
+spa_for_eng,5,S0005L02,I'm going to,I'm going to practise speaking with someone else,4,"I'm going to"" reads as future or movement; context settles future"
+spa_for_eng,5,S0005L03,speaking,I'm going to practise speaking with someone else,1,"speaking"" is unambiguous"
+spa_for_eng,5,S0005L04,with someone else,I'm going to practise speaking with someone else,1,"with someone else"" is unambiguous"
+spa_for_eng,6,S0006L01,to remember,I'm trying to remember a word,2,"to remember"" = recordar or acordarse; context adds little"
+spa_for_eng,6,S0006L02,a word,I'm trying to remember a word,1,"a word"" is unambiguous"
+spa_for_eng,7,S0007L01,to try,I want to try as hard as I can today,2,"to try"" = intentar or probar; context adds little"
+spa_for_eng,7,S0007L02,today,I want to try as hard as I can today,1,"today"" is unambiguous"
+spa_for_eng,7,S0007L03,as hard as I can,I want to try as hard as I can today,1,"as hard as I can"" is unambiguous"
+spa_for_eng,8,S0008L01,to explain,I'm going to try to explain what I mean,1,"to explain"" is unambiguous"
+spa_for_eng,8,S0008L02,what I mean,I'm going to try to explain what I mean,1,"what I mean"" is unambiguous"
+spa_for_eng,9,S0009L01,I speak,I speak a little Spanish now,1,"I speak"" is unambiguous"
+spa_for_eng,9,S0009L02,a little,I speak a little Spanish now,2,"a little"" = un poco or poco; context adds little"
+spa_for_eng,10,S0010L01,I can,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,10,S0010L02,I'm not sure,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,10,S0010L03,if,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,10,S0010L04,the whole sentence,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,11,S0011L01,I'd like,I'd like to be able to speak after you finish,1,"I'd like"" is unambiguous"
+spa_for_eng,11,S0011L02,to be able to,I'd like to be able to speak after you finish,2,"to be able to"" = poder or saber; context adds little"
+spa_for_eng,11,S0011L03,after you finish,I'd like to be able to speak after you finish,2,"after you finish"" is register-ambiguous; context cannot settle it"
+spa_for_eng,12,S0012L01,tomorrow,I wouldn't like to guess what's going to happen tomorrow,1,"tomorrow"" is unambiguous"
+spa_for_eng,12,S0012L02,to guess,I wouldn't like to guess what's going to happen tomorrow,2,"to guess"" = adivinar or suponer; context adds little"
+spa_for_eng,12,S0012L03,what's going to happen,I wouldn't like to guess what's going to happen tomorrow,1,"what's going to happen"" is unambiguous"
+spa_for_eng,12,S0012L04,I wouldn't like,I wouldn't like to guess what's going to happen tomorrow,1,"I wouldn't like"" is unambiguous"
+spa_for_eng,13,S0013L01,very well,you speak Spanish very well,3,"very well"" = muy bien or vale; context settles the adverb"
+spa_for_eng,13,S0013L02,you speak,you speak Spanish very well,2,"you speak"" is register-ambiguous; context cannot settle it"
+spa_for_eng,14,S0014L01,all day,Do you speak Spanish all day?,1,"all day"" is unambiguous"
+spa_for_eng,15,S0015L01,with me,and I want you to speak Spanish with me tomorrow,1,"with me"" is unambiguous"
+spa_for_eng,15,S0015L02,I want you to speak,and I want you to speak Spanish with me tomorrow,2,"I want you to speak"" is register-ambiguous; context cannot settle it"
+spa_for_eng,15,S0015L03,and,and I want you to speak Spanish with me tomorrow,1,"and"" is unambiguous"
+spa_for_eng,16,S0016L01,he wants,he wants to come back with everyone else later on,1,"he wants"" is unambiguous"
+spa_for_eng,16,S0016L02,to come back,he wants to come back with everyone else later on,1,"to come back"" is unambiguous"
+spa_for_eng,16,S0016L03,with everyone else,he wants to come back with everyone else later on,1,"with everyone else"" is unambiguous"
+spa_for_eng,16,S0016L04,later on,he wants to come back with everyone else later on,1,"later on"" is unambiguous"
+spa_for_eng,17,S0017L01,she wants,She wants to find out what the answer is,1,"she wants"" is unambiguous"
+spa_for_eng,17,S0017L02,to find out,She wants to find out what the answer is,2,"to find out"" = averiguar or enterarse; context adds little"
+spa_for_eng,17,S0017L03,what the answer is,She wants to find out what the answer is,1,"what the answer is"" is unambiguous"
+spa_for_eng,18,S0018L01,we want,we want to meet at six o'clock this evening,1,"we want"" is unambiguous"
+spa_for_eng,18,S0018L02,to meet,we want to meet at six o'clock this evening,4,"to meet"" = conocer or quedar/encontrarse; context settles quedar"
+spa_for_eng,18,S0018L03,at six,we want to meet at six o'clock this evening,1,"at six"" is unambiguous"
+spa_for_eng,18,S0018L04,this evening,we want to meet at six o'clock this evening,1,"this evening"" is unambiguous"
+spa_for_eng,19,S0019L01,but,but I don't want to stop talking,3,"but"" = pero or sino; context shows pero"
+spa_for_eng,19,S0019L02,I don't want,but I don't want to stop talking,1,"I don't want"" is unambiguous"
+spa_for_eng,19,S0019L03,to stop talking,but I don't want to stop talking,3,"to stop talking"" = parar or dejar de; context settles dejar de"
+spa_for_eng,20,S0020L01,you want,you want to learn his name quickly,2,"you want"" is register-ambiguous; context cannot settle it"
+spa_for_eng,20,S0020L02,his name,you want to learn his name quickly,1,"his name"" is unambiguous"
+spa_for_eng,20,S0020L03,quickly,you want to learn his name quickly,1,"quickly"" is unambiguous"
+spa_for_eng,21,S0021L01,why,Why are you learning her name?,2,"why"" = por qué or para qué; context settles por qué"
+spa_for_eng,21,S0021L02,are you learning,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,21,S0021L03,her name,Why are you learning her name?,1,"her name"" is unambiguous"
+spa_for_eng,22,S0022L01,because,because I want to meet people who speak Spanish,1,"because"" is unambiguous"
+spa_for_eng,22,S0022L02,people who speak,because I want to meet people who speak Spanish,1,"people who speak"" is unambiguous"
+spa_for_eng,22,S0022L03,to meet people,because I want to meet people who speak Spanish,3,"to meet people"" = conocer or encontrar; context adds little"
+spa_for_eng,23,S0023L01,to start talking,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,23,S0023L02,soon,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,24,S0024L01,I am not going to be able to,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,24,S0024L02,easily,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,25,S0025L01,are you going to,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,25,S0025L02,to help me,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,25,S0025L03,before I have to go,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,26,S0026L01,I like,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,26,S0026L02,nearly,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,26,S0026L03,feeling as if I were,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,26,S0026L04,ready to go,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,27,S0027L01,too much,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,27,S0027L02,taking too much time,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,27,S0027L03,in order to answer,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,28,S0028L01,it's useful,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,28,S0028L02,as soon as possible,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,29,S0029L01,better,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,29,S0029L02,I'm looking forward to,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,30,S0030L01,I wanted,I wanted to ask you something yesterday,1,"I wanted"" is unambiguous"
+spa_for_eng,30,S0030L02,to ask,I wanted to ask you something yesterday,3,"to ask"" = preguntar or pedir; context shows preguntar"
+spa_for_eng,30,S0030L03,yesterday,I wanted to ask you something yesterday,1,"yesterday"" is unambiguous"
+spa_for_eng,30,S0030L04,to ask you,I wanted to ask you something yesterday,2,"to ask you"" is register-ambiguous; context cannot settle it"
+spa_for_eng,31,S0031L01,you wanted,you wanted to speak with me tonight,2,"you wanted"" is register-ambiguous; context cannot settle it"
+spa_for_eng,31,S0031L02,with me,he wants to practice with me,1,"with me"" is unambiguous"
+spa_for_eng,31,S0031L03,tonight,you wanted to speak with me tonight,1,"tonight"" is unambiguous"
+spa_for_eng,32,S0032L01,to show me,did you want to show me something?,1,"to show me"" is unambiguous"
+spa_for_eng,33,S0033L01,how long,how long have you been learning Spanish?,4,"how long"" = cuánto tiempo or cuán largo; context settles time"
+spa_for_eng,33,S0033L02,you've been learning,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,34,S0034L01,he doesn't want,he doesn't want to be quiet when other people are here,1,"he doesn't want"" is unambiguous"
+spa_for_eng,34,S0034L02,to be quiet,he doesn't want to be quiet when other people are here,3,"to be quiet"" = callarse or ser/estar tranquilo; context leaves it open"
+spa_for_eng,34,S0034L03,when other people are here,he doesn't want to be quiet when other people are here,1,"when other people are here"" is unambiguous"
+spa_for_eng,35,S0035L01,she doesn't want,She doesn't want to read anything this afternoon,1,"she doesn't want"" is unambiguous"
+spa_for_eng,35,S0035L02,to read,She doesn't want to read anything this afternoon,1,"to read"" is unambiguous"
+spa_for_eng,35,S0035L03,anything,She doesn't want to read anything this afternoon,3,"anything"" = nada or cualquier cosa; context settles nada"
+spa_for_eng,35,S0035L04,this afternoon,She doesn't want to read anything this afternoon,1,"this afternoon"" is unambiguous"
+spa_for_eng,36,S0036L01,we don't want,we don't want to interrupt the story,1,"we don't want"" is unambiguous"
+spa_for_eng,36,S0036L02,to interrupt,we don't want to interrupt the story,1,"to interrupt"" is unambiguous"
+spa_for_eng,36,S0036L03,the story,we don't want to interrupt the story,4,"the story"" = historia or piso; context settles historia"
+spa_for_eng,37,S0037L01,I started to,I started to think about it carefully last month,1,"I started to"" is unambiguous"
+spa_for_eng,37,S0037L02,to think about it,I started to think about it carefully last month,1,"to think about it"" is unambiguous"
+spa_for_eng,37,S0037L03,carefully,I started to think about it carefully last month,1,"carefully"" is unambiguous"
+spa_for_eng,37,S0037L04,last month,I started to think about it carefully last month,1,"last month"" is unambiguous"
+spa_for_eng,38,S0038L01,I've been learning all day,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,38,S0038L02,more or less,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,38,S0038L03,a week,I've been learning for about a week,1,"a week"" is unambiguous"
+spa_for_eng,39,S0039L01,but I'm,but I'm a little tired this morning,1,"but I'm"" is unambiguous"
+spa_for_eng,39,S0039L02,a little tired,but I'm a little tired this morning,1,"a little tired"" is unambiguous"
+spa_for_eng,39,S0039L03,this morning,but I'm a little tired this morning,1,"this morning"" is unambiguous"
+spa_for_eng,40,S0040L01,do you feel,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,40,S0040L02,at the moment,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,41,S0041L01,I feel,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,41,S0041L02,tired,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,41,S0041L03,I'm starting to,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,41,S0041L04,to feel,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,42,S0042L01,I was starting to,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,42,S0042L02,better than,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,42,S0042L03,last night,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,43,S0043L01,I wasn't thinking,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,43,S0043L02,to answer,I wasn't thinking about how to answer,2,"to answer"" = responder or contestar; context adds little"
+spa_for_eng,44,S0044L01,or,or if I need to improve,1,"or"" is unambiguous"
+spa_for_eng,44,S0044L02,I need,or if I need to improve,4,"I need"" = necesitar or tener que; context shows necesitar"
+spa_for_eng,44,S0044L03,to improve,or if I need to improve,1,"to improve"" is unambiguous"
+spa_for_eng,45,S0045L01,to know,I don't need to know everything,4,"to know"" = saber or conocer; context settles saber"
+spa_for_eng,46,S0046L01,I don't worry about,but I don't worry about making mistakes,1,"I don't worry about"" is unambiguous"
+spa_for_eng,46,S0046L02,making mistakes,but I don't worry about making mistakes,1,"making mistakes"" is unambiguous"
+spa_for_eng,47,S0047L01,I think that,because I think that it's a good thing to make mistakes,2,"I think that"" = creo or pienso; context adds little"
+spa_for_eng,47,S0047L02,good,because I think that it's a good thing to make mistakes,2,"good"" = bueno or bien; context adds little"
+spa_for_eng,48,S0048L01,I don't care,I don't care about making mistakes,2,"I don't care"" = no me importa or no me preocupa; context adds little"
+spa_for_eng,49,S0049L01,it's like this,"It's like this, if you know what I mean",1,"it's like this"" is unambiguous"
+spa_for_eng,49,S0049L02,you know,"it's like this, if you know what I mean",3,"you know"" = sabes or filler; context partly settles"
+spa_for_eng,50,S0050L01,to finish,I'm not trying to finish as quickly as possible,2,"to finish"" = terminar or acabar; context adds little"
+spa_for_eng,50,S0050L02,as quickly as possible,I'm not trying to finish as quickly as possible,1,"as quickly as possible"" is unambiguous"
+spa_for_eng,51,S0051L01,I enjoy doing,I enjoy doing interesting things with my friends,2,"I enjoy doing"" = disfrutar, gustar or encantar; context adds little"
+spa_for_eng,51,S0051L02,interesting things,I enjoy doing interesting things with my friends,1,"interesting things"" is unambiguous"
+spa_for_eng,51,S0051L03,my friends,I enjoy doing interesting things with my friends,1,"my friends"" is unambiguous"
+spa_for_eng,52,S0052L01,to write,he wanted to write a letter to his friend last week,1,"to write"" is unambiguous"
+spa_for_eng,52,S0052L02,letter,he wanted to write a letter to his friend last week,4,"letter"" = carta or letra; context settles carta"
+spa_for_eng,52,S0052L03,last week,He wanted to write a letter to his friend last week.,1,"last week"" is unambiguous"
+spa_for_eng,52,S0052L04,last week,he wanted to write a letter to his friend last week,1,"last week"" is unambiguous"
+spa_for_eng,53,S0053L01,to put,She wanted to put his letter in her bag,3,"to put"" = poner or meter; context shows meter"
+spa_for_eng,53,S0053L02,bag,She wanted to put his letter in her bag,3,"bag"" = bolsa or bolso; context partly settles"
+spa_for_eng,54,S0054L01,we wanted to give you,We wanted to give you a little more time.,2,"we wanted to give you"" is register-ambiguous (te/les); context cannot settle it"
+spa_for_eng,54,S0054L02,to give you,we wanted to give you a little more time,2,"to give you"" is register-ambiguous; context cannot settle it"
+spa_for_eng,55,S0055L01,waking up,I don't enjoy waking up when I didn't sleep very well,2,"waking up"" = despertarse; context adds little"
+spa_for_eng,55,S0055L02,I slept,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,56,S0056L01,a few words,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,57,S0057L01,I can't remember how to say what I wanted to say,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,58,S0058L01,it's interesting when,It's interesting when you understand enough words.,1,"it's interesting when"" is unambiguous"
+spa_for_eng,58,S0058L02,you understand,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,58,S0058L03,enough words,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,59,S0059L01,I know,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,59,S0059L02,to do,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,59,S0059L03,next week,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,60,S0060L01,different words,I don't know how to say enough different words yet,1,"different words"" is unambiguous"
+spa_for_eng,60,S0060L02,enough different words,I don't know how to say enough different words yet.,1,"enough different words"" is unambiguous"
+spa_for_eng,61,S0061L01,could you,could you say that again a little more slowly?,2,"could you"" is register-ambiguous and poder; context cannot settle it"
+spa_for_eng,61,S0061L02,that,could you say that again a little more slowly?,5,"that"" = eso, ese or que; context settles eso"
+spa_for_eng,61,S0061L03,again,could you say that again a little more slowly?,1,"again"" is unambiguous"
+spa_for_eng,61,S0061L04,slowly,could you say that again a little more slowly?,1,"slowly"" is unambiguous"
+spa_for_eng,62,S0062L01,,,,empty intro text in course_audio; no intro to score
+spa_for_eng,63,S0063L01,are you sure you don't mind helping me,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,64,S0064L01,easy,learning Spanish isn't easy but it is fun,1,"easy"" is unambiguous"
+spa_for_eng,64,S0064L02,fun,learning Spanish isn't easy but it is fun,1,"fun"" is unambiguous"
+spa_for_eng,65,S0065L01,important,It's important to take time to test yourself,1,"important"" is unambiguous"
+spa_for_eng,65,S0065L02,to test yourself,It's important to take time to test yourself,2,"to test yourself"" is register-ambiguous and reflexive; context cannot settle it"
+spa_for_eng,66,S0066L01,difficult,It's not difficult to find the answer,1,"difficult"" is unambiguous"
+spa_for_eng,66,S0066L02,to find,It's not difficult to find the answer,2,"to find"" = encontrar or hallar; context adds little"
+spa_for_eng,67,S0067L01,why do you want to stop,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,68,S0068L01,what are you looking for,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,69,S0069L01,the dog,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,69,S0069L02,young,he didn't want to look after the young dog all afternoon,2,"young"" = joven or jóven; context adds little"
+spa_for_eng,69,S0069L03,to look after,he didn't want to look after the young dog all afternoon,3,"to look after"" = cuidar or vigilar; context settles cuidar"
+spa_for_eng,70,S0070L01,to tell me,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,70,S0070L02,where,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,71,S0071L01,we wanted,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,71,S0071L02,heard the truth,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,71,S0071L03,anyone,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,71,S0071L04,to let that,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,72,S0072L01,it,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,72,S0072L02,you're doing it,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,73,S0073L01,thank you very much,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,74,S0074L01,have you got,Have you got more to learn?,3,"have you got"" = tener or conseguir; context shows tener"
+spa_for_eng,74,S0074L02,to understand,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,75,S0075L01,you have,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,76,S0076L01,I'm surprised at,I'm surprised at how quickly I'm starting to understand.,1,"I'm surprised at"" is unambiguous"
+spa_for_eng,76,S0076L02,how quickly,I'm surprised at how quickly I'm starting to understand.,2,"how quickly"" = qué rápido or cómo de rápido; context adds little"
+spa_for_eng,76,S0076L03,I have learned,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,77,S0077L01,it surprises,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,77,S0077L02,how quickly,I'm surprised at how quickly I'm starting to understand,2,"how quickly"" = qué rápido or cómo de rápido; context adds little"
+spa_for_eng,77,S0077L03,starting to understand,I'm surprised at how quickly I'm starting to understand,1,"starting to understand"" is unambiguous"
+spa_for_eng,78,S0078L01,I understand,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,78,S0078L02,you said,I don't understand what you said,2,"you said"" is register-ambiguous; context cannot settle it"
+spa_for_eng,79,S0079L01,when,when did you start to learn?,4,"when"" = cuándo (question) or cuando; context settles the question"
+spa_for_eng,79,S0079L02,did you start,when did you start to learn?,2,"did you start"" is register-ambiguous; context cannot settle it"
+spa_for_eng,80,S0080L01,I will be,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,81,S0081L01,when,Do you know when you want to start?,4,"when"" = cuándo or cuando; context settles the question"
+spa_for_eng,82,S0082L01,to wait for you,I'm not going to wait for you. Why not?,2,"to wait for you"" is register-ambiguous; context cannot settle it"
+spa_for_eng,83,S0083L01,in agreement,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,83,S0083L02,what he said,I don't agree with what he said about my friend.,2,"what he said"" = lo que or qué; context adds little"
+spa_for_eng,83,S0083L03,about your friend,I agree with what you said about your friend,2,"about your friend"" tu/su and register; context cannot settle it"
+spa_for_eng,84,S0084L01,he said,I don't agree with what he said about my friend,1,"he said"" is unambiguous"
+spa_for_eng,84,S0084L02,my friend,I don't agree with what he said about my friend,2,"my friend"" gender (amigo/amiga) not settled by context"
+spa_for_eng,85,S0085L01,it wasn't possible,"It wasn't possible, unfortunately.",1,"it wasn't possible"" is unambiguous"
+spa_for_eng,85,S0085L02,those people,I don't know those people,1,"those people"" is unambiguous"
+spa_for_eng,86,S0086L01,they are people,They are people I don't know.,3,"they are"" = son or están; context does not settle ser/estar"
+spa_for_eng,86,S0086L02,unfortunately,"it wasn't possible, unfortunately",1,"unfortunately"" is unambiguous"
+spa_for_eng,87,S0087L01,they are people who,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,88,S0088L01,ready,I'm not ready to talk to people I don't know yet,2,"ready"" = listo or preparado; context adds little"
+spa_for_eng,88,S0088L02,yet,I'm not ready to talk to people I don't know yet,4,"yet"" = todavía or ya; context settles todavía"
+spa_for_eng,89,S0089L01,I've done,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,89,S0089L02,speak more slowly,If you can speak more slowly that would be great.,1,"speak more slowly"" is unambiguous"
+spa_for_eng,89,S0089L03,that would be great,If you can speak more slowly that would be great.,1,"that would be great"" is unambiguous"
+spa_for_eng,90,S0090L01,it's difficult to,It's difficult to think quickly enough to answer in time.,1,"it's difficult to"" is unambiguous"
+spa_for_eng,90,S0090L02,think quickly enough,It's difficult to think quickly enough to answer in time.,1,"think quickly enough"" is unambiguous"
+spa_for_eng,90,S0090L03,to answer in time,It's difficult to think quickly enough to answer in time.,2,"to answer in time"" = responder or contestar; context adds little"
+spa_for_eng,90,S0090L04,would be,if you can speak more slowly that would be great,3,"would be"" = sería or estaría; context settles ser"
+spa_for_eng,90,S0090L05,great,if you can speak more slowly that would be great,3,"great"" = gran or genial; context settles genial"
+spa_for_eng,91,S0091L02,quickly enough,It's difficult to think quickly enough to answer in time,1,"quickly enough"" is unambiguous"
+spa_for_eng,91,S0091L03,this for a while,I'd like to keep on doing this for a while.,2,"this for a while"" is clear enough; context adds little"
+spa_for_eng,92,S0092L01,to continue,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,92,S0092L02,this,I'd like to keep on doing this for a while,3,"this"" = esto or este; gender choice; context settles esto"
+spa_for_eng,92,S0092L03,a while,I'd like to keep on doing this for a while,2,"a while"" is clear enough; context adds little"
+spa_for_eng,93,S0093L01,time to go,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,94,S0094L01,the only way,this is the only way it will work,3,"the only way"" = manera or camino; context settles manera"
+spa_for_eng,94,S0094L02,it will work,this is the only way it will work,3,"it will work"" = will as future; work = funciona or trabaja; context partly settles"
+spa_for_eng,95,S0095L01,go home,are you ready to go home on the next bus?,1,"go home"" is unambiguous"
+spa_for_eng,95,S0095L02,the next bus,are you ready to go home on the next bus?,1,"the next bus"" is unambiguous"
+spa_for_eng,96,S0096L01,yet,I don't know yet how to say enough words,4,"yet"" = todavía or ya; context settles todavía"
+spa_for_eng,96,S0096L02,a little more time,"no I'm not ready yet, I need a little more time",1,"a little more time"" is unambiguous"
+spa_for_eng,97,S0097L01,yes,yes I'm ready to go as soon as you want,1,"yes"" is unambiguous"
+spa_for_eng,97,S0097L02,whenever you want,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,98,S0098L01,should,I should consider playing something else,3,"should"" = debería or debo; context settles debería"
+spa_for_eng,98,S0098L02,,,,empty intro text in course_audio; no intro to score
+spa_for_eng,98,S0098L03,play,I should consider playing something else,3,"play"" = jugar or tocar; context leaves it open"
+spa_for_eng,98,S0098L04,different,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,99,S0099L01,you should,you should ask yourself why it's not working,2,"you should"" is register-ambiguous; context cannot settle it"
+spa_for_eng,99,S0099L02,it's not working,you should ask yourself why it's not working,2,"it's not working"" = no funciona or no trabaja; context adds little"
+spa_for_eng,100,S0100L01,to worry,,,no as-in clause (Frame A); nothing to score
+spa_for_eng,100,S0100L02,about doing,you shouldn't worry about doing something similar,1,"about doing"" is unambiguous"
+spa_for_eng,100,S0100L03,similar,you shouldn't worry about doing something similar,1,"similar"" is unambiguous"

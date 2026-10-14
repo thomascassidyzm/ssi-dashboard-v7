@@ -55,7 +55,13 @@ const {
   clipVoiceId,
   voiceRegister,
   invalidateLanguageQueueCache,
+  linkPhraseTake,
+  getPhrasePlan,
+  warmLanguageQueues,
 } = require('./recordist-queue.cjs')
+const { enableRewarmAfterInvalidate } = require('./recordist-queue-cache.cjs')
+const phraseQueue = require('./phrase-queue.cjs')
+const boothHome = require('./booth-home.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
 const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
 const { isSoloReaderPod, soloReaders, soloReaderIndex, soloReaderTakeGIds } = require('../shared/pod-solo-readers.cjs')
@@ -133,6 +139,10 @@ module.exports = function createRecordistRouter({
   handleRecordingUpload,
   // Injectable only so the route's variant handling is testable without S3.
   s3 = require('../s3-production-service.cjs'),
+  // Build the practice-phrase plan once shortly after boot (job #619), so the
+  // first Welsh reader of the day does not pay its ~3-10 s cold read on top of
+  // the language read. Production passes true; tests leave it off.
+  warmPhrasePlan = false,
 }) {
   const router = express.Router()
 
@@ -140,6 +150,16 @@ module.exports = function createRecordistRouter({
     const client = getDb()
     if (!client) throw Object.assign(new Error('Supabase not initialized'), { status: 503 })
     return client
+  }
+  if (warmPhrasePlan) {
+    // Job #337: the language read was cold after every deploy and after every
+    // take. Warm it at boot beside the plan, and re-warm it after a take.
+    enableRewarmAfterInvalidate()
+    const t = setTimeout(() => {
+      try { warmLanguageQueues(db()).catch((e) => logger.warn(`[Recordist] language queue warm failed: ${e.message}`)) } catch (e) { logger.warn(`[Recordist] language queue warm skipped: ${e.message}`) }
+      try { getPhrasePlan(db()).catch((e) => logger.warn(`[Recordist] phrase plan warm failed: ${e.message}`)) } catch (e) { logger.warn(`[Recordist] phrase plan warm skipped: ${e.message}`) }
+    }, 15_000)
+    if (typeof t.unref === 'function') t.unref()
   }
 
   /** Resolve :voiceId or answer 404 — the only gate routes 1-3 have, by design. */
@@ -205,6 +225,40 @@ module.exports = function createRecordistRouter({
     await db().from('recordist_setup_checks').update({ status: next }).eq('voice_id', row.voice_id).eq('status', row.status)
   }
 
+  /**
+   * Measure every newest take that is not yet measured at the current
+   * MEASURE_VERSION and judge the set (job #435). Returns {items, measured,
+   * verdict, dirty}; the caller persists. A take that cannot be fetched or
+   * measured is left unmeasured, which the judge ignores -- never failed.
+   */
+  async function measureAndJudgeSetup(row, pack, newest) {
+    const metrics = row.metrics && typeof row.metrics === 'object' ? row.metrics : {}
+    const measured = { ...(metrics.measured || {}) }
+    let dirty = false
+    const items = []
+    for (const item of pack.items) {
+      const take = newest.get(item.id) || null
+      const entry = { id: item.id, text: item.text, recorded: !!take, url: null, device: (metrics.takes || {})[item.id]?.device || null, measures: null }
+      if (take) {
+        entry.url = await s3.getAudioSignedUrl(null, 3600, { s3Key: take.key })
+        const have = measured[item.id]
+        if (!have || have.key !== take.key || have.v !== setupCheck.MEASURE_VERSION) {
+          try {
+            const r = await fetch(entry.url)
+            const buf = Buffer.from(await r.arrayBuffer())
+            measured[item.id] = { key: take.key, ...(await setupCheck.measureTake(buf, 'audio/' + String(take.key).split('.').pop())) }
+            dirty = true
+          } catch (err) { logger.error(`[Recordist] setup-check measure ${item.id}: ${err.message}`) }
+        }
+        entry.measures = measured[item.id] || null
+      }
+      items.push(entry)
+    }
+    const judged = setupCheck.judgeSetupCheck(Object.fromEntries(items.filter((i) => i.measures).map((i) => [i.id, i.measures])))
+    const verdict = { verdict: judged.verdict, reasons: judged.reasons, judged: judged.judged, perTake: judged.perTake, at: new Date().toISOString() }
+    return { items, measured, verdict, dirty, metrics }
+  }
+
   async function packQueueResponse(req, res, pack) {
     const includeRecorded = req.query.includeRecorded === '1' || req.query.includeRecorded === 'true'
     const objects = await s3.listObjects(packPrefix(pack.id))
@@ -219,7 +273,7 @@ module.exports = function createRecordistRouter({
       // Paragraphs with sentence pauses in them: stopping on the first pause
       // would cut the 25-second cloning sample in half. The page reads this.
       autoAdvance: pack.autoAdvance !== false,
-      pack: { id: pack.id, title: pack.title, setup: pack.setup ? { status: pack.setup.status, voiceId: pack.setup.voiceId, note: pack.setup.note } : null },
+      pack: { id: pack.id, title: pack.title, setup: pack.setup ? { status: pack.setup.status, voiceId: pack.setup.voiceId, note: pack.setup.note, autoVerdict: pack.setup.autoVerdict || null } : null },
       total: queue.total,
       recorded: queue.recorded,
       remaining: queue.remaining,
@@ -341,6 +395,41 @@ module.exports = function createRecordistRouter({
     }
   })
 
+  // THE HOME SCREEN'S SUMMARY (Aran, 2026-10-14, job #347): sections, batches
+  // and counts — no lines. The booth page used to open by fetching all of them
+  // (2060 lines, 2.2MB for Aran) and drawing every one; it now draws its home
+  // screen from this and fetches one batch's lines when he opens it. Same queue,
+  // same counts, same recorded flag (booth-home.cjs reads them, never decides).
+  // A recording pack keeps its own one-screen flow: `home: false` says so.
+  router.get('/voice/:voiceId/summary', async (req, res) => {
+    try {
+      const pack = await resolveAnyPack(req.params.voiceId)
+      if (pack) return res.json({ home: false, reason: 'pack' })
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+      const queue = await buildQueue(db(), recordist, { includeRecorded: true })
+      const setupRow = await loadSetupRow(recordist.voiceId)
+      res.json({
+        home: true,
+        setupLocked: setupCheck.locksScript(setupRow),
+        voiceId: recordist.voiceId,
+        displayName: recordist.displayName,
+        language: recordist.language,
+        languageName: recordist.languageName,
+        dialect: recordist.dialect,
+        total: queue.total,
+        recorded: queue.recorded,
+        phrases: queue.phrases || null,
+        notReady: queue.notReady || [],
+        handedOn: queue.handedOn || [],
+        tracks: boothHome.buildHomeTracks(queue.lines, queue.phrases, queue.phraseBatches),
+      })
+    } catch (err) {
+      logger.error(`[Recordist] summary: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
   router.get('/voice/:voiceId', async (req, res) => {
     try {
       const pack = await resolveAnyPack(req.params.voiceId)
@@ -389,10 +478,17 @@ module.exports = function createRecordistRouter({
       const inScope = (rows) => (rows || [])
         .filter((r) => (!scoped || r.courseCode === scoped) && inPod(r))
       const forCourse = inScope
-      const lines = inScope(queue.lines)
+      // ONE BATCH FROM THE HOME SCREEN (job #347): ?track=<key>&batch=<n> is the
+      // slice of the queue a home-screen card opens — cut by the same function
+      // the summary counted it with (booth-home.cjs), so the card and the batch
+      // agree. Only what goes over the wire narrows; the queue is the queue.
+      const trackScope = typeof req.query.track === 'string' && req.query.track.trim() ? req.query.track.trim() : null
+      const lines = trackScope
+        ? boothHome.selectBatch(inScope(queue.lines), trackScope, parseInt(req.query.batch, 10))
+        : inScope(queue.lines)
       // Scoped counts are counted over the lines on the wire (the booth always
       // asks includeRecorded=1, so they are the scope's whole tally there).
-      const narrowed = Boolean(scoped || podScope)
+      const narrowed = Boolean(scoped || podScope || trackScope)
       const recordedInScope = narrowed ? lines.filter((l) => l.recorded).length : queue.recorded
       const totalInScope = narrowed ? lines.length : queue.total
       const setupRow = await loadSetupRow(recordist.voiceId)
@@ -400,12 +496,14 @@ module.exports = function createRecordistRouter({
         // Present while the full script is locked behind the setup check; the
         // booth swaps Start for a card that opens it. Absent once approved.
         setupCheck: setupCheck.locksScript(setupRow)
-          ? { status: setupRow.status, note: setupRow.review_note || null, packVoiceId: setupCheck.packVoiceIdFor(setupRow.voice_id) }
+          ? { status: setupRow.status, note: setupRow.review_note || null, packVoiceId: setupCheck.packVoiceIdFor(setupRow.voice_id), autoVerdict: setupCheck.artistVerdict(setupRow) }
           : null,
         course: scoped,
         // Echoed back for the same reason maxSeed is: a screen that reports the
         // scope it ASKED for rather than the one it got is a quiet lie.
         pod: podScope,
+        track: trackScope,
+        batch: trackScope ? (parseInt(req.query.batch, 10) || 1) : null,
         voiceId: recordist.voiceId,
         displayName: recordist.displayName,
         language: recordist.language,
@@ -420,6 +518,9 @@ module.exports = function createRecordistRouter({
         // How big the minimal set is, in the two units a recordist standing at
         // a microphone actually cares about. Null when the course has no set.
         quarry: queue.quarry,
+        // THE PRACTICE-PHRASE BATCH this reader is on (job #619): pass, batch,
+        // how far through, what comes later. Null when they read no phrases.
+        phrases: queue.phrases || null,
         total: totalInScope,
         recorded: recordedInScope,
         remaining: totalInScope - recordedInScope,
@@ -590,41 +691,48 @@ module.exports = function createRecordistRouter({
     if (seedErr && seedErr.code !== '22P02') throw new Error(`seed lookup failed: ${seedErr.message}`)
     if (!seed) { res.status(404).json({ error: `No seed ${parsed.seedId}` }); return null }
 
-    // THE KNOWN-SIDE EXCEPTION, CHECKED ON THE SERVER. The booth has no login,
-    // so the client's word for "this is a test course" is a suggestion. Only a
-    // zzz_ fixture may have its English side recorded (Tom, 2026-09-02).
-    if (parsed.role === 'known' && !isTestFixtureCourse(seed.course_code)) {
+    const { data: course, error: cErr } = await db()
+      .from('courses').select('course_code, voice_config, target_lang, known_lang, dialect').eq('course_code', seed.course_code).maybeSingle()
+    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    if (!course) { res.status(404).json({ error: `No course ${seed.course_code}` }); return null }
+
+    const policies = await loadPolicies(db())
+    const policy = policies.find((row) => row.language === recordist.language)
+    const cast = seedCastEntry(course, policyVoiceList(policy))
+
+    // THE KNOWN SIDE, CHECKED ON THE SERVER. The booth has no login, so the
+    // client's word for "this is a test course" is a suggestion. A live course's
+    // known side is recorded only where the known language's policy CASTS a
+    // voice on it by castOn (Aran's English, job #588); otherwise only a zzz_
+    // fixture records its English (Tom, 2026-09-02).
+    const fixture = isTestFixtureCourse(seed.course_code)
+    const knownCastOn = parsed.role === 'known' && !fixture && !!(cast.known && cast.known.fillOnly)
+    if (parsed.role === 'known' && !fixture && !knownCastOn) {
       res.status(403).json({
-        error: 'The known side of a live course is not recorded here. Only a test fixture course records its English.',
+        error: 'The known side of a live course is not recorded here unless its known language casts a reader on it. Only a test fixture course records its English otherwise.',
         reason: 'known_side_live_course',
         courseCode: seed.course_code,
       })
       return null
     }
 
-    const { data: course, error: cErr } = await db()
-      .from('courses').select('course_code, voice_config, target_lang').eq('course_code', seed.course_code).maybeSingle()
-    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
-    if (!course) { res.status(404).json({ error: `No course ${seed.course_code}` }); return null }
-
     // WRONG LANGUAGE, said in those words. Checked before the cast, because the
     // cast is resolved against the RECORDIST's own language policy: a Welsh
     // voice pointed at a zzz seed would otherwise be told "nobody is cast",
-    // which is false and sends whoever reads it to change the wrong thing.
+    // which is false and sends whoever reads it to change the wrong thing. The
+    // language is the SIDE's: a castOn known line speaks the course's known_lang.
+    const sideLang = knownCastOn ? course.known_lang : course.target_lang
     let courseLanguage = null
-    try { courseLanguage = canonicalLanguage(course.target_lang) } catch { courseLanguage = null }
+    try { courseLanguage = canonicalLanguage(sideLang) } catch { courseLanguage = null }
     if (courseLanguage !== recordist.language) {
       res.status(403).json({
-        error: `That seed belongs to ${seed.course_code}, which is ${course.target_lang}, not ${recordist.language}.`,
+        error: `That seed belongs to ${seed.course_code}, which is ${sideLang}, not ${recordist.language}.`,
         reason: 'wrong_language',
         courseCode: seed.course_code,
       })
       return null
     }
 
-    const policies = await loadPolicies(db())
-    const policy = policies.find((row) => row.language === recordist.language)
-    const cast = seedCastEntry(course, policyVoiceList(policy))
     const castVoice = cast[parsed.role]
     if (!castVoice || !recordist.spellings.includes(castVoice.voiceId)) {
       res.status(403).json({
@@ -1236,6 +1344,164 @@ module.exports = function createRecordistRouter({
     res.redirect(302, url)
   }
 
+  /**
+   * Resolve a PRACTICE PHRASE line (`phrase:<phraseId>:<role>`, job #619): the
+   * row, its course, and whether this recordist is the one cast to read that
+   * side of it. Everything is read from the row — the booth has no login, so the
+   * id is a claim. Only the phrase-queue courses (the Welsh sandboxes) take a
+   * phrase take here; a live course's phrases are refused outright.
+   */
+  async function resolvePhraseLine(res, recordist, parsed) {
+    const { data: phrase, error } = await db()
+      .from('course_practice_phrases')
+      .select('id, course_code, seed_number, phrase_role, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
+      .eq('id', parsed.phraseId)
+      .maybeSingle()
+    if (error) throw new Error(`phrase lookup failed: ${error.message}`)
+    if (!phrase) { res.status(404).json({ error: `No phrase ${parsed.phraseId}` }); return null }
+    if (!phraseQueue.isPhraseQueueCourse(phrase.course_code)) {
+      res.status(403).json({
+        error: `Practice phrases of ${phrase.course_code} are not recorded in the booth.`,
+        reason: 'phrase_course_not_queued',
+        courseCode: phrase.course_code,
+      })
+      return null
+    }
+    const { data: course, error: cErr } = await db()
+      .from('courses').select('course_code, voice_config, target_lang, known_lang, dialect').eq('course_code', phrase.course_code).maybeSingle()
+    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    if (!course) { res.status(404).json({ error: `No course ${phrase.course_code}` }); return null }
+
+    const sideLang = parsed.role === 'known' ? course.known_lang : course.target_lang
+    let courseLanguage = null
+    try { courseLanguage = canonicalLanguage(sideLang) } catch { courseLanguage = null }
+    if (courseLanguage !== recordist.language) {
+      res.status(403).json({ error: `That phrase's ${parsed.role} side is ${sideLang}, not ${recordist.language}.`, reason: 'wrong_language', courseCode: phrase.course_code })
+      return null
+    }
+    const policies = await loadPolicies(db())
+    const policy = policies.find((row) => row.language === recordist.language)
+    const castVoice = seedCastEntry(course, policyVoiceList(policy))[parsed.role]
+    if (!castVoice || !recordist.spellings.includes(castVoice.voiceId)) {
+      res.status(403).json({
+        error: castVoice
+          ? `${phrase.course_code} casts ${castVoice.voiceId} to read its ${parsed.role} phrases, not you.`
+          : `${phrase.course_code} has nobody cast to read its ${parsed.role} side.`,
+        reason: castVoice ? 'not_your_slot' : 'uncast_slot',
+        courseCode: phrase.course_code,
+        role: parsed.role,
+      })
+      return null
+    }
+    const text = phraseQueue.roleText(phrase, parsed.role)
+    return { phrase, course, text, role: parsed.role }
+  }
+
+  /**
+   * A take for a PRACTICE PHRASE: the seed take's seam exactly — script-mode
+   * filing mints the clip first, then linkPhraseTake points every EMPTY copy of
+   * the text at it. Make-before-break by construction, and fill-empty only: an
+   * existing clip in any copy's slot is never touched.
+   */
+  async function recordPhraseTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = await resolvePhraseLine(res, recordist, parsed)
+    if (!resolved) return
+    if (!resolved.text) return res.status(409).json({ error: `That phrase has no ${parsed.role} text to read.`, reason: 'empty_line' })
+    if (text && text.trim() && text.trim() !== resolved.text) {
+      return res.status(409).json({
+        error: 'The text on this line has changed since the queue was loaded -- reload before recording it.',
+        expected: resolved.text,
+        received: text.trim(),
+      })
+    }
+    const { res: innerRes, captured } = captureResponse()
+    await handleRecordingUpload({
+      params: { courseCode: resolved.phrase.course_code },
+      headers: { authorization: req.headers.authorization },
+      socket: req.socket,
+      recordistVoiceId: recordist.voiceId,
+      body: {
+        audioData: audioBase64,
+        mimeType,
+        metadata: {
+          mode: 'script',
+          cadence: 'natural',
+          role: parsed.role,
+          kind: parsed.role,
+          text: resolved.text,
+          voiceId: recordist.voiceId,
+          phraseId: resolved.phrase.id,
+          seedNumber: resolved.phrase.seed_number,
+        },
+        provenance: {
+          recorded_by: recordist.email || recordist.displayName,
+          mode: 'recordist',
+          recording_device: device || null,
+        },
+      },
+    }, innerRes)
+    if (captured.status >= 400 || !captured.body || !captured.body.success) {
+      return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
+    }
+    const filing = captured.body.filing || null
+    const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
+    let linked = { linked: [] }
+    if (audioId) {
+      try {
+        linked = await linkPhraseTake({ db: db(), recordist, phraseId: resolved.phrase.id, role: parsed.role, audioId, logger })
+      } catch (linkErr) {
+        logger.error(`[Recordist] phrase link failed (take is stored and filed): ${linkErr.message}`)
+      }
+    } else {
+      logger.error(`[Recordist] phrase take for ${resolved.phrase.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
+    }
+    return res.json({
+      ok: true,
+      audioId,
+      kind: 'phrase',
+      role: parsed.role,
+      seedNumber: resolved.phrase.seed_number,
+      clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(parsed.raw)}/clip`,
+      alsoFilled: Math.max(0, linked.linked.length - 1),
+      rawKey: captured.body.rawKey || null,
+      filing,
+    })
+  }
+
+  /**
+   * Play a phrase line's take: its own slot when this voice holds it, otherwise
+   * this voice's newest take of the same words (resolveCurrentClip's recordist
+   * mode) — the take exists even where a copy's slot was already filled.
+   */
+  async function phraseClipResponse(req, res, recordist, parsed) {
+    const resolved = await resolvePhraseLine(res, recordist, parsed)
+    if (!resolved) return
+    const clip = await resolveCurrentClip(db(), {
+      sentence: { slot_audio_id: resolved.phrase[`${parsed.role}_audio_id`], slot_text: resolved.text },
+      track: 'slot',
+      language: recordist.language,
+      restrictToVoices: recordist.spellings,
+      allowIdentityFallback: true,
+    })
+    if (!clip) return res.status(404).json({ error: 'No stored take for this line yet', reason: 'no_take' })
+    if (req.query.variant === 'raw') {
+      const { url, rawKey, notFound } = await s3.getRawSignedUrl(clip.s3Key, 3600)
+      if (!rawKey) {
+        return res.status(404).json({
+          error: notFound ? 'The processed clip for this take is missing from storage, so its original cannot be found.' : 'No original was kept for this take.',
+          reason: notFound ? 'mastered_missing' : 'no_raw_retained',
+          audioId: clip.audioId,
+          variant: 'raw',
+        })
+      }
+      if (req.query.json === '1') return res.json({ audioId: clip.audioId, s3Key: rawKey, url, variant: 'raw' })
+      return res.redirect(302, url)
+    }
+    const url = await s3.getAudioSignedUrl(clip.audioId, 3600, { s3Key: clip.s3Key })
+    if (req.query.json === '1') return res.json({ audioId: clip.audioId, s3Key: clip.s3Key, url, variant: 'processed' })
+    res.redirect(302, url)
+  }
+
   // ── 2. a take ──────────────────────────────────────────────────────────────
   router.post('/voice/:voiceId/take', async (req, res) => {
     try {
@@ -1297,6 +1563,12 @@ module.exports = function createRecordistRouter({
       const seedLine = parseSeedLineId(lineId)
       if (seedLine) {
         return await recordSeedTake({ req, res, recordist, parsed: { ...seedLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
+
+      // A PRACTICE PHRASE (job #619). `phrase:...` is not a uuid either.
+      const phraseLine = phraseQueue.parsePhraseLineId(lineId)
+      if (phraseLine) {
+        return await recordPhraseTake({ req, res, recordist, parsed: { ...phraseLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
 
       // A MINIMAL-SET piece. Same reasoning as the seed branch: `quarry:...` is
@@ -1545,6 +1817,9 @@ module.exports = function createRecordistRouter({
       const quarryLine = parseQuarryLineId(req.params.lineId)
       if (quarryLine) return await quarryClipResponse(req, res, recordist, quarryLine)
 
+      const phraseLine = phraseQueue.parsePhraseLineId(req.params.lineId)
+      if (phraseLine) return await phraseClipResponse(req, res, recordist, { ...phraseLine, raw: req.params.lineId })
+
       const takeGLine = parseTakeGLineId(req.params.lineId)
       if (takeGLine) return await takeGClipResponse(req, res, recordist, { ...takeGLine, raw: req.params.lineId })
 
@@ -1705,6 +1980,14 @@ module.exports = function createRecordistRouter({
         return res.status(403).json({
           error: 'A seed sentence is course content -- its text is changed on the admin side, not from the booth.',
           reason: 'seed_line',
+        })
+      }
+      // A practice phrase is course content too: its words are changed on the
+      // proof page or by the builder, never from the booth.
+      if (phraseQueue.parsePhraseLineId(lineId)) {
+        return res.status(403).json({
+          error: 'A practice phrase is course content -- flag it on the phrase proof page; it is not changed from the booth.',
+          reason: 'phrase_line',
         })
       }
       // A minimal-set piece is a SPAN of course content -- a LEGO, or a single
@@ -1932,32 +2215,13 @@ module.exports = function createRecordistRouter({
       const pack = setupCheck.packFromRow(row, { displayName: req.params.voiceId })
       const objects = await s3.listObjects(packPrefix(pack.id))
       const newest = indexTakes(objects, pack.id)
-      const metrics = row.metrics && typeof row.metrics === 'object' ? row.metrics : {}
-      const measured = { ...(metrics.measured || {}) }
-      let dirty = false
-      const items = []
-      for (const item of pack.items) {
-        const take = newest.get(item.id) || null
-        const entry = { id: item.id, text: item.text, recorded: !!take, url: null, device: (metrics.takes || {})[item.id]?.device || null, measures: null }
-        if (take) {
-          entry.url = await s3.getAudioSignedUrl(null, 3600, { s3Key: take.key })
-          if (!measured[item.id] || measured[item.id].key !== take.key) {
-            try {
-              const r = await fetch(entry.url)
-              const buf = Buffer.from(await r.arrayBuffer())
-              measured[item.id] = { key: take.key, ...(await setupCheck.measureTake(buf, 'audio/' + String(take.key).split('.').pop())) }
-              dirty = true
-            } catch (err) { logger.error(`[Recordist] setup-check measure ${item.id}: ${err.message}`) }
-          }
-          entry.measures = measured[item.id] || null
-        }
-        items.push(entry)
-      }
-      if (dirty) await db().from('recordist_setup_checks').update({ metrics: { ...metrics, measured } }).eq('voice_id', row.voice_id)
+      const { items, measured, verdict, dirty, metrics } = await measureAndJudgeSetup(row, pack, newest)
+      if (dirty) await db().from('recordist_setup_checks').update({ metrics: { ...metrics, measured, verdict } }).eq('voice_id', row.voice_id)
       res.json({
         exists: true, voiceId: row.voice_id, language: row.language, status: row.status,
         submittedAt: row.submitted_at, reviewedBy: row.reviewed_by, reviewedAt: row.reviewed_at, note: row.review_note,
         packVoiceId: pack.voiceId, items,
+        autoVerdict: setupCheck.isMeasuredVerdict(verdict) ? verdict : null, verdictThresholds: setupCheck.SETUP_VERDICT,
       })
     } catch (err) {
       logger.error(`[Recordist] setup-check review: ${err.message}`)
@@ -2019,9 +2283,20 @@ module.exports = function createRecordistRouter({
       const taken = pack.items.filter((i) => newest.has(i.id)).length
       const missing = setupCheck.setupSubmitShortfall(taken)
       if (missing) return res.status(409).json({ error: `${taken} of ${pack.items.length} phrases recorded; record at least ${setupCheck.SETUP_MIN_SUBMIT} to submit.`, missing })
-      const { error } = await db().from('recordist_setup_checks').update({ status: 'submitted', submitted_at: new Date().toISOString() }).eq('voice_id', pack.setup.voiceId)
+      // The automatic verdict (job #435): analysis only, shown to the artist and
+      // the admin; it never approves, unlocks or blocks. If measuring fails the
+      // submit still goes through with no verdict.
+      let autoVerdict = null
+      let metricsPatch = null
+      try {
+        const row = await loadSetupRow(pack.setup.voiceId)
+        const r = await measureAndJudgeSetup(row, pack, newest)
+        autoVerdict = r.verdict.verdict === 'unmeasured' ? null : { verdict: r.verdict.verdict, reasons: r.verdict.reasons }
+        metricsPatch = { ...r.metrics, measured: r.measured, verdict: r.verdict }
+      } catch (err) { logger.error(`[Recordist] setup-check auto-verdict: ${err.message}`) }
+      const { error } = await db().from('recordist_setup_checks').update({ status: 'submitted', submitted_at: new Date().toISOString(), ...(metricsPatch ? { metrics: metricsPatch } : {}) }).eq('voice_id', pack.setup.voiceId)
       if (error) throw new Error(error.message)
-      res.json({ status: 'submitted' })
+      res.json({ status: 'submitted', autoVerdict })
     } catch (err) {
       logger.error(`[Recordist] setup-check submit: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })

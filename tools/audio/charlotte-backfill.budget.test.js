@@ -31,4 +31,21 @@ describe('driver parsePass (job #834)', () => {
     expect(parsePass('OUTSTANDING 2\n').skippedBudget).toBe(0) // old tool output
     expect(parsePass('nothing')).toBeNull()
   })
+  it('notGender m: a male-origin known clip is never rendered to Charlotte, a female one is (job #15)', async () => {
+    const rendered = []
+    const r = await runBudgeted([{ ...clip('m', 10), oldVoice: 'xai_gfzdpspr5fdp' }, clip('f', 10)], { budget: 100, notGender: 'm', render: async w => { rendered.push(w.oldId); return ok(w) }, verify: async () => null, commit: async () => {} })
+    expect(rendered).toEqual(['f'])
+    expect(r.genderSkipped).toBe(1)
+  })
+  it('neverFrom: a Tom-006 clip is never rendered to Charlotte, though voiceGender is null for Cartesia ids (job #24)', async () => {
+    const rendered = []
+    const T6 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
+    const r = await runBudgeted([{ ...clip('t6', 10), oldVoice: T6 }, clip('f', 10)], { budget: 100, neverFrom: T6, render: async w => { rendered.push(w.oldId); return ok(w) }, verify: async () => null, commit: async () => {} })
+    expect(rendered).toEqual(['f'])
+    expect(r.genderSkipped).toBe(1)
+  })
+  it('the male passes render Tom-006, not Tom-001 (job #24)', async () => {
+    const { PASSES, TOM_006 } = await import('./charlotte-backfill.cjs')
+    expect(PASSES.male.target).toBe(TOM_006); expect(PASSES['xai-male'].target).toBe(TOM_006)
+  })
 })

@@ -62,7 +62,7 @@ const ROOT = path.join(__dirname, '..', '..', '..');
 const EVIDENCE = process.env.V4_EVIDENCE || path.join(process.env.HOME, 'ssi-evidence', 'ssi-dashboard-v7', '468-frame-diversity');
 const MODEL = process.env.V4_MODEL || 'fable';
 const EFFORT = process.env.V4_EFFORT || 'low';
-const LEDGER_FILE = process.env.V4_LEDGER || 'token-ledger.json';
+const LEDGER_FILE = 'token-ledger.json'; // default; V4_LEDGER is read per call so a driver can give each window its own (#924)
 const CLAUDE = '/home/tomcassidy/.local/bin/claude';
 const BUILD_FLOOR = 4, USE_FLOOR = 5;
 
@@ -84,29 +84,31 @@ function knownSideCheck(known, ownedKnownStems) {
   return bad;
 }
 
-// ---------- target tiling (same walk as the lab's tilesFromVocab) ----------
-function tiles(target, vocabTargets) {
-  const chunks = [...new Set(vocabTargets.map(norm).filter(Boolean))].sort((a, b) => b.length - a.length);
-  const words = norm(target).split(' ').filter(Boolean);
-  const memo = new Map();
-  const walk = (i) => {
-    if (i >= words.length) return [];
-    if (memo.has(i)) return memo.get(i);
-    let res = null;
-    for (const c of chunks) {
-      const cw = c.split(' ');
-      if (cw.length > words.length - i || !cw.every((w, j) => w === words[i + j])) continue;
-      const rest = walk(i + cw.length);
-      if (rest) { res = [c, ...rest]; break; }
-    }
-    memo.set(i, res);
-    return res;
-  };
-  const t = walk(0);
-  if (t) return { ok: true, tiling: t };
-  const owned = new Set(chunks.flatMap(c => c.split(' ')));
-  return { ok: false, untiled: [...new Set(words.filter(w => !owned.has(w)))] };
+// ---------- any known language (#924) ----------
+// The English free class above only means anything for an English known side.
+// For every other known language the local pre-filter asks a plainer question:
+// was every known-side word (every character, for scripts written without
+// spaces) already HEARD in this course by the LEGO's seed — in a seed sentence,
+// a LEGO or a component? Popty's contract gate (tools/phrase-gate) still runs
+// after this and is the authority; this only stops the obvious misses early.
+const NO_SPACE = new Set(['zho', 'jpn', 'yue', 'hak', 'nan', 'tha', 'lao', 'khm', 'mya']);
+const langOf = (code) => String(code || '').split('_')[0];
+const knownLangOf = (course) => langOf(String(course).split('_for_')[1]);
+const targetLangOf = (course) => langOf(String(course).split('_for_')[0]);
+// Own normaliser, not availability.norm: that one drops combining marks (\p{M}),
+// which shreds Devanagari, Tamil, Bengali… words into consonant fragments.
+const normAny = (s) => String(s || '').toLowerCase().replace(/[^\p{L}\p{M}\p{N}' ]/gu, ' ').replace(/\s+/g, ' ').trim();
+const unitsOf = (s, noSpace) => noSpace ? [...normAny(s).replace(/\s+/g, '')] : normAny(s).split(' ').filter(Boolean);
+function knownHeardCheck(known, heardTexts, noSpace) {
+  const heard = new Set(heardTexts.flatMap(t => unitsOf(t, noSpace)));
+  return [...new Set(unitsOf(known, noSpace).filter(u => !heard.has(u)))];
 }
+const useTooShort = (known, noSpace) => unitsOf(known, noSpace).length < (noSpace ? 6 : 4);
+
+// ---------- target tiling: exact surface forms, see exact-form.cjs (Tom 2026-10-09) ----------
+const { exactFormCheck, tiles } = require('./exact-form.cjs');
+const { welshContainsLego } = require('../../../services/course-builder/lib/welsh-mutation.cjs');
+const { vocabRulePrompt } = require('../../../services/course-builder/lib/taught-words.cjs');
 
 // ---------- the walk-back brief ----------
 function carriersByFrame(chunks, frameIds) {
@@ -152,7 +154,7 @@ NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on t
 
 RAILS (every one is checked mechanically after you write; a phrase that fails is dropped):
 - The phrase contains the LEGO's exact known text AND exact target text, as taught.
-- The target is built ONLY from whole taught chunks listed in VOCABULARY — no new word, no re-conjugation, no new contraction. A basket may use chunks from earlier seeds and earlier LEGOs of its own seed, never later ones.
+${vocabRulePrompt(course) ? `- ${vocabRulePrompt(course)} A basket may use material from earlier seeds and earlier LEGOs of its own seed, never later ones.` : '- The target is built ONLY from whole taught chunks listed in VOCABULARY — no new word, no re-conjugation, no new contraction. A basket may use chunks from earlier seeds and earlier LEGOs of its own seed, never later ones.'}
 - The known (English) side uses only the English glosses of taught chunks plus plain grammatical glue.
 - ZUT: one English prompt maps to exactly one ${LANG} form, everywhere in the course. Do not write an English line the course already renders another way.
 - No parentheses, no explanations, no grammar labels, anywhere.
@@ -179,8 +181,8 @@ Reply with JSON only, no prose, no code fence:
 // the frames the window is missing, each one practising one of the window's own
 // LEGOs. Additive, so the reviewer reads new rows only and no floor can drop.
 function buildGapPrompt({ course, region, seeds, newLegos, allChunks, missing, carriers, perFrame = 3 }) {
-  const target = course.split('_for_')[0];
-  const LANG = { fra: 'French', deu: 'German', gle: 'Irish', spa: 'Spanish', ita: 'Italian' }[target] || target;
+  const LANG = knownLanguageName(`x_for_${targetLangOf(course)}`);
+  const KNOWN = knownLanguageName(course);
   const frameLines = missing.map(id => {
     const p = PATTERNS.find(x => x.id === id);
     const cs = (carriers[id] || []).map(c => `"${c.known_text}" = ${c.target_text}`).join(' · ');
@@ -193,19 +195,19 @@ function buildGapPrompt({ course, region, seeds, newLegos, allChunks, missing, c
       `  LEGO S${s.seed_number}L${l.lego_index}: "${l.known_text}" = ${l.target_text}  [${l.type}]`).join('\n');
   }).filter(Boolean).join('\n');
   const vocab = allChunks.map(c => `S${c.seed_number}: ${c.known_text}=${c.target_text}`).join('; ');
-  return `You are adding practice phrases to an SSi ${LANG} course (known side English, target side ${LANG}). Seeds ${region[0]}-${region[1]}.
+  return `You are adding practice phrases to an SSi ${LANG} course (known side ${KNOWN}, target side ${LANG}). Seeds ${region[0]}-${region[1]}.
 
 THE GAP. These seeds' existing practice phrases never use the FRAMES listed below, although the learner already owns the material to make them. Write NEW phrases that use those frames. Each phrase practises one of the NEW LEGOs listed under the seeds (it must contain that LEGO exactly), put in concert with the taught material that carries the frame. Write ${perFrame} phrases per frame — at least ${perFrame * missing.length} phrases in all — spread over different LEGOs; mostly USE, a few BUILD. A frame may use any LEGO in the list; only skip a frame if no LEGO can carry it.
 
-NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on the front ("thank you,", "of course", "unfortunately", "no problem", "great", "well", "so", "really", "yes,", "no,"). A phrase that begins with one is refused.
+NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on the front (in ${KNOWN}, the equivalent of "thank you,", "of course", "unfortunately", "no problem", "great", "well", "so", "really", "yes,", "no,"). A phrase that begins with one is refused.
 
 RAILS (checked mechanically after you write; a phrase that fails is dropped):
 - The phrase contains the LEGO's exact known text AND exact target text, as taught.
-- The target is built ONLY from whole taught chunks in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it. No new word, no re-conjugation, no new contraction.
-- The known (English) side uses only the English glosses of taught chunks plus plain grammatical glue.
-- ZUT: one English prompt maps to exactly one ${LANG} form, everywhere in the course. Do not write an English line the course already renders another way.
+${vocabRulePrompt(course) ? `- ${vocabRulePrompt(course)} Only material in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it.` : "- The target is built ONLY from whole taught chunks in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it. No new word, no re-conjugation, no new contraction."}
+- The known (${KNOWN}) side uses only the ${KNOWN} glosses of taught chunks plus plain grammatical glue — words the learner has already heard in this course.
+- ZUT: one ${KNOWN} prompt maps to exactly one ${LANG} form, everywhere in the course. Do not write a ${KNOWN} line the course already renders another way.
 - No parentheses, no explanations, no grammar labels.
-- Informal register (tu) unless the sentence itself insists otherwise.
+- Informal register (tu / du / tú, never vous / Sie / usted) unless the sentence itself insists otherwise.
 - USE = one complete, natural sentence a native would say cold, out of context; never a fragment, never clunky.
 - BUILD = the LEGO plus one to three other chunks, short, fine as a fragment if it extends naturally into a full sentence.
 
@@ -243,7 +245,11 @@ function callModel(prompt, { timeoutMs = 1200000 } = {}) {
   try {
     raw = execFileSync(CLAUDE, args, { input: prompt, env, encoding: 'utf8', timeout: timeoutMs, maxBuffer: 64 * 1024 * 1024 });
   } catch (e) {
-    throw new Error(`claude --print failed: ${String(e.stderr || e.message).slice(0, 400)}`);
+    // The CLI reports a usage limit on STDOUT as {is_error, result}; stderr is empty, so
+    // the old message carried only the command line and a limit looked like any failure (#924).
+    let said = '';
+    try { said = JSON.parse(String(e.stdout || '')).result || ''; } catch { said = String(e.stdout || '').slice(0, 300); }
+    throw new Error(`claude --print failed: ${said ? said + ' — ' : ''}${String(e.stderr || e.message).slice(0, 300)}`);
   }
   const j = JSON.parse(raw);
   if (j.is_error) throw new Error(`model error: ${String(j.result).slice(0, 300)}`);
@@ -271,16 +277,24 @@ function gate(cands, { course, data, newLegos, liveZut, available, additive = fa
     if (!known || !target) reasons.push('empty side');
     if (/[()]/.test(known + target)) reasons.push('parentheses');
     if (!norm(known).includes(norm(lego.known_text))) reasons.push(`known side does not contain the LEGO "${lego.known_text}"`);
-    if (!norm(target).includes(norm(lego.target_text))) reasons.push(`target does not contain the LEGO "${lego.target_text}"`);
+    if (!norm(target).includes(norm(lego.target_text)) && !welshContainsLego(course, lego.target_text, target)) reasons.push(`target does not contain the LEGO "${lego.target_text}"`);
     if (known && hasOpener(known)) reasons.push('stapled opener (the frame tagger marks a detachable interjection at the front)');
     // per-basket vocabulary window
     const vocab = availableVocab({ legos: data.legos, components: data.components, seed: lego.seed_number, legoIndex: +lego.lego_index });
     vocab.push({ known_text: lego.known_text, target_text: lego.target_text });
     vocab.push(...data.components.filter(x => x.seed_number === lego.seed_number && +x.lego_index === +lego.lego_index));
-    const t = tiles(target, vocab.map(v => v.target_text));
-    if (!t.ok) reasons.push(t.untiled.length ? `target uses untaught words: ${t.untiled.join(' ')}` : 'target does not tile from WHOLE taught chunks (a form or contraction never taught as a unit)');
-    const ownedStems = new Set(vocab.flatMap(v => tokens(v.known_text)).flatMap(w => [w, stem(w)]));
-    const badKnown = knownSideCheck(known, ownedStems);
+    // Scripts without spaces cannot be word-tiled here; Popty's vocab gate (tools/phrase-gate) tiles them by character.
+    const t = NO_SPACE.has(targetLangOf(course)) ? { ok: true } : exactFormCheck(target, vocab.map(v => v.target_text), { courseCode: course });
+    if (!t.ok) reasons.push(t.offending.length ? `target uses untaught words: ${t.offending.join(' ')}` : t.reason);
+    const knownNoSpace = NO_SPACE.has(knownLangOf(course));
+    let badKnown;
+    if (knownLangOf(course) === 'eng') {
+      const ownedStems = new Set(vocab.flatMap(v => tokens(v.known_text)).flatMap(w => [w, stem(w)]));
+      badKnown = knownSideCheck(known, ownedStems);
+    } else {
+      const heard = [...vocab.map(v => v.known_text), ...data.seeds.filter(s => s.seed_number <= lego.seed_number).map(s => s.known_text)];
+      badKnown = knownHeardCheck(known, heard, knownNoSpace);
+    }
     if (badKnown.length) reasons.push(`known side uses untaught words: ${badKnown.join(' ')}`);
     // ZUT — one known → one target; USE against the whole live course, BUILD up to its position
     const nk = norm(known), nt = norm(target);
@@ -294,7 +308,7 @@ function gate(cands, { course, data, newLegos, liveZut, available, additive = fa
     if (seenKnown.has(nk) && seenKnown.get(nk) !== nt) reasons.push('ZUT: same English already used with another target in this set');
     if (seenKnown.has(nk) && seenKnown.get(nk) === nt) reasons.push('duplicate');
     if (seenTarget.has(nt + '|' + role) && !reasons.includes('duplicate')) reasons.push('duplicate target');
-    if (role === 'use' && tokens(known).length < 4) reasons.push('USE phrase too short to be a complete sentence');
+    if (role === 'use' && useTooShort(known, knownNoSpace)) reasons.push('USE phrase too short to be a complete sentence');
     const frames = known ? framesOf(known).filter(f => available.includes(f)) : [];
     const row = { seed_number: lego.seed_number, lego_index: +lego.lego_index, lego_known: lego.known_text, lego_target: lego.target_text,
       phrase_role: role, known_text: known, target_text: target, claimed_frame: c.frame || null, frames };
@@ -344,7 +358,7 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
 
   // CUMULATIVE budget across every region of the pilot: a ledger in the evidence
   // dir, read before each call. Tom's cap for the whole pilot is ~400k tokens.
-  const ledger = path.join(EVIDENCE, LEDGER_FILE);
+  const ledger = ledgerPath();
   const readLedger = () => { try { return JSON.parse(fs.readFileSync(ledger, 'utf8')); } catch { return { total: 0, calls: [] }; } };
   let spent = 0;
   const call = (p, label) => {
@@ -448,7 +462,7 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
   console.log(`${course} ${start}-${end} GAPS: ${newLegos.length} LEGOs, missing ${missing.join(' ')}, prompt ${prompt.length} chars`);
   if (dry) { fs.writeFileSync(file.replace('.json', '.prompt.txt'), prompt); return out; }
   if (!missing.length) { fs.writeFileSync(file, JSON.stringify(out, null, 1)); return out; }
-  const ledger = path.join(EVIDENCE, LEDGER_FILE);
+  const ledger = ledgerPath();
   const L = (() => { try { return JSON.parse(fs.readFileSync(ledger, 'utf8')); } catch { return { total: 0, calls: [] }; } })();
   if (L.total >= budget) throw new Error(`budget ${budget} tokens exhausted (ledger ${L.total})`);
   const label = pass === 1 ? 'gaps' : `gaps-${pass}`;
@@ -467,6 +481,9 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
   return out;
 }
 
+/** The token ledger, resolved at CALL time: a driver sets V4_LEDGER per window. */
+function ledgerPath() { return path.join(EVIDENCE, process.env.V4_LEDGER || LEDGER_FILE); }
+
 /** Candidate set to disk, named by call: v4-<course>-<s>-<e>.candidates-<label>.json */
 function persistCandidates(file, label, r) {
   const p = file.replace(/\.json$/, `.candidates-${label}.json`);
@@ -474,7 +491,7 @@ function persistCandidates(file, label, r) {
   return p;
 }
 
-module.exports = { run, runGaps, buildGapPrompt, gate, tiles, knownSideCheck, buildPrompt, carriersByFrame, claudeArgs, persistCandidates, MODEL, EFFORT };
+module.exports = { ledgerPath, run, runGaps, buildGapPrompt, gate, tiles, knownSideCheck, knownHeardCheck, buildPrompt, carriersByFrame, claudeArgs, persistCandidates, MODEL, EFFORT };
 
 if (require.main === module) {
   const args = process.argv.slice(2);

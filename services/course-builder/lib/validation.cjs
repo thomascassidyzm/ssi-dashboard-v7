@@ -6,6 +6,7 @@
 
 const { isChinese, getTargetLang, getCharThresholds, getGoldenSeedCount, CHARS_PER_SYLLABLE, PREPOSITIONS } = require('./language-config.cjs');
 const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
+const { isWelshTarget, welshExpandYn } = require('./welsh-mutation.cjs');
 const { augmentVocabForSeparables, separableTilingPieces, phraseContainsLego } = require('./separable-verbs.cjs');
 // KNOWN-side mirror of the target-side lego_containment check: a BUILD phrase must contain the
 // known-side word its LEGO teaches, tolerating inflection but never a different lexeme (2026-08-26).
@@ -150,9 +151,16 @@ function checkTiling(seedTarget, legos, courseCode, existingVocab, opts = {}) {
       }
     }
 
+    // Welsh: "’n" after a vowel IS the taught "yn" (Aran, 2026-10-14, job #338; welshExpandYn).
+    // A seed word "di’n" is tiled when "di" and "yn" are, and a LEGO/component that carries "’n"
+    // lends "yn" — the old exact word match is kept and this only adds to it.
+    const welsh = isWelshTarget(courseCode);
+    const expandedWords = (text) => normalizeForStorage(welshExpandYn(text), false).split(' ').filter(w => w);
+    if (welsh) for (const entry of [...legoTargets]) for (const w of expandedWords(entry)) wordSet.add(w);
+
     const seedNorm = normalizeForStorage(seedTarget, false);
     const seedWords = seedNorm.split(' ').filter(w => w);
-    const untiled = seedWords.filter(w => !wordSet.has(w));
+    const untiled = seedWords.filter(w => !wordSet.has(w) && !(welsh && expandedWords(w).every(x => wordSet.has(x))));
 
     if (untiled.length > 0) {
       return {
@@ -258,9 +266,10 @@ function checkPhraseComplexity(phrases, courseCode, seedNumber = 999) {
  * Returns array of violations: [{ phrase, unknown: [...] }]
  *
  * vocabSet contains complete LEGO targets and component targets.
- * A phrase must be tileable entirely from these chunks — no word-level splitting,
- * no free recombination. This prevents conjugations, inversions, and contractions
- * that were never actually taught in any LEGO.
+ * A phrase that tiles entirely from these chunks passes. One that does not is then read
+ * word by word (taught-words.cjs, Aran/Tom 2026-10-13): any word met earlier, even only
+ * inside a bigger chunk, is taught; a form never met in that exact spelling is not, so
+ * untaught conjugations and contractions still fail. Scripts without spaces keep tiling only.
  *
  * For space-delimited languages: DP word-sequence tiling against known chunks.
  * For Chinese/Japanese (no spaces): DP character-sequence tiling.
@@ -305,19 +314,28 @@ function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
       chunksByFirstWord.get(first).push(words);
     }
 
-    for (const phrase of phrases) {
-      const normalized = normalizeForContainment(phrase.target);
-      const phraseWords = normalized.split(' ').filter(w => w);
-      const n = phraseWords.length;
-      if (n === 0) continue;
+    // Welsh: "’n" after a vowel IS "yn" (Aran, 2026-10-14, job #338; welshExpandYn). Every chunk
+    // is also indexed in its expanded shape, and a phrase the exact tiling refuses is tiled again
+    // expanded, so "mae dy goffi di’n barod" tiles from "dy goffi di" + "yn barod" in context.
+    const welsh = isWelshTarget(courseCode);
+    const expandedChunks = new Map();
+    if (welsh) {
+      for (const legoTarget of vocabSet) {
+        const words = normalizeForContainment(welshExpandYn(legoTarget)).split(' ').filter(w => w);
+        if (words.length === 0) continue;
+        if (!expandedChunks.has(words[0])) expandedChunks.set(words[0], []);
+        expandedChunks.get(words[0]).push(words);
+      }
+    }
 
-      // dp[i] = true means phraseWords[0..i-1] can be tiled by known chunks
+    // dp[i] = true means phraseWords[0..i-1] can be tiled by known chunks
+    const tile = (phraseWords, byFirst) => {
+      const n = phraseWords.length;
       const dp = new Array(n + 1).fill(false);
       dp[0] = true;
-
       for (let i = 0; i < n; i++) {
         if (!dp[i]) continue;
-        const candidates = chunksByFirstWord.get(phraseWords[i]);
+        const candidates = byFirst.get(phraseWords[i]);
         if (!candidates) continue;
         for (const chunk of candidates) {
           const len = chunk.length;
@@ -328,6 +346,32 @@ function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
           }
           if (match) dp[i + len] = true;
         }
+      }
+      return dp;
+    };
+
+    let wordKeys = null;
+    for (const phrase of phrases) {
+      const normalized = normalizeForContainment(phrase.target);
+      const phraseWords = normalized.split(' ').filter(w => w);
+      const n = phraseWords.length;
+      if (n === 0) continue;
+
+      const dp = tile(phraseWords, chunksByFirstWord);
+      if (!dp[n] && welsh) {
+        const expanded = normalizeForContainment(welshExpandYn(phrase.target)).split(' ').filter(w => w);
+        if (tile(expanded, expandedChunks)[expanded.length]) continue;
+      }
+
+      if (!dp[n] && wordLevelApplies(courseCode)) {
+        // Every language: any word taught earlier counts, even one met only inside a bigger chunk
+        // (Aran, methodology lead, confirmed by Tom, 2026-10-13, job #587; taught-words.cjs) —
+        // Welsh also folds a soft-mutated form. Only the words no earlier LEGO, component or seed
+        // sentence carries, in that exact form, are a violation.
+        wordKeys = wordKeys || taughtWordKeys(vocabSet, courseCode);
+        const untaught = untaughtWords(phrase.target, wordKeys, courseCode);
+        if (untaught.length) violations.push({ phrase: phrase.target, unknown: untaught.join(' ') });
+        continue;
       }
 
       if (!dp[n]) {
@@ -584,6 +628,7 @@ function _clearGenderVariantLicenceCache() { _genderLicenceCache.clear(); }
 const { zutScope } = require('./course-family.cjs');
 const { loadRunningOrder, filterSeedsBefore } = require('../../shared/running-order.cjs');
 const { isSoftMutationVariant } = require('./welsh-mutation.cjs');
+const { wordLevelApplies, taughtWordKeys, untaughtWords } = require('./taught-words.cjs');
 
 /**
  * Check for LEGO conflicts before insertion.
@@ -968,6 +1013,49 @@ function checkMetadataGloss(legos) {
   return warnings;
 }
 
+// ─── Non-example text (TTS only ever speaks examples) ──────────────────
+// Tom, r-2026-10-11-text-sent-to-tts-is-only: "We should never have explanations
+// in the text sent to the TTS. We only EVER have examples." Every known/target
+// string a seed submits (LEGO, component gloss, BUILD/USE phrase) is later spoken.
+// A bracket or brace is how a label is written ("[progressive]" as the gloss of a
+// particle component reached ara_lb_for_eng S0372L01C03 this way, and the audio
+// pass sent it to the voice). Hard reject at the door of the content, not a warn.
+//
+// #486 (Tom, r-2026-10-13 no brackets: "No brackets anywhere!!!! ... We do not explain anything."): the
+// same door now refuses ( ) too, half- and full-width, and a slash between two glosses ("very/a lot").
+// Until then afr_for_eng went in with 132 LEGOs glossed "interesting (predicative)" / "to make/do": the
+// zero-explanation gate in apml/services/course-builder-api.apml was never wired into code, this check
+// covered only [] and {}, and the standard TTS path (phase8-audio-from-baskets) quietly stripped (...) so
+// no ear caught it — until the Tom-voice intros spoke the LEGO text verbatim. Disambiguate with natural
+// English words in the prompt, never a note. A slash with a digit on BOTH sides (3/4, 24/7) is a number, not a list; "one/1" and "1/one" are lists (#528).
+const NON_EXAMPLE_TEXT = /[\[\]{}()（）［］｛｝]|(?<![0-9])\/|\/(?![0-9])/;
+
+/** True when one string holds a bracket, parenthesis or slash-separated alternatives — the shared test for every content-writing surface. */
+function hasNonExampleText(text) {
+  return text != null && NON_EXAMPLE_TEXT.test(String(text));
+}
+
+function checkNonExampleText(legos) {
+  const bad = [];
+  const look = (where, field, text) => {
+    if (text != null && NON_EXAMPLE_TEXT.test(String(text))) bad.push({ where, field, text: String(text) });
+  };
+  for (const lego of legos || []) {
+    const id = `L${String(lego.idx ?? lego.lego_index).padStart(2, '0')}`;
+    look(id, 'known', lego.known ?? lego.known_text);
+    look(id, 'target', lego.target ?? lego.target_text);
+    (lego.components || []).forEach((c, i) => { look(`${id} component ${i + 1}`, 'known', c.known); look(`${id} component ${i + 1}`, 'target', c.target); });
+    for (const group of [lego.build, lego.use, lego.phrases]) {
+      (group || []).forEach((p, i) => {
+        const known = Array.isArray(p) ? p[0] : p && (p.known ?? p.known_text);
+        const target = Array.isArray(p) ? p[1] : p && (p.target ?? p.target_text);
+        look(`${id} phrase ${i + 1}`, 'known', known); look(`${id} phrase ${i + 1}`, 'target', target);
+      });
+    }
+  }
+  return bad;
+}
+
 // ─── Known-side reconstructability (both-sides tiling — Principle 1 in full) ───
 // Pure + POSITION-AGNOSTIC: callers pass currentPos + a compiled ctx whose maps
 // use the SAME unit (round for the reorder CLI, seed for generation). A prompt
@@ -1231,6 +1319,8 @@ module.exports = {
   METHODOLOGY_HINTS,
   checkTiling,
   checkMetadataGloss,
+  checkNonExampleText,
+  hasNonExampleText,
   stemKnownGloss,
   tokenizeKnown,
   compileKnownContract,

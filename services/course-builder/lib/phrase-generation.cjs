@@ -43,6 +43,7 @@ const { makeCourseCtx, checkPhraseSet, failureFeedback } = require(path.join(__d
 const { computeDeclaration, checkDeclaration, tagForCheck, recordDeclaration, frameSection } =
   require(path.join(__dirname, '../../../tools/frame-layer/declaration.cjs'));
 const { separableSection } = require('./separable-verbs.cjs');
+const { NEW_PAIRING_PHRASES, newPairingOf, hostFor, checkPairingSet } = require('./new-pairing.cjs');
 // Kai, 2026-09-21 (job #491): a structural feature whose first showing is a
 // pedagogy decision STOPS the build for an unruled course and is raised to
 // a human with its precedents. The builder never decides it.
@@ -172,14 +173,19 @@ function retryPrompt(basePrompt, phrases, reasons) {
 }
 
 async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, opts = {}) {
-  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true } = opts;
+  // debutInSameWrite: the caller flips this not-new LEGO back to NEW in the same transaction
+  // that writes the basket (the debut_keeps_practice trigger refuses either half alone), so
+  // the P25 refusal below does not apply to it. Job #468: a sole-new LEGO of its seed.
+  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true, debutInSameWrite = false } = opts;
   const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
 
   // A NOT-NEW LEGO GETS NO PHRASES (Tom, 2026-09-30; canon P25). The player builds
   // a round only for an is_new LEGO, so a basket written under a not-new one is never
   // heard — and the write door (POST /api/v2/phrases) refuses it anyway. Refuse here,
   // before paying for a model call: phrases worth drilling go under a NEW LEGO.
-  if (lego && lego.is_new === false && !lego.proposed) {
+  // A Welsh not-new LEGO whose Welsh was taught under OTHER English is a new pairing: its few
+  // phrases come from generatePairingPhrases below, filed under a new sibling (Aran, 2026-10-13).
+  if (lego && lego.is_new === false && !lego.proposed && !debutInSameWrite) {
     return {
       courseCode, seedNumber, legoIndex: Number(legoIndex), legoId: lego.lego_id,
       legoKnown: lego.known_text, legoTarget: lego.target_text,
@@ -367,8 +373,85 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   };
 }
 
+/** The section that turns the host LEGO's v3 prompt into a new-pairing job. */
+function pairingSection(taught, taughtAs, host, existing) {
+  const n = NEW_PAIRING_PHRASES.max;
+  return [
+    '',
+    '---',
+    '',
+    '## THIS RUN IS DIFFERENT — a new pairing of taught Welsh (Aran, 2026-10-13)',
+    '',
+    'Ignore the BUILD/USE counts above. Do NOT write a basket for this LEGO: it already has one.',
+    '',
+    `The learner already knows the Welsh "${taught.target_text}" — taught as "${taughtAs.known_text}" = "${taughtAs.target_text}".`,
+    `This seed uses the same Welsh for different English: "${taught.known_text}" = "${taught.target_text}".`,
+    'That pairing gets no introduction. Instead it must crop up in a few longer practice sentences.',
+    '',
+    `Write exactly ${n} USE phrases and no BUILD phrases. EVERY phrase must:`,
+    `- contain this LEGO, "${host.known_text}" = "${host.target_text}" (Welsh exactly as written), AND`,
+    `- say "${taught.known_text}" in the English and "${taught.target_text}" in the Welsh, in that meaning;`,
+    '- be a natural, longer sentence (five words or more on each side), using only AVAILABLE material;',
+    '- differ from every phrase this LEGO already has:',
+    ...existing.map((r) => `  - ${r.known_text} → ${r.target_text}`),
+    '',
+    'Return {"build": [], "use": [{"known": "...", "target": "..."}]} and nothing else.',
+  ].join('\n');
+}
+
+/**
+ * PRACTICE PHRASES FOR A NEW PAIRING OF TAUGHT WELSH (Aran, 2026-10-13; lib/new-pairing.cjs).
+ * `legoIndex` is the NOT-NEW taught LEGO. The set is generated through the host's own v3 prompt
+ * (same inventory, doctrine and model), checked by the real gates AS THE HOST'S PHRASES — minus
+ * the basket-level count/BUILD gates, which judge a whole basket the host already has — plus the
+ * pairing's own checks, retried exactly as generateLegoPhrases retries. Returns `use` rows for
+ * the HOST (`hostIndex`); `held` names why there is nothing to generate.
+ */
+async function generatePairingPhrases(supabase, courseCode, seedNumber, legoIndex, opts = {}) {
+  const { timeout = DEFAULT_TIMEOUT_MS, earlier, seedLegos, existing = [] } = opts;
+  const taught = seedLegos.find((l) => l.lego_index === Number(legoIndex));
+  const base = { courseCode, seedNumber, legoIndex: Number(legoIndex), build: [], use: [], attempts: [] };
+  if (!taught) return { ...base, held: 'LEGO not found' };
+  if (taught.is_new) return { ...base, held: 'LEGO is new: it gets a full basket, not a pairing set' };
+  const pairing = newPairingOf(courseCode, taught, earlier);
+  if (!pairing) return { ...base, held: 'not a new pairing (no earlier same Welsh, or same English too)' };
+  const host = hostFor(seedLegos, taught.lego_index);
+  if (!host) return { ...base, held: 'seed has no other NEW LEGO to carry the phrases (P25)' };
+
+  const { prompt: hostPrompt } = await buildPrompt(supabase, courseCode, seedNumber, host.lego_index);
+  const prompt = hostPrompt + pairingSection(taught, pairing.taughtAs, host, existing);
+  const gateCtx = makeCourseCtx(supabase, courseCode);
+  const BASKET_GATES = new Set(['buildCountSpec', 'buildUseFloors', 'buildRecombination']);
+  let currentPrompt = prompt;
+  let phrases = { build: [], use: [] };
+  let pass = false;
+  for (let attempt = 0; attempt <= MAX_GATE_RETRIES; attempt += 1) {
+    const raw = await claudeChat(currentPrompt, { model: PHRASE_MODEL, timeout, thinkingTokens: THINKING_TOKENS });
+    phrases = normalise(parseModelJson(raw));
+    phrases.build = [];
+    const gate = await checkPhraseSet({
+      courseCode, seedNumber, legoIndex: host.lego_index, legoId: host.lego_id,
+      legoKnown: host.known_text, legoTarget: host.target_text, components: host.components,
+      build: [], use: phrases.use,
+    }, gateCtx);
+    const failing = gate.failingGates.filter((g) => !BASKET_GATES.has(g));
+    const own = checkPairingSet(courseCode, taught, phrases.use, existing);
+    const reasons = [...failureFeedback({ ...gate, failingGates: failing }), ...own.reasons];
+    pass = failing.length === 0 && gate.gates.knownSide?.pass !== false && own.pass;
+    base.attempts.push({ attempt: attempt + 1, pass, failingGates: failing, reasons });
+    if (pass) break;
+    currentPrompt = retryPrompt(prompt, phrases, reasons);
+  }
+  return {
+    ...base, hostIndex: host.lego_index, hostKnown: host.known_text, hostTarget: host.target_text,
+    legoKnown: taught.known_text, legoTarget: taught.target_text, taughtAs: pairing.taughtAs,
+    model: PHRASE_MODEL, use: phrases.use, blocked: !pass,
+  };
+}
+
 module.exports = {
   PHRASE_MODEL,
+  generatePairingPhrases,
   THINKING_TOKENS,
   MAX_GATE_RETRIES,
   generateLegoPhrases,

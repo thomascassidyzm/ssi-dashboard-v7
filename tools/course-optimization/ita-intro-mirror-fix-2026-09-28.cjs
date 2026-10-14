@@ -203,6 +203,7 @@ async function linkLego(pg, it, audioId, durationMs, eventId, log) {
   // the cast intro voice and re-bind over this link.
   for (const p of (it.pendingRows || [])) {
     if (p.id === audioId) continue;
+    // ALLOW-DELETE: pending placeholders only (s3_key LIKE 'pending/%') — no S3 asset, never a rendered clip.
     const d = await pg.query(`DELETE FROM course_audio WHERE id=$1 AND s3_key LIKE 'pending/%' AND lego_id=$2`, [p.id, it.id]);
     if (d.rowCount) log.pendingDeleted.push({ id: p.id, lego: it.id, voice_id: p.voice_id, text: p.text });
   }

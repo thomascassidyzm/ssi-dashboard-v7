@@ -88,7 +88,9 @@ const UNKNOWN_PROVIDER_BUDGET = Object.freeze({ monthlyPoolChars: 200_000, cycle
 // was quarantined 3× on its LEGO slot, then re-rolled 3× more on a phrase slot with
 // the same words, because a rejected take never reaches the library. After three
 // takes of the same words in one voice, a fourth needs a human to listen first.
-const DEFAULT_REPEAT = Object.freeze({ maxPerKey: 3, windowHours: 24 })
+// maxPerKey 5 (job #590, Tom 2026-10-13, ruling "TTS spend guard repeat limit 5 per
+// 24h"): 3 stopped legitimate re-voice runs; a sixth identical send is still a loop.
+const DEFAULT_REPEAT = Object.freeze({ maxPerKey: 5, windowHours: 24 })
 /** Pool shares at which a human is told, whatever the stop share is. */
 const POOL_ALERT_SHARES = [0.5, 0.8]
 /** cycleCapChars for a provider whose allowance may be overrun (overageAllowed): no cycle stop. */
@@ -123,12 +125,12 @@ function jobMatches(jobText, token) {
 /**
  * COMMISSIONED WORK PASSES; ONLY RUNAWAYS STOP (Tom 2026-10-04, ruling
  * r-2026-10-04-the-tts-spend-guard-exists: "The guard is to protect runaways. Not work I've
- * commissioned"). Job #656 was refused by the 3-sends repeat limit. A render whose job text names
+ * commissioned"). Job #656 was refused by the (then) 3-sends repeat limit. A render whose job text names
  * a "#NNN" that is a LIVE surface job skips the repeat limit's low number and the automatic
- * per-provider / daily soft caps (JS dailyCap, and the DB's 260k automatic total cap via
+ * per-provider / daily soft caps (JS dailyCap, and the DB's 1M automatic total cap (Tom 2026-10-07; was 260k) via
  * limits.commissioned). It still meets the hard daily ceiling (1,000,000 in tts_spend_reserve) and
  * a repeat ceiling of its own — 10 identical sends in 24h is a loop, not a commission.
- * The checker verifies ONLY that the #NNN names a live surface job (GET /api/jobs rows carry
+ * It asks the surface for status=running only (unfiltered is ~12.8MB; filtered ~2ms). The checker verifies ONLY that the #NNN names a live surface job (GET /api/jobs rows carry
  * job = the #NNN), never trusting the string alone; it does not verify the job commissioned
  * this particular render. That is the accepted trade-off (Watson): the 10-repeat limit and the
  * 1M ceiling remain the runaway stops. An unreachable surface means unattributed limits apply.
@@ -143,7 +145,7 @@ function surfaceCommissionChecker({ surface = process.env.CS_SURFACE || 'http://
     if (now() - cache.at >= COMMISSIONED_CACHE_MS) {
       const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 3000)
       try {
-        const r = await fetchImpl(`${surface}/api/jobs?owner=all`, { signal: ctl.signal })
+        const r = await fetchImpl(`${surface}/api/jobs?owner=all&status=running`, { signal: ctl.signal })
         if (!r.ok) return false
         const body = await r.json()
         cache = { at: now(), live: new Set((body.jobs || []).filter(j => j && j.status === 'running' && Number.isFinite(Number(j.job))).map(j => Number(j.job))) }
@@ -191,13 +193,24 @@ class TtsSpendGuardError extends Error {
 
 /** The loop key's text: case, punctuation and spacing do not make a new line. */
 function repeatTextKey(text) {
-  return String(text || '').normalize('NFC').toLowerCase()
+  const t = String(text || '').normalize('NFC')
+  // a trailing question mark is part of the line (Tom 2026-10-13); the same rule as text-normalize.cjs
+  return repeatTextKeyBare(t) + (/[?？][.!?。？！\s]*$/.test(t) ? '?' : '')
+}
+function repeatTextKeyBare(t) {
+  return t.toLowerCase()
     .replace(/[\s ]+/g, ' ')
     .replace(/[.,!?;:"'“”‘’()\[\]{}…—–\-।॥¿¡。？！、，]/g, '')
     .trim()
 }
-function repeatKey(provider, voiceId, text) {
-  return crypto.createHash('sha1').update(`${provider}|${voiceId || '?'}|${repeatTextKey(text)}`).digest('hex').slice(0, 20)
+/** A native speed other than 1 is a different recording of the same words (trial renders, job #751), so it is part of the key.
+ *  Absent/1 adds nothing, so every existing key is unchanged. */
+function speedKeyPart(speed) {
+  const n = Number(speed)
+  return speed == null || !Number.isFinite(n) || n === 1 ? '' : `|speed=${n}`
+}
+function repeatKey(provider, voiceId, text, speed) {
+  return crypto.createHash('sha1').update(`${provider}|${voiceId || '?'}|${repeatTextKey(text)}${speedKeyPart(speed)}`).digest('hex').slice(0, 20)
 }
 function textHash(text) {
   return crypto.createHash('sha1').update(String(text || '')).digest('hex').slice(0, 16)
@@ -235,7 +248,7 @@ const TOTAL_DAILY_CAP_CHARS = 1_000_000 // Tom 2026-10-07 (job #147): a runaway 
  * by tools/tts-cap.cjs approve. Job #859 (Tom 2026-10-05): ceiling raised to 1,000,000, JS and DB together; was 300,000 (job #596)
  * (ops/sql/20261005-tts-spend-ceiling-1m.sql v_ceiling).
  */
-const TOTAL_DAILY_CEILING_CHARS = 2_000_000 // Tom 2026-10-07 (job #147): keeps the approved-run tier above the 1M automatic base
+const TOTAL_DAILY_CEILING_CHARS = 3_000_000 // Tom 2026-10-12 (jobs #813/#836: "We dont want to finish with some unspent"): hard ceiling over a Tom-signed run; the automatic cap stays 1M (ops/sql/20261012-tts-spend-ceiling-3m.sql)
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 
@@ -348,7 +361,14 @@ function loadLimits({ budgetPath, envOverride, nowMs }) {
   // spend on all of them. Each provider's own dailyCapChars stays the atomic
   // backstop; the combined sum is read, not locked, so concurrent hosts can
   // overshoot it by at most one in-flight clip each.
-  const combined = file.hold && Number.isFinite(file.hold.combinedDailyCapChars) && file.hold.combinedDailyCapChars > 0 ? file.hold.combinedDailyCapChars : null
+  let combined = file.hold && Number.isFinite(file.hold.combinedDailyCapChars) && file.hold.combinedDailyCapChars > 0 ? file.hold.combinedDailyCapChars : null
+  // A LOOSER combined cap counts only as a signed, dated, expiring raise (hold.raise = { combinedDailyCapChars, by, why, until }), exactly like a provider raise (lane review #874):
+  // a plain looser value in hold.combinedDailyCapChars would never expire. Expired/unsigned raises are ignored and noted; the baseline above holds.
+  if (file.hold && file.hold.raise) {
+    const hr = file.hold.raise, rs = raiseInForce(hr, nowMs)
+    if (rs.ok && Number.isFinite(hr.combinedDailyCapChars) && hr.combinedDailyCapChars > 0) { combined = Math.max(combined || 0, hr.combinedDailyCapChars); notes.push({ kind: 'raise', label: 'hold', field: 'combinedDailyCapChars', value: hr.combinedDailyCapChars, by: hr.by, why: hr.why, until: hr.until }) }
+    else notes.push({ kind: 'ignored', label: 'hold', field: 'combinedDailyCapChars', value: hr.combinedDailyCapChars, why: rs.ok ? 'a combined raise needs a positive combinedDailyCapChars' : rs.why })
+  }
   const hold = file.hold && typeof file.hold.message === 'string' ? { by: file.hold.by || null, since: file.hold.since || null, message: file.hold.message, combinedDailyCapChars: combined } : null
   // JOB-SCOPED RAISES (Tom 2026-09-28, job #578): Tom's explicit go for ONE
   // job above the daily cap must not become a looser cap for everybody. A raise
@@ -612,7 +632,7 @@ function createSpendGuard(opts = {}) {
 
   function limitsNow() {
     const cfg = loadLimits({ budgetPath, envOverride, nowMs: now() })
-    const h = sha(JSON.stringify({ p: cfg.providers, r: cfg.repeat, d: cfg.divergence, j: cfg.jobRaises, x: cfg.repeatExemptions.map(e => [e.job, [...e.texts], e.maxCallsPerText, e.since]) }))
+    const h = sha(JSON.stringify({ p: cfg.providers, r: cfg.repeat, d: cfg.divergence, j: cfg.jobRaises, x: cfg.repeatExemptions.map(e => [e.job, [...e.texts], e.maxCallsPerText, e.since]), hd: cfg.hold && cfg.hold.combinedDailyCapChars, n: cfg.notes }))   // hold + notes in the hash: the combined cap dropping back when its raise expires is a limits change that must be told (lane review #878)
     if (h !== lastLimitsHash) {
       // Every change in the limits in force, and every raise or ignored
       // loosening, is told — ONCE PER HOST per distinct change (limits + notes),
@@ -818,7 +838,7 @@ function createSpendGuard(opts = {}) {
       }
     }
 
-    const key = repeatKey(provider, ctx.voiceId, text)
+    const key = repeatKey(provider, ctx.voiceId, text, ctx.speed)
     const base = {
       at: new Date(now()).toISOString(), provider, voice: ctx.voiceId || null, chars,
       course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null,
@@ -909,8 +929,7 @@ function createSpendGuard(opts = {}) {
 // ─── Human alert: one line into the command surface's needs-you ────────────
 
 /**
- * POST the alert to the surface (loopback identity, the same way
- * ops/watchdog/holmes-availability-sentinel.sh escalates). Fire-and-forget,
+ * POST the alert to the surface (loopback identity). Fire-and-forget,
  * 5s timeout. TTS_SPEND_ALERTS=0 turns the POST off (the log and the alerts
  * file still carry it).
  */

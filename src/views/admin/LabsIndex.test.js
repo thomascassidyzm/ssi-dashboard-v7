@@ -31,11 +31,11 @@ function render () {
 
 const EXPECTED_LABS = [
   'Listening Lab', 'Speaking Lab', 'Voice Lab', 'Pod Lab',
-  'Script Lab', 'VAD Lab', 'Basket Lab', 'Capture A/B',
+  'Script Lab', 'VAD Lab', 'Basket Lab', 'Capture A/B', 'Intro Lab',
 ]
 
 describe('Labs index — every lab has a front door', () => {
-  it('lists all eight labs, Script Lab and Capture A/B included', () => {
+  it('lists all nine labs, Script Lab and Capture A/B included', () => {
     const titles = render().findAll('.card-title').map(n => n.text())
     expect(titles.sort()).toEqual([...EXPECTED_LABS].sort())
   })

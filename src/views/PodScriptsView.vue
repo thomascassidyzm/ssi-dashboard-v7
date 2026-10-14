@@ -388,7 +388,7 @@ import FilterSelect from '@/components/ui/FilterSelect.vue'
 const { getAccessToken } = useAuth()
 async function authedFetch (path) {
   const token = await getAccessToken()
-  const headers = { 'ngrok-skip-browser-warning': 'true' }
+  const headers = {}
   if (token) headers.Authorization = `Bearer ${token}`
   return fetch(`${getApiUrl()}${path}`, { headers })
 }

@@ -1687,7 +1687,6 @@ async function previewVoiceObj(v, busyKey = 'preview') {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true',
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
       body: JSON.stringify({
@@ -2038,7 +2037,6 @@ async function generateSample(opts = {}) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true',
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
       body: JSON.stringify({ pod_ids: [podId], sample_limit: SAMPLE_GEN_LIMIT }),

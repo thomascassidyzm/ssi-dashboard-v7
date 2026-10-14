@@ -41,7 +41,25 @@ function pickCourseVoice(rows) {
  * role first, then the known/presentation English (an English prompt on a
  * non-English role speaks as the course's English does).
  */
+// Remembered for a minute per (course, role) (job #806): phase8 asks this for
+// every English line it renders, and the answer is the course's HABIT across
+// its last 200 clips — it does not move between one line and the next. Each
+// ask is up to three course_audio reads (7,370 calls, mean 242 ms, since
+// 2026-09-26). A minute keeps a recast visible almost at once.
+const MEMO_MS = 60_000
+const memo = new Map()
+function clearCourseEnglishVoiceMemo() { memo.clear() }
+
 async function courseEnglishVoice(supabase, courseCode, role) {
+  const key = `${courseCode}\u001f${role}`
+  const hit = memo.get(key)
+  if (hit && Date.now() - hit.at < MEMO_MS) return hit.value
+  const value = await readCourseEnglishVoice(supabase, courseCode, role)
+  memo.set(key, { at: Date.now(), value })
+  return value
+}
+
+async function readCourseEnglishVoice(supabase, courseCode, role) {
   for (const r of [...new Set([role, 'known', 'presentation'])]) {
     const { data, error } = await supabase.from('course_audio').select('voice_id')
       .eq('course_code', courseCode).eq('role', r).eq('language', ENGLISH)
@@ -53,4 +71,4 @@ async function courseEnglishVoice(supabase, courseCode, role) {
   return null
 }
 
-module.exports = { pickCourseVoice, parseCourseVoice, courseEnglishVoice }
+module.exports = { pickCourseVoice, parseCourseVoice, courseEnglishVoice, clearCourseEnglishVoiceMemo }

@@ -158,6 +158,13 @@ const LABS = [
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 11h14l-1.5 9h-11z"/><path d="M9 11 12 3l3 8"/><line x1="3" y1="11" x2="21" y2="11"/></svg>',
   },
   {
+    key: 'intro',
+    title: 'Intro Lab',
+    to: '/admin/labs/intro',
+    description: 'Any course, any LEGO: the spliced Tom-voice intro with every setting adjustable, then the LEGO as the player plays its debut — both target voices at the player\'s own speeds and pauses.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h3l2-6 4 12 3-9 2 3h4"/><circle cx="20" cy="12" r="1"/></svg>',
+  },
+  {
     key: 'capture-ab',
     title: 'Capture A/B',
     to: '/admin/labs/capture-ab',

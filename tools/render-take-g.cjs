@@ -341,7 +341,7 @@ const gateScore = (m, need) => -(Math.abs(m.big - need) * 10 + m.mid)
         }
         ids.push(id)
       } catch (e) {
-        console.log(`S${s.global_order} g${gi} [${voice.provider}/${voice.voice_id}] "${cued.slice(0, 50)}": ✗ ${e.message.slice(0, 140)}`)
+        console.log(`S${s.global_order} g${gi} [${voice.provider}/${voice.voice_id}] "${cued.slice(0, 50)}": ✗ ${e.code === 'NOT_SPEAKABLE' ? 'DATA ERROR (not sent to TTS, fix the row text): ' : ''}${e.message.slice(0, 140)}`)
         failed++; ids.push(null)
         ledgerSet(lkey, { verdict: 'error', units: g.length, error: e.message.slice(0, 140) })
       }

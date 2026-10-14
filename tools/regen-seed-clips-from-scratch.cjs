@@ -101,6 +101,7 @@ const veracity = require('../services/audio-veracity.cjs')
 process.env.PHASE8_NO_LISTEN = '1'
 const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const { toBcp47 } = require('../services/voice-discovery-service.cjs')
+const { assertNotReplacingHuman } = require('../services/shared/human-take-guard.cjs')
 
 const arg = (f) => { const i = process.argv.indexOf(f); return i > -1 ? process.argv[i + 1] : null }
 const COURSE = process.argv[2]
@@ -243,7 +244,7 @@ function ttsOptionsFor (provider, voiceId, language) {
   if (provider === 'cartesia') return {
     apiKey: process.env.CARTESIA_API_KEY, voiceId, locale: toBcp47(language),
   }
-  return { apiKey: process.env.XAI_API_KEY, voiceId, language: toBcp47(language) }
+  return { voiceId, language: toBcp47(language) }
 }
 
 /**
@@ -365,6 +366,7 @@ async function main () {
           const patch = { [h.column]: repl.id }
           if (h.durationColumn) patch[h.durationColumn] = repl.duration_ms
           if (h.alsoSet && h.alsoSet.audio_uuid) patch.audio_uuid = repl.id
+          await assertNotReplacingHuman(supabase, { tbl: h.table, key: h.rowId, col: h.column, to: repl.id })   // Tom's HARD RULE 2026-10-13
           const { error: e } = await supabase.from(h.table).update(patch).eq('id', h.rowId)
           if (e) throw new Error(`relink ${h.table}#${h.rowId}: ${e.message}`)
         }
@@ -461,6 +463,7 @@ async function main () {
         const before = { [h.column]: row.id }
         if (h.durationColumn) patch[h.durationColumn] = rendered.durationMs
         if (h.alsoSet && h.alsoSet.audio_uuid) { patch.audio_uuid = newId; before.audio_uuid = row.id }
+        await assertNotReplacingHuman(supabase, { tbl: h.table, key: h.rowId, col: h.column, to: newId })   // Tom's HARD RULE 2026-10-13
         const { error: e } = await supabase.from(h.table).update(patch).eq('id', h.rowId)
         if (e) throw new Error(`repoint ${h.table}#${h.rowId}: ${e.message}`)
         relinked.push({ table: h.table, rowId: h.rowId, column: h.column, patch, before })
@@ -521,6 +524,7 @@ async function main () {
         for (const r of relinked.reverse()) {
           if (r.before) await supabase.from(r.table).update(r.before).eq('id', r.rowId)
         }
+        // ALLOW-DELETE: rollback of the row THIS run inserted moments ago; unlinked, never a pre-existing clip.
         if (inserted) await supabase.from('course_audio').delete().eq('id', newId)
         if (tombstoned && old) await supabase.from('course_audio').update({ text: old.text }).eq('id', old.id)
         console.log('      unwound cleanly — old clip still serving')

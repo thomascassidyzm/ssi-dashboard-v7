@@ -62,20 +62,45 @@ const MALE_XAI = `(ca.voice_id ~ '^(xai_)?(leo|sal|rex|gfzdpspr5fdp)$')`
 // The general pass is FEMALE ONLY; BAD_VOICE kept as the exported name of "what the Charlotte passes may select".
 const BAD_VOICE = FEMALE_VOICE
 const TOM_001 = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
+// Tom 2026-10-12 (#813, #15, #24): Tom-006 is the male English voice. The male passes render in it, and no Charlotte pass may ever select a Tom-006 clip (voiceGender() is null for Cartesia ids, so the gender-blind passes would).
+const TOM_006 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
+// Tom 2026-10-12 (job #52): in an X_for_eng course English is the KNOWN side and is ALL Tom-006. No pass of this tool may put Charlotte on an X_for_eng known slot,
+// whatever --voices / --roles say; gender variance for English is eng_for_X (target2) only. Returns the roles a pass may run for this course.
+const allowedRoles = (course, roles, target) => roles.filter(r => !(r === 'known' && target === CHARLOTTE && /_for_eng$/.test(String(course)) && !String(course).startsWith('eng_for_')))
 /** Pass table: which old voices a pass selects, which voice it renders in, which gender a swap's OLD voice must have. */
 const PASSES = {
   general: { sql: FEMALE_VOICE, target: CHARLOTTE, gender: 'f' },
   'xai-female': { sql: FEMALE_XAI, target: CHARLOTTE, gender: 'f' },
-  male: { sql: MALE_VOICE, target: TOM_001, gender: 'm' },
-  'xai-male': { sql: MALE_XAI, target: TOM_001, gender: 'm' },
+  male: { sql: MALE_VOICE, target: TOM_006, gender: 'm' },
+  'xai-male': { sql: MALE_XAI, target: TOM_006, gender: 'm' },
+  // Tom 2026-10-11 (job #259): the xAI Tom clone clicks at the end of clips, so its English known prompts move to Charlotte (the English voice
+  // ita_for_eng already uses). gender null on purpose: this is Tom's explicit ruling for the known role, so the male-never-Charlotte guard
+  // (which protects target V1/V2 distinctness) does not apply. role is FIXED to known (#278): without it --roles target2/presentation would render Charlotte over male clips with the guard off.
+  'tom-clone-to-charlotte': { sql: `(ca.voice_id in ('xai_gfzdpspr5fdp','gfzdpspr5fdp','${TOM_001}'))`, target: CHARLOTTE, gender: null, role: 'known' },
+  // Tom 2026-10-11 (job #277): "Everything should be Charlotte in first 100 SEEDS" - every English known clip not already Charlotte (eve, Azure, bare ids,
+  // clone, tom_001), gender-blind for the same reason; role fixed to known. Run it with --seeds 1-100.
+  'all-to-charlotte': { sql: `(ca.voice_id not in ('${CHARLOTTE}','${CHARLOTTE_BARE}'))`, target: CHARLOTTE, gender: null, role: 'known',
+    // a pod-fine clip (S0001L05B03) is linked from a known slot but stored with clip role pod_fine_known; "everything" includes it
+    alsoClipRoles: { known: ['pod_fine_known'] } },
+  // Tom 2026-10-11 (job #283): "Everything should be Charlotte in first 100 SEEDS" — the introduction (presentation) clips, same old voices as the known pass.
+  // Role fixed to presentation for the same reason as above; run with --seeds 1-100. Intro texts name the language ("The German for..."), so a clip rendered
+  // for another course's language can NEVER be reused here: every clip is rendered whole from its own stored text.
+  'presentation-to-charlotte': { sql: `(ca.voice_id in ('xai_gfzdpspr5fdp','gfzdpspr5fdp','${TOM_001}'))`, target: CHARLOTTE, gender: null, role: 'presentation' },
 }
 
 /** Target-voice passes: language + role are fixed by the pass; the new voice is the language's cast voice for the role's gender. */
 const TARGET_PASSES = {
   'ita-target1': { langs: ['ita', 'it'], role: 'target1', castGender: 'f' },
   'ita-target2': { langs: ['ita', 'it'], role: 'target2', castGender: 'm' },
+  // German (job #255, Tom 2026-10-11 "The two German voices are perfect." = the deu cast Viktoria f / Nico m). allVoices: a clip on ANY
+  // other voice (Azure, xAI, or a draft-cast Cartesia voice) is replaced, so target2 is never left on the female voice.
+  'deu-target1': { langs: ['deu', 'de'], role: 'target1', castGender: 'f', allVoices: true },
+  'deu-target2': { langs: ['deu', 'de'], role: 'target2', castGender: 'm', allVoices: true },
 }
 for (const [name, t] of Object.entries(TARGET_PASSES)) PASSES[name] = { sql: `(ca.voice_id !~ '^cartesia_')`, target: null, gender: null, ...t }
+// English known prompts for a course re-voiced onto Charlotte (Tom 2026-10-11): every non-Cartesia known clip, either gender, becomes Charlotte.
+// The route is library-first, so a Charlotte clip of the same words is linked free; only missing ones are rendered.
+PASSES['known-charlotte'] = { sql: `(ca.voice_id !~ '^cartesia_')`, target: CHARLOTTE, gender: null, role: 'known' }
 /** The cast voice (full cartesia_ id) for a language/gender, rank 0 of the phrase slot; null when nobody has cast one. */
 async function castVoice(pg, lang, gender) {
   const { rows: [r] } = await pg.query(`select vlr.voice_id from voice_language_roles vlr join voices v using (voice_id)
@@ -100,20 +125,20 @@ async function slotsFor(pg, course, role) {
 const parseSeedScope = v => { if (v == null) return undefined; const m = /^(?:1-)?(\d+)$/.exec(String(v)); if (!m || !Number(m[1])) throw new Error(`bad --seeds ${v}; use 1-N`); return Number(m[1]) }
 /** Keep only work first heard within seeds 1..maxSeed (a clip shared with later seeds still counts: its first hearing is early). */
 const inSeedScope = (work, maxSeed) => (maxSeed == null ? work : work.filter(w => w.pos != null && w.pos <= maxSeed))
-async function workFor(pg, course, roles, voiceSql = BAD_VOICE, maxSeed, langs = ['eng', 'en']) {
+async function workFor(pg, course, roles, voiceSql = BAD_VOICE, maxSeed, langs = ['eng', 'en'], alsoClipRoles = {}) {
   const out = []
   for (const role of roles) {
     const slots = await slotsFor(pg, course, role)
     const ids = [...new Set(slots.map(s => s.old_id))]
     if (!ids.length) continue
     const { rows } = await pg.query(`select ca.id::text, ca.text, ca.voice_id from course_audio ca
-       where ca.id = any($1::uuid[]) and ca.course_code = $2 and ca.language = any($4::text[]) and ca.origin = 'tts' and ca.role = $3 and ${voiceSql}`, [ids, course, role, langs])
+       where ca.id = any($1::uuid[]) and ca.course_code = $2 and ca.language = any($4::text[]) and ca.origin = 'tts' and ca.role = any($3::text[]) and ${voiceSql}`, [ids, course, [role, ...(alsoClipRoles[role] || [])], langs])
     const bad = new Map(rows.map(r => [r.id, r]))
     const by = new Map()
     for (const s of slots) {
       const c = bad.get(s.old_id); if (!c) continue
       if (!by.has(s.old_id)) by.set(s.old_id, { oldId: s.old_id, text: c.text, oldVoice: c.voice_id, role, chars: c.text.length, slots: [], pos: s.pos })
-      const w = by.get(s.old_id); w.slots.push({ tbl: s.tbl, key: s.key, col: SLOT_COL[role] }); w.pos = Math.min(w.pos ?? 1e9, s.pos ?? 1e9)
+      const w = by.get(s.old_id); w.slots.push({ tbl: s.tbl, key: s.key, col: SLOT_COL[role], course }); w.pos = Math.min(w.pos ?? 1e9, s.pos ?? 1e9)
     }
     out.push(...by.values())
   }
@@ -154,8 +179,10 @@ function supa() {
   return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 }
 
-async function setPointer(db, s, from, to, eventId) {
+const { mayPoint } = require('../../services/shared/resolve-voice.cjs')   // job #53: every pointer this tool writes is checked against resolveVoice
+async function setPointer(db, s, from, to, eventId, restore = false) {
   const val = to
+  if (!await mayPoint(db, { courseCode: s.course, col: s.col, to, restore, tbl: s.tbl, key: s.key, from })) return false
   const { data, error } = await db.from(s.tbl).update({ [s.col]: val, last_edit_event_id: eventId }).eq('id', s.key).eq(s.col, from).select('id')
   if (error) throw new Error(`${s.tbl}.${s.col} update failed: ${error.message}`)
   return data && data.length === 1
@@ -191,7 +218,7 @@ function rateRetry(w) { w.rl = (w.rl || 0) + 1; return w.rl < RATE_RETRY_CAP }
  * on the money is spent for good, so a later throw (verify, ledger, DB) must NOT refund it. Only an unsettled clip is refunded.
  * budgetSkipped counts clips passed over because they do not fit the remaining budget: owed work, but not a failure.
  */
-async function runBudgeted(work, { budget, dryRun = false, gender = null, concurrency = 1, render: doRender, verify, commit, backoffMs = 5000 }) {
+async function runBudgeted(work, { budget, dryRun = false, gender = null, notGender = null, neverFrom = null, concurrency = 1, render: doRender, verify, commit, backoffMs = 5000 }) {
   let spent = 0, done = 0, failures = 0, genderSkipped = 0, budgetSkipped = 0
   let live = Math.max(1, concurrency), active = 0, stop = false, idx = 0
   const requeue = []
@@ -219,6 +246,9 @@ async function runBudgeted(work, { budget, dryRun = false, gender = null, concur
       if (!w) return null
       // belt and braces: the SQL and the JS lists agree, but a male slot must never reach Charlotte even if they drift
       if (gender && voiceGender(w.oldVoice) !== gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
+      // Tom 2026-10-12 (job #15): a MALE English known slot belongs to Tom-006, never Charlotte, whatever the gender-blind pass says; the 2026-10-11 gender-blind passes put 76 male-origin lines on Charlotte
+      if (notGender && voiceGender(w.oldVoice) === notGender) { console.log('MALE-ROLE-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
+      if (neverFrom && w.oldVoice === neverFrom) { console.log('NEVER-FROM-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
       if (spent + w.chars > budget) { if (spent === 0 && budget === 0) return null; budgetSkipped++; continue }
       return w
     }
@@ -272,7 +302,7 @@ async function main() {
     for (const e of lines) {
       if (n >= limit) break
       let moved = 0
-      for (const s of e.slots) if (await setPointer(db, s, e.newId, e.oldId, eventId)) moved++
+      for (const s of e.slots) if (await setPointer(db, s, e.newId, e.oldId, eventId, true)) moved++
       fs.appendFileSync(ledger, JSON.stringify({ kind: 'undo', oldId: e.oldId, newId: e.newId, at: new Date().toISOString() }) + '\n')
       if (moved) n++ // a swap whose slots changed nothing is closed in the ledger but not reported as undone
     }
@@ -283,14 +313,23 @@ async function main() {
   if (!pass) { console.error(`unknown --voices ${passName}; one of ${Object.keys(PASSES)}`); process.exit(1) }
   const roles = pass.role ? [pass.role] : opt('--roles', 'known,presentation').split(',')
   const budget = Number(opt('--budget', 0)); const dryRun = has('--dry-run')
-  const maxSeed = parseSeedScope(opt('--seeds'))
+  // Voicing policy (Tom 2026-10-11): only a variety cast in Cartesia on/after the cutoff, never one marked done, default scope seeds 1-100.
+  let maxSeed
+  try { maxSeed = await require('../../services/shared/voicing-policy.cjs').assertRevoiceAllowed({ courseCode: course, maxSeed: parseSeedScope(opt('--seeds')) }) }
+  catch (e) { console.error(e.message); process.exit(3) }
   let target = pass.target, language = 'eng'
   if (pass.castGender) {
     language = pass.langs[0]
     target = await castVoice(pg, language, pass.castGender)
     if (!target) { console.log(`NO CAST: ${language} has no active Cartesia phrase-slot voice for gender ${pass.castGender}; nothing rendered`); return pg.end() }
   }
-  const work = await workFor(pg, course, roles, pass.sql, maxSeed, pass.langs)
+  const bare = target ? target.replace(/^cartesia_/, '') : null
+  const voiceSql = pass.allVoices && target ? `(ca.voice_id not in ('${target}', '${bare}'))` : pass.sql
+  const ok = allowedRoles(course, roles, target)
+  if (ok.length < roles.length) console.log(`X_FOR_ENG_KNOWN_IS_TOM006: ${course} known slots are Tom-006 only (Tom 2026-10-12, job #52); known role dropped from this Charlotte pass`)
+  if (!ok.length) { console.log('nothing to do'); return pg.end() }
+  roles.length = 0; roles.push(...ok)
+  const work = await workFor(pg, course, roles, voiceSql, maxSeed, pass.langs, pass.alsoClipRoles)
   const total = work.reduce((n, x) => n + x.chars, 0)
   console.log(`${course} ${roles}${target && pass.castGender ? ` -> ${target}` : ''}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
   let free = 0, slotsMoved = 0, eventId = null, eventPromise = null, slotRefused = 0
@@ -308,7 +347,7 @@ async function main() {
     if (r.source === 'library') free++
   }
   const { spent, done, genderSkipped, budgetSkipped } = await runBudgeted(work, {
-    budget, dryRun, gender: pass.gender, concurrency: Number(process.env.CONCURRENCY || 1),
+    budget, dryRun, gender: pass.gender, notGender: pass.target === CHARLOTTE && pass.role === 'known' ? 'm' : null, neverFrom: pass.target === CHARLOTTE ? TOM_006 : null, concurrency: Number(process.env.CONCURRENCY || 1),
     render: w => render(course, w, dryRun, target, language), verify: r => verifyNew(pg, r.audioId, target), commit,
   })
   // machine line for the daily driver: work still owed in THIS scope (budget-skipped, failed, verify-failed, refused, unreached); never-doable gender skips excluded
@@ -320,4 +359,4 @@ async function main() {
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { runBudgeted, RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, CHARLOTTE }
+module.exports = { allowedRoles, runBudgeted, RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, TOM_006, CHARLOTTE }

@@ -5,29 +5,18 @@ import { getApiUrl } from '@/services/api'
 import { supabase, isConfigured as isSupabaseConfigured, getAudioStats as sbGetAudioStats, getAudioMetadata as sbGetAudioMetadata, getAudioFlags as sbGetAudioFlags, getCourseInfo as sbGetCourseInfo } from '@/services/supabase'
 
 // API Base URL - reads from localStorage (set by EnvironmentSwitcher), then env, then default
-// This allows routing through ngrok tunnel to local automation server
-// IMPORTANT: Always check localStorage first - EnvironmentSwitcher sets ngrok URL there
+// IMPORTANT: Always check localStorage first - EnvironmentSwitcher sets the URL there
 function getApiBaseUrl() {
   // 1. ALWAYS check localStorage first (user set via EnvironmentSwitcher)
-  // This is critical for Vercel deployments that need to route through ngrok
+  // This is critical for Vercel deployments that need to route to a chosen backend
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) {
     return storedUrl
   }
 
-  // 2. Check if accessed via ngrok (hostname contains ngrok) - use relative URLs
-  // (ngrok proxies to orchestrator which handles /api/* routes)
-  const isNgrok = typeof window !== 'undefined' &&
-    window.location.hostname.includes('ngrok')
-
-  if (isNgrok) {
-    // Use empty string = relative URLs, orchestrator handles /api/* routes
-    return ''
-  }
-
-  // 3. For Vercel/popty.app - no default API base
+  // 2. For Vercel/popty.app - no default API base
   // Read-only data goes direct to Supabase via useBuildMonitor composable.
-  // Agent operations (spawn, audio gen) require the user to set an ngrok URL
+  // Agent operations (spawn, audio gen) require the user to set a backend URL
   // via EnvironmentSwitcher or localStorage.
   const isVercel = typeof window !== 'undefined' && (
     window.location.hostname.includes('vercel.app') ||
@@ -44,11 +33,10 @@ function getApiBaseUrl() {
   return getApiUrl()
 }
 
-// Common headers for API requests (ngrok tunnel compatibility)
+// Common headers for API requests
 function getApiHeaders() {
   return {
     'Content-Type': 'application/json',
-    'ngrok-skip-browser-warning': 'true'
   }
 }
 

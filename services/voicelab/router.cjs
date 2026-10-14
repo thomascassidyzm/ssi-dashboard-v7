@@ -59,10 +59,39 @@ const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
  * @param {function} deps.requireDashboardUser  (req,res) -> user|null (responds on failure)
  * @param {object}   [deps.logger]
  */
+/** registry.SLOTS are the phrase-bearing slots; 'presentation' is cast and cleared too, gender-agnostic like guide (cast_voice_role v3). The guard used to reject it, so clearing a presentation slot was unreachable (#273). */
+const isCastableSlot = (slot) => slot === 'presentation' || registry.SLOTS.includes(slot)
+
+/**
+ * A gate that remembers who a token belonged to for a few seconds. Each lab
+ * call used to cost ~1 s of auth (Supabase JWT check, dashboard row, learner
+ * row, every course's casting) and paid it TWICE — once at the router's edge,
+ * once in the route — so a warm visit's three reads spent ~6 s on identity
+ * (Tom, 2026-10-12). Only a success is remembered, so a refusal is always
+ * re-asked; the window is short so a changed dashboard_users row bites within
+ * it.
+ */
+const GATE_MEMO_MS = Number(process.env.VOICELAB_GATE_MEMO_MS || 30000)
+function memoGate (gate) {
+  const seen = new Map()
+  return async (req, res) => {
+    const token = req.headers && req.headers.authorization
+    const now = Date.now()
+    const hit = token && seen.get(token)
+    if (hit && hit.exp > now) return hit.user
+    const user = await gate(req, res)
+    if (user && token && GATE_MEMO_MS > 0) {
+      if (seen.size > 200) for (const [k, v] of seen) if (v.exp <= now) seen.delete(k)
+      seen.set(token, { user, exp: now + GATE_MEMO_MS })
+    }
+    return user
+  }
+}
+
 function mount (app, deps) {
+  const requireAdmin = memoGate(deps.requireAdmin)
+  const requireDashboardUser = memoGate(deps.requireDashboardUser)
   const {
-    requireAdmin,
-    requireDashboardUser,
     logger = console,
     // Defaulted rather than required, so mounting this router does not change
     // production-api.cjs's one-line mount call. Lazy for the same reason the
@@ -231,6 +260,22 @@ function mount (app, deps) {
     next()
   })
 
+  // ── WARM AT BOOT, SO THE FIRST VISIT IS NOT THE COLD ONE ──────────────────
+  // Only on the real client (a test injects its own `supabase` and must see
+  // exactly the reads it counts). Never allowed to throw into startup.
+  if (!deps.supabase && process.env.VOICELAB_PREWARM !== '0') {
+    setTimeout(async () => {
+      try {
+        await params.cartesiaCatalogue()
+        await Promise.all([
+          registry.cachedBuild(supabase(), { cartesiaCatalogue: params._state().CARTESIA_CATALOGUE }),
+          podVoices.cachedBuild(supabase()),
+        ])
+        logger.log?.('[voicelab] registry and pod voices warmed')
+      } catch (e) { logger.log?.(`[voicelab] warm-up skipped: ${e.message}`) }
+    }, 5000).unref?.()
+  }
+
   app.get('/api/voicelab/params', async (req, res) => {
     if (!await requireDashboardUser(req, res)) return
     try {
@@ -244,6 +289,16 @@ function mount (app, deps) {
   // Read-only and spends nothing, so it is open to any dashboard user; the two
   // writes below are admin, because casting a voice is an estate decision.
 
+  // A held view carries the instant it was built as its ETag, so a screen that
+  // already holds it is answered 304 with no body (the 1.4 MB registry never
+  // crosses the wire twice) and any rebuild changes the tag.
+  function sendHeld (req, res, payload) {
+    res.set('ETag', payload.etag)
+    res.set('Cache-Control', 'private, no-cache')
+    if (req.headers['if-none-match'] === payload.etag) return res.status(304).end()
+    res.json(payload)
+  }
+
   app.get('/api/voicelab/languages', async (req, res) => {
     if (!await requireDashboardUser(req, res)) return
     try {
@@ -254,7 +309,7 @@ function mount (app, deps) {
       const { CARTESIA_CATALOGUE } = params._state()
       // Held between loads — see registry.cjs. ?refresh=1 is the Refresh button.
       const refresh = req.query.refresh === '1' || req.query.refresh === 'true'
-      res.json(await registry.cachedBuild(supabase(), { cartesiaCatalogue: CARTESIA_CATALOGUE, refresh }))
+      sendHeld(req, res, await registry.cachedBuild(supabase(), { cartesiaCatalogue: CARTESIA_CATALOGUE, refresh }))
     } catch (err) { fail(res, err, 'languages') }
   })
 
@@ -377,7 +432,7 @@ function mount (app, deps) {
     if (!await requireDashboardUser(req, res)) return
     try {
       const refresh = req.query.refresh === '1' || req.query.refresh === 'true'
-      res.json(await podVoices.cachedBuild(supabase(), { refresh }))
+      sendHeld(req, res, await podVoices.cachedBuild(supabase(), { refresh }))
     } catch (err) { fail(res, err, 'pod-voices') }
   })
 
@@ -523,14 +578,15 @@ function mount (app, deps) {
       // own gender as a fact and nothing reads it to decide anything. A partial
       // unique index keeps one guide per (language, rank) regardless.
       const slot = String((req.body || {}).slot || 'phrase')
-      if (!registry.SLOTS.includes(slot)) {
-        throw Object.assign(new Error(`slot must be one of ${registry.SLOTS.join(', ')}`), { status: 400 })
+      if (!isCastableSlot(slot)) {
+        throw Object.assign(new Error(`slot must be one of ${[...registry.SLOTS, 'presentation'].join(', ')}`), { status: 400 })
       }
-      const gender = slot === 'guide' ? null : (req.body || {}).gender
+      const genderAgnostic = slot === 'guide' || slot === 'presentation'
+      const gender = genderAgnostic ? null : (req.body || {}).gender
       if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
 
       // 'known' is gendered exactly like 'phrase' (services/shared/language-voice-cast.cjs KNOWN_SLOT).
-      if (slot !== 'guide' && !registry.GENDERS.includes(gender)) {
+      if (!genderAgnostic && !registry.GENDERS.includes(gender)) {
         throw Object.assign(new Error(`gender must be one of ${registry.GENDERS.join(', ')}`), { status: 400 })
       }
       const r = Number(rank)
@@ -660,18 +716,20 @@ function mount (app, deps) {
         voiceGender = registry.GENDERS.includes(gender) ? gender : null
       }
 
-      // A guide row's gender is the VOICE's own, recorded as a fact and read by
+      // A guide or presentation row's gender (both gender-agnostic; #677) is the VOICE's own, recorded as a fact and read by
       // nothing. Where the voice row carries none — Aran's does not — 'm' is
       // written to satisfy the key's NOT NULL, and the one-guide-per-rank index
       // is what actually keeps the slot single.
-      const rowGender = slot === 'guide' ? (registry.GENDERS.includes(voiceGender) ? voiceGender : 'm') : gender
+      const rowGender = genderAgnostic ? (registry.GENDERS.includes(voiceGender) ? voiceGender : 'm') : gender
 
-      const { error } = await supabase()
-        .from('voice_language_roles')
-        .upsert({
-          language, gender: rowGender, rank: r, slot, voice_id: slotVoiceId, notes,
-          assigned_by: who(user), updated_at: new Date().toISOString(),
-        }, { onConflict: 'slot,language,gender,rank' })
+      // ATOMIC: a voice holds one rank per (slot, language, gender) (the no_self_backup
+      // index), so promoting a backup to primary — or any move to the other rank — must
+      // leave the old rank and fill the new one in ONE transaction, the displaced voice
+      // taking the vacated rank. A plain upsert of the target rank trips the index (#263).
+      const { data: castOut, error } = await supabase().rpc('cast_voice_role', {
+        p_slot: slot, p_language: language, p_gender: rowGender, p_rank: r,
+        p_voice_id: slotVoiceId, p_notes: notes, p_assigned_by: who(user),
+      })
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
 
       logger.log?.(`[voicelab] cast ${slot} ${language}/${rowGender}/rank${r} = ${slotVoiceId} by ${who(user)}`)
@@ -683,6 +741,7 @@ function mount (app, deps) {
       // screen can show it rather than the operator discovering it at render.
       res.json({
         ok: true, language, slot, gender: rowGender, rank: r, voiceId: slotVoiceId,
+        swapped: !!(castOut && castOut.swapped), displaced: (castOut && castOut.displaced) || null,
         skipped: guard.courses,
         skippedTotal: guard.total,
         reach: guard.reach,
@@ -1616,20 +1675,20 @@ function mount (app, deps) {
       const slot = String(req.query.slot || 'phrase')
       const gender = String(req.query.gender || '')
       const rank = Number(req.query.rank)
-      if (!registry.SLOTS.includes(slot)) {
-        throw Object.assign(new Error(`slot must be one of ${registry.SLOTS.join(', ')}`), { status: 400 })
+      if (!isCastableSlot(slot)) {
+        throw Object.assign(new Error(`slot must be one of ${[...registry.SLOTS, 'presentation'].join(', ')}`), { status: 400 })
       }
       // A guide slot is keyed by (language, rank) alone, so clearing one does
       // not need — and must not require — a gender the caller has no business
       // knowing.
-      if (!language || !Number.isInteger(rank) || (slot !== 'guide' && !registry.GENDERS.includes(gender))) {
+      if (!language || !Number.isInteger(rank) || (slot !== 'guide' && slot !== 'presentation' && !registry.GENDERS.includes(gender))) {
         throw Object.assign(new Error('language and rank are required, plus gender for a phrase slot'), { status: 400 })
       }
       let q = supabase()
         .from('voice_language_roles')
         .delete()
         .eq('slot', slot).eq('language', language).eq('rank', rank)
-      if (slot !== 'guide') q = q.eq('gender', gender)
+      if (slot !== 'guide' && slot !== 'presentation') q = q.eq('gender', gender)
       const { error } = await q
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
       logger.log?.(`[voicelab] cleared ${slot} ${language}/${gender || '-'}/rank${rank} by ${who(user)}`)

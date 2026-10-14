@@ -629,6 +629,15 @@ const routes = [
   // `router.push({ name })` keep working across the move, and only the paths
   // are new. Every old /admin/configs* path redirects below, so no bookmark
   // breaks.
+  // Procedures (Tom, 2026-10-12): run Popty's registered deterministic jobs —
+  // inputs, plan, run, progress, result, undo. The server refuses anything not
+  // in services/procedures/registry.cjs.
+  {
+    path: '/admin/procedures',
+    name: 'Procedures',
+    component: () => import('../views/admin/Procedures.vue'),
+    meta: { title: 'Procedures - Admin', requiresCourseGrant: true }
+  },
   {
     path: '/admin/labs',
     name: 'LabsIndex',
@@ -671,6 +680,27 @@ const routes = [
     component: () => import('../views/admin/BasketLab.vue'),
     // Admin-only, matching the API's lock on /api/basket-lab (2026-09-25).
     meta: { title: 'Basket Lab - Admin', requiresAuth: true, requiresAdmin: true }
+  },
+  {
+    // Intro Lab (job #488): the #348 splice lab as a Popty tool, with the LEGO played as the player plays a debut. Read-only.
+    path: '/admin/labs/intro',
+    name: 'IntroLab',
+    component: () => import('../views/admin/IntroLab.vue'),
+    meta: { title: 'Intro Lab - Admin' }
+  },
+  {
+    // LEGO proof (job #496): Aran flags Welsh relaunch LEGOs with an issue. Saves each tick at once; no course writes.
+    path: '/proof/legos',
+    name: 'LegoProof',
+    component: () => import('../views/admin/LegoProof.vue'),
+    meta: { title: 'LEGO proof', requiresAuth: true }
+  },
+  {
+    // Phrase proof (job #562): Aran flags Welsh relaunch practice phrases with an issue. Saves each tick at once; no course writes.
+    path: '/proof/phrases',
+    name: 'PhraseProof',
+    component: () => import('../views/admin/PhraseProof.vue'),
+    meta: { title: 'Phrase proof', requiresAuth: true }
   },
   {
     // Capture A/B — record the same line under each mic profile and measure
@@ -1037,6 +1067,13 @@ router.beforeEach(async (to, from, next) => {
   // what stops a non-admin landing on a page made only of refusals.
   if (to.meta.requiresAdmin && !isAdmin.value) {
     return next({ name: 'Home' })
+  }
+
+  // Procedures is open to admins and to editors holding a course grant (the server decides per
+  // course, services/procedures/router.cjs); an editor with no grant at all gets only refusals.
+  if (to.meta.requiresCourseGrant && !isAdmin.value) {
+    const granted = learner.value?.courses
+    if (!(granted === '*' || (Array.isArray(granted) && granted.length))) return next({ name: 'Home' })
   }
 
   // Course scoping: a course-scoped route needs membership of THAT course

@@ -1,0 +1,76 @@
+-- TEMPLATE: weave-cym-aran-written-494.cjs sql fills the LEGOS and ROWS markers and writes weave-cym-aran-written-494.sql.
+-- Job #494 (Aran 2026-10-13): Aran's hand-written practice phrases for the 17 new LEGOs that had none in the Welsh
+-- sandboxes cym_nv2_for_eng / cym_sv2_for_eng. Welsh as Aran wrote it (tidied to sandbox ’ / "dw i" / "be’"), English ours.
+-- Rows are filed as the v2 door files them (job #468's shape). Only rows are added; no LEGO, seed or other row changes.
+-- Fingerprints of live cym_n_for_eng / cym_s_for_eng (seeds, legos, phrases) and master canonical_seeds are asserted unchanged.
+-- Dry run unless invoked with  -v finish=COMMIT . Undo: weave-cym-aran-written-494-undo.sql.
+\set ON_ERROR_STOP on
+\if :{?finish}
+\else
+  \set finish ROLLBACK
+\endif
+BEGIN;
+SET LOCAL statement_timeout = '20min';
+CREATE FUNCTION pg_temp.fp() RETURNS TABLE(t text, n bigint, h text) LANGUAGE sql AS $$
+  SELECT 'canonical_seeds (master)', count(*), md5(string_agg(md5(x::text), '' ORDER BY x::text)) FROM canonical_seeds x
+  UNION ALL SELECT 'live '||x.course_code||' seeds', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_seeds x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
+  UNION ALL SELECT 'live '||x.course_code||' legos', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_legos x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
+  UNION ALL SELECT 'live '||x.course_code||' phrases', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_practice_phrases x WHERE x.course_code IN ('cym_n_for_eng','cym_s_for_eng') GROUP BY x.course_code
+  UNION ALL SELECT 'sandbox '||x.course_code||' legos', count(*), md5(string_agg(md5(x::text), '' ORDER BY x.id)) FROM course_legos x WHERE x.course_code IN ('cym_nv2_for_eng','cym_sv2_for_eng') GROUP BY x.course_code
+$$;
+CREATE TEMP TABLE pre AS SELECT * FROM pg_temp.fp();
+SELECT 'BEFORE' k, * FROM pre ORDER BY t;
+
+CREATE TEMP TABLE legos (course_code text, seed_number int, lego_index int, PRIMARY KEY (course_code, seed_number, lego_index));
+--@LEGOS@
+CREATE TEMP TABLE add_rows (id text PRIMARY KEY, course_code text, seed_number int, lego_index int, position int, known_text text, target_text text,
+  word_count int, lego_count int, phrase_role text, introduce boolean, lego_position text, metadata jsonb);
+--@ROWS@
+
+DO $$ BEGIN
+  IF to_regclass('backup_cym_aran_written_494') IS NOT NULL THEN RAISE EXCEPTION 'already applied'; END IF;
+  IF EXISTS (SELECT 1 FROM add_rows WHERE course_code NOT IN ('cym_nv2_for_eng','cym_sv2_for_eng')) THEN RAISE EXCEPTION 'a row is outside the sandboxes'; END IF;
+  IF (SELECT count(*) FROM legos g JOIN course_legos l USING (course_code, seed_number, lego_index) WHERE l.is_new) <> 17 THEN
+    RAISE EXCEPTION 'a listed LEGO is missing or not new'; END IF;
+  IF EXISTS (SELECT 1 FROM course_practice_phrases p JOIN legos g USING (course_code, seed_number, lego_index)) THEN
+    RAISE EXCEPTION 'a listed LEGO already has phrases'; END IF;
+  IF EXISTS (SELECT 1 FROM add_rows a JOIN course_practice_phrases p ON p.id=a.id) THEN RAISE EXCEPTION 'a phrase id is taken'; END IF;
+  IF EXISTS (SELECT 1 FROM add_rows a LEFT JOIN legos g USING (course_code, seed_number, lego_index) WHERE g.seed_number IS NULL) THEN RAISE EXCEPTION 'a row is not under a listed LEGO'; END IF;
+END $$;
+
+-- The backup is the list of what was added: nothing existed under these LEGOs before.
+CREATE TABLE backup_cym_aran_written_494 AS SELECT id, course_code, seed_number, lego_index FROM add_rows;
+REVOKE ALL ON backup_cym_aran_written_494 FROM anon, authenticated;
+
+INSERT INTO content_edit_events (course_code, surface, operation, actor_kind, actor_id, actor_label, actor_verified, actor_role, scope, detail)
+SELECT c, 'sql:job-494 weave-cym-aran-written', 'weave-aran-written-phrases', 'agent', 'claude-job-494-aran-written',
+       'agent (claude-job-494-aran-written)', false, 'creator',
+       jsonb_build_object('lego_keys', (SELECT jsonb_agg(seed_number||':'||lego_index ORDER BY seed_number) FROM legos WHERE course_code=c),
+                          'phrase_ids', (SELECT jsonb_agg(id ORDER BY id) FROM add_rows WHERE course_code=c)),
+       jsonb_build_object('ruling', 'Job #494 (Aran 2026-10-13): Aran wrote the Welsh practice phrases for the new LEGOs that had none; English by the agent.',
+                          'author_welsh', 'Aran', 'backup', 'backup_cym_aran_written_494')
+FROM (VALUES ('cym_nv2_for_eng'), ('cym_sv2_for_eng')) v(c);
+CREATE TEMP TABLE ev AS SELECT course_code, id FROM content_edit_events WHERE detail->>'backup'='backup_cym_aran_written_494';
+
+INSERT INTO course_practice_phrases (id, course_code, seed_number, lego_index, position, known_text, target_text, word_count, lego_count,
+  phrase_role, introduce, connected_lego_ids, lego_position, metadata, status, version, last_edit_event_id)
+SELECT a.id, a.course_code, a.seed_number, a.lego_index, a.position, a.known_text, a.target_text, a.word_count, a.lego_count,
+  a.phrase_role, a.introduce, '{}'::text[], a.lego_position, a.metadata, 'draft', 1, ev.id
+FROM add_rows a JOIN ev USING (course_code);
+
+CREATE TEMP TABLE post AS SELECT * FROM pg_temp.fp();
+SELECT 'AFTER' k, * FROM post ORDER BY t;
+DO $$ BEGIN
+  IF EXISTS (SELECT * FROM pre EXCEPT SELECT * FROM post) OR EXISTS (SELECT * FROM post EXCEPT SELECT * FROM pre) THEN
+    RAISE EXCEPTION 'CHECK FAILED: live Welsh, master canonical_seeds or sandbox LEGOs changed'; END IF;
+  IF (SELECT count(*) FROM course_practice_phrases p JOIN add_rows a USING (id)) <> (SELECT count(*) FROM add_rows) THEN RAISE EXCEPTION 'CHECK FAILED: rows missing'; END IF;
+  IF (SELECT count(*) FROM ev) <> 2 THEN RAISE EXCEPTION 'CHECK FAILED: edit events'; END IF;
+  RAISE NOTICE 'ALL CHECKS PASSED';
+END $$;
+SELECT a.course_code, a.id, a.phrase_role, a.target_text, a.known_text FROM add_rows a ORDER BY a.id;
+SELECT 'finishing with' k, :'finish' v;
+:finish;
+SELECT :'finish' = 'COMMIT' AS do_refresh \gset
+\if :do_refresh
+REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index;
+\endif

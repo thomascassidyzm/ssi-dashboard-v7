@@ -27,7 +27,7 @@ let dir
 
 function door({ failFirst = 0 } = {}) {
   clipLib.useClipLibrary(clipLib.memoryClipLibrary([]))   // blind library: every line looks missing
-  castGate.useCastRows([])
+  castGate.useCastRows(null)  // the cast gate is not what this file tests
   const nodeFetch = require('node-fetch')
   const mod = require.cache[require.resolve('node-fetch')]
   const original = mod.exports

@@ -28,8 +28,12 @@
  * end to end without a provider. Nothing here spends a character on its own.
  */
 const chain = require('./chain-context.cjs')
+const trialMode = require('./audio-trial-mode.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'text', 'purpose', 'requestedBy']
+
+/** Trial renders may slow a read natively (job #751, Tom 2026-10-12): 0.7-1.0 of the voice's pace. */
+const TRIAL_SPEED_MIN = 0.7, TRIAL_SPEED_MAX = 1.0
 
 class RenderRequestError extends Error {
   constructor(message, status = 400, code = 'BAD_REQUEST') { super(message); this.status = status; this.code = code }
@@ -50,6 +54,10 @@ function validate(input) {
     voiceId: input.voiceId ? String(input.voiceId) : null,
     legoId: input.legoId ? String(input.legoId) : null,
     dryRun: !!input.dryRun,
+    // TRIAL (job #748, services/shared/audio-trial-mode.cjs): skip the voice gates, store apart from every course, link nothing.
+    trial: input.trial === true,
+    // TRIAL ONLY (job #751): a native speed for the provider (Cartesia generation_config.speed) instead of a time-stretch. Null = the voice's own speed.
+    speed: input.speed == null ? null : Number(input.speed),
     // Answer only with a clip in THIS voice. A two-voice phrase's male and female
     // slots are told apart by voice alone; any-voice reuse files one in the other.
     // DEFAULT ON (job #944): reuse matches voice identity; only an explicit voiceBound:false opts out.
@@ -64,6 +72,11 @@ function validate(input) {
     // job Tom has approved (tools/tts-cap.cjs approve) spends from its own
     // allowance up to the 300k ceiling instead of the automatic 100k (job #913).
     job: input.job ? String(input.job).slice(0, 100) : null,
+  }
+  if (out.trial && (out.replaceAudioId || out.spokenText || out.legoId)) throw new RenderRequestError('a trial render connects to nothing — replaceAudioId, spokenText and legoId do not apply', 400, 'TRIAL_NO_LINKS')
+  if (out.speed != null) {
+    if (!out.trial) throw new RenderRequestError('speed is a trial-only option — a course render speaks at the course voice\'s own speed', 400, 'SPEED_TRIAL_ONLY')
+    if (!(out.speed >= TRIAL_SPEED_MIN && out.speed <= TRIAL_SPEED_MAX)) throw new RenderRequestError(`speed must be between ${TRIAL_SPEED_MIN} and ${TRIAL_SPEED_MAX}`, 400, 'BAD_SPEED')
   }
   if (out.job && !/#\d+/.test(out.job)) throw new RenderRequestError('job names the job the way the estate writes it, e.g. "#913"')
   if (out.spokenText && !out.replaceAudioId) throw new RenderRequestError('spokenText only applies to a re-record — name replaceAudioId')
@@ -91,6 +104,7 @@ function validate(input) {
  * had to link 43 by hand). Repoint only — the previous clip is never deleted.
  */
 async function bindPresentation(req, result, deps) {
+  trialMode.assertNotTrial(result.audioId, result.s3Key)
   if (req.role !== 'presentation' || !req.legoId || req.dryRun || !deps.linkLego || !result.audioId) return result
   const { linked } = await deps.linkLego({ courseCode: req.courseCode, legoId: req.legoId, audioId: result.audioId })
   return { ...result, legoLinked: !!linked }
@@ -99,6 +113,7 @@ async function bindPresentation(req, result, deps) {
 async function renderClip(input, deps) {
   const req = validate(input)
   return chain.run(`render:${req.requestedBy}`, async () => {
+    if (req.trial) return trialRender(req, deps)
     if (req.replaceAudioId) return rerecord(req, deps)
     const r = await deps.resolve(req)
     const ident = { ...req, language: r.language, voiceId: r.voiceId }
@@ -107,7 +122,16 @@ async function renderClip(input, deps) {
     const linked = await deps.link(ident)
     if (linked) return bindPresentation(req, { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
 
-    const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, job: req.job } }
+    // DICE AND SPLICE (job #516, Tom 2026-10-11): an English-known presentation intro is assembled from existing Charlotte clips
+    // (a missing piece is rendered once, here, and shared) — never rendered whole, which the voicing policy refuses. null = not
+    // a spliceable intro, so the normal path carries on.
+    if (req.role === 'presentation' && deps.spliceIntro) {
+      const spliced = await deps.spliceIntro({ ...req, ...ident })
+      if (spliced) return bindPresentation(req, { purpose: req.purpose, requestedBy: req.requestedBy, ...spliced }, deps)
+    }
+
+    // slotRole: the same words already in this course role in another voice make this a re-voice — a re-record (Tom 2026-10-11).
+    const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job } }
     // 2 + 3. the door → guard → one provider attempt
     const out = await deps.speak(req.text, r.provider, cfg, 1)
     if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, purpose: req.purpose, requestedBy: req.requestedBy }
@@ -120,6 +144,27 @@ async function renderClip(input, deps) {
     const stored = await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
     return bindPresentation(req, { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
   })
+}
+
+/**
+ * A TRIAL render: no library link, no splice, no course row, no pointer. The door runs with door.trial (gates off, cap on);
+ * the clip is stored apart by deps.storeTrial and comes back as trial_<UUID>.
+ */
+async function trialRender(req, deps) {
+  trialMode.assertTrialOpen(deps.now ? deps.now() : new Date())
+  const r = await deps.resolve(req)
+  const ident = { ...req, language: r.language, voiceId: r.voiceId }
+  // An EXPLICIT speed (1 included: the voice's own settings.speed may be 0.8) is a different recording of the same words, so the
+  // library (keyed on text+voice) must not answer it: door.skipLibrary. Unset keeps the normal trial path, library hit and all.
+  const slowed = req.speed != null
+  // Only Cartesia takes a native speed; tts-service never sends it to ElevenLabs, so honouring it would echo a speed we did not buy.
+  if (slowed && r.provider !== 'cartesia') throw new RenderRequestError(`native trial speed is Cartesia-only — ${r.provider} voices cannot take speed ${req.speed}`, 400, 'SPEED_PROVIDER_UNSUPPORTED')
+  const cfg = { ...r.providerConfig, ...(slowed ? { speed: req.speed } : {}), door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, skipLibrary: slowed, job: req.job } }
+  const out = await deps.speak(req.text, r.provider, cfg, 1)
+  const echo = { trial: true, ...(slowed ? { speed: req.speed } : {}), purpose: req.purpose, requestedBy: req.requestedBy, voiceId: r.voiceId, language: r.language }
+  if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
+  const stored = await deps.storeTrial({ ...ident, speed: slowed ? req.speed : null, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+  return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...stored, ...echo }
 }
 
 /**
@@ -138,7 +183,8 @@ async function rerecord(req, deps) {
   const r = await deps.resolve({ ...req, language: row.language, voiceId: row.voice_id })
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   // voiceBound + replacing: the door can only answer with a same-voice clip other than the one being replaced.
-  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.s3_key], job: req.job } }
+  // forceRerecord: this IS a re-record whatever words are spoken (spokenText) — it needs Tom's permission (Tom 2026-10-11).
+  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.id, row.s3_key], forceRerecord: true, job: req.job } }
   const out = await deps.speak(said, r.provider, cfg, 1)
   const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }

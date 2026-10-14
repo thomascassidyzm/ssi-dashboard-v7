@@ -119,9 +119,6 @@ const STT_CALLERS = {
   'services/production-api.cjs': 'human-recording',  // recordist upload text check, advisory
   'services/voicelab-playground/server.cjs': 'infra',
   'services/voicelab/runner.cjs': 'infra',
-  'tools/a108/a133-artefact-rule-render-batch.cjs': 'report',
-  'tools/a108/a133-chain-sample-batch.cjs': 'report',
-  'tools/a108/a133-phrase-test.cjs': 'report',
   'tools/a108/isl-ell-est-render-verify.cjs': 'report',
   'tools/audio-word-loss-scan.cjs': 'report',
   'tools/band-verify-sample.cjs': 'report',

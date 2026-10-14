@@ -1076,7 +1076,7 @@ async function getCourseContentStats(courseCode) {
  *
  * @returns {Promise<Object>} { courseCode: { seeds, completedSeeds, legos, baskets }, ... }
  */
-async function getAllCourseContentStats() {
+async function computeAllCourseContentStats() {
   if (!supabase) throw new Error('Supabase not initialized')
 
   // Get all courses with seed_count (release target)
@@ -1116,6 +1116,38 @@ async function getAllCourseContentStats() {
   }))
 
   return result
+}
+
+// Measured 2026-10-12 against the live database: computeAllCourseContentStats() fans out
+// ~5 PostgREST queries per course (156 courses) and took 36.3 s per call; three routes
+// (/api/production/course-stats, /api/courses?stats=true, the course list) and the
+// orchestrator call it, so every dashboard load paid that. A single GROUP BY is NOT the
+// answer: course_practice_phrases GROUP BY times out (>120 s) on the live table.
+// So the whole result is served stale-while-revalidate: fresh for STATS_FRESH_MS, then
+// the stale copy is returned instantly while ONE background recompute refreshes it, and
+// concurrent callers share the single in-flight recompute. Counts on a listing page
+// being up to a minute behind is the trade; nothing here is a source of truth for writes.
+const STATS_FRESH_MS = Number(process.env.COURSE_STATS_FRESH_MS || 60000)
+const statsCache = { value: null, at: 0, inflight: null, compute: computeAllCourseContentStats }
+
+function refreshAllCourseContentStats() {
+  if (!statsCache.inflight) {
+    statsCache.inflight = Promise.resolve()
+      .then(() => statsCache.compute())
+      .then(value => { statsCache.value = value; statsCache.at = Date.now(); return value })
+      .finally(() => { statsCache.inflight = null })
+  }
+  return statsCache.inflight
+}
+
+async function getAllCourseContentStats() {
+  if (statsCache.value) {
+    if (Date.now() - statsCache.at >= STATS_FRESH_MS) {
+      refreshAllCourseContentStats().catch(() => {}) // stale served; a failed refresh keeps the old copy
+    }
+    return statsCache.value
+  }
+  return refreshAllCourseContentStats()
 }
 
 /**
@@ -2018,6 +2050,7 @@ module.exports = {
   // Content stats
   getCourseContentStats,
   getAllCourseContentStats,
+  _statsCacheForTest: statsCache,
   getIntroductionsByCourse,
 
   // Documentation content

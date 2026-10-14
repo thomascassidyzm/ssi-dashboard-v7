@@ -523,7 +523,6 @@ async function fetchMissingAudio() {
       `${baseUrl}/api/production/${props.courseCode}/audio-pipeline/missing`,
       {
         headers: {
-          'ngrok-skip-browser-warning': 'true'
         }
       }
     )
@@ -571,7 +570,6 @@ async function fetchUngeneratable() {
       `${baseUrl}/api/production/${props.courseCode}/audio-pipeline/ungeneratable`,
       {
         headers: {
-          'ngrok-skip-browser-warning': 'true'
         }
       }
     )
@@ -598,7 +596,6 @@ async function fetchOrphanLegos() {
       `${baseUrl}/api/production/${props.courseCode}/audio-pipeline/orphan-legos`,
       {
         headers: {
-          'ngrok-skip-browser-warning': 'true'
         }
       }
     )
@@ -628,7 +625,6 @@ async function fixOrphanLegos() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true'
         },
         body: JSON.stringify({ dryRun: false })
       }

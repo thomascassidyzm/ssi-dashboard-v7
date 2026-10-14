@@ -7,9 +7,6 @@
         @change="switchEnvironment"
         class="env-select"
       >
-        <option value="tom">Tom's Machine</option>
-        <option value="kai">Kai's Machine</option>
-        <option value="ssi">SSi Machine</option>
         <option value="watson">SSi Machine (Cloud)</option>
         <option value="api">API Server</option>
         <option v-if="ENVIRONMENTS.preview" value="preview">Preview backend</option>
@@ -108,7 +105,7 @@ const repairBranch = ref('main')
 const repairing = ref(false)
 const showRepairConfirm = ref(false)
 
-// Any machine that isn't this browser's own localhost is deployable — the ngrok string
+// Any machine that isn't this browser's own localhost is deployable — the old ngrok string
 // test used to hide Deploy on watson-1, which is now the default environment.
 const isRemote = computed(() => {
   const url = ENVIRONMENTS[selectedEnv.value]?.url || ''
@@ -116,7 +113,7 @@ const isRemote = computed(() => {
 })
 
 const currentApiUrl = computed(() => {
-  return ENVIRONMENTS[selectedEnv.value]?.url || ENVIRONMENTS.tom.url
+  return ENVIRONMENTS[selectedEnv.value]?.url || ENVIRONMENTS[DEFAULT_ENV].url
 })
 
 onMounted(() => {
@@ -210,12 +207,11 @@ async function switchEnvironment() {
 // is either a non-2xx or the browser giving up (refused, timed out, CORS).
 async function probeOnce() {
   const url = currentApiUrl.value
-  // ngrok proxy uses /health, local API uses /api/health
+  // the remote API answers /health, the local API /api/health
   const healthPath = selectedEnv.value === 'api' ? '/api/health' : '/health'
   try {
     const response = await fetch(`${url}${healthPath}`, {
       headers: {
-        'ngrok-skip-browser-warning': 'true'
       },
       signal: AbortSignal.timeout(5000)
     })
@@ -286,7 +282,7 @@ async function deploy() {
     const url = currentApiUrl.value
     const response = await fetch(`${url}/api/deploy`, {
       method: 'POST',
-      headers: { 'ngrok-skip-browser-warning': 'true', 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({}),
       signal: AbortSignal.timeout(120000)
     })
@@ -332,7 +328,7 @@ async function runRepair() {
     const url = currentApiUrl.value
     const response = await fetch(`${url}/api/deploy/repair`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ repair_token: token, confirm: true, branch: repairBranch.value }),
       signal: AbortSignal.timeout(300000)
     })

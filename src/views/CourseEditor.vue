@@ -1547,7 +1547,6 @@ async function generateBaskets() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true'
       },
       body: JSON.stringify({
         // Optional: specify seed range

@@ -235,7 +235,6 @@ const fetchAudioUrl = async (text: string, lang: string, role: string): Promise<
       `text=${encodeURIComponent(text)}&lang=${encodeURIComponent(lang)}&role=${encodeURIComponent(role)}`,
       {
         headers: {
-          'ngrok-skip-browser-warning': 'true'
         }
       }
     );

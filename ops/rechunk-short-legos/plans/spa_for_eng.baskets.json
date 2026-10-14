@@ -1,0 +1,1027 @@
+{
+ "course": "spa_for_eng",
+ "seeds": {
+  "8": {
+   "seed": 8,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "to explain",
+     "target": "explicar"
+    },
+    {
+     "idx": 2,
+     "known": "what I mean",
+     "target": "lo que quiero decir"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "what I mean",
+      "target": "lo que quiero decir",
+      "components": [
+       {
+        "known": "what I mean",
+        "target": "lo que quiero decir"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "spa_for_eng:S0008L02B01",
+       "role": "build",
+       "known": "What I mean",
+       "target": "Lo que quiero decir",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Exact LEGO alone, a natural fragment that extends into a sentence.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is the bare LEGO. A BUILD needs the LEGO plus one to three other taught LEGOs."
+      },
+      {
+       "id": "spa_for_eng:S0008L02B02",
+       "role": "build",
+       "known": "To explain what I mean",
+       "target": "Explicar lo que quiero decir",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Short, accurate fragment using the taught 'explicar'.",
+       "ref": "P2",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural fragment that extends into a full sentence. Both sides are taught, the Spanish is grammatical and the meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "spa_for_eng:S0008L02B03",
+       "role": "build",
+       "known": "To remember what I mean",
+       "target": "Recordar lo que quiero decir",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Taught 'recordar' plus the LEGO. The target matches the known and is grammatical.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Remember what I mean' is semantically odd; you remember what you meant. It is not natural on either side.",
+       "keep": false,
+       "why": "Opus: bad — 'Remember what I mean' is semantically odd; you remember what you meant. It is not natural on either side."
+      },
+      {
+       "id": "spa_for_eng:S0008L02B04",
+       "role": "build",
+       "known": "I'm going to explain what I mean today",
+       "target": "Voy a explicar lo que quiero decir hoy",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Short build with voy a, explicar and hoy. The target is correct and natural.",
+       "ref": "P4",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, grammatical and exact. It uses only taught LEGOs (voy a, explicar, hoy).",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "spa_for_eng:S0008L02U01",
+       "role": "use",
+       "known": "I'm going to try to explain what I mean",
+       "target": "Voy a intentar explicar lo que quiero decir",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "This is the seed sentence. It is accurate, natural and a single sentence.",
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "The seed sentence: one complete, natural sentence with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "spa_for_eng:S0008L02U02",
+       "role": "use",
+       "known": "I'm trying to explain what I mean",
+       "target": "Estoy intentando explicar lo que quiero decir",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "'Estoy intentando' is taught, and the sentence is natural and exact.",
+       "ref": "P6",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and grammatical. Estoy intentando + infinitive is taught, and the meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "spa_for_eng:S0008L02U04",
+       "role": "use",
+       "known": "I want to try to explain what I mean now",
+       "target": "Quiero intentar explicar lo que quiero decir ahora",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "The repeated 'quiero' is normal Spanish. The sentence is grammatical, natural and matches the known.",
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. The Spanish is grammatical and the meaning matches exactly. The repeated quiero is fine.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I want to explain what I mean",
+       "target": "Quiero explicar lo que quiero decir",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, grammatical and exact. All material is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "To try to explain what I mean",
+       "target": "Intentar explicar lo que quiero decir",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural infinitive fragment that extends into a full sentence. The meaning matches exactly.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I'm trying to remember what I mean",
+       "target": "Estoy intentando recordar lo que quiero decir",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Trying to remember what I mean' is semantically odd and not tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — 'Trying to remember what I mean' is semantically odd and not tier-1 natural."
+      },
+      {
+       "role": "build",
+       "known": "What I mean today",
+       "target": "Lo que quiero decir hoy",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'What I mean today' is an odd fragment that does not extend naturally.",
+       "keep": false,
+       "why": "Opus: bad — 'What I mean today' is an odd fragment that does not extend naturally."
+      },
+      {
+       "role": "build",
+       "known": "I'm going to remember what I mean",
+       "target": "Voy a recordar lo que quiero decir",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'I'm going to remember what I mean' is semantically odd and unnatural.",
+       "keep": false,
+       "why": "Opus: bad — 'I'm going to remember what I mean' is semantically odd and unnatural."
+      },
+      {
+       "role": "build",
+       "known": "What I mean now",
+       "target": "Lo que quiero decir ahora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'What I mean now' is a doubtful fragment; adding 'now' adds no clear natural extension. Unsure, so BAD.",
+       "keep": false,
+       "why": "Opus: bad — 'What I mean now' is a doubtful fragment; adding 'now' adds no clear natural extension. Unsure, so BAD."
+      },
+      {
+       "role": "use",
+       "known": "I want to explain what I mean with you now",
+       "target": "Quiero explicar lo que quiero decir contigo ahora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Explain what I mean with you' is unnatural; English says 'to you'. Contigo is also odd with explicar.",
+       "keep": false,
+       "why": "Opus: bad — 'Explain what I mean with you' is unnatural; English says 'to you'. Contigo is also odd with explicar."
+      },
+      {
+       "role": "use",
+       "known": "I'm going to try to remember what I mean today",
+       "target": "Voy a intentar recordar lo que quiero decir hoy",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Try to remember what I mean' is semantically odd and not natural.",
+       "keep": false,
+       "why": "Opus: bad — 'Try to remember what I mean' is semantically odd and not natural."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to explain what I mean with someone else",
+       "target": "Estoy intentando explicar lo que quiero decir con otra persona",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Explain what I mean with someone else' is unnatural phrasing on both sides.",
+       "keep": false,
+       "why": "Opus: bad — 'Explain what I mean with someone else' is unnatural phrasing on both sides."
+      },
+      {
+       "role": "use",
+       "known": "I'm going to explain what I mean as hard as I can",
+       "target": "Voy a explicar lo que quiero decir todo lo que pueda",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Explain as hard as I can' is clunky in English, and 'explicar ... todo lo que pueda' is unnatural in Spanish.",
+       "keep": false,
+       "why": "Opus: bad — 'Explain as hard as I can' is clunky in English, and 'explicar ... todo lo que pueda' is unnatural in Spanish."
+      },
+      {
+       "role": "use",
+       "known": "I want to try to remember what I mean today",
+       "target": "Quiero intentar recordar lo que quiero decir hoy",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Try to remember what I mean' is semantically odd and not natural.",
+       "keep": false,
+       "why": "Opus: bad — 'Try to remember what I mean' is semantically odd and not natural."
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to remember what I mean now",
+       "target": "Estoy intentando recordar lo que quiero decir ahora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Trying to remember what I mean' is semantically odd and not natural.",
+       "keep": false,
+       "why": "Opus: bad — 'Trying to remember what I mean' is semantically odd and not natural."
+      },
+      {
+       "role": "use",
+       "known": "I'm going to try to explain what I mean today",
+       "target": "Voy a intentar explicar lo que quiero decir hoy",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. Grammatical and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm trying to explain what I mean now",
+       "target": "Estoy intentando explicar lo que quiero decir ahora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence. Grammatical and exact.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'm going to try to remember what I mean now",
+       "target": "Voy a intentar recordar lo que quiero decir ahora",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P22",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Try to remember what I mean' is semantically odd and not natural.",
+       "keep": false,
+       "why": "Opus: bad — 'Try to remember what I mean' is semantically odd and not natural."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 5,
+     "setGates": {}
+    }
+   }
+  },
+  "427": {
+   "seed": 427,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "you thought",
+     "target": "pensaras"
+    },
+    {
+     "idx": 2,
+     "known": "bored",
+     "target": "aburridos"
+    }
+   ],
+   "legos": {
+    "1": {
+     "lego": {
+      "idx": 1,
+      "type": "M",
+      "known": "you thought",
+      "target": "pensaras",
+      "components": [
+       {
+        "known": "you thought",
+        "target": "pensabas"
+       },
+       {
+        "known": "subjunctive",
+        "target": "pensaras"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "spa_for_eng:S0427L01B01",
+       "role": "build",
+       "known": "you thought",
+       "target": "pensaras",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The bare 'you thought' is also the gloss of 'pensabas', so one known prompt maps to two targets, which breaks ZUT.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is the bare LEGO with no other LEGO, so it is not a BUILD. 'You thought' alone would normally map to pensaste/pensabas, so the prompt doesn't reliably cue the subjunctive.",
+       "keep": false,
+       "why": "Sonnet: bad — The bare 'you thought' is also the gloss of 'pensabas', so one known prompt maps to two targets, which breaks ZUT."
+      },
+      {
+       "id": "spa_for_eng:S0427L01B02",
+       "role": "build",
+       "known": "they don't want you to think",
+       "target": "no les gustaría que pensaras",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known says 'don't want', but the target 'no les gustaría' means 'wouldn't like', so the two sides don't match.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Meaning mismatch: 'no les gustaría' means 'they wouldn't like', not 'they don't want'.",
+       "keep": false,
+       "why": "Sonnet: bad — The known says 'don't want', but the target 'no les gustaría' means 'wouldn't like', so the two sides don't match."
+      },
+      {
+       "id": "spa_for_eng:S0427L01B03",
+       "role": "build",
+       "known": "if you thought",
+       "target": "si pensaras",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'If you thought' could equally be 'si pensabas', so the prompt is ambiguous and the phrase is unsafe.",
+       "ref": "P3",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct si + imperfect subjunctive, uses taught 'si', and extends naturally into a full sentence.",
+       "keep": false,
+       "why": "Sonnet: bad — 'If you thought' could equally be 'si pensabas', so the prompt is ambiguous and the phrase is unsafe."
+      },
+      {
+       "id": "spa_for_eng:S0427L01U01",
+       "role": "use",
+       "known": "they wouldn't like you to think they're unhappy",
+       "target": "no les gustaría que pensaras que están infelices",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "'no les gustaría' = 'wouldn't like', 'que pensaras' = 'you to think', and 'que están infelices' = 'they're unhappy'. All the vocabulary is taught and the sentence is grammatical.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'Están infelices' is doubtful; 'infeliz' normally takes 'ser' ('son infelices'). Not clearly tier 1.",
+       "keep": false,
+       "why": "Opus: bad — 'Están infelices' is doubtful; 'infeliz' normally takes 'ser' ('son infelices'). Not clearly tier 1."
+      },
+      {
+       "id": "spa_for_eng:S0427L01U04",
+       "role": "use",
+       "known": "they didn't want you to think about it",
+       "target": "no querían que pensaras en eso",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "'no querían que pensaras en eso' matches 'they didn't want you to think about it' exactly and is natural.",
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and accurate. 'Pensar en eso' matches the taught 'think about it'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "id": "spa_for_eng:S0427L01U06",
+       "role": "use",
+       "known": "they wouldn't want you to think about this",
+       "target": "no les gustaría que pensaras en esto",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known says 'wouldn't want', but the target 'no les gustaría' means 'wouldn't like', so it doesn't match.",
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Meaning mismatch: 'no les gustaría' means 'wouldn't like', not 'wouldn't want'.",
+       "keep": false,
+       "why": "Sonnet: bad — The known says 'wouldn't want', but the target 'no les gustaría' means 'wouldn't like', so it doesn't match."
+      },
+      {
+       "role": "build",
+       "known": "I'd like you to think",
+       "target": "me gustaría que pensaras",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct me gustaría + que + subjunctive. Short and extendable.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I wouldn't like you to think",
+       "target": "no me gustaría que pensaras",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural, built from the taught chunk 'no me gustaría'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "we'd like you to think",
+       "target": "nos gustaría que pensaras",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct; 'nos gustaría' is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "they would like you to think",
+       "target": "les gustaría que pensaras",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct; 'les gustaría' is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "I wanted you to think",
+       "target": "quería que pensaras",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct sequence of tenses: quería que + imperfect subjunctive.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "they didn't want you to think",
+       "target": "no querían que pensaras",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct; 'no querían' is taught.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "I wouldn't like you to think about it",
+       "target": "no me gustaría que pensaras en eso",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural complete sentence with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'd like you to think that it's easy",
+       "target": "me gustaría que pensaras que es fácil",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, grammatical and an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I wanted you to think about it yesterday",
+       "target": "quería que pensaras en eso ayer",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, and the same scope of 'yesterday' holds in both languages.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "they wouldn't like you to think that it's a problem",
+       "target": "no les gustaría que pensaras que es un problema",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, with an exact match.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I'd like you to think carefully",
+       "target": "me gustaría que pensaras con cuidado",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural; 'con cuidado' = 'carefully' is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "they didn't want you to think that it was difficult",
+       "target": "no querían que pensaras que era difícil",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct tense sequence ('era') and natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I wouldn't like you to think that I'm too busy",
+       "target": "no me gustaría que pensaras que estoy demasiado ocupado",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural and exact; 'demasiado ocupado' is taught.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "we'd like you to think about it before Thursday",
+       "target": "nos gustaría que pensaras en eso antes del jueves",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural; 'antes del jueves' is taught. Exact match.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      },
+      {
+       "role": "use",
+       "known": "I'd like you to think about this",
+       "target": "me gustaría que pensaras en esto",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural; 'esto', 'en' and 'about this' are taught. Exact match.",
+       "keep": false,
+       "why": "good, but over the USE cap of 8"
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 8,
+     "setGates": {}
+    }
+   }
+  },
+  "529": {
+   "seed": 529,
+   "kind": "topup",
+   "snapshot": [
+    {
+     "idx": 1,
+     "known": "can you all",
+     "target": "podéis"
+    },
+    {
+     "idx": 2,
+     "known": "to put your hands up",
+     "target": "levantar las manos"
+    }
+   ],
+   "legos": {
+    "2": {
+     "lego": {
+      "idx": 2,
+      "type": "M",
+      "known": "to put your hands up",
+      "target": "levantar las manos",
+      "components": [
+       {
+        "known": "to put up",
+        "target": "levantar"
+       },
+       {
+        "known": "your hands",
+        "target": "las manos"
+       }
+      ],
+      "is_new": true,
+      "change": "keep"
+     },
+     "served": {
+      "sonnet": "claude-sonnet-5-5",
+      "opus": "claude-opus-5-5"
+     },
+     "items": [
+      {
+       "id": "spa_for_eng:S0529L02B01",
+       "role": "build",
+       "known": "to put your hands up",
+       "target": "levantar las manos",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "The LEGO itself, a clean one-to-one mapping.",
+       "ref": "P1",
+       "round": 1,
+       "opus": false,
+       "opusReason": "This is only the bare LEGO. A BUILD must combine the LEGO with one to three other taught LEGOs.",
+       "keep": false,
+       "why": "Opus: bad — This is only the bare LEGO. A BUILD must combine the LEGO with one to three other taught LEGOs."
+      },
+      {
+       "id": "spa_for_eng:S0529L02B02",
+       "role": "build",
+       "known": "we need to put our hands up",
+       "target": "necesitamos levantar las manos",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'our hands' and 'your hands' would both map to 'las manos', which breaks one prompt, one target. The prompt also drifts from the LEGO's exact known wording.",
+       "ref": "P2",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'our hands' is not a taught gloss, because only 'your hands' maps to 'las manos', so the known side is not tileable.",
+       "keep": false,
+       "why": "Sonnet: bad — 'our hands' and 'your hands' would both map to 'las manos', which breaks one prompt, one target. The prompt also drifts from the LEGO's exact known wording."
+      },
+      {
+       "id": "spa_for_eng:S0529L02B03",
+       "role": "build",
+       "known": "I'm going to put my hands up",
+       "target": "voy a levantar las manos",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "'my hands' and 'your hands' both map to 'las manos', which breaks one prompt, one target.",
+       "ref": "P3",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'my hands' is not a taught gloss, because only 'your hands' maps to 'las manos', so the known side is not tileable.",
+       "keep": false,
+       "why": "Sonnet: bad — 'my hands' and 'your hands' both map to 'las manos', which breaks one prompt, one target."
+      },
+      {
+       "id": "spa_for_eng:S0529L02B04",
+       "role": "build",
+       "known": "why don't you want to put your hands up",
+       "target": "¿por qué no quieres levantar las manos",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The target has an opening ¿ but no closing ?. It also has too many parts for a BUILD.",
+       "ref": "P4",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The target opens with '¿' but has no closing '?', so the Spanish punctuation is malformed.",
+       "keep": false,
+       "why": "Sonnet: bad — The target has an opening ¿ but no closing ?. It also has too many parts for a BUILD."
+      },
+      {
+       "id": "spa_for_eng:S0529L02U01",
+       "role": "use",
+       "known": "can you all put your hands up?",
+       "target": "¿podéis levantar las manos?",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known has 'all' but the target drops 'todos', so the target does not say exactly what the known says.",
+       "ref": "P5",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Grammatical and natural, it matches the known exactly ('can you all' = 'podéis') and is a complete sentence.",
+       "keep": false,
+       "why": "Sonnet: bad — The known has 'all' but the target drops 'todos', so the target does not say exactly what the known says."
+      },
+      {
+       "id": "spa_for_eng:S0529L02U02",
+       "role": "use",
+       "known": "put your hands up here",
+       "target": "levantar las manos aquí",
+       "source": "kept",
+       "sonnet": false,
+       "sonnetReason": "The known is an imperative, but the target is a bare infinitive, which is not natural and does not match.",
+       "ref": "P6",
+       "round": 1,
+       "opus": false,
+       "opusReason": "The known is an imperative but the target is a bare infinitive. It is not a proper sentence and the meanings do not match.",
+       "keep": false,
+       "why": "Sonnet: bad — The known is an imperative, but the target is a bare infinitive, which is not natural and does not match."
+      },
+      {
+       "id": "spa_for_eng:S0529L02U03",
+       "role": "use",
+       "known": "why don't you want to put your hands up right now?",
+       "target": "¿por qué no quieres levantar las manos ahora mismo?",
+       "source": "kept",
+       "sonnet": true,
+       "sonnetReason": "Natural, grammatical, one sentence, and the target says exactly what the known says.",
+       "ref": "P7",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural, complete question, correctly rendered.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "you want to put your hands up",
+       "target": "quieres levantar las manos",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P8",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A short, correct fragment that extends naturally into a sentence.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "you're going to put your hands up",
+       "target": "vas a levantar las manos",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P9",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural, built from taught 'vas a'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "you need to put your hands up",
+       "target": "necesitas levantar las manos",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P10",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct, built from taught 'necesitas'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "you can put your hands up",
+       "target": "puedes levantar las manos",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P11",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "build",
+       "known": "you should put your hands up",
+       "target": "deberías levantar las manos",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P12",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct and natural.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "build",
+       "known": "you don't want to put your hands up",
+       "target": "no quieres levantar las manos",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P13",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Correct; the 'no' sits before the verb, as it should.",
+       "keep": false,
+       "why": "good, but over the BUILD cap of 4"
+      },
+      {
+       "role": "use",
+       "known": "why do you want to put your hands up?",
+       "target": "¿por qué quieres levantar las manos?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P14",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural, complete question.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "do you want to put your hands up now?",
+       "target": "¿quieres levantar las manos ahora?",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P15",
+       "round": 1,
+       "opus": true,
+       "opusReason": "A natural, complete question.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "you need to put your hands up before you leave",
+       "target": "necesitas levantar las manos antes de que te vayas",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P16",
+       "round": 1,
+       "opus": false,
+       "opusReason": "Grammatical, but the scenario is semantically odd and not tier-1 natural.",
+       "keep": false,
+       "why": "Opus: bad — Grammatical, but the scenario is semantically odd and not tier-1 natural."
+      },
+      {
+       "role": "use",
+       "known": "you should put your hands up when there are other people here",
+       "target": "deberías levantar las manos cuando hay otras personas aquí",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P17",
+       "round": 1,
+       "opus": false,
+       "opusReason": "A contrived sentence, possible but clunky, so not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — A contrived sentence, possible but clunky, so not tier 1."
+      },
+      {
+       "role": "use",
+       "known": "you're going to put your hands up as soon as possible",
+       "target": "vas a levantar las manos lo antes posible",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P18",
+       "round": 1,
+       "opus": false,
+       "opusReason": "'You're going to put your hands up as soon as possible' is unnatural as said.",
+       "keep": false,
+       "why": "Opus: bad — 'You're going to put your hands up as soon as possible' is unnatural as said."
+      },
+      {
+       "role": "use",
+       "known": "I think you should put your hands up",
+       "target": "pienso que deberías levantar las manos",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P19",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural advice, correctly rendered with taught 'pienso que'.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "you need to put your hands up again",
+       "target": "necesitas levantar las manos otra vez",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P20",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural (for example, in a class) and correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "you can put your hands up slowly",
+       "target": "puedes levantar las manos despacio",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P21",
+       "round": 1,
+       "opus": true,
+       "opusReason": "Natural, complete and correct.",
+       "keep": true,
+       "why": "both judges good, gate pass"
+      },
+      {
+       "role": "use",
+       "known": "I think you want to put your hands up",
+       "target": "pienso que quieres levantar las manos",
+       "source": "new",
+       "sonnet": true,
+       "ref": "P22",
+       "round": 1,
+       "opus": false,
+       "opusReason": "An odd thing to say, and 'pienso que quieres' is stilted in Spanish; not tier 1.",
+       "keep": false,
+       "why": "Opus: bad — An odd thing to say, and 'pienso que quieres' is stilted in Spanish; not tier 1."
+      }
+     ],
+     "keptBuild": 4,
+     "keptUse": 6,
+     "setGates": {}
+    }
+   }
+  }
+ }
+}

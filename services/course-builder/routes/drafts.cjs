@@ -309,8 +309,9 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
 
       if (draftSeedList.length > 0) {
         // Phrases and LEGOs in one transaction (wipe-seed-teaching.cjs, job #912).
-        try { await wipeSeedTeaching(ctx.supabase, courseCode, draftSeedList); }
-        catch (e) { console.warn(`  Warning: seed cleanup: ${e.message}`); }
+        // Stop on cleanup failure: replacement upserts would leave stale teaching
+        // behind, then discard the drafts needed to retry.
+        await wipeSeedTeaching(ctx.supabase, courseCode, draftSeedList);
 
         console.log(`  Cleaned old LEGOs/phrases for ${draftSeedList.length} drafted seeds`);
       }

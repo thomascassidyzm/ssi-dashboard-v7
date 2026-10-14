@@ -58,7 +58,6 @@ const PUBLIC_BASE = 'https://ssi-audio-stage.s3.eu-west-1.amazonaws.com'
 function ttsConfigFor(voice, courseCode) {
   const base = { voiceId: voice.voice_id, speed: 1.0, courseCode }
   if (voice.provider === 'xai') {
-    base.apiKey = process.env.XAI_API_KEY
     if (!voice.locale) throw new Error(`xAI voice ${voice.voice_id} has no locale — an implicit handle is the bug being tested`)
     base.language = voice.locale
   } else if (voice.provider === 'elevenlabs') {

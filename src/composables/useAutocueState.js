@@ -990,7 +990,6 @@ export function useAutocueState() {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'ngrok-skip-browser-warning': 'true'
             },
             body: JSON.stringify({
               uuid: phrase.id,
@@ -1116,7 +1115,7 @@ export function useAutocueState() {
       const query = params.toString() ? `?${params}` : ''
       const res = await fetch(
         `${baseUrl}/api/production/${courseCode}/recording-script${query}`,
-        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+        { headers: {} }
       )
 
       if (!res.ok) {
@@ -1182,7 +1181,7 @@ export function useAutocueState() {
       // Also load course info
       const courseRes = await fetch(
         `${baseUrl}/api/production/${courseCode}/info`,
-        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+        { headers: {} }
       )
 
       if (courseRes.ok) {
@@ -1224,7 +1223,7 @@ export function useAutocueState() {
       // Fetch recording queue (phrases needing human recording)
       const queueRes = await fetch(
         `${baseUrl}/api/production/${courseCode}/recording/queue`,
-        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+        { headers: {} }
       )
 
       if (queueRes.ok) {
@@ -1250,7 +1249,7 @@ export function useAutocueState() {
       // Get course info from database (not manifest)
       const courseRes = await fetch(
         `${baseUrl}/api/production/${courseCode}/info`,
-        { headers: { 'ngrok-skip-browser-warning': 'true' } }
+        { headers: {} }
       )
 
       if (courseRes.ok) {

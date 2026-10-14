@@ -35,45 +35,76 @@ const fs = require('fs')
 const path = require('path')
 
 const RATIO_LIMIT = 1.2
+// Exit code for "stopped because the character budget / phase8 spend cap was reached" — the only
+// non-zero exit a caller may treat as a clean stop. Every other non-zero exit is a failure.
+const EXIT_BUDGET_CAP = 4
 
 /**
  * The loop, with its I/O injected so it is testable without phase8.
  * post(body) → parsed /generate response. Returns { stopped, passes, spent }.
  */
-async function runDriver({ post, log = () => {}, ledgerSnapshot = async () => null, budgetChars, maxPasses = 5, go = false, base = {} }) {
+async function runDriver({ post, log = () => {}, ledgerSnapshot = async () => null, budgetChars, maxPasses = 5, go = false, partial = false, base = {} }) {
   if (!(Number(budgetChars) > 0)) throw new Error('render-driver: --budget-chars is required (a whole-run character budget); refusing to run without one')
   const plan = await post({ ...base, dryRun: true })
-  log({ event: 'plan', wouldGenerate: plan.wouldGenerate, wouldSpendChars: plan.wouldSpendChars, budgetChars })
+  log({ event: 'plan', wouldGenerate: plan.wouldGenerate, wouldSpendChars: plan.wouldSpendChars, budgetChars, wouldSkipUncast: plan.wouldSkipUncast ?? null, uncast: plan.uncast || [] })
   if (typeof plan.wouldSpendChars !== 'number') return stop('phase8 dry run does not report wouldSpendChars (old service) — refusing to run blind', 0, 0)
   if (!go) return stop('plan only (pass --go to render)', 0, 0)
-  if (plan.wouldGenerate === 0) return stop('nothing to render', 0, 0)
-  if (plan.wouldSpendChars > budgetChars) return stop(`plan needs up to ${plan.wouldSpendChars} chars, budget is ${budgetChars} — raise the budget with a human's approval or narrow --roles`, 0, 0)
+  if (plan.wouldGenerate === 0) return stop('nothing to render', 0, 0, true)
+  // --partial: the budget is a DAY's remaining allowance, not the course's need. Render what fits —
+  // phase8's own cap (budgetChars on every pass) is the hard stop — and let tomorrow's run continue.
+  if (plan.wouldSpendChars > budgetChars && !partial) return stop(`plan needs up to ${plan.wouldSpendChars} chars, budget is ${budgetChars} — raise the budget with a human's approval or narrow --roles`, 0, 0)
 
   let spent = 0
+  // A plan whose lines are ALL ones the cast gate will not render (wouldSpendChars 0)
+  // still gets a pass — the library may fill them — but a pass that then attaches
+  // nothing has finished the course, not failed it (#689).
+  let lastPlan = plan
   for (let pass = 1; pass <= maxPasses; pass++) {
     const remaining = budgetChars - spent
-    if (remaining <= 0) return stop(`budget spent (${spent}/${budgetChars})`, pass - 1, spent)
+    if (remaining <= 0) return stop(`budget spent (${spent}/${budgetChars})`, pass - 1, spent, false, true)
     const r = await post({ ...base, budgetChars: remaining })
     const s = r.spend || {}
     const spentNow = Number(s.spentChars) || 0
     const calls = Number(s.providerCalls) || 0
     const attached = Number(r.attached)
     spent += spentNow
-    log({ event: 'pass', pass, status: r.status, spentChars: spentNow, totalSpent: spent, budgetChars, providerCalls: calls, attached: Number.isFinite(attached) ? attached : null, tripKind: s.tripKind || null, failed: r.failed, ledger: await ledgerSnapshot() })
+    log({ event: 'pass', pass, status: r.status, spentChars: spentNow, totalSpent: spent, budgetChars, providerCalls: calls, attached: Number.isFinite(attached) ? attached : null, tripKind: s.tripKind || null, failed: r.failed, skippedUncast: r.skippedUncast ?? null, ledger: await ledgerSnapshot() })
     if (!r.spend || typeof s.spentChars !== 'number') return stop('phase8 did not report spend for the pass (old service) — refusing to post another', pass, spent)
-    if (r.status === 'spend-capped') return stop(`phase8 capped the pass: ${s.capped}`, pass, spent)
+    if (r.status === 'spend-capped') return stop(`phase8 capped the pass: ${s.capped}`, pass, spent, false, s.tripKind === 'budget')
+    if (Number.isFinite(attached) && attached === 0 && lastPlan.wouldSpendChars === 0 && calls === 0) return stop('done — only lines the cast gate will not render remain, and the library filled none of them', pass, spent, true)
     if (!Number.isFinite(attached) || attached === 0) return stop(`pass ${pass} attached ${Number.isFinite(attached) ? 0 : 'nothing reported'} — the next pass would fill nothing either`, pass, spent)
     if (calls > RATIO_LIMIT * attached) return stop(`pass ${pass} made ${calls} provider calls for ${attached} slots (> ${RATIO_LIMIT}x) — re-rendering what it already has`, pass, spent)
-    if (spent >= budgetChars) return stop(`budget spent (${spent}/${budgetChars})`, pass, spent)
+    if (spent >= budgetChars) return stop(`budget spent (${spent}/${budgetChars})`, pass, spent, false, true)
     const next = await post({ ...base, dryRun: true })
     if (!next.wouldGenerate) return stop('done — nothing left to render', pass, spent, true)
+    lastPlan = next
   }
   return stop(`--max-passes ${maxPasses} reached`, maxPasses, spent)
 
-  function stop(reason, passes, spentChars, done = false) {
-    log({ event: 'stop', reason, passes, spentChars, done })
-    return { stopped: reason, passes, spent: spentChars, done }
+  function stop(reason, passes, spentChars, done = false, capped = false) {
+    log({ event: 'stop', reason, passes, spentChars, done, capped })
+    return { stopped: reason, passes, spent: spentChars, done, capped }
   }
+}
+
+/**
+ * POST body as JSON to ${base}/generate/${course}; resolves the parsed reply.
+ * Protocol follows the URL (PHASE8_URL may be https), and a connection dropped mid-response
+ * rejects instead of raising an unhandled 'error' on the response stream.
+ */
+function makePost(base, course) {
+  return (body) => new Promise((resolve, reject) => {
+    const u = new URL(`${base}/generate/${course}`)
+    const transport = u.protocol === 'https:' ? require('https') : require('http')
+    const req = transport.request({ hostname: u.hostname, port: u.port, path: u.pathname, method: 'POST', headers: { 'Content-Type': 'application/json' } }, (res) => {
+      let text = ''
+      res.on('data', c => { text += c })
+      res.on('error', reject)
+      res.on('end', () => { try { resolve(JSON.parse(text)) } catch { reject(new Error(`phase8 ${res.statusCode}: ${text.slice(0, 300)}`)) } })
+    })
+    req.on('error', reject)
+    req.end(JSON.stringify(body))
+  })
 }
 
 // ─── CLI ────────────────────────────────────────────────────────────────────
@@ -87,7 +118,7 @@ function arg(name, dflt) {
 
 async function main() {
   const course = arg('course')
-  if (!course) { console.error('usage: render-driver.cjs --course <code> --budget-chars <n> [--go] [--roles a,b] [--concurrency n] [--max-passes n] [--job label] [--author-scope none|lego|all]'); process.exit(2) }
+  if (!course) { console.error('usage: render-driver.cjs --course <code> --budget-chars <n> [--go] [--roles a,b] [--concurrency n] [--max-passes n] [--job label] [--partial] [--author-scope none|lego|all]'); process.exit(2) }
   const P8 = process.env.PHASE8_URL || 'http://localhost:3465'
   const job = arg('job', process.env.TTS_SPEND_JOB || null)
   const base = {
@@ -104,16 +135,15 @@ async function main() {
   const log = (e) => { const line = JSON.stringify({ at: new Date().toISOString(), course, ...e }); fs.appendFileSync(logPath, line + '\n'); console.log(line) }
   const { spendGuard } = require('../services/shared/tts-spend-guard.cjs')
   const ledgerSnapshot = async () => { try { return await spendGuard().snapshot('cartesia') } catch (e) { return { error: e.message } } }
-  const post = async (body) => {
-    const r = await fetch(`${P8}/generate/${course}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(24 * 3600e3) })
-    const text = await r.text()
-    try { return JSON.parse(text) } catch { throw new Error(`phase8 ${r.status}: ${text.slice(0, 300)}`) }
-  }
-  const out = await runDriver({ post, log, ledgerSnapshot, budgetChars: Number(arg('budget-chars')), maxPasses: Number(arg('max-passes', 5)), go: !!arg('go', false), base })
+  // node:http, not fetch: fetch (undici) gives up on response headers after 5 minutes, and a
+  // pass takes longer. The driver then died with "fetch failed" while phase8 kept rendering the
+  // abandoned pass in the background, and the next course's pass ran on top of it (job #355).
+  const post = makePost(P8, course)
+  const out = await runDriver({ post, log, ledgerSnapshot, budgetChars: Number(arg('budget-chars')), maxPasses: Number(arg('max-passes', 5)), go: !!arg('go', false), partial: !!arg('partial', false), base })
   console.log(`render-driver: ${out.done ? 'DONE' : 'STOPPED'} — ${out.stopped}; ${out.passes} pass(es), ${out.spent} chars. Log: ${logPath}`)
-  process.exit(out.done || out.stopped.startsWith('plan only') ? 0 : 1)
+  process.exit(out.done || out.stopped.startsWith('plan only') ? 0 : out.capped ? EXIT_BUDGET_CAP : 1)
 }
 
 if (require.main === module) main().catch(e => { console.error(`render-driver: ${e.message}`); process.exit(1) })
 
-module.exports = { runDriver, RATIO_LIMIT }
+module.exports = { runDriver, makePost, RATIO_LIMIT, EXIT_BUDGET_CAP }

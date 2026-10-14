@@ -181,7 +181,7 @@ function withCasting(user, casting) {
 /** Grant-side check, exactly as production-api has always done it. */
 function grantedOn(user, courseCode) {
   if (!user || !courseCode) return false
-  if (user.role === 'admin') return true
+  if (user.role === 'admin' || user.ssiAdmin) return true
   if (user.courses === '*') return true
   return Array.isArray(user.courses) && user.courses.includes(courseCode)
 }

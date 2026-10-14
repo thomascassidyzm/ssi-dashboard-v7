@@ -15,13 +15,13 @@
 # macOS cron is itself started by launchd (com.vix.cron), so moving this script
 # to cron would buy exactly nothing. The genuinely independent leg — the one
 # that survives Holmes being off, asleep, or wedged — cannot live on Holmes at
-# all, and it doesn't: it is ops/watchdog/holmes-availability-sentinel.sh,
-# running on watson-1, which tells Tom rather than restarting anything.
+# all, and it doesn't: there was a watson-1 sentinel for it, retired with the
+# ngrok tunnel (job #147; see git history of ops/watchdog/).
 #
 # KeepAlive already restarts a process that EXITS. This script exists for the
 # case KeepAlive cannot see: a process that is alive but not serving — node
-# wedged, the event loop blocked, ngrok holding a session it can no longer
-# forward. It health-checks the ports and kickstarts on a real miss.
+# wedged, the event loop blocked. It health-checks the port and kickstarts on
+# a real miss.
 
 set -u
 
@@ -73,11 +73,3 @@ check() {
 
 # The backend first. Loopback, so this is purely "is node serving".
 check com.ssi.popty-production-api http://localhost:3470/health "production API"
-
-# Then the tunnel, from the outside in. A 200 here proves the whole chain —
-# ngrok session, reserved domain, forward to 3470. It is checked SECOND and
-# against its own strike counter so that a backend outage (which makes this URL
-# return ngrok's own ERR_NGROK_8012 page) restarts the backend on its own
-# counter and, at worst, bounces a tunnel that was innocent — never the other
-# way round, where a wedged tunnel goes unnoticed because the backend is fine.
-check com.ssi.popty-ngrok https://popty.ngrok.app/health "ngrok tunnel"

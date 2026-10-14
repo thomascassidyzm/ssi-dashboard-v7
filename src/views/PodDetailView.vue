@@ -618,7 +618,7 @@ function podTypeClass(type) {
 
 async function getSignedUrl(audioId) {
   const res = await fetch(`${getApiUrl()}/api/production/${courseCode}/audio/${audioId}/url`, {
-    headers: { 'ngrok-skip-browser-warning': 'true' },
+    headers: {},
   })
   if (!res.ok) throw new Error(`signed url failed (${res.status})`)
   const data = await res.json()
@@ -696,7 +696,7 @@ async function loadPod() {
   error.value = null
   try {
     const res = await fetch(`${getApiUrl()}/api/pods/${courseCode}/${slug}`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' },
+      headers: {},
     })
     if (!res.ok) throw new Error(`Failed to load pod (${res.status})`)
     const data = await res.json()
@@ -864,7 +864,6 @@ const { getAccessToken } = useAuth()
 async function authedFetch(path, init = {}) {
   const token = await getAccessToken()
   const headers = {
-    'ngrok-skip-browser-warning': 'true',
     'Content-Type': 'application/json',
     ...(init.headers || {}),
   }
@@ -1005,7 +1004,7 @@ const recBySentence = ref(null) // sentenceId -> kinds {target|known: {origin, r
 async function loadRecordingStatus() {
   try {
     const res = await fetch(`${getApiUrl()}/api/production/${courseCode}/pods/coverage`, {
-      headers: { 'ngrok-skip-browser-warning': 'true' },
+      headers: {},
     })
     if (!res.ok) return
     const data = await res.json()

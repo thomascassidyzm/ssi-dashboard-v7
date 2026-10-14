@@ -1,0 +1,332 @@
+{
+  "course": "afr_for_eng",
+  "note": "Pilot of job #192. Every debut LEGO (is_new) with fewer than 4 USE phrases, seeds 4+ (seeds 1-3 sit on the canon's phrase ramp, 0/0 and 1/1, and are left alone). Not-new LEGOs are out of scope: their baskets are never played (P25).",
+  "seeds": [
+    {
+      "seed": 10,
+      "kind": "grow",
+      "why": "'can' alone is not a LEGO (Kai, L2: \"obviously 'can' doesn't work as a lego, it needs to be bigger\"), and 'onthou' (remember) is in the seed but in no LEGO (L27). Grow it to the verb in its own seed (L22).",
+      "set": {
+        "2": {
+          "type": "M",
+          "known": "can remember",
+          "target": "kan onthou",
+          "components": [
+            {
+              "known": "can",
+              "target": "kan"
+            },
+            {
+              "known": "remember",
+              "target": "onthou"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "seed": 27,
+      "kind": "topup",
+      "why": "'time → tyd' is a sound, flexible noun; it is short only because #184 deleted its bad phrases. Growing it would duplicate L1 'too much'. Fresh good phrases, no structural change.",
+      "topup": [
+        2
+      ]
+    },
+    {
+      "seed": 42,
+      "kind": "grow",
+      "why": "The seed says 'last night'; the LEGO said 'night', a gloss that does not match its seed (L25). Grow it to the seed's own chunk. The course teaches 'last night' as 'laas nag' (S234), so the seed sentence is rewritten to 'laas nag' (ZUT; job #329, Tom 2026-10-13) rather than adding a second target for the same known.",
+      "set": {
+        "1": {
+          "type": "M",
+          "known": "last night",
+          "target": "laas nag",
+          "components": [
+            {
+              "known": "last",
+              "target": "laas"
+            },
+            {
+              "known": "night",
+              "target": "nag"
+            }
+          ]
+        }
+      },
+      "seedTarget": "Ek het begin om beter te voel as laas nag."
+    },
+    {
+      "seed": 51,
+      "kind": "merge",
+      "why": "'interessante' is the attributive form only (predicative is 'interessant'), so 'interesting → interessante' teaches a form that is wrong in 'it is interesting'. Merge it with the noun it inflects for: 'interesting things → interessante dinge' (keeps L3's index).",
+      "delete": [
+        2
+      ],
+      "set": {
+        "3": {
+          "type": "M",
+          "known": "interesting things",
+          "target": "interessante dinge",
+          "components": [
+            {
+              "known": "interesting",
+              "target": "interessante"
+            },
+            {
+              "known": "things",
+              "target": "dinge"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "seed": 66,
+      "kind": "topup",
+      "why": "'to find → vind' is a sound verb with three good USE; short only on count. Fresh good phrases, no structural change.",
+      "topup": [
+        2
+      ]
+    },
+    {
+      "seed": 68,
+      "kind": "replace",
+      "why": "'what for → waarna' is a dishonest gloss (L25): 'waarna' only means anything with the verb it governs. Chunk it up with that verb into the seed's own question, as a new LEGO after 'to look for' (never reusing L1's index).",
+      "delete": [
+        1
+      ],
+      "add": [
+        {
+          "idx": 3,
+          "type": "M",
+          "known": "what are you looking for",
+          "target": "waarna soek jy",
+          "components": [
+            {
+              "known": "what for",
+              "target": "waarna"
+            },
+            {
+              "known": "look for",
+              "target": "soek"
+            },
+            {
+              "known": "you",
+              "target": "jy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 69,
+      "kind": "topup",
+      "why": "'dog → hond' is a sound noun with three good USE; short only on count. Fresh good phrases, no structural change.",
+      "topup": [
+        3
+      ]
+    },
+    {
+      "seed": 108,
+      "kind": "merge",
+      "why": "'of → van' is a bare preposition (L6) and 'middel' was glossed 'in the middle of' though it means 'middle' (L25). Merge both into the seed's own chunk 'in the middle of → in die middel van' (keeps L2's index).",
+      "delete": [
+        1
+      ],
+      "set": {
+        "2": {
+          "type": "M",
+          "known": "in the middle of",
+          "target": "in die middel van",
+          "components": [
+            {
+              "known": "in",
+              "target": "in"
+            },
+            {
+              "known": "the",
+              "target": "die"
+            },
+            {
+              "known": "middle",
+              "target": "middel"
+            },
+            {
+              "known": "of",
+              "target": "van"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "seed": 115,
+      "kind": "merge",
+      "why": "'to conduct/have → voer' carries a slash (L19: under-contexted) and only means 'have' with 'gesprek'. Merge with 'conversation' into 'have a conversation → 'n gesprek voer' (keeps L2's index).",
+      "delete": [
+        1
+      ],
+      "set": {
+        "2": {
+          "type": "M",
+          "known": "have a conversation",
+          "target": "'n gesprek voer",
+          "components": [
+            {
+              "known": "a",
+              "target": "'n"
+            },
+            {
+              "known": "conversation",
+              "target": "gesprek"
+            },
+            {
+              "known": "have",
+              "target": "voer"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "seed": 122,
+      "kind": "grow",
+      "why": "'excited' takes 'oor' (about) in its seed; teach the fuller chunk that shows what it governs (L29).",
+      "set": {
+        "2": {
+          "type": "M",
+          "known": "excited about",
+          "target": "opgewonde oor",
+          "components": [
+            {
+              "known": "excited",
+              "target": "opgewonde"
+            },
+            {
+              "known": "about",
+              "target": "oor"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "seed": 131,
+      "kind": "grow",
+      "why": "'rondgaan' is a separable verb in its joined form, which only appears in a subordinate clause (main clause: 'gaan ... rond'). As a bare LEGO it cannot be practised in ordinary sentences; grow it to the seed's own clause-final chunk.",
+      "set": {
+        "5": {
+          "type": "M",
+          "known": "going around in my head",
+          "target": "in my kop rondgaan",
+          "components": [
+            {
+              "known": "in my head",
+              "target": "in my kop"
+            },
+            {
+              "known": "going around",
+              "target": "rondgaan"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "seed": 158,
+      "kind": "grow",
+      "why": "'about (preposition) → oor' carries a parenthetical tag (K11, L19) and a bare preposition (L6). Grow it to the seed's 'about something else'.",
+      "set": {
+        "2": {
+          "type": "M",
+          "known": "about something else",
+          "target": "oor iets anders",
+          "components": [
+            {
+              "known": "about",
+              "target": "oor"
+            },
+            {
+              "known": "something else",
+              "target": "iets anders"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "seed": 199,
+      "kind": "grow",
+      "why": "'worked (past) → gewerk' carries a tag and is a bare participle that cannot stand without 'het'. Grow it to the seed's 'used to work in an office' (the seed's own gloss, L25; 7 syllables).",
+      "set": {
+        "1": {
+          "type": "M",
+          "known": "used to work in an office",
+          "target": "vroeër in 'n kantoor gewerk",
+          "components": [
+            {
+              "known": "used to",
+              "target": "vroeër"
+            },
+            {
+              "known": "in an office",
+              "target": "in 'n kantoor"
+            },
+            {
+              "known": "work",
+              "target": "gewerk"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "seed": 202,
+      "kind": "replace",
+      "why": "'beantwoord' needs an object (it is 'answer something'; bare 'answer' is 'antwoord'), so its phrases came out wrong ('ek wil kan beantwoord'). Chunk it up with its object into a new LEGO after 'question' (never reusing L2's index).",
+      "delete": [
+        2
+      ],
+      "add": [
+        {
+          "idx": 4,
+          "type": "M",
+          "known": "answer the question",
+          "target": "die vraag beantwoord",
+          "components": [
+            {
+              "known": "the question",
+              "target": "die vraag"
+            },
+            {
+              "known": "answer",
+              "target": "beantwoord"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 262,
+      "kind": "grow",
+      "why": "'with (mee) → mee' carries a tag; 'mee' is a stranded preposition that only exists with the verb it closes. Grow it to the seed's 'you were talking to'.",
+      "set": {
+        "2": {
+          "type": "M",
+          "known": "you were talking to",
+          "target": "jy mee gepraat het",
+          "components": [
+            {
+              "known": "you",
+              "target": "jy"
+            },
+            {
+              "known": "talking to",
+              "target": "mee gepraat het"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
