@@ -13,7 +13,10 @@ M=database/migrations/20261014b_course_legos_presentation_audio_id_uuid
 PROMO_JOB=aa54c9b9-9601-444c-bc1d-29dbfba1af49   # #306·Q, woken 22:30 UTC 2026-10-14 to promote SSi
 SURFACE_DB=/home/tomcassidy/command-surface/command-surface.db
 
-url=$(sed -n 's/^DATABASE_URL=//p' "$HOME/.config/ssi-db/owner.env" | head -1 | tr -d '\r')
+# Owner login: /etc/popty/owner.env since #391, readable by popty only: sudo -u popty -H <this script>.
+OWNER_ENV="${SSI_OWNER_ENV:-/etc/popty/owner.env}"
+[ -r "$OWNER_ENV" ] || OWNER_ENV="$HOME/.config/ssi-db/owner.env"
+url=$(sed -n 's/^DATABASE_URL=//p' "$OWNER_ENV" 2>/dev/null | head -1 | tr -d '\r')
 [[ "$url" =~ ^postgres(ql)?://([^:]+):([^@]+)@([^:/]+):?([0-9]*)/?([^?]*) ]] || { echo "cannot parse owner.env"; exit 64; }
 urldecode() { local s="${1//+/ }"; printf '%b' "${s//%/\\x}"; }
 export PGUSER="$(urldecode "${BASH_REMATCH[2]}")" PGPASSWORD="$(urldecode "${BASH_REMATCH[3]}")" PGHOST="${BASH_REMATCH[4]}"
@@ -28,7 +31,9 @@ case "$MODE" in
   migrate)
     # Do not overlap the promotion: wait until #306·Q's turn that started after 22:30 UTC has ended.
     since=$(date -u -d '2026-10-14 22:30:00' +%s)000
+    # popty cannot read the surface DB, so the caller checks the promotion and passes PROMO_DONE=1.
     for i in $(seq 1 60); do
+      [ "${PROMO_DONE:-}" = 1 ] && { echo "promotion confirmed finished by the caller"; break; }
       row=$(sqlite3 -readonly "$SURFACE_DB" "select status||'|'||coalesce(ended,0) from jobs where id='$PROMO_JOB'")
       st=${row%%|*}; en=${row##*|}
       if [ "$st" != "running" ] && [ "$en" -gt "$since" ]; then echo "promotion finished (status $st)"; break; fi
