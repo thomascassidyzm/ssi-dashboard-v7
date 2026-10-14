@@ -3,7 +3,9 @@
     <div class="navbar-inner">
       <!-- Left: Popty brand (→ Home) + course breadcrumb -->
       <div class="navbar-left">
-        <span v-if="mode === 'minimal' && !isAuthenticated" class="navbar-brand">Popty</span>
+        <!-- A signed-out private-link artist's wordmark is their booth home (job #420): the booth's
+             own Booth · Popty row is gone, and this is the one way back from anywhere on it. -->
+        <router-link v-if="mode === 'minimal' && !isAuthenticated" :to="boothHomeTo" class="navbar-brand" data-nav="booth-home">Popty</router-link>
         <router-link v-else :to="mode === 'minimal' ? { name: 'MyRecording' } : homeTo" class="navbar-brand">Popty</router-link>
         <span v-if="courseCrumb" class="navbar-crumb">
           <span class="crumb-sep">/</span>
@@ -12,11 +14,11 @@
       </div>
 
       <!-- Center: persistent primary nav -->
-      <nav v-if="mode === 'full'" class="navbar-tabs">
+      <nav v-if="mode === 'full' || recordingTab" class="navbar-tabs">
         <!-- An editor's always-there way back to the three cards (Tom, 2026-09-25):
              first in the row every page carries, so it is there at 390 too. -->
         <router-link
-          v-if="!isAdmin"
+          v-if="mode === 'full' && !isAdmin"
           :to="homeTo"
           class="tab-item navbar-home"
           :class="{ active: route.name === 'LeaderJourney' }"
@@ -25,14 +27,26 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 9.5V20h13V9.5" /></svg>
           Home
         </router-link>
+        <template v-if="mode === 'full'">
+          <router-link
+            v-for="tab in primaryTabs"
+            :key="tab.label"
+            :to="tab.to"
+            class="tab-item"
+            :class="{ active: tab.active }"
+          >
+            {{ tab.label }}
+          </router-link>
+        </template>
+        <!-- Only for a login that reads a recording voice (recordingLink, job #420). -->
         <router-link
-          v-for="tab in primaryTabs"
-          :key="tab.label"
-          :to="tab.to"
+          v-if="recordingTab"
+          :to="recordingTab.to"
           class="tab-item"
-          :class="{ active: tab.active }"
+          :class="{ active: recordingTab.active }"
+          data-nav="recording"
         >
-          {{ tab.label }}
+          {{ recordingTab.label }}
         </router-link>
       </nav>
 
@@ -143,13 +157,14 @@ import { useAuth } from '../composables/useAuth'
 import EnvironmentSwitcher from './EnvironmentSwitcher.vue'
 import RemoteControl from './RemoteControl.vue'
 import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
-import { primaryTabs as declaredPrimaryTabs, sectionTabs as declaredSectionTabs, editorHomeTo, navbarMode } from '../nav/navigation'
+import { primaryTabs as declaredPrimaryTabs, sectionTabs as declaredSectionTabs, editorHomeTo, navbarMode, recordingLink } from '../nav/navigation'
+import { myVoiceCount, refreshMyVoices } from '../nav/myVoices'
 import { boothMicLive } from '../nav/boothMic'
 
 const route = useRoute()
 const router = useRouter()
 const { courses, loading, loadCourses, courseCount, inProductionCount, getCourseName } = useCourses()
-const { isAuthenticated, isAdmin, isRecorder, hasDashboardAccess, user, learner, hasPassword, updatePassword, logout, getAccessToken, initAuth } = useAuth()
+const { isAuthenticated, isAdmin, isRecorder, hasDashboardAccess, dashboardUser, user, learner, hasPassword, updatePassword, logout, getAccessToken, initAuth } = useAuth()
 
 // Theme: 'dark' (default) | 'light'. Persisted; applied on <html data-theme>.
 // Initial state set by main.js before mount; the menu item flips it here.
@@ -270,6 +285,23 @@ const mode = computed(() => navbarMode(route, {
 // The booth is public, so the router guard never signs anyone in on it: ask here,
 // or Aran opening his own /r/ link would be shown the signed-out bar.
 watch(isBoothPage, (on) => { if (on) initAuth() }, { immediate: true })
+
+// The Recording tab: asked of the server once per signed-in address (myVoices.js, job #420).
+watch(() => (isAuthenticated.value ? dashboardUser.value?.email || user.value?.email || null : null),
+  (email) => refreshMyVoices(email, getAccessToken), { immediate: true })
+const recordingTab = computed(() => recordingLink(route, {
+  isAuthenticated: isAuthenticated.value,
+  isAdmin: isAdmin.value,
+  isRecorder: isRecorder.value,
+  micLive: boothMicLive.value,
+  voiceCount: myVoiceCount.value
+}))
+// The booth home this signed-out artist is on: the same voice, its private key kept, no batch.
+const boothHomeTo = computed(() => {
+  const voiceId = route.params.voiceId
+  if (!voiceId) return '/'
+  return { name: 'RecordistRoom', params: { voiceId }, query: route.query.k ? { k: route.query.k } : {} }
+})
 
 // Show the course-count chip only on the Courses library.
 const showSummary = computed(() => isCoursesBoard.value)

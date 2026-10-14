@@ -82,15 +82,14 @@ describe('RecordistRoom — the way back, the switch and the crossing', () => {
   })
   afterEach(() => { vi.restoreAllMocks() })
 
-  it('offers a way back to Popty from the ready card, and never from the stage', async () => {
-    // Since 2026-09-12 the way back is the last word on the booth's nav row
-    // (Booth · Lines · Pods · Course · Popty) rather than a faint link, and
-    // the rule is unchanged: on the ready card, never on the stage.
+  it('carries no nav row of its own: Popty\'s top bar is the one navigation (Aran 2026-10-14, job #420)', async () => {
+    // The booth's own Booth · Lines · Pods · Course · Popty row sat under the new top bar.
+    // The way back is the bar (AppNavbar) now; on the stage there is still nothing to tap.
     const w = mountBooth()
     await flushPromises()
-    const back = w.find('.rc-nav-home')
-    expect(back.exists()).toBe(true)
-    expect(back.attributes('href')).toBe('/')
+    expect(w.find('.btn-begin').exists()).toBe(true)
+    expect(w.find('.rc-nav').exists()).toBe(false)
+    expect(w.find('[aria-label="Booth navigation"]').exists()).toBe(false)
 
     await w.find('.btn-begin').trigger('click')
     await flushPromises()

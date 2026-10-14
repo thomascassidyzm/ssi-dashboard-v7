@@ -47,41 +47,10 @@
 
     <!-- ── Ready ─────────────────────────────────────────────────────────── -->
     <section v-else-if="phase === 'ready'" class="rc-card">
-      <!-- THE WAY BACK. Aran, 2026-09-10: "When I go to /r/human_aran_cym_n
-           there is no navigation back to the main stuff". There was none, and
-           the room is deliberately uncluttered — one big Start button and
-           nothing to navigate — so this is a quiet link and not a nav bar.
-           IT IS ON THIS CARD ONLY, never on the recording stage: a link within
-           reach of a thumb while the mic is live is a lost take, and the stage
-           already has its own way out in Stop here. -->
-      <!-- THE NAV. Tom, 2026-09-12, testing as a voice artist: "the whole nav
-           is not very clear … I should as a voice artist be able to see the
-           way to get to the course Overview page and maybe other PODS and so
-           on, because I am also an editor of the lines." One row, four plain
-           words, above the fold on a phone: Booth (here) · Lines (the whole
-           list, on this page) · Pods (each pod this voice is cast in — its
-           drafts page, where a line is edited or ticked) · Course (the
-           Overview). It replaces the faint "← Back to Popty" that was the only
-           way out. ON THE READY AND DONE CARDS ONLY, never on the recording
-           stage: a link within reach of a thumb while the mic is live is a
-           lost take. Those pages carry "← Back to the booth" (booth-pointer.js). -->
-      <nav class="rc-nav" aria-label="Booth navigation">
-        <router-link :to="`/r/${voiceId}`" class="rc-nav-item is-here" aria-current="page">Booth</router-link>
-        <span class="rc-nav-dot">·</span>
-        <button type="button" class="rc-nav-item rc-nav-btn" @click="goToLines">Lines</button>
-        <template v-if="navPods.length">
-          <span class="rc-nav-dot">·</span>
-          <span class="rc-nav-word">{{ navPods.length === 1 ? 'Pod' : 'Pods' }}</span>
-          <router-link v-for="p in navPods" :key="p.key" :to="p.to" class="rc-nav-item rc-nav-pod">{{ p.label }}</router-link>
-        </template>
-        <template v-if="navCourses.length">
-          <span class="rc-nav-dot">·</span>
-          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
-        </template>
-        <span class="rc-nav-dot">·</span>
-        <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
-      </nav>
-      <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back. -->
+      <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back.
+           The booth's own Booth · Lines · Pods · Course · Popty row is gone (Aran 2026-10-14,
+           job #420: one navigation): Popty's top bar is the nav, and for a signed-out
+           private-link artist its wordmark is the booth home (AppNavbar boothHomeTo). -->
       <div v-if="batchScope" class="batch-head" data-test="batch-head">
         <button type="button" class="batch-back" data-test="back-home" @click="goHome">‹ Back to home</button>
         <p class="batch-title" data-test="batch-where">{{ batchHeader }}</p>
@@ -146,7 +115,6 @@
       </div>
 
       <RecordistRoster
-        ref="rosterRef"
         :sections="rosterSections"
         :playing-id="playingId"
         :editing-id="editingId"
@@ -655,34 +623,10 @@
 
     <!-- ── Done ───────────────────────────────────────────────────────────── -->
     <section v-else-if="phase === 'done'" class="rc-card">
-      <!-- THE NAV. Tom, 2026-09-12, testing as a voice artist: "the whole nav
-           is not very clear … I should as a voice artist be able to see the
-           way to get to the course Overview page and maybe other PODS and so
-           on, because I am also an editor of the lines." One row, four plain
-           words, above the fold on a phone: Booth (here) · Lines (the whole
-           list, on this page) · Pods (each pod this voice is cast in — its
-           drafts page, where a line is edited or ticked) · Course (the
-           Overview). It replaces the faint "← Back to Popty" that was the only
-           way out. ON THE READY AND DONE CARDS ONLY, never on the recording
-           stage: a link within reach of a thumb while the mic is live is a
-           lost take. Those pages carry "← Back to the booth" (booth-pointer.js). -->
-      <nav class="rc-nav" aria-label="Booth navigation">
-        <router-link :to="`/r/${voiceId}`" class="rc-nav-item is-here" aria-current="page">Booth</router-link>
-        <span class="rc-nav-dot">·</span>
-        <button type="button" class="rc-nav-item rc-nav-btn" @click="goToLines">Lines</button>
-        <template v-if="navPods.length">
-          <span class="rc-nav-dot">·</span>
-          <span class="rc-nav-word">{{ navPods.length === 1 ? 'Pod' : 'Pods' }}</span>
-          <router-link v-for="p in navPods" :key="p.key" :to="p.to" class="rc-nav-item rc-nav-pod">{{ p.label }}</router-link>
-        </template>
-        <template v-if="navCourses.length">
-          <span class="rc-nav-dot">·</span>
-          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
-        </template>
-        <span class="rc-nav-dot">·</span>
-        <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
-      </nav>
-      <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back. -->
+      <!-- ONE BATCH, opened from the home screen (job #347): which batch, and the way back.
+           The booth's own Booth · Lines · Pods · Course · Popty row is gone (Aran 2026-10-14,
+           job #420: one navigation): Popty's top bar is the nav, and for a signed-out
+           private-link artist its wordmark is the booth home (AppNavbar boothHomeTo). -->
       <div v-if="batchScope" class="batch-head" data-test="batch-head">
         <button type="button" class="batch-back" data-test="back-home" @click="goHome">‹ Back to home</button>
         <p class="batch-title" data-test="batch-where">{{ batchHeader }}</p>
@@ -726,7 +670,6 @@
       </div>
 
       <RecordistRoster
-        ref="rosterRef"
         :sections="rosterSections"
         :playing-id="playingId"
         :editing-id="editingId"
@@ -834,7 +777,7 @@ import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStored
 import { createAdvanceLock } from './recordist/advance-lock'
 import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
-import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
+import { boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
 import BoothHome from './recordist/BoothHome.vue'
 import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot } from './recordist/booth-home.js'
 import { headerLanguage } from './recordist/booth-tabs.js'
@@ -1185,42 +1128,6 @@ function podSectionFor(row) {
   // person wrote, and never by its slug.
   return { heading: row.podTitle || 'MORE CONVERSATIONS', blurb }
 }
-// WHERE THE NAV GOES, read off the queue itself: every pod this voice is
-// cast in (first-appearance order, the server's own) and every course those
-// lines belong to. Nothing is fetched for it — a line already says which pod
-// and which course it is from.
-const navPods = computed(() => {
-  const seen = new Map()
-  for (const l of lines.value) {
-    if ((l.kind || 'pod') !== 'pod' || !l.podSlug || !l.courseCode) continue
-    const key = `${l.courseCode}/${l.podSlug}`
-    if (seen.has(key)) continue
-    seen.set(key, { key, row: l, to: `/production/${l.courseCode}/pods/${l.podSlug}` })
-  }
-  const keys = [...seen.keys()]
-  return [...seen.values()].map(({ row, ...p }) => ({ ...p, label: boothPodChip(row, keys) }))
-})
-const navCourses = computed(() => {
-  const seen = new Map()
-  for (const l of lines.value) {
-    if (!l.courseCode || seen.has(l.courseCode)) continue
-    seen.set(l.courseCode, { code: l.courseCode, to: `/production/${l.courseCode}` })
-  }
-  const all = [...seen.values()]
-  const codes = all.map(c => c.code)
-  return all.map(c => ({ ...c, label: boothCourseChip(c.code, codes) }))
-})
-const rosterRef = ref(null)
-// "Lines" is on this page: open the whole list and put it under his thumb.
-function goToLines() {
-  const r = Array.isArray(rosterRef.value) ? rosterRef.value[0] : rosterRef.value
-  if (r && r.openList) r.openList()
-  nextTick(() => {
-    const el = r && r.$el && r.$el.querySelector ? r.$el.querySelector('.roster-toggle') : null
-    if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  })
-}
-
 const rosterSections = computed(() => {
   const byKind = new Map(SECTION_ORDER.map(s => [s.key, []]))
   // A kind we did not plan for gets a section of its own rather than vanishing:
@@ -2987,7 +2894,14 @@ onDeactivated(() => {
 <style scoped>
 /* Phone first: Aran and Catrin record on phones. Everything thumb-reachable,
    the line itself the biggest thing on the screen. */
+/* THE BOOTH'S GREEN BUTTONS (Aran 2026-10-14, job #420: "black text that doesn't read well"):
+   white on emerald-700, 5.48:1, WCAG AA for any size of text, in light mode and dark. The theme's
+   own green behind white is 1.9:1 in dark mode (#34d399), so the buttons carry their own. The one
+   pair, inherited by BoothHome; booth-green.test.js holds the ratio. */
 .recordist {
+  --booth-go-bg: #047857;
+  --booth-go-bg-hover: #065f46;
+  --booth-go-ink: #ffffff;
   max-width: 640px;
   margin: 0 auto;
   padding: 1rem;
@@ -3046,33 +2960,6 @@ onDeactivated(() => {
 :root[data-theme="light"] .batch-head { border-color: var(--line, #d4d4cf); background: #eef4fb; }
 /* Small, muted, above everything and out of the flow of the work: it is the
    door, not part of the job. */
-.rc-nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.35rem 0.5rem;
-  margin: 0 0 1rem;
-  font-size: 0.95rem;
-}
-.rc-nav-item {
-  display: inline-block;
-  min-height: 40px;
-  line-height: 40px;
-  padding: 0 0.6rem;
-  border-radius: 8px;
-  color: var(--color-emerald, #06ffa5);
-  background: rgba(6, 255, 165, 0.08);
-  text-decoration: none;
-  font: inherit;
-  font-weight: 600;
-  border: 0;
-  cursor: pointer;
-}
-.rc-nav-item:hover, .rc-nav-item:focus-visible { background: rgba(6, 255, 165, 0.2); }
-.rc-nav-item.is-here { color: var(--color-paper, #f5f5f0); background: rgba(255, 255, 255, 0.12); cursor: default; }
-.rc-nav-word { color: var(--color-paper-dim, #c1c1bb); font-weight: 600; }
-.rc-nav-dot { color: var(--color-paper-dim, #c1c1bb); opacity: 0.6; }
-.rc-nav-home { opacity: 0.75; font-weight: 500; }
 .rc-hello { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0 0 0.35rem; }
 .rc-card h2 { font-family: 'Josefin Sans', sans-serif; font-size: 1.3rem; margin: 0 0 0.6rem; }
 .rc-card h3 { font-size: 0.95rem; margin: 1.25rem 0 0.35rem; }
@@ -3124,7 +3011,7 @@ kbd {
   border-radius: 8px; background: transparent;
   color: inherit; font: inherit; font-size: 0.9rem; cursor: pointer;
 }
-.volume-btn.on { background: var(--color-emerald, #06ffa5); color: #07110c; border-color: transparent; font-weight: 600; }
+.volume-btn.on { background: var(--booth-go-bg); color: var(--booth-go-ink); border-color: transparent; font-weight: 600; }
 .volume-btn:disabled { opacity: 0.5; cursor: default; }
 
 .toggle-row { display: flex; gap: 0.7rem; align-items: flex-start; cursor: pointer; margin: 1rem 0 1.5rem; }
@@ -3139,9 +3026,10 @@ kbd {
   display: block; width: 100%;
   font-family: 'Josefin Sans', sans-serif; font-size: 1.15rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.05em;
-  color: var(--color-void, #0f172a); background: var(--color-emerald, #06ffa5);
+  color: var(--booth-go-ink); background: var(--booth-go-bg);
   border: none; border-radius: 12px; padding: 1rem; cursor: pointer; min-height: 56px;
 }
+.btn-begin:hover:not(:disabled) { background: var(--booth-go-bg-hover); }
 .btn-begin:disabled { opacity: 0.4; cursor: not-allowed; }
 .btn-ghost {
   font-family: 'Josefin Sans', sans-serif; font-size: 0.95rem; color: var(--color-paper-dim, #c1c1bb);
@@ -3382,7 +3270,7 @@ kbd {
   font-family: 'Josefin Sans', sans-serif; font-size: 1.35rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.04em;
   border-radius: 14px; border: none; cursor: pointer;
-  background: var(--color-emerald, #06ffa5); color: var(--color-void, #0f172a);
+  background: var(--booth-go-bg); color: var(--booth-go-ink);
 }
 /* Full width and above the transport: he is mid-flow with a script in front of
    him, so it has to be findable with a thumb without looking down. Nothing else

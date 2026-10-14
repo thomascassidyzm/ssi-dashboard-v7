@@ -333,7 +333,7 @@ export const OUTSIDE_NAV = [
   { path: '/quality/:courseCode/learned-rules', why: 'learned rules — opened from the quality dashboard' },
   { path: '/recursive-upregulation', why: 'methodology explainer, linked from the Pedagogy page' },
   { path: '/audio-preview', why: 'estate audio preview entry — opened by URL' },
-  { path: '/my-recording', why: 'a recordist\'s own room — booth navbar (navbarMode): the main bar, cut down for a recorder' },
+  { path: '/my-recording', why: 'a recordist\'s own room — reached from the navbar\'s Recording link (recordingLink), shown only to a login with a voice' },
   { path: '/record/:courseCode?', why: 'the Record Room shell — the navbar is hidden for recorders' },
   { path: '/:pathMatch(.*)*', why: 'the 404 catch-all' }
 ]
@@ -465,4 +465,22 @@ export function navbarMode(route, viewer = {}) {
   }
   if (route?.meta?.public === true || viewer.isRecorder) return 'hidden'
   return 'full'
+}
+
+/**
+ * THE RECORDING LINK (job #420, Aran 2026-10-14): one tab on the top bar, wherever the bar shows,
+ * for a signed-in person who reads a recording voice, and for nobody else. Whether they read one
+ * is the server's answer, GET /api/recording/mine (voicesForEmail, the same email-to-voices rule
+ * the booth's language tabs use, job #392); `voiceCount` is how many it named. It goes to
+ * /my-recording, which opens their own booth with a tab per voice. A signed-out private-link
+ * artist has no login to ask with, so never sees it; the booth's own wordmark is their way home.
+ * viewer: navbarMode's viewer, plus { voiceCount }.
+ */
+export const RECORDING_LINK = { id: 'recording', label: 'Recording', to: '/my-recording' }
+
+export function recordingLink(route, viewer = {}) {
+  if (!viewer.isAuthenticated || !(viewer.voiceCount > 0)) return null
+  if (navbarMode(route, viewer) === 'hidden') return null
+  const active = route?.name === 'MyRecording' || route?.name === 'RecordistRoom'
+  return { ...RECORDING_LINK, active }
 }

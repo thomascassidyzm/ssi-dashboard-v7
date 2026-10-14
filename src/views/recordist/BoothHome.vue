@@ -3,12 +3,8 @@
        "Up next" on top and Option C's tickable boxes down the side. Draws from the summary only;
        a batch's lines are fetched when he opens it. Decisions live in booth-home.js. -->
   <div class="bh" data-surface="booth-home-2026-10-14">
-    <nav class="rc-nav" aria-label="Booth navigation">
-      <span class="rc-nav-item is-here" aria-current="page">Booth</span>
-      <span class="rc-nav-dot">·</span>
-      <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
-    </nav>
-
+    <!-- No Booth · Popty row here any more (Aran 2026-10-14, job #420): Popty's top bar is the one
+         navigation, and for a signed-out private-link artist its wordmark is this booth home. -->
     <!-- ONE PIECE OF WORK, its batches listed. -->
     <section v-if="openTrack" class="bh-track">
       <button type="button" class="bh-back" @click="$emit('home')">‹ Back to home</button>
@@ -210,11 +206,6 @@ function cardPill(t) {
 
 <style scoped>
 .bh { padding-top: 0.75rem; }
-.rc-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.5rem; margin: 0 0 0.6rem; font-size: 0.95rem; }
-.rc-nav-item { display: inline-block; min-height: 40px; line-height: 40px; padding: 0 0.6rem; border-radius: 8px; color: var(--color-emerald, #06ffa5); background: rgba(6, 255, 165, 0.08); text-decoration: none; font-weight: 600; }
-.rc-nav-item.is-here { color: var(--color-paper, #f5f5f0); background: rgba(255, 255, 255, 0.12); }
-.rc-nav-dot { color: var(--color-paper-dim, #c1c1bb); opacity: 0.6; }
-.rc-nav-home { opacity: 0.75; font-weight: 500; }
 .bh-h1 { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0.25rem 0 0.2rem; }
 .bh-h2 { font-family: 'Josefin Sans', sans-serif; font-size: 1.3rem; margin: 0.2rem 0 0.3rem; }
 .bh-h3 { display: block; font-size: 1.05rem; font-weight: 700; margin: 0.1rem 0 0.25rem; color: var(--color-paper, #f7f7f2); }
@@ -235,7 +226,8 @@ function cardPill(t) {
 .bh-hero-done { background: var(--color-shadow, #1e293b); border-color: var(--color-graphite, #475569); }
 .bh-big { font-size: 2rem; font-weight: 800; line-height: 1.1; margin: 0.6rem 0 0; color: var(--color-paper, #f7f7f2); }
 .bh-big small { font-size: 0.95rem; font-weight: 500; color: var(--color-paper-dim, #c1c1bb); }
-.bh-go { display: block; width: 100%; min-height: 56px; margin-top: 0.9rem; border: 0; border-radius: 12px; font: inherit; font-size: 1.1rem; font-weight: 700; background: var(--color-emerald, #06ffa5); color: #052e1f; cursor: pointer; }
+.bh-go { display: block; width: 100%; min-height: 56px; margin-top: 0.9rem; border: 0; border-radius: 12px; font: inherit; font-size: 1.1rem; font-weight: 700; background: var(--booth-go-bg, #047857); color: var(--booth-go-ink, #ffffff); cursor: pointer; }
+.bh-go:hover { background: var(--booth-go-bg-hover, #065f46); }
 .bh-grid { display: grid; gap: 0.75rem; }
 .bh-card { display: block; width: 100%; text-align: left; font: inherit; color: inherit; background: var(--color-shadow, #1e293b); border: 1px solid var(--color-graphite, #475569); border-radius: 14px; padding: 0.95rem; cursor: pointer; }
 .bh-card:hover:not(:disabled) { border-color: var(--color-emerald, #06ffa5); }
@@ -254,7 +246,7 @@ function cardPill(t) {
 .bh-brow:hover:not(:disabled) { background: rgba(255, 255, 255, 0.04); }
 .bh-brow em { color: var(--color-emerald, #06ffa5); font-style: normal; font-weight: 700; }
 .bh-bn { width: 44px; height: 44px; border-radius: 10px; background: var(--color-graphite, #475569); display: flex; align-items: center; justify-content: center; font-weight: 700; flex: none; }
-.bh-brow.next .bh-bn { background: var(--color-emerald, #06ffa5); color: #052e1f; }
+.bh-brow.next .bh-bn { background: var(--booth-go-bg, #047857); color: var(--booth-go-ink, #ffffff); }
 .bh-brow.full .bh-bn { color: var(--color-emerald, #06ffa5); }
 @media (min-width: 900px) {
   .bh-cols { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 1.75rem; align-items: start; }

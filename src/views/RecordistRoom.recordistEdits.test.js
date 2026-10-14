@@ -244,29 +244,12 @@ describe('the recordist edits their own lines', () => {
     expect(server.takes.filter(t => t.lineId === 'A' && t.text === 'Bore da i chi.')).toHaveLength(1)
   })
 
-  it('the nav row names Booth · Lines · Pods · the course and resolves them for this voice', async () => {
+  it('has no nav row of its own (job #420): the ready card starts with the booth, and the course pages still find their way back', async () => {
     const w = openBooth()
     await until(() => counts(w) !== null, 'the ready card')
-    const nav = w.find('.rc-nav')
-    expect(nav.exists()).toBe(true)
-    // The course chip is named in plain words, never by its code (Aran, 2026-10-13).
-    expect(nav.text()).toMatch(/Booth.*Lines.*Pods.*Old Welsh/s)
-    expect(nav.text()).not.toContain(COURSE)
-    expect(nav.find('.is-here').attributes('href')).toBe(`/r/${VOICE}`)
-    // Every pod this voice is cast in, to its drafts page: by the pod's own
-    // title, unless the booth has a plainer name for it (booth-chip-titles.js).
-    const pods = nav.findAll('.rc-nav-pod').map(a => [a.text(), a.attributes('href')])
-    expect(pods).toEqual([
-      ['Senedd', `/production/${COURSE}/pods/senedd`],
-      ['Welsh Pod1', `/production/${COURSE}/pods/pod-1`],
-    ])
-    expect(nav.find('.rc-nav-course').attributes('href')).toBe(`/production/${COURSE}`)
-    // "Lines" opens the whole list on this page.
-    expect(w.find('.roster-list').exists()).toBe(false)
-    await nav.find('.rc-nav-btn').trigger('click')
-    await flushPromises()
-    expect(w.find('.roster-list').exists()).toBe(true)
-    // And the course pages can find their way back: the booth remembered itself.
+    expect(w.find('.rc-nav').exists()).toBe(false)
+    expect(w.find('[aria-label="Booth navigation"]').exists()).toBe(false)
+    // The course pages can find their way back: the booth remembered itself.
     expect(sessionStorage.getItem('popty.booth.voice')).toBe(VOICE)
   })
 })
