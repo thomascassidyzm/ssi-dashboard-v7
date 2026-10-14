@@ -3538,7 +3538,7 @@ kbd {
 .sheet .sheet-body { max-width: none; }
 
 @media (min-width: 900px) {
-  .sheet-scrim { top: 0; background: transparent; }
+  .sheet-scrim, :root[data-theme="light"] .sheet-scrim { top: 0; background: transparent; }
   .sheet {
     left: auto; right: 0; top: 0; bottom: 0; width: 420px; max-height: none; border-radius: 0;
     border-bottom: 0; border-left: 1px solid var(--line, #334155); box-shadow: -8px 0 24px rgba(0, 0, 0, 0.3);
