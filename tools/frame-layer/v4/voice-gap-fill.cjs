@@ -104,14 +104,16 @@ function linkChunk(course, ops, { call = popty } = {}) {
   const url = `/api/admin/course-edit/${encodeURIComponent(course)}/edit-batch`;
   let live = ops.slice();
   const skipped = [];
-  for (let round = 0; round < 25 && live.length; round++) {
+  while (live.length) {
     try {
       call('POST', url, { ops: live, apply: false });           // the real transaction, rolled back
     } catch (e) {
       const b = e.body || {};
       if (['DRIFT', 'TEXT_MISMATCH', 'NOT_FOUND', 'NO_SUCH_AUDIO'].includes(b.code) && Number.isInteger(b.index) && live[b.index]) {
         skipped.push({ op: live[b.index], code: b.code, error: b.error });
-        live = live.filter((_, i) => i !== b.index);
+        const remaining = live.filter((_, i) => i !== b.index);
+        if (remaining.length >= live.length) throw e; // retry only with fewer ops
+        live = remaining;
         continue;
       }
       throw e;

@@ -89,7 +89,6 @@ async function prepareV4(supabase, courseCode, seedNumber, legoIndex, { proposed
   const data = await door.readCourse(supabase, courseCode, { maxSeed: seedNumber, componentsOnly: true });
   if (!data) throw new Error(`no course ${courseCode}`);
   data.components = data.phrases.filter((p) => p.phrase_role === 'component');
-  data.phrases = [];
   let lego = data.legos.find((l) => l.seed_number === seedNumber && Number(l.lego_index) === Number(legoIndex));
   if (!lego) {
     // A builder asks BEFORE it submits the seed: the LEGO is a proposal, not yet a row.

@@ -142,6 +142,17 @@ function editOps(p, clips = null) {
   ];
 }
 
+// A budget stop may leave later asks without clips. Keep the paid-render evidence
+// and stop before previewing any edits when the clip map is incomplete.
+function loggedEditOps(p, clips, log, save) {
+  try { return editOps(p, clips); }
+  catch (e) {
+    log.applyError = e.message;
+    console.error('apply stopped:', e.message, 'render log:', save('render-refused'));
+    return null;
+  }
+}
+
 async function post(url, body) {
   try {
     const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body), signal: AbortSignal.timeout(180000) });
@@ -196,7 +207,8 @@ async function main() {
 
   // 3. the edit door: preview, then apply; keep the undo
   const clips = new Map(log.asks.filter((a) => a.real && a.real.audioId).map((a) => [`${a.role}\u0000${a.text}`, a.real.audioId]));
-  const ops = editOps(p, clips);
+  const ops = loggedEditOps(p, clips, log, save);
+  if (!ops) return;
   const prev = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops });
   const silent = (r) => (r.results || []).filter((x) => x.after && ['known_audio_id', 'target1_audio_id', 'target2_audio_id'].some((c) => c in x.after && !x.after[c])).map((x) => x.key);
   log.preview = { status: prev.status, results: prev.body.results, silentAfter: silent(prev.body), error: prev.status === 200 ? undefined : prev.body };
@@ -210,4 +222,4 @@ async function main() {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
-module.exports = { plan, simulate, zutGate, clipAsks, editOps, introFor };
+module.exports = { loggedEditOps, plan, simulate, zutGate, clipAsks, editOps, introFor };

@@ -65,3 +65,7 @@ test('plan: one expansion per text, f for male-written, m for female-written, no
   assert.deepStrictEqual(p.expansions.map((e) => [e.original_text, e.expanded_f, e.expanded_m, e.rows.length]),
     [['मैं चाहता हूँ।', 'मैं चाहती हूँ।', null, 2], ['मैं पूछूँगी', null, 'मैं पूछूँगा', 1]]);
 });
+
+test('a mixed subject clause leaves the other male subject alone', () => {
+  assert.strictEqual(f('मैं और वह थका हुआ था।'), 'मैं और वह थका हुआ था।');
+});

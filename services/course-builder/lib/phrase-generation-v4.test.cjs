@@ -92,3 +92,11 @@ describe('stagedRows', () => {
     expect(Object.keys(rows[0]).sort()).toEqual(['frames', 'known_text', 'lego_index', 'lego_known', 'lego_target', 'phrase_role', 'seed_number', 'target_text'])
   })
 })
+
+it('preserves component words for the frame inventory', async () => {
+  let seen;
+  const deps = mkDeps();
+  deps.inventory = (_course, data) => { seen = data.phrases; return {}; };
+  await prepareV4({}, 'fra_for_eng', 1, 1, { deps });
+  expect(seen).toEqual(course().phrases);
+});

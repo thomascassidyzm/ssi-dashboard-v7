@@ -59,3 +59,13 @@ test('a refusal that is not about one op stops the run instead of being swallowe
   const call = () => { const e = new Error('nope'); e.body = { code: 'TOM_GO_REQUIRED' }; throw e; };
   assert.throws(() => linkChunk('c_for_e', buildLinkOps([{ id: 'c:S1L1U01', role: 'known', audioId: 'a' }]), { call }), /nope/);
 });
+
+test('more than 25 refusals still applies the remaining slot', () => {
+  let refusals = 30;
+  const result = linkChunk('c', Array.from({ length: 31 }, (_, id) => ({ id })), { call: (_m, _u, body) => {
+    if (!body.apply && refusals-- > 0) { const e = new Error('drift'); e.body = { code: 'DRIFT', index: 0 }; throw e; }
+    return {};
+  } });
+  assert.strictEqual(result.applied, 1);
+  assert.strictEqual(result.skipped.length, 30);
+});

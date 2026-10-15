@@ -83,3 +83,12 @@ test('with clip ids, every changed slot gets an audio.link AFTER the text in the
   assert.deepStrictEqual(ops.filter((o) => o.op === 'audio.link').map((o) => `${o.slot}=${o.audio_id}`), ['known=k', 'presentation=p', 'target1=a1', 'target2=a2']);
   assert.throws(() => T.editOps(p, new Map()), /no clip/);
 });
+
+test('missing clips after a budget refusal save the render log and stop', () => {
+  const p = { phrases: [{ id: 'x', before: ['old', 't'], after: ['new', 't'] }], legos: [], deletes: [] };
+  const log = { asks: [{ real: { status: 402 } }] };
+  let saved;
+  assert.strictEqual(T.loggedEditOps(p, new Map(), log, name => { saved = name; }), null);
+  assert.strictEqual(saved, 'render-refused');
+  assert.match(log.applyError, /no clip/);
+});

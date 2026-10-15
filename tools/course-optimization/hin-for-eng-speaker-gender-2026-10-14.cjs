@@ -96,6 +96,7 @@ function femClause(bareIn, fallbackI) {
   const hasAux1 = bare.some((w) => /^(हूँ|हूं)$/.test(w));
   const hasFut1 = bare.some((w) => FUT1.test(w));
   const other = bare.some((w) => OTHER_SUBJ.test(w));
+  if (other) return null; // mixed subjects are unsafe for automatic speaker agreement
   if (!(hasMain || hasAux1 || hasFut1 || (fallbackI && !other))) return null;
   const out = bare.slice();
   const heads = [];

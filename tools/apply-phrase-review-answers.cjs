@@ -116,8 +116,8 @@ function planAnswers(answers, items) {
           plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: null, swap: [/\bsome\b/, 'any'] });
         } else {
           // explicit values: "change Welsh to '…' and the English to '…'" sets both fields exactly
-          const w = /\bWelsh to '([^']+)'/i.exec(a.text.replace(/[‘]/g, "'"));
-          const e = /\bEnglish to '([^']+)'/i.exec(a.text.replace(/[‘]/g, "'"));
+          const w = /\bWelsh to ['‘](.+?)['’](?=\s+and\s+(?:change\s+)?(?:the\s+)?English to|\s*$)/i.exec(a.text.replace(/[‘]/g, "'"));
+          const e = /\bEnglish to ['‘](.+)['’]\s*$/i.exec(a.text.replace(/[‘]/g, "'"));
           if (w && e) {
             plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: curly(w[1]) });
             plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: curly(e[1]) });
