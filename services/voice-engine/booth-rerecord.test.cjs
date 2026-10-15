@@ -25,6 +25,13 @@ describe('skipped lines', () => {
     expect(skippedIn(later)).toEqual([])
   })
 
+  it('a batch he never opened, with a few lines filled by takes read elsewhere, has no skips', () => {
+    // Phrase and LEGO lines are often recorded by a take of the same words in another batch;
+    // one such line near the end of a batch is not "how far he got".
+    const untouched = Array.from({ length: 200 }, (_, i) => seedLine(2001 + i, [3, 120, 190].includes(i)))
+    expect(skippedIn(untouched)).toEqual([])
+  })
+
   it('an item drops off as soon as a good take saves', () => {
     const fixed = batch4.map((l) => (l.seedNumber === 1374 ? { ...l, recorded: true } : l))
     const { items } = buildRerecordList(queueOf([...lead, ...fixed, ...later]))

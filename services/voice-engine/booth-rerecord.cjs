@@ -70,12 +70,27 @@ function batchesOf(queueLines, phraseLines = [], phraseBatches = []) {
 }
 
 /**
- * THE SKIPS of one batch: unrecorded lines before its furthest recorded line. A batch with
+ * How much of a batch, up to a line, must be recorded for that line to count as how far he got.
+ * A phrase or LEGO line is often recorded by a take of the same words read in ANOTHER batch, so
+ * a batch he never opened can have a recorded line near its end; taken as his furthest line, that
+ * listed 1,400 "skips" on Aran's first live read (job #788). A reader who worked through a batch
+ * has most of it recorded up to where he stopped.
+ */
+const REACHED_DENSITY = 0.5
+
+/**
+ * THE SKIPS of one batch: unrecorded lines before the furthest line he reached — the furthest
+ * recorded line at which at least REACHED_DENSITY of the batch so far is recorded. A batch with
  * nothing recorded has not been started and has no skips.
  */
 function skippedIn(batchLines) {
   let furthest = -1
-  batchLines.forEach((l, i) => { if (l.recorded) furthest = i })
+  let recorded = 0
+  batchLines.forEach((l, i) => {
+    if (!l.recorded) return
+    recorded += 1
+    if (recorded / (i + 1) >= REACHED_DENSITY) furthest = i
+  })
   return batchLines.slice(0, Math.max(furthest, 0)).filter((l) => !l.recorded)
 }
 
@@ -259,7 +274,7 @@ function recordedAmong(list, ids = []) {
 }
 
 module.exports = {
-  RERECORD_TRACK, MATCH_SAME_SEED, MATCH_TEXT_ONLY,
+  RERECORD_TRACK, REACHED_DENSITY, MATCH_SAME_SEED, MATCH_TEXT_ONLY,
   batchesOf, skippedIn, similarity, pairTextChanges, courseOrder, indexQueue, isOrphanTake,
   buildRerecordList, rerecordBatchLines, recordedAmong,
 }
