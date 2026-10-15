@@ -459,6 +459,16 @@ const setAuditionError = (key: RoleKey, message: string) => {
   role.error = message;
 };
 
+// Every role still turning becomes an error with these words; a finished role is left alone.
+// The parent calls this whenever the save or the render fails, so no spinner outlives its request.
+const failPendingAuditions = (message: string) => {
+  for (const role of auditionRoles.value) {
+    if (role.state !== 'regenerating') continue;
+    role.state = 'error';
+    role.error = message;
+  }
+};
+
 const playAudition = (key: RoleKey) => {
   const role = auditionRoles.value.find(r => r.key === key);
   if (!role?.url || !auditionAudioEl.value) return;
@@ -466,7 +476,7 @@ const playAudition = (key: RoleKey) => {
   auditionAudioEl.value.play().catch(() => { /* user gesture / autoplay guard */ });
 };
 
-defineExpose({ onSaveComplete, beginAudition, setAuditionResult, setAuditionError });
+defineExpose({ onSaveComplete, beginAudition, setAuditionResult, setAuditionError, failPendingAuditions });
 
 const resetForm = (phrase: PhraseData) => {
   localKnownText.value = phrase.known_text || '';
