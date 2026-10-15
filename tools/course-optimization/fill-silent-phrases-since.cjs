@@ -11,6 +11,7 @@ const db = require('../../services/shared/agent-db.cjs');
 
 const ROLE_COL = { known: ['known_audio_id', 'known_text'], target1: ['target1_audio_id', 'target_text'], target2: ['target2_audio_id', 'target_text'] };
 const PURPOSE = 'job #431 fill silent after 2 Oct fix pass';
+const LINK_MAX = 500; // services/shared/link-clip.cjs refuses more per request (TOO_MANY)
 
 /** Group silent slots into distinct (role,text) asks, keeping the phrase ids behind each. */
 function asks(rows) {
@@ -62,12 +63,17 @@ async function main() {
     if (r.body.source === 'rendered') { tally.rendered++; tally.spent += r.body.charsSpent || 0; }
     // The route stores the clip but does not point these phrase rows at it: fill the slots through link-clip (fill-only, text-checked).
     const url = process.env.POPTY_URL || 'http://localhost:3470';
-    try {
-      const l = await fetch(`${url}/api/production/${course}/link-clip`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'fill-silent-phrases-since (job #431)' }, body: JSON.stringify({ links: a.ids.map((phraseId) => ({ phraseId, role: a.role, audioId: r.body.audioId })) }), signal: AbortSignal.timeout(120000) });
-      const lj = await l.json().catch(() => ({}));
-      tally.linked = (tally.linked || 0) + (lj.linked || 0);
-      if (!l.ok) console.log('  LINK-REFUSED', a.role, JSON.stringify(a.text), l.status, JSON.stringify(lj).slice(0, 300));
-    } catch (e) { console.log('  LINK-FAILED', a.role, JSON.stringify(a.text), String(e.cause && e.cause.code || e.name)); }
+    // link-clip refuses a request of more than LINK_MAX links whole (TOO_MANY), so the ids go in chunks
+    // with the same audioId (lanes review of 4a53c7b).
+    for (let k = 0; k < a.ids.length; k += LINK_MAX) {
+      const chunk = a.ids.slice(k, k + LINK_MAX);
+      try {
+        const l = await fetch(`${url}/api/production/${course}/link-clip`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'fill-silent-phrases-since (job #431)' }, body: JSON.stringify({ links: chunk.map((phraseId) => ({ phraseId, role: a.role, audioId: r.body.audioId })) }), signal: AbortSignal.timeout(120000) });
+        const lj = await l.json().catch(() => ({}));
+        tally.linked = (tally.linked || 0) + (lj.linked || 0);
+        if (!l.ok) console.log('  LINK-REFUSED', a.role, JSON.stringify(a.text), l.status, JSON.stringify(lj).slice(0, 300));
+      } catch (e) { console.log('  LINK-FAILED', a.role, JSON.stringify(a.text), String(e.cause && e.cause.code || e.name)); }
+    }
   }
   console.log(`DONE: rendered ${tally.rendered} (${tally.spent} chars), slots linked ${tally.linked || 0}, refused ${tally.refused.length}`);
 }
