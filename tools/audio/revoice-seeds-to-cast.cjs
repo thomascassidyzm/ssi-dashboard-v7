@@ -59,12 +59,25 @@ function castFromVoiceConfig(vc) {
 /** A route answer that means stop for today: the refusal is the answer, never retried. */
 const isStop = (r) => r.status === 402 || ['DAILY_TOTAL_CAP', 'REPEAT', 'NOT_IN_CHAIN'].includes(r.body && r.body.code);
 
-const post = async (p, body) => {
-  try {
-    const r = await fetch(`${URL}${p}`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body), signal: AbortSignal.timeout(120000) });
-    return { status: r.status, body: await r.json().catch(() => ({})) };
-  } catch (e) { return { status: 0, body: { ok: false, error: String((e.cause && e.cause.code) || e.name) } }; }
-};
+// A DROPPED CONNECTION is not an answer (job #864): every push to main makes ssi-auto-deploy restart production-api, and the
+// 2026-10-15 por_for_eng run died on five ECONNREFUSED in one second with 3,761 asks left. A drop is waited out (8 × 15 s);
+// an answer — a refusal included — is never retried. Repeating a dropped ask is safe: render is library-first and link-clip
+// answers changed:false for a slot that already holds the clip.
+const DROPPED = new Set(['ECONNREFUSED', 'ECONNRESET', 'UND_ERR_SOCKET', 'EPIPE']);
+const isDropped = (r) => r.status === 0 && DROPPED.has(r.body && r.body.error);
+async function postWith(fetchFn, wait, p, body, tries = 8) {
+  for (let a = 1; ; a++) {
+    let r;
+    try {
+      const res = await fetchFn(`${URL}${p}`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body), signal: AbortSignal.timeout(120000) });
+      r = { status: res.status, body: await res.json().catch(() => ({})) };
+    } catch (e) { r = { status: 0, body: { ok: false, error: String((e.cause && e.cause.code) || e.code || e.name) } }; }
+    if (!isDropped(r) || a >= tries) return r;
+    console.log(`  DROPPED ${r.body.error} on ${p}; Popty restarting? waiting (${a}/${tries})`);
+    await wait(15000);
+  }
+}
+const post = (p, body) => postWith(fetch, (ms) => new Promise((res) => setTimeout(res, ms)), p, body);
 
 async function alive(audioId) {
   try {
@@ -134,5 +147,5 @@ async function main() {
   const left = asks.length - n;
   console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { staleAsks, isStop, castFromVoiceConfig };
+module.exports = { staleAsks, isStop, castFromVoiceConfig, postWith };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

@@ -13,7 +13,7 @@
 //   RENDER=1 MAX_CHARS=20000 node tools/audio/revoice-pod-to-cast.cjs --pod por_for_eng:pod-1
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.psql'), quiet: true });
-const { castFromVoiceConfig, isStop } = require('./revoice-seeds-to-cast.cjs');
+const { castFromVoiceConfig, isStop, postWith } = require('./revoice-seeds-to-cast.cjs');
 
 const URL = process.env.POPTY_URL || 'http://localhost:3470';
 const AUDIO_BASE = process.env.LEARNER_AUDIO_BASE || 'https://saysomethingin.app/api/audio';
@@ -54,12 +54,8 @@ function podAsks(rows, clips, genderBySpeaker, castByRole) {
   return { asks: [...asks.values()].sort((a, b) => a.order - b.order), skipped };
 }
 
-const post = async (p, body) => {
-  try {
-    const r = await fetch(`${URL}${p}`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body), signal: AbortSignal.timeout(120000) });
-    return { status: r.status, body: await r.json().catch(() => ({})) };
-  } catch (e) { return { status: 0, body: { ok: false, error: String((e.cause && e.cause.code) || e.name) } }; }
-};
+// a dropped connection (auto-deploy restarting Popty) is waited out, an answer never retried: postWith in revoice-seeds-to-cast.cjs
+const post = (p, body) => postWith(fetch, (ms) => new Promise((res) => setTimeout(res, ms)), p, body);
 
 async function alive(audioId) {
   try {

@@ -1,6 +1,22 @@
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'node:module'
-const { staleAsks, isStop, castFromVoiceConfig } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
+const { staleAsks, isStop, castFromVoiceConfig, postWith } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
+
+// job #864: Popty restarting under an auto-deploy (ECONNREFUSED) is waited out; an answer, a 402 included, comes back first time
+describe('postWith', () => {
+  const refused = () => { const e = new Error('fetch failed'); e.cause = { code: 'ECONNREFUSED' }; throw e }
+  const answer = (status, body) => async () => ({ status, json: async () => body })
+  it('waits out a dropped connection, never retries an answer', async () => {
+    const calls = []; const waits = []
+    const seq = [refused, refused, answer(200, { ok: true, audioId: 'x' })]
+    const r = await postWith(async (...a) => { calls.push(a); return seq.shift()() }, async (ms) => { waits.push(ms) }, '/api/audio/render', {})
+    expect(r).toEqual({ status: 200, body: { ok: true, audioId: 'x' } })
+    expect(waits).toHaveLength(2)
+    let n = 0
+    const r402 = await postWith(async () => { n++; return answer(402, { code: 'REPEAT' })() }, async () => {}, '/api/audio/render', {})
+    expect([r402.status, n]).toEqual([402, 1])
+  })
+})
 
 // job #863: only TTS clips off the cast voice move; human takes and cast clips stay; one ask per (role, words), course order
 describe('revoice-seeds-to-cast', () => {
