@@ -4292,6 +4292,11 @@ kbd {
   .recordist.fit .transport .ctl-back, .recordist.fit .transport .ctl-again, .recordist.fit .transport .ctl-next { min-height: 48px; }
   .recordist.fit .ctl-jump { margin-top: 0.4rem; }
   .recordist.fit .transport { padding-top: 0.45rem; }
+  .recordist.fit .hear-bar { padding-top: 0; padding-bottom: 0; margin-bottom: 0.15rem; }
+  .recordist.fit .cue-before { margin-bottom: 0.35rem; }
+  .recordist.fit .line-kind { margin-bottom: 0.3rem; }
+  .recordist.fit .refused-summary { margin-bottom: 0.2rem; }
+  .recordist.fit .centre-line { padding-top: 0.4rem; }
 }
 
 /* A PHONE ON ITS SIDE (844x390 and the like). Stacked, the rows above the line and the transport

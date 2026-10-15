@@ -204,6 +204,7 @@ async function snap(page, engine, size, scenario, extra = {}) {
   const tag = `${engine}-${size[0]}x${size[1]}-${scenario}`
   const file = `${tag}.png`
   await page.screenshot({ path: join(OUT, file), animations: 'disabled', timeout: 20000 }).catch((e) => console.log('  shot failed', file, e.message.split('\n')[0]))
+  if (process.env.DUMP && scenario.includes(process.env.DUMP)) console.log(JSON.stringify(await page.evaluate(() => [...document.querySelectorAll('.recordist.fit > *, .stage > *, .stage .centre-line > *')].map((e) => [e.className.toString().slice(0, 30), Math.round(e.getBoundingClientRect().height)]))))
   const m = await page.evaluate(measure)
   const t = await page.evaluate(transport).catch(() => null)
   const r = { engine, size: `${size[0]}x${size[1]}`, scenario, file, ...m, transport: t, ...extra }
@@ -532,7 +533,8 @@ for (const r of results) {
   for (const t of r.smallTaps) fails.push(`${at}: tap target under 44px: ${t}`)
   for (const f of r.fixedOff) fails.push(`${at}: fixed bar below the screen: ${f}`)
   const T = r.transport || {}
-  for (const k of ['stop', 'pause', 'back', 'again', 'next', 'start']) if (T[k] && (!T[k].hit || T[k].bottom > r.vh || T[k].top < 0)) fails.push(`${at}: ${k} not reachable (${JSON.stringify(T[k])})`)
+  // with the sheet open the page under it is meant to be covered
+  for (const k of ['stop', 'pause', 'back', 'again', 'next', 'start']) if (!/sheet/.test(r.scenario) && T[k] && (!T[k].hit || T[k].bottom > r.vh || T[k].top < 0)) fails.push(`${at}: ${k} not reachable (${JSON.stringify(T[k])})`)
   if (T.line && /live|ready/.test(r.scenario) && T.line.visiblePx < 30) fails.push(`${at}: the line being read is not on screen (${T.line.visiblePx}px visible)`)
   if (T.line && T.line.wider) fails.push(`${at}: the line being read is wider than its box`)
   if (r.sheetClose && !(r.sheetClose.closedByX && r.sheetClose.closedByScrim)) fails.push(`${at}: sheet did not close (${JSON.stringify(r.sheetClose)})`)
