@@ -13,7 +13,7 @@ process.stdin.on('end', () => {
   try {
     const { agentId, method, path, body, key: keyName } = JSON.parse(raw);
     const key = loadKey(keyFileFor(keyName));
-    if (key.agentIdPrefix && agentId !== key.agentIdPrefix && !String(agentId).startsWith(key.agentIdPrefix + '-')) throw new Error(`this key signs only agent ids starting ${key.agentIdPrefix}-`);
+    if (key.agentIdPrefix && !String(agentId).startsWith(key.agentIdPrefix + '-')) throw new Error(`this key signs only agent ids starting ${key.agentIdPrefix}-`);
     process.stdout.write(signHeader({ secret: key.secret, agentId, method, path, body }));
   } catch (e) {
     process.stderr.write(`sign refused: ${e.message}\n`);

@@ -41,7 +41,7 @@ const SCOPES = Object.freeze({
 const HEADER = 'x-agent-admin';
 const DEFAULT_KEY_FILE = '/etc/popty/agent-admin.key';
 // Extra keys sit beside the shared one as agent-admin-<name>.key (job: Kai-only admin:all key).
-// A key file may carry "agentIdPrefix": it then verifies ONLY agent ids "<prefix>-..." / "<prefix>",
+// A key file may carry "agentIdPrefix": it then verifies ONLY agent ids "<prefix>-..." (a bare "<prefix>" is refused),
 // so a Kai key cannot be used to sign as anyone else.
 const KEY_NAME = /^[a-z0-9]{2,32}$/;
 function keyFileFor(name, base = process.env.POPTY_AGENT_ADMIN_KEY_FILE || DEFAULT_KEY_FILE) {
@@ -94,7 +94,7 @@ function loadAllKeys(file) {
 }
 
 function prefixAllows(k, agentId) {
-  return !k.agentIdPrefix || agentId === k.agentIdPrefix || agentId.startsWith(k.agentIdPrefix + '-');
+  return !k.agentIdPrefix || agentId.startsWith(k.agentIdPrefix + '-');
 }
 
 /** The verified agent user for a request the front door admitted with admin:all, else null. */

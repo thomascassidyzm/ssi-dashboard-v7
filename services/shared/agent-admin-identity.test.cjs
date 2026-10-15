@@ -65,6 +65,16 @@ describe('second (Kai) key', () => {
   })
 })
 
+describe('Kai key prefix is strict', () => {
+  const kai = { secret: 'b'.repeat(64), scopes: [SCOPES.ADMIN_ALL], agentIdPrefix: 'kai' }
+  const v = createAgentAdminVerifier({ keys: [key, kai], now: () => T * 1000, logger: quiet })
+  it('refuses the bare id "kai", accepts kai-<id>', () => {
+    const s = (agentId) => signHeader({ secret: kai.secret, agentId, method: 'PATCH', path: '/api/recording/languages/eng/voice/x', body: { email: 'a@b.co' }, ts: T })
+    expect(v.check(req(s('kai')), 'admin:all').status).toBe(401)
+    expect(v.check(req(s('kai-watson')), 'admin:all').ok).toBe(true)
+  })
+})
+
 describe('voice slot patch', () => {
   const voices = {
     m: { voiceId: 'human_aran_eng', gender: 'm' },

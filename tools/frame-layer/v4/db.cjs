@@ -6,7 +6,7 @@
  * refuses. Reads now come from Popty's phrase-v4 read routes
  * (services/shared/phrase-v4-door.cjs), and writes land through the gap-fill door
  * (apply-gap-fill.cjs), as the logged agent named by V4_AGENT_ID (default
- * "phrase-v4"). The call is signed by tools/agent-admin/call.cjs, so the key
+ * "phrase-v4"); V4_KEY=kai signs with the Kai-only key (agent id must start kai-). The call is signed by tools/agent-admin/call.cjs, so the key
  * never reaches this process.
  *
  * Kept SYNCHRONOUS on purpose: every v4 tool calls loadCourse() inline, and the
@@ -20,9 +20,17 @@ const os = require('os');
 const CALL = path.join(__dirname, '..', '..', 'agent-admin', 'call.cjs');
 const agentId = () => process.env.V4_AGENT_ID || 'phrase-v4';
 
+/** Named extra key (V4_KEY, e.g. "kai" -> agent-admin-kai.key), passed to call.cjs as --key. A Kai-only key signs only kai-<id> agents. */
+function keyArgs(agent = agentId(), key = process.env.V4_KEY) {
+  if (!key) return [];
+  if (!/^[a-z0-9]{2,32}$/.test(key)) throw new Error(`V4_KEY must be a key name like "kai" (got ${key})`);
+  if (key === 'kai' && !agent.startsWith('kai-')) throw new Error(`V4_KEY=kai signs only agent ids starting kai- (V4_AGENT_ID=${agent})`);
+  return ['--key', key];
+}
+
 /** One signed call to Popty. Throws with Popty's own words on a non-2xx. */
 function popty(method, urlPath, body) {
-  const args = [CALL, '--agent', agentId()];
+  const args = [CALL, '--agent', agentId(), ...keyArgs()];
   // A body goes by file: a staged gap fill is far past the ~128 KB one argv entry may carry.
   let bodyFile = null;
   if (body !== undefined) {
@@ -60,4 +68,4 @@ function loadCourse(course, { maxSeed = 9999 } = {}) {
     phrases: d.phrases.filter(p => p.phrase_role === 'build' || p.phrase_role === 'use') };
 }
 
-module.exports = { popty, loadCourse, listCourses };
+module.exports = { popty, keyArgs, loadCourse, listCourses };
