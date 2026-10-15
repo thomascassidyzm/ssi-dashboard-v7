@@ -31,11 +31,12 @@ export function whyWords(why, lastError = '') {
  * @param {Set<string>|Map<string,*>|string[]} [p.saved] line ids saved from this device since
  * @returns {object[]} rows: {lineId, why, words, text, oldText, track, batch}
  */
-export function mergeRerecord({ serverItems = [], recordedAlso = [], refusedTakes = [], unsent = [], saved = [] } = {}) {
+export function mergeRerecord({ serverItems = [], recordedAlso = [], refusedTakes = [], unsent = [], saved = [], goneIds = [] } = {}) {
   const has = (s) => (s instanceof Set || s instanceof Map ? (id) => s.has(id) : ((set) => (id) => set.has(id))(new Set(s || [])))
   const isUnsent = has(unsent)
   const isSaved = has(saved)
   const isNowRecorded = has(recordedAlso)
+  const isGone = has(goneIds)
   const refusedById = new Map()
   for (const t of refusedTakes || []) if (t && t.lineId) refusedById.set(t.lineId, t)
   const out = []
@@ -46,12 +47,12 @@ export function mergeRerecord({ serverItems = [], recordedAlso = [], refusedTake
     const refused = refusedById.get(it.lineId)
     // A refusal is the newest thing known about a line: it says what happened to his last try.
     const why = refused ? 'refused' : it.why
-    out.push({ ...it, why, words: whyWords(why, refused && refused.lastError) })
+    out.push({ ...it, why, hasTake: !!refused, words: whyWords(why, refused && refused.lastError) })
   }
   for (const t of refusedById.values()) {
-    if (seen.has(t.lineId) || isUnsent(t.lineId) || isSaved(t.lineId) || isNowRecorded(t.lineId)) continue
+    if (seen.has(t.lineId) || isUnsent(t.lineId) || isSaved(t.lineId) || isNowRecorded(t.lineId) || isGone(t.lineId)) continue
     seen.add(t.lineId)
-    out.push({ lineId: t.lineId, why: 'refused', words: whyWords('refused', t.lastError), text: t.text || '', oldText: null, track: null, batch: null })
+    out.push({ lineId: t.lineId, why: 'refused', hasTake: true, words: whyWords('refused', t.lastError), text: t.text || '', oldText: null, track: null, batch: null })
   }
   return out
 }
@@ -59,4 +60,27 @@ export function mergeRerecord({ serverItems = [], recordedAlso = [], refusedTake
 /** The ids the re-record batch asks the server to add: refused takes it may not have listed. */
 export function alsoIds(refusedTakes = []) {
   return [...new Set((refusedTakes || []).map(t => t && t.lineId).filter(Boolean))]
+}
+
+/**
+ * THE OLD ONES: refused takes on the device whose line is already recorded or no longer in the
+ * artist's lines. They are not misses, so they are not rows; they wait in one "Clear old ones"
+ * action (Aran, 2026-10-15, job #806: "no individual cards"). A line the server still lists as a
+ * miss is never old, whatever else is true of it.
+ * @returns {string[]} line ids
+ */
+export function oldRefusedIds({ serverItems = [], recordedAlso = [], refusedTakes = [], saved = [], goneIds = [] } = {}) {
+  const listed = new Set((serverItems || []).map(i => i && i.lineId))
+  const has = (s) => (s instanceof Set || s instanceof Map ? (id) => s.has(id) : ((set) => (id) => set.has(id))(new Set(s || [])))
+  const wasRecorded = has(recordedAlso), isSaved = has(saved), isGone = has(goneIds)
+  return [...new Set((refusedTakes || []).map(t => t && t.lineId).filter(Boolean))]
+    .filter(id => !listed.has(id) && (wasRecorded(id) || isSaved(id) || isGone(id)))
+}
+
+/** "3 didn't save · 5 skipped · 2 text changed": the counts by reason, zeroes left out. */
+export function breakdownWords(rows) {
+  const n = { refused: 0, skipped: 0, text_changed: 0 }
+  for (const r of rows || []) if (r && r.why in n) n[r.why]++
+  return [[n.refused, "didn't save"], [n.skipped, 'skipped'], [n.text_changed, 'text changed']]
+    .filter(([c]) => c > 0).map(([c, w]) => `${c} ${w}`).join(' · ')
 }
