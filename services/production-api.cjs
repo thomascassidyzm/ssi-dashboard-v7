@@ -624,6 +624,21 @@ const boothKeyGate = boothLinks.createBoothKeyGate({
 })
 logger.info(`[BoothKey] private booth links: grace ${boothKeyGate.graceOn() ? 'ON (id-only links served and logged)' : 'OFF (id-only links refused)'}`)
 
+// "Edit this line" in the booth (Aran, 2026-10-15, job #709): God admins only, relaunch courses
+// only, and every write goes through Popty's course-edit door with the caller's own session.
+// Mounted BEFORE the artists router so its own gate answers its own paths.
+app.use('/api/recording/admin/line-edit',
+  require('./voice-engine/booth-line-edit-router.cjs')({
+    getDb: () => (supabaseClient.isInitialized() ? supabaseClient.getClient() : null),
+    logger,
+    requireAdmin,
+    onEdited: () => {
+      const { invalidateLanguageQueueCache } = require('./voice-engine/recordist-queue-cache.cjs')
+      for (const language of ['cym', 'eng']) invalidateLanguageQueueCache(language)
+      if (supabaseClient.isInitialized()) require('./voice-engine/recordist-queue.cjs').invalidatePhrasePlan(supabaseClient.getClient())
+    },
+  }))
+
 app.use('/api/recording/admin',
   require('./voice-engine/booth-artists-router.cjs')({
     getDb: () => (supabaseClient.isInitialized() ? supabaseClient.getClient() : null),
