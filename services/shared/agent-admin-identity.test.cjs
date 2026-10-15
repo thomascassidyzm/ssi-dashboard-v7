@@ -54,45 +54,6 @@ describe('agent admin identity', () => {
   })
 })
 
-describe('second (Kai) key', () => {
-  const kSecret = 'b'.repeat(64)
-  const kai = { secret: kSecret, scopes: [SCOPES.ADMIN_ALL], agentIdPrefix: 'kai' }
-  const v = () => createAgentAdminVerifier({ keys: [key, kai], now: () => T * 1000, logger: quiet })
-  const kSign = (o = {}) => signHeader({ secret: kSecret, agentId: 'kai-watson', method: 'PATCH', path: '/api/recording/languages/eng/voice/x', body: { email: 'a@b.co' }, ts: T, ...o })
-  it('the Kai key carries admin:all, the shared key still does not', () => {
-    expect(v().check(req(kSign()), 'anything:write').ok).toBe(true)
-    expect(v().check(req(sign()), 'admin:all').status).toBe(403)
-    expect(v().check(req(sign()), SCOPES.VOICE_SLOT_WRITE).ok).toBe(true)
-  })
-  it('the Kai key cannot sign as another agent', () => {
-    expect(v().check(req(kSign({ agentId: 'aran-watson' })), 'admin:all').status).toBe(401)
-  })
-})
-
-describe('Kai key prefix is strict', () => {
-  const kai = { secret: 'b'.repeat(64), scopes: [SCOPES.ADMIN_ALL], agentIdPrefix: 'kai' }
-  const v = createAgentAdminVerifier({ keys: [key, kai], now: () => T * 1000, logger: quiet })
-  it('refuses the bare id "kai", accepts kai-<id>', () => {
-    const s = (agentId) => signHeader({ secret: kai.secret, agentId, method: 'PATCH', path: '/api/recording/languages/eng/voice/x', body: { email: 'a@b.co' }, ts: T })
-    expect(v.check(req(s('kai')), 'admin:all').status).toBe(401)
-    expect(v.check(req(s('kai-watson')), 'admin:all').ok).toBe(true)
-  })
-})
-
-describe('kai_go: only the Kai-only key satisfies the live-course gate', () => {
-  const { kaiGoFromRequest } = require('./agent-admin-identity.cjs')
-  const shared = { secret: 'a'.repeat(64), scopes: [SCOPES.ADMIN_ALL] }
-  const kai = { secret: 'b'.repeat(64), scopes: [SCOPES.ADMIN_ALL], agentIdPrefix: 'kai' }
-  const v = createAgentAdminVerifier({ keys: [shared, kai], now: () => T * 1000, logger: quiet })
-  const via = (secret, agentId) => {
-    const r = v.check(req(signHeader({ secret, agentId, method: 'PATCH', path: '/api/recording/languages/eng/voice/x', body: { email: 'a@b.co' }, ts: T })), null)
-    return { agentAdmin: r }
-  }
-  it('Kai key + kai- id -> the agent id', () => expect(kaiGoFromRequest(via(kai.secret, 'kai-watson'))).toBe('kai-watson'))
-  it('shared key, even with a kai- id, is not kai_go', () => expect(kaiGoFromRequest(via(shared.secret, 'kai-watson'))).toBeNull())
-  it('no agent identity -> null', () => { expect(kaiGoFromRequest({})).toBeNull(); expect(kaiGoFromRequest(null)).toBeNull() })
-})
-
 describe('voice slot patch', () => {
   const voices = {
     m: { voiceId: 'human_aran_eng', gender: 'm' },

@@ -119,6 +119,10 @@ const wanted = (d) => [
 function linkOps(dump, map) {
   const post = applyPlan(dump), ops = [];
   const g = (role, text) => map[`${role}|${text}`];
+  // Make-before-break: a batch with text rows but no clip for a wanted slot would leave new rows silent
+  // and the LEGO on its old voice, so an incomplete render map is refused before any op is emitted.
+  const missing = wanted(dump).filter((r) => !g(r.role, r.text)).map((r) => `${r.role}|${r.text}`);
+  if (missing.length) throw new Error(`render map incomplete, missing: ${missing.join(', ')}`);
   for (const r of post.inserts) for (const [slot, text] of [['known', r.known_text], ['target1', r.target_text], ['target2', r.target_text]]) {
     const a = g(slot, text); if (a) ops.push({ op: 'audio.link', target: 'phrase', phrase_id: r.id, slot, audio_id: a });
   }
@@ -154,5 +158,6 @@ if (require.main === module) {
     }
     console.log(`TOTAL ${apply ? 'spent' : 'would spend'} ${chars} chars, ${refused} refused`);
     if (opt('--out')) fs.writeFileSync(opt('--out'), JSON.stringify(map, null, 1));
+    if (refused) process.exit(2);
   }
 }

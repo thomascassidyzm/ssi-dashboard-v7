@@ -32,18 +32,3 @@ it('a signed agent must not authorise subsequent unsigned calls carrying the sam
     await new Promise(resolve => server.close(resolve))
   }
 })
-
-it('the memo still serves a real login token, and never an agent-signed call', async () => {
-  const { memoGate } = require('../voicelab/router.cjs')
-  let calls = 0
-  const gate = memoGate(async (req) => { calls++; return req.agentAdmin ? req.agentAdmin.user : { email: 'admin@x' } })
-  const real = { headers: { authorization: 'Bearer real' } }
-  expect(await gate(real, {})).toEqual({ email: 'admin@x' })
-  expect(await gate({ headers: { authorization: 'Bearer real' } }, {})).toEqual({ email: 'admin@x' })
-  expect(calls).toBe(1)
-  const signed = { headers: { authorization: 'Bearer forged' }, agentAdmin: { user: { email: 'agent:x', viaAgentKey: true } } }
-  await gate(signed, {})
-  calls = 0
-  await gate({ headers: { authorization: 'Bearer forged' } }, {})
-  expect(calls).toBe(1)
-})

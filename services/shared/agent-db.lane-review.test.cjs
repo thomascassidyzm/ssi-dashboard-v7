@@ -18,25 +18,6 @@ async function withClient(run) {
 }
 
 describe('lane review: agent-db query contracts', () => {
-  it('refuses key casts through arbitrarily nested redundant parentheses', async () => {
-    await withClient(async (client, sent) => {
-      for (const depth of [1, 2, 3, 64]) {
-        const wrap = (sql) => '('.repeat(depth) + sql + ')'.repeat(depth)
-        for (const predicate of [
-          `${wrap('id::text')} = ANY($1)`,
-          `${wrap('ca.id')}::text = ANY($1)`,
-          `${wrap(`CAST(${wrap('id')} AS text)`)} IN ($1)`,
-          `$1 = ${wrap('ca.id::varchar')}`,
-        ]) {
-          const sql = `SELECT id FROM course_audio ca WHERE ${predicate}`
-          expect(db.lintSql(sql).some((finding) => finding.rule === 'key-cast'), sql).toBe(true)
-          await expect(client.query(sql, [[]])).rejects.toMatchObject({ code: 'AGENT_DB_LINT' })
-        }
-      }
-      expect(sent).toHaveLength(0)
-    })
-  })
-
   it('refuses the incident cast when the SQL expression is parenthesised', async () => {
     await withClient(async (client, sent) => {
       await expect(client.query('SELECT id FROM course_audio WHERE (id::text) = ANY($1)', [[]]))

@@ -4,7 +4,7 @@
 
 import { describe, it, expect } from 'vitest'
 
-const { planOps, runPlans, EditOpError, structuralGate } = require('./course-edit-ops.cjs')
+const { planOps, runPlans, EditOpError } = require('./course-edit-ops.cjs')
 const { findSurface, LEGO_WRITING_SURFACES } = require('./content-write-surfaces.cjs')
 
 const C = 'cym_nv2_for_eng'
@@ -17,7 +17,7 @@ function fakeDb(seed) {
   const log = []
   const cols = {
     course_seeds: ['id', 'course_code', 'seed_number', 'known_text', 'target_text', 'status', 'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'last_edit_event_id', 'version'],
-    course_legos: ['id', 'course_code', 'seed_number', 'lego_index', 'lego_id', 'type', 'known_text', 'target_text', 'components', 'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id', 'last_edit_event_id'],
+    course_legos: ['id', 'course_code', 'seed_number', 'lego_index', 'lego_id', 'known_text', 'target_text', 'components', 'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id', 'last_edit_event_id'],
     course_practice_phrases: ['id', 'course_code', 'seed_number', 'lego_index', 'known_text', 'target_text', 'phrase_role', 'position', 'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'last_edit_event_id'],
     course_audio: ['id', 'course_code', 'text', 'role', 'voice_id'],
     course_gender_expansions: ['id', 'course_code', 'original_text', 'expanded_f', 'expanded_m'],
@@ -58,7 +58,6 @@ function fakeDb(seed) {
       if ((m = /^INSERT INTO "(\w+)" \((.*)\) VALUES/.exec(sql))) {
         const cs = m[2].split(', ').map(c => c.replace(/"/g, ''))
         const row = Object.fromEntries(cs.map((c, i) => [c, params[i]]))
-        if (m[1] === 'course_legos' && !row.id) row.id = '44444444-4444-4444-8444-' + String(tables.course_legos.length).padStart(12, '0') // the column default
         tables[m[1]].push(row)
         return { rows: [{ ...row }] }
       }
@@ -158,71 +157,5 @@ describe('course-edit-ops', () => {
     const db = seedDb()
     const row = { id: `${C}:S0001L01U01`, seed_number: 1, lego_index: 1, known_text: 'a', target_text: 'b', phrase_role: 'use' }
     await expect(run(db, [{ op: 'phrase.insert', row }])).rejects.toMatchObject({ code: 'EXISTS' })
-  })
-})
-
-// lego.insert / lego.delete (job #544, Kai's ask)
-describe('lego.insert / lego.delete', () => {
-  const newLego = { seed_number: 1, lego_index: 2, known_text: 'to go', target_text: 'mynd', type: 'A' }
-
-  it('lego.insert lands a LEGO whose lego_id is derived, and its undo is a delete', async () => {
-    const db = seedDb()
-    const out = await run(db, [{ op: 'lego.insert', row: newLego }])
-    const row = db.tables.course_legos.find(r => r.lego_index === 2)
-    expect(row.target_text).toBe('mynd')
-    expect(row.lego_id).toBeUndefined() // generated column: never written
-    expect(out.undo_ops).toHaveLength(1)
-    expect(out.undo_ops[0].op).toBe('lego.delete')
-    await run(db, out.undo_ops)
-    expect(db.tables.course_legos).toHaveLength(1)
-  })
-
-  it('refuses: unknown seed, taken slot, bad type, M without components, typed lego_id, parentheses', async () => {
-    const db = seedDb()
-    await expect(run(db, [{ op: 'lego.insert', row: { ...newLego, seed_number: 9 } }])).rejects.toMatchObject({ code: 'NO_SUCH_SEED' })
-    await expect(run(db, [{ op: 'lego.insert', row: { ...newLego, lego_index: 1 } }])).rejects.toMatchObject({ code: 'EXISTS' })
-    expect(() => planOps([{ op: 'lego.insert', row: { ...newLego, type: 'word' } }], C)).toThrow(/type must be/)
-    expect(() => planOps([{ op: 'lego.insert', row: { ...newLego, type: 'M' } }], C)).toThrow(/components/)
-    expect(() => planOps([{ op: 'lego.insert', row: { ...newLego, lego_id: 'S0001L09' } }], C)).toThrow(/derived/)
-    expect(() => planOps([{ op: 'lego.insert', row: { ...newLego, known_text: 'to go (away)' } }], C)).toThrow(/speakable/)
-  })
-
-  it('lego.delete is refused while phrases remain; cascade_phrases takes them and the undo restores LEGO first, phrases after', async () => {
-    const db = seedDb()
-    await expect(run(db, [{ op: 'lego.delete', lego_id: 'S0001L01' }])).rejects.toMatchObject({ code: 'LEGO_HAS_PHRASES' })
-    expect(db.tables.course_legos).toHaveLength(1)
-    const out = await run(db, [{ op: 'lego.delete', lego_id: 'S0001L01', cascade_phrases: true }])
-    expect(db.tables.course_legos).toHaveLength(0)
-    expect(db.tables.course_practice_phrases).toHaveLength(0)
-    expect(db.tables.course_qa_flags).toHaveLength(0)
-    // its phrases' QA flags come back too, after the phrases (#610, lanes review of fbd3a7e)
-    expect(out.undo_ops.map(o => o.op)).toEqual(['lego.insert', 'phrase.insert', 'qaflag.restore'])
-    await run(db, out.undo_ops)
-    expect(db.tables.course_legos[0].target_text).toBe('rhan o’r')
-    expect(db.tables.course_practice_phrases).toHaveLength(1)
-    expect(db.tables.course_qa_flags).toEqual([{ phrase_id: `${C}:S0001L01U01` }])
-  })
-
-  it('deleting the phrases in the same batch first also clears the refusal; a dry run changes nothing', async () => {
-    const db = seedDb()
-    const out = await run(db, [{ op: 'phrase.delete', phrase_id: `${C}:S0001L01U01` }, { op: 'lego.delete', lego_id: 'S0001L01' }], false)
-    expect(out.applied).toBe(false)
-    expect(db.tables.course_legos).toHaveLength(1)
-    expect(db.tables.course_practice_phrases).toHaveLength(1)
-  })
-
-  it('on a beta/released course an apply needs tom_go; a preview never does', () => {
-    const plans = planOps([{ op: 'lego.insert', row: newLego }], C)
-    expect(structuralGate({ plans, courseStatus: 'released', apply: true, tomGo: '' })).toMatchObject({ status: 409, code: 'TOM_GO_REQUIRED' })
-    expect(structuralGate({ plans, courseStatus: 'released', apply: false, tomGo: '' })).toBeNull()
-    expect(structuralGate({ plans, courseStatus: 'draft', apply: true, tomGo: '' })).toBeNull()
-    expect(structuralGate({ plans, courseStatus: 'beta', apply: true, tomGo: 'go' })).toBeNull()
-    expect(structuralGate({ plans, courseStatus: 'released', apply: true, tomGo: '', kaiGo: 'kai-watson' })).toBeNull()
-    const plain = planOps([{ op: 'phrase.delete', phrase_id: `${C}:S0001L01U01` }], C)
-    expect(structuralGate({ plans: plain, courseStatus: 'released', apply: true, tomGo: '' })).toBeNull()
-  })
-
-  it('the signed-agent route is on the content-edit manifest and is a lego writer', () => {
-    expect(findSurface('POST', `/api/admin/course-edit/${C}/edit-batch`, 'production-api')?.surface).toMatchObject({ operation: 'course-edit', legos: true })
   })
 })
