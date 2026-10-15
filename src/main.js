@@ -6,6 +6,7 @@ import App from './App.vue'
 import router from './router'
 import { installAuthFetch } from './services/authFetch'
 import { installChunkReloadRecovery } from './router/chunkRecovery'
+import { installVersionReload } from './router/versionReload'
 import { pinMachineEnvironment } from './services/machineEnvironment'
 
 // Which machine this browser talks to — before any request, for every role.
@@ -33,29 +34,23 @@ installChunkReloadRecovery(router)
 
 app.mount('#app')
 
-// Stale-version detection: check if a newer build has been deployed
-// Runs on visibility change (tab focus) — auto-reloads if version mismatch
+// Stale-version detection: a newer build deployed reloads the tab — on coming back into view, every
+// few minutes, and on every page move; held while the booth would lose a take (versionReload.js).
 const BUILD_VERSION = typeof __GIT_COMMIT__ !== 'undefined' ? __GIT_COMMIT__ : null
 
 if (BUILD_VERSION && typeof document !== 'undefined') {
-  let checking = false
-
-  document.addEventListener('visibilitychange', async () => {
-    if (document.visibilityState !== 'visible' || checking) return
-    checking = true
-    try {
+  installVersionReload({
+    current: BUILD_VERSION,
+    router,
+    fetchLatest: async () => {
       const resp = await fetch('/version.json?_t=' + Date.now(), { cache: 'no-store' })
-      if (resp.ok) {
-        const { version } = await resp.json()
-        if (version && version !== BUILD_VERSION) {
-          console.log(`[Popty] New version detected: ${version} (current: ${BUILD_VERSION}). Reloading...`)
-          window.location.reload()
-        }
-      }
-    } catch {
-      // Offline or version.json not deployed yet — ignore
-    } finally {
-      checking = false
-    }
+      if (!resp.ok) return null
+      const { version } = await resp.json()
+      return version || null
+    },
+    reload: () => {
+      console.log(`[Popty] New version detected (current: ${BUILD_VERSION}). Reloading...`)
+      window.location.reload()
+    },
   })
 }

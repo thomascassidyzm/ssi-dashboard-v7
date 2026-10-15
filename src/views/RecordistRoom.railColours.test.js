@@ -112,6 +112,9 @@ describe('rail squares and the way on from a finished batch', () => {
     openBatchTwo()
     const w = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
     await flushPromises()
+    // Saved and uploading lines are out of the reading flow until "show" (job #816).
+    expect(w.findAll('[data-test="rail"] .rail-sq').length).toBe(2)
+    await w.find('[data-test="hidden-toggle"]').trigger('click')
     const sq = w.findAll('[data-test="rail"] .rail-sq').map(s => ['done', 'up', 'failed'].find(k => s.classes(k)) || 'empty')
     expect(sq).toEqual(['done', 'up', 'failed', 'empty'])
     expect(w.find('[data-test="rail-legend"]').text()).toContain('Saved on the server')
