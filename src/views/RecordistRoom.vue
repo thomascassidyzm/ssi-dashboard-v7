@@ -180,6 +180,7 @@
               </template>
               <template v-else>
                 <p class="ready-line all-done">Everything is recorded.</p>
+                <p v-if="batchUploadingNote" class="note done" data-test="batch-uploading">{{ batchUploadingNote }}</p>
                 <p class="note done">Open <strong>Lines &amp; settings</strong> and tap any line to read it again.</p>
               </template>
             </template>
@@ -312,6 +313,7 @@
         <main v-else class="rc-card centre done-card" data-test="done">
           <h2>{{ doneHeadline }}</h2>
           <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
+          <p v-if="batchUploadingNote" class="note" data-test="batch-uploading">{{ batchUploadingNote }}</p>
           <p v-if="queue.pendingCount.value > 0" class="note">{{ doneNote }}</p>
           <p v-else-if="sessionLines.length" class="done-sub">Hear any take, or read it again.</p>
 
@@ -1446,6 +1448,14 @@ const readyIndex = computed(() => {
     if (i !== -1) return i
   }
   return startIndex.value
+})
+// A BATCH WHOSE EVERY LINE HAS A TAKE — saved, or recorded and still going up from this device —
+// is done, and uploading never holds him on it (Aran, 15 Oct: a fully amber batch offered no way
+// on). A refused line is still owed, so it keeps `remainingToRead` above zero and says nothing here.
+const batchUploadingNote = computed(() => {
+  if (remainingToRead.value > 0 || !lines.value.length) return ''
+  const n = lines.value.reduce((c, l) => c + (isPending(l.id) ? 1 : 0), 0)
+  return n > 0 ? `${n} still uploading — they'll finish in the background.` : ''
 })
 const startLine = computed(() => (readyIndex.value === -1 ? null : lines.value[readyIndex.value]))
 // WHERE THE CURSOR IS KEPT: per voice, per batch (or per door link).
