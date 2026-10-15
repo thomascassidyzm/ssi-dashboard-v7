@@ -96,8 +96,9 @@ function femClause(bareIn, fallbackI) {
   const hasAux1 = bare.some((w) => /^(हूँ|हूं)$/.test(w));
   const hasFut1 = bare.some((w) => FUT1.test(w));
   const other = bare.some((w) => OTHER_SUBJ.test(w));
-  if (other) return null; // mixed subjects are unsafe for automatic speaker agreement
   if (!(hasMain || hasAux1 || hasFut1 || (fallbackI && !other))) return null;
+  // "मैं और वह थका हुआ था": a joint subject is plural, not the speaker's own agreement.
+  if (bare.some((w, i) => w === 'मैं' && bare[i + 1] === 'और' && OTHER_SUBJ.test(bare[i + 2] || ''))) return null;
   const out = bare.slice();
   const heads = [];
   bare.forEach((w, i) => { if (AUX.test(w)) heads.push([i, true]); });
@@ -119,9 +120,17 @@ function clauses(text) {
   // each verb group is then read against its own subject, so "मैं थका था
   // और वह सो रहा था" expands only the speaker's half (lanes review of 245b64c).
   const hasI = () => cur.some((t) => punct(t)[0] === 'मैं');
+  // और after a clause that already holds another subject (मुझे लगा…, वह…) starts a new clause: the speaker's
+  // verb after it (… और मैं चाहता हूँ / … और बोलना चाहता हूँ) must not be silenced by that earlier subject (#706).
+  // और with no other subject before it (मैं थका था और सो रहा था; मैं और थका था) never splits.
+  // A pronoun after मैं starts a new clause only once the speaker's clause has finished a verb: in "मैं वो शब्द भूल गया"
+  // and "मैं आप पर भरोसा कर सकता" वो/आप are objects, and cutting there would strip the speaker's own verb.
+  const hasVerb = () => cur.some((t) => /^(था|थी|है|हैं|हूँ|हूं)$|(ता|या|रहा|ूँगा)$/.test(punct(t)[0]));
+  const hasOther = () => cur.some((t) => OTHER_SUBJ.test(punct(t)[0]));
   for (const tok of text.split(' ')) {
     const [b, p] = punct(tok);
-    if ((SPLIT_BEFORE.test(b) || (/^(वह|वो|वे|आप|तुम|हम)$/.test(b) && hasI())) && cur.length) { res.push(cur); cur = []; }
+    if (b === 'और' && hasOther() && cur.length) { res.push(cur); cur = []; }
+    if ((SPLIT_BEFORE.test(b) || (/^(वह|वो|वे|आप|तुम|हम)$/.test(b) && hasI() && hasVerb())) && cur.length) { res.push(cur); cur = []; }
     cur.push(tok);
     if (SPLIT_AFTER.test(b) || /[।?!,]/.test(p)) { res.push(cur); cur = []; }
   }
