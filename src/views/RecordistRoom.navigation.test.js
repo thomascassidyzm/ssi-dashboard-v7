@@ -65,6 +65,10 @@ vi.mock('@/composables/useTapRecorder', () => ({
 
 import RecordistRoom from './RecordistRoom.vue'
 
+// Each test is a fresh visit: the booth remembers its line cursor in localStorage per voice
+// and batch (booth-cursor.js), and one test's cursor must not open the next test's Start.
+beforeEach(() => { if (typeof localStorage === 'undefined') return; for (const k of Object.keys(localStorage)) if (k.startsWith('recordist.cursor.')) localStorage.removeItem(k) })
+
 // THE EVERY-LINE LIST IS SECTIONED NOW (2026-09-04). It opens onto shut
 // headings, so a test that wants the rows opens the list and then every section
 // in it — the same two taps Aran makes.
@@ -135,16 +139,19 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
     // says so — it used to say nothing at all, because looking forward from
     // here there was nothing to see.
     expect(wrapper.find('.upnext-head').text()).toContain('2 still to read')
-    expect(wrapper.find('.upnext-list').text()).toContain('llinell un')
-    // And the forward control is Next, not Done: the run is not over.
-    expect(wrapper.find('.ctl-next').text()).toBe('Next')
+    // ONE CURSOR (Aran, 2026-10-15): › never skips, so on the last line it is
+    // Done — and the line still owed above her is named on the one control that
+    // does skip, so it is never stranded.
+    expect(wrapper.find('.ctl-next').text()).toBe('Done')
+    expect(wrapper.find('[data-test="jump-unrecorded"]').text()).toContain('line 1')
 
-    await tapNext(wrapper)
-    // It wrapped round to the one line still owed instead of ending the session
-    // on top of it.
+    clock += 400
+    await wrapper.find('[data-test="jump-unrecorded"]').trigger('click')
+    await flushPromises()
     expect(wrapper.find('.line-target').text()).toBe('llinell un')
     expect(wrapper.find('.stage-progress').text()).toContain('3 of 4')
-    expect(wrapper.find('.ctl-next').text()).toBe('Done')
+    // And from line 1, › is one line on: the next line, recorded or not.
+    expect(wrapper.find('.ctl-next').text()).toBe('›')
   })
 
   it('comes back to a line she rewrote after she had already read it', async () => {
@@ -164,14 +171,19 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
     await wrapper.findAll('.roster-list .row')[3].find('.row-record').trigger('click')
     await flushPromises()
     expect(wrapper.find('.line-target').text()).toBe('llinell pedwar')
-    expect(wrapper.find('.upnext-list').text()).toContain('te, os gwelwch yn dda')
+    expect(wrapper.find('.upnext-head').text()).toContain('3 still to read')
 
-    await tapNext(wrapper)
+    const jump = async () => { clock += 400; await wrapper.find('[data-test="jump-unrecorded"]').trigger('click'); await flushPromises() }
+    await jump()
     expect(wrapper.find('.line-target').text()).toBe('llinell un')
-    await tapNext(wrapper)
+    await jump()
     // The rewritten line is offered again rather than sitting silently owed —
-    // and its one step forward has been given back, so Next can leave it.
+    // and its one step forward has been given back, so the cursor can leave it.
     expect(wrapper.find('.line-target').text()).toBe('te, os gwelwch yn dda')
+    await tapNext(wrapper)
+    expect(wrapper.find('.line-target').text()).toBe('llinell tri')
+    await tapNext(wrapper)
+    expect(wrapper.find('.line-target').text()).toBe('llinell pedwar')
     await tapNext(wrapper)
     // Nothing left anywhere, so the run ends — and the roster on the done
     // screen agrees with it, which is the whole of what went out of whack.
@@ -179,13 +191,13 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
     expect(wrapper.find('.strip-words').text()).toContain('0 still to read')
   })
 
-  it('does not list the same coming-up line twice once the scan wraps', async () => {
+  it('lists what is coming up as the lines › will walk through, in order, each once', async () => {
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_tom_zzz' } })
     await flushPromises()
     await openEveryLine(wrapper)
-    await wrapper.findAll('.roster-list .row')[3].find('.row-record').trigger('click')
+    await wrapper.findAll('.roster-list .row')[1].find('.row-record').trigger('click')
     await flushPromises()
-    expect(wrapper.findAll('.upnext-list li')).toHaveLength(1)
+    expect(wrapper.findAll('.upnext-list li').map(li => li.text())).toEqual(['llinell tri', 'llinell pedwar'])
   })
 })
 

@@ -53,6 +53,10 @@ import { createMemoryBackend } from '@/services/takeStore'
 mic.heard = ref(true)
 import RecordistRoom from './RecordistRoom.vue'
 
+// Each test is a fresh visit: the booth remembers its line cursor in localStorage per voice
+// and batch (booth-cursor.js), and one test's cursor must not open the next test's Start.
+beforeEach(() => { if (typeof localStorage === 'undefined') return; for (const k of Object.keys(localStorage)) if (k.startsWith('recordist.cursor.')) localStorage.removeItem(k) })
+
 const VOICE = 'human_aran_cym_n'
 const COURSE = 'cym_n_for_eng'
 
@@ -225,6 +229,11 @@ describe('the recordist edits their own lines', () => {
     await until(() => counts(w) !== null, 'the ready card after reload')
     await flushPromises()
     expect(counts(w)).toEqual({ recorded: 0, stillToRead: 3 })
+    // THE CURSOR SURVIVES THE RELOAD (Aran, 2026-10-15): he stopped after reading A, so the
+    // booth opens where he left off, on B — and offers the rewritten A, now owed, in one tap.
+    expect(startButton(w)).toEqual({ text: expect.stringContaining('Prynhawn da.'), disabled: false })
+    await w.find('[data-test="ready-to-unrecorded"]').trigger('click')
+    await flushPromises()
     expect(startButton(w)).toEqual({ text: expect.stringContaining('Bore da i chi.'), disabled: false })
 
     // 3. Read the new A, then edit A's KNOWN side. His take is untouched: A

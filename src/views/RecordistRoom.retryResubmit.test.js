@@ -3,7 +3,7 @@
 //
 // @vitest-environment jsdom
 
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { ref, reactive } from 'vue'
 import { mount, flushPromises } from '@vue/test-utils'
 
@@ -32,6 +32,10 @@ vi.mock('@/composables/useTapRecorder', () => ({
 }))
 
 import RecordistRoom from './RecordistRoom.vue'
+
+// Each test is a fresh visit: the booth remembers its line cursor in localStorage per voice
+// and batch (booth-cursor.js), and one test's cursor must not open the next test's Start.
+beforeEach(() => { if (typeof localStorage === 'undefined') return; for (const k of Object.keys(localStorage)) if (k.startsWith('recordist.cursor.')) localStorage.removeItem(k) })
 
 function mountWith(autoVerdict) {
   global.fetch = vi.fn().mockImplementation(() => Promise.resolve({

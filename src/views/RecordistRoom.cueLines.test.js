@@ -50,6 +50,10 @@ vi.mock('@/composables/useTapRecorder', () => ({
 
 import RecordistRoom from './RecordistRoom.vue'
 
+// Each test is a fresh visit: the booth remembers its line cursor in localStorage per voice
+// and batch (booth-cursor.js), and one test's cursor must not open the next test's Start.
+beforeEach(() => { if (typeof localStorage === 'undefined') return; for (const k of Object.keys(localStorage)) if (k.startsWith('recordist.cursor.')) localStorage.removeItem(k) })
+
 const RouterLinkStub = { props: ['to'], template: '<a class="rl" :href="to"><slot/></a>' }
 
 // His line of the health pod, with Siân's either side of it — and a seed,
