@@ -976,6 +976,7 @@ import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router';
 import AudioPlayer from './components/AudioPlayer.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
+import { regenRequest, RegenInterruptedError, INTERRUPTED_MESSAGE } from './regen-request.js';
 import LearningJourneyView from './components/LearningJourneyView.vue';
 import AudioPreviewCourseGaps from './components/AudioPreviewCourseGaps.vue';
 import { getApiUrl } from '@/services/api';
@@ -1816,7 +1817,7 @@ const fetchAuditionUrl = async (audioUuid: string): Promise<string | null> => {
   try {
     const urlResp = await fetch(
       `${getApiBaseUrl()}/api/production/${courseCode.value}/audio/${audioUuid}/url`,
-      { headers: {} }
+      { headers: {}, signal: AbortSignal.timeout(20000) }
     );
     if (urlResp.ok) {
       const urlData = await urlResp.json();
@@ -1855,6 +1856,8 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     );
 
     if (!response.ok) throw new Error('Failed to save phrase');
+    // The saved row, before any render: where it lives, and the clips it points at now.
+    const savedRow = (await response.json().catch(() => ({})))?.phrase || null;
 
     // Update local text state immediately
     const phraseId = phraseToEdit.value.id;
@@ -1901,7 +1904,18 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     // UUID/S3 key per role, rebinds the phrase pointer, returns fresh *_audio_id.
     // CRITICAL: a TEXT edit must use regenerate-PHRASE, never regenerate-single
     // (which re-reads stale course_audio.text → audio/text desync).
-    const regenResp = await authedFetch(
+    // Timed out, re-read and re-sent at most once on a dropped connection (regen-request.js).
+    // Landed = every role's pointer on the saved row has moved off the clip it had at save time.
+    const COLUMN_OF = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id' } as const;
+    const checkLanded = savedRow?.seed_number && savedRow?.lego_index ? async () => {
+      const legoId = `S${String(savedRow.seed_number).padStart(4, '0')}L${String(savedRow.lego_index).padStart(2, '0')}`;
+      const r = await fetch(`${getApiBaseUrl()}/api/production/${courseCode.value}/lego/${legoId}/basket`, { headers: {}, signal: AbortSignal.timeout(20000) });
+      if (!r.ok) return null;
+      const row = ((await r.json()).phrases || []).find((p: any) => p.id === phraseId);
+      if (!row || !roles.every(role => row[COLUMN_OF[role]] && row[COLUMN_OF[role]] !== savedRow[COLUMN_OF[role]])) return null;
+      return { known_audio_id: row.known_audio_id, target1_audio_id: row.target1_audio_id, target2_audio_id: row.target2_audio_id, durations: {} };
+    } : undefined;
+    const sent = await regenRequest((signal) => authedFetch(
       `/api/audio/regenerate-phrase/${courseCode.value}/${encodeURIComponent(phraseId)}`,
       {
         method: 'POST',
@@ -1910,10 +1924,12 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
           target_text: data.target_text,
           roles,
         }),
+        signal,
       }
-    );
+    ), { checkLanded });
 
-    if (!regenResp.ok) {
+    const regenResp = 'res' in sent ? sent.res : null;
+    if (regenResp && !regenResp.ok) {
       const errBody = await regenResp.json().catch(() => ({}));
       const msg = errBody.error || `Regeneration failed (${regenResp.status})`;
       roles.forEach(r => phraseEditModalRef.value?.setAuditionError(r, msg));
@@ -1922,7 +1938,7 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
     // Response: { known_audio_id, target1_audio_id, target2_audio_id, durations:{role:ms} }
     // Only regenerated roles carry fresh ids; HTTP 200 == success (no `success` field).
-    const result = await regenResp.json();
+    const result = regenResp ? await regenResp.json() : (sent as { landed: any }).landed;
     const REGEN_FIELDS = {
       known: { column: 'known_audio_id', uuidField: 'known_audio_uuid' },
       target1: { column: 'target1_audio_id', uuidField: 'target1_audio_uuid' },
@@ -1961,7 +1977,13 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     if (viewMode.value === 'journey') refreshJourneyInPlace();
   } catch (err) {
     console.error('Error saving phrase:', err);
-    phraseEditModalRef.value?.onSaveComplete(false, err instanceof Error ? err.message : 'Save failed');
+    const msg = err instanceof RegenInterruptedError ? INTERRUPTED_MESSAGE
+      : err instanceof TypeError ? INTERRUPTED_MESSAGE // the save itself never reached the server
+      : err instanceof Error ? err.message : 'Save failed';
+    // EVERY spinner still turning stops here, whatever failed: a role left on 'regenerating'
+    // after the request died was the permanent freeze reviewers saw (job #804).
+    phraseEditModalRef.value?.failPendingAuditions(msg);
+    phraseEditModalRef.value?.onSaveComplete(false, msg);
   }
 };
 
@@ -2009,6 +2031,9 @@ const presentationResult = ref<{ audio_id: string; duration_ms: number; created:
 const presentationAudioUrl = ref<string | null>(null);
 // True when nothing is stored for this LEGO and the box holds a suggested draft.
 const presentationIsSuggested = ref(false);
+// The clip's s3_key when the dialog opened (null: no clip yet): an interrupted render has landed
+// iff it moved. Undefined = not known (the read failed, or a render since): then nothing is re-sent.
+let presentationBaselineKey: string | null | undefined;
 
 const onJourneyPresentationEdit = async (item: any) => {
   const legoId = item.legoId || item.lego_id;
@@ -2018,6 +2043,7 @@ const onJourneyPresentationEdit = async (item: any) => {
   presentationTargetText.value = item.target_text || '';
   presentationText.value = '';
   presentationIsSuggested.value = false;
+  presentationBaselineKey = undefined;
   presentationError.value = null;
   presentationResult.value = null;
   presentationAudioUrl.value = null;
@@ -2035,6 +2061,7 @@ const onJourneyPresentationEdit = async (item: any) => {
       const data = await resp.json();
       presentationText.value = data.text || '';
       presentationIsSuggested.value = !!data.is_suggested;
+      presentationBaselineKey = data.s3_key || null;
     }
   } catch (err) {
     console.error('Failed to load presentation text:', err);
@@ -2056,19 +2083,33 @@ const savePresentationAndRegen = async () => {
 
   try {
     const apiBaseUrl = getApiBaseUrl();
-    const resp = await fetch(
-      `${apiBaseUrl}/api/audio/regenerate-presentation/${courseCode.value}/${encodeURIComponent(presentationLegoId.value)}`,
+    const legoId = presentationLegoId.value;
+    const text = presentationText.value.trim();
+    const baseline = presentationBaselineKey;
+    presentationBaselineKey = undefined;
+    const sent = await regenRequest((signal) => fetch(
+      `${apiBaseUrl}/api/audio/regenerate-presentation/${courseCode.value}/${encodeURIComponent(legoId)}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: presentationText.value.trim() }),
+        body: JSON.stringify({ text }),
+        signal,
       }
-    );
-    if (!resp.ok) {
+    ), {
+      checkLanded: baseline === undefined ? undefined : async () => {
+        const r = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/presentation/${encodeURIComponent(legoId)}`, { headers: {}, signal: AbortSignal.timeout(20000) });
+        if (!r.ok) return null;
+        const row = await r.json();
+        if (!row.id || !row.s3_key || row.s3_key === baseline || (row.text || '').trim() !== text) return null;
+        return { audio_id: row.id, duration_ms: row.duration_ms, created: false };
+      },
+    });
+    const resp = 'res' in sent ? sent.res : null;
+    if (resp && !resp.ok) {
       const err = await resp.json().catch(() => ({}));
       throw new Error(err.error || `Regeneration failed (${resp.status})`);
     }
-    const result = await resp.json();
+    const result = resp ? await resp.json() : (sent as { landed: any }).landed;
     presentationResult.value = {
       audio_id: result.audio_id,
       duration_ms: result.duration_ms,
@@ -2080,7 +2121,7 @@ const savePresentationAndRegen = async () => {
       try {
         const urlResp = await fetch(
           `${apiBaseUrl}/api/production/${courseCode.value}/audio/${result.audio_id}/url`,
-          { headers: {} }
+          { headers: {}, signal: AbortSignal.timeout(20000) }
         );
         if (urlResp.ok) {
           const urlData = await urlResp.json();
@@ -2202,7 +2243,9 @@ const regenerateLegoAudio = async () => {
   const apiBaseUrl = getApiBaseUrl();
 
   try {
-    const resp = await fetch(
+    // Timed out like the others, but with no single-LEGO read to check against it is never
+    // re-sent: an interrupted LEGO render says so and the reviewer presses again.
+    const { res: resp } = await regenRequest((signal) => fetch(
       `${apiBaseUrl}/api/audio/regenerate-lego/${courseCode.value}/${encodeURIComponent(legoAudioLegoId.value)}`,
       {
         method: 'POST',
@@ -2212,8 +2255,9 @@ const regenerateLegoAudio = async () => {
           tts_known_text: legoSpokenKnown.value,
           tts_target_text: legoSpokenTarget.value,
         }),
+        signal,
       }
-    );
+    )) as { res: Response };
     if (!resp.ok) {
       const err = await resp.json().catch(() => ({}));
       throw new Error(err.error || `Regeneration failed (${resp.status})`);
@@ -2254,7 +2298,7 @@ const regenerateLegoAudio = async () => {
         try {
           const urlResp = await fetch(
             `${apiBaseUrl}/api/production/${courseCode.value}/audio/${audioId}/url`,
-            { headers: {} }
+            { headers: {}, signal: AbortSignal.timeout(20000) }
           );
           if (urlResp.ok) url = (await urlResp.json()).url || null;
         } catch (e) { /* non-fatal: regen succeeded */ }
