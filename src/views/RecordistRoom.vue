@@ -97,7 +97,7 @@
            Next. Silent on a gapped read, where auto-advance is off by construction. -->
       <label v-if="phase === 'recording' && !isGappedLine" class="stage-auto">
         <input type="checkbox" v-model="autoAdvance" />
-        <span>{{ autoAdvance ? 'Moving on by itself when you stop' : 'Waiting for you — tap Next' }}</span>
+        <span>{{ !autoAdvance ? 'Waiting for you — tap Next' : (hasNext ? 'Moving on by itself when you stop' : 'Last line — tap Done when you have finished') }}</span>
       </label>
 
       <div class="fit-body">
@@ -465,6 +465,34 @@
             </template>
           </nav>
 
+          <!-- EVERY LINE OF THIS BATCH, READABLE (Aran, 2026-10-15): the map below was grey squares
+               you had to hover to read, which a phone cannot do. One row per line: its number, the
+               words, the known side small beneath, and the rail's coloured dot. The words are the way
+               onto the line (the cursor goes there; Start opens on it); ▶ plays his take of it where
+               it sits and moves nothing. -->
+          <section v-if="lines.length" class="batch-lines" data-test="batch-lines-wrap">
+            <h3 class="bl-head">{{ batchScope ? 'Lines in this batch' : 'Your lines' }} · {{ recordedCount }} of {{ lines.length }} recorded</h3>
+            <ol class="bl-list" data-test="batch-lines">
+              <li v-for="(l, i) in lines" :key="l.id || i" class="bl-row" :class="{ now: i === readyIndex, playing: playingId === l.id }">
+                <button type="button" class="bl-go" :aria-label="`Go to line ${i + 1}`" :aria-current="i === readyIndex ? 'true' : null" @click="onListTap(i)">
+                  <span class="bl-num">{{ i + 1 }}</span>
+                  <i class="bl-dot" :class="lineDot(l)" :title="lineStateWords(l)" aria-hidden="true"></i>
+                  <span class="bl-words">
+                    <span class="bl-text">{{ plainText(l.text) }}</span>
+                    <span v-if="l.knownText" class="bl-known">{{ plainText(l.knownText) }}</span>
+                  </span>
+                </button>
+                <button v-if="hasTake(l)" type="button" class="bl-play" :class="{ on: playingId === l.id }"
+                        :aria-label="playingId === l.id ? `Stop line ${i + 1}` : `Play your take of line ${i + 1}`"
+                        @click="playFromList(l.id)">{{ playingId === l.id ? '■' : '▶' }}</button>
+              </li>
+            </ol>
+            <ul class="bl-legend">
+              <li v-for="k in RAIL_LEGEND" :key="k.state"><i class="bl-dot" :class="k.state"></i>{{ k.words }}</li>
+            </ul>
+            <p v-if="playbackError" class="note error">{{ playbackError }}</p>
+          </section>
+
           <!-- THE PRACTICE-PHRASE BATCH (Aran, 2026-10-13, job #619): which pass, which batch of
                how many, and that the rest come later. -->
           <div v-if="showPhraseCard" class="volume-card phrase-card" data-test="phrase-batch">
@@ -566,7 +594,12 @@
             </div>
           </section>
 
-          <!-- THE MAP: every line, each a way back onto it ("Read it again"). -->
+          <!-- THE MAP: every line, each a way back onto it ("Read it again"). The list above replaced
+               it as the way to read a batch (Aran, 2026-10-15), so the squares are behind a toggle. -->
+          <button type="button" class="grid-toggle" data-test="grid-toggle" :aria-expanded="showGrid ? 'true' : 'false'" @click="showGrid = !showGrid">
+            {{ showGrid ? 'Hide the squares' : 'Show every line as squares' }}
+          </button>
+          <div v-show="showGrid" class="grid-wrap">
           <RecordistRoster
             ref="rosterRef"
             :sections="rosterSections"
@@ -584,6 +617,7 @@
             @cancel-edit="cancelEdit"
             @save="saveEdit($event.id, $event.text, $event.side)"
           />
+          </div>
 
           <!-- THERE IS NO "RE-READ LINES I'VE ALREADY RECORDED" SWITCH (Tom, 2026-09-11): a line
                with a confirmed take is never served again as a thing to read. Hearing back what
@@ -1534,6 +1568,34 @@ function onRailTap(i) {
   if (phase.value === 'recording') return goToLine(i)
   if (phase.value === 'ready') pinCursor(l.id)
 }
+// THE BATCH LIST (Aran, 2026-10-15). A row's dot wears the rail's four colours, from the same facts.
+const showGrid = ref(false)
+function lineDot(l) {
+  const c = railClass(l, -1)
+  return c.up ? 'up' : c.failed ? 'failed' : c.done ? 'done' : 'empty'
+}
+// A take to play: stored on the server, this tab's blob, or one still waiting on this device.
+function hasTake(l) {
+  return !!(storedUrlFor(l.id) || localUrlFor(l.id) || queue.isUnsent(l.id))
+}
+// Tapping the words moves the cursor: before Start, Start opens there; from the done screen, back
+// to the batch page standing on it. The sheet steps aside so the line is in view.
+function onListTap(i) {
+  const l = lines.value[i]
+  if (!l || editingId.value) return
+  pinCursor(l.id)
+  closeSheet()
+  if (phase.value === 'done') backToStart()
+}
+// ▶ plays his take of that line and touches nothing else. A take still waiting to upload from an
+// earlier visit has no blob in this tab, so it is read off the device store first.
+async function playFromList(lineId) {
+  if (playingId.value !== lineId && !storedUrlFor(lineId) && !localUrlFor(lineId) && queue.unsentBlob) {
+    const blob = await queue.unsentBlob(lineId).catch(() => null)
+    if (blob) rememberLocalTake(lineId, blob)
+  }
+  togglePlay(lineId)
+}
 // A line tapped on the map opens the mic on it: the sheet steps out of the way first.
 function recordFromSheet(lineId) {
   closeSheet()
@@ -2315,6 +2377,12 @@ watch(() => recorder.quietMs.value, (ms) => {
   // take coming out of the phone speaker would advance the queue for them.
   if (micHeld.value || playingId.value) return
   if (!recorder.lineHasSpeech.value) return
+  // A SILENCE NEVER ENDS THE BATCH (Aran, live, 2026-10-15 15:09 BST, batch 5): on
+  // the last line he pressed Again, began reading, drew breath — and the booth
+  // jumped to the finished screen mid-sentence, because a quiet on the LAST line
+  // was the same call as tapping Done. On the last line it waits: the finished
+  // screen comes only from Done (› past the last line) or Stop, both his own taps.
+  if (!hasNext.value) return
   // No cooldown on a freshly-opened line, deliberately: beginLine() sets
   // lineHasSpeech back to false and quietMs to 0, and the guard above means the
   // watcher cannot fire again until the recordist has actually said something on
@@ -3821,6 +3889,26 @@ kbd {
 }
 .sheet-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0.75rem 1rem 2rem; width: 100%; max-width: 900px; margin: 0 auto; }
 .sheet-settings h3 { margin: 1rem 0 0.5rem; font-size: 1rem; }
+/* THE BATCH LIST: a row per line, the words big enough to read at arm's length on a phone. */
+.batch-lines { margin: 0.5rem 0 1rem; }
+.bl-head { margin: 0.25rem 0 0.5rem; font-size: 0.95rem; font-weight: 700; color: var(--ink-2, #cbd5e1); }
+.bl-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.bl-row { display: flex; align-items: stretch; gap: 0.4rem; border: 1px solid var(--line, #334155); border-radius: 10px; background: var(--surface, #1e293b); }
+.bl-row.now { border-color: #34d399; box-shadow: inset 4px 0 0 #34d399; background: rgba(52, 211, 153, 0.12); }
+.bl-go { flex: 1; min-width: 0; display: flex; align-items: flex-start; gap: 0.55rem; padding: 0.55rem 0.6rem; text-align: left; font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+.bl-num { flex: none; min-width: 2ch; font-size: 0.85rem; font-variant-numeric: tabular-nums; color: var(--ink-2, #94a3b8); padding-top: 0.15rem; text-align: right; }
+.bl-dot { flex: none; display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-top: 0.3rem; background: #334155; }
+.bl-dot.done { background: #34d399; }
+.bl-dot.up { background: #f59e0b; }
+.bl-dot.failed { background: #f87171; }
+.bl-words { min-width: 0; display: flex; flex-direction: column; gap: 0.1rem; }
+.bl-text { font-size: 1.05rem; line-height: 1.3; overflow-wrap: anywhere; }
+.bl-known { font-size: 0.8rem; line-height: 1.25; color: var(--ink-2, #94a3b8); overflow-wrap: anywhere; }
+.bl-play { flex: none; align-self: center; width: 44px; height: 44px; margin-right: 0.35rem; border-radius: 50%; border: 0; cursor: pointer; font-size: 1rem; background: #34d399; color: #0f172a; }
+.bl-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; list-style: none; margin: 0.5rem 0 0; padding: 0; font-size: 0.78rem; color: var(--ink-2, #cbd5e1); }
+.bl-legend li { display: flex; align-items: center; gap: 0.35rem; }
+.bl-legend .bl-dot { margin-top: 0; }
+.grid-toggle { margin: 1rem 0 0.5rem; min-height: 40px; padding: 0 1rem; border-radius: 10px; font: inherit; cursor: pointer; color: inherit; background: none; border: 1px solid var(--line, #334155); }
 .sheet .sheet-body { max-width: none; }
 
 @media (min-width: 900px) {
@@ -3889,6 +3977,16 @@ kbd {
 :root[data-theme="light"] .rail-sq.failed { background: #dc2626; }
 :root[data-theme="light"] .rail-legend { color: #334155; }
 :root[data-theme="light"] .rail-sq.now { box-shadow: 0 0 0 2px #0f172a; }
+:root[data-theme="light"] .bl-row { border-color: #dbe3ee; background: #fff; }
+:root[data-theme="light"] .bl-row.now { background: #e6f4ee; border-color: #047857; box-shadow: inset 4px 0 0 #047857; }
+:root[data-theme="light"] .bl-text { color: #0f172a; }
+:root[data-theme="light"] .bl-known, :root[data-theme="light"] .bl-num, :root[data-theme="light"] .bl-legend, :root[data-theme="light"] .bl-head { color: #475569; }
+:root[data-theme="light"] .bl-dot { background: #cbd5e1; }
+:root[data-theme="light"] .bl-dot.done { background: #047857; }
+:root[data-theme="light"] .bl-dot.up { background: #d97706; }
+:root[data-theme="light"] .bl-dot.failed { background: #dc2626; }
+:root[data-theme="light"] .bl-play { background: #047857; color: #fff; }
+:root[data-theme="light"] .grid-toggle { color: #0f172a; border-color: #c9d8ea; background: #fff; }
 :root[data-theme="light"] .sp-row .ctl-pause { background: #047857; }
 :root[data-theme="light"] .sp-row .ctl-pause.paused { background: #a85508; }
 :root[data-theme="light"] .sp-row .btn-finish { background: #b91c1c; }
