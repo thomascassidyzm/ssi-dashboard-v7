@@ -175,18 +175,19 @@ describe('RecordistRoom — one cursor: back six, re-record, carry on from there
 
   it('the cursor survives a reload of the batch', async () => {
     const w = await mountAndStart()
-    await readThrough(w, 9)
+    await readThrough(w, 3)
+    // Walking forward over unrecorded lines files nothing, so line 7 is still owed.
     mic.speech.value = false
-    for (let j = 0; j < 6; j++) await back(w)
-    expect(onLine(w)).toBe('llinell 4')
+    for (let j = 0; j < 3; j++) await next(w)
+    expect(onLine(w)).toBe('llinell 7')
     w.unmount()
     // A fresh page: the ready card and Start open on the line he left.
     const w2 = mount(RecordistRoom, { props: { voiceId: 'human_test_zzz' } })
     await flushPromises()
-    expect(w2.find('[data-test="ready-line"]').text()).toBe('llinell 4')
+    expect(w2.find('[data-test="ready-line"]').text()).toBe('llinell 7')
     await w2.find('.btn-begin').trigger('click')
     await flushPromises()
-    expect(onLine(w2)).toBe('llinell 4')
+    expect(onLine(w2)).toBe('llinell 7')
   })
 
   it('a take whose line is rearranged under its tail is never filed under another line', async () => {
