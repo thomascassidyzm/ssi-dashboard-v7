@@ -8290,7 +8290,10 @@ async function pageAll(build) {
   }
 }
 
-const ADMIN_COURSE_CODE = /^[a-z]{2,4}_for_[a-z]{2,4}$/
+// Dialect/version parts are allowed (cym_nv2_for_eng, cym_s_for_eng): the bare
+// shape refused every Welsh dialect course (lanes review of 3fb3cbf). The route's
+// own course lookup still refuses a code that does not exist.
+const ADMIN_COURSE_CODE = /^[a-z]{2,4}(?:_[a-z0-9]+)*_for_[a-z]{2,4}$/
 
 // POST /api/admin/recompute-decompositions
 //   {courseCode, phrase_ids?: [..], seeds?: [..], apply?: bool}

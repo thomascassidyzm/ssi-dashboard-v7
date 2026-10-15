@@ -137,7 +137,7 @@ function createAgentAdminVerifier({ keyFile = process.env.POPTY_AGENT_ADMIN_KEY_
       return { ok: false, status, error };
     };
     if (!loopbackDirect(req)) return fail(403, 'agent identity is accepted from the same host only');
-    const m = header.match(/^v1\.([^.]+)\.(\d{9,11})\.([0-9a-f]{64})$/);
+    const m = header.match(/^v1\.([a-z0-9_.:-]+)\.(\d{9,11})\.([0-9a-f]{64})$/);
     if (!m) return fail(401, 'malformed x-agent-admin header');
     const [, agentId, tsRaw, sig] = m;
     if (!AGENT_ID.test(agentId)) return fail(401, 'bad agent id');

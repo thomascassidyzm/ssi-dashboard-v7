@@ -73,15 +73,22 @@ const isCastableSlot = (slot) => slot === 'presentation' || registry.SLOTS.inclu
  * it.
  */
 const GATE_MEMO_MS = Number(process.env.VOICELAB_GATE_MEMO_MS || 30000)
+// An agent-signed request is admitted on its signature, before any token is
+// looked at, so whatever Authorization header rode along with it proves
+// nothing: it is neither served from the memo nor stored in it. Storing it
+// turned one signed call into a 30-second reusable password for a made-up
+// bearer token (lanes review of 3fb3cbf, 2026-10-15).
+const isAgentCall = (req, user) => !!(req && req.agentAdmin) || !!(user && user.viaAgentKey)
 function memoGate (gate) {
   const seen = new Map()
   return async (req, res) => {
+    if (isAgentCall(req)) return gate(req, res)
     const token = req.headers && req.headers.authorization
     const now = Date.now()
     const hit = token && seen.get(token)
     if (hit && hit.exp > now) return hit.user
     const user = await gate(req, res)
-    if (user && token && GATE_MEMO_MS > 0) {
+    if (user && token && GATE_MEMO_MS > 0 && !isAgentCall(req, user)) {
       if (seen.size > 200) for (const [k, v] of seen) if (v.exp <= now) seen.delete(k)
       seen.set(token, { user, exp: now + GATE_MEMO_MS })
     }
@@ -1969,4 +1976,4 @@ function mount (app, deps) {
   logger.log?.(`[voicelab] routes mounted: /api/voicelab/* (lab dir ${store.LAB_DIR})`)
 }
 
-module.exports = { mount }
+module.exports = { mount, memoGate }

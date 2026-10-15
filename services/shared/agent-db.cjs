@@ -33,16 +33,25 @@ const path = require('path')
 // A key column (id, *_id) cast to text/varchar and then compared: `x.id::text = …`, `id::text IN`,
 // `audio_id::varchar = ANY(…)`, `CAST(id AS text) = …`. A cast in the SELECT list is harmless and
 // not matched (nothing compares against it).
-const CAST_THEN_COMPARE = /\b((?:\w+\.)?\w*id)\s*::\s*(?:text|varchar|character varying)\b\s*(=|<>|!=|\bin\b|\blike\b|\bilike\b)/gi
-const CAST_FN_THEN_COMPARE = /\bcast\s*\(\s*((?:\w+\.)?\w*id)\s+as\s+(?:text|varchar)\s*\)\s*(=|<>|!=|\bin\b)/gi
+// Brackets around the column or the cast — `(id::text) = …`, `(ca.id)::text = …` — change nothing
+// for the planner, so they must not carry the incident shape past the door (lanes review, 13b446d).
+const CAST_THEN_COMPARE = /\b((?:\w+\.)?\w*id)\s*\)?\s*::\s*(?:text|varchar|character varying)\b\s*\)?\s*(=|<>|!=|\bin\b|\blike\b|\bilike\b)/gi
+const CAST_FN_THEN_COMPARE = /\bcast\s*\(\s*\(?\s*((?:\w+\.)?\w*id)\s*\)?\s+as\s+(?:text|varchar)\s*\)\s*\)?\s*(=|<>|!=|\bin\b)/gi
 // The mirror image: `… = x.id::text` / `= ANY(…) … ` on the right-hand side.
-const COMPARE_THEN_CAST = /(=|<>|!=)\s*((?:\w+\.)?\w*id)\s*::\s*(?:text|varchar)\b(?!\s*\[)/gi
+const COMPARE_THEN_CAST = /(=|<>|!=)\s*\(?\s*((?:\w+\.)?\w*id)\s*\)?\s*::\s*(?:text|varchar)\b(?!\s*\[)/gi
 // Lifting the agent login's cap from inside a script is legal (51 bounded bulk tools do it) but
 // should be deliberate: reported as a warning, never refused.
 const LIFT_TIMEOUT = /\bset\s+(?:local\s+|session\s+)?statement_timeout\b|set_config\s*\(\s*'statement_timeout'/gi
 
-function lintSql(sql) {
-  const text = String(sql)
+// Comments and quoted strings blanked to spaces (same length, so indexes hold): a cast written inside
+// `/* replaces id::text = $1 */` or a string literal is not SQL that runs. Runtime path only —
+// lintFiles reads source files, where the SQL itself sits inside JS strings.
+function blankCommentsAndStrings(sql) {
+  return String(sql).replace(/--[^\n]*|\/\*[\s\S]*?\*\/|'(?:[^']|'')*'/g, (m) => m.replace(/[^\n]/g, ' '))
+}
+
+function lintSql(sql, { executable = false } = {}) {
+  const text = executable ? blankCommentsAndStrings(sql) : String(sql)
   const out = []
   const add = (re, rule, why) => { for (const m of text.matchAll(re)) out.push({ rule, match: m[0].trim(), index: m.index, why }) }
   add(CAST_THEN_COMPARE, 'key-cast', 'casting a key column defeats its index: cast the VALUE instead, e.g. `id = ANY($1::uuid[])`, `id = $1::uuid`, `ca.id = l.presentation_audio_id::uuid`')
@@ -90,11 +99,13 @@ async function connect({ url = agentUrl(), app = process.env.PGAPPNAME || `agent
   const raw = client.query.bind(client)
   client.query = (q, ...rest) => {
     const sql = typeof q === 'string' ? q : q && q.text
-    const bad = sql ? lintSql(sql).filter((f) => f.rule === 'key-cast') : []
+    const bad = sql ? lintSql(sql, { executable: true }).filter((f) => f.rule === 'key-cast') : []
     if (bad.length) {
       const err = new Error(`agent-db refused SQL: ${bad.map((b) => `${b.match} — ${b.why}`).join('; ')}`)
       err.code = 'AGENT_DB_LINT'
-      if (typeof rest[rest.length - 1] === 'function') return rest[rest.length - 1](err)
+      // pg honours a trailing callback and query({ text, values, callback }) alike; so does the refusal
+      const cb = typeof rest[rest.length - 1] === 'function' ? rest[rest.length - 1] : (q && typeof q.callback === 'function' ? q.callback : null)
+      if (cb) { cb(err); return undefined }
       return Promise.reject(err)
     }
     return raw(q, ...rest)
