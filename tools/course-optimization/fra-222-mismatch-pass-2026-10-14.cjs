@@ -198,6 +198,9 @@ async function main() {
     a.real = { status: r.status, source: r.body.source, audioId: r.body.audioId, charsSpent: r.body.charsSpent, error: r.status === 200 && r.body.ok ? undefined : r.body };
     if (a.real.error) { a.ids.forEach((i) => refused.add(i)); console.log('  REFUSED', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 200)); if (r.status === 402) break; }
   }
+  // A 402 stops the loop: every ask it never reached has no clip either, so its rows are held too —
+  // the rows that did render still go on to preview and the evidence save (lanes reviews of 5a2f8af, 7f8438c).
+  for (const a of log.asks) if (!(a.real && a.real.audioId)) a.ids.forEach((i) => refused.add(i));
   log.charsSpent = log.asks.reduce((s, a) => s + ((a.real && a.real.charsSpent) || 0), 0);
   for (const id of refused) p.held.push({ id, rule: 'A4', why: 'its new clip was refused by the audio route, so the text was not switched' });
   p.phrases = p.phrases.filter((c) => !refused.has(c.id));

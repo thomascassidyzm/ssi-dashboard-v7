@@ -4,6 +4,47 @@ const test = require('node:test');
 const assert = require('node:assert');
 const T = require('./fra-222-mismatch-pass-2026-10-14.cjs');
 
+test('a budget refusal holds unattempted rows and still previews completed rows', async () => {
+  const fs = require('node:fs');
+  const vm = require('node:vm');
+  const verdicts = ['S0403L01U04', 'S0407L01U05', 'S0500L01U01'].map((id, i) =>
+    [id, 'real', 'fix', [`new ${i}`, null], 'S7', 'fixture']);
+  const dump = db();
+  dump.phrases.push(ph('S0500L01U01', 'old third', 'third'));
+  const requests = [];
+  const saved = [];
+  let renders = 0;
+  const mod = { exports: {} };
+  const sandbox = {
+    module: mod,
+    process: { argv: ['node', 'tool', 'fixture.json'], env: { RENDER: '1', APPLY: '1' } },
+    console: { log() {} }, AbortSignal,
+    require(name) {
+      if (name === 'fs') return { readFileSync: () => JSON.stringify(dump), mkdirSync() {}, writeFileSync: (_, data) => saved.push(JSON.parse(data)) };
+      if (name.endsWith('.data.cjs')) return verdicts;
+      if (name === './audit-phrase-zut.cjs') return { auditRows: () => ({ bidirectional: { violationsStrict: [] } }) };
+      if (name === '../lib/evidence-path.cjs') return { evidencePath: (p) => p };
+      return require(name);
+    },
+    async fetch(url, options) {
+      const body = JSON.parse(options.body);
+      requests.push({ url, body });
+      let status = 200, result;
+      if (url.endsWith('/edit-batch')) result = { ok: true, results: [] };
+      else if (body.dryRun) result = { ok: true, source: 'would-render', wouldSpendChars: 5 };
+      else if (++renders === 1) result = { ok: true, audioId: '11111111-1111-4111-8111-111111111111', charsSpent: 5 };
+      else { status = 402; result = { ok: false, error: 'budget exhausted' }; }
+      return { status, json: async () => result };
+    },
+  };
+  vm.runInNewContext(fs.readFileSync(require.resolve('./fra-222-mismatch-pass-2026-10-14.cjs'), 'utf8') + '\nmodule.exports.main = main;', sandbox);
+  await mod.exports.main();
+  const preview = requests.find((r) => r.url.endsWith('/edit-batch'));
+  assert.ok(preview, 'completed rows must reach preview');
+  assert.strictEqual(preview.body.ops.filter((o) => o.op === 'phrase.update').length, 1);
+  assert.strictEqual(saved[0].plan.held.length, 2);
+});
+
 const ph = (sid, known, target, role = 'use') => ({ id: `fra_for_eng:${sid}`, phrase_role: role, known_text: known, target_text: target });
 const db = () => ({
   seeds: [],
