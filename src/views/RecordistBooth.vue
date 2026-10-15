@@ -98,7 +98,7 @@ watch(() => props.voiceId, (v, was) => {
 </script>
 
 <style scoped>
-.booth-tabs-page { min-height: 100vh; background: var(--color-void, #0f172a); }
+.booth-tabs-page { min-height: 100vh; min-height: 100dvh; background: var(--color-void, #0f172a); }
 /* A slim second navbar (Aran 2026-10-14, job #421): same family as AppNavbar's sub-row -
    small Josefin type, a hairline under it, the active language marked by an underline, not a fill.
    Gone while a take is live, as the app's own bar is (navbarMode, job #411). */
@@ -120,7 +120,7 @@ watch(() => props.voiceId, (v, was) => {
 .booth-tab {
   position: relative;
   min-width: 5.5rem;
-  min-height: 40px; /* full-width row on a phone gives a wide, 40px-tall target */
+  min-height: 44px; /* full-width row on a phone: a wide target, 44px tall (Apple/WCAG minimum, job #834) */
   padding: 0 0.875rem;
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 0.8125rem;

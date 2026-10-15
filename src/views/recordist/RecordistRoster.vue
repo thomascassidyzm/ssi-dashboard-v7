@@ -791,6 +791,7 @@ function toggleStrip(key) {
   margin: 0.4rem 0 0.6rem;
   padding: 0 0.6rem;
   max-height: 52vh;
+  max-height: 52dvh;
   overflow-y: auto;
   border: 1px solid var(--color-graphite, #475569);
   border-radius: 12px;

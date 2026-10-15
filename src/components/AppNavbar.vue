@@ -702,5 +702,14 @@ onUnmounted(() => {
     right: 0.75rem;
     left: auto;
   }
+
+  /* THE BOOTH ON A PHONE (Aran, 2026-10-15, job #834). Readers tap this bar with a thumb, so its
+     links are 44px targets (they were 27–32px). And on an admin's booth the row of machine and
+     course pickers is wider than a phone, which left the avatar — Sign out, the theme — scrolled
+     out of sight past its right edge: on the booth the avatar comes first in that row instead. */
+  .navbar-booth .tab-item,
+  .navbar-booth .navbar-brand { min-height: 44px; display: inline-flex; align-items: center; }
+  .navbar-booth .avatar-btn { width: 44px; height: 44px; }
+  .navbar-booth .navbar-right .user-menu { order: -1; }
 }
 </style>

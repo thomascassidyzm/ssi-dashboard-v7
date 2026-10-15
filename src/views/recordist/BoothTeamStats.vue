@@ -111,7 +111,7 @@ onMounted(() => {
 .bt-when.today { color: var(--color-emerald, #06ffa5); font-weight: 600; }
 .bt-meta { font-size: 0.74rem; color: var(--color-paper-dim, #c1c1bb); line-height: 1.35; }
 .bt-row { display: flex; flex-direction: column; padding-top: 0.45rem; margin-top: 0.35rem; border-top: 1px solid var(--color-graphite, #475569); }
-.bt-proj { font-size: 0.8rem; font-weight: 600; color: var(--color-paper, #f7f7f2); line-height: 1.3; }
+.bt-proj { font-size: 0.8rem; font-weight: 600; color: var(--color-paper, #f7f7f2); line-height: 1.3; overflow-wrap: anywhere; }
 .bt-row.other .bt-proj { font-weight: 500; color: var(--color-paper-dim, #c1c1bb); }
 .bt-row.done .bt-bar > i { background: var(--color-paper-dim, #c1c1bb); }
 .bt-bar { display: block; height: 6px; background: var(--color-graphite, #475569); border-radius: 99px; overflow: hidden; margin: 0.2rem 0 0.1rem; }
