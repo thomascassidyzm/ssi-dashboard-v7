@@ -4,7 +4,7 @@
 
 import { describe, it, expect } from 'vitest'
 
-const { planOps, runPlans, EditOpError, structuralGate } = require('./course-edit-ops.cjs')
+const { planOps, runPlans, EditOpError, structuralGate, courseStatusFromRead } = require('./course-edit-ops.cjs')
 const { findSurface, LEGO_WRITING_SURFACES } = require('./content-write-surfaces.cjs')
 
 const C = 'cym_nv2_for_eng'
@@ -217,6 +217,12 @@ describe('lego.insert / lego.delete', () => {
     expect(structuralGate({ plans, courseStatus: 'released', apply: true, tomGo: '', kaiGo: 'kai-watson' })).toBeNull()
     const plain = planOps([{ op: 'phrase.delete', phrase_id: `${C}:S0001L01U01` }], C)
     expect(structuralGate({ plans: plain, courseStatus: 'released', apply: true, tomGo: '' })).toBeNull()
+  })
+
+  it('a failed course-status read throws (fail closed) instead of reading as no gate', () => {
+    expect(() => courseStatusFromRead({ data: null, error: { message: 'PGRST boom' } })).toThrow('PGRST boom')
+    expect(courseStatusFromRead({ data: { status: 'released' }, error: null })).toBe('released')
+    expect(courseStatusFromRead({ data: null, error: null })).toBeNull()
   })
 
   it('the signed-agent route is on the content-edit manifest and is a lego writer', () => {

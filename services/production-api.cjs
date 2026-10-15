@@ -8165,8 +8165,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
   if (apply && plans.some(p => p.structural)) {
     let courseStatus = null
     try {
-      const { data: c } = await supabaseClient.getClient().from('courses').select('status').eq('course_code', courseCode).maybeSingle()
-      courseStatus = c ? c.status : null
+      courseStatus = courseEditOps.courseStatusFromRead(await supabaseClient.getClient().from('courses').select('status').eq('course_code', courseCode).maybeSingle())
     } catch (e) { req.contentEdit?.wroteNothing(); return res.status(503).json({ error: `cannot read course status: ${e.message}`, code: 'STATUS_UNREADABLE', applied: false }) }
     const kaiGo = agentAdminIdentity.kaiGoFromRequest(req)
     const refused = courseEditOps.structuralGate({ plans, courseStatus, apply, tomGo: req.body?.tom_go, kaiGo })

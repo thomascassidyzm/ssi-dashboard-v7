@@ -486,3 +486,10 @@ function structuralGate({ plans, courseStatus, apply, tomGo, kaiGo }) {
   return null;
 }
 module.exports.structuralGate = structuralGate;
+
+/** A client read resolves {data:null,error} rather than throwing; an unreadable status must stop the write, not read as "no gate". Throws on error. */
+function courseStatusFromRead({ data, error } = {}) {
+  if (error) throw new Error(error.message || String(error));
+  return data ? data.status : null;
+}
+module.exports.courseStatusFromRead = courseStatusFromRead;
