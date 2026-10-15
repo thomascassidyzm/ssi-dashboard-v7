@@ -254,6 +254,44 @@ function buildRerecordList(queue, takes = [], idx = indexQueue(queue)) {
 }
 
 /**
+ * THE FOURTH REASON, 'didnt_match' (job #842, Tom's condition on moving the script check after
+ * the upload's reply): a take that was SAVED but whose background whisper check says it does not
+ * say its line (services/take-text-check-queue.cjs failuresFor). Unlike the other three the line
+ * IS recorded — that is the point: the take is stored, and still needs reading again. A failure
+ * for a line no longer in the reader's lines is dropped (nothing to open).
+ *
+ * @param {{items, pool, firstIndex}} list buildRerecordList's result (not mutated)
+ * @param {object[]} failures {lineId, takeId, heard, reason, checkedAt}
+ * @returns {{items, pool, firstIndex}} the list with didnt_match items added, in course order
+ */
+function withTextCheckFailures(list, failures = []) {
+  const byId = new Map(list.items.map((it) => [it.lineId, it]))
+  for (const f of failures || []) {
+    const p = f && list.pool.get(f.lineId)
+    if (!p) continue
+    const l = p.line
+    // The failed take is the line's newest news: it outranks a skip or a text change.
+    byId.set(l.id, {
+      lineId: l.id,
+      why: 'didnt_match',
+      text: l.text,
+      knownText: l.knownText || null,
+      oldText: null,
+      recordedAt: f.takenAt || null,
+      heard: f.heard || null,
+      takeId: f.takeId || null,
+      kind: l.kind || 'pod',
+      courseCode: l.courseCode || null,
+      seedNumber: l.seedNumber || null,
+      track: p.track,
+      batch: p.batch,
+    })
+  }
+  const order = courseOrder([...byId.keys()].map((id) => list.pool.get(id).line), list.firstIndex)
+  return { ...list, items: order.map((l) => byId.get(l.id)) }
+}
+
+/**
  * THE RE-RECORD BATCH's lines, for the record screen: every listed line plus the `also` ids the
  * page sends (its refused takes), unrecorded ones only, in course order. Each wire line carries
  * `rerecordWhy` (and `rerecordOldText` for a text change) so the screen can say why it is there.
@@ -265,7 +303,16 @@ function rerecordBatchLines(list, alsoIds = []) {
     if (p && !p.line.recorded && !want.has(id)) want.set(id, { lineId: id, why: 'refused', oldText: null })
   }
   const lines = courseOrder([...want.keys()].map((id) => list.pool.get(id)).filter(Boolean).map((p) => p.line), list.firstIndex)
-  return lines.map((l) => ({ ...l, rerecordWhy: want.get(l.id).why, rerecordOldText: want.get(l.id).oldText || null }))
+  return lines.map((l) => {
+    const w = want.get(l.id)
+    return {
+      ...l,
+      rerecordWhy: w.why,
+      rerecordOldText: w.oldText || null,
+      // a saved take that did not match its words: what whisper heard, and which take (job #842)
+      ...(w.why === 'didnt_match' ? { rerecordHeard: w.heard || null, rerecordTakeId: w.takeId || null } : {}),
+    }
+  })
 }
 
 /** Which of the page's refused-take ids now have a good take (so the card drops them). */
@@ -286,5 +333,5 @@ module.exports = {
   goneAmong,
   RERECORD_TRACK, REACHED_DENSITY, MATCH_SAME_SEED, MATCH_TEXT_ONLY,
   batchesOf, skippedIn, similarity, pairTextChanges, courseOrder, indexQueue, isOrphanTake,
-  buildRerecordList, rerecordBatchLines, recordedAmong,
+  buildRerecordList, rerecordBatchLines, recordedAmong, withTextCheckFailures,
 }
