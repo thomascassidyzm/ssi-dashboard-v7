@@ -184,7 +184,12 @@ async function newPage(browser, engine, [w, h], opts = {}) {
     const req = route.request()
     const url = new URL(req.url())
     const m = req.method()
-    if (opts.answer) { const a = await opts.answer(req, url, route); if (a) return }
+    if (opts.answer) {
+      // A page closed mid-answer (the scenario moved on) is not an error worth crashing the run for.
+      let a = false
+      try { a = await opts.answer(req, url, route) } catch (e) { if (/closed|disposed/i.test(e.message)) return; throw e }
+      if (a) return
+    }
     if (m !== 'GET' && m !== 'HEAD') { blocked.push(`${m} ${url.pathname}`); return route.abort() }
     if (DIST && url.origin === BASE && !url.pathname.startsWith('/api/')) {
       let p = join(DIST, decodeURIComponent(url.pathname))
