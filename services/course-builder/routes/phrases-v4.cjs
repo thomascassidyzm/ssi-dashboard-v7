@@ -22,12 +22,12 @@ module.exports = function phrasesV4Routes(ctx) {
   router.post('/phrases/v4/generate/:courseCode', async (req, res) => {
     const courseCode = req.params.courseCode;
     const body = req.body || {};
+    if (/^cym/.test(courseCode)) return res.status(409).json({ ok: false, code: 'WELSH_EXCLUDED', error: 'Welsh is excluded from phrase v4 (r-2026-09-27): use POST /api/phrases/v3/generate' });
     const seed = Number(body.seed);
     const lego = Number(body.lego ?? body.lego_index ?? 1);
     if (!Number.isInteger(seed) || seed < 1) return res.status(400).json({ ok: false, error: 'seed is required (a positive integer)' });
     if (!Number.isInteger(lego) || lego < 1) return res.status(400).json({ ok: false, error: 'lego must be a positive integer' });
     if (!/^[a-z]{2,4}_for_[a-z]{2,4}$/.test(courseCode)) return res.status(400).json({ ok: false, error: 'courseCode required (e.g. fra_for_eng)' });
-    if (/^cym/.test(courseCode)) return res.status(409).json({ ok: false, code: 'WELSH_EXCLUDED', error: 'Welsh is excluded from phrase v4 (r-2026-09-27): use POST /api/phrases/v3/generate' });
     const proposedLego = (body.lego_known && body.lego_target)
       ? { known: String(body.lego_known), target: String(body.lego_target), type: String(body.lego_type || 'A').toUpperCase() } : null;
     try {
