@@ -19,6 +19,7 @@ const COURSE = D.COURSE;
 const URL = process.env.POPTY_URL || 'http://localhost:3470';
 const AGENT = 'cat-render-after-cast (job #458)';
 const PURPOSE = 'job #458 cat_for_eng K42 stale/silent slots after Catalan cast';
+const LINK_MAX = 500; // services/shared/link-clip.cjs refuses more per request (TOO_MANY)
 const COLS = { known: ['known_audio_id', 'known_text'], target1: ['target1_audio_id', 'target_text'], target2: ['target2_audio_id', 'target_text'] };
 
 const post = async (p, body) => {
@@ -82,10 +83,13 @@ async function main() {
     if (r.status !== 200 || !r.body.ok) { out.refused.push({ role: a.role, text: a.text, status: r.status, answer: r.body }); console.log('  REFUSED', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 200)); if (r.status === 402) break; continue; }
     if (r.body.source === 'rendered') { out.rendered++; out.spent += r.body.charsSpent || 0; }
     const links = a.slots.map((s) => ({ ...(s.kind === 'lego' ? { legoId: s.ref } : { phraseId: s.ref }), role: s.role, audioId: r.body.audioId, ...(s.current ? { replace: true, expectCurrent: s.current } : {}) }));
-    const l = await post(`/api/production/${COURSE}/link-clip`, { links });
-    out.linked += l.body.linked || 0;
-    for (const x of l.body.results || []) if (!x.ok) { out.linkRefused.push(x); console.log('  LINK-REFUSED', JSON.stringify(x).slice(0, 250)); }
-    if (l.status !== 200 && !(l.body.results || []).length) console.log('  LINK-HTTP', l.status, JSON.stringify(l.body).slice(0, 250));
+    // link-clip refuses a request of more than LINK_MAX links whole (TOO_MANY), so the links go in chunks.
+    for (let k = 0; k < links.length; k += LINK_MAX) {
+      const l = await post(`/api/production/${COURSE}/link-clip`, { links: links.slice(k, k + LINK_MAX) });
+      out.linked += l.body.linked || 0;
+      for (const x of l.body.results || []) if (!x.ok) { out.linkRefused.push(x); console.log('  LINK-REFUSED', JSON.stringify(x).slice(0, 250)); }
+      if (l.status !== 200 && !(l.body.results || []).length) console.log('  LINK-HTTP', l.status, JSON.stringify(l.body).slice(0, 250));
+    }
   }
   console.log(`DONE: rendered ${out.rendered} (${out.spent} chars), slots linked ${out.linked}, render-refused ${out.refused.length}, link-refused ${out.linkRefused.length}`);
 }
