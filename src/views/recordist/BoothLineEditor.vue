@@ -190,14 +190,18 @@ async function undo() {
 </script>
 
 <style scoped>
-.ble-scrim { position: fixed; inset: 0; z-index: 60; display: flex; align-items: flex-start; justify-content: center; padding: 4vh 0.75rem; background: rgba(15, 23, 42, 0.45); overflow-y: auto; }
+/* ABOVE POPTY'S TOP BAR (job #834): at z-index 60 the bar (100) sat over the dialog on a phone and
+   hid its title, its ✕ and the line it names. Top padding clears a notch. */
+.ble-scrim { position: fixed; inset: 0; z-index: 300; display: flex; align-items: flex-start; justify-content: center; padding: max(4vh, env(safe-area-inset-top, 0px)) 0.75rem calc(4vh + env(safe-area-inset-bottom, 0px)); padding-top: max(4dvh, env(safe-area-inset-top, 0px)); background: rgba(15, 23, 42, 0.45); overflow-y: auto; }
 .ble { width: 100%; max-width: 34rem; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 0.9rem 1rem 1rem; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.25); }
 .ble-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem; }
 .ble-x { min-width: 44px; min-height: 44px; background: none; border: 0; color: var(--muted); font-size: 1.1rem; cursor: pointer; }
 .ble-where { margin: 0 0 0.6rem; font-size: 0.8rem; color: var(--muted); }
 .ble-label, .ble-ro-label, .ble-sub { display: block; margin: 0.6rem 0 0.2rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
-.ble-box { width: 100%; box-sizing: border-box; font: inherit; font-size: 1.15rem; line-height: 1.35; padding: 0.5rem 0.6rem; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); resize: vertical; }
-.ble-ro { margin: 0; font-size: 1.15rem; }
+/* Three lines of a long Welsh line in view before it scrolls (it showed two). */
+.ble-box { width: 100%; min-height: calc(3 * 1.35em + 1rem); box-sizing: border-box; font: inherit; font-size: 1.15rem; line-height: 1.35; padding: 0.5rem 0.6rem; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); resize: vertical; }
+.ble-ro { margin: 0; font-size: 1.15rem; overflow-wrap: anywhere; }
+.ble-change { overflow-wrap: anywhere; }
 .ble-live { margin: 0.8rem 0 0; padding: 0.55rem 0.7rem; border-radius: 10px; border: 1px solid var(--accent); color: var(--ink); background: var(--surface-2); }
 .ble-preview { margin-top: 0.8rem; padding: 0.6rem 0.7rem; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2); }
 .ble-change { margin: 0 0 0.35rem; line-height: 1.4; }
