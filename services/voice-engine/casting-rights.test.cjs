@@ -183,3 +183,16 @@ test('a podCast casting admits only its own course; the same voice under a secon
   const events = fs.readFileSync(accessLedger(), 'utf8').trim().split('\n').map((l) => JSON.parse(l)).filter((e) => e.email === SECOND)
   assert.deepStrictEqual(events.map((e) => [e.kind, e.courseCode]), [['reach', 'cym_n_for_eng'], ['refused', 'cym_n_for_spa']])
 })
+
+test('a cast-on-only policy voice is admitted to its castOn courses, which castingForEmail cannot see — and to nothing else', async () => {
+  // Aran's English voice (job #588): castOn names cym_n and cym_s, but the email is podCast-cast on cym_n only.
+  const { boothArrival } = require('./casting-rights.cjs')
+  const recordist = {
+    voiceId: 'human_aran_eng', displayName: 'Aran', language: 'eng', email: 'aran@example.com',
+    castCourses: ['cym_n_for_eng', 'cym_s_for_eng'],
+  }
+  const quiet = { info() {}, warn() {} }
+  const arrival = await boothArrival({ db, recordist, courseCodes: ['cym_n_for_eng', 'cym_s_for_eng', 'cym_n_for_spa'], path: '/r/human_aran_eng', logger: quiet })
+  assert.deepStrictEqual(arrival.reached, ['cym_n_for_eng', 'cym_s_for_eng'])
+  assert.deepStrictEqual(arrival.refused.map((r) => r.courseCode), ['cym_n_for_spa'])
+})

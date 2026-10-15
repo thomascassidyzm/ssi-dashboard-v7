@@ -286,7 +286,19 @@ async function boothArrival({ db, recordist, courseCodes, method = 'GET', path =
   // courses only (resolveCastOnlyRecordist), whatever else its email holds:
   // the same person cast as a second voice on another course arrives there
   // by THAT voice's link, not by this one (job #336, 2026-09-12).
-  if (Array.isArray(recordist.castCourses)) casting = casting.filter((c) => recordist.castCourses.includes(c.courseCode))
+  if (Array.isArray(recordist.castCourses)) {
+    casting = casting.filter((c) => recordist.castCourses.includes(c.courseCode))
+    // A castOn IS A CAST (job #588): a cast-on-only policy voice (Aran's English voice) is named
+    // for a course by the language policy, not by that course's podCast, so castingForEmail
+    // cannot see it. Its own castCourses are admitted by the same link that confines it to them;
+    // without this every English-voice load logged cym_s/cym_sv2 as a REFUSED cast artist
+    // (132 lines in 24h, the nightly red of 2026-10-15).
+    const seen = new Set(casting.map((c) => c.courseCode))
+    for (const courseCode of recordist.castCourses) {
+      if (seen.has(courseCode)) continue
+      casting.push({ courseCode, voiceId: recordist.voiceId, displayName: recordist.displayName, language: recordist.language, via: 'castOn' })
+    }
+  }
   if (!casting.length) {
     // No email-door twin: the link's own answer stands in, so the arrival is
     // still counted rather than dropped for want of an address. For a cast-only
