@@ -120,7 +120,7 @@ describe('RecordistRoom — Pause discards the attempt', () => {
     expect(rec.endLine).not.toHaveBeenCalled()
 
     // The screen says so, in words, and the control is now the way back.
-    expect(wrapper.find('.ctl-pause').text()).toBe('Play')
+    expect(wrapper.find('.ctl-pause').text()).toBe('Resume')
     expect(wrapper.find('.mic-word').text()).toContain('Paused')
     expect(wrapper.find('.pnote').text()).toContain('nothing is being recorded')
 
@@ -153,7 +153,7 @@ describe('RecordistRoom — Pause discards the attempt', () => {
 
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'p' }))
     await flushPromises()
-    expect(wrapper.find('.ctl-pause').text()).toBe('Play')
+    expect(wrapper.find('.ctl-pause').text()).toBe('Resume')
 
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'P' }))
     await flushPromises()

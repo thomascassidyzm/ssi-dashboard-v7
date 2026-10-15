@@ -68,7 +68,7 @@
       <div v-if="phase === 'recording'" class="status" data-test="status">
         <!-- Stop here is dead while the editor is open: it files nothing on the line he is
              standing on, so there was never anything for the pause guard to protect. -->
-        <button class="btn-finish" :disabled="busy || arming || !!editingId" @click="onFinish">Stop</button>
+        <button class="btn-finish" type="button" data-test="stop" aria-label="Stop recording" :disabled="busy || arming || !!editingId" @click="onFinish">Stop</button>
         <!-- ONE MIC SIGNAL. The state word and the waveform in one chip, never two pills that can
              disagree (it replaced ON AIR, the meter's own words, the green "Recording —" line and
              the live dot). The waveform is drawn from the SAME peaks useTapRecorder's meter loop
@@ -89,8 +89,11 @@
           :class="{ paused }"
           :disabled="arming || !!editingId || (busy && !paused)"
           type="button"
+          data-test="pause"
           @click="togglePause"
-        >{{ paused ? 'Play' : 'Pause' }}</button>
+        >{{ paused ? 'Resume' : 'Pause' }}</button>
+        <!-- The shortcut is a hint BESIDE the button, never the only sign of it. Desktop only. -->
+        <span class="key-hint" aria-hidden="true"><kbd>P</kbd></span>
         <span class="status-edge" aria-hidden="true"><i :style="{ width: progressPct + '%' }"></i></span>
       </div>
       <!-- THE AUTO-ADVANCE SWITCH, WHERE HE CAN REACH IT MID-SESSION (Aran, 2026-09-10: "if I
@@ -372,7 +375,7 @@
           <button v-else-if="batchScope" class="btn-begin" @click="goHome">Back to home</button>
         </div>
         <p v-if="phase === 'recording'" class="kbd-hint">
-          <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause · <kbd>B</kbd> back
+          <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>B</kbd> back
         </p>
       </footer>
 
@@ -3398,12 +3401,25 @@ kbd {
   flex: none; position: relative; display: flex; align-items: center; gap: 0.5rem;
   padding: 0.45rem 0.75rem; background: var(--surface, #1e293b); border-bottom: 1px solid var(--line, #334155);
 }
+/* STOP AND PAUSE ARE REAL BUTTONS (Aran, 2026-10-15, job #675: "clear obvious buttons ... instead of
+   just the small text about keyboard shortcuts"). They were 38px outlined ghosts the colour of the
+   bar, so the only loud words on a desktop screen were the shortcut line. Now 48px, filled, with a
+   glyph: Pause green, Stop red, Resume amber (the one lit thing while the mic is held). White text
+   on each; the glyphs are CSS so the button text stays the plain word. */
 .status .btn-finish, .status .ctl-pause {
-  flex: none; width: auto; min-height: 38px; padding: 0 0.8rem; margin: 0;
-  font-family: inherit; font-size: 0.875rem; font-weight: 600; border-radius: 10px;
-  background: var(--surface, #1e293b); color: var(--ink, #f1f5f9); border: 1px solid var(--line, #334155);
+  flex: none; width: auto; min-height: 48px; padding: 0 1rem; margin: 0;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+  font-family: inherit; font-size: 1rem; font-weight: 700; border-radius: 12px; cursor: pointer;
+  color: #fff; border: 0;
 }
-.status .ctl-pause.paused { background: var(--accent, #ffa630); color: #fff; border-color: var(--accent, #ffa630); }
+.status .ctl-pause { background: var(--accent-2, #047857); }
+.status .btn-finish { background: #b91c1c; }
+.status .ctl-pause::before { content: '\23F8'; font-size: 1.1em; }
+.status .btn-finish::before { content: '\25A0'; font-size: 0.9em; }
+.status .ctl-pause.paused { background: #a85508; color: #fff; }
+.status .ctl-pause.paused::before { content: '\25B6'; }
+.status .btn-finish:disabled, .status .ctl-pause:disabled { opacity: 0.45; }
+.key-hint { display: none; font-size: 0.75rem; color: var(--muted, #94a3b8); }
 .status .stage-progress { margin-left: auto; font-size: 0.875rem; font-weight: 700; color: var(--ink, #f1f5f9); white-space: nowrap; }
 .status-edge { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--line, #334155); }
 .status-edge i { display: block; height: 100%; background: var(--accent-2, #34d399); transition: width 0.3s; }
@@ -3558,12 +3574,13 @@ kbd {
   .recordist.fit .line-target, .recordist.fit .ready-line { font-size: 3.1rem; max-width: 30ch; }
   .recordist.fit .upnext-list li:nth-child(-n+3) { display: list-item; }
   .mic .meter { width: 120px; }
+  .key-hint { display: inline; }
 }
 @media (max-width: 480px) {
   .recordist.fit .line-target, .recordist.fit .ready-line, .recordist.fit .edit-box { font-size: 2rem; }
   .mic .meter { width: 40px; }
   .status { gap: 0.35rem; padding: 0.4rem 0.5rem; }
-  .status .btn-finish, .status .ctl-pause { padding: 0 0.6rem; }
+  .status .btn-finish, .status .ctl-pause { padding: 0 0.7rem; font-size: 0.95rem; }
   .where-more { padding: 0; width: 40px; min-height: 40px; }
   .wm-long { display: none; }
   .wm-short { display: inline; }
@@ -3591,7 +3608,10 @@ kbd {
 :root[data-theme="light"] .rail-sq { background: #e5e9ef; }
 :root[data-theme="light"] .rail-sq.up { background: #d97706; }
 :root[data-theme="light"] .rail-sq.now { box-shadow: 0 0 0 2px #0f172a; }
-:root[data-theme="light"] .status .ctl-pause.paused { background: #a85508; border-color: #a85508; }
+:root[data-theme="light"] .status .ctl-pause { background: #047857; }
+:root[data-theme="light"] .status .ctl-pause.paused { background: #a85508; }
+:root[data-theme="light"] .status .btn-finish { background: #b91c1c; }
+:root[data-theme="light"] .key-hint { color: #475569; }
 
 /* WHITE ON EVERY GREEN BUTTON in light mode (Aran, 2026-10-14, job #411: dark text on the green
    "did not read well"). #fff on --accent-2 #047857 is 5.48:1, WCAG AA for any text size. */
