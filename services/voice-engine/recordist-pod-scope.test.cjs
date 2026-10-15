@@ -110,3 +110,19 @@ test('no ?pod= is exactly what it was: the whole course, every pod', async () =>
   assert.strictEqual(body.total, 3)
   assert.strictEqual(body.pod, null)
 })
+
+// THE BLOCKS (job #682): a course+pod link also says which pods of the course
+// this voice has lines in, in course order, so the booth can offer the next one.
+test('a course+pod link carries the voice\'s pods of that course, in course order, with counts', async () => {
+  const { body } = await ask('includeRecorded=1&course=spa_for_eng&pod=health')
+  assert.deepStrictEqual(body.podBlocks, [
+    { podId: 'p-health', slug: 'health', title: 'Health', total: 2, recorded: 0 },
+    { podId: 'p-other', slug: 'senedd', title: 'Senedd', total: 1, recorded: 0 },
+  ])
+  assert.strictEqual(body.lines.length, 2, 'the lines are still the named pod alone')
+})
+
+test('no blocks without ?pod=: a course link is unchanged', async () => {
+  const { body } = await ask('includeRecorded=1&course=spa_for_eng')
+  assert.strictEqual(body.podBlocks, null)
+})

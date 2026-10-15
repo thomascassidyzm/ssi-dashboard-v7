@@ -222,7 +222,8 @@
         </template>
       </div>
 
-      <button v-if="!voice.setupCheck" class="btn-begin" :disabled="startIndex === -1" @click="begin">
+      <PodBlocksCard v-if="podNav && !voice.setupCheck" :nav="podNav" :name-of="podBlockName" @open="openPodBlock" />
+      <button v-if="!voice.setupCheck && !(podNav && podNav.currentDone && startIndex === -1)" class="btn-begin" :disabled="startIndex === -1" @click="begin">
         {{ startIndex === -1 ? 'Nothing left to read' : `Start recording — ${firstLinePreview}` }}
       </button>
       <p v-if="startIndex === -1 && !voice.setupCheck" class="note done">Everything is recorded. Tap any line on the map above to read it again.</p>
@@ -660,6 +661,7 @@
       </nav>
       <h2>{{ doneHeadline }}</h2>
       <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
+      <PodBlocksCard v-if="podNav && podNav.currentDone" :nav="podNav" :name-of="podBlockName" @open="openPodBlock" />
       <!-- "Keep this page open until everything has saved" was the honest thing
            to say while the takes lived in a JavaScript array. It is not the
            honest thing to say now: the recordings are on the device and they go
@@ -804,6 +806,8 @@ import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords } from './recordist/booth-chip-titles.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
+import { podBlockNav, addressWithPod } from './recordist/pod-blocks.js'
+import PodBlocksCard from './recordist/PodBlocksCard.vue'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
@@ -1408,14 +1412,44 @@ function isSettled(l) { return isRecorded(l) || isPending(l.id) }
 // lands in that pod's work rather than at the top of everything he owes. Read
 // off the address, like ?course=, so the booth keeps no router dependency.
 // Nothing else changes: the queue, the map and the counts are the whole queue.
-const podScope = new URLSearchParams(window.location.search).get('pod') || ''
+// A ref, not a constant: the next-pod button (job #682) moves the address to
+// another pod in place, and Start must follow it.
+const podScope = ref(new URLSearchParams(window.location.search).get('pod') || '')
+
+// BLOCK N OF M (Kai, 2026-10-15, job #682): the pods of this course with lines
+// for this voice, in course order, off the wire on a course+pod link only
+// (null on every other link, which therefore draws nothing new). The block on
+// the address is counted from THIS page's lines, so finishing its last line
+// mid-session offers the next pod without a reload.
+const podBlocks = ref(null)
+const podNav = computed(() => {
+  if (!podBlocks.value || !podScope.value) return null
+  const mine = lines.value.filter(l => (l.podSlug || '') === podScope.value || l.podId === podScope.value)
+  const live = mine.length ? { total: mine.length, recorded: mine.reduce((n, l) => n + (isSettled(l) ? 1 : 0), 0) } : null
+  return podBlockNav(podBlocks.value, podScope.value, live)
+})
+function podBlockName(b) {
+  return podSectionFor({ podSlug: b.slug, podTitle: b.title, courseCode: new URLSearchParams(window.location.search).get('course') }).heading
+}
+// Loads another pod IN PLACE: the address is rewritten with replaceState, never
+// pushed, so the link they were given keeps working and a reload lands them on
+// the block they are now in. Nothing is written anywhere but the address bar.
+async function openPodBlock(slug) {
+  if (!slug || phase.value === 'recording') return
+  const url = addressWithPod(window.location.href, slug)
+  const state = window.history.state && typeof window.history.state === 'object'
+    ? { ...window.history.state, current: url } : window.history.state
+  window.history.replaceState(state, '', url)
+  podScope.value = slug
+  await load()
+}
 
 const startIndex = computed(() => {
   if (!lines.value.length) return -1
   // A pod with nothing owed in it falls through to the queue's own first unread
   // line — never to "Nothing left to read" while work is owed elsewhere.
-  if (podScope) {
-    const inPod = lines.value.findIndex(l => !isSettled(l) && (l.podSlug || '') === podScope)
+  if (podScope.value) {
+    const inPod = lines.value.findIndex(l => !isSettled(l) && (l.podSlug || '') === podScope.value)
     if (inPod !== -1) return inPod
   }
   return lines.value.findIndex(l => !isSettled(l))
@@ -2582,6 +2616,7 @@ async function load() {
     // `lines`, because his queue only carries what he is cast for today.
     handedOn.value = Array.isArray(data.handedOn) ? data.handedOn : []
     lines.value = Array.isArray(data.lines) ? data.lines : []
+    podBlocks.value = Array.isArray(data.podBlocks) ? data.podBlocks : null
     // RESUME. Anything left on the device by an earlier session — a tab closed
     // mid-upload, a phone that slept, a chalet with no signal — is picked up
     // here and starts going up before he reads a word.

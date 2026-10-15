@@ -71,6 +71,7 @@ const castingRights = require('./casting-rights.cjs')
 const { resolvePack, findItem } = require('./clone-source-pack.cjs')
 const setupCheck = require('./recordist-setup-check.cjs')
 const rerecordAll = require('./recordist-rerecord-all.cjs')
+const { podBlocksFor } = require('./booth-pod-blocks.cjs')
 const {
   takeKey,
   packPrefix,
@@ -457,6 +458,19 @@ module.exports = function createRecordistRouter({
       const narrowed = Boolean(scoped || podScope)
       const recordedInScope = narrowed ? lines.filter((l) => l.recorded).length : queue.recorded
       const totalInScope = narrowed ? lines.length : queue.total
+      // THE BLOCKS AROUND THE POD THIS LINK NAMES (Kai, 2026-10-15, job #682):
+      // every pod of the course with lines for this voice, in course order, so
+      // the booth can say "block N of M" and offer the next pod when this one is
+      // finished. Only on a course+pod link; every other link is unchanged.
+      let podBlocks = null
+      if (scoped && podScope) {
+        const { data: coursePods, error: podsErr } = await db()
+          .from('listening_pods')
+          .select('id, slug, title, pod_type, pod_order')
+          .eq('course_code', scoped)
+        if (podsErr) logger.warn(`[Recordist] pod blocks skipped: ${podsErr.message}`)
+        else podBlocks = podBlocksFor((queue.lines || []).filter((r) => r.courseCode === scoped), coursePods)
+      }
       const setupRow = await loadSetupRow(recordist.voiceId)
       res.json({
         // Present while the full script is locked behind the setup check; the
@@ -468,6 +482,7 @@ module.exports = function createRecordistRouter({
         // Echoed back for the same reason maxSeed is: a screen that reports the
         // scope it ASKED for rather than the one it got is a quiet lie.
         pod: podScope,
+        podBlocks,
         voiceId: recordist.voiceId,
         displayName: recordist.displayName,
         language: recordist.language,
