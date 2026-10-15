@@ -7,8 +7,8 @@
          that had already been thrown away after three failed tries, and Aran
          finished a ~250-line session unable to tell. The three states below are
          genuinely different things and they must never be worded the same. -->
-    <div v-if="safetyBanner" class="safety-banner" :class="safetyBanner.cls">
-      <strong>{{ safetyBanner.head }}</strong>
+    <div v-if="safetyBanner" class="safety-banner" :class="[safetyBanner.cls, { slim: phase === 'home' && safetyBanner.cls === 'waiting' }]" data-test="safety-banner">
+      <strong :title="safetyBanner.detail">{{ safetyBanner.head }}</strong>
       <span>{{ safetyBanner.detail }}</span>
     </div>
     <!-- Loading -->
@@ -3780,6 +3780,9 @@ kbd {
    at risk or refused keeps its whole sentence. */
 .recordist.fit.live > .safety-banner.waiting { flex-direction: row; padding: 0.3rem 0.75rem; }
 .recordist.fit.live > .safety-banner.waiting span { display: none; }
+/* On the home page the uploading notice is ONE slim line (Aran, 2026-10-15, job #806); the detail stays in the title. */
+.safety-banner.slim { flex-direction: row; padding: 0.3rem 0.75rem; }
+.safety-banner.slim span { display: none; }
 
 .where {
   flex: none; display: flex; align-items: center; gap: 0.5rem;
