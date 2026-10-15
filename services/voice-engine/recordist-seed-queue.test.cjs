@@ -186,6 +186,28 @@ test('one sentence in two courses is ONE reading, and it says how many it fills'
   assert.equal(t1[0].alsoFills, 1, 'and it fills the other course too')
 })
 
+// Job #823 (Aran, 15 Oct: "the North whole sentences have gone"). A sentence in two courses sits
+// on ONE course's card, and which one used to follow the order the course rows came back from the
+// database — unordered, so it changed when a course row was updated. After the 15:49 UTC restart
+// 304 of his old-North sentences moved onto the new-North card, leaving "whole sentences" one line.
+// The cards must not depend on row order.
+test('a shared sentence sits on the same course card whatever order the course rows come back in', async () => {
+  const other = { course_code: 'zzz_test2b_for_eng', target_lang: 'zzz', known_lang: 'eng', voice_config: CAST_BOTH }
+  const seeds = [
+    seed('u1', 1, 'Zzz un', 'One in English'),
+    { ...seed('u2', 1, 'Zzz un', 'One in English', { status: 'approved' }), course_code: 'zzz_test2b_for_eng' },
+  ]
+  const cardOf = async (courses) => {
+    const db = stubDb(fixture({ courses, seeds }))
+    const tom = await resolveRecordist(db, 'human_tom_zzz')
+    return (await buildQueue(db, tom)).lines.find((l) => l.kind === 'seed' && l.role === 'target1').courseCode
+  }
+  const a = await cardOf([FIXTURE_COURSE, other])
+  const b = await cardOf([other, FIXTURE_COURSE])
+  assert.equal(a, b, 'the row order of `courses` decides nothing')
+  assert.equal(a, 'zzz_test2_for_eng', 'the first course by code keeps it (cym_n_for_eng before cym_nv2_for_eng)')
+})
+
 test('a rep whose duplicate is still empty is NOT done', async () => {
   const other = { course_code: 'zzz_test2b_for_eng', target_lang: 'zzz', known_lang: 'eng', voice_config: CAST_BOTH }
   const db = stubDb(fixture({

@@ -207,13 +207,18 @@ async function coursesForLanguage(db, language, { cache } = {}) {
     // course's content, and every consumer here routes on it.
     .select('course_code, target_lang, known_lang, voice_config, dialect'))
   if (error) throw new Error(`course list failed: ${error.message}`)
+  // IN COURSE-CODE ORDER, never the order the rows come back in (job #823). A sentence shared by
+  // two courses is read once and sits on the card of the first course this list names, so an
+  // unordered read moved 304 of Aran's North sentences between cards when a course row was
+  // updated and the queue rebuilt (15 Oct, after the 15:49 UTC restart). Which card a line sits
+  // on is display only: whether it is recorded is decided over every copy, whatever the order.
   return (data || []).filter((c) => {
     try {
       return canonicalLanguage(c.target_lang) === language
     } catch {
       return false
     }
-  })
+  }).sort((a, b) => (a.course_code < b.course_code ? -1 : a.course_code > b.course_code ? 1 : 0))
 }
 
 /**
