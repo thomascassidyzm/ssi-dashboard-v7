@@ -91,7 +91,14 @@ async function linkOne(db, courseCode, link, { dryRun }) {
   if (link.role !== 'presentation') {
     const want = link.role === 'known' ? row.known_text : row.target_text
     if (normalizeForDb(String(clip.text || '')) !== normalizeForDb(String(want || ''))) {
-      return { ...base, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", slot says "${want}"` }
+      // A pod line's clip is often rendered from a paced form of its words ("Boa tarde. … O que vai ser?" for "Boa tarde. O que
+      // vai ser?", por_for_eng Pod 1, job #864). Re-voicing that clip is legal when the new clip says exactly what the clip it
+      // replaces says: replace:true + expectCurrent naming the clip the line holds now.
+      const revoice = slot.kind === 'pod_sentence' && link.replace === true && link.expectCurrent != null && String(link.expectCurrent) === String(row[col])
+      const { data: was } = revoice ? await db.from('course_audio').select('id, text').eq('id', String(link.expectCurrent)).maybeSingle() : { data: null }
+      if (!was || normalizeForDb(String(was.text || '')) !== normalizeForDb(String(clip.text || ''))) {
+        return { ...base, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", slot says "${want}"` }
+      }
     }
   }
 
@@ -112,7 +119,8 @@ async function linkOne(db, courseCode, link, { dryRun }) {
 }
 
 async function arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table }) {
-  const arr = Array.isArray(row[arrayCol]) ? row[arrayCol].map(String) : []
+  // an array may hold empty positions (null): they stay null — String(null) is "null", which is no uuid (por_for_eng take-G)
+  const arr = Array.isArray(row[arrayCol]) ? row[arrayCol].map((x) => (x == null ? null : String(x))) : []
   const old = link.expectCurrent == null ? null : String(link.expectCurrent)
   const out = { ...base, before: old, voiceId: clip.voice_id }
   if (link.replace !== true || !old) return { ...out, ok: false, code: 'REPLACE_ONLY', error: `${link.role} clips are replaced, never filled: send replace:true with expectCurrent (the clip being replaced)` }
@@ -130,7 +138,7 @@ async function arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
   return { ...out, ok: true, changed: true, rowId: row.id, table, col: arrayCol, kind: 'pod_sentence', guards, arrayBefore: arr }
 }
 
-const pgArray = (a) => `{${a.join(',')}}`
+const pgArray = (a) => `{${a.map((x) => (x == null ? 'NULL' : x)).join(',')}}`
 
 /**
  * links: [{ seedNumber | legoId | phraseId, role, audioId, replace?, expectCurrent? }]
