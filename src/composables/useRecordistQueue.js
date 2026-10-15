@@ -90,6 +90,8 @@ export function useRecordistQueue(options = {}) {
   // phone that slept, a session finished on a dead connection last week.
   const carriedOverCount = ref(0)
   const refusedCount = ref(0)
+  // The live refused takes themselves ({lineId, text, lastError, refusedAt}) — what the booth home lists.
+  const refusedTakes = ref([])
   // Old unsent takes are reported, never swept: audio that never reached the
   // server is not ours to delete, whatever its age.
   const staleCount = ref(0)
@@ -158,6 +160,7 @@ export function useRecordistQueue(options = {}) {
     // is neither counted nor listed, and its mark is taken off the line.
     const live = refused.filter(rec => !lineNowRecorded(rec.lineId))
     refusedCount.value = live.length
+    refusedTakes.value = live.map(r => ({ lineId: r.lineId, text: r.text || '', lastError: r.lastError || '', refusedAt: r.refusedAt || 0 }))
     staleCount.value = (await s.stale(voiceId)).length
     for (const rec of refused) if (lineNowRecorded(rec.lineId)) failed.delete(rec.lineId)
     for (const rec of live) if (!failed.has(rec.lineId)) failed.set(rec.lineId, rec.lastError)
@@ -441,7 +444,7 @@ export function useRecordistQueue(options = {}) {
   return {
     attach, queueTake, markFailed, discardRefused, reset, teardown, drain, reconcile,
     isUnsent,
-    pendingCount, savedCount, carriedOverCount, refusedCount, staleCount,
+    pendingCount, savedCount, carriedOverCount, refusedCount, refusedTakes, staleCount,
     persistent, storageNote, uploadingLine, lastError,
     saved, failed, unsentLines,
   }
