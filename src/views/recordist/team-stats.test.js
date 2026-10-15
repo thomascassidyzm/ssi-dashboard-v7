@@ -100,4 +100,12 @@ describe('the signed-in person\'s own card (Aran, job #831)', () => {
     expect(ownCard([dan, welsh, eng], 'human_aran_cym_n', []).rows).toHaveLength(3)
     expect(ownCard([dan], 'human_aran_cym_n', [])).toBeNull()
   })
+  it('uses only the signed-in person’s voices when viewing another admin’s booth', () => {
+    const kai = { voiceId: 'human_kai_cym_n', name: 'Kai', activity: { takes7d: 7 }, projects: [p('kai-work', 7, 10)] }
+    const card = ownCard([kai, welsh, eng], 'human_kai_cym_n', ['human_aran_cym_n', 'human_aran_eng'])
+    expect(card.activity.takes7d).toBe(5)
+    expect(card.rows.map(r => r.key)).toEqual([
+      'human_aran_cym_n.pod.pod-1', 'human_aran_cym_n.seed.cym_n', 'human_aran_eng.seed.eng',
+    ])
+  })
 })
