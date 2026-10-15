@@ -3,6 +3,21 @@ const test = require('node:test');
 const assert = require('node:assert');
 const { planSlots, buildLinkOps, linkChunk } = require('./voice-gap-fill.cjs');
 
+test('25 stale slots do not silently abandon the remaining valid slot', () => {
+  const ops = buildLinkOps(Array.from({ length: 26 }, (_, i) => ({ id: `row-${i}`, role: 'known', audioId: `audio-${i}` })));
+  const call = (method, url, body) => {
+    if (body.ops[0].phrase_id !== 'row-25') {
+      const err = new Error('drift');
+      err.body = { code: 'DRIFT', index: 0 };
+      throw err;
+    }
+    return { undo_file: 'undo.json' };
+  };
+  const result = linkChunk('fra_for_eng', ops, { call });
+  assert.strictEqual(result.skipped.length, 25);
+  assert.strictEqual(result.applied, 1);
+});
+
 test('voices the Bengali known side (Ananya only) but never touches a filled slot', () => {
   const rows = [{ id: 'a', known_text: 'আমি', target_text: 'I', known_audio_id: null, target1_audio_id: 'x', target2_audio_id: null }];
   const slots = planSlots('eng_for_ben', rows);
