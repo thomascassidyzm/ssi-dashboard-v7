@@ -65,6 +65,8 @@ function stub() {
   global.fetch = vi.fn().mockImplementation(async (url) => {
     const u = String(url)
     if (u.includes('/summary')) return { ok: true, status: 200, json: async () => ({ home: true, fresh: true, displayName: 'Aran', language: 'cym', languageName: 'Welsh', tracks: [legoTrack] }) }
+    // The re-record card's list (job #788) is its own small read, not the queue.
+    if (u.includes('/rerecord')) return { ok: true, status: 200, json: async () => ({ fresh: true, total: 0, items: [], recordedAlso: [] }) }
     const q = new URL(u, 'http://x').searchParams
     if (!q.get('track')) fullQueueReads += 1
     const batch = Number(q.get('batch'))

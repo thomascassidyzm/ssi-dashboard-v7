@@ -63,12 +63,14 @@ const {
   parseLegoLineId,
   linkLegoTake,
   warmLanguageQueues,
+  voiceTakes,
 } = require('./recordist-queue.cjs')
 const { enableRewarmAfterInvalidate, onLanguageQueueInvalidated } = require('./recordist-queue-cache.cjs')
 const { invalidateArtistSummaries } = require('./booth-artists-summary-cache.cjs')
 const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const boothHome = require('./booth-home.cjs')
+const boothRerecord = require('./booth-rerecord.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
 const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
 const { isSoloReaderPod, soloReaders, soloReaderIndex, soloReaderTakeGIds } = require('../shared/pod-solo-readers.cjs')
@@ -479,6 +481,46 @@ module.exports = function createRecordistRouter({
     return got
   }
 
+  // THE RE-RECORD LIST (Aran, 2026-10-15, job #788), built once per cached queue: the skips and
+  // text changes of booth-rerecord.cjs. Memoised ON the cached value, so it is dropped exactly
+  // when the queue is — any take or edit for the voice, or its language's invalidation.
+  const rerecordLists = new WeakMap()
+  function rerecordListFor(value) {
+    let p = rerecordLists.get(value)
+    if (!p) {
+      const idx = boothRerecord.indexQueue(value.queue)
+      p = voiceTakes(db(), value.recordist, idx.courses, { provenanceFor: (t) => boothRerecord.isOrphanTake(idx, t) })
+        .then((takes) => boothRerecord.buildRerecordList(value.queue, takes, idx))
+      p.catch(() => rerecordLists.delete(value))
+      rerecordLists.set(value, p)
+    }
+    return p
+  }
+  const idList = (v) => (typeof v === 'string' ? v.split(',').map((x) => x.trim()).filter(Boolean).slice(0, 500) : [])
+
+  // THE RE-RECORD CARD'S SUMMARY: the lines to read again, each with why. The page adds its own
+  // refused takes (?also=<ids>) and is told which of them now have a good take (recordedAlso).
+  // Read-only and not an arrival: it is fetched beside /summary, which already counts one.
+  router.get('/voice/:voiceId/rerecord', async (req, res) => {
+    try {
+      const pack = await resolveAnyPack(req.params.voiceId)
+      if (pack) return res.json({ voiceId: req.params.voiceId, total: 0, items: [], recordedAlso: [] })
+      const cached = await homeQueueFor(req.params.voiceId, { allowStale: true })
+      if (!cached) return res.status(404).json({ error: `No recording voice ${req.params.voiceId}.` })
+      const list = await rerecordListFor(cached.value)
+      res.json({
+        voiceId: cached.value.recordist.voiceId,
+        fresh: cached.fresh,
+        total: list.items.length,
+        items: list.items,
+        recordedAlso: boothRerecord.recordedAmong(list, idList(req.query.also)),
+      })
+    } catch (err) {
+      logger.error(`[Recordist] rerecord: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
   // THE HOME SCREEN'S SUMMARY (Aran, 2026-10-14, job #347): sections, batches
   // and counts — no lines. The booth page used to open by fetching all of them
   // (2060 lines, 2.2MB for Aran) and drawing every one; it now draws its home
@@ -593,7 +635,11 @@ module.exports = function createRecordistRouter({
       const openedPhrase = trackScope && trackScope.startsWith('phrase.')
         ? boothHome.openPhraseBatch(inScope(queue.lines).filter((l) => boothHome.trackKeyOf(l) === trackScope), trackScope, Number.isFinite(batchN) && batchN >= 1 ? batchN : 1, phraseCtx)
         : null
-      const lines = trackScope
+      // THE RE-RECORD BATCH (job #788): the card's lines plus the page's refused ones, in course order.
+      const rerecordLines = trackScope === boothRerecord.RERECORD_TRACK && cachedHome && cachedHome.value.queue === queue
+        ? boothRerecord.rerecordBatchLines(await rerecordListFor(cachedHome.value), idList(req.query.also))
+        : null
+      const lines = rerecordLines ? inScope(rerecordLines) : trackScope
         ? (openedPhrase ? openedPhrase.lines : boothHome.selectBatch(inScope(queue.lines), trackScope, batchN, phraseCtx))
         : inScope(queue.lines)
       // Scoped counts are counted over the lines on the wire (the booth always

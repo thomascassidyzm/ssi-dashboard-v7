@@ -44,6 +44,8 @@
 
       <div class="bh-cols">
         <div class="bh-main">
+          <!-- ABOVE UP NEXT: the re-record card (job #788), handed in by the room. -->
+          <slot name="top" />
           <!-- UP NEXT (Option B): the first ticked batch with lines still to read, new
                sentences before practice phrases. -->
           <div v-if="next" class="bh-hero" data-test="up-next">

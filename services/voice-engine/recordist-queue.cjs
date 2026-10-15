@@ -2616,6 +2616,17 @@ async function withPhraseBatch(db, recordist, queue, { includeRecorded = false, 
         return { summary: got.summary, lines: got.lines.map((l) => phraseWireLine(l, recordist)) }
       },
     })
+    // EVERY PHRASE LINE OF THIS READER, recorded flag set, in served order (job #788): the
+    // re-record card looks for skips in every phrase batch he has started, not only the served
+    // one. Not enumerable, for the same reason as openPhraseBatch; held lines are left out, as
+    // the batches leave them out.
+    Object.defineProperty(queue, 'allPhraseLines', {
+      enumerable: false,
+      configurable: true,
+      value: () => phraseQueue.servedOrder(mine)
+        .filter((l) => !l.copies.every((c) => c.flagged))
+        .map((l) => phraseWireLine({ ...l, recorded: isRec(l) }, recordist)),
+    })
     let recorded = 0
     for (const line of lines) {
       if (line.recorded) recorded += 1
@@ -2968,6 +2979,53 @@ async function recordedTextKeys(db, recordist) {
     if (!data || data.length < PAGE) break
   }
   return keys
+}
+
+/**
+ * THIS VOICE'S STORED TAKES in the given courses, with the seed each was read for where its
+ * provenance says (job #788: the re-record card pairs an edited line with the take of its old
+ * words — booth-rerecord.cjs). Paged like recordedTextKeys. The seed number comes from the
+ * take's recording_provenance row (keyed by the mastered object's uuid, the s3_key's basename),
+ * read only for the takes `provenanceFor(take)` picks, in chunks, by primary key.
+ */
+async function voiceTakes(db, recordist, courseCodes, { provenanceFor = () => true } = {}) {
+  if (!courseCodes || !courseCodes.length) return []
+  const out = []
+  const PAGE = 1000
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from('course_audio')
+      .select('id, text, text_normalized, course_code, role, s3_key, created_at')
+      .eq('language', recordist.language)
+      .in('voice_id', recordist.spellings)
+      .in('course_code', courseCodes)
+      .order('id')
+      .range(from, from + PAGE - 1)
+    if (error) throw new Error(`voice takes read failed: ${error.message}`)
+    out.push(...(data || []))
+    if (!data || data.length < PAGE) break
+  }
+  const uuidOf = (t) => {
+    const m = String(t.s3_key || '').match(/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\.[a-z0-9]+$/i)
+    return m ? m[1] : null
+  }
+  const wanted = out.filter(provenanceFor).map((t) => [t, uuidOf(t)]).filter(([, u]) => u)
+  const byUuid = new Map()
+  for (let i = 0; i < wanted.length; i += 100) {
+    const ids = [...new Set(wanted.slice(i, i + 100).flatMap(([, u]) => [u, u.toUpperCase(), u.toLowerCase()]))]
+    const { data, error } = await db.from('recording_provenance').select('audio_uuid, quality_notes').in('audio_uuid', ids)
+    if (error) throw new Error(`take provenance read failed: ${error.message}`)
+    for (const row of data || []) {
+      let ctx = null
+      try { ctx = typeof row.quality_notes === 'string' ? JSON.parse(row.quality_notes) : row.quality_notes } catch { ctx = null }
+      if (ctx && ctx.seed_number != null) byUuid.set(String(row.audio_uuid).toLowerCase(), Number(ctx.seed_number))
+    }
+  }
+  for (const [t, u] of wanted) {
+    const n = byUuid.get(u.toLowerCase())
+    if (n != null && Number.isFinite(n)) t.seedNumber = n
+  }
+  return out
 }
 
 /**
@@ -3566,6 +3624,7 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
 
 module.exports = {
   assignedLanguages,
+  voiceTakes,
   clearRerecordWants,
   isTestFixtureCourse,
   takeGLineId,
