@@ -27,6 +27,7 @@
 
 const crypto = require('crypto');
 const fs = require('fs');
+const path = require('path');
 
 const SCOPES = Object.freeze({
   VOICE_SLOT_WRITE: 'voice-slot:write',
@@ -39,6 +40,15 @@ const SCOPES = Object.freeze({
 
 const HEADER = 'x-agent-admin';
 const DEFAULT_KEY_FILE = '/etc/popty/agent-admin.key';
+// Extra keys sit beside the shared one as agent-admin-<name>.key (job: Kai-only admin:all key).
+// A key file may carry "agentIdPrefix": it then verifies ONLY agent ids "<prefix>-..." / "<prefix>",
+// so a Kai key cannot be used to sign as anyone else.
+const KEY_NAME = /^[a-z0-9]{2,32}$/;
+function keyFileFor(name, base = process.env.POPTY_AGENT_ADMIN_KEY_FILE || DEFAULT_KEY_FILE) {
+  if (!name) return base;
+  if (!KEY_NAME.test(name)) throw new Error(`key name must match ${KEY_NAME}`);
+  return path.join(path.dirname(base), `agent-admin-${name}.key`);
+}
 const MAX_SKEW_S = 60;
 const AGENT_ID = /^[a-z0-9][a-z0-9_.:-]{1,63}$/;
 
@@ -67,7 +77,24 @@ function signHeader({ secret, agentId, method, path, body, ts = Math.floor(Date.
 function loadKey(file) {
   const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
   if (!raw || typeof raw.secret !== 'string' || raw.secret.length < 32) throw new Error('agent-admin key file has no usable secret');
-  return { secret: raw.secret, scopes: Array.isArray(raw.scopes) ? raw.scopes : [] };
+  return { secret: raw.secret, scopes: Array.isArray(raw.scopes) ? raw.scopes : [], agentIdPrefix: typeof raw.agentIdPrefix === 'string' ? raw.agentIdPrefix : null };
+}
+
+/** Every key the door honours: the shared file, then each agent-admin-<name>.key beside it. Unreadable extras are skipped. */
+function loadAllKeys(file) {
+  const keys = [loadKey(file)];
+  const dir = path.dirname(file);
+  let names = [];
+  try { names = fs.readdirSync(dir); } catch { /* shared key already loaded; extras unlistable */ }
+  for (const n of names.sort()) {
+    if (!/^agent-admin-[a-z0-9]{2,32}\.key$/.test(n)) continue;
+    try { keys.push(loadKey(path.join(dir, n))); } catch { /* a broken extra never takes the door down */ }
+  }
+  return keys;
+}
+
+function prefixAllows(k, agentId) {
+  return !k.agentIdPrefix || agentId === k.agentIdPrefix || agentId.startsWith(k.agentIdPrefix + '-');
 }
 
 /** The verified agent user for a request the front door admitted with admin:all, else null. */
@@ -86,7 +113,8 @@ function keyHasScope(scopes, scope) {
  *   { ok:false, status, error }  — an attempt that failed; the route answers it
  *                                  and never falls back to another door
  */
-function createAgentAdminVerifier({ keyFile = process.env.POPTY_AGENT_ADMIN_KEY_FILE || DEFAULT_KEY_FILE, key = null, now = () => Date.now(), logger = console } = {}) {
+function createAgentAdminVerifier({ keyFile = process.env.POPTY_AGENT_ADMIN_KEY_FILE || DEFAULT_KEY_FILE, key = null, keys: keysIn = null, now = () => Date.now(), logger = console } = {}) {
+  const keysOpt = keysIn || (key ? [key] : null);
   const seen = new Map(); // signature -> expiry ms (replay window)
 
   function check(req, scope) {
@@ -104,15 +132,19 @@ function createAgentAdminVerifier({ keyFile = process.env.POPTY_AGENT_ADMIN_KEY_
     const ts = Number(tsRaw);
     if (Math.abs(now() / 1000 - ts) > MAX_SKEW_S) return fail(401, 'signature expired (clock skew > 60s)');
 
-    let k = key;
-    if (!k) {
-      try { k = loadKey(keyFile); } catch (e) { return fail(503, `agent identity is not provisioned (${e.code || e.message})`); }
+    let keys = keysOpt;
+    if (!keys) {
+      try { keys = loadAllKeys(keyFile); } catch (e) { return fail(503, `agent identity is not provisioned (${e.code || e.message})`); }
     }
     const path = req.originalUrl;
-    const want = crypto.createHmac('sha256', k.secret)
-      .update(signingString({ agentId, ts, method: req.method, path, body: req.body })).digest();
     const got = Buffer.from(sig, 'hex');
-    if (got.length !== want.length || !crypto.timingSafeEqual(got, want)) return fail(401, 'signature does not match this method, path and body');
+    const k = keys.find((c) => {
+      if (!prefixAllows(c, agentId)) return false;
+      const want = crypto.createHmac('sha256', c.secret)
+        .update(signingString({ agentId, ts, method: req.method, path, body: req.body })).digest();
+      return got.length === want.length && crypto.timingSafeEqual(got, want);
+    });
+    if (!k) return fail(401, 'signature does not match this method, path and body');
     if (seen.has(sig)) return fail(401, 'signature already used');
     for (const [s, exp] of seen) if (exp <= now()) seen.delete(s);
     seen.set(sig, now() + (MAX_SKEW_S * 2) * 1000);
@@ -181,4 +213,4 @@ function adminOrAgent(verifier, requireAdmin) {
   };
 }
 
-module.exports = { SCOPES, HEADER, signHeader, createAgentAdminVerifier, adminOrAgent, agentFrontDoor, keyHasScope, agentFromRequest, loadKey, bodyDigest };
+module.exports = { keyFileFor, loadAllKeys, SCOPES, HEADER, signHeader, createAgentAdminVerifier, adminOrAgent, agentFrontDoor, keyHasScope, agentFromRequest, loadKey, bodyDigest };

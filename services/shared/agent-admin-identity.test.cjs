@@ -50,6 +50,21 @@ describe('agent admin identity', () => {
   })
 })
 
+describe('second (Kai) key', () => {
+  const kSecret = 'b'.repeat(64)
+  const kai = { secret: kSecret, scopes: [SCOPES.ADMIN_ALL], agentIdPrefix: 'kai' }
+  const v = () => createAgentAdminVerifier({ keys: [key, kai], now: () => T * 1000, logger: quiet })
+  const kSign = (o = {}) => signHeader({ secret: kSecret, agentId: 'kai-watson', method: 'PATCH', path: '/api/recording/languages/eng/voice/x', body: { email: 'a@b.co' }, ts: T, ...o })
+  it('the Kai key carries admin:all, the shared key still does not', () => {
+    expect(v().check(req(kSign()), 'anything:write').ok).toBe(true)
+    expect(v().check(req(sign()), 'admin:all').status).toBe(403)
+    expect(v().check(req(sign()), SCOPES.VOICE_SLOT_WRITE).ok).toBe(true)
+  })
+  it('the Kai key cannot sign as another agent', () => {
+    expect(v().check(req(kSign({ agentId: 'aran-watson' })), 'admin:all').status).toBe(401)
+  })
+})
+
 describe('voice slot patch', () => {
   const voices = {
     m: { voiceId: 'human_aran_eng', gender: 'm' },

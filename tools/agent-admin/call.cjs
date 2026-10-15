@@ -8,6 +8,7 @@
 // carries: voice-slot:write, takes:read, and admin:all = EVERY /api/admin and
 // /api/voicelab route, read and write (Kai's agents; e.g. POST /api/admin/unapprove-seeds,
 // POST /api/admin/recompute-decompositions — both dry-run unless "apply":true).
+// Kai's agents: add  --key kai --agent kai-<id>  to sign with the Kai-only admin:all key (agent ids must start kai-).
 // Popty is http://localhost:3470.
 'use strict';
 const { execFileSync } = require('child_process');
@@ -19,6 +20,10 @@ if (ai < 0 || !args[ai + 1]) { console.error('usage: call.cjs --agent <id> METHO
 const agentId = args[ai + 1];
 args.splice(ai, 2);
 // --body-file <path>: read the JSON body from a file (argv is capped near 128 KB per argument).
+// --key <name>: sign with the named extra key (Kai's agents: --key kai --agent kai-<job>).
+const ki = args.indexOf('--key');
+let keyName;
+if (ki >= 0) { keyName = args[ki + 1]; args.splice(ki, 2); }
 const bi = args.indexOf('--body-file');
 let bodyFromFile;
 if (bi >= 0) { bodyFromFile = require('fs').readFileSync(args[bi + 1], 'utf8'); args.splice(bi, 2); }
@@ -29,7 +34,7 @@ const body = bodyStr ? JSON.parse(bodyStr) : undefined;
 const base = process.env.POPTY_URL || 'http://localhost:3470';
 
 const header = execFileSync('sudo', ['-n', '-u', 'popty', 'node', path.join(__dirname, 'sign.cjs')], {
-  input: JSON.stringify({ agentId, method, path: urlPath, body }),
+  input: JSON.stringify({ agentId, method, path: urlPath, body, key: keyName }),
   encoding: 'utf8',
 }).trim();
 
