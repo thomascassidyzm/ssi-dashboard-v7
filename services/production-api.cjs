@@ -5097,7 +5097,7 @@ app.post('/api/admin/pods/:courseCode/:slug/stage-draft', async (req, res) => {
       sb.from('listening_pods').select('id').eq('id', podId).maybeSingle(),
       sb.from('listening_pods').select('id, pod_type, title, scene, difficulty, speakers').eq('id', parsed.mirror).maybeSingle(),
       sb.from('listening_pod_sentences')
-        .select('id, scene_number, sentence_number, global_order, beat_label, speaker, glue_to_next, jump_in')
+        .select('id, scene_number, sentence_number, global_order, beat_label, speaker, variant_key, glue_to_next, jump_in')
         .eq('pod_id', parsed.mirror).order('global_order').range(0, 9999),
       sb.from('courses').select('course_code, voice_config').eq('course_code', parsed.courseCode).maybeSingle(),
     ])
