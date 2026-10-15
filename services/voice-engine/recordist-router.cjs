@@ -528,6 +528,8 @@ module.exports = function createRecordistRouter({
   // screen from this and fetches one batch's lines when he opens it. Same queue,
   // same counts, same recorded flag (booth-home.cjs reads them, never decides).
   // A recording pack keeps its own one-screen flow: `home: false` says so.
+  // The last summary sent IN FULL per voice, so a partial one can carry its sections (job #823).
+  const lastHomeTracks = new Map()
   router.get('/voice/:voiceId/summary', async (req, res) => {
     try {
       const pack = await resolveAnyPack(req.params.voiceId)
@@ -545,6 +547,13 @@ module.exports = function createRecordistRouter({
       castingRights.boothArrival({
         db: db(), recordist, courseCodes: queue.courses, method: req.method, path: req.originalUrl || req.path, logger,
       }).catch((e) => logger.warn(`[Recordist] summary arrival not counted: ${e.message}`))
+      // EVERY SECTION, EVERY TIME (job #823): a kind this answer could not count (the phrase
+      // plan read failed) keeps the sections this voice was last sent, marked `counting`, and the
+      // answer says it is partial so the page keeps them too.
+      const partial = boothHome.partialKinds(queue)
+      let tracks = boothHome.buildHomeTracks(queue.lines, queue.phrases, queue.phraseBatches)
+      if (partial.length) tracks = boothHome.withLastKnownSections(tracks, partial, lastHomeTracks.get(recordist.voiceId))
+      else lastHomeTracks.set(recordist.voiceId, tracks)
       res.json({
         home: true,
         fresh: cached.fresh,
@@ -560,7 +569,8 @@ module.exports = function createRecordistRouter({
         phrases: queue.phrases || null,
         notReady: queue.notReady || [],
         handedOn: queue.handedOn || [],
-        tracks: boothHome.buildHomeTracks(queue.lines, queue.phrases, queue.phraseBatches),
+        partial,
+        tracks,
       })
     } catch (err) {
       logger.error(`[Recordist] summary: ${err.message}`)

@@ -113,4 +113,26 @@ assert.strictEqual(legoTrack.batches.length, 13)
 assert.deepStrictEqual([legoTrack.batches[0].from, legoTrack.batches[12].to, legoTrack.batches[12].total], [1, 1291, 91])
 assert.deepStrictEqual(selectBatch(withLegos, 'lego.cym_sv2_for_eng', 13).map((l) => l.id)[0], 'lego:1200:target1')
 
+// #823 (Aran, 15 Oct: whole sections kept disappearing): a FULLY RECORDED section is still a
+// section, and a summary whose phrase-plan read failed carries the phrase sections it last sent,
+// marked `counting`, instead of dropping them.
+{
+  const bh = require('./booth-home.cjs')
+  const done = [...lines.filter((l) => l.kind !== 'phrase'), ...Array.from({ length: 30 }, (_, i) => lego(i))].map((l) => ({ ...l, recorded: true }))
+  const doneTracks = bh.buildHomeTracks(done)
+  assert.deepStrictEqual(doneTracks.map((t) => t.key), ['pod.health-ladder-pilot', 'seed.cym_n_for_eng', 'seed.cym_nv2_for_eng', 'lego.cym_sv2_for_eng'], 'fully recorded sections stay listed')
+  assert.ok(doneTracks.every((t) => t.total > 0 && t.recorded === t.total))
+
+  const pb = [{ pass: 1, batch: 1, courseCode: 'cym_nv2_for_eng', total: 197, recorded: 17 }, { pass: 2, batch: 1, courseCode: 'cym_nv2_for_eng', total: 150, recorded: 3 }]
+  const good = bh.buildHomeTracks(lines, { pass: 1, batch: 1, courseCode: 'cym_nv2_for_eng' }, pb)
+  const failedQueue = { lines: lines.filter((l) => l.kind !== 'phrase'), phrases: { unavailable: true } }
+  assert.deepStrictEqual(bh.partialKinds(failedQueue), ['phrase'], 'a failed phrase read says the answer is partial')
+  assert.deepStrictEqual(bh.partialKinds({ phrases: { pass: 1 } }), [])
+  const failed = bh.buildHomeTracks(failedQueue.lines, failedQueue.phrases, null)
+  const kept = bh.withLastKnownSections(failed, bh.partialKinds(failedQueue), good)
+  assert.deepStrictEqual(kept.map((t) => t.key), good.map((t) => t.key), 'no section dropped when its count failed')
+  assert.deepStrictEqual(kept.filter((t) => t.counting).map((t) => [t.key, t.total, t.recorded]), [['phrase.1', 197, 17], ['phrase.2', 150, 3]])
+  assert.strictEqual(bh.withLastKnownSections(failed, [], good), failed, 'a full answer is its own')
+}
+
 console.log('booth-home: all assertions passed')

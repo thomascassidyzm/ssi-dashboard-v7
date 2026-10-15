@@ -748,7 +748,7 @@ import RerecordCard from './recordist/RerecordCard.vue'
 import { mergeRerecord, oldRefusedIds, alsoIds } from './recordist/rerecord-list.js'
 // The re-record card's batch (job #788): services/voice-engine/booth-rerecord.cjs RERECORD_TRACK.
 const RERECORD_TRACK = 'rerecord'
-import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, withDeviceTakes, loadPlaces, savePlaces, placeFromEntry, creditLoadedBatch } from './recordist/booth-home.js'
+import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, keepListedSections, withDeviceTakes, loadPlaces, savePlaces, placeFromEntry, creditLoadedBatch } from './recordist/booth-home.js'
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
@@ -3085,7 +3085,10 @@ async function fetchSummary() {
     { headers: {} },
     r => (r.ok ? r.json() : r.json().catch(() => ({})))
   )
-  const ok = res.ok && data && data.home && !data.setupLocked ? data : null
+  // A PARTIAL ANSWER NEVER DROPS A SECTION (job #823): a kind the server could not count this
+  // time keeps its sections from the screen already drawn, or this device's kept one, as "counting…".
+  const prev = (homeFor === props.voiceId && homeSummary.value) || loadSummarySnapshot(props.voiceId)
+  const ok = res.ok && data && data.home && !data.setupLocked ? keepListedSections(data, prev) : null
   // Kept on this device so the next arrival draws at once (job #378). A summary that
   // cannot be a home screen clears it, so the snapshot never outlives its reason.
   if (ok) saveSummarySnapshot(props.voiceId, ok)
