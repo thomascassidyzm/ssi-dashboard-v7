@@ -176,7 +176,11 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   // debutInSameWrite: the caller flips this not-new LEGO back to NEW in the same transaction
   // that writes the basket (the debut_keeps_practice trigger refuses either half alone), so
   // the P25 refusal below does not apply to it. Job #468: a sole-new LEGO of its seed.
-  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true, debutInSameWrite = false } = opts;
+  // frameSectionFn / extraCheck are the v4 door's two seams (job #544, lib/phrase-generation-v4.cjs):
+  // another frame section in place of v3's, and extra server-side checks whose reasons join the retry
+  // and the verdict exactly as a gate failure does. Both default to nothing, so v3 is unchanged.
+  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true, debutInSameWrite = false,
+    frameSectionFn = frameSection, extraCheck = null } = opts;
   const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
 
   // A NOT-NEW LEGO GETS NO PHRASES (Tom, 2026-09-30; canon P25). The player builds
@@ -245,7 +249,7 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   // the section and the gate read one policy object, so the instruction the
   // builder gets and the check its output meets cannot drift apart. Empty for
   // every other course.
-  const prompt = basePrompt + frameSection(declaration) + separableSection(courseCode, seedNumber, lego);
+  const prompt = basePrompt + frameSectionFn(declaration) + separableSection(courseCode, seedNumber, lego);
 
   const started = Date.now();
   const gateCtx = runGate ? makeCourseCtx(supabase, courseCode) : null;
@@ -254,6 +258,7 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   let gate = null;
   let score = null;
   let declarationCheck = null;
+  let extraReasons = [];
   let currentPrompt = prompt;
 
   for (let attempt = 0; attempt <= (runGate ? MAX_GATE_RETRIES : 0); attempt += 1) {
@@ -318,8 +323,10 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
     // Claim guidance rides along ONLY when a retry is already happening for a
     // real floor or gate failure: it costs nothing and may improve the next
     // attempt, but it never causes one.
+    extraReasons = extraCheck ? await extraCheck({ phrases, lego, seedNumber, legoIndex: Number(legoIndex) }) : [];
     const floorReasons = [
       ...failureFeedback(gate),
+      ...extraReasons,
       // `|| []`: a failing declaration without rewrite instructions crashed the whole run
       // (tur_for_eng S0010L04, job #906) instead of retrying on the gate's own reasons.
       ...(declPass ? [] : (declarationCheck.rewrite_instructions || [])),
@@ -327,12 +334,12 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
     const reasons = floorReasons.length
       ? [...floorReasons, ...(declarationCheck.claim_instructions || [])]
       : [];
-    attempts.push({ attempt: attempt + 1, overallPass: gate.overallPass && declPass,
+    attempts.push({ attempt: attempt + 1, overallPass: gate.overallPass && declPass && !extraReasons.length,
                     failingGates: gate.failingGates,
                     declarationFloors: declarationCheck.checked ? declarationCheck.floor_failures : null,
                     claimHonesty: declarationCheck.checked ? declarationCheck.claim_honesty : null,
                     reasons });
-    if (gate.overallPass && declPass) break;
+    if (gate.overallPass && declPass && !extraReasons.length) break;
     if (attempt === MAX_GATE_RETRIES) break;
     currentPrompt = retryPrompt(prompt, phrases, reasons);
   }
@@ -340,7 +347,7 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   // `blocked` is a CONTENT verdict: the real gates plus the declaration's five
   // content floors. Claim honesty is reported in `declarationCheck`, never here.
   const blocked = runGate
-    ? !(gate.overallPass && (!declarationCheck || !declarationCheck.checked || declarationCheck.pass))
+    ? !(gate.overallPass && !extraReasons.length && (!declarationCheck || !declarationCheck.checked || declarationCheck.pass))
     : false;
 
   return {
@@ -370,6 +377,7 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
     declarationPath,
     blocked,
     attempts,
+    ...(extraCheck ? { extraReasons } : {}),
   };
 }
 

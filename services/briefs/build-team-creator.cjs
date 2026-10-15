@@ -3,9 +3,11 @@
  * API validates tiling, vocab, ZUT, phrase counts. Final pass handles grammar/naturalness QA.
  *
  * PHRASE WRITING IS NO LONGER DONE FROM THIS BRIEF. Since 2026-08-27 the builder
- * asks POST /api/phrases/v3/generate for each LEGO's BUILD + USE set: that door
- * assembles the v3 prompt against the computed AVAILABLE / BLOCKED inventory and
- * runs it on Opus (services/course-builder/lib/phrase-generation.cjs). The rules
+ * asks the phrase door for each LEGO's BUILD + USE set. Since 2026-10-15 (job #544,
+ * Tom's "phrase v4 is THE phrase builder") that door is v4: POST /api/phrases/v4/generate,
+ * the v3 prompt's computed AVAILABLE / BLOCKED inventory plus v4's frame-diversity brief and the
+ * gap-fill door's own gates, on Opus (services/course-builder/lib/phrase-generation-v4.cjs).
+ * v3 stays, same body, as the fallback (and for Welsh). The rules
  * this brief used to state as prose are IN that prompt, with the specimens and
  * the vocabulary table that make them decidable — restating them here would give
  * a builder two masters and let it write to the weaker one. What stays here is
@@ -82,7 +84,7 @@ You are a world-class language teacher applying the SSi methodology. You build L
 For every new LEGO you introduce, ask the phrase door for its set:
 
 \`\`\`bash
-curl -s -X POST "http://localhost:3471/api/phrases/v3/generate/${courseCode}" \\
+curl -s -X POST "http://localhost:3471/api/phrases/v4/generate/${courseCode}" \\
   -H "Content-Type: application/json" \\
   -d '{"seed": N, "lego": L, "lego_known": "...", "lego_target": "...", "lego_type": "A"}'
 \`\`\`
@@ -94,8 +96,9 @@ It returns \`{ "model": "opus", "build": [...], "use": [...] }\`. Each phrase ha
 \`known\`, \`target\` and \`tiles\` — the tiles are the phrase showing its work.
 Put the \`known\` → \`target\` pairs straight into your markdown submission.
 
-**Why the door and not your own hand.** The door assembles the v3 phrase prompt
-against a computed vocabulary table for exactly this seed and this LEGO: what the
+**Why the door and not your own hand.** The door assembles the phrase prompt (v4: the
+v3 inventory plus a frame-diversity brief — walk back through taught material, never a
+stapled opener) against a computed vocabulary table for exactly this seed and this LEGO: what the
 learner can be asked for without uncertainty, and what is blocked because the
 known side would be ambiguous. That table is the difference between a phrase set
 that passes ZUT and one that looks like it does. You cannot compute it from a
@@ -106,9 +109,12 @@ brief, and neither could the builders before you — which is why every one of t
 It is a single generation call, and it is doing the work you would otherwise be
 doing badly. Do not shorten it by writing the phrases yourself.
 
-**If a call fails**, retry it once. If it fails twice, write that LEGO's set
+**If a call fails**, retry it once. If it fails twice — or the answer is
+\`WELSH_EXCLUDED\` — send the SAME body to \`/api/phrases/v3/generate/${courseCode}\`
+(the v3 door; Welsh builders stay there). If that fails twice too, write that LEGO's set
 yourself to the standard below, say so in chat, and keep going — a stalled build
-helps nobody.
+helps nobody. A v4 answer with \`"ok": false\` is a refusal, not a failure: it carries the
+reasons; do not submit its phrases.
 
 Standard for a hand-written fallback set (and the bar the door writes to):
 - ≥4 BUILD, ≥5 USE. Fewer phrases is a fail; variety never substitutes for volume.
@@ -243,7 +249,7 @@ Design the LEGOs — types, order, components. This is your judgement and yours 
 ### Step 4b: Fetch each new LEGO's phrases
 For EACH new LEGO in the seed, one call, passing the LEGO you just designed:
 \`\`\`bash
-curl -s -X POST "http://localhost:3471/api/phrases/v3/generate/${courseCode}" \\
+curl -s -X POST "http://localhost:3471/api/phrases/v4/generate/${courseCode}" \\
   -H "Content-Type: application/json" \\
   -d '{"seed": N, "lego": L, "lego_known": "...", "lego_target": "...", "lego_type": "A"}'
 \`\`\`

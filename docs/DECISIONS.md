@@ -1,3 +1,12 @@
+## 2026-10-15 — Phrase v4 per LEGO is the builders' default; lego.insert/lego.delete; voice-gap-fill through doors (job #544)
+
+**Rulings:** r-2026-10-14-phrase-v4-is-the-phrase-builder; r-2026-10-14-kai-is-team-his-agents-get. Kai asked for lego.insert/delete.
+
+**Decision (better × simpler × cheaper):** v4 per LEGO rides `generateLegoPhrases` through two seams (`frameSectionFn`, `extraCheck`) instead of a second generator: one retry/gate/scorer path, v3 unchanged when the seams are unset, and the v4 checks include the gap-fill door's own `gateStagedRows`, so a set that passes generation lands. `POST /api/phrases/v4/generate/:course` mirrors v3's body and answer; builders switch by URL, v3 stays as fallback (and for Welsh, r-2026-09-27). It writes nothing; landing an existing course stays generate → `/api/admin/phrase-v4/gap-fill` (preview, undo, tom_go). Rejected: a new landing route (a second way in for no gain).
+`lego.insert`/`lego.delete` are edit-batch ops (preview by default, derived undo; delete refuses while phrases remain unless `cascade_phrases`); an apply on a beta/released course needs `tom_go`. `/api/admin/course-edit/:course/edit-batch` is the same handler for a signed agent, so the event names the agent. voice-gap-fill lost its direct database: reads via `?audio=1`, links via fill-only `audio.link` ops.
+**Not decided here:** frame-tag cost on a cold course (the first v4 call in a never-tagged course pays one cached Haiku pass); no diversity floor was invented — `v4.distinct_frames` is reported, not gated.
+How-to: docs/agent-doors/phrase-v4-and-lego-ops.md.
+
 ## 2026-10-13 — A question mark is part of an audio key (job #586)
 
 **Tom, 2026-10-13:** capitalisation does not distinguish recordings, a question mark does: "Onde era?" and "onde era" are separate recordings.
