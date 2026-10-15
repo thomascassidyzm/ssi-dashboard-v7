@@ -138,10 +138,10 @@ async function main() {
   // course_audio, and immune to the offset-without-ORDER-BY paging trap.
   const counts = new Map() // `${course}|${role}` -> Map(`${voice_id}|${origin}` -> n)
   for (const [table, , col, role] of SLOTS) {
-    const cast = col === 'presentation_audio_id' && table === 'course_legos' ? '::text' : ''
+    const cast = col === 'presentation_audio_id' && table === 'course_legos' ? '::uuid' : ''
     const { rows } = await db.query(`
       SELECT t.course_code, ca.voice_id, ca.origin, count(*)::int AS n
-        FROM ${table} t JOIN course_audio ca ON ca.id${cast} = t.${col}
+        FROM ${table} t JOIN course_audio ca ON ca.id = t.${col}${cast}
        WHERE t.${col} IS NOT NULL ${only ? 'AND t.course_code = $1' : ''}
        GROUP BY 1, 2, 3`, only ? [only] : [])
     for (const r of rows) {

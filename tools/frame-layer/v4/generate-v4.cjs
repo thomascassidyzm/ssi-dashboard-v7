@@ -95,14 +95,7 @@ const NO_SPACE = new Set(['zho', 'jpn', 'yue', 'hak', 'nan', 'tha', 'lao', 'khm'
 const langOf = (code) => String(code || '').split('_')[0];
 const knownLangOf = (course) => langOf(String(course).split('_for_')[1]);
 const targetLangOf = (course) => langOf(String(course).split('_for_')[0]);
-// Own normaliser, not availability.norm: that one drops combining marks (\p{M}),
-// which shreds Devanagari, Tamil, Bengali… words into consonant fragments.
-const normAny = (s) => String(s || '').toLowerCase().replace(/[^\p{L}\p{M}\p{N}' ]/gu, ' ').replace(/\s+/g, ' ').trim();
-const unitsOf = (s, noSpace) => noSpace ? [...normAny(s).replace(/\s+/g, '')] : normAny(s).split(' ').filter(Boolean);
-function knownHeardCheck(known, heardTexts, noSpace) {
-  const heard = new Set(heardTexts.flatMap(t => unitsOf(t, noSpace)));
-  return [...new Set(unitsOf(known, noSpace).filter(u => !heard.has(u)))];
-}
+const { normAny, unitsOf, knownHeardCheck } = require('../../../services/shared/known-heard-check.cjs');
 const useTooShort = (known, noSpace) => unitsOf(known, noSpace).length < (noSpace ? 6 : 4);
 
 // ---------- target tiling: exact surface forms, see exact-form.cjs (Tom 2026-10-09) ----------

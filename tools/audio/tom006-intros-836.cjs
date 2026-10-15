@@ -87,7 +87,7 @@ let stopFlag = false; process.on('SIGTERM', () => { stopFlag = true; console.log
   const slotsOf = async (oldClips, legoIds) => {
     if (GAPS) return (await pg.query(`select 'course_legos' tbl, id::text key, null::text "from" from course_legos where course_code=$1 and lego_id = any($2::text[]) and presentation_audio_id is null`, [course, legoIds])).rows
     const ids = [...oldClips]
-    const { rows } = await pg.query(`select 'course_legos' tbl, id::text key, presentation_audio_id::text "from" from course_legos where course_code=$1 and seed_number between $3 and $4 and presentation_audio_id = any($2::text[])
+    const { rows } = await pg.query(`select 'course_legos' tbl, id::text key, presentation_audio_id::text "from" from course_legos where course_code=$1 and seed_number between $3 and $4 and presentation_audio_id::uuid = any($2::uuid[])
       union all select 'course_practice_phrases', id::text, presentation_audio_id::text from course_practice_phrases where course_code=$1 and seed_number between $3 and $4 and presentation_audio_id = any($2::uuid[]) and phrase_role is distinct from 'component'`, [course, ids, from, to])
     return rows
   }

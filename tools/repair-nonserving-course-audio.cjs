@@ -98,7 +98,7 @@ async function main() {
            ca.text_normalized, ca.language, ca.role, ca.voice_id,
            ca.duration_ms AS old_duration_ms, ca.audio_revision,
            c.id AS canon_clip_id, c.duration_ms AS canon_duration_ms,
-           (EXISTS (SELECT 1 FROM course_legos l WHERE l.known_audio_id=p.audio_id OR l.target1_audio_id=p.audio_id OR l.target2_audio_id=p.audio_id OR l.presentation_audio_id=p.audio_id::text)
+           (EXISTS (SELECT 1 FROM course_legos l WHERE l.known_audio_id=p.audio_id OR l.target1_audio_id=p.audio_id OR l.target2_audio_id=p.audio_id OR l.presentation_audio_id::uuid=p.audio_id)
          OR EXISTS (SELECT 1 FROM course_practice_phrases f WHERE f.known_audio_id=p.audio_id OR f.target1_audio_id=p.audio_id OR f.target2_audio_id=p.audio_id OR f.presentation_audio_id=p.audio_id)
          OR EXISTS (SELECT 1 FROM course_seeds s WHERE s.known_audio_id=p.audio_id OR s.target1_audio_id=p.audio_id OR s.target2_audio_id=p.audio_id)
          OR EXISTS (SELECT 1 FROM lego_introductions li WHERE li.presentation_audio_id=p.audio_id)) AS reachable

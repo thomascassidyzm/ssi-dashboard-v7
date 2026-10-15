@@ -36,7 +36,7 @@ async function run(courseCode) {
     `select l.course_code, l.seed_number, l.lego_index, l.known_text, l.target_text,
             l.presentation_audio_id, a.text as clip_text
        from course_legos l
-       join course_audio a on a.id::text = l.presentation_audio_id
+       join course_audio a on a.id = l.presentation_audio_id::uuid
       where l.presentation_audio_id is not null
         and a.text is not null
         ${courseCode ? 'and l.course_code = $1' : ''}

@@ -115,7 +115,7 @@ async function realHumanLearners(db, courseCode) {
             l.educational_role
        from learner_pod_state lps
        left join learners l on l.id = lps.learner_id
-       left join auth.users au on au.id::text = l.user_id
+       left join auth.users au on au.id::text = l.user_id -- agent-db-lint: allow (auth.users is ~1k rows; 415 learners.user_id are not uuids, so the cast cannot go the other way)
       where lps.course_code = $1
       group by 1, 4, 5, 6, 7`,
     [courseCode]

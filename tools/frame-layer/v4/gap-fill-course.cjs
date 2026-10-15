@@ -130,12 +130,10 @@ async function fill(m) {
 }
 
 async function gateStage() {
-  const { supabase } = require('../../../services/supabase-client.cjs');
-  const { makeCourseCtx, checkPhraseSet } = require('../../phrase-gate/gate-check.cjs');
-  const { checkPhraseZUT, classifyBuildPhrase } = require('../../../services/course-builder/lib/validation.cjs');
+  const { popty } = require('./db.cjs');
+  const { classifyBuildPhrase } = require('../../../services/course-builder/lib/validation.cjs');
   const { normalizeForContainment } = require('../../../services/course-builder/lib/text-normalization.cjs');
   const data = loadCourse(course);
-  const ctx = makeCourseCtx(supabase, course);
   const files = fs.readdirSync(DIR).filter(f => /^v4gap-.*-\d+-\d+\.json$/.test(f)).sort((a, b) => +a.split('-').at(-2) - +b.split('-').at(-2));
   const windowsOut = [];
   const all = [];
@@ -149,6 +147,7 @@ async function gateStage() {
   const conflicts = batchZutConflicts(all);
   const seen = new Set();
   const accepted = [], dropped = [];
+  const candidates = [];
   for (const r of all) {
     const reasons = [];
     const lego = legoOf(r);
@@ -158,35 +157,27 @@ async function gateStage() {
     const key = norm(r.known_text) + '|' + norm(r.target_text);
     if (seen.has(key)) reasons.push('duplicate of another candidate');
     if (conflicts.has(norm(r.known_text))) reasons.push('ZUT: same English given different targets across windows');
-    if (!reasons.length) {
-      const res = await checkPhraseSet({ courseCode: course, seedNumber: r.seed_number, legoIndex: r.lego_index, legoKnown: r.lego_known, legoTarget: r.lego_target,
-        phrases: [{ role: r.phrase_role, known: r.known_text, target: r.target_text }] }, ctx);
-      // Per-phrase gates are authoritative. Basket-shape gates (buildCountSpec,
-      // buildUseFloors, buildRecombination's count, separableContrast) judge a
-      // whole basket; the live basket already passed them and additive rows
-      // cannot lower a floor.
-      for (const g of ['bareLego', 'containment', 'vocab', 'zut']) if (res.gates[g] && res.gates[g].pass === false) reasons.push(`popty:${g} ${JSON.stringify(res.gates[g]).slice(0, 200)}`);
-      if (res.gates.knownSide.pass === false) reasons.push(`popty:knownSide ${JSON.stringify(res.gates.knownSide.breaches).slice(0, 200)}`);
-      if (res.gates.knownSide.pass === null) {
-        // No pair-contract for this known language: the live route skips the check
-        // silently. Here it never skips — every known word must already have been
-        // heard in this course by the LEGO's seed, or the row is cut.
-        const heard = [...data.seeds.filter(x => x.seed_number <= r.seed_number), ...data.legos, ...data.components]
-          .filter(x => x.seed_number < r.seed_number || (x.seed_number === r.seed_number && (x.lego_index == null || +x.lego_index <= +r.lego_index)))
-          .map(x => x.known_text);
-        const bad = knownHeardCheck(r.known_text, heard, NO_SPACE_KNOWN.has(course.split('_for_')[1].split('_')[0]));
-        if (bad.length) reasons.push(`knownSide (no contract; heard-words fallback): unheard ${bad.join(' ')}`);
-      }
-      if (r.phrase_role === 'build') {
-        const { cls } = classifyBuildPhrase(r.target_text, r.lego_target, liveUse(r), false);
-        if (['bare-repeat', 'comma-tag', 'use-stem+tag'].includes(cls)) reasons.push(`popty:buildTemplate ${cls}`);
-      }
-      // Popty's ZUT bounds to prior seeds; a USE row is eternal, so also the whole course, later seeds included.
-      const whole = await checkPhraseZUT(supabase, course, [{ known: r.known_text, target: r.target_text }], null);
-      if (whole.length) reasons.push(`ZUT whole course: "${whole[0].known}" is "${whole[0].existing_target}" at seed ${whole[0].existing_seed}`);
+    if (!reasons.length && r.phrase_role === 'build') {
+      const { cls } = classifyBuildPhrase(r.target_text, r.lego_target, liveUse(r), false);
+      if (['bare-repeat', 'comma-tag', 'use-stem+tag'].includes(cls)) reasons.push(`popty:buildTemplate ${cls}`);
     }
     seen.add(key);
-    (reasons.length ? dropped : accepted).push(reasons.length ? { ...r, reasons } : r);
+    if (reasons.length) dropped.push({ ...r, reasons }); else candidates.push(r);
+  }
+  // POPTY'S OWN GATES, asked of Popty (job #517; no database client in this process): the
+  // per-phrase gates (bareLego, containment, vocab, zut, knownSide + the no-contract
+  // heard-words fallback) and ZUT against the WHOLE course, later seeds included — a USE
+  // row is eternal. Basket-shape gates (buildCountSpec, buildUseFloors, buildRecombination's
+  // count, separableContrast) judge a whole basket; the live basket already passed them and
+  // additive rows cannot lower a floor. The apply door re-runs the same gates again.
+  const refusedBy = new Map();
+  for (let i = 0; i < candidates.length; i += 100) {
+    const res = popty('POST', '/api/admin/phrase-v4/gate', { courseCode: course, rows: candidates.slice(i, i + 100) });
+    for (const x of res.refused) refusedBy.set(`${x.seed_number}:${x.lego_index}:${x.phrase_role}:${x.known_text}|${x.target_text}`, x.reasons);
+  }
+  for (const r of candidates) {
+    const reasons = refusedBy.get(`${r.seed_number}:${r.lego_index}:${r.phrase_role}:${r.known_text}|${r.target_text}`);
+    (reasons ? dropped : accepted).push(reasons ? { ...r, reasons } : r);
   }
   // Quality judge (#17·M showed the mechanical gates pass ~1 in 9 rows a native ear cuts): every
   // mechanically clean row is judged; a flagged row is cut, never repaired.

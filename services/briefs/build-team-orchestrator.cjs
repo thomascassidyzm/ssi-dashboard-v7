@@ -70,7 +70,7 @@ You DO NOT build seeds yourself.
 
 ## Architecture
 
-1. **Builder** (Opus) decomposes seeds, fetches each LEGO's phrases from the v3 phrase door, and submits to the API
+1. **Builder** (Opus) decomposes seeds, fetches each LEGO's phrases from the phrase door (v4; v3 as the fallback), and submits to the API
 2. **API** validates (tiling, vocab, ZUT, phrase counts) and writes to Supabase
 3. **You** (Opus orchestrator) monitor progress, spot-check quality, respawn on stalls
 4. **Final pass** catches grammar/naturalness issues after the build

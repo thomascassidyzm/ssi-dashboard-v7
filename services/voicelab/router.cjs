@@ -60,6 +60,7 @@ const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
  * @param {object}   [deps.logger]
  */
 /** registry.SLOTS are the phrase-bearing slots; 'presentation' is cast and cleared too, gender-agnostic like guide (cast_voice_role v3). The guard used to reject it, so clearing a presentation slot was unreachable (#273). */
+const AGENT_SLOT_PATH = /^\/languages\/[^/]+\/slot$/
 const isCastableSlot = (slot) => slot === 'presentation' || registry.SLOTS.includes(slot)
 
 /**
@@ -72,15 +73,22 @@ const isCastableSlot = (slot) => slot === 'presentation' || registry.SLOTS.inclu
  * it.
  */
 const GATE_MEMO_MS = Number(process.env.VOICELAB_GATE_MEMO_MS || 30000)
+// An agent-signed request is admitted on its signature, before any token is
+// looked at, so whatever Authorization header rode along with it proves
+// nothing: it is neither served from the memo nor stored in it. Storing it
+// turned one signed call into a 30-second reusable password for a made-up
+// bearer token (lanes review of 3fb3cbf, 2026-10-15).
+const isAgentCall = (req, user) => !!(req && req.agentAdmin) || !!(user && user.viaAgentKey)
 function memoGate (gate) {
   const seen = new Map()
   return async (req, res) => {
+    if (isAgentCall(req)) return gate(req, res)
     const token = req.headers && req.headers.authorization
     const now = Date.now()
     const hit = token && seen.get(token)
     if (hit && hit.exp > now) return hit.user
     const user = await gate(req, res)
-    if (user && token && GATE_MEMO_MS > 0) {
+    if (user && token && GATE_MEMO_MS > 0 && !isAgentCall(req, user)) {
       if (seen.size > 200) for (const [k, v] of seen) if (v.exp <= now) seen.delete(k)
       seen.set(token, { user, exp: now + GATE_MEMO_MS })
     }
@@ -242,6 +250,15 @@ function mount (app, deps) {
     if (req.method === 'OPTIONS') return next()
     if (COMMUNITY_DOORS.some(([m, re]) => m === req.method && re.test(req.path))) return next()
     allowQueryToken(req)
+    // THE SANCTIONED AGENT DOOR, ONE ROUTE WIDE (job #445, Tom 2026-10-14):
+    // a signed same-host call (tools/agent-admin/call.cjs) holding scope
+    // voice-slot:write may PUT a cast slot and nothing else in the lab. The
+    // signature is single-use, so it is judged here once and the route reads
+    // req.agentAdmin rather than asking again.
+    if (deps.requireAdminOrAgent && req.headers['x-agent-admin'] && req.method === 'PUT' && AGENT_SLOT_PATH.test(req.path)) {
+      if (!(await deps.requireAdminOrAgent(req, res, 'voice-slot:write'))) return
+      return next()
+    }
     if (!(await requireAdmin(req, res))) return
     next()
   })
@@ -566,7 +583,7 @@ function mount (app, deps) {
   }
 
   app.put('/api/voicelab/languages/:language/slot', async (req, res) => {
-    const user = await requireAdmin(req, res)
+    const user = req.agentAdmin ? req.agentAdmin.user : await requireAdmin(req, res)
     if (!user) return
     try {
       const language = String(req.params.language || '').trim()
@@ -1959,4 +1976,4 @@ function mount (app, deps) {
   logger.log?.(`[voicelab] routes mounted: /api/voicelab/* (lab dir ${store.LAB_DIR})`)
 }
 
-module.exports = { mount }
+module.exports = { mount, memoGate }

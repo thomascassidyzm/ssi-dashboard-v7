@@ -11,6 +11,13 @@
       <strong>{{ safetyBanner.head }}</strong>
       <span>{{ safetyBanner.detail }}</span>
     </div>
+    <!-- THE LIST THAT BANNER POINTS AT (Aran, 2026-10-15): on the home page, each refused take with its reason. -->
+    <RefusedTakes
+      v-if="phase === 'home' && refusedHomeRows.length"
+      :rows="refusedHomeRows"
+      @rerecord="rerecordRefused"
+      @dismiss="r => queue.discardRefused(r.lineId)"
+    />
     <!-- Loading -->
     <section v-if="phase === 'loading'" class="rc-card center">
       <div class="rc-spinner"></div>
@@ -673,6 +680,8 @@ import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
 import BoothHome from './recordist/BoothHome.vue'
+import RefusedTakes from './recordist/RefusedTakes.vue'
+import { refusedRows } from './recordist/refused-takes.js'
 import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot } from './recordist/booth-home.js'
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
@@ -706,9 +715,12 @@ const recorder = useTapRecorder()
 // refused take left on the shelf by an earlier session is not counted or listed
 // against a line this recordist has since read again (Tom, 2026-09-11: a
 // refused take is a mark over a line, never a reason to ask for it again).
+// The whole queue, read once on the home page while refused takes are on the device, so each one
+// can be placed (section, batch) and re-recorded. Null until it has been read.
+const locatorLines = ref(null)
 const queue = useRecordistQueue({
   isLineRecorded: (lineId) => {
-    const l = lines.value.find(x => x.id === lineId)
+    const l = lines.value.find(x => x.id === lineId) || (locatorLines.value || []).find(x => x.id === lineId)
     return !!(l && l.recorded)
   },
 })
@@ -2676,6 +2688,37 @@ function withLocalRecorded(t) {
   return extra ? { ...t, batches, recorded: (t.recorded || 0) + extra } : t
 }
 const homeTracks = computed(() => ((homeSummary.value && homeSummary.value.tracks) || []).map(t => ({ ...withLocalRecorded(t), ...describeTrack(t) })))
+// THE REFUSED TAKES ON THE HOME PAGE: one row per take the banner counts.
+const refusedHomeRows = computed(() => refusedRows({
+  takes: (queue.refusedTakes && queue.refusedTakes.value) || [],
+  lines: locatorLines.value,
+  tracks: homeTracks.value,
+}))
+let locating = false
+async function locateRefused() {
+  if (locating || locatorLines.value) return
+  locating = true
+  try {
+    const { res, data } = await fetchWithTimeoutRetry(
+      withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1`, props.voiceId),
+      { headers: {} },
+      r => (r.ok ? r.json() : r.json().catch(() => ({})))
+    )
+    if (res.ok && data && Array.isArray(data.lines)) {
+      locatorLines.value = data.lines
+      await queue.reconcile()
+    }
+  } catch { /* the rows stay "finding the line"; Dismiss still works */ } finally { locating = false }
+}
+watch([phase, () => (queue.refusedTakes ? queue.refusedTakes.value.length : 0)], () => {
+  if (phase.value === 'home' && refusedHomeRows.value.length) locateRefused()
+}, { immediate: true })
+// Re-record: open that exact line in the recording screen (?line= is read once the batch has loaded).
+function rerecordRefused(r) {
+  if (!r.track) return
+  goToAddress({ track: r.track, batch: String(r.batch), line: r.lineId })
+}
+
 const homeMainHeading = computed(() => {
   const codes = new Set(homeTracks.value.filter(t => t.kind === 'phrase' || t.newCourse).map(t => t.courseCode))
   return codes.size === 1 ? boothCourseWords([...codes][0], 'New work') : 'New work'
@@ -2817,7 +2860,14 @@ async function enter() {
       if (kept) applySummary(kept)
       fetchSummary().then(d => { if (d) applySummary(d) }).catch(() => {})
     }
-    return load()
+    await load()
+    // A DEEP LINK TO ONE LINE (?line=<id>, from a refused take on the home page): open that line.
+    const want = queryStr(addressQuery.value.line)
+    if (want && mine === entering && phase.value === 'ready') {
+      const i = lines.value.findIndex(l => l.id === want)
+      if (i !== -1) { index.value = i; await recordOne(want) }
+    }
+    return
   }
   return loadHome()
 }

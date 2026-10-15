@@ -86,6 +86,13 @@ function mirrorEdit(segments, key, oldText, newText) {
 }
 
 // ── planning (pure: no DB) ────────────────────────────────────────────────────────────────
+// "English to '…'" — the closing quote is the one at the end of the answer or just before a Welsh
+// instruction, so apostrophes inside the sentence (it's, don't) survive and an English-first answer
+// does not swallow the Welsh one (lanes reviews of 01c23f8 and 54d703c).
+function englishTo(text) {
+  return /\bEnglish to ['‘](.+?)['’](?=\s+and\s+(?:change\s+)?(?:the\s+)?Welsh to|\s*$)/i.exec(String(text).replace(/[‘]/g, "'"));
+}
+
 function planAnswers(answers, items) {
   const byId = new Map(items.map((i) => [i.id, i]));
   const plan = []; // {rowShort, itemId, action:'set'|'remove'|'leave'|'skip', field?, to?, why}
@@ -111,13 +118,16 @@ function planAnswers(answers, items) {
       } else if (looksLikeInstruction(a.text)) {
         if (/capitali[sz]ation/i.test(a.text) && /english/i.test(a.text)) plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: null, transform: 'capitaliseEnglish' });
         else if (/rhai to unrhyw/i.test(a.text)) {
-          // 'change rhai to unrhyw and change some to any': word swaps in the Welsh and the English of the row
+          // 'change rhai to unrhyw and change some to any': word swaps in the Welsh and the English of the row.
+          // An English the reviewer spelled out ("… and the English to 'anything'") wins over the some→any swap.
           plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: null, swap: [/\brhai\b/, 'unrhyw'] });
-          plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: null, swap: [/\bsome\b/, 'any'] });
+          const e = englishTo(a.text);
+          if (e) plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: curly(e[1]) });
+          else plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: null, swap: [/\bsome\b/, 'any'] });
         } else {
-          // explicit values: "change Welsh to '…' and the English to '…'" sets both fields exactly
-          const w = /\bWelsh to '([^']+)'/i.exec(a.text.replace(/[‘]/g, "'"));
-          const e = /\bEnglish to '([^']+)'/i.exec(a.text.replace(/[‘]/g, "'"));
+          // explicit values: "change Welsh to '…' and the English to '…'" sets both fields exactly, in either order
+          const w = /\bWelsh to ['‘](.+?)['’](?=\s+and\s+(?:change\s+)?(?:the\s+)?English to|\s*$)/i.exec(a.text.replace(/[‘]/g, "'"));
+          const e = englishTo(a.text);
           if (w && e) {
             plan.push({ itemId: a.id, rowShort, action: 'set', field: 'target_text', to: curly(w[1]) });
             plan.push({ itemId: a.id, rowShort, action: 'set', field: 'known_text', to: curly(e[1]) });

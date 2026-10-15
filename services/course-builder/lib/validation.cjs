@@ -354,14 +354,17 @@ function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
 
     let wordKeys = null;
     for (const phrase of phrases) {
-      const normalized = normalizeForContainment(welsh ? welshExpandEin(phrase.target, vocabSet) : phrase.target);
+      // The ein reading is worked out ONCE and fed to every check below (tiling, the yn retry, the
+      // word-level fallback) — phrase.target stays only for the error report (lanes review, 752d219).
+      const reading = welsh ? welshExpandEin(phrase.target, vocabSet) : phrase.target;
+      const normalized = normalizeForContainment(reading);
       const phraseWords = normalized.split(' ').filter(w => w);
       const n = phraseWords.length;
       if (n === 0) continue;
 
       const dp = tile(phraseWords, chunksByFirstWord);
       if (!dp[n] && welsh) {
-        const expanded = normalizeForContainment(welshExpandYn(phrase.target)).split(' ').filter(w => w);
+        const expanded = normalizeForContainment(welshExpandYn(reading)).split(' ').filter(w => w);
         if (tile(expanded, expandedChunks)[expanded.length]) continue;
       }
 
@@ -371,7 +374,7 @@ function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
         // Welsh also folds a soft-mutated form. Only the words no earlier LEGO, component or seed
         // sentence carries, in that exact form, are a violation.
         wordKeys = wordKeys || taughtWordKeys(vocabSet, courseCode);
-        const untaught = untaughtWords(phrase.target, wordKeys, courseCode);
+        const untaught = untaughtWords(reading, wordKeys, courseCode);
         if (untaught.length) violations.push({ phrase: phrase.target, unknown: untaught.join(' ') });
         continue;
       }
@@ -629,7 +632,7 @@ function _clearGenderVariantLicenceCache() { _genderLicenceCache.clear(); }
 // these functions have always run. sector-helix §5b/§6; course-family.cjs.
 const { zutScope } = require('./course-family.cjs');
 const { loadRunningOrder, filterSeedsBefore } = require('../../shared/running-order.cjs');
-const { isSoftMutationVariant } = require('./welsh-mutation.cjs');
+const { isSameWelsh } = require('./welsh-mutation.cjs');
 const { wordLevelApplies, taughtWordKeys, untaughtWords } = require('./taught-words.cjs');
 
 /**
@@ -676,7 +679,9 @@ async function checkLegoConflict(supabase, courseCode, knownText, targetText, cu
 
   // Welsh: a soft-mutated form of a taught LEGO IS the taught LEGO (Aran, 2026-10-07;
   // welsh-mutation.cjs) — a duplicate to link to, not a ZUT fork. False for every other course.
-  const softVariant = existing.find(e => isSoftMutationVariant(courseCode, e.target_text, targetText));
+  // isSameWelsh, not isSoftMutationVariant: "dw i’n barod" vs a taught "dw i yn barod" is
+  // identical once 'n is expanded and must fold too (K43; lanes review of 895de11).
+  const softVariant = existing.find(e => isSameWelsh(courseCode, e.target_text, targetText));
   if (softVariant) {
     return {
       conflict: 'duplicate',

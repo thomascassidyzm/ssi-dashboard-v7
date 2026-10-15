@@ -97,6 +97,24 @@ const PRODUCTION_API = [
   { method: 'DELETE', path: '/api/production/:courseCode/phrases/:phraseId',  operation: 'phrase-delete' },
   { method: 'POST',   path: '/api/production/:courseCode/phrases/batch-delete', operation: 'phrase-delete' },
   { method: 'POST',   path: '/api/admin/decomposition-backfill',             operation: 'decomposition-backfill' },
+  // Kai's agents (r-2026-10-14-kai-is-team-his-agents-get): the two admin edit doors.
+  { method: 'POST',   path: '/api/admin/recompute-decompositions',          operation: 'decomposition-recompute' },
+  { method: 'POST',   path: '/api/admin/unapprove-seeds',                   operation: 'unapprove' },
+  // Phrase v4's gap-fill landing (job #517): phrase.insert ops through the course-edit engine.
+  { method: 'POST',   path: '/api/admin/phrase-v4/gap-fill',                operation: 'phrase-v4-gap-fill' },
+  // The course-edit door (job #391): the routes agents use since #388 took their
+  // SQL write away. Every op runs in shared/course-edit-ops.cjs, which can touch
+  // course_legos, so all of them are lego writers for the round map.
+  { method: 'POST',   path: '/api/production/:courseCode/edit',              operation: 'course-edit', legos: true },
+  { method: 'POST',   path: '/api/production/:courseCode/edit-batch',        operation: 'course-edit', legos: true },
+  // The same batch door, reached by a signed agent (job #544): /api/admin carries the agent front door.
+  { method: 'POST',   path: '/api/admin/course-edit/:courseCode/edit-batch', operation: 'course-edit', legos: true },
+  { method: 'PATCH',  path: '/api/production/:courseCode/lego/:legoId',      operation: 'lego-edit', legos: true },
+  { method: 'DELETE', path: '/api/production/:courseCode/seed/:seedNumber',  operation: 'seed-deprecate' },
+  // Job #388: fill-only clip linking over the Supabase client (services/shared/link-clip.cjs).
+  { method: 'POST',   path: '/api/production/:courseCode/link-clip',          operation: 'audio-link' },
+  // A listening pod's solo readers (job #391): who reads it, not what it says.
+  { method: 'PATCH',  path: '/api/production/:courseCode/pod/:podId/solo-readers', operation: 'pod-solo-readers' },
 ].map(r => ({ ...r, service: 'production-api' }));
 
 const SURFACES = [...COURSE_BUILDER, ...RECORD_ONLY, ...PRODUCTION_API];

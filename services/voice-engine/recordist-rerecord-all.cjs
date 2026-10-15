@@ -37,10 +37,10 @@ const SCALAR_SLOTS = Object.freeze([
   ['course_legos', ['target1_audio_id', 'target2_audio_id', 'known_audio_id', 'presentation_audio_id']],
   ['course_practice_phrases', ['target1_audio_id', 'target2_audio_id', 'known_audio_id', 'presentation_audio_id']],
 ])
-// course_legos.presentation_audio_id is a TEXT column holding a uuid string
-// (the schema's own comment says so), so it is matched by text, not by uuid[].
+// course_legos.presentation_audio_id was a TEXT column until job #387 made it uuid; the ::uuid
+// keeps this correct on either side of that change and is a no-op once the column is uuid.
 const TEXT_SLOTS = Object.freeze(new Set(['course_legos.presentation_audio_id']))
-const slotMatch = (table, col) => (TEXT_SLOTS.has(`${table}.${col}`) ? `${col} = any($1::text[])` : `${col} = any($1)`)
+const slotMatch = (table, col) => (TEXT_SLOTS.has(`${table}.${col}`) ? `${col}::uuid = any($1::uuid[])` : `${col} = any($1)`)
 const ARRAY_SLOTS = Object.freeze([
   ['listening_pod_sentences', ['takeg_audio_ids', 'sentence_audio_ids', 'sentence_known_audio_ids']],
 ])

@@ -67,6 +67,8 @@ app.use('/api', require('./course-builder/routes/drafts.cjs')(ctx));
 // Opus as the single tier (Tom's ruling 2026-08-27). Generates only; submission
 // and validation stay on the existing doors.
 app.use('/api', require('./course-builder/routes/phrases-v3.cjs')(ctx));
+// v4 — the same door per LEGO, frame-diversity brief + the gap-fill door's own gates (job #544).
+app.use('/api', require('./course-builder/routes/phrases-v4.cjs')(ctx));
 
 // Mount briefs router
 app.use('/api/brief', require('./briefs/index.cjs'));

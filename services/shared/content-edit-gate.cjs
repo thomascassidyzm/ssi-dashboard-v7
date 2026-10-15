@@ -107,7 +107,7 @@ function mode() {
 // sync. Anything NOT listed here does — a new surface is covered by default.
 const NO_TEXT_OPERATIONS = new Set([
   'approve', 'flag', 'unflag', 'qa-mark-checked', 'qa-reset', 'phrase-delete',
-  'course-wipe', 'course-delete', 'reset-translations',
+  'course-wipe', 'course-delete', 'reset-translations', 'seed-deprecate', 'pod-solo-readers',
 ]);
 
 function contentEditGate({ supabase, service, logger = console }) {
@@ -195,12 +195,19 @@ function contentEditGate({ supabase, service, logger = console }) {
       return recording;
     }
 
+    // A DRY RUN WRITES NOTHING, so it files nothing (job #391). The course-edit
+    // door's preview runs the real transaction and rolls it back; without this the
+    // safety net below would file an edit event for every preview, and the round
+    // map and gender sync would chase writes that never happened.
+    let wroteNothing = false;
+
     req.contentEdit = {
       surface: surfaceLabel,
       operation: surface.operation,
       courseCode,
       identity,
       record,
+      wroteNothing() { wroteNothing = true; },
       get eventId() { return eventId; },
     };
 
@@ -217,7 +224,7 @@ function contentEditGate({ supabase, service, logger = console }) {
     // way — a second refresh is only coalesced, not free.
     let refreshRequested = false;
     function requestRefreshOnce() {
-      if (refreshRequested) return;
+      if (refreshRequested || wroteNothing) return;
       refreshRequested = true;
       // Fire-and-log: the response has already gone, so the ~0.8s refresh costs
       // the caller nothing, and the helper coalesces a burst of seed
@@ -256,7 +263,7 @@ function contentEditGate({ supabase, service, logger = console }) {
     const genderSyncSince = Date.now();
     let genderSyncRequested = false;
     function requestGenderSyncOnce() {
-      if (genderSyncRequested) return;
+      if (genderSyncRequested || wroteNothing) return;
       genderSyncRequested = true;
       const code = courseCodeFrom(params, req.path || req.url, req.body) || courseCode;
       if (code === 'unknown') return;
@@ -271,7 +278,7 @@ function contentEditGate({ supabase, service, logger = console }) {
     // This one stays on 'finish' alone: it asks about res.statusCode, which
     // only means anything once a response was actually sent.
     res.on('finish', () => {
-      if (eventId || recording) return;
+      if (eventId || recording || wroteNothing) return;
       // A record-only GET logs only when its handler actually initialised
       // something. Without this, every page load would file an edit.
       if (surface.recordOnly) return;

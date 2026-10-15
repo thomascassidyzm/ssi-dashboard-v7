@@ -115,6 +115,16 @@ function isTomCastRow(row) {
   return /^\s*Tom('s)?\b/.test(notes)
 }
 
+/**
+ * Languages where ANY non-banned provider's Tom-cast Voice Lab row counts as the
+ * cast (job #448: cat is cast Azure Alba/Enric). Deliberately scoped to cat: the
+ * Voice Lab read routes refuse an agent identity, so which other languages hold a
+ * non-Cartesia cast row could not be listed; widen this set only after that list
+ * is read and ruled on.
+ */
+const CAST_ANY_PROVIDER = new Set(['cat'])
+const castCountsVoice = (language, voiceId) => isCartesiaVoice(voiceId) || (CAST_ANY_PROVIDER.has(language) && !isBannedVoice(voiceId))
+
 const canonVoice = (v) => (v ? (tryCanonicalVoiceId(v) || String(v)) : null)
 
 /**
@@ -125,13 +135,13 @@ const canonVoice = (v) => (v ? (tryCanonicalVoiceId(v) || String(v)) : null)
  *   reaches these)
  */
 function castAllowsVoice(language, voiceId, rows) {
-  const mine = (rows || []).filter(r => rowIsForKey(r, language) && isCartesiaVoice(canonVoice(r.voice_id)))
+  const mine = (rows || []).filter(r => rowIsForKey(r, language) && castCountsVoice(language, canonVoice(r.voice_id)))
   const cast = [...new Set(mine.filter(isTomCastRow).map(r => canonVoice(r.voice_id)))]
   const draftOnly = [...new Set(mine.filter(r => !isTomCastRow(r)).map(r => canonVoice(r.voice_id)))].filter(v => !cast.includes(v))
   const base = { cast, draftOnly }
   if (isBannedVoice(voiceId)) return { ...base, allowed: false, reason: 'banned-provider' }
   if (!cast.length) return { ...base, allowed: false, reason: draftOnly.length ? 'draft-cast' : 'uncast' }
-  if (!isCartesiaVoice(voiceId)) return { ...base, allowed: false, reason: 'not-cartesia' }
+  if (!castCountsVoice(language, voiceId)) return { ...base, allowed: false, reason: 'not-cartesia' }
   if (!cast.includes(voiceId)) return { ...base, allowed: false, reason: 'not-in-cast' }
   return { ...base, allowed: true, reason: null }
 }
@@ -286,7 +296,8 @@ async function castVerdict(language, voiceId, { audition = false, courseCode = n
   if (v.allowed) return { ...v, castKey, via: 'tom-cast' }
   if (v.reason === 'banned-provider') return { ...v, castKey }
   // Tom 2026-09-29: a course keeps the Cartesia voice it already speaks — never one only the draft named.
-  if (v.reason === 'not-in-cast' && courseCode && !v.draftOnly.includes(voiceId) && await courseHoldsVoice(courseCode, language, voiceId)) {
+  // Cartesia only: a non-cast Azure voice goes back through the Azure-only check below (lanes review of ec39bf9).
+  if (v.reason === 'not-in-cast' && courseCode && isCartesiaVoice(voiceId) && !v.draftOnly.includes(voiceId) && await courseHoldsVoice(courseCode, language, voiceId)) {
     return { ...v, castKey, allowed: true, reason: null, via: 'held-voice' }
   }
   // Leg (b): the course's existing voices in the language are all Azure, and this is one of them.

@@ -131,7 +131,7 @@ if (cmd === 'stop') {
   psql("delete from tts_spend_trips where provider = '*' and code = 'TOM_STOP'")
   console.log(`ledger: stop row removed; ${restoreKeys()} key line(s) restored`)
   for (const u of RESTART_ON_LIFT) {
-    try { execFileSync('systemctl', ['--user', 'restart', u]); console.log(`  restarted ${u} (it reads the keys at boot)`) } catch (e) { console.log(`  could not restart ${u}: ${e.message}`) }
+    try { execFileSync('systemctl', [...require('./lib/unit-scope.cjs').scopeArgs(u), 'restart', u]); console.log(`  restarted ${u} (it reads the keys at boot)`) } catch (e) { console.log(`  could not restart ${u}: ${e.message}`) }
   }
   status()
 } else {

@@ -102,6 +102,7 @@
 
 'use strict'
 
+const { withoutRetired } = require('../shared/policy-voice-patch.cjs')
 const { canonicalLanguage, canonicalVoiceId, tryCanonicalVoiceId } = require('../shared/clip-identity.cjs')
 const { writeOrSwapClip } = require('../shared/audio-revision-swap.cjs')
 const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
@@ -241,14 +242,19 @@ async function loadAliasMap(db, { cache } = {}) {
 }
 
 /** All policy rows, newest schema shape: {language, human_only, voices, notes}. */
-async function loadPolicies(db, { humanOnlyOnly = false, cache } = {}) {
+// A RETIRED SLOT (voices[slot].active === false, job #410) is invisible to every
+// reader of this function — queue, link, email login, coverage — so a retired
+// recordist cannot be handed a line. Only the admin policy list asks for
+// `includeRetired`, so it can show the slot and round-trip it. Takes are never touched.
+async function loadPolicies(db, { humanOnlyOnly = false, cache, includeRetired = false } = {}) {
   const { data, error } = await memoRead(cache, `policies:${humanOnlyOnly}`, () => {
     let q = db.from('language_recording_policy').select('*').order('language')
     if (humanOnlyOnly) q = q.eq('human_only', true)
     return q
   })
   if (error) throw new Error(`language_recording_policy read failed: ${error.message}`)
-  return data || []
+  if (includeRetired) return data || []
+  return (data || []).map((row) => (row && row.voices ? { ...row, voices: withoutRetired(row.voices) } : row))
 }
 
 /**
