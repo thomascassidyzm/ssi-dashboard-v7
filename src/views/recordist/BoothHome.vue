@@ -86,7 +86,7 @@
                 <span class="bh-h3">{{ t.title }}</span>
                 <span class="bh-sub">{{ t.what }}</span>
                 <span class="bh-bar"><i :style="{ width: pct(t) }"></i><i class="up" :style="{ width: pctUp(t) }"></i></span>
-                <span class="bh-row"><span class="bh-sub">{{ n(doneN(t)) }} of {{ n(t.total) }} recorded<span v-if="t.uploading" class="bh-up" :data-test="`card-uploading-${t.key}`"> · {{ upWords(t) }}</span></span><span class="bh-pill">{{ cardPill(t) }}</span></span>
+                <span class="bh-row"><span class="bh-sub">{{ n(doneN(t)) }} of {{ n(t.total) }} recorded<span v-if="t.counting" class="bh-counting" :data-test="`card-counting-${t.key}`"> · counting…</span><span v-if="t.uploading" class="bh-up" :data-test="`card-uploading-${t.key}`"> · {{ upWords(t) }}</span></span><span class="bh-pill">{{ cardPill(t) }}</span></span>
               </button>
             </div>
           </template>
@@ -99,7 +99,7 @@
                 <span class="bh-h3">{{ t.title }}</span>
                 <span class="bh-sub">{{ t.what }}</span>
                 <span class="bh-bar"><i :style="{ width: pct(t) }"></i><i class="up" :style="{ width: pctUp(t) }"></i></span>
-                <span class="bh-row"><span class="bh-sub">{{ n(doneN(t)) }} of {{ n(t.total) }} recorded<span v-if="t.uploading" class="bh-up" :data-test="`card-uploading-${t.key}`"> · {{ upWords(t) }}</span></span><span class="bh-pill">{{ cardPill(t) }}</span></span>
+                <span class="bh-row"><span class="bh-sub">{{ n(doneN(t)) }} of {{ n(t.total) }} recorded<span v-if="t.counting" class="bh-counting" :data-test="`card-counting-${t.key}`"> · counting…</span><span v-if="t.uploading" class="bh-up" :data-test="`card-uploading-${t.key}`"> · {{ upWords(t) }}</span></span><span class="bh-pill">{{ cardPill(t) }}</span></span>
               </button>
             </div>
           </template>
@@ -112,7 +112,7 @@
             <h3 class="bh-sec">Finished ✓</h3>
             <div class="bh-done">
               <button v-for="t in groups.finished" :key="t.key" type="button" class="bh-done-row" @click="$emit('card', t.key)">
-                <span class="bh-tick">✓</span><span class="bh-grow">{{ t.title }}</span><span class="bh-pill">{{ n(t.total) }} {{ t.total === 1 ? 'line' : 'lines' }}</span>
+                <span class="bh-tick">✓</span><span class="bh-grow" :data-test="`finished-${t.key}`">{{ t.title }}</span><span class="bh-pill">{{ n(t.total) }} {{ t.total === 1 ? 'line' : 'lines' }}</span>
               </button>
             </div>
           </template>
@@ -137,7 +137,7 @@
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import BoothTicks from './BoothTicks.vue'
 import BoothTeamStats from './BoothTeamStats.vue'
-import { groupTracks, upNext, batchOpenable, trackLocked, splitTicked, shownBatches, withoutHero } from './booth-home.js'
+import { homeLayout, batchOpenable, trackLocked, shownBatches } from './booth-home.js'
 
 const props = defineProps({
   displayName: { type: String, default: '' },
@@ -159,20 +159,19 @@ const pctUp = (x) => `${x.total && x.uploading ? Math.max(Math.round(100 * x.upl
 const upWords = (x) => `${n(x.uploading)} still uploading`
 // Nothing is locked any more (job #697): every card opens to its batch list. Up next keeps its order.
 const withLock = (t) => ({ ...t, locked: false })
-// Unticked cards are hidden (job #378); the tick list still holds them, so ticking brings them back.
-const allGroups = computed(() => {
-  const g = groupTracks(props.tracks)
-  return { main: g.main.map(withLock), other: g.other.map(withLock), finished: g.finished }
-})
-const next = computed(() => upNext(props.tracks, props.unticked))
-const groups = computed(() => {
-  const main = splitTicked(allGroups.value.main, props.unticked)
-  const other = splitTicked(allGroups.value.other, props.unticked)
-  // The hero's own section is not drawn again as a card (it stays in the tick panel).
-  return { main: withoutHero(main.shown, next.value), other: withoutHero(other.shown, next.value), finished: allGroups.value.finished, hidden: [...main.hidden, ...other.hidden] }
-})
+// WHAT GOES WHERE is homeLayout's (booth-home.js, job #823): every section with lines is in the tick
+// list, finished ones too, and every ticked one is on the left — the Up next hero (not repeated as a
+// card, #708), a card, or a finished row. Unticked ones are hidden (job #378) and named below.
+const layout = computed(() => homeLayout(props.tracks, props.unticked))
+const next = computed(() => layout.value.hero)
+const groups = computed(() => ({
+  main: layout.value.main.map(withLock),
+  other: layout.value.other.map(withLock),
+  finished: layout.value.finished,
+  hidden: layout.value.hidden,
+}))
 const ticked = (id) => !props.unticked.has(id)
-const tickables = computed(() => [...allGroups.value.main, ...allGroups.value.other])
+const tickables = computed(() => layout.value.tickables.map(withLock))
 const tickedCount = computed(() => tickables.value.filter((t) => ticked(t.key)).length)
 const openTrack = computed(() => {
   const t = props.trackKey && props.tracks.find((x) => x.key === props.trackKey)
@@ -227,6 +226,7 @@ function cardPill(t) {
 .bh-bar > i { display: block; flex: none; height: 100%; background: var(--color-emerald, #06ffa5); }
 .bh-bar > i.up { background: #f59e0b; }
 .bh-up { color: #fbbf24; font-weight: 600; }
+.bh-counting { font-style: italic; }
 .bh-brow.full.uploading .bh-bn { color: #fbbf24; }
 :root[data-theme="light"] .bh-bar > i.up { background: #d97706; }
 :root[data-theme="light"] .bh-up, :root[data-theme="light"] .bh-brow.full.uploading .bh-bn { color: #b45309; }

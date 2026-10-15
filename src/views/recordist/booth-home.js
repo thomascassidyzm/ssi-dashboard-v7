@@ -153,6 +153,66 @@ export function withoutHero(tracks, hero) {
   return hero ? tracks.filter((t) => t.key !== hero.track.key) : tracks
 }
 
+/**
+ * EVERY SECTION, ALWAYS LISTED (Aran, 2026-10-15, job #823: "This page should always show all the
+ * available sets. They should all be listed in the right-hand side, and if they're checked in the
+ * right-hand side they should appear on the left as well").
+ *
+ * The tick panel used to list only unfinished sections, so a section went missing the moment it
+ * read as finished — all recorded, or all amber with takes still uploading (#791), or credited
+ * with another batch's lines (#818) — which is how the North LEGOs and then the North sentences
+ * vanished. The panel now lists every section with lines, finished ones last and marked so.
+ */
+export function tickableTracks(tracks) {
+  const g = groupTracks(tracks)
+  return [...g.main, ...g.other, ...g.finished]
+}
+
+/**
+ * THE LEFT-HAND SIDE, decided in one place so it can be tested: Up next, the cards, the finished
+ * rows, and what is hidden because he unticked it. Every ticked section is on the left — as the
+ * Up next hero (whose card is not repeated, #708), as a card, or as a finished row — and every
+ * unticked one is named in the hidden note. Nothing else drops a section.
+ */
+export function homeLayout(tracks, off = new Set()) {
+  const g = groupTracks(tracks)
+  const hero = upNext(tracks, off)
+  const main = splitTicked(g.main, off)
+  const other = splitTicked(g.other, off)
+  const finished = splitTicked(g.finished, off)
+  return {
+    hero,
+    main: withoutHero(main.shown, hero),
+    other: withoutHero(other.shown, hero),
+    finished: finished.shown,
+    hidden: [...main.hidden, ...other.hidden, ...finished.hidden],
+    tickables: [...g.main, ...g.other, ...g.finished],
+  }
+}
+
+/**
+ * A PARTIAL SUMMARY NEVER DROPS A SECTION (job #823). When the server could not count one kind
+ * of section this time (`partial: ['phrase']` — the practice-phrase plan read failed or timed
+ * out), the sections of that kind from the home screen already drawn (or this device's kept one)
+ * are carried over with their last known counts and marked `counting`, until a full answer
+ * replaces them. Sections of every other kind come from the new answer as they are.
+ */
+export function keepListedSections(fresh, previous) {
+  if (!fresh || !Array.isArray(fresh.tracks)) return fresh
+  const partial = new Set(Array.isArray(fresh.partial) ? fresh.partial : [])
+  if (fresh.phrases && fresh.phrases.unavailable) partial.add('phrase')
+  if (!partial.size || !previous || !Array.isArray(previous.tracks)) return fresh
+  const have = new Set(fresh.tracks.map((t) => t.key))
+  const carried = previous.tracks
+    .filter((t) => partial.has(t.kind) && !have.has(t.key))
+    .map((t) => ({ ...t, counting: true }))
+  if (!carried.length) return fresh
+  const out = { ...fresh, tracks: [...fresh.tracks, ...carried] }
+  // Keep the phrase summary the carried cards were drawn with, so their batch names still read.
+  if (partial.has('phrase') && previous.phrases && !previous.phrases.unavailable) out.phrases = previous.phrases
+  return out
+}
+
 /** A card's batch rows to draw: an unticked batch is hidden like an unticked card. */
 export function shownBatches(t, off = new Set()) {
   if (!hasBatchTicks(t)) return t.batches || []

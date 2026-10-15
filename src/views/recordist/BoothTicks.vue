@@ -8,7 +8,7 @@
       <div class="bt-row">
         <label class="bt-chk" :data-test="`tick-${t.key}`">
           <input type="checkbox" :checked="ticked(t.key)" :disabled="t.locked" @change="$emit('tick', t.key, $event.target.checked)" />
-          <span class="bt-grow"><b>{{ t.title }}</b><small>{{ (t.total - t.recorded).toLocaleString('en-GB') }} left of {{ t.total.toLocaleString('en-GB') }}{{ t.locked ? ' · opens after pass 1' : '' }}</small></span>
+          <span class="bt-grow"><b>{{ t.title }}</b><small>{{ countWords(t) }}{{ t.counting ? ' · counting…' : '' }}{{ t.locked ? ' · opens after pass 1' : '' }}</small></span>
         </label>
         <!-- Outside the label on purpose: a tap here opens the list, it never ticks the section. -->
         <button
@@ -52,6 +52,14 @@ function toggle(key) {
   saveTicksOpen(open.value)
 }
 const openBatches = (t) => (t.batches || []).filter((b) => b.recorded < b.total)
+// A FINISHED SECTION STAYS LISTED (job #823), marked as finished rather than dropped. "Finished"
+// counts takes still uploading on this device (#791), so it says which.
+function countWords(t) {
+  const total = (t.total || 0).toLocaleString('en-GB')
+  const left = Math.max(0, (t.total || 0) - (t.recorded || 0) - (t.uploading || 0))
+  if (t.total > 0 && left === 0) return t.uploading ? `✓ all ${total} read · ${t.uploading.toLocaleString('en-GB')} still uploading` : `✓ all ${total} recorded`
+  return `${left.toLocaleString('en-GB')} left of ${total}`
+}
 </script>
 
 <style scoped>

@@ -199,4 +199,29 @@ function selectBatch(lines, trackKey, batchN, ctx = {}) {
   return batches[n - 1] || []
 }
 
-module.exports = { SEED_BATCH_LINES, LEGO_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch, openPhraseBatch, servedPhraseBatchN }
+/**
+ * WHICH KINDS OF SECTION THIS ANSWER COULD NOT COUNT (Aran, 2026-10-15, job #823: whole sections
+ * kept disappearing from his booth home). The practice-phrase plan is read on its own, and when
+ * that read fails or times out the queue carries `phrases: {unavailable: true}` and no phrase
+ * lines — which used to send a home screen with no phrase sections at all, as if he had none.
+ * The answer now says it is partial, so nothing downstream reads an absence as "not cast".
+ */
+function partialKinds(queue) {
+  return queue && queue.phrases && queue.phrases.unavailable ? ['phrase'] : []
+}
+
+/**
+ * A SECTION IS NEVER DROPPED BECAUSE ITS COUNT FAILED (job #823). Given this answer's tracks, the
+ * kinds it could not count, and the last tracks this voice was sent in full, the sections of an
+ * uncounted kind are carried over with their last known counts and marked `counting: true`.
+ * Sections of every other kind are this answer's own. Pure.
+ */
+function withLastKnownSections(tracks, partial, lastKnown) {
+  if (!partial || !partial.length || !Array.isArray(lastKnown) || !lastKnown.length) return tracks
+  const kinds = new Set(partial)
+  const have = new Set(tracks.map((t) => t.key))
+  const carried = lastKnown.filter((t) => kinds.has(t.kind) && !have.has(t.key)).map((t) => ({ ...t, counting: true }))
+  return carried.length ? [...tracks, ...carried] : tracks
+}
+
+module.exports = { partialKinds, withLastKnownSections, SEED_BATCH_LINES, LEGO_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch, openPhraseBatch, servedPhraseBatchN }
