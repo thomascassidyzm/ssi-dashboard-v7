@@ -137,9 +137,13 @@ function refusedListed(w) {
 }
 function currentLine(w) { const el = w.find('.line-target'); return el.exists() ? el.text() : null }
 // The big green button on the ready card: its words, and whether it can be tapped.
+// Since job #424 the line Start opens on is drawn big above the button (the batch page IS the
+// reading screen) instead of squeezed into its label, so "what Start names" is button + line.
 function startButton(w) {
   const b = w.find('.btn-begin')
-  return b.exists() ? { text: b.text(), disabled: b.attributes('disabled') !== undefined } : null
+  if (!b.exists()) return null
+  const line = w.find('[data-test="ready-line"]')
+  return { text: line.exists() ? `${b.text()} — ${line.text()}` : b.text(), disabled: b.attributes('disabled') !== undefined }
 }
 // THE SWITCH TOM'S BOOTH HAD ON. Until 2026-09-12 the ready card offered
 // "Re-read lines I've already recorded", remembered per artist, and with it on

@@ -2579,8 +2579,21 @@ async function withPhraseBatch(db, recordist, queue, { includeRecorded = false, 
     const mine = recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])
     if (!mine.length) return queue
     const keys = recordedKeys || await recordedTextKeys(db, recordist)
-    const { lines, summary } = phraseQueue.servePhraseBatch(
-      mine, (l) => phraseLineRecorded(l, keys, recordist.spellings), plan.batchCounts)
+    const isRec = (l) => phraseLineRecorded(l, keys, recordist.spellings)
+    const { lines, summary } = phraseQueue.servePhraseBatch(mine, isRec, plan.batchCounts)
+    // Every batch, counted, for the booth's home screen (job #347). Serves nothing.
+    queue.phraseBatches = phraseQueue.phraseBatchList(mine, isRec)
+    // ANY BATCH ON REQUEST (job #697). Not enumerable, so it never goes over the wire or into a
+    // copy of the queue; reads the plan and changes nothing, so the served batch above stays the
+    // served batch for everyone.
+    Object.defineProperty(queue, 'openPhraseBatch', {
+      enumerable: false,
+      configurable: true,
+      value: (want) => {
+        const got = phraseQueue.servePhraseBatch(mine, isRec, plan.batchCounts, want)
+        return { summary: got.summary, lines: got.lines.map((l) => phraseWireLine(l, recordist)) }
+      },
+    })
     let recorded = 0
     for (const line of lines) {
       if (line.recorded) recorded += 1

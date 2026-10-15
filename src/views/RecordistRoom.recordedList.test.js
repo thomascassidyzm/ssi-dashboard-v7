@@ -80,7 +80,7 @@ describe('RecordistRoom — the already-recorded list has its own switch', () =>
     expect(w.find('.listen-back h3').text()).toContain('2')
     // And the run is untouched: it still starts on the first line that needs
     // reading, not at the top of everything.
-    expect(w.find('.btn-begin').text()).toContain('Dw i eisiau siarad')
+    expect(w.find('[data-test="ready-line"]').text()).toContain('Dw i eisiau siarad')
   })
 
   // THE RE-READ SWITCH IS GONE (Tom, 2026-09-11: a line with a confirmed take
@@ -90,7 +90,7 @@ describe('RecordistRoom — the already-recorded list has its own switch', () =>
     const w = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
     await flushPromises()
     expect(switchSaying(w, "Re-read lines I've already recorded")).toBeFalsy()
-    expect(w.find('.btn-begin').text()).toContain('Dw i eisiau siarad')
+    expect(w.find('[data-test="ready-line"]').text()).toContain('Dw i eisiau siarad')
     expect(w.find('.listen-back').exists()).toBe(false)
   })
 

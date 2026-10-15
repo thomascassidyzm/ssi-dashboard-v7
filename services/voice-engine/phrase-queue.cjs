@@ -296,22 +296,28 @@ function compareServed(a, b) {
  * @param {object[]} lines this reader's phrase lines (any course), batch and pass set
  * @param {(line) => boolean} isRecorded
  * @param {Object<string, {1:number, 2:number}>} batchCounts per course
+ * @param {{pass:number, batch:number, courseCode:string}} [want] OPEN THIS BATCH INSTEAD (booth
+ *   home, job #697: any batch can be opened on request). Pure: it picks which group is described and
+ *   nothing else, so reading a batch never moves what the queue is serving. Unknown batch → empty.
  * @returns {{ lines: object[], summary: object|null }}
  */
-function servePhraseBatch(lines, isRecorded, batchCounts) {
+function servePhraseBatch(lines, isRecorded, batchCounts, want = null) {
   if (!lines.length) return { lines: [], summary: null }
   const sorted = [...lines].sort(compareServed)
   const isHeld = (l) => l.copies.every((c) => c.flagged)
   const recorded = new Map(sorted.map((l) => [l.id, isRecorded(l)]))
   const outstanding = (l) => !recorded.get(l.id) && !isHeld(l)
   const groupKey = (l) => `${l.pass}\u0000${l.batch}\u0000${l.courseCode}`
-  const first = sorted.find(outstanding)
+  const first = want
+    ? sorted.find((l) => l.pass === want.pass && l.batch === want.batch && l.courseCode === want.courseCode)
+    : sorted.find(outstanding)
   const passTotals = { 1: 0, 2: 0 }
   const passRecorded = { 1: 0, 2: 0 }
   for (const l of sorted) {
     passTotals[l.pass] += 1
     if (recorded.get(l.id)) passRecorded[l.pass] += 1
   }
+  if (want && !first) return { lines: [], summary: null }
   if (!first) {
     return {
       lines: [],
@@ -345,6 +351,35 @@ function servePhraseBatch(lines, isRecorded, batchCounts) {
   }
 }
 
+/**
+ * EVERY BATCH OF ONE READER, counted — for the booth's home screen (job #347), which shows the
+ * batches still to come rather than only the one being served. Same sort, same grouping and the
+ * same recorded/held tests as servePhraseBatch, so its counts agree with the served batch's; it
+ * serves nothing and decides nothing.
+ *
+ * @returns {{pass, batch, courseCode, courseLabel, firstSeed, lastSeed, total, recorded, held}[]}
+ */
+function phraseBatchList(lines, isRecorded) {
+  const groups = new Map()
+  for (const l of [...lines].sort(compareServed)) {
+    const key = `${l.pass}\u0000${l.batch}\u0000${l.courseCode}`
+    if (!groups.has(key)) {
+      groups.set(key, {
+        pass: l.pass, batch: l.batch, courseCode: l.courseCode,
+        courseLabel: (PHRASE_QUEUE_COURSES[l.courseCode] || {}).label || l.courseCode,
+        firstSeed: l.seedNumber, lastSeed: l.seedNumber, total: 0, recorded: 0, held: 0,
+      })
+    }
+    const g = groups.get(key)
+    g.total += 1
+    if (isRecorded(l)) g.recorded += 1
+    if (l.copies.every((c) => c.flagged)) g.held += 1
+    g.firstSeed = Math.min(g.firstSeed, l.seedNumber)
+    g.lastSeed = Math.max(g.lastSeed, l.seedNumber)
+  }
+  return [...groups.values()]
+}
+
 module.exports = {
   PHRASE_QUEUE_COURSES,
   FIRST_PASS,
@@ -365,4 +400,5 @@ module.exports = {
   planCourse,
   mergeAcrossCourses,
   servePhraseBatch,
+  phraseBatchList,
 }

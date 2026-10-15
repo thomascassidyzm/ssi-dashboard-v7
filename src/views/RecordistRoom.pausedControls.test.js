@@ -96,7 +96,7 @@ describe('RecordistRoom — Back and Stop while paused', () => {
     clock += 5000
     await wrapper.find('.ctl-pause').trigger('click')
     await flushPromises()
-    expect(wrapper.find('.ctl-pause').text()).toBe('Play')
+    expect(wrapper.find('.ctl-pause').text()).toBe('Resume')
 
     const back = wrapper.find('.ctl-back')
     expect(back.attributes('disabled')).toBeUndefined()
@@ -108,9 +108,9 @@ describe('RecordistRoom — Back and Stop while paused', () => {
     // He is on the line he wanted…
     expect(wrapper.find('.line-target').text()).toBe('llinell un')
     // …still paused, with the mic still held and nothing recording.
-    expect(wrapper.find('.ctl-pause').text()).toBe('Play')
+    expect(wrapper.find('.ctl-pause').text()).toBe('Resume')
     expect(rec.beginLine).not.toHaveBeenCalled()
-    expect(wrapper.find('.meter-tag').text()).toContain('nothing is being recorded')
+    expect(wrapper.find('.mic').attributes('title')).toContain('nothing is being recorded')
     // Back files nothing, paused or not.
     expect(queueTake).not.toHaveBeenCalled()
     // Again and Next stay locked: those two do need the mic.

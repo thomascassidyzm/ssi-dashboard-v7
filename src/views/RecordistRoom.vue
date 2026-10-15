@@ -1,6 +1,6 @@
 <template>
   <!-- data-surface: a marker a human can grep for in the served bundle to prove this shipped -->
-  <div class="recordist" data-surface="one-recordist-surface-2026-08-14" :data-durable-takes="DURABLE_TAKES_FEATURE">
+  <div class="recordist" :class="{ fit: fitPhase, live: phase === 'recording', 'sheet-open': sheetOpen && phase !== 'recording' }" data-surface="one-recordist-surface-2026-08-14" :data-durable-takes="DURABLE_TAKES_FEATURE">
     <!-- IS MY WORK SAFE? Answered in words, at the top, in every phase.
          Before 2026-09-03 the only answer on this screen was "Saving…" on the
          done card, an artist could not tell a take that was on its way from one
@@ -30,753 +30,605 @@
       <button class="btn-ghost" @click="load">Try again</button>
     </section>
 
-    <!-- ── Ready ─────────────────────────────────────────────────────────── -->
-    <section v-else-if="phase === 'ready'" class="rc-card">
-      <!-- THE WAY BACK. Aran, 2026-09-10: "When I go to /r/human_aran_cym_n
-           there is no navigation back to the main stuff". There was none, and
-           the room is deliberately uncluttered — one big Start button and
-           nothing to navigate — so this is a quiet link and not a nav bar.
-           IT IS ON THIS CARD ONLY, never on the recording stage: a link within
-           reach of a thumb while the mic is live is a lost take, and the stage
-           already has its own way out in Stop here. -->
-      <!-- THE NAV. Tom, 2026-09-12, testing as a voice artist: "the whole nav
-           is not very clear … I should as a voice artist be able to see the
-           way to get to the course Overview page and maybe other PODS and so
-           on, because I am also an editor of the lines." One row, four plain
-           words, above the fold on a phone: Booth (here) · Lines (the whole
-           list, on this page) · Pods (each pod this voice is cast in — its
-           drafts page, where a line is edited or ticked) · Course (the
-           Overview). It replaces the faint "← Back to Popty" that was the only
-           way out. ON THE READY AND DONE CARDS ONLY, never on the recording
-           stage: a link within reach of a thumb while the mic is live is a
-           lost take. Those pages carry "← Back to the booth" (booth-pointer.js). -->
-      <nav class="rc-nav" aria-label="Booth navigation">
-        <router-link :to="`/r/${voiceId}`" class="rc-nav-item is-here" aria-current="page">Booth</router-link>
-        <span class="rc-nav-dot">·</span>
-        <button type="button" class="rc-nav-item rc-nav-btn" @click="goToLines">Lines</button>
-        <template v-if="navPods.length">
-          <span class="rc-nav-dot">·</span>
-          <span class="rc-nav-word">{{ navPods.length === 1 ? 'Pod' : 'Pods' }}</span>
-          <router-link v-for="p in navPods" :key="p.key" :to="p.to" class="rc-nav-item rc-nav-pod">{{ p.label }}</router-link>
-        </template>
-        <template v-if="navCourses.length">
-          <span class="rc-nav-dot">·</span>
-          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
-        </template>
-        <span class="rc-nav-dot">·</span>
-        <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
-      </nav>
-      <h1 class="rc-hello">Hello {{ voice.displayName }}</h1>
-      <p class="rc-progress-line">{{ queueHeadline }}</p>
+    <!-- ── Home: the cards, Up next and the ticks (job #347) ───────────── -->
+    <BoothHome
+      v-else-if="phase === 'home' && homeSummary"
+      :display-name="homeSummary.displayName"
+      :tracks="homeTracks"
+      :unticked="unticked"
+      :track-key="homeTrackKey"
+      :main-heading="homeMainHeading"
+      :notes="homeNotes"
+      @open="openBatch"
+      @card="openCard"
+      @home="goHome"
+      @tick="setTick"
+    />
 
-      <!-- WHAT IS THE MACHINE DOING, IN WORDS. Never left to be inferred from a
-           moving bar or a highlighted button: on a phone at arm's length "is
-           this listening to me or playing something back at me?" has to be
-           answered by reading, not by guessing. -->
-      <p class="state-pill" :class="activityState.cls">{{ activityState.words }}</p>
+    <!-- ── THE PROMPTER (Aran, 2026-10-14, job #424; design #419 Option A) ──────────────────
+         The batch page, the live stage and the done screen are ONE layout, exactly one viewport
+         tall, and nothing on them scrolls: the where-am-I row, the line big and centred in what
+         is left, and the transport pinned to the bottom edge. The batch page IS the reading
+         screen — before Start the first line already sits in the middle, and Start is where Next
+         will be. Everything that is not the line (the map of every line, the settings, the
+         already-recorded list, the notes) lives in ONE sheet, opened from the where-am-I row or
+         from the settings line above Start. -->
+    <template v-else-if="fitPhase">
+      <!-- THE ONE WHERE-AM-I ROW (job #378). ‹ on its left goes home; the words say where he is.
+           While the mic is live it is words only: no link and no button near anything he reads
+           (the ‹ and the sheet's opener go), and Stop here is the stage's way out. -->
+      <header ref="whereRef" class="where" :class="{ live: phase === 'recording' }" data-test="where">
+        <button v-if="phase !== 'recording'" type="button" class="where-home" data-test="back-home" title="Back to home" aria-label="Back to home" @click="goHome">‹</button>
+        <p class="where-words" :data-test="phase === 'recording' ? 'stage-where' : 'batch-where'">{{ whereWords }}</p>
+        <button v-if="phase !== 'recording'" type="button" class="where-more" data-test="open-sheet" aria-label="Lines and settings" @click="openSheet()"><span class="wm-long">Lines &amp; settings</span><span class="wm-short" aria-hidden="true">☰</span></button>
+      </header>
 
-      <!-- HOW MUCH OF THE COURSE. Tom asked for the burden at "30 SEEDS,
-           50/100/150/300" and this is where he can see it scale: the minimal
-           set is the only thing on this screen whose size is a choice, so the
-           control lives with it and nowhere else. Shown only when there IS a
-           set — every other recordist on this estate has none. -->
-      <div v-if="quarry" class="volume-card">
-        <h3>The minimal set — {{ quarry.lines }} lines, about {{ quarry.minutes }} minutes</h3>
-        <p class="volume-note">
-          {{ quarry.legos }} chunks and {{ quarry.words }} single words, read slowly, plus
-          {{ quarry.sentences }} whole sentences at your natural pace. Spliced back together, they make every
-          phrase in the first {{ quarry.maxSeed }} sentences of the course.
-        </p>
-        <div class="volume-row">
-          <span class="volume-label">How much of the course?</span>
-          <button
-            v-for="n in SEED_VOLUMES" :key="n" type="button"
-            class="volume-btn" :class="{ on: (quarry.maxSeed || 0) === n }"
-            :disabled="phase !== 'ready'"
-            @click="setVolume(n)"
-          >{{ n }}</button>
-        </div>
+      <!-- ONE STATUS ROW, live only: the count, with the progress bar as its bottom edge. Stop and
+           Pause are NOT here any more — they sit above Back / Again / Next (job #681). -->
+      <div v-if="phase === 'recording'" class="status" data-test="status">
+        <span class="stage-progress" data-test="count">{{ recordedCount }} of {{ lines.length }}</span>
+        <span class="status-edge" aria-hidden="true"><i :style="{ width: progressPct + '%' }"></i></span>
       </div>
-
-      <!-- THE PRACTICE-PHRASE BATCH (Aran, 2026-10-13, job #619). Phrases come
-           in two passes and ~200-line batches, one batch at a time, and the
-           reader must be able to SEE that: which pass, which batch of how many,
-           how far through, and that the rest of the phrases come later — so the
-           first pass is never mistaken for all of it. -->
-      <div v-if="phrases && (phrases.pass || phrases.finished)" class="volume-card phrase-card" data-test="phrase-batch">
-        <template v-if="phrases.pass">
-          <p class="phrase-kicker">Practice phrases · {{ boothCourseWords(phrases.courseCode, phrases.courseLabel) }}</p>
-          <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
-          <p class="phrase-count">{{ phrases.batchRecorded }} of {{ phrases.batchLines }} recorded in this batch</p>
-          <p v-if="phrases.pass === 1" class="volume-note">
-            This first pass is the phrases the app plays first: up to {{ phrases.firstPass.build }} build and
-            {{ phrases.firstPass.use }} use phrases for each new LEGO.
-            The remaining {{ phrases.laterPassLines.toLocaleString() }} phrases come on a second pass, later.
-          </p>
-          <p v-else class="volume-note">This second pass is the rest of the practice phrases, after the first pass.</p>
-          <p class="volume-note">
-            {{ phrases.batch < phrases.batches ? `When this batch is finished, batch ${phrases.batch + 1} opens here the next time you open this page.` : (phrases.pass === 1 ? 'This is the last batch of the first pass.' : 'This is the last batch.') }}
-            <template v-if="phrases.batchHeld"> {{ phrases.batchHeld }} {{ phrases.batchHeld === 1 ? 'phrase in this batch is' : 'phrases in this batch are' }} held back until {{ phrases.batchHeld === 1 ? 'its' : 'their' }} proof flag is cleared.</template>
-          </p>
-        </template>
-        <template v-else>
-          <h3 class="phrase-title">Practice phrases — all recorded</h3>
-          <p class="volume-note">Both passes are finished. Thank you.</p>
-        </template>
-      </div>
-
-      <RecordistRoster
-        ref="rosterRef"
-        :sections="rosterSections"
-        :playing-id="playingId"
-        :editing-id="editingId"
-        :editing-side="editingSide"
-        :saving="editSaving"
-        :error="editError"
-        :saved-note="savedNote"
-        :saved-id="savedId"
-        @play="togglePlay"
-        @record="recordOne"
-        @edit="beginEdit"
-        @edit-known="beginEdit($event, null, 'known')"
-        @cancel-edit="cancelEdit"
-        @save="saveEdit($event.id, $event.text, $event.side)"
-      />
-
-      <!-- NOTHING HAS GONE MISSING. The one sentence that was owed to Aran on
-           2026-09-10, said under the map it belongs to rather than tucked
-           anywhere else. Quiet, and not a warning: this is not his problem to
-           fix and there is no button on it. -->
-      <!-- WORK HE HAS ALREADY DONE, WHICH LEFT HIS LIST. Above the not-ready
-           note because it is about him and finished; that one is about the
-           material and unfinished. Neither is a job. -->
-      <div v-if="handedOnNotes.length" class="handed-on">
-        <p v-for="n in handedOnNotes" :key="n.key">
-          <strong>You recorded {{ n.lines }} more {{ n.lines === 1 ? 'line' : 'lines' }} of {{ n.heading }}</strong>
-          that {{ n.lines === 1 ? 'has' : 'have' }} since been given to {{ n.castTo }} to read.
-          Your {{ n.lines === 1 ? 'take is' : 'takes are' }} still there — {{ n.lines === 1 ? 'it is' : 'they are' }}
-          just not on your list any more, because {{ n.lines === 1 ? 'that line is' : 'those lines are' }}
-          {{ n.castTo }}'s now.
-        </p>
-      </div>
-
-      <div v-if="notReadyNotes.length" class="not-ready">
-        <p v-for="n in notReadyNotes" :key="n.key">
-          <strong>{{ n.lines }} more {{ n.lines === 1 ? 'line' : 'lines' }} of {{ n.heading }}</strong>
-          {{ n.lines === 1 ? 'is' : 'are' }} still waiting to be written in {{ voice.languageName || 'the language' }}.
-          {{ n.lines === 1 ? 'It' : 'They' }} can't be read until somebody writes {{ n.lines === 1 ? 'it' : 'them' }} —
-          nothing of yours has gone missing.
-        </p>
-      </div>
-
-      <!-- Start is the FIRST thing on the card and the only thing needed. One
-           tap puts the mic live on the first line that still needs reading —
-           there is no line to pick, nothing to navigate to, and no second tap
-           before recording is running. (The tap itself is not removable: a
-           browser will not open a microphone without a user gesture.) -->
-      <!-- THE SETUP CHECK (Tom, r-2026-10-07: every voice artist submits a
-           10-phrase sample on their own setup before the full script). While
-           the server says the script is locked it sends `setupCheck`; Start is
-           replaced by the way into the ten phrases. On the sample's own page
-           (a per-artist pack) the same block carries Submit. -->
-      <div v-if="voice.setupCheck" class="setup-card">
-        <template v-if="voice.setupCheck.status === 'submitted'">
-          <strong>Thank you — your setup check is with us.</strong>
-          <span>We'll listen and open your full script as soon as it is approved. Nothing more to do.</span>
-          <span v-if="voice.setupCheck.autoVerdict && voice.setupCheck.autoVerdict.verdict === 'pass'" class="setup-note setup-verdict-pass">Our quick sound check: your recording sounds good.</span>
-          <template v-else-if="voice.setupCheck.autoVerdict && voice.setupCheck.autoVerdict.verdict === 'retry'">
-            <span class="setup-note setup-verdict-retry">Our quick sound check suggests a small change, so please try again:</span>
-            <span v-for="r in voice.setupCheck.autoVerdict.reasons" :key="r" class="setup-note setup-verdict-reason">{{ r }}</span>
-          </template>
-        </template>
-        <template v-else>
-          <strong>First, a 10-phrase setup check.</strong>
-          <span>Record ten phrases on the microphone and in the room you will really use. We listen, and the full script opens as soon as it is approved.</span>
-          <span v-if="voice.setupCheck.status === 'changes' && voice.setupCheck.note" class="setup-note">From us: {{ voice.setupCheck.note }}</span>
-          <router-link :to="`/r/${voice.setupCheck.packVoiceId}`" class="btn-begin setup-go">Start the 10-phrase setup check</router-link>
-        </template>
-      </div>
-      <div v-if="voice.pack && voice.pack.setup && voice.pack.setup.status !== 'approved'" class="setup-card">
-        <template v-if="voice.pack.setup.status === 'submitted'">
-          <strong>Submitted — thank you.</strong>
-          <span>We'll open your full script once we've listened. You can close this page.</span>
-          <span v-if="voice.pack.setup.autoVerdict && voice.pack.setup.autoVerdict.verdict === 'pass'" class="setup-note setup-verdict-pass">Our quick sound check: your recording sounds good.</span>
-          <template v-else-if="voice.pack.setup.autoVerdict && voice.pack.setup.autoVerdict.verdict === 'retry'">
-            <span class="setup-note setup-verdict-retry">Our quick sound check suggests a small change, so please try again:</span>
-            <span v-for="r in voice.pack.setup.autoVerdict.reasons" :key="r" class="setup-note setup-verdict-reason">{{ r }}</span>
-            <button v-if="readyCanSubmit" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
-              {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
-            </button>
-            <span v-if="setupError" class="setup-note">{{ setupError }}</span>
-          </template>
-        </template>
-        <template v-else>
-          <strong>{{ voice.recorded }} of {{ voice.total }} recorded{{ voice.recorded >= SETUP_MIN_SUBMIT || queue.pendingCount.value > 0 ? '' : `, record at least ${SETUP_MIN_SUBMIT}` }}.</strong>
-          <span v-if="queue.pendingCount.value > 0" class="setup-note">{{ queue.pendingCount.value }} still uploading. You can submit once they have all gone up.</span>
-          <span v-else-if="queue.failed.size > 0" class="setup-note">{{ queue.failed.size }} did not upload yet. Retry them, then submit.</span>
-          <span v-if="voice.pack.setup.status === 'changes' && voice.pack.setup.note" class="setup-note">From us: {{ voice.pack.setup.note }}</span>
-          <button v-if="readyCanSubmit" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
-            {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
-          </button>
-          <span v-if="setupError" class="setup-note">{{ setupError }}</span>
-        </template>
-      </div>
-
-      <button v-if="!voice.setupCheck" class="btn-begin" :disabled="startIndex === -1" @click="begin">
-        {{ startIndex === -1 ? 'Nothing left to read' : `Start recording — ${firstLinePreview}` }}
-      </button>
-      <p v-if="startIndex === -1 && !voice.setupCheck" class="note done">Everything is recorded. Tap any line on the map above to read it again.</p>
-      <p v-if="micError" class="note error">{{ micError }}</p>
-
-      <ol class="how-to">
-        <li>Tap <strong>Start</strong> and read the line aloud. It is already recording.</li>
-        <!-- THIS STEP MUST MATCH THE SWITCH BELOW IT. It said "it moves on by
-             itself" unconditionally, which is a lie whenever auto-advance is
-             off — and then the reader finishes a line, waits for a page that is
-             never going to move, and concludes the thing is broken. It is off
-             by default on a script pack, and Aran can turn it off on his own
-             page any time, so both readings have to be true. -->
-        <li v-if="autoAdvance">Stop talking and it moves on by itself — you do not have to tap anything.</li>
-        <li v-else>When you've finished the line, tap <strong>Next</strong>. Nothing cuts you off mid-sentence.</li>
-        <!-- And on the minimal set it does NOT move on by itself, whatever the
-             line above says: those lines are full of deliberate pauses, so
-             nothing is listening for the end of one. Said here rather than left
-             to be discovered, because a reader waiting for a page that will
-             never turn concludes the thing is broken. -->
-        <li v-if="autoAdvance && quarry">On <strong>the minimal set</strong> it waits for you — tap <strong>Next</strong> after each chunk. The gaps you leave are the point, so nothing listens for you to stop.</li>
-        <li>Tap <strong>Again</strong> to re-read a line<span v-if="autoAdvance">, <strong>Next</strong> to push on early</span>.</li>
-        <li>Tap <strong>Stop here</strong> when you've had enough. It saves itself.</li>
-      </ol>
-
-      <label class="toggle-row">
-        <input type="checkbox" v-model="autoAdvance" />
-        <span><strong>Move on by itself when I stop speaking</strong>
-          <small>On = just read, and keep reading. Turn it off in a noisy room and use Next instead.</small></span>
-      </label>
-
-      <div v-if="recorder.devices.value.length > 1" class="mic-pick">
-        <label class="mic-label">Microphone</label>
-        <select v-model="selectedDeviceId" class="mic-select">
-          <option v-for="(d, i) in recorder.devices.value" :key="d.deviceId" :value="d.deviceId">{{ d.label || `Microphone ${i + 1}` }}</option>
-        </select>
-      </div>
-
-      <div class="setup-pick" role="radiogroup" aria-label="Phone?">
-        <label class="toggle-row">
-          <input type="radio" name="setup" value="phone" v-model="captureProfile" />
-          <span><strong>Phone?</strong>
-            <small>Hold at comfortable reading distance so you can clearly see the phone screen. About the distance you hold the phone when texting. iPhone 16 or later for best results.</small></span>
-        </label>
-        <label class="toggle-row">
-          <input type="radio" name="setup" value="pro" v-model="captureProfile" />
-          <span><strong>Recording with a professional plugged-in mic</strong></span>
-        </label>
-      </div>
-
-      <!-- THERE IS NO "RE-READ LINES I'VE ALREADY RECORDED" SWITCH ANY MORE.
-           There was one here until 2026-09-12, remembered per artist across
-           sessions, and with it on the run was served from the top of the queue
-           — Tom opened his booth to "70 recorded" and a Start button reading
-           "Start recording — A black coffee, please.", the first pod line, which
-           he had recorded weeks before. His ruling (2026-09-11): a line with a
-           confirmed take is never served to the recordist again as a thing to
-           read. Re-reading a line is an explicit act — tap its square on the
-           map, "Read it again" — never the default the run opens on.
-           Hearing back what you have already recorded is its own switch below,
-           and it does not change which lines are served. -->
-      <label class="toggle-row">
-        <input type="checkbox" v-model="showRecorded" />
-        <span><strong>Show everything I've already recorded</strong>
-          <small>A list of every line you have read, grouped the same way as the map above. Play any of them back. It
-            does not change which lines you are asked to read.</small></span>
-      </label>
-
-      <!-- Aran arrives with takes already made. Let him hear them before
-           deciding to re-read: the contract already hands us their clips. -->
-      <div v-if="showRecorded && alreadyRecorded.length" class="listen-back">
-        <h3>What you've already recorded — {{ alreadyRecorded.length }}</h3>
-        <p class="listen-note">Everything you have read, in every part of the list. These play the clip stored on the
-          server. Tap <strong>Compare</strong> to hear your original take next to the processed one learners hear.</p>
-        <!-- Past eight rows it gets a filter, never a longer scroll. -->
-        <input
-          v-if="alreadyRecorded.length > RECORDED_FILTER_THRESHOLD"
-          v-model="recordedFilter"
-          type="search"
-          class="listen-filter"
-          placeholder="Find a line…"
-          autocomplete="off"
-        />
-        <p v-if="recordedFilter && !alreadyRecordedShown.length" class="listen-note">Nothing matches “{{ recordedFilter }}”.</p>
-        <!-- THE SAME SECTIONS AS THE QUEUE, SHUT UNTIL HE OPENS ONE. Tap is the
-             only affordance — the heading IS the button — because the artists
-             work on phones with a thumb and there is no hover, no drag and no
-             long-press here. A section with nothing recorded in it is not drawn
-             at all, and while he is searching the sections holding matches open
-             themselves: a hit hidden inside a shut section is worse than no
-             filter. -->
-        <div v-for="s in recordedSectionList" :key="s.key" class="listen-sec">
-          <button
-            type="button"
-            class="listen-sec-head"
-            :aria-expanded="isRecordedSectionOpen(s) ? 'true' : 'false'"
-            @click="toggleRecordedSection(s.key)"
-          >
-            <span class="lsh-mark" aria-hidden="true">{{ isRecordedSectionOpen(s) ? '–' : '+' }}</span>
-            <span class="lsh-count">{{ s.count }}</span>
-            <span class="lsh-name">{{ s.heading }}</span>
-          </button>
-          <ul v-if="isRecordedSectionOpen(s)">
-            <li v-for="l in s.rows" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
-              <div class="listen-row">
-                <!-- The category word is NOT repeated on the row any more: it is
-                     the heading directly above it, on every row of the section.
-                     kindWords() stays — the filter still matches on it. -->
-                <span class="listen-text">{{ plainText(l.text) }}</span>
-                <div class="listen-actions">
-                  <StoredTakeButton
-                    :stored-url="storedUrlFor(l.id)"
-                    :allow-local="false"
-                    :is-playing="playingId === l.id"
-                    @toggle="togglePlay(l.id)"
-                  />
-                  <button class="cmp-btn" :class="{ open: comparingId === l.id }" type="button" @click="toggleCompare(l.id)">
-                    {{ comparingId === l.id ? 'Hide' : 'Compare' }}
-                  </button>
-                </div>
-              </div>
-              <!-- Mounted only on demand: the raw side costs an S3 HEAD per line,
-                   and Catrin's queue is 276 lines long. -->
-              <RawVsProcessed v-if="comparingId === l.id" :voice-id="voiceId" :line-id="l.id" />
-            </li>
-          </ul>
-        </div>
-        <p v-if="playbackError" class="note error">{{ playbackError }}</p>
-      </div>
-
-      <!-- RE-RECORD ALL, the artist's own (job #885, Tom 2026-10-07: Dan asked
-           for it, the admin page was the only place). Same route the admin
-           button calls, on THIS link's voice only. Nothing is deleted. -->
-      <div v-if="canRerecordAll" class="rerecord-all">
-        <button class="btn-ghost" type="button" :disabled="rerecordBusy" @click="rerecordAllMine">
-          {{ rerecordBusy ? 'Starting over…' : 'Re-record all' }}
-        </button>
-        <p v-if="rerecordError" class="note error">{{ rerecordError }}</p>
-      </div>
-
-    </section>
-
-    <!-- ── Recording: ONE line, big ───────────────────────────────────────── -->
-    <section v-else-if="phase === 'recording'" class="stage">
-      <div class="stage-top">
-        <!-- ON AIR. A status light, not ceremony (Tom, 2026-09-02): the mic is
-             open before the line appears, so something has to say so while
-             there is nothing to read. It arms, then settles to live at the
-             instant the line is revealed — the transition itself is the go
-             signal, and there is no counting down at anybody. -->
-        <!-- And it must not say ON AIR while he is paused. The pill is the one
-             thing on this screen that claims the microphone is open, so it is
-             the one thing that cannot go on claiming it. -->
-        <span class="onair" :class="{ arming: arming || paused }">{{ paused ? 'Paused' : (arming ? 'Getting ready' : 'On air') }}</span>
-        <div class="meter" :class="{ clip: recorder.clipping.value && !micHeld, held: micHeld }">
-          <!-- A WAVEFORM, NOT A BAR. Aran, 2026-09-03: "some kind of visual
-               representative of the waveform would give people confidence that
-               they are doing it right". It is drawn from the SAME numbers the
-               bar drew — the peaks the existing meter loop in useTapRecorder
-               already computes — kept for two seconds and painted from one rAF
-               tick. No second AnalyserNode, no second AudioContext, no extra
-               per-frame FFT, and nothing on the capture path.
-
-               Flat while the mic is held, for exactly the reason the bar was:
-               a trace still twitching to the playback coming out of the speaker
-               is the screen telling the recordist it is recording them when it
-               is not. -->
-          <canvas ref="waveCanvas" class="wave"></canvas>
-        </div>
-        <!-- "Mic live" was printed whether or not the meter was reading a
-             thing, so an empty bar next to it looked like a quiet room rather
-             than a broken meter. Say which it is. -->
-        <span class="meter-tag" :class="{ clip: recorder.clipping.value && !micHeld, held: micHeld }">
-          {{ paused
-            ? 'Paused — nothing is being recorded'
-            : (micHeld
-            ? 'Mic paused while you listen'
-            : (recorder.clipping.value
-              ? 'Too loud — back off the mic'
-              : (recorder.meterTrusted.value ? `Mic live · ${micDb}` : 'Level meter not reading — every take will be saved'))) }}
+      <!-- ONE MIC SIGNAL, A WIDE STRIP (Aran, 2026-10-15, job #692: "a bit bigger and use more of the
+           available width"). Its own row under Stop / count / Pause, as wide as the reading column.
+           The state word and the waveform in one chip, never two pills that can disagree (it
+           replaced ON AIR, the meter's own words, the green "Recording —" line and the live dot).
+           The waveform is drawn from the SAME peaks useTapRecorder's meter loop already computes —
+           no second AnalyserNode, nothing on the capture path — and is flat while the mic is held,
+           because a trace twitching to the speaker would be the screen telling him it is recording
+           him when it is not. -->
+      <div v-if="phase === 'recording'" class="mic-row" data-test="mic-row">
+        <span class="mic" :class="micSignal.cls" :title="micSignal.title" data-test="mic">
+          <span class="mic-dot" aria-hidden="true"></span>
+          <span class="mic-word">{{ micSignal.word }}</span>
+          <span class="meter" :class="{ clip: recorder.clipping.value && !micHeld, held: micHeld }"><canvas ref="waveCanvas" class="wave"></canvas></span>
         </span>
       </div>
-      <!-- THE SWITCH, WHERE HE CAN REACH IT MID-SESSION. Aran, 2026-09-10: "if
-           I pause for thought, it starts flicking through items". The rule he
-           asks for is already the rule — nothing advances until the meter has
-           heard speech on this line — but a pause for thought longer than the
-           quiet threshold is indistinguishable from finishing, and there is no
-           right number to retune it to. The fix is the off-switch, which until
-           now lived only on the ready card, behind Stop.
-           IT IS AT THE TOP OF THE STAGE, deliberately far from Again and Next:
-           a control that changes how the run behaves must not sit under the
-           thumb that is reaching for the transport. Nothing here touches the
-           threshold, and the default stays on.
-           Silent on a gapped read, where auto-advance is off by construction
-           and a switch claiming otherwise would be a lie. -->
-      <label v-if="!isGappedLine" class="stage-auto">
+      <!-- THE AUTO-ADVANCE SWITCH, WHERE HE CAN REACH IT MID-SESSION (Aran, 2026-09-10: "if I
+           pause for thought, it starts flicking through items"). At the top, far from Again and
+           Next. Silent on a gapped read, where auto-advance is off by construction. -->
+      <label v-if="phase === 'recording' && !isGappedLine" class="stage-auto">
         <input type="checkbox" v-model="autoAdvance" />
         <span>{{ autoAdvance ? 'Moving on by itself when you stop' : 'Waiting for you — tap Next' }}</span>
       </label>
 
-      <!-- The one line that says which of the two things is happening. It is the
-           only place the words "Recording" and "Playing back" appear on this
-           screen, and they can never both be true: starting a playback holds the
-           microphone, and the dot only lives while the mic does. -->
-      <p class="stage-progress" :class="activityState.cls">
-        <span class="live-dot" :class="{ hot: recorder.lineHasSpeech.value && !micHeld, off: micHeld }"></span>
-        {{ activityState.words }} · {{ progressWords }}
-      </p>
+      <div class="fit-body">
+        <!-- B'S RAIL, DESKTOP ONLY: one square per line of this batch, filling in as he reads.
+             Progress, not navigation — nothing in it is tappable, so a desktop reader can feel
+             how far through he is without a control within reach while the mic is live. -->
+        <div v-if="phase !== 'done' && lines.length > 1" class="rail-wrap">
+          <ol class="rail" aria-hidden="true" data-test="rail">
+            <li v-for="(l, i) in lines" :key="l.id || i" class="rail-sq" :class="railClass(l, i)"></li>
+          </ol>
+          <!-- THE LEGEND (Aran, 2026-10-15): the squares used to say nothing, and in light mode
+               green and red were painted grey, so saved looked like not-yet-recorded. -->
+          <ul class="rail-legend" data-test="rail-legend">
+            <li v-for="k in RAIL_LEGEND" :key="k.state"><i class="rail-sq" :class="k.state"></i>{{ k.words }}</li>
+          </ul>
+        </div>
 
-      <!-- See crossingNote for why this exists and why it is a line and not a
-           modal. Above the well so it is read before the words are, and gone
-           the moment he moves on. -->
-      <p v-if="!arming && crossingNote" class="crossing">
-        You've crossed from <strong>{{ crossingNote.from }}</strong> into <strong>{{ crossingNote.to }}</strong>.
-      </p>
+        <!-- ── Ready: the batch page, with the first line already in place ─────────────── -->
+        <main v-if="phase === 'ready'" class="rc-card centre" data-test="ready">
+          <div class="centre-line">
+            <!-- THE SETUP CHECK (Tom, r-2026-10-07): while the script is locked, the way into the
+                 ten phrases replaces Start. -->
+            <div v-if="voice.setupCheck" class="setup-card">
+              <template v-if="voice.setupCheck.status === 'submitted'">
+                <strong>Thank you — your setup check is with us.</strong>
+                <span>We'll listen and open your full script as soon as it is approved. Nothing more to do.</span>
+                <span v-if="voice.setupCheck.autoVerdict && voice.setupCheck.autoVerdict.verdict === 'pass'" class="setup-note setup-verdict-pass">Our quick sound check: your recording sounds good.</span>
+                <template v-else-if="voice.setupCheck.autoVerdict && voice.setupCheck.autoVerdict.verdict === 'retry'">
+                  <span class="setup-note setup-verdict-retry">Our quick sound check suggests a small change, so please try again:</span>
+                  <span v-for="r in voice.setupCheck.autoVerdict.reasons" :key="r" class="setup-note setup-verdict-reason">{{ r }}</span>
+                </template>
+              </template>
+              <template v-else>
+                <strong>First, a 10-phrase setup check.</strong>
+                <span>Record ten phrases on the microphone and in the room you will really use. We listen, and the full script opens as soon as it is approved.</span>
+                <span v-if="voice.setupCheck.status === 'changes' && voice.setupCheck.note" class="setup-note">From us: {{ voice.setupCheck.note }}</span>
+                <router-link :to="`/r/${voice.setupCheck.packVoiceId}`" class="btn-begin setup-go">Start the 10-phrase setup check</router-link>
+              </template>
+            </div>
+            <!-- A setup pack's own page carries Submit, above the line. -->
+            <div v-if="voice.pack && voice.pack.setup && voice.pack.setup.status !== 'approved'" class="setup-card">
+              <template v-if="voice.pack.setup.status === 'submitted'">
+                <strong>Submitted — thank you.</strong>
+                <span>We'll open your full script once we've listened. You can close this page.</span>
+                <span v-if="voice.pack.setup.autoVerdict && voice.pack.setup.autoVerdict.verdict === 'pass'" class="setup-note setup-verdict-pass">Our quick sound check: your recording sounds good.</span>
+                <template v-else-if="voice.pack.setup.autoVerdict && voice.pack.setup.autoVerdict.verdict === 'retry'">
+                  <span class="setup-note setup-verdict-retry">Our quick sound check suggests a small change, so please try again:</span>
+                  <span v-for="r in voice.pack.setup.autoVerdict.reasons" :key="r" class="setup-note setup-verdict-reason">{{ r }}</span>
+                  <button v-if="readyCanSubmit" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
+                    {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
+                  </button>
+                  <span v-if="setupError" class="setup-note">{{ setupError }}</span>
+                </template>
+              </template>
+              <template v-else>
+                <strong>{{ voice.recorded }} of {{ voice.total }} recorded{{ voice.recorded >= SETUP_MIN_SUBMIT || queue.pendingCount.value > 0 ? '' : `, record at least ${SETUP_MIN_SUBMIT}` }}.</strong>
+                <span v-if="queue.pendingCount.value > 0" class="setup-note">{{ queue.pendingCount.value }} still uploading. You can submit once they have all gone up.</span>
+                <span v-else-if="queue.failed.size > 0" class="setup-note">{{ queue.failed.size }} did not upload yet. Retry them, then submit.</span>
+                <span v-if="voice.pack.setup.status === 'changes' && voice.pack.setup.note" class="setup-note">From us: {{ voice.pack.setup.note }}</span>
+                <button v-if="readyCanSubmit" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
+                  {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
+                </button>
+                <span v-if="setupError" class="setup-note">{{ setupError }}</span>
+              </template>
+            </div>
 
-      <!-- THE TRANSPORT SITS ABOVE THE LINE, NOT BELOW IT. Aran, 2026-09-11,
-           from the booth with Catrin recording: move the navigation controls
-           so they sit on top of the text box. Same buttons, same bindings, same
-           advance-lock — only their place on the page changed. On a phone the
-           line well is 44vh tall, so a transport below it lived under the fold
-           and a thumb had to scroll away from the words to reach Next. -->
-      <!-- PAUSE THROWS THE ATTEMPT AWAY. Aran, 2026-09-03: "a pause button which
-           automatically discards that attempt and starts from fresh when they
-           hit play would be brilliant" — he needs a word, or the dog barks, and
-           background noise KEEPS THE RECORDING GOING. So this discards the open
-           capture and stops the microphone being a witness to whatever happens
-           next; Play re-opens the SAME line clean. Nothing reaches the server
-           either way.
+            <template v-if="!voice.setupCheck">
+              <template v-if="startLine">
+                <p v-if="startKindWords" class="line-kind">{{ startKindWords }}</p>
+                <p class="ready-line" data-test="ready-line">{{ plainText(startLine.text) }}</p>
+                <p v-if="startLine.knownText" class="line-known">{{ plainText(startLine.knownText) }}</p>
+              </template>
+              <template v-else>
+                <p class="ready-line all-done">Everything is recorded.</p>
+                <p class="note done">Open <strong>Lines &amp; settings</strong> and tap any line to read it again.</p>
+              </template>
+            </template>
+            <p v-if="micError" class="note error">{{ micError }}</p>
+          </div>
+          <!-- ONE COUNT AND ONE BAR, said once (it used to be said three ways). -->
+          <div class="meta">
+            <span class="rc-progress-line">{{ queueHeadline }}</span>
+            <span class="bar"><i :style="{ width: progressPct + '%' }"></i></span>
+          </div>
+        </main>
 
-           It is the booth's existing hold, not a second one: `micHeld` is what
-           playback and editing already use, and `paused` only says WHICH of the
-           three holds it. Full width and above the transport so it is findable
-           mid-flow without looking down, and a tap — no long-press, no gesture. -->
-      <button
-        class="ctl-pause"
-        :class="{ paused }"
-        :disabled="arming || !!editingId || (busy && !paused)"
-        type="button"
-        @click="togglePause"
-      >{{ paused ? 'Play' : 'Pause' }}</button>
-      <!-- The transport is dead while the editor is open, and it has to be: the
-           microphone is held, so Next would close a take of nothing and file it
-           under the line being rewritten, and Back would walk away from an
-           unsaved edit with the mic still held. The editor has its own two
-           buttons and they are the only way out of it. -->
-      <!-- Dead while paused as well as while editing, and for the same reason:
-           the mic is held, so Next would close a take of nothing and file it
-           under the line on screen. Play is the only way back. -->
-      <div class="controls">
-        <!-- BACK IS LIVE WHILE PAUSED (Aran, 2026-09-10: he pressed Pause
-             because he wanted to go back). Again and Next below it are not:
-             those two need the microphone open and file a take. -->
-        <button v-if="canGoBack" class="ctl-back" :disabled="busy || arming || !!editingId" @click="onBack">Back</button>
-        <button class="ctl-again" :disabled="busy || arming || paused || !!editingId" @click="onAgain">Again</button>
-        <button class="ctl-next" :disabled="busy || arming || paused || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
+        <!-- ── Recording: ONE line, big ────────────────────────────────────────────────── -->
+        <main v-else-if="phase === 'recording'" class="stage centre" :class="{ 'is-paused': paused }">
+          <!-- A REFUSED TAKE IS IMPOSSIBLE TO MISS (Aran, 2026-10-15): the server said no to a
+               take (e.g. steady noise, no speech) and nothing was filed. Red, names the line, and
+               stays until he re-records it or dismisses it. The line is already back in the queue
+               as not-recorded (isRecorded is false while it is failed). -->
+          <div v-if="refusedNotices.length" class="refused-notice" role="alert" data-test="refused-notice">
+            <div v-for="n in refusedNotices" :key="n.id" class="refused-row">
+              <span class="refused-text">
+                <strong>That line didn't save:</strong> “{{ plainText(n.text) }}” — {{ n.reason }}
+              </span>
+              <button class="refused-act" data-test="refused-rerecord" @click="recordOne(n.id)">Tap to re-record</button>
+              <button class="refused-dismiss" data-test="refused-dismiss" aria-label="Dismiss" @click="dismissRefused(n.id)">✕</button>
+            </div>
+          </div>
+          <div class="centre-line">
+            <p v-if="paused" class="pnote">Paused — nothing is being recorded. That attempt was thrown away.</p>
+            <!-- THE CROSSING (Aran, 2026-09-10): drawn in flow above the line, interrupts nothing,
+                 gone as soon as he moves on. -->
+            <p v-if="!arming && crossingNote" class="crossing">
+              You've crossed from <strong>{{ crossingNote.from }}</strong> into <strong>{{ crossingNote.to }}</strong>.
+            </p>
+            <!-- THE LINE BEFORE THIS ONE, whoever says it. Greyed, small, nothing to touch. -->
+            <ul v-if="!arming && cueBefore.length" class="cue cue-before" data-surface="cue-lines">
+              <li v-for="(c, i) in cueBefore" :key="'b' + i" class="cue-line">
+                <span v-if="c.speaker" class="cue-speaker">{{ c.speaker }}</span>
+                <span class="cue-text">{{ plainText(c.text) }}</span>
+              </li>
+            </ul>
+            <!-- THE LINE IS HELD BACK WHILE THE RECORDER FILLS (COLD_START_SETTLE_MS in
+                 useTapRecorder): the mic opens first and the line follows. -->
+            <div v-if="arming" class="line-well arming-well">
+              <p class="arming-words">Getting ready…</p>
+            </div>
+            <!-- REWRITING THE LINE BEING READ happens INSIDE this well, replacing the words and
+                 nothing else (Tom, 2026-09-03). `canEditText` is the server's word, per line. -->
+            <div v-else class="line-well" :class="{ editing: editingId === current?.id }">
+              <!-- WHAT KIND OF LINE THIS IS, in words: a seed sentence reads exactly like a pod
+                   line and files somewhere completely different. -->
+              <p v-if="lineKindWords" class="line-kind">{{ lineKindWords }}</p>
+              <!-- Narration markup (<src>/<tgt>) is parsed into spans, never v-html. TAP IS THE
+                   ONLY AFFORDANCE: the line is the control on a test course. -->
+              <textarea
+                v-if="editingId === current?.id"
+                ref="editBox"
+                v-model="editText"
+                class="line-target edit-box"
+                rows="1"
+                :style="{ height: editBoxHeight }"
+                :disabled="editSaving"
+                @input="sizeEditBox"
+                @keydown.esc.prevent="cancelEdit"
+                @keydown.enter.prevent="commitEdit"
+                @blur="commitEdit"
+              ></textarea>
+              <p v-else class="line-target" :class="{ tappable: current?.canEditText }"
+                 @click="onLineTap($event)">
+                <span
+                  v-for="(seg, i) in currentSegments"
+                  :key="i"
+                  :class="['seg', 'seg-' + seg.kind]"
+                >{{ seg.text }}</span>
+              </p>
+              <p v-if="editError" class="note error">{{ editError }}</p>
+              <p v-if="current?.knownText" class="line-known">{{ plainText(current.knownText) }}</p>
+              <!-- The line being read never carries a verdict on an earlier take of it (Tom,
+                   2026-09-02). -->
+            </div>
+            <!-- AND THE LINE AFTER IT. Same rules. -->
+            <ul v-if="!arming && cueAfter.length" class="cue cue-after" data-surface="cue-lines">
+              <li v-for="(c, i) in cueAfter" :key="'a' + i" class="cue-line">
+                <span v-if="c.speaker" class="cue-speaker">{{ c.speaker }}</span>
+                <span class="cue-text">{{ plainText(c.text) }}</span>
+              </li>
+            </ul>
+            <p v-if="savedNote" class="saved-note">{{ savedNote }}</p>
+            <!-- WHAT IS COMING, dimmed and small: one line on a phone, three on a desktop. -->
+            <div v-if="upcoming.length" class="upnext">
+              <p class="upnext-head">Coming up · {{ remainingToRead }} still to read</p>
+              <ol class="upnext-list">
+                <li v-for="l in upcoming" :key="l.id">{{ plainText(l.text) }}</li>
+              </ol>
+            </div>
+          </div>
+          <!-- HEAR THE LINE JUST READ, right under the line and not below the fold. While the
+               upload is in flight it plays the in-browser take and wears RAW LOCAL; once stored
+               it plays the stored bytes (STORED); a failed upload says NOT SAVED. -->
+          <div v-if="lastLine" class="hear-bar">
+            <span class="hear-label">Just read
+              <span class="hear-text">{{ plainText(lastLine.text) }}</span>
+            </span>
+            <div class="hear-actions">
+              <StoredTakeButton
+                :stored-url="storedUrlFor(lastLine.id)"
+                :pending="isPending(lastLine.id)"
+                :failed="hasFailed(lastLine.id)"
+                :local-url="localUrlFor(lastLine.id)"
+                :is-playing="playingId === lastLine.id"
+                @toggle="togglePlay(lastLine.id)"
+              />
+              <button
+                v-if="queue.saved.has(lastLine.id)"
+                class="cmp-btn"
+                :class="{ open: comparingId === lastLine.id }"
+                type="button"
+                @click="toggleCompare(lastLine.id)"
+              >{{ comparingId === lastLine.id ? 'Hide' : 'Raw vs processed' }}</button>
+            </div>
+          </div>
+          <RawVsProcessed v-if="lastLine && comparingId === lastLine.id" :voice-id="voiceId" :line-id="lastLine.id" />
+          <p v-if="failedNote" class="note error">{{ failedNote }}</p>
+          <p v-if="playbackError" class="note error">{{ playbackError }}</p>
+        </main>
+
+        <!-- ── Done: C's mic-off check, a list of this session's takes ─────────────────── -->
+        <main v-else class="rc-card centre done-card" data-test="done">
+          <h2>{{ doneHeadline }}</h2>
+          <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
+          <p v-if="queue.pendingCount.value > 0" class="note">{{ doneNote }}</p>
+          <p v-else-if="sessionLines.length" class="done-sub">Hear any take, or read it again.</p>
+
+          <div v-if="failedList.length" class="redo-list">
+            <h3>{{ failedList.length }} {{ failedList.length === 1 ? 'line' : 'lines' }} did not save</h3>
+            <ul>
+              <li v-for="l in failedList" :key="l.id">
+                <span class="redo-text">{{ plainText(l.text) }}</span>
+                <span class="redo-why">{{ queue.failed.get(l.id) }}</span>
+                <button class="redo-btn" @click="recordOne(l.id)">Record it again</button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- THE SETUP CHECK's Submit on the DONE card (job #844): offered once nothing is
+               pending or failed; the server still re-checks that every phrase has a take. -->
+          <div v-if="canSubmitSetupHere" class="setup-card">
+            <strong>That's your setup check recorded.</strong>
+            <button class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
+              {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
+            </button>
+            <span v-if="setupError" class="setup-note">{{ setupError }}</span>
+          </div>
+          <div v-else-if="setupIncompleteHere" class="setup-card">
+            <strong>{{ setupRecorded }} of {{ lines.length }} recorded, record at least {{ SETUP_MIN_SUBMIT }}.</strong>
+          </div>
+
+          <div v-if="sessionLines.length" class="listen-back done-list">
+            <ul>
+              <li v-for="l in sessionLines" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
+                <div class="listen-row">
+                  <span class="listen-text">{{ plainText(l.text) }}</span>
+                  <div class="listen-actions">
+                    <StoredTakeButton
+                      :stored-url="storedUrlFor(l.id)"
+                      :pending="isPending(l.id)"
+                      :failed="hasFailed(l.id)"
+                      :local-url="localUrlFor(l.id)"
+                      :is-playing="playingId === l.id"
+                      @toggle="togglePlay(l.id)"
+                    />
+                    <button
+                      v-if="queue.saved.has(l.id)"
+                      class="cmp-btn"
+                      :class="{ open: comparingId === l.id }"
+                      type="button"
+                      @click="toggleCompare(l.id)"
+                    >{{ comparingId === l.id ? 'Hide' : 'Raw vs processed' }}</button>
+                    <button class="cmp-btn again-btn" type="button" @click="recordOne(l.id)">Again</button>
+                  </div>
+                </div>
+                <RawVsProcessed v-if="comparingId === l.id" :voice-id="voiceId" :line-id="l.id" />
+              </li>
+            </ul>
+            <p v-if="playbackError" class="note error">{{ playbackError }}</p>
+          </div>
+          <p v-if="micError" class="note error">{{ micError }}</p>
+        </main>
       </div>
-      <!-- THE LINE BEFORE THIS ONE, whoever says it. Greyed, small, and outside
-           the well: it is context, not a line to read, and the well's own
-           contents never move when the editor opens inside it. -->
-      <ul v-if="!arming && cueBefore.length" class="cue cue-before" data-surface="cue-lines">
-        <li v-for="(c, i) in cueBefore" :key="'b' + i" class="cue-line">
-          <span v-if="c.speaker" class="cue-speaker">{{ c.speaker }}</span>
-          <span class="cue-text">{{ plainText(c.text) }}</span>
-        </li>
-      </ul>
-      <!-- THE LINE IS HELD BACK WHILE THE RECORDER FILLS.
-           The first take of a session is the one clip with no standby to
-           promote (see COLD_START_SETTLE_MS in useTapRecorder). If the line
-           were on screen the instant the mic opened, she would read it into a
-           recorder that is nought ms old and the trim would have nothing to
-           spend. So the mic opens first and the line follows. -->
-      <div v-if="arming" class="line-well arming-well">
-        <p class="arming-words">Getting ready…</p>
-      </div>
 
-      <!-- REWRITING THE LINE BEING READ happens INSIDE this well, replacing the
-           words and nothing else — the crib underneath, the kind above and the
-           well itself all stay exactly where they are. Tom, 2026-09-03: "at the
-           point of recording, it makes sense to allow the voice artist to edit
-           the lines they are about to record", and "as smooth as possible" is
-           the spec, so nothing on the page may move when the field opens.
-
-           There is no Edit button, no Save button, nothing to confirm — and,
-           when the line has no take yet, nothing said afterwards either.
-           `canEditText` is the server's word, per line, and the write is
-           checked again there. -->
-      <div v-else class="line-well" :class="{ editing: editingId === current?.id }">
-        <!-- Narration lines carry <src>/<tgt> markup. Parsed into segments in
-             JS and rendered as spans — never v-html, because this is database
-             text and never as a raw string, because then the recordist reads
-             the angle brackets aloud. -->
-        <!-- TAP IS THE ONLY AFFORDANCE. The line the artist is looking at IS
-             the control; nothing is long-pressed, swiped or dragged anywhere on
-             this screen. -->
-        <textarea
-          v-if="editingId === current?.id"
-          ref="editBox"
-          v-model="editText"
-          class="line-target edit-box"
-          rows="1"
-          :style="{ height: editBoxHeight }"
-          :disabled="editSaving"
-          @input="sizeEditBox"
-          @keydown.esc.prevent="cancelEdit"
-          @keydown.enter.prevent="commitEdit"
-          @blur="commitEdit"
-        ></textarea>
-        <p v-else class="line-target" :class="{ tappable: current?.canEditText }"
-           @click="onLineTap($event)">
-          <span
-            v-for="(seg, i) in currentSegments"
-            :key="i"
-            :class="['seg', 'seg-' + seg.kind]"
-          >{{ seg.text }}</span>
-        </p>
-        <p v-if="editError" class="note error">{{ editError }}</p>
-        <!-- WHAT KIND OF LINE THIS IS, in words, and only when it is not the
-             ordinary case. A seed sentence reads exactly like a pod line and
-             files somewhere completely different, so the line has to say so
-             itself. No badge, no tick, no colour -- the booth's rule is that
-             state is drawn, not annotated, and this is not state, it is what
-             the thing IS. -->
-        <p v-if="lineKindWords" class="line-kind">{{ lineKindWords }}</p>
-        <p v-if="current?.knownText" class="line-known">{{ plainText(current.knownText) }}</p>
-        <!-- The line being read never carries a verdict on an earlier take of
-             it (Tom, 2026-09-02). The server no longer sends one; this stays
-             deleted rather than merely unset so a future wire field cannot
-             quietly light it up again. -->
-      </div>
-
-      <!-- AND THE LINE AFTER IT. Same rules: dimmed, non-interactive, one short
-           line, so the reply he is setting up is visible without leaving the
-           booth for the pod page. -->
-      <ul v-if="!arming && cueAfter.length" class="cue cue-after" data-surface="cue-lines">
-        <li v-for="(c, i) in cueAfter" :key="'a' + i" class="cue-line">
-          <span v-if="c.speaker" class="cue-speaker">{{ c.speaker }}</span>
-          <span class="cue-text">{{ plainText(c.text) }}</span>
-        </li>
-      </ul>
-
-      <!-- IT SAYS WHAT HAPPENED, IN ONE LINE, AND MOVES ON. One ref, replaced
-           each time, so this can never stack. -->
-      <p v-if="savedNote" class="saved-note">{{ savedNote }}</p>
-
-      <!-- WHAT IS COMING. A recordist reading blind, one line at a time, has to
-           re-orient at every single line. Seeing the next few makes the whole
-           run readable as a run: you know whether the next one is short, whether
-           three in a row belong together, and whether it is worth carrying on.
-           Dimmed and small on purpose — the line being read stays the biggest
-           thing on the screen. -->
-      <div v-if="upcoming.length" class="upnext">
-        <p class="upnext-head">Coming up · {{ remainingToRead }} still to read</p>
-        <ol class="upnext-list">
-          <li v-for="l in upcoming" :key="l.id">{{ plainText(l.text) }}</li>
-        </ol>
-      </div>
-
-      <!-- Hear the line just read, at once. While the upload is in flight the
-           button plays the in-browser take and WEARS THE LABEL "RAW LOCAL", so
-           background noise is caught before moving on with no wait for the
-           server. The moment the clip is stored it switches to the stored bytes
-           (tag STORED). A failed upload says NOT SAVED — a green tick over an
-           unplayable clip is the whole bug, so local never passes for stored. -->
-      <div v-if="lastLine" class="hear-bar">
-        <span class="hear-label">You just read
-          <span class="hear-text">{{ plainText(lastLine.text) }}</span>
-        </span>
-        <div class="hear-actions">
-          <StoredTakeButton
-            :stored-url="storedUrlFor(lastLine.id)"
-            :pending="isPending(lastLine.id)"
-            :failed="hasFailed(lastLine.id)"
-            :local-url="localUrlFor(lastLine.id)"
-            :is-playing="playingId === lastLine.id"
-            @toggle="togglePlay(lastLine.id)"
-          />
-          <!-- RAW FIRST, PROCESSED SECOND. Once the take has landed, the
-               untouched bytes the microphone gave us are playable in the same
-               place as the mastered clip — so "was that clipped?" is a question
-               the recordist can answer in the room, on the take they have just
-               this second read, instead of a suspicion carried to the end of a
-               session. Only offered once the upload is stored: there is no raw
-               original on the server until there is. -->
+      <!-- THE TRANSPORT, PINNED TO THE BOTTOM EDGE and the only thing under the thumb. Aran
+           accepted Next under the line on 2026-10-14 (job #424), reversing his 11 Sep ask; pinning
+           answers that ask's reason, which was controls below the fold. Same buttons, same
+           bindings, same advance-lock. -->
+      <footer class="transport" data-test="transport">
+        <div v-if="phase === 'ready'" class="transport-in one">
+          <!-- NOTHING LEFT IN THIS BATCH: the way on is the big button, not a dead one (Aran, 2026-10-15). -->
+          <button v-if="!voice.setupCheck && startIndex === -1 && nextBatchN" class="btn-begin btn-next-batch" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Next batch →</button>
+          <button v-else-if="!voice.setupCheck && startIndex === -1 && batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
+          <button v-else-if="!voice.setupCheck" class="btn-begin" :disabled="startIndex === -1" @click="begin">
+            {{ startIndex === -1 ? 'Nothing left to read' : 'Start recording' }}
+          </button>
+          <!-- SETTINGS, FOLDED INTO ONE LINE before Start: how the run moves on and which mic. -->
+          <p class="setline" data-test="setline">
+            {{ autoAdvance ? 'Moves on when you stop' : 'Tap Next after each line' }} · {{ captureProfile === 'pro' ? 'Plugged-in mic' : 'Phone mic' }}
+            · <button type="button" class="setline-change" @click="openSheet('settings')">Change</button>
+          </p>
+        </div>
+        <!-- The transport is dead while the editor is open and while paused: the mic is held, so
+             Next would close a take of nothing. BACK IS LIVE WHILE PAUSED (Aran, 2026-09-10): it
+             files nothing. -->
+        <template v-else-if="phase === 'recording'">
+        <!-- STOP AND PAUSE SIT DIRECTLY ABOVE BACK / AGAIN / NEXT (Aran, 2026-10-15, job #681: up in
+             the status row he did not notice them; this overrides the earlier keep-them-far-from-
+             the-thumb placement). Big, filled, one row, never in the status row as well. Stop is
+             dead while the editor is open: it files nothing on the line he is standing on.
+             PAUSE THROWS THE ATTEMPT AWAY (Aran, 2026-09-03): it discards the open capture and
+             stops the microphone being a witness to whatever happens next; Resume re-opens the
+             SAME line clean. It is the booth's existing hold (`micHeld`); `paused` says which. -->
+        <div class="sp-row" data-test="stop-pause">
+          <button class="btn-finish" type="button" data-test="stop" aria-label="Stop recording" :disabled="busy || arming || !!editingId" @click="onFinish">Stop</button>
           <button
-            v-if="queue.saved.has(lastLine.id)"
-            class="cmp-btn"
-            :class="{ open: comparingId === lastLine.id }"
+            class="ctl-pause"
+            :class="{ paused }"
+            :disabled="arming || !!editingId || (busy && !paused)"
             type="button"
-            @click="toggleCompare(lastLine.id)"
-          >{{ comparingId === lastLine.id ? 'Hide' : 'Raw vs processed' }}</button>
+            data-test="pause"
+            @click="togglePause"
+          >{{ paused ? 'Resume' : 'Pause' }}</button>
+        </div>
+        <div class="transport-in live controls">
+          <button class="ctl-back" title="Back" aria-label="Back" :disabled="!canGoBack || busy || arming || !!editingId" @click="onBack">‹</button>
+          <button class="ctl-again" :disabled="busy || arming || paused || !!editingId" @click="onAgain">Again</button>
+          <button class="ctl-next" :disabled="busy || arming || paused || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
+        </div>
+        </template>
+        <div v-else class="transport-in" :class="{ one: !nextBatchN && !batchScope }">
+          <button class="btn-ghost" @click="backToStart">Back to my lines</button>
+          <button v-if="nextBatchN" class="btn-begin btn-next-batch" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Next batch →</button>
+          <button v-else-if="batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
+        </div>
+        <p v-if="phase === 'recording'" class="kbd-hint">
+          <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause · <kbd>B</kbd> back
+        </p>
+      </footer>
+
+      <!-- ── THE SHEET: everything that is not the line ──────────────────────────────────
+           Drawn while the batch page or the done screen is up, shown on a tap; never while the
+           mic is live. It is v-show, not v-if, so the map's open sections and a half-typed
+           filter survive closing it. -->
+      <!-- A SIDEBAR on a desktop (the line stays in view, pushed to the left), a DROPDOWN under the
+           where-am-I row on a phone. Closes by the ✕, a click/tap on the dimmed area, Esc, or a
+           swipe up on the head/grab bar. Never a full page. -->
+      <div v-if="phase !== 'recording'" v-show="sheetOpen" class="sheet-scrim" data-test="sheet-scrim" @click="closeSheet"></div>
+      <div v-if="phase !== 'recording'" v-show="sheetOpen" class="sheet" :style="{ '--sheet-top': sheetTop + 'px' }" role="dialog" aria-label="Lines and settings" data-test="sheet">
+        <div class="sheet-head" data-test="sheet-head" @touchstart.passive="swipeStart" @touchend.passive="swipeEnd">
+          <p class="sheet-title">Lines &amp; settings</p>
+          <button type="button" class="sheet-close" data-test="close-sheet" aria-label="Close lines and settings" @click="closeSheet"><span aria-hidden="true">✕</span><span class="sc-word"> Close</span></button>
+        </div>
+        <div class="sheet-body">
+          <!-- THE NAV (Tom, 2026-09-12): the whole list, each pod this voice is cast in and the
+               course Overview. In the sheet, never on the stage. -->
+          <nav class="rc-nav" aria-label="Booth navigation">
+            <button type="button" class="rc-nav-item rc-nav-btn" @click="goToLines">Lines</button>
+            <template v-if="navPods.length">
+              <span class="rc-nav-dot">·</span>
+              <span class="rc-nav-word">{{ navPods.length === 1 ? 'Pod' : 'Pods' }}</span>
+              <router-link v-for="p in navPods" :key="p.key" :to="p.to" class="rc-nav-item rc-nav-pod">{{ p.label }}</router-link>
+            </template>
+            <template v-if="navCourses.length">
+              <span class="rc-nav-dot">·</span>
+              <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
+            </template>
+          </nav>
+
+          <!-- THE PRACTICE-PHRASE BATCH (Aran, 2026-10-13, job #619): which pass, which batch of
+               how many, and that the rest come later. -->
+          <div v-if="showPhraseCard" class="volume-card phrase-card" data-test="phrase-batch">
+            <template v-if="phrases.pass">
+              <p class="phrase-kicker">Practice phrases · {{ boothCourseWords(phrases.courseCode, phrases.courseLabel) }}</p>
+              <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
+              <p class="phrase-count">{{ phrases.batchRecorded }} of {{ phrases.batchLines }} recorded in this batch</p>
+              <p v-if="phrases.pass === 1" class="volume-note">
+                This first pass is the phrases the app plays first: up to {{ phrases.firstPass.build }} build and
+                {{ phrases.firstPass.use }} use phrases for each new LEGO.
+                The remaining {{ phrases.laterPassLines.toLocaleString() }} phrases come on a second pass, later.
+              </p>
+              <p v-else class="volume-note">This second pass is the rest of the practice phrases, after the first pass.</p>
+              <p class="volume-note">
+                {{ phrases.batch < phrases.batches ? `When this batch is finished, batch ${phrases.batch + 1} opens here the next time you open this page.` : (phrases.pass === 1 ? 'This is the last batch of the first pass.' : 'This is the last batch.') }}
+                <template v-if="phrases.batchHeld"> {{ phrases.batchHeld }} {{ phrases.batchHeld === 1 ? 'phrase in this batch is' : 'phrases in this batch are' }} held back until {{ phrases.batchHeld === 1 ? 'its' : 'their' }} proof flag is cleared.</template>
+              </p>
+            </template>
+            <template v-else>
+              <h3 class="phrase-title">Practice phrases — all recorded</h3>
+              <p class="volume-note">Both passes are finished. Thank you.</p>
+            </template>
+          </div>
+
+          <!-- HOW MUCH OF THE COURSE (Tom's minimal set): shown only when there IS a set. -->
+          <div v-if="quarry" class="volume-card">
+            <h3>The minimal set — {{ quarry.lines }} lines, about {{ quarry.minutes }} minutes</h3>
+            <p class="volume-note">
+              {{ quarry.legos }} chunks and {{ quarry.words }} single words, read slowly, plus
+              {{ quarry.sentences }} whole sentences at your natural pace. Spliced back together, they make every
+              phrase in the first {{ quarry.maxSeed }} sentences of the course.
+            </p>
+            <div class="volume-row">
+              <span class="volume-label">How much of the course?</span>
+              <button
+                v-for="n in SEED_VOLUMES" :key="n" type="button"
+                class="volume-btn" :class="{ on: (quarry.maxSeed || 0) === n }"
+                :disabled="phase !== 'ready'"
+                @click="setVolume(n)"
+              >{{ n }}</button>
+            </div>
+          </div>
+
+          <!-- WORK HE HAS ALREADY DONE, WHICH LEFT HIS LIST; and work that cannot be read yet.
+               Neither is a job, and neither has a button. -->
+          <div v-if="handedOnNotes.length" class="handed-on">
+            <p v-for="n in handedOnNotes" :key="n.key">
+              <strong>You recorded {{ n.lines }} more {{ n.lines === 1 ? 'line' : 'lines' }} of {{ n.heading }}</strong>
+              that {{ n.lines === 1 ? 'has' : 'have' }} since been given to {{ n.castTo }} to read.
+              Your {{ n.lines === 1 ? 'take is' : 'takes are' }} still there — {{ n.lines === 1 ? 'it is' : 'they are' }}
+              just not on your list any more, because {{ n.lines === 1 ? 'that line is' : 'those lines are' }}
+              {{ n.castTo }}'s now.
+            </p>
+          </div>
+          <div v-if="notReadyNotes.length" class="not-ready">
+            <p v-for="n in notReadyNotes" :key="n.key">
+              <strong>{{ n.lines }} more {{ n.lines === 1 ? 'line' : 'lines' }} of {{ n.heading }}</strong>
+              {{ n.lines === 1 ? 'is' : 'are' }} still waiting to be written in {{ voice.languageName || 'the language' }}.
+              {{ n.lines === 1 ? 'It' : 'They' }} can't be read until somebody writes {{ n.lines === 1 ? 'it' : 'them' }} —
+              nothing of yours has gone missing.
+            </p>
+          </div>
+
+          <section ref="settingsRef" class="sheet-settings" data-test="settings">
+            <h3>How the run behaves</h3>
+            <ol class="how-to">
+              <li>Tap <strong>Start</strong> and read the line aloud. It is already recording.</li>
+              <!-- THIS STEP MUST MATCH THE SWITCH BELOW IT. -->
+              <li v-if="autoAdvance">Stop talking and it moves on by itself — you do not have to tap anything.</li>
+              <li v-else>When you've finished the line, tap <strong>Next</strong>. Nothing cuts you off mid-sentence.</li>
+              <li v-if="autoAdvance && quarry">On <strong>the minimal set</strong> it waits for you — tap <strong>Next</strong> after each chunk. The gaps you leave are the point, so nothing listens for you to stop.</li>
+              <li>Tap <strong>Again</strong> to re-read a line<span v-if="autoAdvance">, <strong>Next</strong> to push on early</span>.</li>
+              <li>Tap <strong>Stop</strong> when you've had enough. It saves itself.</li>
+            </ol>
+
+            <label class="toggle-row">
+              <input type="checkbox" v-model="autoAdvance" />
+              <span><strong>Move on by itself when I stop speaking</strong>
+                <small>On = just read, and keep reading. Turn it off in a noisy room and use Next instead.</small></span>
+            </label>
+
+            <div v-if="recorder.devices.value.length > 1" class="mic-pick">
+              <label class="mic-label">Microphone</label>
+              <select v-model="selectedDeviceId" class="mic-select">
+                <option v-for="(d, i) in recorder.devices.value" :key="d.deviceId" :value="d.deviceId">{{ d.label || `Microphone ${i + 1}` }}</option>
+              </select>
+            </div>
+
+            <div class="setup-pick" role="radiogroup" aria-label="Phone?">
+              <label class="toggle-row">
+                <input type="radio" name="setup" value="phone" v-model="captureProfile" />
+                <span><strong>Phone?</strong>
+                  <small>Hold at comfortable reading distance so you can clearly see the phone screen. About the distance you hold the phone when texting. iPhone 16 or later for best results.</small></span>
+              </label>
+              <label class="toggle-row">
+                <input type="radio" name="setup" value="pro" v-model="captureProfile" />
+                <span><strong>Recording with a professional plugged-in mic</strong></span>
+              </label>
+            </div>
+          </section>
+
+          <!-- THE MAP: every line, each a way back onto it ("Read it again"). -->
+          <RecordistRoster
+            ref="rosterRef"
+            :sections="rosterSections"
+            :playing-id="playingId"
+            :editing-id="editingId"
+            :editing-side="editingSide"
+            :saving="editSaving"
+            :error="editError"
+            :saved-note="savedNote"
+            :saved-id="savedId"
+            @play="togglePlay"
+            @record="recordFromSheet"
+            @edit="beginEdit"
+            @edit-known="beginEdit($event, null, 'known')"
+            @cancel-edit="cancelEdit"
+            @save="saveEdit($event.id, $event.text, $event.side)"
+          />
+
+          <!-- THERE IS NO "RE-READ LINES I'VE ALREADY RECORDED" SWITCH (Tom, 2026-09-11): a line
+               with a confirmed take is never served again as a thing to read. Hearing back what
+               you have recorded is its own switch, and it does not change which lines are served. -->
+          <label class="toggle-row">
+            <input type="checkbox" v-model="showRecorded" />
+            <span><strong>Show everything I've already recorded</strong>
+              <small>A list of every line you have read, grouped the same way as the map above. Play any of them back. It
+                does not change which lines you are asked to read.</small></span>
+          </label>
+
+          <div v-if="showRecorded && alreadyRecorded.length" class="listen-back">
+            <h3>What you've already recorded — {{ alreadyRecorded.length }}</h3>
+            <p class="listen-note">Everything you have read, in every part of the list. These play the clip stored on the
+              server. Tap <strong>Compare</strong> to hear your original take next to the processed one learners hear.</p>
+            <input
+              v-if="alreadyRecorded.length > RECORDED_FILTER_THRESHOLD"
+              v-model="recordedFilter"
+              type="search"
+              class="listen-filter"
+              placeholder="Find a line…"
+              autocomplete="off"
+            />
+            <p v-if="recordedFilter && !alreadyRecordedShown.length" class="listen-note">Nothing matches “{{ recordedFilter }}”.</p>
+            <div v-for="s in recordedSectionList" :key="s.key" class="listen-sec">
+              <button
+                type="button"
+                class="listen-sec-head"
+                :aria-expanded="isRecordedSectionOpen(s) ? 'true' : 'false'"
+                @click="toggleRecordedSection(s.key)"
+              >
+                <span class="lsh-mark" aria-hidden="true">{{ isRecordedSectionOpen(s) ? '–' : '+' }}</span>
+                <span class="lsh-count">{{ s.count }}</span>
+                <span class="lsh-name">{{ s.heading }}</span>
+              </button>
+              <ul v-if="isRecordedSectionOpen(s)">
+                <li v-for="l in s.rows" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
+                  <div class="listen-row">
+                    <span class="listen-text">{{ plainText(l.text) }}</span>
+                    <div class="listen-actions">
+                      <StoredTakeButton
+                        :stored-url="storedUrlFor(l.id)"
+                        :allow-local="false"
+                        :is-playing="playingId === l.id"
+                        @toggle="togglePlay(l.id)"
+                      />
+                      <button class="cmp-btn" :class="{ open: comparingId === l.id }" type="button" @click="toggleCompare(l.id)">
+                        {{ comparingId === l.id ? 'Hide' : 'Compare' }}
+                      </button>
+                    </div>
+                  </div>
+                  <RawVsProcessed v-if="comparingId === l.id" :voice-id="voiceId" :line-id="l.id" />
+                </li>
+              </ul>
+            </div>
+            <p v-if="playbackError" class="note error">{{ playbackError }}</p>
+          </div>
+
+          <!-- RE-RECORD ALL, the artist's own (job #885): same route the admin button calls, on
+               THIS link's voice only. Nothing is deleted. -->
+          <template v-if="phase === 'ready'">
+          <div v-if="canRerecordAll" class="rerecord-all">
+            <button class="btn-ghost" type="button" :disabled="rerecordBusy" @click="rerecordAllMine">
+              {{ rerecordBusy ? 'Starting over…' : 'Re-record all' }}
+            </button>
+            <p v-if="rerecordError" class="note error">{{ rerecordError }}</p>
+          </div>
+          </template>
         </div>
       </div>
-      <RawVsProcessed v-if="lastLine && comparingId === lastLine.id" :voice-id="voiceId" :line-id="lastLine.id" />
-      <p v-if="failedNote" class="note error">{{ failedNote }}</p>
-      <p v-if="playbackError" class="note error">{{ playbackError }}</p>
-
-      <!-- Stop here is dead while the editor is open too, like the transport
-           above the line: it files nothing on the line he is standing on,
-           so there was never anything for the pause guard to protect. -->
-      <button class="btn-finish" :disabled="busy || arming || !!editingId" @click="onFinish">Stop here</button>
-      <p class="kbd-hint">
-        <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause<template v-if="canGoBack"> · <kbd>B</kbd> back</template>
-      </p>
-    </section>
-
-    <!-- ── Done ───────────────────────────────────────────────────────────── -->
-    <section v-else-if="phase === 'done'" class="rc-card">
-      <!-- THE NAV. Tom, 2026-09-12, testing as a voice artist: "the whole nav
-           is not very clear … I should as a voice artist be able to see the
-           way to get to the course Overview page and maybe other PODS and so
-           on, because I am also an editor of the lines." One row, four plain
-           words, above the fold on a phone: Booth (here) · Lines (the whole
-           list, on this page) · Pods (each pod this voice is cast in — its
-           drafts page, where a line is edited or ticked) · Course (the
-           Overview). It replaces the faint "← Back to Popty" that was the only
-           way out. ON THE READY AND DONE CARDS ONLY, never on the recording
-           stage: a link within reach of a thumb while the mic is live is a
-           lost take. Those pages carry "← Back to the booth" (booth-pointer.js). -->
-      <nav class="rc-nav" aria-label="Booth navigation">
-        <router-link :to="`/r/${voiceId}`" class="rc-nav-item is-here" aria-current="page">Booth</router-link>
-        <span class="rc-nav-dot">·</span>
-        <button type="button" class="rc-nav-item rc-nav-btn" @click="goToLines">Lines</button>
-        <template v-if="navPods.length">
-          <span class="rc-nav-dot">·</span>
-          <span class="rc-nav-word">{{ navPods.length === 1 ? 'Pod' : 'Pods' }}</span>
-          <router-link v-for="p in navPods" :key="p.key" :to="p.to" class="rc-nav-item rc-nav-pod">{{ p.label }}</router-link>
-        </template>
-        <template v-if="navCourses.length">
-          <span class="rc-nav-dot">·</span>
-          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ c.label }}</router-link>
-        </template>
-        <span class="rc-nav-dot">·</span>
-        <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
-      </nav>
-      <h2>{{ doneHeadline }}</h2>
-      <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
-      <!-- "Keep this page open until everything has saved" was the honest thing
-           to say while the takes lived in a JavaScript array. It is not the
-           honest thing to say now: the recordings are on the device and they go
-           up next time the booth opens. Saying the frightening thing when the
-           reassuring one is TRUE is its own kind of lie. -->
-      <p v-if="queue.pendingCount.value > 0" class="note">{{ doneNote }}</p>
-
-      <p class="state-pill" :class="activityState.cls">{{ activityState.words }}</p>
-
-      <!-- THE PRACTICE-PHRASE BATCH (Aran, 2026-10-13, job #619). Phrases come
-           in two passes and ~200-line batches, one batch at a time, and the
-           reader must be able to SEE that: which pass, which batch of how many,
-           how far through, and that the rest of the phrases come later — so the
-           first pass is never mistaken for all of it. -->
-      <div v-if="phrases && (phrases.pass || phrases.finished)" class="volume-card phrase-card" data-test="phrase-batch">
-        <template v-if="phrases.pass">
-          <p class="phrase-kicker">Practice phrases · {{ boothCourseWords(phrases.courseCode, phrases.courseLabel) }}</p>
-          <h3 class="phrase-title">Pass {{ phrases.pass }} of {{ phrases.passes }} · Batch {{ phrases.batch }} of {{ phrases.batches }}</h3>
-          <p class="phrase-count">{{ phrases.batchRecorded }} of {{ phrases.batchLines }} recorded in this batch</p>
-          <p v-if="phrases.pass === 1" class="volume-note">
-            This first pass is the phrases the app plays first: up to {{ phrases.firstPass.build }} build and
-            {{ phrases.firstPass.use }} use phrases for each new LEGO.
-            The remaining {{ phrases.laterPassLines.toLocaleString() }} phrases come on a second pass, later.
-          </p>
-          <p v-else class="volume-note">This second pass is the rest of the practice phrases, after the first pass.</p>
-          <p class="volume-note">
-            {{ phrases.batch < phrases.batches ? `When this batch is finished, batch ${phrases.batch + 1} opens here the next time you open this page.` : (phrases.pass === 1 ? 'This is the last batch of the first pass.' : 'This is the last batch.') }}
-            <template v-if="phrases.batchHeld"> {{ phrases.batchHeld }} {{ phrases.batchHeld === 1 ? 'phrase in this batch is' : 'phrases in this batch are' }} held back until {{ phrases.batchHeld === 1 ? 'its' : 'their' }} proof flag is cleared.</template>
-          </p>
-        </template>
-        <template v-else>
-          <h3 class="phrase-title">Practice phrases — all recorded</h3>
-          <p class="volume-note">Both passes are finished. Thank you.</p>
-        </template>
-      </div>
-
-      <RecordistRoster
-        ref="rosterRef"
-        :sections="rosterSections"
-        :playing-id="playingId"
-        :editing-id="editingId"
-        :editing-side="editingSide"
-        :saving="editSaving"
-        :error="editError"
-        :saved-note="savedNote"
-        :saved-id="savedId"
-        @play="togglePlay"
-        @record="recordOne"
-        @edit="beginEdit"
-        @edit-known="beginEdit($event, null, 'known')"
-        @cancel-edit="cancelEdit"
-        @save="saveEdit($event.id, $event.text, $event.side)"
-      />
-
-      <div v-if="sessionLines.length" class="listen-back">
-        <h3>Listen back</h3>
-        <p class="listen-note">A take plays straight from this device while it uploads, tagged RAW LOCAL, then from the server once saved.
-          Tap <strong>Raw vs processed</strong> on any of them to hear the untouched original first
-          and the mastered version second.</p>
-        <ul>
-          <li v-for="l in sessionLines" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
-            <div class="listen-row">
-              <span class="listen-text">{{ plainText(l.text) }}</span>
-              <div class="listen-actions">
-                <StoredTakeButton
-                  :stored-url="storedUrlFor(l.id)"
-                  :pending="isPending(l.id)"
-                  :failed="hasFailed(l.id)"
-                  :local-url="localUrlFor(l.id)"
-                  :is-playing="playingId === l.id"
-                  @toggle="togglePlay(l.id)"
-                />
-                <button
-                  v-if="queue.saved.has(l.id)"
-                  class="cmp-btn"
-                  :class="{ open: comparingId === l.id }"
-                  type="button"
-                  @click="toggleCompare(l.id)"
-                >{{ comparingId === l.id ? 'Hide' : 'Raw vs processed' }}</button>
-              </div>
-            </div>
-            <RawVsProcessed v-if="comparingId === l.id" :voice-id="voiceId" :line-id="l.id" />
-          </li>
-        </ul>
-        <p v-if="playbackError" class="note error">{{ playbackError }}</p>
-      </div>
-
-      <div v-if="failedList.length" class="redo-list">
-        <h3>{{ failedList.length }} {{ failedList.length === 1 ? 'line' : 'lines' }} did not save</h3>
-        <ul>
-          <li v-for="l in failedList" :key="l.id">
-            <span class="redo-text">{{ plainText(l.text) }}</span>
-            <span class="redo-why">{{ queue.failed.get(l.id) }}</span>
-            <button class="redo-btn" @click="recordOne(l.id)">Record it again</button>
-          </li>
-        </ul>
-      </div>
-
-      <!-- THE SETUP CHECK's Submit on the DONE card (job #844, review #843): the
-           ready card only knows the page-load count, so an artist who records
-           all ten in one sitting landed here with no way to send them. Offered
-           once nothing is pending or failed; the server still re-checks that
-           every phrase has a take. -->
-      <div v-if="canSubmitSetupHere" class="setup-card">
-        <strong>That's your setup check recorded.</strong>
-        <button class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
-          {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
-        </button>
-        <span v-if="setupError" class="setup-note">{{ setupError }}</span>
-      </div>
-
-      <div v-else-if="setupIncompleteHere" class="setup-card">
-        <strong>{{ setupRecorded }} of {{ lines.length }} recorded, record at least {{ SETUP_MIN_SUBMIT }}.</strong>
-      </div>
-
-      <button class="btn-ghost" @click="backToStart">Back to my lines</button>
-    </section>
+    </template>
   </div>
 </template>
 
@@ -788,8 +640,9 @@
 // costs them a session. The queue is BY LANGUAGE: one Welsh recordist gets one
 // Welsh queue, however many courses those lines happen to serve, which is why
 // no course code appears anywhere on this page.
-import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
-import { recordingApiBase as apiBase } from '@/services/recordingApi'
+import { ref, computed, onMounted, onBeforeUnmount, onActivated, onDeactivated, watch, nextTick, inject } from 'vue'
+import { routerKey, routeLocationKey } from 'vue-router'
+import { recordingApiBase as apiBase, withBoothKey } from '@/services/recordingApi'
 import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecorder'
 import { loadBoothSettings, saveBoothSettings, micKeyFor } from './recordist/booth-settings.js'
 import { useRecordistQueue, DURABLE_TAKES_FEATURE } from '@/composables/useRecordistQueue'
@@ -802,11 +655,35 @@ import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStored
 import { createAdvanceLock } from './recordist/advance-lock'
 import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
-import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords } from './recordist/booth-chip-titles.js'
+import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
+import BoothHome from './recordist/BoothHome.vue'
+import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot } from './recordist/booth-home.js'
+import { headerLanguage } from './recordist/booth-tabs.js'
+import { micSignal as micSignalFor } from './recordist/mic-signal.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
+// The page around a booth with language tabs (RecordistBooth.vue) holds the other tabs still mid-take.
+const emit = defineEmits(['phase'])
+// THE ADDRESS SAYS WHERE HE IS (job #347): home, a card's batches, or one batch.
+// Read through the router when there is one, and straight off the address bar
+// when there is not (a unit test mounts the booth bare), so the booth still
+// keeps no hard router dependency.
+const router = inject(routerKey, null)
+const route = inject(routeLocationKey, null)
+const addressTick = ref(0)
+const addressQuery = computed(() => {
+  if (route) return route.query
+  void addressTick.value
+  return Object.fromEntries(new URLSearchParams(window.location.search))
+})
+function goToAddress(query) {
+  if (router) return router.push({ query })
+  const qs = new URLSearchParams(query).toString()
+  window.history.pushState({}, '', `${window.location.pathname}${qs ? `?${qs}` : ''}`)
+  addressTick.value += 1
+}
 
 const recorder = useTapRecorder()
 // The queue asks the ROOM whether a line is recorded on the server, so a
@@ -820,7 +697,7 @@ const queue = useRecordistQueue({
   },
 })
 
-const phase = ref('loading') // loading | unknown | error | ready | recording | done
+const phase = ref('loading') // loading | unknown | error | home | ready | recording | done
 const loadError = ref(null)
 const loadSlow = ref(false)
 const micError = ref(null)
@@ -1012,9 +889,12 @@ const rosterRows = computed(() => lines.value.map(l => ({
 // three, and an empty heading reading "0 lines" is a question with no answer.
 // The roster section a line belongs to: its kind, except that a seed already
 // released in the course is its own section (see SECTION_ORDER).
+// A RELAUNCH SANDBOX'S SENTENCES ARE NEW, though their seed rows exist in that
+// course (Aran, 2026-10-14, job #347): #335 found his 640 new North sentences
+// under "seeds already in the course … They are not new". Display only.
 function sectionKeyOf(l) {
   const kind = l.kind || 'pod'
-  return kind === 'seed' && l.seedExisting ? 'seedexisting' : kind
+  return kind === 'seed' && l.seedExisting && !isBoothNewCourse(l.courseCode) ? 'seedexisting' : kind
 }
 
 // "Pass 1 of 2 · North batch 3 of 30" — the words a phrase line carries on the
@@ -1156,6 +1036,7 @@ const rosterRef = ref(null)
 // "Lines" is on this page: open the whole list and put it under his thumb.
 function goToLines() {
   const r = Array.isArray(rosterRef.value) ? rosterRef.value[0] : rosterRef.value
+  sheetOpen.value = true
   if (r && r.openList) r.openList()
   nextTick(() => {
     const el = r && r.$el && r.$el.querySelector ? r.$el.querySelector('.roster-toggle') : null
@@ -1286,8 +1167,7 @@ const crossingNote = computed(() => {
 // the KNOWN (English) side is recordable too, and then two lines carry the same
 // words in different languages -- so which side this one is has to be said out
 // loud or they are indistinguishable.
-const lineKindWords = computed(() => {
-  const l = current.value
+function kindWordsFor(l) {
   if (!l) return null
   // WHICH BODY OF WORK HE IS IN, while he is in it. The roster names the groups
   // but the roster is the map; once he taps Start he is one line at a time and
@@ -1332,7 +1212,8 @@ const lineKindWords = computed(() => {
   const which = l.role === 'known' ? 'English side' : (l.role === 'target2' ? 'second voice' : null)
   const number = l.seedNumber ? `Seed sentence ${l.seedNumber}` : 'Seed sentence'
   return which ? `${number} - ${which}` : number
-})
+}
+const lineKindWords = computed(() => kindWordsFor(current.value))
 
 /**
  * Split a line into readable segments.
@@ -1480,12 +1361,10 @@ const upcoming = computed(() => {
 // them disagree the moment anything became outstanding behind it: the roster
 // said one line was owed and the stage said none were.
 const remainingToRead = computed(() => lines.value.reduce((n, l) => n + (isSettled(l) ? 0 : 1), 0))
-const firstLinePreview = computed(() => {
-  const l = startIndex.value === -1 ? null : lines.value[startIndex.value]
-  if (!l) return 'first line'
-  const t = plainText(l.text)
-  return t.length > 34 ? `${t.slice(0, 34)}…` : t
-})
+// THE LINE START WILL OPEN ON, drawn big on the batch page before Start (job #424): the batch
+// page IS the reading screen, so the first thing he reads is already where he will read it.
+const startLine = computed(() => (startIndex.value === -1 ? null : lines.value[startIndex.value]))
+const startKindWords = computed(() => kindWordsFor(startLine.value))
 
 // ── Hearing the stored clip ─────────────────────────────────────────────────
 const playingId = ref(null)
@@ -1510,22 +1389,80 @@ const paused = ref(false)
 // is not yet on screen, and the transport is inert. See COLD_START_SETTLE_MS.
 const arming = ref(false)
 
-// What is happening, in words a person reads without thinking. Playback and
-// editing both hold the mic, so whichever of the three is true is the only one
-// that can be true: if this ever said two things, one of them would be a lie.
-const activityState = computed(() => {
-  // "mic paused" is only true where the mic was ever live. On the ready and done
-  // cards nothing was listening in the first place, and saying it was paused
-  // there is the same species of lie as saying it is live.
-  if (editingId.value) {
-    return { cls: 'is-editing', words: phase.value === 'recording' ? 'Editing the line — mic paused' : 'Editing the line' }
-  }
-  if (paused.value) return { cls: 'is-editing', words: 'Paused — nothing is being recorded' }
-  if (playingId.value) return { cls: 'is-playing', words: 'Playing back your take' }
-  if (arming.value) return { cls: 'is-arming', words: 'Getting ready — the mic is already open' }
-  if (phase.value === 'recording') return { cls: 'is-recording', words: 'Recording — read the line aloud' }
-  return { cls: 'is-idle', words: 'Not recording' }
+// WHAT THE MIC IS DOING, as one chip on the live stage (job #424) — the words are micSignal's.
+const micSignal = computed(() => micSignalFor({
+  editing: !!editingId.value,
+  paused: paused.value,
+  playing: !!playingId.value,
+  arming: arming.value,
+  clipping: recorder.clipping.value && !micHeld.value,
+  meterTrusted: recorder.meterTrusted.value,
+  micDb: micDb.value,
+}))
+
+// ── The prompter's frame (job #424) ─────────────────────────────────────────
+// The three screens drawn one viewport tall: the batch page, the live stage and the done screen.
+const fitPhase = computed(() => phase.value === 'ready' || phase.value === 'recording' || phase.value === 'done')
+const progressPct = computed(() => (lines.value.length ? Math.round((recordedCount.value / lines.value.length) * 1000) / 10 : 0))
+// THE WHERE-AM-I WORDS: the batch header inside a batch (job #378); outside one (a pod or course
+// link, a recording pack) who and how many are left, so the row is never empty.
+const whereWords = computed(() => {
+  if (batchScope.value) return batchHeader.value
+  const who = [voice.value.displayName, voice.value.languageName].filter(Boolean).join(' · ')
+  const left = `${remainingToRead.value.toLocaleString('en-GB')} left`
+  return who ? `${who} · ${left}` : left
 })
+// One square of the desktop rail: the same four facts the map draws, plus where he is.
+// THE RAIL'S FOUR STATES, one colour each, never two states in one colour (Aran, 2026-10-15):
+// done = the server holds the take (green); up = recorded, still uploading (amber); failed =
+// the server refused it (red); empty = not recorded yet (grey).
+const RAIL_LEGEND = [
+  { state: 'done', words: 'Saved on the server' },
+  { state: 'up', words: 'Recorded, still uploading' },
+  { state: 'failed', words: 'Refused, record again' },
+  { state: 'empty', words: 'Not recorded yet' },
+]
+function railClass(l, i) {
+  return {
+    now: phase.value === 'recording' ? i === index.value : i === startIndex.value,
+    done: isRecorded(l) && !isPending(l.id),
+    up: isPending(l.id),
+    failed: hasFailed(l.id) && !isRecorded(l),
+  }
+}
+// THE SHEET: everything that is not the line. "Change" on the settings line opens it at the
+// settings; the where-am-I row's button opens it at the top.
+const sheetOpen = ref(false)
+const settingsRef = ref(null)
+const whereRef = ref(null)
+// The phone dropdown hangs from the bottom of the where-am-I row (and any banner above it).
+const sheetTop = ref(44)
+function closeSheet() { sheetOpen.value = false }
+let swipeY = null
+function swipeStart(e) { swipeY = e.touches && e.touches[0] ? e.touches[0].clientY : null }
+function swipeEnd(e) {
+  const t = e.changedTouches && e.changedTouches[0]
+  if (swipeY !== null && t && swipeY - t.clientY > 40) closeSheet()
+  swipeY = null
+}
+function onSheetKey(e) { if (e.key === 'Escape') closeSheet() }
+watch(sheetOpen, (open) => {
+  if (open) window.addEventListener('keydown', onSheetKey)
+  else window.removeEventListener('keydown', onSheetKey)
+})
+onBeforeUnmount(() => window.removeEventListener('keydown', onSheetKey))
+function openSheet(at) {
+  const w = whereRef.value
+  if (w) sheetTop.value = w.offsetTop + w.offsetHeight
+  sheetOpen.value = true
+  if (at === 'settings') nextTick(() => { const el = settingsRef.value; if (el && el.scrollIntoView) el.scrollIntoView({ block: 'start' }) })
+}
+// A line tapped on the map opens the mic on it: the sheet steps out of the way first.
+function recordFromSheet(lineId) {
+  closeSheet()
+  return recordOne(lineId)
+}
+watch(phase, (p) => { if (p === 'recording') sheetOpen.value = false })
 
 // ── Rewriting a line, on a TEST COURSE only ─────────────────────────────────
 // Tom, 2026-09-02: "it is a TEST course so it can have any rules we like", so
@@ -1641,7 +1578,7 @@ async function saveEdit(lineId, text, side = editingSide.value) {
   editError.value = null
   try {
     const res = await fetch(
-      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/line/${encodeURIComponent(lineId)}/text`,
+      withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/line/${encodeURIComponent(lineId)}/text`, props.voiceId),
       {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -1895,6 +1832,25 @@ const sessionLines = computed(() =>
 )
 const failedList = computed(() => sessionLines.value.filter(l => queue.failed.has(l.id)))
 
+// REFUSED TAKES SHOWN WHILE RECORDING. `queue.failed` holds the server's own words per line (the
+// upload route answers non-2xx with {error}); the notice stays until the line is re-recorded
+// (it leaves `failed`) or dismissed. A dismissal is forgotten when the line leaves `failed`, so a
+// later refusal of the same line shows again.
+const dismissedRefusals = ref(new Set())
+const refusedNotices = computed(() =>
+  lines.value
+    .filter(l => queue.failed.has(l.id) && !queue.saved.has(l.id) && !dismissedRefusals.value.has(l.id))
+    .map(l => ({ id: l.id, text: l.text, reason: queue.failed.get(l.id) }))
+)
+function dismissRefused(lineId) {
+  dismissedRefusals.value = new Set([...dismissedRefusals.value, lineId])
+}
+watch(() => [...queue.failed.keys()], keys => {
+  if ([...dismissedRefusals.value].some(id => !keys.includes(id))) {
+    dismissedRefusals.value = new Set([...dismissedRefusals.value].filter(id => keys.includes(id)))
+  }
+})
+
 function stopPlayback() {
   if (audioEl) { audioEl.onended = null; audioEl.onerror = null; audioEl.pause() }
   playingId.value = null
@@ -2094,6 +2050,7 @@ let waveHead = 0
 let waveRaf = null
 let waveW = 0
 let waveH = 0
+let waveInk = null
 
 function paintWave() {
   waveRaf = requestAnimationFrame(paintWave)
@@ -2113,7 +2070,10 @@ function paintWave() {
   const ctx = el.getContext('2d')
   if (!ctx) return
   ctx.clearRect(0, 0, w, h)
-  ctx.fillStyle = (recorder.clipping.value && !micHeld.value) ? '#e63946' : '#06ffa5'
+  // The trace takes the chip's own ink (CSS `color` on .wave), so it reads in light mode as well
+  // as dark and turns red with the chip when it is too loud. Read every few frames, not every one.
+  if (!waveInk || (waveHead % 15) === 0) waveInk = getComputedStyle(el).color || '#047857'
+  ctx.fillStyle = waveInk
   const step = w / WAVE_SAMPLES
   const barW = Math.max(1, step - dpr)
   const mid = h / 2
@@ -2140,7 +2100,8 @@ function stopWave() {
 watch(phase, (p) => {
   if (p === 'recording') nextTick(startWave)
   else stopWave()
-})
+  emit('phase', p)
+}, { immediate: true })
 
 // What the recorder can honestly say about whether this line was read: true,
 // false, or null for "no idea". Null is what a meter that is not delivering
@@ -2415,7 +2376,7 @@ async function rerecordAllMine() {
   rerecordBusy.value = true
   rerecordError.value = null
   try {
-    const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/rerecord-all`, {
+    const res = await fetch(withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/rerecord-all`, props.voiceId), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ confirm: true, asArtist: true, reason: 'Artist pressed Re-record all in the booth' }),
@@ -2503,7 +2464,7 @@ async function submitSetup() {
   setupSubmitting.value = true
   setupError.value = null
   try {
-    const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/submit`, {
+    const res = await fetch(withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/submit`, props.voiceId), {
       method: 'POST', headers: {},
     })
     const body = await res.json().catch(() => ({}))
@@ -2540,10 +2501,13 @@ async function load() {
     // server can narrow the read as well as the draw.
     const podScope = new URLSearchParams(window.location.search).get('pod')
     const podParam = podScope ? `&pod=${encodeURIComponent(podScope)}` : ''
+    // ONE BATCH from the home screen (job #347): only its lines come over the wire.
+    const b = batchScope.value
+    const batchParam = b ? `&track=${encodeURIComponent(b.track)}&batch=${b.batch}` : ''
     // Time-limited (20s, one retry): a hung request must not strand the reader
     // on "Getting your lines…". The body is read inside the timed window.
     const { res, data: body } = await fetchWithTimeoutRetry(
-      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}`,
+      withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}${batchParam}`, props.voiceId),
       { headers: {} },
       r => (r.ok ? r.json() : r.json().catch(() => ({})))
     )
@@ -2599,6 +2563,247 @@ async function load() {
     loadError.value = (err && err.message) || 'Network error'
     phase.value = 'error'
   }
+}
+
+// ── THE HOME SCREEN (Aran, 2026-10-14, job #347) ────────────────────────────
+//
+// The page used to open by fetching his whole queue — 2060 lines, 2.2MB — and
+// drawing every one, then put Start on the first unread line in queue order (a
+// Health test line). It now opens on a home screen drawn from a SUMMARY
+// (/summary: cards, batches, counts) and fetches one batch's lines when he opens
+// it, so Start lands in the batch he chose. The address carries where he is —
+// ?track=<card> lists a card's batches, &batch=<n> opens one — so Back works.
+//
+// A course or pod link (?course= / ?pod=) is a door from another page and keeps
+// the one-screen booth it always opened. So do a recording pack and a script
+// still behind its setup check, and anything that cannot get a summary at all:
+// the home screen is an addition, never a new way for the booth to fail.
+const homeSummary = ref(null)
+const unticked = ref(loadUnticked(props.voiceId))
+function setTick(id, on) {
+  const next = new Set(unticked.value)
+  if (on) next.delete(id); else next.add(id)
+  unticked.value = next
+  saveUnticked(props.voiceId, next)
+}
+const queryStr = (v) => (typeof v === 'string' && v.trim() ? v.trim() : null)
+const isDoorLink = () => !!(queryStr(addressQuery.value.course) || queryStr(addressQuery.value.pod))
+const batchScope = computed(() => {
+  const track = queryStr(addressQuery.value.track)
+  const batch = parseInt(addressQuery.value.batch, 10)
+  if (isDoorLink() || !track || !Number.isFinite(batch) || batch < 1) return null
+  return { track, batch }
+})
+const homeTrackKey = computed(() => (batchScope.value ? null : queryStr(addressQuery.value.track)))
+
+// A reader of a course's KNOWN side (Aran's English booth reads the English of the Welsh
+// courses) is told so on every card and header (job #378): "English for New Welsh — North".
+function courseWordsFor(courseCode) {
+  const words = boothCourseWords(courseCode, 'Course')
+  const h = homeSummary.value
+  const lang = h && h.language
+  if (!lang || !courseCode || courseCode.startsWith(`${lang}_`) || !courseCode.endsWith(`_for_${lang}`)) return words
+  return `${h.languageName || lang} for ${words}`
+}
+function describeTrack(t) {
+  if (t.kind === 'seed') {
+    const isNew = !!(t.newCourse || t.seedExisting === false)
+    const old = SECTION_ORDER.find(x => x.key === 'seedexisting')
+    return {
+      short: isNew ? 'New sentences' : 'Sentences', cls: 'k-sent',
+      title: `${courseWordsFor(t.courseCode)}: whole sentences`,
+      what: isNew ? 'Read each new course sentence once, at your natural pace.' : old.blurb,
+    }
+  }
+  if (t.kind === 'lego') {
+    return {
+      short: 'LEGOs', cls: 'k-lego',
+      title: `${courseWordsFor(t.courseCode)}: LEGOs`,
+      what: 'The pieces each new sentence is built from, one at a time. Read each once, at your natural pace.',
+    }
+  }
+  if (t.kind === 'phrase') {
+    const fp = (homeSummary.value && homeSummary.value.phrases && homeSummary.value.phrases.firstPass) || { build: 4, use: 3 }
+    return {
+      short: `Phrases · pass ${t.pass}`, cls: t.pass === 1 ? 'k-p1' : 'k-p2',
+      title: `${courseWordsFor(t.courseCode)}: practice phrases, pass ${t.pass}`,
+      what: t.pass === 1
+        ? `The phrases the app plays first: up to ${fp.build} build and ${fp.use} use phrases for each new LEGO.`
+        : 'The rest of the practice phrases. Opens when pass 1 is finished.',
+    }
+  }
+  if (t.podSlug) {
+    const sec = podSectionFor({ courseCode: t.courseCode, podSlug: t.podSlug, podTitle: t.podTitle })
+    return { short: 'Script', cls: 'k-other', title: sec.heading, what: sec.blurb }
+  }
+  const named = SECTION_ORDER.find(x => x.key === t.kind)
+  return { short: 'Lines', cls: 'k-other', title: named ? named.heading : 'Everything else', what: named ? named.blurb : '' }
+}
+// WHAT THIS DEVICE HAS RECORDED OF A BATCH, ahead of the server's count (Aran, 2026-10-15): takes
+// still uploading are not in the summary, so Up next kept offering the batch he had just finished.
+// Only ever raises a count, and only for the batch the device has open.
+const localBatchRecorded = ref({})
+watch([recordedCount, () => lines.value.length, batchScope], () => {
+  const b = batchScope.value
+  if (!b || !lines.value.length) return
+  const k = `${b.track}#${b.batch}`
+  if (recordedCount.value > (localBatchRecorded.value[k] || 0)) localBatchRecorded.value = { ...localBatchRecorded.value, [k]: recordedCount.value }
+})
+function withLocalRecorded(t) {
+  let extra = 0
+  const batches = (t.batches || []).map(b => {
+    const mine = Math.min(localBatchRecorded.value[`${t.key}#${b.n}`] || 0, b.total || 0)
+    if (mine <= (b.recorded || 0)) return b
+    extra += mine - (b.recorded || 0)
+    return { ...b, recorded: mine }
+  })
+  return extra ? { ...t, batches, recorded: (t.recorded || 0) + extra } : t
+}
+const homeTracks = computed(() => ((homeSummary.value && homeSummary.value.tracks) || []).map(t => ({ ...withLocalRecorded(t), ...describeTrack(t) })))
+const homeMainHeading = computed(() => {
+  const codes = new Set(homeTracks.value.filter(t => t.kind === 'phrase' || t.newCourse).map(t => t.courseCode))
+  return codes.size === 1 ? boothCourseWords([...codes][0], 'New work') : 'New work'
+})
+const homeNotes = computed(() => {
+  const h = homeSummary.value
+  if (!h) return []
+  const out = []
+  for (const n of (h.notReady || [])) {
+    if (!(Number(n.lines) > 0)) continue
+    const where = podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading
+    out.push(`${n.lines} more ${n.lines === 1 ? 'line' : 'lines'} of ${where} ${n.lines === 1 ? 'is' : 'are'} still being written — nothing of yours has gone missing.`)
+  }
+  for (const n of (h.handedOn || [])) {
+    if (!(Number(n.lines) > 0)) continue
+    const where = podSectionFor({ courseCode: n.courseCode, podSlug: n.podSlug, podTitle: n.podTitle }).heading
+    out.push(`You recorded ${n.lines} more ${n.lines === 1 ? 'line' : 'lines'} of ${where} that ${n.lines === 1 ? 'has' : 'have'} since been given to ${n.castTo || 'somebody else'}. Your takes are still there.`)
+  }
+  return out
+})
+const scopedTrack = computed(() => batchScope.value && homeTracks.value.find(t => t.key === batchScope.value.track))
+// THE PERSISTENT HEADER inside a batch (job #378): which course, which section, which batch,
+// how many left — "New Welsh — North · New sentences · batch 3 of 7 · 41 left". The count is the
+// lines on screen still to read, so it moves as he reads.
+const batchHeader = computed(() => {
+  const t = scopedTrack.value
+  const left = `${remainingToRead.value.toLocaleString('en-GB')} left`
+  if (!t) return phase.value === 'loading' ? 'Opening your batch…' : left
+  const b = t.batches.find(x => x.n === batchScope.value.batch)
+  const parts = [courseWordsFor(t.courseCode), t.short]
+  // WHICH LANGUAGE, in so many words (job #392): with Welsh and English one tab apart, the header
+  // says it, unless the course words already begin with it ("English for New Welsh — North").
+  const h = homeSummary.value
+  const tongue = h ? headerLanguage(parts[0], h.language, h.languageName) : ''
+  if (tongue) parts.unshift(tongue)
+  if (t.kind === 'phrase') parts.push(b ? `${b.courseLabel ? `${b.courseLabel} ` : ''}batch ${b.batch} of ${t.batches.length}` : null)
+  else if (t.batches.length > 1) parts.push(`batch ${batchScope.value.batch} of ${t.batches.length}`)
+  else if (t.kind !== 'seed' && t.kind !== 'lego') parts[parts.length - 1] = t.title.replace(`${courseWordsFor(t.courseCode)}: `, '') // a script names itself
+  parts.push(left)
+  return parts.filter(Boolean).join(' · ')
+})
+// After a batch: the next one of the same card, if it has lines to read. Never a
+// practice-phrase batch — the queue opens those itself, one at a time.
+const nextBatchN = computed(() => {
+  const t = scopedTrack.value
+  if (!t || t.kind === 'phrase') return null
+  const later = t.batches.find(b => b.n > batchScope.value.batch && b.recorded < b.total)
+  return later ? later.n : null
+})
+const showPhraseCard = computed(() => !!(phrases.value && (phrases.value.pass || phrases.value.finished)) &&
+  (!batchScope.value || batchScope.value.track.startsWith('phrase.')))
+
+function openBatch(track, n) { goToAddress({ track, batch: String(n) }) }
+function goHome() { goToAddress({}) }
+function openCard(key) {
+  const t = homeTracks.value.find(x => x.key === key)
+  if (!t) return
+  // A script is one batch: straight in. Sentences and phrases list their batches.
+  if (t.kind !== 'phrase' && t.batches.length === 1) return openBatch(key, 1)
+  goToAddress({ track: key })
+}
+
+async function fetchSummary() {
+  const { res, data } = await fetchWithTimeoutRetry(
+    withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/summary`, props.voiceId),
+    { headers: {} },
+    r => (r.ok ? r.json() : r.json().catch(() => ({})))
+  )
+  const ok = res.ok && data && data.home && !data.setupLocked ? data : null
+  // Kept on this device so the next arrival draws at once (job #378). A summary that
+  // cannot be a home screen clears it, so the snapshot never outlives its reason.
+  if (ok) saveSummarySnapshot(props.voiceId, ok)
+  else if (res.status !== 0 && res.status < 500) saveSummarySnapshot(props.voiceId, null)
+  return ok
+}
+
+// THE HOME SCREEN AT ONCE, then the truth (Aran, 2026-10-14, job #378: "still takes a LONG
+// time to load even if I just go to another tab and then come back"). A phone coming back to
+// the tab often reloads it — the app reloads when a new build has landed, and a phone throws
+// background tabs away — and every reload waited on a whole-queue summary (1-5 s on the
+// server, plus a public hop that adds 1-8 s of its own). Now: whatever home screen this page
+// or this device last had is drawn straight away, and the server's answer replaces it when it
+// lands. A summary the server marks `fresh: false` (served from its cache while it rebuilds)
+// is asked for once more a few seconds later, so the counts settle without a reload.
+let homeFor = null
+let refreshTimer = null
+function applySummary(data) {
+  homeSummary.value = data
+  homeFor = props.voiceId
+  voice.value = { ...voice.value, displayName: data.displayName, languageName: data.languageName }
+}
+async function refreshHome(again = true) {
+  let data = null
+  try { data = await fetchSummary() } catch { data = null }
+  if (!data) return false
+  if (homeFor === props.voiceId || !homeSummary.value) applySummary(data)
+  clearTimeout(refreshTimer)
+  if (again && data.fresh === false) refreshTimer = setTimeout(() => { if (phase.value === 'home') refreshHome(false) }, 4000)
+  return true
+}
+async function loadHome() {
+  // Moving between the home screen and a card's batch list needs no new read.
+  if (phase.value === 'home' && homeSummary.value && homeFor === props.voiceId) return
+  if (homeFor !== props.voiceId) homeSummary.value = null
+  const shown = homeSummary.value || loadSummarySnapshot(props.voiceId)
+  if (shown) {
+    applySummary(shown)
+    phase.value = 'home'
+    // Takes left on this device by an earlier session start going up from here too.
+    Promise.resolve(queue.attach(props.voiceId)).catch(() => {})
+    refreshHome().then((ok) => {
+      // The server says this voice no longer has a home screen (a pack, a locked setup
+      // check): the snapshot was cleared, so leave it for the one-screen booth.
+      if (!ok && phase.value === 'home' && !loadSummarySnapshot(props.voiceId)) { homeSummary.value = null; load() }
+    })
+    return
+  }
+  phase.value = 'loading'
+  if (!(await refreshHome())) { homeSummary.value = null; return load() }
+  await queue.attach(props.voiceId)
+  phase.value = 'home'
+}
+
+// Where the address says he is. A recording in progress is finished first (its
+// take kept), so Back on a phone mid-line never drops a take.
+let entering = 0
+async function enter() {
+  const mine = ++entering
+  if (phase.value === 'recording') {
+    try { await onFinish() } catch { /* the stream is gone; carry on */ }
+  }
+  if (mine !== entering) return
+  stopPlayback()
+  if (isDoorLink()) return load()
+  if (batchScope.value) {
+    // The batch's own name comes from the summary; fetched alongside, never waited on.
+    if (!homeSummary.value) {
+      const kept = loadSummarySnapshot(props.voiceId)
+      if (kept) applySummary(kept)
+      fetchSummary().then(d => { if (d) applySummary(d) }).catch(() => {})
+    }
+    return load()
+  }
+  return loadHome()
 }
 
 // ── The booth remembers how you left it ─────────────────────────────────────
@@ -2679,7 +2884,26 @@ onBeforeUnmount(() => {
   forgetLocalTakes()
 })
 
-watch(() => props.voiceId, load, { immediate: true })
+// ONE OF SEVERAL TABS (job #392). Under RecordistBooth this booth is kept alive while another
+// voice's tab is showing, and the address then belongs to that voice: a booth only follows the
+// address while the address names it, and coming back to the same place it left is not a move.
+let enteredAt = null
+watch(() => [props.voiceId, addressQuery.value.track, addressQuery.value.batch, addressQuery.value.course, addressQuery.value.pod], (at) => {
+  const named = route && route.params && route.params.voiceId
+  if (named && named !== props.voiceId) return
+  const key = JSON.stringify(at)
+  if (key === enteredAt) return
+  enteredAt = key
+  enter()
+}, { immediate: true })
+onActivated(() => {
+  window.addEventListener('keydown', onKey)
+  rememberBooth(props.voiceId)
+})
+onDeactivated(() => {
+  window.removeEventListener('keydown', onKey)
+  stopPlayback()
+})
 </script>
 
 <style scoped>
@@ -2734,7 +2958,23 @@ watch(() => props.voiceId, load, { immediate: true })
    RecordistRoom.bannerContrast.test.js recomputes them and fails if one drops. */
 .safety-banner.waiting { background: #15243f; border-color: #3b6fb5; color: #dbe9ff; }
 .safety-banner.risk { background: #3a1512; border-color: #d0574c; color: #ffdad5; }
+.refused-notice { width: 100%; max-width: 46rem; margin: 0 auto 0.75rem; background: #7f1d1d; color: #fff; border: 2px solid #f87171; border-radius: 10px; padding: 0.6rem 0.8rem; }
+.refused-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.refused-row + .refused-row { margin-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 0.5rem; }
+.refused-text { flex: 1 1 14rem; font-size: 1rem; line-height: 1.35; }
+.refused-act { background: #fff; color: #7f1d1d; border: 0; border-radius: 8px; padding: 0.5rem 0.9rem; font-weight: 700; cursor: pointer; }
+.refused-dismiss { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.6); border-radius: 8px; padding: 0.4rem 0.7rem; cursor: pointer; }
+:root[data-theme="light"] .refused-notice { background: #fee2e2; color: #7f1d1d; border-color: #dc2626; }
+:root[data-theme="light"] .refused-act { background: #b91c1c; color: #fff; }
+:root[data-theme="light"] .refused-dismiss { color: #7f1d1d; border-color: #b91c1c; }
 .safety-banner.refused { background: #3a2a0d; border-color: #e8a02a; color: #ffe9c2; }
+/* ONE BATCH (job #347): where he is and the way back to the home screen. */
+.batch-head { margin: -0.4rem 0 0.9rem; }
+.batch-back { background: none; border: 0; font: inherit; font-weight: 600; color: var(--color-emerald, #06ffa5); padding: 0.3rem 0; min-height: 44px; cursor: pointer; }
+.rc-card p.batch-title { margin: 0; font-size: 1rem; font-weight: 600; color: var(--color-paper, #f7f7f2); }
+.batch-head { border: 1px solid var(--color-graphite, #475569); border-radius: 12px; padding: 0.2rem 0.8rem 0.6rem; }
+.stage-where { margin: 0.4rem 0 0; font-size: 0.85rem; font-weight: 600; color: var(--color-paper-dim, #c1c1bb); text-align: center; }
+:root[data-theme="light"] .batch-head { border-color: var(--line, #d4d4cf); background: #eef4fb; }
 /* Small, muted, above everything and out of the flow of the work: it is the
    door, not part of the job. */
 .rc-nav {
@@ -2746,7 +2986,7 @@ watch(() => props.voiceId, load, { immediate: true })
   font-size: 0.95rem;
 }
 .rc-nav-item {
-  display: inline-block;
+  display: inline-flex; align-items: center;
   min-height: 40px;
   line-height: 40px;
   padding: 0 0.6rem;
@@ -2760,10 +3000,8 @@ watch(() => props.voiceId, load, { immediate: true })
   cursor: pointer;
 }
 .rc-nav-item:hover, .rc-nav-item:focus-visible { background: rgba(6, 255, 165, 0.2); }
-.rc-nav-item.is-here { color: var(--color-paper, #f5f5f0); background: rgba(255, 255, 255, 0.12); cursor: default; }
 .rc-nav-word { color: var(--color-paper-dim, #c1c1bb); font-weight: 600; }
 .rc-nav-dot { color: var(--color-paper-dim, #c1c1bb); opacity: 0.6; }
-.rc-nav-home { opacity: 0.75; font-weight: 500; }
 .rc-hello { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0 0 0.35rem; }
 .rc-card h2 { font-family: 'Josefin Sans', sans-serif; font-size: 1.3rem; margin: 0 0 0.6rem; }
 .rc-card h3 { font-size: 0.95rem; margin: 1.25rem 0 0.35rem; }
@@ -3204,4 +3442,281 @@ kbd {
 :root[data-theme="light"] .safety-banner.waiting { background: #dbe9fb; border-color: #2563eb; color: #14306e; }
 :root[data-theme="light"] .safety-banner.risk { background: #fbe2df; border-color: #b91c1c; color: #7a1512; }
 :root[data-theme="light"] .safety-banner.refused { background: #fbeed6; border-color: #b45309; color: #6b3c06; }
+
+/* ── THE PROMPTER (job #424; design #419 Option A, with B's desktop rail and C's done list) ──
+   One viewport tall, nothing scrolls: where-am-I row · (live: status row) · the line, centred in
+   what is left · the transport pinned to the bottom edge. Inside the booth's tab page the height
+   comes from RecordistBooth (it subtracts the language tabs); mounted on its own it subtracts the
+   app bar, whose height AppNavbar publishes as --app-navbar-height (0 while the bar is hidden). */
+.recordist.fit {
+  display: flex; flex-direction: column;
+  max-width: none; margin: 0; padding: 0;
+  height: calc(100dvh - var(--app-navbar-height, 0px)); min-height: 0;
+  overflow: hidden;
+}
+.recordist.fit > .safety-banner { flex: none; margin: 0.5rem 0.75rem 0; padding: 0.45rem 0.75rem; }
+/* While he reads, an upload that is simply on its way is one line, not three: takes go up after
+   every line, and the reassurance is said in full on the batch page and the done screen. A take
+   at risk or refused keeps its whole sentence. */
+.recordist.fit.live > .safety-banner.waiting { flex-direction: row; padding: 0.3rem 0.75rem; }
+.recordist.fit.live > .safety-banner.waiting span { display: none; }
+
+.where {
+  flex: none; display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.3rem 0.75rem; min-height: 44px;
+  background: var(--surface, #1e293b); border-bottom: 1px solid var(--line, #334155);
+}
+.where-home {
+  flex: none; background: none; border: 0; cursor: pointer;
+  color: var(--accent-2, #34d399); font-weight: 800; font-size: 1.5rem; line-height: 1;
+  min-width: 40px; min-height: 40px; padding: 0 0.4rem 0.2rem 0.1rem;
+}
+.where-words {
+  flex: 1; min-width: 0; margin: 0;
+  font-weight: 700; font-size: 0.875rem; color: var(--ink, #f1f5f9);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.where.live { padding-left: 1rem; }
+.wm-short { display: none; font-size: 1.1rem; line-height: 1; }
+.where.live .where-words { font-weight: 600; color: var(--muted, #94a3b8); }
+.where-more {
+  flex: none; background: none; border: 1px solid var(--line, #334155); border-radius: 999px;
+  color: var(--ink, #f1f5f9); font: inherit; font-size: 0.8rem; font-weight: 600;
+  padding: 0 0.75rem; min-height: 34px; cursor: pointer; white-space: nowrap;
+}
+
+.status {
+  flex: none; position: relative; display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.45rem 0.75rem; background: var(--surface, #1e293b); border-bottom: 1px solid var(--line, #334155);
+}
+/* STOP AND PAUSE ARE REAL BUTTONS (Aran, 2026-10-15, job #675: "clear obvious buttons ... instead of
+   just the small text about keyboard shortcuts"). They were 38px outlined ghosts the colour of the
+   bar, so the only loud words on a desktop screen were the shortcut line. Now 48px, filled, with a
+   glyph: Pause green, Stop red, Resume amber (the one lit thing while the mic is held). White text
+   on each; the glyphs are CSS so the button text stays the plain word. */
+.sp-row { max-width: 900px; margin: 0 auto 0.6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.sp-row .btn-finish, .sp-row .ctl-pause {
+  width: 100%; min-height: 52px; padding: 0 1rem; margin: 0;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+  font-family: inherit; font-size: 1rem; font-weight: 700; border-radius: 12px; cursor: pointer;
+  color: #fff; border: 0;
+}
+/* Fixed green, not --accent-2: that variable is mint (#34d399) in dark mode, and white on it is 1.9:1 (job #681). */
+.sp-row .ctl-pause { background: #047857; }
+.sp-row .btn-finish { background: #b91c1c; }
+.sp-row .ctl-pause::before { content: '\23F8'; font-size: 1.1em; }
+.sp-row .btn-finish::before { content: '\25A0'; font-size: 0.9em; }
+.sp-row .ctl-pause.paused { background: #a85508; color: #fff; }
+.sp-row .ctl-pause.paused::before { content: '\25B6'; }
+.sp-row .btn-finish:disabled, .sp-row .ctl-pause:disabled { opacity: 0.45; }
+.status .stage-progress { margin: 0 auto; font-size: 0.875rem; font-weight: 700; color: var(--ink, #f1f5f9); white-space: nowrap; }
+.status-edge { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--line, #334155); }
+.status-edge i { display: block; height: 100%; background: var(--accent-2, #34d399); transition: width 0.3s; }
+.mic {
+  display: inline-flex; align-items: center; gap: 0.45rem; min-width: 0;
+  padding: 0.3rem 0.6rem 0.3rem 0.5rem; border-radius: 999px;
+  font-size: 0.8125rem; font-weight: 700;
+  background: rgba(52, 211, 153, 0.14); color: var(--accent-2, #34d399);
+}
+.mic-word { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mic-dot { flex: none; width: 10px; height: 10px; border-radius: 50%; background: currentColor; animation: mic-pulse 1.4s infinite; }
+@keyframes mic-pulse { 0% { opacity: 1; } 50% { opacity: 0.35; } 100% { opacity: 1; } }
+.mic-row { flex: none; padding: 0.4rem 0.75rem 0; }
+.mic-row .mic { display: flex; width: 100%; max-width: 900px; margin: 0 auto; box-sizing: border-box; border-radius: 12px; }
+.mic-row .mic-word { flex: none; }
+.mic .meter { flex: 1 1 auto; min-width: 0; width: auto; height: 40px; border: 0; border-radius: 0; background: transparent; }
+.mic .wave { color: currentColor; }
+.mic.is-paused, .mic.is-editing, .mic.is-arming { background: var(--surface-2, #334155); color: var(--muted, #94a3b8); }
+.mic.is-paused .mic-dot, .mic.is-editing .mic-dot, .mic.is-arming .mic-dot, .mic.is-playing .mic-dot { animation: none; }
+.mic.is-playing { background: rgba(255, 166, 48, 0.16); color: var(--accent, #ffa630); }
+.mic.is-loud { background: rgba(248, 113, 113, 0.16); color: var(--danger, #f87171); }
+.stage-auto { flex: none; justify-content: center; margin: 0; padding: 0.25rem 0.75rem; font-size: 0.78rem; border-bottom: 1px solid var(--line, #334155); }
+
+.fit-body { flex: 1 1 auto; min-height: 0; display: flex; }
+.recordist.fit .centre {
+  flex: 1 1 auto; min-width: 0; min-height: 0; display: flex; flex-direction: column;
+  margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; gap: 0;
+}
+.centre-line {
+  flex: 1 1 auto; min-height: 0; overflow-y: auto;
+  display: flex; flex-direction: column;
+  width: 100%; max-width: 900px; margin: 0 auto; padding: 0.75rem 1.25rem;
+}
+/* Centred in what is left, and still readable from the top when a long line fills it: the
+   auto margins centre a short block and collapse to nothing for a tall one. */
+.recordist.fit .centre .centre-line > :first-child { margin-top: auto; }
+.recordist.fit .centre .centre-line > :last-child { margin-bottom: auto; }
+.recordist.fit .line-well {
+  min-height: 0; padding: 0; border-radius: 12px; background: transparent; box-shadow: none;
+}
+.recordist.fit .line-well.editing { padding: 0.5rem; box-shadow: inset 0 0 0 2px var(--accent, #ffa630); }
+.recordist.fit .line-target, .recordist.fit .ready-line {
+  margin: 0; font-size: clamp(1.75rem, 7.4vw, 2.75rem); line-height: 1.22; font-weight: 500; letter-spacing: -0.01em;
+  color: var(--ink, #f1f5f9);
+}
+.recordist.fit .ready-line.all-done { font-size: 1.5rem; }
+.recordist.fit .line-kind {
+  margin: 0 0 0.6rem; font-size: 0.75rem; letter-spacing: 0.04em; text-transform: none; opacity: 1;
+  color: var(--faint, #64748b); font-weight: 600;
+}
+.recordist.fit .line-known { margin: 0.85rem 0 0; font-size: 1.05rem; opacity: 1; color: var(--muted, #94a3b8); }
+.recordist.fit .stage.is-paused .line-target, .recordist.fit .stage.is-paused .line-known { color: var(--faint, #64748b); }
+.pnote {
+  margin: 0 0 0.9rem; padding: 0.5rem 0.75rem; border-radius: 10px;
+  background: var(--surface-2, #334155); color: var(--ink, #f1f5f9); font-weight: 600; font-size: 0.875rem;
+}
+.recordist.fit .crossing { margin: 0 0 0.75rem; }
+.recordist.fit .cue-before { margin-bottom: 0.75rem; }
+.recordist.fit .cue-after { margin-top: 0.75rem; }
+.recordist.fit .upnext { margin-top: 1rem; }
+.recordist.fit .upnext-list li:nth-child(n+2) { display: none; }
+.recordist.fit .hear-bar {
+  flex: none; width: 100%; max-width: 900px; margin: 0 auto 0.4rem; padding: 0.35rem 0.75rem;
+  border-radius: 10px; background: transparent; border: 0;
+}
+.recordist.fit .hear-label { flex: 1; min-width: 0; font-size: 0.8125rem; color: var(--muted, #94a3b8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.recordist.fit .hear-text { display: inline; font-weight: 700; color: var(--ink, #f1f5f9); }
+.recordist.fit .stage > .note, .recordist.fit .stage > .raw-vs-processed { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 1.25rem; }
+
+.meta {
+  flex: none; display: flex; align-items: center; gap: 0.75rem;
+  width: 100%; max-width: 900px; margin: 0 auto; padding: 0.4rem 1.25rem 0.5rem;
+}
+.recordist.fit .meta .rc-progress-line { margin: 0; font-size: 0.8125rem; font-weight: 700; color: var(--ink, #f1f5f9); white-space: nowrap; }
+.bar { flex: 1; height: 6px; border-radius: 99px; overflow: hidden; background: var(--line, #334155); }
+.bar > i { display: block; height: 100%; border-radius: 99px; background: var(--accent-2, #34d399); transition: width 0.3s; }
+
+.transport {
+  flex: none; background: var(--surface, #1e293b); border-top: 1px solid var(--line, #334155);
+  padding: 0.6rem 0.75rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
+}
+.transport-in { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 0.6rem; }
+.transport-in.one { grid-template-columns: 1fr; }
+.transport-in.live { grid-template-columns: 64px 1fr 2fr; }
+.recordist.fit .transport .btn-begin {
+  margin: 0; min-height: 56px; padding: 0.75rem; text-transform: none; letter-spacing: 0;
+  font-family: inherit; font-size: 1.125rem; border-radius: 14px;
+}
+.recordist.fit .transport .btn-ghost { margin: 0; min-height: 56px; border-radius: 14px; color: var(--ink, #f1f5f9); border-color: var(--line, #334155); }
+.recordist.fit .transport .ctl-back,
+.recordist.fit .transport .ctl-again,
+.recordist.fit .transport .ctl-next { flex: none; min-height: 60px; border-radius: 14px; font-family: inherit; }
+.recordist.fit .transport .ctl-back { font-size: 1.6rem; line-height: 1; padding: 0; }
+.recordist.fit .transport .ctl-again { font-size: 1.125rem; background: var(--surface, #1e293b); color: var(--ink, #f1f5f9); border: 1px solid var(--line, #334155); }
+.recordist.fit .transport .ctl-next { font-size: 1.25rem; text-transform: none; letter-spacing: 0; }
+.setline { margin: 0.4rem 0 0; text-align: center; font-size: 0.8125rem; color: var(--muted, #94a3b8); }
+.setline-change { background: none; border: 0; padding: 0.2rem 0.1rem; font: inherit; font-weight: 700; color: var(--accent-2, #34d399); cursor: pointer; }
+.recordist.fit .kbd-hint { margin: 0.35rem 0 0; }
+
+/* B's rail: desktop only, a column of small squares beside the line. */
+.rail-wrap { display: none; }
+
+/* C's done list: this session's takes, each with ▶ and Again, mic off. */
+.recordist.fit .done-card { padding: 0.75rem 1.25rem 0; width: 100%; max-width: 900px; margin: 0 auto; overflow-y: auto; }
+.done-card h2 { margin: 0.25rem 0; }
+.done-card .rc-progress-line { margin: 0; }
+.recordist.fit .done-sub { margin: 0.2rem 0 0.4rem; font-size: 0.875rem; color: var(--muted, #94a3b8); }
+.done-list { margin-top: 0.4rem; }
+.done-list ul { gap: 0 !important; }
+.recordist.fit .done-list li { background: transparent; border-radius: 0; border-bottom: 1px solid var(--line, #334155); padding: 0.45rem 0; }
+.again-btn { min-height: 36px; }
+
+/* THE SHEET: everything that is not the line. A dropdown from the where-am-I row on a phone, a
+   right-hand sidebar that pushes the stage over on a desktop (Aran, 2026-10-14, job #437). */
+.recordist.fit { position: relative; }
+.sheet-scrim { position: absolute; left: 0; right: 0; bottom: 0; top: var(--sheet-top, 44px); z-index: 190; background: rgba(2, 6, 23, 0.55); }
+.sheet {
+  position: absolute; left: 0; right: 0; top: var(--sheet-top, 44px); z-index: 200;
+  max-height: 72%; display: flex; flex-direction: column;
+  background: var(--canvas, #0f172a); color: var(--ink, #f1f5f9);
+  border-bottom: 1px solid var(--line, #334155); border-radius: 0 0 16px 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+.sheet-head {
+  flex: none; display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.5rem 0.75rem; background: var(--surface, #1e293b); border-bottom: 1px solid var(--line, #334155);
+}
+.sheet-title { flex: 1; margin: 0; font-weight: 700; font-size: 1rem; }
+.sheet-close {
+  flex: none; min-height: 40px; min-width: 40px; padding: 0 1rem; border-radius: 10px; cursor: pointer;
+  font: inherit; font-weight: 700; color: var(--canvas, #0f172a); background: var(--accent-2, #34d399); border: 0;
+}
+.sheet-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 0.75rem 1rem 2rem; width: 100%; max-width: 900px; margin: 0 auto; }
+.sheet-settings h3 { margin: 1rem 0 0.5rem; font-size: 1rem; }
+.sheet .sheet-body { max-width: none; }
+
+@media (min-width: 900px) {
+  .sheet-scrim { top: 0; background: transparent; }
+  .sheet {
+    left: auto; right: 0; top: 0; bottom: 0; width: 420px; max-height: none; border-radius: 0;
+    border-bottom: 0; border-left: 1px solid var(--line, #334155); box-shadow: -8px 0 24px rgba(0, 0, 0, 0.3);
+  }
+  /* Push, not cover: the line re-centres in what is left, so it stays readable. */
+  .recordist.fit.sheet-open { padding-right: 420px; box-sizing: border-box; }
+  .rail-wrap {
+    flex: none; display: flex; flex-direction: column; justify-content: center; gap: 0.75rem;
+    padding: 1rem 1.25rem; overflow: hidden; border-right: 1px solid var(--line, #334155);
+  }
+  .rail {
+    display: grid; grid-template-columns: repeat(10, 14px); grid-auto-rows: 14px; gap: 4px;
+    list-style: none; margin: 0; padding: 0;
+  }
+  .rail-legend { display: flex; flex-direction: column; gap: 0.3rem; list-style: none; margin: 0; padding: 0; font-size: 0.78rem; color: var(--ink-2, #cbd5e1); max-width: 150px; }
+  .rail-legend li { display: flex; align-items: center; gap: 0.4rem; }
+  .rail-legend .rail-sq { flex: none; width: 14px; height: 14px; }
+  /* Each state its own colour, the same weight of selector in dark and light, so a theme rule can
+     never paint one state over another (light mode once painted done and failed grey). */
+  .rail-sq { border-radius: 3px; background: #334155; }
+  .rail-sq.done { background: #34d399; }
+  .rail-sq.up { background: #f59e0b; }
+  .rail-sq.failed { background: #f87171; }
+  .rail-sq.now { box-shadow: 0 0 0 2px var(--ink, #f1f5f9); }
+  .recordist.fit .line-target, .recordist.fit .ready-line { font-size: 3.1rem; max-width: 30ch; }
+  .recordist.fit .upnext-list li:nth-child(-n+3) { display: list-item; }
+  .mic .meter { height: 56px; }
+  .mic-row { padding: 0.5rem 1.25rem 0; }
+}
+@media (max-width: 480px) {
+  .recordist.fit .line-target, .recordist.fit .ready-line, .recordist.fit .edit-box { font-size: 2rem; }
+  .mic-row { padding: 0.3rem 0.5rem 0; }
+  .status { gap: 0.35rem; padding: 0.4rem 0.5rem; }
+  .sp-row .btn-finish, .sp-row .ctl-pause { padding: 0 0.7rem; font-size: 0.95rem; }
+  .where-more { padding: 0; width: 40px; min-height: 40px; }
+  .wm-long { display: none; }
+  .wm-short { display: inline; }
+  /* Off the stage the words may take two lines: which batch matters more than a tidy row. */
+  .where:not(.live) .where-words { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.3; }
+}
+/* A short phone screen (iPhone SE and the like): the line gives way first, never the transport. */
+@media (max-height: 640px) {
+  .recordist.fit .line-target, .recordist.fit .ready-line { font-size: 1.6rem; }
+  .recordist.fit .transport .btn-begin, .recordist.fit .transport .ctl-back,
+  .recordist.fit .transport .ctl-again, .recordist.fit .transport .ctl-next, .recordist.fit .transport .btn-ghost { min-height: 50px; }
+}
+
+:root[data-theme="light"] .where { background: #eef4fb; border-bottom-color: #c9d8ea; }
+:root[data-theme="light"] .where-words { color: #1e293b; }
+:root[data-theme="light"] .status, :root[data-theme="light"] .transport, :root[data-theme="light"] .sheet-head { background: #fff; }
+:root[data-theme="light"] .sheet { background: #f8fafc; color: #0f172a; border-color: #c9d8ea; box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22); }
+:root[data-theme="light"] .sheet-scrim { background: rgba(15, 23, 42, 0.35); }
+@media (min-width: 900px) { :root[data-theme="light"] .sheet-scrim { background: transparent; } }
+:root[data-theme="light"] .mic { background: #e8f7f0; color: #065f46; }
+:root[data-theme="light"] .mic.is-paused, :root[data-theme="light"] .mic.is-editing, :root[data-theme="light"] .mic.is-arming { background: #eef0f3; color: #475569; }
+:root[data-theme="light"] .mic.is-playing { background: #fef6e0; color: #92400e; }
+:root[data-theme="light"] .mic.is-loud { background: #fdecec; color: #b91c1c; }
+:root[data-theme="light"] .pnote { background: #eef0f3; color: #334155; }
+:root[data-theme="light"] .rail-sq { background: #cbd5e1; }
+:root[data-theme="light"] .rail-sq.done { background: #047857; }
+:root[data-theme="light"] .rail-sq.up { background: #d97706; }
+:root[data-theme="light"] .rail-sq.failed { background: #dc2626; }
+:root[data-theme="light"] .rail-legend { color: #334155; }
+:root[data-theme="light"] .rail-sq.now { box-shadow: 0 0 0 2px #0f172a; }
+:root[data-theme="light"] .sp-row .ctl-pause { background: #047857; }
+:root[data-theme="light"] .sp-row .ctl-pause.paused { background: #a85508; }
+:root[data-theme="light"] .sp-row .btn-finish { background: #b91c1c; }
+
+/* WHITE ON EVERY GREEN BUTTON, light AND dark (Aran, 2026-10-14 job #411, extended 2026-10-15 job #700:
+   dark text on bright green "did not read well"). Fixed emerald-700 #047857, not --accent-2, which is
+   mint (#34d399) in dark mode. #fff on #047857 is 5.48:1, WCAG AA for any text size. */
+.btn-begin, .ctl-next, .volume-btn.on, .sheet-close { background: #047857; color: #fff; }
 </style>

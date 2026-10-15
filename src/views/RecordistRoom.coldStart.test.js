@@ -100,19 +100,20 @@ describe('RecordistRoom — the cold start', () => {
   it('says on air throughout, arming first and live at the reveal', async () => {
     const wrapper = await startSession()
 
-    const armed = wrapper.find('.onair')
+    // The one mic chip (job #424) — it replaced ON AIR and says the same two things.
+    const armed = wrapper.find('.mic')
     expect(armed.exists()).toBe(true)               // always visible, from the first frame
-    expect(armed.text()).toBe('Getting ready')
-    expect(armed.classes()).toContain('arming')
+    expect(armed.find('.mic-word').text()).toBe('Getting ready')
+    expect(armed.classes()).toContain('is-arming')
     // No counting down at anybody.
     expect(wrapper.text()).not.toMatch(/\b3\b.*\b2\b.*\b1\b/)
 
     spies.resolveLeadIn()
     await flushPromises()
 
-    const live = wrapper.find('.onair')
-    expect(live.text()).toBe('On air')
-    expect(live.classes()).not.toContain('arming')
+    const live = wrapper.find('.mic')
+    expect(live.find('.mic-word').text()).toBe('Recording')
+    expect(live.classes()).not.toContain('is-arming')
     // The reveal IS the go signal: the words arrive in the same frame the
     // indicator settles.
     expect(wrapper.find('.line-target').text()).toBe('Bore da')

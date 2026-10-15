@@ -120,9 +120,9 @@ describe('RecordistRoom — Pause discards the attempt', () => {
     expect(rec.endLine).not.toHaveBeenCalled()
 
     // The screen says so, in words, and the control is now the way back.
-    expect(wrapper.find('.ctl-pause').text()).toBe('Play')
-    expect(wrapper.find('.stage-progress').text()).toContain('Paused')
-    expect(wrapper.find('.meter-tag').text()).toContain('nothing is being recorded')
+    expect(wrapper.find('.ctl-pause').text()).toBe('Resume')
+    expect(wrapper.find('.mic-word').text()).toContain('Paused')
+    expect(wrapper.find('.pnote').text()).toContain('nothing is being recorded')
 
     // Nothing that FILES A TAKE can run while he is away — and that, since
     // 2026-09-10, is the whole of what the guard is for. Again and Next both
@@ -153,7 +153,7 @@ describe('RecordistRoom — Pause discards the attempt', () => {
 
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'p' }))
     await flushPromises()
-    expect(wrapper.find('.ctl-pause').text()).toBe('Play')
+    expect(wrapper.find('.ctl-pause').text()).toBe('Resume')
 
     window.dispatchEvent(new KeyboardEvent('keydown', { key: 'P' }))
     await flushPromises()

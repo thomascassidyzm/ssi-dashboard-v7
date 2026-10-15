@@ -11,6 +11,8 @@
  * policy table, and every take is attributed to that voice from the first tap.
  * Aran gets a link, taps it, and reads. Nothing else. The admin routes (4/5)
  * keep the estate's normal auth, because they change what everyone else sees.
+ * Since job #380 (Aran, 2026-10-14) the link carries a PRIVATE KEY (?k=) and
+ * every /voice/:voiceId route checks it first — booth-link-keys.cjs.
  *
  *   GET  /mine                              which voice(s) the SIGNED-IN user reads
  *   GET  /voice/:voiceId                    the by-language queue (recordist-queue.cjs)
@@ -62,8 +64,11 @@ const {
   linkLegoTake,
   warmLanguageQueues,
 } = require('./recordist-queue.cjs')
-const { enableRewarmAfterInvalidate } = require('./recordist-queue-cache.cjs')
+const { enableRewarmAfterInvalidate, onLanguageQueueInvalidated } = require('./recordist-queue-cache.cjs')
+const { invalidateArtistSummaries } = require('./booth-artists-summary-cache.cjs')
+const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
+const boothHome = require('./booth-home.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
 const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
 const { isSoloReaderPod, soloReaders, soloReaderIndex, soloReaderTakeGIds } = require('../shared/pod-solo-readers.cjs')
@@ -86,6 +91,8 @@ const { resolveCurrentClip } = require('./take-selection.cjs')
 const { bucketKey } = require('../shared/dialect.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
 const { isGodAdmin } = require('./booth-god-admins.cjs')
+const boothLinks = require('./booth-link-keys.cjs')
+const { boothTabs, parseHeldKeys } = require('./booth-tabs.cjs')
 
 const MAX_TAKE_BYTES = 60 * 1024 * 1024
 
@@ -151,6 +158,13 @@ module.exports = function createRecordistRouter({
   // first Welsh reader of the day does not pay its ~3-10 s cold read on top of
   // the language read. Production passes true; tests leave it off.
   warmPhrasePlan = false,
+  // PRIVATE BOOTH LINKS (job #380): the per-voice key gate on every /voice/:voiceId route. Production
+  // builds it once (production-api.cjs) so the admin panel can read its grace log; left out, the
+  // router builds its own over the same DB. `identifyCaller` resolves a signed-in caller WITHOUT
+  // answering, for the God-admin / own-voice bypass; `boothKeys` is the key store.
+  boothKeys = null,
+  boothKeyGate = null,
+  identifyCaller = null,
 }) {
   const router = express.Router()
 
@@ -169,6 +183,17 @@ module.exports = function createRecordistRouter({
     }, 15_000)
     if (typeof t.unref === 'function') t.unref()
   }
+
+  const keys = boothKeys || boothLinks.createBoothKeyStore({ getDb })
+  const ownsVoice = async (user, voiceKeyId) => {
+    if (!user || !user.email) return false
+    return (await voicesForEmail(db(), user.email)).some((v) => v.voiceId === voiceKeyId)
+  }
+  // THE BOOTH KEY GATE, before every /voice/:voiceId route below (booth-link-keys.cjs): the link is
+  // still the identity, but only with its private key, or for a signed-in God admin / the artist.
+  router.use('/voice/:voiceId', boothKeyGate || boothLinks.createBoothKeyGate({
+    store: keys, identify: identifyCaller, isGodAdmin, ownsVoice, logger,
+  }))
 
   /** Resolve :voiceId or answer 404 — the only gate routes 1-3 have, by design. */
   async function recordistOr404(req, res) {
@@ -369,10 +394,14 @@ module.exports = function createRecordistRouter({
       const user = await requireDashboardUser(req, res)
       if (!user) return // requireDashboardUser has already answered 401/403
       const voices = await voicesForEmail(db(), user.email)
+      // Their own private link key (job #380), so the login door opens the booth with it.
+      const keyOf = async (voiceId) => keys.keyFor(voiceId).catch(() => null)
+      const withKeys = await Promise.all(voices.map(async (v) => ({ v, boothKey: await keyOf(v.voiceId) })))
       res.json({
         email: user.email,
         name: user.name || null,
-        voices: voices.map((v) => ({
+        voices: withKeys.map(({ v, boothKey }) => ({
+          boothKey,
           voiceId: v.voiceId,
           displayName: v.displayName,
           language: v.language,
@@ -403,6 +432,99 @@ module.exports = function createRecordistRouter({
     }
   })
 
+  // THE PERSON'S OTHER VOICES, as tabs on one booth page (Aran, 2026-10-14, job #392). Only the
+  // voices this caller could open on their own (their key in x-booth-keys, or signed in as the
+  // artist / a God admin) are listed; booth-tabs.cjs says who counts as the same person.
+  router.get('/voice/:voiceId/tabs', async (req, res) => {
+    try {
+      const user = identifyCaller && req.headers.authorization ? await identifyCaller(req).catch(() => null) : null
+      const out = await boothTabs({
+        db: db(), voiceId: req.params.voiceId, user, heldKeys: parseHeldKeys(req.headers['x-booth-keys']), store: keys, isGodAdmin,
+      })
+      if (!out) return res.status(404).json({ error: `No recording voice ${req.params.voiceId}.` })
+      res.json(out)
+    } catch (err) {
+      logger.error(`[Recordist] tabs: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // ── ONE VOICE'S QUEUE, CACHED (job #378) ────────────────────────────────
+  // Aran's tab-return reloads rebuilt his whole queue every time. The home
+  // screen and the batch a card opens now share one cached build per voice
+  // (booth-queue-cache.cjs says how fresh it is kept). Any write this process
+  // makes for the voice drops it, and so does any invalidation of its language.
+  const boothQueue = createBoothQueueCache()
+  onLanguageQueueInvalidated((language) => { boothQueue.invalidateLanguage(language); invalidateArtistSummaries() })
+  router.use('/voice/:voiceId', (req, res, next) => {
+    if (req.method !== 'GET' && req.method !== 'HEAD' && req.method !== 'OPTIONS') {
+      const voiceId = req.params.voiceId
+      boothQueue.invalidateVoice(voiceId)
+      res.on('finish', () => { boothQueue.invalidateVoice(voiceId); invalidateArtistSummaries() }) // the team cards' counts (job #416)
+    }
+    next()
+  })
+  /** {value: {recordist, queue, setupRow}, fresh, ageMs}, or null for an unknown voice. */
+  async function homeQueueFor(voiceIdParam, { allowStale = false } = {}) {
+    const got = await boothQueue.get(voiceIdParam, async () => {
+      const recordist = await resolveRecordist(db(), voiceIdParam, {})
+      if (!recordist) return null
+      const [queue, setupRow] = await Promise.all([
+        buildQueue(db(), recordist, { includeRecorded: true }),
+        loadSetupRow(recordist.voiceId),
+      ])
+      return { recordist, queue, setupRow }
+    }, { allowStale })
+    if (!got.value) { boothQueue.invalidateVoice(voiceIdParam); return null }
+    return got
+  }
+
+  // THE HOME SCREEN'S SUMMARY (Aran, 2026-10-14, job #347): sections, batches
+  // and counts — no lines. The booth page used to open by fetching all of them
+  // (2060 lines, 2.2MB for Aran) and drawing every one; it now draws its home
+  // screen from this and fetches one batch's lines when he opens it. Same queue,
+  // same counts, same recorded flag (booth-home.cjs reads them, never decides).
+  // A recording pack keeps its own one-screen flow: `home: false` says so.
+  router.get('/voice/:voiceId/summary', async (req, res) => {
+    try {
+      const pack = await resolveAnyPack(req.params.voiceId)
+      if (pack) return res.json({ home: false, reason: 'pack' })
+      // FROM THE VOICE'S QUEUE CACHE (job #378): a stale entry is served at once and
+      // marked `fresh: false` (the page asks again shortly), a fresh one as it is.
+      const cached = await homeQueueFor(req.params.voiceId, { allowStale: true })
+      if (!cached) return res.status(404).json({ error: `No recording voice ${req.params.voiceId}.` })
+      const { recordist, queue, setupRow } = cached.value
+      // The home screen is where he now ARRIVES, so the arrival is counted here
+      // too, exactly as the full-queue and batch reads count it (#365 found it
+      // skipped). Unscoped, so nothing is refused: the queue is his own courses.
+      // Not awaited (job #378): the count is a record, and nothing on this
+      // answer depends on it.
+      castingRights.boothArrival({
+        db: db(), recordist, courseCodes: queue.courses, method: req.method, path: req.originalUrl || req.path, logger,
+      }).catch((e) => logger.warn(`[Recordist] summary arrival not counted: ${e.message}`))
+      res.json({
+        home: true,
+        fresh: cached.fresh,
+        ageMs: cached.ageMs,
+        setupLocked: setupCheck.locksScript(setupRow),
+        voiceId: recordist.voiceId,
+        displayName: recordist.displayName,
+        language: recordist.language,
+        languageName: recordist.languageName,
+        dialect: recordist.dialect,
+        total: queue.total,
+        recorded: queue.recorded,
+        phrases: queue.phrases || null,
+        notReady: queue.notReady || [],
+        handedOn: queue.handedOn || [],
+        tracks: boothHome.buildHomeTracks(queue.lines, queue.phrases, queue.phraseBatches),
+      })
+    } catch (err) {
+      logger.error(`[Recordist] summary: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
   router.get('/voice/:voiceId', async (req, res) => {
     try {
       const pack = await resolveAnyPack(req.params.voiceId)
@@ -416,7 +538,15 @@ module.exports = function createRecordistRouter({
       // surface and an unbounded ceiling is a language-wide scan on tap.
       const askedSeed = parseInt(req.query.maxSeed, 10)
       const quarryMaxSeed = Number.isFinite(askedSeed) ? Math.min(Math.max(askedSeed, 1), 1000) : undefined
-      const queue = await buildQueue(db(), recordist, { includeRecorded, quarryMaxSeed })
+      // ONE BATCH FROM THE HOME SCREEN reads the same cached build the summary
+      // counted (job #378), fresh only: a reader about to record must not be
+      // handed a stale recorded flag. Any other shape of read builds its own.
+      const homeBatchRead = includeRecorded && quarryMaxSeed === undefined && typeof req.query.track === 'string' &&
+        !(typeof req.query.course === 'string' && req.query.course.trim()) && !(typeof req.query.pod === 'string' && req.query.pod.trim())
+      const cachedHome = homeBatchRead ? await homeQueueFor(req.params.voiceId) : null
+      const queue = cachedHome && cachedHome.value.recordist.voiceId === recordist.voiceId
+        ? cachedHome.value.queue
+        : await buildQueue(db(), recordist, { includeRecorded, quarryMaxSeed })
       // A COURSE LINK. The community course editor's "Copy link" is
       // /r/:voiceId?course=<code> (PodCastPanel): the same booth, the same
       // voice, scoped to the lines of THAT course. The language-wide link
@@ -451,10 +581,24 @@ module.exports = function createRecordistRouter({
       const inScope = (rows) => (rows || [])
         .filter((r) => (!scoped || r.courseCode === scoped) && inPod(r))
       const forCourse = inScope
-      const lines = inScope(queue.lines)
+      // ONE BATCH FROM THE HOME SCREEN (job #347): ?track=<key>&batch=<n> is the
+      // slice of the queue a home-screen card opens — cut by the same function
+      // the summary counted it with (booth-home.cjs), so the card and the batch
+      // agree. Only what goes over the wire narrows; the queue is the queue.
+      const trackScope = typeof req.query.track === 'string' && req.query.track.trim() ? req.query.track.trim() : null
+      // A PHRASE BATCH OPENED FROM THE HOME SCREEN may be any batch of the plan (job #697); the
+      // header then describes the batch opened, not the one the queue serves. Read-only.
+      const phraseCtx = { phrases: queue.phrases, phraseBatches: queue.phraseBatches, openPhraseBatch: queue.openPhraseBatch }
+      const batchN = parseInt(req.query.batch, 10)
+      const openedPhrase = trackScope && trackScope.startsWith('phrase.')
+        ? boothHome.openPhraseBatch(inScope(queue.lines).filter((l) => boothHome.trackKeyOf(l) === trackScope), trackScope, Number.isFinite(batchN) && batchN >= 1 ? batchN : 1, phraseCtx)
+        : null
+      const lines = trackScope
+        ? (openedPhrase ? openedPhrase.lines : boothHome.selectBatch(inScope(queue.lines), trackScope, batchN, phraseCtx))
+        : inScope(queue.lines)
       // Scoped counts are counted over the lines on the wire (the booth always
       // asks includeRecorded=1, so they are the scope's whole tally there).
-      const narrowed = Boolean(scoped || podScope)
+      const narrowed = Boolean(scoped || podScope || trackScope)
       const recordedInScope = narrowed ? lines.filter((l) => l.recorded).length : queue.recorded
       const totalInScope = narrowed ? lines.length : queue.total
       const setupRow = await loadSetupRow(recordist.voiceId)
@@ -468,6 +612,8 @@ module.exports = function createRecordistRouter({
         // Echoed back for the same reason maxSeed is: a screen that reports the
         // scope it ASKED for rather than the one it got is a quiet lie.
         pod: podScope,
+        track: trackScope,
+        batch: trackScope ? (parseInt(req.query.batch, 10) || 1) : null,
         voiceId: recordist.voiceId,
         displayName: recordist.displayName,
         language: recordist.language,
@@ -484,7 +630,7 @@ module.exports = function createRecordistRouter({
         quarry: queue.quarry,
         // THE PRACTICE-PHRASE BATCH this reader is on (job #619): pass, batch,
         // how far through, what comes later. Null when they read no phrases.
-        phrases: queue.phrases || null,
+        phrases: (openedPhrase && openedPhrase.summary) || queue.phrases || null,
         total: totalInScope,
         recorded: recordedInScope,
         remaining: totalInScope - recordedInScope,
@@ -2361,6 +2507,9 @@ module.exports = function createRecordistRouter({
         submittedAt: row.submitted_at, reviewedBy: row.reviewed_by, reviewedAt: row.reviewed_at, note: row.review_note,
         packVoiceId: pack.voiceId, items,
         autoVerdict: setupCheck.isMeasuredVerdict(verdict) ? verdict : null, verdictThresholds: setupCheck.SETUP_VERDICT,
+        // The artist link's private key (job #380) — only to a caller who passed the gate WITH a key
+        // or signed in; never to a grace-mode id-only request.
+        boothKey: ['key', 'signed_in'].includes(req.boothAccess) ? await keys.keyFor(row.voice_id).catch(() => null) : null,
       })
     } catch (err) {
       logger.error(`[Recordist] setup-check review: ${err.message}`)

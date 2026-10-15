@@ -226,12 +226,13 @@ describe('RecordistRoom — recording and playing back can never both look live'
   it('says "Recording" while the mic is open and "Playing back" while a take plays, never both', async () => {
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'test-voice' } })
     await flushPromises()
-    expect(wrapper.find('.state-pill').text()).toBe('Not recording')
+    // Off the stage there is no mic signal at all: nothing is listening (job #424, one mic signal).
+    expect(wrapper.find('.mic').exists()).toBe(false)
 
     await wrapper.find('.btn-begin').trigger('click')
     await flushPromises()
-    expect(wrapper.find('.stage-progress').text()).toContain('Recording')
-    expect(wrapper.find('.stage-progress').text()).not.toContain('Playing back')
+    expect(wrapper.find('.mic-word').text()).toContain('Recording')
+    expect(wrapper.find('.mic-word').text()).not.toContain('Listening back')
   })
 
   it('holds the microphone while a stored take plays, and gives the line back when it stops', async () => {
@@ -254,8 +255,8 @@ describe('RecordistRoom — recording and playing back can never both look live'
     // The capture that was running is thrown away, and the screen says which of
     // the two things is happening.
     expect(recorderSpies.discardLine).toHaveBeenCalled()
-    expect(wrapper.find('.stage-progress').text()).toContain('Playing back')
-    expect(wrapper.find('.meter-tag').text()).toBe('Mic paused while you listen')
+    expect(wrapper.find('.mic-word').text()).toBe('Listening back')
+    expect(wrapper.find('.mic').attributes('title')).toBe('Mic paused while you listen')
     expect(wrapper.find('.meter').classes()).toContain('held')
 
     // Stop, and the same line is re-opened clean — the playback is discarded
@@ -263,8 +264,8 @@ describe('RecordistRoom — recording and playing back can never both look live'
     await play.trigger('click')
     await flushPromises()
     expect(recorderSpies.beginLine).toHaveBeenCalled()
-    expect(wrapper.find('.stage-progress').text()).toContain('Recording')
-    expect(wrapper.find('.meter-tag').text()).not.toContain('paused')
+    expect(wrapper.find('.mic-word').text()).toContain('Recording')
+    expect(wrapper.find('.mic').attributes('title')).not.toContain('paused')
   })
 })
 
@@ -330,8 +331,8 @@ describe('RecordistRoom — rewriting a line', () => {
     await flushPromises()
     // The mic is held while the keyboard is up: a live mic under an open
     // keyboard records the room and files it as the take.
-    expect(wrapper.find('.stage-progress').text()).toContain('Editing')
-    expect(wrapper.find('.meter-tag').text()).toBe('Mic paused while you listen')
+    expect(wrapper.find('.mic-word').text()).toContain('Editing')
+    expect(wrapper.find('.mic').attributes('title')).toContain('nothing is being recorded')
 
     await wrapper.find('.edit-box').setValue('A tea, please.')
     // NO SAVE BUTTON. Looking away is what saves it.
@@ -346,8 +347,8 @@ describe('RecordistRoom — rewriting a line', () => {
     // The screen now shows the new words, the mic is live again, and the line
     // counts as outstanding — one recorded of two, exactly as before the edit.
     expect(wrapper.find('.line-target').text()).toBe('A tea, please.')
-    expect(wrapper.find('.stage-progress').text()).toContain('Recording')
-    expect(wrapper.find('.stage-progress').text()).toContain('1 of 2 recorded')
+    expect(wrapper.find('.mic-word').text()).toContain('Recording')
+    expect(wrapper.find('.stage-progress').text()).toContain('1 of 2')
 
     // AND IT SAYS NOTHING AT ALL. Tom, 2026-09-03: fixing a line nobody has
     // read is not an edit with a consequence — there is no take to clear and
@@ -418,7 +419,7 @@ describe('RecordistRoom — one tap back onto a line', () => {
 
     // The mic is open on THAT line — not on the first outstanding one.
     expect(wrapper.find('.line-target').text()).toBe('Bore da')
-    expect(wrapper.find('.stage-progress').text()).toContain('Recording')
+    expect(wrapper.find('.mic-word').text()).toContain('Recording')
   })
 })
 
