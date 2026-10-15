@@ -108,3 +108,27 @@ describe('the card count and the batch it opens are one list', () => {
     expect(rr.goneAmong(none, [goneId])).toEqual([goneId])
   })
 })
+
+// A TAKE THAT SAVED BUT DID NOT MATCH ITS WORDS (job #842): the background script check's failure
+// comes back as a re-record, although the line IS recorded.
+describe("didn't match the words", () => {
+  const failure = (n, extra = {}) => ({ lineId: `seed:${C}:${n}:target1`, takeId: `T${n}`, heard: 'rhywbeth arall', reason: 'cer_above_threshold', takenAt: '2026-10-15T16:00:00Z', ...extra })
+
+  it('a recorded line whose take failed its check is on the list, in course order, with what was heard', () => {
+    const list = rr.withTextCheckFailures(buildRerecordList(queueOf([...lead, ...batch4, ...later])), [failure(1380), failure(1010)])
+    expect(list.items.map((i) => [i.seedNumber, i.why])).toEqual([[1010, 'didnt_match'], [1374, 'skipped'], [1379, 'skipped'], [1380, 'didnt_match']])
+    expect(list.items[0]).toMatchObject({ heard: 'rhywbeth arall', takeId: 'T1010', track: `seed.${C}`, batch: 1 })
+  })
+
+  it('the re-record batch opens it although it is recorded, carrying what was heard and the take', () => {
+    const list = rr.withTextCheckFailures(buildRerecordList(queueOf([...lead, ...batch4, ...later])), [failure(1380)])
+    const lines = rerecordBatchLines(list)
+    const l = lines.find((x) => x.seedNumber === 1380)
+    expect(l).toMatchObject({ recorded: true, rerecordWhy: 'didnt_match', rerecordHeard: 'rhywbeth arall', rerecordTakeId: 'T1380' })
+  })
+
+  it('a failure for a line no longer in his lines is dropped', () => {
+    const list = rr.withTextCheckFailures(buildRerecordList(queueOf([...lead])), [failure(9999)])
+    expect(list.items).toEqual([])
+  })
+})

@@ -44,7 +44,7 @@
       @home="goHome"
       @tick="setTick"
     >
-      <template #top><RerecordCard :rows="rerecordRows" :old-ids="oldRefusedList" @open="openRerecord" @play="playRefused" @clear-old="clearOldRefused" /></template>
+      <template #top><RerecordCard :rows="rerecordRows" :old-ids="oldRefusedList" @open="openRerecord" @play="playRefused" @play-stored="playStoredTake" @keep="keepMismatch" @clear-old="clearOldRefused" /></template>
     </BoothHome>
 
     <!-- ── THE PROMPTER (Aran, 2026-10-14, job #424; design #419 Option A) ──────────────────
@@ -267,7 +267,7 @@
                    so a refused line says why in one small line, under the words, never over them
                    (Aran, 2026-10-15). -->
               <p v-if="currentRefusedWhy" class="refused-why" data-test="refused-why"
-                 :title="queue.failed.get(current.id) || null">{{ currentRefusedWhy }}</p>
+                 :title="queue.failed.get(current.id) || (textCheckFails.get(current.id) || {}).reason || null">{{ currentRefusedWhy }}</p>
             </div>
             <!-- AND THE LINE AFTER IT. Same rules. -->
             <ul v-if="!arming && cueAfter.length" class="cue cue-after" data-surface="cue-lines">
@@ -738,6 +738,7 @@ import BoothHome from './recordist/BoothHome.vue'
 import { refusedLineWords, placeLines } from './recordist/refused-takes.js'
 import RerecordCard from './recordist/RerecordCard.vue'
 import { mergeRerecord, oldRefusedIds, alsoIds } from './recordist/rerecord-list.js'
+import { applyFailures, mismatchLineWords } from './recordist/text-check-failures.js'
 // The re-record card's batch (job #788): services/voice-engine/booth-rerecord.cjs RERECORD_TRACK.
 const RERECORD_TRACK = 'rerecord'
 import { allowIdleReload, holdReload } from '@/router/versionReload'
@@ -791,6 +792,11 @@ const loadSlow = ref(false)
 const micError = ref(null)
 const voice = ref({ displayName: '', languageName: '', total: 0, recorded: 0, remaining: 0 })
 const lines = ref([])
+// Job #842: takes that saved but did not match their words (lineId -> {takeId, heard, reason}),
+// when he last queued a take of each line, and when the /rerecord list was last read.
+const textCheckFails = ref(new Map())
+const retakenAt = ref(new Map())
+const rerecordReadAt = ref(0)
 
 // WHETHER THE ALREADY-RECORDED LIST IS OPEN. This decides whether a panel is
 // on the page and nothing about which lines the RUN serves — the run serves
@@ -1371,7 +1377,8 @@ function plainText(text) { return segmentsFor(text).map(s => s.text).join('') }
 //
 // A FAILED take is deliberately NOT settled. That line does still need reading,
 // and it is the one case where offering it again is the whole point.
-function isSettled(l) { return isRecorded(l) || isPending(l.id) }
+// A take that saved but did not match its words is not settled either (job #842): it is owed again.
+function isSettled(l) { return (isRecorded(l) && !hasMismatch(l.id)) || isPending(l.id) }
 
 // THE READING FLOW (Aran, 2026-10-15, job #816: "when I open a new batch, quite often several
 // of them are marked green already ... I'm given those to re-record again in the flow with the
@@ -1541,6 +1548,7 @@ function lineStateWords(l) {
   if (!l) return ''
   if (isPending(l.id)) return 'uploading'
   if (hasFailed(l.id) && !isRecorded(l)) return 'refused'
+  if (hasMismatch(l.id)) return "didn't match"
   if (isRecorded(l)) return 'saved'
   return 'not yet'
 }
@@ -1608,15 +1616,15 @@ const whereWords = computed(() => {
 const RAIL_LEGEND = [
   { state: 'done', words: 'Saved on the server' },
   { state: 'up', words: 'Recorded, still uploading' },
-  { state: 'failed', words: 'Refused, record again' },
+  { state: 'failed', words: "Refused or didn't match, record again" },
   { state: 'empty', words: 'Not recorded yet' },
 ]
 function railClass(l, i) {
   return {
     now: phase.value === 'recording' ? i === index.value : i === readyIndex.value,
-    done: isRecorded(l) && !isPending(l.id),
+    done: isRecorded(l) && !isPending(l.id) && !hasMismatch(l.id),
     up: isPending(l.id),
-    failed: hasFailed(l.id) && !isRecorded(l),
+    failed: (hasFailed(l.id) && !isRecorded(l)) || hasMismatch(l.id),
   }
 }
 // THE SHEET: everything that is not the line. "Change" on the settings line opens it at the
@@ -1928,6 +1936,20 @@ function isPending(lineId) {
 }
 function hasFailed(lineId) { return queue.failed.has(lineId) }
 
+// ── Takes that saved but did not match their words (job #842) ──────────────
+// The server's script check runs after the upload answers, so its verdict arrives by polling
+// (pollTextChecks, below). A flagged line is SAVED — green would be a lie and so would grey — so it
+// is drawn like a refused one: red on the rail, back in the reading flow, counted on the slim bar,
+// with one small line under the words saying what was heard. Reading it again clears it at once.
+// (textCheckFails and retakenAt are declared beside `lines`, so nothing in setup meets them early)
+function hasMismatch(lineId) { return textCheckFails.value.has(lineId) && !isPending(lineId) }
+function noteRetake(lineId) {
+  const r = new Map(retakenAt.value); r.set(lineId, Date.now()); retakenAt.value = r
+  if (textCheckFails.value.has(lineId)) {
+    const m = new Map(textCheckFails.value); m.delete(lineId); textCheckFails.value = m
+  }
+}
+
 // ── Is my work safe? ────────────────────────────────────────────────────────
 // Three states, three sets of words, and they are never interchangeable:
 //   • the device is not persisting     — closing this tab really does lose work
@@ -2055,11 +2077,12 @@ const failedList = computed(() => sessionLines.value.filter(l => queue.failed.ha
 // The same test that makes Jump to next unrecorded stop on it (isRecorded is false while it is
 // refused), so the bar's count, its Go to first, the rail and Jump never disagree.
 const refusedInBatch = computed(() =>
-  lines.value.map((l, i) => ({ l, i })).filter(({ l }) => hasFailed(l.id) && !isRecorded(l) && !isPending(l.id))
+  lines.value.map((l, i) => ({ l, i })).filter(({ l }) => (hasFailed(l.id) && !isRecorded(l) && !isPending(l.id)) || hasMismatch(l.id))
 )
 const firstRefusedIndex = computed(() => (refusedInBatch.value.length ? refusedInBatch.value[0].i : -1))
 const currentRefusedWhy = computed(() => {
   const l = current.value
+  if (l && hasMismatch(l.id) && !(hasFailed(l.id) && !isRecorded(l))) return mismatchLineWords(textCheckFails.value.get(l.id))
   if (!l || !hasFailed(l.id) || isRecorded(l) || isPending(l.id)) return ''
   return refusedLineWords(queue.failed.get(l.id))
 })
@@ -2231,6 +2254,7 @@ function commit(target, blob, hadSpeech) {
   // was still double-counting a re-read.
   const firstTakeOfThisLine = !sessionIds.value.includes(line.id)
   queue.queueTake({ voiceId: props.voiceId, lineId: line.id, text: line.text, blob, micLabel: micLabel() })
+  noteRetake(line.id)
   rememberLocalTake(line.id, blob)
   doneIds.value.add(line.id)
   doneIds.value = new Set(doneIds.value)
@@ -2370,7 +2394,7 @@ async function onNext(source = 'tap', to = 'next') {
       // take is the worse mistake), but a line that HAS one is left alone:
       // walking over saved work must never replace it with room tone.
       if (hadSpeech === false) return
-      if (hadSpeech === null && target && lines.value.some(l => l.id === target.id && isSettled(l))) return
+      if (hadSpeech === null && target && lines.value.some(l => l.id === target.id && (isRecorded(l) || isPending(l.id)))) return
       commit(target, blob, hadSpeech)
     })
     if (n === -1) {
@@ -2753,6 +2777,7 @@ async function load({ quiet = false } = {}) {
   const gen = ++loadGen
   const was = phase.value
   const movedOn = () => gen !== loadGen || phase.value !== was
+  const readStartedAt = Date.now()
   if (!quiet) {
     phase.value = 'loading'
     loadError.value = null
@@ -2832,6 +2857,8 @@ async function load({ quiet = false } = {}) {
     lines.value = Array.isArray(data.lines) ? data.lines : []
     // ...and never a line whose take is still going up from this device: that is not a miss.
     if (b && b.track === RERECORD_TRACK) lines.value = lines.value.filter(l => !queue.isUnsent(l.id))
+    // The re-record batch names its didn't-match lines itself (job #842); the poll keeps them current.
+    seedMismatchesFrom(lines.value, readStartedAt)
     lastQueueRead = Date.now()
     if (quiet) return
     // RESUME. Anything left on the device by an earlier session — a tab closed
@@ -3052,10 +3079,12 @@ const rerecordRows = computed(() => mergeRerecord({
   refusedTakes: (queue.refusedTakes && queue.refusedTakes.value) || [],
   unsent: queue.unsentLines,
   saved: queue.saved,
+  retaken: [...retakenAt.value.keys()].filter(id => retakenAt.value.get(id) >= rerecordReadAt.value),
 }))
 let rerecordFor = null
 async function refreshRerecord() {
   const voiceId = props.voiceId
+  const sentAt = Date.now()
   const also = alsoIds(queue.refusedTakes && queue.refusedTakes.value)
   try {
     const { res, data } = await fetchWithTimeoutRetry(
@@ -3066,6 +3095,7 @@ async function refreshRerecord() {
     if (voiceId !== props.voiceId) return
     if (res.ok && data && Array.isArray(data.items)) {
       rerecordFor = voiceId
+      rerecordReadAt.value = sentAt
       rerecordServer.value = { items: data.items, recordedAlso: Array.isArray(data.recordedAlso) ? data.recordedAlso : [], goneAlso: Array.isArray(data.goneAlso) ? data.goneAlso : [] }
       if (data.fresh === false) setTimeout(() => { if (phase.value === 'home') refreshRerecord() }, 4000)
     }
@@ -3076,6 +3106,60 @@ watch([phase, () => props.voiceId], () => {
   if (phase.value === 'home') refreshRerecord()
 }, { immediate: true })
 function openRerecord() { goToAddress({ track: RERECORD_TRACK, batch: '1' }) }
+
+// ── THE SCRIPT-CHECK POLL (job #842) ─────────────────────────────────────────
+function seedMismatchesFrom(wireLines, sentAt) {
+  const items = (wireLines || []).filter(l => l && l.rerecordWhy === 'didnt_match')
+    .map(l => ({ lineId: l.id, takeId: l.rerecordTakeId || null, heard: l.rerecordHeard || null }))
+  if (!items.length) return
+  const merged = applyFailures(items, sentAt, retakenAt.value, new Map())
+  if (!merged.size) return
+  const m = new Map(textCheckFails.value)
+  for (const [id, v] of merged) m.set(id, v)
+  textCheckFails.value = m
+}
+let textCheckTimer = null
+let textCheckIds = ''
+async function pollTextChecks() {
+  const voiceId = props.voiceId
+  if (!voiceId || (phase.value !== 'recording' && phase.value !== 'home')) return
+  if (typeof document !== 'undefined' && document.visibilityState === 'hidden') return
+  const sentAt = Date.now()
+  try {
+    const res = await fetch(withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/text-check-failures`, voiceId))
+    if (!res.ok || voiceId !== props.voiceId) return
+    const data = await res.json()
+    if (!data || !Array.isArray(data.items)) return
+    textCheckFails.value = applyFailures(data.items, sentAt, retakenAt.value, textCheckFails.value)
+    // At home the card is built from /rerecord, which carries these too: read it again when they change.
+    const ids = data.items.map(i => i.takeId).sort().join(',')
+    if (ids !== textCheckIds) { textCheckIds = ids; if (phase.value === 'home') refreshRerecord() }
+  } catch { /* the next poll tries again; nothing else waits on this */ }
+}
+const TEXT_CHECK_POLL_MS = 20000
+onMounted(() => { textCheckTimer = setInterval(pollTextChecks, TEXT_CHECK_POLL_MS); pollTextChecks() })
+// ...and at once whenever he arrives on a batch or back home, not up to 20 s later.
+watch(phase, (p) => { if (p === 'recording' || p === 'home') pollTextChecks() })
+onBeforeUnmount(() => clearInterval(textCheckTimer))
+watch(() => props.voiceId, () => { textCheckFails.value = new Map(); retakenAt.value = new Map(); textCheckIds = ''; pollTextChecks() })
+
+// The card's ▶ on a didn't-match row: the take is on the server, so play what the server holds.
+let storedPlayer = null
+function playStoredTake(lineId) {
+  if (storedPlayer) storedPlayer.pause()
+  storedPlayer = new Audio(withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/line/${encodeURIComponent(lineId)}/clip`, props.voiceId))
+  storedPlayer.play().catch(() => {})
+}
+// "It's fine — keep it": the check misheard. The take stays as it is and leaves the list.
+async function keepMismatch(row) {
+  if (!row || !row.takeId) return
+  try {
+    const res = await fetch(withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/text-check-failures/${encodeURIComponent(row.takeId)}/keep`, props.voiceId), { method: 'POST' })
+    if (!res.ok) return
+    const m = new Map(textCheckFails.value); m.delete(row.lineId); textCheckFails.value = m
+    refreshRerecord()
+  } catch { /* nothing changed; he can tap again */ }
+}
 
 const homeMainHeading = computed(() => {
   const codes = new Set(homeTracks.value.filter(t => t.kind === 'phrase' || t.newCourse).map(t => t.courseCode))
