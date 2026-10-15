@@ -130,8 +130,10 @@ describe('RecordistRoom — the prompter layout', () => {
     expect(where.findAll('button, a')).toHaveLength(0)
     const status = w.find('[data-test="status"]')
     expect(status.find('.btn-finish').text()).toBe('Stop')
-    expect(status.findAll('.mic')).toHaveLength(1)
-    expect(status.find('.mic-word').text()).toBe('Recording')
+    // The one mic chip is a wide strip in its own row under the status row (job #692).
+    expect(w.findAll('.mic')).toHaveLength(1)
+    expect(w.find('[data-test="mic-row"] .mic').exists()).toBe(true)
+    expect(w.find('.mic-word').text()).toBe('Recording')
     expect(status.find('[data-test="count"]').text()).toBe('0 of 4')
     expect(status.find('.ctl-pause').text()).toBe('Pause')
     // The old four signals are gone.

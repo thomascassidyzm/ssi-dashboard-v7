@@ -69,17 +69,6 @@
         <!-- Stop here is dead while the editor is open: it files nothing on the line he is
              standing on, so there was never anything for the pause guard to protect. -->
         <button class="btn-finish" type="button" data-test="stop" aria-label="Stop recording" :disabled="busy || arming || !!editingId" @click="onFinish">Stop</button>
-        <!-- ONE MIC SIGNAL. The state word and the waveform in one chip, never two pills that can
-             disagree (it replaced ON AIR, the meter's own words, the green "Recording —" line and
-             the live dot). The waveform is drawn from the SAME peaks useTapRecorder's meter loop
-             already computes — no second AnalyserNode, nothing on the capture path — and is flat
-             while the mic is held, because a trace twitching to the speaker would be the screen
-             telling him it is recording him when it is not. -->
-        <span class="mic" :class="micSignal.cls" :title="micSignal.title" data-test="mic">
-          <span class="mic-dot" aria-hidden="true"></span>
-          <span class="mic-word">{{ micSignal.word }}</span>
-          <span class="meter" :class="{ clip: recorder.clipping.value && !micHeld, held: micHeld }"><canvas ref="waveCanvas" class="wave"></canvas></span>
-        </span>
         <span class="stage-progress" data-test="count">{{ recordedCount }} of {{ lines.length }}</span>
         <!-- PAUSE THROWS THE ATTEMPT AWAY (Aran, 2026-09-03): it discards the open capture and
              stops the microphone being a witness to whatever happens next; Play re-opens the SAME
@@ -95,6 +84,21 @@
         <!-- The shortcut is a hint BESIDE the button, never the only sign of it. Desktop only. -->
         <span class="key-hint" aria-hidden="true"><kbd>P</kbd></span>
         <span class="status-edge" aria-hidden="true"><i :style="{ width: progressPct + '%' }"></i></span>
+      </div>
+      <!-- ONE MIC SIGNAL, A WIDE STRIP (Aran, 2026-10-15, job #692: "a bit bigger and use more of the
+           available width"). Its own row under Stop / count / Pause, as wide as the reading column.
+           The state word and the waveform in one chip, never two pills that can disagree (it
+           replaced ON AIR, the meter's own words, the green "Recording —" line and the live dot).
+           The waveform is drawn from the SAME peaks useTapRecorder's meter loop already computes —
+           no second AnalyserNode, nothing on the capture path — and is flat while the mic is held,
+           because a trace twitching to the speaker would be the screen telling him it is recording
+           him when it is not. -->
+      <div v-if="phase === 'recording'" class="mic-row" data-test="mic-row">
+        <span class="mic" :class="micSignal.cls" :title="micSignal.title" data-test="mic">
+          <span class="mic-dot" aria-hidden="true"></span>
+          <span class="mic-word">{{ micSignal.word }}</span>
+          <span class="meter" :class="{ clip: recorder.clipping.value && !micHeld, held: micHeld }"><canvas ref="waveCanvas" class="wave"></canvas></span>
+        </span>
       </div>
       <!-- THE AUTO-ADVANCE SWITCH, WHERE HE CAN REACH IT MID-SESSION (Aran, 2026-09-10: "if I
            pause for thought, it starts flicking through items"). At the top, far from Again and
@@ -3474,7 +3478,10 @@ kbd {
 .mic-word { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mic-dot { flex: none; width: 10px; height: 10px; border-radius: 50%; background: currentColor; animation: mic-pulse 1.4s infinite; }
 @keyframes mic-pulse { 0% { opacity: 1; } 50% { opacity: 0.35; } 100% { opacity: 1; } }
-.mic .meter { flex: none; width: 72px; height: 20px; border: 0; border-radius: 0; background: transparent; }
+.mic-row { flex: none; padding: 0.4rem 0.75rem 0; }
+.mic-row .mic { display: flex; width: 100%; max-width: 900px; margin: 0 auto; box-sizing: border-box; border-radius: 12px; }
+.mic-row .mic-word { flex: none; }
+.mic .meter { flex: 1 1 auto; min-width: 0; width: auto; height: 40px; border: 0; border-radius: 0; background: transparent; }
 .mic .wave { color: currentColor; }
 .mic.is-paused, .mic.is-editing, .mic.is-arming { background: var(--surface-2, #334155); color: var(--muted, #94a3b8); }
 .mic.is-paused .mic-dot, .mic.is-editing .mic-dot, .mic.is-arming .mic-dot, .mic.is-playing .mic-dot { animation: none; }
@@ -3615,12 +3622,13 @@ kbd {
   .rail-sq.now { box-shadow: 0 0 0 2px var(--ink, #f1f5f9); }
   .recordist.fit .line-target, .recordist.fit .ready-line { font-size: 3.1rem; max-width: 30ch; }
   .recordist.fit .upnext-list li:nth-child(-n+3) { display: list-item; }
-  .mic .meter { width: 120px; }
+  .mic .meter { height: 56px; }
+  .mic-row { padding: 0.5rem 1.25rem 0; }
   .key-hint { display: inline; }
 }
 @media (max-width: 480px) {
   .recordist.fit .line-target, .recordist.fit .ready-line, .recordist.fit .edit-box { font-size: 2rem; }
-  .mic .meter { width: 40px; }
+  .mic-row { padding: 0.3rem 0.5rem 0; }
   .status { gap: 0.35rem; padding: 0.4rem 0.5rem; }
   .status .btn-finish, .status .ctl-pause { padding: 0 0.7rem; font-size: 0.95rem; }
   .where-more { padding: 0; width: 40px; min-height: 40px; }
