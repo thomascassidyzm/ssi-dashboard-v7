@@ -281,3 +281,20 @@ describe('a refused take on a line since recorded is neither counted nor listed'
     expect(q3.failed.get('L1')).toContain('boom 422')
   })
 })
+
+describe('a take still waiting on the device can be played back (Aran, 2026-10-15)', () => {
+  it('unsentBlob hands back the bytes while the upload is not done, and nothing once it is', async () => {
+    let land
+    vi.stubGlobal('fetch', vi.fn(() => new Promise(r => { land = r })))
+    const q = queueOn()
+    await q.attach('v1')
+    await q.queueTake({ voiceId: 'v1', lineId: 'L1', text: 'bore da', blob: blob(4321) })
+    await settle(q, () => q.isUnsent('L1'))
+    expect((await q.unsentBlob('L1')).size).toBe(4321)
+    expect(await q.unsentBlob('L2')).toBe(null)
+    land(ok())
+    await settle(q, () => !q.isUnsent('L1'))
+    expect(await q.unsentBlob('L1')).toBe(null)
+    q.teardown()
+  })
+})

@@ -437,13 +437,20 @@ export function useRecordistQueue(options = {}) {
   }
 
   function isUnsent(lineId) { return unsentLines.has(lineId) }
+  /** The bytes of a take still waiting on this device, so the booth can play it before it is up. */
+  async function unsentBlob(lineId) {
+    if (!unsentLines.has(lineId) || !voiceId) return null
+    const s = await ensureStore()
+    const rec = (await s.pending(voiceId)).filter(r => r.lineId === lineId).pop()
+    return (rec && rec.blob) || null
+  }
 
   /** Re-read the shelf against what is now recorded — call after the server's line list arrives. */
   function reconcile() { return refreshCounts() }
 
   return {
     attach, queueTake, markFailed, discardRefused, reset, teardown, drain, reconcile,
-    isUnsent,
+    isUnsent, unsentBlob,
     pendingCount, savedCount, carriedOverCount, refusedCount, refusedTakes, staleCount,
     persistent, storageNote, uploadingLine, lastError,
     saved, failed, unsentLines,

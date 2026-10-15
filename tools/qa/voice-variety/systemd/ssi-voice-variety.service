@@ -4,6 +4,13 @@ Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/qa/voice-
 
 [Service]
 Type=oneshot
+# System unit: owner credentials remain private to popty (#384/#391).
+User=popty
+Group=tomcassidy
+UMask=0002
+Environment=HOME=/home/tomcassidy
+EnvironmentFile=/etc/popty/popty.env
+EnvironmentFile=/etc/popty/owner.env
 # ── WHY NOT THE SHARED CHECKOUT ─────────────────────────────────────────────
 # tools/qa/audio-gap runs from /home/tomcassidy/SSi/ssi-dashboard-v7-clean and
 # that works only while the shared checkout happens to sit on a branch carrying
@@ -14,8 +21,8 @@ Type=oneshot
 # therefore always executes the code that is actually landed. Nothing else
 # writes to that directory, so the reset is safe.
 WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
-ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
-ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
+ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
+ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
 ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/qa/voice-variety/nightly.cjs
 # Grouped aggregates over ~2.6M course_audio rows and ~1M content rows, ~3
 # minutes, almost all of it Postgres-side. This box is four cores carrying
