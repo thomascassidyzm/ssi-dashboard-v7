@@ -92,6 +92,7 @@ const OP_HELP = {
   'gender.update': { key: 'id', set: UPDATABLE.course_gender_expansions },
   'gender.insert': { row: 'course_gender_expansions row (id optional)' },
   'gender.delete': { key: 'id' },
+  'qaflag.restore': { row: 'a course_qa_flags row as read before a phrase.delete; phrase_id must start "<course>:"', note: 'written by the undo of a phrase delete, so the flags come back with the phrase' },
   common: { expect: '{column: value} before-state assertion; drift aborts the whole request' },
 };
 
@@ -211,6 +212,13 @@ function planOp(op, index, courseCode) {
       if (row.id !== undefined && !UUID_RE.test(String(row.id))) throw new EditOpError(index, 'gender.insert row.id must be a uuid when given');
       return { ...base, table: 'course_gender_expansions', kind: 'insert', row: stripNeverSet(row, 'course_gender_expansions'), key: row.id ? { id: row.id } : null, courseCode };
     }
+    case 'qaflag.restore': {
+      const row = op.row;
+      if (!row || typeof row !== 'object' || typeof row.phrase_id !== 'string' || !row.phrase_id.startsWith(`${courseCode}:`)) {
+        throw new EditOpError(index, `qaflag.restore needs row.phrase_id starting "${courseCode}:"`);
+      }
+      return { ...base, table: 'course_qa_flags', kind: 'insert', row: stripNeverSet(row, 'course_qa_flags'), key: null, courseCode };
+    }
     default:
       throw new EditOpError(index, `unknown op "${name}" (known: ${Object.keys(OP_HELP).filter(k => k !== 'common').join(', ')})`);
   }
@@ -300,6 +308,7 @@ function undoFor(plan, before, after, opName) {
   const insOp = { course_practice_phrases: 'phrase.insert', course_gender_expansions: 'gender.insert', course_legos: 'lego.insert' }[plan.table];
   const delOp = { course_practice_phrases: 'phrase.delete', course_gender_expansions: 'gender.delete', course_legos: 'lego.delete' }[plan.table];
 
+  if (plan.table === 'course_qa_flags') return null; // a restored flag is undone by deleting its phrase again
   if (!before && after) return { op: delOp, ...keyOf(after), ...(plan.table === 'course_legos' ? { lego_id: undefined } : {}) };
   if (before && !after) return { op: insOp, row: stripNeverSet(before, plan.table) };
   const set = {};
@@ -341,7 +350,7 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
       let before = null, after = null, cascadeUndo = null;
 
       if (plan.kind === 'insert') {
-        const row = { ...plan.row, course_code: courseCode };
+        const row = { ...plan.row, ...(t.has('course_code') ? { course_code: courseCode } : {}) };
         if (plan.table === 'course_practice_phrases' && evId) row.last_edit_event_id = evId;
         const cols = Object.keys(row);
         const bad = cols.filter(c => !t.has(c));
@@ -384,7 +393,9 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
             const by = {}; for (const k of kids) by[k.phrase_role] = (by[k.phrase_role] || 0) + 1;
             throw new EditOpError(plan.index, `lego.delete: ${before.lego_id} still has ${kids.length} phrase row(s) (${JSON.stringify(by)}); delete them first or send "cascade_phrases": true`, 'LEGO_HAS_PHRASES');
           }
+          const kidFlags = [];
           for (const k of kids) {
+            kidFlags.push(...await selectRow(client, 'course_qa_flags', { phrase_id: k.id }));
             await client.query(`DELETE FROM course_qa_flags WHERE phrase_id = $1`, [k.id]);
             await client.query(`DELETE FROM course_practice_phrases WHERE id = $1`, [k.id]);
             touched.phrase_ids.add(k.id);
@@ -393,13 +404,20 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
           after = null;
           // Undo order matters: the LEGO goes back before its phrases.
           cascadeUndo = [{ op: 'lego.insert', row: stripNeverSet(before, 'course_legos') },
-            ...kids.map(k => ({ op: 'phrase.insert', row: stripNeverSet(k, 'course_practice_phrases') }))];
+            ...kids.map(k => ({ op: 'phrase.insert', row: stripNeverSet(k, 'course_practice_phrases') })),
+            ...kidFlags.map(f => ({ op: 'qaflag.restore', row: stripNeverSet(f, 'course_qa_flags') }))];
         } else if (plan.kind === 'delete') {
+          // The phrase's QA flags go with it — and are read first, so the undo restores them after
+          // re-inserting the phrase (lanes review of fbd3a7e: an open error flag must not vanish).
+          let flags = [];
           if (plan.table === 'course_practice_phrases') {
+            flags = await selectRow(client, 'course_qa_flags', { phrase_id: before.id });
             await client.query(`DELETE FROM course_qa_flags WHERE phrase_id = $1`, [before.id]);
           }
           await client.query(`DELETE FROM ${q(plan.table)} WHERE id = $1`, [before.id]);
           after = null;
+          if (flags.length) cascadeUndo = [{ op: 'phrase.insert', row: stripNeverSet(before, 'course_practice_phrases') },
+            ...flags.map(f => ({ op: 'qaflag.restore', row: stripNeverSet(f, 'course_qa_flags') }))];
         } else {
           if (plan.link && plan.link.audioId) await checkLink(client, plan, before, courseCode);
           const textSet = {}, audioSet = {};

@@ -151,6 +151,7 @@ describe('course-edit-ops', () => {
     expect(out.undo_ops[0].op).toBe('phrase.insert')
     await run(db, out.undo_ops)
     expect(db.tables.course_practice_phrases[0].target_text).toBe('rhai o’r ardaloedd')
+    expect(db.tables.course_qa_flags).toEqual([{ phrase_id: `${C}:S0001L01U01` }])
   })
 
   it('phrase.insert refuses an id that already exists', async () => {
@@ -194,10 +195,12 @@ describe('lego.insert / lego.delete', () => {
     expect(db.tables.course_legos).toHaveLength(0)
     expect(db.tables.course_practice_phrases).toHaveLength(0)
     expect(db.tables.course_qa_flags).toHaveLength(0)
-    expect(out.undo_ops.map(o => o.op)).toEqual(['lego.insert', 'phrase.insert'])
+    // its phrases' QA flags come back too, after the phrases (#610, lanes review of fbd3a7e)
+    expect(out.undo_ops.map(o => o.op)).toEqual(['lego.insert', 'phrase.insert', 'qaflag.restore'])
     await run(db, out.undo_ops)
     expect(db.tables.course_legos[0].target_text).toBe('rhan o’r')
     expect(db.tables.course_practice_phrases).toHaveLength(1)
+    expect(db.tables.course_qa_flags).toEqual([{ phrase_id: `${C}:S0001L01U01` }])
   })
 
   it('deleting the phrases in the same batch first also clears the refusal; a dry run changes nothing', async () => {

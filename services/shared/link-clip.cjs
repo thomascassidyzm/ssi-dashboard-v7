@@ -94,7 +94,13 @@ async function linkOne(db, courseCode, link, { dryRun }) {
     return { ...out, ok: false, code: 'SLOT_FILLED', error: `slot holds ${current}; send replace:true with expectCurrent:"${current}" to replace it` }
   }
   if (dryRun) return { ...out, ok: true, changed: true, dryRun: true }
-  return { ...out, ok: true, changed: true, rowId: row.id, table, col, kind: slot.kind }
+  // The words the clip was checked against (and a pod line's draft state) ride into the write as
+  // conditions: an edit between read and write comes back as RACE instead of a clip on changed words
+  // (lanes review of fbd3a7e). presentation is exempt from the text check, so carries none.
+  const guards = []
+  if (link.role !== 'presentation') { const c = link.role === 'known' ? 'known_text' : 'target_text'; guards.push([c, row[c] ?? null]) }
+  if (slot.kind === 'pod_sentence' && link.role === 'target') guards.push(['target_text_draft', row.target_text_draft ?? null])
+  return { ...out, ok: true, changed: true, rowId: row.id, table, col, kind: slot.kind, guards }
 }
 
 /**
@@ -126,15 +132,16 @@ async function linkClips({ db, courseCode, links, dryRun = false, recordEdit = n
     if (eventId && STAMPS_EVENT[r.kind]) set.last_edit_event_id = eventId
     let u = db.from(r.table).update(set).eq('id', r.rowId)
     u = r.before == null ? u.is(r.col, null) : u.eq(r.col, r.before)
+    for (const [c, v] of r.guards || []) u = v == null ? u.is(c, null) : u.eq(c, v)
     const { data, error } = await u.select('id')
     if (error) Object.assign(r, { ok: false, code: 'WRITE_FAILED', error: error.message })
-    else if (!data || !data.length) Object.assign(r, { ok: false, code: 'RACE', error: 'the slot changed between read and write; nothing written' })
+    else if (!data || !data.length) Object.assign(r, { ok: false, code: 'RACE', error: 'the slot or its words changed between read and write; nothing written' })
     else linked++
   }
   const contentVersion = linked ? await bump(db, courseCode, 'patch') : null
   return { ok: results.every((r) => r.ok), dryRun, eventId, contentVersion, linked, results: results.map(strip) }
 }
 
-const strip = ({ rowId, table, col, kind, ...r }) => r
+const strip = ({ rowId, table, col, kind, guards, ...r }) => r
 
 module.exports = { linkClips, slotOf }

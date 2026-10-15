@@ -296,7 +296,8 @@ async function castVerdict(language, voiceId, { audition = false, courseCode = n
   if (v.allowed) return { ...v, castKey, via: 'tom-cast' }
   if (v.reason === 'banned-provider') return { ...v, castKey }
   // Tom 2026-09-29: a course keeps the Cartesia voice it already speaks — never one only the draft named.
-  if (v.reason === 'not-in-cast' && courseCode && !v.draftOnly.includes(voiceId) && await courseHoldsVoice(courseCode, language, voiceId)) {
+  // Cartesia only: a non-cast Azure voice goes back through the Azure-only check below (lanes review of ec39bf9).
+  if (v.reason === 'not-in-cast' && courseCode && isCartesiaVoice(voiceId) && !v.draftOnly.includes(voiceId) && await courseHoldsVoice(courseCode, language, voiceId)) {
     return { ...v, castKey, allowed: true, reason: null, via: 'held-voice' }
   }
   // Leg (b): the course's existing voices in the language are all Azure, and this is one of them.
