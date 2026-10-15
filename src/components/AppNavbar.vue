@@ -717,5 +717,6 @@ onUnmounted(() => {
   .navbar-booth .avatar-btn { width: 44px; height: 44px; }
   .navbar-booth .navbar-right :deep(button),
   .navbar-booth .navbar-right :deep(select) { min-height: 44px; }
+  .navbar-booth .navbar-right :deep(button) { min-width: 44px; }
 }
 </style>
