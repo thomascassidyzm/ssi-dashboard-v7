@@ -740,6 +740,7 @@ import RerecordCard from './recordist/RerecordCard.vue'
 import { mergeRerecord, oldRefusedIds, alsoIds } from './recordist/rerecord-list.js'
 // The re-record card's batch (job #788): services/voice-engine/booth-rerecord.cjs RERECORD_TRACK.
 const RERECORD_TRACK = 'rerecord'
+import { allowIdleReload, holdReload } from '@/router/versionReload'
 import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, keepListedSections, withDeviceTakes, loadPlaces, savePlaces, placeFromEntry, creditLoadedBatch } from './recordist/booth-home.js'
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
@@ -2681,6 +2682,15 @@ function beforeUnloadGuard(e) {
   if (atRisk) { e.preventDefault(); e.returnValue = '' }
 }
 
+// A NEW BUILD REACHES AN OPEN BOOTH (job #829, router/versionReload.js): the booth is a page an
+// idle reload costs nothing (takes are on the device, the cursor is kept), so the timed look may
+// reload it — but never while beforeUnloadGuard would stop a real loss, nor mid-edit of a line.
+const reloadKey = `booth:${Math.random().toString(36).slice(2)}`
+const reloadUnsafe = computed(() => phase.value === 'recording' || !!editingId.value || (queue.pendingCount.value > 0 && !queue.persistent.value))
+watch(reloadUnsafe, (on) => holdReload(reloadKey, on), { immediate: true })
+onMounted(() => allowIdleReload(reloadKey, true))
+onBeforeUnmount(() => { allowIdleReload(reloadKey, false); holdReload(reloadKey, false) })
+
 // ── Load ────────────────────────────────────────────────────────────────────
 // THE SETUP CHECK's "I'm done" — only offered on a per-artist setup pack once
 // every phrase has a take. The server re-checks the count; this is the tap.
@@ -3162,12 +3172,27 @@ function applySummary(data) {
   homeFor = props.voiceId
   voice.value = { ...voice.value, displayName: data.displayName, languageName: data.languageName }
 }
+// A FAILED READ IS ASKED AGAIN (Aran, 2026-10-15, job #829: "What I'm doing" on his Chromebook
+// still lacked New Welsh — North: whole sentences after #823). The kept home is drawn first, and
+// if the read behind it failed — a timeout while the API restarts after a deploy, a dropped
+// connection — that kept home used to stay on screen until he left the tab and came back. Now it
+// is asked again, backing off, for as long as the home screen is up, and the fresh answer
+// replaces the kept one the moment it lands.
+const HOME_RETRY_MS = [5000, 15000, 30000, 60000]
+let homeRetries = 0
 async function refreshHome(again = true) {
   let data = null
   try { data = await fetchSummary() } catch { data = null }
-  if (!data) return false
-  if (homeFor === props.voiceId || !homeSummary.value) applySummary(data)
   clearTimeout(refreshTimer)
+  if (!data) {
+    if (homeSummary.value && phase.value === 'home') {
+      const wait = HOME_RETRY_MS[Math.min(homeRetries++, HOME_RETRY_MS.length - 1)]
+      refreshTimer = setTimeout(() => { if (phase.value === 'home') refreshHome() }, wait)
+    }
+    return false
+  }
+  homeRetries = 0
+  if (homeFor === props.voiceId || !homeSummary.value) applySummary(data)
   if (again && data.fresh === false) refreshTimer = setTimeout(() => { if (phase.value === 'home') refreshHome(false) }, 4000)
   return true
 }
@@ -3312,6 +3337,7 @@ onMounted(() => {
   rememberBooth(props.voiceId)
 })
 onBeforeUnmount(() => {
+  clearTimeout(refreshTimer)
   document.removeEventListener('visibilitychange', refreshOnReturn)
   window.removeEventListener('focus', refreshOnReturn)
   stopWave()

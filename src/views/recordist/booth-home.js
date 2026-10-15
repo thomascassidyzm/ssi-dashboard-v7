@@ -280,6 +280,12 @@ export function loadSummarySnapshot(voiceId, storage = globalThis.localStorage, 
     return snap.data
   } catch { return null }
 }
+// A SNAPSHOT THAT CANNOT BE SAVED IS NOT LEFT BEHIND (job #829): with the device's storage full
+// (hundreds of takes' places kept beside it) the write failed silently and the OLDER snapshot
+// stayed, to be drawn first on every arrival. It is removed instead, so a failed write costs a
+// slower arrival, never an out-of-date home.
 export function saveSummarySnapshot(voiceId, data, storage = globalThis.localStorage, now = Date.now()) {
-  try { storage && storage.setItem(snapKey(voiceId), JSON.stringify({ at: now, data })) } catch { /* private mode / full */ }
+  try { storage && storage.setItem(snapKey(voiceId), JSON.stringify({ at: now, data })) } catch {
+    try { storage && storage.removeItem(snapKey(voiceId)) } catch { /* private mode */ }
+  }
 }

@@ -83,6 +83,19 @@ describe('LEGOs, ticks hiding cards, and the kept home screen (job #378)', () =>
     expect(loadSummarySnapshot('human_aran_eng', storage, 2000)).toBe(null)
     expect(loadSummarySnapshot('human_aran_cym_n', storage, 1000 + 8 * 24 * 3600 * 1000)).toBe(null)
   })
+  it('a snapshot that cannot be saved (storage full) removes the older one rather than leaving it to be drawn (job #829)', () => {
+    const mem = new Map()
+    let full = false
+    const storage = {
+      getItem: k => mem.get(k) ?? null,
+      setItem: (k, v) => { if (full) throw new Error('QuotaExceededError'); mem.set(k, v) },
+      removeItem: k => mem.delete(k),
+    }
+    saveSummarySnapshot('human_tom_zzz', { tracks: [] }, storage, 1000)
+    full = true
+    saveSummarySnapshot('human_tom_zzz', { tracks: [legos] }, storage, 2000)
+    expect(loadSummarySnapshot('human_tom_zzz', storage, 3000)).toBe(null)
+  })
 })
 
 // Job #697 (Aran): every batch opens by hand; Up next keeps its order.
