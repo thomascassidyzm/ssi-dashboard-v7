@@ -165,10 +165,13 @@ describe('RecordistRoom — Lines & settings lists every line of the batch', () 
 
   it('one row per line: number, Welsh, English, a status dot; the current line is marked', async () => {
     const w = await mountReady([1, 2])
-    await tap(w, '[data-test="open-sheet"]')
+    // Lines 1-2 are already recorded, so they are hidden until "show" (job #816).
+    await tap(w, '[data-test="hidden-toggle"]')
     const rows = w.findAll('[data-test="batch-lines"] li')
     expect(rows.length).toBe(N)
-    expect(rows[0].find('.bl-num').text()).toBe('1')
+    // A hidden (already-recorded) line wears a tick, not a number: numbers count the reading flow.
+    expect(rows[0].find('.bl-num').text()).toBe('✓')
+    expect(rows[2].find('.bl-num').text()).toBe('1')
     expect(rows[0].find('.bl-text').text()).toBe('llinell 1')
     expect(rows[0].find('.bl-known').text()).toBe('line 1')
     expect(rows[0].find('.bl-dot').classes()).toContain('done')
@@ -180,7 +183,8 @@ describe('RecordistRoom — Lines & settings lists every line of the batch', () 
 
   it('a tap on the words moves the cursor to that line', async () => {
     const w = await mountReady([1, 2])
-    await tap(w, '[data-test="open-sheet"]')
+    // Lines 1-2 are already recorded, so they are hidden until "show" (job #816).
+    await tap(w, '[data-test="hidden-toggle"]')
     await w.findAll('[data-test="batch-lines"] .bl-go')[4].trigger('click')
     await flushPromises()
     expect(w.find('[data-test="ready-line"]').text()).toBe('llinell 5')
@@ -194,7 +198,8 @@ describe('RecordistRoom — Lines & settings lists every line of the batch', () 
     window.HTMLMediaElement.prototype.play = play
     globalThis.Audio = class { constructor() { this.src = '' } play() { return play() } pause() {} }
     const w = await mountReady([1, 2])
-    await tap(w, '[data-test="open-sheet"]')
+    // Lines 1-2 are already recorded, so they are hidden until "show" (job #816).
+    await tap(w, '[data-test="hidden-toggle"]')
     const rows = w.findAll('[data-test="batch-lines"] li')
     expect(rows[0].find('.bl-play').exists()).toBe(true)
     expect(rows[3].find('.bl-play').exists()).toBe(false)
@@ -207,7 +212,8 @@ describe('RecordistRoom — Lines & settings lists every line of the batch', () 
 
   it('Again on a row opens the mic on THAT line; Record on a line with no take', async () => {
     const w = await mountReady([1, 2])
-    await tap(w, '[data-test="open-sheet"]')
+    // Lines 1-2 are already recorded, so they are hidden until "show" (job #816).
+    await tap(w, '[data-test="hidden-toggle"]')
     const rows = w.findAll('[data-test="batch-lines"] li')
     expect(rows[0].find('[data-test="batch-line-record"]').text()).toBe('Again')
     expect(rows[3].find('[data-test="batch-line-record"]').text()).toBe('Record')
