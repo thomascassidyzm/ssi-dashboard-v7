@@ -68,7 +68,7 @@ function countWords(t) {
 .bt-row { display: flex; align-items: center; gap: 0.4rem; border-top: 1px solid var(--color-graphite, #475569); }
 .bt-row .bt-chk { flex: 1; min-width: 0; border-top: none; }
 .bt-fold {
-  flex: none; min-height: 40px; padding: 0.3rem 0.65rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  flex: none; min-height: 44px; padding: 0.3rem 0.65rem; font-size: 0.85rem; font-weight: 600; cursor: pointer;
   color: inherit; background: transparent; border: 1px solid var(--color-graphite, #475569); border-radius: 999px;
 }
 :root[data-theme="light"] .bt-row, :root[data-theme="light"] .bt-fold { border-color: var(--line, #d4d4cf); }
@@ -76,6 +76,6 @@ function countWords(t) {
 .bt-chk input { width: 22px; height: 22px; flex: none; accent-color: var(--color-emerald, #06ffa5); }
 .bt-sub-row { padding-left: 1.6rem; border-top-style: dashed; }
 .bt-sub-row .bt-chk { padding-left: 0; }
-.bt-grow { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.bt-grow { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow-wrap: anywhere; }
 .bt-grow small { color: var(--color-paper-dim, #c1c1bb); font-size: 0.82rem; }
 </style>

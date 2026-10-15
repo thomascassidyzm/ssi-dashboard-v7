@@ -232,6 +232,8 @@ function cardPill(t) {
 :root[data-theme="light"] .bh-up, :root[data-theme="light"] .bh-brow.full.uploading .bh-bn { color: #b45309; }
 .bh-row { display: flex; align-items: center; gap: 0.75rem; justify-content: space-between; }
 .bh-grow { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+/* A title longer than a phone is wide wraps instead of running off the card (job #834). */
+.bh-h1, .bh-h2, .bh-h3, .bh-sub, .bh-grow { overflow-wrap: anywhere; }
 .bh-grow small { color: var(--color-paper-dim, #c1c1bb); font-size: 0.82rem; }
 .bh-pill { font-size: 0.82rem; color: var(--color-paper-dim, #c1c1bb); white-space: nowrap; }
 .bh-hero { background: linear-gradient(160deg, #1e3a5f, var(--color-shadow, #1e293b) 60%); border: 1px solid #34507a; border-radius: 18px; padding: 1.1rem; margin: 1rem 0 0.5rem; }
@@ -244,7 +246,7 @@ function cardPill(t) {
 .bh-card:hover:not(:disabled) { border-color: var(--color-emerald, #06ffa5); }
 .bh-card.lock, .bh-brow.lock { opacity: 0.5; cursor: default; }
 .bh-done { background: var(--color-shadow, #1e293b); border: 1px solid var(--color-graphite, #475569); border-radius: 14px; padding: 0.3rem 0.8rem; }
-.bh-done-row { display: flex; width: 100%; gap: 0.6rem; align-items: center; padding: 0.55rem 0; background: none; border: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.bh-done-row { display: flex; width: 100%; min-height: 44px; gap: 0.6rem; align-items: center; padding: 0.55rem 0; background: none; border: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
 .bh-done-row + .bh-done-row { border-top: 1px solid var(--color-graphite, #475569); }
 .bh-tick { color: var(--color-emerald, #06ffa5); }
 .bh-note { color: var(--color-paper-dim, #c1c1bb); font-size: 0.85rem; margin: 0.9rem 0 0; }

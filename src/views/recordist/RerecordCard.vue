@@ -58,11 +58,12 @@ const breakdown = computed(() => breakdownWords(props.rows))
 .rr-go { display: block; width: 100%; min-height: 56px; margin-top: 0.9rem; border: 0; border-radius: 12px; font: inherit; font-size: 1.1rem; font-weight: 700; background: #fb923c; color: #431407; cursor: pointer; }
 .rr-toggle { margin-top: 0.6rem; min-height: 44px; background: transparent; border: 0; color: inherit; font: inherit; font-size: 0.95rem; cursor: pointer; padding: 0; }
 .rr-list { list-style: none; margin: 0.4rem 0 0; padding: 0; display: grid; gap: 0.45rem; max-height: 22rem; overflow-y: auto; }
-.rr-row { display: grid; grid-template-columns: 2rem 1fr; gap: 0 0.5rem; align-items: center; padding: 0.3rem 0; border-top: 1px solid rgba(255,255,255,0.15); }
-.rr-play, .rr-play-gap { width: 2rem; height: 2rem; grid-row: 1 / span 2; }
+/* ▶ is a 44px target on a phone (job #834); it was 32px. */
+.rr-row { display: grid; grid-template-columns: 44px 1fr; gap: 0 0.5rem; align-items: center; padding: 0.3rem 0; border-top: 1px solid rgba(255,255,255,0.15); }
+.rr-play, .rr-play-gap { width: 44px; height: 44px; grid-row: 1 / span 2; }
 .rr-play { border: 0; border-radius: 99px; background: #7c2d12; color: #fed7aa; cursor: pointer; font-size: 0.8rem; padding: 0; }
 .rr-old-box { margin-top: 0.7rem; font-size: 0.9rem; }
-.rr-old-box summary { cursor: pointer; min-height: 36px; display: flex; align-items: center; }
+.rr-old-box summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; }
 .rr-old-note { margin: 0.3rem 0 0.5rem; opacity: 0.85; }
 .rr-clear { min-height: 44px; padding: 0 1rem; border-radius: 10px; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-weight: 600; cursor: pointer; }
 .rr-why { grid-column: 2; font-size: 0.75rem; opacity: 0.85; }
