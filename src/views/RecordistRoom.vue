@@ -65,20 +65,12 @@
         <button v-if="phase !== 'recording'" type="button" class="where-more" data-test="open-sheet" aria-label="Lines and settings" @click="openSheet()"><span class="wm-long">Lines &amp; settings</span><span class="wm-short" aria-hidden="true">☰</span></button>
       </header>
 
-      <!-- LINES ALREADY RECORDED ARE LEFT OUT OF THE READING FLOW (Aran, 2026-10-15, job #816). One
-           small line says how many, and "show" draws them in Lines & settings, where Again is on
-           every row. Never while the mic is live. -->
-      <p v-if="phase !== 'recording' && hiddenCount > 0" class="hidden-note" data-test="hidden-note">
-        {{ hiddenCount }} already recorded — {{ showHidden ? 'shown in Lines & settings' : 'hidden' }} ·
-        <button type="button" class="hidden-toggle" data-test="hidden-toggle" @click="toggleHidden">{{ showHidden ? 'hide' : 'show' }}</button>
-      </p>
-
       <!-- ONE STATUS ROW, live only: the count, with the progress bar as its bottom edge. Stop and
            Pause are NOT here any more — they sit above Back / Again / Next (job #681). -->
       <div v-if="phase === 'recording'" class="status" data-test="status">
         <span class="line-pos" data-test="line-pos">{{ linePosWords }} · <b class="line-state" :class="'ls-' + lineState.replace(' ', '-')" data-test="line-state">{{ lineState }}</b></span>
-        <span class="stage-progress" data-test="count">{{ flowRecorded }} of {{ flowIndices.length }} recorded</span>
-        <span class="status-edge" aria-hidden="true"><i :style="{ width: flowPct + '%' }"></i></span>
+        <span class="stage-progress" data-test="count">{{ recordedCount }} of {{ lines.length }} recorded</span>
+        <span class="status-edge" aria-hidden="true"><i :style="{ width: progressPct + '%' }"></i></span>
       </div>
       <!-- ONE MIC SIGNAL, A WIDE STRIP (Aran, 2026-10-15, job #692: "a bit bigger and use more of the
            available width"). Its own row under Stop / count / Pause, as wide as the reading column.
@@ -108,11 +100,11 @@
              A SQUARE IS A WAY ONTO ITS LINE (Aran, 2026-10-15): tap one and the cursor goes
              there — live, the open capture is thrown away as ‹ does; before Start, Start opens
              on it. -->
-        <div v-if="phase !== 'done' && shownRows.length > 1" class="rail-wrap">
+        <div v-if="phase !== 'done' && lines.length > 1" class="rail-wrap">
           <ol class="rail" data-test="rail">
-            <li v-for="{ l, i } in shownRows" :key="l.id || i" class="rail-sq" :class="railClass(l, i)"
-                role="button" tabindex="-1" :title="`${flowPos(i) ? 'Line ' + flowPos(i) : 'Already recorded'}: ${lineStateWords(l)}`"
-                :aria-label="flowPos(i) ? `Go to line ${flowPos(i)}` : 'Go to an already-recorded line'" @click="onRailTap(i)"></li>
+            <li v-for="(l, i) in lines" :key="l.id || i" class="rail-sq" :class="railClass(l, i)"
+                role="button" tabindex="-1" :title="`Line ${i + 1}: ${lineStateWords(l)}`"
+                :aria-label="`Go to line ${i + 1}`" @click="onRailTap(i)"></li>
           </ol>
           <!-- THE LEGEND (Aran, 2026-10-15): the squares used to say nothing, and in light mode
                green and red were painted grey, so saved looked like not-yet-recorded. -->
@@ -177,8 +169,8 @@
                 <p v-if="startLine.knownText" class="line-known">{{ plainText(startLine.knownText) }}</p>
                 <!-- WHERE HE LEFT OFF is not always the first line still owed: say which, and offer both. -->
                 <p v-if="readyIndex !== startIndex" class="ready-where" data-test="ready-where">
-                  Line {{ flowPos(readyIndex) }} of {{ flowIndices.length }} · {{ lineStateWords(startLine) }} — where you left off.
-                  <button v-if="startIndex !== -1" type="button" class="setline-change" data-test="ready-to-unrecorded" @click="pinCursor(null)">Start at the first unrecorded line ({{ flowPos(startIndex) }}) instead</button>
+                  Line {{ readyIndex + 1 }} of {{ lines.length }} · {{ lineStateWords(startLine) }} — where you left off.
+                  <button v-if="startIndex !== -1" type="button" class="setline-change" data-test="ready-to-unrecorded" @click="pinCursor(null)">Start at the first unrecorded line ({{ startIndex + 1 }}) instead</button>
                 </p>
               </template>
               <template v-else>
@@ -434,7 +426,7 @@
         </div>
         <button class="ctl-jump" type="button" data-test="jump-unrecorded"
                 :disabled="nextUnrecordedIndex === -1 || busy || arming || paused || !!editingId"
-                @click="onJumpUnrecorded">{{ nextUnrecordedIndex === -1 ? 'Every line is recorded' : `Jump to next unrecorded (line ${flowPos(nextUnrecordedIndex)}) »` }}</button>
+                @click="onJumpUnrecorded">{{ nextUnrecordedIndex === -1 ? 'Every line is recorded' : `Jump to next unrecorded (line ${nextUnrecordedIndex + 1}) »` }}</button>
         </template>
         <div v-else class="transport-in" :class="{ one: !nextBatchN && !batchScope }">
           <button class="btn-ghost" @click="backToStart">Back to my lines</button>
@@ -483,9 +475,9 @@
           <section v-if="lines.length" class="batch-lines" data-test="batch-lines-wrap">
             <h3 class="bl-head">{{ batchScope ? 'Lines in this batch' : 'Your lines' }} · {{ recordedCount }} of {{ lines.length }} recorded</h3>
             <ol class="bl-list" data-test="batch-lines">
-              <li v-for="{ l, i } in shownRows" :key="l.id || i" class="bl-row" :class="{ now: i === readyIndex, playing: playingId === l.id, hidden: !flowPos(i) }">
-                <button type="button" class="bl-go" :aria-label="flowPos(i) ? `Go to line ${flowPos(i)}` : 'Go to this already-recorded line'" :aria-current="i === readyIndex ? 'true' : null" @click="onListTap(i)">
-                  <span class="bl-num">{{ flowPos(i) || '✓' }}</span>
+              <li v-for="(l, i) in lines" :key="l.id || i" class="bl-row" :class="{ now: i === readyIndex, playing: playingId === l.id }">
+                <button type="button" class="bl-go" :aria-label="`Go to line ${i + 1}`" :aria-current="i === readyIndex ? 'true' : null" @click="onListTap(i)">
+                  <span class="bl-num">{{ i + 1 }}</span>
                   <i class="bl-dot" :class="lineDot(l)" :title="lineStateWords(l)" aria-hidden="true"></i>
                   <span class="bl-words">
                     <span class="bl-text">{{ plainText(l.text) }}</span>
@@ -499,7 +491,7 @@
                      door the map's "Read it again" uses. Separate from the words, so a tap on the words
                      only moves the cursor and ▶ only plays. -->
                 <button type="button" class="bl-again" data-test="batch-line-record"
-                        :aria-label="`${hasTake(l) ? 'Record again' : 'Record'} line ${flowPos(i) || '(already recorded)'}`"
+                        :aria-label="`${hasTake(l) ? 'Record again' : 'Record'} line ${i + 1}`"
                         @click="recordFromSheet(l.id)">{{ hasTake(l) ? 'Again' : 'Record' }}</button>
               </li>
             </ol>
@@ -1372,48 +1364,6 @@ function plainText(text) { return segmentsFor(text).map(s => s.text).join('') }
 // and it is the one case where offering it again is the whole point.
 function isSettled(l) { return isRecorded(l) || isPending(l.id) }
 
-// THE READING FLOW (Aran, 2026-10-15, job #816: "when I open a new batch, quite often several
-// of them are marked green already ... I'm given those to re-record again in the flow with the
-// rest. Could we just skip them? Ideally they wouldn't even show"). A batch often opens with
-// lines already settled — saved on the server, or recorded here and still going up — because one
-// take covers every copy of the same words (#791). Those lines are NOT in the reading flow:
-// Start, ›, ‹, auto-advance and Jump walk only the lines still owed, in course order.
-//
-// A line he has stood on in THIS session stays in the flow once he has recorded it, so ‹ still
-// goes back to it (#757). A hidden line he taps in Lines & settings joins the flow the same way:
-// pinCursor() marks it. Reset each time a batch is opened (load).
-const touchedIds = ref(new Set())
-function touchLine(id) {
-  if (id === null || id === undefined || touchedIds.value.has(id)) return
-  touchedIds.value = new Set([...touchedIds.value, id])
-}
-function inFlow(l) { return !!l && (!isSettled(l) || touchedIds.value.has(l.id)) }
-const flowIndices = computed(() => lines.value.reduce((out, l, i) => (inFlow(l) ? (out.push(i), out) : out), []))
-// "8 already recorded — hidden · show": the lines left out of the flow, and the switch that
-// draws them in Lines & settings (and on the rail), where Again is on every row.
-const hiddenCount = computed(() => lines.value.length - flowIndices.value.length)
-const showHidden = ref(false)
-// ONE STEP ALONG THE FLOW from line i (which need not itself be in it), or -1.
-function nextFlowFrom(i) {
-  for (let k = i + 1; k < lines.value.length; k++) if (inFlow(lines.value[k])) return k
-  return -1
-}
-function prevFlowFrom(i) {
-  for (let k = Math.min(i, lines.value.length) - 1; k >= 0; k--) if (inFlow(lines.value[k])) return k
-  return -1
-}
-// Line i's number in the flow ("Line 3 of 12"), or null for a hidden line.
-function flowPos(i) {
-  const p = flowIndices.value.indexOf(i)
-  return p === -1 ? null : p + 1
-}
-function toggleHidden() {
-  showHidden.value = !showHidden.value
-  if (showHidden.value) openSheet()
-}
-// The rows the rail and the batch list draw: the flow, or every line once he has asked to see them.
-const shownRows = computed(() => lines.value.map((l, i) => ({ l, i })).filter(({ l }) => showHidden.value || inFlow(l)))
-
 // WHERE START LANDS: the first line in queue order that is still to read, and
 // never anything else. This used to return 0 — the top of the queue, recorded
 // or not — whenever the re-read switch was on, and that switch was remembered
@@ -1474,8 +1424,8 @@ function nextIndexFrom(i) {
   }
   return -1
 }
-// › goes to the next line in the reading flow; on the last one it is Done.
-const hasNext = computed(() => nextFlowFrom(index.value) !== -1)
+// › goes to the line after this one; on the last line it is Done.
+const hasNext = computed(() => index.value < lines.value.length - 1)
 // The one control that skips: to the next line still owed, wrapping round.
 const nextUnrecordedIndex = computed(() => nextIndexFrom(index.value))
 
@@ -1484,7 +1434,7 @@ const nextUnrecordedIndex = computed(() => nextIndexFrom(index.value))
 const UPCOMING_SHOWN = 6
 // The lines › will walk him through, in order — the same lines, recorded or not,
 // because › no longer skips anything (THE ONE CURSOR).
-const upcoming = computed(() => flowIndices.value.filter(k => k > index.value).slice(0, UPCOMING_SHOWN).map(k => lines.value[k]))
+const upcoming = computed(() => lines.value.slice(index.value + 1, index.value + 1 + UPCOMING_SHOWN))
 // STILL TO READ — the same set the roster counts, and it has to be, because
 // both numbers are on the screen at once. Counting forward from the cursor made
 // them disagree the moment anything became outstanding behind it: the roster
@@ -1499,13 +1449,7 @@ const pinnedId = ref(null)
 const readyIndex = computed(() => {
   if (pinnedId.value !== null) {
     const i = lines.value.findIndex(l => l.id === pinnedId.value)
-    if (i !== -1 && inFlow(lines.value[i])) return i
-    // He left off on a line that is recorded now: Start opens on the next line still owed
-    // after it — a recorded line is never where a session starts (job #816).
-    if (i !== -1) {
-      const k = lines.value.findIndex((l, j) => j > i && !isSettled(l))
-      if (k !== -1) return k
-    }
+    if (i !== -1) return i
   }
   return startIndex.value
 })
@@ -1525,7 +1469,6 @@ function cursorScope() {
 }
 function pinCursor(lineId) {
   pinnedId.value = lineId ?? null
-  touchLine(pinnedId.value)
   saveCursor(props.voiceId, cursorScope(), pinnedId.value)
 }
 // Every move of the live cursor is remembered at once: the booth is closed by a laptop lid as
@@ -1543,14 +1486,7 @@ function lineStateWords(l) {
   if (isRecorded(l)) return 'saved'
   return 'not yet'
 }
-// Counted along the reading flow: Y is the lines still to read in this session, not the batch.
-const linePosWords = computed(() => {
-  const f = flowIndices.value
-  return `Line ${Math.max(1, f.filter(k => k <= index.value).length)} of ${f.length}`
-})
-// The live count and its bar, over the same flow.
-const flowRecorded = computed(() => flowIndices.value.reduce((n, k) => n + (isRecorded(lines.value[k]) ? 1 : 0), 0))
-const flowPct = computed(() => (flowIndices.value.length ? Math.round((flowRecorded.value / flowIndices.value.length) * 1000) / 10 : 0))
+const linePosWords = computed(() => `Line ${index.value + 1} of ${lines.value.length}`)
 const lineState = computed(() => lineStateWords(current.value))
 const startKindWords = computed(() => kindWordsFor(startLine.value))
 
@@ -2173,7 +2109,7 @@ function lineKeyAt(i) {
   return l.id ?? `#${i}`
 }
 
-const canGoBack = computed(() => phase.value === 'recording' && prevFlowFrom(index.value) !== -1)
+const canGoBack = computed(() => phase.value === 'recording' && index.value > 0)
 
 let lastTapAt = 0
 function debounced() {
@@ -2354,7 +2290,7 @@ async function onNext(source = 'tap', to = 'next') {
     const target = takeTargetAt(lines.value, i)
     const pending = recorder.endLine()
     // ONE LINE ON, never a scan (THE ONE CURSOR). On the last line this is Done.
-    const n = to === 'unrecorded' ? nextIndexFrom(i) : nextFlowFrom(i)
+    const n = to === 'unrecorded' ? nextIndexFrom(i) : (i < lines.value.length - 1 ? i + 1 : -1)
     if (n !== -1) {
       index.value = n
       // Wherever he lands, that line gets its step forward: he may have left it
@@ -2532,9 +2468,8 @@ function togglePause() {
 // not do is quietly re-open the mic behind a screen that says Paused: the hold
 // survives the step back, and Play is still the only way out of it.
 async function onBack() {
-  const p = prevFlowFrom(index.value)
-  if (p === -1) return
-  return goToLine(p)
+  if (index.value <= 0) return
+  return goToLine(index.value - 1)
 }
 
 // THE CURSOR GOES STRAIGHT TO A LINE: ‹ (one back) and a tap on the rail. Both
@@ -2590,7 +2525,7 @@ async function onFinish() {
     // the done screen is the cheaper of the two mistakes.
     if (hadSpeech !== false) commit(target, blob, hadSpeech)
     // Stopped after reading this line: the next visit opens on the line after it.
-    if (hadSpeech === true && nextFlowFrom(i) !== -1) pinCursor(lines.value[nextFlowFrom(i)].id)
+    if (hadSpeech === true && i < lines.value.length - 1) pinCursor(lines.value[i + 1].id)
     await finish()
   } finally { busy.value = false }
 }
@@ -2832,8 +2767,6 @@ async function load({ quiet = false } = {}) {
     await queue.attach(props.voiceId)
     doneIds.value = new Set()
     sessionIds.value = []
-    touchedIds.value = new Set()
-    showHidden.value = false
     lastLine.value = null
     advanceLock.reset()
     // THE CURSOR SURVIVES A RELOAD: the line he was on when he last left this batch.
@@ -3397,9 +3330,6 @@ onDeactivated(() => {
 .safety-banner.waiting { background: #15243f; border-color: #3b6fb5; color: #dbe9ff; }
 .safety-banner.risk { background: #3a1512; border-color: #d0574c; color: #ffdad5; }
 .refused-summary { width: 100%; max-width: 46rem; margin: 0 auto 0.4rem; padding: 0.25rem 0.7rem; font-size: 0.85rem; line-height: 1.4; color: #fca5a5; background: rgba(127, 29, 29, 0.35); border: 1px solid rgba(248, 113, 113, 0.45); border-radius: 999px; text-align: center; flex: 0 0 auto; }
-.hidden-note { margin: 0.2rem 0 0; font-size: 0.85rem; opacity: 0.8; text-align: center; }
-.hidden-toggle { background: none; border: 0; padding: 0.2rem 0.1rem; font: inherit; font-weight: 700; color: var(--accent-2, #34d399); text-decoration: underline; cursor: pointer; }
-.bl-row.hidden { opacity: 0.75; }
 .refused-go { background: none; border: 0; padding: 0; font: inherit; font-weight: 700; color: inherit; text-decoration: underline; cursor: pointer; }
 .refused-go:disabled { opacity: 0.5; cursor: default; }
 .refused-why { margin: 0.5rem 0 0; font-size: 0.85rem; color: #fca5a5; }

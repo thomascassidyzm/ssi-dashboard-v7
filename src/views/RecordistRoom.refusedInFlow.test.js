@@ -61,9 +61,8 @@ describe('RecordistRoom — refused lines come up in the normal flow', () => {
   it('no stacked notices over the line; ONE slim bar counts them and Go to first lands on the first', async () => {
     rec.failed.clear()
     const w = await live()
-    // Start lands on line 3, the first unrecorded line — line 1 of the four left to read,
-    // because lines 1-2 were recorded when the batch opened (job #816).
-    expect(w.find('[data-test="line-pos"]').text()).toContain('Line 1 of 4')
+    // Start lands on line 3, the first unrecorded line.
+    expect(w.find('[data-test="line-pos"]').text()).toContain('Line 3 of 6')
     expect(w.find('[data-test="refused-summary"]').exists()).toBe(false)
     rec.failed.set('line-4', SILENT)
     rec.failed.set('line-5', SILENT)
@@ -82,7 +81,7 @@ describe('RecordistRoom — refused lines come up in the normal flow', () => {
     expect(w.find('.line-target').text()).toContain('llinell 3')
     await w.find('[data-test="refused-go-first"]').trigger('click')
     await flushPromises()
-    expect(w.find('[data-test="line-pos"]').text()).toContain('Line 2 of 4')
+    expect(w.find('[data-test="line-pos"]').text()).toContain('Line 4 of 6')
     expect(w.find('[data-test="line-state"]').text()).toBe('refused')
     // Shown exactly like any other line to read, with one small reason under it.
     expect(w.find('.line-target').text()).toContain('llinell 4')
@@ -90,7 +89,7 @@ describe('RecordistRoom — refused lines come up in the normal flow', () => {
     // Standing on the first, the bar keeps its count but has nowhere to send him.
     expect(w.find('[data-test="refused-go-first"]').exists()).toBe(false)
     // Jump to next unrecorded stops on the next refused line.
-    expect(w.find('[data-test="jump-unrecorded"]').text()).toContain('line 3')
+    expect(w.find('[data-test="jump-unrecorded"]').text()).toContain('line 5')
   })
 
   it('a line that is not refused carries no reason', async () => {

@@ -149,9 +149,8 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
     await wrapper.find('[data-test="jump-unrecorded"]').trigger('click')
     await flushPromises()
     expect(wrapper.find('.line-target').text()).toBe('llinell un')
-    // Counted over the reading flow (job #816): lines 2-3 were recorded when the batch opened.
-    expect(wrapper.find('.stage-progress').text()).toContain('1 of 2')
-    // And from line 1, › is one line on along the flow.
+    expect(wrapper.find('.stage-progress').text()).toContain('3 of 4')
+    // And from line 1, › is one line on: the next line, recorded or not.
     expect(wrapper.find('.ctl-next').text()).toBe('›')
   })
 
@@ -181,7 +180,8 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
     // The rewritten line is offered again rather than sitting silently owed —
     // and its one step forward has been given back, so the cursor can leave it.
     expect(wrapper.find('.line-target').text()).toBe('te, os gwelwch yn dda')
-    // › walks the reading flow: line 3 was recorded when the batch opened, so it is not in it (job #816).
+    await tapNext(wrapper)
+    expect(wrapper.find('.line-target').text()).toBe('llinell tri')
     await tapNext(wrapper)
     expect(wrapper.find('.line-target').text()).toBe('llinell pedwar')
     await tapNext(wrapper)
@@ -197,7 +197,7 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
     await openEveryLine(wrapper)
     await wrapper.findAll('.roster-list .row')[1].find('.row-record').trigger('click')
     await flushPromises()
-    expect(wrapper.findAll('.upnext-list li').map(li => li.text())).toEqual(['llinell pedwar']) // line 3 was recorded at open: not in the flow (job #816)
+    expect(wrapper.findAll('.upnext-list li').map(li => li.text())).toEqual(['llinell tri', 'llinell pedwar'])
   })
 })
 

@@ -349,11 +349,10 @@ describe('RecordistRoom — rewriting a line', () => {
     expect(JSON.parse(patch[1].body)).toEqual({ text: 'A tea, please.' })
 
     // The screen now shows the new words, the mic is live again, and the line
-    // counts as outstanding — none recorded of the one line in the reading flow (line-1 was
-    // recorded when the batch opened, so it is not in it: job #816), exactly as before the edit.
+    // counts as outstanding — one recorded of two, exactly as before the edit.
     expect(wrapper.find('.line-target').text()).toBe('A tea, please.')
     expect(wrapper.find('.mic-word').text()).toContain('Recording')
-    expect(wrapper.find('.stage-progress').text()).toContain('0 of 1')
+    expect(wrapper.find('.stage-progress').text()).toContain('1 of 2')
 
     // AND IT SAYS NOTHING AT ALL. Tom, 2026-09-03: fixing a line nobody has
     // read is not an edit with a consequence — there is no take to clear and
