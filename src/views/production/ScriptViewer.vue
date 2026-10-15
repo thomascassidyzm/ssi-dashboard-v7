@@ -244,6 +244,26 @@
           </div>
         </div>
 
+        <!-- WHERE YOU LEFT OFF (job #804): by LEGO, never by round number, which moves. -->
+        <div
+          v-if="resumePlace && !isLoadingJourney"
+          class="resume-place flex items-center gap-3 mb-4 px-4 py-3 rounded-lg border border-emerald-600 bg-emerald-900 bg-opacity-20"
+          data-test="resume-place"
+        >
+          <span class="text-sm text-ink flex-1">
+            You were last at <strong>seed {{ seedOfLego(resumePlace.legoId) }}</strong>
+            <span class="font-mono text-emerald-400">({{ resumePlace.legoId }})</span>
+            <span v-if="resumeNote" class="block text-muted mt-0.5">{{ resumeNote }}</span>
+          </span>
+          <button
+            class="px-3 py-1.5 text-sm bg-emerald-500 text-white rounded hover:bg-emerald-600 transition-colors"
+            :disabled="resuming"
+            data-test="resume-continue"
+            @click="continueFromPlace"
+          >{{ resuming ? 'Finding it…' : 'Continue where you left off' }}</button>
+          <button class="text-muted hover:text-ink text-lg leading-none" title="Dismiss" data-test="resume-dismiss" @click="dismissPlace">&times;</button>
+        </div>
+
         <!-- Learning Journey View Component -->
         <LearningJourneyView
           v-else-if="learningJourneyData"
@@ -261,6 +281,7 @@
           @presentation-edit="onJourneyPresentationEdit"
           @lego-audio-edit="onJourneyLegoAudioEdit"
           @phrase-flag="onJourneyPhraseFlag"
+          @round-open="rememberPlace"
         />
       </template>
     </div>
@@ -977,6 +998,7 @@ import { useRoute } from 'vue-router';
 import AudioPlayer from './components/AudioPlayer.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
 import { regenRequest, RegenInterruptedError, INTERRUPTED_MESSAGE } from './regen-request.js';
+import { readPlace, savePlace, seedOfLego, roundOfLego } from './review-place.js';
 import LearningJourneyView from './components/LearningJourneyView.vue';
 import AudioPreviewCourseGaps from './components/AudioPreviewCourseGaps.vue';
 import { getApiUrl } from '@/services/api';
@@ -1307,6 +1329,61 @@ const jumpToRound = async (roundNumberArg?: number) => {
   await learningJourneyRef.value?.scrollToRound(target);
 };
 
+// ── WHERE THE REVIEWER LEFT OFF (job #804) — see review-place.js for why it is a LEGO id. ──
+// The place offered is the one this browser held when the page opened; once the reviewer opens,
+// plays or edits anything, that becomes the new place and the offer goes away.
+const reviewerEmail = computed(() => (authUser.value as any)?.email || null);
+const resumePlace = ref<{ legoId: string; at: string | null } | null>(null);
+const resumeNote = ref<string | null>(null);
+const resuming = ref(false);
+let placeTouched = false;
+watch([reviewerEmail, courseCode], () => {
+  if (!placeTouched) resumePlace.value = readPlace(reviewerEmail.value, courseCode.value);
+}, { immediate: true });
+const rememberPlace = (legoId: string | undefined) => {
+  if (!legoId || !savePlace(reviewerEmail.value, courseCode.value, legoId)) return;
+  placeTouched = true;
+  if (!resuming.value) resumePlace.value = null;
+};
+const dismissPlace = () => {
+  placeTouched = true;
+  resumePlace.value = null;
+};
+const continueFromPlace = async () => {
+  const place = resumePlace.value;
+  const seed = place && seedOfLego(place.legoId);
+  if (!place || !seed || resuming.value) return;
+  resuming.value = true;
+  resumeNote.value = null;
+  try {
+    // Which round that LEGO is in TODAY: the seed search returns its rounds, numbered as now.
+    const r = await fetch(
+      `${getApiBaseUrl()}/api/production/${courseCode.value}/learning-journey/search?q=${seed}`,
+      { headers: {}, signal: AbortSignal.timeout(60000) }
+    );
+    const round = r.ok ? roundOfLego((await r.json()).rounds, place.legoId) : null;
+    if (round) {
+      journeySearch.value = '';
+      journeySearchResults.value = null;
+      journeySearchAllItems.value = null;
+      await jumpToRound(round);
+      if (roundOfLego(learningJourneyData.value?.rounds, place.legoId)) {
+        await learningJourneyRef.value?.scrollToRound(round);
+        dismissPlace();
+        return;
+      }
+    }
+    // Not in the window it should be in (the learner-audio view numbers rounds differently, or the
+    // LEGO has left the journey): show that seed's rounds by search instead, which always works.
+    journeySearch.value = String(seed);
+    resumeNote.value = round ? null : `Seed ${seed} is shown below; ${place.legoId} itself is no longer in the journey.`;
+    if (round) dismissPlace();
+  } catch {
+    resumeNote.value = 'Could not reach the server to find it — try again in a moment.';
+  } finally {
+    resuming.value = false;
+  }
+};
 // Keep ?round= in sync so the current view is shareable/bookmarkable.
 const updateRoundQueryParam = (roundNumber: number) => {
   const url = new URL(window.location.href);
@@ -1476,7 +1553,7 @@ const getApiBaseUrl = (): string => {
 // Admin-gated fetch — attach a fresh Supabase access token as Bearer.
 // Mirrors the PodDetailView authedFetch pattern. Required for the
 // regenerate-phrase endpoint (requireAdmin — it costs TTS, D3).
-const { getAccessToken } = useAuth();
+const { getAccessToken, user: authUser } = useAuth();
 const authedFetch = async (path: string, init: RequestInit = {}): Promise<Response> => {
   const token = await getAccessToken();
   const headers: Record<string, string> = {
@@ -1989,6 +2066,7 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
 // Journey view: item edit handler
 const onJourneyItemEdit = (item: any) => {
+  rememberPlace(item.legoId || item.lego_id);
   // D4: intro / component_intro narration is NOT phrase-role audio — it lives in
   // course_audio as a presentation clip. Route those edits through the dedicated
   // presentation path (regenerate-presentation), never regenerate-phrase.
@@ -2036,6 +2114,7 @@ const presentationIsSuggested = ref(false);
 let presentationBaselineKey: string | null | undefined;
 
 const onJourneyPresentationEdit = async (item: any) => {
+  rememberPlace(item.legoId || item.lego_id);
   const legoId = item.legoId || item.lego_id;
   if (!legoId) return;
   presentationLegoId.value = legoId;
@@ -2190,6 +2269,7 @@ const legoSelectedRoles = computed(() =>
 );
 
 const onJourneyLegoAudioEdit = (item: any) => {
+  rememberPlace(item.legoId || item.lego_id);
   const legoId = item.legoId || item.lego_id;
   if (!legoId) return;
   legoAudioLegoId.value = legoId;
