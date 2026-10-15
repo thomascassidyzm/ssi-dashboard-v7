@@ -112,9 +112,16 @@
         <!-- B'S RAIL, DESKTOP ONLY: one square per line of this batch, filling in as he reads.
              Progress, not navigation — nothing in it is tappable, so a desktop reader can feel
              how far through he is without a control within reach while the mic is live. -->
-        <ol v-if="phase !== 'done' && lines.length > 1" class="rail" aria-hidden="true" data-test="rail">
-          <li v-for="(l, i) in lines" :key="l.id || i" class="rail-sq" :class="railClass(l, i)"></li>
-        </ol>
+        <div v-if="phase !== 'done' && lines.length > 1" class="rail-wrap">
+          <ol class="rail" aria-hidden="true" data-test="rail">
+            <li v-for="(l, i) in lines" :key="l.id || i" class="rail-sq" :class="railClass(l, i)"></li>
+          </ol>
+          <!-- THE LEGEND (Aran, 2026-10-15): the squares used to say nothing, and in light mode
+               green and red were painted grey, so saved looked like not-yet-recorded. -->
+          <ul class="rail-legend" data-test="rail-legend">
+            <li v-for="k in RAIL_LEGEND" :key="k.state"><i class="rail-sq" :class="k.state"></i>{{ k.words }}</li>
+          </ul>
+        </div>
 
         <!-- ── Ready: the batch page, with the first line already in place ─────────────── -->
         <main v-if="phase === 'ready'" class="rc-card centre" data-test="ready">
@@ -369,7 +376,10 @@
            bindings, same advance-lock. -->
       <footer class="transport" data-test="transport">
         <div v-if="phase === 'ready'" class="transport-in one">
-          <button v-if="!voice.setupCheck" class="btn-begin" :disabled="startIndex === -1" @click="begin">
+          <!-- NOTHING LEFT IN THIS BATCH: the way on is the big button, not a dead one (Aran, 2026-10-15). -->
+          <button v-if="!voice.setupCheck && startIndex === -1 && nextBatchN" class="btn-begin btn-next-batch" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Next batch →</button>
+          <button v-else-if="!voice.setupCheck && startIndex === -1 && batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
+          <button v-else-if="!voice.setupCheck" class="btn-begin" :disabled="startIndex === -1" @click="begin">
             {{ startIndex === -1 ? 'Nothing left to read' : 'Start recording' }}
           </button>
           <!-- SETTINGS, FOLDED INTO ONE LINE before Start: how the run moves on and which mic. -->
@@ -388,8 +398,8 @@
         </div>
         <div v-else class="transport-in" :class="{ one: !nextBatchN && !batchScope }">
           <button class="btn-ghost" @click="backToStart">Back to my lines</button>
-          <button v-if="nextBatchN" class="btn-begin" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Carry on: batch {{ nextBatchN }} ›</button>
-          <button v-else-if="batchScope" class="btn-begin" @click="goHome">Back to home</button>
+          <button v-if="nextBatchN" class="btn-begin btn-next-batch" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Next batch →</button>
+          <button v-else-if="batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
         </div>
         <p v-if="phase === 'recording'" class="kbd-hint">
           <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>B</kbd> back
@@ -1399,6 +1409,15 @@ const whereWords = computed(() => {
   return who ? `${who} · ${left}` : left
 })
 // One square of the desktop rail: the same four facts the map draws, plus where he is.
+// THE RAIL'S FOUR STATES, one colour each, never two states in one colour (Aran, 2026-10-15):
+// done = the server holds the take (green); up = recorded, still uploading (amber); failed =
+// the server refused it (red); empty = not recorded yet (grey).
+const RAIL_LEGEND = [
+  { state: 'done', words: 'Saved on the server' },
+  { state: 'up', words: 'Recorded, still uploading' },
+  { state: 'failed', words: 'Refused, record again' },
+  { state: 'empty', words: 'Not recorded yet' },
+]
 function railClass(l, i) {
   return {
     now: phase.value === 'recording' ? i === index.value : i === startIndex.value,
@@ -2616,7 +2635,27 @@ function describeTrack(t) {
   const named = SECTION_ORDER.find(x => x.key === t.kind)
   return { short: 'Lines', cls: 'k-other', title: named ? named.heading : 'Everything else', what: named ? named.blurb : '' }
 }
-const homeTracks = computed(() => ((homeSummary.value && homeSummary.value.tracks) || []).map(t => ({ ...t, ...describeTrack(t) })))
+// WHAT THIS DEVICE HAS RECORDED OF A BATCH, ahead of the server's count (Aran, 2026-10-15): takes
+// still uploading are not in the summary, so Up next kept offering the batch he had just finished.
+// Only ever raises a count, and only for the batch the device has open.
+const localBatchRecorded = ref({})
+watch([recordedCount, () => lines.value.length, batchScope], () => {
+  const b = batchScope.value
+  if (!b || !lines.value.length) return
+  const k = `${b.track}#${b.batch}`
+  if (recordedCount.value > (localBatchRecorded.value[k] || 0)) localBatchRecorded.value = { ...localBatchRecorded.value, [k]: recordedCount.value }
+})
+function withLocalRecorded(t) {
+  let extra = 0
+  const batches = (t.batches || []).map(b => {
+    const mine = Math.min(localBatchRecorded.value[`${t.key}#${b.n}`] || 0, b.total || 0)
+    if (mine <= (b.recorded || 0)) return b
+    extra += mine - (b.recorded || 0)
+    return { ...b, recorded: mine }
+  })
+  return extra ? { ...t, batches, recorded: (t.recorded || 0) + extra } : t
+}
+const homeTracks = computed(() => ((homeSummary.value && homeSummary.value.tracks) || []).map(t => ({ ...withLocalRecorded(t), ...describeTrack(t) })))
 const homeMainHeading = computed(() => {
   const codes = new Set(homeTracks.value.filter(t => t.kind === 'phrase' || t.newCourse).map(t => t.courseCode))
   return codes.size === 1 ? boothCourseWords([...codes][0], 'New work') : 'New work'
@@ -3566,7 +3605,7 @@ kbd {
 .recordist.fit .kbd-hint { margin: 0.35rem 0 0; }
 
 /* B's rail: desktop only, a column of small squares beside the line. */
-.rail { display: none; }
+.rail-wrap { display: none; }
 
 /* C's done list: this session's takes, each with ▶ and Again, mic off. */
 .recordist.fit .done-card { padding: 0.75rem 1.25rem 0; width: 100%; max-width: 900px; margin: 0 auto; overflow-y: auto; }
@@ -3610,15 +3649,23 @@ kbd {
   }
   /* Push, not cover: the line re-centres in what is left, so it stays readable. */
   .recordist.fit.sheet-open { padding-right: 420px; box-sizing: border-box; }
-  .rail {
-    flex: none; display: grid; grid-template-columns: repeat(10, 14px); grid-auto-rows: 14px; gap: 4px;
-    align-content: center; list-style: none; margin: 0; padding: 1rem 1.25rem; overflow: hidden;
-    border-right: 1px solid var(--line, #334155);
+  .rail-wrap {
+    flex: none; display: flex; flex-direction: column; justify-content: center; gap: 0.75rem;
+    padding: 1rem 1.25rem; overflow: hidden; border-right: 1px solid var(--line, #334155);
   }
-  .rail-sq { border-radius: 3px; background: var(--surface-2, #334155); }
-  .rail-sq.done { background: var(--accent-2, #34d399); }
-  .rail-sq.up { background: var(--accent, #ffa630); opacity: 0.7; }
-  .rail-sq.failed { background: var(--danger, #f87171); }
+  .rail {
+    display: grid; grid-template-columns: repeat(10, 14px); grid-auto-rows: 14px; gap: 4px;
+    list-style: none; margin: 0; padding: 0;
+  }
+  .rail-legend { display: flex; flex-direction: column; gap: 0.3rem; list-style: none; margin: 0; padding: 0; font-size: 0.78rem; color: var(--ink-2, #cbd5e1); max-width: 150px; }
+  .rail-legend li { display: flex; align-items: center; gap: 0.4rem; }
+  .rail-legend .rail-sq { flex: none; width: 14px; height: 14px; }
+  /* Each state its own colour, the same weight of selector in dark and light, so a theme rule can
+     never paint one state over another (light mode once painted done and failed grey). */
+  .rail-sq { border-radius: 3px; background: #334155; }
+  .rail-sq.done { background: #34d399; }
+  .rail-sq.up { background: #f59e0b; }
+  .rail-sq.failed { background: #f87171; }
   .rail-sq.now { box-shadow: 0 0 0 2px var(--ink, #f1f5f9); }
   .recordist.fit .line-target, .recordist.fit .ready-line { font-size: 3.1rem; max-width: 30ch; }
   .recordist.fit .upnext-list li:nth-child(-n+3) { display: list-item; }
@@ -3655,8 +3702,11 @@ kbd {
 :root[data-theme="light"] .mic.is-playing { background: #fef6e0; color: #92400e; }
 :root[data-theme="light"] .mic.is-loud { background: #fdecec; color: #b91c1c; }
 :root[data-theme="light"] .pnote { background: #eef0f3; color: #334155; }
-:root[data-theme="light"] .rail-sq { background: #e5e9ef; }
+:root[data-theme="light"] .rail-sq { background: #cbd5e1; }
+:root[data-theme="light"] .rail-sq.done { background: #047857; }
 :root[data-theme="light"] .rail-sq.up { background: #d97706; }
+:root[data-theme="light"] .rail-sq.failed { background: #dc2626; }
+:root[data-theme="light"] .rail-legend { color: #334155; }
 :root[data-theme="light"] .rail-sq.now { box-shadow: 0 0 0 2px #0f172a; }
 :root[data-theme="light"] .status .ctl-pause { background: #047857; }
 :root[data-theme="light"] .status .ctl-pause.paused { background: #a85508; }
