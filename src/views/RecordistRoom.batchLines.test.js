@@ -215,4 +215,22 @@ describe('RecordistRoom — Lines & settings lists every line of the batch', () 
     await flushPromises()
     expect(onLine(w)).toBe('llinell 2')
   })
+
+  it('stops the sheet playback before opening the mic from a row', async () => {
+    let playing = false
+    globalThis.Audio = class {
+      play() { playing = true; return Promise.resolve() }
+      pause() { playing = false }
+    }
+    const w = await mountReady([1, 2])
+    await tap(w, '[data-test="open-sheet"]')
+    await w.findAll('.bl-play')[0].trigger('click')
+    await flushPromises()
+    expect(playing).toBe(true)
+    await w.findAll('[data-test="batch-line-record"]')[1].trigger('click')
+    await flushPromises()
+    expect(onLine(w)).toBe('llinell 2')
+    expect(playing).toBe(false)
+    w.unmount()
+  })
 })

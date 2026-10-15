@@ -13,6 +13,9 @@ import { createRouter, createMemoryHistory, RouterView } from 'vue-router'
 beforeEach(() => { if (typeof localStorage === 'undefined') return; for (const k of Object.keys(localStorage)) if (k.startsWith('recordist.cursor.')) localStorage.removeItem(k) })
 
 const mounts = []
+vi.mock('@/composables/useAuth', () => ({
+  useAuth: () => ({ getAccessToken: async () => 'signed-in-admin-token' }),
+}))
 vi.mock('./RecordistRoom.vue', () => ({
   default: defineComponent({
     name: 'RecordistRoom',
@@ -51,6 +54,12 @@ async function open(path, tabs) {
 
 describe('RecordistBooth', () => {
   beforeEach(() => { localStorage.clear(); mounts.length = 0 })
+
+  it('presents the signed-in identity when asking which sibling voices may be opened', async () => {
+    const { wrapper } = await open('/r/human_aran_cym_n', TABS)
+    expect(global.fetch.mock.calls[0][1].headers.Authorization).toBe('Bearer signed-in-admin-token')
+    wrapper.unmount()
+  })
 
   it('a one-voice artist sees no tabs, only the booth', async () => {
     const { wrapper } = await open('/r/human_dan_cym_s', [{ ...TABS[0], voiceId: 'human_dan_cym_s' }])
