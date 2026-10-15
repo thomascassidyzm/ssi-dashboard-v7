@@ -61,6 +61,21 @@ export function withDeviceTakes(tracks, { unsent = [], placeOf = () => null } = 
   })
 }
 
+/**
+ * WHAT THIS DEVICE HAS RECORDED OF THE BATCH ON SCREEN, by line id (job #818). `credit` is
+ * { 'track#n': [lineId] }; returns it unchanged unless the lines on screen are the batch the
+ * address names — `served` is the server's answer they came in ({ track, batch }), and until it
+ * names `scope` the lines belong to the batch just left. Ids only ever accumulate.
+ */
+export function creditLoadedBatch(credit, { scope, served, lines, isRecorded }) {
+  if (!scope || !served || served.track !== scope.track || Number(served.batch) !== Number(scope.batch)) return credit
+  const k = `${scope.track}#${scope.batch}`
+  const have = new Set(credit[k] || [])
+  const before = have.size
+  for (const l of lines || []) if (isRecorded(l)) have.add(l.id)
+  return have.size === before ? credit : { ...credit, [k]: [...have] }
+}
+
 // WHERE EACH LINE THIS DEVICE HAS OPENED SITS (job #791), so a take still on the shelf can be
 // counted against its batch without reading the whole queue. lineId → [track, batch, recorded].
 // Kept small: entries for lines no longer on the shelf are dropped once it passes PLACES_MAX.
