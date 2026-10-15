@@ -3909,7 +3909,8 @@ app.delete('/api/production/:courseCode/phrases/:phraseId', async (req, res) => 
 // Point seed / LEGO / phrase audio slots at clips that already exist (job #388). Fill-only unless
 // replace:true + expectCurrent; text must match; never deletes a clip. Rules: services/shared/link-clip.cjs.
 // Body: { links: [{ seedNumber | legoId | phraseId | podSentenceId, role, audioId, replace?, expectCurrent?, allowDraft? }], dryRun? }
-// A pod sentence takes role 'target' or 'known' (job #391).
+// A pod sentence takes role 'target' or 'known' (job #391), or 'segment' / 'takeg' to replace one clip of its
+// sentence_audio_ids / takeg_audio_ids arrays (job #864, replace-only).
 app.post('/api/production/:courseCode/link-clip', async (req, res) => {
   if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
   try {
