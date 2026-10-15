@@ -4,6 +4,13 @@ Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/qa/siblin
 
 [Service]
 Type=oneshot
+# System unit: owner credentials remain private to popty (#384/#391).
+User=popty
+Group=tomcassidy
+UMask=0002
+Environment=HOME=/home/tomcassidy
+EnvironmentFile=/etc/popty/popty.env
+EnvironmentFile=/etc/popty/owner.env
 # ── WHY NOT THE SHARED CHECKOUT ─────────────────────────────────────────────
 # The shared checkout sits on whatever branch a human session left it on and
 # carries their in-flight edits, so a unit pointed there fires into nothing the
@@ -11,8 +18,8 @@ Type=oneshot
 # detached QA worktree that ssi-voice-variety already uses, refreshed to
 # origin/main before every run, so it always executes the code that landed.
 WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
-ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
-ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
+ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
+ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
 ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/qa/sibling-identity/nightly.cjs
 # Read-only. Six grouped scans, the largest over ~855k course_practice_phrases
 # rows; ~2 minutes, almost all of it Postgres-side. This box is four cores

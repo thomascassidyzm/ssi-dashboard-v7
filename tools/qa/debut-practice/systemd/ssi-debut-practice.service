@@ -3,10 +3,17 @@ Description=Daily alarm: debut LEGOs with no practice in learner-facing courses 
 
 [Service]
 Type=oneshot
+# System unit: owner credentials remain private to popty (#384/#391).
+User=popty
+Group=tomcassidy
+UMask=0002
+Environment=HOME=/home/tomcassidy
+EnvironmentFile=/etc/popty/popty.env
+EnvironmentFile=/etc/popty/owner.env
 # Runs the code that LANDED: the detached QA worktree ssi-sibling-identity uses, refreshed to origin/main.
 WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
-ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
-ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
+ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
+ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
 ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/qa/debut-practice/nightly.cjs
 # One SQL call, ~20s, all Postgres-side. Back seat and a hard cap regardless.
 Nice=15
