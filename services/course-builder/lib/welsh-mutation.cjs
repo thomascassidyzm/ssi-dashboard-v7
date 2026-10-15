@@ -201,13 +201,18 @@ function welshPieces(text) {
 const CLITIC_FULL = new Map([["'n", 'yn'], ["'r", 'yr'], ['y', 'yr']]);
 
 /** Every spelling this piece is the same taught word as: soft radicals, and final f ↔ apostrophe. */
-function pieceKeys(w) {
+// `prev` is the piece in front, when the caller knows it (the taught/untaught word lists): then "’n"
+// is "yn" only after a vowel-final host other than "o" — welshExpandYn's own rule — so the verb
+// "o’n" and "nhad’n" are not yn (lanes review of 895de11). Without `prev` (LEGO containment, which
+// has already mapped clitics to full words) both directions alias as before.
+const ynHost = (prev) => typeof prev === 'string' && YN_HOST_FINAL.test(prev) && !NOT_YN_HOSTS.has(prev);
+function pieceKeys(w, prev) {
   const keys = new Set();
   const forms = [w];
   if (/\p{L}'$/u.test(w)) forms.push(w.slice(0, -1) + 'f');
   // The clitic "’n" and the full particle "yn" are one taught word (welshExpandYn, Aran 2026-10-14).
-  if (w === "'n") forms.push('yn');
-  else if (w === 'yn') forms.push("'n");
+  if (w === "'n") { if (prev === undefined || ynHost(prev)) forms.push('yn'); }
+  else if (w === 'yn' && prev === undefined) forms.push("'n");
   for (const f of forms) for (const r of softRadicals(f)) keys.add(r);
   return keys;
 }
@@ -215,13 +220,13 @@ function pieceKeys(w) {
 /** The set of taught keys from every text of a vocabulary (LEGO, component and seed targets). */
 function welshTaughtKeys(texts) {
   const keys = new Set();
-  for (const t of texts) for (const p of welshPieces(t)) for (const k of pieceKeys(p)) keys.add(k);
+  for (const t of texts) welshPieces(t).forEach((p, i, ps) => { for (const k of pieceKeys(p, i ? ps[i - 1] : null)) keys.add(k); });
   return keys;
 }
 
 /** The phrase's words NOT taught by `taughtKeys` (welshTaughtKeys), in order; [] when all taught. */
 function welshUntaughtWords(phraseTarget, taughtKeys) {
-  return welshPieces(phraseTarget).filter(p => ![...pieceKeys(p)].some(k => taughtKeys.has(k)));
+  return welshPieces(phraseTarget).filter((p, i, ps) => ![...pieceKeys(p, i ? ps[i - 1] : null)].some(k => taughtKeys.has(k)));
 }
 
 /**

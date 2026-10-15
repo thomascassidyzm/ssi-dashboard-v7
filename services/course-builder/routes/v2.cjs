@@ -26,7 +26,7 @@ const { emitProgress } = require('../../shared/emit-progress.cjs');
 const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 const { loadRunningOrder, filterSeedsBefore, orderKey } = require('../../shared/running-order.cjs');
-const { isSoftMutationVariant, isSameWelsh } = require('../lib/welsh-mutation.cjs');
+const { isSameWelsh } = require('../lib/welsh-mutation.cjs');
 
 // ---------------------------------------------------------------------------
 // Validation-sweep helpers (extracted from the /v2/validate loop so the sweep
@@ -401,9 +401,9 @@ module.exports = function(ctx) {
             } else if (existingTarget === newTarget) {
               legoStatuses.set(lego.idx, 'duplicate');
               totalDeduplicated++;
-            } else if (isSoftMutationVariant(courseCode, existing.target_text, lego.target)) {
-              // Welsh: a soft-mutated form of a taught LEGO is already taught (Aran, 2026-10-07;
-              // lib/welsh-mutation.cjs). Same LEGO, not a ZUT fork.
+            } else if (isSameWelsh(courseCode, existing.target_text, lego.target)) {
+              // Welsh: a soft-mutated or 'n-contracted form of a taught LEGO is already taught (Aran,
+              // 2026-10-07 / 2026-10-14, K43; lib/welsh-mutation.cjs). Same LEGO, not a ZUT fork.
               legoStatuses.set(lego.idx, 'duplicate');
               totalDeduplicated++;
               mutationDuplicates.push({ seed_number: draft.seed_number, lego_idx: lego.idx, known: lego.known, target: lego.target, taught_as: existing.target_text, taught_at: existing.seed_number });
@@ -426,7 +426,7 @@ module.exports = function(ctx) {
             if (later &&
                 normalizeForStorage(later.target_text) !== normalizeForStorage(lego.target) &&
                 !isLicensedGenderVariant(genderLicence, later.target_text, lego.target) &&
-                !isSoftMutationVariant(courseCode, later.target_text, lego.target)) {
+                !isSameWelsh(courseCode, later.target_text, lego.target)) {
               collisions.push({
                 seed_number: draft.seed_number,
                 lego_known: lego.known,
