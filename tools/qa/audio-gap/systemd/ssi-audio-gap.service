@@ -11,6 +11,9 @@ UMask=0002
 Environment=HOME=/home/tomcassidy
 EnvironmentFile=/etc/popty/popty.env
 EnvironmentFile=/etc/popty/owner.env
+# The landed audio-gap tool reads this filename directly. Bind only inside
+# this popty service namespace; never copy or expose the owner credential.
+BindReadOnlyPaths=/etc/popty/owner.env:/home/tomcassidy/SSi/popty-qa-nightly/.env.psql
 WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
 ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
 ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
