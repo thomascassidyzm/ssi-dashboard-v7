@@ -97,7 +97,11 @@ function applyPlan(dump) {
       seen.add(b);
       const position = (posNext.get(dest.lego_id) || maxPos(dest.lego_id)) + 1; posNext.set(dest.lego_id, position);
       const id = nextId(dest.lego_id, 'U');
+      // a moved row whose German this tool rewrote must not keep the OLD German's clips: nothing
+      // re-checks audio on insert (lanes review of e7fb243); wanted() asks for the new ones
+      const rw = REWRITES.find((r) => r[0] === sid(p.id)), germanChanged = !!rw && rw[2] !== rw[4];
       const row = { ...p, id: P(id), seed_number: dest.seed_number, lego_index: dest.lego_index, lego_id: dest.lego_id, position, phrase_role: 'use', known_audio_id: null,
+        ...(germanChanged ? { target1_audio_id: null, target2_audio_id: null } : {}),
         metadata: { ...(p.metadata || {}), moved_from: sid(p.id), moved_by: `job ${JOB} deu egal divide (S0593L01 now no matter, not new)` } };
       delete row.course_code; delete row.last_edit_event_id;
       inserts.push({ from: sid(p.id), row, dest: dest.lego_id });
@@ -185,12 +189,18 @@ function textOps(dump) {
   for (const n of SEEDS_TO_UNAPPROVE.concat(post.inserts.map((i) => i.row.seed_number))) if (!ops.some((o) => o.op === 'seed.update' && o.seed_number === n)) ops.push({ op: 'seed.update', seed_number: n, set: { approved_at: null } });
   return ops;
 }
-/** Known-side clips the new English needs (a moved row is a new row, so it needs its own). */
+/** Clips the new text needs: known for new English, target1 + target2 for new German (lanes review of
+ * e7fb243), each addressed to the row's new id when it moved (a moved row is a new row). */
 function wanted(dump) {
   const post = applyPlan(dump), live = new Map(dump.phrases.map((p) => [sid(p.id), p])), out = [];
   const moved = new Set(post.inserts.map((i) => i.from));
   for (const r of REWRITES) { const p = live.get(r[0]); if (p && !moved.has(r[0]) && r[3] !== r[1]) out.push({ role: 'known', text: r[3], phrase: P(r[0]) }); }
   for (const i of post.inserts) out.push({ role: 'known', text: i.row.known_text, phrase: i.row.id });
+  for (const r of REWRITES) {
+    if (!live.get(r[0]) || r[2] === r[4]) continue;
+    const mv = post.inserts.find((i) => i.from === r[0]);
+    for (const role of ['target1', 'target2']) out.push({ role, text: r[4], phrase: mv ? mv.row.id : P(r[0]) });
+  }
   return out;
 }
 function linkOps(dump, map) {
@@ -219,7 +229,7 @@ if (require.main === module) {
   } else if (cmd === 'renders') {
     const apply = rest.includes('--apply'); const map = {}; let chars = 0, refused = 0;
     for (const r of wanted(dump).filter((x, i, a) => a.findIndex((y) => y.role === x.role && y.text === x.text) === i)) {
-      const args = [path.join(__dirname, '..', 'audio', 'render.cjs'), '--course', COURSE, '--role', r.role, '--text', r.text, '--purpose', `${JOB} deu egal divide English rows`, '--job', JOB];
+      const args = [path.join(__dirname, '..', 'audio', 'render.cjs'), '--course', COURSE, '--role', r.role, '--text', r.text, '--purpose', `${JOB} deu egal divide rewritten rows`, '--job', JOB];
       if (!apply) args.push('--dry-run');
       const res = spawnSync('node', args, { encoding: 'utf8', env: { ...process.env, AGENT_ID: 'kai-watson-520' } });
       let out = {}; try { out = JSON.parse(res.stdout); } catch (_) { out = { ok: false, error: (res.stdout || res.stderr || '').slice(-300) }; }
