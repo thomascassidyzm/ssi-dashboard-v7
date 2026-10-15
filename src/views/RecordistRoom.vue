@@ -183,6 +183,19 @@
 
         <!-- ── Recording: ONE line, big ────────────────────────────────────────────────── -->
         <main v-else-if="phase === 'recording'" class="stage centre" :class="{ 'is-paused': paused }">
+          <!-- A REFUSED TAKE IS IMPOSSIBLE TO MISS (Aran, 2026-10-15): the server said no to a
+               take (e.g. steady noise, no speech) and nothing was filed. Red, names the line, and
+               stays until he re-records it or dismisses it. The line is already back in the queue
+               as not-recorded (isRecorded is false while it is failed). -->
+          <div v-if="refusedNotices.length" class="refused-notice" role="alert" data-test="refused-notice">
+            <div v-for="n in refusedNotices" :key="n.id" class="refused-row">
+              <span class="refused-text">
+                <strong>That line didn't save:</strong> “{{ plainText(n.text) }}” — {{ n.reason }}
+              </span>
+              <button class="refused-act" data-test="refused-rerecord" @click="recordOne(n.id)">Tap to re-record</button>
+              <button class="refused-dismiss" data-test="refused-dismiss" aria-label="Dismiss" @click="dismissRefused(n.id)">✕</button>
+            </div>
+          </div>
           <div class="centre-line">
             <p v-if="paused" class="pnote">Paused — nothing is being recorded. That attempt was thrown away.</p>
             <!-- THE CROSSING (Aran, 2026-09-10): drawn in flow above the line, interrupts nothing,
@@ -1792,6 +1805,25 @@ const sessionLines = computed(() =>
 )
 const failedList = computed(() => sessionLines.value.filter(l => queue.failed.has(l.id)))
 
+// REFUSED TAKES SHOWN WHILE RECORDING. `queue.failed` holds the server's own words per line (the
+// upload route answers non-2xx with {error}); the notice stays until the line is re-recorded
+// (it leaves `failed`) or dismissed. A dismissal is forgotten when the line leaves `failed`, so a
+// later refusal of the same line shows again.
+const dismissedRefusals = ref(new Set())
+const refusedNotices = computed(() =>
+  lines.value
+    .filter(l => queue.failed.has(l.id) && !queue.saved.has(l.id) && !dismissedRefusals.value.has(l.id))
+    .map(l => ({ id: l.id, text: l.text, reason: queue.failed.get(l.id) }))
+)
+function dismissRefused(lineId) {
+  dismissedRefusals.value = new Set([...dismissedRefusals.value, lineId])
+}
+watch(() => [...queue.failed.keys()], keys => {
+  if ([...dismissedRefusals.value].some(id => !keys.includes(id))) {
+    dismissedRefusals.value = new Set([...dismissedRefusals.value].filter(id => keys.includes(id)))
+  }
+})
+
 function stopPlayback() {
   if (audioEl) { audioEl.onended = null; audioEl.onerror = null; audioEl.pause() }
   playingId.value = null
@@ -2879,6 +2911,15 @@ onDeactivated(() => {
    RecordistRoom.bannerContrast.test.js recomputes them and fails if one drops. */
 .safety-banner.waiting { background: #15243f; border-color: #3b6fb5; color: #dbe9ff; }
 .safety-banner.risk { background: #3a1512; border-color: #d0574c; color: #ffdad5; }
+.refused-notice { width: 100%; max-width: 46rem; margin: 0 auto 0.75rem; background: #7f1d1d; color: #fff; border: 2px solid #f87171; border-radius: 10px; padding: 0.6rem 0.8rem; }
+.refused-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.refused-row + .refused-row { margin-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 0.5rem; }
+.refused-text { flex: 1 1 14rem; font-size: 1rem; line-height: 1.35; }
+.refused-act { background: #fff; color: #7f1d1d; border: 0; border-radius: 8px; padding: 0.5rem 0.9rem; font-weight: 700; cursor: pointer; }
+.refused-dismiss { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.6); border-radius: 8px; padding: 0.4rem 0.7rem; cursor: pointer; }
+:root[data-theme="light"] .refused-notice { background: #fee2e2; color: #7f1d1d; border-color: #dc2626; }
+:root[data-theme="light"] .refused-act { background: #b91c1c; color: #fff; }
+:root[data-theme="light"] .refused-dismiss { color: #7f1d1d; border-color: #b91c1c; }
 .safety-banner.refused { background: #3a2a0d; border-color: #e8a02a; color: #ffe9c2; }
 /* ONE BATCH (job #347): where he is and the way back to the home screen. */
 .batch-head { margin: -0.4rem 0 0.9rem; }
