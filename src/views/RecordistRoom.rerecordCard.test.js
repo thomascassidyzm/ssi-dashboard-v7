@@ -105,6 +105,16 @@ describe('booth home — the re-record card', () => {
     expect(w.text()).toContain('Re-record · 3 left')
   })
 
+  it('does not classify a refused phrase outside the currently served batch as an old copy', async () => {
+    // The ordinary queue contains only the current phrase batch. /rerecord indexes
+    // all batches and returns neither recordedAlso nor goneAlso for this valid id.
+    const id = 'phrase:later:target1'
+    const w = await home([rec(id, 'refused', 'no audible speech'), rec('s4', 'pending')])
+    expect(w.find('[data-test="rerecord-count"]').text()).toBe('3 lines to re-record')
+    expect(w.find('[data-test="rerecord-old"]').exists()).toBe(false)
+    w.unmount()
+  })
+
   it('hides when there is nothing to re-record', async () => {
     ITEMS.splice(0, ITEMS.length)
     const w = await home([])
