@@ -33,8 +33,19 @@ if [ ! -x "$REAL" ]; then
   exit 127
 fi
 
+# #86 (2026-10-12): NO_SEMAPHORE skips the QUEUE only. It used to `exec "$REAL" "$@"` raw, so a
+# caller passing -t 4 (the #83 welcomes script) burned 2 cores for minutes, unclamped and at normal
+# priority. Now the thread clamp and nice still apply; only the slot wait is bypassed.
+# Revert: restore the one-line `exec "$REAL" "$@"`.
 if [ "${WHISPER_NO_SEMAPHORE:-0}" = "1" ]; then
-  exec "$REAL" "$@"
+  nargs=(); nprev=""
+  for a in "$@"; do
+    if [ "$nprev" = "-t" ] || [ "$nprev" = "--threads" ]; then
+      if [ "$a" -gt "${WHISPER_MAX_THREADS:-2}" ] 2>/dev/null; then a="${WHISPER_MAX_THREADS:-2}"; fi
+    fi
+    nargs+=("$a"); nprev="$a"
+  done
+  exec nice -n "${WHISPER_NICE:-15}" "$REAL" "${nargs[@]}"
 fi
 
 # Auto-bypass for interactive transcription. command-surface's voice path
@@ -65,13 +76,30 @@ done
 
 SEMDIR="${WHISPER_SEM_DIR:-/tmp/whisper-sem}"
 mkdir -p "$SEMDIR" 2>/dev/null || true
+# ONE SEMAPHORE, EVERY USER (2026-10-15, live). Popty's services run as `popty` since job #391 while
+# Tom's own tools run as tomcassidy. Whoever made this dir first owned it 755 with 644 slots, so the
+# other user could not open a slot, `continue`d past every one, and polled here FOR EVER: production
+# filed no booth take from 14 Oct 15:39 UTC until the dir was opened up. So the dir is sticky and
+# world-writable and every slot is created world-writable, whoever gets here first. (The callers in
+# services/audio-veracity.cjs also time a decode out now, so a wait here can never hang an upload.)
+chmod 1777 "$SEMDIR" 2>/dev/null || true
+for i in $(seq 1 "$SLOTS"); do
+  [ -e "$SEMDIR/slot$i" ] || ( umask 000; : > "$SEMDIR/slot$i" ) 2>/dev/null || true
+done
 
 # Poll the slot files rather than blocking on one: whichever frees first wins,
 # and a killed waiter leaves nothing behind. Clips are seconds long, so a
 # 250ms poll costs nothing measurable.
 while true; do
   for i in $(seq 1 "$SLOTS"); do
-    exec {fd}>"$SEMDIR/slot$i" 2>/dev/null || continue
+    # Scope the 2>/dev/null to THIS redirection only. Written bare on an `exec`
+    # with no command, it permanently redirected the wrapper's stderr — and the
+    # exec'd whisper inherited it, so every caller got 0 bytes of stderr. That
+    # silently blinded services/tts-service.cjs's xAI phonology gate, which
+    # parses "auto-detected language: X" off stderr and treats an unparseable
+    # result as a pass. Inert from this wrapper's install (2026-08-07) until
+    # 2026-08-24. Braces keep the redirect local to the compound command.
+    { exec {fd}>"$SEMDIR/slot$i"; } 2>/dev/null || continue
     if flock -n "$fd"; then
       # flock survives exec: the slot stays held for whisper's whole life and
       # is released by the kernel when it exits, however it exits.

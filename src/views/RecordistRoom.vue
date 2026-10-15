@@ -194,19 +194,20 @@
 
         <!-- ── Recording: ONE line, big ────────────────────────────────────────────────── -->
         <main v-else-if="phase === 'recording'" class="stage centre" :class="{ 'is-paused': paused }">
-          <!-- A REFUSED TAKE IS IMPOSSIBLE TO MISS (Aran, 2026-10-15): the server said no to a
-               take (e.g. steady noise, no speech) and nothing was filed. Red, names the line, and
-               stays until he re-records it or dismisses it. The line is already back in the queue
-               as not-recorded (isRecorded is false while it is failed). -->
-          <div v-if="refusedNotices.length" class="refused-notice" role="alert" data-test="refused-notice">
-            <div v-for="n in refusedNotices" :key="n.id" class="refused-row">
-              <span class="refused-text">
-                <strong>That line didn't save:</strong> “{{ plainText(n.text) }}” — {{ n.reason }}
-              </span>
-              <button class="refused-act" data-test="refused-rerecord" @click="recordOne(n.id)">Tap to re-record</button>
-              <button class="refused-dismiss" data-test="refused-dismiss" aria-label="Dismiss" @click="dismissRefused(n.id)">✕</button>
-            </div>
-          </div>
+          <!-- REFUSED LINES COME UP IN THE NORMAL FLOW (Aran, 2026-10-15, live: "The actual phrases
+               should be coming up as normal in the recording tool"). A refused line is simply a line
+               still to read: red on the rail, "refused" in the status row, reached by › or by Jump to
+               next unrecorded, and shown like any other line with one small reason under it. The only
+               thing up here is this ONE slim bar, and it never sits over the line. It replaced a
+               stack of red notices, one per refused take, that hid the line being read (#679). -->
+          <p v-if="refusedInBatch.length" class="refused-summary" role="status" data-test="refused-summary">
+            <span>{{ refusedInBatch.length }} {{ refusedInBatch.length === 1 ? 'line needs' : 'lines need' }} re-recording</span>
+            <template v-if="firstRefusedIndex !== index">
+              ·
+              <button type="button" class="refused-go" data-test="refused-go-first"
+                      :disabled="busy || arming || !!editingId" @click="goToLine(firstRefusedIndex)">Go to first</button>
+            </template>
+          </p>
           <div class="centre-line">
             <p v-if="paused" class="pnote">Paused — nothing is being recorded. That attempt was thrown away.</p>
             <!-- THE CROSSING (Aran, 2026-09-10): drawn in flow above the line, interrupts nothing,
@@ -257,8 +258,12 @@
               </p>
               <p v-if="editError" class="note error">{{ editError }}</p>
               <p v-if="current?.knownText" class="line-known">{{ plainText(current.knownText) }}</p>
-              <!-- The line being read never carries a verdict on an earlier take of it (Tom,
-                   2026-09-02). -->
+              <!-- The line being read never carries a VERDICT on an earlier take of it (Tom,
+                   2026-09-02). A refusal is not a verdict on a stored take — nothing was stored —
+                   so a refused line says why in one small line, under the words, never over them
+                   (Aran, 2026-10-15). -->
+              <p v-if="currentRefusedWhy" class="refused-why" data-test="refused-why"
+                 :title="queue.failed.get(current.id) || null">{{ currentRefusedWhy }}</p>
             </div>
             <!-- AND THE LINE AFTER IT. Same rules. -->
             <ul v-if="!arming && cueAfter.length" class="cue cue-after" data-surface="cue-lines">
@@ -320,7 +325,7 @@
             <ul>
               <li v-for="l in failedList" :key="l.id">
                 <span class="redo-text">{{ plainText(l.text) }}</span>
-                <span class="redo-why">{{ queue.failed.get(l.id) }}</span>
+                <span class="redo-why" :title="queue.failed.get(l.id) || null">{{ refusedLineWords(queue.failed.get(l.id)) }}</span>
                 <button class="redo-btn" @click="recordOne(l.id)">Record it again</button>
               </li>
             </ul>
@@ -726,7 +731,7 @@ import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
 import BoothHome from './recordist/BoothHome.vue'
 import RefusedTakes from './recordist/RefusedTakes.vue'
-import { refusedRows } from './recordist/refused-takes.js'
+import { refusedRows, refusedLineWords } from './recordist/refused-takes.js'
 import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot } from './recordist/booth-home.js'
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
@@ -1977,23 +1982,17 @@ const sessionLines = computed(() =>
 )
 const failedList = computed(() => sessionLines.value.filter(l => queue.failed.has(l.id)))
 
-// REFUSED TAKES SHOWN WHILE RECORDING. `queue.failed` holds the server's own words per line (the
-// upload route answers non-2xx with {error}); the notice stays until the line is re-recorded
-// (it leaves `failed`) or dismissed. A dismissal is forgotten when the line leaves `failed`, so a
-// later refusal of the same line shows again.
-const dismissedRefusals = ref(new Set())
-const refusedNotices = computed(() =>
-  lines.value
-    .filter(l => queue.failed.has(l.id) && !queue.saved.has(l.id) && !dismissedRefusals.value.has(l.id))
-    .map(l => ({ id: l.id, text: l.text, reason: queue.failed.get(l.id) }))
+// REFUSED LINES IN THIS BATCH, in queue order: a line the server refused that holds no other take.
+// The same test that makes Jump to next unrecorded stop on it (isRecorded is false while it is
+// refused), so the bar's count, its Go to first, the rail and Jump never disagree.
+const refusedInBatch = computed(() =>
+  lines.value.map((l, i) => ({ l, i })).filter(({ l }) => hasFailed(l.id) && !isRecorded(l) && !isPending(l.id))
 )
-function dismissRefused(lineId) {
-  dismissedRefusals.value = new Set([...dismissedRefusals.value, lineId])
-}
-watch(() => [...queue.failed.keys()], keys => {
-  if ([...dismissedRefusals.value].some(id => !keys.includes(id))) {
-    dismissedRefusals.value = new Set([...dismissedRefusals.value].filter(id => keys.includes(id)))
-  }
+const firstRefusedIndex = computed(() => (refusedInBatch.value.length ? refusedInBatch.value[0].i : -1))
+const currentRefusedWhy = computed(() => {
+  const l = current.value
+  if (!l || !hasFailed(l.id) || isRecorded(l) || isPending(l.id)) return ''
+  return refusedLineWords(queue.failed.get(l.id))
 })
 
 function stopPlayback() {
@@ -3184,15 +3183,12 @@ onDeactivated(() => {
    RecordistRoom.bannerContrast.test.js recomputes them and fails if one drops. */
 .safety-banner.waiting { background: #15243f; border-color: #3b6fb5; color: #dbe9ff; }
 .safety-banner.risk { background: #3a1512; border-color: #d0574c; color: #ffdad5; }
-.refused-notice { width: 100%; max-width: 46rem; margin: 0 auto 0.75rem; background: #7f1d1d; color: #fff; border: 2px solid #f87171; border-radius: 10px; padding: 0.6rem 0.8rem; }
-.refused-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
-.refused-row + .refused-row { margin-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 0.5rem; }
-.refused-text { flex: 1 1 14rem; font-size: 1rem; line-height: 1.35; }
-.refused-act { background: #fff; color: #7f1d1d; border: 0; border-radius: 8px; padding: 0.5rem 0.9rem; font-weight: 700; cursor: pointer; }
-.refused-dismiss { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.6); border-radius: 8px; padding: 0.4rem 0.7rem; cursor: pointer; }
-:root[data-theme="light"] .refused-notice { background: #fee2e2; color: #7f1d1d; border-color: #dc2626; }
-:root[data-theme="light"] .refused-act { background: #b91c1c; color: #fff; }
-:root[data-theme="light"] .refused-dismiss { color: #7f1d1d; border-color: #b91c1c; }
+.refused-summary { width: 100%; max-width: 46rem; margin: 0 auto 0.4rem; padding: 0.25rem 0.7rem; font-size: 0.85rem; line-height: 1.4; color: #fca5a5; background: rgba(127, 29, 29, 0.35); border: 1px solid rgba(248, 113, 113, 0.45); border-radius: 999px; text-align: center; flex: 0 0 auto; }
+.refused-go { background: none; border: 0; padding: 0; font: inherit; font-weight: 700; color: inherit; text-decoration: underline; cursor: pointer; }
+.refused-go:disabled { opacity: 0.5; cursor: default; }
+.refused-why { margin: 0.5rem 0 0; font-size: 0.85rem; color: #fca5a5; }
+:root[data-theme="light"] .refused-summary { color: #991b1b; background: #fef2f2; border-color: #fca5a5; }
+:root[data-theme="light"] .refused-why { color: #b91c1c; }
 .safety-banner.refused { background: #3a2a0d; border-color: #e8a02a; color: #ffe9c2; }
 /* ONE BATCH (job #347): where he is and the way back to the home screen. */
 .batch-head { margin: -0.4rem 0 0.9rem; }

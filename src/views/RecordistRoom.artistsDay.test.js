@@ -58,6 +58,7 @@ vi.mock('@/composables/useTapRecorder', () => ({
 import { createMemoryBackend } from '@/services/takeStore'
 mic.heard = ref(true)
 import RecordistRoom from './RecordistRoom.vue'
+import { refusedLineWords } from './recordist/refused-takes.js'
 
 // Each test is a fresh visit: the booth remembers its line cursor in localStorage per voice
 // and batch (booth-cursor.js), and one test's cursor must not open the next test's Start.
@@ -238,7 +239,7 @@ describe("the artist's day at the booth", () => {
     await stopHere(w)
     expect(counts(w)).toEqual({ recorded: 1, stillToRead: 2 })
     expect(w.text()).toContain('1 did not save')
-    expect(refusedListed(w)).toEqual([{ text: 'Prynhawn da.', why: REFUSAL }])
+    expect(refusedListed(w)).toEqual([{ text: 'Prynhawn da.', why: refusedLineWords(REFUSAL) }])
     assertInvariant(w, { pendingOrRefused: true })
 
     // 4. Re-read B from "Record it again" — confirmed this time. The banner is

@@ -79,7 +79,8 @@ describe('booth home — the refused takes the banner points at', () => {
     expect(r.text()).toContain('Cymraeg 120')
     expect(r.text()).toContain('English 120')
     expect(r.text()).toContain('Batch 2')
-    expect(r.text()).toContain('no audible speech')
+    expect(r.text()).toContain("Last take didn't save: no speech heard")
+    expect(r.find('[data-test="refused-reason"]').attributes('title')).toContain('no audible speech')
     expect(w.find('[data-test="refused-row-s5"]').text()).toContain('Batch 1')
   })
 

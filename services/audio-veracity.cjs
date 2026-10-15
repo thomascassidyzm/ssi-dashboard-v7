@@ -396,6 +396,16 @@ const WHISPER_MODEL = process.env.WHISPER_MODEL
 const FFMPEG_BIN = process.env.FFMPEG
   || (fs.existsSync('/opt/homebrew/bin/ffmpeg') ? '/opt/homebrew/bin/ffmpeg' : 'ffmpeg')
 const WHISPER_THREADS = Number(process.env.AUDIO_VERACITY_THREADS || 2)
+/**
+ * THE CEILING ON ONE DECODE STEP (ffmpeg or whisper). A clip decodes in ~2 s;
+ * past this the subprocess is killed and the check says "not checked". Without
+ * it a whisper that never answers held this module's slot for ever, and every
+ * booth upload behind it hung: on 2026-10-15 the whisper wrapper's semaphore
+ * dir was not writable by the `popty` user, it polled for a slot indefinitely,
+ * and production filed no take at all from 14 Oct 15:39 UTC.
+ * Pinned by audio-veracity.decode-timeout.test.cjs.
+ */
+const DECODE_TIMEOUT_MS = Number(process.env.AUDIO_VERACITY_DECODE_TIMEOUT_MS || 25000)
 
 /**
  * Measured 1.71 s/clip at 4 concurrency x 2 threads on this 8-core VM
@@ -1774,7 +1784,8 @@ function verifyVerdict (primed, expected, iso1) {
 // ---------------------------------------------------------------------------
 
 const run = (cmd, args, opts = {}) => new Promise((resolve, reject) => {
-  execFile(cmd, args, { encoding: 'utf8', maxBuffer: 1 << 24, ...opts }, (err, stdout, stderr) => {
+  execFile(cmd, args, { encoding: 'utf8', maxBuffer: 1 << 24, timeout: DECODE_TIMEOUT_MS, killSignal: 'SIGKILL', ...opts }, (err, stdout, stderr) => {
+    if (err && err.killed) return reject(new Error(`${path.basename(cmd)} gave no answer in ${DECODE_TIMEOUT_MS}ms and was stopped`))
     if (err) return reject(new Error((stderr || err.message || '').toString().slice(0, 300)))
     resolve(stdout)
   })
