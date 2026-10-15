@@ -50,8 +50,22 @@ function blankCommentsAndStrings(sql) {
   return String(sql).replace(/--[^\n]*|\/\*[\s\S]*?\*\/|'(?:[^']|'')*'/g, (m) => m.replace(/[^\n]/g, ' '))
 }
 
+// Peel redundant wrappers from the inside out, with no nesting limit. Keep the
+// string length and newlines intact so lintFiles still reports the original line.
+// Function argument lists and compound expressions are deliberately left intact.
+function normaliseKeyParens(sql) {
+  const wrapper = /(?<![\w])\(\s*((?:\w+\.)?\w*id(?:\s*::\s*(?:text|varchar|character varying)\b)?|cast\s*\(\s*(?:\w+\.)?\w*id\s+as\s+(?:text|varchar)\s*\))\s*\)/gi
+  let text = sql
+  let previous
+  do {
+    previous = text
+    text = text.replace(wrapper, (match) => ' ' + match.slice(1, -1) + ' ')
+  } while (text !== previous)
+  return text
+}
+
 function lintSql(sql, { executable = false } = {}) {
-  const text = executable ? blankCommentsAndStrings(sql) : String(sql)
+  const text = normaliseKeyParens(executable ? blankCommentsAndStrings(sql) : String(sql))
   const out = []
   const add = (re, rule, why) => { for (const m of text.matchAll(re)) out.push({ rule, match: m[0].trim(), index: m.index, why }) }
   add(CAST_THEN_COMPARE, 'key-cast', 'casting a key column defeats its index: cast the VALUE instead, e.g. `id = ANY($1::uuid[])`, `id = $1::uuid`, `ca.id = l.presentation_audio_id::uuid`')
