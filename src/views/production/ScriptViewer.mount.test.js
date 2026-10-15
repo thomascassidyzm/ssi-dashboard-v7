@@ -6,7 +6,7 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { shallowMount, flushPromises } from '@vue/test-utils'
-import { ref } from 'vue'
+import { ref, defineComponent, h } from 'vue'
 
 vi.mock('@/services/api', () => ({ getApiUrl: () => 'http://api.test' }))
 vi.mock('vue-router', () => ({
@@ -22,11 +22,26 @@ vi.mock('@/composables/useAuth.js', () => ({
 
 import ScriptViewer from './ScriptViewer.vue'
 
+const json = (body) => new Response(JSON.stringify(body), { status: 200, headers: { 'Content-Type': 'application/json' } })
+const ROUNDS = [{ legoId: 'S0566L01', roundNumber: 2 }, { legoId: 'S0567L02', roundNumber: 3 }]
 beforeEach(() => {
   localStorage.clear()
-  globalThis.fetch = vi.fn(async () => new Response(JSON.stringify({}), {
-    status: 200, headers: { 'Content-Type': 'application/json' },
-  }))
+  globalThis.fetch = vi.fn(async (url) => {
+    const u = String(url)
+    if (u.includes('/learning-journey/search')) return json({ rounds: ROUNDS })
+    if (u.includes('/learning-journey')) return json({ rounds: ROUNDS, allItems: [], totalLegoCount: 10 })
+    return json({})
+  })
+})
+
+// Stands in for LearningJourneyView: renders a marker and exposes scrollToRound like the real one.
+const scrolled = []
+const JourneyStub = defineComponent({
+  name: 'LearningJourneyView',
+  setup(_, { expose }) {
+    expose({ scrollToRound: async (n) => { scrolled.push(n); return true } })
+    return () => h('div', { 'data-test': 'journey' })
+  },
 })
 
 describe('ScriptViewer setup', () => {
@@ -46,5 +61,19 @@ describe('ScriptViewer setup', () => {
     const wrapper = shallowMount(ScriptViewer)
     await flushPromises()
     expect(wrapper.text()).toContain('567')
+  })
+
+  it('the resume banner and the journey show together, and Continue scrolls to that LEGO\'s round (job #812)', async () => {
+    const { savePlace } = await import('./review-place.js')
+    savePlace('deborah@example.com', 'fra_for_eng', 'S0567L02')
+    scrolled.length = 0
+    const wrapper = shallowMount(ScriptViewer, { global: { stubs: { LearningJourneyView: JourneyStub } } })
+    await flushPromises()
+    expect(wrapper.find('[data-test="resume-place"]').exists()).toBe(true)
+    expect(wrapper.find('[data-test="journey"]').exists()).toBe(true)
+    await wrapper.find('[data-test="resume-continue"]').trigger('click')
+    await flushPromises()
+    expect(scrolled).toContain(3)
+    expect(wrapper.find('[data-test="resume-place"]').exists()).toBe(false)
   })
 })

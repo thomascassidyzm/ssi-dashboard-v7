@@ -41,8 +41,29 @@ describe('regenRequest', () => {
     await expect(regenRequest(send, fast)).rejects.toThrow(INTERRUPTED_MESSAGE)
     expect(send).toHaveBeenCalledTimes(1)
   })
-  it('a check that itself fails counts as not landed', async () => {
+  it('a re-read that itself fails is "unknown", never "not landed": nothing is re-sent (job #812)', async () => {
     const send = vi.fn(dropped)
     await expect(regenRequest(send, { ...fast, checkLanded: async () => { throw new Error('down') } })).rejects.toThrow(INTERRUPTED_MESSAGE)
+    expect(send).toHaveBeenCalledTimes(1)
+  })
+  it('a re-read that hangs is "unknown" too, and is cut off', async () => {
+    const send = vi.fn(dropped)
+    await expect(regenRequest(send, { ...fast, totalMs: 60, checkLanded: () => new Promise(() => {}) })).rejects.toThrow(INTERRUPTED_MESSAGE)
+    expect(send).toHaveBeenCalledTimes(1)
+  })
+  it('headers then a stalled body: cut off, never re-sent, the caller gets the body it needs (job #812)', async () => {
+    const stalled = async () => ({ ok: true, status: 200, json: () => new Promise(() => {}) })
+    const send = vi.fn(stalled)
+    await expect(regenRequest(send, { ...fast, checkLanded: async () => null })).rejects.toBeInstanceOf(RegenInterruptedError)
+    expect(send).toHaveBeenCalledTimes(1)
+    const ok = await regenRequest(answer(200, { target1_audio_id: 'x' }), fast)
+    expect(ok.body).toEqual({ target1_audio_id: 'x' })
+  })
+  it('the whole operation is bounded, re-send included', async () => {
+    let n = 0
+    const send = vi.fn((sig) => (++n === 1 ? dropped() : hang(sig)))
+    const t0 = Date.now()
+    await expect(regenRequest(send, { timeoutMs: 10000, totalMs: 80, retryWaitMs: 0, checkLanded: async () => null })).rejects.toThrow(INTERRUPTED_MESSAGE)
+    expect(Date.now() - t0).toBeLessThan(1000)
   })
 })
