@@ -26,7 +26,8 @@ const ENGINES = arg('engines', 'chromium,webkit').split(',')
 const ONLY = arg('only', '') // comma list of scenario names
 // 375x548 is an iPhone SE's VISIBLE height in Safari with both bars showing: the honest small case.
 const SIZES = (arg('sizes', '375x667,390x844,360x800,844x390,375x548')).split(',').map((s) => s.split('x').map(Number))
-const BASE = 'https://popty.app'
+// --base https://staging.popty.app audits a build that has not reached main (e.g. job #709's line editor).
+const BASE = arg('base', 'https://popty.app')
 const VOICE = 'human_tom_zzz'
 const TEAM_VOICE = 'human_aran_cym_n' // the strip only exists on a God admin's booth; every answer here is a fixture
 mkdirSync(OUT, { recursive: true })
@@ -197,6 +198,7 @@ async function newPage(browser, engine, [w, h], opts = {}) {
 
 const shots = []
 const results = []
+const errors = []
 async function snap(page, engine, size, scenario, extra = {}) {
   await page.waitForTimeout(450)
   const tag = `${engine}-${size[0]}x${size[1]}-${scenario}`
@@ -276,7 +278,7 @@ async function scenarioReal(browser, engine, size) {
       await page.waitForTimeout(400)
       await snap(page, engine, size, '08-line-editor')
     }
-  } catch (e) { console.log(`  ${engine} ${size} real: ${e.message.split('\n')[0]}`); await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-real.png`) }).catch(() => {}) }
+  } catch (e) { errors.push(`${engine} ${size} real: ${e.message.split('\n')[0]}`); console.log(`  ${engine} ${size} real: ${e.message.split('\n')[0]}`); await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-real.png`) }).catch(() => {}) }
   results.push({ engine, size: size.join('x'), scenario: 'real-blocked', blocked })
   await ctx.close()
 }
@@ -336,7 +338,7 @@ async function scenarioStress(browser, engine, size) {
     await page.click('[data-test="card-seed.zzz_test2_for_eng"], [data-test="up-next-all"]')
     await page.waitForSelector('.bh-track', { timeout: 20000 })
     await snap(page, engine, size, '17-stress-track-batches')
-  } catch (e) { console.log(`  ${engine} ${size} stress: ${e.message.split('\n')[0]}`); await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-stress.png`) }).catch(() => {}) }
+  } catch (e) { errors.push(`${engine} ${size} stress: ${e.message.split('\n')[0]}`); console.log(`  ${engine} ${size} stress: ${e.message.split('\n')[0]}`); await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-stress.png`) }).catch(() => {}) }
   await ctx.close()
 }
 
@@ -368,7 +370,7 @@ async function scenarioDone(browser, engine, size) {
     await page.waitForSelector('[data-test="up-next"]', { timeout: 60000 })
     await page.waitForTimeout(800)
     await snap(page, engine, size, '21-home-uploading-banner')
-  } catch (e) { console.log(`  ${engine} ${size} done: ${e.message.split('\n')[0]}`); await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-done.png`) }).catch(() => {}) }
+  } catch (e) { errors.push(`${engine} ${size} done: ${e.message.split('\n')[0]}`); console.log(`  ${engine} ${size} done: ${e.message.split('\n')[0]}`); await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-done.png`) }).catch(() => {}) }
   await ctx.close()
 }
 
@@ -443,7 +445,58 @@ async function scenarioTeam(browser, engine, size, role = 'admin') {
       await page.waitForTimeout(800)
       await snap(page, engine, size, '34-artist-my-recording', { landedOn: new URL(page.url()).pathname })
     }
-  } catch (e) { console.log(`  ${engine} ${size} team: ${e.message.split('\n')[0]}`); await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-team.png`) }).catch(() => {}) }
+  } catch (e) { errors.push(`${engine} ${size} team: ${e.message.split('\n')[0]}`); console.log(`  ${engine} ${size} team: ${e.message.split('\n')[0]}`); await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-team.png`) }).catch(() => {}) }
+  await ctx.close()
+}
+
+
+async function scenarioEditor(browser, engine, size) {
+  // "Edit this line" (job #709), a God admin's dialog on the batch page. Made-up session, one seed
+  // line, every answer a fixture; "Check the change" is answered here and never sent.
+  const env = readFileSync(new URL('../../.env', import.meta.url), 'utf8')
+  const authUrl = (env.match(/^VITE_SUPABASE_URL=(.*)$/m) || [])[1]?.trim()
+  const authHost = authUrl ? new URL(authUrl).hostname : 'x'
+  const exp = Math.floor(Date.now() / 1000) + 7200
+  const b64 = (o) => Buffer.from(JSON.stringify(o)).toString('base64url')
+  const user = { id: '00000000-0000-0000-0000-000000000000', email: 'audit@example.invalid', aud: 'authenticated', role: 'authenticated', app_metadata: {}, user_metadata: {} }
+  const session = { access_token: `${b64({ alg: 'HS256' })}.${b64({ sub: user.id, exp })}.sig`, refresh_token: 'fake', token_type: 'bearer', expires_in: 7200, expires_at: exp, user }
+  const queue = JSON.parse(readFileSync(join(OUT, '..', 'fixtures-queue.json'), 'utf8'))
+  const lines = queue.lines.filter((l) => !l.recorded).slice(0, 4).map((l, i) => ({ ...l, id: `seed:zzz_test2_for_eng:${i + 1}`, kind: 'seed', podSlug: null, seedNumber: i + 1, text: i ? l.text : LONG_CY[0], recorded: false }))
+  const q = { ...queue, pod: null, total: lines.length, recorded: 0, remaining: lines.length, lines }
+  const row = { lineId: lines[0].id, kind: 'seed', courseCode: 'zzz_test2_for_eng', seedNumber: 1, editable: true, targetText: LONG_CY[0], knownText: "I've been thinking about going to the National Eisteddfod this year with my friends from Caernarfon." }
+  const summary = JSON.parse(readFileSync(join(OUT, '..', 'fixtures-summary.json'), 'utf8'))
+  const answer = async (req, url, route) => {
+    // A staging build talks to a staging API under /staging on another host: same paths after that.
+    const p = url.pathname.replace(/^\/staging(?=\/api\/)/, '')
+    if (url.hostname === authHost) { await route.fulfill({ json: p.endsWith('/user') ? user : p.endsWith('/dashboard_users') ? [{ email: user.email, name: 'Aran', role: 'admin', courses: '*' }] : [] }); return true }
+    if (p.startsWith('/api/recording/admin/line-edit')) {
+      if (req.method() === 'POST' && p.endsWith('/preview')) { await route.fulfill({ json: { changes: [{ side: 'target', before: row.targetText, after: row.targetText.replace('Eisteddfod Genedlaethol', 'Eisteddfod'), wordsChanged: true }], tiling: { ok: true }, recordings: [{ slot: 'target1', fate: 'requeued', words: 'your take of this line goes back on your list' }] } }); return true }
+      if (req.method() !== 'GET') return false
+      await route.fulfill({ json: p === '/api/recording/admin/line-edit' ? { ok: true } : row }); return true
+    }
+    if (req.method() !== 'GET') return false
+    if (p.endsWith('/api/auth/me')) { await route.fulfill({ json: { email: user.email, name: 'Aran', role: 'admin', courses: '*' } }); return true }
+    if (p === `/api/recording/voice/${VOICE}`) { await route.fulfill({ json: q }); return true }
+    if (p === `/api/recording/voice/${VOICE}/tabs`) { await route.fulfill({ json: { tabs: [] } }); return true }
+    if (p === `/api/recording/voice/${VOICE}/summary`) { await route.fulfill({ json: summary }); return true }
+    if (p === `/api/recording/voice/${VOICE}/rerecord`) { await route.fulfill({ json: { voiceId: VOICE, fresh: true, total: 0, items: [], recordedAlso: [], goneAlso: [] } }); return true }
+    if (p.startsWith('/api/')) { await route.fulfill({ status: 404, json: {} }); return true }
+    return false
+  }
+  const env2 = authHost.split('.')[0]
+  const { ctx, page } = await newPage(browser, engine, size, { answer, storage: { [`sb-${env2}-auth-token`]: JSON.stringify(session) } })
+  try {
+    await page.goto(`${BASE}/r/${VOICE}?track=seed.zzz_test2_for_eng&batch=1`, { waitUntil: 'domcontentloaded' })
+    await page.waitForSelector('[data-test="admin-edit-line"]', { timeout: 60000 })
+    await snap(page, engine, size, '40-editor-button')
+    await page.click('[data-test="admin-edit-line"]')
+    await page.waitForSelector('[data-test="ble-target"]', { timeout: 20000 })
+    await snap(page, engine, size, '41-editor-open')
+    await page.fill('[data-test="ble-target"]', row.targetText.replace('Eisteddfod Genedlaethol', 'Eisteddfod'))
+    await page.click('[data-test="ble-check"]')
+    await page.waitForSelector('[data-test="ble-preview"]', { timeout: 20000 })
+    await snap(page, engine, size, '42-editor-checked')
+  } catch (e) { errors.push(`${engine} ${size} editor: ${e.message.split('\n')[0]}`); console.log(`  ${engine} ${size} editor: ${e.message.split('\n')[0]}`); await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-editor.png`) }).catch(() => {}) }
   await ctx.close()
 }
 
@@ -455,7 +508,9 @@ if (!existsSync(join(OUT, '..', 'fixtures-summary.json'))) {
   writeFileSync(join(OUT, '..', 'fixtures-queue.json'), JSON.stringify(q))
 }
 
-const SCEN = { real: scenarioReal, stress: scenarioStress, done: scenarioDone, team: scenarioTeam, artist: (b, e, s) => scenarioTeam(b, e, s, 'recorder') }
+const SCEN = { real: scenarioReal, stress: scenarioStress, done: scenarioDone, team: scenarioTeam, artist: (b, e, s) => scenarioTeam(b, e, s, 'recorder'), editor: scenarioEditor }
+// The editor is only on builds that carry job #709; it is run when asked for (--only editor).
+if (!ONLY) delete SCEN.editor
 for (const engine of ENGINES) {
   const browser = await (engine === 'webkit' ? webkit : chromium).launch(engine === 'chromium' ? { args: ['--use-fake-ui-for-media-stream', '--autoplay-policy=no-user-gesture-required'] } : {})
   for (const size of SIZES) {
@@ -468,7 +523,7 @@ console.log(`wrote ${results.length} results to ${OUT}/results.json`)
 
 // THE RULES, as a verdict. Covered-by-the-sheet and ellipsised single-line labels are reported
 // above but are not failures: the sheet is meant to cover the page, and those labels are meant to cut.
-const fails = []
+const fails = [...errors.map((e) => `could not drive the screen: ${e}`)]
 for (const r of results) {
   if (!r.file) continue
   const at = `${r.engine} ${r.size} ${r.scenario}`
