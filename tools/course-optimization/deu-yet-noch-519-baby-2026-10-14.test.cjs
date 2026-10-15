@@ -77,7 +77,7 @@ test('only the changed sides ask for audio', () => {
   const r = T.slotRequests();
   assert.equal(r.filter((x) => x.phrase_id.endsWith('S0268L02U03')).map((x) => x.role).join(), 'known');
   assert.equal(r.filter((x) => x.phrase_id.endsWith('S0519L02U01')).map((x) => x.role).join(), 'known,target1,target2');
-  assert.deepEqual(T.linkOps({ 'known|their new baby': 'a1' }), [{ op: 'audio.link', target: 'phrase', phrase_id: `${C}:S0519L02B01`, slot: 'known', audio_id: 'a1' }]);
+  assert.throws(() => T.linkOps({ 'known|their new baby': 'a1' }), /incomplete/);
 });
 
 test('the intro reads as a mirror of "yet" under the course template (the house colon and dash made it read as the chunk)', () => {

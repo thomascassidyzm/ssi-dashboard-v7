@@ -40,8 +40,10 @@ function scan(d) {
       if (bare) push('P1', { lego: id, known: l.known_text, target: l.target_text, type: l.type, isNew: l.is_new, kind: hard ? 'hard' : 'soft' });
       // P2: a later NEW lego B (shorter) lives inside this earlier lego A (new): A taught before its piece
       if (l.is_new && tt.length > 1) {
-        for (const b of legos) {
-          if (b.lego_index <= l.lego_index || !b.is_new) continue;
+        for (const b of d.legos) {
+          // later = later (seed, lego_index) anywhere in the course, not just inside this seed
+          const later = b.seed_number > l.seed_number || (b.seed_number === l.seed_number && b.lego_index > l.lego_index);
+          if (!later || !b.is_new) continue;
           const bt = toks(b.target_text), bk = toks(b.known_text);
           if (bt.length >= tt.length || !hasSeq(tt, bt) || !hasSeq(kt, bk)) continue;
           push('P2', { lego: id, known: l.known_text, target: l.target_text, laterLego: b.lego_id, laterKnown: b.known_text, laterTarget: b.target_text });

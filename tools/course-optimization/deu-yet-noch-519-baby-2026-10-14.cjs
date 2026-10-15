@@ -279,8 +279,10 @@ function slotRequests(dump = null) {
   return out;
 }
 function linkOps(audioMap, dump = null) {
-  return slotRequests(dump).filter((r) => audioMap[`${r.role}|${r.text}`])
-    .map((r) => ({ op: 'audio.link', target: 'phrase', phrase_id: r.phrase_id, slot: r.role, audio_id: audioMap[`${r.role}|${r.text}`] }));
+  // make-before-break: a text change with no replacement clip would leave the slot silent, so refuse the whole batch
+  const missing = slotRequests(dump).filter((r) => !audioMap[`${r.role}|${r.text}`]);
+  if (missing.length) throw new Error(`audio map incomplete: no clip for ${missing.map((r) => `${r.role}|${r.text}`).join(', ')}`);
+  return slotRequests(dump).map((r) => ({ op: 'audio.link', target: 'phrase', phrase_id: r.phrase_id, slot: r.role, audio_id: audioMap[`${r.role}|${r.text}`] }));
 }
 
 module.exports = { invariants, INTRO, FLIPS, MOVES, DELETES, REWRITES, POSITIONS, TOUCHED_SEEDS, checkPlan, applyPlan, textOps, slotRequests, linkOps, yetPolarity, untaughtKnown };

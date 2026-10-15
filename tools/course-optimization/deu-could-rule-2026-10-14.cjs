@@ -116,6 +116,14 @@ function zutGate(db, p, audit = require('./audit-phrase-zut.cjs')) {
   throw new Error('ZUT gate did not converge');
 }
 
+/**
+ * The audio-route body for one ask. A REAL render never carries legoId: the route would repoint the
+ * live LEGO's presentation clip at once, before its text changes; the batch's audio.link op does it.
+ */
+function renderRequest(a, dryRun) {
+  return { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, ...(dryRun && a.legoId ? { legoId: a.legoId } : {}), ...(dryRun ? { dryRun: true } : {}) };
+}
+
 /** Every distinct clip the new text needs: [{role, text, legoId?, ids}]. */
 function clipAsks(p) {
   const m = new Map();
@@ -189,7 +197,7 @@ async function main() {
   log.asks = [];
   let chars = 0;
   for (const a of asks) {
-    const d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, ...(a.legoId ? { legoId: a.legoId } : {}), dryRun: true });
+    const d = await post(`${POPTY}/api/audio/render`, renderRequest(a, true));
     const ok = d.status === 200 && d.body.ok;
     const w = ok && d.body.source !== 'library' ? (d.body.wouldSpendChars || a.text.length) : 0;
     chars += w;
@@ -205,7 +213,7 @@ async function main() {
   const refused = new Set();
   for (const a of log.asks) {
     if (a.dry.status !== 200 || a.dry.error) { a.ids.forEach((i) => refused.add(i)); continue; }
-    const r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, ...(a.legoId ? { legoId: a.legoId } : {}) });
+    const r = await post(`${POPTY}/api/audio/render`, renderRequest(a, false));
     a.real = { status: r.status, source: r.body.source, audioId: r.body.audioId, charsSpent: r.body.charsSpent, error: r.status === 200 && r.body.ok ? undefined : r.body };
     if (a.real.error) { a.ids.forEach((i) => refused.add(i)); console.log('  REFUSED', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 200)); if (r.status === 402) break; }
   }
@@ -240,4 +248,4 @@ async function main() {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
-module.exports = { plan, simulate, zutGate, clipAsks, editOps, ruleDefects, konnteWithoutMarker, PAST_MARKER };
+module.exports = { renderRequest, plan, simulate, zutGate, clipAsks, editOps, ruleDefects, konnteWithoutMarker, PAST_MARKER };
