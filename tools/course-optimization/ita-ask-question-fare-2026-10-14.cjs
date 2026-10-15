@@ -458,10 +458,14 @@ async function main() {
       const dry = await audio(pg, { dry: true });
       for (const x of dry) console.log(`  dry ${x.slot.padEnd(22)} ${String(x.source).padEnd(12)} ${String(x.chars).padStart(4)}  "${x.text}"${x.error ? `  ERROR ${x.error}` : ''}`);
       console.log(`would spend ${dry.reduce((n, x) => n + (x.chars || 0), 0)} chars over ${dry.length} slots`);
+      // A refused render leaves its slot empty: that is a defect standing, so the exit code says so
+      // (exit 4), dry pass or real (lanes review of 98e2881). Line below keeps any earlier code.
+      if (dry.some((x) => x.error)) process.exitCode = process.exitCode || 4;
       if (process.env.DRY !== '1') {
         const real = await audio(pg, { dry: false });
         for (const x of real) console.log(`  ${x.slot.padEnd(22)} ${String(x.source).padEnd(12)} ${String(x.chars).padStart(4)}  ${x.audioId || ''} ${x.linked || (x.legoLinked ? 'lego linked' : '')}${x.error ? `  ERROR ${x.error}` : ''}`);
         console.log(`spent ${real.reduce((n, x) => n + (x.source === 'rendered' ? x.chars || 0 : 0), 0)} chars`);
+        if (real.some((x) => x.error)) process.exitCode = process.exitCode || 4;
       }
       await pg.end().catch(() => {});
       pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect();

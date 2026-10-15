@@ -115,11 +115,15 @@ function femClause(bareIn, fallbackI) {
 function clauses(text) {
   const res = [];
   let cur = [];
+  // Once a clause holds मैं, a second subject (वह, वो, वे, आप, तुम, हम) starts its own clause, and so
+  // does whatever follows और — each verb group is then read against its own subject, so "मैं थका था
+  // और वह सो रहा था" expands only the speaker's half (lanes review of 245b64c).
+  const hasI = () => cur.some((t) => punct(t)[0] === 'मैं');
   for (const tok of text.split(' ')) {
     const [b, p] = punct(tok);
-    if (SPLIT_BEFORE.test(b) && cur.length) { res.push(cur); cur = []; }
+    if ((SPLIT_BEFORE.test(b) || (/^(वह|वो|वे|आप|तुम|हम)$/.test(b) && hasI())) && cur.length) { res.push(cur); cur = []; }
     cur.push(tok);
-    if (SPLIT_AFTER.test(b) || /[।?!,]/.test(p)) { res.push(cur); cur = []; }
+    if (SPLIT_AFTER.test(b) || /[।?!,]/.test(p) || (b === 'और' && cur.length > 1 && hasI())) { res.push(cur); cur = []; }
   }
   if (cur.length) res.push(cur);
   return res;
