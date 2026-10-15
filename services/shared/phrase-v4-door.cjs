@@ -142,9 +142,16 @@ async function gateStagedRows({ sb, courseCode, rows, data, deps }) {
   const ctx = makeCourseCtx(sb, courseCode);
   const legoOf = (r) => data.legos.find(l => l.seed_number === +r.seed_number && +l.lego_index === +r.lego_index);
   const noSpace = NO_SPACE_KNOWN.has(courseCode.split('_for_')[1].split('_')[0]);
+  // One English, two translations INSIDE this request: each row passes against the stored course on its
+  // own, so the batch is checked as a whole first and every row of such a group is refused (lanes
+  // review of 3c43b2a; the staging tool's batchZutConflicts, re-run here rather than trusted).
+  const normKnown = (t) => String(t || '').toLowerCase().replace(/[^\p{L}\p{N}'’ ]/gu, '').replace(/\s+/g, ' ').trim();
+  const targetsOf = new Map();
+  for (const r of rows) { const k = normKnown(r.known_text); if (!targetsOf.has(k)) targetsOf.set(k, new Set()); targetsOf.get(k).add(normKnown(r.target_text)); }
   const refused = [];
   for (const r of rows) {
     const reasons = [];
+    if (targetsOf.get(normKnown(r.known_text)).size > 1) reasons.push(`ZUT within this request: "${r.known_text}" is given ${targetsOf.get(normKnown(r.known_text)).size} different translations`);
     const lego = legoOf(r);
     if (!lego || lego.target_text !== r.lego_target || (r.lego_known != null && lego.known_text !== r.lego_known)) reasons.push('LEGO changed or gone since generation');
     if (/[()]/.test(String(r.known_text) + String(r.target_text))) reasons.push('parentheses');
@@ -152,6 +159,10 @@ async function gateStagedRows({ sb, courseCode, rows, data, deps }) {
       const res = await checkPhraseSet({ courseCode, seedNumber: r.seed_number, legoIndex: r.lego_index, legoKnown: r.lego_known || lego.known_text, legoTarget: r.lego_target,
         phrases: [{ role: r.phrase_role, known: r.known_text, target: r.target_text }] }, ctx);
       for (const g of ['bareLego', 'containment', 'vocab', 'zut']) if (res.gates[g] && res.gates[g].pass === false) reasons.push(`popty:${g} ${JSON.stringify(res.gates[g]).slice(0, 200)}`);
+      // BUILD template rejections (bare-repeat, comma-tag, use-stem+tag) are hard per-row refusals; only the
+      // gate's minimum-recombination count is a basket floor the door ignores (lanes review of 3c43b2a).
+      const br = res.gates.buildRecombination;
+      if (br && Array.isArray(br.rejects) && br.rejects.length) reasons.push(`popty:buildRecombination ${JSON.stringify(br.rejects).slice(0, 200)}`);
       if (res.gates.knownSide.pass === false) reasons.push(`popty:knownSide ${JSON.stringify(res.gates.knownSide.breaches).slice(0, 200)}`);
       if (res.gates.knownSide.pass === null) {
         const heard = [...data.seeds.filter(x => x.seed_number <= r.seed_number), ...data.legos, ...data.phrases.filter(p => p.phrase_role === 'component')]
