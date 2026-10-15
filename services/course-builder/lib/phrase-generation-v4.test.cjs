@@ -39,6 +39,21 @@ describe('buildV4Section', () => {
 })
 
 describe('prepareV4 checks', () => {
+  it('retains component-only heard words for the real gap-fill fallback', async () => {
+    const d = mkDeps()
+    d.door = {
+      readCourse: async () => ({ ...course(), phrases: [{ seed_number: 1, lego_index: 1, phrase_role: 'component', known_text: 'home' }] }),
+      gateStagedRows: require('../../shared/phrase-v4-door.cjs').gateStagedRows,
+    }
+    d.gateCheck = {
+      makeCourseCtx: () => ({}),
+      checkPhraseSet: async () => ({ gates: { knownSide: { pass: null } } }),
+    }
+    const v4 = await prepareV4({}, 'fra_for_eng', 1, 1, { deps: d })
+    const reasons = await v4.extraCheck({ phrases: { build: [{ known: 'I want home', target: 'je veux rentrer' }], use: [] } })
+    expect(reasons).toEqual([])
+  })
+
   it('refuses a stapled opener and a USE that is not a sentence', async () => {
     const v4 = await prepareV4({}, 'fra_for_eng', 1, 1, { deps: mkDeps() })
     const reasons = await v4.extraCheck({ phrases: phrases(['thank you, I want to go home today', 'go']) })
