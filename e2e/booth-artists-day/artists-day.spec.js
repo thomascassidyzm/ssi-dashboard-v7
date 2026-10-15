@@ -101,7 +101,15 @@ const bodyText = (page) => page.locator('body').textContent()
 async function startButton(page) {
   const b = page.locator('.btn-begin')
   if (!(await b.count())) return null
-  return { text: (await b.first().textContent()).trim(), disabled: await b.first().isDisabled() }
+  let text = (await b.first().textContent()).trim()
+  // The Prompter ready card (#424) keeps the button bare and names the line above it in
+  // [data-test=ready-line]; fold that back into the label so "Start names the line it will read" still holds.
+  const named = page.locator('[data-test="ready-line"]')
+  if (text === 'Start recording' && (await named.count())) {
+    const line = (await named.first().textContent()).trim()
+    text = `Start recording — ${preview(line)}${line.length > 34 ? '…' : ''}`
+  }
+  return { text, disabled: await b.first().isDisabled() }
 }
 // The Start label shows the first 34 characters of the line (RecordistRoom
 // firstLinePreview), so a line is named on it by its prefix.
@@ -191,6 +199,9 @@ async function openBooth(page) {
   await page.goto(`${BASE}/r/${VOICE_ID}`)
   // .rc-hello on the old booth home, .bh-h1 on the Prompter rebuild (#424) that staging runs ahead of main.
   await expect(page.locator('.rc-hello, .bh-h1').first()).toContainText(VOICE_NAME.split(' (')[0])
+  // The Prompter home (.bh-h1) is a menu of scripts; the ready card (.strip-words) is one tap behind its
+  // "Open this" on the up-next card. The old home put the ready card on the page itself.
+  if (await page.locator('.bh-h1').count()) await page.getByRole('button', { name: /^Open this/ }).first().click()
   await expect.poll(() => counts(page), { message: 'the ready card' }).not.toBeNull()
 }
 async function begin(page) {
