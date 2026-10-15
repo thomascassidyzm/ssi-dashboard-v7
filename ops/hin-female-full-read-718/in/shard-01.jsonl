@@ -1,0 +1,493 @@
+{"n":1,"t":"अभी","occ":[["lego","S0001L06",1,"now"],["lego","S0040L01",40,"at the moment"],["build","S0040L01B01",40,"now"]],"stored":null}
+{"n":2,"t":"अभी बोलना","occ":[["build","S0001L06B01",1,"speak now"]],"stored":null}
+{"n":3,"t":"अभी हिंदी बोलना","occ":[["build","S0001L06B02",1,"speak Hindi now"]],"stored":null}
+{"n":4,"t":"आप","occ":[["component","S0001L05C01",1,"you"],["component","S0061L03C01",61,"you"],["component","S0067L03C01",67,"you"],["component","S0072L02C01",72,"you"],["component","S0081L01C01",81,"you"],["component","S0097L02C03",97,"you"]],"stored":null}
+{"n":5,"t":"आपके साथ","occ":[["lego","S0001L05",1,"with you"],["build","S0001L05B01",1,"with you"]],"stored":null}
+{"n":6,"t":"आपके साथ बोलना","occ":[["build","S0001L05B02",1,"to speak with you"]],"stored":null}
+{"n":7,"t":"के साथ","occ":[["component","S0001L05C02",1,"with"],["component","S0016L03C03",16,"with"]],"stored":null}
+{"n":8,"t":"चाहता हूँ।","occ":[["lego","S0001L02",1,"want"],["build","S0001L02B01",1,"want"]],"stored":{"f":"चाहती हूँ।","m":null}}
+{"n":9,"t":"बोलना","occ":[["lego","S0001L03",1,"to speak"],["build","S0001L03B01",1,"to speak"],["component","S0286L01C01",286,"speaking"]],"stored":null}
+{"n":10,"t":"मैं","occ":[["lego","S0001L01",1,"I"]],"stored":null}
+{"n":11,"t":"मैं अभी आपके साथ बोलना चाहता हूँ।","occ":[["use","S0001L06U03",1,"I want to speak with you now"]],"stored":{"f":"मैं अभी आपके साथ बोलना चाहती हूँ।","m":null}}
+{"n":12,"t":"मैं अभी आपके साथ हिंदी बोलना चाहता हूँ।","occ":[["seed","S0001",1,"I want to speak Hindi with you now."],["use","S0001L06U04",1,"I want to speak Hindi with you now"]],"stored":{"f":"मैं अभी आपके साथ हिंदी बोलना चाहती हूँ।","m":null}}
+{"n":13,"t":"मैं अभी बोलना चाहता हूँ।","occ":[["use","S0001L06U01",1,"I want to speak now"]],"stored":{"f":"मैं अभी बोलना चाहती हूँ।","m":null}}
+{"n":14,"t":"मैं अभी हिंदी बोलना चाहता हूँ।","occ":[["use","S0001L06U02",1,"I want to speak Hindi now"]],"stored":{"f":"मैं अभी हिंदी बोलना चाहती हूँ।","m":null}}
+{"n":15,"t":"मैं आपके साथ बोलना चाहता हूँ।","occ":[["use","S0001L05U01",1,"I want to speak with you"]],"stored":{"f":"मैं आपके साथ बोलना चाहती हूँ।","m":null}}
+{"n":16,"t":"मैं आपके साथ हिंदी बोलना चाहता हूँ।","occ":[["use","S0001L05U02",1,"I want to speak Hindi with you"]],"stored":{"f":"मैं आपके साथ हिंदी बोलना चाहती हूँ।","m":null}}
+{"n":17,"t":"मैं चाहता हूँ।","occ":[["use","S0001L02U01",1,"I want"]],"stored":{"f":"मैं चाहती हूँ।","m":null}}
+{"n":18,"t":"मैं बोलना चाहता हूँ।","occ":[["use","S0001L03U01",1,"I want to speak"]],"stored":{"f":"मैं बोलना चाहती हूँ।","m":null}}
+{"n":19,"t":"मैं हिंदी बोलना चाहता हूँ।","occ":[["use","S0001L04U01",1,"I want to speak Hindi"]],"stored":{"f":"मैं हिंदी बोलना चाहती हूँ।","m":null}}
+{"n":20,"t":"हिंदी","occ":[["lego","S0001L04",1,"Hindi"],["component","S0004L02C01",4,"Hindi"],["component","S0064L03C01",64,"Hindi"],["lego","S0160L01",160,"Hindi"]],"stored":null}
+{"n":21,"t":"हिंदी बोलना","occ":[["build","S0001L04B01",1,"to speak Hindi"]],"stored":null}
+{"n":22,"t":"कर रहा हूँ।","occ":[["component","S0002L01C03",2,"am doing"]],"stored":null}
+{"n":23,"t":"की कोशिश","occ":[["component","S0002L01C02",2,"trying"]],"stored":null}
+{"n":24,"t":"मैं अभी सीखने की कोशिश कर रहा हूँ।","occ":[["use","S0002L01U03",2,"I'm trying to learn now"]],"stored":{"f":"मैं अभी सीखने की कोशिश कर रही हूँ।","m":null}}
+{"n":25,"t":"मैं अभी हिंदी सीखने की कोशिश कर रहा हूँ।","occ":[["use","S0002L01U05",2,"I'm trying to learn Hindi now"]],"stored":{"f":"मैं अभी हिंदी सीखने की कोशिश कर रही हूँ।","m":null}}
+{"n":26,"t":"मैं आपके साथ सीखने की कोशिश कर रहा हूँ।","occ":[["use","S0002L01U04",2,"I'm trying to learn with you"]],"stored":{"f":"मैं आपके साथ सीखने की कोशिश कर रही हूँ।","m":null}}
+{"n":27,"t":"मैं सीखने की कोशिश कर रहा हूँ।","occ":[["seed","S0002",2,"I'm trying to learn."],["use","S0002L01U01",2,"I'm trying to learn"]],"stored":{"f":"मैं सीखने की कोशिश कर रही हूँ।","m":null}}
+{"n":28,"t":"मैं हिंदी सीखने की कोशिश कर रहा हूँ।","occ":[["use","S0002L01U02",2,"I'm trying to learn Hindi"]],"stored":{"f":"मैं हिंदी सीखने की कोशिश कर रही हूँ।","m":null}}
+{"n":29,"t":"सीखने","occ":[["component","S0002L01C01",2,"to learn"]],"stored":null}
+{"n":30,"t":"सीखने की कोशिश कर रहा हूँ।","occ":[["lego","S0002L01",2,"I'm trying to learn"],["build","S0002L01B01",2,"I'm trying to learn"]],"stored":{"f":"सीखने की कोशिश कर रही हूँ।","m":null}}
+{"n":31,"t":"आपके साथ बोलने का तरीका।","occ":[["use","S0003L02U03",3,"the way to speak with you"]],"stored":null}
+{"n":32,"t":"आपके साथ हिंदी बोलने का तरीका।","occ":[["build","S0003L02B02",3,"how to speak Hindi with you"]],"stored":null}
+{"n":33,"t":"उतनी","occ":[["component","S0003L01C03",3,"that many"]],"stored":null}
+{"n":34,"t":"का","occ":[["component","S0003L02C02",3,"of"],["component","S0029L02C01",29,"of"],["component","S0093L03C03",93,"of"]],"stored":null}
+{"n":35,"t":"जितना","occ":[["component","S0003L01C01",3,"as much as"],["component","S0144L04C01",144,"as"]],"stored":null}
+{"n":36,"t":"जितना हो सके उतनी बार","occ":[["lego","S0003L01",3,"as often as possible"],["build","S0003L01B01",3,"as often as possible"]],"stored":null}
+{"n":37,"t":"जितना हो सके उतनी बार बोलना","occ":[["build","S0003L01B02",3,"speak as often as possible"]],"stored":null}
+{"n":38,"t":"जितना हो सके उतनी बार बोलने का तरीका।","occ":[["seed","S0003",3,"how to speak as often as possible."],["use","S0003L02U01",3,"how to speak as often as possible"]],"stored":null}
+{"n":39,"t":"तरीका।","occ":[["component","S0003L02C03",3,"way"]],"stored":null}
+{"n":40,"t":"बार","occ":[["component","S0003L01C04",3,"times"]],"stored":null}
+{"n":41,"t":"बोलने","occ":[["component","S0003L02C01",3,"speaking"],["component","S0005L02C01",5,"speaking"],["lego","S0206L02",206,"speaking"],["build","S0206L02B01",206,"speak-inf"],["lego","S0228L03",228,"speaking"]],"stored":null}
+{"n":42,"t":"बोलने का तरीका।","occ":[["lego","S0003L02",3,"how to speak"],["build","S0003L02B01",3,"how to speak"]],"stored":null}
+{"n":43,"t":"मैं जितना हो सके उतनी बार आपके साथ बोलना चाहता हूँ।","occ":[["use","S0003L01U03",3,"I want to speak with you as often as possible"]],"stored":{"f":"मैं जितना हो सके उतनी बार आपके साथ बोलना चाहती हूँ।","m":null}}
+{"n":44,"t":"मैं जितना हो सके उतनी बार बोलना चाहता हूँ।","occ":[["use","S0003L01U01",3,"I want to speak as often as possible"]],"stored":{"f":"मैं जितना हो सके उतनी बार बोलना चाहती हूँ।","m":null}}
+{"n":45,"t":"मैं जितना हो सके उतनी बार हिंदी सीखने की कोशिश कर रहा हूँ।","occ":[["use","S0003L01U02",3,"I'm trying to learn Hindi as often as possible"]],"stored":null}
+{"n":46,"t":"हिंदी बोलने का तरीका।","occ":[["use","S0003L02U02",3,"the way to speak Hindi"]],"stored":null}
+{"n":47,"t":"हो सके","occ":[["component","S0003L01C02",3,"can happen"],["component","S0028L01C03",28,"can be"]],"stored":null}
+{"n":48,"t":"अभी कुछ कैसे कहते हैं।","occ":[["use","S0004L03U02",4,"how to say something now"]],"stored":null}
+{"n":49,"t":"अभी हिंदी में कुछ कैसे कहते हैं।","occ":[["use","S0004L03U03",4,"how to say something in Hindi now"]],"stored":null}
+{"n":50,"t":"आपके साथ कुछ कैसे कहते हैं।","occ":[["use","S0004L03U04",4,"how to say something with you"]],"stored":null}
+{"n":51,"t":"आपके साथ हिंदी में कुछ कैसे कहते हैं।","occ":[["use","S0004L03U05",4,"how to say something in Hindi with you"]],"stored":null}
+{"n":52,"t":"कहते","occ":[["component","S0004L03C02",4,"say"],["lego","S0200L01",200,"do say"],["build","S0200L01B01",200,"they-say"],["lego","S0208L01",208,"one says"],["build","S0208L01B01",208,"say-hab"]],"stored":null}
+{"n":53,"t":"कुछ","occ":[["lego","S0004L01",4,"something"]],"stored":null}
+{"n":54,"t":"कुछ कैसे कहते हैं।","occ":[["build","S0004L03B02",4,"how to say something"]],"stored":null}
+{"n":55,"t":"कुछ बोलना","occ":[["build","S0004L01B03",4,"say something"]],"stored":null}
+{"n":56,"t":"कैसे","occ":[["component","S0004L03C01",4,"how"],["lego","S0043L02",43,"how"],["build","S0043L02B01",43,"how"],["lego","S0160L02",160,"how"],["build","S0160L02B01",160,"how"]],"stored":null}
+{"n":57,"t":"कैसे कहते हैं।","occ":[["lego","S0004L03",4,"how to say"],["build","S0004L03B01",4,"how to say"]],"stored":null}
+{"n":58,"t":"में","occ":[["component","S0004L02C02",4,"in"],["component","S0016L02C02",16,"in"],["component","S0027L01C03",27,"in"],["component","S0063L04C04",63,"in"],["component","S0074L02C03",74,"in"],["component","S0083L02C03",83,"in"],["component","S0108L03C02",108,"in"]],"stored":null}
+{"n":59,"t":"मैं अभी कुछ बोलना चाहता हूँ।","occ":[["use","S0004L01U01",4,"I want to say something now"]],"stored":{"f":"मैं अभी कुछ बोलना चाहती हूँ।","m":null}}
+{"n":60,"t":"मैं अभी कुछ सीखने की कोशिश कर रहा हूँ।","occ":[["use","S0004L01U02",4,"I'm trying to learn something now"]],"stored":{"f":"मैं अभी कुछ सीखने की कोशिश कर रही हूँ।","m":null}}
+{"n":61,"t":"मैं अभी हिंदी में कुछ बोलना चाहता हूँ।","occ":[["use","S0004L02U05",4,"I want to say something in Hindi now"]],"stored":{"f":"मैं अभी हिंदी में कुछ बोलना चाहती हूँ।","m":null}}
+{"n":62,"t":"मैं अभी हिंदी में बोलना चाहता हूँ।","occ":[["use","S0004L02U04",4,"I want to speak in Hindi now"]],"stored":{"f":"मैं अभी हिंदी में बोलना चाहती हूँ।","m":null}}
+{"n":63,"t":"मैं आपके साथ कुछ बोलना चाहता हूँ।","occ":[["use","S0004L01U03",4,"I want to say something with you"]],"stored":{"f":"मैं आपके साथ कुछ बोलना चाहती हूँ।","m":null}}
+{"n":64,"t":"मैं आपके साथ कुछ सीखने की कोशिश कर रहा हूँ।","occ":[["use","S0004L01U05",4,"I'm trying to learn something with you"]],"stored":{"f":"मैं आपके साथ कुछ सीखने की कोशिश कर रही हूँ।","m":null}}
+{"n":65,"t":"मैं कुछ बोलना चाहता हूँ।","occ":[["build","S0004L01B01",4,"I want to say something"]],"stored":{"f":"मैं कुछ बोलना चाहती हूँ।","m":null}}
+{"n":66,"t":"मैं कुछ सीखने की कोशिश कर रहा हूँ।","occ":[["build","S0004L01B02",4,"I'm trying to learn something"]],"stored":{"f":"मैं कुछ सीखने की कोशिश कर रही हूँ।","m":null}}
+{"n":67,"t":"मैं हिंदी में कुछ बोलना चाहता हूँ।","occ":[["use","S0004L02U02",4,"I want to say something in Hindi"]],"stored":{"f":"मैं हिंदी में कुछ बोलना चाहती हूँ।","m":null}}
+{"n":68,"t":"मैं हिंदी में बोलना चाहता हूँ।","occ":[["use","S0004L02U01",4,"I want to speak in Hindi"]],"stored":{"f":"मैं हिंदी में बोलना चाहती हूँ।","m":null}}
+{"n":69,"t":"हिंदी में","occ":[["lego","S0004L02",4,"in Hindi"],["build","S0004L02B01",4,"in Hindi"]],"stored":null}
+{"n":70,"t":"हिंदी में कुछ कैसे कहते हैं।","occ":[["seed","S0004",4,"how to say something in Hindi"],["use","S0004L03U01",4,"how to say something in Hindi"]],"stored":null}
+{"n":71,"t":"हिंदी में कुछ बोलना","occ":[["build","S0004L02B02",4,"say something in Hindi"]],"stored":null}
+{"n":72,"t":"हिंदी में कैसे कहते हैं।","occ":[["build","S0004L03B03",4,"how to say it in Hindi"]],"stored":null}
+{"n":73,"t":"हिंदी में बोलना","occ":[["build","S0004L02B03",4,"speak in Hindi"]],"stored":null}
+{"n":74,"t":"हैं।","occ":[["component","S0004L03C03",4,"are"],["component","S0013L03C02",13,"are"],["component","S0018L05C02",18,"are"],["component","S0072L02C04",72,"are"]],"stored":null}
+{"n":75,"t":"आपके साथ बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["build","S0005L02B02",5,"going to practise speaking with you"]],"stored":{"f":"आपके साथ बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":76,"t":"और","occ":[["component","S0005L01C02",5,"else"],["lego","S0015L01",15,"and"],["build","S0015L01B01",15,"and"],["component","S0073L02C02",73,"more"],["component","S0075L01C02",75,"more"],["lego","S0158L02",158,"else"],["build","S0158L02B01",158,"+"]],"stored":null}
+{"n":77,"t":"करने","occ":[["component","S0005L02C03",5,"to do"],["component","S0011L02C02",11,"doing"],["component","S0050L02C02",50,"of doing"],["component","S0063L04C03",63,"to do"],["component","S0074L02C05",74,"to do"],["component","S0088L01C02",88,"doing"]],"stored":null}
+{"n":78,"t":"किसी","occ":[["component","S0005L01C01",5,"someone"],["component","S0186L03C01",186,"someone"]],"stored":null}
+{"n":79,"t":"किसी और","occ":[["lego","S0005L01",5,"someone else"],["build","S0005L01B01",5,"someone else"],["lego","S0186L03",186,"someone else"],["build","S0186L03B01",186,"someone else"]],"stored":null}
+{"n":80,"t":"किसी और के साथ बोलना","occ":[["build","S0005L01B02",5,"speak with someone else"]],"stored":null}
+{"n":81,"t":"किसी और के साथ हिंदी बोलना","occ":[["build","S0005L01B03",5,"speak Hindi with someone else"]],"stored":null}
+{"n":82,"t":"जा","occ":[["component","S0005L02C04",5,"going"],["component","S0008L04C01",8,"going"],["component","S0223L03C01",223,"go"]],"stored":null}
+{"n":83,"t":"प्रैक्टिस","occ":[["component","S0005L02C02",5,"practice"],["lego","S0228L04",228,"practise"],["build","S0228L04B01",228,"practice"]],"stored":null}
+{"n":84,"t":"बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["lego","S0005L02",5,"I'm going to practise speaking"],["build","S0005L02B01",5,"I'm going to practise speaking"]],"stored":{"f":"बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":85,"t":"मैं अभी किसी और के साथ बोलना चाहता हूँ।","occ":[["use","S0005L01U03",5,"I want to speak with someone else now"]],"stored":{"f":"मैं अभी किसी और के साथ बोलना चाहती हूँ।","m":null}}
+{"n":86,"t":"मैं अभी किसी और के साथ बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["use","S0005L02U05",5,"I'm going to practise speaking with someone else now"]],"stored":{"f":"मैं अभी किसी और के साथ बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":87,"t":"मैं आपके साथ बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["use","S0005L02U02",5,"I'm going to practise speaking with you"]],"stored":{"f":"मैं आपके साथ बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":88,"t":"मैं किसी और के साथ बोलना चाहता हूँ।","occ":[["use","S0005L01U01",5,"I want to speak with someone else"]],"stored":{"f":"मैं किसी और के साथ बोलना चाहती हूँ।","m":null}}
+{"n":89,"t":"मैं किसी और के साथ बोलने की कोशिश कर रहा हूँ।","occ":[["use","S0005L01U04",5,"I'm trying to speak with someone else"]],"stored":{"f":"मैं किसी और के साथ बोलने की कोशिश कर रही हूँ।","m":null}}
+{"n":90,"t":"मैं किसी और के साथ बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["seed","S0005",5,"I'm going to practise speaking with someone else."],["use","S0005L02U03",5,"I'm going to practise speaking with someone else"]],"stored":{"f":"मैं किसी और के साथ बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":91,"t":"मैं किसी और के साथ हिंदी बोलना चाहता हूँ।","occ":[["use","S0005L01U02",5,"I want to speak Hindi with someone else"]],"stored":{"f":"मैं किसी और के साथ हिंदी बोलना चाहती हूँ।","m":null}}
+{"n":92,"t":"मैं बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["use","S0005L02U01",5,"I'm going to practise speaking"]],"stored":{"f":"मैं बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":93,"t":"मैं हिंदी बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["use","S0005L02U04",5,"I'm going to practise speaking Hindi"]],"stored":{"f":"मैं हिंदी बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":94,"t":"रहा हूँ।","occ":[["component","S0005L02C05",5,"am"],["component","S0029L02C04",29,"continuing am"]],"stored":null}
+{"n":95,"t":"हिंदी बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["build","S0005L02B03",5,"going to practise speaking in Hindi"]],"stored":{"f":"हिंदी बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":96,"t":"आपके साथ याद करने की कोशिश कर रहा हूँ।","occ":[["build","S0006L01B03",6,"trying to remember with you"]],"stored":{"f":"आपके साथ याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":97,"t":"एक","occ":[["component","S0006L02C01",6,"one"],["component","S0062L03C01",62,"one"],["lego","S0164L02",164,"a"],["build","S0164L02B01",164,"a"]],"stored":null}
+{"n":98,"t":"एक शब्द","occ":[["lego","S0006L02",6,"a word"],["build","S0006L02B01",6,"a word"]],"stored":null}
+{"n":99,"t":"एक शब्द याद करने","occ":[["build","S0006L02B02",6,"remember a word"]],"stored":null}
+{"n":100,"t":"एक शब्द याद करने की कोशिश कर रहा हूँ।","occ":[["build","S0006L02B03",6,"trying to remember a word"]],"stored":{"f":"एक शब्द याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":101,"t":"कुछ याद करने की कोशिश कर रहा हूँ।","occ":[["build","S0006L01B01",6,"trying to remember something"]],"stored":{"f":"कुछ याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":102,"t":"मैं अभी एक शब्द याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0006L02U02",6,"I'm trying to remember a word now"]],"stored":{"f":"मैं अभी एक शब्द याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":103,"t":"मैं अभी कुछ याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0006L01U02",6,"I'm trying to remember something now"]],"stored":{"f":"मैं अभी कुछ याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":104,"t":"मैं अभी हिंदी में कुछ याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0006L01U05",6,"I'm trying to remember something in Hindi now"]],"stored":{"f":"मैं अभी हिंदी में कुछ याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":105,"t":"मैं आपके साथ एक शब्द याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0006L02U04",6,"I'm trying to remember a word with you"]],"stored":{"f":"मैं आपके साथ एक शब्द याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":106,"t":"मैं आपके साथ कुछ याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0006L01U04",6,"I'm trying to remember something with you"]],"stored":{"f":"मैं आपके साथ कुछ याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":107,"t":"मैं एक शब्द याद करने की कोशिश कर रहा हूँ।","occ":[["seed","S0006",6,"I'm trying to remember a word."],["use","S0006L02U01",6,"I'm trying to remember a word"]],"stored":{"f":"मैं एक शब्द याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":108,"t":"मैं कुछ याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0006L01U01",6,"I'm trying to remember something"]],"stored":{"f":"मैं कुछ याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":109,"t":"मैं जितना हो सके उतनी बार एक शब्द याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0006L02U05",6,"I'm trying to remember a word as often as possible"]],"stored":{"f":"मैं जितना हो सके उतनी बार एक शब्द याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":110,"t":"मैं हिंदी में एक शब्द याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0006L02U03",6,"I'm trying to remember a word in Hindi"]],"stored":{"f":"मैं हिंदी में एक शब्द याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":111,"t":"मैं हिंदी में याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0006L01U03",6,"I'm trying to remember in Hindi"]],"stored":{"f":"मैं हिंदी में याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":112,"t":"याद","occ":[["lego","S0006L01",6,"to remember"],["component","S0010L03C01",10,"remember"],["lego","S0056L03",56,"recall"],["component","S0057L04C02",57,"memory"],["lego","S0113L01",113,"recall"],["build","S0113L01B01",113,"recall"],["lego","S0232L01",232,"remember"],["build","S0232L01B01",232,"mem"]],"stored":null}
+{"n":113,"t":"शब्द","occ":[["component","S0006L02C02",6,"word"],["lego","S0056L02",56,"word"],["build","S0056L02B01",56,"word"],["lego","S0205L01",205,"word"],["build","S0205L01B01",205,"word"]],"stored":null}
+{"n":114,"t":"हिंदी में याद करने की कोशिश कर रहा हूँ।","occ":[["build","S0006L01B02",6,"trying to remember in Hindi"]],"stored":{"f":"हिंदी में याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":115,"t":"आज","occ":[["lego","S0007L01",7,"today"],["lego","S0114L03",114,"today"]],"stored":null}
+{"n":116,"t":"आज कुछ सीखने","occ":[["build","S0007L01B02",7,"learn something today"]],"stored":null}
+{"n":117,"t":"आज कोशिश करना","occ":[["build","S0007L02B03",7,"try today"]],"stored":null}
+{"n":118,"t":"आज बोलना","occ":[["build","S0007L01B01",7,"speak today"]],"stored":null}
+{"n":119,"t":"आज हिंदी बोलना","occ":[["build","S0007L01B03",7,"speak Hindi today"]],"stored":null}
+{"n":120,"t":"करना","occ":[["component","S0007L02C02",7,"to do"],["component","S0019L02C02",19,"to do"],["component","S0019L04C02",19,"to do"],["component","S0040L03C02",40,"to do"],["component","S0069L05C03",69,"to do"],["component","S0081L01C04",81,"to do"],["component","S0098L02C04",98,"to do"]],"stored":null}
+{"n":121,"t":"कोशिश","occ":[["component","S0007L02C01",7,"effort"],["lego","S0050L03",50,"effort"],["build","S0050L03B01",50,"effort"],["lego","S0102L03",102,"effort"],["build","S0102L03B01",102,"try"],["lego","S0213L02",213,"effort"]],"stored":null}
+{"n":122,"t":"कोशिश करना","occ":[["lego","S0007L02",7,"to try"],["build","S0007L02B01",7,"to try"]],"stored":null}
+{"n":123,"t":"कोशिश करना चाहता हूँ।","occ":[["build","S0007L02B02",7,"want to try"]],"stored":{"f":"कोशिश करना चाहती हूँ।","m":null}}
+{"n":124,"t":"जितना हो सके उतनी मेहनत से","occ":[["build","S0007L03B02",7,"as hard as possible"]],"stored":null}
+{"n":125,"t":"जितना हो सके उतनी मेहनत से कोशिश करना","occ":[["build","S0007L03B03",7,"try as hard as possible"]],"stored":null}
+{"n":126,"t":"मेहनत","occ":[["component","S0007L03C01",7,"effort"],["lego","S0106L03",106,"hard work"],["build","S0106L03B01",106,"hard work"]],"stored":null}
+{"n":127,"t":"मेहनत से","occ":[["lego","S0007L03",7,"as hard as"],["build","S0007L03B01",7,"as hard as"]],"stored":null}
+{"n":128,"t":"मैं आज आपके साथ बोलना चाहता हूँ।","occ":[["use","S0007L01U03",7,"I want to speak with you today"]],"stored":{"f":"मैं आज आपके साथ बोलना चाहती हूँ।","m":null}}
+{"n":129,"t":"मैं आज कुछ याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0007L01U05",7,"I'm trying to remember something today"]],"stored":{"f":"मैं आज कुछ याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":130,"t":"मैं आज कोशिश करना चाहता हूँ।","occ":[["use","S0007L02U02",7,"I want to try today"]],"stored":{"f":"मैं आज कोशिश करना चाहती हूँ।","m":null}}
+{"n":131,"t":"मैं आज जितना हो सके उतनी मेहनत से कोशिश करना चाहता हूँ।","occ":[["seed","S0007",7,"I want to try as hard as I can today."],["use","S0007L03U03",7,"I want to try as hard as possible today"]],"stored":{"f":"मैं आज जितना हो सके उतनी मेहनत से कोशिश करना चाहती हूँ।","m":null}}
+{"n":132,"t":"मैं आज बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["use","S0007L01U04",7,"I'm going to practise speaking today"]],"stored":{"f":"मैं आज बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":133,"t":"मैं आज हिंदी बोलना चाहता हूँ।","occ":[["use","S0007L01U01",7,"I want to speak Hindi today"]],"stored":{"f":"मैं आज हिंदी बोलना चाहती हूँ।","m":null}}
+{"n":134,"t":"मैं आज हिंदी बोलने की कोशिश करना चाहता हूँ।","occ":[["use","S0007L02U05",7,"I want to try to speak Hindi today"]],"stored":{"f":"मैं आज हिंदी बोलने की कोशिश करना चाहती हूँ।","m":null}}
+{"n":135,"t":"मैं आज हिंदी सीखने की कोशिश कर रहा हूँ।","occ":[["use","S0007L01U02",7,"I'm trying to learn Hindi today"]],"stored":{"f":"मैं आज हिंदी सीखने की कोशिश कर रही हूँ।","m":null}}
+{"n":136,"t":"मैं आपके साथ कोशिश करना चाहता हूँ।","occ":[["use","S0007L02U04",7,"I want to try with you"]],"stored":{"f":"मैं आपके साथ कोशिश करना चाहती हूँ।","m":null}}
+{"n":137,"t":"मैं आपके साथ जितना हो सके उतनी मेहनत से कोशिश करना चाहता हूँ।","occ":[["use","S0007L03U04",7,"I want to try as hard as possible with you"]],"stored":{"f":"मैं आपके साथ जितना हो सके उतनी मेहनत से कोशिश करना चाहती हूँ।","m":null}}
+{"n":138,"t":"मैं कोशिश करना चाहता हूँ।","occ":[["use","S0007L02U01",7,"I want to try"]],"stored":{"f":"मैं कोशिश करना चाहती हूँ।","m":null}}
+{"n":139,"t":"मैं जितना हो सके उतनी मेहनत से कोशिश करना चाहता हूँ।","occ":[["use","S0007L03U01",7,"I want to try as hard as possible"]],"stored":{"f":"मैं जितना हो सके उतनी मेहनत से कोशिश करना चाहती हूँ।","m":null}}
+{"n":140,"t":"मैं जितना हो सके उतनी मेहनत से सीखने की कोशिश कर रहा हूँ।","occ":[["use","S0007L03U05",7,"I'm trying as hard as I can to learn"]],"stored":null}
+{"n":141,"t":"मैं हिंदी में कोशिश करना चाहता हूँ।","occ":[["use","S0007L02U03",7,"I want to try it in Hindi"]],"stored":{"f":"मैं हिंदी में कोशिश करना चाहती हूँ।","m":null}}
+{"n":142,"t":"से","occ":[["component","S0007L03C02",7,"with"],["component","S0022L02C03",22,"from"],["component","S0024L01C02",24,"with"],["component","S0025L03C02",25,"from"]],"stored":null}
+{"n":143,"t":"कि","occ":[["component","S0008L04C03",8,"that"],["component","S0011L01C02",11,"that"],["component","S0012L01C03",12,"that"],["component","S0015L02C03",15,"that"],["component","S0017L02C03",17,"that"],["component","S0026L03C02",26,"that"],["component","S0047L02C02",47,"that"]],"stored":null}
+{"n":144,"t":"क्या","occ":[["component","S0008L01C03",8,"what"],["component","S0012L02C01",12,"what"]],"stored":null}
+{"n":145,"t":"जा रहा हूँ कि","occ":[["lego","S0008L04",8,"going... that"],["build","S0008L04B01",8,"going... that"]],"stored":{"f":"जा रही हूँ कि","m":null}}
+{"n":146,"t":"मतलब","occ":[["component","S0008L01C02",8,"meaning"],["lego","S0263L01",263,"meaning"],["build","S0263L01B01",263,"meaning"]],"stored":null}
+{"n":147,"t":"मेरा","occ":[["component","S0008L01C01",8,"my"],["component","S0049L03C01",49,"my"],["lego","S0166L01",166,"i-gen-m"],["build","S0166L01B01",166,"I-gen-m"]],"stored":null}
+{"n":148,"t":"मेरा मतलब क्या","occ":[["lego","S0008L01",8,"what I mean"],["build","S0008L01B01",8,"what I mean"]],"stored":null}
+{"n":149,"t":"मेरा मतलब क्या बोलने की कोशिश कर रहा हूँ।","occ":[["use","S0008L01U06",8,"I'm trying to say what I mean in Hindi"]],"stored":{"f":"मेरा मतलब क्या बोलने की कोशिश कर रही हूँ।","m":null}}
+{"n":150,"t":"मेरा मतलब क्या याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0008L01U05",8,"I'm trying to remember what I mean"]],"stored":{"f":"मेरा मतलब क्या याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":151,"t":"मेरा मतलब क्या है।","occ":[["use","S0008L02U01",8,"what I mean is"]],"stored":null}
+{"n":152,"t":"मैं अभी समझाने की कोशिश करने जा रहा हूँ कि मेरा मतलब क्या है।","occ":[["use","S0008L04U05",8,"I'm going to try to explain what I mean now"]],"stored":{"f":"मैं अभी समझाने की कोशिश करने जा रही हूँ कि मेरा मतलब क्या है।","m":null}}
+{"n":153,"t":"मैं आज समझाने की कोशिश कर रहा हूँ।","occ":[["use","S0008L03U05",8,"I'm trying to explain today"]],"stored":{"f":"मैं आज समझाने की कोशिश कर रही हूँ।","m":null}}
+{"n":154,"t":"मैं आज समझाने की कोशिश करने जा रहा हूँ कि मेरा मतलब क्या है।","occ":[["use","S0008L04U02",8,"I'm going to try to explain what I mean today"]],"stored":{"f":"मैं आज समझाने की कोशिश करने जा रही हूँ कि मेरा मतलब क्या है।","m":null}}
+{"n":155,"t":"मैं आपके साथ समझाने की कोशिश कर रहा हूँ।","occ":[["use","S0008L03U04",8,"I'm trying to explain with you"]],"stored":{"f":"मैं आपके साथ समझाने की कोशिश कर रही हूँ।","m":null}}
+{"n":156,"t":"मैं आपके साथ समझाने की कोशिश करने जा रहा हूँ कि मेरा मतलब क्या है।","occ":[["use","S0008L04U04",8,"I'm going to try to explain what I mean with you"]],"stored":{"f":"मैं आपके साथ समझाने की कोशिश करने जा रही हूँ कि मेरा मतलब क्या है।","m":null}}
+{"n":157,"t":"मैं कुछ समझाने की कोशिश करने जा रहा हूँ।","occ":[["use","S0008L03U03",8,"I'm going to try to explain something"]],"stored":{"f":"मैं कुछ समझाने की कोशिश करने जा रही हूँ।","m":null}}
+{"n":158,"t":"मैं समझाने की कोशिश कर रहा हूँ।","occ":[["use","S0008L03U01",8,"I'm trying to explain"]],"stored":{"f":"मैं समझाने की कोशिश कर रही हूँ।","m":null}}
+{"n":159,"t":"मैं समझाने की कोशिश करने जा रहा हूँ कि मेरा मतलब क्या है।","occ":[["seed","S0008",8,"I'm going to try to explain what I mean."],["use","S0008L04U01",8,"I'm going to try to explain what I mean"]],"stored":{"f":"मैं समझाने की कोशिश करने जा रही हूँ कि मेरा मतलब क्या है।","m":null}}
+{"n":160,"t":"मैं हिंदी में समझाने की कोशिश कर रहा हूँ।","occ":[["use","S0008L03U02",8,"I'm trying to explain in Hindi"]],"stored":{"f":"मैं हिंदी में समझाने की कोशिश कर रही हूँ।","m":null}}
+{"n":161,"t":"मैं हिंदी में समझाने की कोशिश करने जा रहा हूँ कि मेरा मतलब क्या है।","occ":[["use","S0008L04U03",8,"I'm going to try to explain what I mean in Hindi"]],"stored":{"f":"मैं हिंदी में समझाने की कोशिश करने जा रही हूँ कि मेरा मतलब क्या है।","m":null}}
+{"n":162,"t":"रहा हूँ","occ":[["component","S0008L04C02",8,"am"]],"stored":null}
+{"n":163,"t":"समझाने","occ":[["lego","S0008L03",8,"to explain"]],"stored":null}
+{"n":164,"t":"समझाने की कोशिश कर रहा हूँ।","occ":[["build","S0008L03B01",8,"trying to explain"]],"stored":{"f":"समझाने की कोशिश कर रही हूँ।","m":null}}
+{"n":165,"t":"समझाने की कोशिश करने जा रहा हूँ कि","occ":[["build","S0008L04B02",8,"going to try to explain that"]],"stored":null}
+{"n":166,"t":"समझाने की कोशिश करने जा रहा हूँ कि मेरा मतलब क्या है।","occ":[["build","S0008L04B03",8,"going to try to explain what I mean"]],"stored":null}
+{"n":167,"t":"समझाने की कोशिश करने जा रहा हूँ।","occ":[["build","S0008L03B02",8,"going to try to explain"]],"stored":{"f":"समझाने की कोशिश करने जा रही हूँ।","m":null}}
+{"n":168,"t":"हिंदी में कुछ समझाने","occ":[["build","S0008L03B03",8,"explain something in Hindi"]],"stored":null}
+{"n":169,"t":"हिंदी में क्या है।","occ":[["use","S0008L02U02",8,"what is it in Hindi?"]],"stored":null}
+{"n":170,"t":"है।","occ":[["lego","S0008L02",8,"is"],["build","S0008L02B01",8,"is"],["component","S0016L05C02",16,"is"],["component","S0041L04C03",41,"is"],["component","S0044L02C04",44,"is"],["component","S0058L03C02",58,"is"],["component","S0073L02C04",73,"is"],["component","S0076L05C03",76,"is"],["component","S0089L02C03",89,"is"],["component","S0093L02C02",93,"is"]],"stored":null}
+{"n":171,"t":"आपके साथ थोड़ी हिंदी","occ":[["build","S0009L01B03",9,"a little Hindi with you"]],"stored":null}
+{"n":172,"t":"थोड़ी","occ":[["lego","S0009L01",9,"a little"]],"stored":null}
+{"n":173,"t":"थोड़ी हिंदी","occ":[["build","S0009L01B01",9,"a little Hindi"]],"stored":null}
+{"n":174,"t":"थोड़ी हिंदी बोलता हूँ।","occ":[["build","S0009L02B03",9,"I speak a little Hindi"]],"stored":{"f":"थोड़ी हिंदी बोलती हूँ।","m":null}}
+{"n":175,"t":"थोड़ी हिंदी बोलना","occ":[["build","S0009L01B02",9,"speak a little Hindi"]],"stored":null}
+{"n":176,"t":"बोलता","occ":[["component","S0009L02C01",9,"speak"]],"stored":null}
+{"n":177,"t":"बोलता हूँ।","occ":[["lego","S0009L02",9,"I speak"],["build","S0009L02B01",9,"I speak"]],"stored":{"f":"बोलती हूँ।","m":null}}
+{"n":178,"t":"मैं अभी थोड़ी हिंदी बोलता हूँ।","occ":[["seed","S0009",9,"I speak a little Hindi now."],["use","S0009L02U02",9,"I speak a little Hindi now"]],"stored":{"f":"मैं अभी थोड़ी हिंदी बोलती हूँ।","m":null}}
+{"n":179,"t":"मैं अभी थोड़ी हिंदी बोलना चाहता हूँ।","occ":[["use","S0009L01U03",9,"I want to speak a little Hindi now"]],"stored":{"f":"मैं अभी थोड़ी हिंदी बोलना चाहती हूँ।","m":null}}
+{"n":180,"t":"मैं अभी हिंदी बोलता हूँ।","occ":[["use","S0009L02U01",9,"I speak Hindi now"]],"stored":{"f":"मैं अभी हिंदी बोलती हूँ।","m":null}}
+{"n":181,"t":"मैं आपके साथ थोड़ी हिंदी बोलता हूँ।","occ":[["use","S0009L02U04",9,"I speak a little Hindi with you"]],"stored":{"f":"मैं आपके साथ थोड़ी हिंदी बोलती हूँ।","m":null}}
+{"n":182,"t":"मैं आपके साथ थोड़ी हिंदी बोलना चाहता हूँ।","occ":[["use","S0009L01U05",9,"I want to speak a little Hindi with you"]],"stored":{"f":"मैं आपके साथ थोड़ी हिंदी बोलना चाहती हूँ।","m":null}}
+{"n":183,"t":"मैं आपके साथ हिंदी बोलता हूँ।","occ":[["use","S0009L02U03",9,"I speak Hindi with you"]],"stored":{"f":"मैं आपके साथ हिंदी बोलती हूँ।","m":null}}
+{"n":184,"t":"मैं जितना हो सके उतनी बार हिंदी बोलता हूँ।","occ":[["use","S0009L02U05",9,"I speak Hindi as often as possible"]],"stored":{"f":"मैं जितना हो सके उतनी बार हिंदी बोलती हूँ।","m":null}}
+{"n":185,"t":"मैं थोड़ी हिंदी बोलना चाहता हूँ।","occ":[["use","S0009L01U01",9,"I want to speak a little Hindi"]],"stored":{"f":"मैं थोड़ी हिंदी बोलना चाहती हूँ।","m":null}}
+{"n":186,"t":"मैं थोड़ी हिंदी बोलने की कोशिश कर रहा हूँ।","occ":[["use","S0009L01U02",9,"I'm trying to speak a little Hindi"]],"stored":{"f":"मैं थोड़ी हिंदी बोलने की कोशिश कर रही हूँ।","m":null}}
+{"n":187,"t":"मैं थोड़ी हिंदी सीखने की कोशिश कर रहा हूँ।","occ":[["use","S0009L01U04",9,"I'm trying to learn a little Hindi"]],"stored":null}
+{"n":188,"t":"हिंदी बोलता हूँ।","occ":[["build","S0009L02B02",9,"I speak Hindi"]],"stored":{"f":"हिंदी बोलती हूँ।","m":null}}
+{"n":189,"t":"हूँ।","occ":[["component","S0009L02C02",9,"am"],["component","S0010L03C04",10,"am"],["component","S0038L03C02",38,"am"],["component","S0039L04C02",39,"am"],["component","S0041L02C02",41,"am"],["component","S0056L04C02",56,"am"],["component","S0077L04C03",77,"am"]],"stored":null}
+{"n":190,"t":"कर","occ":[["component","S0010L03C02",10,"do"],["component","S0029L02C03",29,"do"],["component","S0072L02C02",72,"doing"],["component","S0099L03C03",99,"doing"],["lego","S0207L01",207,"did"],["build","S0207L01B01",207,"did"]],"stored":null}
+{"n":191,"t":"नहीं","occ":[["component","S0010L01C03",10,"not"],["component","S0012L01C01",12,"not"],["component","S0019L04C01",19,"not"],["component","S0035L04C01",35,"not"],["component","S0043L03C01",43,"not"],["component","S0046L02C02",46,"not"],["component","S0050L04C01",50,"not"],["component","S0055L05C02",55,"not"],["component","S0057L04C03",57,"not"],["component","S0060L04C02",60,"not"],["component","S0069L05C02",69,"not"],["component","S0070L03C01",70,"not"],["component","S0071L04C01",71,"not"],["component","S0078L04C01",78,"not"],["component","S0082L03C01",82,"not"],["component","S0099L03C02",99,"not"],["component","S0100L03C01",100,"not"],["component","S0112L02C03",112,"not"]],"stored":null}
+{"n":192,"t":"पक्का","occ":[["component","S0010L01C02",10,"certain"]],"stored":null}
+{"n":193,"t":"पूरा","occ":[["component","S0010L02C01",10,"whole"]],"stored":null}
+{"n":194,"t":"पूरा वाक्य","occ":[["lego","S0010L02",10,"the whole sentence"],["build","S0010L02B01",10,"the whole sentence"]],"stored":null}
+{"n":195,"t":"पूरा वाक्य याद करना","occ":[["build","S0010L02B02",10,"remember the whole sentence"]],"stored":null}
+{"n":196,"t":"पूरा वाक्य याद करने की कोशिश","occ":[["build","S0010L02B03",10,"trying to remember the whole sentence"]],"stored":null}
+{"n":197,"t":"मुझे","occ":[["component","S0010L01C01",10,"to me"],["component","S0026L01C01",26,"to me"],["component","S0057L04C01",57,"to me"],["component","S0059L02C01",59,"to me"],["component","S0062L04C01",62,"I'm"],["component","S0073L02C01",73,"to me"],["component","S0074L02C01",74,"to me"]],"stored":null}
+{"n":198,"t":"मुझे पक्का नहीं है","occ":[["lego","S0010L01",10,"I'm not sure"],["build","S0010L01B01",10,"I'm not sure"],["lego","S0062L04",62,"I'm not certain"],["build","S0062L04B01",62,"I'm not certain"]],"stored":null}
+{"n":199,"t":"मुझे पक्का नहीं है आज मैं क्या बोलना चाहता हूँ।","occ":[["use","S0010L01U05",10,"I'm not sure what I want to say today"]],"stored":{"f":"मुझे पक्का नहीं है आज मैं क्या बोलना चाहती हूँ।","m":null}}
+{"n":200,"t":"मुझे पक्का नहीं है कि मैं पूरा वाक्य याद कर सकता हूँ।","occ":[["seed","S0010",10,"I'm not sure if I can remember the whole sentence."],["use","S0010L03U02",10,"I'm not sure if I can remember the whole sentence"]],"stored":{"f":"मुझे पक्का नहीं है कि मैं पूरा वाक्य याद कर सकती हूँ।","m":null}}
+{"n":201,"t":"मुझे पक्का नहीं है मेरा मतलब क्या","occ":[["build","S0010L01B02",10,"I'm not sure what I mean"]],"stored":null}
+{"n":202,"t":"मुझे पक्का नहीं है मेरा मतलब क्या है।","occ":[["use","S0010L01U03",10,"I'm not sure what I mean"]],"stored":null}
+{"n":203,"t":"मुझे पक्का नहीं है मैं क्या बोलना चाहता हूँ।","occ":[["use","S0010L01U01",10,"I'm not sure what I want to say"]],"stored":{"f":"मुझे पक्का नहीं है मैं क्या बोलना चाहती हूँ।","m":null}}
+{"n":204,"t":"मुझे पक्का नहीं है मैं क्या सीखने की कोशिश कर रहा हूँ।","occ":[["use","S0010L01U02",10,"I'm not sure what I'm trying to learn"]],"stored":{"f":"मुझे पक्का नहीं है मैं क्या सीखने की कोशिश कर रही हूँ।","m":null}}
+{"n":205,"t":"मैं अभी कुछ याद कर सकता हूँ।","occ":[["use","S0010L03U03",10,"I can remember something now"]],"stored":{"f":"मैं अभी कुछ याद कर सकती हूँ।","m":null}}
+{"n":206,"t":"मैं आज कुछ याद कर सकता हूँ।","occ":[["use","S0010L03U05",10,"I can remember something today"]],"stored":{"f":"मैं आज कुछ याद कर सकती हूँ।","m":null}}
+{"n":207,"t":"मैं कुछ याद कर सकता हूँ।","occ":[["build","S0010L03B02",10,"I can remember something"]],"stored":{"f":"मैं कुछ याद कर सकती हूँ।","m":null}}
+{"n":208,"t":"मैं पूरा वाक्य बोलना चाहता हूँ।","occ":[["use","S0010L02U05",10,"I want to say the whole sentence"]],"stored":{"f":"मैं पूरा वाक्य बोलना चाहती हूँ।","m":null}}
+{"n":209,"t":"मैं पूरा वाक्य याद कर सकता हूँ।","occ":[["use","S0010L03U01",10,"I can remember the whole sentence"]],"stored":{"f":"मैं पूरा वाक्य याद कर सकती हूँ।","m":null}}
+{"n":210,"t":"मैं पूरा वाक्य याद करना चाहता हूँ।","occ":[["use","S0010L02U01",10,"I want to remember the whole sentence"]],"stored":{"f":"मैं पूरा वाक्य याद करना चाहती हूँ।","m":null}}
+{"n":211,"t":"मैं पूरा वाक्य याद करने की कोशिश कर रहा हूँ।","occ":[["use","S0010L02U03",10,"I'm trying to remember the whole sentence"]],"stored":{"f":"मैं पूरा वाक्य याद करने की कोशिश कर रही हूँ।","m":null}}
+{"n":212,"t":"मैं याद कर सकता हूँ।","occ":[["build","S0010L03B03",10,"I can remember"],["build","S0056L04B02",56,"I can remember"]],"stored":{"f":"मैं याद कर सकती हूँ।","m":null}}
+{"n":213,"t":"मैं हिंदी में पूरा वाक्य याद करना चाहता हूँ।","occ":[["use","S0010L02U04",10,"I want to remember the whole sentence in Hindi"]],"stored":{"f":"मैं हिंदी में पूरा वाक्य याद करना चाहती हूँ।","m":null}}
+{"n":214,"t":"याद कर सकता हूँ।","occ":[["lego","S0010L03",10,"can remember"],["build","S0010L03B01",10,"can remember"]],"stored":{"f":"याद कर सकती हूँ।","m":null}}
+{"n":215,"t":"वाक्य","occ":[["component","S0010L02C02",10,"sentence"]],"stored":null}
+{"n":216,"t":"सकता","occ":[["component","S0010L03C03",10,"can"],["component","S0056L04C01",56,"can"],["lego","S0225L03",225,"could"],["build","S0225L03B01",225,"can"]],"stored":null}
+{"n":217,"t":"है","occ":[["component","S0010L01C04",10,"is"],["component","S0017L02C02",17,"is"],["component","S0026L01C04",26,"is"],["component","S0057L04C04",57,"is"],["component","S0059L02C03",59,"is"]],"stored":null}
+{"n":218,"t":"आप आज खत्म करने के बाद","occ":[["build","S0011L02B02",11,"after you finish today"]],"stored":null}
+{"n":219,"t":"आप खत्म करने के बाद","occ":[["lego","S0011L02",11,"after you finish"],["build","S0011L02B01",11,"after you finish"]],"stored":null}
+{"n":220,"t":"आप खत्म करने के बाद बोल सकूँ।","occ":[["build","S0011L03B03",11,"I can speak after you finish"]],"stored":null}
+{"n":221,"t":"आप खत्म करने के बाद बोलना","occ":[["build","S0011L02B03",11,"speak after you finish"]],"stored":null}
+{"n":222,"t":"आप खत्म करने के बाद बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["use","S0011L02U03",11,"I'm going to practise speaking after you finish"]],"stored":{"f":"आप खत्म करने के बाद बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":223,"t":"आप खत्म करने के बाद मैं याद कर सकता हूँ।","occ":[["use","S0011L02U02",11,"I can remember after you finish"]],"stored":{"f":"आप खत्म करने के बाद मैं याद कर सकती हूँ।","m":null}}
+{"n":224,"t":"के बाद","occ":[["component","S0011L02C03",11,"after"]],"stored":null}
+{"n":225,"t":"खत्म","occ":[["component","S0011L02C01",11,"finish"],["component","S0050L02C01",50,"finish"],["lego","S0050L01",50,"finish"],["build","S0050L01B01",50,"finish"],["component","S0110L02C01",110,"finish"]],"stored":null}
+{"n":226,"t":"चाहूँगा","occ":[["component","S0011L01C01",11,"would like"],["component","S0012L01C02",12,"would like"]],"stored":null}
+{"n":227,"t":"चाहूँगा कि","occ":[["lego","S0011L01",11,"i'd like that"],["build","S0011L01B01",11,"I'd like that"]],"stored":{"f":"चाहूँगी कि","m":null}}
+{"n":228,"t":"बोल","occ":[["component","S0011L03C01",11,"speak"],["lego","S0090L02",90,"talk"],["build","S0090L02B01",90,"speak"]],"stored":null}
+{"n":229,"t":"बोल सकूँ।","occ":[["lego","S0011L03",11,"can speak"],["build","S0011L03B01",11,"can speak"]],"stored":null}
+{"n":230,"t":"मैं चाहूँगा कि","occ":[["build","S0011L01B02",11,"I'd like that"]],"stored":{"f":"मैं चाहूँगी कि","m":null}}
+{"n":231,"t":"मैं चाहूँगा कि आप खत्म करने के बाद मैं बोल सकूँ।","occ":[["seed","S0011",11,"I'd like to be able to speak after you finish."],["use","S0011L03U01",11,"I'd like to be able to speak after you finish"]],"stored":{"f":"मैं चाहूँगी कि आप खत्म करने के बाद मैं बोल सकूँ।","m":null}}
+{"n":232,"t":"मैं चाहूँगा कि मैं अभी बोल सकूँ।","occ":[["use","S0011L03U04",11,"I'd like to be able to speak now"]],"stored":{"f":"मैं चाहूँगी कि मैं अभी बोल सकूँ।","m":null}}
+{"n":233,"t":"मैं चाहूँगा कि मैं आपके साथ बोल सकूँ।","occ":[["use","S0011L03U03",11,"I'd like to be able to speak with you"]],"stored":{"f":"मैं चाहूँगी कि मैं आपके साथ बोल सकूँ।","m":null}}
+{"n":234,"t":"मैं चाहूँगा कि मैं थोड़ी हिंदी बोल सकूँ।","occ":[["use","S0011L03U05",11,"I'd like to be able to speak a little Hindi"]],"stored":{"f":"मैं चाहूँगी कि मैं थोड़ी हिंदी बोल सकूँ।","m":null}}
+{"n":235,"t":"मैं चाहूँगा कि मैं हिंदी बोल सकूँ।","occ":[["use","S0011L03U02",11,"I'd like to be able to speak Hindi"]],"stored":{"f":"मैं चाहूँगी कि मैं हिंदी बोल सकूँ।","m":null}}
+{"n":236,"t":"मैं हिंदी बोल सकूँ।","occ":[["build","S0011L03B02",11,"I can speak Hindi"]],"stored":null}
+{"n":237,"t":"सकूँ।","occ":[["component","S0011L03C02",11,"can"]],"stored":null}
+{"n":238,"t":"अनुमान","occ":[["component","S0012L03C02",12,"guess"]],"stored":null}
+{"n":239,"t":"इसका","occ":[["component","S0012L03C01",12,"of this"]],"stored":null}
+{"n":240,"t":"इसका अनुमान लगाऊँ।","occ":[["lego","S0012L03",12,"to guess this"],["build","S0012L03B01",12,"to guess this"]],"stored":null}
+{"n":241,"t":"कल","occ":[["lego","S0012L04",12,"tomorrow"],["lego","S0114L01",114,"yest"],["build","S0114L01B01",114,"yest"],["lego","S0155L02",155,"tomorrow"],["lego","S0223L01",223,"tomorrow"]],"stored":null}
+{"n":242,"t":"कल क्या होगा","occ":[["build","S0012L04B03",12,"what's going to happen tomorrow"]],"stored":null}
+{"n":243,"t":"कल बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["use","S0012L04U03",12,"I'm going to practise speaking tomorrow"]],"stored":{"f":"कल बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":244,"t":"क्या होगा","occ":[["lego","S0012L02",12,"what's going to happen"],["build","S0012L02B01",12,"what's going to happen"]],"stored":null}
+{"n":245,"t":"क्या होगा इसका अनुमान लगाऊँ।","occ":[["build","S0012L03B03",12,"guess what's happening"]],"stored":null}
+{"n":246,"t":"नहीं चाहूँगा कि","occ":[["lego","S0012L01",12,"I wouldn't like that"],["build","S0012L01B01",12,"I wouldn't like that"]],"stored":{"f":"नहीं चाहूँगी कि","m":null}}
+{"n":247,"t":"मुझे पक्का नहीं है कि अभी क्या होगा","occ":[["use","S0012L02U03",12,"I'm not sure what's going to happen now"]],"stored":null}
+{"n":248,"t":"मुझे पक्का नहीं है कि आज क्या होगा","occ":[["use","S0012L02U01",12,"I'm not sure what's going to happen today"]],"stored":null}
+{"n":249,"t":"मुझे पक्का नहीं है कि आप खत्म करने के बाद क्या होगा","occ":[["use","S0012L02U05",12,"I'm not sure what will happen after you finish"]],"stored":null}
+{"n":250,"t":"मुझे पक्का नहीं है कि क्या होगा","occ":[["build","S0012L02B02",12,"I'm not sure what's going to happen"]],"stored":null}
+{"n":251,"t":"मैं नहीं चाहूँगा कि आज इसका अनुमान लगाऊँ।","occ":[["use","S0012L03U04",12,"I wouldn't like to guess today"]],"stored":{"f":"मैं नहीं चाहूँगी कि आज इसका अनुमान लगाऊँ।","m":null}}
+{"n":252,"t":"मैं नहीं चाहूँगा कि इसका अनुमान लगाऊँ।","occ":[["build","S0012L03B02",12,"I wouldn't like to guess"]],"stored":{"f":"मैं नहीं चाहूँगी कि इसका अनुमान लगाऊँ।","m":null}}
+{"n":253,"t":"मैं नहीं चाहूँगा कि कल क्या होगा इसका अनुमान लगाऊँ।","occ":[["seed","S0012",12,"I wouldn't like to guess what's going to happen tomorrow."],["use","S0012L04U01",12,"I wouldn't like to guess what's going to happen tomorrow"]],"stored":{"f":"मैं नहीं चाहूँगी कि कल क्या होगा इसका अनुमान लगाऊँ।","m":null}}
+{"n":254,"t":"मैं नहीं चाहूँगा कि कल हिंदी बोलता हूँ।","occ":[["use","S0012L01U11",12,"I wouldn't like to speak Hindi tomorrow"]],"stored":{"f":"मैं नहीं चाहूँगी कि कल हिंदी बोलती हूँ।","m":null}}
+{"n":255,"t":"मैं नहीं चाहूँगा कि क्या होगा इसका अनुमान लगाऊँ।","occ":[["use","S0012L03U01",12,"I wouldn't like to guess what's going to happen"]],"stored":{"f":"मैं नहीं चाहूँगी कि क्या होगा इसका अनुमान लगाऊँ।","m":null}}
+{"n":256,"t":"मैं नहीं चाहूँगा कि मेरा मतलब क्या है इसका अनुमान लगाऊँ।","occ":[["use","S0012L03U03",12,"I wouldn't like to guess what I mean"]],"stored":{"f":"मैं नहीं चाहूँगी कि मेरा मतलब क्या है इसका अनुमान लगाऊँ।","m":null}}
+{"n":257,"t":"लगाऊँ।","occ":[["component","S0012L03C03",12,"apply"]],"stored":null}
+{"n":258,"t":"होगा","occ":[["component","S0012L02C02",12,"will happen"]],"stored":null}
+{"n":259,"t":"अच्छी","occ":[["lego","S0013L02",13,"well"],["build","S0013L02B01",13,"well"],["component","S0047L01C01",47,"good"]],"stored":null}
+{"n":260,"t":"आप अभी हिंदी बहुत अच्छी बोलते हैं।","occ":[["use","S0013L03U05",13,"you speak Hindi very well now"]],"stored":null}
+{"n":261,"t":"आप थोड़ी हिंदी बोलते हैं।","occ":[["use","S0013L03U03",13,"you speak a little Hindi"]],"stored":null}
+{"n":262,"t":"आप हिंदी अच्छी बोलते हैं।","occ":[["use","S0013L03U04",13,"you speak Hindi well"]],"stored":null}
+{"n":263,"t":"आप हिंदी बहुत अच्छी बोलते हैं।","occ":[["seed","S0013",13,"You speak Hindi very well."],["use","S0013L03U01",13,"you speak Hindi very well"]],"stored":null}
+{"n":264,"t":"आप हिंदी बोलते हैं।","occ":[["use","S0013L03U02",13,"you speak Hindi"]],"stored":null}
+{"n":265,"t":"बहुत","occ":[["lego","S0013L01",13,"very"],["build","S0013L01B01",13,"very much"],["lego","S0072L01",72,"very"]],"stored":null}
+{"n":266,"t":"बोलते","occ":[["component","S0013L03C01",13,"speak"],["component","S0014L02C01",14,"speak"]],"stored":null}
+{"n":267,"t":"बोलते हैं।","occ":[["lego","S0013L03",13,"speak"],["build","S0013L03B01",13,"speak"]],"stored":null}
+{"n":268,"t":"मैं हिंदी अच्छी बोलता हूँ।","occ":[["use","S0013L02U01",13,"I speak Hindi well"]],"stored":{"f":"मैं हिंदी अच्छी बोलती हूँ।","m":null}}
+{"n":269,"t":"मैं हिंदी अच्छी बोलना चाहता हूँ।","occ":[["use","S0013L02U03",13,"I want to speak Hindi well"]],"stored":{"f":"मैं हिंदी अच्छी बोलना चाहती हूँ।","m":null}}
+{"n":270,"t":"मैं हिंदी अच्छी बोलने की कोशिश कर रहा हूँ।","occ":[["use","S0013L02U06",13,"I'm trying to speak Hindi well"]],"stored":{"f":"मैं हिंदी अच्छी बोलने की कोशिश कर रही हूँ।","m":null}}
+{"n":271,"t":"मैं हिंदी अच्छी बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["use","S0013L02U08",13,"I'm going to practise speaking Hindi well"]],"stored":{"f":"मैं हिंदी अच्छी बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":272,"t":"मैं हिंदी बहुत अच्छी बोलना चाहता हूँ।","occ":[["use","S0013L02U05",13,"I want to speak Hindi very well"]],"stored":{"f":"मैं हिंदी बहुत अच्छी बोलना चाहती हूँ।","m":null}}
+{"n":273,"t":"मैं हिंदी बहुत अच्छी बोलने की कोशिश कर रहा हूँ।","occ":[["use","S0013L02U02",13,"I'm trying to speak Hindi very well"],["use","S0013L02U07",13,"I'm trying to speak Hindi very well"]],"stored":{"f":"मैं हिंदी बहुत अच्छी बोलने की कोशिश कर रही हूँ।","m":null}}
+{"n":274,"t":"मैं हिंदी बहुत बोलता हूँ।","occ":[["use","S0013L01U01",13,"I speak Hindi a lot"]],"stored":{"f":"मैं हिंदी बहुत बोलती हूँ।","m":null}}
+{"n":275,"t":"मैं हिंदी बहुत बोलना चाहता हूँ।","occ":[["use","S0013L01U04",13,"I want to speak a lot of Hindi"]],"stored":{"f":"मैं हिंदी बहुत बोलना चाहती हूँ।","m":null}}
+{"n":276,"t":"मैं हिंदी बहुत बोलने की कोशिश कर रहा हूँ।","occ":[["use","S0013L01U03",13,"I'm trying to speak Hindi a lot"]],"stored":{"f":"मैं हिंदी बहुत बोलने की कोशिश कर रही हूँ।","m":null}}
+{"n":277,"t":"मैं हिंदी बहुत बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["use","S0013L01U05",13,"I'm going to practise speaking Hindi a lot"]],"stored":{"f":"मैं हिंदी बहुत बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":278,"t":"हिंदी बहुत अच्छी बोलते हैं।","occ":[["build","S0013L03B03",13,"speak Hindi very well"]],"stored":null}
+{"n":279,"t":"हिंदी बोलते हैं।","occ":[["build","S0013L03B02",13,"speak Hindi"]],"stored":null}
+{"n":280,"t":"क्या आप अभी हिंदी बोलते हैं?","occ":[["use","S0014L02U05",14,"do you speak Hindi now?"]],"stored":null}
+{"n":281,"t":"क्या आप थोड़ी हिंदी बोलते हैं?","occ":[["use","S0014L02U03",14,"do you speak a little Hindi?"]],"stored":null}
+{"n":282,"t":"क्या आप पूरे दिन हिंदी बोलते हैं?","occ":[["seed","S0014",14,"Do you speak Hindi all day?"],["use","S0014L02U01",14,"do you speak Hindi all day?"]],"stored":null}
+{"n":283,"t":"क्या आप हिंदी बोलते हैं?","occ":[["use","S0014L02U02",14,"do you speak Hindi?"]],"stored":null}
+{"n":284,"t":"दिन","occ":[["component","S0014L01C02",14,"day"]],"stored":null}
+{"n":285,"t":"पूरे","occ":[["component","S0014L01C01",14,"whole"]],"stored":null}
+{"n":286,"t":"पूरे दिन","occ":[["lego","S0014L01",14,"all day"],["build","S0014L01B01",14,"all day"]],"stored":null}
+{"n":287,"t":"पूरे दिन हिंदी बोलते हैं?","occ":[["build","S0014L02B03",14,"do you speak Hindi all day?"]],"stored":null}
+{"n":288,"t":"बोलते हैं?","occ":[["lego","S0014L02",14,"do you speak?"],["build","S0014L02B01",14,"do you speak?"]],"stored":null}
+{"n":289,"t":"मैं पूरे दिन हिंदी बोलता हूँ।","occ":[["use","S0014L01U01",14,"I speak Hindi all day"]],"stored":{"f":"मैं पूरे दिन हिंदी बोलती हूँ।","m":null}}
+{"n":290,"t":"मैं पूरे दिन हिंदी बोलने की कोशिश कर रहा हूँ।","occ":[["use","S0014L01U03",14,"I'm trying to speak Hindi all day"]],"stored":{"f":"मैं पूरे दिन हिंदी बोलने की कोशिश कर रही हूँ।","m":null}}
+{"n":291,"t":"मैं पूरे दिन हिंदी बोलने की प्रैक्टिस करने जा रहा हूँ।","occ":[["use","S0014L01U02",14,"I'm going to practise speaking Hindi all day"]],"stored":{"f":"मैं पूरे दिन हिंदी बोलने की प्रैक्टिस करने जा रही हूँ।","m":null}}
+{"n":292,"t":"हिंदी बोलते हैं?","occ":[["build","S0014L02B02",14,"do you speak Hindi?"]],"stored":null}
+{"n":293,"t":"हैं?","occ":[["component","S0014L02C02",14,"are?"],["component","S0040L04C02",40,"are?"],["component","S0061L03C04",61,"are?"],["component","S0067L03C03",67,"are?"],["component","S0068L01C03",68,"are?"],["component","S0081L01C06",81,"are?"]],"stored":null}
+{"n":294,"t":"और अभी","occ":[["build","S0015L01B03",15,"and now"]],"stored":null}
+{"n":295,"t":"और कल","occ":[["build","S0015L01B02",15,"and tomorrow"]],"stored":null}
+{"n":296,"t":"और मैं चाहता हूँ कि आप कल मेरे साथ हिंदी बोलें।","occ":[["seed","S0015",15,"And I want you to speak Hindi with me tomorrow."],["use","S0015L04U01",15,"and I want you to speak Hindi with me tomorrow"]],"stored":{"f":"और मैं चाहती हूँ कि आप कल मेरे साथ हिंदी बोलें।","m":null}}
+{"n":297,"t":"और मैं हिंदी बहुत अच्छी बोलता हूँ।","occ":[["use","S0015L01U05",15,"and I speak Hindi very well"]],"stored":{"f":"और मैं हिंदी बहुत अच्छी बोलती हूँ।","m":null}}
+{"n":298,"t":"और मैं हिंदी बोलता हूँ।","occ":[["use","S0015L01U01",15,"and I speak Hindi"]],"stored":{"f":"और मैं हिंदी बोलती हूँ।","m":null}}
+{"n":299,"t":"और मैं हिंदी बोलना चाहता हूँ।","occ":[["use","S0015L01U02",15,"and I want to speak Hindi"]],"stored":{"f":"और मैं हिंदी बोलना चाहती हूँ।","m":null}}
+{"n":300,"t":"और मैं हिंदी बोलने की कोशिश कर रहा हूँ।","occ":[["use","S0015L01U03",15,"and I'm trying to speak Hindi"]],"stored":{"f":"और मैं हिंदी बोलने की कोशिश कर रही हूँ।","m":null}}
+{"n":301,"t":"चाहता","occ":[["component","S0015L02C01",15,"want"],["component","S0016L05C01",16,"wants"],["component","S0030L03C01",30,"want"]],"stored":null}
+{"n":302,"t":"चाहता हूँ कि","occ":[["lego","S0015L02",15,"I want that"],["build","S0015L02B01",15,"I want that"]],"stored":{"f":"चाहती हूँ कि","m":null}}
+{"n":303,"t":"चाहता हूँ कि आप","occ":[["build","S0015L02B02",15,"I want you to"]],"stored":{"f":"चाहती हूँ कि आप","m":null}}
+{"n":304,"t":"बोलें।","occ":[["lego","S0015L04",15,"you speak"],["build","S0015L04B01",15,"speak"]],"stored":null}
+{"n":305,"t":"मेरे","occ":[["component","S0015L03C01",15,"my"],["lego","S0084L01",84,"my"]],"stored":null}
+{"n":306,"t":"मेरे साथ","occ":[["lego","S0015L03",15,"with me"],["build","S0015L03B01",15,"with me"]],"stored":null}
+{"n":307,"t":"मेरे साथ हिंदी बोलें।","occ":[["build","S0015L04B03",15,"speak Hindi with me"]],"stored":null}
+{"n":308,"t":"मैं चाहता हूँ कि आप अभी मेरे साथ हिंदी बोलें।","occ":[["use","S0015L04U02",15,"I want you to speak Hindi with me now"]],"stored":{"f":"मैं चाहती हूँ कि आप अभी मेरे साथ हिंदी बोलें।","m":null}}
+{"n":309,"t":"मैं चाहता हूँ कि आप खत्म करने के बाद हिंदी बोलें।","occ":[["use","S0015L04U05",15,"I want you to speak Hindi after you finish"]],"stored":{"f":"मैं चाहती हूँ कि आप खत्म करने के बाद हिंदी बोलें।","m":null}}
+{"n":310,"t":"मैं चाहता हूँ कि आप पूरे दिन हिंदी बोलें।","occ":[["use","S0015L04U03",15,"I want you to speak Hindi all day"]],"stored":{"f":"मैं चाहती हूँ कि आप पूरे दिन हिंदी बोलें।","m":null}}
+{"n":311,"t":"मैं चाहता हूँ कि आप हिंदी बहुत अच्छी बोलें।","occ":[["use","S0015L04U04",15,"I want you to speak Hindi very well"]],"stored":{"f":"मैं चाहती हूँ कि आप हिंदी बहुत अच्छी बोलें।","m":null}}
+{"n":312,"t":"मैं चाहता हूँ कि खत्म करने के बाद मेरे साथ हिंदी बोलता हूँ।","occ":[["use","S0015L03U05",15,"I want to speak Hindi with me after finishing"]],"stored":{"f":"मैं चाहती हूँ कि खत्म करने के बाद मेरे साथ हिंदी बोलती हूँ।","m":null}}
+{"n":313,"t":"साथ","occ":[["component","S0015L03C02",15,"with"],["component","S0062L03C02",62,"together"],["lego","S0133L01",133,"with"],["build","S0133L01B01",133,"with"]],"stored":null}
+{"n":314,"t":"हिंदी बोलें।","occ":[["build","S0015L04B02",15,"speak Hindi"]],"stored":null}
+{"n":315,"t":"हूँ","occ":[["component","S0015L02C02",15,"am"]],"stored":null}
+{"n":316,"t":"आना","occ":[["component","S0016L04C02",16,"to come"]],"stored":null}
+{"n":317,"t":"और मैं बाद में वापस आना चाहता हूँ।","occ":[["use","S0016L04U04",16,"and I want to come back later on"]],"stored":{"f":"और मैं बाद में वापस आना चाहती हूँ।","m":null}}
+{"n":318,"t":"और वो बाकी सभी के साथ हिंदी बोलते हैं।","occ":[["use","S0016L03U05",16,"and he speaks Hindi with everyone else"]],"stored":null}
+{"n":319,"t":"और वो बाद में हिंदी बोलते हैं।","occ":[["use","S0016L02U05",16,"and he speaks Hindi later on"]],"stored":null}
+{"n":320,"t":"और वो हिंदी बोलते हैं।","occ":[["use","S0016L01U05",16,"and he speaks Hindi"]],"stored":null}
+{"n":321,"t":"क्या आप बाकी सभी के साथ हिंदी बोलते हैं?","occ":[["use","S0016L03U04",16,"do you speak Hindi with everyone else?"]],"stored":null}
+{"n":322,"t":"क्या आप बाद में हिंदी बोलते हैं?","occ":[["use","S0016L02U03",16,"do you speak Hindi later on?"]],"stored":null}
+{"n":323,"t":"चाहता है।","occ":[["lego","S0016L05",16,"wants"],["build","S0016L05B01",16,"wants"]],"stored":null}
+{"n":324,"t":"बाकी","occ":[["component","S0016L03C01",16,"rest"]],"stored":null}
+{"n":325,"t":"बाकी सभी के साथ","occ":[["lego","S0016L03",16,"with everyone else"],["build","S0016L03B01",16,"with everyone else"]],"stored":null}
+{"n":326,"t":"बाकी सभी के साथ वापस आना","occ":[["build","S0016L04B03",16,"to come back with everyone else"]],"stored":null}
+{"n":327,"t":"बाकी सभी के साथ वापस आना चाहता है।","occ":[["build","S0016L05B03",16,"wants to come back with everyone else"]],"stored":null}
+{"n":328,"t":"बाकी सभी के साथ हिंदी बोलते हैं।","occ":[["build","S0016L03B02",16,"speak Hindi with everyone else"]],"stored":null}
+{"n":329,"t":"बाद","occ":[["component","S0016L02C01",16,"after"],["component","S0110L02C04",110,"after"]],"stored":null}
+{"n":330,"t":"बाद में","occ":[["lego","S0016L02",16,"later on"],["build","S0016L02B01",16,"later on"],["lego","S0168L02",168,"later"],["build","S0168L02B01",168,"later"]],"stored":null}
+{"n":331,"t":"बाद में बाकी सभी के साथ बोलते हैं।","occ":[["build","S0016L03B03",16,"speak with everyone else later on"]],"stored":null}
+{"n":332,"t":"बाद में मेरे साथ बोलते हैं।","occ":[["build","S0016L02B03",16,"speak with me later on"]],"stored":null}
+{"n":333,"t":"बाद में वापस आना","occ":[["build","S0016L04B02",16,"to come back later on"]],"stored":null}
+{"n":334,"t":"बाद में हिंदी बोलते हैं।","occ":[["build","S0016L02B02",16,"speak Hindi later on"]],"stored":null}
+{"n":335,"t":"मैं बाकी सभी के साथ वापस आना चाहता हूँ।","occ":[["use","S0016L04U03",16,"I want to come back with everyone else"]],"stored":{"f":"मैं बाकी सभी के साथ वापस आना चाहती हूँ।","m":null}}
+{"n":336,"t":"मैं बाद में वापस आना चाहता हूँ।","occ":[["use","S0016L04U02",16,"I want to come back later on"]],"stored":{"f":"मैं बाद में वापस आना चाहती हूँ।","m":null}}
+{"n":337,"t":"मैं वापस आना चाहता हूँ।","occ":[["use","S0016L04U01",16,"I want to come back"]],"stored":{"f":"मैं वापस आना चाहती हूँ।","m":null}}
+{"n":338,"t":"वापस","occ":[["component","S0016L04C01",16,"back"],["lego","S0248L03",248,"back"],["build","S0248L03B01",248,"back"]],"stored":null}
+{"n":339,"t":"वापस आना","occ":[["lego","S0016L04",16,"to come back"],["build","S0016L04B01",16,"to come back"]],"stored":null}
+{"n":340,"t":"वापस आना चाहता है।","occ":[["build","S0016L05B02",16,"wants to come back"]],"stored":null}
+{"n":341,"t":"वो","occ":[["lego","S0016L01",16,"he"],["build","S0016L01B01",16,"he"],["lego","S0151L02",151,"he"],["build","S0151L02B01",151,"he"]],"stored":null}
+{"n":342,"t":"वो अभी थोड़ी हिंदी बोलते हैं।","occ":[["use","S0016L01U03",16,"he speaks a little Hindi now"]],"stored":null}
+{"n":343,"t":"वो थोड़ी हिंदी बोलते हैं।","occ":[["build","S0016L01B03",16,"he speaks a little Hindi"]],"stored":null}
+{"n":344,"t":"वो पूरे दिन हिंदी बोलते हैं।","occ":[["use","S0016L01U04",16,"he speaks Hindi all day"]],"stored":null}
+{"n":345,"t":"वो पूरे दिन हिंदी बोलना चाहता है।","occ":[["use","S0016L05U04",16,"he wants to speak Hindi all day"]],"stored":null}
+{"n":346,"t":"वो बाकी सभी के साथ हिंदी बोलते हैं।","occ":[["use","S0016L03U01",16,"he speaks Hindi with everyone else"]],"stored":null}
+{"n":347,"t":"वो बाद में बाकी सभी के साथ बोलते हैं।","occ":[["use","S0016L03U03",16,"he speaks with everyone else later on"]],"stored":null}
+{"n":348,"t":"वो बाद में बाकी सभी के साथ वापस आना चाहता है।","occ":[["seed","S0016",16,"He wants to come back with everyone else later on."],["use","S0016L05U01",16,"he wants to come back with everyone else later on"]],"stored":null}
+{"n":349,"t":"वो बाद में मेरे साथ बोलते हैं।","occ":[["use","S0016L02U02",16,"he speaks with me later on"]],"stored":null}
+{"n":350,"t":"वो बाद में हिंदी बोलते हैं।","occ":[["use","S0016L02U01",16,"he speaks Hindi later on"]],"stored":null}
+{"n":351,"t":"वो मेरे साथ हिंदी बोलना चाहता है।","occ":[["use","S0016L05U05",16,"he wants to speak Hindi with me"]],"stored":null}
+{"n":352,"t":"वो हिंदी अच्छी बोलते हैं।","occ":[["build","S0016L01B02",16,"he speaks Hindi well"]],"stored":null}
+{"n":353,"t":"वो हिंदी बहुत अच्छी बोलते हैं।","occ":[["use","S0016L01U01",16,"he speaks Hindi very well"]],"stored":null}
+{"n":354,"t":"वो हिंदी बहुत अच्छी बोलना चाहता है।","occ":[["use","S0016L05U03",16,"he wants to speak Hindi very well"]],"stored":null}
+{"n":355,"t":"वो हिंदी बोलते हैं।","occ":[["use","S0016L01U02",16,"he speaks Hindi"]],"stored":null}
+{"n":356,"t":"वो हिंदी बोलना चाहता है।","occ":[["use","S0016L05U02",16,"he wants to speak Hindi"]],"stored":null}
+{"n":357,"t":"सभी","occ":[["component","S0016L03C02",16,"all"]],"stored":null}
+{"n":358,"t":"और मैं जानना चाहता हूँ।","occ":[["use","S0017L01U04",17,"and I want to find out"]],"stored":{"f":"और मैं जानना चाहती हूँ।","m":null}}
+{"n":359,"t":"चाहती","occ":[["component","S0017L02C01",17,"wants"],["component","S0053L04C01",53,"wanted"],["component","S0070L03C03",70,"wanted"],["lego","S0177L01",177,"she does want"],["build","S0177L01B01",177,"she does want"]],"stored":null}
+{"n":360,"t":"चाहती है कि","occ":[["lego","S0017L02",17,"she wants that"],["build","S0017L02B01",17,"she wants that"]],"stored":null}
+{"n":361,"t":"जवाब","occ":[["lego","S0017L03",17,"answer"],["build","S0017L03B01",17,"answer"],["component","S0027L01C01",27,"answer"],["component","S0043L04C01",43,"answer"],["component","S0066L03C01",66,"answer"],["component","S0091L02C01",91,"answer"],["lego","S0148L03",148,"answer"],["build","S0148L03B01",148,"answer"],["lego","S0202L02",202,"answer"],["lego","S0225L01",225,"answer"],["lego","S0290L01",290,"answer"],["build","S0290L01B01",290,"answer"]],"stored":null}
+{"n":362,"t":"जवाब क्या है।","occ":[["build","S0017L03B02",17,"what the answer is"]],"stored":null}
+{"n":363,"t":"जानना","occ":[["lego","S0017L01",17,"to know"],["build","S0017L01B01",17,"to know"],["lego","S0101L02",101,"to know"],["build","S0101L02B01",101,"know"],["lego","S0201L01",201,"to know"],["build","S0201L01B01",201,"know"],["lego","S0251L03",251,"to know"]],"stored":null}
+{"n":364,"t":"जानना चाहता हूँ कि मेरा मतलब क्या है।","occ":[["build","S0017L01B03",17,"want to find out what I mean"]],"stored":{"f":"जानना चाहती हूँ कि मेरा मतलब क्या है।","m":null}}
+{"n":365,"t":"जानना चाहता हूँ।","occ":[["build","S0017L01B02",17,"want to find out"]],"stored":{"f":"जानना चाहती हूँ।","m":null}}
+{"n":366,"t":"जानना चाहती है कि","occ":[["build","S0017L02B02",17,"she wants to find out"]],"stored":null}
+{"n":367,"t":"जानना चाहती है कि जवाब क्या है।","occ":[["build","S0017L03B03",17,"wants to find out what the answer is"]],"stored":null}
+{"n":368,"t":"मुझे पक्का नहीं है कि जवाब क्या है।","occ":[["use","S0017L03U03",17,"I'm not sure what the answer is"]],"stored":null}
+{"n":369,"t":"मैं जानना चाहता हूँ कि जवाब क्या है।","occ":[["use","S0017L03U02",17,"I want to find out what the answer is"]],"stored":{"f":"मैं जानना चाहती हूँ कि जवाब क्या है।","m":null}}
+{"n":370,"t":"मैं जानना चाहता हूँ कि मेरा मतलब क्या है।","occ":[["use","S0017L01U02",17,"I want to find out what I mean"]],"stored":{"f":"मैं जानना चाहती हूँ कि मेरा मतलब क्या है।","m":null}}
+{"n":371,"t":"मैं जानना चाहता हूँ।","occ":[["use","S0017L01U01",17,"I want to find out"],["use","S0201L01U01",201,"I want to know"]],"stored":{"f":"मैं जानना चाहती हूँ।","m":null}}
+{"n":372,"t":"वो आज जानना चाहती है कि जवाब क्या है।","occ":[["use","S0017L03U05",17,"she wants to find out what the answer is today"]],"stored":null}
+{"n":373,"t":"वो जानना चाहता है कि जवाब क्या है।","occ":[["use","S0017L03U04",17,"he wants to find out what the answer is"]],"stored":null}
+{"n":374,"t":"वो जानना चाहता है।","occ":[["use","S0017L01U05",17,"he wants to find out"]],"stored":null}
+{"n":375,"t":"वो जानना चाहती है कि जवाब क्या है।","occ":[["seed","S0017",17,"She wants to find out what the answer is."],["use","S0017L03U01",17,"she wants to find out what the answer is"]],"stored":null}
+{"n":376,"t":"वो जानना चाहती है कि मेरा मतलब क्या है।","occ":[["use","S0017L02U01",17,"she wants to find out what I mean"]],"stored":null}
+{"n":377,"t":"आज शाम","occ":[["build","S0018L02B02",18,"this evening"]],"stored":null}
+{"n":378,"t":"आज शाम छह बजे","occ":[["build","S0018L03B02",18,"at six o'clock this evening"]],"stored":null}
+{"n":379,"t":"आज शाम मिलना चाहता हूँ।","occ":[["build","S0018L04B03",18,"want to meet this evening"]],"stored":{"f":"आज शाम मिलना चाहती हूँ।","m":null}}
+{"n":380,"t":"आज शाम मिलना चाहते हैं।","occ":[["build","S0018L05B03",18,"want to meet this evening"]],"stored":null}
+{"n":381,"t":"आज शाम हिंदी बोलते हैं।","occ":[["build","S0018L02B03",18,"speak Hindi this evening"]],"stored":null}
+{"n":382,"t":"और वो छह बजे हिंदी बोलते हैं।","occ":[["use","S0018L03U05",18,"and he speaks Hindi at six o'clock"]],"stored":null}
+{"n":383,"t":"और हम हिंदी बोलते हैं।","occ":[["use","S0018L01U05",18,"and we speak Hindi"]],"stored":null}
+{"n":384,"t":"क्या आप आज शाम हिंदी बोलते हैं?","occ":[["use","S0018L02U02",18,"do you speak Hindi this evening?"]],"stored":null}
+{"n":385,"t":"क्या आप छह बजे हिंदी बोलते हैं?","occ":[["use","S0018L03U03",18,"do you speak Hindi at six o'clock?"]],"stored":null}
+{"n":386,"t":"चाहते","occ":[["component","S0018L05C01",18,"we do want"],["component","S0032L02C01",32,"wanted"],["component","S0054L04C01",54,"wanted"],["component","S0067L03C02",67,"want"],["component","S0071L04C03",71,"wanted"],["component","S0081L01C05",81,"want"],["lego","S0200L02",200,"do want"],["build","S0200L02B01",200,"they-want"]],"stored":null}
+{"n":387,"t":"चाहते हैं।","occ":[["lego","S0018L05",18,"we want"],["build","S0018L05B01",18,"we want"]],"stored":null}
+{"n":388,"t":"छह","occ":[["component","S0018L03C01",18,"six"]],"stored":null}
+{"n":389,"t":"छह बजे","occ":[["lego","S0018L03",18,"at six o'clock"],["build","S0018L03B01",18,"at six o'clock"]],"stored":null}
+{"n":390,"t":"छह बजे हिंदी बोलते हैं।","occ":[["build","S0018L03B03",18,"speak Hindi at six o'clock"]],"stored":null}
+{"n":391,"t":"बजे","occ":[["component","S0018L03C02",18,"o'clock"]],"stored":null}
+{"n":392,"t":"मिलना","occ":[["lego","S0018L04",18,"to meet"],["build","S0018L04B01",18,"to meet"],["lego","S0138L01",138,"meet"],["build","S0138L01B01",138,"meet"]],"stored":null}
+{"n":393,"t":"मिलना चाहता हूँ।","occ":[["build","S0018L04B02",18,"want to meet"]],"stored":{"f":"मिलना चाहती हूँ।","m":null}}
+{"n":394,"t":"मिलना चाहते हैं।","occ":[["build","S0018L05B02",18,"want to meet"]],"stored":null}
+{"n":395,"t":"मैं आज शाम मिलना चाहता हूँ।","occ":[["use","S0018L04U02",18,"I want to meet this evening"]],"stored":{"f":"मैं आज शाम मिलना चाहती हूँ।","m":null}}
+{"n":396,"t":"मैं आज शाम हिंदी बोलना चाहता हूँ।","occ":[["use","S0018L02U04",18,"I want to speak Hindi this evening"]],"stored":{"f":"मैं आज शाम हिंदी बोलना चाहती हूँ।","m":null}}
+{"n":397,"t":"मैं छह बजे मिलना चाहता हूँ।","occ":[["use","S0018L04U03",18,"I want to meet at six o'clock"]],"stored":{"f":"मैं छह बजे मिलना चाहती हूँ।","m":null}}
+{"n":398,"t":"मैं मिलना चाहता हूँ।","occ":[["use","S0018L04U01",18,"I want to meet"]],"stored":{"f":"मैं मिलना चाहती हूँ।","m":null}}
+{"n":399,"t":"वो आज शाम मिलना चाहता है।","occ":[["use","S0018L04U04",18,"he wants to meet this evening"]],"stored":null}
+{"n":400,"t":"वो आज शाम हिंदी बोलते हैं।","occ":[["use","S0018L02U03",18,"he speaks Hindi this evening"]],"stored":null}
+{"n":401,"t":"वो छह बजे हिंदी बोलते हैं।","occ":[["use","S0018L03U02",18,"he speaks Hindi at six o'clock"]],"stored":null}
+{"n":402,"t":"शाम","occ":[["lego","S0018L02",18,"evening"],["build","S0018L02B01",18,"evening"]],"stored":null}
+{"n":403,"t":"हम","occ":[["lego","S0018L01",18,"we"],["build","S0018L01B01",18,"we"]],"stored":null}
+{"n":404,"t":"हम आज शाम छह बजे मिलना चाहते हैं।","occ":[["seed","S0018",18,"We want to meet at six o'clock this evening."],["use","S0018L05U01",18,"we want to meet at six o'clock this evening"]],"stored":null}
+{"n":405,"t":"हम आज शाम छह बजे हिंदी बोलते हैं।","occ":[["use","S0018L03U01",18,"we speak Hindi at six o'clock this evening"]],"stored":null}
+{"n":406,"t":"हम आज शाम हिंदी बोलते हैं।","occ":[["use","S0018L02U01",18,"we speak Hindi this evening"]],"stored":null}
+{"n":407,"t":"हम कल मिलना चाहते हैं।","occ":[["use","S0018L05U04",18,"we want to meet tomorrow"]],"stored":null}
+{"n":408,"t":"हम पूरे दिन हिंदी बोलते हैं।","occ":[["use","S0018L01U03",18,"we speak Hindi all day"]],"stored":null}
+{"n":409,"t":"हम बाकी सभी के साथ हिंदी बोलना चाहते हैं।","occ":[["use","S0018L05U05",18,"we want to speak Hindi with everyone else"]],"stored":null}
+{"n":410,"t":"हम बोलते हैं।","occ":[["build","S0018L01B02",18,"we speak"]],"stored":null}
+{"n":411,"t":"हम हिंदी बहुत अच्छी बोलते हैं।","occ":[["use","S0018L01U02",18,"we speak Hindi very well"]],"stored":null}
+{"n":412,"t":"हम हिंदी बहुत अच्छी बोलना चाहते हैं।","occ":[["use","S0018L05U03",18,"we want to speak Hindi very well"]],"stored":null}
+{"n":413,"t":"हम हिंदी बोलते हैं।","occ":[["use","S0018L01U01",18,"we speak Hindi"]],"stored":null}
+{"n":414,"t":"हम हिंदी बोलना चाहते हैं।","occ":[["use","S0018L05U02",18,"we want to speak Hindi"]],"stored":null}
+{"n":415,"t":"आपके साथ बात करना","occ":[["build","S0019L02B02",19,"talk with you"]],"stored":null}
+{"n":416,"t":"चाहता।","occ":[["component","S0019L04C03",19,"want"]],"stored":null}
+{"n":417,"t":"नहीं करना चाहता।","occ":[["lego","S0019L04",19,"don't want to"],["build","S0019L04B01",19,"don't want to"]],"stored":null}
+{"n":418,"t":"बंद","occ":[["lego","S0019L03",19,"stop"],["build","S0019L03B01",19,"stop"],["lego","S0240L02",240,"stop"],["build","S0240L02B01",240,"stop"]],"stored":null}
+{"n":419,"t":"बंद नहीं करना चाहता।","occ":[["build","S0019L04B02",19,"don't want to stop"]],"stored":null}
+{"n":420,"t":"बात","occ":[["component","S0019L02C01",19,"talk"],["component","S0047L01C02",47,"thing"],["component","S0083L04C02",83,"word"],["component","S0088L01C01",88,"word"],["lego","S0282L01",282,"matter"],["build","S0282L01B01",282,"matter"]],"stored":null}
+{"n":421,"t":"बात करना","occ":[["lego","S0019L02",19,"to talk"],["build","S0019L02B01",19,"to talk"]],"stored":null}
+{"n":422,"t":"बात करना बंद","occ":[["build","S0019L03B02",19,"stop talking"]],"stored":null}
+{"n":423,"t":"बात करना बंद नहीं करना चाहता।","occ":[["build","S0019L04B03",19,"don't want to stop talking"]],"stored":null}
+{"n":424,"t":"मेरे साथ बात करना","occ":[["build","S0019L02B03",19,"talk with me"]],"stored":null}
+{"n":425,"t":"मैं आपके साथ बात करना चाहता हूँ।","occ":[["use","S0019L02U01",19,"I want to talk with you"]],"stored":{"f":"मैं आपके साथ बात करना चाहती हूँ।","m":null}}
+{"n":426,"t":"मैं आपके साथ बात करना बंद नहीं करना चाहता।","occ":[["use","S0019L04U02",19,"I don't want to stop talking with you"]],"stored":{"f":"मैं आपके साथ बात करना बंद नहीं करना चाहती।","m":null}}
+{"n":427,"t":"मैं बात करना बंद करना चाहता हूँ।","occ":[["use","S0019L03U01",19,"I want to stop talking"]],"stored":{"f":"मैं बात करना बंद करना चाहती हूँ।","m":null}}
+{"n":428,"t":"मैं वापस आना बंद नहीं करना चाहता।","occ":[["use","S0019L04U05",19,"I don't want to stop coming back"]],"stored":{"f":"मैं वापस आना बंद नहीं करना चाहती।","m":null}}
+{"n":429,"t":"मैं सभी के साथ बात करना चाहता हूँ।","occ":[["use","S0019L02U03",19,"I want to talk with everyone"]],"stored":{"f":"मैं सभी के साथ बात करना चाहती हूँ।","m":null}}
+{"n":430,"t":"लेकिन","occ":[["lego","S0019L01",19,"but"],["build","S0019L01B01",19,"but"],["lego","S0165L01",165,"but"],["lego","S0246L02",246,"but"],["build","S0246L02B01",246,"but"]],"stored":null}
+{"n":431,"t":"लेकिन मुझे पक्का नहीं है कि बंद करना चाहता हूँ।","occ":[["use","S0019L03U05",19,"but I'm not sure I want to stop"]],"stored":{"f":"लेकिन मुझे पक्का नहीं है कि बंद करना चाहती हूँ।","m":null}}
+{"n":432,"t":"लेकिन मैं","occ":[["build","S0019L01B02",19,"but I"]],"stored":null}
+{"n":433,"t":"लेकिन मैं बंद करना चाहता हूँ।","occ":[["use","S0019L03U02",19,"but I want to stop"]],"stored":{"f":"लेकिन मैं बंद करना चाहती हूँ।","m":null}}
+{"n":434,"t":"लेकिन मैं बात करना बंद नहीं करना चाहता।","occ":[["seed","S0019",19,"But I don't want to stop talking."],["use","S0019L04U01",19,"but I don't want to stop talking"]],"stored":{"f":"लेकिन मैं बात करना बंद नहीं करना चाहती।","m":null}}
+{"n":435,"t":"लेकिन मैं वापस आना चाहता हूँ।","occ":[["use","S0019L01U03",19,"but I want to come back"]],"stored":{"f":"लेकिन मैं वापस आना चाहती हूँ।","m":null}}
+{"n":436,"t":"लेकिन मैं हिंदी बोलता हूँ।","occ":[["use","S0019L01U01",19,"but I speak Hindi"]],"stored":{"f":"लेकिन मैं हिंदी बोलती हूँ।","m":null}}
+{"n":437,"t":"लेकिन मैं हिंदी बोलना बंद नहीं करना चाहता।","occ":[["use","S0019L04U04",19,"but I don't want to stop speaking Hindi"]],"stored":{"f":"लेकिन मैं हिंदी बोलना बंद नहीं करना चाहती।","m":null}}
+{"n":438,"t":"लेकिन वो","occ":[["build","S0019L01B03",19,"but he"],["build","S0246L02B02",246,"but she"]],"stored":null}
+{"n":439,"t":"लेकिन वो जानना चाहती है कि जवाब क्या है।","occ":[["use","S0019L01U04",19,"but she wants to find out the answer"]],"stored":null}
+{"n":440,"t":"लेकिन वो हिंदी बहुत अच्छी बोलते हैं।","occ":[["use","S0019L01U02",19,"but he speaks Hindi very well"]],"stored":null}
+{"n":441,"t":"लेकिन हम आज शाम मिलना चाहते हैं।","occ":[["use","S0019L01U05",19,"but we want to meet this evening"]],"stored":null}
+{"n":442,"t":"वो बात करना बंद करना चाहता है।","occ":[["use","S0019L03U03",19,"he wants to stop talking"]],"stored":null}
+{"n":443,"t":"वो बात करना बंद नहीं करना चाहता।","occ":[["use","S0019L04U03",19,"he doesn't want to stop talking"]],"stored":null}
+{"n":444,"t":"वो मेरे साथ बात करना चाहता है।","occ":[["use","S0019L02U02",19,"he wants to talk with me"]],"stored":null}
+{"n":445,"t":"हम आज शाम बात करना चाहते हैं।","occ":[["use","S0019L02U04",19,"we want to talk this evening"]],"stored":null}
+{"n":446,"t":"आप उसका नाम जल्दी सीखना चाहते हैं।","occ":[["seed","S0020",20,"You want to learn his name quickly."],["use","S0020L04U01",20,"you want to learn his name quickly"]],"stored":null}
+{"n":447,"t":"उसका","occ":[["lego","S0020L01",20,"his"],["build","S0020L01B01",20,"his"]],"stored":null}
+{"n":448,"t":"उसका जवाब","occ":[["build","S0020L01B02",20,"his answer"]],"stored":null}
+{"n":449,"t":"उसका जवाब क्या है।","occ":[["use","S0020L01U04",20,"what is his answer?"]],"stored":null}
+{"n":450,"t":"उसका नाम","occ":[["build","S0020L02B02",20,"his name"]],"stored":null}
+{"n":451,"t":"उसका नाम सीखना","occ":[["build","S0020L04B02",20,"to learn his name"]],"stored":null}
+{"n":452,"t":"उसका मतलब","occ":[["build","S0020L01B03",20,"his meaning"]],"stored":null}
+{"n":453,"t":"जल्दी","occ":[["lego","S0020L03",20,"quickly"],["build","S0020L03B01",20,"quickly"],["component","S0028L01C02",28,"quickly"],["lego","S0077L02",77,"quickly"],["lego","S0139L04",139,"fast"],["build","S0139L04B01",139,"fast"],["lego","S0149L01",149,"quickly"],["build","S0149L01B01",149,"quickly"]],"stored":null}
+{"n":454,"t":"जल्दी बोलते हैं।","occ":[["build","S0020L03B02",20,"speak quickly"]],"stored":null}
+{"n":455,"t":"जल्दी मिलना","occ":[["build","S0020L03B03",20,"meet quickly"]],"stored":null}
+{"n":456,"t":"जल्दी सीखना","occ":[["build","S0020L04B03",20,"to learn quickly"]],"stored":null}
+{"n":457,"t":"नाम","occ":[["lego","S0020L02",20,"name"],["build","S0020L02B01",20,"name"],["lego","S0150L01",150,"name"]],"stored":null}
+{"n":458,"t":"नाम क्या है।","occ":[["build","S0020L02B03",20,"what is the name"]],"stored":null}
+{"n":459,"t":"मुझे पक्का नहीं है कि उसका नाम क्या है।","occ":[["use","S0020L02U04",20,"I'm not sure what his name is"]],"stored":null}
+{"n":460,"t":"मुझे पक्का नहीं है कि उसका मतलब क्या है।","occ":[["use","S0020L01U03",20,"I'm not sure what his meaning is"]],"stored":null}
+{"n":461,"t":"मैं उसका जवाब जानना चाहता हूँ।","occ":[["use","S0020L01U01",20,"I want to find out his answer"]],"stored":{"f":"मैं उसका जवाब जानना चाहती हूँ।","m":null}}
+{"n":462,"t":"मैं उसका नाम जानना चाहता हूँ।","occ":[["use","S0020L02U01",20,"I want to find out his name"]],"stored":{"f":"मैं उसका नाम जानना चाहती हूँ।","m":null}}
+{"n":463,"t":"मैं जल्दी वापस आना चाहता हूँ।","occ":[["use","S0020L03U02",20,"I want to come back quickly"]],"stored":{"f":"मैं जल्दी वापस आना चाहती हूँ।","m":null}}
+{"n":464,"t":"मैं हिंदी सीखना चाहता हूँ।","occ":[["use","S0020L04U02",20,"I want to learn Hindi"]],"stored":{"f":"मैं हिंदी सीखना चाहती हूँ।","m":null}}
+{"n":465,"t":"लेकिन मैं उसका जवाब जानना चाहता हूँ।","occ":[["use","S0020L01U05",20,"but I want to find out his answer"]],"stored":{"f":"लेकिन मैं उसका जवाब जानना चाहती हूँ।","m":null}}
+{"n":466,"t":"लेकिन मैं उसका नाम सीखना चाहता हूँ।","occ":[["use","S0020L04U05",20,"but I want to learn his name"]],"stored":{"f":"लेकिन मैं उसका नाम सीखना चाहती हूँ।","m":null}}
+{"n":467,"t":"लेकिन वो बहुत जल्दी बोलते हैं।","occ":[["use","S0020L03U05",20,"but he speaks very quickly"]],"stored":null}
+{"n":468,"t":"वो उसका जवाब जानना चाहती है।","occ":[["use","S0020L01U02",20,"she wants to find out his answer"]],"stored":null}
+{"n":469,"t":"वो उसका नाम जानना चाहती है।","occ":[["use","S0020L02U03",20,"she wants to find out his name"]],"stored":null}
+{"n":470,"t":"वो जल्दी जवाब जानना चाहती है।","occ":[["use","S0020L03U04",20,"she wants to find the answer quickly"]],"stored":null}
+{"n":471,"t":"वो जल्दी हिंदी बोलते हैं।","occ":[["use","S0020L03U01",20,"he speaks Hindi quickly"]],"stored":null}
+{"n":472,"t":"वो हिंदी सीखना चाहता है।","occ":[["use","S0020L04U04",20,"he wants to learn Hindi"]],"stored":null}
+{"n":473,"t":"सीखना","occ":[["lego","S0020L04",20,"to learn"],["build","S0020L04B01",20,"to learn"],["component","S0064L03C02",64,"to learn"],["component","S0073L02C03",73,"to learn"],["component","S0075L01C03",75,"to learn"]],"stored":null}
+{"n":474,"t":"हम जल्दी मिलना चाहते हैं।","occ":[["use","S0020L03U03",20,"we want to meet quickly"]],"stored":null}
+{"n":475,"t":"हम जल्दी सीखना चाहते हैं।","occ":[["use","S0020L04U03",20,"we want to learn quickly"]],"stored":null}
+{"n":476,"t":"आप उसका नाम क्यों सीख रहे हैं?","occ":[["seed","S0021",21,"Why are you learning her name?"],["use","S0021L02U01",21,"why are you learning her name?"]],"stored":null}
+{"n":477,"t":"आप क्यों आज शाम मिलना चाहते हैं?","occ":[["use","S0021L01U02",21,"why do you want to meet this evening?"]],"stored":null}
+{"n":478,"t":"आप क्यों बाद में वापस आना चाहते हैं?","occ":[["use","S0021L01U05",21,"why do you want to come back later on?"]],"stored":null}
+{"n":479,"t":"आप क्यों वापस आना चाहते हैं?","occ":[["use","S0021L01U03",21,"why do you want to come back?"]],"stored":null}
+{"n":480,"t":"आप क्यों हिंदी बोलते हैं?","occ":[["use","S0021L01U01",21,"why do you speak Hindi?"]],"stored":null}
+{"n":481,"t":"आप क्यों हिंदी सीख रहे हैं?","occ":[["use","S0021L02U04",21,"why are you learning Hindi?"]],"stored":null}
+{"n":482,"t":"उसका नाम सीख रहे हैं?","occ":[["build","S0021L02B02",21,"learning his name?"]],"stored":null}
+{"n":483,"t":"क्या आप उसका नाम सीख रहे हैं?","occ":[["use","S0021L02U05",21,"are you learning his name?"]],"stored":null}
+{"n":484,"t":"क्या आप जल्दी सीख रहे हैं?","occ":[["use","S0021L02U03",21,"are you learning quickly?"]],"stored":null}
+{"n":485,"t":"क्या आप हिंदी सीख रहे हैं?","occ":[["use","S0021L02U02",21,"are you learning Hindi?"]],"stored":null}
+{"n":486,"t":"क्यों","occ":[["lego","S0021L01",21,"why"],["build","S0021L01B01",21,"why"],["lego","S0067L01",67,"why"],["lego","S0113L02",113,"why"]],"stored":null}
+{"n":487,"t":"क्यों सीख रहे हैं?","occ":[["build","S0021L02B03",21,"why are you learning?"]],"stored":null}
+{"n":488,"t":"क्यों सीखना चाहते हैं?","occ":[["build","S0021L01B03",21,"why do you want to learn?"]],"stored":null}
+{"n":489,"t":"क्यों हिंदी बोलते हैं?","occ":[["build","S0021L01B02",21,"why speak Hindi"]],"stored":null}
+{"n":490,"t":"रहे हैं?","occ":[["component","S0021L02C02",21,"are continuing?"]],"stored":null}
+{"n":491,"t":"लेकिन आप क्यों हिंदी बोलते हैं?","occ":[["use","S0021L01U04",21,"but why do you speak Hindi?"]],"stored":null}
+{"n":492,"t":"सीख","occ":[["component","S0021L02C01",21,"learning"]],"stored":null}
+{"n":493,"t":"सीख रहे हैं?","occ":[["lego","S0021L02",21,"are learning?"],["build","S0021L02B01",21,"are learning?"]],"stored":null}

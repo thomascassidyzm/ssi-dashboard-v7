@@ -1,0 +1,33 @@
+READ-ONLY Hindi language audit, shard __ID__ of 12, for Kai (hin_for_eng, Hindi for English speakers). You WRITE NOTHING to the database and call no write route. Kai's standing rule (15 Oct 2026): never trust regex or rule tools for language — READ EVERY ROW IN FULL, as a sentence, and judge it in context. A rule-based tool made the stored female forms; your job is to check it by reading, not to re-run any tool.
+
+INPUT (committed on branch cs/718-hin-female-forms-full-read; read it from the absolute path, or if that fails: git fetch origin cs/718-hin-female-forms-full-read && git show origin/cs/718-hin-female-forms-full-read:<path>):
+  /home/tomcassidy/.cs-worktrees/ssi-dashboard-v7-clean/718-hin-female-forms-full-read/ops/hin-female-full-read-718/in/shard-__ID__.jsonl
+  /home/tomcassidy/.cs-worktrees/ssi-dashboard-v7-clean/718-hin-female-forms-full-read/ops/hin-female-full-read-718/in/seed-context-__ID__.txt
+Each line of the shard is one DISTINCT Hindi target text: {n, t (the Hindi), occ: [[kind, id, seed, English]...] (every row in the course that carries exactly this text — kind is seed / lego / build / use / component; components are never played but still read them), stored: {f: female reading, m: male reading} or null}. The seed-context file gives each seed sentence (English | Hindi) — use it to decide who the subject of a fragment is.
+
+THE MECHANISM (verified in code: services/gender-haiku-service.cjs loadGenderMap, services/phases/phase8-audio-v13.cjs): course_gender_expansions is keyed on the EXACT target text. When a clip is rendered, target1 (Aarti, female voice) speaks expanded_f in place of the text, target2 (Kunal, male voice) speaks expanded_m. The displayed text never changes. So: a text written in the MALE speaker's form needs an f reading; a text written in the FEMALE speaker's form (a handful, e.g. seeds 177, 645) needs an m reading. Each voice says ONE form; nothing is doubled. Because the key is the text, ONE reading applies to EVERY row carrying that text — if the same Hindi is "I" in one row and "he/someone else" in another (fragments with no subject), that is a conflict to flag.
+
+WHAT AGREES WITH THE SPEAKER (needs a female reading when the speaker is the subject, written or implied pro-drop मैं): first-person-singular nominative subject with: habitual/progressive (करता हूँ→करती हूँ, कर रहा हूँ→कर रही हूँ, रहता था→रहती थी), था→थी with मैं, intransitive or non-ने perfective (मैं गया→गई, मैं भूल गया→भूल गई, मैं समझ गया, मैं थक गया, मैं पैदा हुआ→हुई), future 1sg (करूँगा→करूँगी, चाहूँगा→चाहूँगी), सकता/चाहता/पाता (सकता हूँ→सकती हूँ, नहीं पाया→नहीं पाई), conditional/counterfactual (अगर मैं जाता→जाती), predicate adjectives/participles describing the speaker (मैं थका हुआ हूँ→थकी हुई, मैं इतना भाग्यशाली था→इतनी भाग्यशाली थी, मैं आपका शुक्रगुज़ार हूँ→आपकी शुक्रगुज़ार), बड़ा होकर (about me)→बड़ी होकर, -ा participles in the speaker's verb chain (चलता रहा). A bare fragment (LEGO/build) like "चाहता हूँ" or "जा रहा था" whose English is "I …" is the speaker's.
+WHAT DOES NOT: मुझे-constructions (मुझे लगता है, मुझे पता था, मुझे अच्छा लगा — agrees with the experienced thing), मैंने + transitive perfective (agrees with the object: मैंने खाना खाया, मैंने देखा), हम (Kai: never हम), आप, तुम, third persons, the listener's or anyone else's gender, possessives (मेरा/मेरी agree with the possessed noun), object agreement, invariant words (तैयार, खुश, ज़िंदा), subjunctive मैं जाऊँ (invariant), infinitive + चाहिए. Reported speech with मैं referring to someone else → flag as ambiguous with your reading.
+
+YOUR TASK, for EVERY line of the shard (no sampling, no skipping, no deciding by pattern — search may help you FIND things, it never decides):
+ 1. Read the Hindi as a sentence with its English and seed context. Decide independently, BEFORE looking at `stored`, whether any word agrees with the speaker's gender, and what the female (or, for female-written text, male) reading is. Change ONLY speaker-agreeing words.
+ 2. Then compare with `stored`.
+ 3. Write one verdict line.
+Verdicts (field "v"):
+  "none"        — no speaker-gender agreement, nothing stored. (Correct as is.)
+  "ok"          — speaker agreement present AND the stored reading is exactly right and natural.
+  "needs-female"— speaker agreement in a male-written text, nothing stored (or stored has no f). Give "f".
+  "needs-male"  — female-written text with no m reading. Give "m".
+  "wrong-female"— stored f is wrong: misses a speaker word, changes a non-speaker word (object, other person, listener, possessive), or is unnatural/ungrammatical. Give the correct "f" and say exactly which word and why.
+  "wrong-male"  — same, for stored m.
+  "stored-not-needed" — something is stored but the text has no speaker agreement (it changed someone else's gender). Say why.
+  "ambiguous"   — the same text is the speaker in one occurrence and someone else in another, or the subject genuinely cannot be determined; give your best reading in "f" and the reason.
+Also add "note" ONLY if you see a clear defect in the Hindi itself (a gender, agreement or grammar error in the displayed text unrelated to the speaker — e.g. a male-written verb where the seed's subject is a woman, or a mismatch with the English). Keep notes short; this is not a general proofread.
+
+OUTPUT: a JSONL file in YOUR OWN worktree at ops/hin-female-full-read-718/out/shard-__ID__.jsonl, EXACTLY one line per input line, same n, same order:
+  {"n":123,"v":"none"}   or   {"n":124,"v":"wrong-female","f":"<full corrected female Hindi>","why":"<which word, why>"}  (include "f"/"m" for every non-"none" verdict, "why" for every verdict other than none/ok).
+Work in chunks of ~60 lines: read, append the verdicts to the file (use the Write/Edit tools to append — your judgement goes in the file, not a script that decides), move on — so a context compaction never loses work. When done, check the line count equals the input line count and every n is present. Then: git add that one file, commit ("#718 shard __ID__ verdicts"), git push -u origin HEAD. Commit/push only that file; never merge anything.
+Scratch: $CS_SCRATCH, never bare /tmp. Foreground only — no background tasks, no tests, no dev servers. No database access of any kind: everything you need is in the two input files.
+
+REPORT (one short paragraph): your branch name, the output path, line count = input count (yes/no), counts per verdict, and the 3 clearest problems (n, Hindi, verdict, fix). Landing line: your branch, not merged, not deployed.
