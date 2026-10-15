@@ -61,6 +61,14 @@ for (const light of [false, true]) for (const [w, h] of SIZES) {
       expect(r.y + r.h, `${name} bottom`).toBeLessThanOrEqual(r.vh)
       expect(r.hit, `${name} not covered`).toBe(true)
     }
+    // Directly above Back / Again / Next: both buttons end above the controls' top edge, no overlap.
+    const geo = await page.evaluate(() => {
+      const r = (sel) => document.querySelector(sel).getBoundingClientRect()
+      return { stop: r('[data-test="stop"]'), pause: r('[data-test="pause"]'), back: r('.ctl-back'), again: r('.ctl-again'), next: r('.ctl-next'),
+        inStatus: !!document.querySelector('[data-test="status"] [data-test="stop"], [data-test="status"] [data-test="pause"]') }
+    })
+    expect(geo.inStatus).toBe(false)
+    for (const k of ['stop', 'pause']) for (const c of ['back', 'again', 'next']) expect(geo[k].bottom, `${k} above ${c}`).toBeLessThanOrEqual(geo[c].top)
     await page.screenshot({ path: `${SHOTS}/live-${w}x${h}${light ? '-light' : ''}.png` })
   })
 }

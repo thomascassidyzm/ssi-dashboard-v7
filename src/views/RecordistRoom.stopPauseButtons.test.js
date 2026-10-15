@@ -53,15 +53,19 @@ async function live() {
 }
 
 describe('RecordistRoom — Stop and Pause are obvious buttons while recording', () => {
-  it('shows a labelled Stop and Pause in the status row, with the P hint beside Pause', async () => {
+  it('shows a labelled Stop and Pause in a row above Back / Again / Next, and not in the status row (job #681)', async () => {
     const w = await live()
     const stop = w.find('[data-test="stop"]')
     const pause = w.find('[data-test="pause"]')
     expect(stop.exists() && stop.text()).toBe('Stop')
     expect(pause.exists() && pause.text()).toBe('Pause')
-    expect(w.find('[data-test="status"] .key-hint kbd').text()).toBe('P')
-    // P is no longer buried in the footer shortcut line.
-    expect(w.find('.kbd-hint').text()).not.toMatch(/pause/i)
+    expect(w.find('[data-test="status"] [data-test="stop"], [data-test="status"] [data-test="pause"]').exists()).toBe(false)
+    const row = w.find('[data-test="transport"] [data-test="stop-pause"]')
+    expect(row.exists()).toBe(true)
+    // The row comes before the Back / Again / Next controls in the footer.
+    const html = w.find('[data-test="transport"]').html()
+    expect(html.indexOf('data-test="stop-pause"')).toBeLessThan(html.indexOf('ctl-next'))
+    expect(w.find('.kbd-hint').text()).toMatch(/P.*pause/i)
   })
 
   it('pause → Resume → Pause, and Stop ends the session', async () => {
@@ -72,6 +76,6 @@ describe('RecordistRoom — Stop and Pause are obvious buttons while recording',
     await w.find('[data-test="pause"]').trigger('click'); await flushPromises()
     expect(w.find('[data-test="pause"]').text()).toBe('Pause')
     await w.find('[data-test="stop"]').trigger('click'); await flushPromises()
-    expect(w.find('[data-test="status"]').exists()).toBe(false)
+    expect(w.find('[data-test="stop-pause"]').exists()).toBe(false)
   })
 })

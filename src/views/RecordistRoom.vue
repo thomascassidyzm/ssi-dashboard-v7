@@ -63,26 +63,10 @@
         <button v-if="phase !== 'recording'" type="button" class="where-more" data-test="open-sheet" aria-label="Lines and settings" @click="openSheet()"><span class="wm-long">Lines &amp; settings</span><span class="wm-short" aria-hidden="true">☰</span></button>
       </header>
 
-      <!-- ONE STATUS ROW, live only: Stop · the mic · the count · Pause, with the progress bar as
-           its bottom edge. Stop and Pause sit up here, far from the thumb on the transport. -->
+      <!-- ONE STATUS ROW, live only: the count, with the progress bar as its bottom edge. Stop and
+           Pause are NOT here any more — they sit above Back / Again / Next (job #681). -->
       <div v-if="phase === 'recording'" class="status" data-test="status">
-        <!-- Stop here is dead while the editor is open: it files nothing on the line he is
-             standing on, so there was never anything for the pause guard to protect. -->
-        <button class="btn-finish" type="button" data-test="stop" aria-label="Stop recording" :disabled="busy || arming || !!editingId" @click="onFinish">Stop</button>
         <span class="stage-progress" data-test="count">{{ recordedCount }} of {{ lines.length }}</span>
-        <!-- PAUSE THROWS THE ATTEMPT AWAY (Aran, 2026-09-03): it discards the open capture and
-             stops the microphone being a witness to whatever happens next; Play re-opens the SAME
-             line clean. It is the booth's existing hold (`micHeld`); `paused` says which hold. -->
-        <button
-          class="ctl-pause"
-          :class="{ paused }"
-          :disabled="arming || !!editingId || (busy && !paused)"
-          type="button"
-          data-test="pause"
-          @click="togglePause"
-        >{{ paused ? 'Resume' : 'Pause' }}</button>
-        <!-- The shortcut is a hint BESIDE the button, never the only sign of it. Desktop only. -->
-        <span class="key-hint" aria-hidden="true"><kbd>P</kbd></span>
         <span class="status-edge" aria-hidden="true"><i :style="{ width: progressPct + '%' }"></i></span>
       </div>
       <!-- ONE MIC SIGNAL, A WIDE STRIP (Aran, 2026-10-15, job #692: "a bit bigger and use more of the
@@ -391,18 +375,38 @@
         <!-- The transport is dead while the editor is open and while paused: the mic is held, so
              Next would close a take of nothing. BACK IS LIVE WHILE PAUSED (Aran, 2026-09-10): it
              files nothing. -->
-        <div v-else-if="phase === 'recording'" class="transport-in live controls">
+        <template v-else-if="phase === 'recording'">
+        <!-- STOP AND PAUSE SIT DIRECTLY ABOVE BACK / AGAIN / NEXT (Aran, 2026-10-15, job #681: up in
+             the status row he did not notice them; this overrides the earlier keep-them-far-from-
+             the-thumb placement). Big, filled, one row, never in the status row as well. Stop is
+             dead while the editor is open: it files nothing on the line he is standing on.
+             PAUSE THROWS THE ATTEMPT AWAY (Aran, 2026-09-03): it discards the open capture and
+             stops the microphone being a witness to whatever happens next; Resume re-opens the
+             SAME line clean. It is the booth's existing hold (`micHeld`); `paused` says which. -->
+        <div class="sp-row" data-test="stop-pause">
+          <button class="btn-finish" type="button" data-test="stop" aria-label="Stop recording" :disabled="busy || arming || !!editingId" @click="onFinish">Stop</button>
+          <button
+            class="ctl-pause"
+            :class="{ paused }"
+            :disabled="arming || !!editingId || (busy && !paused)"
+            type="button"
+            data-test="pause"
+            @click="togglePause"
+          >{{ paused ? 'Resume' : 'Pause' }}</button>
+        </div>
+        <div class="transport-in live controls">
           <button class="ctl-back" title="Back" aria-label="Back" :disabled="!canGoBack || busy || arming || !!editingId" @click="onBack">‹</button>
           <button class="ctl-again" :disabled="busy || arming || paused || !!editingId" @click="onAgain">Again</button>
           <button class="ctl-next" :disabled="busy || arming || paused || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
         </div>
+        </template>
         <div v-else class="transport-in" :class="{ one: !nextBatchN && !batchScope }">
           <button class="btn-ghost" @click="backToStart">Back to my lines</button>
           <button v-if="nextBatchN" class="btn-begin btn-next-batch" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Next batch →</button>
           <button v-else-if="batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
         </div>
         <p v-if="phase === 'recording'" class="kbd-hint">
-          <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>B</kbd> back
+          <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause · <kbd>B</kbd> back
         </p>
       </footer>
 
@@ -3490,22 +3494,22 @@ kbd {
    bar, so the only loud words on a desktop screen were the shortcut line. Now 48px, filled, with a
    glyph: Pause green, Stop red, Resume amber (the one lit thing while the mic is held). White text
    on each; the glyphs are CSS so the button text stays the plain word. */
-.status .btn-finish, .status .ctl-pause {
-  flex: none; width: auto; min-height: 48px; padding: 0 1rem; margin: 0;
+.sp-row { max-width: 900px; margin: 0 auto 0.6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.sp-row .btn-finish, .sp-row .ctl-pause {
+  width: 100%; min-height: 52px; padding: 0 1rem; margin: 0;
   display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
   font-family: inherit; font-size: 1rem; font-weight: 700; border-radius: 12px; cursor: pointer;
   color: #fff; border: 0;
 }
 /* Fixed green, not --accent-2: that variable is mint (#34d399) in dark mode, and white on it is 1.9:1 (job #681). */
-.status .ctl-pause { background: #047857; }
-.status .btn-finish { background: #b91c1c; }
-.status .ctl-pause::before { content: '\23F8'; font-size: 1.1em; }
-.status .btn-finish::before { content: '\25A0'; font-size: 0.9em; }
-.status .ctl-pause.paused { background: #a85508; color: #fff; }
-.status .ctl-pause.paused::before { content: '\25B6'; }
-.status .btn-finish:disabled, .status .ctl-pause:disabled { opacity: 0.45; }
-.key-hint { display: none; font-size: 0.75rem; color: var(--muted, #94a3b8); }
-.status .stage-progress { margin-left: auto; font-size: 0.875rem; font-weight: 700; color: var(--ink, #f1f5f9); white-space: nowrap; }
+.sp-row .ctl-pause { background: #047857; }
+.sp-row .btn-finish { background: #b91c1c; }
+.sp-row .ctl-pause::before { content: '\23F8'; font-size: 1.1em; }
+.sp-row .btn-finish::before { content: '\25A0'; font-size: 0.9em; }
+.sp-row .ctl-pause.paused { background: #a85508; color: #fff; }
+.sp-row .ctl-pause.paused::before { content: '\25B6'; }
+.sp-row .btn-finish:disabled, .sp-row .ctl-pause:disabled { opacity: 0.45; }
+.status .stage-progress { margin: 0 auto; font-size: 0.875rem; font-weight: 700; color: var(--ink, #f1f5f9); white-space: nowrap; }
 .status-edge { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--line, #334155); }
 .status-edge i { display: block; height: 100%; background: var(--accent-2, #34d399); transition: width 0.3s; }
 .mic {
@@ -3671,13 +3675,12 @@ kbd {
   .recordist.fit .upnext-list li:nth-child(-n+3) { display: list-item; }
   .mic .meter { height: 56px; }
   .mic-row { padding: 0.5rem 1.25rem 0; }
-  .key-hint { display: inline; }
 }
 @media (max-width: 480px) {
   .recordist.fit .line-target, .recordist.fit .ready-line, .recordist.fit .edit-box { font-size: 2rem; }
   .mic-row { padding: 0.3rem 0.5rem 0; }
   .status { gap: 0.35rem; padding: 0.4rem 0.5rem; }
-  .status .btn-finish, .status .ctl-pause { padding: 0 0.7rem; font-size: 0.95rem; }
+  .sp-row .btn-finish, .sp-row .ctl-pause { padding: 0 0.7rem; font-size: 0.95rem; }
   .where-more { padding: 0; width: 40px; min-height: 40px; }
   .wm-long { display: none; }
   .wm-short { display: inline; }
@@ -3708,10 +3711,9 @@ kbd {
 :root[data-theme="light"] .rail-sq.failed { background: #dc2626; }
 :root[data-theme="light"] .rail-legend { color: #334155; }
 :root[data-theme="light"] .rail-sq.now { box-shadow: 0 0 0 2px #0f172a; }
-:root[data-theme="light"] .status .ctl-pause { background: #047857; }
-:root[data-theme="light"] .status .ctl-pause.paused { background: #a85508; }
-:root[data-theme="light"] .status .btn-finish { background: #b91c1c; }
-:root[data-theme="light"] .key-hint { color: #475569; }
+:root[data-theme="light"] .sp-row .ctl-pause { background: #047857; }
+:root[data-theme="light"] .sp-row .ctl-pause.paused { background: #a85508; }
+:root[data-theme="light"] .sp-row .btn-finish { background: #b91c1c; }
 
 /* WHITE ON EVERY GREEN BUTTON in light mode (Aran, 2026-10-14, job #411: dark text on the green
    "did not read well"). #fff on --accent-2 #047857 is 5.48:1, WCAG AA for any text size. */
