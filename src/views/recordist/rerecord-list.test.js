@@ -33,3 +33,21 @@ describe('mergeRerecord', () => {
     expect(whyWords('refused', 'something else')).toBe("didn't save")
   })
 })
+
+import { oldRefusedIds, breakdownWords } from './rerecord-list.js'
+describe('one card: the old ones and the breakdown', () => {
+  const taken = [{ lineId: 'z', lastError: 'x' }, { lineId: 'old', lastError: 'x' }, { lineId: 'a', lastError: 'x' }]
+  it('a refused take on a gone or already-recorded line is old, not a row; a listed miss never is', () => {
+    const args = { serverItems: ITEMS, refusedTakes: taken, goneIds: ['old'], recordedAlso: ['z'] }
+    expect(oldRefusedIds(args).sort()).toEqual(['old', 'z'])
+    expect(mergeRerecord(args).map(r => r.lineId)).toEqual(['a', 'b', 'c'])
+  })
+  it('rows + old ones account for every refused take and every server item', () => {
+    const args = { serverItems: ITEMS, refusedTakes: taken, goneIds: ['old'], recordedAlso: ['z'] }
+    expect(mergeRerecord(args).length + oldRefusedIds(args).length).toBe(ITEMS.length + taken.length - 1) // 'a' is both
+  })
+  it('breakdown words, zeroes left out', () => {
+    const rows = mergeRerecord({ serverItems: ITEMS, refusedTakes: [{ lineId: 'a' }, { lineId: 'q' }] })
+    expect(breakdownWords(rows)).toBe("2 didn't save · 1 skipped · 1 text changed")
+  })
+})
