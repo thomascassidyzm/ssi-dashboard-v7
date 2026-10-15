@@ -1091,6 +1091,12 @@ function seedBucketFor(course, role, policyVoices) {
   return bucketKey(courseDialect(course), voice.gender)
 }
 
+/** Is a LEGO slot's clip, by voice `heldBy`, a take by the policy voice cast on it (any spelling)? */
+function legoTakeIsCastVoices(heldBy, castEntry) {
+  if (!heldBy || !castEntry) return false
+  return heldBy === castEntry.voiceId || (Array.isArray(castEntry.aliases) && castEntry.aliases.includes(heldBy))
+}
+
 /** This language's policy voices, and every spelling any of them answers to. */
 async function policyVoicesForLanguage(db, language, { cache } = {}) {
   const policy = (await loadPolicies(db, { cache })).find((row) => {
@@ -2156,9 +2162,17 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     // construction: a filled slot is not work, whoever's clip fills it, and a
     // take is never linked over one. Collapsed by exact text per (voice, role),
     // like a seed: one take fills every empty copy. Scored by its own slots
-    // (slotFilledBy, empty at build time), never by "a take of these words
-    // exists" — a take only counts here once it is linked, so a line cannot
-    // drop off the queue while its slot is still silent.
+    // (slotFilledBy), never by "a take of these words exists" — a take only
+    // counts here once it is linked, so a line cannot read as done while a
+    // slot is still silent.
+    //
+    // A SLOT FILLED BY THE CAST VOICE'S OWN TAKE STAYS A LINE, RECORDED (Aran,
+    // 2026-10-15, job #791). Until then a linked LEGO simply left the queue, so
+    // the booth's LEGO section could never count one: every saved take shrank
+    // the total and the section read "0 recorded" however much he had read.
+    // Recorded means EVERY copy of the text is filled by this voice; one empty
+    // copy keeps the line open. A slot held by anyone else's clip is still not
+    // work (fill-only) and still is not listed.
     const legoCourses = [...byCourse.keys()].filter(isLegoQueueCourse)
     const legoRows = legoCourses.length ? await fetchLegos(db, legoCourses) : []
     const seedByKey = new Map(seeds.map((s) => [`${s.course_code}:${s.seed_number}`, s]))
@@ -2171,20 +2185,26 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       servedLegos.push({ lego, seed, at: seedPosition(seed, runningOrder) * 100 + lego.lego_index })
     }
     servedLegos.sort((a, b) => a.at - b.at)
+    const legoClipVoice = await audioVoicesById(db, servedLegos.flatMap(({ lego }) => SEED_TARGET_ROLES.map((r) => lego[`${r}_audio_id`])))
     const legoSeen = new Map()
+    const legoFills = new Map() // line -> { fills: [voice], empty: copies with a silent slot }
     for (const { lego, at } of servedLegos) {
       const course = byCourse.get(lego.course_code)
       const text = String(lego.target_text || '').trim()
       if (!text) continue
       const cast = seedCastEntry(course, policyVoices)
       for (const role of SEED_TARGET_ROLES) {
-        if (lego[`${role}_audio_id`]) continue
         const bucket = seedBucketFor(course, role, policyVoices)
         if (!bucket) continue
         const voiceId = cast[role].voiceId
+        const held = lego[`${role}_audio_id`]
+        const heldBy = held ? (legoClipVoice.get(held) || null) : null
+        if (held && !legoTakeIsCastVoices(heldBy, cast[role])) continue
         const key = `${voiceId}\u0000${role} ${normalizeForDb(text)}`
         if (legoSeen.has(key)) {
-          legoSeen.get(key).duplicateOf.push({ legoRowId: lego.id, courseCode: lego.course_code, role })
+          const rep = legoSeen.get(key)
+          rep.duplicateOf.push({ legoRowId: lego.id, courseCode: lego.course_code, role })
+          if (held) legoFills.get(rep).fills.push(heldBy); else legoFills.get(rep).empty += 1
           duplicatesCollapsed += 1
           continue
         }
@@ -2209,10 +2229,12 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
           rerecordWanted: false,
         }
         legoSeen.set(key, line)
+        legoFills.set(line, held ? { fills: [heldBy], empty: 0 } : { fills: [], empty: 1 })
         if (!byBucket.has(bucket)) byBucket.set(bucket, [])
         byBucket.get(bucket).push(line)
       }
     }
+    for (const [line, { fills, empty }] of legoFills) line.slotFilledBy = empty ? [] : fills
 
     // ── THE MINIMAL PHRASE SET ──────────────────────────────────────────────
     // Tom, 2026-09-02: "ideally I just want the minimal phrase set, that I can
@@ -3384,10 +3406,11 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
 
 /**
  * Point every EMPTY `role` slot of this LEGO's text, in the LEGO-queue courses
- * cast to this recordist for that role, at a new take (job #366). The LEGO
- * twin of linkPhraseTake: FILL-EMPTY ONLY, by a conditional update (`slot IS
- * NULL`), so a slot that gained any clip since the queue was read is never
- * overwritten, and nothing is deleted. Sets `role`'s slot and no other — a
+ * cast to this recordist for that role, at a new take (job #366) — and, since
+ * job #791, every slot still holding THIS recordist's own earlier take of it.
+ * By a conditional update (`slot IS NULL`, or still the clip that was read), so
+ * a slot that gained any other clip since is never overwritten, and nothing is
+ * deleted (the old take stays in course_audio). Sets `role`'s slot and no other — a
  * target1 take never reaches target2, nor the presentation clip. The take is
  * already filed (with its provenance) by the upload seam before this runs.
  */
@@ -3411,11 +3434,19 @@ async function linkLegoTake({ db, recordist, legoRowId, role, audioId, logger = 
   if (!mine.includes(lego.course_code)) return out
 
   const col = `${role}_audio_id`
-  const copies = (await fetchLegos(db, mine))
-    .filter((r) => !r[col] && normalizeForDb(String(r.target_text || '').trim()) === key)
+  const sameText = (await fetchLegos(db, mine))
+    .filter((r) => r[col] !== audioId && normalizeForDb(String(r.target_text || '').trim()) === key)
+  // A RE-READ MOVES THIS VOICE'S OWN SLOT (job #791). A LEGO he has recorded now
+  // stays on his list as recorded, with Again on it; a fill-only link would file
+  // the new take and leave the slot on the old one, so Again would change nothing
+  // the learner hears. A slot held by anybody else's clip is still never moved,
+  // and the update is conditional on the slot still holding what was read.
+  const heldVoice = await audioVoicesById(db, sameText.map((r) => r[col]))
+  const copies = sameText.filter((r) => !r[col] || recordist.spellings.includes(heldVoice.get(r[col])))
   for (const row of copies) {
-    const { data, error: upErr } = await db.from('course_legos')
-      .update({ [col]: audioId }).eq('id', row.id).is(col, null).select('id, course_code')
+    let upd = db.from('course_legos').update({ [col]: audioId }).eq('id', row.id)
+    upd = row[col] ? upd.eq(col, row[col]) : upd.is(col, null)
+    const { data, error: upErr } = await upd.select('id, course_code')
     if (upErr) { logger.error(`[Recordist] lego link failed for ${row.id}: ${upErr.message}`); continue }
     for (const r of data || []) out.linked.push({ legoRowId: r.id, courseCode: r.course_code })
   }

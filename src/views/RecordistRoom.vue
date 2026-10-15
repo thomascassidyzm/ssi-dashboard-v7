@@ -749,8 +749,8 @@ import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
 import BoothHome from './recordist/BoothHome.vue'
 import RefusedTakes from './recordist/RefusedTakes.vue'
-import { refusedRows, refusedLineWords } from './recordist/refused-takes.js'
-import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot } from './recordist/booth-home.js'
+import { refusedRows, refusedLineWords, placeLines } from './recordist/refused-takes.js'
+import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, withDeviceTakes, loadPlaces, savePlaces, placeFromEntry } from './recordist/booth-home.js'
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
@@ -2862,17 +2862,44 @@ watch([recordedCount, () => lines.value.length, batchScope], () => {
   const k = `${b.track}#${b.batch}`
   if (recordedCount.value > (localBatchRecorded.value[k] || 0)) localBatchRecorded.value = { ...localBatchRecorded.value, [k]: recordedCount.value }
 })
+// What this device knows beyond the server is UPLOADING (amber), never recorded (green, job #791).
 function withLocalRecorded(t) {
   let extra = 0
   const batches = (t.batches || []).map(b => {
     const mine = Math.min(localBatchRecorded.value[`${t.key}#${b.n}`] || 0, b.total || 0)
-    if (mine <= (b.recorded || 0)) return b
-    extra += mine - (b.recorded || 0)
-    return { ...b, recorded: mine }
+    const known = (b.recorded || 0) + (b.uploading || 0)
+    if (mine <= known) return b
+    extra += mine - known
+    return { ...b, uploading: (b.uploading || 0) + mine - known }
   })
-  return extra ? { ...t, batches, recorded: (t.recorded || 0) + extra } : t
+  return extra ? { ...t, batches, uploading: (t.uploading || 0) + extra } : t
 }
-const homeTracks = computed(() => ((homeSummary.value && homeSummary.value.tracks) || []).map(t => ({ ...withLocalRecorded(t), ...describeTrack(t) })))
+// WHERE THE DEVICE'S UNSENT TAKES SIT (job #791). Every batch this device opens files its lines'
+// places here, so the home screen can count a take still on the shelf against its batch; a take
+// from before this was kept (or from another tab) is placed by reading the whole queue once.
+const places = ref(loadPlaces(props.voiceId))
+watch(() => props.voiceId, (id) => { places.value = loadPlaces(id) })
+watch([lines, () => voice.value && voice.value.track, () => voice.value && voice.value.batch], () => {
+  const b = batchScope.value
+  const v = voice.value
+  if (!b || !v || v.track !== b.track || v.batch !== b.batch || !lines.value.length) return
+  const entries = {}
+  for (const l of lines.value) entries[l.id] = [b.track, b.batch, !!l.recorded]
+  places.value = savePlaces(props.voiceId, entries, { keep: queue.unsentLines })
+})
+const unsentIds = computed(() => [...(queue.unsentLines || [])])
+const locatorPlaces = computed(() => (locatorLines.value ? placeLines(locatorLines.value, (homeSummary.value && homeSummary.value.tracks) || []) : null))
+function placeOfLine(id) {
+  const kept = placeFromEntry(places.value[id])
+  if (kept) return kept
+  const at = locatorPlaces.value && locatorPlaces.value.get(id)
+  if (!at) return null
+  const line = locatorLines.value.find(l => l.id === id)
+  return { ...at, recorded: !!(line && line.recorded) }
+}
+const unplacedUnsent = computed(() => unsentIds.value.filter(id => !placeOfLine(id)).length)
+const homeTracks = computed(() => withDeviceTakes((homeSummary.value && homeSummary.value.tracks) || [], { unsent: unsentIds.value, placeOf: placeOfLine })
+  .map(t => ({ ...withLocalRecorded(t), ...describeTrack(t) })))
 // THE REFUSED TAKES ON THE HOME PAGE: one row per take the banner counts.
 const refusedHomeRows = computed(() => refusedRows({
   takes: (queue.refusedTakes && queue.refusedTakes.value) || [],
@@ -2891,12 +2918,19 @@ async function locateRefused() {
     )
     if (res.ok && data && Array.isArray(data.lines)) {
       locatorLines.value = data.lines
+      // Keep the places of the takes still on the shelf, so the next visit need not read it all again.
+      const entries = {}
+      for (const id of unsentIds.value) {
+        const p = placeOfLine(id)
+        if (p) entries[id] = [p.track, p.batch, p.recorded]
+      }
+      if (Object.keys(entries).length) places.value = savePlaces(props.voiceId, entries, { keep: queue.unsentLines })
       await queue.reconcile()
     }
   } catch { /* the rows stay "finding the line"; Dismiss still works */ } finally { locating = false }
 }
-watch([phase, () => (queue.refusedTakes ? queue.refusedTakes.value.length : 0)], () => {
-  if (phase.value === 'home' && refusedHomeRows.value.length) locateRefused()
+watch([phase, () => (queue.refusedTakes ? queue.refusedTakes.value.length : 0), unplacedUnsent], () => {
+  if (phase.value === 'home' && (refusedHomeRows.value.length || unplacedUnsent.value)) locateRefused()
 }, { immediate: true })
 // Re-record: open that exact line in the recording screen (?line= is read once the batch has loaded).
 function rerecordRefused(r) {
@@ -2950,7 +2984,7 @@ const batchHeader = computed(() => {
 const nextBatchN = computed(() => {
   const t = scopedTrack.value
   if (!t || t.kind === 'phrase') return null
-  const later = t.batches.find(b => b.n > batchScope.value.batch && b.recorded < b.total)
+  const later = t.batches.find(b => b.n > batchScope.value.batch && (b.recorded || 0) + (b.uploading || 0) < b.total)
   return later ? later.n : null
 })
 const showPhraseCard = computed(() => !!(phrases.value && (phrases.value.pass || phrases.value.finished)) &&

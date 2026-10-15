@@ -5093,6 +5093,61 @@ app.post('/api/admin/pods/generate', async (req, res) => {
   }
 })
 
+// POST /api/admin/pods/:courseCode/:slug/stage-draft — create a HELD topic pod
+// whose every line is a DRAFT awaiting proofread, from text a human already
+// wrote, with structure copied from a mirror pod. No audio, no cast, never a
+// serving slug, never into a booth. The rules and their tests are in
+// services/pod-stage-draft.cjs. DRY RUN unless "apply": true.
+// Body: { mirror: "<course>:<slug>", lines: [{ id, target_text, known_text }], title?, apply? }
+app.post('/api/admin/pods/:courseCode/:slug/stage-draft', async (req, res) => {
+  const admin = await requireAdmin(req, res)
+  if (!admin) return
+  const { parseStageDraftRequest, planStageDraft } = require('./pod-stage-draft.cjs')
+  const parsed = parseStageDraftRequest(req.params.courseCode, req.params.slug, req.body)
+  if (parsed.error) return res.status(400).json({ error: parsed.error })
+  const podId = `${parsed.courseCode}:${parsed.slug}`
+  try {
+    const sb = supabaseClient.getClient()
+    const [existing, mirrorPod, mirrorSentences, course] = await Promise.all([
+      sb.from('listening_pods').select('id').eq('id', podId).maybeSingle(),
+      sb.from('listening_pods').select('id, pod_type, title, scene, difficulty, speakers').eq('id', parsed.mirror).maybeSingle(),
+      sb.from('listening_pod_sentences')
+        .select('id, scene_number, sentence_number, global_order, beat_label, speaker, variant_key, glue_to_next, jump_in')
+        .eq('pod_id', parsed.mirror).order('global_order').range(0, 9999),
+      sb.from('courses').select('course_code, voice_config').eq('course_code', parsed.courseCode).maybeSingle(),
+    ])
+    for (const r of [existing, mirrorPod, mirrorSentences, course]) if (r.error) throw r.error
+    if (!course.data) return res.status(404).json({ error: `course ${parsed.courseCode} not found` })
+    const by = (req.agentAdmin && req.agentAdmin.agent) || admin.email || null
+    const plan = planStageDraft(parsed, {
+      existingPod: existing.data,
+      mirrorPod: mirrorPod.data,
+      mirrorSentences: mirrorSentences.data || [],
+      podCast: (course.data.voice_config && course.data.voice_config.podCast) || {},
+      by,
+    })
+    if (plan.error) return res.status(409).json({ error: plan.error })
+    if (!parsed.apply) return res.json({ ok: true, dryRun: true, ...plan.summary, sample: plan.sentences.slice(0, 2) })
+
+    const { error: podErr } = await sb.from('listening_pods').insert(plan.pod)
+    if (podErr) throw podErr
+    const { error: sErr } = await sb.from('listening_pod_sentences').insert(plan.sentences)
+    if (sErr) {
+      // No transaction through this client: take back the header row this
+      // request just created, so a failed stage leaves nothing half-made.
+      await sb.from('listening_pods').delete().eq('id', podId)
+      throw sErr
+    }
+    const { count } = await sb.from('listening_pod_sentences')
+      .select('*', { count: 'exact', head: true }).eq('pod_id', podId).eq('target_text_draft', true)
+    logger.info(`[PodStageDraft] ${podId} staged by ${by}: ${count} draft lines, mirror ${parsed.mirror}`)
+    res.json({ ok: true, dryRun: false, ...plan.summary, draftLinesInDb: count })
+  } catch (e) {
+    logger.error('[PodStageDraft] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
 // PATCH /api/admin/pod-sentences/:id — edit a generated pod sentence's text.
 // Editing target/known text nulls its audio (the recorded audio no longer
 // matches), same convention as the course-content tables — Phase 8 regenerates.

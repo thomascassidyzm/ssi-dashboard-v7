@@ -12,19 +12,19 @@
       <span class="bh-kind" :class="openTrack.cls">{{ openTrack.short }}</span>
       <h1 class="bh-h1">{{ openTrack.title }}</h1>
       <p class="bh-sub">{{ openTrack.what }}</p>
-      <div class="bh-bar"><i :style="{ width: pct(openTrack) }"></i></div>
-      <p class="bh-sub">{{ n(openTrack.recorded) }} of {{ n(openTrack.total) }} recorded</p>
+      <div class="bh-bar"><i :style="{ width: pct(openTrack) }"></i><i class="up" :style="{ width: pctUp(openTrack) }"></i></div>
+      <p class="bh-sub">{{ n(doneN(openTrack)) }} of {{ n(openTrack.total) }} recorded<span v-if="openTrack.uploading" class="bh-up" data-test="track-uploading"> · {{ upWords(openTrack) }}</span></p>
       <p v-if="openTrack.kind === 'phrase'" class="bh-sub">Any batch can be opened. “Up next” still suggests them in order.</p>
       <div class="bh-list">
         <button
           v-for="b in openBatches" :key="b.n" type="button"
           class="bh-brow"
-          :class="{ lock: !canOpen(openTrack, b), next: isUpNext(openTrack, b), full: b.recorded >= b.total }"
+          :class="{ lock: !canOpen(openTrack, b), next: isUpNext(openTrack, b), full: doneN(b) >= b.total, uploading: !!b.uploading }"
           :disabled="!canOpen(openTrack, b)"
           :data-test="`batch-${b.n}`"
           @click="$emit('open', openTrack.key, b.n)"
         >
-          <span class="bh-bn">{{ b.recorded >= b.total ? '✓' : b.n }}</span>
+          <span class="bh-bn">{{ doneN(b) >= b.total ? '✓' : b.n }}</span>
           <span class="bh-grow">
             <b>{{ batchName(openTrack, b) }}</b>
             <small>{{ batchWords(openTrack, b) }}<template v-if="isUpNext(openTrack, b)"> · <em>up next</em></template></small>
@@ -52,9 +52,9 @@
             <p class="bh-sub">{{ next.track.what }}</p>
             <p class="bh-big">
               <template v-if="next.track.batches.length > 1">{{ batchName(next.track, next.batch) }}<small> of {{ next.track.batches.length }}</small></template>
-              <template v-else>{{ n(next.batch.total - next.batch.recorded) }}<small> lines left</small></template>
+              <template v-else>{{ n(next.batch.total - doneN(next.batch)) }}<small> lines left</small></template>
             </p>
-            <div class="bh-bar"><i :style="{ width: pct(next.batch) }"></i></div>
+            <div class="bh-bar"><i :style="{ width: pct(next.batch) }"></i><i class="up" :style="{ width: pctUp(next.batch) }"></i></div>
             <p class="bh-sub">{{ batchWords(next.track, next.batch) }}</p>
             <button type="button" class="bh-go" data-test="up-next-start" @click="$emit('open', next.track.key, next.batch.n)">
               Open {{ next.track.batches.length > 1 ? batchName(next.track, next.batch).toLowerCase() : 'this' }} ›
@@ -83,8 +83,8 @@
                 <span class="bh-kind" :class="t.cls">{{ t.short }}</span>
                 <span class="bh-h3">{{ t.title }}</span>
                 <span class="bh-sub">{{ t.what }}</span>
-                <span class="bh-bar"><i :style="{ width: pct(t) }"></i></span>
-                <span class="bh-row"><span class="bh-sub">{{ n(t.recorded) }} of {{ n(t.total) }} recorded</span><span class="bh-pill">{{ cardPill(t) }}</span></span>
+                <span class="bh-bar"><i :style="{ width: pct(t) }"></i><i class="up" :style="{ width: pctUp(t) }"></i></span>
+                <span class="bh-row"><span class="bh-sub">{{ n(doneN(t)) }} of {{ n(t.total) }} recorded<span v-if="t.uploading" class="bh-up" :data-test="`card-uploading-${t.key}`"> · {{ upWords(t) }}</span></span><span class="bh-pill">{{ cardPill(t) }}</span></span>
               </button>
             </div>
           </template>
@@ -96,8 +96,8 @@
                 <span class="bh-kind" :class="t.cls">{{ t.short }}</span>
                 <span class="bh-h3">{{ t.title }}</span>
                 <span class="bh-sub">{{ t.what }}</span>
-                <span class="bh-bar"><i :style="{ width: pct(t) }"></i></span>
-                <span class="bh-row"><span class="bh-sub">{{ n(t.recorded) }} of {{ n(t.total) }} recorded</span><span class="bh-pill">{{ cardPill(t) }}</span></span>
+                <span class="bh-bar"><i :style="{ width: pct(t) }"></i><i class="up" :style="{ width: pctUp(t) }"></i></span>
+                <span class="bh-row"><span class="bh-sub">{{ n(doneN(t)) }} of {{ n(t.total) }} recorded<span v-if="t.uploading" class="bh-up" :data-test="`card-uploading-${t.key}`"> · {{ upWords(t) }}</span></span><span class="bh-pill">{{ cardPill(t) }}</span></span>
               </button>
             </div>
           </template>
@@ -150,6 +150,11 @@ defineEmits(['open', 'card', 'home', 'tick'])
 
 const n = (x) => Number(x || 0).toLocaleString('en-GB')
 const pct = (x) => `${x.total ? Math.max(Math.round(100 * x.recorded / x.total), x.recorded ? 1 : 0) : 0}%`
+// RECORDED, SAVED OR STILL UPLOADING (job #791): green is what the server holds, amber what this
+// device recorded and is still sending. Both are recorded — a batch he has read never reads as not.
+const doneN = (x) => (x.recorded || 0) + (x.uploading || 0)
+const pctUp = (x) => `${x.total && x.uploading ? Math.max(Math.round(100 * x.uploading / x.total), 1) : 0}%`
+const upWords = (x) => `${n(x.uploading)} still uploading`
 // Nothing is locked any more (job #697): every card opens to its batch list. Up next keeps its order.
 const withLock = (t) => ({ ...t, locked: false })
 // Unticked cards are hidden (job #378); the tick list still holds them, so ticking brings them back.
@@ -188,7 +193,7 @@ function batchName(t, b) {
   return t.batches.length > 1 ? `Batch ${b.n}` : t.title
 }
 function batchWords(t, b) {
-  const done = `${n(b.recorded)} of ${n(b.total)} recorded`
+  const done = `${n(doneN(b))} of ${n(b.total)} recorded${b.uploading ? ` (${upWords(b)})` : ''}`
   if (t.kind === 'phrase') {
     if (b.recorded >= b.total) return `${n(b.total)} phrases · all recorded`
     return `${done}${b.current ? ' · current batch' : ''}${b.held ? ` · ${b.held} held back for proofing` : ''}`
@@ -199,7 +204,7 @@ function batchWords(t, b) {
 function cardPill(t) {
   if (t.locked) return '🔒 after pass 1'
   if (t.batches.length > 1) return `${t.batches.length} batches ›`
-  return `${n(t.total - t.recorded)} left ›`
+  return `${n(t.total - doneN(t))} left ›`
 }
 </script>
 
@@ -216,7 +221,13 @@ function cardPill(t) {
 .bh-kind.k-p2 { background: #2e1f47; color: #c4b5fd; }
 .bh-kind.k-lego { background: #3a1d2e; color: #f9a8d4; }
 .bh-bar { display: block; height: 8px; background: var(--color-graphite, #475569); border-radius: 99px; overflow: hidden; margin: 0.5rem 0 0.25rem; }
-.bh-bar > i { display: block; height: 100%; background: var(--color-emerald, #06ffa5); }
+.bh-bar { display: flex; }
+.bh-bar > i { display: block; flex: none; height: 100%; background: var(--color-emerald, #06ffa5); }
+.bh-bar > i.up { background: #f59e0b; }
+.bh-up { color: #fbbf24; font-weight: 600; }
+.bh-brow.full.uploading .bh-bn { color: #fbbf24; }
+:root[data-theme="light"] .bh-bar > i.up { background: #d97706; }
+:root[data-theme="light"] .bh-up, :root[data-theme="light"] .bh-brow.full.uploading .bh-bn { color: #b45309; }
 .bh-row { display: flex; align-items: center; gap: 0.75rem; justify-content: space-between; }
 .bh-grow { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .bh-grow small { color: var(--color-paper-dim, #c1c1bb); font-size: 0.82rem; }
