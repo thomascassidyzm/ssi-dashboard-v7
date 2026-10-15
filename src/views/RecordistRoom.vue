@@ -3715,7 +3715,8 @@ kbd {
 :root[data-theme="light"] .sp-row .ctl-pause.paused { background: #a85508; }
 :root[data-theme="light"] .sp-row .btn-finish { background: #b91c1c; }
 
-/* WHITE ON EVERY GREEN BUTTON in light mode (Aran, 2026-10-14, job #411: dark text on the green
-   "did not read well"). #fff on --accent-2 #047857 is 5.48:1, WCAG AA for any text size. */
-:root[data-theme="light"] .btn-begin, :root[data-theme="light"] .ctl-next, :root[data-theme="light"] .volume-btn.on, :root[data-theme="light"] .sheet-close { color: #fff; }
+/* WHITE ON EVERY GREEN BUTTON, light AND dark (Aran, 2026-10-14 job #411, extended 2026-10-15 job #700:
+   dark text on bright green "did not read well"). Fixed emerald-700 #047857, not --accent-2, which is
+   mint (#34d399) in dark mode. #fff on #047857 is 5.48:1, WCAG AA for any text size. */
+.btn-begin, .ctl-next, .volume-btn.on, .sheet-close { background: #047857; color: #fff; }
 </style>

@@ -35,7 +35,7 @@ test.beforeEach(async ({ page }) => {
 for (const light of [false, true]) for (const [w, h] of SIZES) {
   test(`Stop and Pause visible live at ${w}x${h}${light ? ' light' : ''}`, async ({ page }) => {
     await page.setViewportSize({ width: w, height: h })
-    if (light) await page.addInitScript(() => { localStorage.setItem('theme', 'light'); document.documentElement.dataset.theme = 'light' })
+    if (light) await page.addInitScript(() => { localStorage.setItem('popty-theme', 'light'); document.documentElement.dataset.theme = 'light' })
     await page.goto('/r/e2e_fake_voice_never_real')
     await page.getByRole('button', { name: 'Start recording' }).click()
     const stop = page.locator('[data-test="stop"]')
@@ -69,6 +69,11 @@ for (const light of [false, true]) for (const [w, h] of SIZES) {
     })
     expect(geo.inStatus).toBe(false)
     for (const k of ['stop', 'pause']) for (const c of ['back', 'again', 'next']) expect(geo[k].bottom, `${k} above ${c}`).toBeLessThanOrEqual(geo[c].top)
+    // Next: white on a darker green, AA; and the page does not scroll.
+    const nx = await page.locator('.ctl-next').evaluate((el) => { const cs = getComputedStyle(el); return { fg: cs.color, bg: cs.backgroundColor } })
+    expect(contrast(nx.fg, nx.bg), `next contrast ${nx.fg} on ${nx.bg}`).toBeGreaterThanOrEqual(4.5)
+    expect(await page.evaluate(() => document.documentElement.dataset.theme === 'light')).toBe(light)
+    expect(await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight + 1), 'no page scroll').toBe(true)
     await page.screenshot({ path: `${SHOTS}/live-${w}x${h}${light ? '-light' : ''}.png` })
   })
 }
