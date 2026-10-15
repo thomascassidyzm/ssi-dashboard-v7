@@ -129,6 +129,8 @@
             </div>
             <div class="lego-info">
               <span class="lego-id-text text-emerald-400 font-mono text-sm">{{ round.legoId }}</span>
+              <!-- The seed never moves when round numbers do (job #804): said in words beside them. -->
+              <span v-if="seedNumberOf(round.legoId)" class="round-seed text-ink text-sm font-medium ml-2" data-test="round-seed">seed {{ seedNumberOf(round.legoId) }}</span>
             </div>
 
             <!-- Player-delivery flag: only when the round has NOTHING the
@@ -644,6 +646,7 @@ import { buildLearningAppUrl } from '@/utils/learningAppUrl'
 // The one rule for what a tap does lives in src/utils/glossPlacement.ts,
 // pure and unit tested — it is the only thing that rewrites a segmentation.
 import { moveGlossWord, type GlossSegment } from '@/utils/glossPlacement'
+import { seedOfLego } from '../review-place.js'
 
 // Mirrors the learner session's cycle types: the generator emits ONLY
 // intro/debut/build/review/consolidate. Component priming, listening clusters
@@ -771,6 +774,8 @@ const emit = defineEmits<{
   'item-edit': [item: ScriptItem]
   'presentation-edit': [item: ScriptItem]
   'lego-audio-edit': [item: ScriptItem]
+  // A round the reviewer opened or played: the parent remembers its LEGO as their place (job #804).
+  'round-open': [legoId: string]
   'phrase-flag': [item: ScriptItem]
 }>()
 
@@ -1275,6 +1280,7 @@ const playRound = (round: RoundData) => {
     return
   }
 
+  if (round.legoId) emit('round-open', round.legoId)
   // Find global index of first item in this round
   const key = `${round.roundNumber}-0`
   const globalIdx = globalIndexMap.value.get(key)
@@ -1375,6 +1381,8 @@ const toggleRound = (roundNumber: number) => {
     expandedRounds.value.delete(roundNumber)
   } else {
     expandedRounds.value.add(roundNumber)
+    const r = props.rounds.find(x => x.roundNumber === roundNumber)
+    if (r?.legoId) emit('round-open', r.legoId)
   }
 }
 
@@ -1433,6 +1441,7 @@ defineExpose({
 // ============================================================================
 // HELPERS
 // ============================================================================
+const seedNumberOf = (legoId: string | undefined) => seedOfLego(legoId)
 
 // Get LEGO text from the debut or intro item in the round
 const getLegoKnownText = (round: RoundData): string => {

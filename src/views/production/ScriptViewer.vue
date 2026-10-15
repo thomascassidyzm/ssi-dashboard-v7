@@ -244,6 +244,26 @@
           </div>
         </div>
 
+        <!-- WHERE YOU LEFT OFF (job #804): by LEGO, never by round number, which moves. -->
+        <div
+          v-if="resumePlace && !isLoadingJourney"
+          class="resume-place flex items-center gap-3 mb-4 px-4 py-3 rounded-lg border border-emerald-600 bg-emerald-900 bg-opacity-20"
+          data-test="resume-place"
+        >
+          <span class="text-sm text-ink flex-1">
+            You were last at <strong>seed {{ seedOfLego(resumePlace.legoId) }}</strong>
+            <span class="font-mono text-emerald-400">({{ resumePlace.legoId }})</span>
+            <span v-if="resumeNote" class="block text-muted mt-0.5">{{ resumeNote }}</span>
+          </span>
+          <button
+            class="px-3 py-1.5 text-sm bg-emerald-500 text-white rounded hover:bg-emerald-600 transition-colors"
+            :disabled="resuming"
+            data-test="resume-continue"
+            @click="continueFromPlace"
+          >{{ resuming ? 'Finding it…' : 'Continue where you left off' }}</button>
+          <button class="text-muted hover:text-ink text-lg leading-none" title="Dismiss" data-test="resume-dismiss" @click="dismissPlace">&times;</button>
+        </div>
+
         <!-- Learning Journey View Component -->
         <LearningJourneyView
           v-else-if="learningJourneyData"
@@ -261,6 +281,7 @@
           @presentation-edit="onJourneyPresentationEdit"
           @lego-audio-edit="onJourneyLegoAudioEdit"
           @phrase-flag="onJourneyPhraseFlag"
+          @round-open="rememberPlace"
         />
       </template>
     </div>
@@ -976,6 +997,8 @@ import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router';
 import AudioPlayer from './components/AudioPlayer.vue';
 import PhraseEditModal from './components/PhraseEditModal.vue';
+import { regenRequest, RegenInterruptedError, INTERRUPTED_MESSAGE } from './regen-request.js';
+import { readPlace, savePlace, seedOfLego, roundOfLego } from './review-place.js';
 import LearningJourneyView from './components/LearningJourneyView.vue';
 import AudioPreviewCourseGaps from './components/AudioPreviewCourseGaps.vue';
 import { getApiUrl } from '@/services/api';
@@ -1306,6 +1329,61 @@ const jumpToRound = async (roundNumberArg?: number) => {
   await learningJourneyRef.value?.scrollToRound(target);
 };
 
+// ── WHERE THE REVIEWER LEFT OFF (job #804) — see review-place.js for why it is a LEGO id. ──
+// The place offered is the one this browser held when the page opened; once the reviewer opens,
+// plays or edits anything, that becomes the new place and the offer goes away.
+const reviewerEmail = computed(() => (authUser.value as any)?.email || null);
+const resumePlace = ref<{ legoId: string; at: string | null } | null>(null);
+const resumeNote = ref<string | null>(null);
+const resuming = ref(false);
+let placeTouched = false;
+watch([reviewerEmail, courseCode], () => {
+  if (!placeTouched) resumePlace.value = readPlace(reviewerEmail.value, courseCode.value);
+}, { immediate: true });
+const rememberPlace = (legoId: string | undefined) => {
+  if (!legoId || !savePlace(reviewerEmail.value, courseCode.value, legoId)) return;
+  placeTouched = true;
+  if (!resuming.value) resumePlace.value = null;
+};
+const dismissPlace = () => {
+  placeTouched = true;
+  resumePlace.value = null;
+};
+const continueFromPlace = async () => {
+  const place = resumePlace.value;
+  const seed = place && seedOfLego(place.legoId);
+  if (!place || !seed || resuming.value) return;
+  resuming.value = true;
+  resumeNote.value = null;
+  try {
+    // Which round that LEGO is in TODAY: the seed search returns its rounds, numbered as now.
+    const r = await fetch(
+      `${getApiBaseUrl()}/api/production/${courseCode.value}/learning-journey/search?q=${seed}`,
+      { headers: {}, signal: AbortSignal.timeout(60000) }
+    );
+    const round = r.ok ? roundOfLego((await r.json()).rounds, place.legoId) : null;
+    if (round) {
+      journeySearch.value = '';
+      journeySearchResults.value = null;
+      journeySearchAllItems.value = null;
+      await jumpToRound(round);
+      if (roundOfLego(learningJourneyData.value?.rounds, place.legoId)) {
+        await learningJourneyRef.value?.scrollToRound(round);
+        dismissPlace();
+        return;
+      }
+    }
+    // Not in the window it should be in (the learner-audio view numbers rounds differently, or the
+    // LEGO has left the journey): show that seed's rounds by search instead, which always works.
+    journeySearch.value = String(seed);
+    resumeNote.value = round ? null : `Seed ${seed} is shown below; ${place.legoId} itself is no longer in the journey.`;
+    if (round) dismissPlace();
+  } catch {
+    resumeNote.value = 'Could not reach the server to find it — try again in a moment.';
+  } finally {
+    resuming.value = false;
+  }
+};
 // Keep ?round= in sync so the current view is shareable/bookmarkable.
 const updateRoundQueryParam = (roundNumber: number) => {
   const url = new URL(window.location.href);
@@ -1475,7 +1553,7 @@ const getApiBaseUrl = (): string => {
 // Admin-gated fetch — attach a fresh Supabase access token as Bearer.
 // Mirrors the PodDetailView authedFetch pattern. Required for the
 // regenerate-phrase endpoint (requireAdmin — it costs TTS, D3).
-const { getAccessToken } = useAuth();
+const { getAccessToken, user: authUser } = useAuth();
 const authedFetch = async (path: string, init: RequestInit = {}): Promise<Response> => {
   const token = await getAccessToken();
   const headers: Record<string, string> = {
@@ -1816,7 +1894,7 @@ const fetchAuditionUrl = async (audioUuid: string): Promise<string | null> => {
   try {
     const urlResp = await fetch(
       `${getApiBaseUrl()}/api/production/${courseCode.value}/audio/${audioUuid}/url`,
-      { headers: {} }
+      { headers: {}, signal: AbortSignal.timeout(20000) }
     );
     if (urlResp.ok) {
       const urlData = await urlResp.json();
@@ -1855,6 +1933,8 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     );
 
     if (!response.ok) throw new Error('Failed to save phrase');
+    // The saved row, before any render: where it lives, and the clips it points at now.
+    const savedRow = (await response.json().catch(() => ({})))?.phrase || null;
 
     // Update local text state immediately
     const phraseId = phraseToEdit.value.id;
@@ -1901,7 +1981,18 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     // UUID/S3 key per role, rebinds the phrase pointer, returns fresh *_audio_id.
     // CRITICAL: a TEXT edit must use regenerate-PHRASE, never regenerate-single
     // (which re-reads stale course_audio.text → audio/text desync).
-    const regenResp = await authedFetch(
+    // Timed out, re-read and re-sent at most once on a dropped connection (regen-request.js).
+    // Landed = every role's pointer on the saved row has moved off the clip it had at save time.
+    const COLUMN_OF = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id' } as const;
+    const checkLanded = savedRow?.seed_number && savedRow?.lego_index ? async () => {
+      const legoId = `S${String(savedRow.seed_number).padStart(4, '0')}L${String(savedRow.lego_index).padStart(2, '0')}`;
+      const r = await fetch(`${getApiBaseUrl()}/api/production/${courseCode.value}/lego/${legoId}/basket`, { headers: {}, signal: AbortSignal.timeout(20000) });
+      if (!r.ok) return null;
+      const row = ((await r.json()).phrases || []).find((p: any) => p.id === phraseId);
+      if (!row || !roles.every(role => row[COLUMN_OF[role]] && row[COLUMN_OF[role]] !== savedRow[COLUMN_OF[role]])) return null;
+      return { known_audio_id: row.known_audio_id, target1_audio_id: row.target1_audio_id, target2_audio_id: row.target2_audio_id, durations: {} };
+    } : undefined;
+    const sent = await regenRequest((signal) => authedFetch(
       `/api/audio/regenerate-phrase/${courseCode.value}/${encodeURIComponent(phraseId)}`,
       {
         method: 'POST',
@@ -1910,10 +2001,12 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
           target_text: data.target_text,
           roles,
         }),
+        signal,
       }
-    );
+    ), { checkLanded });
 
-    if (!regenResp.ok) {
+    const regenResp = 'res' in sent ? sent.res : null;
+    if (regenResp && !regenResp.ok) {
       const errBody = await regenResp.json().catch(() => ({}));
       const msg = errBody.error || `Regeneration failed (${regenResp.status})`;
       roles.forEach(r => phraseEditModalRef.value?.setAuditionError(r, msg));
@@ -1922,7 +2015,7 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
     // Response: { known_audio_id, target1_audio_id, target2_audio_id, durations:{role:ms} }
     // Only regenerated roles carry fresh ids; HTTP 200 == success (no `success` field).
-    const result = await regenResp.json();
+    const result = regenResp ? await regenResp.json() : (sent as { landed: any }).landed;
     const REGEN_FIELDS = {
       known: { column: 'known_audio_id', uuidField: 'known_audio_uuid' },
       target1: { column: 'target1_audio_id', uuidField: 'target1_audio_uuid' },
@@ -1961,12 +2054,19 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     if (viewMode.value === 'journey') refreshJourneyInPlace();
   } catch (err) {
     console.error('Error saving phrase:', err);
-    phraseEditModalRef.value?.onSaveComplete(false, err instanceof Error ? err.message : 'Save failed');
+    const msg = err instanceof RegenInterruptedError ? INTERRUPTED_MESSAGE
+      : err instanceof TypeError ? INTERRUPTED_MESSAGE // the save itself never reached the server
+      : err instanceof Error ? err.message : 'Save failed';
+    // EVERY spinner still turning stops here, whatever failed: a role left on 'regenerating'
+    // after the request died was the permanent freeze reviewers saw (job #804).
+    phraseEditModalRef.value?.failPendingAuditions(msg);
+    phraseEditModalRef.value?.onSaveComplete(false, msg);
   }
 };
 
 // Journey view: item edit handler
 const onJourneyItemEdit = (item: any) => {
+  rememberPlace(item.legoId || item.lego_id);
   // D4: intro / component_intro narration is NOT phrase-role audio — it lives in
   // course_audio as a presentation clip. Route those edits through the dedicated
   // presentation path (regenerate-presentation), never regenerate-phrase.
@@ -2009,8 +2109,12 @@ const presentationResult = ref<{ audio_id: string; duration_ms: number; created:
 const presentationAudioUrl = ref<string | null>(null);
 // True when nothing is stored for this LEGO and the box holds a suggested draft.
 const presentationIsSuggested = ref(false);
+// The clip's s3_key when the dialog opened (null: no clip yet): an interrupted render has landed
+// iff it moved. Undefined = not known (the read failed, or a render since): then nothing is re-sent.
+let presentationBaselineKey: string | null | undefined;
 
 const onJourneyPresentationEdit = async (item: any) => {
+  rememberPlace(item.legoId || item.lego_id);
   const legoId = item.legoId || item.lego_id;
   if (!legoId) return;
   presentationLegoId.value = legoId;
@@ -2018,6 +2122,7 @@ const onJourneyPresentationEdit = async (item: any) => {
   presentationTargetText.value = item.target_text || '';
   presentationText.value = '';
   presentationIsSuggested.value = false;
+  presentationBaselineKey = undefined;
   presentationError.value = null;
   presentationResult.value = null;
   presentationAudioUrl.value = null;
@@ -2035,6 +2140,7 @@ const onJourneyPresentationEdit = async (item: any) => {
       const data = await resp.json();
       presentationText.value = data.text || '';
       presentationIsSuggested.value = !!data.is_suggested;
+      presentationBaselineKey = data.s3_key || null;
     }
   } catch (err) {
     console.error('Failed to load presentation text:', err);
@@ -2056,19 +2162,33 @@ const savePresentationAndRegen = async () => {
 
   try {
     const apiBaseUrl = getApiBaseUrl();
-    const resp = await fetch(
-      `${apiBaseUrl}/api/audio/regenerate-presentation/${courseCode.value}/${encodeURIComponent(presentationLegoId.value)}`,
+    const legoId = presentationLegoId.value;
+    const text = presentationText.value.trim();
+    const baseline = presentationBaselineKey;
+    presentationBaselineKey = undefined;
+    const sent = await regenRequest((signal) => fetch(
+      `${apiBaseUrl}/api/audio/regenerate-presentation/${courseCode.value}/${encodeURIComponent(legoId)}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: presentationText.value.trim() }),
+        body: JSON.stringify({ text }),
+        signal,
       }
-    );
-    if (!resp.ok) {
+    ), {
+      checkLanded: baseline === undefined ? undefined : async () => {
+        const r = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/presentation/${encodeURIComponent(legoId)}`, { headers: {}, signal: AbortSignal.timeout(20000) });
+        if (!r.ok) return null;
+        const row = await r.json();
+        if (!row.id || !row.s3_key || row.s3_key === baseline || (row.text || '').trim() !== text) return null;
+        return { audio_id: row.id, duration_ms: row.duration_ms, created: false };
+      },
+    });
+    const resp = 'res' in sent ? sent.res : null;
+    if (resp && !resp.ok) {
       const err = await resp.json().catch(() => ({}));
       throw new Error(err.error || `Regeneration failed (${resp.status})`);
     }
-    const result = await resp.json();
+    const result = resp ? await resp.json() : (sent as { landed: any }).landed;
     presentationResult.value = {
       audio_id: result.audio_id,
       duration_ms: result.duration_ms,
@@ -2080,7 +2200,7 @@ const savePresentationAndRegen = async () => {
       try {
         const urlResp = await fetch(
           `${apiBaseUrl}/api/production/${courseCode.value}/audio/${result.audio_id}/url`,
-          { headers: {} }
+          { headers: {}, signal: AbortSignal.timeout(20000) }
         );
         if (urlResp.ok) {
           const urlData = await urlResp.json();
@@ -2149,6 +2269,7 @@ const legoSelectedRoles = computed(() =>
 );
 
 const onJourneyLegoAudioEdit = (item: any) => {
+  rememberPlace(item.legoId || item.lego_id);
   const legoId = item.legoId || item.lego_id;
   if (!legoId) return;
   legoAudioLegoId.value = legoId;
@@ -2202,7 +2323,9 @@ const regenerateLegoAudio = async () => {
   const apiBaseUrl = getApiBaseUrl();
 
   try {
-    const resp = await fetch(
+    // Timed out like the others, but with no single-LEGO read to check against it is never
+    // re-sent: an interrupted LEGO render says so and the reviewer presses again.
+    const { res: resp } = await regenRequest((signal) => fetch(
       `${apiBaseUrl}/api/audio/regenerate-lego/${courseCode.value}/${encodeURIComponent(legoAudioLegoId.value)}`,
       {
         method: 'POST',
@@ -2212,8 +2335,9 @@ const regenerateLegoAudio = async () => {
           tts_known_text: legoSpokenKnown.value,
           tts_target_text: legoSpokenTarget.value,
         }),
+        signal,
       }
-    );
+    )) as { res: Response };
     if (!resp.ok) {
       const err = await resp.json().catch(() => ({}));
       throw new Error(err.error || `Regeneration failed (${resp.status})`);
@@ -2254,7 +2378,7 @@ const regenerateLegoAudio = async () => {
         try {
           const urlResp = await fetch(
             `${apiBaseUrl}/api/production/${courseCode.value}/audio/${audioId}/url`,
-            { headers: {} }
+            { headers: {}, signal: AbortSignal.timeout(20000) }
           );
           if (urlResp.ok) url = (await urlResp.json()).url || null;
         } catch (e) { /* non-fatal: regen succeeded */ }

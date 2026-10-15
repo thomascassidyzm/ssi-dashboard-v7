@@ -736,6 +736,7 @@ import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, w
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
+import { shouldRefreshQueue } from './recordist/queue-refresh.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
@@ -2666,10 +2667,22 @@ async function submitSetup() {
   }
 }
 
-async function load() {
-  phase.value = 'loading'
-  loadError.value = null
-  loadSlow.value = false
+// A QUIET load (job #804) is the queue read again when the booth comes back into view: the
+// screen stays as it is while it runs, and only the lines and their counts are replaced — the
+// cursor, this session's takes and the done list are his and stay. A quiet read that fails, or
+// that finds he has moved on (Start, another batch, another load) by the time it lands, is
+// dropped without a word: the page he is looking at is still true as of his last read.
+let loadGen = 0
+let lastQueueRead = 0
+async function load({ quiet = false } = {}) {
+  const gen = ++loadGen
+  const was = phase.value
+  const movedOn = () => gen !== loadGen || phase.value !== was
+  if (!quiet) {
+    phase.value = 'loading'
+    loadError.value = null
+    loadSlow.value = false
+  }
   try {
     // Always ask for the WHOLE queue, recorded lines included, and filter
     // locally: the map draws every line, a tapped recorded line can be read
@@ -2706,6 +2719,7 @@ async function load() {
       { headers: {} },
       r => (r.ok ? r.json() : r.json().catch(() => ({})))
     )
+    if (quiet && (movedOn() || !res.ok)) return
     if (res.status === 404) { phase.value = 'unknown'; return }
     if (res.status === 403) {
       // The link names a course this voice is not cast on: the server's
@@ -2743,6 +2757,8 @@ async function load() {
     lines.value = Array.isArray(data.lines) ? data.lines : []
     // ...and never a line whose take is still going up from this device: that is not a miss.
     if (b && b.track === RERECORD_TRACK) lines.value = lines.value.filter(l => !queue.isUnsent(l.id))
+    lastQueueRead = Date.now()
+    if (quiet) return
     // RESUME. Anything left on the device by an earlier session — a tab closed
     // mid-upload, a phone that slept, a chalet with no signal — is picked up
     // here and starts going up before he reads a word.
@@ -2757,6 +2773,7 @@ async function load() {
     pinnedId.value = loadCursor(props.voiceId, cursorScope())
     phase.value = 'ready'
   } catch (err) {
+    if (quiet) return
     loadSlow.value = err instanceof LoadTimeoutError
     loadError.value = (err && err.message) || 'Network error'
     phase.value = 'error'
@@ -3190,7 +3207,26 @@ watch([() => recorder.devices.value, selectedDeviceId], () => {
   rememberBoothSettings()
 }, { deep: true })
 
+// NEW WORK WITHOUT A RELOAD (job #804): coming back to the tab, or the window regaining focus,
+// reads the queue again — see recordist/queue-refresh.js for when it never does.
+let boothActive = true
+function refreshOnReturn() {
+  if (!shouldRefreshQueue({
+    visible: document.visibilityState !== 'hidden',
+    active: boothActive,
+    phase: phase.value,
+    busy: busy.value,
+    arming: arming.value,
+    editing: !!editingId.value,
+    pending: queue.pendingCount.value,
+    lastAt: lastQueueRead,
+  })) return
+  lastQueueRead = Date.now()
+  if (phase.value === 'home') { refreshHome(); refreshRerecord() } else load({ quiet: true })
+}
 onMounted(() => {
+  document.addEventListener('visibilitychange', refreshOnReturn)
+  window.addEventListener('focus', refreshOnReturn)
   window.addEventListener('keydown', onKey)
   window.addEventListener('beforeunload', beforeUnloadGuard)
   recorder.listDevices()
@@ -3198,6 +3234,8 @@ onMounted(() => {
   rememberBooth(props.voiceId)
 })
 onBeforeUnmount(() => {
+  document.removeEventListener('visibilitychange', refreshOnReturn)
+  window.removeEventListener('focus', refreshOnReturn)
   stopWave()
   window.removeEventListener('keydown', onKey)
   window.removeEventListener('beforeunload', beforeUnloadGuard)
@@ -3220,10 +3258,12 @@ watch(() => [props.voiceId, addressQuery.value.track, addressQuery.value.batch, 
   enter()
 }, { immediate: true })
 onActivated(() => {
+  boothActive = true
   window.addEventListener('keydown', onKey)
   rememberBooth(props.voiceId)
 })
 onDeactivated(() => {
+  boothActive = false
   window.removeEventListener('keydown', onKey)
   stopPlayback()
 })
