@@ -59,6 +59,9 @@
             <button type="button" class="bh-go" data-test="up-next-start" @click="$emit('open', next.track.key, next.batch.n)">
               Open {{ next.track.batches.length > 1 ? batchName(next.track, next.batch).toLowerCase() : 'this' }} ›
             </button>
+            <button v-if="next.track.batches.length > 1" type="button" class="bh-go bh-go-all" data-test="up-next-all" @click="$emit('card', next.track.key)">
+              All {{ next.track.batches.length }} batches ›
+            </button>
           </div>
           <div v-else class="bh-hero bh-hero-done">
             <h2 class="bh-h2">Nothing ticked is waiting</h2>
@@ -132,7 +135,7 @@
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import BoothTicks from './BoothTicks.vue'
 import BoothTeamStats from './BoothTeamStats.vue'
-import { groupTracks, upNext, batchOpenable, trackLocked, splitTicked, shownBatches } from './booth-home.js'
+import { groupTracks, upNext, batchOpenable, trackLocked, splitTicked, shownBatches, withoutHero } from './booth-home.js'
 
 const props = defineProps({
   displayName: { type: String, default: '' },
@@ -154,12 +157,13 @@ const allGroups = computed(() => {
   const g = groupTracks(props.tracks)
   return { main: g.main.map(withLock), other: g.other.map(withLock), finished: g.finished }
 })
+const next = computed(() => upNext(props.tracks, props.unticked))
 const groups = computed(() => {
   const main = splitTicked(allGroups.value.main, props.unticked)
   const other = splitTicked(allGroups.value.other, props.unticked)
-  return { main: main.shown, other: other.shown, finished: allGroups.value.finished, hidden: [...main.hidden, ...other.hidden] }
+  // The hero's own section is not drawn again as a card (it stays in the tick panel).
+  return { main: withoutHero(main.shown, next.value), other: withoutHero(other.shown, next.value), finished: allGroups.value.finished, hidden: [...main.hidden, ...other.hidden] }
 })
-const next = computed(() => upNext(props.tracks, props.unticked))
 const ticked = (id) => !props.unticked.has(id)
 const tickables = computed(() => [...allGroups.value.main, ...allGroups.value.other])
 const tickedCount = computed(() => tickables.value.filter((t) => ticked(t.key)).length)
@@ -257,4 +261,6 @@ function cardPill(t) {
 /* WHITE ON EVERY GREEN BUTTON in light mode (Aran, 2026-10-14, job #411: dark text on the green
    "did not read well"). #fff on --accent-2 #047857 is 5.48:1, WCAG AA for any text size. */
 :root[data-theme="light"] .bh-go, :root[data-theme="light"] .bh-brow.next .bh-bn { color: #fff; }
+.bh-go.bh-go-all { min-height: 44px; font-size: 0.95rem; background: transparent; color: inherit; border: 1px solid currentColor; opacity: 0.85; }
+:root[data-theme="light"] .bh-go.bh-go-all { color: #1e3a5f; }
 </style>

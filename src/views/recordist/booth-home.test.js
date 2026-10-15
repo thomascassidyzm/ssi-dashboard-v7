@@ -1,6 +1,6 @@
 // The booth home screen's decisions (job #347): Up next order, ticks, phrase locking.
 import { describe, it, expect } from 'vitest'
-import { upNext, groupTracks, batchTickId, trackLocked, firstOpenBatch, batchOpenable, splitTicked, shownBatches, loadSummarySnapshot, saveSummarySnapshot } from './booth-home.js'
+import { upNext, groupTracks, batchTickId, trackLocked, firstOpenBatch, batchOpenable, splitTicked, shownBatches, withoutHero, loadSummarySnapshot, saveSummarySnapshot } from './booth-home.js'
 
 const seeds = (key, newCourse, batches) => ({
   key, kind: 'seed', newCourse, seedExisting: true,
@@ -98,5 +98,16 @@ describe('opening any batch (job #697)', () => {
     expect(upNext(tracks, new Set(['seed.cym_nv2_for_eng'])).batch.n).toBe(1)
     expect(firstOpenBatch(tracks[3], tracks).n).toBe(1)
     expect(firstOpenBatch(tracks[4], tracks)).toBe(null)
+  })
+})
+
+describe('the Up next hero is not repeated in the card list (job #708)', () => {
+  it('drops the hero section from the cards and keeps the others', () => {
+    const hero = upNext(tracks)
+    const shown = groupTracks(tracks).main
+    expect(shown.map((t) => t.key)).toContain(hero.track.key)
+    expect(withoutHero(shown, hero).map((t) => t.key)).toEqual(shown.map((t) => t.key).filter((k) => k !== hero.track.key))
+    expect(withoutHero(shown, hero).map((t) => t.key)).not.toContain(hero.track.key)
+    expect(withoutHero(shown, null)).toEqual(shown)
   })
 })

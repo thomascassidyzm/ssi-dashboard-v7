@@ -73,6 +73,11 @@ export function splitTicked(tracks, off = new Set()) {
   return { shown, hidden }
 }
 
+/** The card list never repeats the Up next hero (Aran, 2026-10-15): drop the hero's section from it. */
+export function withoutHero(tracks, hero) {
+  return hero ? tracks.filter((t) => t.key !== hero.track.key) : tracks
+}
+
 /** A card's batch rows to draw: an unticked batch is hidden like an unticked card. */
 export function shownBatches(t, off = new Set()) {
   if (!hasBatchTicks(t)) return t.batches || []
