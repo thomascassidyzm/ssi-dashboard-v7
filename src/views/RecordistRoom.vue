@@ -3453,7 +3453,8 @@ kbd {
   font-family: inherit; font-size: 1rem; font-weight: 700; border-radius: 12px; cursor: pointer;
   color: #fff; border: 0;
 }
-.status .ctl-pause { background: var(--accent-2, #047857); }
+/* Fixed green, not --accent-2: that variable is mint (#34d399) in dark mode, and white on it is 1.9:1 (job #681). */
+.status .ctl-pause { background: #047857; }
 .status .btn-finish { background: #b91c1c; }
 .status .ctl-pause::before { content: '\23F8'; font-size: 1.1em; }
 .status .btn-finish::before { content: '\25A0'; font-size: 0.9em; }
