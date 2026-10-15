@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'node:module'
-const { staleAsks, isStop } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
+const { staleAsks, isStop, castFromVoiceConfig } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
 
 // job #863: only TTS clips off the cast voice move; human takes and cast clips stay; one ask per (role, words), course order
 describe('revoice-seeds-to-cast', () => {
@@ -28,5 +28,15 @@ describe('revoice-seeds-to-cast', () => {
     expect(isStop({ status: 402, body: {} })).toBe(true)
     expect(isStop({ status: 200, body: { code: 'DAILY_TOTAL_CAP' } })).toBe(true)
     expect(isStop({ status: 500, body: { ok: false } })).toBe(false)
+  })
+  // job #864: por_for_eng stores Azure Raquel/Duarte but its language cast resolves to Cartesia Mariana/Matias; the cast wins
+  it('takes the resolved cast over a stale stored Azure row, and stops when nothing is Cartesia', () => {
+    const az = (n) => ({ provider: 'azure', voiceId: `pt-PT-${n}Neural` })
+    const vc = {
+      stored: { voices: { target1: az('Raquel'), target2: az('Duarte') } },
+      resolved: { voices: { target1: { provider: 'cartesia', voiceId: 'cartesia_d93' }, target2: { provider: 'cartesia', voiceId: 'b1d' } } },
+    }
+    expect(castFromVoiceConfig(vc)).toEqual({ castByRole: { target1: 'cartesia_d93', target2: 'cartesia_b1d' }, missing: null })
+    expect(castFromVoiceConfig({ stored: vc.stored }).missing.role).toBe('target1')
   })
 })

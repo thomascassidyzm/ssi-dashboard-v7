@@ -40,6 +40,22 @@ function staleAsks(rows, clips, castByRole) {
   return [...asks.values()].sort((a, b) => a.firstSeed - b.firstSeed || (a.role < b.role ? -1 : 1));
 }
 
+/**
+ * The cast voice per target role. RESOLVED first (job #864, por_for_eng): a course whose row still stores its old Azure voices
+ * (Raquel/Duarte) but whose language cast resolves to Cartesia (Mariana/Matias) renders in the cast, so the cast is what slots move
+ * to. Copying the cast into the course row instead is the per-course duplication voice-config-service refuses (updateVoiceRole).
+ * Stored is the fallback for an answer without a resolution. Anything not Cartesia is no cast: stop and report, never invent one.
+ */
+function castFromVoiceConfig(vc) {
+  const castByRole = {};
+  for (const role of ROLES) {
+    const v = (vc && vc.resolved && vc.resolved.voices && vc.resolved.voices[role]) || (vc && vc.stored && vc.stored.voices && vc.stored.voices[role]) || null;
+    if (!v || v.provider !== 'cartesia' || !v.voiceId) return { castByRole, missing: { role, voice: v } };
+    castByRole[role] = `cartesia_${bare(v.voiceId)}`;
+  }
+  return { castByRole, missing: null };
+}
+
 /** A route answer that means stop for today: the refusal is the answer, never retried. */
 const isStop = (r) => r.status === 402 || ['DAILY_TOTAL_CAP', 'REPEAT', 'NOT_IN_CHAIN'].includes(r.body && r.body.code);
 
@@ -67,14 +83,10 @@ async function main() {
   const PURPOSE = `job #863: ${COURSE} seeds 1-${SEEDS} target slots onto the course cast voices (Tom 2026-10-12)`;
   const db = require('../../services/shared/agent-db.cjs');
 
-  // The cast is the course's stored voice-config (Popty's own read route); the voice is named on every render so a clip can never land off-cast.
-  const castByRole = {};
+  // The cast is what a render will use, from Popty's own read route; the voice is named on every render so a clip can never land off-cast.
   const vc = await fetch(`${URL}/api/courses/${COURSE}/voice-config/resolved`).then((r) => r.json()).catch(() => ({}));
-  for (const role of ROLES) {
-    const v = vc.stored && vc.stored.voices && vc.stored.voices[role];
-    if (!v || v.provider !== 'cartesia' || !v.voiceId) { console.log(`NO CAST for ${role}: ${JSON.stringify(v || null).slice(0, 300)}`); return; }
-    castByRole[role] = `cartesia_${bare(v.voiceId)}`;
-  }
+  const { castByRole, missing } = castFromVoiceConfig(vc);
+  if (missing) { console.log(`NO CAST for ${missing.role}: ${JSON.stringify(missing.voice).slice(0, 300)}`); return; }
   console.log(`${COURSE} cast: target1 ${castByRole.target1}, target2 ${castByRole.target2}`);
 
   const pg = await db.connect();
@@ -122,5 +134,5 @@ async function main() {
   const left = asks.length - n;
   console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { staleAsks, isStop };
+module.exports = { staleAsks, isStop, castFromVoiceConfig };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
