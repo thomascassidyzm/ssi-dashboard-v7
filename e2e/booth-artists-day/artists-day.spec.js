@@ -189,7 +189,8 @@ async function waitForSustainedSilence(page, what, ms = 25_000) {
 // ── Driving the booth as he does ────────────────────────────────────────────
 async function openBooth(page) {
   await page.goto(`${BASE}/r/${VOICE_ID}`)
-  await expect(page.locator('.rc-hello')).toContainText(VOICE_NAME.split(' (')[0])
+  // .rc-hello on the old booth home, .bh-h1 on the Prompter rebuild (#424) that staging runs ahead of main.
+  await expect(page.locator('.rc-hello, .bh-h1').first()).toContainText(VOICE_NAME.split(' (')[0])
   await expect.poll(() => counts(page), { message: 'the ready card' }).not.toBeNull()
 }
 async function begin(page) {
