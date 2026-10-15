@@ -232,8 +232,11 @@ describe("the artist's day at the booth", () => {
     server.refuse.add('B')
     await readAndNext(w)
     await serverSettled(w, server, 2)
-    await until(() => banner(w) && banner(w).cls === 'refused', 'the refused banner')
-    expect(banner(w).text).toContain('1 take the server would not accept')
+    // In the batch it is ONE slim bar, never a banner over the page (Aran, 2026-10-15, job #783);
+    // the home page's banner and list are RecordistRoom.refusedHome.test.js.
+    await until(() => w.find('[data-test="refused-summary"]').exists(), 'the refused bar')
+    expect(w.find('[data-test="refused-summary"]').text()).toContain('1 line needs re-recording')
+    expect(banner(w)).toBeNull()
     // The stage's own count agrees with the map: B is still to read.
     expect(w.find('.upnext-head').text()).toContain('2 still to read')
     await stopHere(w)

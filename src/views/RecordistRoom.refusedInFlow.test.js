@@ -14,7 +14,7 @@ const rec = vi.hoisted(() => ({ failed: null }))
 vi.mock('@/composables/useRecordistQueue', () => ({
   DURABLE_TAKES_FEATURE: 'durable-take-store-2026-09-03',
   useRecordistQueue: () => ({
-    persistent: ref(true), carriedOverCount: ref(0), refusedCount: ref(0),
+    persistent: ref(true), carriedOverCount: ref(0), refusedCount: ref(3),
     isUnsent: () => false, attach: vi.fn(), teardown: vi.fn(), queueTake: vi.fn(), markFailed: vi.fn(),
     pendingCount: ref(0), savedCount: ref(0), failedCount: ref(0),
     saved: reactive(new Map()), failed: rec.failed, flush: vi.fn(), retryFailed: vi.fn(),
@@ -75,6 +75,8 @@ describe('RecordistRoom — refused lines come up in the normal flow', () => {
     const bars = w.findAll('[data-test="refused-summary"]')
     expect(bars).toHaveLength(1)
     expect(bars[0].text()).toContain('3 lines need re-recording')
+    // ...and no second notice about the same takes at the top of the page.
+    expect(w.find('.safety-banner.refused').exists()).toBe(false)
     // The line he is on is still the line on screen.
     expect(w.find('.line-target').text()).toContain('llinell 3')
     await w.find('[data-test="refused-go-first"]').trigger('click')

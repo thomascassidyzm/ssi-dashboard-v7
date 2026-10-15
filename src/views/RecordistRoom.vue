@@ -1904,7 +1904,10 @@ const safetyBanner = computed(() => {
       detail: 'This browser will not keep recordings, so keep this page open until they have all uploaded.',
     }
   }
-  if (queue.refusedCount.value > 0 && unsentCount.value === 0) {
+  // HOME ONLY: "listed below" is true only on the home page, where RefusedTakes lists them. In a
+  // batch the rail marks them red and one slim bar counts them (Aran, 2026-10-15, job #783); a
+  // second notice up here was one more thing between him and the line.
+  if (queue.refusedCount.value > 0 && unsentCount.value === 0 && phase.value === 'home') {
     return {
       cls: 'refused',
       head: `${queue.refusedCount.value} ${takesWord(queue.refusedCount.value)} the server would not accept`,
