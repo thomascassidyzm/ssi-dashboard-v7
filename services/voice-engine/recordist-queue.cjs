@@ -1109,6 +1109,15 @@ function legoTakeIsCastVoices(heldBy, castEntry) {
  * voice is not enough: a slot holding his take of a whole sentence that merely
  * CONTAINS the LEGO reads as still to record, never as recorded. A clip with no
  * text on file proves nothing, so it does not count either.
+ *
+ * ONE RECORDING SERVES A LEGO AND A WHOLE SENTENCE OF EXACTLY THE SAME WORDS
+ * (Aran, 2026-10-15: "If a whole sentence is exactly the same as a lego, we
+ * should definitely use the same recording for both."). His take of the
+ * sentence is filed under the same clip identity a LEGO of those words keys on
+ * (role + normalised text), so a slot holding it passes here and the LEGO is
+ * green — never queued for a second reading — and the booth's flow skips it
+ * (job #816). Exact words only: a sentence that merely CONTAINS the LEGO is a
+ * different recording (#818), and this test is where that line is drawn.
  */
 function legoClipSaysText(clipText, legoText) {
   const have = normalizeForAudio(String(clipText || ''))
