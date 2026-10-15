@@ -1014,6 +1014,9 @@ import type {
 
 // Route
 const route = useRoute();
+// Declared up here, before anything reads it: the reviewer-place watch (immediate) reads
+// authUser during setup, and a later `const` is a TDZ error that blanks the page (job #812).
+const { getAccessToken, user: authUser } = useAuth();
 const courseCode = computed(() => route.params.courseCode as string || 'spa_for_eng');
 
 // Scroll refs
@@ -1553,7 +1556,6 @@ const getApiBaseUrl = (): string => {
 // Admin-gated fetch — attach a fresh Supabase access token as Bearer.
 // Mirrors the PodDetailView authedFetch pattern. Required for the
 // regenerate-phrase endpoint (requireAdmin — it costs TTS, D3).
-const { getAccessToken, user: authUser } = useAuth();
 const authedFetch = async (path: string, init: RequestInit = {}): Promise<Response> => {
   const token = await getAccessToken();
   const headers: Record<string, string> = {
