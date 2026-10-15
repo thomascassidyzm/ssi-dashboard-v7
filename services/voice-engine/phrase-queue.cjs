@@ -301,6 +301,11 @@ function compareServed(a, b) {
  *   nothing else, so reading a batch never moves what the queue is serving. Unknown batch → empty.
  * @returns {{ lines: object[], summary: object|null }}
  */
+/** A reader's phrase lines in the order the batches walk them. */
+function servedOrder(lines) {
+  return [...lines].sort(compareServed)
+}
+
 function servePhraseBatch(lines, isRecorded, batchCounts, want = null) {
   if (!lines.length) return { lines: [], summary: null }
   const sorted = [...lines].sort(compareServed)
@@ -400,5 +405,6 @@ module.exports = {
   planCourse,
   mergeAcrossCourses,
   servePhraseBatch,
+  servedOrder,
   phraseBatchList,
 }

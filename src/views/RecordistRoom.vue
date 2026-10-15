@@ -50,7 +50,9 @@
       @card="openCard"
       @home="goHome"
       @tick="setTick"
-    />
+    >
+      <template #top><RerecordCard :rows="rerecordRows" @open="openRerecord" /></template>
+    </BoothHome>
 
     <!-- ── THE PROMPTER (Aran, 2026-10-14, job #424; design #419 Option A) ──────────────────
          The batch page, the live stage and the done screen are ONE layout, exactly one viewport
@@ -734,6 +736,10 @@ import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoo
 import BoothHome from './recordist/BoothHome.vue'
 import RefusedTakes from './recordist/RefusedTakes.vue'
 import { refusedRows, refusedLineWords } from './recordist/refused-takes.js'
+import RerecordCard from './recordist/RerecordCard.vue'
+import { mergeRerecord, alsoIds } from './recordist/rerecord-list.js'
+// The re-record card's batch (job #788): services/voice-engine/booth-rerecord.cjs RERECORD_TRACK.
+const RERECORD_TRACK = 'rerecord'
 import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot } from './recordist/booth-home.js'
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
@@ -2699,7 +2705,13 @@ async function load() {
     const podParam = podScope ? `&pod=${encodeURIComponent(podScope)}` : ''
     // ONE BATCH from the home screen (job #347): only its lines come over the wire.
     const b = batchScope.value
-    const batchParam = b ? `&track=${encodeURIComponent(b.track)}&batch=${b.batch}` : ''
+    let batchParam = b ? `&track=${encodeURIComponent(b.track)}&batch=${b.batch}` : ''
+    // THE RE-RECORD BATCH (job #788) also carries this device's refused takes, so it reads them first.
+    if (b && b.track === RERECORD_TRACK) {
+      await queue.attach(props.voiceId)
+      const also = alsoIds(queue.refusedTakes.value)
+      if (also.length) batchParam += `&also=${encodeURIComponent(also.join(','))}`
+    }
     // Time-limited (20s, one retry): a hung request must not strand the reader
     // on "Getting your lines…". The body is read inside the timed window.
     const { res, data: body } = await fetchWithTimeoutRetry(
@@ -2742,6 +2754,8 @@ async function load() {
     // `lines`, because his queue only carries what he is cast for today.
     handedOn.value = Array.isArray(data.handedOn) ? data.handedOn : []
     lines.value = Array.isArray(data.lines) ? data.lines : []
+    // ...and never a line whose take is still going up from this device: that is not a miss.
+    if (b && b.track === RERECORD_TRACK) lines.value = lines.value.filter(l => !queue.isUnsent(l.id))
     // RESUME. Anything left on the device by an earlier session — a tab closed
     // mid-upload, a phone that slept, a chalet with no signal — is picked up
     // here and starts going up before he reads a word.
@@ -2888,6 +2902,41 @@ function rerecordRefused(r) {
   goToAddress({ track: r.track, batch: String(r.batch), line: r.lineId })
 }
 
+// ── THE RE-RECORD CARD (Aran, 2026-10-15, job #788) ──────────────────────────
+// The server's skips and text changes (/rerecord), with this device's refused takes merged in
+// and anything still uploading or saved since taken off (recordist/rerecord-list.js).
+const rerecordServer = ref({ items: [], recordedAlso: [] })
+const rerecordRows = computed(() => mergeRerecord({
+  serverItems: rerecordServer.value.items,
+  recordedAlso: rerecordServer.value.recordedAlso,
+  refusedTakes: (queue.refusedTakes && queue.refusedTakes.value) || [],
+  unsent: queue.unsentLines,
+  saved: queue.saved,
+}))
+let rerecordFor = null
+async function refreshRerecord() {
+  const voiceId = props.voiceId
+  const also = alsoIds(queue.refusedTakes && queue.refusedTakes.value)
+  try {
+    const { res, data } = await fetchWithTimeoutRetry(
+      withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/rerecord${also.length ? `?also=${encodeURIComponent(also.join(','))}` : ''}`, voiceId),
+      { headers: {} },
+      r => (r.ok ? r.json() : r.json().catch(() => ({})))
+    )
+    if (voiceId !== props.voiceId) return
+    if (res.ok && data && Array.isArray(data.items)) {
+      rerecordFor = voiceId
+      rerecordServer.value = { items: data.items, recordedAlso: Array.isArray(data.recordedAlso) ? data.recordedAlso : [] }
+      if (data.fresh === false) setTimeout(() => { if (phase.value === 'home') refreshRerecord() }, 4000)
+    }
+  } catch { /* the card waits for the next visit home; nothing else depends on it */ }
+}
+watch([phase, () => props.voiceId], () => {
+  if (rerecordFor !== props.voiceId) rerecordServer.value = { items: [], recordedAlso: [] }
+  if (phase.value === 'home') refreshRerecord()
+}, { immediate: true })
+function openRerecord() { goToAddress({ track: RERECORD_TRACK, batch: '1' }) }
+
 const homeMainHeading = computed(() => {
   const codes = new Set(homeTracks.value.filter(t => t.kind === 'phrase' || t.newCourse).map(t => t.courseCode))
   return codes.size === 1 ? boothCourseWords([...codes][0], 'New work') : 'New work'
@@ -2915,6 +2964,7 @@ const scopedTrack = computed(() => batchScope.value && homeTracks.value.find(t =
 const batchHeader = computed(() => {
   const t = scopedTrack.value
   const left = `${remainingToRead.value.toLocaleString('en-GB')} left`
+  if (batchScope.value && batchScope.value.track === RERECORD_TRACK) return `Re-record · ${left}`
   if (!t) return phase.value === 'loading' ? 'Opening your batch…' : left
   const b = t.batches.find(x => x.n === batchScope.value.batch)
   const parts = [courseWordsFor(t.courseCode), t.short]

@@ -1,0 +1,77 @@
+// THE RE-RECORD CARD'S LIST (Aran, 2026-10-15, job #788): skips before the furthest recorded line
+// of a started batch, and lines whose words were edited after he recorded them.
+import { describe, it, expect } from 'vitest'
+import rr from './booth-rerecord.cjs'
+
+const { buildRerecordList, rerecordBatchLines, recordedAmong, skippedIn, RERECORD_TRACK } = rr
+
+const C = 'cym_nv2_for_eng'
+const seedLine = (n, recorded, text = `brawddeg ${n} yma heddiw`) => ({ id: `seed:${C}:${n}:target1`, kind: 'seed', courseCode: C, seedNumber: n, role: 'target1', text, recorded })
+// Batch 4 of the new sentences, cut at 100: S1301-S1400. He read to S1390, missing S1374 and S1379.
+const batch4 = Array.from({ length: 100 }, (_, i) => seedLine(1301 + i, 1301 + i <= 1390 && ![1374, 1379].includes(1301 + i)))
+const lead = Array.from({ length: 300 }, (_, i) => seedLine(1001 + i, true))
+const later = Array.from({ length: 100 }, (_, i) => seedLine(1401 + i, false)) // batch 5: nothing saved yet
+const queueOf = (lines, extra = {}) => ({ lines, ...extra })
+
+describe('skipped lines', () => {
+  it('lists unrecorded lines before the furthest recorded line of a started batch, and nothing after it', () => {
+    const { items } = buildRerecordList(queueOf([...lead, ...batch4, ...later]))
+    expect(items.map((i) => i.seedNumber)).toEqual([1374, 1379])
+    expect(items.every((i) => i.why === 'skipped')).toBe(true)
+    expect(items[0]).toMatchObject({ track: `seed.${C}`, batch: 4 })
+  })
+
+  it('an unstarted batch has no skips (batch 5 still on his device is not a miss)', () => {
+    expect(skippedIn(later)).toEqual([])
+  })
+
+  it('an item drops off as soon as a good take saves', () => {
+    const fixed = batch4.map((l) => (l.seedNumber === 1374 ? { ...l, recorded: true } : l))
+    const { items } = buildRerecordList(queueOf([...lead, ...fixed, ...later]))
+    expect(items.map((i) => i.seedNumber)).toEqual([1379])
+  })
+
+  it('finds skips in every phrase batch he has started, not only the served one', () => {
+    const ph = (id, batch, recorded, seedNumber) => ({ id: `phrase:${id}:target1`, kind: 'phrase', phrasePass: 1, phraseBatch: batch, courseCode: C, seedNumber, role: 'target1', text: `ymadrodd ${id} hir`, recorded })
+    const all = [ph('a', 1, true, 1), ph('b', 1, false, 1), ph('c', 1, true, 2), ph('d', 2, true, 3), ph('e', 2, false, 3), ph('f', 2, false, 4)]
+    const q = {
+      lines: [all[3], all[4], all[5]], // the queue serves batch 2 only
+      allPhraseLines: () => all,
+      phraseBatches: [{ pass: 1, batch: 1, courseCode: C }, { pass: 1, batch: 2, courseCode: C }],
+    }
+    const { items } = buildRerecordList(q)
+    expect(items.map((i) => [i.lineId, i.track, i.batch])).toEqual([['phrase:b:target1', 'phrase.1', 1]])
+  })
+})
+
+describe('text changed after he recorded it', () => {
+  it('pairs an unrecorded line with his take of its old words, and says what they were', () => {
+    const lines = [...lead, ...batch4.map((l) => (l.seedNumber === 1379 ? { ...l, recorded: false, text: 'dw i wedi bod yn brysur iawn' } : { ...l, recorded: l.seedNumber <= 1390 }))]
+    const takes = [
+      { id: 't1', course_code: C, role: 'target1', text: "dw i 'di bod yn brysur iawn", text_normalized: "dw i 'di bod yn brysur iawn", seedNumber: 1379, created_at: '2026-10-15T10:00:00Z' },
+      // a take whose words still belong to a line is not an orphan, so it is never paired
+      { id: 't2', course_code: C, role: 'target1', text: 'brawddeg 1380 yma heddiw', text_normalized: 'brawddeg 1380 yma heddiw', seedNumber: 1380 },
+    ]
+    const { items } = buildRerecordList(queueOf(lines), takes)
+    const changed = items.find((i) => i.seedNumber === 1379)
+    expect(changed).toMatchObject({ why: 'text_changed', oldText: "dw i 'di bod yn brysur iawn", text: 'dw i wedi bod yn brysur iawn' })
+  })
+
+  it('does not hand a neighbour phrase an old take without a seed to agree on', () => {
+    const lines = [{ id: 'phrase:x:target1', kind: 'phrase', courseCode: C, role: 'target1', text: 'dw i eisiau bwyta', recorded: false }]
+    const takes = [{ id: 't', course_code: C, role: 'target1', text: 'dw i eisiau mynd', text_normalized: 'dw i eisiau mynd' }]
+    expect(buildRerecordList(queueOf(lines), takes).items).toEqual([])
+  })
+})
+
+describe('the re-record batch', () => {
+  it('walks the listed lines plus the page refused ones, unrecorded only, in course order', () => {
+    const list = buildRerecordList(queueOf([...lead, ...batch4, ...later]))
+    const refusedId = later[3].id // S1404: refused on the device
+    const recordedId = lead[5].id // refused once, since recorded
+    const lines = rerecordBatchLines(list, [refusedId, recordedId])
+    expect(lines.map((l) => [l.seedNumber, l.rerecordWhy])).toEqual([[1374, 'skipped'], [1379, 'skipped'], [1404, 'refused']])
+    expect(recordedAmong(list, [refusedId, recordedId])).toEqual([recordedId])
+    expect(RERECORD_TRACK).toBe('rerecord')
+  })
+})
