@@ -102,6 +102,18 @@ function agentFromRequest(req) {
   return req.agentAdmin && keyHasScope(req.agentAdmin.scopes, SCOPES.ADMIN_ALL) ? req.agentAdmin.user : null;
 }
 
+/**
+ * kai_go (Tom 2026-10-15): a call verified by the Kai-ONLY key (agentIdPrefix 'kai',
+ * admin:all, id "kai-...") satisfies the beta/released "tom_go" gate. Returns the agent
+ * id to record in the audit/undo log, else null. The shared key never counts, even for
+ * a kai- id, because only the Kai key is bound to the prefix.
+ */
+function kaiGoFromRequest(req) {
+  const a = req && req.agentAdmin;
+  if (!a || a.keyPrefix !== 'kai' || !keyHasScope(a.scopes, SCOPES.ADMIN_ALL)) return null;
+  return typeof a.agent === 'string' && a.agent.startsWith('kai-') ? a.agent : null;
+}
+
 function keyHasScope(scopes, scope) {
   return Array.isArray(scopes) && (scopes.includes(scope) || scopes.includes(SCOPES.ADMIN_ALL));
 }
@@ -159,6 +171,7 @@ function createAgentAdminVerifier({ keyFile = process.env.POPTY_AGENT_ADMIN_KEY_
       agent: agentId,
       scope,
       scopes: k.scopes,
+      keyPrefix: k.agentIdPrefix || null,
       // Admin-shaped so existing handlers that read user.email / role keep working,
       // and the attribution is unmistakable in every log line that prints it.
       user: { kind: 'agent', id: agentId, email: `agent:${agentId}`, name: `agent ${agentId}`, role: 'admin', courses: '*', verified: false, viaAgentKey: true },
@@ -213,4 +226,4 @@ function adminOrAgent(verifier, requireAdmin) {
   };
 }
 
-module.exports = { keyFileFor, loadAllKeys, SCOPES, HEADER, signHeader, createAgentAdminVerifier, adminOrAgent, agentFrontDoor, keyHasScope, agentFromRequest, loadKey, bodyDigest };
+module.exports = { keyFileFor, loadAllKeys, SCOPES, HEADER, signHeader, createAgentAdminVerifier, adminOrAgent, agentFrontDoor, keyHasScope, agentFromRequest, kaiGoFromRequest, loadKey, bodyDigest };

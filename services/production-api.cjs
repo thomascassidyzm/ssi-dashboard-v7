@@ -8168,9 +8168,11 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
       const { data: c } = await supabaseClient.getClient().from('courses').select('status').eq('course_code', courseCode).maybeSingle()
       courseStatus = c ? c.status : null
     } catch (e) { req.contentEdit?.wroteNothing(); return res.status(503).json({ error: `cannot read course status: ${e.message}`, code: 'STATUS_UNREADABLE', applied: false }) }
-    const refused = courseEditOps.structuralGate({ plans, courseStatus, apply, tomGo: req.body?.tom_go })
+    const kaiGo = agentAdminIdentity.kaiGoFromRequest(req)
+    const refused = courseEditOps.structuralGate({ plans, courseStatus, apply, tomGo: req.body?.tom_go, kaiGo })
     if (refused) { req.contentEdit?.wroteNothing(); return res.status(refused.status).json({ error: refused.error, code: refused.code, applied: false }) }
     if (req.body?.tom_go) eventDetail = { ...eventDetail, tom_go: req.body.tom_go }
+    if (kaiGo) eventDetail = { ...eventDetail, kai_go: kaiGo }
   }
   if (!apply) req.contentEdit?.wroteNothing()
   try {
@@ -8203,6 +8205,7 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
           fs.writeFileSync(undoFile, JSON.stringify({
             course_code: courseCode, event_id: req.contentEdit?.eventId || null,
             actor: req.editorIdentity?.id || null, created_at: new Date().toISOString(),
+            ...(eventDetail.kai_go ? { kai_go: eventDetail.kai_go } : {}),
             how_to_undo: `POST /api/production/${courseCode}/edit-batch {"undo_file":"${name}","apply":true}`,
             undo_ops: out.undo_ops,
           }, null, 2))
@@ -8397,11 +8400,12 @@ app.post('/api/admin/phrase-v4/gap-fill', async (req, res) => {
   const body = req.body || {}
   const courseCode = String(body.courseCode || '')
   const apply = body.apply === true
+  const kaiGo = agentAdminIdentity.kaiGoFromRequest(req)
   const refuse = (status, error, code, more = {}) => { req.contentEdit?.wroteNothing(); return res.status(status).json({ error, code, applied: false, ...more }) }
   try {
     const sb = supabaseClient.getClient()
     const data = ADMIN_COURSE_CODE.test(courseCode) && !/^cym/.test(courseCode) ? await door.readCourse(sb, courseCode, { componentsOnly: true }) : null
-    const bad = door.precheck({ courseCode, rows: body.rows, course: data && data.course, apply, tomGo: body.tom_go })
+    const bad = door.precheck({ courseCode, rows: body.rows, course: data && data.course, apply, tomGo: body.tom_go, kaiGo })
     if (bad) return refuse(bad.status, bad.error, bad.code)
     const { refused } = await door.gateStagedRows({ sb, courseCode, rows: body.rows, data,
       deps: { ...require('../tools/phrase-gate/gate-check.cjs'), checkPhraseZUT: require('./course-builder/lib/validation.cjs').checkPhraseZUT } })
@@ -8412,7 +8416,7 @@ app.post('/api/admin/phrase-v4/gap-fill', async (req, res) => {
       by_role: { build: rows.filter(r => r.phrase_role === 'build').length, use: rows.filter(r => r.phrase_role === 'use').length } }
     if (!rows.length) return refuse(200, 'Nothing to insert: every staged row is already on its LEGO.', 'NOTHING_TO_DO', { plan, ok: true })
     return runCourseEdit(req, res, door.toInsertOps(rows), {
-      apply, courseCode, extra: { plan, skipped: skipped.slice(0, 50), tom_go: body.tom_go || null }, eventDetail: { tom_go: body.tom_go || null, pipeline: 'v4-gap', staged_at: body.staged_at || null },
+      apply, courseCode, extra: { plan, skipped: skipped.slice(0, 50), tom_go: body.tom_go || null }, eventDetail: { tom_go: body.tom_go || null, ...(kaiGo ? { kai_go: kaiGo } : {}), pipeline: 'v4-gap', staged_at: body.staged_at || null },
       onApplied: () => require('./shared/audio-pass-queue.cjs').queueAudioPass(sb, { courseCode, reason: 'v4 gap fill (#924)', requestedBy: req.editorIdentity?.id || null, metadata: { rowsTouched: rows.length } }),
     })
   } catch (err) {

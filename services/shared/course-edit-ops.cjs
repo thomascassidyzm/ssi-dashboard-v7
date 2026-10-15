@@ -477,9 +477,9 @@ module.exports = { planOp, planOps, runPlans, undoFor, OP_HELP, UPDATABLE, EditO
  * ("tom_go"), exactly as the v4 gap-fill door asks. A preview never needs it.
  * Returns null when fine, else {status, error, code}. Pure.
  */
-function structuralGate({ plans, courseStatus, apply, tomGo }) {
+function structuralGate({ plans, courseStatus, apply, tomGo, kaiGo }) {
   if (!apply || !plans.some(p => p.structural)) return null;
-  if (['beta', 'released'].includes(courseStatus) && !String(tomGo || '').trim()) {
+  if (['beta', 'released'].includes(courseStatus) && !String(tomGo || '').trim() && !String(kaiGo || '').trim()) {
     return { status: 409, code: 'TOM_GO_REQUIRED',
       error: `refusing: this course is ${courseStatus} (served to learners) and the batch inserts/deletes a LEGO; an apply needs "tom_go": "<Tom's words>". A preview needs nothing.` };
   }

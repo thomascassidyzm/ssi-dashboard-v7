@@ -214,6 +214,7 @@ describe('lego.insert / lego.delete', () => {
     expect(structuralGate({ plans, courseStatus: 'released', apply: false, tomGo: '' })).toBeNull()
     expect(structuralGate({ plans, courseStatus: 'draft', apply: true, tomGo: '' })).toBeNull()
     expect(structuralGate({ plans, courseStatus: 'beta', apply: true, tomGo: 'go' })).toBeNull()
+    expect(structuralGate({ plans, courseStatus: 'released', apply: true, tomGo: '', kaiGo: 'kai-watson' })).toBeNull()
     const plain = planOps([{ op: 'phrase.delete', phrase_id: `${C}:S0001L01U01` }], C)
     expect(structuralGate({ plans: plain, courseStatus: 'released', apply: true, tomGo: '' })).toBeNull()
   })

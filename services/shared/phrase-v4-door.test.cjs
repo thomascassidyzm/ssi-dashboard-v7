@@ -47,6 +47,8 @@ describe('precheck: refusals that need no database', () => {
       expect(door.precheck({ ...ok, course: { status }, apply: true })).toMatchObject({ code: 'TOM_GO_REQUIRED' })
       expect(door.precheck({ ...ok, course: { status }, apply: true, tomGo: '  ' })).toMatchObject({ code: 'TOM_GO_REQUIRED' })
       expect(door.precheck({ ...ok, course: { status }, apply: true, tomGo: 'go ahead' })).toBeNull()
+      expect(door.precheck({ ...ok, course: { status }, apply: true, kaiGo: 'kai-watson' })).toBeNull()
+      expect(door.precheck({ ...ok, course: { status }, apply: true, kaiGo: ' ' })).toMatchObject({ code: 'TOM_GO_REQUIRED' })
     }
     expect(door.precheck({ ...ok, apply: true })).toBeNull()
   })

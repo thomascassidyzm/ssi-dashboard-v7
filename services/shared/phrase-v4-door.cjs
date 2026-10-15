@@ -169,7 +169,7 @@ async function gateStagedRows({ sb, courseCode, rows, data, deps }) {
 }
 
 /** The refusals that need no database: shape, course, Welsh, the live gate on apply. */
-function precheck({ courseCode, rows, course, apply, tomGo }) {
+function precheck({ courseCode, rows, course, apply, tomGo, kaiGo }) {
   if (!COURSE_CODE.test(String(courseCode || ''))) return { status: 400, error: 'courseCode required (e.g. fra_for_eng)', code: 'BAD_REQUEST' };
   if (/^cym/.test(courseCode)) return { status: 409, error: 'Welsh is excluded (r-2026-09-27)', code: 'WELSH_EXCLUDED' };
   if (!Array.isArray(rows) || !rows.length) return { status: 400, error: '"rows" must be the non-empty accepted rows of staged-<course>.json', code: 'BAD_REQUEST' };
@@ -179,7 +179,7 @@ function precheck({ courseCode, rows, course, apply, tomGo }) {
       return { status: 400, error: `bad staged row (needs seed_number, lego_index, phrase_role build|use, known_text, target_text, lego_target): ${JSON.stringify(r).slice(0, 200)}`, code: 'BAD_ROW' };
     }
   }
-  if (apply && ['beta', 'released'].includes(course.status) && !String(tomGo || '').trim()) {
+  if (apply && ['beta', 'released'].includes(course.status) && !String(tomGo || '').trim() && !String(kaiGo || '').trim()) {
     return { status: 409, error: `refusing: ${courseCode} is ${course.status} (served to learners); an apply needs "tom_go": "<Tom's words>"`, code: 'TOM_GO_REQUIRED' };
   }
   return null;
