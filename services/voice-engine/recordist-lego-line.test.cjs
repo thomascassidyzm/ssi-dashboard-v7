@@ -160,7 +160,7 @@ test('a LEGO take fills every EMPTY copy of its text, in its own role slot only'
   assert.equal(byId.get('l181a').target1_audio_id, 'old1', 'a different text is untouched')
 
   // And the line has left his OUTSTANDING queue (job #791: it stays on the full list, recorded).
-  tables.course_audio.push({ id: 'dan_new', voice_id: DAN })
+  tables.course_audio.push({ id: 'dan_new', voice_id: DAN, text: 'ein rhai ni' })
   const q = await buildQueue(stubDb(tables), await resolveRecordist(stubDb(tables), DAN))
   assert.equal(q.lines.some((l) => l.kind === 'lego'), false)
 })
@@ -175,7 +175,7 @@ test('a LEGO filled by the cast voice stays on the full list as RECORDED, so its
 
   const dan = await resolveRecordist(stubDb(tables), DAN)
   await linkLegoTake({ db: stubDb(tables), recordist: dan, legoRowId: 'l181b', role: 'target1', audioId: 'dan_new', logger: QUIET })
-  tables.course_audio.push({ id: 'dan_new', voice_id: DAN })
+  tables.course_audio.push({ id: 'dan_new', voice_id: DAN, text: 'ein rhai ni' })
 
   const after = await buildQueue(stubDb(tables), await resolveRecordist(stubDb(tables), DAN), { includeRecorded: true })
   const legos = after.lines.filter((l) => l.kind === 'lego')
@@ -189,12 +189,33 @@ test('a LEGO filled by the cast voice stays on the full list as RECORDED, so its
   assert.equal(track.recorded, 1)
 })
 
+// ── job #818 (Aran, 2026-10-15): "filled in somehow while I was recording the whole sentences" ──
+test('a LEGO slot holding his take of a whole SENTENCE is listed and NOT recorded; only his take of exactly its words is green', async () => {
+  const tables = fixture()
+  // Both copies of 'ein rhai ni' hold Dan's take of the seed sentence that contains it.
+  tables.course_legos.find((l) => l.id === 'l181b').target1_audio_id = 'dan_sentence'
+  tables.course_legos.find((l) => l.id === 'l190a').target1_audio_id = 'dan_sentence'
+  tables.course_audio.push({ id: 'dan_sentence', voice_id: DAN, text: 'Ein rhai ni yw e' })
+  const q = await buildQueue(stubDb(tables), await resolveRecordist(stubDb(tables), DAN), { includeRecorded: true })
+  const legos = q.lines.filter((l) => l.kind === 'lego')
+  assert.deepEqual(legos.map((l) => [l.text, l.recorded]), [['ein rhai ni', false]], 'a sentence take never makes a LEGO green')
+  const boothHome = require('./booth-home.cjs')
+  assert.equal(boothHome.buildHomeTracks(q.lines, q.phrases, q.phraseBatches).find((t) => t.kind === 'lego').recorded, 0)
+
+  // His take of exactly these words (case and a full stop aside) is: one take, both copies.
+  tables.course_legos.find((l) => l.id === 'l181b').target1_audio_id = 'dan_lego'
+  tables.course_legos.find((l) => l.id === 'l190a').target1_audio_id = 'dan_lego'
+  tables.course_audio.push({ id: 'dan_lego', voice_id: DAN, text: 'Ein rhai ni.' })
+  const after = await buildQueue(stubDb(tables), await resolveRecordist(stubDb(tables), DAN), { includeRecorded: true })
+  assert.deepEqual(after.lines.filter((l) => l.kind === 'lego').map((l) => [l.text, l.recorded]), [['ein rhai ni', true]])
+})
+
 test('one silent copy of the text keeps the LEGO line open; a slot held by another voice is still not his', async () => {
   const tables = fixture()
   // Seed 190's copy is his take, seed 181's copy is still empty.
   tables.course_legos.find((l) => l.id === 'l190a').target1_audio_id = 'dan_take'
   // yw e's target1 slot (dan_old) is somebody else's clip: still not work, still not listed.
-  tables.course_audio.push({ id: 'dan_take', voice_id: DAN }, { id: 'dan_old', voice_id: 'cartesia_someone' })
+  tables.course_audio.push({ id: 'dan_take', voice_id: DAN, text: 'ein rhai ni' }, { id: 'dan_old', voice_id: 'cartesia_someone' })
   const q = await buildQueue(stubDb(tables), await resolveRecordist(stubDb(tables), DAN), { includeRecorded: true })
   const legos = q.lines.filter((l) => l.kind === 'lego')
   assert.deepEqual(legos.map((l) => [l.text, l.recorded]), [['ein rhai ni', false]])
@@ -204,7 +225,7 @@ test('a re-read of a recorded LEGO moves his own slot to the new take, and never
   const tables = fixture()
   tables.course_legos.find((l) => l.id === 'l190a').target1_audio_id = 'dan_take'
   tables.course_legos.find((l) => l.id === 'l181b').target1_audio_id = 'other_take'
-  tables.course_audio.push({ id: 'dan_take', voice_id: DAN }, { id: 'other_take', voice_id: 'cartesia_someone' })
+  tables.course_audio.push({ id: 'dan_take', voice_id: DAN, text: 'ein rhai ni' }, { id: 'other_take', voice_id: 'cartesia_someone' })
   const dan = await resolveRecordist(stubDb(tables), DAN)
   const out = await linkLegoTake({ db: stubDb(tables), recordist: dan, legoRowId: 'l190a', role: 'target1', audioId: 'dan_again', logger: QUIET })
   assert.deepEqual(out.linked.map((l) => l.legoRowId), ['l190a'])

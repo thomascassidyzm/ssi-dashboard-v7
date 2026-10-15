@@ -732,7 +732,7 @@ import RerecordCard from './recordist/RerecordCard.vue'
 import { mergeRerecord, oldRefusedIds, alsoIds } from './recordist/rerecord-list.js'
 // The re-record card's batch (job #788): services/voice-engine/booth-rerecord.cjs RERECORD_TRACK.
 const RERECORD_TRACK = 'rerecord'
-import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, withDeviceTakes, loadPlaces, savePlaces, placeFromEntry } from './recordist/booth-home.js'
+import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, withDeviceTakes, loadPlaces, savePlaces, placeFromEntry, creditLoadedBatch } from './recordist/booth-home.js'
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
@@ -2857,18 +2857,22 @@ function describeTrack(t) {
 // WHAT THIS DEVICE HAS RECORDED OF A BATCH, ahead of the server's count (Aran, 2026-10-15): takes
 // still uploading are not in the summary, so Up next kept offering the batch he had just finished.
 // Only ever raises a count, and only for the batch the device has open.
+// BY LINE ID, AND ONLY ONCE THE LINES ON SCREEN ARE THAT BATCH'S (Aran, 15 Oct, job #818: LEGO
+// batches he never read showed fully recorded). The address moves before the new batch's lines
+// arrive, and this used to credit the batch just left — 100 saved sentences — to the batch just
+// opened, for the rest of the session. creditLoadedBatch refuses unless the server's answer on
+// screen names the batch the address names.
 const localBatchRecorded = ref({})
-watch([recordedCount, () => lines.value.length, batchScope], () => {
-  const b = batchScope.value
-  if (!b || !lines.value.length) return
-  const k = `${b.track}#${b.batch}`
-  if (recordedCount.value > (localBatchRecorded.value[k] || 0)) localBatchRecorded.value = { ...localBatchRecorded.value, [k]: recordedCount.value }
+watch([recordedCount, lines, batchScope, () => voice.value && voice.value.track, () => voice.value && voice.value.batch], () => {
+  localBatchRecorded.value = creditLoadedBatch(localBatchRecorded.value, {
+    scope: batchScope.value, served: voice.value, lines: lines.value, isRecorded,
+  })
 })
 // What this device knows beyond the server is UPLOADING (amber), never recorded (green, job #791).
 function withLocalRecorded(t) {
   let extra = 0
   const batches = (t.batches || []).map(b => {
-    const mine = Math.min(localBatchRecorded.value[`${t.key}#${b.n}`] || 0, b.total || 0)
+    const mine = Math.min((localBatchRecorded.value[`${t.key}#${b.n}`] || []).length, b.total || 0)
     const known = (b.recorded || 0) + (b.uploading || 0)
     if (mine <= known) return b
     extra += mine - known

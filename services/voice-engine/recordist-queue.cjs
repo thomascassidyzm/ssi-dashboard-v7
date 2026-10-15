@@ -106,7 +106,7 @@ const { withoutRetired } = require('../shared/policy-voice-patch.cjs')
 const { canonicalLanguage, canonicalVoiceId, tryCanonicalVoiceId } = require('../shared/clip-identity.cjs')
 const { writeOrSwapClip } = require('../shared/audio-revision-swap.cjs')
 const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
-const { normalizeForDb, audioKeyCandidates } = require('../shared/text-normalize.cjs')
+const { normalizeForDb, normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { canonicalSpeakerName } = require('./pods-registration.cjs')
 const { canonicalDialect, courseDialect, bucketKey } = require('../shared/dialect.cjs')
 const { isLineRecorded } = require('./take-selection.cjs')
@@ -1097,6 +1097,19 @@ function legoTakeIsCastVoices(heldBy, castEntry) {
   return heldBy === castEntry.voiceId || (Array.isArray(castEntry.aliases) && castEntry.aliases.includes(heldBy))
 }
 
+/**
+ * DOES THIS SLOT'S CLIP SAY THE LEGO'S WORDS (Aran, 2026-10-15, job #818)? A LEGO
+ * is green only when its slot holds a take of EXACTLY its words — the key
+ * phase8's link pass and the take route match on (normalizeForAudio). His own
+ * voice is not enough: a slot holding his take of a whole sentence that merely
+ * CONTAINS the LEGO reads as still to record, never as recorded. A clip with no
+ * text on file proves nothing, so it does not count either.
+ */
+function legoClipSaysText(clipText, legoText) {
+  const have = normalizeForAudio(String(clipText || ''))
+  return !!have && have === normalizeForAudio(String(legoText || ''))
+}
+
 /** This language's policy voices, and every spelling any of them answers to. */
 async function policyVoicesForLanguage(db, language, { cache } = {}) {
   const policy = (await loadPolicies(db, { cache })).find((row) => {
@@ -1342,6 +1355,21 @@ async function audioVoicesById(db, ids) {
   for (const { data, error } of results) {
     if (error) throw new Error(`seed clip voice read failed: ${error.message}`)
     for (const row of data || []) out.set(row.id, row.voice_id)
+  }
+  return out
+}
+
+/** { voice, text } of each of a set of course_audio rows, paged like audioVoicesById (job #818). */
+async function audioVoiceTextById(db, ids) {
+  const wanted = [...new Set((ids || []).filter(Boolean))]
+  const out = new Map()
+  const chunks = []
+  for (let i = 0; i < wanted.length; i += 100) chunks.push(wanted.slice(i, i + 100))
+  const results = await Promise.all(chunks.map((chunk) =>
+    db.from('course_audio').select('id, voice_id, text').in('id', chunk)))
+  for (const { data, error } of results) {
+    if (error) throw new Error(`lego clip read failed: ${error.message}`)
+    for (const row of data || []) out.set(row.id, { voice: row.voice_id, text: row.text })
   }
   return out
 }
@@ -2185,7 +2213,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       servedLegos.push({ lego, seed, at: seedPosition(seed, runningOrder) * 100 + lego.lego_index })
     }
     servedLegos.sort((a, b) => a.at - b.at)
-    const legoClipVoice = await audioVoicesById(db, servedLegos.flatMap(({ lego }) => SEED_TARGET_ROLES.map((r) => lego[`${r}_audio_id`])))
+    const legoClips = await audioVoiceTextById(db, servedLegos.flatMap(({ lego }) => SEED_TARGET_ROLES.map((r) => lego[`${r}_audio_id`])))
     const legoSeen = new Map()
     const legoFills = new Map() // line -> { fills: [voice], empty: copies with a silent slot }
     for (const { lego, at } of servedLegos) {
@@ -2197,9 +2225,11 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
         const bucket = seedBucketFor(course, role, policyVoices)
         if (!bucket) continue
         const voiceId = cast[role].voiceId
-        const held = lego[`${role}_audio_id`]
-        const heldBy = held ? (legoClipVoice.get(held) || null) : null
-        if (held && !legoTakeIsCastVoices(heldBy, cast[role])) continue
+        const clip = lego[`${role}_audio_id`] ? (legoClips.get(lego[`${role}_audio_id`]) || {}) : null
+        const heldBy = clip ? (clip.voice || null) : null
+        if (clip && !legoTakeIsCastVoices(heldBy, cast[role])) continue
+        // His voice but not these words (job #818): listed, and still to record.
+        const held = !!clip && legoClipSaysText(clip.text, text)
         const key = `${voiceId}\u0000${role} ${normalizeForDb(text)}`
         if (legoSeen.has(key)) {
           const rep = legoSeen.get(key)
