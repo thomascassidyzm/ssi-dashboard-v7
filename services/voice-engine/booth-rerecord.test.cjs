@@ -82,3 +82,29 @@ describe('the re-record batch', () => {
     expect(RERECORD_TRACK).toBe('rerecord')
   })
 })
+
+// JOB #806 (Aran, 15 Oct): the card said "1 line to re-record" and the batch it opened said everything
+// was recorded. The card's count must equal the lines in the batch it opens, whatever the device holds.
+describe('the card count and the batch it opens are one list', () => {
+  const list = buildRerecordList(queueOf([...lead, ...batch4, ...later]))
+  const goneId = 'seed:cym_nv2_for_eng:9999:target1' // refused once, no longer in his lines
+  const recordedId = lead[5].id
+  const refusedId = later[3].id
+  const also = [goneId, recordedId, refusedId]
+  it('every refused id is exactly one of: a batch line, recorded, or gone', () => {
+    const batch = rerecordBatchLines(list, also).map((l) => l.id)
+    const recorded = rr.recordedAmong(list, also)
+    const gone = rr.goneAmong(list, also)
+    expect(gone).toEqual([goneId])
+    expect(recorded).toEqual([recordedId])
+    // what the card counts: server items + refused ids that are neither recorded nor gone
+    const counted = new Set([...list.items.map((i) => i.lineId), ...also.filter((id) => !recorded.includes(id) && !gone.includes(id))])
+    expect(counted.size).toBe(batch.length)
+    expect([...counted].sort()).toEqual([...batch].sort())
+  })
+  it('a lone stale refused take gives an empty batch AND a zero count', () => {
+    const none = buildRerecordList(queueOf([...lead]))
+    expect(rerecordBatchLines(none, [goneId])).toHaveLength(0)
+    expect(rr.goneAmong(none, [goneId])).toEqual([goneId])
+  })
+})

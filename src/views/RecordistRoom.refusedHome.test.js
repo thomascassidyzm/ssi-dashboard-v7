@@ -102,7 +102,7 @@ describe('booth home — refused takes are rows of the one Re-record card', () =
   it('declining the confirm clears nothing', async () => {
     window.confirm.mockReturnValue(false)
     const w = await home([refusedRec('gone-1', 'Hen', 'y')])
-    await card(w).find('[data-test="rerecord-old-clear"]').trigger('click')
+    await w.find('[data-test="rerecord-old-clear"]').trigger('click')
     for (let i = 0; i < 5; i++) await flushPromises()
     expect((await shelf.backend.getAll()).map(r => r.lineId)).toEqual(['gone-1'])
   })
@@ -118,5 +118,26 @@ describe('booth home — refused takes are rows of the one Re-record card', () =
     const w = await home([refusedRec('s7', 'Cymraeg 7', 'x')])
     expect(w.find('[data-test="rerecord-old"]').exists()).toBe(false)
     expect(card(w).find('[data-test="rerecord-count"]').text()).toBe('1 line to re-record')
+  })
+
+  it('only old refused takes and nothing else to re-record: no orange card, no count, only the quiet Clear old ones line', async () => {
+    // Aran, job #806: "1 line to re-record" opened a batch that said everything was recorded.
+    global.fetch.mockClear()
+    shelf.backend = createMemoryBackend([refusedRec('gone-1', 'Hen', 'x')])
+    window.history.replaceState({}, '', '/')
+    const base = global.fetch
+    global.fetch = vi.fn(async (url, o) => {
+      const u = String(url)
+      if (u.includes('/rerecord')) return { ok: true, status: 200, json: async () => ({ voiceId: VOICE, fresh: true, items: [], recordedAlso: [], goneAlso: ['gone-1'] }) }
+      // the full-queue read is still in flight: only the batch's own answer can say the line is gone
+      if (u.includes('includeRecorded')) return new Promise(() => {})
+      return base(url, o)
+    })
+    const w = mount(RecordistRoom, { props: { voiceId: VOICE }, global: { stubs: { RouterLink: { template: '<a><slot/></a>' }, BoothTeamStats: true } } })
+    for (let i = 0; i < 10; i++) await flushPromises()
+    expect(w.find('[data-test="rerecord-card"]').exists()).toBe(false)
+    expect(w.find('[data-test="rerecord-count"]').exists()).toBe(false)
+    expect(w.find('[data-test="rerecord-start"]').exists()).toBe(false)
+    expect(w.find('[data-test="rerecord-old-toggle"]').text()).toBe('Clear old ones (1)')
   })
 })

@@ -216,6 +216,28 @@
           :error="courseGapsError"
         />
 
+        <!-- WHERE YOU LEFT OFF (job #804): by LEGO, never by round number, which moves. It sits OUTSIDE the
+             loading / error / journey chain below, so the journey stays mounted under it and Continue
+             has a round to scroll to (job #812). -->
+        <div
+          v-if="resumePlace && !isLoadingJourney"
+          class="resume-place flex items-center gap-3 mb-4 px-4 py-3 rounded-lg border border-emerald-600 bg-emerald-900 bg-opacity-20"
+          data-test="resume-place"
+        >
+          <span class="text-sm text-ink flex-1">
+            You were last at <strong>seed {{ seedOfLego(resumePlace.legoId) }}</strong>
+            <span class="font-mono text-emerald-400">({{ resumePlace.legoId }})</span>
+            <span v-if="resumeNote" class="block text-muted mt-0.5">{{ resumeNote }}</span>
+          </span>
+          <button
+            class="px-3 py-1.5 text-sm bg-emerald-500 text-white rounded hover:bg-emerald-600 transition-colors"
+            :disabled="resuming"
+            data-test="resume-continue"
+            @click="continueFromPlace"
+          >{{ resuming ? 'Finding it…' : 'Continue where you left off' }}</button>
+          <button class="text-muted hover:text-ink text-lg leading-none" title="Dismiss" data-test="resume-dismiss" @click="dismissPlace">&times;</button>
+        </div>
+
         <!-- Loading Journey -->
         <div v-if="isLoadingJourney" class="loading-state flex items-center justify-center h-64">
           <div class="text-center">
@@ -242,26 +264,6 @@
               Retry
             </button>
           </div>
-        </div>
-
-        <!-- WHERE YOU LEFT OFF (job #804): by LEGO, never by round number, which moves. -->
-        <div
-          v-if="resumePlace && !isLoadingJourney"
-          class="resume-place flex items-center gap-3 mb-4 px-4 py-3 rounded-lg border border-emerald-600 bg-emerald-900 bg-opacity-20"
-          data-test="resume-place"
-        >
-          <span class="text-sm text-ink flex-1">
-            You were last at <strong>seed {{ seedOfLego(resumePlace.legoId) }}</strong>
-            <span class="font-mono text-emerald-400">({{ resumePlace.legoId }})</span>
-            <span v-if="resumeNote" class="block text-muted mt-0.5">{{ resumeNote }}</span>
-          </span>
-          <button
-            class="px-3 py-1.5 text-sm bg-emerald-500 text-white rounded hover:bg-emerald-600 transition-colors"
-            :disabled="resuming"
-            data-test="resume-continue"
-            @click="continueFromPlace"
-          >{{ resuming ? 'Finding it…' : 'Continue where you left off' }}</button>
-          <button class="text-muted hover:text-ink text-lg leading-none" title="Dismiss" data-test="resume-dismiss" @click="dismissPlace">&times;</button>
         </div>
 
         <!-- Learning Journey View Component -->
@@ -1014,6 +1016,9 @@ import type {
 
 // Route
 const route = useRoute();
+// Declared up here, before anything reads it: the reviewer-place watch (immediate) reads
+// authUser during setup, and a later `const` is a TDZ error that blanks the page (job #812).
+const { getAccessToken, user: authUser } = useAuth();
 const courseCode = computed(() => route.params.courseCode as string || 'spa_for_eng');
 
 // Scroll refs
@@ -1367,8 +1372,10 @@ const continueFromPlace = async () => {
       journeySearchResults.value = null;
       journeySearchAllItems.value = null;
       await jumpToRound(round);
-      if (roundOfLego(learningJourneyData.value?.rounds, place.legoId)) {
-        await learningJourneyRef.value?.scrollToRound(round);
+      await nextTick(); // the journey re-mounts once loading ends; its ref is null until then
+      // Dismissed only when the scroll actually landed on the round (job #812).
+      if (roundOfLego(learningJourneyData.value?.rounds, place.legoId)
+          && await learningJourneyRef.value?.scrollToRound(round)) {
         dismissPlace();
         return;
       }
@@ -1553,7 +1560,6 @@ const getApiBaseUrl = (): string => {
 // Admin-gated fetch — attach a fresh Supabase access token as Bearer.
 // Mirrors the PodDetailView authedFetch pattern. Required for the
 // regenerate-phrase endpoint (requireAdmin — it costs TTS, D3).
-const { getAccessToken, user: authUser } = useAuth();
 const authedFetch = async (path: string, init: RequestInit = {}): Promise<Response> => {
   const token = await getAccessToken();
   const headers: Record<string, string> = {
@@ -1987,9 +1993,11 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
     const checkLanded = savedRow?.seed_number && savedRow?.lego_index ? async () => {
       const legoId = `S${String(savedRow.seed_number).padStart(4, '0')}L${String(savedRow.lego_index).padStart(2, '0')}`;
       const r = await fetch(`${getApiBaseUrl()}/api/production/${courseCode.value}/lego/${legoId}/basket`, { headers: {}, signal: AbortSignal.timeout(20000) });
-      if (!r.ok) return null;
+      // A read that fails THROWS — "can't tell" must never look like "not landed" (job #812).
+      if (!r.ok) throw new Error(`basket read ${r.status}`);
       const row = ((await r.json()).phrases || []).find((p: any) => p.id === phraseId);
-      if (!row || !roles.every(role => row[COLUMN_OF[role]] && row[COLUMN_OF[role]] !== savedRow[COLUMN_OF[role]])) return null;
+      if (!row) throw new Error('phrase not in basket');
+      if (!roles.every(role => row[COLUMN_OF[role]] && row[COLUMN_OF[role]] !== savedRow[COLUMN_OF[role]])) return null;
       return { known_audio_id: row.known_audio_id, target1_audio_id: row.target1_audio_id, target2_audio_id: row.target2_audio_id, durations: {} };
     } : undefined;
     const sent = await regenRequest((signal) => authedFetch(
@@ -2007,7 +2015,7 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
     const regenResp = 'res' in sent ? sent.res : null;
     if (regenResp && !regenResp.ok) {
-      const errBody = await regenResp.json().catch(() => ({}));
+      const errBody = (sent as { body: any }).body || {};
       const msg = errBody.error || `Regeneration failed (${regenResp.status})`;
       roles.forEach(r => phraseEditModalRef.value?.setAuditionError(r, msg));
       throw new Error(msg);
@@ -2015,7 +2023,7 @@ const savePhraseEdit = async (data: { known_text: string; target_text: string; r
 
     // Response: { known_audio_id, target1_audio_id, target2_audio_id, durations:{role:ms} }
     // Only regenerated roles carry fresh ids; HTTP 200 == success (no `success` field).
-    const result = regenResp ? await regenResp.json() : (sent as { landed: any }).landed;
+    const result = regenResp ? (sent as { body: any }).body : (sent as { landed: any }).landed;
     const REGEN_FIELDS = {
       known: { column: 'known_audio_id', uuidField: 'known_audio_uuid' },
       target1: { column: 'target1_audio_id', uuidField: 'target1_audio_uuid' },
@@ -2177,7 +2185,7 @@ const savePresentationAndRegen = async () => {
     ), {
       checkLanded: baseline === undefined ? undefined : async () => {
         const r = await fetch(`${apiBaseUrl}/api/production/${courseCode.value}/presentation/${encodeURIComponent(legoId)}`, { headers: {}, signal: AbortSignal.timeout(20000) });
-        if (!r.ok) return null;
+        if (!r.ok) throw new Error(`presentation read ${r.status}`);
         const row = await r.json();
         if (!row.id || !row.s3_key || row.s3_key === baseline || (row.text || '').trim() !== text) return null;
         return { audio_id: row.id, duration_ms: row.duration_ms, created: false };
@@ -2185,10 +2193,10 @@ const savePresentationAndRegen = async () => {
     });
     const resp = 'res' in sent ? sent.res : null;
     if (resp && !resp.ok) {
-      const err = await resp.json().catch(() => ({}));
+      const err = (sent as { body: any }).body || {};
       throw new Error(err.error || `Regeneration failed (${resp.status})`);
     }
-    const result = resp ? await resp.json() : (sent as { landed: any }).landed;
+    const result = resp ? (sent as { body: any }).body : (sent as { landed: any }).landed;
     presentationResult.value = {
       audio_id: result.audio_id,
       duration_ms: result.duration_ms,
@@ -2325,7 +2333,7 @@ const regenerateLegoAudio = async () => {
   try {
     // Timed out like the others, but with no single-LEGO read to check against it is never
     // re-sent: an interrupted LEGO render says so and the reviewer presses again.
-    const { res: resp } = await regenRequest((signal) => fetch(
+    const { res: resp, body: legoBody } = await regenRequest((signal) => fetch(
       `${apiBaseUrl}/api/audio/regenerate-lego/${courseCode.value}/${encodeURIComponent(legoAudioLegoId.value)}`,
       {
         method: 'POST',
@@ -2337,12 +2345,12 @@ const regenerateLegoAudio = async () => {
         }),
         signal,
       }
-    )) as { res: Response };
+    )) as { res: Response; body: any };
     if (!resp.ok) {
-      const err = await resp.json().catch(() => ({}));
+      const err = legoBody || {};
       throw new Error(err.error || `Regeneration failed (${resp.status})`);
     }
-    const result = await resp.json();
+    const result = legoBody;
     if (result.skipped) {
       legoAudioNotice.value = result.reason === 'human-voice-only-course'
         ? 'Nothing regenerated: this course is voiced by people, so it never gets TTS.'

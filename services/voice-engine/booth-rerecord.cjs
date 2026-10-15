@@ -273,7 +273,17 @@ function recordedAmong(list, ids = []) {
   return ids.filter((id) => { const p = list.pool.get(id); return !!(p && p.line.recorded) })
 }
 
+/**
+ * Refused-take ids the re-record batch can NOT open: no longer in the artist's lines at all. The
+ * card drops them from its count (they wait under "Clear old ones"), so the count and the batch
+ * come from this one answer (Aran, job #806: "1 line to re-record" opened an empty batch).
+ */
+function goneAmong(list, ids = []) {
+  return ids.filter((id) => !list.pool.get(id))
+}
+
 module.exports = {
+  goneAmong,
   RERECORD_TRACK, REACHED_DENSITY, MATCH_SAME_SEED, MATCH_TEXT_ONLY,
   batchesOf, skippedIn, similarity, pairTextChanges, courseOrder, indexQueue, isOrphanTake,
   buildRerecordList, rerecordBatchLines, recordedAmong,

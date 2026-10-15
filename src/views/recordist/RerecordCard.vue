@@ -3,8 +3,9 @@
        them all. Skipped lines, text changes AND the device's refused takes are rows of this card,
        never cards of their own. Sits at the top of the booth home; hidden when there is nothing.
        The list is built in rerecord-list.js. -->
-  <section v-if="rows.length || oldIds.length" class="rr" data-test="rerecord-card">
-    <span class="rr-kind">Re-record</span>
+  <!-- With nothing to re-record the card is not drawn (it would open an empty batch); old refused copies keep one quiet line. -->
+  <section v-if="rows.length || oldIds.length" class="rr" :class="{ quiet: !rows.length }" :data-test="rows.length ? 'rerecord-card' : 'rerecord-old-only'">
+    <span v-if="rows.length" class="rr-kind">Re-record</span>
     <template v-if="rows.length">
       <h2 class="rr-h2" data-test="rerecord-count">{{ rows.length }} {{ rows.length === 1 ? 'line' : 'lines' }} to re-record</h2>
       <p class="rr-sub" data-test="rerecord-breakdown">{{ breakdown }}</p>
@@ -22,7 +23,6 @@
         </li>
       </ol>
     </template>
-    <h2 v-else class="rr-h2" data-test="rerecord-count">Nothing to re-record</h2>
     <details v-if="oldIds.length" class="rr-old-box" data-test="rerecord-old">
       <summary data-test="rerecord-old-toggle">Clear old ones ({{ oldIds.length }})</summary>
       <p class="rr-old-note">Refused takes on this device for lines that are already recorded or no longer in your lines. Clearing removes only these copies from this device.</p>
@@ -44,6 +44,8 @@ const breakdown = computed(() => breakdownWords(props.rows))
 </script>
 
 <style scoped>
+.rr.quiet { background: transparent; border-style: dashed; padding: 0.4rem 0.9rem; color: inherit; }
+.rr.quiet .rr-old-box { margin-top: 0; }
 .rr { background: #3a1d0d; border: 1px solid #c2410c; color: #fde7d6; border-radius: 18px; padding: 1.1rem; margin: 1rem 0 0.5rem; }
 .rr-kind { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.1rem 0.55rem; border-radius: 99px; margin-bottom: 0.3rem; background: #7c2d12; color: #fed7aa; }
 .rr-h2 { margin: 0.1rem 0 0.25rem; font-size: 1.35rem; line-height: 1.25; }
@@ -65,4 +67,5 @@ const breakdown = computed(() => breakdownWords(props.rows))
 :root[data-theme="light"] .rr-kind, :root[data-theme="light"] .rr-play { background: #fed7aa; color: #7c2d12; }
 :root[data-theme="light"] .rr-go { background: #c2410c; color: #fff; }
 :root[data-theme="light"] .rr-row { border-top-color: rgba(67,20,7,0.15); }
+:root[data-theme="light"] .rr.quiet { background: transparent; }
 </style>

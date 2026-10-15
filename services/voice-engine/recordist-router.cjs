@@ -514,6 +514,7 @@ module.exports = function createRecordistRouter({
         total: list.items.length,
         items: list.items,
         recordedAlso: boothRerecord.recordedAmong(list, idList(req.query.also)),
+        goneAlso: boothRerecord.goneAmong(list, idList(req.query.also)),
       })
     } catch (err) {
       logger.error(`[Recordist] rerecord: ${err.message}`)
