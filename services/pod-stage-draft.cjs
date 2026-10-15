@@ -26,7 +26,7 @@
 //     voice_config.podCast[speaker] and does not read the draft flag, so if any
 //     staged speaker is already cast on the course the stage is REFUSED — draft
 //     text would otherwise land in a recorder's queue unproofread;
-//   - structure (scene, order, speaker, beat, glue, jump-in) is copied from the
+//   - structure (scene, order, flow/variant_key, speaker, beat, glue, jump-in) is copied from the
 //     mirror line with the same id tail, and the supplied lines must cover the
 //     mirror EXACTLY — no missing line, no extra, no duplicate, no empty text;
 //   - never overwrites: an existing pod at the destination is refused.
@@ -137,6 +137,9 @@ function planStageDraft(req, { existingPod, mirrorPod, mirrorSentences, podCast,
       global_order: m.global_order,
       beat_label: m.beat_label ?? null,
       speaker: m.speaker,
+      // The flow. (pod_id, scene, sentence, variant_key) is unique, so two flows
+      // of one scene collide without it.
+      variant_key: m.variant_key ?? null,
       glue_to_next: m.glue_to_next === true,
       jump_in: m.jump_in ?? null,
       target_text: l.target_text,

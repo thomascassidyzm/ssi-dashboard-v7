@@ -12,7 +12,7 @@ const mirrorPod = {
   },
 }
 const mirrorSentences = [
-  { id: `${MIRROR}:SC01-F01-S02`, scene_number: 1, sentence_number: 2, global_order: 2, beat_label: 'b', speaker: 'Wil Hughes', glue_to_next: true, jump_in: null, target_audio_id: 'aaa' },
+  { id: `${MIRROR}:SC01-F01-S02`, scene_number: 1, sentence_number: 2, global_order: 2, beat_label: 'b', speaker: 'Wil Hughes', variant_key: 'F01', glue_to_next: true, jump_in: null, target_audio_id: 'aaa' },
   { id: `${MIRROR}:SC01-F01-S01`, scene_number: 1, sentence_number: 1, global_order: 1, beat_label: 'b', speaker: 'Nurse Siân', glue_to_next: false, jump_in: true, target_audio_id: 'bbb' },
 ]
 const body = (over = {}) => ({
@@ -66,7 +66,8 @@ describe('planStageDraft', () => {
   it('copies structure from the mirror line with the same tail and text from the request, in order', () => {
     const [a, b] = plan().sentences
     expect(a).toMatchObject({ id: 'cym_s_for_eng:health:SC01-F01-S01', pod_id: 'cym_s_for_eng:health', global_order: 1, speaker: 'Nurse Siân', jump_in: true, glue_to_next: false, target_text: "Dw i'n dysgu Cymraeg ar hyn o bryd." })
-    expect(b).toMatchObject({ global_order: 2, speaker: 'Wil Hughes', glue_to_next: true, known_text: 'Chwarae teg i chi!' })
+    expect(a.variant_key).toBeNull()
+    expect(b).toMatchObject({ global_order: 2, speaker: 'Wil Hughes', variant_key: 'F01', variant_key: 'F01', glue_to_next: true, known_text: 'Chwarae teg i chi!' })
   })
   it('keeps role names and genders but casts NO voice', () => {
     const { speakers } = plan().pod

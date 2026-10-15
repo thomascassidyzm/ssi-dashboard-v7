@@ -159,14 +159,58 @@ test('a LEGO take fills every EMPTY copy of its text, in its own role slot only'
   assert.equal(byId.get('l181b').presentation_audio_id, 'pres1', 'the presentation clip is untouched')
   assert.equal(byId.get('l181a').target1_audio_id, 'old1', 'a different text is untouched')
 
-  // Fill-only: a second take of the same words moves nothing.
-  const again = await linkLegoTake({ db, recordist: dan, legoRowId: 'l181b', role: 'target1', audioId: 'dan_newer', logger: QUIET })
-  assert.deepEqual(again.linked, [])
-  assert.equal(byId.get('l181b').target1_audio_id, 'dan_new')
-
-  // And the line has left his queue.
+  // And the line has left his OUTSTANDING queue (job #791: it stays on the full list, recorded).
+  tables.course_audio.push({ id: 'dan_new', voice_id: DAN })
   const q = await buildQueue(stubDb(tables), await resolveRecordist(stubDb(tables), DAN))
   assert.equal(q.lines.some((l) => l.kind === 'lego'), false)
+})
+
+// ── job #791 (Aran, 2026-10-15): "it shows me as NOT having recorded any of the batches" ──
+test('a LEGO filled by the cast voice stays on the full list as RECORDED, so its section can count it', async () => {
+  const tables = fixture()
+  const before = await buildQueue(stubDb(tables), await resolveRecordist(stubDb(tables), DAN), { includeRecorded: true })
+  const beforeLegos = before.lines.filter((l) => l.kind === 'lego')
+  assert.equal(beforeLegos.length, 1)
+  assert.equal(beforeLegos[0].recorded, false)
+
+  const dan = await resolveRecordist(stubDb(tables), DAN)
+  await linkLegoTake({ db: stubDb(tables), recordist: dan, legoRowId: 'l181b', role: 'target1', audioId: 'dan_new', logger: QUIET })
+  tables.course_audio.push({ id: 'dan_new', voice_id: DAN })
+
+  const after = await buildQueue(stubDb(tables), await resolveRecordist(stubDb(tables), DAN), { includeRecorded: true })
+  const legos = after.lines.filter((l) => l.kind === 'lego')
+  assert.deepEqual(legos.map((l) => [l.id, l.recorded]), [['lego:l190a:target1', true]],
+    'the same line, same id, now recorded — not gone')
+  assert.ok(legos[0].clipUrl, 'and his take can be played back')
+  // The home summary counts it: total unchanged, recorded up by one.
+  const boothHome = require('./booth-home.cjs')
+  const track = boothHome.buildHomeTracks(after.lines, after.phrases, after.phraseBatches).find((t) => t.kind === 'lego')
+  assert.equal(track.total, 1)
+  assert.equal(track.recorded, 1)
+})
+
+test('one silent copy of the text keeps the LEGO line open; a slot held by another voice is still not his', async () => {
+  const tables = fixture()
+  // Seed 190's copy is his take, seed 181's copy is still empty.
+  tables.course_legos.find((l) => l.id === 'l190a').target1_audio_id = 'dan_take'
+  // yw e's target1 slot (dan_old) is somebody else's clip: still not work, still not listed.
+  tables.course_audio.push({ id: 'dan_take', voice_id: DAN }, { id: 'dan_old', voice_id: 'cartesia_someone' })
+  const q = await buildQueue(stubDb(tables), await resolveRecordist(stubDb(tables), DAN), { includeRecorded: true })
+  const legos = q.lines.filter((l) => l.kind === 'lego')
+  assert.deepEqual(legos.map((l) => [l.text, l.recorded]), [['ein rhai ni', false]])
+})
+
+test('a re-read of a recorded LEGO moves his own slot to the new take, and never anybody else’s', async () => {
+  const tables = fixture()
+  tables.course_legos.find((l) => l.id === 'l190a').target1_audio_id = 'dan_take'
+  tables.course_legos.find((l) => l.id === 'l181b').target1_audio_id = 'other_take'
+  tables.course_audio.push({ id: 'dan_take', voice_id: DAN }, { id: 'other_take', voice_id: 'cartesia_someone' })
+  const dan = await resolveRecordist(stubDb(tables), DAN)
+  const out = await linkLegoTake({ db: stubDb(tables), recordist: dan, legoRowId: 'l190a', role: 'target1', audioId: 'dan_again', logger: QUIET })
+  assert.deepEqual(out.linked.map((l) => l.legoRowId), ['l190a'])
+  const byId = new Map(tables.course_legos.map((l) => [l.id, l]))
+  assert.equal(byId.get('l190a').target1_audio_id, 'dan_again')
+  assert.equal(byId.get('l181b').target1_audio_id, 'other_take', "another voice's clip is never moved")
 })
 
 test("a LEGO take is refused on another voice's slot and on a live course", async () => {

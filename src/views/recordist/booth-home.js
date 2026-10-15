@@ -25,8 +25,68 @@ export const isNewWork = (t) =>
 /** A piece of work cut into batches the reader ticks one by one (sentences, LEGOs). */
 export const hasBatchTicks = (t) => (t.kind === 'seed' || t.kind === 'lego') && (t.batches || []).length > 1
 
-const left = (x) => Math.max(0, (x.total || 0) - (x.recorded || 0))
+// A line read on this device and still uploading is NOT left to read (job #791): `uploading` is
+// set by withDeviceTakes below, and counts as done everywhere a batch is judged.
+const left = (x) => Math.max(0, (x.total || 0) - (x.recorded || 0) - (x.uploading || 0))
 export const isFinished = (t) => t.total > 0 && left(t) === 0
+
+/**
+ * THE DEVICE'S TAKES IN THE HOME COUNTS (Aran, 2026-10-15, job #791: "it shows me as NOT having
+ * recorded any of the batches I have just done" — 242 takes were still on his Chromebook's shelf).
+ * The summary counts what the SERVER holds; this adds, per batch, the lines with a take still on
+ * this device as `uploading` (amber), never as `recorded` (green, the server's word).
+ *   unsent      — line ids with bytes on this device the server has not confirmed
+ *   placeOf(id) — {track, batch, recorded?} or null when this device does not know where the line is
+ * A line the server already counts (a re-read of a recorded line) adds nothing, and a batch never
+ * shows more than its total.
+ */
+export function withDeviceTakes(tracks, { unsent = [], placeOf = () => null } = {}) {
+  const per = new Map()
+  for (const id of unsent) {
+    const p = placeOf(id)
+    if (!p || p.recorded) continue
+    const k = batchTickId(p.track, p.batch)
+    per.set(k, (per.get(k) || 0) + 1)
+  }
+  if (!per.size) return tracks
+  return tracks.map((t) => {
+    let up = 0
+    const batches = (t.batches || []).map((b) => {
+      const n = Math.min(per.get(batchTickId(t.key, b.n)) || 0, Math.max(0, (b.total || 0) - (b.recorded || 0)))
+      if (!n) return b
+      up += n
+      return { ...b, uploading: n }
+    })
+    return up ? { ...t, batches, uploading: up } : t
+  })
+}
+
+// WHERE EACH LINE THIS DEVICE HAS OPENED SITS (job #791), so a take still on the shelf can be
+// counted against its batch without reading the whole queue. lineId → [track, batch, recorded].
+// Kept small: entries for lines no longer on the shelf are dropped once it passes PLACES_MAX.
+const placesKey = (voiceId) => `booth.home.places.${voiceId}`
+export const PLACES_MAX = 4000
+export function loadPlaces(voiceId, storage = globalThis.localStorage) {
+  try {
+    const obj = JSON.parse((storage && storage.getItem(placesKey(voiceId))) || '{}')
+    return obj && typeof obj === 'object' && !Array.isArray(obj) ? obj : {}
+  } catch { return {} }
+}
+/** Merge `entries` ({lineId: [track, batch, recorded]}) in; returns the stored map. */
+export function savePlaces(voiceId, entries, { keep = null, storage = globalThis.localStorage } = {}) {
+  let all = { ...loadPlaces(voiceId, storage), ...entries }
+  const ids = Object.keys(all)
+  if (ids.length > PLACES_MAX && keep) {
+    const pruned = {}
+    for (const id of ids) if (keep.has(id) || id in entries) pruned[id] = all[id]
+    all = pruned
+  }
+  try { storage && storage.setItem(placesKey(voiceId), JSON.stringify(all)) } catch { /* private mode / full */ }
+  return all
+}
+export function placeFromEntry(e) {
+  return Array.isArray(e) && e.length >= 2 ? { track: e[0], batch: e[1], recorded: !!e[2] } : null
+}
 
 /**
  * UP NEXT'S RULE, not a lock: practice phrases are RECOMMENDED one served batch at a time, and
