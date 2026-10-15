@@ -11,16 +11,16 @@
     <p v-else-if="state === 'error'" class="bt-sub">{{ error }}</p>
     <div v-else class="bt-grid">
       <router-link
-        v-for="a in cards" :key="a.voiceId" class="bt-card" :data-test="`team-${a.voiceId}`"
+        v-for="a in cards" :key="a.you ? 'you' : a.voiceId" class="bt-card" :class="{ you: a.you }" :data-test="a.you ? 'team-you' : `team-${a.voiceId}`"
         :to="{ path: '/admin/recording', query: { artist: a.voiceId } }"
       >
         <span class="bt-top">
           <b class="bt-name">{{ a.name }}</b>
           <span class="bt-when" :class="{ today: a.activity.takesToday }">{{ lastActive(a) }}</span>
         </span>
-        <span class="bt-meta">{{ a.languageName }}<template v-if="a.dialect && a.dialect !== 'standard'"> · {{ a.dialect }}</template> · {{ a.activity.takes7d }} {{ a.activity.takes7d === 1 ? 'take' : 'takes' }} this week</span>
+        <span class="bt-meta">{{ a.languageName }}<template v-if="a.dialect && a.dialect !== 'standard'"> · {{ a.dialect }}</template><template v-if="a.savedOnServer"> · saved on server</template> · {{ a.activity.takes7d }} {{ a.activity.takes7d === 1 ? 'take' : 'takes' }} this week</span>
         <!-- EVERY PROJECT, one row each, untouched ones included (Aran, job #393). -->
-        <span v-for="r in a.rows" :key="r.key" class="bt-row" :class="{ other: r.other, done: r.done }" :data-test="`team-${a.voiceId}-${r.key}`">
+        <span v-for="r in a.rows" :key="r.key" class="bt-row" :class="{ other: r.other, done: r.done }" :data-test="`team-${a.you ? 'you' : a.voiceId}-${r.key}`">
           <span class="bt-proj">{{ r.label }}</span>
           <span v-if="!r.other" class="bt-bar"><i :style="{ width: pct(r) }"></i></span>
           <span class="bt-meta">
@@ -39,7 +39,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useAuth } from '@/composables/useAuth'
-import { showsTeamSection, teamCards, whenLabel, loadTeamSnapshot, saveTeamSnapshot, clearTeamSnapshot } from './team-stats.js'
+import { showsTeamSection, teamCards, ownCard, whenLabel, loadTeamSnapshot, saveTeamSnapshot, clearTeamSnapshot, loadTeamMine } from './team-stats.js'
 
 const route = useRoute()
 const { getAccessToken } = useAuth()
@@ -47,7 +47,12 @@ const voiceId = computed(() => String(route.params.voiceId || ''))
 const state = ref('hidden') // hidden | signin | loading | ready | error
 const error = ref(null)
 const artists = ref([])
-const cards = computed(() => teamCards(artists.value, voiceId.value))
+const mine = ref([])
+const cards = computed(() => {
+  const team = teamCards(artists.value, voiceId.value)
+  const you = ownCard(artists.value, voiceId.value, mine.value)
+  return you ? [you, ...team] : team
+})
 const signInTo = computed(() => ({ path: '/login', query: { redirect: route.fullPath } }))
 
 const n = (x) => Number(x || 0).toLocaleString('en-GB')
@@ -71,8 +76,10 @@ async function refresh() {
     // Signed in, but not as Tom, Aran or Kai: the server refused, and the booth shows nothing.
     if (res.status === 401 || res.status === 403) { clearTeamSnapshot(); artists.value = []; state.value = 'hidden'; return }
     if (!res.ok) throw new Error(`Could not load the team (${res.status})`)
-    artists.value = (await res.json()).artists || []
-    saveTeamSnapshot(artists.value)
+    const body = await res.json()
+    artists.value = body.artists || []
+    mine.value = body.mine || []
+    saveTeamSnapshot(artists.value, undefined, undefined, mine.value)
     state.value = cards.value.length ? 'ready' : 'hidden'
   } catch (err) {
     if (drawn) return // the saved cards stay; a failed refresh is not worth replacing them with an error
@@ -84,7 +91,7 @@ async function refresh() {
 onMounted(() => {
   if (!showsTeamSection(voiceId.value)) return // an ordinary reader's booth: nothing, no call
   const saved = loadTeamSnapshot()
-  if (saved) { artists.value = saved; if (cards.value.length) state.value = 'ready' }
+  if (saved) { artists.value = saved; mine.value = loadTeamMine(); if (cards.value.length) state.value = 'ready' }
   if (state.value !== 'ready') state.value = 'loading'
   whenIdle(refresh)
 })
@@ -96,6 +103,7 @@ onMounted(() => {
 .bt-link { display: inline-block; min-height: 44px; line-height: 44px; color: var(--color-emerald, #06ffa5); font-weight: 600; text-decoration: none; }
 .bt-grid { display: grid; gap: 0.6rem; grid-template-columns: 1fr 1fr; align-items: start; }
 .bt-card { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; padding: 0.75rem; border-radius: 14px; text-decoration: none; color: inherit; background: var(--color-shadow, #1e293b); border: 1px solid var(--color-graphite, #475569); }
+.bt-card.you { border-color: var(--color-emerald, #06ffa5); }
 .bt-card:hover { border-color: var(--color-emerald, #06ffa5); }
 .bt-top { display: flex; justify-content: space-between; align-items: baseline; gap: 0.4rem; }
 .bt-name { font-size: 1rem; color: var(--color-paper, #f7f7f2); }

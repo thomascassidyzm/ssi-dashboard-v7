@@ -205,7 +205,14 @@ module.exports = function createBoothArtistsRouter({
   router.get('/artists', async (req, res) => {
     try {
       const got = await summaryCache.get(buildOverview, { fresh: req.query.fresh !== undefined })
-      res.set('X-Overview-Age-Ms', String(got.ageMs)).json(got.value)
+      // THE CALLER'S OWN VOICES (Aran, job #831): the same email-to-voices rule as the booth tabs
+      // (#392). Added per request, never into the shared cached overview. A failure here only
+      // means no "You" card; it never costs the team its cards.
+      let mine = []
+      try { mine = (await queue.voicesForEmail(db(), req.godAdmin.email)).map((v) => v.voiceId) } catch (e) {
+        logger.warn(`[BoothArtists] own voices for ${req.godAdmin.email}: ${e.message}`)
+      }
+      res.set('X-Overview-Age-Ms', String(got.ageMs)).json({ ...got.value, mine })
     } catch (err) {
       logger.error(`[BoothArtists] overview: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })

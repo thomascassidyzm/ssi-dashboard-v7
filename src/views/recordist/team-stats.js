@@ -29,6 +29,35 @@ export function teamCards(artists, ownVoiceId, now = Date.now()) {
 }
 
 /**
+ * THE SIGNED-IN PERSON'S OWN CARD, first and labelled "You" (Aran, 2026-10-15, job #831: "show me
+ * my totals there in the same format"). It is built from the SAME artists the other cards come
+ * from (the server's counts, so the numbers match the overview), folding together every voice the
+ * server says is this person's (`mine`, the #392 email-to-voices rule; else this booth's voice and
+ * any voice of the same name). Takes still uploading from this device are not in it — they are the
+ * amber totals on the booth itself — so the card says "saved on server".
+ */
+export function ownCard(artists, ownVoiceId, mine = [], now = Date.now()) {
+  const list = (Array.isArray(artists) ? artists : []).filter((a) => !a.isTest && !a.noQueue)
+  const ids = new Set([...(mine || []), ownVoiceId].filter(Boolean))
+  const first = list.find((a) => a.voiceId === ownVoiceId)
+  const voices = list.filter((a) => ids.has(a.voiceId) || (!(mine && mine.length) && first && a.name === first.name))
+  if (!voices.length) return null
+  const projects = voices.flatMap((v) => (v.projects || []).map((p) => ({ ...p, key: `${v.voiceId}.${p.key}` })))
+  const acts = voices.map((v) => v.activity || {})
+  const last = acts.map((a) => a.lastActive).filter(Boolean).sort().pop() || null
+  const activity = {
+    takes7d: acts.reduce((n, a) => n + (a.takes7d || 0), 0),
+    takesToday: acts.reduce((n, a) => n + (a.takesToday || 0), 0),
+    lastActive: last,
+  }
+  return {
+    voiceId: voices[0].voiceId, name: 'You', you: true, savedOnServer: true,
+    languageName: [...new Set(voices.map((v) => v.languageName).filter(Boolean))].join(' + '),
+    dialect: null, activity, rows: projectRows(projects, now),
+  }
+}
+
+/**
  * The project a card shows: the one worked on most recently, else the first unfinished one of
  * more than one line, else the first unfinished. A trial script ("(test)") or a one-line project
  * never heads a card while real work exists (Aran, 2026-10-14: Catrin's card led with her trial
@@ -105,8 +134,11 @@ export function loadTeamSnapshot(storage = globalThis.localStorage, now = Date.n
     return snap.artists
   } catch { return null }
 }
-export function saveTeamSnapshot(artists, storage = globalThis.localStorage, now = Date.now()) {
-  try { storage && storage.setItem(SNAP_KEY, JSON.stringify({ at: now, artists })) } catch { /* private mode / full */ }
+export function saveTeamSnapshot(artists, storage = globalThis.localStorage, now = Date.now(), mine = []) {
+  try { storage && storage.setItem(SNAP_KEY, JSON.stringify({ at: now, artists, mine })) } catch { /* private mode / full */ }
+}
+export function loadTeamMine(storage = globalThis.localStorage) {
+  try { const snap = JSON.parse(storage.getItem(SNAP_KEY)); return Array.isArray(snap.mine) ? snap.mine : [] } catch { return [] }
 }
 export function clearTeamSnapshot(storage = globalThis.localStorage) {
   try { storage && storage.removeItem(SNAP_KEY) } catch { /* private mode */ }

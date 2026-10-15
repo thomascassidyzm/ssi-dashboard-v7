@@ -144,3 +144,9 @@ test('a sitting ends at a 15-minute gap; session time is first-to-last take', ()
   const s = ov.sessionize([0, 5 * m, 14 * m, 40 * m])
   assert.deepStrictEqual(s.map((x) => [x.takes, x.end - x.start]), [[3, 14 * m], [1, 0]])
 })
+
+test('the overview names the caller\'s own voices by the email-to-voices rule, per request (Aran, job #831)', async () => {
+  queue.voicesForEmail = async (_db, email) => (email === 'aran@hey.com' ? [{ voiceId: 'human_aran_cym_n' }, { voiceId: 'human_aran_eng' }] : [])
+  assert.deepStrictEqual((await get('/artists', 'aran')).json.mine, ['human_aran_cym_n', 'human_aran_eng'])
+  assert.deepStrictEqual((await get('/artists', 'kai')).json.mine, [])
+})

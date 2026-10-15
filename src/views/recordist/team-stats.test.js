@@ -81,3 +81,23 @@ d2('team card snapshot on the device (job #416)', () => {
     e2(loadTeamSnapshot(s, 2000)).toBeNull()
   })
 })
+
+import { ownCard } from './team-stats.js'
+describe('the signed-in person\'s own card (Aran, job #831)', () => {
+  const welsh = { voiceId: 'human_aran_cym_n', name: 'Aran', languageName: 'Welsh', activity: { takes7d: 3, takesToday: 1, lastActive: '2026-10-15T09:00:00Z' },
+    projects: [p('pod.pod-1', 10, 20, '2026-10-15T09:00:00Z', false, 3), p('seed.cym_n', 0, 300)] }
+  const eng = { voiceId: 'human_aran_eng', name: 'Aran', languageName: 'English', activity: { takes7d: 2, takesToday: 0, lastActive: '2026-10-12T09:00:00Z' },
+    projects: [p('seed.eng', 5, 701, '2026-10-12T09:00:00Z', false, 2)] }
+  const dan = { voiceId: 'human_dan_cym_s', name: 'Dan', projects: [p('pod.pod-1', 1, 2)] }
+
+  it('is one "You" card, first, covering every voice the server says is theirs, saved-on-server', () => {
+    const card = ownCard([dan, welsh, eng], 'human_aran_cym_n', ['human_aran_cym_n', 'human_aran_eng'], Date.parse('2026-10-15T12:00:00Z'))
+    expect(card).toMatchObject({ name: 'You', you: true, savedOnServer: true, languageName: 'Welsh + English' })
+    expect(card.activity).toMatchObject({ takes7d: 5, takesToday: 1, lastActive: '2026-10-15T09:00:00Z' })
+    expect(card.rows.map((r) => [r.recorded, r.total, r.takes7d])).toEqual([[10, 20, 3], [0, 300, 0], [5, 701, 2]])
+  })
+  it('falls back to this booth\'s voice and its same-named voices when the server sent none', () => {
+    expect(ownCard([dan, welsh, eng], 'human_aran_cym_n', []).rows).toHaveLength(3)
+    expect(ownCard([dan], 'human_aran_cym_n', [])).toBeNull()
+  })
+})
