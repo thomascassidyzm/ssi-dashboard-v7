@@ -8162,6 +8162,16 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
     req.contentEdit?.wroteNothing()
     return res.status(400).json({ error: err.message, code: err.code || 'BAD_OP', index: err.index })
   }
+  if (apply && plans.some(p => p.structural)) {
+    let courseStatus = null
+    try {
+      const { data: c } = await supabaseClient.getClient().from('courses').select('status').eq('course_code', courseCode).maybeSingle()
+      courseStatus = c ? c.status : null
+    } catch (e) { req.contentEdit?.wroteNothing(); return res.status(503).json({ error: `cannot read course status: ${e.message}`, code: 'STATUS_UNREADABLE', applied: false }) }
+    const refused = courseEditOps.structuralGate({ plans, courseStatus, apply, tomGo: req.body?.tom_go })
+    if (refused) { req.contentEdit?.wroteNothing(); return res.status(refused.status).json({ error: refused.error, code: refused.code, applied: false }) }
+    if (req.body?.tom_go) eventDetail = { ...eventDetail, tom_go: req.body.tom_go }
+  }
   if (!apply) req.contentEdit?.wroteNothing()
   try {
     const out = await courseEditOps.runPlans({
@@ -8239,7 +8249,7 @@ app.post('/api/production/:courseCode/edit', async (req, res) => {
 
 // MANY ops, one transaction, a DRY RUN unless "apply": true. "undo_file" replays
 // an undo written by an earlier apply of this course.
-app.post('/api/production/:courseCode/edit-batch', async (req, res) => {
+async function editBatch(req, res) {
   const body = req.body || {}
   let ops = body.ops
   if (body.undo_file) {
@@ -8252,6 +8262,14 @@ app.post('/api/production/:courseCode/edit-batch', async (req, res) => {
     }
   }
   return runCourseEdit(req, res, ops, { apply: body.apply === true })
+}
+app.post('/api/production/:courseCode/edit-batch', editBatch)
+// The same door for a SIGNED agent (tools/agent-admin/call.cjs): /api/admin is the prefix the
+// agent front door verifies, so the content-edit event names the agent, not "undeclared-loopback".
+// Same engine, same dry-run default, same undo file, same gates (job #544).
+app.post('/api/admin/course-edit/:courseCode/edit-batch', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  return editBatch(req, res)
 })
 
 // ─── ADMIN EDIT DOORS FOR AGENTS (Tom 2026-10-14, r-2026-10-14-kai-is-team-his-agents-get) ─
@@ -8341,7 +8359,7 @@ app.get('/api/admin/phrase-v4/course/:courseCode', async (req, res) => {
   try {
     const maxSeed = req.query.maxSeed === undefined ? 9999 : Number(req.query.maxSeed)
     if (!Number.isInteger(maxSeed) || maxSeed < 1) return res.status(400).json({ error: 'maxSeed must be a positive integer', code: 'BAD_REQUEST' })
-    const data = await require('./shared/phrase-v4-door.cjs').readCourse(supabaseClient.getClient(), req.params.courseCode, { maxSeed })
+    const data = await require('./shared/phrase-v4-door.cjs').readCourse(supabaseClient.getClient(), req.params.courseCode, { maxSeed, withAudio: req.query.audio === '1' })
     if (!data) return res.status(404).json({ error: `no course ${req.params.courseCode}`, code: 'NOT_FOUND' })
     res.json(data)
   } catch (err) {

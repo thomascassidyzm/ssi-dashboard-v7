@@ -107,6 +107,8 @@ const PRODUCTION_API = [
   // course_legos, so all of them are lego writers for the round map.
   { method: 'POST',   path: '/api/production/:courseCode/edit',              operation: 'course-edit', legos: true },
   { method: 'POST',   path: '/api/production/:courseCode/edit-batch',        operation: 'course-edit', legos: true },
+  // The same batch door, reached by a signed agent (job #544): /api/admin carries the agent front door.
+  { method: 'POST',   path: '/api/admin/course-edit/:courseCode/edit-batch', operation: 'course-edit', legos: true },
   { method: 'PATCH',  path: '/api/production/:courseCode/lego/:legoId',      operation: 'lego-edit', legos: true },
   { method: 'DELETE', path: '/api/production/:courseCode/seed/:seedNumber',  operation: 'seed-deprecate' },
   // Job #388: fill-only clip linking over the Supabase client (services/shared/link-clip.cjs).

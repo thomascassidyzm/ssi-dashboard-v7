@@ -177,6 +177,8 @@ describe('content-write surface manifest', () => {
       'every op runs in shared/course-edit-ops.cjs (lego.update, audio.link on a lego), not in the route source'],
     ['POST /api/production/:courseCode/edit-batch',
       'every op runs in shared/course-edit-ops.cjs (lego.update, audio.link on a lego), not in the route source'],
+    ['POST /api/admin/course-edit/:courseCode/edit-batch',
+      'the signed-agent alias of edit-batch (job #544): same editBatch handler, every op in shared/course-edit-ops.cjs (lego.insert, lego.delete)'],
     ['PATCH /api/production/:courseCode/lego/:legoId',
       'a lego.update op run by shared/course-edit-ops.cjs'],
   ]);

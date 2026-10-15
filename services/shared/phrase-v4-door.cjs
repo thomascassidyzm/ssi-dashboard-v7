@@ -99,7 +99,7 @@ async function listCourses(sb) {
 }
 
 /** One course as the v4 tools read it (db.cjs loadCourse's inputs). */
-async function readCourse(sb, courseCode, { maxSeed = 9999, componentsOnly = false } = {}) {
+async function readCourse(sb, courseCode, { maxSeed = 9999, componentsOnly = false, withAudio = false } = {}) {
   const { data: course, error } = await sb.from('courses').select('course_code, status, visibility, new_app_status').eq('course_code', courseCode).maybeSingle();
   if (error) throw error;
   if (!course) return null;
@@ -109,7 +109,9 @@ async function readCourse(sb, courseCode, { maxSeed = 9999, componentsOnly = fal
     .eq('course_code', courseCode).lte('seed_number', maxSeed).order('seed_number').order('lego_index').order('id'));
   // componentsOnly: the gates need only the component rows (the heard-words fallback), not every phrase.
   const raw = await pageAll(() => {
-    const q = sb.from('course_practice_phrases').select('id, seed_number, lego_index, position, phrase_role, known_text, target_text, metadata')
+    const q = sb.from('course_practice_phrases').select('id, seed_number, lego_index, position, phrase_role, known_text, target_text, metadata'
+      // withAudio (voice-gap-fill, #544): the audio pointers, so a voicing tool sees which slots are still empty.
+      + (withAudio ? ', known_audio_id, target1_audio_id, target2_audio_id' : ''))
     return (componentsOnly ? q.eq('phrase_role', 'component') : q)
       .eq('course_code', courseCode).lte('seed_number', maxSeed).order('seed_number').order('lego_index').order('position').order('id');
   });

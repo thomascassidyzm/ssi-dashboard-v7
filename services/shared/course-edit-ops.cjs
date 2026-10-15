@@ -60,8 +60,11 @@ const UPDATABLE = {
 
 // Insertable = any live column except NEVER_SET (an undo of a delete puts the
 // whole row back, audio links, decomposition and all).
-const INSERTABLE_TABLES = new Set(['course_practice_phrases', 'course_gender_expansions']);
-const DELETABLE_TABLES = new Set(['course_practice_phrases', 'course_gender_expansions']);
+const INSERTABLE_TABLES = new Set(['course_practice_phrases', 'course_gender_expansions', 'course_legos']);
+const DELETABLE_TABLES = new Set(['course_practice_phrases', 'course_gender_expansions', 'course_legos']);
+// course_legos.lego_id is a GENERATED column (S<seed>L<index>): it is read, never written.
+const GENERATED = { course_legos: ['lego_id'] };
+const LEGO_TYPES = ['A', 'M'];
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const LEGO_ID_RE = /^S\d{4}L\d{2}$/;
@@ -78,6 +81,10 @@ const OP_HELP = {
   'phrase.update': { key: 'phrase_id', set: UPDATABLE.course_practice_phrases },
   'phrase.insert': { row: 'full course_practice_phrases row; id must start "<course>:"' },
   'phrase.delete': { key: 'phrase_id', note: 'its course_qa_flags rows go with it' },
+  'lego.insert':   { row: 'course_legos row: seed_number (the seed must exist), lego_index (free), known_text, target_text, type A|M (M needs components[]); lego_id is derived',
+                     note: 'structural: on a beta/released course an apply needs "tom_go". The undo is lego.delete.' },
+  'lego.delete':   { key: 'lego_id (S0001L02) or id (uuid)', cascade_phrases: 'true to delete its BUILD/USE/component rows with it; otherwise refused while any remain',
+                     note: 'structural: on a beta/released course an apply needs "tom_go". Clips are never deleted. The undo re-inserts the LEGO and its phrases whole.' },
   'audio.link':    { key: 'target: seed|lego|phrase + seed_number|lego_id|phrase_id', slot: SLOTS,
                      audio_id: 'course_audio id, or null to unlink',
                      note: 'refused unless the clip speaks the row\'s words (normalize_text); allow_text_mismatch:true overrides. presentation is exempt.' },
@@ -120,6 +127,32 @@ function planOp(op, index, courseCode) {
     case 'phrase.update': {
       return { ...base, table: 'course_practice_phrases', kind: 'update', where: phraseWhere(op, index, courseCode), set: needSet('course_practice_phrases') };
     }
+    case 'lego.insert': {
+      const row = op.row;
+      if (!row || typeof row !== 'object') throw new EditOpError(index, 'lego.insert needs "row"');
+      const seedN = Number(row.seed_number), idx = Number(row.lego_index);
+      if (!Number.isInteger(seedN) || seedN < 1) throw new EditOpError(index, 'lego.insert row.seed_number must be a positive integer');
+      if (!Number.isInteger(idx) || idx < 1) throw new EditOpError(index, 'lego.insert row.lego_index must be a positive integer');
+      // A row that carries its `id` is a RESTORE (the undo of lego.delete puts back exactly what was there,
+      // legacy values and all); only a NEW LEGO is held to the content shape.
+      const restoring = row.id !== undefined;
+      if (typeof row.target_text !== 'string' || !row.target_text.trim()) throw new EditOpError(index, 'lego.insert row.target_text is required');
+      if (!restoring) {
+        for (const c of ['known_text', 'target_text']) {
+          if (typeof row[c] !== 'string' || !row[c].trim()) throw new EditOpError(index, `lego.insert row.${c} is required`);
+          if (hasNonExampleText(row[c])) throw new EditOpError(index, `${c} must be plain speakable text: no brackets, (notes) or slash-separated alternatives`, 'NON_EXAMPLE_TEXT');
+        }
+        if (!LEGO_TYPES.includes(row.type)) throw new EditOpError(index, `lego.insert row.type must be one of ${LEGO_TYPES.join(', ')}`);
+        if (row.type === 'M' && !(Array.isArray(row.components) && row.components.length)) throw new EditOpError(index, 'an M LEGO needs a non-empty components[] (its tiling parts)');
+      }
+      if (row.lego_id !== undefined && row.lego_id !== legoIdOf(seedN, idx)) throw new EditOpError(index, `row.lego_id is derived from seed_number + lego_index (${legoIdOf(seedN, idx)}); leave it out`);
+      if (row.id !== undefined && !UUID_RE.test(String(row.id))) throw new EditOpError(index, 'lego.insert row.id must be a uuid when given');
+      return { ...base, table: 'course_legos', kind: 'insert', structural: true, row: stripNeverSet(row, 'course_legos'),
+        key: { seed_number: seedN, lego_index: idx }, courseCode };
+    }
+    case 'lego.delete': {
+      return { ...base, table: 'course_legos', kind: 'delete', structural: true, cascadePhrases: op.cascade_phrases === true, where: legoWhere(op, index, courseCode) };
+    }
     case 'phrase.delete': {
       return { ...base, table: 'course_practice_phrases', kind: 'delete', where: phraseWhere(op, index, courseCode) };
     }
@@ -135,7 +168,7 @@ function planOp(op, index, courseCode) {
       for (const c of ['known_text', 'target_text']) {
         if (hasNonExampleText(row[c])) throw new EditOpError(index, `${c} must be plain speakable text`, 'NON_EXAMPLE_TEXT');
       }
-      return { ...base, table: 'course_practice_phrases', kind: 'insert', row: stripNeverSet(row), key: { id: row.id }, courseCode };
+      return { ...base, table: 'course_practice_phrases', kind: 'insert', row: stripNeverSet(row, 'course_practice_phrases'), key: { id: row.id }, courseCode };
     }
     case 'audio.link': {
       const slot = op.slot;
@@ -176,7 +209,7 @@ function planOp(op, index, courseCode) {
       const row = op.row;
       if (!row || typeof row !== 'object' || !row.original_text) throw new EditOpError(index, 'gender.insert needs row.original_text');
       if (row.id !== undefined && !UUID_RE.test(String(row.id))) throw new EditOpError(index, 'gender.insert row.id must be a uuid when given');
-      return { ...base, table: 'course_gender_expansions', kind: 'insert', row: stripNeverSet(row), key: row.id ? { id: row.id } : null, courseCode };
+      return { ...base, table: 'course_gender_expansions', kind: 'insert', row: stripNeverSet(row, 'course_gender_expansions'), key: row.id ? { id: row.id } : null, courseCode };
     }
     default:
       throw new EditOpError(index, `unknown op "${name}" (known: ${Object.keys(OP_HELP).filter(k => k !== 'common').join(', ')})`);
@@ -193,9 +226,11 @@ function phraseWhere(op, index, courseCode) {
   if (!id.startsWith(`${courseCode}:`)) throw new EditOpError(index, `${op.op} needs phrase_id starting "${courseCode}:"`);
   return { course_code: courseCode, id };
 }
-function stripNeverSet(row) {
+const legoIdOf = (seed, index) => `S${String(seed).padStart(4, '0')}L${String(index).padStart(2, '0')}`;
+function stripNeverSet(row, table) {
   const out = {};
-  for (const [k, v] of Object.entries(row)) if (!NEVER_SET.has(k) || k === 'created_at') out[k] = v;
+  const generated = GENERATED[table] || [];
+  for (const [k, v] of Object.entries(row)) if ((!NEVER_SET.has(k) || k === 'created_at') && !generated.includes(k)) out[k] = v;
   return out;
 }
 
@@ -262,11 +297,11 @@ function undoFor(plan, before, after, opName) {
     : { id: row.id };
   const updOp = { course_seeds: 'seed.update', course_legos: 'lego.update', course_practice_phrases: 'phrase.update',
     course_audio: 'audio.update', course_gender_expansions: 'gender.update' }[plan.table];
-  const insOp = { course_practice_phrases: 'phrase.insert', course_gender_expansions: 'gender.insert' }[plan.table];
-  const delOp = { course_practice_phrases: 'phrase.delete', course_gender_expansions: 'gender.delete' }[plan.table];
+  const insOp = { course_practice_phrases: 'phrase.insert', course_gender_expansions: 'gender.insert', course_legos: 'lego.insert' }[plan.table];
+  const delOp = { course_practice_phrases: 'phrase.delete', course_gender_expansions: 'gender.delete', course_legos: 'lego.delete' }[plan.table];
 
-  if (!before && after) return { op: delOp, ...keyOf(after) };
-  if (before && !after) return { op: insOp, row: stripNeverSet(before) };
+  if (!before && after) return { op: delOp, ...keyOf(after), ...(plan.table === 'course_legos' ? { lego_id: undefined } : {}) };
+  if (before && !after) return { op: insOp, row: stripNeverSet(before, plan.table) };
   const set = {};
   const allowed = new Set(UPDATABLE[plan.table]);
   for (const c of Object.keys(before)) {
@@ -303,7 +338,7 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
 
     for (const plan of plans) {
       const t = await types(plan.table);
-      let before = null, after = null;
+      let before = null, after = null, cascadeUndo = null;
 
       if (plan.kind === 'insert') {
         const row = { ...plan.row, course_code: courseCode };
@@ -314,6 +349,13 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
         if (plan.key) {
           const exists = await selectRow(client, plan.table, { course_code: courseCode, ...plan.key });
           if (exists.length) throw new EditOpError(plan.index, `${plan.name}: ${JSON.stringify(plan.key)} already exists`, 'EXISTS');
+        }
+        if (plan.name === 'lego.insert') {
+          // The seed must be there to carry it, and the slot (seed, index) must be free — an id is never reused.
+          const seed = await selectRow(client, 'course_seeds', { course_code: courseCode, seed_number: row.seed_number });
+          if (!seed.length) throw new EditOpError(plan.index, `lego.insert: ${courseCode} has no seed ${row.seed_number}; a LEGO needs its seed`, 'NO_SUCH_SEED');
+          const taken = await selectRow(client, 'course_legos', { course_code: courseCode, seed_number: row.seed_number, lego_index: row.lego_index });
+          if (taken.length) throw new EditOpError(plan.index, `lego.insert: ${legoIdOf(row.seed_number, row.lego_index)} already exists`, 'EXISTS');
         }
         // Text first, audio links after (see header): an insert has no OLD, but the
         // phrase trigger refusing component presentation binds still reads NEW.
@@ -334,7 +376,25 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
         }
         const where = { id: before.id };
 
-        if (plan.kind === 'delete') {
+        if (plan.kind === 'delete' && plan.table === 'course_legos') {
+          // A LEGO with phrases under it is refused unless the caller says the phrases go with it.
+          const kids = await selectRow(client, 'course_practice_phrases',
+            { course_code: courseCode, seed_number: before.seed_number, lego_index: before.lego_index }, { lock: true });
+          if (kids.length && !plan.cascadePhrases) {
+            const by = {}; for (const k of kids) by[k.phrase_role] = (by[k.phrase_role] || 0) + 1;
+            throw new EditOpError(plan.index, `lego.delete: ${before.lego_id} still has ${kids.length} phrase row(s) (${JSON.stringify(by)}); delete them first or send "cascade_phrases": true`, 'LEGO_HAS_PHRASES');
+          }
+          for (const k of kids) {
+            await client.query(`DELETE FROM course_qa_flags WHERE phrase_id = $1`, [k.id]);
+            await client.query(`DELETE FROM course_practice_phrases WHERE id = $1`, [k.id]);
+            touched.phrase_ids.add(k.id);
+          }
+          await client.query(`DELETE FROM course_legos WHERE id = $1`, [before.id]);
+          after = null;
+          // Undo order matters: the LEGO goes back before its phrases.
+          cascadeUndo = [{ op: 'lego.insert', row: stripNeverSet(before, 'course_legos') },
+            ...kids.map(k => ({ op: 'phrase.insert', row: stripNeverSet(k, 'course_practice_phrases') }))];
+        } else if (plan.kind === 'delete') {
           if (plan.table === 'course_practice_phrases') {
             await client.query(`DELETE FROM course_qa_flags WHERE phrase_id = $1`, [before.id]);
           }
@@ -359,8 +419,9 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
       const audioMoved = AUDIO_COLS.some(c => before && after && c in before && !same(before[c], after[c]));
       if (audioMoved || plan.link) touched.audio_slots = true;
 
-      const u = undoFor(plan, before, after, plan.name);
-      if (u) undo.unshift(u);
+      const u = cascadeUndo ? cascadeUndo[0] : undoFor(plan, before, after, plan.name);
+      if (cascadeUndo) undo.unshift(...cascadeUndo);
+      else if (u) undo.unshift(u);
       results.push({ index: plan.index, op: plan.name, key: plan.where || plan.key, before: summarise(before, plan), after: summarise(after, plan), changed: !!u });
     }
 
@@ -409,3 +470,19 @@ function summarise(row, plan) {
 }
 
 module.exports = { planOp, planOps, runPlans, undoFor, OP_HELP, UPDATABLE, EditOpError, MAX_OPS };
+
+/**
+ * The live-course gate for STRUCTURAL ops (lego.insert, lego.delete). They move the
+ * rounds a learner walks, so on a beta/released course an APPLY needs Tom's words
+ * ("tom_go"), exactly as the v4 gap-fill door asks. A preview never needs it.
+ * Returns null when fine, else {status, error, code}. Pure.
+ */
+function structuralGate({ plans, courseStatus, apply, tomGo }) {
+  if (!apply || !plans.some(p => p.structural)) return null;
+  if (['beta', 'released'].includes(courseStatus) && !String(tomGo || '').trim()) {
+    return { status: 409, code: 'TOM_GO_REQUIRED',
+      error: `refusing: this course is ${courseStatus} (served to learners) and the batch inserts/deletes a LEGO; an apply needs "tom_go": "<Tom's words>". A preview needs nothing.` };
+  }
+  return null;
+}
+module.exports.structuralGate = structuralGate;
