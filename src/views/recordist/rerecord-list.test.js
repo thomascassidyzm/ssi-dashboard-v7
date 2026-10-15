@@ -51,3 +51,28 @@ describe('one card: the old ones and the breakdown', () => {
     expect(breakdownWords(rows)).toBe("2 didn't save · 1 skipped · 1 text changed")
   })
 })
+
+// Job #842: a take that SAVED but did not match its words.
+import { breakdownWords } from './rerecord-list.js'
+import { applyFailures, mismatchLineWords } from './text-check-failures.js'
+describe("didn't match the words", () => {
+  const M = [{ lineId: 'm', why: 'didnt_match', text: 'M', heard: 'em' }]
+  it('stays on the card although its line saved from this device; reading it again takes it off', () => {
+    expect(mergeRerecord({ serverItems: M, saved: new Set(['m']) }).map(r => [r.lineId, r.words])).toEqual([['m', "didn't match the words"]])
+    expect(mergeRerecord({ serverItems: M, retaken: ['m'] })).toEqual([])
+    expect(mergeRerecord({ serverItems: M, unsent: new Set(['m']) })).toEqual([])
+  })
+  it('is counted in the breakdown', () => {
+    expect(breakdownWords([...mergeRerecord({ serverItems: M }), { why: 'skipped' }])).toBe("1 didn't match the words · 1 skipped")
+  })
+  it('a poll that left before he read the line again does not put the old failure back', () => {
+    const retaken = new Map([['a', 2000]])
+    const got = applyFailures([{ lineId: 'a', takeId: 'OLD' }, { lineId: 'b', takeId: 'B', heard: 'bee' }], 1500, retaken)
+    expect([...got.keys()]).toEqual(['b'])
+    // a poll that left AFTER the re-read is believed: the new take failed too
+    expect([...applyFailures([{ lineId: 'a', takeId: 'NEW' }], 2500, retaken).keys()]).toEqual(['a'])
+  })
+  it('says what was heard under the line', () => {
+    expect(mismatchLineWords({ heard: 'Bara da' })).toBe("Last take didn't match the words — we heard “Bara da”")
+  })
+})

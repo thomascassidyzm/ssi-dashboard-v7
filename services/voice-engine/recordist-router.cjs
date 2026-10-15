@@ -154,6 +154,9 @@ module.exports = function createRecordistRouter({
   // about the caller and cannot be answered without knowing who the caller is.
   requireDashboardUser,
   handleRecordingUpload,
+  // The booth take's background script check (job #842, services/take-text-check-queue.cjs):
+  // its per-voice failed-check list feeds the Re-record card. Absent in tests that do not use it.
+  textChecks = null,
   // Injectable only so the route's variant handling is testable without S3.
   s3 = require('../s3-production-service.cjs'),
   // Build the practice-phrase plan once shortly after boot (job #619), so the
@@ -498,6 +501,56 @@ module.exports = function createRecordistRouter({
   }
   const idList = (v) => (typeof v === 'string' ? v.split(',').map((x) => x.trim()).filter(Boolean).slice(0, 500) : [])
 
+  // TAKES THAT SAVED BUT DID NOT MATCH THEIR WORDS (job #842). The script check runs after the
+  // upload has answered, so its failures arrive here, not on the take's response. Read fresh on
+  // every call (a small local file), never memoised with the queue: a check can land at any time.
+  const voiceIdsOf = (recordist) => [...new Set([recordist.voiceId, ...(recordist.spellings || [])].filter(Boolean))]
+  const textCheckFailures = (recordist) => {
+    if (!textChecks || !recordist) return []
+    try { return textChecks.failuresFor(voiceIdsOf(recordist)) } catch (e) {
+      logger.error(`[Recordist] text-check failures for ${recordist.voiceId}: ${e.message}`)
+      return []
+    }
+  }
+  const withTextChecks = (list, recordist) => boothRerecord.withTextCheckFailures(list, textCheckFailures(recordist))
+
+  // THE FAILED-CHECK LIST ON ITS OWN (job #842): cheap enough to poll while he records, so a take
+  // that did not match comes back to him within the session — on the slim bar in a batch, and on
+  // the Re-record card at home. `pending` is how many checks are still queued on this server.
+  router.get('/voice/:voiceId/text-check-failures', async (req, res) => {
+    try {
+      const pack = await resolveAnyPack(req.params.voiceId)
+      if (pack) return res.json({ voiceId: req.params.voiceId, items: [], pending: 0 })
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+      const items = textCheckFailures(recordist).map((f) => ({
+        lineId: f.lineId, takeId: f.takeId, heard: f.heard, reason: f.reason, checkedAt: f.checkedAt,
+      }))
+      res.json({ voiceId: recordist.voiceId, items, pending: textChecks ? textChecks.depth() : 0 })
+    } catch (err) {
+      logger.error(`[Recordist] text-check-failures: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // "IT'S FINE — KEEP IT": he listened to a flagged take and it is right (whisper mishears
+  // dialect and elision: "goriadau" read as "goriada"). The take leaves the list; nothing else
+  // changes — the take was always saved.
+  router.post('/voice/:voiceId/text-check-failures/:takeId/keep', async (req, res) => {
+    try {
+      if (!textChecks) return res.status(503).json({ error: 'Script checks are not running on this server.' })
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+      const f = textCheckFailures(recordist).find((x) => x.takeId === req.params.takeId)
+      if (!f) return res.json({ ok: true, kept: false })
+      textChecks.keep({ voiceId: recordist.voiceId, lineId: f.lineId, takeId: f.takeId })
+      res.json({ ok: true, kept: true, lineId: f.lineId })
+    } catch (err) {
+      logger.error(`[Recordist] text-check keep: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
   // THE RE-RECORD CARD'S SUMMARY: the lines to read again, each with why. The page adds its own
   // refused takes (?also=<ids>) and is told which of them now have a good take (recordedAlso).
   // Read-only and not an arrival: it is fetched beside /summary, which already counts one.
@@ -507,7 +560,7 @@ module.exports = function createRecordistRouter({
       if (pack) return res.json({ voiceId: req.params.voiceId, total: 0, items: [], recordedAlso: [] })
       const cached = await homeQueueFor(req.params.voiceId, { allowStale: true })
       if (!cached) return res.status(404).json({ error: `No recording voice ${req.params.voiceId}.` })
-      const list = await rerecordListFor(cached.value)
+      const list = withTextChecks(await rerecordListFor(cached.value), cached.value.recordist)
       res.json({
         voiceId: cached.value.recordist.voiceId,
         fresh: cached.fresh,
@@ -648,7 +701,7 @@ module.exports = function createRecordistRouter({
         : null
       // THE RE-RECORD BATCH (job #788): the card's lines plus the page's refused ones, in course order.
       const rerecordLines = trackScope === boothRerecord.RERECORD_TRACK && cachedHome && cachedHome.value.queue === queue
-        ? boothRerecord.rerecordBatchLines(await rerecordListFor(cachedHome.value), idList(req.query.also))
+        ? boothRerecord.rerecordBatchLines(withTextChecks(await rerecordListFor(cachedHome.value), cachedHome.value.recordist), idList(req.query.also))
         : null
       const lines = rerecordLines ? inScope(rerecordLines) : trackScope
         ? (openedPhrase ? openedPhrase.lines : boothHome.selectBatch(inScope(queue.lines), trackScope, batchN, phraseCtx))
@@ -798,6 +851,8 @@ module.exports = function createRecordistRouter({
       headers: { authorization: req.headers.authorization },
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
+      // which booth line this take is for: its script check reports back to that line (job #842)
+      recordistLineId: lineId,
       // uuid + no pod/script metadata IS regeneration mode: the row is looked up
       // before the S3 PUT, so a bad id cannot orphan bytes.
       body: {
@@ -951,6 +1006,8 @@ module.exports = function createRecordistRouter({
       headers: { authorization: req.headers.authorization },
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
+      // which booth line this take is for: its script check reports back to that line (job #842)
+      recordistLineId: parsed.raw,
       body: {
         audioData: audioBase64,
         mimeType,
@@ -1128,6 +1185,8 @@ module.exports = function createRecordistRouter({
       headers: { authorization: req.headers.authorization },
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
+      // which booth line this take is for: its script check reports back to that line (job #842)
+      recordistLineId: parsed.raw,
       body: {
         audioData: audioBase64,
         mimeType,
@@ -1328,6 +1387,8 @@ module.exports = function createRecordistRouter({
       headers: { authorization: req.headers.authorization },
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
+      // which booth line this take is for: its script check reports back to that line (job #842)
+      recordistLineId: parsed.raw,
       body: {
         audioData: audioBase64,
         mimeType,
@@ -1587,6 +1648,8 @@ module.exports = function createRecordistRouter({
       headers: { authorization: req.headers.authorization },
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
+      // which booth line this take is for: its script check reports back to that line (job #842)
+      recordistLineId: parsed.raw,
       body: {
         audioData: audioBase64,
         mimeType,
@@ -1706,6 +1769,8 @@ module.exports = function createRecordistRouter({
       headers: { authorization: req.headers.authorization },
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
+      // which booth line this take is for: its script check reports back to that line (job #842)
+      recordistLineId: parsed.raw,
       body: {
         audioData: audioBase64,
         mimeType,
@@ -1995,6 +2060,8 @@ module.exports = function createRecordistRouter({
         headers: { authorization: req.headers.authorization },
         socket: req.socket,
         recordistVoiceId: recordist.voiceId,
+        // which booth line this take is for: its script check reports back to that line (job #842)
+        recordistLineId: lineId,
         body: {
           audioData: audioBase64,
           mimeType,
