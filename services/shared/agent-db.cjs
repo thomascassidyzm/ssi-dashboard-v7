@@ -97,9 +97,15 @@ function lintFiles(paths) {
   return findings
 }
 
-/** The agent login URL: DATABASE_URL in the environment, else .env.psql beside this repo. */
-function agentUrl(envFile = process.env.AGENT_DB_ENV || path.join(__dirname, '..', '..', '.env.psql')) {
+// Where the agent login lives when the checkout running the tool has none of its own (job #748):
+// .env.psql is gitignored and provisioned only in the shared checkout, so a committed tool run from
+// the deployed checkout or a worker's worktree found no login and could not run at all.
+const SHARED_AGENT_ENV = path.join(require('os').homedir(), 'SSi', 'ssi-dashboard-v7-clean', '.env.psql')
+
+/** The agent login URL: DATABASE_URL in the environment, else .env.psql beside this repo, else the shared checkout's. */
+function agentUrl(envFile = process.env.AGENT_DB_ENV || path.join(__dirname, '..', '..', '.env.psql'), { fallback = SHARED_AGENT_ENV } = {}) {
   if (process.env.DATABASE_URL) return process.env.DATABASE_URL
+  if (!process.env.AGENT_DB_ENV && !fs.existsSync(envFile) && fallback && fs.existsSync(fallback)) envFile = fallback
   const m = fs.readFileSync(envFile, 'utf8').match(/^DATABASE_URL\s*=\s*"?([^"\n]+)"?/m)
   if (!m) throw new Error(`no DATABASE_URL in ${envFile}`)
   return m[1].trim()
@@ -164,10 +170,34 @@ async function presentationClips(pg, courseCode, legoIds = null) {
 
 module.exports = { lintSql, lintFiles, agentUrl, connect, clipsById, clipMap, presentationClips, UUID }
 
-if (require.main === module) {
+/**
+ * Prove the LIVE door, not just the linter (job #748; #704 could only prove the nested-cast refusal
+ * through `lint`, because any query against the real client is hand-written code). Two fixed
+ * statements: the incident shape must be refused before it is sent, and a trivial read must answer.
+ */
+async function selftest({ open = connect } = {}) {
+  const pg = await open({ app: 'agent:agent-db-selftest' })
+  const out = {}
+  try {
+    try {
+      await pg.query('SELECT 1 FROM course_audio ca WHERE (((CAST((ca.id) AS text))) = ANY($1)) LIMIT 1', [[]])
+      out.refuse = 'NOT REFUSED — the door let the incident shape through'
+    } catch (e) { out.refuse = e.code === 'AGENT_DB_LINT' ? 'refused before sending (AGENT_DB_LINT)' : `failed another way: ${e.message}` }
+    const r = await pg.query("SELECT current_user AS login, current_setting('statement_timeout') AS statement_timeout")
+    out.allow = r.rows[0]
+  } finally { await pg.end() }
+  out.ok = out.refuse.startsWith('refused') && !!out.allow
+  return out
+}
+
+module.exports.selftest = selftest
+
+if (require.main === module && process.argv[2] === 'selftest') {
+  selftest().then((o) => { console.log(JSON.stringify(o, null, 2)); process.exit(o.ok ? 0 : 1) }, (e) => { console.error(`agent-db selftest: ${e.message}`); process.exit(1) })
+} else if (require.main === module) {
   const [cmd, ...args] = process.argv.slice(2)
   if (cmd !== 'lint' || !args.length) {
-    console.error('usage: node services/shared/agent-db.cjs lint <file|dir>...')
+    console.error('usage: node services/shared/agent-db.cjs lint <file|dir>...  |  selftest')
     process.exit(2)
   }
   const found = lintFiles(args)

@@ -61,6 +61,8 @@ const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
  */
 /** registry.SLOTS are the phrase-bearing slots; 'presentation' is cast and cleared too, gender-agnostic like guide (cast_voice_role v3). The guard used to reject it, so clearing a presentation slot was unreachable (#273). */
 const AGENT_SLOT_PATH = /^\/languages\/[^/]+\/slot$/
+/** The one lab read a same-host agent may make without a session (job #748): the voice catalogue. */
+const AGENT_READ_PATH = /^\/params$/
 const isCastableSlot = (slot) => slot === 'presentation' || registry.SLOTS.includes(slot)
 
 /**
@@ -117,6 +119,15 @@ function mount (app, deps) {
   const runner = () => require('./runner.cjs')
 
   const who = (user) => user?.email || user?.username || user?.id || 'unknown'
+
+  // THE VOICE CATALOGUE IS READABLE BY A SAME-HOST AGENT (job #748): GET /params spends nothing,
+  // writes nothing and carries no personal data (Cartesia's catalogue incl. this estate's clones, and
+  // the voice ids course_audio uses), so an agent naming itself with x-agent-id may read it — #739
+  // could render audio on that header but not list the voices. /languages and /pod-voices stay
+  // admin: they carry the emails of the people behind human voices (#183).
+  // GET only, loopback only, attributed — services/shared/agent-read-identity.cjs.
+  const agentReader = deps.agentReader || ((req) => require('../shared/agent-read-identity.cjs').agentReader(req, { logger }))
+  const requireCatalogueReader = async (req, res) => req.agentRead || requireDashboardUser(req, res)
 
   /**
    * Read one multipart upload: a single audio clip plus text fields.
@@ -259,6 +270,7 @@ function mount (app, deps) {
       if (!(await deps.requireAdminOrAgent(req, res, 'voice-slot:write'))) return
       return next()
     }
+    if (req.method === 'GET' && AGENT_READ_PATH.test(req.path) && (req.agentRead = agentReader(req))) return next()
     if (!(await requireAdmin(req, res))) return
     next()
   })
@@ -294,7 +306,7 @@ function mount (app, deps) {
   }
 
   app.get('/api/voicelab/params', async (req, res) => {
-    if (!await requireDashboardUser(req, res)) return
+    if (!await requireCatalogueReader(req, res)) return
     try {
       res.json(await params.payload({ charsSpentToday: store.charsSpentToday() }))
     } catch (err) { fail(res, err, 'params') }
