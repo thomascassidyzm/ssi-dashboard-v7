@@ -465,6 +465,19 @@
             </template>
           </nav>
 
+          <!-- EVERY LINE OF THE BATCH AS A READABLE LIST (Aran, 2026-10-15), first thing in the
+               sheet: tap the words to move the cursor there, ▶ to hear the take, Again to re-read.
+               The old grid-of-squares map is still here, behind its own toggle further down. -->
+          <BatchLineList
+            ref="batchListRef"
+            :rows="batchListRows"
+            :current-id="cursorLineId"
+            :playing-id="playingId"
+            @jump="jumpFromSheet"
+            @play="togglePlay"
+            @record="recordFromSheet"
+          />
+
           <!-- THE PRACTICE-PHRASE BATCH (Aran, 2026-10-13, job #619): which pass, which batch of
                how many, and that the rest come later. -->
           <div v-if="showPhraseCard" class="volume-card phrase-card" data-test="phrase-batch">
@@ -567,7 +580,14 @@
           </section>
 
           <!-- THE MAP: every line, each a way back onto it ("Read it again"). -->
+          <!-- THE MAP AND THE EDITING TOOLS, tucked behind a toggle (Aran, 2026-10-15: the grid of
+               squares is hard to use; the list above is the way onto a line now). v-show, so its
+               open sections and an edit in progress survive the toggle. -->
+          <button type="button" class="map-toggle" data-test="map-toggle" :aria-expanded="showMap ? 'true' : 'false'" @click="showMap = !showMap">
+            {{ showMap ? 'Hide the map and editing tools' : 'Show the map and editing tools' }}
+          </button>
           <RecordistRoster
+            v-show="showMap"
             ref="rosterRef"
             :sections="rosterSections"
             :playing-id="playingId"
@@ -676,6 +696,7 @@ import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
 import RawVsProcessed from '@/components/production/autocue/RawVsProcessed.vue'
 import RecordistRoster from './recordist/RecordistRoster.vue'
+import BatchLineList from './recordist/BatchLineList.vue'
 import { useSectionCollapse } from './recordist/section-collapse'
 import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStoredClip'
 import { createAdvanceLock } from './recordist/advance-lock'
@@ -1076,6 +1097,35 @@ const navCourses = computed(() => {
 })
 const rosterRef = ref(null)
 // "Lines" is on this page: open the whole list and put it under his thumb.
+// THE BATCH AS A LIST in the sheet (BatchLineList): one row per line, numbered, in the rail's
+// four states. ▶ is offered for any take he can hear: a saved one from the server, or one still
+// uploading (this session's from memory, an earlier session's from the device store).
+const showMap = ref(false)
+const batchListRef = ref(null)
+const cursorIndex = computed(() => (phase.value === 'ready' ? readyIndex.value : index.value))
+const cursorLineId = computed(() => { const l = lines.value[cursorIndex.value]; return l ? l.id : null })
+const batchListRows = computed(() => {
+  localTakeVersion.value // a take made this session re-evaluates the play buttons
+  return lines.value.map((l, i) => {
+    const state = lineStateWords(l).replace(' ', '-')
+    const hasTake = state === 'saved' || state === 'uploading'
+    return {
+      id: l.id, n: i + 1,
+      text: plainText(l.text),
+      known: l.knownText ? plainText(l.knownText) : null,
+      state, hasTake,
+      playable: !!storedUrlFor(l.id) || !!localUrlFor(l.id) || isPending(l.id),
+    }
+  })
+})
+// THE CURSOR GOES TO THE LINE TAPPED, and nothing else happens: the mic is not opened.
+function jumpFromSheet(lineId) {
+  if (!lines.value.some(l => l.id === lineId)) return
+  pinCursor(lineId)
+  closeSheet()
+  // From the done screen the batch page is where the cursor is drawn, so go back to it.
+  if (phase.value === 'done') backToStart()
+}
 function goToLines() {
   const r = Array.isArray(rosterRef.value) ? rosterRef.value[0] : rosterRef.value
   sheetOpen.value = true
@@ -1540,6 +1590,14 @@ function recordFromSheet(lineId) {
   return recordOne(lineId)
 }
 watch(phase, (p) => { if (p === 'recording') sheetOpen.value = false })
+// The sheet opens with the current line in view, not at the top of a hundred rows.
+watch(sheetOpen, (open) => {
+  if (!open) return
+  nextTick(() => {
+    const el = document.querySelector('[data-test="batch-lines"] .bl-row.now')
+    if (el && el.scrollIntoView) el.scrollIntoView({ block: 'center' })
+  })
+})
 
 // ── Rewriting a line, on a TEST COURSE only ─────────────────────────────────
 // Tom, 2026-09-02: "it is a TEST course so it can have any rules we like", so
@@ -1954,7 +2012,17 @@ function togglePlay(lineId) {
   playbackError.value = null
   if (playingId.value === lineId) { stopPlayback(); return }
   const url = storedUrlFor(lineId) || localUrlFor(lineId)
-  if (!url) return
+  if (!url) {
+    // A take still on its way up from an EARLIER session: its bytes are in the device store.
+    if (isPending(lineId) && typeof queue.pendingBlobFor === 'function') {
+      queue.pendingBlobFor(lineId).then(blob => {
+        if (!blob) return
+        rememberLocalTake(lineId, blob)
+        if (localUrlFor(lineId)) togglePlay(lineId)
+      }).catch(() => {})
+    }
+    return
+  }
   stopPlayback()
   // Hold the mic BEFORE a byte plays. Doing it after would leave the first
   // moment of the playback on the take.
@@ -2320,6 +2388,11 @@ watch(() => recorder.quietMs.value, (ms) => {
   // watcher cannot fire again until the recordist has actually said something on
   // the NEW line. A timer here would be doing nothing that the recorder is not
   // already doing, so there isn't one.
+  // THE LAST LINE NEVER MOVES ON BY ITSELF (Aran, 2026-10-15, live): on the last line, moving on
+  // means finishing the batch, and a 1.2-second pause in the middle of a re-read took him to the
+  // finished screen before he had finished speaking (and filed the half-read take). On the last
+  // line he taps Done; the finished screen appears only when he moves past it himself.
+  if (!hasNext.value) return
   if (ms >= AUTO_ADVANCE_QUIET_MS) onNext('auto')
 })
 
@@ -3185,6 +3258,11 @@ kbd {
 /* THE MINIMAL SET's own card. Deliberately quiet: it sits above the roster and
    answers "how big is this job" in one line, which is the question a recordist
    standing at a microphone is actually asking. */
+.map-toggle {
+  display: block; width: 100%; margin: 0.5rem 0 0.75rem; min-height: 44px; border-radius: 10px; cursor: pointer;
+  font: inherit; font-weight: 700; background: transparent; color: inherit; border: 1px solid var(--line, #334155);
+}
+:root[data-theme="light"] .map-toggle { border-color: #94a3b8; color: #0f172a; }
 .volume-card {
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 10px;

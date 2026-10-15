@@ -438,12 +438,24 @@ export function useRecordistQueue(options = {}) {
 
   function isUnsent(lineId) { return unsentLines.has(lineId) }
 
+  /**
+   * The bytes of a take still waiting to upload, READ from the shelf so the booth can play it
+   * back (Lines & settings ▶, 2026-10-15). Read-only: nothing on the shelf changes. The newest
+   * take for the line, which is the one that will be sent.
+   */
+  async function pendingBlobFor(lineId) {
+    const s = await ensureStore()
+    const recs = (await s.pending(voiceId)).filter(r => r.lineId === lineId)
+    recs.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0))
+    return recs.length ? recs[0].blob || null : null
+  }
+
   /** Re-read the shelf against what is now recorded — call after the server's line list arrives. */
   function reconcile() { return refreshCounts() }
 
   return {
     attach, queueTake, markFailed, discardRefused, reset, teardown, drain, reconcile,
-    isUnsent,
+    isUnsent, pendingBlobFor,
     pendingCount, savedCount, carriedOverCount, refusedCount, refusedTakes, staleCount,
     persistent, storageNote, uploadingLine, lastError,
     saved, failed, unsentLines,

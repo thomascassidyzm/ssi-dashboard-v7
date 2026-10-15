@@ -15,11 +15,11 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { ref } from 'vue'
-import { mount, flushPromises } from '@vue/test-utils'
+import { mount, flushPromises, enableAutoUnmount } from '@vue/test-utils'
 
 const queued = vi.hoisted(() => [])
 const savedTakes = vi.hoisted(() => new Map())
-const mic = vi.hoisted(() => ({ speech: null, endLine: null }))
+const mic = vi.hoisted(() => ({ speech: null, quiet: null, endLine: null }))
 
 vi.mock('@/composables/useRecordistQueue', () => ({
   DURABLE_TAKES_FEATURE: 'durable-take-store-2026-09-03',
@@ -37,13 +37,14 @@ vi.mock('@/composables/useRecordistQueue', () => ({
 vi.mock('@/composables/useTapRecorder', async () => {
   const { ref: vref } = await import('vue')
   mic.speech = vref(true)
+  mic.quiet = vref(0)
   return {
     DEFAULT_CAPTURE_PROFILE: 'voice',
     resolveCaptureProfile: () => 'phone',
     useTapRecorder: () => ({
       isRecording: vref(true), level: vref(0.3), clipping: vref(false),
       devices: vref([]), appliedSettings: vref({}), profile: vref('voice'), error: vref(null),
-      lineHasSpeech: mic.speech, quietMs: vref(0), meterTrusted: vref(true),
+      lineHasSpeech: mic.speech, quietMs: mic.quiet, meterTrusted: vref(true),
       inputPeak: vref(0.4), roomTone: vref(0.001),
       listDevices: vi.fn(), start: vi.fn().mockResolvedValue(undefined),
       awaitLeadIn: vi.fn().mockResolvedValue(undefined),
@@ -56,6 +57,9 @@ vi.mock('@/composables/useTapRecorder', async () => {
 })
 
 import RecordistRoom from './RecordistRoom.vue'
+
+// Every booth in this file shares one fake mic; a booth left mounted would hear the next test.
+enableAutoUnmount(afterEach)
 
 // Twelve lines, none recorded: a fresh batch he is reading top to bottom.
 const N = 12
@@ -202,5 +206,139 @@ describe('RecordistRoom — one cursor: back six, re-record, carry on from there
     await flushPromises()
     expect(queued.map(t => t.lineId)).toEqual(['L4'])
     expect(queued[0].text).toBe('llinell 4')
+  })
+})
+
+
+// AGAIN ON THE LAST LINE (Aran, live, 2026-10-15 15:09 BST): he pressed Again on the last line of
+// a batch, started reading, paused, and the booth jumped to the finished screen before he had
+// finished speaking. Auto-advance had fired on the pause; on the last line "advance" meant
+// "finish", and the half-read take was filed. The last line now never moves on by itself.
+describe('RecordistRoom — the last line never finishes the batch by itself', () => {
+  beforeEach(() => {
+    queued.length = 0; savedTakes.clear(); localStorage.clear()
+    mic.speech.value = true; mic.quiet.value = 0; mic.endLine = null
+    stubQueue()
+    clock = 1_000_000
+    vi.spyOn(Date, 'now').mockImplementation(() => clock)
+  })
+  afterEach(() => { vi.restoreAllMocks() })
+
+  async function pauseMidSentence(w) {
+    clock += 2000
+    mic.quiet.value = 1500
+    await flushPromises()
+    mic.quiet.value = 0
+    await flushPromises()
+  }
+
+  it('Again on the last line, then a pause mid-read: still recording that line, nothing filed', async () => {
+    const w = await mountAndStart()
+    await readThrough(w, N - 1)
+    expect(onLine(w)).toBe(`llinell ${N}`)
+    queued.length = 0
+    clock += 400
+    await w.find('.ctl-again').trigger('click'); await flushPromises()
+    await pauseMidSentence(w)
+    expect(w.find('[data-test="done"]').exists()).toBe(false)
+    expect(onLine(w)).toBe(`llinell ${N}`)
+    expect(queued.map(t => t.lineId)).toEqual([])
+    // He finishes and taps Done himself: the take is filed under the last line, and only now
+    // does the finished screen appear.
+    expect(w.find('.ctl-next').text()).toBe('Done')
+    await next(w)
+    expect(queued.map(t => t.lineId)).toEqual([`L${N}`])
+    expect(w.find('[data-test="done"]').exists()).toBe(true)
+  })
+
+  it('Again from the finished screen on the last line does not end the batch on a pause', async () => {
+    const w = await mountAndStart()
+    await readThrough(w, N) // Done on the last line → finished screen
+    expect(w.find('[data-test="done"]').exists()).toBe(true)
+    const again = w.findAll('.again-btn').find(b => b.element.closest('li')?.textContent.includes(`llinell ${N}`))
+    expect(again).toBeTruthy()
+    await again.trigger('click'); await flushPromises()
+    expect(onLine(w)).toBe(`llinell ${N}`)
+    queued.length = 0
+    await pauseMidSentence(w)
+    expect(w.find('[data-test="done"]').exists()).toBe(false)
+    expect(queued).toHaveLength(0)
+  })
+
+  it('a pause on any other line still moves on by itself, one line', async () => {
+    const w = await mountAndStart()
+    await readThrough(w, 3)
+    await pauseMidSentence(w)
+    expect(onLine(w)).toBe('llinell 5')
+    expect(queued.at(-1).lineId).toBe('L4')
+  })
+})
+
+// LINES & SETTINGS AS A READABLE LIST (Aran, 2026-10-15): every line of the batch, one per row,
+// numbered, the words and the other language beneath, a dot in the rail's colours; the current
+// line highlighted; tapping the words moves the cursor; ▶ plays his take and never moves it.
+describe('RecordistRoom — the batch as a list in Lines & settings', () => {
+  let played
+  beforeEach(() => {
+    queued.length = 0; savedTakes.clear(); localStorage.clear()
+    mic.speech.value = true; mic.quiet.value = 0; mic.endLine = null
+    const lines = makeLines()
+    lines[1] = { ...lines[1], recorded: true, clipUrl: '/api/recording/voice/v/line/L2/clip' }
+    lines[2] = { ...lines[2], recorded: true, clipUrl: '/api/recording/voice/v/line/L3/clip' }
+    stubQueue(lines)
+    played = []
+    global.Audio = class { constructor() { this.src = '' } play() { played.push(this.src); return Promise.resolve() } pause() {} }
+    clock = 1_000_000
+    vi.spyOn(Date, 'now').mockImplementation(() => clock)
+  })
+  afterEach(() => { vi.restoreAllMocks() })
+
+  async function openList() {
+    const w = mount(RecordistRoom, { props: { voiceId: 'human_test_zzz' } })
+    await flushPromises()
+    await w.find('[data-test="open-sheet"]').trigger('click'); await flushPromises()
+    return w
+  }
+  const rows = (w) => w.findAll('[data-test="batch-line"]')
+
+  it('shows every line, numbered, with the words, the other language and a state dot', async () => {
+    const w = await openList()
+    expect(rows(w)).toHaveLength(N)
+    const r2 = rows(w)[1]
+    expect(r2.find('.bl-n').text()).toBe('2')
+    expect(r2.find('.bl-text').text()).toBe('llinell 2')
+    expect(r2.find('.bl-known').text()).toBe('line 2')
+    expect(r2.find('.bl-dot').classes()).toContain('saved')
+    expect(rows(w)[0].find('.bl-dot').classes()).toContain('not-yet')
+    // The current line (Start's line: the first one still owed) is the highlighted row.
+    expect(rows(w)[0].classes()).toContain('now')
+    // ▶ only where there is a take to hear; Again / Record on every row.
+    expect(rows(w)[0].find('[data-test="batch-line-play"]').exists()).toBe(false)
+    expect(r2.find('[data-test="batch-line-play"]').exists()).toBe(true)
+    expect(r2.find('[data-test="batch-line-record"]').text()).toBe('Again')
+    expect(rows(w)[0].find('[data-test="batch-line-record"]').text()).toBe('Record')
+    // The grid of squares is tucked away behind its own toggle.
+    expect(w.find('.section-map').isVisible()).toBe(false)
+  })
+
+  it('tapping a row\'s words moves the cursor there; ▶ plays and does not', async () => {
+    const w = await openList()
+    await rows(w)[2].find('[data-test="batch-line-play"]').trigger('click'); await flushPromises()
+    expect(played).toHaveLength(1)
+    expect(played[0]).toContain('L3')
+    expect(w.find('[data-test="ready-line"]').text()).toBe('llinell 1')
+    expect(rows(w)[0].classes()).toContain('now')
+
+    await rows(w)[6].find('[data-test="batch-line-go"]').trigger('click'); await flushPromises()
+    expect(w.find('[data-test="ready-line"]').text()).toBe('llinell 7')
+    expect(rows(w)[6].classes()).toContain('now')
+    await w.find('.btn-begin').trigger('click'); await flushPromises()
+    expect(onLine(w)).toBe('llinell 7')
+  })
+
+  it('Again on a row opens the mic on that line', async () => {
+    const w = await openList()
+    await rows(w)[2].find('[data-test="batch-line-record"]').trigger('click'); await flushPromises()
+    expect(onLine(w)).toBe('llinell 3')
   })
 })
