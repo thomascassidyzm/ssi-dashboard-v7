@@ -11,13 +11,6 @@
       <strong>{{ safetyBanner.head }}</strong>
       <span>{{ safetyBanner.detail }}</span>
     </div>
-    <!-- THE LIST THAT BANNER POINTS AT (Aran, 2026-10-15): on the home page, each refused take with its reason. -->
-    <RefusedTakes
-      v-if="phase === 'home' && refusedHomeRows.length"
-      :rows="refusedHomeRows"
-      @rerecord="rerecordRefused"
-      @dismiss="r => queue.discardRefused(r.lineId)"
-    />
     <!-- Loading -->
     <section v-if="phase === 'loading'" class="rc-card center">
       <div class="rc-spinner"></div>
@@ -51,7 +44,7 @@
       @home="goHome"
       @tick="setTick"
     >
-      <template #top><RerecordCard :rows="rerecordRows" @open="openRerecord" /></template>
+      <template #top><RerecordCard :rows="rerecordRows" :old-ids="oldRefusedList" @open="openRerecord" @play="playRefused" @clear-old="clearOldRefused" /></template>
     </BoothHome>
 
     <!-- ── THE PROMPTER (Aran, 2026-10-14, job #424; design #419 Option A) ──────────────────
@@ -734,10 +727,9 @@ import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
 import BoothHome from './recordist/BoothHome.vue'
-import RefusedTakes from './recordist/RefusedTakes.vue'
-import { refusedRows, refusedLineWords, placeLines } from './recordist/refused-takes.js'
+import { refusedLineWords, placeLines } from './recordist/refused-takes.js'
 import RerecordCard from './recordist/RerecordCard.vue'
-import { mergeRerecord, alsoIds } from './recordist/rerecord-list.js'
+import { mergeRerecord, oldRefusedIds, alsoIds } from './recordist/rerecord-list.js'
 // The re-record card's batch (job #788): services/voice-engine/booth-rerecord.cjs RERECORD_TRACK.
 const RERECORD_TRACK = 'rerecord'
 import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, withDeviceTakes, loadPlaces, savePlaces, placeFromEntry } from './recordist/booth-home.js'
@@ -1889,16 +1881,8 @@ const safetyBanner = computed(() => {
       detail: 'This browser will not keep recordings, so keep this page open until they have all uploaded.',
     }
   }
-  // HOME ONLY: "listed below" is true only on the home page, where RefusedTakes lists them. In a
-  // batch the rail marks them red and one slim bar counts them (Aran, 2026-10-15, job #783); a
-  // second notice up here was one more thing between him and the line.
-  if (queue.refusedCount.value > 0 && unsentCount.value === 0 && phase.value === 'home') {
-    return {
-      cls: 'refused',
-      head: `${queue.refusedCount.value} ${takesWord(queue.refusedCount.value)} the server would not accept`,
-      detail: 'They are listed below with the reason. Read those lines again when you can.',
-    }
-  }
+  // A refused take has no banner of its own: on the home page it is a row of the one Re-record
+  // card (job #806), and in a batch the rail marks it and one slim bar counts it (job #783).
   if (unsentCount.value > 0) {
     const carried = queue.carriedOverCount.value
     return {
@@ -2918,12 +2902,6 @@ function placeOfLine(id) {
 const unplacedUnsent = computed(() => unsentIds.value.filter(id => !placeOfLine(id)).length)
 const homeTracks = computed(() => withDeviceTakes((homeSummary.value && homeSummary.value.tracks) || [], { unsent: unsentIds.value, placeOf: placeOfLine })
   .map(t => ({ ...withLocalRecorded(t), ...describeTrack(t) })))
-// THE REFUSED TAKES ON THE HOME PAGE: one row per take the banner counts.
-const refusedHomeRows = computed(() => refusedRows({
-  takes: (queue.refusedTakes && queue.refusedTakes.value) || [],
-  lines: locatorLines.value,
-  tracks: homeTracks.value,
-}))
 let locating = false
 async function locateRefused() {
   if (locating || locatorLines.value) return
@@ -2948,19 +2926,42 @@ async function locateRefused() {
   } catch { /* the rows stay "finding the line"; Dismiss still works */ } finally { locating = false }
 }
 watch([phase, () => (queue.refusedTakes ? queue.refusedTakes.value.length : 0), unplacedUnsent], () => {
-  if (phase.value === 'home' && (refusedHomeRows.value.length || unplacedUnsent.value)) locateRefused()
+  if (phase.value === 'home' && ((queue.refusedTakes && queue.refusedTakes.value.length) || unplacedUnsent.value)) locateRefused()
 }, { immediate: true })
-// Re-record: open that exact line in the recording screen (?line= is read once the batch has loaded).
-function rerecordRefused(r) {
-  if (!r.track) return
-  goToAddress({ track: r.track, batch: String(r.batch), line: r.lineId })
-}
-
 // ── THE RE-RECORD CARD (Aran, 2026-10-15, job #788) ──────────────────────────
 // The server's skips and text changes (/rerecord), with this device's refused takes merged in
 // and anything still uploading or saved since taken off (recordist/rerecord-list.js).
 const rerecordServer = ref({ items: [], recordedAlso: [] })
+// Refused takes whose line the full queue no longer holds: old, not misses.
+const goneRefusedIds = computed(() => {
+  if (!locatorLines.value) return []
+  const have = new Set(locatorLines.value.map(l => l.id))
+  return ((queue.refusedTakes && queue.refusedTakes.value) || []).map(t => t.lineId).filter(id => !have.has(id))
+})
+const oldRefusedList = computed(() => oldRefusedIds({
+  serverItems: rerecordServer.value.items,
+  recordedAlso: rerecordServer.value.recordedAlso,
+  refusedTakes: (queue.refusedTakes && queue.refusedTakes.value) || [],
+  saved: queue.saved,
+  goneIds: goneRefusedIds.value,
+}))
+// Only the refused COPIES on this device go, after a confirm; a take still uploading is never touched.
+async function clearOldRefused(ids) {
+  const n = (ids || []).length
+  if (!n) return
+  if (!window.confirm(`Clear ${n} old ${n === 1 ? 'copy' : 'copies'}?\n\nThese takes were refused and their lines are already recorded or no longer yours. Only these copies on this device are removed.`)) return
+  for (const id of ids) await queue.discardRefused(id)
+}
+let refusedPlayer = null
+async function playRefused(lineId) {
+  const blob = await queue.refusedBlob(lineId)
+  if (!blob) return
+  if (refusedPlayer) { refusedPlayer.pause(); URL.revokeObjectURL(refusedPlayer.src) }
+  refusedPlayer = new Audio(URL.createObjectURL(blob))
+  refusedPlayer.play().catch(() => {})
+}
 const rerecordRows = computed(() => mergeRerecord({
+  goneIds: goneRefusedIds.value,
   serverItems: rerecordServer.value.items,
   recordedAlso: rerecordServer.value.recordedAlso,
   refusedTakes: (queue.refusedTakes && queue.refusedTakes.value) || [],

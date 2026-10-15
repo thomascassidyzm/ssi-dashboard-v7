@@ -445,11 +445,19 @@ export function useRecordistQueue(options = {}) {
     return (rec && rec.blob) || null
   }
 
+  /** The bytes of a take the server refused, still on this device, so the re-record card can play it. */
+  async function refusedBlob(lineId) {
+    if (!voiceId) return null
+    const s = await ensureStore()
+    const rec = (await s.refused(voiceId)).filter(r => r.lineId === lineId).pop()
+    return (rec && rec.blob) || null
+  }
+
   /** Re-read the shelf against what is now recorded — call after the server's line list arrives. */
   function reconcile() { return refreshCounts() }
 
   return {
-    attach, queueTake, markFailed, discardRefused, reset, teardown, drain, reconcile,
+    attach, queueTake, markFailed, discardRefused, refusedBlob, reset, teardown, drain, reconcile,
     isUnsent, unsentBlob,
     pendingCount, savedCount, carriedOverCount, refusedCount, refusedTakes, staleCount,
     persistent, storageNote, uploadingLine, lastError,
