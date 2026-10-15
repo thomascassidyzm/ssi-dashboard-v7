@@ -3,8 +3,8 @@
 // Re-voice a course's TARGET slots for seeds 1..N onto the course's cast voices (job #863, re-dispatch of #641/#669:
 // Tom 2026-10-12 01:22Z "seeds 1-100 in the NEW target voices for Spanish, French and Mexican Spanish; the app should
 // point to each new clip as soon as it is recorded").
-// The sanctioned shape since #388 (2026-10-14, courses change only through Popty): the one render route WITHOUT a voiceId
-// (library-first, spend guard, the course cast voice, one render, no retries), a live check that the learner proxy serves
+// The sanctioned shape since #388 (2026-10-14, courses change only through Popty): the one render route
+// (library-first, spend guard, one render, no retries) naming the course's cast voice from its voice-config, a live check that the learner proxy serves
 // the new clip, then Popty's link-clip with replace + expectCurrent (which bumps content_version). Nothing here writes the
 // DB itself and no clip is ever deleted — make-before-break by construction.
 // A slot is OLD when its clip is a TTS clip on any voice other than the cast voice for its role. Human takes are never touched.
@@ -67,11 +67,13 @@ async function main() {
   const PURPOSE = `job #863: ${COURSE} seeds 1-${SEEDS} target slots onto the course cast voices (Tom 2026-10-12)`;
   const db = require('../../services/shared/agent-db.cjs');
 
+  // The cast is the course's stored voice-config (Popty's own read route); the voice is named on every render so a clip can never land off-cast.
   const castByRole = {};
+  const vc = await fetch(`${URL}/api/courses/${COURSE}/voice-config/resolved`).then((r) => r.json()).catch(() => ({}));
   for (const role of ROLES) {
-    const d = await post('/api/audio/render', { courseCode: COURSE, role, text: 'hola', purpose: `${PURPOSE} (cast probe)`, dryRun: true });
-    if (d.status !== 200 || !d.body.voiceId) { console.log(`NO CAST for ${role}: ${d.status} ${JSON.stringify(d.body).slice(0, 300)}`); return; }
-    castByRole[role] = d.body.voiceId;
+    const v = vc.stored && vc.stored.voices && vc.stored.voices[role];
+    if (!v || v.provider !== 'cartesia' || !v.voiceId) { console.log(`NO CAST for ${role}: ${JSON.stringify(v || null).slice(0, 300)}`); return; }
+    castByRole[role] = `cartesia_${bare(v.voiceId)}`;
   }
   console.log(`${COURSE} cast: target1 ${castByRole.target1}, target2 ${castByRole.target2}`);
 
@@ -107,7 +109,7 @@ async function main() {
   let n = 0;
   for (const a of asks) {
     if (MAX && out.spent + a.chars > MAX) { stopped = `MAX_CHARS ${MAX} reached`; break; }
-    const r = await post('/api/audio/render', { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE });
+    const r = await post('/api/audio/render', { courseCode: COURSE, role: a.role, text: a.text, voiceId: castByRole[a.role], purpose: PURPOSE });
     if (isStop(r)) { stopped = `REFUSED ${r.status} ${r.body.code || ''} ${r.body.error || ''}`; break; }
     if (r.status !== 200 || !r.body.ok) { console.log('  FAIL', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 200)); if (++out.failed >= 5) { stopped = '5 failures'; break; } continue; }
     if (r.body.source === 'rendered') { out.rendered++; out.spent += r.body.charsSpent || 0; } else out.library++;
