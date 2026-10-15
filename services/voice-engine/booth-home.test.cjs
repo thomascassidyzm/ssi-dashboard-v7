@@ -11,7 +11,7 @@
 'use strict'
 const assert = require('assert')
 const { buildHomeTracks, selectBatch, trackKeyOf } = require('./booth-home.cjs')
-const { phraseBatchList } = require('./phrase-queue.cjs')
+const { phraseBatchList, servePhraseBatch } = require('./phrase-queue.cjs')
 
 const seed = (i, extra = {}) => ({ id: `seed:${i}`, kind: 'seed', courseCode: 'cym_nv2_for_eng', seedExisting: true, recorded: false, ...extra })
 const lines = [
@@ -71,7 +71,35 @@ const servedSecond = { phrases: { pass: 1, batch: 2, courseCode: 'cym_nv2_for_en
 const p1Later = buildHomeTracks(lines, servedSecond.phrases, batchList).find((t) => t.key === 'phrase.1')
 assert.deepStrictEqual(p1Later.batches.filter((b) => b.current).map((b) => b.n), [2])
 assert.deepStrictEqual(selectBatch(lines, 'phrase.1', 2, servedSecond).map((l) => l.id), ['phrase:a:target2'], 'the served batch opens by its card number')
-assert.deepStrictEqual(selectBatch(lines, 'phrase.1', 1, servedSecond), [], 'an unserved batch serves nothing')
+
+// #697 (Aran): ANY phrase batch of the plan opens on request. The booth's queue carries only the
+// served batch; the others are read from the plan, and reading one moves nobody's pointer.
+const planCounts = { cym_nv2_for_eng: { 1: 2, 2: 1 } }
+const isRec = (l) => l.id === 'x1'
+const wireOf = (l) => ({ id: `phrase:${l.id}:target2`, kind: 'phrase', phrasePass: l.pass, courseCode: l.courseCode, recorded: !!l.recorded })
+const openPhraseBatch = (want) => {
+  const got = servePhraseBatch(plan, isRec, planCounts, want)
+  return { summary: got.summary, lines: got.lines.map(wireOf) }
+}
+const servedFromQueue = servePhraseBatch(plan, isRec, planCounts)
+assert.strictEqual(servedFromQueue.summary.batch, 1, 'batch 1 is served: x2 is still unread')
+const ctx697 = { phrases: servedFromQueue.summary, phraseBatches: batchList, openPhraseBatch }
+const queueLines = servedFromQueue.lines.map(wireOf)
+assert.deepStrictEqual(selectBatch(queueLines, 'phrase.1', 1, ctx697).map((l) => l.id), ['phrase:x1:target2', 'phrase:x2:target2'], 'the served batch still opens')
+// A FUTURE phrase batch: batch 2's only line is held for proofing, so it is counted and not served;
+// pass 2's batch 1 has a line and opens although pass 1 is unfinished.
+assert.deepStrictEqual(selectBatch(queueLines, 'phrase.2', 1, ctx697).map((l) => l.id), ['phrase:x4:target2'], 'a future pass opens by its card number')
+assert.deepStrictEqual(selectBatch(queueLines, 'phrase.1', 2, ctx697), [], 'a batch of only held lines serves nothing')
+assert.deepStrictEqual(selectBatch(queueLines, 'phrase.1', 9, ctx697), [], 'no such batch')
+assert.deepStrictEqual(servePhraseBatch(plan, isRec, planCounts).summary.batch, 1, 'reading a batch left the served batch where it was')
+// The opened batch is described as itself.
+assert.strictEqual(servePhraseBatch(plan, isRec, planCounts, { pass: 2, batch: 1, courseCode: 'cym_nv2_for_eng' }).summary.pass, 2)
+const plan2 = [...plan, pl('x5', 1, 3, 40), pl('x6', 1, 3, 41)]
+const batchList2 = phraseBatchList(plan2, isRec)
+const open2 = (want) => { const g = servePhraseBatch(plan2, isRec, planCounts, want); return { summary: g.summary, lines: g.lines.map(wireOf) } }
+assert.deepStrictEqual(selectBatch(queueLines, 'phrase.1', 3, { ...ctx697, phraseBatches: batchList2, openPhraseBatch: open2 }).map((l) => l.id), ['phrase:x5:target2', 'phrase:x6:target2'], 'a future phrase batch opens with its own lines')
+// A future SENTENCE batch opens with its own lines too (the server never locked these).
+assert.strictEqual(selectBatch(lines, 'seed.cym_nv2_for_eng', 5)[0].id, 'seed:400')
 
 // #378: LEGO lines (the gated 'lego' kind, #366) are a card of their own, cut into batches of
 // 100 in queue order like new sentences, and the card and the batch agree.

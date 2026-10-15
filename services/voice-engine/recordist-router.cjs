@@ -581,8 +581,15 @@ module.exports = function createRecordistRouter({
       // the summary counted it with (booth-home.cjs), so the card and the batch
       // agree. Only what goes over the wire narrows; the queue is the queue.
       const trackScope = typeof req.query.track === 'string' && req.query.track.trim() ? req.query.track.trim() : null
+      // A PHRASE BATCH OPENED FROM THE HOME SCREEN may be any batch of the plan (job #697); the
+      // header then describes the batch opened, not the one the queue serves. Read-only.
+      const phraseCtx = { phrases: queue.phrases, phraseBatches: queue.phraseBatches, openPhraseBatch: queue.openPhraseBatch }
+      const batchN = parseInt(req.query.batch, 10)
+      const openedPhrase = trackScope && trackScope.startsWith('phrase.')
+        ? boothHome.openPhraseBatch(inScope(queue.lines).filter((l) => boothHome.trackKeyOf(l) === trackScope), trackScope, Number.isFinite(batchN) && batchN >= 1 ? batchN : 1, phraseCtx)
+        : null
       const lines = trackScope
-        ? boothHome.selectBatch(inScope(queue.lines), trackScope, parseInt(req.query.batch, 10), { phrases: queue.phrases, phraseBatches: queue.phraseBatches })
+        ? (openedPhrase ? openedPhrase.lines : boothHome.selectBatch(inScope(queue.lines), trackScope, batchN, phraseCtx))
         : inScope(queue.lines)
       // Scoped counts are counted over the lines on the wire (the booth always
       // asks includeRecorded=1, so they are the scope's whole tally there).
@@ -618,7 +625,7 @@ module.exports = function createRecordistRouter({
         quarry: queue.quarry,
         // THE PRACTICE-PHRASE BATCH this reader is on (job #619): pass, batch,
         // how far through, what comes later. Null when they read no phrases.
-        phrases: queue.phrases || null,
+        phrases: (openedPhrase && openedPhrase.summary) || queue.phrases || null,
         total: totalInScope,
         recorded: recordedInScope,
         remaining: totalInScope - recordedInScope,

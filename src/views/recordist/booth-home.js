@@ -7,7 +7,7 @@
  *
  * UP NEXT ORDER, his ruling: new sentences before practice phrases, then everything else in the
  * queue's own order. LEGOs sit between the two (job #378: "sentences, then LEGOs, then phrases"). Within a piece of work, the first ticked batch that still has lines to read
- * and can be opened (practice phrases open one batch at a time — the queue's rule, not ours).
+ * and can be opened (practice phrases are recommended one served batch at a time; every batch can still be opened by hand).
  *
  * The ticks are this browser's memory of what he is doing and nothing else: they decide what Up
  * next offers, never which lines are in the queue or how they are served. Stored as what he has
@@ -28,16 +28,24 @@ export const hasBatchTicks = (t) => (t.kind === 'seed' || t.kind === 'lego') && 
 const left = (x) => Math.max(0, (x.total || 0) - (x.recorded || 0))
 export const isFinished = (t) => t.total > 0 && left(t) === 0
 
-/** Practice phrases: pass 2 waits for pass 1; within a pass only the batch being served opens. */
+/**
+ * UP NEXT'S RULE, not a lock: practice phrases are RECOMMENDED one served batch at a time, and
+ * pass 2 only once pass 1 is finished. It decides what Up next and a whole-card tap offer; it no
+ * longer decides what can be opened (Aran, job #697: "we should be able to open the current batch
+ * or future batches").
+ */
 export function trackLocked(t, tracks) {
   if (t.kind !== 'phrase' || t.pass !== 2) return false
   const p1 = tracks.find((x) => x.key === 'phrase.1')
   return !!(p1 && !isFinished(p1))
 }
-export function batchOpenable(t, b, tracks) {
+/** Is this the batch Up next may recommend? Sentences and LEGOs: any; phrases: the served one. */
+export function batchRecommendable(t, b, tracks) {
   if (t.kind !== 'phrase') return true
   return !trackLocked(t, tracks) && !!b.current
 }
+/** Can the reader open this batch from the home cards or the tick panel? Every batch can be. */
+export function batchOpenable() { return true }
 
 /** Up next's order: new sentences, then LEGOs, then practice phrases (pass 1, pass 2), then the rest. */
 export function orderedTracks(tracks) {
@@ -80,7 +88,7 @@ export function upNext(tracks, off = new Set()) {
     if (isFinished(t) || !isTicked(off, t.key) || trackLocked(t, tracks)) continue
     for (const b of t.batches || []) {
       if (left(b) === 0) continue
-      if (!batchOpenable(t, b, tracks)) continue
+      if (!batchRecommendable(t, b, tracks)) continue
       if (hasBatchTicks(t) && !isTicked(off, batchTickId(t.key, b.n))) continue
       return { track: t, batch: b }
     }
@@ -90,7 +98,7 @@ export function upNext(tracks, off = new Set()) {
 
 /** The batch to open when a whole card is tapped, or null when he should pick from its list. */
 export function firstOpenBatch(t, tracks) {
-  return (t.batches || []).find((b) => left(b) > 0 && batchOpenable(t, b, tracks)) || null
+  return (t.batches || []).find((b) => left(b) > 0 && batchRecommendable(t, b, tracks)) || null
 }
 
 const tickKey = (voiceId) => `booth.home.unticked.${voiceId}`

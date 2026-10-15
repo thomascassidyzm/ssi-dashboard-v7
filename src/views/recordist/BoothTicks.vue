@@ -19,10 +19,14 @@
         >{{ openBatches(t).length }} {{ openBatches(t).length === 1 ? 'batch' : 'batches' }} {{ isOpen(t.key) ? '▾' : '▸' }}</button>
       </div>
       <template v-if="hasBatchTicks(t) && ticked(t.key) && isOpen(t.key)">
-        <label v-for="b in openBatches(t)" :key="b.n" class="bt-chk bt-sub-row">
-          <input type="checkbox" :checked="ticked(batchTickId(t.key, b.n))" @change="$emit('tick', batchTickId(t.key, b.n), $event.target.checked)" />
-          <span class="bt-grow">{{ batchName(t, b) }}<small>{{ t.kind === 'lego' ? 'LEGOs' : 'Sentences' }} {{ b.from }}–{{ b.to }} · {{ b.total - b.recorded }} left</small></span>
-        </label>
+        <div v-for="b in openBatches(t)" :key="b.n" class="bt-row bt-sub-row">
+          <label class="bt-chk">
+            <input type="checkbox" :checked="ticked(batchTickId(t.key, b.n))" @change="$emit('tick', batchTickId(t.key, b.n), $event.target.checked)" />
+            <span class="bt-grow">{{ batchName(t, b) }}<small>{{ t.kind === 'lego' ? 'LEGOs' : 'Sentences' }} {{ b.from }}–{{ b.to }} · {{ b.total - b.recorded }} left</small></span>
+          </label>
+          <!-- Outside the label: a tap opens the batch (job #697), it never ticks it. -->
+          <button type="button" class="bt-fold" :data-test="`open-${t.key}-${b.n}`" @click="$emit('open', t.key, b.n)">Open ›</button>
+        </div>
       </template>
     </template>
   </div>
@@ -39,7 +43,7 @@ defineProps({
   ticked: { type: Function, required: true },
   batchName: { type: Function, required: true },
 })
-defineEmits(['tick'])
+defineEmits(['tick', 'open'])
 
 const open = ref(loadTicksOpen())
 const isOpen = (key) => open.value.includes(key)
@@ -63,6 +67,7 @@ const openBatches = (t) => (t.batches || []).filter((b) => b.recorded < b.total)
 .bt-chk { display: flex; gap: 0.65rem; align-items: center; padding: 0.55rem 0.1rem; border-top: 1px solid var(--color-graphite, #475569); cursor: pointer; min-height: 44px; }
 .bt-chk input { width: 22px; height: 22px; flex: none; accent-color: var(--color-emerald, #06ffa5); }
 .bt-sub-row { padding-left: 1.6rem; border-top-style: dashed; }
+.bt-sub-row .bt-chk { padding-left: 0; }
 .bt-grow { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .bt-grow small { color: var(--color-paper-dim, #c1c1bb); font-size: 0.82rem; }
 </style>

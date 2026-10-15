@@ -296,22 +296,28 @@ function compareServed(a, b) {
  * @param {object[]} lines this reader's phrase lines (any course), batch and pass set
  * @param {(line) => boolean} isRecorded
  * @param {Object<string, {1:number, 2:number}>} batchCounts per course
+ * @param {{pass:number, batch:number, courseCode:string}} [want] OPEN THIS BATCH INSTEAD (booth
+ *   home, job #697: any batch can be opened on request). Pure: it picks which group is described and
+ *   nothing else, so reading a batch never moves what the queue is serving. Unknown batch → empty.
  * @returns {{ lines: object[], summary: object|null }}
  */
-function servePhraseBatch(lines, isRecorded, batchCounts) {
+function servePhraseBatch(lines, isRecorded, batchCounts, want = null) {
   if (!lines.length) return { lines: [], summary: null }
   const sorted = [...lines].sort(compareServed)
   const isHeld = (l) => l.copies.every((c) => c.flagged)
   const recorded = new Map(sorted.map((l) => [l.id, isRecorded(l)]))
   const outstanding = (l) => !recorded.get(l.id) && !isHeld(l)
   const groupKey = (l) => `${l.pass}\u0000${l.batch}\u0000${l.courseCode}`
-  const first = sorted.find(outstanding)
+  const first = want
+    ? sorted.find((l) => l.pass === want.pass && l.batch === want.batch && l.courseCode === want.courseCode)
+    : sorted.find(outstanding)
   const passTotals = { 1: 0, 2: 0 }
   const passRecorded = { 1: 0, 2: 0 }
   for (const l of sorted) {
     passTotals[l.pass] += 1
     if (recorded.get(l.id)) passRecorded[l.pass] += 1
   }
+  if (want && !first) return { lines: [], summary: null }
   if (!first) {
     return {
       lines: [],

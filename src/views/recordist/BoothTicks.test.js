@@ -32,4 +32,12 @@ describe('BoothTicks', () => {
     await first.find('.bt-fold').trigger('click')
     expect(mount(BoothTicks, { props }).findAll('.bt-sub-row')).toHaveLength(0)
   })
+
+  it('opens a future batch straight from the tick panel without ticking it (job #697)', async () => {
+    const w = mount(BoothTicks, { props })
+    await w.find('[data-test="fold-seed.cym_nv2_for_eng"]').trigger('click')
+    await w.find('[data-test="open-seed.cym_nv2_for_eng-3"]').trigger('click')
+    expect(w.emitted('open')).toEqual([['seed.cym_nv2_for_eng', 3]])
+    expect(w.emitted('tick')).toBeUndefined()
+  })
 })

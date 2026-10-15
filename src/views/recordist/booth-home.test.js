@@ -1,6 +1,6 @@
 // The booth home screen's decisions (job #347): Up next order, ticks, phrase locking.
 import { describe, it, expect } from 'vitest'
-import { upNext, groupTracks, batchTickId, trackLocked, firstOpenBatch, splitTicked, shownBatches, loadSummarySnapshot, saveSummarySnapshot } from './booth-home.js'
+import { upNext, groupTracks, batchTickId, trackLocked, firstOpenBatch, batchOpenable, splitTicked, shownBatches, loadSummarySnapshot, saveSummarySnapshot } from './booth-home.js'
 
 const seeds = (key, newCourse, batches) => ({
   key, kind: 'seed', newCourse, seedExisting: true,
@@ -82,5 +82,21 @@ describe('LEGOs, ticks hiding cards, and the kept home screen (job #378)', () =>
     expect(loadSummarySnapshot('human_aran_cym_n', storage, 2000).tracks[0].key).toBe('lego.cym_nv2_for_eng')
     expect(loadSummarySnapshot('human_aran_eng', storage, 2000)).toBe(null)
     expect(loadSummarySnapshot('human_aran_cym_n', storage, 1000 + 8 * 24 * 3600 * 1000)).toBe(null)
+  })
+})
+
+// Job #697 (Aran): every batch opens by hand; Up next keeps its order.
+describe('opening any batch (job #697)', () => {
+  it('lets a future sentence batch and a future phrase batch (and pass 2) be opened', () => {
+    expect(batchOpenable(tracks[2], tracks[2].batches[2], tracks)).toBe(true)
+    expect(batchOpenable(tracks[3], tracks[3].batches[1], tracks)).toBe(true)
+    expect(batchOpenable(tracks[4], tracks[4].batches[0], tracks)).toBe(true)
+  })
+  it('leaves Up next and a whole-card tap exactly as they were', () => {
+    expect(upNext(tracks).batch.n).toBe(2)
+    expect(upNext(tracks, new Set(['seed.cym_nv2_for_eng'])).track.key).toBe('phrase.1')
+    expect(upNext(tracks, new Set(['seed.cym_nv2_for_eng'])).batch.n).toBe(1)
+    expect(firstOpenBatch(tracks[3], tracks).n).toBe(1)
+    expect(firstOpenBatch(tracks[4], tracks)).toBe(null)
   })
 })

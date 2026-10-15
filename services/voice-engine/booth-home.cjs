@@ -123,8 +123,8 @@ function buildHomeTracks(lines, phrases = null, phraseBatches = null) {
         courseCode: mine[0].courseCode,
         total,
         recorded,
-        // ONE BATCH AT A TIME, the queue's rule (servePhraseBatch): only the batch it is serving
-        // now can be opened; the rest are shown, counted, and locked until their turn.
+        // Every batch of the plan can be opened (job #697); `current` marks the one the queue
+        // serves, which is what Up next recommends.
         batches: mine.map((b, i) => ({
           n: i + 1,
           batch: b.batch,
@@ -162,23 +162,41 @@ function servedPhraseBatchN(trackKey, phrases, phraseBatches) {
 }
 
 /**
+ * ANY PHRASE BATCH OF THE PLAN, by its card number (job #697, Aran: "we should be able to open
+ * the current batch or future batches"). The served batch answers from the queue's own lines; any
+ * other is read from the plan through `ctx.openPhraseBatch` — a read that moves no pointer, so
+ * opening a future batch never changes which batch the queue serves anyone.
+ * Returns {lines, summary} (summary = the opened batch's, same shape as queue.phrases) or null.
+ */
+function openPhraseBatch(trackLines, trackKey, n, ctx = {}) {
+  if (n === servedPhraseBatchN(trackKey, ctx.phrases, ctx.phraseBatches)) return { lines: trackLines, summary: ctx.phrases }
+  const pass = Number(trackKey.split('.')[1])
+  const entry = Array.isArray(ctx.phraseBatches) ? ctx.phraseBatches.filter((b) => b.pass === pass)[n - 1] : null
+  if (!entry || typeof ctx.openPhraseBatch !== 'function') return null
+  const got = ctx.openPhraseBatch({ pass, batch: entry.batch, courseCode: entry.courseCode })
+  return got && got.summary ? got : null
+}
+
+/**
  * The lines of ONE batch, for the booth's record screen. Unknown track or batch → [].
  *
- * PHRASE TRACKS: the queue holds only the batch it is serving, so asking for that batch's card
- * number returns its lines and asking for any other returns [] (that batch is locked on the
- * card, "opens after batch N"). Which batch is served is the queue's rule and is unchanged.
+ * PHRASE TRACKS: the queue holds only the batch it is serving, so the served batch answers from
+ * its lines and any other batch of the plan is read on request (openPhraseBatch). Which batch is
+ * SERVED is the queue's rule and is unchanged.
  *
- * @param {{phrases?: object, phraseBatches?: object[]}} [ctx] the queue's phrase summary and plan
+ * @param {{phrases?: object, phraseBatches?: object[], openPhraseBatch?: Function}} [ctx]
  */
 function selectBatch(lines, trackKey, batchN, ctx = {}) {
-  const trackLines = lines.filter((l) => trackKeyOf(l) === trackKey)
-  if (!trackLines.length) return []
   const n = Number.isFinite(batchN) && batchN >= 1 ? batchN : 1
   if (trackKey.startsWith('phrase.')) {
-    return n === servedPhraseBatchN(trackKey, ctx.phrases, ctx.phraseBatches) ? trackLines : []
+    const trackLines = lines.filter((l) => trackKeyOf(l) === trackKey)
+    const got = openPhraseBatch(trackLines, trackKey, n, ctx)
+    return got ? got.lines : []
   }
+  const trackLines = lines.filter((l) => trackKeyOf(l) === trackKey)
+  if (!trackLines.length) return []
   const batches = chunkTrack(trackKey, trackLines)
   return batches[n - 1] || []
 }
 
-module.exports = { SEED_BATCH_LINES, LEGO_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch, servedPhraseBatchN }
+module.exports = { SEED_BATCH_LINES, LEGO_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch, openPhraseBatch, servedPhraseBatchN }

@@ -14,7 +14,7 @@
       <p class="bh-sub">{{ openTrack.what }}</p>
       <div class="bh-bar"><i :style="{ width: pct(openTrack) }"></i></div>
       <p class="bh-sub">{{ n(openTrack.recorded) }} of {{ n(openTrack.total) }} recorded</p>
-      <p v-if="openTrack.kind === 'phrase'" class="bh-sub">One batch opens at a time. When a batch is finished, the next one opens.</p>
+      <p v-if="openTrack.kind === 'phrase'" class="bh-sub">Any batch can be opened. “Up next” still suggests them in order.</p>
       <div class="bh-list">
         <button
           v-for="b in openBatches" :key="b.n" type="button"
@@ -70,7 +70,7 @@
             {{ planOpen ? '▾' : '▸' }} What I'm doing — {{ tickedCount }} of {{ tickables.length }} ticked
           </button>
           <div v-if="!wide && planOpen" class="bh-side" aria-label="What I'm doing">
-            <BoothTicks :tickables="tickables" :ticked="ticked" :batch-name="batchName" @tick="(id, on) => $emit('tick', id, on)" />
+            <BoothTicks :tickables="tickables" :ticked="ticked" :batch-name="batchName" @tick="(id, on) => $emit('tick', id, on)" @open="(key, bn) => $emit('open', key, bn)" />
           </div>
 
           <template v-if="groups.main.length">
@@ -121,7 +121,7 @@
         <!-- THE TICKS (Option C): which scripts and batches he is doing. Down the right on a wide
              screen; on a phone, under Up next when opened. They steer Up next and nothing else. -->
         <aside v-if="wide" class="bh-side" aria-label="What I'm doing">
-          <BoothTicks :tickables="tickables" :ticked="ticked" :batch-name="batchName" @tick="(id, on) => $emit('tick', id, on)" />
+          <BoothTicks :tickables="tickables" :ticked="ticked" :batch-name="batchName" @tick="(id, on) => $emit('tick', id, on)" @open="(key, bn) => $emit('open', key, bn)" />
         </aside>
       </div>
     </section>
@@ -147,7 +147,8 @@ defineEmits(['open', 'card', 'home', 'tick'])
 
 const n = (x) => Number(x || 0).toLocaleString('en-GB')
 const pct = (x) => `${x.total ? Math.max(Math.round(100 * x.recorded / x.total), x.recorded ? 1 : 0) : 0}%`
-const withLock = (t) => ({ ...t, locked: trackLocked(t, props.tracks) })
+// Nothing is locked any more (job #697): every card opens to its batch list. Up next keeps its order.
+const withLock = (t) => ({ ...t, locked: false })
 // Unticked cards are hidden (job #378); the tick list still holds them, so ticking brings them back.
 const allGroups = computed(() => {
   const g = groupTracks(props.tracks)
@@ -185,15 +186,8 @@ function batchName(t, b) {
 function batchWords(t, b) {
   const done = `${n(b.recorded)} of ${n(b.total)} recorded`
   if (t.kind === 'phrase') {
-    if (trackLocked(t, props.tracks)) return `${n(b.total)} phrases · opens when pass 1 is finished`
     if (b.recorded >= b.total) return `${n(b.total)} phrases · all recorded`
-    // Only the batch the queue serves opens (its card number is what the batch fetch matches);
-    // a later one names the batch it waits on.
-    if (!b.current) {
-      const prev = t.batches[t.batches.indexOf(b) - 1]
-      return `${n(b.total)} phrases · ${prev ? `opens after ${batchName(t, prev)}` : 'opens when the batch before it is done'}`
-    }
-    return `${done}${b.held ? ` · ${b.held} held back for proofing` : ''}`
+    return `${done}${b.current ? ' · current batch' : ''}${b.held ? ` · ${b.held} held back for proofing` : ''}`
   }
   if (t.batches.length > 1) return `${t.kind === 'lego' ? 'LEGOs' : 'Sentences'} ${n(b.from)}–${n(b.to)} · ${done}`
   return done
