@@ -16,10 +16,15 @@
       <ol v-if="open" class="rr-list">
         <li v-for="r in rows" :key="r.lineId" class="rr-row" :data-test="`rerecord-row-${r.lineId}`">
           <button v-if="r.hasTake" type="button" class="rr-play" data-test="rerecord-play" aria-label="Play the take that did not save" @click="$emit('play', r.lineId)">▶</button>
+          <!-- A take that saved but did not match its words (job #842): it is on the server, so ▶ plays the stored take. -->
+          <button v-else-if="r.why === 'didnt_match'" type="button" class="rr-play" data-test="rerecord-play-stored" aria-label="Play the saved take" @click="$emit('play-stored', r.lineId)">▶</button>
           <span v-else class="rr-play-gap"></span>
           <span class="rr-text">{{ r.text }}</span>
           <small class="rr-why" :class="`w-${r.why}`" data-test="rerecord-why" :title="r.reasonFull || null">{{ r.words }}</small>
           <small v-if="r.oldText" class="rr-old">was: {{ r.oldText }}</small>
+          <small v-if="r.why === 'didnt_match' && r.heard" class="rr-old" data-test="rerecord-heard">we heard: {{ r.heard }}</small>
+          <!-- The check mishears dialect and elision; if the take is right, he keeps it and it leaves the list. -->
+          <button v-if="r.why === 'didnt_match' && r.takeId" type="button" class="rr-keep" data-test="rerecord-keep" @click="$emit('keep', r)">It's fine — keep it</button>
         </li>
       </ol>
     </template>
@@ -38,7 +43,7 @@ const props = defineProps({
   rows: { type: Array, required: true },
   oldIds: { type: Array, default: () => [] },
 })
-defineEmits(['open', 'play', 'clear-old'])
+defineEmits(['open', 'play', 'play-stored', 'keep', 'clear-old'])
 const open = ref(false)
 const breakdown = computed(() => breakdownWords(props.rows))
 </script>
@@ -64,6 +69,7 @@ const breakdown = computed(() => breakdownWords(props.rows))
 .rr-why { grid-column: 2; font-size: 0.75rem; opacity: 0.85; }
 .rr-text { font-size: 0.95rem; line-height: 1.35; overflow-wrap: anywhere; }
 .rr-old { grid-column: 2; font-size: 0.85rem; opacity: 0.8; overflow-wrap: anywhere; }
+.rr-keep { grid-column: 2; justify-self: start; min-height: 36px; margin-top: 0.2rem; padding: 0 0.8rem; border-radius: 10px; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
 :root[data-theme="light"] .rr { background: #fff1e6; border-color: #ea580c; color: #431407; }
 :root[data-theme="light"] .rr-kind, :root[data-theme="light"] .rr-play { background: #fed7aa; color: #7c2d12; }
 :root[data-theme="light"] .rr-go { background: #c2410c; color: #fff; }

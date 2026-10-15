@@ -116,7 +116,7 @@ const STT_CALLERS = {
   'services/audio-processor.cjs': 'infra',
   'services/audio-repair.cjs': 'advisory',           // TTS candidates: verdict recorded; uploads: human-recording
   'services/audio-reuse-planner.cjs': 'report',      // verifyPlanVeracity annotates, never re-decides
-  'services/production-api.cjs': 'human-recording',  // recordist upload text check, advisory
+  'services/take-text-check-queue.cjs': 'human-recording', // booth take's script check, after the reply (job #842); never refuses
   'services/voicelab-playground/server.cjs': 'infra',
   'services/voicelab/runner.cjs': 'infra',
   'tools/a108/isl-ell-est-render-verify.cjs': 'report',
