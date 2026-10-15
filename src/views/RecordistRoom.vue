@@ -497,6 +497,12 @@
                 <button v-if="hasTake(l)" type="button" class="bl-play" :class="{ on: playingId === l.id }"
                         :aria-label="playingId === l.id ? `Stop line ${i + 1}` : `Play your take of line ${i + 1}`"
                         @click="playFromList(l.id)">{{ playingId === l.id ? '■' : '▶' }}</button>
+                <!-- AGAIN / RECORD ON EVERY ROW (Aran, 2026-10-15): open the mic on THAT line, the same
+                     door the map's "Read it again" uses. Separate from the words, so a tap on the words
+                     only moves the cursor and ▶ only plays. -->
+                <button type="button" class="bl-again" data-test="batch-line-record"
+                        :aria-label="`${hasTake(l) ? 'Record again' : 'Record'} line ${i + 1}`"
+                        @click="recordFromSheet(l.id)">{{ hasTake(l) ? 'Again' : 'Record' }}</button>
               </li>
             </ol>
             <ul class="bl-legend">
@@ -3964,6 +3970,8 @@ kbd {
 .bl-words { min-width: 0; display: flex; flex-direction: column; gap: 0.1rem; }
 .bl-text { font-size: 1.05rem; line-height: 1.3; overflow-wrap: anywhere; }
 .bl-known { font-size: 0.8rem; line-height: 1.25; color: var(--ink-2, #94a3b8); overflow-wrap: anywhere; }
+.bl-again { flex: none; align-self: center; min-height: 44px; padding: 0 0.75rem; margin-right: 0.35rem; border-radius: 10px; cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 700; background: transparent; color: inherit; border: 1px solid var(--line, #334155); }
+:root[data-theme="light"] .bl-again { border-color: #94a3b8; color: #0f172a; }
 .bl-play { flex: none; align-self: center; width: 44px; height: 44px; margin-right: 0.35rem; border-radius: 50%; border: 0; cursor: pointer; font-size: 1rem; background: #34d399; color: #0f172a; }
 .bl-legend { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; list-style: none; margin: 0.5rem 0 0; padding: 0; font-size: 0.78rem; color: var(--ink-2, #cbd5e1); }
 .bl-legend li { display: flex; align-items: center; gap: 0.35rem; }
