@@ -15,9 +15,13 @@
 // guards against is somebody reaching for a translucent tint again, and a
 // translucent background fails here on sight because its contrast cannot be
 // known from the declaration alone.
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { readFileSync } from 'fs'
 import { fileURLToPath } from 'url'
+
+// Each test is a fresh visit: the booth remembers its line cursor in localStorage per voice
+// and batch (booth-cursor.js), and one test's cursor must not open the next test's Start.
+beforeEach(() => { if (typeof localStorage === 'undefined') return; for (const k of Object.keys(localStorage)) if (k.startsWith('recordist.cursor.')) localStorage.removeItem(k) })
 
 const css = readFileSync(fileURLToPath(new URL('./RecordistRoom.vue', import.meta.url)), 'utf8')
 

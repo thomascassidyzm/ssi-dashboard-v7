@@ -73,7 +73,8 @@
       <!-- ONE STATUS ROW, live only: the count, with the progress bar as its bottom edge. Stop and
            Pause are NOT here any more — they sit above Back / Again / Next (job #681). -->
       <div v-if="phase === 'recording'" class="status" data-test="status">
-        <span class="stage-progress" data-test="count">{{ recordedCount }} of {{ lines.length }}</span>
+        <span class="line-pos" data-test="line-pos">{{ linePosWords }} · <b class="line-state" :class="'ls-' + lineState.replace(' ', '-')" data-test="line-state">{{ lineState }}</b></span>
+        <span class="stage-progress" data-test="count">{{ recordedCount }} of {{ lines.length }} recorded</span>
         <span class="status-edge" aria-hidden="true"><i :style="{ width: progressPct + '%' }"></i></span>
       </div>
       <!-- ONE MIC SIGNAL, A WIDE STRIP (Aran, 2026-10-15, job #692: "a bit bigger and use more of the
@@ -101,11 +102,14 @@
 
       <div class="fit-body">
         <!-- B'S RAIL, DESKTOP ONLY: one square per line of this batch, filling in as he reads.
-             Progress, not navigation — nothing in it is tappable, so a desktop reader can feel
-             how far through he is without a control within reach while the mic is live. -->
+             A SQUARE IS A WAY ONTO ITS LINE (Aran, 2026-10-15): tap one and the cursor goes
+             there — live, the open capture is thrown away as ‹ does; before Start, Start opens
+             on it. -->
         <div v-if="phase !== 'done' && lines.length > 1" class="rail-wrap">
-          <ol class="rail" aria-hidden="true" data-test="rail">
-            <li v-for="(l, i) in lines" :key="l.id || i" class="rail-sq" :class="railClass(l, i)"></li>
+          <ol class="rail" data-test="rail">
+            <li v-for="(l, i) in lines" :key="l.id || i" class="rail-sq" :class="railClass(l, i)"
+                role="button" tabindex="-1" :title="`Line ${i + 1}: ${lineStateWords(l)}`"
+                :aria-label="`Go to line ${i + 1}`" @click="onRailTap(i)"></li>
           </ol>
           <!-- THE LEGEND (Aran, 2026-10-15): the squares used to say nothing, and in light mode
                green and red were painted grey, so saved looked like not-yet-recorded. -->
@@ -168,6 +172,11 @@
                 <p v-if="startKindWords" class="line-kind">{{ startKindWords }}</p>
                 <p class="ready-line" data-test="ready-line">{{ plainText(startLine.text) }}</p>
                 <p v-if="startLine.knownText" class="line-known">{{ plainText(startLine.knownText) }}</p>
+                <!-- WHERE HE LEFT OFF is not always the first line still owed: say which, and offer both. -->
+                <p v-if="readyIndex !== startIndex" class="ready-where" data-test="ready-where">
+                  Line {{ readyIndex + 1 }} of {{ lines.length }} · {{ lineStateWords(startLine) }} — where you left off.
+                  <button v-if="startIndex !== -1" type="button" class="setline-change" data-test="ready-to-unrecorded" @click="pinCursor(null)">Start at the first unrecorded line ({{ startIndex + 1 }}) instead</button>
+                </p>
               </template>
               <template v-else>
                 <p class="ready-line all-done">Everything is recorded.</p>
@@ -260,9 +269,11 @@
             </ul>
             <p v-if="savedNote" class="saved-note">{{ savedNote }}</p>
             <!-- WHAT IS COMING, dimmed and small: one line on a phone, three on a desktop. -->
-            <div v-if="upcoming.length" class="upnext">
-              <p class="upnext-head">Coming up · {{ remainingToRead }} still to read</p>
-              <ol class="upnext-list">
+            <!-- The count stays on the last line too: › ends the run there, and any line still owed
+                 behind him is one tap away on "Jump to next unrecorded". -->
+            <div v-if="upcoming.length || remainingToRead" class="upnext">
+              <p class="upnext-head">{{ upcoming.length ? 'Coming up · ' : '' }}{{ remainingToRead }} still to read</p>
+              <ol v-if="upcoming.length" class="upnext-list">
                 <li v-for="l in upcoming" :key="l.id">{{ plainText(l.text) }}</li>
               </ol>
             </div>
@@ -401,11 +412,19 @@
             @click="togglePause"
           >{{ paused ? 'Resume' : 'Pause' }}</button>
         </div>
+        <!-- ‹ AND › SIDE BY SIDE, ONE LINE EACH WAY (Aran, 2026-10-15). › files what he read on
+             this line and lands on the next one; ‹ throws the open capture away and goes one back.
+             Neither ever skips. Jumping ahead is its own, labelled control underneath. -->
         <div class="transport-in live controls">
-          <button class="ctl-back" title="Back" aria-label="Back" :disabled="!canGoBack || busy || arming || !!editingId" @click="onBack">‹</button>
           <button class="ctl-again" :disabled="busy || arming || paused || !!editingId" @click="onAgain">Again</button>
-          <button class="ctl-next" :disabled="busy || arming || paused || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
+          <div class="ctl-arrows">
+            <button class="ctl-back" title="Previous line" aria-label="Previous line" :disabled="!canGoBack || busy || arming || !!editingId" @click="onBack">‹</button>
+            <button class="ctl-next" :title="hasNext ? 'Next line' : 'Done'" :aria-label="hasNext ? 'Next line' : 'Done'" :disabled="busy || arming || paused || !!editingId" @click="onNext()">{{ hasNext ? '›' : 'Done' }}</button>
+          </div>
         </div>
+        <button class="ctl-jump" type="button" data-test="jump-unrecorded"
+                :disabled="nextUnrecordedIndex === -1 || busy || arming || paused || !!editingId"
+                @click="onJumpUnrecorded">{{ nextUnrecordedIndex === -1 ? 'Every line is recorded' : `Jump to next unrecorded (line ${nextUnrecordedIndex + 1}) »` }}</button>
         </template>
         <div v-else class="transport-in" :class="{ one: !nextBatchN && !batchScope }">
           <button class="btn-ghost" @click="backToStart">Back to my lines</button>
@@ -413,7 +432,7 @@
           <button v-else-if="batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
         </div>
         <p v-if="phase === 'recording'" class="kbd-hint">
-          <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause · <kbd>B</kbd> back
+          <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause · <kbd>B</kbd> back · <kbd>J</kbd> jump to unrecorded
         </p>
       </footer>
 
@@ -660,6 +679,8 @@ import RecordistRoster from './recordist/RecordistRoster.vue'
 import { useSectionCollapse } from './recordist/section-collapse'
 import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStoredClip'
 import { createAdvanceLock } from './recordist/advance-lock'
+import { cursorScopeKey, loadCursor, saveCursor, clearCursor } from './recordist/booth-cursor.js'
+import { takeTargetAt, resolveTakeTarget } from './recordist/take-target.js'
 import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
@@ -774,12 +795,21 @@ function micLabel() {
     : null
   return [mic, `capture:${captureProfile.value}`, got].filter(Boolean).join(' · ')
 }
+// THE ONE CURSOR (Aran, 2026-10-15). `index` is the line he is on, and it is the
+// ONLY notion of position in a batch. There used to be two: Next snapped to "the
+// next line not yet recorded" (nextIndexFrom), and Back popped a remembered list
+// of the lines he had walked (`visited`). Going back six lines to re-record one,
+// then reading it, sent Next straight past the five lines he had just come back
+// over — they were recorded, so the scan skipped them — and the next Back popped
+// whatever was left on the old stack, which was the furthest back he had been.
+// There was no way to stand on the line six back and walk forward from it.
+//
+// So ‹ and › move exactly one line, recorded or not; reading a line and moving on
+// files the take under THAT line and lands on the line after it; a tap on the
+// rail (or a line in Lines & settings) puts the cursor on that line. The one
+// control that skips ahead is "Jump to next unrecorded", labelled as such.
+// Proved by RecordistRoom.lineCursor.test.js.
 const index = ref(0)
-// THE PATH HE ACTUALLY WALKED, not index arithmetic. nextIndexFrom() skips
-// lines that are already recorded, and a take landing can change which those
-// are mid-session, so `index - 1` would hand him lines he has never seen. Back
-// pops this instead: whatever he was last looking at is what he goes back to.
-const visited = ref([])
 const busy = ref(false)
 const readThisSession = ref(0)
 // Lines read in THIS session, in order — the only ones we can honestly offer a
@@ -1348,26 +1378,17 @@ function nextIndexFrom(i) {
   }
   return -1
 }
-const hasNext = computed(() => nextIndexFrom(index.value) !== -1)
+// › goes to the line after this one; on the last line it is Done.
+const hasNext = computed(() => index.value < lines.value.length - 1)
+// The one control that skips: to the next line still owed, wrapping round.
+const nextUnrecordedIndex = computed(() => nextIndexFrom(index.value))
 
 // What the recordist is about to be asked for. Six is what fits under the line
 // on a phone without pushing the controls off the bottom of the screen.
 const UPCOMING_SHOWN = 6
-const upcoming = computed(() => {
-  const out = []
-  // The scan wraps now, so a queue with fewer outstanding lines than this list
-  // is long would otherwise show the same line twice and read as more work than
-  // is owed.
-  const seen = new Set([index.value])
-  let k = index.value
-  while (out.length < UPCOMING_SHOWN) {
-    k = nextIndexFrom(k)
-    if (k === -1 || seen.has(k)) break
-    seen.add(k)
-    out.push(lines.value[k])
-  }
-  return out
-})
+// The lines › will walk him through, in order — the same lines, recorded or not,
+// because › no longer skips anything (THE ONE CURSOR).
+const upcoming = computed(() => lines.value.slice(index.value + 1, index.value + 1 + UPCOMING_SHOWN))
 // STILL TO READ — the same set the roster counts, and it has to be, because
 // both numbers are on the screen at once. Counting forward from the cursor made
 // them disagree the moment anything became outstanding behind it: the roster
@@ -1375,7 +1396,44 @@ const upcoming = computed(() => {
 const remainingToRead = computed(() => lines.value.reduce((n, l) => n + (isSettled(l) ? 0 : 1), 0))
 // THE LINE START WILL OPEN ON, drawn big on the batch page before Start (job #424): the batch
 // page IS the reading screen, so the first thing he reads is already where he will read it.
-const startLine = computed(() => (startIndex.value === -1 ? null : lines.value[startIndex.value]))
+// THE CURSOR BEFORE START: the line he was on when he last left this batch (restored from
+// localStorage, or put there by a tap on the rail), else the first line still owed. A cursor
+// he chose may sit on a recorded line — that is the line he asked for.
+const pinnedId = ref(null)
+const readyIndex = computed(() => {
+  if (pinnedId.value !== null) {
+    const i = lines.value.findIndex(l => l.id === pinnedId.value)
+    if (i !== -1) return i
+  }
+  return startIndex.value
+})
+const startLine = computed(() => (readyIndex.value === -1 ? null : lines.value[readyIndex.value]))
+// WHERE THE CURSOR IS KEPT: per voice, per batch (or per door link).
+function cursorScope() {
+  const q = new URLSearchParams(window.location.search)
+  return cursorScopeKey({ batch: batchScope.value, course: q.get('course') || '', pod: q.get('pod') || '' })
+}
+function pinCursor(lineId) {
+  pinnedId.value = lineId ?? null
+  saveCursor(props.voiceId, cursorScope(), pinnedId.value)
+}
+// Every move of the live cursor is remembered at once: the booth is closed by a laptop lid as
+// often as by a button.
+watch(index, (i) => {
+  if (phase.value !== 'recording') return
+  const l = lines.value[i]
+  if (l) pinCursor(l.id)
+})
+// "Line 37 of 100 · saved": where the cursor is, and what that line holds.
+function lineStateWords(l) {
+  if (!l) return ''
+  if (isPending(l.id)) return 'uploading'
+  if (hasFailed(l.id) && !isRecorded(l)) return 'refused'
+  if (isRecorded(l)) return 'saved'
+  return 'not yet'
+}
+const linePosWords = computed(() => `Line ${index.value + 1} of ${lines.value.length}`)
+const lineState = computed(() => lineStateWords(current.value))
 const startKindWords = computed(() => kindWordsFor(startLine.value))
 
 // ── Hearing the stored clip ─────────────────────────────────────────────────
@@ -1436,7 +1494,7 @@ const RAIL_LEGEND = [
 ]
 function railClass(l, i) {
   return {
-    now: phase.value === 'recording' ? i === index.value : i === startIndex.value,
+    now: phase.value === 'recording' ? i === index.value : i === readyIndex.value,
     done: isRecorded(l) && !isPending(l.id),
     up: isPending(l.id),
     failed: hasFailed(l.id) && !isRecorded(l),
@@ -1468,6 +1526,13 @@ function openSheet(at) {
   if (w) sheetTop.value = w.offsetTop + w.offsetHeight
   sheetOpen.value = true
   if (at === 'settings') nextTick(() => { const el = settingsRef.value; if (el && el.scrollIntoView) el.scrollIntoView({ block: 'start' }) })
+}
+// A SQUARE ON THE RAIL: live, the cursor goes straight there; before Start, Start opens there.
+function onRailTap(i) {
+  const l = lines.value[i]
+  if (!l || editingId.value) return
+  if (phase.value === 'recording') return goToLine(i)
+  if (phase.value === 'ready') pinCursor(l.id)
 }
 // A line tapped on the map opens the mic on it: the sheet steps out of the way first.
 function recordFromSheet(lineId) {
@@ -1912,7 +1977,8 @@ function togglePlay(lineId) {
 
 // ── Session ─────────────────────────────────────────────────────────────────
 async function begin() {
-  if (startIndex.value === -1) return
+  const at = readyIndex.value
+  if (at === -1) return
   micError.value = null
   try {
     await recorder.start(selectedDeviceId.value || null, captureProfile.value)
@@ -1924,10 +1990,10 @@ async function begin() {
   readThisSession.value = 0
   sessionIds.value = []
   lastLine.value = null
-  visited.value = []
   advanceLock.reset()
-  index.value = startIndex.value
+  index.value = at
   phase.value = 'recording'
+  pinCursor(lines.value[at] && lines.value[at].id)
   await settleThenReveal()
 }
 
@@ -1972,7 +2038,7 @@ function lineKeyAt(i) {
   return l.id ?? `#${i}`
 }
 
-const canGoBack = computed(() => phase.value === 'recording' && visited.value.length > 0)
+const canGoBack = computed(() => phase.value === 'recording' && index.value > 0)
 
 let lastTapAt = 0
 function debounced() {
@@ -1994,9 +2060,14 @@ function backDebounced() {
   return true
 }
 
-function commit(i, blob, hadSpeech) {
-  const line = lines.value[i]
-  if (!line) return
+// `target` is the line as it was when the take was CLOSED (take-target.js), never
+// a position: the cursor may be six lines away by the time the blob lands.
+function commit(target, blob, hadSpeech) {
+  const found = resolveTakeTarget(target, lines.value)
+  // THE WRONG-LINE GUARD. The line is gone or its words changed under the tail:
+  // this audio belongs to nothing on the screen, so it is filed under nothing.
+  if (!found.ok) return
+  const line = found.line
   // Never save silence: a take with nothing said on it didn't happen.
   //
   // This used to be a blob-size test, and that test is now meaningless: every
@@ -2124,7 +2195,7 @@ function speechVerdict() {
   return recorder.lineHasSpeech.value
 }
 
-async function onNext(source = 'tap') {
+async function onNext(source = 'tap', to = 'next') {
   if (phase.value !== 'recording' || arming.value || busy.value || paused.value || !debounced()) return
   // Tapping a control while a take is playing means "enough listening". Stop it
   // and give the line back to the mic before anything is filed, so the playback
@@ -2145,20 +2216,40 @@ async function onNext(source = 'tap') {
     // waiting here would put a visible pause on every line for audio that is
     // already guaranteed. The screen moves now; the take files itself when the
     // tail is done.
+    const target = takeTargetAt(lines.value, i)
     const pending = recorder.endLine()
-    const n = nextIndexFrom(i)
+    // ONE LINE ON, never a scan (THE ONE CURSOR). On the last line this is Done.
+    const n = to === 'unrecorded' ? nextIndexFrom(i) : (i < lines.value.length - 1 ? i + 1 : -1)
     if (n !== -1) {
-      visited.value = [...visited.value, i]
       index.value = n
-      // The scan wrapped: we are landing on a line the run stepped away from
-      // earlier, and its one step forward has already been spent. Without this
-      // the queue arrives on the rewritten line and then refuses to leave it.
-      if (n <= i) advanceLock.reopen(lineKeyAt(n))
+      // Wherever he lands, that line gets its step forward: he may have left it
+      // once already, earlier in the batch, and it must not refuse to let him go.
+      advanceLock.reopen(lineKeyAt(n))
       recorder.beginLine()
     }
-    pending.then(blob => commit(i, blob, hadSpeech))
-    if (n === -1) { await pending; await finish() }
+    pending.then(blob => {
+      // Nothing heard on this line: he was moving, not reading, so nothing is
+      // filed — a line he walked across keeps the take it had. Where the meter
+      // cannot say (null), a line with no take yet is filed as before (a lost
+      // take is the worse mistake), but a line that HAS one is left alone:
+      // walking over saved work must never replace it with room tone.
+      if (hadSpeech === false) return
+      if (hadSpeech === null && target && lines.value.some(l => l.id === target.id && isSettled(l))) return
+      commit(target, blob, hadSpeech)
+    })
+    if (n === -1) {
+      await pending
+      // A run that ends on its last line starts the next visit at the first line still owed.
+      clearCursor(props.voiceId, cursorScope()); pinnedId.value = null
+      await finish()
+    }
   } finally { busy.value = false }
+}
+
+// "Jump to next unrecorded" — the ONLY control that skips. Same filing as ›.
+function onJumpUnrecorded() {
+  if (nextUnrecordedIndex.value === -1) return
+  return onNext('tap', 'unrecorded')
 }
 
 // ── Moving on by itself ─────────────────────────────────────────────────────
@@ -2300,12 +2391,18 @@ function togglePause() {
 // not do is quietly re-open the mic behind a screen that says Paused: the hold
 // survives the step back, and Play is still the only way out of it.
 async function onBack() {
-  if (phase.value !== 'recording' || arming.value || busy.value || !visited.value.length || !backDebounced()) return
+  if (index.value <= 0) return
+  return goToLine(index.value - 1)
+}
+
+// THE CURSOR GOES STRAIGHT TO A LINE: ‹ (one back) and a tap on the rail. Both
+// discard the open capture and file nothing, for the reasons Back always has.
+async function goToLine(prev) {
+  if (phase.value !== 'recording' || arming.value || busy.value || !backDebounced()) return
+  if (!(prev >= 0 && prev < lines.value.length) || prev === index.value) return
   busy.value = true
   try {
     await recorder.discardLine()
-    const prev = visited.value[visited.value.length - 1]
-    visited.value = visited.value.slice(0, -1)
     index.value = prev
     // He has come back here on purpose, so this line gets its step forward back.
     advanceLock.release(lineKeyAt(prev))
@@ -2342,13 +2439,16 @@ async function onFinish() {
     }
     const i = index.value
     const hadSpeech = speechVerdict()
+    const target = takeTargetAt(lines.value, i)
     const blob = await recorder.endLine()
     // Stop pressed on a line nobody read is not a failed take — it is the end
     // of the session. Filing it would put a phantom red line on a clean run.
     // But that only holds where the recorder KNOWS nobody read it: if the meter
     // is not reading, a dropped final line is a lost take, and a phantom row on
     // the done screen is the cheaper of the two mistakes.
-    if (hadSpeech !== false) commit(i, blob, hadSpeech)
+    if (hadSpeech !== false) commit(target, blob, hadSpeech)
+    // Stopped after reading this line: the next visit opens on the line after it.
+    if (hadSpeech === true && i < lines.value.length - 1) pinCursor(lines.value[i + 1].id)
     await finish()
   } finally { busy.value = false }
 }
@@ -2369,10 +2469,10 @@ async function recordOne(lineId) {
   // A jump from the done screen is not a step along the path he walked, so it
   // starts its own: Back must never take him from here into a queue position he
   // left ten minutes ago.
-  visited.value = []
   advanceLock.release(lineKeyAt(i))
   index.value = i
   phase.value = 'recording'
+  pinCursor(lines.value[i].id)
   await settleThenReveal()
 }
 
@@ -2427,6 +2527,7 @@ function onKey(e) {
   else if (e.key === 'r' || e.key === 'R') { e.preventDefault(); onAgain() }
   else if (e.key === 'p' || e.key === 'P') { e.preventDefault(); togglePause() }
   else if (e.key === 'b' || e.key === 'B') { e.preventDefault(); onBack() }
+  else if (e.key === 'j' || e.key === 'J') { e.preventDefault(); onJumpUnrecorded() }
 }
 function beforeUnloadGuard(e) {
   // A take in progress is genuinely lost by leaving, and so is an unsent take
@@ -2567,8 +2668,9 @@ async function load() {
     doneIds.value = new Set()
     sessionIds.value = []
     lastLine.value = null
-    visited.value = []
     advanceLock.reset()
+    // THE CURSOR SURVIVES A RELOAD: the line he was on when he last left this batch.
+    pinnedId.value = loadCursor(props.voiceId, cursorScope())
     phase.value = 'ready'
   } catch (err) {
     loadSlow.value = err instanceof LoadTimeoutError
@@ -3642,7 +3744,33 @@ kbd {
 }
 .transport-in { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 0.6rem; }
 .transport-in.one { grid-template-columns: 1fr; }
-.transport-in.live { grid-template-columns: 64px 1fr 2fr; }
+.transport-in.live { grid-template-columns: 1fr 2fr; }
+/* ‹ AND › SIDE BY SIDE (Aran, 2026-10-15): two equal arrows, one line each way. */
+.ctl-arrows { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.recordist.fit .transport .ctl-arrows .ctl-back,
+.recordist.fit .transport .ctl-arrows .ctl-next { font-size: 2rem; font-weight: 700; line-height: 1; padding: 0; }
+.ctl-jump {
+  display: block; width: 100%; max-width: 900px; margin: 0.5rem auto 0; min-height: 44px;
+  font: inherit; font-size: 0.95rem; font-weight: 700; border-radius: 12px; cursor: pointer;
+  background: transparent; color: var(--accent-2, #34d399); border: 1px solid var(--accent-2, #34d399);
+}
+.ctl-jump:disabled { opacity: 0.5; cursor: default; }
+:root[data-theme="light"] .ctl-jump { color: #047857; border-color: #047857; }
+.ready-where { margin: 0.75rem 0 0; font-size: 0.9rem; color: var(--ink-2, #cbd5e1); }
+.ready-where .setline-change { display: block; margin: 0.35rem auto 0; min-height: 40px; }
+:root[data-theme="light"] .ready-where { color: #334155; }
+/* WHERE THE CURSOR IS: "Line 37 of 100 · saved". */
+.status .line-pos { font-size: 0.875rem; font-weight: 700; color: var(--ink, #f1f5f9); white-space: nowrap; }
+.line-state { font-weight: 800; }
+.line-state.ls-saved { color: #34d399; }
+.line-state.ls-uploading { color: #f59e0b; }
+.line-state.ls-refused { color: #f87171; }
+.line-state.ls-not-yet { color: var(--ink-2, #cbd5e1); }
+:root[data-theme="light"] .status .line-pos { color: #0f172a; }
+:root[data-theme="light"] .line-state.ls-saved { color: #047857; }
+:root[data-theme="light"] .line-state.ls-uploading { color: #b45309; }
+:root[data-theme="light"] .line-state.ls-refused { color: #b91c1c; }
+:root[data-theme="light"] .line-state.ls-not-yet { color: #475569; }
 .recordist.fit .transport .btn-begin {
   margin: 0; min-height: 56px; padding: 0.75rem; text-transform: none; letter-spacing: 0;
   font-family: inherit; font-size: 1.125rem; border-radius: 14px;
@@ -3716,7 +3844,7 @@ kbd {
   .rail-legend .rail-sq { flex: none; width: 14px; height: 14px; }
   /* Each state its own colour, the same weight of selector in dark and light, so a theme rule can
      never paint one state over another (light mode once painted done and failed grey). */
-  .rail-sq { border-radius: 3px; background: #334155; }
+  .rail-sq { border-radius: 3px; background: #334155; cursor: pointer; }
   .rail-sq.done { background: #34d399; }
   .rail-sq.up { background: #f59e0b; }
   .rail-sq.failed { background: #f87171; }

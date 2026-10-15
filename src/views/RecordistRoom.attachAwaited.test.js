@@ -1,7 +1,11 @@
 // Review #857: the ready card must not show before the on-device queue has loaded,
 // or Submit can run ahead of an unsent take.
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { readFileSync } from 'node:fs'
+
+// Each test is a fresh visit: the booth remembers its line cursor in localStorage per voice
+// and batch (booth-cursor.js), and one test's cursor must not open the next test's Start.
+beforeEach(() => { if (typeof localStorage === 'undefined') return; for (const k of Object.keys(localStorage)) if (k.startsWith('recordist.cursor.')) localStorage.removeItem(k) })
 
 const src = readFileSync(new URL('./RecordistRoom.vue', import.meta.url), 'utf8')
 

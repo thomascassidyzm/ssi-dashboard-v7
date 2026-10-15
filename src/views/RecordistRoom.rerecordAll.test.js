@@ -1,8 +1,12 @@
 // Job #885: the artist's own Re-record all. Proves the button is on the ready
 // card only when the voice has takes, confirms in plain words, and posts the
 // artist flag to the shared route for THIS link's voice.
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 import { readFileSync } from 'node:fs'
+
+// Each test is a fresh visit: the booth remembers its line cursor in localStorage per voice
+// and batch (booth-cursor.js), and one test's cursor must not open the next test's Start.
+beforeEach(() => { if (typeof localStorage === 'undefined') return; for (const k of Object.keys(localStorage)) if (k.startsWith('recordist.cursor.')) localStorage.removeItem(k) })
 
 const src = readFileSync(new URL('./RecordistRoom.vue', import.meta.url), 'utf8')
 

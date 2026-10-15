@@ -26,6 +26,10 @@ vi.mock('@/composables/useTapRecorder', () => ({
 import { createMemoryBackend } from '@/services/takeStore'
 import RecordistRoom from './RecordistRoom.vue'
 
+// Each test is a fresh visit: the booth remembers its line cursor in localStorage per voice
+// and batch (booth-cursor.js), and one test's cursor must not open the next test's Start.
+beforeEach(() => { if (typeof localStorage === 'undefined') return; for (const k of Object.keys(localStorage)) if (k.startsWith('recordist.cursor.')) localStorage.removeItem(k) })
+
 const VOICE = 'human_aran_cym_n'
 const TRACK = 'seed.cym_n_for_eng'
 const LINES = Array.from({ length: 150 }, (_, i) => ({
