@@ -3,10 +3,17 @@ Description=Nightly voice-policy audit (job #53): every slot vs resolveVoice, re
 
 [Service]
 Type=oneshot
+# System unit: owner credentials remain private to popty (#384/#391).
+User=popty
+Group=tomcassidy
+UMask=0002
+Environment=HOME=/home/tomcassidy
+EnvironmentFile=/etc/popty/popty.env
+EnvironmentFile=/etc/popty/owner.env
 # Runs the LANDED code: the shared detached nightly worktree is reset to origin/main first (the ssi-voice-variety pattern).
 WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
-ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
-ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
+ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
+ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
 ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/qa/voice-policy/nightly.cjs
 # Read-only grouped queries over the course tables, mostly Postgres-side: back seat, hard cap.
 Nice=15

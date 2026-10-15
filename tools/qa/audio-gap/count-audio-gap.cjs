@@ -71,6 +71,7 @@ const { Client } = require('pg');
 const REPO = path.resolve(__dirname, '..', '..', '..');
 
 function databaseUrl() {
+  if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
   const p = path.join(REPO, '.env.psql');
   if (!fs.existsSync(p)) throw new Error(`.env.psql not found at ${p} — it is gitignored and provisioned per machine (docs/secrets-vault.md)`);
   const m = fs.readFileSync(p, 'utf8').match(/DATABASE_URL\s*=\s*"?([^"\n]+)"?/);
