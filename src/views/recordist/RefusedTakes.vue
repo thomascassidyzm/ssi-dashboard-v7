@@ -5,7 +5,7 @@
       <p class="rt-text">{{ r.text }}</p>
       <p v-if="r.knownText" class="rt-known">{{ r.knownText }}</p>
       <p v-if="r.section || r.batchName" class="rt-where" data-test="refused-where">{{ [r.section, r.batchName].filter(Boolean).join(' · ') }}</p>
-      <p class="rt-reason" data-test="refused-reason">{{ r.reason }}</p>
+      <p class="rt-reason" data-test="refused-reason" :title="r.reasonFull || null">{{ r.reason }}</p>
       <p v-if="r.state === 'gone'" class="rt-gone" data-test="refused-gone">Already recorded, or no longer in your lines — dismiss</p>
       <div class="rt-acts">
         <button v-if="r.state === 'open'" type="button" class="rt-go" data-test="refused-rerecord" @click="$emit('rerecord', r)">Re-record</button>

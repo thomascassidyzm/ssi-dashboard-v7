@@ -64,7 +64,8 @@ export function refusedRows({ takes, lines, tracks = [] }) {
       lineId: t.lineId,
       text: (line && line.text) || t.text || '',
       knownText: (line && line.knownText) || null,
-      reason: t.lastError || 'The server would not take that recording.',
+      reason: refusedLineWords(t.lastError),
+      reasonFull: t.lastError || '',
       section: track ? (track.title || track.short) : (at ? at.track : null),
       batchName,
       track: at ? at.track : null,
@@ -73,4 +74,31 @@ export function refusedRows({ takes, lines, tracks = [] }) {
       state: !lines ? 'locating' : (line ? 'open' : 'gone'),
     }
   })
+}
+
+// THE REASON IN A FEW WORDS (Aran, 2026-10-15, live): a refused line comes back up as a normal line
+// to read, with one small line under it — "Last take didn't save: no speech heard" — never the
+// server's whole paragraph over the words he is meant to be reading. The home list says the same
+// words. The server's own sentence is kept (as a tooltip) for anyone who needs the detail.
+// Patterns follow the server's wording: services/recording-upload-helpers.cjs (silent floor,
+// processing fault) and MESSAGES in services/recording-speech-gate.cjs, plus the booth's own
+// client-side silent check in RecordistRoom.vue.
+const REASONS = [
+  [/no audible speech|didn't capture any speech|came out silent/i, 'no speech heard'],
+  [/background noise|steady noise/i, 'only background noise heard'],
+  [/caught the room|far longer than the line/i, 'it caught the room, not your voice'],
+  [/cut off at both ends/i, 'cut off at both ends'],
+  [/starts right on your first word|beginning of it is cut off/i, 'the first word was cut off'],
+  [/runs off the end|last word is cut off/i, 'the last word was cut off'],
+  [/could not process it|fault our end|processing failed/i, 'a fault on our server, not yours'],
+]
+export function shortRefusalReason(text) {
+  const s = String(text || '').trim()
+  if (!s) return 'the server would not take it'
+  for (const [re, words] of REASONS) if (re.test(s)) return words
+  const first = s.split(/(?<=[.!?])\s/)[0].replace(/[.!?]+$/, '')
+  return first.length > 80 ? `${first.slice(0, 77).trimEnd()}…` : first
+}
+export function refusedLineWords(text) {
+  return `Last take didn't save: ${shortRefusalReason(text)}`
 }
