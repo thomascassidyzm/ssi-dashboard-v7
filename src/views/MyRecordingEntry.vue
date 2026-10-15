@@ -106,6 +106,7 @@ onMounted(load)
   margin: 0 auto;
   padding: 1rem 1rem 4rem;
   min-height: 100vh;
+  min-height: 100dvh;
   color: var(--color-paper, #f7f7f2);
   background: var(--color-void, #0f172a);
 }

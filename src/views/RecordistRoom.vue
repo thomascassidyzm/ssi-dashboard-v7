@@ -3381,6 +3381,7 @@ onDeactivated(() => {
   margin: 0 auto;
   padding: 1rem;
   min-height: 100vh;
+  min-height: 100dvh; /* a phone's visible height, not the height behind its toolbars (job #834) */
   color: var(--color-paper, #f7f7f2);
   background: var(--color-void, #0f172a);
 }
@@ -3669,7 +3670,7 @@ kbd {
 /* THE line. Nothing else on the screen competes with it. */
 .line-well {
   display: flex; flex-direction: column; justify-content: center;
-  min-height: 44vh; padding: 1.5rem 1.1rem; border-radius: 16px;
+  min-height: 44vh; min-height: 44dvh; padding: 1.5rem 1.1rem; border-radius: 16px;
   background: var(--color-shadow, #1e293b);
   box-shadow: inset 0 0 0 2px var(--color-emerald, #06ffa5);
 }
@@ -4247,4 +4248,97 @@ kbd {
    dark text on bright green "did not read well"). Fixed emerald-700 #047857, not --accent-2, which is
    mint (#34d399) in dark mode. #fff on #047857 is 5.48:1, WCAG AA for any text size. */
 .btn-begin, .ctl-next, .volume-btn.on, .sheet-close { background: #047857; color: #fff; }
+
+/* ── ON A PHONE (Aran, 2026-10-15, job #834: Dan, Eleri and Catrin may record on phones) ──────────
+   Measured in Chromium and WebKit at 375x667, 390x844, 360x800 and 844x390 by
+   e2e/booth-mobile/audit.mjs. Layout only: no button changes what it does. */
+
+/* EVERY TAP TARGET AT LEAST 44px (Apple's minimum, WCAG 2.5.5). These were 26–40px. */
+.where-home { min-width: 44px; min-height: 44px; }
+.where-more { min-height: 44px; }
+.hidden-toggle, .setline-change { min-height: 44px; padding-left: 0.35rem; padding-right: 0.35rem; }
+.ready-where .setline-change { min-height: 44px; }
+.recordist.fit .stage-auto { min-height: 44px; padding-top: 0; padding-bottom: 0; }
+.sheet-close, .grid-toggle, .rc-nav-item, .redo-btn { min-height: 44px; }
+.rc-nav-item { line-height: 44px; }
+.cmp-btn { min-height: 44px; }
+.listen-actions :deep(.stored-take-btn), .hear-bar :deep(.stored-take-btn) { min-height: 44px; }
+@media (max-width: 480px) {
+  .where-more { width: 44px; min-height: 44px; }
+}
+
+/* A LONG WORD WRAPS INSIDE THE SCREEN. A compound or place name wider than a phone
+   (Llanfairpwllgwyngyll…) ran off the right edge of the line being read, with no way to see
+   the end of it. Breaking inside a word only ever happens when the word cannot fit whole. */
+.line-target, .ready-line, .line-known, .listen-text, .redo-text, .hear-text, .edit-box { overflow-wrap: anywhere; }
+
+/* A LINE TALLER THAN THE SPACE LEFT FOR IT SCROLLS; IT NEVER OVERPRINTS. The column's items were
+   free to shrink below their own text, so on a short phone (an SE with Safari's bars showing, or a
+   refused-line bar above) a long line was drawn over the cue lines around it and under the bar.
+   Each item now keeps its height and the column scrolls, from the top, as the rule above intends. */
+.centre-line > * { flex-shrink: 0; }
+.refused-go { min-height: 44px; padding: 0 0.35rem; margin: -0.6rem 0; } /* a 44px target in a bar that stays slim */
+
+/* A SHORT SCREEN WHILE THE MIC IS LIVE (an iPhone SE in Safari shows ~548px). Every row above and
+   below the line gives back what it can without a target dropping under 44px: the where-am-I row
+   holds no button while live, the waveform strip is a little shorter (still drawn), and the
+   transport's buttons come down to 44–48px. */
+@media (max-height: 640px) {
+  .where.live { min-height: 32px; padding-top: 0.15rem; padding-bottom: 0.15rem; }
+  .recordist.fit .mic .meter { height: 30px; }
+  .recordist.fit .mic-row { padding-top: 0.25rem; }
+  .recordist.fit .sp-row { margin-bottom: 0.45rem; }
+  .recordist.fit .sp-row .btn-finish, .recordist.fit .sp-row .ctl-pause { min-height: 44px; }
+  .recordist.fit .transport .ctl-back, .recordist.fit .transport .ctl-again, .recordist.fit .transport .ctl-next { min-height: 48px; }
+  .recordist.fit .ctl-jump { margin-top: 0.4rem; }
+  .recordist.fit .transport { padding-top: 0.45rem; }
+}
+
+/* A PHONE ON ITS SIDE (844x390 and the like). Stacked, the rows above the line and the transport
+   below it used the whole 390px: the line being read was not on screen at all. Here the line has
+   the left of the screen, and the right is a column holding — live — the count, the waveform and
+   the auto-advance switch above Stop/Pause, Again ‹ › and Jump; before Start and on the done
+   screen, just their buttons. Same buttons, same order. The keyboard hint goes: a phone has no
+   keyboard to hint at. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .recordist.fit {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 38%);
+    grid-template-rows: auto auto auto minmax(0, 1fr);
+    grid-template-areas: "banner status" "where mic" "note adv" "body transport";
+  }
+  .recordist.fit > .safety-banner { grid-area: banner; }
+  .recordist.fit > .where { grid-area: where; }
+  .recordist.fit > .hidden-note { grid-area: note; }
+  .recordist.fit > .status { grid-area: status; border-left: 1px solid var(--line, #334155); }
+  .recordist.fit > .mic-row { grid-area: mic; border-left: 1px solid var(--line, #334155); }
+  .recordist.fit > .stage-auto { grid-area: adv; border-left: 1px solid var(--line, #334155); }
+  .recordist.fit > .fit-body { grid-area: body; min-height: 0; }
+  .recordist.fit > .transport {
+    grid-area: transport; min-height: 0; overflow-y: auto;
+    display: flex; flex-direction: column; justify-content: center;
+    border-top: 0; border-left: 1px solid var(--line, #334155);
+    padding-right: calc(0.75rem + env(safe-area-inset-right, 0px));
+  }
+  /* Off the stage there is nothing above the buttons on the right: they get the whole height. */
+  .recordist.fit:not(.live) > .transport { grid-row: 1 / -1; }
+  .recordist.fit .transport .sp-row, .recordist.fit .transport .transport-in, .recordist.fit .transport .ctl-jump { width: 100%; }
+  .recordist.fit .kbd-hint { display: none; }
+  /* The left column is narrow enough that "Lines & settings" cut the where-am-I words: ☰, as on a phone held upright. */
+  .where-more { padding: 0; width: 44px; }
+  .wm-long { display: none; }
+  .wm-short { display: inline; }
+  /* The done screen's two buttons, one above the other in the side column. */
+  .recordist.fit .transport-in:not(.live) { grid-template-columns: 1fr; }
+  :root[data-theme="light"] .recordist.fit > .transport, :root[data-theme="light"] .recordist.fit > .status,
+  :root[data-theme="light"] .recordist.fit > .mic-row, :root[data-theme="light"] .recordist.fit > .stage-auto { border-left-color: #c9d8ea; }
+}
+
+/* THE LINES LIST ON A PHONE: a recorded row's ▶ and Again sat beside the words and squeezed a long
+   line into a column a third of the sheet wide. The words keep at least 14rem; when that and the
+   buttons do not fit side by side, the buttons drop under the words. */
+.bl-row { flex-wrap: wrap; }
+.bl-go { flex: 1 1 14rem; }
+.bl-row > .bl-play, .bl-row > .bl-again { margin-bottom: 0.35rem; margin-top: 0.35rem; }
+.bl-go + .bl-play, .bl-go + .bl-again { margin-left: auto; }
 </style>
