@@ -2931,12 +2931,16 @@ watch([phase, () => (queue.refusedTakes ? queue.refusedTakes.value.length : 0), 
 // ── THE RE-RECORD CARD (Aran, 2026-10-15, job #788) ──────────────────────────
 // The server's skips and text changes (/rerecord), with this device's refused takes merged in
 // and anything still uploading or saved since taken off (recordist/rerecord-list.js).
-const rerecordServer = ref({ items: [], recordedAlso: [] })
+const rerecordServer = ref({ items: [], recordedAlso: [], goneAlso: [] })
 // Refused takes whose line the full queue no longer holds: old, not misses.
 const goneRefusedIds = computed(() => {
-  if (!locatorLines.value) return []
-  const have = new Set(locatorLines.value.map(l => l.id))
-  return ((queue.refusedTakes && queue.refusedTakes.value) || []).map(t => t.lineId).filter(id => !have.has(id))
+  // The batch's own server answer first (it is what the batch will open), the full queue second.
+  const ids = new Set(rerecordServer.value.goneAlso)
+  if (locatorLines.value) {
+    const have = new Set(locatorLines.value.map(l => l.id))
+    for (const t of (queue.refusedTakes && queue.refusedTakes.value) || []) if (!have.has(t.lineId)) ids.add(t.lineId)
+  }
+  return [...ids]
 })
 const oldRefusedList = computed(() => oldRefusedIds({
   serverItems: rerecordServer.value.items,
@@ -2981,13 +2985,13 @@ async function refreshRerecord() {
     if (voiceId !== props.voiceId) return
     if (res.ok && data && Array.isArray(data.items)) {
       rerecordFor = voiceId
-      rerecordServer.value = { items: data.items, recordedAlso: Array.isArray(data.recordedAlso) ? data.recordedAlso : [] }
+      rerecordServer.value = { items: data.items, recordedAlso: Array.isArray(data.recordedAlso) ? data.recordedAlso : [], goneAlso: Array.isArray(data.goneAlso) ? data.goneAlso : [] }
       if (data.fresh === false) setTimeout(() => { if (phase.value === 'home') refreshRerecord() }, 4000)
     }
   } catch { /* the card waits for the next visit home; nothing else depends on it */ }
 }
 watch([phase, () => props.voiceId], () => {
-  if (rerecordFor !== props.voiceId) rerecordServer.value = { items: [], recordedAlso: [] }
+  if (rerecordFor !== props.voiceId) rerecordServer.value = { items: [], recordedAlso: [], goneAlso: [] }
   if (phase.value === 'home') refreshRerecord()
 }, { immediate: true })
 function openRerecord() { goToAddress({ track: RERECORD_TRACK, batch: '1' }) }
