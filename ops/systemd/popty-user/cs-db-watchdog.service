@@ -11,6 +11,7 @@ UMask=0002
 Environment=HOME=/home/tomcassidy
 WorkingDirectory=/home/tomcassidy/command-surface
 EnvironmentFile=/etc/popty/owner.env
+Environment=PGAPPNAME=cs-db-watchdog
 ExecStart=/usr/bin/node /home/tomcassidy/command-surface/ops/db-watchdog.cjs
 TimeoutStartSec=45
 Nice=5

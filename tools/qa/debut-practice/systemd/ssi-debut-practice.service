@@ -10,6 +10,7 @@ UMask=0002
 Environment=HOME=/home/tomcassidy
 EnvironmentFile=/etc/popty/popty.env
 EnvironmentFile=/etc/popty/owner.env
+Environment=PGAPPNAME=popty-nightly:debut-practice
 # Runs the code that LANDED: the detached QA worktree ssi-sibling-identity uses, refreshed to origin/main.
 WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
 ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main

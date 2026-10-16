@@ -11,6 +11,7 @@ UMask=0002
 Environment=HOME=/home/tomcassidy
 EnvironmentFile=/etc/popty/popty.env
 EnvironmentFile=/etc/popty/owner.env
+Environment=PGAPPNAME=popty-nightly:sibling-identity
 # ── WHY NOT THE SHARED CHECKOUT ─────────────────────────────────────────────
 # The shared checkout sits on whatever branch a human session left it on and
 # carries their in-flight edits, so a unit pointed there fires into nothing the
