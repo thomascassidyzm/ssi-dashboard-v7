@@ -17,6 +17,10 @@ describe('nightly voice audit notice', () => {
   it('says no gaps when there are none', () => {
     expect(nightly.noticeText({ courses: { fra_for_eng: { totals: t({ drift: 5 }) } } }, [])).toMatch(/Real gaps: none/)
   })
+  it('does not certify every premium slot from a single-course --courses snapshot', () => {
+    const snapshot = { courses: { fra_for_eng: { totals: t() } } }
+    expect(nightly.noticeText(snapshot, [])).not.toContain('every premium slot plays')
+  })
   const row = (gender, voice_id) => ({ language: 'eng', gender, rank: 0, slot: 'phrase', voice_id, assigned_by: 'tom-ruling-2026-10-12-x' })
   const good = { roles: [row('f', rv.CHARLOTTE), row('m', rv.TOM_006)] }
   const roster = [{ voice_id: 'cartesia_x', display_name: 'aran-004', is_active: true }, { voice_id: 'azure_en-GB-SoniaNeural', is_active: true }]
