@@ -13,6 +13,16 @@ const open = { total: 50, recorded: 0 }
 const at = (r) => r && `${r.track.key}#${r.batch.n}`
 
 describe('nextBatchAfter', () => {
+  it('does not continue an unticked section opened from a saved batch link', () => {
+    const s = track('seed.cym_n', 'seed', [done, open], { newCourse: true })
+    expect(nextBatchAfter([s], { track: s.key, batch: 1 }, new Set([s.key]))).toBe(null)
+  })
+
+  it('does not resurrect an unticked earlier batch when wrapping a two-batch section', () => {
+    const s = track('seed.cym_n', 'seed', [open, done], { newCourse: true })
+    expect(nextBatchAfter([s], { track: s.key, batch: 2 }, new Set([batchTickId(s.key, 1)]))).toBe(null)
+  })
+
   const seeds = track('seed.cym_n', 'seed', [done, done], { newCourse: true })
   const legos = track('lego.cym_n', 'lego', [done, open], { newCourse: true })
 
