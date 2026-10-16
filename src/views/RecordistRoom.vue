@@ -389,7 +389,13 @@
       <footer class="transport" data-test="transport">
         <div v-if="phase === 'ready'" class="transport-in one">
           <!-- NOTHING LEFT IN THIS BATCH: the way on is the big button, not a dead one (Aran, 2026-10-15). -->
-          <button v-if="!voice.setupCheck && startIndex === -1 && nextBatchN" class="btn-begin btn-next-batch" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Next batch →</button>
+          <!-- A POD LINK WITH NOTHING LEFT IN ITS POD carries on into the next pod (Kai, 2026-10-16, job #189). -->
+          <template v-if="!voice.setupCheck && podFinished">
+            <button v-if="nextPod" class="btn-begin btn-next-batch" data-test="next-pod" @click="openNextPod">Next pod: {{ nextPodName }} →</button>
+            <p v-else class="pods-all-done" data-test="pods-all-done">{{ allPodsDoneWords }}</p>
+            <button v-if="!nextPod && voice.podsDone.remainingOutsidePods" class="btn-ghost" data-test="other-lines" @click="goHome">See your other lines</button>
+          </template>
+          <button v-else-if="!voice.setupCheck && startIndex === -1 && nextBatchN" class="btn-begin btn-next-batch" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Next batch →</button>
           <button v-else-if="!voice.setupCheck && startIndex === -1 && batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
           <button v-else-if="!voice.setupCheck" class="btn-begin" :disabled="startIndex === -1" @click="begin">
             {{ startIndex === -1 ? 'Nothing left to read' : 'Start recording' }}
@@ -436,9 +442,10 @@
                 :disabled="nextUnrecordedIndex === -1 || busy || arming || paused || !!editingId"
                 @click="onJumpUnrecorded">{{ nextUnrecordedIndex === -1 ? 'Every line is recorded' : `Jump to next unrecorded (line ${flowPos(nextUnrecordedIndex)}) »` }}</button>
         </template>
-        <div v-else class="transport-in" :class="{ one: !nextBatchN && !batchScope }">
+        <div v-else class="transport-in" :class="{ one: !nextBatchN && !batchScope && !nextPod }">
           <button class="btn-ghost" @click="backToStart">Back to my lines</button>
-          <button v-if="nextBatchN" class="btn-begin btn-next-batch" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Next batch →</button>
+          <button v-if="nextPod" class="btn-begin btn-next-batch" data-test="next-pod" @click="openNextPod">Next pod: {{ nextPodName }} →</button>
+          <button v-else-if="nextBatchN" class="btn-begin btn-next-batch" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Next batch →</button>
           <button v-else-if="batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
         </div>
         <p v-if="phase === 'recording'" class="kbd-hint">
@@ -3214,6 +3221,21 @@ const nextBatchN = computed(() => {
 const showPhraseCard = computed(() => !!(phrases.value && (phrases.value.pass || phrases.value.finished)) &&
   (!batchScope.value || batchScope.value.track.startsWith('phrase.')))
 
+// AFTER A POD (Kai, 2026-10-16, job #189): a pod link whose pod has nothing left of his to read
+// offers the next pod where he still has lines, so nobody has to send him a new link. Which pod is
+// the server's call (services/voice-engine/booth-next-pod.cjs); no answer keeps the old button.
+const podFinished = computed(() => !!queryStr(addressQuery.value.pod) && !!voice.value.podsDone && startIndex.value === -1)
+const nextPod = computed(() => (podFinished.value && voice.value.podsDone.nextPod) || null)
+const nextPodName = computed(() => (nextPod.value ? podSectionFor(nextPod.value).heading : ''))
+const allPodsDoneWords = computed(() => (voice.value.podsDone && voice.value.podsDone.remainingOutsidePods
+  ? 'All your pods are done — thank you'
+  : 'All done — thank you'))
+function openNextPod() {
+  const p = nextPod.value
+  if (!p) return
+  const { track, batch, ...rest } = addressQuery.value
+  goToAddress({ ...rest, course: p.courseCode, pod: p.podSlug })
+}
 function openBatch(track, n) { goToAddress({ track, batch: String(n) }) }
 function goHome() { goToAddress({}) }
 function openCard(key) {
@@ -3624,6 +3646,12 @@ kbd {
   border: none; border-radius: 12px; padding: 1rem; cursor: pointer; min-height: 56px;
 }
 .btn-begin:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-next-batch[data-test="next-pod"] { overflow-wrap: anywhere; }
+.pods-all-done {
+  margin: 0; padding: 1rem; text-align: center; min-height: 56px;
+  font-family: 'Josefin Sans', sans-serif; font-size: 1.15rem; font-weight: 700;
+  color: var(--color-emerald, #06ffa5);
+}
 .btn-ghost {
   font-family: 'Josefin Sans', sans-serif; font-size: 0.95rem; color: var(--color-paper-dim, #c1c1bb);
   background: transparent; border: 1px solid var(--color-graphite, #475569);
