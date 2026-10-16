@@ -5,6 +5,14 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const T = require('./fra-seed-154-want-us-to-meet-2026-10-16.cjs');
 
+test('inserted basket rows use the known-side word count, matching the phrase generator', () => {
+  const dump = { seeds: [{ seed_number: 154, known_text: 'where do you want to meet on Saturday night?' }], legos: [] };
+  const rows = T.textOps(dump).filter((op) => op.op === 'phrase.insert').map((op) => op.row);
+  for (const row of rows) {
+    assert.equal(row.lego_count, row.known_text.split(/\s+/).length, row.id);
+  }
+});
+
 test('the LEGO is a contiguous slice of the new seed, and every basket row contains it whole (P17)', () => {
   assert.ok(T.NEW_SEED_KNOWN.includes(T.LEGO.known));
   assert.ok('où voulez-vous nous rencontrer samedi soir?'.includes(T.LEGO.target));
