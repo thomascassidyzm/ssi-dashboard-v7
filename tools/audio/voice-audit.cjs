@@ -46,10 +46,11 @@ const usable = (alias) => `${alias}.s3_key is not null and ${alias}.s3_key not l
  * @returns {{ totals, groups }} groups carry status + resolved voice; totals sum slots per status.
  */
 function classify(course, rows, cast) {
-  const totals = { ok: 0, drift: 0, human: 0, refused: 0, 'no-ruling': 0, dangling: 0 }
+  const totals = { ok: 0, drift: 0, human: 0, refused: 0, 'no-ruling': 0, dangling: 0, unplayable: 0 }
   const groups = []
   for (const r of rows) {
     const n = Number(r.slots)
+    totals.unplayable += Number(r.unplayable || 0)
     if (!r.voice_id && !r.language) { totals.dangling += n; continue }
     const role = rv.roleOfColumn(r.col)
     let status, resolved = null, reason = null
@@ -68,7 +69,7 @@ function classify(course, rows, cast) {
 
 /** Pure. One plain block of text for a course's audit. */
 function render(code, { totals, groups, plan }) {
-  const L = [`${code}: ok ${totals.ok} · drift ${totals.drift} · human ${totals.human} · refused ${totals.refused} · no-ruling ${totals['no-ruling']} · dangling ${totals.dangling}`]
+  const L = [`${code}: ok ${totals.ok} · drift ${totals.drift} · human ${totals.human} · refused ${totals.refused} · no-ruling ${totals['no-ruling']} · dangling ${totals.dangling} · unplayable ${totals.unplayable}`]
   const drift = groups.filter((g) => g.status === 'drift').sort((a, b) => b.slots - a.slots)
   const by = new Map()
   for (const g of drift) { const k = `${g.role}: ${g.voice_id} -> ${g.resolved} (${g.reason})`; by.set(k, (by.get(k) || 0) + g.slots) }
@@ -90,7 +91,8 @@ async function connect() {
 async function groupedSlots(pg, code) {
   const parts = []
   for (const [tbl, cols] of Object.entries(SLOT_COLUMNS)) for (const col of cols) parts.push(`
-    select '${tbl}' tbl, '${col}' col, ca.voice_id, ca.language, ca.origin, count(*) slots, count(distinct ca.text_normalized) texts
+    select '${tbl}' tbl, '${col}' col, ca.voice_id, ca.language, ca.origin, count(*) slots, count(distinct ca.text_normalized) texts,
+      count(*) filter (where ca.id is not null and not (${usable('ca')})) unplayable
     from ${tbl} x left join course_audio ca on ca.id = ${ptr(tbl, col)} where x.course_code = $1 and x.${col} is not null group by 3, 4, 5`)
   return (await pg.query(parts.join(' union all '), [code])).rows
 }
