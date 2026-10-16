@@ -69,10 +69,10 @@ function fixture() {
 }
 
 /** The router on a real express app, asked exactly as the booth asks. */
-async function ask(query) {
+async function ask(query, tables = fixture()) {
   const app = express()
   app.use('/api/recording', createRecordistRouter({
-    getDb: () => stubDb(fixture()),
+    getDb: () => stubDb(tables),
     logger: { info() {}, warn() {}, error() {} },
     requireAdmin: (req, res, next) => next(),
     requireDashboardUser: (req, res, next) => next(),
@@ -97,6 +97,32 @@ test('?pod= returns that pod alone, and the counts are that pod\'s own', async (
   assert.strictEqual(body.total, 2, 'the tally is the pod he opened, not the course')
   assert.strictEqual(body.remaining, 2)
   assert.strictEqual(body.pod, 'health', 'the scope it GOT is echoed, never assumed')
+})
+
+test('a controlled queue keeps its pod line when an earlier outside pod has identical words', async () => {
+  const { ACTOR_QUEUES } = require('./booth-actor-queue.cjs')
+  const tables = fixture()
+  tables.listening_pods[1].slug = 'aaa-outside'
+  tables.listening_pod_sentences[2].target_text = tables.listening_pod_sentences[0].target_text
+  ACTOR_QUEUES[VOICE] = [{ key: 'health', title: 'Health', courseCode: 'spa_for_eng', pod: 'health' }]
+  try {
+    const { status, body } = await ask('includeRecorded=1', tables)
+    assert.strictEqual(status, 200)
+    assert.deepStrictEqual(body.lines.map(l => l.text).sort(), ['Sut wyt ti?', 'Dwi angen help.'].sort())
+  } finally { delete ACTOR_QUEUES[VOICE] }
+})
+
+test('a controlled queue counts recorded lines even when includeRecorded is absent', async () => {
+  const { ACTOR_QUEUES } = require('./booth-actor-queue.cjs')
+  const tables = fixture()
+  tables.course_audio.push({ id: 'clip-h1', language: 'spa', voice_id: VOICE, text_normalized: 'sut wyt ti?' })
+  ACTOR_QUEUES[VOICE] = [{ key: 'health', title: 'Health', courseCode: 'spa_for_eng', pod: 'health' }]
+  try {
+    const { status, body } = await ask('', tables)
+    assert.strictEqual(status, 200)
+    assert.deepStrictEqual({ total: body.total, recorded: body.recorded, remaining: body.remaining }, { total: 2, recorded: 1, remaining: 1 })
+    assert.deepStrictEqual(body.lines.map(l => l.id), ['h2'])
+  } finally { delete ACTOR_QUEUES[VOICE] }
 })
 
 test('the full pod id works too, so a link somebody already has keeps working', async () => {
