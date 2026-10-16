@@ -5775,7 +5775,7 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
       let rawAudioBuffer, wordBoundaries
       if (voiceProvider === 'azure') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
+          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid], voiceBound: true, individual: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceId,
@@ -5784,20 +5784,20 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
         }))
       } else if (voiceProvider === 'elevenlabs') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
+          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid], voiceBound: true, individual: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed
         }))
       } else if (voiceProvider === 'xai') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
+          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid], voiceBound: true, individual: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
           voiceId: voiceId,
           language: toBcp47(lang),
         }))
       } else if (voiceProvider === 'cartesia') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
+          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid], voiceBound: true, individual: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
           apiKey: process.env.CARTESIA_API_KEY,
           voiceId: voiceId,
           locale: ttsLocaleForRole(course, role, lang),
@@ -6152,7 +6152,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       let rawAudioBuffer, wordBoundaries
       if (voiceProvider === 'azure') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'azure', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key] },
+          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceId,
@@ -6160,20 +6160,20 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
         }))
       } else if (voiceProvider === 'elevenlabs') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'elevenlabs', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key] },
+          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed
         }))
       } else if (voiceProvider === 'xai') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'xai', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key] },
+          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
           voiceId: voiceId,
           language: toBcp47(knownLang)
         }))
       } else if (voiceProvider === 'cartesia') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'cartesia', {
-          door: { courseCode, intro: true, replacing: [existingRow?.s3_key] },
+          door: { courseCode, intro: true, replacing: [existingRow?.s3_key], individual: true },
           apiKey: process.env.CARTESIA_API_KEY,
           voiceId: voiceId,
           locale: toBcp47(knownLang),
@@ -6599,7 +6599,7 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         let rawAudioBuffer, wordBoundaries
         if (voiceProvider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]] }),
+            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]], individual: true }),
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName,
@@ -6607,20 +6607,20 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
           }))
         } else if (voiceProvider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]] }),
+            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]], individual: true }),
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
             speed
           }))
         } else if (voiceProvider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]] }),
+            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]], individual: true }),
             voiceId: voiceName,
             language: toBcp47(language)
           }))
         } else if (voiceProvider === 'cartesia') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]] }),
+            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]], individual: true }),
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, role, language),
@@ -7002,7 +7002,7 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
         let rawAudioBuffer, wordBoundaries
         if (voiceProvider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
+            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key], voiceBound: true, individual: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName,
@@ -7010,20 +7010,20 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
           }))
         } else if (voiceProvider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
+            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key], voiceBound: true, individual: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
             speed
           }))
         } else if (voiceProvider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
+            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key], voiceBound: true, individual: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
             voiceId: voiceName,
             language: toBcp47(language)
           }))
         } else if (voiceProvider === 'cartesia') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
+            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key], voiceBound: true, individual: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, role, language),
