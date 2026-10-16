@@ -572,8 +572,7 @@ async function publishToShelf(markdown, findings, fallbackUrl) {
   }
 
   // Kai ruled (2026-10-14) that findings arrive as a message in his Watson conversation,
-  // not as a needs-you card. The post is ONE small function so a named-sender door can
-  // replace it later without touching anything else.
+  // not as a needs-you card. The post is ONE small function (postToWatson).
   const text = buildWatsonMessage(findings, out.url || fallbackUrl);
   if (DRY_RUN) { out.wouldSend = text; return out; }
   Object.assign(out, await postToWatson(text, headers, surface));
@@ -581,7 +580,7 @@ async function publishToShelf(markdown, findings, fallbackUrl) {
 }
 
 // ── The Watson post ──────────────────────────────────────────────────────────
-const WATSON_JOB_ID = process.env.DEBORAH_WATCH_WATSON_JOB || '81891a84-9a75-4abb-b20d-0967b6cfc97b';
+const WATSON_JOB_ID = process.env.DEBORAH_WATCH_WATSON_JOB || '291c1566-7d2c-492e-954a-9a7cf041b11b';
 const WATSON_FIRST_LINE = '[Automated Deborah review-column check — not typed by Kai]';
 
 /** Mechanical on purpose: header line, her NEW findings verbatim, digest link. No prose of ours. */
@@ -595,16 +594,29 @@ function buildWatsonMessage(findings, url) {
   return L.join('\n');
 }
 
-/** The swap point if Watson ships a named-sender door. Needs Kai's session cookie in headers. */
+/**
+ * Posts through /api/surface-notice (command-surface job #651): machinery speaking in the surface's
+ * own voice (source:surface, relay:deborah-watch), not /api/reply, which stamps the caller as a
+ * human. Loopback-only; it needs an explicit identity — Kai's session (DEBORAH_WATCH_SESSION) if
+ * set, else the cron fleet's (the same file ops/cs-cron-identity.js reads) — and a room id: the
+ * route addresses a room by conversation id only, so DEBORAH_WATCH_WATSON_JOB must name Kai's
+ * CURRENT Watson room. A 404 "no such job" means that id has gone stale.
+ */
 async function postToWatson(text, headers, surface) {
-  if (!headers.Cookie) return { posted: false, postWhy: 'no Kai session cookie (DEBORAH_WATCH_SESSION) — nothing posted; the repo queue file still exists' };
+  if (!headers.Cookie) {
+    try {
+      const c = fs.readFileSync(process.env.CS_SESSION_FILE || '/home/tomcassidy/.cs-cron-session', 'utf8').trim();
+      if (c.startsWith('v2.')) headers = { ...headers, Cookie: `cs_user=${c}`, Origin: surface };
+    } catch { /* no fleet identity either */ }
+  }
+  if (!headers.Cookie) return { posted: false, postWhy: 'no session cookie (DEBORAH_WATCH_SESSION or the cron fleet file) — nothing posted; the repo queue file still exists' };
   try {
-    const r = await fetch(`${surface}/api/reply`, {
+    const r = await fetch(`${surface}/api/surface-notice`, {
       method: 'POST', headers, signal: AbortSignal.timeout(20000),
-      body: JSON.stringify({ jobId: WATSON_JOB_ID, text }),
+      body: JSON.stringify({ jobId: WATSON_JOB_ID, text, relay: 'deborah-watch' }),
     });
-    return r.ok ? { posted: true } : { posted: false, postWhy: `reply ${r.status}: ${(await r.text()).slice(0, 200)}` };
-  } catch (e) { return { posted: false, postWhy: `reply failed: ${e.message}` }; }
+    return r.ok ? { posted: true } : { posted: false, postWhy: `surface-notice ${r.status}: ${(await r.text()).slice(0, 200)}` };
+  } catch (e) { return { posted: false, postWhy: `surface-notice failed: ${e.message}` }; }
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
