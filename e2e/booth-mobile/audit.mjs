@@ -28,6 +28,10 @@ const ONLY = arg('only', '') // comma list of scenario names
 const SIZES = (arg('sizes', '375x667,390x844,360x800,844x390,375x548')).split(',').map((s) => s.split('x').map(Number))
 // --base https://staging.popty.app audits a build that has not reached main (e.g. job #709's line editor).
 const BASE = arg('base', 'https://popty.app')
+// THE DESKTOP GRID (job #286) is measured at desktop sizes, not phone ones, with batches this long.
+// 1600x830 is Aran's Chromebook's page inside Chrome; 1366x600 and 1280x520 make the squares shrink.
+const DESKTOP_SIZES = (arg('desktop-sizes', '1600x1000,1366x768,1600x830,1366x600,1280x520')).split(',').map((s) => s.split('x').map(Number))
+const GRID_LINES = (arg('grid-lines', '196,250')).split(',').map(Number)
 const VOICE = 'human_tom_zzz'
 const TEAM_VOICE = 'human_aran_cym_n' // the strip only exists on a God admin's booth; every answer here is a fixture
 mkdirSync(OUT, { recursive: true })
@@ -167,8 +171,8 @@ async function fakeMic(page) {
 
 async function newPage(browser, engine, [w, h], opts = {}) {
   const ctx = await browser.newContext({
-    viewport: { width: w, height: h }, deviceScaleFactor: 2, hasTouch: true,
-    ...(engine === 'chromium' ? { isMobile: true } : {}),
+    viewport: { width: w, height: h },
+    ...(opts.desktop ? { deviceScaleFactor: 1 } : { deviceScaleFactor: 2, hasTouch: true, ...(engine === 'chromium' ? { isMobile: true } : {}) }),
     colorScheme: 'light',
   })
   await ctx.addInitScript((seed) => {
@@ -543,6 +547,60 @@ async function scenarioNextBatch(browser, engine, size) {
   }
 }
 
+// EVERY SQUARE ON SCREEN WHILE RECORDING, ON A DESKTOP (Aran, 2026-10-16, job #286): "about 200
+// lines is the right batch size", and on Popty main the recording rows pushed the top row of squares
+// (the current line's among them) and the legend out of the rail. A batch of n lines (Tom's test
+// voice's pod-1 lines, repeated with new ids; nothing is sent) is opened, measured before Start and
+// while recording: every square and the legend inside the screen and inside the rail's box, the
+// current line's square among them, and the rail exactly where it was before Start.
+function railMeasure() {
+  const wrap = document.querySelector('.rail-wrap')
+  if (!wrap) return { missing: true }
+  const wr = wrap.getBoundingClientRect()
+  const inside = (r) => r.top >= Math.max(0, wr.top) - 0.5 && r.bottom <= Math.min(innerHeight, wr.bottom) + 0.5 && r.left >= Math.max(0, wr.left) - 0.5 && r.right <= Math.min(innerWidth, wr.right) + 0.5
+  const sqs = [...document.querySelectorAll('[data-test="rail"] .rail-sq')]
+  const out = sqs.map((el, k) => [k + 1, el.getBoundingClientRect()]).filter(([, r]) => !inside(r)).map(([k]) => k)
+  const now = document.querySelector('[data-test="rail"] .rail-sq.now')
+  const legend = document.querySelector('[data-test="rail-legend"]')
+  const g = document.querySelector('[data-test="rail"]').getBoundingClientRect()
+  return {
+    squares: sqs.length, outside: out.slice(0, 20), outsideCount: out.length,
+    now: !!now && inside(now.getBoundingClientRect()),
+    legend: !!legend && inside(legend.getBoundingClientRect()),
+    sq: Math.round(sqs[0].getBoundingClientRect().width),
+    grid: [g.left, g.top, g.width, g.height].map(Math.round).join(','),
+  }
+}
+async function scenarioDesktopGrid(browser, engine, size) {
+  for (const n of GRID_LINES) {
+    const answer = async (req, url, route) => {
+      if (url.origin !== BASE || req.method() !== 'GET') return false
+      if (url.pathname === `/api/recording/voice/${VOICE}`) {
+        const r = await route.fetch(); const j = await r.json()
+        const base = j.lines.map((l) => ({ ...l, recorded: false }))
+        j.lines = Array.from({ length: n }, (_, k) => ({ ...base[k % base.length], id: `zzz_test2_for_eng:pod-1-s${1000 + k}`, order: k + 1 }))
+        j.total = n; j.recorded = 0; j.remaining = n
+        await route.fulfill({ response: r, json: j }); return true
+      }
+      return false
+    }
+    const { ctx, page } = await newPage(browser, engine, size, { answer, desktop: true })
+    try {
+      await page.goto(`${BASE}/r/${VOICE}?track=pod.pod-1&batch=1`, { waitUntil: 'domcontentloaded' })
+      await page.waitForSelector('[data-test="ready"]', { timeout: 60000 })
+      await page.waitForTimeout(300)
+      const idle = await page.evaluate(railMeasure)
+      await snap(page, engine, size, `50-grid-${n}-idle`, { rail: idle })
+      await page.getByRole('button', { name: 'Start recording' }).click()
+      await page.waitForSelector('[data-test="stop"]', { timeout: 20000 })
+      await page.waitForTimeout(1500)
+      const live = await page.evaluate(railMeasure)
+      await snap(page, engine, size, `51-grid-${n}-live`, { rail: live, railIdle: idle, lines: n })
+    } catch (e) { errors.push(`${engine} ${size} grid ${n}: ${e.message.split('\n')[0]}`); console.log(`  ${engine} ${size} grid ${n}: ${e.message.split('\n')[0]}`); await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-grid-${n}.png`) }).catch(() => {}) }
+    await ctx.close()
+  }
+}
+
 // fixtures for the fully-mocked team booth: Tom's test voice's real answers, captured once
 if (!existsSync(join(OUT, '..', 'fixtures-summary.json'))) {
   const s = await (await fetch(`${BASE}/api/recording/voice/${VOICE}/summary`)).json()
@@ -559,6 +617,7 @@ for (const engine of ENGINES) {
   for (const size of SIZES) {
     for (const [k, fn] of Object.entries(SCEN)) if (!ONLY || ONLY.split(',').includes(k)) await fn(browser, engine, size)
   }
+  if (!ONLY || ONLY.split(',').includes('grid')) for (const size of DESKTOP_SIZES) await scenarioDesktopGrid(browser, engine, size)
   await browser.close()
 }
 writeFileSync(join(OUT, 'results.json'), JSON.stringify(results, null, 1))
@@ -580,6 +639,17 @@ for (const r of results) {
   if (T.line && /live|ready/.test(r.scenario) && T.line.visiblePx < 30) fails.push(`${at}: the line being read is not on screen (${T.line.visiblePx}px visible)`)
   if (T.line && T.line.wider) fails.push(`${at}: the line being read is wider than its box`)
   if (r.sheetClose && !(r.sheetClose.closedByX && r.sheetClose.closedByScrim)) fails.push(`${at}: sheet did not close (${JSON.stringify(r.sheetClose)})`)
+  if (r.rail) {
+    const R = r.rail
+    if (R.missing) fails.push(`${at}: no rail on a desktop`)
+    else {
+      if (R.outsideCount) fails.push(`${at}: ${R.outsideCount} of ${R.squares} squares off screen (lines ${R.outside.join(',')}${R.outsideCount > 20 ? '…' : ''})`)
+      if (!R.now) fails.push(`${at}: the current line's square is not on screen`)
+      if (!R.legend) fails.push(`${at}: the legend is cut off`)
+      if (r.lines && R.squares !== r.lines) fails.push(`${at}: ${R.squares} squares for ${r.lines} lines`)
+      if (r.railIdle && !r.railIdle.missing && r.railIdle.grid !== R.grid) fails.push(`${at}: the grid moved when recording started (${r.railIdle.grid} → ${R.grid})`)
+    }
+  }
 }
 writeFileSync(join(OUT, 'verdict.txt'), fails.length ? fails.join('\n') + '\n' : 'PASS\n')
 console.log(fails.length ? `FAIL — ${fails.length} problems (verdict.txt):\n  ${fails.slice(0, 40).join('\n  ')}` : 'PASS — every screen, every size, both engines')
