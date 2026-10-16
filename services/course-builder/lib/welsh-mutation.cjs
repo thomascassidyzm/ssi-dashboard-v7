@@ -183,12 +183,14 @@ function isSameWelsh(courseCode, targetA, targetB) {
  *
  * A token is split at a clitic apostrophe: "nhw’n" → "nhw" + "’n", "mae’r" → "mae" + "’r";
  * a trailing apostrophe ("cyfri’", "be’") stays on its word.
+ * The verb "o’n" stays whole: neither teaches nor is taught by "o" plus another word's ’n.
  */
 function welshPieces(text) {
   const out = [];
   const toks = String(text || '').toLowerCase().replace(/[’‘`´]/g, "'").replace(/[.,!?;:¿¡«»"“”()]/g, ' ')
     .split(/\s+/).filter(Boolean);
   for (const t of toks) {
+    if (t === "o'n") { out.push(t); continue; }
     const m = t.match(/^([^']+)('[^']+)$/);
     if (m) out.push(m[1], m[2]); else out.push(t);
   }
