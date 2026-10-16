@@ -117,10 +117,14 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
       return (await this.all(voiceId)).filter(r => r.status === REFUSED)
     },
 
-    /** The oldest pending take whose backoff has elapsed. Sequential by design. */
-    async nextDue(voiceId) {
+    /**
+     * The oldest pending take whose backoff has elapsed. `skip(rec)` passes over
+     * takes the caller already has on the wire, or that share a line or words
+     * with one that is (Phase 1, job #221: two takes in flight at once).
+     */
+    async nextDue(voiceId, { skip } = {}) {
       const t = now()
-      return (await this.pending(voiceId)).find(r => (r.nextAttemptAt || 0) <= t) || null
+      return (await this.pending(voiceId)).find(r => (r.nextAttemptAt || 0) <= t && !(skip && skip(r))) || null
     },
 
     /** When the soonest pending take becomes due, or null if there are none. */

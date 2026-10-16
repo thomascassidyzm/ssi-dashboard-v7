@@ -272,6 +272,17 @@
           <button @click="viewFilter = 'all'" class="px-3 py-1 rounded draft-filter-btn whitespace-nowrap">Show the full script ({{ sentences.length }})</button>
         </div>
 
+        <!-- Where she left off (job #244). After a reload the page has already gone there and
+             says so; on a fresh visit it offers to. -->
+        <div v-if="resumeTarget && resumePlace" data-test="pod-resume" class="mb-4 draft-panel rounded-lg px-4 py-2 text-xs flex items-center justify-between gap-3 flex-wrap">
+          <span>You were last at line {{ resumeTarget.global_order }}.</span>
+          <span class="flex gap-2">
+            <button @click="continueFromPlace" class="px-3 py-1 rounded draft-filter-btn whitespace-nowrap">Continue from line {{ resumeTarget.global_order }}</button>
+            <button @click="resumePlace = null" class="px-3 py-1 rounded border border-line text-muted whitespace-nowrap">Start at the top</button>
+          </span>
+        </div>
+        <div v-else-if="placeNote" data-test="pod-place-note" class="mb-4 text-xs text-muted">{{ placeNote }}</div>
+
         <!-- Scenes and sentences -->
         <div v-for="scene in groupedScenes" :key="scene.number" class="mb-8">
           <h2 class="text-sm uppercase tracking-wide text-faint mb-2 flex items-center gap-3">
@@ -290,6 +301,7 @@
               </div>
               <!-- Sentence row -->
               <div
+                :data-sent-id="sent.id"
                 class="bg-surface border rounded px-3 py-2 grid grid-cols-[32px_minmax(0,1fr)] sm:grid-cols-[32px_110px_minmax(0,1fr)_auto] gap-x-3 gap-y-1.5 sm:gap-3 items-start text-sm row-sep"
                 :class="[isDraft(sent) ? 'draft-row' : 'border-line', isRowPlaying(sent) ? 'row-playing' : '']"
               >
@@ -419,7 +431,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
@@ -428,6 +440,8 @@ import { getLanguageName, useCourses } from '@/composables/useCourses.js'
 import { dirFor } from '@/utils/textDirection.js'
 import { podDisplayTitle } from '@/lib/podDisplayName.js'
 import { voiceNamesFromCoverage } from '@/lib/recordistNames.js'
+import { holdReload } from '@/router/versionReload.js'
+import { readPodPlace, savePodPlace, landingRow, readSettled, saveSettled, cameFromReload, fetchThroughRestart } from './pod-review-place.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -515,8 +529,14 @@ const viewFilter = ref(route.query.drafts === '1' ? 'todo' : 'all')
 // simply no longer returns it. Until 2026-09-17 a save DELETED the id from
 // draftIds, so an edited line vanished from the filtered view while a ticked
 // one stayed — exactly the asymmetry Aran reported.
-const proofreadIds = ref(new Set())
-const editedIds = ref(new Set())
+// Kept in sessionStorage (pod-review-place.js) so a new build reloading the tab mid-session does
+// not take the badges and the Done count with it (Deborah, 16 Oct, job #244).
+const settledAtStart = readSettled(courseCode, slug)
+const proofreadIds = ref(settledAtStart.proofread)
+const editedIds = ref(settledAtStart.edited)
+watch([proofreadIds, editedIds], ([p, e]) => saveSettled(courseCode, slug, p, e))
+// …and a line settled before a reload stays in the to-do view it was settled in.
+draftIds.value = new Set([...draftIds.value, ...settledAtStart.proofread, ...settledAtStart.edited])
 const proofreadBusyId = ref(null)
 const proofreadError = ref('')
 
@@ -547,12 +567,13 @@ async function toggleProofread(sent) {
     const res = await authedFetch(`/api/production/${courseCode}/pods/sentence/${encodeURIComponent(sent.id)}/proofread`, {
       method: 'POST',
       body: JSON.stringify({ undo }),
-    })
+    }, { throughRestart: true })
     const body = await res.json()
     if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
     const next = new Set(proofreadIds.value)
     if (undo) next.delete(sent.id); else next.add(sent.id)
     proofreadIds.value = next
+    rememberPlace(sent)
   } catch (err) {
     proofreadError.value = err?.message || String(err)
   } finally {
@@ -562,10 +583,15 @@ async function toggleProofread(sent) {
 
 async function loadDrafts() {
   try {
-    const res = await authedFetch(`/api/production/${courseCode}/pods/drafts`)
+    const res = await authedFetch(`/api/production/${courseCode}/pods/drafts`, {}, { throughRestart: true })
     if (!res.ok) return   // non-fatal: the page still shows every line
     const body = await res.json()
-    draftIds.value = new Set((body.items || []).filter(i => i.podId === pod.value?.id).map(i => i.id))
+    // The server no longer lists a line this session settled; keep it, so the to-do view and the
+    // Done count read the same after a reload as before it.
+    draftIds.value = new Set([
+      ...(body.items || []).filter(i => i.podId === pod.value?.id).map(i => i.id),
+      ...proofreadIds.value, ...editedIds.value,
+    ])
     draftsLoaded.value = true
     try { sessionStorage.setItem(DRAFT_CACHE_KEY, JSON.stringify([...draftIds.value])) } catch { /* non-fatal */ }
   } catch { /* non-fatal */ }
@@ -666,6 +692,7 @@ function startQueue(ids) {
 function playAllTargets() { startQueue(playableTargets.value) }
 
 function playFrom(sent) {
+  rememberPlace(sent)
   const list = orderedSentences.value
   const i = list.findIndex(s => s.id === sent.id)
   startQueue(list.slice(i < 0 ? 0 : i).map(s => s.target_audio_id).filter(Boolean))
@@ -695,9 +722,9 @@ async function loadPod() {
   loading.value = true
   error.value = null
   try {
-    const res = await fetch(`${getApiUrl()}/api/pods/${courseCode}/${slug}`, {
+    const res = await fetchThroughRestart(() => fetch(`${getApiUrl()}/api/pods/${courseCode}/${slug}`, {
       headers: {},
-    })
+    }))
     if (!res.ok) throw new Error(`Failed to load pod (${res.status})`)
     const data = await res.json()
     pod.value = data.pod
@@ -861,14 +888,18 @@ function readerFor(sent, kind) {
 // Auth-gated fetch helper for the pod editing/generation doors. Mirrors the
 // pattern in RemoteControl / Maintenance — fresh access token, attach Bearer.
 const { getAccessToken } = useAuth()
-async function authedFetch(path, init = {}) {
-  const token = await getAccessToken()
-  const headers = {
-    'Content-Type': 'application/json',
-    ...(init.headers || {}),
+// `throughRestart`: ask again when the API is mid-restart — only for requests safe to repeat.
+async function authedFetch(path, init = {}, { throughRestart = false } = {}) {
+  const once = async () => {
+    const token = await getAccessToken()
+    const headers = {
+      'Content-Type': 'application/json',
+      ...(init.headers || {}),
+    }
+    if (token) headers.Authorization = `Bearer ${token}`
+    return fetch(`${getApiUrl()}${path}`, { ...init, headers })
   }
-  if (token) headers.Authorization = `Bearer ${token}`
-  return fetch(`${getApiUrl()}${path}`, { ...init, headers })
+  return throughRestart ? fetchThroughRestart(once) : once()
 }
 
 // --- Jump-in marker (Tom, 2026-09-12) --------------------------------------
@@ -904,7 +935,12 @@ const editBuf = ref({ target: '', known: '' })
 const savingEdit = ref(false)
 const editError = ref('')
 
+// An open editor holds back a new build's reload: a tab return would otherwise wipe the words.
+watch(editingId, (id) => holdReload('pod-edit', id != null))
+onUnmounted(() => holdReload('pod-edit', false))
+
 function startEdit(sent) {
+  rememberPlace(sent)
   editingId.value = sent.id
   editBuf.value = { target: sent.target_text || '', known: sent.known_text || '' }
   editError.value = ''
@@ -921,7 +957,7 @@ async function saveSentence(sent) {
     const res = await authedFetch(`/api/production/${courseCode}/pods/sentence/${encodeURIComponent(sent.id)}`, {
       method: 'PATCH',
       body: JSON.stringify({ target_text: editBuf.value.target, known_text: editBuf.value.known }),
-    })
+    }, { throughRestart: true })
     const body = await res.json()
     if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
     // Editing a side unlinks THAT side's audio (its words no longer match the
@@ -1121,9 +1157,59 @@ function recChip(sent) {
   return { text: '—', cls: 'bg-surface text-faint border border-line', title }
 }
 
-onMounted(async () => { await loadPod(); loadDrafts(); loadRecordingStatus(); loadCast() })
+// --- Where the proofreader is (Deborah, 16 Oct, job #244) -------------------
+// The line nearest the top of the screen as she scrolls, and any line she ticks, edits or opens,
+// is remembered (pod-review-place.js). A reload — a new build arriving, which is what threw her
+// back to line 1 — lands on it again by itself; a fresh visit offers it as a button instead.
+const resumePlace = ref(null)
+const resumeTarget = computed(() => landingRow(orderedSentences.value, resumePlace.value))
+const placeNote = ref('')
+
+function rememberPlace(sent) { savePodPlace(courseCode, slug, sent) }
+
+function scrollToSentence(sent) {
+  const el = typeof document !== 'undefined' && document.querySelector(`[data-sent-id="${String(sent.id).replace(/["\\]/g, '\\$&')}"]`)
+  if (el?.scrollIntoView) el.scrollIntoView({ block: 'center' })
+  return !!el
+}
+
+async function continueFromPlace() {
+  const target = resumeTarget.value
+  resumePlace.value = null
+  if (!target) return
+  await nextTick()
+  scrollToSentence(target)
+}
+
+let scrollTimer = null
+function onScrollRemember() {
+  if (scrollTimer || typeof document === 'undefined' || !document.elementFromPoint) return
+  scrollTimer = setTimeout(() => {
+    scrollTimer = null
+    const el = document.elementFromPoint(Math.round(window.innerWidth / 2), 140)?.closest?.('[data-sent-id]')
+    const sent = el && sentences.value.find(s => s.id === el.dataset.sentId)
+    if (sent) rememberPlace(sent)
+  }, 500)
+}
+
+onMounted(async () => {
+  await loadPod(); loadDrafts(); loadRecordingStatus(); loadCast()
+  const place = readPodPlace(courseCode, slug)
+  if (place && sentences.value.length) {
+    resumePlace.value = place
+    if (cameFromReload()) {
+      const target = resumeTarget.value
+      resumePlace.value = null
+      await nextTick()
+      if (target && scrollToSentence(target)) placeNote.value = `Back where you were — line ${target.global_order}.`
+    }
+  }
+  window.addEventListener('scroll', onScrollRemember, { passive: true })
+})
 
 onUnmounted(() => {
+  window.removeEventListener('scroll', onScrollRemember)
+  clearTimeout(scrollTimer)
   if (audioEl.value) { audioEl.value.pause(); audioEl.value.src = '' }
 })
 </script>

@@ -10,7 +10,7 @@
  */
 import { describe, it, expect } from 'vitest'
 
-const { allActive, unitsToRestart, nextDeployedSha } = require('./auto-deploy-prod.cjs')
+const { allActive, unitsToRestart, nextDeployedSha, restartDecision } = require('./auto-deploy-prod.cjs')
 
 const A = 'popty-production-api'
 const B = 'popty-course-builder-api'
@@ -74,5 +74,31 @@ describe('nextDeployedSha — the marker only advances once everything is health
     const activeTick3 = { [A]: true, [B]: true, [C]: true } // B recovered
     marker = nextDeployedSha('sha2', marker, activeTick3)
     expect(marker).toBe('sha2') // now it advances
+  })
+})
+
+describe('restartDecision — restart only when server-side code can have changed (job #255)', () => {
+  it('skips evidence-only, SPA-only, test-only and docs-only merges', () => {
+    expect(restartDecision(['public/evidence/x/a.mp3', 'public/evidence/x/index.html']).restart).toBe(false)
+    expect(restartDecision(['src/views/Foo.vue', 'e2e/a.mjs', 'docs/DECISIONS.md']).restart).toBe(false)
+    expect(restartDecision(['services/foo.test.cjs']).restart).toBe(false)
+    expect(restartDecision(['tools/course-optimization/deu-x-2026-10-16.cjs']).restart).toBe(false)
+  })
+  it('restarts for server code, deps, config read at boot, and anything unknown', () => {
+    for (const f of ['services/production-api.cjs', 'package-lock.json', 'package.json', 'automation.config.json',
+      'docs/pair-contracts/fra_for_eng.contract.cjs', 'public/vfs/canonical/voices.json', 'src/explainer/pack.json',
+      'SYSTEM.md', 'ops/systemd/popty-production-api.service', 'tools/lib/unit-scope.cjs', '.env.example', 'brand-new-dir/x']) {
+      expect(restartDecision(['public/evidence/a.png', f]).restart, f).toBe(true)
+    }
+  })
+  it('one server file among static ones is enough; empty diff skips', () => {
+    expect(restartDecision(['src/a.vue', 'services/x.cjs']).restart).toBe(true)
+    expect(restartDecision([]).restart).toBe(false)
+  })
+  it('a static deploy retries only down units; a server deploy restarts all', () => {
+    const up = { [A]: true, [B]: true, [C]: true }
+    expect(unitsToRestart('s2', 's1', up, false)).toEqual([])
+    expect(unitsToRestart('s2', 's1', { ...up, [B]: false }, false)).toEqual([B])
+    expect(unitsToRestart('s2', 's1', up, true)).toEqual([A, B, C])
   })
 })

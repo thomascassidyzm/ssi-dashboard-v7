@@ -13,8 +13,13 @@ import { createTakeStore, createMemoryBackend } from '@/services/takeStore.js'
 // are what is under test here. The real IndexedDB adapter is proved in a
 // browser — the only place an IndexedDB adapter can honestly be proved.
 let shelf
+// Torn down after each test, so a queue left alive cannot fire a wake timer
+// into the NEXT test's fetch mock or hold the one-tab lock over it.
+const live = []
 function queueOn(opts = {}) {
-  return useRecordistQueue({ storeBackend: shelf, ...opts })
+  const q = useRecordistQueue({ storeBackend: shelf, ...opts })
+  live.push(q)
+  return q
 }
 
 const blob = (n = 5000) => new Blob([new Uint8Array(n)], { type: 'audio/webm' })
@@ -24,7 +29,7 @@ beforeEach(() => {
   shelf = createMemoryBackend()
   localStorage.clear()
 })
-afterEach(() => { vi.unstubAllGlobals(); vi.restoreAllMocks() })
+afterEach(() => { while (live.length) live.pop().teardown(); vi.unstubAllGlobals(); vi.restoreAllMocks() })
 
 function respond(sequence) {
   let i = 0
