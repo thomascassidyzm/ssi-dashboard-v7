@@ -16,13 +16,14 @@
 import { test, expect, chromium } from '@playwright/test'
 import { mkdirSync, rmSync, writeFileSync, existsSync } from 'fs'
 import { createRequire } from 'module'
+import { execFileSync } from 'child_process'
 import os from 'os'
 import path from 'path'
 import { buildMicWav } from './make-mic-wav.js'
 
 const require = createRequire(import.meta.url)
 const fixture = require('./fixture.cjs')
-const { VOICE_ID, VOICE_NAME, LINES } = fixture
+const { VOICE_ID, VOICE_NAME, COURSE_CODE, LINES } = fixture
 const N = LINES.length
 
 const BASE = process.env.E2E_BASE_URL || 'http://127.0.0.1:3491'
@@ -101,12 +102,13 @@ const bodyText = (page) => page.locator('body').textContent()
 async function startButton(page) {
   const b = page.locator('.btn-begin')
   if (!(await b.count())) return null
-  return { text: (await b.first().textContent()).trim(), disabled: await b.first().isDisabled() }
+  const line = page.locator('[data-test=ready-line]')
+  const label = (await b.first().textContent()).trim()
+  return { text: await line.count() ? `${label} — ${(await line.textContent()).trim()}` : label, disabled: await b.first().isDisabled() }
 }
-// The Start label shows the first 34 characters of the line (RecordistRoom
-// firstLinePreview), so a line is named on it by its prefix.
-const preview = (line) => line.slice(0, 34)
-const startLabelFor = (line) => `Start recording — ${preview(line)}${line.length > 34 ? '…' : ''}`
+// The Prompter draws the whole line above Start. Check both as the artist sees them.
+const preview = (line) => line
+const startLabelFor = (line) => `Start recording — ${line}`
 // THE SWITCH TOM'S BOOTH HAD ON. Until 2026-09-12 the ready card offered
 // "Re-read lines I've already recorded", remembered per artist, and with it on
 // the run started at the top of the queue whether or not that line was
@@ -140,9 +142,9 @@ async function assertInvariant(page, { pendingOrRefused }, where) {
 // first number is the input peak this frame; that is how the spec knows which
 // segment of make-mic-wav.js the microphone is in.
 async function peakDb(page) {
-  const tag = page.locator('.meter-tag')
+  const tag = page.locator('[data-test=mic]')
   if (!(await tag.count())) return null
-  const t = await tag.first().textContent()
+  const t = await tag.first().getAttribute('title') || ''
   if (!/Mic live/.test(t)) return null
   const m = /Mic live · (−∞|-?\d+) dB/.exec(t)
   if (!m) return null
@@ -191,13 +193,16 @@ async function openBooth(page) {
   await page.goto(`${BASE}/r/${VOICE_ID}`)
   // .rc-hello on the old booth home, .bh-h1 on the Prompter rebuild (#424) that staging runs ahead of main.
   await expect(page.locator('.rc-hello, .bh-h1').first()).toContainText(VOICE_NAME.split(' (')[0])
-  await expect.poll(() => counts(page), { message: 'the ready card' }).not.toBeNull()
+  // Home is now a list of work, not the ready card. Open the fixture's course/pod
+  // door for this whole-script scenario, including reloads when nothing is left.
+  await page.goto(`${BASE}/r/${VOICE_ID}?course=${COURSE_CODE}&pod=pod-1`)
+  await expect.poll(() => counts(page), { message: 'the script ready card' }).not.toBeNull()
 }
 async function begin(page) {
   // Auto-advance off: the spec taps, so it knows on which silence a line ends.
-  const auto = page.locator('.toggle-row input[type=checkbox]').first()
-  if (await auto.isChecked()) await auto.uncheck()
   await page.locator('.btn-begin').click()
+  const auto = page.locator('.stage-auto input[type=checkbox]')
+  await auto.uncheck()
   await expect(page.locator('.ctl-next')).toBeVisible()
   await expect(page.locator('.line-target')).toBeVisible()
 }
@@ -307,13 +312,13 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   // Line 3, read loud, and stop.
   await readLoudAndStop(page, 'line 3')
   await serverSettled(page, 'after the first run')
-  await expect.poll(() => banner(page).then((b) => b && b.cls), { message: 'the refused banner', timeout: 30_000 }).toBe('refused')
-  const b3 = await banner(page)
-  expect(b3.text).toContain('1 take the server would not accept')
+  await expect.poll(() => refusedListed(page), { message: 'the refused line', timeout: 30_000 }).toHaveLength(1)
+  expect(await banner(page)).toBeNull()
   const listed = await refusedListed(page)
   expect(listed).toHaveLength(1)
   expect(listed[0].text).toBe(LINES[1])
-  expect(listed[0].why, "the server's own reason is on the card").toMatch(SERVER_REFUSAL)
+  expect(listed[0].why).toContain('no speech heard')
+  expect(await page.locator('.redo-why').getAttribute('title'), "the server's full reason remains available").toMatch(SERVER_REFUSAL)
   note(`server refused line 2: "${listed[0].why}"`)
   expect(await bodyText(page)).toContain('1 did not save')
   expect(await counts(page)).toEqual({ recorded: 2, stillToRead: N - 2 })
@@ -406,7 +411,7 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
 
   // 8. The database: every line carries exactly one take by the test voice,
   //    each with a clip, a pod link and a provenance row naming the test voice.
-  const v = await fixture.verify(require('@supabase/supabase-js').createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY), LINES.map((_, i) => i + 1))
+  const v = JSON.parse(execFileSync(process.execPath, ['e2e/booth-artists-day/fixture.cjs', 'verify', LINES.map((_, i) => i + 1).join(',')], { encoding: 'utf8' }))
   note(`db: ${v.rows} course_audio rows, ${v.provenance} provenance rows for ${VOICE_ID}${v.ok ? '' : ' — ' + v.problems.join('; ')}`)
   expect(v.problems).toEqual([])
   rmSync(PROFILE, { recursive: true, force: true })
