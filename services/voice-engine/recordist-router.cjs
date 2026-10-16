@@ -73,6 +73,24 @@ const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
 const boothActorQueue = require('./booth-actor-queue.cjs')
 const boothRerecord = require('./booth-rerecord.cjs')
+const { isRetryableFilingFailure } = require('../script-take-filing.cjs')
+
+/**
+ * A TAKE THE DATABASE DID NOT FILE IS NOT A SAVED TAKE (job #261). Its bytes are in S3, but no
+ * course_audio row serves them, so the line is still unrecorded. Answering 200 made the phone
+ * delete the take and the line came back on the Re-record card as "skipped". 503 is transient to
+ * the phone (src/services/uploadConcurrency.js isTransientStatus): it keeps the take, drops to one
+ * upload at a time and sends it again until it files.
+ */
+function refuseUnfiledTake(res, recordist, filing) {
+  return res.status(503).json({
+    error: "Popty got this take but couldn't file it just now (the database was busy). It is kept on this device and will be sent again by itself.",
+    reason: 'take_not_filed',
+    retryable: true,
+    voiceId: recordist.voiceId,
+    filing,
+  })
+}
 const { courseDialect } = require('../shared/dialect.cjs')
 const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
 const { isSoloReaderPod, soloReaders, soloReaderIndex, soloReaderTakeGIds } = require('../shared/pod-solo-readers.cjs')
@@ -506,10 +524,42 @@ module.exports = function createRecordistRouter({
       const idx = boothRerecord.indexQueue(value.queue)
       p = voiceTakes(db(), value.recordist, idx.courses, { provenanceFor: (t) => boothRerecord.isOrphanTake(idx, t) })
         .then((takes) => boothRerecord.buildRerecordList(value.queue, takes, idx))
+        .then(async (list) => boothRerecord.withEditors(list, await textChangeEditors(list)))
       p.catch(() => rerecordLists.delete(value))
       rerecordLists.set(value, p)
     }
     return p
+  }
+  // WHO CHANGED THE WORDS (job #261): each text-change row's content row, its last_edit_event_id,
+  // and that event's editor and time — a few reads by primary key, only for the text changes. A
+  // failed read costs the card its "by X", never the list.
+  async function textChangeEditors(list) {
+    const out = new Map()
+    const rows = list.items.filter((it) => it.why === 'text_changed')
+      .map((it) => ({ lineId: it.lineId, row: boothRerecord.editRowOf(it.lineId) })).filter((x) => x.row)
+    if (!rows.length) return out
+    const rowKey = (table, id) => `${table}|${id}`
+    try {
+      const eventOf = new Map()
+      for (const table of [...new Set(rows.map((x) => x.row.table))]) {
+        const ids = rows.filter((x) => x.row.table === table).map((x) => x.row.id)
+        const { data, error } = await db().from(table).select('id, last_edit_event_id').in('id', ids)
+        if (error) throw new Error(`${table}: ${error.message}`)
+        for (const r of data || []) if (r.last_edit_event_id) eventOf.set(rowKey(table, r.id), r.last_edit_event_id)
+      }
+      const eventIds = [...new Set(eventOf.values())]
+      if (!eventIds.length) return out
+      const { data: events, error } = await db().from('content_edit_events').select('id, actor_label, occurred_at').in('id', eventIds)
+      if (error) throw new Error(`content_edit_events: ${error.message}`)
+      const byId = new Map((events || []).map((e) => [e.id, e]))
+      for (const x of rows) {
+        const e = byId.get(eventOf.get(rowKey(x.row.table, x.row.id)))
+        if (e) out.set(x.lineId, { by: e.actor_label || null, at: e.occurred_at || null })
+      }
+    } catch (err) {
+      logger.warn(`[Recordist] rerecord: who changed the words not read: ${err.message}`)
+    }
+    return out
   }
   const idList = (v) => (typeof v === 'string' ? v.split(',').map((x) => x.trim()).filter(Boolean).slice(0, 500) : [])
 
@@ -1088,6 +1138,7 @@ module.exports = function createRecordistRouter({
     // verdict has to be READ rather than assumed -- an unfiled take is bytes in
     // S3 with nothing that can serve them, which is the 2026-08-19 silence.
     const filing = captured.body.filing || null
+    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = { linked: [] }
     if (audioId) {
@@ -1258,6 +1309,7 @@ module.exports = function createRecordistRouter({
     }
 
     const filing = captured.body.filing || null
+    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = false
     if (audioId) {
@@ -1467,6 +1519,7 @@ module.exports = function createRecordistRouter({
     }
 
     const filing = captured.body.filing || null
+    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = 0
     if (audioId && resolved.lego) {
@@ -1722,6 +1775,7 @@ module.exports = function createRecordistRouter({
       return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
     }
     const filing = captured.body.filing || null
+    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = { linked: [] }
     if (audioId) {
@@ -1843,6 +1897,7 @@ module.exports = function createRecordistRouter({
       return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
     }
     const filing = captured.body.filing || null
+    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = { linked: [] }
     if (audioId) {

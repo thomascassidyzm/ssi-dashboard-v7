@@ -134,21 +134,30 @@ function takeRoleOf(line) {
  * best first and each take is used once, so an edited line gets its own old take, not a
  * neighbour's.
  *
- * @param {object[]} unrecorded wire lines that are not recorded
+ * A RECORDED LINE CLAIMS ITS ORPHAN TOO (Aran, 2026-10-16, job #261). A line that was edited AND
+ * read again leaves its old take an orphan for good. Matched against unrecorded lines only, that
+ * orphan was handed to whichever unread neighbour looked most like it — "do, o'n i'n ddigon lwcus
+ * i deithio i Affrica" (the S1379 seed before Affrica became Affrig, re-read 15 Oct) was put on the
+ * card as the old words of the phrase "llynedd o'n i'n ddigon lwcus", a line he had never read,
+ * and as he read each neighbour it hopped to the next. So every line competes: an orphan whose
+ * best match is a recorded line is that line's history, and is not a text change of anything.
+ * On a tie the unrecorded line keeps it — asking once too often beats dropping an edited line.
+ *
+ * @param {object[]} lines wire lines; recorded ones claim orphans but are never returned
  * @param {Set<string>} liveKeys audio keys of EVERY line of this reader, recorded or not
  * @param {object[]} takes {id, text, text_normalized, course_code, role, created_at, seedNumber?}
- * @returns {Map<string, object>} lineId -> the take it used to be
+ * @returns {Map<string, object>} lineId -> the take it used to be (unrecorded lines only)
  */
-function pairTextChanges(unrecorded, liveKeys, takes) {
+function pairTextChanges(lines, liveKeys, takes) {
   const orphans = (takes || []).filter((t) => !audioKeyCandidates(t.text_normalized || t.text).some((k) => liveKeys.has(k)))
-  if (!orphans.length || !unrecorded.length) return new Map()
+  if (!orphans.length || !lines.some((l) => !l.recorded)) return new Map()
   const byCourse = new Map()
   for (const t of orphans) {
     if (!byCourse.has(t.course_code)) byCourse.set(t.course_code, [])
     byCourse.get(t.course_code).push(t)
   }
   const pairs = []
-  for (const line of unrecorded) {
+  for (const line of lines) {
     const role = takeRoleOf(line)
     for (const t of byCourse.get(line.courseCode) || []) {
       if (role && t.role && t.role !== role) continue
@@ -158,7 +167,7 @@ function pairTextChanges(unrecorded, liveKeys, takes) {
       if (s >= (sameSeed ? MATCH_SAME_SEED : MATCH_TEXT_ONLY) && s < 1) pairs.push({ line, take: t, s: s + (sameSeed ? 1 : 0) })
     }
   }
-  pairs.sort((a, b) => b.s - a.s)
+  pairs.sort((a, b) => (b.s - a.s) || (Number(!!a.line.recorded) - Number(!!b.line.recorded)))
   const out = new Map()
   const usedTakes = new Set()
   for (const p of pairs) {
@@ -166,6 +175,7 @@ function pairTextChanges(unrecorded, liveKeys, takes) {
     out.set(p.line.id, p.take)
     usedTakes.add(p.take.id)
   }
+  for (const p of pairs) if (p.line.recorded) out.delete(p.line.id)
   return out
 }
 
@@ -228,8 +238,7 @@ function buildRerecordList(queue, takes = [], idx = indexQueue(queue)) {
   const { batches, pool, firstIndex, liveKeys } = idx
   const why = new Map()
   for (const b of batches) for (const l of skippedIn(b.lines)) why.set(l.id, { why: 'skipped' })
-  const unrecorded = [...pool.values()].map((p) => p.line).filter((l) => !l.recorded)
-  for (const [id, take] of pairTextChanges(unrecorded, liveKeys, takes)) {
+  for (const [id, take] of pairTextChanges([...pool.values()].map((p) => p.line), liveKeys, takes)) {
     why.set(id, { why: 'text_changed', oldText: take.text, recordedAt: take.created_at || null })
   }
   const lines = courseOrder([...why.keys()].map((id) => pool.get(id).line), firstIndex)
@@ -329,7 +338,36 @@ function goneAmong(list, ids = []) {
   return ids.filter((id) => !list.pool.get(id))
 }
 
+const EDIT_TABLES = { phrase: 'course_practice_phrases', seed: 'course_seeds', lego: 'course_legos' }
+
+/**
+ * WHERE A LINE'S WORDS LIVE, so a text change can say who made it (Aran, 2026-10-16, job #261:
+ * "each one says WHY … 'text changed by X on <date>'"). `phrase:<course>:<id>:<role>` is the
+ * phrase row `<course>:<id>`; `seed:<uuid>:<role>` and `lego:<uuid>:<role>` are rows by id. Pod
+ * and other lines have no single content row: null, and the card says only that the text changed.
+ */
+function editRowOf(lineId) {
+  const m = /^(phrase|seed|lego):(.+):([a-z0-9_]+)$/.exec(String(lineId || ''))
+  return m ? { table: EDIT_TABLES[m[1]], id: m[2] } : null
+}
+
+/**
+ * The text-change items with who last edited each row and when (`changedBy`, `changedAt`), from
+ * `editors` (lineId -> {by, at}). A row with no attribution (a NULL last_edit_event_id means "none
+ * was captured", never a guess — Tom, 2026-09-01) is left without one.
+ */
+function withEditors(list, editors = new Map()) {
+  return {
+    ...list,
+    items: list.items.map((it) => {
+      const e = it.why === 'text_changed' && editors.get(it.lineId)
+      return e ? { ...it, changedBy: e.by || null, changedAt: e.at || null } : it
+    }),
+  }
+}
+
 module.exports = {
+  editRowOf, withEditors,
   goneAmong,
   RERECORD_TRACK, REACHED_DENSITY, MATCH_SAME_SEED, MATCH_TEXT_ONLY,
   batchesOf, skippedIn, similarity, pairTextChanges, courseOrder, indexQueue, isOrphanTake,

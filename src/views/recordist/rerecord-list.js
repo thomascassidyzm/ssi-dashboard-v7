@@ -26,11 +26,35 @@ export function whyWords(why, lastError = '') {
   return "didn't save"
 }
 
+/** "15 Oct", in UK time (Aran reads the booth in the UK), or '' for no date. */
+export function dayWords(when) {
+  const d = new Date(typeof when === 'number' ? when : String(when || ''))
+  // No date, or none that could be real (a test's or a stale record's epoch-zero), says nothing.
+  if (!when || Number.isNaN(d.getTime()) || d.getUTCFullYear() < 2020) return ''
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'Europe/London' })
+}
+
+/**
+ * THE REASON ON THE ROW, short and plain, with who and when wherever they are known (Aran,
+ * 2026-10-16, job #261: lines he had never seen kept appearing, and "skipped" or "text changed"
+ * alone did not tell him where they came from). Nothing is on the card without one of these.
+ */
+export function reasonWords(row = {}, lastError = '') {
+  const day = (w) => (dayWords(w) ? ` · ${dayWords(w)}` : '')
+  if (row.why === 'skipped') return `skipped: the lines around it are recorded${row.batch ? ` (batch ${row.batch})` : ''}`
+  if (row.why === 'text_changed') {
+    if (row.changedBy) return `text changed by ${row.changedBy}${dayWords(row.changedAt) ? `, ${dayWords(row.changedAt)}` : ''}`
+    return `text changed after your take${dayWords(row.recordedAt) ? ` of ${dayWords(row.recordedAt)}` : ''}`
+  }
+  if (row.why === 'didnt_match') return `${whyWords('didnt_match')}${day(row.recordedAt)}`
+  return `${whyWords('refused', lastError)}${day(row.refusedAt)}`
+}
+
 /**
  * @param {object} p
  * @param {object[]} p.serverItems the /rerecord answer's items, in course order
  * @param {string[]} [p.recordedAlso] refused-take line ids the server says now have a good take
- * @param {object[]} [p.refusedTakes] the device's refused takes: {lineId, text, lastError}
+ * @param {object[]} [p.refusedTakes] the device's refused takes: {lineId, text, lastError, refusedAt}
  * @param {Set<string>|string[]} [p.unsent] line ids with a take still waiting to upload
  * @param {Set<string>|Map<string,*>|string[]} [p.saved] line ids saved from this device since
  * @param {Set<string>|Map<string,*>|string[]} [p.retaken] line ids read again since the list was
@@ -56,12 +80,12 @@ export function mergeRerecord({ serverItems = [], recordedAlso = [], refusedTake
     const refused = refusedById.get(it.lineId)
     // A refusal is the newest thing known about a line: it says what happened to his last try.
     const why = refused ? 'refused' : it.why
-    out.push({ ...it, why, hasTake: !!refused, words: whyWords(why, refused && refused.lastError) })
+    out.push({ ...it, why, hasTake: !!refused, words: reasonWords({ ...it, why, refusedAt: refused && refused.refusedAt }, refused && refused.lastError) })
   }
   for (const t of refusedById.values()) {
     if (seen.has(t.lineId) || isUnsent(t.lineId) || isSaved(t.lineId) || isNowRecorded(t.lineId) || isGone(t.lineId)) continue
     seen.add(t.lineId)
-    out.push({ lineId: t.lineId, why: 'refused', hasTake: true, words: whyWords('refused', t.lastError), text: t.text || '', oldText: null, track: null, batch: null })
+    out.push({ lineId: t.lineId, why: 'refused', hasTake: true, words: reasonWords({ why: 'refused', refusedAt: t.refusedAt }, t.lastError), text: t.text || '', oldText: null, track: null, batch: null })
   }
   return out
 }
