@@ -110,16 +110,19 @@ describe('LearningJourneyView — player-delivery flags', () => {
     const wrapper = mountView()
     const badges = wrapper.findAll('.round-undeliverable-badge')
     expect(badges).toHaveLength(1)
-    expect(badges[0].text()).toContain('player skips this round')
-    expect(badges[0].text()).toContain('voice 2')
-    expect(badges[0].attributes('title')).toContain('still shown here')
+    // Wording changed 2026-08-06 (90b684d8e): a gap costs cycles, and only a
+    // round with NOTHING playable is flagged; the title says why.
+    expect(badges[0].text()).toContain('nothing playable in this round')
+    expect(badges[0].attributes('title')).toContain('still shown')
+    expect(badges[0].attributes('title')).toContain('number is unaffected')
   })
 
-  it('shows the number the learner actually sees when rounds have shifted', () => {
+  it('never renumbers rounds: a gap costs the cycle, not the number', () => {
     const wrapper = mountView()
-    const renumber = wrapper.findAll('.round-renumber-badge')
-    expect(renumber).toHaveLength(1)          // only R48, which the player calls R47
-    expect(renumber[0].text()).toBe('player: R47')
+    expect(wrapper.findAll('.round-renumber-badge')).toHaveLength(0)
+    expect(wrapper.text()).toContain('R48')
+    // the partly-voiced round says how many cycles it loses, not a new number
+    expect(wrapper.find('.round-partial-badge').text()).toBe('2 cycles skipped for audio')
   })
 
   it('keeps every undeliverable row on screen', async () => {
@@ -137,19 +140,17 @@ describe('LearningJourneyView — player-delivery flags', () => {
     await expandAll(wrapper)
 
     // Missing audio already reads as a dropped play button + amber triangle;
-    // the one chip is the review that looks healthy and never fires.
-    const flags = wrapper.findAll('.item-undeliverable-badge')
-    expect(flags).toHaveLength(1)
-    expect(flags[0].text()).toContain('review unreachable')
-    expect(flags[0].attributes('title')).toContain('never introduces the LEGO being reviewed')
+    // the only chip is for an intro whose narration is missing (looks healthy
+    // on the row). Reviews no longer get one: they fire on their own audio.
+    expect(wrapper.findAll('.item-undeliverable-badge')).toHaveLength(0)
 
     // The audio gaps are still visible — via the existing indicator, on all
     // four rows the player will not play.
     expect(wrapper.findAll('.audio-missing-icon').length).toBe(4)
     const phraseGap = wrapper.findAll('.audio-missing-icon')
       .map(i => i.attributes('title'))
-      .find(t => t.includes('for this phrase'))
-    expect(phraseGap).toContain('No prompt + voice 2 audio')
+      .find(t => t.includes('prompt + voice 2'))
+    expect(phraseGap).toContain('No prompt + voice 2 audio for this phrase')
   })
 
   it('leaves deliverable rows unflagged', async () => {
@@ -188,7 +189,7 @@ describe('LearningJourneyView — player-delivery flags', () => {
     const val = wrapper.find('.stat-val-undeliverable')
     expect(val.text()).toBe('4')
     expect(wrapper.find('.stat-label-undeliverable').text()).toBe("Player can't deliver")
-    expect(wrapper.text()).toContain('in 1 dropped round')
+    expect(wrapper.text()).toContain('1 round has nothing playable')
   })
 
   it('flags nothing on a fully-voiced course', async () => {
