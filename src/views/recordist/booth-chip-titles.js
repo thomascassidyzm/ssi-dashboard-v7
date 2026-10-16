@@ -26,8 +26,9 @@ export const BOOTH_COURSE_TITLES = {
 
 // Keyed `${courseCode}/${podSlug}`: every course's core pod is `pod-1`.
 export const BOOTH_POD_TITLES = {
-  'cym_n_for_eng/pod-1': { title: 'Welsh Pod1', dialect: 'North' },
-  'cym_s_for_eng/pod-1': { title: 'Welsh Pod1', dialect: 'South' },
+  // 'Pod 1' — its display name (Kai and Aran, 2026-10-16, job #247; was 'Welsh Pod1').
+  'cym_n_for_eng/pod-1': { title: 'Pod 1', dialect: 'North' },
+  'cym_s_for_eng/pod-1': { title: 'Pod 1', dialect: 'South' },
 }
 
 // Pods named by slug alone, whichever course holds them (no dialect to add).

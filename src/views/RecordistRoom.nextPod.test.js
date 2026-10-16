@@ -82,11 +82,37 @@ describe('RecordistRoom — a finished pod link offers the next pod', () => {
     expect(w.find('[data-test="other-lines"]').exists()).toBe(false)
   })
 
-  it('no next pod but other lines owed → pods done, and a way to the rest', async () => {
+  // Kai and Aran, 2026-10-16 (job #247): an actor is shown only what we put in their queue —
+  // never "See your other lines", the door to Dan's ~2,456-line cast backlog.
+  it('no next pod but other lines owed → pods done, and NO way to the rest', async () => {
     serve({ recorded: true, podsDone: { nextPod: null, remainingOutsidePods: 1291 } })
     const w = await openBooth()
     expect(w.find('[data-test="pods-all-done"]').text()).toBe('All your pods are done — thank you')
-    expect(w.find('[data-test="other-lines"]').exists()).toBe(true)
+    expect(w.find('[data-test="other-lines"]').exists()).toBe(false)
+    expect(w.text()).not.toContain('See your other lines')
+  })
+
+  // Job #247: Dan's controlled queue — Pod 1, then the 206 seed sentences (booth-actor-queue.cjs).
+  const SEEDS = { step: 'seeds', title: 'Seed sentences', label: 'Seed sentences (206)', courseCode: 'cym_s_for_eng', podSlug: null, remaining: 206 }
+  const POD1 = { step: 'pod-1', title: 'Pod 1', label: 'Pod 1', courseCode: 'cym_s_for_eng', podSlug: 'pod-1', remaining: 28 }
+
+  it('a controlled queue: the header names the step ("Pod 1 · 2 left")', async () => {
+    serve({ recorded: false, podsDone: { current: POD1, nextPod: SEEDS, remainingOutsidePods: 0 } })
+    const w = await openBooth()
+    expect(w.find('[data-test="batch-where"]').text()).toBe('Pod 1 · 2 left')
+  })
+
+  it('Pod 1 finished → "Next: Seed sentences (206)", which opens the seeds step', async () => {
+    serve({ recorded: true, podsDone: { current: POD1, nextPod: SEEDS, remainingOutsidePods: 0 } })
+    const w = await openBooth()
+    const btn = w.find('[data-test="next-pod"]')
+    expect(btn.text()).toBe('Next: Seed sentences (206) →')
+    await btn.trigger('click')
+    await flushPromises(); await flushPromises()
+    const at = new URLSearchParams(window.location.search)
+    expect(at.get('step')).toBe('seeds')
+    expect(at.get('pod')).toBe(null)
+    expect(asked.some(u => u.includes('&step=seeds'))).toBe(true)
   })
 
   it('lines still owed in the pod → Start as before, no next-pod button', async () => {
