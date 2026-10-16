@@ -190,3 +190,31 @@ describe('BOOTH_WHISPER_CHECK switch (Tom, 2026-10-16: default OFF)', () => {
     expect(fs.existsSync(path.join(dir, 'pending'))).toBe(false)
   })
 })
+
+describe('a scripted artist\'s day with the switch OFF: record, refuse, re-read, RELOAD', () => {
+  it('never decodes, never errors, never lists a re-record, and survives a reload', async () => {
+    const dir = tmp()
+    const boom = () => { throw new Error('whisper must not run') }
+    const day = () => Q.createTextCheckQueue({ dir, logger: { ...quiet, error: boom, warn: boom }, enabled: false, check: boom })
+    let q = day()
+    // record two lines (the filing path calls enqueue for each; it must answer synchronously, no throw)
+    expect(q.enqueue(job(1), Buffer.from('a')).queued).toBe(false)
+    expect(q.enqueue(job(2), Buffer.from('b')).queued).toBe(false)
+    // refuse: an inline refusal never reaches the queue; nothing to do. Re-read line 1 (a new take):
+    expect(q.enqueue(job(1, { takeId: 'TAKE-1b' }), Buffer.from('c')).queued).toBe(false)
+    expect(q.failuresFor(['human_tom_zzz'])).toEqual([])
+    // RELOAD: a fresh process on the same state dir
+    q = day()
+    expect(q.recover()).toBe(0)
+    expect(q.failuresFor(['human_tom_zzz'])).toEqual([])
+    expect(q.depth()).toBe(0)
+    expect(fs.existsSync(path.join(dir, 'pending'))).toBe(false)
+  })
+  it('switched back ON later, an old verdict written while on shows again (ledger untouched)', async () => {
+    const dir = tmp()
+    const on = Q.createTextCheckQueue({ dir, logger: quiet, enabled: true, check: failing })
+    on.enqueue(job(1), Buffer.from('a')); await on.idle()
+    expect(Q.createTextCheckQueue({ dir, logger: quiet, enabled: false }).failuresFor(['human_tom_zzz'])).toEqual([])
+    expect(Q.createTextCheckQueue({ dir, logger: quiet, enabled: true }).failuresFor(['human_tom_zzz'])).toHaveLength(1)
+  })
+})
