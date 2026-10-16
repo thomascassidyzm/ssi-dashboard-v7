@@ -272,7 +272,7 @@ describe('the recordist edits their own lines', () => {
     const pods = nav.findAll('.rc-nav-pod').map(a => [a.text(), a.attributes('href')])
     expect(pods).toEqual([
       ['Senedd', `/production/${COURSE}/pods/senedd`],
-      ['Welsh Pod1', `/production/${COURSE}/pods/pod-1`],
+      ['Pod 1', `/production/${COURSE}/pods/pod-1`],
     ])
     expect(nav.find('.rc-nav-course').attributes('href')).toBe(`/production/${COURSE}`)
     // "Lines" opens the whole list on this page.
