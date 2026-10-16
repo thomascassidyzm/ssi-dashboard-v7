@@ -572,8 +572,7 @@ async function publishToShelf(markdown, findings, fallbackUrl) {
   }
 
   // Kai ruled (2026-10-14) that findings arrive as a message in his Watson conversation,
-  // not as a needs-you card. The post is ONE small function so a named-sender door can
-  // replace it later without touching anything else.
+  // not as a needs-you card. The post is ONE small function (postToWatson).
   const text = buildWatsonMessage(findings, out.url || fallbackUrl);
   if (DRY_RUN) { out.wouldSend = text; return out; }
   Object.assign(out, await postToWatson(text, headers, surface));
@@ -581,7 +580,12 @@ async function publishToShelf(markdown, findings, fallbackUrl) {
 }
 
 // ── The Watson post ──────────────────────────────────────────────────────────
-const WATSON_JOB_ID = process.env.DEBORAH_WATCH_WATSON_JOB || '81891a84-9a75-4abb-b20d-0967b6cfc97b';
+// toPerson resolves server-side to Kai's CURRENT Watson room at send time (command-surface #153), so
+// the room id never goes stale. DEBORAH_WATCH_WATSON_JOB, if set, pins a specific room instead.
+const WATSON_TARGET = process.env.DEBORAH_WATCH_WATSON_JOB
+  ? { jobId: process.env.DEBORAH_WATCH_WATSON_JOB }
+  : { toPerson: 'kai' };
+const WATSON_TARGET_LABEL = WATSON_TARGET.jobId || `person ${WATSON_TARGET.toPerson}`;
 const WATSON_FIRST_LINE = '[Automated Deborah review-column check — not typed by Kai]';
 
 /** Mechanical on purpose: header line, her NEW findings verbatim, digest link. No prose of ours. */
@@ -595,20 +599,39 @@ function buildWatsonMessage(findings, url) {
   return L.join('\n');
 }
 
-/** The swap point if Watson ships a named-sender door. Needs Kai's session cookie in headers. */
+/**
+ * Posts through /api/surface-notice (command-surface job #651): machinery speaking in the surface's
+ * own voice (source:surface, relay:deborah-watch), not /api/reply, which stamps the caller as a
+ * human. Loopback-only; it needs an explicit identity — Kai's session (DEBORAH_WATCH_SESSION) if
+ * set, else the cron fleet's (the same file ops/cs-cron-identity.js reads) — and a room id: the
+ * route resolves toPerson:'kai' to Kai's current Watson room (a 409 means he has none yet).
+ */
 async function postToWatson(text, headers, surface) {
-  if (!headers.Cookie) return { posted: false, postWhy: 'no Kai session cookie (DEBORAH_WATCH_SESSION) — nothing posted; the repo queue file still exists' };
+  if (!headers.Cookie) {
+    try {
+      const c = fs.readFileSync(process.env.CS_SESSION_FILE || '/home/tomcassidy/.cs-cron-session', 'utf8').trim();
+      if (c.startsWith('v2.')) headers = { ...headers, Cookie: `cs_user=${c}`, Origin: surface };
+    } catch { /* no fleet identity either */ }
+  }
+  if (!headers.Cookie) return { posted: false, postWhy: 'no session cookie (DEBORAH_WATCH_SESSION or the cron fleet file) — nothing posted; the repo queue file still exists' };
   try {
-    const r = await fetch(`${surface}/api/reply`, {
+    const r = await fetch(`${surface}/api/surface-notice`, {
       method: 'POST', headers, signal: AbortSignal.timeout(20000),
-      body: JSON.stringify({ jobId: WATSON_JOB_ID, text }),
+      body: JSON.stringify({ ...WATSON_TARGET, text, relay: 'deborah-watch' }),
     });
-    return r.ok ? { posted: true } : { posted: false, postWhy: `reply ${r.status}: ${(await r.text()).slice(0, 200)}` };
-  } catch (e) { return { posted: false, postWhy: `reply failed: ${e.message}` }; }
+    return r.ok ? { posted: true } : { posted: false, postWhy: `surface-notice ${r.status}: ${(await r.text()).slice(0, 200)}` };
+  } catch (e) { return { posted: false, postWhy: `surface-notice failed: ${e.message}` }; }
 }
 
 // ── Main ─────────────────────────────────────────────────────────────────────
 (async () => {
+  if (has('--test-notice')) {
+    // One labelled note through the real post path — proves identity, route and target without a scan.
+    const surface = process.env.CS_SURFACE || 'http://localhost:4317';
+    const r = await postToWatson(`${WATSON_FIRST_LINE}\n\nTEST NOTICE — checking the Deborah watcher reaches your Watson via toPerson. Nothing to act on.`, { 'Content-Type': 'application/json' }, surface);
+    console.log(JSON.stringify(r));
+    process.exit(r.posted ? 0 : 1);
+  }
   const state = loadState();
   const report = await morningRead();
   const d = diff(report, state);
@@ -622,7 +645,7 @@ async function postToWatson(text, headers, surface) {
 
   if (DRY_RUN) {
     process.stderr.write('\n[dry-run] nothing written; state not advanced\n');
-    if (d.newFindings.length) process.stderr.write(`[dry-run] message that would be posted to Watson ${WATSON_JOB_ID}:\n${buildWatsonMessage(d.newFindings, '<digest url>')}\n`);
+    if (d.newFindings.length) process.stderr.write(`[dry-run] message that would be posted to Watson (${WATSON_TARGET_LABEL}):\n${buildWatsonMessage(d.newFindings, '<digest url>')}\n`);
     else process.stderr.write('[dry-run] no new findings — nothing would be posted\n');
     return;
   }
