@@ -170,7 +170,8 @@ function calibrate(result) {
 async function main(argv = process.argv) {
   const args = argv.slice(2);
   const quiet = args.includes('--quiet');
-  const db = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
+  // Named for the DB watchdog; 15 min because the pooler default cancelled the nightly's aggregates.
+  const db = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }, application_name: 'qa:voice-variety:count-reconciliation', statement_timeout: 15 * 60 * 1000 });
   await db.connect();
   let data;
   try { data = await load(db); } finally { await db.end(); }
