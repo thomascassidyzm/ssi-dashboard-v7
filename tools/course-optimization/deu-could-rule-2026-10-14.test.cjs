@@ -63,3 +63,11 @@ test('the data: every tranche-1 konnte row ends with a past marker, held items n
   }
   for (const h of HELD) assert.ok(h.seeds.length && h.proposal, 'held item without seeds or proposal');
 });
+
+test('rows touching the held seed-312 said+could+future question are tranche 3 and never in a tranche-2 run', () => {
+  const held312 = ROWS.filter(([id, tr]) => tr === 3).map(([id]) => id);
+  assert.deepStrictEqual(held312.sort(), ['S0312L01U06', 'S0312L03U06']);
+  assert.ok(HELD.find((h) => h.seeds.includes(312)).ids.includes('S0312L03U06'));
+  const stub = { seeds: [], legos: [], phrases: held312.map((id) => ({ id: `deu_for_eng:${id}`, known_text: 'a', target_text: 'b' })) };
+  assert.strictEqual(T.plan(stub, ROWS, [2]).phrases.length, 0);
+});
