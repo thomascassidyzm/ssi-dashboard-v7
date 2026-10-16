@@ -2,8 +2,8 @@
 Description=Nightly voice-policy audit at 06:20 Europe/London (after audio-gap 05:10 and voice-variety 05:55)
 
 [Timer]
-OnCalendar=*-*-* 06:20:00 Europe/London
-RandomizedDelaySec=300
+OnCalendar=*-*-* 06:35:00 Europe/London
+RandomizedDelaySec=120
 AccuracySec=1min
 Persistent=true
 Unit=ssi-voice-audit.service

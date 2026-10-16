@@ -27,3 +27,14 @@ describe('debut-practice alarm', () => {
     expect(isWelsh('gle_for_eng')).toBe(false)
   })
 })
+
+// Job #123: the whole-estate call ran 65s and tripped the DB watchdog. It reads per course and names itself.
+import { readFileSync } from 'fs'
+describe('debut-practice DB reads', () => {
+  const src = readFileSync(new URL('./nightly.cjs', import.meta.url), 'utf8')
+  it('names its connection and never passes the whole course list in one call', () => {
+    expect(src).toMatch(/application_name: 'qa:debut-practice'/)
+    expect(src).toMatch(/debut_practice_gaps\(ARRAY\[\$1::text\]\)/)
+    expect(src).not.toMatch(/debut_practice_gaps\(ARRAY\(/)
+  })
+})

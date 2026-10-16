@@ -3,8 +3,8 @@ Description=Daily debut-practice alarm at 06:25 Europe/London
 
 [Timer]
 # After sibling-identity (06:10, ~2 min) so the two never share the database.
-OnCalendar=*-*-* 06:25:00 Europe/London
-RandomizedDelaySec=300
+OnCalendar=*-*-* 06:50:00 Europe/London
+RandomizedDelaySec=120
 AccuracySec=1min
 Persistent=true
 Unit=ssi-debut-practice.service
