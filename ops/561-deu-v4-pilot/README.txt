@@ -1,0 +1,1 @@
+Staged v4 pilot for deu_for_eng seeds 403/413/454/457/462 (job 561). gf-body.json = POST /api/admin/phrase-v4/gap-fill body (set apply:true + tom_go); del-body.json = POST /api/production/deu_for_eng/edit-batch body (apply:true). Both sign with: node tools/agent-admin/call.cjs --key kai --agent kai-<id> ... Not applied.
