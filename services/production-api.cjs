@@ -186,6 +186,9 @@ app.use(cors({
   origin: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning', 'x-booth-key', 'x-booth-keys'],
+  // The booth's take ceiling (job #221, voice-engine/booth-upload-concurrency.cjs): readable by a
+  // booth served from another origin; same-origin (popty.app's proxy) reads it regardless.
+  exposedHeaders: ['X-Booth-Upload-Concurrency'],
   credentials: true
 }))
 // ── THE BASKET LAB, mounted BEFORE the body parser ──────────────────────────

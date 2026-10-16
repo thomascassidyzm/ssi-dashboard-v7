@@ -24,7 +24,7 @@
 //   3. Bytes are deleted only on a 2xx with an audioId, or on a 4xx refusal
 //      whose words are shown to the artist. Never on a timer, never on a count.
 //
-// Sequential, superseding: a re-read of a line drops any earlier take of the
+// Superseding: a re-read of a line drops any earlier take of the
 // SAME line still waiting, and clears the stored clip for that line until the
 // new take lands — playing the superseded clip while the screen says "stored"
 // is the exact lie useStoredClip.js exists to prevent.
@@ -32,6 +32,7 @@
 import { ref, reactive } from 'vue'
 import { recordingApiBase as apiBase, withBoothKey } from '@/services/recordingApi'
 import { openTakeStore, createTakeStore, createMemoryBackend, DURABLE_TAKES_FEATURE } from '@/services/takeStore'
+import { createUploadConcurrency, inFlightKeys, isTransientStatus, CONCURRENCY_HEADER } from '@/services/uploadConcurrency'
 
 export { DURABLE_TAKES_FEATURE }
 
@@ -262,68 +263,128 @@ export function useRecordistQueue(options = {}) {
     try { if (holdsLock()) localStorage.removeItem(LOCK_KEY) } catch { /* nothing to release */ }
   }
 
+  // TWO AT ONCE, FALLING BACK TO ONE (Aran, 2026-10-16, Phase 1, job #221).
+  // The drain used to post one take and wait for its answer before touching the
+  // next. It now keeps up to `pace.limit` takes on the wire, and `pace` (see
+  // src/services/uploadConcurrency.js) holds that at ONE until the server has
+  // both advertised more and answered cleanly a few times in a row, and drops
+  // it back to ONE on any trouble. Every rule above still holds per take: each
+  // one is on the shelf before it is posted, deleted only on its own 2xx, and
+  // retried for ever. What is new is only WHICH takes may travel together:
+  // never two of the same line, never two with the same words (inFlightKeys).
+  const pace = options.pace || createUploadConcurrency()
+  // rec.id -> the keys it holds; the shelf can drop a superseded record while
+  // its upload is still running, so this, not the shelf, is what is on the wire
+  const onWire = new Map()
+  let kick = null
+  let calledWhileDraining = false
+
+  function busy(rec) {
+    if (onWire.has(rec.id)) return true
+    const keys = inFlightKeys(rec)
+    for (const held of onWire.values()) if (held.some(k => keys.includes(k))) return true
+    return false
+  }
+
+  function showUploading() {
+    const last = Array.from(onWire.values()).pop()
+    uploadingLine.value = last ? last.lineId : null
+  }
+
   async function drain() {
-    if (draining || stopped || !voiceId) return
+    if (stopped || !voiceId) return
+    // Already draining: wake the loop so a take queued while another is on the
+    // wire can take the free slot now rather than when that one comes back.
+    if (draining) { calledWhileDraining = true; if (kick) kick(); return }
     draining = true
     // Keep the claim fresh for as long as this tab is actually working, so the
     // TTL above only ever expires on a tab that has stopped existing.
     const beat = setInterval(() => {
       try { if (holdsLock()) localStorage.setItem(LOCK_KEY, JSON.stringify({ owner: tabId, ts: Date.now() })) } catch { /* no lock, no problem */ }
     }, LOCK_BEAT_MS)
+    const running = new Set()
+    calledWhileDraining = false
     try {
       const s = await ensureStore()
+      let lockLost = false
       for (;;) {
-        if (stopped) break
-        const rec = await s.nextDue(voiceId)
-        if (!rec) {
-          const soonest = await s.soonestDue(voiceId)
-          if (soonest != null) scheduleWake(soonest - Date.now())
-          break
+        // Fill the free slots.
+        while (!stopped && !lockLost && onWire.size < pace.limit) {
+          const rec = await s.nextDue(voiceId, { skip: busy })
+          if (!rec) break
+          if (!claimLock()) { lockLost = true; scheduleWake(LOCK_RETRY_MS); break }
+          const keys = inFlightKeys(rec)
+          keys.lineId = rec.lineId
+          onWire.set(rec.id, keys)
+          showUploading()
+          const p = sendOne(s, rec).finally(() => {
+            onWire.delete(rec.id)
+            running.delete(p)
+            showUploading()
+          })
+          running.add(p)
         }
-        if (!claimLock()) { scheduleWake(LOCK_RETRY_MS); break }
-        uploadingLine.value = rec.lineId
-        try {
-          const result = await doUpload(rec)
-          // CONFIRMED STORED — the server answered 2xx with an audioId. This is
-          // the only path on which recorded audio is deleted from the device.
-          await s.confirm(rec.id)
-          if (!(await isSuperseded(s, rec))) {
-            saved.set(rec.lineId, { audioId: result?.audioId || null, clipUrl: result?.clipUrl || null })
-            savedCount.value = saved.size
-            failed.delete(rec.lineId)
-          }
-          lastError.value = null
-        } catch (err) {
-          if (err && err.deterministic) {
-            // The server's verdict on THESE bytes (a silent take, an unknown
-            // line). Replaying them for ever is pointless — but they do not
-            // vanish: the take stays on the shelf, marked refused, with the
-            // server's own words on the screen.
-            await s.markRefused(rec.id, (err && err.message) || 'The server would not take that recording.')
-            failed.set(rec.lineId, (err && err.message) || 'The server would not take that recording.')
-          } else {
-            // Transient. Count it, back off, KEEP IT. No give-up point.
-            await s.recordFailure(rec.id, (err && err.message) || 'Could not save that take.')
-            lastError.value = (err && err.message) || 'Could not save that take.'
-            await refreshCounts()
+        if (running.size === 0) {
+          if (!stopped && !lockLost) {
             const soonest = await s.soonestDue(voiceId)
             if (soonest != null) scheduleWake(soonest - Date.now())
-            break
           }
-        } finally {
-          uploadingLine.value = null
+          break
         }
-        await refreshCounts()
+        // Wait for a slot to free, or for a new take to be queued.
+        await Promise.race([...running, new Promise(r => { kick = r })])
+        kick = null
+        calledWhileDraining = false
       }
     } catch (err) {
       lastError.value = (err && err.message) || String(err)
       scheduleWake(HEARTBEAT_MS)
+      // Never leave an upload orphaned mid-flight: its own handler still runs.
+      await Promise.allSettled([...running])
     } finally {
       clearInterval(beat)
       draining = false
+      kick = null
       releaseLock()
       try { await refreshCounts() } catch { /* counts are cosmetic; the shelf is not */ }
     }
+    // A take queued in the instant between "nothing left" and the loop ending
+    // would otherwise wait for the heartbeat.
+    if (calledWhileDraining && !stopped) { calledWhileDraining = false; drain() }
+  }
+
+  async function sendOne(s, rec) {
+    const started = Date.now()
+    try {
+      const result = await doUpload(rec)
+      pace.success(Date.now() - started)
+      // CONFIRMED STORED — the server answered 2xx with an audioId. This is
+      // the only path on which recorded audio is deleted from the device.
+      await s.confirm(rec.id)
+      if (!(await isSuperseded(s, rec))) {
+        saved.set(rec.lineId, { audioId: result?.audioId || null, clipUrl: result?.clipUrl || null })
+        savedCount.value = saved.size
+        failed.delete(rec.lineId)
+      }
+      lastError.value = null
+    } catch (err) {
+      if (err && err.deterministic) {
+        // The server's verdict on THESE bytes (a silent take, an unknown
+        // line). Replaying them for ever is pointless — but they do not
+        // vanish: the take stays on the shelf, marked refused, with the
+        // server's own words on the screen. Not the server's trouble, so the
+        // pace neither climbs nor falls on it.
+        await s.markRefused(rec.id, (err && err.message) || 'The server would not take that recording.')
+        failed.set(rec.lineId, (err && err.message) || 'The server would not take that recording.')
+      } else {
+        // Transient. Back to one at a time, count it, back off, KEEP IT. No
+        // give-up point. The other slot's take, if any, runs to its own end.
+        pace.trouble()
+        await s.recordFailure(rec.id, (err && err.message) || 'Could not save that take.')
+        lastError.value = (err && err.message) || 'Could not save that take.'
+      }
+    }
+    try { await refreshCounts() } catch { /* cosmetic */ }
   }
 
   // A newer take of this line is already on the shelf, so this take's verdict
@@ -365,11 +426,15 @@ export function useRecordistQueue(options = {}) {
     } finally {
       if (timer) clearTimeout(timer)
     }
+    // The server's ceiling rides on every take reply, success or failure, so
+    // setting it back to 1 on the server reaches a booth on its next answer.
+    try { if (res.headers && res.headers.get) pace.advertise(res.headers.get(CONCURRENCY_HEADER)) } catch { /* no header, no change */ }
     if (!res.ok) {
       const data = await res.json().catch(() => ({}))
       const err = new Error(data.error || `That take did not save (${res.status}).`)
       err.status = res.status
-      err.deterministic = res.status >= 400 && res.status < 500
+      // 408/429 are the server saying "later", not a verdict on the bytes.
+      err.deterministic = !isTransientStatus(res.status)
       throw err
     }
     return res.json()
