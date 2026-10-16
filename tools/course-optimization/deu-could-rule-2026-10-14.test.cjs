@@ -68,6 +68,12 @@ test('rows touching the held seed-312 said+could+future question are tranche 3 a
   const held312 = ROWS.filter(([id, tr]) => tr === 3).map(([id]) => id);
   assert.deepStrictEqual(held312.sort(), ['S0312L01U06', 'S0312L03U06']);
   assert.ok(HELD.find((h) => h.seeds.includes(312)).ids.includes('S0312L03U06'));
+  // the real tranche-2 selection never names a held row
+  assert.ok(ROWS.filter(([, tr]) => tr === 2).every(([id]) => !held312.includes(id)));
+  // and the planner skips them by tranche even when they are in the dump; only the held rows are fed in, so the
+  // other tranche-2 rows (absent from this stub dump) cannot trip 'not in the dump'
   const stub = { seeds: [], legos: [], phrases: held312.map((id) => ({ id: `deu_for_eng:${id}`, known_text: 'a', target_text: 'b' })) };
-  assert.strictEqual(T.plan(stub, ROWS, [2]).phrases.length, 0);
+  const p = T.plan(stub, ROWS.filter(([, tr]) => tr === 3), [2]);
+  assert.strictEqual(p.phrases.length, 0);
+  assert.deepStrictEqual(p.skipped.map((s) => s.id).sort(), held312);
 });
