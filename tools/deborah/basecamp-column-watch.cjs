@@ -580,7 +580,12 @@ async function publishToShelf(markdown, findings, fallbackUrl) {
 }
 
 // ── The Watson post ──────────────────────────────────────────────────────────
-const WATSON_JOB_ID = process.env.DEBORAH_WATCH_WATSON_JOB || '291c1566-7d2c-492e-954a-9a7cf041b11b';
+// toPerson resolves server-side to Kai's CURRENT Watson room at send time (command-surface #153), so
+// the room id never goes stale. DEBORAH_WATCH_WATSON_JOB, if set, pins a specific room instead.
+const WATSON_TARGET = process.env.DEBORAH_WATCH_WATSON_JOB
+  ? { jobId: process.env.DEBORAH_WATCH_WATSON_JOB }
+  : { toPerson: 'kai' };
+const WATSON_TARGET_LABEL = WATSON_TARGET.jobId || `person ${WATSON_TARGET.toPerson}`;
 const WATSON_FIRST_LINE = '[Automated Deborah review-column check — not typed by Kai]';
 
 /** Mechanical on purpose: header line, her NEW findings verbatim, digest link. No prose of ours. */
@@ -599,8 +604,7 @@ function buildWatsonMessage(findings, url) {
  * own voice (source:surface, relay:deborah-watch), not /api/reply, which stamps the caller as a
  * human. Loopback-only; it needs an explicit identity — Kai's session (DEBORAH_WATCH_SESSION) if
  * set, else the cron fleet's (the same file ops/cs-cron-identity.js reads) — and a room id: the
- * route addresses a room by conversation id only, so DEBORAH_WATCH_WATSON_JOB must name Kai's
- * CURRENT Watson room. A 404 "no such job" means that id has gone stale.
+ * route resolves toPerson:'kai' to Kai's current Watson room (a 409 means he has none yet).
  */
 async function postToWatson(text, headers, surface) {
   if (!headers.Cookie) {
@@ -613,7 +617,7 @@ async function postToWatson(text, headers, surface) {
   try {
     const r = await fetch(`${surface}/api/surface-notice`, {
       method: 'POST', headers, signal: AbortSignal.timeout(20000),
-      body: JSON.stringify({ jobId: WATSON_JOB_ID, text, relay: 'deborah-watch' }),
+      body: JSON.stringify({ ...WATSON_TARGET, text, relay: 'deborah-watch' }),
     });
     return r.ok ? { posted: true } : { posted: false, postWhy: `surface-notice ${r.status}: ${(await r.text()).slice(0, 200)}` };
   } catch (e) { return { posted: false, postWhy: `surface-notice failed: ${e.message}` }; }
@@ -621,6 +625,13 @@ async function postToWatson(text, headers, surface) {
 
 // ── Main ─────────────────────────────────────────────────────────────────────
 (async () => {
+  if (has('--test-notice')) {
+    // One labelled note through the real post path — proves identity, route and target without a scan.
+    const surface = process.env.CS_SURFACE || 'http://localhost:4317';
+    const r = await postToWatson(`${WATSON_FIRST_LINE}\n\nTEST NOTICE — checking the Deborah watcher reaches your Watson via toPerson. Nothing to act on.`, { 'Content-Type': 'application/json' }, surface);
+    console.log(JSON.stringify(r));
+    process.exit(r.posted ? 0 : 1);
+  }
   const state = loadState();
   const report = await morningRead();
   const d = diff(report, state);
@@ -634,7 +645,7 @@ async function postToWatson(text, headers, surface) {
 
   if (DRY_RUN) {
     process.stderr.write('\n[dry-run] nothing written; state not advanced\n');
-    if (d.newFindings.length) process.stderr.write(`[dry-run] message that would be posted to Watson ${WATSON_JOB_ID}:\n${buildWatsonMessage(d.newFindings, '<digest url>')}\n`);
+    if (d.newFindings.length) process.stderr.write(`[dry-run] message that would be posted to Watson (${WATSON_TARGET_LABEL}):\n${buildWatsonMessage(d.newFindings, '<digest url>')}\n`);
     else process.stderr.write('[dry-run] no new findings — nothing would be posted\n');
     return;
   }
