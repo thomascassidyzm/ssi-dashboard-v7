@@ -97,6 +97,7 @@ const consentGate = require('../shared/voice-consent-gate.cjs')
 const { isGodAdmin } = require('./booth-god-admins.cjs')
 const boothLinks = require('./booth-link-keys.cjs')
 const { boothTabs, parseHeldKeys } = require('./booth-tabs.cjs')
+const boothUploadConcurrency = require('./booth-upload-concurrency.cjs')
 
 const MAX_TAKE_BYTES = 60 * 1024 * 1024
 
@@ -172,8 +173,17 @@ module.exports = function createRecordistRouter({
   boothKeys = null,
   boothKeyGate = null,
   identifyCaller = null,
+  // PHASE 1, TWO TAKES AT ONCE (job #221, booth-upload-concurrency.cjs): the ceiling advertised
+  // on every take reply, and the per-line lock that keeps two takes of one line from racing.
+  boothUpload = null,
+  takeLineLock = null,
 }) {
   const router = express.Router()
+  const uploadSetting = boothUpload || boothUploadConcurrency.createConcurrencySetting()
+  const lineLock = takeLineLock || boothUploadConcurrency.createKeyedLock({
+    onTimeout: (key) => logger.warn(`[BoothTake] line lock wait passed ${boothUploadConcurrency.WAIT_CAP_MS} ms for ${key} — proceeding unserialised`),
+  })
+  let takesInFlight = 0
 
   const db = () => {
     const client = getDb()
@@ -1905,6 +1915,21 @@ module.exports = function createRecordistRouter({
 
   // ── 2. a take ──────────────────────────────────────────────────────────────
   router.post('/voice/:voiceId/take', async (req, res) => {
+    // Said on every answer, refusals included, so a booth hears "1" on its very next reply.
+    uploadSetting.advertise(res)
+    // One timestamped line per take (the API log has no timestamps of its own): how long the
+    // server held it and how many were in flight, which is what a drain-rate measurement reads.
+    const tookStart = Date.now()
+    takesInFlight += 1
+    const inFlightAtStart = takesInFlight
+    let releaseLine = null
+    let lockWaitMs = 0
+    let logLine = '?'
+    if (typeof res.on === 'function') {
+      res.on('finish', () => {
+        logger.log(`[BoothTake] ${new Date().toISOString()} voice=${req.params.voiceId} line=${logLine} status=${res.statusCode} ms=${Date.now() - tookStart} lockWaitMs=${lockWaitMs} inFlight=${inFlightAtStart}`)
+      })
+    }
     try {
       const pack = await resolveAnyPack(req.params.voiceId)
       const recordist = pack ? null : await recordistOr404(req, res)
@@ -1951,6 +1976,12 @@ module.exports = function createRecordistRouter({
         if (!audioBase64) return res.status(400).json({ error: 'audioData (base64) or a multipart audio part required' })
       }
       if (!lineId) return res.status(400).json({ error: 'lineId required' })
+      logLine = String(lineId)
+
+      // Same line or same words, one at a time, whoever sent them (booth-upload-concurrency.cjs).
+      const lockStart = Date.now()
+      releaseLine = await lineLock.acquire(boothUploadConcurrency.lineLockKey({ voiceId: req.params.voiceId, lineId, text }))
+      lockWaitMs = Date.now() - lockStart
 
       // A PACK take never reaches the upload seam. Branch is here rather than
       // at the top of the route so the multipart parse stays shared.
@@ -2195,6 +2226,9 @@ module.exports = function createRecordistRouter({
     } catch (err) {
       logger.error(`[Recordist] take: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })
+    } finally {
+      takesInFlight -= 1
+      if (releaseLine) releaseLine()
     }
   })
 

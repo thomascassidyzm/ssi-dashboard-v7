@@ -295,3 +295,78 @@ test('the take route refuses: the other voice, a live course, changed text', asy
   assert.equal(stale.status, 409)
   for (const r of [eleri, live, stale]) assert.deepEqual(r.uploads, [])
 })
+
+// ── PHASE 1, TWO TAKES AT ONCE (job #221) ────────────────────────────────────
+// The booth may now have two takes on the wire. Two takes of the SAME line, or
+// of the same words on two lines, must still be filed one after the other —
+// run together, each can mark the other superseded and the course_audio
+// upsert's winner is whichever finished last. Different lines run together.
+function heldRouter(tables) {
+  const events = []
+  const gates = []
+  const router = createRecordistRouter({
+    getDb: () => stubDb(tables),
+    logger: QUIET,
+    s3: {},
+    handleRecordingUpload: async (innerReq, innerRes) => {
+      const id = innerReq.body.metadata.legoId + '/' + innerReq.body.metadata.voiceId
+      events.push(`start ${id}`)
+      await new Promise((resolve) => gates.push(resolve))
+      events.push(`end ${id}`)
+      innerRes.json({ success: true, s3Key: 'mastered/x.mp3', rawKey: 'raw/x', filing: { courseAudioId: 'filed1' } })
+    },
+  })
+  const layer = router.stack.find((l) => l.route && l.route.path === '/voice/:voiceId/take' && l.route.methods.post)
+  function post(voiceId, lineId, text) {
+    const out = { headers: {} }
+    const done = new Promise((resolve) => {
+      out.res = {
+        set(k, v) { out.headers[k] = v; return out.res },
+        status(c) { out.status = c; return out.res },
+        json(b) { out.body = b; resolve(out); return out.res },
+      }
+    })
+    layer.route.stack[0].handle({
+      params: { voiceId }, query: {}, headers: { 'content-type': 'application/json' }, socket: {},
+      method: 'POST', originalUrl: `/voice/${voiceId}/take`,
+      body: { lineId, audioData: 'AAAA', mimeType: 'audio/webm', text },
+    }, out.res)
+    return done
+  }
+  const until = async (pred) => { for (let i = 0; i < 400 && !pred(); i++) await new Promise((r) => setTimeout(r, 5)) }
+  return { post, events, gates, until }
+}
+
+test('two takes of the SAME words on the wire at once are filed one after the other, in arrival order', async () => {
+  const tables = fixture()
+  const h = heldRouter(tables)
+  // l181b and l190a are two LEGO lines holding the same words, 'ein rhai ni'.
+  const a = h.post(DAN, 'lego:l181b:target1', 'ein rhai ni')
+  await h.until(() => h.events.length === 1)
+  const b = h.post(DAN, 'lego:l190a:target1', 'ein rhai ni')
+  await new Promise((r) => setTimeout(r, 60))
+  assert.deepEqual(h.events, ['start S0181L02/' + DAN], 'the second take must wait for the first')
+  h.gates.shift()()
+  await a
+  await h.until(() => h.events.length === 3)
+  h.gates.shift()()
+  await b
+  assert.deepEqual(h.events, ['start S0181L02/' + DAN, 'end S0181L02/' + DAN, 'start S0190L01/' + DAN, 'end S0190L01/' + DAN])
+})
+
+test('takes of DIFFERENT lines run together, and every take reply says the booth ceiling', async () => {
+  const tables = fixture()
+  tables.course_legos.find((l) => l.id === 'l181a').target1_audio_id = null // 'trafod' is now Dan's line too
+  const h = heldRouter(tables)
+  const a = h.post(DAN, 'lego:l181b:target1', 'ein rhai ni')
+  const b = h.post(DAN, 'lego:l181a:target1', 'trafod')
+  await h.until(() => h.events.length === 2)
+  assert.equal(h.events.filter((e) => e.startsWith('start')).length, 2, 'both on the server at once')
+  h.gates.shift()(); h.gates.shift()()
+  const [ra, rb] = await Promise.all([a, b])
+  for (const r of [ra, rb]) assert.match(String(r.headers['X-Booth-Upload-Concurrency']), /^[12]$/)
+  // a refusal carries it too
+  const refused = await h.post(ELERI, 'lego:l181b:target1')
+  assert.equal(refused.status, 403)
+  assert.match(String(refused.headers['X-Booth-Upload-Concurrency']), /^[12]$/)
+})
