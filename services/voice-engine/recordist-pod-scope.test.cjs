@@ -110,3 +110,13 @@ test('no ?pod= is exactly what it was: the whole course, every pod', async () =>
   assert.strictEqual(body.total, 3)
   assert.strictEqual(body.pod, null)
 })
+
+// Job #189 (Kai, 2026-10-16): a pod link also says where to go when the pod is finished — the
+// next pod with lines of hers owed (booth-next-pod.cjs). Here: health → senedd. No pod link, no answer.
+test('?pod= carries podsDone: the next pod where she still has lines', async () => {
+  const { body } = await ask('includeRecorded=1&course=spa_for_eng&pod=health')
+  assert.strictEqual(body.podsDone.nextPod.podSlug, 'senedd')
+  assert.strictEqual(body.podsDone.nextPod.remaining, 1)
+  assert.strictEqual(body.podsDone.remainingOutsidePods, 0)
+  assert.strictEqual((await ask('includeRecorded=1&course=spa_for_eng')).body.podsDone, null)
+})
