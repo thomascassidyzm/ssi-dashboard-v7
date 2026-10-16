@@ -506,6 +506,41 @@ async function scenarioEditor(browser, engine, size) {
   await ctx.close()
 }
 
+// A FINISHED BATCH'S WAY ON (Aran, 2026-10-16, job #203): phrase.1 batch 2 read to the end shows
+// Next batch → (to batch 3) with Home under it; with nothing left anywhere, the words and Home only.
+async function scenarioNextBatch(browser, engine, size) {
+  for (const left of [true, false]) {
+    const answer = async (req, url, route) => {
+      if (url.origin !== BASE || req.method() !== 'GET') return false
+      if (url.pathname === `/api/recording/voice/${VOICE}/summary`) {
+        const r = await route.fetch(); const j = await r.json()
+        const b = (n, recorded, extra = {}) => ({ n, batch: n, total: 30, recorded, ...extra })
+        const p1 = { key: 'phrase.1', kind: 'phrase', pass: 1, courseCode: 'zzz_test2_for_eng', title: 'Practice phrases', total: 90, recorded: left ? 60 : 90,
+          batches: [b(1, 30), b(2, 30, { current: true }), b(3, left ? 0 : 30)] }
+        j.tracks = left ? [...j.tracks.filter((t) => t.key !== 'phrase.1'), p1] : [p1]
+        await route.fulfill({ response: r, json: j }); return true
+      }
+      if (url.pathname === `/api/recording/voice/${VOICE}`) {
+        const r = await route.fetch({ url: `${BASE}/api/recording/voice/${VOICE}?includeRecorded=1&pod=pod-1&course=zzz_test2_for_eng&batch=1` }); const j = await r.json()
+        j.lines.forEach((l) => { l.recorded = true }); j.recorded = j.total; j.remaining = 0; j.track = 'phrase.1'; j.batch = 2
+        await route.fulfill({ response: r, json: j }); return true
+      }
+      return false
+    }
+    const { ctx, page } = await newPage(browser, engine, size, { answer })
+    try {
+      await page.goto(`${BASE}/r/${VOICE}?track=phrase.1&batch=2`, { waitUntil: 'domcontentloaded' })
+      await page.waitForSelector(left ? '[data-test="next-batch"]' : '[data-test="all-batches-done"]', { timeout: 60000 })
+      await snap(page, engine, size, left ? '30-batch-finished-next' : '31-batch-finished-nothing-left')
+      if (left) {
+        await page.click('[data-test="next-batch"]')
+        await page.waitForURL(/batch=3/, { timeout: 10000 })
+      }
+    } catch (e) { errors.push(`${engine} ${size} nextbatch: ${e.message.split('\n')[0]}`); console.log(`  ${engine} ${size} nextbatch: ${e.message.split('\n')[0]}`); await page.screenshot({ path: join(OUT, `${engine}-${size.join('x')}-ERR-nextbatch.png`) }).catch(() => {}) }
+    await ctx.close()
+  }
+}
+
 // fixtures for the fully-mocked team booth: Tom's test voice's real answers, captured once
 if (!existsSync(join(OUT, '..', 'fixtures-summary.json'))) {
   const s = await (await fetch(`${BASE}/api/recording/voice/${VOICE}/summary`)).json()
@@ -514,7 +549,7 @@ if (!existsSync(join(OUT, '..', 'fixtures-summary.json'))) {
   writeFileSync(join(OUT, '..', 'fixtures-queue.json'), JSON.stringify(q))
 }
 
-const SCEN = { real: scenarioReal, stress: scenarioStress, done: scenarioDone, team: scenarioTeam, artist: (b, e, s) => scenarioTeam(b, e, s, 'recorder'), editor: scenarioEditor }
+const SCEN = { real: scenarioReal, stress: scenarioStress, done: scenarioDone, nextbatch: scenarioNextBatch, team: scenarioTeam, artist: (b, e, s) => scenarioTeam(b, e, s, 'recorder'), editor: scenarioEditor }
 // The editor is only on builds that carry job #709; it is run when asked for (--only editor).
 if (!ONLY) delete SCEN.editor
 for (const engine of ENGINES) {
