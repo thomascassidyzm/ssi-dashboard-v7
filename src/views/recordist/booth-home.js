@@ -236,6 +236,38 @@ export function upNext(tracks, off = new Set()) {
   return null
 }
 
+/**
+ * THE NEXT BATCH WHEN ONE IS FINISHED (Aran, 2026-10-16, job #203: phrase.1 batch 2 done, and the
+ * end screen's only way on was Home). `scope` is the batch just finished, {track, batch}. Returns
+ * {track, batch} or null when nothing he has ticked is left anywhere.
+ *   1. a later batch of the same section with lines left — practice phrases too: the next batch
+ *      is opened by hand, not waited for (job #697: "open the current batch or future batches");
+ *   2. else the next section in Up next's order (orderedTracks), first the batch Up next would
+ *      recommend, else its first batch with lines left;
+ *   3. else whatever Up next offers anywhere (an earlier section or batch still owed).
+ * The batch just finished is never offered, and the ticks are obeyed as Up next obeys them.
+ */
+export function nextBatchAfter(tracks, scope, off = new Set()) {
+  if (!scope) return null
+  const here = (t, b) => t.key === scope.track && b.n === scope.batch
+  const usable = (t, b) => left(b) > 0 && !here(t, b) && (!hasBatchTicks(t) || isTicked(off, batchTickId(t.key, b.n)))
+  const ordered = orderedTracks(tracks)
+  const at = ordered.findIndex((t) => t.key === scope.track)
+  if (at === -1) return null
+  const cur = ordered[at]
+  const later = (cur.batches || []).find((b) => b.n > scope.batch && usable(cur, b))
+  if (later) return { track: cur, batch: later }
+  for (const t of ordered.slice(at + 1)) {
+    if (isFinished(t) || !isTicked(off, t.key) || trackLocked(t, tracks)) continue
+    const bs = (t.batches || []).filter((b) => usable(t, b))
+    const b = bs.find((x) => batchRecommendable(t, x, tracks)) || bs[0]
+    if (b) return { track: t, batch: b }
+  }
+  const up = upNext(tracks.map((t) => (t.key !== scope.track ? t
+    : { ...t, batches: (t.batches || []).filter((b) => b.n !== scope.batch) })), off)
+  return up
+}
+
 /** The batch to open when a whole card is tapped, or null when he should pick from its list. */
 export function firstOpenBatch(t, tracks) {
   return (t.batches || []).find((b) => left(b) > 0 && batchRecommendable(t, b, tracks)) || null

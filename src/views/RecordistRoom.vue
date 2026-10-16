@@ -395,11 +395,16 @@
             <p v-else class="pods-all-done" data-test="pods-all-done">{{ allPodsDoneWords }}</p>
             <button v-if="!nextPod && voice.podsDone.remainingOutsidePods" class="btn-ghost" data-test="other-lines" @click="goHome">See your other lines</button>
           </template>
-          <button v-else-if="!voice.setupCheck && startIndex === -1 && nextBatchN" class="btn-begin btn-next-batch" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Next batch →</button>
-          <button v-else-if="!voice.setupCheck && startIndex === -1 && batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
+          <button v-else-if="!voice.setupCheck && startIndex === -1 && nextBatch" class="btn-begin btn-next-batch" data-test="next-batch" @click="openNextBatch">Next batch →</button>
+          <template v-else-if="!voice.setupCheck && startIndex === -1 && batchScope">
+            <p v-if="nothingLeftAnywhere" class="pods-all-done" data-test="all-batches-done">Nothing left to record anywhere — thank you</p>
+            <button class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
+          </template>
           <button v-else-if="!voice.setupCheck" class="btn-begin" :disabled="startIndex === -1" @click="begin">
             {{ startIndex === -1 ? 'Nothing left to read' : 'Start recording' }}
           </button>
+          <!-- HOME STAYS, SECOND to Next batch (Aran, 2026-10-16, job #203). -->
+          <button v-if="!voice.setupCheck && !podFinished && startIndex === -1 && nextBatch" type="button" class="btn-ghost home-link" data-test="home-link" @click="goHome">Home</button>
           <!-- SETTINGS, FOLDED INTO ONE LINE before Start: how the run moves on and which mic. -->
           <p class="setline" data-test="setline">
             {{ autoAdvance ? 'Moves on when you stop' : 'Tap Next after each line' }} · {{ captureProfile === 'pro' ? 'Plugged-in mic' : 'Phone mic' }}
@@ -442,10 +447,10 @@
                 :disabled="nextUnrecordedIndex === -1 || busy || arming || paused || !!editingId"
                 @click="onJumpUnrecorded">{{ nextUnrecordedIndex === -1 ? 'Every line is recorded' : `Jump to next unrecorded (line ${flowPos(nextUnrecordedIndex)}) »` }}</button>
         </template>
-        <div v-else class="transport-in" :class="{ one: !nextBatchN && !batchScope && !nextPod }">
+        <div v-else class="transport-in" :class="{ one: !nextBatch && !batchScope && !nextPod }">
           <button class="btn-ghost" @click="backToStart">Back to my lines</button>
           <button v-if="nextPod" class="btn-begin btn-next-batch" data-test="next-pod" @click="openNextPod">Next pod: {{ nextPodName }} →</button>
-          <button v-else-if="nextBatchN" class="btn-begin btn-next-batch" data-test="next-batch" @click="openBatch(batchScope.track, nextBatchN)">Next batch →</button>
+          <button v-else-if="nextBatch" class="btn-begin btn-next-batch" data-test="next-batch" @click="openNextBatch">Next batch →</button>
           <button v-else-if="batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
         </div>
         <p v-if="phase === 'recording'" class="kbd-hint">
@@ -749,7 +754,7 @@ import { applyFailures, mismatchLineWords } from './recordist/text-check-failure
 // The re-record card's batch (job #788): services/voice-engine/booth-rerecord.cjs RERECORD_TRACK.
 const RERECORD_TRACK = 'rerecord'
 import { allowIdleReload, holdReload } from '@/router/versionReload'
-import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, keepListedSections, withDeviceTakes, loadPlaces, savePlaces, placeFromEntry, creditLoadedBatch } from './recordist/booth-home.js'
+import { loadUnticked, saveUnticked, loadSummarySnapshot, saveSummarySnapshot, keepListedSections, withDeviceTakes, loadPlaces, savePlaces, placeFromEntry, creditLoadedBatch, nextBatchAfter } from './recordist/booth-home.js'
 import { headerLanguage } from './recordist/booth-tabs.js'
 import { micSignal as micSignalFor } from './recordist/mic-signal.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
@@ -3210,14 +3215,13 @@ const batchHeader = computed(() => {
   parts.push(left)
   return parts.filter(Boolean).join(' · ')
 })
-// After a batch: the next one of the same card, if it has lines to read. Never a
-// practice-phrase batch — the queue opens those itself, one at a time.
-const nextBatchN = computed(() => {
-  const t = scopedTrack.value
-  if (!t || t.kind === 'phrase') return null
-  const later = t.batches.find(b => b.n > batchScope.value.batch && (b.recorded || 0) + (b.uploading || 0) < b.total)
-  return later ? later.n : null
-})
+// After a batch: the next batch with lines left, in Up next's order — the same section's next
+// batch (practice phrases included), else the next section's (booth-home.js nextBatchAfter,
+// Aran 2026-10-16, job #203). Opening it leaves the upload queue running: takes live in the
+// device's take store, not in this screen.
+const nextBatch = computed(() => nextBatchAfter(homeTracks.value, batchScope.value, unticked.value))
+// Said only once the home counts are in and name this batch's section: a summary still loading is not "nothing left".
+const nothingLeftAnywhere = computed(() => !!scopedTrack.value && !nextBatch.value)
 const showPhraseCard = computed(() => !!(phrases.value && (phrases.value.pass || phrases.value.finished)) &&
   (!batchScope.value || batchScope.value.track.startsWith('phrase.')))
 
@@ -3237,6 +3241,7 @@ function openNextPod() {
   goToAddress({ ...rest, course: p.courseCode, pod: p.podSlug })
 }
 function openBatch(track, n) { goToAddress({ track, batch: String(n) }) }
+function openNextBatch() { const nb = nextBatch.value; if (nb) openBatch(nb.track.key, nb.batch.n) }
 function goHome() { goToAddress({}) }
 function openCard(key) {
   const t = homeTracks.value.find(x => x.key === key)
