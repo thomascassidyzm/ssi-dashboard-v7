@@ -120,3 +120,22 @@ test('?pod= carries podsDone: the next pod where she still has lines', async () 
   assert.strictEqual(body.podsDone.remainingOutsidePods, 0)
   assert.strictEqual((await ask('includeRecorded=1&course=spa_for_eng')).body.podsDone, null)
 })
+
+// Job #247 (Kai and Aran, 2026-10-16): a voice with a controlled queue (booth-actor-queue.cjs) is
+// offered only the steps of that queue. Here her queue is the health pod alone: senedd, which she
+// is cast on and owes a line in, is neither drawn nor offered, and nothing is said about it.
+test('a controlled queue: a pod outside it is not offered, drawn or counted', async () => {
+  const { ACTOR_QUEUES } = require('./booth-actor-queue.cjs')
+  ACTOR_QUEUES[VOICE] = [{ key: 'health', title: 'Health', courseCode: 'spa_for_eng', pod: 'health' }]
+  try {
+    const { body } = await ask('includeRecorded=1&course=spa_for_eng&pod=health')
+    assert.strictEqual(body.podsDone.nextPod, null)
+    assert.strictEqual(body.podsDone.remainingOutsidePods, 0)
+    assert.strictEqual(body.podsDone.current.title, 'Health')
+    const whole = (await ask('includeRecorded=1')).body
+    assert.deepStrictEqual(whole.lines.map((l) => l.podSlug), ['health', 'health'])
+    assert.strictEqual(whole.total, 2)
+  } finally {
+    delete ACTOR_QUEUES[VOICE]
+  }
+})

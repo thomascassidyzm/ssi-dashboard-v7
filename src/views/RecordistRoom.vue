@@ -391,9 +391,10 @@
           <!-- NOTHING LEFT IN THIS BATCH: the way on is the big button, not a dead one (Aran, 2026-10-15). -->
           <!-- A POD LINK WITH NOTHING LEFT IN ITS POD carries on into the next pod (Kai, 2026-10-16, job #189). -->
           <template v-if="!voice.setupCheck && podFinished">
-            <button v-if="nextPod" class="btn-begin btn-next-batch" data-test="next-pod" @click="openNextPod">Next pod: {{ nextPodName }} →</button>
+            <button v-if="nextPod" class="btn-begin btn-next-batch" data-test="next-pod" @click="openNextPod">{{ nextPodWords }}</button>
             <p v-else class="pods-all-done" data-test="pods-all-done">{{ allPodsDoneWords }}</p>
-            <button v-if="!nextPod && voice.podsDone.remainingOutsidePods" class="btn-ghost" data-test="other-lines" @click="goHome">See your other lines</button>
+            <!-- NO "See your other lines" (Kai and Aran, 2026-10-16, job #247): an actor is shown only
+                 what we put in their queue, never a path to the rest of their cast backlog. -->
           </template>
           <button v-else-if="!voice.setupCheck && startIndex === -1 && nextBatch" class="btn-begin btn-next-batch" data-test="next-batch" @click="openNextBatch">Next batch →</button>
           <template v-else-if="!voice.setupCheck && startIndex === -1 && batchScope">
@@ -449,7 +450,7 @@
         </template>
         <div v-else class="transport-in" :class="{ one: !nextBatch && !batchScope && !nextPod }">
           <button class="btn-ghost" @click="backToStart">Back to my lines</button>
-          <button v-if="nextPod" class="btn-begin btn-next-batch" data-test="next-pod" @click="openNextPod">Next pod: {{ nextPodName }} →</button>
+          <button v-if="nextPod" class="btn-begin btn-next-batch" data-test="next-pod" @click="openNextPod">{{ nextPodWords }}</button>
           <button v-else-if="nextBatch" class="btn-begin btn-next-batch" data-test="next-batch" @click="openNextBatch">Next batch →</button>
           <button v-else-if="batchScope" class="btn-begin btn-next-batch" data-test="back-home" @click="goHome">Back to home</button>
         </div>
@@ -1541,7 +1542,7 @@ const startLine = computed(() => (readyIndex.value === -1 ? null : lines.value[r
 // WHERE THE CURSOR IS KEPT: per voice, per batch (or per door link).
 function cursorScope() {
   const q = new URLSearchParams(window.location.search)
-  return cursorScopeKey({ batch: batchScope.value, course: q.get('course') || '', pod: q.get('pod') || '' })
+  return cursorScopeKey({ batch: batchScope.value, course: q.get('course') || '', pod: q.get('pod') || (q.get('step') ? `step:${q.get('step')}` : '') })
 }
 function pinCursor(lineId) {
   pinnedId.value = lineId ?? null
@@ -1617,6 +1618,9 @@ const progressPct = computed(() => (lines.value.length ? Math.round((recordedCou
 // link, a recording pack) who and how many are left, so the row is never empty.
 const whereWords = computed(() => {
   if (batchScope.value) return batchHeader.value
+  // A CONTROLLED QUEUE'S STEP says which step it is by name: "Pod 1 · 28 left" (job #247).
+  const step = voice.value.podsDone && voice.value.podsDone.current
+  if (step) return `${step.title} · ${remainingToRead.value.toLocaleString('en-GB')} left`
   const who = [voice.value.displayName, voice.value.languageName].filter(Boolean).join(' · ')
   const left = `${remainingToRead.value.toLocaleString('en-GB')} left`
   return who ? `${who} · ${left}` : left
@@ -2815,6 +2819,9 @@ async function load({ quiet = false } = {}) {
     // server can narrow the read as well as the draw.
     const podScope = new URLSearchParams(window.location.search).get('pod')
     const podParam = podScope ? `&pod=${encodeURIComponent(podScope)}` : ''
+    // A STEP LINK of a controlled queue (job #247): ?step=seeds is that step's lines only.
+    const stepScope = new URLSearchParams(window.location.search).get('step')
+    const stepParam = stepScope ? `&step=${encodeURIComponent(stepScope)}` : ''
     // ONE BATCH from the home screen (job #347): only its lines come over the wire.
     const b = batchScope.value
     let batchParam = b ? `&track=${encodeURIComponent(b.track)}&batch=${b.batch}` : ''
@@ -2827,7 +2834,7 @@ async function load({ quiet = false } = {}) {
     // Time-limited (20s, one retry): a hung request must not strand the reader
     // on "Getting your lines…". The body is read inside the timed window.
     const { res, data: body } = await fetchWithTimeoutRetry(
-      withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}${batchParam}`, props.voiceId),
+      withBoothKey(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}${stepParam}${batchParam}`, props.voiceId),
       { headers: {} },
       r => (r.ok ? r.json() : r.json().catch(() => ({})))
     )
@@ -2918,7 +2925,7 @@ function setTick(id, on) {
   saveUnticked(props.voiceId, next)
 }
 const queryStr = (v) => (typeof v === 'string' && v.trim() ? v.trim() : null)
-const isDoorLink = () => !!(queryStr(addressQuery.value.course) || queryStr(addressQuery.value.pod))
+const isDoorLink = () => !!(queryStr(addressQuery.value.course) || queryStr(addressQuery.value.pod) || queryStr(addressQuery.value.step))
 const batchScope = computed(() => {
   const track = queryStr(addressQuery.value.track)
   const batch = parseInt(addressQuery.value.batch, 10)
@@ -3228,17 +3235,21 @@ const showPhraseCard = computed(() => !!(phrases.value && (phrases.value.pass ||
 // AFTER A POD (Kai, 2026-10-16, job #189): a pod link whose pod has nothing left of his to read
 // offers the next pod where he still has lines, so nobody has to send him a new link. Which pod is
 // the server's call (services/voice-engine/booth-next-pod.cjs); no answer keeps the old button.
-const podFinished = computed(() => !!queryStr(addressQuery.value.pod) && !!voice.value.podsDone && startIndex.value === -1)
+// A STEP LINK (?step=, job #247) is a pod link's twin for a controlled queue's non-pod step
+// ('Seed sentences (206)'): the same button carries on from either, in the order the server keeps.
+const podFinished = computed(() => !!(queryStr(addressQuery.value.pod) || queryStr(addressQuery.value.step)) && !!voice.value.podsDone && startIndex.value === -1)
 const nextPod = computed(() => (podFinished.value && voice.value.podsDone.nextPod) || null)
-const nextPodName = computed(() => (nextPod.value ? podSectionFor(nextPod.value).heading : ''))
+// A controlled queue names its own steps (`label`); any other pod keeps its section heading.
+const nextPodName = computed(() => (nextPod.value ? (nextPod.value.label || podSectionFor(nextPod.value).heading) : ''))
+const nextPodWords = computed(() => (nextPod.value && nextPod.value.podSlug ? `Next pod: ${nextPodName.value} →` : `Next: ${nextPodName.value} →`))
 const allPodsDoneWords = computed(() => (voice.value.podsDone && voice.value.podsDone.remainingOutsidePods
   ? 'All your pods are done — thank you'
   : 'All done — thank you'))
 function openNextPod() {
   const p = nextPod.value
   if (!p) return
-  const { track, batch, ...rest } = addressQuery.value
-  goToAddress({ ...rest, course: p.courseCode, pod: p.podSlug })
+  const { track, batch, pod, step, ...rest } = addressQuery.value
+  goToAddress(p.podSlug ? { ...rest, course: p.courseCode, pod: p.podSlug } : { ...rest, course: p.courseCode, step: p.step })
 }
 function openBatch(track, n) { goToAddress({ track, batch: String(n) }) }
 function openNextBatch() { const nb = nextBatch.value; if (nb) openBatch(nb.track.key, nb.batch.n) }
@@ -3464,7 +3475,7 @@ onBeforeUnmount(() => {
 // voice's tab is showing, and the address then belongs to that voice: a booth only follows the
 // address while the address names it, and coming back to the same place it left is not a move.
 let enteredAt = null
-watch(() => [props.voiceId, addressQuery.value.track, addressQuery.value.batch, addressQuery.value.course, addressQuery.value.pod], (at) => {
+watch(() => [props.voiceId, addressQuery.value.track, addressQuery.value.batch, addressQuery.value.course, addressQuery.value.pod, addressQuery.value.step], (at) => {
   const named = route && route.params && route.params.voiceId
   if (named && named !== props.voiceId) return
   const key = JSON.stringify(at)

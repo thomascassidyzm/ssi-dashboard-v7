@@ -71,6 +71,7 @@ const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
+const boothActorQueue = require('./booth-actor-queue.cjs')
 const boothRerecord = require('./booth-rerecord.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
 const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
@@ -592,7 +593,9 @@ module.exports = function createRecordistRouter({
       // marked `fresh: false` (the page asks again shortly), a fresh one as it is.
       const cached = await homeQueueFor(req.params.voiceId, { allowStale: true })
       if (!cached) return res.status(404).json({ error: `No recording voice ${req.params.voiceId}.` })
-      const { recordist, queue, setupRow } = cached.value
+      const { recordist, setupRow } = cached.value
+      // AN ACTOR WITH A CONTROLLED QUEUE (job #247) is shown only its steps' lines.
+      const queue = boothActorQueue.scopeQueue(recordist.voiceId, cached.value.queue)
       // The home screen is where he now ARRIVES, so the arrival is counted here
       // too, exactly as the full-queue and batch reads count it (#365 found it
       // skipped). Unscoped, so nothing is refused: the queue is his own courses.
@@ -651,9 +654,13 @@ module.exports = function createRecordistRouter({
       const homeBatchRead = includeRecorded && quarryMaxSeed === undefined && typeof req.query.track === 'string' &&
         !(typeof req.query.course === 'string' && req.query.course.trim()) && !(typeof req.query.pod === 'string' && req.query.pod.trim())
       const cachedHome = homeBatchRead ? await homeQueueFor(req.params.voiceId) : null
-      const queue = cachedHome && cachedHome.value.recordist.voiceId === recordist.voiceId
+      const builtQueue = cachedHome && cachedHome.value.recordist.voiceId === recordist.voiceId
         ? cachedHome.value.queue
         : await buildQueue(db(), recordist, { includeRecorded, quarryMaxSeed })
+      // AN ACTOR WITH A CONTROLLED QUEUE (Kai and Aran, 2026-10-16, job #247): every read of this
+      // booth is cut to the steps we put in it, in our order (booth-actor-queue.cjs). Nothing
+      // outside it is drawn, counted or offered. Any other voice: the queue as built.
+      const queue = boothActorQueue.scopeQueue(recordist.voiceId, builtQueue)
       // A COURSE LINK. The community course editor's "Copy link" is
       // /r/:voiceId?course=<code> (PodCastPanel): the same booth, the same
       // voice, scoped to the lines of THAT course. The language-wide link
@@ -685,8 +692,13 @@ module.exports = function createRecordistRouter({
       // exchangeContext), so filtering here cannot take a neighbour away.
       const podScope = typeof req.query.pod === 'string' && req.query.pod.trim() ? req.query.pod.trim() : null
       const inPod = (r) => !podScope || r.podSlug === podScope || r.podId === podScope
+      // A STEP LINK (job #247): ?step=<key> opens one step of a controlled queue that is not a pod
+      // ('seeds' — Dan's 206 Southern seed sentences). A step the voice does not have is empty.
+      const stepAsked = typeof req.query.step === 'string' && req.query.step.trim() ? req.query.step.trim() : null
+      const queueStep = boothActorQueue.stepForLink(recordist.voiceId, { course: scoped, pod: podScope, step: stepAsked })
+      const inStep = (r) => !stepAsked || (!!queueStep && boothActorQueue.lineInStep(r, queueStep))
       const inScope = (rows) => (rows || [])
-        .filter((r) => (!scoped || r.courseCode === scoped) && inPod(r))
+        .filter((r) => (!scoped || r.courseCode === scoped) && inPod(r) && inStep(r))
       const forCourse = inScope
       // ONE BATCH FROM THE HOME SCREEN (job #347): ?track=<key>&batch=<n> is the
       // slice of the queue a home-screen card opens — cut by the same function
@@ -701,7 +713,7 @@ module.exports = function createRecordistRouter({
         ? boothHome.openPhraseBatch(inScope(queue.lines).filter((l) => boothHome.trackKeyOf(l) === trackScope), trackScope, Number.isFinite(batchN) && batchN >= 1 ? batchN : 1, phraseCtx)
         : null
       // THE RE-RECORD BATCH (job #788): the card's lines plus the page's refused ones, in course order.
-      const rerecordLines = trackScope === boothRerecord.RERECORD_TRACK && cachedHome && cachedHome.value.queue === queue
+      const rerecordLines = trackScope === boothRerecord.RERECORD_TRACK && cachedHome && cachedHome.value.queue === builtQueue
         ? boothRerecord.rerecordBatchLines(withTextChecks(await rerecordListFor(cachedHome.value), cachedHome.value.recordist), idList(req.query.also))
         : null
       const lines = rerecordLines ? inScope(rerecordLines) : trackScope
@@ -709,7 +721,7 @@ module.exports = function createRecordistRouter({
         : inScope(queue.lines)
       // Scoped counts are counted over the lines on the wire (the booth always
       // asks includeRecorded=1, so they are the scope's whole tally there).
-      const narrowed = Boolean(scoped || podScope || trackScope)
+      const narrowed = Boolean(scoped || podScope || stepAsked || trackScope)
       const recordedInScope = narrowed ? lines.filter((l) => l.recorded).length : queue.recorded
       const totalInScope = narrowed ? lines.length : queue.total
       const setupRow = await loadSetupRow(recordist.voiceId)
@@ -717,8 +729,12 @@ module.exports = function createRecordistRouter({
       // order where this voice still has lines owed, skipping staged-draft and archived pods
       // (booth-next-pod.cjs says why held pods are NOT skipped). Only on a pod link, reading only
       // the candidate pods' metadata. A failed read offers no next pod; it never fails the booth.
+      // A CONTROLLED QUEUE answers from its own order instead (job #247): the next step with lines
+      // owed, never a pod outside it, and nothing said about lines outside it.
       let podsDone = null
-      if (podScope && !trackScope) {
+      if (queue.actorQueue && (podScope || stepAsked) && !trackScope) {
+        podsDone = boothActorQueue.nextStepFor(recordist.voiceId, queue.lines, queueStep)
+      } else if (podScope && !trackScope) {
         try {
           const owed = [...new Set((queue.lines || []).filter((l) => l.podId && !l.recorded).map((l) => l.podId))]
           const { data: podRows, error: podErr } = owed.length
@@ -740,6 +756,7 @@ module.exports = function createRecordistRouter({
         // Echoed back for the same reason maxSeed is: a screen that reports the
         // scope it ASKED for rather than the one it got is a quiet lie.
         pod: podScope,
+        step: stepAsked,
         // {nextPod: {courseCode, podSlug, podTitle, remaining} | null, remainingOutsidePods}, or
         // null when this is not a pod link or it could not be worked out (job #189).
         podsDone,
