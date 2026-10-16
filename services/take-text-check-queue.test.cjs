@@ -27,7 +27,7 @@ describe('the upload is not held by the script check', () => {
   it('enqueue returns at once while the check has not answered, with the job already on disk', () => {
     const dir = tmp()
     let started = 0
-    const q = Q.createTextCheckQueue({ dir, logger: quiet, check: () => { started++; return never() } })
+    const q = Q.createTextCheckQueue({ enabled: true, dir, logger: quiet, check: () => { started++; return never() } })
     const r = q.enqueue(job(1), Buffer.from('mastered-bytes'))
     expect(r.queued).toBe(true)
     expect(started).toBe(1)
@@ -59,7 +59,7 @@ describe('a take that does not match its line comes back as a re-record', () => 
   it('a failed check is on the voice list; a pass and an unchecked one are not', async () => {
     const dir = tmp()
     const verdicts = { 'TAKE-1': failing, 'TAKE-2': passing, 'TAKE-3': async () => ({ checked: false, pass: null, reason: 'unchecked_decoder_not_validated' }) }
-    const q = Q.createTextCheckQueue({ dir, logger: quiet, check: (b, t, l, o) => verdicts[o.meta.audioId.replace('audio', 'TAKE')]() })
+    const q = Q.createTextCheckQueue({ enabled: true, dir, logger: quiet, check: (b, t, l, o) => verdicts[o.meta.audioId.replace('audio', 'TAKE')]() })
     q.enqueue(job(1), Buffer.from('a'))
     q.enqueue(job(2), Buffer.from('b'))
     q.enqueue(job(3), Buffer.from('c'))
@@ -73,7 +73,7 @@ describe('a take that does not match its line comes back as a re-record', () => 
   it('a new take of the line takes it off; a re-read that fails again comes back with its own take', async () => {
     const dir = tmp()
     let gate
-    const q = Q.createTextCheckQueue({ dir, logger: quiet, check: (b) => (b.toString() === 'held' ? new Promise(r => { gate = r }) : failing()) })
+    const q = Q.createTextCheckQueue({ enabled: true, dir, logger: quiet, check: (b) => (b.toString() === 'held' ? new Promise(r => { gate = r }) : failing()) })
     q.enqueue(job(1), Buffer.from('a'))
     await q.idle()
     expect(q.failuresFor('human_tom_zzz')).toHaveLength(1)
@@ -87,7 +87,7 @@ describe('a take that does not match its line comes back as a re-record', () => 
 
   it('a take with no script text still clears the line (noteTake), and "keep it" clears it too', async () => {
     const dir = tmp()
-    const q = Q.createTextCheckQueue({ dir, logger: quiet, check: failing })
+    const q = Q.createTextCheckQueue({ enabled: true, dir, logger: quiet, check: failing })
     q.enqueue(job(1), Buffer.from('a'))
     q.enqueue(job(2), Buffer.from('b'))
     await q.idle()
@@ -99,7 +99,7 @@ describe('a take that does not match its line comes back as a re-record', () => 
 
   it('reads every spelling of the voice', async () => {
     const dir = tmp()
-    const q = Q.createTextCheckQueue({ dir, logger: quiet, check: failing })
+    const q = Q.createTextCheckQueue({ enabled: true, dir, logger: quiet, check: failing })
     q.enqueue(job(1, { voiceId: 'human_aran_cym_n' }), Buffer.from('a'))
     q.enqueue(job(2, { voiceId: 'human_aran_cym_n_2' }), Buffer.from('b'))
     await q.idle()
@@ -111,11 +111,11 @@ describe('a take that does not match its line comes back as a re-record', () => 
 describe('a restart mid-check loses nothing', () => {
   it('the next process re-queues the interrupted check from disk and runs it', async () => {
     const dir = tmp()
-    const before = Q.createTextCheckQueue({ dir, logger: quiet, check: never })
+    const before = Q.createTextCheckQueue({ enabled: true, dir, logger: quiet, check: never })
     before.enqueue(job(1), Buffer.from('mastered'))
     // ...the process is killed here. A new one starts on the same directory:
     let heard = null
-    const after = Q.createTextCheckQueue({ dir, logger: quiet, check: async (buf) => { heard = buf.toString(); return failing() } })
+    const after = Q.createTextCheckQueue({ enabled: true, dir, logger: quiet, check: async (buf) => { heard = buf.toString(); return failing() } })
     expect(after.recover()).toBe(1)
     await after.idle()
     expect(heard).toBe('mastered')
@@ -125,11 +125,11 @@ describe('a restart mid-check loses nothing', () => {
 
   it('a check that has killed the process MAX_ATTEMPTS times is recorded unchecked, not retried for ever', async () => {
     const dir = tmp()
-    const q0 = Q.createTextCheckQueue({ dir, logger: quiet, check: never })
+    const q0 = Q.createTextCheckQueue({ enabled: true, dir, logger: quiet, check: never })
     q0.enqueue(job(1), Buffer.from('x'))
-    for (let i = 0; i < Q.MAX_ATTEMPTS; i++) Q.createTextCheckQueue({ dir, logger: quiet, check: never }).recover()
+    for (let i = 0; i < Q.MAX_ATTEMPTS; i++) Q.createTextCheckQueue({ enabled: true, dir, logger: quiet, check: never }).recover()
     let ran = false
-    const last = Q.createTextCheckQueue({ dir, logger: quiet, check: async () => { ran = true; return failing() } })
+    const last = Q.createTextCheckQueue({ enabled: true, dir, logger: quiet, check: async () => { ran = true; return failing() } })
     last.recover()
     await last.idle()
     expect(ran).toBe(false)
@@ -167,5 +167,26 @@ describe('failuresFromEvents', () => {
     ]
     expect(Q.failuresFromEvents(ev, { now })).toHaveLength(0)
     expect(Q.failuresFromEvents(ev, { now, windowMs: 30 * 24 * 3600 * 1000 })).toHaveLength(1)
+  })
+})
+
+describe('BOOTH_WHISPER_CHECK switch (Tom, 2026-10-16: default OFF)', () => {
+  it('is off unless the env says on', () => {
+    expect(Q.whisperCheckEnabled({})).toBe(false)
+    expect(Q.whisperCheckEnabled({ BOOTH_WHISPER_CHECK: '0' })).toBe(false)
+    expect(Q.whisperCheckEnabled({ BOOTH_WHISPER_CHECK: '1' })).toBe(true)
+  })
+  it('off: no decoder starts, filing is unaffected, stale failures and pending stay hidden', async () => {
+    const dir = tmp()
+    let started = 0
+    const q = Q.createTextCheckQueue({ dir, logger: quiet, enabled: false, check: () => { started++; return failing() } })
+    const r = q.enqueue(job(1), Buffer.from('x'))
+    await q.idle()
+    expect(started).toBe(0)
+    expect(r.queued).toBe(false)
+    expect(q.depth()).toBe(0)
+    expect(q.failuresFor(['human_tom_zzz'])).toEqual([])
+    expect(q.recover()).toBe(0)
+    expect(fs.existsSync(path.join(dir, 'pending'))).toBe(false)
   })
 })

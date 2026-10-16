@@ -46,6 +46,14 @@ const os = require('os')
 const path = require('path')
 
 const MAX_ATTEMPTS = 3
+/**
+ * THE SWITCH (Tom, 2026-10-16: the booth's server-side Whisper is memory-heavy — remove it).
+ * DEFAULT OFF: with BOOTH_WHISPER_CHECK unset nothing is queued, no decoder ever starts, and the
+ * failed-check list is empty, so the booth hides the Re-record "didn't match the words" items and
+ * the "we heard" line without any error. Filing is untouched (the check never gated it anyway).
+ * Set BOOTH_WHISPER_CHECK=1 on the API to bring the check back.
+ */
+const whisperCheckEnabled = (env = process.env) => /^(1|true|on|yes)$/i.test(String(env.BOOTH_WHISPER_CHECK || ''))
 /** A failure older than this is not "this session" any more and drops off the list. */
 const FAILURE_WINDOW_MS = Number(process.env.TAKE_TEXT_CHECK_WINDOW_DAYS || 7) * 24 * 3600 * 1000
 /** Background checks at once. The whisper wrapper's own 3-slot semaphore bounds the box. */
@@ -106,12 +114,13 @@ function createTextCheckQueue (o = {}) {
   const logger = o.logger || console
   const concurrency = Math.max(1, o.concurrency || DEFAULT_CONCURRENCY)
   const now = o.now || (() => Date.now())
+  const enabled = o.enabled == null ? whisperCheckEnabled() : !!o.enabled
   const dir = o.dir || defaultDir()
   const pendingDir = path.join(dir, 'pending')
   const voicesDir = path.join(dir, 'voices')
   let durable = true
   try {
-    fs.mkdirSync(pendingDir, { recursive: true })
+    if (enabled) fs.mkdirSync(pendingDir, { recursive: true })
     fs.mkdirSync(voicesDir, { recursive: true })
   } catch (e) {
     // Never fails an upload: the checks still run, they just would not survive a restart.
@@ -181,6 +190,7 @@ function createTextCheckQueue (o = {}) {
     try {
       if (!job || !job.takeId || !job.text || !buffer) return { queued: false }
       if (job.voiceId && job.lineId) noteTake(job)
+      if (!enabled) return { queued: false, disabled: true }
       const rec = { ...job, queuedAt: iso(), attempts: 0 }
       if (durable) {
         try {
@@ -281,7 +291,7 @@ function createTextCheckQueue (o = {}) {
 
   /** Re-queue every check a restart interrupted. Returns how many. */
   function recover () {
-    if (!durable) return 0
+    if (!durable || !enabled) return 0
     let names = []
     try { names = fs.readdirSync(pendingDir) } catch { return 0 }
     let n = 0
@@ -302,6 +312,7 @@ function createTextCheckQueue (o = {}) {
 
   /** The live failed-check list over every spelling of a voice. */
   function failuresFor (voiceIds) {
+    if (!enabled) return [] // switched off: stale verdicts from before are hidden too
     const ids = [...new Set((Array.isArray(voiceIds) ? voiceIds : [voiceIds]).filter(Boolean))]
     const events = []
     for (const v of ids) events.push(...readEvents(v))
@@ -321,7 +332,7 @@ function createTextCheckQueue (o = {}) {
     return new Promise((resolve) => idleWaiters.push(resolve))
   }
 
-  return { enqueue, noteTake, recover, failuresFor, keep, depth, idle, dir, get durable () { return durable } }
+  return { enqueue, noteTake, recover, failuresFor, keep, depth, idle, dir, enabled, get durable () { return durable } }
 }
 
 // ---------------------------------------------------------------------------
@@ -387,6 +398,7 @@ function reapOrphanedDecoders (o = {}) {
 
 module.exports = {
   createTextCheckQueue,
+  whisperCheckEnabled,
   failuresFromEvents,
   reapOrphanedDecoders,
   MAX_ATTEMPTS,
