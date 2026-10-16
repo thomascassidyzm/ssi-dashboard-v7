@@ -69,10 +69,10 @@ function fixture() {
 }
 
 /** The router on a real express app, asked exactly as the booth asks. */
-async function ask(query) {
+async function ask(query, tables = fixture()) {
   const app = express()
   app.use('/api/recording', createRecordistRouter({
-    getDb: () => stubDb(fixture()),
+    getDb: () => stubDb(tables),
     logger: { info() {}, warn() {}, error() {} },
     requireAdmin: (req, res, next) => next(),
     requireDashboardUser: (req, res, next) => next(),
@@ -119,4 +119,23 @@ test('?pod= carries podsDone: the next pod where she still has lines', async () 
   assert.strictEqual(body.podsDone.nextPod.remaining, 1)
   assert.strictEqual(body.podsDone.remainingOutsidePods, 0)
   assert.strictEqual((await ask('includeRecorded=1&course=spa_for_eng')).body.podsDone, null)
+})
+
+test('a finished course-scoped pod still offers an earlier course with the same slug', async () => {
+  const tables = fixture()
+  tables.courses.push({ ...tables.courses[0], course_code: 'spa_for_fra', known_lang: 'fra' })
+  tables.listening_pods = [
+    { id: 'eng-pod', course_code: 'spa_for_eng', slug: 'pod-1', title: 'English pod' },
+    { id: 'fra-pod', course_code: 'spa_for_fra', slug: 'pod-1', title: 'French pod' },
+  ]
+  tables.listening_pod_sentences = [
+    { id: 'eng-line', pod_id: 'eng-pod', global_order: 1, speaker: 'Ana', target_text: 'Hola.', known_text: 'Hello.' },
+    { id: 'fra-line', pod_id: 'fra-pod', global_order: 1, speaker: 'Ana', target_text: 'Adiós.', known_text: 'Au revoir.', target_audio_id: 'saved-take' },
+  ]
+  tables.course_audio = [{ id: 'saved-take', voice_id: VOICE }]
+  const { status, body } = await ask('includeRecorded=1&course=spa_for_fra&pod=pod-1', tables)
+  assert.strictEqual(status, 200)
+  assert.strictEqual(body.total, 1)
+  assert.strictEqual(body.remaining, 0)
+  assert.strictEqual(body.podsDone.nextPod?.podId, 'eng-pod')
 })
