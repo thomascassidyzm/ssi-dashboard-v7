@@ -23,11 +23,12 @@ test('AUDIO=1 reports failure when the render service refuses a missing slot', a
       throw new Error(`Unexpected SQL: ${sql}`);
     }
   }
+  const output = [];
   const proc = { env: { AUDIO: '1' }, exitCode: 0 };
   const context = vm.createContext({
     require: (name) => name === 'pg' ? { Client } : name === 'dotenv' ? { config() {} } : nativeRequire(name),
     module: { exports: {} }, __dirname, process: proc,
-    console: { log() {}, error() {} },
+    console: { log: (...args) => output.push(args.join(' ')), error: (...args) => output.push(args.join(' ')) },
     fetch: async () => { requests++; return { status: 503, json: async () => ({ ok: false, error: 'Phase 8 unavailable' }) }; },
   });
   vm.runInContext(fs.readFileSync(filename, 'utf8') + '\nmodule.exports.reviewMain = main;', context, { filename });
@@ -41,6 +42,7 @@ test('AUDIO=1 reports failure when the render service refuses a missing slot', a
   db.phrases.push({ ...clips, id: `ita_for_eng:${T.EDIT_223.id}`, sid: T.EDIT_223.id, seed_number: 223, phrase_role: 'use', known_text: T.EDIT_223.after[0], target_text: T.EDIT_223.after[1] });
   db.phrases[0].known_audio_id = null;
   await T.reviewMain();
-  assert.equal(requests, 2, 'dry and real attempts both reached the refused slot');
+  assert.equal(requests, 1, 'a refused slot must not be retried in the real pass');
+  assert.ok(output.some(line => line.includes('Phase 8 unavailable')), 'the refusal must be reported');
   assert.notEqual(proc.exitCode, 0, 'failed audio must not be reported as CLI success');
 });

@@ -419,7 +419,8 @@ async function audio(pg, { dry }) {
       const u = await q1(`UPDATE ${s.table} SET ${s.col}=$1 WHERE course_code=$2 AND ${s.key}=$3 AND ${s.col} IS NULL AND ${s.textCol}=$4`, [out.audioId, COURSE, s.keyVal, s.text]);
       linked = u.rowCount === 1 ? 'linked' : 'slot already filled (autolink)';
     }
-    log.push({ slot: `${s.keyVal.replace(`${COURSE}:`, '')} ${s.role}`, text: s.text, source: out.source, chars: out.wouldSpendChars || out.charsSpent || 0, audioId: out.audioId || null, linked, error: out.ok ? undefined : (out.code || out.error) });
+    log.push({ slot: `${s.keyVal.replace(`${COURSE}:`, '')} ${s.role}`, text: s.text, source: out.source, chars: out.wouldSpendChars || out.charsSpent || 0, audioId: out.audioId || null, linked, error: out.ok ? undefined : (out.code || out.error || 'render refused') });
+    if (!out.ok) return log;
   }
   for (const l of NEW_LEGOS) {
     const row = lg.find((x) => x.lego_id === l.id);
@@ -431,7 +432,8 @@ async function audio(pg, { dry }) {
         ON CONFLICT (course_code, lego_id) DO UPDATE SET presentation_audio_id=EXCLUDED.presentation_audio_id, audio_uuid=EXCLUDED.audio_uuid, duration_ms=COALESCE(EXCLUDED.duration_ms, lego_introductions.duration_ms), updated_at=now()`, [COURSE, l.id, out.audioId, a?.duration_ms || null]);
       await q1('UPDATE course_audio SET lego_id=$1 WHERE id::text=$2 AND (lego_id IS NULL OR lego_id<>$1)', [l.id, out.audioId]);
     }
-    log.push({ slot: `${l.id} presentation`, text: l.intro, source: out.source, chars: out.wouldSpendChars || out.charsSpent || 0, audioId: out.audioId || null, legoLinked: out.legoLinked, error: out.ok ? undefined : (out.code || out.error) });
+    log.push({ slot: `${l.id} presentation`, text: l.intro, source: out.source, chars: out.wouldSpendChars || out.charsSpent || 0, audioId: out.audioId || null, legoLinked: out.legoLinked, error: out.ok ? undefined : (out.code || out.error || 'render refused') });
+    if (!out.ok) return log;
   }
   return log;
 }
@@ -458,14 +460,13 @@ async function main() {
       const dry = await audio(pg, { dry: true });
       for (const x of dry) console.log(`  dry ${x.slot.padEnd(22)} ${String(x.source).padEnd(12)} ${String(x.chars).padStart(4)}  "${x.text}"${x.error ? `  ERROR ${x.error}` : ''}`);
       console.log(`would spend ${dry.reduce((n, x) => n + (x.chars || 0), 0)} chars over ${dry.length} slots`);
-      // A refused render leaves its slot empty: that is a defect standing, so the exit code says so
-      // (exit 4), dry pass or real (lanes review of 98e2881). Line below keeps any earlier code.
-      if (dry.some((x) => x.error)) process.exitCode = process.exitCode || 4;
+      // A refusal is final: report it and stop without retrying in the real pass.
+      if (dry.some((x) => x.error)) { process.exitCode = process.exitCode || 4; return; }
       if (process.env.DRY !== '1') {
         const real = await audio(pg, { dry: false });
         for (const x of real) console.log(`  ${x.slot.padEnd(22)} ${String(x.source).padEnd(12)} ${String(x.chars).padStart(4)}  ${x.audioId || ''} ${x.linked || (x.legoLinked ? 'lego linked' : '')}${x.error ? `  ERROR ${x.error}` : ''}`);
         console.log(`spent ${real.reduce((n, x) => n + (x.source === 'rendered' ? x.chars || 0 : 0), 0)} chars`);
-        if (real.some((x) => x.error)) process.exitCode = process.exitCode || 4;
+        if (real.some((x) => x.error)) { process.exitCode = process.exitCode || 4; return; }
       }
       await pg.end().catch(() => {});
       pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect();
