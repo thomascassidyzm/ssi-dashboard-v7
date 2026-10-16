@@ -138,10 +138,17 @@ describe('the render route (/api/audio/render)', () => {
   })
   const ask = (o = {}) => ({ courseCode: COURSE, role: 'target1', text: WORDS, purpose: 'test', requestedBy: 'tester', ...o })
 
-  it('a named re-record is refused without permission, even when only the spoken words differ', async () => {
+  it('an INDIVIDUAL named re-record passes without permission (Tom 2026-10-16)', async () => {
     const clip = row({ id: 'a1' })
     const { svc, paid } = door([clip])
-    await expect(renderClip(ask({ replaceAudioId: 'a1', spokenText: 'كيفَك' }), deps(svc, clip))).rejects.toMatchObject({ code: 'RERECORD_NOT_PERMITTED' })
+    const out = await renderClip(ask({ replaceAudioId: 'a1', spokenText: 'كيفَك' }), deps(svc, clip))
+    expect(out.source).toBe('rendered')
+    expect(paid).toEqual(['كيفَك'])
+  })
+
+  it('a BATCH re-record (replacing without individual) is still refused without permission', async () => {
+    const { svc, paid } = door([row({ id: 'a1' })])
+    await expect(svc.speak(WORDS, 'cartesia', cfg({ replacing: ['mastered/a1.mp3'] }), 1)).rejects.toMatchObject({ code: 'RERECORD_NOT_PERMITTED' })
     expect(paid).toEqual([])
   })
 

@@ -113,3 +113,14 @@ describe('reading a locale off a voice', () => {
     expect(varietyOfLocale('ar-ae')).toBe('ara_ae');
   });
 });
+
+describe('nightly connections', () => {
+  it('are named for the watchdog and outlast the pooler default timeout', () => {
+    const fs = require('fs'), path = require('path')
+    for (const f of ['check-voice-variety.cjs', 'count-reconciliation.cjs']) {
+      const src = fs.readFileSync(path.join(__dirname, f), 'utf8')
+      expect(src).toMatch(/application_name: 'qa:voice-variety:/)
+      expect(src).toMatch(/statement_timeout: 15 \* 60 \* 1000/)
+    }
+  })
+})

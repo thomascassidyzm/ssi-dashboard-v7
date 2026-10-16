@@ -183,8 +183,8 @@ async function rerecord(req, deps) {
   const r = await deps.resolve({ ...req, language: row.language, voiceId: row.voice_id })
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   // voiceBound + replacing: the door can only answer with a same-voice clip other than the one being replaced.
-  // forceRerecord: this IS a re-record whatever words are spoken (spokenText) — it needs Tom's permission (Tom 2026-10-11).
-  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.id, row.s3_key], forceRerecord: true, job: req.job } }
+  // forceRerecord: this IS a re-record whatever words are spoken (spokenText) — one named clip is an INDIVIDUAL re-record, always allowed (Tom 2026-10-16); the permission gate is for batch runs.
+  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.id, row.s3_key], forceRerecord: true, individual: true, job: req.job } }
   const out = await deps.speak(said, r.provider, cfg, 1)
   const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }

@@ -18,3 +18,17 @@ test('nightlies use the protected owner env as popty and audio-gap honours it', 
   });
   assert.equal(result, 'owner-sentinel');
 });
+
+test('every unit that loads the owner or popty env names its database connections (PGAPPNAME)', () => {
+  const root = path.resolve(qa, '../..');
+  const { execFileSync } = require('node:child_process');
+  const files = execFileSync('git', ['ls-files', '*.service'], { cwd: root, encoding: 'utf8' }).split('\n').filter(Boolean);
+  let checked = 0;
+  for (const f of files) {
+    const unit = fs.readFileSync(path.join(root, f), 'utf8');
+    if (!/owner\.env|popty\.env/.test(unit)) continue;
+    checked++;
+    assert.match(unit, /^Environment=PGAPPNAME=\S+$/m, f);
+  }
+  assert.ok(checked >= 10, `only ${checked} units checked`);
+});

@@ -8,8 +8,8 @@
  * male slot, then found by every later male lookup (seed 300 deu, ita S0403L03B01
  * and S0644L01U04, from 26 Sep). A slot is a VOICE: the lookup must be voice-bound.
  */
-function phraseRenderDoor({ courseCode, role, replacing = [] }) {
-  return { courseCode, intro: role === 'presentation', replacing, voiceBound: true }
+function phraseRenderDoor({ courseCode, role, replacing = [], individual = false }) {
+  return { courseCode, intro: role === 'presentation', replacing, voiceBound: true, ...(individual ? { individual: true } : {}) }
 }
 
 /** lookupOpts for reuseSiblingIntoCourse on the same path. */

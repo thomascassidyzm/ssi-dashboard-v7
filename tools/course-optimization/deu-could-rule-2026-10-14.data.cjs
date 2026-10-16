@@ -14,7 +14,7 @@
 //   action   fix (to = [english, german]; null keeps a side) | delete (practice phrase only, never a LEGO)
 //   LEGO fixes may carry extra fields as a 7th element: { components, intro }
 // Rows that need Kai's ruling are NOT here: they are in HELD below, and the review page lists them one at a time.
-const T1 = 1, T2 = 2;
+const T1 = 1, T2 = 2, T3 = 3; // T3 = written but HELD: touches the seed-312 said+could+future question (Kai 16 Oct); not run until he rules
 const ROWS = [
   // ── seed 311: THE konnte LEGO (K40 — the frame that selects konnte goes inside the LEGO) ──
   ['seed:311', T1, 'fix', ["he said he couldn't believe the three most important facts", 'er hat gesagt, er konnte die drei wichtigsten Fakten nicht glauben'], 'K45/K40', 'Kai 14 Oct: "he said he could" is THE LEGO, shaped to the seed — the seed now carries the frame. V2 report (no dass) keeps the LEGO inside the 8-syllable cap (L3); er hat gesagt, dass er nicht konnte is 9'],
@@ -43,10 +43,10 @@ const ROWS = [
   ['S0310L04B03', T1, 'fix', ['he could write something about that man', 'er könnte etwas über diesen Mann schreiben'], 'K45', 'pronoun swap: he + könnte'],
   // ── seed 312 ──
   ['S0312L01U01', T2, 'fix', ['I could make use of this', 'ich könnte das benutzen'], 'K45', 'pronoun swap: ich + könnte'],
-  ['S0312L01U06', T2, 'fix', ["she said she couldn't make use of this", 'sie hat gesagt, sie konnte das nicht benutzen'], 'K45', 'frame added; she + konnte'],
+  ['S0312L01U06', T3, 'fix', ["she said she couldn't make use of this", 'sie hat gesagt, sie konnte das nicht benutzen'], 'K45', 'frame added; she + konnte'],
   ['S0312L02B03', T2, 'fix', ['he could use the other room', 'er könnte das andere Zimmer benutzen'], 'K45', 'pronoun swap: he + könnte'],
   ['S0312L02U03', T2, 'fix', ["yesterday she couldn't use the other room", 'gestern konnte sie das andere Zimmer nicht benutzen'], 'K45', 'past marker; a said-frame here would stand against seed 312\'s held "she said that she could … tomorrow night | könnte"'],
-  ['S0312L03U06', T2, 'fix', ['I could use it tomorrow night', 'ich könnte es morgen Abend benutzen'], 'K45/K9', '"she couldn\'t believe this tomorrow night | konnte" mixed a past form with a future time; now könnte + future, ich'],
+  ['S0312L03U06', T3, 'fix', ['I could use it tomorrow night', 'ich könnte es morgen Abend benutzen'], 'K45/K9', '"she couldn\'t believe this tomorrow night | konnte" mixed a past form with a future time; now könnte + future, ich'],
   // ── seed 313 ──
   ['S0313L01B02', T1, 'fix', ["he said he couldn't watch", 'er hat gesagt, er konnte nicht schauen'], 'K45/K40', 'build that isolated "nicht schauen konnte" re-anchored on the frame'],
   ['S0313L01B03', T1, 'fix', ["she said she couldn't watch", 'sie hat gesagt, sie konnte nicht schauen'], 'K45', 'frame added; she + konnte'],
@@ -125,7 +125,7 @@ const ROWS = [
 
 // Held for Kai — one at a time on the review page. Nothing below is written.
 const HELD = [
-  { seeds: [312], ids: ['seed:312', 'S0312L03U01', 'S0316L02U03', 'S0316L04U04'],
+  { seeds: [312], ids: ['seed:312', 'S0312L01U06', 'S0312L03U06', 'S0312L03U01', 'S0316L02U03', 'S0316L04U04'],
     now: 'she said that she could use the other room tomorrow night | Sie hat gesagt, dass sie morgen Abend das andere Zimmer benutzen könnte',
     why: 'said + could, but the time is FUTURE. konnte with morgen Abend is wrong German; könnte here sits four rounds after the said-frame LEGO teaches konnte, so the frame alone no longer predicts the form.',
     proposal: '(a) keep könnte and accept that "tomorrow night" is what selects it (rule: said + could + a future time → könnte; S0316L02U03/S0316L04U04 "on Monday" follow); (b) "she said that she can use the other room tomorrow night | …benutzen kann"; (c) re-word to a past report.' },
@@ -155,4 +155,4 @@ const HELD = [
     proposal: 'könnte where it is a possibility ("we could go… | wir könnten…" — könnten is only taught at R816), or "can" in the English.' },
 ];
 
-module.exports = { ROWS, HELD, T1, T2 };
+module.exports = { ROWS, HELD, T1, T2, T3 };

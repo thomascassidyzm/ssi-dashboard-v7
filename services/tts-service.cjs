@@ -1001,6 +1001,8 @@ async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = 
  *   slotRole          — (with voiceBound) the course role being filled: the same words
  *                       already in that role in another voice make this a re-voice,
  *                       i.e. a re-record (/api/audio/render passes it);
+ *   individual        — ONE named clip re-recorded by a person from the Popty booth/review UI (or /api/audio/render replaceAudioId):
+ *                       exempt from the re-record permission gate, which is for batch runs only (Tom 2026-10-16);
  *   forceRerecord     — the caller is re-recording a named clip whatever the words
  *                       (a spoken-text pronunciation fix);
  *   language          — the language, when the provider config cannot say it;
@@ -1066,7 +1068,9 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
   // AFTER the cast gate on purpose (lane review #232): assertMayRerecord RESERVES a use of a max_clips grant, so a render the cast gate
   // is about to refuse must never spend one. No re-recording without Tom's permission (Tom 2026-10-11): a miss that would REPLACE a working clip of
   // these words (door.replacing / door.slotRole / door.forceRerecord) is refused here, dry run or not.
-  await assertMayRerecord({
+  // INDIVIDUAL re-records pass (Tom 2026-10-16): one named clip re-recorded from the Popty booth/review UI by anyone with Popty access is always
+  // allowed — door.individual. The permission gate applies to BATCH runs only (regenerate-role/-presentations, re-voice, bulk scripts).
+  if (!door.individual) await assertMayRerecord({
     text, language, voiceId,
     courseCode: door.courseCode || config.courseCode || null,
     replacing: door.replacing, slotRole: door.slotRole || null, voiceBound: !!door.voiceBound,

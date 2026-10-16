@@ -1,3 +1,7 @@
+## 2026-10-16 — Land red-team fixes cs/642 and cs/249 on main (job #953)
+
+Both branches passed the red-team lane's Opus review (each test fails on its parent). Landed unchanged by cherry-pick onto current main; five test files green (29 tests). **Decision (better × simpler × cheaper):** (1) course finalisation and v2 decompose finalise delete only the draft rows (seed_number + updated_at) they read, so a parallel builder's concurrent save is no longer wiped; unversioned legacy rows are kept. (2) Builder `/agents` host-wide controls need admin, and kill targets must be positive safe integers that are tracked and running (module is currently off, so defensive).
+
 ## 2026-10-15 — Phrase v4 per LEGO is the builders' default; lego.insert/lego.delete; voice-gap-fill through doors (job #544)
 
 **Rulings:** r-2026-10-14-phrase-v4-is-the-phrase-builder; r-2026-10-14-kai-is-team-his-agents-get. Kai asked for lego.insert/delete.

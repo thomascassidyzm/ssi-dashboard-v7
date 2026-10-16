@@ -18,6 +18,7 @@ Type=simple
 # watson-1 homedir/OAuth auth fix, which had already landed on main — so the
 # clean tree carries it too and the cutover loses no behaviour.
 WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod
+Environment=PGAPPNAME=popty-course-builder
 Environment=NODE_OPTIONS=--max-old-space-size=4096
 # THE ROUND MAP NEEDS THE DATABASE SECRET (2026-09-20).
 # content-edit-gate asks round-index-refresh.cjs to REFRESH MATERIALIZED VIEW

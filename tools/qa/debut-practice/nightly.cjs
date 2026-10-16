@@ -42,16 +42,24 @@ function dbUrl() {
   return m ? m[1].trim().replace(/^["']|["']$/g, '') : null;
 }
 
+/** One short call per course instead of one whole-estate call that ran 65s and tripped the DB watchdog
+ *  (job #123). Same rule, same rows: debut_practice_gaps() already takes a course list. */
 async function readGaps() {
   const { Client } = require('pg');
-  const c = new Client({ connectionString: dbUrl() });
+  const c = new Client({ connectionString: dbUrl(), application_name: 'qa:debut-practice' });
   await c.connect();
   try {
-    await c.query("SET statement_timeout = '10min'");
-    const { rows } = await c.query(
-      `SELECT g.course_code, g.lego_id, g.known_text, g.target_text
-         FROM debut_practice_gaps(ARRAY(SELECT course_code FROM courses WHERE status::text = ANY ($1))) g`, [LEARNER_FACING]);
-    return rows.filter((g) => !isWelsh(g.course_code));
+    await c.query("SET statement_timeout = '5min'");
+    const { rows: courses } = await c.query(
+      'SELECT course_code FROM courses WHERE status::text = ANY ($1) ORDER BY course_code', [LEARNER_FACING]);
+    const gaps = [];
+    for (const { course_code } of courses) {
+      if (isWelsh(course_code)) continue;
+      const { rows } = await c.query(
+        'SELECT g.course_code, g.lego_id, g.known_text, g.target_text FROM debut_practice_gaps(ARRAY[$1::text]) g', [course_code]);
+      gaps.push(...rows);
+    }
+    return gaps;
   } finally { await c.end().catch(() => {}); }
 }
 

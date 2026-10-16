@@ -124,3 +124,56 @@ describe('a batch recorded but still uploading', () => {
     expect(w.find('[data-test="batch-uploading"]').exists()).toBe(false)
   })
 })
+
+// Aran, 2026-10-16 (job #203): phrase.1 batch 2 finished with 45 still uploading and the only way on
+// was Home. Practice phrases now get Next batch → too, Home stays as the second button, and with
+// nothing left anywhere the screen says so and offers Home only.
+describe('the finished screen: Next batch → in Up next order', () => {
+  beforeEach(() => { savedTakes.clear(); failedTakes.clear(); unsent.clear(); window.history.pushState({}, '', '/') })
+  const phraseTrack = (batches) => ({
+    key: 'phrase.1', kind: 'phrase', pass: 1, courseCode: 'cym_nv2_for_eng', title: 'Practice phrases',
+    total: batches.length * 4, recorded: 0,
+    batches: batches.map((b, i) => ({ n: i + 1, total: 4, ...b })),
+  })
+  const openAt = async (tracks, address) => {
+    const lines = LINES.map(l => ({ ...l, recorded: false }))
+    LINES.forEach(l => unsent.add(l.id))
+    global.fetch = vi.fn().mockImplementation(async (url) => ({
+      ok: true, status: 200,
+      json: async () => String(url).includes('/summary')
+        ? { home: true, displayName: 'Aran', languageName: 'Welsh', tracks }
+        : { displayName: 'Aran', languageName: 'Welsh', total: 4, recorded: 0, remaining: 4, lines },
+    }))
+    window.history.pushState({}, '', address)
+    const w = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
+    await flushPromises()
+    return w
+  }
+
+  it('phrase.1 batch 2 done → Next batch opens phrase.1 batch 3; Home is there as well; uploads untouched', async () => {
+    const w = await openAt([phraseTrack([{ recorded: 4 }, { recorded: 0, current: true }, { recorded: 0 }])], '/?track=phrase.1&batch=2')
+    expect(w.text()).toContain('Everything is recorded')
+    expect(w.find('[data-test="batch-uploading"]').text()).toMatch(/4 still uploading/)
+    expect(w.find('[data-test="home-link"]').exists()).toBe(true)
+    await w.find('[data-test="next-batch"]').trigger('click')
+    expect(window.location.search).toContain('track=phrase.1')
+    expect(window.location.search).toContain('batch=3')
+    expect(unsent.size).toBe(4)
+  })
+
+  it('last batch of the sentences → crosses to the practice phrases', async () => {
+    const seeds = { ...track(2), batches: [{ n: 1, total: 4, recorded: 4 }, { n: 2, total: 4, recorded: 0 }] }
+    const w = await openAt([seeds, phraseTrack([{ recorded: 0, current: true }])], '/?track=seed.cym_nv2_for_eng&batch=2')
+    await w.find('[data-test="next-batch"]').trigger('click')
+    expect(window.location.search).toContain('track=phrase.1')
+    expect(window.location.search).toContain('batch=1')
+  })
+
+  it('nothing left anywhere: says so, Home only', async () => {
+    const w = await openAt([phraseTrack([{ recorded: 4 }, { recorded: 0 }])], '/?track=phrase.1&batch=2')
+    expect(w.find('[data-test="next-batch"]').exists()).toBe(false)
+    expect(w.find('[data-test="home-link"]').exists()).toBe(false)
+    expect(w.find('[data-test="all-batches-done"]').text()).toMatch(/Nothing left to record anywhere/)
+    expect(w.find('[data-test="back-home"]').exists()).toBe(true)
+  })
+})

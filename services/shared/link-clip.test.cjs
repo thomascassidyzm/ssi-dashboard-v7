@@ -17,11 +17,12 @@ function fakeDb(tables, { raceOn = null, beforeWrite = null } = {}) {
     from(table) {
       const filters = []
       let patch = null
-      const rows = () => (tables[table] || []).filter((r) => filters.every(([k, v]) => (v === null ? r[k] == null : String(r[k]) === String(v))))
+      const rows = () => (tables[table] || []).filter((r) => filters.every(([k, v]) => (v === null ? r[k] == null : Array.isArray(r[k]) ? `{${r[k].map((x) => (x == null ? 'NULL' : x)).join(',')}}` === v : String(r[k]) === String(v))))
       const b = {
         select() { if (patch) return Promise.resolve(apply()); return b },
         eq(k, v) { filters.push([k, v]); return b },
         is(k, v) { filters.push([k, v]); return b },
+        filter(k, op, v) { filters.push([k, v]); return b },
         update(p) { patch = p; return b },
         maybeSingle() { return Promise.resolve({ data: rows()[0] || null, error: null }) },
       }
@@ -162,5 +163,49 @@ describe('pod sentences and solo readers (job #391)', () => {
     expect(t.listening_pods[0].metadata).toEqual({ job: '867', solo_readers: [] })
     expect((await setSoloReaders({ db, courseCode: 'cym_n_for_eng', podId: 'cym_s_for_eng:guess-i-love-you', soloReaders: [] })).code).toBe('NO_POD')
     expect((await setSoloReaders({ db, courseCode: 'cym_s_for_eng', podId: 'guess-i-love-you', soloReaders: 'x' })).code).toBe('BAD_READERS')
+  })
+})
+
+// Job #864 (por_for_eng Pod 1 re-voice): a pod line's per-sentence clips (sentence_audio_ids, takeg_audio_ids) are
+// arrays the player plays; a re-voice replaces an element, keeps every position, and the new clip says the old clip's words.
+describe('pod sentence segment arrays (job #864)', () => {
+  const O1 = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', O2 = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'
+  const N1 = 'cccccccc-cccc-4ccc-8ccc-cccccccccccc', N2 = 'dddddddd-dddd-4ddd-8ddd-dddddddddddd'
+  const T0 = 'eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee', T1 = 'ffffffff-ffff-4fff-8fff-ffffffffffff'
+  const podWorld = () => ({
+    listening_pods: [{ id: 'por_for_eng:pod-1', course_code: 'por_for_eng' }],
+    listening_pod_sentences: [{ id: 'por_for_eng:pod-1:7', pod_id: 'por_for_eng:pod-1', target_text: 'Bom dia, Sarah! Tudo bem?', target_text_draft: false,
+      target_audio_id: T0, sentence_audio_ids: [O1, O2], takeg_audio_ids: [O1, null] }],
+    course_audio: [
+      { id: O1, text: 'Bom dia, Sarah!', voice_id: 'rex' }, { id: O2, text: 'Tudo bem?', voice_id: 'rex' },
+      { id: N1, text: 'Bom dia, Sarah!', voice_id: 'cartesia_m' }, { id: N2, text: 'Tudo bem?', voice_id: 'cartesia_m' },
+      // the line's own clip is rendered from a paced form of its words
+      { id: T0, text: 'Bom dia, Sarah! … Tudo bem?', voice_id: 'rex' }, { id: T1, text: 'Bom dia, Sarah! … Tudo bem?', voice_id: 'cartesia_m' },
+    ],
+  })
+  const id = 'por_for_eng:pod-1:7'
+  it('replaces two segments of one line in one request, positions kept, one bump', async () => {
+    const t = podWorld(); const db = fakeDb(t); bumps.length = 0
+    const out = await linkClips({ db, courseCode: 'por_for_eng', bump, links: [
+      { podSentenceId: id, role: 'segment', audioId: N1, replace: true, expectCurrent: O1 },
+      { podSentenceId: id, role: 'segment', audioId: N2, replace: true, expectCurrent: O2 },
+      { podSentenceId: id, role: 'takeg', audioId: N1, replace: true, expectCurrent: O1 },
+      { podSentenceId: id, role: 'target', audioId: T1, replace: true, expectCurrent: T0 },
+    ] })
+    expect(out.linked).toBe(4)
+    expect(t.listening_pod_sentences[0].sentence_audio_ids).toEqual([N1, N2])
+    expect(t.listening_pod_sentences[0].takeg_audio_ids).toEqual([N1, null])
+    expect(t.listening_pod_sentences[0].target_audio_id).toBe(T1)
+    expect(bumps).toEqual([['por_for_eng', 'patch']])
+  })
+  it('refuses other words, a fill, and an element the line does not hold', async () => {
+    const t = podWorld(); const db = fakeDb(t)
+    const out = await linkClips({ db, courseCode: 'por_for_eng', bump, links: [
+      { podSentenceId: id, role: 'segment', audioId: N2, replace: true, expectCurrent: O1 },
+      { podSentenceId: id, role: 'segment', audioId: N1 },
+      { podSentenceId: id, role: 'takeg', audioId: N2, replace: true, expectCurrent: O2 },
+    ] })
+    expect(out.results.map((r) => r.code)).toEqual(['TEXT_MISMATCH', 'REPLACE_ONLY', 'NOT_HELD'])
+    expect(t.listening_pod_sentences[0].sentence_audio_ids).toEqual([O1, O2])
   })
 })

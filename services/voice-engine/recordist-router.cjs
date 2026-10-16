@@ -70,6 +70,7 @@ const { invalidateArtistSummaries } = require('./booth-artists-summary-cache.cjs
 const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const boothHome = require('./booth-home.cjs')
+const boothNextPod = require('./booth-next-pod.cjs')
 const boothRerecord = require('./booth-rerecord.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
 const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
@@ -712,6 +713,23 @@ module.exports = function createRecordistRouter({
       const recordedInScope = narrowed ? lines.filter((l) => l.recorded).length : queue.recorded
       const totalInScope = narrowed ? lines.length : queue.total
       const setupRow = await loadSetupRow(recordist.voiceId)
+      // WHERE A FINISHED POD LINK GOES NEXT (Kai, 2026-10-16, job #189): the next pod in queue
+      // order where this voice still has lines owed, skipping staged-draft and archived pods
+      // (booth-next-pod.cjs says why held pods are NOT skipped). Only on a pod link, reading only
+      // the candidate pods' metadata. A failed read offers no next pod; it never fails the booth.
+      let podsDone = null
+      if (podScope && !trackScope) {
+        try {
+          const owed = [...new Set((queue.lines || []).filter((l) => l.podId && !l.recorded).map((l) => l.podId))]
+          const { data: podRows, error: podErr } = owed.length
+            ? await db().from('listening_pods').select('id, metadata').in('id', owed)
+            : { data: [], error: null }
+          if (podErr) throw podErr
+          podsDone = boothNextPod.nextPodFor(queue.lines, podScope, new Map((podRows || []).map((p) => [p.id, p])))
+        } catch (err) {
+          logger.warn(`[booth] next pod not worked out for ${recordist.voiceId}: ${err.message}`)
+        }
+      }
       res.json({
         // Present while the full script is locked behind the setup check; the
         // booth swaps Start for a card that opens it. Absent once approved.
@@ -722,6 +740,9 @@ module.exports = function createRecordistRouter({
         // Echoed back for the same reason maxSeed is: a screen that reports the
         // scope it ASKED for rather than the one it got is a quiet lie.
         pod: podScope,
+        // {nextPod: {courseCode, podSlug, podTitle, remaining} | null, remainingOutsidePods}, or
+        // null when this is not a pod link or it could not be worked out (job #189).
+        podsDone,
         track: trackScope,
         batch: trackScope ? (parseInt(req.query.batch, 10) || 1) : null,
         voiceId: recordist.voiceId,

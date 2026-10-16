@@ -69,7 +69,7 @@ function collisionSQL({ table, groupCols, discriminator, fields, alsoGroupBy = [
       select 1 from ${q(table)} where ${filter} group by ${cols} having count(*) > 1) c`;
   }
   return `
-    select ${cols}, count(*)::int as siblings, ${idAgg} as ids,
+    select ${cols}, count(*)::int as siblings, count(*) over ()::int as total_groups, ${idAgg} as ids,
            array_agg(${q(discriminator)}::text order by ${q(discriminator)}) as variants
     from ${q(table)}
     where ${filter}
@@ -93,8 +93,10 @@ async function runAssertion(client, cand, fields) {
   const pk = await pkColumn(client, cand.table);
   const spec = { ...cand, fields, pk };
   const counts = (await client.query(siblingGroupSQL(spec))).rows[0];
-  const total = (await client.query(collisionSQL(spec, { count: true }))).rows[0].collisions;
+  // ONE grouped scan serves both the examples and the total: the separate count(*)
+  // pass re-ran the whole text group-by (65s on course_practice_phrases, 2026-10-16).
   const { rows } = await client.query(collisionSQL(spec, { limit: 40 }));
+  const total = rows.length ? rows[0].total_groups : 0;
   return {
     table: cand.table,
     key: cand.key,
@@ -143,7 +145,7 @@ function calibrated(results) {
 async function main(argv = process.argv) {
   const quiet = argv.includes('--quiet');
   const jsonAt = argv.includes('--json') ? argv[argv.indexOf('--json') + 1] : null;
-  const client = new Client({ connectionString: process.env.DATABASE_URL });
+  const client = new Client({ connectionString: process.env.DATABASE_URL, application_name: 'qa:sibling-identity', statement_timeout: 15 * 60 * 1000 });
   await client.connect();
   try {
     const candidates = (await derive(client)).map((c) => ({ ...c, ...classify(c) }));

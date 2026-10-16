@@ -1814,6 +1814,12 @@ async function requireProxyCourseAccess(req, res, next) {
 
     const courseCodes = extractProxyCourseCodes(req)
     if (courseCodes === null) return res.status(400).json({ error: 'Invalid path' })
+    // Agent PIDs refer to host-wide processes, not to a course named by the
+    // caller. A body/query course must never grant access to these controls.
+    if (/^\/(?:api\/)?agents(?:\/|$)/i.test(req.path || '') &&
+        user.role !== 'admin' && !user.ssiAdmin) {
+      return res.status(403).json({ error: 'Administrator access required for agent controls' })
+    }
     const denied = (user.role === 'admin' || user.ssiAdmin) ? undefined : courseCodes.find(code => !userCanAccessCourse(user, code))
     if (denied) {
       logger.warn(`[ProxyScope] DENY ${user.email || 'unknown'} → ${denied} (${req.method} ${req.path})`)
@@ -3924,7 +3930,8 @@ app.delete('/api/production/:courseCode/phrases/:phraseId', async (req, res) => 
 // Point seed / LEGO / phrase audio slots at clips that already exist (job #388). Fill-only unless
 // replace:true + expectCurrent; text must match; never deletes a clip. Rules: services/shared/link-clip.cjs.
 // Body: { links: [{ seedNumber | legoId | phraseId | podSentenceId, role, audioId, replace?, expectCurrent?, allowDraft? }], dryRun? }
-// A pod sentence takes role 'target' or 'known' (job #391).
+// A pod sentence takes role 'target' or 'known' (job #391), or 'segment' / 'takeg' to replace one clip of its
+// sentence_audio_ids / takeg_audio_ids arrays (job #864, replace-only).
 app.post('/api/production/:courseCode/link-clip', async (req, res) => {
   if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
   try {
@@ -14137,7 +14144,7 @@ httpServer.listen(PORT, HOST, () => {
   // Booth script checks a restart interrupted (job #842): kill the decoders the old process
   // left running (KillMode=process leaves them holding whisper slots), then re-queue the checks.
   try {
-    takeTextCheck.reapOrphanedDecoders({ logger })
+    if (textChecks.enabled) takeTextCheck.reapOrphanedDecoders({ logger })
     textChecks.recover()
   } catch (e) {
     logger.error(`[TextCheck] boot recovery failed: ${e.message}`)

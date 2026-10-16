@@ -19,6 +19,7 @@ Group=tomcassidy
 UMask=0002
 Environment=HOME=/home/tomcassidy
 EnvironmentFile=/etc/popty/popty.env
+Environment=PGAPPNAME=popty-course-builder
 Environment=ROUND_INDEX_ENV_PSQL=/etc/popty/owner.env
 # The course builder's claude CLI: its own config dir, the account-3 token symlinked in.
 Environment=SSI_CLAUDE_CONFIG_DIR=/var/lib/popty/claude

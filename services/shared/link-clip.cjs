@@ -27,7 +27,13 @@ const ROLES = ['known', 'target1', 'target2', 'presentation']
 // listening_pod_sentences.target_audio_id / known_audio_id; the sentence must belong to a pod of
 // this course, and a line whose target text is still a DRAFT refuses a target clip unless
 // allowDraft:true — pod audio is never attached to text nobody has read (A-109).
-const POD_ROLES = ['target', 'known']
+const POD_ROLES = ['target', 'known', 'segment', 'takeg']
+// A pod line's per-sentence clips are ORDERED ARRAYS, not slots (the player plays them when present: learning app
+// podSentenceSplit.ts): sentence_audio_ids ('segment') and takeg_audio_ids ('takeg'). Job #864 (por_for_eng Pod 1 re-voice):
+// an array element is only ever REPLACED, never filled — the link names the element it replaces (replace:true + expectCurrent),
+// and the new clip must say exactly the words of the clip it replaces (a segment's words are one sentence of the line, so the
+// line's text cannot be the check). Every position holding expectCurrent moves; the write is conditional on the whole array.
+const POD_ARRAY_COL = { segment: 'sentence_audio_ids', takeg: 'takeg_audio_ids' }
 const TABLE = { seed: 'course_seeds', lego: 'course_legos', phrase: 'course_practice_phrases', pod_sentence: 'listening_pod_sentences' }
 // course_seeds has no presentation slot; a pod sentence has one target and one known slot.
 const HAS_ROLE = (kind, role) => kind === 'pod_sentence'
@@ -57,7 +63,8 @@ async function linkOne(db, courseCode, link, { dryRun }) {
   if (!UUID.test(String(link.audioId || ''))) return { ...base, ok: false, code: 'BAD_AUDIO_ID', error: 'audioId must be a course_audio uuid' }
 
   const table = TABLE[slot.kind]
-  const col = `${link.role}_audio_id`
+  const arrayCol = slot.kind === 'pod_sentence' ? POD_ARRAY_COL[link.role] : null
+  const col = arrayCol || `${link.role}_audio_id`
   let q = slot.kind === 'pod_sentence'
     ? db.from(table).select(`id, pod_id, known_text, target_text, target_text_draft, ${col}`)
     : db.from(table).select(`id, known_text, target_text, ${col}`).eq('course_code', courseCode)
@@ -72,7 +79,7 @@ async function linkOne(db, courseCode, link, { dryRun }) {
     const { data: pod, error: podErr } = await db.from('listening_pods').select('id, course_code').eq('id', row.pod_id).maybeSingle()
     if (podErr) return { ...base, ok: false, code: 'READ_FAILED', error: podErr.message }
     if (!pod || pod.course_code !== courseCode) return { ...base, ok: false, code: 'NO_SLOT', error: `${courseCode} has no pod sentence ${slot.label}` }
-    if (link.role === 'target' && row.target_text_draft && link.allowDraft !== true) {
+    if (link.role !== 'known' && row.target_text_draft && link.allowDraft !== true) {
       return { ...base, ok: false, code: 'DRAFT_TEXT', error: `${slot.label} is still a draft; approve its text first, or send allowDraft:true` }
     }
   }
@@ -80,10 +87,18 @@ async function linkOne(db, courseCode, link, { dryRun }) {
   const { data: clip, error: clipErr } = await db.from('course_audio').select('id, text, voice_id').eq('id', link.audioId).maybeSingle()
   if (clipErr) return { ...base, ok: false, code: 'READ_FAILED', error: clipErr.message }
   if (!clip) return { ...base, ok: false, code: 'NO_CLIP', error: `no course_audio row ${link.audioId}` }
+  if (arrayCol) return arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
   if (link.role !== 'presentation') {
     const want = link.role === 'known' ? row.known_text : row.target_text
     if (normalizeForDb(String(clip.text || '')) !== normalizeForDb(String(want || ''))) {
-      return { ...base, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", slot says "${want}"` }
+      // A pod line's clip is often rendered from a paced form of its words ("Boa tarde. … O que vai ser?" for "Boa tarde. O que
+      // vai ser?", por_for_eng Pod 1, job #864). Re-voicing that clip is legal when the new clip says exactly what the clip it
+      // replaces says: replace:true + expectCurrent naming the clip the line holds now.
+      const revoice = slot.kind === 'pod_sentence' && link.replace === true && link.expectCurrent != null && String(link.expectCurrent) === String(row[col])
+      const { data: was } = revoice ? await db.from('course_audio').select('id, text').eq('id', String(link.expectCurrent)).maybeSingle() : { data: null }
+      if (!was || normalizeForDb(String(was.text || '')) !== normalizeForDb(String(clip.text || ''))) {
+        return { ...base, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", slot says "${want}"` }
+      }
     }
   }
 
@@ -102,6 +117,28 @@ async function linkOne(db, courseCode, link, { dryRun }) {
   if (slot.kind === 'pod_sentence' && link.role === 'target') guards.push(['target_text_draft', row.target_text_draft ?? null])
   return { ...out, ok: true, changed: true, rowId: row.id, table, col, kind: slot.kind, guards }
 }
+
+async function arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table }) {
+  // an array may hold empty positions (null): they stay null — String(null) is "null", which is no uuid (por_for_eng take-G)
+  const arr = Array.isArray(row[arrayCol]) ? row[arrayCol].map((x) => (x == null ? null : String(x))) : []
+  const old = link.expectCurrent == null ? null : String(link.expectCurrent)
+  const out = { ...base, before: old, voiceId: clip.voice_id }
+  if (link.replace !== true || !old) return { ...out, ok: false, code: 'REPLACE_ONLY', error: `${link.role} clips are replaced, never filled: send replace:true with expectCurrent (the clip being replaced)` }
+  if (!arr.includes(old)) {
+    if (arr.includes(String(link.audioId))) return { ...out, ok: true, changed: false }
+    return { ...out, ok: false, code: 'NOT_HELD', error: `${base.slot} ${arrayCol} does not hold ${old}` }
+  }
+  const { data: was, error: wasErr } = await db.from('course_audio').select('id, text').eq('id', old).maybeSingle()
+  if (wasErr) return { ...out, ok: false, code: 'READ_FAILED', error: wasErr.message }
+  if (!was || normalizeForDb(String(was.text || '')) !== normalizeForDb(String(clip.text || ''))) {
+    return { ...out, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", the clip it replaces says "${was ? was.text : '(missing)'}"` }
+  }
+  if (dryRun) return { ...out, ok: true, changed: true, dryRun: true }
+  const guards = [['target_text', row.target_text ?? null], ['target_text_draft', row.target_text_draft ?? null]]
+  return { ...out, ok: true, changed: true, rowId: row.id, table, col: arrayCol, kind: 'pod_sentence', guards, arrayBefore: arr }
+}
+
+const pgArray = (a) => `{${a.map((x) => (x == null ? 'NULL' : x)).join(',')}}`
 
 /**
  * links: [{ seedNumber | legoId | phraseId, role, audioId, replace?, expectCurrent? }]
@@ -127,21 +164,30 @@ async function linkClips({ db, courseCode, links, dryRun = false, recordEdit = n
   }) : null
 
   let linked = 0
+  const arrays = new Map() // `${rowId}|${col}` -> the array as this request last wrote it, so two links on one line compose
   for (const r of toWrite) {
-    const set = { [r.col]: r.audioId }
-    if (eventId && STAMPS_EVENT[r.kind]) set.last_edit_event_id = eventId
-    let u = db.from(r.table).update(set).eq('id', r.rowId)
-    u = r.before == null ? u.is(r.col, null) : u.eq(r.col, r.before)
+    let u
+    if (r.arrayBefore) {
+      const from = arrays.get(`${r.rowId}|${r.col}`) || r.arrayBefore
+      if (!from.includes(r.before)) { Object.assign(r, { ok: false, code: 'NOT_HELD', error: `${r.slot} ${r.col} no longer holds ${r.before}` }); continue }
+      r.arrayNext = from.map((x) => (x === r.before ? String(r.audioId) : x))
+      u = db.from(r.table).update({ [r.col]: r.arrayNext }).eq('id', r.rowId).filter(r.col, 'eq', pgArray(from))
+    } else {
+      const set = { [r.col]: r.audioId }
+      if (eventId && STAMPS_EVENT[r.kind]) set.last_edit_event_id = eventId
+      u = db.from(r.table).update(set).eq('id', r.rowId)
+      u = r.before == null ? u.is(r.col, null) : u.eq(r.col, r.before)
+    }
     for (const [c, v] of r.guards || []) u = v == null ? u.is(c, null) : u.eq(c, v)
     const { data, error } = await u.select('id')
     if (error) Object.assign(r, { ok: false, code: 'WRITE_FAILED', error: error.message })
     else if (!data || !data.length) Object.assign(r, { ok: false, code: 'RACE', error: 'the slot or its words changed between read and write; nothing written' })
-    else linked++
+    else { linked++; if (r.arrayNext) arrays.set(`${r.rowId}|${r.col}`, r.arrayNext) }
   }
   const contentVersion = linked ? await bump(db, courseCode, 'patch') : null
   return { ok: results.every((r) => r.ok), dryRun, eventId, contentVersion, linked, results: results.map(strip) }
 }
 
-const strip = ({ rowId, table, col, kind, guards, ...r }) => r
+const strip = ({ rowId, table, col, kind, guards, arrayBefore, arrayNext, ...r }) => r
 
 module.exports = { linkClips, slotOf }
