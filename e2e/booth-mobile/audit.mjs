@@ -242,7 +242,9 @@ const stressTabs = () => ({ tabs: [
   { voiceId: 'human_tom_zzz_c', displayName: 'Tom', language: 'eng', languageName: 'English', dialect: 'standard', boothKey: null },
 ] })
 const stressRerecord = (q) => ({ voiceId: VOICE, fresh: true, total: 3, recordedAlso: [], goneAlso: [], items: q.lines.slice(0, 3).map((l, i) => ({
-  lineId: l.id, text: i === 1 ? LONG_CY[1] : LONG_CY[0], reason: i === 0 ? 'skipped' : 'text-changed', oldText: i === 0 ? null : 'Bore da.', track: 'pod.pod-1', batch: 1 })) })
+  // The longest reasons the card writes (job #261): a skip with its batch, a text change with who and when.
+  lineId: l.id, text: i === 1 ? LONG_CY[1] : LONG_CY[0], why: i === 0 ? 'skipped' : 'text_changed', oldText: i === 0 ? null : 'Bore da.',
+  changedBy: i === 2 ? 'Catrin Lliar-Jones (proof reviewer)' : null, changedAt: i === 2 ? '2026-10-16T09:00:00Z' : null, recordedAt: '2026-10-15T14:43:21Z', track: 'pod.pod-1', batch: 1 })) })
 
 async function scenarioReal(browser, engine, size) {
   const { ctx, page, blocked } = await newPage(browser, engine, size)

@@ -217,8 +217,23 @@ async function fileScriptTake({ supabase, courseCode, plan, s3Key, durationMs = 
   }
 }
 
+/**
+ * A take whose bytes landed but whose course_audio row did not, because the database refused or
+ * timed out (write_failed). The booth must NOT be told this take saved: the phone deletes a take
+ * it is told saved, the line stays unrecorded, and the Re-record card later lists it as a line
+ * he "skipped" — one he read and has no memory of missing (Aran, 2026-10-16 job #261: S1148L01B04
+ * and S1152L01B04, both lost to "canceling statement due to statement timeout" at inFlight=2).
+ * The booth routes answer 503 instead, so the phone keeps the take and sends it again by itself.
+ * The deliberate reasons (a slow read) and the misconfiguration reasons (no voice on the slot)
+ * are not a busy database, and resending would not change them.
+ */
+function isRetryableFilingFailure(filing) {
+  return !!(filing && filing.filed === false && filing.reason === 'write_failed')
+}
+
 module.exports = {
   FILING_REASONS,
+  isRetryableFilingFailure,
   planScriptTakeFiling,
   fileScriptTake,
 }

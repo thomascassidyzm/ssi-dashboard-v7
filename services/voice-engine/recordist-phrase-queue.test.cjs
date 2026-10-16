@@ -251,7 +251,7 @@ test('a phrase take fills EMPTY copies only — a slot that gained a clip is nev
   assert.equal(t.course_practice_phrases.find((p) => p.id === `${N}:S1001L01B05`).target1_audio_id, 'catrin_new')
 })
 
-async function take(voiceId, lineId, tables) {
+async function take(voiceId, lineId, tables, filing = null) {
   const uploads = []
   const router = createRecordistRouter({
     getDb: () => stubDb(tables),
@@ -259,7 +259,7 @@ async function take(voiceId, lineId, tables) {
     s3: {},
     handleRecordingUpload: async (innerReq, innerRes) => {
       uploads.push({ voiceId: innerReq.recordistVoiceId, courseCode: innerReq.params.courseCode, role: innerReq.body.metadata.role, phraseId: innerReq.body.metadata.phraseId })
-      innerRes.json({ success: true, s3Key: 'mastered/x.mp3', rawKey: 'raw/x', filing: null })
+      innerRes.json({ success: true, s3Key: 'mastered/x.mp3', rawKey: 'raw/x', filing })
     },
   })
   const layer = router.stack.find((l) => l.route && l.route.path === '/voice/:voiceId/take' && l.route.methods.post)
@@ -289,6 +289,22 @@ test('the take route: a cast reader records a sandbox phrase; a live phrase and 
   const eng = await take(ARAN_ENG, `phrase:${S}:S1001L01B01:known`, fixture())
   assert.equal(eng.status, undefined, `expected 200, got ${eng.status} ${JSON.stringify(eng.body)}`)
   for (const r of [live, wrong]) assert.deepEqual(r.uploads, [])
+})
+
+// Job #261 (Aran, 2026-10-16): two of his phrase takes landed in S3 but the course_audio upsert
+// timed out ("write_failed"); the route said 200, the phone deleted them, and the lines came back on
+// the Re-record card as "skipped" — lines he had read. An unfiled take is answered 503, which the
+// phone treats as transient: it keeps the take and sends it again.
+test('the take route: a take the database did not file is a 503 the phone retries, never a 200', async () => {
+  const unfiled = { filed: false, courseAudioId: null, reason: 'write_failed', deliberate: false, message: 'canceling statement due to statement timeout' }
+  const r = await take(CATRIN, `phrase:${N}:S1001L01B03:target1`, fixture(), unfiled)
+  assert.equal(r.status, 503, `expected 503, got ${r.status} ${JSON.stringify(r.body)}`)
+  assert.equal(r.body.retryable, true)
+  assert.equal(r.body.reason, 'take_not_filed')
+  assert.ok(!r.body.ok)
+  // A deliberate non-filing (the slow read) is still a 200: resending would not change it.
+  const slow = await take(CATRIN, `phrase:${N}:S1001L01B03:target1`, fixture(), { filed: false, courseAudioId: null, reason: 'slow_cadence', deliberate: true })
+  assert.equal(slow.status, undefined)
 })
 
 // ── TASK B: a live English prompt held only by synthetic speech ─────────────

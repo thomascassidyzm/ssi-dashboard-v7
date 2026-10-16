@@ -64,6 +64,28 @@ describe('text changed after he recorded it', () => {
     expect(changed).toMatchObject({ why: 'text_changed', oldText: "dw i 'di bod yn brysur iawn", text: 'dw i wedi bod yn brysur iawn' })
   })
 
+  // Job #261, Aran's live card on 16 Oct: the S1379 seed was edited Affrica → Affrig and he read it
+  // again; the old take stayed an orphan and was pinned on an unread phrase of the same seed.
+  it('an orphan take of a line that was edited AND read again is not put on an unread neighbour', () => {
+    const ph = (id, recorded, text) => ({ id: `phrase:${C}:${id}:target2`, kind: 'phrase', phrasePass: 1, phraseBatch: 16, courseCode: C, seedNumber: 1379, role: 'target2', text, recorded })
+    const lines = [
+      { id: 'seed:406880b4:target2', kind: 'seed', courseCode: C, seedNumber: 1379, role: 'target2', text: 'do, o’n i’n ddigon lwcus i deithio i’r Affrig', recorded: true },
+      ph('S1379L01B02', true, 'ond o’n i’n ddigon lwcus'),
+      ph('S1379L01B04', false, 'llynedd o’n i’n ddigon lwcus'),
+    ]
+    const takes = [{ id: 'old', course_code: C, role: 'target2', text: 'do, o’n i’n ddigon lwcus i deithio i Affrica', text_normalized: 'do, o’n i’n ddigon lwcus i deithio i affrica', seedNumber: 1379, created_at: '2026-10-15T14:43:21Z' }]
+    const q = queueOf([lines[0]], { allPhraseLines: () => lines.slice(1), phraseBatches: [{ pass: 1, batch: 16, courseCode: C }] })
+    expect(buildRerecordList(q, takes).items.filter((i) => i.why === 'text_changed')).toEqual([])
+  })
+
+  it('an edited line nobody has re-read still gets its old take, even beside a recorded line as alike', () => {
+    const ph = (id, recorded, text) => ({ id: `phrase:${C}:${id}:target1`, kind: 'phrase', phrasePass: 1, phraseBatch: 1, courseCode: C, seedNumber: 7, role: 'target1', text, recorded })
+    const lines = [ph('a', true, 'dw i eisiau mynd heddiw'), ph('b', false, 'dw i eisiau mynd adre')]
+    const takes = [{ id: 't', course_code: C, role: 'target1', text: 'dw i eisiau mynd', text_normalized: 'dw i eisiau mynd', seedNumber: 7 }]
+    const { items } = buildRerecordList(queueOf([], { allPhraseLines: () => lines, phraseBatches: [{ pass: 1, batch: 1, courseCode: C }] }), takes)
+    expect(items).toMatchObject([{ lineId: `phrase:${C}:b:target1`, why: 'text_changed', oldText: 'dw i eisiau mynd' }])
+  })
+
   it('does not hand a neighbour phrase an old take without a seed to agree on', () => {
     const lines = [{ id: 'phrase:x:target1', kind: 'phrase', courseCode: C, role: 'target1', text: 'dw i eisiau bwyta', recorded: false }]
     const takes = [{ id: 't', course_code: C, role: 'target1', text: 'dw i eisiau mynd', text_normalized: 'dw i eisiau mynd' }]
@@ -130,5 +152,24 @@ describe("didn't match the words", () => {
   it('a failure for a line no longer in his lines is dropped', () => {
     const list = rr.withTextCheckFailures(buildRerecordList(queueOf([...lead])), [failure(9999)])
     expect(list.items).toEqual([])
+  })
+})
+
+// Job #261: a text change says who made it and when, from the row's last_edit_event_id.
+describe('who changed the words', () => {
+  it('finds the content row a line lives in', () => {
+    expect(rr.editRowOf(`phrase:${C}:S1379L01B04:target2`)).toEqual({ table: 'course_practice_phrases', id: `${C}:S1379L01B04` })
+    expect(rr.editRowOf('seed:406880b4-197c-400b-9c6a-d7faf0917ff8:target2')).toEqual({ table: 'course_seeds', id: '406880b4-197c-400b-9c6a-d7faf0917ff8' })
+    expect(rr.editRowOf('lego:df926d18:target1')).toEqual({ table: 'course_legos', id: 'df926d18' })
+    expect(rr.editRowOf('pod:abc:s1')).toBe(null)
+  })
+  it('puts the editor on text changes only, and leaves an unattributed row unattributed', () => {
+    const list = { items: [{ lineId: 'a', why: 'text_changed' }, { lineId: 'b', why: 'skipped' }, { lineId: 'c', why: 'text_changed' }] }
+    const out = rr.withEditors(list, new Map([['a', { by: 'Kai', at: '2026-10-15T09:00:00Z' }], ['b', { by: 'X', at: 'y' }]]))
+    expect(out.items).toEqual([
+      { lineId: 'a', why: 'text_changed', changedBy: 'Kai', changedAt: '2026-10-15T09:00:00Z' },
+      { lineId: 'b', why: 'skipped' },
+      { lineId: 'c', why: 'text_changed' },
+    ])
   })
 })
