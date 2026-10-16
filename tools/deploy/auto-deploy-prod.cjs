@@ -34,7 +34,7 @@ const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const PROD_DIR = '/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod';
+const PROD_DIR = process.env.AUTO_DEPLOY_PROD_DIR || '/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod';
 const UNITS = ['popty-production-api', 'popty-course-builder-api', 'popty-phase8-audio'];
 const SURFACE = process.env.CS_SURFACE || 'http://localhost:4317';
 const CHANNEL_CWD = '/home/tomcassidy/SSi/ssi-dashboard-v7-clean';
@@ -58,6 +58,51 @@ const FAILED_MARK = process.env.AUTO_DEPLOY_FAILED_MARK || '/home/tomcassidy/.lo
  * checkout, a systemd user session, or a network call.
  */
 
+/*
+ * Restart only when the deploy can change what the running servers do (Tom,
+ * job #255, after #244: 19 restarts in a day, 5 with no server code changed,
+ * each one breaking live proofreader sessions). The rule is an ALLOWLIST OF
+ * PATHS THAT CANNOT AFFECT A SERVER — everything else restarts, so an unknown
+ * path errs toward restarting. Deliberately NOT static, because services read
+ * them at or after boot: services/, tools/ (except one-off tools/course-optimization sweeps; units run tools/check-service-
+ * syntax.cjs; services require tools/lib), package.json + lockfile,
+ * automation.config.json, apml/, vfs/, labs/, schemas/, prompts/, public/vfs,
+ * public/prompts, docs/pair-contracts, docs/pods, docs/sector-pods,
+ * docs/explainer-*, docs/audio-repair-*, src/explainer/pack.json, root
+ * SYSTEM.md / ralph-methodology.md / synonym-choice-architecture.md /
+ * course-methodology-canon.md (live readFileSync), env files, ops/systemd.
+ */
+const STATIC_ONLY = [
+  /^src\/(?!explainer\/pack\.json$)/,     // Vue SPA: Vercel serves it, not these units
+  /^public\/evidence\//,                   // published evidence, served as files
+  /^e2e\//,
+  /^archive\//,
+  /^WORKLIST\.md$/,
+  /^course-methodology-canon\.md$/,         // judged by agents; no unit reads it (grep services/)
+  // One-off dated course-optimization sweeps run by hand; the one a service
+  // require.resolve()s stays a restart trigger.
+  /^tools\/course-optimization\/(?!ara-lb-progressive-label-2026-10-11\.cjs$)/,
+  // Batch evidence/briefs; only systemd units, the TTS budgets file and the watchdog are live.
+  /^ops\/(?!systemd\/|launchd\/|watchdog\/|tts-spend-budgets\.json$)/,
+  /^CLAUDE\.md$/,
+  /^README\.md$/,
+  /^index\.html$/,
+  /^vercel\.json$/,
+  /^(vite|tailwind|postcss)\.config\.js$/,
+  /^docs\/(?!pair-contracts\/|pods\/|sector-pods\/|explainer-|audio-repair-)/,
+  /\.test\.(c|m)?js$/,                     // tests are never loaded by a unit
+];
+
+/** {restart, reason} for a list of changed paths. Empty list = nothing moved. */
+function restartDecision (changedFiles) {
+  if (!changedFiles || changedFiles.length === 0) return { restart: false, reason: 'no files changed' };
+  const live = changedFiles.filter((f) => !STATIC_ONLY.some((re) => re.test(f)));
+  if (live.length) {
+    return { restart: true, reason: `server-side path changed: ${live.slice(0, 3).join(', ')}${live.length > 3 ? ` (+${live.length - 3} more)` : ''}` };
+  }
+  return { restart: false, reason: `only static paths changed (${changedFiles.length} file(s), e.g. ${changedFiles[0]})` };
+}
+
 /** True once every named unit answered `systemctl is-active` truthy. */
 function allActive (activeByUnit) {
   return Object.values(activeByUnit).every(Boolean);
@@ -72,9 +117,9 @@ function allActive (activeByUnit) {
  * - HEAD matches the last fully-deployed marker → nothing moved, so only
  *   retry whichever units are not currently active.
  */
-function unitsToRestart (headSha, deployedSha, activeByUnit) {
+function unitsToRestart (headSha, deployedSha, activeByUnit, needsRestart = true) {
   const units = Object.keys(activeByUnit);
-  if (deployedSha !== headSha) return units;
+  if (deployedSha !== headSha && needsRestart) return units;
   return units.filter((u) => !activeByUnit[u]);
 }
 
@@ -218,7 +263,19 @@ async function main() {
   // came up healthy for, and re-derive what's active right now regardless.
   const deployedSha = readMark(DEPLOYED_MARK);
   const activeBefore = Object.fromEntries(UNITS.map((u) => [u, isActive(u)]));
-  const toRestart = unitsToRestart(after, deployedSha, activeBefore);
+  // What changed since the last HEAD every unit was healthy for (not just this
+  // tick's fast-forward: an earlier failed restart must not be forgotten).
+  // Unknown marker / unreachable commit / diff failure => restart.
+  let decision = { restart: true, reason: 'no known deployed marker — restarting to be safe' };
+  if (deployedSha) {
+    try {
+      const changed = git(['diff', '--name-only', `${deployedSha}..${after}`]).split('\n').filter(Boolean);
+      decision = deployedSha === after ? { restart: false, reason: 'already deployed' } : restartDecision(changed);
+    } catch (e) { decision = { restart: true, reason: `diff failed (${e.message.split('\n')[0]}) — restarting to be safe` }; }
+  }
+  const toRestart = unitsToRestart(after, deployedSha, activeBefore, decision.restart);
+  const downRetry = toRestart.length && !decision.restart;
+  log(`DEPLOY-DECISION ${after.slice(0, 7)}: ${decision.restart ? 'RESTARTED' : (downRetry ? 'RESTARTING down unit(s) only' : 'SKIPPED restart')} — ${decision.reason}`);
 
   const activeAfter = { ...activeBefore };
   for (const unit of toRestart) activeAfter[unit] = restartUnit(unit);
@@ -263,7 +320,7 @@ async function main() {
         `Auto-deploy: origin/main advanced (${before.slice(0, 7)} → ${after.slice(0, 7)}, ${commits.length} commit${commits.length === 1 ? '' : 's'}). Served checkout fast-forwarded.`,
         ...commits.slice(0, 10).map((c) => `  ${c}`),
         '',
-        `${UNITS.join(', ')} restarted and active.`,
+        (toRestart.length ? `${toRestart.join(', ')} restarted and active.` : `Servers NOT restarted — ${decision.reason}.`),
       ];
       await notify(lines.join('\n'));
     } else if (lastFailedDigest) {
@@ -274,6 +331,26 @@ async function main() {
   process.exit(failed.length ? 2 : 0);
 }
 
-if (require.main === module) main();
+/*
+ * --replay "<git --since>" : dry run. Walks first-parent history of origin/main
+ * and prints, per commit, what the deploy would have done. Per-commit is the
+ * worst case — a real tick batches commits, so it restarts no more often.
+ */
+function replay (since) {
+  const shas = git(['log', '--first-parent', '--reverse', `--since=${since}`, '--format=%h', 'origin/main']).split('\n').filter(Boolean);
+  let restarts = 0;
+  for (const sha of shas) {
+    const files = git(['diff', '--name-only', `${sha}^1`, sha]).split('\n').filter(Boolean);
+    const d = restartDecision(files);
+    if (d.restart) restarts++;
+    process.stdout.write(`${sha} ${d.restart ? 'RESTART' : 'skip   '} ${git(['log', '-1', '--format=%s', sha]).slice(0, 70)} :: ${d.reason}\n`);
+  }
+  process.stdout.write(`\n${shas.length} commit(s): ${restarts} would restart, ${shas.length - restarts} skipped\n`);
+}
 
-module.exports = { allActive, unitsToRestart, nextDeployedSha };
+if (require.main === module) {
+  const i = process.argv.indexOf('--replay');
+  if (i > 0) replay(process.argv[i + 1] || 'midnight'); else main();
+}
+
+module.exports = { allActive, unitsToRestart, nextDeployedSha, restartDecision, STATIC_ONLY };
