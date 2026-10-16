@@ -1,6 +1,6 @@
 <template>
   <!-- data-surface: a marker a human can grep for in the served bundle to prove this shipped -->
-  <div class="recordist" :class="{ fit: fitPhase, live: phase === 'recording', 'sheet-open': sheetOpen && phase !== 'recording' }" data-surface="one-recordist-surface-2026-08-14" :data-durable-takes="DURABLE_TAKES_FEATURE">
+  <div class="recordist" :class="{ fit: fitPhase, live: phase === 'recording', 'sheet-open': sheetOpen && phase !== 'recording', 'has-rail': railShown }" data-surface="one-recordist-surface-2026-08-14" :data-durable-takes="DURABLE_TAKES_FEATURE">
     <!-- IS MY WORK SAFE? Answered in words, at the top, in every phase.
          Before 2026-09-03 the only answer on this screen was "Saving…" on the
          done card, an artist could not tell a take that was on its way from one
@@ -107,16 +107,20 @@
         <!-- B'S RAIL, DESKTOP ONLY: one square per line of this batch, filling in as he reads.
              A SQUARE IS A WAY ONTO ITS LINE (Aran, 2026-10-15): tap one and the cursor goes
              there — live, the open capture is thrown away as ‹ does; before Start, Start opens
-             on it. -->
-        <div v-if="phase !== 'done' && shownRows.length > 1" class="rail-wrap">
-          <ol class="rail" data-test="rail">
+             on it.
+             THE WHOLE BATCH, ALL THE TIME (Aran, 2026-10-16, job #286): on a desktop the rail is its
+             own full-height column down the left edge, so the recording rows appearing above the
+             line take no height from it, and its squares are sized (fitRail) so every one of a
+             ~250-line batch is on screen at once. Same size idle and live: nothing jumps on Start. -->
+        <div v-if="railShown" ref="railWrapRef" class="rail-wrap" :class="{ scroll: railFit.scroll }">
+          <ol class="rail" data-test="rail" :style="{ '--rail-cols': railFit.cols, '--rail-sq': railFit.sq + 'px', '--rail-gap': railFit.gap + 'px' }">
             <li v-for="{ l, i } in shownRows" :key="l.id || i" class="rail-sq" :class="railClass(l, i)"
                 role="button" tabindex="-1" :title="`${flowPos(i) ? 'Line ' + flowPos(i) : 'Already recorded'}: ${lineStateWords(l)}`"
                 :aria-label="flowPos(i) ? `Go to line ${flowPos(i)}` : 'Go to an already-recorded line'" @click="onRailTap(i)"></li>
           </ol>
           <!-- THE LEGEND (Aran, 2026-10-15): the squares used to say nothing, and in light mode
                green and red were painted grey, so saved looked like not-yet-recorded. -->
-          <ul class="rail-legend" data-test="rail-legend">
+          <ul ref="railLegendRef" class="rail-legend" data-test="rail-legend">
             <li v-for="k in RAIL_LEGEND" :key="k.state"><i class="rail-sq" :class="k.state"></i>{{ k.words }}</li>
           </ul>
         </div>
@@ -761,6 +765,7 @@ import { micSignal as micSignalFor } from './recordist/mic-signal.js'
 import { fetchWithTimeoutRetry, LoadTimeoutError } from './recordist/fetch-with-timeout.js'
 import { shouldRefreshQueue } from './recordist/queue-refresh.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
+import { fitRail } from './recordist/rail-fit.js'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
 // The page around a booth with language tabs (RecordistBooth.vue) holds the other tabs still mid-take.
@@ -1635,6 +1640,41 @@ const RAIL_LEGEND = [
   { state: 'failed', words: "Refused or didn't match, record again" },
   { state: 'empty', words: 'Not recorded yet' },
 ]
+// THE RAIL FITS ITS COLUMN (job #286): measured, not guessed, whenever the column or the batch
+// changes size. The column is display:none on a phone, so there it measures 0 and nothing changes.
+const railShown = computed(() => fitPhase.value && phase.value !== 'done' && shownRows.value.length > 1)
+const railWrapRef = ref(null)
+const railLegendRef = ref(null)
+const railFit = ref(fitRail({ n: 0 }))
+// The app bar above the booth hides while the mic is live and hands its height to the column. The
+// squares are sized for the column WITH the bar (the tallest bar seen), so Start never grows them.
+let railNavbarMax = 0
+function measureRail() {
+  const wrap = railWrapRef.value
+  if (!wrap || !wrap.clientWidth) return
+  const cs = getComputedStyle(wrap)
+  const px = (v) => parseFloat(v) || 0
+  const legend = railLegendRef.value
+  const width = wrap.clientWidth - px(cs.paddingLeft) - px(cs.paddingRight)
+  const navbar = px(getComputedStyle(document.documentElement).getPropertyValue('--app-navbar-height'))
+  railNavbarMax = Math.max(railNavbarMax, navbar)
+  const height = wrap.clientHeight - (railNavbarMax - navbar) - px(cs.paddingTop) - px(cs.paddingBottom) - (legend ? legend.offsetHeight + px(cs.rowGap) : 0)
+  const f = fitRail({ n: shownRows.value.length, width, height })
+  const was = railFit.value
+  if (f.cols !== was.cols || f.sq !== was.sq || f.gap !== was.gap || f.scroll !== was.scroll) railFit.value = f
+  if (f.scroll) nextTick(() => { const now = wrap.querySelector('.rail-sq.now'); if (now && now.scrollIntoView) now.scrollIntoView({ block: 'nearest' }) })
+}
+let railObserver = null
+watch(railWrapRef, (el, old) => {
+  if (railObserver && old) railObserver.unobserve(old)
+  if (!el) return
+  if (!railObserver && typeof ResizeObserver !== 'undefined') railObserver = new ResizeObserver(() => measureRail())
+  if (railObserver) railObserver.observe(el)
+  nextTick(measureRail)
+})
+watch(() => shownRows.value.length, () => nextTick(measureRail))
+watch([index, readyIndex], () => { if (railFit.value.scroll) nextTick(measureRail) })
+onBeforeUnmount(() => { if (railObserver) railObserver.disconnect() })
 function railClass(l, i) {
   return {
     now: phase.value === 'recording' ? i === index.value : i === readyIndex.value,
@@ -4300,17 +4340,25 @@ kbd {
   }
   /* Push, not cover: the line re-centres in what is left, so it stays readable. */
   .recordist.fit.sheet-open { padding-right: 420px; box-sizing: border-box; }
+  /* THE RAIL IS ITS OWN FULL-HEIGHT COLUMN (job #286): every row of the page — the where-am-I row,
+     the status, the waveform, the line, the transport — sits to its right, so the rows that appear
+     when recording starts take no height from it and the squares never move on Start or Stop.
+     ANCHORED TO THE BOTTOM, not centred: the app bar above the booth hides while the mic is live,
+     so the column's top moves on Start and its bottom (the screen's bottom edge) does not. */
+  .recordist.fit.has-rail { padding-left: var(--rail-w, 217px); box-sizing: border-box; }
   .rail-wrap {
-    flex: none; display: flex; flex-direction: column; justify-content: center; gap: 0.75rem;
+    position: absolute; left: 0; top: 0; bottom: 0; width: var(--rail-w, 217px); box-sizing: border-box; z-index: 1;
+    display: flex; flex-direction: column; justify-content: flex-end; gap: 0.75rem;
     padding: 1rem 1.25rem; overflow: hidden; border-right: 1px solid var(--line, #334155);
   }
+  .rail-wrap.scroll { justify-content: flex-start; overflow-y: auto; }
   .rail {
-    display: grid; grid-template-columns: repeat(10, 14px); grid-auto-rows: 14px; gap: 4px;
+    flex: none; display: grid; grid-template-columns: repeat(var(--rail-cols, 10), var(--rail-sq, 14px)); grid-auto-rows: var(--rail-sq, 14px); gap: var(--rail-gap, 4px);
     list-style: none; margin: 0; padding: 0;
   }
-  .rail-legend { display: flex; flex-direction: column; gap: 0.3rem; list-style: none; margin: 0; padding: 0; font-size: 0.78rem; color: var(--ink-2, #cbd5e1); max-width: 150px; }
+  .rail-legend { flex: none; display: flex; flex-direction: column; gap: 0.3rem; list-style: none; margin: 0; padding: 0; font-size: 0.78rem; color: var(--ink-2, #cbd5e1); max-width: 176px; }
   .rail-legend li { display: flex; align-items: center; gap: 0.4rem; }
-  .rail-legend .rail-sq { flex: none; width: 14px; height: 14px; }
+  .rail-legend .rail-sq { flex: none; width: 12px; height: 12px; }
   /* Each state its own colour, the same weight of selector in dark and light, so a theme rule can
      never paint one state over another (light mode once painted done and failed grey). */
   .rail-sq { border-radius: 3px; background: #334155; cursor: pointer; }
@@ -4457,10 +4505,20 @@ kbd {
   .recordist.fit:not(.live) > .transport { grid-row: 1 / -1; }
   .recordist.fit .transport .sp-row, .recordist.fit .transport .transport-in, .recordist.fit .transport .ctl-jump { width: 100%; }
   .recordist.fit .kbd-hint { display: none; }
+  /* A wide phone on its side (932x430) is past the desktop width: no rail column there either. */
+  .rail-wrap { display: none; }
+  .recordist.fit.has-rail { padding-left: 0; }
   /* The left column is narrow enough that "Lines & settings" cut the where-am-I words: ☰, as on a phone held upright. */
   .where-more { padding: 0; width: 44px; }
   .wm-long { display: none; }
   .wm-short { display: inline; }
+  /* …and even then a phrase batch's words ("Test Language · Course · Phrases · pass 1 · batch 2 of 3
+     · …") were cut at "batc…" (job #203's audit at 844x390). Two lines, a little smaller, fit the
+     44px row; the words are what tell him which batch he is in, so they are not cut. */
+  .where-words {
+    white-space: normal; text-overflow: clip; font-size: 0.8rem; line-height: 1.2;
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2;
+  }
   /* The done screen's two buttons, one above the other in the side column. */
   .recordist.fit .transport-in:not(.live) { grid-template-columns: 1fr; }
   :root[data-theme="light"] .recordist.fit > .transport, :root[data-theme="light"] .recordist.fit > .status,
