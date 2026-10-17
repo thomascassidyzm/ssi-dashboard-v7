@@ -191,6 +191,10 @@ async function openBooth(page) {
   await page.goto(`${BASE}/r/${VOICE_ID}`)
   // .rc-hello on the old booth home, .bh-h1 on the Prompter rebuild (#424) that staging runs ahead of main.
   await expect(page.locator('.rc-hello, .bh-h1').first()).toContainText(VOICE_NAME.split(' (')[0])
+  // The rebuilt booth lands on a home screen of cards (job #347); the ready card is one tap in, on
+  // the batch "Up next" offers. The old booth landed on the ready card itself, so tap only if home is up.
+  const upNext = page.locator('[data-test=up-next-start]')
+  if (await upNext.count() || await page.locator('.bh-hero').count()) await upNext.click()
   await expect.poll(() => counts(page), { message: 'the ready card' }).not.toBeNull()
 }
 async function begin(page) {
