@@ -99,6 +99,24 @@ async function groupedSlots(pg, code) {
   return (await pg.query(parts.join(' union all '), [code])).rows
 }
 
+/**
+ * Clip census (job #832): every playable clip made FOR this course, by role and voice, split into the clips some slot points at
+ * (what the app plays) and the clips nothing points at (older takes / unlinked renders that sit alongside). The app plays only
+ * the slot pointers (*_audio_id on the three tables) — it never picks by voice — so a cast clip that exists but is unpointed is
+ * a pointer gap, and an older-voice clip that is unpointed is not drift.
+ */
+async function clipCensus(pg, code) {
+  const ptrs = []
+  for (const [tbl, cols] of Object.entries(SLOT_COLUMNS)) for (const col of cols) ptrs.push(`select ${ptr(tbl, col)} id from ${tbl} x where x.course_code = $1 and x.${col} is not null`)
+  const { rows } = await pg.query(`with p as (select distinct id from (${ptrs.join(' union all ')}) u)
+    select ca.role, ca.voice_id, ca.origin, to_char(date_trunc('day', ca.created_at), 'YYYY-MM-DD') day, count(*) clips, count(distinct ca.text_normalized) texts,
+      count(*) filter (where p.id is not null) pointed
+    from course_audio ca left join p on p.id = ca.id
+    where ca.course_code = $1 and ca.role in ('known','target1','target2','presentation') and ${usable('ca')}
+    group by 1, 2, 3, 4 order by 1, 4 desc, 2`, [code])
+  return rows
+}
+
 /** Pure. Why a clip cannot play, or null when it can. Mirrors the SQL `usable()` above. */
 function unplayableWhy(clip) {
   if (!clip) return 'no file (pointer names no clip)'
@@ -317,6 +335,13 @@ async function main(argv = process.argv.slice(2)) {
       else { for (const r of rows) console.log(`${r.tbl}.${r.col} ${r.key}\t${JSON.stringify(r.text)}\t${r.voice || '-'}\t${r.why}`); console.log(`${code}: ${rows.length} unplayable slots`) }
       return rows
     }
+    if (has('--clip-census')) {
+      const code = String(opt('--course', '')); if (!code || code.includes(',')) throw new Error('--clip-census takes exactly one --course')
+      const rows = await clipCensus(pg, code)
+      if (has('--json')) console.log(JSON.stringify(rows, null, 1))
+      else for (const r of rows) console.log(`${r.role}\t${r.day}\t${r.voice_id}\t${r.origin}\tclips ${r.clips}\ttexts ${r.texts}\tpointed ${r.pointed}`)
+      return rows
+    }
     const codes = has('--premium11') ? PREMIUM_11 : String(opt('--course', '')).split(',').filter(Boolean)
     if (!codes.length) throw new Error('name --course <code>[,<code>] or --premium11')
     if (has('--fix')) {
@@ -336,4 +361,4 @@ async function main(argv = process.argv.slice(2)) {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message || e); process.exit(1) })
-module.exports = { classify, render, unplayableWhy, listUnplayable, repointUnplayable, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }
+module.exports = { clipCensus, classify, render, unplayableWhy, listUnplayable, repointUnplayable, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }
