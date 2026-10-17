@@ -50,11 +50,7 @@ function whyUnpointed(r) {
   return 'a slot with this text has no clip at all (empty pointer)'
 }
 
-const pointedCte = () => {
-  const ptrs = []
-  for (const [tbl, cols] of Object.entries(va.SLOT_COLUMNS)) for (const col of cols) ptrs.push(`select ${va.ptr(tbl, col)} id from ${tbl} x where x.course_code = $1 and x.${col} is not null`)
-  return `p as (select distinct id from (${ptrs.join(' union all ')}) u)`
-}
+const pointedCte = () => `p as (select distinct id from (${va.pointerIds()}) u)`
 
 /**
  * Per (role, slot voice): the slots whose text also exists, UNPOINTED, in another voice of this course. One pass: the unpointed

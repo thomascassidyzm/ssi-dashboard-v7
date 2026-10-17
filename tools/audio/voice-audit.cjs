@@ -41,6 +41,13 @@ const SLOT_COLUMNS = Object.freeze({
 const PREMIUM_11 = Object.freeze(['fra_for_eng', 'spa_for_eng', 'spa_mx_for_eng', 'deu_for_eng', 'zho_for_eng', 'ara_for_eng', 'por_for_eng', 'por_br_for_eng', 'kor_for_eng', 'jpn_for_eng', 'ita_for_eng'])
 /** course_legos.presentation_audio_id is TEXT, every other pointer a uuid: compare as uuid. */
 const ptr = (tbl, col) => (tbl === 'course_legos' && col === 'presentation_audio_id' ? `x.${col}::uuid` : `x.${col}`)
+/**
+ * The ids every slot of a course points at, ONE pass per table (3 scans, not 11): a lateral VALUES unrolls each row's pointer
+ * columns, so a course's rows are read once per table instead of once per column (job #845: the 11-way union all ran 9-47 s on a
+ * big course and the 5 s watchdog cancelled it). A body for `select ... from (<this>) u`, with $1 = course_code.
+ */
+const pointerIds = () => Object.entries(SLOT_COLUMNS).map(([tbl, cols]) =>
+  `select v.id from ${tbl} x cross join lateral (values ${cols.map((c) => `(${ptr(tbl, c)})`).join(', ')}) v(id) where x.course_code = $1 and v.id is not null`).join(' union all ')
 const usable = (alias) => `${alias}.s3_key is not null and ${alias}.s3_key not like 'pending/%' and coalesce(${alias}.duration_ms, 0) > 200`
 
 /**
@@ -104,7 +111,8 @@ function render(code, { totals, byRole, groups, plan }) {
 
 async function connect() {
   const { Client } = require('pg')
-  const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect(); await pg.query('set statement_timeout=0')
+  // application_name names the tool in the watchdog; statement_timeout is never lifted (job #845).
+  const pg = new Client({ connectionString: process.env.DATABASE_URL, application_name: 'voice-audit' }); await pg.connect()
   const db = require('@supabase/supabase-js').createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } })
   return { pg, db }
 }
@@ -125,9 +133,7 @@ async function groupedSlots(pg, code) {
  * a pointer gap, and an older-voice clip that is unpointed is not drift.
  */
 async function clipCensus(pg, code) {
-  const ptrs = []
-  for (const [tbl, cols] of Object.entries(SLOT_COLUMNS)) for (const col of cols) ptrs.push(`select ${ptr(tbl, col)} id from ${tbl} x where x.course_code = $1 and x.${col} is not null`)
-  const { rows } = await pg.query(`with p as (select distinct id from (${ptrs.join(' union all ')}) u)
+  const { rows } = await pg.query(`with p as (select distinct id from (${pointerIds()}) u)
     select ca.role, ca.voice_id, ca.origin, to_char(date_trunc('day', ca.created_at), 'YYYY-MM-DD') as day, count(*) clips, count(distinct ca.text_normalized) texts,
       count(*) filter (where p.id is not null) pointed
     from course_audio ca left join p on p.id = ca.id
@@ -380,4 +386,4 @@ async function main(argv = process.argv.slice(2)) {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message || e); process.exit(1) })
-module.exports = { groupedSlots, usable, ptr, clipCensus, targetCoverage, classify, render, unplayableWhy, listUnplayable, repointUnplayable, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }
+module.exports = { pointerIds, groupedSlots, usable, ptr, clipCensus, targetCoverage, classify, render, unplayableWhy, listUnplayable, repointUnplayable, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }

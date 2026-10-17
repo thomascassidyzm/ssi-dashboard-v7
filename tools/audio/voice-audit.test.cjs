@@ -92,3 +92,14 @@ describe('voice audit undo recovers from a surviving intent', () => {
     expect(state).toEqual({ a: 'old-a', b: 'NEW' })
   })
 })
+
+// job #845: the pointer census reads each table ONCE (3 scans, not an 11-way union all) and never lifts statement_timeout
+describe('voice audit pointerIds', () => {
+  it('scans each slot table once, unrolling its pointer columns', () => {
+    const sql = audit.pointerIds()
+    expect(sql.match(/ from course_/g)).toHaveLength(3)
+    expect(sql.match(/\(x\.\w+_audio_id(::uuid)?\)/g)).toHaveLength(11)
+    expect(sql).toContain('(x.presentation_audio_id::uuid)')
+    expect(sql).not.toMatch(/statement_timeout/)
+  })
+})
