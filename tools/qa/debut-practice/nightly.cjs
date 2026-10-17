@@ -26,6 +26,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
+const { nameBackend } = require('../lib/name-backend.cjs');
 
 const STATE = process.env.DEBUT_PRACTICE_STATE || '/home/tomcassidy/.local/state/ssi-debut-practice';
 const NOTICE = process.env.WATSON_NOTICE || '/home/tomcassidy/command-surface/ops/watson-notice.js';
@@ -49,7 +50,7 @@ async function readGaps() {
   const c = new Client({ connectionString: dbUrl(), application_name: 'qa:debut-practice' });
   await c.connect();
   try {
-    await c.query("SET statement_timeout = '5min'");
+    await nameBackend(c, 'qa:debut-practice', { statementTimeoutMs: 5 * 60 * 1000 });
     const { rows: courses } = await c.query(
       'SELECT course_code FROM courses WHERE status::text = ANY ($1) ORDER BY course_code', [LEARNER_FACING]);
     const gaps = [];

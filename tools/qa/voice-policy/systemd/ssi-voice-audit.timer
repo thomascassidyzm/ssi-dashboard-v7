@@ -1,8 +1,8 @@
 [Unit]
-Description=Nightly voice-policy audit at 06:20 Europe/London (after audio-gap 05:10 and voice-variety 05:55)
+Description=Nightly voice-policy audit
 
 [Timer]
-OnCalendar=*-*-* 06:35:00 Europe/London
+OnCalendar=*-*-* 05:35:00 UTC
 RandomizedDelaySec=120
 AccuracySec=1min
 Persistent=true

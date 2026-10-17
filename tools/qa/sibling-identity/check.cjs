@@ -35,6 +35,7 @@
 require('dotenv').config({ path: require('path').join(__dirname, '../../../.env.psql') });
 const fs = require('fs');
 const { Client } = require('pg');
+const { nameBackend } = require('../lib/name-backend.cjs');
 const { derive } = require('./derive.cjs');
 const { classify, MUST_DIFFER, UNKNOWN } = require('./register.cjs');
 
@@ -147,6 +148,7 @@ async function main(argv = process.argv) {
   const jsonAt = argv.includes('--json') ? argv[argv.indexOf('--json') + 1] : null;
   const client = new Client({ connectionString: process.env.DATABASE_URL, application_name: 'qa:sibling-identity', statement_timeout: 15 * 60 * 1000 });
   await client.connect();
+  await nameBackend(client, 'qa:sibling-identity', { statementTimeoutMs: 15 * 60 * 1000 });
   try {
     const candidates = (await derive(client)).map((c) => ({ ...c, ...classify(c) }));
     const results = [];

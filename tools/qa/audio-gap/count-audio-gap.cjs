@@ -67,6 +67,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Client } = require('pg');
+const { nameBackend } = require('../lib/name-backend.cjs');
 
 const REPO = path.resolve(__dirname, '..', '..', '..');
 
@@ -148,6 +149,7 @@ async function main(argv = process.argv) {
   const o = args(argv);
   const c = new Client({ connectionString: databaseUrl(), statement_timeout: 15 * 60 * 1000 });
   await c.connect();
+  await nameBackend(c, 'qa:audio-gap', { statementTimeoutMs: 15 * 60 * 1000 });
 
   const meta = await c.query(`select course_code, display_name, status, known_lang, target_lang from courses`);
   const courses = new Map(meta.rows.map(r => [r.course_code, r]));
