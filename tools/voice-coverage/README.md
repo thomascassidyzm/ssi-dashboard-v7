@@ -45,7 +45,11 @@ machine crash, inspect the PID in `<output>.lock` and remove only a dead lock
 before restarting. `startedAt` and `generatedAt` bound the measurement window;
 it is not a transactionally frozen estate snapshot.
 
-Verification: `node --test tools/voice-coverage/coverage-check.cjs`.
+Verification: `node --test tools/voice-coverage/coverage-check.cjs` and
+`node --test tools/voice-coverage/one-count-check.cjs` (the one count: seed
+bands, offerable at 100% of seeds 1-100 and 80% of the rest, human vs TTS,
+the by-language rollup and speech-check flags). `?view=languages` and
+`?course=<code>` return slices of the saved summary.
 
 Browser rendering and phone-table check:
 `node e2e/voice-coverage/browser-check.cjs`. Reads the saved summary through

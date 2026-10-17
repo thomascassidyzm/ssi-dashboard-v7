@@ -21,7 +21,7 @@
           <p>{{ side.neededPairs.toLocaleString() }} distinct language/text pairs · {{ side.rounds.toLocaleString() }} complete rounds needed.</p>
           <p v-if="side.missingTextRounds" class="gap">{{ side.missingTextRounds }} rounds have missing text and cannot count as complete.</p>
           <p v-for="r in side.castResolution.filter(r => r.status !== 'voice')" :key="r.role" class="gap">Cast gap ({{ r.role }}): {{ r.message || r.reason || r.status }}</p>
-          <p v-for="v in headlines(side)" :key="v.voiceId"><strong>{{ v.isCast ? 'Cast' : 'Best alternative' }}: {{ name(v.voiceId) }}</strong> — {{ percent(v.pairPercent) }} of pairs; {{ percent(v.roundPercent) }} of rounds; first break {{ v.firstBreak ?? 'none' }}.</p>
+          <p v-for="v in headlines(side)" :key="v.voiceId"><strong>{{ v.isCast ? 'Cast' : 'Best alternative' }}: {{ name(v.voiceId) }}</strong> — {{ percent(v.pairPercent) }} of pairs; {{ percent(v.roundPercent) }} of rounds; first break {{ v.firstBreak ?? 'none' }}.<template v-if="v.seeds1to100"> Seeds 1–100: {{ percent(v.seeds1to100.percent) }}; the rest: {{ percent(v.rest.percent) }}; {{ v.offerable ? 'offerable' : 'not yet offerable' }}. Human {{ v.humanPairs }}, TTS {{ v.ttsPairs }}.</template></p>
           <details @toggle="openTables[`${course.courseCode}:${side.side}`] = $event.target.open"><summary>Every voice ({{ side.voices.length }})</summary>
             <div v-if="openTables[`${course.courseCode}:${side.side}`]" class="table-scroll"><table>
               <thead><tr><th>Voice</th><th>Pairs held</th><th>Pair share</th><th>Complete rounds</th><th>Round share</th><th>First break</th></tr></thead>

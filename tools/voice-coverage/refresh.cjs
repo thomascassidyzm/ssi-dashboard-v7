@@ -8,7 +8,7 @@
 const path = require('path')
 const fs = require('fs')
 const db = require('../../services/shared/agent-db.cjs')
-const { summariseSide, snapshotReader, writeAtomic, SUMMARY_PATH } = require('../../services/shared/voice-coverage.cjs')
+const { summariseSide, summariseLanguages, neededLines, seedOf, OFFERABLE, snapshotReader, writeAtomic, SUMMARY_PATH } = require('../../services/shared/voice-coverage.cjs')
 const { clipLanguageKey } = require('../../services/shared/clip-index.cjs')
 const rv = require('../../services/shared/resolve-voice.cjs')
 const { generateLearningScript } = require('../../services/learning-script-generator.cjs')
@@ -34,30 +34,36 @@ async function content(pg, table, code) {
   }
 }
 async function loadIndex(pg) {
-  const index = new Map(), voices = new Map()
-  let cursor = ['', '', ''], entries = 0, playable = 0
+  const index = new Map(), voices = new Map(), flagged = new Map()
+  let cursor = ['', '', ''], entries = 0, playable = 0, failing = 0
   for (;;) {
     // Materialise the bounded PK page BEFORE joining clips by UUID primary key.
     const { rows } = await pg.query(`WITH page AS MATERIALIZED (
-      SELECT language, text_key, voice_id, audio_id FROM clip_index
+      SELECT language, text_key, voice_id, audio_id, origin FROM clip_index
       WHERE (language, text_key, voice_id) > ($1, $2, $3)
       ORDER BY language, text_key, voice_id LIMIT ${PAGE})
-      SELECT p.*, a.s3_key, a.duration_ms FROM page p LEFT JOIN course_audio a ON a.id = p.audio_id
+      SELECT p.*, a.s3_key, a.duration_ms, a.veracity_pass FROM page p LEFT JOIN course_audio a ON a.id = p.audio_id
       ORDER BY p.language, p.text_key, p.voice_id`, cursor)
     for (const r of rows) {
       if (!voices.has(r.language)) voices.set(r.language, new Set())
       voices.get(r.language).add(r.voice_id)
       entries++
       if (!r.s3_key || r.s3_key.startsWith('pending/') || Number(r.duration_ms || 0) <= 200) continue
+      // A clip failing the speech check never enters a menu (design §6); counted, not held.
+      if (r.veracity_pass === false) {
+        const fk = `${r.language}\u001f${r.voice_id}`
+        flagged.set(fk, (flagged.get(fk) || 0) + 1); failing++
+        continue
+      }
       const key = `${r.language}\u001f${r.text_key}`
-      if (!index.has(key)) index.set(key, new Set())
-      index.get(key).add(r.voice_id); playable++
+      if (!index.has(key)) index.set(key, new Map())
+      index.get(key).set(r.voice_id, r.origin === 'human' ? 'human' : 'tts'); playable++
     }
     if (rows.length < PAGE) break
     const last = rows.at(-1); cursor = [last.language, last.text_key, last.voice_id]
     await pause()
   }
-  return { index, voices, entries, playable }
+  return { index, voices, flagged, entries, playable, failing }
 }
 async function presentations(pg, code, ids) {
   const out = new Map()
@@ -85,8 +91,8 @@ async function refresh({ courseCode, out = SUMMARY_PATH } = {}) {
     const config = (await pg.query('SELECT key, config FROM algorithm_config')).rows
     if (!config.some(r => r.key === 'script_shape')) throw new Error('Missing live script_shape; refusing fallback coverage')
     const held = await loadIndex(pg)
-    console.error(`Index: ${held.entries} entries, ${held.playable} playable`)
-    const result = []
+    console.error(`Index: ${held.entries} entries, ${held.playable} playable, ${held.failing} failing the speech check`)
+    const result = [], needs = new Map()
     for (const course of courses.filter(c => !courseCode || c.course_code === courseCode)) {
       try {
         const tables = { courses: [course], algorithm_config: config }
@@ -94,15 +100,20 @@ async function refresh({ courseCode, out = SUMMARY_PATH } = {}) {
         const script = await generateLearningScript(snapshotReader(tables), course.course_code, Number.MAX_SAFE_INTEGER, 0, { learnerView: false })
         if (tables.course_legos.some(l => l.is_new !== false) && !script.rounds?.length) throw new Error('Generator emitted no rounds for existing content')
         const intros = await presentations(pg, course.course_code, [...new Set(tables.course_legos.map(l => l.lego_id))])
-        const sides = []
+        const sides = [], courseNeeds = []
         for (const side of ['target', 'known']) {
           const language = clipLanguageKey(side === 'known' ? course.known_lang : course.target_lang, course)
           if (!language) throw new Error(`Ambiguous ${side} language`)
           const resolutions = (side === 'known' ? ['known'] : ['target1', 'target2']).map(role => ({ role, ...rv.resolveVoice({ course, role }, cast) }))
-          const rounds = (script.rounds || []).map(r => ({ number: r.roundNumber, texts: r.items.map(item =>
+          const rounds = (script.rounds || []).map(r => ({ number: r.roundNumber, seed: seedOf(r), texts: r.items.map(item =>
             side === 'target' ? item.target_text : item.type === 'intro' ? intros.get(item.legoId)?.text ?? null : item.known_text) }))
+          courseNeeds.push([language, neededLines(rounds).all])
           sides.push({ side, castResolution: resolutions, ...summariseSide({ language, rounds,
             voices: [...(held.voices.get(language) || [])], cast: resolutions.filter(r => r.status === 'voice').map(r => r.voiceId), index: held.index }) })
+        }
+        for (const [language, lines] of courseNeeds) {
+          if (!needs.has(language)) needs.set(language, { lines: new Set(), courses: new Set() })
+          const n = needs.get(language); n.courses.add(course.course_code); for (const k of lines) n.lines.add(k)
         }
         result.push({ courseCode: course.course_code, version: course.version, sides })
         console.error(`${course.course_code}: ${script.rounds?.length || 0} rounds`)
@@ -113,9 +124,10 @@ async function refresh({ courseCode, out = SUMMARY_PATH } = {}) {
       await pause()
     }
     if (courseCode && !result.length) throw new Error(`Unknown course: ${courseCode}`)
-    const summary = { schemaVersion: 1, startedAt, generatedAt: new Date().toISOString(), refreshHours: 6,
+    const summary = { schemaVersion: 2, startedAt, generatedAt: new Date().toISOString(), refreshHours: 6,
       scope: 'Full authored production rounds, default fast mode: introductions, builds, consolidation, spaced reviews and whole-seed returns. Each voice covers one language side; pods and personalised runtime choices are separate.',
-      indexEntries: held.entries, playableEntries: held.playable,
+      indexEntries: held.entries, playableEntries: held.playable, failingSpeechCheck: held.failing, offerableRule: OFFERABLE,
+      languageCoverage: summariseLanguages({ needs, voices: held.voices, index: held.index, flagged: held.flagged }),
       languages: [...held.voices].map(([language, ids]) => ({ language, voices: [...ids] })),
       voiceNames: Object.fromEntries(cast.voices.map(v => [v.voice_id, v.human_name || v.display_name || v.voice_id])), courses: result }
     writeAtomic(out, summary)
