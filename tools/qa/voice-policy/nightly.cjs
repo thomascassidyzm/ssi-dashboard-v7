@@ -57,14 +57,24 @@ function rosterLines(cast, voices) {
   return out
 }
 
-/** Pure. The notice: three lines. */
+/** Pure. Cast courses' TARGET-voice coverage (target1+target2 slots playing the cast voice), from the same pointers the app plays. */
+function coverageLine(now) {
+  const parts = CAST.filter((c) => now.courses[c] && now.courses[c].byRole).map((c) => {
+    const t = va.targetCoverage(now.courses[c].byRole)
+    return t.total ? `${short(c)} ${t.pct.toFixed(t.pct >= 99.95 ? 0 : 1)}% (${t.ok}/${t.total})` : null
+  }).filter(Boolean)
+  return parts.length ? `Target voice already in the cast, by slot the app plays: ${parts.join(', ')}.` : null
+}
+
+/** Pure. The notice: three lines, a fourth when the snapshot carries per-role counts. */
 function noticeText(now, rosterMisses) {
   const gaps = gapLines(now)
   return [
     `Voice casting: cast = ${CAST.map(short).join(', ')}; still to confirm = ${TO_CONFIRM.map(short).join(', ')}.`,
+    coverageLine(now),
     gaps.length ? `Real gaps: ${gaps.join('; ')}.` : 'Real gaps: none (every premium slot plays, none in an uncast language).',
     rosterMisses.length ? `English roster off Tom's list: ${rosterMisses.join('; ')}.` : 'English roster matches: tom-006 male, aran-004 second male, Charlotte female, Sonia legacy.',
-  ].join('\n')
+  ].filter(Boolean).join('\n')
 }
 
 async function notice(text) {
@@ -90,7 +100,7 @@ async function main() {
     const snap = { date, courses: {} }
     for (const code of codes) {
       const a = await va.audit(pg, db, code, cast, { withPlan: false })
-      snap.courses[code] = { totals: a.totals, plan: a.plan || null }
+      snap.courses[code] = { totals: a.totals, byRole: a.byRole, plan: a.plan || null }
       console.log(va.render(code, a))
     }
     fs.writeFileSync(path.join(dir, `${date}.json`), JSON.stringify(snap, null, 1))
@@ -108,4 +118,4 @@ if (require.main === module) {
     process.exit(2)
   })
 }
-module.exports = { noticeText, englishCastDrift, gapLines, rosterLines }
+module.exports = { coverageLine, noticeText, englishCastDrift, gapLines, rosterLines }

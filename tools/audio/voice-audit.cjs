@@ -45,11 +45,13 @@ const usable = (alias) => `${alias}.s3_key is not null and ${alias}.s3_key not l
 
 /**
  * Pure. Classify grouped slot rows ({tbl, col, voice_id, language, origin, slots, texts}) for one course.
- * @returns {{ totals, groups }} groups carry status + resolved voice; totals sum slots per status.
+ * @returns {{ totals, byRole, groups }} groups carry status + resolved voice; totals sum slots per status; byRole sums them per slot role.
+ * The app plays the slot pointer and nothing else (no voice choice at play time), so a slot is judged by the clip it points at:
+ * older-voice takes that merely sit beside it in course_audio are neither counted nor drift (job #832).
  */
 function classify(course, rows, cast) {
   const totals = { ok: 0, drift: 0, human: 0, refused: 0, 'no-ruling': 0, dangling: 0, unplayable: 0 }
-  const groups = []
+  const groups = [], byRole = {}
   for (const r of rows) {
     const n = Number(r.slots)
     totals.unplayable += Number(r.unplayable || 0)
@@ -64,14 +66,31 @@ function classify(course, rows, cast) {
       else { resolved = res.voiceId; status = rv.sameVoice(r.voice_id, res.voiceId) ? 'ok' : 'drift'; reason = res.rule }
     }
     totals[status] += n
+    ;(byRole[role] ||= { ok: 0, drift: 0, human: 0, refused: 0, 'no-ruling': 0 })[status] += n
     groups.push({ ...r, role, slots: n, status, resolved, reason })
   }
-  return { totals, groups }
+  return { totals, byRole, groups }
+}
+
+/**
+ * Pure. The target-voice coverage that matters: of the slots a learner HEARS as target language (target1 + target2), how many play
+ * the cast voice. The headline ok count mixes in the English known side, which is a different voice policy and is usually far ahead
+ * (spa_mx 2026-10-17: ~17k ok, almost all English Tom-006, while the Spanish side was ~100 of ~30k).
+ * human and refused/no-ruling slots are outside the fraction (nothing can be moved there).
+ */
+function targetCoverage(byRole) {
+  let ok = 0, drift = 0
+  for (const r of ['target1', 'target2']) { ok += (byRole && byRole[r] && byRole[r].ok) || 0; drift += (byRole && byRole[r] && byRole[r].drift) || 0 }
+  return { ok, drift, total: ok + drift, pct: ok + drift ? (100 * ok) / (ok + drift) : null }
 }
 
 /** Pure. One plain block of text for a course's audit. */
-function render(code, { totals, groups, plan }) {
+function render(code, { totals, byRole, groups, plan }) {
   const L = [`${code}: ok ${totals.ok} · drift ${totals.drift} · human ${totals.human} · refused ${totals.refused} · no-ruling ${totals['no-ruling']} · dangling ${totals.dangling} · unplayable ${totals.unplayable}`]
+  if (byRole) {
+    const tc = targetCoverage(byRole)
+    if (tc.total) L.push(`  target voice in the cast: ${tc.ok} of ${tc.total} target slots (${tc.pct.toFixed(1)}%)`)
+  }
   const drift = groups.filter((g) => g.status === 'drift').sort((a, b) => b.slots - a.slots)
   const by = new Map()
   for (const g of drift) { const k = `${g.role}: ${g.voice_id} -> ${g.resolved} (${g.reason})`; by.set(k, (by.get(k) || 0) + g.slots) }
@@ -361,4 +380,4 @@ async function main(argv = process.argv.slice(2)) {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message || e); process.exit(1) })
-module.exports = { clipCensus, classify, render, unplayableWhy, listUnplayable, repointUnplayable, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }
+module.exports = { clipCensus, targetCoverage, classify, render, unplayableWhy, listUnplayable, repointUnplayable, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }

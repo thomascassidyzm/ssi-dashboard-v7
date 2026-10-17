@@ -5,14 +5,19 @@ import rv from '../../../services/shared/resolve-voice.cjs'
 
 const t = (o = {}) => ({ ok: 1, drift: 0, human: 0, refused: 0, 'no-ruling': 0, dangling: 0, unplayable: 0, ...o })
 describe('nightly voice audit notice', () => {
-  it('shows cast status and real gaps, never drift, in under four lines', () => {
+  it('shows cast status and real gaps, never drift, in under five lines', () => {
     const now = { courses: { fra_for_eng: { totals: t({ drift: 9000 }) }, kor_for_eng: { totals: t({ dangling: 2, unplayable: 3, refused: 7 }) }, xyz_for_eng: { totals: t({ refused: 99 }) } } }
     const s = nightly.noticeText(now, [])
-    expect(s.split('\n').length).toBeLessThan(4)
+    expect(s.split('\n').length).toBeLessThan(5)
     expect(s).toMatch(/cast = spa, spa_mx, deu, ita, fra, por, por_br, zho; still to confirm = jpn, kor, ara/)
     expect(s).toMatch(/Real gaps: kor 5 with no playable audio, 7 in an uncast-language voice\./)
     expect(s).not.toMatch(/drift|9000|xyz/i)
     expect(s).toMatch(/English roster matches/)
+  })
+  it('names the target-voice coverage of cast courses from the slots the app plays (job #832)', () => {
+    const now = { courses: { spa_mx_for_eng: { totals: t(), byRole: { known: { ok: 9000, drift: 0 }, target1: { ok: 100, drift: 14000 }, target2: { ok: 7, drift: 14000 } } }, fra_for_eng: { totals: t() } } }
+    expect(nightly.noticeText(now, [])).toMatch(/Target voice already in the cast, by slot the app plays: spa_mx 0\.4% \(107\/28107\)\./)
+    expect(nightly.coverageLine({ courses: { fra_for_eng: { totals: t() } } })).toBeNull()
   })
   it('says no gaps when there are none', () => {
     expect(nightly.noticeText({ courses: { fra_for_eng: { totals: t({ drift: 5 }) } } }, [])).toMatch(/Real gaps: none/)

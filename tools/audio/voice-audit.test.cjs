@@ -4,7 +4,7 @@ import audit from './voice-audit.cjs'
 import { createRequire } from 'node:module'
 const require = createRequire(import.meta.url)
 import rv from '../../services/shared/resolve-voice.cjs'
-const { classify, render, unplayableWhy } = audit
+const { classify, render, unplayableWhy, targetCoverage } = audit
 
 // job #788: --list-unplayable names WHY a slot cannot play; the reasons mirror the SQL usable() test
 describe('voice audit unplayableWhy', () => {
@@ -44,6 +44,22 @@ describe('voice audit classify', () => {
     expect(out).toMatch(/^fra_for_eng: ok 0 · drift 7/)
     expect(out).toMatch(/drift 7 known: .* -> cartesia_d293d509/)
     expect(out).toMatch(/reuse 1 texts \(2 slots, free\), render 2 texts \(40 chars\)/)
+  })
+})
+
+// job #832: the English known side (Tom-006) is far ahead of the Spanish target side; the headline ok hid that
+describe('voice audit target coverage', () => {
+  it('counts target-voice coverage per slot role, apart from the known side, and older takes beside the pointer change nothing', () => {
+    const a = classify(fra, [
+      g('known_audio_id', rv.TOM_006, 'eng', 9000),                 // English side, all in the cast voice
+      g('target1_audio_id', 'cartesia_fra-f', 'fra', 100),          // target slots whose pointer is on the cast clip
+      g('target1_audio_id', 'azure_fr-FR-DeniseNeural', 'fra', 900),// target slots still pointing at the older voice
+    ], cast)
+    expect(a.totals.ok).toBe(9100)
+    expect(a.byRole.known.ok).toBe(9000)
+    expect(targetCoverage(a.byRole)).toMatchObject({ ok: 100, drift: 900, total: 1000, pct: 10 })
+    expect(render('fra_for_eng', a)).toMatch(/target voice in the cast: 100 of 1000 target slots \(10\.0%\)/)
+    expect(targetCoverage({}).pct).toBeNull()
   })
 })
 
