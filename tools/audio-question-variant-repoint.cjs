@@ -128,13 +128,23 @@ async function main() {
           const body = { courseCode: r.course_code, role: r.role, text: r.txt, language: r.language,   // no voiceId: the route insists on the course's CURRENT cast voice (old Azure/xai ids are refused)
                          
                          purpose: '#586: right question/statement variant of a line whose recording was the other one', dryRun: !real }
-          if (real && libraryOnly) {
-            // ask first with a dry run; only a library hit proceeds to the real (free) call
-            const d = await (await fetch(`${base}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-586' }, body: JSON.stringify({ ...body, dryRun: true }) })).json().catch(() => ({}))
-            if (!(d.ok && d.source === 'library')) { results.push({ key, skipped: d.source || d.error || 'no library clip' }); continue }
-          }
           let res, out
           try {
+            if (real) {
+              const preview = await fetch(`${base}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-586' }, body: JSON.stringify({ ...body, dryRun: true }), signal: AbortSignal.timeout(120000) })
+              if (!preview.ok && preview.status >= 502) throw new Error(`HTTP ${preview.status}`)
+              const d = await preview.json().catch(() => ({}))
+              if (!d.ok) {
+                results.push({ key, error: d.error || d.code || `HTTP ${preview.status}` })
+                if (preview.status === 402) stopped = d.code || '402 refusal'
+                continue
+              }
+              if (libraryOnly && d.source !== 'library') { results.push({ key, skipped: d.source || 'no library clip' }); continue }
+              // Reserve the full render cost even for a library hit: the clip could
+              // disappear between the preview and the real call.
+              const nextCost = Math.max(r.txt.length, Number(d.wouldSpendChars) || 0)
+              if (!libraryOnly && nextCost > maxChars - spent) { stopped = `next render exceeds remaining --max-chars ${maxChars}`; break }
+            }
             res = await fetch(`${base}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-586' }, body: JSON.stringify(body), signal: AbortSignal.timeout(120000) })
             if (!res.ok && res.status >= 502) throw new Error(`HTTP ${res.status}`)
             out = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))

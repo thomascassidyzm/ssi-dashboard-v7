@@ -2695,11 +2695,12 @@ async function withPhraseBatch(db, recordist, queue, { includeRecorded = false, 
  * Point every EMPTY slot of this phrase line's copies at a new take. FILL-EMPTY
  * ONLY, by a conditional update (`slot IS NULL`), so a slot that gained a clip
  * since the plan was read — anybody's — is never overwritten. Nothing is deleted.
+ * Each update also checks the current side text against the recorded words.
  * The copies come from the server's own plan, never from the client.
  */
-async function linkPhraseTake({ db, recordist, phraseId, role, audioId, logger = console }) {
+async function linkPhraseTake({ db, recordist, phraseId, role, audioId, text, logger = console }) {
   const out = { linked: [] }
-  if (!audioId || !phraseQueue.PHRASE_ROLES.includes(role)) return out
+  if (!audioId || typeof text !== 'string' || !text || !phraseQueue.PHRASE_ROLES.includes(role)) return out
   const plan = await getPhrasePlan(db)
   const mine = recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])
   const line = mine.find((l) => l.role === role && l.copies.some((c) => c.phraseId === phraseId))
@@ -2707,7 +2708,7 @@ async function linkPhraseTake({ db, recordist, phraseId, role, audioId, logger =
   const col = `${role}_audio_id`
   for (const id of copies) {
     const { data, error } = await db.from('course_practice_phrases')
-      .update({ [col]: audioId }).eq('id', id).is(col, null).select('id, course_code')
+      .update({ [col]: audioId }).eq('id', id).eq(role === 'known' ? 'known_text' : 'target_text', text).is(col, null).select('id, course_code')
     if (error) { logger.error(`[Recordist] phrase link failed for ${id}: ${error.message}`); continue }
     for (const row of data || []) out.linked.push({ phraseId: row.id, courseCode: row.course_code })
   }
