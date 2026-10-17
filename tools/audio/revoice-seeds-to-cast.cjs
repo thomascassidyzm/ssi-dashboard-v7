@@ -122,6 +122,12 @@ async function main() {
   let pending = [], stopped = null;
   const flush = async () => {
     const links = pending.splice(0);
+    // Undo ledger (job #838): one line per link, the previous pointer included (expectCurrent), so a batch can be reversed by linking it back.
+    if (links.length) {
+      const f = path.join(process.env.HOME, 'ssi-evidence', 'ssi-dashboard-v7', 'revoice-undo', `${COURSE}-${new Date().toISOString().slice(0, 10)}.jsonl`);
+      require('fs').mkdirSync(path.dirname(f), { recursive: true });
+      require('fs').appendFileSync(f, links.map((l) => JSON.stringify({ at: new Date().toISOString(), course: COURSE, ...l })).join('\n') + '\n');
+    }
     for (let k = 0; k < links.length; k += LINK_MAX) {
       const l = await post(`/api/production/${COURSE}/link-clip`, { links: links.slice(k, k + LINK_MAX) });
       out.linked += l.body.linked || 0;
