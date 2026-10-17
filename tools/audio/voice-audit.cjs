@@ -16,6 +16,8 @@
  *   node tools/audio/voice-audit.cjs --course C --fix [--dry-run]             do it: reuse first, then (only with --max-chars) render
  *        [--max-chars N]  render budget for this run (default 0 = reuse only; spend is still the TTS guard's to allow)
  *        [--limit N]      at most N distinct texts this run          [--role known|target1|target2]
+ *   node tools/audio/voice-audit.cjs --course C --list-unplayable [--json]    every slot whose clip cannot play: slot, text, voice, why (job #788)
+ *   node tools/audio/voice-audit.cjs --course C --repoint-unplayable [--dry-run] [--max-chars N]   reuse-first repoint of those slots (job #788)
  *   node tools/audio/voice-audit.cjs --undo <ledger.jsonl> [--dry-run]       put every slot the ledger moved back (before-state asserted)
  *
  * The fix, per drifted (language, text, resolved voice): an existing clip in that voice is reused (any course, any role but a
@@ -95,6 +97,26 @@ async function groupedSlots(pg, code) {
       count(*) filter (where ca.id is not null and not (${usable('ca')})) unplayable
     from ${tbl} x left join course_audio ca on ca.id = ${ptr(tbl, col)} where x.course_code = $1 and x.${col} is not null group by 3, 4, 5`)
   return (await pg.query(parts.join(' union all '), [code])).rows
+}
+
+/** Pure. Why a clip cannot play, or null when it can. Mirrors the SQL `usable()` above. */
+function unplayableWhy(clip) {
+  if (!clip) return 'no file (pointer names no clip)'
+  if (!clip.s3_key) return 'no file (no s3 key)'
+  if (String(clip.s3_key).startsWith('pending/')) return 'pending key'
+  if (Number(clip.duration_ms || 0) <= 200) return '<=200ms'
+  return null
+}
+
+/** Every slot of a course whose clip cannot play (job #788): slot, text, voice, why. NULL pointers are not slots. */
+async function listUnplayable(pg, code) {
+  const out = []
+  for (const [tbl, cols] of Object.entries(SLOT_COLUMNS)) for (const col of cols) {
+    const { rows } = await pg.query(`select x.id::text key, x.${col}::text aid, ca.id::text cid, ca.text, ca.text_normalized t, ca.language, ca.voice_id, ca.origin, ca.s3_key, ca.duration_ms
+      from ${tbl} x left join course_audio ca on ca.id = ${ptr(tbl, col)} where x.course_code = $1 and x.${col} is not null and (ca.id is null or not (${usable('ca')}))`, [code])
+    for (const r of rows) out.push({ tbl, col, key: r.key, from: r.aid, text: r.text, t: r.t, language: r.language, voice: r.voice_id, origin: r.origin, why: unplayableWhy(r.cid ? r : null) })
+  }
+  return out
 }
 
 /** The drifted slots of one (column, from-voice, language) group, in seed order. */
@@ -194,6 +216,66 @@ async function fix(pg, db, code, cast, { dryRun, maxChars, limit, role }) {
   return { moved, reused, rendered, spent, skipped, refused, ledger: dryRun ? null : file }
 }
 
+/**
+ * Reuse-first repoint of unplayable slots (job #788). Per distinct (language, text): an existing PLAYABLE clip in any voice (E1,
+ * the resolved voice ranked first); if resolveVoice refuses that clip for the slot, or none exists, ONE render through Popty's
+ * route in the resolved voice. Slots whose resolveVoice is not a voice (refused / no-ruling) and human takes are left.
+ * Write-ahead ledger (undoable with --undo), content_version bumped once at the end.
+ */
+async function repointUnplayable(pg, db, code, cast, { dryRun, maxChars }) {
+  const { bumpCourseVersion } = require('../../services/shared/course-version.cjs')
+  const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
+  const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs')
+  const course = await rv.loadCourse(db, code)
+  const slots = (await listUnplayable(pg, code)).filter((s) => s.text != null)   // a dangling pointer has no text to find a clip by
+  const items = new Map()
+  for (const s of slots) {
+    if (s.origin === 'human') continue
+    const role = rv.roleOfColumn(s.col), res = rv.resolveVoice({ course, role, language: s.language }, cast)
+    if (res.status !== 'voice') continue
+    const k = `${s.language}|${s.t}|${res.voiceId}`
+    if (!items.has(k)) items.set(k, { language: s.language, t: s.t, tx: s.text, voice: res.voiceId, role, slots: [] })
+    items.get(k).slots.push({ tbl: s.tbl, col: s.col, key: s.key, from: s.from, course: code })
+  }
+  const list = [...items.values()]
+  for (const it of list) {
+    // E1: language + text in ANY voice, the resolved voice ranked first, then the oldest
+    const { rows } = await pg.query(`select ca.id::text id from course_audio ca where ca.text_normalized = $1 and ca.language = $2 and ${usable('ca')} and coalesce(ca.veracity_pass, true)
+      order by (ca.voice_id = $3 or ca.voice_id = replace($3, 'cartesia_', '')) desc, ca.created_at limit 1`, [it.t, it.language, rv.canonVoice(it.voice)])
+    it.reuse = rows[0] && rows[0].id
+  }
+  const file = ledgerFile(code); if (!dryRun) fs.mkdirSync(path.dirname(file), { recursive: true })
+  const log = (e) => { if (!dryRun) fs.appendFileSync(file, JSON.stringify({ ...e, course: code, at: new Date().toISOString() }) + '\n') }
+  let ev = null
+  const event = async () => ev || (ev = await recordContentEdit(db, { identity: serviceIdentity('voice-audit-788'), courseCode: code, surface: 'tools:audio/voice-audit', operation: 'update', detail: { why: 'job #788: unplayable slots repointed', ledger: file } }))
+  const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
+  let moved = 0, reused = 0, rendered = 0, spent = 0, left = 0
+  const mayMove = async (to, it) => { for (const s of it.slots) if (!(await rv.mayPoint(db, { courseCode: code, col: s.col, to, tbl: s.tbl, key: s.key, from: s.from }))) return false; return true }
+  for (const it of list) {
+    let to = null, how = 'reuse'
+    if (it.reuse && await mayMove(it.reuse, it)) to = it.reuse
+    if (!to) {
+      if (spent + String(it.tx).length > maxChars) { left += it.slots.length; continue }
+      if (dryRun) { rendered++; spent += String(it.tx).length; moved += it.slots.length; continue }
+      const res = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'voice-audit-788' },
+        body: JSON.stringify({ courseCode: code, role: it.role, text: it.tx, language: it.language, voiceId: it.voice, purpose: `voice-audit: unplayable ${it.role} slot` }) })
+      const r = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
+      if (!res.ok || !r.ok) { log({ kind: 'refused', t: it.t, r }); console.log('RENDER REFUSED — stopping (a refusal is the answer, never retried):', JSON.stringify(r).slice(0, 300)); break }
+      const { rows: [ca] } = await pg.query(`select id::text from course_audio ca where id = $1 and ${usable('ca')}`, [r.audioId])
+      if (!ca) { log({ kind: 'verify-failed', t: it.t, r }); console.log('VERIFY FAILED — stopping:', it.tx); break }
+      to = ca.id; how = r.source === 'library' ? 'reuse' : 'render'; spent += r.charsSpent || 0
+    }
+    if (dryRun) { moved += it.slots.length; reused++; continue }
+    log({ kind: 'intent', to, how, t: it.t, slots: it.slots })
+    const done = []
+    for (const s of it.slots) if (await rv.setSlotPointer(db, { tbl: s.tbl, key: s.key, col: s.col, from: s.from, to, courseCode: code, editEventId: await event() })) { done.push(s); moved++ }
+    log({ kind: 'swap', to, slots: done }); how === 'reuse' ? reused++ : rendered++
+  }
+  if (!dryRun && moved) { const v = await bumpCourseVersion(db, code, 'patch'); if (!v) throw new Error(`content_version bump failed for ${code}`); log({ kind: 'bumped', v }) }
+  console.log(`${code} repoint-unplayable${dryRun ? ' (dry run)' : ''}: ${moved} slots ${dryRun ? 'would move' : 'moved'} — ${reused} texts reused, ${rendered} rendered (${spent} chars), ${left} slots left (no budget)${dryRun ? '' : `; undo: node tools/audio/voice-audit.cjs --undo ${file}`}`)
+  return { moved, reused, rendered, spent, left, ledger: dryRun ? null : file }
+}
+
 async function undo(pg, db, file, { dryRun }) {
   const { bumpCourseVersion } = require('../../services/shared/course-version.cjs')
   const rows = fs.readFileSync(file, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse)
@@ -226,6 +308,15 @@ async function main(argv = process.argv.slice(2)) {
   try {
     if (has('--undo')) return await undo(pg, db, opt('--undo'), { dryRun: has('--dry-run') })
     const cast = await rv.loadCast(db)
+    if (has('--list-unplayable') || has('--repoint-unplayable')) {
+      const code = String(opt('--course', ''))
+      if (!code || code.includes(',')) throw new Error('--list-unplayable / --repoint-unplayable take exactly one --course')
+      if (has('--repoint-unplayable')) return await repointUnplayable(pg, db, code, cast, { dryRun: has('--dry-run'), maxChars: Number(opt('--max-chars', 0)) })
+      const rows = await listUnplayable(pg, code)
+      if (has('--json')) console.log(JSON.stringify(rows, null, 1))
+      else { for (const r of rows) console.log(`${r.tbl}.${r.col} ${r.key}\t${JSON.stringify(r.text)}\t${r.voice || '-'}\t${r.why}`); console.log(`${code}: ${rows.length} unplayable slots`) }
+      return rows
+    }
     const codes = has('--premium11') ? PREMIUM_11 : String(opt('--course', '')).split(',').filter(Boolean)
     if (!codes.length) throw new Error('name --course <code>[,<code>] or --premium11')
     if (has('--fix')) {
@@ -245,4 +336,4 @@ async function main(argv = process.argv.slice(2)) {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message || e); process.exit(1) })
-module.exports = { classify, render, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }
+module.exports = { classify, render, unplayableWhy, listUnplayable, repointUnplayable, audit, undo, connect, main, PREMIUM_11, SLOT_COLUMNS }

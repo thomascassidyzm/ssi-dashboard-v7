@@ -4,7 +4,19 @@ import audit from './voice-audit.cjs'
 import { createRequire } from 'node:module'
 const require = createRequire(import.meta.url)
 import rv from '../../services/shared/resolve-voice.cjs'
-const { classify, render } = audit
+const { classify, render, unplayableWhy } = audit
+
+// job #788: --list-unplayable names WHY a slot cannot play; the reasons mirror the SQL usable() test
+describe('voice audit unplayableWhy', () => {
+  it('names no file, pending key and <=200ms, and passes a playable clip', () => {
+    expect(unplayableWhy(null)).toMatch(/^no file/)
+    expect(unplayableWhy({ s3_key: null, duration_ms: 900 })).toMatch(/^no file/)
+    expect(unplayableWhy({ s3_key: 'pending/abc.mp3', duration_ms: 900 })).toBe('pending key')
+    expect(unplayableWhy({ s3_key: 'a/b.mp3', duration_ms: 200 })).toBe('<=200ms')
+    expect(unplayableWhy({ s3_key: 'a/b.mp3', duration_ms: null })).toBe('<=200ms')
+    expect(unplayableWhy({ s3_key: 'a/b.mp3', duration_ms: 201 })).toBeNull()
+  })
+})
 
 const fra = { course_code: 'fra_for_eng', known_lang: 'eng', target_lang: 'fra' }
 const cast = { roles: [{ language: 'fra', gender: 'f', rank: 0, slot: 'phrase', voice_id: 'cartesia_fra-f', assigned_by: 'thomas.cassidy+ssi@gmail.com' }], voices: [{ voice_id: 'cartesia_fra-f', is_active: true }] }
@@ -21,7 +33,7 @@ describe('voice audit classify', () => {
       g('target1_audio_id', rv.TOM_006, 'eng', 2),                 // an English line on a French slot → no ruling
       g('known_audio_id', null, null, 6),                          // dangling: the pointer names no clip
     ], cast)
-    expect(totals).toEqual({ ok: 15, drift: 7, human: 3, refused: 4, 'no-ruling': 2, dangling: 6 })
+    expect(totals).toEqual({ ok: 15, drift: 7, human: 3, refused: 4, 'no-ruling': 2, dangling: 6, unplayable: 0 })
     expect(groups.find((x) => x.status === 'drift')).toMatchObject({ role: 'known', resolved: rv.TOM_006, reason: 'english-known' })
     expect(groups.find((x) => x.status === 'refused')).toMatchObject({ role: 'target2', reason: 'uncast' })
   })
