@@ -4,7 +4,8 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-User=popty
+# Read-only builder needs only the capped agent login, never owner/provider keys.
+User=tomcassidy
 Group=tomcassidy
 UMask=0002
 Environment=HOME=/home/tomcassidy
