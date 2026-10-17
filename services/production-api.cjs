@@ -437,6 +437,9 @@ const requireAdminOrLoopback = createControlPlaneGate({
 })
 const requireSameHost = loopbackOnly(isLoopbackDirectRequest)
 
+// Read-only, precomputed estate coverage; no DB work on requests.
+app.get('/api/admin/voice-coverage', requireAdminOrLoopback, require('./api/voice-coverage.cjs').handler())
+
 // The sanctioned door for an AGENT at an admin route (job #410): a signed
 // same-host call holding a named scope, attributed and logged. Routes opt in
 // by calling requireAdminOrAgent(req, res, scope); everything else stays

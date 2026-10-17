@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh per-voice coverage every six hours
+
+[Timer]
+OnCalendar=*-*-* 00,06,12,18:20:00 UTC
+RandomizedDelaySec=300
+Persistent=true
+Unit=ssi-voice-coverage.service
+
+[Install]
+WantedBy=timers.target

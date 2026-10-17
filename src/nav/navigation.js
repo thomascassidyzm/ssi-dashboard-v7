@@ -184,6 +184,16 @@ export const SECTIONS = [
         }
       },
       {
+        label: 'Voice coverage',
+        to: '/admin/voice-coverage',
+        hub: {
+          title: 'Per-voice coverage', badge: 'clips',
+          description: 'Clips held and complete rounds, in every voice. Cast and best alternatives for each course.',
+          action: 'View coverage', accent: '#14b8a6', glow: 'rgba(20, 184, 166, 0.15)',
+          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 20V10m8 10V4m8 16v-7"/></svg>'
+        }
+      },
+      {
         // Human Recording (2026-09-02). Where each recordist's /r/ link comes
         // from; it was reachable by URL only.
         label: 'Recording',
