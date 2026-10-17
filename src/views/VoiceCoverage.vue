@@ -22,8 +22,8 @@
           <p v-if="side.missingTextRounds" class="gap">{{ side.missingTextRounds }} rounds have missing text and cannot count as complete.</p>
           <p v-for="r in side.castResolution.filter(r => r.status !== 'voice')" :key="r.role" class="gap">Cast gap ({{ r.role }}): {{ r.message || r.reason || r.status }}</p>
           <p v-for="v in headlines(side)" :key="v.voiceId"><strong>{{ v.isCast ? 'Cast' : 'Best alternative' }}: {{ name(v.voiceId) }}</strong> — {{ percent(v.pairPercent) }} of pairs; {{ percent(v.roundPercent) }} of rounds; first break {{ v.firstBreak ?? 'none' }}.</p>
-          <details><summary>Every voice ({{ side.voices.length }})</summary>
-            <div class="table-scroll"><table>
+          <details @toggle="openTables[`${course.courseCode}:${side.side}`] = $event.target.open"><summary>Every voice ({{ side.voices.length }})</summary>
+            <div v-if="openTables[`${course.courseCode}:${side.side}`]" class="table-scroll"><table>
               <thead><tr><th>Voice</th><th>Pairs held</th><th>Pair share</th><th>Complete rounds</th><th>Round share</th><th>First break</th></tr></thead>
               <tbody><tr v-for="v in side.voices" :key="v.voiceId">
                 <th :title="v.voiceId">{{ name(v.voiceId) }} <small v-if="v.isCast">cast</small></th>
@@ -43,6 +43,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useAuth } from '@/composables/useAuth'
 import { recordingApiBase } from '@/services/recordingApi'
 const { getAccessToken } = useAuth()
+const openTables = ref({})
 const data = ref(null), loading = ref(true), error = ref(null), filter = ref('')
 const courses = computed(() => (data.value?.courses || []).filter(c => `${c.courseCode} ${(c.sides || []).map(s => s.language).join(' ')}`.toLowerCase().includes(filter.value.toLowerCase())))
 const name = id => data.value?.voiceNames?.[id] || id
@@ -62,7 +63,7 @@ async function load() {
 onMounted(load)
 </script>
 <style scoped>
-.coverage { max-width: 1200px; margin: auto; padding: 2rem 1rem; color: var(--color-ink, inherit); }
+.coverage { overflow-wrap: anywhere; max-width: 1200px; margin: auto; padding: 2rem 1rem; color: var(--color-ink, inherit); }
 h1 { font-size: 2rem; font-weight: 700; } h2 { font-size: 1.4rem; font-weight: 600; } h3 { font-weight: 600; margin-top: 1rem; }
 p { margin: .7rem 0; } article { margin: 1.5rem 0; padding: 1rem; border: 1px solid #64748b66; border-radius: .6rem; }
 input { margin: 1rem; padding: .5rem; background: transparent; border: 1px solid #64748b; border-radius: .3rem; }
