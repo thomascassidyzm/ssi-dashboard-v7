@@ -129,7 +129,7 @@ async function main() {
 
   const ROLLBACK = process.env.ROLLBACK_FILE || evidencePath(`audio/revoice-rollback/${COURSE}-${new Date().toISOString().slice(0, 10)}.jsonl`);
   console.log(`rollback record: ${ROLLBACK}`);
-  const out = { library: 0, rendered: 0, spent: 0, linked: 0, linkRefused: 0, failed: 0, versions: new Set() };
+  const out = { library: 0, rendered: 0, spent: 0, linked: 0, linkRefused: 0, failed: 0, needsGrant: 0, versions: new Set() };
   let pending = [], stopped = null;
   const flush = async () => {
     const links = pending.splice(0);
@@ -148,6 +148,10 @@ async function main() {
     if (MAX && out.spent + a.chars > MAX) { stopped = `MAX_CHARS ${MAX} reached`; break; }
     const r = await post('/api/audio/render', { courseCode: COURSE, role: a.role, text: a.text, voiceId: castByRole[a.role], purpose: PURPOSE });
     if (isStop(r)) { stopped = `REFUSED ${r.status} ${r.body.code || ''} ${r.body.error || ''}`; break; }
+    // The re-record gate (Tom 2026-10-11) refuses a render that would replace a working clip when no Tom-signed grant covers the course:
+    // no library clip of the cast voice exists for these words, so there is nothing to reuse. Zero characters were spent; the ask is
+    // counted and skipped (not a failure), so the reusable asks behind it still switch on.
+    if (r.body && r.body.code === 'RERECORD_NOT_PERMITTED') { out.needsGrant++; continue; }
     if (r.status !== 200 || !r.body.ok) { console.log('  FAIL', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 200)); if (++out.failed >= 5) { stopped = '5 failures'; break; } continue; }
     if (r.body.source === 'rendered') { out.rendered++; out.spent += r.body.charsSpent || 0; } else out.library++;
     const bad = await alive(r.body.audioId);
@@ -157,7 +161,7 @@ async function main() {
   }
   await flush();
   const left = asks.length - n;
-  console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
+  console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}, needing a re-record grant (skipped, 0 chars) ${out.needsGrant}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
 module.exports = { rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
