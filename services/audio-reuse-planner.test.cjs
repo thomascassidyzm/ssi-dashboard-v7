@@ -1006,3 +1006,28 @@ describe('own-course clips are not a reuse source when distrusted', () => {
     expect(decideClip(c, [ownOld()], opts()).decision).toBe('SATISFIED')
   })
 })
+
+// ── the lookup's URL budget ────────────────────────────────────────────────
+
+describe('findCandidates batches by URL length, not only by count', () => {
+  // `.in()` goes in the query string. 100 Japanese sentences percent-encode to
+  // well past the ~16k characters Supabase accepts, which surfaced as
+  // "reuse lookup: TypeError: fetch failed" on jpn_for_eng and kor_for_eng.
+  it('keeps every CJK batch inside the budget and still asks for every text', async () => {
+    const sent = []
+    const supabase = { from: () => ({ select: () => ({ in: (_col, values) => { sent.push(values); return Promise.resolve({ data: [], error: null }) } }) }) }
+    const clips = new Map(Array.from({ length: 250 }, (_, i) => {
+      const text = `私は毎日日本語を話す練習をしたいと思っています${i}`
+      return [`target1|jpn|v|${i}`, { clipKey: `target1|jpn|v|${i}`, text }]
+    }))
+    await planner.findCandidates(supabase, clips)
+    const encoded = b => b.reduce((n, v) => n + encodeURIComponent(v).length + 1, 0)
+    expect(Math.max(...sent.map(encoded))).toBeLessThanOrEqual(8000)
+    expect(new Set(sent.flat()).size).toBe(new Set([...clips.values()].map(c => c.text.toLowerCase())).size)
+  })
+
+  it('leaves short Latin text at 100 per batch', () => {
+    const batches = planner.inListBatches(Array.from({ length: 250 }, (_, i) => `hola ${i}`))
+    expect(batches.map(b => b.length)).toEqual([100, 100, 50])
+  })
+})

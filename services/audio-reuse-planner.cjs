@@ -597,6 +597,31 @@ async function fetchPresentationTexts(supabase, courseCode, legoIds, chunk = 200
 // ===========================================================================
 
 /**
+ * `.in()` puts every value in the QUERY STRING, so a batch is bounded by URL
+ * length, not by count. Supabase drops a request whose URL runs past ~16k
+ * characters as a bare "TypeError: fetch failed" (measured 2026-08-06 in
+ * audio-repair-core: 500 uuids fail, 300 pass). A Japanese or Korean character
+ * is 9 characters once percent-encoded, so 100 CJK sentences overran the limit
+ * and /reuse-plan died on jpn_for_eng and kor_for_eng while Latin text
+ * squeezed under it. A batch closes at whichever bound comes first; a single
+ * value over the budget still goes, alone.
+ */
+const IN_LIST_URL_BUDGET = 8000
+
+function inListBatches(values, { maxItems = 100, maxChars = IN_LIST_URL_BUDGET } = {}) {
+  const out = []
+  let batch = [], chars = 0
+  for (const v of values) {
+    // the encoded value plus the quotes and comma postgrest-js may wrap it in
+    const cost = encodeURIComponent(String(v)).length + 9
+    if (batch.length && (batch.length >= maxItems || chars + cost > maxChars)) { out.push(batch); batch = []; chars = 0 }
+    batch.push(v); chars += cost
+  }
+  if (batch.length) out.push(batch)
+  return out
+}
+
+/**
  * Look up reuse candidates for a batch of clips, estate-wide.
  *
  * Query shape matters here. course_audio cannot be scanned by course_code on a
@@ -620,13 +645,17 @@ async function findCandidates(supabase, clips, { batchSize = 100 } = {}) {
     }
   }
 
-  const texts = [...allTexts]
   const rowsByText = new Map()
-  for (let i = 0; i < texts.length; i += batchSize) {
-    const { data, error } = await supabase
-      .from('course_audio')
-      .select('id, course_code, text, text_normalized, language, role, voice_id, origin, s3_key, duration_ms, word_boundaries, created_at, audio_revision')
-      .in('text_normalized', texts.slice(i, i + batchSize))
+  for (const batch of inListBatches([...allTexts], { maxItems: batchSize })) {
+    let data, error
+    try {
+      ({ data, error } = await supabase
+        .from('course_audio')
+        .select('id, course_code, text, text_normalized, language, role, voice_id, origin, s3_key, duration_ms, word_boundaries, created_at, audio_revision')
+        .in('text_normalized', batch))
+    } catch (e) {
+      throw new Error(`reuse lookup: ${e.message}${e.cause ? ` (${e.cause.code || e.cause.message})` : ''}`)
+    }
     if (error) throw new Error(`reuse lookup: ${error.message}`)
     for (const row of (data || [])) {
       const k = row.text_normalized
@@ -1681,6 +1710,7 @@ module.exports = {
   enumerateRoundClips,
   buildReusePlan,
   findCandidates,
+  inListBatches,
   verifyPlanBytes,
   verifyPlanVeracity,
   recountPlan,
