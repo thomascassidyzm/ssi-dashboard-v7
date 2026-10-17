@@ -77,6 +77,10 @@
   ],
   "rewrites": [
     {
+      "source": "/api/admin/voice-coverage",
+      "destination": "https://watson-1.tail4968cb.ts.net:8443/api/admin/voice-coverage"
+    },
+    {
       "source": "/api/recording/:path*",
       "destination": "https://watson-1.tail4968cb.ts.net:8443/api/recording/:path*"
     },

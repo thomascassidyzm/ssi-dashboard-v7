@@ -48,6 +48,7 @@ const UserFeedback = () => import('../views/production/UserFeedback.vue')
 
 
 const routes = [
+  { path: '/admin/voice-coverage', name: 'VoiceCoverage', component: () => import('../views/VoiceCoverage.vue'), meta: { title: 'Per-voice coverage', requiresAuth: true, requiresAdmin: true } },
   // ============================================
   // Mission Control Hub - Main Entry Point
   // ============================================
