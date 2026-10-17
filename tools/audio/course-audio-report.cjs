@@ -163,6 +163,7 @@ async function main(argv = process.argv.slice(2)) {
   if (!codes.length) throw new Error('name --course <code> or --premium11')
   const { pg, db } = await va.connect()
   try {
+    if (has('--trace')) { const q = pg.query.bind(pg); pg.query = async (...a) => { const t = Date.now(); try { return await q(...a) } finally { console.error(`[trace] ${Date.now() - t}ms ${String(a[0]).replace(/\s+/g, ' ').slice(0, 90)}`) } } }
     const cast = await rv.loadCast(db), out = {}
     for (const code of codes) {
       const d = await reportFor(pg, db, cast, code, { days: Number(opt('--days', 14)), explainDay: opt('--explain-day', null) })
