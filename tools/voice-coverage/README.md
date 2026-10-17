@@ -46,3 +46,10 @@ before restarting. `startedAt` and `generatedAt` bound the measurement window;
 it is not a transactionally frozen estate snapshot.
 
 Verification: `node --test tools/voice-coverage/coverage-check.cjs`.
+
+Browser rendering and phone-table check:
+`node e2e/voice-coverage/browser-check.cjs`. Reads the saved summary through
+the merged loopback API; browser sign-in is synthetic and all browser DB/API
+calls are intercepted. Checks lazy table rendering, filtering, detail expansion
+and readable columns on a 390px phone. Screenshots go to CS_SCRATCH or the
+evidence store. COVERAGE_PAGE_URL/COVERAGE_API_URL override the live defaults.
