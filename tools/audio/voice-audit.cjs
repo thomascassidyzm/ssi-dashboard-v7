@@ -109,7 +109,7 @@ async function clipCensus(pg, code) {
   const ptrs = []
   for (const [tbl, cols] of Object.entries(SLOT_COLUMNS)) for (const col of cols) ptrs.push(`select ${ptr(tbl, col)} id from ${tbl} x where x.course_code = $1 and x.${col} is not null`)
   const { rows } = await pg.query(`with p as (select distinct id from (${ptrs.join(' union all ')}) u)
-    select ca.role, ca.voice_id, ca.origin, to_char(date_trunc('day', ca.created_at), 'YYYY-MM-DD') day, count(*) clips, count(distinct ca.text_normalized) texts,
+    select ca.role, ca.voice_id, ca.origin, to_char(date_trunc('day', ca.created_at), 'YYYY-MM-DD') as day, count(*) clips, count(distinct ca.text_normalized) texts,
       count(*) filter (where p.id is not null) pointed
     from course_audio ca left join p on p.id = ca.id
     where ca.course_code = $1 and ca.role in ('known','target1','target2','presentation') and ${usable('ca')}
