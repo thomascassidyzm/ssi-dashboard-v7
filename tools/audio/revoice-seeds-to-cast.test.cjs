@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'node:module'
-const { staleAsks, isStop, castFromVoiceConfig, postWith } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
+const { rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
 
 // job #864: Popty restarting under an auto-deploy (ECONNREFUSED) is waited out; an answer, a 402 included, comes back first time
 describe('postWith', () => {
@@ -54,5 +54,17 @@ describe('revoice-seeds-to-cast', () => {
     }
     expect(castFromVoiceConfig(vc)).toEqual({ castByRole: { target1: 'cartesia_d93', target2: 'cartesia_b1d' }, missing: null })
     expect(castFromVoiceConfig({ stored: vc.stored }).missing.role).toBe('target1')
+  })
+})
+
+// Tom 2026-10-17: every repoint keeps the old pointer so any course can be rolled back
+describe('rollbackLines', () => {
+  it('records old and new pointer per slot, one JSON line each', () => {
+    const out = rollbackLines('ita_for_eng', [{ seedNumber: 3, role: 'target1', audioId: 'N1', expectCurrent: 'O1' }, { phraseId: 'p9', role: 'target2', audioId: 'N2', expectCurrent: 'O2' }], 'T')
+    const rows = out.trim().split('\n').map((l) => JSON.parse(l))
+    expect(rows).toEqual([
+      { at: 'T', course: 'ita_for_eng', seedNumber: 3, role: 'target1', old: 'O1', new: 'N1' },
+      { at: 'T', course: 'ita_for_eng', phraseId: 'p9', role: 'target2', old: 'O2', new: 'N2' },
+    ])
   })
 })

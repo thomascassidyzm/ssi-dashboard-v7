@@ -20,7 +20,16 @@ const AGENT = 'revoice-seeds-to-cast (job #863)';
 const ROLES = ['target1', 'target2'];
 const LINK_EVERY = 25; // asks per link-clip request: new clips go live within a minute, without a content_version bump per clip
 const LINK_MAX = 500;  // link-clip refuses more per request (TOO_MANY)
+// Rollback record (Tom 2026-10-17): every link is appended here BEFORE it is posted, with the old pointer (expectCurrent), so any
+// course can be put back by linking each row's `old` audioId over `new` (replace + expectCurrent: new). JSONL, one link per line.
+const fs = require('fs');
+const { evidencePath } = require('../lib/evidence-path.cjs');
 const bare = (v) => String(v || '').replace(/^cartesia_/, '');
+
+/** One JSONL line per link, carrying the OLD pointer: the whole rollback is linking `old` back over `new`. */
+function rollbackLines(course, links, at) {
+  return links.map((l) => JSON.stringify({ at, course, ...(l.seedNumber ? { seedNumber: l.seedNumber } : l.legoId ? { legoId: l.legoId } : { phraseId: l.phraseId }), role: l.role, old: l.expectCurrent, new: l.audioId })).join('\n') + '\n';
+}
 
 /** Slots whose clip is TTS on a voice other than the cast voice for the role, grouped into one ask per (role, words), course order. */
 function staleAsks(rows, clips, castByRole) {
@@ -118,10 +127,13 @@ async function main() {
   console.log(`CENSUS ${COURSE} seeds 1-${SEEDS}: ${rows.length} rows; OUTSTANDING ${asks.length} asks (${JSON.stringify(byRole)}), ${slots} slots, <= ${chars} chars if none is in the library`);
   if (!RENDER) return;
 
+  const ROLLBACK = process.env.ROLLBACK_FILE || evidencePath(`audio/revoice-rollback/${COURSE}-${new Date().toISOString().slice(0, 10)}.jsonl`);
+  console.log(`rollback record: ${ROLLBACK}`);
   const out = { library: 0, rendered: 0, spent: 0, linked: 0, linkRefused: 0, failed: 0, versions: new Set() };
   let pending = [], stopped = null;
   const flush = async () => {
     const links = pending.splice(0);
+    if (links.length) fs.appendFileSync(ROLLBACK, rollbackLines(COURSE, links, new Date().toISOString()));
     for (let k = 0; k < links.length; k += LINK_MAX) {
       const l = await post(`/api/production/${COURSE}/link-clip`, { links: links.slice(k, k + LINK_MAX) });
       out.linked += l.body.linked || 0;
@@ -147,5 +159,5 @@ async function main() {
   const left = asks.length - n;
   console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { staleAsks, isStop, castFromVoiceConfig, postWith };
+module.exports = { rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
