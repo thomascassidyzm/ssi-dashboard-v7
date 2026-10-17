@@ -45,6 +45,8 @@
 require('dotenv').config({ path: require('path').join(__dirname, '../../../.env.psql') });
 const fs = require('fs');
 const { Client } = require('pg');
+const { nightlyClient, namedRead } = require('./named-read.cjs');
+const APP_NAME = 'qa:voice-variety:count-reconciliation';
 
 /** Every FK a content row uses to point at a clip. */
 const LINKS = [
@@ -170,11 +172,10 @@ function calibrate(result) {
 async function main(argv = process.argv) {
   const args = argv.slice(2);
   const quiet = args.includes('--quiet');
-  // Named for the DB watchdog; 15 min because the pooler default cancelled the nightly's aggregates.
-  const db = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }, application_name: 'qa:voice-variety:count-reconciliation', statement_timeout: 15 * 60 * 1000 });
+  const db = nightlyClient(Client, APP_NAME);
   await db.connect();
   let data;
-  try { data = await load(db); } finally { await db.end(); }
+  try { data = await namedRead(db, APP_NAME, load); } finally { await db.end(); }
 
   const result = assess(data);
   const calOk = calibrate(result);
@@ -222,5 +223,5 @@ async function main(argv = process.argv) {
 if (require.main === module) {
   main().catch((e) => { console.error(e.message); process.exit(2); });
 } else {
-  module.exports = { main, assess, calibrate, CONTENT_ROLES, CONTENT_SQL, AUDIO_SQL, POD_SQL, linkedSql };
+  module.exports = { main, load, APP_NAME, assess, calibrate, CONTENT_ROLES, CONTENT_SQL, AUDIO_SQL, POD_SQL, linkedSql };
 }

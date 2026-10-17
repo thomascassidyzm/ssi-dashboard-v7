@@ -114,13 +114,32 @@ describe('reading a locale off a voice', () => {
   });
 });
 
+// Supavisor drops startup parameters, so #104's Client options never reached
+// the backend (job #672): the name and timeout must be SET inside the
+// transaction the nightly's reads run in.
 describe('nightly connections', () => {
-  it('are named for the watchdog and outlast the pooler default timeout', () => {
-    const fs = require('fs'), path = require('path')
-    for (const f of ['check-voice-variety.cjs', 'count-reconciliation.cjs']) {
-      const src = fs.readFileSync(path.join(__dirname, f), 'utf8')
-      expect(src).toMatch(/application_name: 'qa:voice-variety:/)
-      expect(src).toMatch(/statement_timeout: 15 \* 60 \* 1000/)
-    }
+  const { namedRead, STATEMENT_TIMEOUT_MS } = require('./named-read.cjs')
+  const fake = () => {
+    const seen = []
+    return { seen, query: async (sql, params) => { seen.push({ sql: sql.trim().split(/\s+/).slice(0, 3).join(' '), params }); return { rows: [] } } }
+  }
+
+  for (const [file, name] of [['check-voice-variety.cjs', 'qa:voice-variety:linked-voices'], ['count-reconciliation.cjs', 'qa:voice-variety:count-reconciliation']]) {
+    it(`${file} names itself and lifts the timeout on the backend before it reads`, async () => {
+      const mod = require(`./${file}`)
+      expect(mod.APP_NAME).toBe(name)
+      const db = fake()
+      await namedRead(db, mod.APP_NAME, mod.load)
+      expect(db.seen[0].sql).toBe('BEGIN READ ONLY')
+      expect(db.seen[1].params).toEqual([name, String(STATEMENT_TIMEOUT_MS)])
+      expect(db.seen.at(-1).sql).toBe('COMMIT')
+      expect(db.seen.length).toBeGreaterThan(3)
+    })
+  }
+
+  it('joins course_audio once, not once per slot', () => {
+    const { LINKED_VOICES_SQL } = require('./check-voice-variety.cjs')
+    expect(LINKED_VOICES_SQL.match(/JOIN course_audio/g)).toHaveLength(1)
+    expect(LINKED_VOICES_SQL.match(/_audio_id IS NOT NULL/g)).toHaveLength(6)
   })
 })

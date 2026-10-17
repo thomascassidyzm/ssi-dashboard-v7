@@ -50,6 +50,8 @@
 require('dotenv').config({ path: require('path').join(__dirname, '../../../.env.psql') });
 const fs = require('fs');
 const { Client } = require('pg');
+const { nightlyClient, namedRead } = require('./named-read.cjs');
+const APP_NAME = 'qa:voice-variety:linked-voices';
 const { COURSE_CAST_FIELDS, targetCastKey, baseLanguageOfCastKey, castKeySource } = require('../../../services/shared/cast-language-key.cjs');
 const { applyLanguageCast } = require('../../../services/shared/language-voice-cast.cjs');
 const { voiceSpellings } = require('../../../services/shared/clip-identity-lookup.cjs');
@@ -61,31 +63,19 @@ const TARGET_ROLES = Object.freeze(['target1', 'target2']);
 /**
  * Which voices are actually LINKED to a course's target-side content rows.
  *
- * One grouped aggregate per content table rather than a row walk: the estate
- * carries ~2.6M course_audio rows and several other jobs share this Supabase
- * project, so this asks Postgres for the distinct (course, role, voice) triples
- * and nothing else.
+ * Collect every (course, role, clip id) reference first, then join course_audio
+ * (~2.6M rows) ONCE. The earlier shape joined it in each of six branches; on the
+ * owner pooler that ran 65-98s and was cancelled every night from 2026-10-15
+ * (job #672). Same rows out: the inner join drops NULL slots exactly as before.
  */
+const TARGET_SLOTS = Object.freeze(['course_seeds', 'course_legos', 'course_practice_phrases']
+  .flatMap((t) => TARGET_ROLES.map((role) => [t, role])));
 const LINKED_VOICES_SQL = `
-  SELECT course_code, role, voice_id, sum(n)::bigint AS n FROM (
-    SELECT t.course_code, 'target1' AS role, ca.voice_id, count(*) AS n
-      FROM course_seeds t JOIN course_audio ca ON ca.id = t.target1_audio_id GROUP BY 1,3
-    UNION ALL
-    SELECT t.course_code, 'target2', ca.voice_id, count(*)
-      FROM course_seeds t JOIN course_audio ca ON ca.id = t.target2_audio_id GROUP BY 1,3
-    UNION ALL
-    SELECT t.course_code, 'target1', ca.voice_id, count(*)
-      FROM course_legos t JOIN course_audio ca ON ca.id = t.target1_audio_id GROUP BY 1,3
-    UNION ALL
-    SELECT t.course_code, 'target2', ca.voice_id, count(*)
-      FROM course_legos t JOIN course_audio ca ON ca.id = t.target2_audio_id GROUP BY 1,3
-    UNION ALL
-    SELECT t.course_code, 'target1', ca.voice_id, count(*)
-      FROM course_practice_phrases t JOIN course_audio ca ON ca.id = t.target1_audio_id GROUP BY 1,3
-    UNION ALL
-    SELECT t.course_code, 'target2', ca.voice_id, count(*)
-      FROM course_practice_phrases t JOIN course_audio ca ON ca.id = t.target2_audio_id GROUP BY 1,3
-  ) x GROUP BY 1,2,3`;
+  SELECT r.course_code, r.role, ca.voice_id, count(*)::bigint AS n FROM (
+    ${TARGET_SLOTS.map(([t, role]) =>
+      `SELECT course_code, '${role}' AS role, ${role}_audio_id AS audio_id FROM ${t} WHERE ${role}_audio_id IS NOT NULL`).join('\n    UNION ALL\n    ')}
+  ) r JOIN course_audio ca ON ca.id = r.audio_id
+  GROUP BY 1,2,3`;
 
 async function load(db) {
   const [courses, voices, roles, human, linked] = await Promise.all([
@@ -238,11 +228,10 @@ function calibrate(result) {
 async function main(argv = process.argv) {
   const args = argv.slice(2);
   const quiet = args.includes('--quiet');
-  // Named for the DB watchdog; 15 min because the pooler default cancelled the nightly's aggregates.
-  const db = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }, application_name: 'qa:voice-variety:linked-voices', statement_timeout: 15 * 60 * 1000 });
+  const db = nightlyClient(Client, APP_NAME);
   await db.connect();
   let data;
-  try { data = await load(db); } finally { await db.end(); }
+  try { data = await namedRead(db, APP_NAME, load); } finally { await db.end(); }
 
   const result = assess(data);
   const calOk = calibrateWanted(args) ? calibrate(result) : calibrateSilently(result);
@@ -295,5 +284,5 @@ function calibrateSilently(result) {
 if (require.main === module) {
   main().catch((e) => { console.error(e.message); process.exit(2); });
 } else {
-  module.exports = { main, assess, buildWorld, sentence, tally, TARGET_ROLES };
+  module.exports = { main, load, LINKED_VOICES_SQL, APP_NAME, assess, buildWorld, sentence, tally, TARGET_ROLES };
 }
