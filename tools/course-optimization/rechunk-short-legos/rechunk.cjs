@@ -107,7 +107,7 @@ async function check(course) {
 }
 
 // ── author ────────────────────────────────────────────────────────────────────────────────────────
-const LANG = { afr: 'Afrikaans', spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian', zho: 'Mandarin Chinese', jpn: 'Japanese', eng: 'English', ara: 'Arabic' }
+const LANG = { afr: 'Afrikaans', spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian', zho: 'Mandarin Chinese', jpn: 'Japanese', eng: 'English', ara: 'Arabic', fas: 'Persian (Farsi, colloquial Tehrani)', rus: 'Russian', mar: 'Marathi', tel: 'Telugu', nep: 'Nepali', swa: 'Swahili', por: 'Portuguese', hin: 'Hindi' }
 function languages(course) { const [t, k] = course.split('_for_'); return { target: LANG[t.split('_')[0]] || t, known: LANG[k] || k } }
 async function callClaude(model, system, user, label) {
   const dir = process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), '.cs-accounts', 'account-3')
@@ -469,7 +469,9 @@ async function undo(course) {
         await pg.query(`INSERT INTO ${table} (${cols.join(',')}) VALUES (${cols.map((_, i) => '$' + (i + 1)).join(',')})`, cols.map((k) => L.sqlValue(isJson(table, k), row[k])))
       }
       for (const r of l.before.legos) await ins('course_legos', r, LEGO_COLS_SKIP)
-      for (const r of l.before.phrases) await ins('course_practice_phrases', r)
+      // a component row's presentation link is refused by components_never_introduced (Tom 2026-08-06); a before-state that predates that
+      // trigger may still carry one, which would make the whole undo fail (#688, fas S79). It goes back without it.
+      for (const r of l.before.phrases) await ins('course_practice_phrases', r.phrase_role === 'component' && r.presentation_audio_id ? { ...r, presentation_audio_id: null } : r)
       for (const r of l.before.intros) await ins('lego_introductions', r)
       for (const t of l.before.audioTags) await pg.query('UPDATE course_audio SET lego_id=$1 WHERE id=$2', [t.lego_id, t.id])
       await pg.query('UPDATE course_seeds SET approved_at=$1, target_text=$4, target1_audio_id=$5, target2_audio_id=$6, target_text_roman=$7 WHERE course_code=$2 AND seed_number=$3', [l.before.seed.approved_at, course, seed, l.before.seed.target_text, l.before.seed.target1_audio_id, l.before.seed.target2_audio_id, l.before.seed.target_text_roman])

@@ -1,0 +1,545 @@
+{
+ "course": "mar_for_eng",
+ "note": "#688 zero-clash repair (#733): chunk-ups and topups waiting on a target voice cast for mar. Run with Popty tools/course-optimization/rechunk-short-legos (check, author, apply, fill-audio) once the cast exists.",
+ "seeds": [
+  {
+   "seed": 60,
+   "kind": "topup",
+   "why": "the LEGO was reworded on the known side; its BUILD row that only repeats the LEGO keeps the old English and cannot be cut under the floor; author fresh BUILD, then cut the bare row",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 82,
+   "kind": "merge",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"not going to wait for you\"",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "not going to wait for you",
+     "target": "तुमची वाट पाहणार नाही",
+     "components": [
+      {
+       "known": "your",
+       "target": "तुमची"
+      },
+      {
+       "known": "path",
+       "target": "वाट"
+      },
+      {
+       "known": "going to look",
+       "target": "पाहणार"
+      },
+      {
+       "known": "not",
+       "target": "नाही"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 84,
+   "kind": "topup",
+   "why": "the LEGO was reworded on the known side; its BUILD row that only repeats the LEGO keeps the old English and cannot be cut under the floor; author fresh BUILD, then cut the bare row",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 100,
+   "kind": "topup",
+   "why": "the LEGO was reworded on the known side; its BUILD row that only repeats the LEGO keeps the old English and cannot be cut under the floor; author fresh BUILD, then cut the bare row",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 103,
+   "kind": "topup",
+   "why": "the LEGO was reworded on the known side; its BUILD row that only repeats the LEGO keeps the old English and cannot be cut under the floor; author fresh BUILD, then cut the bare row",
+   "topup": [
+    3
+   ]
+  },
+  {
+   "seed": 111,
+   "kind": "merge",
+   "why": "conjunction \"when\" clashed with interrogative \"when\"; chunk up to the seed's own \"when we\"",
+   "delete": [
+    1
+   ],
+   "set": {
+    "6": {
+     "type": "M",
+     "known": "when we",
+     "target": "जेव्हा आपण",
+     "components": [
+      {
+       "known": "when",
+       "target": "जेव्हा"
+      },
+      {
+       "known": "we",
+       "target": "आपण"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 122,
+   "kind": "topup",
+   "why": "the LEGO was reworded on the known side; its BUILD row that only repeats the LEGO keeps the old English and cannot be cut under the floor; author fresh BUILD, then cut the bare row",
+   "topup": [
+    4,
+    5
+   ]
+  },
+  {
+   "seed": 125,
+   "kind": "merge",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"my belief\"",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "my belief",
+     "target": "माझा विश्वास",
+     "components": [
+      {
+       "known": "my",
+       "target": "माझा"
+      },
+      {
+       "known": "belief",
+       "target": "विश्वास"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 129,
+   "kind": "merge",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"I'm so happy that\"",
+   "delete": [
+    3
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "I'm so happy that",
+     "target": "याचा मला खूप आनंद",
+     "components": [
+      {
+       "known": "of this",
+       "target": "याचा"
+      },
+      {
+       "known": "to me",
+       "target": "मला"
+      },
+      {
+       "known": "so",
+       "target": "खूप"
+      },
+      {
+       "known": "happy",
+       "target": "आनंद"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 136,
+   "kind": "merge",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"my female friend\"",
+   "delete": [
+    3
+   ],
+   "set": {
+    "6": {
+     "type": "M",
+     "known": "my female friend",
+     "target": "माझी मैत्रीण",
+     "components": [
+      {
+       "known": "my",
+       "target": "माझी"
+      },
+      {
+       "known": "female friend",
+       "target": "मैत्रीण"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 139,
+   "kind": "merge",
+   "why": "\"so\" clashed with other \"so\" forms; chunk up to the seed's own \"so early\"",
+   "delete": [
+    3
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "so early",
+     "target": "इतक्या लवकर",
+     "components": [
+      {
+       "known": "so",
+       "target": "इतक्या"
+      },
+      {
+       "known": "early",
+       "target": "लवकर"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 142,
+   "kind": "merge",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"very kind of you\" and \"grateful to you\"",
+   "delete": [
+    2,
+    3
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "grateful to you",
+     "target": "तुमचा आभारी",
+     "components": [
+      {
+       "known": "your",
+       "target": "तुमचा"
+      },
+      {
+       "known": "grateful",
+       "target": "आभारी"
+      }
+     ]
+    },
+    "5": {
+     "type": "M",
+     "known": "very kind of you",
+     "target": "तुमचं खूप चांगुलपण",
+     "components": [
+      {
+       "known": "your",
+       "target": "तुमचं"
+      },
+      {
+       "known": "very",
+       "target": "खूप"
+      },
+      {
+       "known": "kindness",
+       "target": "चांगुलपण"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 146,
+   "kind": "merge",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"to fix\"",
+   "delete": [
+    3
+   ],
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "to fix",
+     "target": "दुरुस्त करायचा",
+     "components": [
+      {
+       "known": "fix",
+       "target": "दुरुस्त"
+      },
+      {
+       "known": "to do",
+       "target": "करायचा"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 164,
+   "kind": "topup",
+   "why": "the LEGO was reworded on the known side; its BUILD row that only repeats the LEGO keeps the old English and cannot be cut under the floor; author fresh BUILD, then cut the bare row",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 166,
+   "kind": "grow",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"my name\"",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "my name",
+     "target": "माझं नाव",
+     "components": [
+      {
+       "known": "my",
+       "target": "माझं"
+      },
+      {
+       "known": "name",
+       "target": "नाव"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 167,
+   "kind": "grow",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"need to do\"",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "need to do",
+     "target": "करायची गरज",
+     "components": [
+      {
+       "known": "to do",
+       "target": "करायची"
+      },
+      {
+       "known": "need",
+       "target": "गरज"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 175,
+   "kind": "grow",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"want to do\"",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "want to do",
+     "target": "करायचं आहे",
+     "components": [
+      {
+       "known": "to do",
+       "target": "करायचं"
+      },
+      {
+       "known": "is",
+       "target": "आहे"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 183,
+   "kind": "merge",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"seen them\" (settles they and saw together)",
+   "delete": [
+    1
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "seen them",
+     "target": "त्या पाहिल्या",
+     "components": [
+      {
+       "known": "them",
+       "target": "त्या"
+      },
+      {
+       "known": "seen",
+       "target": "पाहिल्या"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 184,
+   "kind": "merge",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"a while ago\"",
+   "delete": [
+    1
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "a while ago",
+     "target": "थोड्या वेळापूर्वी",
+     "components": [
+      {
+       "known": "a little",
+       "target": "थोड्या"
+      },
+      {
+       "known": "time ago",
+       "target": "वेळापूर्वी"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 188,
+   "kind": "topup",
+   "why": "the LEGO was reworded on the known side; its BUILD row that only repeats the LEGO keeps the old English and cannot be cut under the floor; author fresh BUILD, then cut the bare row",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 198,
+   "kind": "merge",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"my daughter\"",
+   "delete": [
+    1
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "my daughter",
+     "target": "माझी मुलगी",
+     "components": [
+      {
+       "known": "my",
+       "target": "माझी"
+      },
+      {
+       "known": "daughter",
+       "target": "मुलगी"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 208,
+   "kind": "merge",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"didn't want to ask\"",
+   "delete": [
+    1
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "didn't want to ask",
+     "target": "विचारायचं नव्हतं",
+     "components": [
+      {
+       "known": "to ask",
+       "target": "विचारायचं"
+      },
+      {
+       "known": "was not",
+       "target": "नव्हतं"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 220,
+   "kind": "topup",
+   "why": "the LEGO was reworded on the known side; its BUILD row that only repeats the LEGO keeps the old English and cannot be cut under the floor; author fresh BUILD, then cut the bare row",
+   "topup": [
+    3
+   ]
+  },
+  {
+   "seed": 225,
+   "kind": "topup",
+   "why": "the LEGO was reworded on the known side; its BUILD row that only repeats the LEGO keeps the old English and cannot be cut under the floor; author fresh BUILD, then cut the bare row",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 230,
+   "kind": "grow",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"wants to work\"",
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "wants to work",
+     "target": "काम करायचं आहे",
+     "components": [
+      {
+       "known": "work",
+       "target": "काम"
+      },
+      {
+       "known": "to do",
+       "target": "करायचं"
+      },
+      {
+       "known": "is",
+       "target": "आहे"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 233,
+   "kind": "topup",
+   "why": "the LEGO was reworded on the known side; its BUILD row that only repeats the LEGO keeps the old English and cannot be cut under the floor; author fresh BUILD, then cut the bare row",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 236,
+   "kind": "grow",
+   "why": "gender or case form clashed with another form on the same English; chunk up to the seed's own \"who said\"",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "who said",
+     "target": "जिने सांगितलं",
+     "components": [
+      {
+       "known": "who",
+       "target": "जिने"
+      },
+      {
+       "known": "said",
+       "target": "सांगितलं"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 240,
+   "kind": "topup",
+   "why": "the LEGO was reworded on the known side; its BUILD row that only repeats the LEGO keeps the old English and cannot be cut under the floor; author fresh BUILD, then cut the bare row",
+   "topup": [
+    2
+   ]
+  }
+ ]
+}

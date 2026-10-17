@@ -132,3 +132,10 @@ test('(#539a) the digest ignores lego_introductions, but a ledger digest written
   assert.strictEqual(L.driftProblem({ afterDigest: old }, state), null)
   assert.ok(/drift/.test(L.driftProblem({ afterDigest: old }, mirrored)))   // old lines keep their old strictness
 })
+
+test('coverage counts only words the seed says: a stale LEGO word not in its own seed may go (#688, tel S592 / rus S228)', () => {
+  const seed = { known_text: 'And along the main road.', target_text: 'ఇంకా ప్రధాన రోడ్డు వెంట.' }
+  const before = [{ idx: 2, type: 'A', known: 'and', target: 'మరియు', is_new: true }]
+  const op = { set: { 2: { type: 'A', known: 'and', target: 'ఇంకా' } } }
+  assert.deepStrictEqual(L.checkOp(seed, before, op, {}).filter((p) => /coverage/.test(p)), [])
+})

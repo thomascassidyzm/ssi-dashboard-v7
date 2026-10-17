@@ -1,0 +1,39 @@
+{
+ "course": "fas_for_eng",
+ "note": "#688 zero-clash repair: chunk-ups waiting on a target voice cast for fas. Run with Popty tools/course-optimization/rechunk-short-legos (check, author, apply, fill-audio) once the cast exists.",
+ "seeds": [
+  {
+   "seed": 79,
+   "kind": "merge",
+   "why": "interrogative 'when' clashed with the conjunction 'when'; chunk up to the seed's own 'when did you start'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "when did you start",
+     "target": "کی شروع کردی",
+     "components": [
+      {
+       "known": "when",
+       "target": "کی"
+      },
+      {
+       "known": "you started",
+       "target": "شروع کردی"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 20,
+   "kind": "topup",
+   "why": "BUILD 'his name' -> 'اسمش رو' cannot be cut under the floor; re-author the basket",
+   "topup": [
+    2
+   ]
+  }
+ ]
+}

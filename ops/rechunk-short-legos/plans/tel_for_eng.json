@@ -1,0 +1,97 @@
+{
+ "course": "tel_for_eng",
+ "note": "#688 zero-clash repair (#734): chunk-ups and basket top-ups waiting on a target voice cast for tel. Run with Popty tools/course-optimization/rechunk-short-legos (check, author, apply, fill-audio) once the cast exists.",
+ "seeds": [
+  {
+   "seed": 238,
+   "kind": "grow",
+   "why": "subject \"you\" clashed with object \"you\"; chunk up to the seed's own \"you to tell me\"",
+   "delete": [
+    1
+   ],
+   "add": [
+    {
+     "idx": 2,
+     "type": "M",
+     "known": "you to tell me",
+     "target": "నువ్వు నాకు చెప్పాలని",
+     "components": [
+      {
+       "known": "you",
+       "target": "నువ్వు"
+      },
+      {
+       "known": "to me",
+       "target": "నాకు"
+      },
+      {
+       "known": "to tell",
+       "target": "చెప్పాలని"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "seed": 181,
+   "kind": "merge",
+   "why": "exclusive \"our\" clashed with inclusive \"our\"; chunk up to the seed's own \"my mother\"",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "my mother",
+     "target": "మా అమ్మని",
+     "components": [
+      {
+       "known": "our",
+       "target": "మా"
+      },
+      {
+       "known": "mother",
+       "target": "అమ్మని"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 152,
+   "kind": "topup",
+   "why": "USE U04 repeats BUILD B03 with a stray word and cannot be cut under the floor; re-author the basket",
+   "topup": [
+    3
+   ]
+  },
+  {
+   "seed": 163,
+   "kind": "topup",
+   "why": "USE U05 \"that it is good\" clashes with S0125L01 and cannot be cut under the floor; re-author the basket",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 44,
+   "kind": "topup",
+   "why": "USE U02 repeats BUILD B01 with a stray word and cannot be cut under the floor; re-author the basket",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 592,
+   "kind": "merge",
+   "why": "\"and\" was మరియు here and ఇంకా at S0015L01; retarget to the ఇంకా the seed says",
+   "set": {
+    "2": {
+     "type": "A",
+     "known": "and",
+     "target": "ఇంకా"
+    }
+   }
+  }
+ ]
+}

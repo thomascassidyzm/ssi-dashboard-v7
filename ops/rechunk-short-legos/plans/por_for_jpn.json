@@ -1,0 +1,516 @@
+{
+ "course": "por_for_jpn",
+ "note": "#688 zero-clash repair (job #737): chunk-ups for the gender/number/person clashes the purge accepted; por_for_jpn has a target voice cast, so these run fully (check, author, apply, fill-audio). Status 2026-10-13: all 23 ops authored (baskets in por_for_jpn.baskets.json) and applied; topups for seeds 82, 110, 124 stay live and voiced. The 20 seeds below were UNDONE because fill-audio.cjs breaks on the first presentation refusal (NO_VOICE) and so never voices the new LEGOs. Re-apply with rechunk.cjs apply por_for_jpn --seeds <these> --apply (no re-authoring needed) once fill-audio continues past presentation refusals, then fill-audio --apply.",
+ "seeds": [
+  {
+   "seed": 182,
+   "kind": "replace",
+   "why": "'私の' as 'as minhas' clashed with o meu/minha/meu; chunk up to the seed's own 'as minhas chaves'",
+   "delete": [
+    2
+   ],
+   "add": [
+    {
+     "idx": 5,
+     "type": "M",
+     "known": "私の鍵",
+     "target": "as minhas chaves",
+     "components": [
+      {
+       "known": "私の",
+       "target": "as minhas"
+      },
+      {
+       "known": "鍵",
+       "target": "chaves"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "seed": 136,
+   "kind": "replace",
+   "why": "'私の' as 'minha' clashed with o meu; chunk up to the seed's own 'minha amiga'; top up L3 'あなたはできます' so its bare-copy BUILD can go",
+   "delete": [
+    5
+   ],
+   "add": [
+    {
+     "idx": 7,
+     "type": "M",
+     "known": "私の女性の友達",
+     "target": "minha amiga",
+     "components": [
+      {
+       "known": "私の",
+       "target": "minha"
+      },
+      {
+       "known": "女性の友達",
+       "target": "amiga"
+      }
+     ]
+    }
+   ],
+   "topup": [
+    3
+   ]
+  },
+  {
+   "seed": 239,
+   "kind": "replace",
+   "why": "'私の' as 'minha' clashed with o meu; chunk up to the seed's own 'a minha mãe'",
+   "delete": [
+    1
+   ],
+   "add": [
+    {
+     "idx": 5,
+     "type": "M",
+     "known": "私の母",
+     "target": "a minha mãe",
+     "components": [
+      {
+       "known": "私の",
+       "target": "a minha"
+      },
+      {
+       "known": "母",
+       "target": "mãe"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "seed": 240,
+   "kind": "replace",
+   "why": "'私の' as 'meu' clashed with o meu; chunk up to the seed's own 'o meu pai', keeping 'pai' as its debut",
+   "delete": [
+    1
+   ],
+   "add": [
+    {
+     "idx": 4,
+     "type": "M",
+     "known": "私の父",
+     "target": "o meu pai",
+     "components": [
+      {
+       "known": "私の",
+       "target": "o meu"
+      },
+      {
+       "known": "父",
+       "target": "pai"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "seed": 134,
+   "kind": "replace",
+   "why": "'一つの' as 'um' clashed with 'uma'; chunk up to the seed's own 'não é um problema'",
+   "delete": [
+    1
+   ],
+   "add": [
+    {
+     "idx": 6,
+     "type": "M",
+     "known": "問題ありません",
+     "target": "não é um problema",
+     "components": [
+      {
+       "known": "〜ではない",
+       "target": "não é"
+      },
+      {
+       "known": "一つの",
+       "target": "um"
+      },
+      {
+       "known": "問題",
+       "target": "problema"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "seed": 147,
+   "kind": "merge",
+   "why": "'親切な' as 'simpática' clashed with 'simpático'; chunk up to the seed's own 'foi muito simpática'",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "とても親切でした",
+     "target": "foi muito simpática",
+     "components": [
+      {
+       "known": "〜でした",
+       "target": "foi"
+      },
+      {
+       "known": "とても",
+       "target": "muito"
+      },
+      {
+       "known": "親切な",
+       "target": "simpática"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 246,
+   "kind": "grow",
+   "why": "'忙しい' as 'ocupada' clashed with 'ocupado'; grow to the seed's own 'demasiado ocupada'",
+   "set": {
+    "5": {
+     "type": "M",
+     "known": "忙しすぎました",
+     "target": "demasiado ocupada",
+     "components": [
+      {
+       "known": "〜すぎる",
+       "target": "demasiado"
+      },
+      {
+       "known": "忙しい",
+       "target": "ocupada"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 177,
+   "kind": "grow",
+   "why": "'彼女は〜したい' as bare 'quer' clashed with 'ela quer'; grow to the seed's own 'onde quer ir'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "どこに行きたいか",
+     "target": "onde quer ir",
+     "components": [
+      {
+       "known": "どこに",
+       "target": "onde"
+      },
+      {
+       "known": "〜したい",
+       "target": "quer"
+      },
+      {
+       "known": "行く",
+       "target": "ir"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 222,
+   "kind": "replace",
+   "why": "'彼女は〜したい' as bare 'quer' clashed with 'ela quer'; chunk up to the seed's own 'o que quer'",
+   "delete": [
+    3
+   ],
+   "add": [
+    {
+     "idx": 4,
+     "type": "M",
+     "known": "何が欲しいか",
+     "target": "o que quer",
+     "components": [
+      {
+       "known": "何が",
+       "target": "o que"
+      },
+      {
+       "known": "欲しい",
+       "target": "quer"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "seed": 141,
+   "kind": "replace",
+   "why": "'〜です' as 'está' clashed with 'é'/'somos'; chunk up to the seed's own 'está tudo bem'",
+   "delete": [
+    1
+   ],
+   "add": [
+    {
+     "idx": 4,
+     "type": "M",
+     "known": "全部大丈夫です",
+     "target": "está tudo bem",
+     "components": [
+      {
+       "known": "〜です",
+       "target": "está"
+      },
+      {
+       "known": "すべて",
+       "target": "tudo"
+      },
+      {
+       "known": "大丈夫",
+       "target": "bem"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "seed": 109,
+   "kind": "grow",
+   "why": "'新しい' as 'novas' clashed with 'novo'; grow to the seed's own 'palavras novas'",
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "新しい言葉",
+     "target": "palavras novas",
+     "components": [
+      {
+       "known": "言葉",
+       "target": "palavras"
+      },
+      {
+       "known": "新しい",
+       "target": "novas"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 256,
+   "kind": "grow",
+   "why": "'一時間' carried only 'hora' while its BUILD says 'uma hora'; grow to the seed's own 'uma hora'",
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "一時間",
+     "target": "uma hora",
+     "components": [
+      {
+       "known": "一つの",
+       "target": "uma"
+      },
+      {
+       "known": "時間",
+       "target": "hora"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 290,
+   "kind": "grow",
+   "why": "'彼は知っている' carried only 'sabe' while its BUILD says 'ele sabe'; grow to the seed's own 'ele sabe'",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "彼は知っている",
+     "target": "ele sabe",
+     "components": [
+      {
+       "known": "彼は",
+       "target": "ele"
+      },
+      {
+       "known": "知っている",
+       "target": "sabe"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 128,
+   "kind": "grow",
+   "why": "'私は知っていました' carried only 'conhecia' while its BUILD says 'eu conhecia'; grow to the seed's own 'eu conhecia'",
+   "set": {
+    "5": {
+     "type": "M",
+     "known": "私は知っていました",
+     "target": "eu conhecia",
+     "components": [
+      {
+       "known": "私は",
+       "target": "eu"
+      },
+      {
+       "known": "知っていました",
+       "target": "conhecia"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 85,
+   "kind": "replace",
+   "why": "'あの' as 'essas' clashed with 'aquela'; chunk up to the seed's own 'essas pessoas'",
+   "delete": [
+    2
+   ],
+   "add": [
+    {
+     "idx": 4,
+     "type": "M",
+     "known": "あの人たち",
+     "target": "essas pessoas",
+     "components": [
+      {
+       "known": "あの",
+       "target": "essas"
+      },
+      {
+       "known": "人たち",
+       "target": "pessoas"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "seed": 233,
+   "kind": "replace",
+   "why": "'あなたの' as 'tua' clashed with 'o teu'; chunk up to the seed's own 'a tua irmã'",
+   "delete": [
+    2
+   ],
+   "add": [
+    {
+     "idx": 4,
+     "type": "M",
+     "known": "あなたの妹",
+     "target": "a tua irmã",
+     "components": [
+      {
+       "known": "あなたの",
+       "target": "a tua"
+      },
+      {
+       "known": "妹",
+       "target": "irmã"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "seed": 234,
+   "kind": "replace",
+   "why": "'あなたの' as 'teu' clashed with 'o teu'; chunk up to the seed's own 'o teu irmão'",
+   "delete": [
+    5
+   ],
+   "add": [
+    {
+     "idx": 7,
+     "type": "M",
+     "known": "あなたの兄",
+     "target": "o teu irmão",
+     "components": [
+      {
+       "known": "あなたの",
+       "target": "o teu"
+      },
+      {
+       "known": "兄",
+       "target": "irmão"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "seed": 125,
+   "kind": "grow",
+   "why": "'きみの' as 'a tua' clashed with 'o teu'; grow to the seed's own 'a tua ideia'",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "きみの考え",
+     "target": "a tua ideia",
+     "components": [
+      {
+       "known": "きみの",
+       "target": "a tua"
+      },
+      {
+       "known": "考え",
+       "target": "ideia"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 160,
+   "kind": "grow",
+   "why": "'単語' as 'palavra' clashed with 'palavras'; grow to the seed's own 'esta palavra'",
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "この言葉",
+     "target": "esta palavra",
+     "components": [
+      {
+       "known": "この",
+       "target": "esta"
+      },
+      {
+       "known": "言葉",
+       "target": "palavra"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 266,
+   "kind": "replace",
+   "why": "'の' as 'do' clashed with 'da'; chunk up to the seed's own 'do meu pai'",
+   "delete": [
+    2
+   ],
+   "add": [
+    {
+     "idx": 4,
+     "type": "M",
+     "known": "私の父の",
+     "target": "do meu pai",
+     "components": [
+      {
+       "known": "〜の",
+       "target": "do"
+      },
+      {
+       "known": "私の",
+       "target": "meu"
+      },
+      {
+       "known": "父",
+       "target": "pai"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

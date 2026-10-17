@@ -1,0 +1,257 @@
+{
+ "course": "nep_for_eng",
+ "note": "#688 zero-clash repair (job #736): chunk-ups and basket top-ups waiting on a target voice cast for nep. Run with Popty tools/course-optimization/rechunk-short-legos (check, author, apply, fill-audio) once the cast exists.",
+ "seeds": [
+  {
+   "seed": 1,
+   "kind": "topup",
+   "why": "USE \"I want\" -> \"म चाहन्छु।\" adds the pronoun its LEGO \"want\" drops and clashes with the later LEGOs \"I want\" -> \"चाहन्छु\"; seed 1 keeps 1 USE, so it cannot be cut: author fresh USE, then cut U01",
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 37,
+   "kind": "merge",
+   "why": "ergative \"I\" (मैले) clashes with \"I\" (म); chunk up to the seed's own \"last month I\"; L02 also needs fresh BUILD so its pronoun-added B01 can go",
+   "delete": [
+    1
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "last month I",
+     "target": "मैले गत महिना",
+     "components": [
+      {
+       "known": "I",
+       "target": "मैले"
+      },
+      {
+       "known": "last month",
+       "target": "गत महिना"
+      }
+     ]
+    }
+   },
+   "topup": [
+    2
+   ]
+  },
+  {
+   "seed": 46,
+   "kind": "topup",
+   "why": "BUILD \"I am not\" -> \"म हुन्नँ।\" adds the pronoun its LEGO drops; the LEGO has 2 BUILD, so author fresh BUILD and cut B01",
+   "topup": [
+    4
+   ]
+  },
+  {
+   "seed": 47,
+   "kind": "grow",
+   "why": "copula \"is\" (हो) clashes with \"is\" (छ); chunk up to the seed's own \"it's a good thing\"",
+   "set": {
+    "1": {
+     "type": "M",
+     "known": "it's a good thing",
+     "target": "राम्रो कुरा हो।",
+     "components": [
+      {
+       "known": "good",
+       "target": "राम्रो"
+      },
+      {
+       "known": "thing",
+       "target": "कुरा"
+      },
+      {
+       "known": "is",
+       "target": "हो।"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 52,
+   "kind": "topup",
+   "why": "BUILD \"he wanted\" -> \"उनी चाहन्थे।\" adds the pronoun its LEGO drops; 3 BUILD, so author fresh BUILD and cut B01",
+   "topup": [
+    7
+   ]
+  },
+  {
+   "seed": 62,
+   "kind": "grow",
+   "why": "\"whether\" (कि) clashes with \"whether\" (कि भनेर); chunk up to the seed's own \"whether I can\" = \"सक्छु कि सक्दिनँ\"",
+   "set": {
+    "4": {
+     "type": "M",
+     "known": "whether I can",
+     "target": "सक्छु कि सक्दिनँ।",
+     "components": [
+      {
+       "known": "I can",
+       "target": "सक्छु"
+      },
+      {
+       "known": "whether",
+       "target": "कि"
+      },
+      {
+       "known": "I can't",
+       "target": "सक्दिनँ।"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 79,
+   "kind": "merge",
+   "why": "interrogative \"when\" (कहिले) clashes with the conjunction \"when\" (जब); chunk up to the seed's own \"when did you start\"",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "when did you start",
+     "target": "कहिले सुरु गर्नुभयो",
+     "components": [
+      {
+       "known": "when",
+       "target": "कहिले"
+      },
+      {
+       "known": "you started",
+       "target": "सुरु गर्नुभयो"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 169,
+   "kind": "topup",
+   "why": "USE \"what do you want me to do?\" adds तपाईं to its LEGO and clashes with it; 3 USE, so author fresh USE and cut U01",
+   "topup": [
+    1
+   ]
+  },
+  {
+   "seed": 211,
+   "kind": "merge",
+   "why": "ergative \"they\" (उनीहरूले) clashes with \"they\" (उनीहरू); chunk up to the seed's own \"they told us\"",
+   "delete": [
+    1,
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "they told us",
+     "target": "उनीहरूले हामीलाई भने",
+     "components": [
+      {
+       "known": "they",
+       "target": "उनीहरूले"
+      },
+      {
+       "known": "to us",
+       "target": "हामीलाई"
+      },
+      {
+       "known": "told",
+       "target": "भने"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 252,
+   "kind": "merge",
+   "why": "interrogative \"when\" (कहिले) clashes with the conjunction \"when\" (जब); chunk up to the seed's own \"when will you be ready\"",
+   "delete": [
+    1
+   ],
+   "set": {
+    "2": {
+     "type": "M",
+     "known": "when will you be ready",
+     "target": "कहिले तयार हुनुहुनेछ?",
+     "components": [
+      {
+       "known": "when",
+       "target": "कहिले"
+      },
+      {
+       "known": "ready",
+       "target": "तयार"
+      },
+      {
+       "known": "will you be",
+       "target": "हुनुहुनेछ?"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 262,
+   "kind": "merge",
+   "why": "interrogative \"who\" (को) clashes with the relative \"who\" (जो); chunk up to the seed's own \"who was\"",
+   "delete": [
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "who was",
+     "target": "को थिए?",
+     "components": [
+      {
+       "known": "who",
+       "target": "को"
+      },
+      {
+       "known": "was",
+       "target": "थिए?"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "seed": 283,
+   "kind": "merge",
+   "why": "interrogative \"which\" (कुन) clashes with the relative \"which\" (जसले); chunk up to the seed's own \"which of your friends\"",
+   "delete": [
+    1,
+    2
+   ],
+   "set": {
+    "3": {
+     "type": "M",
+     "known": "which of your friends",
+     "target": "तपाईंका कुन साथीहरू",
+     "components": [
+      {
+       "known": "your",
+       "target": "तपाईंका"
+      },
+      {
+       "known": "which",
+       "target": "कुन"
+      },
+      {
+       "known": "friends",
+       "target": "साथीहरू"
+      }
+     ]
+    }
+   }
+  }
+ ]
+}
