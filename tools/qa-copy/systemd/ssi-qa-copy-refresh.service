@@ -1,0 +1,17 @@
+[Unit]
+Description=Refresh the restored-backup copy of the SSi DB from last night's dump (Tom 2026-10-17)
+After=ssi-qa-copy-pg.service
+
+[Service]
+Type=oneshot
+# Runs the code that LANDED: the detached QA worktree the other nightlies use, refreshed to origin/main first.
+WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
+ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
+ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
+ExecStart=/bin/bash /home/tomcassidy/SSi/popty-qa-nightly/tools/qa-copy/refresh.sh
+# Waits up to 20 min for the 03:30 dump, then ~4 min to download, restore, index. Back seat, hard cap.
+Nice=15
+IOSchedulingClass=idle
+CPUWeight=20
+TimeoutStartSec=60min
+OOMScoreAdjust=500

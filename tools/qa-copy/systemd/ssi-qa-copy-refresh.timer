@@ -1,0 +1,12 @@
+[Unit]
+Description=Refresh the QA database copy after the 03:30 UTC backup lands, ready before 04:00 UTC
+
+[Timer]
+# The dump (cs-ssi-db-dump, 03:30 UTC) normally lands by ~03:35; refresh.sh waits for it, then restores in ~4 min.
+OnCalendar=*-*-* 03:38:00 UTC
+AccuracySec=10s
+Persistent=true
+Unit=ssi-qa-copy-refresh.service
+
+[Install]
+WantedBy=timers.target

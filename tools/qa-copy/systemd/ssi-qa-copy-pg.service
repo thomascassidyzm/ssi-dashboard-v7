@@ -1,0 +1,20 @@
+[Unit]
+Description=Local Postgres 17 holding the restored-backup copy of the SSi DB (unix socket only, no network) - QA reads it, not live
+
+[Service]
+Type=simple
+# libxml2.so.2 is a symlink to the system .so.16 (XML functions are unused). listen_addresses is '' in postgresql.conf: socket only.
+Environment=LD_LIBRARY_PATH=%h/ssi-restore/lib
+ExecStart=%h/.local/pg17/bin/postgres -D %h/ssi-restore/pgdata
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+Nice=15
+IOSchedulingClass=idle
+CPUWeight=20
+MemoryHigh=6G
+MemoryMax=8G
+OOMScoreAdjust=500
+TimeoutStopSec=120
+
+[Install]
+WantedBy=default.target

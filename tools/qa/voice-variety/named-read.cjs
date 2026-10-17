@@ -19,10 +19,14 @@
 
 const STATEMENT_TIMEOUT_MS = 15 * 60 * 1000;
 
+// The restored-backup copy (tools/qa-copy) listens on a unix socket only and has no TLS: a socket URL
+// (`?host=/…`) must not ask for it. Supabase URLs still do.
+const isSocketUrl = (url) => /[?&]host=(%2F|\/)/i.test(String(url || ''));
+
 function nightlyClient(Client, name) {
   return new Client({
     connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false },
+    ssl: isSocketUrl(process.env.DATABASE_URL) ? false : { rejectUnauthorized: false },
     application_name: name,
     statement_timeout: STATEMENT_TIMEOUT_MS,
   });
@@ -59,4 +63,4 @@ async function optionalRead(db, sql, params) {
   }
 }
 
-module.exports = { nightlyClient, namedRead, optionalRead, STATEMENT_TIMEOUT_MS };
+module.exports = { isSocketUrl, nightlyClient, namedRead, optionalRead, STATEMENT_TIMEOUT_MS };
