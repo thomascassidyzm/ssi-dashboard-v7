@@ -50,7 +50,7 @@
 require('dotenv').config({ path: require('path').join(__dirname, '../../../.env.psql') });
 const fs = require('fs');
 const { Client } = require('pg');
-const { nightlyClient, namedRead } = require('./named-read.cjs');
+const { nightlyClient, namedRead, optionalRead } = require('./named-read.cjs');
 const APP_NAME = 'qa:voice-variety:linked-voices';
 const { COURSE_CAST_FIELDS, targetCastKey, baseLanguageOfCastKey, castKeySource } = require('../../../services/shared/cast-language-key.cjs');
 const { applyLanguageCast } = require('../../../services/shared/language-voice-cast.cjs');
@@ -78,11 +78,12 @@ const LINKED_VOICES_SQL = `
   GROUP BY 1,2,3`;
 
 async function load(db) {
-  const [courses, voices, roles, human, linked] = await Promise.all([
+  // First and alone: its savepoint must not interleave with the queued reads below.
+  const human = await optionalRead(db, `SELECT language, dialect, voices FROM language_recording_policy`);
+  const [courses, voices, roles, linked] = await Promise.all([
     db.query(`SELECT ${COURSE_CAST_FIELDS}, status, voice_config FROM courses ORDER BY course_code`),
     db.query('SELECT voice_id, display_name, human_name, gender, tts_engine, tts_locale, is_active, languages, type FROM voices'),
     db.query('SELECT language, gender, rank, voice_id, slot FROM voice_language_roles'),
-    db.query(`SELECT language, dialect, voices FROM language_recording_policy`).catch(() => ({ rows: [] })),
     db.query(LINKED_VOICES_SQL),
   ]);
   return {

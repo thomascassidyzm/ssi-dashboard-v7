@@ -42,4 +42,21 @@ async function namedRead(db, name, fn) {
   }
 }
 
-module.exports = { nightlyClient, namedRead, STATEMENT_TIMEOUT_MS };
+/**
+ * A read that may fail (a table not every environment has) without aborting the
+ * transaction around it: a bare `.catch` leaves Postgres refusing every later
+ * statement ("current transaction is aborted"), so it runs under a savepoint.
+ */
+async function optionalRead(db, sql, params) {
+  await db.query('SAVEPOINT optional_read');
+  try {
+    const r = await db.query(sql, params);
+    await db.query('RELEASE SAVEPOINT optional_read');
+    return r;
+  } catch {
+    await db.query('ROLLBACK TO SAVEPOINT optional_read');
+    return { rows: [] };
+  }
+}
+
+module.exports = { nightlyClient, namedRead, optionalRead, STATEMENT_TIMEOUT_MS };

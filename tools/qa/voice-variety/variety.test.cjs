@@ -119,9 +119,19 @@ describe('reading a locale off a voice', () => {
 // transaction the nightly's reads run in.
 describe('nightly connections', () => {
   const { namedRead, STATEMENT_TIMEOUT_MS } = require('./named-read.cjs')
+  // Behaves like Postgres inside a transaction: language_recording_policy is
+  // missing, and after any error every statement fails until a ROLLBACK (TO).
   const fake = () => {
     const seen = []
-    return { seen, query: async (sql, params) => { seen.push({ sql: sql.trim().split(/\s+/).slice(0, 3).join(' '), params }); return { rows: [] } } }
+    let aborted = false
+    return { seen, query: async (sql, params) => {
+      const head = sql.trim().split(/\s+/).slice(0, 3).join(' ')
+      seen.push({ sql: head, params })
+      if (/^ROLLBACK/.test(head)) { aborted = false; return { rows: [] } }
+      if (aborted) throw new Error('current transaction is aborted')
+      if (/language_recording_policy/.test(sql)) { aborted = true; throw new Error('relation does not exist') }
+      return { rows: [] }
+    } }
   }
 
   for (const [file, name] of [['check-voice-variety.cjs', 'qa:voice-variety:linked-voices'], ['count-reconciliation.cjs', 'qa:voice-variety:count-reconciliation']]) {
