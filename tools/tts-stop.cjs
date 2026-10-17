@@ -104,8 +104,22 @@ function restoreKeys() {
   return restored
 }
 
-function status() {
-  const row = psql("select coalesce((select json_build_object('code', code, 'at', at, 'message', message)::text from tts_spend_trips where provider = '*'), '')")
+/**
+ * The stop row, read through the spend guard's own store (tts_spend_totals — the call the guard
+ * itself makes) on the capped agent login: read-only, no hand-written statement, so the no-hand-DB
+ * hook (#384) lets it run for agents (job #786). Throws if the ledger is unreadable: a guard that
+ * cannot see the stop must not report it OFF. Writes (stop/lift) stay on psql — those are Tom's.
+ */
+async function stopRow() {
+  const store = require('../services/shared/tts-spend-guard.cjs').pgSpendStore({ connectionString: require('../services/shared/agent-db.cjs').agentUrl() })
+  try {
+    const r = ((await store.totals('*', 1)) || {}).tripped
+    return r ? JSON.stringify({ code: r.code, at: r.at, message: r.message }) : ''
+  } finally { await store.end() }
+}
+
+async function status() {
+  const row = await stopRow()
   const held = Object.keys(loadManifest().files).length
   const stillLive = keyFiles().filter(f => liveKeyLines(f).length)
   console.log(row ? `STOP IS ON — ledger row: ${row}` : 'stop is OFF in the ledger (no * row)')
@@ -115,14 +129,15 @@ function status() {
 }
 
 const cmd = process.argv[2] || 'status'
+async function main() {
 if (cmd === 'stop') {
   psql(`insert into tts_spend_trips (provider, code, message, host) values ('*', 'TOM_STOP', '${STOP_MESSAGE.replace(/'/g, "''")}', '${os.hostname()}') on conflict (provider) do nothing`)
   console.log(`ledger: stop row in place; keys neutralised in ${neutraliseKeys()} more file(s)`)
-  status()
+  await status()
 } else if (cmd === 'guard') {
   // Job #695: the stop is untouched; this only re-vaults keys outside the guarded set.
   console.log(`keys neutralised in ${neutraliseKeys({ onlyUnguarded: true })} unguarded file(s)`)
-  status()
+  await status()
 } else if (cmd === 'lift') {
   if (process.env.TOM_SAID_LIFT !== 'yes') {
     console.error('Only Tom lifts the stop. Run with TOM_SAID_LIFT=yes once he has said so, in his words, in chat.')
@@ -133,7 +148,9 @@ if (cmd === 'stop') {
   for (const u of RESTART_ON_LIFT) {
     try { execFileSync('systemctl', [...require('./lib/unit-scope.cjs').scopeArgs(u), 'restart', u]); console.log(`  restarted ${u} (it reads the keys at boot)`) } catch (e) { console.log(`  could not restart ${u}: ${e.message}`) }
   }
-  status()
+  await status()
 } else {
-  status()
+  await status()
 }
+}
+main().catch(e => { console.error(e.message); process.exit(1) })
