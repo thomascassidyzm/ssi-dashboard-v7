@@ -146,10 +146,4 @@ describe('nightly connections', () => {
       expect(db.seen.length).toBeGreaterThan(3)
     })
   }
-
-  it('joins course_audio once, not once per slot', () => {
-    const { LINKED_VOICES_SQL } = require('./check-voice-variety.cjs')
-    expect(LINKED_VOICES_SQL.match(/JOIN course_audio/g)).toHaveLength(1)
-    expect(LINKED_VOICES_SQL.match(/_audio_id IS NOT NULL/g)).toHaveLength(6)
-  })
 })

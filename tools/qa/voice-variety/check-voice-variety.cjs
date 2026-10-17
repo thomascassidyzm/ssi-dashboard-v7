@@ -63,19 +63,35 @@ const TARGET_ROLES = Object.freeze(['target1', 'target2']);
 /**
  * Which voices are actually LINKED to a course's target-side content rows.
  *
- * Collect every (course, role, clip id) reference first, then join course_audio
- * (~2.6M rows) ONCE. The earlier shape joined it in each of six branches; on the
- * owner pooler that ran 65-98s and was cancelled every night from 2026-10-15
- * (job #672). Same rows out: the inner join drops NULL slots exactly as before.
+ * One grouped aggregate per content table rather than a row walk: the estate
+ * carries ~2.6M course_audio rows and several other jobs share this Supabase
+ * project, so this asks Postgres for the distinct (course, role, voice) triples
+ * and nothing else.
+ *
+ * Keep the six-branch shape. Job #672 tried collecting the slot references first
+ * and joining course_audio once: live, that ran ~7 min against this shape's
+ * ~2-3 min on the nights it completed (2026-10-02..14).
  */
-const TARGET_SLOTS = Object.freeze(['course_seeds', 'course_legos', 'course_practice_phrases']
-  .flatMap((t) => TARGET_ROLES.map((role) => [t, role])));
 const LINKED_VOICES_SQL = `
-  SELECT r.course_code, r.role, ca.voice_id, count(*)::bigint AS n FROM (
-    ${TARGET_SLOTS.map(([t, role]) =>
-      `SELECT course_code, '${role}' AS role, ${role}_audio_id AS audio_id FROM ${t} WHERE ${role}_audio_id IS NOT NULL`).join('\n    UNION ALL\n    ')}
-  ) r JOIN course_audio ca ON ca.id = r.audio_id
-  GROUP BY 1,2,3`;
+  SELECT course_code, role, voice_id, sum(n)::bigint AS n FROM (
+    SELECT t.course_code, 'target1' AS role, ca.voice_id, count(*) AS n
+      FROM course_seeds t JOIN course_audio ca ON ca.id = t.target1_audio_id GROUP BY 1,3
+    UNION ALL
+    SELECT t.course_code, 'target2', ca.voice_id, count(*)
+      FROM course_seeds t JOIN course_audio ca ON ca.id = t.target2_audio_id GROUP BY 1,3
+    UNION ALL
+    SELECT t.course_code, 'target1', ca.voice_id, count(*)
+      FROM course_legos t JOIN course_audio ca ON ca.id = t.target1_audio_id GROUP BY 1,3
+    UNION ALL
+    SELECT t.course_code, 'target2', ca.voice_id, count(*)
+      FROM course_legos t JOIN course_audio ca ON ca.id = t.target2_audio_id GROUP BY 1,3
+    UNION ALL
+    SELECT t.course_code, 'target1', ca.voice_id, count(*)
+      FROM course_practice_phrases t JOIN course_audio ca ON ca.id = t.target1_audio_id GROUP BY 1,3
+    UNION ALL
+    SELECT t.course_code, 'target2', ca.voice_id, count(*)
+      FROM course_practice_phrases t JOIN course_audio ca ON ca.id = t.target2_audio_id GROUP BY 1,3
+  ) x GROUP BY 1,2,3`;
 
 async function load(db) {
   // First and alone: its savepoint must not interleave with the queued reads below.
