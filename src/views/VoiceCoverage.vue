@@ -67,5 +67,5 @@ onMounted(load)
 h1 { font-size: 2rem; font-weight: 700; } h2 { font-size: 1.4rem; font-weight: 600; } h3 { font-weight: 600; margin-top: 1rem; }
 p { margin: .7rem 0; } article { margin: 1.5rem 0; padding: 1rem; border: 1px solid #64748b66; border-radius: .6rem; }
 input { margin: 1rem; padding: .5rem; background: transparent; border: 1px solid #64748b; border-radius: .3rem; }
-.table-scroll { overflow-x: auto; } table { width: 100%; border-collapse: collapse; } th, td { text-align: left; padding: .6rem; border-bottom: 1px solid #64748b44; } small { color: #14b8a6; } .gap { color: #d97706; } .scope { opacity: .8; } summary { cursor: pointer; padding: .5rem 0; }
+.table-scroll { overflow-x: auto; } table { width: 100%; min-width: 48rem; border-collapse: collapse; overflow-wrap: normal; } th, td { text-align: left; padding: .6rem; border-bottom: 1px solid #64748b44; } small { color: #14b8a6; } .gap { color: #d97706; } .scope { opacity: .8; } summary { cursor: pointer; padding: .5rem 0; }
 </style>
