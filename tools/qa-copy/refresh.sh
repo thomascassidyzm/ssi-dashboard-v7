@@ -37,7 +37,7 @@ fail() {
 }
 
 # 1. disk-check first
-FREE_GB=$(df -P --output=avail -BG "$QA_COPY_HOME" | tail -1 | tr -dc 0-9)
+FREE_GB=$(df --output=avail -BG "$QA_COPY_HOME" | tail -1 | tr -dc 0-9)
 [ "${FREE_GB:-0}" -ge "$MIN_FREE_GB" ] || fail "only ${FREE_GB}G free, need ${MIN_FREE_GB}G"
 
 # 2. the server (unix socket only)
