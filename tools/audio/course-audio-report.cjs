@@ -56,30 +56,23 @@ const pointedCte = () => {
   return `p as (select distinct id from (${ptrs.join(' union all ')}) u)`
 }
 
-/** Per (role, slot voice, other voice): slots whose text also exists, unpointed, in the other voice. */
-async function altPairs(pg, code) {
+/**
+ * Per (role, slot voice): the slots whose text also exists, UNPOINTED, in another voice of this course. One pass: the unpointed
+ * clips fold to one voices[] per (language, text, role), join to the slots, and group by the other-voices set, so a slot with two
+ * alternatives counts once in `altSlots` and once under each voice in `alts`. Returns [{role, voice_id, others:[...], slots}].
+ */
+async function altGroups(pg, code) {
   const parts = []
   for (const [tbl, cols] of Object.entries(va.SLOT_COLUMNS)) for (const col of cols) {
     const role = rv.roleOfColumn(col)
-    parts.push(`select '${role}' role, ca.voice_id, a.voice_id alt_voice, count(*) slots from ${tbl} x join course_audio ca on ca.id = ${va.ptr(tbl, col)}
-      join alts a on a.language = ca.language and a.text_normalized = ca.text_normalized and a.role = '${role}' and a.voice_id <> ca.voice_id
-      where x.course_code = $1 group by 1, 2, 3`)
+    parts.push(`select '${role}' role, ca.voice_id, array_remove(a.voices, ca.voice_id) others, count(*)::int slots from ${tbl} x
+      join course_audio ca on ca.id = ${va.ptr(tbl, col)}
+      join alts a on a.language = ca.language and a.text_normalized = ca.text_normalized and a.role = '${role}'
+      where x.course_code = $1 and cardinality(array_remove(a.voices, ca.voice_id)) > 0 group by 1, 2, 3`)
   }
-  const alts = `alts as (select distinct language, text_normalized, role, voice_id from course_audio c where c.course_code = $1 and c.role in ('known','target1','target2','presentation') and ${va.usable('c')} and c.id not in (select id from p))`
-  const { rows } = await pg.query(`with ${pointedCte()}, ${alts} select role, voice_id, alt_voice, sum(slots)::int slots from (${parts.join(' union all ')}) z group by 1, 2, 3`, [code])
-  return rows
-}
-
-/** Per (role, slot voice): slots with ANY unpointed other-voice alternative (a slot with two alternatives counts once). */
-async function altAny(pg, code) {
-  const parts = []
-  for (const [tbl, cols] of Object.entries(va.SLOT_COLUMNS)) for (const col of cols) {
-    const role = rv.roleOfColumn(col)
-    parts.push(`select '${role}' role, ca.voice_id, count(*)::int slots from ${tbl} x join course_audio ca on ca.id = ${va.ptr(tbl, col)}
-      where x.course_code = $1 and exists (select 1 from course_audio a where a.course_code = $1 and a.language = ca.language and a.text_normalized = ca.text_normalized and a.role = '${role}'
-        and a.voice_id <> ca.voice_id and ${va.usable('a')} and a.id not in (select id from p)) group by 1, 2`)
-  }
-  const { rows } = await pg.query(`with ${pointedCte()} select role, voice_id, sum(slots)::int slots from (${parts.join(' union all ')}) z group by 1, 2`, [code])
+  const alts = `alts as (select c.language, c.text_normalized, c.role, array_agg(distinct c.voice_id) voices from course_audio c
+    left join p on p.id = c.id where c.course_code = $1 and c.role in ('known','target1','target2','presentation') and ${va.usable('c')} and p.id is null group by 1, 2, 3)`
+  const { rows } = await pg.query(`with ${pointedCte()}, ${alts} select role, voice_id, others, sum(slots)::int slots from (${parts.join(' union all ')}) z group by 1, 2, 3`, [code])
   return rows
 }
 
@@ -97,7 +90,7 @@ async function explainDay(pg, code, day, castByRole) {
   const { rows } = await pg.query(`with ${pointedCte()},
     s as (${slotSel.join(' union all ')}),
     u as (select ca.id, ca.role, ca.text_normalized, ca.voice_id from course_audio ca where ca.course_code = $1 and to_char(date_trunc('day', ca.created_at), 'YYYY-MM-DD') = $2
-      and (${pairs}) and ${va.usable('ca')} and ca.id not in (select id from p))
+      and (${pairs}) and ${va.usable('ca')} and not exists (select 1 from p where p.id = ca.id))
     select u.id, u.role, count(s.role)::int matching_slots,
       count(*) filter (where s.ptr is not null and c2.voice_id = u.voice_id)::int slots_on_cast,
       count(*) filter (where s.ptr is not null and c2.voice_id <> u.voice_id)::int slots_on_other,
@@ -154,8 +147,11 @@ async function reportFor(pg, db, cast, code, { days, explainDay: ed }) {
   const castByRole = {}
   for (const g of cl.groups) if (g.resolved && !castByRole[g.role]) castByRole[g.role] = g.resolved
   const slots = slotTable(cl.groups)
-  for (const a of await altPairs(pg, code)) { const r = slots[a.role] && slots[a.role].find((x) => x.voice === a.voice_id); if (r) r.alts[a.alt_voice] = a.slots }
-  for (const a of await altAny(pg, code)) { const r = slots[a.role] && slots[a.role].find((x) => x.voice === a.voice_id); if (r) r.altSlots = a.slots }
+  for (const g of await altGroups(pg, code)) {
+    const r = slots[g.role] && slots[g.role].find((x) => x.voice === g.voice_id); if (!r) continue
+    r.altSlots += g.slots
+    for (const v of g.others) r.alts[v] = (r.alts[v] || 0) + g.slots
+  }
   const d = { slots, cast: castByRole, recent: recentByDay(await va.clipCensus(pg, code), days), days, when: new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC' }
   if (ed) { const rows = await explainDay(pg, code, ed, castByRole); d.explain = { day: ed, rows, text: explainText(ed, rows) } }
   return d
