@@ -255,7 +255,8 @@ export function nextBatchAfter(tracks, scope, off = new Set()) {
   const at = ordered.findIndex((t) => t.key === scope.track)
   if (at === -1) return null
   const cur = ordered[at]
-  const later = (cur.batches || []).find((b) => b.n > scope.batch && usable(cur, b))
+  // An unticked section offers none of its own batches (it falls through to the next ticked one).
+  const later = !isTicked(off, cur.key) ? null : (cur.batches || []).find((b) => b.n > scope.batch && usable(cur, b))
   if (later) return { track: cur, batch: later }
   for (const t of ordered.slice(at + 1)) {
     if (isFinished(t) || !isTicked(off, t.key) || trackLocked(t, tracks)) continue
