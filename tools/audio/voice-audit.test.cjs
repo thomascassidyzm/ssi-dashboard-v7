@@ -33,6 +33,13 @@ describe('voice audit classify', () => {
       g('target1_audio_id', rv.TOM_006, 'eng', 2),                 // an English line on a French slot → no ruling
       g('known_audio_id', null, null, 6),                          // dangling: the pointer names no clip
     ], cast)
+    // Each total is the slot count of the rows above it that earn that status:
+    //   ok 15        = 10 English known on Tom-006 (the ruled voice) + 5 fra target1 on the cast voice
+    //   drift 7      = English known on Charlotte, where the ruling says Tom-006
+    //   human 3      = a human take, never judged against the cast
+    //   refused 4    = fra target2 has no male cast voice, so the Azure line has no legal resolution
+    //   no-ruling 2  = an English clip on a French slot: resolveVoice has no rule for that pairing
+    //   dangling 6   = the pointer names no clip at all
     expect(totals).toEqual({ ok: 15, drift: 7, human: 3, refused: 4, 'no-ruling': 2, dangling: 6, unplayable: 0 })
     expect(groups.find((x) => x.status === 'drift')).toMatchObject({ role: 'known', resolved: rv.TOM_006, reason: 'english-known' })
     expect(groups.find((x) => x.status === 'refused')).toMatchObject({ role: 'target2', reason: 'uncast' })
