@@ -69,10 +69,11 @@ function coverageLine(now) {
 /** Pure. The notice: three lines, a fourth when the snapshot carries per-role counts. */
 function noticeText(now, rosterMisses) {
   const gaps = gapLines(now)
+  const audited = [...CAST, ...TO_CONFIRM].filter((c) => now.courses[c]).length   // a course missing from the snapshot was not looked at, so it cannot be claimed clean
   return [
     `Voice casting: cast = ${CAST.map(short).join(', ')}; still to confirm = ${TO_CONFIRM.map(short).join(', ')}.`,
     coverageLine(now),
-    gaps.length ? `Real gaps: ${gaps.join('; ')}.` : 'Real gaps: none (every premium slot plays, none in an uncast language).',
+    gaps.length ? `Real gaps: ${gaps.join('; ')}.` : `Real gaps: none found in the ${audited} of ${CAST.length + TO_CONFIRM.length} cast / to-confirm courses audited (no dangling, unplayable or uncast-language slots).`,
     rosterMisses.length ? `English roster off Tom's list: ${rosterMisses.join('; ')}.` : 'English roster matches: tom-006 male, aran-004 second male, Charlotte female, Sonia legacy.',
   ].filter(Boolean).join('\n')
 }
