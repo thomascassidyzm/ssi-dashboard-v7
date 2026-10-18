@@ -11,7 +11,7 @@ test('pod gap: unlinked and off-cast slots count, chars are code points', () => 
 
 test('seed gap: a line missing either seat is a gap, counted once', () => {
   const held = new Map([[clipTextKey('uno'), new Set(['f', 'm'])], [clipTextKey('dos'), new Set(['f'])]])
-  assert.deepEqual(seedGap(['uno', 'dos', 'tres'], held, ['f', 'm']), { lines: 3, missingAnySeat: 2, perSeatMissing: { f: 1, m: 2 }, chars: 7 })
+  assert.deepEqual(seedGap(['uno', 'dos', 'tres'], held, ['f', 'm']), { lines: 3, allChars: 11, missingAnySeat: 2, perSeatMissing: { f: 1, m: 2 }, chars: 7 })
 })
 
 test('index walk pages by keyset, logs progress, and filters by language', async () => {

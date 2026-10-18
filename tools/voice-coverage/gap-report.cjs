@@ -25,7 +25,8 @@ const { isTomCastRow, rowIsForKey, canonVoice } = require('../../services/shared
 const rv = require('../../services/shared/resolve-voice.cjs')
 const { content } = require('./refresh.cjs')
 
-const LANGS = ['spa', 'fra', 'deu', 'ita', 'por', 'zho', 'jpn', 'kor', 'ara', 'hin']
+const LANGS = ['eng', 'spa', 'fra', 'deu', 'ita', 'por', 'zho', 'jpn', 'kor', 'ara'] // BIG_10 (audioAccess.ts), r-2026-10-05; Hindi out. Arabic: counted, no cast planned (Tom 2026-10-17)
+const coursesFor = (lang, all) => all.filter(c => lang === 'eng' ? /^eng_for_/.test(c.course_code) : new RegExp(`^${lang}(_[a-z]+)?_for_eng$`).test(c.course_code))
 const FIRST_SEEDS = 100
 const chars = t => [...String(t)].length
 const usable = c => !!c && !!c.s3_key && !c.s3_key.startsWith('pending/') && Number(c.duration_ms || 0) > 200 && c.veracity_pass !== false
@@ -47,7 +48,7 @@ function seedGap(lines, held, seats) {
     for (const v of miss) missing.set(v, missing.get(v) + 1)
     if (miss.length) { gaps++; gapChars += chars(text) }
   }
-  return { lines: lines.length, missingAnySeat: gaps, perSeatMissing: Object.fromEntries(missing), chars: gapChars }
+  return { lines: lines.length, allChars: lines.reduce((n, t) => n + chars(t), 0), missingAnySeat: gaps, perSeatMissing: Object.fromEntries(missing), chars: gapChars }
 }
 
 async function heldVoices(pg, language, texts, voiceIds) {
@@ -90,7 +91,7 @@ async function reportCourse(pg, course, cast) {
 }
 
 const table = rows => ['| course | cast | Pod 1 slots | not in cast | unlinked | Pod 1 chars | seed 1-100 lines | missing a seat | seat1 / seat2 missing | seed chars |', '|---|---|---|---|---|---|---|---|---|---|',
-  ...rows.map(r => r.error ? `| ${r.courseCode} | ERROR: ${r.error} |||||||||` : !r.seats.length ? `| ${r.courseCode} | UNCAST: no cast seats, so every seed line and pod slot is a gap by definition | ${r.pod.slots} | ${r.pod.notInCast} | ${r.pod.unlinked} | ${r.pod.chars} | ${r.seeds1to100.lines} | n/a | n/a | ${r.seeds1to100.chars} (not counted) |` : `| ${r.courseCode} | ${r.castVoices.length} | ${r.pod.slots} | ${r.pod.notInCast} | ${r.pod.unlinked} | ${r.pod.chars} | ${r.seeds1to100.lines} | ${r.seeds1to100.missingAnySeat} | ${r.seats.map(v => r.seeds1to100.perSeatMissing[v]).join(' / ')} | ${r.seeds1to100.chars} |`)].join('\n')
+  ...rows.map(r => r.error ? `| ${r.courseCode} | ERROR: ${r.error} |||||||||` : !r.seats.length ? `| ${r.courseCode} | ${r.language === 'ara' || r.courseCode.startsWith('ara') ? 'counted, no cast planned' : 'UNCAST'}: no cast seats, so every line is a gap by definition | ${r.pod.slots} | ${r.pod.notInCast} | ${r.pod.unlinked} | ${r.pod.chars} | ${r.seeds1to100.lines} | n/a | n/a | ${r.seeds1to100.allChars} (all lines) |` : `| ${r.courseCode} | ${r.castVoices.length} | ${r.pod.slots} | ${r.pod.notInCast} | ${r.pod.unlinked} | ${r.pod.chars} | ${r.seeds1to100.lines} | ${r.seeds1to100.missingAnySeat} | ${r.seats.map(v => r.seeds1to100.perSeatMissing[v]).join(' / ')} | ${r.seeds1to100.chars} |`)].join('\n')
 
 async function main(args) {
   const value = f => args.includes(f) ? args[args.indexOf(f) + 1] : undefined
@@ -103,14 +104,18 @@ async function main(args) {
       voices: (await pg.query('SELECT voice_id, display_name, human_name, is_active, gender FROM voices')).rows }
     const out = []
     for (const lang of langs) {
-      const mine = courses.filter(c => new RegExp(`^${lang}(_[a-z]+)?_for_eng$`).test(c.course_code))
-      if (!mine.length) out.push({ courseCode: `${lang}_for_eng`, error: 'no such course' })
+      const mine = coursesFor(lang, courses)
+      if (!mine.length) out.push({ courseCode: lang, error: 'no such course' })
       for (const c of mine) {
         try { out.push(await reportCourse(pg, c, cast)) } catch (e) { out.push({ courseCode: c.course_code, error: e.message }) }
         console.error(`${c.course_code} done`)
       }
     }
-    const md = table(out)
+    const ok = out.filter(r => !r.error), uncast = r => !r.seats.length
+    const sum = (rows, f) => rows.reduce((n, r) => n + f(r), 0)
+    const totals = ['', `Pod 1 chars missing: ${sum(ok, r => r.pod.chars)} (cast languages ${sum(ok.filter(r => !uncast(r)), r => r.pod.chars)}; uncast or no cast planned ${sum(ok.filter(uncast), r => r.pod.chars)})`,
+      `Seeds 1-100 chars missing: ${sum(ok.filter(r => !uncast(r)), r => r.seeds1to100.chars)} (cast languages); uncast or no cast planned, all lines: ${sum(ok.filter(uncast), r => r.seeds1to100.allChars)}`].join('\n')
+    const md = table(out) + totals
     if (value('--out')) fs.writeFileSync(value('--out'), JSON.stringify({ generatedAt: new Date().toISOString(), langs, rows: out }, null, 1))
     console.log(md)
   } finally { await pg.end() }
