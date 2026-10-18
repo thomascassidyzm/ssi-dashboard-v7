@@ -396,7 +396,20 @@ function reapOrphanedDecoders (o = {}) {
   return killed
 }
 
+/**
+ * What production does once it is listening after a restart. The orphan reap is NOT gated on the
+ * check being switched on: a decoder the old process left running holds a whisper slot for every
+ * other user of the wrapper whether or not this process will queue checks, and switching the
+ * check off is exactly when nobody else would clean it up. Each step is guarded alone, so a
+ * failed reap cannot skip the recovery (or the reverse).
+ */
+function recoverAtBoot (queue, { logger = console, reap = reapOrphanedDecoders } = {}) {
+  try { reap({ logger }) } catch (e) { logger.error(`[TextCheck] orphan reap failed: ${e.message}`) }
+  try { queue.recover() } catch (e) { logger.error(`[TextCheck] boot recovery failed: ${e.message}`) }
+}
+
 module.exports = {
+  recoverAtBoot,
   createTextCheckQueue,
   whisperCheckEnabled,
   failuresFromEvents,

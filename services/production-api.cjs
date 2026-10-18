@@ -14134,12 +14134,7 @@ httpServer.listen(PORT, HOST, () => {
   logger.log(`Production API server running on ${HOST}:${PORT}`)
   // Booth script checks a restart interrupted (job #842): kill the decoders the old process
   // left running (KillMode=process leaves them holding whisper slots), then re-queue the checks.
-  try {
-    if (textChecks.enabled) takeTextCheck.reapOrphanedDecoders({ logger })
-    textChecks.recover()
-  } catch (e) {
-    logger.error(`[TextCheck] boot recovery failed: ${e.message}`)
-  }
+  takeTextCheck.recoverAtBoot(textChecks, { logger })
   logger.log(`WebSocket path: /api/production/websocket`)
   scheduleNightlyArchive()
 })

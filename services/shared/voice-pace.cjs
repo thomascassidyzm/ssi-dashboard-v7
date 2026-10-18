@@ -143,8 +143,18 @@ function isHumanVoicedCourse(courseCode) {
   return !!target && HUMAN_VOICED_LANGUAGES.includes(target);
 }
 
+/**
+ * The same rule asked of a LANGUAGE key rather than a course code: the voice lab's rows are
+ * keyed on the cast key ('cym', 'cym_north', 'cym_south', or the clip key 'cym_n'/'cym_s'),
+ * and a Welsh row must show the 1.0 the player will actually use.
+ */
+function isHumanVoicedLanguage(language) {
+  const k = String(language == null ? '' : language).toLowerCase();
+  return /^cym(_|$)/.test(k);
+}
+
 module.exports = {
-  HUMAN_VOICED_LANGUAGES, isHumanVoicedCourse,
+  HUMAN_VOICED_LANGUAGES, isHumanVoicedCourse, isHumanVoicedLanguage,
   effectivePaceRatio, paceMultiplier, combineMeasurements, targetPace, playbackSpeed,
   MIN_SPEED, MAX_SPEED, MODES, ROLES, ROLE_ALIASES,
 };
