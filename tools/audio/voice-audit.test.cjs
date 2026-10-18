@@ -103,3 +103,33 @@ describe('voice audit pointerIds', () => {
     expect(sql).not.toMatch(/statement_timeout/)
   })
 })
+
+// F18a: slots already repointed stay repointed when a later write throws, so the content_version bump must still happen
+describe('voice audit repointUnplayable', () => {
+  it('bumps content_version for the slots it moved even when a later write throws', async () => {
+    const audit = require('./voice-audit.cjs'), rv = require('../../services/shared/resolve-voice.cjs')
+    const { repointUnplayable } = audit
+    const cv = require('../../services/shared/course-version.cjs')
+    const cel = require('../../services/shared/content-edit-log.cjs')
+    const saved = { bump: cv.bumpCourseVersion, rec: cel.recordContentEdit, lc: rv.loadCourse, res: rv.resolveVoice, may: rv.mayPoint, set: rv.setSlotPointer }
+    const bumps = []
+    process.env.SSI_EVIDENCE_ROOT = require('node:fs').mkdtempSync(require('node:path').join(require('node:os').tmpdir(), 'va-ev-'))
+    cv.bumpCourseVersion = async (_db, code, level) => { bumps.push([code, level]); return '1.0.1' }
+    cel.recordContentEdit = async () => 'ev1'
+    rv.loadCourse = async () => fra
+    rv.resolveVoice = () => ({ status: 'voice', voiceId: 'cartesia_fra-f' })
+    rv.mayPoint = async () => true
+    let writes = 0
+    rv.setSlotPointer = async () => { if (++writes === 2) throw new Error('db went away'); return true }
+    let first = true
+    const pg = { query: async (sql) => {
+      if (/order by \(ca\.voice_id/.test(sql)) return { rows: [{ id: 'clip1' }] }
+      if (first && /from course_seeds x/.test(sql) && /known_audio_id/.test(sql)) { first = false
+        return { rows: [{ key: 's1', aid: 'a1', cid: null, text: 'un', t: 'un', language: 'fra' }, { key: 's2', aid: 'a2', cid: null, text: 'deux', t: 'deux', language: 'fra' }] } }
+      return { rows: [] } } }
+    try {
+      await expect(repointUnplayable(pg, {}, 'fra_for_eng', cast, { dryRun: false, maxChars: 0 })).rejects.toThrow('db went away')
+      expect(bumps).toEqual([['fra_for_eng', 'patch']])
+    } finally { Object.assign(cv, { bumpCourseVersion: saved.bump }); Object.assign(cel, { recordContentEdit: saved.rec }); Object.assign(rv, { loadCourse: saved.lc, resolveVoice: saved.res, mayPoint: saved.may, setSlotPointer: saved.set }) }
+  })
+})
