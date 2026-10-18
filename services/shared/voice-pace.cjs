@@ -57,9 +57,14 @@ function targetPace(role, mode) {
  * @param {object|null} voice a `voices` row (or its pace fields)
  * @param {string} role
  * @param {string} mode
+ * @param {boolean} [human] the clip is a human recording (course_audio.origin='human'):
+ *   always 1.0, never slowed (Tom, 2026-10-18, r-2026-10-18-exception-to-the-flat-speed-multiplier)
  */
-function playbackSpeed(voice, role, mode) {
+function playbackSpeed(voice, role, mode, human = false) {
   const policy = targetPace(role, mode);
+  if (human) {
+    return { speed: 1.0, corrected: false, clamped: false, ...policy, targetPace: 1.0, reason: 'human recording — played at 1.0, never slowed' };
+  }
   return { ...policy, speed: policy.targetPace, corrected: false, clamped: false };
 
 }

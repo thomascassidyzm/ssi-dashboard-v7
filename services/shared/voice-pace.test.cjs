@@ -62,3 +62,15 @@ describe('combining per-language measurements into one figure', () => {
     expect(combineMeasurements([{ ratio: 0, samples: 5 }])).toBe(null)
   })
 })
+
+describe('human recordings are never slowed (Tom, 2026-10-18)', () => {
+  it('human clip plays at 1.0 in every role and mode; TTS keeps 0.8 Easy / 0.9 Fast', () => {
+    for (const mode of ['easy', 'fast']) {
+      for (const role of ['target', 'target1', 'target2', 'known', 'listening']) {
+        expect(playbackSpeed(null, role, mode, true).speed).toBe(1)
+      }
+    }
+    expect(playbackSpeed(null, 'target1', 'easy', false).speed).toBe(0.8)
+    expect(playbackSpeed(null, 'target1', 'fast').speed).toBe(0.9)
+  })
+})
