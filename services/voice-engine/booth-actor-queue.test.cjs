@@ -60,3 +60,17 @@ test('a voice with no controlled queue is untouched', () => {
   assert.strictEqual(q.nextStepFor('human_aran_cym_n', built.lines, null), null)
   assert.strictEqual(q.stepForLink('human_aran_cym_n', { pod: 'pod-1' }), null)
 })
+
+test('F31: total and recorded count the recorded lines the queue left out of `lines`', () => {
+  const built = dansQueue()
+  const unrecorded = built.lines.filter((l) => !l.recorded)
+  const tally = [
+    { courseCode: 'cym_s_for_eng', kind: 'pod', role: null, podSlug: 'pod-1', podId: 'cym_s_for_eng:pod-1', total: 90, recorded: 62 },
+    { courseCode: 'cym_s_for_eng', kind: 'seed', role: 'target1', podSlug: null, podId: null, total: 206, recorded: 0 },
+    { courseCode: 'cym_sv2_for_eng', kind: 'seed', role: 'target1', podSlug: null, podId: null, total: 762, recorded: 0 },
+  ]
+  const scoped = q.scopeQueue(DAN, { ...built, lines: unrecorded, tally })
+  assert.strictEqual(scoped.total, 296)
+  assert.strictEqual(scoped.recorded, 62)
+  assert.strictEqual(scoped.remaining, 234)
+})

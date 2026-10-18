@@ -58,14 +58,19 @@ function scopeQueue(voiceId, queue, queues = ACTOR_QUEUES) {
   const steps = stepsFor(voiceId, queues)
   if (!steps || !queue) return queue
   const lines = (queue.lines || []).filter((l) => stepOf(l, steps))
-  const recorded = lines.filter((l) => l.recorded).length
+  // The queue's own tally covers recorded lines too, which `lines` omits unless asked for them;
+  // without one (an older cached queue) the counts fall back to the lines in hand.
+  const tally = Array.isArray(queue.tally) ? queue.tally.filter((t) => stepOf(t, steps)) : null
+  const total = tally ? tally.reduce((n, t) => n + t.total, 0) : lines.length
+  const recorded = tally ? tally.reduce((n, t) => n + t.recorded, 0) : lines.filter((l) => l.recorded).length
   const inPods = (p) => steps.some((s) => s.pod && s.courseCode === p.courseCode && (p.podSlug === s.pod || p.podId === `${s.courseCode}:${s.pod}`))
   return {
     ...queue,
     lines,
-    total: lines.length,
+    tally,
+    total,
     recorded,
-    remaining: lines.length - recorded,
+    remaining: total - recorded,
     phrases: null,
     phraseBatches: null,
     openPhraseBatch: null,

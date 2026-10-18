@@ -2792,6 +2792,10 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
 
   let recorded = 0
   const lines = []
+  // Total and recorded per (course, kind, role, pod), counted over ALL of `mine` -- recorded
+  // lines are not in `lines` unless includeRecorded, so a scoped queue (booth-actor-queue
+  // scopeQueue) cannot recount its own total and recorded from `lines` alone.
+  const tallyOf = new Map()
   for (const line of mine) {
     // ONE QUESTION, ONE PLACE. "Is this line recorded for this recordist" is
     // answered by take-selection.cjs and by nothing else on the estate: the slot
@@ -2811,6 +2815,14 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     // queue entry.
     const masked = maskRejectedHistory && !!line.rerecordWanted
     if (isRecorded) recorded += 1
+    const tk = [line.courseCode, line.kind || 'pod', line.role || '', line.podSlug || '', line.podId || ''].join('|')
+    let t = tallyOf.get(tk)
+    if (!t) {
+      t = { courseCode: line.courseCode || null, kind: line.kind || 'pod', role: line.role || null, podSlug: line.podSlug || null, podId: line.podId || null, total: 0, recorded: 0 }
+      tallyOf.set(tk, t)
+    }
+    t.total += 1
+    if (isRecorded) t.recorded += 1
     if (!isRecorded || includeRecorded) {
       lines.push({
         id: line.id,
@@ -2908,6 +2920,7 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
 
   return {
     lines,
+    tally: [...tallyOf.values()],
     total: mine.length,
     recorded,
     remaining: mine.length - recorded,
