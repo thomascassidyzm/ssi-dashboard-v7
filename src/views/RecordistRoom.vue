@@ -752,7 +752,7 @@ import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
 import BoothHome from './recordist/BoothHome.vue'
-import { refusedLineWords, placeLines } from './recordist/refused-takes.js'
+import { refusedLineWords, placeLines, goneRefusedLineIds } from './recordist/refused-takes.js'
 import RerecordCard from './recordist/RerecordCard.vue'
 import { mergeRerecord, oldRefusedIds, alsoIds } from './recordist/rerecord-list.js'
 import { applyFailures, mismatchLineWords } from './recordist/text-check-failures.js'
@@ -3100,15 +3100,14 @@ watch([phase, () => (queue.refusedTakes ? queue.refusedTakes.value.length : 0), 
 // and anything still uploading or saved since taken off (recordist/rerecord-list.js).
 const rerecordServer = ref({ items: [], recordedAlso: [], goneAlso: [] })
 // Refused takes whose line the full queue no longer holds: old, not misses.
-const goneRefusedIds = computed(() => {
+const goneRefusedIds = computed(() => goneRefusedLineIds({
   // The batch's own server answer first (it is what the batch will open), the full queue second.
-  const ids = new Set(rerecordServer.value.goneAlso)
-  if (locatorLines.value) {
-    const have = new Set(locatorLines.value.map(l => l.id))
-    for (const t of (queue.refusedTakes && queue.refusedTakes.value) || []) if (!have.has(t.lineId)) ids.add(t.lineId)
-  }
-  return [...ids]
-})
+  serverGone: rerecordServer.value.goneAlso,
+  refusedTakes: (queue.refusedTakes && queue.refusedTakes.value) || [],
+  queueLines: locatorLines.value,
+  batchLines: lines.value,
+  placed: places.value,
+}))
 const oldRefusedList = computed(() => oldRefusedIds({
   serverItems: rerecordServer.value.items,
   recordedAlso: rerecordServer.value.recordedAlso,
