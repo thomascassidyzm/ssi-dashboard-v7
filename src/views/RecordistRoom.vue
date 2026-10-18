@@ -2686,6 +2686,8 @@ async function recordOne(lineId) {
   const i = lines.value.findIndex(l => l.id === lineId)
   if (i === -1) return
   micError.value = null
+  // A take still playing is stopped first: the mic must never open on the speaker (F57).
+  if (playingId.value) stopPlayback()
   try {
     await recorder.start(selectedDeviceId.value || null, captureProfile.value)
   } catch (err) { micError.value = friendlyMicError(err); return }
