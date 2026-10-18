@@ -12,6 +12,7 @@ const { summariseSide, summariseLanguages, neededLines, seedOf, OFFERABLE, snaps
 const { clipLanguageKey } = require('../../services/shared/clip-index.cjs')
 const rv = require('../../services/shared/resolve-voice.cjs')
 const { generateLearningScript } = require('../../services/learning-script-generator.cjs')
+const { loadIndex } = require('./index-walk.cjs')
 const PAGE = 1000
 const pause = () => new Promise(r => setTimeout(r, 25))
 
@@ -32,38 +33,6 @@ async function content(pg, table, code) {
     if (cursor.some(v => v == null)) throw new Error(`Null pagination key in ${table}`)
     await pause()
   }
-}
-async function loadIndex(pg) {
-  const index = new Map(), voices = new Map(), flagged = new Map()
-  let cursor = ['', '', ''], entries = 0, playable = 0, failing = 0
-  for (;;) {
-    // Materialise the bounded PK page BEFORE joining clips by UUID primary key.
-    const { rows } = await pg.query(`WITH page AS MATERIALIZED (
-      SELECT language, text_key, voice_id, audio_id, origin FROM clip_index
-      WHERE (language, text_key, voice_id) > ($1, $2, $3)
-      ORDER BY language, text_key, voice_id LIMIT ${PAGE})
-      SELECT p.*, a.s3_key, a.duration_ms, a.veracity_pass FROM page p LEFT JOIN course_audio a ON a.id = p.audio_id
-      ORDER BY p.language, p.text_key, p.voice_id`, cursor)
-    for (const r of rows) {
-      if (!voices.has(r.language)) voices.set(r.language, new Set())
-      voices.get(r.language).add(r.voice_id)
-      entries++
-      if (!r.s3_key || r.s3_key.startsWith('pending/') || Number(r.duration_ms || 0) <= 200) continue
-      // A clip failing the speech check never enters a menu (design §6); counted, not held.
-      if (r.veracity_pass === false) {
-        const fk = `${r.language}\u001f${r.voice_id}`
-        flagged.set(fk, (flagged.get(fk) || 0) + 1); failing++
-        continue
-      }
-      const key = `${r.language}\u001f${r.text_key}`
-      if (!index.has(key)) index.set(key, new Map())
-      index.get(key).set(r.voice_id, r.origin === 'human' ? 'human' : 'tts'); playable++
-    }
-    if (rows.length < PAGE) break
-    const last = rows.at(-1); cursor = [last.language, last.text_key, last.voice_id]
-    await pause()
-  }
-  return { index, voices, flagged, entries, playable, failing }
 }
 async function presentations(pg, code, ids) {
   const out = new Map()
@@ -90,10 +59,13 @@ async function refresh({ courseCode, out = SUMMARY_PATH } = {}) {
       voices: (await pg.query('SELECT voice_id, display_name, human_name, is_active, gender FROM voices')).rows }
     const config = (await pg.query('SELECT key, config FROM algorithm_config')).rows
     if (!config.some(r => r.key === 'script_shape')) throw new Error('Missing live script_shape; refusing fallback coverage')
-    const held = await loadIndex(pg)
+    const wanted = courses.filter(c => !courseCode || c.course_code === courseCode)
+    // A filtered probe walks only its own languages; the estate run walks everything.
+    const languages = courseCode ? [...new Set(wanted.flatMap(c => [c.known_lang, c.target_lang].map(l => clipLanguageKey(l, c))).filter(Boolean))] : null
+    const held = await loadIndex(pg, { languages })
     console.error(`Index: ${held.entries} entries, ${held.playable} playable, ${held.failing} failing the speech check`)
     const result = [], needs = new Map()
-    for (const course of courses.filter(c => !courseCode || c.course_code === courseCode)) {
+    for (const course of wanted) {
       try {
         const tables = { courses: [course], algorithm_config: config }
         for (const table of Object.keys(KEYS)) tables[table] = await content(pg, table, course.course_code)
