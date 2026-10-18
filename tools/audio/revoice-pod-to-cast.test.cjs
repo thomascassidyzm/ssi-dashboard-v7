@@ -31,3 +31,16 @@ describe('revoice-pod-to-cast', () => {
     expect(skipped).toHaveLength(1)
   })
 })
+
+// F49b: link-clip refuses more than 500 links per request, and a flush can hold more than that
+describe('chunkLinks', () => {
+  it('splits 1,203 links into requests of at most 500, keeping order and losing none', async () => {
+    const { createRequire } = await import('node:module')
+    const { chunkLinks } = createRequire(import.meta.url)('./revoice-pod-to-cast.cjs')
+    const links = Array.from({ length: 1203 }, (_, i) => i)
+    const parts = chunkLinks(links)
+    expect(parts.map((p) => p.length)).toEqual([500, 500, 203])
+    expect(parts.flat()).toEqual(links)
+    expect(chunkLinks([])).toEqual([])
+  })
+})

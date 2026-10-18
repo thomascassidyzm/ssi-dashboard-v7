@@ -294,6 +294,8 @@ async function repointUnplayable(pg, db, code, cast, { dryRun, maxChars }) {
   const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
   let moved = 0, reused = 0, rendered = 0, spent = 0, left = 0
   const mayMove = async (to, it) => { for (const s of it.slots) if (!(await rv.mayPoint(db, { courseCode: code, col: s.col, to, tbl: s.tbl, key: s.key, from: s.from }))) return false; return true }
+  // The slots already moved stay moved when a later write throws, so the bump runs on the way out too (as the fix loop above does).
+  try {
   for (const it of list) {
     let to = null, how = 'reuse'
     if (it.reuse && await mayMove(it.reuse, it)) to = it.reuse
@@ -314,7 +316,9 @@ async function repointUnplayable(pg, db, code, cast, { dryRun, maxChars }) {
     for (const s of it.slots) if (await rv.setSlotPointer(db, { tbl: s.tbl, key: s.key, col: s.col, from: s.from, to, courseCode: code, editEventId: await event() })) { done.push(s); moved++ }
     log({ kind: 'swap', to, slots: done }); how === 'reuse' ? reused++ : rendered++
   }
+  } finally {
   if (!dryRun && moved) { const v = await bumpCourseVersion(db, code, 'patch'); if (!v) throw new Error(`content_version bump failed for ${code}`); log({ kind: 'bumped', v }) }
+  }
   console.log(`${code} repoint-unplayable${dryRun ? ' (dry run)' : ''}: ${moved} slots ${dryRun ? 'would move' : 'moved'} — ${reused} texts reused, ${rendered} rendered (${spent} chars), ${left} slots left (no budget)${dryRun ? '' : `; undo: node tools/audio/voice-audit.cjs --undo ${file}`}`)
   return { moved, reused, rendered, spent, left, ledger: dryRun ? null : file }
 }

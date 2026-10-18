@@ -33,6 +33,13 @@ describe('voice audit classify', () => {
       g('target1_audio_id', rv.TOM_006, 'eng', 2),                 // an English line on a French slot → no ruling
       g('known_audio_id', null, null, 6),                          // dangling: the pointer names no clip
     ], cast)
+    // Each total is the slot count of the rows above it that earn that status:
+    //   ok 15        = 10 English known on Tom-006 (the ruled voice) + 5 fra target1 on the cast voice
+    //   drift 7      = English known on Charlotte, where the ruling says Tom-006
+    //   human 3      = a human take, never judged against the cast
+    //   refused 4    = fra target2 has no male cast voice, so the Azure line has no legal resolution
+    //   no-ruling 2  = an English clip on a French slot: resolveVoice has no rule for that pairing
+    //   dangling 6   = the pointer names no clip at all
     expect(totals).toEqual({ ok: 15, drift: 7, human: 3, refused: 4, 'no-ruling': 2, dangling: 6, unplayable: 0 })
     expect(groups.find((x) => x.status === 'drift')).toMatchObject({ role: 'known', resolved: rv.TOM_006, reason: 'english-known' })
     expect(groups.find((x) => x.status === 'refused')).toMatchObject({ role: 'target2', reason: 'uncast' })
@@ -101,5 +108,35 @@ describe('voice audit pointerIds', () => {
     expect(sql.match(/\(x\.\w+_audio_id(::uuid)?\)/g)).toHaveLength(11)
     expect(sql).toContain('(x.presentation_audio_id::uuid)')
     expect(sql).not.toMatch(/statement_timeout/)
+  })
+})
+
+// F18a: slots already repointed stay repointed when a later write throws, so the content_version bump must still happen
+describe('voice audit repointUnplayable', () => {
+  it('bumps content_version for the slots it moved even when a later write throws', async () => {
+    const audit = require('./voice-audit.cjs'), rv = require('../../services/shared/resolve-voice.cjs')
+    const { repointUnplayable } = audit
+    const cv = require('../../services/shared/course-version.cjs')
+    const cel = require('../../services/shared/content-edit-log.cjs')
+    const saved = { bump: cv.bumpCourseVersion, rec: cel.recordContentEdit, lc: rv.loadCourse, res: rv.resolveVoice, may: rv.mayPoint, set: rv.setSlotPointer }
+    const bumps = []
+    process.env.SSI_EVIDENCE_ROOT = require('node:fs').mkdtempSync(require('node:path').join(require('node:os').tmpdir(), 'va-ev-'))
+    cv.bumpCourseVersion = async (_db, code, level) => { bumps.push([code, level]); return '1.0.1' }
+    cel.recordContentEdit = async () => 'ev1'
+    rv.loadCourse = async () => fra
+    rv.resolveVoice = () => ({ status: 'voice', voiceId: 'cartesia_fra-f' })
+    rv.mayPoint = async () => true
+    let writes = 0
+    rv.setSlotPointer = async () => { if (++writes === 2) throw new Error('db went away'); return true }
+    let first = true
+    const pg = { query: async (sql) => {
+      if (/order by \(ca\.voice_id/.test(sql)) return { rows: [{ id: 'clip1' }] }
+      if (first && /from course_seeds x/.test(sql) && /known_audio_id/.test(sql)) { first = false
+        return { rows: [{ key: 's1', aid: 'a1', cid: null, text: 'un', t: 'un', language: 'fra' }, { key: 's2', aid: 'a2', cid: null, text: 'deux', t: 'deux', language: 'fra' }] } }
+      return { rows: [] } } }
+    try {
+      await expect(repointUnplayable(pg, {}, 'fra_for_eng', cast, { dryRun: false, maxChars: 0 })).rejects.toThrow('db went away')
+      expect(bumps).toEqual([['fra_for_eng', 'patch']])
+    } finally { Object.assign(cv, { bumpCourseVersion: saved.bump }); Object.assign(cel, { recordContentEdit: saved.rec }); Object.assign(rv, { loadCourse: saved.lc, resolveVoice: saved.res, mayPoint: saved.may, setSlotPointer: saved.set }) }
   })
 })

@@ -20,7 +20,12 @@ describe('nightly voice audit notice', () => {
     expect(nightly.coverageLine({ courses: { fra_for_eng: { totals: t() } } })).toBeNull()
   })
   it('says no gaps when there are none', () => {
-    expect(nightly.noticeText({ courses: { fra_for_eng: { totals: t({ drift: 5 }) } } }, [])).toMatch(/Real gaps: none/)
+    expect(nightly.noticeText({ courses: { fra_for_eng: { totals: t({ drift: 5 }) } } }, [])).toMatch(/Real gaps: none found in the 1 of 11 cast/)
+  })
+  it('never claims every slot plays: a course absent from the snapshot is counted as not audited (F43a)', () => {
+    const s = nightly.noticeText({ courses: {} }, [])
+    expect(s).toMatch(/none found in the 0 of 11/)
+    expect(s).not.toMatch(/every premium slot plays/)
   })
   const row = (gender, voice_id) => ({ language: 'eng', gender, rank: 0, slot: 'phrase', voice_id, assigned_by: 'tom-ruling-2026-10-12-x' })
   const good = { roles: [row('f', rv.CHARLOTTE), row('m', rv.TOM_006)] }

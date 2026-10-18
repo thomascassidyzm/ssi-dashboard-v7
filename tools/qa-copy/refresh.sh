@@ -92,7 +92,8 @@ done
 
 # 7. freeze read-only, flip the switch atomically, then drop every older copy
 "$PGBIN/psql" -q -d postgres -v dbname="$NEWDB" -f "$HERE/freeze.sql" || fail "setting read-only default"
-printf 'DATABASE_URL="postgres://%s@/%s?host=%s&port=%s"\nQA_COPY_DB=%s\nQA_COPY_BACKUP_KEY=%s\n' "$PGUSER_COPY" "$NEWDB" "$SOCK" "$PORT" "$NEWDB" "$KEY" > "$ENVFILE.tmp" && mv "$ENVFILE.tmp" "$ENVFILE"
+# The flip must have happened before anything is dropped: a failed write leaves yesterday's copy serving and keeps it.
+{ printf 'DATABASE_URL="postgres://%s@/%s?host=%s&port=%s"\nQA_COPY_DB=%s\nQA_COPY_BACKUP_KEY=%s\n' "$PGUSER_COPY" "$NEWDB" "$SOCK" "$PORT" "$NEWDB" "$KEY" > "$ENVFILE.tmp" && mv "$ENVFILE.tmp" "$ENVFILE"; } || fail "switching $ENVFILE to $NEWDB"
 printf '{"db":"%s","key":"%s","built":"%s"%s}\n' "$NEWDB" "$KEY" "$(date -u +%FT%TZ)" "$(echo "$COUNTS" | awk -F'\t' '{printf ",\"%s\":%s",$1,$2}')" > "$STATE"
 for d in $("$PGBIN/psql" -At -d postgres -f "$HERE/list-copies.sql"); do [ "$d" = "$NEWDB" ] || "$PGBIN/dropdb" --if-exists "$d"; done
 echo "qa-copy ready: $NEWDB from $KEY"

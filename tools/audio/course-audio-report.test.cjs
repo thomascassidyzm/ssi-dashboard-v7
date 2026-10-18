@@ -20,3 +20,14 @@ describe('course audio report pure parts', () => {
     expect(r.whyUnpointed({ matching_slots: 2, slots_on_cast: 0, slots_on_other: 0 })).toMatch(/empty pointer/)
   })
 })
+
+// F18b: clips are keyed on text_normalized (normalize_text), so the slot side of the join must use the same function
+describe('explainDay slot text', () => {
+  it('compares slot text through normalize_text, not a bare lower(trim())', async () => {
+    const seen = []
+    const pg = { query: async (sql) => { seen.push(sql); return { rows: [] } } }
+    await r.explainDay(pg, 'fra_for_eng', '2026-10-12', { target1: 'cartesia_fra-f' })
+    expect(seen[0]).toMatch(/normalize_text\(x\.target_text\)/)
+    expect(seen[0]).not.toMatch(/lower\(trim/)
+  })
+})

@@ -19,6 +19,9 @@ const URL = process.env.POPTY_URL || 'http://localhost:3470';
 const AUDIO_BASE = process.env.LEARNER_AUDIO_BASE || 'https://saysomethingin.app/api/audio';
 const AGENT = 'revoice-pod-to-cast (job #864)';
 const LINK_EVERY = 25;
+const MAX_LINKS_PER_REQUEST = 500;   // link-clip refuses more than this in one request (TOO_MANY); one ask can carry many slots
+/** Pure. Split links into requests link-clip will accept. */
+const chunkLinks = (links, size = MAX_LINKS_PER_REQUEST) => { const out = []; for (let i = 0; i < links.length; i += size) out.push(links.slice(i, i + size)); return out; };
 const bare = (v) => String(v || '').replace(/^cartesia_/, '');
 // Old Azure/xAI speaker names -> sex, for a line whose speaker has no gender in the pod's speakers map; neither = skipped, never guessed.
 const FEMALE = /(carlota|dalia|elvira|paloma|raquel|brenda|eve|ara|nova|sonia|olivia|fernanda|francisca)/i;
@@ -97,14 +100,15 @@ async function main() {
   const out = { library: 0, rendered: 0, spent: 0, linked: 0, linkRefused: 0, failed: 0, versions: new Set() };
   let pending = [], stopped = null, n = 0;
   const flush = async () => {
-    const links = pending.splice(0);
-    if (!links.length) return;
-    const l = await post(`/api/production/${COURSE}/link-clip`, { links });
-    out.linked += l.body.linked || 0;
-    if (l.body.contentVersion) out.versions.add(l.body.contentVersion);
-    for (const x of l.body.results || []) if (!x.ok) { out.linkRefused++; console.log('  LINK-REFUSED', JSON.stringify(x).slice(0, 250)); }
-    if (l.status !== 200 && !(l.body.results || []).length) console.log('  LINK-HTTP', l.status, JSON.stringify(l.body).slice(0, 250));
-    console.log(`  [${new Date().toISOString()}] linked so far ${out.linked}; rendered ${out.rendered} (${out.spent} chars), library ${out.library}`);
+    const all = pending.splice(0);
+    for (const links of chunkLinks(all)) {
+      const l = await post(`/api/production/${COURSE}/link-clip`, { links });
+      out.linked += l.body.linked || 0;
+      if (l.body.contentVersion) out.versions.add(l.body.contentVersion);
+      for (const x of l.body.results || []) if (!x.ok) { out.linkRefused++; console.log('  LINK-REFUSED', JSON.stringify(x).slice(0, 250)); }
+      if (l.status !== 200 && !(l.body.results || []).length) console.log('  LINK-HTTP', l.status, JSON.stringify(l.body).slice(0, 250));
+    }
+    if (all.length) console.log(`  [${new Date().toISOString()}] linked so far ${out.linked}; rendered ${out.rendered} (${out.spent} chars), library ${out.library}`);
   };
   for (const a of asks) {
     if (MAX && out.spent + a.chars > MAX) { stopped = `MAX_CHARS ${MAX} reached`; break; }
@@ -121,5 +125,5 @@ async function main() {
   await flush();
   console.log(`DONE ${POD}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}; content_version now ${[...out.versions].pop() || 'unchanged'}; ANSWERED ${n} of ${asks.length} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { podAsks };
+module.exports = { podAsks, chunkLinks, MAX_LINKS_PER_REQUEST };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
