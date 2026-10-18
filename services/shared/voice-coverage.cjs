@@ -34,7 +34,7 @@ function neededLines(rounds) {
       all.add(k)
       if (r.seed != null && r.seed <= OFFERABLE.firstSeeds) first.add(k)
     }
-    return { number: r.number, keys }
+    return { number: r.number, seed: r.seed, keys }
   })
   return { all, first, requirements }
 }
@@ -42,6 +42,11 @@ function neededLines(rounds) {
 function summariseSide({ language, rounds, voices, cast, index }) {
   const { all: needed, first, requirements } = neededLines(rounds)
   const restNeeded = needed.size - first.size
+  // A round with a line that has no text cannot be verified for ANY voice, so it can never count
+  // as held: a missing line in seeds 1-100 blocks offering outright, and one further on counts as
+  // a line the voice lacks (it is added to the denominator of the rest share).
+  const firstMissing = requirements.filter(r => r.keys.has(null) && r.seed != null && r.seed <= OFFERABLE.firstSeeds).length
+  const restMissing = requirements.filter(r => r.keys.has(null)).length - firstMissing
   const rows = [...new Set([...voices, ...cast])].sort().map(voiceId => {
     const entry = key => key != null ? index.get(`${language}\u001f${key}`) : undefined
     const has = key => !!entry(key)?.has(voiceId)
@@ -56,8 +61,9 @@ function summariseSide({ language, rounds, voices, cast, index }) {
       else if (firstBreak == null) firstBreak = r.number
     }
     const restHeld = heldPairs - firstHeld
-    const offerable = first.size > 0 && firstHeld >= first.size * OFFERABLE.firstShare
-      && (restNeeded === 0 || restHeld >= restNeeded * OFFERABLE.restShare)
+    const restTotal = restNeeded + restMissing
+    const offerable = first.size > 0 && firstMissing === 0 && firstHeld >= first.size * OFFERABLE.firstShare
+      && (restTotal === 0 || restHeld >= restTotal * OFFERABLE.restShare)
     return { voiceId, isCast: cast.includes(voiceId), heldPairs, humanPairs, ttsPairs: heldPairs - humanPairs,
       pairPercent: pct(heldPairs, needed.size),
       seeds1to100: { held: firstHeld, percent: pct(firstHeld, first.size) },
