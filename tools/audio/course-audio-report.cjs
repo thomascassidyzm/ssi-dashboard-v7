@@ -79,7 +79,7 @@ async function explainDay(pg, code, day, castByRole) {
     const role = rv.roleOfColumn(col)
     if (role === 'presentation') continue
     const txt = role === 'known' ? 'known_text' : 'target_text'
-    slotSel.push(`select '${role}' role, x.seed_number, lower(trim(x.${txt})) txt, x.${col} ptr from ${tbl} x where x.course_code = $1`)
+    slotSel.push(`select '${role}' role, x.seed_number, normalize_text(x.${txt}) txt, x.${col} ptr from ${tbl} x where x.course_code = $1`)
   }
   const pairs = Object.entries(castByRole).filter(([r, v]) => v && r !== 'presentation').map(([r, v]) => `(ca.role = '${r}' and ca.voice_id = '${String(v).replace(/'/g, '')}')`).join(' or ')
   if (!pairs) return []
@@ -173,4 +173,4 @@ async function main(argv = process.argv.slice(2)) {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message || e); process.exit(1) })
-module.exports = { slotTable, recentByDay, whyUnpointed, explainText, renderPage, main }
+module.exports = { slotTable, recentByDay, whyUnpointed, explainText, renderPage, explainDay, main }
