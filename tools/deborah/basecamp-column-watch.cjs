@@ -72,6 +72,7 @@ const DEFAULT_STATE = path.join(os.homedir(), '.local', 'state', 'deborah-watch'
 
 // ── CLI ──────────────────────────────────────────────────────────────────────
 const argv = process.argv.slice(2);
+const { kaiSessionHeaders, testNotice } = require('./watch-notice.cjs');
 const has = (f) => argv.includes(f);
 const opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d; };
 
@@ -547,17 +548,9 @@ async function publishToShelf(markdown, findings, fallbackUrl) {
   // digest that way would file Deborah's review material — Kai's alone — as a document
   // of Tom's, and plate-ingest would put it on Tom's plate. So the doc is published
   // ONLY when pointed at a Kai session; otherwise it is deliberately skipped.
-  const sessionFile = process.env.DEBORAH_WATCH_SESSION;
-  let headers = { 'Content-Type': 'application/json' };
-  if (sessionFile) {
-    try {
-      const cookie = fs.readFileSync(sessionFile, 'utf8').trim();
-      if (!cookie.startsWith('v2.')) out.why = `${sessionFile} is not a v2 session — refusing to publish with a stale identity`;
-      else headers = { ...headers, Cookie: `cs_user=${cookie}`, Origin: surface };
-    } catch (e) { out.why = `cannot read ${sessionFile}: ${e.message}`; }
-  } else {
-    out.why = 'DEBORAH_WATCH_SESSION not set — no Kai identity, so the digest was NOT published (it would file as Tom\'s); the card and the repo queue file still went out';
-  }
+  const sess = kaiSessionHeaders(surface);
+  const headers = sess.headers;
+  if (sess.why) out.why = sess.why;
 
   const today = new Date().toISOString().slice(0, 10);
   if (headers.Cookie) {
@@ -628,9 +621,12 @@ async function postToWatson(text, headers, surface) {
   if (has('--test-notice')) {
     // One labelled note through the real post path — proves identity, route and target without a scan.
     const surface = process.env.CS_SURFACE || 'http://localhost:4317';
-    const r = await postToWatson(`${WATSON_FIRST_LINE}\n\nTEST NOTICE — checking the Deborah watcher reaches your Watson via toPerson. Nothing to act on.`, { 'Content-Type': 'application/json' }, surface);
+    const r = await testNotice({
+      dryRun: DRY_RUN, surface, post: postToWatson,
+      text: `${WATSON_FIRST_LINE}\n\nTEST NOTICE — checking the Deborah watcher reaches your Watson via toPerson. Nothing to act on.`,
+    });
     console.log(JSON.stringify(r));
-    process.exit(r.posted ? 0 : 1);
+    process.exit(DRY_RUN || r.posted ? 0 : 1);
   }
   const state = loadState();
   const report = await morningRead();
