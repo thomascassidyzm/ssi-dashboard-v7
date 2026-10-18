@@ -3028,7 +3028,7 @@ function describeTrack(t) {
 const localBatchRecorded = ref({})
 watch([recordedCount, lines, batchScope, () => voice.value && voice.value.track, () => voice.value && voice.value.batch], () => {
   localBatchRecorded.value = creditLoadedBatch(localBatchRecorded.value, {
-    scope: batchScope.value, served: voice.value, lines: lines.value, isRecorded,
+    scope: batchScope.value, served: voice.value, lines: lines.value, isRecorded, isRefused: l => queue.failed.has(l.id) && !isRecorded(l),
   })
 })
 // What this device knows beyond the server is UPLOADING (amber), never recorded (green, job #791).

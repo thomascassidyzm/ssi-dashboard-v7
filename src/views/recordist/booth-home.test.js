@@ -166,3 +166,16 @@ describe('takes still on the device count as recorded, uploading (job #791)', ()
     expect(Object.keys(kept).sort()).toEqual(['a', 'fresh'])
   })
 })
+
+import { creditLoadedBatch } from './booth-home.js'
+describe('creditLoadedBatch (F54)', () => {
+  const scope = { track: 'seed.x', batch: 1 }
+  const served = { track: 'seed.x', batch: 1 }
+  const lines = [{ id: 'a', r: true }, { id: 'b', r: true }]
+  it('credits recorded lines, then takes a refused take back off', () => {
+    let credit = creditLoadedBatch({}, { scope, served, lines, isRecorded: (l) => l.r })
+    expect(credit['seed.x#1']).toEqual(['a', 'b'])
+    credit = creditLoadedBatch(credit, { scope, served, lines, isRecorded: (l) => l.id !== 'b', isRefused: (l) => l.id === 'b' })
+    expect(credit['seed.x#1']).toEqual(['a'])
+  })
+})
