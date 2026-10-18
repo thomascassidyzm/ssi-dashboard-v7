@@ -801,7 +801,7 @@ module.exports = function createRecordistRouter({
             ? await db().from('listening_pods').select('id, metadata').in('id', owed)
             : { data: [], error: null }
           if (podErr) throw podErr
-          podsDone = boothNextPod.nextPodFor(queue.lines, podScope, new Map((podRows || []).map((p) => [p.id, p])))
+          podsDone = boothNextPod.nextPodFor(queue.lines, podScope, new Map((podRows || []).map((p) => [p.id, p])), scoped)
         } catch (err) {
           logger.warn(`[booth] next pod not worked out for ${recordist.voiceId}: ${err.message}`)
         }

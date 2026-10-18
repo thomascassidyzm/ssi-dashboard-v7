@@ -41,9 +41,10 @@ function podNotOfferedBecause(pod) {
  * @param {object[]} lines the voice's whole queue (recorded lines INCLUDED), in queue order
  * @param {string} currentPod the link's ?pod= — a slug or a full pod id
  * @param {Map<string, object>|object} podsById listening_pods rows ({id, metadata}) by id
+ * @param {string|null} [currentCourse] the link's ?course=: two courses can each have a 'pod-1', so a bare slug names the pod of THIS course
  * @returns {{nextPod: object|null, remainingOutsidePods: number}}
  */
-function nextPodFor(lines, currentPod, podsById) {
+function nextPodFor(lines, currentPod, podsById, currentCourse = null) {
   const meta = podsById instanceof Map ? podsById : new Map(Object.entries(podsById || {}))
   const pods = []
   const byId = new Map()
@@ -63,7 +64,7 @@ function nextPodFor(lines, currentPod, podsById) {
     }
     if (!l.recorded) p.remaining += 1
   }
-  const at = pods.findIndex((p) => p.podSlug === currentPod || p.podId === currentPod)
+  const at = pods.findIndex((p) => p.podId === currentPod || (p.podSlug === currentPod && (!currentCourse || p.courseCode === currentCourse)))
   // After the current pod first, then round from the top: an earlier pod with lines
   // still owed is still work, and a link into the last pod must not end the run.
   const order = at === -1 ? pods : [...pods.slice(at + 1), ...pods.slice(0, at)]
