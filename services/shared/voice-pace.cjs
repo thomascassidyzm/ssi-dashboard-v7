@@ -57,13 +57,13 @@ function targetPace(role, mode) {
  * @param {object|null} voice a `voices` row (or its pace fields)
  * @param {string} role
  * @param {string} mode
- * @param {boolean} [human] the clip is a human recording (course_audio.origin='human'):
- *   always 1.0, never slowed (Tom, 2026-10-18, r-2026-10-18-exception-to-the-flat-speed-multiplier)
+ * @param {string} [courseCode] a human-voiced language (Welsh) is always 1.0, never slowed
+ *   (Tom, 2026-10-18, r-2026-10-18-exception-to-the-flat-speed-multiplier, decided by language)
  */
-function playbackSpeed(voice, role, mode, human = false) {
+function playbackSpeed(voice, role, mode, courseCode) {
   const policy = targetPace(role, mode);
-  if (human) {
-    return { speed: 1.0, corrected: false, clamped: false, ...policy, targetPace: 1.0, reason: 'human recording — played at 1.0, never slowed' };
+  if (isHumanVoicedCourse(courseCode)) {
+    return { speed: 1.0, corrected: false, clamped: false, ...policy, targetPace: 1.0, reason: 'human-voiced language — every clip plays at 1.0, never slowed' };
   }
   return { ...policy, speed: policy.targetPace, corrected: false, clamped: false };
 
@@ -132,7 +132,19 @@ function toNumber(v) {
   return Number.isFinite(n) ? n : null;
 }
 
+/**
+ * Human-voiced languages: every clip plays at 1.0. Keyed by TARGET-language code
+ * (course code before `_for_`). ONE list; mirrored in
+ * ssi-learning-app/packages/core/src/script/voicePace.ts.
+ */
+const HUMAN_VOICED_LANGUAGES = Object.freeze(['cym_n', 'cym_s']);
+function isHumanVoicedCourse(courseCode) {
+  const target = String(courseCode == null ? '' : courseCode).toLowerCase().split('_for_')[0];
+  return !!target && HUMAN_VOICED_LANGUAGES.includes(target);
+}
+
 module.exports = {
+  HUMAN_VOICED_LANGUAGES, isHumanVoicedCourse,
   effectivePaceRatio, paceMultiplier, combineMeasurements, targetPace, playbackSpeed,
   MIN_SPEED, MAX_SPEED, MODES, ROLES, ROLE_ALIASES,
 };
