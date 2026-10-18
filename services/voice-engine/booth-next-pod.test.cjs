@@ -43,7 +43,8 @@ describe('nextPodFor — the pod a finished pod link offers next', () => {
 
   it('F39: a bare slug shared by two courses names the pod of the link\'s course', () => {
     const other = (slug, recorded) => line(slug, recorded, { courseCode: 'cym_n_for_eng', podId: `cym_n_for_eng:${slug}` })
-    const lines = [other('pod-1', true), line('pod-1', true), line('market', false), other('market', false)]
+    // The other course's pod-1 comes FIRST, with its own market owed straight after: a bare-slug match picks it and offers cym_n's market.
+    const lines = [other('pod-1', true), other('market', false), line('pod-1', true), line('market', false)]
     const r = nextPodFor(lines, 'pod-1', new Map(), 'cym_s_for_eng')
     expect(r.nextPod).toMatchObject({ podId: 'cym_s_for_eng:market' })
   })
