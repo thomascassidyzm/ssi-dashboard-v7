@@ -61,7 +61,7 @@
  * and survives this rework untouched.
  */
 
-const { effectivePaceRatio, playbackSpeed } = require('../shared/voice-pace.cjs')
+const { effectivePaceRatio, playbackSpeed, isHumanVoicedLanguage } = require('../shared/voice-pace.cjs')
 const fs = require('fs')
 const path = require('path')
 const policy = require('../shared/tts-provider-policy.cjs')
@@ -202,14 +202,17 @@ function rankName (rank) {
  * retired). They are shown rather than left to be derived, because a raw ratio
  * is not a thing anyone can judge by ear and a playback speed is.
  */
-function paceOf (voice) {
+function paceOf (voice, language = null) {
   if (!voice) return null
+  // A human-voiced language (Welsh) plays every clip at 1.0, never slowed (Tom, 2026-10-18):
+  // the lab must show the number the player uses, not the flat 0.8/0.9 of everything else.
+  const course = isHumanVoicedLanguage(language) ? 'cym_n_for_eng' : undefined
   const ratio = voice.natural_pace_ratio === null || voice.natural_pace_ratio === undefined
     ? null : Number(voice.natural_pace_ratio)
   const nudge = voice.natural_pace_nudge === null || voice.natural_pace_nudge === undefined
     ? null : Number(voice.natural_pace_nudge)
-  const easy = playbackSpeed(voice, 'target', 'easy')
-  const fast = playbackSpeed(voice, 'target', 'fast')
+  const easy = playbackSpeed(voice, 'target', 'easy', course)
+  const fast = playbackSpeed(voice, 'target', 'fast', course)
   return {
     ratio,
     nudge,
@@ -563,7 +566,7 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
         voiceName: voice ? (voice.display_name || voice.human_name || voice.voice_id) : null,
         kind: voice ? voiceKind(voice) : null,
         engine: voice ? (voice.tts_engine || null) : null,
-        pace: paceOf(voice),
+        pace: paceOf(voice, code),
         // Consent travels onto the CAST slot too, not only onto the candidate
         // list. A voice that reaches learners is exactly where the question
         // "who authorised this?" has to be answerable at a glance.
@@ -624,7 +627,7 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
       kind: voice ? voiceKind(voice) : null,
       engine: voice ? (voice.tts_engine || null) : null,
       gender: role ? role.gender : null,
-      pace: paceOf(voice),
+      pace: paceOf(voice, code),
       consent: voice ? consent.describe(voice) : null,
       notes: role ? role.notes : null,
       assignedBy: role ? role.assigned_by : null,
@@ -748,7 +751,7 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
       // `pace` rides along on the candidate too, so the numbers are visible on
       // a language nobody has cast yet — which, until casting is populated, is
       // every language.
-      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, owned: owned.has(v.voice_id), pace: paceOf(v), consent: consent.describe(v), ...catalogueFactsById(v.voice_id, catalogue) }))
+      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, owned: owned.has(v.voice_id), pace: paceOf(v, code), consent: consent.describe(v), ...catalogueFactsById(v.voice_id, catalogue) }))
       .concat(dropRetired(cartesiaCandidates(base, catalogue, roles), voices)))), code)
       .slice(0, 80),
   }
