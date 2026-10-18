@@ -102,3 +102,16 @@ export function shortRefusalReason(text) {
 export function refusedLineWords(text) {
   return `Last take didn't save: ${shortRefusalReason(text)}`
 }
+
+/**
+ * REFUSED TAKES WHOSE LINE IS GONE (F55): the server's own list, plus any take whose line neither
+ * the full queue read nor the batch on screen nor a kept place holds. A line the device has
+ * placed, or the batch is showing, is not gone — the full queue read can simply not have carried it.
+ */
+export function goneRefusedLineIds({ serverGone = [], refusedTakes = [], queueLines = null, batchLines = [], placed = {} }) {
+  const ids = new Set(serverGone)
+  if (!queueLines) return [...ids]
+  const have = new Set([...queueLines, ...batchLines].map((l) => l.id))
+  for (const t of refusedTakes) if (!have.has(t.lineId) && !(placed && placed[t.lineId])) ids.add(t.lineId)
+  return [...ids]
+}

@@ -57,4 +57,11 @@ describe('nextBatchAfter', () => {
     expect(nextBatchAfter([seeds, p1], { track: 'phrase.1', batch: 2 })).toBe(null)
     expect(nextBatchAfter([seeds], null)).toBe(null)
   })
+
+  it('an unticked section is not offered more of its own batches (F33)', () => {
+    const s = track('seed.cym_n', 'seed', [done, open, open], { newCourse: true })
+    const p1 = track('phrase.1', 'phrase', [{ ...open, current: true }], { pass: 1 })
+    const r = nextBatchAfter([s, p1], { track: 'seed.cym_n', batch: 1 }, new Set(['seed.cym_n']))
+    expect(at(r)).toBe('phrase.1#1')
+  })
 })

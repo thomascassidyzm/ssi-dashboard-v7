@@ -65,15 +65,19 @@ export function withDeviceTakes(tracks, { unsent = [], placeOf = () => null } = 
  * WHAT THIS DEVICE HAS RECORDED OF THE BATCH ON SCREEN, by line id (job #818). `credit` is
  * { 'track#n': [lineId] }; returns it unchanged unless the lines on screen are the batch the
  * address names — `served` is the server's answer they came in ({ track, batch }), and until it
- * names `scope` the lines belong to the batch just left. Ids only ever accumulate.
+ * names `scope` the lines belong to the batch just left. Ids only ever accumulate, except that a refused take is taken back off.
  */
-export function creditLoadedBatch(credit, { scope, served, lines, isRecorded }) {
+export function creditLoadedBatch(credit, { scope, served, lines, isRecorded, isRefused = () => false }) {
   if (!scope || !served || served.track !== scope.track || Number(served.batch) !== Number(scope.batch)) return credit
   const k = `${scope.track}#${scope.batch}`
   const have = new Set(credit[k] || [])
-  const before = have.size
-  for (const l of lines || []) if (isRecorded(l)) have.add(l.id)
-  return have.size === before ? credit : { ...credit, [k]: [...have] }
+  const before = [...have].join()
+  for (const l of lines || []) {
+    // A take the server then refused is no longer recorded: it is credited no more (F54).
+    if (isRefused(l)) have.delete(l.id)
+    else if (isRecorded(l)) have.add(l.id)
+  }
+  return [...have].join() === before ? credit : { ...credit, [k]: [...have] }
 }
 
 // WHERE EACH LINE THIS DEVICE HAS OPENED SITS (job #791), so a take still on the shelf can be
@@ -255,7 +259,8 @@ export function nextBatchAfter(tracks, scope, off = new Set()) {
   const at = ordered.findIndex((t) => t.key === scope.track)
   if (at === -1) return null
   const cur = ordered[at]
-  const later = (cur.batches || []).find((b) => b.n > scope.batch && usable(cur, b))
+  // An unticked section offers none of its own batches (it falls through to the next ticked one).
+  const later = !isTicked(off, cur.key) ? null : (cur.batches || []).find((b) => b.n > scope.batch && usable(cur, b))
   if (later) return { track: cur, batch: later }
   for (const t of ordered.slice(at + 1)) {
     if (isFinished(t) || !isTicked(off, t.key) || trackLocked(t, tracks)) continue

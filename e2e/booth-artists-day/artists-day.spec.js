@@ -194,7 +194,8 @@ async function openBooth(page) {
   // The rebuilt booth lands on a home screen of cards (job #347); the ready card is one tap in, on
   // the batch "Up next" offers. The old booth landed on the ready card itself, so tap only if home is up.
   const upNext = page.locator('[data-test=up-next-start]')
-  if (await upNext.count() || await page.locator('.bh-hero').count()) await upNext.click()
+  // Only tap what is there: a finished home draws .bh-hero-done with no Up next button to wait on.
+  if (await upNext.count()) await upNext.click()
   await expect.poll(() => counts(page), { message: 'the ready card' }).not.toBeNull()
 }
 async function begin(page) {

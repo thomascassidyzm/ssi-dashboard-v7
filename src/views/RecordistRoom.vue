@@ -752,7 +752,7 @@ import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
 import BoothHome from './recordist/BoothHome.vue'
-import { refusedLineWords, placeLines } from './recordist/refused-takes.js'
+import { refusedLineWords, placeLines, goneRefusedLineIds } from './recordist/refused-takes.js'
 import RerecordCard from './recordist/RerecordCard.vue'
 import { mergeRerecord, oldRefusedIds, alsoIds } from './recordist/rerecord-list.js'
 import { applyFailures, mismatchLineWords } from './recordist/text-check-failures.js'
@@ -2686,6 +2686,8 @@ async function recordOne(lineId) {
   const i = lines.value.findIndex(l => l.id === lineId)
   if (i === -1) return
   micError.value = null
+  // A take still playing is stopped first: the mic must never open on the speaker (F57).
+  if (playingId.value) stopPlayback()
   try {
     await recorder.start(selectedDeviceId.value || null, captureProfile.value)
   } catch (err) { micError.value = friendlyMicError(err); return }
@@ -3028,7 +3030,7 @@ function describeTrack(t) {
 const localBatchRecorded = ref({})
 watch([recordedCount, lines, batchScope, () => voice.value && voice.value.track, () => voice.value && voice.value.batch], () => {
   localBatchRecorded.value = creditLoadedBatch(localBatchRecorded.value, {
-    scope: batchScope.value, served: voice.value, lines: lines.value, isRecorded,
+    scope: batchScope.value, served: voice.value, lines: lines.value, isRecorded, isRefused: l => queue.failed.has(l.id) && !isRecorded(l),
   })
 })
 // What this device knows beyond the server is UPLOADING (amber), never recorded (green, job #791).
@@ -3100,15 +3102,14 @@ watch([phase, () => (queue.refusedTakes ? queue.refusedTakes.value.length : 0), 
 // and anything still uploading or saved since taken off (recordist/rerecord-list.js).
 const rerecordServer = ref({ items: [], recordedAlso: [], goneAlso: [] })
 // Refused takes whose line the full queue no longer holds: old, not misses.
-const goneRefusedIds = computed(() => {
+const goneRefusedIds = computed(() => goneRefusedLineIds({
   // The batch's own server answer first (it is what the batch will open), the full queue second.
-  const ids = new Set(rerecordServer.value.goneAlso)
-  if (locatorLines.value) {
-    const have = new Set(locatorLines.value.map(l => l.id))
-    for (const t of (queue.refusedTakes && queue.refusedTakes.value) || []) if (!have.has(t.lineId)) ids.add(t.lineId)
-  }
-  return [...ids]
-})
+  serverGone: rerecordServer.value.goneAlso,
+  refusedTakes: (queue.refusedTakes && queue.refusedTakes.value) || [],
+  queueLines: locatorLines.value,
+  batchLines: lines.value,
+  placed: places.value,
+}))
 const oldRefusedList = computed(() => oldRefusedIds({
   serverItems: rerecordServer.value.items,
   recordedAlso: rerecordServer.value.recordedAlso,
