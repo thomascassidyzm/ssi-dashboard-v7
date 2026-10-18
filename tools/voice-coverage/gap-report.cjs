@@ -90,7 +90,7 @@ async function reportCourse(pg, course, cast) {
 }
 
 const table = rows => ['| course | cast | Pod 1 slots | not in cast | unlinked | Pod 1 chars | seed 1-100 lines | missing a seat | seat1 / seat2 missing | seed chars |', '|---|---|---|---|---|---|---|---|---|---|',
-  ...rows.map(r => r.error ? `| ${r.courseCode} | ERROR: ${r.error} |||||||||` : `| ${r.courseCode} | ${r.castVoices.length} | ${r.pod.slots} | ${r.pod.notInCast} | ${r.pod.unlinked} | ${r.pod.chars} | ${r.seeds1to100.lines} | ${r.seeds1to100.missingAnySeat} | ${r.seats.map(v => r.seeds1to100.perSeatMissing[v]).join(' / ')} | ${r.seeds1to100.chars} |`)].join('\n')
+  ...rows.map(r => r.error ? `| ${r.courseCode} | ERROR: ${r.error} |||||||||` : !r.seats.length ? `| ${r.courseCode} | UNCAST: no cast seats, so every seed line and pod slot is a gap by definition | ${r.pod.slots} | ${r.pod.notInCast} | ${r.pod.unlinked} | ${r.pod.chars} | ${r.seeds1to100.lines} | n/a | n/a | ${r.seeds1to100.chars} (not counted) |` : `| ${r.courseCode} | ${r.castVoices.length} | ${r.pod.slots} | ${r.pod.notInCast} | ${r.pod.unlinked} | ${r.pod.chars} | ${r.seeds1to100.lines} | ${r.seeds1to100.missingAnySeat} | ${r.seats.map(v => r.seeds1to100.perSeatMissing[v]).join(' / ')} | ${r.seeds1to100.chars} |`)].join('\n')
 
 async function main(args) {
   const value = f => args.includes(f) ? args[args.indexOf(f) + 1] : undefined
