@@ -18,7 +18,7 @@ test('audio gap bounds each course read on its backend and closes on timeout wit
         assert.match(sql, /course_practice_phrases\s+where course_code = \$1/);
         assert.match(sql, /course_legos\s+where course_code = \$1/);
         assert.match(sql, /s.course_code = \$1/);
-        assert.match(sql, /course_audio h where h.course_code = \$1/);
+        assert.match(sql, /clips as materialized \(select distinct text_normalized from course_audio where course_code = \$1/);
         throw Object.assign(new Error('statement timeout'), { code: '57014' });
       }
       return { rows: [] };

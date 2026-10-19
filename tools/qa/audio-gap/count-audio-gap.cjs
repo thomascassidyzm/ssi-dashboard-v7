@@ -123,18 +123,22 @@ function sql(side, limit) {
           where l.course_code = s.course_code and l.seed_number = s.seed_number
        )
     ),
+    -- The course's clip texts for this side, built ONCE per statement and hash-joined below. A correlated EXISTS per row
+    -- was ~0.4 ms a row on prod (8 minutes of the 10-minute run cap); the distinct set makes it one probe per row and
+    -- cannot multiply rows. Same question as before: does a clip for exactly this text exist in this course and role.
+    clips as materialized (select distinct text_normalized from course_audio where course_code = $1 and role = '${role}'),
     batch as (select * from slots where (kind || ':' || row_id) > $2 order by (kind || ':' || row_id) limit ${limit}),
     j as (
       select s.course_code, s.kind, s.row_id, s.updated_at,
              s.txt is not null and btrim(s.txt) <> '' as authored,
              s.link is null as unlinked,
-             exists (select 1 from course_audio h where h.course_code = $1 and h.role = '${role}' and h.text_normalized = normalize_text(s.txt)) as clip_exists,
+             c.text_normalized is not null as clip_exists,
              (a.id is not null and normalize_text(a.text) is distinct from normalize_text(s.txt)) as stale_text,
              (a.id is not null and normalize_text(a.text) is not distinct from normalize_text(s.txt)
                                and a.created_at < s.updated_at) as ts_stale
         from batch s
         left join course_audio a on a.id = s.link
-
+        left join clips c on c.text_normalized = normalize_text(s.txt)
     )
     select course_code, kind, max(kind || ':' || row_id) as cursor, count(*)::int as scanned,
            count(*) filter (where authored)::int                                    as total,
@@ -153,7 +157,7 @@ async function main(argv = process.argv) {
   const c = new Client({ connectionString: databaseUrl(), statement_timeout: 5000,
     application_name: 'qa:audio-gap', connectionTimeoutMillis: 10000 });
   const courses = new Map();
-  let learnedPage = PAGE_MAX; // a cancelled page size is not tried again on the next course
+  const pageSizes = new Map(); // a cancelled page size is not tried again for the same course
   const sides = { known: { rows: [], query_ms: 0 }, target: { rows: [], query_ms: 0 } };
   // SET LOCAL pins the name and timeout to the actual backend through a transaction pooler.
   // Every batch commits independently, releasing its snapshot and backend between courses.
@@ -177,15 +181,15 @@ async function main(argv = process.argv) {
       for (const side of ['known', 'target']) {
         const t0 = Date.now();
         let cursor = '';
-        let page = learnedPage;
+        let page = pageSizes.get(course) || PAGE_MAX;
         while (true) {
           const started = Date.now();
           let r;
           try { r = await read(() => c.query(sql(side, page), [course, cursor])); }
           catch (e) {
             // The cap stays 5 s. A page that does not fit is retried at half the size, from the same cursor (the
-            // cancelled statement was rolled back), and the smaller size is kept for every later course.
-            if (e.code === '57014' && page > PAGE_MIN) { page = Math.max(PAGE_MIN, Math.floor(page / 2)); learnedPage = page; continue; }
+            // cancelled statement was rolled back), and the smaller size is kept for the rest of this course.
+            if (e.code === '57014' && page > PAGE_MIN) { page = Math.max(PAGE_MIN, Math.floor(page / 2)); pageSizes.set(course, page); continue; }
             throw e;
           }
           console.error(`qa:audio-gap course=${course} side=${side} statement_ms=${Date.now()-started}`);
