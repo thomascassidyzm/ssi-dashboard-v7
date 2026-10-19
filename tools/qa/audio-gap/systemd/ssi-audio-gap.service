@@ -19,14 +19,14 @@ WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
 ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
 ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
 ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/qa/audio-gap/nightly.cjs
-# Two grouped aggregates over ~1M content rows and ~800k audio rows. The work is
+# Course-scoped batches, each capped at 5s on the backend. The work is
 # almost all Postgres-side, but this box is four cores carrying Tom's chat, ten
 # Popty services and the render queue: back seat, and a hard cap so a wedged
 # query can never sit on the box until morning.
 Nice=15
 IOSchedulingClass=idle
 CPUWeight=20
-TimeoutStartSec=45min
+TimeoutStartSec=10min
 # Exit 2 means it could not count, and it has already posted a notice saying so
 # by then. Read the log, not systemd's opinion of the unit.
 SuccessExitStatus=0 2

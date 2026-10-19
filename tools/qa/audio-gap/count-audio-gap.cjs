@@ -67,7 +67,6 @@
 const fs = require('fs');
 const path = require('path');
 const { Client } = require('pg');
-const { nameBackend } = require('../lib/name-backend.cjs');
 
 const REPO = path.resolve(__dirname, '..', '..', '..');
 
@@ -95,9 +94,8 @@ function args(argv) {
   return o;
 }
 
-/* One statement per side. Splitting known from target keeps each hash join
- * small enough to stay in memory on a four-core box that is also carrying the
- * render queue — the correlated-EXISTS shape this replaced took 71 seconds. */
+/* One course and side per statement. Apply the course filter before every
+ * scan/join; an estate-wide aggregate can spill and stall learner traffic. */
 function sql(side) {
   const textCol = side === 'known' ? 'known_text' : 'target_text';
   const linkCol = side === 'known' ? 'known_audio_id' : 'target1_audio_id';
@@ -105,9 +103,9 @@ function sql(side) {
   return `
     with slots as (
       select 'phrase'::text kind, course_code, id::text row_id, ${textCol} txt, ${linkCol} link, updated_at
-        from course_practice_phrases
+        from course_practice_phrases where course_code = $1
       union all
-      select 'lego', course_code, lego_id, ${textCol}, ${linkCol}, updated_at from course_legos
+      select 'lego', course_code, lego_id, ${textCol}, ${linkCol}, updated_at from course_legos where course_code = $1
       union all
       -- Only seeds that have actually been decomposed into LEGOs: a raw,
       -- undecomposed seed was never going to have audio (most courses stop
@@ -115,12 +113,12 @@ function sql(side) {
       -- course-modes.json), so counting it as a "gap" is meaningless noise.
       select 'seed', s.course_code, s.seed_id, s.${textCol}, s.${linkCol}, s.updated_at
         from course_seeds s
-       where exists (
+       where s.course_code = $1 and exists (
          select 1 from course_legos l
           where l.course_code = s.course_code and l.seed_number = s.seed_number
        )
     ),
-    have as (select distinct course_code, text_normalized from course_audio where role = '${role}'),
+    have as (select distinct course_code, text_normalized from course_audio where course_code = $1 and role = '${role}'),
     j as (
       select s.course_code, s.kind, s.row_id, s.updated_at,
              s.link is null as unlinked,
@@ -147,20 +145,39 @@ function sql(side) {
 
 async function main(argv = process.argv) {
   const o = args(argv);
-  const c = new Client({ connectionString: databaseUrl(), statement_timeout: 15 * 60 * 1000 });
-  await c.connect();
-  await nameBackend(c, 'qa:audio-gap', { statementTimeoutMs: 15 * 60 * 1000 });
-
-  const meta = await c.query(`select course_code, display_name, status, known_lang, target_lang from courses`);
-  const courses = new Map(meta.rows.map(r => [r.course_code, r]));
-
-  const sides = {};
-  for (const side of ['known', 'target']) {
-    const t0 = Date.now();
-    const r = await c.query(sql(side));
-    sides[side] = { rows: r.rows, query_ms: Date.now() - t0 };
+  const c = new Client({ connectionString: databaseUrl(), statement_timeout: 5000,
+    application_name: 'qa:audio-gap', connectionTimeoutMillis: 10000 });
+  const courses = new Map();
+  const sides = { known: { rows: [], query_ms: 0 }, target: { rows: [], query_ms: 0 } };
+  // SET LOCAL pins the name and timeout to the actual backend through a transaction pooler.
+  // Every batch commits independently, releasing its snapshot and backend between courses.
+  async function read(fn) {
+    await c.query('BEGIN READ ONLY');
+    try {
+      await c.query("SELECT set_config('application_name', $1, true), set_config('statement_timeout', $2, true)", ['qa:audio-gap', '5000']);
+      const result = await fn();
+      await c.query('COMMIT');
+      return result;
+    } catch (e) {
+      await c.query('ROLLBACK').catch(() => {});
+      throw e;
+    }
   }
-  await c.end();
+  try {
+    await c.connect();
+    const meta = await read(() => c.query(`select course_code, display_name, status, known_lang, target_lang from courses`));
+    for (const r of meta.rows) courses.set(r.course_code, r);
+    for (const course of courses.keys()) {
+      for (const side of ['known', 'target']) {
+        const t0 = Date.now();
+        const r = await read(() => c.query(sql(side), [course]));
+        sides[side].rows.push(...r.rows);
+        sides[side].query_ms += Date.now() - t0;
+      }
+    }
+  } finally {
+    await c.end();
+  }
 
   // fold per-course
   const byCourse = new Map();
