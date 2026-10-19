@@ -48,21 +48,20 @@ node tools/qa/audio-gap/count-audio-gap.cjs --json /path/out.json
 npx vitest run tools/qa/audio-gap                      # the alarm logic
 ```
 
-Read-only throughout: it never renders, never edits content, never deletes. Two grouped aggregates over ~1M content rows and ~800k audio rows, ~100 seconds. Needs `.env.psql` (gitignored, provisioned per machine — `docs/secrets-vault.md`).
+Read-only throughout: it never renders, never edits content, never deletes. One course and side per statement, each inside a read-only transaction with a 5,000ms backend statement timeout. Course filters precede the content and audio scans. A timeout rolls back, closes the connection and fails the run without publishing a partial snapshot; no retry. The watchdog cancels `qa:audio-gap` statements past five seconds on either login, at all hours (minute polling is a backstop, not the primary cap). Needs `.env.psql` (gitignored, provisioned per machine — `docs/secrets-vault.md`).
 
 ## The nightly
 
-`tools/qa/audio-gap/nightly.cjs` on a systemd user timer on watson-1 — **no GitHub Actions, that is estate policy**. Units are kept in `systemd/` here and installed to `~/.config/systemd/user/`:
+`tools/qa/audio-gap/nightly.cjs` runs as `popty` in the system manager on watson-1. Units in `systemd/` are installed under `/etc/systemd/system/`. The detached `popty-qa-nightly` checkout fetches landed `origin/main` before every run. The service retains its owner credential, but every read is capped independently on the backend, including through a transaction pooler.
 
-```
-cp tools/qa/audio-gap/systemd/ssi-audio-gap.{service,timer} ~/.config/systemd/user/
-systemctl --user daemon-reload && systemctl --user enable --now ssi-audio-gap.timer
-systemctl --user list-timers ssi-audio-gap.timer     # is it armed
-journalctl --user -u ssi-audio-gap -n 50 --no-pager  # what happened
-tail ~/.local/log/ssi-audio-gap.log                  # one line per night
-```
+04:00 UTC plus up to two minutes jitter, ahead of sibling-identity at 04:20 UTC. Keep that slot: a bounded batch does not need to displace another nightly. The unit has a ten-minute overall wall-clock cap.
 
-05:10 Europe/London, stated in London so DST needs no edit, chosen to miss every neighbour already on this box (03:00 SSi CI, 03:50 landing sweep, 04:15 tmp sweep, 04:40, 05:40 events archive).
+```sh
+sudo install -m 0644 tools/qa/audio-gap/systemd/ssi-audio-gap.{service,timer} /etc/systemd/system/
+sudo systemctl daemon-reload
+systemctl list-timers ssi-audio-gap.timer
+journalctl -u ssi-audio-gap -n 50 --no-pager
+```
 
 It follows the nightly-CI doctrine in `~/command-surface/ops/ci-run.sh`: **quiet is silent, a rise is loud.** A night where nothing went up writes its snapshot and says nothing. A night where any course went up posts one plain-English notice into the Popty project channel naming the courses that rose — because a rise means text was edited and nothing rendered. A night it *cannot* count is loud too: a count that silently stops running is how this became invisible in the first place.
 
