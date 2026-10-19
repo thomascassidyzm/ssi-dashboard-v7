@@ -13,7 +13,7 @@
  */
 const fs = require('fs'), path = require('path')
 const va = require('../../audio/voice-audit.cjs')
-const { nameBackend } = require('../lib/name-backend.cjs')
+const { boundedClient } = require('../lib/bounded-client.cjs')
 const rv = require('../../../services/shared/resolve-voice.cjs')
 const { evidencePath } = require('../../lib/evidence-path.cjs')
 
@@ -90,8 +90,8 @@ async function notice(text) {
 }
 
 async function main() {
-  const { pg, db } = await va.connect()
-  await nameBackend(pg, 'qa:voice-audit')
+  const { pg: connection, db } = await va.connect()
+  const pg = boundedClient(connection, 'qa:voice-audit')
   const date = new Date().toISOString().slice(0, 10)
   const dir = evidencePath('tools/qa/voice-policy'); fs.mkdirSync(dir, { recursive: true })
   const latest = path.join(dir, 'latest.json')

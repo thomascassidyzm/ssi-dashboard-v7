@@ -4,17 +4,14 @@ Documentation=file:///home/tomcassidy/SSi/popty-qa-nightly/tools/qa/audio-gap/RE
 
 [Service]
 Type=oneshot
-# System unit: owner credentials remain private to popty (#384/#391).
+# Capped agent_script login; provider/API credentials remain private to popty.
 User=popty
 Group=tomcassidy
 UMask=0002
 Environment=HOME=/home/tomcassidy
 EnvironmentFile=/etc/popty/popty.env
-EnvironmentFile=/etc/popty/owner.env
+EnvironmentFile=/home/tomcassidy/.config/ssi-db/agent.env
 Environment=PGAPPNAME=popty-nightly:audio-gap
-# The landed audio-gap tool reads this filename directly. Bind only inside
-# this popty service namespace; never copy or expose the owner credential.
-BindReadOnlyPaths=/etc/popty/owner.env:/home/tomcassidy/SSi/popty-qa-nightly/.env.psql
 WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
 ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
 ExecStartPre=+/usr/sbin/runuser -u tomcassidy -- /usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main

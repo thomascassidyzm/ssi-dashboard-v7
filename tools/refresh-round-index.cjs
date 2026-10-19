@@ -39,6 +39,7 @@
  * the refresh.
  */
 const path = require('path');
+const { boundedClient } = require('./qa/lib/bounded-client.cjs');
 const fsm = require('fs');
 
 /**
@@ -138,10 +139,19 @@ const { REFRESH_SQL, databaseUrl } = require('../services/shared/round-index-ref
 
 async function run({ check = false, force = false, json = false } = {}) {
   const { Client } = require('pg');
-  const client = new Client({ connectionString: databaseUrl() });
-  await client.connect();
+  const connection = new Client({ connectionString: databaseUrl(), statement_timeout: 5000, application_name: 'qa:round-index' });
+  await connection.connect();
+  const client = boundedClient(connection, 'qa:round-index', { readOnly: false });
   try {
-    const before = drift((await client.query(DRIFT_QUERY)).rows);
+    async function measure() {
+      const { rows: courses } = await client.query('SELECT course_code FROM courses ORDER BY course_code');
+      const rows = [];
+      const scoped = DRIFT_QUERY.replace('WHERE is_new = true', 'WHERE course_code = $1 AND is_new = true')
+        .replace('FULL JOIN course_round_index h', 'FULL JOIN (SELECT * FROM course_round_index WHERE course_code = $1) h');
+      for (const c of courses) rows.push(...(await client.query(scoped, [c.course_code])).rows);
+      return drift(rows);
+    }
+    const before = await measure();
     if (!json) { console.log('BEFORE:'); console.log(describe(before)); }
 
     if (check) return { before, after: before, refreshed: false };
@@ -153,7 +163,7 @@ async function run({ check = false, force = false, json = false } = {}) {
     if (!json) console.log('refreshing course_round_index (CONCURRENTLY)...');
     await client.query(REFRESH_SQL);
 
-    const after = drift((await client.query(DRIFT_QUERY)).rows);
+    const after = await measure();
     if (!json) { console.log('AFTER:'); console.log(describe(after)); }
     return { before, after, refreshed: true };
   } finally {

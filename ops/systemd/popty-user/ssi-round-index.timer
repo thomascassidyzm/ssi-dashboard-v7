@@ -1,18 +1,17 @@
 [Unit]
-Description=Nightly round-map rebuild at 02:40 Europe/London
+Description=Nightly round-map rebuild at 02:40 UTC
 Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/tools/refresh-round-index.cjs
 
 [Timer]
-# 02:40 London, stated in London so the twice-yearly DST shift needs no edit.
+# 02:40 UTC: fixed off-peak spacing across DST changes.
 # Chosen to miss every neighbour already on this box, and to land BEFORE the
 # checks that read the round map (SSi CI 03:00, audio gap 05:10) so they see a
 # map that matches the content rather than last night's.
-OnCalendar=*-*-* 02:40:00 Europe/London
+OnCalendar=*-*-* 02:40:00 UTC
 RandomizedDelaySec=300
 AccuracySec=1min
-# A night missed because the box was down runs at the next boot rather than
-# leaving the map stale for another day.
-Persistent=true
+# Skip missed runs; catching up at boot may hit school hours.
+Persistent=false
 Unit=ssi-round-index.service
 
 [Install]

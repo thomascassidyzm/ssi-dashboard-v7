@@ -3,13 +3,13 @@ Description=Nightly voice-policy audit (job #53): every slot vs resolveVoice, re
 
 [Service]
 Type=oneshot
-# System unit: owner credentials remain private to popty (#384/#391).
+# Capped agent_script login; provider/API credentials remain private to popty.
 User=popty
 Group=tomcassidy
 UMask=0002
 Environment=HOME=/home/tomcassidy
 EnvironmentFile=/etc/popty/popty.env
-EnvironmentFile=/etc/popty/owner.env
+EnvironmentFile=/home/tomcassidy/.config/ssi-db/agent.env
 Environment=PGAPPNAME=popty-nightly:voice-audit
 # Runs the LANDED code: the shared detached nightly worktree is reset to origin/main first (the ssi-voice-variety pattern).
 WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
@@ -20,7 +20,7 @@ ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/qa/voice-pol
 Nice=15
 IOSchedulingClass=idle
 CPUWeight=20
-TimeoutStartSec=2h
+TimeoutStartSec=10min
 # Exit 2 = could not run; it has already said so in the room.
 SuccessExitStatus=0 2
 OOMScoreAdjust=500

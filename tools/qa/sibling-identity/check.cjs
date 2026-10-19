@@ -35,7 +35,7 @@
 require('dotenv').config({ path: require('path').join(__dirname, '../../../.env.psql') });
 const fs = require('fs');
 const { Client } = require('pg');
-const { nameBackend } = require('../lib/name-backend.cjs');
+const { boundedClient } = require('../lib/bounded-client.cjs');
 const { derive } = require('./derive.cjs');
 const { classify, MUST_DIFFER, UNKNOWN } = require('./register.cjs');
 
@@ -146,14 +146,28 @@ function calibrated(results) {
 async function main(argv = process.argv) {
   const quiet = argv.includes('--quiet');
   const jsonAt = argv.includes('--json') ? argv[argv.indexOf('--json') + 1] : null;
-  const client = new Client({ connectionString: process.env.DATABASE_URL, application_name: 'qa:sibling-identity', statement_timeout: 15 * 60 * 1000 });
-  await client.connect();
-  await nameBackend(client, 'qa:sibling-identity', { statementTimeoutMs: 15 * 60 * 1000 });
+  const connection = new Client({ connectionString: process.env.DATABASE_URL, application_name: 'qa:sibling-identity', statement_timeout: 5000 });
+  await connection.connect();
+  const client = boundedClient(connection, 'qa:sibling-identity');
   try {
     const candidates = (await derive(client)).map((c) => ({ ...c, ...classify(c) }));
     const results = [];
     for (const c of candidates.filter((x) => x.verdict === MUST_DIFFER)) {
-      for (const fields of c.fields) results.push(await runAssertion(client, c, fields));
+      for (const fields of c.fields) {
+        const column = ['course_code', 'target_lang', 'pod_slug', 'pod_id'].find(k => c.groupCols.includes(k));
+        const scopes = column ? (await client.query(`SELECT DISTINCT ${q(column)} AS scope FROM ${q(c.table)}`)).rows.map(r => r.scope) : [null];
+        const parts = [];
+        for (const course of scopes) {
+          const predicate = course === null ? `${q(column)} IS NULL` : `${q(column)} = '${String(course).replace(/'/g, "''")}'`;
+          const scope = column ? { ...c, where: [c.where, predicate].filter(Boolean).join(' AND ') } : c;
+          parts.push(await runAssertion(client, scope, fields));
+        }
+        if (parts.length) results.push({ ...parts[0], excluded: c.where || null,
+          sibling_groups: parts.reduce((n,r) => n + r.sibling_groups, 0),
+          rows_in_sibling_groups: parts.reduce((n,r) => n + r.rows_in_sibling_groups, 0),
+          collisions: parts.reduce((n,r) => n + r.collisions, 0),
+          examples: parts.flatMap(r => r.examples).sort((a,b) => b.siblings-a.siblings).slice(0,40) });
+      }
     }
     const out = {
       generated_at: new Date().toISOString(),
