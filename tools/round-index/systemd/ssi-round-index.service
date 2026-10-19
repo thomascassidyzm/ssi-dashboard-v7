@@ -1,30 +1,31 @@
+# System unit (job #391): the nightly round-map rebuild needs the owner login, which only popty reads.
 [Unit]
-Description=Nightly rebuild of the round map the learner app walks (course_round_index)
-Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/tools/refresh-round-index.cjs
+Description=Nightly rebuild of the round map the learner app walks (course_round_index), user popty
 
 [Service]
 Type=oneshot
-# Runs out of the PROD checkout rather than the shared one: the shared checkout
-# is where live sessions work, and it is routinely left on a detached HEAD or a
-# feature branch, which would silently mean the nightly runs last week's tool or
-# no tool at all. The prod checkout tracks main. The database secret is not in
-# it — .env.psql is gitignored and provisioned per machine — so it is named
-# explicitly below, read from the one place on this box that has it.
-WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod
+# RUNS AS ITS OWN UNIX USER (job #391, Tom 2026-10-14): popty, so a worker running as
+# tomcassidy cannot read the Supabase service key, the provider keys or the DB owner login.
+# Those live in /etc/popty (popty:popty, 0700/0600). Primary group tomcassidy + UMask 0002 so
+# what Popty writes in the shared places (prod checkout data/ logs/, ~/.local/state, VFS_ROOT,
+# ~/ssi-evidence) stays writable by the tomcassidy tools that share them. HOME stays Tom's:
+# whisper, lame, the claude binary, the spend ledger and the model catalog are found from it.
+User=popty
+Group=tomcassidy
+UMask=0002
+Environment=HOME=/home/tomcassidy
+EnvironmentFile=/etc/popty/popty.env
 Environment=PGAPPNAME=popty-nightly:round-index
-Environment=ROUND_INDEX_ENV_PSQL=/home/tomcassidy/.config/ssi-db/owner.env
+Environment=ROUND_INDEX_ENV_PSQL=/etc/popty/owner.env
+Environment="PATH=/home/tomcassidy/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/snap/bin"
+WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod
+Environment=NODE_OPTIONS=--max-old-space-size=4096
+OOMScoreAdjust=500
 ExecStart=/usr/bin/node /home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/tools/round-index/nightly.cjs
-# Two grouped aggregates and one REFRESH ... CONCURRENTLY over ~120k rows. The
-# work is all Postgres-side, but this box is four cores carrying Tom's chat, ten
-# Popty services and the render queue: back seat, and a hard cap so a wedged
-# refresh can never sit on the box until morning.
 Nice=15
 IOSchedulingClass=idle
 CPUWeight=20
-TimeoutStartSec=30min
-# Exit 2 means it could not run, and it has already posted a notice saying so by
-# then. Read the log, not systemd's opinion of the unit.
+TimeoutStartSec=10min
 SuccessExitStatus=0 2
-OOMScoreAdjust=500
 StandardOutput=append:/home/tomcassidy/.local/log/ssi-round-index-unit.log
 StandardError=append:/home/tomcassidy/.local/log/ssi-round-index-unit.log

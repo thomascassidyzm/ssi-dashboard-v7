@@ -112,7 +112,7 @@ function render(code, { totals, byRole, groups, plan }) {
 async function connect() {
   const { Client } = require('pg')
   // application_name names the tool in the watchdog; statement_timeout is never lifted (job #845).
-  const pg = new Client({ connectionString: process.env.DATABASE_URL, application_name: 'voice-audit' }); await pg.connect()
+  const pg = new Client({ connectionString: process.env.DATABASE_URL, application_name: 'voice-audit', statement_timeout: 5000 }); await pg.connect()
   const db = require('@supabase/supabase-js').createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } })
   return { pg, db }
 }
@@ -123,7 +123,9 @@ async function groupedSlots(pg, code) {
     select '${tbl}' tbl, '${col}' col, ca.voice_id, ca.language, ca.origin, count(*) slots, count(distinct ca.text_normalized) texts,
       count(*) filter (where ca.id is not null and not (${usable('ca')})) unplayable
     from ${tbl} x left join course_audio ca on ca.id = ${ptr(tbl, col)} where x.course_code = $1 and x.${col} is not null group by 3, 4, 5`)
-  return (await pg.query(parts.join(' union all '), [code])).rows
+  const rows = []
+  for (const part of parts) rows.push(...(await pg.query(part, [code])).rows)
+  return rows
 }
 
 /**

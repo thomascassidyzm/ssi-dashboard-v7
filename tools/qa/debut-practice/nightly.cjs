@@ -26,7 +26,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
-const { nameBackend } = require('../lib/name-backend.cjs');
+const { boundedClient } = require('../lib/bounded-client.cjs');
 
 const STATE = process.env.DEBUT_PRACTICE_STATE || '/home/tomcassidy/.local/state/ssi-debut-practice';
 const NOTICE = process.env.WATSON_NOTICE || '/home/tomcassidy/command-surface/ops/watson-notice.js';
@@ -47,10 +47,10 @@ function dbUrl() {
  *  (job #123). Same rule, same rows: debut_practice_gaps() already takes a course list. */
 async function readGaps() {
   const { Client } = require('pg');
-  const c = new Client({ connectionString: dbUrl(), application_name: 'qa:debut-practice' });
-  await c.connect();
+  const connection = new Client({ connectionString: dbUrl(), application_name: 'qa:debut-practice', statement_timeout: 5000 });
+  await connection.connect();
+  const c = boundedClient(connection, 'qa:debut-practice');
   try {
-    await nameBackend(c, 'qa:debut-practice', { statementTimeoutMs: 5 * 60 * 1000 });
     const { rows: courses } = await c.query(
       'SELECT course_code FROM courses WHERE status::text = ANY ($1) ORDER BY course_code', [LEARNER_FACING]);
     const gaps = [];

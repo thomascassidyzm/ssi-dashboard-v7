@@ -3,13 +3,13 @@ Description=Daily alarm: debut LEGOs with no practice in learner-facing courses 
 
 [Service]
 Type=oneshot
-# System unit: owner credentials remain private to popty (#384/#391).
+# Capped agent_script login; provider/API credentials remain private to popty.
 User=popty
 Group=tomcassidy
 UMask=0002
 Environment=HOME=/home/tomcassidy
 EnvironmentFile=/etc/popty/popty.env
-EnvironmentFile=/etc/popty/owner.env
+EnvironmentFile=/home/tomcassidy/.config/ssi-db/agent.env
 Environment=PGAPPNAME=popty-nightly:debut-practice
 # Runs the code that LANDED: the detached QA worktree ssi-sibling-identity uses, refreshed to origin/main.
 WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
@@ -20,7 +20,7 @@ ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/qa/debut-pra
 Nice=15
 IOSchedulingClass=idle
 CPUWeight=20
-TimeoutStartSec=20min
+TimeoutStartSec=10min
 # Exit 2 = could not run, and it has already said so in Watson's room.
 SuccessExitStatus=0 2
 StandardOutput=append:/home/tomcassidy/.local/log/ssi-debut-practice-unit.log

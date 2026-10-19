@@ -6,7 +6,7 @@ Description=Daily debut-practice alarm
 OnCalendar=*-*-* 04:45:00 UTC
 RandomizedDelaySec=120
 AccuracySec=1min
-Persistent=true
+Persistent=false
 Unit=ssi-debut-practice.service
 
 [Install]

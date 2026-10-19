@@ -4,12 +4,11 @@ Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/qa/audio-
 
 [Timer]
 # Job #683: every qa:* check runs inside the DB watchdog's 01:00-06:00Z off-peak window, ≥15 min apart, in UTC (no DST drift out of the window).
-OnCalendar=*-*-* 04:00:00 UTC
+OnCalendar=*-*-* 03:30:00 UTC
 RandomizedDelaySec=120
 AccuracySec=1min
-# A night missed because the box was down runs at the next boot rather than
-# leaving a hole in the series.
-Persistent=true
+# Skip missed runs: catching up at boot can put QA into school hours.
+Persistent=false
 Unit=ssi-audio-gap.service
 
 [Install]

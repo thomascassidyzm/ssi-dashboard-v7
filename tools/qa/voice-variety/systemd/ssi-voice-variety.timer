@@ -6,9 +6,8 @@ Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/qa/voice-
 OnCalendar=*-*-* 05:05:00 UTC
 RandomizedDelaySec=120
 AccuracySec=1min
-# A night missed because the box was down runs at the next boot rather than
-# leaving a hole in the series.
-Persistent=true
+# Skip missed runs: catching up at boot can put QA into school hours.
+Persistent=false
 Unit=ssi-voice-variety.service
 
 [Install]

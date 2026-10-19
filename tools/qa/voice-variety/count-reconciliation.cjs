@@ -58,16 +58,16 @@ const LINKS = [
 const linkedSql = () => `
   SELECT course_code, count(DISTINCT audio_id)::bigint AS linked FROM (
     ${LINKS.flatMap(([t, cols]) => cols.map((c) =>
-      `SELECT course_code, ${c}${c === 'presentation_audio_id' ? '::uuid' : ''} AS audio_id FROM ${t} WHERE ${c} IS NOT NULL`)).join('\n    UNION ALL\n    ')}
+      `SELECT course_code, ${c}${c === 'presentation_audio_id' ? '::uuid' : ''} AS audio_id FROM ${t} WHERE course_code = $1 AND ${c} IS NOT NULL`)).join('\n    UNION ALL\n    ')}
   ) x GROUP BY 1`;
 
 const CONTENT_SQL = `
   SELECT course_code,
          sum(seeds)::bigint AS seeds, sum(legos)::bigint AS legos, sum(phrases)::bigint AS phrases
     FROM (
-      SELECT course_code, count(*) AS seeds, 0 AS legos, 0 AS phrases FROM course_seeds GROUP BY 1
-      UNION ALL SELECT course_code, 0, count(*), 0 FROM course_legos GROUP BY 1
-      UNION ALL SELECT course_code, 0, 0, count(*) FROM course_practice_phrases GROUP BY 1
+      SELECT course_code, count(*) AS seeds, 0 AS legos, 0 AS phrases FROM course_seeds WHERE course_code = $1 GROUP BY 1
+      UNION ALL SELECT course_code, 0, count(*), 0 FROM course_legos WHERE course_code = $1 GROUP BY 1
+      UNION ALL SELECT course_code, 0, 0, count(*) FROM course_practice_phrases WHERE course_code = $1 GROUP BY 1
     ) x GROUP BY 1`;
 
 /**
@@ -86,7 +86,7 @@ const AUDIO_SQL = `
   SELECT course_code,
          count(*)::bigint AS clips,
          count(*) FILTER (WHERE role = ANY($1))::bigint AS content_clips
-    FROM course_audio GROUP BY 1`;
+    FROM course_audio WHERE course_code = $2 GROUP BY 1`;
 
 /**
  * phase8's comparison, lifted out of the render path. A pod's sentence rows and
@@ -100,14 +100,19 @@ const POD_SQL = `
     FROM listening_pods p
     LEFT JOIN (SELECT pod_id, count(*) AS n FROM listening_pod_sentences GROUP BY 1) s ON s.pod_id = p.id
     LEFT JOIN (SELECT pod_slug, count(*) AS n FROM canonical_pod_scenarios GROUP BY 1) c ON c.pod_slug = p.slug
-   WHERE coalesce(c.n, 0) > 0
+   WHERE p.course_code = $1 AND coalesce(c.n, 0) > 0
    ORDER BY p.course_code, p.slug`;
 
 async function load(db) {
-  const [content, audio, linked, pods] = await Promise.all([
-    db.query(CONTENT_SQL), db.query(AUDIO_SQL, [CONTENT_ROLES]), db.query(linkedSql()), db.query(POD_SQL),
-  ]);
-  return { content: content.rows, audio: audio.rows, linked: linked.rows, pods: pods.rows };
+  const out = { content: [], audio: [], linked: [], pods: [] };
+  const { rows: courses } = await db.query('SELECT course_code FROM courses ORDER BY course_code');
+  for (const { course_code } of courses) {
+    for (const [key, sql, params] of [
+      ['content', CONTENT_SQL, [course_code]], ['audio', AUDIO_SQL, [CONTENT_ROLES, course_code]],
+      ['linked', linkedSql(), [course_code]], ['pods', POD_SQL, [course_code]],
+    ]) out[key].push(...(await db.query(sql, params)).rows);
+  }
+  return out;
 }
 
 function assess({ content, audio, linked, pods }) {

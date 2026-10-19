@@ -4,13 +4,13 @@ Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/qa/siblin
 
 [Service]
 Type=oneshot
-# System unit: owner credentials remain private to popty (#384/#391).
+# Capped agent_script login; provider/API credentials remain private to popty.
 User=popty
 Group=tomcassidy
 UMask=0002
 Environment=HOME=/home/tomcassidy
 EnvironmentFile=/etc/popty/popty.env
-EnvironmentFile=/etc/popty/owner.env
+EnvironmentFile=/home/tomcassidy/.config/ssi-db/agent.env
 Environment=PGAPPNAME=popty-nightly:sibling-identity
 # ── WHY NOT THE SHARED CHECKOUT ─────────────────────────────────────────────
 # The shared checkout sits on whatever branch a human session left it on and
@@ -30,7 +30,7 @@ ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/qa/sibling-i
 Nice=15
 IOSchedulingClass=idle
 CPUWeight=20
-TimeoutStartSec=30min
+TimeoutStartSec=10min
 # Exit 2 means it could not run — or could not reproduce its known positive,
 # which is the same thing — and it has already posted a notice saying so by
 # then. Read the log, not systemd's opinion of the unit.

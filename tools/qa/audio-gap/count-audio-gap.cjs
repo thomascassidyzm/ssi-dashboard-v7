@@ -118,29 +118,29 @@ function sql(side) {
           where l.course_code = s.course_code and l.seed_number = s.seed_number
        )
     ),
-    have as (select distinct course_code, text_normalized from course_audio where course_code = $1 and role = '${role}'),
+    batch as (select * from slots where (kind || ':' || row_id) > $2 order by (kind || ':' || row_id) limit 200),
     j as (
       select s.course_code, s.kind, s.row_id, s.updated_at,
+             s.txt is not null and btrim(s.txt) <> '' as authored,
              s.link is null as unlinked,
-             (h.text_normalized is not null) as clip_exists,
+             exists (select 1 from course_audio h where h.course_code = $1 and h.role = '${role}' and h.text_normalized = normalize_text(s.txt)) as clip_exists,
              (a.id is not null and normalize_text(a.text) is distinct from normalize_text(s.txt)) as stale_text,
              (a.id is not null and normalize_text(a.text) is not distinct from normalize_text(s.txt)
                                and a.created_at < s.updated_at) as ts_stale
-        from slots s
+        from batch s
         left join course_audio a on a.id = s.link
-        left join have h on h.course_code = s.course_code and h.text_normalized = normalize_text(s.txt)
-       where s.txt is not null and btrim(s.txt) <> ''
+
     )
-    select course_code, kind,
-           count(*)::int                                                          as total,
-           count(*) filter (where unlinked)::int                                  as missing,
-           count(*) filter (where unlinked and clip_exists)::int                  as missing_relinkable,
-           count(*) filter (where unlinked and not clip_exists)::int              as missing_unrendered,
-           count(*) filter (where stale_text)::int                                as stale_text,
-           count(*) filter (where ts_stale)::int                                  as ts_stale,
-           min(updated_at) filter (where unlinked)                                as gap_oldest_edit,
-           max(updated_at) filter (where unlinked)                                as gap_newest_edit
-      from j group by 1, 2`;
+    select course_code, kind, max(kind || ':' || row_id) as cursor, count(*)::int as scanned,
+           count(*) filter (where authored)::int                                    as total,
+           count(*) filter (where authored and unlinked)::int                                  as missing,
+           count(*) filter (where authored and unlinked and clip_exists)::int                  as missing_relinkable,
+           count(*) filter (where authored and unlinked and not clip_exists)::int              as missing_unrendered,
+           count(*) filter (where authored and stale_text)::int                                as stale_text,
+           count(*) filter (where authored and ts_stale)::int                                  as ts_stale,
+           min(updated_at) filter (where authored and unlinked)                                as gap_oldest_edit,
+           max(updated_at) filter (where authored and unlinked)                                as gap_newest_edit
+      from j group by 1, 2 order by cursor`;
 }
 
 async function main(argv = process.argv) {
@@ -170,8 +170,15 @@ async function main(argv = process.argv) {
     for (const course of courses.keys()) {
       for (const side of ['known', 'target']) {
         const t0 = Date.now();
-        const r = await read(() => c.query(sql(side), [course]));
-        sides[side].rows.push(...r.rows);
+        let cursor = '';
+        while (true) {
+          const started = Date.now();
+          const r = await read(() => c.query(sql(side), [course, cursor]));
+          console.error(`qa:audio-gap course=${course} side=${side} statement_ms=${Date.now()-started}`);
+          sides[side].rows.push(...r.rows);
+          if (!r.rows.length || r.rows.reduce((n,r) => n + r.scanned, 0) < 200) break;
+          cursor = r.rows.at(-1).cursor;
+        }
         sides[side].query_ms += Date.now() - t0;
       }
     }
@@ -196,7 +203,8 @@ async function main(argv = process.argv) {
       b.missing_relinkable += r.missing_relinkable;
       b.missing_unrendered += r.missing_unrendered;
       b.stale_text += r.stale_text; b.ts_stale += r.ts_stale;
-      b.by_kind[r.kind] = { total: r.total, missing: r.missing, missing_relinkable: r.missing_relinkable, missing_unrendered: r.missing_unrendered, stale_text: r.stale_text };
+      const kind = b.by_kind[r.kind] ||= { total: 0, missing: 0, missing_relinkable: 0, missing_unrendered: 0, stale_text: 0 };
+      for (const k of Object.keys(kind)) kind[k] += r[k];
       const g = r.kind === 'seed' ? b.seed : b.practice;
       for (const k of ['total', 'missing', 'missing_relinkable', 'missing_unrendered', 'stale_text']) g[k] += r[k];
       // Gap age is tracked per group as well as per side: quoting a seed-track

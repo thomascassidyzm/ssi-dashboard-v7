@@ -129,19 +129,19 @@ describe('nightly connections', () => {
       seen.push({ sql: head, params })
       if (/^ROLLBACK/.test(head)) { aborted = false; return { rows: [] } }
       if (aborted) throw new Error('current transaction is aborted')
-      if (/language_recording_policy/.test(sql)) { aborted = true; throw new Error('relation does not exist') }
+      if (/language_recording_policy/.test(sql)) { aborted = true; throw Object.assign(new Error('relation does not exist'), { code: '42P01' }) }
       return { rows: [] }
     } }
   }
 
   for (const [file, name] of [['check-voice-variety.cjs', 'qa:voice-variety:linked-voices'], ['count-reconciliation.cjs', 'qa:voice-variety:count-reconciliation']]) {
-    it(`${file} names itself and lifts the timeout on the backend before it reads`, async () => {
+    it(`${file} names itself and caps each statement on the backend before it reads`, async () => {
       const mod = require(`./${file}`)
       expect(mod.APP_NAME).toBe(name)
       const db = fake()
       await namedRead(db, mod.APP_NAME, mod.load)
       expect(db.seen[0].sql).toBe('BEGIN READ ONLY')
-      expect(db.seen[1].params).toEqual([name, String(STATEMENT_TIMEOUT_MS)])
+      expect(db.seen[1].params).toEqual([name])
       expect(db.seen.at(-1).sql).toBe('COMMIT')
       expect(db.seen.length).toBeGreaterThan(3)
     })
