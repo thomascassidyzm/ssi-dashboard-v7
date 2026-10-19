@@ -479,7 +479,6 @@ const hoursOptions = [
   { value: 24, label: 'Last 24h' },
   { value: 72, label: 'Last 3 days' },
   { value: 168, label: 'Last 7 days' },
-  { value: 720, label: 'Last 30 days' },
 ]
 const filterQuery = ref('')
 const PAGE_SIZE = 50
@@ -497,7 +496,7 @@ const restoreResult = ref(null)
 const currentRows = ref({})
 
 const isStale = computed(() => {
-  return stats.value?.days_since_oldest !== null && stats.value?.days_since_oldest > 30
+  return stats.value?.days_since_oldest !== null && stats.value?.days_since_oldest > 7
 })
 
 function apiBase() {
