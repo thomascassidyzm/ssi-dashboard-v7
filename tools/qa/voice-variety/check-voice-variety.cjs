@@ -93,10 +93,16 @@ async function linkedVoices(db, courseCodes) {
       if (m) m.n += Number(r.n); else merged.set(k, { course_code: r.course_code, role: r.role, voice_id: r.voice_id, n: Number(r.n) });
     }
   };
+  // One stderr line per statement with its table, role and scope, so a slow night says WHERE (the bounded client logs the backend name only).
+  const timed = (label, fn) => async (...a) => {
+    const t0 = Date.now();
+    try { const r = await fn(...a); console.error(`qa:voice-variety:linked-voices ${label} ok ms=${Date.now() - t0}`); return r; }
+    catch (e) { if (e.code === '57014') console.error(`qa:voice-variety:linked-voices ${label} CANCELLED ms=${Date.now() - t0}`); throw e; }
+  };
   for (const [table, role] of LINKED_BRANCHES) {
     const results = await batchedRead(courseCodes,
-      (codes) => db.query(linkedBranchSql(table, role, null), [codes]),
-      async (code) => windowedRead((pred) => db.query(linkedBranchSql(table, role, pred), [[code]]),
+      timed(`${table}.${role} batch`, (codes) => db.query(linkedBranchSql(table, role, null), [codes])),
+      async (code) => windowedRead(timed(`${table}.${role} ${code}`, (pred) => db.query(linkedBranchSql(table, role, pred), [[code]])),
         { column: 't.seed_number', memo: timedOutWhole, key: `${code}|${table}|${role}` }));
     for (const r of results) add(r.rows);
   }
