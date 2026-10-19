@@ -246,7 +246,7 @@ const SLOT = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 't
 function editOps(p, clips) {
   const clip = (role, text) => (clips.has(`${role}\u0000${text}`) ? clips.get(`${role}\u0000${text}`) : undefined);
   const ops = [], links = [];
-  for (const s of p.unapprove) ops.push({ op: 'seed.update', seed_number: s.seed_number, set: { approved_at: null }, expect: { approved_at: s.approved_at } });
+  for (const s of p.unapprove) ops.push({ op: 'seed.update', seed_number: s.seed_number, set: { approved_at: null }, expect: { approved_at: new Date(s.approved_at).toISOString() } }); // the door reads timestamps back as ISO Z
   for (const u of p.updates) {
     ops.push({ op: 'phrase.update', phrase_id: P(u.id), set: u.set, expect: { known_text: u.before.known_text, target_text: u.before.target_text } });
     const changed = { known: u.set.known_text !== u.before.known_text, target1: u.set.target_text !== u.before.target_text, target2: u.set.target_text !== u.before.target_text };
@@ -320,9 +320,24 @@ async function main() {
   console.log(`route dry run: ${log.asks.length} asks, ${log.asks.filter((a) => a.dry.audioId).length} from library, ${chars} chars to render ${JSON.stringify(byRole)}, ${log.asks.filter((a) => a.dry.error).length} refused`);
   for (const a of log.asks.filter((x) => x.dry.error)) console.log('  REFUSED (dry)', a.role, JSON.stringify(a.text), a.dry.status, JSON.stringify(a.dry.error).slice(0, 200));
   const clips = new Map(log.asks.filter((a) => a.dry.audioId).map((a) => [`${a.role}\u0000${a.text}`, a.dry.audioId]));
-  const ops = editOps(p, clips);
   const out = process.env.LOG_DIR || process.cwd();
   const save = (n) => { const f = path.join(out, `ita-p17-${n}-${log.started.replace(/[:.]/g, '-')}.json`); fs.writeFileSync(f, JSON.stringify(log, null, 2)); return f; };
+  // make-before-break: with RENDER=1 every missing clip is rendered (ONE call each, no retry) BEFORE any text changes; a refusal
+  // stops the run with nothing applied. Without RENDER the slots of new text are left empty (never pointed at old words).
+  if (mode === 'apply' && process.env.RENDER === '1') {
+    const MAX = +(process.env.MAX_CHARS || 0);
+    if (log.asks.some((a) => a.dry.error)) return console.log('STOP: the route refused in the dry run; nothing rendered:', save('stopped'));
+    if (!(chars <= MAX)) return console.log(`STOP: ${chars} chars > MAX_CHARS ${MAX}; nothing rendered:`, save('stopped'));
+    for (const a of log.asks.filter((x) => !x.dry.audioId)) {
+      const r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE });
+      a.real = { status: r.status, source: r.body.source, audioId: r.body.audioId, charsSpent: r.body.charsSpent, error: r.status === 200 && r.body.ok ? undefined : r.body };
+      if (a.real.error) { console.log('  REFUSED', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 300)); return console.log('a clip was refused — no retry; nothing applied:', save('render-refused')); }
+      clips.set(`${a.role}\u0000${a.text}`, a.real.audioId);
+    }
+    log.charsSpent = log.asks.reduce((n, a) => n + ((a.real && a.real.charsSpent) || 0), 0);
+    console.log(`rendered: ${log.charsSpent} chars spent`);
+  }
+  const ops = editOps(p, clips);
   const prev = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops });
   log.preview = { status: prev.status, body: prev.body };
   console.log(`edit-batch preview: HTTP ${prev.status}; ${(prev.body.results || []).length} results ${JSON.stringify(prev.body.error || '').slice(0, 400)}`);
