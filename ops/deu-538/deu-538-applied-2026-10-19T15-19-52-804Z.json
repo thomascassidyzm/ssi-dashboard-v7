@@ -1,0 +1,2318 @@
+{
+  "job": "#241",
+  "started": "2026-10-19T15:19:52.804Z",
+  "plan": {
+    "l1": {
+      "before": {
+        "known": "to seem",
+        "target": "so wirken",
+        "components": [
+          {
+            "known": "to seem",
+            "target": "so wirken"
+          }
+        ]
+      },
+      "after": {
+        "known": "to seem as though",
+        "target": "so wirken, als ob",
+        "components": [
+          {
+            "known": "to seem",
+            "target": "so wirken"
+          },
+          {
+            "known": "as though",
+            "target": "als ob"
+          }
+        ]
+      }
+    },
+    "l3": {
+      "before": {
+        "known": "as if",
+        "target": "als ob"
+      },
+      "after": {
+        "known": "as though",
+        "target": "als ob"
+      }
+    },
+    "phraseUpdates": [
+      {
+        "id": "S0538L01B01",
+        "before": {
+          "id": "deu_for_eng:S0538L01B01",
+          "status": "draft",
+          "lego_id": null,
+          "version": 11,
+          "metadata": {
+            "format": "build_use"
+          },
+          "position": 1,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.224152+00:00",
+          "difficulty": null,
+          "known_text": "so",
+          "lego_count": 1,
+          "lego_index": 1,
+          "qa_checked": null,
+          "updated_at": "2026-10-12T14:21:20.726826+00:00",
+          "word_count": 2,
+          "course_code": "deu_for_eng",
+          "phrase_role": "build",
+          "seed_number": 538,
+          "target_text": "so",
+          "decomposition": null,
+          "lego_position": "middle",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "72fbb0a0-421a-4cfb-9e1e-647776f99450",
+          "target1_audio_id": "e4bd249d-db52-4eb0-89af-e245b09745c4",
+          "target2_audio_id": "6d89b4e1-3d40-4b7a-8e78-4d3dd92691cc",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "6efde44e-7ff8-4605-a928-67fcd1362445",
+          "target1_duration_ms": 600,
+          "target2_duration_ms": 552,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "to seem as though",
+          "target_text": "so wirken, als ob",
+          "phrase_role": "build",
+          "word_count": 17,
+          "lego_count": 4,
+          "lego_position": "end"
+        },
+        "lego": "S0538L01"
+      },
+      {
+        "id": "S0538L01B02",
+        "before": {
+          "id": "deu_for_eng:S0538L01B02",
+          "status": "draft",
+          "lego_id": null,
+          "version": 506,
+          "metadata": {
+            "format": "build_use"
+          },
+          "position": 2,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.224152+00:00",
+          "difficulty": null,
+          "known_text": "so that",
+          "lego_count": 2,
+          "lego_index": 1,
+          "qa_checked": null,
+          "updated_at": "2026-10-12T16:47:57.325704+00:00",
+          "word_count": 7,
+          "course_code": "deu_for_eng",
+          "phrase_role": "build",
+          "seed_number": 538,
+          "target_text": "so dass",
+          "decomposition": null,
+          "lego_position": "start",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "d0f474bf-da26-46fc-bc66-11eb51233435",
+          "target1_audio_id": "854d4bb0-6cc2-4d24-afb0-be94fbe1df81",
+          "target2_audio_id": "9220f0af-7fce-4ecb-830d-0f30117cba97",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "9892f9b1-a3ac-4ad3-916c-084445ffa792",
+          "target1_duration_ms": 864,
+          "target2_duration_ms": 840,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "she wants to seem as though",
+          "target_text": "sie will so wirken, als ob",
+          "phrase_role": "build",
+          "word_count": 26,
+          "lego_count": 6,
+          "lego_position": "end"
+        },
+        "lego": "S0538L01"
+      },
+      {
+        "id": "S0538L01B03",
+        "before": {
+          "id": "deu_for_eng:S0538L01B03",
+          "status": "draft",
+          "lego_id": null,
+          "version": 513,
+          "metadata": {
+            "format": "build_use"
+          },
+          "position": 3,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.224152+00:00",
+          "difficulty": null,
+          "known_text": "so bad",
+          "lego_count": 2,
+          "lego_index": 1,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:28.682735+00:00",
+          "word_count": 11,
+          "course_code": "deu_for_eng",
+          "phrase_role": "build",
+          "seed_number": 538,
+          "target_text": "so schlecht",
+          "decomposition": null,
+          "lego_position": "start",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "26a85a47-9b43-4a11-a0c0-d677346111e6",
+          "target1_audio_id": "5b23dd85-c638-43bf-bd1a-bf540a7334eb",
+          "target2_audio_id": "88c7094d-208c-482a-9621-aff3241ad0f2",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 960,
+          "target2_duration_ms": 1152,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "to seem as though it is good",
+          "target_text": "so wirken, als ob es gut ist",
+          "phrase_role": "build",
+          "word_count": 28,
+          "lego_count": 7,
+          "lego_position": "start"
+        },
+        "lego": "S0538L01"
+      },
+      {
+        "id": "S0538L01U01",
+        "before": {
+          "id": "deu_for_eng:S0538L01U01",
+          "status": "draft",
+          "lego_id": null,
+          "version": 513,
+          "metadata": {
+            "score": 7,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.137Z"
+          },
+          "position": 4,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.224152+00:00",
+          "difficulty": null,
+          "known_text": "that is so",
+          "lego_count": 3,
+          "lego_index": 1,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:29.192734+00:00",
+          "word_count": 10,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "das ist so",
+          "decomposition": null,
+          "lego_position": "end",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "5939e83d-a382-4be9-9144-16615e5dd848",
+          "target1_audio_id": "6d25803e-b166-4ef4-8816-0057f22b6471",
+          "target2_audio_id": "dc924612-dcb2-4f67-8301-063802002cb1",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1056,
+          "target2_duration_ms": 984,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "I want to seem as though I know",
+          "target_text": "ich will so wirken, als ob ich es weiß",
+          "phrase_role": "use",
+          "word_count": 38,
+          "lego_count": 9,
+          "lego_position": "middle"
+        },
+        "lego": "S0538L01"
+      },
+      {
+        "id": "S0538L01U02",
+        "before": {
+          "id": "deu_for_eng:S0538L01U02",
+          "status": "draft",
+          "lego_id": null,
+          "version": 512,
+          "metadata": {
+            "score": 8,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.137Z"
+          },
+          "position": 5,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.224152+00:00",
+          "difficulty": null,
+          "known_text": "she said it is so",
+          "lego_count": 5,
+          "lego_index": 1,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:23.816227+00:00",
+          "word_count": 26,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "sie hat gesagt, das ist so",
+          "decomposition": null,
+          "lego_position": "end",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "fbcd6509-1f81-4e23-a332-81ef806e03f9",
+          "target1_audio_id": "4ab00d86-1ec9-4c07-818c-2914035104ef",
+          "target2_audio_id": "874574be-3337-4e90-a4d8-d293f292dd60",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1728,
+          "target2_duration_ms": 1824,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "she doesn't want to seem as though she can't do it",
+          "target_text": "sie will nicht so wirken, als ob sie das nicht kann",
+          "phrase_role": "use",
+          "word_count": 51,
+          "lego_count": 11,
+          "lego_position": "middle"
+        },
+        "lego": "S0538L01"
+      },
+      {
+        "id": "S0538L01U03",
+        "before": {
+          "id": "deu_for_eng:S0538L01U03",
+          "status": "draft",
+          "lego_id": null,
+          "version": 513,
+          "metadata": {
+            "score": 8,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.138Z"
+          },
+          "position": 6,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.224152+00:00",
+          "difficulty": null,
+          "known_text": "it is not so bad",
+          "lego_count": 5,
+          "lego_index": 1,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:17.584715+00:00",
+          "word_count": 24,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "es ist nicht so schlecht",
+          "decomposition": null,
+          "lego_position": "middle",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "4dd86105-cf4f-4583-a33a-0ac26c538156",
+          "target1_audio_id": "370babe4-7c6a-46a1-9657-438fab354ca6",
+          "target2_audio_id": "1cafa386-fc24-435e-ad26-829e0e8c4584",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1440,
+          "target2_duration_ms": 1536,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "you don't have to seem as though you can do it",
+          "target_text": "du musst nicht so wirken, als ob du das kannst",
+          "phrase_role": "use",
+          "word_count": 46,
+          "lego_count": 10,
+          "lego_position": "middle"
+        },
+        "lego": "S0538L01"
+      },
+      {
+        "id": "S0538L01U04",
+        "before": {
+          "id": "deu_for_eng:S0538L01U04",
+          "status": "draft",
+          "lego_id": null,
+          "version": 513,
+          "metadata": {
+            "score": 7,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.138Z"
+          },
+          "position": 7,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.224152+00:00",
+          "difficulty": null,
+          "known_text": "it is so bad",
+          "lego_count": 4,
+          "lego_index": 1,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:17.634793+00:00",
+          "word_count": 18,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "es ist so schlecht",
+          "decomposition": null,
+          "lego_position": "middle",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "5935f5ce-5d5a-481e-a3fd-d0422b50b82d",
+          "target1_audio_id": "6d473d1a-0907-4803-acee-6f41128fc4dc",
+          "target2_audio_id": "20d1644f-02ee-4c70-a65e-30c406f34365",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1464,
+          "target2_duration_ms": 1464,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "he wants to seem as though he doesn't care",
+          "target_text": "er will so wirken, als ob es ihm egal ist",
+          "phrase_role": "use",
+          "word_count": 41,
+          "lego_count": 10,
+          "lego_position": "middle"
+        },
+        "lego": "S0538L01"
+      },
+      {
+        "id": "S0538L01U05",
+        "before": {
+          "id": "deu_for_eng:S0538L01U05",
+          "status": "draft",
+          "lego_id": null,
+          "version": 513,
+          "metadata": {
+            "score": 7,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.138Z"
+          },
+          "position": 8,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.224152+00:00",
+          "difficulty": null,
+          "known_text": "not so",
+          "lego_count": 2,
+          "lego_index": 1,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:17.973729+00:00",
+          "word_count": 8,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "nicht so",
+          "decomposition": null,
+          "lego_position": "end",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "b8e29a1e-46e3-48ff-849a-a469dd5ebd6c",
+          "target1_audio_id": "2e49f6c6-cdfc-4271-aad0-25d8cb0f15b5",
+          "target2_audio_id": "c878e8d1-8629-4064-a242-b2020e12957e",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 720,
+          "target2_duration_ms": 744,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "why do you want to seem as though you are happy",
+          "target_text": "warum willst du so wirken, als ob du glücklich bist",
+          "phrase_role": "use",
+          "word_count": 51,
+          "lego_count": 10,
+          "lego_position": "middle"
+        },
+        "lego": "S0538L01"
+      },
+      {
+        "id": "S0538L01U06",
+        "before": {
+          "id": "deu_for_eng:S0538L01U06",
+          "status": "draft",
+          "lego_id": null,
+          "version": 514,
+          "metadata": {
+            "score": 8,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.138Z"
+          },
+          "position": 9,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.224152+00:00",
+          "difficulty": null,
+          "known_text": "she said it is not so",
+          "lego_count": 6,
+          "lego_index": 1,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:23.65775+00:00",
+          "word_count": 25,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "sie hat gesagt, es ist nicht so",
+          "decomposition": null,
+          "lego_position": "end",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "b543d07b-616d-4b1e-84ac-ea37b1bdb20f",
+          "target1_audio_id": "5b4f3781-c3ee-44b7-82bd-1d7929507969",
+          "target2_audio_id": "22b7a7e4-c886-4b67-96e9-5624fb840152",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1920,
+          "target2_duration_ms": 1968,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "we want to seem as though we know it",
+          "target_text": "wir wollen so wirken, als ob wir es wissen",
+          "phrase_role": "use",
+          "word_count": 42,
+          "lego_count": 9,
+          "lego_position": "middle"
+        },
+        "lego": "S0538L01"
+      },
+      {
+        "id": "S0538L01U07",
+        "before": {
+          "id": "deu_for_eng:S0538L01U07",
+          "status": "draft",
+          "lego_id": null,
+          "version": 513,
+          "metadata": {
+            "score": 8,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.138Z"
+          },
+          "position": 10,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.224152+00:00",
+          "difficulty": null,
+          "known_text": "she said it is not so",
+          "lego_count": 6,
+          "lego_index": 1,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:23.503876+00:00",
+          "word_count": 32,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "sie hat gesagt, das ist nicht so",
+          "decomposition": null,
+          "lego_position": "end",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "b543d07b-616d-4b1e-84ac-ea37b1bdb20f",
+          "target1_audio_id": "f1a6051e-6efd-40b4-b26f-0f785af668bf",
+          "target2_audio_id": "3f8c90be-b7fa-4611-a5db-d6b8227a5e1f",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1800,
+          "target2_duration_ms": 1920,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "she said she wants to seem as though she is tired",
+          "target_text": "sie hat gesagt, sie will so wirken, als ob sie müde ist",
+          "phrase_role": "use",
+          "word_count": 55,
+          "lego_count": 12,
+          "lego_position": "middle"
+        },
+        "lego": "S0538L01"
+      },
+      {
+        "id": "S0538L02U01",
+        "before": {
+          "id": "deu_for_eng:S0538L02U01",
+          "status": "draft",
+          "lego_id": null,
+          "version": 479,
+          "metadata": {
+            "score": 8,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.418Z"
+          },
+          "position": 4,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.470768+00:00",
+          "difficulty": null,
+          "known_text": "she wants to seem good",
+          "lego_count": 5,
+          "lego_index": 2,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:26.730476+00:00",
+          "word_count": 33,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "sie will nicht so schlecht wirken",
+          "decomposition": null,
+          "lego_position": "end",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "9dfcba25-cad0-40c7-8913-ec58a88b7a4a",
+          "target1_audio_id": "1368e030-ad02-4326-94ce-fe0fc434e826",
+          "target2_audio_id": "8c1bbd50-ad0a-49dd-873c-e17baeba846f",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1176,
+          "target2_duration_ms": 1320,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "she wants to seem good",
+          "target_text": "sie will gut wirken",
+          "word_count": 19,
+          "lego_count": 4
+        },
+        "lego": "S0538L02"
+      },
+      {
+        "id": "S0538L02U07",
+        "before": {
+          "id": "deu_for_eng:S0538L02U07",
+          "status": "draft",
+          "lego_id": null,
+          "version": 511,
+          "metadata": {
+            "score": 8,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.418Z"
+          },
+          "position": 10,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.470768+00:00",
+          "difficulty": null,
+          "known_text": "she doesn't want to seem that way",
+          "lego_count": 7,
+          "lego_index": 2,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:21.864508+00:00",
+          "word_count": 24,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "sie will nicht so wirken",
+          "decomposition": null,
+          "lego_position": "end",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "60be82eb-47a8-42c3-a97f-33b58ff41131",
+          "target1_audio_id": "80f04afd-c05d-4c4e-8e6d-c2ac86d3ae0e",
+          "target2_audio_id": "f768061b-2db7-4461-b148-b33ed4ab5c11",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1200,
+          "target2_duration_ms": 1344,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "she doesn't want to seem good",
+          "target_text": "sie will nicht gut wirken",
+          "word_count": 25,
+          "lego_count": 5
+        },
+        "lego": "S0538L02"
+      },
+      {
+        "id": "S0538L03B02",
+        "before": {
+          "id": "deu_for_eng:S0538L03B02",
+          "status": "draft",
+          "lego_id": null,
+          "version": 452,
+          "metadata": {
+            "format": "build_use"
+          },
+          "position": 2,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.643937+00:00",
+          "difficulty": null,
+          "known_text": "as if",
+          "lego_count": 2,
+          "lego_index": 3,
+          "qa_checked": null,
+          "updated_at": "2026-10-12T16:47:32.380622+00:00",
+          "word_count": 6,
+          "course_code": "deu_for_eng",
+          "phrase_role": "build",
+          "seed_number": 538,
+          "target_text": "als ob",
+          "decomposition": null,
+          "lego_position": "start",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "94b9a685-50c6-47b6-b08d-1321406e5adb",
+          "target1_audio_id": "256d05ee-6f17-4365-8736-f41cb376115b",
+          "target2_audio_id": "c5965dd7-8925-4c2d-8e79-6a74b199aa5d",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "9892f9b1-a3ac-4ad3-916c-084445ffa792",
+          "target1_duration_ms": 696,
+          "target2_duration_ms": 720,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "as though"
+        },
+        "lego": "S0538L03"
+      },
+      {
+        "id": "S0538L03U03",
+        "before": {
+          "id": "deu_for_eng:S0538L03U03",
+          "status": "draft",
+          "lego_id": null,
+          "version": 514,
+          "metadata": {
+            "score": 7,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.594Z"
+          },
+          "position": 6,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.643937+00:00",
+          "difficulty": null,
+          "known_text": "as if she can",
+          "lego_count": 4,
+          "lego_index": 3,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:06.545613+00:00",
+          "word_count": 15,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "als ob sie kann",
+          "decomposition": null,
+          "lego_position": "start",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "cf505ba9-2da6-4110-82b7-0334c62cfab4",
+          "target1_audio_id": "1e981a88-a1b5-4b94-88a3-ae9b5dec8b89",
+          "target2_audio_id": "0baeae56-7745-4d97-a827-c221f76730c4",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1080,
+          "target2_duration_ms": 1176,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "as though she can"
+        },
+        "lego": "S0538L03"
+      },
+      {
+        "id": "S0538L03U07",
+        "before": {
+          "id": "deu_for_eng:S0538L03U07",
+          "status": "draft",
+          "lego_id": null,
+          "version": 517,
+          "metadata": {
+            "score": 9,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.594Z"
+          },
+          "position": 10,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.643937+00:00",
+          "difficulty": null,
+          "known_text": "as if she could do it",
+          "lego_count": 6,
+          "lego_index": 3,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:07.795044+00:00",
+          "word_count": 28,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "als ob sie das machen könnte",
+          "decomposition": null,
+          "lego_position": "start",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "e70ef4b1-c5e8-44c3-bebf-9544a0299b0c",
+          "target1_audio_id": "3dc4b61f-ed79-4831-8bba-15d1d931cc31",
+          "target2_audio_id": "dab4da1a-6b32-437b-a3b2-a045085f29b9",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1608,
+          "target2_duration_ms": 1704,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "as though she could do it"
+        },
+        "lego": "S0538L03"
+      },
+      {
+        "id": "S0538L03U05",
+        "before": {
+          "id": "deu_for_eng:S0538L03U05",
+          "status": "draft",
+          "lego_id": null,
+          "version": 514,
+          "metadata": {
+            "score": 8,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.594Z"
+          },
+          "position": 8,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.643937+00:00",
+          "difficulty": null,
+          "known_text": "as if she doesn't care",
+          "lego_count": 5,
+          "lego_index": 3,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:09.07975+00:00",
+          "word_count": 22,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "als ob es ihr egal ist",
+          "decomposition": null,
+          "lego_position": "start",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "5dea90d0-538d-40d3-b62b-01764631f762",
+          "target1_audio_id": "651c8ad9-1d5b-4997-b4ce-0a888ce05e20",
+          "target2_audio_id": "06a8eb73-eca5-4c9e-a20f-736964d00c3e",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1560,
+          "target2_duration_ms": 1632,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "as though she doesn't care"
+        },
+        "lego": "S0538L03"
+      },
+      {
+        "id": "S0538L03U04",
+        "before": {
+          "id": "deu_for_eng:S0538L03U04",
+          "status": "draft",
+          "lego_id": null,
+          "version": 514,
+          "metadata": {
+            "score": 7,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.594Z"
+          },
+          "position": 7,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.643937+00:00",
+          "difficulty": null,
+          "known_text": "as if she wants to",
+          "lego_count": 5,
+          "lego_index": 3,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:10.888787+00:00",
+          "word_count": 15,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "als ob sie will",
+          "decomposition": null,
+          "lego_position": "start",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "5c6082fd-f1d6-4aad-9dbc-d641853db753",
+          "target1_audio_id": "b857e617-9f83-4606-8c77-24b11f9c878b",
+          "target2_audio_id": "0dc56bef-d0af-43e0-a1de-8c5e218d4860",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1224,
+          "target2_duration_ms": 1104,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "as though she wants to"
+        },
+        "lego": "S0538L03"
+      },
+      {
+        "id": "S0538L03U01",
+        "before": {
+          "id": "deu_for_eng:S0538L03U01",
+          "status": "draft",
+          "lego_id": null,
+          "version": 513,
+          "metadata": {
+            "score": 8,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.594Z"
+          },
+          "position": 4,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.643937+00:00",
+          "difficulty": null,
+          "known_text": "as if she could",
+          "lego_count": 4,
+          "lego_index": 3,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:07.545275+00:00",
+          "word_count": 17,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "als ob sie könnte",
+          "decomposition": null,
+          "lego_position": "start",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "50e724a4-d6ae-4b8e-a994-98747682c74a",
+          "target1_audio_id": "e8ee96ef-0675-4828-a0fc-5930bb08a557",
+          "target2_audio_id": "ccc05e31-6c9b-40e6-8ea9-c3a0efcbd4d4",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 1272,
+          "target2_duration_ms": 1152,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "as though she could"
+        },
+        "lego": "S0538L03"
+      },
+      {
+        "id": "S0538L03U21",
+        "before": {
+          "id": "deu_for_eng:S0538L03U21",
+          "status": "draft",
+          "lego_id": "S0538L03",
+          "version": 4,
+          "metadata": {
+            "score": 9,
+            "format": "build_use",
+            "moved_by": "job #502 deu duplicate LEGOs not new (P25)",
+            "scored_at": "2026-06-17T21:59:00.806Z",
+            "moved_from": "S0538L04U07"
+          },
+          "position": 11,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.856+00:00",
+          "difficulty": null,
+          "known_text": "she doesn't want to seem as if she doesn't care",
+          "lego_count": 10,
+          "lego_index": 3,
+          "qa_checked": null,
+          "updated_at": "2026-10-14T22:20:18.624706+00:00",
+          "word_count": 48,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "sie will nicht so wirken, als ob es ihr egal ist",
+          "decomposition": null,
+          "lego_position": "end",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "cafcb47b-56b5-47cc-8611-28edfd7b8224",
+          "target1_audio_id": "131bb31c-a47c-4f98-a850-1ccc95e599e0",
+          "target2_audio_id": "1a94957b-8488-49c7-8824-aad5db1a3100",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "ab6d225f-36d3-4f53-a2f9-15e4dc10dfd1",
+          "target1_duration_ms": 2880,
+          "target2_duration_ms": 2880,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "set": {
+          "known_text": "she doesn't want to seem as though she doesn't care"
+        },
+        "lego": "S0538L03"
+      }
+    ],
+    "skipped": [],
+    "introL1": "ded914d3-e0a5-4641-b184-2704ca926608",
+    "introL3": "ff476c60-a253-4820-b9f1-1b86087bd384"
+  },
+  "asks": [
+    {
+      "role": "known",
+      "text": "to seem as though",
+      "ids": [
+        "S0538L01",
+        "S0538L01B01"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "5bd58604-b6ec-464c-839c-f159e4c8227f",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "so wirken, als ob",
+      "ids": [
+        "S0538L01",
+        "S0538L01B01"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "8591a24f-eaf8-4f03-a688-afd67857d00e",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "so wirken, als ob",
+      "ids": [
+        "S0538L01",
+        "S0538L01B01"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "91d909d3-cd48-4be3-a09c-0428d516c758",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "presentation",
+      "text": "The German for: 'to seem as though', as in — 'I want to seem as though I know', is:",
+      "legoId": "S0538L01",
+      "ids": [
+        "S0538L01"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "a57cd207-8695-4be7-b2ae-370be586b52e",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "as though",
+      "ids": [
+        "S0538L03",
+        "S0538L03B02"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "6aad9468-f798-4e28-b243-29cc66bc0abc",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "presentation",
+      "text": "The German for: 'as though', is:",
+      "legoId": "S0538L03",
+      "ids": [
+        "S0538L03"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "ec84dabc-8723-4774-a6ce-036ce0b6a8ed",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "she wants to seem as though",
+      "ids": [
+        "S0538L01B02"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "6d8ef988-4888-4c76-b1e8-304a49c2f703",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "sie will so wirken, als ob",
+      "ids": [
+        "S0538L01B02"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "79539ceb-5cec-4b17-a9c9-c1392e9f4622",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "sie will so wirken, als ob",
+      "ids": [
+        "S0538L01B02"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "781f18dc-0709-421c-aa5a-f431af1c5031",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "to seem as though it is good",
+      "ids": [
+        "S0538L01B03"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "cdebd80c-cd12-4a7f-ab19-68cb94cccf15",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "so wirken, als ob es gut ist",
+      "ids": [
+        "S0538L01B03"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "a8ae01f6-448c-403c-b6d0-8f736e3ee315",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "so wirken, als ob es gut ist",
+      "ids": [
+        "S0538L01B03"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "ee9aaaef-611c-47e5-ab90-b556520c66d4",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "I want to seem as though I know",
+      "ids": [
+        "S0538L01U01"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "c9392205-27e2-48ec-95c6-3783a99dbe5d",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "ich will so wirken, als ob ich es weiß",
+      "ids": [
+        "S0538L01U01"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "6d36762d-83c1-442a-b57a-fcc1664b1760",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "ich will so wirken, als ob ich es weiß",
+      "ids": [
+        "S0538L01U01"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "d22846a2-afe1-4b36-bf0b-c3faa245e353",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "she doesn't want to seem as though she can't do it",
+      "ids": [
+        "S0538L01U02"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "87c52d26-37c5-4c5f-b586-704ce6b82c39",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "sie will nicht so wirken, als ob sie das nicht kann",
+      "ids": [
+        "S0538L01U02"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "7c590fe8-449f-4691-a5ab-2876aaf67327",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "sie will nicht so wirken, als ob sie das nicht kann",
+      "ids": [
+        "S0538L01U02"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "06252d07-f954-4fd9-9e14-6a3bbdb8fb0c",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "you don't have to seem as though you can do it",
+      "ids": [
+        "S0538L01U03"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "6c7a2a1b-d7c0-4e35-a198-f00d12f9cf8d",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "du musst nicht so wirken, als ob du das kannst",
+      "ids": [
+        "S0538L01U03"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "58f74251-516f-4a20-8250-a57adfce56cd",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "du musst nicht so wirken, als ob du das kannst",
+      "ids": [
+        "S0538L01U03"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "21cb6355-c17c-4470-90ff-c65649776cf2",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "he wants to seem as though he doesn't care",
+      "ids": [
+        "S0538L01U04"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "fd2b88ca-daab-4490-904f-9e476821658e",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "er will so wirken, als ob es ihm egal ist",
+      "ids": [
+        "S0538L01U04"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "a316c60a-d828-412b-a1df-a6e9d23b150b",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "er will so wirken, als ob es ihm egal ist",
+      "ids": [
+        "S0538L01U04"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "3c59b736-0876-48a1-8c05-679747ffd887",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "why do you want to seem as though you are happy",
+      "ids": [
+        "S0538L01U05"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "824abdb6-da58-4254-ba9d-fd0a256d4769",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "warum willst du so wirken, als ob du glücklich bist",
+      "ids": [
+        "S0538L01U05"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "2b2134dc-bca2-4c1d-8759-4e664dd49384",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "warum willst du so wirken, als ob du glücklich bist",
+      "ids": [
+        "S0538L01U05"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "20a9e6ba-1a2b-46f4-a422-9a138fc99f06",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "we want to seem as though we know it",
+      "ids": [
+        "S0538L01U06"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "4c4b7873-e680-4dd7-9861-c6916edda01c",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "wir wollen so wirken, als ob wir es wissen",
+      "ids": [
+        "S0538L01U06"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "cf7369c2-32bd-4993-a8f0-76f0fd756f73",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "wir wollen so wirken, als ob wir es wissen",
+      "ids": [
+        "S0538L01U06"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "70b004a7-033a-4f12-86bf-787fa75ce587",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "she said she wants to seem as though she is tired",
+      "ids": [
+        "S0538L01U07"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "0d65c599-e57b-428a-a53b-de97ce954878",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "sie hat gesagt, sie will so wirken, als ob sie müde ist",
+      "ids": [
+        "S0538L01U07"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "c0628f3c-91b8-40c0-9d40-bd0c78a507bc",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "sie hat gesagt, sie will so wirken, als ob sie müde ist",
+      "ids": [
+        "S0538L01U07"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "874b171b-90a8-4762-a1a8-462558167b05",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "sie will gut wirken",
+      "ids": [
+        "S0538L02U01"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "561ea123-9cc0-4246-bdfb-3e882ed50eb0",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "sie will gut wirken",
+      "ids": [
+        "S0538L02U01"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "d749a199-f573-4c61-acae-af10fc903ad9",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "she doesn't want to seem good",
+      "ids": [
+        "S0538L02U07"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "f60f2777-65e9-4be6-8fad-03e645d0c989",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "sie will nicht gut wirken",
+      "ids": [
+        "S0538L02U07"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "ad49e689-fff5-4353-9bd6-5a284656455e",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "sie will nicht gut wirken",
+      "ids": [
+        "S0538L02U07"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "90efd76d-b9b4-418f-9c83-2bf238aa72ab",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "as though she can",
+      "ids": [
+        "S0538L03U03"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "fea2caf4-2ea7-40ee-b7cf-bd06cc383104",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "as though she could do it",
+      "ids": [
+        "S0538L03U07"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "275d602c-f81f-4fa6-8227-affc134c68ab",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "as though she doesn't care",
+      "ids": [
+        "S0538L03U05"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "5a1be66d-d5a5-403f-8b33-e53506427817",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "as though she wants to",
+      "ids": [
+        "S0538L03U04"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "fde13612-046e-44dc-84e9-5f28db724566",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "as though she could",
+      "ids": [
+        "S0538L03U01"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "c6cd8d45-c1e7-42a6-ae37-4858cbecadbb",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "she doesn't want to seem as though she doesn't care",
+      "ids": [
+        "S0538L03U21"
+      ],
+      "dry": {
+        "status": 200,
+        "source": "library",
+        "chars": 0
+      },
+      "real": {
+        "status": 200,
+        "source": "library",
+        "audioId": "7e28fa30-34f4-4c1f-b0f0-860e44eb1256",
+        "charsSpent": 0
+      }
+    }
+  ],
+  "charsSpent": 0,
+  "preview": {
+    "status": 200,
+    "results": 69
+  },
+  "applied": {
+    "status": 200,
+    "eventId": "df29d552-bc62-40f4-a27d-bc0cd47109c9",
+    "undoFile": "2026-10-19T15-22-40-140Z-df29d552-bc62-40f4-a27d-bc0cd47109c9.json",
+    "undo": [
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L02U07",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L02U07",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L02U01",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L02U01",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U07",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U07",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U06",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U06",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U05",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U05",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U04",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U04",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U03",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U03",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U02",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U02",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U01",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U01",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01B03",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01B03",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01B02",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01B02",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01B01",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01B01",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "lego.update",
+        "id": "54143479-24a3-466c-b9c0-bd299f8f47f9",
+        "set": {
+          "presentation_audio_id": null
+        }
+      },
+      {
+        "op": "lego.update",
+        "id": "a65cd1cc-4670-4f9e-8aa7-67d978dff398",
+        "set": {
+          "presentation_audio_id": null
+        }
+      },
+      {
+        "op": "lego.update",
+        "id": "a65cd1cc-4670-4f9e-8aa7-67d978dff398",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "lego.update",
+        "id": "a65cd1cc-4670-4f9e-8aa7-67d978dff398",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U21",
+        "set": {
+          "known_text": "she doesn't want to seem as if she doesn't care",
+          "known_audio_id": "cafcb47b-56b5-47cc-8611-28edfd7b8224"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U01",
+        "set": {
+          "known_text": "as if she could",
+          "known_audio_id": "50e724a4-d6ae-4b8e-a994-98747682c74a"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U04",
+        "set": {
+          "known_text": "as if she wants to",
+          "known_audio_id": "5c6082fd-f1d6-4aad-9dbc-d641853db753"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U05",
+        "set": {
+          "known_text": "as if she doesn't care",
+          "known_audio_id": "5dea90d0-538d-40d3-b62b-01764631f762"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U07",
+        "set": {
+          "known_text": "as if she could do it",
+          "known_audio_id": "e70ef4b1-c5e8-44c3-bebf-9544a0299b0c"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U03",
+        "set": {
+          "known_text": "as if she can",
+          "known_audio_id": "cf505ba9-2da6-4110-82b7-0334c62cfab4"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03B02",
+        "set": {
+          "known_text": "as if",
+          "known_audio_id": "94b9a685-50c6-47b6-b08d-1321406e5adb"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L02U07",
+        "set": {
+          "known_text": "she doesn't want to seem that way",
+          "target_text": "sie will nicht so wirken",
+          "word_count": 24,
+          "lego_count": 7,
+          "known_audio_id": "60be82eb-47a8-42c3-a97f-33b58ff41131",
+          "target1_audio_id": "80f04afd-c05d-4c4e-8e6d-c2ac86d3ae0e",
+          "target2_audio_id": "f768061b-2db7-4461-b148-b33ed4ab5c11"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L02U01",
+        "set": {
+          "target_text": "sie will nicht so schlecht wirken",
+          "word_count": 33,
+          "lego_count": 5,
+          "target1_audio_id": "1368e030-ad02-4326-94ce-fe0fc434e826",
+          "target2_audio_id": "8c1bbd50-ad0a-49dd-873c-e17baeba846f"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U07",
+        "set": {
+          "known_text": "she said it is not so",
+          "target_text": "sie hat gesagt, das ist nicht so",
+          "word_count": 32,
+          "lego_count": 6,
+          "lego_position": "end",
+          "known_audio_id": "b543d07b-616d-4b1e-84ac-ea37b1bdb20f",
+          "target1_audio_id": "f1a6051e-6efd-40b4-b26f-0f785af668bf",
+          "target2_audio_id": "3f8c90be-b7fa-4611-a5db-d6b8227a5e1f"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U06",
+        "set": {
+          "known_text": "she said it is not so",
+          "target_text": "sie hat gesagt, es ist nicht so",
+          "word_count": 25,
+          "lego_count": 6,
+          "lego_position": "end",
+          "known_audio_id": "b543d07b-616d-4b1e-84ac-ea37b1bdb20f",
+          "target1_audio_id": "5b4f3781-c3ee-44b7-82bd-1d7929507969",
+          "target2_audio_id": "22b7a7e4-c886-4b67-96e9-5624fb840152"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U05",
+        "set": {
+          "known_text": "not so",
+          "target_text": "nicht so",
+          "word_count": 8,
+          "lego_count": 2,
+          "lego_position": "end",
+          "known_audio_id": "b8e29a1e-46e3-48ff-849a-a469dd5ebd6c",
+          "target1_audio_id": "2e49f6c6-cdfc-4271-aad0-25d8cb0f15b5",
+          "target2_audio_id": "c878e8d1-8629-4064-a242-b2020e12957e"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U04",
+        "set": {
+          "known_text": "it is so bad",
+          "target_text": "es ist so schlecht",
+          "word_count": 18,
+          "lego_count": 4,
+          "known_audio_id": "5935f5ce-5d5a-481e-a3fd-d0422b50b82d",
+          "target1_audio_id": "6d473d1a-0907-4803-acee-6f41128fc4dc",
+          "target2_audio_id": "20d1644f-02ee-4c70-a65e-30c406f34365"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U03",
+        "set": {
+          "known_text": "it is not so bad",
+          "target_text": "es ist nicht so schlecht",
+          "word_count": 24,
+          "lego_count": 5,
+          "known_audio_id": "4dd86105-cf4f-4583-a33a-0ac26c538156",
+          "target1_audio_id": "370babe4-7c6a-46a1-9657-438fab354ca6",
+          "target2_audio_id": "1cafa386-fc24-435e-ad26-829e0e8c4584"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U02",
+        "set": {
+          "known_text": "she said it is so",
+          "target_text": "sie hat gesagt, das ist so",
+          "word_count": 26,
+          "lego_count": 5,
+          "lego_position": "end",
+          "known_audio_id": "fbcd6509-1f81-4e23-a332-81ef806e03f9",
+          "target1_audio_id": "4ab00d86-1ec9-4c07-818c-2914035104ef",
+          "target2_audio_id": "874574be-3337-4e90-a4d8-d293f292dd60"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U01",
+        "set": {
+          "known_text": "that is so",
+          "target_text": "das ist so",
+          "word_count": 10,
+          "lego_count": 3,
+          "lego_position": "end",
+          "known_audio_id": "5939e83d-a382-4be9-9144-16615e5dd848",
+          "target1_audio_id": "6d25803e-b166-4ef4-8816-0057f22b6471",
+          "target2_audio_id": "dc924612-dcb2-4f67-8301-063802002cb1"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01B03",
+        "set": {
+          "known_text": "so bad",
+          "target_text": "so schlecht",
+          "word_count": 11,
+          "lego_count": 2,
+          "known_audio_id": "26a85a47-9b43-4a11-a0c0-d677346111e6",
+          "target1_audio_id": "5b23dd85-c638-43bf-bd1a-bf540a7334eb",
+          "target2_audio_id": "88c7094d-208c-482a-9621-aff3241ad0f2"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01B02",
+        "set": {
+          "known_text": "so that",
+          "target_text": "so dass",
+          "word_count": 7,
+          "lego_count": 2,
+          "lego_position": "start",
+          "known_audio_id": "d0f474bf-da26-46fc-bc66-11eb51233435",
+          "target1_audio_id": "854d4bb0-6cc2-4d24-afb0-be94fbe1df81",
+          "target2_audio_id": "9220f0af-7fce-4ecb-830d-0f30117cba97"
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01B01",
+        "set": {
+          "known_text": "so",
+          "target_text": "so",
+          "word_count": 2,
+          "lego_count": 1,
+          "lego_position": "middle",
+          "known_audio_id": "72fbb0a0-421a-4cfb-9e1e-647776f99450",
+          "target1_audio_id": "e4bd249d-db52-4eb0-89af-e245b09745c4",
+          "target2_audio_id": "6d89b4e1-3d40-4b7a-8e78-4d3dd92691cc"
+        }
+      },
+      {
+        "op": "lego.update",
+        "id": "54143479-24a3-466c-b9c0-bd299f8f47f9",
+        "set": {
+          "known_text": "as if",
+          "known_audio_id": "94b9a685-50c6-47b6-b08d-1321406e5adb",
+          "presentation_audio_id": "ec84dabc-8723-4774-a6ce-036ce0b6a8ed"
+        }
+      },
+      {
+        "op": "lego.update",
+        "id": "a65cd1cc-4670-4f9e-8aa7-67d978dff398",
+        "set": {
+          "known_text": "to seem",
+          "target_text": "so wirken",
+          "components": [
+            {
+              "known": "to seem",
+              "target": "so wirken"
+            }
+          ],
+          "known_audio_id": "805584c9-7f33-4e99-9f22-55828c64b5d3",
+          "target1_audio_id": "273ae4da-babd-4161-a9d3-03ff965271d5",
+          "target2_audio_id": "ca16c141-bf66-4171-b3d5-6ec39257a7f3",
+          "presentation_audio_id": "a57cd207-8695-4be7-b2ae-370be586b52e"
+        }
+      }
+    ]
+  }
+}
