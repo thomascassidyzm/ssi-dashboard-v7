@@ -98,8 +98,10 @@ const POD_SQL = `
          coalesce(s.n, 0)::int AS pod_sentences,
          coalesce(c.n, 0)::int AS canon_rows
     FROM listening_pods p
-    LEFT JOIN (SELECT pod_id, count(*) AS n FROM listening_pod_sentences GROUP BY 1) s ON s.pod_id = p.id
-    LEFT JOIN (SELECT pod_slug, count(*) AS n FROM canonical_pod_scenarios GROUP BY 1) c ON c.pod_slug = p.slug
+    LEFT JOIN (SELECT pod_id, count(*) AS n FROM listening_pod_sentences
+                WHERE pod_id IN (SELECT id FROM listening_pods WHERE course_code = ANY($1)) GROUP BY 1) s ON s.pod_id = p.id
+    LEFT JOIN (SELECT pod_slug, count(*) AS n FROM canonical_pod_scenarios
+                WHERE pod_slug IN (SELECT slug FROM listening_pods WHERE course_code = ANY($1)) GROUP BY 1) c ON c.pod_slug = p.slug
    WHERE p.course_code = ANY($1) AND coalesce(c.n, 0) > 0
    ORDER BY p.course_code, p.slug`;
 
