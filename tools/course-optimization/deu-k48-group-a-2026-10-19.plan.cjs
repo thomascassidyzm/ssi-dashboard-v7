@@ -311,7 +311,7 @@ const APPLY = [
       ['B01', 'build', 'I know how tired you were', 'ich weiß, wie müde du warst'],
       ['B02', 'build', "I didn't know how tired you were", 'ich wusste nicht, wie müde du warst'],
       ['B03', 'build', 'she saw how tired you were', 'sie hat gesehen, wie müde du warst'],
-      ['U01', 'use', "I'd have driven if you'd told me how tired you were", 'ich hätte gefahren, wenn du mir gesagt hättest, wie müde du warst'],
+      ['U01', 'use', "I'd have driven if you'd told me how tired you were", 'ich wäre gefahren, wenn du mir gesagt hättest, wie müde du warst'], // seed 600 fixed hätte → wäre (fahren takes sein), job #285
       ['U02', 'use', 'you told me how tired you were', 'du hast mir gesagt, wie müde du warst'],
       ['U03', 'use', 'I could see how tired you were', 'ich konnte sehen, wie müde du warst'],
       ['U04', 'use', 'I wanted to know how tired you were', 'ich wollte wissen, wie müde du warst'],
