@@ -96,3 +96,15 @@ describe('batchedRead learns its batch size', () => {
     expect(second[0]).toBeLessThanOrEqual(4) // the next branch starts at the learned size, not at 16
   })
 })
+
+describe('windowedRead with a max-seed hint', () => {
+  const { baseWindows } = require('./windowed-read.cjs')
+  it('stops its fixed windows at the hint but still covers everything above it', () => {
+    const w = baseWindows(120)
+    expect(w.length).toBeLessThan(baseWindows().length)
+    const spans = w.filter((x) => !x.nulls)
+    expect(spans[0].lo).toBe(-1e9)
+    for (let i = 1; i < spans.length; i++) expect(spans[i].lo).toBe(spans[i - 1].hi) // contiguous: no seed can fall between windows
+    expect(spans.at(-1).hi).toBe(1e9)
+  })
+})

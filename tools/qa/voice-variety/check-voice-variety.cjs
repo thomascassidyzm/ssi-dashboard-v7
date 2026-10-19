@@ -83,7 +83,7 @@ const timedOutWhole = new Set();
  * (course, role, voice) → linked slot count for a list of courses, summed across branches and windows. Courses go in batches (the
  * statement overhead is paid per batch); a cancelled batch is halved, and one course still cancelled is windowed by seed_number.
  */
-async function linkedVoices(db, courseCodes) {
+async function linkedVoices(db, courseCodes, maxSeed = new Map()) {
   const { windowedRead, batchedRead } = require('../lib/windowed-read.cjs');
   const merged = new Map();
   const add = (rows) => {
@@ -104,7 +104,7 @@ async function linkedVoices(db, courseCodes) {
     const results = await batchedRead(courseCodes,
       timed(`${table}.${role} batch`, (codes) => db.query(linkedBranchSql(table, role, null), [codes])),
       async (code) => windowedRead(timed(`${table}.${role} ${code}`, (pred) => db.query(linkedBranchSql(table, role, pred), [[code]])),
-        { column: 't.seed_number', memo: timedOutWhole, key: `${code}|${table}` }),
+        { column: 't.seed_number', memo: timedOutWhole, key: `${code}|${table}`, max: maxSeed.get(code) ?? null }),
       { state: (sizes[table] ||= { size: table === 'course_practice_phrases' ? 4 : 16 }) });
     for (const r of results) add(r.rows);
   }
@@ -120,7 +120,9 @@ async function load(db) {
     db.query('SELECT language, gender, rank, voice_id, slot FROM voice_language_roles'),
   ]);
   const codes = courses.rows.map((c) => c.course_code);
-  const linked = { rows: await linkedVoices(db, codes) };
+  // Highest seed per course, from the small table, so a windowed course does not pay for empty windows above its last seed.
+  const maxSeed = new Map((await db.query('SELECT course_code, max(seed_number)::int AS m FROM course_seeds GROUP BY 1')).rows.map((r) => [r.course_code, r.m]));
+  const linked = { rows: await linkedVoices(db, codes, maxSeed) };
   // humanRows are the MEASURED human recordings (human-recorded-roles.cjs reads course_code/role/clips/a_voice_id). This used to
   // select `dialect` from language_recording_policy, which has no such column and is not that shape; the old silent catch hid it.
   // Batched and halved on a cancel like linkedVoices; only an absent view (42P01) may fail.

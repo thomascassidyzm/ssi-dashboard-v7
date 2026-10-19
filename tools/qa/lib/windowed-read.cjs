@@ -21,10 +21,12 @@ const TOP = 1001;
 
 const isTimeout = (e) => !!e && e.code === '57014';
 
-function baseWindows() {
+/** `max` (optional) is the course's highest known seed_number: windows stop there, so a 300-seed course does not pay for 20 empty ones. */
+function baseWindows(max = null) {
+  const top = Number.isFinite(max) && max >= 1 ? Math.min(max + 1, TOP) : TOP;
   const w = [{ nulls: true }, { lo: FLOOR, hi: 1 }];
-  for (let lo = 1; lo < TOP; lo += STEP) w.push({ lo, hi: lo + STEP });
-  w.push({ lo: TOP, hi: CEIL });
+  for (let lo = 1; lo < top; lo += STEP) w.push({ lo, hi: Math.min(lo + STEP, top) });
+  w.push({ lo: Math.max(top, 1), hi: CEIL }); // everything above the hint is still covered, in one open-ended window
   return w;
 }
 
@@ -45,17 +47,17 @@ async function runWindow(run, column, w, out) {
 
 /**
  * @param {(predicate: string|null) => Promise<any>} run  one capped statement; predicate is a SQL boolean on `column`, or null for the whole scope
- * @param {{column?: string|null, memo?: Set<string>, key?: string}} opts  column null = this shape cannot be windowed, so a timeout is final
+ * @param {{column?: string|null, memo?: Set<string>, key?: string, max?: number|null}} opts  column null = this shape cannot be windowed, so a timeout is final
  * @returns {Promise<any[]>} one result per leaf window (a single result when the whole scope fit)
  */
-async function windowedRead(run, { column = 'seed_number', memo = null, key = '' } = {}) {
+async function windowedRead(run, { column = 'seed_number', memo = null, key = '', max = null } = {}) {
   if (!column) return [await run(null)];
   if (!(memo && memo.has(key))) {
     try { return [await run(null)]; }
     catch (e) { if (!isTimeout(e)) throw e; if (memo) memo.add(key); }
   }
   const out = [];
-  for (const w of baseWindows()) await runWindow(run, column, w, out);
+  for (const w of baseWindows(max)) await runWindow(run, column, w, out);
   return out;
 }
 
