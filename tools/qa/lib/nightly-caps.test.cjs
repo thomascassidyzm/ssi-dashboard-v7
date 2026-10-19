@@ -1,14 +1,15 @@
+import { it as test } from 'vitest';
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '../../..');
+test('nightly statements stay capped and paged counts remain complete', async () => {
 for (const file of ['tools/qa/sibling-identity/check.cjs', 'tools/qa/debut-practice/nightly.cjs', 'tools/qa/voice-policy/nightly.cjs', 'tools/refresh-round-index.cjs']) {
   assert.match(fs.readFileSync(path.join(root,file),'utf8'), /boundedClient\(/, file);
 }
 assert.match(fs.readFileSync(path.join(root,'tools/qa/voice-variety/named-read.cjs'),'utf8'), /STATEMENT_TIMEOUT_MS = 5000/);
 console.log('nightly caps wiring pass');
 
-(async () => {
   const { boundedClient } = require('./bounded-client.cjs');
   const seen = [];
   const connection = { async query(sql, params) {
@@ -55,4 +56,4 @@ console.log('nightly caps wiring pass');
   assert.equal(snap.courses[0].known.by_kind.phrase.total,450);
   assert.equal(snap.courses[0].known.missing,3);
   console.log('rollback, serialisation and large-course pagination pass');
-})().catch(e=>{console.error(e);process.exitCode=1});
+});
