@@ -36,13 +36,22 @@ require('dotenv').config({ path: require('path').join(__dirname, '../../../.env.
 const fs = require('fs');
 const { Client } = require('pg');
 const { boundedClient } = require('../lib/bounded-client.cjs');
+const { windowedRead } = require('../lib/windowed-read.cjs');
 const { derive } = require('./derive.cjs');
 const { classify, MUST_DIFFER, UNKNOWN } = require('./register.cjs');
 
+const timedOutWhole = new Set();
 const q = (s) => `"${String(s).replace(/"/g, '""')}"`;
 
 /** The single-column primary key, so a finding can name the rows a human must open. */
+const pkCache = new Map();
 async function pkColumn(client, table) {
+  if (pkCache.has(table)) return pkCache.get(table);
+  const pk = await pkColumnUncached(client, table);
+  pkCache.set(table, pk);
+  return pk;
+}
+async function pkColumnUncached(client, table) {
   const { rows } = await client.query(`
     select a.attname
     from pg_index ix
@@ -160,7 +169,11 @@ async function main(argv = process.argv) {
         for (const course of scopes) {
           const predicate = course === null ? `${q(column)} IS NULL` : `${q(column)} = '${String(course).replace(/'/g, "''")}'`;
           const scope = column ? { ...c, where: [c.where, predicate].filter(Boolean).join(' AND ') } : c;
-          parts.push(await runAssertion(client, scope, fields));
+          // A scope too big for the 5 s cap is re-run in windows of a column that is part of the sibling key, so no group
+          // straddles two windows and the per-window counts add up exactly (tools/qa/lib/windowed-read.cjs).
+          const windowColumn = ['seed_number', 'scene_number'].find((k) => c.groupCols.includes(k)) || null;
+          parts.push(...await windowedRead((pred) => runAssertion(client, pred ? { ...scope, where: [scope.where, pred].filter(Boolean).join(' AND ') } : scope, fields),
+            { column: windowColumn && q(windowColumn), memo: timedOutWhole, key: `${c.table}|${course}|${fields.join('+')}` }));
         }
         if (parts.length) results.push({ ...parts[0], excluded: c.where || null,
           sibling_groups: parts.reduce((n,r) => n + r.sibling_groups, 0),

@@ -119,7 +119,7 @@ describe('reading a locale off a voice', () => {
 // transaction the nightly's reads run in.
 describe('nightly connections', () => {
   const { namedRead, STATEMENT_TIMEOUT_MS } = require('./named-read.cjs')
-  // Behaves like Postgres inside a transaction: language_recording_policy is
+  // Behaves like Postgres inside a transaction: course_human_recorded_roles may be
   // missing, and after any error every statement fails until a ROLLBACK (TO).
   const fake = () => {
     const seen = []
@@ -129,7 +129,7 @@ describe('nightly connections', () => {
       seen.push({ sql: head, params })
       if (/^ROLLBACK/.test(head)) { aborted = false; return { rows: [] } }
       if (aborted) throw new Error('current transaction is aborted')
-      if (/language_recording_policy/.test(sql)) { aborted = true; throw Object.assign(new Error('relation does not exist'), { code: '42P01' }) }
+      if (/course_human_recorded_roles/.test(sql)) { aborted = true; throw Object.assign(new Error('relation does not exist'), { code: '42P01' }) }
       return { rows: [] }
     } }
   }
@@ -146,4 +146,20 @@ describe('nightly connections', () => {
       expect(db.seen.length).toBeGreaterThan(3)
     })
   }
+
+  // Job #3 (2026-10-19): the nightly died on `column "dialect" does not exist` — it read language_recording_policy, which has no such
+  // column and is not the shape assess() consumes. The measured human recordings come from course_human_recorded_roles, per course.
+  it('reads human recordings from course_human_recorded_roles, one course per statement, and never selects a dialect column', async () => {
+    const mod = require('./check-voice-variety.cjs')
+    const seen = []
+    const db = { query: async (sql, params) => {
+      seen.push({ sql, params })
+      if (/FROM courses/.test(sql)) return { rows: [{ course_code: 'a_for_eng' }, { course_code: 'b_for_eng' }] }
+      if (/course_human_recorded_roles/.test(sql)) return { rows: [{ course_code: params[0], role: 'target1', clips: 3, a_voice_id: 'v' }] }
+      return { rows: [] }
+    } }
+    const out = await mod.load(db)
+    expect(out.humanRows.map((r) => r.course_code)).toEqual(['a_for_eng', 'b_for_eng'])
+    expect(seen.some((q) => /language_recording_policy|dialect/.test(q.sql) && !/FROM courses/.test(q.sql))).toBe(false)
+  })
 })

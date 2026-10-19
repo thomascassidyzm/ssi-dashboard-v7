@@ -117,15 +117,29 @@ async function connect() {
   return { pg, db }
 }
 
+/**
+ * One statement per (table, slot column), each under the 5 s cap. A big course's join to course_audio runs past it, so a part that
+ * times out whole is re-run in seed_number windows (tools/qa/lib/windowed-read.cjs) and the windows' groups are summed: slots and
+ * unplayable add exactly; `texts` is a per-window distinct count, so it is a sum here (nothing reads it from this query).
+ */
+const timedOutWhole = new Set()
 async function groupedSlots(pg, code) {
-  const parts = []
-  for (const [tbl, cols] of Object.entries(SLOT_COLUMNS)) for (const col of cols) parts.push(`
+  const { windowedRead } = require('../qa/lib/windowed-read.cjs')
+  const merged = new Map()
+  for (const [tbl, cols] of Object.entries(SLOT_COLUMNS)) for (const col of cols) {
+    const parts = await windowedRead((pred) => pg.query(`
     select '${tbl}' tbl, '${col}' col, ca.voice_id, ca.language, ca.origin, count(*) slots, count(distinct ca.text_normalized) texts,
       count(*) filter (where ca.id is not null and not (${usable('ca')})) unplayable
-    from ${tbl} x left join course_audio ca on ca.id = ${ptr(tbl, col)} where x.course_code = $1 and x.${col} is not null group by 3, 4, 5`)
-  const rows = []
-  for (const part of parts) rows.push(...(await pg.query(part, [code])).rows)
-  return rows
+    from ${tbl} x left join course_audio ca on ca.id = ${ptr(tbl, col)} where x.course_code = $1 and x.${col} is not null${pred ? ` and ${pred}` : ''} group by 3, 4, 5`, [code]),
+    { column: 'x.seed_number', memo: timedOutWhole, key: `${code}|${tbl}` })
+    for (const { rows } of parts) for (const r of rows) {
+      const k = [r.tbl, r.col, r.voice_id, r.language, r.origin].join('|')
+      const m = merged.get(k)
+      if (!m) merged.set(k, { ...r, slots: Number(r.slots), texts: Number(r.texts), unplayable: Number(r.unplayable) })
+      else { m.slots += Number(r.slots); m.texts += Number(r.texts); m.unplayable += Number(r.unplayable) }
+    }
+  }
+  return [...merged.values()]
 }
 
 /**

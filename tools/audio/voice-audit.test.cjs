@@ -140,3 +140,23 @@ describe('voice audit repointUnplayable', () => {
     } finally { Object.assign(cv, { bumpCourseVersion: saved.bump }); Object.assign(cel, { recordContentEdit: saved.rec }); Object.assign(rv, { loadCourse: saved.lc, resolveVoice: saved.res, mayPoint: saved.may, setSlotPointer: saved.set }) }
   })
 })
+
+// A big course's slot join runs past the 5 s cap whole: it must be re-run in seed windows and the groups summed, losing nothing.
+describe('voice audit groupedSlots stays under the statement cap', () => {
+  it('re-runs a timed-out part in seed_number windows and sums the groups', async () => {
+    const windowed = (sql) => /seed_number (>=|is null)/.test(sql)
+    const mineSql = (sql) => /from course_practice_phrases/.test(sql) && /'known_audio_id' col/.test(sql)
+    let windowCalls = 0
+    const pg = { async query(sql) {
+      if (mineSql(sql) && !windowed(sql)) throw Object.assign(new Error('cancel'), { code: '57014' })
+      if (!mineSql(sql)) return { rows: [] }
+      windowCalls++
+      return { rows: [{ tbl: 'course_practice_phrases', col: 'known_audio_id', voice_id: 'v', language: 'fra', origin: null, slots: '2', texts: '1', unplayable: '1' }] }
+    } }
+    const rows = (await audit.groupedSlots(pg, 'big_for_eng')).filter((r) => r.tbl === 'course_practice_phrases' && r.col === 'known_audio_id')
+    expect(windowCalls).toBeGreaterThan(5)
+    expect(rows).toHaveLength(1)
+    expect(rows[0].slots).toBe(2 * windowCalls)
+    expect(rows[0].unplayable).toBe(windowCalls)
+  })
+})

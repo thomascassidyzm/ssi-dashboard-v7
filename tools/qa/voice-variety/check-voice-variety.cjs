@@ -93,19 +93,26 @@ const LINKED_VOICES_SQL = `
       FROM course_practice_phrases t JOIN course_audio ca ON ca.id = t.target2_audio_id WHERE t.course_code = $1 GROUP BY 1,3
   ) x GROUP BY 1,2,3`;
 
+const HUMAN_RECORDED_SQL = `SELECT course_code, role, target_lang, known_lang, clips, a_voice_id FROM course_human_recorded_roles WHERE course_code = $1`;
+
 async function load(db) {
-  // Only an absent optional policy table is allowed to fail.
-  const human = await optionalRead(db, `SELECT language, dialect, voices FROM language_recording_policy`);
   const [courses, voices, roles] = await Promise.all([
     db.query(`SELECT ${COURSE_CAST_FIELDS}, status, voice_config FROM courses ORDER BY course_code`),
     db.query('SELECT voice_id, display_name, human_name, gender, tts_engine, tts_locale, is_active, languages, type FROM voices'),
     db.query('SELECT language, gender, rank, voice_id, slot FROM voice_language_roles'),
   ]);
   const linked = { rows: [] };
-  for (const c of courses.rows) linked.rows.push(...(await db.query(LINKED_VOICES_SQL, [c.course_code])).rows);
+  // humanRows are the MEASURED human recordings (human-recorded-roles.cjs reads course_code/role/clips/a_voice_id). This used to
+  // select `dialect` from language_recording_policy, which has no such column and is not that shape; the old silent catch hid it.
+  // One course per statement keeps the grouped view under the 5 s cap; only an absent view (42P01) may fail.
+  const humanRows = [];
+  for (const c of courses.rows) {
+    linked.rows.push(...(await db.query(LINKED_VOICES_SQL, [c.course_code])).rows);
+    humanRows.push(...(await optionalRead(db, HUMAN_RECORDED_SQL, [c.course_code])).rows);
+  }
   return {
     courses: courses.rows, voices: voices.rows, roles: roles.rows,
-    humanRows: human.rows, linked: linked.rows,
+    humanRows, linked: linked.rows,
   };
 }
 

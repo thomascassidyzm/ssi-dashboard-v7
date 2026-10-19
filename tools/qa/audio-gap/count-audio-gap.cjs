@@ -68,6 +68,11 @@ const fs = require('fs');
 const path = require('path');
 const { Client } = require('pg');
 
+// Rows per statement. Every page re-reads and re-sorts the course's whole slot list to find its place, so the cost of
+// a course is (pages x course size): few big pages beat many small ones (200-row pages made 2,243 statements, 600 s).
+const PAGE_MAX = 4000;
+const PAGE_MIN = 200;
+
 const REPO = path.resolve(__dirname, '..', '..', '..');
 
 function databaseUrl() {
@@ -96,7 +101,7 @@ function args(argv) {
 
 /* One course and side per statement. Apply the course filter before every
  * scan/join; an estate-wide aggregate can spill and stall learner traffic. */
-function sql(side) {
+function sql(side, limit) {
   const textCol = side === 'known' ? 'known_text' : 'target_text';
   const linkCol = side === 'known' ? 'known_audio_id' : 'target1_audio_id';
   const role = side === 'known' ? 'known' : 'target1';
@@ -118,7 +123,7 @@ function sql(side) {
           where l.course_code = s.course_code and l.seed_number = s.seed_number
        )
     ),
-    batch as (select * from slots where (kind || ':' || row_id) > $2 order by (kind || ':' || row_id) limit 200),
+    batch as (select * from slots where (kind || ':' || row_id) > $2 order by (kind || ':' || row_id) limit ${limit}),
     j as (
       select s.course_code, s.kind, s.row_id, s.updated_at,
              s.txt is not null and btrim(s.txt) <> '' as authored,
@@ -148,6 +153,7 @@ async function main(argv = process.argv) {
   const c = new Client({ connectionString: databaseUrl(), statement_timeout: 5000,
     application_name: 'qa:audio-gap', connectionTimeoutMillis: 10000 });
   const courses = new Map();
+  const pageSizes = new Map();
   const sides = { known: { rows: [], query_ms: 0 }, target: { rows: [], query_ms: 0 } };
   // SET LOCAL pins the name and timeout to the actual backend through a transaction pooler.
   // Every batch commits independently, releasing its snapshot and backend between courses.
@@ -171,12 +177,20 @@ async function main(argv = process.argv) {
       for (const side of ['known', 'target']) {
         const t0 = Date.now();
         let cursor = '';
+        let page = pageSizes.get(course) || PAGE_MAX;
         while (true) {
           const started = Date.now();
-          const r = await read(() => c.query(sql(side), [course, cursor]));
+          let r;
+          try { r = await read(() => c.query(sql(side, page), [course, cursor])); }
+          catch (e) {
+            // The cap stays 5 s. A page that does not fit is retried at half the size, from the same cursor (the
+            // cancelled statement was rolled back), and the smaller size is kept for the rest of this course.
+            if (e.code === '57014' && page > PAGE_MIN) { page = Math.max(PAGE_MIN, Math.floor(page / 2)); pageSizes.set(course, page); continue; }
+            throw e;
+          }
           console.error(`qa:audio-gap course=${course} side=${side} statement_ms=${Date.now()-started}`);
           sides[side].rows.push(...r.rows);
-          if (!r.rows.length || r.rows.reduce((n,r) => n + r.scanned, 0) < 200) break;
+          if (!r.rows.length || r.rows.reduce((n,r) => n + r.scanned, 0) < page) break;
           cursor = r.rows.at(-1).cursor;
         }
         sides[side].query_ms += Date.now() - t0;
