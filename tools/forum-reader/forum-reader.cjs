@@ -103,7 +103,7 @@ function mentionsKai(p) {
 const CONTENT_SIGNAL = new RegExp([
   'wrong', 'error', 'mistake', 'typo', 'incorrect', 'correct', 'should(?: be|n.?t)', 'instead of',
   'translat', 'pronounc', 'mispronoun', 'spell', 'grammar', 'gender', 'plural', 'tense',
-  'audio', 'recording', 'voice', 'sounds? like', 'says?\\b', 'said', 'cut off', 'cuts off', 'missing',
+  'audio', 'recording', 'voice', 'accent', 'robot', 'narrat', 'speaker', 'intonation', 'sounds?\\b', 'says?\\b', 'said', 'cut off', 'cuts off', 'missing',
   'prompt', 'sentence', 'phrase', 'word', 'means?\\b', 'meaning', 'odd', 'weird', 'strange', 'confus',
   'not right', 'isn.?t right', 'doesn.?t make sense', 'mismatch', 'duplicate',
   'challenge', 'lesson', 'level \\d', 'belt', 'seed', 'lego',
@@ -136,6 +136,9 @@ function clip(s, n) { s = String(s || ''); return s.length > n ? s.slice(0, n) +
 // slip in the prompt still cannot put one in Kai's message. The keyword filter carries no app-only words.
 const ISSUES = ['used_before_taught', 'introduced_twice', 'wrong_translation', 'audio_or_voice', 'other']
 const NOT_CONTENT = 'app_not_content'
+// Kai, 2026-10-19 (reversing one part of the above): general remarks about how a voice SOUNDS, not tied to a
+// specific line, are kept — in their own low-key section, not for action, so patterns can be spotted.
+const VOICE_GENERAL = 'voice_general'
 
 function buildPrompt(posts, courses) {
   const courseLines = courses.map(c => `${c.code}: ${c.name}`).join('\n')
@@ -145,7 +148,9 @@ function buildPrompt(posts, courses) {
   ].join('\n')).join('\n\n')
   return `You are screening posts from the SaySomethingin learner forum for ONE purpose: finding learner reports of a PROBLEM IN COURSE CONTENT, in any course and any language — a word or structure used before it was taught, an item introduced twice, a wrong or unnatural translation, a prompt that doesn't match its answer, a wrong word, gender, tense or spelling, bad or mismatched audio of a phrase or item (mispronounced, cut off, wrong voice for that line, audio that doesn't match the text), a duplicated or mislabelled item.
 
-ONLY COURSE CONTENT. Do NOT report app, playback or interface complaints of any kind — stuck in a loop, repeating the same prompt, crashes, freezing, buttons, menus, login, sync, progress lost, speed settings, downloads, the vocabulary game or other games, notifications — nor general dislike of a voice that is not about a specific line, general questions, praise, chat, meet-ups, or requests for new languages. If a post is mainly an app complaint, leave it out. If you include one by mistake, give it issue "${NOT_CONTENT}" and it will be dropped.
+ONLY COURSE CONTENT. Do NOT report app, playback or interface complaints of any kind — stuck in a loop, repeating the same prompt, crashes, freezing, buttons, menus, login, sync, progress lost, speed settings, downloads, the vocabulary game or other games, notifications — nor general questions, praise, chat, meet-ups, or requests for new languages. If a post is mainly an app complaint, leave it out. If you include one by mistake, give it issue "${NOT_CONTENT}" and it will be dropped.
+
+GENERAL VOICE COMMENTS ARE KEPT, SEPARATELY. A learner remarking on how a voice sounds in general — robotic, flat, too fast, lovely accent, hard to understand, dislikes or likes a particular voice — NOT tied to one specific line, is not an app complaint and not a content problem: include it with issue "${VOICE_GENERAL}", a one-sentence "complaint" and the course_codes if the post makes them clear (otherwise []). The other fields may be left empty. A voice problem with a SPECIFIC line (mispronounced, cut off, wrong voice for that line) stays an ordinary content problem with issue "audio_or_voice".
 
 NEVER leave a post out because it seems to be about the legacy app or an older version of a course (Levels, Challenges, the old website, old lesson numbering), or because the learner's wording might not match the course word for word. The same underlying problem may exist in our current course, and we will check our course for it. Report the post and say whether it looks like the legacy app in "legacy_app".
 
@@ -181,12 +186,13 @@ function parseFindings(text) {
   if (a < 0 || b < a) throw new Error(`Sonnet answer had no JSON array: ${t.slice(0, 200)}`)
   const arr = JSON.parse(t.slice(a, b + 1))
   if (!Array.isArray(arr)) throw new Error('Sonnet answer was not an array')
+  // the code backstop: app complaints are dropped here whatever the prompt did; voice_general is kept (routed apart in run)
   return arr.filter(f => f && Number.isFinite(Number(f.post_id)) && f.issue !== NOT_CONTENT).map(f => ({
     post_id: Number(f.post_id),
     course_codes: [...new Set([...strList(f.course_codes, 3), ...(f.course_code ? [String(f.course_code)] : [])])].slice(0, 3),
     seed: Number.isFinite(Number(f.seed)) && f.seed !== null && f.seed !== '' ? Number(f.seed) : null,
     complaint: String(f.complaint || f.summary || ''),
-    issue: ISSUES.includes(f.issue) ? f.issue : 'other',
+    issue: ISSUES.includes(f.issue) || f.issue === VOICE_GENERAL ? f.issue : 'other',
     target_words: strList(f.target_words, 3),
     known_words: strList(f.known_words, 3),
     search_terms: strList(f.search_terms, 3),
@@ -379,8 +385,8 @@ const EXISTS = { yes: 'YES, the issue is in our course', no: 'NO, not in our cou
  * Plain text for a phone: per finding the course, the seed, the learner's complaint in one line, what we
  * found in our course (kept separate from whether the post was about the legacy app), and the post link.
  */
-function renderMessage({ dateLabel, mentions, findings, postsById, courseNames = new Map(), stats, gaps }) {
-  const L = [MESSAGE_FIRST_LINE, '', `Learner forum, ${dateLabel}: ${[mentions.length && `${mentions.length} mention${mentions.length === 1 ? '' : 's'} of you`, findings.length && `${findings.length} possible content problem${findings.length === 1 ? '' : 's'}`].filter(Boolean).join(', ')}.`]
+function renderMessage({ dateLabel, mentions, findings, voiceComments = [], postsById, courseNames = new Map(), stats, gaps }) {
+  const L = [MESSAGE_FIRST_LINE, '', `Learner forum, ${dateLabel}: ${[mentions.length && `${mentions.length} mention${mentions.length === 1 ? '' : 's'} of you`, findings.length && `${findings.length} possible content problem${findings.length === 1 ? '' : 's'}`, voiceComments.length && `${voiceComments.length} general voice comment${voiceComments.length === 1 ? '' : 's'} (no action)`].filter(Boolean).join(', ')}.`]
   if (mentions.length) {
     L.push('', 'MENTIONS OF YOU')
     for (const p of mentions) L.push('', `${p.username} in "${p.topic_title}": ${oneLine(p.raw, 280)}`, postUrl(p))
@@ -404,6 +410,14 @@ function renderMessage({ dateLabel, mentions, findings, postsById, courseNames =
       }
       L.push(postUrl(p))
     })
+  }
+  if (voiceComments.length) {
+    L.push('', 'VOICE COMMENTS (not for action; just to spot patterns)')
+    for (const f of voiceComments) {
+      const p = postsById.get(f.post_id)
+      if (!p) continue
+      L.push('', `${f.course_codes.length ? `${f.course_codes.map(c => courseNames.get(c) || c).join(' or ')}: ` : ''}${p.username}: ${oneLine(f.complaint, 200)}`, postUrl(p))
+    }
   }
   if (gaps.length) L.push('', 'GAPS IN THIS RUN', ...gaps.map(g => `- ${g}`))
   L.push('', `Read ${stats.read} posts (${stats.learner} by learners); ${stats.candidates} passed the keyword filter; ${stats.sonnet ? 'one Sonnet pass' : 'no Sonnet pass'}. Read only: nothing was fixed, posted to the forum or drafted.`)
@@ -503,6 +517,7 @@ async function run(opts, deps = {}) {
   // mentions go to Sonnet too, so a mention that is also an error report gets its Popty check
   const toScreen = [...candidates, ...mentions].sort((a, b) => a.id - b.id)
   let findings = []
+  let voiceComments = []
   let sonnet = false
   let courses = []
   if (toScreen.length && opts.llm) {
@@ -513,6 +528,8 @@ async function run(opts, deps = {}) {
     sonnet = true
     const known = new Set(toScreen.map(p => p.id))
     findings = findings.filter(f => known.has(f.post_id))
+    voiceComments = findings.filter(f => f.issue === VOICE_GENERAL)
+    findings = findings.filter(f => f.issue !== VOICE_GENERAL)
     const codes = new Set(courses.map(c => c.code))
     for (const f of findings) {
       if (f.checks) continue
@@ -528,12 +545,12 @@ async function run(opts, deps = {}) {
   const postsById = new Map(live.map(p => [p.id, p]))
   const dateLabel = now.toISOString().slice(0, 10)
   const stats = { read: posts.length, learner: learner.length, candidates: candidates.length, sonnet }
-  const result = { posts: posts.length, mentions: mentions.length, candidates: candidates.length, findings, gaps, highest, message: null, sent: null }
+  const result = { posts: posts.length, mentions: mentions.length, candidates: candidates.length, findings, voiceComments, gaps, highest, message: null, sent: null }
 
   // nothing on quiet days: no mention and no finding means no message at all
-  if (mentions.length || findings.length) {
+  if (mentions.length || findings.length || voiceComments.length) {
     const courseNames = new Map(courses.map(c => [c.code, c.name]))
-    result.message = renderMessage({ dateLabel, mentions, findings, postsById, courseNames, stats, gaps })
+    result.message = renderMessage({ dateLabel, mentions, findings, voiceComments, postsById, courseNames, stats, gaps })
     if (opts.dryRun) log(`dry run: message NOT sent (target ${JSON.stringify(noticeTarget())}, relay ${NOTICE_RELAY})`)
     else result.sent = await send(result.message)
   } else log('nothing for Kai today: no message')
@@ -552,6 +569,6 @@ if (require.main === module) {
   const opts = parseArgs(process.argv.slice(2))
   run(opts).then(r => {
     if (r.message && opts.dryRun) console.log(r.message)
-    console.log(JSON.stringify({ posts: r.posts, mentions: r.mentions, candidates: r.candidates, findings: r.findings.length, highest: r.highest, sent: r.sent, gaps: r.gaps }))
+    console.log(JSON.stringify({ posts: r.posts, mentions: r.mentions, candidates: r.candidates, findings: r.findings.length, voiceComments: r.voiceComments.length, highest: r.highest, sent: r.sent, gaps: r.gaps }))
   }).catch(e => { console.error(`[forum-reader] FAILED: ${e.stack || e.message}`); process.exit(1) })
 }

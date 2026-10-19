@@ -86,6 +86,24 @@ describe('the Sonnet answer', () => {
   })
 })
 
+describe('general voice comments (Kai, 2026-10-19)', () => {
+  it('keeps a general voice-sound post in its own low-key section, not the main list; app complaints stay dropped', async () => {
+    const voice = post({ id: 70, raw: 'The male voice sounds a bit robotic to me', topic_slug: 'v', topic_id: 3, post_number: 2 })
+    expect(triage([voice]).candidates.length).toBe(1)
+    const f = parseFindings('[{"post_id":70,"issue":"voice_general","complaint":"male voice sounds robotic","course_codes":[]},{"post_id":71,"issue":"app_not_content","complaint":"loop"}]')
+    expect(f.map(x => x.post_id)).toEqual([70])
+    expect(buildPrompt([voice], [])).toMatch(/voice_general/)
+    const state = path.join(fs.mkdtempSync(path.join(process.env.CS_SCRATCH || os.tmpdir(), 'fr-')), 'state.json')
+    const get = async url => url.includes('/api/courses') ? { courses: [] } : { latest_posts: url.includes('before') ? [] : [voice] }
+    const r = await run({ state, days: 1, llm: true, popty: true }, { get, screen: async () => f, send: async () => ({ ok: true }), log: () => {}, now: new Date('2026-10-19T07:00:00Z') })
+    expect(r.findings).toEqual([])
+    expect(r.message).toContain('VOICE COMMENTS (not for action')
+    expect(r.message).not.toContain('POSSIBLE CONTENT PROBLEMS')
+    expect(r.message).toContain('robotic')
+    expect(r.message).toContain('/t/v/3/2')
+  })
+})
+
 describe('the Popty scan for the underlying issue', () => {
   const codes = new Set(['spa_for_eng'])
   const course = [
