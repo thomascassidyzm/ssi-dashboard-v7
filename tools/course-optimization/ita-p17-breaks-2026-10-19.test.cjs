@@ -61,3 +61,11 @@ test('the plan never deletes or edits a LEGO and every held row names its questi
     if (e.do === 'hold') assert.ok(Object.values(PLAN.QUESTIONS).includes(e.why), e.id);
   }
 });
+
+test('K49 floor: two split rows are enough; no plain use is a note, not a fault (Kai refinement, 19 Oct)', () => {
+  assert.deepStrictEqual(T.k49Floor(0, 0), { fault: false });
+  assert.strictEqual(T.k49Floor(1, 5).fault, true);
+  assert.strictEqual(T.k49Floor(2, 0).fault, false);
+  assert.ok(T.k49Floor(2, 0).note);
+  assert.strictEqual(T.k49Floor(7, 1).fault, false);
+});

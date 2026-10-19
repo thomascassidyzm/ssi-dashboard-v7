@@ -5,7 +5,7 @@
 // The census (tools/qa/quality-census, check P17) flags candidates; a person read every one. Kai's rulings of 19 Oct 2026
 // (canon K49, K50, K51) decide what a candidate is:
 //   K49  words of any size INSIDE the LEGO, or the LEGO's words in another order, is NOT a break — but the basket must then
-//        carry enough of that pattern AND plain uses (default used here: ≥ 2 split/reordered, ≥ 2 plain).
+//        carry enough of that pattern (default used here: ≥ 2 split/reordered); plain uses where easy, never required.
 //   K50  another FORM of the LEGO's verb (arriverò → arrivare, hai fatto → abbia fatto, andrà → vada) is a BREAK; so is
 //        another ending of a noun/adjective (signora → signore, silenzioso → silenziosa).
 //   K51  a changed reflexive ending (prendersi → prendermi) is a BREAK for now.
@@ -68,6 +68,13 @@ function shape(legoTarget, phraseTarget) {
   return 'split';
 }
 const knownFold = (s) => fold(s).replace(/[^a-z' ]/g, ' ').replace(/\s+/g, ' ').trim();
+
+/** K49 practice floor (Kai, 19 Oct): a LEGO that is split or reordered in its basket needs at least 2 such rows. Plain uses are
+ *  welcome where easy but their absence is NOT a fault (Kai's refinement the same day) — reported as a note only. */
+function k49Floor(split, plain) {
+  if (!split) return { fault: false };
+  return { fault: split < 2, note: plain ? null : 'no plain use (not required; add one where easy)' };
+}
 
 // ── the course, as the census snapshot holds it ──────────────────────────────────────────────────────────────────
 function load(file) {
@@ -198,7 +205,9 @@ function problems(db, p, PLAN, audit = require('./audit-phrase-zut.cjs')) {
     const shapes = rows.map((r) => shape(l.target_text, r.target_text));
     const split = shapes.filter((s) => s === 'split').length, plain = shapes.filter((s) => s === 'plain').length, brk = shapes.filter((s) => s === 'break').length;
     const builds = rows.filter((r) => r.phrase_role === 'build').length, uses = rows.filter((r) => r.phrase_role === 'use').length;
-    if (split && (split < 2 || plain < 2)) bad.push(`K49 ${id}: ${split} split/reordered, ${plain} plain (floor 2 and 2)`);
+    const k = k49Floor(split, plain);
+    if (k.fault) bad.push(`K49 ${id}: ${split} split/reordered (floor 2)`);
+    if (k.note) notes.push(`K49 ${id}: ${k.note}`);
     if (uses < 2) bad.push(`P10 ${id}: ${uses} USE rows`);
     if (builds < 1) notes.push(`P5 ${id}: ${builds} BUILD rows`);
     if (brk) {
@@ -367,4 +376,4 @@ function verify(db, PLAN) {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
-module.exports = { unsaid, containsLego, shape, tokenSays, toks, plan, simulate, problems, knockOn, clipAsks, editOps, load, vocab };
+module.exports = { k49Floor, unsaid, containsLego, shape, tokenSays, toks, plan, simulate, problems, knockOn, clipAsks, editOps, load, vocab };
