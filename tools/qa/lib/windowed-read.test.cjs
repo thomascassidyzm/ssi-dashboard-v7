@@ -59,3 +59,22 @@ describe('windowedRead', () => {
     await expect(windowedRead(async () => { throw Object.assign(new Error('boom'), { code: '42P01' }) }, { column: 'seed_number' })).rejects.toThrow('boom')
   })
 })
+
+describe('batchedRead', () => {
+  const { batchedRead } = require('./windowed-read.cjs')
+  it('pays one statement per batch, halves a cancelled batch, and hands a lone scope to the fallback', async () => {
+    const items = Array.from({ length: 20 }, (_, i) => i)
+    const calls = []
+    const run = async (batch) => { calls.push(batch.length); if (batch.includes(3)) throw timeout(); return batch.length }
+    const single = async (i) => [`single:${i}`]
+    const out = await batchedRead(items, run, single, { size: 16 })
+    expect(out).toContain('single:3')
+    expect(out).toContain('single:2')
+    expect(out.filter((x) => typeof x === 'number').reduce((a, b) => a + b, 0)).toBe(18) // item 3 and its split-off neighbour 2 go to the fallback; every other item is counted exactly once
+    expect(calls[0]).toBe(16)
+    expect(calls.length).toBeLessThan(12)
+  })
+  it('re-throws a non-timeout error', async () => {
+    await expect(batchedRead([1, 2], async () => { throw new Error('boom') }, async () => [])).rejects.toThrow('boom')
+  })
+})

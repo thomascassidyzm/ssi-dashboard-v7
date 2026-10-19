@@ -147,37 +147,42 @@ describe('nightly connections', () => {
     })
   }
 
-  // Job #3 (2026-10-19): the nightly died on `column "dialect" does not exist` — it read language_recording_policy, which has no such
-  // column and is not the shape assess() consumes. The measured human recordings come from course_human_recorded_roles, per course.
-  it('reads human recordings from course_human_recorded_roles, one course per statement, and never selects a dialect column', async () => {
+  // 2026-10-19: the nightly died on `column "dialect" does not exist` — it read language_recording_policy, which has no such column and
+  // is not the shape assess() consumes. The measured human recordings come from course_human_recorded_roles.
+  it('reads human recordings from course_human_recorded_roles in course batches, and never selects a dialect column', async () => {
     const mod = require('./check-voice-variety.cjs')
     const seen = []
     const db = { query: async (sql, params) => {
       seen.push({ sql, params })
       if (/FROM courses/.test(sql)) return { rows: [{ course_code: 'a_for_eng' }, { course_code: 'b_for_eng' }] }
-      if (/course_human_recorded_roles/.test(sql)) return { rows: [{ course_code: params[0], role: 'target1', clips: 3, a_voice_id: 'v' }] }
+      if (/course_human_recorded_roles/.test(sql)) return { rows: params[0].map((c) => ({ course_code: c, role: 'target1', clips: 3, a_voice_id: 'v' })) }
       return { rows: [] }
     } }
     const out = await mod.load(db)
     expect(out.humanRows.map((r) => r.course_code)).toEqual(['a_for_eng', 'b_for_eng'])
+    expect(seen.filter((q) => /course_human_recorded_roles/.test(q.sql))).toHaveLength(1) // both courses in ONE statement
     expect(seen.some((q) => /language_recording_policy|dialect/.test(q.sql) && !/FROM courses/.test(q.sql))).toBe(false)
   })
 
-  // 2026-10-19 dry run: the one six-branch statement ran past the 5 s cap on a big course. Each branch is its own statement now and a
-  // cancelled one is re-run in seed windows; the sums must come out the same.
-  it('linkedVoices re-runs a cancelled branch in seed windows and sums to the same count', async () => {
+  // 2026-10-19 prod dry run: one statement per course per branch (~1,000 statements at ~0.6 s of round trips each) overran the 10 min
+  // run cap, and the single six-branch statement overran the 5 s one. Batches are halved on a cancel and a lone course is windowed.
+  it('linkedVoices batches courses, halves a cancelled batch, windows a lone course, and sums to the same count', async () => {
     const mod = require('./check-voice-variety.cjs')
-    let windowed = 0
-    const db = { query: async (sql) => {
-      const mine = /FROM course_practice_phrases/.test(sql) && /target1_audio_id/.test(sql)
-      const win = /seed_number (>=|is null)/.test(sql)
-      if (mine && !win) throw Object.assign(new Error('cancel'), { code: '57014' })
-      if (!mine) return { rows: [] }
-      windowed++
-      return { rows: [{ course_code: 'big_for_eng', role: 'target1', voice_id: 'v', n: '3' }] }
+    const codes = Array.from({ length: 20 }, (_, i) => `c${i}_for_eng`)
+    let statements = 0
+    const db = { query: async (sql, [list]) => {
+      if (!(/FROM course_practice_phrases/.test(sql) && /target1_audio_id/.test(sql))) return { rows: [] }
+      statements++
+      const windowed = /seed_number (>=|is null)/.test(sql)
+      if (!windowed && list.includes('c3_for_eng') && list.length > 1) throw Object.assign(new Error('cancel'), { code: '57014' })
+      if (!windowed && list.includes('c3_for_eng')) throw Object.assign(new Error('cancel'), { code: '57014' })
+      return { rows: list.filter((c) => !windowed || c === 'c3_for_eng').map((c) => ({ course_code: c, role: 'target1', voice_id: 'v', n: '3' })) }
     } }
-    const rows = await mod.linkedVoices(db, 'big_for_eng')
-    expect(rows).toEqual([{ course_code: 'big_for_eng', role: 'target1', voice_id: 'v', n: 3 * windowed }])
-    expect(windowed).toBeGreaterThan(5)
+    const rows = await mod.linkedVoices(db, codes)
+    const by = Object.fromEntries(rows.map((r) => [r.course_code, r.n]))
+    expect(Object.keys(by)).toHaveLength(20)
+    expect(by.c0_for_eng).toBe(3)
+    expect(by.c3_for_eng).toBeGreaterThan(3) // summed over its windows
+    expect(statements).toBeLessThan(60)       // not one-per-course-per-window for the whole estate
   })
 })

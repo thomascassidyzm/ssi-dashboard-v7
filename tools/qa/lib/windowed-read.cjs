@@ -59,4 +59,28 @@ async function windowedRead(run, { column = 'seed_number', memo = null, key = ''
   return out;
 }
 
-module.exports = { windowedRead, predicateOf, baseWindows, isTimeout };
+/**
+ * batchedRead — many small scopes per statement, so the 4 round trips a bounded statement costs (BEGIN, SET, query, COMMIT) are paid
+ * once per batch, not once per course. On prod that overhead is ~0.6 s a statement and a per-course walk of ~130 courses x 7
+ * statements blew the 10-minute run cap. A batch the backend cancels is halved; a single item that is still cancelled falls through
+ * to `single(item)` (the caller's windowedRead). Results are returned flat, in no particular order.
+ * @param {any[]} items  scopes (course codes)
+ * @param {(items: any[]) => Promise<any>} run  one capped statement over a batch
+ * @param {(item: any) => Promise<any[]>} single  the per-scope fallback, itself returning an array of results
+ */
+async function batchedRead(items, run, single, { size = 16 } = {}) {
+  const out = [];
+  async function go(batch) {
+    if (batch.length === 1) { out.push(...await single(batch[0])); return; }
+    try { out.push(await run(batch)); }
+    catch (e) {
+      if (!isTimeout(e)) throw e;
+      const mid = Math.ceil(batch.length / 2);
+      await go(batch.slice(0, mid)); await go(batch.slice(mid));
+    }
+  }
+  for (let i = 0; i < items.length; i += size) await go(items.slice(i, i + size));
+  return out;
+}
+
+module.exports = { batchedRead, windowedRead, predicateOf, baseWindows, isTimeout };

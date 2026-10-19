@@ -76,26 +76,34 @@ const LINKED_BRANCHES = Object.freeze([
 ]);
 const linkedBranchSql = (table, role, pred) => `
   SELECT t.course_code, '${role}' AS role, ca.voice_id, count(*)::bigint AS n
-    FROM ${table} t JOIN course_audio ca ON ca.id = t.${role}_audio_id WHERE t.course_code = $1${pred ? ` AND ${pred}` : ''} GROUP BY 1,3`;
+    FROM ${table} t JOIN course_audio ca ON ca.id = t.${role}_audio_id WHERE t.course_code = ANY($1)${pred ? ` AND ${pred}` : ''} GROUP BY 1,3`;
 
 const timedOutWhole = new Set();
-/** One course's (role, voice) → linked slot count, summed across branches and windows. */
-async function linkedVoices(db, courseCode) {
-  const { windowedRead } = require('../lib/windowed-read.cjs');
+/**
+ * (course, role, voice) → linked slot count for a list of courses, summed across branches and windows. Courses go in batches (the
+ * statement overhead is paid per batch); a cancelled batch is halved, and one course still cancelled is windowed by seed_number.
+ */
+async function linkedVoices(db, courseCodes) {
+  const { windowedRead, batchedRead } = require('../lib/windowed-read.cjs');
   const merged = new Map();
-  for (const [table, role] of LINKED_BRANCHES) {
-    const parts = await windowedRead((pred) => db.query(linkedBranchSql(table, role, pred), [courseCode]),
-      { column: 't.seed_number', memo: timedOutWhole, key: `${courseCode}|${table}|${role}` });
-    for (const { rows } of parts) for (const r of rows) {
+  const add = (rows) => {
+    for (const r of rows) {
       const k = `${r.course_code}|${r.role}|${r.voice_id}`;
       const m = merged.get(k);
       if (m) m.n += Number(r.n); else merged.set(k, { course_code: r.course_code, role: r.role, voice_id: r.voice_id, n: Number(r.n) });
     }
+  };
+  for (const [table, role] of LINKED_BRANCHES) {
+    const results = await batchedRead(courseCodes,
+      (codes) => db.query(linkedBranchSql(table, role, null), [codes]),
+      async (code) => windowedRead((pred) => db.query(linkedBranchSql(table, role, pred), [[code]]),
+        { column: 't.seed_number', memo: timedOutWhole, key: `${code}|${table}|${role}` }));
+    for (const r of results) add(r.rows);
   }
   return [...merged.values()];
 }
 
-const HUMAN_RECORDED_SQL = `SELECT course_code, role, target_lang, known_lang, clips, a_voice_id FROM course_human_recorded_roles WHERE course_code = $1`;
+const HUMAN_RECORDED_SQL = `SELECT course_code, role, target_lang, known_lang, clips, a_voice_id FROM course_human_recorded_roles WHERE course_code = ANY($1)`;
 
 async function load(db) {
   const [courses, voices, roles] = await Promise.all([
@@ -103,15 +111,15 @@ async function load(db) {
     db.query('SELECT voice_id, display_name, human_name, gender, tts_engine, tts_locale, is_active, languages, type FROM voices'),
     db.query('SELECT language, gender, rank, voice_id, slot FROM voice_language_roles'),
   ]);
-  const linked = { rows: [] };
+  const codes = courses.rows.map((c) => c.course_code);
+  const linked = { rows: await linkedVoices(db, codes) };
   // humanRows are the MEASURED human recordings (human-recorded-roles.cjs reads course_code/role/clips/a_voice_id). This used to
   // select `dialect` from language_recording_policy, which has no such column and is not that shape; the old silent catch hid it.
-  // One course per statement keeps the grouped view under the 5 s cap; only an absent view (42P01) may fail.
+  // Batched and halved on a cancel like linkedVoices; only an absent view (42P01) may fail.
+  const { batchedRead } = require('../lib/windowed-read.cjs');
   const humanRows = [];
-  for (const c of courses.rows) {
-    linked.rows.push(...await linkedVoices(db, c.course_code));
-    humanRows.push(...(await optionalRead(db, HUMAN_RECORDED_SQL, [c.course_code])).rows);
-  }
+  for (const r of await batchedRead(codes, (batch) => optionalRead(db, HUMAN_RECORDED_SQL, [batch]),
+    async (code) => [await optionalRead(db, HUMAN_RECORDED_SQL, [[code]])])) humanRows.push(...r.rows);
   return {
     courses: courses.rows, voices: voices.rows, roles: roles.rows,
     humanRows, linked: linked.rows,
