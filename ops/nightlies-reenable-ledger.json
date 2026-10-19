@@ -1,0 +1,35 @@
+{
+  "recorded_at": "2026-10-19T09:27:00Z",
+  "job": 53,
+  "status": "blocked_not_armed",
+  "assumption": "Tonight means the next UTC night: 2026-10-20.",
+  "observed": {
+    "base_commit": "e51b86101",
+    "system_timers_disabled": ["ssi-sibling-identity", "ssi-voice-audit", "ssi-audio-gap", "ssi-voice-variety"],
+    "cs_db_watchdog_timer": "active",
+    "cs_db_freeze_recorder_service": "active",
+    "production_queries_by_this_job": 0,
+    "system_or_user_units_changed_by_this_job": false
+  },
+  "gap": "No existing guard found providing the required 15-second pg_stat_activity and audio proxy sampling with automatic timer disable. command-surface/ops/db-freeze-recorder.cjs samples activity every five seconds but has no proxy check or disable action. The normal DB watchdog is not this guard. No one-shot guard was armed and no nightly was enabled.",
+  "next_watson": {
+    "prerequisite": "Provide a reviewed, landed guard before enabling sibling-identity; do not run new database code from an unmerged branch. No daytime production dry runs.",
+    "guard": {
+      "manager": "system",
+      "window_utc": "04:20:00-04:40:00",
+      "cadence_seconds": 15,
+      "samples": ["pg_stat_activity", "https://saysomethingin.app HTTP status and latency"],
+      "trip": "Disable ssi-sibling-identity.timer automatically on proxy latency over two seconds or HTTP 504; retain timestamped evidence.",
+      "watchdog": "Verify cs-db-watchdog.timer remains active before arming.",
+      "schedule": "One dated run only; do not start the QA service immediately. Existing sibling timer adds up to 120 seconds jitter and one minute accuracy; account for this explicitly."
+    },
+    "sequence": [
+      {"earliest_night_utc": "2026-10-20", "enable_only": "ssi-sibling-identity.timer", "slot_utc": "04:20"},
+      {"earliest_night_utc": "2026-10-21", "add": "ssi-voice-audit.timer", "slot_utc": "05:35", "requires": "Previous night clean"},
+      {"earliest_night_utc": "2026-10-22", "add": "ssi-audio-gap.timer", "slot_utc": "03:30", "requires": "Previous night clean"},
+      {"earliest_night_utc": "2026-10-23", "add": "ssi-voice-variety.timer", "slot_utc": "05:05", "requires": "Previous night clean"}
+    ],
+    "clean": "Completed QA run and complete monitoring evidence without proxy latency over two seconds, HTTP 504, watchdog intervention or monitoring failure. Missing evidence is not clean. Shift all later dates if a stage is delayed or fails.",
+    "user_timers": "Do not enable any user-level timers."
+  }
+}
