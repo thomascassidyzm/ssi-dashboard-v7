@@ -63,35 +63,37 @@ const TARGET_ROLES = Object.freeze(['target1', 'target2']);
 /**
  * Which voices are actually LINKED to a course's target-side content rows.
  *
- * One grouped aggregate per content table rather than a row walk: the estate
- * carries ~2.6M course_audio rows and several other jobs share this Supabase
- * project, so this asks Postgres for the distinct (course, role, voice) triples
- * and nothing else.
- *
- * Keep the six-branch shape. Job #672 tried collecting the slot references first
- * and joining course_audio once: live, that ran ~7 min against this shape's
- * ~2-3 min on the nights it completed (2026-10-02..14).
+ * One grouped aggregate per (content table, target role) rather than a row walk: the estate carries ~2.6M course_audio rows and
+ * several other jobs share this Supabase project, so this asks Postgres for the distinct (course, role, voice) triples and nothing
+ * else. The six branches used to be ONE statement (job #672: collecting slot references first and joining once ran ~7 min); a big
+ * course's single statement then ran past the 5 s cap, so each branch is its own statement and, only if it is still cancelled, is
+ * re-run in seed_number windows (tools/qa/lib/windowed-read.cjs). Counts are additive, so the merge below loses nothing.
  */
-const LINKED_VOICES_SQL = `
-  SELECT course_code, role, voice_id, sum(n)::bigint AS n FROM (
-    SELECT t.course_code, 'target1' AS role, ca.voice_id, count(*) AS n
-      FROM course_seeds t JOIN course_audio ca ON ca.id = t.target1_audio_id WHERE t.course_code = $1 GROUP BY 1,3
-    UNION ALL
-    SELECT t.course_code, 'target2', ca.voice_id, count(*)
-      FROM course_seeds t JOIN course_audio ca ON ca.id = t.target2_audio_id WHERE t.course_code = $1 GROUP BY 1,3
-    UNION ALL
-    SELECT t.course_code, 'target1', ca.voice_id, count(*)
-      FROM course_legos t JOIN course_audio ca ON ca.id = t.target1_audio_id WHERE t.course_code = $1 GROUP BY 1,3
-    UNION ALL
-    SELECT t.course_code, 'target2', ca.voice_id, count(*)
-      FROM course_legos t JOIN course_audio ca ON ca.id = t.target2_audio_id WHERE t.course_code = $1 GROUP BY 1,3
-    UNION ALL
-    SELECT t.course_code, 'target1', ca.voice_id, count(*)
-      FROM course_practice_phrases t JOIN course_audio ca ON ca.id = t.target1_audio_id WHERE t.course_code = $1 GROUP BY 1,3
-    UNION ALL
-    SELECT t.course_code, 'target2', ca.voice_id, count(*)
-      FROM course_practice_phrases t JOIN course_audio ca ON ca.id = t.target2_audio_id WHERE t.course_code = $1 GROUP BY 1,3
-  ) x GROUP BY 1,2,3`;
+const LINKED_BRANCHES = Object.freeze([
+  ['course_seeds', 'target1'], ['course_seeds', 'target2'],
+  ['course_legos', 'target1'], ['course_legos', 'target2'],
+  ['course_practice_phrases', 'target1'], ['course_practice_phrases', 'target2'],
+]);
+const linkedBranchSql = (table, role, pred) => `
+  SELECT t.course_code, '${role}' AS role, ca.voice_id, count(*)::bigint AS n
+    FROM ${table} t JOIN course_audio ca ON ca.id = t.${role}_audio_id WHERE t.course_code = $1${pred ? ` AND ${pred}` : ''} GROUP BY 1,3`;
+
+const timedOutWhole = new Set();
+/** One course's (role, voice) → linked slot count, summed across branches and windows. */
+async function linkedVoices(db, courseCode) {
+  const { windowedRead } = require('../lib/windowed-read.cjs');
+  const merged = new Map();
+  for (const [table, role] of LINKED_BRANCHES) {
+    const parts = await windowedRead((pred) => db.query(linkedBranchSql(table, role, pred), [courseCode]),
+      { column: 't.seed_number', memo: timedOutWhole, key: `${courseCode}|${table}|${role}` });
+    for (const { rows } of parts) for (const r of rows) {
+      const k = `${r.course_code}|${r.role}|${r.voice_id}`;
+      const m = merged.get(k);
+      if (m) m.n += Number(r.n); else merged.set(k, { course_code: r.course_code, role: r.role, voice_id: r.voice_id, n: Number(r.n) });
+    }
+  }
+  return [...merged.values()];
+}
 
 const HUMAN_RECORDED_SQL = `SELECT course_code, role, target_lang, known_lang, clips, a_voice_id FROM course_human_recorded_roles WHERE course_code = $1`;
 
@@ -107,7 +109,7 @@ async function load(db) {
   // One course per statement keeps the grouped view under the 5 s cap; only an absent view (42P01) may fail.
   const humanRows = [];
   for (const c of courses.rows) {
-    linked.rows.push(...(await db.query(LINKED_VOICES_SQL, [c.course_code])).rows);
+    linked.rows.push(...await linkedVoices(db, c.course_code));
     humanRows.push(...(await optionalRead(db, HUMAN_RECORDED_SQL, [c.course_code])).rows);
   }
   return {
@@ -309,5 +311,5 @@ function calibrateSilently(result) {
 if (require.main === module) {
   main().catch((e) => { console.error(e.message); process.exit(2); });
 } else {
-  module.exports = { main, load, LINKED_VOICES_SQL, APP_NAME, assess, buildWorld, sentence, tally, TARGET_ROLES };
+  module.exports = { main, load, linkedVoices, linkedBranchSql, APP_NAME, assess, buildWorld, sentence, tally, TARGET_ROLES };
 }

@@ -162,4 +162,22 @@ describe('nightly connections', () => {
     expect(out.humanRows.map((r) => r.course_code)).toEqual(['a_for_eng', 'b_for_eng'])
     expect(seen.some((q) => /language_recording_policy|dialect/.test(q.sql) && !/FROM courses/.test(q.sql))).toBe(false)
   })
+
+  // 2026-10-19 dry run: the one six-branch statement ran past the 5 s cap on a big course. Each branch is its own statement now and a
+  // cancelled one is re-run in seed windows; the sums must come out the same.
+  it('linkedVoices re-runs a cancelled branch in seed windows and sums to the same count', async () => {
+    const mod = require('./check-voice-variety.cjs')
+    let windowed = 0
+    const db = { query: async (sql) => {
+      const mine = /FROM course_practice_phrases/.test(sql) && /target1_audio_id/.test(sql)
+      const win = /seed_number (>=|is null)/.test(sql)
+      if (mine && !win) throw Object.assign(new Error('cancel'), { code: '57014' })
+      if (!mine) return { rows: [] }
+      windowed++
+      return { rows: [{ course_code: 'big_for_eng', role: 'target1', voice_id: 'v', n: '3' }] }
+    } }
+    const rows = await mod.linkedVoices(db, 'big_for_eng')
+    expect(rows).toEqual([{ course_code: 'big_for_eng', role: 'target1', voice_id: 'v', n: 3 * windowed }])
+    expect(windowed).toBeGreaterThan(5)
+  })
 })
