@@ -38,12 +38,12 @@ console.log('nightly caps wiring pass');
       if (/from courses/.test(sql)) return {rows:[{course_code:'large'}]};
       if (!/with slots/.test(sql)) return {rows:[]};
       const limit = Number(sql.match(/limit (\d+)/)[1]);
-      assert.equal(limit, 8000);
+      assert.equal(limit, 30000);
       assert.match(sql,/\(kind \|\| ':' \|\| row_id\) > \$2/);
       assert.equal(values[0], 'large');
       const i = pages++ % 3;
-      assert.equal(values[1], ['', 'phrase:8000', 'phrase:16000'][i]);
-      return {rows:[{course_code:'large', kind:'phrase', cursor:['phrase:8000','phrase:16000','phrase:16050'][i], scanned:i===2?50:limit,
+      assert.equal(values[1], ['', 'phrase:30000', 'phrase:60000'][i]);
+      return {rows:[{course_code:'large', kind:'phrase', cursor:['phrase:30000','phrase:60000','phrase:60050'][i], scanned:i===2?50:limit,
         total:i===2?50:limit, missing:1, missing_relinkable:1, missing_unrendered:0, stale_text:0, ts_stale:0}]};
     }
   }
@@ -53,8 +53,8 @@ console.log('nightly caps wiring pass');
   });
   const snap = await module.exports.main(['node','count','--no-save','--quiet']);
   assert.equal(pages,6);
-  assert.equal(snap.courses[0].known.total,16050);
-  assert.equal(snap.courses[0].known.by_kind.phrase.total,16050);
+  assert.equal(snap.courses[0].known.total,60050);
+  assert.equal(snap.courses[0].known.by_kind.phrase.total,60050);
   assert.equal(snap.courses[0].known.missing,3);
   console.log('rollback, serialisation and large-course pagination pass');
 });
@@ -71,7 +71,7 @@ test('audio-gap halves its page on a cancelled statement instead of raising the 
       if (!/with slots/.test(sql)) return {rows:[]};
       const limit = Number(sql.match(/limit (\d+)/)[1]);
       limits.push(limit);
-      if (limit > 1000) throw Object.assign(new Error('timeout'), {code:'57014'});
+      if (limit > 3750) throw Object.assign(new Error('timeout'), {code:'57014'});
       return {rows:[{course_code:'big', kind:'phrase', cursor:'phrase:9', scanned:10, total:10, missing:0, missing_relinkable:0, missing_unrendered:0, stale_text:0, ts_stale:0}]};
     }
   }
@@ -80,7 +80,7 @@ test('audio-gap halves its page on a cancelled statement instead of raising the 
     __dirname:path.dirname(filename), __filename:filename, process:{env:{DATABASE_URL:'postgres://unused'}}, console,
   });
   const snap = await module.exports.main(['node','count','--no-save','--quiet']);
-  assert.deepEqual(limits.slice(0,4), [8000, 4000, 2000, 1000]); // known: 8000 x, 4000 x, 2000 x, 1000 ok; the next side/course starts at the learned 1000
+  assert.deepEqual(limits.slice(0,4), [30000, 15000, 7500, 3750]); // known: 30000 x, 15000 x, 7500 x, 3750 ok; the next side of the course starts at the learned 3750
   assert.equal(snap.courses[0].known.total, 10);
   for (const file of ['tools/qa/sibling-identity/check.cjs', 'tools/audio/voice-audit.cjs']) {
     assert.match(fs.readFileSync(path.join(root,file),'utf8'), /windowedRead\(/, file);

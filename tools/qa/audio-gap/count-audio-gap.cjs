@@ -69,8 +69,8 @@ const path = require('path');
 const { Client } = require('pg');
 
 // Rows per statement. Every page re-reads and re-sorts the course's whole slot list to find its place, so the cost of
-// a course is (pages x course size): few big pages beat many small ones (200-row pages made 2,243 statements, 600 s).
-const PAGE_MAX = 8000;
+// a course is (pages x course size): few big pages beat many small ones (200-row pages made 2,243 statements and 600 s of statement time).
+const PAGE_MAX = 30000;
 const PAGE_MIN = 200;
 
 const REPO = path.resolve(__dirname, '..', '..', '..');
