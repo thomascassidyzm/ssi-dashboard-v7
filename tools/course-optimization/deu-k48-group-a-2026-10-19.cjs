@@ -209,7 +209,8 @@ function problems(db, p, only, audit = require('./audit-phrase-zut.cjs')) {
       if (r.phrase_role === 'build') builds++; else if (r.phrase_role === 'use') uses++;
       if (!containsLego(r, L)) bad.push(`P17 ${id}: does not contain "${L.known} | ${L.target}" — ${r.known_text} | ${r.target_text}`);
       if (spec.slip && spec.slip.test(r.target_text)) bad.push(`K48 ${id}: main-clause order — ${r.target_text}`);
-      const ut = tw.untaughtWords(r.target_text, tKeys, COURSE);
+      const isSeed = fold(r.target_text) === fold(seed.target_text); // the seed defines what is taught (Kai 19 Oct)
+      const ut = isSeed ? [] : tw.untaughtWords(r.target_text, tKeys, COURSE);
       if (ut.length) bad.push(`P1 ${id}: untaught German ${ut.join(', ')} — ${r.target_text}`);
       const uk = tw.untaughtWords(r.known_text, kKeys, 'eng_for_deu');
       if (uk.length) notes.push(`K1 ${id}: English not taught (hand-read; free class allowed): ${uk.join(', ')} — ${r.known_text}`);
