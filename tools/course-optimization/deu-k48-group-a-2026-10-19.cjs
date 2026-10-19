@@ -219,7 +219,9 @@ function problems(db, p, only, audit = require('./audit-phrase-zut.cjs')) {
     }
     if (builds < 3) bad.push(`P5 ${spec.lego}: ${builds} BUILD rows (floor 3)`);
     if (uses < 2) bad.push(`P10 ${spec.lego}: ${uses} USE rows`);
-    if (!rows.some((r) => fold(r.target_text) === fold(seed.target_text) && foldKnown(r.known_text) === foldKnown(seed.known_text))) bad.push(`P26 ${spec.lego}: the seed sentence is not in the basket`);
+    // P26: the seed sentence is a row under a NEW LEGO of its seed (this one or a sibling)
+    const newOfSeed = new Set(post.legos.filter((l) => l.seed_number === spec.seed && l.is_new !== false).map((l) => l.lego_id));
+    if (!post.phrases.some((r) => r.phrase_role !== 'component' && newOfSeed.has(sid(r.id).slice(0, 8)) && fold(r.target_text) === fold(seed.target_text) && foldKnown(r.known_text) === foldKnown(seed.known_text))) bad.push(`P26 ${spec.lego}: the seed sentence is in no played basket of seed ${spec.seed}`);
   }
   // K2: no NEW strict ZUT group course-wide
   const groups = (d) => new Map(audit.auditRows(d).bidirectional.violationsStrict.map((v) => [v.known_norm, v]));
