@@ -1,0 +1,36 @@
+{
+  "recorded_at": "2026-10-19T07:17:04Z",
+  "host": "watson-1",
+  "decision": "Use the authorised disable-timer fallback for all four failed production nightlies pending reviewed query fixes.",
+  "action": "systemctl disable --now ssi-audio-gap.timer ssi-sibling-identity.timer ssi-voice-variety.timer ssi-voice-audit.timer",
+  "verification": {
+    "all_four_timers": {
+      "ActiveState": "inactive",
+      "UnitFileState": "disabled",
+      "NextElapseUSecRealtime": ""
+    },
+    "all_four_services": {
+      "running": false,
+      "TimeoutStartUSec": "10min"
+    },
+    "audio_gap_service": "failed state retained from previous run; not running",
+    "debut_practice_timer": "enabled",
+    "round_index_timer": "enabled",
+    "nightly_checkout": "/home/tomcassidy/SSi/popty-qa-nightly",
+    "nightly_checkout_clean": true,
+    "nightly_checkout_head": "4bd29cedbfeb8715e7052ddcb3dcc761aa7d895c",
+    "remote_main_at_verification": "4bd29cedbfeb8715e7052ddcb3dcc761aa7d895c"
+  },
+  "caps_changed": false,
+  "scripts_changed": false,
+  "database_contacted": false,
+  "new_production_dry_runs": [],
+  "prior_rollout_only": {
+    "source": "/home/tomcassidy/ssi-evidence/ssi-dashboard-v7/nightly-rollout-953/",
+    "audio_gap": { "wall_seconds": 600.101, "result": "overall timeout after 48 courses started" },
+    "sibling_identity": { "wall_seconds": 17.34, "result": "statement timeout" },
+    "voice_variety": { "wall_seconds": 0.73, "result": "missing dialect column" },
+    "voice_audit": { "wall_seconds": 10.24, "result": "statement timeout" }
+  },
+  "explicit_gap": "No query fixes or fresh capped production timings. These four QA checks will not run overnight until repaired and explicitly re-enabled. Existing rollout timings above are historical failures, not new validation."
+}
