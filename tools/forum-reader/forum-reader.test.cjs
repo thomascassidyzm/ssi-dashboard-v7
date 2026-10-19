@@ -263,3 +263,25 @@ describe('a failed Sonnet pass', () => {
     expect(JSON.parse(fs.readFileSync(state, 'utf8')).lastPostId).toBe(5)
   })
 })
+
+describe('backlog retention', () => {
+  it('does not advance past posts it has not read when the page cap is reached', async () => {
+    const state = path.join(fs.mkdtempSync(path.join(process.env.CS_SCRATCH, 'fr-backlog-')), 'state.json')
+    fs.writeFileSync(state, JSON.stringify({ lastPostId: 5 }))
+    // 3,001 new posts: the newest 3,000 fill all 60 pages; post 6 is never fetched.
+    const posts = Array.from({ length: 3001 }, (_, i) => post({ id: 3006 - i }))
+    const get = async url => {
+      const before = Number(new URL(url).searchParams.get('before')) || Infinity
+      return { latest_posts: posts.filter(p => p.id < before).slice(0, 50) }
+    }
+    try {
+      await run({ state, llm: true, popty: true }, {
+        get, screen: async () => [], listCourses: async () => [],
+        send: async () => ({ ok: true }), log: () => {},
+      })
+    } catch {
+      // Refusing an incomplete run is also safe, provided the cursor is retained.
+    }
+    expect(JSON.parse(fs.readFileSync(state, 'utf8')).lastPostId).toBe(5)
+  }, 30000)
+})
