@@ -100,7 +100,7 @@ const selected = (only) => PLAN.APPLY.filter((p) => !only || only.includes(p.leg
 function plan(db, only) {
   const NEVER = ['course_code', 'known_audio_id', 'target1_audio_id', 'target2_audio_id', 'target1_duration_ms', 'target2_duration_ms', 'presentation_audio_id',
     'last_edit_event_id', 'created_at', 'updated_at', 'version', 'qa_checked', 'decomposition', 'decomposition_course_version', 'display_tiling', 'display_tiling_version', 'target_syllable_count'];
-  const out = { legoEdits: [], phraseUpdates: [], inserts: [], seedUnapprove: [], skipped: [] };
+  const out = { legoEdits: [], phraseUpdates: [], inserts: [], seedUnapprove: [], compUnlinks: [], skipped: [] };
   const seedsTouched = new Set();
   const legoEdit = (spec, isNeighbour) => {
     const lego = db.legos.find((l) => l.lego_id === spec.lego);
@@ -114,6 +114,8 @@ function plan(db, only) {
   for (const spec of selected(only)) {
     legoEdit(spec, false);
     for (const nb of spec.neighbours || []) legoEdit(nb, true);
+    // O13: components are never introduced; a grown LEGO leaves its components' historic intro links lying — unlink them.
+    for (const c of db.phrases.filter((p) => sid(p.id).startsWith(spec.lego) && p.phrase_role === 'component' && p.presentation_audio_id)) out.compUnlinks.push({ id: sid(c.id), was: c.presentation_audio_id });
     const live = new Map(db.phrases.filter((p) => sid(p.id).startsWith(spec.lego) && p.phrase_role !== 'component').map((p) => [sid(p.id).slice(spec.lego.length), p]));
     const proto = [...live.values()].find((p) => p.phrase_role === 'use') || [...live.values()][0];
     const named = new Set(spec.basket.map((b) => b[0]));
@@ -221,7 +223,7 @@ function problems(db, p, only, audit = require('./audit-phrase-zut.cjs')) {
   }
   // K2: no NEW strict ZUT group course-wide
   const groups = (d) => new Map(audit.auditRows(d).bidirectional.violationsStrict.map((v) => [v.known_norm, v]));
-  const b4 = groups(simulate(db, { legoEdits: [], phraseUpdates: [], inserts: [], seedUnapprove: [] })), af = groups(post);
+  const b4 = groups(simulate(db, { legoEdits: [], phraseUpdates: [], inserts: [], seedUnapprove: [], compUnlinks: [] })), af = groups(post);
   for (const [k, v] of af) if (!b4.has(k)) bad.push(`K2 ZUT: new strict group "${k}" ${JSON.stringify(v).slice(0, 300)}`);
   return { list: bad, notes, zut: [b4.size, af.size] };
 }
@@ -262,6 +264,7 @@ function clipAsks(p) {
 function editOps(p, clips) {
   const get = (role, text, legoId) => { const a = clips.get(slotKey(role, text, legoId)); if (!a) throw new Error(`no clip for ${role} "${text}"`); return a; };
   const ops = [], links = [];
+  for (const c of p.compUnlinks || []) links.push({ op: 'audio.link', target: 'phrase', phrase_id: P(c.id), slot: 'presentation', audio_id: null });
   for (const s of p.seedUnapprove) ops.push({ op: 'seed.update', seed_number: s.seed_number, set: { approved_at: null }, expect: { approved_at: s.approved_at } });
   for (const e of p.legoEdits) {
     ops.push({ op: 'lego.update', lego_id: e.id, set: { known_text: e.after.known, target_text: e.after.target, components: e.after.components }, expect: { known_text: e.before.known, target_text: e.before.target } });
@@ -306,7 +309,7 @@ async function main() {
   if (mode === 'knock') { const h = knockOn(db, only); for (const x of h) console.log(`${x.lego}\t${x.id}\t${x.side}\t${x.known} | ${x.target}`); return console.log(`${h.length} rows to read by hand`); }
   const p = plan(db, only);
   const g = problems(db, p, only);
-  console.log(`plan: ${p.legoEdits.length} LEGO edits, ${p.phraseUpdates.length} rows updated, ${p.inserts.length} inserted, ${p.seedUnapprove.length} seeds unapproved, ${p.skipped.length} skipped; ZUT strict ${g.zut[0]} → ${g.zut[1]}`);
+  console.log(`plan: ${p.legoEdits.length} LEGO edits, ${p.compUnlinks.length} component intro unlinks, ${p.phraseUpdates.length} rows updated, ${p.inserts.length} inserted, ${p.seedUnapprove.length} seeds unapproved, ${p.skipped.length} skipped; ZUT strict ${g.zut[0]} → ${g.zut[1]}`);
   for (const n of g.notes) console.log('  note', n);
   for (const b of g.list) console.log('  PROBLEM', b);
   if (g.list.length) process.exitCode = 1;
