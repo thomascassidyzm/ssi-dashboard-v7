@@ -118,9 +118,14 @@ function positionOf(ix, rowId) {
  */
 function checkRewrite(ix, prop, pending = []) {
   const out = { row: prop.row, problems: [], notes: [] };
-  const at = positionOf(ix, prop.row);
+  // A REHOME names the LEGO the row would move under (prop.lego): it is then judged at
+  // that LEGO's position and must hold that LEGO whole instead of its current one.
+  const r0 = ix.rows.get(prop.row) || null;
+  const home = prop.lego ? ix.legos.get(prop.lego) : null;
+  if (prop.lego && !home) { out.problems.push('rehome LEGO not found: ' + prop.lego); return out; }
+  const at = home ? home.at : positionOf(ix, prop.row);
   if (at == null) { out.problems.push('row id not found in live data'); return out; }
-  const r = ix.rows.get(prop.row) || null;
+  const r = home ? { ...(r0 || { role: 'use', en: '', fi: '' }), lego: prop.lego, role: r0 && r0.role === 'component' ? 'use' : (r0 ? r0.role : 'use') } : r0;
   const legoId = r ? r.lego : prop.row;
   const lego = legoId ? ix.legos.get(legoId) : null;
   // 1. forms
@@ -217,9 +222,9 @@ function findForms(ix, rowId, subs) {
 }
 
 /** Rows (course-wide) whose Finnish contains the given token run — to see how a form is used. */
-function usages(ix, fi, limit = 12) {
+function usages(ix, fi, limit = 12, side = 'fi') {
   const need = tokens(fi); const out = [];
-  for (const r of ix.rows.values()) if (containsRun(tokens(r.fi), need)) { out.push(`${r.id}: ${r.en} | ${r.fi}`); if (out.length >= limit) break; }
+  for (const r of ix.rows.values()) if (containsRun(tokens(r[side]), need)) { out.push(`${r.id}: ${r.en} | ${r.fi}`); if (out.length >= limit) break; }
   return out;
 }
 
@@ -232,8 +237,9 @@ if (require.main === module) {
   ctx     <live.json> <rowId>                 seed, its LEGOs, the row's LEGO siblings
   at      <live.json> <rowId> <form...>       is each exact form taught at that row?
   find    <live.json> <rowId> <substr...>     taught forms containing a substring (OK = available there)
-  uses    <live.json> "<finnish run>" [n]     rows that contain a Finnish token run
-  try     <live.json> <rowId> "<en>" "<fi>"   full check of one rewrite (forms, LEGO whole, dupes, ZUT)
+  uses    <live.json> "<run>" [n] [--en]      rows containing a Finnish (or, with --en, English) token run
+  try     <live.json> <rowId> "<en>" "<fi>" [--lego S0xxxLyy]   full check of one rewrite (forms,
+          LEGO whole, dupes, ZUT); --lego judges it as REHOMED under that LEGO instead
   cascade <live.json> <S0200|S0203L02> "<fi>" ["<en>"]   what a seed/LEGO change breaks downstream
   check   <live.json> <proposals.json>        check a list [{row,en,fi}] incl. collisions among them
   index   <live.json> <form...>               where each form is first taught/heard/tiled`);
@@ -254,17 +260,19 @@ if (require.main === module) {
     const [row, ...subs] = rest;
     for (const f of findForms(ix, row, subs)) console.log(`${f.available ? 'OK ' : 'later'}\t${f.form}\t${f.by}`);
   } else if (cmd === 'uses') {
-    console.log(usages(ix, rest[0], Number(rest[1]) || 12).join('\n'));
+    const en = rest.includes('--en'); const a = rest.filter(x => x !== '--en');
+    console.log(usages(ix, a[0], Number(a[1]) || 12, en ? 'en' : 'fi').join('\n'));
   } else if (cmd === 'try') {
-    const [row, en, fi] = rest;
-    const r = checkRewrite(ix, { row, en, fi });
+    const li = rest.indexOf('--lego'); const lego = li >= 0 ? rest[li + 1] : undefined;
+    const [row, en, fi] = li >= 0 ? rest.slice(0, li).concat(rest.slice(li + 2)) : rest;
+    const r = checkRewrite(ix, { row, en, fi, lego });
     console.log((r.ok ? 'PASS' : 'FAIL: ' + r.problems.join('; ')) + (r.notes.length ? '  [note: ' + r.notes.join('; ') + ']' : ''));
   } else if (cmd === 'cascade') {
     const [id, fi, en] = rest;
     console.log(JSON.stringify(cascade(JSON.parse(fs.readFileSync(file, 'utf8')), id, fi, en), null, 1));
   } else if (cmd === 'check') {
     const props = JSON.parse(fs.readFileSync(rest[0], 'utf8'));
-    const res = props.map(p => checkRewrite(ix, p, props));
+    const res = props.map(p => ({ ...checkRewrite(ix, p, props), id: p.id }));
     console.log(JSON.stringify(res, null, 1));
     console.error(`${res.filter(r => r.ok).length}/${res.length} pass`);
   }
