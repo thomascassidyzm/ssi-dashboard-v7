@@ -70,7 +70,7 @@ const { Client } = require('pg');
 
 // Rows per statement. Every page re-reads and re-sorts the course's whole slot list to find its place, so the cost of
 // a course is (pages x course size): few big pages beat many small ones (200-row pages made 2,243 statements, 600 s).
-const PAGE_MAX = 4000;
+const PAGE_MAX = 8000;
 const PAGE_MIN = 200;
 
 const REPO = path.resolve(__dirname, '..', '..', '..');
@@ -153,7 +153,7 @@ async function main(argv = process.argv) {
   const c = new Client({ connectionString: databaseUrl(), statement_timeout: 5000,
     application_name: 'qa:audio-gap', connectionTimeoutMillis: 10000 });
   const courses = new Map();
-  const pageSizes = new Map();
+  let learnedPage = PAGE_MAX; // a cancelled page size is not tried again on the next course
   const sides = { known: { rows: [], query_ms: 0 }, target: { rows: [], query_ms: 0 } };
   // SET LOCAL pins the name and timeout to the actual backend through a transaction pooler.
   // Every batch commits independently, releasing its snapshot and backend between courses.
@@ -177,15 +177,15 @@ async function main(argv = process.argv) {
       for (const side of ['known', 'target']) {
         const t0 = Date.now();
         let cursor = '';
-        let page = pageSizes.get(course) || PAGE_MAX;
+        let page = learnedPage;
         while (true) {
           const started = Date.now();
           let r;
           try { r = await read(() => c.query(sql(side, page), [course, cursor])); }
           catch (e) {
             // The cap stays 5 s. A page that does not fit is retried at half the size, from the same cursor (the
-            // cancelled statement was rolled back), and the smaller size is kept for the rest of this course.
-            if (e.code === '57014' && page > PAGE_MIN) { page = Math.max(PAGE_MIN, Math.floor(page / 2)); pageSizes.set(course, page); continue; }
+            // cancelled statement was rolled back), and the smaller size is kept for every later course.
+            if (e.code === '57014' && page > PAGE_MIN) { page = Math.max(PAGE_MIN, Math.floor(page / 2)); learnedPage = page; continue; }
             throw e;
           }
           console.error(`qa:audio-gap course=${course} side=${side} statement_ms=${Date.now()-started}`);
