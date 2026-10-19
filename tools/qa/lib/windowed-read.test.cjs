@@ -70,11 +70,29 @@ describe('batchedRead', () => {
     const out = await batchedRead(items, run, single, { size: 16 })
     expect(out).toContain('single:3')
     expect(out).toContain('single:2')
-    expect(out.filter((x) => typeof x === 'number').reduce((a, b) => a + b, 0)).toBe(18) // item 3 and its split-off neighbour 2 go to the fallback; every other item is counted exactly once
+    const counted = out.filter((x) => typeof x === 'number').reduce((a, b) => a + b, 0)
+    expect(counted + out.filter((x) => typeof x === 'string').length).toBe(20) // every item exactly once: in a batch result or handed to the fallback
     expect(calls[0]).toBe(16)
-    expect(calls.length).toBeLessThan(12)
   })
   it('re-throws a non-timeout error', async () => {
     await expect(batchedRead([1, 2], async () => { throw new Error('boom') }, async () => [])).rejects.toThrow('boom')
+  })
+})
+
+describe('batchedRead learns its batch size', () => {
+  const { batchedRead } = require('./windowed-read.cjs')
+  it('does not repeat a cancelled batch size, and shares what it learned through `state`', async () => {
+    const items = Array.from({ length: 64 }, (_, i) => i)
+    const state = { size: 16 }
+    const calls = []
+    // any batch over 4 items is "too big for the cap"
+    const run = async (batch) => { calls.push(batch.length); if (batch.length > 4) throw timeout(); return batch.length }
+    await batchedRead(items, run, async () => ['s'], { state })
+    const cancelled = calls.filter((n) => n > 4).length
+    expect(cancelled).toBeLessThanOrEqual(6) // 16 -> 8 -> 4, probing upward only below sizes that already cost a cancel
+    expect(state.size).toBeLessThanOrEqual(4)
+    const second = []
+    await batchedRead(items, async (b) => { second.push(b.length); return 1 }, async () => ['s'], { state })
+    expect(second[0]).toBeLessThanOrEqual(4) // the next branch starts at the learned size, not at 16
   })
 })

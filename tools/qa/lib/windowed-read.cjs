@@ -61,25 +61,39 @@ async function windowedRead(run, { column = 'seed_number', memo = null, key = ''
 
 /**
  * batchedRead — many small scopes per statement, so the 4 round trips a bounded statement costs (BEGIN, SET, query, COMMIT) are paid
- * once per batch, not once per course. On prod that overhead is ~0.6 s a statement and a per-course walk of ~130 courses x 7
- * statements blew the 10-minute run cap. A batch the backend cancels is halved; a single item that is still cancelled falls through
- * to `single(item)` (the caller's windowedRead). Results are returned flat, in no particular order.
+ * once per batch, not once per course. On prod that overhead is ~0.3-0.6 s a statement and a per-course walk of ~130 courses x 7
+ * statements blew the 10-minute run cap. The batch size LEARNS: a cancelled batch is halved and the next batches start at the
+ * smaller size (a cancel costs the whole 5 s, so repeating the mistake is the expensive part); a batch that finished in under 40 %
+ * of `budgetMs` grows the next one by half, but never past a size that has already been cancelled. A single item that is still cancelled falls through to `single(item)` (the caller's
+ * windowedRead). Results are returned flat, in no particular order.
  * @param {any[]} items  scopes (course codes)
  * @param {(items: any[]) => Promise<any>} run  one capped statement over a batch
  * @param {(item: any) => Promise<any[]>} single  the per-scope fallback, itself returning an array of results
+ * @param {{size?: number, max?: number, budgetMs?: number, state?: {size: number}}} opts  `state` is shared by calls that cost alike (e.g. both roles of one table) so what one learned the next starts with
  */
-async function batchedRead(items, run, single, { size = 16 } = {}) {
+async function batchedRead(items, run, single, { size = 16, max = 32, budgetMs = 3000, state = null } = {}) {
+  const st = state || { size };
+  if (!st.size) st.size = size;
   const out = [];
   async function go(batch) {
     if (batch.length === 1) { out.push(...await single(batch[0])); return; }
+    const t0 = Date.now();
     try { out.push(await run(batch)); }
     catch (e) {
       if (!isTimeout(e)) throw e;
+      st.size = Math.max(1, Math.floor(batch.length / 2));
+      st.ceiling = Math.min(st.ceiling || max, Math.max(1, batch.length - 1)); // never grow back to a size that already cost a cancel
       const mid = Math.ceil(batch.length / 2);
       await go(batch.slice(0, mid)); await go(batch.slice(mid));
+      return;
     }
+    if (Date.now() - t0 < budgetMs * 0.4) st.size = Math.min(st.ceiling || max, max, Math.ceil(st.size * 1.5));
   }
-  for (let i = 0; i < items.length; i += size) await go(items.slice(i, i + size));
+  for (let i = 0; i < items.length;) {
+    const batch = items.slice(i, i + st.size);
+    i += batch.length;
+    await go(batch);
+  }
   return out;
 }
 

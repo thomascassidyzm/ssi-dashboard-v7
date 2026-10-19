@@ -99,11 +99,13 @@ async function linkedVoices(db, courseCodes) {
     try { const r = await fn(...a); console.error(`qa:voice-variety:linked-voices ${label} ok ms=${Date.now() - t0}`); return r; }
     catch (e) { if (e.code === '57014') console.error(`qa:voice-variety:linked-voices ${label} CANCELLED ms=${Date.now() - t0}`); throw e; }
   };
+  const sizes = {}; // batch size learned per table; both roles of a table cost alike
   for (const [table, role] of LINKED_BRANCHES) {
     const results = await batchedRead(courseCodes,
       timed(`${table}.${role} batch`, (codes) => db.query(linkedBranchSql(table, role, null), [codes])),
       async (code) => windowedRead(timed(`${table}.${role} ${code}`, (pred) => db.query(linkedBranchSql(table, role, pred), [[code]])),
-        { column: 't.seed_number', memo: timedOutWhole, key: `${code}|${table}|${role}` }));
+        { column: 't.seed_number', memo: timedOutWhole, key: `${code}|${table}` }),
+      { state: (sizes[table] ||= { size: table === 'course_practice_phrases' ? 4 : 16 }) });
     for (const r of results) add(r.rows);
   }
   return [...merged.values()];
