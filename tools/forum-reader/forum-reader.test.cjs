@@ -67,6 +67,20 @@ describe('the Sonnet answer', () => {
     expect(p).not.toMatch(/may not be listed/)
   })
 
+  it('drops anything Sonnet labels an app complaint, and the prompt rules app/playback/UI out', () => {
+    const f = parseFindings('[{"post_id":1,"issue":"app_not_content","complaint":"stuck in a loop"},{"post_id":2,"issue":"wrong_translation","complaint":"wrong word"}]')
+    expect(f.map(x => x.post_id)).toEqual([2])
+    const p = buildPrompt([post({ raw: 'x' })], [])
+    expect(p).toMatch(/ONLY COURSE CONTENT/)
+    expect(p).toMatch(/stuck in a loop/)
+    expect(p).toMatch(/app_not_content/)
+  })
+
+  it('the keyword filter does not keep a post just for saying bug or glitch', () => {
+    expect(triage([post({ raw: 'Found a bug, the app glitches on my phone' })]).candidates).toEqual([])
+    expect(triage([post({ raw: 'I think this translation is off' })]).candidates.length).toBe(1)
+  })
+
   it('takes an old single course_code answer as a one-item list', () => {
     expect(parseFindings('[{"post_id":1,"course_code":"cym_n_for_eng"}]')[0].course_codes).toEqual(['cym_n_for_eng'])
   })

@@ -105,7 +105,7 @@ const CONTENT_SIGNAL = new RegExp([
   'translat', 'pronounc', 'mispronoun', 'spell', 'grammar', 'gender', 'plural', 'tense',
   'audio', 'recording', 'voice', 'sounds? like', 'says?\\b', 'said', 'cut off', 'cuts off', 'missing',
   'prompt', 'sentence', 'phrase', 'word', 'means?\\b', 'meaning', 'odd', 'weird', 'strange', 'confus',
-  'bug', 'glitch', 'not right', 'isn.?t right', 'doesn.?t make sense', 'mismatch', 'duplicate',
+  'not right', 'isn.?t right', 'doesn.?t make sense', 'mismatch', 'duplicate',
   'challenge', 'lesson', 'level \\d', 'belt', 'seed', 'lego',
   'french', 'spanish', 'german', 'italian', 'portug', 'dutch', 'irish', 'gaelic', 'cornish', 'manx',
   'hindi', 'urdu', 'arabic', 'chinese', 'mandarin', 'cantonese', 'japanese', 'korean', 'swedish',
@@ -130,7 +130,12 @@ function triage(posts) {
 // ── the one Sonnet pass ────────────────────────────────────────────────────────────────────────
 function clip(s, n) { s = String(s || ''); return s.length > n ? s.slice(0, n) + ' …[truncated]' : s }
 
+// COURSE CONTENT ONLY (Kai, 2026-10-19): wording, words used before taught, items introduced twice, wrong
+// translations, bad or mismatched audio of a phrase. App, playback and UI complaints (loops, crashes, buttons,
+// sync, games) are not reported at all; Sonnet labels them NOT_CONTENT and parseFindings drops them, so a
+// slip in the prompt still cannot put one in Kai's message. The keyword filter carries no app-only words.
 const ISSUES = ['used_before_taught', 'introduced_twice', 'wrong_translation', 'audio_or_voice', 'other']
+const NOT_CONTENT = 'app_not_content'
 
 function buildPrompt(posts, courses) {
   const courseLines = courses.map(c => `${c.code}: ${c.name}`).join('\n')
@@ -138,11 +143,13 @@ function buildPrompt(posts, courses) {
     `=== post ${p.id} | topic "${p.topic_title}" | by ${p.username} | ${p.created_at.slice(0, 10)}`,
     clip(p.raw, 2500),
   ].join('\n')).join('\n\n')
-  return `You are screening posts from the SaySomethingin learner forum for ONE purpose: finding learner reports of a PROBLEM IN COURSE CONTENT, in any course and any language — a word or structure used before it was taught, an item introduced twice, a wrong or unnatural translation, a prompt that doesn't match its answer, a wrong word, gender, tense or spelling, a mispronounced/cut-off/wrong-voice recording, a duplicated or mislabelled item. Not content problems: app bugs (progress, login, playback, speed, navigation), general questions, praise, chat, meet-ups, and requests for new languages.
+  return `You are screening posts from the SaySomethingin learner forum for ONE purpose: finding learner reports of a PROBLEM IN COURSE CONTENT, in any course and any language — a word or structure used before it was taught, an item introduced twice, a wrong or unnatural translation, a prompt that doesn't match its answer, a wrong word, gender, tense or spelling, bad or mismatched audio of a phrase or item (mispronounced, cut off, wrong voice for that line, audio that doesn't match the text), a duplicated or mislabelled item.
+
+ONLY COURSE CONTENT. Do NOT report app, playback or interface complaints of any kind — stuck in a loop, repeating the same prompt, crashes, freezing, buttons, menus, login, sync, progress lost, speed settings, downloads, the vocabulary game or other games, notifications — nor general dislike of a voice that is not about a specific line, general questions, praise, chat, meet-ups, or requests for new languages. If a post is mainly an app complaint, leave it out. If you include one by mistake, give it issue "${NOT_CONTENT}" and it will be dropped.
 
 NEVER leave a post out because it seems to be about the legacy app or an older version of a course (Levels, Challenges, the old website, old lesson numbering), or because the learner's wording might not match the course word for word. The same underlying problem may exist in our current course, and we will check our course for it. Report the post and say whether it looks like the legacy app in "legacy_app".
 
-Be inclusive: if a post plausibly reports a content problem, include it, even if vague.
+Be inclusive about content: if a post plausibly reports a content problem, include it, even if vague.
 
 Popty course codes (known language last, e.g. hin_for_eng = Hindi for English speakers; cym_n_for_eng / cym_s_for_eng = North / South Welsh for English speakers):
 ${courseLines}
@@ -174,7 +181,7 @@ function parseFindings(text) {
   if (a < 0 || b < a) throw new Error(`Sonnet answer had no JSON array: ${t.slice(0, 200)}`)
   const arr = JSON.parse(t.slice(a, b + 1))
   if (!Array.isArray(arr)) throw new Error('Sonnet answer was not an array')
-  return arr.filter(f => f && Number.isFinite(Number(f.post_id))).map(f => ({
+  return arr.filter(f => f && Number.isFinite(Number(f.post_id)) && f.issue !== NOT_CONTENT).map(f => ({
     post_id: Number(f.post_id),
     course_codes: [...new Set([...strList(f.course_codes, 3), ...(f.course_code ? [String(f.course_code)] : [])])].slice(0, 3),
     seed: Number.isFinite(Number(f.seed)) && f.seed !== null && f.seed !== '' ? Number(f.seed) : null,
