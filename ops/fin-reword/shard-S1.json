@@ -1,0 +1,581 @@
+[
+ {
+  "id": "F369",
+  "row": "S0124",
+  "row_as_written": "S124",
+  "seed": 124,
+  "level": "seed",
+  "conf": "low",
+  "cls": "english-mismatch",
+  "en": "I thought that that was a good idea",
+  "fi": "Mun mielestä se oli hyvä idea",
+  "proofread_fix_fi": "",
+  "proofread_fix_en": "I think that that was a good idea",
+  "reason": "'mun mielestä' is present opinion; 'I thought' (past) would be 'musta tuntui / mä ajattelin'. Probably deliberate, so English alignment only if Kai wants it",
+  "auto": [
+   "row id not found in live data"
+  ],
+  "found": true
+ },
+ {
+  "id": "F158",
+  "row": "S0127",
+  "row_as_written": "S127",
+  "seed": 127,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "that isn't why I wanted to see you",
+  "fi": "Se ei oo se, miksi mä halusin nähdä sut",
+  "proofread_fix_fi": "Se ei oo syy, miksi mä halusin nähdä sut",
+  "proofread_fix_en": "",
+  "reason": "'se ei oo se, miksi' is an English calque; Finnish says 'se ei oo syy, miksi…' (or 'en mä sen takia halunnut…', which would force partitive 'sua' and break the LEGO); cascades to S0127L01U01",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: syy"
+  ],
+  "found": true
+ },
+ {
+  "id": "F373",
+  "row": "S0143L02U04",
+  "row_as_written": "S0143L02U04",
+  "seed": 143,
+  "level": "lego",
+  "conf": "low",
+  "cls": "english-mismatch",
+  "en": "it's a good matter that we're friends",
+  "fi": "on hyvä asia, että me ollaan kavereita",
+  "proofread_fix_fi": "",
+  "proofread_fix_en": "it's a good thing that we're friends",
+  "reason": "English 'a good matter' (also B02, U02 'it is a good matter', U03 'the only matter I remember') is unnatural; 'hyvä asia' = 'a good thing', but that collides with 'hyvä juttu' (ZUT), so a better English gloss is Kai's call",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F165",
+  "row": "S0151",
+  "row_as_written": "S151",
+  "seed": 151,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "that wasn't what I was hoping would happen",
+  "fi": "Se ei ollut mitä mä toivoin tapahtuvan",
+  "proofread_fix_fi": "Se ei ollut sitä, mitä mä toivoin tapahtuvan",
+  "proofread_fix_en": "",
+  "reason": "same calque as seed 159: predicate 'mitä' clause needs correlative 'sitä'; cascades to S0151L02U01/U02/U03/U05",
+  "auto": [
+   "row id not found in live data"
+  ],
+  "found": true
+ },
+ {
+  "id": "F008",
+  "row": "S0155L02",
+  "row_as_written": "S0155L02",
+  "seed": 155,
+  "level": "lego",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "a few minutes",
+  "fi": "muutamaa minuuttia",
+  "proofread_fix_fi": "muutaman minuutin",
+  "proofread_fix_en": "",
+  "reason": "duration adverbial with odottaa/puhua is accusative 'muutaman minuutin' (cf. S0155L01U04 'odottaa hetken', and Kai's koko päivän ruling); 'muutamaa minuuttia' is wrong in affirmative rows U02/U03/U04/U05/B02/B03 and in the seed (S0155 'mua ei haittaa odottaa muutamaa minuuttia'); components C01/C02 become muutaman/minuutin",
+  "auto": [
+   "form(s) not found earlier in the course: minuutin"
+  ],
+  "found": true
+ },
+ {
+  "id": "F175",
+  "row": "S0159",
+  "row_as_written": "S159",
+  "seed": 159,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "that isn't what I'm trying to say",
+  "fi": "Se ei oo, mitä mä yritän sanoa",
+  "proofread_fix_fi": "Se ei oo sitä, mitä mä yritän sanoa",
+  "proofread_fix_en": "",
+  "reason": "English calque: a 'mitä' clause as predicate needs the correlative 'sitä' (se ei oo sitä, mitä…); without it reads non-native",
+  "auto": [
+   "row id not found in live data"
+  ],
+  "found": true
+ },
+ {
+  "id": "F176",
+  "row": "S0162L01B01",
+  "row_as_written": "S0162L01B01",
+  "seed": 162,
+  "level": "lego",
+  "conf": "medium",
+  "cls": "other",
+  "en": "what do you think",
+  "fi": "mitä mieltä",
+  "proofread_fix_fi": "mitä mieltä sä oot",
+  "proofread_fix_en": "",
+  "reason": "ZUT: the same known 'what do you think' maps to 'mitä mieltä' (LEGO, B01) and 'mitä mieltä sä oot' (B02); 'mitä mieltä' alone is not a usable answer to 'what do you think'",
+  "auto": [
+   "fix duplicates S0162L01B02"
+  ],
+  "found": true
+ },
+ {
+  "id": "F188",
+  "row": "S0187",
+  "row_as_written": "S0187 (seed) / S0187L01U01",
+  "seed": 187,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "I'm happy so far",
+  "fi": "Mä oon onnellinen tähän asti",
+  "proofread_fix_fi": "Mä oon ollut tyytyväinen tähän asti",
+  "proofread_fix_en": "I've been happy so far",
+  "reason": "'tähän asti' (up to now) wants the perfect; 'oon onnellinen tähän asti' is stilted, and 'onnellinen' (happy in life) is the wrong 'happy' for being satisfied with progress",
+  "auto": [
+   "row id not found in live data"
+  ],
+  "found": true
+ },
+ {
+  "id": "F191",
+  "row": "S0188",
+  "row_as_written": "S0188 (seed) / S0188L01U01",
+  "seed": 188,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "so I don't need to change",
+  "fi": "Joten mun ei tarvii muuttaa",
+  "proofread_fix_fi": "Joten mun ei tarvii muuttaa mitään",
+  "proofread_fix_en": "so I don't need to change anything",
+  "reason": "intransitive 'muuttaa' without object means 'move house'; 'change (anything)' needs an object (or 'muuttua' = change oneself)",
+  "auto": [
+   "row id not found in live data"
+  ],
+  "found": true
+ },
+ {
+  "id": "F023",
+  "row": "S0200",
+  "row_as_written": "S0200 (seed) / S0200L04U01",
+  "seed": 200,
+  "level": "seed",
+  "conf": "high",
+  "cls": "genitive/accusative",
+  "en": "they say they want to make sure that we finish everything in time",
+  "fi": "Ne sanoo, että ne haluu varmistaa, että me lopetetaan kaiken ajoissa",
+  "proofread_fix_fi": "Ne sanoo, että ne haluu varmistaa, että me saadaan kaikki valmiiksi ajoissa",
+  "proofread_fix_en": "",
+  "reason": "with the passive ('me lopetetaan') the total object is nominative 'kaikki', never 'kaiken'; also 'lopettaa' = stop/quit, so 'finish everything' is 'saada kaikki valmiiksi' (minimal fix: 'me lopetetaan kaikki')",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: saadaan, valmiiksi"
+  ],
+  "found": true
+ },
+ {
+  "id": "F024",
+  "row": "S0200L04B03",
+  "row_as_written": "S0200L04B03",
+  "seed": 200,
+  "level": "lego",
+  "conf": "high",
+  "cls": "genitive/accusative",
+  "en": "we finish all of it",
+  "fi": "me lopetetaan kaiken",
+  "proofread_fix_fi": "me lopetetaan kaikki",
+  "proofread_fix_en": "",
+  "reason": "passive takes nominative total object",
+  "auto": [
+   "fix drops LEGO \"kaiken\" (S0200L04) — rehome or delete the row"
+  ],
+  "found": true
+ },
+ {
+  "id": "F025",
+  "row": "S0200L04U03",
+  "row_as_written": "S0200L04U03",
+  "seed": 200,
+  "level": "lego",
+  "conf": "high",
+  "cls": "genitive/accusative",
+  "en": "we finish all of it in time",
+  "fi": "me lopetetaan kaiken ajoissa",
+  "proofread_fix_fi": "me lopetetaan kaikki ajoissa",
+  "proofread_fix_en": "",
+  "reason": "passive takes nominative total object",
+  "auto": [
+   "fix drops LEGO \"kaiken\" (S0200L04) — rehome or delete the row"
+  ],
+  "found": true
+ },
+ {
+  "id": "F201",
+  "row": "S0201",
+  "row_as_written": "S0201 (seed) / S0201L01",
+  "seed": 201,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "we wanted to know what was going to happen",
+  "fi": "Me haluttiin tietää, mitä tulisi tapahtumaan",
+  "proofread_fix_fi": "Me haluttiin tietää, mitä tapahtuisi",
+  "proofread_fix_en": "",
+  "reason": "'tulla tapahtumaan' future is a stiff written anglicism, especially in conditional and in colloquial register; natural: 'mitä tapahtuisi' / 'mitä oli tapahtumassa'",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: tapahtuisi"
+  ],
+  "found": true
+ },
+ {
+  "id": "F203",
+  "row": "S0203L02",
+  "row_as_written": "S0203L02 (LEGO)",
+  "seed": 203,
+  "level": "lego",
+  "conf": "medium",
+  "cls": "english-mismatch",
+  "en": "if I asked",
+  "fi": "mä pyytäisin",
+  "proofread_fix_fi": "jos mä pyytäisin",
+  "proofread_fix_en": "I would ask",
+  "reason": "LEGO English has 'if' but the Finnish has no 'jos' (B01 itself glosses it 'I would ask')",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F206",
+  "row": "S0234",
+  "row_as_written": "S0234 (seed) / S0234L04U01",
+  "seed": 234,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "word-order",
+  "en": "I met someone last night who works with your brother",
+  "fi": "Mä tapasin jonkun viime yönä, joka tekee töitä sun veljen kanssa",
+  "proofread_fix_fi": "Mä tapasin eilen illalla jonkun, joka tekee töitä sun veljen kanssa",
+  "proofread_fix_en": "",
+  "reason": "relative clause split from its antecedent by the time adverbial is clumsy in Finnish; also 'last night' socially is 'eilen illalla', 'viime yönä' = during the night",
+  "auto": [
+   "row id not found in live data"
+  ],
+  "found": true
+ },
+ {
+  "id": "F207",
+  "row": "S0238",
+  "row_as_written": "S0238 (seed) / S0238L01U01",
+  "seed": 238,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "agreement",
+  "en": "he wanted you to tell me yesterday",
+  "fi": "Se halusi, että sä kerrot mulle eilen",
+  "proofread_fix_fi": "Se halusi, että sä kertoisit mulle eilen",
+  "proofread_fix_en": "",
+  "reason": "present 'kerrot' with 'eilen' is a tense clash; past-anchored wish needs the conditional (acceptable colloquial present only works with future time, as in S237)",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: kertoisit"
+  ],
+  "found": true
+ },
+ {
+  "id": "F035",
+  "row": "S0243L02",
+  "row_as_written": "S0243L02",
+  "seed": 243,
+  "level": "lego",
+  "conf": "high",
+  "cls": "unnatural",
+  "en": "to eat",
+  "fi": "syötäväksi",
+  "proofread_fix_fi": "syötävää (LEGO); rows: jotain syötävää; seed: Mä aion pyytää samaa ruokaa / Mä aion tilata saman",
+  "proofread_fix_en": "",
+  "reason": "'something to eat' is 'jotain syötävää' (partitive of the passive participle); 'jotain syötäväksi' and 'samaa asiaa syötäväksi' are not idiomatic Finnish. Affects S0243L02B02,B03,U01-U05 and S0271L01U04 (haluaisitko sä jotain syötäväksi?).",
+  "auto": [
+   "form(s) not found earlier in the course: syötävää, (lego), rows, seed, ruokaa, /, tilata, saman"
+  ],
+  "found": true
+ },
+ {
+  "id": "F208",
+  "row": "S0246",
+  "row_as_written": "S0246 seed / S0246L01U01",
+  "seed": 246,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "other",
+  "en": "I wanted her to help you but she was too busy",
+  "fi": "Mä halusin, että se auttaa sua, mutta se oli liian kiireinen",
+  "proofread_fix_fi": "Mä halusin, että se auttais sua, mutta se oli liian kiireinen",
+  "proofread_fix_en": "",
+  "reason": "After past 'halusin' the että-clause wants the conditional (auttais/auttaisi); present 'auttaa' reads as a tense error.",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: auttais"
+  ],
+  "found": true
+ },
+ {
+  "id": "F214",
+  "row": "S0277",
+  "row_as_written": "S0277 seed / S0277L01U01",
+  "seed": 277,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "yes I've got an important meeting early next week",
+  "fi": "Joo, mulla on tärkeä kokous aikaisin ensi viikolla",
+  "proofread_fix_fi": "Joo, mulla on tärkeä kokous heti ensi viikon alussa / ensi viikon alussa",
+  "proofread_fix_en": "",
+  "reason": "'aikaisin ensi viikolla' is an English calque; 'early next week' is 'ensi viikon alussa'.",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: alussa, /"
+  ],
+  "found": true
+ },
+ {
+  "id": "F215",
+  "row": "S0278",
+  "row_as_written": "S0278 seed / S0278L01U01",
+  "seed": 278,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "did you have to finish everything last night?",
+  "fi": "Pitikö sun lopettaa kaikki viime yönä?",
+  "proofread_fix_fi": "Pitikö sun saada kaikki valmiiksi eilen illalla?",
+  "proofread_fix_en": "",
+  "reason": "'lopettaa kaikki' reads as 'stop/quit everything', not 'finish (complete) everything'; also 'viime yönä' = during the night, 'last night' (evening) is usually 'eilen illalla'.",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: saada, valmiiksi"
+  ],
+  "found": true
+ },
+ {
+  "id": "F218",
+  "row": "S0295",
+  "row_as_written": "S0295 seed / S0295L03U01",
+  "seed": 295,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "I didn't say that I wanted to finish in a day",
+  "fi": "Mä en sanonut, että mä halusin lopettaa päivässä",
+  "proofread_fix_fi": "Mä en sanonut, että mä halusin saada sen valmiiksi päivässä",
+  "proofread_fix_en": "",
+  "reason": "'lopettaa' = stop/quit; 'finish (a task) in a day' is 'saada valmiiksi / tehdä päivässä'. Also affects L03B02, U02-U05 and S0295L02B03/U01.",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: saada, valmiiksi"
+  ],
+  "found": true
+ },
+ {
+  "id": "F219",
+  "row": "S0300L02",
+  "row_as_written": "S0300L02",
+  "seed": 300,
+  "level": "lego",
+  "conf": "medium",
+  "cls": "english-mismatch",
+  "en": "to influence",
+  "fi": "vaikuttaa",
+  "proofread_fix_fi": "vaikuttaa (keep) with gloss 'to seem'; rows U01-U05 rebuilt with a complement, e.g. se ei haluu vaikuttaa väsyneeltä",
+  "proofread_fix_en": "to seem",
+  "reason": "In this seed vaikuttaa means 'seem' (+ablative). Rows 'se ei haluu vaikuttaa nyt/tänä iltana…' = 'she doesn't want to influence now' are meaningless on both sides.",
+  "auto": [
+   "form(s) not found earlier in the course: (keep), with, gloss, 'to, seem', rows, u01-u05, rebuilt, a, complement, eg, väsyneeltä"
+  ],
+  "found": true
+ },
+ {
+  "id": "F221",
+  "row": "S0313L02B03",
+  "row_as_written": "S0313L02B03 / U02 / U04",
+  "seed": 313,
+  "level": "lego",
+  "conf": "medium",
+  "cls": "partitive-vs-total",
+  "en": "I want to watch all five games (today) / I reckon she wants to watch all five games",
+  "fi": "mä haluun katsoa kaikkia viittä peliä (tänään) / mä luulen, että se haluu katsoa kaikkia viittä peliä",
+  "proofread_fix_fi": "mä haluun katsoa kaikki viisi peliä",
+  "proofread_fix_en": "",
+  "reason": "The LEGO's partitive 'kaikkia viittä peliä' is right only under negation (as in the seed); in affirmative 'watch all five' the natural object is total 'kaikki viisi peliä'. Rows should be negated or the affirmative pair taught separately.",
+  "auto": [
+   "form(s) not found earlier in the course: viisi"
+  ],
+  "found": true
+ },
+ {
+  "id": "F227",
+  "row": "S0326",
+  "row_as_written": "S0326 (seed) / S0326L02U01",
+  "seed": 326,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "partitive-vs-total",
+  "en": "I don't believe that she needs to sell the company",
+  "fi": "Mä en usko, että sen pitää myydä yritystä",
+  "proofread_fix_fi": "Mä en usko, että sen pitää myydä yritys",
+  "proofread_fix_en": "",
+  "reason": "Necessive with a whole object takes nominative 'yritys'; partitive reads as 'be selling (at) the company'. Matrix 'en usko' may license partitive for some speakers, hence medium.",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: yritys"
+  ],
+  "found": true
+ },
+ {
+  "id": "F238",
+  "row": "S0336",
+  "row_as_written": "S0336 (seed) / S0336L02U01",
+  "seed": 336,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "partitive-vs-total",
+  "en": "I don't believe that she's able to open the door",
+  "fi": "Mä en usko, että se pystyy avaamaan ovea",
+  "proofread_fix_fi": "Mä en usko, että se pystyy avaamaan oven",
+  "proofread_fix_en": "",
+  "reason": "Opening the door is a total object: 'avaamaan oven'. Only matrix negation could license 'ovea', which is marginal; LEGO 'the door | ovea' then leaks into affirmative rows.",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: oven"
+  ],
+  "found": true
+ },
+ {
+  "id": "F242",
+  "row": "S0340",
+  "row_as_written": "S0340 (seed) / S0340L02",
+  "seed": 340,
+  "level": "seed",
+  "conf": "medium",
+  "cls": "government",
+  "en": "yes I'm sure he's going to be okay",
+  "fi": "Joo, mä oon varma, että sille käy hyvin",
+  "proofread_fix_fi": "Joo, mä oon varma, että sen käy hyvin / ... että se pärjää",
+  "proofread_fix_en": "",
+  "reason": "'käydä hyvin' (turn out well for someone) governs the genitive ('sen käy hyvin'); allative 'sille käy hyvin' primarily means 'it suits him / that's fine by him'. Allative is heard colloquially, hence medium.",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: /, pärjää"
+  ],
+  "found": true
+ },
+ {
+  "id": "F078",
+  "row": "S0362L01C02",
+  "row_as_written": "S0362L01C02",
+  "seed": 362,
+  "level": "lego",
+  "conf": "high",
+  "cls": "english-mismatch",
+  "en": "natured",
+  "fi": "hiljainen",
+  "proofread_fix_fi": "hiljainen",
+  "proofread_fix_en": "quiet",
+  "reason": "Component gloss 'natured' is meaningless; hiljainen = quiet.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F079",
+  "row": "S0377",
+  "row_as_written": "S0377 (seed) / S0377L03U01",
+  "seed": 377,
+  "level": "seed",
+  "conf": "high",
+  "cls": "unnatural",
+  "en": "did you go anywhere in the world last year?",
+  "fi": "Menitkö sä mihinkään maailmassa viime vuonna?",
+  "proofread_fix_fi": "Kävitkö sä missään päin maailmaa viime vuonna? / Menitkö sä mihinkään päin maailmaa viime vuonna?",
+  "proofread_fix_en": "",
+  "reason": "'mihinkään maailmassa' is a calque mixing illative and inessive; 'anywhere in the world' is '(mihinkään/missään) päin maailmaa'. Cascades to S0377L02B02, B03, U01–U05 and S0377L03B03/U01.",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: kävitkö, päin, maailmaa, /"
+  ],
+  "found": true
+ },
+ {
+  "id": "F080",
+  "row": "S0379",
+  "row_as_written": "S0379 (seed) / S0379L03",
+  "seed": 379,
+  "level": "seed",
+  "conf": "high",
+  "cls": "unnatural",
+  "en": "yes I was lucky enough to travel to Africa",
+  "fi": "Joo, mä olin tarpeeksi onnekas matkustamaan Afrikkaan",
+  "proofread_fix_fi": "Joo, mulla oli onni päästä matkustamaan Afrikkaan / Joo, mä olin niin onnekas, että pääsin matkustamaan Afrikkaan",
+  "proofread_fix_en": "",
+  "reason": "'tarpeeksi onnekas matkustamaan' is a word-for-word calque of 'lucky enough to'; Finnish doesn't build 'onnekas' + 3rd infinitive. Cascades to all S0379L03 and L04 'lucky' rows.",
+  "auto": [
+   "row id not found in live data",
+   "form(s) not found earlier in the course: onni, /, pääsin"
+  ],
+  "found": true
+ },
+ {
+  "id": "F251",
+  "row": "S0379L02",
+  "row_as_written": "S0379L02",
+  "seed": 379,
+  "level": "lego",
+  "conf": "medium",
+  "cls": "other",
+  "en": "ready to travel",
+  "fi": "valmis matkustamaan",
+  "proofread_fix_fi": "(LEGO not in seed)",
+  "proofread_fix_en": "",
+  "reason": "LEGO 'ready to travel | valmis matkustamaan' doesn't occur in the seed (which says 'lucky enough to travel'); its rows teach a different sentence.",
+  "auto": [
+   "form(s) not found earlier in the course: (lego, not, in, seed)"
+  ],
+  "found": true
+ },
+ {
+  "id": "F081",
+  "row": "S0379L04",
+  "row_as_written": "S0379L04",
+  "seed": 379,
+  "level": "lego",
+  "conf": "high",
+  "cls": "other",
+  "en": "to Africa",
+  "fi": "afrikkaan",
+  "proofread_fix_fi": "Afrikkaan",
+  "proofread_fix_en": "",
+  "reason": "Proper noun must be capitalised (rows already write 'Afrikkaan').",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F252",
+  "row": "S0381L04C02",
+  "row_as_written": "S0381L04C02",
+  "seed": 381,
+  "level": "lego",
+  "conf": "medium",
+  "cls": "english-mismatch",
+  "en": "us both",
+  "fi": "meitä",
+  "proofread_fix_fi": "meitä",
+  "proofread_fix_en": "us",
+  "reason": "'meitä' is just 'us'; 'both' isn't there.",
+  "auto": [],
+  "found": true
+ }
+]

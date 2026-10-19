@@ -50,3 +50,22 @@ describe('fin available forms', () => {
     expect(c.newlyBroken.map(b => b.row)).toContain('S0170L01U08');
   });
 });
+
+describe('whole-set check (edits judged together, in an in-memory copy)', () => {
+  it('a seed fix and the row that mirrors it pass together, though each fails alone', () => {
+    const edits = [
+      { row: 'S0071L02', en: 'the truth', fi: 'totuuden' },
+      { row: 'S0071', en: 'I want to know the truth', fi: 'Mä haluun tietää totuuden' },
+      { row: 'S0071L02U01', en: 'I want to know the truth', fi: 'mä haluun tietää totuuden' }, // the seed-copy row
+    ];
+    expect(A.checkRewrite(A.buildIndex(payload), { row: 'S0071L02U01', en: edits[2].en, fi: edits[2].fi }).ok).toBe(false);
+    const w = A.checkWorld(payload, edits);
+    expect(w.results.filter(r => !r.ok).map(r => r.row + ": " + r.problems.join("; "))).toEqual([]);
+    // ...but the later row that used the old LEGO form is a knock-on the set must answer
+    expect(w.knockOn.map(k => k.row)).toContain('S0170L01U08');
+  });
+  it('a seed that introduces a form no LEGO teaches is refused (tiling)', () => {
+    const w = A.checkWorld(payload, [{ row: 'S0071', en: 'I want to know the truth', fi: 'Mä haluun tietää totuuden' }]);
+    expect(w.results[0].problems.join()).toMatch(/seed form\(s\) in no LEGO.*totuuden/);
+  });
+});

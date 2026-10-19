@@ -1,0 +1,1415 @@
+[
+ {
+  "id": "F202",
+  "row": "S0203L01U02",
+  "row_as_written": "S0203L01U02",
+  "seed": 203,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "agreement",
+  "en": "what would you do if it didn't work?",
+  "fi": "mitä sä tekisit, jos se ei toimi?",
+  "proofread_fix_fi": "mitä sä tekisit, jos se ei toimisi?",
+  "proofread_fix_en": "",
+  "reason": "hypothetical 'if it didn't work' needs the conditional in the jos-clause, matching 'tekisit'",
+  "auto": [
+   "form(s) not found earlier in the course: toimisi"
+  ],
+  "found": true
+ },
+ {
+  "id": "F026",
+  "row": "S0211L01B03",
+  "row_as_written": "S0211L01B03",
+  "seed": 211,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "they told us the truth",
+  "fi": "ne kertoi meille totuutta",
+  "proofread_fix_fi": "ne kertoi meille totuuden",
+  "proofread_fix_en": "",
+  "reason": "affirmative completed 'told the truth' takes total object 'totuuden'",
+  "auto": [
+   "form(s) not found earlier in the course: totuuden"
+  ],
+  "found": true
+ },
+ {
+  "id": "F027",
+  "row": "S0211L01U03",
+  "row_as_written": "S0211L01U03",
+  "seed": 211,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "they told us the whole story",
+  "fi": "ne kertoi meille koko tarinaa",
+  "proofread_fix_fi": "ne kertoi meille koko tarinan",
+  "proofread_fix_en": "",
+  "reason": "'koko' + completed telling = total object",
+  "auto": [
+   "form(s) not found earlier in the course: tarinan"
+  ],
+  "found": true
+ },
+ {
+  "id": "F028",
+  "row": "S0211L01U05",
+  "row_as_written": "S0211L01U05",
+  "seed": 211,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "they told us the answer",
+  "fi": "ne kertoi meille vastausta",
+  "proofread_fix_fi": "ne kertoi meille vastauksen",
+  "proofread_fix_en": "",
+  "reason": "affirmative completed telling takes total object",
+  "auto": [
+   "form(s) not found earlier in the course: vastauksen"
+  ],
+  "found": true
+ },
+ {
+  "id": "F029",
+  "row": "S0212L01U05",
+  "row_as_written": "S0212L01U05",
+  "seed": 212,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "they wanted to know the answer",
+  "fi": "ne halusi tietää vastausta",
+  "proofread_fix_fi": "ne halusi tietää vastauksen",
+  "proofread_fix_en": "",
+  "reason": "affirmative 'know the answer' takes total object (partitive only under negation, as S0202/S0213)",
+  "auto": [
+   "form(s) not found earlier in the course: vastauksen"
+  ],
+  "found": true
+ },
+ {
+  "id": "F204",
+  "row": "S0214L01U05",
+  "row_as_written": "S0214L01U05",
+  "seed": 214,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "partitive-vs-total",
+  "en": "did you have my keys?",
+  "fi": "oliko sulla mun avaimia?",
+  "proofread_fix_fi": "oliko sulla mun avaimet?",
+  "proofread_fix_en": "",
+  "reason": "specific set of keys: nominative in a have-question (cf. U04 'oliko sulla rahat?')",
+  "auto": [
+   "form(s) not found earlier in the course: avaimet"
+  ],
+  "found": true
+ },
+ {
+  "id": "F030",
+  "row": "S0219L01U04",
+  "row_as_written": "S0219L01U04",
+  "seed": 219,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "genitive/accusative",
+  "en": "it was really nice to meet a few friends",
+  "fi": "oli tosi kiva tavata muutaman kaverin",
+  "proofread_fix_fi": "oli tosi kiva tavata muutama kaveri",
+  "proofread_fix_en": "",
+  "reason": "subjectless infinitive after 'oli kiva' takes a nominative total object",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F205",
+  "row": "S0220L01U04",
+  "row_as_written": "S0220L01U04",
+  "seed": 220,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "did you watch the whole story?",
+  "fi": "katsoitko sä koko tarinaa?",
+  "proofread_fix_fi": "katsoitko sä koko jutun?",
+  "proofread_fix_en": "did you watch the whole thing?",
+  "reason": "'koko' wants a total object, and 'watch a story' is odd in both languages",
+  "auto": [
+   "form(s) not found earlier in the course: jutun"
+  ],
+  "found": true
+ },
+ {
+  "id": "F031",
+  "row": "S0225L01U05",
+  "row_as_written": "S0225L01U05",
+  "seed": 225,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "he would give you my keys",
+  "fi": "se antaisi sulle mun avaimia",
+  "proofread_fix_fi": "se antaisi sulle mun avaimet",
+  "proofread_fix_en": "",
+  "reason": "affirmative giving of specific keys takes total plural object 'avaimet'",
+  "auto": [
+   "form(s) not found earlier in the course: avaimet"
+  ],
+  "found": true
+ },
+ {
+  "id": "F032",
+  "row": "S0225L03B03",
+  "row_as_written": "S0225L03B03",
+  "seed": 225,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "government",
+  "en": "if he was able to help",
+  "fi": "jos se pystyisi auttaa",
+  "proofread_fix_fi": "jos se pystyisi auttamaan",
+  "proofread_fix_en": "",
+  "reason": "pystyä governs the 3rd infinitive illative (-maan), as in S176 'pystyykö se auttamaan'",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F033",
+  "row": "S0225L03U05",
+  "row_as_written": "S0225L03U05",
+  "seed": 225,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "other",
+  "en": "I'm not sure if he was able to",
+  "fi": "mä en oo varma, jos se pystyisi",
+  "proofread_fix_fi": "mä en oo varma, pystyisikö se",
+  "proofread_fix_en": "I'm not sure if he would be able to",
+  "reason": "'if' meaning 'whether' is the -ko question suffix, never 'jos' (cf. S176 'en oo varma, pystyykö se')",
+  "auto": [
+   "fix drops LEGO \"se pystyisi\" (S0225L03) — rehome or delete the row",
+   "form(s) not found earlier in the course: pystyisikö"
+  ],
+  "found": true
+ },
+ {
+  "id": "F384",
+  "row": "S0234L03B03",
+  "row_as_written": "S0234L03B03",
+  "seed": 234,
+  "level": "phrase",
+  "conf": "low",
+  "cls": "word-order",
+  "en": "she works a lot",
+  "fi": "se tekee töitä paljon",
+  "proofread_fix_fi": "se tekee paljon töitä",
+  "proofread_fix_en": "",
+  "reason": "natural order puts 'paljon' before 'töitä' (as S0199L01B03 'teki ennen paljon töitä'); same in S0234L03U05",
+  "auto": [
+   "fix drops LEGO \"tekee töitä\" (S0234L03) — rehome or delete the row"
+  ],
+  "found": true
+ },
+ {
+  "id": "F385",
+  "row": "S0234L03U05",
+  "row_as_written": "S0234L03U05",
+  "seed": 234,
+  "level": "phrase",
+  "conf": "low",
+  "cls": "word-order",
+  "en": "my friend works a lot",
+  "fi": "mun kaveri tekee töitä paljon",
+  "proofread_fix_fi": "mun kaveri tekee paljon töitä",
+  "proofread_fix_en": "",
+  "reason": "as B03",
+  "auto": [
+   "fix drops LEGO \"tekee töitä\" (S0234L03) — rehome or delete the row"
+  ],
+  "found": true
+ },
+ {
+  "id": "F034",
+  "row": "S0238L01U02",
+  "row_as_written": "S0238L01U02",
+  "seed": 238,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "he wanted me to tell you the truth",
+  "fi": "se halusi, että mä kerron sulle totuutta",
+  "proofread_fix_fi": "se halusi, että mä kerron sulle totuuden",
+  "proofread_fix_en": "",
+  "reason": "affirmative 'tell the truth' takes total object (U05 correctly has 'vastauksen')",
+  "auto": [
+   "form(s) not found earlier in the course: totuuden"
+  ],
+  "found": true
+ },
+ {
+  "id": "F386",
+  "row": "S0248L02U05",
+  "row_as_written": "S0248L02U05",
+  "seed": 248,
+  "level": "phrase",
+  "conf": "low",
+  "cls": "unnatural",
+  "en": "the film was really complete rubbish",
+  "fi": "elokuva oli tosi täyttä roskaa",
+  "proofread_fix_fi": "elokuva oli ihan täyttä roskaa",
+  "proofread_fix_en": "the film was absolutely complete rubbish",
+  "reason": "'tosi täyttä roskaa' (intensifying an absolute) is stilted; 'ihan täyttä roskaa' is the natural intensifier.",
+  "auto": [
+   "form(s) not found earlier in the course: ihan"
+  ],
+  "found": true
+ },
+ {
+  "id": "F209",
+  "row": "S0249L01U04",
+  "row_as_written": "S0249L01U04",
+  "seed": 249,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "english-mismatch",
+  "en": "can you help me before the weekend?",
+  "fi": "sä autat mua ennen viikonloppua?",
+  "proofread_fix_fi": "voitko sä auttaa mua ennen viikonloppua? — but that drops the LEGO 'sä autat mua'; alternative keep Finnish and fix English",
+  "proofread_fix_en": "you'll help me before the weekend?",
+  "reason": "Finnish is a statement-question 'you (will) help me before the weekend?', not 'can you help me'.",
+  "auto": [
+   "form(s) not found earlier in the course: —, but, that, drops, the, lego, 'sä, mua', alternative, keep, finnish, and, fix, english"
+  ],
+  "found": true
+ },
+ {
+  "id": "F210",
+  "row": "S0253L01U03",
+  "row_as_written": "S0253L01U03",
+  "seed": 253,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "local-case",
+  "en": "I want to leave in a few minutes",
+  "fi": "mä haluun lähteä muutamassa minuutissa",
+  "proofread_fix_fi": "mä haluun lähteä muutaman minuutin päästä",
+  "proofread_fix_en": "",
+  "reason": "'in X time' meaning 'after X time from now' is 'X:n päästä'; inessive 'muutamassa minuutissa' means 'within/taking a few minutes', which does not fit 'leave'. Breaks LEGO pair, so better replace the row with a duration use (e.g. 'mä voin tehdä sen muutamassa minuutissa').",
+  "auto": [
+   "fix drops LEGO \"muutamassa minuutissa\" (S0253L01) — rehome or delete the row",
+   "form(s) not found earlier in the course: minuutin, päästä"
+  ],
+  "found": true
+ },
+ {
+  "id": "F211",
+  "row": "S0253L01U04",
+  "row_as_written": "S0253L01U04",
+  "seed": 253,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "local-case",
+  "en": "can you come back in a few minutes?",
+  "fi": "voitko sä tulla takaisin muutamassa minuutissa?",
+  "proofread_fix_fi": "voitko sä tulla takaisin muutaman minuutin päästä?",
+  "proofread_fix_en": "",
+  "reason": "Same as U03: returning after a delay is 'päästä', not inessive duration.",
+  "auto": [
+   "fix drops LEGO \"muutamassa minuutissa\" (S0253L01) — rehome or delete the row",
+   "form(s) not found earlier in the course: minuutin, päästä"
+  ],
+  "found": true
+ },
+ {
+  "id": "F212",
+  "row": "S0256L01U04",
+  "row_as_written": "S0256L01U04",
+  "seed": 256,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "local-case",
+  "en": "I want to leave in less than an hour",
+  "fi": "mä haluun lähteä alle tunnissa",
+  "proofread_fix_fi": "mä haluun olla valmis alle tunnissa (replacement) — 'leave' needs 'alle tunnin päästä'",
+  "proofread_fix_en": "",
+  "reason": "'alle tunnissa' is a completion-time adverbial ('within an hour'); with 'lähteä' it is unnatural.",
+  "auto": [
+   "form(s) not found earlier in the course: (replacement), —, 'leave', needs, 'alle, tunnin, päästä'"
+  ],
+  "found": true
+ },
+ {
+  "id": "F036",
+  "row": "S0262L02U03",
+  "row_as_written": "S0262L02U03",
+  "seed": 262,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "other",
+  "en": "that's the woman to whom I speak Finnish",
+  "fi": "se nainen, jolle mä puhun suomea",
+  "proofread_fix_fi": "se on nainen, jolle mä puhun suomea",
+  "proofread_fix_en": "",
+  "reason": "Missing copula 'on'; the Finnish is a bare noun phrase 'that woman to whom I speak Finnish', not 'that's the woman…'.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F387",
+  "row": "S0266L01U06",
+  "row_as_written": "S0266L01U06",
+  "seed": 266,
+  "level": "phrase",
+  "conf": "low",
+  "cls": "agreement",
+  "en": "my father's work is more important",
+  "fi": "mun isän työ on tärkeämpää",
+  "proofread_fix_fi": "mun isän työ on tärkeämpi",
+  "proofread_fix_en": "",
+  "reason": "For a specific person's job the predicate adjective is nominative; partitive is possible only if 'työ' is read as abstract mass 'work'.",
+  "auto": [
+   "form(s) not found earlier in the course: tärkeämpi"
+  ],
+  "found": true
+ },
+ {
+  "id": "F388",
+  "row": "S0268L02U02",
+  "row_as_written": "S0268L02U02",
+  "seed": 268,
+  "level": "phrase",
+  "conf": "low",
+  "cls": "english-mismatch",
+  "en": "she sent me an email this morning",
+  "fi": "se lähetti mulle sähköpostia tänä aamuna",
+  "proofread_fix_fi": "",
+  "proofread_fix_en": "she sent me email this morning",
+  "reason": "Partitive 'sähköpostia' means '(some) email', not a single 'an email' (that would be 'sähköpostin'); colloquially acceptable, so low.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F213",
+  "row": "S0270L02U03",
+  "row_as_written": "S0270L02U03",
+  "seed": 270,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "I think I'm going to be late",
+  "fi": "mun mielestä mä myöhästyn",
+  "proofread_fix_fi": "mä luulen, että mä myöhästyn",
+  "proofread_fix_en": "",
+  "reason": "'mun mielestä' = 'in my opinion' and does not express a prediction about oneself; 'mä luulen, että' is the natural 'I think'.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F037",
+  "row": "S0280L03U02",
+  "row_as_written": "S0280L03U02",
+  "seed": 280,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "genitive/accusative",
+  "en": "I want to do the most important job",
+  "fi": "mä haluun tehdä tärkein työ",
+  "proofread_fix_fi": "mä haluun tehdä tärkeimmän työn",
+  "proofread_fix_en": "",
+  "reason": "Nominative total object is only right under a necessive (mun piti/pitää); after 'haluun' the total object is genitive-accusative 'tärkeimmän työn'.",
+  "auto": [
+   "fix drops LEGO \"tärkein työ\" (S0280L03) — rehome or delete the row",
+   "form(s) not found earlier in the course: tärkeimmän, työn"
+  ],
+  "found": true
+ },
+ {
+  "id": "F216",
+  "row": "S0280L03U04",
+  "row_as_written": "S0280L03U04",
+  "seed": 280,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "agreement",
+  "en": "the most important job is difficult",
+  "fi": "tärkein työ on vaikeaa",
+  "proofread_fix_fi": "tärkein työ on vaikea",
+  "proofread_fix_en": "",
+  "reason": "A specific countable task ('the most important job') takes a nominative predicate adjective; partitive 'vaikeaa' treats it as mass/abstract.",
+  "auto": [
+   "form(s) not found earlier in the course: vaikea"
+  ],
+  "found": true
+ },
+ {
+  "id": "F038",
+  "row": "S0280L03U05",
+  "row_as_written": "S0280L03U05",
+  "seed": 280,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "genitive/accusative",
+  "en": "I'd like to do the most important job",
+  "fi": "mä haluaisin tehdä tärkein työ",
+  "proofread_fix_fi": "mä haluaisin tehdä tärkeimmän työn",
+  "proofread_fix_en": "",
+  "reason": "Same as U02: no necessive, so the total object must be 'tärkeimmän työn'.",
+  "auto": [
+   "fix drops LEGO \"tärkein työ\" (S0280L03) — rehome or delete the row",
+   "form(s) not found earlier in the course: tärkeimmän, työn"
+  ],
+  "found": true
+ },
+ {
+  "id": "F389",
+  "row": "S0281L03B02",
+  "row_as_written": "S0281L03B02",
+  "seed": 281,
+  "level": "phrase",
+  "conf": "low",
+  "cls": "english-mismatch",
+  "en": "to finish my coffee",
+  "fi": "mun kahvin loppuun",
+  "proofread_fix_fi": "",
+  "proofread_fix_en": "my coffee to the end",
+  "reason": "Finnish has no verb; English 'to finish my coffee' over-translates the fragment.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F039",
+  "row": "S0283L01U03",
+  "row_as_written": "S0283L01U03",
+  "seed": 283,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "agreement",
+  "en": "which people are ready?",
+  "fi": "ketkä on valmis?",
+  "proofread_fix_fi": "ketkä on valmiita?",
+  "proofread_fix_en": "",
+  "reason": "Same plural predicate agreement as S0283L02U04.",
+  "auto": [
+   "form(s) not found earlier in the course: valmiita"
+  ],
+  "found": true
+ },
+ {
+  "id": "F040",
+  "row": "S0283L02U04",
+  "row_as_written": "S0283L02U04",
+  "seed": 283,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "agreement",
+  "en": "which of your friends are ready?",
+  "fi": "ketkä sun kavereista on valmis?",
+  "proofread_fix_fi": "ketkä sun kavereista on valmiita?",
+  "proofread_fix_en": "",
+  "reason": "Plural subject 'ketkä' needs a plural predicate adjective even in colloquial Finnish (singular verb 'on' is fine, 'valmis' is not).",
+  "auto": [
+   "form(s) not found earlier in the course: valmiita"
+  ],
+  "found": true
+ },
+ {
+  "id": "F041",
+  "row": "S0284L01B03",
+  "row_as_written": "S0284L01B03",
+  "seed": 284,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "government",
+  "en": "do you know the answer",
+  "fi": "tunnetko sä vastauksen",
+  "proofread_fix_fi": "replace row: tunnetko sä mun isän kaverin",
+  "proofread_fix_en": "do you know my father's friend",
+  "reason": "Knowing a fact/answer is 'tietää' (tiedätkö sä vastauksen); 'tuntea' is for people/places, so the row teaches the wrong verb. Replacement keeps the LEGO 'tunnetko sä'.",
+  "auto": [
+   "form(s) not found earlier in the course: replace, row"
+  ],
+  "found": true
+ },
+ {
+  "id": "F042",
+  "row": "S0284L01U02",
+  "row_as_written": "S0284L01U02",
+  "seed": 284,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "government",
+  "en": "do you know Finnish?",
+  "fi": "tunnetko sä suomea?",
+  "proofread_fix_fi": "replace row (knowing a language is 'osaatko sä suomea?', which drops the LEGO)",
+  "proofread_fix_en": "",
+  "reason": "'tuntea suomea' does not mean 'know/speak Finnish'; the natural verb is 'osata'. Row should be replaced with a person/place object.",
+  "auto": [
+   "fix drops LEGO \"tunnetko sä\" (S0284L01) — rehome or delete the row",
+   "form(s) not found earlier in the course: replace, row, (knowing, a, language, is, 'osaatko, suomea', which, drops, the, lego)"
+  ],
+  "found": true
+ },
+ {
+  "id": "F043",
+  "row": "S0284L01U04",
+  "row_as_written": "S0284L01U04",
+  "seed": 284,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "government",
+  "en": "do you know Finnish well?",
+  "fi": "tunnetko sä suomea hyvin?",
+  "proofread_fix_fi": "replace row, e.g. tunnetko sä mun isän hyvin?",
+  "proofread_fix_en": "do you know my father well?",
+  "reason": "Same as U02: language knowledge is 'osata', not 'tuntea'.",
+  "auto": [
+   "form(s) not found earlier in the course: replace, row, eg"
+  ],
+  "found": true
+ },
+ {
+  "id": "F044",
+  "row": "S0284L01U05",
+  "row_as_written": "S0284L01U05",
+  "seed": 284,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "government",
+  "en": "do you know that answer?",
+  "fi": "tunnetko sä sen vastauksen?",
+  "proofread_fix_fi": "replace row: tunnetko sä sen vanhan miehen? / tunnetko sä mun isän?",
+  "proofread_fix_en": "do you know my father?",
+  "reason": "Same verb error: an answer is known with 'tietää', not 'tuntea'.",
+  "auto": [
+   "form(s) not found earlier in the course: replace, row, /"
+  ],
+  "found": true
+ },
+ {
+  "id": "F217",
+  "row": "S0287L01U03",
+  "row_as_written": "S0287L01U03",
+  "seed": 287,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "agreement",
+  "en": "how many people are ready?",
+  "fi": "kuinka monta ihmistä on valmis?",
+  "proofread_fix_fi": "kuinka monta ihmistä on valmiina?",
+  "proofread_fix_en": "",
+  "reason": "With a numeral-phrase subject the predicate adjective is plural (valmiina/valmiita), not singular nominative 'valmis'.",
+  "auto": [
+   "form(s) not found earlier in the course: valmiina"
+  ],
+  "found": true
+ },
+ {
+  "id": "F045",
+  "row": "S0290L01B03",
+  "row_as_written": "S0290L01B03",
+  "seed": 290,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "government",
+  "en": "I wonder if he knows my friend",
+  "fi": "tietääköhän se mun kaverin",
+  "proofread_fix_fi": "replace row: tietääköhän se, kuka se on",
+  "proofread_fix_en": "I wonder if he knows who it is",
+  "reason": "Knowing a person is 'tuntea' (tunteekohan se mun kaverin); 'tietää' + person is wrong. Replacement keeps the LEGO 'tietääköhän se'.",
+  "auto": [
+   "form(s) not found earlier in the course: replace, row"
+  ],
+  "found": true
+ },
+ {
+  "id": "F046",
+  "row": "S0290L01U02",
+  "row_as_written": "S0290L01U02",
+  "seed": 290,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "government",
+  "en": "I wonder if he knows my sister's friend",
+  "fi": "tietääköhän se mun siskon kaverin",
+  "proofread_fix_fi": "replace row: tietääköhän se, ketä sä tarkoitat",
+  "proofread_fix_en": "I wonder if he knows who you mean",
+  "reason": "Same: a person is known with 'tuntea', not 'tietää'.",
+  "auto": [
+   "form(s) not found earlier in the course: replace, row"
+  ],
+  "found": true
+ },
+ {
+  "id": "F047",
+  "row": "S0290L01U03",
+  "row_as_written": "S0290L01U03",
+  "seed": 290,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "government",
+  "en": "I wonder if he knows Finnish",
+  "fi": "tietääköhän se suomea",
+  "proofread_fix_fi": "replace row: tietääköhän se, että se on tärkeää",
+  "proofread_fix_en": "I wonder if he knows that it's important",
+  "reason": "Knowing a language is 'osata' (osaakohan se suomea); 'tietää suomea' is wrong.",
+  "auto": [
+   "form(s) not found earlier in the course: replace, row"
+  ],
+  "found": true
+ },
+ {
+  "id": "F048",
+  "row": "S0290L01U05",
+  "row_as_written": "S0290L01U05",
+  "seed": 290,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "government",
+  "en": "I wonder if he knows my friend well",
+  "fi": "tietääköhän se mun kaverin hyvin",
+  "proofread_fix_fi": "replace row: tietääköhän se, missä se on",
+  "proofread_fix_en": "I wonder if he knows where it is",
+  "reason": "Same verb error (tuntea for people).",
+  "auto": [
+   "form(s) not found earlier in the course: replace, row"
+  ],
+  "found": true
+ },
+ {
+  "id": "F049",
+  "row": "S0306L02U05",
+  "row_as_written": "S0306L02U05",
+  "seed": 306,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "english-mismatch",
+  "en": "the friend who's talking speaks Finnish well",
+  "fi": "kaveri, joka puhuu suomea hyvin",
+  "proofread_fix_fi": "",
+  "proofread_fix_en": "the friend who speaks Finnish well",
+  "reason": "Finnish has no main verb: it says 'the friend who speaks Finnish well', not '…who's talking speaks Finnish well'.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F220",
+  "row": "S0308L01U07",
+  "row_as_written": "S0308L01U07",
+  "seed": 308,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "my mother's job is at the council",
+  "fi": "mun äidin työ on kunnalla",
+  "proofread_fix_fi": "mun äidin työpaikka on kunnalla",
+  "proofread_fix_en": "",
+  "reason": "'työ on kunnalla' is unidiomatic; natural is 'mun äiti on töissä kunnalla' or 'mun äidin työpaikka on kunnalla' (keeps LEGO).",
+  "auto": [
+   "form(s) not found earlier in the course: työpaikka"
+  ],
+  "found": true
+ },
+ {
+  "id": "F050",
+  "row": "S0310L03U08",
+  "row_as_written": "S0310L03U08",
+  "seed": 310,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "other",
+  "en": "you started the story",
+  "fi": "sä aloit tarinan",
+  "proofread_fix_fi": "sä aloitit tarinan",
+  "proofread_fix_en": "",
+  "reason": "'aloit' is the past of 'alkaa' (intransitive 'begin'); transitive 'start (something)' is 'aloittaa' → past 'aloitit'.",
+  "auto": [
+   "form(s) not found earlier in the course: aloitit"
+  ],
+  "found": true
+ },
+ {
+  "id": "F051",
+  "row": "S0311L03U02",
+  "row_as_written": "S0311L03U02",
+  "seed": 311,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "I want to explain the three most important facts",
+  "fi": "mä haluun selittää kolmea tärkeintä faktaa",
+  "proofread_fix_fi": "mä en haluu selittää kolmea tärkeintä faktaa (replacement keeping LEGO); correct affirmative would be 'kolme tärkeintä faktaa'",
+  "proofread_fix_en": "I don't want to explain the three most important facts",
+  "reason": "Affirmative 'selittää' with a definite completed object takes the total object 'kolme tärkeintä faktaa'; partitive is only right under negation or with partitive verbs (uskoa).",
+  "auto": [
+   "form(s) not found earlier in the course: (replacement, keeping, lego), correct, affirmative, would, be, 'kolme, faktaa'"
+  ],
+  "found": true
+ },
+ {
+  "id": "F052",
+  "row": "S0311L03U04",
+  "row_as_written": "S0311L03U04",
+  "seed": 311,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "I want to show you the three most important facts",
+  "fi": "mä haluun näyttää sulle kolmea tärkeintä faktaa",
+  "proofread_fix_fi": "se ei voinut näyttää mulle kolmea tärkeintä faktaa (replacement keeping LEGO); correct affirmative would be 'kolme tärkeintä faktaa'",
+  "proofread_fix_en": "he couldn't show me the three most important facts",
+  "reason": "Same: affirmative 'näyttää' needs total object 'kolme'.",
+  "auto": [
+   "form(s) not found earlier in the course: (replacement, keeping, lego), correct, affirmative, would, be, 'kolme, faktaa'"
+  ],
+  "found": true
+ },
+ {
+  "id": "F222",
+  "row": "S0315L01U04",
+  "row_as_written": "S0315L01U04",
+  "seed": 315,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "english-mismatch",
+  "en": "I reckon he still couldn't afford it",
+  "fi": "mä luulen, että sillä ei vielä ollut varaa",
+  "proofread_fix_fi": "mä luulen, että sillä ei vieläkään ollut varaa",
+  "proofread_fix_en": "I reckon he couldn't afford it yet",
+  "reason": "'ei vielä' = not yet; 'still couldn't' = 'ei vieläkään'. Either fix the Finnish (-kään not verified) or the English.",
+  "auto": [
+   "fix drops LEGO \"sillä ei ollut varaa\" (S0315L01) — rehome or delete the row",
+   "form(s) not found earlier in the course: vieläkään"
+  ],
+  "found": true
+ },
+ {
+  "id": "F223",
+  "row": "S0315L02U05",
+  "row_as_written": "S0315L02U05",
+  "seed": 315,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "english-mismatch",
+  "en": "I reckon he still couldn't afford the car",
+  "fi": "mä luulen, että sillä ei vielä ollut varaa autoon",
+  "proofread_fix_fi": "mä luulen, että sillä ei vieläkään ollut varaa autoon",
+  "proofread_fix_en": "I reckon he couldn't afford the car yet",
+  "reason": "Same as L01U04: 'ei vielä' means 'not yet', not 'still not'.",
+  "auto": [
+   "form(s) not found earlier in the course: vieläkään"
+  ],
+  "found": true
+ },
+ {
+  "id": "F224",
+  "row": "S0315L03U04",
+  "row_as_written": "S0315L03U04",
+  "seed": 315,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "he said something that he wanted",
+  "fi": "se sanoi jotain, jonka se halusi",
+  "proofread_fix_fi": "se sanoi jotain, mitä se halusi sanoa",
+  "proofread_fix_en": "he said something that he wanted to say",
+  "reason": "After the pronoun 'jotain' the relative is 'mitä', not 'jonka'; the English is also odd ('said something that he wanted').",
+  "auto": [
+   "fix drops LEGO \"jonka se halusi\" (S0315L03) — rehome or delete the row"
+  ],
+  "found": true
+ },
+ {
+  "id": "F053",
+  "row": "S0316L01B02",
+  "row_as_written": "S0316L01B02",
+  "seed": 316,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "unnatural",
+  "en": "do you reckon who you mean",
+  "fi": "luuletko sä, ketä sä tarkoitat",
+  "proofread_fix_fi": "tiedätkö sä, ketä sä tarkoitat",
+  "proofread_fix_en": "",
+  "reason": "Both sides are nonsense: 'luulla' cannot take an indirect wh-question ('do you reckon who you mean').",
+  "auto": [
+   "fix drops LEGO \"luuletko sä\" (S0316L01) — rehome or delete the row"
+  ],
+  "found": true
+ },
+ {
+  "id": "F054",
+  "row": "S0316L01B03",
+  "row_as_written": "S0316L01B03",
+  "seed": 316,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "other",
+  "en": "do you reckon it doesn't matter at all",
+  "fi": "luuletko sä ei haittaa yhtään",
+  "proofread_fix_fi": "luuletko sä, että se ei haittaa yhtään",
+  "proofread_fix_en": "",
+  "reason": "Ungrammatical: complement clause is missing 'että se' (subject and conjunction).",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F225",
+  "row": "S0319L01U05",
+  "row_as_written": "S0319L01U05",
+  "seed": 319,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "other",
+  "en": "she wants to write a story",
+  "fi": "se haluu kirjoittaa tarinan",
+  "proofread_fix_fi": "sen pitää kirjoittaa tarina",
+  "proofread_fix_en": "she needs to write a story",
+  "reason": "Row sits under LEGO 'she needs to | sen pitää' but contains neither side of it. If changed to necessive, the object must be nominative 'tarina'.",
+  "auto": [
+   "form(s) not found earlier in the course: tarina"
+  ],
+  "found": true
+ },
+ {
+  "id": "F055",
+  "row": "S0320L02U05",
+  "row_as_written": "S0320L02U05",
+  "seed": 320,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "she said that she needs to buy it",
+  "fi": "se sanoi, että sen pitää ostaa sen",
+  "proofread_fix_fi": "se sanoi, että sen pitää ostaa se",
+  "proofread_fix_en": "",
+  "reason": "Under the necessive 'sen pitää' the total object is nominative 'se', not accusative 'sen'.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F226",
+  "row": "S0320L03B02",
+  "row_as_written": "S0320L03B02",
+  "seed": 320,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "partitive-vs-total",
+  "en": "to buy another television",
+  "fi": "ostaa toista televisiota",
+  "proofread_fix_fi": "ostaa toinen televisio / ostaa toisen television",
+  "proofread_fix_en": "",
+  "reason": "Affirmative clause: buying a (whole) television takes the total object 'toisen television'; partitive 'toista televisiota' only fits the negated seed.",
+  "auto": [
+   "fix drops LEGO \"toista televisiota\" (S0320L03) — rehome or delete the row",
+   "form(s) not found earlier in the course: toinen, televisio, /, toisen, television"
+  ],
+  "found": true
+ },
+ {
+  "id": "F056",
+  "row": "S0320L03U02",
+  "row_as_written": "S0320L03U02",
+  "seed": 320,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "I reckon he wants to buy another television",
+  "fi": "mä luulen, että se haluu ostaa toista televisiota",
+  "proofread_fix_fi": "mä luulen, että se haluu ostaa toisen television",
+  "proofread_fix_en": "",
+  "reason": "Affirmative clause: buying a (whole) television takes the total object 'toisen television'; partitive 'toista televisiota' only fits the negated seed.",
+  "auto": [
+   "fix drops LEGO \"toista televisiota\" (S0320L03) — rehome or delete the row",
+   "form(s) not found earlier in the course: toisen, television"
+  ],
+  "found": true
+ },
+ {
+  "id": "F057",
+  "row": "S0320L03U04",
+  "row_as_written": "S0320L03U04",
+  "seed": 320,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "she said that she wants to buy another television",
+  "fi": "se sanoi, että se haluu ostaa toista televisiota",
+  "proofread_fix_fi": "se sanoi, että se haluu ostaa toisen television",
+  "proofread_fix_en": "",
+  "reason": "Affirmative clause: buying a (whole) television takes the total object 'toisen television'; partitive 'toista televisiota' only fits the negated seed.",
+  "auto": [
+   "fix drops LEGO \"toista televisiota\" (S0320L03) — rehome or delete the row",
+   "form(s) not found earlier in the course: toisen, television"
+  ],
+  "found": true
+ },
+ {
+  "id": "F058",
+  "row": "S0320L03U06",
+  "row_as_written": "S0320L03U06",
+  "seed": 320,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "you're going to buy another television",
+  "fi": "sä aiot ostaa toista televisiota",
+  "proofread_fix_fi": "sä aiot ostaa toisen television",
+  "proofread_fix_en": "",
+  "reason": "Affirmative clause: buying a (whole) television takes the total object 'toisen television'; partitive 'toista televisiota' only fits the negated seed.",
+  "auto": [
+   "fix drops LEGO \"toista televisiota\" (S0320L03) — rehome or delete the row",
+   "form(s) not found earlier in the course: toisen, television"
+  ],
+  "found": true
+ },
+ {
+  "id": "F390",
+  "row": "S0321L01U02",
+  "row_as_written": "S0321L01U02",
+  "seed": 321,
+  "level": "phrase",
+  "conf": "low",
+  "cls": "english-mismatch",
+  "en": "I reckon that book is good",
+  "fi": "mä luulen, että se kirja on kiva",
+  "proofread_fix_fi": "mä luulen, että se kirja on kiva",
+  "proofread_fix_en": "I reckon that book is nice",
+  "reason": "'kiva' = nice; 'good' is 'hyvä'. Elsewhere the course glosses kiva as nice.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F059",
+  "row": "S0326L01U02",
+  "row_as_written": "S0326L01U02",
+  "seed": 326,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "she needs to sell it today",
+  "fi": "sen pitää myydä sitä tänään",
+  "proofread_fix_fi": "sen pitää myydä se tänään",
+  "proofread_fix_en": "",
+  "reason": "necessive + whole object → nominative 'se'; S0326L01U06 'me haluttiin myydä se' already shows the right pattern.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F060",
+  "row": "S0326L01U03",
+  "row_as_written": "S0326L01U03",
+  "seed": 326,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "I reckon she wants to sell it",
+  "fi": "mä luulen, että se haluu myydä sitä",
+  "proofread_fix_fi": "mä luulen, että se haluu myydä sen",
+  "proofread_fix_en": "",
+  "reason": "affirmative, whole object → accusative 'sen'; S0326L01U06 'me haluttiin myydä se' already shows the right pattern.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F228",
+  "row": "S0326L01U04",
+  "row_as_written": "S0326L01U04",
+  "seed": 326,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "partitive-vs-total",
+  "en": "I don't believe she needs to sell it",
+  "fi": "mä en usko, että sen pitää myydä sitä",
+  "proofread_fix_fi": "mä en usko, että sen pitää myydä se",
+  "proofread_fix_en": "",
+  "reason": "necessive → nominative 'se' (matrix negation makes it medium); S0326L01U06 'me haluttiin myydä se' already shows the right pattern.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F061",
+  "row": "S0326L01U05",
+  "row_as_written": "S0326L01U05",
+  "seed": 326,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "she said that she needs to sell it",
+  "fi": "se sanoi, että sen pitää myydä sitä",
+  "proofread_fix_fi": "se sanoi, että sen pitää myydä se",
+  "proofread_fix_en": "",
+  "reason": "necessive → nominative 'se'; S0326L01U06 'me haluttiin myydä se' already shows the right pattern.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F229",
+  "row": "S0326L02B02",
+  "row_as_written": "S0326L02B02",
+  "seed": 326,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "partitive-vs-total",
+  "en": "to sell the company",
+  "fi": "myydä yritystä",
+  "proofread_fix_fi": "myydä yritys",
+  "proofread_fix_en": "",
+  "reason": "bare infinitive fragment from the seed; total object expected; S0326L01U06 'me haluttiin myydä se' already shows the right pattern.",
+  "auto": [
+   "fix drops LEGO \"yritystä\" (S0326L02) — rehome or delete the row",
+   "form(s) not found earlier in the course: yritys"
+  ],
+  "found": true
+ },
+ {
+  "id": "F062",
+  "row": "S0326L02B03",
+  "row_as_written": "S0326L02B03",
+  "seed": 326,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "she needs to sell the company",
+  "fi": "sen pitää myydä yritystä",
+  "proofread_fix_fi": "sen pitää myydä yritys",
+  "proofread_fix_en": "",
+  "reason": "necessive → nominative 'yritys'; S0326L01U06 'me haluttiin myydä se' already shows the right pattern.",
+  "auto": [
+   "fix drops LEGO \"yritystä\" (S0326L02) — rehome or delete the row",
+   "form(s) not found earlier in the course: yritys"
+  ],
+  "found": true
+ },
+ {
+  "id": "F063",
+  "row": "S0326L02U03",
+  "row_as_written": "S0326L02U03",
+  "seed": 326,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "I reckon she needs to sell the company",
+  "fi": "mä luulen, että sen pitää myydä yritystä",
+  "proofread_fix_fi": "mä luulen, että sen pitää myydä yritys",
+  "proofread_fix_en": "",
+  "reason": "affirmative necessive → nominative 'yritys'; S0326L01U06 'me haluttiin myydä se' already shows the right pattern.",
+  "auto": [
+   "fix drops LEGO \"yritystä\" (S0326L02) — rehome or delete the row",
+   "form(s) not found earlier in the course: yritys"
+  ],
+  "found": true
+ },
+ {
+  "id": "F064",
+  "row": "S0326L02U04",
+  "row_as_written": "S0326L02U04",
+  "seed": 326,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "she said that she wants to sell the company",
+  "fi": "se sanoi, että se haluu myydä yritystä",
+  "proofread_fix_fi": "se sanoi, että se haluu myydä yrityksen",
+  "proofread_fix_en": "",
+  "reason": "affirmative, whole object → accusative 'yrityksen'; S0326L01U06 'me haluttiin myydä se' already shows the right pattern.",
+  "auto": [
+   "fix drops LEGO \"yritystä\" (S0326L02) — rehome or delete the row",
+   "form(s) not found earlier in the course: yrityksen"
+  ],
+  "found": true
+ },
+ {
+  "id": "F230",
+  "row": "S0327L02U06",
+  "row_as_written": "S0327L02U06",
+  "seed": 327,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "another way to test yourself",
+  "fi": "toinen tapa itsensä testaamiseen",
+  "proofread_fix_fi": "toinen tapa testata itseään",
+  "proofread_fix_en": "",
+  "reason": "'itsensä testaamiseen' is stilted nominalisation; natural is 'toinen tapa testata itseään'.",
+  "auto": [
+   "form(s) not found earlier in the course: testata, itseään"
+  ],
+  "found": true
+ },
+ {
+  "id": "F231",
+  "row": "S0330L01B01",
+  "row_as_written": "S0330L01B01",
+  "seed": 330,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "other",
+  "en": "very important",
+  "fi": "tosi tärkeää",
+  "proofread_fix_fi": "(replace with a negated 'ei kovin …' row, e.g. 'se ei oo kovin kiva')",
+  "proofread_fix_en": "",
+  "reason": "Row sits under LEGO 'very | kovin' but uses 'tosi' instead; affirmative 'kovin' is unnatural, so these rows don't practise the LEGO and 'very' maps to two targets (ZUT; S0374L02 teaches very = tosi).",
+  "auto": [
+   "form(s) not found earlier in the course: (replace, with, a, negated, 'ei, …', row, eg, 'se, kiva')"
+  ],
+  "found": true
+ },
+ {
+  "id": "F232",
+  "row": "S0330L01B03",
+  "row_as_written": "S0330L01B03",
+  "seed": 330,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "other",
+  "en": "very nice",
+  "fi": "tosi kiva",
+  "proofread_fix_fi": "(replace with a negated 'ei kovin …' row, e.g. 'se ei oo kovin kiva')",
+  "proofread_fix_en": "",
+  "reason": "Row sits under LEGO 'very | kovin' but uses 'tosi' instead; affirmative 'kovin' is unnatural, so these rows don't practise the LEGO and 'very' maps to two targets (ZUT; S0374L02 teaches very = tosi).",
+  "auto": [
+   "form(s) not found earlier in the course: (replace, with, a, negated, 'ei, …', row, eg, 'se, kiva')"
+  ],
+  "found": true
+ },
+ {
+  "id": "F233",
+  "row": "S0330L01U03",
+  "row_as_written": "S0330L01U03",
+  "seed": 330,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "other",
+  "en": "I reckon it's very important",
+  "fi": "mä luulen, että se on tosi tärkeää",
+  "proofread_fix_fi": "(replace with a negated 'ei kovin …' row, e.g. 'se ei oo kovin kiva')",
+  "proofread_fix_en": "",
+  "reason": "Row sits under LEGO 'very | kovin' but uses 'tosi' instead; affirmative 'kovin' is unnatural, so these rows don't practise the LEGO and 'very' maps to two targets (ZUT; S0374L02 teaches very = tosi).",
+  "auto": [
+   "form(s) not found earlier in the course: (replace, with, a, negated, 'ei, …', row, eg, 'se, kiva')"
+  ],
+  "found": true
+ },
+ {
+  "id": "F234",
+  "row": "S0330L01U04",
+  "row_as_written": "S0330L01U04",
+  "seed": 330,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "other",
+  "en": "she said that it's very important",
+  "fi": "se sanoi, että se on tosi tärkeää",
+  "proofread_fix_fi": "(replace with a negated 'ei kovin …' row, e.g. 'se ei oo kovin kiva')",
+  "proofread_fix_en": "",
+  "reason": "Row sits under LEGO 'very | kovin' but uses 'tosi' instead; affirmative 'kovin' is unnatural, so these rows don't practise the LEGO and 'very' maps to two targets (ZUT; S0374L02 teaches very = tosi).",
+  "auto": [
+   "form(s) not found earlier in the course: (replace, with, a, negated, 'ei, …', row, eg, 'se, kiva')"
+  ],
+  "found": true
+ },
+ {
+  "id": "F235",
+  "row": "S0330L01U06",
+  "row_as_written": "S0330L01U06",
+  "seed": 330,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "other",
+  "en": "it is a very nice surprise",
+  "fi": "se on tosi kiva yllätys",
+  "proofread_fix_fi": "(replace with a negated 'ei kovin …' row, e.g. 'se ei oo kovin kiva')",
+  "proofread_fix_en": "",
+  "reason": "Row sits under LEGO 'very | kovin' but uses 'tosi' instead; affirmative 'kovin' is unnatural, so these rows don't practise the LEGO and 'very' maps to two targets (ZUT; S0374L02 teaches very = tosi).",
+  "auto": [
+   "form(s) not found earlier in the course: (replace, with, a, negated, 'ei, …', row, eg, 'se, kiva')"
+  ],
+  "found": true
+ },
+ {
+  "id": "F236",
+  "row": "S0332L02U07",
+  "row_as_written": "S0332L02U07",
+  "seed": 332,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "partitive-vs-total",
+  "en": "we're trying to build a new life",
+  "fi": "me yritetään rakentaa uuden elämän",
+  "proofread_fix_fi": "me yritetään rakentaa uusi elämä",
+  "proofread_fix_en": "",
+  "reason": "With the passive ('me yritetään') the total object of the infinitive is nominative; accusative -n is non-standard. (Partitive 'uutta elämää' is also natural with yrittää.)",
+  "auto": [
+   "form(s) not found earlier in the course: uusi, elämä"
+  ],
+  "found": true
+ },
+ {
+  "id": "F065",
+  "row": "S0332L03U04",
+  "row_as_written": "S0332L03U04",
+  "seed": 332,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "she needs to build a new life",
+  "fi": "sen pitää rakentaa uuden elämän",
+  "proofread_fix_fi": "sen pitää rakentaa uusi elämä",
+  "proofread_fix_en": "",
+  "reason": "Necessive 'sen pitää' takes a nominative total object: 'uusi elämä', not 'uuden elämän'.",
+  "auto": [
+   "fix drops LEGO \"uuden elämän\" (S0332L03) — rehome or delete the row",
+   "form(s) not found earlier in the course: uusi, elämä"
+  ],
+  "found": true
+ },
+ {
+  "id": "F066",
+  "row": "S0332L04U04",
+  "row_as_written": "S0332L04U04",
+  "seed": 332,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "she needs to build a new life for her sister",
+  "fi": "sen pitää rakentaa uuden elämän siskolleen",
+  "proofread_fix_fi": "sen pitää rakentaa uusi elämä siskolleen",
+  "proofread_fix_en": "",
+  "reason": "Necessive 'sen pitää' takes a nominative total object: 'uusi elämä', not 'uuden elämän'.",
+  "auto": [
+   "form(s) not found earlier in the course: uusi, elämä"
+  ],
+  "found": true
+ },
+ {
+  "id": "F237",
+  "row": "S0333L02U06",
+  "row_as_written": "S0333L02U06",
+  "seed": 333,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "unnatural",
+  "en": "he has a lot of time to test himself",
+  "fi": "sillä on paljon aikaa itsensä testaamiseen",
+  "proofread_fix_fi": "sillä on paljon aikaa testata itseään",
+  "proofread_fix_en": "",
+  "reason": "Same stilted nominalisation; 'aikaa testata itseään' is the natural form.",
+  "auto": [
+   "form(s) not found earlier in the course: testata, itseään"
+  ],
+  "found": true
+ },
+ {
+  "id": "F239",
+  "row": "S0336L01U02",
+  "row_as_written": "S0336L01U02",
+  "seed": 336,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "partitive-vs-total",
+  "en": "I don't believe she's able to open it",
+  "fi": "mä en usko, että se pystyy avaamaan sitä",
+  "proofread_fix_fi": "mä en usko, että se pystyy avaamaan sen",
+  "proofread_fix_en": "",
+  "reason": "Affirmative ability to open the door: total object 'oven' (cf. S0336L01B02 'pystyy avaamaan sen'); partitive 'ovea' means fiddling with/partly opening.",
+  "auto": [],
+  "found": true
+ },
+ {
+  "id": "F240",
+  "row": "S0336L02B02",
+  "row_as_written": "S0336L02B02",
+  "seed": 336,
+  "level": "phrase",
+  "conf": "medium",
+  "cls": "partitive-vs-total",
+  "en": "to be able to open the door",
+  "fi": "pystyä avaamaan ovea",
+  "proofread_fix_fi": "pystyä avaamaan oven",
+  "proofread_fix_en": "",
+  "reason": "Affirmative ability to open the door: total object 'oven' (cf. S0336L01B02 'pystyy avaamaan sen'); partitive 'ovea' means fiddling with/partly opening.",
+  "auto": [
+   "fix drops LEGO \"ovea\" (S0336L02) — rehome or delete the row",
+   "form(s) not found earlier in the course: oven"
+  ],
+  "found": true
+ },
+ {
+  "id": "F067",
+  "row": "S0336L02B03",
+  "row_as_written": "S0336L02B03",
+  "seed": 336,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "she's able to open the door",
+  "fi": "se pystyy avaamaan ovea",
+  "proofread_fix_fi": "se pystyy avaamaan oven",
+  "proofread_fix_en": "",
+  "reason": "Affirmative ability to open the door: total object 'oven' (cf. S0336L01B02 'pystyy avaamaan sen'); partitive 'ovea' means fiddling with/partly opening.",
+  "auto": [
+   "fix drops LEGO \"ovea\" (S0336L02) — rehome or delete the row",
+   "form(s) not found earlier in the course: oven"
+  ],
+  "found": true
+ },
+ {
+  "id": "F068",
+  "row": "S0336L02U02",
+  "row_as_written": "S0336L02U02",
+  "seed": 336,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "she's able to open the door today",
+  "fi": "se pystyy avaamaan ovea tänään",
+  "proofread_fix_fi": "se pystyy avaamaan oven tänään",
+  "proofread_fix_en": "",
+  "reason": "Affirmative ability to open the door: total object 'oven' (cf. S0336L01B02 'pystyy avaamaan sen'); partitive 'ovea' means fiddling with/partly opening.",
+  "auto": [
+   "fix drops LEGO \"ovea\" (S0336L02) — rehome or delete the row",
+   "form(s) not found earlier in the course: oven"
+  ],
+  "found": true
+ },
+ {
+  "id": "F069",
+  "row": "S0336L02U03",
+  "row_as_written": "S0336L02U03",
+  "seed": 336,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "I reckon she's able to open the door",
+  "fi": "mä luulen, että se pystyy avaamaan ovea",
+  "proofread_fix_fi": "mä luulen, että se pystyy avaamaan oven",
+  "proofread_fix_en": "",
+  "reason": "Affirmative ability to open the door: total object 'oven' (cf. S0336L01B02 'pystyy avaamaan sen'); partitive 'ovea' means fiddling with/partly opening.",
+  "auto": [
+   "fix drops LEGO \"ovea\" (S0336L02) — rehome or delete the row",
+   "form(s) not found earlier in the course: oven"
+  ],
+  "found": true
+ },
+ {
+  "id": "F070",
+  "row": "S0336L02U05",
+  "row_as_written": "S0336L02U05",
+  "seed": 336,
+  "level": "phrase",
+  "conf": "high",
+  "cls": "partitive-vs-total",
+  "en": "she said that she's able to open the door",
+  "fi": "se sanoi, että se pystyy avaamaan ovea",
+  "proofread_fix_fi": "se sanoi, että se pystyy avaamaan oven",
+  "proofread_fix_en": "",
+  "reason": "Affirmative ability to open the door: total object 'oven' (cf. S0336L01B02 'pystyy avaamaan sen'); partitive 'ovea' means fiddling with/partly opening.",
+  "auto": [
+   "fix drops LEGO \"ovea\" (S0336L02) — rehome or delete the row",
+   "form(s) not found earlier in the course: oven"
+  ],
+  "found": true
+ }
+]

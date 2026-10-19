@@ -1,0 +1,1520 @@
+[
+ {
+  "id": "F369",
+  "row": "S0124",
+  "verdict": "no-change",
+  "en_new": "",
+  "fi_new": "",
+  "confidence": "high",
+  "note": "'I thought (that) X was good' is the course's established gloss for 'mun mielestä' + past opinion (S0247, S0248, S0374 LEGO 'I thought | mun mielestä', S0615); in English 'I thought that was a good idea' means 'in my view it was', so the pair matches as it stands",
+  "gate": "n/a (unchanged)",
+  "introduces": [],
+  "cascade": [],
+  "cascade_clean": true
+ },
+ {
+  "id": "F158",
+  "row": "S0127",
+  "verdict": "seed-change",
+  "en_new": "that isn't why I wanted to see you",
+  "fi_new": "Se ei oo se syy, miksi mä halusin nähdä sut",
+  "confidence": "medium",
+  "note": "'se ei oo se, miksi' is an English calque; no taught form gives 'that's not why' (takia/syy untaught, siksi only works affirmatively, and negating halusin would force 'sua' and break the LEGO 'nähdä sut'), so the seed introduces 'syy' ('se syy' = that reason, natural colloquial); LEGO unchanged",
+  "gate": "FAIL: Finnish duplicates S0127L01U01 (its own seed-copy row, which changes with it); English unchanged",
+  "introduces": [
+   "syy"
+  ],
+  "cascade": [
+   {
+    "row": "S0127L01U01",
+    "en_new": "that isn't why I wanted to see you",
+    "fi_new": "se ei oo se syy, miksi mä halusin nähdä sut",
+    "gate": "FAIL: form \"syy\" heard (S0127L01U01); duplicates S0127 — the seed-copy row sits under L01, before the seed event that introduces 'syy'",
+    "note": "seed-copy row, must mirror the seed; it is the only row using 'syy' and it IS the seed sentence"
+   }
+  ],
+  "cascade_clean": false
+ },
+ {
+  "id": "F373",
+  "row": "S0143L02U04",
+  "verdict": "rehome",
+  "en_new": "it's a good thing that we're friends",
+  "fi_new": "on hyvä juttu, että me ollaan kavereita",
+  "lego": "S0110L01",
+  "confidence": "high",
+  "note": "'a good matter' is not English and 'a good thing' is already 'hyvä juttu' (S0047L01), so drop 'asia' and rehome under 'we're friends | me ollaan kavereita'; root cause is the LEGO gloss 'matter' (B02 'a good matter', U02, U03 'the only matter I remember' share it) — that gloss is Kai's call. In-LEGO alternative that passes: 'it's the only matter that I don't remember | se on ainoa asia, mitä mä en muista' (stilted English, not recommended)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F165",
+  "row": "S0151",
+  "verdict": "seed-change",
+  "en_new": "that wasn't what I was hoping would happen",
+  "fi_new": "Se ei ollut sitä, mitä mä toivoin tapahtuvan",
+  "confidence": "high",
+  "note": "predicate mitä-clause needs the correlative 'sitä', which is taught (S0029L01); nothing new introduced; the three sibling rows with the same calque take 'sitä' too",
+  "gate": "FAIL: ZUT: English already maps to other Finnish at S0151L02U01 (its own seed-copy row, changed with it)",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0151L02U01",
+    "en_new": "that wasn't what I was hoping would happen",
+    "fi_new": "se ei ollut sitä, mitä mä toivoin tapahtuvan",
+    "gate": "FAIL: ZUT vs S0151 (the seed, changed with it)",
+    "note": "seed-copy row mirrors the seed"
+   },
+   {
+    "row": "S0151L02U02",
+    "en_new": "that was what I was hoping would happen",
+    "fi_new": "se oli sitä, mitä mä toivoin tapahtuvan",
+    "gate": "PASS",
+    "note": "same calque, add sitä"
+   },
+   {
+    "row": "S0151L02U03",
+    "en_new": "it wasn't what we were hoping would happen",
+    "fi_new": "se ei ollut sitä, mitä me toivottiin tapahtuvan",
+    "gate": "PASS",
+    "note": "same calque, add sitä"
+   },
+   {
+    "row": "S0151L02U05",
+    "en_new": "that's not what I was hoping would happen",
+    "fi_new": "se ei oo sitä, mitä mä toivoin tapahtuvan",
+    "gate": "PASS",
+    "note": "same calque, add sitä"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F008",
+  "row": "S0155L02",
+  "verdict": "lego-change",
+  "en_new": "a few minutes",
+  "fi_new": "muutaman minuutin",
+  "confidence": "high",
+  "note": "partitive 'muutamaa minuuttia' is right only under negation; with a subject the duration adverbial is the accusative 'muutaman minuutin' (cf. 'odottaa hetken'). No taught form fits (minuutin first at S0524, pari untaught), so the LEGO introduces the correct form; every row of the LEGO, the seed, L03U01 and two later rows (S0190, S0476) that reuse it change with it",
+  "gate": "PASS (patched copy: cascade S0155L02 introduces nothing new beyond the LEGO, breaks nothing; all 13 rows form-clean — remaining flags are B01=LEGO, components and seed-copy self-pairs, as in live)",
+  "introduces": [
+   "muutaman",
+   "minuutin"
+  ],
+  "cascade": [
+   {
+    "row": "S0155",
+    "en_new": "I don't mind waiting for a few minutes tomorrow morning",
+    "fi_new": "Mua ei haittaa odottaa muutaman minuutin huomenna aamulla",
+    "gate": "PASS (cascade: introduces nothing beyond LEGO)",
+    "note": "seed sentence"
+   },
+   {
+    "row": "S0155L02B01",
+    "en_new": "a few minutes",
+    "fi_new": "muutaman minuutin",
+    "gate": "PASS (only dup = the LEGO itself)",
+    "note": ""
+   },
+   {
+    "row": "S0155L02B02",
+    "en_new": "to wait a few minutes",
+    "fi_new": "odottaa muutaman minuutin",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0155L02B03",
+    "en_new": "to speak a few minutes",
+    "fi_new": "puhua muutaman minuutin",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0155L02C01",
+    "en_new": "a few",
+    "fi_new": "muutaman",
+    "gate": "component (dup S0190L03C01/S0216L01C01; not drilled)",
+    "note": ""
+   },
+   {
+    "row": "S0155L02C02",
+    "en_new": "minutes",
+    "fi_new": "minuutin",
+    "gate": "component (dup S0524L02C02; not drilled)",
+    "note": ""
+   },
+   {
+    "row": "S0155L02U01",
+    "en_new": "I don't mind waiting for a few minutes",
+    "fi_new": "mua ei haittaa odottaa muutaman minuutin",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0155L02U02",
+    "en_new": "can you wait a few minutes?",
+    "fi_new": "voitko sä odottaa muutaman minuutin?",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0155L02U03",
+    "en_new": "I want to speak Finnish for a few minutes",
+    "fi_new": "mä haluun puhua suomea muutaman minuutin",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0155L02U04",
+    "en_new": "could you wait for a few minutes?",
+    "fi_new": "voisitko sä odottaa muutaman minuutin?",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0155L02U05",
+    "en_new": "I want to wait a few minutes",
+    "fi_new": "mä haluun odottaa muutaman minuutin",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0155L03U01",
+    "en_new": "I don't mind waiting for a few minutes tomorrow morning",
+    "fi_new": "mua ei haittaa odottaa muutaman minuutin huomenna aamulla",
+    "gate": "PASS (only dup = seed copy)",
+    "note": "seed-copy row"
+   },
+   {
+    "row": "S0190L01U03",
+    "en_new": "do you mind waiting a few minutes?",
+    "fi_new": "haittaako sua odottaa muutaman minuutin?",
+    "gate": "PASS",
+    "note": "later row reusing the LEGO"
+   },
+   {
+    "row": "S0476L01U07",
+    "en_new": "I'm waiting a few minutes",
+    "fi_new": "mä odotan muutaman minuutin",
+    "gate": "PASS",
+    "note": "later row reusing the LEGO"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F175",
+  "row": "S0159",
+  "verdict": "seed-change",
+  "en_new": "that isn't what I'm trying to say",
+  "fi_new": "Se ei oo sitä, mitä mä yritän sanoa",
+  "confidence": "high",
+  "note": "predicate mitä-clause needs the correlative 'sitä' (taught S0029L01); nothing introduced; the LEGO 'mitä mä yritän sanoa' stays; the four sibling rows with the same 'se/tää on, mitä' calque take 'sitä' too. Same calque later at S0479L01B02 'se on, mitä mä voin tehdä' (outside this shard)",
+  "gate": "FAIL: ZUT vs S0159L01U01 (its own seed-copy row, changed with it); cascade introduces nothing, breaks nothing",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0159L01U01",
+    "en_new": "that isn't what I'm trying to say",
+    "fi_new": "se ei oo sitä, mitä mä yritän sanoa",
+    "gate": "FAIL: ZUT vs S0159 (the seed, changed with it)",
+    "note": "seed-copy row"
+   },
+   {
+    "row": "S0159L01B02",
+    "en_new": "that's what I'm trying to say",
+    "fi_new": "se on sitä, mitä mä yritän sanoa",
+    "gate": "PASS",
+    "note": "same calque"
+   },
+   {
+    "row": "S0159L01B03",
+    "en_new": "this is what I'm trying to say",
+    "fi_new": "tää on sitä, mitä mä yritän sanoa",
+    "gate": "PASS",
+    "note": "same calque"
+   },
+   {
+    "row": "S0159L01U03",
+    "en_new": "that's exactly what I'm trying to say",
+    "fi_new": "se on täsmälleen sitä, mitä mä yritän sanoa",
+    "gate": "PASS",
+    "note": "same calque ('just sitä' would be more colloquial but 'just' is taught only at S0224)"
+   },
+   {
+    "row": "S0159L01U05",
+    "en_new": "this is what I'm trying to say in Finnish",
+    "fi_new": "tää on sitä, mitä mä yritän sanoa suomeksi",
+    "gate": "PASS",
+    "note": "same calque"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F176",
+  "row": "S0162L01B01",
+  "verdict": "lego-change",
+  "en_new": "what do you think",
+  "fi_new": "mitä mieltä sä oot",
+  "confidence": "high",
+  "note": "the LEGO 'what do you think | mitä mieltä' is half a phrase and clashes with B02 'what do you think | mitä mieltä sä oot' (ZUT); grow the LEGO on the Finnish side to the whole question (all forms taught, nothing introduced) so B01 = LEGO, and give B02 a new complement. Components stay what|mitä, opinion|mieltä (+ you are|sä oot if tiles must cover). Later 'mitä mieltä te olette/ootte' (S0651, S0666) and 'mitä mieltä sä olit' (S0616) keep mitä/mieltä taught",
+  "gate": "PASS (patched copy: cascade S0162L01 introduces nothing, breaks nothing)",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0162L01B01",
+    "en_new": "what do you think",
+    "fi_new": "mitä mieltä sä oot",
+    "gate": "PASS (only dup = the LEGO itself, as every B01)",
+    "note": "bare-LEGO row"
+   },
+   {
+    "row": "S0162L01B02",
+    "en_new": "what do you think today",
+    "fi_new": "mitä mieltä sä oot tänään",
+    "gate": "PASS",
+    "note": "was identical to the grown LEGO; B03 nyt / B04 tänä iltana already exist"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F188",
+  "row": "S0187",
+  "verdict": "seed-change",
+  "en_new": "I've been happy with it so far",
+  "fi_new": "Mä oon ollut tyytyväinen siihen tähän asti",
+  "confidence": "medium",
+  "note": "'oon onnellinen tähän asti' is stilted (tähän asti wants the perfect; onnellinen = happy in life). Perfect 'oon ollut' (S0086L01) + 'tyytyväinen siihen' (S0076L02, the course's 'happy with it') are taught; 'with it' is needed because 'I've been happy so far' already = S0254L01U02 'mä oon ollut onnellinen tähän asti' (ZUT). Seed English changes; LEGO 'tähän asti' unchanged. Siblings U03 'mä pärjään hyvin tähän asti' / U05 'mä en oo väsynyt tähän asti' share the present-tense stiffness (not in this shard)",
+  "gate": "PASS",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0187L01U01",
+    "en_new": "I've been happy with it so far",
+    "fi_new": "mä oon ollut tyytyväinen siihen tähän asti",
+    "gate": "PASS",
+    "note": "seed-copy row"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F191",
+  "row": "S0188",
+  "verdict": "seed-change",
+  "en_new": "so I don't need to change anything",
+  "fi_new": "Joten mun ei tarvii muuttaa mitään",
+  "confidence": "high",
+  "note": "bare 'muuttaa' reads as 'move house'; 'mitään' (S0035L03) is taught and is the right negative-polarity object, so the proofread's fix needs nothing new; LEGO 'joten mun ei tarvii' unchanged",
+  "gate": "PASS",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0188L01U01",
+    "en_new": "so I don't need to change anything",
+    "fi_new": "joten mun ei tarvii muuttaa mitään",
+    "gate": "PASS",
+    "note": "seed-copy row"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F023",
+  "row": "S0200",
+  "verdict": "seed-change",
+  "en_new": "they say they want to make sure that I do everything in time",
+  "fi_new": "Ne sanoo, että ne haluu varmistaa, että mä teen kaiken ajoissa",
+  "confidence": "medium",
+  "note": "passive 'me lopetetaan' can't take the LEGO's accusative 'kaiken' (and lopettaa = stop). An active 1sg subject makes the taught 'kaiken' grammatical with taught 'teen' (S0051L03, cf. sibling U04 'mä teen kaiken huomenna'); keeps the LEGO and nothing is introduced, but 'we finish' becomes 'I do'. Same-LEGO rows outside this shard still say lopettaa (B02, U02) and U05 'meidän pitää lopettaa kaikki' lacks the LEGO",
+  "gate": "PASS",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0200L04U01",
+    "en_new": "they say they want to make sure that I do everything in time",
+    "fi_new": "ne sanoo, että ne haluu varmistaa, että mä teen kaiken ajoissa",
+    "gate": "PASS",
+    "note": "seed-copy row"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F024",
+  "row": "S0200L04B03",
+  "verdict": "reword",
+  "en_new": "I do all of it",
+  "fi_new": "mä teen kaiken",
+  "confidence": "high",
+  "note": "passive + 'kaiken' is ungrammatical; an active subject makes the taught accusative 'kaiken' correct (teen taught S0051L03), matching the reworded seed",
+  "gate": "PASS"
+ },
+ {
+  "id": "F025",
+  "row": "S0200L04U03",
+  "verdict": "reword",
+  "en_new": "he did all of it in time",
+  "fi_new": "se teki kaiken ajoissa",
+  "confidence": "high",
+  "note": "passive + 'kaiken' is ungrammatical; active past 'se teki' (S0199L01) takes the taught accusative 'kaiken'; differs from the seed's 'mä teen kaiken ajoissa'",
+  "gate": "PASS"
+ },
+ {
+  "id": "F201",
+  "row": "S0201",
+  "verdict": "seed-change",
+  "en_new": "we wanted to know what was going to happen",
+  "fi_new": "Me haluttiin tietää, mitä tapahtuisi",
+  "confidence": "high",
+  "note": "'tulisi tapahtumaan' is a stiff written anglicism, and it is the LEGO itself, so the LEGO changes to the conditional 'tapahtuisi' (introduced: no taught form gives past-future — 'tapahtuu' is taught as present 'is going to happen', S0012L04). English unchanged; all LEGO rows and the one later reuse (S0202L01U01) follow. Components: C01 becomes would happen|tapahtuisi, C02 to happen|tapahtumaan drops",
+  "gate": "PASS (patched copy: all 7 changed practice rows pass; cascade introduces nothing beyond the LEGO, breaks nothing)",
+  "introduces": [
+   "tapahtuisi"
+  ],
+  "cascade": [
+   {
+    "row": "S0201L01",
+    "en_new": "was going to happen",
+    "fi_new": "tapahtuisi",
+    "gate": "lego",
+    "note": "LEGO Finnish changes"
+   },
+   {
+    "row": "S0201L01B01",
+    "en_new": "was going to happen",
+    "fi_new": "tapahtuisi",
+    "gate": "PASS (dup = LEGO, as every B01)",
+    "note": ""
+   },
+   {
+    "row": "S0201L01B02",
+    "en_new": "what was going to happen",
+    "fi_new": "mitä tapahtuisi",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0201L01B03",
+    "en_new": "to know what was going to happen",
+    "fi_new": "tietää, mitä tapahtuisi",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0201L01U01",
+    "en_new": "we wanted to know what was going to happen",
+    "fi_new": "me haluttiin tietää, mitä tapahtuisi",
+    "gate": "PASS (dup = seed copy)",
+    "note": "seed-copy row"
+   },
+   {
+    "row": "S0201L01U02",
+    "en_new": "I wanted to know what was going to happen",
+    "fi_new": "mä halusin tietää, mitä tapahtuisi",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0201L01U03",
+    "en_new": "I wasn't sure what was going to happen",
+    "fi_new": "mä en ollut varma, mitä tapahtuisi",
+    "gate": "PASS",
+    "note": "'I'm not sure what was going to happen' had a tense clash in English too"
+   },
+   {
+    "row": "S0201L01U04",
+    "en_new": "I didn't know what was going to happen",
+    "fi_new": "mä en tiennyt, mitä tapahtuisi",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0201L01U05",
+    "en_new": "they wanted to know what was going to happen",
+    "fi_new": "ne halusi tietää, mitä tapahtuisi",
+    "gate": "PASS",
+    "note": "'I want to know what was going to happen' was a tense clash"
+   },
+   {
+    "row": "S0202L01U01",
+    "en_new": "nobody knew what was going to happen",
+    "fi_new": "kukaan ei tiennyt, mitä tapahtuisi",
+    "gate": "PASS",
+    "note": "later row that used 'tulisi tapahtumaan'"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F203",
+  "row": "S0203L02",
+  "verdict": "lego-change",
+  "en_new": "if I asked",
+  "fi_new": "jos mä pyytäisin",
+  "confidence": "high",
+  "note": "LEGO English has 'if' but Finnish lacks 'jos'; grow the Finnish to 'jos mä pyytäisin' (jos taught S0044L02; nothing introduced) — LEGO = build-up order of the seed's 'jos mä pyytäisin'. B01 (glossed 'I would ask') becomes the LEGO; old B02 'jos mä pyytäisin' would then duplicate it, so it takes 'nyt'. Components: if|jos, I|mä, would ask|pyytäisin",
+  "gate": "PASS (patched copy: cascade S0203L02 introduces nothing, breaks nothing)",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0203L02B01",
+    "en_new": "if I asked",
+    "fi_new": "jos mä pyytäisin",
+    "gate": "PASS (dup = LEGO, as every B01)",
+    "note": "bare-LEGO row, was glossed 'I would ask'"
+   },
+   {
+    "row": "S0203L02B02",
+    "en_new": "if I asked now",
+    "fi_new": "jos mä pyytäisin nyt",
+    "gate": "PASS",
+    "note": "was identical to the grown LEGO"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F206",
+  "row": "S0234",
+  "verdict": "seed-change",
+  "en_new": "I met someone last night who works with your brother",
+  "fi_new": "Mä tapasin eilen illalla jonkun, joka tekee töitä sun veljen kanssa",
+  "confidence": "high",
+  "note": "relative clause now follows its antecedent 'jonkun', and social 'last night' = 'eilen illalla' (eilen S0030L04, illalla S0192L02 both taught); every LEGO still whole, nothing introduced",
+  "gate": "PASS (cascade: introduces nothing, breaks nothing)",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0234L04U01",
+    "en_new": "I met someone last night who works with your brother",
+    "fi_new": "mä tapasin eilen illalla jonkun, joka tekee töitä sun veljen kanssa",
+    "gate": "FAIL: ZUT vs S0234 (the seed, changed with it)",
+    "note": "seed-copy row"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F207",
+  "row": "S0238",
+  "verdict": "seed-change",
+  "en_new": "he wanted you to tell me tomorrow",
+  "fi_new": "Se halusi, että sä kerrot mulle huomenna",
+  "confidence": "medium",
+  "note": "present 'kerrot' clashes with 'eilen'; 'kertoisit' is untaught and moving eilen would split the LEGO 'se halusi että', so the time becomes future, where colloquial present is right (as seed 237's 'ennen viikonloppua'); English changes yesterday -> tomorrow",
+  "gate": "PASS",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0238L01U01",
+    "en_new": "he wanted you to tell me tomorrow",
+    "fi_new": "se halusi, että sä kerrot mulle huomenna",
+    "gate": "PASS",
+    "note": "seed-copy row"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F035",
+  "row": "S0243L02",
+  "verdict": "lego-change",
+  "en_new": "to eat",
+  "fi_new": "syötävää",
+  "confidence": "medium",
+  "note": "'jotain/samaa asiaa syötäväksi' is not idiomatic; 'jotain syötävää' is. No eating form is taught before 243, so the LEGO introduces 'syötävää'. The seed can't keep 'samaa asiaa' + syötävää, so seed = 'Mä aion pyytää samaa syötävää' and L01 is re-cut (not deleted) to 'the same thing | samaa' — its rows simply drop 'asiaa', which reads more naturally ('haluutko sä samaa?'); no later row uses 'asiaa'. Medium only because 'samaa syötävää' is a little unusual (natural but not the commonest)",
+  "gate": "PASS (patched copy: 14/17 changed rows pass; the 3 flags are B01=LEGO and the seed-copy row, as in live)",
+  "introduces": [
+   "syötävää"
+  ],
+  "cascade": [
+   {
+    "row": "S0243",
+    "en_new": "I'm going to ask for the same thing to eat",
+    "fi_new": "Mä aion pyytää samaa syötävää",
+    "gate": "seed",
+    "note": "seed sentence"
+   },
+   {
+    "row": "S0243L01",
+    "en_new": "the same thing",
+    "fi_new": "samaa",
+    "gate": "lego",
+    "note": "L01 re-cut; C02 thing|asiaa drops"
+   },
+   {
+    "row": "S0243L01B01",
+    "en_new": "the same thing",
+    "fi_new": "samaa",
+    "gate": "PASS (dup = LEGO)",
+    "note": ""
+   },
+   {
+    "row": "S0243L01B02",
+    "en_new": "to ask for the same thing",
+    "fi_new": "pyytää samaa",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L01B03",
+    "en_new": "he wants the same thing",
+    "fi_new": "se haluu samaa",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L01U01",
+    "en_new": "I'm going to ask for the same thing",
+    "fi_new": "mä aion pyytää samaa",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L01U02",
+    "en_new": "I want the same thing",
+    "fi_new": "mä haluun samaa",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L01U03",
+    "en_new": "I'd like the same thing",
+    "fi_new": "mä haluaisin samaa",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L01U04",
+    "en_new": "do you want the same thing?",
+    "fi_new": "haluutko sä samaa?",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L01U05",
+    "en_new": "I'm going to ask for the same thing this evening",
+    "fi_new": "mä aion pyytää samaa tänä iltana",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L02B01",
+    "en_new": "to eat",
+    "fi_new": "syötävää",
+    "gate": "PASS (dup = LEGO)",
+    "note": ""
+   },
+   {
+    "row": "S0243L02B02",
+    "en_new": "something to eat",
+    "fi_new": "jotain syötävää",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L02B03",
+    "en_new": "to ask for something to eat",
+    "fi_new": "pyytää jotain syötävää",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L02U01",
+    "en_new": "I'm going to ask for the same thing to eat",
+    "fi_new": "mä aion pyytää samaa syötävää",
+    "gate": "PASS (dup = seed copy)",
+    "note": "seed-copy row"
+   },
+   {
+    "row": "S0243L02U02",
+    "en_new": "I want to ask for something to eat",
+    "fi_new": "mä haluun pyytää jotain syötävää",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L02U03",
+    "en_new": "do you want something to eat?",
+    "fi_new": "haluutko sä jotain syötävää?",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L02U04",
+    "en_new": "I'd like something to eat",
+    "fi_new": "mä haluaisin jotain syötävää",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0243L02U05",
+    "en_new": "I'm going to ask for something to eat this evening",
+    "fi_new": "mä aion pyytää jotain syötävää tänä iltana",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0271L01U04",
+    "en_new": "would you like something to eat?",
+    "fi_new": "haluaisitko sä jotain syötävää?",
+    "gate": "PASS",
+    "note": "later row reusing the LEGO"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F208",
+  "row": "S0246",
+  "verdict": "seed-change",
+  "en_new": "I wanted her to help you but she was too busy",
+  "fi_new": "Mä halusin, että se auttaisi sua, mutta se oli liian kiireinen",
+  "confidence": "high",
+  "note": "after past 'halusin' the että-clause wants the conditional; 'auttaisi' is already taught (S0229L02 'would help you | auttaisi sua'), so nothing is introduced; LEGO 'se oli liian kiireinen' unchanged",
+  "gate": "FAIL: ZUT vs S0246L01U01 (its own seed-copy row, changed with it); cascade introduces nothing, breaks nothing",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0246L01U01",
+    "en_new": "I wanted her to help you but she was too busy",
+    "fi_new": "mä halusin, että se auttaisi sua, mutta se oli liian kiireinen",
+    "gate": "FAIL: ZUT vs S0246 (the seed, changed with it)",
+    "note": "seed-copy row"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F214",
+  "row": "S0277",
+  "verdict": "seed-change",
+  "en_new": "yes I've got an important meeting next week",
+  "fi_new": "Joo, mulla on tärkeä kokous ensi viikolla",
+  "confidence": "high",
+  "note": "'aikaisin ensi viikolla' is a calque and 'alussa' is untaught; dropping 'early' leaves only taught forms (ensi S0059L03, viikolla S0052L05) and still answers seed 274 'do you have to leave in a few days?'. Alternative if 'early' must stay: 'yes I've got an important meeting early tomorrow morning | Joo, mulla on tärkeä kokous huomenna aikaisin aamulla' (also PASS)",
+  "gate": "PASS",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0277L01U01",
+    "en_new": "yes I've got an important meeting next week",
+    "fi_new": "joo, mulla on tärkeä kokous ensi viikolla",
+    "gate": "PASS",
+    "note": "seed-copy row"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F215",
+  "row": "S0278",
+  "verdict": "seed-change",
+  "en_new": "did you have to do everything last night?",
+  "fi_new": "Pitikö sun tehdä kaikki eilen illalla?",
+  "confidence": "high",
+  "note": "'lopettaa kaikki' = stop everything and 'viime yönä' = during the night; 'tehdä' (S0059L02) + necessive nominative 'kaikki' + 'eilen illalla' are all taught; LEGO 'pitikö sun' unchanged; still fits answer seed 279 'yes because there wasn't much time left'",
+  "gate": "PASS",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0278L01U01",
+    "en_new": "did you have to do everything last night?",
+    "fi_new": "pitikö sun tehdä kaikki eilen illalla?",
+    "gate": "PASS",
+    "note": "seed-copy row"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F218",
+  "row": "S0295",
+  "verdict": "seed-change",
+  "en_new": "I didn't say that I wanted to do it in a day",
+  "fi_new": "Mä en sanonut, että mä halusin tehdä sen päivässä",
+  "confidence": "high",
+  "note": "'lopettaa päivässä' (stop in a day) can't carry 'finish a task in a day'; 'tehdä sen päivässä' uses taught tehdä/sen and the LEGO 'päivässä' stays; the L03 rows follow (necessive U04 takes nominative 'se'). L02 rows 'että mä halusin lopettaa' are fine as 'wanted to stop/finish' without a time frame and are left alone. L03B03 'to speak in a day | puhua päivässä' is odd but outside this finding",
+  "gate": "PASS",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0295L03U01",
+    "en_new": "I didn't say that I wanted to do it in a day",
+    "fi_new": "mä en sanonut, että mä halusin tehdä sen päivässä",
+    "gate": "PASS",
+    "note": "seed-copy row"
+   },
+   {
+    "row": "S0295L03B02",
+    "en_new": "to do it in a day",
+    "fi_new": "tehdä sen päivässä",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0295L03U02",
+    "en_new": "I want to do it in a day",
+    "fi_new": "mä haluun tehdä sen päivässä",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0295L03U03",
+    "en_new": "I'd like to do it in a day",
+    "fi_new": "mä haluaisin tehdä sen päivässä",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0295L03U04",
+    "en_new": "I have to do it in a day",
+    "fi_new": "mun pitää tehdä se päivässä",
+    "gate": "PASS",
+    "note": "necessive: nominative 'se'"
+   },
+   {
+    "row": "S0295L03U05",
+    "en_new": "I wanted to do it in a day",
+    "fi_new": "mä halusin tehdä sen päivässä",
+    "gate": "PASS",
+    "note": ""
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F219",
+  "row": "S0300L02",
+  "verdict": "lego-change",
+  "en_new": "to seem",
+  "fi_new": "vaikuttaa",
+  "confidence": "high",
+  "note": "in this seed vaikuttaa = seem (+ablative); re-gloss the LEGO 'to seem' (matches S0538L01C01 'seem | vaikuttaa') and rebuild the rows with ablative complements already taught: hyvältä/hienolta idealta (S0272), helpommalta (S0122). U06 'it's starting to have an effect | se alkaa vaikuttaa' teaches the other sense and should be deleted (U03 now drills 'alkaa vaikuttaa helpommalta'). 'vaikuttaa siltä, että' avoided — it is S0538's LEGO. Only remaining flag: B01 'to seem' vs the component tile S0122L02C01 'to seem | tuntua' (a tile, not drilled; that tile is better glossed 'to feel')",
+  "gate": "PASS (patched gloss: 7/7 rebuilt rows pass)",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0300L02B01",
+    "en_new": "to seem",
+    "fi_new": "vaikuttaa",
+    "gate": "FAIL: dup = LEGO / S0538L01C01 tile; ZUT vs tile S0122L02C01 'to seem | tuntua'",
+    "note": "bare-LEGO row; the clash is with component tiles only"
+   },
+   {
+    "row": "S0300L02B02",
+    "en_new": "doesn't want to seem",
+    "fi_new": "ei haluu vaikuttaa",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0300L02B03",
+    "en_new": "to seem good",
+    "fi_new": "vaikuttaa hyvältä",
+    "gate": "PASS",
+    "note": "was the dangling 'she doesn't want to influence'"
+   },
+   {
+    "row": "S0300L02U01",
+    "en_new": "it seems good",
+    "fi_new": "se vaikuttaa hyvältä",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0300L02U02",
+    "en_new": "that seems like a great idea",
+    "fi_new": "se vaikuttaa hienolta idealta",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0300L02U03",
+    "en_new": "it's starting to seem easier",
+    "fi_new": "se alkaa vaikuttaa helpommalta",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0300L02U04",
+    "en_new": "that seems really good",
+    "fi_new": "se vaikuttaa tosi hyvältä",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0300L02U05",
+    "en_new": "it seems much easier",
+    "fi_new": "se vaikuttaa paljon helpommalta",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0300L02U06",
+    "en_new": "",
+    "fi_new": "",
+    "gate": "delete",
+    "note": "teaches 'have an effect', not this LEGO's sense"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F221",
+  "row": "S0313L02B03",
+  "verdict": "reword",
+  "en_new": "I couldn't watch all five games",
+  "fi_new": "mä en voinut katsoa kaikkia viittä peliä",
+  "confidence": "high",
+  "note": "the LEGO's partitive 'kaikkia viittä peliä' is right only under negation (as in the seed), and 'viisi' is untaught, so the affirmative rows are negated; 'voinut' is taught (S0311L01), 'voi' is not until S0332. U02 and U04 (same finding) below",
+  "gate": "PASS",
+  "cascade": [
+   {
+    "row": "S0313L02U02",
+    "en_new": "you don't need to watch all five games today",
+    "fi_new": "sun ei tarvii katsoa kaikkia viittä peliä tänään",
+    "gate": "PASS",
+    "note": "negated necessive takes the partitive"
+   },
+   {
+    "row": "S0313L02U04",
+    "en_new": "I reckon she doesn't want to watch all five games",
+    "fi_new": "mä luulen, että se ei haluu katsoa kaikkia viittä peliä",
+    "gate": "PASS",
+    "note": "negated"
+   }
+  ]
+ },
+ {
+  "id": "F227",
+  "row": "S0326",
+  "verdict": "seed-change",
+  "en_new": "I believe that she doesn't need to sell the company",
+  "fi_new": "Mä uskon, että sen ei tarvii myydä yritystä",
+  "confidence": "medium",
+  "note": "necessive with a whole object wants nominative 'yritys' (untaught); putting the negation inside the clause makes the taught partitive 'yritystä' the grammatical form (ei tarvii + partitive), keeps both LEGOs, introduces nothing; English shifts negation to match ('I believe that' = S0125L01). Same-LEGO affirmative rows (B03, U03 'sen pitää myydä yritystä', U04 'se haluu myydä yritystä') have the same case problem but are outside this shard",
+  "gate": "PASS",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0326L02U01",
+    "en_new": "I believe that she doesn't need to sell the company",
+    "fi_new": "mä uskon, että sen ei tarvii myydä yritystä",
+    "gate": "PASS",
+    "note": "seed-copy row"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F238",
+  "row": "S0336",
+  "verdict": "seed-change",
+  "en_new": "I don't believe that she's able to open the door",
+  "fi_new": "Mä en usko, että se pystyy avaamaan oven",
+  "confidence": "medium",
+  "note": "opening the door is a total object; matrix 'en usko' can't hold the partitive in, and the LEGO 'the door | ovea' leaks into affirmative rows. No taught form fits (L01 'se pystyy avaamaan' blocks clause negation), so L02 becomes 'the door | oven' (introduced) and every 'ovea' row follows, including S0340L01U05 and seed 512's rows+seed, which leaned on 336 for 'ovea' ('pitää oven auki' is natural). U04 'se ei pysty avaamaan ovea' can't keep its negation without 'ovea', so it becomes an affirmative. Medium because 512's seed changes. L01U02 'mä en usko, että se pystyy avaamaan sitä' has the same issue (outside this shard)",
+  "gate": "PASS (patched copy: 13/16 rows pass; 3 flags are LEGO/B01, the seed-copy rows of 336 and 512, plus B01 vs tile S0499L02C02 'the door | ovi' as before; seed cascade breaks nothing)",
+  "introduces": [
+   "oven"
+  ],
+  "cascade": [
+   {
+    "row": "S0336L02",
+    "en_new": "the door",
+    "fi_new": "oven",
+    "gate": "lego",
+    "note": "LEGO Finnish changes"
+   },
+   {
+    "row": "S0336L02B01",
+    "en_new": "the door",
+    "fi_new": "oven",
+    "gate": "PASS (dup = LEGO)",
+    "note": ""
+   },
+   {
+    "row": "S0336L02B02",
+    "en_new": "to be able to open the door",
+    "fi_new": "pystyä avaamaan oven",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0336L02B03",
+    "en_new": "she's able to open the door",
+    "fi_new": "se pystyy avaamaan oven",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0336L02U01",
+    "en_new": "I don't believe that she's able to open the door",
+    "fi_new": "mä en usko, että se pystyy avaamaan oven",
+    "gate": "PASS (dup = seed copy)",
+    "note": "seed-copy row"
+   },
+   {
+    "row": "S0336L02U02",
+    "en_new": "she's able to open the door today",
+    "fi_new": "se pystyy avaamaan oven tänään",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0336L02U03",
+    "en_new": "I reckon she's able to open the door",
+    "fi_new": "mä luulen, että se pystyy avaamaan oven",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0336L02U04",
+    "en_new": "I know that she's able to open the door",
+    "fi_new": "mä tiedän, että se pystyy avaamaan oven",
+    "gate": "PASS",
+    "note": "was 'he isn't able to open the door' (needs ovea)"
+   },
+   {
+    "row": "S0336L02U05",
+    "en_new": "she said that she's able to open the door",
+    "fi_new": "se sanoi, että se pystyy avaamaan oven",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0336L02U06",
+    "en_new": "can he open the door?",
+    "fi_new": "pystyykö se avaamaan oven?",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0340L01U05",
+    "en_new": "i'm sure she's able to open the door",
+    "fi_new": "mä oon varma, että se pystyy avaamaan oven",
+    "gate": "PASS",
+    "note": "later reuse"
+   },
+   {
+    "row": "S0512",
+    "en_new": "can you hold the door open while I fetch the keys?",
+    "fi_new": "Voitko sä pitää oven auki, kun mä haen avaimet?",
+    "gate": "seed",
+    "note": "seed 512 relied on 336 for 'ovea'"
+   },
+   {
+    "row": "S0512L01B02",
+    "en_new": "to hold the door open",
+    "fi_new": "pitää oven auki",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0512L01B04",
+    "en_new": "do you want to keep the door open",
+    "fi_new": "haluutko sä pitää oven auki",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0512L01U01",
+    "en_new": "can you hold the door open?",
+    "fi_new": "voitko sä pitää oven auki?",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0512L01U04",
+    "en_new": "I want to hold the door open",
+    "fi_new": "mä haluun pitää oven auki",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0512L02U05",
+    "en_new": "can you hold the door open while I fetch it?",
+    "fi_new": "voitko sä pitää oven auki, kun mä haen sen?",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0512L03U01",
+    "en_new": "can you hold the door open while I fetch the keys?",
+    "fi_new": "voitko sä pitää oven auki, kun mä haen avaimet?",
+    "gate": "PASS (dup = seed 512 copy)",
+    "note": "seed-copy row"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F242",
+  "row": "S0340",
+  "verdict": "seed-change",
+  "en_new": "yes I'm sure he's going to be okay",
+  "fi_new": "Joo, mä oon varma, että sen käy hyvin",
+  "confidence": "medium",
+  "note": "'käydä hyvin' (turn out well for someone) takes the genitive; 'sen' is taught (S0020L02) and Kai already accepts 'sen' as his/her genitive, so the LEGO S0340L02 becomes 'he's going to be okay | sen käy hyvin' with nothing introduced; every L02 row and S0346L02U04 swap sille -> sen; component C01 for him|sille -> his|sen. Medium because colloquial 'sille käy hyvin' is heard",
+  "gate": "PASS (patched copy: 7/9 rows pass, 2 flags are LEGO/B01 and seed-copy; LEGO cascade introduces nothing)",
+  "introduces": [],
+  "cascade": [
+   {
+    "row": "S0340L02",
+    "en_new": "he's going to be okay",
+    "fi_new": "sen käy hyvin",
+    "gate": "lego",
+    "note": "LEGO Finnish changes"
+   },
+   {
+    "row": "S0340L02B01",
+    "en_new": "he's going to be okay",
+    "fi_new": "sen käy hyvin",
+    "gate": "PASS (dup = LEGO)",
+    "note": ""
+   },
+   {
+    "row": "S0340L02B02",
+    "en_new": "he's really going to be okay",
+    "fi_new": "sen käy tosi hyvin",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0340L02B03",
+    "en_new": "he's going to be okay today",
+    "fi_new": "sen käy hyvin tänään",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0340L02C01",
+    "en_new": "his",
+    "fi_new": "sen",
+    "gate": "component",
+    "note": ""
+   },
+   {
+    "row": "S0340L02U01",
+    "en_new": "yes I'm sure he's going to be okay",
+    "fi_new": "joo, mä oon varma, että sen käy hyvin",
+    "gate": "PASS (dup = seed copy)",
+    "note": "seed-copy row"
+   },
+   {
+    "row": "S0340L02U02",
+    "en_new": "I reckon he's going to be okay",
+    "fi_new": "mä luulen, että sen käy hyvin",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0340L02U03",
+    "en_new": "i'm sure she's going to be okay",
+    "fi_new": "mä oon varma, että sen käy hyvin",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0340L02U04",
+    "en_new": "she said that he's going to be okay",
+    "fi_new": "se sanoi, että sen käy hyvin",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0340L02U05",
+    "en_new": "I don't believe he's going to be okay",
+    "fi_new": "mä en usko, että sen käy hyvin",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0346L02U04",
+    "en_new": "I wanted her to know that he's okay",
+    "fi_new": "mä halusin sen tietävän, että sen käy hyvin",
+    "gate": "PASS",
+    "note": "later reuse"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F078",
+  "row": "S0362L01C02",
+  "verdict": "reword",
+  "en_new": "quiet (by nature)",
+  "fi_new": "hiljainen",
+  "confidence": "high",
+  "note": "component gloss 'natured' is meaningless; plain 'quiet' would clash with LEGO S0361L01 'quiet | hiljaa' (ZUT), so the tile says 'quiet (by nature)', which is exactly what hiljainen adds over hiljaa",
+  "gate": "PASS"
+ },
+ {
+  "id": "F079",
+  "row": "S0377",
+  "verdict": "seed-change",
+  "en_new": "did you go anywhere in the world last year?",
+  "fi_new": "Menitkö sä mihinkään päin maailmaa viime vuonna?",
+  "confidence": "high",
+  "note": "'mihinkään maailmassa' mixes illative and inessive; nothing taught can say 'anywhere in the world' with 'menitkö' (päin/maailmaa come at S0506/S0583), so L02 grows on both sides to 'anywhere in the world | mihinkään päin maailmaa' (mihinkään taught S0376L01; introduces päin, maailmaa). No later row uses 'maailmassa'. L02 rows rebuilt; L03B03 and the seed copy follow",
+  "gate": "PASS (patched copy: 8/10 rows pass, 2 flags are LEGO/B01 and seed-copy; seed cascade breaks nothing)",
+  "introduces": [
+   "päin",
+   "maailmaa"
+  ],
+  "cascade": [
+   {
+    "row": "S0377L02",
+    "en_new": "anywhere in the world",
+    "fi_new": "mihinkään päin maailmaa",
+    "gate": "lego",
+    "note": "LEGO grows on both sides"
+   },
+   {
+    "row": "S0377L02B01",
+    "en_new": "anywhere in the world",
+    "fi_new": "mihinkään päin maailmaa",
+    "gate": "PASS (dup = LEGO)",
+    "note": ""
+   },
+   {
+    "row": "S0377L02B02",
+    "en_new": "to go anywhere in the world",
+    "fi_new": "mennä mihinkään päin maailmaa",
+    "gate": "PASS",
+    "note": "old B02 became the LEGO"
+   },
+   {
+    "row": "S0377L02B03",
+    "en_new": "I didn't go anywhere in the world",
+    "fi_new": "mä en mennyt mihinkään päin maailmaa",
+    "gate": "PASS",
+    "note": "was 'anywhere in the world today'"
+   },
+   {
+    "row": "S0377L02U01",
+    "en_new": "did you go anywhere in the world?",
+    "fi_new": "menitkö sä mihinkään päin maailmaa?",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0377L02U02",
+    "en_new": "I don't want to go anywhere in the world",
+    "fi_new": "mä en haluu mennä mihinkään päin maailmaa",
+    "gate": "PASS",
+    "note": "old U02 text moved to B03"
+   },
+   {
+    "row": "S0377L02U03",
+    "en_new": "did you go anywhere in the world this year?",
+    "fi_new": "menitkö sä mihinkään päin maailmaa tänä vuonna?",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0377L02U04",
+    "en_new": "I didn't go anywhere in the world last month",
+    "fi_new": "mä en mennyt mihinkään päin maailmaa viime kuussa",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0377L02U05",
+    "en_new": "did you go anywhere in the world with your friend?",
+    "fi_new": "menitkö sä mihinkään päin maailmaa sun kaverin kanssa?",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0377L03B03",
+    "en_new": "anywhere in the world last year",
+    "fi_new": "mihinkään päin maailmaa viime vuonna",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0377L03U01",
+    "en_new": "did you go anywhere in the world last year?",
+    "fi_new": "menitkö sä mihinkään päin maailmaa viime vuonna?",
+    "gate": "PASS (dup = seed copy)",
+    "note": "seed-copy row"
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F080",
+  "row": "S0379",
+  "verdict": "seed-change",
+  "en_new": "yes I was so lucky that I got to travel to Africa",
+  "fi_new": "Joo, mä olin niin onnekas, että mä pääsin matkustamaan Afrikkaan",
+  "confidence": "medium",
+  "note": "'tarpeeksi onnekas matkustamaan' is a word-for-word calque of 'lucky enough to'; Finnish says 'niin onnekas, että mä pääsin…'. Nothing taught can say 'got to' (pääsin/sain/pystyin absent), so the seed introduces 'pääsin' and its English follows the Finnish ('so lucky that I got to' is natural English). LEGOs re-cut, none deleted: L01 I was|mä olin unchanged; L02 ready to travel -> so lucky|niin onnekas; L03 lucky enough -> I got to travel|mä pääsin matkustamaan; L04 to Africa|Afrikkaan (capitalised). All three LEGO baskets rebuilt (2 rows deleted). Later rows using onnekas (S0536, S0547) and Afrikkaan (S0440) stay taught. Medium because it re-cuts a whole seed; Kai may prefer to keep the English seed wording",
+  "gate": "PASS (patched copy: 19/23 rebuilt rows pass; the 4 flags are the three B01=LEGO rows and the seed-copy row; seed cascade introduces only pääsin and breaks nothing later)",
+  "introduces": [
+   "pääsin"
+  ],
+  "cascade": [
+   {
+    "row": "S0379",
+    "en_new": "yes I was so lucky that I got to travel to Africa",
+    "fi_new": "Joo, mä olin niin onnekas, että mä pääsin matkustamaan Afrikkaan",
+    "gate": "seed",
+    "note": ""
+   },
+   {
+    "row": "S0379L02",
+    "en_new": "so lucky",
+    "fi_new": "niin onnekas",
+    "gate": "lego",
+    "note": "re-cut: was 'ready to travel | valmis matkustamaan' (not in the seed, F251)"
+   },
+   {
+    "row": "S0379L03",
+    "en_new": "I got to travel",
+    "fi_new": "mä pääsin matkustamaan",
+    "gate": "lego",
+    "note": "re-cut: was 'lucky enough | tarpeeksi onnekas'"
+   },
+   {
+    "row": "S0379L04",
+    "en_new": "to Africa",
+    "fi_new": "Afrikkaan",
+    "gate": "lego",
+    "note": "capitalised (F081)"
+   },
+   {
+    "row": "S0379L02B01",
+    "en_new": "so lucky",
+    "fi_new": "niin onnekas",
+    "gate": "PASS (dup = LEGO, as every B01)",
+    "note": ""
+   },
+   {
+    "row": "S0379L02B02",
+    "en_new": "I was so lucky",
+    "fi_new": "mä olin niin onnekas",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L02B03",
+    "en_new": "she was so lucky",
+    "fi_new": "se oli niin onnekas",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L02U01",
+    "en_new": "I'm so lucky",
+    "fi_new": "mä oon niin onnekas",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L02U02",
+    "en_new": "he wasn't so lucky",
+    "fi_new": "se ei ollut niin onnekas",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L02U03",
+    "en_new": "I was so lucky yesterday",
+    "fi_new": "mä olin niin onnekas eilen",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L02U04",
+    "en_new": "you're so lucky",
+    "fi_new": "sä oot niin onnekas",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L02U05",
+    "en_new": "I was so lucky this year",
+    "fi_new": "mä olin niin onnekas tänä vuonna",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L02U06",
+    "en_new": "",
+    "fi_new": "",
+    "gate": "delete",
+    "note": "was 'you helped me to travel | autoit mua matkustamaan' — no longer this LEGO's sense"
+   },
+   {
+    "row": "S0379L03B01",
+    "en_new": "I got to travel",
+    "fi_new": "mä pääsin matkustamaan",
+    "gate": "PASS (dup = LEGO, as every B01)",
+    "note": ""
+   },
+   {
+    "row": "S0379L03B02",
+    "en_new": "I got to travel this year",
+    "fi_new": "mä pääsin matkustamaan tänä vuonna",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L03B03",
+    "en_new": "so I got to travel",
+    "fi_new": "joten mä pääsin matkustamaan",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L03C01",
+    "en_new": "I got",
+    "fi_new": "mä pääsin",
+    "gate": "component",
+    "note": ""
+   },
+   {
+    "row": "S0379L03C02",
+    "en_new": "to travel",
+    "fi_new": "matkustamaan",
+    "gate": "component",
+    "note": ""
+   },
+   {
+    "row": "S0379L03U01",
+    "en_new": "I was so lucky that I got to travel",
+    "fi_new": "mä olin niin onnekas, että mä pääsin matkustamaan",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L03U02",
+    "en_new": "I got to travel with my friend",
+    "fi_new": "mä pääsin matkustamaan mun kaverin kanssa",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L03U03",
+    "en_new": "I got to travel last year",
+    "fi_new": "mä pääsin matkustamaan viime vuonna",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L03U04",
+    "en_new": "it was a good thing that I got to travel",
+    "fi_new": "oli hyvä juttu, että mä pääsin matkustamaan",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L03U05",
+    "en_new": "",
+    "fi_new": "",
+    "gate": "delete",
+    "note": "was 'he wasn't lucky enough' — now L02U02 'he wasn't so lucky'"
+   },
+   {
+    "row": "S0379L04B01",
+    "en_new": "to Africa",
+    "fi_new": "Afrikkaan",
+    "gate": "PASS (dup = LEGO, as every B01)",
+    "note": ""
+   },
+   {
+    "row": "S0379L04B02",
+    "en_new": "I got to travel to Africa",
+    "fi_new": "mä pääsin matkustamaan Afrikkaan",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L04B03",
+    "en_new": "I want to go to Africa",
+    "fi_new": "mä haluun mennä Afrikkaan",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L04U01",
+    "en_new": "yes I was so lucky that I got to travel to Africa",
+    "fi_new": "joo, mä olin niin onnekas, että mä pääsin matkustamaan Afrikkaan",
+    "gate": "PASS (dup = seed copy)",
+    "note": "seed-copy row"
+   },
+   {
+    "row": "S0379L04U02",
+    "en_new": "I was so lucky that I got to travel to Africa",
+    "fi_new": "mä olin niin onnekas, että mä pääsin matkustamaan Afrikkaan",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L04U03",
+    "en_new": "did you go to Africa last year?",
+    "fi_new": "menitkö sä Afrikkaan viime vuonna?",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L04U04",
+    "en_new": "I didn't go to Africa",
+    "fi_new": "mä en mennyt Afrikkaan",
+    "gate": "PASS",
+    "note": ""
+   },
+   {
+    "row": "S0379L04U05",
+    "en_new": "I got to travel to Africa last year",
+    "fi_new": "mä pääsin matkustamaan Afrikkaan viime vuonna",
+    "gate": "PASS",
+    "note": ""
+   }
+  ],
+  "cascade_clean": true
+ },
+ {
+  "id": "F251",
+  "row": "S0379L02",
+  "verdict": "lego-change",
+  "en_new": "so lucky",
+  "fi_new": "niin onnekas",
+  "confidence": "medium",
+  "note": "'ready to travel | valmis matkustamaan' is not in the seed; re-cut (not deleted) as part of the F080 seed rework to 'so lucky | niin onnekas' (niin taught S0003L04); its rows are rebuilt in F080's cascade, U06 deleted",
+  "gate": "PASS (see F080 cascade)",
+  "introduces": [],
+  "cascade": [],
+  "cascade_clean": true
+ },
+ {
+  "id": "F081",
+  "row": "S0379L04",
+  "verdict": "lego-change",
+  "en_new": "to Africa",
+  "fi_new": "Afrikkaan",
+  "confidence": "high",
+  "note": "proper noun capitalised to match its rows; spelling only, standalone and also part of F080",
+  "gate": "PASS (cascade S0379L04: introduces nothing, breaks nothing)",
+  "introduces": [],
+  "cascade": [],
+  "cascade_clean": true
+ },
+ {
+  "id": "F252",
+  "row": "S0381L04C02",
+  "verdict": "reword",
+  "en_new": "(follow) us",
+  "fi_new": "meitä",
+  "confidence": "medium",
+  "note": "component gloss 'us both' adds a 'both' that is not there; plain 'us' would clash with LEGO S0138L03 'us | meidät' (ZUT), so the tile is glossed '(follow) us', mirroring C01 'to follow'",
+  "gate": "PASS"
+ }
+]

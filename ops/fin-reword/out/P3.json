@@ -1,0 +1,772 @@
+[
+ {
+  "id": "F241",
+  "row": "S0338L01U01",
+  "verdict": "reword",
+  "en_new": "I badly need help",
+  "fi_new": "mä tarviin pahasti apua",
+  "confidence": "high",
+  "note": "pahasti = badly/severely, never poor quality; 'tarvita pahasti' (badly need) is its natural use; tarviin + apua taught (S0096L02, S0172L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F071",
+  "row": "S0338L01U02",
+  "verdict": "reword",
+  "en_new": "sorry, I'm going to be badly late",
+  "fi_new": "sori, mä myöhästyn pahasti",
+  "confidence": "medium",
+  "note": "'myöhästyä pahasti' is the severity sense of pahasti; myöhästyn taught S0270L02; English 'badly late' is natural but less common than 'very late'",
+  "gate": "PASS"
+ },
+ {
+  "id": "F072",
+  "row": "S0338L01U03",
+  "verdict": "reword",
+  "en_new": "he needs help quite badly",
+  "fi_new": "se tarvii apua aika pahasti",
+  "confidence": "high",
+  "note": "speaking Finnish 'pahasti' is wrong (huonosti, untaught); switched to the severity sense with tarvii (S0045L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F073",
+  "row": "S0338L01U04",
+  "verdict": "reword",
+  "en_new": "I reckon she needs help really badly",
+  "fi_new": "mä luulen, että se tarvii apua tosi pahasti",
+  "confidence": "high",
+  "note": "same: severity sense, tosi pahasti as in B02",
+  "gate": "PASS"
+ },
+ {
+  "id": "F074",
+  "row": "S0338L01U05",
+  "verdict": "reword",
+  "en_new": "I needed help badly",
+  "fi_new": "mä tarvitsin apua pahasti",
+  "confidence": "high",
+  "note": "'doing it pahasti' is wrong; past tarvitsin taught S0296L02",
+  "gate": "PASS"
+ },
+ {
+  "id": "F075",
+  "row": "S0340L01U05",
+  "verdict": "reword",
+  "en_new": "i'm sure she isn't able to open the door",
+  "fi_new": "mä oon varma, että se ei pysty avaamaan ovea",
+  "confidence": "high",
+  "note": "affirmative needs oven (untaught); under negation the taught partitive ovea is the grammatical form; pysty taught S0024L01",
+  "gate": "PASS"
+ },
+ {
+  "id": "F243",
+  "row": "S0346L03U02",
+  "verdict": "reword",
+  "en_new": "I liked it today",
+  "fi_new": "mä tykkäsin siitä tänään",
+  "confidence": "high",
+  "note": "English 'really' had no Finnish counterpart; dropped it from the English (U04 already drills tosi paljon)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F076",
+  "row": "S0347L01U06",
+  "verdict": "reword",
+  "en_new": "he wanted to know everything",
+  "fi_new": "se halusi tietää kaiken",
+  "confidence": "high",
+  "note": "affirmative 'know everything' = total kaiken, which IS taught (S0200L04), so the correct form is available",
+  "gate": "PASS"
+ },
+ {
+  "id": "F244",
+  "row": "S0348L01U08",
+  "verdict": "reword",
+  "en_new": "she didn't want to know that I'd forgotten",
+  "fi_new": "se ei halunnut tietää, että mä olin unohtanut",
+  "confidence": "high",
+  "note": "pluperfect needed; olin (S0147L03) and unohtanut (S0205L01) are both taught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F245",
+  "row": "S0348L02U05",
+  "verdict": "reword",
+  "en_new": "she couldn't guess what was happening",
+  "fi_new": "se ei voinut arvata, mitä oli tapahtumassa",
+  "confidence": "high",
+  "note": "'se voi' is present, not 'could'; past negative voinut is taught (S0311L01), so the row is now past on both sides",
+  "gate": "PASS"
+ },
+ {
+  "id": "F391",
+  "row": "S0348L02U06",
+  "verdict": "reword",
+  "en_new": "I want to think about what was happening",
+  "fi_new": "mä haluun miettiä, mitä oli tapahtumassa",
+  "confidence": "high",
+  "note": "harkita = weigh a decision; with an indirect question miettiä (taught S0037L03) is natural; English follows the course's 'think about'",
+  "gate": "PASS"
+ },
+ {
+  "id": "F246",
+  "row": "S0351L01U05",
+  "verdict": "reword",
+  "en_new": "he doesn't want to leave me on my own",
+  "fi_new": "se ei haluu jättää mua yksin",
+  "confidence": "high",
+  "note": "partitive mua is right only under negation; put the LEGO under the clause's own negation (jätä is untaught, so no 'että se ei jätä')",
+  "gate": "PASS"
+ },
+ {
+  "id": "F392",
+  "row": "S0356L01U02",
+  "verdict": "reword",
+  "en_new": "I reckon they had a good book",
+  "fi_new": "mä luulen, että niillä oli hyvä kirja",
+  "confidence": "high",
+  "note": "kiva = nice; hyvä is taught, so Finnish now says 'good' and the row no longer duplicates U05's 'nice book'",
+  "gate": "PASS"
+ },
+ {
+  "id": "F077",
+  "row": "S0357L03U05",
+  "verdict": "reword",
+  "en_new": "I'm going to send you a message today",
+  "fi_new": "mä aion lähettää sulle viestin tänään",
+  "confidence": "high",
+  "note": "necessive needs nominative viesti (untaught); active aion (taught) makes the LEGO's accusative viestin correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F247",
+  "row": "S0362L01U03",
+  "verdict": "reword",
+  "en_new": "I'm rather quiet",
+  "fi_new": "mä oon aika hiljainen",
+  "confidence": "high",
+  "note": "'too' had no counterpart (mäkin untaught); dropped it from the English",
+  "gate": "PASS"
+ },
+ {
+  "id": "F248",
+  "row": "S0369L02U07",
+  "verdict": "reword",
+  "en_new": "I've seen several horses",
+  "fi_new": "mä oon nähnyt useita hevosia",
+  "confidence": "high",
+  "note": "\"several\" under negation was odd on both sides; made it affirmative with taught nähnyt (S0182L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F393",
+  "row": "S0374L01B02",
+  "verdict": "reword",
+  "en_new": "I thought it was good",
+  "fi_new": "mun mielestä se oli hyvä",
+  "confidence": "high",
+  "note": "kiva = nice; taught hyvä now matches \"good\"",
+  "gate": "PASS"
+ },
+ {
+  "id": "F249",
+  "row": "S0374L01U02",
+  "verdict": "reword",
+  "en_new": "I thought that it was important",
+  "fi_new": "mun mielestä se oli tärkeää",
+  "confidence": "high",
+  "note": "tense: English was, Finnish on; taught oli used as in the sibling rows",
+  "gate": "PASS"
+ },
+ {
+  "id": "F250",
+  "row": "S0378L02U04",
+  "verdict": "reword",
+  "en_new": "she didn't have enough money",
+  "fi_new": "sillä ei ollut tarpeeksi rahaa",
+  "confidence": "high",
+  "note": "\"either\" had no counterpart (silläkään untaught); dropped from the English",
+  "gate": "PASS"
+ },
+ {
+  "id": "F394",
+  "row": "S0387L01U01",
+  "verdict": "reword",
+  "en_new": "no I didn't believe what he said",
+  "fi_new": "en, mä en uskonut sitä, mitä se sanoi",
+  "confidence": "high",
+  "note": "uskoa + mitä-clause needs the correlate sitä to mean believe what; sitä is taught (B02)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F395",
+  "row": "S0387L01U04",
+  "verdict": "reword",
+  "en_new": "no I didn't believe that it was important",
+  "fi_new": "en, mä en uskonut, että se oli tärkeää",
+  "confidence": "high",
+  "note": "past English; Finnish now uses taught oli",
+  "gate": "PASS"
+ },
+ {
+  "id": "F253",
+  "row": "S0387L01U07",
+  "verdict": "reword",
+  "en_new": "no I didn't believe that she'd help me",
+  "fi_new": "en, mä en uskonut, että se auttaisi mua",
+  "confidence": "high",
+  "note": "you'd help needs auttaisit (untaught); third-person auttaisi IS taught, so the subject became she",
+  "gate": "PASS"
+ },
+ {
+  "id": "F254",
+  "row": "S0387L02U03",
+  "verdict": "reword",
+  "en_new": "you're right",
+  "fi_new": "sä oot oikeassa",
+  "confidence": "high",
+  "note": "oikeassa siitä is the wrong case and siinä is untaught; dropped the about-phrase; sä oot oikeassa is the everyday idiom (olit untaught, so present)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F396",
+  "row": "S0389L01B04",
+  "verdict": "reword",
+  "en_new": "that person is nice",
+  "fi_new": "toi henkilö on kiva",
+  "confidence": "high",
+  "note": "toi (over there) clashed with täällä; replaced the location with a predicate (all taught)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F255",
+  "row": "S0390L02B03",
+  "verdict": "reword",
+  "en_new": "that person near the entrance",
+  "fi_new": "toi henkilö lähellä sisäänkäyntiä",
+  "confidence": "high",
+  "note": "English lacked joka seisoo; adding standing duplicates the seed Finnish, so the build row now uses toi henkilö (S0389L01) with the LEGO, matching on both sides",
+  "gate": "PASS"
+ },
+ {
+  "id": "F256",
+  "row": "S0391L02B03",
+  "verdict": "reword",
+  "en_new": "she's walking towards the bus",
+  "fi_new": "se kävelee bussia kohti",
+  "confidence": "high",
+  "note": "\"the one towards the bus\" is not English and the corrected English duplicates the seed Finnish; now a plain clause, both sides match",
+  "gate": "PASS"
+ },
+ {
+  "id": "F082",
+  "row": "S0398L02U02",
+  "verdict": "reword",
+  "en_new": "we need to become more patient",
+  "fi_new": "meidän pitää tulla kärsivällisemmiksi",
+  "confidence": "high",
+  "note": "plural translative needs a plural subject; meidän pitää (taught) gives one",
+  "gate": "PASS"
+ },
+ {
+  "id": "F083",
+  "row": "S0398L02U05",
+  "verdict": "reword",
+  "en_new": "they want to become more patient",
+  "fi_new": "ne haluu tulla kärsivällisemmiksi",
+  "confidence": "high",
+  "note": "plural translative needs a plural subject; ne haluu is the course's colloquial they want",
+  "gate": "PASS"
+ },
+ {
+  "id": "F084",
+  "row": "S0399L02U04",
+  "verdict": "reword",
+  "en_new": "we don't want to lose time",
+  "fi_new": "me ei haluta menettää aikaa",
+  "confidence": "high",
+  "note": "a game is lost with hävitä (untaught); menettää aikaa is the natural lose-possession sense, partitive aikaa under negation",
+  "gate": "PASS"
+ },
+ {
+  "id": "F398",
+  "row": "S0399L03B03",
+  "verdict": "reword",
+  "en_new": "to start losing hope",
+  "fi_new": "alkaa menettää toivoa",
+  "confidence": "high",
+  "note": "\"vielä\" works only under negation; the partitive toivoa is natural with alkaa (taught), as in alkaa puhua",
+  "gate": "PASS"
+ },
+ {
+  "id": "F085",
+  "row": "S0399L03B04",
+  "verdict": "reword",
+  "en_new": "I don't want to lose all hope",
+  "fi_new": "mä en haluu menettää kaikkea toivoa",
+  "confidence": "high",
+  "note": "\"kaikki toivoa\" is ungrammatical; under negation kaikkea toivoa is right and kaikkea is taught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F086",
+  "row": "S0400L01U05",
+  "verdict": "reword",
+  "en_new": "do we want to see it?",
+  "fi_new": "halutaanko me nähdä se?",
+  "confidence": "high",
+  "note": "a passive main verb takes a nominative total object; se is taught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F087",
+  "row": "S0400L02U04",
+  "verdict": "reword",
+  "en_new": "we need to eat something soon",
+  "fi_new": "meidän pitää syödä jotain pian",
+  "confidence": "high",
+  "note": "jotain under negation implied a specific thing; affirmative necessive keeps the LEGO natural; pian taught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F399",
+  "row": "S0402L03U04",
+  "verdict": "reword",
+  "en_new": "I reckon we want to stop somewhere for food",
+  "fi_new": "mä luulen, että me halutaan pysähtyä jonnekin ruoalle",
+  "confidence": "high",
+  "note": "English dropped somewhere (jonnekin); added it",
+  "gate": "PASS"
+ },
+ {
+  "id": "F258",
+  "row": "S0403L03U02",
+  "verdict": "reword",
+  "en_new": "I want to stay here for as long as possible",
+  "fi_new": "mä haluun pysyä täällä niin kauan kuin mahdollista",
+  "confidence": "high",
+  "note": "pysyä needs a complement; taught täällä added on both sides",
+  "gate": "PASS"
+ },
+ {
+  "id": "F259",
+  "row": "S0403L03U04",
+  "verdict": "reword",
+  "en_new": "I reckon we should remain quiet for as long as possible",
+  "fi_new": "mä luulen, että meidän pitäisi pysyä hiljaa niin kauan kuin mahdollista",
+  "confidence": "high",
+  "note": "pysyä needs a complement; taught hiljaa (as in the seed), English follows the seed's remain quiet",
+  "gate": "PASS"
+ },
+ {
+  "id": "F088",
+  "row": "S0411L02U02",
+  "verdict": "reword",
+  "en_new": "I need to reserve a table",
+  "fi_new": "mun pitää varata pöytä",
+  "confidence": "high",
+  "note": "active haluun needs pöydän (untaught); necessive mun pitää makes the taught nominative pöytä correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F089",
+  "row": "S0411L02U05",
+  "verdict": "reword",
+  "en_new": "we want to reserve a table",
+  "fi_new": "me halutaan varata pöytä",
+  "confidence": "high",
+  "note": "passive me halutaan takes the nominative pöytä",
+  "gate": "PASS"
+ },
+ {
+  "id": "F090",
+  "row": "S0411L03U02",
+  "verdict": "reword",
+  "en_new": "I need to reserve a table for four",
+  "fi_new": "mun pitää varata pöytä neljälle",
+  "confidence": "high",
+  "note": "necessive makes nominative pöytä correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F091",
+  "row": "S0411L03U05",
+  "verdict": "reword",
+  "en_new": "do we want to reserve a table for four?",
+  "fi_new": "halutaanko me varata pöytä neljälle?",
+  "confidence": "high",
+  "note": "passive question (S0400L01) takes the nominative pöytä",
+  "gate": "PASS"
+ },
+ {
+  "id": "F092",
+  "row": "S0411L04U02",
+  "verdict": "reword",
+  "en_new": "I should reserve a table for tonight",
+  "fi_new": "mun pitäisi varata pöytä täksi illaksi",
+  "confidence": "high",
+  "note": "necessive mun pitäisi makes nominative pöytä correct; English now carries the LEGO's for tonight",
+  "gate": "PASS"
+ },
+ {
+  "id": "F093",
+  "row": "S0411L04U05",
+  "verdict": "reword",
+  "en_new": "we want to reserve a table for tonight",
+  "fi_new": "me halutaan varata pöytä täksi illaksi",
+  "confidence": "high",
+  "note": "passive takes the nominative pöytä",
+  "gate": "PASS"
+ },
+ {
+  "id": "F403",
+  "row": "S0412L03B01",
+  "verdict": "reword",
+  "en_new": "I don't know everything",
+  "fi_new": "mä en tiedä kaikkea",
+  "confidence": "high",
+  "note": "partitive kaikkea is right only under negation; put the LEGO in a negative clause (tiedä taught)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F261",
+  "row": "S0412L03B03",
+  "verdict": "reword",
+  "en_new": "I don't want to lose everything",
+  "fi_new": "mä en haluu menettää kaikkea",
+  "confidence": "high",
+  "note": "same: negative clause licenses kaikkea",
+  "gate": "PASS"
+ },
+ {
+  "id": "F262",
+  "row": "S0412L03B04",
+  "verdict": "reword",
+  "en_new": "I couldn't see everything",
+  "fi_new": "mä en voinut nähdä kaikkea",
+  "confidence": "high",
+  "note": "nähdä kaikkea = see all sorts; under negation it is see everything; voinut taught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F094",
+  "row": "S0412L03U04",
+  "verdict": "reword",
+  "en_new": "they can't win everything",
+  "fi_new": "ne ei voi voittaa kaikkea",
+  "confidence": "high",
+  "note": "affirmative needed kaiken; under negation kaikkea is right and natural (you can't win everything)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F404",
+  "row": "S0413L03U04",
+  "verdict": "reword",
+  "en_new": "we could come back in time if we go now",
+  "fi_new": "me voidaan tulla takaisin ajoissa, jos mennään nyt",
+  "confidence": "medium",
+  "note": "leave-if-we-go was tautological; replaced the main clause with taught tulla takaisin ajoissa (S0091L02)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F095",
+  "row": "S0414L03U02",
+  "verdict": "reword",
+  "en_new": "do we want to have a bottle?",
+  "fi_new": "halutaanko me saada pullo?",
+  "confidence": "medium",
+  "note": "active haluun needs pullon (untaught); passive question takes the nominative pullo; English mirrors the LEGO's to have",
+  "gate": "PASS"
+ },
+ {
+  "id": "F096",
+  "row": "S0414L04U02",
+  "verdict": "reword",
+  "en_new": "we want to have a bottle of red wine",
+  "fi_new": "me halutaan saada pullo punaviiniä",
+  "confidence": "medium",
+  "note": "passive me halutaan takes the nominative pullo",
+  "gate": "PASS"
+ },
+ {
+  "id": "F264",
+  "row": "S0415L01U03",
+  "verdict": "reword",
+  "en_new": "that wouldn't be a good idea",
+  "fi_new": "se ei olisi hyvä idea",
+  "confidence": "high",
+  "note": "kiva = nice; hyvä is taught, so the Finnish now says good",
+  "gate": "PASS"
+ },
+ {
+  "id": "F265",
+  "row": "S0415L03U02",
+  "verdict": "reword",
+  "en_new": "it is a good idea if you ask me",
+  "fi_new": "se on hyvä idea, jos multa kysytään",
+  "confidence": "high",
+  "note": "kiva -> taught hyvä",
+  "gate": "PASS"
+ },
+ {
+  "id": "F266",
+  "row": "S0415L03U04",
+  "verdict": "reword",
+  "en_new": "I reckon it's a good idea if you ask me",
+  "fi_new": "mä luulen, että se on hyvä idea, jos multa kysytään",
+  "confidence": "high",
+  "note": "kiva -> taught hyvä",
+  "gate": "PASS"
+ },
+ {
+  "id": "F097",
+  "row": "S0417L03U02",
+  "verdict": "reword",
+  "en_new": "I want to kill those ants",
+  "fi_new": "mä haluun tappaa noi muurahaiset",
+  "confidence": "high",
+  "note": "under negation the object must be partitive (noita muurahaisia, untaught); made the clause affirmative so the taught total object noi muurahaiset is right",
+  "gate": "PASS"
+ },
+ {
+  "id": "F098",
+  "row": "S0417L03U04",
+  "verdict": "reword",
+  "en_new": "we need to kill those ants",
+  "fi_new": "meidän pitää tappaa noi muurahaiset",
+  "confidence": "high",
+  "note": "same: affirmative necessive takes the nominative plural total object",
+  "gate": "PASS"
+ },
+ {
+  "id": "F267",
+  "row": "S0426L01U07",
+  "verdict": "reword",
+  "en_new": "they would like to be together",
+  "fi_new": "ne haluaisi olla yhdessä",
+  "confidence": "high",
+  "note": "plural ne with singular opettajana (opettajina/opettajia untaught); swapped the complement for taught yhdessä",
+  "gate": "PASS"
+ },
+ {
+  "id": "F269",
+  "row": "S0434L04B02",
+  "verdict": "reword",
+  "en_new": "the number of students they take",
+  "fi_new": "opiskelijoiden määrää, jonka ne ottaa",
+  "confidence": "high",
+  "note": "English omitted the number (määrää); English now matches the Finnish",
+  "gate": "PASS"
+ },
+ {
+  "id": "F271",
+  "row": "S0436L01U01",
+  "verdict": "reword",
+  "en_new": "there was a minimum number",
+  "fi_new": "niillä oli vähimmäismäärä",
+  "confidence": "medium",
+  "note": "siihen = for it, dangling, and did not match for them; dropped it and moved to past (niillä oli, S0356L01) so it is not a duplicate of B02",
+  "gate": "PASS"
+ },
+ {
+  "id": "F272",
+  "row": "S0441L01U01",
+  "verdict": "reword",
+  "en_new": "that's a good approach",
+  "fi_new": "se on hyvä lähestymistapa",
+  "confidence": "high",
+  "note": "kiva lähestymistapa sounds off; taught hyvä",
+  "gate": "PASS"
+ },
+ {
+  "id": "F273",
+  "row": "S0441L01U02",
+  "verdict": "reword",
+  "en_new": "I reckon it's a good approach",
+  "fi_new": "mä luulen, että se on hyvä lähestymistapa",
+  "confidence": "high",
+  "note": "kiva -> taught hyvä",
+  "gate": "PASS"
+ },
+ {
+  "id": "F099",
+  "row": "S0442L03U03",
+  "verdict": "reword",
+  "en_new": "they want to develop a new approach",
+  "fi_new": "ne haluu kehittää uuden lähestymistavan",
+  "confidence": "high",
+  "note": "necessive needs nominative uusi lähestymistapa (uusi untaught); an active personal subject makes the LEGO's accusative right",
+  "gate": "PASS"
+ },
+ {
+  "id": "F274",
+  "row": "S0442L03U06",
+  "verdict": "no-change",
+  "en_new": "you need a new approach",
+  "fi_new": "sä tarviit uuden lähestymistavan",
+  "confidence": "medium",
+  "note": "tarvita with a total object for one whole new thing is ordinary Finnish (tarviit uuden puhelimen); the partitive is an option, not a correction, and lähestymistapaa is untaught",
+  "gate": "PASS (current row)"
+ },
+ {
+  "id": "F276",
+  "row": "S0444L01U02",
+  "verdict": "reword",
+  "en_new": "they thought that it was important",
+  "fi_new": "niiden mielestä se oli tärkeää",
+  "confidence": "high",
+  "note": "tense: past English, Finnish now uses taught oli as the siblings do",
+  "gate": "PASS"
+ },
+ {
+  "id": "F277",
+  "row": "S0444L01U06",
+  "verdict": "reword",
+  "en_new": "they thought I was kind",
+  "fi_new": "niiden mielestä mä olin kiltti",
+  "confidence": "medium",
+  "note": "mielestä expresses an opinion, not a belief about a fact; replaced with an evaluation (kiltti, olin taught); ne luuli is untaught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F278",
+  "row": "S0444L01U07",
+  "verdict": "reword",
+  "en_new": "they thought it was a good idea",
+  "fi_new": "niiden mielestä se oli hyvä idea",
+  "confidence": "high",
+  "note": "mielestä + a prediction is unidiomatic; replaced with an evaluation, all forms taught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F100",
+  "row": "S0447L02B03",
+  "verdict": "reword",
+  "en_new": "are they able to drive home after the meal",
+  "fi_new": "pystyykö ne ajamaan kotiin ruoan jälkeen",
+  "confidence": "medium",
+  "note": "row sat under ruoan jälkeen without it and duplicated L01 rows; now carries the LEGO, and dropping meidät keeps it off U01",
+  "gate": "PASS"
+ },
+ {
+  "id": "F279",
+  "row": "S0457L02U03",
+  "verdict": "reword",
+  "en_new": "I think the number of different areas is important",
+  "fi_new": "mä luulen, että eri alueiden määrä on tärkeä",
+  "confidence": "high",
+  "note": "count-noun subject määrä takes a nominative predicate; tärkeä is taught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F280",
+  "row": "S0457L02U04",
+  "verdict": "reword",
+  "en_new": "is the number of different areas important?",
+  "fi_new": "onko eri alueiden määrä tärkeä?",
+  "confidence": "high",
+  "note": "same; tärkeä taught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F281",
+  "row": "S0458L02U02",
+  "verdict": "reword",
+  "en_new": "it was better in the past",
+  "fi_new": "se oli parempi ennen vanhaan",
+  "confidence": "medium",
+  "note": "kaikki needs partitive parempaa (untaught); with singular se the taught parempi is correct (cf. U05)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F282",
+  "row": "S0466L01U07",
+  "verdict": "reword",
+  "en_new": "let me put it on the table",
+  "fi_new": "anna mun laittaa se pöydälle",
+  "confidence": "high",
+  "note": "sen kirjeen is the wrong case under anna mun and kirje is untaught; put it on the table with nominative se as the seed has it, pöydälle taught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F101",
+  "row": "S0466L02U02",
+  "verdict": "reword",
+  "en_new": "I want to throw it now",
+  "fi_new": "mä haluun heittää sen nyt",
+  "confidence": "high",
+  "note": "nominative se is right only after anna mun; after an active personal verb the total object is sen, which is taught (and already used in U06/U07)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F102",
+  "row": "S0466L02U03",
+  "verdict": "reword",
+  "en_new": "i'm going to throw it",
+  "fi_new": "mä aion heittää sen",
+  "confidence": "high",
+  "note": "nominative se is right only after anna mun; after an active personal verb the total object is sen, which is taught (and already used in U06/U07)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F103",
+  "row": "S0466L02U04",
+  "verdict": "reword",
+  "en_new": "can I throw it?",
+  "fi_new": "voinko mä heittää sen?",
+  "confidence": "high",
+  "note": "nominative se is right only after anna mun; after an active personal verb the total object is sen, which is taught (and already used in U06/U07)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F104",
+  "row": "S0466L02U05",
+  "verdict": "reword",
+  "en_new": "do you want to throw it?",
+  "fi_new": "haluutko sä heittää sen?",
+  "confidence": "high",
+  "note": "nominative se is right only after anna mun; after an active personal verb the total object is sen, which is taught (and already used in U06/U07)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F105",
+  "row": "S0466L03B03",
+  "verdict": "reword",
+  "en_new": "I want to throw it over the wall",
+  "fi_new": "mä haluun heittää sen muurin yli",
+  "confidence": "high",
+  "note": "nominative se is right only after anna mun; after an active personal verb the total object is sen, which is taught (and already used in U06/U07)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F106",
+  "row": "S0466L03U02",
+  "verdict": "reword",
+  "en_new": "i'm going to throw it over the wall",
+  "fi_new": "mä aion heittää sen muurin yli",
+  "confidence": "high",
+  "note": "nominative se is right only after anna mun; after an active personal verb the total object is sen, which is taught (and already used in U06/U07)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F107",
+  "row": "S0466L03U03",
+  "verdict": "reword",
+  "en_new": "can I throw it over the wall?",
+  "fi_new": "voinko mä heittää sen muurin yli?",
+  "confidence": "high",
+  "note": "nominative se is right only after anna mun; after an active personal verb the total object is sen, which is taught (and already used in U06/U07)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F108",
+  "row": "S0466L03U04",
+  "verdict": "reword",
+  "en_new": "do you want to throw it over the wall?",
+  "fi_new": "haluutko sä heittää sen muurin yli?",
+  "confidence": "high",
+  "note": "nominative se is right only after anna mun; after an active personal verb the total object is sen, which is taught (and already used in U06/U07)",
+  "gate": "PASS"
+ }
+]

@@ -1,0 +1,782 @@
+[
+ {
+  "id": "F409",
+  "row": "S0470L02U07",
+  "verdict": "reword",
+  "en_new": "do you mind climbing?",
+  "fi_new": "haittaako sua kiivetä?",
+  "confidence": "high",
+  "note": "only the question mark was missing; added it, words unchanged",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"to climb\" — read by eye]"
+ },
+ {
+  "id": "F410",
+  "row": "S0471L01U05",
+  "verdict": "reword",
+  "en_new": "I think we should stop for a rest",
+  "fi_new": "mä luulen, että meidän pitäisi pysähtyä lepäämään",
+  "confidence": "high",
+  "note": "pitää = need/must; 'should' is pitäisi, which IS taught (S0098L01), so the correct form is available",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"to stop for a rest\" — read by eye]"
+ },
+ {
+  "id": "F411",
+  "row": "S0472L02B04",
+  "verdict": "reword",
+  "en_new": "I don't remember the facts",
+  "fi_new": "mä en muista faktoja",
+  "confidence": "high",
+  "note": "positive 'remember the facts' needs total faktat (untaught); put it under negation, where the taught partitive faktoja is the grammatical form (en muista taught S0057L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F283",
+  "row": "S0472L02U04",
+  "verdict": "reword",
+  "en_new": "I don't want to know the facts",
+  "fi_new": "mä en haluu tietää faktoja",
+  "confidence": "high",
+  "note": "positive 'want to know the facts' needs total faktat (untaught); negated haluta makes the taught partitive faktoja correct, matching the seed's own negation",
+  "gate": "PASS"
+ },
+ {
+  "id": "F412",
+  "row": "S0474L01B02",
+  "verdict": "reword",
+  "en_new": "not even now",
+  "fi_new": "ei edes nyt",
+  "confidence": "high",
+  "note": "'edes' is negative-polarity; standalone 'edes nyt' can't mean 'even now'. Made it the negative fragment, mirroring B03 'ei edes tänään'",
+  "gate": "PASS"
+ },
+ {
+  "id": "F284",
+  "row": "S0474L01U01",
+  "verdict": "reword",
+  "en_new": "I don't even want it",
+  "fi_new": "mä en edes haluu sitä",
+  "confidence": "high",
+  "note": "sentence-final edes scopes oddly ('not even THAT'); moved edes before the verb, same taught words",
+  "gate": "PASS"
+ },
+ {
+  "id": "F285",
+  "row": "S0474L01U03",
+  "verdict": "reword",
+  "en_new": "she doesn't even want it",
+  "fi_new": "se ei edes haluu sitä",
+  "confidence": "high",
+  "note": "as F284: edes moved before the verb, same taught words",
+  "gate": "PASS"
+ },
+ {
+  "id": "F286",
+  "row": "S0474L01U05",
+  "verdict": "reword",
+  "en_new": "I don't even want it, thank you",
+  "fi_new": "mä en edes haluu sitä, kiitos",
+  "confidence": "high",
+  "note": "as F284: edes moved before the verb, same taught words",
+  "gate": "PASS"
+ },
+ {
+  "id": "F109",
+  "row": "S0476L01U07",
+  "verdict": "reword",
+  "en_new": "I'll wait a while",
+  "fi_new": "mä odotan hetken",
+  "confidence": "high",
+  "note": "duration needs accusative muutaman minuutin (minuutin untaught here); swapped to the taught duration form hetken (S0092L04, 'odottaa hetken')",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"i'm waiting for\" — read by eye]"
+ },
+ {
+  "id": "F287",
+  "row": "S0479L02U02",
+  "verdict": "reword",
+  "en_new": "it's the least we can do",
+  "fi_new": "se on vähintä, mitä me voidaan tehdä",
+  "confidence": "high",
+  "note": "'vähintä' alone is meaningless; completed with the taught relative clause, 'me voidaan' (S0413L01) to avoid duplicating U01",
+  "gate": "PASS"
+ },
+ {
+  "id": "F288",
+  "row": "S0479L02U03",
+  "verdict": "reword",
+  "en_new": "is it the least I can do?",
+  "fi_new": "onko se vähintä, mitä mä voin tehdä?",
+  "confidence": "high",
+  "note": "'vähintä' alone is meaningless; completed with the seed's own taught clause 'mitä mä voin tehdä'",
+  "gate": "PASS"
+ },
+ {
+  "id": "F289",
+  "row": "S0479L02U05",
+  "verdict": "reword",
+  "en_new": "it's the least you can do",
+  "fi_new": "se on vähintä, mitä sä voit tehdä",
+  "confidence": "high",
+  "note": "'vähintä' alone is meaningless; completed with a taught relative clause, 'sä voit' (S0040L01); dropped the stray 'thank you'",
+  "gate": "PASS"
+ },
+ {
+  "id": "F413",
+  "row": "S0481L01U02",
+  "verdict": "reword",
+  "en_new": "it was a real problem",
+  "fi_new": "se oli todellinen ongelma",
+  "confidence": "high",
+  "note": "todellinen = actual/genuine, unidiomatic with colloquial kaveri (oikea untaught); kept the LEGO with a noun it naturally takes (ongelma), past tense oli to avoid duplicating U01",
+  "gate": "PASS"
+ },
+ {
+  "id": "F290",
+  "row": "S0485L01U01",
+  "verdict": "reword",
+  "en_new": "it makes me happier",
+  "fi_new": "se tekee mut onnellisemmaksi",
+  "confidence": "high",
+  "note": "positive resultative tehdä X:ksi takes a total object; the total form 'mut' is already taught (S0293L01 'tavata mut'), so it is available here",
+  "gate": "PASS"
+ },
+ {
+  "id": "F291",
+  "row": "S0485L01U03",
+  "verdict": "reword",
+  "en_new": "it makes me happier today",
+  "fi_new": "se tekee mut onnellisemmaksi tänään",
+  "confidence": "high",
+  "note": "positive resultative tehdä X:ksi takes a total object; the total form 'mut' is already taught (S0293L01 'tavata mut'), so it is available here",
+  "gate": "PASS"
+ },
+ {
+  "id": "F292",
+  "row": "S0485L01U04",
+  "verdict": "reword",
+  "en_new": "I think it makes me happier",
+  "fi_new": "mä luulen, että se tekee mut onnellisemmaksi",
+  "confidence": "high",
+  "note": "positive resultative tehdä X:ksi takes a total object; the total form 'mut' is already taught (S0293L01 'tavata mut'), so it is available here",
+  "gate": "PASS"
+ },
+ {
+  "id": "F293",
+  "row": "S0485L01U05",
+  "verdict": "reword",
+  "en_new": "it makes me happier now",
+  "fi_new": "se tekee mut onnellisemmaksi nyt",
+  "confidence": "high",
+  "note": "positive resultative tehdä X:ksi takes a total object; the total form 'mut' is already taught (S0293L01 'tavata mut'), so it is available here",
+  "gate": "PASS"
+ },
+ {
+  "id": "F110",
+  "row": "S0486L01B03",
+  "verdict": "reword",
+  "en_new": "they're all beautiful today",
+  "fi_new": "ne kaikki on kauniit tänään",
+  "confidence": "high",
+  "note": "'kaikki' (everything) needs singular partitive kaunista (untaught); made the subject plural 'ne kaikki' (they're all), which is what the taught plural 'on kauniit' agrees with",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"are beautiful\" — read by eye]"
+ },
+ {
+  "id": "F111",
+  "row": "S0486L01U03",
+  "verdict": "reword",
+  "en_new": "they're all beautiful",
+  "fi_new": "ne kaikki on kauniit",
+  "confidence": "high",
+  "note": "'kaikki' (everything) needs singular partitive kaunista (untaught); made the subject plural 'ne kaikki' (they're all), which is what the taught plural 'on kauniit' agrees with",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"are beautiful\" — read by eye]"
+ },
+ {
+  "id": "F112",
+  "row": "S0486L01U04",
+  "verdict": "reword",
+  "en_new": "I think they're all beautiful",
+  "fi_new": "mun mielestä ne kaikki on kauniit",
+  "confidence": "high",
+  "note": "'kaikki' (everything) needs singular partitive kaunista (untaught); made the subject plural 'ne kaikki' (they're all), which is what the taught plural 'on kauniit' agrees with",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"are beautiful\" — read by eye]"
+ },
+ {
+  "id": "F294",
+  "row": "S0489L02B02",
+  "verdict": "reword",
+  "en_new": "she's waiting for a strong cup of coffee",
+  "fi_new": "se odottaa kuppia vahvaa kahvia",
+  "confidence": "high",
+  "note": "'kuppia' is right only under negation or a partitive verb (kupin untaught); moved to odottaa, which governs the partitive (as B03), with a 3rd-person subject to avoid duplicating B03",
+  "gate": "PASS"
+ },
+ {
+  "id": "F295",
+  "row": "S0489L02U01",
+  "verdict": "reword",
+  "en_new": "if you don't want a strong cup of coffee",
+  "fi_new": "jos sä et haluu kuppia vahvaa kahvia",
+  "confidence": "medium",
+  "note": "'kuppia' is right only under negation or a partitive verb (kupin untaught); put under the seed's own 'jos sä et' negation (etkö/odotatko untaught); a conditional fragment like the seed itself",
+  "gate": "PASS"
+ },
+ {
+  "id": "F113",
+  "row": "S0489L02U02",
+  "verdict": "reword",
+  "en_new": "i'm not going to make a strong cup of coffee",
+  "fi_new": "mä en aio tehdä kuppia vahvaa kahvia",
+  "confidence": "high",
+  "note": "'kuppia' is right only under negation or a partitive verb (kupin untaught); negated aikoa makes the taught partitive correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F114",
+  "row": "S0489L02U04",
+  "verdict": "reword",
+  "en_new": "I don't want to buy a strong cup of coffee",
+  "fi_new": "mä en haluu ostaa kuppia vahvaa kahvia",
+  "confidence": "high",
+  "note": "'kuppia' is right only under negation or a partitive verb (kupin untaught); negated haluta makes the taught partitive correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F296",
+  "row": "S0489L02U05",
+  "verdict": "reword",
+  "en_new": "she doesn't want a strong cup of coffee",
+  "fi_new": "se ei haluu kuppia vahvaa kahvia",
+  "confidence": "high",
+  "note": "'kuppia' is right only under negation or a partitive verb (kupin untaught); negated haluta makes the taught partitive correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F414",
+  "row": "S0491L01U06",
+  "verdict": "reword",
+  "en_new": "I love football",
+  "fi_new": "mä rakastan jalkapalloa",
+  "confidence": "high",
+  "note": "'love playing something else' has no referent and says nothing; replaced the object with the taught partitive jalkapalloa (S0221L02)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F297",
+  "row": "S0492L01U02",
+  "verdict": "reword",
+  "en_new": "which of those places do you want?",
+  "fi_new": "minkä noista paikoista sä haluut?",
+  "confidence": "high",
+  "note": "mikä is the object of haluta so needs accusative minkä, which is already taught (S0116L03)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F298",
+  "row": "S0495L01U05",
+  "verdict": "reword",
+  "en_new": "it matters to us",
+  "fi_new": "sillä on väliä meille",
+  "confidence": "high",
+  "note": "'paljon' must sit beside väliä, which would split the LEGO 'sillä on väliä'; dropped 'a lot' and varied the beneficiary (meille) so it doesn't duplicate U02",
+  "gate": "PASS"
+ },
+ {
+  "id": "F299",
+  "row": "S0496L01B02",
+  "verdict": "reword",
+  "en_new": "she doesn't want to lose",
+  "fi_new": "se ei haluu hävitä",
+  "confidence": "medium",
+  "note": "positive 'mä aion hävitä' = I intend to lose, not a prediction; recast as 'doesn't want to lose' (taught). 'I don't want to lose' failed ZUT (S0399L02B03 = menettää); same soft lose/menettää clash as siblings U03/U05",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"to be beaten\" — read by eye]"
+ },
+ {
+  "id": "F300",
+  "row": "S0496L01B03",
+  "verdict": "reword",
+  "en_new": "we don't want to lose today",
+  "fi_new": "me ei haluta hävitä tänään",
+  "confidence": "medium",
+  "note": "positive aion+hävitä = intend to lose; recast as 'we don't want to lose today' (taught 'me ei haluta'). Soft clash to watch: S0399 maps 'we don't want to lose' to menettää — already true of siblings U03/U05",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"to be beaten\" — read by eye]"
+ },
+ {
+  "id": "F115",
+  "row": "S0499L02B03",
+  "verdict": "reword",
+  "en_new": "you need to open the door",
+  "fi_new": "sun pitää avata ovi",
+  "confidence": "high",
+  "note": "nominative object (LEGO form) is right only in necessive/impersonal frames; with haluta/aikoa it needs -n (untaught). Recast into a frame where the taught nominative is grammatical: necessive sun pitää",
+  "gate": "PASS"
+ },
+ {
+  "id": "F116",
+  "row": "S0499L02U02",
+  "verdict": "reword",
+  "en_new": "do we need to open the door?",
+  "fi_new": "pitääkö meidän avata ovi?",
+  "confidence": "high",
+  "note": "nominative object (LEGO form) is right only in necessive/impersonal frames; with haluta/aikoa it needs -n (untaught). Recast into a frame where the taught nominative is grammatical: necessive question pitääkö meidän",
+  "gate": "PASS"
+ },
+ {
+  "id": "F117",
+  "row": "S0499L02U03",
+  "verdict": "reword",
+  "en_new": "she needs to open the door",
+  "fi_new": "sen pitää avata ovi",
+  "confidence": "high",
+  "note": "nominative object (LEGO form) is right only in necessive/impersonal frames; with haluta/aikoa it needs -n (untaught). Recast into a frame where the taught nominative is grammatical: necessive sen pitää",
+  "gate": "PASS"
+ },
+ {
+  "id": "F118",
+  "row": "S0499L02U05",
+  "verdict": "reword",
+  "en_new": "it's difficult to open the door",
+  "fi_new": "on vaikeaa avata ovi",
+  "confidence": "high",
+  "note": "nominative object (LEGO form) is right only in necessive/impersonal/imperative frames; with haluta/aikoa it needs -n (untaught) or under negation partitive (which breaks the LEGO). Recast into a frame where the taught nominative is grammatical: impersonal 'on vaikeaa' (cf. S0470L02U05 'on vaikeaa kiivetä')",
+  "gate": "PASS"
+ },
+ {
+  "id": "F119",
+  "row": "S0499L03B03",
+  "verdict": "reword",
+  "en_new": "you need to close the window",
+  "fi_new": "sun pitää sulkea ikkuna",
+  "confidence": "high",
+  "note": "nominative object (LEGO form) is right only in necessive/impersonal frames; with haluta/aikoa it needs -n (untaught). Recast into a frame where the taught nominative is grammatical: necessive sun pitää",
+  "gate": "PASS"
+ },
+ {
+  "id": "F120",
+  "row": "S0499L03U02",
+  "verdict": "reword",
+  "en_new": "do we need to close the window?",
+  "fi_new": "pitääkö meidän sulkea ikkuna?",
+  "confidence": "high",
+  "note": "nominative object (LEGO form) is right only in necessive/impersonal frames; with haluta/aikoa it needs -n (untaught). Recast into a frame where the taught nominative is grammatical: necessive question pitääkö meidän",
+  "gate": "PASS"
+ },
+ {
+  "id": "F121",
+  "row": "S0499L03U03",
+  "verdict": "reword",
+  "en_new": "she needs to close the window",
+  "fi_new": "sen pitää sulkea ikkuna",
+  "confidence": "high",
+  "note": "nominative object (LEGO form) is right only in necessive/impersonal frames; with haluta/aikoa it needs -n (untaught). Recast into a frame where the taught nominative is grammatical: necessive sen pitää",
+  "gate": "PASS"
+ },
+ {
+  "id": "F122",
+  "row": "S0499L03U05",
+  "verdict": "reword",
+  "en_new": "I need to close the window",
+  "fi_new": "mun pitää sulkea ikkuna",
+  "confidence": "high",
+  "note": "nominative object (LEGO form) is right only in necessive/impersonal/imperative frames; with haluta/aikoa it needs -n (untaught) or under negation partitive (which breaks the LEGO). Recast into a frame where the taught nominative is grammatical: necessive mun pitää (mirrors door B04)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F301",
+  "row": "S0503L01B02",
+  "verdict": "reword",
+  "en_new": "I hate it here",
+  "fi_new": "mä vihaan olla täällä",
+  "confidence": "high",
+  "note": "'vihaan sitä täällä' is an English calque; Finnish hates being here: 'vihaan olla täällä' — olla (S0034L02) and täällä (S0034L05) both taught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F416",
+  "row": "S0503L01U07",
+  "verdict": "reword",
+  "en_new": "I hate football",
+  "fi_new": "mä vihaan jalkapalloa",
+  "confidence": "high",
+  "note": "'hate playing something else' has no referent; replaced with the taught partitive jalkapalloa (S0221L02)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F417",
+  "row": "S0503L02U04",
+  "verdict": "reword",
+  "en_new": "I hate causing trouble for you",
+  "fi_new": "mä vihaan sulle ongelmien aiheuttamista",
+  "confidence": "medium",
+  "note": "trailing 'sulle' reads loose after the -minen noun; moved the beneficiary before it, LEGO still contiguous, same taught words",
+  "gate": "PASS"
+ },
+ {
+  "id": "F123",
+  "row": "S0510L03B03",
+  "verdict": "reword",
+  "en_new": "I need to park the car",
+  "fi_new": "mun pitää parkkeerata auto",
+  "confidence": "high",
+  "note": "nominative LEGO object 'auto' is right only in necessive/impersonal frames; with haluta/aikoa it needs auton (untaught). Recast into a necessive, where the taught nominative is grammatical: mun pitää",
+  "gate": "PASS"
+ },
+ {
+  "id": "F124",
+  "row": "S0510L03B04",
+  "verdict": "reword",
+  "en_new": "she needs to park the car",
+  "fi_new": "sen pitää parkkeerata auto",
+  "confidence": "high",
+  "note": "nominative LEGO object 'auto' is right only in necessive/impersonal frames; with haluta/aikoa it needs auton (untaught). Recast into a necessive, where the taught nominative is grammatical: sen pitää",
+  "gate": "PASS"
+ },
+ {
+  "id": "F125",
+  "row": "S0510L03U03",
+  "verdict": "reword",
+  "en_new": "do we need to park the car?",
+  "fi_new": "pitääkö meidän parkkeerata auto?",
+  "confidence": "high",
+  "note": "nominative LEGO object 'auto' is right only in necessive/impersonal frames; with haluta/aikoa it needs auton (untaught). Recast into a necessive, where the taught nominative is grammatical: pitääkö meidän (S0274L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F418",
+  "row": "S0512L02B04",
+  "verdict": "reword",
+  "en_new": "i'll fetch some coffee now",
+  "fi_new": "mä haen kahvia nyt",
+  "confidence": "high",
+  "note": "partitive kahvia = some coffee, not 'the coffee' (kahvin/kahvit would change the form); changed the English to match what the Finnish says",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"I fetch\" — read by eye]"
+ },
+ {
+  "id": "F419",
+  "row": "S0512L02U03",
+  "verdict": "reword",
+  "en_new": "i'll fetch some coffee",
+  "fi_new": "mä haen kahvia",
+  "confidence": "high",
+  "note": "partitive kahvia = some coffee, not 'the coffee' (kahvin/kahvit would change the form); changed the English to match what the Finnish says",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"I fetch\" — read by eye]"
+ },
+ {
+  "id": "F126",
+  "row": "S0514L01U07",
+  "verdict": "reword",
+  "en_new": "I found them",
+  "fi_new": "mä löysin ne",
+  "confidence": "high",
+  "note": "'found them' (all) is total; niitä = some of them. The total form 'ne' is the taught surface form (S0087L01), so it is available",
+  "gate": "PASS"
+ },
+ {
+  "id": "F303",
+  "row": "S0514L03B04",
+  "verdict": "reword",
+  "en_new": "already on the first day",
+  "fi_new": "jo ekana päivänä",
+  "confidence": "high",
+  "note": "jo precedes the time expression it scopes; moved it to the front (English follows), same taught words, LEGO whole",
+  "gate": "PASS"
+ },
+ {
+  "id": "F304",
+  "row": "S0515L01B04",
+  "verdict": "reword",
+  "en_new": "already on the first day of the new year",
+  "fi_new": "jo uuden vuoden ekana päivänä",
+  "confidence": "high",
+  "note": "as F303: jo moved before the time expression it scopes, same taught words, LEGO whole",
+  "gate": "PASS"
+ },
+ {
+  "id": "F305",
+  "row": "S0516L01U05",
+  "verdict": "reword",
+  "en_new": "they both said the same",
+  "fi_new": "ne molemmat sanoi samaa",
+  "confidence": "high",
+  "note": "samalla tavalla = in the same way; 'said the same (thing)' is samaa, already taught (S0083L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F420",
+  "row": "S0518L02U04",
+  "verdict": "reword",
+  "en_new": "I hoped that I would have time",
+  "fi_new": "mä toivoin, että mulla olisi aikaa",
+  "confidence": "high",
+  "note": "'I hope that I would have the same' is ungrammatical English; past 'I hoped' makes the conditional olisi natural in both languages (toivoin S0151L01, aikaa as B04)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F127",
+  "row": "S0519L02B04",
+  "verdict": "reword",
+  "en_new": "I'm expecting a baby",
+  "fi_new": "mä odotan vauvaa",
+  "confidence": "high",
+  "note": "LEGO vauvaa is partitive; positive nähdä wants total vauvan (untaught). Recast so the partitive is grammatical: odottaa governs the partitive ('mä odotan' S0476L01), and 'odottaa vauvaa' is the idiom for expecting a baby",
+  "gate": "PASS"
+ },
+ {
+  "id": "F128",
+  "row": "S0519L02U02",
+  "verdict": "reword",
+  "en_new": "I didn't see the baby",
+  "fi_new": "mä en nähnyt vauvaa",
+  "confidence": "high",
+  "note": "LEGO vauvaa is partitive; positive nähdä wants total vauvan (untaught). Recast so the partitive is grammatical: negation (nähnyt S0182L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F129",
+  "row": "S0519L02U03",
+  "verdict": "reword",
+  "en_new": "do you want to look at the baby?",
+  "fi_new": "haluutko sä katsoa vauvaa?",
+  "confidence": "medium",
+  "note": "LEGO vauvaa is partitive; positive nähdä wants total vauvan (untaught). Recast so the partitive is grammatical: katsoa (S0287L03) takes the partitive",
+  "gate": "PASS"
+ },
+ {
+  "id": "F130",
+  "row": "S0519L02U05",
+  "verdict": "reword",
+  "en_new": "she loves the new baby",
+  "fi_new": "se rakastaa uutta vauvaa",
+  "confidence": "high",
+  "note": "LEGO vauvaa is partitive; positive nähdä wants total vauvan (untaught). Recast so the partitive is grammatical: rakastaa (S0426L02) governs the partitive; keeps 'uutta' from the seed",
+  "gate": "PASS"
+ },
+ {
+  "id": "F131",
+  "row": "S0522L03U05",
+  "verdict": "reword",
+  "en_new": "we should tell the truth",
+  "fi_new": "meidän pitäisi kertoa totuus",
+  "confidence": "high",
+  "note": "nominative totuus is wrong under negation (needs totuutta, which would break the LEGO); recast into a necessive, where the taught nominative is grammatical",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"the whole truth\" — read by eye]"
+ },
+ {
+  "id": "F132",
+  "row": "S0523L01U03",
+  "verdict": "reword",
+  "en_new": "I found an excuse",
+  "fi_new": "mä löysin tekosyyn",
+  "confidence": "high",
+  "note": "LEGO tekosyyn is the total accusative, right with a personal subject but wrong under the necessive (needs nominative tekosyy, untaught). Recast with a personal subject so the taught tekosyyn is grammatical: löysin (S0514L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F133",
+  "row": "S0523L01U05",
+  "verdict": "reword",
+  "en_new": "she's going to give an excuse",
+  "fi_new": "se aikoo antaa tekosyyn",
+  "confidence": "high",
+  "note": "LEGO tekosyyn is the total accusative, right with a personal subject but wrong under the necessive (needs nominative tekosyy, untaught). Recast with a personal subject so the taught tekosyyn is grammatical: aikoo (S0293L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F134",
+  "row": "S0523L01U06",
+  "verdict": "reword",
+  "en_new": "i'm going to find an excuse now",
+  "fi_new": "mä aion löytää tekosyyn nyt",
+  "confidence": "high",
+  "note": "LEGO tekosyyn is the total accusative, right with a personal subject but wrong under the necessive (needs nominative tekosyy, untaught). Recast with a personal subject so the taught tekosyyn is grammatical: aion",
+  "gate": "PASS"
+ },
+ {
+  "id": "F308",
+  "row": "S0525L02B02",
+  "verdict": "reword",
+  "en_new": "have you been able to look for it?",
+  "fi_new": "ootko pystynyt etsimään sitä?",
+  "confidence": "high",
+  "note": "etsiä = look FOR/search, so bare 'to look' mistranslated; gave it its object: partitive sitä, which etsiä governs (taught S0029L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F310",
+  "row": "S0526L02U03",
+  "verdict": "reword",
+  "en_new": "you can't guess who I saw",
+  "fi_new": "sä et arvaa, kenet mä näin",
+  "confidence": "high",
+  "note": "'miksi sä et arvaa?' asks 'why don't you guess?', not 'why can't you'; kept the LEGO's idiomatic sense (you'll never guess) with taught 'kenet' (S0453L01) + 'mä näin'",
+  "gate": "PASS"
+ },
+ {
+  "id": "F135",
+  "row": "S0528L02U02",
+  "verdict": "reword",
+  "en_new": "you should keep it",
+  "fi_new": "sun pitäisi pitää se",
+  "confidence": "high",
+  "note": "the necessive takes a nominative total object; the nominative 'se' is taught (S0016L01) and the LEGO is the bare verb, so the correct form is available",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"to keep\" — read by eye]"
+ },
+ {
+  "id": "F136",
+  "row": "S0529L02U03",
+  "verdict": "reword",
+  "en_new": "you should raise it",
+  "fi_new": "sun pitäisi nostaa se",
+  "confidence": "high",
+  "note": "the necessive takes a nominative total object; the nominative 'se' is taught (S0016L01) and the LEGO is the bare verb, so the correct form is available",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"to put up\" — read by eye]"
+ },
+ {
+  "id": "F137",
+  "row": "S0529L02U05",
+  "verdict": "reword",
+  "en_new": "I have to raise it",
+  "fi_new": "mun pitää nostaa se",
+  "confidence": "high",
+  "note": "the necessive takes a nominative total object; the nominative 'se' is taught (S0016L01) and the LEGO is the bare verb, so the correct form is available",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"to put up\" — read by eye]"
+ },
+ {
+  "id": "F138",
+  "row": "S0530L01U02",
+  "verdict": "reword",
+  "en_new": "you should count it",
+  "fi_new": "sun pitäisi laskea se",
+  "confidence": "high",
+  "note": "the necessive takes a nominative total object; the nominative 'se' is taught (S0016L01) and the LEGO is the bare verb, so the correct form is available",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"to count\" — read by eye]"
+ },
+ {
+  "id": "F139",
+  "row": "S0533L02B02",
+  "verdict": "reword",
+  "en_new": "she doesn't remember every word",
+  "fi_new": "se ei muista jokaista sanaa",
+  "confidence": "high",
+  "note": "positive muistaa/ymmärtää want total jokaisen sanan (untaught); recast so the taught partitive LEGO 'jokaista sanaa' is grammatical: negation",
+  "gate": "PASS"
+ },
+ {
+  "id": "F311",
+  "row": "S0533L02B03",
+  "verdict": "reword",
+  "en_new": "you don't understand every word",
+  "fi_new": "sä et ymmärrä jokaista sanaa",
+  "confidence": "high",
+  "note": "positive muistaa/ymmärtää want total jokaisen sanan (untaught); recast so the taught partitive LEGO 'jokaista sanaa' is grammatical: negation",
+  "gate": "PASS"
+ },
+ {
+  "id": "F312",
+  "row": "S0533L02U02",
+  "verdict": "reword",
+  "en_new": "I can't understand every word",
+  "fi_new": "mä en pysty ymmärtämään jokaista sanaa",
+  "confidence": "high",
+  "note": "positive muistaa/ymmärtää want total jokaisen sanan (untaught); recast so the taught partitive LEGO 'jokaista sanaa' is grammatical: negation (pysty S0024L01, ymmärtämään S0074L02)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F140",
+  "row": "S0533L02U03",
+  "verdict": "reword",
+  "en_new": "I don't listen to every word",
+  "fi_new": "mä en kuuntele jokaista sanaa",
+  "confidence": "high",
+  "note": "positive muistaa/ymmärtää want total jokaisen sanan (untaught); recast so the taught partitive LEGO 'jokaista sanaa' is grammatical: kuunnella governs the partitive and is the seed's own verb (kuuntele S0533L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F141",
+  "row": "S0533L02U05",
+  "verdict": "reword",
+  "en_new": "I love every word",
+  "fi_new": "mä rakastan jokaista sanaa",
+  "confidence": "high",
+  "note": "positive muistaa/ymmärtää want total jokaisen sanan (untaught); recast so the taught partitive LEGO 'jokaista sanaa' is grammatical: rakastaa governs the partitive (S0491L01)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F313",
+  "row": "S0536L01B03",
+  "verdict": "reword",
+  "en_new": "I used to reckon that it was fun",
+  "fi_new": "mä luulin ennen, että se on hauskaa",
+  "confidence": "high",
+  "note": "luulla doesn't take 'sitä' as a pronoun object ('luulin ennen sitä' = I thought before that time); built the row on the LEGO's own 'että' frame like its siblings, hauskaa taught (S0112)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F423",
+  "row": "S0537L02U05",
+  "verdict": "reword",
+  "en_new": "but maybe I was wrong",
+  "fi_new": "mutta ehkä mä olin väärässä",
+  "confidence": "high",
+  "note": "tosi = really, not completely (täysin untaught here), and 'olin tosi väärässä' also split the LEGO 'mä olin väärässä'; recast with taught ehkä so the LEGO is whole",
+  "gate": "PASS"
+ },
+ {
+  "id": "F314",
+  "row": "S0541L01U04",
+  "verdict": "reword",
+  "en_new": "I don't think it's a good idea",
+  "fi_new": "mä en usko, että se on hyvä idea",
+  "confidence": "high",
+  "note": "'että on hyvä idea' with no infinitive lacks its subject; adding 'se' would duplicate S0185L01U02, so negated the frame with taught 'mä en usko' — LEGO 'on hyvä idea' whole",
+  "gate": "PASS"
+ },
+ {
+  "id": "F424",
+  "row": "S0547L01U07",
+  "verdict": "reword",
+  "en_new": "it has been fun so far",
+  "fi_new": "se on ollut hauskaa tähän asti",
+  "confidence": "high",
+  "note": "'se on ollut hyvää' suggests food/taste; switched to hauskaa (taught S0112), where the partitive is the natural form for an experience",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"he has been\" — read by eye]"
+ },
+ {
+  "id": "F316",
+  "row": "S0555L01B03",
+  "verdict": "reword",
+  "en_new": "too tired to fetch it",
+  "fi_new": "liian väsynyt hakemaan sen",
+  "confidence": "high",
+  "note": "fetching a definite thing is resultative, total object; 'sen' is taught (S0020L02), parallel to B01 'hakemaan uuden'",
+  "gate": "PASS"
+ },
+ {
+  "id": "F317",
+  "row": "S0555L01U02",
+  "verdict": "reword",
+  "en_new": "i'm too tired to fetch the keys",
+  "fi_new": "mä oon liian väsynyt hakemaan avaimet",
+  "confidence": "high",
+  "note": "row lacked the LEGO 'liian väsynyt hakemaan' and 'liian kiireinen hakemaan' is a calque (kiire untaught); put the LEGO back: tired, not busy",
+  "gate": "PASS"
+ },
+ {
+  "id": "F318",
+  "row": "S0555L01U03",
+  "verdict": "reword",
+  "en_new": "i'm too tired to fetch you some coffee",
+  "fi_new": "mä oon liian väsynyt hakemaan sulle kahvia",
+  "confidence": "high",
+  "note": "row lacked the LEGO 'liian väsynyt hakemaan' and 'pystyn hakemaan' = I'm capable of fetching, not an offer (hakea untaught); rebuilt on the LEGO, partitive kahvia = some coffee",
+  "gate": "PASS"
+ },
+ {
+  "id": "F425",
+  "row": "S0555L01U05",
+  "verdict": "reword",
+  "en_new": "are you too tired to fetch it?",
+  "fi_new": "ootko sä liian väsynyt hakemaan sen?",
+  "confidence": "high",
+  "note": "row lacked the LEGO 'liian väsynyt hakemaan' and 'alan hakemaan sen' mixes an ongoing verb with a total object; rebuilt on the LEGO with taught ootko (S0525L02)",
+  "gate": "PASS"
+ }
+]

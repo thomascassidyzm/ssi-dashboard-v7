@@ -1,0 +1,34 @@
+fin_for_eng REWORD BRIEF (job #226 fan-out, 19 Oct 2026). PROPOSE ONLY: write nothing to the course, call no Popty write route, render no audio, touch no database, write no code against any database, run no test suite. Work in the foreground; put nothing in background tasks. Do not commit anything (your worktree is irrelevant to this job).
+
+WHAT THIS IS. Job #164·T proofread fin_for_eng (Finnish for English speakers; colloquial spoken Finnish is deliberate) and found 441 case/form/naturalness defects. Kai (fluent Finnish speaker) agrees with the findings but REJECTED THE FIXES: the correct form has usually not been taught yet at that point in the course. His ruling: do NOT just correct the case/form. REWORD the row so it uses ONLY word FORMS already available at that point — the exact inflected surface form taught by an earlier seed or LEGO (not the same lemma, not the same stem: "totuutta" being taught does NOT make "totuuden" available). No new variations: Finnish sticks to the forms already available per word, for now.
+
+YOUR SHARD: SHARD_FILE (a JSON array of findings: id, row, seed, level, conf, cls, en, fi, proofread_fix_fi/en (the REJECTED fix — useful only to understand the defect), reason, auto (earlier machine notes)). Read every item and its context IN FULL. Regex/grep may surface candidates; it never decides.
+
+THE TOOL (read-only; live data = Popty GET /api/production/fin_for_eng/seeds dumped today):
+  W=~/ssi-evidence/ssi-dashboard-v7/fin-reword; L=$W/live-2026-10-19.json
+  node $W/fa.cjs ctx  $L <rowId>                   the seed, its LEGOs, every sibling row of the row's LEGO (>> marks the row)
+  node $W/fa.cjs find $L <rowId> <substr...>       taught forms containing a substring; "OK" = available at that row, "later" = taught only after it
+  node $W/fa.cjs at   $L <rowId> <form...>         is each exact form taught at that row (taught/later/heard/tile/absent)
+  node $W/fa.cjs uses $L "<run>" [n] [--en]         course rows containing a Finnish (or English) run — see how a form/phrasing is used elsewhere
+  node $W/fa.cjs try  $L <rowId> "<en>" "<fi>" [--lego S0xxxLyy]   THE GATE for one rewrite: every Finnish token taught at that position, the row's LEGO still whole on both sides, no duplicate of any row in the course on either side, no ZUT clash (same English already mapped to different Finnish). --lego judges it rehomed under another LEGO.
+  node $W/fa.cjs cascade $L <S0200 | S0203L02> "<new fi>" ["<new en>"]   for a seed sentence or LEGO change: forms it newly introduces, later rows it newly breaks (they used a form only this event taught), and the LEGO's own rows that no longer contain the LEGO.
+"taught" = in a LEGO's or seed sentence's Finnish at or before the row's position (LEGOs 1..k of the row's own seed count; later LEGOs of the same seed do not). "heard" (only in an earlier practice phrase) and "tile" (only in a components list) do NOT count.
+
+FOR EACH ITEM:
+1. ctx the row. Decide what is actually wrong (the finding's reason is usually right; if after reading you judge the row is in fact fine, verdict "no-change" with the reason).
+2. Find a REWORDING: a different natural sentence, built only from available forms, that still contains the row's own LEGO whole on both sides (Finnish exactly; English as a run where the current row has it), with the English and Finnish meaning the same thing. Options include: change the object/complement to a word whose needed form IS taught; restructure so the taught form is the grammatical one (e.g. put it under negation where the taught form is the partitive; use a passive/necessive where the taught form is the nominative); change the ENGLISH to match what the Finnish actually says if that is natural in both languages (e.g. "sä kerrot mulle totuutta" really means "you're telling me the truth"); swap a tense or pronoun to one that is taught. Prefer English phrasings the course already uses (uses --en). Keep it the same register (colloquial: mä/sä/se, me + passive "me halutaan", mun/sun/mulla/mulle/musta, oon/oot/haluu). Keep length similar to the row's siblings.
+3. Run `try` until it PASSES. A rewrite that does not pass is not a proposal.
+4. If no natural rewording can keep the LEGO whole, give the best rewording rehomed under a named LEGO (`try ... --lego X` must pass; the target LEGO should be one the row's meaning naturally drills) — verdict "rehome"; or, if nothing natural is possible, verdict "delete" with the reason. Never force an unnatural sentence to pass the gate: Kai's bar is grammatical AND natural in both languages; rare is fine, stilted is not.
+5. SEED and LEGO items (level seed/lego): Kai's rule is that the SEED DEFINES WHAT IS TAUGHT, so a seed sentence (and its LEGO) MAY introduce a new correct form if it must — but flag it ("introduces": [...]). Prefer a seed rewording that uses available forms if a natural one exists. Either way run `cascade` on the seed sentence and on each changed LEGO, and report: what the change introduces, every later row it newly breaks (give a passing rewrite for each, or name it as needing rehome/delete), and every row of the changed LEGO that must change with it (give each a passing rewrite). Say plainly whether, with those rewrites, every later row stays valid. Never delete a LEGO (Kai's rule): expand, re-cut or merge.
+6. Do not duplicate another proposal in your own shard (two items must not end up with the same Finnish or the same English).
+
+OUTPUT: write a JSON array to OUT_FILE, one object per item, in shard order:
+{ "id":"F001", "row":"S0117L04U05", "verdict":"reword|rehome|delete|no-change|seed-change|lego-change",
+  "en_new":"...", "fi_new":"...", "lego":"S0xxxLyy (only for rehome)",
+  "confidence":"high|medium|low"  (your confidence the rewrite is natural, correct and meaning-matched),
+  "note":"one line: what was wrong, what you changed, why the new form is the taught one",
+  "gate":"PASS" (the exact try output first line),
+  "introduces":[], "cascade":[{"row":"...","en_new":"...","fi_new":"...","gate":"PASS","note":"..."}], "cascade_clean": true|false  (seed/lego items only) }
+Write the file incrementally (every ~10 items) so work is not lost. Then reply with ONE short paragraph: counts by verdict and confidence, how many items you could not make pass, and any block as an explicit gap. Do not paste the proposals into the reply.
+
+RULINGS TO RESPECT (Kai's, Finnish-only; these are NOT errors): colloquial forms as above; "sen" as his/her genitive; "sen nimen" (seed 20) vs "sen nimeä" (seed 21) is deliberate; "koko päivän" is correct even under negation (duration adverbial); kysyä takes a partitive object; formal register uses teidän/hänen; dropped subject pronouns, colloquial word order, and -nsa bound to the clause subject are fine. A LEGO is a duplicate only if both sides match. Two Englishes → one Finnish is not a ZUT defect, one English → two Finnish is.

@@ -228,7 +228,113 @@ function usages(ix, fi, limit = 12, side = 'fi') {
   return out;
 }
 
-module.exports = { normalise, tokens, buildIndex, formStatus, positionOf, checkRewrite, containsRun, key, untaughtRows, cascade, context, findForms, usages };
+/**
+ * THE WHOLE-SET CHECK. Applying a seed or LEGO change and the rows that move with it
+ * one at a time cannot be judged against today's course (the row clashes with the
+ * seed it is about to mirror; a new LEGO form is "absent" until the LEGO changes).
+ * So: apply EVERY edit to a copy of the payload, rebuild the index, and judge each
+ * edited item in that world. Nothing here writes anywhere — the copy is in memory.
+ *
+ * edits: [{ row, en, fi, delete?, lego? (rehome target), from? (proposal id) }]
+ *   row = a seed id "S0127", a LEGO id "S0127L01" or a phrase id "S0127L01U01".
+ */
+function applyEdits(payload, edits) {
+  const world = JSON.parse(JSON.stringify(payload));
+  const seedOf = {}, legoOf = {}, phraseOf = {};
+  for (const s of world.seeds) {
+    seedOf[`S${String(s.seed_number).padStart(4, '0')}`] = s;
+    for (const l of s.legos) { legoOf[l.lego_id] = l; for (const p of l.basket_phrases || []) phraseOf[String(p.id).split(':').pop()] = { p, l }; }
+  }
+  const unknown = [];
+  for (const e of edits) {
+    if (seedOf[e.row]) { const s = seedOf[e.row]; if (e.fi) s.target_text = e.fi; if (e.en) s.known_text = e.en; continue; }
+    if (legoOf[e.row]) { const l = legoOf[e.row]; if (e.fi) l.target_text = e.fi; if (e.en) l.known_text = e.en; continue; }
+    const hit = phraseOf[e.row];
+    if (!hit) { unknown.push(e.row); continue; }
+    if (e.delete) { hit.l.basket_phrases = hit.l.basket_phrases.filter(x => x !== hit.p); continue; }
+    if (e.fi) hit.p.target_text = e.fi; if (e.en) hit.p.known_text = e.en;
+    if (e.lego && legoOf[e.lego] && legoOf[e.lego] !== hit.l) {
+      hit.l.basket_phrases = hit.l.basket_phrases.filter(x => x !== hit.p);
+      legoOf[e.lego].basket_phrases.push(hit.p); hit.l = legoOf[e.lego];
+    }
+  }
+  return { world, unknown };
+}
+
+/** ZUT census: English sides that map to more than one Finnish, course-wide. */
+function zutSet(ix) {
+  const out = new Set();
+  for (const [en, ids] of ix.byEn) {
+    const f = new Set(ids.map(i => { const r = ix.rows.get(i), l = ix.legos.get(i); return normalise(r ? r.fi : l.target_text); }));
+    if (f.size > 1) out.add(en);
+  }
+  return out;
+}
+
+function checkWorld(payload, edits) {
+  const before = buildIndex(payload);
+  const { world, unknown } = applyEdits(payload, edits);
+  const after = buildIndex(world);
+  const results = [];
+  // A row may mirror its own LEGO (B01) or its own seed (the seed-copy row): those
+  // duplicates are the course's design, not a defect. A seed is likewise mirrored by
+  // rows of its own seed.
+  const own = id => {
+    const r = after.rows.get(id); const ids = new Set([id]);
+    if (r && r.lego) ids.add(r.lego);
+    if (r) ids.add(`S${String(r.seed).padStart(4, '0')}`);
+    if (r && r.role === 'seed') for (const x of after.rows.values()) if (x.seed === r.seed) ids.add(x.id);
+    return ids;
+  };
+  for (const e of edits) {
+    const problems = [];
+    if (e.delete) { results.push({ row: e.row, from: e.from, ok: true, problems, deleted: true }); continue; }
+    if (after.legos.has(e.row)) {
+      const l = after.legos.get(e.row);
+      const intro = tokens(l.target_text).filter(t => formStatus(before, t, l.at).status !== 'taught');
+      // a LEGO teaches its own forms; what matters is that its rows still hold it
+      for (const r of after.rows.values()) if (r.lego === e.row && r.role !== 'component' && !containsRun(tokens(r.fi), tokens(l.target_text))) problems.push(`LEGO row ${r.id} no longer holds "${l.target_text}"`);
+      results.push({ row: e.row, from: e.from, ok: !problems.length, problems, introduces: [...new Set(intro)] });
+      continue;
+    }
+    const r = after.rows.get(e.row);
+    if (!r) { results.push({ row: e.row, from: e.from, ok: false, problems: ['not found after apply'] }); continue; }
+    if (r.role === 'seed') {
+      // a seed's forms must be taught by its own LEGOs or earlier (tiling); the seed
+      // event is never evidence for itself
+      const miss = tokens(r.fi).filter(t => { const x = after.taught.get(t); return !(x && x.at < r.at && x.by !== r.id); });
+      if (miss.length) problems.push(`seed form(s) in no LEGO of this seed or earlier: ${[...new Set(miss)].join(', ')}`);
+    } else {
+      for (const t of new Set(tokens(r.fi))) { const st = formStatus(after, t, r.at); if (st.status !== 'taught') problems.push(`form "${t}" ${st.status}`); }
+      const l = after.legos.get(r.lego);
+      if (l && r.role !== 'component') {
+        const orig = before.rows.get(e.row);
+        const origLego = orig && before.legos.get(orig.lego);
+        // as in checkRewrite: a row that never held its LEGO literally is read by eye
+        if (!containsRun(tokens(r.fi), tokens(l.target_text)) && (!orig || containsRun(tokens(orig.fi), tokens(origLego?.target_text || '')))) problems.push(`drops LEGO Finnish "${l.target_text}"`);
+        if (!containsRun(tokens(r.en), tokens(l.known_text)) && (!orig || containsRun(tokens(orig.en), tokens(before.legos.get(orig.lego)?.known_text || '')))) problems.push(`drops LEGO English "${l.known_text}"`);
+      }
+    }
+    const mine = own(e.row);
+    const dFi = (after.byFi.get(normalise(r.fi)) || []).filter(i => !mine.has(i));
+    if (dFi.length) problems.push('Finnish duplicates ' + dFi.slice(0, 4).join(','));
+    const sameEn = (after.byEn.get(normalise(r.en)) || []).filter(i => i !== e.row);
+    const zut = sameEn.filter(i => { const o = after.rows.get(i), l = after.legos.get(i); return normalise(o ? o.fi : l.target_text) !== normalise(r.fi); });
+    if (zut.length) problems.push('ZUT with ' + zut.slice(0, 4).join(','));
+    else if (sameEn.filter(i => !mine.has(i)).length) problems.push('English duplicates ' + sameEn.filter(i => !mine.has(i)).slice(0, 4).join(','));
+    results.push({ row: e.row, from: e.from, ok: !problems.length, problems });
+  }
+  // knock-on: rows NOT edited that are newly broken in the new world
+  const edited = new Set(edits.map(e => e.row));
+  const ub = untaughtRows(before), ua = untaughtRows(after);
+  const knockOn = [];
+  for (const [id, f] of ua) { if (edited.has(id)) continue; const was = new Set(ub.get(id) || []); const nf = f.filter(x => !was.has(x)); if (nf.length) knockOn.push({ row: id, forms: nf, fi: after.rows.get(id).fi }); }
+  for (const l of after.legos.values()) if (edited.has(l.lego_id)) for (const r of after.rows.values()) if (r.lego === l.lego_id && !edited.has(r.id) && r.role !== 'component' && !containsRun(tokens(r.fi), tokens(l.target_text))) knockOn.push({ row: r.id, forms: [`no longer holds LEGO "${l.target_text}"`], fi: r.fi });
+  const zb = zutSet(before), za = zutSet(after);
+  return { results, unknown, knockOn, zutBefore: zb.size, zutAfter: za.size, zutNew: [...za].filter(x => !zb.has(x)), zutGone: [...zb].filter(x => !za.has(x)).length };
+}
+
+module.exports = { applyEdits, checkWorld, zutSet, normalise, tokens, buildIndex, formStatus, positionOf, checkRewrite, containsRun, key, untaughtRows, cascade, context, findForms, usages };
 
 if (require.main === module) {
   const [cmd, file, ...rest] = process.argv.slice(2);
@@ -242,6 +348,8 @@ if (require.main === module) {
           LEGO whole, dupes, ZUT); --lego judges it as REHOMED under that LEGO instead
   cascade <live.json> <S0200|S0203L02> "<fi>" ["<en>"]   what a seed/LEGO change breaks downstream
   check   <live.json> <proposals.json>        check a list [{row,en,fi}] incl. collisions among them
+  world   <live.json> <edits.json>            apply ALL edits [{row,en,fi,delete?,lego?}] to an in-memory copy and
+          judge each in that world, plus knock-on rows and the ZUT census before/after
   index   <live.json> <form...>               where each form is first taught/heard/tiled`);
     process.exit(2);
   }
@@ -270,6 +378,11 @@ if (require.main === module) {
   } else if (cmd === 'cascade') {
     const [id, fi, en] = rest;
     console.log(JSON.stringify(cascade(JSON.parse(fs.readFileSync(file, 'utf8')), id, fi, en), null, 1));
+  } else if (cmd === 'world') {
+    const edits = JSON.parse(fs.readFileSync(rest[0], 'utf8'));
+    const w = checkWorld(JSON.parse(fs.readFileSync(file, 'utf8')), edits);
+    console.log(JSON.stringify(w, null, 1));
+    console.error(`${w.results.filter(r => r.ok).length}/${w.results.length} pass; knock-on ${w.knockOn.length}; ZUT ${w.zutBefore}->${w.zutAfter} (+${w.zutNew.length} new)`);
   } else if (cmd === 'check') {
     const props = JSON.parse(fs.readFileSync(rest[0], 'utf8'));
     const res = props.map(p => ({ ...checkRewrite(ix, p, props), id: p.id }));

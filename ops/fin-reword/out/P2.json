@@ -1,0 +1,792 @@
+[
+ {
+  "id": "F202",
+  "row": "S0203L01U02",
+  "verdict": "reword",
+  "en_new": "what would you do if it was true?",
+  "fi_new": "mitä sä tekisit, jos se olisi totta?",
+  "confidence": "high",
+  "note": "jos-clause needed the conditional (toimisi, untaught); switched to 'olisi totta' — olisi (S0090) and totta are taught, so both clauses are conditional",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"you would do\" — read by eye]"
+ },
+ {
+  "id": "F026",
+  "row": "S0211L01B03",
+  "verdict": "reword",
+  "en_new": "they told us why",
+  "fi_new": "ne kertoi meille miksi",
+  "confidence": "high",
+  "note": "completed 'told the truth' needs untaught totuuden; replaced the object with an indirect question (miksi, S0021), no object case needed",
+  "gate": "PASS"
+ },
+ {
+  "id": "F027",
+  "row": "S0211L01U03",
+  "verdict": "reword",
+  "en_new": "they told us when it was",
+  "fi_new": "ne kertoi meille, milloin se oli",
+  "confidence": "high",
+  "note": "'koko tarinan' untaught at 211 (tarinan S0310); indirect question with milloin (S0079) avoids the object case",
+  "gate": "PASS"
+ },
+ {
+  "id": "F028",
+  "row": "S0211L01U05",
+  "verdict": "reword",
+  "en_new": "they told us that it's important",
+  "fi_new": "ne kertoi meille, että se on tärkeää",
+  "confidence": "high",
+  "note": "vastauksen not taught until S0225; että-clause with taught tärkeää (S0065) replaces the object",
+  "gate": "PASS"
+ },
+ {
+  "id": "F029",
+  "row": "S0212L01U05",
+  "verdict": "reword",
+  "en_new": "they wanted to know why",
+  "fi_new": "ne halusi tietää, miksi",
+  "confidence": "high",
+  "note": "'tietää vastauksen' needs untaught vastauksen; indirect question 'miksi' needs no object case",
+  "gate": "PASS"
+ },
+ {
+  "id": "F204",
+  "row": "S0214L01U05",
+  "verdict": "reword",
+  "en_new": "did you have my book?",
+  "fi_new": "oliko sulla mun kirja?",
+  "confidence": "high",
+  "note": "specific keys need nominative avaimet (taught only S0512); 'kirja' nominative is taught (S0164) and is the right have-question case, like U04 'rahat'",
+  "gate": "PASS"
+ },
+ {
+  "id": "F030",
+  "row": "S0219L01U04",
+  "verdict": "reword",
+  "en_new": "it was really nice to meet you",
+  "fi_new": "oli tosi kiva tavata sut",
+  "confidence": "high",
+  "note": "'tavata muutaman kaverin' needs nominative (untaught); pronoun object 'sut' (S0127) is the correct accusative here",
+  "gate": "PASS"
+ },
+ {
+  "id": "F205",
+  "row": "S0220L01U04",
+  "verdict": "reword",
+  "en_new": "did you watch it all day?",
+  "fi_new": "katsoitko sä sitä koko päivän?",
+  "confidence": "high",
+  "note": "'watch the whole story' odd and needs untaught total object; duration 'koko päivän' (S0014) makes partitive 'sitä' the correct object",
+  "gate": "PASS"
+ },
+ {
+  "id": "F031",
+  "row": "S0225L01U05",
+  "verdict": "reword",
+  "en_new": "he would give you my book",
+  "fi_new": "se antaisi sulle mun kirjan",
+  "confidence": "high",
+  "note": "giving specific keys needs total avaimet (S0512, later); 'kirjan' (S0161) is the correct total object",
+  "gate": "PASS"
+ },
+ {
+  "id": "F032",
+  "row": "S0225L03B03",
+  "verdict": "reword",
+  "en_new": "if he was able to help",
+  "fi_new": "jos se pystyisi auttamaan",
+  "confidence": "high",
+  "note": "pystyä governs -maan; 'auttamaan' is already taught (S0176 'pystyykö se auttamaan'), so this is a pure correction to an available form",
+  "gate": "PASS"
+ },
+ {
+  "id": "F033",
+  "row": "S0225L03U05",
+  "verdict": "reword",
+  "en_new": "he would come if he was able to",
+  "fi_new": "se tulisi, jos se pystyisi",
+  "confidence": "high",
+  "note": "'whether' was rendered with jos (needs untaught pystyisikö); now a genuine conditional 'if', tulisi taught S0201",
+  "gate": "PASS"
+ },
+ {
+  "id": "F384",
+  "row": "S0234L03B03",
+  "verdict": "reword",
+  "en_new": "she works in the evening",
+  "fi_new": "se tekee töitä illalla",
+  "confidence": "high",
+  "note": "'tekee töitä paljon' order unnatural but 'paljon töitä' splits the LEGO; replaced 'a lot' with a time adverb (illalla, S0192) after the LEGO, natural order",
+  "gate": "PASS"
+ },
+ {
+  "id": "F385",
+  "row": "S0234L03U05",
+  "verdict": "reword",
+  "en_new": "my friend works at the weekend",
+  "fi_new": "mun kaveri tekee töitä viikonloppuna",
+  "confidence": "high",
+  "note": "same order problem as F384; viikonloppuna (S0214) follows the LEGO naturally",
+  "gate": "PASS"
+ },
+ {
+  "id": "F034",
+  "row": "S0238L01U02",
+  "verdict": "reword",
+  "en_new": "he wanted me to tell you the answer",
+  "fi_new": "se halusi, että mä kerron sulle vastauksen",
+  "confidence": "high",
+  "note": "totuuden untaught; vastauksen is taught (S0225) and is the correct total object (mirrors U05 with roles swapped)",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"he wanted that\" — read by eye]"
+ },
+ {
+  "id": "F386",
+  "row": "S0248L02U05",
+  "verdict": "reword",
+  "en_new": "I think the film is complete rubbish",
+  "fi_new": "mun mielestä elokuva on täyttä roskaa",
+  "confidence": "medium",
+  "note": "'tosi täyttä roskaa' intensifies an absolute; 'ihan' is untaught, so dropped the intensifier and used the seed's own 'mun mielestä' frame in the present",
+  "gate": "PASS"
+ },
+ {
+  "id": "F209",
+  "row": "S0249L01U04",
+  "verdict": "reword",
+  "en_new": "I hope you help me before the weekend",
+  "fi_new": "mä toivon, että sä autat mua ennen viikonloppua",
+  "confidence": "high",
+  "note": "bare statement-question did not mean 'can you help me'; wrapped it in the sibling frame 'mä toivon, että' so English and Finnish match",
+  "gate": "PASS"
+ },
+ {
+  "id": "F210",
+  "row": "S0253L01U03",
+  "verdict": "reword",
+  "en_new": "I can do it in a few minutes",
+  "fi_new": "mä voin tehdä sen muutamassa minuutissa",
+  "confidence": "high",
+  "note": "inessive muutamassa minuutissa = completion time, wrong with lähteä; päästä untaught, so used it with a completed action where the taught inessive is correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F211",
+  "row": "S0253L01U04",
+  "verdict": "reword",
+  "en_new": "can you be ready in a few minutes?",
+  "fi_new": "voitko sä olla valmis muutamassa minuutissa?",
+  "confidence": "high",
+  "note": "returning after a delay needs untaught päästä; being ready within a few minutes is what the taught inessive means",
+  "gate": "PASS"
+ },
+ {
+  "id": "F212",
+  "row": "S0256L01U04",
+  "verdict": "reword",
+  "en_new": "I want to be ready in less than an hour",
+  "fi_new": "mä haluun olla valmis alle tunnissa",
+  "confidence": "high",
+  "note": "alle tunnissa is a completion-time adverbial, wrong with lähteä; olla valmis is its natural partner (as the seed)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F036",
+  "row": "S0262L02U03",
+  "verdict": "reword",
+  "en_new": "that's the woman to whom I speak Finnish",
+  "fi_new": "se on nainen, jolle mä puhun suomea",
+  "confidence": "high",
+  "note": "missing copula; added taught on, matching U01 se on mies, jolle mä puhun",
+  "gate": "PASS"
+ },
+ {
+  "id": "F387",
+  "row": "S0266L01U06",
+  "verdict": "reword",
+  "en_new": "it's more important to see my father's friend",
+  "fi_new": "on tärkeämpää nähdä mun isän kaveri",
+  "confidence": "medium",
+  "note": "specific job wants nominative tärkeämpi (untaught; only tärkeämpää is); an infinitive subject makes the taught partitive tärkeämpää correct, and kaveri is the right nominative object of the impersonal infinitive",
+  "gate": "PASS"
+ },
+ {
+  "id": "F388",
+  "row": "S0268L02U02",
+  "verdict": "reword",
+  "en_new": "she sent me emails this morning",
+  "fi_new": "se lähetti mulle sähköpostia tänä aamuna",
+  "confidence": "high",
+  "note": "partitive sähköpostia means (some) emails, not an email; changed English only, matching U03 he sent me emails at the weekend",
+  "gate": "PASS"
+ },
+ {
+  "id": "F213",
+  "row": "S0270L02U03",
+  "verdict": "reword",
+  "en_new": "I reckon I'm going to be late",
+  "fi_new": "mä luulen, että mä myöhästyn",
+  "confidence": "high",
+  "note": "mun mielestä is opinion, not prediction; mä luulen, että is taught and the course glosses it I reckon",
+  "gate": "PASS"
+ },
+ {
+  "id": "F037",
+  "row": "S0280L03U02",
+  "verdict": "reword",
+  "en_new": "you have to do the most important job",
+  "fi_new": "sun pitää tehdä tärkein työ",
+  "confidence": "high",
+  "note": "after haluun the object would need untaught tärkeimmän työn; under the necessive sun pitää the taught nominative tärkein työ is correct (as the seed)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F216",
+  "row": "S0280L03U04",
+  "verdict": "reword",
+  "en_new": "it's difficult to do the most important job",
+  "fi_new": "on vaikeaa tehdä tärkein työ",
+  "confidence": "high",
+  "note": "nominative vaikea is untaught (S0526); an infinitive subject makes taught partitive vaikeaa correct, and nominative tärkein työ is the right object of the impersonal infinitive",
+  "gate": "PASS"
+ },
+ {
+  "id": "F038",
+  "row": "S0280L03U05",
+  "verdict": "reword",
+  "en_new": "I should do the most important job",
+  "fi_new": "mun pitäisi tehdä tärkein työ",
+  "confidence": "high",
+  "note": "haluaisin would need untaught tärkeimmän työn; necessive mun pitäisi (S0098) takes the taught nominative",
+  "gate": "PASS"
+ },
+ {
+  "id": "F389",
+  "row": "S0281L03B02",
+  "verdict": "reword",
+  "en_new": "my coffee to the end",
+  "fi_new": "mun kahvin loppuun",
+  "confidence": "low",
+  "note": "English over-translated a verbless build chunk; English now mirrors the chunk using the course gloss of loppuun (B01 to the end). No verb form (juoda) is taught to make a natural full infinitive; alternative is delete, since B03 already drills the full phrase",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"up\" — read by eye]"
+ },
+ {
+  "id": "F039",
+  "row": "S0283L01U03",
+  "verdict": "reword",
+  "en_new": "which people are in the office?",
+  "fi_new": "ketkä on toimistossa?",
+  "confidence": "high",
+  "note": "plural predicate valmiita untaught at 283 (S0396); a locative predicate (toimistossa, S0184) needs no agreement",
+  "gate": "PASS"
+ },
+ {
+  "id": "F040",
+  "row": "S0283L02U04",
+  "verdict": "reword",
+  "en_new": "which of your friends were there?",
+  "fi_new": "ketkä sun kavereista oli siellä?",
+  "confidence": "high",
+  "note": "same agreement problem as F039; locative siellä needs no plural adjective; oli/siellä taught",
+  "gate": "PASS"
+ },
+ {
+  "id": "F041",
+  "row": "S0284L01B03",
+  "verdict": "reword",
+  "en_new": "do you know the man",
+  "fi_new": "tunnetko sä miehen",
+  "confidence": "high",
+  "note": "tuntea is for people/places, not answers; miehen (S0230) is a taught person object",
+  "gate": "PASS"
+ },
+ {
+  "id": "F042",
+  "row": "S0284L01U02",
+  "verdict": "reword",
+  "en_new": "do you know my father?",
+  "fi_new": "tunnetko sä mun isän?",
+  "confidence": "high",
+  "note": "knowing a language is osata; replaced with a person object, mun isän taught S0266",
+  "gate": "PASS"
+ },
+ {
+  "id": "F043",
+  "row": "S0284L01U04",
+  "verdict": "reword",
+  "en_new": "do you know my father well?",
+  "fi_new": "tunnetko sä mun isän hyvin?",
+  "confidence": "high",
+  "note": "as F042, with taught hyvin",
+  "gate": "PASS"
+ },
+ {
+  "id": "F044",
+  "row": "S0284L01U05",
+  "verdict": "reword",
+  "en_new": "do you know that woman?",
+  "fi_new": "tunnetko sä sen naisen?",
+  "confidence": "high",
+  "note": "an answer is known with tietää; sen naisen (S0232) gives tuntea its proper person object",
+  "gate": "PASS"
+ },
+ {
+  "id": "F217",
+  "row": "S0287L01U03",
+  "verdict": "reword",
+  "en_new": "how many people are in the office?",
+  "fi_new": "kuinka monta ihmistä on toimistossa?",
+  "confidence": "high",
+  "note": "numeral subject needs plural predicate (valmiita untaught); locative toimistossa needs no agreement",
+  "gate": "PASS"
+ },
+ {
+  "id": "F045",
+  "row": "S0290L01B03",
+  "verdict": "reword",
+  "en_new": "I wonder if he knows why",
+  "fi_new": "tietääköhän se miksi",
+  "confidence": "high",
+  "note": "tietää with a person is wrong (tuntea); an indirect question is what tietää takes",
+  "gate": "PASS"
+ },
+ {
+  "id": "F046",
+  "row": "S0290L01U02",
+  "verdict": "reword",
+  "en_new": "I wonder if he knows where it is",
+  "fi_new": "tietääköhän se, missä se on",
+  "confidence": "high",
+  "note": "tietää + person is wrong; indirect question with taught missä",
+  "gate": "PASS"
+ },
+ {
+  "id": "F047",
+  "row": "S0290L01U03",
+  "verdict": "reword",
+  "en_new": "I wonder if he knows that it's important",
+  "fi_new": "tietääköhän se, että se on tärkeää",
+  "confidence": "high",
+  "note": "language knowledge is osata; että-clause is a proper tietää complement",
+  "gate": "PASS"
+ },
+ {
+  "id": "F048",
+  "row": "S0290L01U05",
+  "verdict": "reword",
+  "en_new": "I wonder if he knows who you mean",
+  "fi_new": "tietääköhän se, ketä sä tarkoitat",
+  "confidence": "high",
+  "note": "tietää + person is wrong; ketä sä tarkoitat taught S0263",
+  "gate": "PASS"
+ },
+ {
+  "id": "F049",
+  "row": "S0306L02U05",
+  "verdict": "reword",
+  "en_new": "the man who's talking is my father's friend",
+  "fi_new": "mies, joka puhuu, on mun isän kaveri",
+  "confidence": "high",
+  "note": "Finnish had no main verb (said 'the friend who speaks Finnish well'); now the relative clause is the LEGO and a full main clause follows, as in sibling U02",
+  "gate": "PASS"
+ },
+ {
+  "id": "F220",
+  "row": "S0308L01U07",
+  "verdict": "reword",
+  "en_new": "my mother's friend works at the council",
+  "fi_new": "mun äidin kaveri tekee töitä kunnalla",
+  "confidence": "high",
+  "note": "'työ on kunnalla' unidiomatic and työpaikka untaught; tekee töitä kunnalla is taught (S0234) and natural",
+  "gate": "PASS"
+ },
+ {
+  "id": "F050",
+  "row": "S0310L03U08",
+  "verdict": "reword",
+  "en_new": "you'll start the story tomorrow",
+  "fi_new": "sä aloitat tarinan huomenna",
+  "confidence": "high",
+  "note": "aloit is past of intransitive alkaa; transitive past aloitit untaught, but present sä aloitat (S0281) is taught, so moved to future time",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"a story\" — read by eye]"
+ },
+ {
+  "id": "F051",
+  "row": "S0311L03U02",
+  "verdict": "reword",
+  "en_new": "I don't want to explain the three most important facts",
+  "fi_new": "mä en haluu selittää kolmea tärkeintä faktaa",
+  "confidence": "high",
+  "note": "affirmative selittää needed untaught nominative kolme; under negation the taught partitive is correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F052",
+  "row": "S0311L03U04",
+  "verdict": "reword",
+  "en_new": "he couldn't show you the three most important facts",
+  "fi_new": "se ei voinut näyttää sulle kolmea tärkeintä faktaa",
+  "confidence": "high",
+  "note": "same as F051; negated with the seed's own se ei voinut so the partitive is right",
+  "gate": "PASS"
+ },
+ {
+  "id": "F222",
+  "row": "S0315L01U04",
+  "verdict": "reword",
+  "en_new": "I reckon he couldn't afford it then",
+  "fi_new": "mä luulen, että sillä ei ollut varaa silloin",
+  "confidence": "high",
+  "note": "ei vielä means not yet, not still (vieläkään untaught) and split the LEGO; replaced with taught silloin (S0118) after the whole LEGO",
+  "gate": "PASS"
+ },
+ {
+  "id": "F223",
+  "row": "S0315L02U05",
+  "verdict": "reword",
+  "en_new": "I reckon he couldn't afford the car last year",
+  "fi_new": "mä luulen, että sillä ei ollut varaa autoon viime vuonna",
+  "confidence": "high",
+  "note": "same not-yet/still mismatch; time adverb viime vuonna (taught) keeps both LEGOs whole",
+  "gate": "PASS"
+ },
+ {
+  "id": "F224",
+  "row": "S0315L03U04",
+  "verdict": "reword",
+  "en_new": "he could write the story that he wanted",
+  "fi_new": "se voisi kirjoittaa tarinan, jonka se halusi",
+  "confidence": "high",
+  "note": "after jotain the relative is mitä, not jonka (and English was odd); a noun antecedent tarinan (S0310) makes the LEGO's jonka correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F053",
+  "row": "S0316L01B02",
+  "verdict": "reword",
+  "en_new": "do you reckon that",
+  "fi_new": "luuletko sä, että",
+  "confidence": "high",
+  "note": "luulla cannot take a wh-clause; build step now the että frame every U row uses",
+  "gate": "PASS"
+ },
+ {
+  "id": "F054",
+  "row": "S0316L01B03",
+  "verdict": "reword",
+  "en_new": "do you reckon it doesn't matter at all",
+  "fi_new": "luuletko sä, että se ei haittaa yhtään",
+  "confidence": "high",
+  "note": "complement clause lacked että se; both forms taught, pure correction to available forms",
+  "gate": "PASS"
+ },
+ {
+  "id": "F225",
+  "row": "S0319L01U05",
+  "verdict": "reword",
+  "en_new": "she needs to write it in Finnish",
+  "fi_new": "sen pitää kirjoittaa se suomeksi",
+  "confidence": "high",
+  "note": "row did not contain its LEGO sen pitää; with the necessive the object must be nominative (tarina untaught), so used pronoun se (nominative, taught) and suomeksi",
+  "gate": "PASS"
+ },
+ {
+  "id": "F055",
+  "row": "S0320L02U05",
+  "verdict": "reword",
+  "en_new": "she said that she needs to buy it",
+  "fi_new": "se sanoi, että sen pitää ostaa se",
+  "confidence": "high",
+  "note": "necessive takes nominative se, not sen; se is taught, pure correction",
+  "gate": "PASS"
+ },
+ {
+  "id": "F226",
+  "row": "S0320L03B02",
+  "verdict": "reword",
+  "en_new": "not another television",
+  "fi_new": "ei toista televisiota",
+  "confidence": "medium",
+  "note": "affirmative 'buy another television' needs untaught total object; the colloquial exclamation under ei makes the taught partitive right, and keeps a short build step",
+  "gate": "PASS"
+ },
+ {
+  "id": "F056",
+  "row": "S0320L03U02",
+  "verdict": "reword",
+  "en_new": "I reckon he doesn't want to buy another television",
+  "fi_new": "mä luulen, että se ei haluu ostaa toista televisiota",
+  "confidence": "high",
+  "note": "total object untaught; negated clause makes the taught partitive toista televisiota correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F057",
+  "row": "S0320L03U04",
+  "verdict": "reword",
+  "en_new": "she said that she doesn't need to buy another television",
+  "fi_new": "se sanoi, että sen ei tarvii ostaa toista televisiota",
+  "confidence": "high",
+  "note": "as F056, using the seed's sen ei tarvii",
+  "gate": "PASS"
+ },
+ {
+  "id": "F058",
+  "row": "S0320L03U06",
+  "verdict": "reword",
+  "en_new": "you're not going to buy another television",
+  "fi_new": "sä et aio ostaa toista televisiota",
+  "confidence": "high",
+  "note": "as F056, negated aio",
+  "gate": "PASS"
+ },
+ {
+  "id": "F390",
+  "row": "S0321L01U02",
+  "verdict": "reword",
+  "en_new": "I reckon that book is nice",
+  "fi_new": "mä luulen, että se kirja on kiva",
+  "confidence": "high",
+  "note": "kiva is glossed nice throughout; English changed only",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"a book\" — read by eye]"
+ },
+ {
+  "id": "F059",
+  "row": "S0326L01U02",
+  "verdict": "reword",
+  "en_new": "she needs to sell it today",
+  "fi_new": "sen pitää myydä se tänään",
+  "confidence": "high",
+  "note": "necessive + whole object = nominative se (taught); pure correction",
+  "gate": "PASS"
+ },
+ {
+  "id": "F060",
+  "row": "S0326L01U03",
+  "verdict": "reword",
+  "en_new": "I reckon she wants to sell it",
+  "fi_new": "mä luulen, että se haluu myydä sen",
+  "confidence": "high",
+  "note": "affirmative whole object = accusative sen (taught S0020); pure correction",
+  "gate": "PASS"
+ },
+ {
+  "id": "F228",
+  "row": "S0326L01U04",
+  "verdict": "reword",
+  "en_new": "she doesn't need to sell it",
+  "fi_new": "sen ei tarvii myydä sitä",
+  "confidence": "medium",
+  "note": "en usko does not negate the että-clause, so sitä was wrong; under sen ei tarvii (S0320) partitive sitä is correct. NB the seed sentence 326 has the same en usko + partitive shape (not in this shard)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F061",
+  "row": "S0326L01U05",
+  "verdict": "reword",
+  "en_new": "she said that she needs to sell it",
+  "fi_new": "se sanoi, että sen pitää myydä se",
+  "confidence": "high",
+  "note": "necessive takes nominative se; pure correction",
+  "gate": "PASS"
+ },
+ {
+  "id": "F229",
+  "row": "S0326L02B02",
+  "verdict": "reword",
+  "en_new": "we're not selling the company",
+  "fi_new": "me ei myydä yritystä",
+  "confidence": "medium",
+  "note": "yritys/yrityksen untaught; colloquial negative passive me ei myydä makes the taught partitive yritystä correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F062",
+  "row": "S0326L02B03",
+  "verdict": "reword",
+  "en_new": "she didn't want to sell the company",
+  "fi_new": "se ei halunnut myydä yritystä",
+  "confidence": "high",
+  "note": "necessive needs untaught yritys; negated past makes yritystä correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F063",
+  "row": "S0326L02U03",
+  "verdict": "reword",
+  "en_new": "I reckon she doesn't need to sell the company",
+  "fi_new": "mä luulen, että sen ei tarvii myydä yritystä",
+  "confidence": "high",
+  "note": "as F062, with sen ei tarvii",
+  "gate": "PASS"
+ },
+ {
+  "id": "F064",
+  "row": "S0326L02U04",
+  "verdict": "reword",
+  "en_new": "she said that she doesn't want to sell the company",
+  "fi_new": "se sanoi, että se ei haluu myydä yritystä",
+  "confidence": "high",
+  "note": "accusative yrityksen untaught; negated clause makes yritystä correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F230",
+  "row": "S0327L02U06",
+  "verdict": "reword",
+  "en_new": "another way to learn Finnish",
+  "fi_new": "toinen tapa oppia suomea",
+  "confidence": "high",
+  "note": "itsensä testaamiseen is stilted nominalisation and testata/itseään are untaught; plain infinitive after toinen tapa, as U05, with taught oppia suomea",
+  "gate": "PASS"
+ },
+ {
+  "id": "F231",
+  "row": "S0330L01B01",
+  "verdict": "reword",
+  "en_new": "not very",
+  "fi_new": "ei kovin",
+  "confidence": "high",
+  "note": "row under LEGO kovin used tosi (and very→tosi/kovin ZUT); kovin is natural only negated, so the shortest build is ei kovin",
+  "gate": "PASS"
+ },
+ {
+  "id": "F232",
+  "row": "S0330L01B03",
+  "verdict": "reword",
+  "en_new": "not very good",
+  "fi_new": "ei kovin hyvä",
+  "confidence": "high",
+  "note": "as F231; hyvä taught S0047",
+  "gate": "PASS"
+ },
+ {
+  "id": "F233",
+  "row": "S0330L01U03",
+  "verdict": "reword",
+  "en_new": "I reckon it isn't very important",
+  "fi_new": "mä luulen, että se ei oo kovin tärkeää",
+  "confidence": "high",
+  "note": "as F231; negated so kovin is natural and the row now drills its LEGO",
+  "gate": "PASS"
+ },
+ {
+  "id": "F234",
+  "row": "S0330L01U04",
+  "verdict": "reword",
+  "en_new": "she said that it isn't very nice",
+  "fi_new": "se sanoi, että se ei oo kovin kiva",
+  "confidence": "high",
+  "note": "as F231",
+  "gate": "PASS"
+ },
+ {
+  "id": "F235",
+  "row": "S0330L01U06",
+  "verdict": "reword",
+  "en_new": "it isn't a very nice surprise",
+  "fi_new": "se ei oo kovin kiva yllätys",
+  "confidence": "high",
+  "note": "as F231; yllätys taught S0130",
+  "gate": "PASS"
+ },
+ {
+  "id": "F236",
+  "row": "S0332L02U07",
+  "verdict": "reword",
+  "en_new": "we're trying to build something",
+  "fi_new": "me yritetään rakentaa jotain",
+  "confidence": "high",
+  "note": "after passive me yritetään the object must be nominative uusi elämä (untaught); partitive jotain is natural with yrittää rakentaa",
+  "gate": "PASS"
+ },
+ {
+  "id": "F065",
+  "row": "S0332L03U04",
+  "verdict": "reword",
+  "en_new": "you can build a new life",
+  "fi_new": "sä voit rakentaa uuden elämän",
+  "confidence": "high",
+  "note": "necessive needed untaught nominative uusi elämä; with sä voit the taught accusative uuden elämän is correct",
+  "gate": "PASS"
+ },
+ {
+  "id": "F066",
+  "row": "S0332L04U04",
+  "verdict": "reword",
+  "en_new": "she could build a new life for her sister",
+  "fi_new": "se voisi rakentaa uuden elämän siskolleen",
+  "confidence": "high",
+  "note": "as F065; conditional se voisi (S0310) takes accusative uuden elämän",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"for his sister\" — read by eye]"
+ },
+ {
+  "id": "F237",
+  "row": "S0333L02U06",
+  "verdict": "reword",
+  "en_new": "he has a lot of time to practise",
+  "fi_new": "sillä on paljon aikaa harjoitella",
+  "confidence": "high",
+  "note": "stilted nominalisation, testata/itseään untaught; plain infinitive with taught harjoitella",
+  "gate": "PASS  [note: current row already lacks a literal LEGO English run \"much time\" — read by eye]"
+ },
+ {
+  "id": "F239",
+  "row": "S0336L01U02",
+  "verdict": "reword",
+  "en_new": "I don't believe she's able to open it",
+  "fi_new": "mä en usko, että se pystyy avaamaan sen",
+  "confidence": "medium",
+  "note": "en usko does not negate the että-clause, so total sen (taught, as U03/U04) replaces sitä. NB the seed 336 sentence has the same en usko + partitive ovea shape (not in this shard)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F240",
+  "row": "S0336L02B02",
+  "verdict": "reword",
+  "en_new": "isn't able to open the door",
+  "fi_new": "ei pysty avaamaan ovea",
+  "confidence": "high",
+  "note": "LEGO ovea is partitive, correct only under negation/question; oven untaught, so negated build (cf. S0333 isn't able to spend)",
+  "gate": "PASS"
+ },
+ {
+  "id": "F067",
+  "row": "S0336L02B03",
+  "verdict": "reword",
+  "en_new": "I'm not able to open the door",
+  "fi_new": "mä en pysty avaamaan ovea",
+  "confidence": "high",
+  "note": "as F240; first person avoids duplicating U04",
+  "gate": "PASS"
+ },
+ {
+  "id": "F068",
+  "row": "S0336L02U02",
+  "verdict": "reword",
+  "en_new": "she isn't able to open the door today",
+  "fi_new": "se ei pysty avaamaan ovea tänään",
+  "confidence": "high",
+  "note": "as F240",
+  "gate": "PASS"
+ },
+ {
+  "id": "F069",
+  "row": "S0336L02U03",
+  "verdict": "reword",
+  "en_new": "I reckon she isn't able to open the door",
+  "fi_new": "mä luulen, että se ei pysty avaamaan ovea",
+  "confidence": "high",
+  "note": "as F240",
+  "gate": "PASS"
+ },
+ {
+  "id": "F070",
+  "row": "S0336L02U05",
+  "verdict": "reword",
+  "en_new": "she said that she isn't able to open the door",
+  "fi_new": "se sanoi, että se ei pysty avaamaan ovea",
+  "confidence": "high",
+  "note": "as F240",
+  "gate": "PASS"
+ }
+]
