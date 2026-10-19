@@ -51,6 +51,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '../../../.env.
 const fs = require('fs');
 const { Client } = require('pg');
 const { nightlyClient, namedRead, optionalRead } = require('./named-read.cjs');
+const { boundedClient } = require('../lib/bounded-client.cjs');
 const APP_NAME = 'qa:voice-variety:linked-voices';
 const { COURSE_CAST_FIELDS, targetCastKey, baseLanguageOfCastKey, castKeySource } = require('../../../services/shared/cast-language-key.cjs');
 const { applyLanguageCast } = require('../../../services/shared/language-voice-cast.cjs');
@@ -83,7 +84,7 @@ const timedOutWhole = new Set();
  * (course, role, voice) → linked slot count for a list of courses, summed across branches and windows. Courses go in batches (the
  * statement overhead is paid per batch); a cancelled batch is halved, and one course still cancelled is windowed by seed_number.
  */
-async function linkedVoices(db, courseCodes, maxSeed = new Map()) {
+async function linkedVoices(db, courseCodes, maxSeed = new Map(), pool = [db]) {
   const { windowedRead, batchedRead } = require('../lib/windowed-read.cjs');
   const merged = new Map();
   const add = (rows) => {
@@ -100,20 +101,26 @@ async function linkedVoices(db, courseCodes, maxSeed = new Map()) {
     catch (e) { if (e.code === '57014') console.error(`qa:voice-variety:linked-voices ${label} CANCELLED ms=${Date.now() - t0}`); throw e; }
   };
   const sizes = {}; // batch size learned per table; both roles of a table cost alike
-  for (const [table, role] of LINKED_BRANCHES) {
-    const results = await batchedRead(courseCodes,
-      timed(`${table}.${role} batch`, (codes) => db.query(linkedBranchSql(table, role, null), [codes])),
-      async (code) => windowedRead(timed(`${table}.${role} ${code}`, (pred) => db.query(linkedBranchSql(table, role, pred), [[code]])),
-        { column: 't.seed_number', memo: timedOutWhole, key: `${code}|${table}`, max: maxSeed.get(code) ?? null }),
-      { state: (sizes[table] ||= { size: table === 'course_practice_phrases' ? 4 : 16 }) });
-    for (const r of results) add(r.rows);
-  }
+  // The branches are independent, so each connection in `pool` takes the next one. The two phrase branches are ~4 min each on prod
+  // when run back to back, which alone nearly fills the 10 min run cap; each connection is still capped at 5 s a statement.
+  const queue = [...LINKED_BRANCHES]; // popped from the end, so the phrase branches (the longest) start first
+  await Promise.all(pool.map(async (conn) => {
+    for (let branch = queue.pop(); branch; branch = queue.pop()) {
+      const [table, role] = branch;
+      const results = await batchedRead(courseCodes,
+        timed(`${table}.${role} batch`, (codes) => conn.query(linkedBranchSql(table, role, null), [codes])),
+        async (code) => windowedRead(timed(`${table}.${role} ${code}`, (pred) => conn.query(linkedBranchSql(table, role, pred), [[code]])),
+          { column: 't.seed_number', memo: timedOutWhole, key: `${code}|${table}`, max: maxSeed.get(code) ?? null }),
+        { state: (sizes[table] ||= { size: table === 'course_practice_phrases' ? 4 : 16 }) });
+      for (const r of results) add(r.rows);
+    }
+  }));
   return [...merged.values()];
 }
 
 const HUMAN_RECORDED_SQL = `SELECT course_code, role, target_lang, known_lang, clips, a_voice_id FROM course_human_recorded_roles WHERE course_code = ANY($1)`;
 
-async function load(db) {
+async function load(db, extraConnections = []) {
   const [courses, voices, roles] = await Promise.all([
     db.query(`SELECT ${COURSE_CAST_FIELDS}, status, voice_config FROM courses ORDER BY course_code`),
     db.query('SELECT voice_id, display_name, human_name, gender, tts_engine, tts_locale, is_active, languages, type FROM voices'),
@@ -122,7 +129,7 @@ async function load(db) {
   const codes = courses.rows.map((c) => c.course_code);
   // Highest seed per course, from the small table, so a windowed course does not pay for empty windows above its last seed.
   const maxSeed = new Map((await db.query('SELECT course_code, max(seed_number)::int AS m FROM course_seeds GROUP BY 1')).rows.map((r) => [r.course_code, r.m]));
-  const linked = { rows: await linkedVoices(db, codes, maxSeed) };
+  const linked = { rows: await linkedVoices(db, codes, maxSeed, [db, ...extraConnections]) };
   // humanRows are the MEASURED human recordings (human-recorded-roles.cjs reads course_code/role/clips/a_voice_id). This used to
   // select `dialect` from language_recording_policy, which has no such column and is not that shape; the old silent catch hid it.
   // Batched and halved on a cancel like linkedVoices; only an absent view (42P01) may fail.
@@ -275,8 +282,13 @@ async function main(argv = process.argv) {
   const quiet = args.includes('--quiet');
   const db = nightlyClient(Client, APP_NAME);
   await db.connect();
+  // Two more capped connections for the linked-voices branches (see linkedVoices); each is its own bounded transaction per statement.
+  const extras = [nightlyClient(Client, APP_NAME), nightlyClient(Client, APP_NAME)];
   let data;
-  try { data = await namedRead(db, APP_NAME, load); } finally { await db.end(); }
+  try {
+    await Promise.all(extras.map((c) => c.connect()));
+    data = await namedRead(db, APP_NAME, (bounded) => load(bounded, extras.map((c) => boundedClient(c, APP_NAME))));
+  } finally { await Promise.all([db, ...extras].map((c) => c.end().catch(() => {}))); }
 
   const result = assess(data);
   const calOk = calibrateWanted(args) ? calibrate(result) : calibrateSilently(result);

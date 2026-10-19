@@ -186,3 +186,14 @@ describe('nightly connections', () => {
     expect(statements).toBeLessThan(60)       // not one-per-course-per-window for the whole estate
   })
 })
+
+describe('linkedVoices pool', () => {
+  it('spreads the six branches over every connection it is given and sums them all', async () => {
+    const mod = require('./check-voice-variety.cjs')
+    const used = new Map()
+    const conn = (name) => ({ query: async (sql) => { used.set(name, (used.get(name) || 0) + 1); await new Promise((r) => setTimeout(r, 2)); return { rows: [{ course_code: 'x_for_eng', role: /'target1'/.test(sql) ? 'target1' : 'target2', voice_id: 'v', n: '1' }] } } })
+    const rows = await mod.linkedVoices(conn('a'), ['x_for_eng'], new Map(), [conn('a'), conn('b'), conn('c')])
+    expect(used.size).toBe(3)
+    expect(rows.reduce((n, r) => n + r.n, 0)).toBe(6) // six branches, one slot each
+  })
+})
