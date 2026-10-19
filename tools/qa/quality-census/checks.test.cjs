@@ -6,7 +6,7 @@
  */
 import { describe, it, expect } from 'vitest'
 
-const { CHECKS, secondSentence, offScript, otherLanguageWords, capitalisation, duplicates, lengthMismatch, seedPlacement, thinBaskets, zut } = require('./checks.cjs')
+const { legoInPhrase, phraseMissingLego, CHECKS, secondSentence, offScript, otherLanguageWords, capitalisation, duplicates, lengthMismatch, seedPlacement, thinBaskets, zut } = require('./checks.cjs')
 const { calibrate } = require('./calibrate.cjs')
 
 const C = Object.fromEntries(CHECKS.map((c) => [c.id, c]))
@@ -128,5 +128,36 @@ describe('calibration harness', () => {
     const s = snap({ seeds: [seed(100, 'today', 'oggi')], legos, phrases: [phrase(100, 1, 'use', 'today', 'oggi'), phrase(190, 1, 'use', 'do you mind if I go', 'ti dispiace se vado')] })
     const res = calibrate(s)
     expect(res.nonsense.filter((x) => x.planted && !x.caught)).toEqual([])
+  })
+})
+
+describe('P17 phrase missing its own LEGO (candidate scan, needs reading)', () => {
+  // [LEGO target, phrase target]: rows the phrase-quality lane confirmed BAD (class Containment) on ita_for_eng
+  it('fires on a phrase that does not say its LEGO', () => {
+    expect(legoInPhrase('sto cominciando a capire', 'penso di cominciare a capire').bucket).toBe('content-missing')
+    expect(legoInPhrase('suonare qualcos\'altro', 'voglio suonare adesso').bucket).toBe('content-missing')
+    expect(legoInPhrase('ti sentirai', 'sono felice')).toBeTruthy()
+  })
+  it('fires on a changed preposition and on the build fragment (function word / word missing)', () => {
+    expect(legoInPhrase('alla maggior parte delle persone', 'per la maggior parte delle persone').bucket).toBe('function-missing')
+    expect(legoInPhrase('è preoccupata', 'preoccupata').bucket).toBe('function-missing')
+  })
+  it('stays quiet on the exceptions found by hand-reading ita_for_eng (2026-10-19)', () => {
+    expect(legoInPhrase('un po\' più di tempo', 'ho bisogno di un po\' più di tempo')).toBeNull()      // the earlier "di" is not the LEGO's
+    expect(legoInPhrase('l\'ultima volta', 'meglio dell\'ultima volta')).toBeNull()                      // di + l' contraction
+    expect(legoInPhrase('il cartello blu', 'non era davanti al cartello blu')).toBeNull()               // a + il contraction
+    expect(legoInPhrase('dire', 'sto provando a dirlo')).toBeNull()                                      // L28 stem + clitic
+    expect(legoInPhrase('l\'ho vista', 'non l\'ho ancora vista')).toBeNull()                            // K31 intervener
+    expect(legoInPhrase('quindi spero', 'quindi spero di aiutare')).toBeNull()
+  })
+  it('flags the LEGO said in another form of its own verb (lane: prendersi il tempo / prendermi il tempo)', () => {
+    expect(legoInPhrase('prendersi il tempo', 'mi piace prendermi il tempo per rispondere').bucket).toBe('inflected')
+    expect(legoInPhrase('prendersi il tempo', 'voglio prendersi il tempo')).toBeNull()
+  })
+  it('is flagged as a candidate scan and reads phrases through their LEGO, skipping components', () => {
+    expect(CHECKS.find((c) => c.id === 'P17').candidateScan).toBe(true)
+    const s = snap({ legos: [lego(98, 3, 'playing something else', 'suonare qualcos\'altro')], phrases: [phrase(98, 3, 'use', 'I want to play now', 'voglio suonare adesso'), phrase(98, 3, 'use', 'I want to play something else', 'voglio suonare qualcos\'altro'), phrase(98, 3, 'component', 'play', 'suonare')] })
+    expect(phraseMissingLego(s).map((h) => h.target)).toEqual(['voglio suonare adesso'])
+    expect(phraseMissingLego({ ...s, target_lang: 'fra' })).toEqual([])
   })
 })

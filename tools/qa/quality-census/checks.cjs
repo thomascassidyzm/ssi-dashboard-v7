@@ -358,6 +358,95 @@ const placementCheck = {
   needs: (snap) => CJK.has(snap.target_lang) ? 'placement half is word-based: only the missing half runs on an unspaced script' : null,
 };
 
-const CHECKS = [parentheticals, slashes, wrongKnown, wrongTarget, multiSentence, unpronounceable, speechMarks, trailingPeriod, lowercaseI, zutCheck, capitalisationCheck, identical, thinCheck, langSpecific, duplicateCheck, lengthCheck, placementCheck];
+// ── phrase missing its own LEGO (CANDIDATE SCAN, needs reading) ───────────────────────────────────────────────
+// P17 (HARD): every phrase under a LEGO, BUILD and USE, contains the WHOLE LEGO on the target side. Kai, 2026-10-19:
+// "we do a regex-based scan to flag candidates, and then read through to find real offenders — I have found quite a
+// few exceptions to the rule over the years, so there's nothing automatic". So this is deliberately LOOSE (a missed
+// offender is worse than an extra candidate) and its count is NOT a finding. It is reported as 'candidate scan,
+// needs reading', never as a pass/fail number. Only Italian has a matcher; any other target is UNAVAILABLE.
+//
+// A LEGO token matches a phrase token when, after folding case and accents and splitting at apostrophes (l'avrei →
+// l + avrei), they are: equal; in one article/preposition family (lo/la/l/il/gli/le/un/una/uno, di/d/del…);
+// sharing a stem (a prefix of ≥ 4 letters covering all but 3 of the LEGO's letters — inflection, mi piace/piacere);
+// or the L28 stem+clitic spelling (dire ↔ dirlo, mettere ↔ metterlo, fare ↔ farlo). K31 interveners (non, ancora,
+// già, solo) are tolerated inside the phrase because tokens need not be adjacent. Buckets: 'content-missing' (a
+// content word of the LEGO has no counterpart in the phrase — the P17 break), 'function-missing' (only a small
+// word such as di/a/non/che is absent — often an elision or the K31 family, read it), 'scattered' (every token is
+// present but not in one run — word order or a split LEGO, read it), 'inflected' (the LEGO is there but a long word of it only
+// by shared stem — the phrase may say another FORM of the verb, read it).
+const ITA_FAMILY = [['il', 'lo', 'la', 'l', 'i', 'gli', 'le', 'un', 'uno', 'una'], ['di', 'd', 'del', 'dello', 'della', 'dei', 'degli', 'delle', 'dell'], ['a', 'ad', 'al', 'allo', 'alla', 'ai', 'agli', 'alle', 'all'], ['da', 'dal', 'dallo', 'dalla', 'dai', 'dagli', 'dalle', 'dall'], ['in', 'nel', 'nello', 'nella', 'nei', 'negli', 'nelle', 'nell'], ['su', 'sul', 'sullo', 'sulla', 'sui', 'sugli', 'sulle', 'sull'], ['e', 'ed'], ['o', 'od'], ['mi', 'me', 'm'], ['ti', 'te', 't'], ['ci', 'ce', 'c'], ['vi', 've', 'v'], ['si', 'se', 's'], ['lo', 'glielo', 'gliela', 'glieli', 'gliele', 'gli', 'le', 'li', 'la', 'l']];
+const ITA_FUNCTION = new Set(['il', 'lo', 'la', 'l', 'i', 'gli', 'le', 'un', 'uno', 'una', 'di', 'd', 'a', 'ad', 'da', 'in', 'con', 'su', 'per', 'tra', 'fra', 'e', 'ed', 'o', 'non', 'ci', 'mi', 'ti', 'si', 'vi', 'ne', 'che', 'se', 'ma', 'del', 'al', 'nel', 'dal', 'sul', 'è']);
+const fold = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/\p{M}/gu, '');
+// preposition+article contractions are read as two tokens, so dell'ultima volta contains l'ultima volta but alla maggior parte (a + la) is NOT per la maggior parte
+const CONTRACTION = {};
+for (const [prep, stems] of [['di', 'de'], ['a', 'a'], ['da', 'da'], ['in', 'ne'], ['su', 'su']])
+  for (const [suffix, art] of [['l', 'il'], ['llo', 'lo'], ['lla', 'la'], ['i', 'i'], ['gli', 'gli'], ['lle', 'le'], ['ll', 'l']]) CONTRACTION[stems + suffix] = [prep, art];
+const itaTokens = (t) => fold(t).replace(/[’‘`]/g, "'").split(/[^\p{L}\p{N}]+/u).filter(Boolean).flatMap((w) => CONTRACTION[w] || [w]);
+function itaTokenMatches(lt, pt) {
+  if (lt === pt) return true;
+  if (ITA_FAMILY.some((f) => f.includes(lt) && f.includes(pt))) return true;
+  let cp = 0; while (cp < lt.length && cp < pt.length && lt[cp] === pt[cp]) cp++;
+  const short = Math.min(lt.length, pt.length);
+  // shared stem: inflection, subjunctive, plural (felici/felice, va/vada, ha/hanno). Short words (≤3 letters) must be a prefix of the other.
+  if (cp >= 2 && cp >= (short <= 3 ? short : short - 2) && Math.abs(lt.length - pt.length) <= (short <= 3 ? 2 : 5)) return true;
+  if (cp >= 4 && cp >= lt.length - 3) return true;
+  // L28 stem + clitic spelling: dire → dirlo, mettere → metterlo, aiutare → aiutarlo
+  const inf = lt.replace(/(are|ere|ire|rre|re)$/, '');
+  return inf !== lt && inf.length >= 2 && pt.startsWith(inf.slice(0, Math.max(2, inf.length - 1))) && /(lo|la|li|le|mi|ti|ci|vi|gli|ne|si|melo|telo|glielo|gliela|cela)$/.test(pt) && pt.length > inf.length - 1;
+}
+// the LEGO's tokens in one unbroken run of the phrase, a K31 intervener (non, ancora, già, solo) allowed between
+const ITA_INTERVENERS = new Set(['non', 'ancora', 'gia', 'solo']);
+function runIn(lt, pt) {
+  for (let i = 0; i < pt.length; i++) {
+    let j = i, k = 0;
+    while (k < lt.length && j < pt.length) {
+      if (itaTokenMatches(lt[k], pt[j])) { k++; j++; } else if (k > 0 && ITA_INTERVENERS.has(pt[j]) && !ITA_INTERVENERS.has(lt[k])) j++; else break;
+    }
+    if (k === lt.length) return true;
+  }
+  return false;
+}
+function legoInPhrase(legoTarget, phraseTarget) {
+  const lt = itaTokens(legoTarget), pt = itaTokens(phraseTarget);
+  if (runIn(lt, pt)) {
+    // every token is there, but a long content word only by shared stem: the phrase may say another FORM of the LEGO's word
+    // (prendersi → prendermi, funziona → funzioni). Lane precedent: S0077L03U06 sto → stia was confirmed BAD.
+    const exact = new Set(pt), inflected = lt.filter((t) => t.length >= 5 && !exact.has(t));
+    return inflected.length ? { bucket: 'inflected', missing: inflected } : null;
+  }
+  const used = new Set(), missing = [];
+  for (const t of lt) {
+    let j = -1;
+    for (let i = 0; i < pt.length && j < 0; i++) if (!used.has(i) && itaTokenMatches(t, pt[i])) j = i;
+    if (j < 0) missing.push(t); else used.add(j);
+  }
+  const content = missing.filter((t) => !ITA_FUNCTION.has(t));
+  if (content.length) return { bucket: 'content-missing', missing: content };
+  if (missing.length) return { bucket: 'function-missing', missing };
+  return { bucket: 'scattered', missing: [] };
+}
+function phraseMissingLego(snap) {
+  if (snap.target_lang !== 'ita') return [];
+  const legoOf = new Map(snap.legos.map((l) => [`${l.seed_number}/${l.lego_index}`, l]));
+  const out = [];
+  for (const p of snap.phrases) {
+    if (p.phrase_role === 'component') continue;
+    const l = legoOf.get(`${p.seed_number}/${p.lego_index}`);
+    if (!l || !l.target_text) continue;
+    const r = legoInPhrase(l.target_text, p.target_text || '');
+    if (!r) continue;
+    out.push({ seed: p.seed_number, ref: sidOf(snap, p.id), kind: 'phrase', role: p.phrase_role, known: p.known_text || '', target: p.target_text || '', bucket: r.bucket,
+      lego: legoRef(l), lego_known: l.known_text || '', lego_target: l.target_text, lego_is_new: !!l.is_new,
+      why: `candidate scan, needs reading: LEGO "${l.known_text} | ${l.target_text}"${r.bucket === 'inflected' ? ` — only another form of: ${r.missing.join(', ')}` : r.missing.length ? ` — no counterpart for: ${r.missing.join(', ')}` : ' — words present but not in one run'}` });
+  }
+  return out;
+}
+const ownLegoCheck = {
+  id: 'P17', name: 'Phrase may be missing its own LEGO (CANDIDATE SCAN, needs reading — not a pass/fail count)', rule: 'P17 (HARD) with the L28 / K31 exceptions; Kai 2026-10-19: flag by scan, find real offenders by reading', blocks: 'ask',
+  run: phraseMissingLego, candidateScan: true,
+  needs: (snap) => snap.target_lang === 'ita' ? null : `no matcher for ${snap.target_lang}: UNAVAILABLE`,
+};
 
-module.exports = { CHECKS, rows, secondSentence, offScript, otherLanguageWords, wrapped, LOWER_I, PAREN, SLASH, zut, capitalisation, thinBaskets, duplicates, lengthMismatch, seedPlacement };
+const CHECKS = [parentheticals, slashes, wrongKnown, wrongTarget, multiSentence, unpronounceable, speechMarks, trailingPeriod, lowercaseI, zutCheck, capitalisationCheck, identical, thinCheck, langSpecific, duplicateCheck, lengthCheck, placementCheck, ownLegoCheck];
+
+module.exports = { CHECKS, legoInPhrase, phraseMissingLego, rows, secondSentence, offScript, otherLanguageWords, wrapped, LOWER_I, PAREN, SLASH, zut, capitalisation, thinBaskets, duplicates, lengthMismatch, seedPlacement };

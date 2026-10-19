@@ -32,7 +32,7 @@ function runAll(snap, only) {
     const hits = c.run(snap);
     const buckets = {};
     for (const h of hits) buckets[h.bucket || 'all'] = (buckets[h.bucket || 'all'] || 0) + 1;
-    results.push({ id: c.id, name: c.name, rule: c.rule, blocks: c.blocks, gap: c.needs ? c.needs(snap) : null, count: hits.length, buckets, ms: Date.now() - t, hits });
+    results.push({ id: c.id, name: c.name, rule: c.rule, blocks: c.blocks, candidateScan: !!c.candidateScan, gap: c.needs ? c.needs(snap) : null, count: hits.length, buckets, ms: Date.now() - t, hits });
   }
   return { course: snap.course, snapshot_taken: snap.taken, rows: { seeds: snap.seeds.length, legos: snap.legos.length, phrases: snap.phrases.length }, ms: Date.now() - t0, results };
 }
@@ -53,7 +53,7 @@ if (require.main === module) {
     fs.writeFileSync(out, JSON.stringify(report, null, 1));
     const n = +arg('--sample', 0);
     for (const r of report.results) {
-      console.log(`${r.id.padEnd(4)} ${String(r.count).padStart(6)}  ${r.name}  ${JSON.stringify(r.buckets)}${r.gap ? `  GAP: ${r.gap}` : ''}`);
+      console.log(`${r.id.padEnd(4)} ${String(r.count).padStart(6)}${r.candidateScan ? ' candidates' : ''}  ${r.name}  ${JSON.stringify(r.buckets)}${r.gap ? `  GAP: ${r.gap}` : ''}`);
       if (n) for (const h of sample(r.hits, n, r.id)) console.log(`        s${h.seed} ${h.ref} [${h.bucket || h.role}] ${h.known} | ${h.target}  — ${h.why}`);
     }
     console.log(`load ${loadMs} ms, checks ${report.ms} ms → ${out}`);

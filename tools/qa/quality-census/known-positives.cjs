@@ -114,4 +114,7 @@ const LANE_BAD = [
   ["S0098L03B01", 98, 3, "build", "to play", "suonare", "R1 ZUT"],
 ];
 
-module.exports = { DUPLICATES_639, ZUT_865, CAPITALS_883, NO_USE_887, SUBJUNCTIVE_967, TAG_881, LANE_BAD };
+// The lane's 'Containment' rows are the phrase-missing-its-own-LEGO cases (P17): the check P17 in checks.cjs is calibrated on these.
+const CONTAINMENT_LANE = LANE_BAD.filter((r) => r[6] === 'Containment');
+
+module.exports = { CONTAINMENT_LANE, DUPLICATES_639, ZUT_865, CAPITALS_883, NO_USE_887, SUBJUNCTIVE_967, TAG_881, LANE_BAD };

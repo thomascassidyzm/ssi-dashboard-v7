@@ -115,5 +115,6 @@ if (require.main === module) {
   console.log('KNOWN POSITIVES'); for (const k of res.known) console.log(`  ${k.check.padEnd(4)} ${k.caught ? 'CAUGHT' : 'MISSED'} ${k.found.length}/${k.expected.length}  ${k.what} (${k.source})`);
   console.log('NONSENSE CONTROLS'); for (const n of res.nonsense) console.log(`  ${n.check.padEnd(4)} ${n.planted ? (n.caught ? 'caught' : 'MISSED') : '—'} ${n.planted || ''}`);
   console.log(`LANE RECALL (${res.lane.rows} hand-confirmed bad rows, seeds 1–100; any check: ${res.lane.caughtByAny})`); for (const r of res.recall) if (r.caught) console.log(`  ${r.check.padEnd(4)} ${r.caught}  ${r.refs.join(' ')}`);
+  { const own = new Set(KP.CONTAINMENT_LANE.map((r) => r[0])); const got = (res.recall.find((r) => r.check === 'P17') || { refs: [] }).refs.filter((r) => own.has(r)); console.log(`  P17 on the lane's ${own.size} Containment-class rows: ${got.length} caught; missed: ${[...own].filter((r) => !got.includes(r)).join(' ') || 'none'}`); }
   console.log('  lane classes:', JSON.stringify(res.lane.classes));
 }
