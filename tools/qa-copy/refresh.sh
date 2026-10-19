@@ -6,7 +6,7 @@
 # and only then switch the one config file the QA units read:  $QA_COPY_HOME/qa-copy.env  (DATABASE_URL=...).
 # WHY: the grouped scans over ~1M content rows / ~2.6M clips were stalling the live Supabase for everyone else; a day-old copy is
 # exactly as good for a standing count and costs the live DB nothing.
-# THE SWITCH: each QA unit has EnvironmentFile=-$QA_COPY_HOME/qa-copy.env (tools/qa-copy/systemd). Every QA tool already prefers
+# THE SWITCH: each QA unit has EnvironmentFile=-$QA_COPY_HOME/qa-copy.env (tools/qa-copy/install.sh --list). Every QA tool already prefers
 # process.env.DATABASE_URL to .env.psql, so no tool changes. Delete the file and they fall back to live; anything that must be
 # live (the Popty services, learner paths) never reads it. Ad hoc: set -a; . ~/ssi-restore/qa-copy.env; set +a
 # SAFE ORDER (make-before-break): build the new database beside the old one; the env file flips atomically only after the
@@ -24,12 +24,17 @@ STATUS_IN="${BACKUP_STATUS:-$HOME/ssi-backups/nightly-status.json}"
 MIN_FREE_GB="${MIN_FREE_GB:-50}"           # a copy is ~15 GB, two coexist while we swap, plus the 1.1 GB dump
 WAIT_MINUTES="${WAIT_MINUTES:-20}"         # how long to wait for tonight's dump to land
 ENVFILE="$QA_COPY_HOME/qa-copy.env"; STATE="$QA_COPY_HOME/copy-state.json"
+# FRESH: the same switch, present ONLY while the serving copy is tonight's (job #204). Jobs that judge a recent day (the
+# telemetry pulse, POI, /intel) read the copy through this file and fall back to live without it, so a failed or
+# still-running refresh never hands them a day-old copy. Removed when a refresh starts and when one fails.
+FRESH="$QA_COPY_HOME/qa-copy-fresh.env"
 TODAY=$(date -u +%Y%m%d)
 export LD_LIBRARY_PATH="$QA_COPY_HOME/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"   # libxml2.so.2 -> .so.16 shim (XML functions unused)
 export PGHOST="$SOCK" PGPORT="$PORT" PGUSER="$PGUSER_COPY"
 
 fail() {
   echo "qa-copy refresh FAILED: $1" >&2
+  rm -f "$FRESH"
   node "$HOME/command-surface/ops/watson-notice.js" "QA database copy refresh FAILED ($TODAY): $1 - yesterday's copy keeps serving; see journalctl --user -u ssi-qa-copy-refresh" ssi-qa-copy || true
   [ -n "${NEWDB:-}" ] && [ "${NEWDB:-}" != "${SERVING:-}" ] && "$PGBIN/dropdb" --if-exists "$NEWDB" 2>/dev/null
   rm -f "${DUMP:-/nonexistent}"
@@ -39,6 +44,8 @@ fail() {
 # 1. disk-check first
 FREE_GB=$(df --output=avail -BG "$QA_COPY_HOME" | tail -1 | tr -dc 0-9)
 [ "${FREE_GB:-0}" -ge "$MIN_FREE_GB" ] || fail "only ${FREE_GB}G free, need ${MIN_FREE_GB}G"
+
+rm -f "$FRESH"   # from here until step 7 passes, the serving copy is not tonight's
 
 # 2. the server (unix socket only)
 systemctl --user start ssi-qa-copy-pg.service 2>/dev/null || true
@@ -94,6 +101,7 @@ done
 "$PGBIN/psql" -q -d postgres -v dbname="$NEWDB" -f "$HERE/freeze.sql" || fail "setting read-only default"
 # The flip must have happened before anything is dropped: a failed write leaves yesterday's copy serving and keeps it.
 { printf 'DATABASE_URL="postgres://%s@/%s?host=%s&port=%s"\nQA_COPY_DB=%s\nQA_COPY_BACKUP_KEY=%s\n' "$PGUSER_COPY" "$NEWDB" "$SOCK" "$PORT" "$NEWDB" "$KEY" > "$ENVFILE.tmp" && mv "$ENVFILE.tmp" "$ENVFILE"; } || fail "switching $ENVFILE to $NEWDB"
+{ cp "$ENVFILE" "$FRESH.tmp" && mv "$FRESH.tmp" "$FRESH"; } || echo "qa-copy: $FRESH not written; day-judging jobs read live tonight" >&2
 printf '{"db":"%s","key":"%s","built":"%s"%s}\n' "$NEWDB" "$KEY" "$(date -u +%FT%TZ)" "$(echo "$COUNTS" | awk -F'\t' '{printf ",\"%s\":%s",$1,$2}')" > "$STATE"
 for d in $("$PGBIN/psql" -At -d postgres -f "$HERE/list-copies.sql"); do [ "$d" = "$NEWDB" ] || "$PGBIN/dropdb" --if-exists "$d"; done
 echo "qa-copy ready: $NEWDB from $KEY"

@@ -68,8 +68,24 @@ function databaseUrl() {
   return m[1]
 }
 
-async function connect() {
-  const client = new Client({ connectionString: databaseUrl(), statement_timeout: 15000, application_name: 'voices-reconcile' })
+/**
+ * Where the full walk READS (job #204, /d/d8c4e29d): the walk over course_audio and its clip_index
+ * snapshot were the two biggest disk readers on the live database (280 GB + 161 GB in 17 days).
+ * When QA_COPY_ENV names the nightly restored QA copy's env file (tools/qa-copy), the walk reads that
+ * copy instead. Writes stay on the live connection, and stillAsSeen() re-reads every clip on live by
+ * primary key before anything is written, so a copy up to a day old is as safe as the walk's own
+ * snapshot: whatever changed since is left for the next night. No file, or no URL in it: live, as before.
+ */
+function readUrl(envFile = process.env.QA_COPY_ENV) {
+  if (envFile && fs.existsSync(envFile)) {
+    const m = fs.readFileSync(envFile, 'utf8').match(/^DATABASE_URL=["']?([^"'\n]+)/m)
+    if (m) return { url: m[1], side: 'qa-copy' }
+  }
+  return { url: databaseUrl(), side: 'live' }
+}
+
+async function connect(url = databaseUrl()) {
+  const client = new Client({ connectionString: url, statement_timeout: 15000, application_name: 'voices-reconcile' })
   await client.connect()
   await client.query("SET statement_timeout = '15s'")
   return client
@@ -326,7 +342,7 @@ async function stillAsSeen(client, ids, seenRows, { lock = false } = {}) {
 
 // ── the walk ────────────────────────────────────────────────────────────────
 
-async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sleepMs = SLEEP_MS, maxBatches = Infinity, onlyEvidenced = false, snapshot = true } = {}) {
+async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sleepMs = SLEEP_MS, maxBatches = Infinity, onlyEvidenced = false, snapshot = true, read = readUrl(), openRead = () => connect(read.url) } = {}) {
   const { resolvers, courseOf } = await loadContext(client)
   const t = { read: 0, ok: 0, missing: 0, stale: 0, unresolvable: 0, awaitingName: 0, notIndexable: {}, inserted: 0, dropped: 0, batches: 0, watermark: after }
   const awaiting = {}
@@ -348,7 +364,9 @@ async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sl
   t.walk = full ? 'seqscan' : 'pkey'
   let rd = null, snap = null
   if (full) {
-    rd = await connect()
+    t.walkReads = read.side
+    log(`walk reads: ${read.side}`)
+    rd = await openRead()
     await rd.query('BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY')
     // From block 0 every night, not wherever another scan happens to be: the
     // walk is then reproducible row for row, and A/B-able (job #806).
@@ -491,4 +509,4 @@ async function main() {
 }
 
 if (require.main === module) main()
-module.exports = { reconcile, stillAsSeen, loadIndexSnapshot, indexFromSnapshot, refreshSpokenEvidence, loadContext, connect, CANDIDATES_SQL, judgeHeard }
+module.exports = { reconcile, readUrl, stillAsSeen, loadIndexSnapshot, indexFromSnapshot, refreshSpokenEvidence, loadContext, connect, CANDIDATES_SQL, judgeHeard }
