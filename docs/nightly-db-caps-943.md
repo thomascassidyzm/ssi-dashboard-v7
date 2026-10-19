@@ -10,7 +10,7 @@ Audio-gap pages 200 slots per course/side before joining audio, retains empty-te
 
 ## Schedule
 
-UTC: round-index 02:40; audio-gap 04:00; sibling-identity 04:20; debut-practice 04:45; voice-variety 05:05; voice-audit 05:35. Existing QA spacing is retained; round-index becomes fixed UTC. Each service has a 10-minute overall limit. Persistent catch-up is disabled so a missed night cannot start at a school-time boot. Latest scheduled completion is before 06:00 UTC, outside UK 08:00–16:00 throughout the year.
+UTC: round-index 02:40; audio-gap 03:30; sibling-identity 04:20; debut-practice 04:45; voice-variety 05:05; voice-audit 05:35. Existing QA spacing is retained; round-index becomes fixed UTC. Each service has a 10-minute overall limit. Persistent catch-up is disabled so a missed night cannot start at a school-time boot. Latest scheduled completion is before 06:00 UTC, outside UK 08:00–16:00 throughout the year.
 
 ## Verification
 

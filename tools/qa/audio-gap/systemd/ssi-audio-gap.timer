@@ -4,7 +4,7 @@ Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/qa/audio-
 
 [Timer]
 # Job #683: every qa:* check runs inside the DB watchdog's 01:00-06:00Z off-peak window, ≥15 min apart, in UTC (no DST drift out of the window).
-OnCalendar=*-*-* 04:00:00 UTC
+OnCalendar=*-*-* 03:30:00 UTC
 RandomizedDelaySec=120
 AccuracySec=1min
 # Skip missed runs: catching up at boot can put QA into school hours.
