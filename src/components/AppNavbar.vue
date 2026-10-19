@@ -173,7 +173,7 @@ function toggleTheme() {
 }
 
 // Audit-log stale check — surfaces a numeric badge on the Maintenance tab
-// when the oldest audit row is older than 30 days, prompting a cleanup.
+// when the oldest audit row is older than 7 days, prompting a cleanup.
 // Admin-only and best-effort (silent on error).
 const auditStaleDays = ref(null)
 async function checkAuditStaleness() {
@@ -188,7 +188,7 @@ async function checkAuditStaleness() {
     })
     if (!r.ok) return
     const stats = await r.json()
-    auditStaleDays.value = stats.days_since_oldest > 30 ? stats.days_since_oldest : null
+    auditStaleDays.value = stats.days_since_oldest > 7 ? stats.days_since_oldest : null
   } catch { /* silent */ }
 }
 

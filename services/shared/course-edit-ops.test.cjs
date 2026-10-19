@@ -226,3 +226,29 @@ describe('lego.insert / lego.delete', () => {
     expect(findSurface('POST', `/api/admin/course-edit/${C}/edit-batch`, 'production-api')?.surface).toMatchObject({ operation: 'course-edit', legos: true })
   })
 })
+
+describe('legacy phrase-id prefix alias (ticket 9abad0ac): el_for_eng: names ell_for_eng rows', () => {
+  const G = 'ell_for_eng'
+  const greekDb = () => fakeDb({
+    course_seeds: [], course_legos: [], course_audio: [], course_gender_expansions: [], course_qa_flags: [],
+    course_practice_phrases: [{ id: 'el_for_eng:S0017L04U05', course_code: G, seed_number: 17, lego_index: 4, known_text: "I'll explain what I mean", target_text: 'θέλω να εξηγήσω τι εννοώ', phrase_role: 'use', position: 5, known_audio_id: A1, target1_audio_id: null, target2_audio_id: null, last_edit_event_id: null }],
+  })
+  const runG = (db, ops) => runPlans({ connect: async () => db, courseCode: G, plans: planOps(ops, G), apply: true, eventId: async () => 'ev-g' })
+
+  it('accepts the stored el_for_eng: id and edits that row', async () => {
+    const db = greekDb()
+    const out = await runG(db, [{ op: 'phrase.update', phrase_id: 'el_for_eng:S0017L04U05', set: { known_text: 'I want to explain what I mean' } }])
+    expect(db.tables.course_practice_phrases[0].known_text).toBe('I want to explain what I mean')
+    expect(out.undo_ops[0].phrase_id).toBe('el_for_eng:S0017L04U05')
+  })
+
+  it('normalises an ell_for_eng: spelling onto the stored el_for_eng: row; no id is migrated', async () => {
+    const db = greekDb()
+    await runG(db, [{ op: 'phrase.update', phrase_id: 'ell_for_eng:S0017L04U05', set: { known_text: 'I want to explain what I mean' } }])
+    expect(db.tables.course_practice_phrases[0]).toMatchObject({ id: 'el_for_eng:S0017L04U05', known_text: 'I want to explain what I mean' })
+  })
+
+  it('the alias is per course: el_for_eng: is still refused for any other course', () => {
+    expect(() => planOps([{ op: 'phrase.delete', phrase_id: 'el_for_eng:S0017L04U05' }], C)).toThrow(EditOpError)
+  })
+})
