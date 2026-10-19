@@ -53,8 +53,11 @@ const SCRIPTS = { zho: /\p{Script=Han}/u, jpn: /[\p{Script=Hiragana}\p{Script=Ka
 function sideMarkers(rows, minCount = 8) {
   const k = new Map(); const t = new Map();
   for (const r of rows) { for (const w of new Set(words(r.known))) k.set(w, (k.get(w) || 0) + 1); for (const w of new Set(words(r.target))) t.set(w, (t.get(w) || 0) + 1); }
-  const km = new Set([...k].filter(([w, n]) => n >= minCount && !t.has(w) && w.length > 1).map(([w]) => w));
-  const tm = new Set([...t].filter(([w, n]) => n >= minCount && !k.has(w) && w.length > 1).map(([w]) => w));
+  // "never on the other side" would let the very rows we hunt (Italian on the English side) un-mark their own words,
+  // so a stray appearance or two on the other side is tolerated: at most 1, or 2% of the own-side count.
+  const rare = (n, other) => (other || 0) <= Math.max(1, Math.floor(n * 0.02));
+  const km = new Set([...k].filter(([w, n]) => n >= minCount && rare(n, t.get(w)) && w.length > 1).map(([w]) => w));
+  const tm = new Set([...t].filter(([w, n]) => n >= minCount && rare(n, k.get(w)) && w.length > 1).map(([w]) => w));
   return { km, tm };
 }
 function wrongLanguage(c) {
@@ -168,16 +171,25 @@ function capitalisation(c) {
     for (const r of rows) { const t = (r[side] || '').trim(); if (!t) continue; const k = t.toLowerCase(); if (!g.has(k)) g.set(k, new Map()); g.get(k).set(t, r); }
     for (const [, variants] of g) if (variants.size > 1) for (const [, r] of variants) out.push(hit(r, `case-only duplicate on ${side}: ${[...variants.keys()].join(' ≠ ')}`, { sub: 'case-dup' }));
     const first = (t) => [...String(t || '').trim().replace(/^[¿¡"“'‘(«]+/, '')][0];
+    // English "I…" at the start is required capitalisation: neither counted nor flagged.
+    const engSide = side === (c.known_lang === 'eng' ? 'known' : c.target_lang === 'eng' ? 'target' : null);
+    const iStart = (t) => engSide && /^\s*["“(«¿¡]*I\b/.test(t || '');
     let up = 0; let lo = 0;
-    for (const r of rows) { const f = first(r[side]); if (!f || f.toUpperCase() === f.toLowerCase()) continue; f === f.toUpperCase() ? up++ : lo++; }
+    for (const r of rows) { const f = first(r[side]); if (!f || f.toUpperCase() === f.toLowerCase() || iStart(r[side])) continue; f === f.toUpperCase() ? up++ : lo++; }
     const dom = up >= lo ? 'upper' : 'lower';
+    // A first word the course also writes capitalised MID-sentence on this side is a proper noun/adjective
+    // ("Italian is important…"), not an outlier.
+    const proper = new Set();
+    for (const r of rows) {
+      const ws = String(r[side] || '').trim().split(/\s+/);
+      for (let i = 1; i < ws.length; i++) if (/^\p{Lu}/u.test(ws[i]) && !/[.?!:;,"“]$/.test(ws[i - 1])) proper.add(ws[i].replace(/[^\p{L}'’]/gu, ''));
+    }
     if (Math.max(up, lo) / Math.max(1, up + lo) <= 0.8) continue;
     for (const r of rows) {
       const f = first(r[side]); if (!f || f.toUpperCase() === f.toLowerCase()) continue;
       const isUp = f === f.toUpperCase();
       if ((dom === 'lower') === isUp) {
-        // English "I…" at the start is required capitalisation, not an outlier.
-        if (side === (c.known_lang === 'eng' ? 'known' : 'target') && /^\s*["“(«¿¡]*I\b/.test(r[side] || '')) continue;
+        if (iStart(r[side]) || proper.has(String(r[side]).trim().split(/\s+/)[0].replace(/[^\p{L}'’]/gu, ''))) continue;
         out.push(hit(r, `${side} starts ${isUp ? 'upper' : 'lower'}case against a ${dom}case convention`, { sub: 'outlier' }));
       }
     }
