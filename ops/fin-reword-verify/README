@@ -1,0 +1,5 @@
+fin_for_eng: grammar/usage verification of the 441 #226 reword proposals (job #261, 19 Oct 2026). Nothing applied.
+verdicts.jsonl     one line per proposal id: v = OK | CHANGE | FLAG, note (evidence: Korp query + hit count), fix (corrected "en | fi" for CHANGE). Hand-made; NOT regenerable.
+review-urls-v2.json the 12 republished review pages (same order as ops/fin-reword/review-urls.json on cs/226-fin-reword-available-forms).
+korp.py            Korp API hit counter (Suomi24 S24_001-011 by default): python3 korp.py '<cqp>' [corpora].
+build-pages.py     rebuilds the v2 review pages from the old pages' state + verdicts.jsonl (needs CS_CONV_TOKEN, review-urls.json from cs/226).
