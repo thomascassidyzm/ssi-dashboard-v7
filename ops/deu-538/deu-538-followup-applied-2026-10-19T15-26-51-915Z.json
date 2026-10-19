@@ -1,0 +1,694 @@
+{
+  "job": "#241",
+  "started": "2026-10-19T15:26:51.915Z",
+  "plan": {
+    "moves": [
+      {
+        "from": "S0538L04U06",
+        "to": "S0538L01U08",
+        "lego": "S0538L01",
+        "before": {
+          "id": "deu_for_eng:S0538L04U06",
+          "status": "draft",
+          "lego_id": null,
+          "version": 514,
+          "metadata": {
+            "score": 9,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.806Z"
+          },
+          "position": 9,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.856699+00:00",
+          "difficulty": null,
+          "known_text": "she wants to seem like she doesn't care",
+          "lego_count": 8,
+          "lego_index": 4,
+          "qa_checked": null,
+          "updated_at": "2026-10-13T06:03:28.24048+00:00",
+          "word_count": 39,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "sie will wirken, als ob es ihr egal ist",
+          "decomposition": null,
+          "lego_position": "end",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "228cc8ce-eaa1-42a3-ae58-a43494d1b994",
+          "target1_audio_id": "855b4834-6c7e-448d-b094-469f6ce14159",
+          "target2_audio_id": "a94e8e72-391b-4833-8705-1f16dfe22712",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+          "target1_duration_ms": 2424,
+          "target2_duration_ms": 2520,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "row": {
+          "id": "deu_for_eng:S0538L01U08",
+          "status": "draft",
+          "lego_id": null,
+          "metadata": {
+            "format": "build_use",
+            "pipeline": "v2",
+            "moved_from": "S0538L04U06",
+            "authored_by": "job #241 (Kai 19 Oct): P25 rehome"
+          },
+          "position": 12,
+          "register": null,
+          "introduce": true,
+          "difficulty": null,
+          "known_text": "she wants to seem as though she doesn't care",
+          "lego_count": 10,
+          "lego_index": 1,
+          "word_count": 42,
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "sie will so wirken, als ob es ihr egal ist",
+          "lego_position": "middle",
+          "release_batch": null,
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "known_gloss_segments": null
+        }
+      },
+      {
+        "from": "S0538L04U04",
+        "to": "S0538L03U08",
+        "lego": "S0538L03",
+        "before": {
+          "id": "deu_for_eng:S0538L04U04",
+          "status": "draft",
+          "lego_id": null,
+          "version": 514,
+          "metadata": {
+            "score": 8,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.806Z"
+          },
+          "position": 7,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.856699+00:00",
+          "difficulty": null,
+          "known_text": "she doesn't care",
+          "lego_count": 3,
+          "lego_index": 4,
+          "qa_checked": null,
+          "updated_at": "2026-10-12T10:05:28.42914+00:00",
+          "word_count": 15,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "es ist ihr egal",
+          "decomposition": null,
+          "lego_position": "end",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "d45c9e0c-41ed-4f17-9691-7258902b0deb",
+          "target1_audio_id": "ed0546e1-8ca8-4bc1-ab82-7a5c98cbe5c6",
+          "target2_audio_id": "cf5a16c0-fee0-4384-9f14-b4a6d0957a17",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "9c1767b6-357a-49cb-aaf8-f1d4e9be2f42",
+          "target1_duration_ms": 1248,
+          "target2_duration_ms": 1320,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "row": {
+          "id": "deu_for_eng:S0538L03U08",
+          "status": "draft",
+          "lego_id": null,
+          "metadata": {
+            "format": "build_use",
+            "pipeline": "v2",
+            "moved_from": "S0538L04U04",
+            "authored_by": "job #241 (Kai 19 Oct): P25 rehome"
+          },
+          "position": 12,
+          "register": null,
+          "introduce": true,
+          "difficulty": null,
+          "known_text": "as though it doesn't matter",
+          "lego_count": 5,
+          "lego_index": 3,
+          "word_count": 18,
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "als ob es egal ist",
+          "lego_position": "middle",
+          "release_batch": null,
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "known_gloss_segments": null
+        }
+      },
+      {
+        "from": "S0538L04U02",
+        "to": "S0538L03U09",
+        "lego": "S0538L03",
+        "before": {
+          "id": "deu_for_eng:S0538L04U02",
+          "status": "draft",
+          "lego_id": null,
+          "version": 420,
+          "metadata": {
+            "score": 7,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.806Z"
+          },
+          "position": 5,
+          "register": null,
+          "introduce": true,
+          "created_at": "2026-06-17T21:59:00.856699+00:00",
+          "difficulty": null,
+          "known_text": "it doesn't matter",
+          "lego_count": 3,
+          "lego_index": 4,
+          "qa_checked": null,
+          "updated_at": "2026-10-12T17:55:42.533034+00:00",
+          "word_count": 11,
+          "course_code": "deu_for_eng",
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "es ist egal",
+          "decomposition": null,
+          "lego_position": "end",
+          "release_batch": null,
+          "display_tiling": null,
+          "known_audio_id": "a127538e-605f-42ef-b519-265e0a7331fb",
+          "target1_audio_id": "1a1ebd71-0c87-4a73-9cc5-44872aa7d796",
+          "target2_audio_id": "0a209dcd-4e87-4fd1-bf38-2349b246d53e",
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "last_edit_event_id": "9892f9b1-a3ac-4ad3-916c-084445ffa792",
+          "target1_duration_ms": 960,
+          "target2_duration_ms": 1056,
+          "known_gloss_segments": null,
+          "presentation_audio_id": null,
+          "target_syllable_count": null,
+          "display_tiling_version": null,
+          "decomposition_course_version": null
+        },
+        "row": {
+          "id": "deu_for_eng:S0538L03U09",
+          "status": "draft",
+          "lego_id": null,
+          "metadata": {
+            "format": "build_use",
+            "pipeline": "v2",
+            "moved_from": "S0538L04U02",
+            "authored_by": "job #241 (Kai 19 Oct): P25 rehome"
+          },
+          "position": 13,
+          "register": null,
+          "introduce": true,
+          "difficulty": null,
+          "known_text": "as though that doesn't matter",
+          "lego_count": 5,
+          "lego_index": 3,
+          "word_count": 19,
+          "phrase_role": "use",
+          "seed_number": 538,
+          "target_text": "als ob das egal ist",
+          "lego_position": "middle",
+          "release_batch": null,
+          "target_phrase_id": null,
+          "target_text_roman": null,
+          "connected_lego_ids": [],
+          "known_gloss_segments": null
+        }
+      }
+    ],
+    "restore": {
+      "before": {
+        "id": "deu_for_eng:S0538L02U07",
+        "status": "draft",
+        "lego_id": null,
+        "version": 518,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "scored_at": "2026-06-17T21:59:00.418Z"
+        },
+        "position": 10,
+        "register": null,
+        "introduce": true,
+        "created_at": "2026-06-17T21:59:00.470768+00:00",
+        "difficulty": null,
+        "known_text": "she doesn't want to seem good",
+        "lego_count": 5,
+        "lego_index": 2,
+        "qa_checked": null,
+        "updated_at": "2026-10-19T15:22:09.306232+00:00",
+        "word_count": 25,
+        "course_code": "deu_for_eng",
+        "phrase_role": "use",
+        "seed_number": 538,
+        "target_text": "sie will nicht gut wirken",
+        "decomposition": null,
+        "lego_position": "end",
+        "release_batch": null,
+        "display_tiling": null,
+        "known_audio_id": "f60f2777-65e9-4be6-8fad-03e645d0c989",
+        "target1_audio_id": "ad49e689-fff5-4353-9bd6-5a284656455e",
+        "target2_audio_id": "90efd76d-b9b4-418f-9c83-2bf238aa72ab",
+        "target_phrase_id": null,
+        "target_text_roman": null,
+        "connected_lego_ids": [],
+        "last_edit_event_id": "df29d552-bc62-40f4-a27d-bc0cd47109c9",
+        "target1_duration_ms": 1520,
+        "target2_duration_ms": 1520,
+        "known_gloss_segments": null,
+        "presentation_audio_id": null,
+        "target_syllable_count": null,
+        "display_tiling_version": null,
+        "decomposition_course_version": null
+      },
+      "orig": {
+        "id": "deu_for_eng:S0538L02U07",
+        "status": "draft",
+        "lego_id": null,
+        "version": 511,
+        "metadata": {
+          "score": 8,
+          "format": "build_use",
+          "scored_at": "2026-06-17T21:59:00.418Z"
+        },
+        "position": 10,
+        "register": null,
+        "introduce": true,
+        "created_at": "2026-06-17T21:59:00.470768+00:00",
+        "difficulty": null,
+        "known_text": "she doesn't want to seem that way",
+        "lego_count": 7,
+        "lego_index": 2,
+        "qa_checked": null,
+        "updated_at": "2026-10-13T06:03:21.864508+00:00",
+        "word_count": 24,
+        "course_code": "deu_for_eng",
+        "phrase_role": "use",
+        "seed_number": 538,
+        "target_text": "sie will nicht so wirken",
+        "decomposition": null,
+        "lego_position": "end",
+        "release_batch": null,
+        "display_tiling": null,
+        "known_audio_id": "60be82eb-47a8-42c3-a97f-33b58ff41131",
+        "target1_audio_id": "80f04afd-c05d-4c4e-8e6d-c2ac86d3ae0e",
+        "target2_audio_id": "f768061b-2db7-4461-b148-b33ed4ab5c11",
+        "target_phrase_id": null,
+        "target_text_roman": null,
+        "connected_lego_ids": [],
+        "last_edit_event_id": "e6657070-3d47-4a7c-b335-12575b4dd74c",
+        "target1_duration_ms": 1200,
+        "target2_duration_ms": 1344,
+        "known_gloss_segments": null,
+        "presentation_audio_id": null,
+        "target_syllable_count": null,
+        "display_tiling_version": null,
+        "decomposition_course_version": null
+      }
+    },
+    "skipped": []
+  },
+  "asks": [
+    {
+      "role": "known",
+      "text": "she wants to seem as though she doesn't care",
+      "id": "S0538L01U08",
+      "dry": {
+        "status": 200,
+        "source": "library"
+      },
+      "real": {
+        "status": 200,
+        "audioId": "84d2b4f7-74dd-4964-831d-f3b2d82e9bf6",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "sie will so wirken, als ob es ihr egal ist",
+      "id": "S0538L01U08",
+      "dry": {
+        "status": 200,
+        "source": "library"
+      },
+      "real": {
+        "status": 200,
+        "audioId": "f6e38de9-c6f1-4929-9111-02fe32d8941d",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "sie will so wirken, als ob es ihr egal ist",
+      "id": "S0538L01U08",
+      "dry": {
+        "status": 200,
+        "source": "library"
+      },
+      "real": {
+        "status": 200,
+        "audioId": "ff42951b-a9ee-437c-8fd4-07901020620f",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "as though it doesn't matter",
+      "id": "S0538L03U08",
+      "dry": {
+        "status": 200,
+        "source": "library"
+      },
+      "real": {
+        "status": 200,
+        "audioId": "b0072af0-b9dc-4468-be5d-ba21be19c542",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "als ob es egal ist",
+      "id": "S0538L03U08",
+      "dry": {
+        "status": 200,
+        "source": "library"
+      },
+      "real": {
+        "status": 200,
+        "audioId": "0ea5c1d3-4f85-4517-8bde-da4b0c40b06f",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "als ob es egal ist",
+      "id": "S0538L03U08",
+      "dry": {
+        "status": 200,
+        "source": "library"
+      },
+      "real": {
+        "status": 200,
+        "audioId": "0e9b7051-09b8-4d4e-80ac-273e972b150e",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "known",
+      "text": "as though that doesn't matter",
+      "id": "S0538L03U09",
+      "dry": {
+        "status": 200,
+        "source": "library"
+      },
+      "real": {
+        "status": 200,
+        "audioId": "f7a016b8-b20a-457f-b748-c2f4b4a9300d",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target1",
+      "text": "als ob das egal ist",
+      "id": "S0538L03U09",
+      "dry": {
+        "status": 200,
+        "source": "library"
+      },
+      "real": {
+        "status": 200,
+        "audioId": "7206589e-de15-49ec-8ffb-08a0b39099c3",
+        "charsSpent": 0
+      }
+    },
+    {
+      "role": "target2",
+      "text": "als ob das egal ist",
+      "id": "S0538L03U09",
+      "dry": {
+        "status": 200,
+        "source": "library"
+      },
+      "real": {
+        "status": 200,
+        "audioId": "fd3ed663-2ccb-4bf8-97e8-af6c55e0f529",
+        "charsSpent": 0
+      }
+    }
+  ],
+  "applied": {
+    "status": 200,
+    "eventId": "8e1228b8-cfc5-4d6a-9c1d-ffe8acac1735",
+    "undo": [
+      {
+        "op": "phrase.insert",
+        "row": {
+          "id": "deu_for_eng:S0538L04U02",
+          "seed_number": 538,
+          "lego_index": 4,
+          "position": 5,
+          "known_text": "it doesn't matter",
+          "target_text": "es ist egal",
+          "word_count": 11,
+          "lego_count": 3,
+          "difficulty": null,
+          "register": null,
+          "metadata": {
+            "score": 7,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.806Z"
+          },
+          "status": "draft",
+          "release_batch": null,
+          "created_at": "2026-06-17T21:59:00.856Z",
+          "target_syllable_count": null,
+          "phrase_role": "use",
+          "connected_lego_ids": [],
+          "lego_position": "end",
+          "known_audio_id": "a127538e-605f-42ef-b519-265e0a7331fb",
+          "target1_audio_id": "1a1ebd71-0c87-4a73-9cc5-44872aa7d796",
+          "target2_audio_id": "0a209dcd-4e87-4fd1-bf38-2349b246d53e",
+          "qa_checked": null,
+          "target1_duration_ms": 960,
+          "target2_duration_ms": 1056,
+          "lego_id": null,
+          "target_text_roman": null,
+          "target_phrase_id": null,
+          "presentation_audio_id": null,
+          "introduce": true,
+          "decomposition": null,
+          "decomposition_course_version": null,
+          "display_tiling": null,
+          "display_tiling_version": null,
+          "known_gloss_segments": null
+        }
+      },
+      {
+        "op": "phrase.insert",
+        "row": {
+          "id": "deu_for_eng:S0538L04U04",
+          "seed_number": 538,
+          "lego_index": 4,
+          "position": 7,
+          "known_text": "she doesn't care",
+          "target_text": "es ist ihr egal",
+          "word_count": 15,
+          "lego_count": 3,
+          "difficulty": null,
+          "register": null,
+          "metadata": {
+            "score": 8,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.806Z"
+          },
+          "status": "draft",
+          "release_batch": null,
+          "created_at": "2026-06-17T21:59:00.856Z",
+          "target_syllable_count": null,
+          "phrase_role": "use",
+          "connected_lego_ids": [],
+          "lego_position": "end",
+          "known_audio_id": "d45c9e0c-41ed-4f17-9691-7258902b0deb",
+          "target1_audio_id": "ed0546e1-8ca8-4bc1-ab82-7a5c98cbe5c6",
+          "target2_audio_id": "cf5a16c0-fee0-4384-9f14-b4a6d0957a17",
+          "qa_checked": null,
+          "target1_duration_ms": 1248,
+          "target2_duration_ms": 1320,
+          "lego_id": null,
+          "target_text_roman": null,
+          "target_phrase_id": null,
+          "presentation_audio_id": null,
+          "introduce": true,
+          "decomposition": null,
+          "decomposition_course_version": null,
+          "display_tiling": null,
+          "display_tiling_version": null,
+          "known_gloss_segments": null
+        }
+      },
+      {
+        "op": "phrase.insert",
+        "row": {
+          "id": "deu_for_eng:S0538L04U06",
+          "seed_number": 538,
+          "lego_index": 4,
+          "position": 9,
+          "known_text": "she wants to seem like she doesn't care",
+          "target_text": "sie will wirken, als ob es ihr egal ist",
+          "word_count": 39,
+          "lego_count": 8,
+          "difficulty": null,
+          "register": null,
+          "metadata": {
+            "score": 9,
+            "format": "build_use",
+            "scored_at": "2026-06-17T21:59:00.806Z"
+          },
+          "status": "draft",
+          "release_batch": null,
+          "created_at": "2026-06-17T21:59:00.856Z",
+          "target_syllable_count": null,
+          "phrase_role": "use",
+          "connected_lego_ids": [],
+          "lego_position": "end",
+          "known_audio_id": "228cc8ce-eaa1-42a3-ae58-a43494d1b994",
+          "target1_audio_id": "855b4834-6c7e-448d-b094-469f6ce14159",
+          "target2_audio_id": "a94e8e72-391b-4833-8705-1f16dfe22712",
+          "qa_checked": null,
+          "target1_duration_ms": 2424,
+          "target2_duration_ms": 2520,
+          "lego_id": null,
+          "target_text_roman": null,
+          "target_phrase_id": null,
+          "presentation_audio_id": null,
+          "introduce": true,
+          "decomposition": null,
+          "decomposition_course_version": null,
+          "display_tiling": null,
+          "display_tiling_version": null,
+          "known_gloss_segments": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L02U07",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L02U07",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U09",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U09",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U09",
+        "set": {
+          "known_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U08",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U08",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L03U08",
+        "set": {
+          "known_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U08",
+        "set": {
+          "target2_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U08",
+        "set": {
+          "target1_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L01U08",
+        "set": {
+          "known_audio_id": null
+        }
+      },
+      {
+        "op": "phrase.update",
+        "phrase_id": "deu_for_eng:S0538L02U07",
+        "set": {
+          "known_text": "she doesn't want to seem good",
+          "target_text": "sie will nicht gut wirken",
+          "word_count": 25,
+          "known_audio_id": "f60f2777-65e9-4be6-8fad-03e645d0c989",
+          "target1_audio_id": "ad49e689-fff5-4353-9bd6-5a284656455e",
+          "target2_audio_id": "90efd76d-b9b4-418f-9c83-2bf238aa72ab"
+        }
+      },
+      {
+        "op": "phrase.delete",
+        "phrase_id": "deu_for_eng:S0538L03U09"
+      },
+      {
+        "op": "phrase.delete",
+        "phrase_id": "deu_for_eng:S0538L03U08"
+      },
+      {
+        "op": "phrase.delete",
+        "phrase_id": "deu_for_eng:S0538L01U08"
+      }
+    ]
+  }
+}
