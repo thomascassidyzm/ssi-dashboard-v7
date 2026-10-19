@@ -160,7 +160,7 @@ function planOp(op, index, courseCode) {
     case 'phrase.insert': {
       const row = op.row;
       if (!row || typeof row !== 'object') throw new EditOpError(index, 'phrase.insert needs "row"');
-      if (typeof row.id !== 'string' || !row.id.startsWith(`${courseCode}:`)) {
+      if (typeof row.id !== 'string' || !hasPhraseIdPrefix(row.id, courseCode)) {
         throw new EditOpError(index, `phrase.insert row.id must start "${courseCode}:"`);
       }
       for (const c of ['seed_number', 'lego_index', 'known_text', 'target_text', 'phrase_role']) {
@@ -214,7 +214,7 @@ function planOp(op, index, courseCode) {
     }
     case 'qaflag.restore': {
       const row = op.row;
-      if (!row || typeof row !== 'object' || typeof row.phrase_id !== 'string' || !row.phrase_id.startsWith(`${courseCode}:`)) {
+      if (!row || typeof row !== 'object' || typeof row.phrase_id !== 'string' || !hasPhraseIdPrefix(row.phrase_id, courseCode)) {
         throw new EditOpError(index, `qaflag.restore needs row.phrase_id starting "${courseCode}:"`);
       }
       return { ...base, table: 'course_qa_flags', kind: 'insert', row: stripNeverSet(row, 'course_qa_flags'), key: null, courseCode };
@@ -229,9 +229,22 @@ function legoWhere(op, index, courseCode) {
   if (LEGO_ID_RE.test(String(op.lego_id || ''))) return { course_code: courseCode, lego_id: op.lego_id };
   throw new EditOpError(index, `${op.op} needs lego_id like S0001L02 (or the row uuid as id)`);
 }
+// Legacy phrase-id prefixes, accepted as aliases of the course code (ticket 9abad0ac, 2026-10-19).
+// ell_for_eng's phrases were minted as "el_for_eng:S…" and keep those ids — they are never
+// migrated. Either spelling names the same row: the lookup tries the id as given, then its alias.
+const PHRASE_ID_PREFIX_ALIASES = { ell_for_eng: ['el_for_eng'] };
+const phraseIdPrefixes = (courseCode) => [courseCode, ...(PHRASE_ID_PREFIX_ALIASES[courseCode] || [])];
+const hasPhraseIdPrefix = (id, courseCode) => phraseIdPrefixes(courseCode).some(p => String(id).startsWith(`${p}:`));
+/** The other spellings of a phrase id under its course's aliases, as given first. */
+function phraseIdSpellings(id, courseCode) {
+  const prefix = phraseIdPrefixes(courseCode).find(p => id.startsWith(`${p}:`));
+  if (!prefix) return [id];
+  const rest = id.slice(prefix.length);
+  return [id, ...phraseIdPrefixes(courseCode).filter(p => p !== prefix).map(p => p + rest)];
+}
 function phraseWhere(op, index, courseCode) {
   const id = String(op.phrase_id || '');
-  if (!id.startsWith(`${courseCode}:`)) throw new EditOpError(index, `${op.op} needs phrase_id starting "${courseCode}:"`);
+  if (!hasPhraseIdPrefix(id, courseCode)) throw new EditOpError(index, `${op.op} needs phrase_id starting "${courseCode}:"`);
   return { course_code: courseCode, id };
 }
 const legoIdOf = (seed, index) => `S${String(seed).padStart(4, '0')}L${String(index).padStart(2, '0')}`;
@@ -373,7 +386,13 @@ async function runPlans({ connect, courseCode, plans, apply, eventId }) {
           `INSERT INTO ${q(plan.table)} (${cols.map(q).join(', ')}) VALUES (${cols.map((_, i) => `$${i + 1}`).join(', ')}) RETURNING *`, params);
         after = rows[0];
       } else {
-        const rows = await selectRow(client, plan.table, plan.where, { lock: true });
+        let rows = await selectRow(client, plan.table, plan.where, { lock: true });
+        if (rows.length === 0 && plan.table === 'course_practice_phrases' && plan.where.id) {
+          for (const alt of phraseIdSpellings(plan.where.id, courseCode).slice(1)) {
+            rows = await selectRow(client, plan.table, { ...plan.where, id: alt }, { lock: true });
+            if (rows.length) { plan.where = { ...plan.where, id: alt }; break; }
+          }
+        }
         if (rows.length === 0) throw new EditOpError(plan.index, `${plan.name}: no row ${JSON.stringify(plan.where)}`, 'NOT_FOUND');
         if (rows.length > 1) throw new EditOpError(plan.index, `${plan.name}: ${rows.length} rows match ${JSON.stringify(plan.where)}; refusing`, 'AMBIGUOUS');
         before = rows[0];
