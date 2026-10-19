@@ -23,6 +23,8 @@
  *   node tools/forum-reader/forum-reader.cjs --dry-run        # print the doc, publish nothing, keep state
  *   node tools/forum-reader/forum-reader.cjs --days 14        # read back 14 days instead of from state
  *   options: --no-llm  --no-popty  --state <file>  --conv-id <id>  --fixture <posts.json>
+ * Install (Tom's step; daily 07:00 Europe/London, one transient timer unit, nothing installed by this file):
+ *   systemd-run --user --unit=cs-forum-reader --slice=cs-workers.slice --on-calendar='*-*-* 07:00:00 Europe/London' --property=RuntimeMaxSec=1200 --working-directory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean node tools/forum-reader/forum-reader.cjs
  * Test: npx vitest run tools/forum-reader/forum-reader.test.cjs
  */
 
