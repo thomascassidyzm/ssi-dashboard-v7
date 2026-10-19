@@ -70,3 +70,14 @@ test('every planned LEGO starts with its trigger and stays within 8 syllables; e
   for (const s of T.PLAN.APPLY) { assert.ok(T.carriesSubordinator(s.new), s.lego); assert.ok(T.syllables(s.new.target) <= 8, s.lego); }
   for (const h of T.PLAN.HELD) assert.ok(h.lego && h.rule && h.why, JSON.stringify(h));
 });
+
+test('the unapprove op expects approved_at as the edit door reads it (Date.toISOString), not as the listing prints it', () => {
+  // job #285: the listing said "2026-03-26T13:00:07+00:00", the door found "2026-03-26T13:00:07.000Z" and refused as drift
+  const db = db344(); db.seeds[0].approved_at = '2026-03-26T13:00:07+00:00';
+  const p = T.plan(db, ['S0344L02']);
+  const clips = new Map(T.clipAsks(p).map((a) => [`${a.role}\u0000${a.text}\u0000${a.legoId || ''}`, 'clip']));
+  const op = T.editOps(p, clips).find((o) => o.op === 'seed.update');
+  assert.deepStrictEqual(op.expect, { approved_at: '2026-03-26T13:00:07.000Z' });
+  assert.strictEqual(T.requestTimeoutMs({}), 180000);
+  assert.strictEqual(T.requestTimeoutMs({ RENDER_TIMEOUT_MS: '900000' }), 900000);
+});

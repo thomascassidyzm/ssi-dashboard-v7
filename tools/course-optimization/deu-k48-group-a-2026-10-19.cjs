@@ -268,7 +268,8 @@ function editOps(p, clips) {
   const get = (role, text, legoId) => { const a = clips.get(slotKey(role, text, legoId)); if (!a) throw new Error(`no clip for ${role} "${text}"`); return a; };
   const ops = [], links = [];
   for (const c of p.compUnlinks || []) links.push({ op: 'audio.link', target: 'phrase', phrase_id: P(c.id), slot: 'presentation', audio_id: null });
-  for (const s of p.seedUnapprove) ops.push({ op: 'seed.update', seed_number: s.seed_number, set: { approved_at: null }, expect: { approved_at: s.approved_at } });
+  // The seeds listing prints approved_at as "…+00:00"; the edit door compares the column as a Date's toISOString ("….000Z").
+  for (const s of p.seedUnapprove) ops.push({ op: 'seed.update', seed_number: s.seed_number, set: { approved_at: null }, expect: { approved_at: new Date(s.approved_at).toISOString() } });
   for (const e of p.legoEdits) {
     ops.push({ op: 'lego.update', lego_id: e.id, set: { known_text: e.after.known, target_text: e.after.target, components: e.after.components }, expect: { known_text: e.before.known, target_text: e.before.target } });
     if (e.knownChanged) links.push({ op: 'audio.link', target: 'lego', lego_id: e.id, slot: 'known', audio_id: get('known', e.after.known) });
@@ -294,9 +295,12 @@ function existingClip(body) {
   return m ? m[1] : null;
 }
 
+/** A render can take minutes when the route is busy, and a client that gives up while the server keeps going invites a
+ *  second send of the same clip (job #285: two clips timed out at 180 s and both landed). RENDER_TIMEOUT_MS waits longer. */
+const requestTimeoutMs = (env = process.env) => (+env.RENDER_TIMEOUT_MS > 0 ? +env.RENDER_TIMEOUT_MS : 180000);
 async function post(url, body) {
   try {
-    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body), signal: AbortSignal.timeout(180000) });
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body), signal: AbortSignal.timeout(requestTimeoutMs()) });
     return { status: r.status, body: await r.json().catch(() => ({})) };
   } catch (e) { return { status: 0, body: { ok: false, error: String((e.cause && e.cause.code) || e.name) } }; }
 }
@@ -386,4 +390,4 @@ function verify(db, only) {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
-module.exports = { existingClip, plan, problems, simulate, fromApi, vocab, knockOn, clipAsks, editOps, containsLego, carriesSubordinator, syllables, wordsWithin, fold, foldKnown, introLine, PLAN };
+module.exports = { requestTimeoutMs, existingClip, plan, problems, simulate, fromApi, vocab, knockOn, clipAsks, editOps, containsLego, carriesSubordinator, syllables, wordsWithin, fold, foldKnown, introLine, PLAN };
