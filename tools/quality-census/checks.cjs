@@ -236,6 +236,47 @@ function italianSubjunctive(c) {
   return rowsOf(c).filter((r) => re.test(r[side] || '')).map((r) => { const m = re.exec(r[side]); return hit(r, `${m[1]} che … ${m[2]}`); });
 }
 
+// ── Checks 17a/c/d/e · the other language patterns of scan-course, as candidate finders ────────────────────────
+// UNCALIBRATED in stage 1 (ita only): each fires only on its own language, so it can be proven only on that course.
+// 17a Spanish llevar + gerund: no time span (NO_TIME) or the span after the gerund (WRONG_ORDER) — Deborah, 2026-04-30.
+const LLEVAR = /(?:^|[^\p{L}])(llev(?:o|as|a|amos|áis|an))\s+(\p{L}+ndo)(?![\p{L}])/iu;
+const SPAN = /(cuánto tiempo|mucho tiempo|poco tiempo|un año|una hora|una semana|un mes|un día|todo el día|toda la semana|\d+\s+(años?|meses|semanas|días|horas|minutos)|(dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez)\s+(años|meses|semanas|días|horas|minutos)|algún tiempo|bastante tiempo|desde hace|desde que)/iu;
+function spanishLlevar(c) {
+  const side = c.target_lang === 'spa' ? 'target' : c.known_lang === 'spa' ? 'known' : null;
+  if (!side) return [];
+  const out = [];
+  for (const r of rowsOf(c)) {
+    const t = r[side] || ''; const m = LLEVAR.exec(t); if (!m) continue;
+    const before = t.slice(0, m.index + m[0].length - m[2].length); const after = t.slice(m.index + m[0].length);
+    if (SPAN.test(before)) continue;   // a span anywhere before the gerund ("cuánto tiempo llevas hablando") is right
+    out.push(hit(r, `${m[1]} … ${m[2]}`, { sub: SPAN.test(after) ? 'wrong-order' : 'no-time' }));
+  }
+  return out;
+}
+// 17c German subordinate clause: CANDIDATES for a verb-final read, never a verdict (scan-course says LLM/human only).
+// Kept narrow: the clause after the subordinator ends in a word that is not a typical final verb form.
+function germanVerbFinal(c) {
+  if (c.target_lang !== 'deu') return [];
+  const SUB = /(?:^|[^\p{L}])(weil|dass|ob|obwohl|nachdem|bevor|während|damit|falls|sobald)\s+([^,.;?!]+)/iu;
+  return rowsOf(c).filter((r) => { const m = SUB.exec(r.target || ''); if (!m) return false; const last = m[2].trim().split(/\s+/).pop().toLowerCase(); return m[2].trim().split(/\s+/).length >= 3 && !/(en|ern|eln|t|te|ten|st|e|bin|ist|sind|bist|hat|habe|kann|will|muss|soll|darf|mag|war|wäre|würde|sei|wird|werde|weiß)$/.test(last); })
+    .map((r) => hit(r, 'subordinate clause may not end in its verb'));
+}
+// 17d Japanese か + ?: the minority convention is flagged.
+function japaneseKa(c) {
+  if (c.target_lang !== 'jpn') return [];
+  const rows = rowsOf(c, { components: false }).filter((r) => r.kind !== 'lego');
+  const kaQ = rows.filter((r) => /か[?？]\s*$/.test(r.target || '')); const kaBare = rows.filter((r) => /か\s*$/.test(r.target || ''));
+  const minority = kaQ.length >= kaBare.length ? kaBare : kaQ;
+  return minority.map((r) => hit(r, kaQ.length >= kaBare.length ? 'ends か without ?' : 'ends か? against a bare-か course'));
+}
+// 17e European Portuguese: singular você on the pt-PT side (vocês is fine). \b fails after ê, so property escapes.
+function europeanVoce(c) {
+  const re = /(?<!\p{L})você(?!\p{L})/iu;
+  const tgt = c.target_lang === 'por' && !/_br/.test(c.course); const kn = c.known_lang === 'por' && !/_for_por_br/.test(c.course);
+  if (!tgt && !kn) return [];
+  return rowsOf(c).filter((r) => (tgt && re.test(r.target || '')) || (kn && re.test(r.known || ''))).map((r) => hit(r, 'você in European Portuguese'));
+}
+
 // ── Duplicate LEGO (Kai 2026-09-23: a LEGO is a duplicate ONLY if BOTH sides match an earlier LEGO; canon L17/L31) ─
 // repeat-debut: an is_new LEGO whose exact known+target pair an EARLIER LEGO already debuted (it should be not-new;
 //   its intro re-announces a known item). same-target / different-known stays NEW and is never a hit.
@@ -338,6 +379,10 @@ const CHECKS = [
   { id: 'identical', scan: 'Check 15', rule: 'K16', blocks: true, run: identical },
   { id: 'underpopulated', scan: 'Check 16', rule: 'P10/P30', blocks: 'empty only', run: underpopulated },
   { id: 'ita-subjunctive', scan: 'Check 17b', rule: 'K16/K40', blocks: false, run: italianSubjunctive },
+  { id: 'spa-llevar', scan: 'Check 17a', rule: 'K16', blocks: false, run: spanishLlevar, calibrated: false },
+  { id: 'deu-verb-final', scan: 'Check 17c', rule: 'K16', blocks: false, run: germanVerbFinal, calibrated: false },
+  { id: 'jpn-ka', scan: 'Check 17d', rule: 'A9', blocks: false, run: japaneseKa, calibrated: false },
+  { id: 'por-voce', scan: 'Check 17e', rule: 'K12', blocks: false, run: europeanVoce, calibrated: false },
   { id: 'duplicate-lego', scan: 'new', rule: 'L17/L31/P25', blocks: false, run: duplicateLego },
   { id: 'content-mismatch', scan: 'new', rule: 'S7/K16', blocks: false, run: contentMismatch },
   { id: 'seed-placement', scan: 'new (P26)', rule: 'P26', blocks: true, run: seedPlacement },
@@ -345,4 +390,5 @@ const CHECKS = [
 
 module.exports = { CHECKS, words, norm, rowsOf, sentenceCount, genderOnly, sideMarkers,
   parentheticals, slashes, wrongLanguage, multiSentence, unpronounceable, wrappingQuotes, trailingPeriod, lowercaseI,
-  zutLego, capitalisation, identical, underpopulated, italianSubjunctive, duplicateLego, contentMismatch, seedPlacement };
+  zutLego, capitalisation, identical, underpopulated, italianSubjunctive, spanishLlevar, germanVerbFinal, japaneseKa, europeanVoce,
+  duplicateLego, contentMismatch, seedPlacement };

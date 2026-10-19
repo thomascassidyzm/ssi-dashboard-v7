@@ -157,3 +157,20 @@ test('P26 seed placement — live ita specimens: 451 drifted (che cosa / quello 
   c.phrases.push(phrase(e2, 'use', 'yes that sounds like a great idea', "sì, sembra un'ottima idea"));
   assert.ok(!C.seedPlacement(c).some((h) => h.seed === 272));
 });
+
+test('17a/c/d/e language patterns (uncalibrated: they fire only on their own language) — recipe specimens', () => {
+  const mk = (course, known, target, rows) => { const l = lego(1, 1, 'x', 'y'); return { course, known_lang: known, target_lang: target, seeds: [], legos: [], phrases: rows.map((t) => phrase(l, 'use', 'x', t)) }; };
+  // Deborah's spa_for_eng 2nd pass, 2026-04-30
+  const spa = mk('spa_for_eng', 'eng', 'spa', ['llevo aprendiendo español una semana', 'llevo aprendiendo español', 'llevo una semana aprendiendo español', 'cuánto tiempo llevas hablando']);
+  assert.deepStrictEqual(C.spanishLlevar(spa).map((h) => h.sub), ['wrong-order', 'no-time']);
+  const deu = mk('deu_for_eng', 'eng', 'deu', ['ich weiß, dass er hat das Buch', 'ich weiß, dass er das Buch hat']);
+  assert.deepStrictEqual(C.germanVerbFinal(deu).map((h) => h.target), ['ich weiß, dass er hat das Buch']);
+  const jpn = mk('jpn_for_eng', 'eng', 'jpn', ['行きますか？', '食べますか？', '見ますか']);
+  assert.deepStrictEqual(C.japaneseKa(jpn).map((h) => h.target), ['見ますか']);
+  // eng_for_por review, 442 rows; vocês (plural) is standard pt-PT and never a hit
+  const por = mk('por_for_eng', 'eng', 'por', ['você fala inglês?', 'vocês falam inglês?', 'fala inglês?']);
+  assert.deepStrictEqual(C.europeanVoce(por).map((h) => h.target), ['você fala inglês?']);
+  assert.deepStrictEqual(C.europeanVoce({ ...por, course: 'por_br_for_eng' }), []);
+  // and every one of them is silent on Italian
+  for (const f of [C.spanishLlevar, C.germanVerbFinal, C.japaneseKa, C.europeanVoce]) assert.deepStrictEqual(f(clean()), []);
+});
