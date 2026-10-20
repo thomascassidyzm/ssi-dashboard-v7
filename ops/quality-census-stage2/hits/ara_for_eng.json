@@ -1,0 +1,3281 @@
+{
+ "course": "ara_for_eng",
+ "at": "2026-10-20T13:42:16.442Z",
+ "checks": [
+  {
+   "id": "parentheticals",
+   "scan": "Check 1",
+   "rule": "K11",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 14,
+   "hits": []
+  },
+  {
+   "id": "slashes",
+   "scan": "Check 2",
+   "rule": "L19",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 28,
+   "hits": []
+  },
+  {
+   "id": "wrong-language",
+   "scan": "Checks 3+4",
+   "rule": "K8/K16",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 190,
+   "hits": []
+  },
+  {
+   "id": "multi-sentence",
+   "scan": "Check 5",
+   "rule": "P20",
+   "blocks": false,
+   "count": 37,
+   "subs": {},
+   "ms": 7,
+   "hits": [
+    {
+     "ref": "S0082",
+     "seed": 82,
+     "kind": "seed",
+     "known": "I'm not going to wait for you. Why not?",
+     "target": "لَنْ أَنْتَظِرَك. لِماذا لا؟",
+     "why": "sentences: known 2, target 2"
+    },
+    {
+     "ref": "S0141",
+     "seed": 141,
+     "kind": "seed",
+     "known": "no problem. Everything is okay",
+     "target": "لا مُشْكِلَة. كُلُّ شَيْءٍ عَلى ما يُرام",
+     "why": "sentences: known 2, target 2"
+    },
+    {
+     "ref": "ara_for_eng:S0082L01U01",
+     "seed": 82,
+     "kind": "use",
+     "known": "I'm not going to wait for you. Why not?",
+     "target": "لَنْ أَنْتَظِرَكَ. لِماذا لا؟",
+     "why": "sentences: known 2, target 2"
+    },
+    {
+     "ref": "ara_for_eng:S0093L01U04",
+     "seed": 93,
+     "kind": "use",
+     "known": "has it come time to go? I'm not ready yet",
+     "target": "هَلْ حانَ الوَقْتُ لِلذَّهابِ؟ لَسْتُ مُسْتَعِدّاً بَعْد",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0108L02U04",
+     "seed": 108,
+     "kind": "use",
+     "known": "what does he know? we don't need to wake up like that",
+     "target": "ماذا يَعْرِف؟ لا نَحْتاجُ أَنْ نَسْتَيْقِظَ كَذٰلِكَ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0109L02U01",
+     "seed": 109,
+     "kind": "use",
+     "known": "what do you know? do you know new words?",
+     "target": "ماذا تَعْرِف؟ هَلْ تَعْرِفُ كَلِماتٍ جَديدَةً؟",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0145L01U03",
+     "seed": 145,
+     "kind": "use",
+     "known": "why are you no longer happy? I'm here with you",
+     "target": "لِماذا لَمْ تَعُدْ سَعيداً أَنا هُنا مَعَكَ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0155L01B04",
+     "seed": 155,
+     "kind": "build",
+     "known": "do you mind? I don't mind",
+     "target": "هَل تُمانِعُ؟ لا أُمانِعُ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0155L01U04",
+     "seed": 155,
+     "kind": "use",
+     "known": "do you mind if we speak Arabic? I don't mind",
+     "target": "هَل تُمانِعُ أَن نَتَكَلَّمَ العَرَبِيَّة؟ أَنا لا أُمانِعُ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0155L01U05",
+     "seed": 155,
+     "kind": "use",
+     "known": "what do you mind? I don't mind anything",
+     "target": "ماذا تُمانِعُ؟ أَنا لا أُمانِعُ أَيَّ شَيْء",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0155L02U01",
+     "seed": 155,
+     "kind": "use",
+     "known": "do you mind waiting? I don't mind waiting much",
+     "target": "هَل تُمانِعُ الانْتِظارَ؟ أَنا لا أُمانِعُ الانْتِظارَ كَثيراً",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0155L02U03",
+     "seed": 155,
+     "kind": "use",
+     "known": "what do you want? I don't mind waiting a little",
+     "target": "ماذا تُريدُ؟ لا أُمانِعُ الانْتِظارَ قَليلاً",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0155L03U03",
+     "seed": 155,
+     "kind": "use",
+     "known": "what do you want? I don't mind waiting for a few minutes",
+     "target": "ماذا تُريدُ؟ أَنا لا أُمانِعُ الانْتِظارَ لِبِضْعِ دَقائِقَ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0155L04U04",
+     "seed": 155,
+     "kind": "use",
+     "known": "what do you want us to do tomorrow morning? I don't mind waiting",
+     "target": "ماذا تُريدُ أَن نَفعَلَهُ صَباحَ الغَد؟ أَنا لا أُمانِعُ الانْتِظارَ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0156L01U02",
+     "seed": 156,
+     "kind": "use",
+     "known": "what do you want to do tonight? do you want to go to a restaurant?",
+     "target": "ماذا تُريدُ أَن تَفعَلَهُ اللَّيْلَة؟ هَلْ تُريدُ أَنْ تَذْهَبَ إِلى مَطْعَمٍ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0157L01U04",
+     "seed": 157,
+     "kind": "use",
+     "known": "what do you want us to do? I won't be able to be there next month",
+     "target": "ماذا تُريدُ أَن نَفعَلَهُ؟ لَنْ أَسْتَطيعَ أَنْ أَكونَ هُناكَ الشَّهْرَ القادِم",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0158L01U03",
+     "seed": 158,
+     "kind": "use",
+     "known": "do you want to go to a restaurant? let's talk about it",
+     "target": "هَلْ تُريدُ أَنْ تَذْهَبَ إِلى مَطْعَمٍ؟ لِنَتَكَلَّمْ عَنْ ذٰلِك",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0158L01U02",
+     "seed": 158,
+     "kind": "use",
+     "known": "what do you want? let's talk about something else now",
+     "target": "ماذا تُريدُ؟ لِنَتَكَلَّمْ عَنْ شَيْءٍ آخَر الآنَ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0159L01U03",
+     "seed": 159,
+     "kind": "use",
+     "known": "what am I saying? this isn't what I'm trying to say today",
+     "target": "ماذا أَقول؟ هٰذا لَيْسَ ما أُحاوِلُ أَنْ أَقول اليَومَ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0160L01U03",
+     "seed": 160,
+     "kind": "use",
+     "known": "can you tell me the word? I don't remember it",
+     "target": "هَلْ يُمْكِنُكَ أَنْ تُخْبِرَني الكَلِمَةَ؟ لا أَتَذَكَّرُ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0160L02U03",
+     "seed": 160,
+     "kind": "use",
+     "known": "how do you say this word? I don't know",
+     "target": "كَيْفَ تَقولُ هٰذِهِ الكَلِمَةَ؟ لا أَعرِفُ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0161L03U04",
+     "seed": 161,
+     "kind": "use",
+     "known": "what do you want to do Sunday morning? can you give me the book?",
+     "target": "ماذا تُريدُ أَن نَفعَلَهُ صَباحَ الأَحَد؟ هَلْ يُمْكِنُكَ أَن تُعْطِيَني الكِتابَ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0161L01U01",
+     "seed": 161,
+     "kind": "use",
+     "known": "can you give me something? I'm trying to be ready",
+     "target": "هَلْ يُمْكِنُكَ أَنْ تُعْطِيَني شَيْئاً؟ أُحاوِلُ أَن أَكونَ مُستَعِدّاً",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0161L01U02",
+     "seed": 161,
+     "kind": "use",
+     "known": "what do you want to give me? I don't mind waiting",
+     "target": "ماذا تُريدُ أَن تُعْطِيَني؟ أَنا لا أُمانِعُ الانْتِظارَ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0161L02U05",
+     "seed": 161,
+     "kind": "use",
+     "known": "can you give me that book? I don't mind waiting",
+     "target": "هَلْ يُمْكِنُكَ أَن تُعْطِيَني ذٰلِكَ الكِتابَ؟ لا أُمانِعُ الانْتِظارَ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0191L01U06",
+     "seed": 191,
+     "kind": "use",
+     "known": "what have you done so far? I haven't done anything at all",
+     "target": "ماذا فعلت حتى الآن؟ لم أفعل شيئا أبدا",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0193L01U06",
+     "seed": 193,
+     "kind": "use",
+     "known": "do you mind if I ask some questions? I'm busy but I can try",
+     "target": "هل تمانع إذا سألتك بعض الأسئلة؟ أنا مشغول لٰكنني أستطيع أن أحاول",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0194L01U05",
+     "seed": 194,
+     "kind": "use",
+     "known": "what are you looking for? I want to help",
+     "target": "عن ماذا تبحث؟ أريد أن أساعد",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0195L04U05",
+     "seed": 195,
+     "kind": "use",
+     "known": "I left the money on the table. I can't find it now",
+     "target": "تركته على الطاولة. لا أستطيع أن أجد المال الآن",
+     "why": "sentences: known 2, target 2"
+    },
+    {
+     "ref": "ara_for_eng:S0256L01B03",
+     "seed": 256,
+     "kind": "build",
+     "known": "what do you think? less than an hour?",
+     "target": "ماذا تظن؟ أقل من ساعة؟",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0258L01B03",
+     "seed": 258,
+     "kind": "build",
+     "known": "what's that? something interesting?",
+     "target": "ما ذٰلك؟ شيء ممتع؟",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0258L01B02",
+     "seed": 258,
+     "kind": "build",
+     "known": "what's that? something good?",
+     "target": "ما ذٰلك؟ شيء جيد؟",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0258L01U05",
+     "seed": 258,
+     "kind": "use",
+     "known": "what's that thing over there? can I try?",
+     "target": "ما ذٰلك الشيء هناك؟ هل يمكنني أن أحاول؟",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0258L01U04",
+     "seed": 258,
+     "kind": "use",
+     "known": "what's that? can you tell me something about it?",
+     "target": "ما ذٰلك؟ هل يمكنك أن تخبرني شيئا عنه؟",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0368L01U04",
+     "seed": 368,
+     "kind": "use",
+     "known": "what did he want to grow? tomatoes",
+     "target": "ماذا أَرادَ أَنْ يَزْرَعَ؟ طَماطِمَ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0632L01U05",
+     "seed": 632,
+     "kind": "use",
+     "known": "what would you like? a glass of water",
+     "target": "ماذا تَوَدُّ؟ كَأْسَ ماءٍ",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "ara_for_eng:S0636L01U05",
+     "seed": 636,
+     "kind": "use",
+     "known": "what do you think? I think that those are from Jane",
+     "target": "ماذا تَظُنُّ؟ أَظُنُّ أَنَّ تِلْكَ مِنْ جَيْن",
+     "why": "sentences: known 2, target 1"
+    }
+   ]
+  },
+  {
+   "id": "unpronounceable",
+   "scan": "Check 6",
+   "rule": "A16",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 6,
+   "hits": []
+  },
+  {
+   "id": "wrapping-quotes",
+   "scan": "Check 7",
+   "rule": "display",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 3,
+   "hits": []
+  },
+  {
+   "id": "trailing-period",
+   "scan": "Check 8",
+   "rule": "A7 (no difference)",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 4,
+   "hits": []
+  },
+  {
+   "id": "lowercase-i",
+   "scan": "Check 9",
+   "rule": "K9",
+   "blocks": false,
+   "count": 1,
+   "subs": {},
+   "ms": 3,
+   "hits": [
+    {
+     "ref": "ara_for_eng:S0347L02U05",
+     "seed": 347,
+     "kind": "use",
+     "known": "i think he wanted to know what was happening",
+     "target": "أَظُنُّ أَنَّهُ أَرادَ أَنْ يَعْرِفَ ما الَّذي كانَ يَحْدُثُ",
+     "why": "lowercase i on the known side"
+    }
+   ]
+  },
+  {
+   "id": "zut-lego",
+   "scan": "Check 10",
+   "rule": "K2/K4",
+   "blocks": true,
+   "count": 4,
+   "subs": {
+    "k23-explained": 4
+   },
+   "ms": 4,
+   "hits": [
+    {
+     "ref": "S0034L02",
+     "seed": 34,
+     "kind": "lego",
+     "known": "quiet",
+     "target": "هادئ",
+     "why": "\"quiet\" → هادئ | هادئين · intro: The Arabic for: 'quiet', as in — 'he doesn't want to be quiet with everyone', is:",
+     "sub": "k23-explained",
+     "group": "quiet"
+    },
+    {
+     "ref": "S0403L01",
+     "seed": 403,
+     "kind": "lego",
+     "known": "quiet",
+     "target": "هادِئينَ",
+     "why": "\"quiet\" → هادئ | هادئين · intro: The Arabic for: 'remain quiet', as in — 'we should remain quiet for as long as possible', is:",
+     "sub": "k23-explained",
+     "group": "quiet"
+    },
+    {
+     "ref": "S0110L01",
+     "seed": 110,
+     "kind": "lego",
+     "known": "we are",
+     "target": "نَحْنُ",
+     "why": "\"we are\" → نحن | نكون · intro: The Arabic for: 'we are', as in — 'we are working hard to learn new words', is:",
+     "sub": "k23-explained",
+     "group": "we are"
+    },
+    {
+     "ref": "S0407L02",
+     "seed": 407,
+     "kind": "lego",
+     "known": "we are",
+     "target": "نَكونُ",
+     "why": "\"we are\" → نحن | نكون · intro: The Arabic for: 'to set a good example', as in — 'shouldn't we try to set a good example?', is:",
+     "sub": "k23-explained",
+     "group": "we are"
+    }
+   ]
+  },
+  {
+   "id": "capitalisation",
+   "scan": "Check 13",
+   "rule": "display",
+   "blocks": false,
+   "count": 16,
+   "subs": {
+    "case-dup": 10,
+    "outlier": 6
+   },
+   "ms": 52,
+   "hits": [
+    {
+     "ref": "S0021",
+     "seed": 21,
+     "kind": "seed",
+     "known": "Why are you learning her name?",
+     "target": "لِماذا تَتَعَلَّمُ اسْمَها؟",
+     "why": "case-only duplicate on known: Why are you learning her name? ≠ why are you learning her name?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "ara_for_eng:S0021L02U01",
+     "seed": 21,
+     "kind": "use",
+     "known": "why are you learning her name?",
+     "target": "لِماذا تَتَعَلَّمُ اسْمَها؟",
+     "why": "case-only duplicate on known: Why are you learning her name? ≠ why are you learning her name?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0067",
+     "seed": 67,
+     "kind": "seed",
+     "known": "Why do you want to stop?",
+     "target": "لِماذا تُريدُ أَنْ تَتَوَقَّف؟",
+     "why": "case-only duplicate on known: Why do you want to stop? ≠ why do you want to stop?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "ara_for_eng:S0067L01B03",
+     "seed": 67,
+     "kind": "build",
+     "known": "why do you want to stop?",
+     "target": "لِماذا تُريدُ أَنْ تَتَوَقَّف؟",
+     "why": "case-only duplicate on known: Why do you want to stop? ≠ why do you want to stop?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0113",
+     "seed": 113,
+     "kind": "seed",
+     "known": "Why can't I remember what you said?",
+     "target": "لِماذا لا أَسْتَطيعُ أَنْ أَتَذَكَّرَ ما قُلْتَ؟",
+     "why": "case-only duplicate on known: Why can't I remember what you said? ≠ why can't I remember what you said?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "ara_for_eng:S0113L01U01",
+     "seed": 113,
+     "kind": "use",
+     "known": "why can't I remember what you said?",
+     "target": "لِماذا لا أَسْتَطيعُ أَنْ أَتَذَكَّرَ ما قُلْتَ؟",
+     "why": "case-only duplicate on known: Why can't I remember what you said? ≠ why can't I remember what you said?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0269",
+     "seed": 269,
+     "kind": "seed",
+     "known": "Why don't you want to wait for your father?",
+     "target": "لِماذا لا تُريدُ أَنْ تَنْتَظِرَ أَباك؟",
+     "why": "case-only duplicate on known: Why don't you want to wait for your father? ≠ why don't you want to wait for your father?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "ara_for_eng:S0269L02B03",
+     "seed": 269,
+     "kind": "build",
+     "known": "why don't you want to wait for your father?",
+     "target": "لماذا لا تريد أن تنتظر أباك؟",
+     "why": "case-only duplicate on known: Why don't you want to wait for your father? ≠ why don't you want to wait for your father?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0500",
+     "seed": 500,
+     "kind": "seed",
+     "known": "Why don't you want to sit between the two girls?",
+     "target": "لِماذا لا تُريدُ أَنْ تَجْلِسَ بَيْنَ الفَتاتَيْنِ؟",
+     "why": "case-only duplicate on known: Why don't you want to sit between the two girls? ≠ why don't you want to sit between the two girls?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "ara_for_eng:S0500L03U01",
+     "seed": 500,
+     "kind": "use",
+     "known": "why don't you want to sit between the two girls?",
+     "target": "لِماذا لا تُريدُ أَنْ تَجْلِسَ بَيْنَ الفَتاتَيْنِ؟",
+     "why": "case-only duplicate on known: Why don't you want to sit between the two girls? ≠ why don't you want to sit between the two girls?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0021",
+     "seed": 21,
+     "kind": "seed",
+     "known": "Why are you learning her name?",
+     "target": "لِماذا تَتَعَلَّمُ اسْمَها؟",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0067",
+     "seed": 67,
+     "kind": "seed",
+     "known": "Why do you want to stop?",
+     "target": "لِماذا تُريدُ أَنْ تَتَوَقَّف؟",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0113",
+     "seed": 113,
+     "kind": "seed",
+     "known": "Why can't I remember what you said?",
+     "target": "لِماذا لا أَسْتَطيعُ أَنْ أَتَذَكَّرَ ما قُلْتَ؟",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0145",
+     "seed": 145,
+     "kind": "seed",
+     "known": "Why are you not happy any more?",
+     "target": "لِماذا لَمْ تَعُدْ سَعيداً؟",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0269",
+     "seed": 269,
+     "kind": "seed",
+     "known": "Why don't you want to wait for your father?",
+     "target": "لِماذا لا تُريدُ أَنْ تَنْتَظِرَ أَباك؟",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0500",
+     "seed": 500,
+     "kind": "seed",
+     "known": "Why don't you want to sit between the two girls?",
+     "target": "لِماذا لا تُريدُ أَنْ تَجْلِسَ بَيْنَ الفَتاتَيْنِ؟",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    }
+   ]
+  },
+  {
+   "id": "identical",
+   "scan": "Check 15",
+   "rule": "K16",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 67,
+   "hits": []
+  },
+  {
+   "id": "underpopulated",
+   "scan": "Check 16",
+   "rule": "P10/P30",
+   "blocks": "empty only",
+   "count": 3,
+   "subs": {
+    "few-use": 3
+   },
+   "ms": 234,
+   "hits": [
+    {
+     "ref": "S0001L02",
+     "seed": 1,
+     "kind": "lego",
+     "known": "arabic",
+     "target": "العَرَبِيَّةَ",
+     "why": "1 build, 1 use",
+     "sub": "few-use"
+    },
+    {
+     "ref": "S0001L03",
+     "seed": 1,
+     "kind": "lego",
+     "known": "with you",
+     "target": "مَعَكَ",
+     "why": "2 build, 1 use",
+     "sub": "few-use"
+    },
+    {
+     "ref": "S0012L02",
+     "seed": 12,
+     "kind": "lego",
+     "known": "to guess",
+     "target": "أُخَمِّنُ",
+     "why": "2 build, 1 use",
+     "sub": "few-use"
+    }
+   ]
+  },
+  {
+   "id": "ita-subjunctive",
+   "scan": "Check 17b",
+   "rule": "K16/K40",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 1,
+   "hits": []
+  },
+  {
+   "id": "spa-llevar",
+   "scan": "Check 17a",
+   "rule": "K16",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "deu-verb-final",
+   "scan": "Check 17c",
+   "rule": "K16",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "jpn-ka",
+   "scan": "Check 17d",
+   "rule": "A9",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "por-voce",
+   "scan": "Check 17e",
+   "rule": "K12",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "duplicate-lego",
+   "scan": "new",
+   "rule": "L17/L31/P25",
+   "blocks": false,
+   "count": 18,
+   "subs": {
+    "orphan-not-new": 10,
+    "repeat-debut": 8
+   },
+   "ms": 4,
+   "hits": [
+    {
+     "ref": "S0124L01",
+     "seed": 124,
+     "kind": "lego",
+     "known": "that's",
+     "target": "تِلْكَ",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0189L01",
+     "seed": 189,
+     "kind": "lego",
+     "known": "a good idea",
+     "target": "فِكْرَةٌ جَيِّدَة",
+     "why": "same pair debuted at S0123L02",
+     "sub": "repeat-debut",
+     "twin": "S0123L02"
+    },
+    {
+     "ref": "S0207L01",
+     "seed": 207,
+     "kind": "lego",
+     "known": "you've done what you needed to do",
+     "target": "فعلت ما كنت تحتاج أن تفعله",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0228L02",
+     "seed": 228,
+     "kind": "lego",
+     "known": "he practises",
+     "target": "يمارس",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0257L01",
+     "seed": 257,
+     "kind": "lego",
+     "known": "blue",
+     "target": "الأزرق",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0333L02",
+     "seed": 333,
+     "kind": "lego",
+     "known": "much",
+     "target": "كَثيراً",
+     "why": "same pair debuted at S0027L01",
+     "sub": "repeat-debut",
+     "twin": "S0027L01"
+    },
+    {
+     "ref": "S0419L03",
+     "seed": 419,
+     "kind": "lego",
+     "known": "if they want",
+     "target": "إِذا أَرادوا",
+     "why": "same pair debuted at S0419L01",
+     "sub": "repeat-debut",
+     "twin": "S0419L01"
+    },
+    {
+     "ref": "S0448L01",
+     "seed": 448,
+     "kind": "lego",
+     "known": "they will be",
+     "target": "سَيَكونونَ",
+     "why": "same pair debuted at S0431L03",
+     "sub": "repeat-debut",
+     "twin": "S0431L03"
+    },
+    {
+     "ref": "S0451L02",
+     "seed": 451,
+     "kind": "lego",
+     "known": "they wanted",
+     "target": "أَرادوا",
+     "why": "same pair debuted at S0212L01",
+     "sub": "repeat-debut",
+     "twin": "S0212L01"
+    },
+    {
+     "ref": "S0521L01",
+     "seed": 521,
+     "kind": "lego",
+     "known": "I'm afraid",
+     "target": "أَخْشى",
+     "why": "same pair debuted at S0183L02",
+     "sub": "repeat-debut",
+     "twin": "S0183L02"
+    },
+    {
+     "ref": "S0543L01",
+     "seed": 543,
+     "kind": "lego",
+     "known": "she was right",
+     "target": "كانَتْ عَلى حَقٍّ",
+     "why": "same pair debuted at S0387L01",
+     "sub": "repeat-debut",
+     "twin": "S0387L01"
+    },
+    {
+     "ref": "S0619L01",
+     "seed": 619,
+     "kind": "lego",
+     "known": "lengthy",
+     "target": "طَويلٌ",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0627L02",
+     "seed": 627,
+     "kind": "lego",
+     "known": "your coffee",
+     "target": "قَهْوَتُكَ",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0630L04",
+     "seed": 630,
+     "kind": "lego",
+     "known": "please",
+     "target": "مِنْ فَضْلِكَ",
+     "why": "same pair debuted at S0414L01",
+     "sub": "repeat-debut",
+     "twin": "S0414L01"
+    },
+    {
+     "ref": "S0642L02",
+     "seed": 642,
+     "kind": "lego",
+     "known": "madam",
+     "target": "سَيِّدَتي",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0644L02",
+     "seed": 644,
+     "kind": "lego",
+     "known": "you say",
+     "target": "تَقولَ",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0654L01",
+     "seed": 654,
+     "kind": "lego",
+     "known": "whether",
+     "target": "إِنْ",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0659L02",
+     "seed": 659,
+     "kind": "lego",
+     "known": "you all say",
+     "target": "تَقولوا",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    }
+   ]
+  },
+  {
+   "id": "content-mismatch",
+   "scan": "new",
+   "rule": "S7/K16",
+   "blocks": false,
+   "count": 107,
+   "subs": {
+    "HIGH": 107
+   },
+   "ms": 1115,
+   "hits": [
+    {
+     "ref": "ara_for_eng:S0162L01U09",
+     "seed": 162,
+     "kind": "use",
+     "known": "what do you think about discovering the Arabic language?",
+     "target": "ما رَأْيُكَ في اكتشاف اللغة العربية؟",
+     "why": "tail_uncovered: final clause unrendered: arabic language; body_uncovered: unrendered known content: discovering; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 5.65
+    },
+    {
+     "ref": "ara_for_eng:S0215L01U05",
+     "seed": 215,
+     "kind": "use",
+     "known": "did anyone know I went out?",
+     "target": "هل يعرف أحد أنني خرجت؟",
+     "why": "tail_uncovered: final clause unrendered: went out; extra_tail: target content with no known counterpart: يعرف أحد; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 5.4
+    },
+    {
+     "ref": "ara_for_eng:S0162L01U07",
+     "seed": 162,
+     "kind": "use",
+     "known": "what do you think about what I am trying to learn?",
+     "target": "ما رَأْيُكَ في ما أحاول أن أتعلم؟",
+     "why": "tail_uncovered: final clause unrendered: trying learn; body_uncovered: unrendered known content: am; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 5.09
+    },
+    {
+     "ref": "ara_for_eng:S0239L01U01",
+     "seed": 239,
+     "kind": "use",
+     "known": "my mother likes to read every day",
+     "target": "أمي تحب أن تقرأ كل يوم",
+     "why": "tail_uncovered: final clause unrendered: every day; body_uncovered: unrendered known content: read",
+     "sub": "HIGH",
+     "score": 5.05
+    },
+    {
+     "ref": "ara_for_eng:S0213L01U04",
+     "seed": 213,
+     "kind": "use",
+     "known": "what are they trying to explain?",
+     "target": "ماذا يحاولون أن يشرحوا؟",
+     "why": "tail_uncovered: final clause unrendered: explain; body_uncovered: unrendered known content: trying; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.95
+    },
+    {
+     "ref": "ara_for_eng:S0283L01U04",
+     "seed": 283,
+     "kind": "use",
+     "known": "which of your friends do you know well?",
+     "target": "أي أصدقائك تعرف جيدا؟",
+     "why": "tail_uncovered: final clause unrendered: well; body_uncovered: unrendered known content: which; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.95
+    },
+    {
+     "ref": "ara_for_eng:S0202L01U03",
+     "seed": 202,
+     "kind": "use",
+     "known": "does anyone know what is happening?",
+     "target": "هل يعرف أحد ما يحدث؟",
+     "why": "tail_uncovered: final clause unrendered: happening; extra_tail: target content with no known counterpart: يعرف أحد; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.7
+    },
+    {
+     "ref": "ara_for_eng:S0255L01U05",
+     "seed": 255,
+     "kind": "use",
+     "known": "when do you think you'll be ready to leave today?",
+     "target": "متى تظن أنك ستكون مستعدا للمغادرة اليوم؟",
+     "why": "tail_uncovered: final clause unrendered: today; body_uncovered: unrendered known content: when you'll; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.64
+    },
+    {
+     "ref": "ara_for_eng:S0595L01U04",
+     "seed": 595,
+     "kind": "use",
+     "known": "do you need to lie down now?",
+     "target": "هَلْ تَحْتاجُ أَنْ تَسْتَلْقِيَ الآنَ؟",
+     "why": "tail_uncovered: final clause unrendered: down; body_uncovered: unrendered known content: need lie; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.64
+    },
+    {
+     "ref": "ara_for_eng:S0215L01U02",
+     "seed": 215,
+     "kind": "use",
+     "known": "did you know that I went out?",
+     "target": "هل تعرف أنني خرجت؟",
+     "why": "tail_uncovered: final clause unrendered: went out; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.6
+    },
+    {
+     "ref": "ara_for_eng:S0243L02U05",
+     "seed": 243,
+     "kind": "use",
+     "known": "I'm going to ask for the same thing to eat",
+     "target": "سأطلب نفس الشيء للأكل",
+     "why": "tail_uncovered: final clause unrendered: thing eat; body_uncovered: unrendered known content: same; extra_tail: target content with no known counterpart: الشيء للأكل",
+     "sub": "HIGH",
+     "score": 4.49
+    },
+    {
+     "ref": "ara_for_eng:S0174L01B03",
+     "seed": 174,
+     "kind": "build",
+     "known": "can you understand what I'm saying?",
+     "target": "هل تستطيع أن تفهم ما أقول؟",
+     "why": "tail_uncovered: final clause unrendered: saying; body_uncovered: unrendered known content: understand; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.39
+    },
+    {
+     "ref": "ara_for_eng:S0174L01U02",
+     "seed": 174,
+     "kind": "use",
+     "known": "can you understand what I'm saying here?",
+     "target": "هل تستطيع أن تفهم ما أقول هنا؟",
+     "why": "tail_uncovered: final clause unrendered: saying; body_uncovered: unrendered known content: understand; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.39
+    },
+    {
+     "ref": "ara_for_eng:S0285L01U04",
+     "seed": 285,
+     "kind": "use",
+     "known": "does she speak Arabic well?",
+     "target": "هل هي تتكلم العربية جيدا؟",
+     "why": "tail_uncovered: final clause unrendered: well; body_uncovered: unrendered known content: arabic; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.39
+    },
+    {
+     "ref": "ara_for_eng:S0325L02U03",
+     "seed": 325,
+     "kind": "use",
+     "known": "does he need to think about this?",
+     "target": "هَلْ يَحْتاجُ أَنْ يُفَكِّرَ فِي هذا؟",
+     "why": "tail_uncovered: final clause unrendered: this; body_uncovered: unrendered known content: need; extra_tail: target content with no known counterpart: يَحْتاجُ يُفَكِّرَ; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.39
+    },
+    {
+     "ref": "ara_for_eng:S0398L01U01",
+     "seed": 398,
+     "kind": "use",
+     "known": "where are our children?",
+     "target": "أَيْنَ أَطْفالُنا؟",
+     "why": "tail_uncovered: final clause unrendered: children; body_uncovered: unrendered known content: our; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.39
+    },
+    {
+     "ref": "ara_for_eng:S0563L01U05",
+     "seed": 563,
+     "kind": "use",
+     "known": "do you need any longer?",
+     "target": "هَلْ تَحْتاجُ أَكْثَرَ مِنْ ذلِكَ؟",
+     "why": "tail_uncovered: final clause unrendered: longer; body_uncovered: unrendered known content: need; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.39
+    },
+    {
+     "ref": "ara_for_eng:S0262L01U05",
+     "seed": 262,
+     "kind": "use",
+     "known": "who was that man you were talking to yesterday?",
+     "target": "من كان ذٰلك الرجل الذي كنت تتكلم معه أمس؟",
+     "why": "tail_uncovered: unrendered at the end: were talking yesterday; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.3
+    },
+    {
+     "ref": "ara_for_eng:S0180L01U04",
+     "seed": 180,
+     "kind": "use",
+     "known": "I'd like to read in Arabic for a while",
+     "target": "أود أن أقرأ بالعربية لفترة",
+     "why": "tail_uncovered: final clause unrendered: while; body_uncovered: unrendered known content: i'd read arabic",
+     "sub": "HIGH",
+     "score": 4.29
+    },
+    {
+     "ref": "ara_for_eng:S0081L01B03",
+     "seed": 81,
+     "kind": "build",
+     "known": "when do you want to learn?",
+     "target": "مَتى تُريدُ أَنْ تَتَعَلَّمَ؟",
+     "why": "tail_uncovered: final clause unrendered: learn; body_uncovered: unrendered known content: when; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.15
+    },
+    {
+     "ref": "ara_for_eng:S0162L01U08",
+     "seed": 162,
+     "kind": "use",
+     "known": "what do you think about trying to help me with this?",
+     "target": "ما رَأْيُكَ في أن تساعدني في هٰذا؟",
+     "why": "tail_uncovered: final clause unrendered: this; body_uncovered: unrendered known content: trying; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.15
+    },
+    {
+     "ref": "ara_for_eng:S0183L01U06",
+     "seed": 183,
+     "kind": "use",
+     "known": "what do you want me to do when I see them?",
+     "target": "ماذا تريدني أن أفعل عندما أرها؟",
+     "why": "tail_uncovered: final clause unrendered: them; body_uncovered: unrendered known content: when; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.15
+    },
+    {
+     "ref": "ara_for_eng:S0197L02U02",
+     "seed": 197,
+     "kind": "use",
+     "known": "do you know where he works?",
+     "target": "هل تعرف أين يعمل؟",
+     "why": "tail_uncovered: final clause unrendered: works; body_uncovered: unrendered known content: where; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.15
+    },
+    {
+     "ref": "ara_for_eng:S0215L01B02",
+     "seed": 215,
+     "kind": "build",
+     "known": "when did I go out?",
+     "target": "متى خرجت؟",
+     "why": "tail_uncovered: final clause unrendered: out; body_uncovered: unrendered known content: when; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.15
+    },
+    {
+     "ref": "ara_for_eng:S0271L01U05",
+     "seed": 271,
+     "kind": "use",
+     "known": "when do you want to come?",
+     "target": "متى تريد أن تأتي؟",
+     "why": "tail_uncovered: final clause unrendered: come; body_uncovered: unrendered known content: when; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.15
+    },
+    {
+     "ref": "ara_for_eng:S0283L02B01",
+     "seed": 283,
+     "kind": "build",
+     "known": "which of your friends speak Arabic?",
+     "target": "أي أصدقائك يتكلمون العربية؟",
+     "why": "tail_uncovered: final clause unrendered: arabic; body_uncovered: unrendered known content: which; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 4.15
+    },
+    {
+     "ref": "ara_for_eng:S0055L01U02",
+     "seed": 55,
+     "kind": "use",
+     "known": "I don't enjoy waking up at six o'clock",
+     "target": "لا أَسْتَمْتِعُ بِالاسْتيقاظِ في السَّاعَةِ السَّادِسَةِ",
+     "why": "tail_uncovered: final clause unrendered: six o'clock",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "ara_for_eng:S0033L01B04",
+     "seed": 33,
+     "kind": "build",
+     "known": "how long have you been speaking Arabic?",
+     "target": "مُنْذُ مَتى وَأَنْتَ تَتَكَلَّمُ العَرَبِيَّة؟",
+     "why": "tail_uncovered: final clause unrendered: arabic; extra_tail: target content with no known counterpart: وَأَنْتَ العَرَبِيَّة؟; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0033L01U04",
+     "seed": 33,
+     "kind": "use",
+     "known": "but how long have you been speaking Arabic?",
+     "target": "لٰكِنْ مُنْذُ مَتى وَأَنْتَ تَتَكَلَّمُ العَرَبِيَّة؟",
+     "why": "tail_uncovered: final clause unrendered: arabic; extra_tail: target content with no known counterpart: وَأَنْتَ العَرَبِيَّة؟; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0067L01B03",
+     "seed": 67,
+     "kind": "build",
+     "known": "why do you want to stop?",
+     "target": "لِماذا تُريدُ أَنْ تَتَوَقَّف؟",
+     "why": "tail_uncovered: final clause unrendered: stop; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0067L01U02",
+     "seed": 67,
+     "kind": "use",
+     "known": "why do you want to stop now?",
+     "target": "لِماذا تُريدُ أَنْ تَتَوَقَّف الآن؟",
+     "why": "tail_uncovered: final clause unrendered: stop; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0067L01U01",
+     "seed": 67,
+     "kind": "use",
+     "known": "are you sure you want to stop?",
+     "target": "هَلْ أَنْتَ مُتَأَكِّدٌ أَنَّكَ تُريدُ أَنْ تَتَوَقَّف؟",
+     "why": "tail_uncovered: final clause unrendered: stop; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0109L01U03",
+     "seed": 109,
+     "kind": "use",
+     "known": "what do we learn when we listen?",
+     "target": "ماذا نَتَعَلَّمُ عِنْدَما نَسْمَعُ؟",
+     "why": "tail_uncovered: final clause unrendered: listen; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0163L01U08",
+     "seed": 163,
+     "kind": "use",
+     "known": "I think that it is difficult to speak quickly enough to answer",
+     "target": "أظن أنه من الصعب أن أتكلم بسرعة كافية للإجابة",
+     "why": "tail_uncovered: final clause unrendered: difficult quickly enough",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0163L01U04",
+     "seed": 163,
+     "kind": "use",
+     "known": "I think that it is not easy but interesting",
+     "target": "أظن أنه ليس سهلا لٰكنه ممتع",
+     "why": "tail_uncovered: final clause unrendered: easy but interesting",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0175L01U02",
+     "seed": 175,
+     "kind": "use",
+     "known": "what do you want to do after that?",
+     "target": "ماذا تريد أن تفعل بعد ذٰلك؟",
+     "why": "tail_uncovered: final clause unrendered: after; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0180L01U02",
+     "seed": 180,
+     "kind": "use",
+     "known": "what do you want me to read?",
+     "target": "ماذا تريدني أن أقرأ؟",
+     "why": "tail_uncovered: final clause unrendered: read; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0181L01U05",
+     "seed": 181,
+     "kind": "use",
+     "known": "what do you want me to say about my mum?",
+     "target": "ماذا تريدني أن أقول عن أمي؟",
+     "why": "tail_uncovered: final clause unrendered: mum; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0197L01B03",
+     "seed": 197,
+     "kind": "build",
+     "known": "have you heard about my son?",
+     "target": "هل سمعت عن ابني؟",
+     "why": "tail_uncovered: final clause unrendered: son; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0201L01U04",
+     "seed": 201,
+     "kind": "use",
+     "known": "do we know what is going to happen?",
+     "target": "هل نعرف ما سيحدث؟",
+     "why": "tail_uncovered: final clause unrendered: happen; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0205L01B02",
+     "seed": 205,
+     "kind": "build",
+     "known": "what did I forget?",
+     "target": "ماذا نسيت؟",
+     "why": "tail_uncovered: final clause unrendered: forget; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0211L02B02",
+     "seed": 211,
+     "kind": "build",
+     "known": "what did they explain?",
+     "target": "ماذا يشرحوا؟",
+     "why": "tail_uncovered: final clause unrendered: explain; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0211L02U01",
+     "seed": 211,
+     "kind": "use",
+     "known": "do they want to explain?",
+     "target": "هل يريدون أن يشرحوا؟",
+     "why": "tail_uncovered: final clause unrendered: explain; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0217L01B03",
+     "seed": 217,
+     "kind": "build",
+     "known": "what did I drink?",
+     "target": "ماذا شربت؟",
+     "why": "tail_uncovered: final clause unrendered: drink; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0217L01U06",
+     "seed": 217,
+     "kind": "use",
+     "known": "did you know I drank?",
+     "target": "هل تعرف أنني شربت؟",
+     "why": "tail_uncovered: final clause unrendered: drank; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0220L01B02",
+     "seed": 220,
+     "kind": "build",
+     "known": "what did you watch?",
+     "target": "ماذا شاهدت؟",
+     "why": "tail_uncovered: final clause unrendered: watch; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0234L02U03",
+     "seed": 234,
+     "kind": "use",
+     "known": "do you know your brother?",
+     "target": "هل تعرف أخيك؟",
+     "why": "tail_uncovered: final clause unrendered: brother; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0240L02B02",
+     "seed": 240,
+     "kind": "build",
+     "known": "why does he stop?",
+     "target": "لماذا يتوقف؟",
+     "why": "tail_uncovered: final clause unrendered: stop; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0252L02U03",
+     "seed": 252,
+     "kind": "use",
+     "known": "when will you be ready to start?",
+     "target": "متى ستكون مستعدا للبدء؟",
+     "why": "tail_uncovered: final clause unrendered: start; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0252L02U01",
+     "seed": 252,
+     "kind": "use",
+     "known": "are you ready to start?",
+     "target": "هل أنت مستعد للبدء؟",
+     "why": "tail_uncovered: final clause unrendered: start; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0266L01U03",
+     "seed": 266,
+     "kind": "use",
+     "known": "he was an old friend who was trying to learn Arabic",
+     "target": "كان صديقا قديما يحاول أن يتعلم العربية",
+     "why": "tail_uncovered: final clause unrendered: trying learn arabic",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0267L01B04",
+     "seed": 267,
+     "kind": "build",
+     "known": "have you heard from my father?",
+     "target": "هل سمعت من أبي؟",
+     "why": "tail_uncovered: final clause unrendered: father; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0269L01U03",
+     "seed": 269,
+     "kind": "use",
+     "known": "why don't you want to wait a little?",
+     "target": "لماذا لا تريد أن تنتظر قليلا؟",
+     "why": "tail_uncovered: final clause unrendered: little; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0278L01U02",
+     "seed": 278,
+     "kind": "use",
+     "known": "why do you have to finish early?",
+     "target": "لماذا يجب أن تنهي مبكرا؟",
+     "why": "tail_uncovered: final clause unrendered: early; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0281L02U01",
+     "seed": 281,
+     "kind": "use",
+     "known": "do you mind if I finished my coffee before you start?",
+     "target": "هل تمانع إذا أنهيت قهوتي قبل أن تبدأ؟",
+     "why": "tail_uncovered: final clause unrendered: start; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0492L02U02",
+     "seed": 492,
+     "kind": "use",
+     "known": "which of those do you think she likes?",
+     "target": "أَيُّ تِلْكَ تَظُنُّ أنها تُحِبُّ؟",
+     "why": "tail_uncovered: final clause unrendered: likes; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0641L01U05",
+     "seed": 641,
+     "kind": "use",
+     "known": "where is the chair?",
+     "target": "أَيْنَ الكُرْسِيُّ؟",
+     "why": "tail_uncovered: final clause unrendered: chair; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.9
+    },
+    {
+     "ref": "ara_for_eng:S0033L01U05",
+     "seed": 33,
+     "kind": "use",
+     "known": "how long have you been wanting to learn Arabic?",
+     "target": "مُنْذُ مَتى وَأَنْتَ تُريدُ أَنْ تَتَعَلَّمَ العَرَبِيَّة؟",
+     "why": "tail_uncovered: final clause unrendered: learn arabic; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "ara_for_eng:S0167L02U04",
+     "seed": 167,
+     "kind": "use",
+     "known": "what do you need to do tomorrow afternoon?",
+     "target": "ماذا تحتاج أن تفعل بعد ظهر الغد؟",
+     "why": "tail_uncovered: final clause unrendered: tomorrow afternoon; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "ara_for_eng:S0169L01U07",
+     "seed": 169,
+     "kind": "use",
+     "known": "what do you want me to do with this tomorrow?",
+     "target": "ماذا تريدني أن أفعل به صباح الغد؟",
+     "why": "tail_uncovered: final clause unrendered: this tomorrow; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "ara_for_eng:S0169L01U06",
+     "seed": 169,
+     "kind": "use",
+     "known": "what do you want me to do with this today?",
+     "target": "ماذا تريدني أن أفعل به اليوم؟",
+     "why": "tail_uncovered: final clause unrendered: this today; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "ara_for_eng:S0180L01B02",
+     "seed": 180,
+     "kind": "build",
+     "known": "I'd like to read for a while",
+     "target": "أود أن أقرأ لفترة",
+     "why": "tail_uncovered: final clause unrendered: while; body_uncovered: unrendered known content: i'd read",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "ara_for_eng:S0180L01B03",
+     "seed": 180,
+     "kind": "build",
+     "known": "I'd like to read today",
+     "target": "أود أن أقرأ اليوم",
+     "why": "tail_uncovered: final clause unrendered: today; body_uncovered: unrendered known content: i'd read",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "ara_for_eng:S0196L01U05",
+     "seed": 196,
+     "kind": "use",
+     "known": "have you heard about this yet?",
+     "target": "هل سمعت عن هٰذا حتى الآن؟",
+     "why": "tail_uncovered: final clause unrendered: this yet; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "ara_for_eng:S0202L02U05",
+     "seed": 202,
+     "kind": "use",
+     "known": "are you sure that this is a good idea?",
+     "target": "هل أنت متأكدا أن هٰذا فكرة جيدة؟",
+     "why": "tail_uncovered: final clause unrendered: this good; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "ara_for_eng:S0414L05U03",
+     "seed": 414,
+     "kind": "use",
+     "known": "could we have something to eat please?",
+     "target": "هَلْ يُمْكِنُنا الحُصولُ عَلى شَيْءٍ لِتَناوُلِ الطَّعامِ مِنْ فَضْلِكَ؟",
+     "why": "tail_uncovered: unrendered at the end: eat; extra_tail: target content with no known counterpart: لِتَناوُلِ الطَّعامِ; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.7
+    },
+    {
+     "ref": "ara_for_eng:S0074L01U05",
+     "seed": 74,
+     "kind": "use",
+     "known": "thank you very much for helping me to understand, but I still have more to learn",
+     "target": "شُكْراً جَزيلاً لِمُساعَدَتي عَلى الفَهْم، لٰكِنْ لَدَيَّ المَزيدُ لِأَتَعَلَّمَه",
+     "why": "tail_uncovered: final clause unrendered: still learn; body_uncovered: unrendered known content: understand",
+     "sub": "HIGH",
+     "score": 3.69
+    },
+    {
+     "ref": "ara_for_eng:S0252L02U05",
+     "seed": 252,
+     "kind": "use",
+     "known": "I don't know if I am ready to start",
+     "target": "لا أعرف إن كنت مستعدا للبدء",
+     "why": "tail_uncovered: final clause unrendered: am start; body_uncovered: unrendered known content: if",
+     "sub": "HIGH",
+     "score": 3.69
+    },
+    {
+     "ref": "ara_for_eng:S0174L01U04",
+     "seed": 174,
+     "kind": "use",
+     "known": "can you speak Arabic today?",
+     "target": "هل تستطيع أن تتكلم بالعربية اليوم؟",
+     "why": "tail_uncovered: final clause unrendered: today; body_uncovered: unrendered known content: arabic; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.59
+    },
+    {
+     "ref": "ara_for_eng:S0182L01U03",
+     "seed": 182,
+     "kind": "use",
+     "known": "have you seen this today?",
+     "target": "هل رأيت هٰذا اليوم؟",
+     "why": "tail_uncovered: final clause unrendered: today; body_uncovered: unrendered known content: this; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.59
+    },
+    {
+     "ref": "ara_for_eng:S0644L01U05",
+     "seed": 644,
+     "kind": "use",
+     "known": "can you learn Arabic?",
+     "target": "هَلْ يُمْكِنُكَ أَنْ تَتَعَلَّمَ العَرَبِيَّةَ؟",
+     "why": "tail_uncovered: final clause unrendered: arabic; body_uncovered: unrendered known content: learn; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.59
+    },
+    {
+     "ref": "ara_for_eng:S0107L01U04",
+     "seed": 107,
+     "kind": "use",
+     "known": "that is why we were trying to listen",
+     "target": "لِذٰلِكَ كُنّا نُحاوِلُ أَنْ نَسْمَعَ",
+     "why": "tail_uncovered: final clause unrendered: listen; body_uncovered: unrendered known content: trying",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "ara_for_eng:S0173L02U06",
+     "seed": 173,
+     "kind": "use",
+     "known": "no thank you I can manage on my own",
+     "target": "لا شكرا أستطيع أن أتدبر الأمر بنفسي",
+     "why": "tail_uncovered: final clause unrendered: own; body_uncovered: unrendered known content: thank",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "ara_for_eng:S0184L01U03",
+     "seed": 184,
+     "kind": "use",
+     "known": "I saw her when I was looking for my book",
+     "target": "رأيتها عندما كنت أقرأ كتابي",
+     "why": "tail_uncovered: final clause unrendered: looking; body_uncovered: unrendered known content: when",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "ara_for_eng:S0204L02U01",
+     "seed": 204,
+     "kind": "use",
+     "known": "she helps you every day",
+     "target": "هي تساعدك كثيرا",
+     "why": "tail_uncovered: final clause unrendered: day; body_uncovered: unrendered known content: every",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "ara_for_eng:S0403L01B04",
+     "seed": 403,
+     "kind": "build",
+     "known": "we want the group to be quiet",
+     "target": "نُريدُ أَنْ يَكونَ الجَميعُ هادِئينَ",
+     "why": "tail_uncovered: final clause unrendered: quiet; body_uncovered: unrendered known content: group",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "ara_for_eng:S0619L03U01",
+     "seed": 619,
+     "kind": "use",
+     "known": "do you remember when we saw something important?",
+     "target": "هَلْ تَتَذَكَّرُ مَتى رَأَيْنا شَيْئاً مُهِمّاً؟",
+     "why": "body_uncovered: unrendered known content: remember when; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.5
+    },
+    {
+     "ref": "ara_for_eng:S0110L01U01",
+     "seed": 110,
+     "kind": "use",
+     "known": "we are trying to learn Arabic",
+     "target": "نَحْنُ نُحاوِلُ أَنْ نَتَعَلَّمَ العَرَبِيَّةَ",
+     "why": "tail_uncovered: final clause unrendered: learn arabic; body_uncovered: unrendered known content: trying",
+     "sub": "HIGH",
+     "score": 3.45
+    },
+    {
+     "ref": "ara_for_eng:S0188L01B02",
+     "seed": 188,
+     "kind": "build",
+     "known": "do I need to change anything?",
+     "target": "هل أحتاج أن أغير شيئا؟",
+     "why": "tail_uncovered: unrendered at the end: anything; body_uncovered: unrendered known content: need; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.39
+    },
+    {
+     "ref": "ara_for_eng:S0652L01U03",
+     "seed": 652,
+     "kind": "use",
+     "known": "what exactly do you need sir?",
+     "target": "ماذا بِالضَّبْطِ تَحْتاجُ سَيِّدي؟",
+     "why": "tail_uncovered: unrendered at the end: need; body_uncovered: unrendered known content: exactly; extra_tail: target content with no known counterpart: بِالضَّبْطِ تَحْتاجُ; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.39
+    },
+    {
+     "ref": "ara_for_eng:S0571L02U05",
+     "seed": 571,
+     "kind": "use",
+     "known": "I'm not convinced that it's the right time",
+     "target": "لَسْتُ مُقْتَنِعاً بِأَنَّ ذلِكَ سَيَكونُ فِكْرَةً جَيِّدَةً جِدّاً في الوَقْتِ الحالِيِّ",
+     "why": "tail_uncovered: final clause unrendered: right; extra_tail: target content with no known counterpart: الوَقْتِ الحالِيِّ",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "ara_for_eng:S0603L01U01",
+     "seed": 603,
+     "kind": "use",
+     "known": "at the time we didn't have anything",
+     "target": "في ذلِكَ الوَقْتِ لَمْ يَكُنْ لَدَيْنا شَيْءٌ",
+     "why": "tail_uncovered: final clause unrendered: anything; extra_tail: target content with no known counterpart: الوَقْتِ يَكُنْ",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "ara_for_eng:S0090L02U04",
+     "seed": 90,
+     "kind": "use",
+     "known": "I remember when things were great",
+     "target": "أَتَذَكَّرُ مَتى كانَ الأَمْرُ رائِعاً",
+     "why": "tail_uncovered: unrendered at the end: things were; body_uncovered: unrendered known content: when",
+     "sub": "HIGH",
+     "score": 3.25
+    },
+    {
+     "ref": "ara_for_eng:S0152L03U01",
+     "seed": 152,
+     "kind": "use",
+     "known": "if this had happened differently it would have been better",
+     "target": "لَوْ كانَ هٰذا بِشَكْلٍ مُخْتَلِفٍ كانَ سَيَكونُ أَفضَل",
+     "why": "tail_uncovered: final clause unrendered: better; body_uncovered: unrendered known content: this happened",
+     "sub": "HIGH",
+     "score": 3.24
+    },
+    {
+     "ref": "ara_for_eng:S0168L01U04",
+     "seed": 168,
+     "kind": "use",
+     "known": "I am trying to come here today",
+     "target": "أحاول أن آتي هنا اليوم",
+     "why": "tail_uncovered: final clause unrendered: today; body_uncovered: unrendered known content: am trying",
+     "sub": "HIGH",
+     "score": 3.24
+    },
+    {
+     "ref": "ara_for_eng:S0581L01U03",
+     "seed": 581,
+     "kind": "use",
+     "known": "he'd like to know how things look here",
+     "target": "يَوَدُّ أَنْ يَعْرِفَ كَيْفَ تَبْدو الأُمورُ هُنا",
+     "why": "tail_uncovered: final clause unrendered: look; body_uncovered: unrendered known content: how things",
+     "sub": "HIGH",
+     "score": 3.24
+    },
+    {
+     "ref": "ara_for_eng:S0165L01U02",
+     "seed": 165,
+     "kind": "use",
+     "known": "I think that this is not true",
+     "target": "أظن أن هٰذا ليس صحيحاً",
+     "why": "tail_uncovered: final clause unrendered: this true",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0168L03U03",
+     "seed": 168,
+     "kind": "use",
+     "known": "I will be able to speak more after this",
+     "target": "سأستطيع أن أتكلم أكثر بعد ذٰلك",
+     "why": "tail_uncovered: final clause unrendered: after this",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0180L01U06",
+     "seed": 180,
+     "kind": "use",
+     "known": "I think that I can read in Arabic",
+     "target": "أظن أنني أستطيع أن أقرأ بالعربية",
+     "why": "tail_uncovered: final clause unrendered: read arabic",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0206L01U07",
+     "seed": 206,
+     "kind": "use",
+     "known": "I enjoy the chance to speak with someone else",
+     "target": "أستمتع بفرصة التكلم مع شخص آخر",
+     "why": "tail_uncovered: final clause unrendered: someone else",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0210L01U05",
+     "seed": 210,
+     "kind": "use",
+     "known": "they think that Arabic is easy",
+     "target": "يظنون أن العربية سهلا",
+     "why": "tail_uncovered: final clause unrendered: arabic easy",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0215L01U06",
+     "seed": 215,
+     "kind": "use",
+     "known": "I went out to practise Arabic",
+     "target": "خرجت في ممارسة العربية",
+     "why": "tail_uncovered: final clause unrendered: practise arabic",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0218L01U01",
+     "seed": 218,
+     "kind": "use",
+     "known": "I went out on a good day",
+     "target": "خرجت يوم جيد",
+     "why": "tail_uncovered: final clause unrendered: good day",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0240L02U05",
+     "seed": 240,
+     "kind": "use",
+     "known": "my father doesn't like to stop talking",
+     "target": "أبي لا يحب أن يتوقف عن الكلام",
+     "why": "tail_uncovered: final clause unrendered: stop talking",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0249L01U05",
+     "seed": 249,
+     "kind": "use",
+     "known": "I want you to help me before you go this evening",
+     "target": "أريدك أن تساعدني قبل أن تذهب هٰذا المساء",
+     "why": "tail_uncovered: final clause unrendered: this evening",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0283L02U02",
+     "seed": 283,
+     "kind": "use",
+     "known": "I know people who speak Arabic well",
+     "target": "أعرف أناس يتكلمون العربية جيدا",
+     "why": "tail_uncovered: final clause unrendered: arabic well",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0295L01B02",
+     "seed": 295,
+     "kind": "build",
+     "known": "I didn't say that I wanted to finish in a day",
+     "target": "لم أقل إنني أردت أن أنهي في يوم",
+     "why": "tail_uncovered: final clause unrendered: wanted day",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0295L01U05",
+     "seed": 295,
+     "kind": "use",
+     "known": "I didn't say that I speak Arabic well",
+     "target": "لم أقل إنني أتكلم العربية جيدا",
+     "why": "tail_uncovered: final clause unrendered: arabic well",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0296L01B02",
+     "seed": 296,
+     "kind": "build",
+     "known": "I said that I needed a little more time",
+     "target": "قلت إنني أحتاج وقتا أكثر قليلا",
+     "why": "tail_uncovered: final clause unrendered: needed little",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0296L01U05",
+     "seed": 296,
+     "kind": "use",
+     "known": "I said that I speak Arabic a little",
+     "target": "قلت إنني أتكلم العربية قليلا",
+     "why": "tail_uncovered: final clause unrendered: arabic little",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0444L02B04",
+     "seed": 444,
+     "kind": "build",
+     "known": "can we do that better?",
+     "target": "هَلْ يُمْكِنُ القِيامُ بِذلِكَ بِشَكْلٍ أَفْضَلَ؟",
+     "why": "extra_tail: target content with no known counterpart: يُمْكِنُ القِيامُ بِذلِكَ بِشَكْلٍ; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0462L02B04",
+     "seed": 462,
+     "kind": "build",
+     "known": "I heard he fought in Italy in those days",
+     "target": "سَمِعْتُ أَنَّهُ حارَبَ في إِيطاليا في ذلِكَ الوَقْتِ",
+     "why": "tail_uncovered: final clause unrendered: those days",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0462L02B03",
+     "seed": 462,
+     "kind": "build",
+     "known": "my grandfather fought in Italy a long time ago",
+     "target": "جَدّي حارَبَ في إِيطاليا مِنْ قَبْلُ",
+     "why": "tail_uncovered: final clause unrendered: long ago",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0462L02U04",
+     "seed": 462,
+     "kind": "use",
+     "known": "I heard he fought in Italy a long time ago",
+     "target": "سَمِعْتُ أَنَّهُ حارَبَ في إِيطاليا مِنْ قَبْلُ",
+     "why": "tail_uncovered: final clause unrendered: long ago",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0469L01U05",
+     "seed": 469,
+     "kind": "use",
+     "known": "she thinks that doesn't mean anything important",
+     "target": "تَظُنُّ أَنَّ ذلِكَ لا يَعْني شَيْئاً مُهِمّاً",
+     "why": "tail_uncovered: final clause unrendered: anything important",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0514L02U03",
+     "seed": 514,
+     "kind": "use",
+     "known": "on the first day it hurt most",
+     "target": "يُؤْلِمُني أَكْثَرَ في اليَوْمِ الأَوَّلِ",
+     "why": "tail_uncovered: final clause unrendered: hurt most",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "ara_for_eng:S0608L02B02",
+     "seed": 608,
+     "kind": "build",
+     "known": "the sensible thing to carry out",
+     "target": "الشَّيْءَ العَقْلانِيَّ لِفِعْلِهِ",
+     "why": "tail_uncovered: final clause unrendered: carry out",
+     "sub": "HIGH",
+     "score": 3.2
+    }
+   ]
+  },
+  {
+   "id": "seed-placement",
+   "scan": "new (P26)",
+   "rule": "P26",
+   "blocks": true,
+   "count": 132,
+   "subs": {
+    "missing": 23,
+    "drifted": 107,
+    "no-home": 1,
+    "early": 1
+   },
+   "ms": 108,
+   "hits": [
+    {
+     "ref": "S0003",
+     "seed": 3,
+     "kind": "seed",
+     "known": "how to speak as often as possible",
+     "target": "كَيْفَ أَتَكَلَّمُ قَدْرَ الإِمْكان",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0004",
+     "seed": 4,
+     "kind": "seed",
+     "known": "how to say something in Arabic",
+     "target": "كَيْفَ أَقولُ شَيْئاً بِالعَرَبِيَّة",
+     "why": "played copy differs: ara_for_eng:S0004L03U01 \"how do I say something in Arabic? | كَيْفَ أَقولُ شَيْئاً بِالعَرَبِيَّةِ؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0004L03U01"
+    },
+    {
+     "ref": "S0010",
+     "seed": 10,
+     "kind": "seed",
+     "known": "I'm not sure if I can remember the whole sentence",
+     "target": "لَسْتُ مُتَأَكِّداً هَلْ أَسْتَطيعُ أَنْ أَتَذَكَّرَ الجُمْلَةَ كُلَّها",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0025",
+     "seed": 25,
+     "kind": "seed",
+     "known": "are you going to help me before I have to go?",
+     "target": "هَلْ سَتُساعِدُني قَبْلَ أَنْ أَضْطَرَّ لِلذَّهاب؟",
+     "why": "played copy differs: ara_for_eng:S0025L03U01 \"will you help me before I have to go? | هَلْ سَتُساعِدُني قَبْلَ أَنْ أَضْطَرَّ لِلذَّهاب؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0025L03U01"
+    },
+    {
+     "ref": "S0026",
+     "seed": 26,
+     "kind": "seed",
+     "known": "I like feeling as if I'm nearly ready to go",
+     "target": "أُحِبُّ أَنْ أَشْعُرَ كَأَنَّني مُسْتَعِدٌّ تَقْريباً لِلذَّهاب",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0040",
+     "seed": 40,
+     "kind": "seed",
+     "known": "how do you feel at the moment?",
+     "target": "كَيْفَ تَشْعُرُ الآن؟",
+     "why": "played copy differs: ara_for_eng:S0040L01U01 \"how do you feel now? | كَيْفَ تَشْعُرُ الآن؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0040L01U01"
+    },
+    {
+     "ref": "S0044",
+     "seed": 44,
+     "kind": "seed",
+     "known": "or if I need to improve",
+     "target": "أَوْ إِذا كُنْتُ أَحْتاجُ أَنْ أَتَحَسَّن",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0047",
+     "seed": 47,
+     "kind": "seed",
+     "known": "because I think that it's a good thing to make mistakes",
+     "target": "لِأَنَّني أَظُنُّ أَنَّ ارْتِكابَ الأَخْطاءِ شَيْءٌ جَيِّد",
+     "why": "played copy differs: ara_for_eng:S0047L02B02 \"because I think that making mistakes is good | لِأَنَّني أَظُنُّ أَنَّ ارْتِكابَ الأَخْطاءِ شَيْءٌ جَيِّدٌ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0047L02B02"
+    },
+    {
+     "ref": "S0055",
+     "seed": 55,
+     "kind": "seed",
+     "known": "I don't enjoy waking up when I didn't sleep very well",
+     "target": "لا أَسْتَمْتِعُ بِالاسْتيقاظِ عِنْدَما لَمْ أَنَمْ جَيِّداً",
+     "why": "played copy differs: ara_for_eng:S0055L02B02 \"I don't enjoy waking up when I didn't sleep well | لا أَسْتَمْتِعُ بِالاسْتيقاظِ عِنْدَما لَمْ أَنَمْ جَيِّداً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0055L02B02"
+    },
+    {
+     "ref": "S0061",
+     "seed": 61,
+     "kind": "seed",
+     "known": "could you say that again a little more slowly?",
+     "target": "هَلْ يُمْكِنُكَ أَنْ تَقولَ ذٰلِكَ مَرَّةً أُخْرى بِبُطْءٍ أَكْثَر؟",
+     "why": "played copy differs: ara_for_eng:S0061L03B03 \"could you say that again more slowly | هَلْ يُمْكِنُكَ أَنْ تَقولَ ذٰلِكَ مَرَّةً أُخْرى بِبُطْءٍ أَكْثَر\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0061L03B03"
+    },
+    {
+     "ref": "S0073",
+     "seed": 73,
+     "kind": "seed",
+     "known": "thank you very much, but I've got more to learn",
+     "target": "شُكْراً جَزيلاً، لٰكِنْ لَدَيَّ المَزيدُ لِأَتَعَلَّمَه",
+     "why": "played copy differs: ara_for_eng:S0073L03U04 \"thank you very much, but I have more to learn | شُكْراً جَزيلاً، لٰكِنْ لَدَيَّ المَزيدُ لِأَتَعَلَّمَه\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0073L03U04"
+    },
+    {
+     "ref": "S0075",
+     "seed": 75,
+     "kind": "seed",
+     "known": "have you got more to learn?",
+     "target": "هَلْ لَدَيْكَ المَزيدُ لِتَتَعَلَّمَه؟",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0076",
+     "seed": 76,
+     "kind": "seed",
+     "known": "I'm very happy with how much I've learnt already",
+     "target": "أَنا سَعيدٌ جِدّاً بِكَمْ تَعَلَّمْتُ بِالفِعْل",
+     "why": "played copy differs: ara_for_eng:S0076L03B02 \"I am very happy with how much I've learnt already | أَنا سَعيدٌ جِدّاً بِكَمْ تَعَلَّمْتُ بِالفِعْل\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0076L03B02"
+    },
+    {
+     "ref": "S0079",
+     "seed": 79,
+     "kind": "seed",
+     "known": "when did you start to learn?",
+     "target": "مَتى بَدَأْتَ تَتَعَلَّم؟",
+     "why": "played copy differs: ara_for_eng:S0079L01B03 \"when did you start learning? | مَتى بَدَأْتَ تَتَعَلَّمُ؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0079L01B03"
+    },
+    {
+     "ref": "S0086",
+     "seed": 86,
+     "kind": "seed",
+     "known": "it wasn't possible, unfortunately",
+     "target": "لَمْ يَكُنْ ذٰلِكَ مُمْكِناً، لِلأَسَف",
+     "why": "played copy differs: ara_for_eng:S0086L02U01 \"it wasn't possible, unfortunately | لَمْ يَكُنْ مُمْكِناً، لِلأَسَف\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0086L02U01"
+    },
+    {
+     "ref": "S0087",
+     "seed": 87,
+     "kind": "seed",
+     "known": "they are people I don't know",
+     "target": "هُمْ أُناسٌ لا أَعْرِفُهُم",
+     "why": "played copy differs: ara_for_eng:S0087L02U01 \"they are people I don't know them | هُمْ أُناسٌ لا أَعْرِفُهُم\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0087L02U01"
+    },
+    {
+     "ref": "S0088",
+     "seed": 88,
+     "kind": "seed",
+     "known": "I'm not ready to talk to people I don't know yet",
+     "target": "لَسْتُ مُسْتَعِدّاً لِلتَّكَلُّمِ مَعَ أُناسٍ لا أَعْرِفُهُمْ بَعْد",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0090",
+     "seed": 90,
+     "kind": "seed",
+     "known": "if you can speak more slowly that would be great",
+     "target": "إِذا اسْتَطَعْتَ أَنْ تَتَكَلَّمَ بِبُطْءٍ أَكْثَرَ فَذٰلِكَ سَيَكونُ رائِعاً",
+     "why": "played copy differs: ara_for_eng:S0090L03U01 \"if you can speak more slowly then that will be great | إِذا اسْتَطَعْتَ أَنْ تَتَكَلَّمَ بِبُطْءٍ أَكْثَرَ فَذٰلِكَ سَيَكونُ رائِعاً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0090L03U01"
+    },
+    {
+     "ref": "S0093",
+     "seed": 93,
+     "kind": "seed",
+     "known": "it's time to go now",
+     "target": "حانَ وَقْتُ الذَّهابِ الآن",
+     "why": "played copy differs: ara_for_eng:S0093L01B02 \"it's time to go now | حانَ الوَقْتُ لِلذَّهابِ الآن\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0093L01B02"
+    },
+    {
+     "ref": "S0095",
+     "seed": 95,
+     "kind": "seed",
+     "known": "are you ready to go home on the next bus?",
+     "target": "هَلْ أَنْتَ مُسْتَعِدٌّ لِلذَّهابِ إِلى البَيْتِ عَلى الحافِلَةِ القادِمَة؟",
+     "why": "played copy differs: ara_for_eng:S0095L03U01 \"are you ready to go home on the next bus? | هَلْ أَنْتَ مُسْتَعِدٌّ لِلذَّهابِ إِلى البَيْتِ في الحافِلَةِ القادِمَة؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0095L03U01"
+    },
+    {
+     "ref": "S0096",
+     "seed": 96,
+     "kind": "seed",
+     "known": "no I'm not ready yet, I need a little more time",
+     "target": "لا، لَسْتُ مُسْتَعِدّاً بَعْد، أَحْتاجُ وَقْتاً أَكْثَرَ قَليلاً",
+     "why": "played copy differs: ara_for_eng:S0096L01U01 \"no I'm not ready yet, I need a little more time | لا، لَسْتُ مُسْتَعِدّاً بَعْد، أَحْتاجُ إِلى وَقْتٍ أَكْثَرَ قَليلاً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0096L01U01"
+    },
+    {
+     "ref": "S0104",
+     "seed": 104,
+     "kind": "seed",
+     "known": "we need to change what we're doing",
+     "target": "نَحْتاجُ أَنْ نُغَيِّرَ ما نَفْعَلُه",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0109",
+     "seed": 109,
+     "kind": "seed",
+     "known": "we must work hard to learn a lot of new words",
+     "target": "يَجِبُ أَنْ نَعْمَلَ بِجِدٍّ لِنَتَعَلَّمَ كَلِماتٍ جَديدَةً كَثيرَة",
+     "why": "played copy differs: ara_for_eng:S0109L03U01 \"we must work hard to learn many new words | يَجِبُ أَنْ نَعْمَلَ بِجِدٍّ لِنَتَعَلَّمَ كَلِماتٍ جَديدَةً كَثيرَةً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0109L03U01"
+    },
+    {
+     "ref": "S0117",
+     "seed": 117,
+     "kind": "seed",
+     "known": "I'm definitely doing better than I was last time we talked to each other",
+     "target": "أَدائي بِالتَّأْكيدِ أَفْضَلُ مِمّا كانَ عَلَيْهِ آخِرَ مَرَّةٍ تَكَلَّمْنا",
+     "why": "played copy differs: ara_for_eng:S0117L03U01 \"I'm definitely doing better than last time we talked | أَدائي بِالتَّأْكيدِ أَفْضَلُ مِمّا كانَ عَلَيْهِ آخِرَ مَرَّةٍ تَكَلَّمْنا\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0117L03U01"
+    },
+    {
+     "ref": "S0118",
+     "seed": 118,
+     "kind": "seed",
+     "known": "I feel better than I felt when we were in the pub",
+     "target": "أَشْعُرُ بِأَنَّني أَفْضَلُ مِمّا شَعَرْتُ بِهِ عِنْدَما كُنّا في المَقْهى",
+     "why": "played copy differs: ara_for_eng:S0118L02U05 \"I feel better than I felt when we were in the pub | أَشْعُرُ أَنَّني أَفْضَلُ مِمّا شَعَرْتُ بِهِ عِنْدَما كُنّا في المَقْهى\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0118L02U05"
+    },
+    {
+     "ref": "S0133",
+     "seed": 133,
+     "kind": "seed",
+     "known": "you get to know someone very well when you work together",
+     "target": "تَتَعَرَّفُ عَلى شَخْصٍ جَيِّداً عِنْدَما تَعْمَلونَ مَعاً",
+     "why": "played copy differs: ara_for_eng:S0133L02B03 \"you get to know someone well when you work together | تَتَعَرَّفُ عَلى شَخْصٍ جَيِّداً عِنْدَما تَعْمَلونَ مَعاً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0133L02B03"
+    },
+    {
+     "ref": "S0143",
+     "seed": 143,
+     "kind": "seed",
+     "known": "it's the same thing as we were talking about earlier",
+     "target": "إِنَّهُ نَفْسُ الشَّيْءِ الَّذي كُنّا نَتَكَلَّمُ عَنْهُ سابِقاً",
+     "why": "played copy differs: ara_for_eng:S0143L05B02 \"it's the same thing we were talking about earlier | إِنَّهُ نَفْسُ الشَّيْءِ الَّذي كُنّا نَتَكَلَّمُ عَنْهُ سابِقاً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0143L05B02"
+    },
+    {
+     "ref": "S0144",
+     "seed": 144,
+     "kind": "seed",
+     "known": "I woke earlier than I wanted to this morning",
+     "target": "اسْتَيْقَظْتُ أَبْكَرَ مِمّا أَرَدْتُ هٰذا الصَّباح",
+     "why": "played copy differs: ara_for_eng:S0144L03U01 \"I woke up earlier than I wanted to this morning | اسْتَيْقَظْتُ أَبْكَرَ مِمّا أَرَدْتُ هٰذا الصَّباح\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0144L03U01"
+    },
+    {
+     "ref": "S0145",
+     "seed": 145,
+     "kind": "seed",
+     "known": "Why are you not happy any more?",
+     "target": "لِماذا لَمْ تَعُدْ سَعيداً؟",
+     "why": "played copy differs: ara_for_eng:S0145L01B02 \"why are you no longer happy? | لِماذا لَمْ تَعُدْ سَعيداً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0145L01B02"
+    },
+    {
+     "ref": "S0161",
+     "seed": 161,
+     "kind": "seed",
+     "known": "can you give me that book on Sunday morning?",
+     "target": "هَلْ يُمْكِنُكَ أَنْ تُعْطِيَني ذٰلِكَ الكِتابَ صَباحَ الأَحَد؟",
+     "why": "played copy differs: ara_for_eng:S0161L03B02 \"can you give me that book Sunday morning? | هَلْ يُمْكِنُكَ أَن تُعْطِيَني ذٰلِكَ الكِتابَ صَباحَ الأَحَد\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0161L03B02"
+    },
+    {
+     "ref": "S0163",
+     "seed": 163,
+     "kind": "seed",
+     "known": "I think that it's interesting",
+     "target": "أَظُنُّ أَنَّهُ مُمْتِع",
+     "why": "played copy differs: ara_for_eng:S0163L01B03 \"I think that it is interesting | أظن أنه ممتع\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0163L01B03"
+    },
+    {
+     "ref": "S0165",
+     "seed": 165,
+     "kind": "seed",
+     "known": "but I'm not sure if it's true",
+     "target": "لٰكِنَّني لَسْتُ مُتَأَكِّداً إِذا كانَ ذٰلِكَ صَحيحاً",
+     "why": "played copy differs: ara_for_eng:S0165L01U07 \"but I'm not sure if that is true | لٰكنني لست متأكدا إذا كان ذٰلك صحيحاً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0165L01U07"
+    },
+    {
+     "ref": "S0177",
+     "seed": 177,
+     "kind": "seed",
+     "known": "I'll ask her where she wants to go",
+     "target": "سَأَسْأَلُها أَيْنَ تُريدُ أَنْ تَذْهَب",
+     "why": "played copy differs: ara_for_eng:S0177L01U02 \"I will ask her where she wants to go | سأسألها أين تريد أن تذهب\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0177L01U02"
+    },
+    {
+     "ref": "S0181",
+     "seed": 181,
+     "kind": "seed",
+     "known": "but I have to take my mother to the doctor",
+     "target": "لٰكِنْ يَجِبُ أَنْ آخُذَ أُمّي إِلى الطَّبيب",
+     "why": "played copy differs: ara_for_eng:S0181L02U05 \"but I have to take my mum to the doctor | لٰكن يجب أن آخذ أمي إلى الطبيب\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0181L02U05"
+    },
+    {
+     "ref": "S0183",
+     "seed": 183,
+     "kind": "seed",
+     "known": "no I'm afraid I haven't seen them",
+     "target": "لا، أَخْشى أَنَّني لَمْ أَرَها",
+     "why": "played copy differs: ara_for_eng:S0183L02B03 \"no I'm afraid I didn't see them | لا أخشى أنني لم أرها\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0183L02B03"
+    },
+    {
+     "ref": "S0184",
+     "seed": 184,
+     "kind": "seed",
+     "known": "yes I saw them in the office a while ago",
+     "target": "نَعَمْ، رَأَيْتُها في المَكْتَبِ مُنْذُ فَتْرَة",
+     "why": "played copy differs: ara_for_eng:S0184L03U03 \"yes I saw her in the office a while ago | نعم رأيتها في المكتب منذ فترة\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0184L03U03"
+    },
+    {
+     "ref": "S0191",
+     "seed": 191,
+     "kind": "seed",
+     "known": "no I don't mind at all",
+     "target": "لا، لا أُمانِعُ أَبَداً",
+     "why": "played copy differs: ara_for_eng:S0191L01B02 \"no I don't mind at all | لا أمانع أبدا\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0191L01B02"
+    },
+    {
+     "ref": "S0201",
+     "seed": 201,
+     "kind": "seed",
+     "known": "we wanted to know what was going to happen",
+     "target": "أَرَدْنا أَنْ نَعْرِفَ ما سَيَحْدُث",
+     "why": "played copy differs: ara_for_eng:S0201L01U07 \"we wanted to know what was going to happen | أردنا أن نعرف ما كان سيحدث\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0201L01U07"
+    },
+    {
+     "ref": "S0207",
+     "seed": 207,
+     "kind": "seed",
+     "known": "you've done what you needed to do",
+     "target": "فَعَلْتَ ما كُنْتَ تَحْتاجُ أَنْ تَفْعَلَه",
+     "why": "played copy differs: ara_for_eng:S0207L01B01 \"you've done what you needed to do | فعلت ما كنت تحتاج أن تفعله\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0207L01B01"
+    },
+    {
+     "ref": "S0223",
+     "seed": 223,
+     "kind": "seed",
+     "known": "he's going to ask you tomorrow",
+     "target": "سَيَسْأَلُكَ غَداً",
+     "why": "played copy differs: ara_for_eng:S0223L01B02 \"he'll ask you tomorrow | سيسألك غدا\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0223L01B02"
+    },
+    {
+     "ref": "S0224",
+     "seed": 224,
+     "kind": "seed",
+     "known": "he's just started to learn",
+     "target": "لَقَدْ بَدَأَ لِلتَّوِّ أَنْ يَتَعَلَّم",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0228",
+     "seed": 228,
+     "kind": "seed",
+     "known": "that man has just started to practise speaking",
+     "target": "ذٰلِكَ الرَّجُلُ بَدَأَ لِلتَّوِّ يُمارِسُ التَّكَلُّم",
+     "why": "played copy differs: ara_for_eng:S0228L02U05 \"that man has just started to practise speaking | ذٰلك الرجل بدأ للتو يمارس التكلم\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0228L02U05"
+    },
+    {
+     "ref": "S0235",
+     "seed": 235,
+     "kind": "seed",
+     "known": "I met someone who said that he wanted to tell you something",
+     "target": "قابَلْتُ شَخْصاً قالَ إِنَّهُ أَرادَ أَنْ يُخْبِرَكَ بِشَيْء",
+     "why": "played copy differs: ara_for_eng:S0235L02U06 \"I met someone who said he wanted to tell you something | قابلت شخصا قال إنه أراد أن يخبرك بشيء\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0235L02U06"
+    },
+    {
+     "ref": "S0257",
+     "seed": 257,
+     "kind": "seed",
+     "known": "I like that blue thing",
+     "target": "أُحِبُّ ذٰلِكَ الشَّيْءَ الأَزْرَق",
+     "why": "played copy differs: ara_for_eng:S0257L01U02 \"I like that blue thing | أحب ذٰلك الشيء الأزرق\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0257L01U02"
+    },
+    {
+     "ref": "S0264",
+     "seed": 264,
+     "kind": "seed",
+     "known": "an old man",
+     "target": "رَجُلٌ كَبير",
+     "why": "played copy differs: ara_for_eng:S0264L01B01 \"there is an old man | رجل كبير\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0264L01B01"
+    },
+    {
+     "ref": "S0265",
+     "seed": 265,
+     "kind": "seed",
+     "known": "a friend",
+     "target": "صَديق",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0268",
+     "seed": 268,
+     "kind": "seed",
+     "known": "yes she sent me two emails last week",
+     "target": "نَعَمْ، أَرْسَلَتْ لي رِسالَتَيْنِ الأُسْبوعَ الماضي",
+     "why": "played copy differs: ara_for_eng:S0268L02U01 \"yes she sent me two letters last week | نعم أرسلت لي رسالتين الأسبوع الماضي\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0268L02U01"
+    },
+    {
+     "ref": "S0273",
+     "seed": 273,
+     "kind": "seed",
+     "known": "no unfortunately I've got too much work",
+     "target": "لا، لِلأَسَفِ لَدَيَّ عَمَلٌ كَثيرٌ جِدّاً",
+     "why": "played copy differs: ara_for_eng:S0273L01U01 \"no unfortunately I have too much work | لا للأسف لدي عمل كثير جدا\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0273L01U01"
+    },
+    {
+     "ref": "S0274",
+     "seed": 274,
+     "kind": "seed",
+     "known": "do you have to leave in a few days?",
+     "target": "هَلْ يَجِبُ أَنْ تُغادِرَ في بِضْعَةِ أَيّام؟",
+     "why": "played copy differs: ara_for_eng:S0274L02B03 \"do you have to depart in a few days? | هل يجب أن تغادر في بضعة أيام؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0274L02B03"
+    },
+    {
+     "ref": "S0275",
+     "seed": 275,
+     "kind": "seed",
+     "known": "longer",
+     "target": "أَطْوَل",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0276",
+     "seed": 276,
+     "kind": "seed",
+     "known": "no I can stay here for a little longer",
+     "target": "لا، أَسْتَطيعُ أَنْ أَبْقى هُنا لِفَتْرَةٍ أَطْوَلَ قَليلاً",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0277",
+     "seed": 277,
+     "kind": "seed",
+     "known": "yes I've got an important meeting early next week",
+     "target": "نَعَمْ، لَدَيَّ اجْتِماعٌ مُهِمٌّ في بِدايَةِ الأُسْبوعِ القادِم",
+     "why": "played copy differs: ara_for_eng:S0277L02U01 \"yes I have an important meeting early next week | نعم لدي اجتماع مهم في بداية الأسبوع القادم\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0277L02U01"
+    },
+    {
+     "ref": "S0280",
+     "seed": 280,
+     "kind": "seed",
+     "known": "no I only had to do the most important job",
+     "target": "لا، فَقَطْ كانَ يَجِبُ أَنْ أَفْعَلَ العَمَلَ الأَهَمّ",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0281",
+     "seed": 281,
+     "kind": "seed",
+     "known": "do you mind if I finish my coffee before you start?",
+     "target": "هَلْ تُمانِعُ إِذا أَنْهَيْتُ قَهْوَتي قَبْلَ أَنْ تَبْدَأ؟",
+     "why": "played copy differs: ara_for_eng:S0281L02U01 \"do you mind if I finished my coffee before you start? | هل تمانع إذا أنهيت قهوتي قبل أن تبدأ؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0281L02U01"
+    },
+    {
+     "ref": "S0292",
+     "seed": 292,
+     "kind": "seed",
+     "known": "I hope you'll be able to come to the party",
+     "target": "أَرْجو أَنْ تَسْتَطيعَ أَنْ تَأْتِيَ إِلى الحَفْلَة",
+     "why": "played copy differs: ara_for_eng:S0292L02B03 \"I hope you can come to the party | أرجو أن تستطيع أن تأتي إلى الحفلة\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0292L02B03"
+    },
+    {
+     "ref": "S0303",
+     "seed": 303,
+     "kind": "seed",
+     "known": "I think that he wants to sit down",
+     "target": "أَظُنُّ أَنَّهُ يُريدُ أَنْ يَجْلِسَ",
+     "why": "played copy differs: ara_for_eng:S0303L01B03 \"I think he wants to sit down | أَظُنُّ أَنَّهُ يُريدُ أَنْ يَجْلِسَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0303L01B03"
+    },
+    {
+     "ref": "S0305",
+     "seed": 305,
+     "kind": "seed",
+     "known": "woman",
+     "target": "اِمْرَأَةٌ",
+     "why": "played copy differs: ara_for_eng:S0305L01B01 \"a woman | اِمْرَأَةٌ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0305L01B01"
+    },
+    {
+     "ref": "S0307",
+     "seed": 307,
+     "kind": "seed",
+     "known": "I know that young man who's sitting over there",
+     "target": "أَعْرِفُ ذلِكَ الشّابَّ الَّذي يَجْلِسُ هُناكَ",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0309",
+     "seed": 309,
+     "kind": "seed",
+     "known": "no I've never seen her before",
+     "target": "لا لَمْ أَرَها مِنْ قَبْلُ أَبَداً",
+     "why": "played copy differs: ara_for_eng:S0309L01B03 \"no I've never seen her before now | لا لَمْ أَرَها مِنْ قَبْلُ أَبَداً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0309L01B03"
+    },
+    {
+     "ref": "S0310",
+     "seed": 310,
+     "kind": "seed",
+     "known": "she could write a story about that man",
+     "target": "تَسْتَطيعُ أَنْ تَكْتُبَ قِصَّةً عَنْ ذلِكَ الرَّجُلِ",
+     "why": "played copy differs: ara_for_eng:S0310L02U01 \"she could write a story about that man | يُمْكِنُها أَنْ تَكْتُبَ قِصَّةً عَنْ ذلِكَ الرَّجُلِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0310L02U01"
+    },
+    {
+     "ref": "S0314",
+     "seed": 314,
+     "kind": "seed",
+     "known": "I think that she could put it on the table",
+     "target": "أَظُنُّ أَنَّها تَسْتَطيعُ أَنْ تَضَعَهُ عَلى الطّاوِلَةِ",
+     "why": "played copy differs: ara_for_eng:S0314L02U01 \"I think that she could put it on the table | أَعْتَقِدُ أَنَّها تَسْتَطيعُ أَنْ تَضَعَهُ عَلى الطّاوِلَةِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0314L02U01"
+    },
+    {
+     "ref": "S0317",
+     "seed": 317,
+     "kind": "seed",
+     "known": "yes I think she could if she wanted to",
+     "target": "نَعَمْ أَظُنُّ أَنَّها تَسْتَطيعُ إِذا أَرادَتْ",
+     "why": "played copy differs: ara_for_eng:S0317L01U01 \"yes I think she could if she wanted to | نَعَمْ أَظُنُّ أَنَّها تَسْتَطيعُ لَوْ أَرادَتْ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0317L01U01"
+    },
+    {
+     "ref": "S0318",
+     "seed": 318,
+     "kind": "seed",
+     "known": "no I don't think she could this time",
+     "target": "لا لا أَظُنُّ أَنَّها تَسْتَطيعُ هذِهِ المَرَّةَ",
+     "why": "played copy differs: ara_for_eng:S0318L01U01 \"no I don't think she could this time | لا أَظُنُّ أَنَّها تَسْتَطيعُ هذِهِ المَرَّةَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0318L01U01"
+    },
+    {
+     "ref": "S0328",
+     "seed": 328,
+     "kind": "seed",
+     "known": "yes I think she ought to",
+     "target": "نَعَمْ أَظُنُّ أَنَّهُ يَنْبَغي لَها ذلِكَ",
+     "why": "played copy differs: ara_for_eng:S0328L02U01 \"yes I think she ought to | نَعَمْ أَظُنُّ أَنَّهُ يَنْبَغِي لَها أَنْ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0328L02U01"
+    },
+    {
+     "ref": "S0329",
+     "seed": 329,
+     "kind": "seed",
+     "known": "it's important",
+     "target": "هذا مُهِمٌّ",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0331",
+     "seed": 331,
+     "kind": "seed",
+     "known": "she can't provide all the answers",
+     "target": "لا تَسْتَطيعُ أَنْ تُقَدِّمَ كُلَّ الإِجاباتِ",
+     "why": "played copy differs: ara_for_eng:S0331L01U01 \"she can't provide all the answers | لا تَسْتَطيعُ أَنْ تُقَدِّمَ جَميعَ الإِجاباتِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0331L01U01"
+    },
+    {
+     "ref": "S0338",
+     "seed": 338,
+     "kind": "seed",
+     "known": "badly",
+     "target": "بِشَكْلٍ سَيِّئٍ",
+     "why": "played copy differs: ara_for_eng:S0338L01B01 \"in a bad way | بِشَكْلٍ سَيِّئٍ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0338L01B01"
+    },
+    {
+     "ref": "S0341",
+     "seed": 341,
+     "kind": "seed",
+     "known": "I met someone a few days ago",
+     "target": "قابَلْتُ شَخْصاً مُنْذُ بِضْعَةِ أَيّامٍ",
+     "why": "played copy differs: ara_for_eng:S0341L01B02 \"I met someone a few days ago | قابَلْتُ شَخْصاً مُنْذُ أَيّامٍ قَليلَةٍ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0341L01B02"
+    },
+    {
+     "ref": "S0343",
+     "seed": 343,
+     "kind": "seed",
+     "known": "who said that she's worried about the economy",
+     "target": "الَّذي قالَ إِنَّها قَلِقَةٌ بِشَأْنِ الاقْتِصادِ",
+     "why": "played copy differs: ara_for_eng:S0343L02U01 \"who said that she's worried about the economy? | مَنْ قالَ إِنَّها قَلِقَةٌ بِشَأْنِ الاقْتِصادِ؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0343L02U01"
+    },
+    {
+     "ref": "S0344",
+     "seed": 344,
+     "kind": "seed",
+     "known": "who said that he's happy to help you",
+     "target": "الَّذي قالَ إِنَّهُ سَعيدٌ بِمُساعَدَتِكَ",
+     "why": "played copy differs: ara_for_eng:S0344L01U01 \"who said that he's happy to help you? | مَنْ قالَ إِنَّهُ سَعيدٌ بِمُساعَدَتِكَ؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0344L01U01"
+    },
+    {
+     "ref": "S0345",
+     "seed": 345,
+     "kind": "seed",
+     "known": "who said that he's not ready to leave yet",
+     "target": "الَّذي قالَ إِنَّهُ لَيْسَ مُسْتَعِدّاً لِلْمُغادَرَةِ بَعْدُ",
+     "why": "played copy differs: ara_for_eng:S0345L02U01 \"who said that he's not ready to leave yet? | مَنْ قالَ إِنَّهُ لَيْسَ مُسْتَعِدّاً لِلمُغادَرَةِ بَعْدُ؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0345L02U01"
+    },
+    {
+     "ref": "S0346",
+     "seed": 346,
+     "kind": "seed",
+     "known": "I wanted her to know that I liked her book",
+     "target": "أَرَدْتُ أَنْ تَعْرِفَ أَنَّني أَحْبَبْتُ كِتابَها",
+     "why": "played copy differs: ara_for_eng:S0346L03U01 \"I wanted her to know that I liked her book | أَرَدْتُ مِنْها أَنْ تَعْرِفَ أَنَّني أَحْبَبْتُ كِتابَها\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0346L03U01"
+    },
+    {
+     "ref": "S0352",
+     "seed": 352,
+     "kind": "seed",
+     "known": "even if he wanted to he wouldn't be able to",
+     "target": "حَتّى لَوْ أَرادَ لَنْ يَسْتَطيعَ",
+     "why": "played copy differs: ara_for_eng:S0352L02U01 \"even if he wanted to he wouldn't be able to | حَتّى لَوْ أَرادَ لَما اسْتَطاعَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0352L02U01"
+    },
+    {
+     "ref": "S0355",
+     "seed": 355,
+     "kind": "seed",
+     "known": "did she need to talk to that woman you know?",
+     "target": "هَلِ احْتاجَتْ أَنْ تَتَكَلَّمَ مَعَ تِلْكَ المَرْأَةِ الَّتي تَعْرِفُها؟",
+     "why": "played copy differs: ara_for_eng:S0355L02U01 \"did she need to talk to that woman you know? | هَلِ اِحْتاجَتْ أَنْ تَتَحَدَّثَ إِلى تِلْكَ المَرْأَةِ الَّتي تَعْرِفُها؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0355L02U01"
+    },
+    {
+     "ref": "S0360",
+     "seed": 360,
+     "kind": "seed",
+     "known": "did your friend say anything else?",
+     "target": "هَلْ قالَ صَديقُكَ شَيْئاً آخَرَ؟",
+     "why": "played copy differs: ara_for_eng:S0360L02B01 \"did your friend say anything else? | هَلْ قالَ صَديقُكَ أَيَّ شَيْءٍ آخَرَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0360L02B01"
+    },
+    {
+     "ref": "S0364",
+     "seed": 364,
+     "kind": "seed",
+     "known": "I heard that he didn't like that place",
+     "target": "سَمِعْتُ أَنَّهُ لَمْ يُحِبَّ ذلِكَ المَكانَ",
+     "why": "played copy differs: ara_for_eng:S0364L03U01 \"I heard that he didn't like that place | سَمِعْتُ أَنَّهُ لَمْ يُعْجِبْهُ ذَلِكَ المَكانُ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0364L03U01"
+    },
+    {
+     "ref": "S0374",
+     "seed": 374,
+     "kind": "seed",
+     "known": "yes I thought it was very beautiful",
+     "target": "نَعَمْ، ظَنَنْتُ أَنَّهُ كانَ جَميلاً جِدّاً",
+     "why": "no new LEGO in this seed and sentence not played elsewhere",
+     "sub": "no-home"
+    },
+    {
+     "ref": "S0375",
+     "seed": 375,
+     "kind": "seed",
+     "known": "no I didn't know what she was doing",
+     "target": "لا، لَمْ أَعْرِفْ ما كانَتْ تَفْعَلُ",
+     "why": "played copy differs: ara_for_eng:S0375L02U01 \"no I didn't know what she was doing | لا لَمْ أَكُنْ أَعْرِفُ ما كانَتْ تَفْعَلُهُ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0375L02U01"
+    },
+    {
+     "ref": "S0390",
+     "seed": 390,
+     "kind": "seed",
+     "known": "the one who is standing near the entrance",
+     "target": "الَّذي يَقِفُ بِالقُرْبِ مِنَ المَدْخَلِ",
+     "why": "played copy differs: ara_for_eng:S0390L04B01 \"the one who is standing in the proximity of the entrance | الَّذي يَقِفُ بِالقُرْبِ مِنَ المَدْخَلِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0390L04B01"
+    },
+    {
+     "ref": "S0391",
+     "seed": 391,
+     "kind": "seed",
+     "known": "the one who is walking towards the bus",
+     "target": "الَّذي يَمْشي باتِّجاهِ الحافِلَةِ",
+     "why": "played copy differs: ara_for_eng:S0391L05B01 \"the one who is walking in the direction of the bus | الَّذي يَمْشي باتِّجاهِ الحافِلَةِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0391L05B01"
+    },
+    {
+     "ref": "S0392",
+     "seed": 392,
+     "kind": "seed",
+     "known": "that child with the black hair opposite the post office",
+     "target": "ذلِكَ الطِّفْلُ ذو الشَّعْرِ الأَسْوَدِ مُقابِلَ مَكْتَبِ البَريدِ",
+     "why": "played copy differs: ara_for_eng:S0392L06U04 \"that child with the black hair is opposite the post office | ذَلِكَ الطِّفْلُ ذو الشَّعْرِ الأَسْوَدِ مُقابِلَ مَكْتَبِ البَريدِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0392L06U04"
+    },
+    {
+     "ref": "S0395",
+     "seed": 395,
+     "kind": "seed",
+     "known": "we need to turn left at the next corner",
+     "target": "نَحْتاجُ أَنْ نَنْعَطِفَ يَساراً عِنْدَ الزّاوِيَةِ القادِمَةِ",
+     "why": "played copy differs: ara_for_eng:S0395L06U01 \"we need to turn left at the next corner | نَحْنُ بِحاجَةٍ إِلى أَنْ نَنْعَطِفَ يَساراً عِنْدَ الزّاوِيَةِ التّالِيَةِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0395L06U01"
+    },
+    {
+     "ref": "S0396",
+     "seed": 396,
+     "kind": "seed",
+     "known": "we don't need to stand until everybody else is ready",
+     "target": "لا نَحْتاجُ أَنْ نَقِفَ حَتّى يَكونَ الجَميعُ مُسْتَعِدّينَ",
+     "why": "played copy differs: ara_for_eng:S0396L05U01 \"we don't need to stand until everybody is ready | لا نَحْتاجُ أَنْ نَقِفَ حَتّى يَكونَ الجَميعُ مُسْتَعِدّينَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0396L05U01"
+    },
+    {
+     "ref": "S0404",
+     "seed": 404,
+     "kind": "seed",
+     "known": "we shouldn't expect to finish before Thursday",
+     "target": "لا يَجِبُ أَنْ نَتَوَقَّعَ أَنْ نَنْتَهِيَ قَبْلَ يَوْمِ الخَميسِ",
+     "why": "played copy differs: ara_for_eng:S0404L03U01 \"we shouldn't expect to finish before Thursday | لا يَجِبُ أَنْ نَتَوَقَّعَ أَنْ نَنْتَهِيَ قَبْلَ الخَميسِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0404L03U01"
+    },
+    {
+     "ref": "S0405",
+     "seed": 405,
+     "kind": "seed",
+     "known": "should we ask if we have to book?",
+     "target": "هَلْ يَجِبُ أَنْ نَسْأَلَ إِنْ كانَ عَلَيْنا الحَجْزُ؟",
+     "why": "played copy differs: ara_for_eng:S0405L03U01 \"should we ask if we have to book? | هَلْ يَجِبُ أَنْ نَسْأَلَ إِذا كانَ عَلَيْنا الحَجْزُ؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0405L03U01"
+    },
+    {
+     "ref": "S0407",
+     "seed": 407,
+     "kind": "seed",
+     "known": "shouldn't we try to set a good example?",
+     "target": "أَلا يَجِبُ أَنْ نُحاوِلَ أَنْ نَكونَ قُدْوَةً حَسَنَةً؟",
+     "why": "played copy differs: ara_for_eng:S0407L03U03 \"shouldn't we try to be a good example? | أَلا يَجِبُ أَنْ نُحاوِلَ أَنْ نَكونَ قُدْوَةً حَسَنَةً؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0407L03U03"
+    },
+    {
+     "ref": "S0415",
+     "seed": 415,
+     "kind": "seed",
+     "known": "that wouldn't be a problem if you ask me",
+     "target": "لَنْ يَكونَ ذلِكَ مُشْكِلَةً إِنْ سَأَلْتَني",
+     "why": "played copy differs: ara_for_eng:S0415L03U03 \"that wouldn't be a problem if you ask me | لَنْ يَكونَ ذَلِكَ مُشْكِلَةً إِذا سَأَلْتَني\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0415L03U03"
+    },
+    {
+     "ref": "S0417",
+     "seed": 417,
+     "kind": "seed",
+     "known": "do they want to kill those ants?",
+     "target": "هَلْ يُريدونَ قَتْلَ ذلِكَ النَّمْلِ؟",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0425",
+     "seed": 425,
+     "kind": "seed",
+     "known": "yes they need to make sure they understand",
+     "target": "نَعَمْ، يَحْتاجونَ أَنْ يَتَأَكَّدوا أَنَّهُمْ يَفْهَمونَ",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0449",
+     "seed": 449,
+     "kind": "seed",
+     "known": "they said that they were almost ready",
+     "target": "قالوا إِنَّهُمْ كانوا تَقْريباً مُسْتَعِدّينَ",
+     "why": "played copy differs: ara_for_eng:S0449L02U01 \"they said that they were almost ready | قالوا إِنَّهُمْ كانوا شِبْهَ مُسْتَعِدّينَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0449L02U01"
+    },
+    {
+     "ref": "S0453",
+     "seed": 453,
+     "kind": "seed",
+     "known": "did they say who they saw last night?",
+     "target": "هَلْ قالوا مَنْ رَأَوْا اللَّيْلَةَ الماضِيَةَ؟",
+     "why": "played copy differs: ara_for_eng:S0453L02U01 \"did they say who they saw last night? | هَلْ قالوا مَنْ رَأَوْا اللَّيْلَةَ الماضِيَةَ؟\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0453L02U01"
+    },
+    {
+     "ref": "S0460",
+     "seed": 460,
+     "kind": "seed",
+     "known": "I want to find a shop near the hotel",
+     "target": "أُريدُ أَنْ أَجِدَ مَتْجَراً قَريباً مِنَ الفُنْدُقِ",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0473",
+     "seed": 473,
+     "kind": "seed",
+     "known": "I don't want it",
+     "target": "لا أُريدُهُ",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0491",
+     "seed": 491,
+     "kind": "seed",
+     "known": "I love the way you try to help",
+     "target": "أُحِبُّ الطَّريقَةَ الَّتي تُحاوِلُ بِها المُساعَدَةَ",
+     "why": "played copy differs: ara_for_eng:S0491L02U01 \"I love the way you try to help with it | أُحِبُّ الطَّريقَةَ الَّتي تُحاوِلُ بِها المُساعَدَةَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0491L02U01"
+    },
+    {
+     "ref": "S0493",
+     "seed": 493,
+     "kind": "seed",
+     "known": "what's going to come next?",
+     "target": "ما الَّذي سَيَأْتي بَعْدَ ذلِكَ؟",
+     "why": "played copy differs: ara_for_eng:S0493L01U01 \"what's going to come next? | مَاذَا سَيَأْتِي بَعْدَ ذَلِكَ؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0493L01U01"
+    },
+    {
+     "ref": "S0494",
+     "seed": 494,
+     "kind": "seed",
+     "known": "what happens after the first part of the show?",
+     "target": "ما الَّذي يَحْدُثُ بَعْدَ الجُزْءِ الأَوَّلِ مِنَ العَرْضِ؟",
+     "why": "played copy differs: ara_for_eng:S0494L02U01 \"what happens after the first part of the show? | مَاذَا يَحْدُثُ بَعْدَ الجُزْءِ الأَوَّلِ مِنَ العَرْضِ؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0494L02U01"
+    },
+    {
+     "ref": "S0498",
+     "seed": 498,
+     "kind": "seed",
+     "known": "he's standing alone over there inside the entrance",
+     "target": "إِنَّهُ يَقِفُ وَحْدَهُ هُناكَ داخِلَ المَدْخَلِ",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0503",
+     "seed": 503,
+     "kind": "seed",
+     "known": "I hate making trouble but that one's mine",
+     "target": "أَكْرَهُ إِثارَةَ المَشاكِلِ لكِنَّ ذلِكَ لي",
+     "why": "played copy differs: ara_for_eng:S0503L02U02 \"I hate making trouble but that's mine | أَكْرَهُ إِثارَةَ المَشاكِلِ لكِنَّ ذلِكَ لي\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0503L02U02"
+    },
+    {
+     "ref": "S0507",
+     "seed": 507,
+     "kind": "seed",
+     "known": "we moved to the city",
+     "target": "انْتَقَلْنا إِلى المَدينَةِ",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0521",
+     "seed": 521,
+     "kind": "seed",
+     "known": "I'm afraid that you'll forget why we needed to stay here",
+     "target": "أَخْشى أَنْ تَنْسى لِماذا احْتَجْنا أَنْ نَبْقى هُنا",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0524",
+     "seed": 524,
+     "kind": "seed",
+     "known": "I'll call you back in three or four minutes",
+     "target": "سَأَتَّصِلُ بِكَ بَعْدَ ثَلاثِ أَوْ أَرْبَعِ دَقائِقَ",
+     "why": "played copy differs: ara_for_eng:S0524L02U01 \"I'll call you back in three or four minutes | سَأَتَّصِلُ بِكَ مُجَدَّداً في ثَلاثِ أَو أَرْبَعِ دَقائِقَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0524L02U01"
+    },
+    {
+     "ref": "S0527",
+     "seed": 527,
+     "kind": "seed",
+     "known": "guess who told me that funny story",
+     "target": "خَمِّنْ مَنْ أَخْبَرَني تِلْكَ القِصَّةَ المُضْحِكَةَ",
+     "why": "played copy differs: ara_for_eng:S0527L02B02 \"guess who told me that funny story | خَمِّنْ مَنْ أَخْبَرَني بِتِلْكَ القِصَّةِ المُضْحِكَةِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0527L02B02"
+    },
+    {
+     "ref": "S0528",
+     "seed": 528,
+     "kind": "seed",
+     "known": "I'm probably supposed to keep those things in another room",
+     "target": "مِنَ المُفْتَرَضِ أَنْ أَحْفَظَ تِلْكَ الأَشْياءَ في غُرْفَةٍ أُخْرى",
+     "why": "played copy differs: ara_for_eng:S0528L02U01 \"I'm supposed to keep those things in another room | مِنَ المُفْتَرَضِ أَنْ أَحْفَظَ تِلْكَ الأَشْياءَ في غُرْفَةٍ أُخْرى\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0528L02U01"
+    },
+    {
+     "ref": "S0531",
+     "seed": 531,
+     "kind": "seed",
+     "known": "it isn't true that anyone can win the game",
+     "target": "لَيْسَ صَحيحاً أَنَّ أَيَّ شَخْصٍ يَسْتَطيعُ الفَوْزَ بِاللُّعْبَةِ",
+     "why": "played copy differs: ara_for_eng:S0531L03U01 \"it isn't true that anyone can win the game | لَيْسَ صَحيحاً أَنَّ أَيَّ أَحَدٍ يَسْتَطيعُ الفَوْزَ بِاللُّعْبَةِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0531L03U01"
+    },
+    {
+     "ref": "S0534",
+     "seed": 534,
+     "kind": "seed",
+     "known": "let's not go outside in this dreadful weather",
+     "target": "فَلْنَبْقَ في الدّاخِلِ في هذا الطَّقْسِ الرَّهيبِ",
+     "why": "played copy differs: ara_for_eng:S0534L02U01 \"let's stay inside in this dreadful weather | فَلْنَبْقَ في الدّاخِلِ في هذا الطَّقْسِ الرَّهيبِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0534L02U01"
+    },
+    {
+     "ref": "S0536",
+     "seed": 536,
+     "kind": "seed",
+     "known": "I used to think that being crazy was bad",
+     "target": "كُنْتُ أَظُنُّ أَنَّ الجُنونَ شَيْءٌ سَيِّئٌ",
+     "why": "played copy differs: ara_for_eng:S0536L02U01 \"I used to think that being crazy was bad | اعْتَدْتُ أَنْ أَعْتَقِدَ أَنَّ الجُنونَ كانَ سَيِّئاً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0536L02U01"
+    },
+    {
+     "ref": "S0539",
+     "seed": 539,
+     "kind": "seed",
+     "known": "but it's getting late",
+     "target": "لكِنَّ الوَقْتَ يَتَأَخَّرُ",
+     "why": "played copy differs: ara_for_eng:S0539L01B01 \"but it's getting late | لكِنَّهُ يَتَأَخَّرُ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0539L01B01"
+    },
+    {
+     "ref": "S0540",
+     "seed": 540,
+     "kind": "seed",
+     "known": "I don't mind if you want to leave without the car",
+     "target": "لا أُمانِعُ إِذا أَرَدْتَ أَنْ تُغادِرَ بِدونِ السَّيّارَةِ",
+     "why": "played copy differs: ara_for_eng:S0540L03U01 \"I don't mind if you want to leave without the car | لا أُمانِعُ إِذا أَرَدْتَ المُغادَرَةَ بِدونِ السَّيّارَةِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0540L03U01"
+    },
+    {
+     "ref": "S0543",
+     "seed": 543,
+     "kind": "seed",
+     "known": "she was right",
+     "target": "كانَتْ عَلى حَقٍّ",
+     "why": "only under S0387L01, before S0543L01",
+     "sub": "early"
+    },
+    {
+     "ref": "S0545",
+     "seed": 545,
+     "kind": "seed",
+     "known": "it's your turn to take the clean clothes upstairs",
+     "target": "دَوْرُكَ أَنْ تَأْخُذَ المَلابِسَ النَّظيفَةَ إِلى الطّابِقِ العُلْوِيِّ",
+     "why": "played copy differs: ara_for_eng:S0545L03B02 \"it's your turn to take the clean clothes to the upstairs | دَوْرُكَ أَنْ تَأْخُذَ المَلابِسَ النَّظيفَةَ إِلى الطّابِقِ العُلْوِيِّ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0545L03B02"
+    },
+    {
+     "ref": "S0548",
+     "seed": 548,
+     "kind": "seed",
+     "known": "I am feeling sad at the moment",
+     "target": "أَشْعُرُ بِالحُزْنِ الآنَ",
+     "why": "played copy differs: ara_for_eng:S0548L02B02 \"I am feeling sad at the moment | أَشْعُرُ بِالحُزْنِ في الوَقْتِ الحالِيِّ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0548L02B02"
+    },
+    {
+     "ref": "S0556",
+     "seed": 556,
+     "kind": "seed",
+     "known": "they play music late at night",
+     "target": "يَعْزِفونَ الموسيقى في وَقْتٍ مُتَأَخِّرٍ مِنَ اللَّيْلِ",
+     "why": "played copy differs: ara_for_eng:S0556L02B02 \"they play music in a late hour of the night | يَعْزِفونَ المُوسيقى في وَقْتٍ مُتَأَخِّرٍ مِنَ اللَّيْلِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0556L02B02"
+    },
+    {
+     "ref": "S0559",
+     "seed": 559,
+     "kind": "seed",
+     "known": "have you found the path through the wood?",
+     "target": "هَلْ وَجَدْتَ الطَّريقَ عَبْرَ الغابَةِ؟",
+     "why": "played copy differs: ara_for_eng:S0559L02U03 \"have you found the path through the wood? | هَلْ وَجَدْتَ المَسارَ عَبْرَ الغابَةِ؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0559L02U03"
+    },
+    {
+     "ref": "S0561",
+     "seed": 561,
+     "kind": "seed",
+     "known": "I don't care if it's a fast car",
+     "target": "لا يَهُمُّني إِنْ كانَتْ سَيّارَةً سَريعَةً",
+     "why": "played copy differs: ara_for_eng:S0561L02B02 \"I don't care if it's a fast car | لا يَهُمُّني إِذا كانَ سَيّارَةً سَريعَةً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0561L02B02"
+    },
+    {
+     "ref": "S0562",
+     "seed": 562,
+     "kind": "seed",
+     "known": "I just want to get there safely",
+     "target": "أُريدُ فَقَطْ أَنْ أَصِلَ هُناكَ بِأَمانٍ",
+     "why": "played copy differs: ara_for_eng:S0562L02B02 \"I just want to get there safely | أُريدُ فَقَطْ أَنْ أَصِلَ إِلى هُناكَ بِأَمانٍ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0562L02B02"
+    },
+    {
+     "ref": "S0564",
+     "seed": 564,
+     "kind": "seed",
+     "known": "I wouldn't have been able to without your help",
+     "target": "لَمْ أَكُنْ لِأَسْتَطيعَ بِدونِ مُساعَدَتِكَ",
+     "why": "played copy differs: ara_for_eng:S0564L02B02 \"I wouldn't have been able to without your help | لَمْ أَكُنْ لِأَسْتَطيعَ ذلِكَ بِدونِ مُساعَدَتِكَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0564L02B02"
+    },
+    {
+     "ref": "S0565",
+     "seed": 565,
+     "kind": "seed",
+     "known": "I'd have thought about it more carefully",
+     "target": "كُنْتُ سَأُفَكِّرُ فيهِ بِعِنايَةٍ أَكْثَرَ",
+     "why": "played copy differs: ara_for_eng:S0565L02B02 \"I'd have thought about it more carefully | كُنْتُ سَأُفَكِّرُ في الأَمْرِ بِعِنايَةٍ أَكْثَرَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0565L02B02"
+    },
+    {
+     "ref": "S0571",
+     "seed": 571,
+     "kind": "seed",
+     "known": "I'm not convinced that would be a very good idea",
+     "target": "لَسْتُ مُقْتَنِعاً أَنَّ ذلِكَ سَيَكونُ فِكْرَةً جَيِّدَةً جِدّاً",
+     "why": "played copy differs: ara_for_eng:S0571L02B02 \"I'm not convinced that would be a very good idea | لَسْتُ مُقْتَنِعاً بِأَنَّ ذلِكَ سَيَكونُ فِكْرَةً جَيِّدَةً جِدّاً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0571L02B02"
+    },
+    {
+     "ref": "S0572",
+     "seed": 572,
+     "kind": "seed",
+     "known": "have you forgotten what happened the last time they visited us?",
+     "target": "هَلْ نَسيتَ ما حَدَثَ آخِرَ مَرَّةٍ زارونا فيها؟",
+     "why": "played copy differs: ara_for_eng:S0572L03B02 \"have you forgotten what happened the last time they visited us? | هَلْ نَسيتَ ما حَدَثَ في المَرَّةِ الأَخيرَةِ الَّتي زارونا فيها؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0572L03B02"
+    },
+    {
+     "ref": "S0573",
+     "seed": 573,
+     "kind": "seed",
+     "known": "it's the kind of thing that makes the holidays very special",
+     "target": "إِنَّهُ مِنَ الأَشْياءِ الَّتي تَجْعَلُ العُطُلاتِ مُمَيَّزَةً جِدّاً",
+     "why": "played copy differs: ara_for_eng:S0573L02B02 \"it's of the things that makes the holidays very special | إِنَّهُ مِنَ الأَشْياءِ الَّتي تَجْعَلُ العُطُلاتِ مُمَيَّزَةً جِدّاً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0573L02B02"
+    },
+    {
+     "ref": "S0575",
+     "seed": 575,
+     "kind": "seed",
+     "known": "it's been upsetting",
+     "target": "كانَ ذلِكَ مُزْعِجاً",
+     "why": "played copy differs: ara_for_eng:S0575L02B01 \"it's been upsetting | لَقَدْ كانَ مُزْعِجاً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0575L02B01"
+    },
+    {
+     "ref": "S0577",
+     "seed": 577,
+     "kind": "seed",
+     "known": "we've been waiting for the news from the hospital",
+     "target": "كُنّا نَنْتَظِرُ الأَخْبارَ مِنَ المُسْتَشْفى",
+     "why": "played copy differs: ara_for_eng:S0577L03U02 \"we've been waiting for the news reports from the hospital | كُنّا نَنْتَظِرُ الأَخْبارَ مِنَ المُسْتَشْفى\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0577L03U02"
+    },
+    {
+     "ref": "S0580",
+     "seed": 580,
+     "kind": "seed",
+     "known": "we've often wanted to take the children somewhere a little warmer",
+     "target": "كَثيراً ما أَرَدْنا أَنْ نَأْخُذَ الأَطْفالَ إِلى مَكانٍ أَدْفَأَ قَليلاً",
+     "why": "played copy differs: ara_for_eng:S0580L01U07 \"we often wanted to take the children somewhere a little warmer | كَثيراً ما أَرَدْنا أَنْ نَأْخُذَ الأَطْفالَ إِلى مَكانٍ أَدْفَأَ قَليلاً\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0580L01U07"
+    },
+    {
+     "ref": "S0583",
+     "seed": 583,
+     "kind": "seed",
+     "known": "what's it like in this part of the world?",
+     "target": "كَيْفَ يَبْدو الأَمْرُ في هذا الجُزْءِ مِنَ العالَمِ؟",
+     "why": "played copy differs: ara_for_eng:S0583L01U03 \"what's it like in this part of the world? | كَيْفَ يَبْدو الأَمْرُ في هٰذا الجُزْءِ مِنَ العالَمِ؟\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0583L01U03"
+    },
+    {
+     "ref": "S0594",
+     "seed": 594,
+     "kind": "seed",
+     "known": "I had to share my toys with my sister",
+     "target": "كانَ عَلَيَّ أَنْ أُشارِكَ أَلْعابي مَعَ أُخْتي",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0595",
+     "seed": 595,
+     "kind": "seed",
+     "known": "I need to lie down in the garden",
+     "target": "أَحْتاجُ أَنْ أَسْتَلْقِيَ في الحَديقَةِ",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0597",
+     "seed": 597,
+     "kind": "seed",
+     "known": "I suspect that he's heard a hundred stories about it",
+     "target": "أَظُنُّ أَنَّهُ سَمِعَ مِئَةَ قِصَّةٍ عَنْ ذلِكَ",
+     "why": "played copy differs: ara_for_eng:S0597L03U06 \"I suspect he heard a hundred tales about it | أَظُنُّ أَنَّهُ سَمِعَ مِئَةَ قِصَّةٍ عَنْ ذلِكَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0597L03U06"
+    },
+    {
+     "ref": "S0603",
+     "seed": 603,
+     "kind": "seed",
+     "known": "we didn't have anywhere to live at the time",
+     "target": "لَمْ يَكُنْ لَدَيْنا مَكانٌ لِنَعيشَ فيهِ في ذلِكَ الوَقْتِ",
+     "why": "played copy differs: ara_for_eng:S0603L02U05 \"we didn't have anywhere to live in at the time | لَمْ يَكُنْ لَدَيْنا مَكانٌ لِنَعيشَ فيهِ في ذلِكَ الوَقْتِ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0603L02U05"
+    },
+    {
+     "ref": "S0609",
+     "seed": 609,
+     "kind": "seed",
+     "known": "the sensible thing to do would have been to ask",
+     "target": "الشَّيْءُ العَقْلانِيُّ كانَ أَنْ نَسْأَلَ",
+     "why": "played copy differs: ara_for_eng:S0609L01B02 \"the sensible thing would have been to ask | الشَّيْءُ العَقْلانِيُّ كانَ أَنْ نَسْأَلَ\"",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0609L01B02"
+    },
+    {
+     "ref": "S0627",
+     "seed": 627,
+     "kind": "seed",
+     "known": "your coffee is ready",
+     "target": "قَهْوَتُكَ جاهِزَةٌ",
+     "why": "played copy differs: ara_for_eng:S0627L02U01 \"your coffee is ready | قَهْوَتُكَ جاهِزَةٌ\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0627L02U01"
+    },
+    {
+     "ref": "S0642",
+     "seed": 642,
+     "kind": "seed",
+     "known": "how do you feel madam?",
+     "target": "كَيْفَ تَشْعُرينَ سَيِّدَتي؟",
+     "why": "played copy differs: ara_for_eng:S0642L02U01 \"how do you feel madam? | كَيْفَ تَشْعُرينَ سَيِّدَتي؟\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0642L02U01"
+    },
+    {
+     "ref": "S0659",
+     "seed": 659,
+     "kind": "seed",
+     "known": "could you all say that?",
+     "target": "هَلْ يُمْكِنُكُمْ أَنْ تَقولوا ذلِكَ؟",
+     "why": "played copy differs: ara_for_eng:S0659L02U01 \"could you all say that? | هَلْ يُمْكِنُكُمْ أَنْ تَقولوا ذلِكَ؟\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "ara_for_eng:S0659L02U01"
+    }
+   ]
+  }
+ ]
+}
