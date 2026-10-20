@@ -1,0 +1,353 @@
+row	scene	sentence	speaker	known_text	variant_of_row	courses
+R001	1	1	Neighbour (8 am)	Good morning, Sarah!		22 courses (modal)
+R001v	1	1	Neighbour (8 am)	Good morning!	R001	hrv_for_eng
+R002	1	2	Sarah	Good morning. How are you?		23 courses (modal)
+R003	1	3	Neighbour	I'm very well, thank you. Are you going to work?		23 courses (modal)
+R004	1	4	Sarah	Yes, I've got a busy day today. I hope you have a good day. See you later.		23 courses (modal)
+R005	2	1	Sarah	Excuse me, is this seat taken?		23 courses (modal)
+R006	2	2	Passenger	No, it's free. Please, go ahead.		23 courses (modal)
+R007	2	3	Sarah	How far is it into town?		23 courses (modal)
+R008	2	4	Sarah	Can you tell me how far it is into town?		23 courses (modal)
+R009	2	5	Passenger	It's not very far. Maybe three or four miles.		22 courses (modal)
+R009v	2	5	Passenger	It's not very far. Maybe five or six kilometres.	R009	ita_for_eng
+R010	3	1	Barista (3 pm)	Good afternoon. What can I get you?		23 courses (modal)
+R011	3	2	Sarah	Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.		23 courses (modal)
+R012	3	3	Sarah	Do you have any food?		23 courses (modal)
+R013	3	4	Sarah	Do you have any snacks?		23 courses (modal)
+R014	3	5	Sarah	Do you have crisps, or nuts, or anything?		22 courses (modal)
+R014v	3	5	Sarah	Do you have crisps, or nuts, or something like that?	R014	ita_for_eng
+R015	3	6	Barista	No, we've only got drinks.		23 courses (modal)
+R016	3	7	Barista	Yes, would you like the menu?		23 courses (modal)
+R017	3	8	Sarah	Yes, please.		23 courses (modal)
+R018	3	9	Barista	Here's your coffee.		23 courses (modal)
+R019	3	10	Sarah	Thank you very much. Goodbye.		23 courses (modal)
+R020	4	1	Friend (7 pm)	Hello, good evening!		23 courses (modal)
+R021	4	2	Sarah	Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?		22 courses (modal)
+R021v	4	2	Sarah	Hello, Sarah! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?	R021	hrv_for_eng
+R022	4	3	Friend	No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.		23 courses (modal)
+R023	5	1	Neighbour (10:30 pm)	Good evening, Sarah. Did you have a long day?		22 courses (modal)
+R023v	5	1	Neighbour (10:30 pm)	Good evening. Did you have a long day?	R023	hrv_for_eng
+R024	5	2	Sarah	Yes, very. I'm very tired now. Good night. See you tomorrow.		23 courses (modal)
+R025	6	1	James	Excuse me. Hello. What's your name?		23 courses (modal)
+R026	6	2	Anna	My name is Anna. And you?		23 courses (modal)
+R027	6	3	James	I'm James. Pleased to meet you.		23 courses (modal)
+R028	6	4	Anna	Pleased to meet you too. Where are you from?		23 courses (modal)
+R029	6	5	James	I'm from Manchester, but I live in London now. And you?		23 courses (modal)
+R030	6	6	Anna	I'm from France. I've been here for two years.		23 courses (modal)
+R031	6	7	James	This is a lovely city. What do you do?		23 courses (modal)
+R032	6	8	Anna	I'm a nurse, at the hospital just round the corner. And you?		23 courses (modal)
+R033	6	9	James	I'm sorry, I didn't understand you. I'm learning Welsh. Could you say that again more slowly?		2 courses (modal)
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Egyptian Arabic. Could you say that again more slowly?	R033	ara_eg_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Arabic. Could you say that again more slowly?	R033	ara_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning German. Could you say that again more slowly?	R033	deu_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Basque. Could you say that again more slowly?	R033	eus_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Canadian French. Could you say that again more slowly?	R033	fra_ca_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning French. Could you say that again more slowly?	R033	fra_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Irish. Could you say that again more slowly?	R033	gle_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Hindi. Could you say that again more slowly?	R033	hin_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Croatian. Could you say that again more slowly?	R033	hrv_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Icelandic. Could you say that again more slowly?	R033	isl_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Italian. Could you say that again more slowly?	R033	ita_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Japanese. Could you say that again more slowly?	R033	jpn_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Korean. Could you say that again more slowly?	R033	kor_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Dutch. Could you say that again more slowly?	R033	nld_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Brazilian Portuguese. Could you say that again more slowly?	R033	por_br_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Portuguese. Could you say that again more slowly?	R033	por_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Romanian. Could you say that again more slowly?	R033	ron_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Spanish. Could you say that again more slowly?	R033	spa_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Mexican Spanish. Could you say that again more slowly?	R033	spa_mx_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Swedish. Could you say that again more slowly?	R033	swe_for_eng
+R033v	6	9	James	I'm sorry, I didn't understand you. I'm learning Chinese. Could you say that again more slowly?	R033	zho_for_eng
+R034	6	10	Anna	Yes, of course. I'm a nurse. I work at the hospital. It's near here. And what do you do?		23 courses (modal)
+R035	6	11	James	I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time.		23 courses (modal)
+R036	6	12	Anna	How interesting. Well, lovely to meet you.		23 courses (modal)
+R037	6	13	Narrator	1. 2. 3. White. Black.		23 courses (modal)
+R038	7	1	Cafe Barista	Good morning. What can I get you?		23 courses (modal)
+R039	7	2	Cafe Customer 1	I'd like a black coffee, please.		23 courses (modal)
+R040	7	3	Cafe Barista	Do you want regular or large?		23 courses (modal)
+R041	7	4	Cafe Customer 1	I'd like large, please. With oat milk if you have it.		23 courses (modal)
+R042	7	5	Cafe Barista	Of course. Would you like to sit-in or takeaway?		23 courses (modal)
+R043	7	6	Cafe Customer 1	I'd like takeaway, please.		23 courses (modal)
+R044	7	7	Cafe Customer 2	Could I have two white coffees and two black coffees and one of those, please?		23 courses (modal)
+R045	7	8	Cafe Barista	Right away. Would you like anything else?		23 courses (modal)
+R046	7	9	Cafe Customer 2	Yes, can I have a glass of water as well, please.		23 courses (modal)
+R047	7	10	Cafe Barista	That's eight pound forty altogether.		22 courses (modal)
+R047v	7	10	Cafe Barista	That's eight euros forty altogether.	R047	ita_for_eng
+R048	7	11	Cafe Customer 2	Could I pay by card? Do you have contactless?		23 courses (modal)
+R049	7	12	Cafe Barista	Of course. There's the machine.		23 courses (modal)
+R050	7	13	Cafe Customer 3	Good morning. Two Americanos and a cup of tea, please.		23 courses (modal)
+R051	7	14	Cafe Barista	Would you like to sit-in? The table by the window is free.		23 courses (modal)
+R052	7	15	Narrator	5. 10. 15. Red. Green.		23 courses (modal)
+R053	8	1	Bartender	Good evening. What can I get you?		23 courses (modal)
+R054	8	2	Bar Customer 1	I'd like a pint, please. What ales do you have on?		22 courses (modal)
+R054v	8	2	Bar Customer 1	I'd like a medium beer, please. What beers do you have on tap?	R054	ita_for_eng
+R055	8	3	Bartender	We've got a bitter and a stout, and they're both local.		22 courses (modal)
+R055v	8	3	Bartender	We've got a light one and a dark one, and they're both local.	R055	ita_for_eng
+R056	8	4	Bar Customer 1	I'd like a pint of the bitter, please.		22 courses (modal)
+R056v	8	4	Bar Customer 1	I'd like a medium of the light one, please.	R056	ita_for_eng
+R057	8	5	Bar Customer 2	Can I have a half of cider?		22 courses (modal)
+R057v	8	5	Bar Customer 2	Can I have a small beer?	R057	ita_for_eng
+R058	8	6	Bar Customer 3	Could I see the wine list? I want a glass of wine.		23 courses (modal)
+R059	8	7	Bartender	We have a house red, a house white, or you could have one of our bottles.		23 courses (modal)
+R060	8	8	Bar Customer 3	I'd like a large glass of white wine, please.		23 courses (modal)
+R061	8	9	Bar Customer 1	Can I have a small glass of red wine?		23 courses (modal)
+R062	8	10	Bar Customer 2	I'd like two more glasses of beer.		23 courses (modal)
+R063	8	11	Bartender	Are you eating tonight?		23 courses (modal)
+R064	8	12	Bar Customer 1	I'm not sure if I'm hungry. Do you have a menu?		23 courses (modal)
+R065	8	13	Bartender	Yes, of course. Here it is. The fish and chips are very good.		22 courses (modal)
+R065v	8	13	Bartender	Yes, of course. Here it is. The fried fish is very good.	R065	ita_for_eng
+R066	8	14	Bar Customer 1	Can we have some bread? And a bowl of chips for the table.		23 courses (modal)
+R067	8	15	Bar Customer 2	Do you have any sandwiches? I'd like a cheese sandwich, please.		23 courses (modal)
+R068	8	16	Narrator	4. 6. 8. Blue. Yellow.		23 courses (modal)
+R069	9	1	Diner 1	Good evening. We have a booking for two, under the name Davies.		23 courses (modal)
+R070	9	2	Waiter	Welcome. Please follow me. Here are the menus.		23 courses (modal)
+R071	9	3	Waiter	Would you like still or sparkling water to start?		23 courses (modal)
+R072	9	4	Diner 2	We'd like one bottle of sparkling water and one bottle of still water, please.		23 courses (modal)
+R073	9	5	Diner 1	Excuse me - do you have anything gluten-free? Or for vegetarians?		23 courses (modal)
+R074	9	6	Waiter	Yes, the salmon and the risotto are both gluten-free. We also have some salads.		23 courses (modal)
+R075	9	7	Diner 1	And what would you recommend tonight?		23 courses (modal)
+R076	9	8	Waiter	The lamb is excellent. It's been slow-cooked, with rosemary.		23 courses (modal)
+R077	9	9	Diner 1	I'll have the lamb, please. With a side of greens.		23 courses (modal)
+R078	9	10	Diner 2	And the risotto for me. With a small green salad to start.		23 courses (modal)
+R079	9	11	Waiter	Of course. And what would you like to drink?		23 courses (modal)
+R080	9	12	Diner 1	Could we see the wine list?		23 courses (modal)
+R081	9	13	Diner 2	A bottle of the house red would be lovely.		23 courses (modal)
+R082	9	14	Waiter	Excellent choice. I'll bring it right over.		23 courses (modal)
+R083	9	15	Waiter	Is everything alright? Do you have any room for dessert?		23 courses (modal)
+R084	9	16	Diner 1	Just two coffees, please. Decaf for me.		23 courses (modal)
+R085	9	17	Diner 2	And the bill, when you're ready. Could we split it?		23 courses (modal)
+R086	9	18	Narrator	7. 9. 11. Orange. Purple.		23 courses (modal)
+R087	10	1	Customer	Excuse me. Do you have any painkillers?		23 courses (modal)
+R088	10	2	Assistant	Yes, they're down that aisle, on the left.		23 courses (modal)
+R089	10	3	Customer	Thank you. And do you have any painkillers for children?		23 courses (modal)
+R090	10	4	Assistant	I think so, but you'll have to look to make sure.		23 courses (modal)
+R091	10	5	Customer	I also need to get some sunscreen and some toothpaste.		23 courses (modal)
+R092	10	6	Assistant	Sunscreen is down there on your right, and you'll find toothpaste just round the corner.		23 courses (modal)
+R093	10	7	Customer	Thank you, you've been very helpful. I'm very grateful.		23 courses (modal)
+R094	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Welsh.		2 courses (modal)
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Egyptian Arabic.	R094	ara_eg_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Arabic.	R094	ara_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good German.	R094	deu_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Basque.	R094	eus_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Canadian French.	R094	fra_ca_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good French.	R094	fra_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Irish.	R094	gle_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Hindi.	R094	hin_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Croatian.	R094	hrv_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Icelandic.	R094	isl_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Italian.	R094	ita_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Japanese.	R094	jpn_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Korean.	R094	kor_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Dutch.	R094	nld_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Brazilian Portuguese.	R094	por_br_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Portuguese.	R094	por_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Romanian.	R094	ron_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Spanish.	R094	spa_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Mexican Spanish.	R094	spa_mx_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Swedish.	R094	swe_for_eng
+R094v	10	8	Assistant	You're welcome. Are you here on holiday? You speak very good Chinese.	R094	zho_for_eng
+R095	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Welsh better. Thank you very much, and goodbye.		2 courses (modal)
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Egyptian Arabic better. Thank you very much, and goodbye.	R095	ara_eg_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Arabic better. Thank you very much, and goodbye.	R095	ara_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak German better. Thank you very much, and goodbye.	R095	deu_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Basque better. Thank you very much, and goodbye.	R095	eus_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Canadian French better. Thank you very much, and goodbye.	R095	fra_ca_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak French better. Thank you very much, and goodbye.	R095	fra_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Irish better. Thank you very much, and goodbye.	R095	gle_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Hindi better. Thank you very much, and goodbye.	R095	hin_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Croatian better. Thank you very much, and goodbye.	R095	hrv_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Icelandic better. Thank you very much, and goodbye.	R095	isl_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Italian better. Thank you very much, and goodbye.	R095	ita_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Japanese better. Thank you very much, and goodbye.	R095	jpn_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Korean better. Thank you very much, and goodbye.	R095	kor_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Dutch better. Thank you very much, and goodbye.	R095	nld_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Brazilian Portuguese better. Thank you very much, and goodbye.	R095	por_br_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Portuguese better. Thank you very much, and goodbye.	R095	por_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Romanian better. Thank you very much, and goodbye.	R095	ron_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Spanish better. Thank you very much, and goodbye.	R095	spa_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Mexican Spanish better. Thank you very much, and goodbye.	R095	spa_mx_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Swedish better. Thank you very much, and goodbye.	R095	swe_for_eng
+R095v	10	9	Customer	That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak Chinese better. Thank you very much, and goodbye.	R095	zho_for_eng
+R096	10	10	Narrator	12. 13. 14. Pink. Grey.		23 courses (modal)
+R097	11	1	Guest	Good afternoon. I have a booking under the name Jones.		23 courses (modal)
+R098	11	2	Receptionist	Welcome. Yes, you have a double room for three nights. Could I see some ID, please?		23 courses (modal)
+R099	11	3	Guest	Of course. Here's my passport.		23 courses (modal)
+R100	11	4	Receptionist	Lovely. The room is on the third floor, room 709.		22 courses (modal)
+R100v	11	4	Receptionist	Lovely. The room is on the third floor, room 309.	R100	ita_for_eng
+R101	11	5	Guest	Does the room have a view?		23 courses (modal)
+R102	11	6	Receptionist	Yes, it overlooks the garden.		23 courses (modal)
+R103	11	7	Guest	What time is breakfast served?		23 courses (modal)
+R104	11	8	Receptionist	From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast.		23 courses (modal)
+R105	11	9	Guest	Wonderful. Is it possible for us to have a late check-out?		23 courses (modal)
+R106	11	10	Receptionist	Yes, you can stay until midday, no extra charge.		23 courses (modal)
+R107	11	11	Guest	And what is the wifi password?		23 courses (modal)
+R108	11	12	Receptionist	It's on the welcome card in your room. Have a lovely stay.		23 courses (modal)
+R109	11	13	Narrator	16. 17. 18. Monday. Tuesday.		23 courses (modal)
+R110	12	1	Customer	Good morning. I'm not feeling great - could you recommend something?		23 courses (modal)
+R111	12	2	Pharmacist	Of course. What are your symptoms?		23 courses (modal)
+R112	12	3	Customer	I've had a headache and a sore throat since yesterday.		23 courses (modal)
+R113	12	4	Pharmacist	Try paracetamol for the headache, and these lozenges for the throat.		23 courses (modal)
+R114	12	5	Customer	How often should I take the paracetamol?		23 courses (modal)
+R115	12	6	Pharmacist	One every four to six hours, no more than eight in a day.		23 courses (modal)
+R116	12	7	Customer	Are they all right to take with food?		23 courses (modal)
+R117	12	8	Pharmacist	Yes, with or after food is best.		23 courses (modal)
+R118	12	9	Customer	Thank you. Could I also get a packet of plasters?		23 courses (modal)
+R119	12	10	Narrator	19. 20. 21. Wednesday. Thursday.		23 courses (modal)
+R120	13	1	Tourist	Excuse me, do you know how to get to the nearest supermarket?		23 courses (modal)
+R121	13	2	Local	Yes, it's about a ten minute walk. Go straight along this road.		23 courses (modal)
+R122	13	3	Tourist	Past that church?		23 courses (modal)
+R123	13	4	Local	Yes, past the church and the post office.		23 courses (modal)
+R124	13	5	Local	At the second roundabout, take the first exit.		23 courses (modal)
+R125	13	6	Tourist	And then?		23 courses (modal)
+R126	13	7	Local	You'll see the supermarket on your left, just opposite the bus stop.		23 courses (modal)
+R127	13	8	Tourist	Wonderful. And is there a cashpoint nearby?		23 courses (modal)
+R128	13	9	Local	Yes, there's one on the high street, next to the bakery.		23 courses (modal)
+R129	13	10	Tourist	Thank you very much. You've been very helpful.		23 courses (modal)
+R130	13	11	Narrator	30. 40. 50. Friday. Saturday.		23 courses (modal)
+R131	14	1	Passenger	Hello. Can you take me to the train station, please?		23 courses (modal)
+R132	14	2	Driver	Yes, of course. It may take some time, there's a lot of traffic at the moment.		23 courses (modal)
+R133	14	3	Passenger	About how long do you think it will take?		23 courses (modal)
+R134	14	4	Driver	Perhaps about twenty minutes, if we're not unlucky with the traffic lights.		23 courses (modal)
+R135	14	5	Passenger	Do you know where I can get a ticket in the station?		23 courses (modal)
+R136	14	6	Driver	Yes, I'll drop you right by the ticket office.		23 courses (modal)
+R137	14	7	Driver	Here we are. That's twelve pound fifty.		22 courses (modal)
+R137v	14	7	Driver	Here we are. That's twelve euros fifty.	R137	ita_for_eng
+R138	14	8	Passenger	Could I pay by card?		23 courses (modal)
+R139	14	9	Driver	Yes, of course. The machine is just here.		23 courses (modal)
+R140	14	10	Narrator	100. 200. 1000. Sunday. 12 o'clock.		23 courses (modal)
+R141	15	1	Learner	How much is that?		23 courses (modal)
+R142	15	2	Learner	Can you tell me how much that is?		23 courses (modal)
+R143	15	3	Learner	How much does it cost to get a taxi into town?		23 courses (modal)
+R144	15	4	Learner	How much does it cost to get a bus into town?		23 courses (modal)
+R145	15	5	Learner	Where can we get a bus?		23 courses (modal)
+R146	15	6	Learner	Where can we get a taxi?		23 courses (modal)
+R147	15	7	Learner	Four single tickets to town, please.		23 courses (modal)
+R148	15	8	Learner	Two return tickets to town, please.		23 courses (modal)
+R149	15	9	Learner	I prefer to try to speak your language, I think it's polite.		23 courses (modal)
+R150	15	10	Learner	I'm sorry I can't speak very quickly.		23 courses (modal)
+R151	15	11	Narrator	100,000. 60. 70. 1 o'clock. 11 o'clock.		23 courses (modal)
+R152	16	1	Learner	But if you can speak slowly I think we'll be able to manage.		23 courses (modal)
+R153	16	2	Learner	You spoke a little too quickly, so I'm not sure if I understood.		23 courses (modal)
+R154	16	3	Learner	Can we try again?		23 courses (modal)
+R155	16	4	Learner	Can we see the menu?		23 courses (modal)
+R156	16	5	Learner	Can we see the dessert menu also?		23 courses (modal)
+R157	16	6	Learner	Do you have anything to eat?		23 courses (modal)
+R158	16	7	Learner	Can we pay?		23 courses (modal)
+R159	16	8	Learner	Can we pay by card?		23 courses (modal)
+R160	16	9	Staff	No, we only take cash.		23 courses (modal)
+R161	16	10	Learner	I'm sorry, I don't have any cash.		23 courses (modal)
+R162	16	11	Narrator	A million. 80. 90. 2 o'clock. 10 o'clock.		23 courses (modal)
+R163	17	1	Learner	Is there a cash machine near here?		23 courses (modal)
+R164	17	2	Staff	Do you want to pay by cash or card or put it on the room?		23 courses (modal)
+R165	17	3	Learner	Can we put it on the room, please?		23 courses (modal)
+R166	17	4	Staff	Would you like to pay by cash or card or on the room?		23 courses (modal)
+R167	17	5	Staff	Did you want to pay by cash or card?		23 courses (modal)
+R168	17	6	Learner	We'll pay by card again, please.		23 courses (modal)
+R169	17	7	Learner	It's hot today, again.		23 courses (modal)
+R170	17	8	Learner	Is the water warm?		23 courses (modal)
+R171	17	9	Interlocutor	No, it's a little cold today.		23 courses (modal)
+R172	17	10	Learner	It's not bad.		23 courses (modal)
+R173	17	11	Narrator	3 o'clock. 9 o'clock. January. February.		23 courses (modal)
+R174	18	1	Learner	That's a bad idea.		23 courses (modal)
+R175	18	2	Learner	Do you have any orange juice?		23 courses (modal)
+R176	18	3	Learner	Do you have any apple juice?		23 courses (modal)
+R177	18	4	Learner	Does the boat leave from here?		23 courses (modal)
+R178	18	5	Learner	Does the bus leave from here?		23 courses (modal)
+R179	18	6	Learner	Where does the bus leave from?		23 courses (modal)
+R180	18	7	Learner	Is that correct? Am I correct?		23 courses (modal)
+R181	18	8	Learner	Am I wrong about that?		23 courses (modal)
+R182	18	9	Learner	I'm sorry, my son lost his ticket.		23 courses (modal)
+R183	18	10	Learner	We have paid, but my daughter has lost her ticket.		23 courses (modal)
+R184	18	11	Narrator	4 o'clock. 8 o'clock. March. April.		23 courses (modal)
+R185	19	1	Learner	That makes me happy.		23 courses (modal)
+R186	19	2	Learner	That makes me feel a little worried.		23 courses (modal)
+R187	19	3	Learner	When you talk quickly, it makes me feel stupid.		22 courses (modal)
+R187v	19	3	Learner	When you talk quickly, I feel as though I don't understand anything.	R187	ita_for_eng
+R188	19	4	Learner	Is it okay if I sit here?		23 courses (modal)
+R189	19	5	Learner	Is it okay if we put this here?		23 courses (modal)
+R190	19	6	Learner	I don't want to be late.		23 courses (modal)
+R191	19	7	Learner	Are we going to be late?		23 courses (modal)
+R192	19	8	Learner	I promise I won't be late.		23 courses (modal)
+R193	19	9	Learner	I promise we won't be late.		23 courses (modal)
+R194	19	10	Learner	I'd like two scoops of ice-cream, please.		23 courses (modal)
+R195	19	11	Narrator	5 o'clock. 7 o'clock. May. June.		23 courses (modal)
+R196	20	1	Learner	Can I have one scoop of chocolate and one of strawberry?		23 courses (modal)
+R197	20	2	Learner	And then another cone with one scoop of lemon and one of blueberry.		23 courses (modal)
+R198	20	3	Learner	Do you have any ice-cream?		23 courses (modal)
+R199	20	4	Learner	Thank you for all your work.		23 courses (modal)
+R200	20	5	Learner	I wish you good luck with everything.		23 courses (modal)
+R201	20	6	Learner	Thank you for helping me.		23 courses (modal)
+R202	20	7	Learner	Good luck with that!		23 courses (modal)
+R203	20	8	Learner	That's very kind of you.		23 courses (modal)
+R204	20	9	Learner	You're very kind.		23 courses (modal)
+R205	20	10	Learner	Thank you for being so friendly.		23 courses (modal)
+R206	20	11	Narrator	6 o'clock. July. August. September.		23 courses (modal)
+R207	21	1	Learner	It sounds as though we need to leave soon.		23 courses (modal)
+R208	21	2	Learner	It sounds as though you want us not to do that.		23 courses (modal)
+R209	21	3	Learner	Is there a toilet here?		23 courses (modal)
+R210	21	4	Learner	Can you tell me where the toilet is?		23 courses (modal)
+R211	21	5	Interlocutor	It's down there on the left.		23 courses (modal)
+R212	21	6	Interlocutor	It's down there on the right.		23 courses (modal)
+R213	21	7	Learner	Can you say that again?		23 courses (modal)
+R214	21	8	Interlocutor	Yes, I said it's over there.		23 courses (modal)
+R215	21	9	Learner	What is that?		23 courses (modal)
+R216	21	10	Learner	What is that over there?		23 courses (modal)
+R217	21	11	Interlocutor	Would you like to order some drinks?		23 courses (modal)
+R218	21	12	Interlocutor	Do you want to order some drinks first?		23 courses (modal)
+R219	21	13	Interlocutor	Did you want something to drink first?		23 courses (modal)
+R220	21	14	Narrator	October. November. December.		23 courses (modal)
+R221	22	1	Learner	Would you mind if I tried to practise speaking Welsh with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.		2 courses (modal)
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Egyptian Arabic with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	ara_eg_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Arabic with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	ara_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking German with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	deu_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Basque with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	eus_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Canadian French with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	fra_ca_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking French with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	fra_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Irish with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	gle_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Hindi with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	hin_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Croatian with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	hrv_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Icelandic with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	isl_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Italian with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	ita_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Japanese with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	jpn_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Korean with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	kor_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Dutch with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	nld_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Brazilian Portuguese with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	por_br_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Portuguese with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	por_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Romanian with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	ron_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Spanish with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	spa_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Mexican Spanish with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	spa_mx_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Swedish with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	swe_for_eng
+R221v	22	1	Learner	Would you mind if I tried to practise speaking Chinese with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people.	R221	zho_for_eng
+R222	22	2	Friend	Of course, no problem. You seem to speak it very well. I can understand you easily.		23 courses (modal)
+R223	22	3	Learner	Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly.		23 courses (modal)
+R224	22	4	Friend	Am I speaking slowly enough for you now?		23 courses (modal)
+R225	22	5	Learner	Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations.		23 courses (modal)
+R226	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Welsh to anyone who speaks Welsh.		2 courses (modal)
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Egyptian Arabic to anyone who speaks Egyptian Arabic.	R226	ara_eg_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Arabic to anyone who speaks Arabic.	R226	ara_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking German to anyone who speaks German.	R226	deu_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Basque to anyone who speaks Basque.	R226	eus_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Canadian French to anyone who speaks Canadian French.	R226	fra_ca_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking French to anyone who speaks French.	R226	fra_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Irish to anyone who speaks Irish.	R226	gle_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Hindi to anyone who speaks Hindi.	R226	hin_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Croatian to anyone who speaks Croatian.	R226	hrv_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Icelandic to anyone who speaks Icelandic.	R226	isl_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Italian to anyone who speaks Italian.	R226	ita_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Japanese to anyone who speaks Japanese.	R226	jpn_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Korean to anyone who speaks Korean.	R226	kor_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Dutch to anyone who speaks Dutch.	R226	nld_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Brazilian Portuguese to anyone who speaks Brazilian Portuguese.	R226	por_br_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Portuguese to anyone who speaks Portuguese.	R226	por_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Romanian to anyone who speaks Romanian.	R226	ron_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Spanish to anyone who speaks Spanish.	R226	spa_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Mexican Spanish to anyone who speaks Mexican Spanish.	R226	spa_mx_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Swedish to anyone who speaks Swedish.	R226	swe_for_eng
+R226v	22	6	Friend	I think you're doing very well. I'm impressed. I think you're ready to start speaking Chinese to anyone who speaks Chinese.	R226	zho_for_eng
+R227	22	7	Learner	It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently.		23 courses (modal)
+R228	22	8	Friend	You should be confident already. I think you're doing much better than you realise. I feel comfortable speaking with you, and I'm not talking very slowly.		22 courses (modal)
+R228v	22	8	Friend	You should be confident already. I think you're doing much better than you think. I feel comfortable speaking with you, and I'm not talking very slowly.	R228	ita_for_eng
+R229	22	9	Learner	This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well.		22 courses (modal)
+R229v	22	9	Learner	This is exactly the kind of practice I need. I feel like I can feel my brain changing while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well.	R229	ita_for_eng
+R230	22	10	Friend	I think that's normal. Learning a new language is difficult. But it's so much fun when you start to have conversations, isn't it?		23 courses (modal)
+R231	22	11	Learner	It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better.		23 courses (modal)
