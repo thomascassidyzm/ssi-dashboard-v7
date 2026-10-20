@@ -117,12 +117,14 @@ function isTomCastRow(row) {
 
 /**
  * Languages where ANY non-banned provider's Tom-cast Voice Lab row counts as the
- * cast (job #448: cat is cast Azure Alba/Enric). Deliberately scoped to cat: the
+ * cast (job #448: cat is cast Azure Alba/Enric; job #910: ell is cast Azure Athina/Nestoras —
+ * Kai ruled 2026-10-20 that the course keeps the voices its ~16,000 live clips already use, and
+ * Tom confirmed Greek casting is Kai's call). Deliberately scoped to cat and ell: the
  * Voice Lab read routes refuse an agent identity, so which other languages hold a
  * non-Cartesia cast row could not be listed; widen this set only after that list
  * is read and ruled on.
  */
-const CAST_ANY_PROVIDER = new Set(['cat'])
+const CAST_ANY_PROVIDER = new Set(['cat', 'ell'])
 const castCountsVoice = (language, voiceId) => isCartesiaVoice(voiceId) || (CAST_ANY_PROVIDER.has(language) && !isBannedVoice(voiceId))
 
 const canonVoice = (v) => (v ? (tryCanonicalVoiceId(v) || String(v)) : null)

@@ -237,3 +237,19 @@ describe('cat: a Tom-cast Azure row is the cast (job #448)', () => {
       .toMatchObject({ allowed: false, reason: 'not-in-cast' })
   })
 })
+
+describe('ell: a Tom-cast Azure row is the cast (job #910)', () => {
+  const ATHINA = 'azure_el-GR-AthinaNeural'
+  const note = "Tom 2026-10-20 (via his Watson): Greek casting is Kai's call."
+  const rows = [
+    { language: 'ell', voice_id: ATHINA, assigned_by: 'kai-910-ell', notes: note },
+    { language: 'ell', voice_id: 'azure_el-GR-NestorasNeural', assigned_by: 'kai-910-ell', notes: note },
+  ]
+  it('allows the cast Azure voice for ell', () => {
+    expect(gate.castAllowsVoice('ell', ATHINA, rows)).toMatchObject({ allowed: true })
+  })
+  it('still refuses an ell draft row (not Tom\'s)', () => {
+    const draft = [{ language: 'ell', voice_id: ATHINA, assigned_by: 'e2e@ssi-test.invalid', notes: 'draft casting 2026-09-04 — mechanical fill' }]
+    expect(gate.castAllowsVoice('ell', ATHINA, draft)).toMatchObject({ allowed: false, reason: 'draft-cast' })
+  })
+})
