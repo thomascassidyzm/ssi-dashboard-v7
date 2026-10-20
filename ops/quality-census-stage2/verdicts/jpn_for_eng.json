@@ -1,0 +1,2725 @@
+[
+ {
+  "ref": "S0001",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"with you\" vs copy \"together\"; copy changes who is addressed"
+ },
+ {
+  "ref": "S0002",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"trying to learn\" vs copy \"trying Japanese now\"; \"now\" lost"
+ },
+ {
+  "ref": "S0003",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"how to speak as often as possible\" vs copy \"I want to speak a lot, as much as possible\"; meaning differs"
+ },
+ {
+  "ref": "S0004",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"how to say something\" vs copy \"want to try saying something\"; meaning differs"
+ },
+ {
+  "ref": "S0005",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"practise speaking with someone else\" vs \"later I'll try speaking with other people too\""
+ },
+ {
+  "ref": "S0006",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "\"now\" (今) dropped from seed English"
+ },
+ {
+  "ref": "S0007",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"try as hard as I can\" vs \"try doing as much as possible\"; \"today\""
+ },
+ {
+  "ref": "S0008",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"what I mean\" = \"what I want to say\"; same Japanese"
+ },
+ {
+  "ref": "S0009",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"I speak\" vs copy \"I can speak\": 話せる = can; seed English loses \"can\""
+ },
+ {
+  "ref": "S0010",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"not sure\" = \"don't know\""
+ },
+ {
+  "ref": "S0011",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"after you finish\" lost in copy; meaning differs"
+ },
+ {
+  "ref": "S0012",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"wouldn't like to guess what's going to happen\" vs \"don't want to think about tomorrow\""
+ },
+ {
+  "ref": "S0013",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: same meaning, same Japanese"
+ },
+ {
+  "ref": "S0014",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed is a question about you; copy a statement about I"
+ },
+ {
+  "ref": "S0015",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"I want you to speak\" vs copy \"I want to speak\""
+ },
+ {
+  "ref": "S0016",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0017",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0018",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"we\" vs copy \"I\""
+ },
+ {
+  "ref": "S0019",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: talking/speaking"
+ },
+ {
+  "ref": "S0020",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"you\" vs copy \"I\""
+ },
+ {
+  "ref": "S0021",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: learning/remembering a name = 覚える"
+ },
+ {
+  "ref": "S0023",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: wording only"
+ },
+ {
+  "ref": "S0024",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"not going to be able\" vs \"I think I can't\""
+ },
+ {
+  "ref": "S0025",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"have to go\"→\"go\", same Japanese"
+ },
+ {
+  "ref": "S0026",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"I like feeling\" vs copy \"feel like I can\""
+ },
+ {
+  "ref": "S0027",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: wording only"
+ },
+ {
+  "ref": "S0028",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"as soon as you can\" = \"as soon as possible\""
+ },
+ {
+  "ref": "S0029",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: wording only"
+ },
+ {
+  "ref": "S0030",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"something\" and the addressee lost in copy"
+ },
+ {
+  "ref": "S0031",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0032",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: copy is a fragment: subject/me dropped, same Japanese"
+ },
+ {
+  "ref": "S0033",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: wording only"
+ },
+ {
+  "ref": "S0034",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: word order"
+ },
+ {
+  "ref": "S0035",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0036",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: subject pronoun dropped (K30-type)"
+ },
+ {
+  "ref": "S0037",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "\"carefully\" in seed English, absent from Japanese and copy"
+ },
+ {
+  "ref": "S0038",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: learning/doing Japanese = やってる"
+ },
+ {
+  "ref": "S0039",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0040",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: fragment of same question"
+ },
+ {
+  "ref": "S0041",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: wording only"
+ },
+ {
+  "ref": "S0042",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"was starting to feel better\" vs \"I'm a little better\""
+ },
+ {
+  "ref": "S0043",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0044",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0046",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: subject dropped"
+ },
+ {
+  "ref": "S0047",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: word order/pronoun"
+ },
+ {
+  "ref": "S0048",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"I don't care about making mistakes\" vs \"even if I make mistakes, it's okay\""
+ },
+ {
+  "ref": "S0049",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0051",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0052",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0053",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0054",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0055",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0056",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"so I can remember how to say\" vs \"I want to learn\""
+ },
+ {
+  "ref": "S0057",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "\"how to say\" dropped"
+ },
+ {
+  "ref": "S0058",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0059",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"how to do\"/\"what to do\""
+ },
+ {
+  "ref": "S0060",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "\"how to say\" and \"different\" dropped"
+ },
+ {
+  "ref": "S0061",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0062",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0068",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: particle drop in copy only"
+ },
+ {
+  "ref": "S0070",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0071",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0072",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: that-drop (K30)"
+ },
+ {
+  "ref": "S0073",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0076",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"how much\"/\"what\", \"very\" dropped"
+ },
+ {
+  "ref": "S0077",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0078",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed present \"don't understand\" vs copy past \"didn't\""
+ },
+ {
+  "ref": "S0082",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0083",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"what you said about your friend\" vs copy \"that opinion\""
+ },
+ {
+  "ref": "S0084",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"what he said about my friend\" vs copy \"that opinion\""
+ },
+ {
+  "ref": "S0086",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: word order"
+ },
+ {
+  "ref": "S0088",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0089",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: that-drop (K30)"
+ },
+ {
+  "ref": "S0091",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"think quickly enough to answer in time\" vs \"quickly answer\""
+ },
+ {
+  "ref": "S0092",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"for a while\" vs \"a little more\""
+ },
+ {
+  "ref": "S0094",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: fragment of same sentence"
+ },
+ {
+  "ref": "S0095",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0096",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0097",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"yes\" dropped, same meaning"
+ },
+ {
+  "ref": "S0098",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"I should … playing something else\" vs \"we should … something else\""
+ },
+ {
+  "ref": "S0099",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0100",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: subject dropped"
+ },
+ {
+  "ref": "S0101",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0102",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0103",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0104",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0105",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"he didn't know the answer\" vs \"the answer wasn't clear\""
+ },
+ {
+  "ref": "S0106",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"we don't need to feel happy\" vs \"even if I'm not happy, I must\""
+ },
+ {
+  "ref": "S0107",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"we\" vs copy \"I\""
+ },
+ {
+  "ref": "S0108",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0109",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0110",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0111",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"we … our brain\" vs copy \"you … the brain\""
+ },
+ {
+  "ref": "S0113",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0117",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"to each other\" dropped"
+ },
+ {
+  "ref": "S0119",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: seed 聞いていい？ (may I ask) vs copy 聞く？ (ask?)"
+ },
+ {
+  "ref": "S0120",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"right?\" added"
+ },
+ {
+  "ref": "S0121",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0122",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0123",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: それ/それは particle only"
+ },
+ {
+  "ref": "S0126",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0129",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"I'm so happy that you're doing so well\" vs \"it's going well so I'm happy\""
+ },
+ {
+  "ref": "S0130",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0131",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0133",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: word order"
+ },
+ {
+  "ref": "S0134",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0137",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0138",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"where my friend wanted to meet us\" vs \"the place we were planning to meet\""
+ },
+ {
+  "ref": "S0140",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"I'm sorry that\" lost in copy; copy keeps 。"
+ },
+ {
+  "ref": "S0142",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0143",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0146",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0149",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"very\" dropped"
+ },
+ {
+  "ref": "S0151",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0152",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0155",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0155L01, before S0155L02 (P26: said before the seed's last new LEGO exists)"
+ },
+ {
+  "ref": "S0161",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0162",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0163",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: that-drop, full stop only"
+ },
+ {
+  "ref": "S0164",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0165",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0166",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0167",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0168",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0170",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: seed 教えて (tell me) vs copy 教えてほしい (I'd like you to tell me)"
+ },
+ {
+  "ref": "S0171",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0172",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"very\" dropped"
+ },
+ {
+  "ref": "S0173",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0176",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0178",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0180",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0181",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0182",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0183",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0184",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0185",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0186",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0188",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0190",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"mind if I ask some\""
+ },
+ {
+  "ref": "S0191",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"no\" dropped"
+ },
+ {
+  "ref": "S0193",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0195",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0199",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: copy drops オフィスで (in an office), English claims it"
+ },
+ {
+  "ref": "S0200",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0205",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0206",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0207",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0210",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"they think that we need\" vs copy \"we need\""
+ },
+ {
+  "ref": "S0211",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0212",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"they\" vs copy \"we\""
+ },
+ {
+  "ref": "S0213",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"we … they\" vs copy \"I … she\""
+ },
+ {
+  "ref": "S0214",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"did you\" vs copy \"they had\""
+ },
+ {
+  "ref": "S0216",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"I\" vs copy \"she\""
+ },
+ {
+  "ref": "S0220",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: seed 見た？ (did watch) vs copy 見る？ (watch?)"
+ },
+ {
+  "ref": "S0221",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: word order/also"
+ },
+ {
+  "ref": "S0222",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0223",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0227",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0109L02, before S0227L01 (P26: said before the seed's last new LEGO exists)"
+ },
+ {
+  "ref": "S0228",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0109L03, before S0228L02 (P26: said before the seed's last new LEGO exists)"
+ },
+ {
+  "ref": "S0229",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: comma/pronoun order"
+ },
+ {
+  "ref": "S0230",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: man/person, same Japanese 若い人"
+ },
+ {
+  "ref": "S0231",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"I know an old man\" vs copy \"he knows\""
+ },
+ {
+  "ref": "S0233",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0234",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0235",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: that-drop, he/they"
+ },
+ {
+  "ref": "S0236",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: that-drop, she/they"
+ },
+ {
+  "ref": "S0237",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0238",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0240",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0241",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: subject dropped"
+ },
+ {
+  "ref": "S0243",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: item/thing"
+ },
+ {
+  "ref": "S0244",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: fragment, subject dropped"
+ },
+ {
+  "ref": "S0245",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0246",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"I wanted her to help you but she was too busy\" vs \"I wanted help but she was busy\""
+ },
+ {
+  "ref": "S0247",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"I thought\" dropped; fairly good≈so-so"
+ },
+ {
+  "ref": "S0248",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0251",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0253",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: few/several"
+ },
+ {
+  "ref": "S0256",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: copy adds 準備できる (can be ready)"
+ },
+ {
+  "ref": "S0257",
+  "check": "seed-placement",
+  "sub": "no-home",
+  "verdict": "false-positive",
+  "reason": "seed has no new LEGO of its own: LISTED, not a defect (P26)"
+ },
+ {
+  "ref": "S0258",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: noun-phrase fragment of the question"
+ },
+ {
+  "ref": "S0261",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0262",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0265",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0266",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0268",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0269",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0270",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0271",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0273",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0274",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0276",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0278",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0279",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0280",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0281",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0282",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0283",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0284",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"do you know…?\" vs copy \"I know…\" (question vs statement)"
+ },
+ {
+  "ref": "S0286",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0287",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0288",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0289",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: comma only"
+ },
+ {
+  "ref": "S0294",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: subject dropped"
+ },
+ {
+  "ref": "S0295",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: that-drop (K30)"
+ },
+ {
+  "ref": "S0296",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: that-drop (K30)"
+ },
+ {
+  "ref": "S0301",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: that-drop; subject dropped in Japanese"
+ },
+ {
+  "ref": "S0302",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0303",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: that-drop; subject dropped"
+ },
+ {
+  "ref": "S0304",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: that-drop; subject dropped"
+ },
+ {
+  "ref": "S0305",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0317",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0317L01, before S0317L02 (P26: said before the seed's last new LEGO exists)"
+ },
+ {
+  "ref": "S0321",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0322",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: that-drop (K30)"
+ },
+ {
+  "ref": "S0327",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: が particle only; same English"
+ },
+ {
+  "ref": "S0355",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: が particle only; same English"
+ },
+ {
+  "ref": "S0360",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"your friend\"→\"he\""
+ },
+ {
+  "ref": "S0377",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0378",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0383",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0388",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"you work with\" vs copy \"I work with\""
+ },
+ {
+  "ref": "S0389",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: the/that"
+ },
+ {
+  "ref": "S0392",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0393",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0394",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0397",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: が particle only; same English"
+ },
+ {
+  "ref": "S0420",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0421",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0422",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: copy 質問があるから (because there is a question)"
+ },
+ {
+  "ref": "S0423",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0424",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"no\" dropped"
+ },
+ {
+  "ref": "S0425",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0428",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"would they like to visit us\" vs \"would they want to come\""
+ },
+ {
+  "ref": "S0429",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"for them\" dropped"
+ },
+ {
+  "ref": "S0430",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: wouldn't be possible = impossible"
+ },
+ {
+  "ref": "S0434",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"Could they cut the number of students they take?\" vs copy \"can they reduce … college students\"; Japanese 思う? (you think) not in seed English"
+ },
+ {
+  "ref": "S0441",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0448",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"they'll be happy to help\" vs copy \"with pleasure\""
+ },
+ {
+  "ref": "S0450",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"no\" dropped"
+ },
+ {
+  "ref": "S0457",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0461",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0463",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: copy adds があるから (because there is)"
+ },
+ {
+  "ref": "S0465",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0467",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: copy adds にある (it is located)"
+ },
+ {
+  "ref": "S0470",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"before we stop\" lost in copy English"
+ },
+ {
+  "ref": "S0483",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"but it's not meant to be easy\" lost in copy"
+ },
+ {
+  "ref": "S0487",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: copy adds にある"
+ },
+ {
+  "ref": "S0488",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0492",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0493",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: going to come = coming"
+ },
+ {
+  "ref": "S0502",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"instead of right\" lost in copy English"
+ },
+ {
+  "ref": "S0506",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"before we moved\" lost in copy"
+ },
+ {
+  "ref": "S0509",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0516",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: copy adds と言ってた (they said)"
+ },
+ {
+  "ref": "S0544",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0562",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: copy adds そこに (there)"
+ },
+ {
+  "ref": "S0563",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: copy adds もう…と思う (I think)"
+ },
+ {
+  "ref": "S0575",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Japanese differs: copy adds ことがある"
+ },
+ {
+  "ref": "S0588",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"so\" dropped; punctuation"
+ },
+ {
+  "ref": "S0602",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is in no played basket; seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0643",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"do you want sir?\" vs copy \"what would you like sir?\" (seed English ungrammatical)"
+ },
+ {
+  "ref": "S0650",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"do you want to go madam?\" vs \"are you going out, madam?\""
+ },
+ {
+  "ref": "S0658",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"do you all want?\" vs \"what will you all do?\""
+ },
+ {
+  "ref": "S0665",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"do you all want to go?\" vs \"are you all going out?\""
+ },
+ {
+  "ref": "S0009L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — near-synonym pair"
+ },
+ {
+  "ref": "S0662L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — polite vs plain register pair"
+ },
+ {
+  "ref": "S0033L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — near-synonym pair"
+ },
+ {
+  "ref": "S0655L03",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — polite vs plain register pair"
+ },
+ {
+  "ref": "S0661L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — polite vs plain register pair"
+ },
+ {
+  "ref": "S0127L01",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "false-positive",
+  "reason": "different grammatical function/sense, each LEGO's intro quotes its own context sentence (that attributive vs subject; three things vs the numeral); no explicit sense statement, so only partly K23"
+ },
+ {
+  "ref": "S0336L01",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "false-positive",
+  "reason": "different grammatical function/sense, each LEGO's intro quotes its own context sentence (that attributive vs subject; three things vs the numeral); no explicit sense statement, so only partly K23"
+ },
+ {
+  "ref": "S0232L02",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — near-synonym pair"
+ },
+ {
+  "ref": "S0305L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — near-synonym pair"
+ },
+ {
+  "ref": "S0258L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — near-synonym pair"
+ },
+ {
+  "ref": "S0466L02",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — near-synonym pair"
+ },
+ {
+  "ref": "S0311L01",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "false-positive",
+  "reason": "different grammatical function/sense, each LEGO's intro quotes its own context sentence (that attributive vs subject; three things vs the numeral); no explicit sense statement, so only partly K23"
+ },
+ {
+  "ref": "S0524L01",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "false-positive",
+  "reason": "different grammatical function/sense, each LEGO's intro quotes its own context sentence (that attributive vs subject; three things vs the numeral); no explicit sense statement, so only partly K23"
+ },
+ {
+  "ref": "S0317L02",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — near-synonym pair"
+ },
+ {
+  "ref": "S0645L02",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — polite vs plain register pair"
+ },
+ {
+  "ref": "S0486L04",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — near-synonym pair"
+ },
+ {
+  "ref": "S0666L01",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — polite vs plain register pair"
+ },
+ {
+  "ref": "S0540L03",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — near-synonym pair"
+ },
+ {
+  "ref": "S0667L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — polite vs plain register pair"
+ },
+ {
+  "ref": "S0654L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — near-synonym pair"
+ },
+ {
+  "ref": "S0660L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "same known, two target forms; intro gives a demo sentence but no sense/register statement (K23b) — polite vs plain register pair"
+ },
+ {
+  "ref": "S0082",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "two-sentence SEED (82): Kai question"
+ },
+ {
+  "ref": "S0141",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "two-sentence SEED (141): Kai question"
+ },
+ {
+  "ref": "jpn_for_eng:S0141L01U01",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "copy of two-sentence seed 141: Kai question"
+ },
+ {
+  "ref": "jpn_for_eng:S0166L01U07",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "real",
+  "reason": "use phrase is two questions in one row (P20)"
+ },
+ {
+  "ref": "jpn_for_eng:S0173L02B03",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "build fragment \"manage. I can\": stray full stop marks a word-order re-sequence, not two sentences"
+ },
+ {
+  "ref": "jpn_for_eng:S0176L02B03",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "build fragment \"ask if. I'll\": stray full stop, not two sentences"
+ },
+ {
+  "ref": "jpn_for_eng:S0419L02U05",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "one quoted question + \"she asked\""
+ },
+ {
+  "ref": "jpn_for_eng:S0420L01U04",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "one quoted question + \"she asked\""
+ },
+ {
+  "ref": "jpn_for_eng:S0454L01U03",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "known \"when is it? six o'clock\" does not match target 六時？って聞いた (asked \"six?\"): gloss mismatch, not P20"
+ },
+ {
+  "ref": "jpn_for_eng:S0532L02U04",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "known \"is it good? if so\" vs target 良ければと言ってた (said \"if good\"): gloss mismatch, not P20"
+ },
+ {
+  "ref": "S0414",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0414L04U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "lowercase use row is correct; the seed is the outlier"
+ },
+ {
+  "ref": "S0500",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0500L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "lowercase use row is correct; the seed is the outlier"
+ },
+ {
+  "ref": "S0644",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0644L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "lowercase use row is correct; the seed is the outlier"
+ },
+ {
+  "ref": "S0659",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0659L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "lowercase use row is correct; the seed is the outlier"
+ },
+ {
+  "ref": "jpn_for_eng:S0063L01U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0649L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "lowercase build row is correct; the uppercase twin S0063L01U04 is the outlier"
+ },
+ {
+  "ref": "jpn_for_eng:S0154L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "\"on Saturday night\" is correct (day capitalised); the fault is S0215L02B01"
+ },
+ {
+  "ref": "jpn_for_eng:S0215L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "day name \"saturday\" must be capitalised (proper noun/day)"
+ },
+ {
+  "ref": "S0021",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "S0061",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "S0067",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "S0113",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "S0145",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "S0269",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "S0414",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "S0434",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "S0500",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "S0644",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "S0659",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0021L03U05",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0021L02U01",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0021L02U05",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0021L02U02",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0021L02U04",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0021L02U03",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0023L01U05",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0023L01U08",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0060L02U07",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0061L01U01",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0061L01U07",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0061L02U02",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0061L02U05",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0063L01U04",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0063L02U03",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0067L01U04",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0067L01U02",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0067L01U01",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0067L01U08",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0067L01U05",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0067L01U03",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0067L01U07",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0067L02U03",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0069L01U06",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0070L01U06",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0082L01U05",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0082L02U05",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0082L02U01",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0082L02U04",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0082L02U08",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0082L02U03",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0082L02U06",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0082L02U07",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0082L02U02",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0084L01U05",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0087L01U06",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0099L02B04",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0099L02U03",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0143L01B04",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0145L01U04",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0269L02U05",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0269L02U04",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0270L01U03",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0278L02B01",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0278L02U08",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0278L02U04",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0281L02U03",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0281L02U05",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0281L02U08",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "jpn_for_eng:S0281L02U04",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "known side starts uppercase against the lowercase convention"
+ },
+ {
+  "ref": "S0001L02",
+  "check": "underpopulated",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "2-3 build, 1 use: one line only, not read as a fault"
+ },
+ {
+  "ref": "S0030L01",
+  "check": "underpopulated",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "2-3 build, 1 use: one line only, not read as a fault"
+ },
+ {
+  "ref": "S0171",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0438L01U01",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0642L03U02",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0642L03U05",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0642L01U01",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0642L01U02",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0643L01U03",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0644L02U03",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0644L02U02",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0644L02U05",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0649L01U01",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0649L02U02",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0650L01U02",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0651L01U02",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0651L01U04",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0651L01U03",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0652L01U04",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0652L01U03",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ },
+ {
+  "ref": "jpn_for_eng:S0652L01U02",
+  "check": "jpn-ka",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "UNCALIBRATED check; the row ends か？ so A9 (question mark present) is satisfied"
+ }
+]
