@@ -1,0 +1,1332 @@
+[
+ {
+  "ref": "S0003",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0004",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic (diacritics/question mark only); English \"how to say\" vs \"how do I say\""
+ },
+ {
+  "ref": "S0010",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0025",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; English \"are you going to\" vs \"will you\" mean the same"
+ },
+ {
+  "ref": "S0026",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0040",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"at the moment\" vs \"now\""
+ },
+ {
+  "ref": "S0044",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0047",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; English paraphrase only"
+ },
+ {
+  "ref": "S0055",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"very well\" vs \"well\""
+ },
+ {
+  "ref": "S0061",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy drops \"a little\" (seed Arabic also has no word for it: seed English carries a word the Arabic does not; seed vs LEGO outlier, Kai's call)"
+ },
+ {
+  "ref": "S0073",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"I've got\" vs \"I have\""
+ },
+ {
+  "ref": "S0075",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0076",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"I'm\" vs \"I am\""
+ },
+ {
+  "ref": "S0079",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"to learn\" vs \"learning\""
+ },
+ {
+  "ref": "S0086",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "seed has ذلك (that) as subject, copy drops it: dropped subject pronoun, trivial per Italian ruling"
+ },
+ {
+  "ref": "S0087",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "same Arabic but copy English \"people I don't know them\" is ungrammatical (resumptive pronoun copied into English)"
+ },
+ {
+  "ref": "S0088",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0090",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed Arabic إذا…فذلك سيكون = \"if…that would be\"; copy English \"then that will be\" changes the mood; seed English vs copy wording differs"
+ },
+ {
+  "ref": "S0093",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: حان وقت الذهاب (the time of going has come) vs حان الوقت للذهاب (the time has come to go)"
+ },
+ {
+  "ref": "S0095",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: على الحافلة (on the bus) vs في الحافلة (in the bus)"
+ },
+ {
+  "ref": "S0096",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: copy adds إلى after أحتاج (I need)"
+ },
+ {
+  "ref": "S0104",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0109",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"a lot of\" vs \"many\""
+ },
+ {
+  "ref": "S0117",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; English shortened (\"last time we talked\")"
+ },
+ {
+  "ref": "S0118",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: أشعر بأنني vs أشعر أنني (preposition بـ added in seed)"
+ },
+ {
+  "ref": "S0133",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"very well\" vs \"well\""
+ },
+ {
+  "ref": "S0143",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "that-drop in English, same Arabic: trivial per Italian ruling"
+ },
+ {
+  "ref": "S0144",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"woke\" vs \"woke up\""
+ },
+ {
+  "ref": "S0145",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic apart from the question mark; \"not happy any more\" vs \"no longer happy\""
+ },
+ {
+  "ref": "S0161",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"on Sunday morning\" vs \"Sunday morning\""
+ },
+ {
+  "ref": "S0163",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "that-drop/contraction in English; Arabic differs only in diacritics"
+ },
+ {
+  "ref": "S0165",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "English contraction only; Arabic differs in diacritics (and ذلك vs ذٰلك spelling)"
+ },
+ {
+  "ref": "S0177",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"I'll\" vs \"I will\""
+ },
+ {
+  "ref": "S0181",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic (أمي = mother/mum); English synonym"
+ },
+ {
+  "ref": "S0183",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "English tense differs (\"I haven't seen them\" vs \"I didn't see them\") and the copy drops the comma after لا; Arabic لم أرها same"
+ },
+ {
+  "ref": "S0184",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy says \"saw her\", seed says \"saw them\" (Arabic رأيتها is \"her/it\"): meaning differs; seed English is the outlier, Kai's call"
+ },
+ {
+  "ref": "S0191",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy drops the opening لا (the \"no\"): \"no I don't mind at all\" is heard as \"I don't mind at all\""
+ },
+ {
+  "ref": "S0201",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: ما سيحدث vs ما كان سيحدث (backshifted tense)"
+ },
+ {
+  "ref": "S0207",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy sits under a not-new LEGO, so it is never played: the seed sentence is effectively missing (P26)"
+ },
+ {
+  "ref": "S0223",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"he's going to\" vs \"he'll\""
+ },
+ {
+  "ref": "S0224",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0228",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy sits under a not-new LEGO, never played: seed sentence effectively missing (P26)"
+ },
+ {
+  "ref": "S0235",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "that-drop in English, same Arabic: trivial"
+ },
+ {
+  "ref": "S0257",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy sits under a not-new LEGO, never played: seed sentence effectively missing (P26)"
+ },
+ {
+  "ref": "S0264",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy English adds \"there is\" (\"there is an old man\") with no Arabic counterpart; seed is a fragment"
+ },
+ {
+  "ref": "S0265",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0268",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "English differs: seed \"emails\" vs copy \"letters\" (Arabic رسالة is ambiguous)"
+ },
+ {
+  "ref": "S0273",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"I've got\" vs \"I have\""
+ },
+ {
+  "ref": "S0274",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"leave\" vs \"depart\""
+ },
+ {
+  "ref": "S0275",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0276",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0277",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"I've got\" vs \"I have\""
+ },
+ {
+  "ref": "S0280",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0281",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "English tense differs: \"if I finish\" vs \"if I finished\"; Arabic same. The copy English is the defective one"
+ },
+ {
+  "ref": "S0292",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"you'll be able to\" vs \"you can\""
+ },
+ {
+  "ref": "S0303",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "that-drop in English, same Arabic: trivial"
+ },
+ {
+  "ref": "S0305",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; article \"a\" only"
+ },
+ {
+  "ref": "S0307",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0309",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"before\" vs \"before now\""
+ },
+ {
+  "ref": "S0310",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: تستطيع (can) vs يمكنها (it is possible for her)"
+ },
+ {
+  "ref": "S0314",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: أظن vs أعتقد (two Arabic words for \"I think\")"
+ },
+ {
+  "ref": "S0317",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: إذا vs لو (if)"
+ },
+ {
+  "ref": "S0318",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy drops the first لا: \"no I don't think she could\" loses its \"no\""
+ },
+ {
+  "ref": "S0328",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy Arabic ends on a dangling أَنْ and drops ذلك: the played sentence is incomplete"
+ },
+ {
+  "ref": "S0329",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0331",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: كل vs جميع (all)"
+ },
+ {
+  "ref": "S0338",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; English \"badly\" vs \"in a bad way\""
+ },
+ {
+  "ref": "S0341",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: بضعة أيام vs أيام قليلة (a few days)"
+ },
+ {
+  "ref": "S0343",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: seed الَّذي قال (the one who said) vs copy مَنْ قال؟ (who said?); seed vs LEGO outlier, Kai's call (343-345 one question)"
+ },
+ {
+  "ref": "S0344",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "as 343: الَّذي vs مَنْ"
+ },
+ {
+  "ref": "S0345",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "as 343: الَّذي vs مَنْ"
+ },
+ {
+  "ref": "S0346",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: copy adds مِنْها (of her); the seed alone leaves who is meant ambiguous"
+ },
+ {
+  "ref": "S0352",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: لن يستطيع vs لما استطاع (different conditional construction)"
+ },
+ {
+  "ref": "S0355",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: تتكلم مع vs تتحدث إلى (talk with / talk to)"
+ },
+ {
+  "ref": "S0360",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: شيئاً آخر vs أي شيء آخر (something else / anything else)"
+ },
+ {
+  "ref": "S0364",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: لم يحب (did not like) vs لم يعجبه (did not please him)"
+ },
+ {
+  "ref": "S0374",
+  "check": "seed-placement",
+  "sub": "no-home",
+  "verdict": "false-positive",
+  "reason": "listed, not a defect: seed 374 has no new LEGO and its sentence is not played elsewhere"
+ },
+ {
+  "ref": "S0375",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: لم أعرف vs لم أكن أعرف (simple vs continuous past)"
+ },
+ {
+  "ref": "S0390",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; English \"near\" vs \"in the proximity of\" (stilted but same meaning)"
+ },
+ {
+  "ref": "S0391",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; English \"towards\" vs \"in the direction of\""
+ },
+ {
+  "ref": "S0392",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; copy English adds \"is\""
+ },
+ {
+  "ref": "S0395",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: نحتاج أن vs نحن بحاجة إلى أن; and القادمة vs التالية (next)"
+ },
+ {
+  "ref": "S0396",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; English \"everybody else\" vs \"everybody\""
+ },
+ {
+  "ref": "S0404",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: copy drops يوم (day) before الخميس"
+ },
+ {
+  "ref": "S0405",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: إن vs إذا (if)"
+ },
+ {
+  "ref": "S0407",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "English differs: \"set a good example\" vs \"be a good example\"; same Arabic (seed English vs Arabic, Kai's call)"
+ },
+ {
+  "ref": "S0415",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: إن vs إذا (if)"
+ },
+ {
+  "ref": "S0417",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0425",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0449",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: تقريباً vs شبه (almost)"
+ },
+ {
+  "ref": "S0453",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy sits under a not-new LEGO, never played: seed sentence effectively missing (P26)"
+ },
+ {
+  "ref": "S0460",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0473",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0491",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; copy English adds \"with it\""
+ },
+ {
+  "ref": "S0493",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: ما الذي vs ماذا (what)"
+ },
+ {
+  "ref": "S0494",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: ما الذي vs ماذا (what)"
+ },
+ {
+  "ref": "S0498",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0503",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; \"that one's\" vs \"that's\""
+ },
+ {
+  "ref": "S0507",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0521",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0524",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: بعد ثلاث vs مجدداً في ثلاث; copy adds \"back again\""
+ },
+ {
+  "ref": "S0527",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: copy has بِتِلْكَ القِصَّةِ (with a preposition, genitive)"
+ },
+ {
+  "ref": "S0528",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed English \"probably\" has no Arabic counterpart; copy drops it (seed English outlier, Kai's call)"
+ },
+ {
+  "ref": "S0531",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: أي شخص vs أي أحد (anyone)"
+ },
+ {
+  "ref": "S0534",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "English differs: seed \"let's not go outside\" vs copy \"let's stay inside\"; Arabic same (copy matches the Arabic, seed English is the outlier, Kai's call)"
+ },
+ {
+  "ref": "S0536",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: كنت أظن vs اعتدت أن أعتقد (used to think)"
+ },
+ {
+  "ref": "S0539",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: لكن الوقت (the time) vs لكنه (it)"
+ },
+ {
+  "ref": "S0540",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: أن تغادر vs المغادرة (to leave / leaving)"
+ },
+ {
+  "ref": "S0543",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only copy sits under S0387L01, before the seed's own S0543L01 (a repeat debut of \"she was right\"); the learner meets it too early and not at its own seed"
+ },
+ {
+  "ref": "S0545",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy English \"to the upstairs\" is ungrammatical; Arabic same"
+ },
+ {
+  "ref": "S0548",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: الآن vs في الوقت الحالي (now / at the present time)"
+ },
+ {
+  "ref": "S0556",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; copy English \"in a late hour of the night\" is stilted but means the same"
+ },
+ {
+  "ref": "S0559",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: الطريق vs المسار (path)"
+ },
+ {
+  "ref": "S0561",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: إن كانت vs إذا كان; copy has masculine كان with feminine سيارة"
+ },
+ {
+  "ref": "S0562",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: copy adds إلى before هناك"
+ },
+ {
+  "ref": "S0564",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: copy adds ذلك (that)"
+ },
+ {
+  "ref": "S0565",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: فيه vs في الأمر (about it / about the matter)"
+ },
+ {
+  "ref": "S0571",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: أنّ vs بأنّ"
+ },
+ {
+  "ref": "S0572",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: آخر مرة vs في المرة الأخيرة التي (last time)"
+ },
+ {
+  "ref": "S0573",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "same Arabic but copy English \"it's of the things that makes\" is ungrammatical"
+ },
+ {
+  "ref": "S0575",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "Arabic differs: كان ذلك مزعجاً vs لقد كان مزعجاً (that was / it has been)"
+ },
+ {
+  "ref": "S0577",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; copy English \"news reports\" vs \"news\""
+ },
+ {
+  "ref": "S0580",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "English tense differs: \"we've often wanted\" vs \"we often wanted\"; Arabic same"
+ },
+ {
+  "ref": "S0583",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "Arabic differs only in diacritics (هذا / هٰذا)"
+ },
+ {
+  "ref": "S0594",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0595",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence in no played basket; the seed has a new LEGO to host it (P26)"
+ },
+ {
+  "ref": "S0597",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "English differs: \"he's heard … stories\" vs \"he heard … tales\" (tense and noun); Arabic same"
+ },
+ {
+  "ref": "S0603",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; copy English adds a final \"in\""
+ },
+ {
+  "ref": "S0609",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "same Arabic; English drops \"to do\""
+ },
+ {
+  "ref": "S0627",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy sits under a not-new LEGO, never played: seed sentence effectively missing (P26)"
+ },
+ {
+  "ref": "S0642",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy sits under a not-new LEGO, never played: seed sentence effectively missing (P26)"
+ },
+ {
+  "ref": "S0659",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy sits under a not-new LEGO, never played: seed sentence effectively missing (P26)"
+ },
+ {
+  "ref": "S0082",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "uncertain",
+  "reason": "two-sentence seed (82/141) or its phrase copying the seed: a question for Kai, not a phrase fault"
+ },
+ {
+  "ref": "S0141",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "uncertain",
+  "reason": "two-sentence seed (82/141) or its phrase copying the seed: a question for Kai, not a phrase fault"
+ },
+ {
+  "ref": "ara_for_eng:S0082L01U01",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "uncertain",
+  "reason": "two-sentence seed (82/141) or its phrase copying the seed: a question for Kai, not a phrase fault"
+ },
+ {
+  "ref": "ara_for_eng:S0093L01U04",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0108L02U04",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0109L02U01",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0145L01U03",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0155L01B04",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0155L01U04",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0155L01U05",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0155L02U01",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0155L02U03",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0155L03U03",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0155L04U04",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0156L01U02",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0157L01U04",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0158L01U03",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0158L01U02",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0159L01U03",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0160L01U03",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0160L02U03",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0161L03U04",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0161L01U01",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0161L01U02",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0161L02U05",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0191L01U06",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0193L01U06",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0194L01U05",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0195L04U05",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0256L01B03",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0258L01B03",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0258L01B02",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0258L01U05",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0258L01U04",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0368L01U04",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0632L01U05",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "ara_for_eng:S0636L01U05",
+  "check": "multi-sentence",
+  "sub": "",
+  "verdict": "real",
+  "reason": "phrase is two sentences (P20)"
+ },
+ {
+  "ref": "S0034L02",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "false-positive",
+  "reason": "K23-explained: the intro gives an \"as in\" sentence that shows why the form differs"
+ },
+ {
+  "ref": "S0403L01",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "false-positive",
+  "reason": "K23-explained: the intro gives an \"as in\" sentence that shows why the form differs"
+ },
+ {
+  "ref": "S0110L01",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "false-positive",
+  "reason": "K23-explained: the intro gives an \"as in\" sentence that shows why the form differs"
+ },
+ {
+  "ref": "S0407L02",
+  "check": "zut-lego",
+  "sub": "k23-explained",
+  "verdict": "uncertain",
+  "reason": "the intro says \"to set a good example\", but the LEGO is \"we are\" → نكون: the intro does not mirror its LEGO, so the K23 explanation is doubtful. Kai to read"
+ },
+ {
+  "ref": "ara_for_eng:S0347L02U05",
+  "check": "lowercase-i",
+  "sub": "",
+  "verdict": "real",
+  "reason": "known side begins with lowercase \"i\" for the pronoun I"
+ },
+ {
+  "ref": "S0021",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "this lowercase row is correct; the flag is the mirror of the capitalised seed (counted once under the seed)"
+ },
+ {
+  "ref": "ara_for_eng:S0021L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "this lowercase row is correct; the flag is the mirror of the capitalised seed (counted once under the seed)"
+ },
+ {
+  "ref": "S0067",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "this lowercase row is correct; the flag is the mirror of the capitalised seed (counted once under the seed)"
+ },
+ {
+  "ref": "ara_for_eng:S0067L01B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "this lowercase row is correct; the flag is the mirror of the capitalised seed (counted once under the seed)"
+ },
+ {
+  "ref": "S0113",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "this lowercase row is correct; the flag is the mirror of the capitalised seed (counted once under the seed)"
+ },
+ {
+  "ref": "ara_for_eng:S0113L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "this lowercase row is correct; the flag is the mirror of the capitalised seed (counted once under the seed)"
+ },
+ {
+  "ref": "S0269",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "this lowercase row is correct; the flag is the mirror of the capitalised seed (counted once under the seed)"
+ },
+ {
+  "ref": "ara_for_eng:S0269L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "this lowercase row is correct; the flag is the mirror of the capitalised seed (counted once under the seed)"
+ },
+ {
+  "ref": "S0500",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "this lowercase row is correct; the flag is the mirror of the capitalised seed (counted once under the seed)"
+ },
+ {
+  "ref": "ara_for_eng:S0500L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "this lowercase row is correct; the flag is the mirror of the capitalised seed (counted once under the seed)"
+ },
+ {
+  "ref": "S0021",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "seed known text starts with a capital against the lowercase estate convention (\"Why…\")"
+ },
+ {
+  "ref": "S0067",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "seed known text starts with a capital against the lowercase estate convention (\"Why…\")"
+ },
+ {
+  "ref": "S0113",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "seed known text starts with a capital against the lowercase estate convention (\"Why…\")"
+ },
+ {
+  "ref": "S0145",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "seed known text starts with a capital against the lowercase estate convention (\"Why…\")"
+ },
+ {
+  "ref": "S0269",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "seed known text starts with a capital against the lowercase estate convention (\"Why…\")"
+ },
+ {
+  "ref": "S0500",
+  "check": "capitalisation",
+  "sub": "outlier",
+  "verdict": "real",
+  "reason": "seed known text starts with a capital against the lowercase estate convention (\"Why…\")"
+ }
+]
