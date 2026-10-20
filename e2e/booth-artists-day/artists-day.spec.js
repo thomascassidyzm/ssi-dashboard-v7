@@ -102,13 +102,10 @@ const bodyText = (page) => page.locator('body').textContent()
 async function startButton(page) {
   const b = page.locator('.btn-begin')
   if (!(await b.count())) return null
-  const line = page.locator('[data-test=ready-line]')
-  const label = (await b.first().textContent()).trim()
-  return { text: await line.count() ? `${label} — ${(await line.textContent()).trim()}` : label, disabled: await b.first().isDisabled() }
+  return { text: (await b.first().textContent()).trim(), disabled: await b.first().isDisabled() }
 }
-// The Prompter draws the whole line above Start. Check both as the artist sees them.
-const preview = (line) => line
-const startLabelFor = (line) => `Start recording — ${line}`
+// The Prompter shows the full next unread line above its plain Start button.
+const readyLine = (page) => page.locator('[data-test="ready-line"]')
 // THE SWITCH TOM'S BOOTH HAD ON. Until 2026-09-12 the ready card offered
 // "Re-read lines I've already recorded", remembered per artist, and with it on
 // the run started at the top of the queue whether or not that line was
@@ -293,7 +290,8 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   expect(await counts(page)).toEqual({ recorded: 0, stillToRead: N })
   expect(await banner(page)).toBeNull()
   await assertInvariant(page, { pendingOrRefused: false }, 'step 1 · fresh booth')
-  expect(await startButton(page)).toEqual({ text: startLabelFor(LINES[0]), disabled: false })
+  expect(await startButton(page)).toEqual({ text: 'Start recording', disabled: false })
+  await expect(readyLine(page)).toHaveText(LINES[0])
   const rereadOffered = await tickRereadIfOffered(page)
   note(rereadOffered ? 'the old re-read switch is offered — ticked, as Tom\'s booth had it' : 'no re-read switch on the ready card')
   await shot(page, 'fresh-booth')
@@ -355,13 +353,13 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   await assertInvariant(page, { pendingOrRefused: false }, 'step 5a · after reload')
   expect((await shelf(page)).filter((r) => r.status !== 'stored'), 'nothing pending or refused left on the shelf').toEqual([])
   await shot(page, 'after-reload')
-  // …and Start names line 4 — never 1, 2 or 3 — whatever the booth remembered
+  // …and the ready line names line 4 — never 1, 2 or 3 — whatever the booth remembered
   // about that switch (Tom's ruling, 2026-09-11: a recorded line is never
   // served again as a thing to read).
   const startAfterReload = await startButton(page)
   expect(startAfterReload.disabled, 'Start is live with lines still to read').toBe(false)
-  for (const t of LINES.slice(0, 3)) expect(startAfterReload.text, `Start never names a recorded line${rereadOffered ? ' (re-read switch ticked)' : ''}`).not.toContain(preview(t))
-  expect(startAfterReload.text).toBe(startLabelFor(LINES[3]))
+  expect(startAfterReload.text).toBe('Start recording')
+  await expect(readyLine(page)).toHaveText(LINES[3])
   await begin(page)
   expect(await currentLine(page), 'the stage opens on line 4').toBe(LINES[3])
   expect(LINES.slice(0, 3)).not.toContain(await currentLine(page))
@@ -388,7 +386,7 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   const startDone = await startButton(page)
   expect(startDone.disabled, 'Start is disabled when every line is recorded').toBe(true)
   expect(startDone.text).toBe('Nothing left to read')
-  for (const t of LINES) expect(startDone.text).not.toContain(preview(t))
+  await expect(readyLine(page)).toHaveCount(0)
   expect(await bodyText(page)).toContain('Everything is recorded')
   expect(await tickShown(page)).toBe(true)
   await assertInvariant(page, { pendingOrRefused: false }, 'step 5a · all-done reload')
