@@ -1,0 +1,4680 @@
+{
+ "course": "kor_for_eng",
+ "at": "2026-10-20T13:42:47.882Z",
+ "checks": [
+  {
+   "id": "parentheticals",
+   "scan": "Check 1",
+   "rule": "K11",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 10,
+   "hits": []
+  },
+  {
+   "id": "slashes",
+   "scan": "Check 2",
+   "rule": "L19",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 7,
+   "hits": []
+  },
+  {
+   "id": "wrong-language",
+   "scan": "Checks 3+4",
+   "rule": "K8/K16",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 154,
+   "hits": []
+  },
+  {
+   "id": "multi-sentence",
+   "scan": "Check 5",
+   "rule": "P20",
+   "blocks": false,
+   "count": 5,
+   "subs": {},
+   "ms": 6,
+   "hits": [
+    {
+     "ref": "S0082",
+     "seed": 82,
+     "kind": "seed",
+     "known": "I'm not going to wait for you. Why not?",
+     "target": "기다리지 않을 거예요. 왜요?",
+     "why": "sentences: known 2, target 2"
+    },
+    {
+     "ref": "S0141",
+     "seed": 141,
+     "kind": "seed",
+     "known": "no problem. Everything is okay",
+     "target": "문제없어요. 다 괜찮아요",
+     "why": "sentences: known 2, target 2"
+    },
+    {
+     "ref": "kor_for_eng:S0082L02U07",
+     "seed": 82,
+     "kind": "use",
+     "known": "we're not going to wait. Why not?",
+     "target": "우리는 기다리지 않을 거예요. 왜 안 해요?",
+     "why": "sentences: known 2, target 2"
+    },
+    {
+     "ref": "kor_for_eng:S0082L02U05",
+     "seed": 82,
+     "kind": "use",
+     "known": "she's not going to do it. Why not?",
+     "target": "그녀는 안 할 거예요. 왜 안 해요?",
+     "why": "sentences: known 2, target 2"
+    },
+    {
+     "ref": "kor_for_eng:S0082L02U04",
+     "seed": 82,
+     "kind": "use",
+     "known": "I'm not going to wait. Why not?",
+     "target": "기다리지 않을 거예요. 왜 안 해요?",
+     "why": "sentences: known 2, target 2"
+    }
+   ]
+  },
+  {
+   "id": "unpronounceable",
+   "scan": "Check 6",
+   "rule": "A16",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 5,
+   "hits": []
+  },
+  {
+   "id": "wrapping-quotes",
+   "scan": "Check 7",
+   "rule": "display",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 2,
+   "hits": []
+  },
+  {
+   "id": "trailing-period",
+   "scan": "Check 8",
+   "rule": "A7 (no difference)",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 3,
+   "hits": []
+  },
+  {
+   "id": "lowercase-i",
+   "scan": "Check 9",
+   "rule": "K9",
+   "blocks": false,
+   "count": 3,
+   "subs": {},
+   "ms": 4,
+   "hits": [
+    {
+     "ref": "kor_for_eng:S0204L01U03",
+     "seed": 204,
+     "kind": "use",
+     "known": "i'll ask him whether he can help with the arrangements",
+     "target": "준비를 도와줄 수 있는지 그한테 물어볼 거예요",
+     "why": "lowercase i on the known side"
+    },
+    {
+     "ref": "kor_for_eng:S0204L01U02",
+     "seed": 204,
+     "kind": "use",
+     "known": "i'll help with the arrangements later",
+     "target": "나중에 준비를 도와줄 거예요",
+     "why": "lowercase i on the known side"
+    },
+    {
+     "ref": "kor_for_eng:S0237L01U05",
+     "seed": 237,
+     "kind": "use",
+     "known": "i'm ready to go before the weekend",
+     "target": "주말 전에 갈 준비됐어요",
+     "why": "lowercase i on the known side"
+    }
+   ]
+  },
+  {
+   "id": "zut-lego",
+   "scan": "Check 10",
+   "rule": "K2/K4",
+   "blocks": true,
+   "count": 16,
+   "subs": {
+    "k23-explained": 6,
+    "conflict": 10
+   },
+   "ms": 4,
+   "hits": [
+    {
+     "ref": "S0331L04",
+     "seed": 331,
+     "kind": "lego",
+     "known": "can't",
+     "target": "수 없어요",
+     "why": "\"cant\" → 수 없어요 | 못 · intro: The Korean for: 'can't', as in — 'she can't provide all the answers', is:",
+     "sub": "k23-explained",
+     "group": "cant"
+    },
+    {
+     "ref": "S0526L01",
+     "seed": 526,
+     "kind": "lego",
+     "known": "can't",
+     "target": "못",
+     "why": "\"cant\" → 수 없어요 | 못 · intro: The Korean for: 'can't guess', as in — 'I'm finding it hard to believe that you can't guess', is:",
+     "sub": "k23-explained",
+     "group": "cant"
+    },
+    {
+     "ref": "S0345L01",
+     "seed": 345,
+     "kind": "lego",
+     "known": "leave",
+     "target": "떠날",
+     "why": "\"leave\" → 떠날 | 두고 · intro: The Korean for: 'ready to leave', as in — 'who said that he's not ready to leave yet', is:",
+     "sub": "k23-explained",
+     "group": "leave"
+    },
+    {
+     "ref": "S0351L02",
+     "seed": 351,
+     "kind": "lego",
+     "known": "leave",
+     "target": "두고",
+     "why": "\"leave\" → 떠날 | 두고 · intro: The Korean for: 'leave', as in — 'no he didn't want to leave me on my own', is:",
+     "sub": "k23-explained",
+     "group": "leave"
+    },
+    {
+     "ref": "S0351L03",
+     "seed": 351,
+     "kind": "lego",
+     "known": "go",
+     "target": "가고",
+     "why": "\"go\" → 가고 | 갈 · intro: The Korean for: 'go', is:",
+     "sub": "conflict",
+     "group": "go"
+    },
+    {
+     "ref": "S0378L01",
+     "seed": 378,
+     "kind": "lego",
+     "known": "go",
+     "target": "갈",
+     "why": "\"go\" → 가고 | 갈 · intro: The Korean for: 'for holidays', as in — 'no I didn't have enough money for holidays', is:",
+     "sub": "conflict",
+     "group": "go"
+    },
+    {
+     "ref": "S0428L01",
+     "seed": 428,
+     "kind": "lego",
+     "known": "to visit",
+     "target": "방문하고",
+     "why": "\"to visit\" → 방문하고 | 놀러 · intro: The Korean for: 'to visit', as in — 'she wants to visit us', is:",
+     "sub": "k23-explained",
+     "group": "to visit"
+    },
+    {
+     "ref": "S0454L01",
+     "seed": 454,
+     "kind": "lego",
+     "known": "to visit",
+     "target": "놀러",
+     "why": "\"to visit\" → 방문하고 | 놀러 · intro: The Korean for: 'came round', as in — 'our friends came round at about six o'clock', is:",
+     "sub": "k23-explained",
+     "group": "to visit"
+    },
+    {
+     "ref": "S0431L01",
+     "seed": 431,
+     "kind": "lego",
+     "known": "ready",
+     "target": "준비",
+     "why": "\"ready\" → 준비 | 준비됐어요 · intro: The Korean for: 'ready', as in — 'she's not ready together', is:",
+     "sub": "conflict",
+     "group": "ready"
+    },
+    {
+     "ref": "S0664L02",
+     "seed": 664,
+     "kind": "lego",
+     "known": "ready?",
+     "target": "준비됐어요?",
+     "why": "\"ready\" → 준비 | 준비됐어요 · intro: The Korean for: 'ready?', is:",
+     "sub": "conflict",
+     "group": "ready"
+    },
+    {
+     "ref": "S0486L01",
+     "seed": 486,
+     "kind": "lego",
+     "known": "eyes",
+     "target": "눈이",
+     "why": "\"eyes\" → 눈이 | 눈을 · intro: The Korean for: 'your eyes are beautiful', is:",
+     "sub": "conflict",
+     "group": "eyes"
+    },
+    {
+     "ref": "S0596L02",
+     "seed": 596,
+     "kind": "lego",
+     "known": "eyes",
+     "target": "눈을",
+     "why": "\"eyes\" → 눈이 | 눈을 · intro: The Korean for: 'close my eyes', is:",
+     "sub": "conflict",
+     "group": "eyes"
+    },
+    {
+     "ref": "S0499L03",
+     "seed": 499,
+     "kind": "lego",
+     "known": "must close",
+     "target": "닫아야",
+     "why": "\"must close\" → 닫아야 | 감아야 · intro: The Korean for: 'must close', is:",
+     "sub": "conflict",
+     "group": "must close"
+    },
+    {
+     "ref": "S0596L03",
+     "seed": 596,
+     "kind": "lego",
+     "known": "must close",
+     "target": "감아야",
+     "why": "\"must close\" → 닫아야 | 감아야 · intro: The Korean for: 'must close', is:",
+     "sub": "conflict",
+     "group": "must close"
+    },
+    {
+     "ref": "S0625L01",
+     "seed": 625,
+     "kind": "lego",
+     "known": "to drink",
+     "target": "마시고",
+     "why": "\"to drink\" → 마시고 | 마실 · intro: The Korean for: 'to drink', as in — 'she wants to drink something', is:",
+     "sub": "conflict",
+     "group": "to drink"
+    },
+    {
+     "ref": "S0630L01",
+     "seed": 630,
+     "kind": "lego",
+     "known": "to drink",
+     "target": "마실",
+     "why": "\"to drink\" → 마시고 | 마실 · intro: The Korean for: 'something to drink', is:",
+     "sub": "conflict",
+     "group": "to drink"
+    }
+   ]
+  },
+  {
+   "id": "capitalisation",
+   "scan": "Check 13",
+   "rule": "display",
+   "blocks": false,
+   "count": 38,
+   "subs": {
+    "case-dup": 10,
+    "outlier": 28
+   },
+   "ms": 49,
+   "hits": [
+    {
+     "ref": "S0500",
+     "seed": 500,
+     "kind": "seed",
+     "known": "Why don't you want to sit between the two girls?",
+     "target": "왜 두 여자아이 사이에 앉고 싶지 않아요?",
+     "why": "case-only duplicate on known: Why don't you want to sit between the two girls? ≠ why don't you want to sit between the two girls?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "kor_for_eng:S0500L02U01",
+     "seed": 500,
+     "kind": "use",
+     "known": "why don't you want to sit between the two girls?",
+     "target": "왜 두 여자아이 사이에 앉고 싶지 않아요?",
+     "why": "case-only duplicate on known: Why don't you want to sit between the two girls? ≠ why don't you want to sit between the two girls?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "kor_for_eng:S0141L02B02",
+     "seed": 141,
+     "kind": "build",
+     "known": "everything is okay",
+     "target": "다 괜찮아요",
+     "why": "case-only duplicate on known: everything is okay ≠ Everything is okay",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "kor_for_eng:S0141L02U02",
+     "seed": 141,
+     "kind": "use",
+     "known": "Everything is okay",
+     "target": "다 괜찮아요",
+     "why": "case-only duplicate on known: everything is okay ≠ Everything is okay",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "kor_for_eng:S0145L02B04",
+     "seed": 145,
+     "kind": "build",
+     "known": "why are you not happy any more",
+     "target": "왜 더 이상 행복하지 않아요",
+     "why": "case-only duplicate on known: why are you not happy any more ≠ Why are you not happy any more",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "kor_for_eng:S0145L02U01",
+     "seed": 145,
+     "kind": "use",
+     "known": "Why are you not happy any more",
+     "target": "왜 더 이상 행복하지 않아요",
+     "why": "case-only duplicate on known: why are you not happy any more ≠ Why are you not happy any more",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "kor_for_eng:S0145L01B02",
+     "seed": 145,
+     "kind": "build",
+     "known": "why are you not happy",
+     "target": "왜 행복하지 않아요",
+     "why": "case-only duplicate on known: why are you not happy ≠ Why are you not happy",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "kor_for_eng:S0145L01U01",
+     "seed": 145,
+     "kind": "use",
+     "known": "Why are you not happy",
+     "target": "왜 행복하지 않아요",
+     "why": "case-only duplicate on known: why are you not happy ≠ Why are you not happy",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "kor_for_eng:S0269L01B01",
+     "seed": 269,
+     "kind": "build",
+     "known": "why don't you want to wait for your father",
+     "target": "왜 아버지를 기다리고 싶지 않아요",
+     "why": "case-only duplicate on known: why don't you want to wait for your father ≠ Why don't you want to wait for your father",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "kor_for_eng:S0269L01U01",
+     "seed": 269,
+     "kind": "use",
+     "known": "Why don't you want to wait for your father",
+     "target": "왜 아버지를 기다리고 싶지 않아요",
+     "why": "case-only duplicate on known: why don't you want to wait for your father ≠ Why don't you want to wait for your father",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0021",
+     "seed": 21,
+     "kind": "seed",
+     "known": "Why are you learning her name?",
+     "target": "왜 그녀의 이름을 배우고 있어요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0067",
+     "seed": 67,
+     "kind": "seed",
+     "known": "Why do you want to stop?",
+     "target": "왜 멈추고 싶어요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0113",
+     "seed": 113,
+     "kind": "seed",
+     "known": "Why can't I remember what you said?",
+     "target": "왜 뭐라고 했는지 기억 못 해요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0145",
+     "seed": 145,
+     "kind": "seed",
+     "known": "Why are you not happy any more?",
+     "target": "왜 더 이상 행복하지 않아요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0269",
+     "seed": 269,
+     "kind": "seed",
+     "known": "Why don't you want to wait for your father?",
+     "target": "왜 아버지를 기다리고 싶지 않아요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0500",
+     "seed": 500,
+     "kind": "seed",
+     "known": "Why don't you want to sit between the two girls?",
+     "target": "왜 두 여자아이 사이에 앉고 싶지 않아요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0021L01U03",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do we want to meet?",
+     "target": "왜 우리는 만나고 싶어요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0021L01U05",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do you remember his name?",
+     "target": "왜 그의 이름을 기억해요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0021L01U01",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do you speak Korean?",
+     "target": "왜 한국어로 말해요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0021L01U06",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why does he work hard all day?",
+     "target": "왜 그는 하루 종일 열심히 해요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0021L01U08",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why don't you want to stop?",
+     "target": "왜 멈추고 싶지 않아요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0021L03U01",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why are you learning her name?",
+     "target": "왜 그녀의 이름을 배우고 있어요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0021L02U03",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do you remember her name?",
+     "target": "왜 그녀의 이름을 기억해요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0022L01U05",
+     "seed": 22,
+     "kind": "use",
+     "known": "Why do you want to meet people who speak Korean?",
+     "target": "왜 한국어를 말하는 사람들을 만나고 싶어요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0049L01U06",
+     "seed": 49,
+     "kind": "use",
+     "known": "Everything is like this",
+     "target": "모든 게 이런 거예요",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0067L01U01",
+     "seed": 67,
+     "kind": "use",
+     "known": "Why do you want to stop?",
+     "target": "왜 멈추고 싶어요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0067L01U06",
+     "seed": 67,
+     "kind": "use",
+     "known": "Why does she want to stop?",
+     "target": "그녀는 왜 멈추고 싶어요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0082L02U01",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not?",
+     "target": "왜 안 해요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0113L01U01",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said?",
+     "target": "왜 뭐라고 했는지 기억하지 못해요?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0141L02U02",
+     "seed": 141,
+     "kind": "use",
+     "known": "Everything is okay",
+     "target": "다 괜찮아요",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0145L02U01",
+     "seed": 145,
+     "kind": "use",
+     "known": "Why are you not happy any more",
+     "target": "왜 더 이상 행복하지 않아요",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0145L01U01",
+     "seed": 145,
+     "kind": "use",
+     "known": "Why are you not happy",
+     "target": "왜 행복하지 않아요",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0149L02U07",
+     "seed": 149,
+     "kind": "use",
+     "known": "Everything is okay so I hope you'll finish soon",
+     "target": "다 괜찮아요 그래서 곧 끝나면 좋겠어요",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0149L01U08",
+     "seed": 149,
+     "kind": "use",
+     "known": "Everything is okay this isn't very difficult",
+     "target": "다 괜찮아요 이건 별로 어렵지 않아요",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0155L01U08",
+     "seed": 155,
+     "kind": "use",
+     "known": "Everything is okay I don't mind waiting for a few minutes",
+     "target": "다 괜찮아요 몇 분 기다려도 괜찮아요",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0158L01U07",
+     "seed": 158,
+     "kind": "use",
+     "known": "Everything is okay let's talk about something else",
+     "target": "다 괜찮아요 다른 거 이야기해요",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0166L01U08",
+     "seed": 166,
+     "kind": "use",
+     "known": "Everything is fine my name is not unusual",
+     "target": "다 괜찮아요 제 이름은 별로 특이하지 않아요",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "kor_for_eng:S0269L01U01",
+     "seed": 269,
+     "kind": "use",
+     "known": "Why don't you want to wait for your father",
+     "target": "왜 아버지를 기다리고 싶지 않아요",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    }
+   ]
+  },
+  {
+   "id": "identical",
+   "scan": "Check 15",
+   "rule": "K16",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 52,
+   "hits": []
+  },
+  {
+   "id": "underpopulated",
+   "scan": "Check 16",
+   "rule": "P10/P30",
+   "blocks": "empty only",
+   "count": 2,
+   "subs": {
+    "no-use": 1,
+    "few-use": 1
+   },
+   "ms": 234,
+   "hits": [
+    {
+     "ref": "S0001L02",
+     "seed": 1,
+     "kind": "lego",
+     "known": "now",
+     "target": "지금",
+     "why": "1 build, 0 use",
+     "sub": "no-use"
+    },
+    {
+     "ref": "S0001L03",
+     "seed": 1,
+     "kind": "lego",
+     "known": "together",
+     "target": "같이",
+     "why": "1 build, 1 use",
+     "sub": "few-use"
+    }
+   ]
+  },
+  {
+   "id": "ita-subjunctive",
+   "scan": "Check 17b",
+   "rule": "K16/K40",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "spa-llevar",
+   "scan": "Check 17a",
+   "rule": "K16",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "deu-verb-final",
+   "scan": "Check 17c",
+   "rule": "K16",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "jpn-ka",
+   "scan": "Check 17d",
+   "rule": "A9",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "por-voce",
+   "scan": "Check 17e",
+   "rule": "K12",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "duplicate-lego",
+   "scan": "new",
+   "rule": "L17/L31/P25",
+   "blocks": false,
+   "count": 78,
+   "subs": {
+    "orphan-not-new": 59,
+    "repeat-debut": 19
+   },
+   "ms": 4,
+   "hits": [
+    {
+     "ref": "S0207L01",
+     "seed": 207,
+     "kind": "lego",
+     "known": "you've done what you needed to do",
+     "target": "해야 할 일을 다 했어요",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0257L01",
+     "seed": 257,
+     "kind": "lego",
+     "known": "I like that blue thing",
+     "target": "그 파란 것을 좋아해요",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0304L03",
+     "seed": 304,
+     "kind": "lego",
+     "known": "who doesn't want to",
+     "target": "싶어하지 않는",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0336L02",
+     "seed": 336,
+     "kind": "lego",
+     "known": "that can't",
+     "target": "수 없는",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0379L01",
+     "seed": 379,
+     "kind": "lego",
+     "known": "travel",
+     "target": "여행",
+     "why": "same pair debuted at S0377L03",
+     "sub": "repeat-debut",
+     "twin": "S0377L03"
+    },
+    {
+     "ref": "S0408L01",
+     "seed": 408,
+     "kind": "lego",
+     "known": "a family",
+     "target": "가족을",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0427L02",
+     "seed": 427,
+     "kind": "lego",
+     "known": "that they themselves",
+     "target": "자기들이",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0455L02",
+     "seed": 455,
+     "kind": "lego",
+     "known": "the children",
+     "target": "아이들이",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0464L02",
+     "seed": 464,
+     "kind": "lego",
+     "known": "the room number",
+     "target": "번호를",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0469L02",
+     "seed": 469,
+     "kind": "lego",
+     "known": "that we can't",
+     "target": "없다는",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0475L03",
+     "seed": 475,
+     "kind": "lego",
+     "known": "to wait",
+     "target": "기다리는",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0483L03",
+     "seed": 483,
+     "kind": "lego",
+     "known": "as for life",
+     "target": "인생은",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0485L01",
+     "seed": 485,
+     "kind": "lego",
+     "known": "makes",
+     "target": "해",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0492L01",
+     "seed": 492,
+     "kind": "lego",
+     "known": "where",
+     "target": "어디가",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0498L01",
+     "seed": 498,
+     "kind": "lego",
+     "known": "standing",
+     "target": "서",
+     "why": "same pair debuted at S0390L01",
+     "sub": "repeat-debut",
+     "twin": "S0390L01"
+    },
+    {
+     "ref": "S0559L03",
+     "seed": 559,
+     "kind": "lego",
+     "known": "found?",
+     "target": "찾았어요?",
+     "why": "same pair debuted at S0514L03",
+     "sub": "repeat-debut",
+     "twin": "S0514L03"
+    },
+    {
+     "ref": "S0568L01",
+     "seed": 568,
+     "kind": "lego",
+     "known": "next time",
+     "target": "다음에",
+     "why": "same pair debuted at S0465L01",
+     "sub": "repeat-debut",
+     "twin": "S0465L01"
+    },
+    {
+     "ref": "S0573L01",
+     "seed": 573,
+     "kind": "lego",
+     "known": "holiday",
+     "target": "휴가를",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0574L01",
+     "seed": 574,
+     "kind": "lego",
+     "known": "as for the holidays",
+     "target": "휴가는",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0578L01",
+     "seed": 578,
+     "kind": "lego",
+     "known": "warmer",
+     "target": "더 따뜻한",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0580L01",
+     "seed": 580,
+     "kind": "lego",
+     "known": "children",
+     "target": "아이들을",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0584L03",
+     "seed": 584,
+     "kind": "lego",
+     "known": "mountains",
+     "target": "산을",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0587L01",
+     "seed": 587,
+     "kind": "lego",
+     "known": "she",
+     "target": "그녀는",
+     "why": "same pair debuted at S0017L01",
+     "sub": "repeat-debut",
+     "twin": "S0017L01"
+    },
+    {
+     "ref": "S0587L03",
+     "seed": 587,
+     "kind": "lego",
+     "known": "some eggs",
+     "target": "달걀을",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0588L01",
+     "seed": 588,
+     "kind": "lego",
+     "known": "so",
+     "target": "그래서",
+     "why": "same pair debuted at S0056L01",
+     "sub": "repeat-debut",
+     "twin": "S0056L01"
+    },
+    {
+     "ref": "S0590L03",
+     "seed": 590,
+     "kind": "lego",
+     "known": "seeing it leave",
+     "target": "떠나는 걸",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0592L03",
+     "seed": 592,
+     "kind": "lego",
+     "known": "road",
+     "target": "길을",
+     "why": "same pair debuted at S0502L01",
+     "sub": "repeat-debut",
+     "twin": "S0502L01"
+    },
+    {
+     "ref": "S0593L03",
+     "seed": 593,
+     "kind": "lego",
+     "known": "still",
+     "target": "아직도",
+     "why": "same pair debuted at S0410L01",
+     "sub": "repeat-debut",
+     "twin": "S0410L01"
+    },
+    {
+     "ref": "S0597L01",
+     "seed": 597,
+     "kind": "lego",
+     "known": "that he",
+     "target": "그가",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0597L02",
+     "seed": 597,
+     "kind": "lego",
+     "known": "about it",
+     "target": "그것에 대해",
+     "why": "same pair debuted at S0037L02",
+     "sub": "repeat-debut",
+     "twin": "S0037L02"
+    },
+    {
+     "ref": "S0598L01",
+     "seed": 598,
+     "kind": "lego",
+     "known": "he",
+     "target": "그는",
+     "why": "same pair debuted at S0016L01",
+     "sub": "repeat-debut",
+     "twin": "S0016L01"
+    },
+    {
+     "ref": "S0598L04",
+     "seed": 598,
+     "kind": "lego",
+     "known": "about",
+     "target": "대한",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0604L02",
+     "seed": 604,
+     "kind": "lego",
+     "known": "may stay",
+     "target": "있어도",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0612L02",
+     "seed": 612,
+     "kind": "lego",
+     "known": "something",
+     "target": "뭔가를",
+     "why": "same pair debuted at S0004L01",
+     "sub": "repeat-debut",
+     "twin": "S0004L01"
+    },
+    {
+     "ref": "S0613L02",
+     "seed": 613,
+     "kind": "lego",
+     "known": "house",
+     "target": "집을",
+     "why": "same pair debuted at S0514L01",
+     "sub": "repeat-debut",
+     "twin": "S0514L01"
+    },
+    {
+     "ref": "S0613L03",
+     "seed": 613,
+     "kind": "lego",
+     "known": "would have bought",
+     "target": "샀을 거예요",
+     "why": "same pair debuted at S0612L03",
+     "sub": "repeat-debut",
+     "twin": "S0612L03"
+    },
+    {
+     "ref": "S0614L03",
+     "seed": 614,
+     "kind": "lego",
+     "known": "it's near",
+     "target": "근처예요",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0617L01",
+     "seed": 617,
+     "kind": "lego",
+     "known": "that",
+     "target": "그건",
+     "why": "same pair debuted at S0127L01",
+     "sub": "repeat-debut",
+     "twin": "S0127L01"
+    },
+    {
+     "ref": "S0620L01",
+     "seed": 620,
+     "kind": "lego",
+     "known": "last time",
+     "target": "마지막으로",
+     "why": "same pair debuted at S0572L02",
+     "sub": "repeat-debut",
+     "twin": "S0572L02"
+    },
+    {
+     "ref": "S0621L01",
+     "seed": 621,
+     "kind": "lego",
+     "known": "that it",
+     "target": "그것이",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0622L01",
+     "seed": 622,
+     "kind": "lego",
+     "known": "the children",
+     "target": "아이들이",
+     "why": "same pair debuted at S0567L02",
+     "sub": "repeat-debut",
+     "twin": "S0567L02"
+    },
+    {
+     "ref": "S0635L01",
+     "seed": 635,
+     "kind": "lego",
+     "known": "jane's",
+     "target": "제인의",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0639L02",
+     "seed": 639,
+     "kind": "lego",
+     "known": "with",
+     "target": "함께",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0642L02",
+     "seed": 642,
+     "kind": "lego",
+     "known": "mood",
+     "target": "기분이",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0642L03",
+     "seed": 642,
+     "kind": "lego",
+     "known": "how are you?",
+     "target": "어떠세요?",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0644L01",
+     "seed": 644,
+     "kind": "lego",
+     "known": "teacher",
+     "target": "선생님",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0644L02",
+     "seed": 644,
+     "kind": "lego",
+     "known": "this one",
+     "target": "그거",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0644L04",
+     "seed": 644,
+     "kind": "lego",
+     "known": "could you?",
+     "target": "주시겠어요?",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0645L02",
+     "seed": 645,
+     "kind": "lego",
+     "known": "can help",
+     "target": "도와드릴 수",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0645L03",
+     "seed": 645,
+     "kind": "lego",
+     "known": "can do",
+     "target": "있어요",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0646L02",
+     "seed": 646,
+     "kind": "lego",
+     "known": "something",
+     "target": "뭔가를",
+     "why": "same pair debuted at S0004L01",
+     "sub": "repeat-debut",
+     "twin": "S0004L01"
+    },
+    {
+     "ref": "S0647L02",
+     "seed": 647,
+     "kind": "lego",
+     "known": "this one",
+     "target": "그거",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0648L02",
+     "seed": 648,
+     "kind": "lego",
+     "known": "what was said",
+     "target": "말씀하신 것",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0651L02",
+     "seed": 651,
+     "kind": "lego",
+     "known": "how",
+     "target": "어떻게",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0652L01",
+     "seed": 652,
+     "kind": "lego",
+     "known": "teacher",
+     "target": "선생님",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0652L03",
+     "seed": 652,
+     "kind": "lego",
+     "known": "do you need?",
+     "target": "필요하세요?",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0654L02",
+     "seed": 654,
+     "kind": "lego",
+     "known": "help you + can",
+     "target": "도와드릴 수",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0654L03",
+     "seed": 654,
+     "kind": "lego",
+     "known": "if I can",
+     "target": "있을지",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0655L01",
+     "seed": 655,
+     "kind": "lego",
+     "known": "madam",
+     "target": "여사님이",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0655L03",
+     "seed": 655,
+     "kind": "lego",
+     "known": "is doing well",
+     "target": "잘 하고 계신",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0656L02",
+     "seed": 656,
+     "kind": "lego",
+     "known": "with",
+     "target": "함께",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0657L02",
+     "seed": 657,
+     "kind": "lego",
+     "known": "mood",
+     "target": "기분이",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0657L03",
+     "seed": 657,
+     "kind": "lego",
+     "known": "how is it?",
+     "target": "어때요?",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0658L01",
+     "seed": 658,
+     "kind": "lego",
+     "known": "you all",
+     "target": "여러분",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0659L01",
+     "seed": 659,
+     "kind": "lego",
+     "known": "you all",
+     "target": "여러분",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0659L02",
+     "seed": 659,
+     "kind": "lego",
+     "known": "this one",
+     "target": "그거",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0659L04",
+     "seed": 659,
+     "kind": "lego",
+     "known": "could you?",
+     "target": "주시겠어요?",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0660L02",
+     "seed": 660,
+     "kind": "lego",
+     "known": "can help",
+     "target": "도와드릴 수",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0660L03",
+     "seed": 660,
+     "kind": "lego",
+     "known": "can do",
+     "target": "있어요",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0661L01",
+     "seed": 661,
+     "kind": "lego",
+     "known": "you all",
+     "target": "여러분",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0662L01",
+     "seed": 662,
+     "kind": "lego",
+     "known": "you all",
+     "target": "여러분",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0662L02",
+     "seed": 662,
+     "kind": "lego",
+     "known": "it",
+     "target": "그걸",
+     "why": "same pair debuted at S0314L01",
+     "sub": "repeat-debut",
+     "twin": "S0314L01"
+    },
+    {
+     "ref": "S0662L03",
+     "seed": 662,
+     "kind": "lego",
+     "known": "speak",
+     "target": "말해요",
+     "why": "same pair debuted at S0009L01",
+     "sub": "repeat-debut",
+     "twin": "S0009L01"
+    },
+    {
+     "ref": "S0663L02",
+     "seed": 663,
+     "kind": "lego",
+     "known": "what was said",
+     "target": "말씀하신 것",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0664L01",
+     "seed": 664,
+     "kind": "lego",
+     "known": "you all",
+     "target": "여러분",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0665L01",
+     "seed": 665,
+     "kind": "lego",
+     "known": "you all",
+     "target": "여러분",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0666L01",
+     "seed": 666,
+     "kind": "lego",
+     "known": "as for you all",
+     "target": "여러분은",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0666L02",
+     "seed": 666,
+     "kind": "lego",
+     "known": "how",
+     "target": "어떻게",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    }
+   ]
+  },
+  {
+   "id": "content-mismatch",
+   "scan": "new",
+   "rule": "S7/K16",
+   "blocks": false,
+   "count": 82,
+   "subs": {
+    "HIGH": 82
+   },
+   "ms": 812,
+   "hits": [
+    {
+     "ref": "kor_for_eng:S0614L02U06",
+     "seed": 614,
+     "kind": "use",
+     "known": "we found where they live",
+     "target": "우리는 가족이 사는 곳 있어요",
+     "why": "tail_uncovered: final clause unrendered: live; body_uncovered: unrendered known content: found where; extra_tail: target content with no known counterpart: 가족이 사는 곳",
+     "sub": "HIGH",
+     "score": 4.78
+    },
+    {
+     "ref": "kor_for_eng:S0407L03U05",
+     "seed": 407,
+     "kind": "use",
+     "known": "shouldn't she show it now?",
+     "target": "지금 보여야 하지 않아요?",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: shouldn't show",
+     "sub": "HIGH",
+     "score": 4.6
+    },
+    {
+     "ref": "kor_for_eng:S0599L01U02",
+     "seed": 599,
+     "kind": "use",
+     "known": "so if she'd told him he would have gone",
+     "target": "그래서 말해 줬으면 갔어요",
+     "why": "tail_uncovered: final clause unrendered: gone; body_uncovered: unrendered known content: told him",
+     "sub": "HIGH",
+     "score": 4.6
+    },
+    {
+     "ref": "kor_for_eng:S0599L01U01",
+     "seed": 599,
+     "kind": "use",
+     "known": "if she'd told him he would have gone",
+     "target": "말해 줬으면 갔어요",
+     "why": "tail_uncovered: final clause unrendered: gone; body_uncovered: unrendered known content: told him",
+     "sub": "HIGH",
+     "score": 4.6
+    },
+    {
+     "ref": "kor_for_eng:S0129L01B04",
+     "seed": 129,
+     "kind": "build",
+     "known": "he's so happy that she's doing well",
+     "target": "그는 이렇게 잘하고 있어서 너무 기뻐요",
+     "why": "tail_uncovered: final clause unrendered: doing well; extra_tail: target content with no known counterpart: 잘하고 있어서 너무",
+     "sub": "HIGH",
+     "score": 4.5
+    },
+    {
+     "ref": "kor_for_eng:S0440L02U01",
+     "seed": 440,
+     "kind": "use",
+     "known": "they want to travel while they're still young",
+     "target": "그들은 아직 젊을 때 여행하고 싶어해요",
+     "why": "tail_uncovered: final clause unrendered: they're young; extra_tail: target content with no known counterpart: 아직 때 싶어해요",
+     "sub": "HIGH",
+     "score": 4.5
+    },
+    {
+     "ref": "kor_for_eng:S0506L03U03",
+     "seed": 506,
+     "kind": "use",
+     "known": "she told me she used to live here",
+     "target": "이 근처에서 살았었다고 했어요",
+     "why": "tail_uncovered: final clause unrendered: live here; body_uncovered: unrendered known content: used",
+     "sub": "HIGH",
+     "score": 4.49
+    },
+    {
+     "ref": "kor_for_eng:S0586L01U01",
+     "seed": 586,
+     "kind": "use",
+     "known": "she grew up here loving boiled food",
+     "target": "이 지역은 삶은 자라는 게 어때요?",
+     "why": "tail_uncovered: unrendered at the end: food; body_uncovered: unrendered known content: grew here; extra_tail: target content with no known counterpart: 지역은 자라는; qmark: target is a question, known is not",
+     "sub": "HIGH",
+     "score": 4.44
+    },
+    {
+     "ref": "kor_for_eng:S0653L02U02",
+     "seed": 653,
+     "kind": "use",
+     "known": "sir asked the madam if she's okay",
+     "target": "선생님 여사님 괜찮으세요?",
+     "why": "tail_uncovered: final clause unrendered: okay; body_uncovered: unrendered known content: asked; qmark: target is a question, known is not",
+     "sub": "HIGH",
+     "score": 4.39
+    },
+    {
+     "ref": "kor_for_eng:S0654L01U05",
+     "seed": 654,
+     "kind": "use",
+     "known": "she asked sir if he's okay",
+     "target": "선생님을 괜찮으세요?",
+     "why": "tail_uncovered: final clause unrendered: okay; body_uncovered: unrendered known content: asked; qmark: target is a question, known is not",
+     "sub": "HIGH",
+     "score": 4.39
+    },
+    {
+     "ref": "kor_for_eng:S0580L06U01",
+     "seed": 580,
+     "kind": "use",
+     "known": "we've often wanted to take the children somewhere a little warmer",
+     "target": "아이들을 좀 더 따뜻한 곳으로 데려가고 싶었던 적이 많아요",
+     "why": "tail_uncovered: unrendered at the end: little; body_uncovered: unrendered known content: often wanted; extra_tail: target content with no known counterpart: 좀 적이 많아요",
+     "sub": "HIGH",
+     "score": 4.34
+    },
+    {
+     "ref": "kor_for_eng:S0614L02U04",
+     "seed": 614,
+     "kind": "use",
+     "known": "still she knows where they live",
+     "target": "아직도 가족이 사는 곳 알아요",
+     "why": "tail_uncovered: final clause unrendered: live; body_uncovered: unrendered known content: where; extra_tail: target content with no known counterpart: 가족이 사는 곳",
+     "sub": "HIGH",
+     "score": 4.29
+    },
+    {
+     "ref": "kor_for_eng:S0571L01U05",
+     "seed": 571,
+     "kind": "use",
+     "known": "now that one is her choice",
+     "target": "지금 그게 결정했어요",
+     "why": "tail_uncovered: final clause unrendered: her choice; body_uncovered: unrendered known content: now",
+     "sub": "HIGH",
+     "score": 4.25
+    },
+    {
+     "ref": "kor_for_eng:S0588L05U06",
+     "seed": 588,
+     "kind": "use",
+     "known": "from the window she thought about leaving home",
+     "target": "창문에서 집을 떠나고 있어요",
+     "why": "tail_uncovered: final clause unrendered: leaving home; body_uncovered: unrendered known content: thought",
+     "sub": "HIGH",
+     "score": 4.25
+    },
+    {
+     "ref": "kor_for_eng:S0588L04U03",
+     "seed": 588,
+     "kind": "use",
+     "known": "every morning she thought about leaving home",
+     "target": "매일 아침 집을 있어요",
+     "why": "tail_uncovered: final clause unrendered: leaving home; body_uncovered: unrendered known content: thought",
+     "sub": "HIGH",
+     "score": 4.25
+    },
+    {
+     "ref": "kor_for_eng:S0497L03U01",
+     "seed": 497,
+     "kind": "use",
+     "known": "that sounds as though you need to get some sleep",
+     "target": "잠을 좀 자야 할 것 같네요",
+     "why": "tail_uncovered: unrendered at the end: get some; body_uncovered: unrendered known content: sounds as though",
+     "sub": "HIGH",
+     "score": 4.23
+    },
+    {
+     "ref": "kor_for_eng:S0127L03U01",
+     "seed": 127,
+     "kind": "use",
+     "known": "that isn't why I wanted to see you",
+     "target": "그건 만나고 싶었던 이유가 아니에요",
+     "why": "tail_uncovered: final clause unrendered: see; body_uncovered: unrendered known content: why wanted; extra_tail: target content with no known counterpart: 만나고 이유가",
+     "sub": "HIGH",
+     "score": 4.04
+    },
+    {
+     "ref": "kor_for_eng:S0396L01U05",
+     "seed": 396,
+     "kind": "use",
+     "known": "no need to stand here",
+     "target": "서 있을 필요는 없어요",
+     "why": "tail_uncovered: final clause unrendered: here; body_uncovered: unrendered known content: no stand",
+     "sub": "HIGH",
+     "score": 4.04
+    },
+    {
+     "ref": "kor_for_eng:S0293L01U04",
+     "seed": 293,
+     "kind": "use",
+     "known": "together we have to find out where he's going to meet us",
+     "target": "같이 그가 어디서 만날 건지 알아내야 해요",
+     "why": "tail_uncovered: final clause unrendered: meet us",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "kor_for_eng:S0334L02U01",
+     "seed": 334,
+     "kind": "use",
+     "known": "I saw a kitten just now",
+     "target": "지금 새끼 고양이를 봤어요",
+     "why": "tail_uncovered: final clause unrendered: just now",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "kor_for_eng:S0334L01U01",
+     "seed": 334,
+     "kind": "use",
+     "known": "I saw a puppy just now",
+     "target": "지금 새끼 개를 봤어요",
+     "why": "tail_uncovered: final clause unrendered: just now",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "kor_for_eng:S0398L04U01",
+     "seed": 398,
+     "kind": "use",
+     "known": "we want to become more patient with our children",
+     "target": "아이들에게 더 참을성 있게 되고 싶어요",
+     "why": "tail_uncovered: final clause unrendered: our children",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "kor_for_eng:S0405L02U05",
+     "seed": 405,
+     "kind": "use",
+     "known": "do you know if you need to book now?",
+     "target": "지금 예약 하는지 알아요?",
+     "why": "tail_uncovered: final clause unrendered: book now",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "kor_for_eng:S0511L02U05",
+     "seed": 511,
+     "kind": "use",
+     "known": "she knows it took several hours",
+     "target": "몇 시간이 걸렸다는 걸 알아요",
+     "why": "tail_uncovered: final clause unrendered: several hours",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "kor_for_eng:S0511L02U02",
+     "seed": 511,
+     "kind": "use",
+     "known": "I heard it took several hours",
+     "target": "몇 시간이 걸렸다고 들었어요",
+     "why": "tail_uncovered: final clause unrendered: several hours",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "kor_for_eng:S0620L01U01",
+     "seed": 620,
+     "kind": "use",
+     "known": "the last time they met",
+     "target": "마지막으로 서로 본 지 있었어요",
+     "why": "tail_uncovered: final clause unrendered: met; extra_tail: target content with no known counterpart: 서로 본 지",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "kor_for_eng:S0668L03B02",
+     "seed": 668,
+     "kind": "build",
+     "known": "going would be nice",
+     "target": "교회가 갈 수 있으면 좋겠어요",
+     "why": "tail_uncovered: final clause unrendered: nice; extra_tail: target content with no known counterpart: 갈 있으면 좋겠어요",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "kor_for_eng:S0668L03B03",
+     "seed": 668,
+     "kind": "build",
+     "known": "all going would be nice",
+     "target": "교회가 여러분 다 갈 수 있으면 좋겠어요",
+     "why": "tail_uncovered: final clause unrendered: nice; extra_tail: target content with no known counterpart: 갈 있으면 좋겠어요",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "kor_for_eng:S0668L03U06",
+     "seed": 668,
+     "kind": "use",
+     "known": "she knows that would be nice",
+     "target": "갈 수 있으면 알아요 좋겠어요",
+     "why": "tail_uncovered: final clause unrendered: nice; extra_tail: target content with no known counterpart: 갈 있으면 좋겠어요",
+     "sub": "HIGH",
+     "score": 3.8
+    },
+    {
+     "ref": "kor_for_eng:S0585L02U04",
+     "seed": 585,
+     "kind": "use",
+     "known": "she grew up looking from the window",
+     "target": "침실 창문에서 자라는 게 어때요?",
+     "why": "body_uncovered: unrendered known content: grew looking; extra_tail: target content with no known counterpart: 침실 자라는; qmark: target is a question, known is not",
+     "sub": "HIGH",
+     "score": 3.74
+    },
+    {
+     "ref": "kor_for_eng:S0287L01U04",
+     "seed": 287,
+     "kind": "use",
+     "known": "in that case how many people do you know who like watching TV?",
+     "target": "그러면 TV 보는 것을 좋아하는 사람을 몇 명이나 알아요",
+     "why": "tail_uncovered: unrendered at the end: tv; extra_tail: target content with no known counterpart: 그러면 몇; qmark: known is a question, target is not",
+     "sub": "HIGH",
+     "score": 3.7
+    },
+    {
+     "ref": "kor_for_eng:S0334L03U04",
+     "seed": 334,
+     "kind": "use",
+     "known": "let her hold the kitten together right now",
+     "target": "지금 같이 새끼 고양이를 안게 해 줄 수 있어요",
+     "why": "tail_uncovered: final clause unrendered: right now; body_uncovered: unrendered known content: her",
+     "sub": "HIGH",
+     "score": 3.69
+    },
+    {
+     "ref": "kor_for_eng:S0658L02U03",
+     "seed": 658,
+     "kind": "use",
+     "known": "sir asked the madam if she wants it",
+     "target": "선생님을 여사님이 원하세요?",
+     "why": "tail_uncovered: final clause unrendered: wants; body_uncovered: unrendered known content: asked; qmark: target is a question, known is not",
+     "sub": "HIGH",
+     "score": 3.59
+    },
+    {
+     "ref": "kor_for_eng:S0002L01U04",
+     "seed": 2,
+     "kind": "use",
+     "known": "let's do it together now",
+     "target": "지금 같이 해요",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: let's",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0040L02B03",
+     "seed": 40,
+     "kind": "build",
+     "known": "how do you feel now",
+     "target": "지금 기분이 어때요",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: how",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0040L02B04",
+     "seed": 40,
+     "kind": "build",
+     "known": "how does she feel now",
+     "target": "그녀는 지금 기분이 어때요",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: how",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0040L02U03",
+     "seed": 40,
+     "kind": "use",
+     "known": "how does she feel now?",
+     "target": "그녀는 지금 기분이 어때요?",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: how",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0308L01B03",
+     "seed": 308,
+     "kind": "build",
+     "known": "learning with my mother",
+     "target": "어머니의 친구와",
+     "why": "tail_uncovered: final clause unrendered: mother; body_uncovered: unrendered known content: learning",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0330L01U05",
+     "seed": 330,
+     "kind": "use",
+     "known": "I know walking to school is not that important",
+     "target": "학교까지 걸어가는 게 별로 중요하지 않다는 걸 알아요",
+     "why": "tail_uncovered: final clause unrendered: important; body_uncovered: unrendered known content: walking",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0366L01U05",
+     "seed": 366,
+     "kind": "use",
+     "known": "she is growing something now",
+     "target": "그녀는 지금 뭔가 키우고 있어요",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: growing",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0368L01U05",
+     "seed": 368,
+     "kind": "use",
+     "known": "she is growing tomatoes now",
+     "target": "그녀는 지금 토마토를 키우고 있어요",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: growing",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0396L01U01",
+     "seed": 396,
+     "kind": "use",
+     "known": "no need to be here",
+     "target": "있을 필요는 없어요",
+     "why": "tail_uncovered: final clause unrendered: here; body_uncovered: unrendered known content: no",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0396L01U04",
+     "seed": 396,
+     "kind": "use",
+     "known": "no need to be here today",
+     "target": "오늘 있을 필요는 없어요",
+     "why": "tail_uncovered: final clause unrendered: here; body_uncovered: unrendered known content: no",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0398L04U02",
+     "seed": 398,
+     "kind": "use",
+     "known": "she talked to the children",
+     "target": "아이들에게 말했어요",
+     "why": "tail_uncovered: final clause unrendered: children; body_uncovered: unrendered known content: talked",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0405L03U05",
+     "seed": 405,
+     "kind": "use",
+     "known": "should we book now?",
+     "target": "지금 예약 할까요?",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: book",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0407L03B03",
+     "seed": 407,
+     "kind": "build",
+     "known": "shouldn't need to show",
+     "target": "보여야 하지 않아요",
+     "why": "tail_uncovered: final clause unrendered: show; body_uncovered: unrendered known content: shouldn't",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0490L02B04",
+     "seed": 490,
+     "kind": "build",
+     "known": "never going to trust",
+     "target": "절대 믿지 않을 거예요",
+     "why": "tail_uncovered: final clause unrendered: trust; body_uncovered: unrendered known content: never",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0508L01B03",
+     "seed": 508,
+     "kind": "build",
+     "known": "how to pay now",
+     "target": "낼지 지금",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: how",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0553L02B02",
+     "seed": 553,
+     "kind": "build",
+     "known": "the church is here now",
+     "target": "이제 교회가 여기",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: church",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0553L02U02",
+     "seed": 553,
+     "kind": "use",
+     "known": "now the small church is here",
+     "target": "지금 작은 교회가 있어요",
+     "why": "tail_uncovered: final clause unrendered: here; body_uncovered: unrendered known content: now",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0563L03U04",
+     "seed": 563,
+     "kind": "use",
+     "known": "now I wouldn't have been able to continue",
+     "target": "지금 계속할 수 없었을 거예요",
+     "why": "tail_uncovered: final clause unrendered: continue; body_uncovered: unrendered known content: now",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0585L02B03",
+     "seed": 585,
+     "kind": "build",
+     "known": "from the window every morning",
+     "target": "교회가 창문에서",
+     "why": "tail_uncovered: final clause unrendered: morning; body_uncovered: unrendered known content: every",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0599L01B02",
+     "seed": 599,
+     "kind": "build",
+     "known": "if she'd told him",
+     "target": "교회가 말해 줬으면",
+     "why": "tail_uncovered: final clause unrendered: him; body_uncovered: unrendered known content: told",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0599L03U01",
+     "seed": 599,
+     "kind": "use",
+     "known": "I'd have been happy to drive if you'd told me",
+     "target": "말해 줬으면 기꺼이 운전했을 거예요",
+     "why": "tail_uncovered: final clause unrendered: told; body_uncovered: unrendered known content: drive",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0609L01U01",
+     "seed": 609,
+     "kind": "use",
+     "known": "asking is the sensible approach",
+     "target": "물어보는 방법이에요",
+     "why": "tail_uncovered: final clause unrendered: approach; body_uncovered: unrendered known content: sensible",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0653L02B04",
+     "seed": 653,
+     "kind": "build",
+     "known": "are you okay now?",
+     "target": "지금 괜찮으세요?",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: okay",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0668L03U03",
+     "seed": 668,
+     "kind": "use",
+     "known": "now that would be nice",
+     "target": "지금 좋겠어요",
+     "why": "tail_uncovered: final clause unrendered: nice; body_uncovered: unrendered known content: now",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "kor_for_eng:S0638L01B03",
+     "seed": 638,
+     "kind": "build",
+     "known": "they're doing it carefully",
+     "target": "잘 해요",
+     "why": "tail_uncovered: final clause unrendered: carefully; body_uncovered: unrendered known content: they're doing",
+     "sub": "HIGH",
+     "score": 3.48
+    },
+    {
+     "ref": "kor_for_eng:S0584L01U06",
+     "seed": 584,
+     "kind": "use",
+     "known": "every morning she grew up here",
+     "target": "매일 아침 여기서 자라는 게 어때요?",
+     "why": "tail_uncovered: unrendered at the end: here; body_uncovered: unrendered known content: grew; qmark: target is a question, known is not",
+     "sub": "HIGH",
+     "score": 3.39
+    },
+    {
+     "ref": "kor_for_eng:S0585L03U05",
+     "seed": 585,
+     "kind": "use",
+     "known": "growing up here it is visible",
+     "target": "이 지역은 침실 창문에서 보여요",
+     "why": "body_uncovered: unrendered known content: growing up here; extra_tail: target content with no known counterpart: 지역은 침실",
+     "sub": "HIGH",
+     "score": 3.39
+    },
+    {
+     "ref": "kor_for_eng:S0653L02U06",
+     "seed": 653,
+     "kind": "use",
+     "known": "sir asked if sir is okay",
+     "target": "선생님 괜찮으세요?",
+     "why": "tail_uncovered: unrendered at the end: okay; body_uncovered: unrendered known content: asked; qmark: target is a question, known is not",
+     "sub": "HIGH",
+     "score": 3.39
+    },
+    {
+     "ref": "kor_for_eng:S0027L01U01",
+     "seed": 27,
+     "kind": "use",
+     "known": "I don't like stopping",
+     "target": "멈추는 게 싫어요",
+     "why": "tail_uncovered: final clause unrendered: stopping; extra_tail: target content with no known counterpart: 멈추는 싫어요",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "kor_for_eng:S0092L02U07",
+     "seed": 92,
+     "kind": "use",
+     "known": "I'd like to do a little more",
+     "target": "좀 더 하고 싶어요",
+     "why": "tail_uncovered: final clause unrendered: little; extra_tail: target content with no known counterpart: 좀 하고",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "kor_for_eng:S0351L03U01",
+     "seed": 351,
+     "kind": "use",
+     "known": "no he didn't want to leave me on my own",
+     "target": "아니요 그는 저를 혼자 두고 가고 싶어하지 않았어요",
+     "why": "tail_uncovered: final clause unrendered: own; extra_tail: target content with no known counterpart: 혼자 가고",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "kor_for_eng:S0440L02U02",
+     "seed": 440,
+     "kind": "use",
+     "known": "she wants to travel while still young",
+     "target": "아직 젊을 때 여행하고 싶어해요",
+     "why": "tail_uncovered: final clause unrendered: young; extra_tail: target content with no known counterpart: 아직 때",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "kor_for_eng:S0461L02U02",
+     "seed": 461,
+     "kind": "use",
+     "known": "I heard about buying postcards",
+     "target": "엽서 사는 것에 대해 들었어요",
+     "why": "tail_uncovered: final clause unrendered: postcards; extra_tail: target content with no known counterpart: 사는 것에",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "kor_for_eng:S0520L01U05",
+     "seed": 520,
+     "kind": "use",
+     "known": "she knows about the new baby's family",
+     "target": "그들의 새 아기를 가족 알아요",
+     "why": "tail_uncovered: final clause unrendered: family; extra_tail: target content with no known counterpart: 그들의 아기를",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "kor_for_eng:S0572L06U01",
+     "seed": 572,
+     "kind": "use",
+     "known": "have you forgotten what happened the last time they visited us?",
+     "target": "그들이 마지막으로 왔을 때 무슨 일이 있었는지 잊었어요?",
+     "why": "tail_uncovered: final clause unrendered: us; extra_tail: target content with no known counterpart: 왔을 때",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "kor_for_eng:S0650L02U02",
+     "seed": 650,
+     "kind": "use",
+     "known": "sir asked if the madam wants to go",
+     "target": "선생님 여사님 가시고 싶으세요?",
+     "why": "tail_uncovered: unrendered at the end: wants go; body_uncovered: unrendered known content: asked; qmark: target is a question, known is not",
+     "sub": "HIGH",
+     "score": 3.29
+    },
+    {
+     "ref": "kor_for_eng:S0025L01U05",
+     "seed": 25,
+     "kind": "use",
+     "known": "he starts talking before I have to go",
+     "target": "그는 제가 가야 하기 전에 말하기 시작할 거예요",
+     "why": "tail_uncovered: final clause unrendered: go; body_uncovered: unrendered known content: starts talking",
+     "sub": "HIGH",
+     "score": 3.24
+    },
+    {
+     "ref": "kor_for_eng:S0604L04U01",
+     "seed": 604,
+     "kind": "use",
+     "known": "she offered to let us stay with her",
+     "target": "그녀는 같이 있어도 된다고 했어요",
+     "why": "tail_uncovered: final clause unrendered: her; body_uncovered: unrendered known content: let us",
+     "sub": "HIGH",
+     "score": 3.24
+    },
+    {
+     "ref": "kor_for_eng:S0124L01B03",
+     "seed": 124,
+     "kind": "build",
+     "known": "I think that's a good idea right now",
+     "target": "지금 좋은 생각이라고 생각해요",
+     "why": "tail_uncovered: final clause unrendered: right now",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "kor_for_eng:S0193L02U07",
+     "seed": 193,
+     "kind": "use",
+     "known": "I'm sorry but I haven't seen them",
+     "target": "미안하지만 못 봤어요",
+     "why": "tail_uncovered: final clause unrendered: haven't seen",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "kor_for_eng:S0219L01U09",
+     "seed": 219,
+     "kind": "use",
+     "known": "it was nice to relax for a while but now there isn't time",
+     "target": "잠시 쉴 수 있어서 좋았어요 하지만 이제 시간이 없어요",
+     "why": "tail_uncovered: final clause unrendered: now isn't",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "kor_for_eng:S0293L01U06",
+     "seed": 293,
+     "kind": "use",
+     "known": "she has to find out where he's going to meet her",
+     "target": "그녀는 그가 어디서 만날 건지 알아내야 해요",
+     "why": "tail_uncovered: final clause unrendered: meet her",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "kor_for_eng:S0517L01U01",
+     "seed": 517,
+     "kind": "use",
+     "known": "but they left with each other",
+     "target": "하지만 같이 떠났어요",
+     "why": "tail_uncovered: final clause unrendered: each other",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "kor_for_eng:S0588L05U03",
+     "seed": 588,
+     "kind": "use",
+     "known": "every morning she dreamed of leaving home",
+     "target": "매일 아침 집을 떠나고 있어요",
+     "why": "tail_uncovered: final clause unrendered: leaving home",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "kor_for_eng:S0588L03U06",
+     "seed": 588,
+     "kind": "use",
+     "known": "from the window she saw herself growing up",
+     "target": "창문에서 자라서 보여요",
+     "why": "tail_uncovered: final clause unrendered: growing up",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "kor_for_eng:S0588L03U03",
+     "seed": 588,
+     "kind": "use",
+     "known": "every morning she dreamed of growing up",
+     "target": "매일 아침 자라서 있어요",
+     "why": "tail_uncovered: final clause unrendered: growing up",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "kor_for_eng:S0603L03U05",
+     "seed": 603,
+     "kind": "use",
+     "known": "at first there was no place",
+     "target": "처음에 없었어요",
+     "why": "tail_uncovered: final clause unrendered: no place",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "kor_for_eng:S0649L02B03",
+     "seed": 649,
+     "kind": "build",
+     "known": "she knows if sir is ready",
+     "target": "선생님이 준비되셨는지 알아요",
+     "why": "tail_uncovered: final clause unrendered: sir ready",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "kor_for_eng:S0649L02U05",
+     "seed": 649,
+     "kind": "use",
+     "known": "she asked if sir was ready",
+     "target": "선생님이 준비되셨는지 물어봤어요",
+     "why": "tail_uncovered: final clause unrendered: sir ready",
+     "sub": "HIGH",
+     "score": 3.2
+    }
+   ]
+  },
+  {
+   "id": "seed-placement",
+   "scan": "new (P26)",
+   "rule": "P26",
+   "blocks": true,
+   "count": 236,
+   "subs": {
+    "drifted": 199,
+    "missing": 33,
+    "no-home": 4
+   },
+   "ms": 126,
+   "hits": [
+    {
+     "ref": "S0001",
+     "seed": 1,
+     "kind": "seed",
+     "known": "I want to speak Korean with you now",
+     "target": "지금 같이 한국어로 말하고 싶어요",
+     "why": "played copy differs: kor_for_eng:S0001L04U04 \"I want to speak Korean together now | 지금 같이 한국어로 말하고 싶어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0001L04U04"
+    },
+    {
+     "ref": "S0004",
+     "seed": 4,
+     "kind": "seed",
+     "known": "how to say something in Korean",
+     "target": "한국어로 뭔가를 말하는 방법",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0005",
+     "seed": 5,
+     "kind": "seed",
+     "known": "I'm going to practise speaking with someone else",
+     "target": "다른 사람과 말하는 연습을 할 거예요",
+     "why": "played copy differs: kor_for_eng:S0005L03U05 \"I'm going to practice speaking with someone else | 다른 사람과 말하는 연습을 할 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0005L03U05"
+    },
+    {
+     "ref": "S0009",
+     "seed": 9,
+     "kind": "seed",
+     "known": "I speak a little Korean now",
+     "target": "지금 한국어를 조금 말해요",
+     "why": "played copy differs: kor_for_eng:S0009L03U04 \"I speak the Korean language a little now | 지금 한국어를 조금 말해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0009L03U04"
+    },
+    {
+     "ref": "S0026",
+     "seed": 26,
+     "kind": "seed",
+     "known": "I like feeling as if I'm nearly ready to go",
+     "target": "갈 준비가 거의 된 것 같은 느낌이 좋아요",
+     "why": "played copy differs: kor_for_eng:S0026L03U01 \"I like the feeling as if I'm nearly ready to go | 갈 준비가 거의 된 것 같은 느낌이 좋아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0026L03U01"
+    },
+    {
+     "ref": "S0027",
+     "seed": 27,
+     "kind": "seed",
+     "known": "I don't like taking too much time to answer",
+     "target": "대답하는 데 너무 오래 걸리는 게 싫어요",
+     "why": "played copy differs: kor_for_eng:S0027L03U01 \"I don't like taking too long to answer | 대답하는 데 너무 오래 걸리는 게 싫어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0027L03U01"
+    },
+    {
+     "ref": "S0029",
+     "seed": 29,
+     "kind": "seed",
+     "known": "I'm looking forward to speaking better as soon as I can",
+     "target": "가능한 한 빨리 더 잘 말할 수 있으면 좋겠어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0039",
+     "seed": 39,
+     "kind": "seed",
+     "known": "but I'm a little tired this morning",
+     "target": "하지만 오늘 아침에 좀 피곤해요",
+     "why": "played copy differs: kor_for_eng:S0039L03U01 \"but I'm a bit tired this morning | 하지만 오늘 아침에 좀 피곤해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0039L03U01"
+    },
+    {
+     "ref": "S0044",
+     "seed": 44,
+     "kind": "seed",
+     "known": "or if I need to improve",
+     "target": "아니면 제가 나아져야 하는지",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0054",
+     "seed": 54,
+     "kind": "seed",
+     "known": "we wanted to give you a little more time",
+     "target": "우리는 시간을 조금 더 주고 싶었어요",
+     "why": "played copy differs: kor_for_eng:S0054L02U01 \"we wanted to give a little more time | 우리는 시간을 조금 더 주고 싶었어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0054L02U01"
+    },
+    {
+     "ref": "S0060",
+     "seed": 60,
+     "kind": "seed",
+     "known": "I don't know how to say enough different words yet",
+     "target": "아직 충분히 다른 단어들을 어떻게 말하는지 몰라요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0063",
+     "seed": 63,
+     "kind": "seed",
+     "known": "are you sure you don't mind helping me?",
+     "target": "저를 도와주는 거 정말 괜찮아요?",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0066",
+     "seed": 66,
+     "kind": "seed",
+     "known": "it's not difficult to find the answer",
+     "target": "답을 찾는 건 어렵지 않아요",
+     "why": "played copy differs: kor_for_eng:S0066L02B03 \"finding the answer is not difficult | 답을 찾는 건 어렵지 않아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0066L02B03"
+    },
+    {
+     "ref": "S0074",
+     "seed": 74,
+     "kind": "seed",
+     "known": "thank you very much for helping me to understand",
+     "target": "이해하게 도와줘서 정말 고마워요",
+     "why": "played copy differs: kor_for_eng:S0074L01B04 \"thank you very much for helping me to understand | 이해할 수 있게 도와줘서 정말 고마워요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0074L01B04"
+    },
+    {
+     "ref": "S0075",
+     "seed": 75,
+     "kind": "seed",
+     "known": "have you got more to learn?",
+     "target": "더 배울 게 있어요?",
+     "why": "no new LEGO in this seed and sentence not played elsewhere",
+     "sub": "no-home"
+    },
+    {
+     "ref": "S0077",
+     "seed": 77,
+     "kind": "seed",
+     "known": "I'm surprised at how quickly I'm starting to understand",
+     "target": "얼마나 빨리 이해하기 시작하고 있는지 놀라워요",
+     "why": "played copy differs: kor_for_eng:S0077L02U01 \"I'm surprised at how quickly I'm starting to understand | 이렇게 빨리 이해하기 시작해서 놀랐어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0077L02U01"
+    },
+    {
+     "ref": "S0082",
+     "seed": 82,
+     "kind": "seed",
+     "known": "I'm not going to wait for you. Why not?",
+     "target": "기다리지 않을 거예요. 왜요?",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0083",
+     "seed": 83,
+     "kind": "seed",
+     "known": "I agree with what you said about your friend",
+     "target": "친구에 대해 한 말에 동의해요",
+     "why": "played copy differs: kor_for_eng:S0083L03B03 \"I agree with what you said about your friend | 친구에 대해서 말한 거에 동의해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0083L03B03"
+    },
+    {
+     "ref": "S0084",
+     "seed": 84,
+     "kind": "seed",
+     "known": "I don't agree with what he said about my friend",
+     "target": "그가 제 친구에 대해 한 말에 동의하지 않아요",
+     "why": "played copy differs: kor_for_eng:S0084L02B03 \"I don't agree with what he said about my friend | 그가 제 친구에 대해서 말한 거에 동의하지 않아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0084L02B03"
+    },
+    {
+     "ref": "S0085",
+     "seed": 85,
+     "kind": "seed",
+     "known": "I don't know those people",
+     "target": "그 사람들을 몰라요",
+     "why": "played copy differs: kor_for_eng:S0085L01B03 \"I don't know those people | 그 사람들을 모르겠어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0085L01B03"
+    },
+    {
+     "ref": "S0086",
+     "seed": 86,
+     "kind": "seed",
+     "known": "it wasn't possible, unfortunately",
+     "target": "안타깝게도 가능하지 않았어요",
+     "why": "played copy differs: kor_for_eng:S0086L02B03 \"unfortunately it wasn't possible | 안타깝게도 가능하지 않았어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0086L02B03"
+    },
+    {
+     "ref": "S0088",
+     "seed": 88,
+     "kind": "seed",
+     "known": "I'm not ready to talk to people I don't know yet",
+     "target": "아직 모르는 사람들과 말할 준비가 안 됐어요",
+     "why": "played copy differs: kor_for_eng:S0088L02U01 \"I'm not ready to talk to people I don't know yet | 아직 모르는 사람들한테 말할 준비가 안 됐어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0088L02U01"
+    },
+    {
+     "ref": "S0089",
+     "seed": 89,
+     "kind": "seed",
+     "known": "I think that I've done a lot in a short time",
+     "target": "짧은 시간에 많이 했다고 생각해요",
+     "why": "played copy differs: kor_for_eng:S0089L02B04 \"I think I've done a lot in a short time | 짧은 시간에 많이 했다고 생각해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0089L02B04"
+    },
+    {
+     "ref": "S0090",
+     "seed": 90,
+     "kind": "seed",
+     "known": "if you can speak more slowly that would be great",
+     "target": "더 천천히 말할 수 있으면 좋겠어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0092",
+     "seed": 92,
+     "kind": "seed",
+     "known": "I'd like to keep on doing this for a while",
+     "target": "잠시 동안 이걸 계속하고 싶어요",
+     "why": "played copy differs: kor_for_eng:S0092L02B04 \"I'd like to keep on doing this for a while | 이걸 좀 더 계속하고 싶어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0092L02B04"
+    },
+    {
+     "ref": "S0094",
+     "seed": 94,
+     "kind": "seed",
+     "known": "this is the only way it will work",
+     "target": "이게 유일한 방법이에요",
+     "why": "played copy differs: kor_for_eng:S0094L01B03 \"this is the only way | 이게 유일한 방법이에요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0094L01B03"
+    },
+    {
+     "ref": "S0095",
+     "seed": 95,
+     "kind": "seed",
+     "known": "are you ready to go home on the next bus?",
+     "target": "다음 버스로 집에 갈 준비됐어요?",
+     "why": "played copy differs: kor_for_eng:S0095L02U01 \"are you ready to go home on the next bus? | 다음 버스 타고 집에 갈 준비됐어요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0095L02U01"
+    },
+    {
+     "ref": "S0096",
+     "seed": 96,
+     "kind": "seed",
+     "known": "no I'm not ready yet, I need a little more time",
+     "target": "아니요 아직 준비 안 됐어요, 시간이 조금 더 필요해요",
+     "why": "played copy differs: kor_for_eng:S0096L03U01 \"no I'm not ready yet, I need a little more time | 아니요 아직 준비 안 됐어요, 시간이 좀 더 필요해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0096L03U01"
+    },
+    {
+     "ref": "S0097",
+     "seed": 97,
+     "kind": "seed",
+     "known": "yes I'm ready to go as soon as you want",
+     "target": "네 원하면 바로 갈 준비됐어요",
+     "why": "played copy differs: kor_for_eng:S0097L02U02 \"yes I'm ready to go as soon as you want | 네 원하시면 바로 갈 준비됐어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0097L02U02"
+    },
+    {
+     "ref": "S0098",
+     "seed": 98,
+     "kind": "seed",
+     "known": "I should consider playing something else",
+     "target": "다른 걸 할지 생각해 봐야 해요",
+     "why": "played copy differs: kor_for_eng:S0098L02B03 \"I should consider playing something else | 다른 걸 하는 것도 생각해 봐야 해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0098L02B03"
+    },
+    {
+     "ref": "S0099",
+     "seed": 99,
+     "kind": "seed",
+     "known": "you should ask yourself why it's not working",
+     "target": "왜 안 되는지 자신에게 물어봐야 해요",
+     "why": "played copy differs: kor_for_eng:S0099L02B03 \"you should ask yourself why it's not working | 왜 안 되는지 자신한테 물어봐야 해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0099L02B03"
+    },
+    {
+     "ref": "S0100",
+     "seed": 100,
+     "kind": "seed",
+     "known": "you shouldn't worry about doing something similar",
+     "target": "비슷한 걸 하는 것에 대해 걱정하면 안 돼요",
+     "why": "played copy differs: kor_for_eng:S0100L02U01 \"you shouldn't worry about doing something similar | 비슷한 걸 하는 것에 대해서 걱정하지 않아도 돼요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0100L02U01"
+    },
+    {
+     "ref": "S0101",
+     "seed": 101,
+     "kind": "seed",
+     "known": "I'm enjoying finding out more about this language",
+     "target": "이 언어에 대해 더 알아가는 게 즐거워요",
+     "why": "played copy differs: kor_for_eng:S0101L01B03 \"I'm enjoying finding out more about this language | 이 언어에 대해서 더 알아가는 게 즐거워요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0101L01B03"
+    },
+    {
+     "ref": "S0102",
+     "seed": 102,
+     "kind": "seed",
+     "known": "we're trying to say that it's not like that",
+     "target": "그렇지 않다고 말하려고 해요",
+     "why": "played copy differs: kor_for_eng:S0102L01B03 \"we're trying to say it's not like that | 그렇지 않다고 말하려고 해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0102L01B03"
+    },
+    {
+     "ref": "S0103",
+     "seed": 103,
+     "kind": "seed",
+     "known": "we're not trying to hear many more words",
+     "target": "더 많은 단어를 들으려고 하는 게 아니에요",
+     "why": "played copy differs: kor_for_eng:S0103L02B03 \"not trying to hear many more words | 더 많은 단어를 들으려고 하는 게 아니에요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0103L02B03"
+    },
+    {
+     "ref": "S0104",
+     "seed": 104,
+     "kind": "seed",
+     "known": "we need to change what we're doing",
+     "target": "하고 있는 걸 바꿔야 해요",
+     "why": "played copy differs: kor_for_eng:S0104L02U01 \"we need to change what we're doing | 우리가 하고 있는 걸 바꿔야 해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0104L02U01"
+    },
+    {
+     "ref": "S0105",
+     "seed": 105,
+     "kind": "seed",
+     "known": "that is why he didn't know the answer",
+     "target": "그래서 그가 답을 몰랐어요",
+     "why": "played copy differs: kor_for_eng:S0105L01B04 \"that is why he didn't know the answer | 그래서 그는 답을 몰랐어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0105L01B04"
+    },
+    {
+     "ref": "S0107",
+     "seed": 107,
+     "kind": "seed",
+     "known": "we hoped to see what you were doing",
+     "target": "뭘 하고 있었는지 보고 싶었어요",
+     "why": "played copy differs: kor_for_eng:S0107L02B03 \"hoped to see what you were doing | 뭘 하고 있었는지 보고 싶었어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0107L02B03"
+    },
+    {
+     "ref": "S0108",
+     "seed": 108,
+     "kind": "seed",
+     "known": "we didn't hope to wake in the middle of the night",
+     "target": "한밤중에 일어나고 싶지 않았어요",
+     "why": "played copy differs: kor_for_eng:S0108L02U01 \"we didn't hope to wake in the middle of the night | 한밤중에 깨기를 바라지 않았어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0108L02U01"
+    },
+    {
+     "ref": "S0109",
+     "seed": 109,
+     "kind": "seed",
+     "known": "we must work hard to learn a lot of new words",
+     "target": "새로운 단어를 많이 배우려면 열심히 해야 해요",
+     "why": "played copy differs: kor_for_eng:S0109L02U05 \"we must work hard to learn a lot of new words | 새 단어를 많이 배우려면 열심히 해야 해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0109L02U05"
+    },
+    {
+     "ref": "S0111",
+     "seed": 111,
+     "kind": "seed",
+     "known": "when we learn something new it changes our brain",
+     "target": "새로운 걸 배우면 뇌가 바뀌어요",
+     "why": "played copy differs: kor_for_eng:S0111L02B03 \"when we learn something new it changes our brain | 새로운 걸 배우면 우리 뇌가 바뀌어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0111L02B03"
+    },
+    {
+     "ref": "S0113",
+     "seed": 113,
+     "kind": "seed",
+     "known": "Why can't I remember what you said?",
+     "target": "왜 뭐라고 했는지 기억 못 해요?",
+     "why": "played copy differs: kor_for_eng:S0113L01B02 \"why can't I remember what you said | 왜 뭐라고 했는지 기억하지 못해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0113L01B02"
+    },
+    {
+     "ref": "S0114",
+     "seed": 114,
+     "kind": "seed",
+     "known": "I feel as if I'm doing worse today than yesterday",
+     "target": "오늘은 어제보다 더 못하고 있는 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0114L02U01 \"I feel as if I'm doing worse today than yesterday | 오늘 어제보다 더 못하는 것 같아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0114L02U01"
+    },
+    {
+     "ref": "S0116",
+     "seed": 116,
+     "kind": "seed",
+     "known": "this isn't the best choice I could make",
+     "target": "이건 제가 할 수 있는 최고의 선택이 아니에요",
+     "why": "played copy differs: kor_for_eng:S0116L01B02 \"this isn't the best choice I could make | 이건 제가 할 수 있는 최선의 선택이 아니에요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0116L01B02"
+    },
+    {
+     "ref": "S0117",
+     "seed": 117,
+     "kind": "seed",
+     "known": "I'm definitely doing better than I was last time we talked to each other",
+     "target": "저번에 서로 말했을 때보다 확실히 더 잘하고 있어요",
+     "why": "played copy differs: kor_for_eng:S0117L02B03 \"better than last time we talked | 저번에 서로 말했을 때보다 확실히 더 잘하고 있어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0117L02B03"
+    },
+    {
+     "ref": "S0118",
+     "seed": 118,
+     "kind": "seed",
+     "known": "I feel better than I felt when we were in the pub",
+     "target": "술집에 있었을 때보다 기분이 더 좋아요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0120",
+     "seed": 120,
+     "kind": "seed",
+     "known": "it's interesting that you like to go by bus",
+     "target": "버스로 가는 걸 좋아하는 게 재미있어요",
+     "why": "played copy differs: kor_for_eng:S0120L01B03 \"it's interesting that you like to go by bus | 버스 타는 걸 좋아하는 게 재미있어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0120L01B03"
+    },
+    {
+     "ref": "S0122",
+     "seed": 122,
+     "kind": "seed",
+     "known": "it's starting to feel easier and I'm excited about how it's going",
+     "target": "더 쉬워지기 시작하고 있고 어떻게 되고 있는지 신나요",
+     "why": "played copy differs: kor_for_eng:S0122L02B03 \"it's starting to feel easier and I'm excited about how it's going | 더 쉬워지기 시작했고 어떻게 되고 있는지 기대돼요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0122L02B03"
+    },
+    {
+     "ref": "S0123",
+     "seed": 123,
+     "kind": "seed",
+     "known": "I think that's a good idea",
+     "target": "그건 좋은 생각인 것 같아요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0124",
+     "seed": 124,
+     "kind": "seed",
+     "known": "I thought that was a good idea",
+     "target": "그건 좋은 생각이라고 생각했어요",
+     "why": "played copy differs: kor_for_eng:S0124L02B01 \"I thought that was a good idea | 좋은 생각이라고 생각했어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0124L02B01"
+    },
+    {
+     "ref": "S0125",
+     "seed": 125,
+     "kind": "seed",
+     "known": "I believe that your idea was very good",
+     "target": "그 생각이 아주 좋았다고 믿어요",
+     "why": "played copy differs: kor_for_eng:S0125L03B01 \"I believe that idea was very good | 그 생각이 아주 좋았다고 믿어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0125L03B01"
+    },
+    {
+     "ref": "S0126",
+     "seed": 126,
+     "kind": "seed",
+     "known": "this work is changing the shape of my brain",
+     "target": "이 일이 뇌의 모양을 바꾸고 있어요",
+     "why": "played copy differs: kor_for_eng:S0126L02B03 \"this work is changing the shape of my brain | 이 작업이 제 뇌의 모양을 바꾸고 있어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0126L02B03"
+    },
+    {
+     "ref": "S0128",
+     "seed": 128,
+     "kind": "seed",
+     "known": "you're like someone I used to know",
+     "target": "전에 알았던 사람 같아요",
+     "why": "played copy differs: kor_for_eng:S0128L01B03 \"you're like someone I used to know | 예전에 알던 사람 같아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0128L01B03"
+    },
+    {
+     "ref": "S0129",
+     "seed": 129,
+     "kind": "seed",
+     "known": "I'm so happy that you're doing so well",
+     "target": "이렇게 잘 하고 있어서 아주 기뻐요",
+     "why": "played copy differs: kor_for_eng:S0129L01U01 \"I'm so happy that you're doing so well | 이렇게 잘하고 있어서 너무 기뻐요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0129L01U01"
+    },
+    {
+     "ref": "S0130",
+     "seed": 130,
+     "kind": "seed",
+     "known": "that was a surprise, because he's my friend",
+     "target": "놀라웠어요, 그는 제 친구니까요",
+     "why": "played copy differs: kor_for_eng:S0130L02B03 \"that was a surprise because he's my friend | 그건 놀라웠어요, 그는 제 친구니까요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0130L02B03"
+    },
+    {
+     "ref": "S0131",
+     "seed": 131,
+     "kind": "seed",
+     "known": "there are too many ideas going around in my head",
+     "target": "머리에 생각이 너무 많아요",
+     "why": "played copy differs: kor_for_eng:S0131L01U01 \"there are too many ideas going around in my head | 머릿속에 너무 많은 생각이 돌고 있어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0131L01U01"
+    },
+    {
+     "ref": "S0134",
+     "seed": 134,
+     "kind": "seed",
+     "known": "it's not a problem when you work at something difficult with them",
+     "target": "그들과 어려운 걸 같이 하면 문제가 안 돼요",
+     "why": "played copy differs: kor_for_eng:S0134L02B03 \"it's not a problem when you work at something difficult with them | 그들과 어려운 걸 같이 하면 문제가 아니에요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0134L02B03"
+    },
+    {
+     "ref": "S0135",
+     "seed": 135,
+     "kind": "seed",
+     "known": "I don't know why you think that it's so good",
+     "target": "왜 그렇게 좋다고 생각하는지 모르겠어요",
+     "why": "played copy differs: kor_for_eng:S0135L02B03 \"I don't know why you think that it's so good | 왜 그게 그렇게 좋다고 생각하는지 모르겠어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0135L02B03"
+    },
+    {
+     "ref": "S0136",
+     "seed": 136,
+     "kind": "seed",
+     "known": "of course you can ask her because she's my friend",
+     "target": "물론 그녀한테 물어봐도 돼요, 제 친구니까요",
+     "why": "played copy differs: kor_for_eng:S0136L03U01 \"of course you can ask her because she's my friend | 물론이죠 제 친구니까 그녀한테 물어볼 수 있어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0136L03U01"
+    },
+    {
+     "ref": "S0138",
+     "seed": 138,
+     "kind": "seed",
+     "known": "this was where my friend wanted to meet us",
+     "target": "여기가 친구가 우리를 만나고 싶어했던 곳이에요",
+     "why": "played copy differs: kor_for_eng:S0138L02B02 \"this was where my friend wanted to meet us | 여기가 제 친구가 우리를 만나고 싶었던 곳이에요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0138L02B02"
+    },
+    {
+     "ref": "S0140",
+     "seed": 140,
+     "kind": "seed",
+     "known": "I'm sorry that I can't see what you're trying to show me",
+     "target": "보여 주려고 하는 걸 볼 수 없어서 미안해요",
+     "why": "played copy differs: kor_for_eng:S0140L02U01 \"I'm sorry that I can't see what you're trying to show me | 보여주려는 걸 볼 수 없어서 미안해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0140L02U01"
+    },
+    {
+     "ref": "S0142",
+     "seed": 142,
+     "kind": "seed",
+     "known": "that's very kind of you and I'm grateful to you for helping",
+     "target": "아주 친절하시네요, 그리고 도와줘서 감사해요",
+     "why": "played copy differs: kor_for_eng:S0142L02U01 \"that's very kind of you and I'm grateful to you for helping | 정말 친절하시고 도와주셔서 감사해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0142L02U01"
+    },
+    {
+     "ref": "S0143",
+     "seed": 143,
+     "kind": "seed",
+     "known": "it's the same thing as we were talking about earlier",
+     "target": "아까 말했던 것과 같은 거예요",
+     "why": "played copy differs: kor_for_eng:S0143L02B03 \"it's the same thing as we were talking about earlier | 전에 이야기했던 것과 같은 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0143L02B03"
+    },
+    {
+     "ref": "S0146",
+     "seed": 146,
+     "kind": "seed",
+     "known": "nothing seems to be working since we tried to fix it",
+     "target": "고치려고 한 이후로 아무것도 안 되는 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0146L02U01 \"nothing seems to be working since we tried to fix it | 우리가 고치려고 한 후에 아무것도 안 되는 것 같아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0146L02U01"
+    },
+    {
+     "ref": "S0147",
+     "seed": 147,
+     "kind": "seed",
+     "known": "she was very kind when she saw me feeling nervous",
+     "target": "그녀는 제가 긴장하는 걸 봤을 때 아주 친절했어요",
+     "why": "played copy differs: kor_for_eng:S0147L02U01 \"she was very kind when she saw me feeling nervous | 그녀는 제가 긴장한 걸 봤을 때 아주 친절했어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0147L02U01"
+    },
+    {
+     "ref": "S0149",
+     "seed": 149,
+     "kind": "seed",
+     "known": "this isn't very difficult, so I hope you'll finish soon",
+     "target": "이건 별로 어렵지 않으니까, 곧 끝나면 좋겠어요",
+     "why": "played copy differs: kor_for_eng:S0149L02U01 \"this isn't very difficult so I hope you'll finish soon | 이건 별로 어렵지 않아요 그래서 곧 끝나면 좋겠어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0149L02U01"
+    },
+    {
+     "ref": "S0152",
+     "seed": 152,
+     "kind": "seed",
+     "known": "I would have done it differently if I had known what you wanted",
+     "target": "뭘 원했는지 알았더라면 다르게 했을 거예요",
+     "why": "played copy differs: kor_for_eng:S0152L02U01 \"I would have done it differently if I had known what you wanted | 원하는 걸 알았더라면 다르게 했을 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0152L02U01"
+    },
+    {
+     "ref": "S0153",
+     "seed": 153,
+     "kind": "seed",
+     "known": "I wouldn't have said it in exactly the same way",
+     "target": "정확히 같은 방식으로 말하지는 않았을 거예요",
+     "why": "played copy differs: kor_for_eng:S0153L02B03 \"I wouldn't have said it in exactly the same way | 정확히 같은 방식으로 말하지 않았을 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0153L02B03"
+    },
+    {
+     "ref": "S0154",
+     "seed": 154,
+     "kind": "seed",
+     "known": "where do you want to meet on Saturday night?",
+     "target": "토요일 밤에 어디서 만나고 싶어요?",
+     "why": "played copy differs: kor_for_eng:S0154L02B03 \"where do you want to meet on Saturday night | 토요일 밤에 어디에서 만나고 싶어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0154L02B03"
+    },
+    {
+     "ref": "S0155",
+     "seed": 155,
+     "kind": "seed",
+     "known": "I don't mind waiting for a few minutes tomorrow morning",
+     "target": "내일 아침에 몇 분 기다리는 건 괜찮아요",
+     "why": "played copy differs: kor_for_eng:S0155L02B03 \"I don't mind waiting for a few minutes tomorrow morning | 내일 아침에 몇 분 기다려도 괜찮아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0155L02B03"
+    },
+    {
+     "ref": "S0156",
+     "seed": 156,
+     "kind": "seed",
+     "known": "do you want to go to a restaurant tonight?",
+     "target": "오늘 밤에 식당에 가고 싶어요?",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0157",
+     "seed": 157,
+     "kind": "seed",
+     "known": "I won't be able to be there next month",
+     "target": "다음 달에 거기에 있지 못할 거예요",
+     "why": "played copy differs: kor_for_eng:S0157L02U01 \"I won't be able to be there next month | 다음 달에 거기 있을 수 없을 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0157L02U01"
+    },
+    {
+     "ref": "S0158",
+     "seed": 158,
+     "kind": "seed",
+     "known": "let's talk about something else",
+     "target": "다른 것에 대해 이야기해요",
+     "why": "played copy differs: kor_for_eng:S0158L01B02 \"let's talk about something else | 다른 거 이야기해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0158L01B02"
+    },
+    {
+     "ref": "S0159",
+     "seed": 159,
+     "kind": "seed",
+     "known": "that isn't what I'm trying to say",
+     "target": "그건 제가 말하려고 하는 게 아니에요",
+     "why": "played copy differs: kor_for_eng:S0159L01B01 \"that isn't what I'm trying to say | 그건 제가 말하려는 게 아니에요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0159L01B01"
+    },
+    {
+     "ref": "S0162",
+     "seed": 162,
+     "kind": "seed",
+     "known": "what do you think about that?",
+     "target": "그것에 대해 어떻게 생각해요?",
+     "why": "played copy differs: kor_for_eng:S0162L01B01 \"what do you think about that | 그거에 대해서 어떻게 생각해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0162L01B01"
+    },
+    {
+     "ref": "S0163",
+     "seed": 163,
+     "kind": "seed",
+     "known": "I think that it's interesting",
+     "target": "그건 재미있는 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0163L01B01 \"I think that it's interesting | 재미있다고 생각해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0163L01B01"
+    },
+    {
+     "ref": "S0169",
+     "seed": 169,
+     "kind": "seed",
+     "known": "what do you want me to do?",
+     "target": "제가 뭘 해 주면 좋겠어요?",
+     "why": "played copy differs: kor_for_eng:S0169L01B01 \"what do you want me to do | 제가 뭘 하면 돼요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0169L01B01"
+    },
+    {
+     "ref": "S0171",
+     "seed": 171,
+     "kind": "seed",
+     "known": "do you want me to help you look for it?",
+     "target": "그걸 찾는 거 도와줄까요?",
+     "why": "played copy differs: kor_for_eng:S0171L01B01 \"do you want me to help you look for it | 찾는 거 도와줄까요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0171L01B01"
+    },
+    {
+     "ref": "S0176",
+     "seed": 176,
+     "kind": "seed",
+     "known": "I'll ask him if he'll be able to help next year",
+     "target": "내년에 도와줄 수 있는지 그한테 물어볼 거예요",
+     "why": "played copy differs: kor_for_eng:S0176L02U01 \"I'll ask him if he'll be able to help next year | 그한테 내년에 도와줄 수 있는지 물어볼 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0176L02U01"
+    },
+    {
+     "ref": "S0178",
+     "seed": 178,
+     "kind": "seed",
+     "known": "I didn't have time, although I wanted to see you",
+     "target": "만나고 싶었지만 시간이 없었어요",
+     "why": "played copy differs: kor_for_eng:S0178L02U01 \"I didn't have time although I wanted to see you | 보고 싶었지만 시간이 없었어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0178L02U01"
+    },
+    {
+     "ref": "S0180",
+     "seed": 180,
+     "kind": "seed",
+     "known": "I'd like to read my book for a while",
+     "target": "잠시 동안 책을 읽고 싶어요",
+     "why": "played copy differs: kor_for_eng:S0180L01B01 \"I'd like to read my book for a while | 좀 제 책을 읽고 싶어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0180L01B01"
+    },
+    {
+     "ref": "S0181",
+     "seed": 181,
+     "kind": "seed",
+     "known": "but I have to take my mother to the doctor",
+     "target": "하지만 어머니를 병원에 데려가야 해요",
+     "why": "no new LEGO in this seed and sentence not played elsewhere",
+     "sub": "no-home"
+    },
+    {
+     "ref": "S0184",
+     "seed": 184,
+     "kind": "seed",
+     "known": "yes I saw them in the office a while ago",
+     "target": "네 조금 전에 사무실에서 봤어요",
+     "why": "played copy differs: kor_for_eng:S0184L01U05 \"yes I saw them in the office a while ago | 네 아까 사무실에서 봤어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0184L01U05"
+    },
+    {
+     "ref": "S0186",
+     "seed": 186,
+     "kind": "seed",
+     "known": "do you want to talk about something different next week?",
+     "target": "다음 주에 다른 것에 대해 이야기하고 싶어요?",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0188",
+     "seed": 188,
+     "kind": "seed",
+     "known": "so I don't need to change",
+     "target": "그래서 바꿀 필요는 없어요",
+     "why": "played copy differs: kor_for_eng:S0188L01U04 \"so I don't need to change | 그래서 바꿀 필요 없어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0188L01U04"
+    },
+    {
+     "ref": "S0190",
+     "seed": 190,
+     "kind": "seed",
+     "known": "do you mind if I ask you some questions?",
+     "target": "질문 몇 개 해도 괜찮아요?",
+     "why": "played copy differs: kor_for_eng:S0190L01B01 \"do you mind if I ask you some questions | 몇 가지 질문해도 될까요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0190L01B01"
+    },
+    {
+     "ref": "S0196",
+     "seed": 196,
+     "kind": "seed",
+     "known": "have you heard the latest idea?",
+     "target": "최근에 나온 생각을 들었어요?",
+     "why": "played copy differs: kor_for_eng:S0196L01U01 \"I heard the latest idea | 최근에 나온 생각을 들었어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0196L01U01"
+    },
+    {
+     "ref": "S0198",
+     "seed": 198,
+     "kind": "seed",
+     "known": "my daughter works for the council",
+     "target": "제 딸은 구청에서 일해요",
+     "why": "played copy differs: kor_for_eng:S0198L01B02 \"my daughter works for the council | 제 딸은 시청에서 일해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0198L01B02"
+    },
+    {
+     "ref": "S0199",
+     "seed": 199,
+     "kind": "seed",
+     "known": "my friend used to work in an office",
+     "target": "제 친구는 사무실에서 일했었어요",
+     "why": "played copy differs: kor_for_eng:S0199L01B01 \"my friend used to work in an office | 제 친구는 사무실에서 일했어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0199L01B01"
+    },
+    {
+     "ref": "S0200",
+     "seed": 200,
+     "kind": "seed",
+     "known": "they say they want to make sure that we finish everything in time",
+     "target": "그들은 우리가 제시간에 다 끝내야 한다고 해요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0201",
+     "seed": 201,
+     "kind": "seed",
+     "known": "we wanted to know what was going to happen",
+     "target": "우리는 무슨 일이 일어날지 알고 싶었어요",
+     "why": "played copy differs: kor_for_eng:S0201L01B02 \"we wanted to know what was going to happen | 무슨 일이 일어날지 알고 싶었어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0201L01B02"
+    },
+    {
+     "ref": "S0202",
+     "seed": 202,
+     "kind": "seed",
+     "known": "nobody was sure how to answer the question",
+     "target": "아무도 질문에 어떻게 대답해야 하는지 몰랐어요",
+     "why": "played copy differs: kor_for_eng:S0202L01B01 \"nobody was sure how to answer the question | 아무도 그 질문에 어떻게 대답해야 할지 몰랐어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0202L01B01"
+    },
+    {
+     "ref": "S0203",
+     "seed": 203,
+     "kind": "seed",
+     "known": "what would you do if I asked you to help me?",
+     "target": "제가 도와달라고 하면 어떻게 하겠어요?",
+     "why": "played copy differs: kor_for_eng:S0203L01B01 \"what would you do if I asked you to help me | 제가 도와달라고 하면 어떻게 하실 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0203L01B01"
+    },
+    {
+     "ref": "S0204",
+     "seed": 204,
+     "kind": "seed",
+     "known": "I wanted her to help you to deal with the arrangements",
+     "target": "그녀가 준비를 도와주길 바랐어요",
+     "why": "played copy differs: kor_for_eng:S0204L03U01 \"I was hoping she would help you with the arrangements | 그녀가 준비를 도와주길 바랐어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0204L03U01"
+    },
+    {
+     "ref": "S0206",
+     "seed": 206,
+     "kind": "seed",
+     "known": "I enjoy the chance to practise speaking with you",
+     "target": "같이 말하는 연습을 할 기회가 즐거워요",
+     "why": "played copy differs: kor_for_eng:S0206L01B02 \"I enjoy the chance to practise speaking with you | 같이 말하기 연습할 기회가 즐거워요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0206L01B02"
+    },
+    {
+     "ref": "S0207",
+     "seed": 207,
+     "kind": "seed",
+     "known": "you've done what you needed to do",
+     "target": "해야 했던 걸 했어요",
+     "why": "played copy differs: kor_for_eng:S0207L01B01 \"you've done what you needed to do | 해야 할 일을 다 했어요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0207L01B01"
+    },
+    {
+     "ref": "S0208",
+     "seed": 208,
+     "kind": "seed",
+     "known": "I didn't want to ask you how to say it",
+     "target": "그걸 어떻게 말하는지 물어보고 싶지 않았어요",
+     "why": "played copy differs: kor_for_eng:S0208L01B01 \"I didn't want to ask you how to say it | 어떻게 말하는지 물어보고 싶지 않았어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0208L01B01"
+    },
+    {
+     "ref": "S0209",
+     "seed": 209,
+     "kind": "seed",
+     "known": "they want to spend more time meeting as a group",
+     "target": "그들은 같이 모여서 더 많은 시간을 보내고 싶어해요",
+     "why": "played copy differs: kor_for_eng:S0209L01B02 \"they want to spend more time meeting as a group | 그들은 그룹으로 만나는 시간을 더 보내고 싶어해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0209L01B02"
+    },
+    {
+     "ref": "S0210",
+     "seed": 210,
+     "kind": "seed",
+     "known": "they think that we need to discuss the problem",
+     "target": "그들은 우리가 문제를 논의해야 한다고 생각해요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0211",
+     "seed": 211,
+     "kind": "seed",
+     "known": "they told us that they didn't want to explain",
+     "target": "그들은 설명하고 싶지 않다고 우리한테 말했어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0212",
+     "seed": 212,
+     "kind": "seed",
+     "known": "they wanted to ask for help",
+     "target": "그들은 도움을 요청하고 싶어했어요",
+     "why": "played copy differs: kor_for_eng:S0212L01B02 \"they wanted to ask for help | 그들은 도움을 부탁하고 싶어했어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0212L01B02"
+    },
+    {
+     "ref": "S0213",
+     "seed": 213,
+     "kind": "seed",
+     "known": "we don't know what they're trying to achieve",
+     "target": "그들이 뭘 이루려고 하는지 몰라요",
+     "why": "played copy differs: kor_for_eng:S0213L01B02 \"we don't know what they're trying to achieve | 그들이 뭘 이루려고 하는지 모르겠어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0213L01B02"
+    },
+    {
+     "ref": "S0217",
+     "seed": 217,
+     "kind": "seed",
+     "known": "I had a glass or two of water",
+     "target": "물을 한두 잔 마셨어요",
+     "why": "played copy differs: kor_for_eng:S0217L01B02 \"I had a glass or two of water | 물 한두 잔 마셨어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0217L01B02"
+    },
+    {
+     "ref": "S0219",
+     "seed": 219,
+     "kind": "seed",
+     "known": "it was nice to relax for a while",
+     "target": "잠시 쉬니까 좋았어요",
+     "why": "played copy differs: kor_for_eng:S0219L01B02 \"it was nice to relax for a while | 잠시 쉴 수 있어서 좋았어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0219L01B02"
+    },
+    {
+     "ref": "S0221",
+     "seed": 221,
+     "kind": "seed",
+     "known": "I watched the football and then I watched a film",
+     "target": "축구를 보고 나서 영화를 봤어요",
+     "why": "played copy differs: kor_for_eng:S0221L01B02 \"I watched the football and then I watched a film | 축구를 보고 그 다음에 영화를 봤어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0221L01B02"
+    },
+    {
+     "ref": "S0222",
+     "seed": 222,
+     "kind": "seed",
+     "known": "he's trying to tell me what he wants",
+     "target": "그는 뭘 원하는지 저한테 말하려고 해요",
+     "why": "played copy differs: kor_for_eng:S0222L01B01 \"he's trying to tell me what he wants | 그는 뭘 원하는지 말하려고 해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0222L01B01"
+    },
+    {
+     "ref": "S0226",
+     "seed": 226,
+     "kind": "seed",
+     "known": "the man is trying to help me",
+     "target": "그 남자는 저를 도와주려고 해요",
+     "why": "played copy differs: kor_for_eng:S0226L01B01 \"the man is trying to help me | 그 남자가 도와주려고 해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0226L01B01"
+    },
+    {
+     "ref": "S0227",
+     "seed": 227,
+     "kind": "seed",
+     "known": "that man is going to tell me something new",
+     "target": "그 남자는 저한테 새로운 걸 말할 거예요",
+     "why": "played copy differs: kor_for_eng:S0227L01B02 \"that man is going to tell me something new | 그 남자가 새로운 거 말해 줄 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0227L01B02"
+    },
+    {
+     "ref": "S0228",
+     "seed": 228,
+     "kind": "seed",
+     "known": "that man has just started to practise speaking",
+     "target": "그 남자는 막 말하는 연습을 시작했어요",
+     "why": "played copy differs: kor_for_eng:S0228L01B02 \"that man has just started to practise speaking | 그 남자는 막 말하기 연습을 시작했어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0228L01B02"
+    },
+    {
+     "ref": "S0235",
+     "seed": 235,
+     "kind": "seed",
+     "known": "I met someone who said that he wanted to tell you something",
+     "target": "뭔가 말하고 싶다고 한 사람을 만났어요",
+     "why": "played copy differs: kor_for_eng:S0235L01B01 \"I met someone who said he wanted to tell you something | 뭔가 말하고 싶다고 한 사람을 만났어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0235L01B01"
+    },
+    {
+     "ref": "S0236",
+     "seed": 236,
+     "kind": "seed",
+     "known": "I know someone who said that she was going to try to help",
+     "target": "도와주려고 할 거라고 한 사람을 알아요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0237",
+     "seed": 237,
+     "kind": "seed",
+     "known": "he wanted me to tell you before the weekend",
+     "target": "그는 주말 전에 제가 말해 주길 바랐어요",
+     "why": "played copy differs: kor_for_eng:S0237L02U01 \"he was hoping I would tell you before the weekend | 그는 주말 전에 제가 말해 주길 바랐어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0237L02U01"
+    },
+    {
+     "ref": "S0238",
+     "seed": 238,
+     "kind": "seed",
+     "known": "he wanted you to tell me yesterday",
+     "target": "그는 어제 저한테 말해 주길 바랐어요",
+     "why": "played copy differs: kor_for_eng:S0238L01B02 \"he wanted you to tell me yesterday | 그는 어제 말해 주길 바랐어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0238L01B02"
+    },
+    {
+     "ref": "S0239",
+     "seed": 239,
+     "kind": "seed",
+     "known": "my mother likes to read",
+     "target": "제 어머니는 읽는 걸 좋아해요",
+     "why": "played copy differs: kor_for_eng:S0239L01B01 \"my mother likes to read | 제 어머니는 읽는 것을 좋아해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0239L01B01"
+    },
+    {
+     "ref": "S0240",
+     "seed": 240,
+     "kind": "seed",
+     "known": "my father doesn't like to stop talking",
+     "target": "제 아버지는 말하는 걸 멈추는 게 싫어요",
+     "why": "played copy differs: kor_for_eng:S0240L01B01 \"my father doesn't like to stop talking | 제 아버지는 말하는 걸 멈추는 것을 좋아하지 않아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0240L01B01"
+    },
+    {
+     "ref": "S0241",
+     "seed": 241,
+     "kind": "seed",
+     "known": "I don't want to give it to him",
+     "target": "그한테 그걸 주고 싶지 않아요",
+     "why": "played copy differs: kor_for_eng:S0241L01B01 \"I don't want to give it to him | 그한테 주고 싶지 않아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0241L01B01"
+    },
+    {
+     "ref": "S0243",
+     "seed": 243,
+     "kind": "seed",
+     "known": "I'm going to ask for the same thing to eat",
+     "target": "같은 걸 달라고 할 거예요",
+     "why": "played copy differs: kor_for_eng:S0243L01B01 \"I'm going to ask for the same thing to eat | 같은 음식을 달라고 할 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0243L01B01"
+    },
+    {
+     "ref": "S0245",
+     "seed": 245,
+     "kind": "seed",
+     "known": "I'm happy with how much I've done in a short time",
+     "target": "짧은 시간에 이만큼 해서 기뻐요",
+     "why": "played copy differs: kor_for_eng:S0245L01B01 \"I'm happy with how much I've done in a short time | 짧은 시간에 많이 한 것에 만족해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0245L01B01"
+    },
+    {
+     "ref": "S0246",
+     "seed": 246,
+     "kind": "seed",
+     "known": "I wanted her to help you but she was too busy",
+     "target": "그녀가 도와주길 바랐지만 너무 바빴어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0247",
+     "seed": 247,
+     "kind": "seed",
+     "known": "I thought that book was fairly good",
+     "target": "그 책이 꽤 좋았다고 생각했어요",
+     "why": "played copy differs: kor_for_eng:S0247L01B01 \"I thought that book was fairly good | 그 책이 꽤 좋다고 생각했어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0247L01B01"
+    },
+    {
+     "ref": "S0248",
+     "seed": 248,
+     "kind": "seed",
+     "known": "I thought the film was complete rubbish and I want my money back",
+     "target": "그 영화는 완전 쓰레기라고 생각했고 돈을 돌려받고 싶어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0249",
+     "seed": 249,
+     "kind": "seed",
+     "known": "I want you to help me before you go",
+     "target": "가기 전에 도와주면 좋겠어요",
+     "why": "played copy differs: kor_for_eng:S0249L01B02 \"I want you to help me before you go | 가기 전에 도와주길 바라요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0249L01B02"
+    },
+    {
+     "ref": "S0250",
+     "seed": 250,
+     "kind": "seed",
+     "known": "can you tell me something else before I answer?",
+     "target": "제가 대답하기 전에 다른 것도 말해 줄 수 있어요?",
+     "why": "played copy differs: kor_for_eng:S0250L01B01 \"can you tell me something else before I answer | 대답하기 전에 다른 거 말해 줄 수 있어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0250L01B01"
+    },
+    {
+     "ref": "S0251",
+     "seed": 251,
+     "kind": "seed",
+     "known": "I don't want to find out until after we finish",
+     "target": "끝난 후까지 알고 싶지 않아요",
+     "why": "played copy differs: kor_for_eng:S0251L01B01 \"I don't want to find out until after we finish | 끝난 후에 알아내고 싶지 않아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0251L01B01"
+    },
+    {
+     "ref": "S0252",
+     "seed": 252,
+     "kind": "seed",
+     "known": "when will you be ready to start?",
+     "target": "언제 시작할 준비가 돼요?",
+     "why": "played copy differs: kor_for_eng:S0252L01B01 \"when will you be ready to start | 언제 시작할 준비가 될 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0252L01B01"
+    },
+    {
+     "ref": "S0256",
+     "seed": 256,
+     "kind": "seed",
+     "known": "I think I'll be ready in less than an hour",
+     "target": "한 시간도 안 돼서 준비될 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0256L01B01 \"I think I'll be ready in less than an hour | 한 시간 안에 준비될 것 같아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0256L01B01"
+    },
+    {
+     "ref": "S0257",
+     "seed": 257,
+     "kind": "seed",
+     "known": "I like that blue thing",
+     "target": "그 파란 거 좋아해요",
+     "why": "played copy differs: kor_for_eng:S0257L01B01 \"I like that blue thing | 그 파란 것을 좋아해요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0257L01B01"
+    },
+    {
+     "ref": "S0258",
+     "seed": 258,
+     "kind": "seed",
+     "known": "what's that blue thing over there?",
+     "target": "저기 있는 그 파란 건 뭐예요?",
+     "why": "played copy differs: kor_for_eng:S0258L01B01 \"what's that blue thing over there | 저기 그 파란 것은 뭐예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0258L01B01"
+    },
+    {
+     "ref": "S0261",
+     "seed": 261,
+     "kind": "seed",
+     "known": "I think it might be something important",
+     "target": "중요한 거일 수도 있는 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0261L01B01 \"I think it might be something important | 중요한 것일 수도 있다고 생각해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0261L01B01"
+    },
+    {
+     "ref": "S0262",
+     "seed": 262,
+     "kind": "seed",
+     "known": "who was that man you were talking to yesterday?",
+     "target": "어제 이야기하고 있었던 그 남자 누구였어요?",
+     "why": "played copy differs: kor_for_eng:S0262L01B01 \"who was that man you were talking to yesterday | 어제 이야기하고 있던 그 남자는 누구였어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0262L01B01"
+    },
+    {
+     "ref": "S0264",
+     "seed": 264,
+     "kind": "seed",
+     "known": "an old man",
+     "target": "나이 든 남자",
+     "why": "played copy differs: kor_for_eng:S0264L01B01 \"an old man | 늙은 남자\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0264L01B01"
+    },
+    {
+     "ref": "S0266",
+     "seed": 266,
+     "kind": "seed",
+     "known": "he was an old friend of my father",
+     "target": "그는 아버지의 오래된 친구였어요",
+     "why": "played copy differs: kor_for_eng:S0266L01B01 \"he was an old friend of my father | 그는 제 아버지의 오래된 친구였어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0266L01B01"
+    },
+    {
+     "ref": "S0267",
+     "seed": 267,
+     "kind": "seed",
+     "known": "have you heard from your friend?",
+     "target": "친구한테 연락 받았어요?",
+     "why": "played copy differs: kor_for_eng:S0267L01B01 \"have you heard from your friend | 친구한테서 연락 받았어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0267L01B01"
+    },
+    {
+     "ref": "S0270",
+     "seed": 270,
+     "kind": "seed",
+     "known": "because I'm worried that I'm going to be late",
+     "target": "늦을까 봐 걱정돼서요",
+     "why": "played copy differs: kor_for_eng:S0270L01B01 \"because I'm worried that I'm going to be late | 늦을까 봐 걱정돼요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0270L01B01"
+    },
+    {
+     "ref": "S0271",
+     "seed": 271,
+     "kind": "seed",
+     "known": "would you like to come with us next month?",
+     "target": "다음 달에 우리와 같이 오고 싶어요?",
+     "why": "played copy differs: kor_for_eng:S0271L01B01 \"would you like to come with us next month | 다음 달에 같이 올래요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0271L01B01"
+    },
+    {
+     "ref": "S0272",
+     "seed": 272,
+     "kind": "seed",
+     "known": "yes that sounds like a great idea",
+     "target": "네 아주 좋은 생각인 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0272L01B01 \"yes that sounds like a great idea | 네 정말 좋은 생각이에요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0272L01B01"
+    },
+    {
+     "ref": "S0275",
+     "seed": 275,
+     "kind": "seed",
+     "known": "longer",
+     "target": "더 오래요",
+     "why": "played copy differs: kor_for_eng:S0275L01B01 \"longer | 더 오래\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0275L01B01"
+    },
+    {
+     "ref": "S0276",
+     "seed": 276,
+     "kind": "seed",
+     "known": "no I can stay here for a little longer",
+     "target": "아니요 여기서 좀 더 있을 수 있어요",
+     "why": "played copy differs: kor_for_eng:S0276L01B02 \"no I can stay here for a little longer | 아니요 조금 더 여기 있을 수 있어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0276L01B02"
+    },
+    {
+     "ref": "S0279",
+     "seed": 279,
+     "kind": "seed",
+     "known": "yes because there wasn't much time left",
+     "target": "네 시간이 별로 안 남았으니까요",
+     "why": "played copy differs: kor_for_eng:S0279L01B01 \"yes because there wasn't much time left | 네 시간이 많이 남지 않았거든요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0279L01B01"
+    },
+    {
+     "ref": "S0280",
+     "seed": 280,
+     "kind": "seed",
+     "known": "no I only had to do the most important job",
+     "target": "아니요 가장 중요한 일만 하면 됐어요",
+     "why": "played copy differs: kor_for_eng:S0280L01B02 \"no I only had to do the most important job | 아니요 제일 중요한 일만 하면 됐어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0280L01B02"
+    },
+    {
+     "ref": "S0281",
+     "seed": 281,
+     "kind": "seed",
+     "known": "do you mind if I finish my coffee before you start?",
+     "target": "시작하기 전에 커피를 다 마셔도 괜찮아요?",
+     "why": "played copy differs: kor_for_eng:S0281L01B02 \"do you mind if I finish my coffee before you start | 시작하기 전에 커피 다 마셔도 될까요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0281L01B02"
+    },
+    {
+     "ref": "S0282",
+     "seed": 282,
+     "kind": "seed",
+     "known": "no that's not a problem",
+     "target": "아니요 문제없어요",
+     "why": "played copy differs: kor_for_eng:S0282L01B02 \"no that's not a problem | 아니요 문제 없어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0282L01B02"
+    },
+    {
+     "ref": "S0283",
+     "seed": 283,
+     "kind": "seed",
+     "known": "which of your friends speak Korean?",
+     "target": "친구들 중에 누가 한국어를 말해요?",
+     "why": "played copy differs: kor_for_eng:S0283L01B02 \"which of your friends speak Korean | 친구 중에 누가 한국어를 해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0283L01B02"
+    },
+    {
+     "ref": "S0284",
+     "seed": 284,
+     "kind": "seed",
+     "known": "do you know my sister's friend?",
+     "target": "제 여동생의 친구를 알아요?",
+     "why": "played copy differs: kor_for_eng:S0284L01B01 \"do you know my sister's friend | 제 여동생 친구를 알아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0284L01B01"
+    },
+    {
+     "ref": "S0285",
+     "seed": 285,
+     "kind": "seed",
+     "known": "she speaks Korean",
+     "target": "그녀는 한국어를 말해요",
+     "why": "played copy differs: kor_for_eng:S0285L01B01 \"she speaks Korean | 그녀는 한국어를 해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0285L01B01"
+    },
+    {
+     "ref": "S0286",
+     "seed": 286,
+     "kind": "seed",
+     "known": "people who like speaking Korean",
+     "target": "한국어로 말하는 걸 좋아하는 사람들",
+     "why": "played copy differs: kor_for_eng:S0286L01U01 \"people who like speaking Korean | 한국어 말하는 것을 좋아하는 사람들\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0286L01U01"
+    },
+    {
+     "ref": "S0287",
+     "seed": 287,
+     "kind": "seed",
+     "known": "how many people do you know who like watching television?",
+     "target": "TV 보는 걸 좋아하는 사람을 몇 명이나 알아요?",
+     "why": "played copy differs: kor_for_eng:S0287L01B01 \"how many people do you know who like watching television | TV 보는 것을 좋아하는 사람을 몇 명이나 알아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0287L01B01"
+    },
+    {
+     "ref": "S0288",
+     "seed": 288,
+     "kind": "seed",
+     "known": "most people I know like watching television",
+     "target": "제가 아는 사람들은 대부분 TV 보는 걸 좋아해요",
+     "why": "played copy differs: kor_for_eng:S0288L01B01 \"most people I know like watching television | 제가 아는 대부분의 사람들은 TV 보는 것을 좋아해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0288L01B01"
+    },
+    {
+     "ref": "S0290",
+     "seed": 290,
+     "kind": "seed",
+     "known": "I wonder if he knows the answer",
+     "target": "그가 답을 아는지 궁금해요",
+     "why": "played copy differs: kor_for_eng:S0290L01B02 \"I wonder if he knows the answer | 그가 답을 알고 있는지 궁금해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0290L01B02"
+    },
+    {
+     "ref": "S0293",
+     "seed": 293,
+     "kind": "seed",
+     "known": "I have to find out where he's going to meet me",
+     "target": "그가 저를 어디서 만날 건지 알아내야 해요",
+     "why": "played copy differs: kor_for_eng:S0293L01B02 \"I have to find out where he's going to meet me | 그가 어디서 만날 건지 알아내야 해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0293L01B02"
+    },
+    {
+     "ref": "S0294",
+     "seed": 294,
+     "kind": "seed",
+     "known": "I don't have enough time to call you tonight",
+     "target": "오늘 밤에 전화할 시간이 충분하지 않아요",
+     "why": "played copy differs: kor_for_eng:S0294L01B01 \"I don't have enough time to call you tonight | 오늘 밤에 전화할 시간이 없어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0294L01B01"
+    },
+    {
+     "ref": "S0297",
+     "seed": 297,
+     "kind": "seed",
+     "known": "I don't know many people who speak Korean",
+     "target": "한국어를 말하는 사람을 많이 알지 못해요",
+     "why": "played copy differs: kor_for_eng:S0297L01B02 \"I don't know many people who speak Korean | 한국어를 하는 사람을 많이 몰라요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0297L01B02"
+    },
+    {
+     "ref": "S0298",
+     "seed": 298,
+     "kind": "seed",
+     "known": "I've got nothing left to say",
+     "target": "더 할 말이 없어요",
+     "why": "played copy differs: kor_for_eng:S0298L01B01 \"I've got nothing left to say | 더 이상 할 말이 없어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0298L01B01"
+    },
+    {
+     "ref": "S0299",
+     "seed": 299,
+     "kind": "seed",
+     "known": "he wants to pay half",
+     "target": "그는 반만 내고 싶어해요",
+     "why": "played copy differs: kor_for_eng:S0299L01B01 \"he wants to pay half | 그는 반을 내고 싶어해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0299L01B01"
+    },
+    {
+     "ref": "S0300",
+     "seed": 300,
+     "kind": "seed",
+     "known": "she doesn't want to seem unfriendly",
+     "target": "그녀는 불친절해 보이고 싶어하지 않아요",
+     "why": "played copy differs: kor_for_eng:S0300L01B01 \"she doesn't want to seem unfriendly | 그녀는 불친절해 보이고 싶지 않아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0300L01B01"
+    },
+    {
+     "ref": "S0301",
+     "seed": 301,
+     "kind": "seed",
+     "known": "he said that he wants to show you something",
+     "target": "그는 뭔가 보여 주고 싶다고 했어요",
+     "why": "played copy differs: kor_for_eng:S0301L02B03 \"he said that he wants to show something | 그는 뭔가 보여 주고 싶다고 했어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0301L02B03"
+    },
+    {
+     "ref": "S0304",
+     "seed": 304,
+     "kind": "seed",
+     "known": "I think that she doesn't want to work from home",
+     "target": "그녀가 집에서 일하고 싶어하지 않는 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0304L03U01 \"I think that she doesn't want to work from home | 그녀가 집에서 일하고 싶어하지 않는 것 같아요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0304L03U01"
+    },
+    {
+     "ref": "S0305",
+     "seed": 305,
+     "kind": "seed",
+     "known": "woman",
+     "target": "여자",
+     "why": "played copy differs: kor_for_eng:S0305L01B01 \"a woman | 여자\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0305L01B01"
+    },
+    {
+     "ref": "S0306",
+     "seed": 306,
+     "kind": "seed",
+     "known": "I know that young woman who's talking to your friend",
+     "target": "친구와 이야기하고 있는 그 젊은 여자를 알아요",
+     "why": "played copy differs: kor_for_eng:S0306L02U01 \"I know that young woman who's talking to a friend | 친구와 이야기하고 있는 그 젊은 여자를 알아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0306L02U01"
+    },
+    {
+     "ref": "S0313",
+     "seed": 313,
+     "kind": "seed",
+     "known": "he said that he couldn't watch all five games",
+     "target": "그는 다섯 경기를 다 볼 수 없다고 했어요",
+     "why": "played copy differs: kor_for_eng:S0313L04U01 \"he said that he couldn't watch all five games | 그는 다 다섯 경기를 볼 수 없다고 했어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0313L04U01"
+    },
+    {
+     "ref": "S0314",
+     "seed": 314,
+     "kind": "seed",
+     "known": "I think that she could put it on the table",
+     "target": "그녀가 그걸 탁자 위에 놓을 수 있을 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0314L02U01 \"I think she could put it on the table | 그녀가 그걸 탁자 위에 놓을 수 있을 것 같아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0314L02U01"
+    },
+    {
+     "ref": "S0315",
+     "seed": 315,
+     "kind": "seed",
+     "known": "I think that he couldn't afford the car that he wanted",
+     "target": "그가 원했던 차를 살 여유가 없었던 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0315L04U01 \"I think he didn't have the means to buy the car he wanted | 그가 원했던 차를 살 여유가 없었던 것 같아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0315L04U01"
+    },
+    {
+     "ref": "S0316",
+     "seed": 316,
+     "kind": "seed",
+     "known": "do you think that she could bring her brother on Monday?",
+     "target": "그녀가 월요일에 남동생을 데려올 수 있을 것 같아요?",
+     "why": "played copy differs: kor_for_eng:S0316L03U01 \"do you think she could bring her brother on Monday? | 그녀가 월요일에 남동생을 데려올 수 있을 것 같아요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0316L03U01"
+    },
+    {
+     "ref": "S0326",
+     "seed": 326,
+     "kind": "seed",
+     "known": "I don't think that she needs to sell the company",
+     "target": "그녀가 회사를 팔 필요가 없는 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0326L03U01 \"I don't think she needs to sell the company | 그녀가 회사를 팔 필요가 없는 것 같아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0326L03U01"
+    },
+    {
+     "ref": "S0336",
+     "seed": 336,
+     "kind": "seed",
+     "known": "I don't think that she can open the door",
+     "target": "그녀가 문을 열 수 없는 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0336L02U01 \"I don't think that she can open the door | 그녀가 문을 열 수 없는 것 같아요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0336L02U01"
+    },
+    {
+     "ref": "S0358",
+     "seed": 358,
+     "kind": "seed",
+     "known": "your friend said that she couldn't reach the top",
+     "target": "친구가 꼭대기에 닿을 수 없다고 했어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0359",
+     "seed": 359,
+     "kind": "seed",
+     "known": "your friend said that he could turn left",
+     "target": "친구가 왼쪽으로 돌 수 있다고 했어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0360",
+     "seed": 360,
+     "kind": "seed",
+     "known": "did your friend say anything else?",
+     "target": "친구가 다른 말도 했어요?",
+     "why": "played copy differs: kor_for_eng:S0360L01U01 \"did your friend say anything else? | 제 친구가 다른 말도 했어요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0360L01U01"
+    },
+    {
+     "ref": "S0362",
+     "seed": 362,
+     "kind": "seed",
+     "known": "no he was rather quiet after you left",
+     "target": "아니요 떠난 후에 그는 좀 조용했어요",
+     "why": "played copy differs: kor_for_eng:S0362L01U01 \"no he was rather quiet after you left | 아니요 그는 떠난 후에 꽤 조용했어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0362L01U01"
+    },
+    {
+     "ref": "S0365",
+     "seed": 365,
+     "kind": "seed",
+     "known": "I didn't hear what she said to him",
+     "target": "그녀가 그한테 뭐라고 했는지 못 들었어요",
+     "why": "played copy differs: kor_for_eng:S0365L01U01 \"I didn't hear what she said to him | 그한테 뭐라고 했는지 못 들었어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0365L01U01"
+    },
+    {
+     "ref": "S0368",
+     "seed": 368,
+     "kind": "seed",
+     "known": "yes I heard that he wanted to grow tomatoes",
+     "target": "네 토마토를 키우고 싶어한다고 들었어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0372",
+     "seed": 372,
+     "kind": "seed",
+     "known": "did you see what she was trying to create?",
+     "target": "그녀가 뭘 만들려고 하는지 봤어요?",
+     "why": "played copy differs: kor_for_eng:S0372L01U01 \"did you see what she was trying to create? | 그녀가 뭘 만들려고 했는지 봤어요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0372L01U01"
+    },
+    {
+     "ref": "S0373",
+     "seed": 373,
+     "kind": "seed",
+     "known": "it was beautiful",
+     "target": "아름다웠어요",
+     "why": "played copy differs: kor_for_eng:S0373L01B01 \"beautiful | 아름다웠어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0373L01B01"
+    },
+    {
+     "ref": "S0379",
+     "seed": 379,
+     "kind": "seed",
+     "known": "yes I was lucky enough to travel to Africa",
+     "target": "네 운 좋게도 아프리카에 여행 갔어요",
+     "why": "played copy differs: kor_for_eng:S0379L03U01 \"yes I was lucky enough to travel to Africa | 네 운 좋게도 아프리카에 여행을 갔어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0379L03U01"
+    },
+    {
+     "ref": "S0380",
+     "seed": 380,
+     "kind": "seed",
+     "known": "I asked what she wanted to include",
+     "target": "그녀가 뭘 포함하고 싶어하는지 물어봤어요",
+     "why": "played copy differs: kor_for_eng:S0380L03U01 \"I asked what she wanted to include | 그녀가 포함하고 싶은 게 뭔지 물어봤어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0380L03U01"
+    },
+    {
+     "ref": "S0381",
+     "seed": 381,
+     "kind": "seed",
+     "known": "I didn't ask if he wanted to follow us",
+     "target": "그가 우리를 따라오고 싶어하는지 물어보지 않았어요",
+     "why": "played copy differs: kor_for_eng:S0381L03U01 \"I didn't ask if he wanted to follow us | 그가 우리를 따라오고 싶은지 물어보지 않았어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0381L03U01"
+    },
+    {
+     "ref": "S0382",
+     "seed": 382,
+     "kind": "seed",
+     "known": "did you ask where he wanted to put it?",
+     "target": "그가 그걸 어디에 놓고 싶어하는지 물어봤어요?",
+     "why": "played copy differs: kor_for_eng:S0382L01U01 \"did you ask where he wanted to put it? | 그가 어디에 그걸 놓고 싶어하는지 물어봤어요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0382L01U01"
+    },
+    {
+     "ref": "S0383",
+     "seed": 383,
+     "kind": "seed",
+     "known": "yes he said he wanted to put it in the garden",
+     "target": "네 정원에 놓고 싶다고 했어요",
+     "why": "played copy differs: kor_for_eng:S0383L01U02 \"yes he said he wanted to put it in the garden | 네 그는 정원에 놓고 싶다고 했어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0383L01U02"
+    },
+    {
+     "ref": "S0386",
+     "seed": 386,
+     "kind": "seed",
+     "known": "yes I agreed with her",
+     "target": "네 그녀에게 동의했어요",
+     "why": "no new LEGO in this seed and sentence not played elsewhere",
+     "sub": "no-home"
+    },
+    {
+     "ref": "S0389",
+     "seed": 389,
+     "kind": "seed",
+     "known": "that person over there",
+     "target": "저기 있는 그 사람",
+     "why": "no new LEGO in this seed and sentence not played elsewhere",
+     "sub": "no-home"
+    },
+    {
+     "ref": "S0396",
+     "seed": 396,
+     "kind": "seed",
+     "known": "we don't need to stand until everybody else is ready",
+     "target": "다른 사람들이 다 준비될 때까지 서 있을 필요 없어요",
+     "why": "played copy differs: kor_for_eng:S0396L03U01 \"we don't need to stand until everybody else is ready | 다른 사람들이 다 준비될 때까지 서 있을 필요는 없어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0396L03U01"
+    },
+    {
+     "ref": "S0475",
+     "seed": 475,
+     "kind": "seed",
+     "known": "there are many reasons to consider waiting",
+     "target": "기다리는 걸 고려할 이유가 많아요",
+     "why": "played copy differs: kor_for_eng:S0475L03U01 \"there are many reasons to consider waiting | 기다리는 걸 고려할 이유가 많아요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0475L03U01"
+    },
+    {
+     "ref": "S0483",
+     "seed": 483,
+     "kind": "seed",
+     "known": "life isn't easy but it's not meant to be easy",
+     "target": "인생은 쉽지 않지만 원래 쉬운 건 아니에요",
+     "why": "played copy differs: kor_for_eng:S0483L03U01 \"life isn't easy but it's not meant to be easy | 인생은 쉽지 않지만 원래 쉬운 건 아니에요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0483L03U01"
+    },
+    {
+     "ref": "S0495",
+     "seed": 495,
+     "kind": "seed",
+     "known": "when it matters",
+     "target": "중요할 때",
+     "why": "played copy differs: kor_for_eng:S0495L01B02 \"when important | 중요할 때\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0495L01B02"
+    },
+    {
+     "ref": "S0539",
+     "seed": 539,
+     "kind": "seed",
+     "known": "but it's getting late",
+     "target": "하지만 늦어지고 있어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0550",
+     "seed": 550,
+     "kind": "seed",
+     "known": "the end of the village",
+     "target": "마을의 끝",
+     "why": "played copy differs: kor_for_eng:S0550L02U01 \"the end of the village | 마을의 끝 있어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0550L02U01"
+    },
+    {
+     "ref": "S0558",
+     "seed": 558,
+     "kind": "seed",
+     "known": "it's so late at night",
+     "target": "밤이 너무 늦었어요",
+     "why": "played copy differs: kor_for_eng:S0558L02U01 \"it's so late at night | 이렇게 밤이 늦었어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0558L02U01"
+    },
+    {
+     "ref": "S0566",
+     "seed": 566,
+     "kind": "seed",
+     "known": "I'd have thought more if it had been my choice",
+     "target": "제 선택이었다면 더 생각했을 거예요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0573",
+     "seed": 573,
+     "kind": "seed",
+     "known": "it's the kind of thing that makes the holidays very special",
+     "target": "그건 휴가를 아주 특별하게 만드는 종류의 거예요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0578",
+     "seed": 578,
+     "kind": "seed",
+     "known": "somewhere warmer",
+     "target": "더 따뜻한 곳",
+     "why": "played copy differs: kor_for_eng:S0578L02U01 \"somewhere warmer | 더 따뜻한 곳에 갔어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0578L02U01"
+    },
+    {
+     "ref": "S0579",
+     "seed": 579,
+     "kind": "seed",
+     "known": "we've often tried",
+     "target": "자주 해 봤어요",
+     "why": "played copy differs: kor_for_eng:S0579L02U01 \"we've often tried | 자주 해봤어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0579L02U01"
+    },
+    {
+     "ref": "S0581",
+     "seed": 581,
+     "kind": "seed",
+     "known": "he'd like to know a little more about what it's like",
+     "target": "그게 어떤지 좀 더 알고 싶어해요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0582",
+     "seed": 582,
+     "kind": "seed",
+     "known": "what's it like to grow up here?",
+     "target": "여기서 자라는 건 어때요?",
+     "why": "played copy differs: kor_for_eng:S0582L03U01 \"what's it like to grow up here? | 여기서 자라는 게 어때요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0582L03U01"
+    },
+    {
+     "ref": "S0583",
+     "seed": 583,
+     "kind": "seed",
+     "known": "what's it like in this part of the world?",
+     "target": "이 지역은 어때요?",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0584",
+     "seed": 584,
+     "kind": "seed",
+     "known": "what's it like to wake up every morning and see the mountains?",
+     "target": "매일 아침 일어나서 산을 보는 건 어때요?",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0591",
+     "seed": 591,
+     "kind": "seed",
+     "known": "she followed me down to the shops",
+     "target": "그녀는 가게까지 저를 따라왔어요",
+     "why": "played copy differs: kor_for_eng:S0591L03U01 \"she followed me down to the shops | 그녀는 가게까지 나를 따라왔어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0591L03U01"
+    },
+    {
+     "ref": "S0594",
+     "seed": 594,
+     "kind": "seed",
+     "known": "I had to share my toys with my sister",
+     "target": "여동생과 장난감을 나눠야 했어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0595",
+     "seed": 595,
+     "kind": "seed",
+     "known": "I need to lie down in the garden",
+     "target": "정원에 누워야 해요",
+     "why": "played copy differs: kor_for_eng:S0595L03U01 \"I need to lie down in the garden | 정원에서 누워야 해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0595L03U01"
+    },
+    {
+     "ref": "S0596",
+     "seed": 596,
+     "kind": "seed",
+     "known": "and I need to close my eyes for a while",
+     "target": "그리고 잠시 눈을 감아야 해요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0598",
+     "seed": 598,
+     "kind": "seed",
+     "known": "he's heard a thousand stories about what they were doing",
+     "target": "그들이 뭘 하고 있었는지에 대해 천 가지 이야기를 들었어요",
+     "why": "played copy differs: kor_for_eng:S0598L07U01 \"he's heard a thousand stories about what they were doing | 그는 그들이 뭘 하고 있었는지에 대한 천 가지 이야기를 들었어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0598L07U01"
+    },
+    {
+     "ref": "S0600",
+     "seed": 600,
+     "kind": "seed",
+     "known": "I'd have driven if you'd told me how tired you were",
+     "target": "얼마나 피곤한지 말해 줬으면 운전했을 거예요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0606",
+     "seed": 606,
+     "kind": "seed",
+     "known": "if I'd known then what I know now I'd have waited",
+     "target": "지금 아는 걸 그때 알았더라면 기다렸을 거예요",
+     "why": "played copy differs: kor_for_eng:S0606L05U01 \"if I'd known then what I know now I'd have waited | 지금 알고 있는 걸 그때 알았더라면 기다렸을 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0606L05U01"
+    },
+    {
+     "ref": "S0608",
+     "seed": 608,
+     "kind": "seed",
+     "known": "it would have been the sensible thing to do",
+     "target": "그게 현명한 일이었을 거예요",
+     "why": "played copy differs: kor_for_eng:S0608L02U01 \"it would have been the sensible thing to do | 현명한 일이었을 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0608L02U01"
+    },
+    {
+     "ref": "S0612",
+     "seed": 612,
+     "kind": "seed",
+     "known": "we would have bought something",
+     "target": "뭔가 샀을 거예요",
+     "why": "played copy differs: kor_for_eng:S0612L03U01 \"we would have bought something | 우리는 뭔가를 샀을 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0612L03U01"
+    },
+    {
+     "ref": "S0613",
+     "seed": 613,
+     "kind": "seed",
+     "known": "we probably would have bought a house there",
+     "target": "아마 거기서 집을 샀을 거예요",
+     "why": "played copy differs: kor_for_eng:S0613L03U01 \"we probably would have bought a house there | 우리는 거기서 집을 샀을 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0613L03U01"
+    },
+    {
+     "ref": "S0614",
+     "seed": 614,
+     "kind": "seed",
+     "known": "it's near where your family live",
+     "target": "가족이 사는 곳 근처에 있어요",
+     "why": "played copy differs: kor_for_eng:S0614L03U01 \"it's near where your family live | 가족이 사는 곳 근처예요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0614L03U01"
+    },
+    {
+     "ref": "S0618",
+     "seed": 618,
+     "kind": "seed",
+     "known": "it doesn't feel like a long time",
+     "target": "오래된 것 같지 않아요",
+     "why": "played copy differs: kor_for_eng:S0618L02U01 \"it doesn't feel like a long time | 오랜 시간처럼 느껴지지 않아요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0618L02U01"
+    },
+    {
+     "ref": "S0619",
+     "seed": 619,
+     "kind": "seed",
+     "known": "it's a long time since we saw each other",
+     "target": "서로 본 지 오래됐어요",
+     "why": "played copy differs: kor_for_eng:S0619L03U01 \"it's a long time since we saw each other | 우리가 서로 본 지 오래됐어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0619L03U01"
+    },
+    {
+     "ref": "S0620",
+     "seed": 620,
+     "kind": "seed",
+     "known": "it's a very long time since we last saw each other",
+     "target": "마지막으로 서로 본 지 아주 오래됐어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0622",
+     "seed": 622,
+     "kind": "seed",
+     "known": "I knew that the children had broken it",
+     "target": "아이들이 그걸 부쉈다는 걸 알았어요",
+     "why": "played copy differs: kor_for_eng:S0622L05U01 \"I knew that the children had broken it | 아이들이 그것을 부쉈다는 걸 알았어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0622L05U01"
+    },
+    {
+     "ref": "S0624",
+     "seed": 624,
+     "kind": "seed",
+     "known": "yes, that would be great, please",
+     "target": "네, 그러면 좋겠어요",
+     "why": "played copy differs: kor_for_eng:S0624L03U01 \"yes, that would be great, please | 네, 그거 좋겠어요, 감사합니다\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0624L03U01"
+    },
+    {
+     "ref": "S0628",
+     "seed": 628,
+     "kind": "seed",
+     "known": "do you like tea?",
+     "target": "차를 좋아해요?",
+     "why": "played copy differs: kor_for_eng:S0628L02U01 \"do you like tea? | 차를 좋아하세요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0628L02U01"
+    },
+    {
+     "ref": "S0631",
+     "seed": 631,
+     "kind": "seed",
+     "known": "what would you like?",
+     "target": "뭘 드릴까요?",
+     "why": "played copy differs: kor_for_eng:S0631L02U01 \"what would you like? | 뭐 드시겠어요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0631L02U01"
+    },
+    {
+     "ref": "S0633",
+     "seed": 633,
+     "kind": "seed",
+     "known": "a large glass of water would be fine",
+     "target": "큰 물 한 잔이면 괜찮아요",
+     "why": "played copy differs: kor_for_eng:S0633L03U01 \"a large glass of water would be fine | 큰 컵으로 물 한 잔이면 좋겠어요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0633L03U01"
+    },
+    {
+     "ref": "S0639",
+     "seed": 639,
+     "kind": "seed",
+     "known": "with you sir",
+     "target": "선생님과 같이",
+     "why": "played copy differs: kor_for_eng:S0639L02U01 \"with you sir | 선생님과 함께\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0639L02U01"
+    },
+    {
+     "ref": "S0640",
+     "seed": 640,
+     "kind": "seed",
+     "known": "it's the red one",
+     "target": "빨간 거예요",
+     "why": "played copy differs: kor_for_eng:S0640L02U01 \"it's the red-colored one | 빨간 거예요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0640L02U01"
+    },
+    {
+     "ref": "S0642",
+     "seed": 642,
+     "kind": "seed",
+     "known": "how do you feel madam?",
+     "target": "여사님 기분이 어떠세요?",
+     "why": "played copy differs: kor_for_eng:S0642L03U01 \"how do you feel madam? | 여사님 기분이 어떠세요?\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0642L03U01"
+    },
+    {
+     "ref": "S0644",
+     "seed": 644,
+     "kind": "seed",
+     "known": "could you say that sir?",
+     "target": "선생님 그거 말해 주실 수 있어요?",
+     "why": "played copy differs: kor_for_eng:S0644L04U01 \"could you say that sir? | 선생님 그거 말씀해 주시겠어요?\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0644L04U01"
+    },
+    {
+     "ref": "S0645",
+     "seed": 645,
+     "kind": "seed",
+     "known": "I can help you madam",
+     "target": "여사님 도와드릴 수 있어요",
+     "why": "played copy differs: kor_for_eng:S0645L03U01 \"I can help you madam | 여사님을 도와드릴 수 있어요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0645L03U01"
+    },
+    {
+     "ref": "S0646",
+     "seed": 646,
+     "kind": "seed",
+     "known": "you're doing something sir",
+     "target": "선생님 뭔가 하고 계세요",
+     "why": "played copy differs: kor_for_eng:S0646L03U01 \"you're doing something sir | 선생님 뭔가를 하고 계세요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0646L03U01"
+    },
+    {
+     "ref": "S0648",
+     "seed": 648,
+     "kind": "seed",
+     "known": "what you said madam",
+     "target": "여사님이 말씀하신 것",
+     "why": "played copy differs: kor_for_eng:S0648L02U01 \"what you said madam | 여사님이 말씀하신 것\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0648L02U01"
+    },
+    {
+     "ref": "S0650",
+     "seed": 650,
+     "kind": "seed",
+     "known": "do you want to go madam?",
+     "target": "여사님 가고 싶으세요?",
+     "why": "played copy differs: kor_for_eng:S0650L02U01 \"do you want to go madam? | 여사님 가시고 싶으세요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0650L02U01"
+    },
+    {
+     "ref": "S0652",
+     "seed": 652,
+     "kind": "seed",
+     "known": "what do you need sir?",
+     "target": "선생님 뭐가 필요하세요?",
+     "why": "played copy differs: kor_for_eng:S0652L03U01 \"what do you need sir? | 선생님 무엇이 필요하세요?\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0652L03U01"
+    },
+    {
+     "ref": "S0654",
+     "seed": 654,
+     "kind": "seed",
+     "known": "I'm not sure if I can help you, sir",
+     "target": "선생님 도와드릴 수 있을지 모르겠어요",
+     "why": "played copy differs: kor_for_eng:S0654L04U01 \"I'm not sure if I can help you sir | 선생님을 도와드릴 수 있을지 모르겠어요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0654L04U01"
+    },
+    {
+     "ref": "S0655",
+     "seed": 655,
+     "kind": "seed",
+     "known": "I think that you're doing very well, madam",
+     "target": "여사님 아주 잘 하고 계신 것 같아요",
+     "why": "played copy differs: kor_for_eng:S0655L04U01 \"I think that you're doing very well madam | 여사님이 매우 잘 하고 계신 것 같아요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0655L04U01"
+    },
+    {
+     "ref": "S0656",
+     "seed": 656,
+     "kind": "seed",
+     "known": "with you all",
+     "target": "여러분과 같이",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0657",
+     "seed": 657,
+     "kind": "seed",
+     "known": "how do you all feel?",
+     "target": "여러분 기분이 어때요?",
+     "why": "played copy differs: kor_for_eng:S0657L03U01 \"how do you all feel? | 여러분 기분이 어때요?\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0657L03U01"
+    },
+    {
+     "ref": "S0658",
+     "seed": 658,
+     "kind": "seed",
+     "known": "do you all want?",
+     "target": "여러분 원해요?",
+     "why": "played copy differs: kor_for_eng:S0658L02U01 \"do you all want? | 여러분 원하세요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0658L02U01"
+    },
+    {
+     "ref": "S0659",
+     "seed": 659,
+     "kind": "seed",
+     "known": "could you all say that?",
+     "target": "여러분 그거 말해 줄 수 있어요",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0660",
+     "seed": 660,
+     "kind": "seed",
+     "known": "I can help you all",
+     "target": "여러분을 도와줄 수 있어요",
+     "why": "played copy differs: kor_for_eng:S0660L02U01 \"I can help you all | 여러분을 도와드릴 수 있어요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0660L02U01"
+    },
+    {
+     "ref": "S0661",
+     "seed": 661,
+     "kind": "seed",
+     "known": "you're all doing something",
+     "target": "여러분 다 뭔가 하고 있어요",
+     "why": "played copy differs: kor_for_eng:S0661L03U01 \"you're all doing something | 여러분 뭔가 하고 계세요\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0661L03U01"
+    },
+    {
+     "ref": "S0662",
+     "seed": 662,
+     "kind": "seed",
+     "known": "you all speak it",
+     "target": "여러분 다 그거 말해요",
+     "why": "played copy differs: kor_for_eng:S0662L03U01 \"you all speak it | 여러분 그걸 말해요\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0662L03U01"
+    },
+    {
+     "ref": "S0663",
+     "seed": 663,
+     "kind": "seed",
+     "known": "what you all said",
+     "target": "여러분이 말한 것",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0664",
+     "seed": 664,
+     "kind": "seed",
+     "known": "are you all ready?",
+     "target": "여러분 다 준비됐어요?",
+     "why": "played copy differs: kor_for_eng:S0664L02U01 \"are you all ready? | 여러분 준비됐어요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0664L02U01"
+    },
+    {
+     "ref": "S0665",
+     "seed": 665,
+     "kind": "seed",
+     "known": "do you all want to go?",
+     "target": "여러분 다 가고 싶어요?",
+     "why": "played copy differs: kor_for_eng:S0665L02U01 \"do you all want to go? | 여러분 가고 싶어요?\"",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0665L02U01"
+    },
+    {
+     "ref": "S0667",
+     "seed": 667,
+     "kind": "seed",
+     "known": "do you all mind?",
+     "target": "여러분 다 괜찮아요?",
+     "why": "played copy differs: kor_for_eng:S0667L02U05 \"do you all mind? | 여러분 괜찮으세요?\" (under a not-new LEGO: never played)",
+     "sub": "drifted",
+     "near": "kor_for_eng:S0667L02U05"
+    }
+   ]
+  }
+ ]
+}
