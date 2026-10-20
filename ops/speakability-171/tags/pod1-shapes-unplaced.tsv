@@ -1,0 +1,94 @@
+row	shape	fmove	note
+50	N2.2	F1	order
+57	N2.2	none	order
+61	N2.2	none	order
+62	N2.2	none	order
+66	N2.2	none	order
+67	N3.1	none	availability then order
+71	P1.1	F3	option-choice counter-Q
+79	N2.1	F21	onward solicit
+83	N2.1	F21	onward solicit
+91	N2.2	none	order
+103	none	none	plain information question (what time) — no shape
+107	none	none	plain information question (what is X) — no shape
+131	N2.2	none	service order
+141	none	none	price question — no shape (P2 starts at reckoning, not the ask)
+142	none	none	price question
+143	none	none	price question
+144	none	none	price question
+145	N4.1	none	where-can-I request for directions
+146	N4.1	none	where-can-I request for directions
+147	N2.2	none	order
+148	N2.2	none	order
+149	N1201.1	none	stance on the medium
+150	N1201.1	none	declares own limitation
+152	N1201.1	none	asks accommodation on the medium
+153	N6.2	F7	non-understanding declared
+154	N6.2	F7	request to retry
+155	N2.2	none	order
+156	N2.2	none	order
+157	N3.1	none	availability
+163	N3.1	none	availability
+164	P1.1	F3	option-choice counter-Q
+165	P1.2	F1	specify
+166	P1.1	F3	option-choice counter-Q
+167	P1.1	F3	option-choice counter-Q
+168	P1.2	F1	specify
+169	none	none	small-talk weather assessment — no shape
+170	none	none	yes/no information question — no shape
+171	none	F1	answer to a plain question — no shape
+172	none	none	small-talk assessment — no shape
+174	none	none	opinion/assessment of a proposal — no shape
+175	N3.1	none	availability
+176	N3.1	none	availability
+177	none	none	yes/no information question — no shape
+178	none	none	yes/no information question — no shape
+179	N4.1	none	where-from request for directions
+180	P3.1	F9	check I've got it
+181	P3.1	F9	check I've got it
+182	none	none	own-fault trouble (outcome O6) — no exchange node
+183	none	none	own-fault trouble (outcome O6) — no exchange node
+185	none	none	feeling report — no shape
+186	none	none	feeling report (worry) — no shape
+187	N1201.1	none	limitation on the medium, as a feeling
+188	N9.1	none	is-it-possible
+189	N9.1	none	is-it-possible
+190	none	none	stated concern — no shape
+191	none	none	yes/no question about a plan — no shape
+192	none	none	promise/commitment — no shape
+193	none	none	promise/commitment — no shape
+194	N2.2	none	order
+196	N2.2	none	order
+197	N2.2	none	order
+198	N3.1	none	availability
+199	N10.1	F12	appreciation
+200	N1.1	none	ritual well-wishing
+201	N10.1	F12	appreciation
+202	N1.1	none	ritual well-wishing
+203	N10.1	F12	appreciation
+204	N10.1	F12	appreciation
+205	N10.1	F12	appreciation
+207	P3.1	F9	candidate reading offered back
+208	P3.1	F9	candidate reading offered back
+209	N3.1	none	availability
+210	N4.1	none	where-is request for directions
+211	N4.2	F1	instruct
+212	N4.2	F1	instruct
+213	N6.2	F7	say that again
+214	N6.3	none	repeated, not reformulated (F8 test fails)
+215	none	none	plain information question (what is that) — no shape
+216	none	none	plain information question
+217	N2.1	F21	solicit
+218	N2.1	F21	solicit
+219	N2.1	F21	solicit
+72	N2.2	F1	order (store has the move, not the node)
+78	N2.2	F1	order
+80	P1.1	F3	counter-question inside the order
+81	P1.2	F1	specify
+82	N2.4	F1	confirm + assess choice (F12)
+84	N2.2	F6	order, substituted
+104	none	F2	answer to a plain information question — no shape
+108	none	F6	answer to a plain information question — no shape
+132	N9.2	F2	grant + limit
+133	none	F3	information question inside N9 — no shape
+134	none	F4	hedged answer — no shape
