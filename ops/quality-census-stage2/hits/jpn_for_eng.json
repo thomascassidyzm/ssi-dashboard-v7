@@ -1,0 +1,4698 @@
+{
+ "course": "jpn_for_eng",
+ "at": "2026-10-20T13:42:36.969Z",
+ "checks": [
+  {
+   "id": "parentheticals",
+   "scan": "Check 1",
+   "rule": "K11",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 11,
+   "hits": []
+  },
+  {
+   "id": "slashes",
+   "scan": "Check 2",
+   "rule": "L19",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 25,
+   "hits": []
+  },
+  {
+   "id": "wrong-language",
+   "scan": "Checks 3+4",
+   "rule": "K8/K16",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 127,
+   "hits": []
+  },
+  {
+   "id": "multi-sentence",
+   "scan": "Check 5",
+   "rule": "P20",
+   "blocks": false,
+   "count": 10,
+   "subs": {},
+   "ms": 6,
+   "hits": [
+    {
+     "ref": "S0082",
+     "seed": 82,
+     "kind": "seed",
+     "known": "I'm not going to wait for you. Why not?",
+     "target": "待たない。なんで？",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "S0141",
+     "seed": 141,
+     "kind": "seed",
+     "known": "no problem. Everything is okay",
+     "target": "問題ない。全部大丈夫。",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "jpn_for_eng:S0141L01U01",
+     "seed": 141,
+     "kind": "use",
+     "known": "no problem. Everything is okay",
+     "target": "問題ない。全部大丈夫。",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "jpn_for_eng:S0166L01U07",
+     "seed": 166,
+     "kind": "use",
+     "known": "what do you think? Is it not very interesting?",
+     "target": "どう思う？そんなに面白くない？",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "jpn_for_eng:S0173L02B03",
+     "seed": 173,
+     "kind": "build",
+     "known": "manage. I can",
+     "target": "できる",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "jpn_for_eng:S0176L02B03",
+     "seed": 176,
+     "kind": "build",
+     "known": "ask if. I'll",
+     "target": "か聞いてみる",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "jpn_for_eng:S0419L02U05",
+     "seed": 419,
+     "kind": "use",
+     "known": "do you want people to like you? she asked",
+     "target": "人に好かれたいの？って聞いた",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "jpn_for_eng:S0420L01U04",
+     "seed": 420,
+     "kind": "use",
+     "known": "does age matter? she asked",
+     "target": "年齢はどう？って聞いた",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "jpn_for_eng:S0454L01U03",
+     "seed": 454,
+     "kind": "use",
+     "known": "when is it? six o'clock",
+     "target": "六時？って聞いた",
+     "why": "sentences: known 2, target 1"
+    },
+    {
+     "ref": "jpn_for_eng:S0532L02U04",
+     "seed": 532,
+     "kind": "use",
+     "known": "is it good? if so",
+     "target": "良ければと言ってた",
+     "why": "sentences: known 2, target 1"
+    }
+   ]
+  },
+  {
+   "id": "unpronounceable",
+   "scan": "Check 6",
+   "rule": "A16",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 5,
+   "hits": []
+  },
+  {
+   "id": "wrapping-quotes",
+   "scan": "Check 7",
+   "rule": "display",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 3,
+   "hits": []
+  },
+  {
+   "id": "trailing-period",
+   "scan": "Check 8",
+   "rule": "A7 (no difference)",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 4,
+   "hits": []
+  },
+  {
+   "id": "lowercase-i",
+   "scan": "Check 9",
+   "rule": "K9",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 5,
+   "hits": []
+  },
+  {
+   "id": "zut-lego",
+   "scan": "Check 10",
+   "rule": "K2/K4",
+   "blocks": true,
+   "count": 21,
+   "subs": {
+    "conflict": 13,
+    "k23-explained": 8
+   },
+   "ms": 3,
+   "hits": [
+    {
+     "ref": "S0009L01",
+     "seed": 9,
+     "kind": "lego",
+     "known": "can speak",
+     "target": "話せる",
+     "why": "\"can speak\" → 話せる | 話せます · intro: The Japanese for: 'can speak', as in — 'I can speak with other people too', is:",
+     "sub": "conflict",
+     "group": "can speak"
+    },
+    {
+     "ref": "S0662L01",
+     "seed": 662,
+     "kind": "lego",
+     "known": "can speak",
+     "target": "話せます",
+     "why": "\"can speak\" → 話せる | 話せます · intro: The Japanese for: 'can speak', is:",
+     "sub": "conflict",
+     "group": "can speak"
+    },
+    {
+     "ref": "S0033L01",
+     "seed": 33,
+     "kind": "lego",
+     "known": "are doing",
+     "target": "やってる",
+     "why": "\"are doing\" → やってる | おられます | されています · intro: The Japanese for: 'are doing', is:",
+     "sub": "conflict",
+     "group": "are doing"
+    },
+    {
+     "ref": "S0655L03",
+     "seed": 655,
+     "kind": "lego",
+     "known": "are doing",
+     "target": "おられます",
+     "why": "\"are doing\" → やってる | おられます | されています · intro: The Japanese for: 'are doing', is:",
+     "sub": "conflict",
+     "group": "are doing"
+    },
+    {
+     "ref": "S0661L01",
+     "seed": 661,
+     "kind": "lego",
+     "known": "are doing",
+     "target": "されています",
+     "why": "\"are doing\" → やってる | おられます | されています · intro: The Japanese for: 'are doing', is:",
+     "sub": "conflict",
+     "group": "are doing"
+    },
+    {
+     "ref": "S0127L01",
+     "seed": 127,
+     "kind": "lego",
+     "known": "that",
+     "target": "それが",
+     "why": "\"that\" → それが | その · intro: The Japanese for: 'that', as in — 'that isn't why I wanted to see you', is:",
+     "sub": "k23-explained",
+     "group": "that"
+    },
+    {
+     "ref": "S0336L01",
+     "seed": 336,
+     "kind": "lego",
+     "known": "that",
+     "target": "その",
+     "why": "\"that\" → それが | その · intro: The Japanese for: 'that', as in — 'the student said that method is important', is:",
+     "sub": "k23-explained",
+     "group": "that"
+    },
+    {
+     "ref": "S0232L02",
+     "seed": 232,
+     "kind": "lego",
+     "known": "woman",
+     "target": "女性",
+     "why": "\"woman\" → 女性 | 女の人 · intro: The Japanese for: 'woman', as in — 'I know an old woman who can remember the answer', is:",
+     "sub": "conflict",
+     "group": "woman"
+    },
+    {
+     "ref": "S0305L01",
+     "seed": 305,
+     "kind": "lego",
+     "known": "woman",
+     "target": "女の人",
+     "why": "\"woman\" → 女性 | 女の人 · intro: The Japanese for: 'woman', is:",
+     "sub": "conflict",
+     "group": "woman"
+    },
+    {
+     "ref": "S0258L01",
+     "seed": 258,
+     "kind": "lego",
+     "known": "over there",
+     "target": "あそこ",
+     "why": "\"over there\" → あそこ | 向こう · intro: The Japanese for: 'over there', as in — 'what's that blue thing over there?', is:",
+     "sub": "conflict",
+     "group": "over there"
+    },
+    {
+     "ref": "S0466L02",
+     "seed": 466,
+     "kind": "lego",
+     "known": "over there",
+     "target": "向こう",
+     "why": "\"over there\" → あそこ | 向こう · intro: The Japanese for: 'over there', is:",
+     "sub": "conflict",
+     "group": "over there"
+    },
+    {
+     "ref": "S0311L01",
+     "seed": 311,
+     "kind": "lego",
+     "known": "three",
+     "target": "三つ",
+     "why": "\"three\" → 三つ | 三 · intro: The Japanese for: 'three', as in — 'she could write about three things', is:",
+     "sub": "k23-explained",
+     "group": "three"
+    },
+    {
+     "ref": "S0524L01",
+     "seed": 524,
+     "kind": "lego",
+     "known": "three",
+     "target": "三",
+     "why": "\"three\" → 三つ | 三 · intro: The Japanese for: 'three', as in — 'is it three?', is:",
+     "sub": "k23-explained",
+     "group": "three"
+    },
+    {
+     "ref": "S0317L02",
+     "seed": 317,
+     "kind": "lego",
+     "known": "can do",
+     "target": "できる",
+     "why": "\"can do\" → できる | できます · intro: The Japanese for: 'can do', as in — 'she can do something with her brother', is:",
+     "sub": "k23-explained",
+     "group": "can do"
+    },
+    {
+     "ref": "S0645L02",
+     "seed": 645,
+     "kind": "lego",
+     "known": "can do",
+     "target": "できます",
+     "why": "\"can do\" → できる | できます · intro: The Japanese for: 'can do', as in — 'I can do it for you', is:",
+     "sub": "k23-explained",
+     "group": "can do"
+    },
+    {
+     "ref": "S0486L04",
+     "seed": 486,
+     "kind": "lego",
+     "known": "think",
+     "target": "思う",
+     "why": "\"think\" → 思う | 思います · intro: The Japanese for: 'think', as in — 'I think your eyes are beautiful', is:",
+     "sub": "k23-explained",
+     "group": "think"
+    },
+    {
+     "ref": "S0666L01",
+     "seed": 666,
+     "kind": "lego",
+     "known": "think",
+     "target": "思います",
+     "why": "\"think\" → 思う | 思います · intro: The Japanese for: 'think', as in — 'what do you all think?', is:",
+     "sub": "k23-explained",
+     "group": "think"
+    },
+    {
+     "ref": "S0540L03",
+     "seed": 540,
+     "kind": "lego",
+     "known": "don't mind",
+     "target": "気にしない",
+     "why": "\"dont mind\" → 気にしない | 気にしませんか · intro: The Japanese for: 'don't mind', as in — 'I don't mind if you want to leave without the car', is:",
+     "sub": "conflict",
+     "group": "dont mind"
+    },
+    {
+     "ref": "S0667L01",
+     "seed": 667,
+     "kind": "lego",
+     "known": "don't mind",
+     "target": "気にしませんか",
+     "why": "\"dont mind\" → 気にしない | 気にしませんか · intro: The Japanese for: 'don't mind', is:",
+     "sub": "conflict",
+     "group": "dont mind"
+    },
+    {
+     "ref": "S0654L01",
+     "seed": 654,
+     "kind": "lego",
+     "known": "can help",
+     "target": "お手伝いできる",
+     "why": "\"can help\" → お手伝いできる | お手伝いできます · intro: The Japanese for: 'can help', as in — 'she can help the teacher', is:",
+     "sub": "conflict",
+     "group": "can help"
+    },
+    {
+     "ref": "S0660L01",
+     "seed": 660,
+     "kind": "lego",
+     "known": "can help",
+     "target": "お手伝いできます",
+     "why": "\"can help\" → お手伝いできる | お手伝いできます · intro: The Japanese for: 'can help', is:",
+     "sub": "conflict",
+     "group": "can help"
+    }
+   ]
+  },
+  {
+   "id": "capitalisation",
+   "scan": "Check 13",
+   "rule": "display",
+   "blocks": false,
+   "count": 73,
+   "subs": {
+    "case-dup": 12,
+    "outlier": 61
+   },
+   "ms": 42,
+   "hits": [
+    {
+     "ref": "S0414",
+     "seed": 414,
+     "kind": "seed",
+     "known": "Could we have a bottle of red wine please?",
+     "target": "赤ワインを一本ください",
+     "why": "case-only duplicate on known: Could we have a bottle of red wine please? ≠ could we have a bottle of red wine please?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "jpn_for_eng:S0414L04U05",
+     "seed": 414,
+     "kind": "use",
+     "known": "could we have a bottle of red wine please?",
+     "target": "赤ワインを一本ください",
+     "why": "case-only duplicate on known: Could we have a bottle of red wine please? ≠ could we have a bottle of red wine please?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0500",
+     "seed": 500,
+     "kind": "seed",
+     "known": "Why don't you want to sit between the two girls?",
+     "target": "なんで二人の女の子の間に座りたくないの？",
+     "why": "case-only duplicate on known: Why don't you want to sit between the two girls? ≠ why don't you want to sit between the two girls?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "jpn_for_eng:S0500L03U01",
+     "seed": 500,
+     "kind": "use",
+     "known": "why don't you want to sit between the two girls?",
+     "target": "なんで二人の女の子の間に座りたくないの？",
+     "why": "case-only duplicate on known: Why don't you want to sit between the two girls? ≠ why don't you want to sit between the two girls?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0644",
+     "seed": 644,
+     "kind": "seed",
+     "known": "Could you say that sir?",
+     "target": "もう一度言っていただけますか、先生",
+     "why": "case-only duplicate on known: Could you say that sir? ≠ could you say that sir?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "jpn_for_eng:S0644L02U01",
+     "seed": 644,
+     "kind": "use",
+     "known": "could you say that sir?",
+     "target": "もう一度言っていただけますか、先生",
+     "why": "case-only duplicate on known: Could you say that sir? ≠ could you say that sir?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0659",
+     "seed": 659,
+     "kind": "seed",
+     "known": "Could you all say that?",
+     "target": "もう一度言ってください",
+     "why": "case-only duplicate on known: Could you all say that? ≠ could you all say that?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "jpn_for_eng:S0659L02U01",
+     "seed": 659,
+     "kind": "use",
+     "known": "could you all say that?",
+     "target": "もう一度言ってください",
+     "why": "case-only duplicate on known: Could you all say that? ≠ could you all say that?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "jpn_for_eng:S0063L01U04",
+     "seed": 63,
+     "kind": "use",
+     "known": "Is it okay?",
+     "target": "大丈夫？",
+     "why": "case-only duplicate on known: Is it okay? ≠ is it okay?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "jpn_for_eng:S0649L01B02",
+     "seed": 649,
+     "kind": "build",
+     "known": "is it okay?",
+     "target": "よろしいですかことがある",
+     "why": "case-only duplicate on known: Is it okay? ≠ is it okay?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "jpn_for_eng:S0154L01B01",
+     "seed": 154,
+     "kind": "build",
+     "known": "on Saturday night",
+     "target": "土曜の夜に",
+     "why": "case-only duplicate on known: on Saturday night ≠ on saturday night",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "jpn_for_eng:S0215L02B01",
+     "seed": 215,
+     "kind": "build",
+     "known": "on saturday night",
+     "target": "土曜の夜",
+     "why": "case-only duplicate on known: on Saturday night ≠ on saturday night",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0021",
+     "seed": 21,
+     "kind": "seed",
+     "known": "Why are you learning her name?",
+     "target": "なんで彼女の名前を覚えてるの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0061",
+     "seed": 61,
+     "kind": "seed",
+     "known": "Could you say that again a little more slowly?",
+     "target": "もう一度、ゆっくり言って",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0067",
+     "seed": 67,
+     "kind": "seed",
+     "known": "Why do you want to stop?",
+     "target": "なんで止めたいの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0113",
+     "seed": 113,
+     "kind": "seed",
+     "known": "Why can't I remember what you said?",
+     "target": "なんで今のを覚えてないんだろう",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0145",
+     "seed": 145,
+     "kind": "seed",
+     "known": "Why are you not happy any more?",
+     "target": "なんで、もう嬉しくないの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0269",
+     "seed": 269,
+     "kind": "seed",
+     "known": "Why don't you want to wait for your father?",
+     "target": "なんで父を待ちたくないの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0414",
+     "seed": 414,
+     "kind": "seed",
+     "known": "Could we have a bottle of red wine please?",
+     "target": "赤ワインを一本ください",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0434",
+     "seed": 434,
+     "kind": "seed",
+     "known": "Could they cut the number of students they take?",
+     "target": "学生の数を減らせると思う？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0500",
+     "seed": 500,
+     "kind": "seed",
+     "known": "Why don't you want to sit between the two girls?",
+     "target": "なんで二人の女の子の間に座りたくないの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0644",
+     "seed": 644,
+     "kind": "seed",
+     "known": "Could you say that sir?",
+     "target": "もう一度言っていただけますか、先生",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0659",
+     "seed": 659,
+     "kind": "seed",
+     "known": "Could you all say that?",
+     "target": "もう一度言ってください",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0021L03U05",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why are you remembering her name?",
+     "target": "なんで彼女の名前を覚えてるの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0021L02U01",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why don't you know?",
+     "target": "なんで分からないの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0021L02U05",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why does she want to know?",
+     "target": "彼女はなんで知りたがってるの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0021L02U02",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why don't you want to stop?",
+     "target": "なんでやめたくないの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0021L02U04",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why are you speaking Japanese?",
+     "target": "なんで日本語を話してるの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0021L02U03",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why does he want to go back?",
+     "target": "彼はなんで戻りたいの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0023L01U05",
+     "seed": 23,
+     "kind": "use",
+     "known": "Now I start speaking in Japanese",
+     "target": "今、日本語で話し始める",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0023L01U08",
+     "seed": 23,
+     "kind": "use",
+     "known": "This evening I start speaking in Japanese",
+     "target": "今夜、日本語で話し始める",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0060L02U07",
+     "seed": 60,
+     "kind": "use",
+     "known": "Is that enough?",
+     "target": "十分なの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0061L01U01",
+     "seed": 61,
+     "kind": "use",
+     "known": "Could you say that again?",
+     "target": "もう一度言って？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0061L01U07",
+     "seed": 61,
+     "kind": "use",
+     "known": "Could you say that again in the morning?",
+     "target": "朝もう一度言って？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0061L02U02",
+     "seed": 61,
+     "kind": "use",
+     "known": "Could you say it slowly?",
+     "target": "ゆっくり言って？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0061L02U05",
+     "seed": 61,
+     "kind": "use",
+     "known": "Could you do it slowly?",
+     "target": "ゆっくりやって？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0063L01U04",
+     "seed": 63,
+     "kind": "use",
+     "known": "Is it okay?",
+     "target": "大丈夫？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0063L02U03",
+     "seed": 63,
+     "kind": "use",
+     "known": "Is it okay if you help me?",
+     "target": "手伝っても大丈夫？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0067L01U04",
+     "seed": 67,
+     "kind": "use",
+     "known": "Why do you like it?",
+     "target": "なんで好きなの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0067L01U02",
+     "seed": 67,
+     "kind": "use",
+     "known": "Why do you say that?",
+     "target": "なんで言うの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0067L01U01",
+     "seed": 67,
+     "kind": "use",
+     "known": "Why?",
+     "target": "なんで？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0067L01U08",
+     "seed": 67,
+     "kind": "use",
+     "known": "Why do you need to find the answer?",
+     "target": "なんで答えを見つける必要があるの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0067L01U05",
+     "seed": 67,
+     "kind": "use",
+     "known": "Why do you want to do it?",
+     "target": "なんでやりたいの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0067L01U03",
+     "seed": 67,
+     "kind": "use",
+     "known": "Why do you think that?",
+     "target": "なんでそう思うの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0067L01U07",
+     "seed": 67,
+     "kind": "use",
+     "known": "Why is it important?",
+     "target": "なんで大事なの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0067L02U03",
+     "seed": 67,
+     "kind": "use",
+     "known": "Why do you want to stop?",
+     "target": "なんで止めたいの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0069L01U06",
+     "seed": 69,
+     "kind": "use",
+     "known": "Why didn't he want to do it?",
+     "target": "なんで彼はしたくなかった？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0070L01U06",
+     "seed": 70,
+     "kind": "use",
+     "known": "Why didn't she want to do it?",
+     "target": "なんで彼女はしたくなかった？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0082L01U05",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why aren't you going to wait?",
+     "target": "なんで待たない？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0082L02U05",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not today?",
+     "target": "なんで今日じゃない？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0082L02U01",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not?",
+     "target": "なんで？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0082L02U04",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why are you here?",
+     "target": "なんでここにいる？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0082L02U08",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why can't you start now?",
+     "target": "なんで今始められない？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0082L02U03",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why did you say that?",
+     "target": "なんでそう言った？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0082L02U06",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why didn't you wait?",
+     "target": "なんで待たなかった？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0082L02U07",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why do I need to wait?",
+     "target": "なんで待つ必要がある？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0082L02U02",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why do you think so?",
+     "target": "なんでそう思う？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0084L01U05",
+     "seed": 84,
+     "kind": "use",
+     "known": "Why don't you agree?",
+     "target": "なんで同意しない？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0087L01U06",
+     "seed": 87,
+     "kind": "use",
+     "known": "Why are people I don't know here?",
+     "target": "なんで知らない人たちがここにいる？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0099L02B04",
+     "seed": 99,
+     "kind": "build",
+     "known": "Why is it not working",
+     "target": "なんでうまくいかない",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0099L02U03",
+     "seed": 99,
+     "kind": "use",
+     "known": "Why is this not working",
+     "target": "なんでこれはうまくいかない",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0143L01B04",
+     "seed": 143,
+     "kind": "build",
+     "known": "Is it the same thing you saw yesterday?",
+     "target": "昨日、見たのと同じこと？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0145L01U04",
+     "seed": 145,
+     "kind": "use",
+     "known": "Why are you not happy any more?",
+     "target": "なんで、もう嬉しくないの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0269L02U05",
+     "seed": 269,
+     "kind": "use",
+     "known": "Why don't you want to see your old friend tomorrow?",
+     "target": "なんで明日、古い友だちに会いたくないの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0269L02U04",
+     "seed": 269,
+     "kind": "use",
+     "known": "Why doesn't your teacher want to tell you who she means?",
+     "target": "なんで先生は誰のことか教えたくないの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0270L01U03",
+     "seed": 270,
+     "kind": "use",
+     "known": "Why do you think you're going to be late?",
+     "target": "なんで遅れそうだと思うの？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0278L02B01",
+     "seed": 278,
+     "kind": "build",
+     "known": "Everything is good",
+     "target": "全部いい",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0278L02U08",
+     "seed": 278,
+     "kind": "use",
+     "known": "Is everything ready?",
+     "target": "全部準備できた？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0278L02U04",
+     "seed": 278,
+     "kind": "use",
+     "known": "Everything is difficult",
+     "target": "全部難しい",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0281L02U03",
+     "seed": 281,
+     "kind": "use",
+     "known": "Is it okay to wait until next week?",
+     "target": "来週まで待っていい？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0281L02U05",
+     "seed": 281,
+     "kind": "use",
+     "known": "Is it okay to wait until we finish?",
+     "target": "終わるまで待っていい？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0281L02U08",
+     "seed": 281,
+     "kind": "use",
+     "known": "Is it okay to wait until Saturday?",
+     "target": "土曜まで待っていい？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "jpn_for_eng:S0281L02U04",
+     "seed": 281,
+     "kind": "use",
+     "known": "Is it okay to wait until the evening?",
+     "target": "夜まで待っていい？",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    }
+   ]
+  },
+  {
+   "id": "identical",
+   "scan": "Check 15",
+   "rule": "K16",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 33,
+   "hits": []
+  },
+  {
+   "id": "underpopulated",
+   "scan": "Check 16",
+   "rule": "P10/P30",
+   "blocks": "empty only",
+   "count": 2,
+   "subs": {
+    "few-use": 2
+   },
+   "ms": 190,
+   "hits": [
+    {
+     "ref": "S0001L02",
+     "seed": 1,
+     "kind": "lego",
+     "known": "Japanese",
+     "target": "日本語を",
+     "why": "2 build, 1 use",
+     "sub": "few-use"
+    },
+    {
+     "ref": "S0030L01",
+     "seed": 30,
+     "kind": "lego",
+     "known": "there was something I wanted to ask",
+     "target": "聞きたいことがあった",
+     "why": "3 build, 1 use",
+     "sub": "few-use"
+    }
+   ]
+  },
+  {
+   "id": "ita-subjunctive",
+   "scan": "Check 17b",
+   "rule": "K16/K40",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 1,
+   "hits": []
+  },
+  {
+   "id": "spa-llevar",
+   "scan": "Check 17a",
+   "rule": "K16",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "deu-verb-final",
+   "scan": "Check 17c",
+   "rule": "K16",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "jpn-ka",
+   "scan": "Check 17d",
+   "rule": "A9",
+   "blocks": false,
+   "count": 19,
+   "subs": {},
+   "ms": 5,
+   "hits": [
+    {
+     "ref": "S0171",
+     "seed": 171,
+     "kind": "seed",
+     "known": "do you want me to help you look for it?",
+     "target": "探すの手伝おうか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0438L01U01",
+     "seed": 438,
+     "kind": "use",
+     "known": "what should she do?",
+     "target": "何をすべきか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0642L03U02",
+     "seed": 642,
+     "kind": "use",
+     "known": "how is your mood?",
+     "target": "ご気分はいかがですか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0642L03U05",
+     "seed": 642,
+     "kind": "use",
+     "known": "how are you feeling today?",
+     "target": "今日のご気分はいかがですか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0642L01U01",
+     "seed": 642,
+     "kind": "use",
+     "known": "how is the coffee?",
+     "target": "コーヒーはいかがですか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0642L01U02",
+     "seed": 642,
+     "kind": "use",
+     "known": "how does it feel?",
+     "target": "いかがですか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0643L01U03",
+     "seed": 643,
+     "kind": "use",
+     "known": "what will you have?",
+     "target": "何になさいますか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0644L02U03",
+     "seed": 644,
+     "kind": "use",
+     "known": "could you wait a moment?",
+     "target": "少し待っていただけますか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0644L02U02",
+     "seed": 644,
+     "kind": "use",
+     "known": "could you say that one more time?",
+     "target": "もう一度言っていただけますか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0644L02U05",
+     "seed": 644,
+     "kind": "use",
+     "known": "could the teacher say that?",
+     "target": "先生、もう一度言っていただけますか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0649L01U01",
+     "seed": 649,
+     "kind": "use",
+     "known": "are you ready?",
+     "target": "よろしいですか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0649L02U02",
+     "seed": 649,
+     "kind": "use",
+     "known": "is your preparation complete?",
+     "target": "ご準備はよろしいですか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0650L01U02",
+     "seed": 650,
+     "kind": "use",
+     "known": "are you going out today?",
+     "target": "今日出かけますか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0651L01U02",
+     "seed": 651,
+     "kind": "use",
+     "known": "what does the teacher think?",
+     "target": "先生はどう思われますか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0651L01U04",
+     "seed": 651,
+     "kind": "use",
+     "known": "what does madam think?",
+     "target": "奥様はどう思われますか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0651L01U03",
+     "seed": 651,
+     "kind": "use",
+     "known": "what do you think about that?",
+     "target": "それについてどう思われますか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0652L01U04",
+     "seed": 652,
+     "kind": "use",
+     "known": "what do you need?",
+     "target": "何が必要ですか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0652L01U03",
+     "seed": 652,
+     "kind": "use",
+     "known": "is it necessary for the teacher?",
+     "target": "先生に何が必要ですか？",
+     "why": "ends か? against a bare-か course"
+    },
+    {
+     "ref": "jpn_for_eng:S0652L01U02",
+     "seed": 652,
+     "kind": "use",
+     "known": "what does madam need?",
+     "target": "奥様は何が必要ですか？",
+     "why": "ends か? against a bare-か course"
+    }
+   ]
+  },
+  {
+   "id": "por-voce",
+   "scan": "Check 17e",
+   "rule": "K12",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "duplicate-lego",
+   "scan": "new",
+   "rule": "L17/L31/P25",
+   "blocks": false,
+   "count": 88,
+   "subs": {
+    "orphan-not-new": 40,
+    "repeat-debut": 48
+   },
+   "ms": 3,
+   "hits": [
+    {
+     "ref": "S0122L01",
+     "seed": 122,
+     "kind": "lego",
+     "known": "gradually",
+     "target": "だんだん",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0126L01",
+     "seed": 126,
+     "kind": "lego",
+     "known": "shape",
+     "target": "形を",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0129L01",
+     "seed": 129,
+     "kind": "lego",
+     "known": "happy",
+     "target": "嬉しい",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0131L01",
+     "seed": 131,
+     "kind": "lego",
+     "known": "head",
+     "target": "頭",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0133L01",
+     "seed": 133,
+     "kind": "lego",
+     "known": "work together",
+     "target": "一緒に働く",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0137L01",
+     "seed": 137,
+     "kind": "lego",
+     "known": "more than being perfect",
+     "target": "完璧より",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0138L01",
+     "seed": 138,
+     "kind": "lego",
+     "known": "place",
+     "target": "場所",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0151L01",
+     "seed": 151,
+     "kind": "lego",
+     "known": "happen",
+     "target": "起きて",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0154L02",
+     "seed": 154,
+     "kind": "lego",
+     "known": "want to meet",
+     "target": "会いたい",
+     "why": "same pair debuted at S0018L01",
+     "sub": "repeat-debut",
+     "twin": "S0018L01"
+    },
+    {
+     "ref": "S0157L01",
+     "seed": 157,
+     "kind": "lego",
+     "known": "next month",
+     "target": "来月",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0160L01",
+     "seed": 160,
+     "kind": "lego",
+     "known": "this word",
+     "target": "この言葉",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0171L01",
+     "seed": 171,
+     "kind": "lego",
+     "known": "do you want me to help",
+     "target": "手伝おうか",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0173L01",
+     "seed": 173,
+     "kind": "lego",
+     "known": "on my own",
+     "target": "自分で",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0176L01",
+     "seed": 176,
+     "kind": "lego",
+     "known": "next year",
+     "target": "来年",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0178L01",
+     "seed": 178,
+     "kind": "lego",
+     "known": "wanted to see you",
+     "target": "会いたかった",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0180L01",
+     "seed": 180,
+     "kind": "lego",
+     "known": "for a while",
+     "target": "少し",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0183L01",
+     "seed": 183,
+     "kind": "lego",
+     "known": "I'm afraid",
+     "target": "ごめん",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0185L01",
+     "seed": 185,
+     "kind": "lego",
+     "known": "at work",
+     "target": "仕事場に",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0187L01",
+     "seed": 187,
+     "kind": "lego",
+     "known": "so far",
+     "target": "今のところ",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0188L01",
+     "seed": 188,
+     "kind": "lego",
+     "known": "so that's why",
+     "target": "だから",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0190L01",
+     "seed": 190,
+     "kind": "lego",
+     "known": "some",
+     "target": "いくつか",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0206L01",
+     "seed": 206,
+     "kind": "lego",
+     "known": "to practise",
+     "target": "練習する",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0207L01",
+     "seed": 207,
+     "kind": "lego",
+     "known": "done",
+     "target": "やった",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0209L01",
+     "seed": 209,
+     "kind": "lego",
+     "known": "to spend more time",
+     "target": "もっと時間が",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0210L01",
+     "seed": 210,
+     "kind": "lego",
+     "known": "to discuss",
+     "target": "話し合う",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0218L01",
+     "seed": 218,
+     "kind": "lego",
+     "known": "sunday",
+     "target": "日曜",
+     "why": "same pair debuted at S0175L01",
+     "sub": "repeat-debut",
+     "twin": "S0175L01"
+    },
+    {
+     "ref": "S0219L01",
+     "seed": 219,
+     "kind": "lego",
+     "known": "for a while",
+     "target": "少し",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0221L01",
+     "seed": 221,
+     "kind": "lego",
+     "known": "watched football and then",
+     "target": "サッカーを見て",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0222L01",
+     "seed": 222,
+     "kind": "lego",
+     "known": "what",
+     "target": "何が",
+     "why": "same pair debuted at S0201L01",
+     "sub": "repeat-debut",
+     "twin": "S0201L01"
+    },
+    {
+     "ref": "S0233L01",
+     "seed": 233,
+     "kind": "lego",
+     "known": "sister",
+     "target": "妹",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0234L01",
+     "seed": 234,
+     "kind": "lego",
+     "known": "last night",
+     "target": "昨夜",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0237L01",
+     "seed": 237,
+     "kind": "lego",
+     "known": "before the weekend",
+     "target": "週末前",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0240L01",
+     "seed": 240,
+     "kind": "lego",
+     "known": "father",
+     "target": "父",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0248L01",
+     "seed": 248,
+     "kind": "lego",
+     "known": "was terrible",
+     "target": "ひどかった",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0251L01",
+     "seed": 251,
+     "kind": "lego",
+     "known": "until after we finish",
+     "target": "終わるまで",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0257L01",
+     "seed": 257,
+     "kind": "lego",
+     "known": "blue",
+     "target": "青い",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0261L01",
+     "seed": 261,
+     "kind": "lego",
+     "known": "something important",
+     "target": "大事なこと",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0271L01",
+     "seed": 271,
+     "kind": "lego",
+     "known": "next month",
+     "target": "来月",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0278L01",
+     "seed": 278,
+     "kind": "lego",
+     "known": "last night",
+     "target": "昨夜",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0312L01",
+     "seed": 312,
+     "kind": "lego",
+     "known": "tomorrow",
+     "target": "明日",
+     "why": "same pair debuted at S0223L01",
+     "sub": "repeat-debut",
+     "twin": "S0223L01"
+    },
+    {
+     "ref": "S0329L01",
+     "seed": 329,
+     "kind": "lego",
+     "known": "important thing",
+     "target": "大事なこと",
+     "why": "same pair debuted at S0280L02",
+     "sub": "repeat-debut",
+     "twin": "S0280L02"
+    },
+    {
+     "ref": "S0330L01",
+     "seed": 330,
+     "kind": "lego",
+     "known": "that much",
+     "target": "そんなに",
+     "why": "same pair debuted at S0135L01",
+     "sub": "repeat-debut",
+     "twin": "S0135L01"
+    },
+    {
+     "ref": "S0340L02",
+     "seed": 340,
+     "kind": "lego",
+     "known": "okay",
+     "target": "大丈夫",
+     "why": "same pair debuted at S0041L01",
+     "sub": "repeat-debut",
+     "twin": "S0041L01"
+    },
+    {
+     "ref": "S0341L02",
+     "seed": 341,
+     "kind": "lego",
+     "known": "met someone",
+     "target": "人に会った",
+     "why": "same pair debuted at S0235L01",
+     "sub": "repeat-debut",
+     "twin": "S0235L01"
+    },
+    {
+     "ref": "S0345L01",
+     "seed": 345,
+     "kind": "lego",
+     "known": "leave",
+     "target": "出る",
+     "why": "same pair debuted at S0255L01",
+     "sub": "repeat-debut",
+     "twin": "S0255L01"
+    },
+    {
+     "ref": "S0363L01",
+     "seed": 363,
+     "kind": "lego",
+     "known": "a lot",
+     "target": "たくさん",
+     "why": "same pair debuted at S0003L01",
+     "sub": "repeat-debut",
+     "twin": "S0003L01"
+    },
+    {
+     "ref": "S0364L01",
+     "seed": 364,
+     "kind": "lego",
+     "known": "place",
+     "target": "場所",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0367L01",
+     "seed": 367,
+     "kind": "lego",
+     "known": "nobody",
+     "target": "誰も",
+     "why": "same pair debuted at S0202L01",
+     "sub": "repeat-debut",
+     "twin": "S0202L01"
+    },
+    {
+     "ref": "S0372L01",
+     "seed": 372,
+     "kind": "lego",
+     "known": "thing",
+     "target": "もの",
+     "why": "same pair debuted at S0243L01",
+     "sub": "repeat-debut",
+     "twin": "S0243L01"
+    },
+    {
+     "ref": "S0374L01",
+     "seed": 374,
+     "kind": "lego",
+     "known": "yes",
+     "target": "うん",
+     "why": "same pair debuted at S0172L01",
+     "sub": "repeat-debut",
+     "twin": "S0172L01"
+    },
+    {
+     "ref": "S0396L01",
+     "seed": 396,
+     "kind": "lego",
+     "known": "preparation",
+     "target": "準備",
+     "why": "same pair debuted at S0345L02",
+     "sub": "repeat-debut",
+     "twin": "S0345L02"
+    },
+    {
+     "ref": "S0408L03",
+     "seed": 408,
+     "kind": "lego",
+     "known": "method",
+     "target": "方法",
+     "why": "same pair debuted at S0327L01",
+     "sub": "repeat-debut",
+     "twin": "S0327L01"
+    },
+    {
+     "ref": "S0412L01",
+     "seed": 412,
+     "kind": "lego",
+     "known": "everything",
+     "target": "全部",
+     "why": "same pair debuted at S0278L02",
+     "sub": "repeat-debut",
+     "twin": "S0278L02"
+    },
+    {
+     "ref": "S0416L01",
+     "seed": 416,
+     "kind": "lego",
+     "known": "next year",
+     "target": "来年",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0426L01",
+     "seed": 426,
+     "kind": "lego",
+     "known": "happiness",
+     "target": "幸せ",
+     "why": "same pair debuted at S0408L01",
+     "sub": "repeat-debut",
+     "twin": "S0408L01"
+    },
+    {
+     "ref": "S0431L02",
+     "seed": 431,
+     "kind": "lego",
+     "known": "soon",
+     "target": "もうすぐ",
+     "why": "same pair debuted at S0023L03",
+     "sub": "repeat-debut",
+     "twin": "S0023L03"
+    },
+    {
+     "ref": "S0431L03",
+     "seed": 431,
+     "kind": "lego",
+     "known": "not ready",
+     "target": "準備できてない",
+     "why": "same pair debuted at S0096L02",
+     "sub": "repeat-debut",
+     "twin": "S0096L02"
+    },
+    {
+     "ref": "S0440L01",
+     "seed": 440,
+     "kind": "lego",
+     "known": "young",
+     "target": "若い",
+     "why": "same pair debuted at S0230L01",
+     "sub": "repeat-debut",
+     "twin": "S0230L01"
+    },
+    {
+     "ref": "S0449L01",
+     "seed": 449,
+     "kind": "lego",
+     "known": "be ready",
+     "target": "準備できる",
+     "why": "same pair debuted at S0396L02",
+     "sub": "repeat-debut",
+     "twin": "S0396L02"
+    },
+    {
+     "ref": "S0451L01",
+     "seed": 451,
+     "kind": "lego",
+     "known": "they",
+     "target": "彼ら",
+     "why": "same pair debuted at S0410L01",
+     "sub": "repeat-debut",
+     "twin": "S0410L01"
+    },
+    {
+     "ref": "S0453L01",
+     "seed": 453,
+     "kind": "lego",
+     "known": "last night",
+     "target": "昨夜",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0456L01",
+     "seed": 456,
+     "kind": "lego",
+     "known": "not much",
+     "target": "あまり",
+     "why": "same pair debuted at S0333L01",
+     "sub": "repeat-debut",
+     "twin": "S0333L01"
+    },
+    {
+     "ref": "S0459L01",
+     "seed": 459,
+     "kind": "lego",
+     "known": "blue",
+     "target": "青い",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0472L02",
+     "seed": 472,
+     "kind": "lego",
+     "known": "facts",
+     "target": "事実",
+     "why": "same pair debuted at S0311L02",
+     "sub": "repeat-debut",
+     "twin": "S0311L02"
+    },
+    {
+     "ref": "S0475L02",
+     "seed": 475,
+     "kind": "lego",
+     "known": "reason",
+     "target": "理由",
+     "why": "same pair debuted at S0127L03",
+     "sub": "repeat-debut",
+     "twin": "S0127L03"
+    },
+    {
+     "ref": "S0477L01",
+     "seed": 477,
+     "kind": "lego",
+     "known": "holiday",
+     "target": "休み",
+     "why": "same pair debuted at S0378L01",
+     "sub": "repeat-debut",
+     "twin": "S0378L01"
+    },
+    {
+     "ref": "S0479L03",
+     "seed": 479,
+     "kind": "lego",
+     "known": "couldn't do",
+     "target": "できなかった",
+     "why": "same pair debuted at S0352L02",
+     "sub": "repeat-debut",
+     "twin": "S0352L02"
+    },
+    {
+     "ref": "S0491L01",
+     "seed": 491,
+     "kind": "lego",
+     "known": "like",
+     "target": "好き",
+     "why": "same pair debuted at S0346L01",
+     "sub": "repeat-debut",
+     "twin": "S0346L01"
+    },
+    {
+     "ref": "S0492L03",
+     "seed": 492,
+     "kind": "lego",
+     "known": "number one",
+     "target": "一番",
+     "why": "same pair debuted at S0408L04",
+     "sub": "repeat-debut",
+     "twin": "S0408L04"
+    },
+    {
+     "ref": "S0492L04",
+     "seed": 492,
+     "kind": "lego",
+     "known": "interesting",
+     "target": "面白い",
+     "why": "same pair debuted at S0164L01",
+     "sub": "repeat-debut",
+     "twin": "S0164L01"
+    },
+    {
+     "ref": "S0498L01",
+     "seed": 498,
+     "kind": "lego",
+     "known": "entrance",
+     "target": "入り口",
+     "why": "same pair debuted at S0390L01",
+     "sub": "repeat-debut",
+     "twin": "S0390L01"
+    },
+    {
+     "ref": "S0500L01",
+     "seed": 500,
+     "kind": "lego",
+     "known": "girl",
+     "target": "女の子",
+     "why": "same pair debuted at S0394L03",
+     "sub": "repeat-debut",
+     "twin": "S0394L03"
+    },
+    {
+     "ref": "S0508L02",
+     "seed": 508,
+     "kind": "lego",
+     "known": "worry",
+     "target": "心配",
+     "why": "same pair debuted at S0343L02",
+     "sub": "repeat-debut",
+     "twin": "S0343L02"
+    },
+    {
+     "ref": "S0519L02",
+     "seed": 519,
+     "kind": "lego",
+     "known": "haven't seen",
+     "target": "見てない",
+     "why": "same pair debuted at S0183L02",
+     "sub": "repeat-debut",
+     "twin": "S0183L02"
+    },
+    {
+     "ref": "S0521L02",
+     "seed": 521,
+     "kind": "lego",
+     "known": "reason",
+     "target": "理由",
+     "why": "same pair debuted at S0127L03",
+     "sub": "repeat-debut",
+     "twin": "S0127L03"
+    },
+    {
+     "ref": "S0528L03",
+     "seed": 528,
+     "kind": "lego",
+     "known": "put",
+     "target": "置く",
+     "why": "same pair debuted at S0382L01",
+     "sub": "repeat-debut",
+     "twin": "S0382L01"
+    },
+    {
+     "ref": "S0545L01",
+     "seed": 545,
+     "kind": "lego",
+     "known": "clothes",
+     "target": "服",
+     "why": "same pair debuted at S0394L02",
+     "sub": "repeat-debut",
+     "twin": "S0394L02"
+    },
+    {
+     "ref": "S0550L02",
+     "seed": 550,
+     "kind": "lego",
+     "known": "edge",
+     "target": "端",
+     "why": "same pair debuted at S0413L01",
+     "sub": "repeat-debut",
+     "twin": "S0413L01"
+    },
+    {
+     "ref": "S0562L01",
+     "seed": 562,
+     "kind": "lego",
+     "known": "safely",
+     "target": "安全に",
+     "why": "same pair debuted at S0510L01",
+     "sub": "repeat-debut",
+     "twin": "S0510L01"
+    },
+    {
+     "ref": "S0566L01",
+     "seed": 566,
+     "kind": "lego",
+     "known": "choice",
+     "target": "選択",
+     "why": "same pair debuted at S0116L01",
+     "sub": "repeat-debut",
+     "twin": "S0116L01"
+    },
+    {
+     "ref": "S0571L01",
+     "seed": 571,
+     "kind": "lego",
+     "known": "thinking",
+     "target": "考え",
+     "why": "same pair debuted at S0541L02",
+     "sub": "repeat-debut",
+     "twin": "S0541L02"
+    },
+    {
+     "ref": "S0581L01",
+     "seed": 581,
+     "kind": "lego",
+     "known": "feeling",
+     "target": "感じ",
+     "why": "same pair debuted at S0049L01",
+     "sub": "repeat-debut",
+     "twin": "S0049L01"
+    },
+    {
+     "ref": "S0583L01",
+     "seed": 583,
+     "kind": "lego",
+     "known": "around here",
+     "target": "この辺",
+     "why": "same pair debuted at S0506L02",
+     "sub": "repeat-debut",
+     "twin": "S0506L02"
+    },
+    {
+     "ref": "S0589L01",
+     "seed": 589,
+     "kind": "lego",
+     "known": "she",
+     "target": "彼女",
+     "why": "same pair debuted at S0017L03",
+     "sub": "repeat-debut",
+     "twin": "S0017L03"
+    },
+    {
+     "ref": "S0595L01",
+     "seed": 595,
+     "kind": "lego",
+     "known": "garden",
+     "target": "庭",
+     "why": "same pair debuted at S0383L01",
+     "sub": "repeat-debut",
+     "twin": "S0383L01"
+    },
+    {
+     "ref": "S0611L01",
+     "seed": 611,
+     "kind": "lego",
+     "known": "another",
+     "target": "別の",
+     "why": "same pair debuted at S0528L01",
+     "sub": "repeat-debut",
+     "twin": "S0528L01"
+    },
+    {
+     "ref": "S0663L01",
+     "seed": 663,
+     "kind": "lego",
+     "known": "what you said",
+     "target": "おっしゃったこと",
+     "why": "same pair debuted at S0648L01",
+     "sub": "repeat-debut",
+     "twin": "S0648L01"
+    },
+    {
+     "ref": "S0665L01",
+     "seed": 665,
+     "kind": "lego",
+     "known": "go out",
+     "target": "出かけますか",
+     "why": "same pair debuted at S0650L01",
+     "sub": "repeat-debut",
+     "twin": "S0650L01"
+    }
+   ]
+  },
+  {
+   "id": "content-mismatch",
+   "scan": "new",
+   "rule": "S7/K16",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 407,
+   "hits": []
+  },
+  {
+   "id": "seed-placement",
+   "scan": "new (P26)",
+   "rule": "P26",
+   "blocks": true,
+   "count": 264,
+   "subs": {
+    "drifted": 136,
+    "missing": 123,
+    "early": 4,
+    "no-home": 1
+   },
+   "ms": 124,
+   "hits": [
+    {
+     "ref": "S0001",
+     "seed": 1,
+     "kind": "seed",
+     "known": "I want to speak Japanese with you now",
+     "target": "今、一緒に日本語を話したい",
+     "why": "played copy differs: jpn_for_eng:S0001L04U04 \"I want to speak Japanese together now | 今、一緒に日本語を話したい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0001L04U04"
+    },
+    {
+     "ref": "S0002",
+     "seed": 2,
+     "kind": "seed",
+     "known": "I'm trying to learn",
+     "target": "今、日本語をやってみてる",
+     "why": "played copy differs: jpn_for_eng:S0002L02U02 \"I'm trying Japanese now | 今、日本語をやってみてる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0002L02U02"
+    },
+    {
+     "ref": "S0003",
+     "seed": 3,
+     "kind": "seed",
+     "known": "how to speak as often as possible",
+     "target": "できるだけ、たくさん話したい",
+     "why": "played copy differs: jpn_for_eng:S0003L02U03 \"I want to speak a lot, as much as possible | できるだけ、たくさん話したい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0003L02U03"
+    },
+    {
+     "ref": "S0004",
+     "seed": 4,
+     "kind": "seed",
+     "known": "how to say something in Japanese",
+     "target": "日本語で、何か言ってみたい",
+     "why": "played copy differs: jpn_for_eng:S0004L03B06 \"want to try saying something in Japanese | 日本語で何か言ってみたい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0004L03B06"
+    },
+    {
+     "ref": "S0005",
+     "seed": 5,
+     "kind": "seed",
+     "known": "I'm going to practise speaking with someone else",
+     "target": "あとで、他の人とも話してみる",
+     "why": "played copy differs: jpn_for_eng:S0005L03U03 \"later I'll try speaking with other people too | あとで、他の人とも話してみる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0005L03U03"
+    },
+    {
+     "ref": "S0006",
+     "seed": 6,
+     "kind": "seed",
+     "known": "I'm trying to remember a word",
+     "target": "今、言葉を思い出そうとしてる",
+     "why": "played copy differs: jpn_for_eng:S0006L02U03 \"I'm trying to remember a word now | 今、言葉を思い出そうとしてる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0006L02U03"
+    },
+    {
+     "ref": "S0007",
+     "seed": 7,
+     "kind": "seed",
+     "known": "I want to try as hard as I can today",
+     "target": "今日は、できるだけやってみる",
+     "why": "played copy differs: jpn_for_eng:S0007L02U05 \"today, I'll try doing as much as possible | 今日は、できるだけやってみる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0007L02U05"
+    },
+    {
+     "ref": "S0008",
+     "seed": 8,
+     "kind": "seed",
+     "known": "I'm going to try to explain what I mean",
+     "target": "言いたいことを説明してみる",
+     "why": "played copy differs: jpn_for_eng:S0008L02B02 \"try explaining what I want to say | 言いたいことを説明してみる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0008L02B02"
+    },
+    {
+     "ref": "S0009",
+     "seed": 9,
+     "kind": "seed",
+     "known": "I speak a little Japanese now",
+     "target": "今、日本語は少し話せる",
+     "why": "played copy differs: jpn_for_eng:S0009L03U02 \"I can speak a little Japanese now | 今、日本語は少し話せる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0009L03U02"
+    },
+    {
+     "ref": "S0010",
+     "seed": 10,
+     "kind": "seed",
+     "known": "I'm not sure if I can remember the whole sentence",
+     "target": "文を全部覚えられるか、分からない",
+     "why": "played copy differs: jpn_for_eng:S0010L04U05 \"I don't know if I can remember the whole sentence | 文を全部覚えられるか分からない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0010L04U05"
+    },
+    {
+     "ref": "S0011",
+     "seed": 11,
+     "kind": "seed",
+     "known": "I'd like to be able to speak after you finish",
+     "target": "あとで、話せたらいい",
+     "why": "played copy differs: jpn_for_eng:S0011L01U03 \"it would be good if I could speak later | あとで話せたらいい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0011L01U03"
+    },
+    {
+     "ref": "S0012",
+     "seed": 12,
+     "kind": "seed",
+     "known": "I wouldn't like to guess what's going to happen tomorrow",
+     "target": "明日のことは、あまり考えたくない",
+     "why": "played copy differs: jpn_for_eng:S0012L03U03 \"I don't really want to think about tomorrow | 明日のことはあまり考えたくない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0012L03U03"
+    },
+    {
+     "ref": "S0013",
+     "seed": 13,
+     "kind": "seed",
+     "known": "you speak Japanese very well",
+     "target": "日本語、すごく上手",
+     "why": "played copy differs: jpn_for_eng:S0013L02U03 \"you're really good at Japanese | 日本語、すごく上手\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0013L02U03"
+    },
+    {
+     "ref": "S0014",
+     "seed": 14,
+     "kind": "seed",
+     "known": "do you speak Japanese all day?",
+     "target": "一日中、日本語を話してる？",
+     "why": "played copy differs: jpn_for_eng:S0014L02U01 \"I'm speaking Japanese all day | 一日中、日本語を話してる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0014L02U01"
+    },
+    {
+     "ref": "S0015",
+     "seed": 15,
+     "kind": "seed",
+     "known": "and I want you to speak Japanese with me tomorrow",
+     "target": "明日も一緒に日本語を話したい",
+     "why": "played copy differs: jpn_for_eng:S0015L01U06 \"I want to speak Japanese together tomorrow too | 明日も一緒に日本語を話したい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0015L01U06"
+    },
+    {
+     "ref": "S0016",
+     "seed": 16,
+     "kind": "seed",
+     "known": "he wants to come back with everyone else later on",
+     "target": "彼は、あとでみんなと一緒に戻りたい",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0017",
+     "seed": 17,
+     "kind": "seed",
+     "known": "she wants to find out what the answer is",
+     "target": "彼女は、答えを知りたがってる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0018",
+     "seed": 18,
+     "kind": "seed",
+     "known": "we want to meet at six o'clock this evening",
+     "target": "今夜6時に会いたい",
+     "why": "played copy differs: jpn_for_eng:S0018L03U05 \"I want to meet at six this evening | 今夜6時に会いたい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0018L03U05"
+    },
+    {
+     "ref": "S0019",
+     "seed": 19,
+     "kind": "seed",
+     "known": "but I don't want to stop talking",
+     "target": "でも、話すのはやめたくない",
+     "why": "played copy differs: jpn_for_eng:S0019L03U03 \"but I don't want to stop speaking | でも話すのはやめたくない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0019L03U03"
+    },
+    {
+     "ref": "S0020",
+     "seed": 20,
+     "kind": "seed",
+     "known": "you want to learn his name quickly",
+     "target": "彼の名前を早く覚えたい",
+     "why": "played copy differs: jpn_for_eng:S0020L04U02 \"I want to remember his name quickly | 彼の名前を早く覚えたい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0020L04U02"
+    },
+    {
+     "ref": "S0021",
+     "seed": 21,
+     "kind": "seed",
+     "known": "Why are you learning her name?",
+     "target": "なんで彼女の名前を覚えてるの？",
+     "why": "played copy differs: jpn_for_eng:S0021L03U05 \"Why are you remembering her name? | なんで彼女の名前を覚えてるの？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0021L03U05"
+    },
+    {
+     "ref": "S0023",
+     "seed": 23,
+     "kind": "seed",
+     "known": "I'm going to start talking more soon",
+     "target": "もうすぐ、もっと話し始める",
+     "why": "played copy differs: jpn_for_eng:S0023L03U04 \"I'll start speaking more soon | もうすぐ、もっと話し始める\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0023L03U04"
+    },
+    {
+     "ref": "S0024",
+     "seed": 24,
+     "kind": "seed",
+     "known": "I'm not going to be able to remember easily",
+     "target": "簡単には覚えられないと思う",
+     "why": "played copy differs: jpn_for_eng:S0024L02U03 \"I think I can't remember easily | 簡単には覚えられないと思う\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0024L02U03"
+    },
+    {
+     "ref": "S0025",
+     "seed": 25,
+     "kind": "seed",
+     "known": "are you going to help me before I have to go?",
+     "target": "行く前に、手伝ってくれる？",
+     "why": "played copy differs: jpn_for_eng:S0025L02U01 \"will you help before I go? | 行く前に手伝ってくれる？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0025L02U01"
+    },
+    {
+     "ref": "S0026",
+     "seed": 26,
+     "kind": "seed",
+     "known": "I like feeling as if I'm nearly ready to go",
+     "target": "もうすぐ行けそうな気がする",
+     "why": "played copy differs: jpn_for_eng:S0026L01B02 \"feel like I can go soon | もうすぐ行けそうな気がする\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0026L01B02"
+    },
+    {
+     "ref": "S0027",
+     "seed": 27,
+     "kind": "seed",
+     "known": "I don't like taking too much time to answer",
+     "target": "答えるのに時間がかかるのは好きじゃない",
+     "why": "played copy differs: jpn_for_eng:S0027L03U04 \"I don't like that answering takes time | 答えるのに時間がかかるのは好きじゃない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0027L03U04"
+    },
+    {
+     "ref": "S0028",
+     "seed": 28,
+     "kind": "seed",
+     "known": "it's useful to start talking as soon as you can",
+     "target": "できるだけ早く話し始めるのが大事",
+     "why": "played copy differs: jpn_for_eng:S0028L01U03 \"starting to speak as soon as possible is important | できるだけ早く話し始めるのが大事\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0028L01U03"
+    },
+    {
+     "ref": "S0029",
+     "seed": 29,
+     "kind": "seed",
+     "known": "I'm looking forward to speaking better as soon as I can",
+     "target": "早くうまく話せるようになるのが楽しみ",
+     "why": "played copy differs: jpn_for_eng:S0029L03U04 \"I'm looking forward to speaking well soon | 早くうまく話せるようになるのが楽しみ\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0029L03U04"
+    },
+    {
+     "ref": "S0030",
+     "seed": 30,
+     "kind": "seed",
+     "known": "I wanted to ask you something yesterday",
+     "target": "昨日、聞きたいことがあった",
+     "why": "played copy differs: jpn_for_eng:S0030L02B01 \"wanted to ask yesterday | 昨日、聞きたいことがあった\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0030L02B01"
+    },
+    {
+     "ref": "S0031",
+     "seed": 31,
+     "kind": "seed",
+     "known": "you wanted to speak with me tonight",
+     "target": "今夜、一緒に話したかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0032",
+     "seed": 32,
+     "kind": "seed",
+     "known": "did you want to show me something?",
+     "target": "何か見せたかった？",
+     "why": "played copy differs: jpn_for_eng:S0032L01B02 \"wanted to show something | 何か見せたかった\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0032L01B02"
+    },
+    {
+     "ref": "S0033",
+     "seed": 33,
+     "kind": "seed",
+     "known": "how long have you been learning Japanese?",
+     "target": "どのくらい日本語をやってる？",
+     "why": "played copy differs: jpn_for_eng:S0033L02U01 \"how long have you been doing Japanese? | どのくらい日本語をやってる？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0033L02U01"
+    },
+    {
+     "ref": "S0034",
+     "seed": 34,
+     "kind": "seed",
+     "known": "he doesn't want to be quiet when other people are here",
+     "target": "他の人がいると、彼は静かにしたくない",
+     "why": "played copy differs: jpn_for_eng:S0034L02U04 \"when other people are here, he doesn't want to be quiet | 他の人がいると、彼は静かにしたくない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0034L02U04"
+    },
+    {
+     "ref": "S0035",
+     "seed": 35,
+     "kind": "seed",
+     "known": "she doesn't want to read anything this afternoon",
+     "target": "彼女は今日の午後、何も読みたくない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0036",
+     "seed": 36,
+     "kind": "seed",
+     "known": "we don't want to interrupt the story",
+     "target": "話を邪魔したくない",
+     "why": "played copy differs: jpn_for_eng:S0036L02B02 \"don't want to interrupt the story | 話を邪魔したくない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0036L02B02"
+    },
+    {
+     "ref": "S0037",
+     "seed": 37,
+     "kind": "seed",
+     "known": "I started to think about it carefully last month",
+     "target": "先月、それについて考え始めた",
+     "why": "played copy differs: jpn_for_eng:S0037L03U01 \"I started thinking about it last month | 先月、それについて考え始めた\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0037L03U01"
+    },
+    {
+     "ref": "S0038",
+     "seed": 38,
+     "kind": "seed",
+     "known": "I've been learning for about a week",
+     "target": "一週間くらい、日本語をやってる",
+     "why": "played copy differs: jpn_for_eng:S0038L01U01 \"I've been doing Japanese for about a week | 一週間くらい日本語をやってる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0038L01U01"
+    },
+    {
+     "ref": "S0039",
+     "seed": 39,
+     "kind": "seed",
+     "known": "but I'm a little tired this morning",
+     "target": "でも、今朝は少し疲れてる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0040",
+     "seed": 40,
+     "kind": "seed",
+     "known": "how do you feel at the moment?",
+     "target": "今、どんな気分？",
+     "why": "played copy differs: jpn_for_eng:S0040L01B01 \"what kind of feeling now | 今、どんな気分\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0040L01B01"
+    },
+    {
+     "ref": "S0041",
+     "seed": 41,
+     "kind": "seed",
+     "known": "I feel okay, but I'm starting to feel tired",
+     "target": "大丈夫。でも、疲れてきてる",
+     "why": "played copy differs: jpn_for_eng:S0041L02U04 \"I'm okay, but starting to get tired | 大丈夫。でも、疲れてきてる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0041L02U04"
+    },
+    {
+     "ref": "S0042",
+     "seed": 42,
+     "kind": "seed",
+     "known": "I was starting to feel better than last night",
+     "target": "昨夜より、少し良くなってきた",
+     "why": "played copy differs: jpn_for_eng:S0042L02U03 \"I'm a little better than last night | 昨夜より少し良くなってきた\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0042L02U03"
+    },
+    {
+     "ref": "S0043",
+     "seed": 43,
+     "kind": "seed",
+     "known": "I wasn't thinking about how to answer",
+     "target": "どう答えるか、考えてなかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0044",
+     "seed": 44,
+     "kind": "seed",
+     "known": "or if I need to improve",
+     "target": "もっと良くする必要があるかどうか",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0046",
+     "seed": 46,
+     "kind": "seed",
+     "known": "but I don't worry about making mistakes",
+     "target": "間違えることは気にしてない",
+     "why": "played copy differs: jpn_for_eng:S0046L02B04 \"don't worry about making mistakes | 間違えることは気にしてない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0046L02B04"
+    },
+    {
+     "ref": "S0047",
+     "seed": 47,
+     "kind": "seed",
+     "known": "because I think that it's a good thing to make mistakes",
+     "target": "間違えるのはいいことだと思う",
+     "why": "played copy differs: jpn_for_eng:S0047L01B02 \"making mistakes is a good thing I think | 間違えるのはいいことだと思う\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0047L01B02"
+    },
+    {
+     "ref": "S0048",
+     "seed": 48,
+     "kind": "seed",
+     "known": "I don't care about making mistakes",
+     "target": "間違えても大丈夫",
+     "why": "played copy differs: jpn_for_eng:S0048L01B02 \"even if I make mistakes, it's okay | 間違えても大丈夫\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0048L01B02"
+    },
+    {
+     "ref": "S0049",
+     "seed": 49,
+     "kind": "seed",
+     "known": "it's like this, if you know what I mean",
+     "target": "分かる人には分かる感じ",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0051",
+     "seed": 51,
+     "kind": "seed",
+     "known": "I enjoy doing interesting things with my friends",
+     "target": "友だちと面白いことをするのが好き",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0052",
+     "seed": 52,
+     "kind": "seed",
+     "known": "he wanted to write a letter to his friend last week",
+     "target": "先週、彼は友だちに手紙を書きたかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0053",
+     "seed": 53,
+     "kind": "seed",
+     "known": "she wanted to put his letter in her bag",
+     "target": "彼女はその手紙をバッグに入れたかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0054",
+     "seed": 54,
+     "kind": "seed",
+     "known": "we wanted to give you a little more time",
+     "target": "もう少し時間をあげたかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0055",
+     "seed": 55,
+     "kind": "seed",
+     "known": "I don't enjoy waking up when I didn't sleep very well",
+     "target": "よく眠れなかった朝は好きじゃない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0056",
+     "seed": 56,
+     "kind": "seed",
+     "known": "so I can remember how to say a few words",
+     "target": "いくつかの言葉を覚えたい",
+     "why": "played copy differs: jpn_for_eng:S0056L01U01 \"I want to learn a few words | いくつかの言葉を覚えたい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0056L01U01"
+    },
+    {
+     "ref": "S0057",
+     "seed": 57,
+     "kind": "seed",
+     "known": "I can't remember how to say what I wanted to say",
+     "target": "言いたいことを思い出せない",
+     "why": "played copy differs: jpn_for_eng:S0057L02U01 \"I can't remember what I wanted to say | 言いたいことを思い出せない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0057L02U01"
+    },
+    {
+     "ref": "S0058",
+     "seed": 58,
+     "kind": "seed",
+     "known": "it's interesting when you understand enough words",
+     "target": "言葉が少し分かると面白い",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0059",
+     "seed": 59,
+     "kind": "seed",
+     "known": "I know how to do what I need to do next week",
+     "target": "来週、何をするか分かってる",
+     "why": "played copy differs: jpn_for_eng:S0059L03U05 \"I know what to do next week | 来週、何をするか分かってる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0059L03U05"
+    },
+    {
+     "ref": "S0060",
+     "seed": 60,
+     "kind": "seed",
+     "known": "I don't know how to say enough different words yet",
+     "target": "まだ、十分な言葉が分からない",
+     "why": "played copy differs: jpn_for_eng:S0060L02U05 \"I don't know enough words yet | まだ、十分な言葉が分からない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0060L02U05"
+    },
+    {
+     "ref": "S0061",
+     "seed": 61,
+     "kind": "seed",
+     "known": "Could you say that again a little more slowly?",
+     "target": "もう一度、ゆっくり言って",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0062",
+     "seed": 62,
+     "kind": "seed",
+     "known": "I'm not sure if I can help you at the same time",
+     "target": "同時に手伝えるか分からない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0068",
+     "seed": 68,
+     "kind": "seed",
+     "known": "what are you looking for?",
+     "target": "何を探してる？",
+     "why": "played copy differs: jpn_for_eng:S0068L02U10 \"what are you looking for? | 何探してる？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0068L02U10"
+    },
+    {
+     "ref": "S0070",
+     "seed": 70,
+     "kind": "seed",
+     "known": "she didn't want to tell me where it was",
+     "target": "彼女は場所を言いたくなかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0071",
+     "seed": 71,
+     "kind": "seed",
+     "known": "we didn't want to let anyone hear the truth",
+     "target": "誰にも本当のことを聞かせたくなかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0072",
+     "seed": 72,
+     "kind": "seed",
+     "known": "I think that you're doing very well",
+     "target": "すごくよくやってると思う",
+     "why": "played copy differs: jpn_for_eng:S0072L03U06 \"I think you're doing very well | すごくよくやってると思う\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0072L03U06"
+    },
+    {
+     "ref": "S0073",
+     "seed": 73,
+     "kind": "seed",
+     "known": "thank you very much, but I've got more to learn",
+     "target": "ありがとう。でも、まだ学ぶことがある",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0076",
+     "seed": 76,
+     "kind": "seed",
+     "known": "I'm very happy with how much I've learnt already",
+     "target": "もう学んだことには満足してる",
+     "why": "played copy differs: jpn_for_eng:S0076L02U04 \"I'm happy with what I've learnt | もう学んだことには満足してる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0076L02U04"
+    },
+    {
+     "ref": "S0077",
+     "seed": 77,
+     "kind": "seed",
+     "known": "I'm surprised at how quickly I'm starting to understand",
+     "target": "分かるのが早くなってきて驚いてる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0078",
+     "seed": 78,
+     "kind": "seed",
+     "known": "I don't understand what you said",
+     "target": "今の、分からなかった",
+     "why": "played copy differs: jpn_for_eng:S0078L02U01 \"I didn't understand what you said | 今の、分からなかった\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0078L02U01"
+    },
+    {
+     "ref": "S0082",
+     "seed": 82,
+     "kind": "seed",
+     "known": "I'm not going to wait for you. Why not?",
+     "target": "待たない。なんで？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0083",
+     "seed": 83,
+     "kind": "seed",
+     "known": "I agree with what you said about your friend",
+     "target": "その意見には同意する",
+     "why": "played copy differs: jpn_for_eng:S0083L02B04 \"I agree with that opinion | その意見には同意する\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0083L02B04"
+    },
+    {
+     "ref": "S0084",
+     "seed": 84,
+     "kind": "seed",
+     "known": "I don't agree with what he said about my friend",
+     "target": "その意見には同意しない",
+     "why": "played copy differs: jpn_for_eng:S0084L01U06 \"I don't agree with that opinion | その意見には同意しない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0084L01U06"
+    },
+    {
+     "ref": "S0086",
+     "seed": 86,
+     "kind": "seed",
+     "known": "it wasn't possible, unfortunately",
+     "target": "残念だけど、無理だった",
+     "why": "played copy differs: jpn_for_eng:S0086L02B03 \"unfortunately it wasn't possible | 残念だけど無理だった\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0086L02B03"
+    },
+    {
+     "ref": "S0088",
+     "seed": 88,
+     "kind": "seed",
+     "known": "I'm not ready to talk to people I don't know yet",
+     "target": "知らない人とは、まだ話したくない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0089",
+     "seed": 89,
+     "kind": "seed",
+     "known": "I think that I've done a lot in a short time",
+     "target": "短い時間で、たくさんやったと思う",
+     "why": "played copy differs: jpn_for_eng:S0089L02U02 \"I think I've done a lot in a short time | 短い時間でたくさんやったと思う\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0089L02U02"
+    },
+    {
+     "ref": "S0091",
+     "seed": 91,
+     "kind": "seed",
+     "known": "it's difficult to think quickly enough to answer in time",
+     "target": "すぐ答えるのは難しい",
+     "why": "played copy differs: jpn_for_eng:S0091L02U01 \"it's difficult to quickly answer | すぐ答えるのは難しい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0091L02U01"
+    },
+    {
+     "ref": "S0092",
+     "seed": 92,
+     "kind": "seed",
+     "known": "I'd like to keep on doing this for a while",
+     "target": "もう少し続けたい",
+     "why": "played copy differs: jpn_for_eng:S0092L02B04 \"I want to keep on doing a little more | もう少し続けたい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0092L02B04"
+    },
+    {
+     "ref": "S0094",
+     "seed": 94,
+     "kind": "seed",
+     "known": "this is the only way it will work",
+     "target": "これしか方法がない",
+     "why": "played copy differs: jpn_for_eng:S0094L01B02 \"this is the only way | これしか方法がない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0094L01B02"
+    },
+    {
+     "ref": "S0095",
+     "seed": 95,
+     "kind": "seed",
+     "known": "are you ready to go home on the next bus?",
+     "target": "次のバスで帰る準備できてる？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0096",
+     "seed": 96,
+     "kind": "seed",
+     "known": "no I'm not ready yet, I need a little more time",
+     "target": "まだ準備できてない。もう少し時間がいる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0097",
+     "seed": 97,
+     "kind": "seed",
+     "known": "yes I'm ready to go as soon as you want",
+     "target": "いつでも行ける",
+     "why": "played copy differs: jpn_for_eng:S0097L01B02 \"I can go as soon as you want | いつでも行ける\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0097L01B02"
+    },
+    {
+     "ref": "S0098",
+     "seed": 98,
+     "kind": "seed",
+     "known": "I should consider playing something else",
+     "target": "別のことを考えたほうがいい",
+     "why": "played copy differs: jpn_for_eng:S0098L02B03 \"we should consider something else | 別のことを考えたほうがいい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0098L02B03"
+    },
+    {
+     "ref": "S0099",
+     "seed": 99,
+     "kind": "seed",
+     "known": "you should ask yourself why it's not working",
+     "target": "なんでうまくいかないか考えて",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0100",
+     "seed": 100,
+     "kind": "seed",
+     "known": "you shouldn't worry about doing something similar",
+     "target": "似たことを心配しなくていい",
+     "why": "played copy differs: jpn_for_eng:S0100L02B04 \"you shouldn't worry about something similar | 似たことを心配しなくていい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0100L02B04"
+    },
+    {
+     "ref": "S0101",
+     "seed": 101,
+     "kind": "seed",
+     "known": "I'm enjoying finding out more about this language",
+     "target": "この言語をもっと知るのが楽しい",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0102",
+     "seed": 102,
+     "kind": "seed",
+     "known": "we're trying to say that it's not like that",
+     "target": "そうじゃないって言いたい",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0103",
+     "seed": 103,
+     "kind": "seed",
+     "known": "we're not trying to hear many more words",
+     "target": "もっと言葉を聞きたいわけじゃない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0104",
+     "seed": 104,
+     "kind": "seed",
+     "known": "we need to change what we're doing",
+     "target": "やり方を変える必要がある",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0105",
+     "seed": 105,
+     "kind": "seed",
+     "known": "that is why he didn't know the answer",
+     "target": "だから答えが分からなかった",
+     "why": "played copy differs: jpn_for_eng:S0105L01B04 \"that's why the answer wasn't clear | だから答えが分からなかった\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0105L01B04"
+    },
+    {
+     "ref": "S0106",
+     "seed": 106,
+     "kind": "seed",
+     "known": "we don't need to feel happy, we just need to work hard",
+     "target": "楽しくなくても、頑張る必要がある",
+     "why": "played copy differs: jpn_for_eng:S0106L02U07 \"even if I'm not happy, I must work hard | 楽しくなくても頑張る必要がある\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0106L02U07"
+    },
+    {
+     "ref": "S0107",
+     "seed": 107,
+     "kind": "seed",
+     "known": "we hoped to see what you were doing",
+     "target": "何をしてるか見たかった",
+     "why": "played copy differs: jpn_for_eng:S0107L02U03 \"I hoped to see what you were doing | 何をしてるか見たかった\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0107L02U03"
+    },
+    {
+     "ref": "S0108",
+     "seed": 108,
+     "kind": "seed",
+     "known": "we didn't hope to wake in the middle of the night",
+     "target": "夜中に起きるとは思ってなかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0109",
+     "seed": 109,
+     "kind": "seed",
+     "known": "we must work hard to learn a lot of new words",
+     "target": "たくさん新しい言葉を学ばないといけない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0110",
+     "seed": 110,
+     "kind": "seed",
+     "known": "we're friends, and after we finish I'd like to relax",
+     "target": "友だちだから、終わったら休みたい",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0111",
+     "seed": 111,
+     "kind": "seed",
+     "known": "when we learn something new it changes our brain",
+     "target": "新しいことを学ぶと、脳が変わる",
+     "why": "played copy differs: jpn_for_eng:S0111L01U02 \"when you learn something new, the brain changes | 新しいことを学ぶと、脳が変わる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0111L01U02"
+    },
+    {
+     "ref": "S0113",
+     "seed": 113,
+     "kind": "seed",
+     "known": "Why can't I remember what you said?",
+     "target": "なんで今のを覚えてないんだろう",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0117",
+     "seed": 117,
+     "kind": "seed",
+     "known": "I'm definitely doing better than I was last time we talked to each other",
+     "target": "前より、確実によくなってる",
+     "why": "played copy differs: jpn_for_eng:S0117L01U03 \"I'm definitely doing better than I was last time we talked | 前より、確実によくなってる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0117L01U03"
+    },
+    {
+     "ref": "S0119",
+     "seed": 119,
+     "kind": "seed",
+     "known": "can I ask you something before you leave?",
+     "target": "行く前に、一つ聞いていい？",
+     "why": "played copy differs: jpn_for_eng:S0119L02U01 \"can I ask you something before you leave? | 行く前に、一つ聞く？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0119L02U01"
+    },
+    {
+     "ref": "S0120",
+     "seed": 120,
+     "kind": "seed",
+     "known": "it's interesting that you like to go by bus",
+     "target": "バスが好きなの、面白いね",
+     "why": "played copy differs: jpn_for_eng:S0120L01U06 \"it's interesting that you like to go by bus, right? | バスが好きなの、面白いね\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0120L01U06"
+    },
+    {
+     "ref": "S0121",
+     "seed": 121,
+     "kind": "seed",
+     "known": "it's unusual that you don't like to use your car",
+     "target": "車を使わないのは珍しい",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0122",
+     "seed": 122,
+     "kind": "seed",
+     "known": "it's starting to feel easier and I'm excited about how it's going",
+     "target": "だんだん楽になってきて、ワクワクしてる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0123",
+     "seed": 123,
+     "kind": "seed",
+     "known": "I think that's a good idea",
+     "target": "それ、いいアイデアだと思う",
+     "why": "played copy differs: jpn_for_eng:S0123L01U04 \"I think that's a good idea | それはいいアイデアだと思う\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0123L01U04"
+    },
+    {
+     "ref": "S0126",
+     "seed": 126,
+     "kind": "seed",
+     "known": "this work is changing the shape of my brain",
+     "target": "これ、脳の形を変えてる気がする",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0129",
+     "seed": 129,
+     "kind": "seed",
+     "known": "I'm so happy that you're doing so well",
+     "target": "うまくいってて、すごく嬉しい",
+     "why": "played copy differs: jpn_for_eng:S0129L02U06 \"it's going well so I'm happy | うまくいってて、すごく嬉しい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0129L02U06"
+    },
+    {
+     "ref": "S0130",
+     "seed": 130,
+     "kind": "seed",
+     "known": "that was a surprise, because he's my friend",
+     "target": "驚いた。でも、友だちだ。",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0131",
+     "seed": 131,
+     "kind": "seed",
+     "known": "there are too many ideas going around in my head",
+     "target": "頭の中に考えが多すぎる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0133",
+     "seed": 133,
+     "kind": "seed",
+     "known": "you get to know someone very well when you work together",
+     "target": "一緒に働くと、よく分かる",
+     "why": "played copy differs: jpn_for_eng:S0133L02U01 \"when you work together, you get to know someone | 一緒に働くと、よく分かる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0133L02U01"
+    },
+    {
+     "ref": "S0134",
+     "seed": 134,
+     "kind": "seed",
+     "known": "it's not a problem when you work at something difficult with them",
+     "target": "難しいことでも、一緒なら問題ない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0137",
+     "seed": 137,
+     "kind": "seed",
+     "known": "it's more important to talk often than to be perfect",
+     "target": "完璧より、よく話すほうが大事",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0138",
+     "seed": 138,
+     "kind": "seed",
+     "known": "this was where my friend wanted to meet us",
+     "target": "ここが会う予定だった場所",
+     "why": "played copy differs: jpn_for_eng:S0138L02U01 \"this was the place we were planning to meet | ここが会う予定だった場所\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0138L02U01"
+    },
+    {
+     "ref": "S0140",
+     "seed": 140,
+     "kind": "seed",
+     "known": "I'm sorry that I can't see what you're trying to show me",
+     "target": "見せたいことが分からない。",
+     "why": "played copy differs: jpn_for_eng:S0140L02U01 \"I can't see what you're trying to show me | 見せたいことが分からない。\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0140L02U01"
+    },
+    {
+     "ref": "S0142",
+     "seed": 142,
+     "kind": "seed",
+     "known": "that's very kind of you and I'm grateful to you for helping",
+     "target": "親切にしてくれて感謝してる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0143",
+     "seed": 143,
+     "kind": "seed",
+     "known": "it's the same thing as we were talking about earlier",
+     "target": "さっき話してたのと同じこと",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0146",
+     "seed": 146,
+     "kind": "seed",
+     "known": "nothing seems to be working since we tried to fix it",
+     "target": "直そうとしてから、うまくいかない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0149",
+     "seed": 149,
+     "kind": "seed",
+     "known": "this isn't very difficult, so I hope you'll finish soon",
+     "target": "難しくないから、すぐ終わると思う",
+     "why": "played copy differs: jpn_for_eng:S0149L01U06 \"this isn't difficult, so I hope you'll finish soon | 難しくないから、すぐ終わると思う\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0149L01U06"
+    },
+    {
+     "ref": "S0151",
+     "seed": 151,
+     "kind": "seed",
+     "known": "that wasn't what I was hoping would happen",
+     "target": "それは起きてほしかったことじゃない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0152",
+     "seed": 152,
+     "kind": "seed",
+     "known": "I would have done it differently if I had known what you wanted",
+     "target": "知ってたら、違うやり方をしてた",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0155",
+     "seed": 155,
+     "kind": "seed",
+     "known": "I don't mind waiting for a few minutes tomorrow morning",
+     "target": "明日の朝、少し待つのは気にしない",
+     "why": "only under S0155L01, before S0155L02",
+     "sub": "early"
+    },
+    {
+     "ref": "S0161",
+     "seed": 161,
+     "kind": "seed",
+     "known": "can you give me that book on Sunday morning?",
+     "target": "日曜の朝、その本くれる？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0162",
+     "seed": 162,
+     "kind": "seed",
+     "known": "what do you think about that?",
+     "target": "どう思う？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0163",
+     "seed": 163,
+     "kind": "seed",
+     "known": "I think that it's interesting",
+     "target": "面白いと思う。",
+     "why": "played copy differs: jpn_for_eng:S0163L01B01 \"I think it's interesting | 面白いと思う\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0163L01B01"
+    },
+    {
+     "ref": "S0164",
+     "seed": 164,
+     "kind": "seed",
+     "known": "an interesting book",
+     "target": "面白い本",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0165",
+     "seed": 165,
+     "kind": "seed",
+     "known": "but I'm not sure if it's true",
+     "target": "でも、本当かどうか分からない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0166",
+     "seed": 166,
+     "kind": "seed",
+     "known": "my name is not very unusual",
+     "target": "自分の名前はそんなに珍しくない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0167",
+     "seed": 167,
+     "kind": "seed",
+     "known": "what do you need to do tomorrow afternoon?",
+     "target": "明日の午後、何する必要がある？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0168",
+     "seed": 168,
+     "kind": "seed",
+     "known": "and then I'll be able to come and help later on",
+     "target": "それから、あとで手伝える",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0170",
+     "seed": 170,
+     "kind": "seed",
+     "known": "I'd like you to tell me what you need",
+     "target": "何が必要か教えて",
+     "why": "played copy differs: jpn_for_eng:S0170L01U06 \"I'd like you to tell me what you need | 何が必要か教えてほしい\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0170L01U06"
+    },
+    {
+     "ref": "S0171",
+     "seed": 171,
+     "kind": "seed",
+     "known": "do you want me to help you look for it?",
+     "target": "探すの手伝おうか？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0172",
+     "seed": 172,
+     "kind": "seed",
+     "known": "yes that would be very helpful",
+     "target": "うん、それ助かる",
+     "why": "played copy differs: jpn_for_eng:S0172L02U01 \"yes, that would be helpful | うん、それ助かる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0172L02U01"
+    },
+    {
+     "ref": "S0173",
+     "seed": 173,
+     "kind": "seed",
+     "known": "no thank you I can manage on my own",
+     "target": "大丈夫。自分でできる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0176",
+     "seed": 176,
+     "kind": "seed",
+     "known": "I'll ask him if he'll be able to help next year",
+     "target": "来年、手伝えるか聞いてみる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0178",
+     "seed": 178,
+     "kind": "seed",
+     "known": "I didn't have time, although I wanted to see you",
+     "target": "会いたかったけど、時間なかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0180",
+     "seed": 180,
+     "kind": "seed",
+     "known": "I'd like to read my book for a while",
+     "target": "少し本を読みたい",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0181",
+     "seed": 181,
+     "kind": "seed",
+     "known": "but I have to take my mother to the doctor",
+     "target": "でも、母を病院に連れていかないと",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0182",
+     "seed": 182,
+     "kind": "seed",
+     "known": "have you seen my keys anywhere?",
+     "target": "鍵、どこかで見た？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0183",
+     "seed": 183,
+     "kind": "seed",
+     "known": "no I'm afraid I haven't seen them",
+     "target": "ごめん、見てない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0184",
+     "seed": 184,
+     "kind": "seed",
+     "known": "yes I saw them in the office a while ago",
+     "target": "うん、さっきオフィスで見た",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0185",
+     "seed": 185,
+     "kind": "seed",
+     "known": "I think you left them at work",
+     "target": "仕事場に置いてきたと思う",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0186",
+     "seed": 186,
+     "kind": "seed",
+     "known": "do you want to talk about something different next week?",
+     "target": "来週、別の話をする？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0188",
+     "seed": 188,
+     "kind": "seed",
+     "known": "so I don't need to change",
+     "target": "だから、変える必要ない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0190",
+     "seed": 190,
+     "kind": "seed",
+     "known": "do you mind if I ask you some questions?",
+     "target": "いくつか質問していい？",
+     "why": "played copy differs: jpn_for_eng:S0190L03U07 \"do you mind if I ask some questions? | いくつか質問していい？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0190L03U07"
+    },
+    {
+     "ref": "S0191",
+     "seed": 191,
+     "kind": "seed",
+     "known": "no I don't mind at all",
+     "target": "全然いいよ",
+     "why": "played copy differs: jpn_for_eng:S0191L01B01 \"I don't mind at all | 全然いいよ\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0191L01B01"
+    },
+    {
+     "ref": "S0193",
+     "seed": 193,
+     "kind": "seed",
+     "known": "I'm sorry but I'm too busy today",
+     "target": "今日は忙しすぎる。ごめん",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0195",
+     "seed": 195,
+     "kind": "seed",
+     "known": "I'm trying to find the money I left on the table",
+     "target": "テーブルに置いたお金を探してる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0199",
+     "seed": 199,
+     "kind": "seed",
+     "known": "my friend used to work in an office",
+     "target": "友だちは昔、オフィスで働いてた",
+     "why": "played copy differs: jpn_for_eng:S0199L02B03 \"my friend used to work in an office | 友だちは昔働いてた\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0199L02B03"
+    },
+    {
+     "ref": "S0200",
+     "seed": 200,
+     "kind": "seed",
+     "known": "they say they want to make sure that we finish everything in time",
+     "target": "時間通り終わるようにしたいらしい",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0205",
+     "seed": 205,
+     "kind": "seed",
+     "known": "I've forgotten the word I was trying to say",
+     "target": "言おうとしてた言葉を忘れた",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0206",
+     "seed": 206,
+     "kind": "seed",
+     "known": "I enjoy the chance to practise speaking with you",
+     "target": "一緒に話す練習するのが楽しい",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0207",
+     "seed": 207,
+     "kind": "seed",
+     "known": "you've done what you needed to do",
+     "target": "必要なことは、もうやった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0210",
+     "seed": 210,
+     "kind": "seed",
+     "known": "they think that we need to discuss the problem",
+     "target": "この問題、話し合う必要がある",
+     "why": "played copy differs: jpn_for_eng:S0210L02U06 \"we need to discuss the problem | この問題、話し合う必要がある\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0210L02U06"
+    },
+    {
+     "ref": "S0211",
+     "seed": 211,
+     "kind": "seed",
+     "known": "they told us that they didn't want to explain",
+     "target": "説明したくないって言ってた",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0212",
+     "seed": 212,
+     "kind": "seed",
+     "known": "they wanted to ask for help",
+     "target": "助けを求めたかった",
+     "why": "played copy differs: jpn_for_eng:S0212L01B04 \"we wanted to ask for help | 助けを求めたかった\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0212L01B04"
+    },
+    {
+     "ref": "S0213",
+     "seed": 213,
+     "kind": "seed",
+     "known": "we don't know what they're trying to achieve",
+     "target": "何を目指してるか分からない",
+     "why": "played copy differs: jpn_for_eng:S0213L01U08 \"I don't know what she's trying to achieve | 何を目指してるか分からない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0213L01U08"
+    },
+    {
+     "ref": "S0214",
+     "seed": 214,
+     "kind": "seed",
+     "known": "did you have a good time at the weekend?",
+     "target": "週末、楽しかった？",
+     "why": "played copy differs: jpn_for_eng:S0214L02U02 \"they had a good time at the weekend | 週末楽しかった\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0214L02U02"
+    },
+    {
+     "ref": "S0216",
+     "seed": 216,
+     "kind": "seed",
+     "known": "I saw a few friends",
+     "target": "何人か友だちに会った",
+     "why": "played copy differs: jpn_for_eng:S0216L01B04 \"she saw a few friends | 何人か友だちに会った\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0216L01B04"
+    },
+    {
+     "ref": "S0220",
+     "seed": 220,
+     "kind": "seed",
+     "known": "did you watch a bit of television?",
+     "target": "テレビ少し見た？",
+     "why": "played copy differs: jpn_for_eng:S0220L02B04 \"did you watch a bit of television? | テレビ少し見る？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0220L02B04"
+    },
+    {
+     "ref": "S0221",
+     "seed": 221,
+     "kind": "seed",
+     "known": "I watched the football and then I watched a film",
+     "target": "サッカーを見て、映画も見た",
+     "why": "played copy differs: jpn_for_eng:S0221L02U03 \"I watched football and a film too | サッカーを見て、映画も見た\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0221L02U03"
+    },
+    {
+     "ref": "S0222",
+     "seed": 222,
+     "kind": "seed",
+     "known": "he's trying to tell me what he wants",
+     "target": "彼は何が欲しいか伝えようとしてる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0223",
+     "seed": 223,
+     "kind": "seed",
+     "known": "he's going to ask you tomorrow",
+     "target": "明日、聞くつもり。",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0227",
+     "seed": 227,
+     "kind": "seed",
+     "known": "that man is going to tell me something new",
+     "target": "新しいことを教えるつもり。",
+     "why": "only under S0109L02, before S0227L01",
+     "sub": "early"
+    },
+    {
+     "ref": "S0228",
+     "seed": 228,
+     "kind": "seed",
+     "known": "that man has just started to practise speaking",
+     "target": "話す練習を始めたばかり。",
+     "why": "only under S0109L03, before S0228L02",
+     "sub": "early"
+    },
+    {
+     "ref": "S0229",
+     "seed": 229,
+     "kind": "seed",
+     "known": "that woman would help you if she could",
+     "target": "できたら、彼女は手伝う。",
+     "why": "played copy differs: jpn_for_eng:S0229L01U05 \"she would help if she could | できたら彼女は手伝う。\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0229L01U05"
+    },
+    {
+     "ref": "S0230",
+     "seed": 230,
+     "kind": "seed",
+     "known": "I know a young man who wants to work with you",
+     "target": "一緒に働きたい若い人を知ってる。",
+     "why": "played copy differs: jpn_for_eng:S0230L02U03 \"I know a young person who wants to work with you | 一緒に働きたい若い人を知ってる。\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0230L02U03"
+    },
+    {
+     "ref": "S0231",
+     "seed": 231,
+     "kind": "seed",
+     "known": "I know an old man who wanted to ask for help",
+     "target": "助けを求めたかった年配の人を知ってる。",
+     "why": "played copy differs: jpn_for_eng:S0231L01U04 \"he knows an old man who wanted to ask for help | 助けを求めたかった年配の人を知ってる。\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0231L01U04"
+    },
+    {
+     "ref": "S0233",
+     "seed": 233,
+     "kind": "seed",
+     "known": "I know a young woman who knows your sister",
+     "target": "妹を知ってる若い女性を知ってる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0234",
+     "seed": 234,
+     "kind": "seed",
+     "known": "I met someone last night who works with your brother",
+     "target": "昨夜、兄と働いてる人に会った",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0235",
+     "seed": 235,
+     "kind": "seed",
+     "known": "I met someone who said that he wanted to tell you something",
+     "target": "何か言いたいって人に会った。",
+     "why": "played copy differs: jpn_for_eng:S0235L01U03 \"I met someone who said they wanted to tell you something | 何か言いたいって人に会った。\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0235L01U03"
+    },
+    {
+     "ref": "S0236",
+     "seed": 236,
+     "kind": "seed",
+     "known": "I know someone who said that she was going to try to help",
+     "target": "手伝ってみるって言ってた人を知ってる。",
+     "why": "played copy differs: jpn_for_eng:S0236L01U04 \"I know someone who said she'll try to help | 手伝ってみるって言ってた人を知ってる。\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0236L01U04"
+    },
+    {
+     "ref": "S0237",
+     "seed": 237,
+     "kind": "seed",
+     "known": "he wanted me to tell you before the weekend",
+     "target": "週末前に伝えてほしかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0238",
+     "seed": 238,
+     "kind": "seed",
+     "known": "he wanted you to tell me yesterday",
+     "target": "昨日、伝えてほしかった。",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0240",
+     "seed": 240,
+     "kind": "seed",
+     "known": "my father doesn't like to stop talking",
+     "target": "父は話すのを止めない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0241",
+     "seed": 241,
+     "kind": "seed",
+     "known": "I don't want to give it to him",
+     "target": "彼には渡したくない。",
+     "why": "played copy differs: jpn_for_eng:S0241L02B01 \"don't want to hand to him | 彼には渡したくない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0241L02B01"
+    },
+    {
+     "ref": "S0243",
+     "seed": 243,
+     "kind": "seed",
+     "known": "I'm going to ask for the same thing to eat",
+     "target": "同じものを頼む。",
+     "why": "played copy differs: jpn_for_eng:S0243L01U01 \"I'll order the same item | 同じものを頼む。\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0243L01U01"
+    },
+    {
+     "ref": "S0244",
+     "seed": 244,
+     "kind": "seed",
+     "known": "I've learnt a lot already",
+     "target": "もうたくさん学んだ。",
+     "why": "played copy differs: jpn_for_eng:S0244L01B01 \"have already learnt a lot | もうたくさん学んだ\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0244L01B01"
+    },
+    {
+     "ref": "S0245",
+     "seed": 245,
+     "kind": "seed",
+     "known": "I'm happy with how much I've done in a short time",
+     "target": "短い時間でよくやったと思う。",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0246",
+     "seed": 246,
+     "kind": "seed",
+     "known": "I wanted her to help you but she was too busy",
+     "target": "手伝ってほしかったけど、忙しかった。",
+     "why": "played copy differs: jpn_for_eng:S0246L01U04 \"I wanted help but she was busy | 手伝ってほしかったけど、忙しかった。\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0246L01U04"
+    },
+    {
+     "ref": "S0247",
+     "seed": 247,
+     "kind": "seed",
+     "known": "I thought that book was fairly good",
+     "target": "あの本、まあまあだった。",
+     "why": "played copy differs: jpn_for_eng:S0247L01U01 \"that book was so-so | あの本、まあまあだった。\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0247L01U01"
+    },
+    {
+     "ref": "S0248",
+     "seed": 248,
+     "kind": "seed",
+     "known": "I thought the film was complete rubbish and I want my money back",
+     "target": "あの映画、ひどかった。お金返してほしい",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0251",
+     "seed": 251,
+     "kind": "seed",
+     "known": "I don't want to find out until after we finish",
+     "target": "終わるまで知りたくない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0253",
+     "seed": 253,
+     "kind": "seed",
+     "known": "I should be ready in a few minutes",
+     "target": "数分で準備できる。",
+     "why": "played copy differs: jpn_for_eng:S0253L01U01 \"I should be ready in several minutes | 数分で準備できる。\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0253L01U01"
+    },
+    {
+     "ref": "S0256",
+     "seed": 256,
+     "kind": "seed",
+     "known": "I think I'll be ready in less than an hour",
+     "target": "一時間もかからないと思う",
+     "why": "played copy differs: jpn_for_eng:S0256L02U08 \"I think I'll be ready in less than an hour | 一時間もかからないで準備できると思う\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0256L02U08"
+    },
+    {
+     "ref": "S0257",
+     "seed": 257,
+     "kind": "seed",
+     "known": "I like that blue thing",
+     "target": "あの青いのが好き",
+     "why": "no new LEGO in this seed and sentence not played elsewhere",
+     "sub": "no-home"
+    },
+    {
+     "ref": "S0258",
+     "seed": 258,
+     "kind": "seed",
+     "known": "what's that blue thing over there?",
+     "target": "あそこにある青いの、何？",
+     "why": "played copy differs: jpn_for_eng:S0258L01U04 \"that blue thing over there | あそこにある青いの、何？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0258L01U04"
+    },
+    {
+     "ref": "S0261",
+     "seed": 261,
+     "kind": "seed",
+     "known": "I think it might be something important",
+     "target": "大事なことかもしれない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0262",
+     "seed": 262,
+     "kind": "seed",
+     "known": "who was that man you were talking to yesterday?",
+     "target": "昨日、誰と話してた？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0265",
+     "seed": 265,
+     "kind": "seed",
+     "known": "a friend",
+     "target": "友だち",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0266",
+     "seed": 266,
+     "kind": "seed",
+     "known": "he was an old friend of my father",
+     "target": "父の古い友だちだった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0268",
+     "seed": 268,
+     "kind": "seed",
+     "known": "yes she sent me two emails last week",
+     "target": "うん、先週メールが二通来た",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0269",
+     "seed": 269,
+     "kind": "seed",
+     "known": "Why don't you want to wait for your father?",
+     "target": "なんで父を待ちたくないの？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0270",
+     "seed": 270,
+     "kind": "seed",
+     "known": "because I'm worried that I'm going to be late",
+     "target": "遅れそうで心配だから",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0271",
+     "seed": 271,
+     "kind": "seed",
+     "known": "would you like to come with us next month?",
+     "target": "来月、一緒に来たい？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0273",
+     "seed": 273,
+     "kind": "seed",
+     "known": "no unfortunately I've got too much work",
+     "target": "残念だけど、仕事が多すぎる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0274",
+     "seed": 274,
+     "kind": "seed",
+     "known": "do you have to leave in a few days?",
+     "target": "数日で出ないといけない？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0276",
+     "seed": 276,
+     "kind": "seed",
+     "known": "no I can stay here for a little longer",
+     "target": "まだ、少しここにいられる",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0278",
+     "seed": 278,
+     "kind": "seed",
+     "known": "did you have to finish everything last night?",
+     "target": "昨夜、全部終わらせる必要あった？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0279",
+     "seed": 279,
+     "kind": "seed",
+     "known": "yes because there wasn't much time left",
+     "target": "うん、時間がなかったから",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0280",
+     "seed": 280,
+     "kind": "seed",
+     "known": "no I only had to do the most important job",
+     "target": "一番大事なことだけやった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0281",
+     "seed": 281,
+     "kind": "seed",
+     "known": "do you mind if I finish my coffee before you start?",
+     "target": "コーヒー飲み終わるまで待っていい？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0282",
+     "seed": 282,
+     "kind": "seed",
+     "known": "no that's not a problem",
+     "target": "うん、問題ない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0283",
+     "seed": 283,
+     "kind": "seed",
+     "known": "which of your friends speak Japanese?",
+     "target": "日本語を話す友だち、誰がいる？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0284",
+     "seed": 284,
+     "kind": "seed",
+     "known": "do you know my sister's friend?",
+     "target": "妹の友だち、知ってる？",
+     "why": "played copy differs: jpn_for_eng:S0284L01B03 \"I know my sister's friend | 妹の友だち知ってる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0284L01B03"
+    },
+    {
+     "ref": "S0286",
+     "seed": 286,
+     "kind": "seed",
+     "known": "people who like speaking Japanese",
+     "target": "日本語を話すのが好きな人",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0287",
+     "seed": 287,
+     "kind": "seed",
+     "known": "how many people do you know who like watching television?",
+     "target": "テレビ見るのが好きな人、何人知ってる？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0288",
+     "seed": 288,
+     "kind": "seed",
+     "known": "most people I know like watching television",
+     "target": "知ってる人のほとんどがテレビ好き",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0289",
+     "seed": 289,
+     "kind": "seed",
+     "known": "I wonder if she's going to be there this afternoon",
+     "target": "今日の午後、来るか気になる",
+     "why": "played copy differs: jpn_for_eng:S0289L02U02 \"I wonder if she's going to come this afternoon | 今日の午後来るか気になる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0289L02U02"
+    },
+    {
+     "ref": "S0294",
+     "seed": 294,
+     "kind": "seed",
+     "known": "I don't have enough time to call you tonight",
+     "target": "今夜は電話する時間がない",
+     "why": "played copy differs: jpn_for_eng:S0294L01B03 \"don't have time to call tonight | 今夜は電話する時間がない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0294L01B03"
+    },
+    {
+     "ref": "S0295",
+     "seed": 295,
+     "kind": "seed",
+     "known": "I didn't say that I wanted to finish in a day",
+     "target": "一日で終わるって言ってない",
+     "why": "played copy differs: jpn_for_eng:S0295L02U04 \"I didn't say I'd finish in a day | 一日で終わるって言ってない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0295L02U04"
+    },
+    {
+     "ref": "S0296",
+     "seed": 296,
+     "kind": "seed",
+     "known": "I said that I needed a little more time",
+     "target": "もう少し時間が必要って言った",
+     "why": "played copy differs: jpn_for_eng:S0296L02U03 \"I said I needed a little more time | もう少し時間が必要って言った\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0296L02U03"
+    },
+    {
+     "ref": "S0301",
+     "seed": 301,
+     "kind": "seed",
+     "known": "he said that he wants to show you something",
+     "target": "彼は何か見せたいって言ってた",
+     "why": "played copy differs: jpn_for_eng:S0301L03U01 \"he said that he wants to show you something | 何か見せたいって言ってた\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0301L03U01"
+    },
+    {
+     "ref": "S0302",
+     "seed": 302,
+     "kind": "seed",
+     "known": "she said that she doesn't want to live in a city",
+     "target": "彼女は都会に住みたくないって言ってた",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0303",
+     "seed": 303,
+     "kind": "seed",
+     "known": "I think that he wants to sit down",
+     "target": "彼は座りたいんだと思う",
+     "why": "played copy differs: jpn_for_eng:S0303L02B01 \"I think that he wants to sit down | 座りたいんだと思う\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0303L02B01"
+    },
+    {
+     "ref": "S0304",
+     "seed": 304,
+     "kind": "seed",
+     "known": "I think that she doesn't want to work from home",
+     "target": "彼女は家で働きたくないと思う",
+     "why": "played copy differs: jpn_for_eng:S0304L03U01 \"I think that she doesn't want to work from home | 家で働きたくないと思う\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0304L03U01"
+    },
+    {
+     "ref": "S0305",
+     "seed": 305,
+     "kind": "seed",
+     "known": "woman",
+     "target": "女の人",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0317",
+     "seed": 317,
+     "kind": "seed",
+     "known": "yes I think she could if she wanted to",
+     "target": "うん、やりたければできると思う",
+     "why": "only under S0317L01, before S0317L02",
+     "sub": "early"
+    },
+    {
+     "ref": "S0321",
+     "seed": 321,
+     "kind": "seed",
+     "known": "a book",
+     "target": "本",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0322",
+     "seed": 322,
+     "kind": "seed",
+     "known": "she said that she needs to read the same book",
+     "target": "同じ本を読む必要があるって言ってた",
+     "why": "played copy differs: jpn_for_eng:S0322L02U01 \"she said she needs to read the same book | 同じ本を読む必要があるって言ってた\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0322L02U01"
+    },
+    {
+     "ref": "S0327",
+     "seed": 327,
+     "kind": "seed",
+     "known": "do you think that she needs to offer another way?",
+     "target": "別の方法を出す必要あると思う？",
+     "why": "played copy differs: jpn_for_eng:S0327L03U01 \"do you think that she needs to offer another way? | 別の方法を出す必要があると思う？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0327L03U01"
+    },
+    {
+     "ref": "S0355",
+     "seed": 355,
+     "kind": "seed",
+     "known": "did she need to talk to that woman you know?",
+     "target": "知ってるあの女性と話す必要あった？",
+     "why": "played copy differs: jpn_for_eng:S0355L02U01 \"did she need to talk to that woman you know? | 知ってるあの女性と話す必要があった？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0355L02U01"
+    },
+    {
+     "ref": "S0360",
+     "seed": 360,
+     "kind": "seed",
+     "known": "did your friend say anything else?",
+     "target": "他にも何か言ってた？",
+     "why": "played copy differs: jpn_for_eng:S0360L01U01 \"did he say anything else? | 他にも何か言ってた？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0360L01U01"
+    },
+    {
+     "ref": "S0377",
+     "seed": 377,
+     "kind": "seed",
+     "known": "did you go anywhere in the world last year?",
+     "target": "去年、どこか行った？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0378",
+     "seed": 378,
+     "kind": "seed",
+     "known": "no I didn't have enough money for holidays",
+     "target": "休みに行くお金がなかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0383",
+     "seed": 383,
+     "kind": "seed",
+     "known": "yes he said he wanted to put it in the garden",
+     "target": "庭に置きたいって言ってた",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0388",
+     "seed": 388,
+     "kind": "seed",
+     "known": "that person you work with",
+     "target": "一緒に働いてる人",
+     "why": "played copy differs: jpn_for_eng:S0388L01U01 \"that person I work with | 一緒に働いてる人\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0388L01U01"
+    },
+    {
+     "ref": "S0389",
+     "seed": 389,
+     "kind": "seed",
+     "known": "that person over there",
+     "target": "あそこにいる人",
+     "why": "played copy differs: jpn_for_eng:S0389L01B01 \"the person over there | あそこにいる人\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0389L01B01"
+    },
+    {
+     "ref": "S0392",
+     "seed": 392,
+     "kind": "seed",
+     "known": "that child with the black hair opposite the post office",
+     "target": "郵便局の向かいの黒い髪の子",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0393",
+     "seed": 393,
+     "kind": "seed",
+     "known": "that boy with the green shirt",
+     "target": "緑のシャツの男の子",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0394",
+     "seed": 394,
+     "kind": "seed",
+     "known": "that girl with the yellow dress",
+     "target": "黄色い服の女の子",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0397",
+     "seed": 397,
+     "kind": "seed",
+     "known": "do we need to get ready soon?",
+     "target": "もうすぐ準備する必要ある？",
+     "why": "played copy differs: jpn_for_eng:S0397L01U05 \"do we need to get ready soon? | もうすぐ準備する必要がある？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0397L01U05"
+    },
+    {
+     "ref": "S0420",
+     "seed": 420,
+     "kind": "seed",
+     "known": "they don't need to ask how old he is",
+     "target": "年齢を聞く必要はない",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0421",
+     "seed": 421,
+     "kind": "seed",
+     "known": "because they already know he's getting weak",
+     "target": "もう弱ってきてるのを知ってるから",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0422",
+     "seed": 422,
+     "kind": "seed",
+     "known": "a question",
+     "target": "質問",
+     "why": "played copy differs: jpn_for_eng:S0422L01B01 \"a question | 質問があるから\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0422L01B01"
+    },
+    {
+     "ref": "S0423",
+     "seed": 423,
+     "kind": "seed",
+     "known": "do they need to ask such an obvious question?",
+     "target": "そんな分かりきった質問をする必要ある？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0424",
+     "seed": 424,
+     "kind": "seed",
+     "known": "no they're wasting everybody's time",
+     "target": "みんなの時間を無駄にしてる",
+     "why": "played copy differs: jpn_for_eng:S0424L03U01 \"they're wasting everybody's time | みんなの時間を無駄にしてる\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0424L03U01"
+    },
+    {
+     "ref": "S0425",
+     "seed": 425,
+     "kind": "seed",
+     "known": "yes they need to make sure they understand",
+     "target": "ちゃんと理解する必要がある",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0428",
+     "seed": 428,
+     "kind": "seed",
+     "known": "would they like to visit us on Tuesday?",
+     "target": "火曜に来たい？",
+     "why": "played copy differs: jpn_for_eng:S0428L01U02 \"would they want to come on Tuesday? | 火曜に来たい？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0428L01U02"
+    },
+    {
+     "ref": "S0429",
+     "seed": 429,
+     "kind": "seed",
+     "known": "yes that would be perfect for them",
+     "target": "うん、それは完璧",
+     "why": "played copy differs: jpn_for_eng:S0429L01U04 \"yes, that's perfect | うん、それは完璧\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0429L01U04"
+    },
+    {
+     "ref": "S0430",
+     "seed": 430,
+     "kind": "seed",
+     "known": "no that wouldn't be possible",
+     "target": "いや、それは無理",
+     "why": "played copy differs: jpn_for_eng:S0430L01U03 \"no, that's impossible | いや、それは無理\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0430L01U03"
+    },
+    {
+     "ref": "S0434",
+     "seed": 434,
+     "kind": "seed",
+     "known": "Could they cut the number of students they take?",
+     "target": "学生の数を減らせると思う？",
+     "why": "played copy differs: jpn_for_eng:S0434L03U03 \"can they reduce the number of college students? | 学生の数を減らせると思う？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0434L03U03"
+    },
+    {
+     "ref": "S0441",
+     "seed": 441,
+     "kind": "seed",
+     "known": "an approach",
+     "target": "やり方",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0448",
+     "seed": 448,
+     "kind": "seed",
+     "known": "yes they'll be happy to help",
+     "target": "うん、喜んで",
+     "why": "played copy differs: jpn_for_eng:S0448L01U01 \"yes, with pleasure | うん、喜んで\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0448L01U01"
+    },
+    {
+     "ref": "S0450",
+     "seed": 450,
+     "kind": "seed",
+     "known": "no they have to catch the train themselves",
+     "target": "自分たちで電車に乗らないといけない",
+     "why": "played copy differs: jpn_for_eng:S0450L04U01 \"they have to catch the train themselves | 自分たちで電車に乗らないといけない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0450L04U01"
+    },
+    {
+     "ref": "S0457",
+     "seed": 457,
+     "kind": "seed",
+     "known": "part of the problem is the number of different areas",
+     "target": "問題の一部は分野が多すぎること",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0461",
+     "seed": 461,
+     "kind": "seed",
+     "known": "a shop where I can buy some postcards",
+     "target": "はがきを買える店",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0463",
+     "seed": 463,
+     "kind": "seed",
+     "known": "my room number",
+     "target": "部屋番号",
+     "why": "played copy differs: jpn_for_eng:S0463L02B02 \"my room number | 部屋番号があるから\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0463L02B02"
+    },
+    {
+     "ref": "S0465",
+     "seed": 465,
+     "kind": "seed",
+     "known": "next time I will ask her what her name is",
+     "target": "次は彼女の名前を聞く",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0467",
+     "seed": 467,
+     "kind": "seed",
+     "known": "it's next to the car park",
+     "target": "駐車場の隣",
+     "why": "played copy differs: jpn_for_eng:S0467L02U01 \"it's next to the car park | 駐車場の隣にある\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0467L02U01"
+    },
+    {
+     "ref": "S0470",
+     "seed": 470,
+     "kind": "seed",
+     "known": "how high do you want to climb before we stop?",
+     "target": "どこまで登りたい？",
+     "why": "played copy differs: jpn_for_eng:S0470L02U01 \"how high do you want to climb? | どこまで登りたい？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0470L02U01"
+    },
+    {
+     "ref": "S0483",
+     "seed": 483,
+     "kind": "seed",
+     "known": "life isn't easy but it's not meant to be easy",
+     "target": "人生は簡単じゃない",
+     "why": "played copy differs: jpn_for_eng:S0483L02U01 \"life isn't easy | 人生は簡単じゃない\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0483L02U01"
+    },
+    {
+     "ref": "S0487",
+     "seed": 487,
+     "kind": "seed",
+     "known": "it's under the bridge",
+     "target": "橋の下",
+     "why": "played copy differs: jpn_for_eng:S0487L02U01 \"it's under the bridge | 橋の下にある\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0487L02U01"
+    },
+    {
+     "ref": "S0488",
+     "seed": 488,
+     "kind": "seed",
+     "known": "it's on the other side of that yellow line",
+     "target": "あの黄色い線の向こう",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0492",
+     "seed": 492,
+     "kind": "seed",
+     "known": "which of those places do you think is the most interesting?",
+     "target": "どの場所が一番面白いと思う？",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0493",
+     "seed": 493,
+     "kind": "seed",
+     "known": "what's going to come next?",
+     "target": "次に何が来る？",
+     "why": "played copy differs: jpn_for_eng:S0493L01U01 \"what's coming next? | 次に何が来る？\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0493L01U01"
+    },
+    {
+     "ref": "S0502",
+     "seed": 502,
+     "kind": "seed",
+     "known": "she almost got lost because she turned left instead of right",
+     "target": "左に曲がって、迷いそうになった",
+     "why": "played copy differs: jpn_for_eng:S0502L03U01 \"she almost got lost because she turned left | 左に曲がって、迷いそうになった\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0502L03U01"
+    },
+    {
+     "ref": "S0506",
+     "seed": 506,
+     "kind": "seed",
+     "known": "I used to live around here years ago before we moved",
+     "target": "昔、この辺に住んでた",
+     "why": "played copy differs: jpn_for_eng:S0506L03U01 \"I used to live around here years ago | 昔、この辺に住んでた\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0506L03U01"
+    },
+    {
+     "ref": "S0509",
+     "seed": 509,
+     "kind": "seed",
+     "known": "I heard that you're going to pay for a new bed",
+     "target": "新しいベッド代を払うって聞いた",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0516",
+     "seed": 516,
+     "kind": "seed",
+     "known": "they both came on their own",
+     "target": "二人とも一人で来た",
+     "why": "played copy differs: jpn_for_eng:S0516L02U01 \"they both came on their own | 二人とも一人で来たと言ってた\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0516L02U01"
+    },
+    {
+     "ref": "S0544",
+     "seed": 544,
+     "kind": "seed",
+     "known": "whoever said it would be difficult was absolutely right",
+     "target": "難しいと言った人は正しかった",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0562",
+     "seed": 562,
+     "kind": "seed",
+     "known": "I just want to get there safely",
+     "target": "安全に着きたいだけ",
+     "why": "played copy differs: jpn_for_eng:S0562L04U01 \"I just want to get there safely | 安全にそこに着きたいだけ\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0562L04U01"
+    },
+    {
+     "ref": "S0563",
+     "seed": 563,
+     "kind": "seed",
+     "known": "I wouldn't have been able to keep going any longer",
+     "target": "これ以上続けられなかった",
+     "why": "played copy differs: jpn_for_eng:S0563L02U01 \"I wouldn't have been able to keep going any longer | もうこれ以上続けられなかったと思う\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0563L02U01"
+    },
+    {
+     "ref": "S0575",
+     "seed": 575,
+     "kind": "seed",
+     "known": "it's been upsetting",
+     "target": "つらかった",
+     "why": "played copy differs: jpn_for_eng:S0575L01B02 \"it's been upsetting | つらかったことがある\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0575L01B02"
+    },
+    {
+     "ref": "S0588",
+     "seed": 588,
+     "kind": "seed",
+     "known": "so I wanted to grow up and leave home",
+     "target": "大人になって家を出たかった。",
+     "why": "played copy differs: jpn_for_eng:S0588L02U01 \"I wanted to grow up and leave home | 大人になって家を出たかった。\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0588L02U01"
+    },
+    {
+     "ref": "S0602",
+     "seed": 602,
+     "kind": "seed",
+     "known": "how it started in the first place",
+     "target": "最初はどう始まったか",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0643",
+     "seed": 643,
+     "kind": "seed",
+     "known": "do you want sir?",
+     "target": "何になさいますか、先生",
+     "why": "played copy differs: jpn_for_eng:S0643L01U01 \"what would you like sir? | 何になさいますか、先生\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0643L01U01"
+    },
+    {
+     "ref": "S0650",
+     "seed": 650,
+     "kind": "seed",
+     "known": "do you want to go madam?",
+     "target": "出かけますか、奥様",
+     "why": "played copy differs: jpn_for_eng:S0650L01U01 \"are you going out, madam? | 出かけますか、奥様\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0650L01U01"
+    },
+    {
+     "ref": "S0658",
+     "seed": 658,
+     "kind": "seed",
+     "known": "do you all want?",
+     "target": "皆さん、どうしますか",
+     "why": "played copy differs: jpn_for_eng:S0658L01U01 \"what will you all do? | 皆さん、どうしますか\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0658L01U01"
+    },
+    {
+     "ref": "S0665",
+     "seed": 665,
+     "kind": "seed",
+     "known": "do you all want to go?",
+     "target": "出かけますか、皆さん",
+     "why": "played copy differs: jpn_for_eng:S0665L01U01 \"are you all going out? | 出かけますか、皆さん\"",
+     "sub": "drifted",
+     "near": "jpn_for_eng:S0665L01U01"
+    }
+   ]
+  }
+ ]
+}
