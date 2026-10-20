@@ -1,7 +1,7 @@
 // The Talk Bollocks canonical English is Tom's and Aran's own words and nothing else
 // (Tom, 2026-10-20: "never paraphrase, never polish, never add a word").
 //   npx vitest run tools/pods/talk-bollocks-canon.test.cjs
-const { describe, it, expect } = require('vitest')
+import { describe, it, expect } from 'vitest'
 const fs = require('fs')
 const path = require('path')
 const {
@@ -62,7 +62,7 @@ describe('the Talk Bollocks canonical English', () => {
   it('the proof bites: one added word breaks the subsequence', () => {
     const source = words('so we say ten days or how many hours')
     expect(subsequenceBreak(words('so we say ten days'), source)).toBe(-1)
-    expect(subsequenceBreak(words('so we really say ten days'), source)).toBe(3)
+    expect(subsequenceBreak(words('so we really say ten days'), source)).toBe(2)
     expect(subsequenceBreak(words('ten days so we say'), source)).not.toBe(-1)
   })
 

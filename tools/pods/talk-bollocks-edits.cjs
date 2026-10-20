@@ -47,10 +47,10 @@ const PARTS = {
     title: 'Aran & Tom Talk Bollocks Part 1',
     corpus: 'docs/pods/talk-bollocks-1-2026-10-20.md',
     edits: {
-      // front matter; Descript headings 16 21 44 65 195 231 290 382; the [SLA … Acquisition]
+      // front matter (the --- fences vanish with the bullets); Descript headings 16 21 44 65 195 231 290 382; the [SLA … Acquisition]
       // editor's gloss (36 38 40); 332 a lone "if" (Aran's false start, under Tom's label);
       // 375 Descript noise ("Manx Stuff - Tommy gated, Jacob, out of open culture, academic track, then")
-      drop: [1, 2, 3, 5, 6, 7, 8, 9, 16, 21, 36, 38, 40, 44, 65, 195, 231, 290, 332, 375, 382],
+      drop: [2, 5, 6, 7, 8, 9, 16, 21, 36, 38, 40, 44, 65, 195, 231, 290, 332, 375, 382],
       speaker: {
         26: 'ARAN', // "There's so" + "many different ones!" — one sentence, Aran's
         60: 'TOM', 61: 'TOM', 62: 'TOM', 63: 'TOM', 64: 'TOM', 66: 'TOM', // Tom's question, under Aran's label
@@ -82,8 +82,8 @@ const PARTS = {
     title: 'Aran & Tom Talk Bollocks Part 2',
     corpus: 'docs/pods/talk-bollocks-2-2026-10-20.md',
     edits: {
-      // front matter; Descript headings 46 76 233 272 282 356
-      drop: [1, 2, 3, 5, 6, 7, 8, 9, 46, 76, 233, 272, 282, 356],
+      // front matter (the --- fences vanish with the bullets); Descript headings 46 76 233 272 282 356
+      drop: [2, 5, 6, 7, 8, 9, 46, 76, 233, 272, 282, 356],
       speaker: {
         28: 'ARAN', // "that's a good" + "one"
         37: 'TOM', // "Well," + "we want to make it easier…"
@@ -123,9 +123,9 @@ const PARTS = {
     title: 'Aran & Tom Talk Bollocks Part 4',
     corpus: 'docs/pods/talk-bollocks-4-2026-10-20.md',
     edits: {
-      // front matter; Descript headings 16 36 88 128 142 170 212 235 267 276 292 317 343 361 365
+      // front matter (the --- fences vanish with the bullets); Descript headings 16 36 88 128 142 170 212 235 267 276 292 317 343 361 365
       // 372 383 415 427 463 (375 "A Full-Stack Remote-School" stays: Tom said it — Aran answers "Completely")
-      drop: [1, 2, 3, 4, 6, 7, 8, 9, 16, 36, 88, 128, 142, 170, 212, 235, 267, 276, 292, 317, 343, 361, 365, 372, 383, 415, 427, 463],
+      drop: [2, 4, 6, 7, 8, 9, 16, 36, 88, 128, 142, 170, 212, 235, 267, 276, 292, 317, 343, 361, 365, 372, 383, 415, 427, 463],
       speaker: {
         166: 'TOM', // "Correct." — Tom, between two Aran lines
         187: 'ARAN', // "Yeah. Distributed." — Aran agreeing
