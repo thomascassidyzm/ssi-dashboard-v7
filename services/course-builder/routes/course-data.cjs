@@ -1024,8 +1024,7 @@ USE:
           batch = count || 0;
           totalDeleted += batch;
           if (error) {
-            console.warn(`[DELETE-COURSE] ${table}: ${error.message}`);
-            break;
+            throw new Error(`Failed to delete ${table}: ${error.message}`);
           }
           if (batch > 0) console.log(`[DELETE-COURSE] ${table}: deleted batch of ${batch}`);
         } while (batch >= 3000);
