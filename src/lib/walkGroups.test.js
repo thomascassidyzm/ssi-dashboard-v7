@@ -61,8 +61,25 @@ describe('the walk registry, joined to the canonical store', () => {
     const groups = buildGroups(CORPORA, { dbPods: [] })
     expect(groups.find(g => g.id === 'method')).toBeUndefined()
     const group = groups.find(g => g.id === 'retired')
-    expect(group.walks.map(w => w.slug).sort()).toEqual(retired)
+    for (const slug of retired) expect(group.walks.map(w => w.slug)).toContain(slug)
     for (const w of group.walks) expect(w.ingestable).toBe(false)
+  })
+
+  // Job #164 (2026-10-20, Tom: the pods "the agents made up for Tom and Aran Talk Bollocks
+  // ... just did not sound enough like us"). RED before this change: learning-flagship was an
+  // authored walk and no talk-bollocks walk existed.
+  it('holds the agent-written Learning flagship RETIRED, and the real Talk Bollocks transcripts as the walks', () => {
+    expect(CORPORA.walks.map(w => w.slug)).not.toContain('learning-flagship')
+    expect(CORPORA.retired.map(r => r.slug)).toContain('learning-flagship')
+    for (const slug of ['talk-bollocks-1', 'talk-bollocks-2', 'talk-bollocks-4']) {
+      const w = CORPORA.walks.find(x => x.slug === slug)
+      expect(w.status).toBe('authored')
+      expect(w.held).toBe(true)
+      expect(isIngestable(w)).toBe(true)
+      expect(fs.existsSync(path.join(ROOT, w.corpus))).toBe(true)
+    }
+    const group = buildGroups(CORPORA, { dbPods: [] }).find(g => g.id === 'retired')
+    expect(group.walks.map(w => w.slug)).toContain('learning-flagship')
   })
 
   it('keeps every retired walk restorable — its corpus is on disk', () => {
@@ -248,8 +265,9 @@ describe('registry-vs-database drift', () => {
 
   it('the live registry currently agrees with the live store', () => {
     // Nine canonical walks as of 2026-09-01; public-services is still authoring.
+    // 2026-10-20: learning-flagship retired, the three Talk Bollocks parts ingested.
     const live = [
-      'pod-1', 'learning-flagship',
+      'pod-1', 'talk-bollocks-1', 'talk-bollocks-2', 'talk-bollocks-4',
       'health', 'retail', 'trades', 'hospitality', 'care-work',
     ].map(slug => ({ slug, lines: 1, scenes: 1 }))
     const groups = buildGroups(CORPORA, { dbPods: live })

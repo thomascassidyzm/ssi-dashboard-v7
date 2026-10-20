@@ -58,7 +58,11 @@ const LISTENING_EXTRA_POD_SLUGS = ['method-pod']
 //
 // Retired is not the same as "safe to write": while a slug is also in
 // LISTENING_EXTRA_POD_SLUGS it is still served on live and the guard above still refuses.
-const RETIRED_POD_SLUGS = ['method-pod', 'method-pod-43-scene', 'method-pod-chapters']
+//
+// `learning-flagship` joined it on 2026-10-20: the agent-written Tom and Aran education pod
+// (Tom: "just did not sound enough like us"), replaced by the real Talk Bollocks transcripts.
+// It only ever lived in the canonical store; its rows are in archive/pods-retired-2026-10-20/.
+const RETIRED_POD_SLUGS = ['method-pod', 'method-pod-43-scene', 'method-pod-chapters', 'learning-flagship']
 
 /** PURE. Is this pod out of the canonical set? Takes a slug or a `course:slug` pod id. */
 function isRetiredPod (slugOrPodId) {

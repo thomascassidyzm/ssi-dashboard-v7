@@ -25,19 +25,6 @@
       "note": "the live CORE pod and the first rung of the compulsory default chain. Already in the canonical store. Not ingestable from markdown — the DB is canon."
     },
     {
-      "slug": "learning-flagship",
-      "name": "The Learning flagship",
-      "category": "flagship",
-      "selector": null,
-      "status": "authored",
-      "corpus": "docs/pods/learning-flagship-pod-2026-08-30.md",
-      "format": "pod-table",
-      "unit": "Chapter",
-      "targetLang": null,
-      "mapping": null,
-      "note": "11 chapters, English only."
-    },
-    {
       "slug": "talk-bollocks-1",
       "name": "Aran & Tom Talk Bollocks — Part 1",
       "category": "themed",
@@ -238,6 +225,15 @@
       "corpus": "archive/pods-retired-2026-09-27/method-pod/method-pod-full-2026-08-30.md",
       "livesIn": "archive/pods-retired-2026-09-27/method-pod/ — the corpus markdown, plus canonical-store-rows.restore.sql (every canonical_pod_scenarios and canonical_pod_walk_steps row as it stood, restorable with psql -f)",
       "note": "RETIRED 2026-09-27 (Tom, r-2026-09-27-method-pod-ai-written-tom-aran: \"should be removed from the canonical pods as well\"). Out of the canonical store; nothing makes it for any language. Was: 43 scenes, English beside Italian — the control arm the chapter cut is measured against."
+    },
+    {
+      "slug": "learning-flagship",
+      "name": "The Learning flagship",
+      "status": "retired",
+      "targetLang": null,
+      "corpus": "archive/pods-retired-2026-10-20/learning-flagship/learning-flagship-pod-2026-08-30.md",
+      "livesIn": "archive/pods-retired-2026-10-20/learning-flagship/ — the corpus markdown, plus canonical-store-rows.restore.sql (every canonical_pod_scenarios and canonical_pod_walk_steps row as it stood, restorable with psql -f; written, and proven row-for-row before the rows were removed, by tools/pods/retire-canonical-walk.cjs)",
+      "note": "RETIRED 2026-10-20 (Tom: the pods \"the agents made up for Tom and Aran Talk Bollocks - the Methodology and our general view on Education ... just did not sound enough like us\"). Out of the canonical store; nothing makes it for any language. Replaced by talk-bollocks-1, -2 and -4, the real transcripts. Was: 11 chapters, 367 lines, English only."
     }
   ]
 }

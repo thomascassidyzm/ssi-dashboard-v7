@@ -29,9 +29,9 @@ test('every walk, with its labels', async ({ page }) => {
   await signIn(page)
   await page.goto('/canonical/scripts')
 
-  // Every walk in the registry, plus the parked pair and the retired Method cuts, is on the page.
+  // Every walk in the registry, plus the parked pair and the retired Method cuts and Learning flagship, is on the page.
   for (const slug of [
-    'pod-1', 'learning-flagship', 'method-pod-chapters', 'method-pod-43-scene',
+    'pod-1', 'talk-bollocks-1', 'talk-bollocks-2', 'talk-bollocks-4', 'learning-flagship', 'method-pod-chapters', 'method-pod-43-scene',
     'health', 'retail', 'trades', 'hospitality', 'care-work', 'public-services',
     'music', 'travel-situations',
   ]) {
@@ -94,7 +94,7 @@ test('every walk, with its labels', async ({ page }) => {
 
   // The live store, read through the API: counts and Italian target text.
   await expect(page.locator('[data-slug="pod-1"]')).toContainText('22 scenes · 231 lines')
-  await expect(page.locator('[data-slug="learning-flagship"]')).toContainText('no target text')
+  await expect(page.locator('[data-slug="talk-bollocks-1"]')).toContainText('no target text')
 
   // INGESTABLE and DRIFT, asserted as INVARIANTS rather than as a fixed list.
   // The store is live and moves: five themed walks were ingested at 11:29 on

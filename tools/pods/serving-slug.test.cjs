@@ -109,6 +109,13 @@ describe('servesLearners — the slugs the player resolves', () => {
     expect(isRetiredPod('')).toBe(false)
   })
 
+  // Job #164 (2026-10-20, Tom: the agent-written Tom and Aran pods "just did not sound enough
+  // like us"). RED before this change: isRetiredPod('learning-flagship') was false.
+  it('knows the agent-written Learning flagship is retired, and the real Talk Bollocks pods are not', () => {
+    expect(isRetiredPod('learning-flagship')).toBe(true)
+    for (const slug of ['talk-bollocks-1', 'talk-bollocks-2', 'talk-bollocks-4']) expect(isRetiredPod(slug)).toBe(false)
+  })
+
   it('retired is not the same as safe to write — live still lists method-pod, so the guard still refuses', () => {
     expect(isRetiredPod('method-pod')).toBe(true)
     expect(servingRefusal(serving({ podId: 'ita_for_eng:method-pod', slug: 'method-pod' }))).toMatch(/SERVING slug/)
