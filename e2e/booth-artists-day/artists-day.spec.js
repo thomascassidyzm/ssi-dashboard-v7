@@ -119,18 +119,18 @@ async function tickRereadIfOffered(page) {
   await row.locator('input[type=checkbox]').check()
   return true
 }
-const tickShown = async (page) => /✓ all \d+ recorded/.test(await bodyText(page))
+const doneShown = (page) => page.locator('.ready-line.all-done').isVisible()
 const inFlight = async (page) => { const t = await bodyText(page); return t.includes('still to upload') || t.includes('still going up') }
 
 // THE INVARIANT at every settled point: the two numbers add up to the run,
-// neither is negative, and no done-tick while a refusal or an upload is pending.
+// neither is negative, and no completion message while a refusal or an upload is pending.
 async function assertInvariant(page, { pendingOrRefused }, where) {
   const c = await counts(page)
   expect(c, `${where}: the strip is on the page`).not.toBeNull()
   expect(c.recorded, where).toBeGreaterThanOrEqual(0)
   expect(c.stillToRead, where).toBeGreaterThanOrEqual(0)
   expect(c.recorded + c.stillToRead, `${where}: recorded + still-to-read == ${N}`).toBe(N)
-  if (pendingOrRefused) expect(await tickShown(page), `${where}: no done-tick while a refusal or pending upload exists`).toBe(false)
+  if (pendingOrRefused) expect(await doneShown(page), `${where}: no completion message while a refusal or pending upload exists`).toBe(false)
   note(`${where}: ${c.recorded} recorded · ${c.stillToRead} still to read — invariant holds`)
 }
 
@@ -379,18 +379,17 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   await expect.poll(() => counts(page), { message: 'everything recorded', timeout: 30_000 }).toEqual({ recorded: N, stillToRead: 0 })
   await assertInvariant(page, { pendingOrRefused: false }, 'step 5a · the whole queue read')
   await shot(page, 'everything-recorded')
-  // RELOAD with nothing owed: Start is disabled and says so, and names no line.
+  // RELOAD with nothing owed: the pod is done, with no Start or line to read.
   await page.reload()
   await expect.poll(() => counts(page), { message: 'the ready card after the all-done reload' }).toEqual({ recorded: N, stillToRead: 0 })
   await page.waitForTimeout(1500)
-  const startDone = await startButton(page)
-  expect(startDone.disabled, 'Start is disabled when every line is recorded').toBe(true)
-  expect(startDone.text).toBe('Nothing left to read')
+  await expect(page.locator('.btn-begin'), 'no Start when every line is recorded').toHaveCount(0)
+  await expect(page.locator('[data-test=pods-all-done]')).toHaveText('All done — thank you')
   await expect(readyLine(page)).toHaveCount(0)
   expect(await bodyText(page)).toContain('Everything is recorded')
-  expect(await tickShown(page)).toBe(true)
+  expect(await doneShown(page)).toBe(true)
   await assertInvariant(page, { pendingOrRefused: false }, 'step 5a · all-done reload')
-  await shot(page, 'all-done-start-disabled')
+  await shot(page, 'all-done-no-start')
 
   // 5b. Close the browser and reopen the SAME profile.
   await ctx.close()
@@ -399,7 +398,9 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   await openBooth(page)
   await page.waitForTimeout(1500)
   expect(await counts(page)).toEqual({ recorded: N, stillToRead: 0 })
-  expect((await startButton(page)).disabled, 'Start still disabled after reopening the browser').toBe(true)
+  await expect(page.locator('.btn-begin'), 'no Start after reopening the completed pod').toHaveCount(0)
+  await expect(readyLine(page)).toHaveCount(0)
+  await expect(page.locator('[data-test=pods-all-done]')).toHaveText('All done — thank you')
   expect(await banner(page), 'no stale refusal banner after reopening the browser').toBeNull()
   expect(await bodyText(page)).not.toContain('would not accept')
   expect(await bodyText(page)).not.toContain('did not save')
