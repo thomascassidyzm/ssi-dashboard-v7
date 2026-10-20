@@ -1,0 +1,6032 @@
+{
+ "course": "por_for_eng",
+ "at": "2026-10-20T13:41:45.363Z",
+ "checks": [
+  {
+   "id": "parentheticals",
+   "scan": "Check 1",
+   "rule": "K11",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 11,
+   "hits": []
+  },
+  {
+   "id": "slashes",
+   "scan": "Check 2",
+   "rule": "L19",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 7,
+   "hits": []
+  },
+  {
+   "id": "wrong-language",
+   "scan": "Checks 3+4",
+   "rule": "K8/K16",
+   "blocks": true,
+   "count": 0,
+   "subs": {},
+   "ms": 156,
+   "hits": []
+  },
+  {
+   "id": "multi-sentence",
+   "scan": "Check 5",
+   "rule": "P20",
+   "blocks": false,
+   "count": 4,
+   "subs": {},
+   "ms": 7,
+   "hits": [
+    {
+     "ref": "S0082",
+     "seed": 82,
+     "kind": "seed",
+     "known": "I'm not going to wait for you. Why not?",
+     "target": "eu não vou esperar por ti. Porque não?",
+     "why": "sentences: known 2, target 2"
+    },
+    {
+     "ref": "S0141",
+     "seed": 141,
+     "kind": "seed",
+     "known": "no problem. Everything is okay",
+     "target": "sem problema. Está tudo bem",
+     "why": "sentences: known 2, target 2"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U09",
+     "seed": 82,
+     "kind": "use",
+     "known": "I'm not going to wait for you. Why not?",
+     "target": "eu não vou esperar por ti. Porque não?",
+     "why": "sentences: known 2, target 2"
+    },
+    {
+     "ref": "por_for_eng:S0272L02U07",
+     "seed": 272,
+     "kind": "use",
+     "known": "would you like to do that? It's a great idea",
+     "target": "gostavas de fazer isso? É uma ótima ideia",
+     "why": "sentences: known 2, target 2"
+    }
+   ]
+  },
+  {
+   "id": "unpronounceable",
+   "scan": "Check 6",
+   "rule": "A16",
+   "blocks": true,
+   "count": 1,
+   "subs": {},
+   "ms": 5,
+   "hits": [
+    {
+     "ref": "por_for_eng:S0111L03C01",
+     "seed": 111,
+     "kind": "component",
+     "known": "it",
+     "target": "-",
+     "why": "no letters on a side"
+    }
+   ]
+  },
+  {
+   "id": "wrapping-quotes",
+   "scan": "Check 7",
+   "rule": "display",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 5,
+   "hits": []
+  },
+  {
+   "id": "trailing-period",
+   "scan": "Check 8",
+   "rule": "A7 (no difference)",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 4,
+   "hits": []
+  },
+  {
+   "id": "lowercase-i",
+   "scan": "Check 9",
+   "rule": "K9",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 4,
+   "hits": []
+  },
+  {
+   "id": "zut-lego",
+   "scan": "Check 10",
+   "rule": "K2/K4",
+   "blocks": true,
+   "count": 2,
+   "subs": {
+    "conflict": 2
+   },
+   "ms": 4,
+   "hits": [
+    {
+     "ref": "S0079L01",
+     "seed": 79,
+     "kind": "lego",
+     "known": "when",
+     "target": "quando é que",
+     "why": "\"when\" → quando é que | quando",
+     "sub": "conflict",
+     "group": "when"
+    },
+    {
+     "ref": "S0111L01",
+     "seed": 111,
+     "kind": "lego",
+     "known": "when",
+     "target": "quando",
+     "why": "\"when\" → quando é que | quando",
+     "sub": "conflict",
+     "group": "when"
+    }
+   ]
+  },
+  {
+   "id": "capitalisation",
+   "scan": "Check 13",
+   "rule": "display",
+   "blocks": false,
+   "count": 479,
+   "subs": {
+    "case-dup": 118,
+    "outlier": 361
+   },
+   "ms": 60,
+   "hits": [
+    {
+     "ref": "S0093",
+     "seed": 93,
+     "kind": "seed",
+     "known": "It's time to go now",
+     "target": "É hora de ir agora",
+     "why": "case-only duplicate on known: It's time to go now ≠ it's time to go now",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0093L01B04",
+     "seed": 93,
+     "kind": "build",
+     "known": "it's time to go now",
+     "target": "é hora de ir agora",
+     "why": "case-only duplicate on known: It's time to go now ≠ it's time to go now",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U01",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said?",
+     "target": "Porque é que não consigo lembrar-me do que disseste?",
+     "why": "case-only duplicate on known: Why can't I remember what you said? ≠ why can't I remember what you said?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0113L01B01",
+     "seed": 113,
+     "kind": "build",
+     "known": "why can't I remember what you said?",
+     "target": "porque é que não consigo lembrar-me do que disseste?",
+     "why": "case-only duplicate on known: Why can't I remember what you said? ≠ why can't I remember what you said?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0467",
+     "seed": 467,
+     "kind": "seed",
+     "known": "It's next to the car park",
+     "target": "É ao lado do parque de estacionamento",
+     "why": "case-only duplicate on known: It's next to the car park ≠ it's next to the car park",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0467L02U03",
+     "seed": 467,
+     "kind": "use",
+     "known": "it's next to the car park",
+     "target": "é ao lado do parque de estacionamento",
+     "why": "case-only duplicate on known: It's next to the car park ≠ it's next to the car park",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0468",
+     "seed": 468,
+     "kind": "seed",
+     "known": "It's a big world",
+     "target": "É um mundo grande",
+     "why": "case-only duplicate on known: It's a big world ≠ it's a big world",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0468L01U01",
+     "seed": 468,
+     "kind": "use",
+     "known": "it's a big world",
+     "target": "é um mundo grande",
+     "why": "case-only duplicate on known: It's a big world ≠ it's a big world",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0479",
+     "seed": 479,
+     "kind": "seed",
+     "known": "It's the least I could do",
+     "target": "É o mínimo que eu podia fazer",
+     "why": "case-only duplicate on known: It's the least I could do ≠ it's the least I could do",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0479L01U01",
+     "seed": 479,
+     "kind": "use",
+     "known": "it's the least I could do",
+     "target": "é o mínimo que eu podia fazer",
+     "why": "case-only duplicate on known: It's the least I could do ≠ it's the least I could do",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0481",
+     "seed": 481,
+     "kind": "seed",
+     "known": "It's the only real hope we have left",
+     "target": "É a única esperança real que nos resta",
+     "why": "case-only duplicate on known: It's the only real hope we have left ≠ it's the only real hope we have left",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0481L02U01",
+     "seed": 481,
+     "kind": "use",
+     "known": "it's the only real hope we have left",
+     "target": "é a única esperança real que nos resta",
+     "why": "case-only duplicate on known: It's the only real hope we have left ≠ it's the only real hope we have left",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0484",
+     "seed": 484,
+     "kind": "seed",
+     "known": "It's meant to be a challenge",
+     "target": "É suposto ser um desafio",
+     "why": "case-only duplicate on known: It's meant to be a challenge ≠ it's meant to be a challenge",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0484L02U01",
+     "seed": 484,
+     "kind": "use",
+     "known": "it's meant to be a challenge",
+     "target": "É suposto ser um desafio",
+     "why": "case-only duplicate on known: It's meant to be a challenge ≠ it's meant to be a challenge",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0487",
+     "seed": 487,
+     "kind": "seed",
+     "known": "It's under the bridge",
+     "target": "É debaixo da ponte",
+     "why": "case-only duplicate on known: It's under the bridge ≠ it's under the bridge",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0487L02U05",
+     "seed": 487,
+     "kind": "use",
+     "known": "it's under the bridge",
+     "target": "É debaixo da ponte",
+     "why": "case-only duplicate on known: It's under the bridge ≠ it's under the bridge",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0488",
+     "seed": 488,
+     "kind": "seed",
+     "known": "It's on the other side of that yellow line",
+     "target": "É do outro lado daquela linha amarela",
+     "why": "case-only duplicate on known: It's on the other side of that yellow line ≠ it's on the other side of that yellow line",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0488L03U05",
+     "seed": 488,
+     "kind": "use",
+     "known": "it's on the other side of that yellow line",
+     "target": "É do outro lado daquela linha amarela",
+     "why": "case-only duplicate on known: It's on the other side of that yellow line ≠ it's on the other side of that yellow line",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0500",
+     "seed": 500,
+     "kind": "seed",
+     "known": "Why don't you want to sit between the two girls?",
+     "target": "Porque é que não queres sentar-te entre as duas raparigas?",
+     "why": "case-only duplicate on known: Why don't you want to sit between the two girls? ≠ why don't you want to sit between the two girls?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0500L04U01",
+     "seed": 500,
+     "kind": "use",
+     "known": "why don't you want to sit between the two girls?",
+     "target": "porque é que não queres sentar-te entre as duas raparigas?",
+     "why": "case-only duplicate on known: Why don't you want to sit between the two girls? ≠ why don't you want to sit between the two girls?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0541",
+     "seed": 541,
+     "kind": "seed",
+     "known": "It's a good idea to try and breathe slowly",
+     "target": "É boa ideia tentar respirar devagar",
+     "why": "case-only duplicate on known: It's a good idea to try and breathe slowly ≠ it's a good idea to try and breathe slowly",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0541L02U01",
+     "seed": 541,
+     "kind": "use",
+     "known": "it's a good idea to try and breathe slowly",
+     "target": "É boa ideia tentar respirar devagar",
+     "why": "case-only duplicate on known: It's a good idea to try and breathe slowly ≠ it's a good idea to try and breathe slowly",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0545",
+     "seed": 545,
+     "kind": "seed",
+     "known": "It's your turn to take the clean clothes upstairs",
+     "target": "É a tua vez de levar a roupa limpa lá para cima",
+     "why": "case-only duplicate on known: It's your turn to take the clean clothes upstairs ≠ it's your turn to take the clean clothes upstairs",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0545L03U01",
+     "seed": 545,
+     "kind": "use",
+     "known": "it's your turn to take the clean clothes upstairs",
+     "target": "É a tua vez de levar a roupa limpa lá para cima",
+     "why": "case-only duplicate on known: It's your turn to take the clean clothes upstairs ≠ it's your turn to take the clean clothes upstairs",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0558",
+     "seed": 558,
+     "kind": "seed",
+     "known": "It's so late at night",
+     "target": "É tão tarde à noite",
+     "why": "case-only duplicate on known: It's so late at night ≠ it's so late at night",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0558L01B01",
+     "seed": 558,
+     "kind": "build",
+     "known": "it's so late at night",
+     "target": "É tão tarde à noite",
+     "why": "case-only duplicate on known: It's so late at night ≠ it's so late at night",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0567",
+     "seed": 567,
+     "kind": "seed",
+     "known": "It's been lovely spending time outdoors watching the children play",
+     "target": "foi muito bom passar tempo ao ar livre a ver as crianças brincar",
+     "why": "case-only duplicate on known: It's been lovely spending time outdoors watching the children play ≠ it's been lovely spending time outdoors watching the children play",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0567L03U01",
+     "seed": 567,
+     "kind": "use",
+     "known": "it's been lovely spending time outdoors watching the children play",
+     "target": "foi muito bom passar tempo ao ar livre a ver as crianças brincar",
+     "why": "case-only duplicate on known: It's been lovely spending time outdoors watching the children play ≠ it's been lovely spending time outdoors watching the children play",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0573",
+     "seed": 573,
+     "kind": "seed",
+     "known": "It's the kind of thing that makes the holidays very special",
+     "target": "É o tipo de coisa que torna as férias muito especiais",
+     "why": "case-only duplicate on known: It's the kind of thing that makes the holidays very special ≠ it's the kind of thing that makes the holidays very special",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0573L03U01",
+     "seed": 573,
+     "kind": "use",
+     "known": "it's the kind of thing that makes the holidays very special",
+     "target": "É o tipo de coisa que torna as férias muito especiais",
+     "why": "case-only duplicate on known: It's the kind of thing that makes the holidays very special ≠ it's the kind of thing that makes the holidays very special",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0575",
+     "seed": 575,
+     "kind": "seed",
+     "known": "It's been upsetting",
+     "target": "foi perturbante",
+     "why": "case-only duplicate on known: It's been upsetting ≠ it's been upsetting",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0575L01U01",
+     "seed": 575,
+     "kind": "use",
+     "known": "it's been upsetting",
+     "target": "foi perturbante",
+     "why": "case-only duplicate on known: It's been upsetting ≠ it's been upsetting",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0614",
+     "seed": 614,
+     "kind": "seed",
+     "known": "It's near where your family live",
+     "target": "É perto de onde a tua família vive",
+     "why": "case-only duplicate on known: It's near where your family live ≠ it's near where your family live",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0614L03U01",
+     "seed": 614,
+     "kind": "use",
+     "known": "it's near where your family live",
+     "target": "é perto de onde a tua família vive",
+     "why": "case-only duplicate on known: It's near where your family live ≠ it's near where your family live",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0619",
+     "seed": 619,
+     "kind": "seed",
+     "known": "It's a long time since we saw each other",
+     "target": "já passou muito tempo desde que nos vimos",
+     "why": "case-only duplicate on known: It's a long time since we saw each other ≠ it's a long time since we saw each other",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0619L02U01",
+     "seed": 619,
+     "kind": "use",
+     "known": "it's a long time since we saw each other",
+     "target": "já passou muito tempo desde que nos vimos",
+     "why": "case-only duplicate on known: It's a long time since we saw each other ≠ it's a long time since we saw each other",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0620",
+     "seed": 620,
+     "kind": "seed",
+     "known": "It's a very long time since we last saw each other",
+     "target": "já passou muito tempo desde a última vez que nos vimos",
+     "why": "case-only duplicate on known: It's a very long time since we last saw each other ≠ it's a very long time since we last saw each other",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0620L02U01",
+     "seed": 620,
+     "kind": "use",
+     "known": "it's a very long time since we last saw each other",
+     "target": "já passou muito tempo desde a última vez que nos vimos",
+     "why": "case-only duplicate on known: It's a very long time since we last saw each other ≠ it's a very long time since we last saw each other",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0640",
+     "seed": 640,
+     "kind": "seed",
+     "known": "It's the red one",
+     "target": "É o vermelho",
+     "why": "case-only duplicate on known: It's the red one ≠ it's the red one",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0640L02B01",
+     "seed": 640,
+     "kind": "build",
+     "known": "it's the red one",
+     "target": "é o vermelho",
+     "why": "case-only duplicate on known: It's the red one ≠ it's the red one",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0047L02B03",
+     "seed": 47,
+     "kind": "build",
+     "known": "it's a good thing to know",
+     "target": "é bom saber",
+     "why": "case-only duplicate on known: it's a good thing to know ≠ It's a good thing to know",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U01",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to know",
+     "target": "É bom saber",
+     "why": "case-only duplicate on known: it's a good thing to know ≠ It's a good thing to know",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0047L02B04",
+     "seed": 47,
+     "kind": "build",
+     "known": "it's a good thing to learn",
+     "target": "é bom aprender",
+     "why": "case-only duplicate on known: it's a good thing to learn ≠ It's a good thing to learn",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U02",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to learn",
+     "target": "É bom aprender",
+     "why": "case-only duplicate on known: it's a good thing to learn ≠ It's a good thing to learn",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01B02",
+     "seed": 49,
+     "kind": "build",
+     "known": "it's like this",
+     "target": "é assim",
+     "why": "case-only duplicate on known: it's like this ≠ It's like this",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U01",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this",
+     "target": "É assim",
+     "why": "case-only duplicate on known: it's like this ≠ It's like this",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01B03",
+     "seed": 49,
+     "kind": "build",
+     "known": "it's like this now",
+     "target": "é assim agora",
+     "why": "case-only duplicate on known: it's like this now ≠ It's like this now",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U04",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this now",
+     "target": "É assim agora",
+     "why": "case-only duplicate on known: it's like this now ≠ It's like this now",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01B04",
+     "seed": 49,
+     "kind": "build",
+     "known": "it's like this today",
+     "target": "é assim hoje",
+     "why": "case-only duplicate on known: it's like this today ≠ It's like this today",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U03",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this today",
+     "target": "É assim hoje",
+     "why": "case-only duplicate on known: it's like this today ≠ It's like this today",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0095L02B02",
+     "seed": 95,
+     "kind": "build",
+     "known": "Are you ready?",
+     "target": "Estás pronto?",
+     "why": "case-only duplicate on known: Are you ready? ≠ are you ready?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0095L02U01",
+     "seed": 95,
+     "kind": "use",
+     "known": "are you ready?",
+     "target": "estás pronto?",
+     "why": "case-only duplicate on known: Are you ready? ≠ are you ready?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0095L02B04",
+     "seed": 95,
+     "kind": "build",
+     "known": "Are you ready to go home?",
+     "target": "Estás pronto para ir para casa?",
+     "why": "case-only duplicate on known: Are you ready to go home? ≠ are you ready to go home?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0095L02U08",
+     "seed": 95,
+     "kind": "use",
+     "known": "are you ready to go home?",
+     "target": "estás pronto para ir para casa?",
+     "why": "case-only duplicate on known: Are you ready to go home? ≠ are you ready to go home?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0113L01B03",
+     "seed": 113,
+     "kind": "build",
+     "known": "why can't I remember what you said yesterday?",
+     "target": "porque é que não consigo lembrar-me do que disseste ontem?",
+     "why": "case-only duplicate on known: why can't I remember what you said yesterday? ≠ Why can't I remember what you said yesterday?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U03",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said yesterday?",
+     "target": "Porque é que não consigo lembrar-me do que disseste ontem?",
+     "why": "case-only duplicate on known: why can't I remember what you said yesterday? ≠ Why can't I remember what you said yesterday?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0122L01B04",
+     "seed": 122,
+     "kind": "build",
+     "known": "it's starting to seem easier",
+     "target": "está a começar a parecer mais fácil",
+     "why": "case-only duplicate on known: it's starting to seem easier ≠ It's starting to seem easier",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0122L01U01",
+     "seed": 122,
+     "kind": "use",
+     "known": "It's starting to seem easier",
+     "target": "Está a começar a parecer mais fácil",
+     "why": "case-only duplicate on known: it's starting to seem easier ≠ It's starting to seem easier",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0137L03B02",
+     "seed": 137,
+     "kind": "build",
+     "known": "it's perfect",
+     "target": "é perfeito",
+     "why": "case-only duplicate on known: it's perfect ≠ It's perfect",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0137L03U01",
+     "seed": 137,
+     "kind": "use",
+     "known": "It's perfect",
+     "target": "É perfeito",
+     "why": "case-only duplicate on known: it's perfect ≠ It's perfect",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0143L01B04",
+     "seed": 143,
+     "kind": "build",
+     "known": "it's the same thing",
+     "target": "é a mesma coisa",
+     "why": "case-only duplicate on known: it's the same thing ≠ It's the same thing",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0143L01U01",
+     "seed": 143,
+     "kind": "use",
+     "known": "It's the same thing",
+     "target": "é a mesma coisa",
+     "why": "case-only duplicate on known: it's the same thing ≠ It's the same thing",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0021",
+     "seed": 21,
+     "kind": "seed",
+     "known": "Why are you learning her name?",
+     "target": "Porque é que estás a aprender o nome dela?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0028",
+     "seed": 28,
+     "kind": "seed",
+     "known": "It's useful to start talking as soon as you can",
+     "target": "É útil começar a falar assim que puderes",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0049",
+     "seed": 49,
+     "kind": "seed",
+     "known": "It's like this, if you know what I mean",
+     "target": "É assim, se percebes o que quero dizer",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0058",
+     "seed": 58,
+     "kind": "seed",
+     "known": "It's interesting when you understand enough words",
+     "target": "É interessante quando percebes palavras suficientes",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0065",
+     "seed": 65,
+     "kind": "seed",
+     "known": "It's important to take time to test yourself",
+     "target": "É importante dedicar tempo a testar-te a ti mesmo",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0066",
+     "seed": 66,
+     "kind": "seed",
+     "known": "It's not difficult to find the answer",
+     "target": "não é difícil encontrar a resposta",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0067",
+     "seed": 67,
+     "kind": "seed",
+     "known": "Why do you want to stop?",
+     "target": "Porque é que queres parar?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0091",
+     "seed": 91,
+     "kind": "seed",
+     "known": "It's difficult to think quickly enough to answer in time",
+     "target": "É difícil pensar depressa suficiente para responder a tempo",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0093",
+     "seed": 93,
+     "kind": "seed",
+     "known": "It's time to go now",
+     "target": "É hora de ir agora",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0113",
+     "seed": 113,
+     "kind": "seed",
+     "known": "Why can't I remember what you said?",
+     "target": "Porque é que não consigo lembrar-me do que disseste?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0120",
+     "seed": 120,
+     "kind": "seed",
+     "known": "It's interesting that you like to go by bus",
+     "target": "É interessante que gostes de ir de autocarro",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0121",
+     "seed": 121,
+     "kind": "seed",
+     "known": "It's unusual that you don't like to use your car",
+     "target": "É invulgar que não gostes de usar o teu carro",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0122",
+     "seed": 122,
+     "kind": "seed",
+     "known": "It's starting to feel easier and I'm excited about how it's going",
+     "target": "Está a começar a parecer mais fácil e estou entusiasmado com o progresso",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0134",
+     "seed": 134,
+     "kind": "seed",
+     "known": "It's not a problem when you work at something difficult with them",
+     "target": "não é um problema quando trabalhas em algo difícil com eles",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0137",
+     "seed": 137,
+     "kind": "seed",
+     "known": "It's more important to talk often than to be perfect",
+     "target": "É mais importante falar muitas vezes do que ser perfeito",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0143",
+     "seed": 143,
+     "kind": "seed",
+     "known": "It's the same thing as we were talking about earlier",
+     "target": "É a mesma coisa de que estávamos a falar antes",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0145",
+     "seed": 145,
+     "kind": "seed",
+     "known": "Why are you not happy any more?",
+     "target": "Porque é que já não estás contente?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0269",
+     "seed": 269,
+     "kind": "seed",
+     "known": "Why don't you want to wait for your father?",
+     "target": "Porque é que não queres esperar pelo teu pai?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0329",
+     "seed": 329,
+     "kind": "seed",
+     "known": "It's important",
+     "target": "É importante",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0467",
+     "seed": 467,
+     "kind": "seed",
+     "known": "It's next to the car park",
+     "target": "É ao lado do parque de estacionamento",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0468",
+     "seed": 468,
+     "kind": "seed",
+     "known": "It's a big world",
+     "target": "É um mundo grande",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0479",
+     "seed": 479,
+     "kind": "seed",
+     "known": "It's the least I could do",
+     "target": "É o mínimo que eu podia fazer",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0481",
+     "seed": 481,
+     "kind": "seed",
+     "known": "It's the only real hope we have left",
+     "target": "É a única esperança real que nos resta",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0484",
+     "seed": 484,
+     "kind": "seed",
+     "known": "It's meant to be a challenge",
+     "target": "É suposto ser um desafio",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0487",
+     "seed": 487,
+     "kind": "seed",
+     "known": "It's under the bridge",
+     "target": "É debaixo da ponte",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0488",
+     "seed": 488,
+     "kind": "seed",
+     "known": "It's on the other side of that yellow line",
+     "target": "É do outro lado daquela linha amarela",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0500",
+     "seed": 500,
+     "kind": "seed",
+     "known": "Why don't you want to sit between the two girls?",
+     "target": "Porque é que não queres sentar-te entre as duas raparigas?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0541",
+     "seed": 541,
+     "kind": "seed",
+     "known": "It's a good idea to try and breathe slowly",
+     "target": "É boa ideia tentar respirar devagar",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0545",
+     "seed": 545,
+     "kind": "seed",
+     "known": "It's your turn to take the clean clothes upstairs",
+     "target": "É a tua vez de levar a roupa limpa lá para cima",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0558",
+     "seed": 558,
+     "kind": "seed",
+     "known": "It's so late at night",
+     "target": "É tão tarde à noite",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0567",
+     "seed": 567,
+     "kind": "seed",
+     "known": "It's been lovely spending time outdoors watching the children play",
+     "target": "foi muito bom passar tempo ao ar livre a ver as crianças brincar",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0573",
+     "seed": 573,
+     "kind": "seed",
+     "known": "It's the kind of thing that makes the holidays very special",
+     "target": "É o tipo de coisa que torna as férias muito especiais",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0575",
+     "seed": 575,
+     "kind": "seed",
+     "known": "It's been upsetting",
+     "target": "foi perturbante",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0614",
+     "seed": 614,
+     "kind": "seed",
+     "known": "It's near where your family live",
+     "target": "É perto de onde a tua família vive",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0619",
+     "seed": 619,
+     "kind": "seed",
+     "known": "It's a long time since we saw each other",
+     "target": "já passou muito tempo desde que nos vimos",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0620",
+     "seed": 620,
+     "kind": "seed",
+     "known": "It's a very long time since we last saw each other",
+     "target": "já passou muito tempo desde a última vez que nos vimos",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0640",
+     "seed": 640,
+     "kind": "seed",
+     "known": "It's the red one",
+     "target": "É o vermelho",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L03U04",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why are you learning her name?",
+     "target": "Porque é que estás a aprender o nome dela?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U03",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why does she want to find out?",
+     "target": "Porque é que ela quer descobrir?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U01",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do you want to speak Portuguese?",
+     "target": "Porque é que queres falar português?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U06",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do you want to stop?",
+     "target": "Porque é que queres parar?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U04",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do you want to try today?",
+     "target": "Porque é que queres tentar hoje?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U02",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why does he want to come back?",
+     "target": "Porque é que ele quer voltar?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U05",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do you speak Portuguese all day?",
+     "target": "Porque é que falas português o dia todo?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L02U03",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why are you learning Portuguese?",
+     "target": "Porque é que estás a aprender português?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L01U01",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to speak Portuguese",
+     "target": "É útil falar português",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L01U05",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to remember a word",
+     "target": "É útil lembrar-me de uma palavra",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L01U03",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to practise speaking",
+     "target": "É útil praticar a falar",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L01U02",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to learn Portuguese",
+     "target": "É útil aprender português",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L01U04",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to try as hard as I can",
+     "target": "É útil tentar com toda a força que puder",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L02U01",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to start talking as soon as you can",
+     "target": "É útil começar a falar assim que puderes",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L02U04",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to try as soon as you can",
+     "target": "É útil tentar assim que puderes",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0033L01B03",
+     "seed": 33,
+     "kind": "build",
+     "known": "How long have you been learning?",
+     "target": "há quanto tempo estás a aprender?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0033L01B02",
+     "seed": 33,
+     "kind": "build",
+     "known": "How long have you been speaking?",
+     "target": "há quanto tempo falas?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U01",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to know",
+     "target": "É bom saber",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U02",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to learn",
+     "target": "É bom aprender",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U03",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to improve",
+     "target": "É bom melhorar",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U06",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to speak Portuguese",
+     "target": "É bom falar português",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U05",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to make mistakes",
+     "target": "É bom cometer erros",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U07",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to start talking",
+     "target": "É bom começar a falar",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U04",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to explain",
+     "target": "É bom explicar",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U08",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this because I want to learn",
+     "target": "É assim porque quero aprender",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U01",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this",
+     "target": "É assim",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U04",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this now",
+     "target": "É assim agora",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U05",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's not like this",
+     "target": "não é assim",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U03",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this today",
+     "target": "É assim hoje",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0049L02U09",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this, if you know what I mean",
+     "target": "É assim, se percebes o que quero dizer",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L02U05",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's interesting when you understand enough words",
+     "target": "É interessante quando percebes palavras suficientes",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U07",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's really interesting when you understand well",
+     "target": "É muito interessante quando percebes bem",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U03",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's interesting when you understand more",
+     "target": "É interessante quando percebes mais",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U02",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's very interesting when you understand",
+     "target": "É muito interessante quando percebes",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U01",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's interesting when you understand Portuguese",
+     "target": "É interessante quando percebes português",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U05",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's interesting when you understand something",
+     "target": "É interessante quando percebes algo",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U06",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's interesting when you understand everything",
+     "target": "É interessante quando percebes tudo",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0064L01U04",
+     "seed": 64,
+     "kind": "use",
+     "known": "It's not easy but it's possible",
+     "target": "não é fácil mas é possível",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0064L01U01",
+     "seed": 64,
+     "kind": "use",
+     "known": "It's not easy",
+     "target": "não é fácil",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0064L02U01",
+     "seed": 64,
+     "kind": "use",
+     "known": "It's fun",
+     "target": "É divertido",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0064L02U04",
+     "seed": 64,
+     "kind": "use",
+     "known": "It's not easy but it is fun",
+     "target": "não é fácil mas é divertido",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L01U01",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important",
+     "target": "É importante",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L01U07",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important but not easy",
+     "target": "É importante mas não é fácil",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L01U04",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's not important",
+     "target": "não é importante",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L01U05",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important to learn",
+     "target": "É importante aprender",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L03B04",
+     "seed": 65,
+     "kind": "build",
+     "known": "Want to test yourself?",
+     "target": "Queres testar-te a ti mesmo?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L03U06",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important to test yourself",
+     "target": "É importante testar-te a ti mesmo",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L03U01",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important to take time to test yourself",
+     "target": "É importante dedicar tempo a testar-te a ti mesmo",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L02U02",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important to take time",
+     "target": "É importante dedicar tempo",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0066L01U05",
+     "seed": 66,
+     "kind": "use",
+     "known": "It's not easy, it's difficult",
+     "target": "não é fácil, é difícil",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0066L01U01",
+     "seed": 66,
+     "kind": "use",
+     "known": "It's not difficult",
+     "target": "não é difícil",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0066L01U08",
+     "seed": 66,
+     "kind": "use",
+     "known": "It's difficult but fun",
+     "target": "É difícil mas é divertido",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0066L01U03",
+     "seed": 66,
+     "kind": "use",
+     "known": "It's very difficult",
+     "target": "É muito difícil",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0066L02U03",
+     "seed": 66,
+     "kind": "use",
+     "known": "It's not difficult to find the answer",
+     "target": "não é difícil encontrar a resposta",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0069L04U06",
+     "seed": 69,
+     "kind": "use",
+     "known": "Why do you want to practice all afternoon?",
+     "target": "Porque é que queres praticar a tarde toda?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0070L02U04",
+     "seed": 70,
+     "kind": "use",
+     "known": "Why don't you want to tell me?",
+     "target": "Porque é que não queres dizer-me?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02B01",
+     "seed": 82,
+     "kind": "build",
+     "known": "Why not?",
+     "target": "Porque não?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U02",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not try?",
+     "target": "Porque não tentar?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U08",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not learn with me?",
+     "target": "Porque não aprender comigo?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U06",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not practice today?",
+     "target": "Porque não praticar hoje?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U01",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not?",
+     "target": "Porque não?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U04",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not wait?",
+     "target": "Porque não esperar?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U05",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not speak Portuguese?",
+     "target": "Porque não falar português?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U03",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not start now?",
+     "target": "Porque não começar agora?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U07",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not do that tomorrow?",
+     "target": "Porque não fazer isso amanhã?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0089L02U07",
+     "seed": 89,
+     "kind": "use",
+     "known": "It's difficult in a short time",
+     "target": "É difícil em pouco tempo",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0090L02U06",
+     "seed": 90,
+     "kind": "use",
+     "known": "It's important to speak more slowly",
+     "target": "É importante falar mais devagar",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0091L02U09",
+     "seed": 91,
+     "kind": "use",
+     "known": "It's difficult to think quickly enough to answer in time",
+     "target": "É difícil pensar depressa suficiente para responder a tempo",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0091L02U07",
+     "seed": 91,
+     "kind": "use",
+     "known": "It's difficult to finish in time",
+     "target": "É difícil acabar a tempo",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0091L02U04",
+     "seed": 91,
+     "kind": "use",
+     "known": "It's important to answer in time",
+     "target": "É importante responder a tempo",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0092L01U04",
+     "seed": 92,
+     "kind": "use",
+     "known": "It's important to understand this",
+     "target": "É importante perceber isto",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0092L02U04",
+     "seed": 92,
+     "kind": "use",
+     "known": "It's important to keep on trying",
+     "target": "É importante continuar a tentar",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U08",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to finish this",
+     "target": "É hora de acabar isto",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U06",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to think about that",
+     "target": "É hora de pensar sobre isso",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U05",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to practice",
+     "target": "É hora de praticar",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U07",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to keep on learning",
+     "target": "É hora de continuar a aprender",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U02",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to learn",
+     "target": "É hora de aprender",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U01",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to start",
+     "target": "É hora de começar",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U04",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to help you",
+     "target": "É hora de ajudar-te",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U03",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to do this",
+     "target": "É hora de fazer isto",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0094L03U05",
+     "seed": 94,
+     "kind": "use",
+     "known": "It's the only way to work now",
+     "target": "É a única maneira de funcionar agora",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0094L02U06",
+     "seed": 94,
+     "kind": "use",
+     "known": "It's the only way now",
+     "target": "É a única maneira agora",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0094L01U06",
+     "seed": 94,
+     "kind": "use",
+     "known": "It's the way to do this",
+     "target": "É a maneira de fazer isto",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0095L02B01",
+     "seed": 95,
+     "kind": "build",
+     "known": "Are you ready?",
+     "target": "Estás pronto?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0095L02B04",
+     "seed": 95,
+     "kind": "build",
+     "known": "Are you ready to go home?",
+     "target": "Estás pronto para ir para casa?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0095L02B02",
+     "seed": 95,
+     "kind": "build",
+     "known": "Are you ready?",
+     "target": "Estás pronto?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0108L01U01",
+     "seed": 108,
+     "kind": "use",
+     "known": "It's in the middle",
+     "target": "está no meio",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U01",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said?",
+     "target": "Porque é que não consigo lembrar-me do que disseste?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U07",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said about that?",
+     "target": "Porque é que não consigo lembrar-me do que disseste sobre isso?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U05",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said to me this morning?",
+     "target": "Porque é que não consigo lembrar-me do que disseste esta manhã?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U03",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said yesterday?",
+     "target": "Porque é que não consigo lembrar-me do que disseste ontem?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L03U07",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you like to go by bus",
+     "target": "É interessante que gostes de ir de autocarro",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L02U08",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you like to go now",
+     "target": "É interessante que gostes de ir agora",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L02U02",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you like to go",
+     "target": "É interessante que gostes de ir",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U01",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you said that",
+     "target": "É interessante que disseste isso",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U08",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that we were at the pub",
+     "target": "É interessante que estávamos no café",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U07",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you feel better now",
+     "target": "É interessante que sentes melhor agora",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U05",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that this changes our brain",
+     "target": "É interessante que isto muda o nosso cérebro",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U02",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that we talked about this",
+     "target": "É interessante que falámos sobre isto",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U04",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you want to learn",
+     "target": "É interessante que queres aprender",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0121L03U07",
+     "seed": 121,
+     "kind": "use",
+     "known": "It's unusual that you don't like to use your car",
+     "target": "É invulgar que não gostes de usar o teu carro",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0121L02U03",
+     "seed": 121,
+     "kind": "use",
+     "known": "It's important to use this",
+     "target": "É importante usar isto",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0122L03U08",
+     "seed": 122,
+     "kind": "use",
+     "known": "It's starting to feel easier and I'm excited about the progress",
+     "target": "Está a começar a parecer mais fácil e estou entusiasmado com o progresso",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0122L03U09",
+     "seed": 122,
+     "kind": "use",
+     "known": "It's starting to feel easier and I'm excited about how it's going",
+     "target": "Está a começar a parecer mais fácil e estou entusiasmado com o progresso",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0122L01U04",
+     "seed": 122,
+     "kind": "use",
+     "known": "Everything is starting to seem easier now",
+     "target": "tudo está a começar a parecer mais fácil agora",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0122L01U05",
+     "seed": 122,
+     "kind": "use",
+     "known": "Everything is starting to seem easier than before",
+     "target": "tudo está a começar a parecer mais fácil do que antes",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0122L01U01",
+     "seed": 122,
+     "kind": "use",
+     "known": "It's starting to seem easier",
+     "target": "Está a começar a parecer mais fácil",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0128L02U03",
+     "seed": 128,
+     "kind": "use",
+     "known": "It's like a good idea",
+     "target": "É como uma boa ideia",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0128L02U07",
+     "seed": 128,
+     "kind": "use",
+     "known": "It's like the work I wanted",
+     "target": "É como o trabalho que eu queria",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0133L05U02",
+     "seed": 133,
+     "kind": "use",
+     "known": "It's very good when you work together",
+     "target": "É muito bom quando trabalhas em conjunto",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0134L01U01",
+     "seed": 134,
+     "kind": "use",
+     "known": "It's not a problem",
+     "target": "não é um problema",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0134L03U09",
+     "seed": 134,
+     "kind": "use",
+     "known": "It's not a problem when you work at something difficult with them",
+     "target": "não é um problema quando trabalhas em algo difícil com eles",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0135L01U07",
+     "seed": 135,
+     "kind": "use",
+     "known": "Why do you think that?",
+     "target": "Porque achas isso?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L03U07",
+     "seed": 137,
+     "kind": "use",
+     "known": "It's going to be perfect",
+     "target": "vai ser perfeito",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L03U01",
+     "seed": 137,
+     "kind": "use",
+     "known": "It's perfect",
+     "target": "É perfeito",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L03U09",
+     "seed": 137,
+     "kind": "use",
+     "known": "It's more important to talk often than to be perfect",
+     "target": "É mais importante falar muitas vezes do que ser perfeito",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L02U01",
+     "seed": 137,
+     "kind": "use",
+     "known": "It's going to be difficult",
+     "target": "vai ser difícil",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L02U08",
+     "seed": 137,
+     "kind": "use",
+     "known": "It's going to be very good",
+     "target": "vai ser muito bom",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L02U04",
+     "seed": 137,
+     "kind": "use",
+     "known": "It's not going to be a problem",
+     "target": "não vai ser um problema",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0143L02U06",
+     "seed": 143,
+     "kind": "use",
+     "known": "It's the same thing as we were talking about earlier",
+     "target": "É a mesma coisa de que estávamos a falar antes",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0143L01U03",
+     "seed": 143,
+     "kind": "use",
+     "known": "It's the same thing as before",
+     "target": "é a mesma coisa que antes",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0143L01U01",
+     "seed": 143,
+     "kind": "use",
+     "known": "It's the same thing",
+     "target": "é a mesma coisa",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0143L01U06",
+     "seed": 143,
+     "kind": "use",
+     "known": "It's the same thing that I wanted to say",
+     "target": "é a mesma coisa que eu queria dizer",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0145L01U09",
+     "seed": 145,
+     "kind": "use",
+     "known": "Why are you not happy any more?",
+     "target": "Porque é que já não estás contente?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0146L02U09",
+     "seed": 146,
+     "kind": "use",
+     "known": "Everything seems to be working without any problem",
+     "target": "tudo parece estar a funcionar sem problema",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0174L01B02",
+     "seed": 174,
+     "kind": "build",
+     "known": "Can you understand?",
+     "target": "consegues perceber?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0174L01B01",
+     "seed": 174,
+     "kind": "build",
+     "known": "Can you understand?",
+     "target": "consegues perceber?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0186L01U07",
+     "seed": 186,
+     "kind": "use",
+     "known": "Why do you want to talk about something different next week?",
+     "target": "Porque queres falar sobre algo diferente na próxima semana?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0202L04U02",
+     "seed": 202,
+     "kind": "use",
+     "known": "Can you show me how to answer?",
+     "target": "Podes mostrar-me como responder?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0203L01U05",
+     "seed": 203,
+     "kind": "use",
+     "known": "What would you do with that problem?",
+     "target": "O que é que farias com esse problema?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0204L02U05",
+     "seed": 204,
+     "kind": "use",
+     "known": "Can you tell me about the arrangements?",
+     "target": "Podes dizer-me sobre os preparativos?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0204L02U06",
+     "seed": 204,
+     "kind": "use",
+     "known": "What would you do with the arrangements?",
+     "target": "O que é que farias com os preparativos?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0206L01U08",
+     "seed": 206,
+     "kind": "use",
+     "known": "It's the chance to do something different",
+     "target": "É a oportunidade de fazer algo diferente",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0269L01U08",
+     "seed": 269,
+     "kind": "use",
+     "known": "Why don't you want to wait for your father?",
+     "target": "Porque é que não queres esperar pelo teu pai?",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0295L02U05",
+     "seed": 295,
+     "kind": "use",
+     "known": "It's not possible to finish in a day",
+     "target": "não é possível acabar num dia",
+     "why": "known starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0093",
+     "seed": 93,
+     "kind": "seed",
+     "known": "It's time to go now",
+     "target": "É hora de ir agora",
+     "why": "case-only duplicate on target: É hora de ir agora ≠ é hora de ir agora",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0093L01B04",
+     "seed": 93,
+     "kind": "build",
+     "known": "it's time to go now",
+     "target": "é hora de ir agora",
+     "why": "case-only duplicate on target: É hora de ir agora ≠ é hora de ir agora",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0105",
+     "seed": 105,
+     "kind": "seed",
+     "known": "that is why he didn't know the answer",
+     "target": "É por isso que ele não sabia a resposta",
+     "why": "case-only duplicate on target: É por isso que ele não sabia a resposta ≠ é por isso que ele não sabia a resposta",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0105L02U01",
+     "seed": 105,
+     "kind": "use",
+     "known": "that is why he didn't know the answer",
+     "target": "é por isso que ele não sabia a resposta",
+     "why": "case-only duplicate on target: É por isso que ele não sabia a resposta ≠ é por isso que ele não sabia a resposta",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U01",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said?",
+     "target": "Porque é que não consigo lembrar-me do que disseste?",
+     "why": "case-only duplicate on target: Porque é que não consigo lembrar-me do que disseste? ≠ porque é que não consigo lembrar-me do que disseste?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0113L01B01",
+     "seed": 113,
+     "kind": "build",
+     "known": "why can't I remember what you said?",
+     "target": "porque é que não consigo lembrar-me do que disseste?",
+     "why": "case-only duplicate on target: Porque é que não consigo lembrar-me do que disseste? ≠ porque é que não consigo lembrar-me do que disseste?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0065L01U01",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important",
+     "target": "É importante",
+     "why": "case-only duplicate on target: É importante ≠ é importante",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0065L01B01",
+     "seed": 65,
+     "kind": "build",
+     "known": "is important",
+     "target": "é importante",
+     "why": "case-only duplicate on target: É importante ≠ é importante",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0421",
+     "seed": 421,
+     "kind": "seed",
+     "known": "because they already know he's getting weak",
+     "target": "Porque já sabem que ele está a ficar fraco",
+     "why": "case-only duplicate on target: Porque já sabem que ele está a ficar fraco ≠ porque já sabem que ele está a ficar fraco",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0421L02U01",
+     "seed": 421,
+     "kind": "use",
+     "known": "because they already know he's getting weak",
+     "target": "porque já sabem que ele está a ficar fraco",
+     "why": "case-only duplicate on target: Porque já sabem que ele está a ficar fraco ≠ porque já sabem que ele está a ficar fraco",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0467",
+     "seed": 467,
+     "kind": "seed",
+     "known": "It's next to the car park",
+     "target": "É ao lado do parque de estacionamento",
+     "why": "case-only duplicate on target: É ao lado do parque de estacionamento ≠ é ao lado do parque de estacionamento",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0467L02U03",
+     "seed": 467,
+     "kind": "use",
+     "known": "it's next to the car park",
+     "target": "é ao lado do parque de estacionamento",
+     "why": "case-only duplicate on target: É ao lado do parque de estacionamento ≠ é ao lado do parque de estacionamento",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0468",
+     "seed": 468,
+     "kind": "seed",
+     "known": "It's a big world",
+     "target": "É um mundo grande",
+     "why": "case-only duplicate on target: É um mundo grande ≠ é um mundo grande",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0468L01U01",
+     "seed": 468,
+     "kind": "use",
+     "known": "it's a big world",
+     "target": "é um mundo grande",
+     "why": "case-only duplicate on target: É um mundo grande ≠ é um mundo grande",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0479",
+     "seed": 479,
+     "kind": "seed",
+     "known": "It's the least I could do",
+     "target": "É o mínimo que eu podia fazer",
+     "why": "case-only duplicate on target: É o mínimo que eu podia fazer ≠ é o mínimo que eu podia fazer",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0479L01U01",
+     "seed": 479,
+     "kind": "use",
+     "known": "it's the least I could do",
+     "target": "é o mínimo que eu podia fazer",
+     "why": "case-only duplicate on target: É o mínimo que eu podia fazer ≠ é o mínimo que eu podia fazer",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0481",
+     "seed": 481,
+     "kind": "seed",
+     "known": "It's the only real hope we have left",
+     "target": "É a única esperança real que nos resta",
+     "why": "case-only duplicate on target: É a única esperança real que nos resta ≠ é a única esperança real que nos resta",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0481L02U01",
+     "seed": 481,
+     "kind": "use",
+     "known": "it's the only real hope we have left",
+     "target": "é a única esperança real que nos resta",
+     "why": "case-only duplicate on target: É a única esperança real que nos resta ≠ é a única esperança real que nos resta",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0500",
+     "seed": 500,
+     "kind": "seed",
+     "known": "Why don't you want to sit between the two girls?",
+     "target": "Porque é que não queres sentar-te entre as duas raparigas?",
+     "why": "case-only duplicate on target: Porque é que não queres sentar-te entre as duas raparigas? ≠ porque é que não queres sentar-te entre as duas raparigas?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0500L04U01",
+     "seed": 500,
+     "kind": "use",
+     "known": "why don't you want to sit between the two girls?",
+     "target": "porque é que não queres sentar-te entre as duas raparigas?",
+     "why": "case-only duplicate on target: Porque é que não queres sentar-te entre as duas raparigas? ≠ porque é que não queres sentar-te entre as duas raparigas?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0547",
+     "seed": 547,
+     "kind": "seed",
+     "known": "because he has been playing in the mud",
+     "target": "Porque esteve a brincar na lama",
+     "why": "case-only duplicate on target: Porque esteve a brincar na lama ≠ porque esteve a brincar na lama",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0547L02U01",
+     "seed": 547,
+     "kind": "use",
+     "known": "because he has been playing in the mud",
+     "target": "porque esteve a brincar na lama",
+     "why": "case-only duplicate on target: Porque esteve a brincar na lama ≠ porque esteve a brincar na lama",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0549",
+     "seed": 549,
+     "kind": "seed",
+     "known": "because I have got to be quiet",
+     "target": "Porque tenho de ficar calado",
+     "why": "case-only duplicate on target: Porque tenho de ficar calado ≠ porque tenho de ficar calado",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0549L02B01",
+     "seed": 549,
+     "kind": "build",
+     "known": "because I have got to be quiet",
+     "target": "porque tenho de ficar calado",
+     "why": "case-only duplicate on target: Porque tenho de ficar calado ≠ porque tenho de ficar calado",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0605",
+     "seed": 605,
+     "kind": "seed",
+     "known": "because we needed help",
+     "target": "Porque nós precisávamos de ajuda",
+     "why": "case-only duplicate on target: Porque nós precisávamos de ajuda ≠ porque nós precisávamos de ajuda",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0605L02U01",
+     "seed": 605,
+     "kind": "use",
+     "known": "because we needed help",
+     "target": "porque nós precisávamos de ajuda",
+     "why": "case-only duplicate on target: Porque nós precisávamos de ajuda ≠ porque nós precisávamos de ajuda",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0614",
+     "seed": 614,
+     "kind": "seed",
+     "known": "It's near where your family live",
+     "target": "É perto de onde a tua família vive",
+     "why": "case-only duplicate on target: É perto de onde a tua família vive ≠ é perto de onde a tua família vive",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0614L03U01",
+     "seed": 614,
+     "kind": "use",
+     "known": "it's near where your family live",
+     "target": "é perto de onde a tua família vive",
+     "why": "case-only duplicate on target: É perto de onde a tua família vive ≠ é perto de onde a tua família vive",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0640",
+     "seed": 640,
+     "kind": "seed",
+     "known": "It's the red one",
+     "target": "É o vermelho",
+     "why": "case-only duplicate on target: É o vermelho ≠ é o vermelho",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0640L02B01",
+     "seed": 640,
+     "kind": "build",
+     "known": "it's the red one",
+     "target": "é o vermelho",
+     "why": "case-only duplicate on target: É o vermelho ≠ é o vermelho",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0047L02B03",
+     "seed": 47,
+     "kind": "build",
+     "known": "it's a good thing to know",
+     "target": "é bom saber",
+     "why": "case-only duplicate on target: é bom saber ≠ É bom saber",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U01",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to know",
+     "target": "É bom saber",
+     "why": "case-only duplicate on target: é bom saber ≠ É bom saber",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0047L02B04",
+     "seed": 47,
+     "kind": "build",
+     "known": "it's a good thing to learn",
+     "target": "é bom aprender",
+     "why": "case-only duplicate on target: é bom aprender ≠ É bom aprender",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U02",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to learn",
+     "target": "É bom aprender",
+     "why": "case-only duplicate on target: é bom aprender ≠ É bom aprender",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01B02",
+     "seed": 49,
+     "kind": "build",
+     "known": "it's like this",
+     "target": "é assim",
+     "why": "case-only duplicate on target: é assim ≠ É assim",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U01",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this",
+     "target": "É assim",
+     "why": "case-only duplicate on target: é assim ≠ É assim",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01B03",
+     "seed": 49,
+     "kind": "build",
+     "known": "it's like this now",
+     "target": "é assim agora",
+     "why": "case-only duplicate on target: é assim agora ≠ É assim agora",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U04",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this now",
+     "target": "É assim agora",
+     "why": "case-only duplicate on target: é assim agora ≠ É assim agora",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01B04",
+     "seed": 49,
+     "kind": "build",
+     "known": "it's like this today",
+     "target": "é assim hoje",
+     "why": "case-only duplicate on target: é assim hoje ≠ É assim hoje",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U03",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this today",
+     "target": "É assim hoje",
+     "why": "case-only duplicate on target: é assim hoje ≠ É assim hoje",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0064L02B01",
+     "seed": 64,
+     "kind": "build",
+     "known": "is fun",
+     "target": "é divertido",
+     "why": "case-only duplicate on target: é divertido ≠ É divertido",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0064L02U01",
+     "seed": 64,
+     "kind": "use",
+     "known": "It's fun",
+     "target": "É divertido",
+     "why": "case-only duplicate on target: é divertido ≠ É divertido",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0065L03B04",
+     "seed": 65,
+     "kind": "build",
+     "known": "Want to test yourself?",
+     "target": "Queres testar-te a ti mesmo?",
+     "why": "case-only duplicate on target: Queres testar-te a ti mesmo? ≠ queres testar-te a ti mesmo?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0065L03U03",
+     "seed": 65,
+     "kind": "use",
+     "known": "do you want to test yourself?",
+     "target": "queres testar-te a ti mesmo?",
+     "why": "case-only duplicate on target: Queres testar-te a ti mesmo? ≠ queres testar-te a ti mesmo?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0095L02B02",
+     "seed": 95,
+     "kind": "build",
+     "known": "Are you ready?",
+     "target": "Estás pronto?",
+     "why": "case-only duplicate on target: Estás pronto? ≠ estás pronto?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0095L02U01",
+     "seed": 95,
+     "kind": "use",
+     "known": "are you ready?",
+     "target": "estás pronto?",
+     "why": "case-only duplicate on target: Estás pronto? ≠ estás pronto?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0095L02B04",
+     "seed": 95,
+     "kind": "build",
+     "known": "Are you ready to go home?",
+     "target": "Estás pronto para ir para casa?",
+     "why": "case-only duplicate on target: Estás pronto para ir para casa? ≠ estás pronto para ir para casa?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0095L02U08",
+     "seed": 95,
+     "kind": "use",
+     "known": "are you ready to go home?",
+     "target": "estás pronto para ir para casa?",
+     "why": "case-only duplicate on target: Estás pronto para ir para casa? ≠ estás pronto para ir para casa?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0113L01B03",
+     "seed": 113,
+     "kind": "build",
+     "known": "why can't I remember what you said yesterday?",
+     "target": "porque é que não consigo lembrar-me do que disseste ontem?",
+     "why": "case-only duplicate on target: porque é que não consigo lembrar-me do que disseste ontem? ≠ Porque é que não consigo lembrar-me do que disseste ontem?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U03",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said yesterday?",
+     "target": "Porque é que não consigo lembrar-me do que disseste ontem?",
+     "why": "case-only duplicate on target: porque é que não consigo lembrar-me do que disseste ontem? ≠ Porque é que não consigo lembrar-me do que disseste ontem?",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0122L01B04",
+     "seed": 122,
+     "kind": "build",
+     "known": "it's starting to seem easier",
+     "target": "está a começar a parecer mais fácil",
+     "why": "case-only duplicate on target: está a começar a parecer mais fácil ≠ Está a começar a parecer mais fácil",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0122L01U01",
+     "seed": 122,
+     "kind": "use",
+     "known": "It's starting to seem easier",
+     "target": "Está a começar a parecer mais fácil",
+     "why": "case-only duplicate on target: está a começar a parecer mais fácil ≠ Está a começar a parecer mais fácil",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0189L01B02",
+     "seed": 189,
+     "kind": "build",
+     "known": "that's a good idea",
+     "target": "é uma boa ideia",
+     "why": "case-only duplicate on target: é uma boa ideia ≠ É uma boa ideia",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0123L01U01",
+     "seed": 123,
+     "kind": "use",
+     "known": "that's a good idea",
+     "target": "É uma boa ideia",
+     "why": "case-only duplicate on target: é uma boa ideia ≠ É uma boa ideia",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0137L03B02",
+     "seed": 137,
+     "kind": "build",
+     "known": "it's perfect",
+     "target": "é perfeito",
+     "why": "case-only duplicate on target: é perfeito ≠ É perfeito",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "por_for_eng:S0137L03U01",
+     "seed": 137,
+     "kind": "use",
+     "known": "It's perfect",
+     "target": "É perfeito",
+     "why": "case-only duplicate on target: é perfeito ≠ É perfeito",
+     "sub": "case-dup"
+    },
+    {
+     "ref": "S0021",
+     "seed": 21,
+     "kind": "seed",
+     "known": "Why are you learning her name?",
+     "target": "Porque é que estás a aprender o nome dela?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0022",
+     "seed": 22,
+     "kind": "seed",
+     "known": "because I want to meet people who speak Portuguese",
+     "target": "Porque eu quero conhecer pessoas que falam português",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0028",
+     "seed": 28,
+     "kind": "seed",
+     "known": "It's useful to start talking as soon as you can",
+     "target": "É útil começar a falar assim que puderes",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0047",
+     "seed": 47,
+     "kind": "seed",
+     "known": "because I think that it's a good thing to make mistakes",
+     "target": "Porque eu acho que é bom cometer erros",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0049",
+     "seed": 49,
+     "kind": "seed",
+     "known": "It's like this, if you know what I mean",
+     "target": "É assim, se percebes o que quero dizer",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0058",
+     "seed": 58,
+     "kind": "seed",
+     "known": "It's interesting when you understand enough words",
+     "target": "É interessante quando percebes palavras suficientes",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0065",
+     "seed": 65,
+     "kind": "seed",
+     "known": "It's important to take time to test yourself",
+     "target": "É importante dedicar tempo a testar-te a ti mesmo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0067",
+     "seed": 67,
+     "kind": "seed",
+     "known": "Why do you want to stop?",
+     "target": "Porque é que queres parar?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0091",
+     "seed": 91,
+     "kind": "seed",
+     "known": "It's difficult to think quickly enough to answer in time",
+     "target": "É difícil pensar depressa suficiente para responder a tempo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0093",
+     "seed": 93,
+     "kind": "seed",
+     "known": "It's time to go now",
+     "target": "É hora de ir agora",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0105",
+     "seed": 105,
+     "kind": "seed",
+     "known": "that is why he didn't know the answer",
+     "target": "É por isso que ele não sabia a resposta",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0113",
+     "seed": 113,
+     "kind": "seed",
+     "known": "Why can't I remember what you said?",
+     "target": "Porque é que não consigo lembrar-me do que disseste?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0120",
+     "seed": 120,
+     "kind": "seed",
+     "known": "It's interesting that you like to go by bus",
+     "target": "É interessante que gostes de ir de autocarro",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0121",
+     "seed": 121,
+     "kind": "seed",
+     "known": "It's unusual that you don't like to use your car",
+     "target": "É invulgar que não gostes de usar o teu carro",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0122",
+     "seed": 122,
+     "kind": "seed",
+     "known": "It's starting to feel easier and I'm excited about how it's going",
+     "target": "Está a começar a parecer mais fácil e estou entusiasmado com o progresso",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0137",
+     "seed": 137,
+     "kind": "seed",
+     "known": "It's more important to talk often than to be perfect",
+     "target": "É mais importante falar muitas vezes do que ser perfeito",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0142",
+     "seed": 142,
+     "kind": "seed",
+     "known": "that's very kind of you and I'm grateful to you for helping",
+     "target": "É muito simpático da tua parte e estou grato por me ajudares",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0143",
+     "seed": 143,
+     "kind": "seed",
+     "known": "It's the same thing as we were talking about earlier",
+     "target": "É a mesma coisa de que estávamos a falar antes",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0145",
+     "seed": 145,
+     "kind": "seed",
+     "known": "Why are you not happy any more?",
+     "target": "Porque é que já não estás contente?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0269",
+     "seed": 269,
+     "kind": "seed",
+     "known": "Why don't you want to wait for your father?",
+     "target": "Porque é que não queres esperar pelo teu pai?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0270",
+     "seed": 270,
+     "kind": "seed",
+     "known": "because I'm worried that I'm going to be late",
+     "target": "Porque estou preocupado que vou chegar atrasado",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0329",
+     "seed": 329,
+     "kind": "seed",
+     "known": "It's important",
+     "target": "É importante",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0421",
+     "seed": 421,
+     "kind": "seed",
+     "known": "because they already know he's getting weak",
+     "target": "Porque já sabem que ele está a ficar fraco",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0467",
+     "seed": 467,
+     "kind": "seed",
+     "known": "It's next to the car park",
+     "target": "É ao lado do parque de estacionamento",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0468",
+     "seed": 468,
+     "kind": "seed",
+     "known": "It's a big world",
+     "target": "É um mundo grande",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0479",
+     "seed": 479,
+     "kind": "seed",
+     "known": "It's the least I could do",
+     "target": "É o mínimo que eu podia fazer",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0481",
+     "seed": 481,
+     "kind": "seed",
+     "known": "It's the only real hope we have left",
+     "target": "É a única esperança real que nos resta",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0484",
+     "seed": 484,
+     "kind": "seed",
+     "known": "It's meant to be a challenge",
+     "target": "É suposto ser um desafio",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0487",
+     "seed": 487,
+     "kind": "seed",
+     "known": "It's under the bridge",
+     "target": "É debaixo da ponte",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0488",
+     "seed": 488,
+     "kind": "seed",
+     "known": "It's on the other side of that yellow line",
+     "target": "É do outro lado daquela linha amarela",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0500",
+     "seed": 500,
+     "kind": "seed",
+     "known": "Why don't you want to sit between the two girls?",
+     "target": "Porque é que não queres sentar-te entre as duas raparigas?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0541",
+     "seed": 541,
+     "kind": "seed",
+     "known": "It's a good idea to try and breathe slowly",
+     "target": "É boa ideia tentar respirar devagar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0545",
+     "seed": 545,
+     "kind": "seed",
+     "known": "It's your turn to take the clean clothes upstairs",
+     "target": "É a tua vez de levar a roupa limpa lá para cima",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0547",
+     "seed": 547,
+     "kind": "seed",
+     "known": "because he has been playing in the mud",
+     "target": "Porque esteve a brincar na lama",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0549",
+     "seed": 549,
+     "kind": "seed",
+     "known": "because I have got to be quiet",
+     "target": "Porque tenho de ficar calado",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0558",
+     "seed": 558,
+     "kind": "seed",
+     "known": "It's so late at night",
+     "target": "É tão tarde à noite",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0573",
+     "seed": 573,
+     "kind": "seed",
+     "known": "It's the kind of thing that makes the holidays very special",
+     "target": "É o tipo de coisa que torna as férias muito especiais",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0605",
+     "seed": 605,
+     "kind": "seed",
+     "known": "because we needed help",
+     "target": "Porque nós precisávamos de ajuda",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0614",
+     "seed": 614,
+     "kind": "seed",
+     "known": "It's near where your family live",
+     "target": "É perto de onde a tua família vive",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "S0640",
+     "seed": 640,
+     "kind": "seed",
+     "known": "It's the red one",
+     "target": "É o vermelho",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L03U04",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why are you learning her name?",
+     "target": "Porque é que estás a aprender o nome dela?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U03",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why does she want to find out?",
+     "target": "Porque é que ela quer descobrir?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U01",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do you want to speak Portuguese?",
+     "target": "Porque é que queres falar português?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U06",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do you want to stop?",
+     "target": "Porque é que queres parar?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U04",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do you want to try today?",
+     "target": "Porque é que queres tentar hoje?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U02",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why does he want to come back?",
+     "target": "Porque é que ele quer voltar?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L01U05",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why do you speak Portuguese all day?",
+     "target": "Porque é que falas português o dia todo?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0021L02U03",
+     "seed": 21,
+     "kind": "use",
+     "known": "Why are you learning Portuguese?",
+     "target": "Porque é que estás a aprender português?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0022L01U01",
+     "seed": 22,
+     "kind": "use",
+     "known": "because I want to speak Portuguese",
+     "target": "Porque quero falar português",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0022L01U03",
+     "seed": 22,
+     "kind": "use",
+     "known": "because she wants to find out",
+     "target": "Porque ela quer descobrir",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0022L01U05",
+     "seed": 22,
+     "kind": "use",
+     "known": "because we want to meet tomorrow",
+     "target": "Porque queremos encontrar-nos amanhã",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0022L01U02",
+     "seed": 22,
+     "kind": "use",
+     "known": "because he wants to come back",
+     "target": "Porque ele quer voltar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0022L01U04",
+     "seed": 22,
+     "kind": "use",
+     "known": "because I want to learn",
+     "target": "Porque quero aprender",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0022L02U04",
+     "seed": 22,
+     "kind": "use",
+     "known": "because I want to meet people who speak Portuguese",
+     "target": "Porque quero conhecer pessoas que falam português",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L01U01",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to speak Portuguese",
+     "target": "É útil falar português",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L01U05",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to remember a word",
+     "target": "É útil lembrar-me de uma palavra",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L01U03",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to practise speaking",
+     "target": "É útil praticar a falar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L01U02",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to learn Portuguese",
+     "target": "É útil aprender português",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L01U04",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to try as hard as I can",
+     "target": "É útil tentar com toda a força que puder",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L02U01",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to start talking as soon as you can",
+     "target": "É útil começar a falar assim que puderes",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0028L02U04",
+     "seed": 28,
+     "kind": "use",
+     "known": "It's useful to try as soon as you can",
+     "target": "É útil tentar assim que puderes",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U01",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to know",
+     "target": "É bom saber",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U02",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to learn",
+     "target": "É bom aprender",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U03",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to improve",
+     "target": "É bom melhorar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U06",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to speak Portuguese",
+     "target": "É bom falar português",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U09",
+     "seed": 47,
+     "kind": "use",
+     "known": "because I think that it's a good thing to make mistakes",
+     "target": "Porque eu acho que é bom cometer erros",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U05",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to make mistakes",
+     "target": "É bom cometer erros",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U07",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to start talking",
+     "target": "É bom começar a falar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0047L02U04",
+     "seed": 47,
+     "kind": "use",
+     "known": "It's a good thing to explain",
+     "target": "É bom explicar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U08",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this because I want to learn",
+     "target": "É assim porque quero aprender",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U01",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this",
+     "target": "É assim",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U04",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this now",
+     "target": "É assim agora",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0049L01U03",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this today",
+     "target": "É assim hoje",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0049L02U09",
+     "seed": 49,
+     "kind": "use",
+     "known": "It's like this, if you know what I mean",
+     "target": "É assim, se percebes o que quero dizer",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L02U05",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's interesting when you understand enough words",
+     "target": "É interessante quando percebes palavras suficientes",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U07",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's really interesting when you understand well",
+     "target": "É muito interessante quando percebes bem",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U03",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's interesting when you understand more",
+     "target": "É interessante quando percebes mais",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U02",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's very interesting when you understand",
+     "target": "É muito interessante quando percebes",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U01",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's interesting when you understand Portuguese",
+     "target": "É interessante quando percebes português",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U05",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's interesting when you understand something",
+     "target": "É interessante quando percebes algo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0058L01U06",
+     "seed": 58,
+     "kind": "use",
+     "known": "It's interesting when you understand everything",
+     "target": "É interessante quando percebes tudo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0064L02U01",
+     "seed": 64,
+     "kind": "use",
+     "known": "It's fun",
+     "target": "É divertido",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L01U01",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important",
+     "target": "É importante",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L01U07",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important but not easy",
+     "target": "É importante mas não é fácil",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L01U05",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important to learn",
+     "target": "É importante aprender",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L03B04",
+     "seed": 65,
+     "kind": "build",
+     "known": "Want to test yourself?",
+     "target": "Queres testar-te a ti mesmo?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L03U06",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important to test yourself",
+     "target": "É importante testar-te a ti mesmo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L03U01",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important to take time to test yourself",
+     "target": "É importante dedicar tempo a testar-te a ti mesmo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0065L02U02",
+     "seed": 65,
+     "kind": "use",
+     "known": "It's important to take time",
+     "target": "É importante dedicar tempo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0066L01U08",
+     "seed": 66,
+     "kind": "use",
+     "known": "It's difficult but fun",
+     "target": "É difícil mas é divertido",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0066L01U03",
+     "seed": 66,
+     "kind": "use",
+     "known": "It's very difficult",
+     "target": "É muito difícil",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0069L04U06",
+     "seed": 69,
+     "kind": "use",
+     "known": "Why do you want to practice all afternoon?",
+     "target": "Porque é que queres praticar a tarde toda?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0070L02U04",
+     "seed": 70,
+     "kind": "use",
+     "known": "Why don't you want to tell me?",
+     "target": "Porque é que não queres dizer-me?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02B01",
+     "seed": 82,
+     "kind": "build",
+     "known": "Why not?",
+     "target": "Porque não?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U02",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not try?",
+     "target": "Porque não tentar?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U08",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not learn with me?",
+     "target": "Porque não aprender comigo?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U06",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not practice today?",
+     "target": "Porque não praticar hoje?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U01",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not?",
+     "target": "Porque não?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U04",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not wait?",
+     "target": "Porque não esperar?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U05",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not speak Portuguese?",
+     "target": "Porque não falar português?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U03",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not start now?",
+     "target": "Porque não começar agora?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0082L02U07",
+     "seed": 82,
+     "kind": "use",
+     "known": "Why not do that tomorrow?",
+     "target": "Porque não fazer isso amanhã?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0089L02U07",
+     "seed": 89,
+     "kind": "use",
+     "known": "It's difficult in a short time",
+     "target": "É difícil em pouco tempo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0090L02U06",
+     "seed": 90,
+     "kind": "use",
+     "known": "It's important to speak more slowly",
+     "target": "É importante falar mais devagar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0091L02U09",
+     "seed": 91,
+     "kind": "use",
+     "known": "It's difficult to think quickly enough to answer in time",
+     "target": "É difícil pensar depressa suficiente para responder a tempo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0091L02U07",
+     "seed": 91,
+     "kind": "use",
+     "known": "It's difficult to finish in time",
+     "target": "É difícil acabar a tempo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0091L02U04",
+     "seed": 91,
+     "kind": "use",
+     "known": "It's important to answer in time",
+     "target": "É importante responder a tempo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0092L01U04",
+     "seed": 92,
+     "kind": "use",
+     "known": "It's important to understand this",
+     "target": "É importante perceber isto",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0092L02U04",
+     "seed": 92,
+     "kind": "use",
+     "known": "It's important to keep on trying",
+     "target": "É importante continuar a tentar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U08",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to finish this",
+     "target": "É hora de acabar isto",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U06",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to think about that",
+     "target": "É hora de pensar sobre isso",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U05",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to practice",
+     "target": "É hora de praticar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U07",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to keep on learning",
+     "target": "É hora de continuar a aprender",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U02",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to learn",
+     "target": "É hora de aprender",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U01",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to start",
+     "target": "É hora de começar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U04",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to help you",
+     "target": "É hora de ajudar-te",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0093L01U03",
+     "seed": 93,
+     "kind": "use",
+     "known": "It's time to do this",
+     "target": "É hora de fazer isto",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0094L03U05",
+     "seed": 94,
+     "kind": "use",
+     "known": "It's the only way to work now",
+     "target": "É a única maneira de funcionar agora",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0094L02U06",
+     "seed": 94,
+     "kind": "use",
+     "known": "It's the only way now",
+     "target": "É a única maneira agora",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0094L01U06",
+     "seed": 94,
+     "kind": "use",
+     "known": "It's the way to do this",
+     "target": "É a maneira de fazer isto",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0095L02B01",
+     "seed": 95,
+     "kind": "build",
+     "known": "Are you ready?",
+     "target": "Estás pronto?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0095L02B04",
+     "seed": 95,
+     "kind": "build",
+     "known": "Are you ready to go home?",
+     "target": "Estás pronto para ir para casa?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0095L02B02",
+     "seed": 95,
+     "kind": "build",
+     "known": "Are you ready?",
+     "target": "Estás pronto?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U01",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said?",
+     "target": "Porque é que não consigo lembrar-me do que disseste?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U07",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said about that?",
+     "target": "Porque é que não consigo lembrar-me do que disseste sobre isso?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U05",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said to me this morning?",
+     "target": "Porque é que não consigo lembrar-me do que disseste esta manhã?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0113L01U03",
+     "seed": 113,
+     "kind": "use",
+     "known": "Why can't I remember what you said yesterday?",
+     "target": "Porque é que não consigo lembrar-me do que disseste ontem?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L03U07",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you like to go by bus",
+     "target": "É interessante que gostes de ir de autocarro",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L02U08",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you like to go now",
+     "target": "É interessante que gostes de ir agora",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L02U09",
+     "seed": 120,
+     "kind": "use",
+     "known": "it's good that you like to go",
+     "target": "É bom que gostes de ir",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L02U02",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you like to go",
+     "target": "É interessante que gostes de ir",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U01",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you said that",
+     "target": "É interessante que disseste isso",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U08",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that we were at the pub",
+     "target": "É interessante que estávamos no café",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U07",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you feel better now",
+     "target": "É interessante que sentes melhor agora",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U05",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that this changes our brain",
+     "target": "É interessante que isto muda o nosso cérebro",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U02",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that we talked about this",
+     "target": "É interessante que falámos sobre isto",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0120L01U04",
+     "seed": 120,
+     "kind": "use",
+     "known": "It's interesting that you want to learn",
+     "target": "É interessante que queres aprender",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0121L03U07",
+     "seed": 121,
+     "kind": "use",
+     "known": "It's unusual that you don't like to use your car",
+     "target": "É invulgar que não gostes de usar o teu carro",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0121L02U03",
+     "seed": 121,
+     "kind": "use",
+     "known": "It's important to use this",
+     "target": "É importante usar isto",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0121L01U02",
+     "seed": 121,
+     "kind": "use",
+     "known": "that's my car",
+     "target": "É o meu carro",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0122L03U08",
+     "seed": 122,
+     "kind": "use",
+     "known": "It's starting to feel easier and I'm excited about the progress",
+     "target": "Está a começar a parecer mais fácil e estou entusiasmado com o progresso",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0122L03U09",
+     "seed": 122,
+     "kind": "use",
+     "known": "It's starting to feel easier and I'm excited about how it's going",
+     "target": "Está a começar a parecer mais fácil e estou entusiasmado com o progresso",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0122L01U01",
+     "seed": 122,
+     "kind": "use",
+     "known": "It's starting to seem easier",
+     "target": "Está a começar a parecer mais fácil",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0123L01U01",
+     "seed": 123,
+     "kind": "use",
+     "known": "that's a good idea",
+     "target": "É uma boa ideia",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0128L02U03",
+     "seed": 128,
+     "kind": "use",
+     "known": "It's like a good idea",
+     "target": "É como uma boa ideia",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0128L02U07",
+     "seed": 128,
+     "kind": "use",
+     "known": "It's like the work I wanted",
+     "target": "É como o trabalho que eu queria",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0133L05U02",
+     "seed": 133,
+     "kind": "use",
+     "known": "It's very good when you work together",
+     "target": "É muito bom quando trabalhas em conjunto",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0135L01U07",
+     "seed": 135,
+     "kind": "use",
+     "known": "Why do you think that?",
+     "target": "Porque achas isso?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L03U08",
+     "seed": 137,
+     "kind": "use",
+     "known": "sometimes it's perfect",
+     "target": "Às vezes é perfeito",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L03U01",
+     "seed": 137,
+     "kind": "use",
+     "known": "It's perfect",
+     "target": "É perfeito",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L03U09",
+     "seed": 137,
+     "kind": "use",
+     "known": "It's more important to talk often than to be perfect",
+     "target": "É mais importante falar muitas vezes do que ser perfeito",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L01U04",
+     "seed": 137,
+     "kind": "use",
+     "known": "sometimes I don't know",
+     "target": "Às vezes não sei",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L01U02",
+     "seed": 137,
+     "kind": "use",
+     "known": "sometimes it's difficult",
+     "target": "Às vezes é difícil",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L01U06",
+     "seed": 137,
+     "kind": "use",
+     "known": "sometimes I want to talk",
+     "target": "Às vezes quero falar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0137L01U08",
+     "seed": 137,
+     "kind": "use",
+     "known": "sometimes you can do it",
+     "target": "Às vezes podes fazer isso",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0142L03U10",
+     "seed": 142,
+     "kind": "use",
+     "known": "that's very kind of you and I'm grateful to you for helping",
+     "target": "É muito simpático da tua parte e estou grato por me ajudares",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0143L02U06",
+     "seed": 143,
+     "kind": "use",
+     "known": "It's the same thing as we were talking about earlier",
+     "target": "É a mesma coisa de que estávamos a falar antes",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0145L01U09",
+     "seed": 145,
+     "kind": "use",
+     "known": "Why are you not happy any more?",
+     "target": "Porque é que já não estás contente?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0153L02U03",
+     "seed": 153,
+     "kind": "use",
+     "known": "that's exactly what I wanted to say",
+     "target": "É exatamente o que eu queria dizer",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0153L02U01",
+     "seed": 153,
+     "kind": "use",
+     "known": "that's exactly what I thought",
+     "target": "É exatamente o que eu achei",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0153L02U09",
+     "seed": 153,
+     "kind": "use",
+     "known": "that's exactly what I was hoping would happen",
+     "target": "É exatamente o que eu esperava que acontecesse",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0182L04U03",
+     "seed": 182,
+     "kind": "use",
+     "known": "is it anywhere here?",
+     "target": "Está em algum lado aqui?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0182L04U08",
+     "seed": 182,
+     "kind": "use",
+     "known": "is my mother anywhere here?",
+     "target": "Está a minha mãe em algum lado aqui?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0186L01U07",
+     "seed": 186,
+     "kind": "use",
+     "known": "Why do you want to talk about something different next week?",
+     "target": "Porque queres falar sobre algo diferente na próxima semana?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0189L01U07",
+     "seed": 189,
+     "kind": "use",
+     "known": "that's a good idea now",
+     "target": "É uma boa ideia agora",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0189L01U05",
+     "seed": 189,
+     "kind": "use",
+     "known": "that's a good idea today",
+     "target": "É uma boa ideia hoje",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0189L01U09",
+     "seed": 189,
+     "kind": "use",
+     "known": "that's a good idea for next week",
+     "target": "É uma boa ideia para a próxima semana",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0189L01U03",
+     "seed": 189,
+     "kind": "use",
+     "known": "that's a good idea for me",
+     "target": "É uma boa ideia para mim",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0202L04U02",
+     "seed": 202,
+     "kind": "use",
+     "known": "Can you show me how to answer?",
+     "target": "Podes mostrar-me como responder?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0203L01U05",
+     "seed": 203,
+     "kind": "use",
+     "known": "What would you do with that problem?",
+     "target": "O que é que farias com esse problema?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0204L02U05",
+     "seed": 204,
+     "kind": "use",
+     "known": "Can you tell me about the arrangements?",
+     "target": "Podes dizer-me sobre os preparativos?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0204L02U06",
+     "seed": 204,
+     "kind": "use",
+     "known": "What would you do with the arrangements?",
+     "target": "O que é que farias com os preparativos?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0206L01U08",
+     "seed": 206,
+     "kind": "use",
+     "known": "It's the chance to do something different",
+     "target": "É a oportunidade de fazer algo diferente",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0209L03U06",
+     "seed": 209,
+     "kind": "use",
+     "known": "he's meeting as a group to speak",
+     "target": "Está a reunir-se em grupo para falar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0209L02U06",
+     "seed": 209,
+     "kind": "use",
+     "known": "he's meeting to think about it",
+     "target": "Está a reunir-se para pensar nisso",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0269L01U08",
+     "seed": 269,
+     "kind": "use",
+     "known": "Why don't you want to wait for your father?",
+     "target": "Porque é que não queres esperar pelo teu pai?",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0270L02U09",
+     "seed": 270,
+     "kind": "use",
+     "known": "because I'm worried that I'm going to be late",
+     "target": "Porque estou preocupado que vou chegar atrasado",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0484L02U01",
+     "seed": 484,
+     "kind": "use",
+     "known": "it's meant to be a challenge",
+     "target": "É suposto ser um desafio",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0487L02U05",
+     "seed": 487,
+     "kind": "use",
+     "known": "it's under the bridge",
+     "target": "É debaixo da ponte",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0488L03U05",
+     "seed": 488,
+     "kind": "use",
+     "known": "it's on the other side of that yellow line",
+     "target": "É do outro lado daquela linha amarela",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0541L02U01",
+     "seed": 541,
+     "kind": "use",
+     "known": "it's a good idea to try and breathe slowly",
+     "target": "É boa ideia tentar respirar devagar",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0545L03U01",
+     "seed": 545,
+     "kind": "use",
+     "known": "it's your turn to take the clean clothes upstairs",
+     "target": "É a tua vez de levar a roupa limpa lá para cima",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0558L01B01",
+     "seed": 558,
+     "kind": "build",
+     "known": "it's so late at night",
+     "target": "É tão tarde à noite",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0558L01B04",
+     "seed": 558,
+     "kind": "build",
+     "known": "it's so late at night now",
+     "target": "É tão tarde à noite agora",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0558L01B02",
+     "seed": 558,
+     "kind": "build",
+     "known": "it's so late at night today",
+     "target": "É tão tarde à noite hoje",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0558L01B03",
+     "seed": 558,
+     "kind": "build",
+     "known": "it's so very late at night",
+     "target": "É tão tarde à noite mesmo",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0573L03B04",
+     "seed": 573,
+     "kind": "build",
+     "known": "it's the kind of thing that makes the holidays very special this week",
+     "target": "É o tipo de coisa que torna as férias muito especiais esta semana",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0573L03B03",
+     "seed": 573,
+     "kind": "build",
+     "known": "it's the kind of thing that makes the holidays very special right now",
+     "target": "É o tipo de coisa que torna as férias muito especiais agora",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    },
+    {
+     "ref": "por_for_eng:S0573L03U01",
+     "seed": 573,
+     "kind": "use",
+     "known": "it's the kind of thing that makes the holidays very special",
+     "target": "É o tipo de coisa que torna as férias muito especiais",
+     "why": "target starts uppercase against a lowercase convention",
+     "sub": "outlier"
+    }
+   ]
+  },
+  {
+   "id": "identical",
+   "scan": "Check 15",
+   "rule": "K16",
+   "blocks": true,
+   "count": 8,
+   "subs": {},
+   "ms": 44,
+   "hits": [
+    {
+     "ref": "S0268L02",
+     "seed": 268,
+     "kind": "lego",
+     "known": "emails",
+     "target": "emails",
+     "why": "known equals target"
+    },
+    {
+     "ref": "S0481L01",
+     "seed": 481,
+     "kind": "lego",
+     "known": "real",
+     "target": "real",
+     "why": "known equals target"
+    },
+    {
+     "ref": "S0577L01",
+     "seed": 577,
+     "kind": "lego",
+     "known": "hospital",
+     "target": "hospital",
+     "why": "known equals target"
+    },
+    {
+     "ref": "S0635L02",
+     "seed": 635,
+     "kind": "lego",
+     "known": "jane",
+     "target": "jane",
+     "why": "known equals target"
+    },
+    {
+     "ref": "por_for_eng:S0268L02B01",
+     "seed": 268,
+     "kind": "build",
+     "known": "emails",
+     "target": "emails",
+     "why": "known equals target"
+    },
+    {
+     "ref": "por_for_eng:S0482L04C03",
+     "seed": 482,
+     "kind": "component",
+     "known": "real",
+     "target": "real",
+     "why": "known equals target"
+    },
+    {
+     "ref": "por_for_eng:S0577L01B01",
+     "seed": 577,
+     "kind": "build",
+     "known": "hospital",
+     "target": "hospital",
+     "why": "known equals target"
+    },
+    {
+     "ref": "por_for_eng:S0635L02B01",
+     "seed": 635,
+     "kind": "build",
+     "known": "jane",
+     "target": "jane",
+     "why": "known equals target"
+    }
+   ]
+  },
+  {
+   "id": "underpopulated",
+   "scan": "Check 16",
+   "rule": "P10/P30",
+   "blocks": "empty only",
+   "count": 3,
+   "subs": {
+    "few-use": 2,
+    "no-use": 1
+   },
+   "ms": 252,
+   "hits": [
+    {
+     "ref": "S0001L02",
+     "seed": 1,
+     "kind": "lego",
+     "known": "to speak",
+     "target": "falar",
+     "why": "0 build, 1 use",
+     "sub": "few-use"
+    },
+    {
+     "ref": "S0001L03",
+     "seed": 1,
+     "kind": "lego",
+     "known": "Portuguese",
+     "target": "português",
+     "why": "1 build, 1 use",
+     "sub": "few-use"
+    },
+    {
+     "ref": "S0004L01",
+     "seed": 4,
+     "kind": "lego",
+     "known": "to say",
+     "target": "dizer",
+     "why": "3 build, 0 use",
+     "sub": "no-use"
+    }
+   ]
+  },
+  {
+   "id": "ita-subjunctive",
+   "scan": "Check 17b",
+   "rule": "K16/K40",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "spa-llevar",
+   "scan": "Check 17a",
+   "rule": "K16",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "deu-verb-final",
+   "scan": "Check 17c",
+   "rule": "K16",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "jpn-ka",
+   "scan": "Check 17d",
+   "rule": "A9",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 0,
+   "hits": []
+  },
+  {
+   "id": "por-voce",
+   "scan": "Check 17e",
+   "rule": "K12",
+   "blocks": false,
+   "count": 0,
+   "subs": {},
+   "ms": 5,
+   "hits": []
+  },
+  {
+   "id": "duplicate-lego",
+   "scan": "new",
+   "rule": "L17/L31/P25",
+   "blocks": false,
+   "count": 15,
+   "subs": {
+    "orphan-not-new": 5,
+    "repeat-debut": 10
+   },
+   "ms": 3,
+   "hits": [
+    {
+     "ref": "S0207L01",
+     "seed": 207,
+     "kind": "lego",
+     "known": "you've done",
+     "target": "fizeste",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0257L01",
+     "seed": 257,
+     "kind": "lego",
+     "known": "that blue thing",
+     "target": "daquela coisa azul",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0448L01",
+     "seed": 448,
+     "kind": "lego",
+     "known": "all",
+     "target": "todo",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0497L01",
+     "seed": 497,
+     "kind": "lego",
+     "known": "that",
+     "target": "isso",
+     "why": "same pair debuted at S0061L02",
+     "sub": "repeat-debut",
+     "twin": "S0061L02"
+    },
+    {
+     "ref": "S0509L02",
+     "seed": 509,
+     "kind": "lego",
+     "known": "I heard that",
+     "target": "eu ouvi dizer que",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0530L01",
+     "seed": 530,
+     "kind": "lego",
+     "known": "can",
+     "target": "poder",
+     "why": "not-new, but no earlier LEGO has this exact pair",
+     "sub": "orphan-not-new"
+    },
+    {
+     "ref": "S0555L02",
+     "seed": 555,
+     "kind": "lego",
+     "known": "to fetch",
+     "target": "buscar",
+     "why": "same pair debuted at S0512L02",
+     "sub": "repeat-debut",
+     "twin": "S0512L02"
+    },
+    {
+     "ref": "S0578L02",
+     "seed": 578,
+     "kind": "lego",
+     "known": "spot",
+     "target": "sítio",
+     "why": "same pair debuted at S0402L01",
+     "sub": "repeat-debut",
+     "twin": "S0402L01"
+    },
+    {
+     "ref": "S0585L02",
+     "seed": 585,
+     "kind": "lego",
+     "known": "bedroom",
+     "target": "quarto",
+     "why": "same pair debuted at S0463L01",
+     "sub": "repeat-debut",
+     "twin": "S0463L01"
+    },
+    {
+     "ref": "S0588L02",
+     "seed": 588,
+     "kind": "lego",
+     "known": "to leave",
+     "target": "sair",
+     "why": "same pair debuted at S0139L03",
+     "sub": "repeat-debut",
+     "twin": "S0139L03"
+    },
+    {
+     "ref": "S0603L01",
+     "seed": 603,
+     "kind": "lego",
+     "known": "to live",
+     "target": "viver",
+     "why": "same pair debuted at S0302L01",
+     "sub": "repeat-debut",
+     "twin": "S0302L01"
+    },
+    {
+     "ref": "S0622L01",
+     "seed": 622,
+     "kind": "lego",
+     "known": "children",
+     "target": "crianças",
+     "why": "same pair debuted at S0455L01",
+     "sub": "repeat-debut",
+     "twin": "S0455L01"
+    },
+    {
+     "ref": "S0632L01",
+     "seed": 632,
+     "kind": "lego",
+     "known": "glass",
+     "target": "copo",
+     "why": "same pair debuted at S0217L02",
+     "sub": "repeat-debut",
+     "twin": "S0217L02"
+    },
+    {
+     "ref": "S0654L03",
+     "seed": 654,
+     "kind": "lego",
+     "known": "I'm not sure",
+     "target": "não tenho a certeza",
+     "why": "same pair debuted at S0010L01",
+     "sub": "repeat-debut",
+     "twin": "S0010L01"
+    },
+    {
+     "ref": "S0668L01",
+     "seed": 668,
+     "kind": "lego",
+     "known": "I hope",
+     "target": "espero",
+     "why": "same pair debuted at S0149L01",
+     "sub": "repeat-debut",
+     "twin": "S0149L01"
+    }
+   ]
+  },
+  {
+   "id": "content-mismatch",
+   "scan": "new",
+   "rule": "S7/K16",
+   "blocks": false,
+   "count": 36,
+   "subs": {
+    "HIGH": 36
+   },
+   "ms": 917,
+   "hits": [
+    {
+     "ref": "por_for_eng:S0377L03B03",
+     "seed": 377,
+     "kind": "build",
+     "known": "did you go somewhere",
+     "target": "foste a algum lugar",
+     "why": "tail_uncovered: final clause unrendered: somewhere; body_uncovered: unrendered known content: go; extra_tail: target content with no known counterpart: foste algum lugar",
+     "sub": "HIGH",
+     "score": 4.85
+    },
+    {
+     "ref": "por_for_eng:S0288L02U08",
+     "seed": 288,
+     "kind": "use",
+     "known": "she like watching television every day",
+     "target": "ela gosta de ver televisão todos os dias",
+     "why": "tail_uncovered: final clause unrendered: every day; extra_tail: target content with no known counterpart: gosta dias",
+     "sub": "HIGH",
+     "score": 4.8
+    },
+    {
+     "ref": "por_for_eng:S0288L02U06",
+     "seed": 288,
+     "kind": "use",
+     "known": "he like watching this every day",
+     "target": "ele gosta de ver isto todos os dias",
+     "why": "tail_uncovered: final clause unrendered: every day; extra_tail: target content with no known counterpart: gosta dias",
+     "sub": "HIGH",
+     "score": 4.8
+    },
+    {
+     "ref": "por_for_eng:S0433L01U04",
+     "seed": 433,
+     "kind": "use",
+     "known": "she said it started at a different time",
+     "target": "ela disse que começava a outra hora",
+     "why": "tail_uncovered: final clause unrendered: different time; extra_tail: target content with no known counterpart: outra hora",
+     "sub": "HIGH",
+     "score": 4.8
+    },
+    {
+     "ref": "por_for_eng:S0606L03B02",
+     "seed": 606,
+     "kind": "build",
+     "known": "if I'd known back then",
+     "target": "se eu soubesse naquela altura",
+     "why": "tail_uncovered: final clause unrendered: then; body_uncovered: unrendered known content: back; extra_tail: target content with no known counterpart: naquela altura",
+     "sub": "HIGH",
+     "score": 4.35
+    },
+    {
+     "ref": "por_for_eng:S0327L01U04",
+     "seed": 327,
+     "kind": "use",
+     "known": "can she offer another way?",
+     "target": "ela pode oferecer outra forma?",
+     "why": "tail_uncovered: final clause unrendered: way; body_uncovered: unrendered known content: another; extra_tail: target content with no known counterpart: pode outra forma",
+     "sub": "HIGH",
+     "score": 4.29
+    },
+    {
+     "ref": "por_for_eng:S0480L02U04",
+     "seed": 480,
+     "kind": "use",
+     "known": "there's not much time left now",
+     "target": "já não falta muito tempo",
+     "why": "tail_uncovered: final clause unrendered: now; body_uncovered: unrendered known content: there's much; extra_tail: target content with no known counterpart: já falta",
+     "sub": "HIGH",
+     "score": 4.28
+    },
+    {
+     "ref": "por_for_eng:S0143L02U04",
+     "seed": 143,
+     "kind": "use",
+     "known": "it's the same thing I talked about",
+     "target": "é a mesma coisa de que eu falei",
+     "why": "tail_uncovered: final clause unrendered: talked about",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "por_for_eng:S0285L01U06",
+     "seed": 285,
+     "kind": "use",
+     "known": "she speaks to me every day",
+     "target": "ela fala comigo todos os dias",
+     "why": "tail_uncovered: final clause unrendered: every day",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "por_for_eng:S0327L01B03",
+     "seed": 327,
+     "kind": "build",
+     "known": "she needs to offer another way",
+     "target": "ela precisa de oferecer outra forma",
+     "why": "tail_uncovered: final clause unrendered: another way; extra_tail: target content with no known counterpart: outra forma",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "por_for_eng:S0353L01U01",
+     "seed": 353,
+     "kind": "use",
+     "known": "I needed to run every day",
+     "target": "precisava de correr todos os dias",
+     "why": "tail_uncovered: final clause unrendered: every day",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "por_for_eng:S0378L01U03",
+     "seed": 378,
+     "kind": "use",
+     "known": "I didn't have enough money to go out",
+     "target": "não tinha dinheiro suficiente para sair",
+     "why": "tail_uncovered: final clause unrendered: go out",
+     "sub": "HIGH",
+     "score": 4
+    },
+    {
+     "ref": "por_for_eng:S0377L03U05",
+     "seed": 377,
+     "kind": "use",
+     "known": "I'm not sure if you went anywhere",
+     "target": "não tenho a certeza se foste a algum lugar",
+     "why": "tail_uncovered: final clause unrendered: went anywhere; extra_tail: target content with no known counterpart: foste algum lugar",
+     "sub": "HIGH",
+     "score": 3.7
+    },
+    {
+     "ref": "por_for_eng:S0033L01B02",
+     "seed": 33,
+     "kind": "build",
+     "known": "How long have you been speaking?",
+     "target": "há quanto tempo falas?",
+     "why": "tail_uncovered: final clause unrendered: been speaking; body_uncovered: unrendered known content: have; extra_tail: target content with no known counterpart: há tempo",
+     "sub": "HIGH",
+     "score": 3.69
+    },
+    {
+     "ref": "por_for_eng:S0045L01U08",
+     "seed": 45,
+     "kind": "use",
+     "known": "I'm trying to find out",
+     "target": "estou a tentar saber",
+     "why": "tail_uncovered: final clause unrendered: out; body_uncovered: unrendered known content: find",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "por_for_eng:S0168L01U03",
+     "seed": 168,
+     "kind": "use",
+     "known": "and then I can talk about that",
+     "target": "e depois eu posso falar disso",
+     "why": "tail_uncovered: final clause unrendered: about; body_uncovered: unrendered known content: then",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "por_for_eng:S0182L01U07",
+     "seed": 182,
+     "kind": "use",
+     "known": "did you see anything?",
+     "target": "viste algo?",
+     "why": "tail_uncovered: final clause unrendered: anything; body_uncovered: unrendered known content: see",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "por_for_eng:S0191L01U02",
+     "seed": 191,
+     "kind": "use",
+     "known": "I don't mind at all about that",
+     "target": "não me importo nada com isso",
+     "why": "tail_uncovered: final clause unrendered: about; body_uncovered: unrendered known content: all",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "por_for_eng:S0249L01U02",
+     "seed": 249,
+     "kind": "use",
+     "known": "I want you to help me before you go",
+     "target": "eu quero que me ajudes antes de ires",
+     "why": "tail_uncovered: final clause unrendered: go; body_uncovered: unrendered known content: help",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "por_for_eng:S0352L01B03",
+     "seed": 352,
+     "kind": "build",
+     "known": "even if she asked",
+     "target": "mesmo que ela pedisse",
+     "why": "tail_uncovered: final clause unrendered: asked; body_uncovered: unrendered known content: even",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "por_for_eng:S0353L01U06",
+     "seed": 353,
+     "kind": "use",
+     "known": "I couldn't run every day",
+     "target": "não conseguia correr todos os dias",
+     "why": "tail_uncovered: final clause unrendered: day; body_uncovered: unrendered known content: every",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "por_for_eng:S0364L03B03",
+     "seed": 364,
+     "kind": "build",
+     "known": "she used to like going out",
+     "target": "ela gostava de sair",
+     "why": "tail_uncovered: final clause unrendered: out; body_uncovered: unrendered known content: used",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "por_for_eng:S0452L01B03",
+     "seed": 452,
+     "kind": "build",
+     "known": "didn't say what they wanted exactly",
+     "target": "não disseram o que queriam antes",
+     "why": "tail_uncovered: final clause unrendered: exactly; body_uncovered: unrendered known content: say",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "por_for_eng:S0452L01B04",
+     "seed": 452,
+     "kind": "build",
+     "known": "didn't say what they wanted at all",
+     "target": "não disseram o que queriam nunca",
+     "why": "tail_uncovered: final clause unrendered: all; body_uncovered: unrendered known content: say",
+     "sub": "HIGH",
+     "score": 3.55
+    },
+    {
+     "ref": "por_for_eng:S0552L01U05",
+     "seed": 552,
+     "kind": "use",
+     "known": "is this another one?",
+     "target": "é outro agora?",
+     "why": "tail_uncovered: final clause unrendered: one; body_uncovered: unrendered known content: this another; extra_tail: target content with no known counterpart: outro agora",
+     "sub": "HIGH",
+     "score": 3.48
+    },
+    {
+     "ref": "por_for_eng:S0377L03U04",
+     "seed": 377,
+     "kind": "use",
+     "known": "did you go somewhere this week?",
+     "target": "foste a algum lugar esta semana?",
+     "why": "body_uncovered: unrendered known content: go somewhere; extra_tail: target content with no known counterpart: foste algum lugar",
+     "sub": "HIGH",
+     "score": 3.4
+    },
+    {
+     "ref": "por_for_eng:S0377L03U02",
+     "seed": 377,
+     "kind": "use",
+     "known": "did you go somewhere last week?",
+     "target": "foste a algum lugar na semana passada?",
+     "why": "body_uncovered: unrendered known content: go somewhere; extra_tail: target content with no known counterpart: foste algum lugar",
+     "sub": "HIGH",
+     "score": 3.4
+    },
+    {
+     "ref": "por_for_eng:S0182L04U04",
+     "seed": 182,
+     "kind": "use",
+     "known": "I think it's somewhere",
+     "target": "acho que está em algum lado",
+     "why": "tail_uncovered: final clause unrendered: somewhere; extra_tail: target content with no known counterpart: algum lado",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "por_for_eng:S0184L01U07",
+     "seed": 184,
+     "kind": "use",
+     "known": "I saw them somewhere",
+     "target": "vi-as em algum lado",
+     "why": "tail_uncovered: final clause unrendered: somewhere; extra_tail: target content with no known counterpart: algum lado",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "por_for_eng:S0416L01U04",
+     "seed": 416,
+     "kind": "use",
+     "known": "do you know the way?",
+     "target": "conheces o caminho?",
+     "why": "tail_uncovered: final clause unrendered: way; extra_tail: target content with no known counterpart: conheces caminho",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "por_for_eng:S0540L01B02",
+     "seed": 540,
+     "kind": "build",
+     "known": "I don't mind if you want to leave",
+     "target": "não me importo se quiseres ir embora",
+     "why": "tail_uncovered: final clause unrendered: leave; extra_tail: target content with no known counterpart: ir embora",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "por_for_eng:S0567L01U02",
+     "seed": 567,
+     "kind": "use",
+     "known": "he said in the open air",
+     "target": "ele disse ao ar livre",
+     "why": "tail_uncovered: final clause unrendered: open; extra_tail: target content with no known counterpart: ar livre",
+     "sub": "HIGH",
+     "score": 3.3
+    },
+    {
+     "ref": "por_for_eng:S0352L01U06",
+     "seed": 352,
+     "kind": "use",
+     "known": "I'm not sure even if he asked she could help",
+     "target": "não tenho a certeza se mesmo que ele pedisse ela conseguia ajudar",
+     "why": "tail_uncovered: unrendered at the end: asked could; body_uncovered: unrendered known content: even",
+     "sub": "HIGH",
+     "score": 3.25
+    },
+    {
+     "ref": "por_for_eng:S0071L02U05",
+     "seed": 71,
+     "kind": "use",
+     "known": "I'm going to let her speak",
+     "target": "vou deixar ela falar",
+     "why": "tail_uncovered: final clause unrendered: her speak",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "por_for_eng:S0284L01U05",
+     "seed": 284,
+     "kind": "use",
+     "known": "do you know my sister's friend from here?",
+     "target": "conheces a amiga da minha irmã daqui?",
+     "why": "tail_uncovered: final clause unrendered: from here",
+     "sub": "HIGH",
+     "score": 3.2
+    },
+    {
+     "ref": "por_for_eng:S0405L03U06",
+     "seed": 405,
+     "kind": "use",
+     "known": "should we ask if there's anything?",
+     "target": "devíamos perguntar se há algo?",
+     "why": "tail_uncovered: final clause unrendered: there's anything",
+     "sub": "HIGH",
+     "score": 3.2
+    }
+   ]
+  },
+  {
+   "id": "seed-placement",
+   "scan": "new (P26)",
+   "rule": "P26",
+   "blocks": true,
+   "count": 84,
+   "subs": {
+    "drifted": 76,
+    "no-home": 1,
+    "missing": 6,
+    "early": 1
+   },
+   "ms": 80,
+   "hits": [
+    {
+     "ref": "S0001",
+     "seed": 1,
+     "kind": "seed",
+     "known": "I want to speak Portuguese with you now",
+     "target": "eu quero falar português contigo agora",
+     "why": "played copy differs: por_for_eng:S0001L05U04 \"I want to speak Portuguese with you now | quero falar português contigo agora\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0001L05U04"
+    },
+    {
+     "ref": "S0008",
+     "seed": 8,
+     "kind": "seed",
+     "known": "I'm going to try to explain what I mean",
+     "target": "eu vou tentar explicar o que quero dizer",
+     "why": "played copy differs: por_for_eng:S0008L02U01 \"I'm going to try to explain what I mean | vou tentar explicar o que quero dizer\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0008L02U01"
+    },
+    {
+     "ref": "S0009",
+     "seed": 9,
+     "kind": "seed",
+     "known": "I speak a little Portuguese now",
+     "target": "eu falo um pouco de português agora",
+     "why": "played copy differs: por_for_eng:S0009L02U04 \"I speak a little Portuguese now | falo um pouco de português agora\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0009L02U04"
+    },
+    {
+     "ref": "S0012",
+     "seed": 12,
+     "kind": "seed",
+     "known": "I wouldn't like to guess what's going to happen tomorrow",
+     "target": "eu não gostaria de adivinhar o que vai acontecer amanhã",
+     "why": "played copy differs: por_for_eng:S0012L04U01 \"I wouldn't like to guess what's going to happen tomorrow | não gostaria de adivinhar o que vai acontecer amanhã\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0012L04U01"
+    },
+    {
+     "ref": "S0013",
+     "seed": 13,
+     "kind": "seed",
+     "known": "you speak Portuguese very well",
+     "target": "tu falas português muito bem",
+     "why": "played copy differs: por_for_eng:S0013L02U01 \"you speak Portuguese very well | falas português muito bem\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0013L02U01"
+    },
+    {
+     "ref": "S0015",
+     "seed": 15,
+     "kind": "seed",
+     "known": "and I want you to speak Portuguese with me tomorrow",
+     "target": "e eu quero que fales português comigo amanhã",
+     "why": "played copy differs: por_for_eng:S0015L03U05 \"and I want you to speak Portuguese with me tomorrow | e quero que fales português comigo amanhã\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0015L03U05"
+    },
+    {
+     "ref": "S0018",
+     "seed": 18,
+     "kind": "seed",
+     "known": "we want to meet at six o'clock this evening",
+     "target": "nós queremos encontrar-nos às seis da tarde",
+     "why": "played copy differs: por_for_eng:S0018L03U01 \"we want to meet at six o'clock this evening | queremos encontrar-nos às seis da tarde\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0018L03U01"
+    },
+    {
+     "ref": "S0019",
+     "seed": 19,
+     "kind": "seed",
+     "known": "but I don't want to stop talking",
+     "target": "mas eu não quero parar de falar",
+     "why": "played copy differs: por_for_eng:S0019L03B04 \"but I don't want to stop talking | mas não quero parar de falar\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0019L03B04"
+    },
+    {
+     "ref": "S0020",
+     "seed": 20,
+     "kind": "seed",
+     "known": "you want to learn his name quickly",
+     "target": "tu queres aprender o nome dele rapidamente",
+     "why": "played copy differs: por_for_eng:S0020L03U01 \"you want to learn his name quickly | queres aprender o nome dele rapidamente\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0020L03U01"
+    },
+    {
+     "ref": "S0022",
+     "seed": 22,
+     "kind": "seed",
+     "known": "because I want to meet people who speak Portuguese",
+     "target": "Porque eu quero conhecer pessoas que falam português",
+     "why": "played copy differs: por_for_eng:S0022L02U04 \"because I want to meet people who speak Portuguese | Porque quero conhecer pessoas que falam português\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0022L02U04"
+    },
+    {
+     "ref": "S0023",
+     "seed": 23,
+     "kind": "seed",
+     "known": "I'm going to start talking more soon",
+     "target": "eu vou começar a falar mais em breve",
+     "why": "played copy differs: por_for_eng:S0023L02U01 \"I'm going to start talking more soon | vou começar a falar mais em breve\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0023L02U01"
+    },
+    {
+     "ref": "S0024",
+     "seed": 24,
+     "kind": "seed",
+     "known": "I'm not going to be able to remember easily",
+     "target": "eu não vou conseguir lembrar-me facilmente",
+     "why": "played copy differs: por_for_eng:S0024L02U01 \"I'm not going to be able to remember easily | não vou conseguir lembrar-me facilmente\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0024L02U01"
+    },
+    {
+     "ref": "S0025",
+     "seed": 25,
+     "kind": "seed",
+     "known": "are you going to help me before I have to go?",
+     "target": "tu vais ajudar-me antes de eu ter de ir?",
+     "why": "played copy differs: por_for_eng:S0025L03U01 \"are you going to help me before I have to go? | vais ajudar-me antes de eu ter de ir?\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0025L03U01"
+    },
+    {
+     "ref": "S0026",
+     "seed": 26,
+     "kind": "seed",
+     "known": "I like feeling as if I'm nearly ready to go",
+     "target": "eu gosto de sentir que estou quase pronto para ir",
+     "why": "played copy differs: por_for_eng:S0026L02B02 \"I like feeling as if I'm nearly ready to go | gosto de sentir que estou quase pronto para ir\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0026L02B02"
+    },
+    {
+     "ref": "S0027",
+     "seed": 27,
+     "kind": "seed",
+     "known": "I don't like taking too much time to answer",
+     "target": "eu não gosto de demorar demasiado tempo a responder",
+     "why": "played copy differs: por_for_eng:S0027L02B02 \"I don't like taking too much time to answer | não gosto de demorar demasiado tempo a responder\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0027L02B02"
+    },
+    {
+     "ref": "S0030",
+     "seed": 30,
+     "kind": "seed",
+     "known": "I wanted to ask you something yesterday",
+     "target": "eu queria perguntar-te algo ontem",
+     "why": "played copy differs: por_for_eng:S0030L03U01 \"I wanted to ask you something yesterday | queria perguntar-te algo ontem\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0030L03U01"
+    },
+    {
+     "ref": "S0031",
+     "seed": 31,
+     "kind": "seed",
+     "known": "you wanted to speak with me tonight",
+     "target": "tu querias falar comigo esta noite",
+     "why": "played copy differs: por_for_eng:S0031L02U01 \"you wanted to speak with me tonight | querias falar comigo esta noite\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0031L02U01"
+    },
+    {
+     "ref": "S0037",
+     "seed": 37,
+     "kind": "seed",
+     "known": "I started to think about it carefully last month",
+     "target": "eu comecei a pensar nisso com cuidado no mês passado",
+     "why": "played copy differs: por_for_eng:S0037L03B02 \"I started to think about it carefully last month | comecei a pensar nisso com cuidado no mês passado\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0037L03B02"
+    },
+    {
+     "ref": "S0043",
+     "seed": 43,
+     "kind": "seed",
+     "known": "I wasn't thinking about how to answer",
+     "target": "eu não estava a pensar em como responder",
+     "why": "no new LEGO in this seed and sentence not played elsewhere",
+     "sub": "no-home"
+    },
+    {
+     "ref": "S0045",
+     "seed": 45,
+     "kind": "seed",
+     "known": "I don't need to know everything",
+     "target": "eu não preciso de saber tudo",
+     "why": "played copy differs: por_for_eng:S0045L02U06 \"I don't need to know everything | não preciso de saber tudo\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0045L02U06"
+    },
+    {
+     "ref": "S0048",
+     "seed": 48,
+     "kind": "seed",
+     "known": "I don't care about making mistakes",
+     "target": "eu não me importo de cometer erros",
+     "why": "played copy differs: por_for_eng:S0048L01U05 \"I don't care about making mistakes | não me importo de cometer erros\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0048L01U05"
+    },
+    {
+     "ref": "S0054",
+     "seed": 54,
+     "kind": "seed",
+     "known": "we wanted to give you a little more time",
+     "target": "nós queríamos dar-te um pouco mais de tempo",
+     "why": "played copy differs: por_for_eng:S0054L04U06 \"we wanted to give you a little more time | queríamos dar-te um pouco mais de tempo\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0054L04U06"
+    },
+    {
+     "ref": "S0059",
+     "seed": 59,
+     "kind": "seed",
+     "known": "I know how to do what I need to do next week",
+     "target": "eu sei como fazer o que preciso de fazer na próxima semana",
+     "why": "played copy differs: por_for_eng:S0059L04U05 \"I know how to do what I need to do next week | sei como fazer o que preciso de fazer na próxima semana\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0059L04U05"
+    },
+    {
+     "ref": "S0060",
+     "seed": 60,
+     "kind": "seed",
+     "known": "I don't know how to say enough different words yet",
+     "target": "eu ainda não sei como dizer palavras diferentes suficientes",
+     "why": "played copy differs: por_for_eng:S0060L04U05 \"I don't know how to say enough different words yet | ainda não sei como dizer palavras diferentes suficientes\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0060L04U05"
+    },
+    {
+     "ref": "S0081",
+     "seed": 81,
+     "kind": "seed",
+     "known": "when do you want to start?",
+     "target": "quando é que queres começar?",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0125",
+     "seed": 125,
+     "kind": "seed",
+     "known": "I believe that your idea was very good",
+     "target": "eu acredito que a tua ideia era muito boa",
+     "why": "played copy differs: por_for_eng:S0125L02U07 \"I believe that your idea was very good | acredito que a tua ideia era muito boa\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0125L02U07"
+    },
+    {
+     "ref": "S0141",
+     "seed": 141,
+     "kind": "seed",
+     "known": "no problem. Everything is okay",
+     "target": "sem problema. Está tudo bem",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0162",
+     "seed": 162,
+     "kind": "seed",
+     "known": "what do you think about that?",
+     "target": "o que é que achas disso?",
+     "why": "played copy differs: por_for_eng:S0162L01U02 \"what do you think about that? | o que é que tu achas disso?\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0162L01U02"
+    },
+    {
+     "ref": "S0212",
+     "seed": 212,
+     "kind": "seed",
+     "known": "they wanted to ask for help",
+     "target": "eles queriam pedir ajuda",
+     "why": "played copy differs: por_for_eng:S0212L03U08 \"they wanted to ask for help | queriam pedir ajuda\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0212L03U08"
+    },
+    {
+     "ref": "S0213",
+     "seed": 213,
+     "kind": "seed",
+     "known": "we don't know what they're trying to achieve",
+     "target": "nós não sabemos o que eles estão a tentar alcançar",
+     "why": "played copy differs: por_for_eng:S0213L02U06 \"we don't know what they're trying to achieve | não sabemos o que estão a tentar alcançar\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0213L02U06"
+    },
+    {
+     "ref": "S0222",
+     "seed": 222,
+     "kind": "seed",
+     "known": "he's trying to tell me what he wants",
+     "target": "ele está a tentar dizer-me o que quer",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0224",
+     "seed": 224,
+     "kind": "seed",
+     "known": "he's just started to learn",
+     "target": "ele acabou de começar a aprender",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0297",
+     "seed": 297,
+     "kind": "seed",
+     "known": "I don't know many people who speak Portuguese",
+     "target": "eu não conheço muitas pessoas que falam português",
+     "why": "played copy differs: por_for_eng:S0297L01B04 \"I don't know many people who speak Portuguese | não conheço muitas pessoas que falam português\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0297L01B04"
+    },
+    {
+     "ref": "S0303",
+     "seed": 303,
+     "kind": "seed",
+     "known": "I think that he wants to sit down",
+     "target": "eu acho que ele quer sentar-se",
+     "why": "played copy differs: por_for_eng:S0303L01U03 \"I think that he wants to sit down | acho que ele quer sentar-se\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0303L01U03"
+    },
+    {
+     "ref": "S0306",
+     "seed": 306,
+     "kind": "seed",
+     "known": "I know that young woman who's talking to your friend",
+     "target": "eu conheço aquela jovem que está a falar com o teu amigo",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0315",
+     "seed": 315,
+     "kind": "seed",
+     "known": "I think that he couldn't afford the car that he wanted",
+     "target": "eu acho que ele não podia pagar o carro que queria",
+     "why": "played copy differs: por_for_eng:S0315L01U01 \"I think that he couldn't afford the car that he wanted | acho que ele não conseguia pagar um carro que queria\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0315L01U01"
+    },
+    {
+     "ref": "S0319",
+     "seed": 319,
+     "kind": "seed",
+     "known": "she needs to move to a different country",
+     "target": "ela precisa de se mudar para um país diferente",
+     "why": "played copy differs: por_for_eng:S0319L02U01 \"she needs to move to a different country | ela precisa de mudar para um país diferente\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0319L02U01"
+    },
+    {
+     "ref": "S0325",
+     "seed": 325,
+     "kind": "seed",
+     "known": "I think that he needs to consider ten possible problems",
+     "target": "eu acho que ele precisa de considerar dez problemas possíveis",
+     "why": "played copy differs: por_for_eng:S0325L04U01 \"I think that he needs to consider ten possible problems | acho que ele precisa de considerar dez problemas possíveis\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0325L04U01"
+    },
+    {
+     "ref": "S0326",
+     "seed": 326,
+     "kind": "seed",
+     "known": "I don't think that she needs to sell the company",
+     "target": "eu não acho que ela precise de vender a empresa",
+     "why": "played copy differs: por_for_eng:S0326L02U01 \"I don't think that she needs to sell the company | não acho que ela precisa de vender a empresa\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0326L02U01"
+    },
+    {
+     "ref": "S0327",
+     "seed": 327,
+     "kind": "seed",
+     "known": "do you think that she needs to offer another way?",
+     "target": "achas que ela precisa de oferecer outra maneira?",
+     "why": "played copy differs: por_for_eng:S0327L01U01 \"do you think that she needs to offer another way? | achas que ela precisa de oferecer outra forma?\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0327L01U01"
+    },
+    {
+     "ref": "S0332",
+     "seed": 332,
+     "kind": "seed",
+     "known": "he can build a new life for his sister",
+     "target": "ele consegue construir uma vida nova para a irmã dele",
+     "why": "played copy differs: por_for_eng:S0332L03U01 \"he can build a new life for his sister | ele pode construir uma nova vida para a irmã dele\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0332L03U01"
+    },
+    {
+     "ref": "S0335",
+     "seed": 335,
+     "kind": "seed",
+     "known": "I think that he can add some valuable ideas",
+     "target": "eu acho que ele consegue acrescentar algumas ideias valiosas",
+     "why": "played copy differs: por_for_eng:S0335L02U01 \"I think that he can add some valuable ideas | acho que ele pode acrescentar algumas ideias valiosas\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0335L02U01"
+    },
+    {
+     "ref": "S0336",
+     "seed": 336,
+     "kind": "seed",
+     "known": "I don't think that she can open the door",
+     "target": "eu não acho que ela consiga abrir a porta",
+     "why": "played copy differs: por_for_eng:S0336L02U01 \"I don't think that she can open the door | não acho que ela consiga abrir a porta\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0336L02U01"
+    },
+    {
+     "ref": "S0341",
+     "seed": 341,
+     "kind": "seed",
+     "known": "I met someone a few days ago",
+     "target": "eu conheci alguém há uns dias",
+     "why": "played copy differs: por_for_eng:S0341L01U01 \"I met someone a few days ago | conheci alguém há alguns dias\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0341L01U01"
+    },
+    {
+     "ref": "S0342",
+     "seed": 342,
+     "kind": "seed",
+     "known": "I met someone who said something",
+     "target": "eu conheci alguém que disse algo",
+     "why": "played copy differs: por_for_eng:S0342L01U01 \"I met someone who said something | conheci alguém que disse algo\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0342L01U01"
+    },
+    {
+     "ref": "S0344",
+     "seed": 344,
+     "kind": "seed",
+     "known": "who said that he's happy to help you",
+     "target": "que disse que tem todo o gosto em ajudar-te",
+     "why": "only under S0342L01, before S0344L01",
+     "sub": "early"
+    },
+    {
+     "ref": "S0346",
+     "seed": 346,
+     "kind": "seed",
+     "known": "I wanted her to know that I liked her book",
+     "target": "eu queria que ela soubesse que gostei do livro dela",
+     "why": "played copy differs: por_for_eng:S0346L02U01 \"I wanted her to know that I liked her book | queria que ela soubesse que gostei de um livro dela\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0346L02U01"
+    },
+    {
+     "ref": "S0352",
+     "seed": 352,
+     "kind": "seed",
+     "known": "even if he wanted to he wouldn't be able to",
+     "target": "mesmo que ele quisesse, não ia conseguir",
+     "why": "played copy differs: por_for_eng:S0352L02U01 \"even if he wanted to he wouldn't be able to | mesmo que quisesse não conseguiria\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0352L02U01"
+    },
+    {
+     "ref": "S0358",
+     "seed": 358,
+     "kind": "seed",
+     "known": "your friend said that she couldn't reach the top",
+     "target": "o teu amigo disse que não conseguia chegar ao topo",
+     "why": "played copy differs: por_for_eng:S0358L02U01 \"your friend said that she couldn't reach the top | a tua amiga disse que não conseguia chegar ao topo\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0358L02U01"
+    },
+    {
+     "ref": "S0359",
+     "seed": 359,
+     "kind": "seed",
+     "known": "your friend said that he could turn left",
+     "target": "o teu amigo disse que podia virar à esquerda",
+     "why": "played copy differs: por_for_eng:S0359L01U01 \"your friend said that he could turn left | o teu amigo disse que conseguia virar à esquerda\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0359L01U01"
+    },
+    {
+     "ref": "S0364",
+     "seed": 364,
+     "kind": "seed",
+     "known": "I heard that he didn't like that place",
+     "target": "eu ouvi dizer que ele não gostava daquele lugar",
+     "why": "played copy differs: por_for_eng:S0364L04U01 \"I heard that he didn't like that place | ouvi dizer que ele não gostava daquele lugar\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0364L04U01"
+    },
+    {
+     "ref": "S0365",
+     "seed": 365,
+     "kind": "seed",
+     "known": "I didn't hear what she said to him",
+     "target": "eu não ouvi o que ela lhe disse",
+     "why": "played copy differs: por_for_eng:S0365L01U01 \"I didn't hear what she said to him | não ouvi o que ela lhe disse\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0365L01U01"
+    },
+    {
+     "ref": "S0368",
+     "seed": 368,
+     "kind": "seed",
+     "known": "yes I heard that he wanted to grow tomatoes",
+     "target": "sim, eu ouvi dizer que ele queria cultivar tomates",
+     "why": "played copy differs: por_for_eng:S0368L01U01 \"yes I heard that he wanted to grow tomatoes | sim, ouvi dizer que ele queria cultivar tomates\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0368L01U01"
+    },
+    {
+     "ref": "S0371",
+     "seed": 371,
+     "kind": "seed",
+     "known": "I went to see a film on Wednesday",
+     "target": "eu fui ver um filme na quarta-feira",
+     "why": "played copy differs: por_for_eng:S0371L02U01 \"I went to see a film on Wednesday | fui ver um filme na quarta-feira\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0371L02U01"
+    },
+    {
+     "ref": "S0374",
+     "seed": 374,
+     "kind": "seed",
+     "known": "yes I thought it was very beautiful",
+     "target": "sim, eu achei que era muito bonito",
+     "why": "played copy differs: por_for_eng:S0374L01U01 \"yes I thought it was very beautiful | sim, achei que era muito bonito\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0374L01U01"
+    },
+    {
+     "ref": "S0375",
+     "seed": 375,
+     "kind": "seed",
+     "known": "no I didn't know what she was doing",
+     "target": "não, eu não sabia o que ela estava a fazer",
+     "why": "played copy differs: por_for_eng:S0375L01U01 \"no I didn't know what she was doing | não, não sabia o que ela estava a fazer\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0375L01U01"
+    },
+    {
+     "ref": "S0376",
+     "seed": 376,
+     "kind": "seed",
+     "known": "I didn't go anywhere last month",
+     "target": "eu não fui a lado nenhum no mês passado",
+     "why": "played copy differs: por_for_eng:S0376L01U01 \"I didn't go anywhere last month | não fui a lado nenhum no mês passado\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0376L01U01"
+    },
+    {
+     "ref": "S0378",
+     "seed": 378,
+     "kind": "seed",
+     "known": "no I didn't have enough money for holidays",
+     "target": "não, eu não tinha dinheiro suficiente para férias",
+     "why": "played copy differs: por_for_eng:S0378L02U01 \"no I didn't have enough money for holidays | não, não tinha dinheiro suficiente para as férias\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0378L02U01"
+    },
+    {
+     "ref": "S0379",
+     "seed": 379,
+     "kind": "seed",
+     "known": "yes I was lucky enough to travel to Africa",
+     "target": "sim, tive a sorte de viajar até África",
+     "why": "played copy differs: por_for_eng:S0379L03U01 \"yes I was lucky enough to travel to Africa | sim, tive sorte suficiente para viajar para África\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0379L03U01"
+    },
+    {
+     "ref": "S0380",
+     "seed": 380,
+     "kind": "seed",
+     "known": "I asked what she wanted to include",
+     "target": "eu perguntei o que ela queria incluir",
+     "why": "played copy differs: por_for_eng:S0380L02U01 \"I asked what she wanted to include | perguntei o que ela queria incluir\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0380L02U01"
+    },
+    {
+     "ref": "S0381",
+     "seed": 381,
+     "kind": "seed",
+     "known": "I didn't ask if he wanted to follow us",
+     "target": "eu não perguntei se ele queria seguir-nos",
+     "why": "played copy differs: por_for_eng:S0381L01U01 \"I didn't ask if he wanted to follow us | não perguntei se ele queria seguir-nos\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0381L01U01"
+    },
+    {
+     "ref": "S0382",
+     "seed": 382,
+     "kind": "seed",
+     "known": "did you ask where he wanted to put it?",
+     "target": "perguntaste onde ele queria pôr isso?",
+     "why": "played copy differs: por_for_eng:S0382L01U01 \"did you ask where he wanted to put it? | perguntaste onde ele queria pôr?\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0382L01U01"
+    },
+    {
+     "ref": "S0384",
+     "seed": 384,
+     "kind": "seed",
+     "known": "I couldn't agree with what he said a moment ago",
+     "target": "eu não conseguia concordar com o que ele disse há pouco",
+     "why": "played copy differs: por_for_eng:S0384L02U01 \"I couldn't agree with what he said a moment ago | não conseguia concordar com o que ele disse há um momento\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0384L02U01"
+    },
+    {
+     "ref": "S0386",
+     "seed": 386,
+     "kind": "seed",
+     "known": "yes I agreed with her",
+     "target": "sim, eu concordei com ela",
+     "why": "played copy differs: por_for_eng:S0386L01U01 \"yes I agreed with her | sim, concordei com ela\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0386L01U01"
+    },
+    {
+     "ref": "S0390",
+     "seed": 390,
+     "kind": "seed",
+     "known": "the one who is standing near the entrance",
+     "target": "a que está de pé perto da entrada",
+     "why": "played copy differs: por_for_eng:S0390L03U01 \"the one who is standing near the entrance | aquele que está parado perto da entrada\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0390L03U01"
+    },
+    {
+     "ref": "S0395",
+     "seed": 395,
+     "kind": "seed",
+     "known": "we need to turn left at the next corner",
+     "target": "nós precisamos de virar à esquerda na próxima esquina",
+     "why": "played copy differs: por_for_eng:S0395L02U01 \"we need to turn left at the next corner | precisamos de virar à esquerda na próxima esquina\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0395L02U01"
+    },
+    {
+     "ref": "S0403",
+     "seed": 403,
+     "kind": "seed",
+     "known": "we should remain quiet for as long as possible",
+     "target": "devíamos ficar calados o máximo tempo possível",
+     "why": "played copy differs: por_for_eng:S0403L03U01 \"we should remain quiet for as long as possible | devíamos ficar calados o máximo de tempo possível\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0403L03U01"
+    },
+    {
+     "ref": "S0406",
+     "seed": 406,
+     "kind": "seed",
+     "known": "no I'm sure it will be okay",
+     "target": "não, tenho a certeza de que vai correr bem",
+     "why": "seed sentence is in no played basket",
+     "sub": "missing"
+    },
+    {
+     "ref": "S0411",
+     "seed": 411,
+     "kind": "seed",
+     "known": "we would like to reserve a table for four tonight",
+     "target": "nós gostaríamos de reservar uma mesa para quatro esta noite",
+     "why": "played copy differs: por_for_eng:S0411L03U01 \"we would like to reserve a table for four tonight | gostaríamos de reservar uma mesa para quatro esta noite\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0411L03U01"
+    },
+    {
+     "ref": "S0437",
+     "seed": 437,
+     "kind": "seed",
+     "known": "they wanted to raise as much as possible for charity",
+     "target": "eles queriam angariar o máximo possível para caridade",
+     "why": "played copy differs: por_for_eng:S0437L02U01 \"they wanted to raise as much as possible for charity | queriam angariar o máximo possível para caridade\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0437L02U01"
+    },
+    {
+     "ref": "S0438",
+     "seed": 438,
+     "kind": "seed",
+     "known": "they didn't want to decide what he should do",
+     "target": "eles não queriam decidir o que ele devia fazer",
+     "why": "played copy differs: por_for_eng:S0438L02U01 \"they didn't want to decide what he should do | não queriam decidir o que ele devia fazer\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0438L02U01"
+    },
+    {
+     "ref": "S0439",
+     "seed": 439,
+     "kind": "seed",
+     "known": "they don't want to die",
+     "target": "eles não querem morrer",
+     "why": "played copy differs: por_for_eng:S0439L01B01 \"they don't want to die | não querem morrer\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0439L01B01"
+    },
+    {
+     "ref": "S0447",
+     "seed": 447,
+     "kind": "seed",
+     "known": "will they be able to drive us home after the meal?",
+     "target": "eles vão conseguir levar-nos a casa depois da refeição?",
+     "why": "played copy differs: por_for_eng:S0447L02U01 \"will they be able to drive us home after the meal? | vão conseguir levar-nos a casa depois da refeição?\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0447L02U01"
+    },
+    {
+     "ref": "S0449",
+     "seed": 449,
+     "kind": "seed",
+     "known": "they said that they were almost ready",
+     "target": "eles disseram que estavam quase prontos",
+     "why": "played copy differs: por_for_eng:S0449L02U01 \"they said that they were almost ready | disseram que estavam quase prontos\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0449L02U01"
+    },
+    {
+     "ref": "S0450",
+     "seed": 450,
+     "kind": "seed",
+     "known": "no they have to catch the train themselves",
+     "target": "não, eles têm de apanhar o comboio",
+     "why": "played copy differs: por_for_eng:S0450L03U01 \"no they have to catch the train themselves | não, têm de apanhar o comboio eles próprios\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0450L03U01"
+    },
+    {
+     "ref": "S0451",
+     "seed": 451,
+     "kind": "seed",
+     "known": "they said what they wanted to do",
+     "target": "eles disseram o que queriam fazer",
+     "why": "played copy differs: por_for_eng:S0451L01U01 \"they said what they wanted to do | disseram o que queriam fazer\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0451L01U01"
+    },
+    {
+     "ref": "S0452",
+     "seed": 452,
+     "kind": "seed",
+     "known": "they didn't say what they wanted to do",
+     "target": "eles não disseram o que queriam fazer",
+     "why": "played copy differs: por_for_eng:S0452L01U01 \"they didn't say what they wanted to do | não disseram o que queriam fazer\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0452L01U01"
+    },
+    {
+     "ref": "S0453",
+     "seed": 453,
+     "kind": "seed",
+     "known": "did they say who they saw last night?",
+     "target": "eles disseram quem viram ontem à noite?",
+     "why": "played copy differs: por_for_eng:S0453L02U01 \"did they say who they saw last night? | disseram quem viram ontem à noite?\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0453L02U01"
+    },
+    {
+     "ref": "S0455",
+     "seed": 455,
+     "kind": "seed",
+     "known": "we had to leave because the children were tired",
+     "target": "nós tivemos de sair porque as crianças estavam cansadas",
+     "why": "played copy differs: por_for_eng:S0455L03U01 \"we had to leave because the children were tired | tivemos de sair porque as crianças estavam cansadas\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0455L03U01"
+    },
+    {
+     "ref": "S0460",
+     "seed": 460,
+     "kind": "seed",
+     "known": "I want to find a shop near the hotel",
+     "target": "eu quero encontrar uma loja perto do hotel",
+     "why": "played copy differs: por_for_eng:S0460L03U01 \"I want to find a shop near the hotel | quero encontrar uma loja perto do hotel\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0460L03U01"
+    },
+    {
+     "ref": "S0465",
+     "seed": 465,
+     "kind": "seed",
+     "known": "next time I will ask her what her name is",
+     "target": "da próxima vez vou perguntar-lhe como se chama",
+     "why": "played copy differs: por_for_eng:S0465L01U01 \"next time I will ask her what her name is | vou perguntar-lhe como se chama\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0465L01U01"
+    },
+    {
+     "ref": "S0469",
+     "seed": 469,
+     "kind": "seed",
+     "known": "but that doesn't mean we can't change it",
+     "target": "mas isso não quer dizer que não o possamos mudar",
+     "why": "played copy differs: por_for_eng:S0469L02U01 \"but that doesn't mean we can't change it | isso não quer dizer que não o possamos mudar\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0469L02U01"
+    },
+    {
+     "ref": "S0477",
+     "seed": 477,
+     "kind": "seed",
+     "known": "he's been sick since the second day of the holidays",
+     "target": "ele está doente desde o segundo dia das férias",
+     "why": "played copy differs: por_for_eng:S0477L02U02 \"he's been sick since the second day of the holidays | ele está doente desde o segundo dia de férias\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0477L02U02"
+    },
+    {
+     "ref": "S0589",
+     "seed": 589,
+     "kind": "seed",
+     "known": "she told me she'd just seen the last bus",
+     "target": "ela disse-me que tinha acabado de ver o último autocarro",
+     "why": "played copy differs: por_for_eng:S0589L04U01 \"she told me she'd just seen the last bus | disse-me que tinha acabado de ver o último autocarro\"",
+     "sub": "drifted",
+     "near": "por_for_eng:S0589L04U01"
+    }
+   ]
+  }
+ ]
+}
