@@ -1,0 +1,4909 @@
+[
+ {
+  "ref": "spa_for_eng:S0404L01B01",
+  "check": "wrong-language",
+  "sub": "known",
+  "verdict": "real",
+  "reason": "known side of build row is Spanish \"del\" (should be English, e.g. \"of the\"); same word is a component with known \"of the\" so only the build row is wrong"
+ },
+ {
+  "ref": "S0481L01",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "\"real\" is a true cognate: English \"real\" = Spanish \"real\"; S0481 uses it as such (very real / the only real hope)"
+ },
+ {
+  "ref": "spa_for_eng:S0481L01B01",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "\"real\" is a true cognate: English \"real\" = Spanish \"real\"; S0481 uses it as such (very real / the only real hope)"
+ },
+ {
+  "ref": "spa_for_eng:S0481L03C03",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "\"real\" is a true cognate: English \"real\" = Spanish \"real\"; S0481 uses it as such (very real / the only real hope)"
+ },
+ {
+  "ref": "S0082",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "seed itself is two sentences; seed text is Kai's call; its P26 copy U09 inherits it"
+ },
+ {
+  "ref": "S0141",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "seed itself is two sentences; seed text is Kai's call; its P26 copy U16 inherits it"
+ },
+ {
+  "ref": "spa_for_eng:S0082L01U09",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "real",
+  "reason": "use phrase is two sentences (P20, HARD) - copy of a two-sentence seed"
+ },
+ {
+  "ref": "spa_for_eng:S0090L05B05",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "real",
+  "reason": "use/build phrase joins two sentences (P20, HARD)"
+ },
+ {
+  "ref": "spa_for_eng:S0090L05U09",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "real",
+  "reason": "use/build phrase joins two sentences (P20, HARD)"
+ },
+ {
+  "ref": "spa_for_eng:S0141L02U16",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "real",
+  "reason": "use phrase is two sentences (P20, HARD) - copy of a two-sentence seed"
+ },
+ {
+  "ref": "spa_for_eng:S0258L01U13",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "real",
+  "reason": "use/build phrase joins two sentences (P20, HARD)"
+ },
+ {
+  "ref": "spa_for_eng:S0258L01U14",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "real",
+  "reason": "use/build phrase joins two sentences (P20, HARD)"
+ },
+ {
+  "ref": "spa_for_eng:S0529L01B04",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "real",
+  "reason": "build row is two fragments (\"...? no\" / \"...? good\") and the Spanish is ungrammatical/incomplete (\"¿podéis aquí?, bien\" = \"can you all here?\")"
+ },
+ {
+  "ref": "spa_for_eng:S0529L01B03",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "real",
+  "reason": "build row is two fragments (\"...? no\" / \"...? good\") and the Spanish is ungrammatical/incomplete (\"¿podéis aquí?, bien\" = \"can you all here?\")"
+ },
+ {
+  "ref": "S0059L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "\"I know\" is sé (S59, know a fact) and conozco (S85, know a person); neither intro explains the split, so K23 does not excuse it"
+ },
+ {
+  "ref": "S0085L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "\"I know\" is sé (S59, know a fact) and conozco (S85, know a person); neither intro explains the split, so K23 does not excuse it"
+ },
+ {
+  "ref": "S0013",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0013L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0015",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0015L03U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0019",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0019L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0020",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0020L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0022",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0022L03U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0025",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0025L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0031",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0031L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0033",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0033L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0034",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0034L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0036",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0036L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0039",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0039L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0040",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0040L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0052",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0130L02U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0054",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0096L02U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0056",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0056L01U13",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0063",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0281L01U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0194",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0194L02B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0079",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0079L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0081",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0079L01U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0105",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0105L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0111",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0227L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0116",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0116L04B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0126",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0126L05U11",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0128",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0230L04B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0131",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0131L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0146",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0146L05U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0148",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0148L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0154",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0215L02U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0158",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0158L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0159",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0159L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0160",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0160L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0162",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0162L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0164",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0230L02B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0165",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0165L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0166",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0166L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0167",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0167L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0175",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0218L04U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0179",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0218L04U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0191",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0191L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0197",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0234L03B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0198",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0198L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0199",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0199L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0201",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0201L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0202",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0202L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0203",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0203L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0212",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0231L03B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0213",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0213L05B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0214",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0214L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0226",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0226L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0227",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0262L02U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0229",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0232L01B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0252",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0252L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0255",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0255L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0258",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0258L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0259",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0259L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0264",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0264L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0266",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0266L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0273L01U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0126L02U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0275",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0275L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0287",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0288L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0299",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0299L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0302",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0302L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0305",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0232L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0319",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0319L03B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0329",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0329L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0348",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0348L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0353",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0353L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0397",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0397L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0417",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0417L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0423",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0423L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0471",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0471L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0478",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0478L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0500",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0500L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0502",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0502L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0512",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0512L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0533",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0533L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0541",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0541L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0543",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0543L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0545",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0545L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0558",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0558L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0567",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0567L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0575",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0575L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0589",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0589L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0591",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0591L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0604",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0604L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0614",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0614L02U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0619",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0619L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0620",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0620L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0623",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0623L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0625",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0625L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0628",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0628L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0630",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0630L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0640",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0640L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0643",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0643L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0650",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0650L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0658",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0658L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0665",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0665L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0667",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0667L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0115L02B06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0115L02U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0161L04B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0218L04B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0001",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0001L05U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0002",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0002L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0006",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0006L02U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0007",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0007L03U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0008",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0008L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0009",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0009L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0010",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0202L02U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0012",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0012L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0013",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0013L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0015",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0015L03U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0017",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0225L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0018L04U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0018L04B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0019",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0019L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0020",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0020L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0022",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0285L01U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0023L02U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0023L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0024",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0024L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0027",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0027L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0029L02U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0029L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0030",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0030L04B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0031",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0031L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0035",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0035L04B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0036",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0036L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0037",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0061L02U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0038",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0038L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0039",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0039L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0042",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0042L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0043L01U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0043L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0045",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0045L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0048",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0048L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0050",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0050L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0051",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0163L02U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0054",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0096L02U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0055L02U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0055L02U15",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0056",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0056L01U13",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0057",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0057L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0059",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0059L03U08",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0060L01U15",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0096L01U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0062L01U13",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0062L01B06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0066L02U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0225L02B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0070L02U14",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0150L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0071",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0202L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0072L02U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0129L05U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0074L02U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0074L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0076",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0244L01B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0078",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0078L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0080L01U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0202L02U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0083",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0083L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0085",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0213L01U12",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0087L01U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0230L04B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0088L02U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0096L01U08",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0089L01U11",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0245L03U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0094L02U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0122L05U11",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0097L02U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0097L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0099L02U11",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0146L02U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0101",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0101L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0105",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0225L02B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0111",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0227L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0114",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0114L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0115",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0115L04B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0116",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0116L04B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0117",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0196L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0122L05U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0122L04U08",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0123L02U15",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0123L02B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0124L02U28",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0151L02B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0125L02U14",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0147L01U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0126",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0126L05U11",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0128",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0230L04B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0129L05U12",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0187L01U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0131",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0131L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0132L04U18",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0132L04B07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0135L03U14",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0135L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0136",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0284L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0138",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0138L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0140L01U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0140L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0142L02U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0142L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0146",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0146L05U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0147",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0147L04B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0151L03U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0151L03B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0152",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0152L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0153L03U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0153L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0157L02U15",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0157L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0158",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0158L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0159",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0159L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0163",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0163L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0164",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0230L02B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0165",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0165L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0166",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0166L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0176",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0176L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0177",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0177L01U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0187L02U13",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0187L02B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0191",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0191L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0193",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0193L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0197",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0234L03B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0198",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0234L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0199",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0199L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0201",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0201L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0202",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0202L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0205",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0205L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0206L02U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0206L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0207L01U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0207L01B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0208L01U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0208L01B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0209L02U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0209L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0210L02U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0210L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0211L04U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0212L01B06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0212",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0231L03B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0213",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0213L05B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0215",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0215L01B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0216L04U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0216L04B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0218L04U14",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0218L04B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0221L04U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0221L04B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0222L01U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0222L01B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0223L01U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0223L01B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0224",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0224L01B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0225L03U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0225L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0226",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0226L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0227",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0262L02U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0228L01U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0262L02U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0229",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0232L01B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0230",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0262L02U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0231L03U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0264L01B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0232L02U10",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0232L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0234L04U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0234L04B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0235L02U15",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0235L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0243L03U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0243L03B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0244",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0244L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0246",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0246L01B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0247",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0247L01B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0248L03U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0248L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0249",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0249L02B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0251",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0251L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0253",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0253L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0254",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0254L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0256",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0256L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0259",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0259L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0261",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0261L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0263",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0263L01B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0264",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0264L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0265",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0265L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0266",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0266L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0273L01U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0126L02U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0275",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0275L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0276",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0276L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0280",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0280L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0288L03U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0288L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0291L02U12",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0291L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0292L02U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0292L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0293",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0293L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0294",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0294L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0295",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0295L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0296",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0296L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0297",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0297L04B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0298",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0298L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0300",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0300L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0305",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0232L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0311",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0311L03B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0329",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0329L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0332",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0332L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0334",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0334L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0337L02U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0337L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0347",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0347L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0354",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0354L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0355",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0355L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0360",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0360L01U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0366",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0366L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0372",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0372L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0377",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0377L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0382",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0382L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0385",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0385L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0397",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0397L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0405",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0405L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0407",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0407L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0414",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0414L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0417",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0417L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0423",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0423L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0428",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0428L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0434",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0434L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0442",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0442L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0447",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0447L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0453",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0453L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0458",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0458L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0468L02U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0468L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0470",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0470L03U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0471",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0471L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0479L02U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0479L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0481L04U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0481L04U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0491",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0491L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0494",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0494L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0500",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0500L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0521",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0521L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0526",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0526L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0541",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0541L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0558",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0558L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0559",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0559L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0582",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0582L01U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0584",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0584L03U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0589",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0589L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0610",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0610L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0623",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0623L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0625",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0625L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0628",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0628L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0629",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0629L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0630",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0630L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0631",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0631L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0634",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0634L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0637",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0637L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0640",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0640L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0643",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0643L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0644",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0644L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0649",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0649L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0650",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0650L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0651",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0651L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0652",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0652L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0642L01U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0653L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0658",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0658L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0659",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0659L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0664",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0664L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0665",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0665L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0666",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0666L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0667",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0667L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0115L02B06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0115L02U16",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0161L04B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0218L04B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0203L01B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0203L01U11",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0214L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "spa_for_eng:S0221L02B07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "same sentence appears in two capitalisations (seed row vs phrase row, first letter only); course has no single convention; display only, non-blocking"
+ },
+ {
+  "ref": "S0001L02",
+  "check": "underpopulated",
+  "sub": "few-use",
+  "verdict": "real",
+  "reason": "LEGO has fewer than expected phrases (few-use) - informational"
+ },
+ {
+  "ref": "S0001L03",
+  "check": "underpopulated",
+  "sub": "few-use",
+  "verdict": "real",
+  "reason": "LEGO has fewer than expected phrases (few-use) - informational"
+ },
+ {
+  "ref": "S0033L02",
+  "check": "spa-llevar",
+  "sub": "no-time",
+  "verdict": "false-positive",
+  "reason": "LEGO fragment \"llevas aprendiendo\": the time span (\"cuánto tiempo\") sits in the neighbouring LEGO S0033L01 and every phrase supplies it"
+ },
+ {
+  "ref": "spa_for_eng:S0033L02U03",
+  "check": "spa-llevar",
+  "sub": "wrong-order",
+  "verdict": "real",
+  "reason": "\"Llevas aprendiendo español todo el día\": time span after the gerund; every other llevar row in the course (S38) puts the span before it"
+ },
+ {
+  "ref": "S0003",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0004",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0071",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0138",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed known \"was\" + target present \"es\"; played copy says \"is ... meet up with us\"; seed English tense disagrees with its own Spanish - seed or copy outlier unclear (Kai)"
+ },
+ {
+  "ref": "S0144",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0215",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "copy exists only as build B05 under S0215L01; the seed's last new LEGO is S0215L02 (on Saturday); needs a copy under L02"
+ },
+ {
+  "ref": "S0224",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "build copy loses the subject: \"he's just started\" vs \"Has just started\"; same English now two forms (K26 pronoun)"
+ },
+ {
+  "ref": "S0238",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0241",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed target has \"a él\", played copy \"No quiero dárselo\": same English, two Spanish (ZUT pair), minor"
+ },
+ {
+  "ref": "S0277",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0279",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0285",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed has subject \"ella habla español\", copy \"Habla español\": same English, two Spanish (pronoun drop)"
+ },
+ {
+  "ref": "S0301",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "copy adds redundant \"él quiere\" vs seed \"quiere\": same English, two Spanish (minor)"
+ },
+ {
+  "ref": "S0315",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0349",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"¿Quería él salir…?\" vs copy \"¿quería salir…?\": subject dropped, same English"
+ },
+ {
+  "ref": "S0359",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0374",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0420",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "only \"don't\" vs \"do not\" and case; target identical"
+ },
+ {
+  "ref": "S0463",
+  "check": "seed-placement",
+  "sub": "no-home",
+  "verdict": "uncertain",
+  "reason": "no-home: no new LEGO in seed 463 (\"my room number\"), so no basket can carry it; listed, not a defect"
+ },
+ {
+  "ref": "S0467",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0469",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0492",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "\"piensas que\" (seed) vs \"crees que\" (copy) for \"do you think\": synonym swap, ZUT pair"
+ },
+ {
+  "ref": "S0493",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed target \"¿Qué viene después?\" vs copy \"¿qué va a venir después?\" for English \"going to come\"; seed Spanish is the outlier (Kai)"
+ },
+ {
+  "ref": "S0509",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "\"oí que… una cama\" vs \"escuché que… por una cama\": verb and preposition differ"
+ },
+ {
+  "ref": "S0510",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "\"ha ido… un sitio\" vs \"se ha ido… un lugar\": reflexive and noun differ"
+ },
+ {
+  "ref": "S0528",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"debería guardar\" (should) vs copy \"se supone que debo\" (supposed to); English says supposed to, so seed Spanish is the outlier (Kai)"
+ },
+ {
+  "ref": "S0529",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is not a phrase under any new LEGO of this seed (P26)"
+ },
+ {
+  "ref": "S0534",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed omits \"fuera\" (go outside) and adds \"tan\"; copy has \"fuera… horrible\"; seed Spanish is the outlier (Kai)"
+ },
+ {
+  "ref": "S0563",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"seguir más tiempo\" vs copy \"seguir adelante por más tiempo\": different wording"
+ },
+ {
+  "ref": "S0578",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"un sitio más cálido\" vs copy \"algún lugar más cálido\"; \"somewhere\" suits algún lugar; seed is the outlier (Kai)"
+ },
+ {
+  "ref": "S0581",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "seed \"a él le gustaría\" vs copy \"le gustaría\": subject pronoun differs, same English"
+ },
+ {
+  "ref": "S0653",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only copy of \"¿Le importa, señora?\" is S0642L01U06 (seed 642); S0653L01's own phrase U01 says \"does it matter to you madam\", not the seed English \"Do you mind madam?\"; last new LEGO is S0653L01"
+ },
+ {
+  "ref": "S0656",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "target identical; only the English word order differs (\"with you all\" / \"with all of you\") - two Englishes to one target is not a defect"
+ }
+]
