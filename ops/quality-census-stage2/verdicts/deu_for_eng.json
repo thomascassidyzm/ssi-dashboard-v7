@@ -1,0 +1,4069 @@
+[
+ {
+  "ref": "S0001",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0001L05, before S0001L06; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0002",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0002L02, before S0002L03; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0012",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "played copy changes the tense: seed \"was morgen passieren wird\" (future, = going to happen) vs L04 \"was morgen passiert\" (present). Known side says going to; German drops it. Seed vs LEGO: L04 is the outlier (S0012 phrases elsewhere use werden for going to). Kai's call."
+ },
+ {
+  "ref": "S0050",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0130",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0134",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0134L02, before S0134L03; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0149",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0151",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0151L02, before S0151L03; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0158",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0165",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0195",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0195L01, before S0195L02; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0197",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0211",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0222",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: case + \"is\"/\"'s\" only (He is trying / he's trying); same German"
+ },
+ {
+  "ref": "S0223",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: case + \"is\"/\"'s\" only; same German"
+ },
+ {
+  "ref": "S0229",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0229L02, before S0229L03; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0231",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0231L01, before S0231L02; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0239",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0242",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0242L01, before S0242L02; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0254",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"I have been\" vs \"I've been\"; same German"
+ },
+ {
+  "ref": "S0255",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"will\" vs \"'ll\", case; same German"
+ },
+ {
+  "ref": "S0264",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "near row is the same wording (case only) but sits under S0264L01, a NOT-NEW LEGO (never played), and L01 known text is malformed (\"old I saw an old man\"); the seed sentence is never said"
+ },
+ {
+  "ref": "S0270",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0276",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0288",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0288L01, before S0288L02; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0301",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0307",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0307L02, before S0307L03; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0316",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: word order only (am Montag ihren Bruder vs ihren Bruder am Montag); same meaning"
+ },
+ {
+  "ref": "S0317",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: dass-drop (K30): \"ich denke, sie könnte\" vs \"ich denke, dass sie könnte\""
+ },
+ {
+  "ref": "S0322",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "wording differs: seed \"das gleiche Buch\" vs played \"dasselbe Buch\" (two German forms for \"the same\"); a ZUT-style split; which is right is Kai's call"
+ },
+ {
+  "ref": "S0330",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: \"don't\" vs \"do not\", case; same German"
+ },
+ {
+  "ref": "S0337",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: known \"continue to play\" vs \"continue playing\"; German identical"
+ },
+ {
+  "ref": "S0339",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0348",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: case + \"didn't\" vs \"did not\"; same German"
+ },
+ {
+  "ref": "S0351",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: case + \"didn't\" vs \"did not\"; same German"
+ },
+ {
+  "ref": "S0375",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: case + \"didn't\" vs \"did not\"; same German"
+ },
+ {
+  "ref": "S0376",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: case only (Ich vs ich); same German"
+ },
+ {
+  "ref": "S0391",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0452",
+  "check": "seed-placement",
+  "sub": "no-home",
+  "verdict": "false-positive",
+  "reason": "seed has no new LEGO; P26 says LISTED, not a defect"
+ },
+ {
+  "ref": "S0453",
+  "check": "seed-placement",
+  "sub": "missing",
+  "verdict": "real",
+  "reason": "seed sentence is under no LEGO basket (checked exact German text across all phrase rows); P26 requires it under a new LEGO"
+ },
+ {
+  "ref": "S0461",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: known \"some postcards\" vs \"a few postcards\"; German identical (ein paar)"
+ },
+ {
+  "ref": "S0469",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "near row sits under S0469L03, a NOT-NEW LEGO (never played); the seed sentence is never said"
+ },
+ {
+  "ref": "S0524",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0524L04, before S0524L05; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0525",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: known \"in order to check\" vs \"to check\"; German identical"
+ },
+ {
+  "ref": "S0540",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0540L03, before S0540L04; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0541",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "false-positive",
+  "reason": "trivial: played copy drops \"try and\" from the known side; German identical (seed known has \"try and\", German has no equivalent)"
+ },
+ {
+  "ref": "S0572",
+  "check": "seed-placement",
+  "sub": "early",
+  "verdict": "real",
+  "reason": "only under S0572L04, before S0572L05; the copy is under an earlier LEGO than the seed's last new LEGO (Italian precedent: real)"
+ },
+ {
+  "ref": "S0639",
+  "check": "seed-placement",
+  "sub": "drifted",
+  "verdict": "real",
+  "reason": "near row sits under S0639L02, a NOT-NEW LEGO (never played); the new LEGO S0639L01 \"with you sir\" has no copy of the seed sentence"
+ },
+ {
+  "ref": "S0655",
+  "check": "seed-placement",
+  "sub": "no-home",
+  "verdict": "false-positive",
+  "reason": "seed has no new LEGO; P26 says LISTED, not a defect"
+ },
+ {
+  "ref": "S0056L03",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "unrelated senses of \"one\" (generic man vs numeral eines); known side not disambiguated. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0634L02",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "unrelated senses of \"one\" (generic man vs numeral eines); known side not disambiguated. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0083L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "zustimmen (agree with) vs sich einigen (agree that/on); known side not disambiguated. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0522L05",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "zustimmen (agree with) vs sich einigen (agree that/on); known side not disambiguated. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0121L02",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "uncertain",
+  "reason": "dein/deine: German gender/case inflection of the same word; whether that counts as a ZUT clash is Kai's call. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0564L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "uncertain",
+  "reason": "dein/deine: German gender/case inflection of the same word; whether that counts as a ZUT clash is Kai's call. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0627L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "uncertain",
+  "reason": "dein/deine: German gender/case inflection of the same word; whether that counts as a ZUT clash is Kai's call. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0137L02",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "uncertain",
+  "reason": "perfekt/perfekte: predicate vs attributive inflection of the same word; Kai's call. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0514L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "uncertain",
+  "reason": "perfekt/perfekte: predicate vs attributive inflection of the same word; Kai's call. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0377L02",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "irgendwohin (to somewhere) vs irgendwo (at somewhere); known side not disambiguated. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0402L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "irgendwohin (to somewhere) vs irgendwo (at somewhere); known side not disambiguated. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0403L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "uncertain",
+  "reason": "wir sollten / sollten wir: subject-verb order switch (statement vs \"maybe...\") ; Kai's call. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0499L02",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "uncertain",
+  "reason": "wir sollten / sollten wir: subject-verb order switch (statement vs \"maybe...\") ; Kai's call. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0417L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "diese (these/those) vs denen (dative relative form); known side not disambiguated. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0634L03",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "diese (these/those) vs denen (dative relative form); known side not disambiguated. Intro: readable but only \"The German for: 'X', is:\" (explains nothing)"
+ },
+ {
+  "ref": "S0423L01",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "uncertain",
+  "reason": "so eine / so ein: gender inflection; Kai's call. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0478L02",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "uncertain",
+  "reason": "so eine / so ein: gender inflection; Kai's call. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0535L03",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "falschen (wrong job, adjective) vs unrecht (be wrong); known side not disambiguated. Intro: could not be read via Popty presentation route, so treated as unexplained, not K23."
+ },
+ {
+  "ref": "S0537L02",
+  "check": "zut-lego",
+  "sub": "conflict",
+  "verdict": "real",
+  "reason": "falschen (wrong job, adjective) vs unrecht (be wrong); known side not disambiguated. Intro: readable but only \"The German for: 'X', is:\" (explains nothing)"
+ },
+ {
+  "ref": "S0082",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "seed itself is two sentences; seed text is Kai's call"
+ },
+ {
+  "ref": "S0141",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "seed itself is two sentences; seed text is Kai's call"
+ },
+ {
+  "ref": "deu_for_eng:S0082L01U10",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "copy of two-sentence seed 82; question for Kai (inherits the seed)"
+ },
+ {
+  "ref": "deu_for_eng:S0141L02U02",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "uncertain",
+  "reason": "copy of two-sentence seed 141; question for Kai (inherits the seed)"
+ },
+ {
+  "ref": "deu_for_eng:S0162L01U04",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "real",
+  "reason": "use phrase is two sentences (P20); known also ends with a question mark on a statement (\"I want to know?\")"
+ },
+ {
+  "ref": "deu_for_eng:S0251L01U13",
+  "check": "multi-sentence",
+  "sub": null,
+  "verdict": "real",
+  "reason": "use phrase: German is two sentences (P20) but the known side is one sentence with a comma splice; sides do not match"
+ },
+ {
+  "ref": "S0003",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0003L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"How to speak as often as possible\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0004",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0004L04B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"How to say something in German\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0013",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0013L03U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"You speak German very well\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0014",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0014L02U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Do you speak German all day?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0016",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0016L04U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"He wants to come back with everyone else\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0017",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0017L04U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"She wants to find out what the answer is\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0020",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0020L03U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"You want to learn his name quickly\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0022",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0022L03U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Because I want to meet people who speak \"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0025",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0025L05U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Are you going to help me before I have t\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0034",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0034L05B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"He doesn't want to be quiet when other p\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0040",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0040L02B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"How do you feel at the moment?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0052",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0052L04U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"He wanted to write a letter to his frien\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0065",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0065L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"It's important to take time to test your\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0066",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0066L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"It's not difficult to find the answer\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0194",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0194L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"What are you looking for?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0069",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0069L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"He didn't want to look after the young d\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0070",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0070L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"She didn't want to tell me where it was\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0071",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0071L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"We didn't want to let anyone hear the tr\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0075",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0075L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Have you got more to learn?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0079",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0079L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"When did you start to learn?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0087",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0087L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"They are people I don't know\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0111",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0111L03B05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"When we learn something new it changes o\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0162",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0162L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"What do you think about that?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0164",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0164L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"An interesting book\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0167",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0167L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"What do you need to do tomorrow afternoo\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0169",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0169L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"What do you want me to do?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0175",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0175L01U10",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"What do you want to do on Sunday morning\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0186",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0186L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Do you want to talk about something diff\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0201",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0201L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"We wanted to know what was going to happ\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0213",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0213L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"We don't know what they're trying to ach\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0229",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0229L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"That woman would help you if she could\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0240",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0240L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"My father doesn't like to stop talking\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0252",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0252L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"When will you be ready to start?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0541L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0259L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"An idea\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0262",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0262L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Who was that man you were talking to yes\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0264",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0264L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"An old man\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0265",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0265L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"A friend\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0563L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0275L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Longer\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0284",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0284L02B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Do you know my sister's friend?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0285",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0285L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"She speaks German\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0286",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0286L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"People who like speaking German\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0476",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0476L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "lowercase i: counted under lowercase-i, not here"
+ },
+ {
+  "ref": "S0500",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Why don't you want to sit between the tw\"); estate known side is lowercase except I/proper nouns/days (seed text is Kai's call)"
+ },
+ {
+  "ref": "deu_for_eng:S0500L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0001L05B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"With you\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0639L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0006L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"A word\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0533L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0009L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"A little\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0580L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0010L04B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Whether\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0381L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0011L04B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"You are\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0664L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0025L02U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"She wants to help\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0660L01U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0026L04B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"She is ready\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0569L03U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0027L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"She likes it\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0629L01U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0030L02B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"She wanted to ask\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0609L01U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0040L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"At the moment\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0548L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0053L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"She wanted\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0588L02U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0090L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"That would be great\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0624L02U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0092L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"A while\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0596L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0095L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Go home\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0447L03B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0250L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Something else\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0360L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0111L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Something new\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0555L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0121L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"The car\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0315L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0121L03B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"In the car\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0547L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0121L02B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Your friend\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0359L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0123L01B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"That is a good idea\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0541L04U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0123L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"A good idea\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0541L01B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0125L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Your idea\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0564L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0136L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Friend\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0359L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0141L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"No problem\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0415L02B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0143L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Earlier\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0536L04B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0152L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"If I had known\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0606L02U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0153L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"The same way\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0443L04B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0153L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Exactly the same\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0518L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0177L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Her\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0637L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0219L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"For a while\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0596L02B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0184L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"In the office\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0511L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0205L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"The word\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0533L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0231L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Who\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0527L05B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0245L01B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"She is happy\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0599L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0250L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Can you tell me?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0518L04U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0259L01B04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Do you have an idea?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0541L01U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0276L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"To stay\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0604L04B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0284L01U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Do you know this story?\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0527L04U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0299L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"To pay\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0569L04B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0018L05U08",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0018L05U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"We want to meet each other at six o'cloc\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0051",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0051L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0128L02U14",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0128L02U13",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"You are like someone I knew before\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0189",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0189L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Yes, that's a good idea\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0222",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0222L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"He is trying to tell me what he wants\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "S0223",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0223L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"He is going to ask you tomorrow\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0302L03U09",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0302L03U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0303",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0303L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0304L02U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0304L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0306L03U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0306L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0310",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0310L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0312",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0312L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0314",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0314L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0319",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0319L03B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0325",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0325L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0326L02U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0326L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0331L02U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0331L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0333L02U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0333L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0335",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0335L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0341",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0341L01B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0342",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0342L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0346",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0346L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0348",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0348L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0353",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0353L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0364L03U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0364L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0369",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0369L03U06",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0370L01U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0370L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0371",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0371L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0376",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0376L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0380",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0380L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0381L02U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0381L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0410",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0410L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0418",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0418L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0426L02U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0426L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0427L02U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0427L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0432",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0432L01U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0433",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0433L04U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0437",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0437L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0438L04U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0438L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0439",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0439L01U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0440",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0440L03U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0445",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0445L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0446",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0446L02U07",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0449",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0449L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0460",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0460L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0464",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0464L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0465",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0465L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0473",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0473L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0474",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0474L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0478",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0478L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0486L02U08",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0486L02U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0491",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0491L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0502",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0502L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0503",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0503L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0509",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0509L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0510",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0510L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0514",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0514L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0516",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0516L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0519",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0519L05U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0521",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0521L05U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0528",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0528L06U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0533",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0533L05U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0536",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0536L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0538",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0538L01U21",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0543",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0543L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0548",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0548L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0553",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0553L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0556",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0556L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0557",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0557L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0562",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0562L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0563",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0563L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0564",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0564L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0565",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0565L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0566",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0566L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0571",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0571L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0585",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0585L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0586",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0586L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0587",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0587L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0590",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0590L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0591",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0591L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0594",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0594L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0595",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0595L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0597",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0597L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0599",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0599L04U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0600",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0600L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0604",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0604L05U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0611",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0611L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0615",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0615L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0621",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0621L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0622",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0622L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0629",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0629L05U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0634",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0634L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0636",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0636L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0638",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0638L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0641",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0641L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0645",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0645L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0646",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0646L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0647",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0647L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0654L01U08",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0654L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0660",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0660L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "S0668",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0668L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0005L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0465L02B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0220L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"A bit of\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0011L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Finished\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0627L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0011L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0581L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0017L03B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"She is finished\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0627L02U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0026L04B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Nearly ready\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0449L02B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0026L04B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0626L02U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0027L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0629L01U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0041L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0548L04U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0059L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0606L04U03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0109L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"A lot of\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0475L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0189L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"That's a good idea\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0124L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0536L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0131L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"There are\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0436L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0282L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"That's not a problem\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0415L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0143L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"The same thing\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0518L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0152L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0563L03B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0182L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"Anywhere\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0402L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0196L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0509L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0196L02B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"She heard\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0597L04U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0278L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"To finish\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0397L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0216L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0519L05B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0219L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "real",
+  "reason": "known side starts with a capital (\"It was nice\"); estate known side is lowercase except I/proper nouns/days"
+ },
+ {
+  "ref": "deu_for_eng:S0567L01U02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0558L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0259L01B02",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0541L01U05",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0280L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0593L03U01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0298L01U04",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0422L01B03",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "begins with I: correct capital"
+ },
+ {
+  "ref": "deu_for_eng:S0400L03B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0447L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0457L01B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "deu_for_eng:S0583L02B01",
+  "check": "capitalisation",
+  "sub": "case-dup",
+  "verdict": "false-positive",
+  "reason": "known starts lowercase, the estate form; its capitalised twin is the flagged row"
+ },
+ {
+  "ref": "S0635L02",
+  "check": "capitalisation",
+  "sub": "proper-noun-lowercase",
+  "verdict": "real",
+  "reason": "LEGO known \"jane's\" lowercase proper noun (seed 635 has \"Jane's\"); not caught by the check"
+ },
+ {
+  "ref": "S0476L01",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0051L03U04",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm going to practise with my ...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0410L02B04",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm still learning...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0410L02U03",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm still here...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0410L02U04",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm still learning German...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L03U04",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm still waiting for the end ...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L03U01",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for the end of the...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L02U01",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for the end...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L02U05",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm still waiting for the end...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L01B01",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L01B03",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for that...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L01B02",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for something...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L01B04",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for you now...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L01U01",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for you...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L01U03",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for you here...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L01U04",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm already waiting for you...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L01U05",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm still waiting for the girl...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0476L01U02",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for the child...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0477L02U03",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i've been tired since the seco...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0477L02U04",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i've been here since the secon...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0477L02U02",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i've been sick since the secon...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0477L03U04",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i've been sick since the secon...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0477L03U02",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for the end of the...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0477L01U03",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm already sick...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0477L01U04",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm sick today...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0477L01U05",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm tired and sick...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0477L01U01",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm sick...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0480L01U01",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'll do whatever you want...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0482L01U02",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm serious...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0485L01U05",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm happier than yesterday...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0485L01U03",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm much happier...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0485L01U02",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm happier now...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0577L02U03",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for the news...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0577L02U04",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm still waiting for the news...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0577L01U05",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i've already waited...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0577L03U03",
+  "check": "lowercase-i",
+  "sub": null,
+  "verdict": "real",
+  "reason": "known side \"i'm waiting for the news from ...\" uses lowercase i; seeds write \"I'm\""
+ },
+ {
+  "ref": "deu_for_eng:S0638L01B03",
+  "check": "wrong-language",
+  "sub": "known",
+  "verdict": "real",
+  "reason": "known side is German (\"ich versuche, die Schlüssel zu holen\"); should be English (e.g. \"I try to fetch the keys\")"
+ },
+ {
+  "ref": "S0211L01",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Test = English test); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "S0388L01",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Person = English person); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "S0415L02",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Problem = English problem); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "S0494L02",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Show = English show); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "S0518L01",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Problem = English problem); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "S0519L03",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Baby = English baby); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "S0535L01",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Job = English job); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "S0548L02",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Moment = English moment); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "S0635L02",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "\"jane's\"/\"Janes\": German genitive of a name; the lowercase known is a separate caps point"
+ },
+ {
+  "ref": "deu_for_eng:S0384L01C03",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Moment = English moment); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "deu_for_eng:S0388L01B01",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Person = English person); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "deu_for_eng:S0389L01C02",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Person = English person); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "deu_for_eng:S0403L02C01",
+  "check": "identical",
+  "sub": null,
+  "verdict": "real",
+  "reason": "component tile known \"so\" does not occur in the LEGO known \"as long as possible\" (first \"as\" is rendered so); known side of the tile should be \"as\""
+ },
+ {
+  "ref": "deu_for_eng:S0415L02B01",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Problem = English problem); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "deu_for_eng:S0590L01C02",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "true cognate/loanword (German Station = English station); known lowercase vs German noun capital, not a copy"
+ },
+ {
+  "ref": "deu_for_eng:S0635L02B01",
+  "check": "identical",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "\"jane's\"/\"Janes\": German genitive of a name; the lowercase known is a separate caps point"
+ },
+ {
+  "ref": "deu_for_eng:S0638L01B03",
+  "check": "identical",
+  "sub": null,
+  "verdict": "real",
+  "reason": "same row as the wrong-language fault: known copied from target"
+ },
+ {
+  "ref": "S0001L02",
+  "check": "underpopulated",
+  "sub": "no-use",
+  "verdict": "real",
+  "reason": "1 build, 0 use (Italian precedent 3/3 real)"
+ },
+ {
+  "ref": "S0001L03",
+  "check": "underpopulated",
+  "sub": "few-use",
+  "verdict": "real",
+  "reason": "1 build, 1 use (Italian precedent 3/3 real)"
+ },
+ {
+  "ref": "S0002L02",
+  "check": "underpopulated",
+  "sub": "no-use",
+  "verdict": "real",
+  "reason": "2 build, 0 use (Italian precedent 3/3 real)"
+ },
+ {
+  "ref": "S0315",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0059L02U09",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0074L01B02",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0076L01B02",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0114L01U10",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0116L01U01",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0141L02U09",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "real",
+  "reason": "\"weil jetzt ist alles hier in Ordnung\" is verb-second after weil (colloquial, non-standard in written German); should be \"weil jetzt alles hier in Ordnung ist\""
+ },
+ {
+  "ref": "deu_for_eng:S0169L01U05",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "real",
+  "reason": "\"dass ich mache heute Abend\": verb not final, \"heute Abend\" should precede it (…dass ich heute Abend mache); also known/target do not quite match (known: what do you want me to do tonight)"
+ },
+ {
+  "ref": "deu_for_eng:S0174L01U02",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0179L01U06",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0208L01U10",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0227L01U06",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0229L01U06",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0249L02U05",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0265L01U03",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0277L02U04",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0280L03U09",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0280L03U10",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0282L01U08",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0282L01U04",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0307L02U06",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0315L03U07",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0374L01U05",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0462L02U08",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0664L01B02",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0664L01B03",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0664L01U06",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ },
+ {
+  "ref": "deu_for_eng:S0664L01U04",
+  "check": "deu-verb-final",
+  "sub": null,
+  "verdict": "false-positive",
+  "reason": "German order is correct (verb-final, or a main clause / V2 reported clause after a verb like denken/sagen, or a trailing als-/vocative phrase); at most a missing comma"
+ }
+]
