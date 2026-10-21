@@ -20,6 +20,10 @@
  * cym_s_for_eng seed sentences (kept, not deleted). Nothing about her casting changed and no
  * take was touched: this list only decides what her booth shows.
  *
+ * Dan, Kai 2026-10-21 (job #754): the same order as Eleri — Pod 1, cym_sv2_for_eng (he is cast
+ * target1 there) seeds, LEGOs, practice-phrase batches, then his 206 cym_s_for_eng seeds last.
+ * Health stays out; no casting, voice slot or take was touched.
+ *
  * A voice listed here has an EXPLICIT, ORDERED queue. Every read of its booth (home summary,
  * whole list, pod link, step link) is cut to the lines of these steps and nothing else, and the
  * practice-phrase plan is not sent at all. A voice NOT listed here keeps the booth it had: this
@@ -38,6 +42,9 @@ const POD_KINDS = new Set(['pod', 'takeg'])
 const ACTOR_QUEUES = {
   human_dan_cym_s: [
     { key: 'pod-1', title: 'Pod 1', courseCode: 'cym_s_for_eng', pod: 'pod-1' },
+    { key: 'sv2-seeds', title: 'New course: seed sentences', courseCode: 'cym_sv2_for_eng', kind: 'seed' },
+    { key: 'sv2-legos', title: 'New course: LEGOs', courseCode: 'cym_sv2_for_eng', kind: 'lego' },
+    { key: 'sv2-phrases', title: 'New course: practice phrases', courseCode: 'cym_sv2_for_eng', kind: 'phrase' },
     { key: 'seeds', title: 'Seed sentences', courseCode: 'cym_s_for_eng', kind: 'seed', role: 'target1' },
   ],
   // Pod 1, then cym_sv2 in its natural order, then the 206 cym_s seeds (job #467).

@@ -24,25 +24,26 @@ function dansQueue() {
   return { lines, total: lines.length, recorded: 62, phrases: { pass: 1, batch: 1, batches: 43 }, phraseBatches: [{}], notReady: [], handedOn: [], courses: ['cym_s_for_eng', 'cym_sv2_for_eng'] }
 }
 
-test("Dan's queue is Pod 1 then the seed sentences, nothing else", () => {
+test("job #754: Dan's queue is Pod 1, cym_sv2 seeds/LEGOs/phrases, then the 206 cym_s seeds", () => {
   const scoped = q.scopeQueue(DAN, dansQueue())
-  assert.strictEqual(scoped.total, 90 + 206)
-  assert.strictEqual(scoped.remaining, 28 + 206)
-  assert.strictEqual(scoped.phrases, null, 'no practice-phrase batch card off the cym_sv2 plan')
-  assert.ok(scoped.lines.every((l) => l.courseCode === 'cym_s_for_eng'))
+  assert.strictEqual(scoped.total, 90 + 206 + 764)
+  assert.strictEqual(scoped.remaining, 28 + 206 + 764)
+  assert.deepStrictEqual(scoped.phrases, { pass: 1, batch: 1, batches: 43 }, 'his phrase batch plan shows now he has a phrase step')
+  assert.deepStrictEqual(scoped.phraseBatches, [{}])
   assert.ok(!scoped.lines.some((l) => l.podSlug === 'guess-i-love-you'), 'a pod outside the queue is not drawn')
+  assert.deepStrictEqual(q.stepsFor(DAN).map((s) => s.key), ['pod-1', 'sv2-seeds', 'sv2-legos', 'sv2-phrases', 'seeds'])
 })
 
-test('on his Pod 1 link: called Pod 1, 28 left, and Seed sentences (206) comes next — not the guess pod', () => {
+test('on his Pod 1 link: called Pod 1, 28 left, and the cym_sv2 seeds (762) come next', () => {
   const scoped = q.scopeQueue(DAN, dansQueue())
   const step = q.stepForLink(DAN, { course: 'cym_s_for_eng', pod: 'pod-1' })
   const done = q.nextStepFor(DAN, scoped.lines, step)
   assert.strictEqual(done.current.title, 'Pod 1')
   assert.strictEqual(done.current.remaining, 28)
-  assert.strictEqual(done.nextPod.step, 'seeds')
-  assert.strictEqual(done.nextPod.podSlug, null)
-  assert.strictEqual(done.nextPod.label, 'Seed sentences (206)')
-  assert.strictEqual(done.remainingOutsidePods, 0, 'nothing is said about lines outside the queue')
+  assert.strictEqual(done.nextPod.step, 'sv2-seeds')
+  assert.strictEqual(done.nextPod.courseCode, 'cym_sv2_for_eng')
+  assert.strictEqual(done.nextPod.label, 'New course: seed sentences (762)')
+  assert.strictEqual(done.remainingOutsidePods, 0)
 })
 
 test('the seeds step link: its own lines, and Pod 1 is offered back while it still owes lines', () => {
@@ -60,7 +61,7 @@ test('job #467: the health pod is in nobody\'s queue — Dan\'s booth is Pod 1 t
   const scoped = q.scopeQueue(DAN, built)
   assert.strictEqual(scoped.lines.filter((l) => l.podSlug === 'health').length, 0)
   assert.strictEqual(q.stepForLink(DAN, { course: 'cym_s_for_eng', pod: 'health' }), null)
-  assert.deepStrictEqual(q.stepsFor(DAN).map((s) => s.key), ['pod-1', 'seeds'])
+  assert.deepStrictEqual(q.stepsFor(DAN).map((s) => s.key).slice(-1), ['seeds'])
   assert.ok(!q.stepsFor('human_eleri_cym_s').some((s) => s.pod === 'health'))
 })
 
@@ -88,8 +89,9 @@ test("job #467: Eleri's booth is Pod 1, then cym_sv2 seeds/LEGOs/phrases in orde
   assert.strictEqual(done.nextPod.remaining, 63)
 })
 
-test('a voice without a phrase step still gets no phrase plan (Dan)', () => {
-  const scoped = q.scopeQueue(DAN, { ...dansQueue(), phrases: { pass: 1 }, phraseBatches: [{ n: 1 }] })
+test('a voice without a phrase step still gets no phrase plan', () => {
+  const steps = { x: [{ key: 'pod-1', title: 'Pod 1', courseCode: 'cym_s_for_eng', pod: 'pod-1' }] }
+  const scoped = q.scopeQueue('x', { ...dansQueue(), phrases: { pass: 1 }, phraseBatches: [{ n: 1 }] }, steps)
   assert.strictEqual(scoped.phrases, null)
   assert.strictEqual(scoped.phraseBatches, null)
 })
@@ -110,7 +112,7 @@ test('F31: total and recorded count the recorded lines the queue left out of `li
     { courseCode: 'cym_sv2_for_eng', kind: 'seed', role: 'target1', podSlug: null, podId: null, total: 762, recorded: 0 },
   ]
   const scoped = q.scopeQueue(DAN, { ...built, lines: unrecorded, tally })
-  assert.strictEqual(scoped.total, 296)
+  assert.strictEqual(scoped.total, 1058)
   assert.strictEqual(scoped.recorded, 62)
-  assert.strictEqual(scoped.remaining, 234)
+  assert.strictEqual(scoped.remaining, 996)
 })
