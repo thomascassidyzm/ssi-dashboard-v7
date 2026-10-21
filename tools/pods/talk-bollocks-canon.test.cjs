@@ -1,12 +1,13 @@
 // The Talk Bollocks canonical English is Tom's and Aran's own words and nothing else
-// (Tom, 2026-10-20: "never paraphrase, never polish, never add a word").
+// (Tom, 2026-10-20: "never paraphrase, never polish, never add a word"), tidied by deletion only
+// (Tom, 2026-10-21: "remove the filler words, the words where we're cutting across each other").
 //   npx vitest run tools/pods/talk-bollocks-canon.test.cjs
 import { describe, it, expect } from 'vitest'
 const fs = require('fs')
 const path = require('path')
 const {
-  readTranscript, applyEdits, splitSentences, words, subsequenceBreak, loadPart, renderCorpus,
-  correct, corpusPath, PARTS, SOURCE_DIR, REPO,
+  readTranscript, applyEdits, joinTurns, splitSentences, words, subsequenceBreak, loadPart, renderCorpus,
+  correct, corpusPath, parseTidy, applyTidy, tidyBreaks, tidyWords, tidyPath, PARTS, SOURCE_DIR, REPO,
 } = require('./talk-bollocks-canon.cjs')
 const { parsePod } = require('./parse-pod-markdown.cjs')
 
@@ -20,16 +21,25 @@ describe('the Talk Bollocks canonical English', () => {
       const out = built.chapters.flatMap(c => c.turns.flatMap(t => splitSentences(t.text)))
 
       it('adds no word, reorders no word: its words are an in-order subsequence of the transcript', () => {
-        const source = words(correct(sourceText(n)))
-        expect(subsequenceBreak(words(out.join(' ')), source)).toBe(-1)
+        // a hyphen between letters is spelling ("long-term" is the transcript's "longterm"), see tidyWords
+        const source = tidyWords(correct(sourceText(n)))
+        expect(subsequenceBreak(tidyWords(out.join(' ')), source)).toBe(-1)
       })
 
-      it('keeps every word of every line the edits did not drop', () => {
+      it('before the tidy, keeps every word of every line the edits did not drop', () => {
         const dropped = new Set(PARTS[n].edits.drop)
         const kept = readTranscript(sourceText(n)).filter(l => !dropped.has(l.line))
         // only square-bracket editor's notes may go from a kept line
         const expected = words(correct(kept.map(l => (PARTS[n].edits.text || {})[l.line] || l.text.replace(/\[[^\]]*\]/g, ' ')).join(' ')))
-        expect(words(out.join(' '))).toEqual(expected)
+        const untidied = loadPart(n, { useTidy: false }).chapters.flatMap(c => c.turns.flatMap(t => splitSentences(t.text)))
+        expect(words(untidied.join(' '))).toEqual(expected)
+      })
+
+      it('the tidy only deletes: every entry is its own segment, same voice, words an in-order subsequence', () => {
+        expect(fs.existsSync(tidyPath(n))).toBe(true)
+        const { segments, tidy } = built
+        expect(tidy.map(t => `${t.key} ${t.speaker}`)).toEqual(segments.map(s => `${s.key} ${s.speaker}`))
+        expect(tidyBreaks(segments, tidy)).toEqual([])
       })
 
       it('names a real transcript line in every edit', () => {
@@ -75,7 +85,20 @@ describe('the Talk Bollocks canonical English', () => {
 
   it('joins a sentence Descript cut across a speaker label', () => {
     const lines = readTranscript('- Tom\n- There\'s so\n- Aran\n- many different ones!\n')
-    const ch = applyEdits(lines, { drop: [], speaker: { 2: 'ARAN' }, chapters: { 1: 'x' } })
+    const { chapters, segments } = applyEdits(lines, { drop: [], speaker: { 2: 'ARAN' }, chapters: { 1: 'x' } })
+    const ch = joinTurns(chapters, segments)
     expect(ch[0].turns).toEqual([{ speaker: 'ARAN', text: "There's so many different ones!", lines: [2, 4] }])
+  })
+
+  it('the tidy proof bites: an added word, a reordered word and a change of voice are all refused', () => {
+    const lines = readTranscript('- Tom\n- So, um, we say ten days, you know.\n- Aran\n- Yeah. Yeah.\n- Tom\n- Or how many hours?\n')
+    const { segments } = applyEdits(lines, { drop: [], chapters: { 1: 'x' } })
+    const tidy = parseTidy('[2] TOM: So we say ten days.\n[4] ARAN:\n[6] TOM: Or how many hours?\n')
+    expect(tidyBreaks(segments, tidy)).toEqual([])
+    expect(applyTidy(segments, tidy).map(s => s.text)).toEqual(['So we say ten days.', 'Or how many hours?'])
+    expect(tidyBreaks(segments, parseTidy('[2] TOM: So we really say ten days.\n[4] ARAN:\n[6] TOM: Or how many hours?'))).toEqual([{ key: '2', at: 2, word: 'really' }])
+    expect(tidyBreaks(segments, parseTidy('[2] TOM: Ten days we say.\n[4] ARAN:\n[6] TOM: Or how many hours?'))).not.toEqual([])
+    expect(() => applyTidy(segments, parseTidy('[2] ARAN: So we say ten days.\n[4] ARAN:\n[6] TOM: Or how many hours?'))).toThrow(/segment is \[2\] TOM/)
+    expect(() => applyTidy(segments, parseTidy('[2] TOM: So we say ten days.\n[6] TOM: Or how many hours?'))).toThrow(/2 entries for 3 segments/)
   })
 })

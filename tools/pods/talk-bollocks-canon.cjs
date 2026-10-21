@@ -23,6 +23,7 @@
  *   node tools/pods/talk-bollocks-canon.cjs build            # write the three corpora
  *   node tools/pods/talk-bollocks-canon.cjs check            # exit 1 if a corpus is stale
  *   node tools/pods/talk-bollocks-canon.cjs read --part=1    # the readable two-voice text, to stdout
+ *   node tools/pods/talk-bollocks-canon.cjs tidy-seed --part=1  # the untidied tidy file, to start an edit pass
  *
  * Pure apart from reading the transcripts and writing the corpora. No network, no DB.
  */
@@ -82,22 +83,101 @@ function applyEdits (lines, edits) {
       ci++
     }
     if (!chapters.length) throw new Error(`line ${l.line} comes before the first chapter`)
-    const pieces = edits.split && edits.split[l.line]
+    const isSplit = !!(edits.split && edits.split[l.line])
+    const pieces = isSplit
       ? edits.split[l.line]
       : [[(edits.speaker && edits.speaker[l.line]) || l.speaker, (edits.text && edits.text[l.line]) || stripEditorNotes(l.text)]]
-    for (const [speaker, text] of pieces) {
+    pieces.forEach(([speaker, text], k) => {
       if (speaker !== 'TOM' && speaker !== 'ARAN') throw new Error(`line ${l.line} has no speaker (${speaker})`)
-      segments.push({ chapter: chapters[chapters.length - 1], speaker, text: correct(text), line: l.line })
-    }
+      segments.push({ chapter: chapters[chapters.length - 1], speaker, text: correct(text), line: l.line, key: isSplit ? `${l.line}.${k + 1}` : String(l.line) })
+    })
   }
   if (ci < chapterAt.length) throw new Error(`chapter at line ${chapterAt[ci].line} never started`)
-  // Consecutive lines in one voice are one turn.
+  return { chapters, segments }
+}
+
+/** Consecutive segments in one voice are one turn. */
+function joinTurns (chapters, segments) {
+  for (const c of chapters) c.turns = []
   for (const s of segments) {
     const turns = s.chapter.turns
     const last = turns[turns.length - 1]
     if (last && last.speaker === s.speaker) { last.text += ' ' + s.text; last.lines.push(s.line) } else turns.push({ speaker: s.speaker, text: s.text, lines: [s.line] })
   }
-  return chapters
+  return chapters.filter(c => c.turns.length).map((c, i) => ({ ...c, number: i + 1 }))
+}
+
+/**
+ * THE TIDY (Tom, 2026-10-21): "remove the filler words, the words where we're cutting across each
+ * other, but not saying anything. Remember we're going to recreate this audio, and it's got to
+ * stand up as a learning product, even a natural one - but we don't want too much waffle and
+ * flowery guff around a point we're making."
+ *
+ * tools/pods/talk-bollocks-tidy/part-N.txt is the edited text itself, one entry per segment the
+ * declared edits make, in order: `[line] SPEAKER: text` (`[line.k]` for a piece of a split line).
+ * An empty text cuts the segment (cross-talk that says nothing). A tidy may only DELETE: the test
+ * proves each entry's words are an in-order subsequence of its segment's, and that the speaker is
+ * the segment's own — so it can cut fillers, false starts, repeats and waffle, re-punctuate and
+ * re-capitalise, but never add, reorder or reword a word, or move a line to the other voice.
+ * Lines starting with # are headings for the reader and are ignored.
+ */
+const TIDY_DIR = 'tools/pods/talk-bollocks-tidy'
+const TIDY_LINE = /^\[(\d+(?:\.\d+)?)\] (TOM|ARAN):(.*)$/
+const tidyPath = n => path.join(REPO, TIDY_DIR, `part-${n}.txt`)
+
+function parseTidy (text) {
+  const out = []
+  text.split('\n').forEach((raw, i) => {
+    const t = raw.trim()
+    if (!t || t.startsWith('#')) return
+    const m = TIDY_LINE.exec(t)
+    if (!m) throw new Error(`tidy line ${i + 1} is not "[line] SPEAKER: text": ${t.slice(0, 60)}`)
+    out.push({ key: m[1], speaker: m[2], text: m[3].trim() })
+  })
+  return out
+}
+
+/**
+ * The tidy's word test. A hyphen between letters is spelling, not a word ("long-term" is the
+ * transcript's "longterm", "neuro-plasticity" its "neuroplasticity"), so both sides are compared
+ * with such hyphens taken out.
+ */
+const tidyWords = text => words(String(text).replace(/(\p{L})-(?=\p{L})/gu, '$1'))
+
+/** Every tidy entry that is not a deletion from its own segment: [{ key, at, word }]. */
+function tidyBreaks (segments, tidy) {
+  const out = []
+  segments.forEach((s, i) => {
+    const t = tidy[i]
+    if (!t || !t.text) return
+    const sub = tidyWords(t.text)
+    const at = subsequenceBreak(sub, tidyWords(s.text))
+    if (at !== -1) out.push({ key: s.key, at, word: sub[at] })
+  })
+  return out
+}
+
+/** Segments + tidy entries → the tidied segments. Refuses any entry out of step with its segment. */
+function applyTidy (segments, tidy) {
+  if (tidy.length !== segments.length) throw new Error(`tidy has ${tidy.length} entries for ${segments.length} segments`)
+  const out = []
+  segments.forEach((s, i) => {
+    const t = tidy[i]
+    if (t.key !== s.key || t.speaker !== s.speaker) throw new Error(`tidy entry ${i + 1} is [${t.key}] ${t.speaker}, the segment is [${s.key}] ${s.speaker}`)
+    if (t.text) out.push({ ...s, text: t.text })
+  })
+  return out
+}
+
+/** The tidy file as it would be with nothing cut: the starting point for an edit pass. */
+function renderTidySeed ({ chapters, segments }) {
+  const out = []
+  let ch = null
+  for (const s of segments) {
+    if (s.chapter !== ch) { ch = s.chapter; out.push('', `# ${ch.number}. ${ch.title}`, '') }
+    out.push(`[${s.key}] ${s.speaker}: ${s.text}`)
+  }
+  return out.join('\n').trim() + '\n'
 }
 
 // An abbreviation's full stop never ends a sentence.
@@ -139,24 +219,31 @@ function subsequenceBreak (sub, whole) {
   return -1
 }
 
-function loadPart (n) {
+function loadPart (n, { useTidy = true } = {}) {
   const part = PARTS[n]
   if (!part) throw new Error(`no part ${n}`)
   const src = fs.readFileSync(path.join(REPO, SOURCE_DIR, `part-${n}.md`), 'utf8')
   const lines = readTranscript(src)
-  return { part, lines, chapters: applyEdits(lines, part.edits) }
+  const { chapters, segments } = applyEdits(lines, part.edits)
+  const tidy = useTidy && fs.existsSync(tidyPath(n)) ? parseTidy(fs.readFileSync(tidyPath(n), 'utf8')) : null
+  const kept = tidy ? applyTidy(segments, tidy) : segments
+  return { part, lines, segments, tidy, chapters: joinTurns(chapters, kept) }
 }
 
 const cell = s => s.replace(/\|/g, '/')
 
 /** The pod-table corpus ingest-canonical-pods.cjs reads (`### Chapter N — *Title*`, a `| | |` table). */
-function renderCorpus (n, { part, chapters }) {
-  const rows = chapters.reduce((a, c) => a + c.turns.reduce((b, t) => b + splitSentences(t.text).length, 0), 0)
+const sentenceCount = chapters => chapters.reduce((a, c) => a + c.turns.reduce((b, t) => b + splitSentences(t.text).length, 0), 0)
+
+function renderCorpus (n, { part, chapters, tidy }) {
+  const rows = sentenceCount(chapters)
   const out = [
     `# ${part.title} — canonical English`,
     '',
     `> Built by tools/pods/talk-bollocks-canon.cjs from ${SOURCE_DIR}/part-${n}.md and the declared edits in`,
-    '> tools/pods/talk-bollocks-edits.cjs. Do not edit by hand: change the edits and rebuild.',
+    tidy
+      ? `> tools/pods/talk-bollocks-edits.cjs, tidied by ${TIDY_DIR}/part-${n}.txt. Do not edit by hand: change those and rebuild.`
+      : '> tools/pods/talk-bollocks-edits.cjs. Do not edit by hand: change the edits and rebuild.',
     `> Tom's and Aran's own words, two voices, one row per sentence. ${chapters.length} chapters, ${rows} sentences.`,
     '> HELD for Tom\'s read: no translation and no audio until he has read it.',
     '',
@@ -170,9 +257,10 @@ function renderCorpus (n, { part, chapters }) {
 }
 
 /** The same text for a human: chapters, then one paragraph per turn. */
-function renderReading (n, { part, chapters }) {
+function renderReading (n, { part, chapters }, before) {
   const name = { TOM: 'Tom', ARAN: 'Aran' }
-  const out = [`# ${part.title}`, '', `*Canonical English — Tom's and Aran's own words from the transcript, in two voices. ${chapters.length} chapters.*`, '']
+  const counts = before ? ` ${sentenceCount(before.chapters)} lines before the tidy, ${sentenceCount(chapters)} after.` : ''
+  const out = [`# ${part.title}`, '', `*Canonical English — Tom's and Aran's own words from the transcript, in two voices. ${chapters.length} chapters.${counts}*`, '']
   for (const c of chapters) {
     out.push(`## ${c.number}. ${c.title}`, '')
     for (const t of c.turns) out.push(`**${name[t.speaker]}:** ${t.text}`, '')
@@ -182,7 +270,7 @@ function renderReading (n, { part, chapters }) {
 
 const corpusPath = n => path.join(REPO, PARTS[n].corpus)
 
-module.exports = { readTranscript, applyEdits, splitSentences, words, subsequenceBreak, loadPart, renderCorpus, renderReading, correct, stripEditorNotes, corpusPath, PARTS, SOURCE_DIR, REPO }
+module.exports = { readTranscript, applyEdits, joinTurns, parseTidy, applyTidy, tidyBreaks, tidyWords, renderTidySeed, tidyPath, sentenceCount, TIDY_DIR, splitSentences, words, subsequenceBreak, loadPart, renderCorpus, renderReading, correct, stripEditorNotes, corpusPath, PARTS, SOURCE_DIR, REPO }
 
 if (require.main === module) {
   const [cmd, ...rest] = process.argv.slice(2)
@@ -197,9 +285,16 @@ if (require.main === module) {
     }
     process.exit(stale ? 1 : 0)
   } else if (cmd === 'read' && PARTS[partArg]) {
-    process.stdout.write(renderReading(partArg, loadPart(partArg)))
+    process.stdout.write(renderReading(partArg, loadPart(partArg), loadPart(partArg, { useTidy: false })))
+  } else if (cmd === 'tidy-check' && PARTS[partArg]) {
+    const { segments, tidy } = loadPart(partArg)
+    const breaks = tidy ? tidyBreaks(segments, tidy) : []
+    for (const b of breaks) console.error(`[${b.key}] word ${b.at + 1} "${b.word}" is not a deletion from the segment`)
+    process.exit(breaks.length ? 1 : 0)
+  } else if (cmd === 'tidy-seed' && PARTS[partArg]) {
+    process.stdout.write(renderTidySeed(loadPart(partArg, { useTidy: false })))
   } else {
-    console.error('usage: build | check | read --part=<1|2|4>')
+    console.error('usage: build | check | read --part=<1|2|4> | tidy-seed --part=<1|2|4> | tidy-check --part=<1|2|4>')
     process.exit(2)
   }
 }

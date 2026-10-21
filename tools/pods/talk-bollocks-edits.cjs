@@ -39,6 +39,14 @@ const CORRECTIONS = [
   ['local concurrency', 'local currency'],
   ['around a lo', 'around a lot'],
   ['Synopsyes', 'Synopses'],
+  ['after read', 'after red'], // Part 1: "a list of all things after red" — Aran's example is the word red
+  ['the reach stimulation', 'the restimulation'], // Part 1: Tom has just said "the restimulating"
+  ['theyre', "they're"], // Part 2, line 48
+  ['roots and guidance', 'routes and guidance'], // Part 2: the satnav routes that follow
+  ['six formers', 'sixth formers'], // Part 2: "the 16 year old, sixth formers"
+  ['through and education', 'through an education'], // Part 2, line 313
+  ['just decided to leave', 'just decide to leave'], // Part 2, line 260
+  ['a helping him', 'a helping hand'], // Part 4, line 408
 ]
 
 const PARTS = {
