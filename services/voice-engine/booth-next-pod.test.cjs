@@ -41,6 +41,14 @@ describe('nextPodFor — the pod a finished pod link offers next', () => {
     expect(nextPodFor(lines, 'pod-1', PODS)).toEqual({ nextPod: null, remainingOutsidePods: 0 })
   })
 
+  it('a staged-draft pod is offered once every line is proofread (draftLines 0), never while one is still a draft', () => {
+    const lines = [line('pod-1', true), line('health', false)]
+    const proofread = new Map(PODS).set('cym_s_for_eng:health', { ...PODS.get('cym_s_for_eng:health'), draftLines: 0 })
+    expect(nextPodFor(lines, 'pod-1', proofread).nextPod).toMatchObject({ podSlug: 'health', remaining: 1 })
+    const oneLeft = new Map(PODS).set('cym_s_for_eng:health', { ...PODS.get('cym_s_for_eng:health'), draftLines: 1 })
+    expect(nextPodFor(lines, 'pod-1', oneLeft).nextPod).toBeNull()
+  })
+
   it('F39: a bare slug shared by two courses names the pod of the link\'s course', () => {
     const other = (slug, recorded) => line(slug, recorded, { courseCode: 'cym_n_for_eng', podId: `cym_n_for_eng:${slug}` })
     // The other course's pod-1 comes FIRST, with its own market owed straight after: a bare-slug match picks it and offers cym_n's market.

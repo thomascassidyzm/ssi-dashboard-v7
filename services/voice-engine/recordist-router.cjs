@@ -801,6 +801,14 @@ module.exports = function createRecordistRouter({
             ? await db().from('listening_pods').select('id, metadata').in('id', owed)
             : { data: [], error: null }
           if (podErr) throw podErr
+          // A staged-draft pod is offered once no line in it is an unread draft (job #457):
+          // count them for those pods only. A failed count leaves draftLines unset = skipped.
+          for (const p of podRows || []) {
+            if (!(p.metadata && p.metadata.staged_draft)) continue
+            const { count, error: draftErr } = await db().from('listening_pod_sentences')
+              .select('id', { count: 'exact', head: true }).eq('pod_id', p.id).eq('target_text_draft', true)
+            if (!draftErr && typeof count === 'number') p.draftLines = count
+          }
           podsDone = boothNextPod.nextPodFor(queue.lines, podScope, new Map((podRows || []).map((p) => [p.id, p])), scoped)
         } catch (err) {
           logger.warn(`[booth] next pod not worked out for ${recordist.voiceId}: ${err.message}`)

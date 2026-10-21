@@ -54,6 +54,18 @@ test('the seeds step link: its own lines, and Pod 1 is offered back while it sti
   assert.strictEqual(q.nextStepFor(DAN, allRead, step).nextPod, null)
 })
 
+test('job #457: the health pod is in his queue after the seeds, and a ?pod=health link opens it', () => {
+  const built = dansQueue()
+  built.lines.push(pod('h1', 'health', false), pod('h2', 'health', true))
+  const scoped = q.scopeQueue(DAN, built)
+  assert.strictEqual(scoped.lines.filter((l) => l.podSlug === 'health').length, 2)
+  const step = q.stepForLink(DAN, { course: 'cym_s_for_eng', pod: 'health' })
+  assert.strictEqual(step && step.key, 'health')
+  const seedsStep = q.stepForLink(DAN, { course: 'cym_s_for_eng', step: 'seeds' })
+  const allSeedsRead = scoped.lines.map((l) => (l.kind === 'seed' || l.podSlug === 'pod-1' ? { ...l, recorded: true } : l))
+  assert.strictEqual(q.nextStepFor(DAN, allSeedsRead, seedsStep).nextPod.step, 'health')
+})
+
 test('a voice with no controlled queue is untouched', () => {
   const built = dansQueue()
   assert.strictEqual(q.scopeQueue('human_aran_cym_n', built), built)

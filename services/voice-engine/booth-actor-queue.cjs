@@ -10,6 +10,7 @@
  *   3. After Pod 1 comes the 206 silent Southern seed sentences (released cym_s_for_eng seeds,
  *      Welsh target1 slot, Dan cast fill-only; job #180) — NOT the one-line guess-game pod
  *      (job #867), and not behind every later pod. Pods not in the queue are not offered.
+ *   4. Then the health pod (Kai, 2026-10-21, job #457).
  *
  * A voice listed here has an EXPLICIT, ORDERED queue. Every read of its booth (home summary,
  * whole list, pod link, step link) is cut to the lines of these steps and nothing else, and the
@@ -30,6 +31,10 @@ const ACTOR_QUEUES = {
   human_dan_cym_s: [
     { key: 'pod-1', title: 'Pod 1', courseCode: 'cym_s_for_eng', pod: 'pod-1' },
     { key: 'seeds', title: 'Seed sentences', courseCode: 'cym_s_for_eng', kind: 'seed', role: 'target1' },
+    // Kai, 2026-10-21 (job #457): the Southern health pod, proofread by Deborah; Dan reads its
+    // male parts (Wil Hughes, GP Patient), Eleri the female ones. Last, so Pod 1 and the seeds
+    // keep their place; a ?pod=health link opens it directly.
+    { key: 'health', title: 'Health', courseCode: 'cym_s_for_eng', pod: 'health' },
   ],
 }
 

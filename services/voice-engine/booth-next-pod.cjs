@@ -17,7 +17,12 @@
  *   - `metadata.status = 'draft'` is NOT a skip either, for the same reason: pod-1
  *     carries it while being recorded.
  *   - A pod STAGED AS A DRAFT (metadata.staged_draft, pod-stage-draft.cjs: unproofread
- *     text, no cast) IS skipped, and so is an ARCHIVED or gated placeholder pod.
+ *     text, no cast) IS skipped while any of its lines is still an unread draft, and so is
+ *     an ARCHIVED or gated placeholder pod. The staged_draft stamp is a birth record and is
+ *     never taken off, so once every line is proofread (draftLines 0, counted by the router)
+ *     the pod is offered like any other (Kai, 2026-10-21, job #457: cym_s_for_eng health,
+ *     proofread by Deborah, cast to Eleri and Dan, is the next pod on Eleri's Pod 1 link).
+ *     A pod whose draft count was not read (draftLines absent) stays skipped.
  *   - Voice approval (pod-voice-approvals.cjs) gates TTS renders per course; there is
  *     no per-pod voice-approval state for a human cast, so nothing is checked for it.
  * The queue itself already decides which lines an actor is cast on and that a line
@@ -33,14 +38,14 @@ const POD_KINDS = new Set(['pod', 'takeg'])
 function podNotOfferedBecause(pod) {
   const m = (pod && pod.metadata) || {}
   if (m.archived === true || m.gated_placeholder === true) return 'archived'
-  if (m.staged_draft) return 'staged_draft'
+  if (m.staged_draft && pod.draftLines !== 0) return 'staged_draft'
   return null
 }
 
 /**
  * @param {object[]} lines the voice's whole queue (recorded lines INCLUDED), in queue order
  * @param {string} currentPod the link's ?pod= — a slug or a full pod id
- * @param {Map<string, object>|object} podsById listening_pods rows ({id, metadata}) by id
+ * @param {Map<string, object>|object} podsById listening_pods rows ({id, metadata, draftLines?}) by id
  * @param {string|null} [currentCourse] the link's ?course=: two courses can each have a 'pod-1', so a bare slug names the pod of THIS course
  * @returns {{nextPod: object|null, remainingOutsidePods: number}}
  */
