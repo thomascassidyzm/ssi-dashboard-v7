@@ -94,6 +94,20 @@ test('a voice without a phrase step still gets no phrase plan (Dan)', () => {
   assert.strictEqual(scoped.phraseBatches, null)
 })
 
+test('Eleri totals include the phrase batch appended after finishQueue builds its tally', () => {
+  const sentence = { ...seed(1, true, 'cym_sv2_for_eng'), role: 'target2' }
+  const phrase = { id: 'phrase-1', kind: 'phrase', role: 'target2', courseCode: 'cym_sv2_for_eng', recorded: false }
+  const scoped = q.scopeQueue('human_eleri_cym_s', {
+    lines: [sentence, phrase], total: 2, recorded: 1, remaining: 1,
+    tally: [{ courseCode: sentence.courseCode, kind: 'seed', role: 'target2', total: 1, recorded: 1 }],
+    phrases: { pass: 1, batch: 1 },
+  })
+  assert.deepStrictEqual(
+    { total: scoped.total, recorded: scoped.recorded, remaining: scoped.remaining },
+    { total: 2, recorded: 1, remaining: 1 },
+  )
+})
+
 test('a voice with no controlled queue is untouched', () => {
   const built = dansQueue()
   assert.strictEqual(q.scopeQueue('human_aran_cym_n', built), built)
