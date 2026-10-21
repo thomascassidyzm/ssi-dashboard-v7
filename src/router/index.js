@@ -229,6 +229,15 @@ const routes = [
     component: () => import('../views/MetagraphView.vue'),
     meta: { title: 'Metagraph' }
   },
+  // Layers x Q/R/S x shapes (2026-10-21) — the Speakability grid beside the Metagraph.
+  // Tom: "this should be published and updated on popty as we develop more pods".
+  // Read-only and GENERATED: stored tags + the live seeds and pod lines, on every load.
+  {
+    path: '/canonical/layers-shapes',
+    name: 'LayersShapes',
+    component: () => import('../views/LayersShapesView.vue'),
+    meta: { title: 'Layers × shapes' }
+  },
   // Pod script viewer (2026-08-24) — fleet-wide, read-only. Tom: "I think I need
   // to be able to see them all." Deep-linkable per course so a URL can be sent.
   {
