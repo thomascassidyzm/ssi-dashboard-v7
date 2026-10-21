@@ -1,0 +1,4101 @@
+[
+ {
+  "id": "N001",
+  "source": "sut  |  how",
+  "proposed": "sut?  |  how?",
+  "note": "North v2 · 19 rows: S0006L03, S1003L01, S1004L01, S1043L01, S1056L02 … · a single question word; it is also used inside statements",
+  "course": "cym_nv2_for_eng",
+  "known": "how",
+  "target": "sut",
+  "rows": [
+   "S0006L03",
+   "S1003L01",
+   "S1004L01",
+   "S1043L01",
+   "S1056L02",
+   "S1057L03",
+   "S1059L01",
+   "S1060L01",
+   "S1122L04",
+   "S1160L01",
+   "S1202L02",
+   "S1208L03",
+   "S1508L04",
+   "S1601L02",
+   "S1602L01",
+   "S1642L01",
+   "S1642L02#0",
+   "cym_nv2_for_eng:S1642L02C01",
+   "S1657L01"
+  ]
+ },
+ {
+  "id": "N002",
+  "source": "beth  |  what",
+  "proposed": "beth?  |  what?",
+  "note": "North v2 · 4 rows: S0010L01, S1465L03 component, S1465L03C01, S1494L01 · a single question word; it is also used inside statements",
+  "course": "cym_nv2_for_eng",
+  "known": "what",
+  "target": "beth",
+  "rows": [
+   "S0010L01",
+   "S1465L03#0",
+   "cym_nv2_for_eng:S1465L03C01",
+   "S1494L01"
+  ]
+ },
+ {
+  "id": "N003",
+  "source": "wnest ti ddechrau wythnos yn ôl  |  you started a week ago",
+  "proposed": "wnest ti ddechrau wythnos yn ôl?  |  you started a week ago?",
+  "note": "North v2 · 1 row: seed 42 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started a week ago",
+  "target": "wnest ti ddechrau wythnos yn ôl",
+  "rows": [
+   "42"
+  ]
+ },
+ {
+  "id": "N004",
+  "source": "wnest ti ddechrau  |  you started",
+  "proposed": "wnest ti ddechrau?  |  you started?",
+  "note": "North v2 · 1 row: S0042L01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started",
+  "target": "wnest ti ddechrau",
+  "rows": [
+   "S0042L01"
+  ]
+ },
+ {
+  "id": "N005",
+  "source": "wnest ti ddechrau ymarfer  |  you started to practice",
+  "proposed": "wnest ti ddechrau ymarfer?  |  you started to practice?",
+  "note": "North v2 · 1 row: S0042L01B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started to practice",
+  "target": "wnest ti ddechrau ymarfer",
+  "rows": [
+   "cym_nv2_for_eng:S0042L01B06"
+  ]
+ },
+ {
+  "id": "N006",
+  "source": "wnest ti ddechrau trio  |  you started to try",
+  "proposed": "wnest ti ddechrau trio?  |  you started to try?",
+  "note": "North v2 · 1 row: S0042L01B05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started to try",
+  "target": "wnest ti ddechrau trio",
+  "rows": [
+   "cym_nv2_for_eng:S0042L01B05"
+  ]
+ },
+ {
+  "id": "N007",
+  "source": "wnest ti ddechrau siarad  |  you started to speak",
+  "proposed": "wnest ti ddechrau siarad?  |  you started to speak?",
+  "note": "North v2 · 1 row: S0042L01B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started to speak",
+  "target": "wnest ti ddechrau siarad",
+  "rows": [
+   "cym_nv2_for_eng:S0042L01B04"
+  ]
+ },
+ {
+  "id": "N008",
+  "source": "wnest ti ddechrau gwella  |  you started to improve",
+  "proposed": "wnest ti ddechrau gwella?  |  you started to improve?",
+  "note": "North v2 · 1 row: S0042L01B02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started to improve",
+  "target": "wnest ti ddechrau gwella",
+  "rows": [
+   "cym_nv2_for_eng:S0042L01B02"
+  ]
+ },
+ {
+  "id": "N009",
+  "source": "wnest ti ddechrau cofio  |  you started to remember",
+  "proposed": "wnest ti ddechrau cofio?  |  you started to remember?",
+  "note": "North v2 · 1 row: S0042L01B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started to remember",
+  "target": "wnest ti ddechrau cofio",
+  "rows": [
+   "cym_nv2_for_eng:S0042L01B01"
+  ]
+ },
+ {
+  "id": "N010",
+  "source": "wnest ti ddechrau gwneud rhywbeth  |  you started to do something",
+  "proposed": "wnest ti ddechrau gwneud rhywbeth?  |  you started to do something?",
+  "note": "North v2 · 1 row: S0042L01B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started to do something",
+  "target": "wnest ti ddechrau gwneud rhywbeth",
+  "rows": [
+   "cym_nv2_for_eng:S0042L01B03"
+  ]
+ },
+ {
+  "id": "N011",
+  "source": "wnest ti ddechrau gwneud rhywbeth wythnos yn ôl  |  you started to do something a week ago",
+  "proposed": "wnest ti ddechrau gwneud rhywbeth wythnos yn ôl?  |  you started to do something a week ago?",
+  "note": "North v2 · 1 row: S0042L02B05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started to do something a week ago",
+  "target": "wnest ti ddechrau gwneud rhywbeth wythnos yn ôl",
+  "rows": [
+   "cym_nv2_for_eng:S0042L02B05"
+  ]
+ },
+ {
+  "id": "N012",
+  "source": "wnest ti ddechrau dysgu mis yn ôl  |  you started to learn a month ago",
+  "proposed": "wnest ti ddechrau dysgu mis yn ôl?  |  you started to learn a month ago?",
+  "note": "North v2 · 1 row: S0042L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started to learn a month ago",
+  "target": "wnest ti ddechrau dysgu mis yn ôl",
+  "rows": [
+   "cym_nv2_for_eng:S0042L02B04"
+  ]
+ },
+ {
+  "id": "N013",
+  "source": "wnest ti ddechrau ymarfer wythnos yn ôl  |  you started to practice a week ago",
+  "proposed": "wnest ti ddechrau ymarfer wythnos yn ôl?  |  you started to practice a week ago?",
+  "note": "North v2 · 1 row: S0042L02B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started to practice a week ago",
+  "target": "wnest ti ddechrau ymarfer wythnos yn ôl",
+  "rows": [
+   "cym_nv2_for_eng:S0042L02B06"
+  ]
+ },
+ {
+  "id": "N014",
+  "source": "wnest ti ddechrau mis yn ôl  |  you started a month ago",
+  "proposed": "wnest ti ddechrau mis yn ôl?  |  you started a month ago?",
+  "note": "North v2 · 1 row: S0045L01U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started a month ago",
+  "target": "wnest ti ddechrau mis yn ôl",
+  "rows": [
+   "cym_nv2_for_eng:S0045L01U01"
+  ]
+ },
+ {
+  "id": "N015",
+  "source": "sut wyt ti’n teimlo?  |  you feel",
+  "proposed": "sut wyt ti’n teimlo?  |  you feel?",
+  "note": "North v2 · 3 rows: S0103L01, S1040L01, S1040L01 component · the Welsh has a \"?\" but the English is not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "you feel",
+  "target": "sut wyt ti’n teimlo?",
+  "rows": [
+   "S0103L01",
+   "S1040L01",
+   "S1040L01#0"
+  ]
+ },
+ {
+  "id": "N016",
+  "source": "wnest ti ddechrau gwylio’r ffilm ’na wythnos yn ôl  |  you started to watch that film a week ago",
+  "proposed": "wnest ti ddechrau gwylio’r ffilm ’na wythnos yn ôl?  |  you started to watch that film a week ago?",
+  "note": "North v2 · 1 row: S0111L03U11 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started to watch that film a week ago",
+  "target": "wnest ti ddechrau gwylio’r ffilm ’na wythnos yn ôl",
+  "rows": [
+   "cym_nv2_for_eng:S0111L03U11"
+  ]
+ },
+ {
+  "id": "N017",
+  "source": "gest ti ormod i fwyta penwythnos diwetha’, clywes i  |  you had too much to eat last weekend, I heard",
+  "proposed": "gest ti ormod i fwyta penwythnos diwetha’, clywes i?  |  you had too much to eat last weekend, I heard?",
+  "note": "North v2 · 1 row: seed 129 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you had too much to eat last weekend, I heard",
+  "target": "gest ti ormod i fwyta penwythnos diwetha’, clywes i",
+  "rows": [
+   "129"
+  ]
+ },
+ {
+  "id": "N018",
+  "source": "gest ti  |  you had",
+  "proposed": "gest ti?  |  you had?",
+  "note": "North v2 · 1 row: S0129L02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you had",
+  "target": "gest ti",
+  "rows": [
+   "S0129L02"
+  ]
+ },
+ {
+  "id": "N019",
+  "source": "gest ti rywbeth i’w fwyta yn y tŷ bwyta  |  you had something to eat in the restaurant",
+  "proposed": "gest ti rywbeth i’w fwyta yn y tŷ bwyta?  |  you had something to eat in the restaurant?",
+  "note": "North v2 · 1 row: S0129L02B07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you had something to eat in the restaurant",
+  "target": "gest ti rywbeth i’w fwyta yn y tŷ bwyta",
+  "rows": [
+   "cym_nv2_for_eng:S0129L02B07"
+  ]
+ },
+ {
+  "id": "N020",
+  "source": "gest ti ormod i’w fwyta dydd Sul diwetha’, clywes i  |  you had too much to eat last Sunday, I heard",
+  "proposed": "gest ti ormod i’w fwyta dydd Sul diwetha’, clywes i?  |  you had too much to eat last Sunday, I heard?",
+  "note": "North v2 · 1 row: S0129L02B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you had too much to eat last Sunday, I heard",
+  "target": "gest ti ormod i’w fwyta dydd Sul diwetha’, clywes i",
+  "rows": [
+   "cym_nv2_for_eng:S0129L02B06"
+  ]
+ },
+ {
+  "id": "N021",
+  "source": "gest ti ddigon i yfed  |  you had enough to drink",
+  "proposed": "gest ti ddigon i yfed?  |  you had enough to drink?",
+  "note": "North v2 · 1 row: S0129L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you had enough to drink",
+  "target": "gest ti ddigon i yfed",
+  "rows": [
+   "cym_nv2_for_eng:S0129L02B04"
+  ]
+ },
+ {
+  "id": "N022",
+  "source": "gest ti ddigon i’w fwyta penwythnos diwetha’  |  you had enough to eat last weekend",
+  "proposed": "gest ti ddigon i’w fwyta penwythnos diwetha’?  |  you had enough to eat last weekend?",
+  "note": "North v2 · 1 row: S0129L02B05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you had enough to eat last weekend",
+  "target": "gest ti ddigon i’w fwyta penwythnos diwetha’",
+  "rows": [
+   "cym_nv2_for_eng:S0129L02B05"
+  ]
+ },
+ {
+  "id": "N023",
+  "source": "gest ti rywbeth i’w yfed  |  you had something to drink",
+  "proposed": "gest ti rywbeth i’w yfed?  |  you had something to drink?",
+  "note": "North v2 · 1 row: S0129L02U02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you had something to drink",
+  "target": "gest ti rywbeth i’w yfed",
+  "rows": [
+   "cym_nv2_for_eng:S0129L02U02"
+  ]
+ },
+ {
+  "id": "N024",
+  "source": "gest ti rywbeth i’w fwyta, clywes i  |  you had something to eat, I heard",
+  "proposed": "gest ti rywbeth i’w fwyta, clywes i?  |  you had something to eat, I heard?",
+  "note": "North v2 · 1 row: S0129L02U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you had something to eat, I heard",
+  "target": "gest ti rywbeth i’w fwyta, clywes i",
+  "rows": [
+   "cym_nv2_for_eng:S0129L02U01"
+  ]
+ },
+ {
+  "id": "N025",
+  "source": "wnest ti ddechrau wythnos yn ôl, clywes i  |  you started a week ago, I heard",
+  "proposed": "wnest ti ddechrau wythnos yn ôl, clywes i?  |  you started a week ago, I heard?",
+  "note": "North v2 · 1 row: S0129L01U03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you started a week ago, I heard",
+  "target": "wnest ti ddechrau wythnos yn ôl, clywes i",
+  "rows": [
+   "cym_nv2_for_eng:S0129L01U03"
+  ]
+ },
+ {
+  "id": "N026",
+  "source": "beth oedd yn mynd i ddigwydd  |  what was going to happen",
+  "proposed": "beth oedd yn mynd i ddigwydd?  |  what was going to happen?",
+  "note": "North v2 · 1 row: S0183L01B01 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what was going to happen",
+  "target": "beth oedd yn mynd i ddigwydd",
+  "rows": [
+   "cym_nv2_for_eng:S0183L01B01"
+  ]
+ },
+ {
+  "id": "N027",
+  "source": "beth oedd yn digwydd  |  what was happening",
+  "proposed": "beth oedd yn digwydd?  |  what was happening?",
+  "note": "North v2 · 1 row: S0184L01 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what was happening",
+  "target": "beth oedd yn digwydd",
+  "rows": [
+   "S0184L01"
+  ]
+ },
+ {
+  "id": "N028",
+  "source": "oeddach chi isio panad o de neu goffi  |  you wanted a cup of tea or coffee",
+  "proposed": "oeddach chi isio panad o de neu goffi?  |  you wanted a cup of tea or coffee?",
+  "note": "North v2 · 1 row: seed 206 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted a cup of tea or coffee",
+  "target": "oeddach chi isio panad o de neu goffi",
+  "rows": [
+   "206"
+  ]
+ },
+ {
+  "id": "N029",
+  "source": "oeddach chi isio  |  you wanted",
+  "proposed": "oeddach chi isio?  |  you wanted?",
+  "note": "North v2 · 1 row: S0206L02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted",
+  "target": "oeddach chi isio",
+  "rows": [
+   "S0206L02"
+  ]
+ },
+ {
+  "id": "N030",
+  "source": "oeddach chi isio rhywbeth  |  you wanted something",
+  "proposed": "oeddach chi isio rhywbeth?  |  you wanted something?",
+  "note": "North v2 · 1 row: S0206L02B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted something",
+  "target": "oeddach chi isio rhywbeth",
+  "rows": [
+   "cym_nv2_for_eng:S0206L02B03"
+  ]
+ },
+ {
+  "id": "N031",
+  "source": "oeddach chi isio panad o de  |  you wanted a cup of tea",
+  "proposed": "oeddach chi isio panad o de?  |  you wanted a cup of tea?",
+  "note": "North v2 · 1 row: S0206L02B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted a cup of tea",
+  "target": "oeddach chi isio panad o de",
+  "rows": [
+   "cym_nv2_for_eng:S0206L02B01"
+  ]
+ },
+ {
+  "id": "N032",
+  "source": "oeddach chi isio rhywbeth arall  |  you wanted something else",
+  "proposed": "oeddach chi isio rhywbeth arall?  |  you wanted something else?",
+  "note": "North v2 · 1 row: S0206L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted something else",
+  "target": "oeddach chi isio rhywbeth arall",
+  "rows": [
+   "cym_nv2_for_eng:S0206L02B04"
+  ]
+ },
+ {
+  "id": "N033",
+  "source": "oeddach chi isio panad o goffi  |  you wanted a cup of coffee",
+  "proposed": "oeddach chi isio panad o goffi?  |  you wanted a cup of coffee?",
+  "note": "North v2 · 1 row: S0206L02B02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted a cup of coffee",
+  "target": "oeddach chi isio panad o goffi",
+  "rows": [
+   "cym_nv2_for_eng:S0206L02B02"
+  ]
+ },
+ {
+  "id": "N034",
+  "source": "oeddach chi isio llefrith efo’ch coffi  |  you wanted milk with your coffee",
+  "proposed": "oeddach chi isio llefrith efo’ch coffi?  |  you wanted milk with your coffee?",
+  "note": "North v2 · 1 row: S0207L01B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted milk with your coffee",
+  "target": "oeddach chi isio llefrith efo’ch coffi",
+  "rows": [
+   "cym_nv2_for_eng:S0207L01B06"
+  ]
+ },
+ {
+  "id": "N035",
+  "source": "oeddach chi isio llefrith efo’ch te  |  you wanted milk with your tea",
+  "proposed": "oeddach chi isio llefrith efo’ch te?  |  you wanted milk with your tea?",
+  "note": "North v2 · 1 row: S0207L01B07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted milk with your tea",
+  "target": "oeddach chi isio llefrith efo’ch te",
+  "rows": [
+   "cym_nv2_for_eng:S0207L01B07"
+  ]
+ },
+ {
+  "id": "N036",
+  "source": "oeddat ti isio codi  |  you wanted to get up",
+  "proposed": "oeddat ti isio codi?  |  you wanted to get up?",
+  "note": "North v2 · 1 row: S0209L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to get up",
+  "target": "oeddat ti isio codi",
+  "rows": [
+   "cym_nv2_for_eng:S0209L02B04"
+  ]
+ },
+ {
+  "id": "N037",
+  "source": "oeddat ti isio codi yn gynnar yn y bore  |  you wanted to get up early in the morning",
+  "proposed": "oeddat ti isio codi yn gynnar yn y bore?  |  you wanted to get up early in the morning?",
+  "note": "North v2 · 1 row: S0210L01B05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to get up early in the morning",
+  "target": "oeddat ti isio codi yn gynnar yn y bore",
+  "rows": [
+   "cym_nv2_for_eng:S0210L01B05"
+  ]
+ },
+ {
+  "id": "N038",
+  "source": "oeddat ti’n meddwl  |  you thought",
+  "proposed": "oeddat ti’n meddwl?  |  you thought?",
+  "note": "North v2 · 2 rows: S0211L02, S1617L01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought",
+  "target": "oeddat ti’n meddwl",
+  "rows": [
+   "S0211L02",
+   "S1617L01"
+  ]
+ },
+ {
+  "id": "N039",
+  "source": "oeddat ti’n meddwl bo’ ti isio codi yn gynnar yn y bore  |  you thought that you wanted to get up early in the morning",
+  "proposed": "oeddat ti’n meddwl bo’ ti isio codi yn gynnar yn y bore?  |  you thought that you wanted to get up early in the morning?",
+  "note": "North v2 · 1 row: S0211L02B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought that you wanted to get up early in the morning",
+  "target": "oeddat ti’n meddwl bo’ ti isio codi yn gynnar yn y bore",
+  "rows": [
+   "cym_nv2_for_eng:S0211L02B06"
+  ]
+ },
+ {
+  "id": "N040",
+  "source": "oeddat ti’n meddwl bo’ ti isio llefrith efo dy goffi  |  you thought that you wanted milk with your coffee",
+  "proposed": "oeddat ti’n meddwl bo’ ti isio llefrith efo dy goffi?  |  you thought that you wanted milk with your coffee?",
+  "note": "North v2 · 1 row: S0211L02B07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought that you wanted milk with your coffee",
+  "target": "oeddat ti’n meddwl bo’ ti isio llefrith efo dy goffi",
+  "rows": [
+   "cym_nv2_for_eng:S0211L02B07"
+  ]
+ },
+ {
+  "id": "N041",
+  "source": "oeddat ti isio mynd allan rhywben  |  you wanted to go out sometime",
+  "proposed": "oeddat ti isio mynd allan rhywben?  |  you wanted to go out sometime?",
+  "note": "North v2 · 1 row: S0212L02B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to go out sometime",
+  "target": "oeddat ti isio mynd allan rhywben",
+  "rows": [
+   "cym_nv2_for_eng:S0212L02B06"
+  ]
+ },
+ {
+  "id": "N042",
+  "source": "oeddat ti isio mynd allan neithiwr  |  you wanted to go out last night",
+  "proposed": "oeddat ti isio mynd allan neithiwr?  |  you wanted to go out last night?",
+  "note": "North v2 · 1 row: S0212L01B07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to go out last night",
+  "target": "oeddat ti isio mynd allan neithiwr",
+  "rows": [
+   "cym_nv2_for_eng:S0212L01B07"
+  ]
+ },
+ {
+  "id": "N043",
+  "source": "oeddat ti’n meddwl bo’ fi isio mynd allan  |  you thought that I wanted to go out",
+  "proposed": "oeddat ti’n meddwl bo’ fi isio mynd allan?  |  you thought that I wanted to go out?",
+  "note": "North v2 · 1 row: S0212L01U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought that I wanted to go out",
+  "target": "oeddat ti’n meddwl bo’ fi isio mynd allan",
+  "rows": [
+   "cym_nv2_for_eng:S0212L01U01"
+  ]
+ },
+ {
+  "id": "N044",
+  "source": "oeddat ti’n meddwl na ddylwn i ddim cymryd gormod o risg  |  you thought that I shouldn’t take too much of a risk",
+  "proposed": "oeddat ti’n meddwl na ddylwn i ddim cymryd gormod o risg?  |  you thought that I shouldn’t take too much of a risk?",
+  "note": "North v2 · 1 row: S0215L02U02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought that I shouldn’t take too much of a risk",
+  "target": "oeddat ti’n meddwl na ddylwn i ddim cymryd gormod o risg",
+  "rows": [
+   "cym_nv2_for_eng:S0215L02U02"
+  ]
+ },
+ {
+  "id": "N045",
+  "source": "oeddat ti isio cymryd gormod  |  you wanted to take too much",
+  "proposed": "oeddat ti isio cymryd gormod?  |  you wanted to take too much?",
+  "note": "North v2 · 1 row: S0215L01B07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to take too much",
+  "target": "oeddat ti isio cymryd gormod",
+  "rows": [
+   "cym_nv2_for_eng:S0215L01B07"
+  ]
+ },
+ {
+  "id": "N046",
+  "source": "oeddat ti isio gwneud o ar dy ben dy hun  |  you wanted to do it on your own",
+  "proposed": "oeddat ti isio gwneud o ar dy ben dy hun?  |  you wanted to do it on your own?",
+  "note": "North v2 · 1 row: S0219L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to do it on your own",
+  "target": "oeddat ti isio gwneud o ar dy ben dy hun",
+  "rows": [
+   "cym_nv2_for_eng:S0219L02B04"
+  ]
+ },
+ {
+  "id": "N047",
+  "source": "oeddat ti isio mynd allan ar dy ben dy hun  |  you wanted to go out on your own",
+  "proposed": "oeddat ti isio mynd allan ar dy ben dy hun?  |  you wanted to go out on your own?",
+  "note": "North v2 · 1 row: S0219L02B05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to go out on your own",
+  "target": "oeddat ti isio mynd allan ar dy ben dy hun",
+  "rows": [
+   "cym_nv2_for_eng:S0219L02B05"
+  ]
+ },
+ {
+  "id": "N048",
+  "source": "oeddat ti isio rhoi fo iddo fo ddydd Llun  |  you wanted to give it to him on Monday",
+  "proposed": "oeddat ti isio rhoi fo iddo fo ddydd Llun?  |  you wanted to give it to him on Monday?",
+  "note": "North v2 · 1 row: seed 224 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to give it to him on Monday",
+  "target": "oeddat ti isio rhoi fo iddo fo ddydd Llun",
+  "rows": [
+   "224"
+  ]
+ },
+ {
+  "id": "N049",
+  "source": "oeddat ti isio rhoi’r ffilm ’na iddi hi  |  you wanted to give that film to her",
+  "proposed": "oeddat ti isio rhoi’r ffilm ’na iddi hi?  |  you wanted to give that film to her?",
+  "note": "North v2 · 1 row: S0232L02U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to give that film to her",
+  "target": "oeddat ti isio rhoi’r ffilm ’na iddi hi",
+  "rows": [
+   "cym_nv2_for_eng:S0232L02U01"
+  ]
+ },
+ {
+  "id": "N050",
+  "source": "oeddat ti isio delio efo’r trefniadau  |  you wanted to deal with the arrangements",
+  "proposed": "oeddat ti isio delio efo’r trefniadau?  |  you wanted to deal with the arrangements?",
+  "note": "North v2 · 1 row: S0235L01B07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to deal with the arrangements",
+  "target": "oeddat ti isio delio efo’r trefniadau",
+  "rows": [
+   "cym_nv2_for_eng:S0235L01B07"
+  ]
+ },
+ {
+  "id": "N051",
+  "source": "oeddat ti’n meddwl fod o’n eitha’ da  |  you thought it was fairly good",
+  "proposed": "oeddat ti’n meddwl fod o’n eitha’ da?  |  you thought it was fairly good?",
+  "note": "North v2 · 1 row: S0238L01B07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought it was fairly good",
+  "target": "oeddat ti’n meddwl fod o’n eitha’ da",
+  "rows": [
+   "cym_nv2_for_eng:S0238L01B07"
+  ]
+ },
+ {
+  "id": "N052",
+  "source": "oeddat ti’n meddwl fod o’n sothach llwyr  |  you thought that it was complete rubbish",
+  "proposed": "oeddat ti’n meddwl fod o’n sothach llwyr?  |  you thought that it was complete rubbish?",
+  "note": "North v2 · 1 row: S0239L01U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought that it was complete rubbish",
+  "target": "oeddat ti’n meddwl fod o’n sothach llwyr",
+  "rows": [
+   "cym_nv2_for_eng:S0239L01U01"
+  ]
+ },
+ {
+  "id": "N053",
+  "source": "wnest ti’m deud unrhywbeth diddorol wrtha i  |  you didn’t tell me anything interesting",
+  "proposed": "wnest ti’m deud unrhywbeth diddorol wrtha i?  |  you didn’t tell me anything interesting?",
+  "note": "North v2 · 1 row: seed 250 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me anything interesting",
+  "target": "wnest ti’m deud unrhywbeth diddorol wrtha i",
+  "rows": [
+   "250"
+  ]
+ },
+ {
+  "id": "N054",
+  "source": "wnest ti’m deud wrtha i  |  you didn’t tell me",
+  "proposed": "wnest ti’m deud wrtha i?  |  you didn’t tell me?",
+  "note": "North v2 · 1 row: S0250L01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me",
+  "target": "wnest ti’m deud wrtha i",
+  "rows": [
+   "S0250L01"
+  ]
+ },
+ {
+  "id": "N055",
+  "source": "wnest ti’m deud wrtha i beth o’n i isio gwybod  |  you didn’t tell me what I wanted to know",
+  "proposed": "wnest ti’m deud wrtha i beth o’n i isio gwybod?  |  you didn’t tell me what I wanted to know?",
+  "note": "North v2 · 1 row: S0250L01U10 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me what I wanted to know",
+  "target": "wnest ti’m deud wrtha i beth o’n i isio gwybod",
+  "rows": [
+   "cym_nv2_for_eng:S0250L01U10"
+  ]
+ },
+ {
+  "id": "N056",
+  "source": "wnest ti’m deud wrtha i beth o’n i isio  |  you didn’t tell me what I wanted",
+  "proposed": "wnest ti’m deud wrtha i beth o’n i isio?  |  you didn’t tell me what I wanted?",
+  "note": "North v2 · 1 row: S0250L01U09 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me what I wanted",
+  "target": "wnest ti’m deud wrtha i beth o’n i isio",
+  "rows": [
+   "cym_nv2_for_eng:S0250L01U09"
+  ]
+ },
+ {
+  "id": "N057",
+  "source": "wnest ti’m deud wrtha i be’ ti isio  |  you didn’t tell me what you want",
+  "proposed": "wnest ti’m deud wrtha i be’ ti isio?  |  you didn’t tell me what you want?",
+  "note": "North v2 · 1 row: S0250L01U12 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me what you want",
+  "target": "wnest ti’m deud wrtha i be’ ti isio",
+  "rows": [
+   "cym_nv2_for_eng:S0250L01U12"
+  ]
+ },
+ {
+  "id": "N058",
+  "source": "wnest ti’m deud wrtha i sut i ffeindio allan be’ dw i isio  |  you didn’t tell me how to find out what I want",
+  "proposed": "wnest ti’m deud wrtha i sut i ffeindio allan be’ dw i isio?  |  you didn’t tell me how to find out what I want?",
+  "note": "North v2 · 1 row: S0250L01U15 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me how to find out what I want",
+  "target": "wnest ti’m deud wrtha i sut i ffeindio allan be’ dw i isio",
+  "rows": [
+   "cym_nv2_for_eng:S0250L01U15"
+  ]
+ },
+ {
+  "id": "N059",
+  "source": "wnest ti’m deud wrtha i sut ti’n teimlo  |  you didn’t tell me how you’re feeling",
+  "proposed": "wnest ti’m deud wrtha i sut ti’n teimlo?  |  you didn’t tell me how you’re feeling?",
+  "note": "North v2 · 1 row: S0250L01U16 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me how you’re feeling",
+  "target": "wnest ti’m deud wrtha i sut ti’n teimlo",
+  "rows": [
+   "cym_nv2_for_eng:S0250L01U16"
+  ]
+ },
+ {
+  "id": "N060",
+  "source": "wnest ti’m deud wrtha i sut i ffeindio allan  |  you didn’t tell me how to find out",
+  "proposed": "wnest ti’m deud wrtha i sut i ffeindio allan?  |  you didn’t tell me how to find out?",
+  "note": "North v2 · 1 row: S0250L01U14 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me how to find out",
+  "target": "wnest ti’m deud wrtha i sut i ffeindio allan",
+  "rows": [
+   "cym_nv2_for_eng:S0250L01U14"
+  ]
+ },
+ {
+  "id": "N061",
+  "source": "wnest ti’m deud wrtha i os oeddat ti isio te neu goffi  |  you didn’t tell me if you wanted tea or coffee",
+  "proposed": "wnest ti’m deud wrtha i os oeddat ti isio te neu goffi?  |  you didn’t tell me if you wanted tea or coffee?",
+  "note": "North v2 · 1 row: S0250L01U13 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me if you wanted tea or coffee",
+  "target": "wnest ti’m deud wrtha i os oeddat ti isio te neu goffi",
+  "rows": [
+   "cym_nv2_for_eng:S0250L01U13"
+  ]
+ },
+ {
+  "id": "N062",
+  "source": "wnest ti’m deud wrtha i be’ dan ni’n mynd i wneud ddydd Mercher  |  you didn’t tell me what we’re going to do on Wednesday",
+  "proposed": "wnest ti’m deud wrtha i be’ dan ni’n mynd i wneud ddydd Mercher?  |  you didn’t tell me what we’re going to do on Wednesday?",
+  "note": "North v2 · 1 row: S0250L01U11 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me what we’re going to do on Wednesday",
+  "target": "wnest ti’m deud wrtha i be’ dan ni’n mynd i wneud ddydd Mercher",
+  "rows": [
+   "cym_nv2_for_eng:S0250L01U11"
+  ]
+ },
+ {
+  "id": "N063",
+  "source": "wnest ti’m deud unrhywbeth wrtha i  |  you didn’t tell me anything",
+  "proposed": "wnest ti’m deud unrhywbeth wrtha i?  |  you didn’t tell me anything?",
+  "note": "North v2 · 1 row: S0250L01U08 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me anything",
+  "target": "wnest ti’m deud unrhywbeth wrtha i",
+  "rows": [
+   "cym_nv2_for_eng:S0250L01U08"
+  ]
+ },
+ {
+  "id": "N064",
+  "source": "wnest ti’m deud wrtha i beth oeddat ti’n meddwl am y ffilm ’na  |  you didn’t tell me what you thought of that film",
+  "proposed": "wnest ti’m deud wrtha i beth oeddat ti’n meddwl am y ffilm ’na?  |  you didn’t tell me what you thought of that film?",
+  "note": "North v2 · 1 row: S0251L01U11 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me what you thought of that film",
+  "target": "wnest ti’m deud wrtha i beth oeddat ti’n meddwl am y ffilm ’na",
+  "rows": [
+   "cym_nv2_for_eng:S0251L01U11"
+  ]
+ },
+ {
+  "id": "N065",
+  "source": "wnest ti’m deud wrtha i beth oeddat ti angen gwneud ddydd Iau  |  you didn’t tell me what you needed to do on Thursday",
+  "proposed": "wnest ti’m deud wrtha i beth oeddat ti angen gwneud ddydd Iau?  |  you didn’t tell me what you needed to do on Thursday?",
+  "note": "North v2 · 1 row: S0252L03U07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me what you needed to do on Thursday",
+  "target": "wnest ti’m deud wrtha i beth oeddat ti angen gwneud ddydd Iau",
+  "rows": [
+   "cym_nv2_for_eng:S0252L03U07"
+  ]
+ },
+ {
+  "id": "N066",
+  "source": "wnest ti’m deud wrthaf fi fod o ddim isio helpu  |  you didn’t tell me that he doesn’t want to help",
+  "proposed": "wnest ti’m deud wrthaf fi fod o ddim isio helpu?  |  you didn’t tell me that he doesn’t want to help?",
+  "note": "North v2 · 1 row: S0252L01U07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me that he doesn’t want to help",
+  "target": "wnest ti’m deud wrthaf fi fod o ddim isio helpu",
+  "rows": [
+   "cym_nv2_for_eng:S0252L01U07"
+  ]
+ },
+ {
+  "id": "N067",
+  "source": "wnest ti’m deud wrthaf fi fod o ’di gorffen  |  you didn’t tell me that it had finished",
+  "proposed": "wnest ti’m deud wrthaf fi fod o ’di gorffen?  |  you didn’t tell me that it had finished?",
+  "note": "North v2 · 1 row: S0254L01U13 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me that it had finished",
+  "target": "wnest ti’m deud wrthaf fi fod o ’di gorffen",
+  "rows": [
+   "cym_nv2_for_eng:S0254L01U13"
+  ]
+ },
+ {
+  "id": "N068",
+  "source": "wnest ti’m deu’ ’tha fi fod o ’di gorffen ddydd Iau  |  you didn’t tell me it had finished on Thursday",
+  "proposed": "wnest ti’m deu’ ’tha fi fod o ’di gorffen ddydd Iau?  |  you didn’t tell me it had finished on Thursday?",
+  "note": "North v2 · 1 row: S0256L02U36 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me it had finished on Thursday",
+  "target": "wnest ti’m deu’ ’tha fi fod o ’di gorffen ddydd Iau",
+  "rows": [
+   "cym_nv2_for_eng:S0256L02U36"
+  ]
+ },
+ {
+  "id": "N069",
+  "source": "wnest ti’m deu’ ’tha fi bo’ hi ’di gorffen  |  you didn’t tell me it had finished",
+  "proposed": "wnest ti’m deu’ ’tha fi bo’ hi ’di gorffen?  |  you didn’t tell me it had finished?",
+  "note": "North v2 · 1 row: S0257L02U41 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me it had finished",
+  "target": "wnest ti’m deu’ ’tha fi bo’ hi ’di gorffen",
+  "rows": [
+   "cym_nv2_for_eng:S0257L02U41"
+  ]
+ },
+ {
+  "id": "N070",
+  "source": "beth ydy ei henw hi  |  what her name is",
+  "proposed": "beth ydy ei henw hi?  |  what her name is?",
+  "note": "North v2 · 2 rows: S0260L03, S1465L03 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what her name is",
+  "target": "beth ydy ei henw hi",
+  "rows": [
+   "S0260L03",
+   "S1465L03"
+  ]
+ },
+ {
+  "id": "N071",
+  "source": "wnest ti’m deud wrtha i pa mor uchel  |  you didn’t tell me how high",
+  "proposed": "wnest ti’m deud wrtha i pa mor uchel?  |  you didn’t tell me how high?",
+  "note": "North v2 · 1 row: S0263L01B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you didn’t tell me how high",
+  "target": "wnest ti’m deud wrtha i pa mor uchel",
+  "rows": [
+   "cym_nv2_for_eng:S0263L01B06"
+  ]
+ },
+ {
+  "id": "N072",
+  "source": "pa un  |  which",
+  "proposed": "pa un?  |  which?",
+  "note": "North v2 · 2 rows: S0275L01, S1492L01 · a single question word; it is also used inside statements",
+  "course": "cym_nv2_for_eng",
+  "known": "which",
+  "target": "pa un",
+  "rows": [
+   "S0275L01",
+   "S1492L01"
+  ]
+ },
+ {
+  "id": "N073",
+  "source": "ydy’r un mwyaf  |  is the most",
+  "proposed": "ydy’r un mwyaf?  |  is the most?",
+  "note": "North v2 · 1 row: S0275L03 · the English reads as a question; the Welsh has no question form",
+  "course": "cym_nv2_for_eng",
+  "known": "is the most",
+  "target": "ydy’r un mwyaf",
+  "rows": [
+   "S0275L03"
+  ]
+ },
+ {
+  "id": "N074",
+  "source": "ydy’r un mwyaf diddorol  |  is the most interesting",
+  "proposed": "ydy’r un mwyaf diddorol?  |  is the most interesting?",
+  "note": "North v2 · 1 row: S0275L04B03 · the English reads as a question; the Welsh has no question form",
+  "course": "cym_nv2_for_eng",
+  "known": "is the most interesting",
+  "target": "ydy’r un mwyaf diddorol",
+  "rows": [
+   "cym_nv2_for_eng:S0275L04B03"
+  ]
+ },
+ {
+  "id": "N075",
+  "source": "ddaw nesa’  |  going to come next",
+  "proposed": "ddaw nesa’?  |  going to come next?",
+  "note": "North v2 · 2 rows: S0276L01, S1493L01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "going to come next",
+  "target": "ddaw nesa’",
+  "rows": [
+   "S0276L01",
+   "S1493L01"
+  ]
+ },
+ {
+  "id": "N076",
+  "source": "beth sy’n digwydd ar ôl hynna  |  what happens after that",
+  "proposed": "beth sy’n digwydd ar ôl hynna?  |  what happens after that?",
+  "note": "North v2 · 1 row: S0277L02B06 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_nv2_for_eng",
+  "known": "what happens after that",
+  "target": "beth sy’n digwydd ar ôl hynna",
+  "rows": [
+   "cym_nv2_for_eng:S0277L02B06"
+  ]
+ },
+ {
+  "id": "N077",
+  "source": "pam  |  why",
+  "proposed": "pam?  |  why?",
+  "note": "North v2 · 14 rows: S0282L01, S1021L01, S1067L01, S1082L03 component, S1082L03C01 … · a single question word; it is also used inside statements",
+  "course": "cym_nv2_for_eng",
+  "known": "why",
+  "target": "pam",
+  "rows": [
+   "S0282L01",
+   "S1021L01",
+   "S1067L01",
+   "S1082L03#0",
+   "cym_nv2_for_eng:S1082L03C01",
+   "S1099L02",
+   "S1105L01#1",
+   "cym_nv2_for_eng:S1105L01C02",
+   "S1113L01",
+   "S1135L02",
+   "S1145L01",
+   "S1269L01",
+   "S1500L01",
+   "S1521L02"
+  ]
+ },
+ {
+  "id": "N078",
+  "source": "ydy hwnnw  |  is that",
+  "proposed": "ydy hwnnw?  |  is that?",
+  "note": "North v2 · 1 row: S0285L03 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_nv2_for_eng",
+  "known": "is that",
+  "target": "ydy hwnnw",
+  "rows": [
+   "S0285L03"
+  ]
+ },
+ {
+  "id": "N079",
+  "source": "beth allai fod wedi digwydd i’r teulu cyfan  |  what might have happened to the whole family",
+  "proposed": "beth allai fod wedi digwydd i’r teulu cyfan?  |  what might have happened to the whole family?",
+  "note": "North v2 · 1 row: S0297L02B02 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what might have happened to the whole family",
+  "target": "beth allai fod wedi digwydd i’r teulu cyfan",
+  "rows": [
+   "cym_nv2_for_eng:S0297L02B02"
+  ]
+ },
+ {
+  "id": "N080",
+  "source": "allai fod wedi  |  might have",
+  "proposed": "allai fod wedi?  |  might have?",
+  "note": "North v2 · 1 row: S0297L01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "might have",
+  "target": "allai fod wedi",
+  "rows": [
+   "S0297L01"
+  ]
+ },
+ {
+  "id": "N081",
+  "source": "beth allai fod wedi  |  what might have",
+  "proposed": "beth allai fod wedi?  |  what might have?",
+  "note": "North v2 · 1 row: S0297L01B04 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what might have",
+  "target": "beth allai fod wedi",
+  "rows": [
+   "cym_nv2_for_eng:S0297L01B04"
+  ]
+ },
+ {
+  "id": "N082",
+  "source": "beth allai fod wedi digwydd  |  what might have happened",
+  "proposed": "beth allai fod wedi digwydd?  |  what might have happened?",
+  "note": "North v2 · 1 row: S0297L01B05 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what might have happened",
+  "target": "beth allai fod wedi digwydd",
+  "rows": [
+   "cym_nv2_for_eng:S0297L01B05"
+  ]
+ },
+ {
+  "id": "N083",
+  "source": "fedrwch chi gyd dyfalu y pethau hynny mwy na thebyg  |  you can all guess those things probably",
+  "proposed": "fedrwch chi gyd dyfalu y pethau hynny mwy na thebyg?  |  you can all guess those things probably?",
+  "note": "North v2 · 1 row: S0303L01B07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you can all guess those things probably",
+  "target": "fedrwch chi gyd dyfalu y pethau hynny mwy na thebyg",
+  "rows": [
+   "cym_nv2_for_eng:S0303L01B07"
+  ]
+ },
+ {
+  "id": "N084",
+  "source": "be’  |  what",
+  "proposed": "be’?  |  what?",
+  "note": "North v2 · 28 rows: S1008L03 component, S1008L03C01, S1012L03 component, S1012L03C01, S1017L03 component … · a single question word; it is also used inside statements",
+  "course": "cym_nv2_for_eng",
+  "known": "what",
+  "target": "be’",
+  "rows": [
+   "S1008L03#0",
+   "cym_nv2_for_eng:S1008L03C01",
+   "S1012L03#0",
+   "cym_nv2_for_eng:S1012L03C01",
+   "S1017L03#0",
+   "cym_nv2_for_eng:S1017L03C01",
+   "S1084L01#0",
+   "cym_nv2_for_eng:S1084L01C01",
+   "S1107L02#0",
+   "cym_nv2_for_eng:S1107L02C01",
+   "S1132L03#0",
+   "cym_nv2_for_eng:S1132L03C01",
+   "S1150L02#0",
+   "cym_nv2_for_eng:S1150L02C01",
+   "S1162L02#0",
+   "cym_nv2_for_eng:S1162L02C01",
+   "S1201L03#0",
+   "cym_nv2_for_eng:S1201L03C01",
+   "S1203L01#0",
+   "cym_nv2_for_eng:S1203L01C01",
+   "S1375L01#0",
+   "cym_nv2_for_eng:S1375L01C01",
+   "S1438L03#0",
+   "cym_nv2_for_eng:S1438L03C01",
+   "S1572L01#0",
+   "cym_nv2_for_eng:S1572L01C01",
+   "S1648L01#0",
+   "cym_nv2_for_eng:S1648L01C01"
+  ]
+ },
+ {
+  "id": "N085",
+  "source": "fedru  |  to be able to",
+  "proposed": "fedru?  |  to be able to?",
+  "note": "North v2 · 2 rows: S1011L01 component, S1011L01C02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "to be able to",
+  "target": "fedru",
+  "rows": [
+   "S1011L01#1",
+   "cym_nv2_for_eng:S1011L01C02"
+  ]
+ },
+ {
+  "id": "N086",
+  "source": "be’ sy’n mynd i ddigwydd  |  what’s going to happen",
+  "proposed": "be’ sy’n mynd i ddigwydd?  |  what’s going to happen?",
+  "note": "North v2 · 1 row: S1012L03 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what’s going to happen",
+  "target": "be’ sy’n mynd i ddigwydd",
+  "rows": [
+   "S1012L03"
+  ]
+ },
+ {
+  "id": "N087",
+  "source": "be’ sy’n mynd i ddigwydd yfory  |  what’s going to happen tomorrow",
+  "proposed": "be’ sy’n mynd i ddigwydd yfory?  |  what’s going to happen tomorrow?",
+  "note": "North v2 · 1 row: S1012L03B01 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what’s going to happen tomorrow",
+  "target": "be’ sy’n mynd i ddigwydd yfory",
+  "rows": [
+   "cym_nv2_for_eng:S1012L03B01"
+  ]
+ },
+ {
+  "id": "N088",
+  "source": "allan  |  out",
+  "proposed": "allan?  |  out?",
+  "note": "North v2 · 4 rows: S1017L02 component, S1017L02C02, S1349L01 component, S1349L01C02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "out",
+  "target": "allan",
+  "rows": [
+   "S1017L02#1",
+   "cym_nv2_for_eng:S1017L02C02",
+   "S1349L01#1",
+   "cym_nv2_for_eng:S1349L01C02"
+  ]
+ },
+ {
+  "id": "N089",
+  "source": "be’ ydy’r ateb  |  what the answer is",
+  "proposed": "be’ ydy’r ateb?  |  what the answer is?",
+  "note": "North v2 · 1 row: S1017L03 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what the answer is",
+  "target": "be’ ydy’r ateb",
+  "rows": [
+   "S1017L03"
+  ]
+ },
+ {
+  "id": "N090",
+  "source": "ydy’r  |  is the",
+  "proposed": "ydy’r?  |  is the?",
+  "note": "North v2 · 2 rows: S1017L03 component, S1017L03C02 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_nv2_for_eng",
+  "known": "is the",
+  "target": "ydy’r",
+  "rows": [
+   "S1017L03#1",
+   "cym_nv2_for_eng:S1017L03C02"
+  ]
+ },
+ {
+  "id": "N091",
+  "source": "oeddat ti isio siarad efo fi heno  |  you wanted to speak with me tonight",
+  "proposed": "oeddat ti isio siarad efo fi heno?  |  you wanted to speak with me tonight?",
+  "note": "North v2 · 1 row: seed 1031 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to speak with me tonight",
+  "target": "oeddat ti isio siarad efo fi heno",
+  "rows": [
+   "1031"
+  ]
+ },
+ {
+  "id": "N092",
+  "source": "oeddat ti isio siarad  |  you wanted to speak",
+  "proposed": "oeddat ti isio siarad?  |  you wanted to speak?",
+  "note": "North v2 · 1 row: S1031L01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to speak",
+  "target": "oeddat ti isio siarad",
+  "rows": [
+   "S1031L01"
+  ]
+ },
+ {
+  "id": "N093",
+  "source": "oeddat ti isio  |  you wanted",
+  "proposed": "oeddat ti isio?  |  you wanted?",
+  "note": "North v2 · 2 rows: S1031L01 component, S1031L01C01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted",
+  "target": "oeddat ti isio",
+  "rows": [
+   "S1031L01#0",
+   "cym_nv2_for_eng:S1031L01C01"
+  ]
+ },
+ {
+  "id": "N094",
+  "source": "oeddat ti isio siarad bach yn arafach  |  you wanted to speak a bit more slowly",
+  "proposed": "oeddat ti isio siarad bach yn arafach?  |  you wanted to speak a bit more slowly?",
+  "note": "North v2 · 1 row: S1031L01B02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to speak a bit more slowly",
+  "target": "oeddat ti isio siarad bach yn arafach",
+  "rows": [
+   "cym_nv2_for_eng:S1031L01B02"
+  ]
+ },
+ {
+  "id": "N095",
+  "source": "oeddat ti isio siarad heno  |  you wanted to speak tonight",
+  "proposed": "oeddat ti isio siarad heno?  |  you wanted to speak tonight?",
+  "note": "North v2 · 1 row: S1031L01B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to speak tonight",
+  "target": "oeddat ti isio siarad heno",
+  "rows": [
+   "cym_nv2_for_eng:S1031L01B01"
+  ]
+ },
+ {
+  "id": "N096",
+  "source": "oeddat ti isio siarad ond o’n i’n siarad  |  you wanted to speak but I was speaking",
+  "proposed": "oeddat ti isio siarad ond o’n i’n siarad?  |  you wanted to speak but I was speaking?",
+  "note": "North v2 · 1 row: S1031L01U05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to speak but I was speaking",
+  "target": "oeddat ti isio siarad ond o’n i’n siarad",
+  "rows": [
+   "cym_nv2_for_eng:S1031L01U05"
+  ]
+ },
+ {
+  "id": "N097",
+  "source": "oeddat ti isio siarad mor aml â phosib  |  you wanted to speak as often as possible",
+  "proposed": "oeddat ti isio siarad mor aml â phosib?  |  you wanted to speak as often as possible?",
+  "note": "North v2 · 1 row: S1031L01U06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to speak as often as possible",
+  "target": "oeddat ti isio siarad mor aml â phosib",
+  "rows": [
+   "cym_nv2_for_eng:S1031L01U06"
+  ]
+ },
+ {
+  "id": "N098",
+  "source": "oeddat ti isio siarad ond chest ti ddim y cyfle  |  you wanted to speak but you didn’t have the chance",
+  "proposed": "oeddat ti isio siarad ond chest ti ddim y cyfle?  |  you wanted to speak but you didn’t have the chance?",
+  "note": "North v2 · 1 row: S1031L01U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to speak but you didn’t have the chance",
+  "target": "oeddat ti isio siarad ond chest ti ddim y cyfle",
+  "rows": [
+   "cym_nv2_for_eng:S1031L01U01"
+  ]
+ },
+ {
+  "id": "N099",
+  "source": "oeddat ti isio siarad amdano fo’n ofalus heno  |  you wanted to speak about it carefully tonight",
+  "proposed": "oeddat ti isio siarad amdano fo’n ofalus heno?  |  you wanted to speak about it carefully tonight?",
+  "note": "North v2 · 1 row: S1037L02U04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to speak about it carefully tonight",
+  "target": "oeddat ti isio siarad amdano fo’n ofalus heno",
+  "rows": [
+   "cym_nv2_for_eng:S1037L02U04"
+  ]
+ },
+ {
+  "id": "N100",
+  "source": "lle  |  where",
+  "proposed": "lle?  |  where?",
+  "note": "North v2 · 4 rows: S1070L02 component, S1070L02C01, S1614L01 component, S1614L01C02 · a single question word; it is also used inside statements",
+  "course": "cym_nv2_for_eng",
+  "known": "where",
+  "target": "lle",
+  "rows": [
+   "S1070L02#0",
+   "cym_nv2_for_eng:S1070L02C01",
+   "S1614L01#1",
+   "cym_nv2_for_eng:S1614L01C02"
+  ]
+ },
+ {
+  "id": "N101",
+  "source": "pa mor  |  how",
+  "proposed": "pa mor?  |  how?",
+  "note": "North v2 · 6 rows: S1077L02 component, S1077L02C01, S1420L02 component, S1420L02C01, S1470L01 component … · a single question word; it is also used inside statements",
+  "course": "cym_nv2_for_eng",
+  "known": "how",
+  "target": "pa mor",
+  "rows": [
+   "S1077L02#0",
+   "cym_nv2_for_eng:S1077L02C01",
+   "S1420L02#0",
+   "cym_nv2_for_eng:S1420L02C01",
+   "S1470L01#0",
+   "cym_nv2_for_eng:S1470L01C01"
+  ]
+ },
+ {
+  "id": "N102",
+  "source": "dw i ddim yn siŵr pam ddim?  |  I’m not sure why not",
+  "proposed": "dw i ddim yn siŵr pam ddim?  |  I’m not sure why not?",
+  "note": "North v2 · 1 row: S1082L03U04 · the Welsh has a \"?\" but the English is not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "I’m not sure why not",
+  "target": "dw i ddim yn siŵr pam ddim?",
+  "rows": [
+   "cym_nv2_for_eng:S1082L03U04"
+  ]
+ },
+ {
+  "id": "N103",
+  "source": "os medri di siarad yn arafach, fyddai hynna’n wych  |  if you can speak more slowly that would be great",
+  "proposed": "os medri di siarad yn arafach, fyddai hynna’n wych?  |  if you can speak more slowly that would be great?",
+  "note": "North v2 · 1 row: seed 1090 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "if you can speak more slowly that would be great",
+  "target": "os medri di siarad yn arafach, fyddai hynna’n wych",
+  "rows": [
+   "1090"
+  ]
+ },
+ {
+  "id": "N104",
+  "source": "fyddai hynna’n wych  |  that would be great",
+  "proposed": "fyddai hynna’n wych?  |  that would be great?",
+  "note": "North v2 · 1 row: S1090L02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be great",
+  "target": "fyddai hynna’n wych",
+  "rows": [
+   "S1090L02"
+  ]
+ },
+ {
+  "id": "N105",
+  "source": "fyddai hynna’n  |  that would be",
+  "proposed": "fyddai hynna’n?  |  that would be?",
+  "note": "North v2 · 4 rows: S1090L02 component, S1090L02C01, S1172L01 component, S1172L01C01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be",
+  "target": "fyddai hynna’n",
+  "rows": [
+   "S1090L02#0",
+   "cym_nv2_for_eng:S1090L02C01",
+   "S1172L01#0",
+   "cym_nv2_for_eng:S1172L01C01"
+  ]
+ },
+ {
+  "id": "N106",
+  "source": "fyddai hynna’n wych rŵan  |  that would be great now",
+  "proposed": "fyddai hynna’n wych rŵan?  |  that would be great now?",
+  "note": "North v2 · 1 row: S1090L02B02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be great now",
+  "target": "fyddai hynna’n wych rŵan",
+  "rows": [
+   "cym_nv2_for_eng:S1090L02B02"
+  ]
+ },
+ {
+  "id": "N107",
+  "source": "os ti isio, fyddai hynna’n wych  |  if you want, that would be great",
+  "proposed": "os ti isio, fyddai hynna’n wych?  |  if you want, that would be great?",
+  "note": "North v2 · 1 row: S1090L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "if you want, that would be great",
+  "target": "os ti isio, fyddai hynna’n wych",
+  "rows": [
+   "cym_nv2_for_eng:S1090L02B04"
+  ]
+ },
+ {
+  "id": "N108",
+  "source": "ond fyddai hynna’n wych yfory  |  but that would be great tomorrow",
+  "proposed": "ond fyddai hynna’n wych yfory?  |  but that would be great tomorrow?",
+  "note": "North v2 · 1 row: S1090L02B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "but that would be great tomorrow",
+  "target": "ond fyddai hynna’n wych yfory",
+  "rows": [
+   "cym_nv2_for_eng:S1090L02B03"
+  ]
+ },
+ {
+  "id": "N109",
+  "source": "diolch yn fawr, fyddai hynna’n wych achos dw i wedi blino  |  thank you, that would be great because I’m tired",
+  "proposed": "diolch yn fawr, fyddai hynna’n wych achos dw i wedi blino?  |  thank you, that would be great because I’m tired?",
+  "note": "North v2 · 1 row: S1090L02U06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "thank you, that would be great because I’m tired",
+  "target": "diolch yn fawr, fyddai hynna’n wych achos dw i wedi blino",
+  "rows": [
+   "cym_nv2_for_eng:S1090L02U06"
+  ]
+ },
+ {
+  "id": "N110",
+  "source": "diolch yn fawr, fyddai hynna’n wych  |  thank you, that would be great",
+  "proposed": "diolch yn fawr, fyddai hynna’n wych?  |  thank you, that would be great?",
+  "note": "North v2 · 1 row: S1090L02U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "thank you, that would be great",
+  "target": "diolch yn fawr, fyddai hynna’n wych",
+  "rows": [
+   "cym_nv2_for_eng:S1090L02U01"
+  ]
+ },
+ {
+  "id": "N111",
+  "source": "fyddai hynna’n wych, diolch yn fawr  |  that would be great, thank you",
+  "proposed": "fyddai hynna’n wych, diolch yn fawr?  |  that would be great, thank you?",
+  "note": "North v2 · 1 row: S1090L02U02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be great, thank you",
+  "target": "fyddai hynna’n wych, diolch yn fawr",
+  "rows": [
+   "cym_nv2_for_eng:S1090L02U02"
+  ]
+ },
+ {
+  "id": "N112",
+  "source": "os ti isio cyfarfod am chwech o’r gloch, fyddai hynna’n wych  |  if you want to meet at six o’clock, that would be great",
+  "proposed": "os ti isio cyfarfod am chwech o’r gloch, fyddai hynna’n wych?  |  if you want to meet at six o’clock, that would be great?",
+  "note": "North v2 · 1 row: S1090L02U03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "if you want to meet at six o’clock, that would be great",
+  "target": "os ti isio cyfarfod am chwech o’r gloch, fyddai hynna’n wych",
+  "rows": [
+   "cym_nv2_for_eng:S1090L02U03"
+  ]
+ },
+ {
+  "id": "N113",
+  "source": "fyddai hynna’n wych yfory, ond dw i wedi blino rŵan  |  that would be great tomorrow, but I’m tired now",
+  "proposed": "fyddai hynna’n wych yfory, ond dw i wedi blino rŵan?  |  that would be great tomorrow, but I’m tired now?",
+  "note": "North v2 · 1 row: S1090L02U05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be great tomorrow, but I’m tired now",
+  "target": "fyddai hynna’n wych yfory, ond dw i wedi blino rŵan",
+  "rows": [
+   "cym_nv2_for_eng:S1090L02U05"
+  ]
+ },
+ {
+  "id": "N114",
+  "source": "fydd o’n gweithio  |  it will work",
+  "proposed": "fydd o’n gweithio?  |  it will work?",
+  "note": "North v2 · 1 row: S1094L02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will work",
+  "target": "fydd o’n gweithio",
+  "rows": [
+   "S1094L02"
+  ]
+ },
+ {
+  "id": "N115",
+  "source": "fydd o’n  |  it will",
+  "proposed": "fydd o’n?  |  it will?",
+  "note": "North v2 · 2 rows: S1094L02 component, S1094L02C01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will",
+  "target": "fydd o’n",
+  "rows": [
+   "S1094L02#0",
+   "cym_nv2_for_eng:S1094L02C01"
+  ]
+ },
+ {
+  "id": "N116",
+  "source": "fydd o’n gweithio mewn pryd  |  it will work in time",
+  "proposed": "fydd o’n gweithio mewn pryd?  |  it will work in time?",
+  "note": "North v2 · 1 row: S1094L02B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will work in time",
+  "target": "fydd o’n gweithio mewn pryd",
+  "rows": [
+   "cym_nv2_for_eng:S1094L02B03"
+  ]
+ },
+ {
+  "id": "N117",
+  "source": "fydd o’n gweithio rŵan  |  it will work now",
+  "proposed": "fydd o’n gweithio rŵan?  |  it will work now?",
+  "note": "North v2 · 1 row: S1094L02B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will work now",
+  "target": "fydd o’n gweithio rŵan",
+  "rows": [
+   "cym_nv2_for_eng:S1094L02B01"
+  ]
+ },
+ {
+  "id": "N118",
+  "source": "diolch yn fawr, fydd o’n gweithio rŵan  |  thank you, it will work now",
+  "proposed": "diolch yn fawr, fydd o’n gweithio rŵan?  |  thank you, it will work now?",
+  "note": "North v2 · 1 row: S1094L02U05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "thank you, it will work now",
+  "target": "diolch yn fawr, fydd o’n gweithio rŵan",
+  "rows": [
+   "cym_nv2_for_eng:S1094L02U05"
+  ]
+ },
+ {
+  "id": "N119",
+  "source": "fydd o’n gweithio ond dw i wedi blino  |  it will work but I’m tired",
+  "proposed": "fydd o’n gweithio ond dw i wedi blino?  |  it will work but I’m tired?",
+  "note": "North v2 · 1 row: S1094L02U04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will work but I’m tired",
+  "target": "fydd o’n gweithio ond dw i wedi blino",
+  "rows": [
+   "cym_nv2_for_eng:S1094L02U04"
+  ]
+ },
+ {
+  "id": "N120",
+  "source": "dydy o ddim yn gweithio ond fydd o’n gweithio cyn bo hir  |  it’s not working but it will work soon",
+  "proposed": "dydy o ddim yn gweithio ond fydd o’n gweithio cyn bo hir?  |  it’s not working but it will work soon?",
+  "note": "North v2 · 1 row: S1099L03U02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it’s not working but it will work soon",
+  "target": "dydy o ddim yn gweithio ond fydd o’n gweithio cyn bo hir",
+  "rows": [
+   "cym_nv2_for_eng:S1099L03U02"
+  ]
+ },
+ {
+  "id": "N121",
+  "source": "ddylet ti  |  you should",
+  "proposed": "ddylet ti?  |  you should?",
+  "note": "North v2 · 2 rows: S1100L01 component, S1100L01C01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you should",
+  "target": "ddylet ti",
+  "rows": [
+   "S1100L01#0",
+   "cym_nv2_for_eng:S1100L01C01"
+  ]
+ },
+ {
+  "id": "N122",
+  "source": "oeddat ti’n  |  you were",
+  "proposed": "oeddat ti’n?  |  you were?",
+  "note": "North v2 · 4 rows: S1107L02 component, S1107L02C02, S1617L01 component, S1617L01C01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you were",
+  "target": "oeddat ti’n",
+  "rows": [
+   "S1107L02#1",
+   "cym_nv2_for_eng:S1107L02C02",
+   "S1617L01#0",
+   "cym_nv2_for_eng:S1617L01C01"
+  ]
+ },
+ {
+  "id": "N123",
+  "source": "fyddai hynna’n wych ond rhaid i ni fynd adre cyn bo hir  |  that would be great but we must go home soon",
+  "proposed": "fyddai hynna’n wych ond rhaid i ni fynd adre cyn bo hir?  |  that would be great but we must go home soon?",
+  "note": "North v2 · 1 row: S1109L01U02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be great but we must go home soon",
+  "target": "fyddai hynna’n wych ond rhaid i ni fynd adre cyn bo hir",
+  "rows": [
+   "cym_nv2_for_eng:S1109L01U02"
+  ]
+ },
+ {
+  "id": "N124",
+  "source": "oeddat ti’n gwneud yn waeth mis diwetha’  |  you were doing worse last month",
+  "proposed": "oeddat ti’n gwneud yn waeth mis diwetha’?  |  you were doing worse last month?",
+  "note": "North v2 · 1 row: S1114L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you were doing worse last month",
+  "target": "oeddat ti’n gwneud yn waeth mis diwetha’",
+  "rows": [
+   "cym_nv2_for_eng:S1114L02B04"
+  ]
+ },
+ {
+  "id": "N125",
+  "source": "mae’n ddrwg gen i ga i ofyn  |  I’m sorry, can I ask",
+  "proposed": "mae’n ddrwg gen i ga i ofyn?  |  I’m sorry, can I ask?",
+  "note": "North v2 · 1 row: S1119L01B04 · the English reads as a question; the Welsh has no question form",
+  "course": "cym_nv2_for_eng",
+  "known": "I’m sorry, can I ask",
+  "target": "mae’n ddrwg gen i ga i ofyn",
+  "rows": [
+   "cym_nv2_for_eng:S1119L01B04"
+  ]
+ },
+ {
+  "id": "N126",
+  "source": "fyddai hynna’n teimlo’n haws rŵan  |  that would feel easier now",
+  "proposed": "fyddai hynna’n teimlo’n haws rŵan?  |  that would feel easier now?",
+  "note": "North v2 · 1 row: S1122L01B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would feel easier now",
+  "target": "fyddai hynna’n teimlo’n haws rŵan",
+  "rows": [
+   "cym_nv2_for_eng:S1122L01B03"
+  ]
+ },
+ {
+  "id": "N127",
+  "source": "fyddai hynna’n teimlo’n haws  |  that would feel easier",
+  "proposed": "fyddai hynna’n teimlo’n haws?  |  that would feel easier?",
+  "note": "North v2 · 1 row: S1122L01B02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would feel easier",
+  "target": "fyddai hynna’n teimlo’n haws",
+  "rows": [
+   "cym_nv2_for_eng:S1122L01B02"
+  ]
+ },
+ {
+  "id": "N128",
+  "source": "diolch yn fawr, fyddai hynna’n teimlo’n haws  |  thank you, that would feel easier",
+  "proposed": "diolch yn fawr, fyddai hynna’n teimlo’n haws?  |  thank you, that would feel easier?",
+  "note": "North v2 · 1 row: S1122L01U05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "thank you, that would feel easier",
+  "target": "diolch yn fawr, fyddai hynna’n teimlo’n haws",
+  "rows": [
+   "cym_nv2_for_eng:S1122L01U05"
+  ]
+ },
+ {
+  "id": "N129",
+  "source": "fyddai hynna’n teimlo’n haws wythnos nesa’  |  that would feel easier next week",
+  "proposed": "fyddai hynna’n teimlo’n haws wythnos nesa’?  |  that would feel easier next week?",
+  "note": "North v2 · 1 row: S1122L01U03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would feel easier next week",
+  "target": "fyddai hynna’n teimlo’n haws wythnos nesa’",
+  "rows": [
+   "cym_nv2_for_eng:S1122L01U03"
+  ]
+ },
+ {
+  "id": "N130",
+  "source": "fyddai hynna’n teimlo’n haws ar ôl i ni orffen  |  that would feel easier after we finish",
+  "proposed": "fyddai hynna’n teimlo’n haws ar ôl i ni orffen?  |  that would feel easier after we finish?",
+  "note": "North v2 · 1 row: S1122L01U06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would feel easier after we finish",
+  "target": "fyddai hynna’n teimlo’n haws ar ôl i ni orffen",
+  "rows": [
+   "cym_nv2_for_eng:S1122L01U06"
+  ]
+ },
+ {
+  "id": "N131",
+  "source": "os ti isio, fyddai hynna’n syniad da  |  if you want, that would be a good idea",
+  "proposed": "os ti isio, fyddai hynna’n syniad da?  |  if you want, that would be a good idea?",
+  "note": "North v2 · 1 row: S1123L02U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "if you want, that would be a good idea",
+  "target": "os ti isio, fyddai hynna’n syniad da",
+  "rows": [
+   "cym_nv2_for_eng:S1123L02U01"
+  ]
+ },
+ {
+  "id": "N132",
+  "source": "gei di ofyn iddi hi  |  you can ask her",
+  "proposed": "gei di ofyn iddi hi?  |  you can ask her?",
+  "note": "North v2 · 1 row: S1136L02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you can ask her",
+  "target": "gei di ofyn iddi hi",
+  "rows": [
+   "S1136L02"
+  ]
+ },
+ {
+  "id": "N133",
+  "source": "gei di  |  you may",
+  "proposed": "gei di?  |  you may?",
+  "note": "North v2 · 2 rows: S1136L02 component, S1136L02C01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you may",
+  "target": "gei di",
+  "rows": [
+   "S1136L02#0",
+   "cym_nv2_for_eng:S1136L02C01"
+  ]
+ },
+ {
+  "id": "N134",
+  "source": "gei di ofyn iddi hi rŵan  |  you can ask her now",
+  "proposed": "gei di ofyn iddi hi rŵan?  |  you can ask her now?",
+  "note": "North v2 · 1 row: S1136L02B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you can ask her now",
+  "target": "gei di ofyn iddi hi rŵan",
+  "rows": [
+   "cym_nv2_for_eng:S1136L02B01"
+  ]
+ },
+ {
+  "id": "N135",
+  "source": "gei di ofyn iddi hi pam  |  you can ask her why",
+  "proposed": "gei di ofyn iddi hi pam?  |  you can ask her why?",
+  "note": "North v2 · 1 row: S1136L02B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you can ask her why",
+  "target": "gei di ofyn iddi hi pam",
+  "rows": [
+   "cym_nv2_for_eng:S1136L02B03"
+  ]
+ },
+ {
+  "id": "N136",
+  "source": "gei di ofyn iddi hi be’ oedd hi’n deud  |  you can ask her what she was saying",
+  "proposed": "gei di ofyn iddi hi be’ oedd hi’n deud?  |  you can ask her what she was saying?",
+  "note": "North v2 · 1 row: S1136L02U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you can ask her what she was saying",
+  "target": "gei di ofyn iddi hi be’ oedd hi’n deud",
+  "rows": [
+   "cym_nv2_for_eng:S1136L02U01"
+  ]
+ },
+ {
+  "id": "N137",
+  "source": "fyddai hynna’n garedig iawn ohonot ti  |  that would be very kind of you",
+  "proposed": "fyddai hynna’n garedig iawn ohonot ti?  |  that would be very kind of you?",
+  "note": "North v2 · 1 row: S1142L01B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be very kind of you",
+  "target": "fyddai hynna’n garedig iawn ohonot ti",
+  "rows": [
+   "cym_nv2_for_eng:S1142L01B04"
+  ]
+ },
+ {
+  "id": "N138",
+  "source": "fyddai hynna’n garedig iawn ohonot ti cyn i ti adael  |  that would be very kind of you before you leave",
+  "proposed": "fyddai hynna’n garedig iawn ohonot ti cyn i ti adael?  |  that would be very kind of you before you leave?",
+  "note": "North v2 · 1 row: S1142L01U04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be very kind of you before you leave",
+  "target": "fyddai hynna’n garedig iawn ohonot ti cyn i ti adael",
+  "rows": [
+   "cym_nv2_for_eng:S1142L01U04"
+  ]
+ },
+ {
+  "id": "N139",
+  "source": "fyddai hynna’n garedig iawn ohonot ti achos dw i angen ychydig mwy o amser  |  that would be very kind of you because I need a little more time",
+  "proposed": "fyddai hynna’n garedig iawn ohonot ti achos dw i angen ychydig mwy o amser?  |  that would be very kind of you because I need a little more time?",
+  "note": "North v2 · 1 row: S1142L01U05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be very kind of you because I need a little more time",
+  "target": "fyddai hynna’n garedig iawn ohonot ti achos dw i angen ychydig mwy o amser",
+  "rows": [
+   "cym_nv2_for_eng:S1142L01U05"
+  ]
+ },
+ {
+  "id": "N140",
+  "source": "oeddat ti isio siarad gynnau  |  you wanted to speak earlier",
+  "proposed": "oeddat ti isio siarad gynnau?  |  you wanted to speak earlier?",
+  "note": "North v2 · 1 row: S1143L03B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you wanted to speak earlier",
+  "target": "oeddat ti isio siarad gynnau",
+  "rows": [
+   "cym_nv2_for_eng:S1143L03B04"
+  ]
+ },
+ {
+  "id": "N141",
+  "source": "oeddat ti’n amyneddgar iawn a dw i’n ddiolchgar i ti  |  you were very patient and I’m grateful to you",
+  "proposed": "oeddat ti’n amyneddgar iawn a dw i’n ddiolchgar i ti?  |  you were very patient and I’m grateful to you?",
+  "note": "North v2 · 1 row: S1148L01U06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you were very patient and I’m grateful to you",
+  "target": "oeddat ti’n amyneddgar iawn a dw i’n ddiolchgar i ti",
+  "rows": [
+   "cym_nv2_for_eng:S1148L01U06"
+  ]
+ },
+ {
+  "id": "N142",
+  "source": "be’ ydy dy enw di  |  what your name is",
+  "proposed": "be’ ydy dy enw di?  |  what your name is?",
+  "note": "North v2 · 1 row: S1150L02 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what your name is",
+  "target": "be’ ydy dy enw di",
+  "rows": [
+   "S1150L02"
+  ]
+ },
+ {
+  "id": "N143",
+  "source": "fyddai’n digwydd  |  would happen",
+  "proposed": "fyddai’n digwydd?  |  would happen?",
+  "note": "North v2 · 1 row: S1151L02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "would happen",
+  "target": "fyddai’n digwydd",
+  "rows": [
+   "S1151L02"
+  ]
+ },
+ {
+  "id": "N144",
+  "source": "fyddai’n  |  would",
+  "proposed": "fyddai’n?  |  would?",
+  "note": "North v2 · 2 rows: S1151L02 component, S1151L02C01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "would",
+  "target": "fyddai’n",
+  "rows": [
+   "S1151L02#0",
+   "cym_nv2_for_eng:S1151L02C01"
+  ]
+ },
+ {
+  "id": "N145",
+  "source": "fyddai’n digwydd heno  |  would happen tonight",
+  "proposed": "fyddai’n digwydd heno?  |  would happen tonight?",
+  "note": "North v2 · 1 row: S1151L02B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "would happen tonight",
+  "target": "fyddai’n digwydd heno",
+  "rows": [
+   "cym_nv2_for_eng:S1151L02B01"
+  ]
+ },
+ {
+  "id": "N146",
+  "source": "gei di roi’r llyfr ’na i mi nes ymlaen  |  you may give me that book later",
+  "proposed": "gei di roi’r llyfr ’na i mi nes ymlaen?  |  you may give me that book later?",
+  "note": "North v2 · 1 row: S1161L03B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you may give me that book later",
+  "target": "gei di roi’r llyfr ’na i mi nes ymlaen",
+  "rows": [
+   "cym_nv2_for_eng:S1161L03B04"
+  ]
+ },
+ {
+  "id": "N147",
+  "source": "dydy hi ddim yn broblem, gei di roi’r llyfr ’na i mi wythnos nesa’  |  it’s not a problem, you may give me that book next week",
+  "proposed": "dydy hi ddim yn broblem, gei di roi’r llyfr ’na i mi wythnos nesa’?  |  it’s not a problem, you may give me that book next week?",
+  "note": "North v2 · 1 row: S1161L03U05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it’s not a problem, you may give me that book next week",
+  "target": "dydy hi ddim yn broblem, gei di roi’r llyfr ’na i mi wythnos nesa’",
+  "rows": [
+   "cym_nv2_for_eng:S1161L03U05"
+  ]
+ },
+ {
+  "id": "N148",
+  "source": "fedri  |  can",
+  "proposed": "fedri?  |  can?",
+  "note": "North v2 · 1 row: S1161L01 component · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "can",
+  "target": "fedri",
+  "rows": [
+   "S1161L01#0"
+  ]
+ },
+ {
+  "id": "N149",
+  "source": "be’ ti’n meddwl am hynna  |  what do you think about that",
+  "proposed": "be’ ti’n meddwl am hynna?  |  what do you think about that?",
+  "note": "North v2 · 1 row: S1162L02U01 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_nv2_for_eng",
+  "known": "what do you think about that",
+  "target": "be’ ti’n meddwl am hynna",
+  "rows": [
+   "cym_nv2_for_eng:S1162L02U01"
+  ]
+ },
+ {
+  "id": "N150",
+  "source": "ydy o’n wir  |  it’s true",
+  "proposed": "ydy o’n wir?  |  it’s true?",
+  "note": "North v2 · 1 row: S1165L04 · the Welsh opens as a question; the English is not one",
+  "course": "cym_nv2_for_eng",
+  "known": "it’s true",
+  "target": "ydy o’n wir",
+  "rows": [
+   "S1165L04"
+  ]
+ },
+ {
+  "id": "N151",
+  "source": "fyddai hynna’n help mawr  |  that would be very helpful",
+  "proposed": "fyddai hynna’n help mawr?  |  that would be very helpful?",
+  "note": "North v2 · 1 row: S1172L01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be very helpful",
+  "target": "fyddai hynna’n help mawr",
+  "rows": [
+   "S1172L01"
+  ]
+ },
+ {
+  "id": "N152",
+  "source": "fyddai hynna’n help mawr rŵan  |  that would be very helpful now",
+  "proposed": "fyddai hynna’n help mawr rŵan?  |  that would be very helpful now?",
+  "note": "North v2 · 1 row: S1172L01B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be very helpful now",
+  "target": "fyddai hynna’n help mawr rŵan",
+  "rows": [
+   "cym_nv2_for_eng:S1172L01B01"
+  ]
+ },
+ {
+  "id": "N153",
+  "source": "ond fyddai hynna’n help mawr heno  |  but that would be very helpful tonight",
+  "proposed": "ond fyddai hynna’n help mawr heno?  |  but that would be very helpful tonight?",
+  "note": "North v2 · 1 row: S1172L01B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "but that would be very helpful tonight",
+  "target": "ond fyddai hynna’n help mawr heno",
+  "rows": [
+   "cym_nv2_for_eng:S1172L01B04"
+  ]
+ },
+ {
+  "id": "N154",
+  "source": "fyddai hynna’n help mawr achos dw i angen ychydig mwy o amser  |  that would be very helpful because I need a little more time",
+  "proposed": "fyddai hynna’n help mawr achos dw i angen ychydig mwy o amser?  |  that would be very helpful because I need a little more time?",
+  "note": "North v2 · 1 row: S1172L01U02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be very helpful because I need a little more time",
+  "target": "fyddai hynna’n help mawr achos dw i angen ychydig mwy o amser",
+  "rows": [
+   "cym_nv2_for_eng:S1172L01U02"
+  ]
+ },
+ {
+  "id": "N155",
+  "source": "dydy hwn ddim y dewis gorau ond fyddai hynna’n help mawr  |  this isn’t the best choice but that would be very helpful",
+  "proposed": "dydy hwn ddim y dewis gorau ond fyddai hynna’n help mawr?  |  this isn’t the best choice but that would be very helpful?",
+  "note": "North v2 · 1 row: S1172L01U06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "this isn’t the best choice but that would be very helpful",
+  "target": "dydy hwn ddim y dewis gorau ond fyddai hynna’n help mawr",
+  "rows": [
+   "cym_nv2_for_eng:S1172L01U06"
+  ]
+ },
+ {
+  "id": "N156",
+  "source": "oes ots gen ti os  |  do you mind if",
+  "proposed": "oes ots gen ti os?  |  do you mind if?",
+  "note": "North v2 · 3 rows: S1190L01, S1281L01, S1281L01 component · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_nv2_for_eng",
+  "known": "do you mind if",
+  "target": "oes ots gen ti os",
+  "rows": [
+   "S1190L01",
+   "S1281L01",
+   "S1281L01#0"
+  ]
+ },
+ {
+  "id": "N157",
+  "source": "diolch yn fawr ond oes ots gen ti os  |  thank you but do you mind if",
+  "proposed": "diolch yn fawr ond oes ots gen ti os?  |  thank you but do you mind if?",
+  "note": "North v2 · 1 row: S1190L01B02 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_nv2_for_eng",
+  "known": "thank you but do you mind if",
+  "target": "diolch yn fawr ond oes ots gen ti os",
+  "rows": [
+   "cym_nv2_for_eng:S1190L01B02"
+  ]
+ },
+ {
+  "id": "N158",
+  "source": "be’ oedd yn mynd  |  what was going",
+  "proposed": "be’ oedd yn mynd?  |  what was going?",
+  "note": "North v2 · 3 rows: S1201L03, S1348L02, S1348L02 component · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what was going",
+  "target": "be’ oedd yn mynd",
+  "rows": [
+   "S1201L03",
+   "S1348L02",
+   "S1348L02#0"
+  ]
+ },
+ {
+  "id": "N159",
+  "source": "fyddai hynna’n wych tasai fo’n medru dod yn ôl  |  that would be great if he could come back",
+  "proposed": "fyddai hynna’n wych tasai fo’n medru dod yn ôl?  |  that would be great if he could come back?",
+  "note": "North v2 · 1 row: S1225L02U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be great if he could come back",
+  "target": "fyddai hynna’n wych tasai fo’n medru dod yn ôl",
+  "rows": [
+   "cym_nv2_for_eng:S1225L02U01"
+  ]
+ },
+ {
+  "id": "N160",
+  "source": "diolch yn fawr fyddai hynna’n help mawr tasai fo’n medru  |  thank you that would be very helpful if he could",
+  "proposed": "diolch yn fawr fyddai hynna’n help mawr tasai fo’n medru?  |  thank you that would be very helpful if he could?",
+  "note": "North v2 · 1 row: S1225L02U06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "thank you that would be very helpful if he could",
+  "target": "diolch yn fawr fyddai hynna’n help mawr tasai fo’n medru",
+  "rows": [
+   "cym_nv2_for_eng:S1225L02U06"
+  ]
+ },
+ {
+  "id": "N161",
+  "source": "fyddai hynna’n help mawr tasai fo’n medru dod i helpu  |  that would be very helpful if he could come and help",
+  "proposed": "fyddai hynna’n help mawr tasai fo’n medru dod i helpu?  |  that would be very helpful if he could come and help?",
+  "note": "North v2 · 1 row: S1225L02U03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be very helpful if he could come and help",
+  "target": "fyddai hynna’n help mawr tasai fo’n medru dod i helpu",
+  "rows": [
+   "cym_nv2_for_eng:S1225L02U03"
+  ]
+ },
+ {
+  "id": "N162",
+  "source": "fyddai hynna’n eitha’ da  |  that would be fairly good",
+  "proposed": "fyddai hynna’n eitha’ da?  |  that would be fairly good?",
+  "note": "North v2 · 1 row: S1247L02U02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be fairly good",
+  "target": "fyddai hynna’n eitha’ da",
+  "rows": [
+   "cym_nv2_for_eng:S1247L02U02"
+  ]
+ },
+ {
+  "id": "N163",
+  "source": "fyddai hynna’n sothach llwyr  |  that would be complete rubbish",
+  "proposed": "fyddai hynna’n sothach llwyr?  |  that would be complete rubbish?",
+  "note": "North v2 · 1 row: S1248L02B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be complete rubbish",
+  "target": "fyddai hynna’n sothach llwyr",
+  "rows": [
+   "cym_nv2_for_eng:S1248L02B03"
+  ]
+ },
+ {
+  "id": "N164",
+  "source": "pwy  |  who",
+  "proposed": "pwy?  |  who?",
+  "note": "North v2 · 8 rows: S1262L01 component, S1262L01C01, S1263L02 component, S1263L02C01, S1453L01 component … · a single question word; it is also used inside statements",
+  "course": "cym_nv2_for_eng",
+  "known": "who",
+  "target": "pwy",
+  "rows": [
+   "S1262L01#0",
+   "cym_nv2_for_eng:S1262L01C01",
+   "S1263L02#0",
+   "cym_nv2_for_eng:S1263L02C01",
+   "S1453L01#0",
+   "cym_nv2_for_eng:S1453L01C01",
+   "S1527L01#1",
+   "cym_nv2_for_eng:S1527L01C02"
+  ]
+ },
+ {
+  "id": "N165",
+  "source": "pa rai  |  which",
+  "proposed": "pa rai?  |  which?",
+  "note": "North v2 · 2 rows: S1283L01 component, S1283L01C01 · a single question word; it is also used inside statements",
+  "course": "cym_nv2_for_eng",
+  "known": "which",
+  "target": "pa rai",
+  "rows": [
+   "S1283L01#0",
+   "cym_nv2_for_eng:S1283L01C01"
+  ]
+ },
+ {
+  "id": "N166",
+  "source": "fedrith hi  |  she will be able to",
+  "proposed": "fedrith hi?  |  she will be able to?",
+  "note": "North v2 · 2 rows: S1331L01 component, S1331L01C01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "she will be able to",
+  "target": "fedrith hi",
+  "rows": [
+   "S1331L01#0",
+   "cym_nv2_for_eng:S1331L01C01"
+  ]
+ },
+ {
+  "id": "N167",
+  "source": "oes rhaid i ni  |  we have to",
+  "proposed": "oes rhaid i ni?  |  we have to?",
+  "note": "North v2 · 2 rows: S1405L01 component, S1405L01C02 · the Welsh opens as a question; the English is not one",
+  "course": "cym_nv2_for_eng",
+  "known": "we have to",
+  "target": "oes rhaid i ni",
+  "rows": [
+   "S1405L01#1",
+   "cym_nv2_for_eng:S1405L01C02"
+  ]
+ },
+ {
+  "id": "N168",
+  "source": "digon o bres at elusen, fyddai hynna’n help mawr  |  enough money for charity, that would be very helpful",
+  "proposed": "digon o bres at elusen, fyddai hynna’n help mawr?  |  enough money for charity, that would be very helpful?",
+  "note": "North v2 · 1 row: S1437L04U07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "enough money for charity, that would be very helpful",
+  "target": "digon o bres at elusen, fyddai hynna’n help mawr",
+  "rows": [
+   "cym_nv2_for_eng:S1437L04U07"
+  ]
+ },
+ {
+  "id": "N169",
+  "source": "ddylai fo  |  he should",
+  "proposed": "ddylai fo?  |  he should?",
+  "note": "North v2 · 2 rows: S1438L03 component, S1438L03C02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "he should",
+  "target": "ddylai fo",
+  "rows": [
+   "S1438L03#1",
+   "cym_nv2_for_eng:S1438L03C02"
+  ]
+ },
+ {
+  "id": "N170",
+  "source": "fyddai hynna’n debygol iawn flwyddyn nesa’  |  that would be very likely next year",
+  "proposed": "fyddai hynna’n debygol iawn flwyddyn nesa’?  |  that would be very likely next year?",
+  "note": "North v2 · 1 row: S1456L03U02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "that would be very likely next year",
+  "target": "fyddai hynna’n debygol iawn flwyddyn nesa’",
+  "rows": [
+   "cym_nv2_for_eng:S1456L03U02"
+  ]
+ },
+ {
+  "id": "N171",
+  "source": "fedrith hi daflu ychydig o gardiau post  |  she will be able to throw some postcards",
+  "proposed": "fedrith hi daflu ychydig o gardiau post?  |  she will be able to throw some postcards?",
+  "note": "North v2 · 1 row: S1466L02B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "she will be able to throw some postcards",
+  "target": "fedrith hi daflu ychydig o gardiau post",
+  "rows": [
+   "cym_nv2_for_eng:S1466L02B03"
+  ]
+ },
+ {
+  "id": "N172",
+  "source": "ydan ni  |  we are",
+  "proposed": "ydan ni?  |  we are?",
+  "note": "North v2 · 2 rows: S1472L02 component, S1472L02C02 · the Welsh opens as a question; the English is not one",
+  "course": "cym_nv2_for_eng",
+  "known": "we are",
+  "target": "ydan ni",
+  "rows": [
+   "S1472L02#1",
+   "cym_nv2_for_eng:S1472L02C02"
+  ]
+ },
+ {
+  "id": "N173",
+  "source": "ydyn nhw  |  they are",
+  "proposed": "ydyn nhw?  |  they are?",
+  "note": "North v2 · 2 rows: S1482L02 component, S1482L02C02 · the Welsh opens as a question; the English is not one",
+  "course": "cym_nv2_for_eng",
+  "known": "they are",
+  "target": "ydyn nhw",
+  "rows": [
+   "S1482L02#1",
+   "cym_nv2_for_eng:S1482L02C02"
+  ]
+ },
+ {
+  "id": "N174",
+  "source": "fyddai  |  would",
+  "proposed": "fyddai?  |  would?",
+  "note": "North v2 · 2 rows: S1485L01 component, S1485L01C01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "would",
+  "target": "fyddai",
+  "rows": [
+   "S1485L01#0",
+   "cym_nv2_for_eng:S1485L01C01"
+  ]
+ },
+ {
+  "id": "N175",
+  "source": "pa  |  which",
+  "proposed": "pa?  |  which?",
+  "note": "North v2 · 2 rows: S1492L01 component, S1492L01C01 · a single question word; it is also used inside statements",
+  "course": "cym_nv2_for_eng",
+  "known": "which",
+  "target": "pa",
+  "rows": [
+   "S1492L01#0",
+   "cym_nv2_for_eng:S1492L01C01"
+  ]
+ },
+ {
+  "id": "N176",
+  "source": "ddaw  |  will come",
+  "proposed": "ddaw?  |  will come?",
+  "note": "North v2 · 2 rows: S1493L01 component, S1493L01C01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "will come",
+  "target": "ddaw",
+  "rows": [
+   "S1493L01#0",
+   "cym_nv2_for_eng:S1493L01C01"
+  ]
+ },
+ {
+  "id": "N177",
+  "source": "fydd hi’n cyfri’  |  it matters",
+  "proposed": "fydd hi’n cyfri’?  |  it matters?",
+  "note": "North v2 · 1 row: S1495L02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it matters",
+  "target": "fydd hi’n cyfri’",
+  "rows": [
+   "S1495L02"
+  ]
+ },
+ {
+  "id": "N178",
+  "source": "fydd hi’n  |  it will be",
+  "proposed": "fydd hi’n?  |  it will be?",
+  "note": "North v2 · 2 rows: S1495L02 component, S1495L02C01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will be",
+  "target": "fydd hi’n",
+  "rows": [
+   "S1495L02#0",
+   "cym_nv2_for_eng:S1495L02C01"
+  ]
+ },
+ {
+  "id": "N179",
+  "source": "fydd hi’n cyfri’ heno  |  it’ll matter tonight",
+  "proposed": "fydd hi’n cyfri’ heno?  |  it’ll matter tonight?",
+  "note": "North v2 · 1 row: S1495L02B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it’ll matter tonight",
+  "target": "fydd hi’n cyfri’ heno",
+  "rows": [
+   "cym_nv2_for_eng:S1495L02B01"
+  ]
+ },
+ {
+  "id": "N180",
+  "source": "ond fydd hi’n cyfri’ nes ymlaen  |  but it matters later",
+  "proposed": "ond fydd hi’n cyfri’ nes ymlaen?  |  but it matters later?",
+  "note": "North v2 · 1 row: S1495L02B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "but it matters later",
+  "target": "ond fydd hi’n cyfri’ nes ymlaen",
+  "rows": [
+   "cym_nv2_for_eng:S1495L02B03"
+  ]
+ },
+ {
+  "id": "N181",
+  "source": "fydd hi’n cyfri’ tro nesa’, dw i’n siŵr  |  it matters next time, I’m sure",
+  "proposed": "fydd hi’n cyfri’ tro nesa’, dw i’n siŵr?  |  it matters next time, I’m sure?",
+  "note": "North v2 · 1 row: S1495L02U06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it matters next time, I’m sure",
+  "target": "fydd hi’n cyfri’ tro nesa’, dw i’n siŵr",
+  "rows": [
+   "cym_nv2_for_eng:S1495L02U06"
+  ]
+ },
+ {
+  "id": "N182",
+  "source": "fydd hi  |  it will",
+  "proposed": "fydd hi?  |  it will?",
+  "note": "North v2 · 2 rows: S1496L03 component, S1496L03C02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will",
+  "target": "fydd hi",
+  "rows": [
+   "S1496L03#1",
+   "cym_nv2_for_eng:S1496L03C02"
+  ]
+ },
+ {
+  "id": "N183",
+  "source": "ydy hwnnw  |  that one’s",
+  "proposed": "ydy hwnnw?  |  that one’s?",
+  "note": "North v2 · 1 row: S1503L04 · the Welsh opens as a question; the English is not one",
+  "course": "cym_nv2_for_eng",
+  "known": "that one’s",
+  "target": "ydy hwnnw",
+  "rows": [
+   "S1503L04"
+  ]
+ },
+ {
+  "id": "N184",
+  "source": "fydd hi’n flynyddoedd ond dw i ddim isio stopio  |  it will be years but I don’t want to stop",
+  "proposed": "fydd hi’n flynyddoedd ond dw i ddim isio stopio?  |  it will be years but I don’t want to stop?",
+  "note": "North v2 · 1 row: S1506L04U03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will be years but I don’t want to stop",
+  "target": "fydd hi’n flynyddoedd ond dw i ddim isio stopio",
+  "rows": [
+   "cym_nv2_for_eng:S1506L04U03"
+  ]
+ },
+ {
+  "id": "N185",
+  "source": "ddylai o ddal y drws ar agor  |  he should hold the door open",
+  "proposed": "ddylai o ddal y drws ar agor?  |  he should hold the door open?",
+  "note": "North v2 · 1 row: S1512L02B02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "he should hold the door open",
+  "target": "ddylai o ddal y drws ar agor",
+  "rows": [
+   "cym_nv2_for_eng:S1512L02B02"
+  ]
+ },
+ {
+  "id": "N186",
+  "source": "ddaw eu teulu cyfan wythnos nesa’  |  their whole family will come next week",
+  "proposed": "ddaw eu teulu cyfan wythnos nesa’?  |  their whole family will come next week?",
+  "note": "North v2 · 1 row: S1520L02U05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "their whole family will come next week",
+  "target": "ddaw eu teulu cyfan wythnos nesa’",
+  "rows": [
+   "cym_nv2_for_eng:S1520L02U05"
+  ]
+ },
+ {
+  "id": "N187",
+  "source": "wyt ti’n  |  you are",
+  "proposed": "wyt ti’n?  |  you are?",
+  "note": "North v2 · 2 rows: S1526L03 component, S1526L03C02 · the Welsh opens as a question; the English is not one",
+  "course": "cym_nv2_for_eng",
+  "known": "you are",
+  "target": "wyt ti’n",
+  "rows": [
+   "S1526L03#1",
+   "cym_nv2_for_eng:S1526L03C02"
+  ]
+ },
+ {
+  "id": "N188",
+  "source": "sgwn i fedrwch chi gyd ddal y trên?  |  I wonder can you all catch the train",
+  "proposed": "sgwn i fedrwch chi gyd ddal y trên?  |  I wonder can you all catch the train?",
+  "note": "North v2 · 1 row: S1529L01U06 · the Welsh has a \"?\" but the English is not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "I wonder can you all catch the train",
+  "target": "sgwn i fedrwch chi gyd ddal y trên?",
+  "rows": [
+   "cym_nv2_for_eng:S1529L01U06"
+  ]
+ },
+ {
+  "id": "N189",
+  "source": "fyddai fo’n  |  he would",
+  "proposed": "fyddai fo’n?  |  he would?",
+  "note": "North v2 · 1 row: S1535L02 component · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "he would",
+  "target": "fyddai fo’n",
+  "rows": [
+   "S1535L02#1"
+  ]
+ },
+ {
+  "id": "N190",
+  "source": "ydy hi  |  it is",
+  "proposed": "ydy hi?  |  it is?",
+  "note": "North v2 · 2 rows: S1545L01 component, S1545L01C02 · the Welsh opens as a question; the English is not one",
+  "course": "cym_nv2_for_eng",
+  "known": "it is",
+  "target": "ydy hi",
+  "rows": [
+   "S1545L01#1",
+   "cym_nv2_for_eng:S1545L01C02"
+  ]
+ },
+ {
+  "id": "N191",
+  "source": "fydd hi’n fudr ac yn wlyb  |  it will be dirty and wet",
+  "proposed": "fydd hi’n fudr ac yn wlyb?  |  it will be dirty and wet?",
+  "note": "North v2 · 1 row: S1546L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will be dirty and wet",
+  "target": "fydd hi’n fudr ac yn wlyb",
+  "rows": [
+   "cym_nv2_for_eng:S1546L02B04"
+  ]
+ },
+ {
+  "id": "N192",
+  "source": "be’ ddigwyddodd  |  what happened",
+  "proposed": "be’ ddigwyddodd?  |  what happened?",
+  "note": "North v2 · 1 row: S1572L01 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_nv2_for_eng",
+  "known": "what happened",
+  "target": "be’ ddigwyddodd",
+  "rows": [
+   "S1572L01"
+  ]
+ },
+ {
+  "id": "N193",
+  "source": "fydd hi’n annifyr iawn yn y nos  |  it will be very upsetting at night",
+  "proposed": "fydd hi’n annifyr iawn yn y nos?  |  it will be very upsetting at night?",
+  "note": "North v2 · 1 row: S1575L01B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will be very upsetting at night",
+  "target": "fydd hi’n annifyr iawn yn y nos",
+  "rows": [
+   "cym_nv2_for_eng:S1575L01B03"
+  ]
+ },
+ {
+  "id": "N194",
+  "source": "fydd hi’n annifyr iawn tro nesa’ byddwn ni’n cyfarfod  |  it will be very upsetting next time we meet",
+  "proposed": "fydd hi’n annifyr iawn tro nesa’ byddwn ni’n cyfarfod?  |  it will be very upsetting next time we meet?",
+  "note": "North v2 · 1 row: S1575L01U05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will be very upsetting next time we meet",
+  "target": "fydd hi’n annifyr iawn tro nesa’ byddwn ni’n cyfarfod",
+  "rows": [
+   "cym_nv2_for_eng:S1575L01U05"
+  ]
+ },
+ {
+  "id": "N195",
+  "source": "fydd hi’n ofidus iawn aros ar fy mhen fy hun  |  it will be very upsetting waiting on my own",
+  "proposed": "fydd hi’n ofidus iawn aros ar fy mhen fy hun?  |  it will be very upsetting waiting on my own?",
+  "note": "North v2 · 1 row: S1576L01B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it will be very upsetting waiting on my own",
+  "target": "fydd hi’n ofidus iawn aros ar fy mhen fy hun",
+  "rows": [
+   "cym_nv2_for_eng:S1576L01B03"
+  ]
+ },
+ {
+  "id": "N196",
+  "source": "fysa fo wedi bod yn hyfryd  |  it would have been lovely",
+  "proposed": "fysa fo wedi bod yn hyfryd?  |  it would have been lovely?",
+  "note": "North v2 · 1 row: S1608L01B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "it would have been lovely",
+  "target": "fysa fo wedi bod yn hyfryd",
+  "rows": [
+   "cym_nv2_for_eng:S1608L01B01"
+  ]
+ },
+ {
+  "id": "N197",
+  "source": "oeddat ti’n ddewr iawn i ddeud bo’ ti’n meddwl hynna  |  you were very brave to say you thought that",
+  "proposed": "oeddat ti’n ddewr iawn i ddeud bo’ ti’n meddwl hynna?  |  you were very brave to say you thought that?",
+  "note": "North v2 · 1 row: seed 1616 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you were very brave to say you thought that",
+  "target": "oeddat ti’n ddewr iawn i ddeud bo’ ti’n meddwl hynna",
+  "rows": [
+   "1616"
+  ]
+ },
+ {
+  "id": "N198",
+  "source": "oeddat ti’n meddwl fod o’n gamgymeriad  |  you thought that it was a mistake",
+  "proposed": "oeddat ti’n meddwl fod o’n gamgymeriad?  |  you thought that it was a mistake?",
+  "note": "North v2 · 1 row: seed 1617 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought that it was a mistake",
+  "target": "oeddat ti’n meddwl fod o’n gamgymeriad",
+  "rows": [
+   "1617"
+  ]
+ },
+ {
+  "id": "N199",
+  "source": "ond oeddat ti’n meddwl  |  but you thought",
+  "proposed": "ond oeddat ti’n meddwl?  |  but you thought?",
+  "note": "North v2 · 1 row: S1617L01B02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "but you thought",
+  "target": "ond oeddat ti’n meddwl",
+  "rows": [
+   "cym_nv2_for_eng:S1617L01B02"
+  ]
+ },
+ {
+  "id": "N200",
+  "source": "oeddat ti’n meddwl bo’ ti’n  |  you thought you were",
+  "proposed": "oeddat ti’n meddwl bo’ ti’n?  |  you thought you were?",
+  "note": "North v2 · 1 row: S1617L01B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought you were",
+  "target": "oeddat ti’n meddwl bo’ ti’n",
+  "rows": [
+   "cym_nv2_for_eng:S1617L01B01"
+  ]
+ },
+ {
+  "id": "N201",
+  "source": "oeddat ti’n meddwl bo’ ti’n ddewr iawn  |  you thought you were very brave",
+  "proposed": "oeddat ti’n meddwl bo’ ti’n ddewr iawn?  |  you thought you were very brave?",
+  "note": "North v2 · 1 row: S1617L01U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought you were very brave",
+  "target": "oeddat ti’n meddwl bo’ ti’n ddewr iawn",
+  "rows": [
+   "cym_nv2_for_eng:S1617L01U01"
+  ]
+ },
+ {
+  "id": "N202",
+  "source": "oeddat ti’n meddwl fod o wedi bod yn hyfryd tu allan  |  you thought that it had been lovely outdoors",
+  "proposed": "oeddat ti’n meddwl fod o wedi bod yn hyfryd tu allan?  |  you thought that it had been lovely outdoors?",
+  "note": "North v2 · 1 row: S1617L01U02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought that it had been lovely outdoors",
+  "target": "oeddat ti’n meddwl fod o wedi bod yn hyfryd tu allan",
+  "rows": [
+   "cym_nv2_for_eng:S1617L01U02"
+  ]
+ },
+ {
+  "id": "N203",
+  "source": "oeddat ti’n meddwl fod o’n gamgymeriad ar y pryd  |  you thought it was a mistake at the time",
+  "proposed": "oeddat ti’n meddwl fod o’n gamgymeriad ar y pryd?  |  you thought it was a mistake at the time?",
+  "note": "North v2 · 1 row: S1617L02U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought it was a mistake at the time",
+  "target": "oeddat ti’n meddwl fod o’n gamgymeriad ar y pryd",
+  "rows": [
+   "cym_nv2_for_eng:S1617L02U01"
+  ]
+ },
+ {
+  "id": "N204",
+  "source": "oeddat ti’n meddwl fod o wedi torri neithiwr  |  you thought that it was broken last night",
+  "proposed": "oeddat ti’n meddwl fod o wedi torri neithiwr?  |  you thought that it was broken last night?",
+  "note": "North v2 · 1 row: S1621L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought that it was broken last night",
+  "target": "oeddat ti’n meddwl fod o wedi torri neithiwr",
+  "rows": [
+   "cym_nv2_for_eng:S1621L02B04"
+  ]
+ },
+ {
+  "id": "N205",
+  "source": "oeddat ti’n meddwl bo’ nhw wedi’i dorri o ar y pryd  |  you thought that they had broken it at the time",
+  "proposed": "oeddat ti’n meddwl bo’ nhw wedi’i dorri o ar y pryd?  |  you thought that they had broken it at the time?",
+  "note": "North v2 · 1 row: S1622L02U04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought that they had broken it at the time",
+  "target": "oeddat ti’n meddwl bo’ nhw wedi’i dorri o ar y pryd",
+  "rows": [
+   "cym_nv2_for_eng:S1622L02U04"
+  ]
+ },
+ {
+  "id": "N206",
+  "source": "ydy hwnna  |  that is",
+  "proposed": "ydy hwnna?  |  that is?",
+  "note": "North v2 · 4 rows: S1635L01 component, S1635L01C02, S1636L02 component, S1636L02C03 · the Welsh opens as a question; the English is not one",
+  "course": "cym_nv2_for_eng",
+  "known": "that is",
+  "target": "ydy hwnna",
+  "rows": [
+   "S1635L01#1",
+   "cym_nv2_for_eng:S1635L01C02",
+   "S1636L02#2",
+   "cym_nv2_for_eng:S1636L02C03"
+  ]
+ },
+ {
+  "id": "N207",
+  "source": "ydy o  |  it is",
+  "proposed": "ydy o?  |  it is?",
+  "note": "North v2 · 2 rows: S1640L01 component, S1640L01C02 · the Welsh opens as a question; the English is not one",
+  "course": "cym_nv2_for_eng",
+  "known": "it is",
+  "target": "ydy o",
+  "rows": [
+   "S1640L01#1",
+   "cym_nv2_for_eng:S1640L01C02"
+  ]
+ },
+ {
+  "id": "N208",
+  "source": "oeddat ti’n meddwl mai’r un coch  |  you thought that it’s the red one",
+  "proposed": "oeddat ti’n meddwl mai’r un coch?  |  you thought that it’s the red one?",
+  "note": "North v2 · 1 row: S1641L02U06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_nv2_for_eng",
+  "known": "you thought that it’s the red one",
+  "target": "oeddat ti’n meddwl mai’r un coch",
+  "rows": [
+   "cym_nv2_for_eng:S1641L02U06"
+  ]
+ },
+ {
+  "id": "S001",
+  "source": "sut  |  how",
+  "proposed": "sut?  |  how?",
+  "note": "South v2 · 10 rows: S0006L03, S1003L01, S1004L01, S1043L03, S1056L03 … · a single question word; it is also used inside statements",
+  "course": "cym_sv2_for_eng",
+  "known": "how",
+  "target": "sut",
+  "rows": [
+   "S0006L03",
+   "S1003L01",
+   "S1004L01",
+   "S1043L03",
+   "S1056L03",
+   "S1057L03",
+   "S1060L02",
+   "S1160L01",
+   "S1202L02",
+   "S1208L03"
+  ]
+ },
+ {
+  "id": "S002",
+  "source": "beth  |  what",
+  "proposed": "beth?  |  what?",
+  "note": "South v2 · 14 rows: S0010L01, S1008L03 component, S1008L03C01, S1012L03 component, S1012L03C01 … · a single question word; it is also used inside statements",
+  "course": "cym_sv2_for_eng",
+  "known": "what",
+  "target": "beth",
+  "rows": [
+   "S0010L01",
+   "S1008L03#0",
+   "cym_sv2_for_eng:S1008L03C01",
+   "S1012L03#0",
+   "cym_sv2_for_eng:S1012L03C01",
+   "S1017L03#0",
+   "cym_sv2_for_eng:S1017L03C01",
+   "S1068L01",
+   "S1167L01",
+   "S1169L01",
+   "S1175L01",
+   "S1194L01",
+   "S1465L04",
+   "S1493L01"
+  ]
+ },
+ {
+  "id": "S003",
+  "source": "wnest ti ddechrau wythnos yn ôl  |  you started a week ago",
+  "proposed": "wnest ti ddechrau wythnos yn ôl?  |  you started a week ago?",
+  "note": "South v2 · 1 row: seed 39 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started a week ago",
+  "target": "wnest ti ddechrau wythnos yn ôl",
+  "rows": [
+   "39"
+  ]
+ },
+ {
+  "id": "S004",
+  "source": "wnest ti ddechrau  |  you started",
+  "proposed": "wnest ti ddechrau?  |  you started?",
+  "note": "South v2 · 1 row: S0039L01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started",
+  "target": "wnest ti ddechrau",
+  "rows": [
+   "S0039L01"
+  ]
+ },
+ {
+  "id": "S005",
+  "source": "wnest ti ddechrau ymarfer  |  you started to practice",
+  "proposed": "wnest ti ddechrau ymarfer?  |  you started to practice?",
+  "note": "South v2 · 1 row: S0039L01B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started to practice",
+  "target": "wnest ti ddechrau ymarfer",
+  "rows": [
+   "cym_sv2_for_eng:S0039L01B06"
+  ]
+ },
+ {
+  "id": "S006",
+  "source": "wnest ti ddechrau siarad  |  you started to speak",
+  "proposed": "wnest ti ddechrau siarad?  |  you started to speak?",
+  "note": "South v2 · 1 row: S0039L01B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started to speak",
+  "target": "wnest ti ddechrau siarad",
+  "rows": [
+   "cym_sv2_for_eng:S0039L01B04"
+  ]
+ },
+ {
+  "id": "S007",
+  "source": "wnest ti ddechrau gwneud rhywbeth  |  you started to do something",
+  "proposed": "wnest ti ddechrau gwneud rhywbeth?  |  you started to do something?",
+  "note": "South v2 · 1 row: S0039L01B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started to do something",
+  "target": "wnest ti ddechrau gwneud rhywbeth",
+  "rows": [
+   "cym_sv2_for_eng:S0039L01B03"
+  ]
+ },
+ {
+  "id": "S008",
+  "source": "wnest ti ddechrau trio  |  you started to try",
+  "proposed": "wnest ti ddechrau trio?  |  you started to try?",
+  "note": "South v2 · 1 row: S0039L01B05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started to try",
+  "target": "wnest ti ddechrau trio",
+  "rows": [
+   "cym_sv2_for_eng:S0039L01B05"
+  ]
+ },
+ {
+  "id": "S009",
+  "source": "wnest ti ddechrau cofio  |  you started to remember",
+  "proposed": "wnest ti ddechrau cofio?  |  you started to remember?",
+  "note": "South v2 · 1 row: S0039L01B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started to remember",
+  "target": "wnest ti ddechrau cofio",
+  "rows": [
+   "cym_sv2_for_eng:S0039L01B01"
+  ]
+ },
+ {
+  "id": "S010",
+  "source": "wnest ti ddechrau gwella  |  you started to improve",
+  "proposed": "wnest ti ddechrau gwella?  |  you started to improve?",
+  "note": "South v2 · 1 row: S0039L01B02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started to improve",
+  "target": "wnest ti ddechrau gwella",
+  "rows": [
+   "cym_sv2_for_eng:S0039L01B02"
+  ]
+ },
+ {
+  "id": "S011",
+  "source": "wnest ti ddechrau dysgu mis yn ôl  |  you started to learn a month ago",
+  "proposed": "wnest ti ddechrau dysgu mis yn ôl?  |  you started to learn a month ago?",
+  "note": "South v2 · 1 row: S0039L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started to learn a month ago",
+  "target": "wnest ti ddechrau dysgu mis yn ôl",
+  "rows": [
+   "cym_sv2_for_eng:S0039L02B04"
+  ]
+ },
+ {
+  "id": "S012",
+  "source": "wnest ti ddechrau ymarfer wythnos yn ôl  |  you started to practice a week ago",
+  "proposed": "wnest ti ddechrau ymarfer wythnos yn ôl?  |  you started to practice a week ago?",
+  "note": "South v2 · 1 row: S0039L02B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started to practice a week ago",
+  "target": "wnest ti ddechrau ymarfer wythnos yn ôl",
+  "rows": [
+   "cym_sv2_for_eng:S0039L02B06"
+  ]
+ },
+ {
+  "id": "S013",
+  "source": "wnest ti ddechrau gwneud rhywbeth wythnos yn ôl  |  you started to do something a week ago",
+  "proposed": "wnest ti ddechrau gwneud rhywbeth wythnos yn ôl?  |  you started to do something a week ago?",
+  "note": "South v2 · 1 row: S0039L02B05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started to do something a week ago",
+  "target": "wnest ti ddechrau gwneud rhywbeth wythnos yn ôl",
+  "rows": [
+   "cym_sv2_for_eng:S0039L02B05"
+  ]
+ },
+ {
+  "id": "S014",
+  "source": "wnest ti ddechrau mis yn ôl  |  you started a month ago",
+  "proposed": "wnest ti ddechrau mis yn ôl?  |  you started a month ago?",
+  "note": "South v2 · 1 row: S0042L01U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started a month ago",
+  "target": "wnest ti ddechrau mis yn ôl",
+  "rows": [
+   "cym_sv2_for_eng:S0042L01U01"
+  ]
+ },
+ {
+  "id": "S015",
+  "source": "dw i’n moyn gwybod beth ti angen gwybod  |  I want to know what you need to know?",
+  "proposed": "dw i’n moyn gwybod beth ti angen gwybod?  |  I want to know what you need to know?",
+  "note": "South v2 · 1 row: S0050L01B02 · the English reads as a question; the Welsh has no question form",
+  "course": "cym_sv2_for_eng",
+  "known": "I want to know what you need to know?",
+  "target": "dw i’n moyn gwybod beth ti angen gwybod",
+  "rows": [
+   "cym_sv2_for_eng:S0050L01B02"
+  ]
+ },
+ {
+  "id": "S016",
+  "source": "wnest ti ddechrau gwylio’r ffilm ’na wythnos yn ôl  |  you started to watch that film a week ago",
+  "proposed": "wnest ti ddechrau gwylio’r ffilm ’na wythnos yn ôl?  |  you started to watch that film a week ago?",
+  "note": "South v2 · 1 row: S0108L03U11 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started to watch that film a week ago",
+  "target": "wnest ti ddechrau gwylio’r ffilm ’na wythnos yn ôl",
+  "rows": [
+   "cym_sv2_for_eng:S0108L03U11"
+  ]
+ },
+ {
+  "id": "S017",
+  "source": "gest ti rywbeth i’w fwyta, clywes i  |  you had something to eat, I heard",
+  "proposed": "gest ti rywbeth i’w fwyta, clywes i?  |  you had something to eat, I heard?",
+  "note": "South v2 · 1 row: seed 129 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you had something to eat, I heard",
+  "target": "gest ti rywbeth i’w fwyta, clywes i",
+  "rows": [
+   "129"
+  ]
+ },
+ {
+  "id": "S018",
+  "source": "wnest ti ddechrau wythnos yn ôl, clywes i  |  you started a week ago, I heard",
+  "proposed": "wnest ti ddechrau wythnos yn ôl, clywes i?  |  you started a week ago, I heard?",
+  "note": "South v2 · 1 row: S0129L01U03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you started a week ago, I heard",
+  "target": "wnest ti ddechrau wythnos yn ôl, clywes i",
+  "rows": [
+   "cym_sv2_for_eng:S0129L01U03"
+  ]
+ },
+ {
+  "id": "S019",
+  "source": "gest ti ddigon i’w fwyta penwythnos diwetha’  |  you had enough to eat last weekend",
+  "proposed": "gest ti ddigon i’w fwyta penwythnos diwetha’?  |  you had enough to eat last weekend?",
+  "note": "South v2 · 1 row: S0129L02B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you had enough to eat last weekend",
+  "target": "gest ti ddigon i’w fwyta penwythnos diwetha’",
+  "rows": [
+   "cym_sv2_for_eng:S0129L02B06"
+  ]
+ },
+ {
+  "id": "S020",
+  "source": "gest ti ormod i fwyta penwythnos diwetha’, clywes i  |  you had too much to eat last weekend, I heard",
+  "proposed": "gest ti ormod i fwyta penwythnos diwetha’, clywes i?  |  you had too much to eat last weekend, I heard?",
+  "note": "South v2 · 1 row: S0129L02B07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you had too much to eat last weekend, I heard",
+  "target": "gest ti ormod i fwyta penwythnos diwetha’, clywes i",
+  "rows": [
+   "cym_sv2_for_eng:S0129L02B07"
+  ]
+ },
+ {
+  "id": "S021",
+  "source": "gest ti ddigon i yfed  |  you had enough to drink",
+  "proposed": "gest ti ddigon i yfed?  |  you had enough to drink?",
+  "note": "South v2 · 1 row: S0129L02B05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you had enough to drink",
+  "target": "gest ti ddigon i yfed",
+  "rows": [
+   "cym_sv2_for_eng:S0129L02B05"
+  ]
+ },
+ {
+  "id": "S022",
+  "source": "gest ti  |  you had",
+  "proposed": "gest ti?  |  you had?",
+  "note": "South v2 · 1 row: S0129L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you had",
+  "target": "gest ti",
+  "rows": [
+   "cym_sv2_for_eng:S0129L02B04"
+  ]
+ },
+ {
+  "id": "S023",
+  "source": "gest ti rywbeth i’w fwyta yn y tŷ bwyta  |  you had something to eat in the restaurant",
+  "proposed": "gest ti rywbeth i’w fwyta yn y tŷ bwyta?  |  you had something to eat in the restaurant?",
+  "note": "South v2 · 1 row: S0129L02U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you had something to eat in the restaurant",
+  "target": "gest ti rywbeth i’w fwyta yn y tŷ bwyta",
+  "rows": [
+   "cym_sv2_for_eng:S0129L02U01"
+  ]
+ },
+ {
+  "id": "S024",
+  "source": "gest ti rywbeth i’w yfed  |  you had something to drink",
+  "proposed": "gest ti rywbeth i’w yfed?  |  you had something to drink?",
+  "note": "South v2 · 1 row: S0129L02U02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you had something to drink",
+  "target": "gest ti rywbeth i’w yfed",
+  "rows": [
+   "cym_sv2_for_eng:S0129L02U02"
+  ]
+ },
+ {
+  "id": "S025",
+  "source": "be’ oedd yn mynd  |  what was going to",
+  "proposed": "be’ oedd yn mynd?  |  what was going to?",
+  "note": "South v2 · 1 row: S0187L01 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what was going to",
+  "target": "be’ oedd yn mynd",
+  "rows": [
+   "S0187L01"
+  ]
+ },
+ {
+  "id": "S026",
+  "source": "be’ oedd yn mynd i newid  |  what was going to change",
+  "proposed": "be’ oedd yn mynd i newid?  |  what was going to change?",
+  "note": "South v2 · 1 row: S0187L01B01 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what was going to change",
+  "target": "be’ oedd yn mynd i newid",
+  "rows": [
+   "cym_sv2_for_eng:S0187L01B01"
+  ]
+ },
+ {
+  "id": "S027",
+  "source": "beth oedd yn mynd i ddigwydd  |  what was going to happen",
+  "proposed": "beth oedd yn mynd i ddigwydd?  |  what was going to happen?",
+  "note": "South v2 · 1 row: S0189L01B01 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what was going to happen",
+  "target": "beth oedd yn mynd i ddigwydd",
+  "rows": [
+   "cym_sv2_for_eng:S0189L01B01"
+  ]
+ },
+ {
+  "id": "S028",
+  "source": "be’ oedd yn digwydd  |  what was happening",
+  "proposed": "be’ oedd yn digwydd?  |  what was happening?",
+  "note": "South v2 · 3 rows: S0190L01, S1347L03, S1347L03 component · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what was happening",
+  "target": "be’ oedd yn digwydd",
+  "rows": [
+   "S0190L01",
+   "S1347L03",
+   "S1347L03#0"
+  ]
+ },
+ {
+  "id": "S029",
+  "source": "beth oedd yn digwydd  |  what was happening",
+  "proposed": "beth oedd yn digwydd?  |  what was happening?",
+  "note": "South v2 · 1 row: S0190L01B01 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what was happening",
+  "target": "beth oedd yn digwydd",
+  "rows": [
+   "cym_sv2_for_eng:S0190L01B01"
+  ]
+ },
+ {
+  "id": "S030",
+  "source": "beth yw ei enw hi  |  what her name is",
+  "proposed": "beth yw ei enw hi?  |  what her name is?",
+  "note": "South v2 · 1 row: S0277L01 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what her name is",
+  "target": "beth yw ei enw hi",
+  "rows": [
+   "S0277L01"
+  ]
+ },
+ {
+  "id": "S031",
+  "source": "fyddai gobaith yn fy ngwneud i’n hapus  |  hope would make me happy",
+  "proposed": "fyddai gobaith yn fy ngwneud i’n hapus?  |  hope would make me happy?",
+  "note": "South v2 · 1 row: S0290L04B05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "hope would make me happy",
+  "target": "fyddai gobaith yn fy ngwneud i’n hapus",
+  "rows": [
+   "cym_sv2_for_eng:S0290L04B05"
+  ]
+ },
+ {
+  "id": "S032",
+  "source": "fyddai’n fy ngwneud i’n llond llaw go iawn  |  it would make me a real handful",
+  "proposed": "fyddai’n fy ngwneud i’n llond llaw go iawn?  |  it would make me a real handful?",
+  "note": "South v2 · 1 row: S0290L04B07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "it would make me a real handful",
+  "target": "fyddai’n fy ngwneud i’n llond llaw go iawn",
+  "rows": [
+   "cym_sv2_for_eng:S0290L04B07"
+  ]
+ },
+ {
+  "id": "S033",
+  "source": "fyddai  |  would",
+  "proposed": "fyddai?  |  would?",
+  "note": "South v2 · 2 rows: S0290L02, S1485L02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "would",
+  "target": "fyddai",
+  "rows": [
+   "S0290L02",
+   "S1485L02"
+  ]
+ },
+ {
+  "id": "S034",
+  "source": "fyddai ei dwlid e dros wal yn hawdd  |  throwing it over a wall would be easy",
+  "proposed": "fyddai ei dwlid e dros wal yn hawdd?  |  throwing it over a wall would be easy?",
+  "note": "South v2 · 1 row: S0290L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "throwing it over a wall would be easy",
+  "target": "fyddai ei dwlid e dros wal yn hawdd",
+  "rows": [
+   "cym_sv2_for_eng:S0290L02B04"
+  ]
+ },
+ {
+  "id": "S035",
+  "source": "fyddai hyd yn oed her go iawn yn hawdd  |  even a real challenge would be easy",
+  "proposed": "fyddai hyd yn oed her go iawn yn hawdd?  |  even a real challenge would be easy?",
+  "note": "South v2 · 1 row: S0290L02B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "even a real challenge would be easy",
+  "target": "fyddai hyd yn oed her go iawn yn hawdd",
+  "rows": [
+   "cym_sv2_for_eng:S0290L02B06"
+  ]
+ },
+ {
+  "id": "S036",
+  "source": "fyddai meddwl o ddifri yn hawdd iddi  |  thinking seriously would be easy for her",
+  "proposed": "fyddai meddwl o ddifri yn hawdd iddi?  |  thinking seriously would be easy for her?",
+  "note": "South v2 · 1 row: S0290L02B05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "thinking seriously would be easy for her",
+  "target": "fyddai meddwl o ddifri yn hawdd iddi",
+  "rows": [
+   "cym_sv2_for_eng:S0290L02B05"
+  ]
+ },
+ {
+  "id": "S037",
+  "source": "fyddai gobaith go iawn yn fy ngwneud i’n hapusach  |  real hope would make me happier",
+  "proposed": "fyddai gobaith go iawn yn fy ngwneud i’n hapusach?  |  real hope would make me happier?",
+  "note": "South v2 · 1 row: S0290L05B07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "real hope would make me happier",
+  "target": "fyddai gobaith go iawn yn fy ngwneud i’n hapusach",
+  "rows": [
+   "cym_sv2_for_eng:S0290L05B07"
+  ]
+ },
+ {
+  "id": "S038",
+  "source": "fyddai gweld y llinell felen yn hawdd  |  seeing the yellow line would be easy",
+  "proposed": "fyddai gweld y llinell felen yn hawdd?  |  seeing the yellow line would be easy?",
+  "note": "South v2 · 1 row: S0292L01B05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "seeing the yellow line would be easy",
+  "target": "fyddai gweld y llinell felen yn hawdd",
+  "rows": [
+   "cym_sv2_for_eng:S0292L01B05"
+  ]
+ },
+ {
+  "id": "S039",
+  "source": "yw’r mwya  |  is the most",
+  "proposed": "yw’r mwya?  |  is the most?",
+  "note": "South v2 · 3 rows: S0293L03, S1492L04, S1492L04 component · the English reads as a question; the Welsh has no question form",
+  "course": "cym_sv2_for_eng",
+  "known": "is the most",
+  "target": "yw’r mwya",
+  "rows": [
+   "S0293L03",
+   "S1492L04",
+   "S1492L04#0"
+  ]
+ },
+ {
+  "id": "S040",
+  "source": "fydd  |  will",
+  "proposed": "fydd?  |  will?",
+  "note": "South v2 · 2 rows: S0294L01, S1493L02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "will",
+  "target": "fydd",
+  "rows": [
+   "S0294L01",
+   "S1493L02"
+  ]
+ },
+ {
+  "id": "S041",
+  "source": "fydd sioe yn digwydd gyntaf  |  a show will happen first",
+  "proposed": "fydd sioe yn digwydd gyntaf?  |  a show will happen first?",
+  "note": "South v2 · 1 row: S0295L03B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "a show will happen first",
+  "target": "fydd sioe yn digwydd gyntaf",
+  "rows": [
+   "cym_sv2_for_eng:S0295L03B04"
+  ]
+ },
+ {
+  "id": "S042",
+  "source": "fydd bach o gwsg yn dy helpu di  |  some sleep will help you",
+  "proposed": "fydd bach o gwsg yn dy helpu di?  |  some sleep will help you?",
+  "note": "South v2 · 1 row: S0297L04B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "some sleep will help you",
+  "target": "fydd bach o gwsg yn dy helpu di",
+  "rows": [
+   "cym_sv2_for_eng:S0297L04B04"
+  ]
+ },
+ {
+  "id": "S043",
+  "source": "fydd dianc rhag fynedfa yn hawdd  |  escaping from the entrance will be easy",
+  "proposed": "fydd dianc rhag fynedfa yn hawdd?  |  escaping from the entrance will be easy?",
+  "note": "South v2 · 1 row: S0298L03B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "escaping from the entrance will be easy",
+  "target": "fydd dianc rhag fynedfa yn hawdd",
+  "rows": [
+   "cym_sv2_for_eng:S0298L03B03"
+  ]
+ },
+ {
+  "id": "S044",
+  "source": "pam  |  why",
+  "proposed": "pam?  |  why?",
+  "note": "South v2 · 9 rows: S0300L01, S1021L01, S1067L01, S1099L03, S1113L01 … · a single question word; it is also used inside statements",
+  "course": "cym_sv2_for_eng",
+  "known": "why",
+  "target": "pam",
+  "rows": [
+   "S0300L01",
+   "S1021L01",
+   "S1067L01",
+   "S1099L03",
+   "S1113L01",
+   "S1135L02",
+   "S1145L01",
+   "S1269L01",
+   "S1500L01"
+  ]
+ },
+ {
+  "id": "S045",
+  "source": "yw hwnna  |  that one’s",
+  "proposed": "yw hwnna?  |  that one’s?",
+  "note": "South v2 · 7 rows: S0303L01, S1503L05, S1503L05 component, S1635L02, S1635L02 component … · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "that one’s",
+  "target": "yw hwnna",
+  "rows": [
+   "S0303L01",
+   "S1503L05",
+   "S1503L05#0",
+   "S1635L02",
+   "S1635L02#0",
+   "S1636L02#2",
+   "cym_sv2_for_eng:S1636L02C03"
+  ]
+ },
+ {
+  "id": "S046",
+  "source": "wnei di weld tŷ perffaith yfory  |  you will see a perfect house tomorrow",
+  "proposed": "wnei di weld tŷ perffaith yfory?  |  you will see a perfect house tomorrow?",
+  "note": "South v2 · 1 row: S0311L01B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you will see a perfect house tomorrow",
+  "target": "wnei di weld tŷ perffaith yfory",
+  "rows": [
+   "cym_sv2_for_eng:S0311L01B06"
+  ]
+ },
+ {
+  "id": "S047",
+  "source": "allai fod wedi digwydd i’r teulu cyfan  |  it could have happened to the whole family",
+  "proposed": "allai fod wedi digwydd i’r teulu cyfan?  |  it could have happened to the whole family?",
+  "note": "South v2 · 1 row: S0315L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "it could have happened to the whole family",
+  "target": "allai fod wedi digwydd i’r teulu cyfan",
+  "rows": [
+   "cym_sv2_for_eng:S0315L02B04"
+  ]
+ },
+ {
+  "id": "S048",
+  "source": "allai fod  |  could",
+  "proposed": "allai fod?  |  could?",
+  "note": "South v2 · 1 row: S0315L01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "could",
+  "target": "allai fod",
+  "rows": [
+   "S0315L01"
+  ]
+ },
+ {
+  "id": "S049",
+  "source": "pwy  |  who",
+  "proposed": "pwy?  |  who?",
+  "note": "South v2 · 2 rows: S0319L05, S1527L02 · a single question word; it is also used inside statements",
+  "course": "cym_sv2_for_eng",
+  "known": "who",
+  "target": "pwy",
+  "rows": [
+   "S0319L05",
+   "S1527L02"
+  ]
+ },
+ {
+  "id": "S050",
+  "source": "wnewch chi roi esgus mwy na thebyg  |  you will probably give an excuse",
+  "proposed": "wnewch chi roi esgus mwy na thebyg?  |  you will probably give an excuse?",
+  "note": "South v2 · 1 row: S0321L01B06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you will probably give an excuse",
+  "target": "wnewch chi roi esgus mwy na thebyg",
+  "rows": [
+   "cym_sv2_for_eng:S0321L01B06"
+  ]
+ },
+ {
+  "id": "S051",
+  "source": "wnewch chi ennill y gêm heblaw am hynny  |  you will win the game except for that",
+  "proposed": "wnewch chi ennill y gêm heblaw am hynny?  |  you will win the game except for that?",
+  "note": "South v2 · 1 row: S0322L02B02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you will win the game except for that",
+  "target": "wnewch chi ennill y gêm heblaw am hynny",
+  "rows": [
+   "cym_sv2_for_eng:S0322L02B02"
+  ]
+ },
+ {
+  "id": "S052",
+  "source": "wnewch chi ennill heblaw am hynny mwy na thebyg  |  you will probably win except for that",
+  "proposed": "wnewch chi ennill heblaw am hynny mwy na thebyg?  |  you will probably win except for that?",
+  "note": "South v2 · 1 row: S0322L02U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you will probably win except for that",
+  "target": "wnewch chi ennill heblaw am hynny mwy na thebyg",
+  "rows": [
+   "cym_sv2_for_eng:S0322L02U01"
+  ]
+ },
+ {
+  "id": "S053",
+  "source": "allai fod ta pwy ti’n dewis  |  it could be whoever you choose",
+  "proposed": "allai fod ta pwy ti’n dewis?  |  it could be whoever you choose?",
+  "note": "South v2 · 1 row: S0329L01B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "it could be whoever you choose",
+  "target": "allai fod ta pwy ti’n dewis",
+  "rows": [
+   "cym_sv2_for_eng:S0329L01B04"
+  ]
+ },
+ {
+  "id": "S054",
+  "source": "beth sy’n mynd i ddigwydd  |  what’s going to happen",
+  "proposed": "beth sy’n mynd i ddigwydd?  |  what’s going to happen?",
+  "note": "South v2 · 1 row: S1012L03 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what’s going to happen",
+  "target": "beth sy’n mynd i ddigwydd",
+  "rows": [
+   "S1012L03"
+  ]
+ },
+ {
+  "id": "S055",
+  "source": "beth sy’n mynd i ddigwydd ’fory  |  what’s going to happen tomorrow",
+  "proposed": "beth sy’n mynd i ddigwydd ’fory?  |  what’s going to happen tomorrow?",
+  "note": "South v2 · 1 row: S1012L03B02 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what’s going to happen tomorrow",
+  "target": "beth sy’n mynd i ddigwydd ’fory",
+  "rows": [
+   "cym_sv2_for_eng:S1012L03B02"
+  ]
+ },
+ {
+  "id": "S056",
+  "source": "beth yw’r ateb  |  what the answer is",
+  "proposed": "beth yw’r ateb?  |  what the answer is?",
+  "note": "South v2 · 1 row: S1017L03 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what the answer is",
+  "target": "beth yw’r ateb",
+  "rows": [
+   "S1017L03"
+  ]
+ },
+ {
+  "id": "S057",
+  "source": "yw’r  |  is the",
+  "proposed": "yw’r?  |  is the?",
+  "note": "South v2 · 2 rows: S1017L03 component, S1017L03C02 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_sv2_for_eng",
+  "known": "is the",
+  "target": "yw’r",
+  "rows": [
+   "S1017L03#1",
+   "cym_sv2_for_eng:S1017L03C02"
+  ]
+ },
+ {
+  "id": "S058",
+  "source": "pam ti’n gwneud hynny  |  why are you doing that",
+  "proposed": "pam ti’n gwneud hynny?  |  why are you doing that?",
+  "note": "South v2 · 1 row: S1021L01U06 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_sv2_for_eng",
+  "known": "why are you doing that",
+  "target": "pam ti’n gwneud hynny",
+  "rows": [
+   "cym_sv2_for_eng:S1021L01U06"
+  ]
+ },
+ {
+  "id": "S059",
+  "source": "sut i wneud  |  how to do",
+  "proposed": "sut i wneud?  |  how to do?",
+  "note": "South v2 · 2 rows: S1059L01 component, S1059L01C02 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "how to do",
+  "target": "sut i wneud",
+  "rows": [
+   "S1059L01#1",
+   "cym_sv2_for_eng:S1059L01C02"
+  ]
+ },
+ {
+  "id": "S060",
+  "source": "pryd  |  when",
+  "proposed": "pryd?  |  when?",
+  "note": "South v2 · 2 rows: S1080L02 component, S1080L02C01 · a single question word; it is also used inside statements",
+  "course": "cym_sv2_for_eng",
+  "known": "when",
+  "target": "pryd",
+  "rows": [
+   "S1080L02#0",
+   "cym_sv2_for_eng:S1080L02C01"
+  ]
+ },
+ {
+  "id": "S061",
+  "source": "fydd e’n gweithio  |  it will work",
+  "proposed": "fydd e’n gweithio?  |  it will work?",
+  "note": "South v2 · 2 rows: S1094L02, S1094L02 component · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "it will work",
+  "target": "fydd e’n gweithio",
+  "rows": [
+   "S1094L02",
+   "S1094L02#0"
+  ]
+ },
+ {
+  "id": "S062",
+  "source": "fydd e’n gweithio nawr  |  it will work now",
+  "proposed": "fydd e’n gweithio nawr?  |  it will work now?",
+  "note": "South v2 · 1 row: S1094L02B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "it will work now",
+  "target": "fydd e’n gweithio nawr",
+  "rows": [
+   "cym_sv2_for_eng:S1094L02B01"
+  ]
+ },
+ {
+  "id": "S063",
+  "source": "fydd e’n gweithio mewn pryd  |  it will work in time",
+  "proposed": "fydd e’n gweithio mewn pryd?  |  it will work in time?",
+  "note": "South v2 · 1 row: S1094L02B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "it will work in time",
+  "target": "fydd e’n gweithio mewn pryd",
+  "rows": [
+   "cym_sv2_for_eng:S1094L02B03"
+  ]
+ },
+ {
+  "id": "S064",
+  "source": "fydd e’n gweithio os galli di helpu fi  |  it will work if you can help me",
+  "proposed": "fydd e’n gweithio os galli di helpu fi?  |  it will work if you can help me?",
+  "note": "South v2 · 1 row: S1094L02U04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "it will work if you can help me",
+  "target": "fydd e’n gweithio os galli di helpu fi",
+  "rows": [
+   "cym_sv2_for_eng:S1094L02U04"
+  ]
+ },
+ {
+  "id": "S065",
+  "source": "fydd e’n gweithio ond mae’n anodd  |  it will work but it’s difficult",
+  "proposed": "fydd e’n gweithio ond mae’n anodd?  |  it will work but it’s difficult?",
+  "note": "South v2 · 1 row: S1094L02U07 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "it will work but it’s difficult",
+  "target": "fydd e’n gweithio ond mae’n anodd",
+  "rows": [
+   "cym_sv2_for_eng:S1094L02U07"
+  ]
+ },
+ {
+  "id": "S066",
+  "source": "dyw e ddim yn gweithio ar hyn o bryd ond fydd e’n gweithio  |  it’s not working at the moment but it will work",
+  "proposed": "dyw e ddim yn gweithio ar hyn o bryd ond fydd e’n gweithio?  |  it’s not working at the moment but it will work?",
+  "note": "South v2 · 1 row: S1099L04U03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "it’s not working at the moment but it will work",
+  "target": "dyw e ddim yn gweithio ar hyn o bryd ond fydd e’n gweithio",
+  "rows": [
+   "cym_sv2_for_eng:S1099L04U03"
+  ]
+ },
+ {
+  "id": "S067",
+  "source": "gei di ofyn iddi hi  |  you can ask her",
+  "proposed": "gei di ofyn iddi hi?  |  you can ask her?",
+  "note": "South v2 · 2 rows: S1136L02, S1136L02 component · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you can ask her",
+  "target": "gei di ofyn iddi hi",
+  "rows": [
+   "S1136L02",
+   "S1136L02#0"
+  ]
+ },
+ {
+  "id": "S068",
+  "source": "gei di ofyn iddi hi pam  |  you can ask her why",
+  "proposed": "gei di ofyn iddi hi pam?  |  you can ask her why?",
+  "note": "South v2 · 1 row: S1136L02B03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you can ask her why",
+  "target": "gei di ofyn iddi hi pam",
+  "rows": [
+   "cym_sv2_for_eng:S1136L02B03"
+  ]
+ },
+ {
+  "id": "S069",
+  "source": "gei di ofyn iddi hi nawr  |  you can ask her now",
+  "proposed": "gei di ofyn iddi hi nawr?  |  you can ask her now?",
+  "note": "South v2 · 1 row: S1136L02B02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you can ask her now",
+  "target": "gei di ofyn iddi hi nawr",
+  "rows": [
+   "cym_sv2_for_eng:S1136L02B02"
+  ]
+ },
+ {
+  "id": "S070",
+  "source": "ond gei di ofyn iddi hi ’fory  |  but you can ask her tomorrow",
+  "proposed": "ond gei di ofyn iddi hi ’fory?  |  but you can ask her tomorrow?",
+  "note": "South v2 · 1 row: S1136L02B04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "but you can ask her tomorrow",
+  "target": "ond gei di ofyn iddi hi ’fory",
+  "rows": [
+   "cym_sv2_for_eng:S1136L02B04"
+  ]
+ },
+ {
+  "id": "S071",
+  "source": "gei di ofyn iddi hi am yr iaith ’ma  |  you can ask her about this language",
+  "proposed": "gei di ofyn iddi hi am yr iaith ’ma?  |  you can ask her about this language?",
+  "note": "South v2 · 1 row: S1136L02U06 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you can ask her about this language",
+  "target": "gei di ofyn iddi hi am yr iaith ’ma",
+  "rows": [
+   "cym_sv2_for_eng:S1136L02U06"
+  ]
+ },
+ {
+  "id": "S072",
+  "source": "dw i ddim yn siŵr ond gei di ofyn iddi hi  |  I’m not sure but you can ask her",
+  "proposed": "dw i ddim yn siŵr ond gei di ofyn iddi hi?  |  I’m not sure but you can ask her?",
+  "note": "South v2 · 1 row: S1136L02U03 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "I’m not sure but you can ask her",
+  "target": "dw i ddim yn siŵr ond gei di ofyn iddi hi",
+  "rows": [
+   "cym_sv2_for_eng:S1136L02U03"
+  ]
+ },
+ {
+  "id": "S073",
+  "source": "gei di ofyn iddi hi cyn i ti adael  |  you can ask her before you leave",
+  "proposed": "gei di ofyn iddi hi cyn i ti adael?  |  you can ask her before you leave?",
+  "note": "South v2 · 1 row: S1136L02U01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you can ask her before you leave",
+  "target": "gei di ofyn iddi hi cyn i ti adael",
+  "rows": [
+   "cym_sv2_for_eng:S1136L02U01"
+  ]
+ },
+ {
+  "id": "S074",
+  "source": "gei di ofyn iddi hi sut mae’n mynd  |  you can ask her how it’s going",
+  "proposed": "gei di ofyn iddi hi sut mae’n mynd?  |  you can ask her how it’s going?",
+  "note": "South v2 · 1 row: S1136L02U08 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you can ask her how it’s going",
+  "target": "gei di ofyn iddi hi sut mae’n mynd",
+  "rows": [
+   "cym_sv2_for_eng:S1136L02U08"
+  ]
+ },
+ {
+  "id": "S075",
+  "source": "gei di ofyn iddi hi beth oedd hi’n dweud  |  you can ask her what she was saying",
+  "proposed": "gei di ofyn iddi hi beth oedd hi’n dweud?  |  you can ask her what she was saying?",
+  "note": "South v2 · 1 row: S1136L02U05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you can ask her what she was saying",
+  "target": "gei di ofyn iddi hi beth oedd hi’n dweud",
+  "rows": [
+   "cym_sv2_for_eng:S1136L02U05"
+  ]
+ },
+ {
+  "id": "S076",
+  "source": "dw i ddim yn gwybod pam ond gei di ofyn iddi hi heno  |  I don’t know why but you can ask her tonight",
+  "proposed": "dw i ddim yn gwybod pam ond gei di ofyn iddi hi heno?  |  I don’t know why but you can ask her tonight?",
+  "note": "South v2 · 1 row: S1136L02U04 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "I don’t know why but you can ask her tonight",
+  "target": "dw i ddim yn gwybod pam ond gei di ofyn iddi hi heno",
+  "rows": [
+   "cym_sv2_for_eng:S1136L02U04"
+  ]
+ },
+ {
+  "id": "S077",
+  "source": "nag wyt ti’n hapus rhagor  |  you’re not happy any more",
+  "proposed": "nag wyt ti’n hapus rhagor?  |  you’re not happy any more?",
+  "note": "South v2 · 1 row: S1145L03B01 · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "you’re not happy any more",
+  "target": "nag wyt ti’n hapus rhagor",
+  "rows": [
+   "cym_sv2_for_eng:S1145L03B01"
+  ]
+ },
+ {
+  "id": "S078",
+  "source": "nag wyt ti’n hapus  |  you’re not happy",
+  "proposed": "nag wyt ti’n hapus?  |  you’re not happy?",
+  "note": "South v2 · 2 rows: S1145L02, S1145L02 component · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "you’re not happy",
+  "target": "nag wyt ti’n hapus",
+  "rows": [
+   "S1145L02",
+   "S1145L02#0"
+  ]
+ },
+ {
+  "id": "S079",
+  "source": "nag wyt ti’n hapus gyda fi  |  you’re not happy with me",
+  "proposed": "nag wyt ti’n hapus gyda fi?  |  you’re not happy with me?",
+  "note": "South v2 · 1 row: S1145L02B03 · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "you’re not happy with me",
+  "target": "nag wyt ti’n hapus gyda fi",
+  "rows": [
+   "cym_sv2_for_eng:S1145L02B03"
+  ]
+ },
+ {
+  "id": "S080",
+  "source": "beth yw dy enw di  |  what your name is",
+  "proposed": "beth yw dy enw di?  |  what your name is?",
+  "note": "South v2 · 2 rows: S1150L02, S1150L02 component · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what your name is",
+  "target": "beth yw dy enw di",
+  "rows": [
+   "S1150L02",
+   "S1150L02#0"
+  ]
+ },
+ {
+  "id": "S081",
+  "source": "pam wyt ti’n dweud hynny  |  why do you say that",
+  "proposed": "pam wyt ti’n dweud hynny?  |  why do you say that?",
+  "note": "South v2 · 1 row: S1160L02B03 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_sv2_for_eng",
+  "known": "why do you say that",
+  "target": "pam wyt ti’n dweud hynny",
+  "rows": [
+   "cym_sv2_for_eng:S1160L02B03"
+  ]
+ },
+ {
+  "id": "S082",
+  "source": "wyt ti’n dweud hynny  |  do you say that",
+  "proposed": "wyt ti’n dweud hynny?  |  do you say that?",
+  "note": "South v2 · 1 row: S1160L02B02 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_sv2_for_eng",
+  "known": "do you say that",
+  "target": "wyt ti’n dweud hynny",
+  "rows": [
+   "cym_sv2_for_eng:S1160L02B02"
+  ]
+ },
+ {
+  "id": "S083",
+  "source": "be’ ti’n meddwl am hynny  |  what do you think about that",
+  "proposed": "be’ ti’n meddwl am hynny?  |  what do you think about that?",
+  "note": "South v2 · 1 row: S1162L01B01 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_sv2_for_eng",
+  "known": "what do you think about that",
+  "target": "be’ ti’n meddwl am hynny",
+  "rows": [
+   "cym_sv2_for_eng:S1162L01B01"
+  ]
+ },
+ {
+  "id": "S084",
+  "source": "wrth gwrs ond be’ ti’n meddwl am hynny  |  of course but what do you think about that",
+  "proposed": "wrth gwrs ond be’ ti’n meddwl am hynny?  |  of course but what do you think about that?",
+  "note": "South v2 · 1 row: S1162L01U01 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_sv2_for_eng",
+  "known": "of course but what do you think about that",
+  "target": "wrth gwrs ond be’ ti’n meddwl am hynny",
+  "rows": [
+   "cym_sv2_for_eng:S1162L01U01"
+  ]
+ },
+ {
+  "id": "S085",
+  "source": "yw e’n wir  |  it’s true",
+  "proposed": "yw e’n wir?  |  it’s true?",
+  "note": "South v2 · 2 rows: S1165L04, S1165L04 component · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "it’s true",
+  "target": "yw e’n wir",
+  "rows": [
+   "S1165L04",
+   "S1165L04#0"
+  ]
+ },
+ {
+  "id": "S086",
+  "source": "oes ots ’da ti os  |  do you mind if",
+  "proposed": "oes ots ’da ti os?  |  do you mind if?",
+  "note": "South v2 · 4 rows: S1190L01, S1190L01 component, S1281L01, S1281L01 component · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_sv2_for_eng",
+  "known": "do you mind if",
+  "target": "oes ots ’da ti os",
+  "rows": [
+   "S1190L01",
+   "S1190L01#0",
+   "S1281L01",
+   "S1281L01#0"
+  ]
+ },
+ {
+  "id": "S087",
+  "source": "ond oes ots ’da ti os  |  but do you mind if",
+  "proposed": "ond oes ots ’da ti os?  |  but do you mind if?",
+  "note": "South v2 · 1 row: S1190L01B02 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_sv2_for_eng",
+  "known": "but do you mind if",
+  "target": "ond oes ots ’da ti os",
+  "rows": [
+   "cym_sv2_for_eng:S1190L01B02"
+  ]
+ },
+ {
+  "id": "S088",
+  "source": "dw i’n brysur ond gei di ofyn iddi hi achos mae hi’n ffrind i fi  |  I’m busy but you can ask her because she’s my friend",
+  "proposed": "dw i’n brysur ond gei di ofyn iddi hi achos mae hi’n ffrind i fi?  |  I’m busy but you can ask her because she’s my friend?",
+  "note": "South v2 · 1 row: S1192L01U05 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "I’m busy but you can ask her because she’s my friend",
+  "target": "dw i’n brysur ond gei di ofyn iddi hi achos mae hi’n ffrind i fi",
+  "rows": [
+   "cym_sv2_for_eng:S1192L01U05"
+  ]
+ },
+ {
+  "id": "S089",
+  "source": "be’ oedd yn mynd  |  what was going",
+  "proposed": "be’ oedd yn mynd?  |  what was going?",
+  "note": "South v2 · 4 rows: S1201L03, S1201L03 component, S1348L03, S1348L03 component · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what was going",
+  "target": "be’ oedd yn mynd",
+  "rows": [
+   "S1201L03",
+   "S1201L03#0",
+   "S1348L03",
+   "S1348L03#0"
+  ]
+ },
+ {
+  "id": "S090",
+  "source": "pam maen nhw’n meddwl fod e ddim fel ’na  |  why do they think that it’s not like that",
+  "proposed": "pam maen nhw’n meddwl fod e ddim fel ’na?  |  why do they think that it’s not like that?",
+  "note": "South v2 · 1 row: S1210L01U06 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_sv2_for_eng",
+  "known": "why do they think that it’s not like that",
+  "target": "pam maen nhw’n meddwl fod e ddim fel ’na",
+  "rows": [
+   "cym_sv2_for_eng:S1210L01U06"
+  ]
+ },
+ {
+  "id": "S091",
+  "source": "oedd yn moyn  |  who wanted",
+  "proposed": "oedd yn moyn?  |  who wanted?",
+  "note": "South v2 · 2 rows: S1231L03, S1231L03 component · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "who wanted",
+  "target": "oedd yn moyn",
+  "rows": [
+   "S1231L03",
+   "S1231L03#0"
+  ]
+ },
+ {
+  "id": "S092",
+  "source": "fyddi di’n barod  |  you’ll be ready",
+  "proposed": "fyddi di’n barod?  |  you’ll be ready?",
+  "note": "South v2 · 2 rows: S1255L02, S1255L02 component · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you’ll be ready",
+  "target": "fyddi di’n barod",
+  "rows": [
+   "S1255L02",
+   "S1255L02#0"
+  ]
+ },
+ {
+  "id": "S093",
+  "source": "fyddi di’n barod mewn llai nag awr  |  you’ll be ready in less than an hour",
+  "proposed": "fyddi di’n barod mewn llai nag awr?  |  you’ll be ready in less than an hour?",
+  "note": "South v2 · 1 row: S1256L03B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "you’ll be ready in less than an hour",
+  "target": "fyddi di’n barod mewn llai nag awr",
+  "rows": [
+   "cym_sv2_for_eng:S1256L03B01"
+  ]
+ },
+ {
+  "id": "S094",
+  "source": "naddo beth glywest ti  |  no what did you hear",
+  "proposed": "naddo beth glywest ti?  |  no what did you hear?",
+  "note": "South v2 · 1 row: S1366L01U01 · the English reads as a question; the Welsh has no question form",
+  "course": "cym_sv2_for_eng",
+  "known": "no what did you hear",
+  "target": "naddo beth glywest ti",
+  "rows": [
+   "cym_sv2_for_eng:S1366L01U01"
+  ]
+ },
+ {
+  "id": "S095",
+  "source": "heno ŷn nhw’n moyn stopo?  |  tonight do they want to stop",
+  "proposed": "heno ŷn nhw’n moyn stopo?  |  tonight do they want to stop?",
+  "note": "South v2 · 1 row: S1417L01B03 · the Welsh has a \"?\" but the English is not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "tonight do they want to stop",
+  "target": "heno ŷn nhw’n moyn stopo?",
+  "rows": [
+   "cym_sv2_for_eng:S1417L01B03"
+  ]
+ },
+ {
+  "id": "S096",
+  "source": "os ŷn ni’n mynd ŷn nhw’n moyn dod?  |  if we go do they want to come",
+  "proposed": "os ŷn ni’n mynd ŷn nhw’n moyn dod?  |  if we go do they want to come?",
+  "note": "South v2 · 1 row: S1417L01B04 · the Welsh has a \"?\" but the English is not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "if we go do they want to come",
+  "target": "os ŷn ni’n mynd ŷn nhw’n moyn dod?",
+  "rows": [
+   "cym_sv2_for_eng:S1417L01B04"
+  ]
+ },
+ {
+  "id": "S097",
+  "source": "ar ôl i ni gwpla ŷn nhw’n moyn mynd mas?  |  after we finish do they want to go out",
+  "proposed": "ar ôl i ni gwpla ŷn nhw’n moyn mynd mas?  |  after we finish do they want to go out?",
+  "note": "South v2 · 1 row: S1417L01U03 · the Welsh has a \"?\" but the English is not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "after we finish do they want to go out",
+  "target": "ar ôl i ni gwpla ŷn nhw’n moyn mynd mas?",
+  "rows": [
+   "cym_sv2_for_eng:S1417L01U03"
+  ]
+ },
+ {
+  "id": "S098",
+  "source": "ddwedon nhw  |  did they say",
+  "proposed": "ddwedon nhw?  |  did they say?",
+  "note": "South v2 · 2 rows: S1453L01, S1453L01 component · the English reads as a question; the Welsh has no question form",
+  "course": "cym_sv2_for_eng",
+  "known": "did they say",
+  "target": "ddwedon nhw",
+  "rows": [
+   "S1453L01",
+   "S1453L01#0"
+  ]
+ },
+ {
+  "id": "S099",
+  "source": "yw’r mwya o ddifri  |  is the most serious",
+  "proposed": "yw’r mwya o ddifri?  |  is the most serious?",
+  "note": "South v2 · 1 row: S1492L04B01 · the English reads as a question; the Welsh has no question form",
+  "course": "cym_sv2_for_eng",
+  "known": "is the most serious",
+  "target": "yw’r mwya o ddifri",
+  "rows": [
+   "cym_sv2_for_eng:S1492L04B01"
+  ]
+ },
+ {
+  "id": "S100",
+  "source": "yw’r mwya diogel  |  is the most safe",
+  "proposed": "yw’r mwya diogel?  |  is the most safe?",
+  "note": "South v2 · 1 row: S1510L04B04 · the English reads as a question; the Welsh has no question form",
+  "course": "cym_sv2_for_eng",
+  "known": "is the most safe",
+  "target": "yw’r mwya diogel",
+  "rows": [
+   "cym_sv2_for_eng:S1510L04B04"
+  ]
+ },
+ {
+  "id": "S101",
+  "source": "wyt ti wedi gallu  |  if you’ve been able",
+  "proposed": "wyt ti wedi gallu?  |  if you’ve been able?",
+  "note": "South v2 · 2 rows: S1525L02, S1525L02 component · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "if you’ve been able",
+  "target": "wyt ti wedi gallu",
+  "rows": [
+   "S1525L02",
+   "S1525L02#0"
+  ]
+ },
+ {
+  "id": "S102",
+  "source": "wyt ti wedi gallu aros yma  |  if you’ve been able to stay here",
+  "proposed": "wyt ti wedi gallu aros yma?  |  if you’ve been able to stay here?",
+  "note": "South v2 · 1 row: S1525L02B01 · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "if you’ve been able to stay here",
+  "target": "wyt ti wedi gallu aros yma",
+  "rows": [
+   "cym_sv2_for_eng:S1525L02B01"
+  ]
+ },
+ {
+  "id": "S103",
+  "source": "nag wyt ti’n gallu  |  that you can’t",
+  "proposed": "nag wyt ti’n gallu?  |  that you can’t?",
+  "note": "South v2 · 2 rows: S1526L03, S1526L03 component · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "that you can’t",
+  "target": "nag wyt ti’n gallu",
+  "rows": [
+   "S1526L03",
+   "S1526L03#0"
+  ]
+ },
+ {
+  "id": "S104",
+  "source": "nag wyt ti’n gallu aros yma  |  that you can’t stay here",
+  "proposed": "nag wyt ti’n gallu aros yma?  |  that you can’t stay here?",
+  "note": "South v2 · 1 row: S1526L03B04 · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "that you can’t stay here",
+  "target": "nag wyt ti’n gallu aros yma",
+  "rows": [
+   "cym_sv2_for_eng:S1526L03B04"
+  ]
+ },
+ {
+  "id": "S105",
+  "source": "nag wyt ti’n gallu dringo  |  that you can’t climb",
+  "proposed": "nag wyt ti’n gallu dringo?  |  that you can’t climb?",
+  "note": "South v2 · 1 row: S1526L03B01 · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "that you can’t climb",
+  "target": "nag wyt ti’n gallu dringo",
+  "rows": [
+   "cym_sv2_for_eng:S1526L03B01"
+  ]
+ },
+ {
+  "id": "S106",
+  "source": "mae hi mor hwyr wyt ti ’di ffeindio gwesty ar bwys yr eglwys  |  it’s so late, have you found a hotel near the church",
+  "proposed": "mae hi mor hwyr wyt ti ’di ffeindio gwesty ar bwys yr eglwys?  |  it’s so late, have you found a hotel near the church?",
+  "note": "South v2 · 1 row: S1559L01U03 · the English reads as a question; the Welsh has no question form",
+  "course": "cym_sv2_for_eng",
+  "known": "it’s so late, have you found a hotel near the church",
+  "target": "mae hi mor hwyr wyt ti ’di ffeindio gwesty ar bwys yr eglwys",
+  "rows": [
+   "cym_sv2_for_eng:S1559L01U03"
+  ]
+ },
+ {
+  "id": "S107",
+  "source": "sa i’n moyn e wyt ti ’di ffeindio un newydd mewn stafell arall  |  I don’t want it, have you found a new one in another room",
+  "proposed": "sa i’n moyn e wyt ti ’di ffeindio un newydd mewn stafell arall?  |  I don’t want it, have you found a new one in another room?",
+  "note": "South v2 · 1 row: S1559L01U04 · the English reads as a question; the Welsh has no question form",
+  "course": "cym_sv2_for_eng",
+  "known": "I don’t want it, have you found a new one in another room",
+  "target": "sa i’n moyn e wyt ti ’di ffeindio un newydd mewn stafell arall",
+  "rows": [
+   "cym_sv2_for_eng:S1559L01U04"
+  ]
+ },
+ {
+  "id": "S108",
+  "source": "yw e’n gar cyflym  |  it’s a fast car",
+  "proposed": "yw e’n gar cyflym?  |  it’s a fast car?",
+  "note": "South v2 · 1 row: S1561L02 · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "it’s a fast car",
+  "target": "yw e’n gar cyflym",
+  "rows": [
+   "S1561L02"
+  ]
+ },
+ {
+  "id": "S109",
+  "source": "yw e’n  |  it’s",
+  "proposed": "yw e’n?  |  it’s?",
+  "note": "South v2 · 2 rows: S1561L02 component, S1561L02C01 · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "it’s",
+  "target": "yw e’n",
+  "rows": [
+   "S1561L02#0",
+   "cym_sv2_for_eng:S1561L02C01"
+  ]
+ },
+ {
+  "id": "S110",
+  "source": "beth ddigwyddodd y tro diwetha’  |  what happened the last time",
+  "proposed": "beth ddigwyddodd y tro diwetha’?  |  what happened the last time?",
+  "note": "South v2 · 1 row: S1572L03B01 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what happened the last time",
+  "target": "beth ddigwyddodd y tro diwetha’",
+  "rows": [
+   "cym_sv2_for_eng:S1572L03B01"
+  ]
+ },
+ {
+  "id": "S111",
+  "source": "beth ddigwyddodd y tro diwetha’ wnaethon nhw ymweld â ni  |  what happened the last time they visited us",
+  "proposed": "beth ddigwyddodd y tro diwetha’ wnaethon nhw ymweld â ni?  |  what happened the last time they visited us?",
+  "note": "South v2 · 1 row: S1572L04U01 · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what happened the last time they visited us",
+  "target": "beth ddigwyddodd y tro diwetha’ wnaethon nhw ymweld â ni",
+  "rows": [
+   "cym_sv2_for_eng:S1572L04U01"
+  ]
+ },
+ {
+  "id": "S112",
+  "source": "beth ddigwyddodd  |  what happened",
+  "proposed": "beth ddigwyddodd?  |  what happened?",
+  "note": "South v2 · 2 rows: S1572L02, S1572L02 component · the wh-words sit inside the seed, so this may be a relative clause, not a question",
+  "course": "cym_sv2_for_eng",
+  "known": "what happened",
+  "target": "beth ddigwyddodd",
+  "rows": [
+   "S1572L02",
+   "S1572L02#0"
+  ]
+ },
+ {
+  "id": "S113",
+  "source": "ac ar hyd y ffordd wyt ti ’di ffeindio’r llwybr trwy’r coed  |  and along the way have you found the path through the wood?",
+  "proposed": "ac ar hyd y ffordd wyt ti ’di ffeindio’r llwybr trwy’r coed?  |  and along the way have you found the path through the wood?",
+  "note": "South v2 · 1 row: S1592L01U06 · the English reads as a question; the Welsh has no question form",
+  "course": "cym_sv2_for_eng",
+  "known": "and along the way have you found the path through the wood?",
+  "target": "ac ar hyd y ffordd wyt ti ’di ffeindio’r llwybr trwy’r coed",
+  "rows": [
+   "cym_sv2_for_eng:S1592L01U06"
+  ]
+ },
+ {
+  "id": "S114",
+  "source": "fyddai wedi bod  |  would have been",
+  "proposed": "fyddai wedi bod?  |  would have been?",
+  "note": "South v2 · 2 rows: S1609L02, S1609L02 component · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "would have been",
+  "target": "fyddai wedi bod",
+  "rows": [
+   "S1609L02",
+   "S1609L02#0"
+  ]
+ },
+ {
+  "id": "S115",
+  "source": "fyddai wedi bod yn hawdd  |  would have been easy",
+  "proposed": "fyddai wedi bod yn hawdd?  |  would have been easy?",
+  "note": "South v2 · 1 row: S1609L02B01 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "would have been easy",
+  "target": "fyddai wedi bod yn hawdd",
+  "rows": [
+   "cym_sv2_for_eng:S1609L02B01"
+  ]
+ },
+ {
+  "id": "S116",
+  "source": "fyddai wedi bod yn llawer haws  |  would have been much easier",
+  "proposed": "fyddai wedi bod yn llawer haws?  |  would have been much easier?",
+  "note": "South v2 · 1 row: S1609L02B02 · the Welsh opens with a verb and no mi/fe, so it can be a question; the English is a statement",
+  "course": "cym_sv2_for_eng",
+  "known": "would have been much easier",
+  "target": "fyddai wedi bod yn llawer haws",
+  "rows": [
+   "cym_sv2_for_eng:S1609L02B02"
+  ]
+ },
+ {
+  "id": "S117",
+  "source": "wyt ti ’di anghofio bo’ ti’n meddwl hynny  |  have you forgotten that you thought that",
+  "proposed": "wyt ti ’di anghofio bo’ ti’n meddwl hynny?  |  have you forgotten that you thought that?",
+  "note": "South v2 · 1 row: S1616L03U03 · a fragment that stops mid-clause; a question mark may not belong on it",
+  "course": "cym_sv2_for_eng",
+  "known": "have you forgotten that you thought that",
+  "target": "wyt ti ’di anghofio bo’ ti’n meddwl hynny",
+  "rows": [
+   "cym_sv2_for_eng:S1616L03U03"
+  ]
+ },
+ {
+  "id": "S118",
+  "source": "yw e  |  it is",
+  "proposed": "yw e?  |  it is?",
+  "note": "South v2 · 4 rows: S1640L02, S1640L02 component, S1641L04, S1641L04 component · the Welsh opens as a question; the English is not one",
+  "course": "cym_sv2_for_eng",
+  "known": "it is",
+  "target": "yw e",
+  "rows": [
+   "S1640L02",
+   "S1640L02#0",
+   "S1641L04",
+   "S1641L04#0"
+  ]
+ }
+]
