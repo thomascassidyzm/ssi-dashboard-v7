@@ -1,0 +1,5198 @@
+[
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S0167L02",
+  "welsh": null,
+  "welshQ": null,
+  "english": "have you heard",
+  "englishQ": "have you heard?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "20bf7322-9c29-47aa-a163-08315a512c4b",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "have you heard?",
+    "saysQ": true
+   },
+   {
+    "slot": "target1",
+    "audio_id": "3cc30188-4311-47b4-bafd-d458161f53c7",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "dach chi ’di clywed?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "dc6e5d74-2557-413a-856b-7492f58d7fd8",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "dach chi ’di clywed?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "seed",
+  "id": "181",
+  "welsh": "be’ oedd yn mynd i newid",
+  "welshQ": "be’ oedd yn mynd i newid?",
+  "english": "what was going to change",
+  "englishQ": "what was going to change?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "22be0a86-2e87-4e7f-8985-4b4e394b7cc0",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "what was going to change",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "21eaf310-a853-44c2-b5b8-707add0efa72",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "be’ oedd yn mynd i newid",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S0181L01",
+  "welsh": "be’ oedd yn mynd",
+  "welshQ": "be’ oedd yn mynd?",
+  "english": "what was going",
+  "englishQ": "what was going?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "8a21f35d-1917-47a4-b614-18039ceb11a1",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "what was going",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "f69991f0-24c8-410b-bf25-f881cde1c45c",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "be’ oedd yn mynd",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "98593e9b-4a98-4437-bf80-091c034b5d5b",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "be’ oedd yn mynd",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S0277L03B01",
+  "welsh": "beth ddaw nesa’ ar ôl y rhan gyntaf",
+  "welshQ": "beth ddaw nesa’ ar ôl y rhan gyntaf?",
+  "english": "what is going to come next after the the first part",
+  "englishQ": "what is going to come next after the the first part?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "38a20ec6-4c48-4275-93b0-19756b04970e",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "what is going to come next after the the first part",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "def9c649-f011-4fb4-a53d-98664fb1bd74",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "beth ddaw nesa’ ar ôl y rhan gyntaf",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "093536d3-1887-4383-b969-ee337f80df54",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "beth ddaw nesa’ ar ôl y rhan gyntaf",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S0277L01B01",
+  "welsh": "beth sy’n digwydd",
+  "welshQ": "beth sy’n digwydd?",
+  "english": "what is happening",
+  "englishQ": "what is happening?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "6794bbec-3dad-4f17-993e-a22808bf17ff",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "what is happening",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "980657e3-dd90-47fa-b063-60741813e886",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "beth sy’n digwydd",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "36cb1fb4-83dd-48ad-b4b4-20430b295c05",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "beth sy’n digwydd",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S0283L04B02",
+  "welsh": "dach chi isio siarad efo’ch gilydd",
+  "welshQ": "dach chi isio siarad efo’ch gilydd?",
+  "english": "do you want to speak together",
+  "englishQ": "do you want to speak together?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "2bb40354-1229-4ac4-9a16-8f990eec9b5d",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "do you want to speak together",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "e4659f59-588d-4d2b-b3b7-e1c079b74652",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "dach chi isio siarad efo’ch gilydd",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "51d7748a-85a2-431b-a0d3-8b140dfc8843",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "dach chi isio siarad efo’ch gilydd",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S0284L03B07",
+  "welsh": "dach chi isio agor y drws efo’ch gilydd",
+  "welshQ": "dach chi isio agor y drws efo’ch gilydd?",
+  "english": "do you want to open the door together",
+  "englishQ": "do you want to open the door together?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "3aa73992-7a96-4f92-8e1f-a67ec4ac8ae2",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "do you want to open the door together",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "db985aed-3954-4d84-86f0-f766087c0234",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "dach chi isio agor y drws efo’ch gilydd",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "f599e96c-67a4-49f4-a3fa-94a12302733a",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "dach chi isio agor y drws efo’ch gilydd",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S0284L06B01",
+  "welsh": "dach chi isio agor y ffenest efo’ch gilydd",
+  "welshQ": "dach chi isio agor y ffenest efo’ch gilydd?",
+  "english": "do you want to open the window together",
+  "englishQ": "do you want to open the window together?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "9a7da6e5-a544-483a-834b-ec58cb86abce",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "do you want to open the window together",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "607b265f-bf97-46c7-8ec8-1da2f7e2c565",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "dach chi isio agor y ffenest efo’ch gilydd",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "6a3a9f40-762c-4060-ae54-1c2d54eb346c",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "dach chi isio agor y ffenest efo’ch gilydd",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S0297L01B06",
+  "welsh": "beth allai fod wedi digwydd ddoe",
+  "welshQ": "beth allai fod wedi digwydd ddoe?",
+  "english": "what might have happened yesterday",
+  "englishQ": "what might have happened yesterday?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "64c64529-e3e5-4758-9ff5-d8e9e7f2132c",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "what might have happened yesterday",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "daf4646b-1bf5-4f72-976e-7c24d07da529",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "beth allai fod wedi digwydd ddoe",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "47497002-a9ef-4abf-981b-8dbd49fd2bed",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "beth allai fod wedi digwydd ddoe",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1017L03B04",
+  "welsh": "fedri di ddeud be’ ydy’r ateb",
+  "welshQ": "fedri di ddeud be’ ydy’r ateb?",
+  "english": "could you say what the answer is",
+  "englishQ": "could you say what the answer is?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "32d1a8f4-9ac4-4e77-b902-8e03b02ec5c4",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fedri di ddeud be’ ydy’r ateb",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1021L01B02",
+  "welsh": "ond pam",
+  "welshQ": "ond pam?",
+  "english": "but why",
+  "englishQ": "but why?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "fc43679a-effe-40e9-9767-b8407ec64f35",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond pam",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1021L01B01",
+  "welsh": "pam ti isio",
+  "welshQ": "pam ti isio?",
+  "english": "why do you want",
+  "englishQ": "why do you want?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "df7acd01-1f41-48e5-bf33-64e96950cad0",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1021L01U07",
+  "welsh": "diolch yn fawr ond pam",
+  "welshQ": "diolch yn fawr ond pam?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "01d71182-04d8-48c5-821c-9245d7dc66f4",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "diolch yn fawr ond pam",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1021L01U01",
+  "welsh": "pam ti isio stopio rŵan",
+  "welshQ": "pam ti isio stopio rŵan?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "136e3356-4ecd-425e-ada5-ecacebfea06a",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio stopio rŵan",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1021L02U03",
+  "welsh": "pam ti isio ei henw hi",
+  "welshQ": "pam ti isio ei henw hi?",
+  "english": "why do you want her name",
+  "englishQ": "why do you want her name?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "59e1689c-656e-47e1-b651-9e2610a32cc3",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio ei henw hi",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1035L02U06",
+  "welsh": "wyt ti’n barod pnawn ’ma",
+  "welshQ": "wyt ti’n barod pnawn ’ma?",
+  "english": "are you ready this afternoon",
+  "englishQ": "are you ready this afternoon?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "6b826879-d24e-4308-b7fb-893bbb2fcfb8",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti’n barod pnawn ’ma",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1036L01U04",
+  "welsh": "pam ti isio torri ar draws",
+  "welshQ": "pam ti isio torri ar draws?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "4a438e45-1a7f-4144-859e-70570c4fe4c4",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio torri ar draws",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1060L04U03",
+  "welsh": "pam ti isio pethau gwahanol",
+  "welshQ": "pam ti isio pethau gwahanol?",
+  "english": "why do you want different things",
+  "englishQ": "why do you want different things?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "34937b9c-a009-4236-b9bd-500d84a5b7d8",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio pethau gwahanol",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1063L01B04",
+  "welsh": "wyt ti’n siŵr ti isio stopio",
+  "welshQ": "wyt ti’n siŵr ti isio stopio?",
+  "english": "are you sure you want to stop",
+  "englishQ": "are you sure you want to stop?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "2515216b-a48f-4a7a-836b-15b38f405664",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti’n siŵr ti isio stopio",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1069L03U05",
+  "welsh": "pam ti isio edrych ar ôl y ci ifanc",
+  "welshQ": "pam ti isio edrych ar ôl y ci ifanc?",
+  "english": "why do you want to look after the young dog",
+  "englishQ": "why do you want to look after the young dog?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "aba8aca6-de84-4452-80cb-911cc7be9b02",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio edrych ar ôl y ci ifanc",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1069L01U03",
+  "welsh": "pam doedd o ddim isio gorffen",
+  "welshQ": "pam doedd o ddim isio gorffen?",
+  "english": "why didn’t he want to finish",
+  "englishQ": "why didn’t he want to finish?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "f3221d47-c32b-4803-80fe-8273dc311d5b",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam doedd o ddim isio gorffen",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1070L01U02",
+  "welsh": "pam oedd hi isio deud wrtha i",
+  "welshQ": "pam oedd hi isio deud wrtha i?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "8866fcc6-7ca2-4f8c-a943-0a6937dcf655",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam oedd hi isio deud wrtha i",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1071L03U01",
+  "welsh": "y gwir? dw i ddim yn siŵr",
+  "welshQ": "y gwir? dw i ddim yn siŵr?",
+  "english": "the truth? I’m not sure",
+  "englishQ": "the truth? I’m not sure?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "a45a5d20-23d7-4e65-8a61-80f1125ef22f",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "y gwir? dw i ddim yn siŵr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1082L03B03",
+  "welsh": "pam ddim? dw i’n hapus",
+  "welshQ": "pam ddim? dw i’n hapus?",
+  "english": "why not? I’m happy",
+  "englishQ": "why not? I’m happy?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "6e917d4d-9066-4c1e-a34b-5297726c01ed",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ddim? dw i’n hapus",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1082L03U01",
+  "welsh": "pam ddim? dw i’n synnu",
+  "welshQ": "pam ddim? dw i’n synnu?",
+  "english": "why not? I’m surprised",
+  "englishQ": "why not? I’m surprised?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "267e0c48-7b3c-417d-9609-71e174b32253",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ddim? dw i’n synnu",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1082L03U03",
+  "welsh": "pam ddim? mae’n ddefnyddiol",
+  "welshQ": "pam ddim? mae’n ddefnyddiol?",
+  "english": "why not? it’s useful",
+  "englishQ": "why not? it’s useful?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "ec33dd23-9ff8-470d-813a-9d00e31718b1",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ddim? mae’n ddefnyddiol",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1085L02U05",
+  "welsh": "pam ti isio cyfarfod y bobl ’na",
+  "welshQ": "pam ti isio cyfarfod y bobl ’na?",
+  "english": "why do you want to meet those people",
+  "englishQ": "why do you want to meet those people?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "58623da8-d6a9-4504-bd93-413607ade304",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio cyfarfod y bobl ’na",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1087L02",
+  "welsh": "ydyn nhw",
+  "welshQ": "ydyn nhw?",
+  "english": "are they",
+  "englishQ": "are they?",
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "acbc3d08-575f-40c9-a61a-4b6b4da18227",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "ydyn nhw?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "231d88aa-b880-49db-ace2-fc788d4b617e",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "ydyn nhw?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1106L02U03",
+  "welsh": "pam dw i angen gweithio’n galed",
+  "welshQ": "pam dw i angen gweithio’n galed?",
+  "english": "why do I need to work hard",
+  "englishQ": "why do I need to work hard?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "1d267346-98fa-4d16-bf5f-3a22bb99dceb",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam dw i angen gweithio’n galed",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1115L02U05",
+  "welsh": "pam ddim? dw i’n mynd i gael sgwrs cyn bo hir",
+  "welshQ": "pam ddim? dw i’n mynd i gael sgwrs cyn bo hir?",
+  "english": "why not? I’m going to have a conversation soon",
+  "englishQ": "why not? I’m going to have a conversation soon?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "2bd7938d-bd14-4cda-b163-7a44a0ef27af",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ddim? dw i’n mynd i gael sgwrs cyn bo hir",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1118L02U04",
+  "welsh": "pam ti isio ymlacio yn y dafarn",
+  "welshQ": "pam ti isio ymlacio yn y dafarn?",
+  "english": "why do you want to relax in the pub",
+  "englishQ": "why do you want to relax in the pub?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "5991a2f9-f11c-48d2-8e80-57c2583b341d",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio ymlacio yn y dafarn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1119L01",
+  "welsh": "ga i ofyn",
+  "welshQ": "ga i ofyn?",
+  "english": "can I ask",
+  "englishQ": "can I ask?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "e2fac1c9-1b6e-40fc-a65c-bb96fccf0a6c",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ga i ofyn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1119L01B01",
+  "welsh": "ga i ofyn pam",
+  "welshQ": "ga i ofyn pam?",
+  "english": "can I ask why",
+  "englishQ": "can I ask why?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "fed6d3cd-cdc5-4555-82a3-6085a73922f8",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ga i ofyn pam",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1119L01B02",
+  "welsh": "ga i ofyn be’ ddudest ti",
+  "welshQ": "ga i ofyn be’ ddudest ti?",
+  "english": "can I ask what you said",
+  "englishQ": "can I ask what you said?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "a97ba1fc-4ec1-4fbb-a23c-df9f8a2f7950",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ga i ofyn be’ ddudest ti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1119L01B03",
+  "welsh": "ond ga i ofyn faint",
+  "welshQ": "ond ga i ofyn faint?",
+  "english": "but can I ask how much",
+  "englishQ": "but can I ask how much?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "e2535ea2-cc16-41e5-8fd6-cc77abea2a9e",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond ga i ofyn faint",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1119L01C01",
+  "welsh": "ga i",
+  "welshQ": "ga i?",
+  "english": "may I",
+  "englishQ": "may I?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b964787f-7983-4aa2-94ea-5c56e993349a",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ga i",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1119L01U04",
+  "welsh": "mae’n ddrwg gen i ond ga i ofyn pam",
+  "welshQ": "mae’n ddrwg gen i ond ga i ofyn pam?",
+  "english": "I’m sorry but can I ask why",
+  "englishQ": "I’m sorry but can I ask why?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "553778d7-6a87-4c82-98df-09517b5afa0c",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "mae’n ddrwg gen i ond ga i ofyn pam",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1119L01U06",
+  "welsh": "ga i ofyn faint ti ’di dysgu",
+  "welshQ": "ga i ofyn faint ti ’di dysgu?",
+  "english": "can I ask how much you’ve learnt",
+  "englishQ": "can I ask how much you’ve learnt?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "20c41c74-8028-4adf-bb2c-f41c025fcf09",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ga i ofyn faint ti ’di dysgu",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1119L01U05",
+  "welsh": "ga i ofyn be’ ddudodd o heddiw",
+  "welshQ": "ga i ofyn be’ ddudodd o heddiw?",
+  "english": "can I ask what he said today",
+  "englishQ": "can I ask what he said today?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "3b63f2f4-9218-4314-9ebe-33d2597de08f",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ga i ofyn be’ ddudodd o heddiw",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1121L03U04",
+  "welsh": "pam ti isio defnyddio dy gar",
+  "welshQ": "pam ti isio defnyddio dy gar?",
+  "english": "why do you want to use your car",
+  "englishQ": "why do you want to use your car?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "91ed3375-6e10-4025-bd4c-aac2c38afcbd",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio defnyddio dy gar",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1122L01U02",
+  "welsh": "pam fyddai hynna’n teimlo’n haws",
+  "welshQ": "pam fyddai hynna’n teimlo’n haws?",
+  "english": "why would that feel easier",
+  "englishQ": "why would that feel easier?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "0738d8f8-19a9-4185-a86a-cb0de029505f",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam fyddai hynna’n teimlo’n haws",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1132L01U03",
+  "welsh": "pam mae hynna’n llai cyffrous rŵan",
+  "welshQ": "pam mae hynna’n llai cyffrous rŵan?",
+  "english": "why is that less exciting now",
+  "englishQ": "why is that less exciting now?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "7fb3fe26-1944-4142-9764-6e5e2a286c70",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam mae hynna’n llai cyffrous rŵan",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1132L03U03",
+  "welsh": "ga i ofyn be’ oedd hi’n deud",
+  "welshQ": "ga i ofyn be’ oedd hi’n deud?",
+  "english": "can I ask what she was saying",
+  "englishQ": "can I ask what she was saying?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "699044cf-72b4-41eb-9a07-27e5962f4cb3",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ga i ofyn be’ oedd hi’n deud",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1136L02U05",
+  "welsh": "pam ddim? gei di ofyn iddi hi nes ymlaen",
+  "welshQ": "pam ddim? gei di ofyn iddi hi nes ymlaen?",
+  "english": "why not? you can ask her later",
+  "englishQ": "why not? you can ask her later?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "4f2e39ca-77b8-4a7c-b040-cc59d6524560",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ddim? gei di ofyn iddi hi nes ymlaen",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1137L04U02",
+  "welsh": "pam ti isio bod yn berffaith",
+  "welshQ": "pam ti isio bod yn berffaith?",
+  "english": "why do you want to be perfect",
+  "englishQ": "why do you want to be perfect?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "96971323-1a1c-4f24-a4eb-cbc38ddc4f2e",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio bod yn berffaith",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1145L03U01",
+  "welsh": "pam dydy o ddim isio dod yn ôl bellach",
+  "welshQ": "pam dydy o ddim isio dod yn ôl bellach?",
+  "english": "why doesn’t he want to come back any more",
+  "englishQ": "why doesn’t he want to come back any more?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "4fe6aba7-04bd-4e8c-9ee8-a6055bf5cc23",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam dydy o ddim isio dod yn ôl bellach",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1149L02U05",
+  "welsh": "felly pam fedra i ddim cofio be’ ddudest ti",
+  "welshQ": "felly pam fedra i ddim cofio be’ ddudest ti?",
+  "english": "so why can’t I remember what you said",
+  "englishQ": "so why can’t I remember what you said?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "d5c3668c-7c03-4c4a-8119-56ba365ee25d",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "felly pam fedra i ddim cofio be’ ddudest ti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1150L01C01",
+  "welsh": "fedri di",
+  "welshQ": "fedri di?",
+  "english": "can you",
+  "englishQ": "can you?",
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "79fec26c-9d9f-4573-8add-0f500b0d920f",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "fedri di?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "b08d2eb1-9095-4ef0-92af-3f0337c078be",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "fedri di?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1150L02B01",
+  "welsh": "be’ ydy dy enw di yn y Gymraeg",
+  "welshQ": "be’ ydy dy enw di yn y Gymraeg?",
+  "english": "what your name is in Welsh",
+  "englishQ": "what your name is in Welsh?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "412d9352-ef69-4ead-873d-bd499045574e",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "be’ ydy dy enw di yn y Gymraeg",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1150L02U04",
+  "welsh": "ga i ofyn be’ ydy dy enw di",
+  "welshQ": "ga i ofyn be’ ydy dy enw di?",
+  "english": "can I ask what your name is",
+  "englishQ": "can I ask what your name is?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "4744fcba-4b49-49f7-a308-00ab8f32f43c",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ga i ofyn be’ ydy dy enw di",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1151L01U03",
+  "welsh": "pam ddim? dim hynna ddudest ti neithiwr",
+  "welshQ": "pam ddim? dim hynna ddudest ti neithiwr?",
+  "english": "why not? that wasn’t what you said last night",
+  "englishQ": "why not? that wasn’t what you said last night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "218336b6-7ed1-43af-b153-a26ab0db0c83",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ddim? dim hynna ddudest ti neithiwr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1155L01U05",
+  "welsh": "wyt ti angen ychydig funudau",
+  "welshQ": "wyt ti angen ychydig funudau?",
+  "english": "do you need a few minutes",
+  "englishQ": "do you need a few minutes?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "14f7b606-161d-4987-9a60-67603b1de865",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti angen ychydig funudau",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1162L02",
+  "welsh": "be’ ti’n meddwl am",
+  "welshQ": "be’ ti’n meddwl am?",
+  "english": "what do you think about",
+  "englishQ": "what do you think about?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "e3db332c-63b7-4baa-9c4c-16aeeaf66cea",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "be’ ti’n meddwl am",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1162L02B01",
+  "welsh": "be’ ti’n meddwl am yr iaith ’ma",
+  "welshQ": "be’ ti’n meddwl am yr iaith ’ma?",
+  "english": "what do you think about this language",
+  "englishQ": "what do you think about this language?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "fec81351-3242-48fd-85d5-638a76f805a2",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "be’ ti’n meddwl am yr iaith ’ma",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1162L02B04",
+  "welsh": "felly be’ ti’n meddwl am ei lythyr o rŵan",
+  "welshQ": "felly be’ ti’n meddwl am ei lythyr o rŵan?",
+  "english": "so what do you think about his letter now",
+  "englishQ": "so what do you think about his letter now?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "8e1afcaf-8b81-44dc-b0a6-0230e812f160",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "felly be’ ti’n meddwl am ei lythyr o rŵan",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1162L02B02",
+  "welsh": "be’ ti’n meddwl am y stori",
+  "welshQ": "be’ ti’n meddwl am y stori?",
+  "english": "what do you think about the story",
+  "englishQ": "what do you think about the story?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "4eb523e3-7684-4a7a-8e5b-d2038eea3519",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "be’ ti’n meddwl am y stori",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1162L02B03",
+  "welsh": "ond be’ ti’n meddwl am y bobl ’na",
+  "welshQ": "ond be’ ti’n meddwl am y bobl ’na?",
+  "english": "but what do you think about those people",
+  "englishQ": "but what do you think about those people?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "42e67ff1-280a-4b9d-9672-d301542a042e",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond be’ ti’n meddwl am y bobl ’na",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1162L02U02",
+  "welsh": "be’ ti’n meddwl am be’ ddudodd o",
+  "welshQ": "be’ ti’n meddwl am be’ ddudodd o?",
+  "english": "what do you think about what he said",
+  "englishQ": "what do you think about what he said?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "111dae71-a64c-439a-bbfa-cf4976f981ae",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "be’ ti’n meddwl am be’ ddudodd o",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1162L02U06",
+  "welsh": "rŵan be’ ti’n meddwl am dy syniad di",
+  "welshQ": "rŵan be’ ti’n meddwl am dy syniad di?",
+  "english": "now what do you think about your idea",
+  "englishQ": "now what do you think about your idea?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "33bcf21d-7990-4669-961f-613f643b49f0",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "rŵan be’ ti’n meddwl am dy syniad di",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1168L01U03",
+  "welsh": "ac wedyn be’ ti’n meddwl am yr iaith ’ma",
+  "welshQ": "ac wedyn be’ ti’n meddwl am yr iaith ’ma?",
+  "english": "and then what do you think about this language",
+  "englishQ": "and then what do you think about this language?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "663e2ad8-fde4-44a6-9039-1081d1203c64",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ac wedyn be’ ti’n meddwl am yr iaith ’ma",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1173L03U03",
+  "welsh": "pam fedra i ddim ymdopi",
+  "welshQ": "pam fedra i ddim ymdopi?",
+  "english": "why can’t I manage",
+  "englishQ": "why can’t I manage?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b5022960-b0b7-4699-b81a-04673daffeea",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam fedra i ddim ymdopi",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1182L03B04",
+  "welsh": "wyt ti wedi gweld llyfr yn rhywle",
+  "welshQ": "wyt ti wedi gweld llyfr yn rhywle?",
+  "english": "have you seen a book anywhere",
+  "englishQ": "have you seen a book anywhere?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "5b9d131c-9cfe-4494-a635-33e9caf745ba",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld llyfr yn rhywle",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1182L03U01",
+  "welsh": "wyt ti wedi gweld fy mam yn rhywle",
+  "welshQ": "wyt ti wedi gweld fy mam yn rhywle?",
+  "english": "have you seen my mother anywhere",
+  "englishQ": "have you seen my mother anywhere?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "1fe5bb8c-7857-4306-8970-17d9a8214c75",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld fy mam yn rhywle",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1182L03U02",
+  "welsh": "wyt ti wedi gweld fy mrawd yn rhywle heddiw",
+  "welshQ": "wyt ti wedi gweld fy mrawd yn rhywle heddiw?",
+  "english": "have you seen my brother anywhere today",
+  "englishQ": "have you seen my brother anywhere today?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "351633e4-776a-4e71-8e9e-8b86ef03bf09",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld fy mrawd yn rhywle heddiw",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1182L03U03",
+  "welsh": "wyt ti wedi gweld fy chwaer yn rhywle ers neithiwr",
+  "welshQ": "wyt ti wedi gweld fy chwaer yn rhywle ers neithiwr?",
+  "english": "have you seen my sister anywhere since last night",
+  "englishQ": "have you seen my sister anywhere since last night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "a7a166cc-4fb3-4273-a194-7b804aef984d",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld fy chwaer yn rhywle ers neithiwr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1182L01",
+  "welsh": "wyt ti wedi gweld",
+  "welshQ": "wyt ti wedi gweld?",
+  "english": "have you seen",
+  "englishQ": "have you seen?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b125aaef-b02a-433a-b3c5-a3ae096aa431",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1182L01B01",
+  "welsh": "wyt ti wedi gweld fy mam",
+  "welshQ": "wyt ti wedi gweld fy mam?",
+  "english": "have you seen my mother",
+  "englishQ": "have you seen my mother?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "5bbe9d7e-90ab-42b7-93ed-f66379bde374",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld fy mam",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1182L01B02",
+  "welsh": "wyt ti wedi gweld dy gar",
+  "welshQ": "wyt ti wedi gweld dy gar?",
+  "english": "have you seen your car",
+  "englishQ": "have you seen your car?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "a6bfb019-97f4-4856-b1ab-3797d943ef5d",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld dy gar",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1182L01B03",
+  "welsh": "ond wyt ti wedi gweld y ffilm ’na",
+  "welshQ": "ond wyt ti wedi gweld y ffilm ’na?",
+  "english": "but have you seen that film",
+  "englishQ": "but have you seen that film?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "27d957f2-e49e-4c34-8e39-d0388921597e",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond wyt ti wedi gweld y ffilm ’na",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1182L01U05",
+  "welsh": "wyt ti wedi gweld dy chwaer ers neithiwr",
+  "welshQ": "wyt ti wedi gweld dy chwaer ers neithiwr?",
+  "english": "have you seen your sister since last night",
+  "englishQ": "have you seen your sister since last night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "38b4b5e5-7bbe-46e0-a04b-81d6899ba935",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld dy chwaer ers neithiwr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1182L01U07",
+  "welsh": "diolch yn fawr ond wyt ti wedi gweld fy chwaer",
+  "welshQ": "diolch yn fawr ond wyt ti wedi gweld fy chwaer?",
+  "english": "thank you but have you seen my sister",
+  "englishQ": "thank you but have you seen my sister?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b2a02421-2e57-45a3-ab14-1b3610eec68e",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "diolch yn fawr ond wyt ti wedi gweld fy chwaer",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1182L01U01",
+  "welsh": "wyt ti wedi gweld y bobl ’na yn y dafarn",
+  "welshQ": "wyt ti wedi gweld y bobl ’na yn y dafarn?",
+  "english": "have you seen those people in the pub",
+  "englishQ": "have you seen those people in the pub?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "2ae3bf7d-bd14-4c99-8d19-faf7fc133b4c",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld y bobl ’na yn y dafarn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1184L02U05",
+  "welsh": "wyt ti wedi gweld fy swyddfa",
+  "welshQ": "wyt ti wedi gweld fy swyddfa?",
+  "english": "have you seen my office",
+  "englishQ": "have you seen my office?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "7ec5c532-d685-452f-87a9-4fbc24147f77",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld fy swyddfa",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1185L02U04",
+  "welsh": "wyt ti’n siŵr bo’ ti wedi’u gadael nhw yn y dafarn",
+  "welshQ": "wyt ti’n siŵr bo’ ti wedi’u gadael nhw yn y dafarn?",
+  "english": "are you sure you left them in the pub",
+  "englishQ": "are you sure you left them in the pub?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "d289ed9f-19d1-4534-afd6-8b07341303ed",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti’n siŵr bo’ ti wedi’u gadael nhw yn y dafarn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1190L01B01",
+  "welsh": "oes ots gen ti os fedra i ddim",
+  "welshQ": "oes ots gen ti os fedra i ddim?",
+  "english": "do you mind if I can’t",
+  "englishQ": "do you mind if I can’t?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "3e15f809-8a74-41eb-ae50-c296508803f5",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "oes ots gen ti os fedra i ddim",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1190L01U06",
+  "welsh": "oes ots gen ti os dw i’n trio newid y stori",
+  "welshQ": "oes ots gen ti os dw i’n trio newid y stori?",
+  "english": "do you mind if I’m trying to change the story",
+  "englishQ": "do you mind if I’m trying to change the story?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "ae14518c-3288-4f0c-b927-7ec7b8e90f9b",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "oes ots gen ti os dw i’n trio newid y stori",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1190L01U01",
+  "welsh": "oes ots gen ti os dw i angen ymlacio heno",
+  "welshQ": "oes ots gen ti os dw i angen ymlacio heno?",
+  "english": "do you mind if I need to relax tonight",
+  "englishQ": "do you mind if I need to relax tonight?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "ec9f8f52-b1a7-44db-896e-e7fa9b2326ec",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "oes ots gen ti os dw i angen ymlacio heno",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1193L03U03",
+  "welsh": "pam oeddat ti’n rhy brysur",
+  "welshQ": "pam oeddat ti’n rhy brysur?",
+  "english": "why were you too busy",
+  "englishQ": "why were you too busy?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "d7c9c5a8-aa94-4d8f-80cc-6b182d9ef4cb",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam oeddat ti’n rhy brysur",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1196L01U05",
+  "welsh": "be’ ti’n meddwl am fy syniadau diweddara’",
+  "welshQ": "be’ ti’n meddwl am fy syniadau diweddara’?",
+  "english": "what do you think about my latest ideas",
+  "englishQ": "what do you think about my latest ideas?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "76330fcf-d28b-45f9-a547-8625c73a36ae",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "be’ ti’n meddwl am fy syniadau diweddara’",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1197L01B03",
+  "welsh": "wyt ti wedi gweld fy mab",
+  "welshQ": "wyt ti wedi gweld fy mab?",
+  "english": "have you seen my son",
+  "englishQ": "have you seen my son?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "3837b112-5680-40ed-9c5d-d4ae49df76e9",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld fy mab",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1198L01B03",
+  "welsh": "wyt ti wedi gweld fy merch",
+  "welshQ": "wyt ti wedi gweld fy merch?",
+  "english": "have you seen my daughter",
+  "englishQ": "have you seen my daughter?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "0b6de11e-3cf3-4962-879b-39260cd1cab8",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld fy merch",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1198L01U04",
+  "welsh": "be’ ti’n meddwl am fy merch",
+  "welshQ": "be’ ti’n meddwl am fy merch?",
+  "english": "what do you think about my daughter",
+  "englishQ": "what do you think about my daughter?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "2d26d0f3-9f56-445d-9915-dd4f1438256b",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "be’ ti’n meddwl am fy merch",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1198L01U01",
+  "welsh": "wyt ti wedi gweld fy merch yn rhywle",
+  "welshQ": "wyt ti wedi gweld fy merch yn rhywle?",
+  "english": "have you seen my daughter anywhere",
+  "englishQ": "have you seen my daughter anywhere?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "a297160a-5d2e-45f7-b236-1c2d714c8dc3",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld fy merch yn rhywle",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1200L01U02",
+  "welsh": "pam maen nhw’n deud fod o’n beth da",
+  "welshQ": "pam maen nhw’n deud fod o’n beth da?",
+  "english": "why do they say that it’s a good thing",
+  "englishQ": "why do they say that it’s a good thing?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "e9f75ee1-09a3-4508-b3af-d9e461988a30",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam maen nhw’n deud fod o’n beth da",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1201L03B01",
+  "welsh": "be’ oedd yn mynd yn dda iawn",
+  "welshQ": "be’ oedd yn mynd yn dda iawn?",
+  "english": "what was going very well",
+  "englishQ": "what was going very well?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "22ce91be-efee-434f-8799-10366f9990f4",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "be’ oedd yn mynd yn dda iawn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1201L03B02",
+  "welsh": "be’ oedd yn mynd i helpu",
+  "welshQ": "be’ oedd yn mynd i helpu?",
+  "english": "what was going to help",
+  "englishQ": "what was going to help?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "e74223e1-67bd-4e4c-9fbd-e08ee5fc502c",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "be’ oedd yn mynd i helpu",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1203L02B03",
+  "welsh": "fyddet ti’n stopio ’swn i’n gofyn i ti",
+  "welshQ": "fyddet ti’n stopio ’swn i’n gofyn i ti?",
+  "english": "would you stop if I asked you",
+  "englishQ": "would you stop if I asked you?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "4630adde-ae82-452a-ab16-941a1e6d7ef2",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fyddet ti’n stopio ’swn i’n gofyn i ti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1209L03U04",
+  "welsh": "pam oeddat ti’n cyfarfod fel grŵp yng nghanol y nos",
+  "welshQ": "pam oeddat ti’n cyfarfod fel grŵp yng nghanol y nos?",
+  "english": "why were you meeting as a group in the middle of the night",
+  "englishQ": "why were you meeting as a group in the middle of the night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "5eaab2e4-b478-4435-a32c-31fa00679346",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam oeddat ti’n cyfarfod fel grŵp yng nghanol y nos",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1209L01U03",
+  "welsh": "pam maen nhw isio stopio rŵan",
+  "welshQ": "pam maen nhw isio stopio rŵan?",
+  "english": "why do they want to stop now",
+  "englishQ": "why do they want to stop now?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "e2d4b24b-4ff5-417f-8ba0-28ed15f4b455",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam maen nhw isio stopio rŵan",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1209L02U02",
+  "welsh": "pam ti isio treulio mwy o amser yn y gwaith",
+  "welshQ": "pam ti isio treulio mwy o amser yn y gwaith?",
+  "english": "why do you want to spend more time at work",
+  "englishQ": "why do you want to spend more time at work?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "8f00b2e6-46ee-415c-9b8c-cdd9145242f3",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio treulio mwy o amser yn y gwaith",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1210L01U03",
+  "welsh": "pam maen nhw’n meddwl fod o’n beth da",
+  "welshQ": "pam maen nhw’n meddwl fod o’n beth da?",
+  "english": "why do they think that it’s a good thing",
+  "englishQ": "why do they think that it’s a good thing?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b1e2a8b3-d228-40ff-b00d-687bb2df7cac",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam maen nhw’n meddwl fod o’n beth da",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1210L03U06",
+  "welsh": "pam maen nhw isio trafod be’ ddudest ti",
+  "welshQ": "pam maen nhw isio trafod be’ ddudest ti?",
+  "english": "why do they want to discuss what you said",
+  "englishQ": "why do they want to discuss what you said?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "07347ff3-4460-407f-a5db-be839c2d4dc7",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam maen nhw isio trafod be’ ddudest ti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1210L04U01",
+  "welsh": "be’ ti’n meddwl am y broblem",
+  "welshQ": "be’ ti’n meddwl am y broblem?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "7269c93c-f4d2-40d4-95c3-d091b705cd25",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "be’ ti’n meddwl am y broblem",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1213L01U04",
+  "welsh": "pam dan ni ddim yn gwybod be’ ydy’r ateb",
+  "welshQ": "pam dan ni ddim yn gwybod be’ ydy’r ateb?",
+  "english": "why don’t we know what the answer is",
+  "englishQ": "why don’t we know what the answer is?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "ce7cea4d-b297-4fa3-98f4-2a825781df11",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam dan ni ddim yn gwybod be’ ydy’r ateb",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1232L03U03",
+  "welsh": "pam fedra i ddim cofio’r ateb",
+  "welshQ": "pam fedra i ddim cofio’r ateb?",
+  "english": "why can’t I remember the answer",
+  "englishQ": "why can’t I remember the answer?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "7f02611c-bc6f-426e-88f0-80c7421ee54a",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam fedra i ddim cofio’r ateb",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1252L01",
+  "welsh": "fyddi di’n barod",
+  "welshQ": "fyddi di’n barod?",
+  "english": "will you be ready",
+  "englishQ": "will you be ready?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "10037484-aef2-4223-945d-91b305d22d88",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fyddi di’n barod",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1256L03U01",
+  "welsh": "fyddi di’n barod mewn llai nag awr",
+  "welshQ": "fyddi di’n barod mewn llai nag awr?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "69d92e25-d276-4f99-8463-7b8515e4594f",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fyddi di’n barod mewn llai nag awr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1260L01U02",
+  "welsh": "pam sgen i ddim fy mhres",
+  "welshQ": "pam sgen i ddim fy mhres?",
+  "english": "why don’t I have my money",
+  "englishQ": "why don’t I have my money?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "e23f7cc1-b877-4249-99f5-ff3a94a8ee41",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam sgen i ddim fy mhres",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1262L01",
+  "welsh": "pwy oedd",
+  "welshQ": "pwy oedd?",
+  "english": "who was",
+  "englishQ": "who was?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "ea6b66f2-6b19-4179-a4bb-8301b2b62840",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy oedd",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1262L01B01",
+  "welsh": "pwy oedd yn y dafarn",
+  "welshQ": "pwy oedd yn y dafarn?",
+  "english": "who was in the pub",
+  "englishQ": "who was in the pub?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "55177ad9-2210-47a8-922a-49478336f847",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy oedd yn y dafarn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1262L01B02",
+  "welsh": "pwy oedd yn y gwaith",
+  "welshQ": "pwy oedd yn y gwaith?",
+  "english": "who was at work",
+  "englishQ": "who was at work?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b205b991-24ea-4406-89f4-8999caf8dd25",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy oedd yn y gwaith",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1262L01U02",
+  "welsh": "pwy oedd yn y gwaith neithiwr",
+  "welshQ": "pwy oedd yn y gwaith neithiwr?",
+  "english": "who was at work last night",
+  "englishQ": "who was at work last night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "44e5694d-fc6d-469b-bff2-b0fab427da2d",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy oedd yn y gwaith neithiwr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1262L01U01",
+  "welsh": "pwy oedd yn y dafarn nos Sadwrn",
+  "welshQ": "pwy oedd yn y dafarn nos Sadwrn?",
+  "english": "who was in the pub on Saturday night",
+  "englishQ": "who was in the pub on Saturday night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "72ce7793-94d4-4b3f-9080-96327976f2bb",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy oedd yn y dafarn nos Sadwrn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1267L01B02",
+  "welsh": "wyt ti wedi clywed gan",
+  "welshQ": "wyt ti wedi clywed gan?",
+  "english": "have you heard from",
+  "englishQ": "have you heard from?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b1cb39f2-5b4b-4195-8bc8-555c22d6ee95",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi clywed gan",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1267L01U01",
+  "welsh": "wyt ti wedi clywed gan dy frawd ers neithiwr",
+  "welshQ": "wyt ti wedi clywed gan dy frawd ers neithiwr?",
+  "english": "have you heard from your brother since last night",
+  "englishQ": "have you heard from your brother since last night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "1e283db5-4b69-487b-a8d9-51c6aa3ab71b",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi clywed gan dy frawd ers neithiwr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1267L01U03",
+  "welsh": "wyt ti wedi clywed gan dy chwaer hyd yn hyn",
+  "welshQ": "wyt ti wedi clywed gan dy chwaer hyd yn hyn?",
+  "english": "have you heard from your sister yet",
+  "englishQ": "have you heard from your sister yet?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "aada893e-4de3-4ccc-bf95-c14b99ea528a",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi clywed gan dy chwaer hyd yn hyn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1268L02U02",
+  "welsh": "pam wnaeth hi yrru dau e-bost neithiwr",
+  "welshQ": "pam wnaeth hi yrru dau e-bost neithiwr?",
+  "english": "why did she send two emails last night",
+  "englishQ": "why did she send two emails last night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "c953ecc4-b76c-421a-a1e1-966852e95024",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam wnaeth hi yrru dau e-bost neithiwr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1270L03U05",
+  "welsh": "pwy sy’n mynd i fod yn hwyr",
+  "welshQ": "pwy sy’n mynd i fod yn hwyr?",
+  "english": "who is going to be late",
+  "englishQ": "who is going to be late?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "c842f960-eb91-4bfa-83ba-2f0ce0e5d969",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy sy’n mynd i fod yn hwyr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1271L01B03",
+  "welsh": "ond fyddet ti’n licio ymlacio",
+  "welshQ": "ond fyddet ti’n licio ymlacio?",
+  "english": "but would you like to relax",
+  "englishQ": "but would you like to relax?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "404d04f5-66e5-4d7c-ad7d-4d81338ae9cd",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond fyddet ti’n licio ymlacio",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1271L01B01",
+  "welsh": "fyddet ti’n licio cyfarfod",
+  "welshQ": "fyddet ti’n licio cyfarfod?",
+  "english": "would you like to meet",
+  "englishQ": "would you like to meet?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "9e3374f4-a550-40c9-957a-ecb79b05d61f",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fyddet ti’n licio cyfarfod",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1271L01B02",
+  "welsh": "pam fyddet ti’n licio stopio",
+  "welshQ": "pam fyddet ti’n licio stopio?",
+  "english": "why would you like to stop",
+  "englishQ": "why would you like to stop?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "d372cdb3-8de3-4371-a87a-f48bdafcd7a0",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam fyddet ti’n licio stopio",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1271L01B04",
+  "welsh": "ac wedyn fyddet ti’n licio trafod y broblem",
+  "welshQ": "ac wedyn fyddet ti’n licio trafod y broblem?",
+  "english": "and then would you like to discuss the problem",
+  "englishQ": "and then would you like to discuss the problem?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "369d59f7-a7b0-4fa1-b612-bc0c3a1e2c8e",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ac wedyn fyddet ti’n licio trafod y broblem",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1271L02U05",
+  "welsh": "pam mae hi isio dod efo ni",
+  "welshQ": "pam mae hi isio dod efo ni?",
+  "english": "why does she want to come with us",
+  "englishQ": "why does she want to come with us?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "c640199f-78e5-470d-8f5f-1c2a3bdcf4ae",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam mae hi isio dod efo ni",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1271L02U01",
+  "welsh": "fyddet ti’n dod efo ni wythnos nesa’",
+  "welshQ": "fyddet ti’n dod efo ni wythnos nesa’?",
+  "english": "would you come with us next week",
+  "englishQ": "would you come with us next week?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "923d6979-2d74-4c71-9b54-4e831132b519",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fyddet ti’n dod efo ni wythnos nesa’",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1274L01",
+  "welsh": "oes rhaid i ti",
+  "welshQ": "oes rhaid i ti?",
+  "english": "do you have to",
+  "englishQ": "do you have to?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "da9d038a-a313-40c0-a887-bdcad56c5996",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "oes rhaid i ti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1276L02U01",
+  "welsh": "oes rhaid i ti aros am ychydig bach hirach",
+  "welshQ": "oes rhaid i ti aros am ychydig bach hirach?",
+  "english": "do you have to wait for a little longer",
+  "englishQ": "do you have to wait for a little longer?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "5c60f235-7cfd-440b-84d1-523fe9f9df6c",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "oes rhaid i ti aros am ychydig bach hirach",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1283L01B04",
+  "welsh": "fedri di ddeud wrtha i pa rai o dy ffrindiau",
+  "welshQ": "fedri di ddeud wrtha i pa rai o dy ffrindiau?",
+  "english": "can you tell me which of your friends",
+  "englishQ": "can you tell me which of your friends?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "dc7a0153-411c-4ff0-922d-06e8857f1f02",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fedri di ddeud wrtha i pa rai o dy ffrindiau",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1284L01B02",
+  "welsh": "pwy oedd ffrind fy chwaer",
+  "welshQ": "pwy oedd ffrind fy chwaer?",
+  "english": "who was my sister’s friend",
+  "englishQ": "who was my sister’s friend?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "f17f8227-ef5d-4a58-94f0-9a9fe4578d63",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy oedd ffrind fy chwaer",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1284L01U01",
+  "welsh": "wyt ti wedi gweld ffrind fy chwaer",
+  "welshQ": "wyt ti wedi gweld ffrind fy chwaer?",
+  "english": "have you seen my sister’s friend",
+  "englishQ": "have you seen my sister’s friend?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "728dc2c5-aa60-4b12-86b9-e850302a57c5",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld ffrind fy chwaer",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1287L02B04",
+  "welsh": "fyddi di’n gwylio teledu heno",
+  "welshQ": "fyddi di’n gwylio teledu heno?",
+  "english": "will you be watching television tonight",
+  "englishQ": "will you be watching television tonight?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b8e5a417-c35c-4703-90dd-e83f5a25bf34",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fyddi di’n gwylio teledu heno",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1288L01U02",
+  "welsh": "pam mae’r rhan fwya’ o’r bobl yn y dafarn heno",
+  "welshQ": "pam mae’r rhan fwya’ o’r bobl yn y dafarn heno?",
+  "english": "why are most of the people in the pub tonight",
+  "englishQ": "why are most of the people in the pub tonight?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "479669dc-16b4-4d76-87fe-6675e831b7f3",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam mae’r rhan fwya’ o’r bobl yn y dafarn heno",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1292L02U03",
+  "welsh": "pam maen nhw isio dod efo ni i’r parti",
+  "welshQ": "pam maen nhw isio dod efo ni i’r parti?",
+  "english": "why do they want to come with us to the party",
+  "englishQ": "why do they want to come with us to the party?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "fd5495ff-c79e-44be-9d83-d5d28a5f519c",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam maen nhw isio dod efo ni i’r parti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1299L03U07",
+  "welsh": "pam ti isio hanner",
+  "welshQ": "pam ti isio hanner?",
+  "english": "why do you want half",
+  "englishQ": "why do you want half?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "65fea03f-c742-4273-808d-b7266fe69de0",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio hanner",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1302L02U03",
+  "welsh": "pam ti isio byw efo ni",
+  "welshQ": "pam ti isio byw efo ni?",
+  "english": "why do you want to live with us",
+  "englishQ": "why do you want to live with us?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "022ddcef-7187-4df5-af66-3ea98fc076c7",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio byw efo ni",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1309L02B03",
+  "welsh": "wyt ti wedi gweld hi o’r blaen",
+  "welshQ": "wyt ti wedi gweld hi o’r blaen?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "676a0153-76de-4940-a7fc-96e2dde8188f",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld hi o’r blaen",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1309L02U03",
+  "welsh": "wyt ti wedi gweld fy mam o’r blaen",
+  "welshQ": "wyt ti wedi gweld fy mam o’r blaen?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "999b701e-e905-40cd-8498-04d346d65152",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld fy mam o’r blaen",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1310L01U04",
+  "welsh": "pam ddim? mi fyddai hi’n medru dod efo ni",
+  "welshQ": "pam ddim? mi fyddai hi’n medru dod efo ni?",
+  "english": "why not? she could come with us",
+  "englishQ": "why not? she could come with us?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "7cbf55ad-1ebe-4f89-a029-8bb5ab88f3a9",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ddim? mi fyddai hi’n medru dod efo ni",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1311L01U04",
+  "welsh": "pam doedd o ddim yn medru ffonio chdi neithiwr",
+  "welshQ": "pam doedd o ddim yn medru ffonio chdi neithiwr?",
+  "english": "why couldn’t he call you last night",
+  "englishQ": "why couldn’t he call you last night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "dee80ada-7861-459f-b904-d40f5c58b2ff",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam doedd o ddim yn medru ffonio chdi neithiwr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1313L02U04",
+  "welsh": "pam ti isio gwylio’r pum gêm i gyd",
+  "welshQ": "pam ti isio gwylio’r pum gêm i gyd?",
+  "english": "why do you want to watch all five games",
+  "englishQ": "why do you want to watch all five games?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "e060f65e-d4c0-4e67-99aa-efeb450bbb42",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio gwylio’r pum gêm i gyd",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1319L02U02",
+  "welsh": "pam mae hi isio symud i wlad wahanol",
+  "welshQ": "pam mae hi isio symud i wlad wahanol?",
+  "english": "why does she want to move to a different country",
+  "englishQ": "why does she want to move to a different country?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "7319ed2c-64a9-4df8-ab72-5dc5f513259a",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam mae hi isio symud i wlad wahanol",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1320L01U03",
+  "welsh": "pam ti isio prynu teledu",
+  "welshQ": "pam ti isio prynu teledu?",
+  "english": "why do you want to buy a television",
+  "englishQ": "why do you want to buy a television?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "c988a3d7-16d8-40ad-8521-a102f02a30fc",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio prynu teledu",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1323L02U04",
+  "welsh": "pam ti isio cerdded",
+  "welshQ": "pam ti isio cerdded?",
+  "english": "why do you want to walk",
+  "englishQ": "why do you want to walk?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "3634d5b3-61d9-4d65-9654-f39e74afe10b",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio cerdded",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1326L02U04",
+  "welsh": "pam maen nhw isio gwerthu’r cwmni",
+  "welshQ": "pam maen nhw isio gwerthu’r cwmni?",
+  "english": "why do they want to sell the company",
+  "englishQ": "why do they want to sell the company?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "2c789d64-f921-4818-b3d6-6736ee215d3c",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam maen nhw isio gwerthu’r cwmni",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1332L03U04",
+  "welsh": "pam ti isio adeiladu bywyd newydd",
+  "welshQ": "pam ti isio adeiladu bywyd newydd?",
+  "english": "why do you want to build a new life",
+  "englishQ": "why do you want to build a new life?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "547c29ff-eeaa-40aa-857a-c474a0773b10",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio adeiladu bywyd newydd",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1334L02U01",
+  "welsh": "wyt ti wedi gweld y gath fach heddiw",
+  "welshQ": "wyt ti wedi gweld y gath fach heddiw?",
+  "english": "have you seen the kitten today",
+  "englishQ": "have you seen the kitten today?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "d1a89b12-dd30-4af6-9cd2-daea441a2ac2",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld y gath fach heddiw",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1335L02U05",
+  "welsh": "fyddet ti’n ychwanegu rhywbeth pwysig",
+  "welshQ": "fyddet ti’n ychwanegu rhywbeth pwysig?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "41158ec7-f220-4c86-8b2e-2472fe42db71",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fyddet ti’n ychwanegu rhywbeth pwysig",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1343L01B04",
+  "welsh": "be’ ti’n meddwl am yr economi",
+  "welshQ": "be’ ti’n meddwl am yr economi?",
+  "english": "what do you think about the economy",
+  "englishQ": "what do you think about the economy?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "ff829768-ec93-4b30-97b2-4482ab210818",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "be’ ti’n meddwl am yr economi",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1343L01U05",
+  "welsh": "pam maen nhw isio newid yr economi",
+  "welshQ": "pam maen nhw isio newid yr economi?",
+  "english": "why do they want to change the economy",
+  "englishQ": "why do they want to change the economy?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "4a4937ce-b77d-4ccf-9b0a-0d27f16288f9",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam maen nhw isio newid yr economi",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1349L01U06",
+  "welsh": "pam ti isio mynd allan heno",
+  "welshQ": "pam ti isio mynd allan heno?",
+  "english": "why do you want to go out tonight",
+  "englishQ": "why do you want to go out tonight?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "928ddb75-2080-414f-987d-1c99497c775a",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio mynd allan heno",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1353L01U06",
+  "welsh": "pam ti isio rhedeg i’r ysgol",
+  "welshQ": "pam ti isio rhedeg i’r ysgol?",
+  "english": "why do you want to run to school",
+  "englishQ": "why do you want to run to school?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "181c76b0-84a0-4494-8f6d-f95f19c3c40e",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio rhedeg i’r ysgol",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1353L02U03",
+  "welsh": "pam doedd o ddim isio cerdded o gwmpas y cae",
+  "welshQ": "pam doedd o ddim isio cerdded o gwmpas y cae?",
+  "english": "why didn’t he want to walk around the field",
+  "englishQ": "why didn’t he want to walk around the field?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b4bef667-6e09-410d-b984-8b4352383521",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam doedd o ddim isio cerdded o gwmpas y cae",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1354L01U02",
+  "welsh": "pam mae o’n trio ymddangos yn flin",
+  "welshQ": "pam mae o’n trio ymddangos yn flin?",
+  "english": "why is he trying to appear angry",
+  "englishQ": "why is he trying to appear angry?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "1e9131da-05a4-4961-9f01-cb510358f053",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam mae o’n trio ymddangos yn flin",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1356L03U05",
+  "welsh": "fyddi di’n barod i’w drafod nos ’fory",
+  "welshQ": "fyddi di’n barod i’w drafod nos ’fory?",
+  "english": "will you be ready to discuss it tomorrow night",
+  "englishQ": "will you be ready to discuss it tomorrow night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "c6531f47-277d-4f49-83a2-6ca1d3ed9925",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fyddi di’n barod i’w drafod nos ’fory",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1359L02U03",
+  "welsh": "pam fedrith hi ddim troi i’r chwith",
+  "welshQ": "pam fedrith hi ddim troi i’r chwith?",
+  "english": "why won’t she be able to turn left",
+  "englishQ": "why won’t she be able to turn left?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "f3b202c5-3b50-4d74-a6f5-d00e6894780e",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam fedrith hi ddim troi i’r chwith",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1360L01B03",
+  "welsh": "ddudodd o unrhyw beth arall",
+  "welshQ": "ddudodd o unrhyw beth arall?",
+  "english": "did he say anything else",
+  "englishQ": "did he say anything else?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b4680eb7-a0de-4529-9882-8626d24cfa1f",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ddudodd o unrhyw beth arall",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1360L01U01",
+  "welsh": "unrhyw beth arall? dim diolch",
+  "welshQ": "unrhyw beth arall? dim diolch?",
+  "english": "anything else? no thank you",
+  "englishQ": "anything else? no thank you?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "479832e2-3c1c-4f12-ba60-0b27eb373944",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "unrhyw beth arall? dim diolch",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1366L01",
+  "welsh": "glywest ti",
+  "welshQ": "glywest ti?",
+  "english": "did you hear",
+  "englishQ": "did you hear?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "231ed845-4fa5-43c3-9776-38075edd5a88",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "glywest ti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1366L01B01",
+  "welsh": "glywest ti be’ ddudodd o",
+  "welshQ": "glywest ti be’ ddudodd o?",
+  "english": "did you hear what he said",
+  "englishQ": "did you hear what he said?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "6a09679d-bb77-42b5-a404-355ca48e04e8",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "glywest ti be’ ddudodd o",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1366L01B02",
+  "welsh": "glywest ti unrhyw beth arall",
+  "welshQ": "glywest ti unrhyw beth arall?",
+  "english": "did you hear anything else",
+  "englishQ": "did you hear anything else?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "4b653113-c280-43d6-8f4d-017edfebe603",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "glywest ti unrhyw beth arall",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1366L01B04",
+  "welsh": "felly glywest ti gan dy dad",
+  "welshQ": "felly glywest ti gan dy dad?",
+  "english": "so did you hear from your father",
+  "englishQ": "so did you hear from your father?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "92eecde2-e9db-41c7-b201-3f0b40129f21",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "felly glywest ti gan dy dad",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1366L01B03",
+  "welsh": "pwy glywest ti",
+  "welshQ": "pwy glywest ti?",
+  "english": "who did you hear",
+  "englishQ": "who did you hear?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "fbb3e8b8-1c1c-4154-b91f-08f2e699859f",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy glywest ti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1366L01U02",
+  "welsh": "pwy glywest ti neithiwr",
+  "welshQ": "pwy glywest ti neithiwr?",
+  "english": "who did you hear last night",
+  "englishQ": "who did you hear last night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "e28201e4-6321-4d0d-a9b5-c32d84e9d53e",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy glywest ti neithiwr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1366L01U01",
+  "welsh": "glywest ti be’ oedd hi’n deud",
+  "welshQ": "glywest ti be’ oedd hi’n deud?",
+  "english": "did you hear what she was saying",
+  "englishQ": "did you hear what she was saying?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "50c8ebe7-a4bf-4600-bc0c-88a67037ff51",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "glywest ti be’ oedd hi’n deud",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1366L01U07",
+  "welsh": "pwy glywest ti nos Wener",
+  "welshQ": "pwy glywest ti nos Wener?",
+  "english": "who did you hear on Friday night",
+  "englishQ": "who did you hear on Friday night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "2c2004c1-bcb2-48d2-b8f2-2a4d5a6509b9",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy glywest ti nos Wener",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1368L03U04",
+  "welsh": "pam ti isio tyfu tomatos",
+  "welshQ": "pam ti isio tyfu tomatos?",
+  "english": "why do you want to grow tomatoes",
+  "englishQ": "why do you want to grow tomatoes?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "3f2ae10c-7ac7-4d66-8cd2-086d472f876b",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam ti isio tyfu tomatos",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1369L02U02",
+  "welsh": "glywest ti rai ceffylau ar y ffordd",
+  "welshQ": "glywest ti rai ceffylau ar y ffordd?",
+  "english": "did you hear several horses on the road",
+  "englishQ": "did you hear several horses on the road?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "d8ee6913-388d-442d-a19f-9021613868c1",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "glywest ti rai ceffylau ar y ffordd",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1371L02U03",
+  "welsh": "fyddi di’n barod ddydd Mercher",
+  "welshQ": "fyddi di’n barod ddydd Mercher?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "8c627a03-981b-4a59-8c9d-b2eac1d6e339",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fyddi di’n barod ddydd Mercher",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1372L02U04",
+  "welsh": "pam dan ni’n trio creu rhywbeth pwysig",
+  "welshQ": "pam dan ni’n trio creu rhywbeth pwysig?",
+  "english": "why are we trying to create something important",
+  "englishQ": "why are we trying to create something important?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b2853169-cf2c-4a83-8111-e648dd1d2738",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam dan ni’n trio creu rhywbeth pwysig",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1372L01",
+  "welsh": "welest ti",
+  "welshQ": "welest ti?",
+  "english": "did you see",
+  "englishQ": "did you see?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "1601a51b-fdc9-4ca0-ad82-93cabc9b2c0a",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "welest ti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1372L01B01",
+  "welsh": "welest ti dy ffrind",
+  "welshQ": "welest ti dy ffrind?",
+  "english": "did you see your friend",
+  "englishQ": "did you see your friend?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "52aa8c98-2d9a-49ba-b91f-bfd82ba7324a",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "welest ti dy ffrind",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1372L01B03",
+  "welsh": "welest ti hen ddyn",
+  "welshQ": "welest ti hen ddyn?",
+  "english": "did you see an old man",
+  "englishQ": "did you see an old man?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "25fab700-b4a7-43bc-8400-14ff935ee620",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "welest ti hen ddyn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1372L01B04",
+  "welsh": "ond welest ti rai ceffylau",
+  "welshQ": "ond welest ti rai ceffylau?",
+  "english": "but did you see several horses",
+  "englishQ": "but did you see several horses?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "ff3c4bdd-b361-46e2-98c5-4522cf3e5554",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond welest ti rai ceffylau",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1372L01B02",
+  "welsh": "pwy welest ti",
+  "welshQ": "pwy welest ti?",
+  "english": "who did you see",
+  "englishQ": "who did you see?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "dbdf81ec-e650-4feb-955a-af44b05656ac",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy welest ti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1372L01U07",
+  "welsh": "ond pwy welest ti",
+  "welshQ": "ond pwy welest ti?",
+  "english": "but who did you see",
+  "englishQ": "but who did you see?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "9453f6b2-5d30-4b5b-91da-57c30abafca9",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond pwy welest ti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1372L01U02",
+  "welsh": "pwy welest ti ddydd Mercher",
+  "welshQ": "pwy welest ti ddydd Mercher?",
+  "english": "who did you see on Wednesday",
+  "englishQ": "who did you see on Wednesday?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "beda416a-2a37-4144-b337-aefaea1639ae",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pwy welest ti ddydd Mercher",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1372L01U04",
+  "welsh": "welest ti pwy oedd draw acw",
+  "welshQ": "welest ti pwy oedd draw acw?",
+  "english": "did you see who was over there",
+  "englishQ": "did you see who was over there?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "93da6e59-b2e8-4fd2-b817-7199b64cd0f2",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "welest ti pwy oedd draw acw",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1375L01B03",
+  "welsh": "welest ti be’ oedd hi’n gwneud",
+  "welshQ": "welest ti be’ oedd hi’n gwneud?",
+  "english": "did you see what she was doing",
+  "englishQ": "did you see what she was doing?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "be70e0ab-7474-4f45-83fc-bea941a08e58",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "welest ti be’ oedd hi’n gwneud",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1375L01U05",
+  "welsh": "glywest ti be’ oedd hi’n gwneud ddydd Mercher",
+  "welshQ": "glywest ti be’ oedd hi’n gwneud ddydd Mercher?",
+  "english": "did you hear what she was doing on Wednesday",
+  "englishQ": "did you hear what she was doing on Wednesday?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "7dfd47af-9a60-4ea1-b2b4-b1de3184b7e1",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "glywest ti be’ oedd hi’n gwneud ddydd Mercher",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1377L01",
+  "welsh": "est ti i rywle",
+  "welshQ": "est ti i rywle?",
+  "english": "did you go anywhere",
+  "englishQ": "did you go anywhere?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "e32e4551-cd95-44d7-b12b-c599a8b6b43d",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "est ti i rywle",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1377L01B02",
+  "welsh": "ond est ti i rywle",
+  "welshQ": "ond est ti i rywle?",
+  "english": "but did you go anywhere",
+  "englishQ": "but did you go anywhere?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "0e8916e5-3c07-4ead-80e3-3a74a44010e6",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond est ti i rywle",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1377L01B04",
+  "welsh": "ond est ti i rywle mis diwetha’",
+  "welshQ": "ond est ti i rywle mis diwetha’?",
+  "english": "but did you go anywhere last month",
+  "englishQ": "but did you go anywhere last month?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "43b2f1e9-db04-460f-9599-199addc3a359",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond est ti i rywle mis diwetha’",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1377L01B01",
+  "welsh": "est ti i rywle neithiwr",
+  "welshQ": "est ti i rywle neithiwr?",
+  "english": "did you go anywhere last night",
+  "englishQ": "did you go anywhere last night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b666dd08-cf51-44fb-b8fb-c8c074359108",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "est ti i rywle neithiwr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1377L01B03",
+  "welsh": "est ti i rywle ddydd Mercher",
+  "welshQ": "est ti i rywle ddydd Mercher?",
+  "english": "did you go anywhere on Wednesday",
+  "englishQ": "did you go anywhere on Wednesday?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "516a2c17-c0a1-4eb3-bc9d-9546de5ad614",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "est ti i rywle ddydd Mercher",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1377L01U06",
+  "welsh": "est ti i rywle fore dydd Sul",
+  "welshQ": "est ti i rywle fore dydd Sul?",
+  "english": "did you go anywhere on Sunday morning",
+  "englishQ": "did you go anywhere on Sunday morning?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "fdfc1402-ed67-4eda-b50a-0cbe888ddacb",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "est ti i rywle fore dydd Sul",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1377L01U05",
+  "welsh": "est ti i rywle pnawn ’ma",
+  "welshQ": "est ti i rywle pnawn ’ma?",
+  "english": "did you go anywhere this afternoon",
+  "englishQ": "did you go anywhere this afternoon?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "53427881-4ba2-4c26-83d8-85e8438c2281",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "est ti i rywle pnawn ’ma",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1377L01U01",
+  "welsh": "est ti i rywle yng nghanol y nos",
+  "welshQ": "est ti i rywle yng nghanol y nos?",
+  "english": "did you go anywhere in the middle of the night",
+  "englishQ": "did you go anywhere in the middle of the night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "3b454f24-08a1-49ba-a4af-f9838b330710",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "est ti i rywle yng nghanol y nos",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1378L02U06",
+  "welsh": "pam doedd ’na ddim digon o bres",
+  "welshQ": "pam doedd ’na ddim digon o bres?",
+  "english": "why wasn't there enough money",
+  "englishQ": "why wasn't there enough money?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "7ca657a4-73b3-461b-9f1d-bc3a3a669063",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam doedd ’na ddim digon o bres",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1380L03U04",
+  "welsh": "pam oedd hi isio cynnwys popeth",
+  "welshQ": "pam oedd hi isio cynnwys popeth?",
+  "english": "why did she want to include everything",
+  "englishQ": "why did she want to include everything?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "39a9a6ea-f769-49d0-a764-a48af36a5eb1",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam oedd hi isio cynnwys popeth",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1381L03U06",
+  "welsh": "pam mae o’n trio dilyn ni",
+  "welshQ": "pam mae o’n trio dilyn ni?",
+  "english": "why is he trying to follow us",
+  "englishQ": "why is he trying to follow us?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "c5e9e631-edb2-4287-9aef-331614d1a002",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam mae o’n trio dilyn ni",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1382L01",
+  "welsh": "wnest ti ofyn",
+  "welshQ": "wnest ti ofyn?",
+  "english": "did you ask",
+  "englishQ": "did you ask?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "fb9f9d34-c2f7-40b1-ab04-ff1a0759337d",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wnest ti ofyn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1382L01B04",
+  "welsh": "ond wnest ti ofyn am help",
+  "welshQ": "ond wnest ti ofyn am help?",
+  "english": "but did you ask for help",
+  "englishQ": "but did you ask for help?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "5744bb29-5fd0-47a4-8a3d-c8afc4ca7b05",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond wnest ti ofyn am help",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1382L01B02",
+  "welsh": "pam wnest ti ofyn",
+  "welshQ": "pam wnest ti ofyn?",
+  "english": "why did you ask",
+  "englishQ": "why did you ask?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "f30fe5fc-a921-4060-b29e-2a526dcb1192",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam wnest ti ofyn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1382L01B01",
+  "welsh": "wnest ti ofyn am help",
+  "welshQ": "wnest ti ofyn am help?",
+  "english": "did you ask for help",
+  "englishQ": "did you ask for help?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "9403338a-11b0-4224-8bb3-97cf973e78b5",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wnest ti ofyn am help",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1382L01B03",
+  "welsh": "wnest ti ofyn be’ oedd hi’n gwneud",
+  "welshQ": "wnest ti ofyn be’ oedd hi’n gwneud?",
+  "english": "did you ask what she was doing",
+  "englishQ": "did you ask what she was doing?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "94e591ca-ccef-4b38-a26b-32453d0af41a",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wnest ti ofyn be’ oedd hi’n gwneud",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1382L01U02",
+  "welsh": "wnest ti ofyn am help ddydd Mercher",
+  "welshQ": "wnest ti ofyn am help ddydd Mercher?",
+  "english": "did you ask for help on Wednesday",
+  "englishQ": "did you ask for help on Wednesday?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "ff805b55-dbe5-481e-a259-e5e2aef7e5a6",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wnest ti ofyn am help ddydd Mercher",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1382L01U01",
+  "welsh": "pam wnest ti ofyn am help",
+  "welshQ": "pam wnest ti ofyn am help?",
+  "english": "why did you ask for help",
+  "englishQ": "why did you ask for help?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "d4e7af81-0903-4ca2-86f6-6014653064a9",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam wnest ti ofyn am help",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1382L01U06",
+  "welsh": "mae’n ddrwg gen i ond wnest ti ofyn am help",
+  "welshQ": "mae’n ddrwg gen i ond wnest ti ofyn am help?",
+  "english": "I’m sorry but did you ask for help",
+  "englishQ": "I’m sorry but did you ask for help?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "f010695f-e1f7-48ee-b704-33f9411787ad",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "mae’n ddrwg gen i ond wnest ti ofyn am help",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1385L01",
+  "welsh": "wnest ti gytuno",
+  "welshQ": "wnest ti gytuno?",
+  "english": "did you agree",
+  "englishQ": "did you agree?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "1e85a3aa-75d2-45de-8560-c00f614e9573",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wnest ti gytuno",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1385L01B02",
+  "welsh": "pam wnest ti gytuno",
+  "welshQ": "pam wnest ti gytuno?",
+  "english": "why did you agree",
+  "englishQ": "why did you agree?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "3c4d30e5-71fe-4fc1-a7cf-ff7dc63f024e",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam wnest ti gytuno",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1385L01B01",
+  "welsh": "wnest ti gytuno efo ni",
+  "welshQ": "wnest ti gytuno efo ni?",
+  "english": "did you agree with us",
+  "englishQ": "did you agree with us?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "45555f1c-5e2e-4c2d-8ce7-a2b8c10dd44f",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wnest ti gytuno efo ni",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1385L01B03",
+  "welsh": "wnest ti gytuno wythnos yn ôl",
+  "welshQ": "wnest ti gytuno wythnos yn ôl?",
+  "english": "did you agree a week ago",
+  "englishQ": "did you agree a week ago?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "75bbf180-442e-49a6-8c58-a072bcead4ed",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wnest ti gytuno wythnos yn ôl",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1385L01B04",
+  "welsh": "ond wnest ti gytuno efo’r trefniadau",
+  "welshQ": "ond wnest ti gytuno efo’r trefniadau?",
+  "english": "but did you agree with the arrangements",
+  "englishQ": "but did you agree with the arrangements?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "f1dd5b01-d1a5-4c7f-b7be-75174b5f9860",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond wnest ti gytuno efo’r trefniadau",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1385L01U06",
+  "welsh": "pam wnest ti gytuno funud yn ôl",
+  "welshQ": "pam wnest ti gytuno funud yn ôl?",
+  "english": "why did you agree a moment ago",
+  "englishQ": "why did you agree a moment ago?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "0c544a33-eba2-4c37-a382-f0f569dd03dd",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam wnest ti gytuno funud yn ôl",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1385L01U01",
+  "welsh": "pam wnest ti gytuno efo ni neithiwr",
+  "welshQ": "pam wnest ti gytuno efo ni neithiwr?",
+  "english": "why did you agree with us last night",
+  "englishQ": "why did you agree with us last night?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "a217a0a4-ab8d-492f-9669-c32dea3ebe1d",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "pam wnest ti gytuno efo ni neithiwr",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1385L01U05",
+  "welsh": "ond pam wnest ti gytuno efo ni",
+  "welshQ": "ond pam wnest ti gytuno efo ni?",
+  "english": "but why did you agree with us",
+  "englishQ": "but why did you agree with us?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "f085ebfe-1fe9-4421-81eb-1794e6f14b52",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ond pam wnest ti gytuno efo ni",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1388L01U03",
+  "welsh": "wyt ti wedi gweld y person ’na draw acw",
+  "welshQ": "wyt ti wedi gweld y person ’na draw acw?",
+  "english": "have you seen that person over there",
+  "englishQ": "have you seen that person over there?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "d433d8e8-0607-4d0f-8b6c-3b51d55a96d5",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld y person ’na draw acw",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1392L01U03",
+  "welsh": "wyt ti wedi gweld y plentyn ’na",
+  "welshQ": "wyt ti wedi gweld y plentyn ’na?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "24b75191-2bbb-4d71-aaf1-9f190348bde7",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "wyt ti wedi gweld y plentyn ’na",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1397L01",
+  "welsh": "ydan ni angen",
+  "welshQ": "ydan ni angen?",
+  "english": "do we need",
+  "englishQ": "do we need?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "c8ad1f3f-16ce-4824-b8e0-8718c8536f96",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ydan ni angen",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1414L01",
+  "welsh": "gawn ni",
+  "welshQ": "gawn ni?",
+  "english": "could we have",
+  "englishQ": "could we have?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "7668db73-8a34-4219-9438-3c54a0829667",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "gawn ni",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1434L01",
+  "welsh": "fedran nhw dorri",
+  "welshQ": "fedran nhw dorri?",
+  "english": "could they cut",
+  "englishQ": "could they cut?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b5d47cc5-deaa-4cd4-9b85-1d7b8f19cecb",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "fedran nhw dorri",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1630L01",
+  "welsh": "ga i",
+  "welshQ": "ga i?",
+  "english": "can I have",
+  "englishQ": "can I have?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "b964787f-7983-4aa2-94ea-5c56e993349a",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "ga i",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "lego",
+  "id": "S1642L02",
+  "welsh": "sut dach chi’n teimlo",
+  "welshQ": "sut dach chi’n teimlo?",
+  "english": "how do you feel",
+  "englishQ": "how do you feel?",
+  "takes": [
+   {
+    "slot": "target2",
+    "audio_id": "d12a5506-b960-426a-9123-89d48b08caf1",
+    "voice": "human_aran_cym_n",
+    "origin": "human",
+    "owner": "cym_nv2_for_eng",
+    "text": "sut dach chi’n teimlo",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_nv2_for_eng",
+  "kind": "phrase",
+  "id": "S1643L01C01",
+  "welsh": "dach chi isio",
+  "welshQ": "dach chi isio?",
+  "english": "do you want",
+  "englishQ": "do you want?",
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "051f6763-63eb-4db3-ae43-ccda825d08cf",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "dach chi isio?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "77c41933-e814-44c9-86fd-c2620e6dac0c",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_n_for_eng",
+    "text": "dach chi isio?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "lego",
+  "id": "S0049L02",
+  "welsh": null,
+  "welshQ": null,
+  "english": "do you need",
+  "englishQ": "do you need?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "f5ad46d2-d0c9-464b-8c95-4432db7bbe83",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "do you need?",
+    "saysQ": true
+   },
+   {
+    "slot": "target1",
+    "audio_id": "3869d951-47e4-4b00-a1ca-5608077944cb",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "wyt ti angen?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "43bffbfd-5d56-44d5-946d-17252bb1649b",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "wyt ti angen?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "lego",
+  "id": "S0129L02",
+  "welsh": "gest ti",
+  "welshQ": "gest ti?",
+  "english": "had you",
+  "englishQ": "had you?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "111d0628-d656-4a1e-918b-e7b76474ad49",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "had you",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "77734619-d479-4141-b70e-c382869daab2",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "gest ti",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "08b2a06d-637c-40a8-8022-eb0d54fc41c5",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "gest ti",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "lego",
+  "id": "S0166L01",
+  "welsh": null,
+  "welshQ": null,
+  "english": "don't they",
+  "englishQ": "don't they?",
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "09e3a5be-a09b-40ef-9bbc-b2bc17fdea20",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "on’d ŷn nhw?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "88582514-1dcf-4343-97e6-69abe990a814",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "on’d ŷn nhw?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "lego",
+  "id": "S0173L02",
+  "welsh": null,
+  "welshQ": null,
+  "english": "have you heard",
+  "englishQ": "have you heard?",
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "af4e24d1-e054-4bf8-b3fe-eba664330773",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "ŷch chi ’di clywed?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "929b3fd1-1693-41ac-a0b9-fa47cecbc999",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "ŷch chi ’di clywed?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "lego",
+  "id": "S0221L01",
+  "welsh": null,
+  "welshQ": null,
+  "english": "would you like",
+  "englishQ": "would you like?",
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "0bcc549b-6074-48c7-ac2c-df45a8314996",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "hoffet ti?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "b5b8cb45-fd1e-402f-955b-29bd5e8d05ff",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "hoffet ti?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "lego",
+  "id": "S0241L01",
+  "welsh": null,
+  "welshQ": null,
+  "english": "shall we get",
+  "englishQ": "shall we get?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "ef89f602-a631-4caf-a854-497378acd9e7",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "shall we get?",
+    "saysQ": true
+   },
+   {
+    "slot": "target1",
+    "audio_id": "55e201fd-ea66-4262-a25e-2a0a3a32bf64",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "beth am i ni gael?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "99966f03-6f1b-4a33-a9a0-af735d552cbb",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "beth am i ni gael?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S0280L01B01",
+  "welsh": "faint mor uchel yw y wal",
+  "welshQ": "faint mor uchel yw y wal?",
+  "english": "how high the wall is",
+  "englishQ": "how high the wall is?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "f4b9e188-ba7c-47f7-a3cb-12297d5db033",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "how high the wall is",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "21cae5c7-d7cb-4d13-a921-eab1fa561960",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "faint mor uchel yw y wal",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "aaa442bd-6813-485f-a56c-c61e41c0f46e",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "faint mor uchel yw y wal",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S0287L05B05",
+  "welsh": "beth sydd ar ôl i ni nag ŷn nhw’n moyn",
+  "welshQ": "beth sydd ar ôl i ni nag ŷn nhw’n moyn?",
+  "english": "what is left for us that they do not want",
+  "englishQ": "what is left for us that they do not want?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "c0bb8a49-875b-4027-9783-46a4534b4792",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "what is left for us that they do not want",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "1311cc83-680b-4f25-b8c2-5fdf5098a2a2",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "beth sydd ar ôl i ni nag ŷn nhw’n moyn",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "fa0a56c4-edbc-4481-9ddc-58fcfdeea880",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "beth sydd ar ôl i ni nag ŷn nhw’n moyn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S0287L02B04",
+  "welsh": "wyt ti ’di cael hoe go iawn",
+  "welshQ": "wyt ti ’di cael hoe go iawn?",
+  "english": "have you had a real rest",
+  "englishQ": "have you had a real rest?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "55792aa8-d6c9-4a36-a00d-8d927f02a90e",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "have you had a real rest",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "e12590dd-2411-4a14-8f7c-7cfab967183b",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "wyt ti ’di cael hoe go iawn",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "eac2e152-b0cb-43f6-83de-aefbb49e418a",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "wyt ti ’di cael hoe go iawn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S0293L03B05",
+  "welsh": "pa un yw’r mwya o’r llefydd yna",
+  "welshQ": "pa un yw’r mwya o’r llefydd yna?",
+  "english": "which one is the biggest of those places",
+  "englishQ": "which one is the biggest of those places?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "8c24164e-d990-42c7-99d9-270d07b6e87a",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "which one is the biggest of those places",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "a878a801-086c-464e-bff3-0fbc2db8fc3f",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un yw’r mwya o’r llefydd yna",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "87be6335-dbc5-4691-a2c8-293428f18fe5",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un yw’r mwya o’r llefydd yna",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S0293L03B01",
+  "welsh": "pa un yw’r mwya",
+  "welshQ": "pa un yw’r mwya?",
+  "english": "which one is the biggest",
+  "englishQ": "which one is the biggest?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "9d59e524-2a89-4dad-b8cb-f3a51ff81050",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "which one is the biggest",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "e6d4a4e8-07f4-425e-8cbd-a2ec255ebc6a",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un yw’r mwya",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "b059639d-f4e6-4725-ad2e-d1e32e14ace4",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un yw’r mwya",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S0293L03B02",
+  "welsh": "pa un yw’r coffi mwya",
+  "welshQ": "pa un yw’r coffi mwya?",
+  "english": "which one is the biggest coffee",
+  "englishQ": "which one is the biggest coffee?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "71d88931-1dac-4234-ae8b-ea5edde16f65",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "which one is the biggest coffee",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "20911bdb-9a2a-47d3-be28-600c5a808f1c",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un yw’r coffi mwya",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "c14817a4-85e3-4f22-9a36-b1590f42c9fd",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un yw’r coffi mwya",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S0294L02B02",
+  "welsh": "pa un fydd yn dod nesa",
+  "welshQ": "pa un fydd yn dod nesa?",
+  "english": "which one will come next",
+  "englishQ": "which one will come next?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "4f543a77-f21c-437c-a93d-a42843e18a1c",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "which one will come next",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "1697db88-cb9c-4f79-9d7a-c921afc6c378",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un fydd yn dod nesa",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "d05a71a5-e93a-4a82-ae3c-cbeb640cc4dc",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un fydd yn dod nesa",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "lego",
+  "id": "S0295L01",
+  "welsh": "beth sy’n",
+  "welshQ": "beth sy’n?",
+  "english": "what is",
+  "englishQ": "what is?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "cc79cff7-8912-4aa4-9c8a-2040483d40c9",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "what is",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "b38eaeb8-5fc1-49ce-934c-72445249a231",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "beth sy’n",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "ab90a90c-a9d2-41f9-b8b2-d5a07bfa7121",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "beth sy’n",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S0295L02B03",
+  "welsh": "beth sy’n gyntaf fydd yn ddiddorol",
+  "welshQ": "beth sy’n gyntaf fydd yn ddiddorol?",
+  "english": "what is first will be interesting",
+  "englishQ": "what is first will be interesting?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "0cfd86dd-54c5-4d74-b286-b7ab0703cd94",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "what is first will be interesting",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "900ec0f4-484e-4e3d-a9b0-5fcb30951481",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "beth sy’n gyntaf fydd yn ddiddorol",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "d02444f8-91ef-43f1-a3b4-8679e48493bc",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "beth sy’n gyntaf fydd yn ddiddorol",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "lego",
+  "id": "S0300L02",
+  "welsh": "nag wyt ti’n",
+  "welshQ": "nag wyt ti’n?",
+  "english": "don’t you",
+  "englishQ": "don’t you?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "6b6b51ac-3a4c-4ef9-ac5d-6682f4eb9a5e",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "don’t you",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "5d1a0eb0-8f18-4cf3-80f8-69bfaea3102c",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "nag wyt ti’n",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "bc31a4ef-87fe-4c74-acc8-4b934f67f8e5",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "nag wyt ti’n",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S0300L01B01",
+  "welsh": "pam yw’r cwestiwn",
+  "welshQ": "pam yw’r cwestiwn?",
+  "english": "why is the question",
+  "englishQ": "why is the question?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "292654f5-5158-4848-b658-28e7b12d3748",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "why is the question",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "0654f861-d7b9-4c35-8fb4-badde848497b",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pam yw’r cwestiwn",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "90b8ec23-9cd4-4686-a10f-67fd4085c490",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pam yw’r cwestiwn",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S0301L01B05",
+  "welsh": "pam nag ŷn ni’n gallu ymddiried yn y dyn ifanc",
+  "welshQ": "pam nag ŷn ni’n gallu ymddiried yn y dyn ifanc?",
+  "english": "why can’t we trust the young man",
+  "englishQ": "why can’t we trust the young man?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "bfb8cc80-ee39-4cbf-b7e1-cdd2225812b0",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "why can’t we trust the young man",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "d65a2156-d360-45d9-8e42-2cfa880097ff",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pam nag ŷn ni’n gallu ymddiried yn y dyn ifanc",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "e6ab9609-d0fd-40dc-a974-24b19b128e96",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pam nag ŷn ni’n gallu ymddiried yn y dyn ifanc",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "lego",
+  "id": "S0309L01",
+  "welsh": "wnei di",
+  "welshQ": "wnei di?",
+  "english": "will you",
+  "englishQ": "will you?",
+  "takes": [
+   {
+    "slot": "known",
+    "audio_id": "a1acb6d6-2e08-4c7d-9e99-a01fe11c9433",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "will you",
+    "saysQ": false
+   },
+   {
+    "slot": "target1",
+    "audio_id": "075ec5fe-f087-4443-84aa-76cec13bd0c4",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "wnei di",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "123da5ab-7261-4bf5-9652-f2261a574a44",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "wnei di",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S1079L01C01",
+  "welsh": "pryd",
+  "welshQ": "pryd?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "f89989d1-8b26-4cb9-8416-b72641697799",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pryd?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "536805d8-2ef8-4dc1-b457-9278ea7f195e",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pryd?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S1079L01C02",
+  "welsh": "wnest ti ddechrau",
+  "welshQ": "wnest ti ddechrau?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "4afea619-9d05-4f71-8b4a-34b06ca70d58",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "wnest ti ddechrau",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "0bb3b02c-b416-460f-815b-eed6f8a93e55",
+    "voice": "legacy_import",
+    "origin": "tts",
+    "owner": "cym_s_for_eng",
+    "text": "wnest ti ddechrau?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S1081L01C01",
+  "welsh": "pryd",
+  "welshQ": "pryd?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "f89989d1-8b26-4cb9-8416-b72641697799",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pryd?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "536805d8-2ef8-4dc1-b457-9278ea7f195e",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pryd?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S1081L01C02",
+  "welsh": "wyt ti’n moyn",
+  "welshQ": "wyt ti’n moyn?",
+  "english": null,
+  "englishQ": null,
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "96128bf5-9b9c-479c-930f-f224a3c80dde",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "wyt ti’n moyn?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "8dd54df5-b16f-4083-9d24-df945e0f587f",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "wyt ti’n moyn?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "lego",
+  "id": "S1171L01",
+  "welsh": "wyt ti’n moyn i fi dy helpu di",
+  "welshQ": "wyt ti’n moyn i fi dy helpu di?",
+  "english": "do you want me to help you",
+  "englishQ": "do you want me to help you?",
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "e1f50b66-d5c9-4c25-89d0-cf63d40a403b",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "wyt ti’n moyn i fi dy helpu di?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "06b7f78f-ae0a-4e3e-8e47-3861d873168a",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "wyt ti’n moyn i fi dy helpu di?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "lego",
+  "id": "S1271L01",
+  "welsh": null,
+  "welshQ": null,
+  "english": "would you like",
+  "englishQ": "would you like?",
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "0bcc549b-6074-48c7-ac2c-df45a8314996",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "hoffet ti?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "b5b8cb45-fd1e-402f-955b-29bd5e8d05ff",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "hoffet ti?",
+    "saysQ": true
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S1492L04B02",
+  "welsh": "pa un yw’r mwya",
+  "welshQ": "pa un yw’r mwya?",
+  "english": "which one is the most",
+  "englishQ": "which one is the most?",
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "e6d4a4e8-07f4-425e-8cbd-a2ec255ebc6a",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un yw’r mwya",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "b059639d-f4e6-4725-ad2e-d1e32e14ace4",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un yw’r mwya",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S1493L03B04",
+  "welsh": "pa un fydd yn dod nesa",
+  "welshQ": "pa un fydd yn dod nesa?",
+  "english": "which one will be coming next",
+  "englishQ": "which one will be coming next?",
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "1697db88-cb9c-4f79-9d7a-c921afc6c378",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un fydd yn dod nesa",
+    "saysQ": false
+   },
+   {
+    "slot": "target2",
+    "audio_id": "d05a71a5-e93a-4a82-ae3c-cbeb640cc4dc",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "pa un fydd yn dod nesa",
+    "saysQ": false
+   }
+  ]
+ },
+ {
+  "course": "cym_sv2_for_eng",
+  "kind": "phrase",
+  "id": "S1513L01B01",
+  "welsh": "beth sy’n brifo mwyaf",
+  "welshQ": "beth sy’n brifo mwyaf?",
+  "english": "what hurts most",
+  "englishQ": "what hurts most?",
+  "takes": [
+   {
+    "slot": "target1",
+    "audio_id": "801d937f-e80f-4ae9-9a5b-1c91802d06b4",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "beth sy’n brifo mwyaf?",
+    "saysQ": true
+   },
+   {
+    "slot": "target2",
+    "audio_id": "00519be4-059c-4e3b-8e2b-f2d244fc21aa",
+    "voice": "legacy_import",
+    "origin": "human",
+    "owner": "cym_s_for_eng",
+    "text": "beth sy’n brifo mwyaf?",
+    "saysQ": true
+   }
+  ]
+ }
+]
