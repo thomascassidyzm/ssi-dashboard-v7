@@ -38,3 +38,18 @@ test('the stored tag file covers the 668 seeds and parses against the store', ()
   assert.strictEqual(Object.keys(t).filter((k) => k.startsWith('seeds#')).length, 668)
   assert.ok(Object.keys(t).filter((k) => k.startsWith('pod-1#')).length >= 231)
 })
+
+test('an edited, untagged turn breaks a shape transition', () => {
+  const tags = {}, rows = []
+  for (let scene = 1; scene <= 2; scene++) {
+    for (let step = 1; step <= 3; step++) {
+      const order = (scene - 1) * 3 + step
+      const text = `turn ${order}`
+      tags[`podx#${order}`] = { layer: '1', qrs: 'S', text, shape: `N${step === 2 ? 3 : step === 3 ? 2 : 1}.1` }
+      rows.push({ order, scene, speaker: 'A', text: step === 2 ? `${text} edited` : text })
+    }
+  }
+  const result = buildGrid({ seeds: [], pods: [{ id: 'podx', label: 'podx', kind: 'canonical', rows }] }, { tags }, store)
+  assert.strictEqual(result.untaggedTotal, 2)
+  assert.deepStrictEqual(result.flows.transitions, [], 'unknown intervening turns cannot establish an N1 → N2 handover')
+})
