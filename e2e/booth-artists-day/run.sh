@@ -91,7 +91,8 @@ curl -sf -o /dev/null "$SPA/r/$VOICE" || die "staging SPA at $SPA is not answeri
 # be sure the LIVE API agrees with it rather than serving a cached read from before it.
 sh e2e/booth-artists-day/wait-queue-fresh.sh "$API" "$VOICE" "$LINE_COUNT" || exit 1
 mkdir -p "$SHOTS"
-node_modules/.bin/playwright test --config=e2e/booth-artists-day/playwright.config.js
+# The spec is NAMED: the worker/CI test gate refuses a bare `playwright test` with rc=78 (2026-10-21).
+node_modules/.bin/playwright test --config=e2e/booth-artists-day/playwright.config.js e2e/booth-artists-day/artists-day.spec.js
 rc=$?
 echo "booth-artists-day-browser: rc=$rc, screenshots in $SHOTS"
 exit $rc

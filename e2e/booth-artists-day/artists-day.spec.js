@@ -88,7 +88,10 @@ async function refusedListed(page) {
   const items = page.locator('.redo-list li')
   const out = []
   for (let i = 0; i < await items.count(); i++) {
-    out.push({ text: (await items.nth(i).locator('.redo-text').textContent()).trim(), why: (await items.nth(i).locator('.redo-why').textContent()).trim() })
+    // The card says it in a few words ("Last take didn't save: no speech heard", job #806 / Aran
+    // 2026-10-15); the SERVER'S OWN reason is the title of that span.
+    const why = items.nth(i).locator('.redo-why')
+    out.push({ text: (await items.nth(i).locator('.redo-text').textContent()).trim(), why: (await why.getAttribute('title')) || (await why.textContent()).trim() })
   }
   return out
 }
@@ -142,13 +145,18 @@ async function assertInvariant(page, { pendingOrRefused }, where) {
 }
 
 // ── Listening to the booth's own meter to know where the fake mic is ────────
-// The meter tag reads "Mic live · -12 dB · room -60 dB" (or "−∞ dB"). The
+// The mic chip's title reads "Mic live · -12 dB · room -60 dB" (or "−∞ dB"). The
 // first number is the input peak this frame; that is how the spec knows which
 // segment of make-mic-wav.js the microphone is in.
 async function peakDb(page) {
-  const tag = page.locator('.meter-tag')
-  if (!(await tag.count())) return null
-  const t = await tag.first().textContent()
+  // Since the Prompter rebuild (#424) the dB reading is the TITLE of the one mic chip
+  // ([data-test=mic], words from recordist/mic-signal.js), not text in a .meter-tag. The chip's
+  // title is "Mic live · -12 dB · room -60 dB" while it is live; a chip that says "Too loud" has
+  // no number, and a too-loud reading is above LOUD by definition.
+  const chip = page.locator('[data-test=mic]')
+  if (!(await chip.count())) return null
+  const t = (await chip.first().getAttribute('title')) || ''
+  if (/^Too loud/.test(t)) return 0
   if (!/Mic live/.test(t)) return null
   const m = /Mic live · (−∞|-?\d+) dB/.exec(t)
   if (!m) return null
@@ -206,8 +214,15 @@ async function openBooth(page) {
 }
 async function begin(page) {
   // Auto-advance off: the spec taps, so it knows on which silence a line ends.
-  const auto = page.locator('.toggle-row input[type=checkbox]').first()
+  // Since the Prompter rebuild the switch lives in the "Lines & settings" sheet (hidden with v-show
+  // until the ready card's "Change" opens it), so open the sheet, untick, close it. uncheck() on the
+  // hidden input waited out the whole test timeout.
+  await page.locator('.setline-change').click()
+  const auto = page.locator('[data-test=settings] .toggle-row input[type=checkbox]').first()
+  await expect(auto).toBeVisible()
   if (await auto.isChecked()) await auto.uncheck()
+  await page.locator('[data-test=close-sheet]').click()
+  await expect(page.locator('[data-test=sheet]')).toBeHidden()
   await page.locator('.btn-begin').click()
   await expect(page.locator('.ctl-next')).toBeVisible()
   await expect(page.locator('.line-target')).toBeVisible()
@@ -319,15 +334,16 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   // Line 3, read loud, and stop.
   await readLoudAndStop(page, 'line 3')
   await serverSettled(page, 'after the first run')
-  await expect.poll(() => banner(page).then((b) => b && b.cls), { message: 'the refused banner', timeout: 30_000 }).toBe('refused')
-  const b3 = await banner(page)
-  expect(b3.text).toContain('1 take the server would not accept')
+  // A refused take has no banner of its own any more (job #806/#783): it is a row of the Re-record
+  // card, and the server's answer is the 'did not save' list. Nothing may be wrongly ticked meanwhile.
+  await expect.poll(() => refusedListed(page).then((l) => l.length), { message: 'the refused take listed as not saved', timeout: 30_000 }).toBe(1)
+  expect(await banner(page), 'a refused take raises no banner').toBeNull()
   const listed = await refusedListed(page)
   expect(listed).toHaveLength(1)
   expect(listed[0].text).toBe(LINES[1])
   expect(listed[0].why, "the server's own reason is on the card").toMatch(SERVER_REFUSAL)
   note(`server refused line 2: "${listed[0].why}"`)
-  expect(await bodyText(page)).toContain('1 did not save')
+  expect(await bodyText(page)).toContain('1 line did not save')
   expect(await counts(page)).toEqual({ recorded: 2, stillToRead: N - 2 })
   await assertInvariant(page, { pendingOrRefused: true }, 'step 3 · one refused')
   const shelf3 = await shelf(page)
@@ -390,14 +406,15 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   await expect.poll(() => counts(page), { message: 'everything recorded', timeout: 30_000 }).toEqual({ recorded: N, stillToRead: 0 })
   await assertInvariant(page, { pendingOrRefused: false }, 'step 5a · the whole queue read')
   await shot(page, 'everything-recorded')
-  // RELOAD with nothing owed: Start is disabled and says so, and names no line.
+  // RELOAD with nothing owed: there is NO Start to tap (job #203/#247 — the way on is "Back to home",
+  // and "Nothing left to record anywhere — thank you" says so), and no line is named.
   await page.reload()
   await expect.poll(() => counts(page), { message: 'the ready card after the all-done reload' }).toEqual({ recorded: N, stillToRead: 0 })
   await page.waitForTimeout(1500)
   const startDone = await startButton(page)
-  expect(startDone.disabled, 'Start is disabled when every line is recorded').toBe(true)
-  expect(startDone.text).toBe('Nothing left to read')
-  for (const t of LINES) expect(startDone.text).not.toContain(preview(t))
+  expect(startDone.text, 'no Start recording when every line is recorded').not.toBe(START_LABEL)
+  expect(await page.locator('[data-test=all-batches-done]').textContent()).toContain('Nothing left to record anywhere')
+  expect(await bodyText(page), 'no Start recording is offered').not.toContain('Start recording')
   expect(await bodyText(page)).toContain('Everything is recorded')
   expect(await tickShown(page)).toBe(true)
   await assertInvariant(page, { pendingOrRefused: false }, 'step 5a · all-done reload')
@@ -410,7 +427,7 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   await openBooth(page)
   await page.waitForTimeout(1500)
   expect(await counts(page)).toEqual({ recorded: N, stillToRead: 0 })
-  expect((await startButton(page)).disabled, 'Start still disabled after reopening the browser').toBe(true)
+  expect((await startButton(page)).text, 'still no Start recording after reopening the browser').not.toBe(START_LABEL)
   expect(await banner(page), 'no stale refusal banner after reopening the browser').toBeNull()
   expect(await bodyText(page)).not.toContain('would not accept')
   expect(await bodyText(page)).not.toContain('did not save')
