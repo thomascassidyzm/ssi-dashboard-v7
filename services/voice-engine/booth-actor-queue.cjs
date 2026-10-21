@@ -10,13 +10,15 @@
  *   3. After Pod 1 comes the 206 silent Southern seed sentences (released cym_s_for_eng seeds,
  *      Welsh target1 slot, Dan cast fill-only; job #180) — NOT the one-line guess-game pod
  *      (job #867), and not behind every later pod. Pods not in the queue are not offered.
- *   4. Then the health pod (Kai, 2026-10-21, job #457).
+ *   4. The health pod (cym_s_for_eng, job #457) was added to Dan's and Eleri's queues and then
+ *      TAKEN OUT again, Kai 2026-10-21 relaying Aran: artists must not see it for now. It was
+ *      never cast, so it has no lines in any booth. Do not add it back until Aran says.
  *
- * Eleri (cym_s_for_eng, human_eleri_cym_s), Kai 2026-10-21 (job #457): cym_sv2_for_eng is
- * PAUSED in her booth — her seed, LEGO and practice-phrase lines there (and the 'Pass 1 of 2'
- * batch card) are no longer shown. Nothing about her cym_sv2 casting changed and no take was
- * touched: this list only decides what her booth shows. To resume cym_sv2, delete her entry
- * (her booth goes back to exactly what it showed before) or add a cym_sv2 step to it.
+ * Eleri (cym_s_for_eng, human_eleri_cym_s), Kai 2026-10-21 (Aran's change of plan, job #467):
+ * Pod 1 (finished), then the NEW content, cym_sv2_for_eng, in its natural order — seed
+ * sentences, then LEGOs, then the practice-phrase batches — and only AFTER that the 206
+ * cym_s_for_eng seed sentences (kept, not deleted). Nothing about her casting changed and no
+ * take was touched: this list only decides what her booth shows.
  *
  * A voice listed here has an EXPLICIT, ORDERED queue. Every read of its booth (home summary,
  * whole list, pod link, step link) is cut to the lines of these steps and nothing else, and the
@@ -37,15 +39,13 @@ const ACTOR_QUEUES = {
   human_dan_cym_s: [
     { key: 'pod-1', title: 'Pod 1', courseCode: 'cym_s_for_eng', pod: 'pod-1' },
     { key: 'seeds', title: 'Seed sentences', courseCode: 'cym_s_for_eng', kind: 'seed', role: 'target1' },
-    // Kai, 2026-10-21 (job #457): the Southern health pod, proofread by Deborah; Dan reads its
-    // male parts (Wil Hughes, GP Patient), Eleri the female ones. Last, so Pod 1 and the seeds
-    // keep their place; a ?pod=health link opens it directly.
-    { key: 'health', title: 'Health', courseCode: 'cym_s_for_eng', pod: 'health' },
   ],
-  // Health straight after her finished Pod 1, so her Pod 1 link's Next is Health.
+  // Pod 1, then cym_sv2 in its natural order, then the 206 cym_s seeds (job #467).
   human_eleri_cym_s: [
     { key: 'pod-1', title: 'Pod 1', courseCode: 'cym_s_for_eng', pod: 'pod-1' },
-    { key: 'health', title: 'Health', courseCode: 'cym_s_for_eng', pod: 'health' },
+    { key: 'sv2-seeds', title: 'New course: seed sentences', courseCode: 'cym_sv2_for_eng', kind: 'seed' },
+    { key: 'sv2-legos', title: 'New course: LEGOs', courseCode: 'cym_sv2_for_eng', kind: 'lego' },
+    { key: 'sv2-phrases', title: 'New course: practice phrases', courseCode: 'cym_sv2_for_eng', kind: 'phrase' },
     { key: 'seeds', title: 'Seed sentences', courseCode: 'cym_s_for_eng', kind: 'seed', role: 'target2' },
   ],
 }
@@ -81,20 +81,31 @@ function scopeQueue(voiceId, queue, queues = ACTOR_QUEUES) {
   const total = tally ? tally.reduce((n, t) => n + t.total, 0) : lines.length
   const recorded = tally ? tally.reduce((n, t) => n + t.recorded, 0) : lines.filter((l) => l.recorded).length
   const inPods = (p) => steps.some((s) => s.pod && s.courseCode === p.courseCode && (p.podSlug === s.pod || p.podId === `${s.courseCode}:${s.pod}`))
-  return {
+  // The practice-phrase batch plan is sent only to an actor whose queue has a phrase step; the
+  // non-enumerable readers (openPhraseBatch, allPhraseLines) do not survive the spread, so
+  // they are carried over by hand.
+  const keepPhrases = steps.some((s) => s.kind === 'phrase')
+  const scoped = {
     ...queue,
     lines,
     tally,
     total,
     recorded,
     remaining: total - recorded,
-    phrases: null,
-    phraseBatches: null,
-    openPhraseBatch: null,
+    phrases: keepPhrases ? queue.phrases || null : null,
+    phraseBatches: keepPhrases ? queue.phraseBatches || null : null,
+    openPhraseBatch: keepPhrases ? queue.openPhraseBatch || null : null,
     notReady: (queue.notReady || []).filter(inPods),
     handedOn: (queue.handedOn || []).filter(inPods),
     actorQueue: true,
   }
+  if (keepPhrases && queue.allPhraseLines) {
+    Object.defineProperty(scoped, 'allPhraseLines', { enumerable: false, configurable: true, value: queue.allPhraseLines })
+  }
+  if (keepPhrases && queue.openPhraseBatch) {
+    Object.defineProperty(scoped, 'openPhraseBatch', { enumerable: false, configurable: true, value: queue.openPhraseBatch })
+  }
+  return scoped
 }
 
 /** The step a link names: ?step=<key>, else the step holding ?pod=<slug or id>, else null. */

@@ -54,34 +54,44 @@ test('the seeds step link: its own lines, and Pod 1 is offered back while it sti
   assert.strictEqual(q.nextStepFor(DAN, allRead, step).nextPod, null)
 })
 
-test('job #457: the health pod is in his queue after the seeds, and a ?pod=health link opens it', () => {
+test('job #467: the health pod is in nobody\'s queue — Dan\'s booth is Pod 1 then the seeds', () => {
   const built = dansQueue()
   built.lines.push(pod('h1', 'health', false), pod('h2', 'health', true))
   const scoped = q.scopeQueue(DAN, built)
-  assert.strictEqual(scoped.lines.filter((l) => l.podSlug === 'health').length, 2)
-  const step = q.stepForLink(DAN, { course: 'cym_s_for_eng', pod: 'health' })
-  assert.strictEqual(step && step.key, 'health')
-  const seedsStep = q.stepForLink(DAN, { course: 'cym_s_for_eng', step: 'seeds' })
-  const allSeedsRead = scoped.lines.map((l) => (l.kind === 'seed' || l.podSlug === 'pod-1' ? { ...l, recorded: true } : l))
-  assert.strictEqual(q.nextStepFor(DAN, allSeedsRead, seedsStep).nextPod.step, 'health')
+  assert.strictEqual(scoped.lines.filter((l) => l.podSlug === 'health').length, 0)
+  assert.strictEqual(q.stepForLink(DAN, { course: 'cym_s_for_eng', pod: 'health' }), null)
+  assert.deepStrictEqual(q.stepsFor(DAN).map((s) => s.key), ['pod-1', 'seeds'])
+  assert.ok(!q.stepsFor('human_eleri_cym_s').some((s) => s.pod === 'health'))
 })
 
-test("job #457: Eleri's booth pauses cym_sv2 — Pod 1, Health, then her target2 seeds; Health follows Pod 1", () => {
+test("job #467: Eleri's booth is Pod 1, then cym_sv2 seeds/LEGOs/phrases in order, then the 206 cym_s seeds; no health", () => {
   const ELERI = 'human_eleri_cym_s'
   const lines = []
   for (let i = 0; i < 141; i++) lines.push(pod(`p${i}`, 'pod-1', true))
-  for (let i = 0; i < 219; i++) lines.push(pod(`h${i}`, 'health', false))
+  for (let i = 0; i < 5; i++) lines.push(pod(`h${i}`, 'health', false))
   for (let n = 1; n <= 206; n++) lines.push({ ...seed(n), role: 'target2' })
   for (let n = 1; n <= 762; n++) lines.push({ ...seed(n, n <= 699, 'cym_sv2_for_eng'), role: 'target2' })
-  lines.push({ id: 'l1', kind: 'lego', role: 'target2', courseCode: 'cym_sv2_for_eng', recorded: true })
+  lines.push({ id: 'l1', kind: 'lego', role: 'target2', courseCode: 'cym_sv2_for_eng', recorded: false })
   lines.push({ id: 'ph1', kind: 'phrase', role: 'target2', courseCode: 'cym_sv2_for_eng', recorded: false })
-  const scoped = q.scopeQueue(ELERI, { lines, phrases: { pass: 1 }, notReady: [], handedOn: [] })
-  assert.ok(scoped.lines.every((l) => l.courseCode === 'cym_s_for_eng'), 'no cym_sv2 line is shown')
-  assert.strictEqual(scoped.phrases, null, 'no cym_sv2 practice-phrase batch card')
-  assert.strictEqual(scoped.total, 141 + 219 + 206)
+  const open = () => 'batch'
+  const queue = { lines, phrases: { pass: 1 }, phraseBatches: [{ n: 1 }], notReady: [], handedOn: [] }
+  Object.defineProperty(queue, 'openPhraseBatch', { enumerable: false, value: open })
+  const scoped = q.scopeQueue(ELERI, queue)
+  assert.strictEqual(scoped.lines.filter((l) => l.podSlug === 'health').length, 0, 'no health line')
+  assert.strictEqual(scoped.lines.filter((l) => l.courseCode === 'cym_sv2_for_eng').length, 764)
+  assert.deepStrictEqual(scoped.phrases, { pass: 1 }, 'the practice-phrase batch card stays')
+  assert.strictEqual(scoped.openPhraseBatch, open, 'the batch opener survives the copy')
+  assert.strictEqual(scoped.total, 141 + 206 + 764)
+  assert.deepStrictEqual(q.stepsFor(ELERI).map((s) => s.key), ['pod-1', 'sv2-seeds', 'sv2-legos', 'sv2-phrases', 'seeds'])
   const done = q.nextStepFor(ELERI, scoped.lines, q.stepForLink(ELERI, { course: 'cym_s_for_eng', pod: 'pod-1' }))
-  assert.strictEqual(done.nextPod.step, 'health')
-  assert.strictEqual(done.nextPod.remaining, 219)
+  assert.strictEqual(done.nextPod.step, 'sv2-seeds')
+  assert.strictEqual(done.nextPod.remaining, 63)
+})
+
+test('a voice without a phrase step still gets no phrase plan (Dan)', () => {
+  const scoped = q.scopeQueue(DAN, { ...dansQueue(), phrases: { pass: 1 }, phraseBatches: [{ n: 1 }] })
+  assert.strictEqual(scoped.phrases, null)
+  assert.strictEqual(scoped.phraseBatches, null)
 })
 
 test('a voice with no controlled queue is untouched', () => {
