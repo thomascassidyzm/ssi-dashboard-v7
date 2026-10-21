@@ -201,7 +201,7 @@ async function waitForSustainedSilence(page, what, ms = 25_000) {
 }
 
 // ── Driving the booth as he does ────────────────────────────────────────────
-async function openBooth(page) {
+async function openBooth(page, { finishedOk = false } = {}) {
   await page.goto(`${BASE}/r/${VOICE_ID}`)
   // .rc-hello on the old booth home, .bh-h1 on the Prompter rebuild (#424) that staging runs ahead of main.
   await expect(page.locator('.rc-hello, .bh-h1').first()).toContainText(VOICE_NAME.split(' (')[0])
@@ -210,8 +210,10 @@ async function openBooth(page) {
   const upNext = page.locator('[data-test=up-next-start]')
   // Only tap what is there: a finished home draws .bh-hero-done with no Up next button to wait on.
   if (await upNext.count()) await upNext.click()
-  // A finished home (everything recorded) has no ready card to land on: it says so itself.
-  await expect.poll(async () => (await counts(page)) !== null || (await page.locator('.bh-hero-done').count()) > 0, { message: 'the ready card, or the finished home' }).toBe(true)
+  // A finished home (everything recorded) has no ready card to land on: it says so itself — but only
+  // the caller that KNOWS everything is recorded may accept it (the home draws it transiently while
+  // the queue is still loading, so a fresh booth must keep waiting for the ready card).
+  await expect.poll(async () => (await counts(page)) !== null || (finishedOk && (await page.locator('.bh-hero-done').count()) > 0), { message: 'the ready card' + (finishedOk ? ', or the finished home' : '') }).toBe(true)
 }
 async function begin(page) {
   // Auto-advance off: the spec taps, so it knows on which silence a line ends.
@@ -425,7 +427,7 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   await ctx.close()
   ctx = await openBrowser()
   page = ctx.pages()[0] || await ctx.newPage()
-  await openBooth(page)
+  await openBooth(page, { finishedOk: true })
   await page.waitForTimeout(1500)
   // A fresh open with nothing owed lands on the finished home (Up next has nothing; every pod is
   // ticked off), never on a Start: no 'Up next' button, no 'Start recording', POD-1 under Finished.
