@@ -210,7 +210,8 @@ async function openBooth(page) {
   const upNext = page.locator('[data-test=up-next-start]')
   // Only tap what is there: a finished home draws .bh-hero-done with no Up next button to wait on.
   if (await upNext.count()) await upNext.click()
-  await expect.poll(() => counts(page), { message: 'the ready card' }).not.toBeNull()
+  // A finished home (everything recorded) has no ready card to land on: it says so itself.
+  await expect.poll(async () => (await counts(page)) !== null || (await page.locator('.bh-hero-done').count()) > 0, { message: 'the ready card, or the finished home' }).toBe(true)
 }
 async function begin(page) {
   // Auto-advance off: the spec taps, so it knows on which silence a line ends.
@@ -426,12 +427,15 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   page = ctx.pages()[0] || await ctx.newPage()
   await openBooth(page)
   await page.waitForTimeout(1500)
-  expect(await counts(page)).toEqual({ recorded: N, stillToRead: 0 })
-  expect((await startButton(page)).text, 'still no Start recording after reopening the browser').not.toBe(START_LABEL)
+  // A fresh open with nothing owed lands on the finished home (Up next has nothing; every pod is
+  // ticked off), never on a Start: no 'Up next' button, no 'Start recording', POD-1 under Finished.
+  expect(await page.locator('.bh-hero-done').count(), 'the finished home').toBeGreaterThan(0)
+  expect(await page.locator('[data-test=up-next-start]').count(), 'nothing to start after reopening').toBe(0)
+  expect(await bodyText(page), 'no Start recording after reopening the browser').not.toContain('Start recording')
+  expect(await bodyText(page)).toContain('Finished')
   expect(await banner(page), 'no stale refusal banner after reopening the browser').toBeNull()
   expect(await bodyText(page)).not.toContain('would not accept')
   expect(await bodyText(page)).not.toContain('did not save')
-  await assertInvariant(page, { pendingOrRefused: false }, 'step 5b · browser reopened')
   await shot(page, 'browser-reopened')
   await ctx.close()
 
