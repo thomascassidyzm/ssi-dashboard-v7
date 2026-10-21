@@ -106,7 +106,13 @@ async function startButton(page) {
 // The Start label shows the first 34 characters of the line (RecordistRoom
 // firstLinePreview), so a line is named on it by its prefix.
 const preview = (line) => line.slice(0, 34)
-const startLabelFor = (line) => `Start recording — ${preview(line)}${line.length > 34 ? '…' : ''}`
+// Since the Prompter rebuild (80291057b, #419 Option A, Aran 2026-10-14) Start reads just "Start
+// recording" and the line it will open on is drawn big ABOVE it (data-test="ready-line").
+const START_LABEL = 'Start recording'
+async function readyLine(page) {
+  const el = page.locator('[data-test="ready-line"]')
+  return (await el.count()) ? (await el.first().textContent()).trim() : null
+}
 // THE SWITCH TOM'S BOOTH HAD ON. Until 2026-09-12 the ready card offered
 // "Re-read lines I've already recorded", remembered per artist, and with it on
 // the run started at the top of the queue whether or not that line was
@@ -293,7 +299,8 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   expect(await counts(page)).toEqual({ recorded: 0, stillToRead: N })
   expect(await banner(page)).toBeNull()
   await assertInvariant(page, { pendingOrRefused: false }, 'step 1 · fresh booth')
-  expect(await startButton(page)).toEqual({ text: startLabelFor(LINES[0]), disabled: false })
+  expect(await startButton(page)).toEqual({ text: START_LABEL, disabled: false })
+  expect(await readyLine(page), 'the first line is shown above Start').toContain(preview(LINES[0]))
   const rereadOffered = await tickRereadIfOffered(page)
   note(rereadOffered ? 'the old re-read switch is offered — ticked, as Tom\'s booth had it' : 'no re-read switch on the ready card')
   await shot(page, 'fresh-booth')
@@ -360,8 +367,10 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   // served again as a thing to read).
   const startAfterReload = await startButton(page)
   expect(startAfterReload.disabled, 'Start is live with lines still to read').toBe(false)
-  for (const t of LINES.slice(0, 3)) expect(startAfterReload.text, `Start never names a recorded line${rereadOffered ? ' (re-read switch ticked)' : ''}`).not.toContain(preview(t))
-  expect(startAfterReload.text).toBe(startLabelFor(LINES[3]))
+  expect(startAfterReload.text).toBe(START_LABEL)
+  const readyAfterReload = await readyLine(page)
+  for (const t of LINES.slice(0, 3)) expect(readyAfterReload, `the line shown above Start is never a recorded one${rereadOffered ? ' (re-read switch ticked)' : ''}`).not.toContain(preview(t))
+  expect(readyAfterReload).toContain(preview(LINES[3]))
   await begin(page)
   expect(await currentLine(page), 'the stage opens on line 4').toBe(LINES[3])
   expect(LINES.slice(0, 3)).not.toContain(await currentLine(page))
