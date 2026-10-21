@@ -8,6 +8,7 @@ const fs = require('fs-extra')
 const { createServer } = require('http')
 const { Server } = require('socket.io')
 const createLogger = require('./shared/logger.cjs')
+const speakabilityGrid = require('./shared/speakability-grid.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
 const { isPunctuationOnly } = require('./shared/text-classification.cjs')
 const { identity: buildIdentity } = require('./shared/build-identity.cjs')
@@ -5166,6 +5167,7 @@ app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
     const { data, error } = await sb.from('listening_pod_sentences').update(patch).eq('id', id).select('id, target_text, known_text').maybeSingle()
     if (error) throw error
     if (!data) return res.status(404).json({ error: `sentence not found: ${id}` })
+    speakabilityGrid.invalidate()
     res.json({ ok: true, sentence: data })
   } catch (e) {
     logger.error('[PodSentence] patch error:', e?.message || e)
@@ -5286,6 +5288,7 @@ app.patch('/api/admin/canonical-pods/:id', async (req, res) => {
     const { data, error } = await sb.from('canonical_pod_scenarios').update(patch).eq('id', id).select('id, english_text, speaker, author_notes').maybeSingle()
     if (error) throw error
     if (!data) return res.status(404).json({ error: `canonical line not found: ${id}` })
+    speakabilityGrid.invalidate()
     res.json({ ok: true, line: data })
   } catch (e) {
     logger.error('[CanonicalPods] patch error:', e?.message || e)
@@ -5314,6 +5317,20 @@ app.get('/api/canonical-seeds', async (req, res) => {
   }
 })
 
+// GET /api/admin/speakability-grid — the Layers × shapes page (Metagraph's neighbour). GENERATED
+// from the stored tags + the live seeds and pod lines on every read (30 s cache, dropped by the
+// pod-text and seed write routes below), so a changed or new line shows as untagged, never guessed.
+// Other pod-text writers (generator, recordist edit) need no wiring: the read is live.
+app.get('/api/admin/speakability-grid', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
+  try {
+    res.json(await speakabilityGrid.loadGrid(supabaseClient.getClient(), { fresh: req.query.fresh === '1' }))
+  } catch (e) {
+    logger.error('[SpeakabilityGrid] error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+})
+
 // PATCH /api/admin/canonical-seeds/:id — edit a canonical seed's English source.
 // Admin-gated. Updates source_text only; re-translation is a separate pipeline
 // step (editing the canonical does not auto-propagate to course translations).
@@ -5331,6 +5348,7 @@ app.patch('/api/admin/canonical-seeds/:id', async (req, res) => {
       .select('id, seed_id, source_text').maybeSingle()
     if (error) throw error
     if (!data) return res.status(404).json({ error: `seed not found: ${id}` })
+    speakabilityGrid.invalidate()
     res.json({ ok: true, seed: { id: data.id, seed_id: data.seed_id, source: data.source_text } })
   } catch (e) {
     logger.error('[CanonicalSeeds] patch error:', e?.message || e)

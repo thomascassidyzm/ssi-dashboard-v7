@@ -293,7 +293,9 @@ export const SECTIONS = [
       { label: 'Script Lab', to: '/canonical/scripts', match: ['@ScriptLab', '@ScriptLabScript'], description: "The canonical English master scripts — edited here, and nowhere else." },
       // The graph the scripts are walks over (Tom asked for it by name,
       // 2026-08-31); it was reachable only from a button inside the Script Lab.
-      { label: 'Metagraph', to: '/canonical/metagraph', match: ['@Metagraph'], description: 'The shape the scripts are walks over — what the learner has to survive, in delivery order.' }
+      { label: 'Metagraph', to: '/canonical/metagraph', match: ['@Metagraph'], description: 'The shape the scripts are walks over — what the learner has to survive, in delivery order.' },
+      // Generated from stored tags + the live seeds and pod lines (Tom, 2026-10-21).
+      { label: 'Layers × shapes', to: '/canonical/layers-shapes', match: ['@LayersShapes'], description: 'Speakability layers × Q/R/S × the metagraph shapes — the empty cells, the gaps and the flows, regenerated from the live pods.' }
     ]
   },
   {
