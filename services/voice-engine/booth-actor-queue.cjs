@@ -12,6 +12,12 @@
  *      (job #867), and not behind every later pod. Pods not in the queue are not offered.
  *   4. Then the health pod (Kai, 2026-10-21, job #457).
  *
+ * Eleri (cym_s_for_eng, human_eleri_cym_s), Kai 2026-10-21 (job #457): cym_sv2_for_eng is
+ * PAUSED in her booth — her seed, LEGO and practice-phrase lines there (and the 'Pass 1 of 2'
+ * batch card) are no longer shown. Nothing about her cym_sv2 casting changed and no take was
+ * touched: this list only decides what her booth shows. To resume cym_sv2, delete her entry
+ * (her booth goes back to exactly what it showed before) or add a cym_sv2 step to it.
+ *
  * A voice listed here has an EXPLICIT, ORDERED queue. Every read of its booth (home summary,
  * whole list, pod link, step link) is cut to the lines of these steps and nothing else, and the
  * practice-phrase plan is not sent at all. A voice NOT listed here keeps the booth it had: this
@@ -35,6 +41,12 @@ const ACTOR_QUEUES = {
     // male parts (Wil Hughes, GP Patient), Eleri the female ones. Last, so Pod 1 and the seeds
     // keep their place; a ?pod=health link opens it directly.
     { key: 'health', title: 'Health', courseCode: 'cym_s_for_eng', pod: 'health' },
+  ],
+  // Health straight after her finished Pod 1, so her Pod 1 link's Next is Health.
+  human_eleri_cym_s: [
+    { key: 'pod-1', title: 'Pod 1', courseCode: 'cym_s_for_eng', pod: 'pod-1' },
+    { key: 'health', title: 'Health', courseCode: 'cym_s_for_eng', pod: 'health' },
+    { key: 'seeds', title: 'Seed sentences', courseCode: 'cym_s_for_eng', kind: 'seed', role: 'target2' },
   ],
 }
 

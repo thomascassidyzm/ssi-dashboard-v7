@@ -66,6 +66,24 @@ test('job #457: the health pod is in his queue after the seeds, and a ?pod=healt
   assert.strictEqual(q.nextStepFor(DAN, allSeedsRead, seedsStep).nextPod.step, 'health')
 })
 
+test("job #457: Eleri's booth pauses cym_sv2 — Pod 1, Health, then her target2 seeds; Health follows Pod 1", () => {
+  const ELERI = 'human_eleri_cym_s'
+  const lines = []
+  for (let i = 0; i < 141; i++) lines.push(pod(`p${i}`, 'pod-1', true))
+  for (let i = 0; i < 219; i++) lines.push(pod(`h${i}`, 'health', false))
+  for (let n = 1; n <= 206; n++) lines.push({ ...seed(n), role: 'target2' })
+  for (let n = 1; n <= 762; n++) lines.push({ ...seed(n, n <= 699, 'cym_sv2_for_eng'), role: 'target2' })
+  lines.push({ id: 'l1', kind: 'lego', role: 'target2', courseCode: 'cym_sv2_for_eng', recorded: true })
+  lines.push({ id: 'ph1', kind: 'phrase', role: 'target2', courseCode: 'cym_sv2_for_eng', recorded: false })
+  const scoped = q.scopeQueue(ELERI, { lines, phrases: { pass: 1 }, notReady: [], handedOn: [] })
+  assert.ok(scoped.lines.every((l) => l.courseCode === 'cym_s_for_eng'), 'no cym_sv2 line is shown')
+  assert.strictEqual(scoped.phrases, null, 'no cym_sv2 practice-phrase batch card')
+  assert.strictEqual(scoped.total, 141 + 219 + 206)
+  const done = q.nextStepFor(ELERI, scoped.lines, q.stepForLink(ELERI, { course: 'cym_s_for_eng', pod: 'pod-1' }))
+  assert.strictEqual(done.nextPod.step, 'health')
+  assert.strictEqual(done.nextPod.remaining, 219)
+})
+
 test('a voice with no controlled queue is untouched', () => {
   const built = dansQueue()
   assert.strictEqual(q.scopeQueue('human_aran_cym_n', built), built)
