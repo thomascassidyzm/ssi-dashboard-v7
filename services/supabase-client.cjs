@@ -30,12 +30,21 @@ if (!supabaseUrl || !supabaseKey) {
   logger.warn('Missing SUPABASE_URL or SUPABASE_SERVICE_KEY')
 }
 
+// A database/storage call that never answers must fail, not hang its request
+// forever: on 2026-10-22 the staging API went silent mid-filing (job #223) with
+// no timeout anywhere on this client. 60s matches the 60s per-query cap in
+// production-api.cjs; a caller that passes its own signal keeps it.
+const SUPABASE_FETCH_TIMEOUT_MS = 60000
+function withTimeout(baseFetch) {
+  return (input, init = {}) => baseFetch(input, init.signal ? init : { ...init, signal: AbortSignal.timeout(SUPABASE_FETCH_TIMEOUT_MS) })
+}
+
 // Service role client - bypasses RLS for server-side admin operations.
 // vaultFetch puts recordist emails back into voice_config / policy voices on
 // read — they are kept out of the anon-readable JSON (recordist-email-vault.cjs).
 const supabase = supabaseUrl && supabaseKey
   ? createClient(supabaseUrl, supabaseKey, {
-      global: { fetch: vaultFetch(globalThis.fetch, { logger }) },
+      global: { fetch: withTimeout(vaultFetch(globalThis.fetch, { logger })) },
       auth: {
         persistSession: false,
         autoRefreshToken: false,
