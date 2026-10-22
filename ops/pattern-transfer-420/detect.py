@@ -236,7 +236,7 @@ cov['D9_legos_scanned'] = len(legos)
 write('D9_bare_verb_over_infinitive', ['seed', 'lego', 'new', 'english', 'target', 'seed_english', 'seed_target', 'phrases'], rows)
 
 # ---------------- D10 annotation that gets read aloud ----------------
-ANN = re.compile(r"[()\[\]{}+*_~^<>|#=]|/(?!\d)|\b(formal|informal|polite|masc|fem|plural|singular|sg|pl|subj|subjunctive|lit\.?|literally)\b")
+ANN = re.compile(r"[()\[\]{}+*_~^<>|#=]|/(?!\d)|\b(formal|informal|polite|masc|fem|plural|singular|sg|pl|subj|subjunctive|literally)\b")
 rows = []
 for s in seeds:
     for side in ('known_text', 'target_text'):

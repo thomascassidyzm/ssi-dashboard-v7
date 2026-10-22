@@ -20,3 +20,10 @@ Calibration (known positives found before any other course was counted):
 - D10 finds fin's live `(formal)` tags on S0639–S0660 (K11).
 - D11b finds ita S0214L01's presentation with `amico` in the narration.
 - D12 shows ita's applied conditional-perfect rows (S0544, S0589).
+
+Presentation text (D10 presentation rows, D11a/b/c) was fetched 2026-10-22 ~18:00Z per new LEGO from
+`GET /api/production/<course>/presentation/<legoId>`. That route answers "JSON object requested,
+multiple (or no) rows returned" for a LEGO holding more than one presentation clip, so intro text is
+UNREADABLE through any read route for fra_for_eng (1,503 of 1,531 new LEGOs) and deu_for_eng (1,381 of
+1,390), and for 219 of por_for_eng's — the same gap quality census stage 2 hit. `D10_summary.json`
+separates spoken rows (seed / LEGO / phrase / presentation text) from display-only component tiles.
