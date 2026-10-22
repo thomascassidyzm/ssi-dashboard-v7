@@ -35,6 +35,10 @@ const DIALECT_NAMES = {
   // Swiss German — Zürich (Züritüütsch), Dieth-lite spelling. See
   // docs/course-optimization/swiss-german-convention.md. Distinct product from deu_at.
   'deu_ch': 'Swiss German',
+  // West Frisian (Frysk, ISO 639-3 fry). The CSV carries it as 'fy' with no
+  // database_code, so without this {target} became the raw code "fry". English
+  // speakers call the language "Frisian"; Saterland/North Frisian would be stq/frr.
+  'fry': 'Frisian',
 };
 
 // Deprecated: callers should use languageCodeService.getName() directly.
