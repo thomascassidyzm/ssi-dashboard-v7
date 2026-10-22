@@ -1,0 +1,990 @@
+detector	seed	row	verdict	note
+D1	S0015	S0015	NOT	1st occurrence; whole chunk quero que fales - conforms
+D1	S0073	S0073	NOT	not the pattern: got more to learn
+D1	S0075	S0075	NOT	not the pattern: got more to learn
+D1	S0149	S0149	NOT	hope|espero + clause acabes; que in no LEGO; conforms
+D1	S0169	S0169	NOT	2nd occurrence; whole chunk queres que eu faça - conforms
+D1	S0170	S0170	REAL	whole chunk after 2nd occurrence; cut head/que/clause
+D1	S0171	S0171	REAL	whole chunk after 2nd occurrence; cut head/que/clause
+D1	S0203	S0203	NOT	pedir para + infinitive; no que-subjunctive in target
+D1	S0204	S0204	REAL	whole chunk after 2nd occurrence; cut head/que/clause
+D1	S0237	S0237	REAL	whole chunk after 2nd occurrence; cut head/que/clause
+D1	S0238	S0238	REAL	whole chunk after 2nd occurrence (fin S0238 analogue)
+D1	S0246	S0246	REAL	whole chunk after 2nd occurrence; cut head/que/clause
+D1	S0249	S0249	REAL	whole chunk after 2nd occurrence; cut head/que/clause
+D1	S0291	S0291	NOT	same subject: espero conseguir, infinitive
+D1	S0292	S0292	REAL	whole chunk espero que consigas after 2nd occurrence
+D1	S0346	S0346	NOT	que+clause que ela soubesse; head from earlier; Italian shape
+D1	S0412	S0412	NOT	deixá-los + infinitive; no que-subjunctive
+D1	S0419	S0419	REAL	clause only; like them|gostem deles, subjunctive with no context (K40)
+D1	S0427	S0427	REAL	que taught twice: não gostariam que + que achasses overlap
+D1	S0432	S0432	REAL	English that you ask over bare perguntes; que untaught
+D1	S0481	S0481	NOT	relative clause, not the pattern
+D1	S0557	S0557	REAL	head carries que+eles+não; clause gloss repeats wouldn't
+D1	S0587	S0587	REAL	English that we had over bare comêssemos (no que)
+D1	S0625	S0625	NOT	want something to drink; not the pattern
+D1	S0668	S0668	REAL	whole chunk espero que vocês consigam ir; plus I hope dup
+D1+	S0151	S0151	NOT	missed by regex: esperava que acontecesse; head|clause, conforms
+D2	S0007	S0007L02	NOT	relative que (who/which); not the that-conjunction
+D2	S0008	S0008L02	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0012	S0012L03	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0015	S0015L02	NOT	completive que travels with head; majority shape
+D2	S0021	S0021L01	NOT	interrogative é que; not the that-conjunction
+D2	S0022	S0022L02	NOT	relative que (who/which); not the that-conjunction
+D2	S0026	S0026L02	NOT	completive que travels with head; majority shape
+D2	S0028	S0028L02	NOT	fixed conjunction; not the that-conjunction
+D2	S0040	S0040L01	NOT	interrogative é que; not the that-conjunction
+D2	S0042	S0042L02	NOT	comparative/relative do que; not the that-conjunction
+D2	S0047	S0047L01	NOT	completive que travels with head; majority shape
+D2	S0057	S0057L02	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0059	S0059L03	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0067	S0067L01	NOT	interrogative é que; not the that-conjunction
+D2	S0068	S0068L01	NOT	interrogative é que; not the that-conjunction
+D2	S0072	S0072L01	NOT	completive que travels with head; majority shape
+D2	S0077	S0077L02	NOT	relative que (who/which); not the that-conjunction
+D2	S0078	S0078L02	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0079	S0079L01	NOT	interrogative é que; not the that-conjunction
+D2	S0081	S0081L01	NOT	interrogative é que; not the that-conjunction
+D2	S0083	S0083L02	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0084	S0084L02	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0087	S0087L02	NOT	relative que (who/which); not the that-conjunction
+D2	S0088	S0088L02	NOT	relative que (who/which); not the that-conjunction
+D2	S0089	S0089L01	NOT	completive que travels with head; majority shape
+D2	S0097	S0097L02	NOT	fixed conjunction; not the that-conjunction
+D2	S0099	S0099L02	NOT	interrogative é que; not the that-conjunction
+D2	S0102	S0102L01	NOT	completive que travels with head; majority shape
+D2	S0105	S0105L01	NOT	fixed conjunction; not the that-conjunction
+D2	S0113	S0113L01	NOT	interrogative é que; not the that-conjunction
+D2	S0116	S0116L03	NOT	relative que (who/which); not the that-conjunction
+D2	S0117	S0117L02	NOT	comparative/relative do que; not the that-conjunction
+D2	S0117	S0117L03	NOT	relative que (who/which); not the that-conjunction
+D2	S0118	S0118L01	NOT	comparative/relative do que; not the that-conjunction
+D2	S0120	S0120L01	NOT	head+que (subjunctive clause follows) - majority shape
+D2	S0127	S0127L01	NOT	fixed conjunction; not the that-conjunction
+D2	S0132	S0132L03	NOT	comparative/relative do que; not the that-conjunction
+D2	S0132	S0132L04	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0136	S0136L01	NOT	completive que travels with head; majority shape
+D2	S0139	S0139L02	REAL	que+clause; course majority puts que with head (lamento que)
+D2	S0140	S0140L01	REAL	que+clause; course majority puts que with head (lamento que)
+D2	S0143	S0143L02	NOT	comparative/relative do que; not the that-conjunction
+D2	S0144	S0144L02	NOT	comparative/relative do que; not the that-conjunction
+D2	S0146	S0146L03	NOT	comparative/relative do que; not the that-conjunction
+D2	S0154	S0154L01	NOT	interrogative é que; not the that-conjunction
+D2	S0160	S0160L01	NOT	interrogative é que; not the that-conjunction
+D2	S0163	S0163L01	NOT	completive que travels with head; majority shape
+D2	S0169	S0169L01	NOT	completive que travels with head; majority shape
+D2	S0170	S0170L01	NOT	completive que travels with head; majority shape
+D2	S0171	S0171L01	NOT	completive que travels with head; majority shape
+D2	S0204	S0204L04	NOT	completive que travels with head; majority shape
+D2	S0213	S0213L01	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0231	S0231L02	NOT	relative que (who/which); not the that-conjunction
+D2	S0232	S0232L02	NOT	relative que (who/which); not the that-conjunction
+D2	S0233	S0233L03	NOT	relative que (who/which); not the that-conjunction
+D2	S0234	S0234L04	NOT	relative que (who/which); not the that-conjunction
+D2	S0235	S0235L02	NOT	completive que travels with head; majority shape
+D2	S0236	S0236L02	NOT	completive que travels with head; majority shape
+D2	S0237	S0237L01	NOT	completive que travels with head; majority shape
+D2	S0238	S0238L01	NOT	completive que travels with head; majority shape
+D2	S0246	S0246L02	NOT	completive que travels with head; majority shape
+D2	S0249	S0249L01	NOT	completive que travels with head; majority shape
+D2	S0252	S0252L01	NOT	interrogative é que; not the that-conjunction
+D2	S0255	S0255L01	NOT	completive que travels with head; majority shape
+D2	S0286	S0286L02	NOT	relative que (who/which); not the that-conjunction
+D2	S0287	S0287L02	NOT	relative que (who/which); not the that-conjunction
+D2	S0288	S0288L01	NOT	relative que (who/which); not the that-conjunction
+D2	S0292	S0292L02	NOT	completive que travels with head; majority shape
+D2	S0297	S0297L01	NOT	relative que (who/which); not the that-conjunction
+D2	S0306	S0306L01	NOT	relative que (who/which); not the that-conjunction
+D2	S0342	S0342L01	NOT	relative que (who/which); not the that-conjunction
+D2	S0346	S0346L01	REAL	que+clause; minority shape (right by Italian logic)
+D2	S0347	S0347L02	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0348	S0348L01	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0352	S0352L01	NOT	fixed conjunction; not the that-conjunction
+D2	S0355	S0355L01	NOT	relative que (who/which); not the that-conjunction
+D2	S0364	S0364L01	NOT	completive que travels with head; majority shape
+D2	S0366	S0366L01	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0370	S0370L01	NOT	relative que (who/which); not the that-conjunction
+D2	S0374	S0374L01	NOT	completive que travels with head; majority shape
+D2	S0421	S0421L02	UNSURE	head+que but English they already know lacks that
+D2	S0427	S0427L02	REAL	que+clause overlapping L03 não gostariam que
+D2	S0427	S0427L03	UNSURE	head+que but English lacks that; overlaps L02
+D2	S0444	S0444L04	UNSURE	head+que, English they thought lacks that; achei bare elsewhere
+D2	S0449	S0449L02	NOT	completive que travels with head; majority shape
+D2	S0451	S0451L01	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0452	S0452L01	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0470	S0470L01	NOT	relative que (who/which); not the that-conjunction
+D2	S0480	S0480L01	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0481	S0481L02	NOT	relative que (who/which); not the that-conjunction
+D2	S0482	S0482L04	NOT	head+que (subjunctive clause follows) - majority shape
+D2	S0485	S0485L03	NOT	comparative/relative do que; not the that-conjunction
+D2	S0486	S0486L03	UNSURE	I think|eu acho que vs S0047 I think that|acho que
+D2	S0492	S0492L03	NOT	que inside chunk; OTHER: English lacks is (é)
+D2	S0493	S0493L01	NOT	interrogative é que; not the that-conjunction
+D2	S0494	S0494L02	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0497	S0497L03	NOT	completive que travels with head; majority shape
+D2	S0500	S0500L04	NOT	interrogative é que; not the that-conjunction
+D2	S0509	S0509L02	NOT	head+que; not-new restatement of S0364L01 (see D6b)
+D2	S0521	S0521L04	NOT	que inside chunk; OTHER: LEGO text not in seed (medo de que te)
+D2	S0522	S0522L02	NOT	completive que travels with head; majority shape
+D2	S0531	S0531L03	NOT	head+que (subjunctive clause follows) - majority shape
+D2	S0532	S0532L01	NOT	fixed conjunction; OTHER: they're vs tenha (3sg)
+D2	S0535	S0535L06	NOT	completive que travels with head; majority shape
+D2	S0536	S0536L03	NOT	completive que travels with head; majority shape
+D2	S0542	S0542L01	NOT	fixed conjunction; not the that-conjunction
+D2	S0544	S0544L01	NOT	completive que travels with head; majority shape
+D2	S0557	S0557L03	NOT	completive que travels with head; majority shape
+D2	S0568	S0568L02	NOT	relative que; OTHER: English when not in seed
+D2	S0571	S0571L02	NOT	que inside chunk; OTHER: English a good idea, target lacks ideia
+D2	S0572	S0572L03	NOT	comparative/relative do que; not the that-conjunction
+D2	S0573	S0573L03	NOT	relative que (who/which); not the that-conjunction
+D2	S0593	S0593L03	NOT	fixed conjunction; not the that-conjunction
+D2	S0597	S0597L01	NOT	completive que travels with head; majority shape
+D2	S0598	S0598L02	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0615	S0615L03	NOT	completive que travels with head; majority shape
+D2	S0617	S0617L02	NOT	completive que travels with head; majority shape
+D2	S0619	S0619L02	NOT	comparative/relative do que; not the that-conjunction
+D2	S0621	S0621L03	NOT	completive que travels with head; majority shape
+D2	S0622	S0622L02	NOT	completive que travels with head; majority shape
+D2	S0631	S0631L01	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0636	S0636L01	NOT	completive que travels with head; majority shape
+D2	S0642	S0642L02	NOT	interrogative é que; not the that-conjunction
+D2	S0648	S0648L01	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0651	S0651L01	NOT	interrogative é que; not the that-conjunction
+D2	S0652	S0652L01	NOT	interrogative é que; not the that-conjunction
+D2	S0657	S0657L02	NOT	interrogative é que; not the that-conjunction
+D2	S0663	S0663L01	NOT	o que = what (relative/free); not the that-conjunction
+D2	S0666	S0666L01	NOT	interrogative é que; not the that-conjunction
+D2	S0668	S0668L03	NOT	completive que travels with head; majority shape
+D3	S0035	S0035L03U05	NOT	determiner this (this word/week); out of scope
+D3	S0039	S0039L02U07	NOT	determiner this (this word/week); out of scope
+D3	S0060	S0060L01U02	NOT	null object (fazer/dizer); course majority for it
+D3	S0060	S0060L01U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0060	S0060L02U04	NOT	null object (fazer/dizer); course majority for it
+D3	S0060	S0060L02U08	NOT	null object (fazer/dizer); course majority for it
+D3	S0060	S0060L02U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0061	S0061L02B01	NOT	demonstrative that = isso; majority
+D3	S0061	S0061L02B02	NOT	demonstrative that = isso; majority
+D3	S0061	S0061L02U02	NOT	demonstrative that = isso; majority
+D3	S0061	S0061L02U01	NOT	demonstrative that = isso; majority
+D3	S0061	S0061L02U07	NOT	demonstrative that = isso; majority
+D3	S0061	S0061L02U03	NOT	demonstrative that = isso; majority
+D3	S0061	S0061L02U04	NOT	demonstrative that = isso; majority
+D3	S0061	S0061L03U08	NOT	demonstrative that = isso; majority
+D3	S0061	S0061L03U03	NOT	demonstrative that = isso; majority
+D3	S0061	S0061L03U02	NOT	demonstrative that = isso; majority
+D3	S0061	S0061L04U09	NOT	demonstrative that = isso; majority
+D3	S0062	S0062L01U04	NOT	demonstrative that = isso; majority
+D3	S0062	S0062L03B03	NOT	demonstrative that = isso; majority
+D3	S0062	S0062L03U01	NOT	demonstrative that = isso; majority
+D3	S0062	S0062L03U04	NOT	demonstrative that = isso; majority
+D3	S0063	S0063L01U08	NOT	demonstrative that = isso; majority
+D3	S0063	S0063L02B03	NOT	demonstrative that = isso; majority
+D3	S0063	S0063L02U03	NOT	demonstrative that = isso; majority
+D3	S0063	S0063L02U08	NOT	demonstrative that = isso; majority
+D3	S0069	S0069L01U02	NOT	demonstrative that = isso; majority
+D3	S0069	S0069L04U05	NOT	demonstrative that = isso; majority
+D3	S0070	S0070L01U02	NOT	demonstrative that = isso; majority
+D3	S0071	S0071L01U02	NOT	demonstrative that = isso; majority
+D3	S0071	S0071L02U03	NOT	demonstrative that = isso; majority
+D3	S0071	S0071L04U05	NOT	demonstrative that = isso; majority
+D3	S0074	S0074L01U04	NOT	demonstrative that = isso; majority
+D3	S0074	S0074L02B03	NOT	demonstrative that = isso; majority
+D3	S0074	S0074L03B03	NOT	demonstrative that = isso; majority
+D3	S0074	S0074L03U02	NOT	demonstrative that = isso; majority
+D3	S0074	S0074L03U08	NOT	demonstrative that = isso; majority
+D3	S0074	S0074L04U04	NOT	demonstrative that = isso; majority
+D3	S0081	S0081L01U03	NOT	demonstrative that = isso; majority
+D3	S0082	S0082L02U07	NOT	demonstrative that = isso; majority
+D3	S0086	S0086L01U08	NOT	demonstrative that = isso; majority
+D3	S0088	S0088L01U06	NOT	demonstrative that = isso; majority
+D3	S0090	S0090L01U04	NOT	demonstrative that = isso; majority
+D3	S0092	S0092L01B02	NOT	this = isto; majority
+D3	S0092	S0092L01B03	NOT	this = isto; majority
+D3	S0092	S0092L01U07	NOT	this = isto; majority
+D3	S0092	S0092L01U06	NOT	this = isto; majority
+D3	S0092	S0092L01U04	NOT	this = isto; majority
+D3	S0092	S0092L01U01	NOT	this = isto; majority
+D3	S0092	S0092L02B04	NOT	this = isto; majority
+D3	S0092	S0092L02U02	NOT	demonstrative that = isso; majority
+D3	S0092	S0092L02U07	NOT	this = isto; majority
+D3	S0092	S0092L03B03	NOT	this = isto; majority
+D3	S0092	S0092L03B04	NOT	this = isto; majority
+D3	S0092	S0092L03U07	NOT	this = isto; majority
+D3	S0092	S0092L03U09	NOT	this = isto; majority
+D3	S0093	S0093L01U03	NOT	this = isto; majority
+D3	S0094	S0094L01U06	NOT	this = isto; majority
+D3	S0095	S0095L02U05	NOT	demonstrative that = isso; majority
+D3	S0096	S0096L01U04	NOT	this = isto; majority
+D3	S0097	S0097L02U05	NOT	this = isto; majority
+D3	S0101	S0101L02U02	NOT	this = isto; majority
+D3	S0102	S0102L01B03	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0102	S0102L01B01	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0102	S0102L01B04	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0102	S0102L01B02	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0102	S0102L01C02	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0102	S0102L01U02	NOT	determiner or conjunction that; out of scope
+D3	S0102	S0102L01U07	NOT	determiner or conjunction that; out of scope
+D3	S0103	S0103L01B04	NOT	this = isto; majority
+D3	S0103	S0103L01B03	NOT	demonstrative that = isso; majority
+D3	S0103	S0103L01U06	REAL	'it' over isto; LEGO taught this|isto -> 'this'
+D3	S0103	S0103L01U04	NOT	demonstrative that = isso; majority
+D3	S0105	S0105L01U05	NOT	isto = this; isso is in por isso
+D3	S0105	S0105L01U04	NOT	demonstrative that = isso; majority
+D3	S0105	S0105L02B03	NOT	demonstrative that = isso; majority
+D3	S0105	S0105L02U06	NOT	demonstrative that = isso; majority
+D3	S0105	S0105L02U05	NOT	demonstrative that = isso; majority
+D3	S0106	S0106L01U02	NOT	this = isto; majority
+D3	S0106	S0106L01U04	NOT	demonstrative that = isso; majority
+D3	S0106	S0106L03U05	NOT	this = isto; majority
+D3	S0107	S0107L02B03	NOT	demonstrative that = isso; majority
+D3	S0107	S0107L02B04	NOT	this = isto; majority
+D3	S0107	S0107L02U06	REAL	'it' over isto; LEGO taught this|isto -> 'this'
+D3	S0107	S0107L02U07	NOT	demonstrative that = isso; majority
+D3	S0108	S0108L01U06	REAL	'it' over isto; LEGO taught this|isto -> 'this'
+D3	S0108	S0108L01U02	NOT	this = isto; majority
+D3	S0115	S0115L02U07	NOT	demonstrative that = isso; majority
+D3	S0117	S0117L03U02	NOT	demonstrative that = isso; majority
+D3	S0120	S0120L01U01	NOT	demonstrative that = isso; majority
+D3	S0126	S0126L01U06	NOT	determiner this (this word/week); out of scope
+D3	S0128	S0128L03B03	UNSURE	eu conhecia este: truncated, know=conhecer odd
+D3	S0128	S0128L03B02	NOT	demonstrative that = isso; majority
+D3	S0128	S0128L03U04	NOT	determiner this (this word/week); out of scope
+D3	S0128	S0128L03U06	UNSURE	eu conhecia este: truncated, know=conhecer odd
+D3	S0128	S0128L03U05	NOT	demonstrative that = isso; majority
+D3	S0128	S0128L03U01	NOT	demonstrative that = isso; majority
+D3	S0134	S0134L01U05	NOT	demonstrative that = isso; majority
+D3	S0137	S0137L01U01	NOT	demonstrative that = isso; majority
+D3	S0137	S0137L01U07	NOT	demonstrative that = isso; majority
+D3	S0137	S0137L01U08	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0137	S0137L03U05	NOT	null object (fazer/dizer); course majority for it
+D3	S0138	S0138L01U08	NOT	demonstrative that = isso; majority
+D3	S0140	S0140L01U04	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0140	S0140L01U02	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0140	S0140L01U08	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0141	S0141L01U02	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0141	S0141L01U03	NOT	this = isto; majority
+D3	S0142	S0142L03U08	NOT	demonstrative that = isso; majority
+D3	S0145	S0145L01U01	NOT	this = isto; majority
+D3	S0146	S0146L03U02	NOT	this = isto; majority
+D3	S0148	S0148L01U01	NOT	this = isto; majority
+D3	S0151	S0151L01U08	NOT	null object (fazer/dizer); course majority for it
+D3	S0151	S0151L01U03	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L01B03	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L01U03	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L01U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L01U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L01U08	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L01U07	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L01U02	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L02B02	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L02U04	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L02U02	NOT	demonstrative that = isso; majority
+D3	S0152	S0152L02U05	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L02U03	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L02U07	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L02U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L03B03	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L03U05	NOT	isso = 'that' (known that); done it = null
+D3	S0152	S0152L03U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L03U02	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L03U09	NOT	null object (fazer/dizer); course majority for it
+D3	S0152	S0152L03U10	NOT	null object (fazer/dizer); course majority for it
+D3	S0153	S0153L01B03	NOT	demonstrative that = isso; majority
+D3	S0153	S0153L01U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0153	S0153L01U06	NOT	demonstrative that = isso; majority
+D3	S0153	S0153L01U02	NOT	null object (fazer/dizer); course majority for it
+D3	S0153	S0153L01U07	NOT	demonstrative that = isso; majority
+D3	S0153	S0153L01U03	NOT	null object (fazer/dizer); course majority for it
+D3	S0153	S0153L02U07	NOT	null object (fazer/dizer); course majority for it
+D3	S0153	S0153L02U08	NOT	null object (fazer/dizer); course majority for it
+D3	S0153	S0153L02U05	NOT	this = isto; majority
+D3	S0153	S0153L02U10	NOT	null object (fazer/dizer); course majority for it
+D3	S0154	S0154L01U01	NOT	demonstrative that = isso; majority
+D3	S0155	S0155L01U03	NOT	demonstrative that = isso; majority
+D3	S0155	S0155L01U09	NOT	null object (fazer/dizer); course majority for it
+D3	S0155	S0155L03U04	NOT	demonstrative that = isso; majority
+D3	S0157	S0157L01U04	NOT	demonstrative that = isso; majority
+D3	S0157	S0157L01U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0157	S0157L01U07	NOT	null object (fazer/dizer); course majority for it
+D3	S0157	S0157L03U09	NOT	demonstrative that = isso; majority
+D3	S0157	S0157L03U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0158	S0158L01U07	NOT	null object (fazer/dizer); course majority for it
+D3	S0159	S0159L01U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0160	S0160L01B04	NOT	this = isto; majority
+D3	S0160	S0160L01U08	NOT	demonstrative that = isso; majority
+D3	S0160	S0160L01U10	NOT	demonstrative that = isso; majority
+D3	S0160	S0160L01U07	NOT	demonstrative that = isso; majority
+D3	S0160	S0160L01U05	NOT	demonstrative that = isso; majority
+D3	S0160	S0160L01U09	NOT	this = isto; majority
+D3	S0160	S0160L01U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0160	S0160L02B02	NOT	determiner this (this word/week); out of scope
+D3	S0160	S0160L02U06	NOT	determiner this (this word/week); out of scope
+D3	S0160	S0160L02U01	NOT	determiner this (this word/week); out of scope
+D3	S0160	S0160L02U02	NOT	determiner this (this word/week); out of scope
+D3	S0160	S0160L02U09	NOT	determiner this (this word/week); out of scope
+D3	S0160	S0160L02U04	NOT	determiner this (this word/week); out of scope
+D3	S0160	S0160L02U03	NOT	determiner this (this word/week); out of scope
+D3	S0167	S0167L01U06	NOT	demonstrative that = isso; majority
+D3	S0168	S0168L01U01	NOT	demonstrative that = isso; majority
+D3	S0169	S0169L01U07	NOT	demonstrative that = isso; majority
+D3	S0171	S0171L01U03	NOT	null object (fazer/dizer); course majority for it
+D3	S0171	S0171L01U08	NOT	this = isto; majority
+D3	S0173	S0173L01B02	NOT	null object (fazer/dizer); course majority for it
+D3	S0173	S0173L01U04	NOT	null object (fazer/dizer); course majority for it
+D3	S0174	S0174L01B03	NOT	this = isto; majority
+D3	S0174	S0174L01B04	NOT	demonstrative that = isso; majority
+D3	S0174	S0174L01U01	NOT	this = isto; majority
+D3	S0174	S0174L01U02	NOT	this = isto; majority
+D3	S0174	S0174L01U06	NOT	demonstrative that = isso; majority
+D3	S0174	S0174L01U10	NOT	determiner this (this word/week); out of scope
+D3	S0175	S0175L01U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0176	S0176L01U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0176	S0176L02U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0178	S0178L01U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0178	S0178L02U03	NOT	demonstrative that = isso; majority
+D3	S0179	S0179L01U05	NOT	null object (fazer/dizer); course majority for it
+D3	S0190	S0190L02U03	NOT	demonstrative that = isso; majority
+D3	S0190	S0190L02U04	NOT	demonstrative that = isso; majority
+D3	S0190	S0190L02U02	NOT	demonstrative that = isso; majority
+D3	S0190	S0190L02U01	NOT	demonstrative that = isso; majority
+D3	S0196	S0196L01U01	NOT	demonstrative that = isso; majority
+D3	S0200	S0200L02B03	NOT	demonstrative that = isso; majority
+D3	S0200	S0200L02B02	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0200	S0200L02U02	NOT	demonstrative that = isso; majority
+D3	S0200	S0200L02U04	NOT	demonstrative that = isso; majority
+D3	S0201	S0201L01U02	NOT	null object (fazer/dizer); course majority for it
+D3	S0204	S0204L04U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0205	S0205L01U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0207	S0207L01B02	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0207	S0207L01U08	NOT	null object (fazer/dizer); course majority for it
+D3	S0207	S0207L01U04	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0207	S0207L02U02	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0208	S0208L01U09	NOT	null object (fazer/dizer); course majority for it
+D3	S0210	S0210L01U03	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0212	S0212L01U08	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0224	S0224L01U02	NOT	demonstrative that = isso; majority
+D3	S0226	S0226L01U04	NOT	determiner or conjunction that; out of scope
+D3	S0227	S0227L01B03	NOT	determiner or conjunction that; out of scope
+D3	S0227	S0227L01U02	NOT	determiner or conjunction that; out of scope
+D3	S0229	S0229L01B03	NOT	determiner or conjunction that; out of scope
+D3	S0229	S0229L01U02	NOT	determiner or conjunction that; out of scope
+D3	S0234	S0234L02U02	NOT	demonstrative that = isso; majority
+D3	S0245	S0245L01U07	NOT	determiner this (this word/week); out of scope
+D3	S0245	S0245L01U06	NOT	determiner this (this word/week); out of scope
+D3	S0245	S0245L01U09	NOT	determiner this (this word/week); out of scope
+D3	S0246	S0246L01U08	NOT	demonstrative that = isso; majority
+D3	S0247	S0247L01U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0249	S0249L01U07	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0271	S0271L01U05	NOT	demonstrative that = isso; majority
+D3	S0272	S0272L02U07	NOT	demonstrative that = isso; majority
+D3	S0274	S0274L02U04	NOT	demonstrative that = isso; majority
+D3	S0278	S0278L01U05	NOT	demonstrative that = isso; majority
+D3	S0282	S0282L01B04	NOT	demonstrative that = isso; majority
+D3	S0282	S0282L01U06	NOT	demonstrative that = isso; majority
+D3	S0282	S0282L01U03	NOT	demonstrative that = isso; majority
+D3	S0290	S0290L01U03	NOT	this = isto; majority
+D3	S0291	S0291L01B04	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0292	S0292L02U06	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0294	S0294L01U08	NOT	null object (fazer/dizer); course majority for it
+D3	S0295	S0295L01B03	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0295	S0295L02B04	NOT	null object (fazer/dizer); course majority for it
+D3	S0295	S0295L02U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0296	S0296L01B02	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0301	S0301L01U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0305	S0305L01U03	NOT	determiner or conjunction that; out of scope
+D3	S0305	S0305L01U07	NOT	demonstrative that = isso; majority
+D3	S0306	S0306L01U01	NOT	determiner or conjunction that; out of scope
+D3	S0306	S0306L01U02	NOT	determiner or conjunction that; out of scope
+D3	S0306	S0306L01U05	NOT	determiner or conjunction that; out of scope
+D3	S0307	S0307L01U02	NOT	determiner or conjunction that; out of scope
+D3	S0307	S0307L01U01	NOT	determiner or conjunction that; out of scope
+D3	S0307	S0307L01U04	NOT	determiner or conjunction that; out of scope
+D3	S0307	S0307L01U07	NOT	determiner or conjunction that; out of scope
+D3	S0313	S0313L01U03	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0315	S0315L01U05	NOT	demonstrative that = isso; majority
+D3	S0316	S0316L02U06	NOT	demonstrative that = isso; majority
+D3	S0317	S0317L01U04	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0318	S0318L01U04	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0318	S0318L01U02	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0318	S0318L01U06	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0342	S0342L01U04	NOT	demonstrative that = isso; majority
+D3	S0346	S0346L01B03	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0352	S0352L01U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0352	S0352L02U04	NOT	null object (fazer/dizer); course majority for it
+D3	S0358	S0358L01B03	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0364	S0364L02U03	NOT	determiner or conjunction that; out of scope
+D3	S0392	S0392L01U05	NOT	determiner or conjunction that; out of scope
+D3	S0393	S0393L01U09	NOT	demonstrative that = isso; majority
+D3	S0396	S0396L01U05	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0396	S0396L04U05	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0398	S0398L03U05	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0401	S0401L01U06	NOT	null object (fazer/dizer); course majority for it
+D3	S0408	S0408L02U04	NOT	determiner or conjunction that; out of scope
+D3	S0408	S0408L02U03	NOT	determiner or conjunction that; out of scope
+D3	S0408	S0408L03U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0408	S0408L03U02	NOT	null object (fazer/dizer); course majority for it
+D3	S0412	S0412L02U03	NOT	null object (fazer/dizer); course majority for it
+D3	S0412	S0412L02U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0412	S0412L03U02	NOT	null object (fazer/dizer); course majority for it
+D3	S0412	S0412L03U05	NOT	demonstrative that = isso; majority
+D3	S0418	S0418L03U05	NOT	null object (fazer/dizer); course majority for it
+D3	S0418	S0418L03U04	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0421	S0421L02U03	UNSURE	USE row ends in dangling que; ungrammatical; that=conj
+D3	S0421	S0421L02U05	UNSURE	USE row ends in dangling que; ungrammatical; that=conj
+D3	S0421	S0421L02U04	UNSURE	USE row ends in dangling que; ungrammatical; that=conj
+D3	S0425	S0425L01B02	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0429	S0429L01U03	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0432	S0432L03B02	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0433	S0433L01U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0438	S0438L01U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0440	S0440L01B02	NOT	null object (fazer/dizer); course majority for it
+D3	S0441	S0441L01U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0442	S0442L01U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0443	S0443L01B02	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0443	S0443L01U05	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0443	S0443L01U01	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0443	S0443L01U02	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0443	S0443L01U03	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0443	S0443L01U04	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0444	S0444L02U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0444	S0444L03B03	NOT	null object (fazer/dizer); course majority for it
+D3	S0444	S0444L03U02	NOT	null object (fazer/dizer); course majority for it
+D3	S0444	S0444L04U05	NOT	determiner or conjunction that; out of scope
+D3	S0445	S0445L01U04	NOT	determiner or conjunction that; out of scope
+D3	S0446	S0446L01U04	NOT	determiner or conjunction that; out of scope
+D3	S0446	S0446L01U05	NOT	determiner or conjunction that; out of scope
+D3	S0448	S0448L01U04	NOT	null object; OTHER: calque 'with all the pleasure'
+D3	S0448	S0448L01U01	NOT	null object; OTHER: calque 'with all the pleasure'
+D3	S0448	S0448L01U05	NOT	null object; OTHER: calque 'with all the pleasure'
+D3	S0448	S0448L01U03	NOT	null object; OTHER: calque 'with all the pleasure'
+D3	S0448	S0448L02U02	UNSURE	target lacks fazer: terão todo o gosto
+D3	S0450	S0450L02B03	NOT	null object (fazer/dizer); course majority for it
+D3	S0450	S0450L02U03	NOT	null object (fazer/dizer); course majority for it
+D3	S0450	S0450L02U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0456	S0456L02U05	NOT	null object (fazer/dizer); course majority for it
+D3	S0456	S0456L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0466	S0466L01U04	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0469	S0469L01B02	NOT	demonstrative that = isso; majority
+D3	S0472	S0472L01B02	NOT	demonstrative that = isso; majority
+D3	S0472	S0472L01U04	NOT	demonstrative that = isso; majority
+D3	S0480	S0480L01U05	NOT	null object (fazer/dizer); course majority for it
+D3	S0480	S0480L02U06	NOT	subject 'it' of reported clause; out of scope
+D3	S0483	S0483L02U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0483	S0483L02U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0483	S0483L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0483	S0483L02U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0484	S0484L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0484	S0484L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0487	S0487L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0487	S0487L02U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0488	S0488L01U04	NOT	determiner or conjunction that; out of scope
+D3	S0488	S0488L02U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0488	S0488L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0488	S0488L02U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0488	S0488L03U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0488	S0488L03U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0490	S0490L01B03	REAL	'it' over isso; LEGO taught that|isso -> 'do that'
+D3	S0490	S0490L01U02	NOT	demonstrative that = isso; majority
+D3	S0490	S0490L01U01	REAL	'this' over isso; LEGO taught that|isso
+D3	S0490	S0490L02U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0491	S0491L01B03	NOT	clitic o = it; consistent
+D3	S0495	S0495L01U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0495	S0495L01U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0496	S0496L02U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0496	S0496L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0496	S0496L02U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0496	S0496L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0497	S0497L01U03	NOT	demonstrative that = isso; majority
+D3	S0497	S0497L01U05	NOT	demonstrative that = isso; majority
+D3	S0497	S0497L01U01	NOT	demonstrative that = isso; majority
+D3	S0497	S0497L01U04	NOT	demonstrative that = isso; majority
+D3	S0497	S0497L01U02	NOT	demonstrative that = isso; majority
+D3	S0497	S0497L03U04	NOT	demonstrative that = isso; majority
+D3	S0497	S0497L03U05	NOT	demonstrative that = isso; majority
+D3	S0497	S0497L03U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0497	S0497L03U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0497	S0497L03U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0497	S0497L05U02	NOT	demonstrative that = isso; majority
+D3	S0497	S0497L05U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0497	S0497L05U05	NOT	demonstrative that = isso; majority
+D3	S0497	S0497L05U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0503	S0503L02U04	NOT	determiner or conjunction that; out of scope
+D3	S0509	S0509L02B01	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0511	S0511L01U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0511	S0511L02U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0511	S0511L02U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0511	S0511L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0511	S0511L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0511	S0511L02U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0513	S0513L01U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0513	S0513L01U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0513	S0513L01U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0513	S0513L01U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0513	S0513L01U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0513	S0513L02U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0513	S0513L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0513	S0513L05U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0513	S0513L05U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0513	S0513L05U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0513	S0513L05U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0518	S0518L01U08	NOT	demonstrative that = isso; majority
+D3	S0520	S0520L01U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0520	S0520L01U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0520	S0520L01U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0520	S0520L01U06	NOT	subject 'it' of reported clause; out of scope
+D3	S0531	S0531L03U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0531	S0531L03U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0531	S0531L03U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0531	S0531L03U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0534	S0534L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0534	S0534L02U05	NOT	determiner this (this word/week); out of scope
+D3	S0534	S0534L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0534	S0534L02U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0535	S0535L02B04	NOT	demonstrative that = isso; majority
+D3	S0541	S0541L01U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0541	S0541L02U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0541	S0541L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0541	S0541L02U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0541	S0541L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0543	S0543L01U08	NOT	demonstrative that = isso; majority
+D3	S0545	S0545L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0545	S0545L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0545	S0545L02U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0545	S0545L03U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0545	S0545L03U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0545	S0545L03U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0545	S0545L03U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0548	S0548L01U08	NOT	demonstrative that = isso; majority
+D3	S0554	S0554L01U04	NOT	determiner this (this word/week); out of scope
+D3	S0554	S0554L02U05	NOT	determiner this (this word/week); out of scope
+D3	S0554	S0554L02U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0558	S0558L01U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0558	S0558L01U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0558	S0558L01U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0558	S0558L01U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0560	S0560L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0560	S0560L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0560	S0560L02U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0565	S0565L01U04	NOT	null object (fazer/dizer); course majority for it
+D3	S0567	S0567L03U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0567	S0567L03U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0567	S0567L03U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0567	S0567L03U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0573	S0573L03U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0573	S0573L03U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0573	S0573L03U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0573	S0573L03U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0575	S0575L01U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0576	S0576L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0576	S0576L02U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0576	S0576L02U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0576	S0576L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0597	S0597L02U02	NOT	demonstrative that = isso; majority
+D3	S0599	S0599L02U03	NOT	null object (fazer/dizer); course majority for it
+D3	S0599	S0599L02U01	NOT	null object (fazer/dizer); course majority for it
+D3	S0599	S0599L02U02	NOT	null object (fazer/dizer); course majority for it
+D3	S0601	S0601L01U05	NOT	null object (fazer/dizer); course majority for it
+D3	S0601	S0601L01U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0601	S0601L01U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0601	S0601L01U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0601	S0601L01U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0602	S0602L01U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0602	S0602L01U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0602	S0602L01U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0614	S0614L03U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0614	S0614L03U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0614	S0614L03U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0614	S0614L03U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0615	S0615L01U04	NOT	demonstrative that = isso; majority
+D3	S0615	S0615L01U05	NOT	demonstrative that = isso; majority
+D3	S0615	S0615L02U04	NOT	demonstrative that = isso; majority
+D3	S0615	S0615L02U05	NOT	demonstrative that = isso; majority
+D3	S0615	S0615L03B03	NOT	demonstrative that = isso; majority
+D3	S0615	S0615L03U02	NOT	demonstrative that = isso; majority
+D3	S0615	S0615L03U01	NOT	demonstrative that = isso; majority
+D3	S0615	S0615L03U04	NOT	demonstrative that = isso; majority
+D3	S0615	S0615L03U05	NOT	demonstrative that = isso; majority
+D3	S0617	S0617L01U08	NOT	null object (fazer/dizer); course majority for it
+D3	S0618	S0618L01U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0618	S0618L01U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0618	S0618L01U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0618	S0618L01U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0618	S0618L02U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0618	S0618L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0618	S0618L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0618	S0618L02U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0619	S0619L01U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0619	S0619L01U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0619	S0619L01U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0619	S0619L02U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0619	S0619L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0619	S0619L02U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0619	S0619L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0620	S0620L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0620	S0620L02U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0620	S0620L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0620	S0620L02U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0622	S0622L02B01	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0640	S0640L02U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0640	S0640L02U04	NOT	subject 'it' of reported clause; out of scope
+D3	S0640	S0640L02U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0640	S0640L02U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0641	S0641L01U02	NOT	subject 'it' of reported clause; out of scope
+D3	S0641	S0641L01U05	NOT	subject 'it' of reported clause; out of scope
+D3	S0641	S0641L01U03	NOT	subject 'it' of reported clause; out of scope
+D3	S0641	S0641L01U01	NOT	subject 'it' of reported clause; out of scope
+D3	S0644	S0644L01B01	NOT	demonstrative that = isso; majority
+D3	S0644	S0644L01B02	NOT	demonstrative that = isso; majority
+D3	S0644	S0644L01B03	NOT	demonstrative that = isso; majority
+D3	S0644	S0644L01B04	NOT	demonstrative that = isso; majority
+D3	S0644	S0644L01C01	NOT	demonstrative that = isso; majority
+D3	S0644	S0644L01U04	NOT	demonstrative that = isso; majority
+D3	S0644	S0644L01U03	NOT	demonstrative that = isso; majority
+D3	S0644	S0644L01U01	NOT	demonstrative that = isso; majority
+D3	S0644	S0644L01U02	NOT	demonstrative that = isso; majority
+D3	S0659	S0659L01B04	NOT	demonstrative that = isso; majority
+D3	S0659	S0659L01B01	NOT	demonstrative that = isso; majority
+D3	S0659	S0659L01B03	NOT	demonstrative that = isso; majority
+D3	S0659	S0659L01B02	NOT	demonstrative that = isso; majority
+D3	S0659	S0659L01C01	NOT	demonstrative that = isso; majority
+D3	S0659	S0659L01U02	NOT	demonstrative that = isso; majority
+D3	S0659	S0659L01U01	NOT	demonstrative that = isso; majority
+D3	S0659	S0659L01U03	NOT	demonstrative that = isso; majority
+D3	S0659	S0659L01U04	NOT	demonstrative that = isso; majority
+D3	S0102	b72e9275-99fe-4479-be89-fa9e157eeec5	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0364	f223b558-f907-4484-9bee-374fe6caf01e	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0509	de0859f8-1d66-4dd5-baf7-1560914f2fef	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0622	0f540dc3-a08b-412c-a3f8-752a121d8594	UNSURE	conj que dangles; English reads as demonstrative 'say that'
+D3	S0644	58e84bf7-11fe-4485-8cd5-9bfd02a6d8d1	NOT	demonstrative that = isso; majority
+D3	S0659	9c221dde-f833-40f2-aad2-3c8bfbe1435d	NOT	demonstrative that = isso; majority
+D4	S0071	S0071L03	REAL	ninguém after verb needs não; LEGO bare
+D4	S0096	S0096L01	REAL	ainda alone = still; yet needs ainda não
+D4	S0182	S0182L04	NOT	positive question; em algum lado needs no negator
+D4	S0191	S0191L01	REAL	nada needs não; basket has importas-te nada? (ungrammatical)
+D4	S0202	S0202L01	NOT	preverbal ninguém needs no negator
+D4	S0309	S0309L01	NOT	preverbal nunca needs no negator
+D4	S0485	S0485L01	NOT	preverbal subject nada needs no negator
+D4	S0531	S0531L01	NOT	free-choice qualquer, not negative polarity
+D4+	S0035	S0035L02	REAL	missed: to read anything|ler nada, no não
+D4+	S0370	S0370L01	REAL	missed: anyone that I knew|ninguém que..., seed has não
+D4+	S0376	S0376L01	REAL	missed: not anywhere|a lado nenhum; U04 ungrammatical
+D4+	S0490	S0490L02	UNSURE	missed: trust anyone|confiar em ninguém; nunca outside LEGO
+D4+	S0298	S0298L01	NOT	missed: mais nada para dizer works elliptically
+D5	S0015	S0015L01	NOT	coordinating conjunction
+D5	S0019	S0019L01	NOT	coordinating conjunction
+D5	S0044	S0044L01	NOT	coordinating conjunction
+D5	S0061	S0061L02	NOT	demonstrative pronoun isso, a real word
+D5	S0062	S0062L01	NOT	subordinating if|se; basket sound
+D5	S0074	S0074L01	REAL	lone preposition; grow: for helping me|por me ajudares
+D5	S0074	S0074L02	REAL	lone a; grow: to understand|a perceber; U10 lacks a
+D5	S0132	S0132L03	NOT	than|do que; basket all sound
+D5	S0204	S0204L01	REAL	of the|dos; basket: I like my friends|gosto dos amigos
+D5	S0259	S0259L01	REAL	lone article; grow: an idea|uma ideia (whole seed)
+D5	S0497	S0497L01	NOT	pronoun isso (but duplicate, see D6a)
+D5	S0513	S0513L03	REAL	up|cima (cima=top); grow: up and down|para cima e para baixo
+D5	S0513	S0513L04	REAL	down|baixo; grow with L03 into up and down
+D5	S0581	S0581L01	REAL	about|sobre (L29 case); basket: she said about it
+D6a	S0497	S0497L01	REAL	identical to S0061L02 both sides; 8 phrases move
+D6a	S0555	S0555L02	REAL	identical to S0512L02 both sides; 11 phrases move
+D6a	S0578	S0578L02	REAL	identical to S0402L01 both sides; 13 phrases move
+D6a	S0585	S0585L02	REAL	identical to S0463L01 both sides; 8 phrases move
+D6a	S0588	S0588L02	REAL	identical to S0139L03 both sides; 8 phrases move
+D6a	S0603	S0603L01	REAL	identical to S0302L01 both sides; 11 phrases move
+D6a	S0622	S0622L01	REAL	identical to S0455L01 both sides; 11 phrases move
+D6a	S0632	S0632L01	REAL	identical to S0217L02 both sides; 8 phrases move
+D6a	S0654	S0654L03	REAL	identical to S0010L01 both sides; 15 phrases move
+D6a	S0668	S0668L01	REAL	identical to S0149L01 both sides; 11 phrases move
+D6b	S0207	S0207L01	REAL	no earlier fizeste/you've done; should be new (11 phrases dark)
+D6b	S0257	S0257L01	REAL	no earlier pair; seed has no new LEGO; should be new
+D6b	S0448	S0448L01	REAL	all|todo is a cut of todo o gosto; merge into L03 (Kai)
+D6b	S0509	S0509L02	REAL	S0364L01 is ouvi dizer que (no eu); align target or mark new
+D6b	S0530	S0530L01	REAL	no earlier can|poder; grow into so I can|para eu poder
+D6c	S0043	S0043	REAL	dark: sentence in no played basket
+D6c	S0067	S0067	NOT	built from earlier; USE row S0021L01U06
+D6c	S0165	S0165	NOT	built from earlier; USE row S0071L05U09
+D6c	S0166	S0166	NOT	built from earlier; USE row S0121L03U09
+D6c	S0194	S0194	NOT	built from earlier; USE rows S0068L02U09/U10
+D6c	S0219	S0219	NOT	built from earlier; USE row S0112L01U09
+D6c	S0257	S0257	REAL	plays only at S0608L01U06, 350 seeds late; S0257L01 should be new
+D6c	S0314	S0314	NOT	built from earlier; USE row S0310L01U07
+D6c	S0329	S0329	NOT	built from earlier; USE row S0065L01U01
+D6c	S0389	S0389	NOT	built from earlier; USE row S0388L01U08
+D6c	S0400	S0400	NOT	built from earlier; USE row S0243L01U11
+D6c	S0564	S0564	NOT	built from earlier; USE row S0563L02U06
+D6c	S0596	S0596	NOT	built from earlier; USE row S0499L04U06
+D7	S0003	S0003L02	REAL	10 syll; split: as often|o mais frequentemente + as possible|possível
+D7	S0007	S0007L02	UNSURE	9 written, 8 with elision; keep (toda a)
+D7	S0022	S0022L02	REAL	12 syll; split: to meet people | who speak Portuguese
+D7	S0026	S0026L02	REAL	12 syll; split: feeling as if|sentir que + I'm nearly ready to go
+D7	S0027	S0027L02	REAL	14 syll; split: too much time | to answer
+D7	S0034	S0034L03	REAL	11 syll; split: when other people | are here
+D7	S0038	S0038L01	UNSURE	9 written, 8 with elision; keep (de uma)
+D7	S0042	S0042L02	UNSURE	9 written, 8 with elision; keep (que ontem)
+D7	S0058	S0058L01	REAL	10 syll; split: interesting | when you understand
+D7	S0060	S0060L04	REAL	12 syll; split: different words | enough
+D7	S0072	S0072L01	REAL	12 syll; split: I think that | you're doing very well
+D7	S0077	S0077L03	REAL	10 syll; split: I'm starting | to understand
+D7	S0088	S0088L02	REAL	13 syll; split: to talk to | people I don't know
+D7	S0089	S0089L01	NOT	7 syll; keep
+D7	S0099	S0099L02	REAL	12 syll; split: why | it's not working
+D7	S0101	S0101L02	REAL	9 syll; split: I'm enjoying | finding out
+D7	S0102	S0102L01	REAL	10 syll; split: we're trying | to say that
+D7	S0103	S0103L01	REAL	10 syll; split: we're not trying | to hear
+D7	S0106	S0106L03	REAL	13 syll; split: we don't need | to feel happy
+D7	S0108	S0108L02	REAL	10 syll; split: we didn't hope | to wake
+D7	S0109	S0109L03	REAL	14 syll; split: we must work hard | to learn
+D7	S0112	S0112L03	UNSURE	9 written, 8 with elision; keep (estava à)
+D7	S0113	S0113L01	REAL	16 syll; whole seed as LEGO; split why can't I remember | what you said
+D7	S0117	S0117L01	REAL	10 syll; split: I'm | definitely (7 alone)
+D7	S0117	S0117L03	UNSURE	9 written, 8 with elision; keep (da última)
+D7	S0147	S0147L03	REAL	9 syll; split: she was | very kind
+D7	S0171	S0171L01	NOT	8 syll; keep
+D7	S0186	S0186L01	REAL	19 syll; whole seed as LEGO; split talk about | something different | next week
+D7	S0187	S0187L01	REAL	10 syll; split: I'm happy | so far
+D7	S0188	S0188L01	REAL	10 syll; split: so | I don't need to change
+D7	S0190	S0190L04	REAL	10 syll; split: if I ask you | some questions
+D7	S0204	S0204L04	REAL	11 syll; split per T1: wanted her | to help you
+D7	S0236	S0236L02	NOT	6 syll; keep
+D7	S0246	S0246L01	REAL	14 syll; split: she was | too busy
+D7	S0246	S0246L02	REAL	12 syll; split per T1: I wanted | that she help you
+D7	S0250	S0250L01	REAL	13 syll; split: something else | before I answer
+D7	S0253	S0253L01	UNSURE	9 written, 8 with elision; keep (devo estar)
+D7	S0260	S0260L01	REAL	12 syll; idiom; split I don't have | the faintest idea
+D7	S0277	S0277L02	REAL	11 syll; split: early | next week
+D7	S0284	S0284L01	REAL	12 syll; split: do you know | my sister's friend
+D7	S0288	S0288L01	REAL	13 syll; split: most people | I know
+D7	S0297	S0297L01	REAL	11 syll; split: many people | who speak Portuguese
+D7	S0347	S0347L02	UNSURE	10 written, 8 with elision; keep (que estava a acontecer elides)
+D7	S0355	S0355L01	REAL	9 syll; split: that woman | you know
+D7	S0403	S0403L03	REAL	10 syll; split: as long | as possible
+D7	S0408	S0408L02	UNSURE	9 written, 8 with elision; keep (essa é a)
+D7	S0425	S0425L02	REAL	9 syll; split: they need | to make sure
+D7	S0448	S0448L03	REAL	11 syll; split: they'll be happy | to help
+D7	S0467	S0467L02	UNSURE	9 written, 8 with elision; compound noun car park; keep
+D7	S0482	S0482L03	REAL	10 syll; split: not be talking | seriously
+D7	S0482	S0482L04	REAL	12 syll; split: the only real hope | is that
+D7	S0491	S0491L02	REAL	11 syll; split: the way | you try to help
+D7	S0497	S0497L05	REAL	9 syll; split: you need | to get some sleep
+D7	S0498	S0498L05	UNSURE	9 written, 8 with elision; keep (da entrada)
+D7	S0504	S0504L03	NOT	8 syll; keep
+D7	S0505	S0505L02	NOT	8 syll; keep
+D7	S0506	S0506L04	REAL	10 syll; split: I used to live | around here
+D7	S0507	S0507L02	REAL	10 syll; split: we moved | to the city
+D7	S0511	S0511L04	REAL	11 syll; split: to everyone | in the office
+D7	S0512	S0512L03	REAL	11 syll; split: can you hold | the door open
+D7	S0514	S0514L04	UNSURE	9 written, 8 with elision; keep (encontrei a)
+D7	S0518	S0518L02	REAL	10 syll; split: I couldn't | imagine myself
+D7	S0523	S0523L02	REAL	9 syll; split: instead of | giving an excuse
+D7	S0528	S0528L04	REAL	10 syll; split: probably | supposed to keep
+D7	S0529	S0529L02	REAL	9 syll; split: can you all | put your hands up
+D7	S0537	S0537L02	UNSURE	9 written, 8 with elision; keep (eu estava)
+D7	S0540	S0540L01	UNSURE	9 written, 8 with elision; keep (me importo)
+D7	S0549	S0549L02	REAL	10 syll; split: because | I have got to be quiet
+D7	S0552	S0552L03	REAL	10 syll; split: at the other end | of the village
+D7	S0553	S0553L02	REAL	10 syll; split: the small church | is ugly
+D7	S0556	S0556L03	REAL	9 syll; split: they play music | late
+D7	S0571	S0571L02	REAL	11 syll; split; also English a good idea vs uma boa
+D7	S0573	S0573L03	REAL	9 syll; split: the kind of thing | that makes
+D7	S0576	S0576L02	REAL	9 syll; split: it has been | very upsetting
+D7	S0577	S0577L03	UNSURE	9 written, 8 with elision; keep (estado à)
+D7	S0579	S0579L02	REAL	9 syll; split: we've tried | often
+D7	S0582	S0582L01	NOT	7 syll; keep
+D7	S0583	S0583L02	REAL	10 syll; whole seed; split what's it like | in this part of the world
+D7	S0585	S0585L03	REAL	9 syll; split: I can see | the mountains
+D7	S0586	S0586L04	REAL	10 syll; split: I want | twenty boiled eggs
+D7	S0587	S0587L03	UNSURE	9 written, 8 with elision; keep (costumava insistir)
+D7	S0591	S0591L03	REAL	10 syll; split: she followed me | down to the shops
+D7	S0598	S0598L02	REAL	10 syll; split: what | they were doing
+D7	S0601	S0601L02	REAL	9 syll; split: we were talking | about
+D7	S0605	S0605L02	REAL	9 syll; split: because | we needed
+D7	S0609	S0609L02	REAL	10 syll; split: the sensible thing | to do
+D7	S0610	S0610L02	REAL	9 syll; split: he needs | to look for
+D7	S0612	S0612L01	REAL	10 syll; split: we would have bought | something
+D7	S0616	S0616L02	REAL	9 syll; split: you were brave | to say
+D7	S0618	S0618L02	NOT	8 syll; keep
+D7	S0621	S0621L03	REAL	10 syll; split: to tell her | that it was broken
+D7	S0626	S0626L02	REAL	10 syll; whole seed; split no I'm not thirsty | thank you
+D7	S0630	S0630L01	REAL	9 syll; whole seed; split can I have something to drink | please
+D7	S0635	S0635L03	NOT	8 syll; keep
+D7	S0637	S0637L01	UNSURE	9 written, 8 with elision; keep (onde está)
+D7	S0641	S0641L02	REAL	10 syll; split: the red one | on that chair
+D7	S0642	S0642L02	REAL	10 syll; formal whole-seed LEGO; split how do you feel | madam
+D7	S0644	S0644L01	REAL	10 syll; formal whole-seed LEGO; split could you say that | sir
+D7	S0645	S0645L01	REAL	10 syll; formal whole-seed LEGO; split I can help you | madam
+D7	S0646	S0646L01	REAL	10 syll; formal whole-seed LEGO; split
+D7	S0651	S0651L01	REAL	10 syll; formal whole-seed LEGO; split
+D7	S0652	S0652L01	REAL	10 syll; formal whole-seed LEGO; split
+D7	S0657	S0657L02	REAL	9 syll; whole-seed LEGO; split how do you all | feel
+D7	S0661	S0661L01	REAL	9 syll; whole-seed LEGO; split you're all | doing something
+D7	S0668	S0668L03	REAL	10 syll; split per T1: I hope | that you'll all be able to go
+D8	S0146	S0146L02	REAL	parece 3sg; English needs subject (seed: nothing)
+D8	S0151	S0151L02	REAL	esperava; seed I -> I was hoping
+D8	S0151	S0151L03	REAL	acontecesse 3sg -> it would happen (also K40)
+D8	S0152	S0152L01	REAL	teria; seed I -> I would have done
+D8	S0153	S0153L01	REAL	teria; seed I -> I wouldn't have said
+D8	S0157	S0157L01	REAL	vou; seed I -> I won't be able to
+D8	S0197	S0197L03	REAL	trabalha; seed my son -> he works as
+D8	S0201	S0201L01	UNSURE	ia; seed subject is what - no pronoun to add
+D8	S0202	S0202L03	REAL	tinha; seed nobody -> grow to nobody was sure
+D8	S0211	S0211L02	REAL	queriam -> they wanted
+D8	S0215	S0215L01	REAL	saí -> I went out (English also lacks out)
+D8	S0217	S0217L01	REAL	bebi -> I drank; seed says had
+D8	S0218	S0218L01	REAL	fiz -> I didn't do much
+D8	S0222	S0222L01	REAL	está -> he's trying
+D8	S0223	S0223L01	REAL	vai -> he's going to ask
+D8	S0224	S0224L01	REAL	acabou -> he's just started
+D8	S0225	S0225L02	REAL	pudesse -> if he could (K40 too)
+D8	S0239	S0239L02	REAL	gosta; seed my mother -> she likes to
+D8	S0240	S0240L02	REAL	não gosta; seed my father -> he doesn't like to
+D8	S0311	S0311L05	REAL	conseguia -> he couldn't
+D8	S0315	S0315L01	REAL	conseguia -> he couldn't afford
+D8	S0324	S0324L02	REAL	tem; seed that student -> she has
+D8	S0330	S0330L01	REAL	seja -> it is (K40 subjunctive too)
+D8	S0331	S0331L02	NOT	misfire: respostas is a noun
+D8	S0339	S0339L02	NOT	himself names the person
+D8	S0352	S0352L02	REAL	conseguiria -> he wouldn't be able to
+D8	S0361	S0361L01	REAL	estava -> he was quiet
+D8	S0362	S0362L02	REAL	esteve -> he was
+D8	S0363	S0363L01	REAL	estava -> he felt like
+D8	S0373	S0373L01	REAL	era -> it was beautiful
+D8	S0432	S0432L03	REAL	podem -> they could mean
+D8	S0433	S0433L01	REAL	começava -> it started
+D8	S0433	S0433L03	REAL	conseguiram -> they couldn't find out
+D8	S0438	S0438L02	REAL	queriam -> they didn't want to decide
+D8	S0442	S0442L03	REAL	queriam -> they wanted to develop
+D8	S0445	S0445L03	REAL	vão -> they will be able to carry
+D8	S0446	S0446L03	REAL	vão -> they won't be able to break
+D8	S0448	S0448L03	REAL	terão -> they'll be happy to help
+D8	S0454	S0454L02	REAL	vieram; seed our friends -> they came
+D8	S0455	S0455L02	REAL	estavam; seed the children -> they were tired
+D8	S0469	S0469L01	REAL	quer dizer -> that doesn't mean
+D8	S0483	S0483L02	NOT	non-finite suposto ser
+D8	S0484	S0484L02	NOT	non-finite suposto ser
+D8	S0502	S0502L02	REAL	se perdeu -> she got lost
+D8	S0502	S0502L04	NOT	misfire: esquerda noun; OTHER: 'left direction' stilted
+D8	S0511	S0511L02	REAL	demorou; seed the news -> it took
+D8	S0513	S0513L01	REAL	dói -> it hurts
+D8	S0527	S0527L02	REAL	contou; seed who -> who told
+D8	S0530	S0530L01	NOT	infinitive poder; see T9
+D8	S0535	S0535L06	REAL	fez -> he made a promise that
+D8	S0614	S0614L02	REAL	vive; seed your family -> grow to your family live
+D8	S0633	S0633L02	REAL	seria -> it would be fine (fine vs ótimo)
+D9	S0029	S0029L02	NOT	misfire: melhor is an adjective
+D9	S0042	S0042L02	NOT	misfire: melhor
+D9	S0065	S0065L03	REAL	to test yourself
+D9	S0071	S0071L02	REAL	to let
+D9	S0071	S0071L04	REAL	to hear (alone reads as command)
+D9	S0114	S0114L01	NOT	misfire: pior
+D9	S0121	S0121L03	NOT	misfire: invulgar
+D9	S0166	S0166L01	NOT	misfire: invulgar
+D9	S0190	S0190L02	NOT	fizer is future subjunctive; OTHER: ask|fizer (K40)
+D9	S0197	S0197L02	NOT	misfire: professor
+D9	S0228	S0228L01	REAL	to practise speaking = S0005L02 exactly; then duplicate
+D9	S0231	S0231L01	NOT	misfire: senhor
+D9	S0269	S0269L01	REAL	to wait for the
+D9	S0274	S0274L01	REAL	to leave = S0139L03 exactly; then duplicate
+D9	S0305	S0305L01	NOT	misfire: mulher
+D9	S0337	S0337L01	REAL	to continue to
+D9	S0447	S0447L02	REAL	to take us home; OTHER: seed says drive
+D9	S0490	S0490L02	REAL	to trust anyone (see T4)
+D9	S0499	S0499L05	REAL	to open the door and close
+D9	S0587	S0587L01	NOT	misfire: jantar is a noun here
+D9	S0629	S0629L02	NOT	misfire: açúcar
+D9	S0639	S0639L01	NOT	misfire: senhor
+D9+	S0530	S0530L01	REAL	missed: can|poder; 'to be able to' clashes S0011L02 conseguir
+D10	S0111	S0111L03 component	NOT	component tile, display only; not spoken
+D10	S0390	S0390L02 component	NOT	component tile, display only; not spoken
+D10	S0391	S0391L02 component	NOT	component tile, display only; not spoken
+D10	S0392	S0392L05 component	NOT	component tile, display only; not spoken
+D10	S0392	S0392L05 component	NOT	component tile, display only; not spoken
+D10	S0390	por_for_eng:S0390L02C02	NOT	component tile, display only; not spoken
+D10	S0392	por_for_eng:S0392L05C02	NOT	component tile, display only; not spoken
+D10	S0147	S0147L03 presentation	REAL	spoken (about a woman); LEGO grown already: drop tag
+D10	S0183	S0183L01 presentation	REAL	spoken (e.g. the keys); tag belongs to L02 them: drop
+D10	S0190	S0190L02 presentation	REAL	spoken (in the future); grow to if I ask you (K42)
+D12	S0151	S0151L03B03	NOT	OTHER: o que acontecesse ungrammatical; would|acontecesse (K40)
+D12	S0172	S0172L01U08	NOT	same conditional/ia+inf as standalone; no split
+D12	S0225	S0225L01U07	NOT	OTHER: que dar-te-ia, EP needs que te daria
+D12	S0226	S0226L01U08	NOT	OTHER: que dar-te-ia, EP needs que te daria
+D12	S0229	S0229L02U05	NOT	OTHER: que ajudar-te-ia, EP needs que te ajudaria
+D12	S0230	S0230L01U04	NOT	OTHER: que dar-te-ia, EP needs que te daria
+D12	S0362	S0362L01U05	NOT	same conditional/ia+inf as standalone; no split
+D12	S0485	S0485L02U05	NOT	same conditional/ia+inf as standalone; no split
+D12	S0485	S0485L02U02	NOT	same conditional/ia+inf as standalone; no split
+D12	S0485	S0485L02U04	NOT	same conditional/ia+inf as standalone; no split
+D12	S0485	S0485L02U01	NOT	same conditional/ia+inf as standalone; no split
+D12	S0485	S0485L02U03	NOT	same conditional/ia+inf as standalone; no split
+D12	S0485	S0485L03U02	NOT	same conditional/ia+inf as standalone; no split
+D12	S0485	S0485L03U03	NOT	same conditional/ia+inf as standalone; no split
+D12	S0485	S0485L03U04	NOT	same conditional/ia+inf as standalone; no split
+D12	S0485	S0485L03U05	NOT	same conditional/ia+inf as standalone; no split
+D12	S0490	S0490L01U02	NOT	would over vai (will); EP accepts if still true
+D12	S0490	S0490L01U05	NOT	would over vai (will); EP accepts if still true
+D12	S0490	S0490L01U01	NOT	would over vai (will); EP accepts if still true
+D12	S0490	S0490L01U03	NOT	would over vai (will); EP accepts if still true; U03 English truncated
+D12	S0490	S0490L01U04	NOT	would over vai (will); EP accepts if still true
+D12	S0544	S0544L01B02	NOT	same conditional/ia+inf as standalone; no split
+D12	S0544	S0544L01B03	NOT	same conditional/ia+inf as standalone; no split
+D12	S0544	S0544L01B01	NOT	same conditional/ia+inf as standalone; no split
+D12	S0544	S0544L01U04	NOT	same conditional/ia+inf as standalone; no split
+D12	S0544	S0544L01U01	NOT	same conditional/ia+inf as standalone; no split
+D12	S0544	S0544L01U03	NOT	same conditional/ia+inf as standalone; no split
+D12	S0544	S0544L01U05	NOT	same conditional/ia+inf as standalone; no split
+D12	S0544	S0544L01U02	NOT	same conditional/ia+inf as standalone; no split
+D12	S0571	S0571L02U03	NOT	OTHER: she said she's over não estou (person)
+D12	S0571	S0571L02U04	NOT	OTHER: she said she's over não estou (person)
+D12	S0571	S0571L02U02	NOT	OTHER: she said she's over não estou (person)
+D12	S0571	S0571L02U05	NOT	OTHER: she said she's over não estou (person)
+D12	S0581	S0581L02U04	NOT	same conditional/ia+inf as standalone; no split
+D12	S0581	S0581L02U02	NOT	same conditional/ia+inf as standalone; no split
+D12	S0581	S0581L02U03	NOT	same conditional/ia+inf as standalone; no split
+D12	S0581	S0581L02U05	NOT	same conditional/ia+inf as standalone; no split
+D12	S0587	S0587L02U02	NOT	OTHER: would eat over comêssemos (subjunctive)
+D12	S0587	S0587L02U01	NOT	OTHER: would eat over comêssemos (subjunctive)
+D12	S0587	S0587L02U03	NOT	OTHER: would eat over comêssemos (subjunctive)
+D12	S0589	S0589L04U02	NOT	same conditional/ia+inf as standalone; no split
+D12	S0589	S0589L04U03	NOT	same conditional/ia+inf as standalone; no split
+D12	S0589	S0589L04U04	NOT	same conditional/ia+inf as standalone; no split
+D12	S0589	S0589L04U01	NOT	same conditional/ia+inf as standalone; no split
+D12	S0589	S0589L04U05	NOT	same conditional/ia+inf as standalone; no split
+D12	S0599	S0599L02U04	NOT	OTHER: her/him over me; she over eu (person)
+D12	S0599	S0599L02U03	NOT	OTHER: her/him over me; she over eu (person)
+D12	S0599	S0599L02U02	NOT	OTHER: her/him over me; she over eu (person)
+D12	S0600	S0600L03U03	NOT	OTHER: she over eu; known vs tivesses dito
+D12	S0600	S0600L03U05	NOT	OTHER: she over eu; known vs tivesses dito
+D12	S0600	S0600L03U04	NOT	OTHER: she over eu; known vs tivesses dito
+D12	S0600	S0600L03U02	NOT	OTHER: she over eu; known vs tivesses dito
+D12	S0606	S0606L01U04	NOT	same conditional/ia+inf as standalone; no split
+D12	S0606	S0606L02U04	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0606	S0606L02U03	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0606	S0606L02U02	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0606	S0606L02U01	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0606	S0606L03U04	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0606	S0606L03U02	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0606	S0606L03U05	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0606	S0606L03U03	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0607	S0607L02U05	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0607	S0607L02U02	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0607	S0607L02U03	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0607	S0607L02U04	NOT	OTHER: she/he over eu soubesse; que missing
+D12	S0624	S0624L01U05	NOT	OTHER: muito ótimo stilted (U05 only)
+D12	S0624	S0624L01U04	NOT	same conditional/ia+inf as standalone; no split
+D12	S0624	S0624L01U03	NOT	same conditional/ia+inf as standalone; no split
+D12	S0624	S0624L01U01	NOT	same conditional/ia+inf as standalone; no split
+D12	S0624	S0624L01U02	NOT	same conditional/ia+inf as standalone; no split
+D12	S0624	S0624L02B03	NOT	same conditional/ia+inf as standalone; no split
+D12	S0624	S0624L02U04	NOT	same conditional/ia+inf as standalone; no split
+D12	S0624	S0624L02U03	NOT	same conditional/ia+inf as standalone; no split
+D12	S0624	S0624L02U05	NOT	same conditional/ia+inf as standalone; no split
+D12	S0624	S0624L02U02	NOT	same conditional/ia+inf as standalone; no split
+D12	S0633	S0633L02U04	NOT	same conditional/ia+inf as standalone; no split
+D12	S0633	S0633L02U03	NOT	same conditional/ia+inf as standalone; no split
+D12	S0633	S0633L02U05	NOT	same conditional/ia+inf as standalone; no split
+D12	S0633	S0633L02U02	NOT	same conditional/ia+inf as standalone; no split
+D12	S0634	S0634L02U04	NOT	same conditional/ia+inf as standalone; no split
+D12	S0634	S0634L02U02	NOT	same conditional/ia+inf as standalone; no split
+D12	S0634	S0634L02U01	NOT	same conditional/ia+inf as standalone; no split
+D12	S0634	S0634L02U03	NOT	same conditional/ia+inf as standalone; no split
+D12	S0544	da2a974e-588d-4162-acd7-8e79cf0f6d82	NOT	same conditional/ia+inf as standalone; no split
+D12	S0544	bb1c7dcd-aa05-4fb0-8c40-b09b99840ff1	NOT	same conditional/ia+inf as standalone; no split
+D12	S0589	d8ccd9b6-088d-4d7d-ac27-1add3eb81505	NOT	same conditional/ia+inf as standalone; no split
