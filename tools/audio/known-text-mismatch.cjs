@@ -44,7 +44,10 @@ async function census(course, maxSeed = 668) {
   try {
     const clips = await clipMap(pg, slots.map((x) => x.audio_id))
     const bad = mismatches(slots, clips)
-    return { course, checked: slots.length, withClip: slots.filter((x) => x.audio_id).length, withoutClip: slots.filter((x) => !x.audio_id).length, danglingClip: slots.filter((x) => x.audio_id && !clips.has(x.audio_id)).length, mismatch: bad.length, rows: bad }
+    return { course, checked: slots.length, withClip: slots.filter((x) => x.audio_id).length, withoutClip: slots.filter((x) => !x.audio_id).length, danglingClip: slots.filter((x) => x.audio_id && !clips.has(x.audio_id)).length, mismatch: bad.length, rows: bad,
+      // voice of every known slot's clip, so a caller can check a fixed slot against the course's cast voice
+      voices: slots.filter((x) => clips.has(x.audio_id)).map((x) => [x.slot, clips.get(x.audio_id).voice_id]),
+      voiceCounts: slots.reduce((a, x) => { const v = clips.has(x.audio_id) ? clips.get(x.audio_id).voice_id : null; if (v) a[v] = (a[v] || 0) + 1; return a }, {}) }
   } finally { await pg.end() }
 }
 
@@ -56,7 +59,7 @@ if (require.main === module) {
   if (!course) { console.error('usage: known-text-mismatch.cjs --course C [--json out.json] [--max-seed N]'); process.exit(1) }
   census(course, Number(opt('--max-seed', 668))).then((r) => {
     if (opt('--json')) fs.writeFileSync(opt('--json'), JSON.stringify(r, null, 1))
-    console.log(JSON.stringify({ ...r, rows: undefined }))
+    console.log(JSON.stringify({ ...r, rows: undefined, voices: undefined }))
     for (const x of r.rows.slice(0, 15)) console.log(`  ${x.slot}: shows "${x.known_text}" plays "${x.clip_text}" (${x.clip_voice})`)
   }, (e) => { console.error(e.message); process.exit(2) })
 }
