@@ -1,6 +1,6 @@
 # Where the Finnish and Italian fixes recur in the nine paid courses
 
-Read-only. Nothing was written to any course. Live Popty read of all eleven courses on 22 Oct 2026, ~17:30Z (668 seeds each). Every count below comes from a candidate list that was read row by row; the candidate lists, coverage and per-row verdicts are on branch `cs/420-fin-ita-pattern-transfer` (`ops/pattern-transfer-420/`) and the readers' branches `cs/444-pattern-transfer-fra`, `cs/445-pattern-transfer-spa`, `cs/446-pattern-transfer-por`. Full French verdicts: /d/a57c3484. Full Spanish verdicts: /d/92e40fdc.
+Read-only. Nothing was written to any course. Live Popty read of all eleven courses on 22 Oct 2026, ~17:30Z (668 seeds each). Every count below comes from a candidate list that was read row by row; the candidate lists, coverage and per-row verdicts are on branch `cs/420-fin-ita-pattern-transfer` (`ops/pattern-transfer-420/`) and the readers' branches `cs/444-pattern-transfer-fra`, `cs/445-pattern-transfer-spa`, `cs/446-pattern-transfer-por`. Full French verdicts: /d/a57c3484. Full Spanish verdicts: /d/92e40fdc. Full Portuguese verdicts: /d/4f2b74b8.
 
 **Who read what.** fra, spa, por: one Opus reader each. por_br, deu, ara, zho, jpn, kor: read by me (the surface allows a colleague job three children, so the other six dispatches were refused). **Every judgement here is a model reading.** Kai follows Spanish and German; nobody here reads Portuguese, French, Arabic, Chinese, Japanese or Korean natively. For ara, zho, jpn and kor, treat each count as "rows a model thought wrong", nothing stronger.
 
@@ -22,7 +22,7 @@ Read-only. Nothing was written to any course. Live Popty read of all eleven cour
 |---|---|---|---|
 | fra | 31 (265 phrases under them) | 7 + 1 unsure | 0 dark of 9 (all built from earlier LEGOs) |
 | spa | 25 true duplicates + 19 pairs with the flags the wrong way round (first copy not-new, later copy new) | 13 | 1 (S0463) |
-| por | pending (#446·V) | pending | pending |
+| por | 10 (104 phrases would move) — `S0668L01 I hope | espero` = `S0149L01` | 5 — `S0207L01 you've done | fizeste` | 2 of 13 dark — S0043's sentence sits in no played basket |
 | por_br | 8 — `S0181L01 I have | tenho` = `S0073L03`; `S0634L01 I'd like | eu gostaria` = `S0170L01` | 13 (94) — `S0161L02 give me | me dar` 14 dark; `S0147L03 kind | simpática` 9 dark; `S0194L01 that | que` 8 dark | 10 — S0113, S0228, S0241, S0646, S0649, S0655 … |
 | deu | 64 — `S0645L01 to help | helfen` = `S0025L02` (23 phrases); `S0634L01 I'd like | ich möchte` = `S0011L01` (19); `me | mir` twice, `would be | wäre` twice, `heard | gehört` twice | 33 (192) — `S0068L01 what for | wonach` 11 dark; `S0202L03 the question | die Frage` 13 dark; `S0264L01 I saw an old man | ein alter Mann` (English ≠ German) | 16 — incl. S0661 *you're all doing something* with no LEGO at all |
 | ara | 8 — `S0419L03 if they want | إذا أرادوا` duplicates `S0419L01` in the same seed | 10 (83) | 4 |
@@ -70,7 +70,7 @@ Read-only. Nothing was written to any course. Live Popty read of all eleven cour
 |---|---|---|---|---|
 | fra | 15 (+3 hope) | 5 (+3) | S0237 `wanted me to | voulait que je` head+que+subject; S0204 `her to help you | qu'elle t'aide`; S0154 mistranslated | yes — vouloir que + subjunctive; S0203/S0412 take an infinitive and are out |
 | spa | 21 | 7 | S0238 `you told | dijeras` clause with no que; S0171 `me to help you | que te ayude` ("that I help you") | yes — que + subjunctive, Italian shape |
-| por | pending | | | |
+| por | 19 | 6 (whole chunk 11) | S0238 `wanted you to tell me | queria que tu me dissesses` whole chunk at the 7th occurrence; S0427 que taught twice (`não gostariam que` + `que achasses`); S0432 `that you ask | perguntes` has no que | yes — querer que + subjunctive, Italian shape |
 | por_br | 18 | 4 — whole chunk (15, 169, 171, 204, 237, 249); head + que-clause (170, 427, 432, 557, 587); que+subject split from verb (419 `that people | que as pessoas` + `to like them | gostem deles`); bare subjunctive glossed as "would" (238 `would tell | dissesse`, 346 `would know | soubesse`, 246L01 `would help | ajudasse`) | S0238 — the only LEGO is `would tell | dissesse`, so *he wanted you to tell me* is never built | yes — querer que + subjunctive; the "would X" glosses are wrong English on top |
 | deu | 18 | 5 — whole chunk (169, 170, 204, 246 = the entire seed); head+dass+pronoun glossed "me to" (237 `he wanted me to | er wollte, dass ich`, 171 `me to | dass ich`); dass+clause (249, 587); clause WITHOUT dass though the seed has it (149 `I hope you | ich hoffe du`, 291, 292, 419 `they like | mögen`, 427 `you think | du denkst`, 557); seed re-translated to avoid it (15 *ich will … sprechen* = "I want to speak", not "I want you to") | S0246L01 is the whole sentence as one LEGO; S0015 English ≠ German | yes, and K48 already requires it: a verb-final clause carries its dass |
 | ara | 16 | 4 — أن in the head (15 `I want you to | أريدك أن`); أن glued to the clause (291, 292, 427, 668); أن in no LEGO (169, 204, 237, 238, 432, 587); whole sentence (249, 557) | S0346L03 `أردت منها أن تعرف أنني` is not the seed's wording (seed: أردت أن تعرف); S0419 `if they want` taught twice in one seed | yes — أن + subjunctive; the Arabic head already carries the object ("I-want-you"), so head `أريدك` + `أن`-clause |
@@ -94,7 +94,7 @@ Read-only. Nothing was written to any course. Live Popty read of all eleven cour
 |---|---|---|---|---|
 | fra | 49 of 152 (103 are relative or comparative que) | penser mostly head+que; dire mostly que+clause | 3 — je pense, j'espère, j'ai entendu dire (S0509 vs S0364) | — |
 | spa | 51 of 131 | consistent with the Italian rule: que on the head for indicative, with the clause before a subjunctive | 4 — me temo, dijeron, dijo, piensas | S0071 `to let that | dejar que` |
-| por | pending | | | |
+| por | 51 of 130 | que kept with the head (46 of 50); subjunctive heads split 4 to 4 | `I think | eu acho que` (S0486L03) beside `I think that | acho que` (S0047L01); `they thought | achavam que` beside `I thought | achei` | S0139L02 `that I need | que precise de` |
 | por_br | ~55 of 150 | mixed: ~25 head+que (acho que, disse que, tenho certeza de que, lamento que) vs ~30 que+clause | `eu acho que` three times (486 "personally, I think", 553, 636 "I myself think that") | 12 — S0115L01 `I feel that | que esteja`, S0116L03 `I could make | que eu podia fazer`, S0421L02 `he's getting weak | que ele está…`, S0434L05, S0444L03, S0479L02, S0544L02 `it would be difficult | que ia ser difícil`, S0557L02, S0572L04, S0589L02, S0117L04, S0538L02 |
 | deu | 38 | 9 heads carry dass (`ich denke, dass`, `er hat gesagt, dass`, `ich bin mir sicher, dass`); 10 clauses carry dass; 7 verb-final clauses from item 3 carry none; `that | dass` (S0047L02, 11 phrases) and `whether | ob` (S0010L04, 8; new again at S0381L01) taught alone | — | — |
 | ara | 13 found (my أنّ list is partial — gap) | head + أنّ + attached pronoun, glossed "I think that it" (`أظن أنه`, `قلت إنني`) — consistent; `that we | أننا` taught alone (S0200L05) | — | — |
@@ -118,7 +118,7 @@ Read-only. Nothing was written to any course. Live Popty read of all eleven cour
 |---|---|---|---|---|
 | fra | 542 | it ↔ le, that/this ↔ ça; formal cela unsettled (19) | 48 | S0152 `I would have done it | j'aurais fait ça`; S0153 `I wouldn't have said that | je ne l'aurais pas dit` |
 | spa | 771 | LEGOs already one-to-one (lo / eso / esto); phrases drift | 22 | S0061 `to say it again | decir eso otra vez`; S0285 `she knows that | ella lo hace` (means "she does it") |
-| por | pending | | | |
+| por | 502 | it → object dropped, that → isso, this → isto; 36 phrases off the mapping (23 unsure, mostly rows ending on que) | 36 | S0443 `keep doing it | continuar a fazer isso`; S0108 `do it | fazer isto`; S0490 `do this | fazer isso` |
 | por_br | 357 | "do it / say it" → bare verb (object dropped) in ~62 rows, → `fazer isso` in ~22 | ~22 (or ~62 the other way) | S0152 `I would have done it | teria feito` vs S0316 `I would have done it on Monday | teria feito isso`; S0157 `I won't be able to say it | não vou conseguir dizer` |
 | deu | 539 | it → es 191, das 85 | 85 (if es is the rule) | S0167 `I will do it tomorrow | ich werde das morgen machen`; S0420 `he has not done it yet | er hat das noch nicht gemacht` |
 | ara | 364 | it → object suffix ـه (187); "do it" → ذلك in 4 rows, dropped in 1 | ~6 | S0409 `we do it | نفعل ذلك`; S0059 `how to do it | كيف أفعل` |
@@ -141,7 +141,7 @@ Read-only. Nothing was written to any course. Live Popty read of all eleven cour
 | course | real of candidates | examples |
 |---|---|---|
 | spa | 10 of 32 | S0223 `is going to | va a` → "he's going to" |
-| por | pending | |
+| por | 45 of 52 | S0152L01 `would have done | teria feito`; S0239L02 `likes to | gosta de`; S0513L01 `hurts | dói` |
 | por_br | 65 of 68 | S0215L01 `went out | saí` (I); S0217L01 `drank | bebi` (I); S0285L01 `speaks | fala`; S0238L01 `would tell | dissesse` (also the wrong English for a subjunctive) |
 | ara | 14 of 20 | S0053L01 `put | تضع` (she); S0243L01 `will ask | سأطلب` (I); S0619L04 `saw each other | رأينا` (we) |
 | fra, deu | does not transfer (not pro-drop) | |
@@ -163,7 +163,7 @@ Read-only. Nothing was written to any course. Live Popty read of all eleven cour
 |---|---|---|---|
 | fra | 7 of 50 | S0240 `he's stopping | s'arrêter`; S0091 `think | penser`; S0529 `put your hands up | lever la main` | 3 (e.g. "to think" vs réfléchir) |
 | spa | 10 of 15 | S0098 `play | jugar` | 2 clashes (to understand S0074L02, to have S0115L01), 4 would become duplicates |
-| por | pending | | |
+| por | 10 of 22 (+1 outside the list; 12 hits were nouns in -r) | S0071L02 `let | deixar`; S0065L03 `test yourself | testar-te a ti mesmo`; S0274L01 `leave | sair` | 2 would become exact duplicates (S0228L01, S0274L01) |
 | por_br | 39 of 50 | S0074L03 `understand | entender`; S0433L02 `find out | descobrir`; S0471L02 `stop | parar`; S0549L02 `be quiet | ficar calado` | not checked |
 | deu | 10 of 89 (the rest are participles, nouns, adjectives in -en) | S0088L02 `talk | reden`; S0173L03 `manage | schaffen`; S0351L02 `leave me alone | mich allein lassen` | not checked |
 | ara, zho, jpn, kor | not applicable (no infinitive glossed with "to") | | |
@@ -184,7 +184,7 @@ Read-only. Nothing was written to any course. Live Popty read of all eleven cour
 |---|---|---|
 | fra | 8 of 9 (+1 outside the list) | S0071 `anyone | personne`; S0060 `yet | encore`; S0603 `anywhere | nulle part` |
 | spa | 2 of 12 | S0035 `anything | nada`; S0376 `nowhere | ningún sitio` |
-| por | pending | |
+| por | 3 of 8 (+3 outside the list) | S0191L01 `at all | nada` (basket has *importas-te nada?*); S0071L03 `anyone | ninguém`; S0096L01 `yet | ainda` (alone = "still") |
 | por_br | 4 of 5 | S0071L03 `anyone | ninguém` (seed: não queríamos deixar ninguém…); S0298L01 `nothing | nada`; S0376L01 `anywhere | a lado nenhum` (also a European form in a Brazilian course) |
 | ara | 4 of 4 | S0035L02 `anything | أي شيء`; S0519L01 `yet | بعد` (seed: لم أر … بعد) |
 | zho | 4 of 5 | S0071L02 `anyone | 任何人`; S0376L01 `anywhere | 哪儿` (seed: 哪儿也没去) |
@@ -208,7 +208,7 @@ Read-only. Nothing was written to any course. Live Popty read of all eleven cour
 |---|---|---|
 | fra | 6 of 11 | S0053 `in | dans`; S0033 `the | le`; S0388 `that | cette` |
 | spa | 11 of 17 | S0216 `to | a` (no "to" in its phrases); S0004 `in | en` |
-| por | pending | |
+| por | 7 of 14 | S0204L01 `of the | dos` (basket: *I like my friends | gosto dos amigos*); S0581L01 `about | sobre`; S0513L03 `up | cima` |
 | por_br | 6 of 13 | S0134L01 `a | um`; S0184L01 `them | as`; S0195L01 `the (masculine) | o`; S0198L04 `to | para`; S0200L03 `of | de`; S0205L02 `of the | da` |
 | deu | 18 of 28 | S0193L01 `too | zu` (15 phrases); S0010L01 `not | nicht`; S0042L03 `than | als`; S0558L01 `the | der`; S0424L02 `from | von`; `up | oben` twice; S0534L06 `to | nach` still live, not-new, 1 phrase |
 | ara | 2 of 3 | S0100L03 `about | بشأن`; S0198L02 `at | لدى` (seed says "works for the council") |
@@ -232,7 +232,7 @@ Read-only. Nothing was written to any course. Live Popty read of all eleven cour
 |---|---|---|---|
 | fra | 24 of 57 | — | S0167 14 syllables; S0287 10 |
 | spa | 53 of 78 (73 by syllables; 20 are natural chunks) | several | S0117L04 the whole seed, 25 syllables |
-| por | pending | | |
+| por | 81 of 105 (16 unsure) | — | S0186L01 19 syllables; S0113L01 16; S0109L03 14 (the builder's check estimates syllables from characters) |
 | por_br | ~30 of 36 | — | S0246L03 `she was too busy | ela estava demasiado ocupada` 11; S0609L01 10 |
 | deu | ~30 of 44 | 16 — S0069L01 (11 English words), S0234L01 (22 syllables), S0236L01 (20), S0246L01, S0287L01, S0289L01 | `I met someone last night who works with your brother` as one LEGO |
 | ara | ~40 of 74 (estimate only) | S0249L01, S0557L02 | S0249L01 `أريدك أن تساعدني قبل أن تذهب` 12 |
@@ -260,7 +260,7 @@ Read-only. Nothing was written to any course. Live Popty read of all eleven cour
 | kor | 2 LEGOs + 2 phrases | S0654L02 `help you + can`; S0668L01 `you all + all`; phrase S0655L02B01 `very formal` |
 | jpn | 1 phrase | S0647L01B02 English reads *polite speech* |
 | fra, deu, ara | 0 (tiles only) | |
-| por | pending | |
+| por | 0 in LEGO/phrase text (its 3 tagged intros are in item 2) | |
 
 Presentations with tags are in item 2.
 
@@ -274,7 +274,7 @@ Presentations with tags are in item 2.
 
 **(b)** Italian S0544: `ha detto che sarebbe stato difficile` (fixed 28 Sept; all 13 live rows carry the perfect).
 
-**(c)** None of the nine does. fra (11 rows), spa (50), por_br (32), deu (78), ara (21), zho (24), jpn (34), kor (22): the course uses the same form as standalone — `elle a dit que ce serait parfait`, `quien dijo que sería difícil`, `disse que ia ser difícil`, `sie hat gesagt, dass sie warten würde` (German also uses the indicative: `sie hat uns gesagt, dass sie bald geht`), `قالت إنه سيكون صعباً`, `她说会很难`, `明日払うって言った`, `어려울 거라고 했어요`. por pending. **No fix.** The transferable half is P24 generally — a form correct only in a frame must keep its frame — and no other frame-bound form was censused here (gap).
+**(c)** None of the nine does. fra (11 rows), spa (50), por_br (32), deu (78), ara (21), zho (24), jpn (34), kor (22): the course uses the same form as standalone — `elle a dit que ce serait parfait`, `quien dijo que sería difícil`, `disse que ia ser difícil`, `sie hat gesagt, dass sie warten würde` (German also uses the indicative: `sie hat uns gesagt, dass sie bald geht`), `قالت إنه سيكون صعباً`, `她说会很难`, `明日払うって言った`, `어려울 거라고 했어요`, por (86 rows) `ela disse que seria ótimo`. **No fix.** The transferable half is P24 generally — a form correct only in a frame must keep its frame — and no other frame-bound form was censused here (gap).
 
 ---
 
@@ -284,12 +284,13 @@ Presentations with tags are in item 2.
 - deu `S0015` English *I want you to speak German with me* over German *ich will morgen mit dir Deutsch sprechen* ("I want to speak"); `S0264L01 I saw an old man | ein alter Mann`.
 - fra: 11 seed/gloss errors listed in /d/a57c3484 (S0246 *occupée*, S0152, S0178 needs the subjunctive, S0154 mistranslated); spa: 7 phrase translation faults in /d/92e40fdc.
 - ara `S0346L03` and kor `S0169L01`, `S0203L01`, `S0238L01`, `S0249L01`: LEGO target text is not the seed's text (L26).
+- por: 4 phrases with ungrammatical *que dar-te-ia* (should be *que te daria*); 23 phrases with the wrong person (*she said if she'd known | ela disse se eu soubesse*); 4 LEGOs whose two sides do not match (S0571L02, S0492L03, S0557L02, S0521L04).
 - jpn S0237L02 / S0238L01 identical Japanese under *he wanted me to tell you* / *he wanted you to tell me*.
 - zho `S0225L01 woman | 如果`; kor `S0615 she did it like that | 교회가 그렇게`.
 
 ## Gaps, plainly
 
-1. por_for_eng: reader #446·V had not reported when this was written; its rows are marked "pending" and will be folded in when it does.
+1. por_for_eng's reader (#446·V) found 10 rows the pack's regexes missed (S0151, four negative-polarity LEGOs, S0530L01) and added them; the other packs were not re-swept for the same misses.
 2. French and German presentation text is unreadable through every Popty read route (1,503 and 1,381 LEGOs) — item 2 has no French or German column for that reason.
 3. Six of nine courses were read by me, not by a separate reader, because the surface allows a colleague job three children; the ara/zho/jpn/kor readings are model readings with no native check.
 4. The say-it/that/this majority rows (several hundred per course) were matched by machine; only the off-majority rows were hand-read.
