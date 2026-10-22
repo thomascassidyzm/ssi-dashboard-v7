@@ -1,0 +1,4 @@
+deu_for_eng census fix pass (job #418, 2026-10-22). plan.py reads a Popty GET /api/production/deu_for_eng/seeds snapshot
+($CS_SCRATCH/seeds.json) and the stage-2 verdicts (branch cs/157-census2-deu-for-eng), and writes ops.json; ops.json was
+POSTed to /api/production/deu_for_eng/edit-batch (dry run, then apply) — event 1efb5de3-bec7-4021-b3fc-b24f08d4ede4.
+Not re-runnable as-is: every op carries an `expect` on the pre-edit text, so a replay aborts on drift (as intended).

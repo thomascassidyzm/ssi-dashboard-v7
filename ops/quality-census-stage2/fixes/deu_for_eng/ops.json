@@ -1,0 +1,2433 @@
+[
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0242L02U12",
+   "status": "draft",
+   "lego_id": "S0242L02",
+   "metadata": {
+    "p26": "seed sentence in a played basket (canon P26)",
+    "from_seed": 242,
+    "job": "#418 deu census fix"
+   },
+   "position": 20,
+   "register": null,
+   "introduce": true,
+   "difficulty": null,
+   "known_text": "I want to give her more time",
+   "lego_count": 6,
+   "lego_index": 2,
+   "word_count": 28,
+   "phrase_role": "use",
+   "seed_number": 242,
+   "target_text": "Ich will ihr mehr Zeit geben",
+   "lego_position": "middle",
+   "target_phrase_id": null,
+   "target_text_roman": null,
+   "connected_lego_ids": [],
+   "known_gloss_segments": null
+  }
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0572L05U08",
+   "status": "draft",
+   "lego_id": "S0572L05",
+   "metadata": {
+    "p26": "seed sentence in a played basket (canon P26)",
+    "from_seed": 572,
+    "job": "#418 deu census fix"
+   },
+   "position": 11,
+   "register": null,
+   "introduce": true,
+   "difficulty": null,
+   "known_text": "have you forgotten what happened the last time they visited us?",
+   "lego_count": 14,
+   "lego_index": 5,
+   "word_count": 78,
+   "phrase_role": "use",
+   "seed_number": 572,
+   "target_text": "hast du vergessen, was passiert ist, als sie uns das letzte Mal besucht haben?",
+   "lego_position": "middle",
+   "target_phrase_id": null,
+   "target_text_roman": null,
+   "connected_lego_ids": [],
+   "known_gloss_segments": null
+  }
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0229L03U12",
+   "status": "draft",
+   "lego_id": "S0229L03",
+   "metadata": {
+    "p26": "seed sentence in a played basket (canon P26)",
+    "from_seed": 229,
+    "job": "#418 deu census fix"
+   },
+   "position": 20,
+   "register": null,
+   "introduce": true,
+   "difficulty": null,
+   "known_text": "that woman would help you if she could",
+   "lego_count": 8,
+   "lego_index": 3,
+   "word_count": 44,
+   "phrase_role": "use",
+   "seed_number": 229,
+   "target_text": "diese Frau würde dir helfen, wenn sie könnte",
+   "lego_position": "end",
+   "target_phrase_id": null,
+   "target_text_roman": null,
+   "connected_lego_ids": [],
+   "known_gloss_segments": null
+  }
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0469L01U07",
+   "status": "draft",
+   "lego_id": "S0469L01",
+   "metadata": {
+    "p26": "seed sentence in a played basket (canon P26)",
+    "from_seed": 469,
+    "job": "#418 deu census fix"
+   },
+   "position": 10,
+   "register": null,
+   "introduce": true,
+   "difficulty": null,
+   "known_text": "but that doesn't mean we can't change it",
+   "lego_count": 10,
+   "lego_index": 1,
+   "word_count": 57,
+   "phrase_role": "use",
+   "seed_number": 469,
+   "target_text": "aber das bedeutet nicht, dass wir sie nicht ändern können",
+   "lego_position": "middle",
+   "target_phrase_id": null,
+   "target_text_roman": null,
+   "connected_lego_ids": [],
+   "known_gloss_segments": null
+  }
+ },
+ {
+  "op": "phrase.insert",
+  "row": {
+   "id": "deu_for_eng:S0639L01U08",
+   "status": "draft",
+   "lego_id": "S0639L01",
+   "metadata": {
+    "p26": "seed sentence in a played basket (canon P26)",
+    "from_seed": 639,
+    "job": "#418 deu census fix"
+   },
+   "position": 11,
+   "register": null,
+   "introduce": true,
+   "difficulty": null,
+   "known_text": "with you sir",
+   "lego_count": 4,
+   "lego_index": 1,
+   "word_count": 20,
+   "phrase_role": "use",
+   "seed_number": 639,
+   "target_text": "mit Ihnen, mein Herr",
+   "lego_position": "end",
+   "target_phrase_id": null,
+   "target_text_roman": null,
+   "connected_lego_ids": [],
+   "known_gloss_segments": null
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0242L02U12",
+  "slot": "known",
+  "audio_id": "32ef8509-1e33-476f-a2d9-0806829d99de"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0242L02U12",
+  "slot": "target1",
+  "audio_id": "dfdde4ee-acd2-42c1-8d05-20176cfc199e"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0242L02U12",
+  "slot": "target2",
+  "audio_id": "cc200afd-8b47-43d4-9efd-ec99b5ab6184"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0572L05U08",
+  "slot": "known",
+  "audio_id": "f473c472-0da7-41f5-8ab1-d6b610c61414"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0572L05U08",
+  "slot": "target1",
+  "audio_id": "07f9294f-bc65-4e2c-8a8e-f0728ee87fd8"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0572L05U08",
+  "slot": "target2",
+  "audio_id": "3392b85b-0e10-4414-bc93-fecdb80099ae"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0229L03U12",
+  "slot": "known",
+  "audio_id": "c3341a8f-95c1-4548-adf6-5b5a4e03d170"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0229L03U12",
+  "slot": "target1",
+  "audio_id": "494c7493-786b-44da-a3ba-1b5b9fe38eaa"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0229L03U12",
+  "slot": "target2",
+  "audio_id": "75e07a19-4f4c-45b3-80aa-3697671a3e97"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0469L01U07",
+  "slot": "known",
+  "audio_id": "1d1dba69-af67-44c3-b502-a5e64bf91ae9"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0469L01U07",
+  "slot": "target1",
+  "audio_id": "6c11baa1-9f4d-4d30-818a-905f6cd5606d"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0469L01U07",
+  "slot": "target2",
+  "audio_id": "0f27e021-6100-4521-b8d2-83b0844f3975"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0639L01U08",
+  "slot": "known",
+  "audio_id": "6b74a039-cfac-4ffb-a2af-46eeab4cf262"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0639L01U08",
+  "slot": "target1",
+  "audio_id": "c3c302ee-71ee-43d8-b808-06556d6df2de"
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0639L01U08",
+  "slot": "target2",
+  "audio_id": "bff6cad4-570d-435c-85bb-95bee4982649"
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0003L03B01",
+  "set": {
+   "known_text": "how to speak as often as possible"
+  },
+  "expect": {
+   "known_text": "How to speak as often as possible"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0004L04B01",
+  "set": {
+   "known_text": "how to say something in German"
+  },
+  "expect": {
+   "known_text": "How to say something in German"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0013L03U05",
+  "set": {
+   "known_text": "you speak German very well"
+  },
+  "expect": {
+   "known_text": "You speak German very well"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0014L02U05",
+  "set": {
+   "known_text": "do you speak German all day?"
+  },
+  "expect": {
+   "known_text": "Do you speak German all day?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0016L04U07",
+  "set": {
+   "known_text": "he wants to come back with everyone else later on"
+  },
+  "expect": {
+   "known_text": "He wants to come back with everyone else later on"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0017L04U06",
+  "set": {
+   "known_text": "she wants to find out what the answer is"
+  },
+  "expect": {
+   "known_text": "She wants to find out what the answer is"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0020L03U07",
+  "set": {
+   "known_text": "you want to learn his name quickly"
+  },
+  "expect": {
+   "known_text": "You want to learn his name quickly"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0022L03U06",
+  "set": {
+   "known_text": "because I want to meet people who speak German"
+  },
+  "expect": {
+   "known_text": "Because I want to meet people who speak German"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0025L05U04",
+  "set": {
+   "known_text": "are you going to help me before I have to go?"
+  },
+  "expect": {
+   "known_text": "Are you going to help me before I have to go?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0034L05B03",
+  "set": {
+   "known_text": "he doesn't want to be quiet when other people are here"
+  },
+  "expect": {
+   "known_text": "He doesn't want to be quiet when other people are here"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0040L02B04",
+  "set": {
+   "known_text": "how do you feel at the moment?"
+  },
+  "expect": {
+   "known_text": "How do you feel at the moment?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0052L04U05",
+  "set": {
+   "known_text": "he wanted to write a letter to his friend last week"
+  },
+  "expect": {
+   "known_text": "He wanted to write a letter to his friend last week"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0065L01B01",
+  "set": {
+   "known_text": "it's important to take time to test yourself"
+  },
+  "expect": {
+   "known_text": "It's important to take time to test yourself"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0066L01B01",
+  "set": {
+   "known_text": "it's not difficult to find the answer"
+  },
+  "expect": {
+   "known_text": "It's not difficult to find the answer"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0194L01B01",
+  "set": {
+   "known_text": "what are you looking for?"
+  },
+  "expect": {
+   "known_text": "What are you looking for?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0069L01B01",
+  "set": {
+   "known_text": "he didn't want to look after the young dog all afternoon"
+  },
+  "expect": {
+   "known_text": "He didn't want to look after the young dog all afternoon"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0070L01B01",
+  "set": {
+   "known_text": "she didn't want to tell me where it was"
+  },
+  "expect": {
+   "known_text": "She didn't want to tell me where it was"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0071L01B01",
+  "set": {
+   "known_text": "we didn't want to let anyone hear the truth"
+  },
+  "expect": {
+   "known_text": "We didn't want to let anyone hear the truth"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0075L01B01",
+  "set": {
+   "known_text": "have you got more to learn?"
+  },
+  "expect": {
+   "known_text": "Have you got more to learn?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0079L01B01",
+  "set": {
+   "known_text": "when did you start to learn?"
+  },
+  "expect": {
+   "known_text": "When did you start to learn?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0087L01B01",
+  "set": {
+   "known_text": "they are people I don't know"
+  },
+  "expect": {
+   "known_text": "They are people I don't know"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0111L03B05",
+  "set": {
+   "known_text": "when we learn something new it changes our brain"
+  },
+  "expect": {
+   "known_text": "When we learn something new it changes our brain"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0162L01B01",
+  "set": {
+   "known_text": "what do you think about that?"
+  },
+  "expect": {
+   "known_text": "What do you think about that?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0164L01B01",
+  "set": {
+   "known_text": "an interesting book"
+  },
+  "expect": {
+   "known_text": "An interesting book"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0167L02U01",
+  "set": {
+   "known_text": "what do you need to do tomorrow afternoon?"
+  },
+  "expect": {
+   "known_text": "What do you need to do tomorrow afternoon?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0169L01B01",
+  "set": {
+   "known_text": "what do you want me to do?"
+  },
+  "expect": {
+   "known_text": "What do you want me to do?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0175L01U10",
+  "set": {
+   "known_text": "what do you want to do on Sunday morning?"
+  },
+  "expect": {
+   "known_text": "What do you want to do on Sunday morning?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0186L01U01",
+  "set": {
+   "known_text": "do you want to talk about something different next week?"
+  },
+  "expect": {
+   "known_text": "Do you want to talk about something different next week?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0201L01U01",
+  "set": {
+   "known_text": "we wanted to know what was going to happen"
+  },
+  "expect": {
+   "known_text": "We wanted to know what was going to happen"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0213L01U01",
+  "set": {
+   "known_text": "we don't know what they're trying to achieve"
+  },
+  "expect": {
+   "known_text": "We don't know what they're trying to achieve"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0229L02B03",
+  "set": {
+   "known_text": "that woman would help you if she could"
+  },
+  "expect": {
+   "known_text": "That woman would help you if she could"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0240L01B01",
+  "set": {
+   "known_text": "my father doesn't like to stop talking"
+  },
+  "expect": {
+   "known_text": "My father doesn't like to stop talking"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0252L01B01",
+  "set": {
+   "known_text": "when will you be ready to start?"
+  },
+  "expect": {
+   "known_text": "When will you be ready to start?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0259L01B01",
+  "set": {
+   "known_text": "an idea"
+  },
+  "expect": {
+   "known_text": "An idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0262L01B01",
+  "set": {
+   "known_text": "who was that man you were talking to yesterday?"
+  },
+  "expect": {
+   "known_text": "Who was that man you were talking to yesterday?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0264L01B01",
+  "set": {
+   "known_text": "an old man"
+  },
+  "expect": {
+   "known_text": "An old man"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0265L01B01",
+  "set": {
+   "known_text": "a friend"
+  },
+  "expect": {
+   "known_text": "A friend"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0275L01B01",
+  "set": {
+   "known_text": "longer"
+  },
+  "expect": {
+   "known_text": "Longer"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0284L02B04",
+  "set": {
+   "known_text": "do you know my sister's friend?"
+  },
+  "expect": {
+   "known_text": "Do you know my sister's friend?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0285L01B01",
+  "set": {
+   "known_text": "she speaks German"
+  },
+  "expect": {
+   "known_text": "She speaks German"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0286L01B01",
+  "set": {
+   "known_text": "people who like speaking German"
+  },
+  "expect": {
+   "known_text": "People who like speaking German"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0001L05B01",
+  "set": {
+   "known_text": "with you"
+  },
+  "expect": {
+   "known_text": "With you"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0006L01B01",
+  "set": {
+   "known_text": "a word"
+  },
+  "expect": {
+   "known_text": "A word"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0009L01B01",
+  "set": {
+   "known_text": "a little"
+  },
+  "expect": {
+   "known_text": "A little"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0010L04B01",
+  "set": {
+   "known_text": "whether"
+  },
+  "expect": {
+   "known_text": "Whether"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0011L04B01",
+  "set": {
+   "known_text": "you are"
+  },
+  "expect": {
+   "known_text": "You are"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0025L02U02",
+  "set": {
+   "known_text": "she wants to help"
+  },
+  "expect": {
+   "known_text": "She wants to help"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0026L04B02",
+  "set": {
+   "known_text": "she is ready"
+  },
+  "expect": {
+   "known_text": "She is ready"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0027L01B02",
+  "set": {
+   "known_text": "she likes it"
+  },
+  "expect": {
+   "known_text": "She likes it"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0030L02B02",
+  "set": {
+   "known_text": "she wanted to ask"
+  },
+  "expect": {
+   "known_text": "She wanted to ask"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0040L02B01",
+  "set": {
+   "known_text": "at the moment"
+  },
+  "expect": {
+   "known_text": "At the moment"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0053L01B02",
+  "set": {
+   "known_text": "she wanted"
+  },
+  "expect": {
+   "known_text": "She wanted"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0090L02B01",
+  "set": {
+   "known_text": "that would be great"
+  },
+  "expect": {
+   "known_text": "That would be great"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0092L01B01",
+  "set": {
+   "known_text": "a while"
+  },
+  "expect": {
+   "known_text": "A while"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0095L02B01",
+  "set": {
+   "known_text": "go home"
+  },
+  "expect": {
+   "known_text": "Go home"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0250L02B01",
+  "set": {
+   "known_text": "something else"
+  },
+  "expect": {
+   "known_text": "Something else"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0111L01B01",
+  "set": {
+   "known_text": "something new"
+  },
+  "expect": {
+   "known_text": "Something new"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0121L03B01",
+  "set": {
+   "known_text": "the car"
+  },
+  "expect": {
+   "known_text": "The car"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0121L03B03",
+  "set": {
+   "known_text": "in the car"
+  },
+  "expect": {
+   "known_text": "In the car"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0121L02B02",
+  "set": {
+   "known_text": "your friend"
+  },
+  "expect": {
+   "known_text": "Your friend"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0123L01B04",
+  "set": {
+   "known_text": "that is a good idea"
+  },
+  "expect": {
+   "known_text": "That is a good idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0123L01B01",
+  "set": {
+   "known_text": "a good idea"
+  },
+  "expect": {
+   "known_text": "A good idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0125L02B01",
+  "set": {
+   "known_text": "your idea"
+  },
+  "expect": {
+   "known_text": "Your idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0136L02B01",
+  "set": {
+   "known_text": "friend"
+  },
+  "expect": {
+   "known_text": "Friend"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0141L01B01",
+  "set": {
+   "known_text": "no problem"
+  },
+  "expect": {
+   "known_text": "No problem"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0143L02B01",
+  "set": {
+   "known_text": "earlier"
+  },
+  "expect": {
+   "known_text": "Earlier"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0152L03B01",
+  "set": {
+   "known_text": "if I had known"
+  },
+  "expect": {
+   "known_text": "If I had known"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0153L03B01",
+  "set": {
+   "known_text": "the same way"
+  },
+  "expect": {
+   "known_text": "The same way"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0153L02B03",
+  "set": {
+   "known_text": "exactly the same"
+  },
+  "expect": {
+   "known_text": "Exactly the same"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0177L01B01",
+  "set": {
+   "known_text": "her"
+  },
+  "expect": {
+   "known_text": "Her"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0219L02B01",
+  "set": {
+   "known_text": "for a while"
+  },
+  "expect": {
+   "known_text": "For a while"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0184L02B01",
+  "set": {
+   "known_text": "in the office"
+  },
+  "expect": {
+   "known_text": "In the office"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0205L02B01",
+  "set": {
+   "known_text": "the word"
+  },
+  "expect": {
+   "known_text": "The word"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0231L02B01",
+  "set": {
+   "known_text": "who"
+  },
+  "expect": {
+   "known_text": "Who"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0245L01B03",
+  "set": {
+   "known_text": "she is happy"
+  },
+  "expect": {
+   "known_text": "She is happy"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0250L01B01",
+  "set": {
+   "known_text": "can you tell me?"
+  },
+  "expect": {
+   "known_text": "Can you tell me?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0259L01B04",
+  "set": {
+   "known_text": "do you have an idea?"
+  },
+  "expect": {
+   "known_text": "Do you have an idea?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0276L01B01",
+  "set": {
+   "known_text": "to stay"
+  },
+  "expect": {
+   "known_text": "To stay"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0284L01U09",
+  "set": {
+   "known_text": "do you know this story?"
+  },
+  "expect": {
+   "known_text": "Do you know this story?"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0299L02B01",
+  "set": {
+   "known_text": "to pay"
+  },
+  "expect": {
+   "known_text": "To pay"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0018L05U07",
+  "set": {
+   "known_text": "we want to meet each other at six o'clock this evening"
+  },
+  "expect": {
+   "known_text": "We want to meet each other at six o'clock this evening"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0128L02U13",
+  "set": {
+   "known_text": "you are like someone I knew before"
+  },
+  "expect": {
+   "known_text": "You are like someone I knew before"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0189L01B02",
+  "set": {
+   "known_text": "yes, that's a good idea"
+  },
+  "expect": {
+   "known_text": "Yes, that's a good idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0222L01B01",
+  "set": {
+   "known_text": "he is trying to tell me what he wants"
+  },
+  "expect": {
+   "known_text": "He is trying to tell me what he wants"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0223L01B02",
+  "set": {
+   "known_text": "he is going to ask you tomorrow"
+  },
+  "expect": {
+   "known_text": "He is going to ask you tomorrow"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0220L01B01",
+  "set": {
+   "known_text": "a bit of"
+  },
+  "expect": {
+   "known_text": "A bit of"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0011L03B01",
+  "set": {
+   "known_text": "finished"
+  },
+  "expect": {
+   "known_text": "Finished"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0017L03B03",
+  "set": {
+   "known_text": "she is finished"
+  },
+  "expect": {
+   "known_text": "She is finished"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0026L04B03",
+  "set": {
+   "known_text": "nearly ready"
+  },
+  "expect": {
+   "known_text": "Nearly ready"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0109L01B01",
+  "set": {
+   "known_text": "a lot of"
+  },
+  "expect": {
+   "known_text": "A lot of"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0189L01B01",
+  "set": {
+   "known_text": "that's a good idea"
+  },
+  "expect": {
+   "known_text": "That's a good idea"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0131L01B01",
+  "set": {
+   "known_text": "there are"
+  },
+  "expect": {
+   "known_text": "There are"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0282L01B01",
+  "set": {
+   "known_text": "that's not a problem"
+  },
+  "expect": {
+   "known_text": "That's not a problem"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0143L01B01",
+  "set": {
+   "known_text": "the same thing"
+  },
+  "expect": {
+   "known_text": "The same thing"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0182L01B01",
+  "set": {
+   "known_text": "anywhere"
+  },
+  "expect": {
+   "known_text": "Anywhere"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0196L02B03",
+  "set": {
+   "known_text": "she heard"
+  },
+  "expect": {
+   "known_text": "She heard"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0278L01B01",
+  "set": {
+   "known_text": "to finish"
+  },
+  "expect": {
+   "known_text": "To finish"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0219L01B01",
+  "set": {
+   "known_text": "it was nice"
+  },
+  "expect": {
+   "known_text": "It was nice"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0476L01",
+  "set": {
+   "known_text": "I'm waiting for"
+  },
+  "expect": {
+   "known_text": "i'm waiting for"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0051L03U04",
+  "set": {
+   "known_text": "I'm going to practise with my friends"
+  },
+  "expect": {
+   "known_text": "i'm going to practise with my friends"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0410L02B04",
+  "set": {
+   "known_text": "I'm still learning"
+  },
+  "expect": {
+   "known_text": "i'm still learning"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0410L02U03",
+  "set": {
+   "known_text": "I'm still here"
+  },
+  "expect": {
+   "known_text": "i'm still here"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0410L02U04",
+  "set": {
+   "known_text": "I'm still learning German"
+  },
+  "expect": {
+   "known_text": "i'm still learning German"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L03U04",
+  "set": {
+   "known_text": "I'm still waiting for the end of the second half"
+  },
+  "expect": {
+   "known_text": "i'm still waiting for the end of the second half"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L03U01",
+  "set": {
+   "known_text": "I'm waiting for the end of the second half"
+  },
+  "expect": {
+   "known_text": "i'm waiting for the end of the second half"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L02U01",
+  "set": {
+   "known_text": "I'm waiting for the end"
+  },
+  "expect": {
+   "known_text": "i'm waiting for the end"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L02U05",
+  "set": {
+   "known_text": "I'm still waiting for the end"
+  },
+  "expect": {
+   "known_text": "i'm still waiting for the end"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L01B01",
+  "set": {
+   "known_text": "I'm waiting for"
+  },
+  "expect": {
+   "known_text": "i'm waiting for"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L01B03",
+  "set": {
+   "known_text": "I'm waiting for that"
+  },
+  "expect": {
+   "known_text": "i'm waiting for that"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L01B02",
+  "set": {
+   "known_text": "I'm waiting for something"
+  },
+  "expect": {
+   "known_text": "i'm waiting for something"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L01B04",
+  "set": {
+   "known_text": "I'm waiting for you now"
+  },
+  "expect": {
+   "known_text": "i'm waiting for you now"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L01U01",
+  "set": {
+   "known_text": "I'm waiting for you"
+  },
+  "expect": {
+   "known_text": "i'm waiting for you"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L01U03",
+  "set": {
+   "known_text": "I'm waiting for you here"
+  },
+  "expect": {
+   "known_text": "i'm waiting for you here"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L01U04",
+  "set": {
+   "known_text": "I'm already waiting for you"
+  },
+  "expect": {
+   "known_text": "i'm already waiting for you"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L01U05",
+  "set": {
+   "known_text": "I'm still waiting for the girl"
+  },
+  "expect": {
+   "known_text": "i'm still waiting for the girl"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0476L01U02",
+  "set": {
+   "known_text": "I'm waiting for the child"
+  },
+  "expect": {
+   "known_text": "i'm waiting for the child"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0477L02U03",
+  "set": {
+   "known_text": "I've been tired since the second day"
+  },
+  "expect": {
+   "known_text": "i've been tired since the second day"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0477L02U04",
+  "set": {
+   "known_text": "I've been here since the second day"
+  },
+  "expect": {
+   "known_text": "i've been here since the second day"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0477L02U02",
+  "set": {
+   "known_text": "I've been sick since the second day"
+  },
+  "expect": {
+   "known_text": "i've been sick since the second day"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0477L03U04",
+  "set": {
+   "known_text": "I've been sick since the second day of the holidays"
+  },
+  "expect": {
+   "known_text": "i've been sick since the second day of the holidays"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0477L03U02",
+  "set": {
+   "known_text": "I'm waiting for the end of the holidays"
+  },
+  "expect": {
+   "known_text": "i'm waiting for the end of the holidays"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0477L01U03",
+  "set": {
+   "known_text": "I'm already sick"
+  },
+  "expect": {
+   "known_text": "i'm already sick"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0477L01U04",
+  "set": {
+   "known_text": "I'm sick today"
+  },
+  "expect": {
+   "known_text": "i'm sick today"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0477L01U05",
+  "set": {
+   "known_text": "I'm tired and sick"
+  },
+  "expect": {
+   "known_text": "i'm tired and sick"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0477L01U01",
+  "set": {
+   "known_text": "I'm sick"
+  },
+  "expect": {
+   "known_text": "i'm sick"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0480L01U01",
+  "set": {
+   "known_text": "I'll do whatever you want"
+  },
+  "expect": {
+   "known_text": "i'll do whatever you want"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0482L01U02",
+  "set": {
+   "known_text": "I'm serious"
+  },
+  "expect": {
+   "known_text": "i'm serious"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0485L01U05",
+  "set": {
+   "known_text": "I'm happier than yesterday"
+  },
+  "expect": {
+   "known_text": "i'm happier than yesterday"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0485L01U03",
+  "set": {
+   "known_text": "I'm much happier"
+  },
+  "expect": {
+   "known_text": "i'm much happier"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0485L01U02",
+  "set": {
+   "known_text": "I'm happier now"
+  },
+  "expect": {
+   "known_text": "i'm happier now"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0577L02U03",
+  "set": {
+   "known_text": "I'm waiting for the news"
+  },
+  "expect": {
+   "known_text": "i'm waiting for the news"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0577L02U04",
+  "set": {
+   "known_text": "I'm still waiting for the news"
+  },
+  "expect": {
+   "known_text": "i'm still waiting for the news"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0577L01U05",
+  "set": {
+   "known_text": "I've already waited"
+  },
+  "expect": {
+   "known_text": "i've already waited"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0577L03U03",
+  "set": {
+   "known_text": "I'm waiting for the news from the hospital"
+  },
+  "expect": {
+   "known_text": "i'm waiting for the news from the hospital"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S0635L02",
+  "set": {
+   "known_text": "Jane's"
+  },
+  "expect": {
+   "known_text": "jane's"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0635L02B01",
+  "set": {
+   "known_text": "Jane's"
+  },
+  "expect": {
+   "known_text": "jane's"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_for_eng:S0162L01U04",
+  "expect": {
+   "known_text": "What do you think about that? I want to know?",
+   "target_text": "Was denkst du darüber? Ich will es wissen"
+  }
+ },
+ {
+  "op": "phrase.delete",
+  "phrase_id": "deu_for_eng:S0251L01U13",
+  "expect": {
+   "known_text": "I don't want to find out what happened, it is not important to me",
+   "target_text": "Ich will nicht herausfinden, was passiert ist. Das ist mir nicht wichtig"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "deu_for_eng:S0638L01B03",
+  "set": {
+   "known_text": "I try to fetch the keys"
+  },
+  "expect": {
+   "known_text": "ich versuche, die Schlüssel zu holen"
+  }
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0250L01B01",
+  "slot": "known",
+  "audio_id": "85c9b116-0d40-427a-83f8-7e5a0dc0015c",
+  "allow_text_mismatch": true
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "deu_for_eng:S0638L01B03",
+  "slot": "known",
+  "audio_id": "3cc62598-a37e-45a7-87d7-20ae9156f9a9"
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 1,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 3,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 4,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 6,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 9,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 10,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 13,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 14,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 16,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 17,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 18,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 20,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 22,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 25,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 30,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 40,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:00:07.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 51,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-07-03T14:30:18.020Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 52,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-07-03T14:30:18.020Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 53,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 65,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:03:24.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 66,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:03:24.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 69,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 70,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:03:24.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 71,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:03:24.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 75,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:03:24.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 79,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:03:24.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 87,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T13:05:24.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 90,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 95,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 109,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 111,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 121,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 123,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 125,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 128,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 131,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 136,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 152,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 153,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 162,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 164,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 167,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 169,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 175,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 177,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 182,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 186,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 189,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 194,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 196,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 205,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 213,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 222,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 223,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 231,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 240,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 242,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 245,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 250,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 252,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 259,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 262,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 264,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 265,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 278,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 282,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 284,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 285,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-04-13T13:58:53.386Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 286,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-03-26T14:21:47.000Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 476,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-07-03T14:30:18.020Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 480,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-07-03T14:30:18.020Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 482,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-07-03T14:30:18.020Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 485,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-07-03T14:30:18.020Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 572,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-07-03T14:30:18.020Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 577,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-07-03T14:30:18.020Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 635,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-07-03T14:30:18.020Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 638,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-07-03T14:30:18.020Z"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 639,
+  "set": {
+   "approved_at": null
+  },
+  "expect": {
+   "approved_at": "2026-07-03T14:30:18.020Z"
+  }
+ }
+]
