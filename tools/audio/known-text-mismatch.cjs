@@ -15,7 +15,9 @@ const { connect, clipMap } = require('../../services/shared/agent-db.cjs')
 const { normalizeForDb } = require('../../services/shared/text-normalize.cjs')
 
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
-const same = (a, b) => normalizeForDb(String(a || '')) === normalizeForDb(String(b || ''))
+// WORDS, not punctuation or case: a question mark or capital is prosody (the voice asks "Could you?"), not a different prompt.
+const words = (t) => normalizeForDb(String(t || '')).toLowerCase().replace(/[^\p{L}\p{N}\s']/gu, ' ').replace(/[’‘]/g, "'").split(/\s+/).filter(Boolean).join(' ')
+const same = (a, b) => words(a) === words(b)
 
 /** Pure. Flatten a script-view seeds[] into known slots: the LEGO's own debut slot and every phrase slot. */
 function slotsOf(seeds) {
