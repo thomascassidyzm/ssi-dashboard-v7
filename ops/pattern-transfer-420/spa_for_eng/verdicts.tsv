@@ -1,0 +1,1260 @@
+detector	seed	row	verdict	note
+T1	S0015	S0015	NOT	pattern; whole chunk at 1st occurrence, rule-compliant
+T1	S0073	S0073	NOT	tener que + infinitive; not want-you-to
+T1	S0075	S0075	NOT	tener que + infinitive; not want-you-to
+T1	S0149	S0149	REAL	que glued to head (espero que) + clause termines
+T1	S0169	S0169	REAL	whole chunk again AND que haga clause LEGO
+T1	S0170	S0170	REAL	whole seed one LEGO; dijeras glossed you would tell
+T1	S0171	S0171	REAL	que+clause, English me to help you not that-clause
+T1	S0203	S0203	NOT	head si te pidiera + que me ayudaras; matches Italian shape
+T1	S0204	S0204	NOT	que+clause that she would help you; Italian shape
+T1	S0237	S0237	REAL	que+clause, English me to tell you not that-clause
+T1	S0238	S0238	REAL	clause only: you told | dijeras, no que, no head
+T1	S0246	S0246	NOT	built from earlier S0204L01 que ella te ayudara
+T1	S0249	S0249	REAL	que+clause, English you to help me not that-clause
+T1	S0291	S0291	NOT	same subject: espero poder + infinitive
+T1	S0292	S0292	REAL	whole chunk espero que puedas after 2nd occurrence
+T1	S0346	S0346	REAL	que+clause, English her to know not that-clause
+T1	S0412	S0412	NOT	permitirles + infinitive; no que-clause
+T1	S0419	S0419	REAL	clause only les aprecie; que and head untaught
+T1	S0427	S0427	REAL	clause only pensaras; head no les gustaría not LEGO
+T1	S0432	S0432	REAL	clause only preguntes; que untaught here
+T1	S0481	S0481	NOT	noun hope + relative; not the pattern
+T1	S0557	S0557	NOT	ojalá + subjunctive; head + clause, no que needed
+T1	S0587	S0587	NOT	head ella insistía + en que comiéramos; Italian shape
+T1	S0625	S0625	NOT	algo de beber; not want-you-to
+T1	S0668	S0668	REAL	clause only podáis; espero que untaught here
+T1	S0151	S0151L03 (outside pack)	REAL	missed by regex: whole chunk esperaba que pasara
+T1	S0248	S0248L03 (outside pack)	REAL	missed by regex: clause only devuelvan (quiero que)
+T2	S0007	S0007L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0008	S0008L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0011	S0011L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0012	S0012L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0015	S0015L02	NOT	completive que inside whole chunk; consistent
+T2	S0022	S0022L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0025	S0025L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0042	S0042L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0047	S0047L01	NOT	completive que on indicative head: course majority
+T2	S0057	S0057L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0059	S0059L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0063	S0063L01	NOT	completive que inside whole chunk; consistent
+T2	S0071	S0071L04	REAL	to let that | dejar que: broken English, que on head over subjunctive
+T2	S0076	S0076L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0077	S0077L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0087	S0087L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0102	S0102L02	NOT	completive que on indicative head: course majority
+T2	S0109	S0109L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0113	S0113L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0116	S0116L04	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0117	S0117L04	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0118	S0118L04	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0119	S0119L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0120	S0120L04	NOT	completive que inside whole chunk; consistent
+T2	S0121	S0121L02	NOT	que+subjunctive clause: course majority
+T2	S0129	S0129L04	NOT	que+subjunctive clause: course majority
+T2	S0132	S0132L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0135	S0135L02	NOT	head+que; piensas taught bare at S0327L01
+T2	S0136	S0136L01	NOT	completive que on indicative head: course majority
+T2	S0137	S0137L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0146	S0146L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0149	S0149L03	REAL	que on want-head over subjunctive clause (T1 overlap)
+T2	S0151	S0151L03	NOT	completive que inside whole chunk; consistent
+T2	S0157	S0157L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0159	S0159L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0163	S0163L01	REAL	who | que glosses completive that in pienso que
+T2	S0163	S0163L03	NOT	completive que inside whole chunk; consistent
+T2	S0169	S0169L01	NOT	que+subjunctive clause: course majority
+T2	S0169	S0169L02	NOT	completive que inside whole chunk; consistent
+T2	S0170	S0170L02	NOT	completive que inside whole chunk; consistent
+T2	S0171	S0171L01	NOT	que+subjunctive clause: course majority
+T2	S0181	S0181L04	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0186	S0186L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0188	S0188L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0195	S0195L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0200	S0200L03	REAL	que on head though clause is subjunctive terminemos
+T2	S0201	S0201L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0203	S0203L03	NOT	que+subjunctive clause: course majority
+T2	S0204	S0204L01	NOT	que+subjunctive clause: course majority
+T2	S0211	S0211L02	REAL	told us that | dijeron que: us already in S0211L01 nos
+T2	S0213	S0213L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0230	S0230L04	NOT	relative who | que alone (see T5)
+T2	S0237	S0237L01	NOT	que+subjunctive clause: course majority
+T2	S0245	S0245L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0249	S0249L01	NOT	que+subjunctive clause: course majority
+T2	S0249	S0249L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0251	S0251L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0255	S0255L02	NOT	completive que inside whole chunk; consistent
+T2	S0256	S0256L01	NOT	completive que inside whole chunk; consistent
+T2	S0262	S0262L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0274	S0274L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0274	S0274L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0277	S0277L04	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0278	S0278L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0280	S0280L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0281	S0281L04	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0286	S0286L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0288	S0288L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0292	S0292L01	NOT	completive que inside whole chunk; consistent
+T2	S0293	S0293L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0295	S0295L03	NOT	completive que inside whole chunk; consistent
+T2	S0296	S0296L02	NOT	completive que inside whole chunk; consistent
+T2	S0297	S0297L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0297	S0297L04	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0298	S0298L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0301	S0301L02	NOT	head+que; dijo also taught bare S0084/S0235/S0342
+T2	S0302	S0302L03	NOT	completive que inside whole chunk; consistent
+T2	S0303	S0303L02	NOT	completive que inside whole chunk; consistent
+T2	S0304	S0304L03	NOT	completive que inside whole chunk; consistent
+T2	S0306	S0306L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0307	S0307L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0318	S0318L01	NOT	que+subjunctive clause: course majority
+T2	S0328	S0328L01	NOT	pienso que glossed yes I think; English drops that, fine
+T2	S0330	S0330L01	NOT	que+subjunctive clause: course majority
+T2	S0346	S0346L02	NOT	que+subjunctive clause: course majority
+T2	S0355	S0355L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0362	S0362L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0364	S0364L03	NOT	completive que on indicative head: course majority
+T2	S0375	S0375L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0388	S0388L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0390	S0390L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0396	S0396L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0406	S0406L02	NOT	completive que on indicative head: course majority
+T2	S0409	S0409L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0434	S0434L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0444	S0444L02	NOT	completive que on indicative head: course majority
+T2	S0449	S0449L03	NOT	head+que; dijeron also taught bare at S0451L01
+T2	S0450	S0450L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0455	S0455L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0456	S0456L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0470	S0470L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0479	S0479L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0480	S0480L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0481	S0481L04	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0483	S0483L03	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0484	S0484L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0491	S0491L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0505	S0505L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0506	S0506L04	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0521	S0521L01	NOT	head+que; me temo also taught bare at S0183L01
+T2	S0522	S0522L01	NOT	completive que on indicative head: course majority
+T2	S0526	S0526L02	NOT	que+subjunctive clause: course majority
+T2	S0528	S0528L02	NOT	se supone que: LEGO not in seed target (drift, #417·V)
+T2	S0530	S0530L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0532	S0532L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0533	S0533L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0535	S0535L01	NOT	completive que on indicative head: course majority
+T2	S0536	S0536L01	NOT	completive que on indicative head: course majority
+T2	S0542	S0542L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0544	S0544L02	REAL	que on clause after indicative dijo; course puts it on head
+T2	S0549	S0549L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0568	S0568L04	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0572	S0572L02	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0573	S0573L02	NOT	relative que; target que hace que not in seed (drift, #417·V)
+T2	S0587	S0587L02	NOT	completive que inside whole chunk; consistent
+T2	S0588	S0588L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0617	S0617L01	NOT	completive que inside whole chunk; consistent
+T2	S0636	S0636L01	NOT	completive que inside whole chunk; consistent
+T2	S0648	S0648L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T2	S0655	S0655L01	NOT	completive que inside whole chunk; consistent
+T2	S0663	S0663L01	NOT	not completive that: relative/comparative/tener que/lo que/subordinator
+T3	S0042	S0042L03U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0051	S0051L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0051	S0051L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0051	S0051L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0051	S0051L03U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L02B07	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L02B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L02B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L02U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L02U13	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L02U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L02U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L02U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L03B03	REAL	say it | decir eso; course maps it→lo, that→eso
+T3	S0061	S0061L03B07	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L03U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L04B03	REAL	say it | decir eso; should read say that
+T3	S0061	S0061L04B07	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L04U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L04U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L04U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0061	S0061L04U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0062	S0062L01U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0062	S0062L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L01B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L01U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L02B01	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L02B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L02B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L02B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L02B06	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L02U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L02U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L02U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	S0072L02U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0075	S0075L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0077	S0077L02U19	REAL	doing this | lo estás haciendo; should read doing it
+T3	S0078	S0078L01B06	NOT	read: that is conjunction or determiner
+T3	S0078	S0078L01U06	NOT	read: that is conjunction or determiner
+T3	S0078	S0078L01U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0078	S0078L02B05	NOT	read: that is conjunction or determiner
+T3	S0078	S0078L02U13	NOT	on majority form; machine-matched, not hand-read
+T3	S0086	S0086L02U08	NOT	read: it is subject/expletive, not object
+T3	S0090	S0090L04U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L02B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L02U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L02U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L02U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L02U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L03B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L03U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L03U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0092	S0092L03U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0093	S0093L01U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0094	S0094L01U10	REAL	do it | hacer esto; should read do this
+T3	S0094	S0094L02U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0094	S0094L02U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0096	S0096L01U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0096	S0096L01U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0096	S0096L01U06	REAL	do it | hacer esto; should read do this
+T3	S0096	S0096L02U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0097	S0097L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0097	S0097L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0097	S0097L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0098	S0098L01U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0099	S0099L01U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0100	S0100L02B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0100	S0100L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0100	S0100L02U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0100	S0100L02U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0100	S0100L02U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0100	S0100L02U04	REAL	doing it | hacer eso; should read doing that
+T3	S0100	S0100L02U07	REAL	doing it | hacer eso; should read doing that
+T3	S0101	S0101L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0101	S0101L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0101	S0101L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0102	S0102L02B06	NOT	read: that is conjunction or determiner
+T3	S0102	S0102L02B04	NOT	read: that is conjunction or determiner
+T3	S0102	S0102L02B01	NOT	read: that is conjunction or determiner
+T3	S0102	S0102L02B03	NOT	read: that is conjunction or determiner
+T3	S0103	S0103L01B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0105	S0105L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0105	S0105L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0105	S0105L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0106	S0106L02U14	NOT	read: this is determiner or lo que
+T3	S0111	S0111L01U04	NOT	read: it is subject/expletive, not object
+T3	S0111	S0111L01U07	NOT	read: it is subject/expletive, not object
+T3	S0111	S0111L02U07	NOT	read: it is subject/expletive, not object
+T3	S0111	S0111L04U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0112	S0112L05U04	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0113	S0113L02B04	NOT	read: this is determiner or lo que
+T3	S0113	S0113L02U01	NOT	read: this is determiner or lo que
+T3	S0114	S0114L02B01	NOT	on majority form; machine-matched, not hand-read
+T3	S0114	S0114L02B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0114	S0114L02B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0114	S0114L02C02	NOT	on majority form; machine-matched, not hand-read
+T3	S0114	S0114L02U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0114	S0114L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0114	S0114L02U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0114	S0114L02U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0114	S0114L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0114	S0114L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0114	S0114L02U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0115	S0115L01U08	NOT	read: this is determiner or lo que
+T3	S0115	S0115L03U09	NOT	read: it is subject/expletive, not object
+T3	S0115	S0115L03U14	NOT	read: this is determiner or lo que
+T3	S0115	S0115L04U08	NOT	read: this is determiner or lo que
+T3	S0116	S0116L01U04	NOT	read: that is conjunction or determiner
+T3	S0116	S0116L03B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0116	S0116L03B06	NOT	on majority form; machine-matched, not hand-read
+T3	S0116	S0116L03U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0116	S0116L03U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0116	S0116L04B02	NOT	read: this is determiner or lo que
+T3	S0116	S0116L04U02	NOT	read: that is conjunction or determiner
+T3	S0116	S0116L04U11	NOT	read: this is determiner or lo que
+T3	S0116	S0116L04U06	NOT	read: this is determiner or lo que
+T3	S0121	S0121L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0121	S0121L02U03	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0121	S0121L02U03	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0121	S0121L02U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0121	S0121L02U13	NOT	on majority form; machine-matched, not hand-read
+T3	S0121	S0121L02U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0121	S0121L02U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0122	S0122L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0122	S0122L04U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0122	S0122L04U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0122	S0122L04U12	NOT	read: that is conjunction or determiner
+T3	S0122	S0122L05U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0122	S0122L05U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0124	S0124L02U27	NOT	on majority form; machine-matched, not hand-read
+T3	S0125	S0125L02U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0125	S0125L02U13	NOT	on majority form; machine-matched, not hand-read
+T3	S0126	S0126L01U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0126	S0126L02U08	NOT	read: this is determiner or lo que
+T3	S0126	S0126L03U07	NOT	read: this is determiner or lo que
+T3	S0126	S0126L04U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0126	S0126L06U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0126	S0126L06U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0126	S0126L06U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0127	S0127L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0127	S0127L01U04	REAL	doing it | haciendo esto; should read doing this
+T3	S0128	S0128L04U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0128	S0128L04U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0128	S0128L04U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0128	S0128L04U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0128	S0128L04U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0128	S0128L04U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0128	S0128L05U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0128	S0128L05U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0128	S0128L05U05	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0128	S0128L05U04	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0129	S0129L01U01	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0129	S0129L01U05	REAL	in passing: understand it | entiendes (no lo); pronoun dropped
+T3	S0129	S0129L03B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0129	S0129L03U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0129	S0129L03U02	NOT	read: this is determiner or lo que
+T3	S0129	S0129L04B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0129	S0129L05B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0129	S0129L05B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0129	S0129L05U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0129	S0129L05U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0129	S0129L05U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0129	S0129L05U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0129	S0129L05U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0129	S0129L05U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0129	S0129L05U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0131	S0131L01U04	NOT	read: this is determiner or lo que
+T3	S0132	S0132L04U13	NOT	read: that is conjunction or determiner
+T3	S0132	S0132L04U09	NOT	read: that is conjunction or determiner
+T3	S0132	S0132L04U07	NOT	read: that is conjunction or determiner
+T3	S0133	S0133L02U14	NOT	read: that is conjunction or determiner
+T3	S0134	S0134L02U02	NOT	read: that is conjunction or determiner
+T3	S0134	S0134L03U06	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0135	S0135L01U05	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0136	S0136L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0136	S0136L03U19	NOT	read: this is determiner or lo que
+T3	S0136	S0136L03U02	NOT	read: this is determiner or lo que
+T3	S0137	S0137L02U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0137	S0137L03U04	NOT	read: that is conjunction or determiner
+T3	S0138	S0138L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0142	S0142L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0143	S0143L02B06	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0144	S0144L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0144	S0144L02U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0144	S0144L02U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0145	S0145L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0145	S0145L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0145	S0145L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0145	S0145L01U02	REAL	say it | decir eso; should read say that
+T3	S0147	S0147L04U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0149	S0149L03U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0151	S0151L02U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L01B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L01B01	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L01U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L02B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L02B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L02B06	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L02U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L02U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L02U13	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L02U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L02U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L03B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L03U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L03U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L03U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L03U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L03U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L03U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L03U13	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0152	S0152L03U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L03U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	S0152L03U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L01B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L01U13	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L01U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L01U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L02U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0153	S0153L03U16	NOT	on majority form; machine-matched, not hand-read
+T3	S0155	S0155L02U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0156	S0156L03U09	NOT	read: this is determiner or lo que
+T3	S0158	S0158L01U10	NOT	read: this is determiner or lo que
+T3	S0158	S0158L02U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0160	S0160L01B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0160	S0160L01U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0160	S0160L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0160	S0160L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0160	S0160L01U05	NOT	read: this is determiner or lo que
+T3	S0160	S0160L01U06	NOT	read: this is determiner or lo que
+T3	S0160	S0160L01U04	NOT	read: it is subject/expletive, not object
+T3	S0160	S0160L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0160	S0160L01U01	NOT	read: this is determiner or lo que
+T3	S0161	S0161L01U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0161	S0161L01U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0161	S0161L01U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0161	S0161L05U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0163	S0163L01B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0163	S0163L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0163	S0163L03U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0167	S0167L02B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0167	S0167L02U09	NOT	read: this is determiner or lo que
+T3	S0167	S0167L03U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0168	S0168L03U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0169	S0169L02B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0169	S0169L02B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0169	S0169L02U04	REAL	do it | haga esto; should read do this
+T3	S0169	S0169L02U08	REAL	do it | hacer esto; should read do this
+T3	S0169	S0169L02U14	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0169	S0169L02U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0169	S0169L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0171	S0171L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0172	S0172L01B03	NOT	read: it is subject/expletive, not object
+T3	S0172	S0172L01U03	NOT	read: it is subject/expletive, not object
+T3	S0172	S0172L01U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0172	S0172L03U11	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0172	S0172L04U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0172	S0172L04U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0172	S0172L04U15	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L01U13	NOT	read: it is subject/expletive, not object
+T3	S0173	S0173L01U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0173	S0173L01U02	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L01U11	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0173	S0173L02U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0173	S0173L03B03	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L03B02	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L03U05	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L03U09	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L03U01	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L03U11	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L03U14	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L03U13	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L03U02	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0173	S0173L03U10	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0174	S0174L02U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0174	S0174L02U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0174	S0174L02U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0174	S0174L02U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0175	S0175L01U07	NOT	read: this is determiner or lo que
+T3	S0176	S0176L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0176	S0176L01U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0176	S0176L02B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0176	S0176L03U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0178	S0178L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0178	S0178L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0179	S0179L01U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0181	S0181L03B05	NOT	read: that is conjunction or determiner
+T3	S0181	S0181L03U07	NOT	read: that is conjunction or determiner
+T3	S0182	S0182L03U02	NOT	read: this is determiner or lo que
+T3	S0182	S0182L03U12	REAL	doing this | lo estoy haciendo; should read doing it
+T3	S0183	S0183L01B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0183	S0183L01U07	NOT	read: that is conjunction or determiner
+T3	S0183	S0183L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0184	S0184L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0185	S0185L02U09	NOT	read: this is determiner or lo que
+T3	S0186	S0186L02U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0187	S0187L01U11	NOT	read: this is determiner or lo que
+T3	S0187	S0187L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0187	S0187L02U07	NOT	read: this is determiner or lo que
+T3	S0188	S0188L02U15	REAL	in passing: explain it to me | explicar (no me lo)
+T3	S0188	S0188L02U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0189	S0189L01U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0190	S0190L01B06	NOT	on majority form; machine-matched, not hand-read
+T3	S0190	S0190L01U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0190	S0190L01U06	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0190	S0190L01U03	REAL	in passing: explain it | explicar (no lo); pronoun dropped
+T3	S0190	S0190L02U04	NOT	read: this is determiner or lo que
+T3	S0190	S0190L02U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0190	S0190L02U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0191	S0191L01U08	NOT	read: it is subject/expletive, not object
+T3	S0191	S0191L01U11	NOT	read: it is subject/expletive, not object
+T3	S0192	S0192L01U15	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0192	S0192L01U06	NOT	read: it is subject/expletive, not object
+T3	S0196	S0196L01B07	NOT	read: that is conjunction or determiner
+T3	S0196	S0196L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0197	S0197L04U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0197	S0197L04U09	NOT	read: that is conjunction or determiner
+T3	S0200	S0200L01B03	NOT	read: that is conjunction or determiner
+T3	S0200	S0200L01U08	NOT	read: that is conjunction or determiner
+T3	S0200	S0200L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0200	S0200L01U06	NOT	read: that is conjunction or determiner
+T3	S0200	S0200L01U03	NOT	read: that is conjunction or determiner
+T3	S0200	S0200L02B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0200	S0200L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0200	S0200L03B07	NOT	on majority form; machine-matched, not hand-read
+T3	S0200	S0200L05B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0200	S0200L05U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0202	S0202L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0202	S0202L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0202	S0202L02U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0203	S0203L03U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0203	S0203L03U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0204	S0204L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0204	S0204L02U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0205	S0205L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0205	S0205L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0205	S0205L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0206	S0206L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0206	S0206L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0206	S0206L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01B01	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01B06	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U13	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U13	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	S0208L01U16	NOT	on majority form; machine-matched, not hand-read
+T3	S0209	S0209L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0210	S0210L02U02	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0210	S0210L02U01	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0211	S0211L04B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0211	S0211L04U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0211	S0211L04U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0211	S0211L04U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0213	S0213L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0213	S0213L02U17	NOT	on majority form; machine-matched, not hand-read
+T3	S0213	S0213L03U10	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0213	S0213L04U13	REAL	in passing: explain it | explicar (no lo); pronoun dropped
+T3	S0213	S0213L04U08	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0218	S0218L02B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0218	S0218L02U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0218	S0218L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0218	S0218L02U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0218	S0218L02U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0219	S0219L01U04	REAL	in passing: we did it missing from target entirely
+T3	S0219	S0219L01U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0219	S0219L02U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0225	S0225L03B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0225	S0225L03U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0225	S0225L03U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0225	S0225L03U14	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0225	S0225L03U14	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0225	S0225L03U13	NOT	on majority form; machine-matched, not hand-read
+T3	S0228	S0228L01U17	NOT	read: that is conjunction or determiner
+T3	S0228	S0228L01U18	NOT	read: that is conjunction or determiner
+T3	S0229	S0229L01U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0229	S0229L01U13	NOT	read: that is conjunction or determiner
+T3	S0229	S0229L01U11	NOT	read: that is conjunction or determiner
+T3	S0229	S0229L01U16	NOT	read: that is conjunction or determiner
+T3	S0229	S0229L02U04	NOT	read: that is conjunction or determiner
+T3	S0229	S0229L02U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0229	S0229L02U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0231	S0231L03U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0231	S0231L03U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0231	S0231L03U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0231	S0231L03U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0232	S0232L01U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0232	S0232L02U05	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0232	S0232L02U04	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0233	S0233L02U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0233	S0233L04U14	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0233	S0233L04U10	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0233	S0233L04U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0234	S0234L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0234	S0234L03U12	NOT	on majority form; machine-matched, not hand-read
+T3	S0234	S0234L04U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0235	S0235L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0235	S0235L01U03	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0235	S0235L01U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0235	S0235L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0235	S0235L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0236	S0236L01U15	NOT	read: this is determiner or lo que
+T3	S0237	S0237L01U01	NOT	read: this is determiner or lo que
+T3	S0237	S0237L02B06	NOT	on majority form; machine-matched, not hand-read
+T3	S0237	S0237L02B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0237	S0237L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0238	S0238L01U01	NOT	read: this is determiner or lo que
+T3	S0240	S0240L01U13	NOT	read: this is determiner or lo que
+T3	S0241	S0241L01U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0243	S0243L02U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0244	S0244L02U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0244	S0244L03B03	UNSURE	I already know that | Ya lo sé; idiomatic, that→lo
+T3	S0244	S0244L03U12	NOT	read: this is determiner or lo que
+T3	S0244	S0244L03U03	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0245	S0245L01U10	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0245	S0245L02U06	NOT	read: this is determiner or lo que
+T3	S0247	S0247L01U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0248	S0248L02U05	NOT	read: that is conjunction or determiner
+T3	S0248	S0248L03U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0250	S0250L02U15	NOT	on majority form; machine-matched, not hand-read
+T3	S0254	S0254L01U14	REAL	do this | hacerlo; should read do it
+T3	S0260	S0260L01U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0260	S0260L01U06	NOT	read: this is determiner or lo que
+T3	S0263	S0263L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0272	S0272L02U06	NOT	read: it is subject/expletive, not object
+T3	S0272	S0272L02U05	NOT	read: it is subject/expletive, not object
+T3	S0272	S0272L02U12	NOT	read: it is subject/expletive, not object
+T3	S0272	S0272L02U04	NOT	read: majority form present; other pronoun from elsewhere
+T3	S0272	S0272L03U05	NOT	read: that is conjunction or determiner
+T3	S0274	S0274L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0274	S0274L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0274	S0274L03B06	NOT	on majority form; machine-matched, not hand-read
+T3	S0275	S0275L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0275	S0275L01B07	NOT	on majority form; machine-matched, not hand-read
+T3	S0275	S0275L01U12	REAL	doing this | lo estoy haciendo; should read doing it
+T3	S0275	S0275L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0278	S0278L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0281	S0281L01U07	NOT	pronoun fine; but target means if you take too long
+T3	S0281	S0281L01U13	NOT	on majority form; machine-matched, not hand-read
+T3	S0281	S0281L01U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0281	S0281L01U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0282	S0282L02U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0284	S0284L01B05	NOT	read: that is conjunction or determiner
+T3	S0284	S0284L01B06	NOT	read: that is conjunction or determiner
+T3	S0284	S0284L01U07	NOT	read: that is conjunction or determiner
+T3	S0284	S0284L01U06	NOT	read: that is conjunction or determiner
+T3	S0285	S0285L01U10	REAL	in passing: she knows that | ella lo hace (she does it)
+T3	S0287	S0287L02U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0289	S0289L01U09	NOT	read: this is determiner or lo que
+T3	S0290	S0290L02B06	NOT	on majority form; machine-matched, not hand-read
+T3	S0290	S0290L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0290	S0290L02U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0291	S0291L01B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0291	S0291L02U11	NOT	read: that is conjunction or determiner
+T3	S0292	S0292L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0294	S0294L01B05	NOT	on majority form; machine-matched, not hand-read
+T3	S0294	S0294L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0295	S0295L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0295	S0295L01U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0295	S0295L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0295	S0295L02U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0295	S0295L02U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0295	S0295L03B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0296	S0296L02U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0298	S0298L01U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0299	S0299L02U12	NOT	read: this is determiner or lo que
+T3	S0301	S0301L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0301	S0301L02B01	NOT	read: that is conjunction or determiner
+T3	S0306	S0306L02U03	NOT	read: that is conjunction or determiner
+T3	S0306	S0306L03B02	NOT	read: that is conjunction or determiner
+T3	S0306	S0306L03B01	NOT	read: that is conjunction or determiner
+T3	S0306	S0306L03B03	NOT	read: that is conjunction or determiner
+T3	S0306	S0306L03U03	NOT	read: that is conjunction or determiner
+T3	S0306	S0306L03U02	NOT	read: that is conjunction or determiner
+T3	S0306	S0306L03U04	NOT	read: that is conjunction or determiner
+T3	S0306	S0306L03U01	NOT	read: that is conjunction or determiner
+T3	S0306	S0306L03U05	NOT	read: that is conjunction or determiner
+T3	S0306	S0306L03U06	NOT	read: that is conjunction or determiner
+T3	S0306	S0306L03U07	NOT	read: that is conjunction or determiner
+T3	S0307	S0307L02B01	NOT	read: that is conjunction or determiner
+T3	S0307	S0307L02B02	NOT	read: that is conjunction or determiner
+T3	S0307	S0307L02B03	NOT	read: that is conjunction or determiner
+T3	S0307	S0307L02U01	NOT	read: that is conjunction or determiner
+T3	S0307	S0307L02U03	NOT	read: that is conjunction or determiner
+T3	S0307	S0307L02U05	NOT	read: that is conjunction or determiner
+T3	S0307	S0307L02U06	NOT	read: that is conjunction or determiner
+T3	S0307	S0307L02U04	NOT	read: that is conjunction or determiner
+T3	S0307	S0307L02U02	NOT	read: that is conjunction or determiner
+T3	S0309	S0309L01B01	NOT	on majority form; machine-matched, not hand-read
+T3	S0309	S0309L01B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0310	S0310L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0311	S0311L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0311	S0311L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0318	S0318L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0326	S0326L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0328	S0328L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0328	S0328L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0328	S0328L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0329	S0329L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0338	S0338L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0338	S0338L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0347	S0347L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0348	S0348L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0352	S0352L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0352	S0352L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0352	S0352L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0364	S0364L01U02	NOT	read: that is conjunction or determiner
+T3	S0364	S0364L01U05	NOT	read: that is conjunction or determiner
+T3	S0364	S0364L02U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0364	S0364L03B01	NOT	read: that is conjunction or determiner
+T3	S0365	S0365L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0375	S0375L01U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0388	S0388L01U08	NOT	read: that is conjunction or determiner
+T3	S0388	S0388L01U06	NOT	read: that is conjunction or determiner
+T3	S0398	S0398L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0403	S0403L01B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0403	S0403L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0403	S0403L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0404	S0404L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0404	S0404L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0409	S0409L01U03	NOT	pronoun fine; but importa present for didn't matter
+T3	S0409	S0409L02B03	REAL	in passing: we do it | hagamos aquí; no lo, let's
+T3	S0412	S0412L02B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0412	S0412L02U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0412	S0412L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0412	S0412L04B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0412	S0412L04U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0412	S0412L04U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0412	S0412L04U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0413	S0413L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0418	S0418L03U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0428	S0428L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0429	S0429L01U03	NOT	read: it is subject/expletive, not object
+T3	S0429	S0429L01U11	NOT	on majority form; machine-matched, not hand-read
+T3	S0429	S0429L01U10	NOT	on majority form; machine-matched, not hand-read
+T3	S0429	S0429L01U09	NOT	on majority form; machine-matched, not hand-read
+T3	S0429	S0429L01U14	NOT	on majority form; machine-matched, not hand-read
+T3	S0429	S0429L01U08	NOT	on majority form; machine-matched, not hand-read
+T3	S0430	S0430L01U03	NOT	read: it is subject/expletive, not object
+T3	S0430	S0430L01U04	NOT	read: it is subject/expletive, not object
+T3	S0433	S0433L03B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0433	S0433L03U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0433	S0433L03U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0435	S0435L02B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0435	S0435L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0435	S0435L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0435	S0435L02U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0437	S0437L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0437	S0437L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0437	S0437L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0439	S0439L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0440	S0440L02B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0440	S0440L02U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0440	S0440L02U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0440	S0440L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0440	S0440L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0440	S0440L03U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0443	S0443L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0443	S0443L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0443	S0443L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0443	S0443L03B01	NOT	on majority form; machine-matched, not hand-read
+T3	S0443	S0443L03B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0443	S0443L03C02	NOT	on majority form; machine-matched, not hand-read
+T3	S0443	S0443L03U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0443	S0443L03U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0444	S0444L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0444	S0444L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0444	S0444L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0444	S0444L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0448	S0448L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0449	S0449L03B01	NOT	read: that is conjunction or determiner
+T3	S0450	S0450L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0451	S0451L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0452	S0452L01B02	REAL	say it | dijeron eso; should read say that
+T3	S0464	S0464L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0464	S0464L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0464	S0464L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0465	S0465L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0465	S0465L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0466	S0466L01B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0469	S0469L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0469	S0469L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0469	S0469L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0470	S0470L03B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0480	S0480L02U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0488	S0488L02U03	NOT	read: that is conjunction or determiner
+T3	S0489	S0489L03B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0489	S0489L03U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0489	S0489L03U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0490	S0490L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0490	S0490L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0490	S0490L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0495	S0495L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0496	S0496L01B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0496	S0496L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0500	S0500L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0501	S0501L03U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0501	S0501L03U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0503	S0503L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0504	S0504L01B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0505	S0505L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0508	S0508L02U04	NOT	read: it is subject/expletive, not object
+T3	S0509	S0509L01B02	NOT	read: that is conjunction or determiner
+T3	S0509	S0509L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0510	S0510L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0510	S0510L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0511	S0511L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0513	S0513L01U03	NOT	read: it is subject/expletive, not object
+T3	S0513	S0513L01U05	NOT	read: it is subject/expletive, not object
+T3	S0513	S0513L03U04	NOT	read: it is subject/expletive, not object
+T3	S0518	S0518L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0527	S0527L03B02	NOT	read: that is conjunction or determiner
+T3	S0527	S0527L03U05	NOT	read: that is conjunction or determiner
+T3	S0527	S0527L03U02	NOT	read: that is conjunction or determiner
+T3	S0528	S0528L01U03	NOT	read: that is conjunction or determiner
+T3	S0529	S0529L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0529	S0529L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0531	S0531L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0531	S0531L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0533	S0533L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0536	S0536L02B03	NOT	read: that is conjunction or determiner
+T3	S0544	S0544L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0545	S0545L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0554	S0554L01B04	NOT	read: this is determiner or lo que
+T3	S0561	S0561L02U06	NOT	read: it is subject/expletive, not object
+T3	S0563	S0563L01U03	REAL	do it | hacer eso; should read do that
+T3	S0569	S0569L03U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0572	S0572L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0575	S0575L01U04	NOT	read: it is subject/expletive, not object
+T3	S0575	S0575L01U03	NOT	read: it is subject/expletive, not object
+T3	S0579	S0579L02U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0579	S0579L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0579	S0579L02U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0579	S0579L02U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0580	S0580L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0591	S0591L01U05	REAL	doing it | haciendo eso; should read doing that
+T3	S0593	S0593L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0597	S0597L02U07	NOT	read: that is conjunction or determiner
+T3	S0597	S0597L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0599	S0599L01U06	REAL	done it | hecho eso; should read done that
+T3	S0599	S0599L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0599	S0599L02U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0599	S0599L04B03	REAL	done it | hecho eso; should read done that
+T3	S0599	S0599L04U04	REAL	done it | hecho eso; should read done that
+T3	S0603	S0603L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0604	S0604L01B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0604	S0604L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0604	S0604L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0608	S0608L02U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0612	S0612L01B03	REAL	done it all | hecho todo eso; all that
+T3	S0612	S0612L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0612	S0612L01U06	REAL	done it all | hecho todo eso; all that
+T3	S0615	S0615L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0615	S0615L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0616	S0616L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0616	S0616L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0616	S0616L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0616	S0616L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0621	S0621L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0621	S0621L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0621	S0621L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0621	S0621L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0622	S0622L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0624	S0624L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0629	S0629L02U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0639	S0639L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0642	S0642L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0644	S0644L01B04	NOT	on majority form; machine-matched, not hand-read
+T3	S0644	S0644L01B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0644	S0644L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0644	S0644L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0644	S0644L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0644	S0644L01U02	NOT	on majority form; machine-matched, not hand-read
+T3	S0644	S0644L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0644	S0644L01U07	NOT	on majority form; machine-matched, not hand-read
+T3	S0646	S0646L01U06	NOT	on majority form; machine-matched, not hand-read
+T3	S0653	S0653L01B03	NOT	read: it is subject/expletive, not object
+T3	S0653	S0653L01B01	NOT	read: it is subject/expletive, not object
+T3	S0653	S0653L01U02	NOT	read: it is subject/expletive, not object
+T3	S0653	S0653L01U01	NOT	read: it is subject/expletive, not object
+T3	S0655	S0655L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0655	S0655L01B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0655	S0655L01B01	NOT	on majority form; machine-matched, not hand-read
+T3	S0655	S0655L01U05	NOT	on majority form; machine-matched, not hand-read
+T3	S0655	S0655L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0655	S0655L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0659	S0659L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0659	S0659L01B02	NOT	on majority form; machine-matched, not hand-read
+T3	S0659	S0659L01U01	NOT	on majority form; machine-matched, not hand-read
+T3	S0659	S0659L01U03	NOT	on majority form; machine-matched, not hand-read
+T3	S0659	S0659L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0667	S0667L01B01	NOT	read: it is subject/expletive, not object
+T3	S0667	S0667L01B03	NOT	read: it is subject/expletive, not object
+T3	S0668	S0668L01B03	NOT	on majority form; machine-matched, not hand-read
+T3	S0668	S0668L01U04	NOT	on majority form; machine-matched, not hand-read
+T3	S0072	785c1994-3f23-46fe-acdb-61bfea01702d	NOT	on majority form; machine-matched, not hand-read
+T3	S0102	edf8c06a-5dea-4471-91b5-3d2f7274ae0b	NOT	read: that is conjunction or determiner
+T3	S0114	16f7d54c-839f-4ab7-a487-254b5b0cdf1e	NOT	on majority form; machine-matched, not hand-read
+T3	S0152	c00be407-bb3f-4e9d-a4a9-a649c53ffb16	NOT	on majority form; machine-matched, not hand-read
+T3	S0208	898d39cc-0b97-4f8c-a947-5f8d66949cbf	NOT	on majority form; machine-matched, not hand-read
+T3	S0301	d4651e83-165f-48cb-8ad3-28e01afef85d	NOT	read: that is conjunction or determiner
+T3	S0306	a9858ca4-ed4c-4a40-ba92-d6d0782add6f	NOT	read: that is conjunction or determiner
+T3	S0307	ed449ab6-2af7-4788-8ac6-d34d87991bb7	NOT	read: that is conjunction or determiner
+T3	S0364	74535348-89cc-4790-9834-bf3a2d2a845a	NOT	read: that is conjunction or determiner
+T3	S0443	b09b491f-bc40-4cea-97a3-e590f4bb86d6	NOT	on majority form; machine-matched, not hand-read
+T3	S0449	d2087763-5719-41e8-a218-c79002de75b9	NOT	read: that is conjunction or determiner
+T3	S0653	b71a47e4-1b06-4065-a7b8-602ee4dc5936	NOT	read: it is subject/expletive, not object
+T3	S0667	999f0b56-cb67-432f-a868-03dea334fe51	NOT	read: it is subject/expletive, not object
+T4	S0035	S0035L03	REAL	anything | nada: post-verbal nada needs no; no in L01
+T4	S0060	S0060L02	NOT	todavía is not negative-polarity
+T4	S0071	S0071L03	NOT	nadie pre-verbal in its clause; no one gloss fine
+T4	S0088	S0088L02	NOT	todavía is not negative-polarity
+T4	S0096	S0096L01	NOT	todavía is not negative-polarity
+T4	S0182	S0182L04	NOT	positive question algún sitio; no negator needed
+T4	S0202	S0202L01	NOT	pre-verbal nadie needs no no
+T4	S0309	S0309L01	NOT	pre-verbal nunca needs no no
+T4	S0367	S0367L01	NOT	pre-verbal nadie needs no no
+T4	S0376	S0376L02	REAL	nowhere | ningún sitio post-verbal; no and a untaught here
+T4	S0519	S0519L01	NOT	todavía is not negative-polarity
+T4	S0531	S0531L01	NOT	free-choice cualquiera; not negative
+T5	S0004	S0004L01	REAL	bare in | en; grow to in Spanish | en español
+T5	S0010	S0010L03	NOT	if | si: real standalone conjunction
+T5	S0015	S0015L03	NOT	and | y: coordinating conjunction
+T5	S0019	S0019L01	NOT	but | pero: coordinating conjunction
+T5	S0044	S0044L01	NOT	or | o: coordinating conjunction
+T5	S0061	S0061L02	NOT	that | eso: demonstrative pronoun, real word
+T5	S0072	S0072L01	REAL	bare clitic it | lo; grow to you're doing it | lo estás haciendo
+T5	S0127	S0127L01	REAL	bare for | por; grow to that's why | por eso
+T5	S0129	S0129L03	REAL	bare clitic it | lo; grow to that you're doing it | que lo estés haciendo
+T5	S0156	S0156L02	REAL	bare a | un; grow to a restaurant | un restaurante
+T5	S0213	S0213L01	REAL	bare not | no; grow to we don't know | no sabemos
+T5	S0216	S0216L02	REAL	to | a: personal a, no English to; grow a few friends | a unos amigos
+T5	S0217	S0217L02	REAL	bare a | un; grow to a glass | un vaso
+T5	S0217	S0217L06	REAL	bare of | de; grow to of water | de agua
+T5	S0221	S0221L02	REAL	bare the | el; grow to the football | el fútbol
+T5	S0230	S0230L04	REAL	bare relative who | que; grow to who wants | que quiere
+T5	S0513	S0513L05	NOT	down | abajo: adverb, real word
+T6a	S0071	S0071L01	REAL	inverted: earlier S0054L01 is not-new, dark; flip flags
+T6a	S0088	S0088L02	REAL	inverted: earlier S0060L02 is not-new, dark; flip flags
+T6a	S0103	S0103L03	REAL	inverted: earlier S0058L04 is not-new, dark; flip flags
+T6a	S0127	S0127L01	REAL	inverted: earlier S0074L01 is not-new, dark; flip flags
+T6a	S0129	S0129L02	REAL	inverted: earlier S0076L01 is not-new, dark; flip flags
+T6a	S0129	S0129L03	REAL	true duplicate of NEW S0072L01; 9 phrases go dark
+T6a	S0129	S0129L05	REAL	inverted: earlier S0104L03 is not-new, dark; flip flags
+T6a	S0130	S0130L02	REAL	inverted: earlier S0052L03 is not-new, dark; flip flags
+T6a	S0136	S0136L02	REAL	inverted: earlier S0090L01 is not-new, dark; flip flags
+T6a	S0145	S0145L01	REAL	inverted: earlier S0076L04 is not-new, dark; flip flags
+T6a	S0161	S0161L01	REAL	inverted: earlier S0150L01 is not-new, dark; flip flags
+T6a	S0163	S0163L02	REAL	inverted: earlier S0058L01 is not-new, dark; flip flags
+T6a	S0167	S0167L02	REAL	true duplicate of NEW S0059L02; 18 phrases go dark
+T6a	S0172	S0172L01	REAL	true duplicate of NEW S0097L01; 19 phrases go dark
+T6a	S0172	S0172L03	REAL	true duplicate of NEW S0090L04; 19 phrases go dark
+T6a	S0187	S0187L01	REAL	true duplicate of NEW S0129L02; 19 phrases go dark
+T6a	S0192	S0192L02	REAL	true duplicate of NEW S0154L02; 19 phrases go dark
+T6a	S0200	S0200L05	REAL	inverted: earlier S0091L03 is not-new, dark; flip flags
+T6a	S0215	S0215L02	REAL	true duplicate of NEW S0154L01; 19 phrases go dark
+T6a	S0216	S0216L01	REAL	true duplicate of NEW S0184L02; 12 phrases go dark
+T6a	S0216	S0216L04	REAL	inverted: earlier S0110L02 is not-new, dark; flip flags
+T6a	S0217	S0217L02	REAL	true duplicate of NEW S0156L02; 8 phrases go dark
+T6a	S0219	S0219L03	REAL	true duplicate of NEW S0110L03; 19 phrases go dark
+T6a	S0227	S0227L02	REAL	inverted: earlier S0111L03 is not-new, dark; flip flags
+T6a	S0228	S0228L01	REAL	inverted: earlier S0227L01 is not-new, dark; flip flags
+T6a	S0230	S0230L04	REAL	inverted: earlier S0163L01 is not-new, dark; flip flags
+T6a	S0235	S0235L01	REAL	true duplicate of NEW S0084L01; 18 phrases go dark
+T6a	S0243	S0243L01	REAL	true duplicate of NEW S0212L02; 11 phrases go dark
+T6a	S0243	S0243L02	REAL	inverted: earlier S0143L01 is not-new, dark; flip flags
+T6a	S0244	S0244L02	REAL	inverted: earlier S0089L02 is not-new, dark; flip flags
+T6a	S0244	S0244L03	REAL	true duplicate of NEW S0145L01; 18 phrases go dark
+T6a	S0245	S0245L01	REAL	true duplicate of NEW S0089L01; 11 phrases go dark
+T6a	S0245	S0245L02	REAL	inverted: earlier S0076L02 is not-new, dark; flip flags
+T6a	S0245	S0245L03	REAL	inverted: earlier S0089L03 is not-new, dark; flip flags
+T6a	S0262	S0262L02	REAL	true duplicate of NEW S0226L01; 21 phrases go dark
+T6a	S0264	S0264L01	REAL	true duplicate of NEW S0231L02; 15 phrases go dark
+T6a	S0337	S0337L02	REAL	true duplicate of NEW S0092L01; 9 phrases go dark
+T6a	S0342	S0342L01	REAL	true duplicate of NEW S0084L01; 9 phrases go dark
+T6a	S0348	S0348L01	REAL	true duplicate of NEW S0236L01; 9 phrases go dark
+T6a	S0354	S0354L02	REAL	true duplicate of NEW S0300L01; 8 phrases go dark
+T6a	S0464	S0464L01	REAL	true duplicate of NEW S0318L02; 10 phrases go dark
+T6a	S0504	S0504L01	REAL	true duplicate of NEW S0005L02; 8 phrases go dark
+T6a	S0523	S0523L01	REAL	true duplicate of NEW S0502L03; 8 phrases go dark
+T6a	S0629	S0629L02	REAL	true duplicate of NEW S0501L03; 8 phrases go dark
+T6b	S0043	S0043L02	REAL	no earlier pair anywhere; should be new; 9 ph dark
+T6b	S0052	S0052L03	REAL	first occurrence, dark; taught new later at S0130L02
+T6b	S0054	S0054L01	REAL	first occurrence, dark; taught new later at S0071L01
+T6b	S0058	S0058L01	REAL	first occurrence, dark; taught new later at S0163L02
+T6b	S0058	S0058L04	REAL	first occurrence, dark; taught new later at S0103L03
+T6b	S0060	S0060L02	REAL	first occurrence, dark; taught new later at S0088L02
+T6b	S0074	S0074L01	REAL	first occurrence, dark; taught new later at S0127L01
+T6b	S0076	S0076L01	REAL	first occurrence, dark; taught new later at S0129L02
+T6b	S0076	S0076L02	REAL	first occurrence, dark; taught new later at S0245L02
+T6b	S0076	S0076L04	REAL	first occurrence, dark; taught new later at S0145L01
+T6b	S0086	S0086L01	REAL	no earlier pair anywhere; should be new; 0 ph dark
+T6b	S0089	S0089L02	REAL	first occurrence, dark; taught new later at S0244L02
+T6b	S0089	S0089L03	REAL	first occurrence, dark; taught new later at S0245L03
+T6b	S0090	S0090L01	REAL	first occurrence, dark; taught new later at S0136L02
+T6b	S0091	S0091L03	REAL	first occurrence, dark; taught new later at S0200L05
+T6b	S0104	S0104L03	REAL	first occurrence, dark; taught new later at S0129L05
+T6b	S0110	S0110L02	REAL	first occurrence, dark; taught new later at S0216L04
+T6b	S0111	S0111L03	REAL	first occurrence, dark; taught new later at S0227L02
+T6b	S0120	S0120L01	REAL	no earlier pair anywhere; should be new; 1 ph dark
+T6b	S0123	S0123L01	UNSURE	good | buena: fem. of new good | bueno S0047L02
+T6b	S0126	S0126L02	REAL	no earlier pair anywhere; should be new; 16 ph dark
+T6b	S0126	S0126L06	REAL	no earlier pair anywhere; should be new; 12 ph dark
+T6b	S0143	S0143L01	REAL	first occurrence, dark; taught new later at S0243L02
+T6b	S0150	S0150L01	REAL	can you | puedes: only one-side match S0090L01; should be new
+T6b	S0163	S0163L01	REAL	no earlier pair; also mis-glossed who for completive que; 18 ph dark
+T6b	S0166	S0166L01	REAL	no earlier pair anywhere; should be new; 1 ph dark
+T6b	S0182	S0182L02	REAL	no earlier pair anywhere; should be new; 12 ph dark
+T6b	S0227	S0227L01	REAL	first occurrence, dark; taught new later at S0228L01
+T6b	S0255	S0255L01	REAL	no earlier pair anywhere; should be new; 1 ph dark
+T6b	S0257	S0257L01	REAL	no earlier pair anywhere; should be new; 22 ph dark
+T6b	S0274	S0274L01	REAL	no earlier pair anywhere; should be new; 14 ph dark
+T6b	S0284	S0284L02	UNSURE	friend | amiga: fem. of new friend | amigo S0130L02; 22 ph dark
+T6b	S0297	S0297L03	REAL	no earlier pair anywhere; should be new; 10 ph dark
+T6b	S0373	S0373L01	REAL	no earlier pair anywhere; should be new; 8 ph dark
+T6b	S0403	S0403L02	REAL	no earlier pair anywhere; should be new; 9 ph dark
+T6c	S0081	S0081	NOT	seed is USE row under S0079L01
+T6c	S0186	S0186	NOT	seed is USE row under S0098L04
+T6c	S0305	S0305	NOT	one-word seed; build row under S0232L01
+T6c	S0367	S0367	NOT	seed is USE row under S0202L01
+T6c	S0400	S0400	NOT	seed is USE row under S0243L03
+T6c	S0463	S0463	REAL	dark: in no basket; número de habitación untaught (#417·V P26)
+T6c	S0609	S0609	NOT	seed is USE row under S0608L02
+T7	S0003	S0003L03	NOT	10 syll; natural chunk, keep: fixed adverb idiom lo más … posible
+T7	S0024	S0024L01	NOT	recount 5 syllables: within cap
+T7	S0025	S0025L03	NOT	9 syll; natural chunk, keep: one temporal clause; split leaves bare antes de que
+T7	S0026	S0026L03	REAL	9 syll; split: feeling | sentir + as if I were | como si estuviera
+T7	S0034	S0034L03	REAL	10 syll; split: when other people are | cuando hay otras personas + here
+T7	S0038	S0038L01	REAL	11 syll; split: llevo…aprendiendo; all day not in seed (drift)
+T7	S0057	S0057L01	REAL	17 syll; split: whole seed; split at recordar / cómo decir / lo que quería decir
+T7	S0062	S0062L01	REAL	9 syll; split: to help you + at the same time
+T7	S0063	S0063L01	REAL	16 syll; split: whole seed; are you sure + you don't mind + helping me
+T7	S0091	S0091L02	NOT	10 syll; natural chunk, keep: fixed degree phrase lo suficientemente
+T7	S0108	S0108L01	REAL	11 syll; split: to wake + in the middle of the night
+T7	S0112	S0112L04	REAL	9 syll; split: that was + very interesting
+T7	S0113	S0113L02	REAL	13 syll; split: whole seed; why can't I remember + what you said
+T7	S0114	S0114L02	REAL	11 syll; split: as if + I were doing it
+T7	S0115	S0115L04	REAL	22 syll; split: whole seed, 22 syll
+T7	S0116	S0116L04	REAL	15 syll; split: whole seed, 15 syll
+T7	S0117	S0117L04	REAL	25 syll; split: whole seed, 25 syll
+T7	S0118	S0118L04	REAL	21 syll; split: whole seed, 21 syll
+T7	S0119	S0119L02	REAL	15 syll; split: whole seed; can I ask you something + before you leave
+T7	S0120	S0120L04	REAL	15 syll; split: whole seed; it's interesting + that you like + to go by bus
+T7	S0133	S0133L01	REAL	9 syll; split: you get to know + someone
+T7	S0161	S0161L05	REAL	9 syll; split: on Sunday + in the morning
+T7	S0163	S0163L03	REAL	9 syll; split: whole seed; I think that + it's interesting
+T7	S0168	S0168L04	NOT	recount 8 syllables: within cap
+T7	S0170	S0170L02	REAL	16 syll; split: whole seed (T1 overlap)
+T7	S0181	S0181L04	REAL	13 syll; split: I have to take + my mother + to the doctor
+T7	S0191	S0191L01	REAL	10 syll; split: whole seed; I don't mind + not at all
+T7	S0246	S0246L01	REAL	11 syll; split: she was + too busy
+T7	S0251	S0251L01	REAL	17 syll; split: whole seed, 17 syll
+T7	S0252	S0252L02	REAL	12 syll; split: whole seed; when will you be + ready to start
+T7	S0253	S0253L01	REAL	14 syll; split: whole seed; I should be ready + in a few minutes
+T7	S0254	S0254L01	REAL	11 syll; split: whole seed; I've been ready + since this morning
+T7	S0255	S0255L02	REAL	14 syll; split: whole seed, 14 syll
+T7	S0256	S0256L01	REAL	16 syll; split: whole seed, 16 syll
+T7	S0257	S0257L02	REAL	9 syll; split: whole seed; I like + that blue thing
+T7	S0258	S0258L01	REAL	11 syll; split: whole seed; what's + that blue thing + over there
+T7	S0261	S0261L01	REAL	10 syll; split: it might be + something important
+T7	S0262	S0262L03	NOT	9 syll; natural chunk, keep: prep+relative; split leaves bare con el que
+T7	S0280	S0280L01	REAL	16 syll; split: whole seed, 16 syll
+T7	S0288	S0288L03	REAL	10 syll; split: who like + watching television
+T7	S0291	S0291L02	NOT	recount 8 syllables: within cap
+T7	S0293	S0293L03	REAL	16 syll; split: whole seed, 16 syll
+T7	S0295	S0295L03	REAL	14 syll; split: whole seed, 14 syll
+T7	S0296	S0296L02	REAL	15 syll; split: whole seed, 15 syll
+T7	S0297	S0297L04	REAL	16 syll; split: whole seed, 16 syll
+T7	S0298	S0298L02	REAL	9 syll; split: I've got nothing left + to say
+T7	S0300	S0300L03	REAL	13 syll; split: whole seed; she doesn't want + to seem unfriendly
+T7	S0302	S0302L03	NOT	recount 8 syllables: within cap
+T7	S0304	S0304L03	NOT	recount 8 syllables: within cap
+T7	S0306	S0306L03	REAL	10 syll; split: I know + that young woman
+T7	S0307	S0307L02	REAL	10 syll; split: I know + that young man
+T7	S0413	S0413L04	NOT	10 syll; natural chunk, keep: one short if-clause
+T7	S0414	S0414L02	REAL	10 syll; split: a bottle of + red wine
+T7	S0434	S0434L02	NOT	9 syll; natural chunk, keep: noun + relative, 9
+T7	S0458	S0458L03	REAL	9 syll; split: it was all + much easier
+T7	S0481	S0481L03	NOT	10 syll; natural chunk, keep: one noun phrase, 10
+T7	S0482	S0482L01	NOT	9 syll; natural chunk, keep: idiom hablar en serio
+T7	S0494	S0494L02	NOT	9 syll; natural chunk, keep: one PP, 9
+T7	S0497	S0497L02	REAL	10 syll; split: as if you needed + to sleep
+T7	S0506	S0506L04	NOT	9 syll; natural chunk, keep: one temporal clause, 9
+T7	S0521	S0521L03	NOT	9 syll; natural chunk, keep: two words, 9
+T7	S0522	S0522L01	NOT	9 syll; natural chunk, keep: fixed head estar de acuerdo en que
+T7	S0528	S0528L02	NOT	9 syll; natural chunk, keep: size ok; LEGO not in seed (drift, #417·V)
+T7	S0535	S0535L03	NOT	9 syll; natural chunk, keep: one NP, 9
+T7	S0537	S0537L01	REAL	10 syll; split: but + I was wrong (pero taught)
+T7	S0538	S0538L02	NOT	9 syll; natural chunk, keep: one como si clause, 9
+T7	S0539	S0539L01	REAL	10 syll; split: but + it's getting late
+T7	S0541	S0541L02	REAL	9 syll; split: to try + to breathe slowly
+T7	S0547	S0547L01	REAL	9 syll; split: because + he has been playing
+T7	S0552	S0552L01	NOT	9 syll; natural chunk, keep: one PP, 9
+T7	S0554	S0554L01	REAL	10 syll; split: whole seed; this towel + isn't dry
+T7	S0555	S0555L01	NOT	9 syll; natural chunk, keep: three words, 9
+T7	S0566	S0566L02	REAL	10 syll; split: if it had been + my choice
+T7	S0567	S0567L02	REAL	9 syll; split: spending time + outdoors
+T7	S0577	S0577L01	NOT	9 syll; natural chunk, keep: one verb group, 9
+T7	S0580	S0580L01	NOT	9 syll; natural chunk, keep: one verb group, 9
+T7	S0585	S0585L02	NOT	10 syll; natural chunk, keep: one NP; English lacks my
+T7	S0655	S0655L01	REAL	14 syll; split: whole seed; I think that + you're doing very well, madam
+T8	S0090	S0090L04	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0138	S0138L01	NOT	subject aquí overt; seed tense was/es drift
+T8	S0141	S0141L02	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0146	S0146L01	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0147	S0147L01	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0153	S0153L01	NOT	participle; no person marked
+T8	S0172	S0172L03	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0197	S0197L03	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0223	S0223L01	REAL	va a, no overt subject: he's going to
+T8	S0224	S0224L01	REAL	acaba de: he has just
+T8	S0225	S0225L01	REAL	daría: he would give
+T8	S0229	S0229L02	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0236	S0236L01	REAL	iba a after dijo que: she was going to
+T8	S0239	S0239L02	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0268	S0268L01	REAL	mandó: she sent
+T8	S0293	S0293L02	REAL	va a reunirse: he's going to meet
+T8	S0324	S0324L02	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0326	S0326L01	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0348	S0348L01	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0363	S0363L01	REAL	tenía ganas de: he felt like
+T8	S0370	S0370L01	REAL	conociera: that I knew
+T8	S0387	S0387L02	REAL	tuviera razón: she was right
+T8	S0433	S0433L02	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0477	S0477L02	REAL	ha estado: he's been
+T8	S0508	S0508L02	UNSURE	impersonal tiene sentido; it makes sense?
+T8	S0511	S0511L02	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0536	S0536L03	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0544	S0544L03	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0606	S0606L01	NOT	participle; no person marked
+T8	S0612	S0612L02	NOT	participle; no person marked
+T8	S0614	S0614L02	NOT	subject overt in seed (separate LEGO/noun)
+T8	S0633	S0633L01	NOT	subject overt in seed (separate LEGO/noun)
+T9	S0098	S0098L03	REAL	play | jugar → to play; no clash
+T9	S0150	S0150L02	REAL	tell me | decirme → to tell me = S0070L01, becomes dup
+T9	S0173	S0173L02	REAL	manage it | hacerlo → to manage it; check to do it
+T9	S0174	S0174L02	REAL	understand | entender → to understand CLASHES S0074L02 a entender
+T9	S0211	S0211L04	REAL	explain | explicar → to explain = S0008L01, becomes dup
+T9	S0270	S0270L02	REAL	arrive | llegar → to arrive; no clash
+T9	S0357	S0357L03	REAL	send to her | mandarle → to send her
+T9	S0457	S0457L03	NOT	noun phrase
+T9	S0472	S0472L01	NOT	noun phrase
+T9	S0489	S0489L01	NOT	adjective
+T9	S0496	S0496L02	REAL	lose | perder → to lose = S0399L01, becomes dup
+T9	S0504	S0504L02	REAL	run | correr → to run = S0353L01, becomes dup
+T9	S0602	S0602L01	NOT	adjective
+T9	S0629	S0629L03	NOT	noun
+T9	S0630	S0630L01	REAL	have | tomar → to have CLASHES S0115L01 tener
+T10	S0157	S0157L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0160	S0160L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0164	S0164L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0169	S0169L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0182	S0182L04 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0183	S0183L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0186	S0186L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0187	S0187L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0188	S0188L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0200	S0200L03 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0215	S0215L03 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0239	S0239L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0267	S0267L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0270	S0270L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0277	S0277L03 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0360	S0360L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0363	S0363L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0390	S0390L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0392	S0392L04 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0416	S0416L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0423	S0423L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0424	S0424L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0426	S0426L03 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0426	S0426L04 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0427	S0427L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0427	S0427L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0466	S0466L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0466	S0466L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0472	S0472L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0495	S0495L01 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0499	S0499L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0500	S0500L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0548	S0548L02 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0568	S0568L03 component	NOT	LEGO components field: visual tile only, not spoken
+T10	S0403	S0403L03C02	REAL	component row introduce=true with audio: 'plural' spoken; drop
+T10	S0426	S0426L04C02	REAL	component row introduce=true with audio: 'plural' spoken; drop
+T10	S0427	S0427L02C02	REAL	component row introduce=true with audio: 'plural' spoken; drop
+T10	S0466	S0466L01C01	REAL	component row introduce=true with audio: 'deja | me → me' spoken; drop
+T10	S0466	S0466L02C01	REAL	component row introduce=true with audio: 'tirar | it → lo' spoken; drop
+T10	S0500	S0500L02C01	REAL	component row introduce=true with audio: 'sentarte | sit down → sentarse' spoken; drop
+T11	S0153	S0153L02U13	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0155	S0155L03U03	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0172	S0172L03U10	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0229	S0229L02U04	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0252	S0252L02U11	UNSURE	future estarás after past frame; conditional expected
+T11	S0275	S0275L01U08	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0275	S0275L01U13	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0277	S0277L03U14	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0277	S0277L03U06	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0277	S0277L03U10	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0346	S0346L02U04	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0411	S0411L01U01	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0426	S0426L01U05	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0426	S0426L01U06	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0426	S0426L01U01	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0426	S0426L01U04	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0428	S0428L01U02	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0428	S0428L01U03	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0428	S0428L02U04	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0428	S0428L02U05	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0429	S0429L01U04	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0431	S0431L01U04	UNSURE	future estarán after past frame; conditional expected
+T11	S0447	S0447L03U04	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0485	S0485L02U03	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0544	S0544L02B04	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0544	S0544L02B02	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0544	S0544L02B03	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0544	S0544L02U01	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0544	S0544L02U02	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0544	S0544L03U04	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0544	S0544L03U01	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0565	S0565L01U05	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0568	S0568L02U03	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0589	S0589L01U02	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0589	S0589L02U02	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0589	S0589L02U05	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0589	S0589L02U01	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0589	S0589L02U04	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0589	S0589L02U03	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0589	S0589L03U01	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0590	S0590L01U05	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0599	S0599L04U05	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0624	S0624L01U03	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0624	S0624L01U02	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0631	S0631L01U07	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0633	S0633L01U04	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0633	S0633L01U03	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0634	S0634L01U03	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0544	fb087c5b-007f-4d33-a746-4e5e4fedaa46	NOT	Spanish uses simple conditional here; does not transfer
+T11	S0589	5cbfed84-8a14-4b47-953f-fb310a0f6817	NOT	Spanish uses simple conditional here; does not transfer
