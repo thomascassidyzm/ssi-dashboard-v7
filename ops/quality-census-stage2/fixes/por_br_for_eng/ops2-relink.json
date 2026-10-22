@@ -1,0 +1,26 @@
+[
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0012L03B01",
+  "slot": "known",
+  "audio_id": "b5117357-ac70-4a71-b064-0e21d81862e6",
+  "allow_text_mismatch": true
+ },
+ {
+  "op": "audio.link",
+  "target": "phrase",
+  "phrase_id": "por_br_for_eng:S0012L04B01",
+  "slot": "known",
+  "audio_id": "17efb6f0-b7bc-4778-a631-450669cc40ba",
+  "allow_text_mismatch": true
+ },
+ {
+  "op": "audio.link",
+  "target": "seed",
+  "seed_number": 130,
+  "slot": "known",
+  "audio_id": "cfe8db58-aaaf-4282-b349-e06e202b49cc",
+  "allow_text_mismatch": true
+ }
+]

@@ -1,0 +1,7 @@
+por_br_for_eng census fix pass (job #432, 2026-10-22). Inputs: a Popty GET /api/production/por_br_for_eng/seeds snapshot
+($CS_SCRATCH/seeds.json) and the stage-2 verdicts (branch cs/156-census2-por-br-for-eng, copied to $CS_SCRATCH/c2/verdicts.json).
+p26plan2.py -> p26plan.json (home LEGO per P26 seed, fit, clashes); caps.py -> capsknown.json (known-side REAL capital rows);
+plan.py -> ops.json. dryloop.py dry-runs the batch and adds allow_text_mismatch ONLY where clip and row words are identical
+(punctuation-only difference). Applied to POST /api/production/por_br_for_eng/edit-batch as event 274cecfd-ac52-4c27-85f5-360c74a4bb33;
+ops2-relink.json (3 English clips the text-change trigger unlinked) as event 880e9488-431e-49cc-9f77-cfab76edf237.
+Not re-runnable as-is: every update carries an `expect` on the pre-edit text, so a replay aborts on drift (as intended).
