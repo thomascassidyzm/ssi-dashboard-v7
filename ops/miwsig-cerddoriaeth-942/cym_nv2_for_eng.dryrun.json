@@ -1,0 +1,4417 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "e5b2dbd8-03f2-42e3-a621-0d28e7fad58e"
+   },
+   "before": {
+    "id": "e5b2dbd8-03f2-42e3-a621-0d28e7fad58e",
+    "course_code": "cym_nv2_for_eng",
+    "text": "maen nhw’n chwarae miwsig yn hwyr yn y nos",
+    "text_normalized": "maen nhw’n chwarae miwsig yn hwyr yn y nos",
+    "language": "cym",
+    "role": "target1",
+    "voice_id": "human_catrinlliar_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/1B7F2E66-8469-476C-96BC-63C81C78A6F6.mp3",
+    "duration_ms": 3644,
+    "file_size_bytes": null,
+    "created_at": "2026-10-22T15:22:01.985Z",
+    "lego_id": null,
+    "text_stripped": "maen nhw’n chwarae miwsig yn hwyr yn y nos",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "e5b2dbd8-03f2-42e3-a621-0d28e7fad58e",
+    "course_code": "cym_nv2_for_eng",
+    "text": "maen nhw’n chwarae cerddoriaeth yn hwyr yn y nos",
+    "text_normalized": "maen nhw’n chwarae cerddoriaeth yn hwyr yn y nos",
+    "language": "cym",
+    "role": "target1",
+    "voice_id": "human_catrinlliar_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/1B7F2E66-8469-476C-96BC-63C81C78A6F6.mp3",
+    "duration_ms": 3644,
+    "file_size_bytes": null,
+    "created_at": "2026-10-22T15:22:01.985Z",
+    "lego_id": null,
+    "text_stripped": "maen nhw’n chwarae cerddoriaeth yn hwyr yn y nos",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "48fee116-d6ef-4b9e-9248-6754818fab9d"
+   },
+   "before": {
+    "id": "48fee116-d6ef-4b9e-9248-6754818fab9d",
+    "course_code": "cym_nv2_for_eng",
+    "text": "maen nhw’n chwarae miwsig yn hwyr yn y nos",
+    "text_normalized": "maen nhw’n chwarae miwsig yn hwyr yn y nos",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/C34566E4-1063-47AF-B1D7-F92BF812BADF.mp3",
+    "duration_ms": 3069,
+    "file_size_bytes": null,
+    "created_at": "2026-10-15T15:20:17.076Z",
+    "lego_id": null,
+    "text_stripped": "maen nhw’n chwarae miwsig yn hwyr yn y nos",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "48fee116-d6ef-4b9e-9248-6754818fab9d",
+    "course_code": "cym_nv2_for_eng",
+    "text": "maen nhw’n chwarae cerddoriaeth yn hwyr yn y nos",
+    "text_normalized": "maen nhw’n chwarae cerddoriaeth yn hwyr yn y nos",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/C34566E4-1063-47AF-B1D7-F92BF812BADF.mp3",
+    "duration_ms": 3069,
+    "file_size_bytes": null,
+    "created_at": "2026-10-15T15:20:17.076Z",
+    "lego_id": null,
+    "text_stripped": "maen nhw’n chwarae cerddoriaeth yn hwyr yn y nos",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "0cc32743-66cb-4d31-9e12-7f17e3b92028"
+   },
+   "before": {
+    "id": "0cc32743-66cb-4d31-9e12-7f17e3b92028",
+    "course_code": "cym_nv2_for_eng",
+    "text": "miwsig",
+    "text_normalized": "miwsig",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/28942DF9-061D-442C-98CA-458739AC206B.mp3",
+    "duration_ms": 1303,
+    "file_size_bytes": null,
+    "created_at": "2026-10-15T17:04:21.946Z",
+    "lego_id": null,
+    "text_stripped": "miwsig",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "0cc32743-66cb-4d31-9e12-7f17e3b92028",
+    "course_code": "cym_nv2_for_eng",
+    "text": "cerddoriaeth",
+    "text_normalized": "cerddoriaeth",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/28942DF9-061D-442C-98CA-458739AC206B.mp3",
+    "duration_ms": 1303,
+    "file_size_bytes": null,
+    "created_at": "2026-10-15T17:04:21.946Z",
+    "lego_id": null,
+    "text_stripped": "cerddoriaeth",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "fec2f7ed-9a61-47bd-b868-9d8541b1e361"
+   },
+   "before": {
+    "id": "fec2f7ed-9a61-47bd-b868-9d8541b1e361",
+    "course_code": "cym_nv2_for_eng",
+    "text": "dw i ddim isio miwsig rŵan hyn",
+    "text_normalized": "dw i ddim isio miwsig rŵan hyn",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/27C68ED1-E6EA-4134-BED9-9A220EF7118E.mp3",
+    "duration_ms": 2757,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:37.072Z",
+    "lego_id": null,
+    "text_stripped": "dw i ddim isio miwsig rŵan hyn",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "fec2f7ed-9a61-47bd-b868-9d8541b1e361",
+    "course_code": "cym_nv2_for_eng",
+    "text": "dw i ddim isio cerddoriaeth rŵan hyn",
+    "text_normalized": "dw i ddim isio cerddoriaeth rŵan hyn",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/27C68ED1-E6EA-4134-BED9-9A220EF7118E.mp3",
+    "duration_ms": 2757,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:37.072Z",
+    "lego_id": null,
+    "text_stripped": "dw i ddim isio cerddoriaeth rŵan hyn",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "b9d22106-2c64-4203-b5d6-3eeefbd887ef"
+   },
+   "before": {
+    "id": "b9d22106-2c64-4203-b5d6-3eeefbd887ef",
+    "course_code": "cym_nv2_for_eng",
+    "text": "maen nhw isio miwsig",
+    "text_normalized": "maen nhw isio miwsig",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/193E1C62-55C7-4AFA-8A2E-CE5A1EB95BBB.mp3",
+    "duration_ms": 2210,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:15.890Z",
+    "lego_id": null,
+    "text_stripped": "maen nhw isio miwsig",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 2,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "b9d22106-2c64-4203-b5d6-3eeefbd887ef",
+    "course_code": "cym_nv2_for_eng",
+    "text": "maen nhw isio cerddoriaeth",
+    "text_normalized": "maen nhw isio cerddoriaeth",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/193E1C62-55C7-4AFA-8A2E-CE5A1EB95BBB.mp3",
+    "duration_ms": 2210,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:15.890Z",
+    "lego_id": null,
+    "text_stripped": "maen nhw isio cerddoriaeth",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 2,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "ac067b22-4375-44ba-be2d-abdc974003be"
+   },
+   "before": {
+    "id": "ac067b22-4375-44ba-be2d-abdc974003be",
+    "course_code": "cym_nv2_for_eng",
+    "text": "miwsig at elusen",
+    "text_normalized": "miwsig at elusen",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/9E4FC4BC-5F11-4924-9991-97CCC908FB87.mp3",
+    "duration_ms": 2445,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:31.031Z",
+    "lego_id": null,
+    "text_stripped": "miwsig at elusen",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "ac067b22-4375-44ba-be2d-abdc974003be",
+    "course_code": "cym_nv2_for_eng",
+    "text": "cerddoriaeth at elusen",
+    "text_normalized": "cerddoriaeth at elusen",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/9E4FC4BC-5F11-4924-9991-97CCC908FB87.mp3",
+    "duration_ms": 2445,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:31.031Z",
+    "lego_id": null,
+    "text_stripped": "cerddoriaeth at elusen",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "9c2b10a0-d4f8-41e0-a094-fc6269cec217"
+   },
+   "before": {
+    "id": "9c2b10a0-d4f8-41e0-a094-fc6269cec217",
+    "course_code": "cym_nv2_for_eng",
+    "text": "miwsig yn y gorffennol",
+    "text_normalized": "miwsig yn y gorffennol",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/7FF16CFA-953A-4470-B190-B8111BF0E771.mp3",
+    "duration_ms": 2371,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:33.024Z",
+    "lego_id": null,
+    "text_stripped": "miwsig yn y gorffennol",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "9c2b10a0-d4f8-41e0-a094-fc6269cec217",
+    "course_code": "cym_nv2_for_eng",
+    "text": "cerddoriaeth yn y gorffennol",
+    "text_normalized": "cerddoriaeth yn y gorffennol",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/7FF16CFA-953A-4470-B190-B8111BF0E771.mp3",
+    "duration_ms": 2371,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:33.024Z",
+    "lego_id": null,
+    "text_stripped": "cerddoriaeth yn y gorffennol",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "333a7add-9062-4811-a237-3102c6fba403"
+   },
+   "before": {
+    "id": "333a7add-9062-4811-a237-3102c6fba403",
+    "course_code": "cym_nv2_for_eng",
+    "text": "maen nhw isio miwsig heno",
+    "text_normalized": "maen nhw isio miwsig heno",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/4EB88B15-F57E-49C7-9C01-805BE268FADB.mp3",
+    "duration_ms": 2284,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:46.864Z",
+    "lego_id": null,
+    "text_stripped": "maen nhw isio miwsig heno",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "333a7add-9062-4811-a237-3102c6fba403",
+    "course_code": "cym_nv2_for_eng",
+    "text": "maen nhw isio cerddoriaeth heno",
+    "text_normalized": "maen nhw isio cerddoriaeth heno",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/4EB88B15-F57E-49C7-9C01-805BE268FADB.mp3",
+    "duration_ms": 2284,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:46.864Z",
+    "lego_id": null,
+    "text_stripped": "maen nhw isio cerddoriaeth heno",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "addc0ddc-bf41-47c9-92f8-f046774e8f21"
+   },
+   "before": {
+    "id": "addc0ddc-bf41-47c9-92f8-f046774e8f21",
+    "course_code": "cym_nv2_for_eng",
+    "text": "ydan ni angen miwsig heno?",
+    "text_normalized": "ydan ni angen miwsig heno?",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/282A6C48-101D-4EF1-9776-328BC6CD4022.mp3",
+    "duration_ms": 2456,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:51.406Z",
+    "lego_id": null,
+    "text_stripped": "ydan ni angen miwsig heno",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "addc0ddc-bf41-47c9-92f8-f046774e8f21",
+    "course_code": "cym_nv2_for_eng",
+    "text": "ydan ni angen cerddoriaeth heno?",
+    "text_normalized": "ydan ni angen cerddoriaeth heno?",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/282A6C48-101D-4EF1-9776-328BC6CD4022.mp3",
+    "duration_ms": 2456,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:51.406Z",
+    "lego_id": null,
+    "text_stripped": "ydan ni angen cerddoriaeth heno",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "68e4d0d9-bf51-4e03-918f-ae8acf18de26"
+   },
+   "before": {
+    "id": "68e4d0d9-bf51-4e03-918f-ae8acf18de26",
+    "course_code": "cym_nv2_for_eng",
+    "text": "dw i’n caru miwsig",
+    "text_normalized": "dw i’n caru miwsig",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/81BAB9A3-C062-4EAF-AF9B-89A998D831F7.mp3",
+    "duration_ms": 2413,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:43.824Z",
+    "lego_id": null,
+    "text_stripped": "dw i’n caru miwsig",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "68e4d0d9-bf51-4e03-918f-ae8acf18de26",
+    "course_code": "cym_nv2_for_eng",
+    "text": "dw i’n caru cerddoriaeth",
+    "text_normalized": "dw i’n caru cerddoriaeth",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/81BAB9A3-C062-4EAF-AF9B-89A998D831F7.mp3",
+    "duration_ms": 2413,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:43.824Z",
+    "lego_id": null,
+    "text_stripped": "dw i’n caru cerddoriaeth",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "d4dddd9b-4602-45d1-b94d-ac95e2b3cbd4"
+   },
+   "before": {
+    "id": "d4dddd9b-4602-45d1-b94d-ac95e2b3cbd4",
+    "course_code": "cym_nv2_for_eng",
+    "text": "miwsig yn hwyr yn y nos",
+    "text_normalized": "miwsig yn hwyr yn y nos",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/A187E851-89FD-41DF-9BB7-CE8B3397F1E3.mp3",
+    "duration_ms": 2671,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:54.938Z",
+    "lego_id": null,
+    "text_stripped": "miwsig yn hwyr yn y nos",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "d4dddd9b-4602-45d1-b94d-ac95e2b3cbd4",
+    "course_code": "cym_nv2_for_eng",
+    "text": "cerddoriaeth yn hwyr yn y nos",
+    "text_normalized": "cerddoriaeth yn hwyr yn y nos",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/A187E851-89FD-41DF-9BB7-CE8B3397F1E3.mp3",
+    "duration_ms": 2671,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:54.938Z",
+    "lego_id": null,
+    "text_stripped": "cerddoriaeth yn hwyr yn y nos",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "81e5f009-cbd3-4f0a-9a92-6120f8c8ada9"
+   },
+   "before": {
+    "id": "81e5f009-cbd3-4f0a-9a92-6120f8c8ada9",
+    "course_code": "cym_nv2_for_eng",
+    "text": "chwarae miwsig yn hwyr yn y nos",
+    "text_normalized": "chwarae miwsig yn hwyr yn y nos",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/34C19725-CF8C-47BF-8F44-98900A7D7A4C.mp3",
+    "duration_ms": 2971,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:59.512Z",
+    "lego_id": null,
+    "text_stripped": "chwarae miwsig yn hwyr yn y nos",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "81e5f009-cbd3-4f0a-9a92-6120f8c8ada9",
+    "course_code": "cym_nv2_for_eng",
+    "text": "chwarae cerddoriaeth yn hwyr yn y nos",
+    "text_normalized": "chwarae cerddoriaeth yn hwyr yn y nos",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/34C19725-CF8C-47BF-8F44-98900A7D7A4C.mp3",
+    "duration_ms": 2971,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:13:59.512Z",
+    "lego_id": null,
+    "text_stripped": "chwarae cerddoriaeth yn hwyr yn y nos",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "5838843d-bb7e-4d29-b522-8402029dc0c4"
+   },
+   "before": {
+    "id": "5838843d-bb7e-4d29-b522-8402029dc0c4",
+    "course_code": "cym_nv2_for_eng",
+    "text": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel",
+    "text_normalized": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel",
+    "language": "cym",
+    "role": "target1",
+    "voice_id": "human_catrinlliar_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/2229645A-6EF2-4911-8BDD-F7979A334FCE.mp3",
+    "duration_ms": 4467,
+    "file_size_bytes": null,
+    "created_at": "2026-10-22T15:22:08.500Z",
+    "lego_id": null,
+    "text_stripped": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "5838843d-bb7e-4d29-b522-8402029dc0c4",
+    "course_code": "cym_nv2_for_eng",
+    "text": "’swn i’n licio tasen nhw ddim yn chwarae cerddoriaeth mor uchel",
+    "text_normalized": "’swn i’n licio tasen nhw ddim yn chwarae cerddoriaeth mor uchel",
+    "language": "cym",
+    "role": "target1",
+    "voice_id": "human_catrinlliar_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/2229645A-6EF2-4911-8BDD-F7979A334FCE.mp3",
+    "duration_ms": 4467,
+    "file_size_bytes": null,
+    "created_at": "2026-10-22T15:22:08.500Z",
+    "lego_id": null,
+    "text_stripped": "’swn i’n licio tasen nhw ddim yn chwarae cerddoriaeth mor uchel",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "80303edc-d200-4b93-8087-a51e638bd374"
+   },
+   "before": {
+    "id": "80303edc-d200-4b93-8087-a51e638bd374",
+    "course_code": "cym_nv2_for_eng",
+    "text": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel",
+    "text_normalized": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/6F5751FD-2F4C-494D-94D3-14FD78ACBA54.mp3",
+    "duration_ms": 3366,
+    "file_size_bytes": null,
+    "created_at": "2026-10-15T15:20:40.117Z",
+    "lego_id": null,
+    "text_stripped": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "80303edc-d200-4b93-8087-a51e638bd374",
+    "course_code": "cym_nv2_for_eng",
+    "text": "’swn i’n licio tasen nhw ddim yn chwarae cerddoriaeth mor uchel",
+    "text_normalized": "’swn i’n licio tasen nhw ddim yn chwarae cerddoriaeth mor uchel",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/6F5751FD-2F4C-494D-94D3-14FD78ACBA54.mp3",
+    "duration_ms": 3366,
+    "file_size_bytes": null,
+    "created_at": "2026-10-15T15:20:40.117Z",
+    "lego_id": null,
+    "text_stripped": "’swn i’n licio tasen nhw ddim yn chwarae cerddoriaeth mor uchel",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "ef39383c-1582-4b7a-8c62-063bf257885a"
+   },
+   "before": {
+    "id": "ef39383c-1582-4b7a-8c62-063bf257885a",
+    "course_code": "cym_nv2_for_eng",
+    "text": "miwsig mor uchel",
+    "text_normalized": "miwsig mor uchel",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/4DA5CC6A-AA1F-4CBC-A396-B751EEABDB22.mp3",
+    "duration_ms": 2175,
+    "file_size_bytes": null,
+    "created_at": "2026-10-15T17:05:18.946Z",
+    "lego_id": null,
+    "text_stripped": "miwsig mor uchel",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "ef39383c-1582-4b7a-8c62-063bf257885a",
+    "course_code": "cym_nv2_for_eng",
+    "text": "cerddoriaeth mor uchel",
+    "text_normalized": "cerddoriaeth mor uchel",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/4DA5CC6A-AA1F-4CBC-A396-B751EEABDB22.mp3",
+    "duration_ms": 2175,
+    "file_size_bytes": null,
+    "created_at": "2026-10-15T17:05:18.946Z",
+    "lego_id": null,
+    "text_stripped": "cerddoriaeth mor uchel",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "seed_number": 1556
+   },
+   "before": {
+    "id": "29365cd6-051f-405c-8984-bafdf3aef264",
+    "seed_number": 1556,
+    "target_text": "maen nhw’n chwarae miwsig yn hwyr yn y nos",
+    "known_text": "they play music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": "e5b2dbd8-03f2-42e3-a621-0d28e7fad58e",
+    "target2_audio_id": "48fee116-d6ef-4b9e-9248-6754818fab9d"
+   },
+   "after": {
+    "id": "29365cd6-051f-405c-8984-bafdf3aef264",
+    "seed_number": 1556,
+    "target_text": "maen nhw’n chwarae cerddoriaeth yn hwyr yn y nos",
+    "known_text": "they play music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": "e5b2dbd8-03f2-42e3-a621-0d28e7fad58e",
+    "target2_audio_id": "48fee116-d6ef-4b9e-9248-6754818fab9d"
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1556L01"
+   },
+   "before": {
+    "id": "cb7bf6d0-168d-41d1-a819-570e28fad47d",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": "S1556L01",
+    "target_text": "miwsig",
+    "known_text": "music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "0cc32743-66cb-4d31-9e12-7f17e3b92028",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cb7bf6d0-168d-41d1-a819-570e28fad47d",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": "S1556L01",
+    "target_text": "cerddoriaeth",
+    "known_text": "music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "0cc32743-66cb-4d31-9e12-7f17e3b92028",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L01B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L01B04",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i ddim isio miwsig rŵan hyn",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "right now",
+      "legoId": "S0274L04",
+      "target": " rŵan hyn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want music right now",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "fec2f7ed-9a61-47bd-b868-9d8541b1e361",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L01B04",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i ddim isio cerddoriaeth rŵan hyn",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "right now",
+      "legoId": "S0274L04",
+      "target": " rŵan hyn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want music right now",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "fec2f7ed-9a61-47bd-b868-9d8541b1e361",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L01B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L01B03",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "maen nhw isio miwsig",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they want music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "b9d22106-2c64-4203-b5d6-3eeefbd887ef",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L01B03",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "maen nhw isio cerddoriaeth",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they want music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "b9d22106-2c64-4203-b5d6-3eeefbd887ef",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L01B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L01B01",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "miwsig at elusen",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "for charity",
+      "legoId": "S1437L04",
+      "target": " at elusen",
+      "isGhost": false
+     }
+    ],
+    "known_text": "music for charity",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "ac067b22-4375-44ba-be2d-abdc974003be",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L01B01",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cerddoriaeth at elusen",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "for charity",
+      "legoId": "S1437L04",
+      "target": " at elusen",
+      "isGhost": false
+     }
+    ],
+    "known_text": "music for charity",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "ac067b22-4375-44ba-be2d-abdc974003be",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L01B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L01B02",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "miwsig yn y gorffennol",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "in the past",
+      "legoId": "S1458L02",
+      "target": " yn y gorffennol",
+      "isGhost": false
+     }
+    ],
+    "known_text": "music in the past",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "9c2b10a0-d4f8-41e0-a094-fc6269cec217",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L01B02",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "cerddoriaeth yn y gorffennol",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "in the past",
+      "legoId": "S1458L02",
+      "target": " yn y gorffennol",
+      "isGhost": false
+     }
+    ],
+    "known_text": "music in the past",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "9c2b10a0-d4f8-41e0-a094-fc6269cec217",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L01U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L01U02",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "maen nhw isio miwsig heno",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they want music tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "333a7add-9062-4811-a237-3102c6fba403",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L01U02",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "maen nhw isio cerddoriaeth heno",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they want music tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "333a7add-9062-4811-a237-3102c6fba403",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L01U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L01U03",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "doeddan nhw ddim isio miwsig yn yr ardd",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0184L03",
+      "target": "doeddan nhw ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L02",
+      "target": " yn yr ardd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they didn’t want music in the garden",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L01U03",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "doeddan nhw ddim isio cerddoriaeth yn yr ardd",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0184L03",
+      "target": "doeddan nhw ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L02",
+      "target": " yn yr ardd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they didn’t want music in the garden",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L01U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L01U05",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dydyn nhw ddim angen miwsig ar hyn o bryd",
+    "decomposition": [
+     {
+      "known": "they don’t need",
+      "legoId": "S1420L01",
+      "target": "dydyn nhw ddim angen",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "at the moment",
+      "legoId": "S0314L02",
+      "target": " ar hyn o bryd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they don’t need music at the moment",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L01U05",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dydyn nhw ddim angen cerddoriaeth ar hyn o bryd",
+    "decomposition": [
+     {
+      "known": "they don’t need",
+      "legoId": "S1420L01",
+      "target": "dydyn nhw ddim angen",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "at the moment",
+      "legoId": "S0314L02",
+      "target": " ar hyn o bryd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they don’t need music at the moment",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L01U07"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L01U07",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "oeddan ni angen miwsig yn y gorffennol",
+    "decomposition": [
+     {
+      "known": "we needed",
+      "legoId": "S0298L03",
+      "target": "oeddan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "in the past",
+      "legoId": "S1458L02",
+      "target": " yn y gorffennol",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we needed music in the past",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L01U07",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "oeddan ni angen cerddoriaeth yn y gorffennol",
+    "decomposition": [
+     {
+      "known": "we needed",
+      "legoId": "S0298L03",
+      "target": "oeddan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "in the past",
+      "legoId": "S1458L02",
+      "target": " yn y gorffennol",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we needed music in the past",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L01U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L01U06",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i ddim isio miwsig achos dw i wedi blino",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want music because I’m tired",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L01U06",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i ddim isio cerddoriaeth achos dw i wedi blino",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want music because I’m tired",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L01U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L01U04",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ydan ni angen miwsig heno?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "do we need music tonight?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "addc0ddc-bf41-47c9-92f8-f046774e8f21",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L01U04",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ydan ni angen cerddoriaeth heno?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "do we need music tonight?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "addc0ddc-bf41-47c9-92f8-f046774e8f21",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L01U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L01U01",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n caru miwsig",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "dw",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " caru",
+      "isGhost": true
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I love music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "68e4d0d9-bf51-4e03-918f-ae8acf18de26",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L01U01",
+    "seed_number": 1556,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n caru cerddoriaeth",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "dw",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " caru",
+      "isGhost": true
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I love music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "68e4d0d9-bf51-4e03-918f-ae8acf18de26",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L02B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L02B01",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "miwsig yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "d4dddd9b-4602-45d1-b94d-ac95e2b3cbd4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L02B01",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cerddoriaeth yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "d4dddd9b-4602-45d1-b94d-ac95e2b3cbd4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L02B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L02B03",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "chwarae miwsig yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": "chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to play music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "81e5f009-cbd3-4f0a-9a92-6120f8c8ada9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L02B03",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "chwarae cerddoriaeth yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": "chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to play music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "81e5f009-cbd3-4f0a-9a92-6120f8c8ada9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L02U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L02U01",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "maen nhw isio chwarae miwsig yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they want to play music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L02U01",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "maen nhw isio chwarae cerddoriaeth yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they want to play music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L02U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L02U06",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ddylen ni ddim chwarae miwsig yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we shouldn’t play music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L02U06",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ddylen ni ddim chwarae cerddoriaeth yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we shouldn’t play music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L02U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L02U03",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i ddim isio chwarae miwsig yn hwyr yn y nos achos dw i wedi blino",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want to play music late at night because I’m tired",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L02U03",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i ddim isio chwarae cerddoriaeth yn hwyr yn y nos achos dw i wedi blino",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want to play music late at night because I’m tired",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1556L02U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1556L02U05",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "pam maen nhw isio chwarae miwsig yn hwyr yn y nos?",
+    "decomposition": [
+     {
+      "known": "why",
+      "legoId": "S0282L01",
+      "target": "pam",
+      "isGhost": false
+     },
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": " maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "why do they want to play music late at night?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1556L02U05",
+    "seed_number": 1556,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "pam maen nhw isio chwarae cerddoriaeth yn hwyr yn y nos?",
+    "decomposition": [
+     {
+      "known": "why",
+      "legoId": "S0282L01",
+      "target": "pam",
+      "isGhost": false
+     },
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": " maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "why do they want to play music late at night?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "seed_number": 1557
+   },
+   "before": {
+    "id": "e51b41f1-bffa-4163-a477-b57de5b7ab63",
+    "seed_number": 1557,
+    "target_text": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel",
+    "known_text": "I wish they wouldn't play such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": "5838843d-bb7e-4d29-b522-8402029dc0c4",
+    "target2_audio_id": "80303edc-d200-4b93-8087-a51e638bd374"
+   },
+   "after": {
+    "id": "e51b41f1-bffa-4163-a477-b57de5b7ab63",
+    "seed_number": 1557,
+    "target_text": "’swn i’n licio tasen nhw ddim yn chwarae cerddoriaeth mor uchel",
+    "known_text": "I wish they wouldn't play such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": "5838843d-bb7e-4d29-b522-8402029dc0c4",
+    "target2_audio_id": "80303edc-d200-4b93-8087-a51e638bd374"
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L02B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L02B01",
+    "seed_number": 1557,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "tasen nhw ddim yn chwarae miwsig",
+    "decomposition": [
+     {
+      "known": "if they didn’t play",
+      "legoId": "S1557L02",
+      "target": "tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     }
+    ],
+    "known_text": "if they didn’t play music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L02B01",
+    "seed_number": 1557,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "tasen nhw ddim yn chwarae cerddoriaeth",
+    "decomposition": [
+     {
+      "known": "if they didn’t play",
+      "legoId": "S1557L02",
+      "target": "tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     }
+    ],
+    "known_text": "if they didn’t play music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1557L03"
+   },
+   "before": {
+    "id": "85daf902-f565-40a0-9784-84908e741a88",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": "S1557L03",
+    "target_text": "miwsig mor uchel",
+    "components": [
+     {
+      "known": "music",
+      "target": "miwsig"
+     },
+     {
+      "known": "so loud",
+      "target": "mor uchel"
+     }
+    ],
+    "known_text": "such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "ef39383c-1582-4b7a-8c62-063bf257885a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "85daf902-f565-40a0-9784-84908e741a88",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": "S1557L03",
+    "target_text": "cerddoriaeth mor uchel",
+    "components": [
+     {
+      "known": "music",
+      "target": "cerddoriaeth"
+     },
+     {
+      "known": "so loud",
+      "target": "mor uchel"
+     }
+    ],
+    "known_text": "such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "ef39383c-1582-4b7a-8c62-063bf257885a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03B01",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "miwsig mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": "miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "such loud music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03B01",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "cerddoriaeth mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": "cerddoriaeth mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "such loud music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03B02",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "maen nhw isio miwsig mor uchel",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they want such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03B02",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "maen nhw isio cerddoriaeth mor uchel",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they want such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03B03",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "dw i ddim isio miwsig mor uchel",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03B03",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "dw i ddim isio cerddoriaeth mor uchel",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 40,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03B04",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "oeddan nhw isio miwsig mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": "oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they wanted such loud music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03B04",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "oeddan nhw isio cerddoriaeth mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": "oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they wanted such loud music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 41,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03C01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03C01",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "miwsig",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "miwsig",
+      "isGhost": false
+     }
+    ],
+    "known_text": "music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "0cc32743-66cb-4d31-9e12-7f17e3b92028",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03C01",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "cerddoriaeth",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "cerddoriaeth",
+      "isGhost": false
+     }
+    ],
+    "known_text": "music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "0cc32743-66cb-4d31-9e12-7f17e3b92028",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 42,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03U02",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "dw i ddim isio miwsig mor uchel achos dw i wedi blino",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want such loud music because I’m tired",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03U02",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "dw i ddim isio cerddoriaeth mor uchel achos dw i wedi blino",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want such loud music because I’m tired",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 43,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03U04",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "mae hi’n mynd yn hwyr ond maen nhw isio miwsig mor uchel",
+    "decomposition": [
+     {
+      "known": "it’s getting late",
+      "legoId": "S1539L02",
+      "target": "mae hi’n mynd yn hwyr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": " maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s getting late but they want such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03U04",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "mae hi’n mynd yn hwyr ond maen nhw isio cerddoriaeth mor uchel",
+    "decomposition": [
+     {
+      "known": "it’s getting late",
+      "legoId": "S1539L02",
+      "target": "mae hi’n mynd yn hwyr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": " maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s getting late but they want such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 44,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03U06",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "wnaethon nhw ddim deud oeddan nhw isio miwsig mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "they didn’t say",
+      "legoId": "S1452L01",
+      "target": "wnaethon nhw ddim deud",
+      "isGhost": false
+     },
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": " oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they didn’t say they wanted such loud music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03U06",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "wnaethon nhw ddim deud oeddan nhw isio cerddoriaeth mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "they didn’t say",
+      "legoId": "S1452L01",
+      "target": "wnaethon nhw ddim deud",
+      "isGhost": false
+     },
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": " oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they didn’t say they wanted such loud music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 45,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03U07"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03U07",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "mwy na thebyg maen nhw isio miwsig mor uchel",
+    "decomposition": [
+     {
+      "known": "probably",
+      "legoId": "S0302L01",
+      "target": "mwy na thebyg",
+      "isGhost": false
+     },
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": " maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "probably they want such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03U07",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "mwy na thebyg maen nhw isio cerddoriaeth mor uchel",
+    "decomposition": [
+     {
+      "known": "probably",
+      "legoId": "S0302L01",
+      "target": "mwy na thebyg",
+      "isGhost": false
+     },
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": " maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "probably they want such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 46,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03U03",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "oeddan nhw isio miwsig mor uchel ond mae hi’n mynd yn hwyr",
+    "decomposition": [
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": "oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it’s getting late",
+      "legoId": "S1539L02",
+      "target": " mae hi’n mynd yn hwyr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they wanted such loud music but it’s getting late",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03U03",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "oeddan nhw isio cerddoriaeth mor uchel ond mae hi’n mynd yn hwyr",
+    "decomposition": [
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": "oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it’s getting late",
+      "legoId": "S1539L02",
+      "target": " mae hi’n mynd yn hwyr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they wanted such loud music but it’s getting late",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 47,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03U01",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I wish they wouldn’t play such loud music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03U01",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "’swn i’n licio tasen nhw ddim yn chwarae cerddoriaeth mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I wish they wouldn’t play such loud music late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 48,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L03U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L03U05",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ddudon nhw oeddan nhw isio miwsig mor uchel",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": " oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said they wanted such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L03U05",
+    "seed_number": 1557,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ddudon nhw oeddan nhw isio cerddoriaeth mor uchel",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": " oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said they wanted such loud music",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03U05",
+   "set": {
+    "target_text": "ddudon nhw oeddan nhw isio miwsig mor uchel",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": " oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03U01",
+   "set": {
+    "target_text": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03U03",
+   "set": {
+    "target_text": "oeddan nhw isio miwsig mor uchel ond mae hi’n mynd yn hwyr",
+    "decomposition": [
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": "oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it’s getting late",
+      "legoId": "S1539L02",
+      "target": " mae hi’n mynd yn hwyr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03U07",
+   "set": {
+    "target_text": "mwy na thebyg maen nhw isio miwsig mor uchel",
+    "decomposition": [
+     {
+      "known": "probably",
+      "legoId": "S0302L01",
+      "target": "mwy na thebyg",
+      "isGhost": false
+     },
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": " maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03U06",
+   "set": {
+    "target_text": "wnaethon nhw ddim deud oeddan nhw isio miwsig mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "they didn’t say",
+      "legoId": "S1452L01",
+      "target": "wnaethon nhw ddim deud",
+      "isGhost": false
+     },
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": " oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03U04",
+   "set": {
+    "target_text": "mae hi’n mynd yn hwyr ond maen nhw isio miwsig mor uchel",
+    "decomposition": [
+     {
+      "known": "it’s getting late",
+      "legoId": "S1539L02",
+      "target": "mae hi’n mynd yn hwyr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": " maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03U02",
+   "set": {
+    "target_text": "dw i ddim isio miwsig mor uchel achos dw i wedi blino",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03C01",
+   "set": {
+    "target_text": "miwsig",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "miwsig",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03B04",
+   "set": {
+    "target_text": "oeddan nhw isio miwsig mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": "oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03B03",
+   "set": {
+    "target_text": "dw i ddim isio miwsig mor uchel",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03B02",
+   "set": {
+    "target_text": "maen nhw isio miwsig mor uchel",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " miwsig mor uchel",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03B01",
+   "set": {
+    "target_text": "miwsig mor uchel yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": "miwsig mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "85daf902-f565-40a0-9784-84908e741a88",
+   "set": {
+    "target_text": "miwsig mor uchel",
+    "components": [
+     {
+      "known": "music",
+      "target": "miwsig"
+     },
+     {
+      "known": "so loud",
+      "target": "mor uchel"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02B01",
+   "set": {
+    "target_text": "tasen nhw ddim yn chwarae miwsig",
+    "decomposition": [
+     {
+      "known": "if they didn’t play",
+      "legoId": "S1557L02",
+      "target": "tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1557,
+   "set": {
+    "target_text": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L02U05",
+   "set": {
+    "target_text": "pam maen nhw isio chwarae miwsig yn hwyr yn y nos?",
+    "decomposition": [
+     {
+      "known": "why",
+      "legoId": "S0282L01",
+      "target": "pam",
+      "isGhost": false
+     },
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": " maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L02U03",
+   "set": {
+    "target_text": "dw i ddim isio chwarae miwsig yn hwyr yn y nos achos dw i wedi blino",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L02U06",
+   "set": {
+    "target_text": "ddylen ni ddim chwarae miwsig yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L02U01",
+   "set": {
+    "target_text": "maen nhw isio chwarae miwsig yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": " chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L02B03",
+   "set": {
+    "target_text": "chwarae miwsig yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "to play",
+      "legoId": "S1501L03",
+      "target": "chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L02B01",
+   "set": {
+    "target_text": "miwsig yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L01U01",
+   "set": {
+    "target_text": "dw i’n caru miwsig",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "dw",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " caru",
+      "isGhost": true
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L01U04",
+   "set": {
+    "target_text": "ydan ni angen miwsig heno?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L01U06",
+   "set": {
+    "target_text": "dw i ddim isio miwsig achos dw i wedi blino",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L01U07",
+   "set": {
+    "target_text": "oeddan ni angen miwsig yn y gorffennol",
+    "decomposition": [
+     {
+      "known": "we needed",
+      "legoId": "S0298L03",
+      "target": "oeddan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "in the past",
+      "legoId": "S1458L02",
+      "target": " yn y gorffennol",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L01U05",
+   "set": {
+    "target_text": "dydyn nhw ddim angen miwsig ar hyn o bryd",
+    "decomposition": [
+     {
+      "known": "they don’t need",
+      "legoId": "S1420L01",
+      "target": "dydyn nhw ddim angen",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "at the moment",
+      "legoId": "S0314L02",
+      "target": " ar hyn o bryd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L01U03",
+   "set": {
+    "target_text": "doeddan nhw ddim isio miwsig yn yr ardd",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0184L03",
+      "target": "doeddan nhw ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L02",
+      "target": " yn yr ardd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L01U02",
+   "set": {
+    "target_text": "maen nhw isio miwsig heno",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L01B02",
+   "set": {
+    "target_text": "miwsig yn y gorffennol",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "in the past",
+      "legoId": "S1458L02",
+      "target": " yn y gorffennol",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L01B01",
+   "set": {
+    "target_text": "miwsig at elusen",
+    "decomposition": [
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": "miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "for charity",
+      "legoId": "S1437L04",
+      "target": " at elusen",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L01B03",
+   "set": {
+    "target_text": "maen nhw isio miwsig",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1556L01B04",
+   "set": {
+    "target_text": "dw i ddim isio miwsig rŵan hyn",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L01",
+      "target": " miwsig",
+      "isGhost": false
+     },
+     {
+      "known": "right now",
+      "legoId": "S0274L04",
+      "target": " rŵan hyn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "cb7bf6d0-168d-41d1-a819-570e28fad47d",
+   "set": {
+    "target_text": "miwsig"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1556,
+   "set": {
+    "target_text": "maen nhw’n chwarae miwsig yn hwyr yn y nos"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "ef39383c-1582-4b7a-8c62-063bf257885a",
+   "set": {
+    "text": "miwsig mor uchel",
+    "text_stripped": "miwsig mor uchel"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "80303edc-d200-4b93-8087-a51e638bd374",
+   "set": {
+    "text": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel",
+    "text_stripped": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "5838843d-bb7e-4d29-b522-8402029dc0c4",
+   "set": {
+    "text": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel",
+    "text_stripped": "’swn i’n licio tasen nhw ddim yn chwarae miwsig mor uchel"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "81e5f009-cbd3-4f0a-9a92-6120f8c8ada9",
+   "set": {
+    "text": "chwarae miwsig yn hwyr yn y nos",
+    "text_stripped": "chwarae miwsig yn hwyr yn y nos"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "d4dddd9b-4602-45d1-b94d-ac95e2b3cbd4",
+   "set": {
+    "text": "miwsig yn hwyr yn y nos",
+    "text_stripped": "miwsig yn hwyr yn y nos"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "68e4d0d9-bf51-4e03-918f-ae8acf18de26",
+   "set": {
+    "text": "dw i’n caru miwsig",
+    "text_stripped": "dw i’n caru miwsig"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "addc0ddc-bf41-47c9-92f8-f046774e8f21",
+   "set": {
+    "text": "ydan ni angen miwsig heno?",
+    "text_stripped": "ydan ni angen miwsig heno"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "333a7add-9062-4811-a237-3102c6fba403",
+   "set": {
+    "text": "maen nhw isio miwsig heno",
+    "text_stripped": "maen nhw isio miwsig heno"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "9c2b10a0-d4f8-41e0-a094-fc6269cec217",
+   "set": {
+    "text": "miwsig yn y gorffennol",
+    "text_stripped": "miwsig yn y gorffennol"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "ac067b22-4375-44ba-be2d-abdc974003be",
+   "set": {
+    "text": "miwsig at elusen",
+    "text_stripped": "miwsig at elusen"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "b9d22106-2c64-4203-b5d6-3eeefbd887ef",
+   "set": {
+    "text": "maen nhw isio miwsig",
+    "text_stripped": "maen nhw isio miwsig"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "fec2f7ed-9a61-47bd-b868-9d8541b1e361",
+   "set": {
+    "text": "dw i ddim isio miwsig rŵan hyn",
+    "text_stripped": "dw i ddim isio miwsig rŵan hyn"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "0cc32743-66cb-4d31-9e12-7f17e3b92028",
+   "set": {
+    "text": "miwsig",
+    "text_stripped": "miwsig"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "48fee116-d6ef-4b9e-9248-6754818fab9d",
+   "set": {
+    "text": "maen nhw’n chwarae miwsig yn hwyr yn y nos",
+    "text_stripped": "maen nhw’n chwarae miwsig yn hwyr yn y nos"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "e5b2dbd8-03f2-42e3-a621-0d28e7fad58e",
+   "set": {
+    "text": "maen nhw’n chwarae miwsig yn hwyr yn y nos",
+    "text_stripped": "maen nhw’n chwarae miwsig yn hwyr yn y nos"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
