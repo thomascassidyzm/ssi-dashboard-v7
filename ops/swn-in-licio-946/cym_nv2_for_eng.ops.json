@@ -1,0 +1,717 @@
+{
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S1557L01",
+   "set": {
+    "known_text": "I would like"
+   },
+   "expect": {
+    "known_text": "I wish"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01B04",
+   "set": {
+    "known_text": "maybe I would like to move",
+    "decomposition": [
+     {
+      "known": "maybe",
+      "legoId": "S0281L02",
+      "target": "efallai",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "maybe I wish to move",
+    "decomposition": [
+     {
+      "known": "maybe",
+      "legoId": "S0281L02",
+      "target": "efallai",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01B01",
+   "set": {
+    "known_text": "I would like to stop",
+    "decomposition": [
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish to stop",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01B02",
+   "set": {
+    "known_text": "but I would like to escape",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "but I wish to escape",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01B03",
+   "set": {
+    "known_text": "tonight I would like to stop for a rest",
+    "decomposition": [
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": "heno",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "tonight I wish to stop for a rest",
+    "decomposition": [
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": "heno",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U02",
+   "set": {
+    "known_text": "next year I would like to move to the city",
+    "decomposition": [
+     {
+      "known": "next year",
+      "legoId": "S1176L03",
+      "target": "flwyddyn nesa’",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "to the city",
+      "legoId": "S0287L07",
+      "target": " i’r ddinas",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "next year I wish to move to the city",
+    "decomposition": [
+     {
+      "known": "next year",
+      "legoId": "S1176L03",
+      "target": "flwyddyn nesa’",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "to the city",
+      "legoId": "S0287L07",
+      "target": " i’r ddinas",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U01",
+   "set": {
+    "known_text": "at the moment I would like to escape",
+    "decomposition": [
+     {
+      "known": "at the moment",
+      "legoId": "S0314L02",
+      "target": "ar hyn o bryd",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "at the moment I wish to escape",
+    "decomposition": [
+     {
+      "known": "at the moment",
+      "legoId": "S0314L02",
+      "target": "ar hyn o bryd",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U06",
+   "set": {
+    "known_text": "I don’t want to lose because I would like to win",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to lose",
+      "legoId": "S1496L02",
+      "target": " colli",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "win",
+      "legoId": "S0304L03",
+      "target": " ennill",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I don’t want to lose because I wish to win",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to lose",
+      "legoId": "S1496L02",
+      "target": " colli",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "win",
+      "legoId": "S0304L03",
+      "target": " ennill",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U04",
+   "set": {
+    "known_text": "now I would like to live in the area",
+    "decomposition": [
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": "rŵan",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "live",
+      "legoId": "S0287L02",
+      "target": " byw",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yr",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ardal",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "now I wish to live in the area",
+    "decomposition": [
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": "rŵan",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "live",
+      "legoId": "S0287L02",
+      "target": " byw",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yr",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ardal",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U03",
+   "set": {
+    "known_text": "I would like to stop for a rest because I’m tired",
+    "decomposition": [
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish to stop for a rest because I’m tired",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U05",
+   "set": {
+    "known_text": "whenever I’m tired I would like to escape",
+    "decomposition": [
+     {
+      "known": "whenever",
+      "legoId": "S0310L03",
+      "target": "pryd bynnag",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "whenever I’m tired I wish to escape",
+    "decomposition": [
+     {
+      "known": "whenever",
+      "legoId": "S0310L03",
+      "target": "pryd bynnag",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "lego",
+   "id": "S1557L01",
+   "old": "I wish",
+   "new": "I would like"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L01B04",
+   "old": "maybe I wish to move",
+   "new": "maybe I would like to move",
+   "target": "efallai ’swn i’n licio symud"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L01B01",
+   "old": "I wish to stop",
+   "new": "I would like to stop",
+   "target": "’swn i’n licio stopio"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L01B02",
+   "old": "but I wish to escape",
+   "new": "but I would like to escape",
+   "target": "ond ’swn i’n licio dianc"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L01B03",
+   "old": "tonight I wish to stop for a rest",
+   "new": "tonight I would like to stop for a rest",
+   "target": "heno ’swn i’n licio stopio am saib"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L01U02",
+   "old": "next year I wish to move to the city",
+   "new": "next year I would like to move to the city",
+   "target": "flwyddyn nesa’ ’swn i’n licio symud i’r ddinas"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L01U01",
+   "old": "at the moment I wish to escape",
+   "new": "at the moment I would like to escape",
+   "target": "ar hyn o bryd ’swn i’n licio dianc"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L01U06",
+   "old": "I don’t want to lose because I wish to win",
+   "new": "I don’t want to lose because I would like to win",
+   "target": "dw i ddim isio colli achos ’swn i’n licio ennill"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L01U04",
+   "old": "now I wish to live in the area",
+   "new": "now I would like to live in the area",
+   "target": "rŵan ’swn i’n licio byw yn yr ardal"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L01U03",
+   "old": "I wish to stop for a rest because I’m tired",
+   "new": "I would like to stop for a rest because I’m tired",
+   "target": "’swn i’n licio stopio am saib achos dw i wedi blino"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L01U05",
+   "old": "whenever I’m tired I wish to escape",
+   "new": "whenever I’m tired I would like to escape",
+   "target": "pryd bynnag dw i wedi blino ’swn i’n licio dianc"
+  }
+ ],
+ "left": [
+  {
+   "id": "cym_nv2_for_eng:S1557L02B02",
+   "known": "I wish they wouldn’t play",
+   "target": "’swn i’n licio tasen nhw ddim yn chwarae"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1557L02U05",
+   "known": "I wish they wouldn’t play in the garden at the moment",
+   "target": "’swn i’n licio tasen nhw ddim yn chwarae yn yr ardd ar hyn o bryd"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1557L03U01",
+   "known": "I wish they wouldn’t play such loud music late at night",
+   "target": "’swn i’n licio tasen nhw ddim yn chwarae cerddoriaeth mor uchel yn hwyr yn y nos"
+  }
+ ]
+}

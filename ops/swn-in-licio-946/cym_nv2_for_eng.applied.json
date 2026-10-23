@@ -1,0 +1,1213 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "41ee6574-0a29-476e-ba8b-38b68329757c",
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1557L01"
+   },
+   "before": {
+    "id": "203ac365-9f59-40f9-a70d-3661ed2cbdf0",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": "S1557L01",
+    "known_text": "I wish",
+    "target_text": "’swn i’n licio",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "d38b7161-c359-4878-af86-26bf0f8c70e1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "203ac365-9f59-40f9-a70d-3661ed2cbdf0",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": "S1557L01",
+    "known_text": "I would like",
+    "target_text": "’swn i’n licio",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "d38b7161-c359-4878-af86-26bf0f8c70e1",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L01B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L01B04",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "maybe I wish to move",
+    "decomposition": [
+     {
+      "known": "maybe",
+      "legoId": "S0281L02",
+      "target": "efallai",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     }
+    ],
+    "target_text": "efallai ’swn i’n licio symud",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "df4943f0-f608-4b33-8606-f0d4f05bedd9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L01B04",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "maybe I would like to move",
+    "decomposition": [
+     {
+      "known": "maybe",
+      "legoId": "S0281L02",
+      "target": "efallai",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     }
+    ],
+    "target_text": "efallai ’swn i’n licio symud",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "df4943f0-f608-4b33-8606-f0d4f05bedd9",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L01B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L01B01",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I wish to stop",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     }
+    ],
+    "target_text": "’swn i’n licio stopio",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "c5de0450-d27a-4069-b025-77a8ac3af947",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L01B01",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I would like to stop",
+    "decomposition": [
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     }
+    ],
+    "target_text": "’swn i’n licio stopio",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "c5de0450-d27a-4069-b025-77a8ac3af947",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L01B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L01B02",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "but I wish to escape",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ],
+    "target_text": "ond ’swn i’n licio dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "35b482e6-cdad-45da-beca-db79b4a8831e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L01B02",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "but I would like to escape",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ],
+    "target_text": "ond ’swn i’n licio dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "35b482e6-cdad-45da-beca-db79b4a8831e",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L01B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L01B03",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "tonight I wish to stop for a rest",
+    "decomposition": [
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": "heno",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     }
+    ],
+    "target_text": "heno ’swn i’n licio stopio am saib",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "c1f25fe7-891e-4721-ba20-950b47606f52",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L01B03",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "tonight I would like to stop for a rest",
+    "decomposition": [
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": "heno",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     }
+    ],
+    "target_text": "heno ’swn i’n licio stopio am saib",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "c1f25fe7-891e-4721-ba20-950b47606f52",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L01U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L01U02",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "next year I wish to move to the city",
+    "decomposition": [
+     {
+      "known": "next year",
+      "legoId": "S1176L03",
+      "target": "flwyddyn nesa’",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "to the city",
+      "legoId": "S0287L07",
+      "target": " i’r ddinas",
+      "isGhost": false
+     }
+    ],
+    "target_text": "flwyddyn nesa’ ’swn i’n licio symud i’r ddinas",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "0576470f-261a-4226-b637-698bf0843485",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L01U02",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "next year I would like to move to the city",
+    "decomposition": [
+     {
+      "known": "next year",
+      "legoId": "S1176L03",
+      "target": "flwyddyn nesa’",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "to the city",
+      "legoId": "S0287L07",
+      "target": " i’r ddinas",
+      "isGhost": false
+     }
+    ],
+    "target_text": "flwyddyn nesa’ ’swn i’n licio symud i’r ddinas",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "0576470f-261a-4226-b637-698bf0843485",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L01U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L01U01",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "at the moment I wish to escape",
+    "decomposition": [
+     {
+      "known": "at the moment",
+      "legoId": "S0314L02",
+      "target": "ar hyn o bryd",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ],
+    "target_text": "ar hyn o bryd ’swn i’n licio dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "23db6483-061f-47c7-b4ec-b9bdb4ff2bff",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L01U01",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "at the moment I would like to escape",
+    "decomposition": [
+     {
+      "known": "at the moment",
+      "legoId": "S0314L02",
+      "target": "ar hyn o bryd",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ],
+    "target_text": "ar hyn o bryd ’swn i’n licio dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "23db6483-061f-47c7-b4ec-b9bdb4ff2bff",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L01U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L01U06",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don’t want to lose because I wish to win",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to lose",
+      "legoId": "S1496L02",
+      "target": " colli",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "win",
+      "legoId": "S0304L03",
+      "target": " ennill",
+      "isGhost": false
+     }
+    ],
+    "target_text": "dw i ddim isio colli achos ’swn i’n licio ennill",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L01U06",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I don’t want to lose because I would like to win",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to lose",
+      "legoId": "S1496L02",
+      "target": " colli",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "win",
+      "legoId": "S0304L03",
+      "target": " ennill",
+      "isGhost": false
+     }
+    ],
+    "target_text": "dw i ddim isio colli achos ’swn i’n licio ennill",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L01U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L01U04",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "now I wish to live in the area",
+    "decomposition": [
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": "rŵan",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "live",
+      "legoId": "S0287L02",
+      "target": " byw",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yr",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ardal",
+      "isGhost": true
+     }
+    ],
+    "target_text": "rŵan ’swn i’n licio byw yn yr ardal",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "ce2dcbef-f807-4337-8a32-829b6be59c21",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L01U04",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "now I would like to live in the area",
+    "decomposition": [
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": "rŵan",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "live",
+      "legoId": "S0287L02",
+      "target": " byw",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yr",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ardal",
+      "isGhost": true
+     }
+    ],
+    "target_text": "rŵan ’swn i’n licio byw yn yr ardal",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "ce2dcbef-f807-4337-8a32-829b6be59c21",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L01U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L01U03",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I wish to stop for a rest because I’m tired",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ],
+    "target_text": "’swn i’n licio stopio am saib achos dw i wedi blino",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L01U03",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "I would like to stop for a rest because I’m tired",
+    "decomposition": [
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ],
+    "target_text": "’swn i’n licio stopio am saib achos dw i wedi blino",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1557L01U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1557L01U05",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "whenever I’m tired I wish to escape",
+    "decomposition": [
+     {
+      "known": "whenever",
+      "legoId": "S0310L03",
+      "target": "pryd bynnag",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ],
+    "target_text": "pryd bynnag dw i wedi blino ’swn i’n licio dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1557L01U05",
+    "seed_number": 1557,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "whenever I’m tired I would like to escape",
+    "decomposition": [
+     {
+      "known": "whenever",
+      "legoId": "S0310L03",
+      "target": "pryd bynnag",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     },
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ],
+    "target_text": "pryd bynnag dw i wedi blino ’swn i’n licio dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U05",
+   "set": {
+    "known_text": "whenever I’m tired I wish to escape",
+    "decomposition": [
+     {
+      "known": "whenever",
+      "legoId": "S0310L03",
+      "target": "pryd bynnag",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U03",
+   "set": {
+    "known_text": "I wish to stop for a rest because I’m tired",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": " dw i wedi blino",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U04",
+   "set": {
+    "known_text": "now I wish to live in the area",
+    "decomposition": [
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": "rŵan",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "live",
+      "legoId": "S0287L02",
+      "target": " byw",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yr",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ardal",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U06",
+   "set": {
+    "known_text": "I don’t want to lose because I wish to win",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to lose",
+      "legoId": "S1496L02",
+      "target": " colli",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "win",
+      "legoId": "S0304L03",
+      "target": " ennill",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U01",
+   "set": {
+    "known_text": "at the moment I wish to escape",
+    "decomposition": [
+     {
+      "known": "at the moment",
+      "legoId": "S0314L02",
+      "target": "ar hyn o bryd",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01U02",
+   "set": {
+    "known_text": "next year I wish to move to the city",
+    "decomposition": [
+     {
+      "known": "next year",
+      "legoId": "S1176L03",
+      "target": "flwyddyn nesa’",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "to the city",
+      "legoId": "S0287L07",
+      "target": " i’r ddinas",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01B03",
+   "set": {
+    "known_text": "tonight I wish to stop for a rest",
+    "decomposition": [
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": "heno",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01B02",
+   "set": {
+    "known_text": "but I wish to escape",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to get away",
+      "legoId": "S1485L04",
+      "target": " dianc",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01B01",
+   "set": {
+    "known_text": "I wish to stop",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L01B04",
+   "set": {
+    "known_text": "maybe I wish to move",
+    "decomposition": [
+     {
+      "known": "maybe",
+      "legoId": "S0281L02",
+      "target": "efallai",
+      "isGhost": false
+     },
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": " ’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "203ac365-9f59-40f9-a70d-3661ed2cbdf0",
+   "set": {
+    "known_text": "I wish"
+   }
+  }
+ ],
+ "undo_file": "2026-10-23T14-17-10-073Z-41ee6574-0a29-476e-ba8b-38b68329757c.json"
+}
