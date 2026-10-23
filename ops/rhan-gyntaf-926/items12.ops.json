@@ -1,0 +1,1015 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 264,
+   "set": {
+    "target_text": "rhan o’r broblem ydy nad ydan ni ddim yn gwybod y ffeithiau"
+   },
+   "expect": {
+    "target_text": "rhan o’r problem ydy nad ydan ni ddim yn gwybod y ffeithiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0264L02B06",
+   "set": {
+    "target_text": "rhan o’r broblem",
+    "decomposition": [
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": "rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " broblem",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan o’r problem",
+    "decomposition": [
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": "rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0265L03B06",
+   "set": {
+    "target_text": "meddwl ydy rhan o’r broblem",
+    "decomposition": [
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": "meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": " rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " broblem",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "meddwl ydy rhan o’r problem",
+    "decomposition": [
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": "meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": " rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0266L01B01",
+   "set": {
+    "target_text": "cynnig rhan o’r broblem",
+    "decomposition": [
+     {
+      "known": "offer",
+      "legoId": "S0265L03",
+      "target": "cynnig",
+      "isGhost": false
+     },
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": " rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " broblem",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "cynnig rhan o’r problem",
+    "decomposition": [
+     {
+      "known": "offer",
+      "legoId": "S0265L03",
+      "target": "cynnig",
+      "isGhost": false
+     },
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": " rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0266L02U01",
+   "set": {
+    "target_text": "rhan o’r broblem ydy nad ydan ni ddim isio stopio",
+    "decomposition": [
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": "rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " broblem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "that we don’t",
+      "legoId": "S0264L03",
+      "target": " nad ydan ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " isio",
+      "isGhost": true
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan o’r problem ydy nad ydan ni ddim isio stopio",
+    "decomposition": [
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": "rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "that we don’t",
+      "legoId": "S0264L03",
+      "target": " nad ydan ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " isio",
+      "isGhost": true
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0266L04B05",
+   "set": {
+    "target_text": "rhan o’r broblem ydy dringo wal y gwesty",
+    "decomposition": [
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": "rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " broblem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "to climb",
+      "legoId": "S0263L02",
+      "target": " dringo",
+      "isGhost": false
+     },
+     {
+      "known": "wall",
+      "legoId": "S0261L04",
+      "target": " wal",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "hotel",
+      "legoId": "S0258L03",
+      "target": " gwesty",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan o’r problem ydy dringo wal y gwesty",
+    "decomposition": [
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": "rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "to climb",
+      "legoId": "S0263L02",
+      "target": " dringo",
+      "isGhost": false
+     },
+     {
+      "known": "wall",
+      "legoId": "S0261L04",
+      "target": " wal",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "hotel",
+      "legoId": "S0258L03",
+      "target": " gwesty",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0267L02B07",
+   "set": {
+    "target_text": "y broblem ydy bod yn fwy agored",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " broblem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "to be more open",
+      "legoId": "S0177L02",
+      "target": " bod yn fwy agored",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "y problem ydy bod yn fwy agored",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "to be more open",
+      "legoId": "S0177L02",
+      "target": " bod yn fwy agored",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0268L04B07",
+   "set": {
+    "target_text": "rhan o’r broblem ydy mae o wedi bod yn sâl",
+    "decomposition": [
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": "rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " broblem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "he",
+      "legoId": "S0061L01",
+      "target": " mae o",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " wedi",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bod",
+      "isGhost": true
+     },
+     {
+      "known": "sick",
+      "legoId": "S0267L01",
+      "target": " yn sâl",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan o’r problem ydy mae o wedi bod yn sâl",
+    "decomposition": [
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": "rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "he",
+      "legoId": "S0061L01",
+      "target": " mae o",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " wedi",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bod",
+      "isGhost": true
+     },
+     {
+      "known": "sick",
+      "legoId": "S0267L01",
+      "target": " yn sâl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0272L01B06",
+   "set": {
+    "target_text": "y broblem ydy nad ydyn nhw ddim yn sâl",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " broblem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "that they’re not",
+      "legoId": "S0269L03",
+      "target": " nad ydyn nhw ddim",
+      "isGhost": false
+     },
+     {
+      "known": "sick",
+      "legoId": "S0267L01",
+      "target": " yn sâl",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "y problem ydy nad ydyn nhw ddim yn sâl",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ydy",
+      "isGhost": true
+     },
+     {
+      "known": "that they’re not",
+      "legoId": "S0269L03",
+      "target": " nad ydyn nhw ddim",
+      "isGhost": false
+     },
+     {
+      "known": "sick",
+      "legoId": "S0267L01",
+      "target": " yn sâl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0274L04B02",
+   "set": {
+    "target_text": "dydy o ddim isio siarad am y broblem rŵan hyn",
+    "decomposition": [
+     {
+      "known": "he doesn’t want",
+      "legoId": "S0248L02",
+      "target": "dydy o ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " siarad",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " am",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " broblem",
+      "isGhost": true
+     },
+     {
+      "known": "right now",
+      "legoId": "S0274L04",
+      "target": " rŵan hyn",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy o ddim isio siarad am y problem rŵan hyn",
+    "decomposition": [
+     {
+      "known": "he doesn’t want",
+      "legoId": "S0248L02",
+      "target": "dydy o ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " siarad",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " am",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     },
+     {
+      "known": "right now",
+      "legoId": "S0274L04",
+      "target": " rŵan hyn",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L02B07",
+   "set": {
+    "target_text": "rhan o’r broblem o’n blaenau ni",
+    "decomposition": [
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": "rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " broblem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " blaenau",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan o’r problem o’n blaenau ni",
+    "decomposition": [
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": "rhan o’r",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " blaenau",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B05",
+   "set": {
+    "target_text": "rhan gynta’r broblem",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "rhan gynta’",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "r",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " broblem",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan gynta’r problem",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "rhan gynta’",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "r",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B01",
+   "set": {
+    "known_text": "what is going to come next after the first part?"
+   },
+   "expect": {
+    "known_text": "what is going to come next after the the first part?",
+    "known_audio_id": "38a20ec6-4c48-4275-93b0-19756b04970e"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B01",
+   "slot": "known",
+   "audio_id": "38a20ec6-4c48-4275-93b0-19756b04970e",
+   "allow_text_mismatch": true
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B02",
+   "set": {
+    "known_text": "he’s been wanting to watch the first part once"
+   },
+   "expect": {
+    "known_text": "he’s been wanting to watch the the first part once",
+    "known_audio_id": "45d30589-44d0-40a7-861d-7e55b5bacd6f"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B02",
+   "slot": "known",
+   "audio_id": "45d30589-44d0-40a7-861d-7e55b5bacd6f",
+   "allow_text_mismatch": true
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B04",
+   "set": {
+    "known_text": "which one happens after the first part?"
+   },
+   "expect": {
+    "known_text": "which one happens after the the first part?",
+    "known_audio_id": "37d6af98-a24d-451e-804b-cc28c2c653d4"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B04",
+   "slot": "known",
+   "audio_id": "37d6af98-a24d-451e-804b-cc28c2c653d4",
+   "allow_text_mismatch": true
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0278L02B01",
+   "set": {
+    "known_text": "to lose after the first part"
+   },
+   "expect": {
+    "known_text": "to lose after the the first part",
+    "known_audio_id": "171c2412-d7c9-4978-ba82-fe10b1a5575b"
+   }
+  },
+  {
+   "op": "audio.link",
+   "target": "phrase",
+   "phrase_id": "cym_nv2_for_eng:S0278L02B01",
+   "slot": "known",
+   "audio_id": "171c2412-d7c9-4978-ba82-fe10b1a5575b",
+   "allow_text_mismatch": true
+  }
+ ],
+ "log": [
+  {
+   "item": 1,
+   "row": "seed 264",
+   "old": "rhan o’r problem ydy nad ydan ni ddim yn gwybod y ffeithiau",
+   "new": "rhan o’r broblem ydy nad ydan ni ddim yn gwybod y ffeithiau"
+  },
+  {
+   "item": 1,
+   "row": "cym_nv2_for_eng:S0264L02B06",
+   "old": "rhan o’r problem",
+   "new": "rhan o’r broblem",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "item": 1,
+   "row": "cym_nv2_for_eng:S0265L03B06",
+   "old": "meddwl ydy rhan o’r problem",
+   "new": "meddwl ydy rhan o’r broblem",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "item": 1,
+   "row": "cym_nv2_for_eng:S0266L01B01",
+   "old": "cynnig rhan o’r problem",
+   "new": "cynnig rhan o’r broblem",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "item": 1,
+   "row": "cym_nv2_for_eng:S0266L02U01",
+   "old": "rhan o’r problem ydy nad ydan ni ddim isio stopio",
+   "new": "rhan o’r broblem ydy nad ydan ni ddim isio stopio",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "item": 1,
+   "row": "cym_nv2_for_eng:S0266L04B05",
+   "old": "rhan o’r problem ydy dringo wal y gwesty",
+   "new": "rhan o’r broblem ydy dringo wal y gwesty",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "item": 1,
+   "row": "cym_nv2_for_eng:S0267L02B07",
+   "old": "y problem ydy bod yn fwy agored",
+   "new": "y broblem ydy bod yn fwy agored",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "item": 1,
+   "row": "cym_nv2_for_eng:S0268L04B07",
+   "old": "rhan o’r problem ydy mae o wedi bod yn sâl",
+   "new": "rhan o’r broblem ydy mae o wedi bod yn sâl",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "item": 1,
+   "row": "cym_nv2_for_eng:S0272L01B06",
+   "old": "y problem ydy nad ydyn nhw ddim yn sâl",
+   "new": "y broblem ydy nad ydyn nhw ddim yn sâl",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "item": 1,
+   "row": "cym_nv2_for_eng:S0274L04B02",
+   "old": "dydy o ddim isio siarad am y problem rŵan hyn",
+   "new": "dydy o ddim isio siarad am y broblem rŵan hyn",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "item": 1,
+   "row": "cym_nv2_for_eng:S0277L02B07",
+   "old": "rhan o’r problem o’n blaenau ni",
+   "new": "rhan o’r broblem o’n blaenau ni",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "item": 1,
+   "row": "cym_nv2_for_eng:S0277L03B05",
+   "old": "rhan gynta’r problem",
+   "new": "rhan gynta’r broblem",
+   "recorded": []
+  },
+  {
+   "item": 2,
+   "row": "cym_nv2_for_eng:S0277L03B01",
+   "old": "what is going to come next after the the first part?",
+   "new": "what is going to come next after the first part?",
+   "knownClip": "38a20ec6-4c48-4275-93b0-19756b04970e"
+  },
+  {
+   "item": 2,
+   "row": "cym_nv2_for_eng:S0277L03B02",
+   "old": "he’s been wanting to watch the the first part once",
+   "new": "he’s been wanting to watch the first part once",
+   "knownClip": "45d30589-44d0-40a7-861d-7e55b5bacd6f"
+  },
+  {
+   "item": 2,
+   "row": "cym_nv2_for_eng:S0277L03B04",
+   "old": "which one happens after the the first part?",
+   "new": "which one happens after the first part?",
+   "knownClip": "37d6af98-a24d-451e-804b-cc28c2c653d4"
+  },
+  {
+   "item": 2,
+   "row": "cym_nv2_for_eng:S0278L02B01",
+   "old": "to lose after the the first part",
+   "new": "to lose after the first part",
+   "knownClip": "171c2412-d7c9-4978-ba82-fe10b1a5575b"
+  }
+ ]
+}
