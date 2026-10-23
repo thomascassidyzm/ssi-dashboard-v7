@@ -1,0 +1,123 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1513L02U05",
+   "set": {
+    "target_text": "fydd hi’n iawn pan dw i’n symud draw fanco wyt ti’n meddwl?",
+    "decomposition": []
+   },
+   "expect": {
+    "target_text": "bydd hi’n iawn pan dw i’n symud draw fanco wyt ti’n meddwl?",
+    "decomposition": null
+   }
+  }
+ ],
+ "changed": [
+  {
+   "id": "cym_sv2_for_eng:S1513L02U05",
+   "old": "bydd hi’n iawn pan dw i’n symud draw fanco wyt ti’n meddwl?",
+   "new": "fydd hi’n iawn pan dw i’n symud draw fanco wyt ti’n meddwl?",
+   "known": "it will be okay when I move over there do you think?",
+   "takes": 0
+  }
+ ],
+ "leftForAran": [
+  {
+   "id": "cym_sv2_for_eng:S0212L01U08",
+   "first": "ŷch",
+   "target": "ŷch chi’n moyn dweud wrtha i be’ ŷch chi’n meddwl?",
+   "known": "do you want to tell me what you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1255L01B03",
+   "first": "felly",
+   "target": "felly pryd wyt ti’n meddwl?",
+   "known": "so when do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1255L01B04",
+   "first": "ond",
+   "target": "ond pryd wyt ti’n meddwl?",
+   "known": "but when do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1255L01U05",
+   "first": "dw",
+   "target": "dw i’n hapus hyd yn hyn ond pryd wyt ti’n meddwl?",
+   "known": "I'm happy so far but when do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1255L01U06",
+   "first": "dw",
+   "target": "dw i’n brysur heno felly pryd wyt ti’n meddwl",
+   "known": "I'm busy tonight so when do you think"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1470L01B03",
+   "first": "faint",
+   "target": "faint mor uchel wyt ti’n meddwl?",
+   "known": "how high do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1478L03U06",
+   "first": "dyw",
+   "target": "dyw hynny ddim mor garedig wyt ti’n meddwl?",
+   "known": "that’s not so kind do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1480L04U01",
+   "first": "dyw",
+   "target": "dyw e ddim yn bell wyt ti’n meddwl?",
+   "known": "it’s not far do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1492L04U01",
+   "first": "pa",
+   "target": "pa un yw’r mwya o ddifri wyt ti’n meddwl?",
+   "known": "which one is the most serious, do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1493L03U01",
+   "first": "beth",
+   "target": "beth fydd yn dod nesa wyt ti’n meddwl?",
+   "known": "what will be coming next do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1493L03U02",
+   "first": "pa",
+   "target": "pa un fydd yn dod nesa wyt ti’n meddwl?",
+   "known": "which one will be coming next do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1503L05U04",
+   "first": "fy",
+   "target": "fy un i yw hwnna wyt ti’n meddwl?",
+   "known": "do you think that one’s mine?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1513L01U01",
+   "first": "beth",
+   "target": "beth sy’n brifo mwyaf wyt ti’n meddwl?",
+   "known": "what hurts most do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1526L02U03",
+   "first": "beth",
+   "target": "beth sy’n anodd credu wyt ti’n meddwl?",
+   "known": "what is hard to believe do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1526L02U06",
+   "first": "ond",
+   "target": "ond beth sy’n anodd credu nawr wyt ti’n meddwl?",
+   "known": "but what is hard to believe now do you think?"
+  },
+  {
+   "id": "cym_sv2_for_eng:S1619L01U07",
+   "first": "mae’n",
+   "target": "mae’n amser hir heb y car wyt ti’n meddwl?",
+   "known": "it’s a long time without the car do you think?"
+  }
+ ]
+}

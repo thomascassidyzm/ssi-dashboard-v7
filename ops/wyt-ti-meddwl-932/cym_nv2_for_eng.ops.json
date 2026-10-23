@@ -1,0 +1,566 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1401L01U02",
+   "set": {
+    "target_text": "fyddai’n well aros am dy dad wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "fyddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "your father",
+      "legoId": "S1269L03",
+      "target": " dy dad",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "byddai’n well aros am dy dad wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "your father",
+      "legoId": "S1269L03",
+      "target": " dy dad",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1428L02U04",
+   "set": {
+    "target_text": "fyddai’n well ddydd Mawrth wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "fyddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "on Tuesday",
+      "legoId": "S0232L01",
+      "target": " ddydd Mawrth",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "byddai’n well ddydd Mawrth wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "on Tuesday",
+      "legoId": "S0232L01",
+      "target": " ddydd Mawrth",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1458L01U06",
+   "set": {
+    "target_text": "fyddai’n llawer haws mynd yn syth adre wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fyddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "much easier",
+      "legoId": "S1458L01",
+      "target": " llawer haws",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "byddai’n llawer haws mynd yn syth adre wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "much easier",
+      "legoId": "S1458L01",
+      "target": " llawer haws",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1516L01B04",
+   "set": {
+    "target_text": "ddaeth y ddau wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "they both came",
+      "legoId": "S0294L01",
+      "target": "ddaeth y ddau",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "daeth y ddau wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "they both came",
+      "legoId": "S0294L01",
+      "target": "daeth y ddau",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1524L02U03",
+   "set": {
+    "target_text": "fyddan nhw’n barod mewn tri neu bedwar munud wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "they’ll be ready",
+      "legoId": "S1431L03",
+      "target": "fyddan nhw’n barod",
+      "isGhost": false
+     },
+     {
+      "known": "in three or four minutes",
+      "legoId": "S1524L02",
+      "target": " mewn tri neu bedwar munud",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "byddan nhw’n barod mewn tri neu bedwar munud wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "they’ll be ready",
+      "legoId": "S1431L03",
+      "target": "byddan nhw’n barod",
+      "isGhost": false
+     },
+     {
+      "known": "in three or four minutes",
+      "legoId": "S1524L02",
+      "target": " mewn tri neu bedwar munud",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1575L01U03",
+   "set": {
+    "target_text": "fyddai’n annifyr iawn wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fyddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting",
+      "legoId": "S1575L01",
+      "target": " annifyr iawn",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "byddai’n annifyr iawn wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting",
+      "legoId": "S1575L01",
+      "target": " annifyr iawn",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "id": "cym_nv2_for_eng:S1401L01U02",
+   "old": "byddai’n well aros am dy dad wyt ti’n meddwl?",
+   "new": "fyddai’n well aros am dy dad wyt ti’n meddwl?",
+   "known": "it would be better to wait for your father do you think?",
+   "takes": 0
+  },
+  {
+   "id": "cym_nv2_for_eng:S1428L02U04",
+   "old": "byddai’n well ddydd Mawrth wyt ti’n meddwl?",
+   "new": "fyddai’n well ddydd Mawrth wyt ti’n meddwl?",
+   "known": "it would be better on Tuesday do you think?",
+   "takes": 1
+  },
+  {
+   "id": "cym_nv2_for_eng:S1458L01U06",
+   "old": "byddai’n llawer haws mynd yn syth adre wyt ti’n meddwl?",
+   "new": "fyddai’n llawer haws mynd yn syth adre wyt ti’n meddwl?",
+   "known": "it would be much easier to go straight home do you think?",
+   "takes": 0
+  },
+  {
+   "id": "cym_nv2_for_eng:S1516L01B04",
+   "old": "daeth y ddau wyt ti’n meddwl?",
+   "new": "ddaeth y ddau wyt ti’n meddwl?",
+   "known": "they both came do you think?",
+   "takes": 1
+  },
+  {
+   "id": "cym_nv2_for_eng:S1524L02U03",
+   "old": "byddan nhw’n barod mewn tri neu bedwar munud wyt ti’n meddwl?",
+   "new": "fyddan nhw’n barod mewn tri neu bedwar munud wyt ti’n meddwl?",
+   "known": "they’ll be ready in three or four minutes do you think?",
+   "takes": 1
+  },
+  {
+   "id": "cym_nv2_for_eng:S1575L01U03",
+   "old": "byddai’n annifyr iawn wyt ti’n meddwl?",
+   "new": "fyddai’n annifyr iawn wyt ti’n meddwl?",
+   "known": "it would be very upsetting do you think?",
+   "takes": 0
+  }
+ ],
+ "leftForAran": [
+  {
+   "id": "cym_nv2_for_eng:S0204L01U01",
+   "first": "dach",
+   "target": "dach chi isio deud wrthaf fi be’ dach chi’n meddwl?",
+   "known": "do you want to tell me what you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S0275L02B04",
+   "first": "pa",
+   "target": "pa un o’r llefydd yna wyt ti’n meddwl?",
+   "known": "which of those places do you mean?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1255L01B01",
+   "first": "pam",
+   "target": "pam wyt ti’n meddwl?",
+   "known": "why do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1358L02U05",
+   "first": "mae",
+   "target": "mae o’n trio cyrraedd y copa, wyt ti’n meddwl?",
+   "known": "he’s trying to reach the top, do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1363L01U03",
+   "first": "oedd",
+   "target": "oedd hi’n teimlo fel siarad wyt ti’n meddwl?",
+   "known": "she felt like talking do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1364L02U07",
+   "first": "oedd",
+   "target": "oedd hi’n rhy brysur efo’r lle ’na wyt ti’n meddwl?",
+   "known": "she was too busy with that place do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1397L01U08",
+   "first": "ydan",
+   "target": "ydan ni angen llawer o amser, wyt ti’n meddwl?",
+   "known": "do we need much time, do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1408L01U04",
+   "first": "dyna’r",
+   "target": "dyna’r ffordd orau wyt ti’n meddwl?",
+   "known": "that’s the best way, do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1415L01U03",
+   "first": "fyddai",
+   "target": "fyddai hynna ddim yn broblem cyn dydd Iau wyt ti’n meddwl?",
+   "known": "that wouldn’t be a problem before Thursday do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1420L02U01",
+   "first": "pa",
+   "target": "pa mor hen wyt ti’n meddwl?",
+   "known": "how old do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1431L03U03",
+   "first": "fyddan",
+   "target": "fyddan nhw’n barod wyt ti’n meddwl?",
+   "known": "they’ll be ready do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1434L01U05",
+   "first": "fedran",
+   "target": "fedran nhw dorri tomatos wyt ti’n meddwl?",
+   "known": "could they cut tomatoes do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1440L03U04",
+   "first": "maen",
+   "target": "maen nhw isio teithio tra maen nhw dal yn ifanc wyt ti’n meddwl?",
+   "known": "they want to travel while they’re still young, do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1456L03U01",
+   "first": "fyddai",
+   "target": "fyddai hynna’n debygol iawn wyt ti’n meddwl?",
+   "known": "would that be very likely do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1470L01U01",
+   "first": "pa",
+   "target": "pa mor uchel wyt ti’n meddwl?",
+   "known": "how high do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1492L04U01",
+   "first": "dyna’r",
+   "target": "dyna’r un mwya’ diddorol wyt ti’n meddwl?",
+   "known": "that’s the most interesting one do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1492L01B03",
+   "first": "pa",
+   "target": "pa un wyt ti’n meddwl?",
+   "known": "which do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1493L01U02",
+   "first": "pwy",
+   "target": "pwy ddaw nesa’, wyt ti’n meddwl?",
+   "known": "who's going to come next, do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1495L02U04",
+   "first": "fydd",
+   "target": "fydd hi’n cyfri’, wyt ti’n meddwl?",
+   "known": "it matters, do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1500L03U07",
+   "first": "beth",
+   "target": "beth sy’n digwydd rhwng hen ffrindiau wyt ti’n meddwl?",
+   "known": "what happens between old friends do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1502L03U05",
+   "first": "achos",
+   "target": "achos iddi droi i’r chwith wyt ti’n meddwl?",
+   "known": "because she turned to the left do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1502L06U03",
+   "first": "i’r",
+   "target": "i’r dde wyt ti’n meddwl?",
+   "known": "to the right do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1502L05U02",
+   "first": "fedran",
+   "target": "fedran nhw chwarae yn yr ardd yn hytrach nag ar y ffordd wyt ti’n meddwl?",
+   "known": "could they play in the garden instead of on the road do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1503L04U05",
+   "first": "un",
+   "target": "un fi ydy hwnnw wyt ti’n meddwl?",
+   "known": "that one’s mine do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1506L04U01",
+   "first": "fydd",
+   "target": "fydd hi’n flynyddoedd cyn i ni symud wyt ti’n meddwl?",
+   "known": "it will be years before we move do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1520L01U01",
+   "first": "mi",
+   "target": "mi allai fo fod wedi brifo dy lygaid di wyt ti’n meddwl?",
+   "known": "it might have hurt your eyes do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1522L01U05",
+   "first": "gadewch",
+   "target": "gadewch i ni gytuno heno wyt ti’n meddwl?",
+   "known": "let’s agree tonight do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1523L02U03",
+   "first": "ydan",
+   "target": "ydan ni angen esgus wyt ti’n meddwl?",
+   "known": "do we need an excuse do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1538L02U02",
+   "first": "mae",
+   "target": "mae hynna’n swnio fel bo’ fi ddim yn malio wyt ti’n meddwl?",
+   "known": "that sounds as though I don’t care do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1544L03U04",
+   "first": "fyddai",
+   "target": "fyddai hynna ddim yn hollol iawn wyt ti’n meddwl?",
+   "known": "that wouldn’t be absolutely right do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1545L03U02",
+   "first": "fedran",
+   "target": "fedran nhw symud i fyny’r grisiau wyt ti’n meddwl?",
+   "known": "could they move upstairs do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1570L03U02",
+   "first": "faint",
+   "target": "faint am dy docyn wyt ti’n meddwl?",
+   "known": "how much for your ticket do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1576L01U05",
+   "first": "fydd",
+   "target": "fydd hi’n ofidus iawn aros yn hwyr yn y nos wyt ti’n meddwl?",
+   "known": "it will be very upsetting waiting late at night do you think?"
+  },
+  {
+   "id": "cym_nv2_for_eng:S1598L01U01",
+   "first": "pam",
+   "target": "pam maen nhw isio mil o straeon wyt ti’n meddwl?",
+   "known": "why do they want a thousand stories do you think?"
+  }
+ ]
+}

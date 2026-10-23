@@ -1,0 +1,633 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1401L01U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1401L01U02",
+    "seed_number": 1401,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "byddai’n well aros am dy dad wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "your father",
+      "legoId": "S1269L03",
+      "target": " dy dad",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to wait for your father do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1401L01U02",
+    "seed_number": 1401,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fyddai’n well aros am dy dad wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "fyddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "your father",
+      "legoId": "S1269L03",
+      "target": " dy dad",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to wait for your father do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1428L02U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1428L02U04",
+    "seed_number": 1428,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "byddai’n well ddydd Mawrth wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "on Tuesday",
+      "legoId": "S0232L01",
+      "target": " ddydd Mawrth",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better on Tuesday do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "51b7a9f2-c810-4903-a638-1cd7bd74e870",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1428L02U04",
+    "seed_number": 1428,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "fyddai’n well ddydd Mawrth wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "fyddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "on Tuesday",
+      "legoId": "S0232L01",
+      "target": " ddydd Mawrth",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better on Tuesday do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1458L01U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1458L01U06",
+    "seed_number": 1458,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "byddai’n llawer haws mynd yn syth adre wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "much easier",
+      "legoId": "S1458L01",
+      "target": " llawer haws",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be much easier to go straight home do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1458L01U06",
+    "seed_number": 1458,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fyddai’n llawer haws mynd yn syth adre wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fyddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "much easier",
+      "legoId": "S1458L01",
+      "target": " llawer haws",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be much easier to go straight home do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1516L01B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1516L01B04",
+    "seed_number": 1516,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "daeth y ddau wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "they both came",
+      "legoId": "S0294L01",
+      "target": "daeth y ddau",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they both came do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "a3220e92-1fea-4d82-8512-83eb25602d88",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1516L01B04",
+    "seed_number": 1516,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ddaeth y ddau wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "they both came",
+      "legoId": "S0294L01",
+      "target": "ddaeth y ddau",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they both came do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1524L02U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1524L02U03",
+    "seed_number": 1524,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "byddan nhw’n barod mewn tri neu bedwar munud wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "they’ll be ready",
+      "legoId": "S1431L03",
+      "target": "byddan nhw’n barod",
+      "isGhost": false
+     },
+     {
+      "known": "in three or four minutes",
+      "legoId": "S1524L02",
+      "target": " mewn tri neu bedwar munud",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they’ll be ready in three or four minutes do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "a3cdb21d-78db-4763-842b-a1dbb20425aa",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1524L02U03",
+    "seed_number": 1524,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "fyddan nhw’n barod mewn tri neu bedwar munud wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "they’ll be ready",
+      "legoId": "S1431L03",
+      "target": "fyddan nhw’n barod",
+      "isGhost": false
+     },
+     {
+      "known": "in three or four minutes",
+      "legoId": "S1524L02",
+      "target": " mewn tri neu bedwar munud",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they’ll be ready in three or four minutes do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1575L01U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1575L01U03",
+    "seed_number": 1575,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "byddai’n annifyr iawn wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting",
+      "legoId": "S1575L01",
+      "target": " annifyr iawn",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be very upsetting do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1575L01U03",
+    "seed_number": 1575,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fyddai’n annifyr iawn wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fyddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting",
+      "legoId": "S1575L01",
+      "target": " annifyr iawn",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be very upsetting do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1575L01U03",
+   "set": {
+    "target_text": "byddai’n annifyr iawn wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting",
+      "legoId": "S1575L01",
+      "target": " annifyr iawn",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1524L02U03",
+   "set": {
+    "target_text": "byddan nhw’n barod mewn tri neu bedwar munud wyt ti’n meddwl?",
+    "target2_audio_id": "a3cdb21d-78db-4763-842b-a1dbb20425aa",
+    "decomposition": [
+     {
+      "known": "they’ll be ready",
+      "legoId": "S1431L03",
+      "target": "byddan nhw’n barod",
+      "isGhost": false
+     },
+     {
+      "known": "in three or four minutes",
+      "legoId": "S1524L02",
+      "target": " mewn tri neu bedwar munud",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1516L01B04",
+   "set": {
+    "target_text": "daeth y ddau wyt ti’n meddwl?",
+    "target2_audio_id": "a3220e92-1fea-4d82-8512-83eb25602d88",
+    "decomposition": [
+     {
+      "known": "they both came",
+      "legoId": "S0294L01",
+      "target": "daeth y ddau",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1458L01U06",
+   "set": {
+    "target_text": "byddai’n llawer haws mynd yn syth adre wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "much easier",
+      "legoId": "S1458L01",
+      "target": " llawer haws",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1428L02U04",
+   "set": {
+    "target_text": "byddai’n well ddydd Mawrth wyt ti’n meddwl?",
+    "target2_audio_id": "51b7a9f2-c810-4903-a638-1cd7bd74e870",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "on Tuesday",
+      "legoId": "S0232L01",
+      "target": " ddydd Mawrth",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1401L01U02",
+   "set": {
+    "target_text": "byddai’n well aros am dy dad wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to wait for",
+      "legoId": "S0126L02",
+      "target": " aros am",
+      "isGhost": false
+     },
+     {
+      "known": "your father",
+      "legoId": "S1269L03",
+      "target": " dy dad",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
