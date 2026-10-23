@@ -1,0 +1,364 @@
+{
+ "ops": [
+  {
+   "op": "audio.update",
+   "audio_id": "a5f26ebc-c9db-4473-811d-70588b2de80e",
+   "set": {
+    "text": "beth sy’n digwydd ar ôl rhan gynta’r sioe?"
+   },
+   "expect": {
+    "text": "beth sy’n digwydd ar ôl rhan gynta’ y sioe?"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "474e1890-706c-479c-a9f1-998844c6e3cf",
+   "set": {
+    "text": "beth sy’n digwydd ar ôl rhan gynta’r sioe?"
+   },
+   "expect": {
+    "text": "beth sy’n digwydd ar ôl rhan gynta’ y sioe?"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1494,
+   "set": {
+    "target_text": "beth sy’n digwydd ar ôl rhan gynta’r sioe?"
+   },
+   "expect": {
+    "target_text": "beth sy’n digwydd ar ôl rhan gynta’ y sioe?"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "742862e5-9fda-4470-b75d-cf082c5be43d",
+   "set": {
+    "text": "ar ôl rhan gynta’r sioe ddydd Mawrth"
+   },
+   "expect": {
+    "text": "ar ôl rhan gynta’ y sioe ddydd Mawrth"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L04B03",
+   "set": {
+    "target_text": "ar ôl rhan gynta’r sioe ddydd Mawrth",
+    "decomposition": [
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": "ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false
+     },
+     {
+      "known": "on Tuesday",
+      "legoId": "S0232L01",
+      "target": " ddydd Mawrth",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ar ôl rhan gynta’ y sioe ddydd Mawrth",
+    "decomposition": [
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": "ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     },
+     {
+      "known": "on Tuesday",
+      "legoId": "S0232L01",
+      "target": " ddydd Mawrth",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L04U02",
+   "set": {
+    "target_text": "oedd rhaid i ni adael ar ôl rhan gynta’r sioe achos oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": "oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0031L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "oedd rhaid i ni adael ar ôl rhan gynta’ y sioe achos oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": "oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0031L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L04U06",
+   "set": {
+    "target_text": "oeddan nhw isio stopio am saib ar ôl rhan gynta’r sioe",
+    "decomposition": [
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": "oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "oeddan nhw isio stopio am saib ar ôl rhan gynta’ y sioe",
+    "decomposition": [
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": "oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "7780c6fe-d766-4787-8e8c-1af531b41269",
+   "set": {
+    "text": "beth sy’n digwydd ar ôl rhan gynta’r sioe eleni?"
+   },
+   "expect": {
+    "text": "beth sy’n digwydd ar ôl rhan gynta’ y sioe eleni?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L04U04",
+   "set": {
+    "target_text": "beth sy’n digwydd ar ôl rhan gynta’r sioe eleni?",
+    "decomposition": [
+     {
+      "known": "what",
+      "legoId": "S0010L01",
+      "target": "beth",
+      "isGhost": false
+     },
+     {
+      "known": "happens",
+      "legoId": "S0277L01",
+      "target": " sy’n digwydd",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false
+     },
+     {
+      "known": "this year",
+      "legoId": "S1320L02",
+      "target": " eleni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "beth sy’n digwydd ar ôl rhan gynta’ y sioe eleni?",
+    "decomposition": [
+     {
+      "known": "what",
+      "legoId": "S0010L01",
+      "target": "beth",
+      "isGhost": false
+     },
+     {
+      "known": "happens",
+      "legoId": "S0277L01",
+      "target": " sy’n digwydd",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     },
+     {
+      "known": "this year",
+      "legoId": "S1320L02",
+      "target": " eleni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  }
+ ],
+ "kept": [
+  {
+   "row": "80e4942b-bfae-4648-9aca-d56cf934545f",
+   "clip": "a5f26ebc-c9db-4473-811d-70588b2de80e",
+   "old": "beth sy’n digwydd ar ôl rhan gynta’ y sioe?",
+   "new": "beth sy’n digwydd ar ôl rhan gynta’r sioe?"
+  },
+  {
+   "row": "80e4942b-bfae-4648-9aca-d56cf934545f",
+   "clip": "474e1890-706c-479c-a9f1-998844c6e3cf",
+   "old": "beth sy’n digwydd ar ôl rhan gynta’ y sioe?",
+   "new": "beth sy’n digwydd ar ôl rhan gynta’r sioe?"
+  },
+  {
+   "row": "cym_nv2_for_eng:S1494L04B03",
+   "clip": "742862e5-9fda-4470-b75d-cf082c5be43d",
+   "old": "ar ôl rhan gynta’ y sioe ddydd Mawrth",
+   "new": "ar ôl rhan gynta’r sioe ddydd Mawrth"
+  },
+  {
+   "row": "cym_nv2_for_eng:S1494L04U04",
+   "clip": "7780c6fe-d766-4787-8e8c-1af531b41269",
+   "old": "beth sy’n digwydd ar ôl rhan gynta’ y sioe eleni?",
+   "new": "beth sy’n digwydd ar ôl rhan gynta’r sioe eleni?"
+  }
+ ]
+}
