@@ -1,0 +1,425 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "d6503a2d-16c8-40a4-a823-cc4239eaa181"
+   },
+   "before": {
+    "id": "d6503a2d-16c8-40a4-a823-cc4239eaa181",
+    "course_code": "cym_nv2_for_eng",
+    "text": "gar cyflym",
+    "text_normalized": "gar cyflym",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/3FD1E583-92D7-42CB-BAD3-B3F6F0F7268E.mp3",
+    "duration_ms": 1661,
+    "file_size_bytes": null,
+    "created_at": "2026-10-15T17:06:31.145Z",
+    "lego_id": null,
+    "text_stripped": "gar cyflym",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "d6503a2d-16c8-40a4-a823-cc4239eaa181",
+    "course_code": "cym_nv2_for_eng",
+    "text": "car cyflym",
+    "text_normalized": "car cyflym",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/3FD1E583-92D7-42CB-BAD3-B3F6F0F7268E.mp3",
+    "duration_ms": 1661,
+    "file_size_bytes": null,
+    "created_at": "2026-10-15T17:06:31.145Z",
+    "lego_id": null,
+    "text_stripped": "car cyflym",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "audio.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "e3e6de04-8ce4-4f97-a1de-4332117a0534"
+   },
+   "before": {
+    "id": "e3e6de04-8ce4-4f97-a1de-4332117a0534",
+    "course_code": "cym_nv2_for_eng",
+    "text": "gar cyflym neithiwr",
+    "text_normalized": "gar cyflym neithiwr",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/30CBA6DF-A722-44B2-825C-178EA989F347.mp3",
+    "duration_ms": 2273,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:18:20.709Z",
+    "lego_id": null,
+    "text_stripped": "gar cyflym neithiwr",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "after": {
+    "id": "e3e6de04-8ce4-4f97-a1de-4332117a0534",
+    "course_code": "cym_nv2_for_eng",
+    "text": "car cyflym neithiwr",
+    "text_normalized": "car cyflym neithiwr",
+    "language": "cym",
+    "role": "target2",
+    "voice_id": "human_aran_cym_n",
+    "origin": "human",
+    "s3_key": "mastered/30CBA6DF-A722-44B2-825C-178EA989F347.mp3",
+    "duration_ms": 2273,
+    "file_size_bytes": null,
+    "created_at": "2026-10-23T14:18:20.709Z",
+    "lego_id": null,
+    "text_stripped": "car cyflym neithiwr",
+    "word_boundaries": null,
+    "sequence": null,
+    "veracity_checked_at": null,
+    "veracity_pass": null,
+    "veracity_reason": null,
+    "veracity_cer": null,
+    "veracity_attempts": null,
+    "veracity_checker": null,
+    "audio_revision": 1,
+    "clip_id": null,
+    "rerecord_wanted": null,
+    "word_timings": null,
+    "recorded_at": null,
+    "spliced_from": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1561L03"
+   },
+   "before": {
+    "id": "940dc980-e25b-495c-aa6a-58189060d654",
+    "seed_number": 1561,
+    "lego_index": 3,
+    "lego_id": "S1561L03",
+    "target_text": "gar cyflym",
+    "components": [
+     {
+      "known": "car",
+      "target": "gar"
+     },
+     {
+      "known": "fast",
+      "target": "cyflym"
+     }
+    ],
+    "known_text": "a fast car",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "d6503a2d-16c8-40a4-a823-cc4239eaa181",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "940dc980-e25b-495c-aa6a-58189060d654",
+    "seed_number": 1561,
+    "lego_index": 3,
+    "lego_id": "S1561L03",
+    "target_text": "car cyflym",
+    "components": [
+     {
+      "known": "car",
+      "target": "car"
+     },
+     {
+      "known": "fast",
+      "target": "cyflym"
+     }
+    ],
+    "known_text": "a fast car",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "d6503a2d-16c8-40a4-a823-cc4239eaa181",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1561L03B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1561L03B04",
+    "seed_number": 1561,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "gar cyflym neithiwr",
+    "known_text": "a fast car last night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "e3e6de04-8ce4-4f97-a1de-4332117a0534",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1561L03B04",
+    "seed_number": 1561,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "car cyflym neithiwr",
+    "known_text": "a fast car last night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "e3e6de04-8ce4-4f97-a1de-4332117a0534",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1561L03C01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1561L03C01",
+    "seed_number": 1561,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "gar",
+    "known_text": "car",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1561L03C01",
+    "seed_number": 1561,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "car",
+    "known_text": "car",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1121L03C02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1121L03C02",
+    "seed_number": 1121,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "gar",
+    "known_text": "car",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1121L03C02",
+    "seed_number": 1121,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "car",
+    "known_text": "car",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1121L03"
+   },
+   "before": {
+    "id": "33a858ea-ddc5-45da-b69f-f4888ab78899",
+    "seed_number": 1121,
+    "lego_index": 3,
+    "lego_id": "S1121L03",
+    "components": [
+     {
+      "known": "your",
+      "target": "dy"
+     },
+     {
+      "known": "car",
+      "target": "gar"
+     }
+    ],
+    "known_text": "your car",
+    "target_text": "dy gar",
+    "known_audio_id": null,
+    "target1_audio_id": "a7944b2c-8775-4671-8e48-646270992dcf",
+    "target2_audio_id": "7a8c2161-df3a-4f98-bde3-0abaaf482182",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "33a858ea-ddc5-45da-b69f-f4888ab78899",
+    "seed_number": 1121,
+    "lego_index": 3,
+    "lego_id": "S1121L03",
+    "components": [
+     {
+      "known": "your",
+      "target": "dy"
+     },
+     {
+      "known": "car",
+      "target": "car"
+     }
+    ],
+    "known_text": "your car",
+    "target_text": "dy gar",
+    "known_audio_id": null,
+    "target1_audio_id": "a7944b2c-8775-4671-8e48-646270992dcf",
+    "target2_audio_id": "7a8c2161-df3a-4f98-bde3-0abaaf482182",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "lego.update",
+   "id": "33a858ea-ddc5-45da-b69f-f4888ab78899",
+   "set": {
+    "components": [
+     {
+      "known": "your",
+      "target": "dy"
+     },
+     {
+      "known": "car",
+      "target": "gar"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1121L03C02",
+   "set": {
+    "target_text": "gar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1561L03C01",
+   "set": {
+    "target_text": "gar"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1561L03B04",
+   "set": {
+    "target_text": "gar cyflym neithiwr"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "940dc980-e25b-495c-aa6a-58189060d654",
+   "set": {
+    "target_text": "gar cyflym",
+    "components": [
+     {
+      "known": "car",
+      "target": "gar"
+     },
+     {
+      "known": "fast",
+      "target": "cyflym"
+     }
+    ]
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "e3e6de04-8ce4-4f97-a1de-4332117a0534",
+   "set": {
+    "text": "gar cyflym neithiwr",
+    "text_stripped": "gar cyflym neithiwr"
+   }
+  },
+  {
+   "op": "audio.update",
+   "audio_id": "d6503a2d-16c8-40a4-a823-cc4239eaa181",
+   "set": {
+    "text": "gar cyflym",
+    "text_stripped": "gar cyflym"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

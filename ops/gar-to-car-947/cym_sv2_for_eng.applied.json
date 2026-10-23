@@ -1,0 +1,120 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "04a6e4ba-d326-4047-9839-3067a62fab70",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1561L02C02"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1561L02C02",
+    "seed_number": 1561,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "gar cyflym",
+    "known_text": "a fast car",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1561L02C02",
+    "seed_number": 1561,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "car cyflym",
+    "known_text": "a fast car",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "lego_id": "S1561L02"
+   },
+   "before": {
+    "id": "085a0217-32f5-4c97-98de-50ac741684f7",
+    "seed_number": 1561,
+    "lego_index": 2,
+    "lego_id": "S1561L02",
+    "components": [
+     {
+      "known": "it’s",
+      "target": "yw e’n"
+     },
+     {
+      "known": "a fast car",
+      "target": "gar cyflym"
+     }
+    ],
+    "known_text": "it’s a fast car",
+    "target_text": "yw e’n gar cyflym",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "e1dbeb58-c126-4aba-87c9-ad7fd35a60b4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "085a0217-32f5-4c97-98de-50ac741684f7",
+    "seed_number": 1561,
+    "lego_index": 2,
+    "lego_id": "S1561L02",
+    "components": [
+     {
+      "known": "it’s",
+      "target": "yw e’n"
+     },
+     {
+      "known": "a fast car",
+      "target": "car cyflym"
+     }
+    ],
+    "known_text": "it’s a fast car",
+    "target_text": "yw e’n gar cyflym",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "e1dbeb58-c126-4aba-87c9-ad7fd35a60b4",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "lego.update",
+   "id": "085a0217-32f5-4c97-98de-50ac741684f7",
+   "set": {
+    "components": [
+     {
+      "known": "it’s",
+      "target": "yw e’n"
+     },
+     {
+      "known": "a fast car",
+      "target": "gar cyflym"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1561L02C02",
+   "set": {
+    "target_text": "gar cyflym"
+   }
+  }
+ ],
+ "undo_file": "2026-10-23T14-20-09-791Z-04a6e4ba-d326-4047-9839-3067a62fab70.json"
+}
