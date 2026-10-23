@@ -1,0 +1,52 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "lego_id": "S1568L04"
+   },
+   "before": {
+    "id": "6c28992b-9a6c-4042-b63d-83af79f6aadc",
+    "seed_number": 1568,
+    "lego_index": 4,
+    "lego_id": "S1568L04",
+    "known_text": "we meet",
+    "target_text": "byddwn ni’n cwrdd",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "63299d53-f5ad-491c-bbcf-f909f7aa4ca3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "6c28992b-9a6c-4042-b63d-83af79f6aadc",
+    "seed_number": 1568,
+    "lego_index": 4,
+    "lego_id": "S1568L04",
+    "known_text": "we will meet",
+    "target_text": "byddwn ni’n cwrdd",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "63299d53-f5ad-491c-bbcf-f909f7aa4ca3",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "lego.update",
+   "id": "6c28992b-9a6c-4042-b63d-83af79f6aadc",
+   "set": {
+    "known_text": "we meet"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

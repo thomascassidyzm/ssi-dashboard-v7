@@ -1,0 +1,275 @@
+{
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S1568L03",
+   "set": {
+    "known_text": "we will meet"
+   },
+   "expect": {
+    "known_text": "we meet"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1568L03B02",
+   "set": {
+    "known_text": "we will meet tonight",
+    "decomposition": [
+     {
+      "known": "we will meet",
+      "legoId": "S1568L03",
+      "target": "byddwn ni’n cyfarfod",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we meet tonight",
+    "decomposition": [
+     {
+      "known": "we meet",
+      "legoId": "S1568L03",
+      "target": "byddwn ni’n cyfarfod",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1568L03B03",
+   "set": {
+    "known_text": "we will meet outdoors",
+    "decomposition": [
+     {
+      "known": "we will meet",
+      "legoId": "S1568L03",
+      "target": "byddwn ni’n cyfarfod",
+      "isGhost": false
+     },
+     {
+      "known": "outdoors",
+      "legoId": "S1567L02",
+      "target": " tu allan",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we meet outdoors",
+    "decomposition": [
+     {
+      "known": "we meet",
+      "legoId": "S1568L03",
+      "target": "byddwn ni’n cyfarfod",
+      "isGhost": false
+     },
+     {
+      "known": "outdoors",
+      "legoId": "S1567L02",
+      "target": " tu allan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1568L03U01",
+   "set": {
+    "known_text": "we will meet in front of the blue sign on Tuesday",
+    "decomposition": [
+     {
+      "known": "we will meet",
+      "legoId": "S1568L03",
+      "target": "byddwn ni’n cyfarfod",
+      "isGhost": false
+     },
+     {
+      "known": "in front of the blue sign",
+      "legoId": "S1459L01",
+      "target": " o flaen yr arwydd glas",
+      "isGhost": false
+     },
+     {
+      "known": "on Tuesday",
+      "legoId": "S0232L01",
+      "target": " ddydd Mawrth",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "we meet in front of the blue sign on Tuesday",
+    "decomposition": [
+     {
+      "known": "we meet",
+      "legoId": "S1568L03",
+      "target": "byddwn ni’n cyfarfod",
+      "isGhost": false
+     },
+     {
+      "known": "in front of the blue sign",
+      "legoId": "S1459L01",
+      "target": " o flaen yr arwydd glas",
+      "isGhost": false
+     },
+     {
+      "known": "on Tuesday",
+      "legoId": "S0232L01",
+      "target": " ddydd Mawrth",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1568L03U02",
+   "set": {
+    "known_text": "I’m tired but we’ll meet tonight",
+    "decomposition": [
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": "dw i wedi blino",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "we’ll meet",
+      "legoId": "S1568L03",
+      "target": " byddwn ni’n cyfarfod",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I’m tired but we meet tonight",
+    "decomposition": [
+     {
+      "known": "I’m tired",
+      "legoId": "S1555L02",
+      "target": "dw i wedi blino",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "we meet",
+      "legoId": "S1568L03",
+      "target": " byddwn ni’n cyfarfod",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "lego",
+   "id": "S1568L03",
+   "w": "byddwn ni’n cyfarfod",
+   "old": "we meet",
+   "new": "we will meet"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1568L03B02",
+   "w": "byddwn ni’n cyfarfod heno",
+   "old": "we meet tonight",
+   "new": "we will meet tonight"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1568L03B03",
+   "w": "byddwn ni’n cyfarfod tu allan",
+   "old": "we meet outdoors",
+   "new": "we will meet outdoors"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1568L03U01",
+   "w": "byddwn ni’n cyfarfod o flaen yr arwydd glas ddydd Mawrth",
+   "old": "we meet in front of the blue sign on Tuesday",
+   "new": "we will meet in front of the blue sign on Tuesday"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1568L03U02",
+   "w": "dw i wedi blino ond byddwn ni’n cyfarfod heno",
+   "old": "I’m tired but we meet tonight",
+   "new": "I’m tired but we’ll meet tonight"
+  }
+ ],
+ "left": [
+  {
+   "kind": "seed",
+   "id": 1568,
+   "e": "I'm expecting to see an improvement next time we meet",
+   "why": "subordinate"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1568L03B01",
+   "w": "tro nesa’ byddwn ni’n cyfarfod",
+   "e": "next time we meet",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1568L03U06",
+   "w": "mae hi wedi bod yn hyfryd ond tro nesa’ byddwn ni’n cyfarfod tu allan",
+   "e": "it’s been lovely but next time we meet outdoors",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1568L03U03",
+   "w": "tro nesa’ byddwn ni’n cyfarfod bydda i’n gofyn iddi beth ydy ei henw hi",
+   "e": "next time we meet I will ask her what her name is",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1575L01U05",
+   "w": "fydd hi’n annifyr iawn tro nesa’ byddwn ni’n cyfarfod",
+   "e": "it will be very upsetting next time we meet",
+   "why": "subordinate (next time/if/when)"
+  }
+ ]
+}

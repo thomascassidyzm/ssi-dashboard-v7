@@ -1,0 +1,101 @@
+{
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S1568L04",
+   "set": {
+    "known_text": "we will meet"
+   },
+   "expect": {
+    "known_text": "we meet"
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "lego",
+   "id": "S1568L04",
+   "w": "byddwn ni’n cwrdd",
+   "old": "we meet",
+   "new": "we will meet"
+  }
+ ],
+ "left": [
+  {
+   "kind": "seed",
+   "id": 1568,
+   "e": "I'm expecting to see an improvement next time we meet",
+   "why": "subordinate"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1568L04B01",
+   "w": "tro nesa byddwn ni’n cwrdd",
+   "e": "next time we meet",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1568L04B02",
+   "w": "os byddwn ni’n cwrdd heno",
+   "e": "if we meet tonight",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1568L04B04",
+   "w": "byddan nhw’n hapus os byddwn ni’n cwrdd",
+   "e": "they’ll be happy if we meet",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1568L04U06",
+   "w": "byddan nhw’n hapus os byddwn ni’n cwrdd yn y swyddfa",
+   "e": "they’ll be happy if we meet in the office",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1568L04U01",
+   "w": "tro nesa byddwn ni’n cwrdd dw i’n moyn gweld gwelliant",
+   "e": "next time we meet I want to see an improvement",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1568L04U03",
+   "w": "dw i’n siŵr bydd hi’n iawn os byddwn ni’n cwrdd heno",
+   "e": "I’m sure it will be okay if we meet tonight",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1568L04U04",
+   "w": "os byddwn ni’n cwrdd nes ymlaen does dim pwynt becso",
+   "e": "if we meet later there’s no point worrying",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1568L04U05",
+   "w": "ddylen ni stopo yn rhywle am fwyd os byddwn ni’n cwrdd nes ymlaen?",
+   "e": "should we stop somewhere for food if we meet later?",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1581L01U05",
+   "w": "byddai fe’n hoffi gweld gwelliant tro nesa byddwn ni’n cwrdd",
+   "e": "he’d like to see an improvement next time we meet",
+   "why": "subordinate (next time/if/when)"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1581L03U03",
+   "w": "dw i’n dishgwl bach mwy tro nesa byddwn ni’n cwrdd",
+   "e": "I’m expecting a little more next time we meet",
+   "why": "subordinate (next time/if/when)"
+  }
+ ]
+}
