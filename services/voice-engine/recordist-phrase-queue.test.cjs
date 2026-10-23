@@ -369,3 +369,81 @@ test('syntheticSeeds: a slot #606 EMPTIED of synthetic speech is queued for Aran
   const q3 = await buildQueue(db3, await resolveRecordist(db3, ARAN_ENG))
   assert.deepEqual(q3.lines.map((l) => l.text), [], 'without the list, a usable take elsewhere makes it a link, not a line (#588)')
 })
+
+// Job #917 (Aran, 2026-10-23): Supabase reads blipped for a few minutes ("TypeError: fetch failed",
+// "Could not query the database for the schema cache") and the booth refused takes it had accepted
+// seconds earlier — the policy read threw and the take 500'd. Reads that succeeded within the last
+// 10 minutes now carry the take through a failed read. With no good read to fall back on, the take
+// is still a 5xx the phone resends, never a 200.
+function blippingDb(tables, state) {
+  const inner = stubDb(tables)
+  const failed = { data: null, error: { message: 'TypeError: fetch failed' } }
+  return {
+    from(table) {
+      if (!state.down) return inner.from(table)
+      const q = {}
+      for (const m of ['select', 'update', 'eq', 'in', 'is', 'gte', 'lt', 'not', 'ilike', 'order', 'limit', 'range']) q[m] = () => q
+      q.maybeSingle = () => Promise.resolve(failed)
+      q.then = (resolve, reject) => Promise.resolve(failed).then(resolve, reject)
+      return q
+    },
+  }
+}
+
+function blipRouter(tables, state) {
+  const uploads = []
+  const router = createRecordistRouter({
+    getDb: () => blippingDb(tables, state),
+    logger: QUIET,
+    s3: {},
+    handleRecordingUpload: async (innerReq, innerRes) => {
+      uploads.push(innerReq.body.metadata.phraseId)
+      innerRes.json({ success: true, s3Key: 'mastered/x.mp3', rawKey: 'raw/x', filing: { filed: true, courseAudioId: 'clip-1' } })
+    },
+  })
+  const layer = router.stack.find((l) => l.route && l.route.path === '/voice/:voiceId/take' && l.route.methods.post)
+  async function send(voiceId, lineId) {
+    const out = {}
+    const settled = new Promise((resolve) => {
+      out.res = { status(c) { out.status = c; return out.res }, json(b) { out.body = b; resolve(); return out.res } }
+    })
+    await layer.route.stack[0].handle({
+      params: { voiceId }, query: {}, headers: { 'content-type': 'application/json' }, socket: {},
+      method: 'POST', originalUrl: `/voice/${voiceId}/take`,
+      body: { lineId, audioData: 'AAAA', mimeType: 'audio/webm' },
+    }, out.res)
+    await settled
+    return { status: out.status, body: out.body }
+  }
+  return { send, uploads }
+}
+
+test('the take route: a database read blip after a good read still accepts the take (job #917)', async () => {
+  const state = { down: false }
+  const booth = blipRouter(fixture(), state)
+  const first = await booth.send(CATRIN, `phrase:${N}:S1001L01B03:target1`)
+  assert.equal(first.status, undefined, `expected 200, got ${first.status} ${JSON.stringify(first.body)}`)
+  state.down = true
+  const during = await booth.send(CATRIN, `phrase:${N}:S1001L01B03:target1`)
+  assert.equal(during.status, undefined, `expected 200 through the blip, got ${during.status} ${JSON.stringify(during.body)}`)
+  assert.equal(during.body.ok, true)
+  assert.equal(booth.uploads.length, 2)
+  // The cast is still honoured from the last good read: the wrong reader is still refused.
+  const wrong = await booth.send(ARAN_CYM, `phrase:${N}:S1001L01B03:target1`)
+  assert.ok(wrong.status >= 400, `expected a refusal, got ${wrong.status}`)
+  assert.equal(booth.uploads.length, 2)
+})
+
+test('the take route: a read failure with no good read to fall back on is a 5xx the phone resends (job #917)', async () => {
+  const booth = blipRouter(fixture(), { down: true })
+  const r = await booth.send(CATRIN, `phrase:${N}:S1001L01B03:target1`)
+  assert.ok(r.status >= 500, `expected a 5xx, got ${r.status} ${JSON.stringify(r.body)}`)
+  assert.equal(booth.uploads.length, 0)
+})
+
+test('the take route: a take filed as course_read_failed is a 503, never a silent 200 (job #917)', async () => {
+  const unfiled = { filed: false, courseAudioId: null, reason: 'course_read_failed', deliberate: false, message: 'x' }
+  const r = await take(CATRIN, `phrase:${N}:S1001L01B03:target1`, fixture(), unfiled)
+  assert.equal(r.status, 503)
+  assert.equal(r.body.retryable, true)
+})

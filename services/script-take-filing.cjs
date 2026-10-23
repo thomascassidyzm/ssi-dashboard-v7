@@ -65,6 +65,10 @@ const FILING_REASONS = Object.freeze({
     deliberate: false,
     message: 'This take was saved but NOT filed as a clip: the course record could not be read, so its language is unknown. Tell whoever runs the course build.',
   },
+  course_read_failed: {
+    deliberate: false,
+    message: 'Popty got this take but could not read the course record just now, so it could not file it yet. It is kept on this device and will be sent again by itself.',
+  },
   write_failed: {
     deliberate: false,
     message: 'This take was saved to storage but the database refused to file it as a clip, so it will not play back. Tell whoever runs the course build — the recording itself is safe.',
@@ -95,7 +99,7 @@ function reasonPayload(reason, detail = null) {
  * @param {{target_lang: string, known_lang: string}|null} args.course
  * @returns {{file: true, text, role, language} | {file: false, filing: object}}
  */
-function planScriptTakeFiling({ metadata = {}, voiceId = null, course = null }) {
+function planScriptTakeFiling({ metadata = {}, voiceId = null, course = null, courseReadFailed = false }) {
   const cadence = metadata.cadence || 'natural'
   // A slow take is a measurement, not a clip — it exists to give the aligner
   // pause boundaries and is deliberately never filed.
@@ -120,7 +124,9 @@ function planScriptTakeFiling({ metadata = {}, voiceId = null, course = null }) 
   const role = metadata.role || null
   if (!role) return { file: false, filing: reasonPayload('no_role') }
 
-  if (!course) return { file: false, filing: reasonPayload('no_course') }
+  // A course the database could not be ASKED about is not a course that is missing: the first is a
+  // blip the phone should resend through (retryable, below), the second a misconfiguration.
+  if (!course) return { file: false, filing: reasonPayload(courseReadFailed ? 'course_read_failed' : 'no_course') }
 
   if (!voiceId) return { file: false, filing: reasonPayload('no_voice', `slot ${role}`) }
 
@@ -228,7 +234,7 @@ async function fileScriptTake({ supabase, courseCode, plan, s3Key, durationMs = 
  * are not a busy database, and resending would not change them.
  */
 function isRetryableFilingFailure(filing) {
-  return !!(filing && filing.filed === false && filing.reason === 'write_failed')
+  return !!(filing && filing.filed === false && (filing.reason === 'write_failed' || filing.reason === 'course_read_failed'))
 }
 
 module.exports = {

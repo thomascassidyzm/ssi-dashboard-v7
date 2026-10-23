@@ -30,6 +30,10 @@ const crypto = require('crypto')
 
 const TABLE = 'booth_link_keys'
 const KEY_TTL_MS = 60 * 1000
+// A failed read (Supabase blip: "fetch failed", schema-cache errors) falls back to the last row this
+// process read successfully, if it is younger than this. A successful read always replaces it, so a
+// rotated or deleted key is refused as soon as a fresh read gets through (job #917, 2026-10-23).
+const KEY_GRACE_MS = 10 * 60 * 1000
 const SETUP_PACK_PREFIX = 'pack-setup-'
 const KEY_HEADER = 'x-booth-key'
 const KEY_QUERY = 'k'
@@ -111,7 +115,7 @@ function decideBoothAccess({ keyOk, privileged, grace, presented, hasKey }) {
 }
 
 /** The store over booth_link_keys. Service role only; every read is cached KEY_TTL_MS per voice. */
-function createBoothKeyStore({ getDb, secret = secretFromEnv(), now = () => Date.now() } = {}) {
+function createBoothKeyStore({ getDb, secret = secretFromEnv(), now = () => Date.now(), graceMs = KEY_GRACE_MS, logger = console } = {}) {
   const cache = new Map() // voiceId → { at, row }
   const db = () => {
     const d = getDb()
@@ -123,8 +127,18 @@ function createBoothKeyStore({ getDb, secret = secretFromEnv(), now = () => Date
     const id = boothKeyId(voiceId)
     const hit = cache.get(id)
     if (hit && now() - hit.at < KEY_TTL_MS) return hit.row
-    const { data, error } = await db().from(TABLE).select('voice_id, key_hash, nonce, created_by, created_at').eq('voice_id', id).maybeSingle()
-    if (error) throw new Error(`booth key read failed: ${error.message}`)
+    let data
+    try {
+      const out = await db().from(TABLE).select('voice_id, key_hash, nonce, created_by, created_at').eq('voice_id', id).maybeSingle()
+      if (out.error) throw new Error(out.error.message)
+      data = out.data
+    } catch (err) {
+      if (hit && now() - hit.at < graceMs) {
+        logger.warn(`[BoothKey] read failed for ${id} (${err.message}); using the key read ${Math.round((now() - hit.at) / 1000)}s ago`)
+        return hit.row
+      }
+      throw new Error(`booth key read failed: ${err.message}`)
+    }
     cache.set(id, { at: now(), row: data || null })
     return data || null
   }
@@ -212,7 +226,7 @@ function createBoothKeyGate({ store, identify = null, isGodAdmin, ownsVoice = nu
 }
 
 module.exports = {
-  TABLE, KEY_TTL_MS, KEY_HEADER, KEY_QUERY,
+  TABLE, KEY_TTL_MS, KEY_GRACE_MS, KEY_HEADER, KEY_QUERY,
   boothKeyId, hashKey, deriveToken, keyMatches, graceFromEnv, secretFromEnv,
   presentedKey, stripKeyParam, decideBoothAccess,
   createBoothKeyStore, createBoothKeyGate,

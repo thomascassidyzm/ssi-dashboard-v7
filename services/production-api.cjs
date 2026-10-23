@@ -41,6 +41,9 @@ const speechGate = require('./recording-speech-gate.cjs')
 const takeTextCheck = require('./take-text-check-queue.cjs')
 const textChecks = takeTextCheck.createTextCheckQueue({ logger })
 const { planScriptTakeFiling, fileScriptTake } = require('./script-take-filing.cjs')
+const { createLastGoodCache, rowOrThrow } = require('./shared/last-good-cache.cjs')
+// Course rows read by the upload seam, kept as last-good for a read blip (job #917).
+const recordingCourseRows = createLastGoodCache({ logger, label: 'Recording' })
 const { planAttach, attachScriptTake } = require('./script-take-attach.cjs')
 const takeSupersede = require('./take-supersede.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
@@ -5954,14 +5957,21 @@ async function handleRecordingUpload(req, res) {
     // voices. The course row is fetched here for the same reason: filing needs
     // its target_lang/known_lang, and one read serves both.
     let slotVoiceId = null
+    //
+    // A READ BLIP IS NOT "NO COURSE" (job #917, 2026-10-23): the error used to be ignored, so a
+    // failed read looked like a missing course and the take was saved but filed as 'no_course'
+    // with a 200. Now a failed read falls back to the last good row (10 min), and if there is none
+    // the filing says 'course_read_failed', which the booth answers 503 so the phone resends.
     let courseRow = null
+    let courseReadFailed = false
     if (supabaseClient.isInitialized()) {
       try {
-        const { data } = await supabaseClient.getClient()
-          .from('courses').select('voice_config, target_lang, known_lang')
-          .eq('course_code', courseCode).single()
-        courseRow = data || null
+        courseRow = await recordingCourseRows.read(`course:${courseCode}`, () => rowOrThrow(
+          supabaseClient.getClient().from('courses').select('voice_config, target_lang, known_lang')
+            .eq('course_code', courseCode).maybeSingle(),
+          'course row read'))
       } catch (courseReadError) {
+        courseReadFailed = true
         logger.warn('[Recording] course row read failed:', courseReadError.message)
       }
     }
@@ -6023,7 +6033,7 @@ async function handleRecordingUpload(req, res) {
 
     let scriptFiling = null
     if (isScriptMode && supabaseClient.isInitialized()) {
-      const plan = planScriptTakeFiling({ metadata, voiceId: slotVoiceId, course: courseRow })
+      const plan = planScriptTakeFiling({ metadata, voiceId: slotVoiceId, course: courseRow, courseReadFailed })
       scriptFiling = await fileScriptTake({
         supabase: supabaseClient.getClient(),
         courseCode,
