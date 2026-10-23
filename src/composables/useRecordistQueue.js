@@ -145,8 +145,9 @@ export function useRecordistQueue(options = {}) {
 
   async function refreshCounts() {
     const s = await ensureStore()
-    const pending = await s.pending(voiceId)
-    const refused = await s.refused(voiceId)
+    // ONE read, metadata only (#933). This runs on every advance; it used to
+    // be three full reads of the shelf with every waiting take's audio in them.
+    const { pending, refused, stale } = await s.snapshot(voiceId)
     unsentLines.clear()
     for (const rec of pending) unsentLines.add(rec.lineId)
     pendingCount.value = pending.length
@@ -162,7 +163,7 @@ export function useRecordistQueue(options = {}) {
     const live = refused.filter(rec => !lineNowRecorded(rec.lineId))
     refusedCount.value = live.length
     refusedTakes.value = live.map(r => ({ lineId: r.lineId, text: r.text || '', lastError: r.lastError || '', refusedAt: r.refusedAt || 0 }))
-    staleCount.value = (await s.stale(voiceId)).length
+    staleCount.value = stale.length
     for (const rec of refused) if (lineNowRecorded(rec.lineId)) failed.delete(rec.lineId)
     for (const rec of live) if (!failed.has(rec.lineId)) failed.set(rec.lineId, rec.lastError)
   }
@@ -307,12 +308,21 @@ export function useRecordistQueue(options = {}) {
     try {
       const s = await ensureStore()
       let lockLost = false
+      // Takes that left the shelf between being chosen and being loaded.
+      const gone = new Set()
+      const skip = r => gone.has(r.id) || busy(r)
       for (;;) {
         // Fill the free slots.
         while (!stopped && !lockLost && onWire.size < pace.limit) {
-          const rec = await s.nextDue(voiceId, { skip: busy })
-          if (!rec) break
+          const due = await s.nextDue(voiceId, { skip })
+          if (!due) break
           if (!claimLock()) { lockLost = true; scheduleWake(LOCK_RETRY_MS); break }
+          // The audio is read HERE, for this one take, and nowhere else. A take
+          // that is no longer on the shelf — confirmed by another tab, or
+          // superseded by a re-read — is not sent: that is the double-send
+          // this load-before-post rules out.
+          const rec = await s.load(due.id)
+          if (!rec || rec.status !== due.status) { gone.add(due.id); continue }
           const keys = inFlightKeys(rec)
           keys.lineId = rec.lineId
           onWire.set(rec.id, keys)
@@ -506,7 +516,8 @@ export function useRecordistQueue(options = {}) {
   async function unsentBlob(lineId) {
     if (!unsentLines.has(lineId) || !voiceId) return null
     const s = await ensureStore()
-    const rec = (await s.pending(voiceId)).filter(r => r.lineId === lineId).pop()
+    const meta = (await s.pending(voiceId)).filter(r => r.lineId === lineId).pop()
+    const rec = meta && await s.load(meta.id)
     return (rec && rec.blob) || null
   }
 
@@ -514,7 +525,8 @@ export function useRecordistQueue(options = {}) {
   async function refusedBlob(lineId) {
     if (!voiceId) return null
     const s = await ensureStore()
-    const rec = (await s.refused(voiceId)).filter(r => r.lineId === lineId).pop()
+    const meta = (await s.refused(voiceId)).filter(r => r.lineId === lineId).pop()
+    const rec = meta && await s.load(meta.id)
     return (rec && rec.blob) || null
   }
 
