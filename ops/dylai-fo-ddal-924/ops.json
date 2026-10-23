@@ -1,0 +1,54 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1512L02B02",
+   "set": {
+    "target_text": "dylai fo ddal y drws ar agor",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "dylai",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fo",
+      "isGhost": true
+     },
+     {
+      "known": "hold the door open",
+      "legoId": "S1512L02",
+      "target": " ddal y drws ar agor",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddylai o ddal y drws ar agor",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ddylai",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o",
+      "isGhost": true
+     },
+     {
+      "known": "hold the door open",
+      "legoId": "S1512L02",
+      "target": " ddal y drws ar agor",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ]
+}
