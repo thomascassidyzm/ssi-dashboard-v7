@@ -1,0 +1,2195 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "4e804b78-8ccf-46e2-99c8-1a45a93733c8",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "seed_number": 277
+   },
+   "before": {
+    "id": "568b73d2-86ef-476a-9b20-5b543df06895",
+    "seed_number": 277,
+    "target_text": "beth sy’n digwydd ar ôl rhan gyntaf y sioe?",
+    "known_text": "what happens after the first part of the show?",
+    "known_audio_id": "0ca4bd6e-5d88-4529-ab7b-57e14847b70b",
+    "target1_audio_id": null,
+    "target2_audio_id": "27e4fa49-8b10-4e8a-b9ce-e22aef228367"
+   },
+   "after": {
+    "id": "568b73d2-86ef-476a-9b20-5b543df06895",
+    "seed_number": 277,
+    "target_text": "beth sy’n digwydd ar ôl rhan gynta’r sioe?",
+    "known_text": "what happens after the first part of the show?",
+    "known_audio_id": "0ca4bd6e-5d88-4529-ab7b-57e14847b70b",
+    "target1_audio_id": null,
+    "target2_audio_id": "474e1890-706c-479c-a9f1-998844c6e3cf"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S0277L03"
+   },
+   "before": {
+    "id": "e41d1169-aef2-44a6-9189-c8a77fca4e60",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "rhan gyntaf",
+    "known_text": "the first part",
+    "known_audio_id": "c43a091a-d468-47ab-bfa4-40c97fec71ca",
+    "target1_audio_id": "4c26493d-49e7-455b-a24d-bb1f891d50df",
+    "target2_audio_id": "7a5e7dda-7af4-4aea-8efc-dcbc8b4b3f5a",
+    "presentation_audio_id": "a1676049-4cf1-44db-aff1-9cfd9887a535"
+   },
+   "after": {
+    "id": "e41d1169-aef2-44a6-9189-c8a77fca4e60",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "y rhan gyntaf",
+    "known_text": "the first part",
+    "known_audio_id": "c43a091a-d468-47ab-bfa4-40c97fec71ca",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0277L03B06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0277L03B06",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "y rhan gyntaf sy’n digwydd rŵan hyn",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "happens",
+      "legoId": "S0277L01",
+      "target": " sy’n digwydd",
+      "isGhost": false
+     },
+     {
+      "known": "right now",
+      "legoId": "S0274L04",
+      "target": " rŵan hyn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the first part is happening right now",
+    "known_audio_id": "edf5dba0-272d-428a-b68a-d428b020f021",
+    "target1_audio_id": "13538420-bf27-4cf6-8364-0256df9c6f99",
+    "target2_audio_id": "468f0316-7930-4491-a68b-2c80ccdedc1b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0277L03B06",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "y rhan gyntaf sy’n digwydd rŵan hyn",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "y rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "happens",
+      "legoId": "S0277L01",
+      "target": " sy’n digwydd",
+      "isGhost": false
+     },
+     {
+      "known": "right now",
+      "legoId": "S0274L04",
+      "target": " rŵan hyn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the first part is happening right now",
+    "known_audio_id": "edf5dba0-272d-428a-b68a-d428b020f021",
+    "target1_audio_id": "13538420-bf27-4cf6-8364-0256df9c6f99",
+    "target2_audio_id": "468f0316-7930-4491-a68b-2c80ccdedc1b",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0277L03B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0277L03B03",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "medra i siarad ar ôl y rhan gyntaf",
+    "decomposition": [
+     {
+      "known": "I can",
+      "legoId": "S0258L04",
+      "target": "medra i",
+      "isGhost": false
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " siarad",
+      "isGhost": false
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "known_text": "I can speak after the first part",
+    "known_audio_id": "40bae9a2-baa3-48bc-9473-bbe240cda649",
+    "target1_audio_id": "c498d80b-9714-4694-8841-656056a8a961",
+    "target2_audio_id": "61afed55-b64a-44f1-98c7-cfd33491143a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0277L03B03",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "medra i siarad ar ôl y rhan gyntaf",
+    "decomposition": [
+     {
+      "known": "I can",
+      "legoId": "S0258L04",
+      "target": "medra i",
+      "isGhost": false
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " siarad",
+      "isGhost": false
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " y rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "known_text": "I can speak after the first part",
+    "known_audio_id": "40bae9a2-baa3-48bc-9473-bbe240cda649",
+    "target1_audio_id": "c498d80b-9714-4694-8841-656056a8a961",
+    "target2_audio_id": "61afed55-b64a-44f1-98c7-cfd33491143a",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0277L03B05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0277L03B05",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "rhan gyntaf y problem",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     }
+    ],
+    "known_text": "the first part of the problem",
+    "known_audio_id": "4ed4c7eb-5158-438b-b0b3-4af4ae275315",
+    "target1_audio_id": "b38899ff-38b9-4c54-b8bd-8370f2275991",
+    "target2_audio_id": "2b21a6d4-277c-4bbb-9919-87fa6876f156",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0277L03B05",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "rhan gynta’r problem",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "rhan gynta’",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "r",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     }
+    ],
+    "known_text": "the first part of the problem",
+    "known_audio_id": "4ed4c7eb-5158-438b-b0b3-4af4ae275315",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0277L03B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0277L03B02",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "mae o wedi bod isio gwylio’r rhan gyntaf unwaith",
+    "decomposition": [
+     {
+      "known": "he",
+      "legoId": "S0061L01",
+      "target": "mae o",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " wedi",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bod",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " isio",
+      "isGhost": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’r",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "once",
+      "legoId": "S0259L02",
+      "target": " unwaith",
+      "isGhost": false
+     }
+    ],
+    "known_text": "he’s been wanting to watch the the first part once",
+    "known_audio_id": "45d30589-44d0-40a7-861d-7e55b5bacd6f",
+    "target1_audio_id": "252dd703-b5d3-4c73-a80e-8a6b3fc389e1",
+    "target2_audio_id": "53457e57-cdb0-4343-ad51-4034aed96274",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0277L03B02",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "mae o wedi bod isio gwylio’r rhan gyntaf unwaith",
+    "decomposition": [
+     {
+      "known": "he",
+      "legoId": "S0061L01",
+      "target": "mae o",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " wedi",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bod",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " isio",
+      "isGhost": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "’r rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "once",
+      "legoId": "S0259L02",
+      "target": " unwaith",
+      "isGhost": false
+     }
+    ],
+    "known_text": "he’s been wanting to watch the the first part once",
+    "known_audio_id": "45d30589-44d0-40a7-861d-7e55b5bacd6f",
+    "target1_audio_id": "252dd703-b5d3-4c73-a80e-8a6b3fc389e1",
+    "target2_audio_id": "53457e57-cdb0-4343-ad51-4034aed96274",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0277L03B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0277L03B04",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "pa un sy’n digwydd ar ôl y rhan gyntaf?",
+    "decomposition": [
+     {
+      "known": "which",
+      "legoId": "S0275L01",
+      "target": "pa un",
+      "isGhost": false
+     },
+     {
+      "known": "happens",
+      "legoId": "S0277L01",
+      "target": " sy’n digwydd",
+      "isGhost": false
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "which one happens after the the first part?",
+    "known_audio_id": "37d6af98-a24d-451e-804b-cc28c2c653d4",
+    "target1_audio_id": "35bcc55d-7be8-4430-bd86-1b812fba7ee2",
+    "target2_audio_id": "79084ad1-b892-44a9-a664-d4bd781c3965",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0277L03B04",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "pa un sy’n digwydd ar ôl y rhan gyntaf?",
+    "decomposition": [
+     {
+      "known": "which",
+      "legoId": "S0275L01",
+      "target": "pa un",
+      "isGhost": false
+     },
+     {
+      "known": "happens",
+      "legoId": "S0277L01",
+      "target": " sy’n digwydd",
+      "isGhost": false
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " y rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "which one happens after the the first part?",
+    "known_audio_id": "37d6af98-a24d-451e-804b-cc28c2c653d4",
+    "target1_audio_id": "35bcc55d-7be8-4430-bd86-1b812fba7ee2",
+    "target2_audio_id": "79084ad1-b892-44a9-a664-d4bd781c3965",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0277L03B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0277L03B01",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "beth ddaw nesa’ ar ôl y rhan gyntaf?",
+    "decomposition": [
+     {
+      "known": "what",
+      "legoId": "S0010L01",
+      "target": "beth",
+      "isGhost": false
+     },
+     {
+      "known": "going to come next",
+      "legoId": "S0276L01",
+      "target": " ddaw nesa’",
+      "isGhost": false
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "known_text": "what is going to come next after the the first part?",
+    "known_audio_id": "38a20ec6-4c48-4275-93b0-19756b04970e",
+    "target1_audio_id": "def9c649-f011-4fb4-a53d-98664fb1bd74",
+    "target2_audio_id": "093536d3-1887-4383-b969-ee337f80df54",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0277L03B01",
+    "seed_number": 277,
+    "lego_index": 3,
+    "lego_id": "S0277L03",
+    "target_text": "beth ddaw nesa’ ar ôl y rhan gyntaf?",
+    "decomposition": [
+     {
+      "known": "what",
+      "legoId": "S0010L01",
+      "target": "beth",
+      "isGhost": false
+     },
+     {
+      "known": "going to come next",
+      "legoId": "S0276L01",
+      "target": " ddaw nesa’",
+      "isGhost": false
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " y rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "known_text": "what is going to come next after the the first part?",
+    "known_audio_id": "38a20ec6-4c48-4275-93b0-19756b04970e",
+    "target1_audio_id": "def9c649-f011-4fb4-a53d-98664fb1bd74",
+    "target2_audio_id": "093536d3-1887-4383-b969-ee337f80df54",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0277L04B05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0277L04B05",
+    "seed_number": 277,
+    "lego_index": 4,
+    "lego_id": "S0277L04",
+    "target_text": "rhan gyntaf y sioe ddaw nesa’",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "going to come next",
+      "legoId": "S0276L01",
+      "target": " ddaw nesa’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the first part of the show is going to come next",
+    "known_audio_id": "7b0773d1-5f89-4209-bb96-d222ad8f55b9",
+    "target1_audio_id": "9f1c2b70-bcc9-4d90-b8c0-4c484605eec5",
+    "target2_audio_id": "033b109e-56e0-476f-89e5-442517a1ad8a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0277L04B05",
+    "seed_number": 277,
+    "lego_index": 4,
+    "lego_id": "S0277L04",
+    "target_text": "rhan gynta’r sioe ddaw nesa’",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "going to come next",
+      "legoId": "S0276L01",
+      "target": " ddaw nesa’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the first part of the show is going to come next",
+    "known_audio_id": "7b0773d1-5f89-4209-bb96-d222ad8f55b9",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0277L04B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0277L04B04",
+    "seed_number": 277,
+    "lego_index": 4,
+    "lego_id": "S0277L04",
+    "target_text": "rhan gyntaf y sioe",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "known_text": "the first part of the show",
+    "known_audio_id": "c02859d8-e2e6-441c-8036-2739a1ccda16",
+    "target1_audio_id": "3f7154ba-f70c-4335-b608-a4a3fda9657c",
+    "target2_audio_id": "be623818-8b54-4619-b55e-b70de7f18e58",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0277L04B04",
+    "seed_number": 277,
+    "lego_index": 4,
+    "lego_id": "S0277L04",
+    "target_text": "rhan gynta’r sioe",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ],
+    "known_text": "the first part of the show",
+    "known_audio_id": "c02859d8-e2e6-441c-8036-2739a1ccda16",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0278L01B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0278L01B03",
+    "seed_number": 278,
+    "lego_index": 1,
+    "lego_id": "S0278L01",
+    "target_text": "dw i ddim yn bwriadu gwylio rhan gyntaf",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m not intending to watch the first part",
+    "known_audio_id": "382b2b4b-af5e-416f-9002-468f4842a021",
+    "target1_audio_id": "693e8cbe-b22b-46f9-b97b-09ceb6843321",
+    "target2_audio_id": "0de85a66-1dfd-4579-8d9d-f950b3470dea",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0278L01B03",
+    "seed_number": 278,
+    "lego_index": 1,
+    "lego_id": "S0278L01",
+    "target_text": "dw i ddim yn bwriadu gwylio’r rhan gyntaf",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "’r rhan gyntaf",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m not intending to watch the first part",
+    "known_audio_id": "382b2b4b-af5e-416f-9002-468f4842a021",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0278L01B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0278L01B04",
+    "seed_number": 278,
+    "lego_index": 1,
+    "lego_id": "S0278L01",
+    "target_text": "dw i ddim yn bwriadu gwylio rhan gyntaf os na wnei di",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "if you don’t make",
+      "legoId": "S0274L01",
+      "target": " os na wnei di",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m not intending to watch the first part if you don’t",
+    "known_audio_id": "247e90f7-6260-4da6-8dbb-cccf9316ced2",
+    "target1_audio_id": "76222cc6-3183-43b9-aff1-a1ac6bde969b",
+    "target2_audio_id": "0da6c7b5-663b-4a77-ba4c-961ec8bc7eea",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0278L01B04",
+    "seed_number": 278,
+    "lego_index": 1,
+    "lego_id": "S0278L01",
+    "target_text": "dw i ddim yn bwriadu gwylio’r rhan gyntaf os na wnei di",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "’r rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "if you don’t make",
+      "legoId": "S0274L01",
+      "target": " os na wnei di",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m not intending to watch the first part if you don’t",
+    "known_audio_id": "247e90f7-6260-4da6-8dbb-cccf9316ced2",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0278L01B06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0278L01B06",
+    "seed_number": 278,
+    "lego_index": 1,
+    "lego_id": "S0278L01",
+    "target_text": "dw i ddim yn bwriadu gwylio rhan gyntaf y sioe heno",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m not intending to watch the first part of the show tonight",
+    "known_audio_id": "206b729a-a625-4625-ad1c-e843016eaff6",
+    "target1_audio_id": "745cf7b1-74c2-4846-8920-79b4d56ae801",
+    "target2_audio_id": "df728cef-2032-42fc-9861-4d7322cfcd35",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0278L01B06",
+    "seed_number": 278,
+    "lego_index": 1,
+    "lego_id": "S0278L01",
+    "target_text": "dw i ddim yn bwriadu gwylio rhan gynta’r sioe heno",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m not intending to watch the first part of the show tonight",
+    "known_audio_id": "206b729a-a625-4625-ad1c-e843016eaff6",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0278L01B05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0278L01B05",
+    "seed_number": 278,
+    "lego_index": 1,
+    "lego_id": "S0278L01",
+    "target_text": "dw i ddim yn bwriadu gwylio rhan gyntaf y sioe",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m not intending to watch the first part of the show",
+    "known_audio_id": "a815bd92-5e8a-412a-9c78-310044ca1c8d",
+    "target1_audio_id": "6a459664-d1ae-4c64-9dfe-2e550981b957",
+    "target2_audio_id": "3c830eb9-d614-4727-aed1-5ed05923812c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0278L01B05",
+    "seed_number": 278,
+    "lego_index": 1,
+    "lego_id": "S0278L01",
+    "target_text": "dw i ddim yn bwriadu gwylio rhan gynta’r sioe",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m not intending to watch the first part of the show",
+    "known_audio_id": "a815bd92-5e8a-412a-9c78-310044ca1c8d",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0278L02B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0278L02B01",
+    "seed_number": 278,
+    "lego_index": 2,
+    "lego_id": "S0278L02",
+    "target_text": "colli ar ôl y rhan gyntaf",
+    "decomposition": [
+     {
+      "known": "to lose",
+      "legoId": "S0278L02",
+      "target": "colli",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to lose after the the first part",
+    "known_audio_id": "171c2412-d7c9-4978-ba82-fe10b1a5575b",
+    "target1_audio_id": "c8cabcd4-88df-4e6f-aa89-827b4191d39c",
+    "target2_audio_id": "60949b20-7aa3-4957-8fbe-b751eb16a944",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0278L02B01",
+    "seed_number": 278,
+    "lego_index": 2,
+    "lego_id": "S0278L02",
+    "target_text": "colli ar ôl y rhan gyntaf",
+    "decomposition": [
+     {
+      "known": "to lose",
+      "legoId": "S0278L02",
+      "target": "colli",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " y rhan gyntaf",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to lose after the the first part",
+    "known_audio_id": "171c2412-d7c9-4978-ba82-fe10b1a5575b",
+    "target1_audio_id": "c8cabcd4-88df-4e6f-aa89-827b4191d39c",
+    "target2_audio_id": "60949b20-7aa3-4957-8fbe-b751eb16a944",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0279L02B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0279L02B01",
+    "seed_number": 279,
+    "lego_index": 2,
+    "lego_id": "S0279L02",
+    "target_text": "fel bod rhan gyntaf y sioe",
+    "decomposition": [
+     {
+      "known": "as though",
+      "legoId": "S0279L02",
+      "target": "fel bod",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     }
+    ],
+    "known_text": "as though the first part of the show",
+    "known_audio_id": "ea088e3c-298a-42ee-a629-58992c6d894a",
+    "target1_audio_id": "cb520d76-218d-4506-a9c4-258e6495087d",
+    "target2_audio_id": "34e31a8e-bdc4-4b56-8566-632bf6fdc862",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0279L02B01",
+    "seed_number": 279,
+    "lego_index": 2,
+    "lego_id": "S0279L02",
+    "target_text": "fel bod rhan gynta’r sioe",
+    "decomposition": [
+     {
+      "known": "as though",
+      "legoId": "S0279L02",
+      "target": "fel bod",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false
+     }
+    ],
+    "known_text": "as though the first part of the show",
+    "known_audio_id": "ea088e3c-298a-42ee-a629-58992c6d894a",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0290L02B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0290L02B03",
+    "seed_number": 290,
+    "lego_index": 2,
+    "lego_id": "S0290L02",
+    "target_text": "cymerodd rhan gyntaf y sioe",
+    "decomposition": [
+     {
+      "known": "took",
+      "legoId": "S0290L02",
+      "target": "cymerodd",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the first part of the show took",
+    "known_audio_id": "a5a43c94-1cce-497d-a05a-78210de837ce",
+    "target1_audio_id": "664ddbb8-8b66-4ef8-9aa1-28ab9c2964d3",
+    "target2_audio_id": "3f51c167-f6ba-4da6-bdf3-890c0d057f01",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0290L02B03",
+    "seed_number": 290,
+    "lego_index": 2,
+    "lego_id": "S0290L02",
+    "target_text": "cymerodd rhan gynta’r sioe",
+    "decomposition": [
+     {
+      "known": "took",
+      "legoId": "S0290L02",
+      "target": "cymerodd",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the first part of the show took",
+    "known_audio_id": "a5a43c94-1cce-497d-a05a-78210de837ce",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0290L02B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0290L02B04",
+    "seed_number": 290,
+    "lego_index": 2,
+    "lego_id": "S0290L02",
+    "target_text": "cymerodd rhan gyntaf y sioe llai o amser",
+    "decomposition": [
+     {
+      "known": "took",
+      "legoId": "S0290L02",
+      "target": "cymerodd",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     },
+     {
+      "known": "less time",
+      "legoId": "S0172L01",
+      "target": " llai o amser",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the first part of the show took less time",
+    "known_audio_id": "6cce552a-7723-4b1c-8e09-f3195cd9d970",
+    "target1_audio_id": "7f5cb96a-0c74-4f2e-b27d-d6491b5667fe",
+    "target2_audio_id": "e6d53010-a0ba-4c76-b90b-e3d3ec924dee",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0290L02B04",
+    "seed_number": 290,
+    "lego_index": 2,
+    "lego_id": "S0290L02",
+    "target_text": "cymerodd rhan gynta’r sioe llai o amser",
+    "decomposition": [
+     {
+      "known": "took",
+      "legoId": "S0290L02",
+      "target": "cymerodd",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false
+     },
+     {
+      "known": "less time",
+      "legoId": "S0172L01",
+      "target": " llai o amser",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the first part of the show took less time",
+    "known_audio_id": "6cce552a-7723-4b1c-8e09-f3195cd9d970",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0291L02B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0291L02B03",
+    "seed_number": 291,
+    "lego_index": 2,
+    "lego_id": "S0291L02",
+    "target_text": "fedri di ddal rhan gyntaf y sioe?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fedri",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " di",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ddal",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "can you hold the first part of the show?",
+    "known_audio_id": "2b277283-3abb-4ab1-8494-8276b678b4d4",
+    "target1_audio_id": "ef7179b7-8821-43a5-a777-f314acf6df5e",
+    "target2_audio_id": "56d1fb95-e26e-410a-b37d-d4f7c4fcad56",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0291L02B03",
+    "seed_number": 291,
+    "lego_index": 2,
+    "lego_id": "S0291L02",
+    "target_text": "fedri di ddal rhan gynta’r sioe?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fedri",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " di",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ddal",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": "r sioe",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "can you hold the first part of the show?",
+    "known_audio_id": "2b277283-3abb-4ab1-8494-8276b678b4d4",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0291L02B03",
+   "set": {
+    "target_text": "fedri di ddal rhan gyntaf y sioe?",
+    "target1_audio_id": "ef7179b7-8821-43a5-a777-f314acf6df5e",
+    "target2_audio_id": "56d1fb95-e26e-410a-b37d-d4f7c4fcad56",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fedri",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " di",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ddal",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0290L02B04",
+   "set": {
+    "target_text": "cymerodd rhan gyntaf y sioe llai o amser",
+    "target1_audio_id": "7f5cb96a-0c74-4f2e-b27d-d6491b5667fe",
+    "target2_audio_id": "e6d53010-a0ba-4c76-b90b-e3d3ec924dee",
+    "decomposition": [
+     {
+      "known": "took",
+      "legoId": "S0290L02",
+      "target": "cymerodd",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     },
+     {
+      "known": "less time",
+      "legoId": "S0172L01",
+      "target": " llai o amser",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0290L02B03",
+   "set": {
+    "target_text": "cymerodd rhan gyntaf y sioe",
+    "target1_audio_id": "664ddbb8-8b66-4ef8-9aa1-28ab9c2964d3",
+    "target2_audio_id": "3f51c167-f6ba-4da6-bdf3-890c0d057f01",
+    "decomposition": [
+     {
+      "known": "took",
+      "legoId": "S0290L02",
+      "target": "cymerodd",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0279L02B01",
+   "set": {
+    "target_text": "fel bod rhan gyntaf y sioe",
+    "target1_audio_id": "cb520d76-218d-4506-a9c4-258e6495087d",
+    "target2_audio_id": "34e31a8e-bdc4-4b56-8566-632bf6fdc862",
+    "decomposition": [
+     {
+      "known": "as though",
+      "legoId": "S0279L02",
+      "target": "fel bod",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0278L02B01",
+   "set": {
+    "decomposition": [
+     {
+      "known": "to lose",
+      "legoId": "S0278L02",
+      "target": "colli",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0278L01B05",
+   "set": {
+    "target_text": "dw i ddim yn bwriadu gwylio rhan gyntaf y sioe",
+    "target1_audio_id": "6a459664-d1ae-4c64-9dfe-2e550981b957",
+    "target2_audio_id": "3c830eb9-d614-4727-aed1-5ed05923812c",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0278L01B06",
+   "set": {
+    "target_text": "dw i ddim yn bwriadu gwylio rhan gyntaf y sioe heno",
+    "target1_audio_id": "745cf7b1-74c2-4846-8920-79b4d56ae801",
+    "target2_audio_id": "df728cef-2032-42fc-9861-4d7322cfcd35",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0278L01B04",
+   "set": {
+    "target_text": "dw i ddim yn bwriadu gwylio rhan gyntaf os na wnei di",
+    "target1_audio_id": "76222cc6-3183-43b9-aff1-a1ac6bde969b",
+    "target2_audio_id": "0da6c7b5-663b-4a77-ba4c-961ec8bc7eea",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "if you don’t make",
+      "legoId": "S0274L01",
+      "target": " os na wnei di",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0278L01B03",
+   "set": {
+    "target_text": "dw i ddim yn bwriadu gwylio rhan gyntaf",
+    "target1_audio_id": "693e8cbe-b22b-46f9-b97b-09ceb6843321",
+    "target2_audio_id": "0de85a66-1dfd-4579-8d9d-f950b3470dea",
+    "decomposition": [
+     {
+      "known": "I’m not intending",
+      "legoId": "S0278L01",
+      "target": "dw i ddim yn bwriadu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L04B04",
+   "set": {
+    "target_text": "rhan gyntaf y sioe",
+    "target1_audio_id": "3f7154ba-f70c-4335-b608-a4a3fda9657c",
+    "target2_audio_id": "be623818-8b54-4619-b55e-b70de7f18e58",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L04B05",
+   "set": {
+    "target_text": "rhan gyntaf y sioe ddaw nesa’",
+    "target1_audio_id": "9f1c2b70-bcc9-4d90-b8c0-4c484605eec5",
+    "target2_audio_id": "033b109e-56e0-476f-89e5-442517a1ad8a",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "of the show",
+      "legoId": "S0277L04",
+      "target": " y sioe",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "going to come next",
+      "legoId": "S0276L01",
+      "target": " ddaw nesa’",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B01",
+   "set": {
+    "decomposition": [
+     {
+      "known": "what",
+      "legoId": "S0010L01",
+      "target": "beth",
+      "isGhost": false
+     },
+     {
+      "known": "going to come next",
+      "legoId": "S0276L01",
+      "target": " ddaw nesa’",
+      "isGhost": false
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B04",
+   "set": {
+    "decomposition": [
+     {
+      "known": "which",
+      "legoId": "S0275L01",
+      "target": "pa un",
+      "isGhost": false
+     },
+     {
+      "known": "happens",
+      "legoId": "S0277L01",
+      "target": " sy’n digwydd",
+      "isGhost": false
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B02",
+   "set": {
+    "decomposition": [
+     {
+      "known": "he",
+      "legoId": "S0061L01",
+      "target": "mae o",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " wedi",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bod",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " isio",
+      "isGhost": true
+     },
+     {
+      "known": "to watch",
+      "legoId": "S0089L01",
+      "target": " gwylio",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’r",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "once",
+      "legoId": "S0259L02",
+      "target": " unwaith",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B05",
+   "set": {
+    "target_text": "rhan gyntaf y problem",
+    "target1_audio_id": "b38899ff-38b9-4c54-b8bd-8370f2275991",
+    "target2_audio_id": "2b21a6d4-277c-4bbb-9919-87fa6876f156",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": "rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " problem",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B03",
+   "set": {
+    "decomposition": [
+     {
+      "known": "I can",
+      "legoId": "S0258L04",
+      "target": "medra i",
+      "isGhost": false
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " siarad",
+      "isGhost": false
+     },
+     {
+      "known": "after",
+      "legoId": "S0277L02",
+      "target": " ar ôl",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0277L03B06",
+   "set": {
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "the first part",
+      "legoId": "S0277L03",
+      "target": " rhan gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "happens",
+      "legoId": "S0277L01",
+      "target": " sy’n digwydd",
+      "isGhost": false
+     },
+     {
+      "known": "right now",
+      "legoId": "S0274L04",
+      "target": " rŵan hyn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "e41d1169-aef2-44a6-9189-c8a77fca4e60",
+   "set": {
+    "target_text": "rhan gyntaf",
+    "target1_audio_id": "4c26493d-49e7-455b-a24d-bb1f891d50df",
+    "target2_audio_id": "7a5e7dda-7af4-4aea-8efc-dcbc8b4b3f5a",
+    "presentation_audio_id": "a1676049-4cf1-44db-aff1-9cfd9887a535"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 277,
+   "set": {
+    "target_text": "beth sy’n digwydd ar ôl rhan gyntaf y sioe?",
+    "target2_audio_id": "27e4fa49-8b10-4e8a-b9ce-e22aef228367"
+   }
+  }
+ ],
+ "undo_file": "2026-10-23T13-37-25-773Z-4e804b78-8ccf-46e2-99c8-1a45a93733c8.json"
+}
