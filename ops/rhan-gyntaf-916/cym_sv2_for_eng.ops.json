@@ -1,0 +1,838 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 295,
+   "set": {
+    "target_text": "beth sy’n digwydd ar ôl rhan gynta’r sioe?"
+   },
+   "expect": {
+    "target_text": "beth sy’n digwydd ar ôl rhan gyntaf y sioe?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0295L02B06",
+   "set": {
+    "target_text": "y rhan gyntaf",
+    "decomposition": [
+     {
+      "known": "the",
+      "legoId": null,
+      "target": "y",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " rhan",
+      "isGhost": true
+     },
+     {
+      "known": "first",
+      "legoId": "S0295L02",
+      "target": " gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan gyntaf",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "rhan",
+      "isGhost": true
+     },
+     {
+      "known": "first",
+      "legoId": "S0295L02",
+      "target": " gyntaf",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0295L03B01",
+   "set": {
+    "target_text": "beth sy’n digwydd ar ôl rhan gynta’r sioe?",
+    "decomposition": [
+     {
+      "known": "what is",
+      "legoId": "S0295L01",
+      "target": "beth sy’n",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " digwydd",
+      "isGhost": true
+     },
+     {
+      "known": "on",
+      "legoId": "S0291L03",
+      "target": " ar",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ôl",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " rhan",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gynta’",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "r",
+      "isGhost": true
+     },
+     {
+      "known": "show",
+      "legoId": "S0295L03",
+      "target": " sioe",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "beth sy’n digwydd ar ôl rhan gyntaf y sioe?",
+    "decomposition": [
+     {
+      "known": "what is",
+      "legoId": "S0295L01",
+      "target": "beth sy’n",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " digwydd",
+      "isGhost": true
+     },
+     {
+      "known": "on",
+      "legoId": "S0291L03",
+      "target": " ar",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ôl",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " rhan",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gyntaf",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "show",
+      "legoId": "S0295L03",
+      "target": " sioe",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0295L03B07",
+   "set": {
+    "target_text": "rhan gynta’r sioe",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "rhan",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gynta’",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "r",
+      "isGhost": true
+     },
+     {
+      "known": "show",
+      "legoId": "S0295L03",
+      "target": " sioe",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan gyntaf y sioe",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "rhan",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gyntaf",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "show",
+      "legoId": "S0295L03",
+      "target": " sioe",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1494,
+   "set": {
+    "target_text": "beth sy’n digwydd ar ôl rhan gynta’r sioe?"
+   },
+   "expect": {
+    "target_text": "beth sy’n digwydd ar ôl rhan gyntaf y sioe?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1494L03",
+   "set": {
+    "target_text": "y rhan gyntaf",
+    "components": [
+     {
+      "known": "the first part",
+      "target": "y rhan gyntaf"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan gyntaf",
+    "components": [
+     {
+      "known": "the first part",
+      "target": "rhan gyntaf"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1494L03B04",
+   "set": {
+    "target_text": "ma fe’n moyn gweld rhan gynta’r ail hanner",
+    "decomposition": [
+     {
+      "known": "he wants",
+      "legoId": "S0059L01",
+      "target": "ma fe’n moyn",
+      "isGhost": false
+     },
+     {
+      "known": "to see",
+      "legoId": "S1107L02",
+      "target": " gweld",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": " rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "the second",
+      "legoId": "S0283L06",
+      "target": "r ail",
+      "isGhost": false
+     },
+     {
+      "known": "half",
+      "legoId": "S0283L07",
+      "target": " hanner",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ma fe’n moyn gweld rhan gyntaf yr ail hanner",
+    "decomposition": [
+     {
+      "known": "he wants",
+      "legoId": "S0059L01",
+      "target": "ma fe’n moyn",
+      "isGhost": false
+     },
+     {
+      "known": "to see",
+      "legoId": "S1107L02",
+      "target": " gweld",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "the second",
+      "legoId": "S0283L06",
+      "target": " yr ail",
+      "isGhost": false
+     },
+     {
+      "known": "half",
+      "legoId": "S0283L07",
+      "target": " hanner",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1494L03B02",
+   "set": {
+    "target_text": "rhan gynta’r ail hanner",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": "rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "the second",
+      "legoId": "S0283L06",
+      "target": "r ail",
+      "isGhost": false
+     },
+     {
+      "known": "half",
+      "legoId": "S0283L07",
+      "target": " hanner",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan gyntaf yr ail hanner",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": "rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "the second",
+      "legoId": "S0283L06",
+      "target": " yr ail",
+      "isGhost": false
+     },
+     {
+      "known": "half",
+      "legoId": "S0283L07",
+      "target": " hanner",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1494L03U03",
+   "set": {
+    "target_text": "do’n nhw ddim yn moyn gweld rhan gynta’r ail hanner",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0190L03",
+      "target": "do’n nhw ddim yn moyn",
+      "isGhost": false
+     },
+     {
+      "known": "to see",
+      "legoId": "S1107L02",
+      "target": " gweld",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": " rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "the second",
+      "legoId": "S0283L06",
+      "target": "r ail",
+      "isGhost": false
+     },
+     {
+      "known": "half",
+      "legoId": "S0283L07",
+      "target": " hanner",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "do’n nhw ddim yn moyn gweld rhan gyntaf yr ail hanner",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0190L03",
+      "target": "do’n nhw ddim yn moyn",
+      "isGhost": false
+     },
+     {
+      "known": "to see",
+      "legoId": "S1107L02",
+      "target": " gweld",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "the second",
+      "legoId": "S0283L06",
+      "target": " yr ail",
+      "isGhost": false
+     },
+     {
+      "known": "half",
+      "legoId": "S0283L07",
+      "target": " hanner",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1494L03U04",
+   "set": {
+    "target_text": "byddan nhw’n gallu gweld rhan gynta’r ail hanner",
+    "decomposition": [
+     {
+      "known": "they will be able to",
+      "legoId": "S1445L01",
+      "target": "byddan nhw’n gallu",
+      "isGhost": false
+     },
+     {
+      "known": "to see",
+      "legoId": "S1107L02",
+      "target": " gweld",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": " rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "the second",
+      "legoId": "S0283L06",
+      "target": "r ail",
+      "isGhost": false
+     },
+     {
+      "known": "half",
+      "legoId": "S0283L07",
+      "target": " hanner",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "byddan nhw’n gallu gweld rhan gyntaf yr ail hanner",
+    "decomposition": [
+     {
+      "known": "they will be able to",
+      "legoId": "S1445L01",
+      "target": "byddan nhw’n gallu",
+      "isGhost": false
+     },
+     {
+      "known": "to see",
+      "legoId": "S1107L02",
+      "target": " gweld",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "the second",
+      "legoId": "S0283L06",
+      "target": " yr ail",
+      "isGhost": false
+     },
+     {
+      "known": "half",
+      "legoId": "S0283L07",
+      "target": " hanner",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1515L02B02",
+   "set": {
+    "target_text": "rhan gynta’r flwyddyn newydd",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": "rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "the new year",
+      "legoId": "S1515L02",
+      "target": "r flwyddyn newydd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan gyntaf y flwyddyn newydd",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": "rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "the new year",
+      "legoId": "S1515L02",
+      "target": " y flwyddyn newydd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1515L02U02",
+   "set": {
+    "target_text": "rhan gynta’r flwyddyn newydd yw’r mwya diddorol",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": "rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "the new year",
+      "legoId": "S1515L02",
+      "target": "r flwyddyn newydd",
+      "isGhost": false
+     },
+     {
+      "known": "is the most",
+      "legoId": "S1492L04",
+      "target": " yw’r mwya",
+      "isGhost": false
+     },
+     {
+      "known": "interesting",
+      "legoId": "S1051L03",
+      "target": " diddorol",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhan gyntaf y flwyddyn newydd yw’r mwya diddorol",
+    "decomposition": [
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": "rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "the new year",
+      "legoId": "S1515L02",
+      "target": " y flwyddyn newydd",
+      "isGhost": false
+     },
+     {
+      "known": "is the most",
+      "legoId": "S1492L04",
+      "target": " yw’r mwya",
+      "isGhost": false
+     },
+     {
+      "known": "interesting",
+      "legoId": "S1051L03",
+      "target": " diddorol",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1515L02U05",
+   "set": {
+    "target_text": "fydd rhan gynta’r flwyddyn newydd yn hawdd?",
+    "decomposition": [
+     {
+      "known": "will",
+      "legoId": "S1493L02",
+      "target": "fydd",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": " rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "the new year",
+      "legoId": "S1515L02",
+      "target": "r flwyddyn newydd",
+      "isGhost": false
+     },
+     {
+      "known": "easy",
+      "legoId": "S1064L04",
+      "target": " yn hawdd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fydd rhan gyntaf y flwyddyn newydd yn hawdd?",
+    "decomposition": [
+     {
+      "known": "will",
+      "legoId": "S1493L02",
+      "target": "fydd",
+      "isGhost": false
+     },
+     {
+      "known": "the first part",
+      "legoId": "S1494L03",
+      "target": " rhan gyntaf",
+      "isGhost": false
+     },
+     {
+      "known": "the new year",
+      "legoId": "S1515L02",
+      "target": " y flwyddyn newydd",
+      "isGhost": false
+     },
+     {
+      "known": "easy",
+      "legoId": "S1064L04",
+      "target": " yn hawdd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "seed",
+   "id": "seed:295",
+   "old": "beth sy’n digwydd ar ôl rhan gyntaf y sioe?",
+   "new": "beth sy’n digwydd ar ôl rhan gynta’r sioe?",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "phrase:S0295L02B06",
+   "old": "rhan gyntaf",
+   "new": "y rhan gyntaf",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "phrase:S0295L03B01",
+   "old": "beth sy’n digwydd ar ôl rhan gyntaf y sioe?",
+   "new": "beth sy’n digwydd ar ôl rhan gynta’r sioe?",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "phrase:S0295L03B07",
+   "old": "rhan gyntaf y sioe",
+   "new": "rhan gynta’r sioe",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "kind": "seed",
+   "id": "seed:1494",
+   "old": "beth sy’n digwydd ar ôl rhan gyntaf y sioe?",
+   "new": "beth sy’n digwydd ar ôl rhan gynta’r sioe?",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "kind": "lego",
+   "id": "lego:S1494L03",
+   "old": "rhan gyntaf",
+   "new": "y rhan gyntaf",
+   "recorded": [
+    "target1_audio_id",
+    "target2_audio_id"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "phrase:S1494L03B04",
+   "old": "ma fe’n moyn gweld rhan gyntaf yr ail hanner",
+   "new": "ma fe’n moyn gweld rhan gynta’r ail hanner",
+   "recorded": []
+  },
+  {
+   "kind": "phrase",
+   "id": "phrase:S1494L03B02",
+   "old": "rhan gyntaf yr ail hanner",
+   "new": "rhan gynta’r ail hanner",
+   "recorded": []
+  },
+  {
+   "kind": "phrase",
+   "id": "phrase:S1494L03U03",
+   "old": "do’n nhw ddim yn moyn gweld rhan gyntaf yr ail hanner",
+   "new": "do’n nhw ddim yn moyn gweld rhan gynta’r ail hanner",
+   "recorded": []
+  },
+  {
+   "kind": "phrase",
+   "id": "phrase:S1494L03U04",
+   "old": "byddan nhw’n gallu gweld rhan gyntaf yr ail hanner",
+   "new": "byddan nhw’n gallu gweld rhan gynta’r ail hanner",
+   "recorded": []
+  },
+  {
+   "kind": "phrase",
+   "id": "phrase:S1515L02B02",
+   "old": "rhan gyntaf y flwyddyn newydd",
+   "new": "rhan gynta’r flwyddyn newydd",
+   "recorded": []
+  },
+  {
+   "kind": "phrase",
+   "id": "phrase:S1515L02U02",
+   "old": "rhan gyntaf y flwyddyn newydd yw’r mwya diddorol",
+   "new": "rhan gynta’r flwyddyn newydd yw’r mwya diddorol",
+   "recorded": []
+  },
+  {
+   "kind": "phrase",
+   "id": "phrase:S1515L02U05",
+   "old": "fydd rhan gyntaf y flwyddyn newydd yn hawdd?",
+   "new": "fydd rhan gynta’r flwyddyn newydd yn hawdd?",
+   "recorded": []
+  }
+ ],
+ "unlisted": []
+}
