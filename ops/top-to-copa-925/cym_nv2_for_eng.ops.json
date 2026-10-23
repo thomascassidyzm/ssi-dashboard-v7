@@ -1,0 +1,1526 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 1358,
+   "set": {
+    "target_text": "ddudodd dy ffrind nad oedd hi’n medru cyrraedd y copa"
+   },
+   "expect": {
+    "target_text": "ddudodd dy ffrind nad oedd hi’n medru cyrraedd y top"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1358L02",
+   "set": {
+    "target_text": "cyrraedd y copa",
+    "components": [
+     {
+      "known": "reach",
+      "target": "cyrraedd"
+     },
+     {
+      "known": "the top",
+      "target": "y copa"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "cyrraedd y top",
+    "components": [
+     {
+      "known": "reach",
+      "target": "cyrraedd"
+     },
+     {
+      "known": "the top",
+      "target": "y top"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02B01",
+   "set": {
+    "target_text": "cyrraedd y copa heno",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": "cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "cyrraedd y top heno",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": "cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02B03",
+   "set": {
+    "target_text": "o’n i isio cyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "o’n i isio cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02B04",
+   "set": {
+    "target_text": "dan ni’n trio cyrraedd y copa cyn y penwythnos",
+    "decomposition": [
+     {
+      "known": "we’re trying",
+      "legoId": "S1102L01",
+      "target": "dan ni’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "before the weekend",
+      "legoId": "S1237L02",
+      "target": " cyn y penwythnos",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dan ni’n trio cyrraedd y top cyn y penwythnos",
+    "decomposition": [
+     {
+      "known": "we’re trying",
+      "legoId": "S1102L01",
+      "target": "dan ni’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "before the weekend",
+      "legoId": "S1237L02",
+      "target": " cyn y penwythnos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02B02",
+   "set": {
+    "target_text": "cyrraedd y copa mewn pryd",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": "cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "in time",
+      "legoId": "S0173L02",
+      "target": " mewn pryd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "cyrraedd y top mewn pryd",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": "cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "in time",
+      "legoId": "S0173L02",
+      "target": " mewn pryd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02C02",
+   "set": {
+    "target_text": "y copa",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "y top",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U02",
+   "set": {
+    "target_text": "doedd o ddim yn medru cyrraedd y copa hyd yn oed tasai fo isio",
+    "decomposition": [
+     {
+      "known": "he couldn’t",
+      "legoId": "S1311L01",
+      "target": "doedd o ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "even if he wanted to",
+      "legoId": "S1352L01",
+      "target": " hyd yn oed tasai fo isio",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "doedd o ddim yn medru cyrraedd y top hyd yn oed tasai fo isio",
+    "decomposition": [
+     {
+      "known": "he couldn’t",
+      "legoId": "S1311L01",
+      "target": "doedd o ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "even if he wanted to",
+      "legoId": "S1352L01",
+      "target": " hyd yn oed tasai fo isio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U04",
+   "set": {
+    "target_text": "mae’n anarferol cyrraedd y copa mewn llai nag awr",
+    "decomposition": [
+     {
+      "known": "it’s unusual",
+      "legoId": "S1121L01",
+      "target": "mae’n anarferol",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "in less than an hour",
+      "legoId": "S1256L03",
+      "target": " mewn llai nag awr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae’n anarferol cyrraedd y top mewn llai nag awr",
+    "decomposition": [
+     {
+      "known": "it’s unusual",
+      "legoId": "S1121L01",
+      "target": "mae’n anarferol",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "in less than an hour",
+      "legoId": "S1256L03",
+      "target": " mewn llai nag awr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U07",
+   "set": {
+    "target_text": "dw i ddim isio cyrraedd y copa ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S0031L03",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i ddim isio cyrraedd y top ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S0031L03",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U05",
+   "set": {
+    "target_text": "mae o’n trio cyrraedd y copa, wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "he’s trying",
+      "legoId": "S0062L01",
+      "target": "mae o’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": ",",
+      "isGhost": true
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae o’n trio cyrraedd y top, wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "he’s trying",
+      "legoId": "S0062L01",
+      "target": "mae o’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": ",",
+      "isGhost": true
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U03",
+   "set": {
+    "target_text": "ddudodd dy ffrind nad oedd o’n medru cyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "your friend said",
+      "legoId": "S1358L01",
+      "target": "ddudodd dy ffrind",
+      "isGhost": false
+     },
+     {
+      "known": "that he wasn’t able to",
+      "legoId": "S1315L02",
+      "target": " nad oedd o’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddudodd dy ffrind nad oedd o’n medru cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "your friend said",
+      "legoId": "S1358L01",
+      "target": "ddudodd dy ffrind",
+      "isGhost": false
+     },
+     {
+      "known": "that he wasn’t able to",
+      "legoId": "S1315L02",
+      "target": " nad oedd o’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U01",
+   "set": {
+    "target_text": "fydda i ddim yn medru cyrraedd y copa ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I won’t be able to",
+      "legoId": "S1157L01",
+      "target": "fydda i ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fydda i ddim yn medru cyrraedd y top ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I won’t be able to",
+      "legoId": "S1157L01",
+      "target": "fydda i ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U06",
+   "set": {
+    "target_text": "ia, o’n i isio cyrraedd y copa pnawn ’ma",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia,",
+      "isGhost": true
+     },
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": " o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "this afternoon",
+      "legoId": "S1035L02",
+      "target": " pnawn ’ma",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ia, o’n i isio cyrraedd y top pnawn ’ma",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia,",
+      "isGhost": true
+     },
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": " o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "this afternoon",
+      "legoId": "S1035L02",
+      "target": " pnawn ’ma",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U08",
+   "set": {
+    "target_text": "mae’n bwysicach cyrraedd y copa mewn pryd",
+    "decomposition": [
+     {
+      "known": "it’s more important",
+      "legoId": "S1137L01",
+      "target": "mae’n bwysicach",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "in time",
+      "legoId": "S0173L02",
+      "target": " mewn pryd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae’n bwysicach cyrraedd y top mewn pryd",
+    "decomposition": [
+     {
+      "known": "it’s more important",
+      "legoId": "S1137L01",
+      "target": "mae’n bwysicach",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "in time",
+      "legoId": "S0173L02",
+      "target": " mewn pryd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1466L03B04",
+   "set": {
+    "target_text": "es i dros y copa",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "es",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "es i dros y top",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "es",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1466L03U07",
+   "set": {
+    "target_text": "ia dw i isio cerdded dros y copa",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to walk",
+      "legoId": "S1323L02",
+      "target": " cerdded",
+      "isGhost": false
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ia dw i isio cerdded dros y top",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to walk",
+      "legoId": "S1323L02",
+      "target": " cerdded",
+      "isGhost": false
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1466L03U03",
+   "set": {
+    "target_text": "doeddan nhw ddim isio dilyn ni dros y copa",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0184L03",
+      "target": "doeddan nhw ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to follow us",
+      "legoId": "S1381L03",
+      "target": " dilyn ni",
+      "isGhost": false
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "doeddan nhw ddim isio dilyn ni dros y top",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0184L03",
+      "target": "doeddan nhw ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to follow us",
+      "legoId": "S1381L03",
+      "target": " dilyn ni",
+      "isGhost": false
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1466L03U05",
+   "set": {
+    "target_text": "est ti dros y copa?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "est",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti",
+      "isGhost": true
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "est ti dros y top?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "est",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti",
+      "isGhost": true
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1511L04B01",
+   "set": {
+    "target_text": "i gyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": "i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "i gyrraedd y top",
+    "decomposition": [
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": "i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1511L04U05",
+   "set": {
+    "target_text": "o’n i’n ddigon lwcus i gyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "I was lucky enough",
+      "legoId": "S1379L01",
+      "target": "o’n i’n ddigon lwcus",
+      "isGhost": false
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "o’n i’n ddigon lwcus i gyrraedd y top",
+    "decomposition": [
+     {
+      "known": "I was lucky enough",
+      "legoId": "S1379L01",
+      "target": "o’n i’n ddigon lwcus",
+      "isGhost": false
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1511L04U06",
+   "set": {
+    "target_text": "i gyrraedd y copa oedd rhaid i ni adael neithiwr",
+    "decomposition": [
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": "i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     },
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": " oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "i gyrraedd y top oedd rhaid i ni adael neithiwr",
+    "decomposition": [
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": "i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     },
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": " oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1511L04U01",
+   "set": {
+    "target_text": "cymerodd rai oriau i gyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "took",
+      "legoId": "S0290L02",
+      "target": "cymerodd",
+      "isGhost": false
+     },
+     {
+      "known": "several hours",
+      "legoId": "S0290L03",
+      "target": " rai oriau",
+      "isGhost": false
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "cymerodd rai oriau i gyrraedd y top",
+    "decomposition": [
+     {
+      "known": "took",
+      "legoId": "S0290L02",
+      "target": "cymerodd",
+      "isGhost": false
+     },
+     {
+      "known": "several hours",
+      "legoId": "S0290L03",
+      "target": " rai oriau",
+      "isGhost": false
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1511L04U03",
+   "set": {
+    "target_text": "doedd ’na ddim llawer o amser i gyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "there wasn’t",
+      "legoId": "S1279L02",
+      "target": "doedd ’na ddim",
+      "isGhost": false
+     },
+     {
+      "known": "a lot",
+      "legoId": "S0099L01",
+      "target": " llawer",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " amser",
+      "isGhost": true
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "doedd ’na ddim llawer o amser i gyrraedd y top",
+    "decomposition": [
+     {
+      "known": "there wasn’t",
+      "legoId": "S1279L02",
+      "target": "doedd ’na ddim",
+      "isGhost": false
+     },
+     {
+      "known": "a lot",
+      "legoId": "S0099L01",
+      "target": " llawer",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " amser",
+      "isGhost": true
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1564L02U03",
+   "set": {
+    "target_text": "fedrith hi ddim cyrraedd y copa heb dy help di ond mi fedrith o",
+    "decomposition": []
+   },
+   "expect": {
+    "target_text": "fedrith hi ddim cyrraedd y top heb dy help di ond mi fedrith o",
+    "decomposition": null
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "seed",
+   "id": 1358,
+   "old": "ddudodd dy ffrind nad oedd hi’n medru cyrraedd y top",
+   "new": "ddudodd dy ffrind nad oedd hi’n medru cyrraedd y copa",
+   "takes": 2
+  },
+  {
+   "kind": "lego",
+   "id": "S1358L02",
+   "old": "cyrraedd y top",
+   "new": "cyrraedd y copa",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02B01",
+   "old": "cyrraedd y top heno",
+   "new": "cyrraedd y copa heno",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02B03",
+   "old": "o’n i isio cyrraedd y top",
+   "new": "o’n i isio cyrraedd y copa",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02B04",
+   "old": "dan ni’n trio cyrraedd y top cyn y penwythnos",
+   "new": "dan ni’n trio cyrraedd y copa cyn y penwythnos",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02B02",
+   "old": "cyrraedd y top mewn pryd",
+   "new": "cyrraedd y copa mewn pryd",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02C02",
+   "old": "y top",
+   "new": "y copa",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02U02",
+   "old": "doedd o ddim yn medru cyrraedd y top hyd yn oed tasai fo isio",
+   "new": "doedd o ddim yn medru cyrraedd y copa hyd yn oed tasai fo isio",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02U04",
+   "old": "mae’n anarferol cyrraedd y top mewn llai nag awr",
+   "new": "mae’n anarferol cyrraedd y copa mewn llai nag awr",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02U07",
+   "old": "dw i ddim isio cyrraedd y top ar fy mhen fy hun",
+   "new": "dw i ddim isio cyrraedd y copa ar fy mhen fy hun",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02U05",
+   "old": "mae o’n trio cyrraedd y top, wyt ti’n meddwl?",
+   "new": "mae o’n trio cyrraedd y copa, wyt ti’n meddwl?",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02U03",
+   "old": "ddudodd dy ffrind nad oedd o’n medru cyrraedd y top",
+   "new": "ddudodd dy ffrind nad oedd o’n medru cyrraedd y copa",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02U01",
+   "old": "fydda i ddim yn medru cyrraedd y top ar fy mhen fy hun",
+   "new": "fydda i ddim yn medru cyrraedd y copa ar fy mhen fy hun",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02U06",
+   "old": "ia, o’n i isio cyrraedd y top pnawn ’ma",
+   "new": "ia, o’n i isio cyrraedd y copa pnawn ’ma",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1358L02U08",
+   "old": "mae’n bwysicach cyrraedd y top mewn pryd",
+   "new": "mae’n bwysicach cyrraedd y copa mewn pryd",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1466L03B04",
+   "old": "es i dros y top",
+   "new": "es i dros y copa",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1466L03U07",
+   "old": "ia dw i isio cerdded dros y top",
+   "new": "ia dw i isio cerdded dros y copa",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1466L03U03",
+   "old": "doeddan nhw ddim isio dilyn ni dros y top",
+   "new": "doeddan nhw ddim isio dilyn ni dros y copa",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1466L03U05",
+   "old": "est ti dros y top?",
+   "new": "est ti dros y copa?",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1511L04B01",
+   "old": "i gyrraedd y top",
+   "new": "i gyrraedd y copa",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1511L04U05",
+   "old": "o’n i’n ddigon lwcus i gyrraedd y top",
+   "new": "o’n i’n ddigon lwcus i gyrraedd y copa",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1511L04U06",
+   "old": "i gyrraedd y top oedd rhaid i ni adael neithiwr",
+   "new": "i gyrraedd y copa oedd rhaid i ni adael neithiwr",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1511L04U01",
+   "old": "cymerodd rai oriau i gyrraedd y top",
+   "new": "cymerodd rai oriau i gyrraedd y copa",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1511L04U03",
+   "old": "doedd ’na ddim llawer o amser i gyrraedd y top",
+   "new": "doedd ’na ddim llawer o amser i gyrraedd y copa",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1564L02U03",
+   "old": "fedrith hi ddim cyrraedd y top heb dy help di ond mi fedrith o",
+   "new": "fedrith hi ddim cyrraedd y copa heb dy help di ond mi fedrith o",
+   "takes": 0
+  }
+ ],
+ "leftAlone": []
+}

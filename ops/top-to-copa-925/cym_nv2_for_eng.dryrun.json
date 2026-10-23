@@ -1,0 +1,2664 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "seed_number": 1358
+   },
+   "before": {
+    "id": "ca52cd3c-b701-416a-ab21-ec89fabdba9b",
+    "seed_number": 1358,
+    "target_text": "ddudodd dy ffrind nad oedd hi’n medru cyrraedd y top",
+    "known_text": "your friend said that she couldn't reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": "7f60e4b0-1845-4146-a8b3-7c61ff0f07f1",
+    "target2_audio_id": "b52324b8-3b9f-486c-b84b-e77e402c0564"
+   },
+   "after": {
+    "id": "ca52cd3c-b701-416a-ab21-ec89fabdba9b",
+    "seed_number": 1358,
+    "target_text": "ddudodd dy ffrind nad oedd hi’n medru cyrraedd y copa",
+    "known_text": "your friend said that she couldn't reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1358L02"
+   },
+   "before": {
+    "id": "9fa5738b-f07b-4764-b184-b92d83bbbfd1",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": "S1358L02",
+    "target_text": "cyrraedd y top",
+    "components": [
+     {
+      "known": "reach",
+      "target": "cyrraedd"
+     },
+     {
+      "known": "the top",
+      "target": "y top"
+     }
+    ],
+    "known_text": "reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": "6a28e0a3-86bf-4853-9068-36cf14c30e22",
+    "target2_audio_id": "9b635376-60a9-4ead-a183-cd3deb54921a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "9fa5738b-f07b-4764-b184-b92d83bbbfd1",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": "S1358L02",
+    "target_text": "cyrraedd y copa",
+    "components": [
+     {
+      "known": "reach",
+      "target": "cyrraedd"
+     },
+     {
+      "known": "the top",
+      "target": "y copa"
+     }
+    ],
+    "known_text": "reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02B01",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cyrraedd y top heno",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": "cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "reach the top tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "77cb7446-3677-4845-b1be-30729ce3a37e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02B01",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cyrraedd y copa heno",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": "cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "reach the top tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02B03",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "o’n i isio cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I wanted to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "65c2e5bc-b083-42e5-8612-f0301bcd0c1e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02B03",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "o’n i isio cyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I wanted to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02B04",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dan ni’n trio cyrraedd y top cyn y penwythnos",
+    "decomposition": [
+     {
+      "known": "we’re trying",
+      "legoId": "S1102L01",
+      "target": "dan ni’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "before the weekend",
+      "legoId": "S1237L02",
+      "target": " cyn y penwythnos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we’re trying to reach the top before the weekend",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "93f55f30-edcd-42bd-a62e-91cb3a73c617",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02B04",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dan ni’n trio cyrraedd y copa cyn y penwythnos",
+    "decomposition": [
+     {
+      "known": "we’re trying",
+      "legoId": "S1102L01",
+      "target": "dan ni’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "before the weekend",
+      "legoId": "S1237L02",
+      "target": " cyn y penwythnos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we’re trying to reach the top before the weekend",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02B02",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cyrraedd y top mewn pryd",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": "cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "in time",
+      "legoId": "S0173L02",
+      "target": " mewn pryd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "reach the top in time",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "883eca53-77d3-4450-a4f4-bc037222cd70",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02B02",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "cyrraedd y copa mewn pryd",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": "cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "in time",
+      "legoId": "S0173L02",
+      "target": " mewn pryd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "reach the top in time",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02C02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02C02",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "y top",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ],
+    "known_text": "the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02C02",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "y copa",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ],
+    "known_text": "the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02U02",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "doedd o ddim yn medru cyrraedd y top hyd yn oed tasai fo isio",
+    "decomposition": [
+     {
+      "known": "he couldn’t",
+      "legoId": "S1311L01",
+      "target": "doedd o ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "even if he wanted to",
+      "legoId": "S1352L01",
+      "target": " hyd yn oed tasai fo isio",
+      "isGhost": false
+     }
+    ],
+    "known_text": "he couldn’t reach the top even if he wanted to",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02U02",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "doedd o ddim yn medru cyrraedd y copa hyd yn oed tasai fo isio",
+    "decomposition": [
+     {
+      "known": "he couldn’t",
+      "legoId": "S1311L01",
+      "target": "doedd o ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "even if he wanted to",
+      "legoId": "S1352L01",
+      "target": " hyd yn oed tasai fo isio",
+      "isGhost": false
+     }
+    ],
+    "known_text": "he couldn’t reach the top even if he wanted to",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02U04",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae’n anarferol cyrraedd y top mewn llai nag awr",
+    "decomposition": [
+     {
+      "known": "it’s unusual",
+      "legoId": "S1121L01",
+      "target": "mae’n anarferol",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "in less than an hour",
+      "legoId": "S1256L03",
+      "target": " mewn llai nag awr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s unusual to reach the top in less than an hour",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02U04",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae’n anarferol cyrraedd y copa mewn llai nag awr",
+    "decomposition": [
+     {
+      "known": "it’s unusual",
+      "legoId": "S1121L01",
+      "target": "mae’n anarferol",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "in less than an hour",
+      "legoId": "S1256L03",
+      "target": " mewn llai nag awr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s unusual to reach the top in less than an hour",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02U07"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02U07",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i ddim isio cyrraedd y top ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S0031L03",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want to reach the top on my own",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02U07",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i ddim isio cyrraedd y copa ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S0031L03",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want to reach the top on my own",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02U05",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae o’n trio cyrraedd y top, wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "he’s trying",
+      "legoId": "S0062L01",
+      "target": "mae o’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": ",",
+      "isGhost": true
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "he’s trying to reach the top, do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "931ba9d1-31a7-4e2b-bc61-ecc151c3e369",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02U05",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae o’n trio cyrraedd y copa, wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "he’s trying",
+      "legoId": "S0062L01",
+      "target": "mae o’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": ",",
+      "isGhost": true
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "he’s trying to reach the top, do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02U03",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ddudodd dy ffrind nad oedd o’n medru cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "your friend said",
+      "legoId": "S1358L01",
+      "target": "ddudodd dy ffrind",
+      "isGhost": false
+     },
+     {
+      "known": "that he wasn’t able to",
+      "legoId": "S1315L02",
+      "target": " nad oedd o’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ],
+    "known_text": "your friend said that he wasn’t able to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02U03",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ddudodd dy ffrind nad oedd o’n medru cyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "your friend said",
+      "legoId": "S1358L01",
+      "target": "ddudodd dy ffrind",
+      "isGhost": false
+     },
+     {
+      "known": "that he wasn’t able to",
+      "legoId": "S1315L02",
+      "target": " nad oedd o’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     }
+    ],
+    "known_text": "your friend said that he wasn’t able to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02U01",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "fydda i ddim yn medru cyrraedd y top ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I won’t be able to",
+      "legoId": "S1157L01",
+      "target": "fydda i ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I won’t be able to reach the top on my own",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02U01",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "fydda i ddim yn medru cyrraedd y copa ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I won’t be able to",
+      "legoId": "S1157L01",
+      "target": "fydda i ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I won’t be able to reach the top on my own",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02U06",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ia, o’n i isio cyrraedd y top pnawn ’ma",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia,",
+      "isGhost": true
+     },
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": " o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "this afternoon",
+      "legoId": "S1035L02",
+      "target": " pnawn ’ma",
+      "isGhost": false
+     }
+    ],
+    "known_text": "yes, I wanted to reach the top this afternoon",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "fb4afe73-93a6-4fab-bcd7-dffe5ccb8c76",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02U06",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ia, o’n i isio cyrraedd y copa pnawn ’ma",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia,",
+      "isGhost": true
+     },
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": " o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "this afternoon",
+      "legoId": "S1035L02",
+      "target": " pnawn ’ma",
+      "isGhost": false
+     }
+    ],
+    "known_text": "yes, I wanted to reach the top this afternoon",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1358L02U08"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1358L02U08",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae’n bwysicach cyrraedd y top mewn pryd",
+    "decomposition": [
+     {
+      "known": "it’s more important",
+      "legoId": "S1137L01",
+      "target": "mae’n bwysicach",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "in time",
+      "legoId": "S0173L02",
+      "target": " mewn pryd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s more important to reach the top in time",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "1aad8a07-469e-4d13-985d-2629a54de2a2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1358L02U08",
+    "seed_number": 1358,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae’n bwysicach cyrraedd y copa mewn pryd",
+    "decomposition": [
+     {
+      "known": "it’s more important",
+      "legoId": "S1137L01",
+      "target": "mae’n bwysicach",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "in time",
+      "legoId": "S0173L02",
+      "target": " mewn pryd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s more important to reach the top in time",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1466L03B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1466L03B04",
+    "seed_number": 1466,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "es i dros y top",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "es",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ],
+    "known_text": "I went over the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "5135cc92-4bbc-432f-bda0-0b01ecd8dfce",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1466L03B04",
+    "seed_number": 1466,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "es i dros y copa",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "es",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ],
+    "known_text": "I went over the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1466L03U07"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1466L03U07",
+    "seed_number": 1466,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ia dw i isio cerdded dros y top",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to walk",
+      "legoId": "S1323L02",
+      "target": " cerdded",
+      "isGhost": false
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ],
+    "known_text": "yes I want to walk over the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1466L03U07",
+    "seed_number": 1466,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ia dw i isio cerdded dros y copa",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to walk",
+      "legoId": "S1323L02",
+      "target": " cerdded",
+      "isGhost": false
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ],
+    "known_text": "yes I want to walk over the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1466L03U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1466L03U03",
+    "seed_number": 1466,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "doeddan nhw ddim isio dilyn ni dros y top",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0184L03",
+      "target": "doeddan nhw ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to follow us",
+      "legoId": "S1381L03",
+      "target": " dilyn ni",
+      "isGhost": false
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ],
+    "known_text": "they didn’t want to follow us over the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1466L03U03",
+    "seed_number": 1466,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "doeddan nhw ddim isio dilyn ni dros y copa",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0184L03",
+      "target": "doeddan nhw ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to follow us",
+      "legoId": "S1381L03",
+      "target": " dilyn ni",
+      "isGhost": false
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ],
+    "known_text": "they didn’t want to follow us over the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1466L03U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1466L03U05",
+    "seed_number": 1466,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "est ti dros y top?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "est",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti",
+      "isGhost": true
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ],
+    "known_text": "did you go over the top?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "b6b627e8-7675-4c9b-8291-8c1c65a577bb",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1466L03U05",
+    "seed_number": 1466,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "est ti dros y copa?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "est",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti",
+      "isGhost": true
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ],
+    "known_text": "did you go over the top?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1511L04B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1511L04B01",
+    "seed_number": 1511,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "i gyrraedd y top",
+    "decomposition": [
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": "i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ],
+    "known_text": "to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "c97772b3-0090-4e3e-bb48-5773798e5d08",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1511L04B01",
+    "seed_number": 1511,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "i gyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": "i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ],
+    "known_text": "to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1511L04U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1511L04U05",
+    "seed_number": 1511,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "o’n i’n ddigon lwcus i gyrraedd y top",
+    "decomposition": [
+     {
+      "known": "I was lucky enough",
+      "legoId": "S1379L01",
+      "target": "o’n i’n ddigon lwcus",
+      "isGhost": false
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ],
+    "known_text": "I was lucky enough to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "0781a4db-fc97-4f93-9f66-06d3ef8a43d0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1511L04U05",
+    "seed_number": 1511,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "o’n i’n ddigon lwcus i gyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "I was lucky enough",
+      "legoId": "S1379L01",
+      "target": "o’n i’n ddigon lwcus",
+      "isGhost": false
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ],
+    "known_text": "I was lucky enough to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1511L04U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1511L04U06",
+    "seed_number": 1511,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "i gyrraedd y top oedd rhaid i ni adael neithiwr",
+    "decomposition": [
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": "i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     },
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": " oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to reach the top we had to leave last night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1511L04U06",
+    "seed_number": 1511,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "i gyrraedd y copa oedd rhaid i ni adael neithiwr",
+    "decomposition": [
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": "i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     },
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": " oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to reach the top we had to leave last night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1511L04U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1511L04U01",
+    "seed_number": 1511,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "cymerodd rai oriau i gyrraedd y top",
+    "decomposition": [
+     {
+      "known": "took",
+      "legoId": "S0290L02",
+      "target": "cymerodd",
+      "isGhost": false
+     },
+     {
+      "known": "several hours",
+      "legoId": "S0290L03",
+      "target": " rai oriau",
+      "isGhost": false
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ],
+    "known_text": "it took several hours to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "dde1cf9e-8c69-45a5-b44b-3ed4529d8820",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1511L04U01",
+    "seed_number": 1511,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "cymerodd rai oriau i gyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "took",
+      "legoId": "S0290L02",
+      "target": "cymerodd",
+      "isGhost": false
+     },
+     {
+      "known": "several hours",
+      "legoId": "S0290L03",
+      "target": " rai oriau",
+      "isGhost": false
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ],
+    "known_text": "it took several hours to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1511L04U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1511L04U03",
+    "seed_number": 1511,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "doedd ’na ddim llawer o amser i gyrraedd y top",
+    "decomposition": [
+     {
+      "known": "there wasn’t",
+      "legoId": "S1279L02",
+      "target": "doedd ’na ddim",
+      "isGhost": false
+     },
+     {
+      "known": "a lot",
+      "legoId": "S0099L01",
+      "target": " llawer",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " amser",
+      "isGhost": true
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ],
+    "known_text": "there wasn’t much time to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "4b55d1e8-354a-41bc-9c13-ef5d5cd32075",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1511L04U03",
+    "seed_number": 1511,
+    "lego_index": 4,
+    "lego_id": null,
+    "target_text": "doedd ’na ddim llawer o amser i gyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "there wasn’t",
+      "legoId": "S1279L02",
+      "target": "doedd ’na ddim",
+      "isGhost": false
+     },
+     {
+      "known": "a lot",
+      "legoId": "S0099L01",
+      "target": " llawer",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " amser",
+      "isGhost": true
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " copa",
+      "isGhost": true
+     }
+    ],
+    "known_text": "there wasn’t much time to reach the top",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1564L02U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1564L02U03",
+    "seed_number": 1564,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "fedrith hi ddim cyrraedd y top heb dy help di ond mi fedrith o",
+    "decomposition": null,
+    "known_text": "she won’t be able to reach the top without your help but he will be able to",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1564L02U03",
+    "seed_number": 1564,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "fedrith hi ddim cyrraedd y copa heb dy help di ond mi fedrith o",
+    "decomposition": [],
+    "known_text": "she won’t be able to reach the top without your help but he will be able to",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1564L02U03",
+   "set": {
+    "target_text": "fedrith hi ddim cyrraedd y top heb dy help di ond mi fedrith o",
+    "decomposition": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1511L04U03",
+   "set": {
+    "target_text": "doedd ’na ddim llawer o amser i gyrraedd y top",
+    "target2_audio_id": "4b55d1e8-354a-41bc-9c13-ef5d5cd32075",
+    "decomposition": [
+     {
+      "known": "there wasn’t",
+      "legoId": "S1279L02",
+      "target": "doedd ’na ddim",
+      "isGhost": false
+     },
+     {
+      "known": "a lot",
+      "legoId": "S0099L01",
+      "target": " llawer",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " amser",
+      "isGhost": true
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1511L04U01",
+   "set": {
+    "target_text": "cymerodd rai oriau i gyrraedd y top",
+    "target2_audio_id": "dde1cf9e-8c69-45a5-b44b-3ed4529d8820",
+    "decomposition": [
+     {
+      "known": "took",
+      "legoId": "S0290L02",
+      "target": "cymerodd",
+      "isGhost": false
+     },
+     {
+      "known": "several hours",
+      "legoId": "S0290L03",
+      "target": " rai oriau",
+      "isGhost": false
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1511L04U06",
+   "set": {
+    "target_text": "i gyrraedd y top oedd rhaid i ni adael neithiwr",
+    "decomposition": [
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": "i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     },
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": " oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1511L04U05",
+   "set": {
+    "target_text": "o’n i’n ddigon lwcus i gyrraedd y top",
+    "target2_audio_id": "0781a4db-fc97-4f93-9f66-06d3ef8a43d0",
+    "decomposition": [
+     {
+      "known": "I was lucky enough",
+      "legoId": "S1379L01",
+      "target": "o’n i’n ddigon lwcus",
+      "isGhost": false
+     },
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": " i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1511L04B01",
+   "set": {
+    "target_text": "i gyrraedd y top",
+    "target2_audio_id": "c97772b3-0090-4e3e-bb48-5773798e5d08",
+    "decomposition": [
+     {
+      "known": "to reach",
+      "legoId": "S0290L04",
+      "target": "i gyrraedd",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1466L03U05",
+   "set": {
+    "target_text": "est ti dros y top?",
+    "target2_audio_id": "b6b627e8-7675-4c9b-8291-8c1c65a577bb",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "est",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti",
+      "isGhost": true
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1466L03U03",
+   "set": {
+    "target_text": "doeddan nhw ddim isio dilyn ni dros y top",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0184L03",
+      "target": "doeddan nhw ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to follow us",
+      "legoId": "S1381L03",
+      "target": " dilyn ni",
+      "isGhost": false
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1466L03U07",
+   "set": {
+    "target_text": "ia dw i isio cerdded dros y top",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to walk",
+      "legoId": "S1323L02",
+      "target": " cerdded",
+      "isGhost": false
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1466L03B04",
+   "set": {
+    "target_text": "es i dros y top",
+    "target2_audio_id": "5135cc92-4bbc-432f-bda0-0b01ecd8dfce",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "es",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "over",
+      "legoId": "S0261L03",
+      "target": " dros",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U08",
+   "set": {
+    "target_text": "mae’n bwysicach cyrraedd y top mewn pryd",
+    "target2_audio_id": "1aad8a07-469e-4d13-985d-2629a54de2a2",
+    "decomposition": [
+     {
+      "known": "it’s more important",
+      "legoId": "S1137L01",
+      "target": "mae’n bwysicach",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "in time",
+      "legoId": "S0173L02",
+      "target": " mewn pryd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U06",
+   "set": {
+    "target_text": "ia, o’n i isio cyrraedd y top pnawn ’ma",
+    "target2_audio_id": "fb4afe73-93a6-4fab-bcd7-dffe5ccb8c76",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia,",
+      "isGhost": true
+     },
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": " o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "this afternoon",
+      "legoId": "S1035L02",
+      "target": " pnawn ’ma",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U01",
+   "set": {
+    "target_text": "fydda i ddim yn medru cyrraedd y top ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I won’t be able to",
+      "legoId": "S1157L01",
+      "target": "fydda i ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U03",
+   "set": {
+    "target_text": "ddudodd dy ffrind nad oedd o’n medru cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "your friend said",
+      "legoId": "S1358L01",
+      "target": "ddudodd dy ffrind",
+      "isGhost": false
+     },
+     {
+      "known": "that he wasn’t able to",
+      "legoId": "S1315L02",
+      "target": " nad oedd o’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U05",
+   "set": {
+    "target_text": "mae o’n trio cyrraedd y top, wyt ti’n meddwl?",
+    "target2_audio_id": "931ba9d1-31a7-4e2b-bc61-ecc151c3e369",
+    "decomposition": [
+     {
+      "known": "he’s trying",
+      "legoId": "S0062L01",
+      "target": "mae o’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": ",",
+      "isGhost": true
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U07",
+   "set": {
+    "target_text": "dw i ddim isio cyrraedd y top ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S0031L03",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U04",
+   "set": {
+    "target_text": "mae’n anarferol cyrraedd y top mewn llai nag awr",
+    "decomposition": [
+     {
+      "known": "it’s unusual",
+      "legoId": "S1121L01",
+      "target": "mae’n anarferol",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "in less than an hour",
+      "legoId": "S1256L03",
+      "target": " mewn llai nag awr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02U02",
+   "set": {
+    "target_text": "doedd o ddim yn medru cyrraedd y top hyd yn oed tasai fo isio",
+    "decomposition": [
+     {
+      "known": "he couldn’t",
+      "legoId": "S1311L01",
+      "target": "doedd o ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "even if he wanted to",
+      "legoId": "S1352L01",
+      "target": " hyd yn oed tasai fo isio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02C02",
+   "set": {
+    "target_text": "y top",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " top",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02B02",
+   "set": {
+    "target_text": "cyrraedd y top mewn pryd",
+    "target2_audio_id": "883eca53-77d3-4450-a4f4-bc037222cd70",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": "cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "in time",
+      "legoId": "S0173L02",
+      "target": " mewn pryd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02B04",
+   "set": {
+    "target_text": "dan ni’n trio cyrraedd y top cyn y penwythnos",
+    "target2_audio_id": "93f55f30-edcd-42bd-a62e-91cb3a73c617",
+    "decomposition": [
+     {
+      "known": "we’re trying",
+      "legoId": "S1102L01",
+      "target": "dan ni’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "before the weekend",
+      "legoId": "S1237L02",
+      "target": " cyn y penwythnos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02B03",
+   "set": {
+    "target_text": "o’n i isio cyrraedd y top",
+    "target2_audio_id": "65c2e5bc-b083-42e5-8612-f0301bcd0c1e",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1358L02B01",
+   "set": {
+    "target_text": "cyrraedd y top heno",
+    "target2_audio_id": "77cb7446-3677-4845-b1be-30729ce3a37e",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L02",
+      "target": "cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "9fa5738b-f07b-4764-b184-b92d83bbbfd1",
+   "set": {
+    "target_text": "cyrraedd y top",
+    "components": [
+     {
+      "known": "reach",
+      "target": "cyrraedd"
+     },
+     {
+      "known": "the top",
+      "target": "y top"
+     }
+    ],
+    "target1_audio_id": "6a28e0a3-86bf-4853-9068-36cf14c30e22",
+    "target2_audio_id": "9b635376-60a9-4ead-a183-cd3deb54921a"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1358,
+   "set": {
+    "target_text": "ddudodd dy ffrind nad oedd hi’n medru cyrraedd y top",
+    "target1_audio_id": "7f60e4b0-1845-4146-a8b3-7c61ff0f07f1",
+    "target2_audio_id": "b52324b8-3b9f-486c-b84b-e77e402c0564"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}

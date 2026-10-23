@@ -1,0 +1,851 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 1358,
+   "set": {
+    "target_text": "ddwedodd dy ffrind di bod hi ddim yn gallu cyrraedd y copa"
+   },
+   "expect": {
+    "target_text": "ddwedodd dy ffrind di bod hi ddim yn gallu cyrraedd y top"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1358L03",
+   "set": {
+    "target_text": "cyrraedd y copa",
+    "components": [
+     {
+      "known": "reach the top",
+      "target": "cyrraedd y copa"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "cyrraedd y top",
+    "components": [
+     {
+      "known": "reach the top",
+      "target": "cyrraedd y top"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1358L03B02",
+   "set": {
+    "target_text": "bod hi ddim yn gallu cyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "that she couldn’t",
+      "legoId": "S1358L02",
+      "target": "bod hi ddim yn gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "bod hi ddim yn gallu cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "that she couldn’t",
+      "legoId": "S1358L02",
+      "target": "bod hi ddim yn gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1358L03B03",
+   "set": {
+    "target_text": "byddi di’n gallu cyrraedd y copa cyn bo hir",
+    "decomposition": [
+     {
+      "known": "you’ll be able to",
+      "legoId": "S1292L02",
+      "target": "byddi di’n gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "soon",
+      "legoId": "S1023L04",
+      "target": " cyn bo hir",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "byddi di’n gallu cyrraedd y top cyn bo hir",
+    "decomposition": [
+     {
+      "known": "you’ll be able to",
+      "legoId": "S1292L02",
+      "target": "byddi di’n gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "soon",
+      "legoId": "S1023L04",
+      "target": " cyn bo hir",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1358L03B01",
+   "set": {
+    "target_text": "cyrraedd y copa ar fy mhen fy hunan",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": "cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hunan",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "cyrraedd y top ar fy mhen fy hunan",
+    "decomposition": [
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": "cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hunan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1358L03B04",
+   "set": {
+    "target_text": "oedd hi jyst yn moyn cyrraedd y copa y tro ’ma",
+    "decomposition": [
+     {
+      "known": "she just wanted",
+      "legoId": "S1357L01",
+      "target": "oedd hi jyst yn moyn",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "this time",
+      "legoId": "S1318L03",
+      "target": " y tro ’ma",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "oedd hi jyst yn moyn cyrraedd y top y tro ’ma",
+    "decomposition": [
+     {
+      "known": "she just wanted",
+      "legoId": "S1357L01",
+      "target": "oedd hi jyst yn moyn",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "this time",
+      "legoId": "S1318L03",
+      "target": " y tro ’ma",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1358L03U06",
+   "set": {
+    "target_text": "dw i’n siŵr y byddai hi’n gallu cyrraedd y copa ’se hi’n moyn",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "that she could",
+      "legoId": "S1312L02",
+      "target": " y byddai hi’n gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "if she wanted",
+      "legoId": "S1317L03",
+      "target": " ’se hi’n moyn",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n siŵr y byddai hi’n gallu cyrraedd y top ’se hi’n moyn",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "that she could",
+      "legoId": "S1312L02",
+      "target": " y byddai hi’n gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "if she wanted",
+      "legoId": "S1317L03",
+      "target": " ’se hi’n moyn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1358L03U03",
+   "set": {
+    "target_text": "fyddai fe ddim yn gallu cyrraedd y copa hyd yn oed ’se fe’n moyn",
+    "decomposition": [
+     {
+      "known": "he wouldn’t be able to",
+      "legoId": "S1352L02",
+      "target": "fyddai fe ddim yn gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "even if he wanted to",
+      "legoId": "S1352L01",
+      "target": " hyd yn oed ’se fe’n moyn",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fyddai fe ddim yn gallu cyrraedd y top hyd yn oed ’se fe’n moyn",
+    "decomposition": [
+     {
+      "known": "he wouldn’t be able to",
+      "legoId": "S1352L02",
+      "target": "fyddai fe ddim yn gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "even if he wanted to",
+      "legoId": "S1352L01",
+      "target": " hyd yn oed ’se fe’n moyn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1358L03U01",
+   "set": {
+    "target_text": "dw i’n gobeithio byddi di’n gallu cyrraedd y copa cyn bo hir",
+    "decomposition": [
+     {
+      "known": "I hope",
+      "legoId": "S1149L04",
+      "target": "dw i’n gobeithio",
+      "isGhost": false
+     },
+     {
+      "known": "you’ll be able to",
+      "legoId": "S1292L02",
+      "target": " byddi di’n gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "soon",
+      "legoId": "S1023L04",
+      "target": " cyn bo hir",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n gobeithio byddi di’n gallu cyrraedd y top cyn bo hir",
+    "decomposition": [
+     {
+      "known": "I hope",
+      "legoId": "S1149L04",
+      "target": "dw i’n gobeithio",
+      "isGhost": false
+     },
+     {
+      "known": "you’ll be able to",
+      "legoId": "S1292L02",
+      "target": " byddi di’n gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "soon",
+      "legoId": "S1023L04",
+      "target": " cyn bo hir",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1358L03U04",
+   "set": {
+    "target_text": "dw i ddim yn moyn cyrraedd y copa ar fy mhen fy hunan",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1019L02",
+      "target": "dw i ddim yn moyn",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hunan",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i ddim yn moyn cyrraedd y top ar fy mhen fy hunan",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1019L02",
+      "target": "dw i ddim yn moyn",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hunan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1358L03U02",
+   "set": {
+    "target_text": "doedd e ddim yn moyn cyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "he didn’t want",
+      "legoId": "S1069L01",
+      "target": "doedd e ddim yn moyn",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "doedd e ddim yn moyn cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "he didn’t want",
+      "legoId": "S1069L01",
+      "target": "doedd e ddim yn moyn",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1358L03U05",
+   "set": {
+    "target_text": "ddwedodd hi bod hi ddim yn gallu cyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "she said that she",
+      "legoId": "S1302L01",
+      "target": "ddwedodd hi bod hi",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ddim",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gallu",
+      "isGhost": true
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddwedodd hi bod hi ddim yn gallu cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "she said that she",
+      "legoId": "S1302L01",
+      "target": "ddwedodd hi bod hi",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ddim",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gallu",
+      "isGhost": true
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1412L01B03",
+   "set": {
+    "target_text": "allen ni ddim cyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "we couldn’t",
+      "legoId": "S1412L01",
+      "target": "allen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "allen ni ddim cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "we couldn’t",
+      "legoId": "S1412L01",
+      "target": "allen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1433L01B03",
+   "set": {
+    "target_text": "allen nhw ddim cyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "they couldn’t",
+      "legoId": "S1433L01",
+      "target": "allen nhw ddim",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "allen nhw ddim cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "they couldn’t",
+      "legoId": "S1433L01",
+      "target": "allen nhw ddim",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1444L01U06",
+   "set": {
+    "target_text": "yn anffodus oedden, o’n nhw’n meddwl y byddai hi’n gallu cyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "unfortunately",
+      "legoId": "S1086L02",
+      "target": "yn anffodus",
+      "isGhost": false
+     },
+     {
+      "known": "yes they thought",
+      "legoId": "S1444L01",
+      "target": " oedden, o’n nhw’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that she could",
+      "legoId": "S1312L02",
+      "target": " y byddai hi’n gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "yn anffodus oedden, o’n nhw’n meddwl y byddai hi’n gallu cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "unfortunately",
+      "legoId": "S1086L02",
+      "target": "yn anffodus",
+      "isGhost": false
+     },
+     {
+      "known": "yes they thought",
+      "legoId": "S1444L01",
+      "target": " oedden, o’n nhw’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that she could",
+      "legoId": "S1312L02",
+      "target": " y byddai hi’n gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1531L02U05",
+   "set": {
+    "target_text": "dw i’n siŵr bod unrhywun yn gallu cyrraedd y copa",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "that anyone can",
+      "legoId": "S1531L02",
+      "target": " bod unrhywun yn gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y copa",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n siŵr bod unrhywun yn gallu cyrraedd y top",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "that anyone can",
+      "legoId": "S1531L02",
+      "target": " bod unrhywun yn gallu",
+      "isGhost": false
+     },
+     {
+      "known": "reach the top",
+      "legoId": "S1358L03",
+      "target": " cyrraedd y top",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "seed",
+   "id": 1358,
+   "old": "ddwedodd dy ffrind di bod hi ddim yn gallu cyrraedd y top",
+   "new": "ddwedodd dy ffrind di bod hi ddim yn gallu cyrraedd y copa",
+   "takes": 1
+  },
+  {
+   "kind": "lego",
+   "id": "S1358L03",
+   "old": "cyrraedd y top",
+   "new": "cyrraedd y copa",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1358L03B02",
+   "old": "bod hi ddim yn gallu cyrraedd y top",
+   "new": "bod hi ddim yn gallu cyrraedd y copa",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1358L03B03",
+   "old": "byddi di’n gallu cyrraedd y top cyn bo hir",
+   "new": "byddi di’n gallu cyrraedd y copa cyn bo hir",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1358L03B01",
+   "old": "cyrraedd y top ar fy mhen fy hunan",
+   "new": "cyrraedd y copa ar fy mhen fy hunan",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1358L03B04",
+   "old": "oedd hi jyst yn moyn cyrraedd y top y tro ’ma",
+   "new": "oedd hi jyst yn moyn cyrraedd y copa y tro ’ma",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1358L03U06",
+   "old": "dw i’n siŵr y byddai hi’n gallu cyrraedd y top ’se hi’n moyn",
+   "new": "dw i’n siŵr y byddai hi’n gallu cyrraedd y copa ’se hi’n moyn",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1358L03U03",
+   "old": "fyddai fe ddim yn gallu cyrraedd y top hyd yn oed ’se fe’n moyn",
+   "new": "fyddai fe ddim yn gallu cyrraedd y copa hyd yn oed ’se fe’n moyn",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1358L03U01",
+   "old": "dw i’n gobeithio byddi di’n gallu cyrraedd y top cyn bo hir",
+   "new": "dw i’n gobeithio byddi di’n gallu cyrraedd y copa cyn bo hir",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1358L03U04",
+   "old": "dw i ddim yn moyn cyrraedd y top ar fy mhen fy hunan",
+   "new": "dw i ddim yn moyn cyrraedd y copa ar fy mhen fy hunan",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1358L03U02",
+   "old": "doedd e ddim yn moyn cyrraedd y top",
+   "new": "doedd e ddim yn moyn cyrraedd y copa",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1358L03U05",
+   "old": "ddwedodd hi bod hi ddim yn gallu cyrraedd y top",
+   "new": "ddwedodd hi bod hi ddim yn gallu cyrraedd y copa",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1412L01B03",
+   "old": "allen ni ddim cyrraedd y top",
+   "new": "allen ni ddim cyrraedd y copa",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1433L01B03",
+   "old": "allen nhw ddim cyrraedd y top",
+   "new": "allen nhw ddim cyrraedd y copa",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1444L01U06",
+   "old": "yn anffodus oedden, o’n nhw’n meddwl y byddai hi’n gallu cyrraedd y top",
+   "new": "yn anffodus oedden, o’n nhw’n meddwl y byddai hi’n gallu cyrraedd y copa",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1531L02U05",
+   "old": "dw i’n siŵr bod unrhywun yn gallu cyrraedd y top",
+   "new": "dw i’n siŵr bod unrhywun yn gallu cyrraedd y copa",
+   "takes": 0
+  }
+ ],
+ "leftAlone": []
+}
