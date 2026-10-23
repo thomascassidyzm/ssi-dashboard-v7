@@ -3279,7 +3279,12 @@ const showPhraseCard = computed(() => !!(phrases.value && (phrases.value.pass ||
 // A STEP LINK (?step=, job #247) is a pod link's twin for a controlled queue's non-pod step
 // ('Seed sentences (206)'): the same button carries on from either, in the order the server keeps.
 const podFinished = computed(() => !!(queryStr(addressQuery.value.pod) || queryStr(addressQuery.value.step)) && !!voice.value.podsDone && startIndex.value === -1)
-const nextPod = computed(() => (podFinished.value && voice.value.podsDone.nextPod) || null)
+// AT THE END OF A STEP'S READING FLOW (Eleri, 2026-10-23): the done screen offers the next step
+// even when lines she skipped are still owed in this one, so a practice-phrase step whose served
+// batch holds only her skips still leads on to the rest of the plan. The batch page keeps the
+// pod rule above: lines owed → Start, no Next.
+const stepLink = computed(() => !!(queryStr(addressQuery.value.pod) || queryStr(addressQuery.value.step)))
+const nextPod = computed(() => ((podFinished.value || (phase.value === 'done' && stepLink.value)) && voice.value.podsDone && voice.value.podsDone.nextPod) || null)
 // A controlled queue names its own steps (`label`); any other pod keeps its section heading.
 const nextPodName = computed(() => (nextPod.value ? (nextPod.value.label || podSectionFor(nextPod.value).heading) : ''))
 const nextPodWords = computed(() => (nextPod.value && nextPod.value.podSlug ? `Next pod: ${nextPodName.value} →` : `Next: ${nextPodName.value} →`))
@@ -3290,6 +3295,11 @@ function openNextPod() {
   const p = nextPod.value
   if (!p) return
   const { track, batch, pod, step, ...rest } = addressQuery.value
+  // A phrase step's next batch of the plan is opened by its home-screen address (track/batch).
+  if (p.track && p.batch) {
+    const { course, ...keep } = rest
+    return goToAddress({ ...keep, track: p.track, batch: String(p.batch) })
+  }
   goToAddress(p.podSlug ? { ...rest, course: p.courseCode, pod: p.podSlug } : { ...rest, course: p.courseCode, step: p.step })
 }
 function openBatch(track, n) { goToAddress({ track, batch: String(n) }) }

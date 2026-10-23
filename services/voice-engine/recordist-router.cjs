@@ -793,7 +793,7 @@ module.exports = function createRecordistRouter({
       // owed, never a pod outside it, and nothing said about lines outside it.
       let podsDone = null
       if (queue.actorQueue && (podScope || stepAsked) && !trackScope) {
-        podsDone = boothActorQueue.nextStepFor(recordist.voiceId, queue.lines, queueStep)
+        podsDone = boothActorQueue.nextStepFor(recordist.voiceId, queue.lines, queueStep, undefined, { phrases: queue.phrases, phraseBatches: queue.phraseBatches })
       } else if (podScope && !trackScope) {
         try {
           const owed = [...new Set((queue.lines || []).filter((l) => l.podId && !l.recorded).map((l) => l.podId))]

@@ -133,14 +133,28 @@ function stepLabel(step, remaining) {
  * lines still owed, then round from the top. Shaped as the router's `podsDone` so the booth's
  * Next button reads it unchanged; `remainingOutsidePods` is always 0, because nothing outside
  * the queue is the actor's to see.
+ *
+ * A PHRASE STEP IS THE WHOLE PLAN, NOT THE BATCH ON SCREEN (Eleri, 2026-10-23). The queue's
+ * `lines` carry only the ONE phrase batch the plan serves (recordist-queue.cjs withPhraseBatch),
+ * so counting a phrase step over `lines` said "practice phrases (11)" with 11,883 still owed, and
+ * a finished step never offered itself again — so the step link kept sending her back to the
+ * eleven lines she had skipped in batch 3 and never on to batch 4. Pass the plan
+ * (`{phrases, phraseBatches}`, as scopeQueue keeps them) and a phrase step is counted over every
+ * batch of both passes; standing in it, Next is the plan's next batch with lines left
+ * (`track`/`batch`, the home screen's own batch address), before any other step.
  * @returns {{current: object|null, nextPod: object|null, remainingOutsidePods: 0}|null}
  */
-function nextStepFor(voiceId, lines, currentStep, queues = ACTOR_QUEUES) {
+function nextStepFor(voiceId, lines, currentStep, queues = ACTOR_QUEUES, { phrases = null, phraseBatches = null } = {}) {
   const steps = stepsFor(voiceId, queues)
   if (!steps) return null
+  const plan = phrases && !phrases.unavailable && Array.isArray(phraseBatches) && phraseBatches.length ? phraseBatches : null
+  const owed = (b) => Math.max(0, (b.total || 0) - (b.recorded || 0))
+  const planFor = (s) => (plan && s.kind === 'phrase' ? plan.filter((b) => b.courseCode === s.courseCode) : null)
   const tally = steps.map((s) => {
-    const mine = (lines || []).filter((l) => lineInStep(l, s))
-    const remaining = mine.filter((l) => !l.recorded).length
+    const batches = planFor(s)
+    const mine = batches ? null : (lines || []).filter((l) => lineInStep(l, s))
+    const total = batches ? batches.reduce((n, b) => n + (b.total || 0), 0) : mine.length
+    const remaining = batches ? batches.reduce((n, b) => n + owed(b), 0) : mine.filter((l) => !l.recorded).length
     return {
       step: s.key,
       title: s.title,
@@ -148,15 +162,30 @@ function nextStepFor(voiceId, lines, currentStep, queues = ACTOR_QUEUES) {
       courseCode: s.courseCode,
       podSlug: s.pod || null,
       podTitle: stepLabel(s, remaining),
-      total: mine.length,
+      total,
       remaining,
     }
   })
   const at = currentStep ? steps.findIndex((s) => s.key === currentStep.key) : -1
   const order = at === -1 ? tally : [...tally.slice(at + 1), ...tally.slice(0, at)]
+  // Standing in a phrase step: the plan's batches after the one served, in served order (pass 1,
+  // then pass 2), numbered as the home screen's cards number them (1-based within a pass).
+  let laterBatch = null
+  const here = at === -1 ? null : steps[at]
+  const batches = here ? planFor(here) : null
+  if (batches) {
+    const numbered = batches.map((b) => ({ b, n: batches.filter((x) => x.pass === b.pass).indexOf(b) + 1 }))
+    const served = numbered.findIndex(({ b }) => b.pass === phrases.pass && b.batch === phrases.batch && b.courseCode === phrases.courseCode)
+    const pick = numbered.slice(served + 1).find(({ b }) => owed(b) > 0)
+    if (pick) {
+      const left = owed(pick.b)
+      const label = `${here.title}, pass ${pick.b.pass} batch ${pick.n} (${left})`
+      laterBatch = { ...tally[at], label, podTitle: label, track: `phrase.${pick.b.pass}`, batch: pick.n, remaining: left }
+    }
+  }
   return {
     current: at === -1 ? null : tally[at],
-    nextPod: order.find((t) => t.remaining > 0) || null,
+    nextPod: laterBatch || order.find((t) => t.remaining > 0) || null,
     remainingOutsidePods: 0,
   }
 }

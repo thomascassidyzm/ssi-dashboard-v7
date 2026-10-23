@@ -116,3 +116,43 @@ test('F31: total and recorded count the recorded lines the queue left out of `li
   assert.strictEqual(scoped.recorded, 62)
   assert.strictEqual(scoped.remaining, 996)
 })
+
+// Eleri, 2026-10-23: her booth said nothing was left while 11,883 practice phrases were owed. The
+// queue's lines carry only the ONE phrase batch the plan serves, and the phrase step was counted
+// over those lines and never offered itself again.
+test("Eleri: a finished phrase step offers the plan's next batch, and the step counts the whole plan", () => {
+  const ELERI = 'human_eleri_cym_s'
+  const C = 'cym_sv2_for_eng'
+  const lines = []
+  for (let i = 0; i < 141; i++) lines.push(pod(`p${i}`, 'pod-1', true))
+  for (let n = 1; n <= 3; n++) lines.push({ ...seed(n, true), role: 'target2' })
+  for (let n = 1; n <= 20; n++) lines.push({ ...seed(n, true, C), role: 'target2' })
+  lines.push({ id: 'l1', kind: 'lego', role: 'target2', courseCode: C, recorded: true })
+  // The served batch, pass 1 batch 3: every line read.
+  for (let i = 0; i < 187; i++) lines.push({ id: `ph${i}`, kind: 'phrase', role: 'target2', courseCode: C, recorded: true, phrasePass: 1, phraseBatch: 3 })
+  const phraseBatches = [
+    { pass: 1, batch: 1, courseCode: C, total: 197, recorded: 197 },
+    { pass: 1, batch: 2, courseCode: C, total: 195, recorded: 195 },
+    { pass: 1, batch: 3, courseCode: C, total: 187, recorded: 187 },
+    { pass: 1, batch: 4, courseCode: C, total: 193, recorded: 0 },
+    { pass: 2, batch: 1, courseCode: C, total: 200, recorded: 0 },
+  ]
+  const phrases = { pass: 1, batch: 3, courseCode: C }
+  const queue = q.scopeQueue(ELERI, { lines, phrases, phraseBatches, notReady: [], handedOn: [] })
+  const plan = { phrases: queue.phrases, phraseBatches: queue.phraseBatches }
+  const inPhrases = q.nextStepFor(ELERI, queue.lines, q.stepForLink(ELERI, { course: C, step: 'sv2-phrases' }), undefined, plan)
+  assert.ok(inPhrases.nextPod, 'never "All done" while the plan still owes lines')
+  assert.strictEqual(inPhrases.nextPod.track, 'phrase.1')
+  assert.strictEqual(inPhrases.nextPod.batch, 4)
+  assert.strictEqual(inPhrases.nextPod.remaining, 193)
+  assert.strictEqual(inPhrases.current.remaining, 393, 'the step counts every batch of both passes')
+  // Arriving from the LEGOs step, the phrase step is offered with the whole plan's count.
+  const fromLegos = q.nextStepFor(ELERI, queue.lines, q.stepForLink(ELERI, { course: C, step: 'sv2-legos' }), undefined, plan)
+  assert.strictEqual(fromLegos.nextPod.step, 'sv2-phrases')
+  assert.strictEqual(fromLegos.nextPod.label, 'New course: practice phrases (393)')
+  // The last batch of the plan: pass 2 batch 1 is next after pass 1 runs out.
+  const atEnd = q.nextStepFor(ELERI, queue.lines, q.stepForLink(ELERI, { course: C, step: 'sv2-phrases' }), undefined,
+    { phrases: { pass: 1, batch: 4, courseCode: C }, phraseBatches })
+  assert.strictEqual(atEnd.nextPod.track, 'phrase.2')
+  assert.strictEqual(atEnd.nextPod.batch, 1)
+})

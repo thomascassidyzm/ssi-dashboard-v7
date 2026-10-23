@@ -47,7 +47,7 @@ function serve({ recorded, podsDone }) {
         total: 2, recorded: recorded ? 2 : 0, remaining: recorded ? 0 : 2, lines,
       }) }
     }
-    throw new Error(`unexpected fetch ${u}`)
+    return { ok: false, status: 404, json: async () => ({ error: 'not in this test' }) }
   })
 }
 
@@ -113,6 +113,24 @@ describe('RecordistRoom — a finished pod link offers the next pod', () => {
     expect(at.get('step')).toBe('seeds')
     expect(at.get('pod')).toBe(null)
     expect(asked.some(u => u.includes('&step=seeds'))).toBe(true)
+  })
+
+  // Eleri, 2026-10-23: a finished practice-phrase step leads on to the plan's NEXT BATCH, opened
+  // by its home-screen address, not back to the step link (which serves the same batch again).
+  it('phrase step finished → "Next: …batch 4 (193)", which opens track=phrase.1&batch=4', async () => {
+    const BATCH4 = { step: 'sv2-phrases', title: 'New course: practice phrases', label: 'New course: practice phrases, pass 1 batch 4 (193)', courseCode: 'cym_sv2_for_eng', podSlug: null, track: 'phrase.1', batch: 4, remaining: 193 }
+    serve({ recorded: true, podsDone: { current: POD1, nextPod: BATCH4, remainingOutsidePods: 0 } })
+    const w = await openBooth()
+    const btn = w.find('[data-test="next-pod"]')
+    expect(btn.text()).toBe('Next: New course: practice phrases, pass 1 batch 4 (193) →')
+    await btn.trigger('click')
+    await flushPromises(); await flushPromises()
+    const at = new URLSearchParams(window.location.search)
+    expect(at.get('track')).toBe('phrase.1')
+    expect(at.get('batch')).toBe('4')
+    expect(at.get('step')).toBe(null)
+    expect(at.get('pod')).toBe(null)
+    expect(at.get('course')).toBe(null)
   })
 
   it('lines still owed in the pod → Start as before, no next-pod button', async () => {
