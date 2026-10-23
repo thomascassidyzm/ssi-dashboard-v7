@@ -1,0 +1,10 @@
+#916 Re-record card check, 2026-10-23 13:46 UTC (14:46 UK), fresh:true on all five Welsh voices
+(GET /api/recording/voice/<v>/rerecord and the full queue GET /api/recording/voice/<v>).
+sv2 seed 295/1494 (one line, alsoFills 1): on Dan (target1) and Eleri (target2) Re-record cards, text_changed.
+sv2 LEGO S1494L03 'y rhan gyntaf': in Dan + Eleri queues as unrecorded; Eleri's card lists it 'skipped'.
+nv2 LEGO S0277L03 'y rhan gyntaf': in Catrin (t1) + Aran (t2) queues as unrecorded; not on a Re-record card.
+nv2 seed 277: Popty relinked target2 to the existing 'rhan gynta’r sioe' clip (same words as seed 1494); nothing to record.
+NOT ON ANY CARD OR QUEUE: the 13 recorded nv2 phrases (S0277L03B05, S0277L04B04/B05, S0278L01B03-B06,
+S0279L02B01, S0290L02B03/B04, S0291L02B03) and sv2 phrases S0295L02B06, S0295L03B01, S0295L03B07 —
+they are in no booth voice's queue, so their slots are now empty with no booth route to re-record them.
+nv2 LEGO S0277L03 presentation clip also unlinked; nothing queues a new one.
