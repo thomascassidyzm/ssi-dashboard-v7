@@ -1,0 +1,845 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "81942403-d282-4a59-b58c-f956c69d690a",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "seed_number": 1485
+   },
+   "before": {
+    "id": "7c7c5ebc-1852-4e1a-8f21-f3c55f9a81b2",
+    "seed_number": 1485,
+    "known_text": "nothing would make me happier than to get away",
+    "target_text": "fyddai dim byd yn fy ngwneud i’n hapusach na dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "a16eccc6-9892-4cc4-b728-e8f9b2e4fdd6"
+   },
+   "after": {
+    "id": "7c7c5ebc-1852-4e1a-8f21-f3c55f9a81b2",
+    "seed_number": 1485,
+    "known_text": "nothing would make me happier than to escape",
+    "target_text": "fyddai dim byd yn fy ngwneud i’n hapusach na dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "a16eccc6-9892-4cc4-b728-e8f9b2e4fdd6"
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "lego_id": "S1485L06"
+   },
+   "before": {
+    "id": "c26718d1-90a4-48cc-86bd-6b4bf10e546d",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": "S1485L06",
+    "known_text": "to get away",
+    "target_text": "dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "3a73275b-03e6-4bee-8e06-9f64be5ea433",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "c26718d1-90a4-48cc-86bd-6b4bf10e546d",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": "S1485L06",
+    "known_text": "to escape",
+    "target_text": "dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "3a73275b-03e6-4bee-8e06-9f64be5ea433",
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1485L06B04"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1485L06B04",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "it would be better to get away now",
+    "target_text": "byddai’n well dianc nawr",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1485L06B04",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "it would be better to escape now",
+    "target_text": "byddai’n well dianc nawr",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1485L06B01"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1485L06B01",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "to get away tonight",
+    "target_text": "dianc heno",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1485L06B01",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "to escape tonight",
+    "target_text": "dianc heno",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1485L06B03"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1485L06B03",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "he wouldn’t be able to get away",
+    "target_text": "fyddai fe ddim yn gallu dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1485L06B03",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "he wouldn’t be able to escape",
+    "target_text": "fyddai fe ddim yn gallu dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1485L06B02"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1485L06B02",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "I want to get away",
+    "target_text": "dw i’n moyn dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1485L06B02",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "I want to escape",
+    "target_text": "dw i’n moyn dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1485L06U02"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1485L06U02",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "they want to get away while they’re still young",
+    "target_text": "maen nhw’n moyn dianc tra bo’ nhw dal yn ifanc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1485L06U02",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "they want to escape while they’re still young",
+    "target_text": "maen nhw’n moyn dianc tra bo’ nhw dal yn ifanc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1485L06U01"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1485L06U01",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "it would be nice to get away on Friday night",
+    "target_text": "byddai’n braf dianc nos Wener",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1485L06U01",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "it would be nice to escape on Friday night",
+    "target_text": "byddai’n braf dianc nos Wener",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1485L06U07"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1485L06U07",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "we don’t want to get away tonight",
+    "target_text": "so ni’n moyn dianc heno",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1485L06U07",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "we don’t want to escape tonight",
+    "target_text": "so ni’n moyn dianc heno",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1485L06U05"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1485L06U05",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "even if he wanted to he wouldn’t be able to get away",
+    "target_text": "hyd yn oed ’se fe’n moyn fyddai fe ddim yn gallu dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1485L06U05",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "even if he wanted to he wouldn’t be able to escape",
+    "target_text": "hyd yn oed ’se fe’n moyn fyddai fe ddim yn gallu dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1485L06U03"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1485L06U03",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "I hope I’ll be able to get away soon",
+    "target_text": "dw i’n gobeithio bydda i’n gallu dianc cyn bo hir",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1485L06U03",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "I hope I’ll be able to escape soon",
+    "target_text": "dw i’n gobeithio bydda i’n gallu dianc cyn bo hir",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1485L06U04"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1485L06U04",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "they won’t be able to get away now",
+    "target_text": "fyddan nhw ddim yn gallu dianc nawr",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1485L06U04",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "they won’t be able to escape now",
+    "target_text": "fyddan nhw ddim yn gallu dianc nawr",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1485L06U06"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1485L06U06",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "nothing would make me happier than to get away tonight",
+    "target_text": "fyddai dim byd yn fy ngwneud i’n hapusach na dianc heno",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1485L06U06",
+    "seed_number": 1485,
+    "lego_index": 6,
+    "lego_id": null,
+    "known_text": "nothing would make me happier than to escape tonight",
+    "target_text": "fyddai dim byd yn fy ngwneud i’n hapusach na dianc heno",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1496L01B02"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1496L01B02",
+    "seed_number": 1496,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "planning to get away tonight",
+    "target_text": "bwriadu dianc heno",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1496L01B02",
+    "seed_number": 1496,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "planning to escape tonight",
+    "target_text": "bwriadu dianc heno",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1496L01U01"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1496L01U01",
+    "seed_number": 1496,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "nothing would make me happier than planning to get away",
+    "target_text": "dim byd fyddai yn fy ngwneud i’n hapusach na bwriadu dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1496L01U01",
+    "seed_number": 1496,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "nothing would make me happier than planning to escape",
+    "target_text": "dim byd fyddai yn fy ngwneud i’n hapusach na bwriadu dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1580L01B02"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1580L01B02",
+    "seed_number": 1580,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we’ve often wanted to get away",
+    "target_text": "ŷn ni’n aml wedi moyn dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1580L01B02",
+    "seed_number": 1580,
+    "lego_index": 1,
+    "lego_id": null,
+    "known_text": "we’ve often wanted to escape",
+    "target_text": "ŷn ni’n aml wedi moyn dianc",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1580L03B04"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1580L03B04",
+    "seed_number": 1580,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to get away somewhere a little warmer later",
+    "target_text": "dianc i rywle bach yn dwymach nes ymlaen",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1580L03B04",
+    "seed_number": 1580,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "to escape somewhere a little warmer later",
+    "target_text": "dianc i rywle bach yn dwymach nes ymlaen",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1580L03U06"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1580L03U06",
+    "seed_number": 1580,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I just want to get away somewhere a little warmer",
+    "target_text": "dw i jyst yn moyn dianc i rywle bach yn dwymach",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1580L03U06",
+    "seed_number": 1580,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "I just want to escape somewhere a little warmer",
+    "target_text": "dw i jyst yn moyn dianc i rywle bach yn dwymach",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1580L03U07"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1580L03U07",
+    "seed_number": 1580,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "it would be nice to get away somewhere a little warmer in this dreadful weather",
+    "target_text": "byddai’n braf dianc i rywle bach yn dwymach yn y tywydd ofnadwy ’ma",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1580L03U07",
+    "seed_number": 1580,
+    "lego_index": 3,
+    "lego_id": null,
+    "known_text": "it would be nice to escape somewhere a little warmer in this dreadful weather",
+    "target_text": "byddai’n braf dianc i rywle bach yn dwymach yn y tywydd ofnadwy ’ma",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1588L04B04"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1588L04B04",
+    "seed_number": 1588,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "I just want to get away and leave home",
+    "target_text": "dw i jyst yn moyn dianc a gadael cartre",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1588L04B04",
+    "seed_number": 1588,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "I just want to escape and leave home",
+    "target_text": "dw i jyst yn moyn dianc a gadael cartre",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1588L04U05"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1588L04U05",
+    "seed_number": 1588,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "we’ve often wanted to get away and leave home",
+    "target_text": "ŷn ni’n aml wedi moyn dianc a gadael cartre",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1588L04U05",
+    "seed_number": 1588,
+    "lego_index": 4,
+    "lego_id": null,
+    "known_text": "we’ve often wanted to escape and leave home",
+    "target_text": "ŷn ni’n aml wedi moyn dianc a gadael cartre",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1588L04U05",
+   "set": {
+    "known_text": "we’ve often wanted to get away and leave home"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1588L04B04",
+   "set": {
+    "known_text": "I just want to get away and leave home"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1580L03U07",
+   "set": {
+    "known_text": "it would be nice to get away somewhere a little warmer in this dreadful weather"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1580L03U06",
+   "set": {
+    "known_text": "I just want to get away somewhere a little warmer"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1580L03B04",
+   "set": {
+    "known_text": "to get away somewhere a little warmer later"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1580L01B02",
+   "set": {
+    "known_text": "we’ve often wanted to get away"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1496L01U01",
+   "set": {
+    "known_text": "nothing would make me happier than planning to get away"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1496L01B02",
+   "set": {
+    "known_text": "planning to get away tonight"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1485L06U06",
+   "set": {
+    "known_text": "nothing would make me happier than to get away tonight"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1485L06U04",
+   "set": {
+    "known_text": "they won’t be able to get away now"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1485L06U03",
+   "set": {
+    "known_text": "I hope I’ll be able to get away soon"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1485L06U05",
+   "set": {
+    "known_text": "even if he wanted to he wouldn’t be able to get away"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1485L06U07",
+   "set": {
+    "known_text": "we don’t want to get away tonight"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1485L06U01",
+   "set": {
+    "known_text": "it would be nice to get away on Friday night"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1485L06U02",
+   "set": {
+    "known_text": "they want to get away while they’re still young"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1485L06B02",
+   "set": {
+    "known_text": "I want to get away"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1485L06B03",
+   "set": {
+    "known_text": "he wouldn’t be able to get away"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1485L06B01",
+   "set": {
+    "known_text": "to get away tonight"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1485L06B04",
+   "set": {
+    "known_text": "it would be better to get away now"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "c26718d1-90a4-48cc-86bd-6b4bf10e546d",
+   "set": {
+    "known_text": "to get away"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1485,
+   "set": {
+    "known_text": "nothing would make me happier than to get away"
+   }
+  }
+ ],
+ "undo_file": "2026-10-23T12-46-38-166Z-81942403-d282-4a59-b58c-f956c69d690a.json"
+}
