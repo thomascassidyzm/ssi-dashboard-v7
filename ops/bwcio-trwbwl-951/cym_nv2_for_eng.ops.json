@@ -1,0 +1,2451 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 1405,
+   "set": {
+    "target_text": "ddylen ni ofyn os oes rhaid i ni archebu?"
+   },
+   "expect": {
+    "target_text": "ddylen ni ofyn os oes rhaid i ni fwcio?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1405L01",
+   "set": {
+    "target_text": "os oes rhaid i ni archebu",
+    "components": [
+     {
+      "known": "if",
+      "target": "os"
+     },
+     {
+      "known": "do we have to?",
+      "target": "oes rhaid i ni?"
+     },
+     {
+      "known": "book",
+      "target": "archebu"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "os oes rhaid i ni fwcio",
+    "components": [
+     {
+      "known": "if",
+      "target": "os"
+     },
+     {
+      "known": "do we have to?",
+      "target": "oes rhaid i ni?"
+     },
+     {
+      "known": "book",
+      "target": "fwcio"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01B03",
+   "set": {
+    "target_text": "dw i’n trio ffeindio allan os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n trio ffeindio allan os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01B02",
+   "set": {
+    "target_text": "ffeindio allan os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": "ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ffeindio allan os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": "ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01B04",
+   "set": {
+    "target_text": "wnest ti ofyn os oes rhaid i ni archebu cyn dydd Iau?",
+    "decomposition": [
+     {
+      "known": "did you ask",
+      "legoId": "S1382L01",
+      "target": "wnest ti ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "wnest ti ofyn os oes rhaid i ni fwcio cyn dydd Iau?",
+    "decomposition": [
+     {
+      "known": "did you ask",
+      "legoId": "S1382L01",
+      "target": "wnest ti ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01B01",
+   "set": {
+    "target_text": "os oes rhaid i ni archebu heno",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "os oes rhaid i ni fwcio heno",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01C03",
+   "set": {
+    "target_text": "archebu",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "archebu",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fwcio",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fwcio",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U08",
+   "set": {
+    "target_text": "diolch mi wna i ofyn iddo fo os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "diolch",
+      "isGhost": true
+     },
+     {
+      "known": "I’ll ask him",
+      "legoId": "S1176L01",
+      "target": " mi wna i ofyn iddo fo",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "diolch mi wna i ofyn iddo fo os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "diolch",
+      "isGhost": true
+     },
+     {
+      "known": "I’ll ask him",
+      "legoId": "S1176L01",
+      "target": " mi wna i ofyn iddo fo",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U03",
+   "set": {
+    "target_text": "wnest ti ofyn os oes rhaid i ni archebu?",
+    "decomposition": [
+     {
+      "known": "did you ask",
+      "legoId": "S1382L01",
+      "target": "wnest ti ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "wnest ti ofyn os oes rhaid i ni fwcio?",
+    "decomposition": [
+     {
+      "known": "did you ask",
+      "legoId": "S1382L01",
+      "target": "wnest ti ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U05",
+   "set": {
+    "target_text": "ddudodd neb wrthaf fi os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "nobody told me",
+      "legoId": "S1367L01",
+      "target": "ddudodd neb wrthaf fi",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddudodd neb wrthaf fi os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "nobody told me",
+      "legoId": "S1367L01",
+      "target": "ddudodd neb wrthaf fi",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U02",
+   "set": {
+    "target_text": "dan ni ddim yn gwybod os oes rhaid i ni archebu cyn dydd Iau",
+    "decomposition": [
+     {
+      "known": "we don’t know",
+      "legoId": "S0176L01",
+      "target": "dan ni ddim yn gwybod",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dan ni ddim yn gwybod os oes rhaid i ni fwcio cyn dydd Iau",
+    "decomposition": [
+     {
+      "known": "we don’t know",
+      "legoId": "S0176L01",
+      "target": "dan ni ddim yn gwybod",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U04",
+   "set": {
+    "target_text": "mi wna i ofyn iddo fo os oes rhaid i ni archebu pnawn ’ma",
+    "decomposition": [
+     {
+      "known": "I’ll ask him",
+      "legoId": "S1176L01",
+      "target": "mi wna i ofyn iddo fo",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "this afternoon",
+      "legoId": "S1035L02",
+      "target": " pnawn ’ma",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mi wna i ofyn iddo fo os oes rhaid i ni fwcio pnawn ’ma",
+    "decomposition": [
+     {
+      "known": "I’ll ask him",
+      "legoId": "S1176L01",
+      "target": "mi wna i ofyn iddo fo",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "this afternoon",
+      "legoId": "S1035L02",
+      "target": " pnawn ’ma",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U06",
+   "set": {
+    "target_text": "os oes rhaid i ni archebu dw i’n mynd i ffonio chdi heno",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": " dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to call you",
+      "legoId": "S1294L03",
+      "target": " ffonio chdi",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "os oes rhaid i ni fwcio dw i’n mynd i ffonio chdi heno",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": " dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to call you",
+      "legoId": "S1294L03",
+      "target": " ffonio chdi",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U07",
+   "set": {
+    "target_text": "o’n i isio ffeindio allan os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "o’n i isio ffeindio allan os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U01",
+   "set": {
+    "target_text": "dw i ddim yn siŵr os oes rhaid i ni archebu heno",
+    "decomposition": [
+     {
+      "known": "I’m not sure",
+      "legoId": "S0027L02",
+      "target": "dw i ddim yn siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i ddim yn siŵr os oes rhaid i ni fwcio heno",
+    "decomposition": [
+     {
+      "known": "I’m not sure",
+      "legoId": "S0027L02",
+      "target": "dw i ddim yn siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1411,
+   "set": {
+    "target_text": "bydden ni’n licio archebu bwrdd i bedwar heno"
+   },
+   "expect": {
+    "target_text": "bydden ni’n licio bwcio bwrdd i bedwar heno"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1411L02",
+   "set": {
+    "target_text": "archebu bwrdd",
+    "components": [
+     {
+      "known": "to book",
+      "target": "archebu"
+     },
+     {
+      "known": "a table",
+      "target": "bwrdd"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "bwcio bwrdd",
+    "components": [
+     {
+      "known": "to book",
+      "target": "bwcio"
+     },
+     {
+      "known": "a table",
+      "target": "bwrdd"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02B01",
+   "set": {
+    "target_text": "archebu bwrdd heno",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "bwcio bwrdd heno",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02B02",
+   "set": {
+    "target_text": "dw i isio archebu bwrdd",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i isio bwcio bwrdd",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02B03",
+   "set": {
+    "target_text": "ydan ni angen archebu bwrdd?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ydan ni angen bwcio bwrdd?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02B04",
+   "set": {
+    "target_text": "ddylen ni ddim archebu bwrdd heno",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddylen ni ddim bwcio bwrdd heno",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02C01",
+   "set": {
+    "target_text": "archebu",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "archebu",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "bwcio",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bwcio",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U08",
+   "set": {
+    "target_text": "bydden ni’n archebu bwrdd ond oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "bydden ni’n bwcio bwrdd ond oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U04",
+   "set": {
+    "target_text": "ydan ni angen archebu bwrdd nos ’fory?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tomorrow night",
+      "legoId": "S1192L02",
+      "target": " nos ’fory",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ydan ni angen bwcio bwrdd nos ’fory?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tomorrow night",
+      "legoId": "S1192L02",
+      "target": " nos ’fory",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U07",
+   "set": {
+    "target_text": "o’n i’n trio archebu bwrdd",
+    "decomposition": [
+     {
+      "known": "I was trying",
+      "legoId": "S0019L01",
+      "target": "o’n i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "o’n i’n trio bwcio bwrdd",
+    "decomposition": [
+     {
+      "known": "I was trying",
+      "legoId": "S0019L01",
+      "target": "o’n i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U01",
+   "set": {
+    "target_text": "byddai’n well archebu bwrdd cyn dydd Iau",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "byddai’n well bwcio bwrdd cyn dydd Iau",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U02",
+   "set": {
+    "target_text": "dw i’n siŵr bo’ ni angen archebu bwrdd",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "we need",
+      "legoId": "S0174L02",
+      "target": " bo’ ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n siŵr bo’ ni angen bwcio bwrdd",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "we need",
+      "legoId": "S0174L02",
+      "target": " bo’ ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U03",
+   "set": {
+    "target_text": "doedd o ddim isio archebu bwrdd nos Wener",
+    "decomposition": [
+     {
+      "known": "he didn’t want",
+      "legoId": "S1069L01",
+      "target": "doedd o ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "on Friday night",
+      "legoId": "S1349L02",
+      "target": " nos Wener",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "doedd o ddim isio bwcio bwrdd nos Wener",
+    "decomposition": [
+     {
+      "known": "he didn’t want",
+      "legoId": "S1069L01",
+      "target": "doedd o ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "on Friday night",
+      "legoId": "S1349L02",
+      "target": " nos Wener",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U05",
+   "set": {
+    "target_text": "ia dw i isio archebu bwrdd heno",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ia dw i isio bwcio bwrdd heno",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U06",
+   "set": {
+    "target_text": "oedd hi isio archebu bwrdd nos Sadwrn",
+    "decomposition": [
+     {
+      "known": "she wanted",
+      "legoId": "S0071L01",
+      "target": "oedd hi isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "on Saturday night",
+      "legoId": "S0095L01",
+      "target": " nos Sadwrn",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "oedd hi isio bwcio bwrdd nos Sadwrn",
+    "decomposition": [
+     {
+      "known": "she wanted",
+      "legoId": "S0071L01",
+      "target": "oedd hi isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "on Saturday night",
+      "legoId": "S0095L01",
+      "target": " nos Sadwrn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03B02",
+   "set": {
+    "target_text": "archebu bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "bwcio bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03B03",
+   "set": {
+    "target_text": "archebu bwrdd i bedwar nos Sadwrn",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "on Saturday night",
+      "legoId": "S0095L01",
+      "target": " nos Sadwrn",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "bwcio bwrdd i bedwar nos Sadwrn",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "on Saturday night",
+      "legoId": "S0095L01",
+      "target": " nos Sadwrn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03B04",
+   "set": {
+    "target_text": "bydden ni’n archebu bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "bydden ni’n bwcio bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U01",
+   "set": {
+    "target_text": "dw i’n trio archebu bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n trio bwcio bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U02",
+   "set": {
+    "target_text": "ddylen ni ddim archebu bwrdd i bedwar nos ’fory",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tomorrow night",
+      "legoId": "S1192L02",
+      "target": " nos ’fory",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddylen ni ddim bwcio bwrdd i bedwar nos ’fory",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tomorrow night",
+      "legoId": "S1192L02",
+      "target": " nos ’fory",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U03",
+   "set": {
+    "target_text": "oeddan ni isio archebu bwrdd i bedwar nos Wener",
+    "decomposition": [
+     {
+      "known": "we wanted",
+      "legoId": "S0182L01",
+      "target": "oeddan ni isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "on Friday night",
+      "legoId": "S1349L02",
+      "target": " nos Wener",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "oeddan ni isio bwcio bwrdd i bedwar nos Wener",
+    "decomposition": [
+     {
+      "known": "we wanted",
+      "legoId": "S0182L01",
+      "target": "oeddan ni isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "on Friday night",
+      "legoId": "S1349L02",
+      "target": " nos Wener",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U04",
+   "set": {
+    "target_text": "byddai’n well archebu bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "byddai’n well bwcio bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U06",
+   "set": {
+    "target_text": "byddai’n braf archebu bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "it would be nice",
+      "legoId": "S1402L01",
+      "target": "byddai’n braf",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "byddai’n braf bwcio bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "it would be nice",
+      "legoId": "S1402L01",
+      "target": "byddai’n braf",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U05",
+   "set": {
+    "target_text": "oes rhaid archebu bwrdd i bedwar?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "oes",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " rhaid",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "oes rhaid bwcio bwrdd i bedwar?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "oes",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " rhaid",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1412L01U01",
+   "set": {
+    "target_text": "fydden ni ddim yn medru archebu bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "we couldn’t",
+      "legoId": "S1412L01",
+      "target": "fydden ni ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fydden ni ddim yn medru bwcio bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "we couldn’t",
+      "legoId": "S1412L01",
+      "target": "fydden ni ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1433L01U04",
+   "set": {
+    "target_text": "doeddan nhw ddim yn medru archebu bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "they couldn’t",
+      "legoId": "S1433L01",
+      "target": "doeddan nhw ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "doeddan nhw ddim yn medru bwcio bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "they couldn’t",
+      "legoId": "S1433L01",
+      "target": "doeddan nhw ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1446L01U03",
+   "set": {
+    "target_text": "mae arna i ofn fyddan nhw ddim yn medru archebu bwrdd heno",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "they won’t be able to",
+      "legoId": "S1446L01",
+      "target": " fyddan nhw ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae arna i ofn fyddan nhw ddim yn medru bwcio bwrdd heno",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "they won’t be able to",
+      "legoId": "S1446L01",
+      "target": " fyddan nhw ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1490L01U02",
+   "set": {
+    "target_text": "os oes rhaid i ni archebu fydda i byth yn hwyr",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "then I will never",
+      "legoId": "S0274L05",
+      "target": " fydda i byth",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hwyr",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "os oes rhaid i ni fwcio fydda i byth yn hwyr",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "then I will never",
+      "legoId": "S0274L05",
+      "target": " fydda i byth",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hwyr",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1525L01U06",
+   "set": {
+    "target_text": "bydda i’n galw chdi nôl heno i weld os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "I’ll call you back",
+      "legoId": "S1524L01",
+      "target": "bydda i’n galw chdi nôl",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     },
+     {
+      "known": "to check",
+      "legoId": "S0300L04",
+      "target": " i weld",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "bydda i’n galw chdi nôl heno i weld os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "I’ll call you back",
+      "legoId": "S1524L01",
+      "target": "bydda i’n galw chdi nôl",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     },
+     {
+      "known": "to check",
+      "legoId": "S0300L04",
+      "target": " i weld",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "seed",
+   "id": 1405,
+   "old": "ddylen ni ofyn os oes rhaid i ni fwcio?",
+   "new": "ddylen ni ofyn os oes rhaid i ni archebu?",
+   "takes": 2
+  },
+  {
+   "kind": "lego",
+   "id": "S1405L01",
+   "old": "os oes rhaid i ni fwcio",
+   "new": "os oes rhaid i ni archebu",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01B03",
+   "old": "dw i’n trio ffeindio allan os oes rhaid i ni fwcio",
+   "new": "dw i’n trio ffeindio allan os oes rhaid i ni archebu",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01B02",
+   "old": "ffeindio allan os oes rhaid i ni fwcio",
+   "new": "ffeindio allan os oes rhaid i ni archebu",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01B04",
+   "old": "wnest ti ofyn os oes rhaid i ni fwcio cyn dydd Iau?",
+   "new": "wnest ti ofyn os oes rhaid i ni archebu cyn dydd Iau?",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01B01",
+   "old": "os oes rhaid i ni fwcio heno",
+   "new": "os oes rhaid i ni archebu heno",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01C03",
+   "old": "fwcio",
+   "new": "archebu",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01U08",
+   "old": "diolch mi wna i ofyn iddo fo os oes rhaid i ni fwcio",
+   "new": "diolch mi wna i ofyn iddo fo os oes rhaid i ni archebu",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01U03",
+   "old": "wnest ti ofyn os oes rhaid i ni fwcio?",
+   "new": "wnest ti ofyn os oes rhaid i ni archebu?",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01U05",
+   "old": "ddudodd neb wrthaf fi os oes rhaid i ni fwcio",
+   "new": "ddudodd neb wrthaf fi os oes rhaid i ni archebu",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01U02",
+   "old": "dan ni ddim yn gwybod os oes rhaid i ni fwcio cyn dydd Iau",
+   "new": "dan ni ddim yn gwybod os oes rhaid i ni archebu cyn dydd Iau",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01U04",
+   "old": "mi wna i ofyn iddo fo os oes rhaid i ni fwcio pnawn ’ma",
+   "new": "mi wna i ofyn iddo fo os oes rhaid i ni archebu pnawn ’ma",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01U06",
+   "old": "os oes rhaid i ni fwcio dw i’n mynd i ffonio chdi heno",
+   "new": "os oes rhaid i ni archebu dw i’n mynd i ffonio chdi heno",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01U07",
+   "old": "o’n i isio ffeindio allan os oes rhaid i ni fwcio",
+   "new": "o’n i isio ffeindio allan os oes rhaid i ni archebu",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1405L01U01",
+   "old": "dw i ddim yn siŵr os oes rhaid i ni fwcio heno",
+   "new": "dw i ddim yn siŵr os oes rhaid i ni archebu heno",
+   "takes": 1
+  },
+  {
+   "kind": "seed",
+   "id": 1411,
+   "old": "bydden ni’n licio bwcio bwrdd i bedwar heno",
+   "new": "bydden ni’n licio archebu bwrdd i bedwar heno",
+   "takes": 2
+  },
+  {
+   "kind": "lego",
+   "id": "S1411L02",
+   "old": "bwcio bwrdd",
+   "new": "archebu bwrdd",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02B01",
+   "old": "bwcio bwrdd heno",
+   "new": "archebu bwrdd heno",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02B02",
+   "old": "dw i isio bwcio bwrdd",
+   "new": "dw i isio archebu bwrdd",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02B03",
+   "old": "ydan ni angen bwcio bwrdd?",
+   "new": "ydan ni angen archebu bwrdd?",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02B04",
+   "old": "ddylen ni ddim bwcio bwrdd heno",
+   "new": "ddylen ni ddim archebu bwrdd heno",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02C01",
+   "old": "bwcio",
+   "new": "archebu",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02U08",
+   "old": "bydden ni’n bwcio bwrdd ond oedd hi’n rhy brysur",
+   "new": "bydden ni’n archebu bwrdd ond oedd hi’n rhy brysur",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02U04",
+   "old": "ydan ni angen bwcio bwrdd nos ’fory?",
+   "new": "ydan ni angen archebu bwrdd nos ’fory?",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02U07",
+   "old": "o’n i’n trio bwcio bwrdd",
+   "new": "o’n i’n trio archebu bwrdd",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02U01",
+   "old": "byddai’n well bwcio bwrdd cyn dydd Iau",
+   "new": "byddai’n well archebu bwrdd cyn dydd Iau",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02U02",
+   "old": "dw i’n siŵr bo’ ni angen bwcio bwrdd",
+   "new": "dw i’n siŵr bo’ ni angen archebu bwrdd",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02U03",
+   "old": "doedd o ddim isio bwcio bwrdd nos Wener",
+   "new": "doedd o ddim isio archebu bwrdd nos Wener",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02U05",
+   "old": "ia dw i isio bwcio bwrdd heno",
+   "new": "ia dw i isio archebu bwrdd heno",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L02U06",
+   "old": "oedd hi isio bwcio bwrdd nos Sadwrn",
+   "new": "oedd hi isio archebu bwrdd nos Sadwrn",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L03B02",
+   "old": "bwcio bwrdd i bedwar",
+   "new": "archebu bwrdd i bedwar",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L03B03",
+   "old": "bwcio bwrdd i bedwar nos Sadwrn",
+   "new": "archebu bwrdd i bedwar nos Sadwrn",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L03B04",
+   "old": "bydden ni’n bwcio bwrdd i bedwar",
+   "new": "bydden ni’n archebu bwrdd i bedwar",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L03U01",
+   "old": "dw i’n trio bwcio bwrdd i bedwar",
+   "new": "dw i’n trio archebu bwrdd i bedwar",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L03U02",
+   "old": "ddylen ni ddim bwcio bwrdd i bedwar nos ’fory",
+   "new": "ddylen ni ddim archebu bwrdd i bedwar nos ’fory",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L03U03",
+   "old": "oeddan ni isio bwcio bwrdd i bedwar nos Wener",
+   "new": "oeddan ni isio archebu bwrdd i bedwar nos Wener",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L03U04",
+   "old": "byddai’n well bwcio bwrdd i bedwar",
+   "new": "byddai’n well archebu bwrdd i bedwar",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L03U06",
+   "old": "byddai’n braf bwcio bwrdd i bedwar heno",
+   "new": "byddai’n braf archebu bwrdd i bedwar heno",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1411L03U05",
+   "old": "oes rhaid bwcio bwrdd i bedwar?",
+   "new": "oes rhaid archebu bwrdd i bedwar?",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1412L01U01",
+   "old": "fydden ni ddim yn medru bwcio bwrdd i bedwar heno",
+   "new": "fydden ni ddim yn medru archebu bwrdd i bedwar heno",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1433L01U04",
+   "old": "doeddan nhw ddim yn medru bwcio bwrdd i bedwar heno",
+   "new": "doeddan nhw ddim yn medru archebu bwrdd i bedwar heno",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1446L01U03",
+   "old": "mae arna i ofn fyddan nhw ddim yn medru bwcio bwrdd heno",
+   "new": "mae arna i ofn fyddan nhw ddim yn medru archebu bwrdd heno",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1490L01U02",
+   "old": "os oes rhaid i ni fwcio fydda i byth yn hwyr",
+   "new": "os oes rhaid i ni archebu fydda i byth yn hwyr",
+   "takes": 1
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1525L01U06",
+   "old": "bydda i’n galw chdi nôl heno i weld os oes rhaid i ni fwcio",
+   "new": "bydda i’n galw chdi nôl heno i weld os oes rhaid i ni archebu",
+   "takes": 0
+  }
+ ],
+ "leftAlone": []
+}
