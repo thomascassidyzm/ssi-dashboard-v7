@@ -1,0 +1,1156 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1494L03"
+   },
+   "before": {
+    "id": "b32ee1a7-a99e-4cb0-854f-5603f199ccb5",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": "S1494L03",
+    "target_text": "ar ôl rhan gynta’",
+    "components": [
+     {
+      "known": "after",
+      "target": "ar ôl"
+     },
+     {
+      "known": "part",
+      "target": "rhan"
+     },
+     {
+      "known": "first",
+      "target": "gynta’"
+     }
+    ],
+    "known_text": "after the first part",
+    "known_audio_id": null,
+    "target1_audio_id": "d5ee2f3b-5f8c-47b8-b4a9-f1eb5ca94a60",
+    "target2_audio_id": "0adb651e-639a-4bf0-ad4d-97dfddd4eb09",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "b32ee1a7-a99e-4cb0-854f-5603f199ccb5",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": "S1494L03",
+    "target_text": "ar ôl y rhan gynta’",
+    "components": [
+     {
+      "known": "after the",
+      "target": "ar ôl y"
+     },
+     {
+      "known": "part",
+      "target": "rhan"
+     },
+     {
+      "known": "first",
+      "target": "gynta’"
+     }
+    ],
+    "known_text": "after the first part",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1494L03B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1494L03B04",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "o’n i isio stopio ar ôl rhan gynta’",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I wanted to stop after the first part",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "d0db232f-61a8-4ea8-8287-39c9d8315965",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1494L03B04",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "o’n i isio stopio ar ôl y rhan gynta’",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl y rhan gynta’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I wanted to stop after the first part",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1494L03B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1494L03B03",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "stopio ar ôl rhan gynta’ am saib",
+    "decomposition": [
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": "stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to stop after the first part for a rest",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "22baa88f-5dd7-4299-b751-5bd732a3eba4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1494L03B03",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "stopio ar ôl y rhan gynta’ am saib",
+    "decomposition": [
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": "stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl y rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to stop after the first part for a rest",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1494L03B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1494L03B02",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ar ôl rhan gynta’ oedd rhaid i ni adael",
+    "decomposition": [
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": "ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": " oedd rhaid i ni adael",
+      "isGhost": false
+     }
+    ],
+    "known_text": "after the first part we had to leave",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "edfc88d1-5c07-4e07-9312-ce56e7aa14b9",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1494L03B02",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ar ôl y rhan gynta’ oedd rhaid i ni adael",
+    "decomposition": [
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": "ar ôl y rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": " oedd rhaid i ni adael",
+      "isGhost": false
+     }
+    ],
+    "known_text": "after the first part we had to leave",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1494L03U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1494L03U02",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ddylen ni ddim stopio ar ôl rhan gynta’ heno",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we shouldn’t stop after the first part tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "082937a8-ce23-4803-bf44-def2304e62c0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1494L03U02",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ddylen ni ddim stopio ar ôl y rhan gynta’ heno",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl y rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we shouldn’t stop after the first part tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1494L03U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1494L03U01",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "doeddan nhw ddim isio stopio ar ôl rhan gynta’",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0184L03",
+      "target": "doeddan nhw ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they didn’t want to stop after the first part",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "8ecdd97d-02a3-4cfe-bb3d-fc849eae4a83",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1494L03U01",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "doeddan nhw ddim isio stopio ar ôl y rhan gynta’",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0184L03",
+      "target": "doeddan nhw ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl y rhan gynta’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they didn’t want to stop after the first part",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1494L03U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1494L03U04",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "byddai’n well mynd yn syth adre ar ôl rhan gynta’",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to go straight home after the first part",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "85993f20-7ee1-44d7-90e4-6d41e49395ad",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1494L03U04",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "byddai’n well mynd yn syth adre ar ôl y rhan gynta’",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl y rhan gynta’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to go straight home after the first part",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1494L03U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1494L03U03",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ar ôl rhan gynta’ oedd rhaid i ni adael achos oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": "ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": " oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0031L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ],
+    "known_text": "after the first part we had to leave because she was too busy",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1494L03U03",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ar ôl y rhan gynta’ oedd rhaid i ni adael achos oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": "ar ôl y rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": " oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0031L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ],
+    "known_text": "after the first part we had to leave because she was too busy",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1494L03U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1494L03U05",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "o’n i’n meddwl byddai’n braf stopio am saib ar ôl rhan gynta’",
+    "decomposition": [
+     {
+      "known": "I thought",
+      "legoId": "S0209L01",
+      "target": "o’n i’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "it would be nice",
+      "legoId": "S1402L01",
+      "target": " byddai’n braf",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I thought it would be nice to stop for a rest after the first part",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1494L03U05",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "o’n i’n meddwl byddai’n braf stopio am saib ar ôl y rhan gynta’",
+    "decomposition": [
+     {
+      "known": "I thought",
+      "legoId": "S0209L01",
+      "target": "o’n i’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "it would be nice",
+      "legoId": "S1402L01",
+      "target": " byddai’n braf",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl y rhan gynta’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I thought it would be nice to stop for a rest after the first part",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1494L03U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1494L03U06",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ar ôl rhan gynta’ oeddan nhw isio mynd yn syth adre",
+    "decomposition": [
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": "ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": " oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     }
+    ],
+    "known_text": "after the first part they wanted to go straight home",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1494L03U06",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ar ôl y rhan gynta’ oeddan nhw isio mynd yn syth adre",
+    "decomposition": [
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": "ar ôl y rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": " oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     }
+    ],
+    "known_text": "after the first part they wanted to go straight home",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1494L03U07"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1494L03U07",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "oedd rhaid i ni adael ar ôl rhan gynta’ neithiwr",
+    "decomposition": [
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": "oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we had to leave after the first part last night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1494L03U07",
+    "seed_number": 1494,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "oedd rhaid i ni adael ar ôl y rhan gynta’ neithiwr",
+    "decomposition": [
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": "oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl y rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we had to leave after the first part last night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L03U07",
+   "set": {
+    "target_text": "oedd rhaid i ni adael ar ôl rhan gynta’ neithiwr",
+    "decomposition": [
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": "oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L03U06",
+   "set": {
+    "target_text": "ar ôl rhan gynta’ oeddan nhw isio mynd yn syth adre",
+    "decomposition": [
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": "ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "they wanted",
+      "legoId": "S0186L01",
+      "target": " oeddan nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L03U05",
+   "set": {
+    "target_text": "o’n i’n meddwl byddai’n braf stopio am saib ar ôl rhan gynta’",
+    "decomposition": [
+     {
+      "known": "I thought",
+      "legoId": "S0209L01",
+      "target": "o’n i’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "it would be nice",
+      "legoId": "S1402L01",
+      "target": " byddai’n braf",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L03U03",
+   "set": {
+    "target_text": "ar ôl rhan gynta’ oedd rhaid i ni adael achos oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": "ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": " oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0031L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L03U04",
+   "set": {
+    "target_text": "byddai’n well mynd yn syth adre ar ôl rhan gynta’",
+    "target2_audio_id": "85993f20-7ee1-44d7-90e4-6d41e49395ad",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L03U01",
+   "set": {
+    "target_text": "doeddan nhw ddim isio stopio ar ôl rhan gynta’",
+    "target2_audio_id": "8ecdd97d-02a3-4cfe-bb3d-fc849eae4a83",
+    "decomposition": [
+     {
+      "known": "they didn’t want",
+      "legoId": "S0184L03",
+      "target": "doeddan nhw ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L03U02",
+   "set": {
+    "target_text": "ddylen ni ddim stopio ar ôl rhan gynta’ heno",
+    "target2_audio_id": "082937a8-ce23-4803-bf44-def2304e62c0",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L03B02",
+   "set": {
+    "target_text": "ar ôl rhan gynta’ oedd rhaid i ni adael",
+    "target2_audio_id": "edfc88d1-5c07-4e07-9312-ce56e7aa14b9",
+    "decomposition": [
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": "ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": " oedd rhaid i ni adael",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L03B03",
+   "set": {
+    "target_text": "stopio ar ôl rhan gynta’ am saib",
+    "target2_audio_id": "22baa88f-5dd7-4299-b751-5bd732a3eba4",
+    "decomposition": [
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": "stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1494L03B04",
+   "set": {
+    "target_text": "o’n i isio stopio ar ôl rhan gynta’",
+    "target2_audio_id": "d0db232f-61a8-4ea8-8287-39c9d8315965",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "after the first part",
+      "legoId": "S1494L03",
+      "target": " ar ôl rhan gynta’",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "b32ee1a7-a99e-4cb0-854f-5603f199ccb5",
+   "set": {
+    "target_text": "ar ôl rhan gynta’",
+    "components": [
+     {
+      "known": "after",
+      "target": "ar ôl"
+     },
+     {
+      "known": "part",
+      "target": "rhan"
+     },
+     {
+      "known": "first",
+      "target": "gynta’"
+     }
+    ],
+    "target1_audio_id": "d5ee2f3b-5f8c-47b8-b4a9-f1eb5ca94a60",
+    "target2_audio_id": "0adb651e-639a-4bf0-ad4d-97dfddd4eb09"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
