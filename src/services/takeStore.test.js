@@ -19,7 +19,8 @@ describe('takeStore — persistence rules', () => {
     expect(pending).toHaveLength(1)
     expect(pending[0].status).toBe(PENDING)
     expect(pending[0].attempts).toBe(0)
-    expect(pending[0].blob.size).toBe(9000)
+    expect(pending[0].blob).toBeUndefined()
+    expect((await s.load(pending[0].id)).blob.size).toBe(9000)
   })
 
   it('keeps takes for other voices out of this voice\'s queue', async () => {
@@ -39,7 +40,8 @@ describe('takeStore — persistence rules', () => {
     await s.put({ voiceId: 'v1', lineId: 'L1', blob: blob(200) })
     const pending = await s.pending('v1')
     expect(pending).toHaveLength(1)
-    expect(pending[0].blob.size).toBe(200)
+    expect(pending[0].blob).toBeUndefined()
+    expect((await s.load(pending[0].id)).blob.size).toBe(200)
   })
 
   it('supersedes a REFUSED take of the same line — the re-read answers the refusal', async () => {
@@ -76,7 +78,8 @@ describe('takeStore — there is no give-up point', () => {
     expect(pending).toHaveLength(1)
     expect(pending[0].status).toBe(PENDING)
     expect(pending[0].attempts).toBe(50)
-    expect(pending[0].blob.size).toBe(500)
+    expect(pending[0].blob).toBeUndefined()
+    expect((await s.load(pending[0].id)).blob.size).toBe(500)
     expect(pending[0].lastError).toContain('502')
   })
 
@@ -132,7 +135,7 @@ describe('takeStore — audio is deleted on confirmation or refusal, never other
     const [kept] = await s.refused('v1')
     expect(kept.status).toBe(REFUSED)
     expect(kept.lastError).toBe('We do not know that line.')
-    expect(kept.blob).toBeTruthy()
+    expect((await s.load(kept.id)).blob).toBeTruthy()
     expect(await s.nextDue('v1')).toBeNull()   // and it is never retried
   })
 
