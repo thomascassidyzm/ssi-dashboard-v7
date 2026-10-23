@@ -1,0 +1,784 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 1557,
+   "set": {
+    "known_text": "I would like them not to play such loud music"
+   },
+   "expect": {
+    "known_text": "I wish they wouldn't play such loud music"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1557L02",
+   "set": {
+    "known_text": "them not to play",
+    "components": [
+     {
+      "known": "them",
+      "target": "tasen nhw"
+     },
+     {
+      "known": "not to",
+      "target": "ddim yn"
+     },
+     {
+      "known": "play",
+      "target": "chwarae"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "they wouldn’t play",
+    "components": [
+     {
+      "known": "if they",
+      "target": "tasen nhw"
+     },
+     {
+      "known": "not",
+      "target": "ddim yn"
+     },
+     {
+      "known": "play",
+      "target": "chwarae"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02B02",
+   "set": {
+    "known_text": "I would like them not to play",
+    "decomposition": [
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "them not to play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish they wouldn’t play",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02B04",
+   "set": {
+    "known_text": "it would be nice for them not to play now",
+    "decomposition": [
+     {
+      "known": "it would be nice",
+      "legoId": "S1402L01",
+      "target": "byddai’n braf",
+      "isGhost": false
+     },
+     {
+      "known": "them not to play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "it would be nice if they wouldn’t play now",
+    "decomposition": [
+     {
+      "known": "it would be nice",
+      "legoId": "S1402L01",
+      "target": "byddai’n braf",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02B03",
+   "set": {
+    "known_text": "it would be better for them not to play in the mud",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "them not to play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the mud",
+      "legoId": "S0313L05",
+      "target": " yn y mwd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "it would be better if they wouldn’t play in the mud",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the mud",
+      "legoId": "S0313L05",
+      "target": " yn y mwd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02B01",
+   "set": {
+    "known_text": "for them not to play music"
+   },
+   "expect": {
+    "known_text": "if they didn’t play music"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02C01",
+   "set": {
+    "known_text": "them"
+   },
+   "expect": {
+    "known_text": "if they"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02C02",
+   "set": {
+    "known_text": "not to"
+   },
+   "expect": {
+    "known_text": "not"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02U04",
+   "set": {
+    "known_text": "do you think it would be better for them not to play tonight?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "wyt",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": " byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "them not to play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "do you think it would be better if they wouldn’t play tonight?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "wyt",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": " byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02U03",
+   "set": {
+    "known_text": "I’m sure it would be better for them not to play",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": " byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "them not to play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I’m sure it would be better if they wouldn’t play",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": " byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02U06",
+   "set": {
+    "known_text": "it would be better for them not to play with each other",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "them not to play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "with each other",
+      "legoId": "S1517L03",
+      "target": " efo’i gilydd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "it would be better if they wouldn’t play with each other",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "with each other",
+      "legoId": "S1517L03",
+      "target": " efo’i gilydd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02U05",
+   "set": {
+    "known_text": "I would like them not to play in the garden at the moment",
+    "decomposition": [
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "them not to play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L02",
+      "target": " yn yr ardd",
+      "isGhost": false
+     },
+     {
+      "known": "at the moment",
+      "legoId": "S0314L02",
+      "target": " ar hyn o bryd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish they wouldn’t play in the garden at the moment",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L02",
+      "target": " yn yr ardd",
+      "isGhost": false
+     },
+     {
+      "known": "at the moment",
+      "legoId": "S0314L02",
+      "target": " ar hyn o bryd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02U01",
+   "set": {
+    "known_text": "it would be a good idea for them not to play late at night",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "a good idea",
+      "legoId": "S0310L01",
+      "target": " syniad da",
+      "isGhost": false
+     },
+     {
+      "known": "them not to play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "it would be a good idea if they wouldn’t play late at night",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "a good idea",
+      "legoId": "S0310L01",
+      "target": " syniad da",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L02U02",
+   "set": {
+    "known_text": "nothing would make me happier than for them not to play tonight",
+    "decomposition": [
+     {
+      "known": "nothing would",
+      "legoId": "S0272L01",
+      "target": "fyddai dim byd",
+      "isGhost": false
+     },
+     {
+      "known": "make me happier",
+      "legoId": "S0272L02",
+      "target": " yn gwneud fi’n hapusach",
+      "isGhost": false
+     },
+     {
+      "known": "than",
+      "legoId": "S1132L02",
+      "target": " na",
+      "isGhost": false
+     },
+     {
+      "known": "them not to play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "nothing would make me happier than if they wouldn’t play tonight",
+    "decomposition": [
+     {
+      "known": "nothing would",
+      "legoId": "S0272L01",
+      "target": "fyddai dim byd",
+      "isGhost": false
+     },
+     {
+      "known": "make me happier",
+      "legoId": "S0272L02",
+      "target": " yn gwneud fi’n hapusach",
+      "isGhost": false
+     },
+     {
+      "known": "than",
+      "legoId": "S1132L02",
+      "target": " na",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1557L03U01",
+   "set": {
+    "known_text": "I would like them not to play such loud music late at night",
+    "decomposition": [
+     {
+      "known": "I would like",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "them not to play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish they wouldn’t play such loud music late at night",
+    "decomposition": [
+     {
+      "known": "I wish",
+      "legoId": "S1557L01",
+      "target": "’swn i’n licio",
+      "isGhost": false
+     },
+     {
+      "known": "they wouldn’t play",
+      "legoId": "S1557L02",
+      "target": " tasen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L03",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "seed",
+   "id": 1557,
+   "old": "I wish they wouldn't play such loud music",
+   "new": "I would like them not to play such loud music"
+  },
+  {
+   "kind": "lego",
+   "id": "S1557L02",
+   "old": "they wouldn’t play",
+   "new": "them not to play"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02B02",
+   "old": "I wish they wouldn’t play",
+   "new": "I would like them not to play",
+   "target": "’swn i’n licio tasen nhw ddim yn chwarae"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02B04",
+   "old": "it would be nice if they wouldn’t play now",
+   "new": "it would be nice for them not to play now",
+   "target": "byddai’n braf tasen nhw ddim yn chwarae rŵan"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02B03",
+   "old": "it would be better if they wouldn’t play in the mud",
+   "new": "it would be better for them not to play in the mud",
+   "target": "byddai’n well tasen nhw ddim yn chwarae yn y mwd"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02B01",
+   "old": "if they didn’t play music",
+   "new": "for them not to play music",
+   "target": "tasen nhw ddim yn chwarae cerddoriaeth"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02C01",
+   "old": "if they",
+   "new": "them",
+   "target": "tasen nhw"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02C02",
+   "old": "not",
+   "new": "not to",
+   "target": "ddim yn"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02U04",
+   "old": "do you think it would be better if they wouldn’t play tonight?",
+   "new": "do you think it would be better for them not to play tonight?",
+   "target": "wyt ti’n meddwl byddai’n well tasen nhw ddim yn chwarae heno?"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02U03",
+   "old": "I’m sure it would be better if they wouldn’t play",
+   "new": "I’m sure it would be better for them not to play",
+   "target": "dw i’n siŵr byddai’n well tasen nhw ddim yn chwarae"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02U06",
+   "old": "it would be better if they wouldn’t play with each other",
+   "new": "it would be better for them not to play with each other",
+   "target": "byddai’n well tasen nhw ddim yn chwarae efo’i gilydd"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02U05",
+   "old": "I wish they wouldn’t play in the garden at the moment",
+   "new": "I would like them not to play in the garden at the moment",
+   "target": "’swn i’n licio tasen nhw ddim yn chwarae yn yr ardd ar hyn o bryd"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02U01",
+   "old": "it would be a good idea if they wouldn’t play late at night",
+   "new": "it would be a good idea for them not to play late at night",
+   "target": "byddai’n syniad da tasen nhw ddim yn chwarae yn hwyr yn y nos"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L02U02",
+   "old": "nothing would make me happier than if they wouldn’t play tonight",
+   "new": "nothing would make me happier than for them not to play tonight",
+   "target": "fyddai dim byd yn gwneud fi’n hapusach na tasen nhw ddim yn chwarae heno"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1557L03U01",
+   "old": "I wish they wouldn’t play such loud music late at night",
+   "new": "I would like them not to play such loud music late at night",
+   "target": "’swn i’n licio tasen nhw ddim yn chwarae cerddoriaeth mor uchel yn hwyr yn y nos"
+  }
+ ],
+ "left": []
+}

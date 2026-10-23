@@ -1,0 +1,678 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 1557,
+   "set": {
+    "known_text": "I would like them not to play such loud music"
+   },
+   "expect": {
+    "known_text": "I wish they wouldn't play such loud music"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L02U03",
+   "set": {
+    "known_text": "I would like them not to play such loud music now",
+    "decomposition": [
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L02",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S1001L05",
+      "target": " nawr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish they wouldn’t play such loud music now",
+    "decomposition": [
+     {
+      "known": "I wish they wouldn’t play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "such loud music",
+      "legoId": "S1557L02",
+      "target": " cerddoriaeth mor uchel",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S1001L05",
+      "target": " nawr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1557L01",
+   "set": {
+    "known_text": "I would like them not to play",
+    "components": [
+     {
+      "known": "I would like them not to play",
+      "target": "hoffen i ’sen nhw ddim yn chwarae"
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish they wouldn’t play",
+    "components": [
+     {
+      "known": "I wish they wouldn’t play",
+      "target": "hoffen i ’sen nhw ddim yn chwarae"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01B03",
+   "set": {
+    "known_text": "but I would like them not to play",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S1019L01",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "but I wish they wouldn’t play",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S1019L01",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "I wish they wouldn’t play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01B01",
+   "set": {
+    "known_text": "I would like them not to play upstairs",
+    "decomposition": [
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish they wouldn’t play upstairs",
+    "decomposition": [
+     {
+      "known": "I wish they wouldn’t play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01B02",
+   "set": {
+    "known_text": "because I would like them not to play in the mud",
+    "decomposition": [
+     {
+      "known": "because",
+      "legoId": "S1022L01",
+      "target": "achos",
+      "isGhost": false
+     },
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the mud",
+      "legoId": "S1547L04",
+      "target": " yn y mwd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "because I wish they wouldn’t play in the mud",
+    "decomposition": [
+     {
+      "known": "because",
+      "legoId": "S1022L01",
+      "target": "achos",
+      "isGhost": false
+     },
+     {
+      "known": "I wish they wouldn’t play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the mud",
+      "legoId": "S1547L04",
+      "target": " yn y mwd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01B04",
+   "set": {
+    "known_text": "I would like them not to play in the office",
+    "decomposition": [
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the office",
+      "legoId": "S1184L02",
+      "target": " yn y swyddfa",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish they wouldn’t play in the office",
+    "decomposition": [
+     {
+      "known": "I wish they wouldn’t play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the office",
+      "legoId": "S1184L02",
+      "target": " yn y swyddfa",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01U02",
+   "set": {
+    "known_text": "it doesn’t matter but I would like them not to play",
+    "decomposition": [
+     {
+      "known": "it doesn’t matter",
+      "legoId": "S1409L01",
+      "target": "sdim ots",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S1019L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "it doesn’t matter but I wish they wouldn’t play",
+    "decomposition": [
+     {
+      "known": "it doesn’t matter",
+      "legoId": "S1409L01",
+      "target": "sdim ots",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S1019L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I wish they wouldn’t play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01U01",
+   "set": {
+    "known_text": "I would like them not to play music late at night",
+    "decomposition": [
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L02",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L03",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish they wouldn’t play music late at night",
+    "decomposition": [
+     {
+      "known": "I wish they wouldn’t play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "music",
+      "legoId": "S1556L02",
+      "target": " cerddoriaeth",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L03",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01U03",
+   "set": {
+    "known_text": "they play in the garden but I would like them not to play upstairs",
+    "decomposition": [
+     {
+      "known": "they play",
+      "legoId": "S1556L01",
+      "target": "maen nhw’n chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L03",
+      "target": " yn yr ardd",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S1019L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "they play in the garden but I wish they wouldn’t play upstairs",
+    "decomposition": [
+     {
+      "known": "they play",
+      "legoId": "S1556L01",
+      "target": "maen nhw’n chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L03",
+      "target": " yn yr ardd",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S1019L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I wish they wouldn’t play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01U04",
+   "set": {
+    "known_text": "I’m sure it will be okay but I would like them not to play in the mud",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "it will be okay",
+      "legoId": "S1406L02",
+      "target": " bydd hi’n iawn",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S1019L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the mud",
+      "legoId": "S1547L04",
+      "target": " yn y mwd",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I’m sure it will be okay but I wish they wouldn’t play in the mud",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "it will be okay",
+      "legoId": "S1406L02",
+      "target": " bydd hi’n iawn",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S1019L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I wish they wouldn’t play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the mud",
+      "legoId": "S1547L04",
+      "target": " yn y mwd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01U05",
+   "set": {
+    "known_text": "I would like them not to play in this dreadful weather",
+    "decomposition": [
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in this dreadful weather",
+      "legoId": "S1534L03",
+      "target": " yn y tywydd ofnadwy ’ma",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish they wouldn’t play in this dreadful weather",
+    "decomposition": [
+     {
+      "known": "I wish they wouldn’t play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in this dreadful weather",
+      "legoId": "S1534L03",
+      "target": " yn y tywydd ofnadwy ’ma",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01U06",
+   "set": {
+    "known_text": "I would like them not to play on their own in another room",
+    "decomposition": [
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "on their own",
+      "legoId": "S1516L03",
+      "target": " ar eu pennau eu hunain",
+      "isGhost": false
+     },
+     {
+      "known": "in another room",
+      "legoId": "S1528L04",
+      "target": " mewn stafell arall",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "known_text": "I wish they wouldn’t play on their own in another room",
+    "decomposition": [
+     {
+      "known": "I wish they wouldn’t play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "on their own",
+      "legoId": "S1516L03",
+      "target": " ar eu pennau eu hunain",
+      "isGhost": false
+     },
+     {
+      "known": "in another room",
+      "legoId": "S1528L04",
+      "target": " mewn stafell arall",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "seed",
+   "id": 1557,
+   "old": "I wish they wouldn't play such loud music",
+   "new": "I would like them not to play such loud music"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L02U03",
+   "old": "I wish they wouldn’t play such loud music now",
+   "new": "I would like them not to play such loud music now",
+   "target": "hoffen i ’sen nhw ddim yn chwarae cerddoriaeth mor uchel nawr"
+  },
+  {
+   "kind": "lego",
+   "id": "S1557L01",
+   "old": "I wish they wouldn’t play",
+   "new": "I would like them not to play"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01B03",
+   "old": "but I wish they wouldn’t play",
+   "new": "but I would like them not to play",
+   "target": "ond hoffen i ’sen nhw ddim yn chwarae"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01B01",
+   "old": "I wish they wouldn’t play upstairs",
+   "new": "I would like them not to play upstairs",
+   "target": "hoffen i ’sen nhw ddim yn chwarae lan staer"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01B02",
+   "old": "because I wish they wouldn’t play in the mud",
+   "new": "because I would like them not to play in the mud",
+   "target": "achos hoffen i ’sen nhw ddim yn chwarae yn y mwd"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01B04",
+   "old": "I wish they wouldn’t play in the office",
+   "new": "I would like them not to play in the office",
+   "target": "hoffen i ’sen nhw ddim yn chwarae yn y swyddfa"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01U02",
+   "old": "it doesn’t matter but I wish they wouldn’t play",
+   "new": "it doesn’t matter but I would like them not to play",
+   "target": "sdim ots ond hoffen i ’sen nhw ddim yn chwarae"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01U01",
+   "old": "I wish they wouldn’t play music late at night",
+   "new": "I would like them not to play music late at night",
+   "target": "hoffen i ’sen nhw ddim yn chwarae cerddoriaeth yn hwyr yn y nos"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01U03",
+   "old": "they play in the garden but I wish they wouldn’t play upstairs",
+   "new": "they play in the garden but I would like them not to play upstairs",
+   "target": "maen nhw’n chwarae yn yr ardd ond hoffen i ’sen nhw ddim yn chwarae lan staer"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01U04",
+   "old": "I’m sure it will be okay but I wish they wouldn’t play in the mud",
+   "new": "I’m sure it will be okay but I would like them not to play in the mud",
+   "target": "dw i’n siŵr bydd hi’n iawn ond hoffen i ’sen nhw ddim yn chwarae yn y mwd"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01U05",
+   "old": "I wish they wouldn’t play in this dreadful weather",
+   "new": "I would like them not to play in this dreadful weather",
+   "target": "hoffen i ’sen nhw ddim yn chwarae yn y tywydd ofnadwy ’ma"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01U06",
+   "old": "I wish they wouldn’t play on their own in another room",
+   "new": "I would like them not to play on their own in another room",
+   "target": "hoffen i ’sen nhw ddim yn chwarae ar eu pennau eu hunain mewn stafell arall"
+  }
+ ],
+ "left": []
+}
