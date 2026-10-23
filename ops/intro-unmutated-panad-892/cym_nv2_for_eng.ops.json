@@ -1,0 +1,209 @@
+{
+ "coverage": {
+  "cym_nv2_for_eng": {
+   "seeds": 984,
+   "legos": 2195,
+   "phrases": 15301,
+   "banad_rows": 27
+  },
+  "cym_sv2_for_eng": {
+   "seeds": 1002,
+   "legos": 2644,
+   "phrases": 18034,
+   "banad_rows": 0
+  }
+ },
+ "change": {
+  "lego:S0274L03": "intro LEGO, standalone",
+  "lego:S1489L02": "intro LEGO, standalone (+ component banad -> panad)",
+  "phrase:S0274L03B01": "begins with the intro, no trigger ('banad o goffi i mi')",
+  "phrase:S1489L02C01": "bare component phrase"
+ },
+ "stay": {
+  "seed:274": "seed sentence (os na wnei di banad)",
+  "seed:1489": "seed sentence (os na wnei di banad)",
+  "phrase:S0274L03B02": "ges i +SM",
+  "phrase:S0274L03B03": "gest ti +SM",
+  "phrase:S0274L03B04": "gest ti +SM",
+  "phrase:S0274L03B05": "mae 'na +SM (written 'mae na')",
+  "phrase:S0274L03B06": "wnei di +SM",
+  "phrase:S0274L04B04": "wnei di +SM",
+  "phrase:S0274L04B05": "wnei di +SM",
+  "phrase:S0274L05B06": "wnei di +SM",
+  "phrase:S0206L01B02": "am +SM",
+  "phrase:S0206L01B06": "am +SM",
+  "phrase:S0277L02B04": "am +SM",
+  "phrase:S0281L01B02": "gest ti +SM",
+  "phrase:S1489L02B02": "wnei di +SM",
+  "phrase:S1489L02B03": "gawn ni +SM",
+  "phrase:S1489L02U01": "gawn ni +SM",
+  "phrase:S1489L02U02": "gynnyn nhw (possessed) +SM",
+  "phrase:S1489L02U03": "gen i (possessed) +SM",
+  "phrase:S1489L02U04": "gan y fyfyrwraig 'na (possessed) +SM",
+  "phrase:S1489L02U05": "gynnyn nhw (possessed) +SM",
+  "phrase:S1489L02U06": "gawn ni +SM",
+  "phrase:S1629L01U02": "gawn ni +SM"
+ },
+ "ops": [
+  {
+   "op": "lego.update",
+   "lego_id": "S0274L03",
+   "set": {
+    "target_text": "panad o goffi",
+    "components": null
+   },
+   "expect": {
+    "target_text": "banad o goffi",
+    "components": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0274L03B01",
+   "set": {
+    "target_text": "panad o goffi i mi",
+    "decomposition": [
+     {
+      "known": "a cup of coffee",
+      "legoId": "S0274L03",
+      "target": "panad o goffi",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "me",
+      "legoId": "S0274L02",
+      "target": " i mi",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "banad o goffi i mi",
+    "decomposition": [
+     {
+      "known": "a cup of coffee",
+      "legoId": "S0274L03",
+      "target": "banad o goffi",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "me",
+      "legoId": "S0274L02",
+      "target": " i mi",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1489L02",
+   "set": {
+    "target_text": "panad cryf o goffi",
+    "components": [
+     {
+      "known": "a cuppa",
+      "target": "panad"
+     },
+     {
+      "known": "strong",
+      "target": "cryf"
+     },
+     {
+      "known": "of coffee",
+      "target": "o goffi"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "banad cryf o goffi",
+    "components": [
+     {
+      "known": "a cuppa",
+      "target": "banad"
+     },
+     {
+      "known": "strong",
+      "target": "cryf"
+     },
+     {
+      "known": "of coffee",
+      "target": "o goffi"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1489L02C01",
+   "set": {
+    "target_text": "panad",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "panad",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "banad",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "banad",
+      "isGhost": true
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "lego",
+   "id": "S0274L03",
+   "old": "banad o goffi",
+   "new": "panad o goffi",
+   "slots": {
+    "target1": "30a24e83-7bbf-4d99-ad8b-16c50fc7e286",
+    "target2": "1d6e116a-883a-498f-98e5-36eddeeac35a",
+    "presentation": "d20c1497-8e90-440f-8255-bd617ef80dcf"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "S0274L03B01",
+   "old": "banad o goffi i mi",
+   "new": "panad o goffi i mi",
+   "slots": {
+    "target1": "8a02a32e-d64a-4c3c-be93-91ebbd8c9150",
+    "target2": "64748eb0-e532-498a-bc74-5c94cd1472d0"
+   }
+  },
+  {
+   "kind": "lego",
+   "id": "S1489L02",
+   "old": "banad cryf o goffi",
+   "new": "panad cryf o goffi",
+   "slots": {
+    "target1": "a08a47d3-ed91-4fcd-8a9e-6ec9a9c8dd2f",
+    "target2": "f95423dd-7519-47ef-adef-9fd392ed4a91",
+    "presentation": null
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "S1489L02C01",
+   "old": "banad",
+   "new": "panad",
+   "slots": {
+    "target1": null,
+    "target2": null
+   }
+  }
+ ]
+}

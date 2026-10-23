@@ -1,0 +1,292 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S0274L03"
+   },
+   "before": {
+    "id": "eb63b2f5-a8e3-453d-9e62-40330c931a57",
+    "seed_number": 274,
+    "lego_index": 3,
+    "lego_id": "S0274L03",
+    "target_text": "banad o goffi",
+    "components": null,
+    "known_text": "a cup of coffee",
+    "known_audio_id": "a2b8eaea-99eb-43ce-89d4-638d564495cc",
+    "target1_audio_id": "30a24e83-7bbf-4d99-ad8b-16c50fc7e286",
+    "target2_audio_id": "1d6e116a-883a-498f-98e5-36eddeeac35a",
+    "presentation_audio_id": "d20c1497-8e90-440f-8255-bd617ef80dcf"
+   },
+   "after": {
+    "id": "eb63b2f5-a8e3-453d-9e62-40330c931a57",
+    "seed_number": 274,
+    "lego_index": 3,
+    "lego_id": "S0274L03",
+    "target_text": "panad o goffi",
+    "components": null,
+    "known_text": "a cup of coffee",
+    "known_audio_id": "a2b8eaea-99eb-43ce-89d4-638d564495cc",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S0274L03B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S0274L03B01",
+    "seed_number": 274,
+    "lego_index": 3,
+    "lego_id": "S0274L03",
+    "target_text": "banad o goffi i mi",
+    "decomposition": [
+     {
+      "known": "a cup of coffee",
+      "legoId": "S0274L03",
+      "target": "banad o goffi",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "me",
+      "legoId": "S0274L02",
+      "target": " i mi",
+      "isGhost": false
+     }
+    ],
+    "known_text": "a cup of coffee for me",
+    "known_audio_id": "7ac2a306-b50a-476e-a909-3188b99d44a8",
+    "target1_audio_id": "8a02a32e-d64a-4c3c-be93-91ebbd8c9150",
+    "target2_audio_id": "64748eb0-e532-498a-bc74-5c94cd1472d0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S0274L03B01",
+    "seed_number": 274,
+    "lego_index": 3,
+    "lego_id": "S0274L03",
+    "target_text": "panad o goffi i mi",
+    "decomposition": [
+     {
+      "known": "a cup of coffee",
+      "legoId": "S0274L03",
+      "target": "panad o goffi",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "me",
+      "legoId": "S0274L02",
+      "target": " i mi",
+      "isGhost": false
+     }
+    ],
+    "known_text": "a cup of coffee for me",
+    "known_audio_id": "7ac2a306-b50a-476e-a909-3188b99d44a8",
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1489L02"
+   },
+   "before": {
+    "id": "49d18a85-9182-445c-8531-c4bf9f88841a",
+    "seed_number": 1489,
+    "lego_index": 2,
+    "lego_id": "S1489L02",
+    "target_text": "banad cryf o goffi",
+    "components": [
+     {
+      "known": "a cuppa",
+      "target": "banad"
+     },
+     {
+      "known": "strong",
+      "target": "cryf"
+     },
+     {
+      "known": "of coffee",
+      "target": "o goffi"
+     }
+    ],
+    "known_text": "a strong cup of coffee",
+    "known_audio_id": null,
+    "target1_audio_id": "a08a47d3-ed91-4fcd-8a9e-6ec9a9c8dd2f",
+    "target2_audio_id": "f95423dd-7519-47ef-adef-9fd392ed4a91",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "49d18a85-9182-445c-8531-c4bf9f88841a",
+    "seed_number": 1489,
+    "lego_index": 2,
+    "lego_id": "S1489L02",
+    "target_text": "panad cryf o goffi",
+    "components": [
+     {
+      "known": "a cuppa",
+      "target": "panad"
+     },
+     {
+      "known": "strong",
+      "target": "cryf"
+     },
+     {
+      "known": "of coffee",
+      "target": "o goffi"
+     }
+    ],
+    "known_text": "a strong cup of coffee",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1489L02C01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1489L02C01",
+    "seed_number": 1489,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "banad",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "banad",
+      "isGhost": true
+     }
+    ],
+    "known_text": "a cuppa",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1489L02C01",
+    "seed_number": 1489,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "panad",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "panad",
+      "isGhost": true
+     }
+    ],
+    "known_text": "a cuppa",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1489L02C01",
+   "set": {
+    "target_text": "banad",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "banad",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "49d18a85-9182-445c-8531-c4bf9f88841a",
+   "set": {
+    "target_text": "banad cryf o goffi",
+    "components": [
+     {
+      "known": "a cuppa",
+      "target": "banad"
+     },
+     {
+      "known": "strong",
+      "target": "cryf"
+     },
+     {
+      "known": "of coffee",
+      "target": "o goffi"
+     }
+    ],
+    "target1_audio_id": "a08a47d3-ed91-4fcd-8a9e-6ec9a9c8dd2f",
+    "target2_audio_id": "f95423dd-7519-47ef-adef-9fd392ed4a91"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0274L03B01",
+   "set": {
+    "target_text": "banad o goffi i mi",
+    "target1_audio_id": "8a02a32e-d64a-4c3c-be93-91ebbd8c9150",
+    "target2_audio_id": "64748eb0-e532-498a-bc74-5c94cd1472d0",
+    "decomposition": [
+     {
+      "known": "a cup of coffee",
+      "legoId": "S0274L03",
+      "target": "banad o goffi",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "me",
+      "legoId": "S0274L02",
+      "target": " i mi",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "eb63b2f5-a8e3-453d-9e62-40330c931a57",
+   "set": {
+    "target_text": "banad o goffi",
+    "target1_audio_id": "30a24e83-7bbf-4d99-ad8b-16c50fc7e286",
+    "target2_audio_id": "1d6e116a-883a-498f-98e5-36eddeeac35a",
+    "presentation_audio_id": "d20c1497-8e90-440f-8255-bd617ef80dcf"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
