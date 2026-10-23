@@ -1,0 +1,1340 @@
+{
+ "chg": [
+  {
+   "kind": "seed",
+   "id": 1566,
+   "known": "I'd have thought more if it had been my choice",
+   "target": "fyswn i wedi meddwl mwy tasai o wedi bod yn fy newis i",
+   "newKnown": null,
+   "newTarget": "fyswn i wedi meddwl mwy tasai fo wedi bod yn fy newis i",
+   "audio": {
+    "known": null,
+    "target1": "3c5fb122-198d-431d-a070-b40fda14834e",
+    "target2": "efa1ce50-af22-40e0-b8af-6dbac82b408c"
+   }
+  },
+  {
+   "kind": "lego",
+   "id": "S1566L03",
+   "known": "if it had been",
+   "target": "tasai o wedi bod",
+   "newKnown": null,
+   "newTarget": "tasai fo wedi bod",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": "fbe07677-f72d-4114-8b25-926c7ba1b4fd"
+   }
+  },
+  {
+   "kind": "lego_component",
+   "lego_id": "S1566L03",
+   "index": 0,
+   "newTarget": "tasai fo",
+   "old": "tasai o"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1566L03B01",
+   "known": "if it had been late",
+   "target": "tasai o wedi bod yn hwyr",
+   "newKnown": null,
+   "newTarget": "tasai fo wedi bod yn hwyr",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": "aa3e21df-1787-4dfc-a9de-646af6da716c"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1566L03B03",
+   "known": "if it had been last night",
+   "target": "tasai o wedi bod neithiwr",
+   "newKnown": null,
+   "newTarget": "tasai fo wedi bod neithiwr",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": "26102413-a783-425c-a28d-f854aec07faa"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1566L03B02",
+   "known": "even if it had been",
+   "target": "hyd yn oed tasai o wedi bod",
+   "newKnown": null,
+   "newTarget": "hyd yn oed tasai fo wedi bod",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": "c3fda7e0-669e-40a2-863d-94756ad2f96b"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1566L03B04",
+   "known": "even if it had been tonight",
+   "target": "hyd yn oed tasai o wedi bod heno",
+   "newKnown": null,
+   "newTarget": "hyd yn oed tasai fo wedi bod heno",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": "cd6c1f3d-b775-485d-8093-4ddc4cc85b0a"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1566L03C01",
+   "known": "if it",
+   "target": "tasai o",
+   "newKnown": null,
+   "newTarget": "tasai fo",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": null
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1566L03U02",
+   "known": "if it had been on Tuesday I’d have thought about it",
+   "target": "tasai o wedi bod ddydd Mawrth fyswn i wedi meddwl amdano fo",
+   "newKnown": null,
+   "newTarget": "tasai fo wedi bod ddydd Mawrth fyswn i wedi meddwl amdano fo",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": "8066d58e-4d5b-472c-8924-0e82e780a8fb"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1566L03U01",
+   "known": "I wouldn’t have been able to keep going any longer if it had been late",
+   "target": "fyswn i ddim wedi medru dal ati’n hirach tasai o wedi bod yn hwyr",
+   "newKnown": null,
+   "newTarget": "fyswn i ddim wedi medru dal ati’n hirach tasai fo wedi bod yn hwyr",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": null
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1566L03U03",
+   "known": "I’d have thought about it more carefully if it had been tonight",
+   "target": "fyswn i wedi meddwl amdano fo’n fwy gofalus tasai o wedi bod heno",
+   "newKnown": null,
+   "newTarget": "fyswn i wedi meddwl amdano fo’n fwy gofalus tasai fo wedi bod heno",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": null
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1566L03U06",
+   "known": "even if it had been late I’d have thought about it",
+   "target": "hyd yn oed tasai o wedi bod yn hwyr fyswn i wedi meddwl amdano fo",
+   "newKnown": null,
+   "newTarget": "hyd yn oed tasai fo wedi bod yn hwyr fyswn i wedi meddwl amdano fo",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": null
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1566L03U04",
+   "known": "I wouldn’t have been able to escape even if it had been last night",
+   "target": "fyswn i ddim wedi medru dianc hyd yn oed tasai o wedi bod neithiwr",
+   "newKnown": null,
+   "newTarget": "fyswn i ddim wedi medru dianc hyd yn oed tasai fo wedi bod neithiwr",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": "c4e70420-f856-44d5-a4f9-9846ae364d98"
+   }
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1566L03U05",
+   "known": "if it had been tonight I wouldn’t have been able to keep going",
+   "target": "tasai o wedi bod heno fyswn i ddim wedi medru dal ati",
+   "newKnown": null,
+   "newTarget": "tasai fo wedi bod heno fyswn i ddim wedi medru dal ati",
+   "audio": {
+    "known": null,
+    "target1": null,
+    "target2": "0bd7a8b9-f7fe-4409-9bfb-daa85c13965b"
+   }
+  }
+ ],
+ "plan": {
+  "ops": [
+   {
+    "op": "audio.update",
+    "audio_id": "3c5fb122-198d-431d-a070-b40fda14834e",
+    "set": {
+     "text": "fyswn i wedi meddwl mwy tasai fo wedi bod yn fy newis i"
+    },
+    "expect": {
+     "text": "fyswn i wedi meddwl mwy tasai o wedi bod yn fy newis i"
+    }
+   },
+   {
+    "op": "audio.update",
+    "audio_id": "efa1ce50-af22-40e0-b8af-6dbac82b408c",
+    "set": {
+     "text": "fyswn i wedi meddwl mwy tasai fo wedi bod yn fy newis i"
+    },
+    "expect": {
+     "text": "fyswn i wedi meddwl mwy tasai o wedi bod yn fy newis i"
+    }
+   },
+   {
+    "op": "audio.update",
+    "audio_id": "fbe07677-f72d-4114-8b25-926c7ba1b4fd",
+    "set": {
+     "text": "tasai fo wedi bod"
+    },
+    "expect": {
+     "text": "tasai o wedi bod"
+    }
+   },
+   {
+    "op": "audio.update",
+    "audio_id": "aa3e21df-1787-4dfc-a9de-646af6da716c",
+    "set": {
+     "text": "tasai fo wedi bod yn hwyr"
+    },
+    "expect": {
+     "text": "tasai o wedi bod yn hwyr"
+    }
+   },
+   {
+    "op": "audio.update",
+    "audio_id": "26102413-a783-425c-a28d-f854aec07faa",
+    "set": {
+     "text": "tasai fo wedi bod neithiwr"
+    },
+    "expect": {
+     "text": "tasai o wedi bod neithiwr"
+    }
+   },
+   {
+    "op": "audio.update",
+    "audio_id": "c3fda7e0-669e-40a2-863d-94756ad2f96b",
+    "set": {
+     "text": "hyd yn oed tasai fo wedi bod"
+    },
+    "expect": {
+     "text": "hyd yn oed tasai o wedi bod"
+    }
+   },
+   {
+    "op": "audio.update",
+    "audio_id": "cd6c1f3d-b775-485d-8093-4ddc4cc85b0a",
+    "set": {
+     "text": "hyd yn oed tasai fo wedi bod heno"
+    },
+    "expect": {
+     "text": "hyd yn oed tasai o wedi bod heno"
+    }
+   },
+   {
+    "op": "audio.update",
+    "audio_id": "8066d58e-4d5b-472c-8924-0e82e780a8fb",
+    "set": {
+     "text": "tasai fo wedi bod ddydd Mawrth fyswn i wedi meddwl amdano fo"
+    },
+    "expect": {
+     "text": "tasai o wedi bod ddydd Mawrth fyswn i wedi meddwl amdano fo"
+    }
+   },
+   {
+    "op": "audio.update",
+    "audio_id": "c4e70420-f856-44d5-a4f9-9846ae364d98",
+    "set": {
+     "text": "fyswn i ddim wedi medru dianc hyd yn oed tasai fo wedi bod neithiwr"
+    },
+    "expect": {
+     "text": "fyswn i ddim wedi medru dianc hyd yn oed tasai o wedi bod neithiwr"
+    }
+   },
+   {
+    "op": "audio.update",
+    "audio_id": "0bd7a8b9-f7fe-4409-9bfb-daa85c13965b",
+    "set": {
+     "text": "tasai fo wedi bod heno fyswn i ddim wedi medru dal ati"
+    },
+    "expect": {
+     "text": "tasai o wedi bod heno fyswn i ddim wedi medru dal ati"
+    }
+   },
+   {
+    "op": "seed.update",
+    "seed_number": 1566,
+    "set": {
+     "target_text": "fyswn i wedi meddwl mwy tasai fo wedi bod yn fy newis i"
+    },
+    "expect": {
+     "target_text": "fyswn i wedi meddwl mwy tasai o wedi bod yn fy newis i",
+     "known_audio_id": null,
+     "target1_audio_id": "3c5fb122-198d-431d-a070-b40fda14834e",
+     "target2_audio_id": "efa1ce50-af22-40e0-b8af-6dbac82b408c"
+    }
+   },
+   {
+    "op": "lego.update",
+    "lego_id": "S1566L03",
+    "set": {
+     "target_text": "tasai fo wedi bod",
+     "components": [
+      {
+       "known": "if it",
+       "target": "tasai fo"
+      },
+      {
+       "known": "had been",
+       "target": "wedi bod"
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "tasai o wedi bod",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": "fbe07677-f72d-4114-8b25-926c7ba1b4fd",
+     "components": [
+      {
+       "known": "if it",
+       "target": "tasai o"
+      },
+      {
+       "known": "had been",
+       "target": "wedi bod"
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "cym_nv2_for_eng:S1566L03B01",
+    "set": {
+     "target_text": "tasai fo wedi bod yn hwyr",
+     "decomposition": [
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": "tasai fo wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " yn",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hwyr",
+       "isGhost": true
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "tasai o wedi bod yn hwyr",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": "aa3e21df-1787-4dfc-a9de-646af6da716c",
+     "decomposition": [
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": "tasai o wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " yn",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hwyr",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "cym_nv2_for_eng:S1566L03B03",
+    "set": {
+     "target_text": "tasai fo wedi bod neithiwr",
+     "decomposition": [
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": "tasai fo wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "last night",
+       "legoId": "S0073L03",
+       "target": " neithiwr",
+       "isGhost": false
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "tasai o wedi bod neithiwr",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": "26102413-a783-425c-a28d-f854aec07faa",
+     "decomposition": [
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": "tasai o wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "last night",
+       "legoId": "S0073L03",
+       "target": " neithiwr",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "cym_nv2_for_eng:S1566L03B02",
+    "set": {
+     "target_text": "hyd yn oed tasai fo wedi bod",
+     "decomposition": [
+      {
+       "known": "even",
+       "legoId": "S1474L02",
+       "target": "hyd yn oed",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai fo wedi bod",
+       "isGhost": false
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "hyd yn oed tasai o wedi bod",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": "c3fda7e0-669e-40a2-863d-94756ad2f96b",
+     "decomposition": [
+      {
+       "known": "even",
+       "legoId": "S1474L02",
+       "target": "hyd yn oed",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai o wedi bod",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "cym_nv2_for_eng:S1566L03B04",
+    "set": {
+     "target_text": "hyd yn oed tasai fo wedi bod heno",
+     "decomposition": [
+      {
+       "known": "even",
+       "legoId": "S1474L02",
+       "target": "hyd yn oed",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai fo wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "tonight",
+       "legoId": "S0089L02",
+       "target": " heno",
+       "isGhost": false
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "hyd yn oed tasai o wedi bod heno",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": "cd6c1f3d-b775-485d-8093-4ddc4cc85b0a",
+     "decomposition": [
+      {
+       "known": "even",
+       "legoId": "S1474L02",
+       "target": "hyd yn oed",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai o wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "tonight",
+       "legoId": "S0089L02",
+       "target": " heno",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "cym_nv2_for_eng:S1566L03C01",
+    "set": {
+     "target_text": "tasai fo",
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "tasai",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fo",
+       "isGhost": true
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "tasai o",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "decomposition": [
+      {
+       "known": "",
+       "legoId": null,
+       "target": "tasai",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " o",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "cym_nv2_for_eng:S1566L03U02",
+    "set": {
+     "target_text": "tasai fo wedi bod ddydd Mawrth fyswn i wedi meddwl amdano fo",
+     "decomposition": [
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": "tasai fo wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "on Tuesday",
+       "legoId": "S0232L01",
+       "target": " ddydd Mawrth",
+       "isGhost": false
+      },
+      {
+       "known": "I’d have thought",
+       "legoId": "S1565L01",
+       "target": " fyswn i wedi meddwl",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " amdano",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fo",
+       "isGhost": true
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "tasai o wedi bod ddydd Mawrth fyswn i wedi meddwl amdano fo",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": "8066d58e-4d5b-472c-8924-0e82e780a8fb",
+     "decomposition": [
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": "tasai o wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "on Tuesday",
+       "legoId": "S0232L01",
+       "target": " ddydd Mawrth",
+       "isGhost": false
+      },
+      {
+       "known": "I’d have thought",
+       "legoId": "S1565L01",
+       "target": " fyswn i wedi meddwl",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " amdano",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fo",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "cym_nv2_for_eng:S1566L03U01",
+    "set": {
+     "target_text": "fyswn i ddim wedi medru dal ati’n hirach tasai fo wedi bod yn hwyr",
+     "decomposition": [
+      {
+       "known": "I wouldn’t have been able to",
+       "legoId": "S1563L01",
+       "target": "fyswn i ddim wedi medru",
+       "isGhost": false
+      },
+      {
+       "known": "keep going any longer",
+       "legoId": "S1563L02",
+       "target": " dal ati’n hirach",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai fo wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " yn",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hwyr",
+       "isGhost": true
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "fyswn i ddim wedi medru dal ati’n hirach tasai o wedi bod yn hwyr",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "decomposition": [
+      {
+       "known": "I wouldn’t have been able to",
+       "legoId": "S1563L01",
+       "target": "fyswn i ddim wedi medru",
+       "isGhost": false
+      },
+      {
+       "known": "keep going any longer",
+       "legoId": "S1563L02",
+       "target": " dal ati’n hirach",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai o wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " yn",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hwyr",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "cym_nv2_for_eng:S1566L03U03",
+    "set": {
+     "target_text": "fyswn i wedi meddwl amdano fo’n fwy gofalus tasai fo wedi bod heno",
+     "decomposition": [
+      {
+       "known": "I’d have thought",
+       "legoId": "S1565L01",
+       "target": "fyswn i wedi meddwl",
+       "isGhost": false
+      },
+      {
+       "known": "about it more carefully",
+       "legoId": "S1565L02",
+       "target": " amdano fo’n fwy gofalus",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai fo wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "tonight",
+       "legoId": "S0089L02",
+       "target": " heno",
+       "isGhost": false
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "fyswn i wedi meddwl amdano fo’n fwy gofalus tasai o wedi bod heno",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "decomposition": [
+      {
+       "known": "I’d have thought",
+       "legoId": "S1565L01",
+       "target": "fyswn i wedi meddwl",
+       "isGhost": false
+      },
+      {
+       "known": "about it more carefully",
+       "legoId": "S1565L02",
+       "target": " amdano fo’n fwy gofalus",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai o wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "tonight",
+       "legoId": "S0089L02",
+       "target": " heno",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "cym_nv2_for_eng:S1566L03U06",
+    "set": {
+     "target_text": "hyd yn oed tasai fo wedi bod yn hwyr fyswn i wedi meddwl amdano fo",
+     "decomposition": [
+      {
+       "known": "even",
+       "legoId": "S1474L02",
+       "target": "hyd yn oed",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai fo wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " yn",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hwyr",
+       "isGhost": true
+      },
+      {
+       "known": "I’d have thought",
+       "legoId": "S1565L01",
+       "target": " fyswn i wedi meddwl",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " amdano",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fo",
+       "isGhost": true
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "hyd yn oed tasai o wedi bod yn hwyr fyswn i wedi meddwl amdano fo",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": null,
+     "decomposition": [
+      {
+       "known": "even",
+       "legoId": "S1474L02",
+       "target": "hyd yn oed",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai o wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " yn",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " hwyr",
+       "isGhost": true
+      },
+      {
+       "known": "I’d have thought",
+       "legoId": "S1565L01",
+       "target": " fyswn i wedi meddwl",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " amdano",
+       "isGhost": true
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " fo",
+       "isGhost": true
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "cym_nv2_for_eng:S1566L03U04",
+    "set": {
+     "target_text": "fyswn i ddim wedi medru dianc hyd yn oed tasai fo wedi bod neithiwr",
+     "decomposition": [
+      {
+       "known": "I wouldn’t have been able to",
+       "legoId": "S1563L01",
+       "target": "fyswn i ddim wedi medru",
+       "isGhost": false
+      },
+      {
+       "known": "to get away",
+       "legoId": "S1485L04",
+       "target": " dianc",
+       "isGhost": false
+      },
+      {
+       "known": "even",
+       "legoId": "S1474L02",
+       "target": " hyd yn oed",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai fo wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "last night",
+       "legoId": "S0073L03",
+       "target": " neithiwr",
+       "isGhost": false
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "fyswn i ddim wedi medru dianc hyd yn oed tasai o wedi bod neithiwr",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": "c4e70420-f856-44d5-a4f9-9846ae364d98",
+     "decomposition": [
+      {
+       "known": "I wouldn’t have been able to",
+       "legoId": "S1563L01",
+       "target": "fyswn i ddim wedi medru",
+       "isGhost": false
+      },
+      {
+       "known": "to get away",
+       "legoId": "S1485L04",
+       "target": " dianc",
+       "isGhost": false
+      },
+      {
+       "known": "even",
+       "legoId": "S1474L02",
+       "target": " hyd yn oed",
+       "isGhost": false
+      },
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": " tasai o wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "last night",
+       "legoId": "S0073L03",
+       "target": " neithiwr",
+       "isGhost": false
+      }
+     ]
+    }
+   },
+   {
+    "op": "phrase.update",
+    "phrase_id": "cym_nv2_for_eng:S1566L03U05",
+    "set": {
+     "target_text": "tasai fo wedi bod heno fyswn i ddim wedi medru dal ati",
+     "decomposition": [
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": "tasai fo wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "tonight",
+       "legoId": "S0089L02",
+       "target": " heno",
+       "isGhost": false
+      },
+      {
+       "known": "I wouldn’t have been able to",
+       "legoId": "S1563L01",
+       "target": " fyswn i ddim wedi medru",
+       "isGhost": false
+      },
+      {
+       "known": "hold",
+       "legoId": "S0291L02",
+       "target": " dal",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ati",
+       "isGhost": true
+      }
+     ]
+    },
+    "expect": {
+     "target_text": "tasai o wedi bod heno fyswn i ddim wedi medru dal ati",
+     "known_audio_id": null,
+     "target1_audio_id": null,
+     "target2_audio_id": "0bd7a8b9-f7fe-4409-9bfb-daa85c13965b",
+     "decomposition": [
+      {
+       "known": "if it had been",
+       "legoId": "S1566L03",
+       "target": "tasai o wedi bod",
+       "isGhost": false
+      },
+      {
+       "known": "tonight",
+       "legoId": "S0089L02",
+       "target": " heno",
+       "isGhost": false
+      },
+      {
+       "known": "I wouldn’t have been able to",
+       "legoId": "S1563L01",
+       "target": " fyswn i ddim wedi medru",
+       "isGhost": false
+      },
+      {
+       "known": "hold",
+       "legoId": "S0291L02",
+       "target": " dal",
+       "isGhost": false
+      },
+      {
+       "known": "",
+       "legoId": null,
+       "target": " ati",
+       "isGhost": true
+      }
+     ]
+    }
+   }
+  ],
+  "holds": [],
+  "relabelCount": 10,
+  "relinkCount": 0,
+  "rowCount": 13,
+  "componentLegos": 1
+ },
+ "clips": [
+  {
+   "id": "3c5fb122-198d-431d-a070-b40fda14834e",
+   "course_code": "cym_nv2_for_eng",
+   "text": "fyswn i wedi meddwl mwy tasai o wedi bod yn fy newis i",
+   "text_normalized": "fyswn i wedi meddwl mwy tasai o wedi bod yn fy newis i",
+   "language": "cym",
+   "role": "target1",
+   "voice_id": "human_catrinlliar_cym_n",
+   "origin": "human",
+   "s3_key": "mastered/91E00C42-923B-46FB-ADA6-DA2DC32F6662.mp3",
+   "duration_ms": 5119,
+   "file_size_bytes": null,
+   "created_at": "2026-10-22T15:23:44.586Z",
+   "lego_id": null,
+   "text_stripped": "fyswn i wedi meddwl mwy tasai o wedi bod yn fy newis i",
+   "word_boundaries": null,
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1,
+   "clip_id": null,
+   "rerecord_wanted": null,
+   "word_timings": null,
+   "recorded_at": null,
+   "spliced_from": null
+  },
+  {
+   "id": "efa1ce50-af22-40e0-b8af-6dbac82b408c",
+   "course_code": "cym_nv2_for_eng",
+   "text": "fyswn i wedi meddwl mwy tasai o wedi bod yn fy newis i",
+   "text_normalized": "fyswn i wedi meddwl mwy tasai o wedi bod yn fy newis i",
+   "language": "cym",
+   "role": "target2",
+   "voice_id": "human_aran_cym_n",
+   "origin": "human",
+   "s3_key": "mastered/C419D905-539C-433F-870B-8854B4895B36.mp3",
+   "duration_ms": 4349,
+   "file_size_bytes": null,
+   "created_at": "2026-10-15T15:23:05.396Z",
+   "lego_id": null,
+   "text_stripped": "fyswn i wedi meddwl mwy tasai o wedi bod yn fy newis i",
+   "word_boundaries": null,
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1,
+   "clip_id": null,
+   "rerecord_wanted": null,
+   "word_timings": null,
+   "recorded_at": null,
+   "spliced_from": null
+  },
+  {
+   "id": "fbe07677-f72d-4114-8b25-926c7ba1b4fd",
+   "course_code": "cym_nv2_for_eng",
+   "text": "tasai o wedi bod",
+   "text_normalized": "tasai o wedi bod",
+   "language": "cym",
+   "role": "target2",
+   "voice_id": "human_aran_cym_n",
+   "origin": "human",
+   "s3_key": "mastered/F0EEFC4F-E658-4DEA-89E5-DA9141B712BC.mp3",
+   "duration_ms": 2235,
+   "file_size_bytes": null,
+   "created_at": "2026-10-15T17:08:26.347Z",
+   "lego_id": null,
+   "text_stripped": "tasai o wedi bod",
+   "word_boundaries": null,
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1,
+   "clip_id": null,
+   "rerecord_wanted": null,
+   "word_timings": null,
+   "recorded_at": null,
+   "spliced_from": null
+  },
+  {
+   "id": "aa3e21df-1787-4dfc-a9de-646af6da716c",
+   "course_code": "cym_nv2_for_eng",
+   "text": "tasai o wedi bod yn hwyr",
+   "text_normalized": "tasai o wedi bod yn hwyr",
+   "language": "cym",
+   "role": "target2",
+   "voice_id": "human_aran_cym_n",
+   "origin": "human",
+   "s3_key": "mastered/CA0882FC-4A0B-491F-8D75-E1879265346F.mp3",
+   "duration_ms": 2480,
+   "file_size_bytes": null,
+   "created_at": "2026-10-23T14:25:34.544Z",
+   "lego_id": null,
+   "text_stripped": "tasai o wedi bod yn hwyr",
+   "word_boundaries": null,
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1,
+   "clip_id": null,
+   "rerecord_wanted": null,
+   "word_timings": null,
+   "recorded_at": null,
+   "spliced_from": null
+  },
+  {
+   "id": "26102413-a783-425c-a28d-f854aec07faa",
+   "course_code": "cym_nv2_for_eng",
+   "text": "tasai o wedi bod neithiwr",
+   "text_normalized": "tasai o wedi bod neithiwr",
+   "language": "cym",
+   "role": "target2",
+   "voice_id": "human_aran_cym_n",
+   "origin": "human",
+   "s3_key": "mastered/5A0F103F-684D-4FE9-9D42-BC38B21C8754.mp3",
+   "duration_ms": 2190,
+   "file_size_bytes": null,
+   "created_at": "2026-10-23T14:25:38.460Z",
+   "lego_id": null,
+   "text_stripped": "tasai o wedi bod neithiwr",
+   "word_boundaries": null,
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1,
+   "clip_id": null,
+   "rerecord_wanted": null,
+   "word_timings": null,
+   "recorded_at": null,
+   "spliced_from": null
+  },
+  {
+   "id": "c3fda7e0-669e-40a2-863d-94756ad2f96b",
+   "course_code": "cym_nv2_for_eng",
+   "text": "hyd yn oed tasai o wedi bod",
+   "text_normalized": "hyd yn oed tasai o wedi bod",
+   "language": "cym",
+   "role": "target2",
+   "voice_id": "human_aran_cym_n",
+   "origin": "human",
+   "s3_key": "mastered/07D7B649-CA0E-423C-A39F-AE0315237622.mp3",
+   "duration_ms": 2353,
+   "file_size_bytes": null,
+   "created_at": "2026-10-23T14:25:43.286Z",
+   "lego_id": null,
+   "text_stripped": "hyd yn oed tasai o wedi bod",
+   "word_boundaries": null,
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1,
+   "clip_id": null,
+   "rerecord_wanted": null,
+   "word_timings": null,
+   "recorded_at": null,
+   "spliced_from": null
+  },
+  {
+   "id": "cd6c1f3d-b775-485d-8093-4ddc4cc85b0a",
+   "course_code": "cym_nv2_for_eng",
+   "text": "hyd yn oed tasai o wedi bod heno",
+   "text_normalized": "hyd yn oed tasai o wedi bod heno",
+   "language": "cym",
+   "role": "target2",
+   "voice_id": "human_aran_cym_n",
+   "origin": "human",
+   "s3_key": "mastered/93697C70-583C-489E-8B6E-EBFC973F6803.mp3",
+   "duration_ms": 2549,
+   "file_size_bytes": null,
+   "created_at": "2026-10-23T14:25:47.864Z",
+   "lego_id": null,
+   "text_stripped": "hyd yn oed tasai o wedi bod heno",
+   "word_boundaries": null,
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1,
+   "clip_id": null,
+   "rerecord_wanted": null,
+   "word_timings": null,
+   "recorded_at": null,
+   "spliced_from": null
+  },
+  {
+   "id": "8066d58e-4d5b-472c-8924-0e82e780a8fb",
+   "course_code": "cym_nv2_for_eng",
+   "text": "tasai o wedi bod ddydd Mawrth fyswn i wedi meddwl amdano fo",
+   "text_normalized": "tasai o wedi bod ddydd mawrth fyswn i wedi meddwl amdano fo",
+   "language": "cym",
+   "role": "target2",
+   "voice_id": "human_aran_cym_n",
+   "origin": "human",
+   "s3_key": "mastered/4082B905-EC5C-4048-9543-BF19E64FD286.mp3",
+   "duration_ms": 3931,
+   "file_size_bytes": null,
+   "created_at": "2026-10-23T14:25:52.726Z",
+   "lego_id": null,
+   "text_stripped": "tasai o wedi bod ddydd mawrth fyswn i wedi meddwl amdano fo",
+   "word_boundaries": null,
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1,
+   "clip_id": null,
+   "rerecord_wanted": null,
+   "word_timings": null,
+   "recorded_at": null,
+   "spliced_from": null
+  },
+  {
+   "id": "c4e70420-f856-44d5-a4f9-9846ae364d98",
+   "course_code": "cym_nv2_for_eng",
+   "text": "fyswn i ddim wedi medru dianc hyd yn oed tasai o wedi bod neithiwr",
+   "text_normalized": "fyswn i ddim wedi medru dianc hyd yn oed tasai o wedi bod neithiwr",
+   "language": "cym",
+   "role": "target2",
+   "voice_id": "human_aran_cym_n",
+   "origin": "human",
+   "s3_key": "mastered/76F89A4E-5B5E-4B6C-A759-380DCBDF2FBE.mp3",
+   "duration_ms": 4275,
+   "file_size_bytes": null,
+   "created_at": "2026-10-23T14:26:04.228Z",
+   "lego_id": null,
+   "text_stripped": "fyswn i ddim wedi medru dianc hyd yn oed tasai o wedi bod neithiwr",
+   "word_boundaries": null,
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1,
+   "clip_id": null,
+   "rerecord_wanted": null,
+   "word_timings": null,
+   "recorded_at": null,
+   "spliced_from": null
+  },
+  {
+   "id": "0bd7a8b9-f7fe-4409-9bfb-daa85c13965b",
+   "course_code": "cym_nv2_for_eng",
+   "text": "tasai o wedi bod heno fyswn i ddim wedi medru dal ati",
+   "text_normalized": "tasai o wedi bod heno fyswn i ddim wedi medru dal ati",
+   "language": "cym",
+   "role": "target2",
+   "voice_id": "human_aran_cym_n",
+   "origin": "human",
+   "s3_key": "mastered/D11A2509-F717-4ED6-A2E7-54C6286EFD83.mp3",
+   "duration_ms": 3660,
+   "file_size_bytes": null,
+   "created_at": "2026-10-23T14:25:58.450Z",
+   "lego_id": null,
+   "text_stripped": "tasai o wedi bod heno fyswn i ddim wedi medru dal ati",
+   "word_boundaries": null,
+   "sequence": null,
+   "veracity_checked_at": null,
+   "veracity_pass": null,
+   "veracity_reason": null,
+   "veracity_cer": null,
+   "veracity_attempts": null,
+   "veracity_checker": null,
+   "audio_revision": 1,
+   "clip_id": null,
+   "rerecord_wanted": null,
+   "word_timings": null,
+   "recorded_at": null,
+   "spliced_from": null
+  }
+ ]
+}
