@@ -56,7 +56,7 @@ describe('advancing with 200 takes queued', () => {
     console.log(`[#933] one advance with 200 queued: ${perAdvance} audio records read (${mbPerAdvance.toFixed(1)} MB of audio), ${ms.toFixed(1)} ms in the fake`)
 
     expect(q.pendingCount.value).toBe(200 + ADVANCES)
-    // Before #933 this was ~1,000 audio records (≈250 MB) per advance.
+    // Measured on the pre-#933 code: 811 audio records (198 MB) per advance.
     expect(perAdvance).toBe(0)
   })
 })
