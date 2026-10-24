@@ -13,6 +13,7 @@
 
 const fetch = require('node-fetch');
 const { wordTimingsFromCartesia } = require('./shared/word-timings.cjs');
+const { withProviderSlot, providerConcurrencyStats } = require('./shared/provider-concurrency.cjs');
 const { stripSynthesisCues } = require('./shared/synthesis-cues.cjs');
 const https = require('https');
 const fs = require('fs');
@@ -923,7 +924,8 @@ async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = 
     doorStats.providerChars += String(text).length;
     let sent = false;
     try {
-      const result = await renderOnce(text, provider, config);
+      // One shared slot per provider call (job #394): the process-wide Cartesia cap of 15; a 429 is re-sent under THIS reservation.
+      const result = await withProviderSlot(provider, () => renderOnce(text, provider, config));
       sent = true;
       guard.afterProviderCall(reservation, { ok: true });
       // REPORT ONLY, SAMPLED (Tom, 2026-09-28, r-2026-09-28-no-automatic-whisper-stt-check-may:
@@ -1140,6 +1142,7 @@ module.exports = {
   generate,
   generateWithRetry,
   doorStats,
+  providerConcurrencyStats,
   isRetriableTtsError,
   parseCartesiaSse,
   pcm16ToWav,

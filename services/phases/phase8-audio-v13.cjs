@@ -2060,6 +2060,8 @@ app.get('/health', (req, res) => {
     // months ago with nothing to see. Non-zero here means renders were paid for
     // that the store might already have answered.
     reuse: { ...siblingLookupStats },
+    // Provider calls in flight against each provider's process-wide cap (job #394): peak must stay <= max, throttled = 429s seen.
+    providerConcurrency: ttsService.providerConcurrencyStats(),
     // Which commit is THIS PROCESS running? Frozen at require time — see
     // services/shared/build-identity.cjs. The staleness watchdog reads it.
     build: buildIdentity()

@@ -4,6 +4,13 @@ const { tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, post
 
 // job #864: Popty restarting under an auto-deploy (ECONNREFUSED) is waited out; an answer, a 402 included, comes back first time
 describe('postWith', () => {
+  it('waits out a 503 (phase8 restarting behind production-api) instead of returning it as a failure (job #394)', async () => {
+    let n = 0
+    const fetchFn = async () => (++n < 3 ? { status: 503, json: async () => ({ ok: false, error: 'Phase 8 audio server not reachable' }) } : { status: 200, json: async () => ({ ok: true }) })
+    const r = await postWith(fetchFn, async () => {}, '/api/audio/render', {})
+    expect(r.status).toBe(200)
+    expect(n).toBe(3)
+  })
   const refused = () => { const e = new Error('fetch failed'); e.cause = { code: 'ECONNREFUSED' }; throw e }
   const answer = (status, body) => async () => ({ status, json: async () => body })
   it('waits out a dropped connection, never retries an answer', async () => {
