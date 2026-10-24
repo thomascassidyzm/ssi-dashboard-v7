@@ -171,15 +171,20 @@ function timingBounds(wt, text, silent) {
  * Sample positions to cut a span [i..j) of syllables out of a clip. A boundary inside a pause is cut at the pause's
  * edges (keep up to 60 ms of the pause after the left syllable, 20 ms before the right). Returns {start, end, startEdge,
  * endEdge}: edge = 'natural' (clip start/end, keep as recorded) | 'pause' | 'joined' (mid-speech, crossfaded).
+ * The recording's own lead-in and tail are kept only where the piece also opens / closes the new sentence
+ * (keepStart / keepEnd); a clip-initial piece placed mid-sentence is cut at its speech onset and a clip-final piece
+ * at its speech offset, so no clip's edge silence becomes a gap inside the splice.
  */
-function spanSamples(al, env, i, j, nSyl, xLen) {
+function spanSamples(al, env, i, j, nSyl, xLen, { keepStart = true, keepEnd = true } = {}) {
   const half = ms(CROSSFADE_MS / 2)
   const at = (b) => b * HOP + Math.floor(WIN / 2)
   const pauseAround = (b) => { if (!al.silent[b]) return null; let a = b, z = b; while (a > 0 && al.silent[a - 1]) a--; while (z < env.length - 1 && al.silent[z + 1]) z++; return [a, z + 1] }
   let start, startEdge, end, endEdge
-  if (i === 0) { start = Math.max(0, at(al.bounds[0]) - ms(80)); startEdge = 'natural' }
+  if (i === 0 && keepStart) { start = Math.max(0, at(al.bounds[0]) - ms(80)); startEdge = 'natural' }
+  else if (i === 0) { start = at(al.bounds[0]) - half; startEdge = 'joined' }
   else { const p = pauseAround(al.bounds[i]); if (p) { start = Math.max(at(p[0]), at(p[1]) - ms(20)); startEdge = 'pause' } else { start = at(al.bounds[i]) - half; startEdge = 'joined' } }
-  if (j === nSyl) { end = xLen; endEdge = 'natural' }
+  if (j === nSyl && keepEnd) { end = xLen; endEdge = 'natural' }
+  else if (j === nSyl) { end = at(al.bounds[nSyl]) + half; endEdge = 'joined' }
   else { const p = pauseAround(al.bounds[j]); if (p) { end = Math.min(at(p[1]), at(p[0]) + ms(60)); endEdge = 'pause' } else { end = at(al.bounds[j]) + half; endEdge = 'joined' } }
   return { start: Math.max(0, start), end: Math.min(xLen, end), startEdge, endEdge }
 }
@@ -376,7 +381,8 @@ async function cmdBuild() {
       const b = await align(p.baseId)
       if (!b.al) { bad = `alignment failed on base ${p.baseId}`; break }
       const n = [...p.baseId].length
-      const sp = spanSamples(b.al, b.env, p.start, p.end, n, b.x.length)
+      // cover() offsets are character offsets; one character is one syllable
+      const sp = spanSamples(b.al, b.env, p.start, p.end, n, b.x.length, { keepStart: p.targetInitial, keepEnd: p.targetFinal })
       cut.push({ ...p, ...sp, pcm: b.x.subarray(sp.start, sp.end), baseSlot: cast.get(p.baseId).slot, baseRef: cast.get(p.baseId).ref })
     }
     if (bad) { manifest.dropped.push({ text: t, why: bad }); continue }
