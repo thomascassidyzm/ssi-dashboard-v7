@@ -94,3 +94,18 @@ describe('renderAsk', () => {
     expect(() => renderAsk('zho_for_eng', { role: 'target2', text: '你好' }, { target1: 'cartesia_f9a4' }, 'p')).toThrow(/no cast voice/)
   })
 })
+
+// job #574: a clip that fails the tail audit is marked, and a marked clip is not handed back by library-first reuse
+describe('audit-failed clips are excluded from reuse', () => {
+  const req = createRequire(import.meta.url)
+  const { auditFailOp } = req('./revoice-seeds-to-cast.cjs')
+  const { pickExistingClip } = req('../../services/shared/clip-library.cjs')
+  const base = { id: 'c1', course_code: 'fra_for_eng', text: 'expliquer très bien', language: 'fra', voice_id: 'cartesia_f1', s3_key: 'a/b.mp3', origin: 'tts' }
+  const want = { text: 'expliquer très bien', language: 'fra', courseCode: 'fra_for_eng' }
+  it('the op marks veracity_pass false; applying it makes reuse miss, an unmarked clip is still reused', () => {
+    expect(pickExistingClip([base], want).id).toBe('c1')
+    const op = auditFailOp('c1', 'tail click (spike 9.0, end_abs 0.200)')
+    expect(op).toMatchObject({ op: 'audio.update', audio_id: 'c1', set: { veracity_pass: false } })
+    expect(pickExistingClip([{ ...base, ...op.set }], want)).toBeNull()
+  })
+})

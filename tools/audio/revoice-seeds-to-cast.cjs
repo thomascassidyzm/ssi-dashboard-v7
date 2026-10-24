@@ -117,6 +117,16 @@ function tailVerdict(line) {
   if (o.error) return `tail audit error ${o.error}`;
   return o.click ? `tail click (spike ${Number(o.tail_spike).toFixed(1)}, end_abs ${Number(o.end_abs).toFixed(3)})` : null;
 }
+/**
+ * The edit op that marks a clip that FAILED the tail audit (job #574). Library-first reuse already skips any course_audio row with
+ * veracity_pass === false (clip-library usableClips, clip-index indexEntryFor), so this mark is what stops the route handing the same
+ * clicking clip back on the next ask; the render then falls through to a fresh one. Without it the route relinks the failed clip forever.
+ * Goes through Popty's /api/production/:course/edit (audio.update), never the DB.
+ */
+function auditFailOp(audioId, why, at = new Date().toISOString()) {
+  return { op: 'audio.update', audio_id: audioId, set: { veracity_pass: false, veracity_reason: `tail-audit: ${why}`.slice(0, 200), veracity_checked_at: at, veracity_checker: 'clip-tail-audit' } };
+}
+
 /** AUDIT=1 (job #366): a new clip is audited for tail clicks BEFORE its pointer is swapped in; failing clips stay in the library, the old pointer stays. */
 // Async (job #394): a spawnSync here froze the whole event loop, so no other ask of this run could be in flight during an audit.
 function tailAudit(audioId, revision) {
@@ -191,7 +201,14 @@ async function main() {
     if (bad) { console.log('  VERIFY-FAIL', a.role, JSON.stringify(a.text), r.body.audioId, bad, '— old pointer kept'); return; }
     if (process.env.AUDIT === '1') {
       const why = await tailAudit(r.body.audioId, r.body.revision);
-      if (why) { out.auditFailed++; console.log('  AUDIT-FAIL', a.role, JSON.stringify(a.text), r.body.audioId, why, '— old pointer kept'); return; }
+      if (why) {
+        out.auditFailed++; console.log('  AUDIT-FAIL', a.role, JSON.stringify(a.text), r.body.audioId, why, '— old pointer kept');
+        if (!/^tail audit (error|printed)/.test(why)) { // a click is a fact about the clip; an unmeasurable clip is not marked
+          const m = await post(`/api/production/${COURSE}/edit`, auditFailOp(r.body.audioId, why));
+          console.log(m.status === 200 && m.body.applied ? '  MARKED audit-failed (excluded from reuse)' : `  MARK-FAILED ${m.status} ${JSON.stringify(m.body).slice(0, 200)}`);
+        }
+        return;
+      }
     }
     for (const s of a.slots) pending.push({ ...(s.seedNumber ? { seedNumber: s.seedNumber } : s.legoId ? { legoId: s.legoId } : { phraseId: s.phraseId }), role: s.role, audioId: r.body.audioId, replace: true, expectCurrent: s.current });
     if (++n % LINK_EVERY === 0) await flush();
@@ -201,5 +218,5 @@ async function main() {
   const left = asks.length - n;
   console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}, tail-audit failed ${out.auditFailed}, needing a re-record grant (skipped, 0 chars) ${out.needsGrant}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk };
+module.exports = { auditFailOp, tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
