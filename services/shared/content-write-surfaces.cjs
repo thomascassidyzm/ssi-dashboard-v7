@@ -113,6 +113,8 @@ const PRODUCTION_API = [
   { method: 'DELETE', path: '/api/production/:courseCode/seed/:seedNumber',  operation: 'seed-deprecate' },
   // Job #388: fill-only clip linking over the Supabase client (services/shared/link-clip.cjs).
   { method: 'POST',   path: '/api/production/:courseCode/link-clip',          operation: 'audio-link' },
+  // Job #374: a machine cut from a longer clip is stored (course_audio) and linked (services/shared/ingest-cut.cjs).
+  { method: 'POST',   path: '/api/production/:courseCode/ingest-cut',         operation: 'audio-link' },
   // A listening pod's solo readers (job #391): who reads it, not what it says.
   { method: 'PATCH',  path: '/api/production/:courseCode/pod/:podId/solo-readers', operation: 'pod-solo-readers' },
 ].map(r => ({ ...r, service: 'production-api' }));
