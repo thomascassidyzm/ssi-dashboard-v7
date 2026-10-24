@@ -46,7 +46,10 @@ const sentencesOf = (t) => String(t || '').split(BOUNDARY).map((s) => s.trim()).
 /** Pure. One identity per voice ('xai_eve' and 'eve' are one voice); unknown strings stay as they are. */
 function canonVoice(v, provider) {
   if (!v) return null
-  return tryCanonicalVoiceId(v, provider ? { provider } : undefined) || tryCanonicalVoiceId(v) || String(v)
+  const c = tryCanonicalVoiceId(v, provider ? { provider } : undefined) || tryCanonicalVoiceId(v) || String(v)
+  // xAI custom voices are stored both bare ('jpi39icg') and prefixed ('xai_jpi39icg'), and the identity rule cannot
+  // place a bare custom id. The provider prefix is dropped for comparison: one voice, one key.
+  return c.replace(/^(xai|azure|cartesia|elevenlabs|google|openai)_/i, '')
 }
 
 /** Pure. The voice a pod casts for a speaker on the target track — the rule phase8 resolvePodSpeakerVoice applies. */

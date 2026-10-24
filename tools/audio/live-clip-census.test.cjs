@@ -8,13 +8,20 @@ const clip = (voice, extra = {}) => ({ voice_id: voice, language: 'zho', origin:
 
 describe('speakerVoice', () => {
   it('reads the per-track shape and the legacy shape, with parens stripped from the speaker', () => {
-    expect(speakerVoice(speakers, 'Li (F)')).toBe('xai_eve')
-    expect(speakerVoice(speakers, 'Wang')).toBe('azure_zh-CN-YunxiNeural')
+    expect(speakerVoice(speakers, 'Li (F)')).toBe('eve')
+    expect(speakerVoice(speakers, 'Wang')).toBe('zh-CN-YunxiNeural')
     expect(speakerVoice(speakers, 'Nobody')).toBe(null)
   })
 })
 
 describe('podFindings — Drill against its own turn (Tom 2026-10-24)', () => {
+  it('a bare xAI custom id and its prefixed form are one voice', () => {
+    const c = new Map([['turn', clip('jpi39icg')], ['d1', clip('xai_jpi39icg')], ['d2', clip('jpi39icg')]])
+    const sp = { Li: { target: { voice_id: 'xai_jpi39icg', provider: 'xai' } } }
+    const { turns } = podFindings([{ course_code: 'zho_for_eng', speakers: sp, id: 'r', global_order: 1, speaker: 'Li', target_text: '你好。我是李。', target_audio_id: 'turn', sentence_audio_ids: ['d1', 'd2'] }], c)
+    expect(turns[0].flags).toEqual([])
+  })
+
   const clips = new Map([
     ['turn', clip('xai_eve')],
     ['d1', clip('eve')], // same voice under the other spelling
@@ -42,7 +49,7 @@ describe('podFindings — Drill against its own turn (Tom 2026-10-24)', () => {
 
 describe('drillRecordings — one sentence, how many recordings', () => {
   it('counts distinct s3 objects, not pointer rows, and marks which extras anything still points at', () => {
-    const drill = [{ course: 'zho_for_eng', language: 'zho', text: '你好。', clipId: 'd1', voice: 'xai_eve', turnVoice: 'xai_eve' }]
+    const drill = [{ course: 'zho_for_eng', language: 'zho', text: '你好。', clipId: 'd1', voice: 'eve', turnVoice: 'eve' }]
     const rows = [
       { id: 'd1', language: 'zho', text_normalized: '你好', voice_id: 'eve', course_code: 'zho_for_eng', role: 'target1', s3_key: 'a.mp3' },
       { id: 'd1b', language: 'zho', text_normalized: '你好', voice_id: 'eve', course_code: 'zho_for_spa', role: 'target1', s3_key: 'a.mp3' }, // same object: a pointer
