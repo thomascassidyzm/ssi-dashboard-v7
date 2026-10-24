@@ -127,7 +127,7 @@ async function main() {
   const sel = 'seed_number, target_text, target1_audio_id, target2_audio_id';
   const S = (await pg.query(`SELECT ${sel} FROM course_seeds WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { seedNumber: r.seed_number } }));
   const L = (await pg.query(`SELECT lego_id, ${sel} FROM course_legos WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { legoId: r.lego_id } }));
-  const P = (await pg.query(`SELECT id, ${sel} FROM course_practice_phrases WHERE course_code=$1 AND seed_number <= $2 AND phrase_role <> 'component'`, [COURSE, SEEDS])).rows.map((r) => ({ ...r, slot: { phraseId: r.id } }));
+  const P = (await pg.query(`SELECT id, ${sel} FROM course_practice_phrases WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3 AND phrase_role <> 'component'`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { phraseId: r.id } }));
   const rows = [...S, ...L, ...P];
   const clips = await db.clipMap(pg, rows.flatMap((r) => [r.target1_audio_id, r.target2_audio_id]), { cols: 'id::text AS id, text, voice_id, origin' });
   await pg.end();
