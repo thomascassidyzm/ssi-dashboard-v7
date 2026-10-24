@@ -20,7 +20,8 @@ def ref(i, r): return f'{i}.v{int(r)}' if r and int(r) > 1 else i
 def probe(row):
     label, cid, rev = row
     try:
-        raw = urllib.request.urlopen(urllib.request.Request(f'{BASE}/{ref(cid, rev)}', headers={'User-Agent': 'audit'}), timeout=30).read()
+        # An id that is an absolute path is a local file (job #374: ingest-cut audits a cut BEFORE it is stored).
+        raw = open(cid, 'rb').read() if cid.startswith('/') else urllib.request.urlopen(urllib.request.Request(f'{BASE}/{ref(cid, rev)}', headers={'User-Agent': 'audit'}), timeout=30).read()
         pcm = subprocess.run(['ffmpeg', '-v', 'error', '-i', 'pipe:0', '-f', 's16le', '-ac', '1', '-ar', str(SR), 'pipe:1'], input=raw, capture_output=True).stdout
         x = np.frombuffer(pcm, dtype=np.int16).astype(np.float64) / 32768
         if len(x) < SR // 4: return dict(label=label, id=cid, error='short')

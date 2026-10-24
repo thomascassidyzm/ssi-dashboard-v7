@@ -3941,6 +3941,35 @@ app.post('/api/production/:courseCode/link-clip', async (req, res) => {
   }
 })
 
+// Ingest a MACHINE CUT (job #374): one phrase cut out of a longer clip of a different text, audited, stored as its own clip
+// and linked through link-clip's rules. DRY RUN unless dryRun:false. Usage, rules and the undo: services/shared/ingest-cut.cjs.
+// Body: { seedNumber | legoId | phraseId, role, text, sourceAudioId, startSec, endSec, charStart, charEnd, replace?, expectCurrent?, dryRun? }
+app.post('/api/production/:courseCode/ingest-cut', async (req, res) => {
+  if (!supabaseClient.isInitialized()) return res.status(503).json({ error: 'Supabase not initialized' })
+  try {
+    const cutDoor = require('./shared/ingest-cut.cjs')
+    const { S3Client } = require('@aws-sdk/client-s3')
+    const { courseCode } = req.params
+    const body = req.body || {}
+    const who = String(req.headers['x-agent-id'] || req.headers['x-service-name'] || (req.contentEdit && req.contentEdit.identity && (req.contentEdit.identity.email || req.contentEdit.identity.id)) || '').trim()
+    if (body.dryRun !== false && req.contentEdit) req.contentEdit.wroteNothing()
+    const deps = cutDoor.liveDeps({
+      sb: supabaseClient.getClient(),
+      s3: new S3Client({ region: process.env.AWS_REGION || 'eu-west-1' }),
+      bucket: process.env.S3_BUCKET || 'ssi-audio-stage',
+      logger,
+      // the line also rides in every answer, so a store this user cannot write to costs the file, never the rollback
+      rollbackPath: (() => { try { return require('../tools/lib/evidence-path.cjs').evidencePath(`audio/ingest-cut-rollback/${courseCode}.jsonl`) } catch { return null } })(),
+    })
+    deps.recordEdit = req.contentEdit ? (e) => req.contentEdit.record(e) : null
+    const out = await cutDoor.ingestCut({ ...body, courseCode, requestedBy: who }, deps)
+    res.status(out.ok ? 200 : out.code === 'IDENTITY_REQUIRED' ? 401 : 409).json(out)
+  } catch (error) {
+    logger.error('ingest-cut failed:', error)
+    res.status(500).json({ ok: false, error: error.message })
+  }
+})
+
 // Set a listening pod's metadata.solo_readers (job #391): ["voice_id", …] makes the pod read solo by
 // those voices; [] clears it so the pod is cast by its speakers again. :podId is the full pod id
 // (URL-encoded) or the bare slug. Body: { solo_readers: [...], dryRun? }. Rules: shared/pod-solo-readers-edit.cjs.

@@ -1,0 +1,7183 @@
+[
+ {
+  "course": "ara_eg_for_eng",
+  "rowId": "ara_eg_for_eng:pod-1:SC07-S004",
+  "order": 41,
+  "turnClip": "ef0eff67-0538-4ce0-af8d-d540e4297dfc",
+  "turnVoice": "rex",
+  "drillVoices": [
+   "eve"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a90a941e-ffef-4a8f-b8eb-d11d5ee9eef2",
+    "8488aee1-2819-4219-85f4-0ebde2dba347"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_eg_for_eng --orders=41"
+ },
+ {
+  "course": "ara_eg_for_eng",
+  "rowId": "ara_eg_for_eng:pod-1:SC09-S010",
+  "order": 78,
+  "turnClip": "fcbeb4dd-72b1-47b9-84ad-854ef8532e52",
+  "turnVoice": "eve",
+  "drillVoices": [
+   "rex"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "00feb22c-a861-4312-b777-09e8f07ab091",
+    "51bae6e3-04a2-4383-be29-da5bd770405d"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_eg_for_eng --orders=78"
+ },
+ {
+  "course": "ara_eg_for_eng",
+  "rowId": "ara_eg_for_eng:pod-1:SC09-S017",
+  "order": 85,
+  "turnClip": "6df1db06-3dae-492e-ae77-c889e2684125",
+  "turnVoice": "eve",
+  "drillVoices": [
+   "rex"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a13663fe-7dfe-40da-ace0-045ee3fa7f4d",
+    "6e7fc80b-03ec-46fc-9ed7-e6805b5a512c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_eg_for_eng --orders=85"
+ },
+ {
+  "course": "ara_eg_for_eng",
+  "rowId": "ara_eg_for_eng:pod-1:SC14-S001",
+  "order": 131,
+  "turnClip": "92833a57-b79b-402a-8374-26865a27f518",
+  "turnVoice": "rex",
+  "drillVoices": [
+   "eve"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3530cf9e-6e65-45a8-8dcd-50ed467c31b9",
+    "a1d8d5ec-227e-4055-b910-be39addd1ff9"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_eg_for_eng --orders=131"
+ },
+ {
+  "course": "ara_eg_for_eng",
+  "rowId": "ara_eg_for_eng:pod-1:SC14-S002",
+  "order": 132,
+  "turnClip": "24013161-5e72-464c-b484-b53bb020206c",
+  "turnVoice": "eve",
+  "drillVoices": [
+   "rex"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "eae7f749-2ca7-4bf6-9f85-eee2ea3d11f6",
+    "f124b53d-0676-4117-a7ae-d91275a6cbbd"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_eg_for_eng --orders=132"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC03-S001",
+  "order": 10,
+  "turnClip": "9b600e00-f6b1-4522-8fbe-027729bb79a1",
+  "turnVoice": "ar-SY-AmanyNeural",
+  "drillVoices": [
+   "ar-SY-LaithNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "e8483002-94d5-4936-a817-f8e4b197ec36",
+    "ca23d5ca-42ba-4aae-8f59-948747471aa7"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=10"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC07-S001",
+  "order": 38,
+  "turnClip": "ea95685b-acf6-49a9-89a8-bd41c71e9359",
+  "turnVoice": "ar-SY-AmanyNeural",
+  "drillVoices": [
+   "ar-SY-LaithNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "ebc3f28f-43ab-475f-b0b4-aad399c3e287",
+    "ca23d5ca-42ba-4aae-8f59-948747471aa7"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=38"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC07-S004",
+  "order": 41,
+  "turnClip": "54c49e1d-8ca3-4e21-95a8-70da48a8b071",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3ab99afa-806a-41f4-a2f9-a5958c8873d3",
+    "e7c756db-e050-40d1-a585-1bc8815c085f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=41"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC07-S005",
+  "order": 42,
+  "turnClip": "18da5855-7285-4c97-a989-c87a839c6708",
+  "turnVoice": "ar-SY-AmanyNeural",
+  "drillVoices": [
+   "ar-SY-LaithNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "67d00554-7815-4653-befd-3033572f452b",
+    "fc151587-3f00-48f5-99f5-6484ecab2807"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=42"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC07-S008",
+  "order": 45,
+  "turnClip": "a32fc806-f998-42d0-aa8b-3f5881b22f98",
+  "turnVoice": "ar-SY-AmanyNeural",
+  "drillVoices": [
+   "ar-SY-LaithNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "efeebe28-9a38-4e63-94e0-09c82f8c93a1",
+    "6eb6174c-a169-4989-b5fe-8575b3c03b7b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=45"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC07-S012",
+  "order": 49,
+  "turnClip": "5fd7d601-d246-420e-a0a7-9e2c6ad16662",
+  "turnVoice": "ar-SY-AmanyNeural",
+  "drillVoices": [
+   "ar-SY-LaithNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "67d00554-7815-4653-befd-3033572f452b",
+    "643c3bb2-e9a0-4d73-94aa-c1693506c593"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=49"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC08-S012",
+  "order": 64,
+  "turnClip": "bad35a24-8afa-463c-be80-4ab6d16e96e9",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a4ab4b92-2460-486d-945a-3e1644d1073d",
+    "f48d1cc2-5231-4354-86a5-7775b1cb57af"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=64"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC09-S001",
+  "order": 69,
+  "turnClip": "7fa80746-3c3f-4f18-b670-9f24b2cfa72c",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "6cc5d3f2-27a7-4338-b41c-2915ef831c57",
+    "4e31a6f7-e52f-469b-b601-11f0140eeeac"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=69"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC09-S009",
+  "order": 77,
+  "turnClip": "928f958f-cbb9-45a8-88b8-2f3186ef97f9",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d2e7fc07-52b7-4153-b065-8ee80fd769cc",
+    "f760884f-42c2-4c57-b797-bddfd1d1d6b9"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=77"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC09-S016",
+  "order": 84,
+  "turnClip": "f7764a76-5cca-40f2-96bb-358a5e470356",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "bc207db5-2fc9-4e2b-abf0-5fbee7ea82c0",
+    "75120095-dc72-4837-b9fb-ac22e37d0f1f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=84"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC10-S001",
+  "order": 87,
+  "turnClip": "e3d87bd1-9e33-4457-9470-b1940c14740b",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3a2c4ce5-eea6-410a-9154-3b098127d327",
+    "64794341-dc30-49c6-b7c2-0f3bd5956e57"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=87"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC10-S003",
+  "order": 89,
+  "turnClip": "bbd2587f-32c4-4fcd-a39c-1f93143cd5b6",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "afdcb03d-b7ba-4fe5-b56f-d3dce74d0bd5",
+    "d0f2d871-957b-43af-9366-161889970406"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=89"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC10-S007",
+  "order": 93,
+  "turnClip": "f3290921-c455-4e06-9aa1-618e64c4abb8",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "39bc119a-eafe-47f6-919e-d405ffdde04e",
+    "128295a9-0882-4e72-a2ff-984b8b032853"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=93"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC10-S009",
+  "order": 95,
+  "turnClip": "49687330-8787-4319-9a49-925dcd31341e",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a9447b68-d34a-45ae-bc94-f63630e6d542",
+    "38d11a0d-c253-4932-80a4-2c208ba6fec4",
+    "9df7617c-4704-4bbf-99a2-a2b6b39040da"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=95"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC12-S009",
+  "order": 118,
+  "turnClip": "a3acd29f-f5a5-453b-b3e0-b4a232f7761a",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "afdcb03d-b7ba-4fe5-b56f-d3dce74d0bd5",
+    "9642ea6b-fbf6-421d-8498-1c87a0bd34d9"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=118"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC13-S008",
+  "order": 127,
+  "turnClip": "25ca2b98-6bef-4090-92d7-1c9659510e37",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "05d1b227-3b15-4f5f-90c0-9bd0bcd13e3b",
+    "123fa70e-5f10-4b5c-9463-1ad1ada432f0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=127"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC13-S010",
+  "order": 129,
+  "turnClip": "9d0968d9-3f01-491a-b0e5-60aa7882491c",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "986b4c3e-ec8c-46d8-ae44-b33075b65363",
+    "efa1fb34-49ef-488c-8a60-dba4c4f53ae1"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=129"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC14-S002",
+  "order": 132,
+  "turnClip": "d6f59231-b310-4bd7-bf91-8e3cc72e140e",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f6c7a1af-7ac9-4d35-af2d-ac292b5920cd",
+    "27187b6f-3c3c-43fa-925f-00d458cf99ab"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=132"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC14-S009",
+  "order": 139,
+  "turnClip": "fabdfbd4-2c96-470d-9220-de83152d7bfa",
+  "turnVoice": "ar-SY-LaithNeural",
+  "drillVoices": [
+   "ar-SY-AmanyNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f6c7a1af-7ac9-4d35-af2d-ac292b5920cd",
+    "3c9e6589-76fc-4979-9814-ec67da741f9c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=139"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC15-S002",
+  "order": 142,
+  "turnClip": "1a046fdf-0c4a-4369-aecb-e258e6e44d9e",
+  "turnVoice": "ar-SY-AmanyNeural",
+  "drillVoices": [
+   "ar-SY-LaithNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2bbe5fbf-0d9e-4aca-b9b8-50ade9786dc3",
+    "c81a784b-4612-4af3-8c5f-e5a91671a460",
+    "2b188b67-d1dd-47b1-8c7c-5ab8026c9a5f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=142"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC15-S006",
+  "order": 146,
+  "turnClip": "7c1bfcbb-daf4-4a79-9898-04fbe3b98328",
+  "turnVoice": "ar-SY-AmanyNeural",
+  "drillVoices": [
+   "ar-SY-LaithNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "75244d0e-7302-4d71-a488-c9055072ad8c",
+    "7ac2c9a5-a099-4722-8ed9-50d0ac2b8577",
+    "a2768244-a239-4016-a4dc-9bb85c7938c0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=146"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC15-S008",
+  "order": 148,
+  "turnClip": "8a764104-c04d-44d9-9123-d129d1881fad",
+  "turnVoice": "ar-SY-AmanyNeural",
+  "drillVoices": [
+   "ar-SY-LaithNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "51795c09-8c36-44d1-a104-7b492ab17238",
+    "12f804fb-070e-4180-9efd-054a12b0683e",
+    "e19a9865-0a22-446f-b706-25b24512a01b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=148"
+ },
+ {
+  "course": "ara_sy_for_eng",
+  "rowId": "ara_sy_for_eng:pod-1:SC15-S010",
+  "order": 150,
+  "turnClip": "454db656-88cd-4b9f-8b31-a67cf4c6f6de",
+  "turnVoice": "ar-SY-AmanyNeural",
+  "drillVoices": [
+   "ar-SY-LaithNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8db9a266-f881-4922-939c-06028f27fa25",
+    "2dd9f7b4-ebcc-4e44-97d3-0b75c432f252",
+    "b82d1f06-8071-4699-8bd0-e9d25b5eb203"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ara_sy_for_eng --orders=150"
+ },
+ {
+  "course": "bul_for_eng",
+  "rowId": "bul_for_eng:pod-1:SC03-S001",
+  "order": 7,
+  "turnClip": "cfa39fa5-8520-47a5-a40d-0d87f4ae361f",
+  "turnVoice": "bg-BG-KalinaNeural",
+  "drillVoices": [
+   "bg-BG-BorislavNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "dfd761d7-6f74-4119-bb0d-d34e4d0e41ef",
+    "26602733-33bc-4f2d-9a4c-bd9b72b767b7"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs bul_for_eng --orders=7"
+ },
+ {
+  "course": "bul_for_eng",
+  "rowId": "bul_for_eng:pod-1:SC07-S001",
+  "order": 28,
+  "turnClip": "cfa39fa5-8520-47a5-a40d-0d87f4ae361f",
+  "turnVoice": "bg-BG-KalinaNeural",
+  "drillVoices": [
+   "bg-BG-BorislavNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "dfd761d7-6f74-4119-bb0d-d34e4d0e41ef",
+    "26602733-33bc-4f2d-9a4c-bd9b72b767b7"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs bul_for_eng --orders=28"
+ },
+ {
+  "course": "bul_for_eng",
+  "rowId": "bul_for_eng:pod-1:SC07-S005",
+  "order": 32,
+  "turnClip": "3c7889a4-bcd1-40e3-b511-97e957dcb8f6",
+  "turnVoice": "bg-BG-KalinaNeural",
+  "drillVoices": [
+   "bg-BG-BorislavNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "6e7e30fe-bca3-49de-a42b-5e89929e6caf",
+    "e06962ae-3a5f-4dcd-935f-083e00351f6b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs bul_for_eng --orders=32"
+ },
+ {
+  "course": "bul_for_eng",
+  "rowId": "bul_for_eng:pod-1:SC07-S008",
+  "order": 35,
+  "turnClip": "786418aa-971a-48b9-a3d4-3f52c834151a",
+  "turnVoice": "bg-BG-KalinaNeural",
+  "drillVoices": [
+   "bg-BG-BorislavNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "14d1c7ce-8670-4809-8502-edd79235dd4c",
+    "5d5ae1d7-61f8-4f1f-bdc5-20ea6cd782e4"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs bul_for_eng --orders=35"
+ },
+ {
+  "course": "bul_for_eng",
+  "rowId": "bul_for_eng:pod-1:SC07-S012",
+  "order": 39,
+  "turnClip": "afb0a400-3644-4549-b4e5-5b5c63abea8f",
+  "turnVoice": "bg-BG-KalinaNeural",
+  "drillVoices": [
+   "bg-BG-BorislavNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "6e7e30fe-bca3-49de-a42b-5e89929e6caf",
+    "fe1d97bb-cb1b-40d1-82a5-11ff672aae82"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs bul_for_eng --orders=39"
+ },
+ {
+  "course": "bul_for_eng",
+  "rowId": "bul_for_eng:pod-1:SC07-S014",
+  "order": 41,
+  "turnClip": "51b8085b-4407-42a3-b3b7-979c2ccdd1e3",
+  "turnVoice": "bg-BG-KalinaNeural",
+  "drillVoices": [
+   "bg-BG-BorislavNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "566a1a43-2eec-4a16-bc3b-4e2645ff6492",
+    "2565d681-124d-4cdf-bbc5-8ec88838d737"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs bul_for_eng --orders=41"
+ },
+ {
+  "course": "bul_for_eng",
+  "rowId": "bul_for_eng:pod-1:SC13-S008",
+  "order": 117,
+  "turnClip": "83e4f66c-1dd1-4bc3-b76a-4edeb1dc05a9",
+  "turnVoice": "bg-BG-BorislavNeural",
+  "drillVoices": [
+   "bg-BG-KalinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "43054237-5535-4405-8794-b17c94b084f2",
+    "05f655f3-f89f-44d8-9716-1f660f0059a3"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs bul_for_eng --orders=117"
+ },
+ {
+  "course": "bul_for_eng",
+  "rowId": "bul_for_eng:pod-1:SC13-S010",
+  "order": 119,
+  "turnClip": "9a77a4f4-5a84-481e-a88f-7f11ad322fe2",
+  "turnVoice": "bg-BG-BorislavNeural",
+  "drillVoices": [
+   "bg-BG-KalinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f35444ad-c8b4-4d4c-adbe-3dbb991104d1",
+    "613711f2-61da-4d02-b3b1-57699e22dd5a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs bul_for_eng --orders=119"
+ },
+ {
+  "course": "bul_for_eng",
+  "rowId": "bul_for_eng:pod-1:SC14-S002",
+  "order": 122,
+  "turnClip": "820c9636-cfe5-4450-ae8c-3583e5099012",
+  "turnVoice": "bg-BG-BorislavNeural",
+  "drillVoices": [
+   "bg-BG-KalinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7bf4d19d-904c-456f-b7c3-4e7cb53010bc",
+    "fa4a102d-3b58-4cb9-8693-efc1deeefe8c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs bul_for_eng --orders=122"
+ },
+ {
+  "course": "bul_for_eng",
+  "rowId": "bul_for_eng:pod-1:SC14-S007",
+  "order": 127,
+  "turnClip": "d3733435-b474-41bf-992e-c56f3e346b99",
+  "turnVoice": "bg-BG-BorislavNeural",
+  "drillVoices": [
+   "bg-BG-KalinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9433fd67-0c1f-4e33-9c2b-ec32ee3c4a65",
+    "b31ceedf-671c-4cf5-b2af-80ef6b909e35"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs bul_for_eng --orders=127"
+ },
+ {
+  "course": "bul_for_eng",
+  "rowId": "bul_for_eng:pod-1:SC14-S009",
+  "order": 129,
+  "turnClip": "8cd02922-5cb9-4511-82ea-766ffa21f1cc",
+  "turnVoice": "bg-BG-BorislavNeural",
+  "drillVoices": [
+   "bg-BG-KalinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7bf4d19d-904c-456f-b7c3-4e7cb53010bc",
+    "957cb3ba-ae18-49f3-8437-f3152ee01cb5"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs bul_for_eng --orders=129"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC07-S004",
+  "order": 31,
+  "turnClip": "ac0fd773-c060-4484-b192-080085af0907",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "1c53d41a-1c06-4238-88ec-7f6cda84d7b3",
+    "7e2dffa8-ec55-4534-80e4-c9ac967e1fc4"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=31"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC08-S001",
+  "order": 43,
+  "turnClip": "e066c675-1b0c-4673-9f42-f0cf8970ec93",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3b4da2c9-6646-4d30-9003-410cd01b114b",
+    "8ccf8614-144e-46d6-b135-f144651debc4"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=43"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC08-S002",
+  "order": 44,
+  "turnClip": "f8fd17d9-e6ae-49c3-afd8-1b3bd217bec0",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b8fd2ca4-780f-45ee-8b2a-9976aab7dbf0",
+    "802cf13b-5037-4e44-9476-ce0b5d60d42f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=44"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC08-S012",
+  "order": 54,
+  "turnClip": "3b6e41dd-98d9-4aa3-8134-8e488707473a",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "ee6df425-741d-4902-9608-3bc46c179b2a",
+    "5a79067b-4eb6-43f2-bd9a-6dcc9554776c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=54"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC08-S013",
+  "order": 55,
+  "turnClip": "f2f6209c-6f3f-40d4-9777-81b32093c4fc",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8ea0d8a4-a6f2-4455-90cf-d56c935e2d42",
+    "9ac13567-0c8d-437c-842e-dd96468edce2",
+    "2e96a239-1f2a-4b42-8bdd-d18d34a506ce"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=55"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC08-S014",
+  "order": 56,
+  "turnClip": "566c677d-10d6-45c2-b57f-8d3ebb1447da",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "48f8f02b-368b-44e2-9cdb-6e8382c9e70d",
+    "a7997391-3f9e-4cad-9673-b47e27b86e8a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=56"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC09-S001",
+  "order": 59,
+  "turnClip": "844c6591-e0e3-4c25-8ed0-f2260d0f43c7",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "0a9e87ff-8ce6-470c-ba39-76cad8022b30",
+    "c8cd82e6-fc9b-4f1d-96e0-708557875be8"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=59"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC09-S002",
+  "order": 60,
+  "turnClip": "8bc7ef1e-127b-4da7-b5d8-3ae49ee60c8b",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "42f32e4d-eb5d-4b96-a810-292a1db3cc22",
+    "aaeb5eeb-6a08-4177-98b7-d512bd750ff0",
+    "f657cf9f-92f8-4a0c-95ae-f8296f996baa"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=60"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC09-S005",
+  "order": 63,
+  "turnClip": "0ba6bf52-aafb-4eb0-a9d9-be48bd8a6235",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "73658b0d-b7e2-4b55-824f-54b6e150030c",
+    "0785c88f-31a7-47e5-b921-9fa5ad8127ba"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=63"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC09-S006",
+  "order": 64,
+  "turnClip": "28d4851b-02d8-42ac-adf3-f893723f5838",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "dced2503-c429-4667-bc8f-00e83a2f0b0d",
+    "aee23443-75cb-449e-8fb6-3a1e74dbe605"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=64"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC09-S008",
+  "order": 66,
+  "turnClip": "dc01c1f0-b9d6-4d83-aa63-25687d747fe8",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9d5e01d5-4e3b-4024-8589-e76973d14c7e",
+    "5a274866-93e2-4e4b-8cb9-8c6eb3fa2e49"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=66"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC09-S009",
+  "order": 67,
+  "turnClip": "4a2fa2e8-08e5-4566-b13f-61b5f6dd3c50",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "dc064b1f-6e70-4396-b5cd-8e50d1cdb582",
+    "fef45a63-3259-430f-99c5-2855a8f32986"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=67"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC09-S011",
+  "order": 69,
+  "turnClip": "547b5efb-ea01-49c2-9b54-d16d0e42b1f3",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d4fff9e6-c6cb-4daa-911d-0bf4d51998e2",
+    "5925a1f3-5d64-4cf8-83c4-68353f759412"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=69"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC09-S014",
+  "order": 72,
+  "turnClip": "71e23aab-b772-4687-af50-b0703945d9ee",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "40766e8a-9640-412e-9f27-471fe76795e0",
+    "a4cdab15-2d80-41a4-a605-cfe30b8aca6f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=72"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC09-S015",
+  "order": 73,
+  "turnClip": "7fff6712-6b9b-4992-aafe-decf26ddcc26",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "5b56bb84-3670-4c38-a303-a17df7ca3767",
+    "d230dec6-0747-4952-85cd-cced70c5e8a6"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=73"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC09-S016",
+  "order": 74,
+  "turnClip": "ffb82a74-0368-4903-abb8-24ac14d2d0e5",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f5766db3-23e2-4b52-9ef5-3e4624ac2635",
+    "5eb5dffa-8dce-4831-8478-135f91e8bab6"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=74"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC13-S008",
+  "order": 117,
+  "turnClip": "f5ad5308-5f99-46cd-a370-f12e587ef809",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9f10a750-ec67-4b17-a1fc-c7fc5e41ae48",
+    "9845d01a-638f-417a-a03e-28ce77d86d42"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=117"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC13-S010",
+  "order": 119,
+  "turnClip": "40636527-bc4c-416d-8da6-a1ebb64ce0c3",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "dba93761-61c0-4743-b54f-ce2eb1787b8d",
+    "8b864755-8ce0-416f-a781-679bcf5dc351"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=119"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC14-S002",
+  "order": 122,
+  "turnClip": "1ab6693f-0cc9-4f64-bf1f-b305c2ebe885",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d15a1d7f-1ca9-47fc-a57c-04042f6f6c7b",
+    "bdd96a62-00ff-4d24-975a-1417efd9710a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=122"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC14-S007",
+  "order": 127,
+  "turnClip": "96ce0577-5167-4055-b4c8-06814822ca38",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "adf7af9f-cb02-487e-b991-949f6647494e",
+    "d22daedd-baf3-4c39-a83f-5684309b66da"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=127"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC14-S009",
+  "order": 129,
+  "turnClip": "a7b30acc-fc56-44f6-9f6d-b3fcabe3dc58",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d15a1d7f-1ca9-47fc-a57c-04042f6f6c7b",
+    "68972e73-4268-4c08-b298-7ef16c78129c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=129"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC15-S001",
+  "order": 131,
+  "turnClip": "77f05a2d-b6a7-4cbe-85a5-d00feff336c2",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "cedc79e2-392e-496c-bb20-3c2a6d929086",
+    "3af88bb7-d534-4629-9d4a-755380219256"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=131"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC15-S003",
+  "order": 133,
+  "turnClip": "67055d96-7688-40d4-bbfe-d25a011dc625",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "74782052-5056-4c2f-ac32-015c37eb2e12",
+    "b8fa97cc-ba0b-47f4-8cf8-24cdbd940301",
+    "21af5c1b-6f4a-4c8e-a4b2-983062b12535"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=133"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC15-S005",
+  "order": 135,
+  "turnClip": "e7b7ae82-314c-4341-9152-47926242a689",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "40ca8caa-a9a2-4946-9cfd-1496b2e8986a",
+    "fe43469c-1b30-4b60-aaa9-6a5992cafc28",
+    "d6d890b2-2f4f-4ca6-8522-e3255305ec55",
+    "4ba9efd9-fcc5-4a05-9b83-cdb8cb3cd027"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=135"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC15-S007",
+  "order": 137,
+  "turnClip": "1389898d-4b42-4a28-b904-acbd373655ba",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b1cced94-3f7d-49ad-a90a-bd7e8cfc2aa9",
+    "5555a08d-d7e3-4d11-aec4-65a041313497"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=137"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC15-S009",
+  "order": 139,
+  "turnClip": "95317dec-22d7-4410-984f-a9d4833a6ec3",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "856e5ef9-283f-45d9-b731-c07ce0ed9cd8",
+    "eb2b2dcb-e8de-4bf4-a5a1-2195cf47c454",
+    "158869e8-3999-4555-8710-65f9f205d53a",
+    "a846fe94-5d7e-46bd-bb8e-80cccb73484f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=139"
+ },
+ {
+  "course": "cat_for_eng",
+  "rowId": "cat_for_eng:pod-1:SC15-S011",
+  "order": 141,
+  "turnClip": "3848b2f4-0512-4571-a88e-d4782225a286",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "aa35f55a-0688-4f5a-84d9-a35098260f33",
+    "edc6013e-4c04-49fb-aeff-2234ceab36f8",
+    "9ac453c2-df58-48e3-b712-c162b603ca87"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_eng --orders=141"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC07-S004",
+  "order": 31,
+  "turnClip": "cdab4bf5-054a-4d3c-9b1d-0182621fc8b6",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8fb24603-5159-491d-b3fb-e087fad581b5",
+    "e3bfc2d4-af96-44c9-b2d1-c9a6d5288fe8"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=31"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC08-S001",
+  "order": 43,
+  "turnClip": "7365cae0-2a03-4222-86be-cbe31da5a6b0",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d040da37-876a-4267-9bdc-46af81ecbc8a",
+    "ad8ea769-f956-468a-8fba-ed061c622c37"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=43"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC08-S002",
+  "order": 44,
+  "turnClip": "f5610ca3-8053-4500-81b2-e3764e96ddb3",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "87e0e9d6-2d2b-463f-932d-23c654e5ed6e",
+    "a1b43d9c-168c-4a69-b8f5-f34c971681c9"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=44"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC08-S012",
+  "order": 54,
+  "turnClip": "143b5e84-9027-43ab-a534-6c63e0b6dc6c",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c64a168d-6207-49d5-9615-10f15623976c",
+    "f4aad770-c944-485d-ae1f-aaf17a3e5dce"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=54"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC08-S013",
+  "order": 55,
+  "turnClip": "4aaf0bae-679e-4738-a9b7-c909d70ec6f3",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7154fa6e-87dd-434a-8244-b0799a44dc41",
+    "6d43b4f8-2b3f-4776-8a6e-ae4a676c0495",
+    "ebb19c4a-7b98-41eb-905d-ea014661a74a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=55"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC08-S014",
+  "order": 56,
+  "turnClip": "306645eb-6c3c-48b7-aea8-6573612ad9f9",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "5a153bf8-0690-4076-89ad-fd8fa104bf14",
+    "65c52214-a2f5-402c-8df8-2bd681cb5e48"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=56"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC09-S001",
+  "order": 59,
+  "turnClip": "d3cd615a-1b4e-4534-bea1-00f7ffdbe883",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a4ec2345-0d6f-4db9-b0d5-e6683d0bbe50",
+    "aaf40507-f115-40a1-a343-1372b4a7469b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=59"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC09-S002",
+  "order": 60,
+  "turnClip": "8060d615-8e7c-444c-8ec2-06bb3e339033",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2043936a-d56f-4c69-8f1f-a8c7b8408099",
+    "b19a7801-1dc3-448b-b7d4-b65b6e97d2a6",
+    "20e43dd1-b615-4e06-b0dc-a07640e23ec2"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=60"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC09-S005",
+  "order": 63,
+  "turnClip": "75152daa-0a74-4b56-b7d6-76293c65a386",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "e6058d7f-fa10-47e7-95a2-06678a81f167",
+    "e49efd03-41c4-4d13-ad06-fffbf9129e39"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=63"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC09-S006",
+  "order": 64,
+  "turnClip": "5d17e406-1a34-4dc3-83e6-5a6dc17c893a",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "ee6988f4-86da-4ec1-8259-136faa11f3d7",
+    "ed22a38d-e2a8-4e32-b485-baaa741971d5"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=64"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC09-S008",
+  "order": 66,
+  "turnClip": "561f5356-8409-431c-9938-2343335e633e",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fd7c5ff8-d9f0-440b-8389-d02b8111f115",
+    "8caa0167-7ea8-4882-b582-c5db6bf9b766"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=66"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC09-S009",
+  "order": 67,
+  "turnClip": "61281320-3aa7-4be7-b6d6-ec1c6e220610",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "491d3955-ea97-4125-810d-55a95bc0913b",
+    "afc9edc6-c6f4-4a90-ac7f-728b98cd9b37"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=67"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC09-S011",
+  "order": 69,
+  "turnClip": "eb5d463a-c87d-45bd-9d9d-a6911e502cd3",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3c80359f-9c98-409b-bdf3-116c90cd79e9",
+    "2cb96270-700b-4a74-8ef9-4eaa8d6b4832"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=69"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC09-S014",
+  "order": 72,
+  "turnClip": "d45e9baa-0e66-42ea-860a-e446613836ac",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d426432f-224f-4838-89e9-1a5c83cb1bc9",
+    "67c036d3-a8fd-4245-9844-5d8eb20d9b3c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=72"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC09-S015",
+  "order": 73,
+  "turnClip": "55e8ddb1-e439-4a9d-92be-e998d13089ab",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-JoanaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "04fe9cce-3392-42ec-83fe-803dc273bf7c",
+    "cc92ff59-dd1a-41fa-9ea3-12516906f442"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=73"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC09-S016",
+  "order": 74,
+  "turnClip": "f3206c1d-854c-4c5c-8cb3-f17a54b43618",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f7044b62-5057-4c82-b44a-088becb0e65e",
+    "377b43ab-b900-4f2b-83c5-3f6a634ed7b2"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=74"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC13-S008",
+  "order": 117,
+  "turnClip": "7de4878c-3bcc-49e5-bf78-444dae8eb25f",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "ece149b6-3969-47d3-9f46-ca857947909d",
+    "03f51a17-38ee-4b34-9f3c-bb7320220c4a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=117"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC13-S010",
+  "order": 119,
+  "turnClip": "e36d94f0-ff83-4bef-8b1c-89f404aa3ab0",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9bdcedf1-1b98-4c8d-b4eb-d0032f24bcf9",
+    "d4ebeb0c-5f1c-4e29-b2a3-0c6532fb5a06"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=119"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC14-S002",
+  "order": 122,
+  "turnClip": "b8b9ac74-cced-4a1a-ac4b-32711ee71c4e",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9d26a5fe-f1a8-4872-9838-ad8c852bd2d2",
+    "a01d71c7-b556-4afd-88e0-32685ddabfc1"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=122"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC14-S007",
+  "order": 127,
+  "turnClip": "df5fa2c0-f265-4aef-848e-719dd4881f15",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "141a0805-4b4e-4703-8ca0-677b62f8d619",
+    "e5adb072-9da7-4bf4-ada0-a54e51e68319"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=127"
+ },
+ {
+  "course": "cat_for_spa",
+  "rowId": "cat_for_spa:pod-1:SC14-S009",
+  "order": 129,
+  "turnClip": "14cd0970-1612-4098-b577-d3e798de1e1d",
+  "turnVoice": "ca-ES-EnricNeural",
+  "drillVoices": [
+   "ca-ES-AlbaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9d26a5fe-f1a8-4872-9838-ad8c852bd2d2",
+    "b02e174d-732b-4d0a-b679-054e03ba9f08"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs cat_for_spa --orders=129"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC01-S002",
+  "order": 2,
+  "turnClip": "da3121dd-fd7f-487a-8c6a-113aeee77a65",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "604dd83c-ba66-4653-9a04-3c841d33c698",
+    "e4635b50-237a-4ed0-bf94-af1b2fcbe007"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=2"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC01-S003",
+  "order": 3,
+  "turnClip": "6ef8aa2f-a58c-4f37-9de1-daf785d5441c",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "01b735aa-e6a0-4086-acb1-3d508565f579",
+    "a73d967a-21c2-43ac-95f3-73acb1b04a9b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=3"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC01-S004",
+  "order": 4,
+  "turnClip": "b576968c-66b9-47e3-8bbe-c732b7544038",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "6a15ff20-f113-4c55-b3d2-b236e77ad7e5",
+    "cb164864-de08-46ee-9190-714c063cf908",
+    "ab825929-1787-4194-af0c-f4bb76bb098f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=4"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC02-S002",
+  "order": 6,
+  "turnClip": "e0f66a08-6365-436a-9ae1-cadfa3c4ce38",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "77b45b16-16d0-4eb5-a7e9-2da20f9fe5fb",
+    "96ff0224-2704-40f8-adb4-4d238d54d148"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=6"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC02-S005",
+  "order": 9,
+  "turnClip": "5e049a29-afb5-4ce9-80e7-7ae8656b746c",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "70628588-3e2f-4f45-a406-c5384dd907fd",
+    "e352c9e7-c5a1-49ec-9d88-2040d5fbeeab"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=9"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC03-S001",
+  "order": 10,
+  "turnClip": "d2e1f8a9-68a2-4737-8960-0066975a450a",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "e1fc5a89",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "15c79a03-bac1-461a-a119-3e50af7dc197",
+    "5df45a44-7f4b-45f0-8910-99dca830d97e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=10"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC03-S002",
+  "order": 11,
+  "turnClip": "ab7e4891-f245-461b-921a-7a4068268b99",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3a1f43e2-9b21-429a-8e64-94315d87a2b9",
+    "d6a75dfe-d641-45ce-ab22-edc467cb8d7f",
+    "63da3196-3b22-4bd2-b5ef-3239605cd734",
+    "c16fa55c-e98a-40aa-a438-77025e7be697"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=11"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC03-S010",
+  "order": 19,
+  "turnClip": "065afc15-4aea-495a-8887-05a5c979b27f",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f20ea6ac-ca00-4afe-b8d4-266980767ff8",
+    "3c1b6cec-df41-4d4a-95bc-86d45fd2f5e9"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=19"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC04-S002",
+  "order": 21,
+  "turnClip": "105a2a17-8bf9-4be8-ba0e-b749d7ec8b64",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "44c91d64",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2b319cdb-96a4-4639-8ebf-07a924008291",
+    "6bed5c68-3a27-4da6-ad03-d36c95268ec0",
+    "bd86d63a-4abd-4f03-84ff-fcba063a3578",
+    "367f96f4-257f-4472-8341-bd66d7a73ae9"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=21"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC04-S003",
+  "order": 22,
+  "turnClip": "1e73b334-e96e-42dd-8ac8-b18a93c0f9bd",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "45a1a771-c3cb-4e3f-a48b-1100130019bf",
+    "e8fe45ad-69c3-4274-9d45-b6f776c3f1e1",
+    "a5df7154-5814-4e3e-b3d3-95e579ed0c90"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=22"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC05-S001",
+  "order": 23,
+  "turnClip": "bace4a2d-a453-4fc5-a6ac-2bf2b9d7bfbb",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "89708ac3-0463-48f8-96c9-7cdbeccf8239",
+    "b6c7b9ff-a5da-47c0-b082-64f3617a4634"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=23"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC05-S002",
+  "order": 24,
+  "turnClip": "d6502d64-8ecc-468f-a9d6-1937b388bdfe",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "01667a0e-ae0f-441a-a7dc-4915513cfe03",
+    "36ef78ed-ccf7-47f2-9f0f-ff7d8bd973cb",
+    "75dc8fd0-b972-4385-822d-0ae0e3862689",
+    "5949a700-c1c6-450e-b4ec-fb8aad58ce13"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=24"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S001",
+  "order": 25,
+  "turnClip": "9817772d-fb40-421a-9b82-e9acd56b080e",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b",
+   "e1fc5a89"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "eddda574-4bdb-4092-8a7d-06bec1b6944b",
+    "683c54e1-1117-4441-b9b5-6af1796e3ddb",
+    "7feac4d4-c137-44e3-a382-e09da09f3112"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=25"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S002",
+  "order": 26,
+  "turnClip": "6fba40c2-d5c8-48ff-9660-a7d043d94cf6",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d271b095-a057-4b33-ad09-84d19cdd202c",
+    "c8d3c197-7f4e-49d0-a6a4-fd8318acdad6"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=26"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S003",
+  "order": 27,
+  "turnClip": "741a89e9-0d6b-48d1-bc90-d9416f969a99",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "42933b97-9dee-4efb-b356-d6afcd4741e9",
+    "15a8fee6-0f93-4afa-b845-1c228c10d0d4"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=27"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S004",
+  "order": 28,
+  "turnClip": "fc7290e8-091d-484f-b773-983cae57d3bf",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fecda7f3-0033-4ec9-a0d7-c6a0111b2d51",
+    "e8e3c1db-aa57-4f4c-8420-a44278b02c97"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=28"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S005",
+  "order": 29,
+  "turnClip": "670bd20c-3359-46fd-b554-a5dbd342d105",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b",
+   "e1fc5a89"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "1cacd832-bfa7-45a6-9057-faf9019ed50f",
+    "d01e0b0d-4c18-46aa-baf6-a3de71c16f9c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=29"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S006",
+  "order": 30,
+  "turnClip": "42216456-6b69-42c9-b3f0-47dd748447b1",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c5ba0cf9-5291-48f6-b9db-b06b55d71ac4",
+    "efb7d6d8-8a18-4011-86ce-488d8954a295"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=30"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S007",
+  "order": 31,
+  "turnClip": "d6023223-81f3-49ea-ac69-614ecdc78109",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "dca42afb-9ce5-42b9-8fa1-65761021700b",
+    "f98a7309-931c-4aa0-b962-c92980bb4945"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=31"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S008",
+  "order": 32,
+  "turnClip": "43944fd1-e5c4-4e99-9599-73c508a3c366",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "628389f9-d43c-4589-a8ce-6e5f8d37b354",
+    "c8d3c197-7f4e-49d0-a6a4-fd8318acdad6"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=32"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S009",
+  "order": 33,
+  "turnClip": "43ee2086-f997-46d4-b97f-110173d9f3bc",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b",
+   "e1fc5a89"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "bd88bd50-1827-4661-8312-f3363bce383a",
+    "cfca2000-d9ee-4ec6-96d4-5c28508ea53e",
+    "97a8469d-295a-4c92-952d-e3807733f7bc"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=33"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S010",
+  "order": 34,
+  "turnClip": "b27531f7-25b4-4d71-acf9-a019d942870c",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c9ebc5ff-362c-4e9d-8029-48d06ff2ea13",
+    "c15a4658-ca1b-407c-9acc-7c8d7f72114b",
+    "36ef0391-907f-401f-812f-365f8de02f27",
+    "af2c844d-7021-4ac8-a64a-8157a7bced89",
+    "0ae20df9-727a-4cbe-a598-77edd1a6f612"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=34"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S011",
+  "order": 35,
+  "turnClip": "a6ad11f6-ec23-4068-81b2-5d6195c094c2",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "ad8539c5-6b7b-4779-8e7e-52da67c7dfb4",
+    "63de594c-e4e1-434f-900a-b21010d1e89c",
+    "31327324-f075-4ef0-9013-371ff7d632bc",
+    "d3797075-9436-404d-a4ae-492589d979fa"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=35"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC06-S012",
+  "order": 36,
+  "turnClip": "8438f615-cf5f-4a6d-81f2-7b230c49ff52",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "091faa05-3e3a-4ac3-a35c-fa21744257f2",
+    "63e83974-7f91-4f58-9233-196ff851993c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=36"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC07-S001",
+  "order": 38,
+  "turnClip": "21913006-e031-49ef-8624-663942c8bf95",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b",
+   "44c91d64"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "604dd83c-ba66-4653-9a04-3c841d33c698",
+    "07c6a2f6-7990-4308-b39c-ed360653979a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=38"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC07-S004",
+  "order": 41,
+  "turnClip": "06b7ae81-db7f-4731-9033-63d63b174af9",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a84e660f-a047-4ab4-a186-cf1438549eee",
+    "117747ed-4e9f-4456-b0dc-34172a6e315c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=41"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC07-S005",
+  "order": 42,
+  "turnClip": "36d91570-1164-407e-a6ad-e0abe90a4662",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "44c91d64",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "5efe8e5f-c1a8-41b3-af26-f7e24b5a3ed5",
+    "20d042d1-e0d3-45c6-842d-9247a4d16f22"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=42"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC07-S008",
+  "order": 45,
+  "turnClip": "e61a48bd-c3c2-4fa8-a3f4-ace39f90c95d",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "97bca291-0b4d-4a55-8420-82b56ed4b113",
+    "3d7ea744-c0ad-429c-af96-41c37ae62d14"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=45"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC07-S011",
+  "order": 48,
+  "turnClip": "39efc7f3-964f-4eba-aff6-7a99fefe7a00",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "e1fc5a89",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "390503eb-3b51-4788-973e-ae501150fa4a",
+    "03e1cb00-071c-4368-bd8d-b08dddbf10ef"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=48"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC07-S012",
+  "order": 49,
+  "turnClip": "22a77207-44ba-4fe4-8026-2494669ea4f4",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "44c91d64",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "5efe8e5f-c1a8-41b3-af26-f7e24b5a3ed5",
+    "a83d4611-fea3-4cd4-893c-f4fbae53e786"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=49"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC07-S013",
+  "order": 50,
+  "turnClip": "9cc92e3e-1c7b-46d3-a991-bb540bb03dea",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "e1fc5a89",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f7707701-44ae-498e-bd16-2b4a338bbfee",
+    "2920c273-e864-4594-a324-dc84a8d73e2a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=50"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC07-S014",
+  "order": 51,
+  "turnClip": "2f9567e6-69ce-4b7e-b436-d2bfd6507751",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "93b170d1-ca57-44a2-9dce-5ca6eace8b65",
+    "de698c99-28f5-42da-9815-e0344543d9a0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=51"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC08-S001",
+  "order": 53,
+  "turnClip": "9b3c002d-4981-4f5b-a695-d0753847206f",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d2b3682e-f4da-44f8-86f3-354cba427f2b",
+    "5df45a44-7f4b-45f0-8910-99dca830d97e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=53"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC08-S002",
+  "order": 54,
+  "turnClip": "44b93715-704f-45a1-a059-dc54d609b7ba",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "bd9a6728-c275-4080-a8d3-55e11be5d23a",
+    "2d28e35c-2e75-4126-9719-7d5374e1eca6"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=54"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC08-S006",
+  "order": 58,
+  "turnClip": "7ed3f18b-bdf9-45be-b595-c122e7caa964",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "0f67f141-8caa-4f0c-a962-c1961fa064a4",
+    "e9f78b76-7d90-44b2-9ea5-fd0cf9b1e47a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=58"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC08-S014",
+  "order": 66,
+  "turnClip": "c4ee04dd-aaf7-4f57-b58b-9b51afe68733",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "af90030e-d8c7-429f-a1b1-65278f2b2745",
+    "0aef9d95-03a9-4353-b586-e38c31d45749"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=66"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC08-S015",
+  "order": 67,
+  "turnClip": "ecb97c20-f265-4f97-b104-64c74be503fb",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7882b561-5efb-4e26-bbb4-79b92e62b3fe",
+    "b756d9a1-17e5-4aa8-8575-11721921ae41"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=67"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S001",
+  "order": 69,
+  "turnClip": "096ab465-abef-45f8-9c74-c622c190b0e5",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "44c91d64",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3cb052d9-14e1-48d8-9ec7-e4e7d06c74c6",
+    "be11a0b4-fc78-45ed-b529-8e44f21021b6"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=69"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S002",
+  "order": 70,
+  "turnClip": "e75c387b-eabc-4783-bb89-3243c17b4086",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8eaf4320-662d-4095-aa0d-ebd586409986",
+    "02e63d26-4513-4ef6-a319-03e2b7335b60",
+    "5da59e22-f9b3-4754-81b3-7effcfccb434"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=70"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S005",
+  "order": 73,
+  "turnClip": "dfae327a-706c-4228-8618-47481aba42fa",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "64bd706d-15d6-4ae6-9509-ea1ce3f96025",
+    "5b2a21c9-da6d-4b81-8215-fa77684416ab"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=73"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S006",
+  "order": 74,
+  "turnClip": "d60618c7-382f-42e4-966d-1872c1e70b49",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "36e034d9-1c44-4932-aa7a-80dac458f59c",
+    "dc4f05fe-da85-4196-bd54-2d28491105ac"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=74"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S008",
+  "order": 76,
+  "turnClip": "3d4981a9-b860-431b-9050-c1c477a56bdc",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a19b9770-dda2-40b6-b610-7b28d31040e7",
+    "23dec743-051c-469e-beea-d06ac1deabc1"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=76"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S009",
+  "order": 77,
+  "turnClip": "7df3721e-85e5-473d-ad37-09d283a62f21",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b30ec4db-4eb3-48ff-8af2-f750218e954f",
+    "498b18fc-0661-4fa5-a6eb-b8d5ab117f7e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=77"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S010",
+  "order": 78,
+  "turnClip": "0e5e83bb-81ed-4374-a12b-9bfb0f442e7e",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "de9ba590-e635-45f4-9560-d30235877673",
+    "9b97e6a4-8b1c-4801-9a02-d95846139898"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=78"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S011",
+  "order": 79,
+  "turnClip": "f0069ed0-4978-4eb6-a981-406c6255e28a",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "e1fc5a89",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3faa1613-ad9b-4031-af36-b5d1f5161289",
+    "ef51b58d-9459-425a-86e6-ef4fd11847f9"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=79"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S014",
+  "order": 82,
+  "turnClip": "0e1f19d9-72c4-4fd1-99e3-3e90d2ed2f13",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "ed57ce0a-ee3e-47cc-9f33-5c4073989502",
+    "2b869213-a197-4910-9397-8fb3012c8dff"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=82"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S015",
+  "order": 83,
+  "turnClip": "a160ac0f-ca9d-4299-9e49-d5039eca97a4",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b4533485-8757-4333-aa1d-716731f0bab9",
+    "10d04b87-c50c-4bcc-87f6-68d8a787c51f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=83"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S016",
+  "order": 84,
+  "turnClip": "40e68bd7-e193-41d1-a4b9-a769b1d80ebf",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a78afc9e-ecc0-4eb5-8ecb-232864ff1036",
+    "988cf445-9b9c-4fe2-9fe9-291a27ab75c3"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=84"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S017",
+  "order": 85,
+  "turnClip": "b0aba21c-272b-41b4-b875-b39657870abc",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f9924fba-a5bd-4b90-a46e-46c4f976be6b",
+    "93a5a0e9-c3bd-4579-a4b7-de17d6b45ea1"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=85"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC09-S018",
+  "order": 86,
+  "turnClip": "0a0ab28f-00a2-4629-8c6f-b84f173d5f82",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b862e158-de41-4317-93b2-ab7970a15176",
+    "efd4ee02-dc68-4440-b135-58ebd19a55df",
+    "782712ae-2309-4f65-93c7-46c427a74fd7",
+    "8fd06d5a-0656-49ab-a7dd-35f58acc921b",
+    "dca52265-1af5-48ca-a45e-7585ebdaa75e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=86"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC10-S001",
+  "order": 87,
+  "turnClip": "224d085a-33d7-44c8-a4ac-f3d40c6eec2a",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "44c91d64",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "03395603-1a32-419e-a2c7-e25dadd519eb",
+    "191337cf-ac49-4c44-b881-d70fd586aefd"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=87"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC10-S007",
+  "order": 93,
+  "turnClip": "cf1d2e2d-d9cf-4585-b6f6-74e58545473f",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "247f96a0-6e5b-419f-bad6-1c1b3e71cf7c",
+    "55459b3e-6582-4f86-b7cc-7219fc5b4c17"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=93"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC10-S008",
+  "order": 94,
+  "turnClip": "5f113252-412f-4f4c-bd51-6f3328c6d69b",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "bd6173c4-e34a-46fb-9d1c-cda07211f237",
+    "e633773b-8d96-4312-8d4e-3488ed039829",
+    "0cc2466a-1516-4984-a67a-e641455ba82c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=94"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC10-S010",
+  "order": 96,
+  "turnClip": "e6cffbc3-4ddb-4e8c-b1c3-01719ad8df05",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3254a355-060f-427d-878e-bc037f156bc3",
+    "40555b81-3935-451f-93fe-7401de284e0f",
+    "7174b424-9c25-4968-8b33-d14781a1068b",
+    "bbbee439-2cbf-4e70-8a6c-b74f86d93d63",
+    "6edcae21-6b63-43ed-a6e3-0367d810999b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=96"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC11-S001",
+  "order": 97,
+  "turnClip": "a21cc281-1219-4835-a46c-cca07e6d6812",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "e1fc5a89",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "15c79a03-bac1-461a-a119-3e50af7dc197",
+    "04c5a7a2-9783-4930-b419-0af8e821ffff"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=97"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC11-S002",
+  "order": 98,
+  "turnClip": "317d95ce-eb28-4458-8fea-6177c5ce5433",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "44c91d64",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "086b3079-2d79-44b0-9b1a-8f6bb0f5007c",
+    "7a93aeab-b16e-4cf4-9fc3-e387e3ccedd6",
+    "5b4b87b3-69d4-4d01-9271-3cd6a6fccef6"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=98"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC11-S003",
+  "order": 99,
+  "turnClip": "7e348655-e09d-4c9e-9daf-78071e517e47",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "e1fc5a89",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3faa1613-ad9b-4031-af36-b5d1f5161289",
+    "61ce9a74-0cef-478e-8a12-5602a15b2e2e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=99"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC11-S008",
+  "order": 104,
+  "turnClip": "b3ba082e-64fd-4d95-bfd8-9eeaf80aaf77",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8edf99ec-c202-4aa8-afe3-89a7d64f7503",
+    "4b607714-6b6d-40e9-b84d-bca25aaedc23"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=104"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC11-S009",
+  "order": 105,
+  "turnClip": "e6ebfd12-0da6-4a1c-bb31-e44fc1391af5",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "e1fc5a89",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "e836dff4-0770-409a-83f8-6cb2ea710bc6",
+    "c93e5520-915e-414f-83da-9d4c3d291c67"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=105"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC11-S012",
+  "order": 108,
+  "turnClip": "1db75e0e-7706-4431-be61-bdef14f80929",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "41d535ef-2048-4e59-b2d1-f91e77fd4399",
+    "8daa8a65-c128-457f-8c07-c0030f1563b7"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=108"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC11-S013",
+  "order": 109,
+  "turnClip": "0fb3436f-2aff-4342-893b-c59e05ea8a3d",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9f41b131-d8dc-48ca-ad4a-7c128a4d07de",
+    "11316876-9a89-484b-b107-0571059d0c5a",
+    "9c9eb0da-77e3-4212-9de5-e3d0570dd5bf",
+    "e2d4ca36-69d5-42f4-a687-9cbef9e6fdf6",
+    "1dcedecf-a635-4f9f-8a17-0e18bbaad02c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=109"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC12-S002",
+  "order": 111,
+  "turnClip": "5b9c1933-3190-47cd-b7d7-1ebf92d6cafe",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "e1fc5a89",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3faa1613-ad9b-4031-af36-b5d1f5161289",
+    "387a002b-f4f3-42d2-adf6-ba0aadb02c8c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=111"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC12-S010",
+  "order": 119,
+  "turnClip": "67feee61-c688-4a73-b296-b9f201e7a9cc",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "0fbd1710-1ecb-45ac-9760-66ae11560c44",
+    "0d836b75-91a3-4e1e-94a8-8779b19594a1",
+    "48782234-7a75-413d-9654-301d7d269b83",
+    "4194cfe6-3f08-40d0-9b63-f80d7fb2211e",
+    "c91f8698-a74c-438f-9d3a-45737a86afa8"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=119"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC13-S002",
+  "order": 121,
+  "turnClip": "5c570bfe-7344-4320-bd24-1d35f5cdfb7e",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f124a7b7-a26d-43a7-b3e6-abeed2418215",
+    "574873fa-d43f-40d9-ac0f-173e43e04e46"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=121"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC13-S008",
+  "order": 127,
+  "turnClip": "361556d7-38fe-485a-bd63-4c2b304f5c84",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4874f616-f9ef-4bac-8998-78a6dba2ba8a",
+    "a8c215a4-4206-4152-b6cc-c09abcbafdaf"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=127"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC13-S010",
+  "order": 129,
+  "turnClip": "bd64bd7f-8765-4e20-a244-0a920921c831",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f20ea6ac-ca00-4afe-b8d4-266980767ff8",
+    "0986cd71-0811-4ecc-b7b8-06de233fa038"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=129"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC13-S011",
+  "order": 130,
+  "turnClip": "e1aa00f9-10f3-487f-92bc-4a5b0898641d",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d07e2ec8-7e48-4f9d-9172-8d6f2a6292e2",
+    "a0854b28-943b-47a6-a2e8-8877e6dc6d00",
+    "b755a7ab-2fc3-4143-8da5-9a8743b15b75",
+    "c1e41d0e-1ea3-4d7a-b2d0-5a83f5c9bb51",
+    "dec84ad7-cc34-4888-9311-037cf7aaa08f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=130"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC14-S001",
+  "order": 131,
+  "turnClip": "ce529eb3-8ee4-4780-8b62-365f96f85503",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "e1fc5a89",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "15c79a03-bac1-461a-a119-3e50af7dc197",
+    "d9c23755-d1aa-4a50-b1cd-e4db66eac4cd"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=131"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC14-S002",
+  "order": 132,
+  "turnClip": "03cd778e-9402-49fb-be45-05530a92cc16",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c9ebc5ff-362c-4e9d-8029-48d06ff2ea13",
+    "66fd7804-b221-4a56-abe4-d2c3f3aa2dfa"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=132"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC14-S007",
+  "order": 137,
+  "turnClip": "cad1aa47-90b1-4f87-85fd-6d213fa5ea89",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f24c3719-a343-48e3-81ca-fa1168982933",
+    "2e1e645d-64f9-43a4-b4db-2fca2b58c724"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=137"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC14-S009",
+  "order": 139,
+  "turnClip": "c114cdd4-0608-4e46-94bd-353e71b51bdd",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c9ebc5ff-362c-4e9d-8029-48d06ff2ea13",
+    "6c36631d-4af1-423d-afa0-eb6d45f3db07"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=139"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC14-S010",
+  "order": 140,
+  "turnClip": "a8cb59e3-dd49-4406-8151-4f0ed57b6e6f",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "1f68e45a-1c87-422a-9a3a-4633d2cb91ba",
+    "68f117af-0a73-48d7-a121-bf0ec8c6668b",
+    "b6eddcf0-51fc-4877-868c-6cdbed2578a9",
+    "7df08655-7adf-4780-aaef-8825dcfba348",
+    "92a3c151-d130-4265-beaf-2c63d3896bc3"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=140"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC15-S011",
+  "order": 151,
+  "turnClip": "0552eb5f-a3ad-4443-a53b-a5df94c9199b",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "ab92ece5-7275-4faa-893c-815e9c5a4200",
+    "bf2d2b31-ab44-41b5-adee-167ff1d9fdf6",
+    "68b1db13-5303-4da9-b51e-179ad8a95fcb",
+    "fa7f56ac-269a-4f96-b2d9-b11be04579dd",
+    "caa516ad-b080-41a2-9947-85a8dcdce3ed"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=151"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC16-S011",
+  "order": 162,
+  "turnClip": "012fd85e-8954-41e1-ac6c-530574771242",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fc11373c-e4a6-422f-9187-89ffc3eb4526",
+    "cc4ef126-393c-4935-9d94-62ba5f166ba8",
+    "ebc10ea3-4cf7-4f61-bc8f-673246588757",
+    "dd953e2a-ca98-4ae6-af7c-fac3926923f0",
+    "2f3f704e-6b09-42d5-ae85-2fb2b2833307"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=162"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC17-S011",
+  "order": 173,
+  "turnClip": "48a27933-482d-4469-8174-228a0a6fd2e1",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9c770228-fbdf-403f-a8a8-58b4dd70d0e9",
+    "c7a8d509-0091-493c-9d5b-a6affe44dde9",
+    "c980f295-d406-42fa-8c96-7582bb72406d",
+    "037c044f-ca72-4d96-a551-f87bb6adf698"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=173"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC18-S007",
+  "order": 180,
+  "turnClip": "de87d672-a712-4ee7-b5cd-66405679bd40",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "44c91d64",
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 1,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7bc841c4-12aa-42e3-882d-37797fe37db3",
+    "5df24063-df10-4278-bc9a-668265ec0683"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=180"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC18-S011",
+  "order": 184,
+  "turnClip": "1b389111-fe6a-418c-8b2f-5d9578a150d4",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f08a1fff-0750-45d8-9b47-4d52ce0c5032",
+    "5962f3f9-e074-4e81-b677-01e25e76b5a7",
+    "85e58601-d904-4800-995f-25a3a46a4eef",
+    "a5cd46af-9fb0-4f31-bbcf-4f08b40c5cb4"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=184"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC19-S011",
+  "order": 195,
+  "turnClip": "0717c924-0647-4efa-a06d-0b22c4d6616d",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "5ad0ba2c-ea03-4dfe-91bf-8cef15acbdc5",
+    "1f744119-2c74-413c-a3a7-78f1e38b477f",
+    "b8c9098f-8ccb-48bd-97da-27437a5d0e0b",
+    "5d165577-9668-40ca-8523-3e82ab412c3f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=195"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC20-S011",
+  "order": 206,
+  "turnClip": "681f0468-2e81-4e13-8924-4b9ab3ccde4a",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4f4bd9c3-c119-4bd6-a546-d9193fbf7920",
+    "8ea5fb97-1edc-4955-ae76-a4ab4ae0aa1d",
+    "086f7896-67c8-4c58-ae2d-441870486c05",
+    "257a4618-5a2a-46bb-9255-56c054a95306"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=206"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC21-S014",
+  "order": 220,
+  "turnClip": "b18eef4a-aaa3-4be3-93fc-a727e660e8a0",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "260bc08a-044e-45f5-a12a-12aafb09eefd",
+    "d114cef1-8df9-4eba-9c53-16b4e9325636",
+    "aa1ff319-211a-40f3-b19a-2f0ac0b838b0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=220"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC22-S002",
+  "order": 222,
+  "turnClip": "bd26abcd-1dd6-4489-8ed8-b84240f6971d",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8f9ac296-77aa-4682-9e06-28c9e2236b2d",
+    "8192997c-9118-4a39-a96d-697f65881026",
+    "67137615-c28d-441c-adea-21513a2affc2"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=222"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC22-S003",
+  "order": 223,
+  "turnClip": "1955fba8-ba18-4cee-83e4-e994001e4c3c",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "cacf3aea-9af7-4586-9dab-10dc763c689f",
+    "f2e485f3-e776-4a54-9ae5-3e951c450651",
+    "3ed923c9-97a0-49df-a521-16e972435d97"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=223"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC22-S006",
+  "order": 226,
+  "turnClip": "2a69945f-44af-4469-a7a3-7b55e9b27e85",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "55eb90b4-7e0a-4daa-a9cd-3089b900a900",
+    "db819ef0-95b0-45fe-970e-7b989345bf05",
+    "efad818f-cd79-464b-8a45-3710693be057"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=226"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC22-S007",
+  "order": 227,
+  "turnClip": "78b8540b-8087-4759-ad31-81e1e28a9195",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "0d43c338-81a8-46f2-ba68-409828276d88",
+    "96257600-4753-4a2a-82be-4d6ccb99133f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=227"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC22-S009",
+  "order": 229,
+  "turnClip": "c8e07b82-1676-4ff0-8897-0f9d602960ab",
+  "turnVoice": "44c91d64",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7af16dbb-f63d-4c67-bc30-bb2c3d8610d6",
+    "4ebeb8b3-b4a2-4e08-b17f-6c5ac6f80ace",
+    "475d276e-9a45-4692-ad62-79e848a22d07",
+    "ac4fa457-7d06-474d-b452-cfcf64b71646"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=229"
+ },
+ {
+  "course": "deu_at_for_eng",
+  "rowId": "deu_at_for_eng:pod-1:SC22-S010",
+  "order": 230,
+  "turnClip": "161cc936-1c6b-406e-a285-64337b7b8993",
+  "turnVoice": "e1fc5a89",
+  "drillVoices": [
+   "40e0f496-a220-46bb-975a-7ef465b3d92b"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "bd156662-0251-47c8-ad78-04a65a21f8c5",
+    "4d0ff18f-d989-45fb-a3b2-72b726d73b3d",
+    "3011a749-5c0f-4793-baca-8de98315e8bc"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs deu_at_for_eng --orders=230"
+ },
+ {
+  "course": "ell_for_eng",
+  "rowId": "ell_for_eng:pod-1:SC03-S001",
+  "order": 7,
+  "turnClip": "8a41dacb-2549-4225-9301-e8dff14cde27",
+  "turnVoice": "el-GR-AthinaNeural",
+  "drillVoices": [
+   "el-GR-NestorasNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "84f4e295-a3be-4e8d-a856-c1173040dceb",
+    "efd18e1e-c27f-4cce-8baa-396bfcdb5c00"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ell_for_eng --orders=7"
+ },
+ {
+  "course": "ell_for_eng",
+  "rowId": "ell_for_eng:pod-1:SC07-S001",
+  "order": 28,
+  "turnClip": "51d7559a-2024-4dda-ba9b-cd321c82b01f",
+  "turnVoice": "el-GR-AthinaNeural",
+  "drillVoices": [
+   "el-GR-NestorasNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9d9e2023-4136-4b04-9a6a-7a91a2d370ef",
+    "efd18e1e-c27f-4cce-8baa-396bfcdb5c00"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ell_for_eng --orders=28"
+ },
+ {
+  "course": "ell_for_eng",
+  "rowId": "ell_for_eng:pod-1:SC07-S005",
+  "order": 32,
+  "turnClip": "25c1c16e-520d-4f80-9b52-e422c125b6d4",
+  "turnVoice": "el-GR-AthinaNeural",
+  "drillVoices": [
+   "el-GR-NestorasNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "25230240-b60b-4cc4-b2c3-79f9b02754af",
+    "bdc75a8e-a63e-4119-860a-b0bf352f2d32"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ell_for_eng --orders=32"
+ },
+ {
+  "course": "ell_for_eng",
+  "rowId": "ell_for_eng:pod-1:SC07-S008",
+  "order": 35,
+  "turnClip": "d7465a2f-9889-4003-9d41-d7aaf4c6d93c",
+  "turnVoice": "el-GR-AthinaNeural",
+  "drillVoices": [
+   "el-GR-NestorasNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "089f7a5a-f8f6-4c6a-a02c-a6054cc8589d",
+    "d3298bcb-868f-4920-ba51-91ca2beb4a50"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ell_for_eng --orders=35"
+ },
+ {
+  "course": "ell_for_eng",
+  "rowId": "ell_for_eng:pod-1:SC07-S012",
+  "order": 39,
+  "turnClip": "dd20031e-f33c-4231-9c9c-fb811eab601e",
+  "turnVoice": "el-GR-AthinaNeural",
+  "drillVoices": [
+   "el-GR-NestorasNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "25230240-b60b-4cc4-b2c3-79f9b02754af",
+    "7299dc59-0a51-4d47-a51a-7176a90fc098"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ell_for_eng --orders=39"
+ },
+ {
+  "course": "ell_for_eng",
+  "rowId": "ell_for_eng:pod-1:SC13-S008",
+  "order": 117,
+  "turnClip": "2ff50fd5-6368-4300-915f-94d8859a99d7",
+  "turnVoice": "el-GR-NestorasNeural",
+  "drillVoices": [
+   "el-GR-AthinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f75d5e15-64d1-47ba-a1bb-fdeaf57923ed",
+    "2695f6ca-2aec-4fa2-af98-65c2b9a7f557"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ell_for_eng --orders=117"
+ },
+ {
+  "course": "ell_for_eng",
+  "rowId": "ell_for_eng:pod-1:SC13-S010",
+  "order": 119,
+  "turnClip": "9ea6aea9-6701-4e87-bf39-c56350cc0dcb",
+  "turnVoice": "el-GR-NestorasNeural",
+  "drillVoices": [
+   "el-GR-AthinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b6c946bb-7c28-49e6-9663-9d3a86b62626",
+    "2fb3f2d6-df5f-47a2-8f8c-7d3d05b47e8e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ell_for_eng --orders=119"
+ },
+ {
+  "course": "ell_for_eng",
+  "rowId": "ell_for_eng:pod-1:SC14-S002",
+  "order": 122,
+  "turnClip": "0093e0c5-23ca-4420-9dbb-c31bc8fd9087",
+  "turnVoice": "el-GR-NestorasNeural",
+  "drillVoices": [
+   "el-GR-AthinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c50f5204-da1f-4583-adc7-d9813d7f6c0d",
+    "bdf1751f-26f5-4269-afcd-ce0b3e612021"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ell_for_eng --orders=122"
+ },
+ {
+  "course": "ell_for_eng",
+  "rowId": "ell_for_eng:pod-1:SC14-S007",
+  "order": 127,
+  "turnClip": "674c7b4a-93aa-4ea7-9775-c79da24f26e8",
+  "turnVoice": "el-GR-NestorasNeural",
+  "drillVoices": [
+   "el-GR-AthinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7fc135c2-7fda-4a21-b164-2543ceba0b7b",
+    "9ff78974-ac79-4aee-9d25-afa2d4e285c7"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ell_for_eng --orders=127"
+ },
+ {
+  "course": "ell_for_eng",
+  "rowId": "ell_for_eng:pod-1:SC14-S009",
+  "order": 129,
+  "turnClip": "1d577321-7608-4579-bc7e-bf850610c70f",
+  "turnVoice": "el-GR-NestorasNeural",
+  "drillVoices": [
+   "el-GR-AthinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c50f5204-da1f-4583-adc7-d9813d7f6c0d",
+    "338200dc-156a-43ae-b4a2-377e4a75819f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ell_for_eng --orders=129"
+ },
+ {
+  "course": "eus_for_eng",
+  "rowId": "eus_for_eng:pod-1:SC07-S001",
+  "order": 38,
+  "turnClip": "c938e29a-551a-48f8-b504-6158f4b12d2e",
+  "turnVoice": "eu-ES-AinhoaNeural",
+  "drillVoices": [
+   "eu-ES-AnderNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d66797ac-ed49-4be9-9661-89e8cc0fcba8",
+    "535b89f6-8b49-4c21-ba69-20929cf6fbb8"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs eus_for_eng --orders=38"
+ },
+ {
+  "course": "eus_for_eng",
+  "rowId": "eus_for_eng:pod-1:SC07-S004",
+  "order": 41,
+  "turnClip": "42603f32-6bdd-4938-832c-7d8d67a8420f",
+  "turnVoice": "eu-ES-AnderNeural",
+  "drillVoices": [
+   "eu-ES-AinhoaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "36555c2f-e714-4ccc-b5a9-5f404059e1c6",
+    "4e703b13-38ad-4ebf-9380-0a9b0e84418e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs eus_for_eng --orders=41"
+ },
+ {
+  "course": "eus_for_eng",
+  "rowId": "eus_for_eng:pod-1:SC07-S005",
+  "order": 42,
+  "turnClip": "75ab2fb3-972f-42a2-ad2a-888ad04a36e7",
+  "turnVoice": "eu-ES-AinhoaNeural",
+  "drillVoices": [
+   "eu-ES-AnderNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "262905e3-b430-483d-95eb-240593ed274e",
+    "e7df15a8-2208-4478-a1a0-294cc8a7b08b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs eus_for_eng --orders=42"
+ },
+ {
+  "course": "eus_for_eng",
+  "rowId": "eus_for_eng:pod-1:SC07-S008",
+  "order": 45,
+  "turnClip": "dac7b90f-a6f2-413d-a0c5-3f47565d4c50",
+  "turnVoice": "eu-ES-AinhoaNeural",
+  "drillVoices": [
+   "eu-ES-AnderNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "06c58933-6893-4948-a10c-751cab3af1a2",
+    "98430582-629b-441a-b34f-c98d75bfd4a8"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs eus_for_eng --orders=45"
+ },
+ {
+  "course": "eus_for_eng",
+  "rowId": "eus_for_eng:pod-1:SC07-S011",
+  "order": 48,
+  "turnClip": "6f36abfe-b212-419e-a3df-ca6a5c6fecd7",
+  "turnVoice": "eu-ES-AnderNeural",
+  "drillVoices": [
+   "eu-ES-AinhoaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "64041d94-37ca-4204-80ef-224038304ffb",
+    "c03ff66f-66ef-4028-8e65-9bc051cd71e6"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs eus_for_eng --orders=48"
+ },
+ {
+  "course": "eus_for_eng",
+  "rowId": "eus_for_eng:pod-1:SC07-S012",
+  "order": 49,
+  "turnClip": "d4505732-a77b-485a-acf8-e17e9c6bb28a",
+  "turnVoice": "eu-ES-AinhoaNeural",
+  "drillVoices": [
+   "eu-ES-AnderNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "bade9adf-2ed6-4ee2-8b71-fa962730b02b",
+    "7f8aafa8-76ab-490b-a743-5036c0c445c8"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs eus_for_eng --orders=49"
+ },
+ {
+  "course": "eus_for_eng",
+  "rowId": "eus_for_eng:pod-1:SC07-S013",
+  "order": 50,
+  "turnClip": "fb447a4f-f485-471e-b6bf-6fe40a4b0d59",
+  "turnVoice": "eu-ES-AnderNeural",
+  "drillVoices": [
+   "eu-ES-AinhoaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "cb0a36b2-e99b-4a15-b3f6-6050dcc35769",
+    "cace73ee-ec6d-444a-9ab1-be2be8de2c0a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs eus_for_eng --orders=50"
+ },
+ {
+  "course": "eus_for_eng",
+  "rowId": "eus_for_eng:pod-1:SC07-S014",
+  "order": 51,
+  "turnClip": "c37377c3-f307-46e4-944c-ad7287ca43cb",
+  "turnVoice": "eu-ES-AinhoaNeural",
+  "drillVoices": [
+   "eu-ES-AnderNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c1f7c4cb-9d49-4036-aa0c-e53d731b383c",
+    "4b65dd87-e9e4-4cc3-9e70-c9ddd16bc6c3"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs eus_for_eng --orders=51"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC06-S002",
+  "order": 26,
+  "turnClip": "304f9efe-16fc-4ac1-9666-9ac568f8250e",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "40c6851e-25d4-458f-8d9b-3c37f04dd15b",
+    "eb6fb4b1-28d1-4f06-9931-9b2ec94b3d28"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=26"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC06-S004",
+  "order": 28,
+  "turnClip": "08f40e70-3585-4f77-b2c2-fc3bb4d4cceb",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "95552602-5fe1-4528-9da5-daf93cde8f7b",
+    "a6c81ab0-1992-4477-b16d-f60196bf6934"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=28"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC06-S006",
+  "order": 30,
+  "turnClip": "ddd2ec07-a837-4cb4-9e36-97969c2d690b",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b67ce242-d36f-4fa5-a256-4e29aaae444e",
+    "7d45b21e-aa37-49b0-8539-332df8c3d5e1"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=30"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC06-S008",
+  "order": 32,
+  "turnClip": "9b556fc0-0e35-4368-bf5b-efa381508d5a",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8107910b-de1a-4d4b-aff6-afd414d53a79",
+    "eb6fb4b1-28d1-4f06-9931-9b2ec94b3d28"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=32"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC06-S010",
+  "order": 34,
+  "turnClip": "cc1070f1-94f3-4285-a406-48e03786ccf8",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "01c30836-866b-4c16-a95c-abe07e63490a",
+    "f0dc65e9-cf81-4365-a5e0-d4b1c8779ce4",
+    "3a5cec7a-8d5a-43a7-b41a-0a5528819180",
+    "5b44af50-6e2d-43a0-bee3-4c6da9db6d6e",
+    "8683efed-4908-4f0a-aa6b-4f08b3fb2403"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=34"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC06-S012",
+  "order": 36,
+  "turnClip": "f17b6718-9629-46a8-814a-55ee66f6e3cc",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "1ea38f73-4e50-4db2-94d6-1882e07ac53b",
+    "64535f7e-b889-44d8-b523-80c58dd31235"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=36"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC06-S013",
+  "order": 37,
+  "turnClip": "54c7192e-60f0-43c0-a194-e452a88f5080",
+  "turnVoice": "fr-CA-JeanNeural",
+  "drillVoices": [
+   "fr-CA-SylvieNeural"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "e578cb9e-3b12-4089-b841-24e68bc005fd",
+    "2086d58d-ac50-48ec-9082-7cf816d9333a",
+    "34283137-f89a-4a43-af4a-9ea1dc4b3100",
+    "6d24db9c-c2e0-4766-978c-b0de93165edb",
+    "7c1ec625-3e1f-4e4c-87c4-fc335df6482f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=37"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC07-S013",
+  "order": 50,
+  "turnClip": "f7afb119-29f6-4318-8a32-052b040c4054",
+  "turnVoice": "fr-CA-JeanNeural",
+  "drillVoices": [
+   "fr-CA-SylvieNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "55423767-e58b-40b4-8081-9b7f13fd0ec0",
+    "827a6444-74c7-411b-a364-36d90640891f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=50"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC07-S015",
+  "order": 52,
+  "turnClip": "1fb6768e-6ccb-44a2-85b2-4bf017a59cfb",
+  "turnVoice": "fr-CA-JeanNeural",
+  "drillVoices": [
+   "fr-CA-SylvieNeural"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b79e0ae5-5f54-4c1a-ae99-d9365b19a752",
+    "60ae8bd7-e3dc-46bf-bf0e-d63b19d05f8f",
+    "481ff2aa-5d54-4043-a7b1-8af8c3d99768",
+    "e5d102c8-cc91-4e3a-83ae-ed1a96cb6cdb",
+    "be293da7-a840-484c-aa35-81bf5f5f2324"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=52"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC08-S002",
+  "order": 54,
+  "turnClip": "ed496620-f426-4640-9d6e-ca4ac413076e",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8b8293a9-cebd-4f04-99e0-a87d23725057",
+    "f2c2845e-c381-463e-b546-86431c139e25"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=54"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC08-S012",
+  "order": 64,
+  "turnClip": "bca01688-c882-4b52-8010-b10afd5fcedc",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "eb6feccf-58db-4429-a430-c8b84fe8e0e7",
+    "e54ad8e0-cc6e-4080-8a3e-d3e3ffb7d7aa"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=64"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC08-S016",
+  "order": 68,
+  "turnClip": "37356300-2fb3-4e6b-8e9b-9ebe4c66435f",
+  "turnVoice": "fr-CA-JeanNeural",
+  "drillVoices": [
+   "fr-CA-SylvieNeural"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "db017f73-6200-4958-8f16-6fb2d34d877d",
+    "5c765f12-ae43-4727-b23c-cc003f50d6b5",
+    "e36af02c-7e6d-494f-8629-73a186b592a9",
+    "29f51dde-7621-4355-a41f-e2f0448b9e83",
+    "78c77cb0-9907-4288-8a46-dc0adb97d57f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=68"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC09-S001",
+  "order": 69,
+  "turnClip": "332cd97b-c88c-4f98-b51b-5b459d08013d",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "ffaaf845-4318-444c-8c0e-bd603844fb8f",
+    "fbcd94dc-c3b3-40a0-a6eb-1d0bf2ae6b9f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=69"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC09-S005",
+  "order": 73,
+  "turnClip": "5e487580-aae9-4975-a869-5e88f84f216a",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "388ae700-6188-4271-b534-b4d4cdf41fce",
+    "e9c6f0bb-a51e-41fd-adba-948ec2d6463b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=73"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC09-S009",
+  "order": 77,
+  "turnClip": "e7a8e069-b43e-45d1-a03f-9e809cd1c3a1",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f81c87ab-c1cf-4e8f-b70c-2d6c6f7f2614",
+    "b7bbc5a1-45ef-4747-880b-6baf5043c898"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=77"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC09-S018",
+  "order": 86,
+  "turnClip": "bf67421c-00a5-413c-b775-91febac9fb83",
+  "turnVoice": "fr-CA-JeanNeural",
+  "drillVoices": [
+   "fr-CA-SylvieNeural"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2c128605-c507-452f-af72-d7c036fb54ac",
+    "9a091719-aabe-4ec5-a1cc-c353215e99c7",
+    "bca44796-3642-45d1-bd49-abf8f39501b3",
+    "ecc4c326-ebe5-4557-a18b-4da622b470e2",
+    "ab54d52b-931c-4f44-a809-24fb080f25a6"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=86"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC10-S001",
+  "order": 87,
+  "turnClip": "afe24662-2d53-41d6-94b4-b6b49588c6dd",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7fb5327f-8a3b-4d6f-b405-092ac0bf6039",
+    "a2c077d5-73ca-4296-ba53-c31e70393092"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=87"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC10-S003",
+  "order": 89,
+  "turnClip": "370c269f-9bd6-4541-a59b-2b955630aac6",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8786e84f-1f47-4b9b-87be-f23e5d344db2",
+    "245c77a5-e1aa-44bf-810c-66b12c258c27"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=89"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC10-S007",
+  "order": 93,
+  "turnClip": "e777bd6a-05e7-4bc5-bc52-4646c6b268fc",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d80ae046-401d-460b-83b1-73ed3ad80bfb",
+    "e23370c2-e0a3-4bf9-8495-23e7cb637bb7"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=93"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC10-S009",
+  "order": 95,
+  "turnClip": "7eff2aa9-b751-45e5-9a8c-3e1025a096df",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "95b04ce1-94e9-4ca7-8d35-3dee23f96674",
+    "b03786af-6f82-4416-83c9-d680bd442548",
+    "6c750af5-6ddb-4037-8642-d86b79c5ffdc"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=95"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC10-S010",
+  "order": 96,
+  "turnClip": "1aebf407-de63-4b34-a43a-d2c2f683162f",
+  "turnVoice": "fr-CA-JeanNeural",
+  "drillVoices": [
+   "fr-CA-SylvieNeural"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a3d6d544-93d5-45cc-bac6-8a9b0872e7a3",
+    "a260a8b1-efab-4fa9-8335-f68749d72ec2",
+    "b698f57d-6524-4bdf-ad1b-61a5d08aeed3",
+    "eba272f5-a5eb-4cb7-8530-385642232af4",
+    "1201977b-e6ff-4c83-ba29-ac9d2135ece9"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=96"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC11-S013",
+  "order": 109,
+  "turnClip": "80f49f40-b7c0-4ea3-98e5-710a9e1d4773",
+  "turnVoice": "fr-CA-JeanNeural",
+  "drillVoices": [
+   "fr-CA-SylvieNeural"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a4bfdbdb-4a38-4738-a165-aafaa03d0482",
+    "4a44ffc9-8c26-4e56-a840-da7f082b8fbd",
+    "15b0930d-c31f-4f79-b0dc-343bd07dc80d",
+    "66bbc231-406b-4b3c-ab22-402e1b822211",
+    "5d28efea-d2a6-4592-b127-4833e1c87408"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=109"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC12-S001",
+  "order": 110,
+  "turnClip": "4ff6ef8d-b9b6-43d6-b914-e29ffb33cfa3",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9066f2bd-d0b0-4442-9d3e-b67ad9b06a0f",
+    "06de5547-984e-41e0-8dd8-2a5f4e52c57f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=110"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC12-S009",
+  "order": 118,
+  "turnClip": "a173e5ec-3689-4f95-affe-027333ac95ab",
+  "turnVoice": "fr-CA-SylvieNeural",
+  "drillVoices": [
+   "fr-CA-JeanNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8786e84f-1f47-4b9b-87be-f23e5d344db2",
+    "bb8c7ba4-b259-4e64-a145-a5ed13b8abbb"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=118"
+ },
+ {
+  "course": "fra_ca_for_eng",
+  "rowId": "fra_ca_for_eng:pod-1:SC13-S011",
+  "order": 130,
+  "turnClip": "1846fe6c-6892-4304-afeb-eddbeed6ddcb",
+  "turnVoice": "fr-CA-JeanNeural",
+  "drillVoices": [
+   "fr-CA-SylvieNeural"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4ce88044-1b35-4ee1-9927-d6ed7c5e26f0",
+    "f9c96b30-504c-458d-b622-d62c2613037c",
+    "ba8df8af-9b66-482b-9634-054a71997893",
+    "a42677a1-f6e0-4e95-b734-3507e692e4f3",
+    "19fb1055-4e64-4427-b9bb-25e754c94d2d"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs fra_ca_for_eng --orders=130"
+ },
+ {
+  "course": "gle_for_eng",
+  "rowId": "gle_for_eng:pod-1:SC07-S001",
+  "order": 38,
+  "turnClip": "91bbf05c-02ea-42aa-b386-4b8fc317ad2a",
+  "turnVoice": "ga-IE-OrlaNeural",
+  "drillVoices": [
+   "ga-IE-ColmNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2df2fc7c-fe16-4fd5-ae6b-07aec2df603c",
+    "4eff3ee1-2e7c-4d8c-811e-d1f1e80ebcf5"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs gle_for_eng --orders=38"
+ },
+ {
+  "course": "gle_for_eng",
+  "rowId": "gle_for_eng:pod-1:SC07-S004",
+  "order": 41,
+  "turnClip": "f03bd51b-3836-44d8-b5be-f47bff666ed8",
+  "turnVoice": "ga-IE-ColmNeural",
+  "drillVoices": [
+   "ga-IE-OrlaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "23909a76-fedb-4837-b940-2f38ea5efa58",
+    "fd0a6d9f-0157-42d7-a29f-e0add7bfa5ff"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs gle_for_eng --orders=41"
+ },
+ {
+  "course": "gle_for_eng",
+  "rowId": "gle_for_eng:pod-1:SC07-S008",
+  "order": 45,
+  "turnClip": "b6af00d8-e600-4817-8f46-5f9d2bff6193",
+  "turnVoice": "ga-IE-OrlaNeural",
+  "drillVoices": [
+   "ga-IE-ColmNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "17d48d87-885f-4732-b590-a480dde57253",
+    "d420d7ad-fb8f-43c9-a2b3-c0fc8484e4e0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs gle_for_eng --orders=45"
+ },
+ {
+  "course": "gle_for_eng",
+  "rowId": "gle_for_eng:pod-1:SC07-S011",
+  "order": 48,
+  "turnClip": "c81ad420-0bc5-4949-bb04-ca5efc775ced",
+  "turnVoice": "ga-IE-ColmNeural",
+  "drillVoices": [
+   "ga-IE-OrlaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7a814a8f-0e6d-4572-99a3-934464605272",
+    "881a68c6-640e-4d32-b6bf-ec6dcdf8d472"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs gle_for_eng --orders=48"
+ },
+ {
+  "course": "gle_for_eng",
+  "rowId": "gle_for_eng:pod-1:SC07-S012",
+  "order": 49,
+  "turnClip": "efbd6763-cf4d-46d0-9b96-9559fde86f88",
+  "turnVoice": "ga-IE-OrlaNeural",
+  "drillVoices": [
+   "ga-IE-ColmNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "86a05236-2ce3-4126-af09-4989f6d98efe",
+    "4cfa27f9-ba0e-411d-8098-4cd0e19aff77"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs gle_for_eng --orders=49"
+ },
+ {
+  "course": "gle_for_eng",
+  "rowId": "gle_for_eng:pod-1:SC07-S013",
+  "order": 50,
+  "turnClip": "23dfde08-0a45-470a-baee-6bc3455d249b",
+  "turnVoice": "ga-IE-ColmNeural",
+  "drillVoices": [
+   "ga-IE-OrlaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "39de069a-76b3-4996-8dba-b6b0fa5c92a9",
+    "44e41808-239e-49ba-9f26-0d4e245e315d"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs gle_for_eng --orders=50"
+ },
+ {
+  "course": "gle_for_eng",
+  "rowId": "gle_for_eng:pod-1:SC07-S014",
+  "order": 51,
+  "turnClip": "13611b8e-a8f3-4a81-87d0-5a8238732b69",
+  "turnVoice": "ga-IE-OrlaNeural",
+  "drillVoices": [
+   "ga-IE-ColmNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "cef141bc-8a57-4018-97ae-5de526a83696",
+    "2606b78c-de51-4065-9970-11639ba54c42"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs gle_for_eng --orders=51"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC03-S001",
+  "order": 7,
+  "turnClip": "ab47101f-3a77-44c7-acb6-f6135e4f7b52",
+  "turnVoice": "he-IL-HilaNeural",
+  "drillVoices": [
+   "he-IL-AvriNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8207b755-53b9-4f4f-ad7c-5607da00d851",
+    "e90fa7ae-f36d-487e-ba52-d6c9dd6a8e2b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=7"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC07-S001",
+  "order": 28,
+  "turnClip": "1d074322-1d4b-4074-9947-1182de2361ff",
+  "turnVoice": "he-IL-HilaNeural",
+  "drillVoices": [
+   "he-IL-AvriNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9f6fa44e-1cbb-4a01-b4cf-5caf220d775a",
+    "e90fa7ae-f36d-487e-ba52-d6c9dd6a8e2b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=28"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC07-S004",
+  "order": 31,
+  "turnClip": "48754864-f450-49df-8a26-3b8667d0a671",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "60501c48-5fe6-49ae-8406-0ea48069a553",
+    "5453c5d9-51fd-4917-a7aa-95401743be85"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=31"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC07-S005",
+  "order": 32,
+  "turnClip": "4c015920-6244-4707-8904-5c8170217965",
+  "turnVoice": "he-IL-HilaNeural",
+  "drillVoices": [
+   "he-IL-AvriNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "65089701-a227-4eec-9e31-e604844a963f",
+    "b5d4690e-9853-4431-a9bf-a8fa02027302"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=32"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC07-S008",
+  "order": 35,
+  "turnClip": "2bcab4f1-11e9-4866-a30d-06270d4f1e4b",
+  "turnVoice": "he-IL-HilaNeural",
+  "drillVoices": [
+   "he-IL-AvriNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3a1a772f-23ce-4c04-9dbd-6b5513bfa345",
+    "d69186a1-20df-4786-91df-bb04d0502298"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=35"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC07-S011",
+  "order": 38,
+  "turnClip": "38ddd728-07bb-485f-9587-821ae6605229",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8910a7a4-8534-47c2-9331-f1a31a892529",
+    "c5b9ddf4-0a57-4547-9b2f-da42fbf83c54"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=38"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC07-S012",
+  "order": 39,
+  "turnClip": "c5347c64-3f95-460d-bf6c-1dbcf4cf13ed",
+  "turnVoice": "he-IL-HilaNeural",
+  "drillVoices": [
+   "he-IL-AvriNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "65089701-a227-4eec-9e31-e604844a963f",
+    "bfcd5f88-f41f-4d0d-9f0e-cd02d472a372"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=39"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC07-S014",
+  "order": 41,
+  "turnClip": "31f1242e-3000-42e5-84fa-47f23ae10cfc",
+  "turnVoice": "he-IL-HilaNeural",
+  "drillVoices": [
+   "he-IL-AvriNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3c9e2236-3634-4e9c-805f-9ea6b245a255",
+    "4054b59b-1704-495e-af3f-6e82529c1f0c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=41"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC08-S002",
+  "order": 44,
+  "turnClip": "13c0a313-02ee-4010-b028-c898aa95d1ae",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "35425897-33bb-478e-b1e6-ab718e55846a",
+    "87314fa9-b758-4ca4-b948-9f6d75bb2165"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=44"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC08-S012",
+  "order": 54,
+  "turnClip": "dc121e53-e980-44ec-b0b6-5ab570124252",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b0a61c69-e4be-4bd0-b5cb-f5f0b426414c",
+    "5a7fa14e-dec5-4c97-a3b1-5a769894967f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=54"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC08-S014",
+  "order": 56,
+  "turnClip": "a345d558-b548-421b-92f8-e87832eb9647",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "e3c523b7-207e-4bd0-b387-f3f6e49a7fc7",
+    "45d87a25-7a93-4e46-bdc1-b3e476a3c171"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=56"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC08-S015",
+  "order": 57,
+  "turnClip": "03dcaa40-053d-4cf8-9fec-8b8d713f79b4",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8477b0aa-e06d-4788-ad37-514dbe8fe597",
+    "1dee60ed-5ff8-4496-b5ea-70b9e2b51907"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=57"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC09-S001",
+  "order": 59,
+  "turnClip": "ec6a24ff-9308-43c2-b058-f630b53975cc",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "78fe9a8a-13b4-4982-b5a1-2a9cfa1db402",
+    "d213d458-2cd4-436f-a34b-17a6653a5328"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=59"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC09-S005",
+  "order": 63,
+  "turnClip": "dfdfacc1-2a2c-403c-93ad-b28ff5f50c3e",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "e58009af-1def-4d4b-9d4f-2ae0ce1402fc",
+    "87bfcb35-a8f1-4e04-9571-8f665c9ba2c2"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=63"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC09-S009",
+  "order": 67,
+  "turnClip": "6f8dc7d1-d4db-4718-b5aa-f91fe8857629",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "31fd282f-f370-4a54-9abd-cf7c8851e307",
+    "9074fdf2-3ba7-402c-bb5f-da13858e49db"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=67"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC09-S010",
+  "order": 68,
+  "turnClip": "690d914d-b826-44a0-b67d-10eb65e59a01",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4f559693-f963-482a-9e10-d9810e6f89bf",
+    "dfd4d395-81c4-4de2-8227-91a480be3fcd"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=68"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC09-S016",
+  "order": 74,
+  "turnClip": "991b08e9-c7d2-44de-8ae7-db7955298a01",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "acce9e48-6524-469a-9c17-ba60b2feba73",
+    "7269e8b2-2439-4052-a78c-66d87df37cea"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=74"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC09-S017",
+  "order": 75,
+  "turnClip": "dc3996e0-1298-4d54-aec4-97d82dbdc011",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "df8167ce-3f77-4e79-b8fe-f53d46ed8264",
+    "7c255085-d8bf-444d-b1d8-91fa1cb5cf70"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=75"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC10-S001",
+  "order": 77,
+  "turnClip": "8af852d6-ea91-4856-acb1-6229cdc47a6c",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4e1bf9f3-e8c0-4c57-804d-4e8d102130f0",
+    "b7d4f909-1a24-4b5a-b0e9-0fe45b1cc2c7"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=77"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC10-S003",
+  "order": 79,
+  "turnClip": "ed224eab-c4c4-441f-94fa-7e0f5233b86f",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "e5c204bd-923a-4b38-bbe7-4b2f334b8991",
+    "95252e31-1267-4e02-bbcf-e86c9e82df50"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=79"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC10-S007",
+  "order": 83,
+  "turnClip": "be2b8654-ec91-49cf-8311-1d2851946b70",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "0d6074bd-3ec1-4f60-90c1-75324317fd41",
+    "fda7b090-75dc-4a65-bc8b-21a30b0f9c35"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=83"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC10-S009",
+  "order": 85,
+  "turnClip": "7bff1110-89a8-4ab2-ba48-147f7d54801c",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8e8cb5dd-0ca2-4135-950d-b09127f63fd2",
+    "e963e94f-1c17-4b5d-8722-9adc72d174af",
+    "a4a7e599-3a32-479e-8aad-52f72e9e738d"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=85"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC12-S001",
+  "order": 100,
+  "turnClip": "e75aecb5-789d-42ef-877e-6c108d8f76c3",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8398111b-0086-4a37-9c0b-9fc1339c660d",
+    "7afb053a-5ac7-4dca-819c-6c71e5ae4317"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=100"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC12-S009",
+  "order": 108,
+  "turnClip": "ead1c0ac-69b4-4836-98af-9ce77152d31f",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "e5c204bd-923a-4b38-bbe7-4b2f334b8991",
+    "2adc2690-d6ff-43d6-b912-40079c2f78e0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=108"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC13-S008",
+  "order": 117,
+  "turnClip": "c58ad1e6-5f01-4a6a-89a8-5049fb1a5d3a",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "80c945e2-19d0-4c82-a424-bb05ac408d11",
+    "88de811f-1ea9-4445-96d1-5bf94260fc51"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=117"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC13-S010",
+  "order": 119,
+  "turnClip": "9b78e6ec-3bca-4cb0-adbb-65474bf62fc8",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "e5c204bd-923a-4b38-bbe7-4b2f334b8991",
+    "4aa3eb0f-d062-466b-974f-9efef27ff02b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=119"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC14-S002",
+  "order": 122,
+  "turnClip": "55d0ee72-6361-420e-8f78-b971105208ee",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9d062bef-a3c5-435d-a2eb-9d8862e1341d",
+    "9fa025da-fbf9-424d-bbc6-0fc240673dd2"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=122"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC14-S007",
+  "order": 127,
+  "turnClip": "71d48fbf-faf2-4f1e-af4e-9fb1aeeda68b",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9c7a6c2c-4706-4b0f-bca9-f1850f493166",
+    "f5d9efa5-8db5-4327-af2d-f57a9e94265f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=127"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC14-S009",
+  "order": 129,
+  "turnClip": "9b6697fe-e2ab-4129-afa7-86d000994e31",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9d062bef-a3c5-435d-a2eb-9d8862e1341d",
+    "102aaff8-1f97-4277-9999-8719ed6c7f91"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=129"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC15-S001",
+  "order": 131,
+  "turnClip": "30f26516-df9f-4129-b211-94aed2a53f7d",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "10b74c3a-0dcb-48ab-8e25-c9dcf65701db",
+    "c9f7f6a4-2e06-4a30-ba18-1723798e2b60"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=131"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC15-S003",
+  "order": 133,
+  "turnClip": "31e5f83e-ff72-4da3-9be6-732117df0fe0",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "5da05f53-e56e-4fa5-8729-07c628cb6660",
+    "f583fcff-31c0-4018-aafa-c26c54bd8009",
+    "509467c6-5309-46d0-be44-49c89e14095b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=133"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC15-S005",
+  "order": 135,
+  "turnClip": "4a2da5fd-a1e5-42d2-a58a-b5b71105fb50",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9e924738-d2a4-4232-925f-63a8e329c281",
+    "e2d96a66-33a5-4582-aa03-640827589a33",
+    "016843e8-6425-462c-bc2f-7f268cd13fc3",
+    "b2e5bbde-d216-4301-a3b1-f3cd9a390a88"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=135"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC15-S007",
+  "order": 137,
+  "turnClip": "088ca80b-cc55-4787-a241-f814d8fc3861",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "bfe1b874-fb18-44b7-aa4e-44a6347e3124",
+    "4abed26a-2311-45b8-8518-d5d9a2fdd4bf"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=137"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC15-S009",
+  "order": 139,
+  "turnClip": "aebfb464-8eed-43ab-be94-d3f7b31aadbb",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 4,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3aeeab4b-6c03-4a49-b8f3-9f7bc58740b4",
+    "4af812b6-e48e-43c5-a806-86f4f6874082",
+    "076c8876-27b5-4048-b13a-c368321b9aeb",
+    "84e03e89-a80f-480c-bded-6355c45896ad"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=139"
+ },
+ {
+  "course": "heb_for_eng",
+  "rowId": "heb_for_eng:pod-1:SC15-S011",
+  "order": 141,
+  "turnClip": "f98a5a88-d8dc-4631-9e87-accd0a2c3265",
+  "turnVoice": "he-IL-AvriNeural",
+  "drillVoices": [
+   "he-IL-HilaNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "77a039f2-5e67-42da-babf-8f8d945f582f",
+    "d5d48c53-be5f-4b07-97d1-d66c8409a798",
+    "0c62e5f8-be1d-4f16-bf2c-9028c438b580"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs heb_for_eng --orders=141"
+ },
+ {
+  "course": "hin_for_eng",
+  "rowId": "hin_for_eng:pod-1:SC07-S001",
+  "order": 38,
+  "turnClip": "8d3ca687-38b5-46f4-ab81-5da394b11e69",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "89q2pnko"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "57eba7d2-17a0-43de-ab2b-0dc12fb0f839",
+    "1856342c-2678-498f-8510-6b058379fa25"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hin_for_eng --orders=38"
+ },
+ {
+  "course": "hin_for_eng",
+  "rowId": "hin_for_eng:pod-1:SC07-S005",
+  "order": 42,
+  "turnClip": "c970412e-d641-4a77-8fcb-105e48efc112",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "89q2pnko"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b20d3432-8248-4fd7-a61a-8370dec79303",
+    "f5cef76b-46ff-4e5a-9494-a28372a11fe7"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hin_for_eng --orders=42"
+ },
+ {
+  "course": "hin_for_eng",
+  "rowId": "hin_for_eng:pod-1:SC07-S008",
+  "order": 45,
+  "turnClip": "714c5395-6415-4d82-9309-ac93f0e76389",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "89q2pnko"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "604b4da1-5d2c-47b3-bfd4-0660d2aff95b",
+    "3581be17-8f62-41ca-a809-2b44bc81a22c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hin_for_eng --orders=45"
+ },
+ {
+  "course": "hin_for_eng",
+  "rowId": "hin_for_eng:pod-1:SC07-S012",
+  "order": 49,
+  "turnClip": "79be70ce-7ba7-40fc-b369-a07f53834ffd",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "89q2pnko"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b20d3432-8248-4fd7-a61a-8370dec79303",
+    "7ba3a4c4-2b98-445a-b9ab-9c99990a04aa"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hin_for_eng --orders=49"
+ },
+ {
+  "course": "hin_for_eng",
+  "rowId": "hin_for_eng:pod-1:SC07-S014",
+  "order": 51,
+  "turnClip": "f161ad3b-9fff-4721-bc39-88263349f2bc",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "89q2pnko"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "72cc8285-679a-4e14-a99e-f2a0269dde8c",
+    "7e9526b1-01f3-40b9-8e56-9971e1edfb4b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hin_for_eng --orders=51"
+ },
+ {
+  "course": "hin_for_eng",
+  "rowId": "hin_for_eng:pod-1:SC14-S002",
+  "order": 132,
+  "turnClip": "5bb97452-61d9-4cc5-8a77-d1d94967c871",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "89q2pnko"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2a32b4e3-fbb0-468b-9604-0d005d458243",
+    "799e14b9-54d8-467c-9d5e-e890bb5fcb27"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hin_for_eng --orders=132"
+ },
+ {
+  "course": "hin_for_eng",
+  "rowId": "hin_for_eng:pod-1:SC14-S009",
+  "order": 139,
+  "turnClip": "d4bc3f9c-ce26-4062-b1d0-271eb58671b4",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "89q2pnko"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2a32b4e3-fbb0-468b-9604-0d005d458243",
+    "5d009d41-ac66-45b8-bc80-6c691f9d631d"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hin_for_eng --orders=139"
+ },
+ {
+  "course": "hrv_for_eng",
+  "rowId": "hrv_for_eng:pod-1:SC01-S002",
+  "order": 2,
+  "turnClip": "94246a14-5e56-413b-86e2-90b24089d8b9",
+  "turnVoice": "hr-HR-SreckoNeural",
+  "drillVoices": [
+   "hr-HR-GabrijelaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4eba4421-d37d-47c6-bf5c-46bad78569d3",
+    "a2305a57-b921-4bb2-b1d0-84ea33a92b62"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hrv_for_eng --orders=2"
+ },
+ {
+  "course": "hrv_for_eng",
+  "rowId": "hrv_for_eng:pod-1:SC01-S003",
+  "order": 3,
+  "turnClip": "a36712e9-f92b-4156-8c1e-9c3f5a9bd3c9",
+  "turnVoice": "hr-HR-GabrijelaNeural",
+  "drillVoices": [
+   "hr-HR-SreckoNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "454f8a0a-ced8-4bba-9270-d82407516190",
+    "52a0b082-4458-4741-ba14-3a41ad8d1795"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hrv_for_eng --orders=3"
+ },
+ {
+  "course": "hrv_for_eng",
+  "rowId": "hrv_for_eng:pod-1:SC06-S003",
+  "order": 27,
+  "turnClip": "30248dbb-b2c0-485b-a243-45ea91fc97a6",
+  "turnVoice": "hr-HR-GabrijelaNeural",
+  "drillVoices": [
+   "hr-HR-SreckoNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "257e3190-9c6d-439f-9049-fb0bfeb85812",
+    "2d799a62-fb9d-424e-9b44-66a0d7632b94"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hrv_for_eng --orders=27"
+ },
+ {
+  "course": "hrv_for_eng",
+  "rowId": "hrv_for_eng:pod-1:SC06-S007",
+  "order": 31,
+  "turnClip": "77278ce0-974d-4c90-b21c-e003d846a763",
+  "turnVoice": "hr-HR-GabrijelaNeural",
+  "drillVoices": [
+   "hr-HR-SreckoNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f9cea9bd-c6c8-4791-bc17-90ca7daf5956",
+    "3322e963-4637-4d9f-87e1-8e2fbabc9c07"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hrv_for_eng --orders=31"
+ },
+ {
+  "course": "hrv_for_eng",
+  "rowId": "hrv_for_eng:pod-1:SC09-S002",
+  "order": 70,
+  "turnClip": "0be58a87-a871-4496-b90e-a613a0b76160",
+  "turnVoice": "hr-HR-GabrijelaNeural",
+  "drillVoices": [
+   "hr-HR-SreckoNeural"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "507104f5-4954-4c23-850e-8e4a7713876f",
+    "ca950a17-24fc-4f77-8e36-013f4c51f365",
+    "794b331b-ed0b-4f37-ab44-4015072f9489"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hrv_for_eng --orders=70"
+ },
+ {
+  "course": "hrv_for_eng",
+  "rowId": "hrv_for_eng:pod-1:SC09-S014",
+  "order": 82,
+  "turnClip": "539efb26-5522-46dd-b110-5937fdc17c81",
+  "turnVoice": "hr-HR-GabrijelaNeural",
+  "drillVoices": [
+   "hr-HR-SreckoNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c7d7efc0-7b8e-4cb4-bf5d-43bc965128df",
+    "38ae1934-1c7e-419b-bbba-df36c7773a0c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hrv_for_eng --orders=82"
+ },
+ {
+  "course": "hrv_for_eng",
+  "rowId": "hrv_for_eng:pod-1:SC09-S015",
+  "order": 83,
+  "turnClip": "99142cc7-22b0-4b45-82c4-375f74221d19",
+  "turnVoice": "hr-HR-GabrijelaNeural",
+  "drillVoices": [
+   "hr-HR-SreckoNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9387d8b7-d93e-4716-a6b6-e0fb0ec0ae12",
+    "f3c2c734-26ef-4b36-9a68-ec821a516a99"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hrv_for_eng --orders=83"
+ },
+ {
+  "course": "hrv_for_eng",
+  "rowId": "hrv_for_eng:pod-1:SC11-S003",
+  "order": 99,
+  "turnClip": "b772f19f-c030-45bd-af9f-011aeba25efe",
+  "turnVoice": "hr-HR-GabrijelaNeural",
+  "drillVoices": [
+   "hr-HR-SreckoNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8fd3f8cb-a167-48db-ad6c-9047f95988a2",
+    "fa4e1793-f641-4540-b3a6-b255b1a8c8b0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hrv_for_eng --orders=99"
+ },
+ {
+  "course": "hrv_for_eng",
+  "rowId": "hrv_for_eng:pod-1:SC12-S002",
+  "order": 111,
+  "turnClip": "498293cc-89fc-4cdc-bdde-3f706ff00ef6",
+  "turnVoice": "hr-HR-GabrijelaNeural",
+  "drillVoices": [
+   "hr-HR-SreckoNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8fd3f8cb-a167-48db-ad6c-9047f95988a2",
+    "954239f8-b55b-4fdf-b217-a426d7036e59"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs hrv_for_eng --orders=111"
+ },
+ {
+  "course": "isl_for_eng",
+  "rowId": "isl_for_eng:pod-1:SC07-S005",
+  "order": 42,
+  "turnClip": "1fdd1741-3e13-4972-98e0-0ecca3f04629",
+  "turnVoice": "is-IS-GudrunNeural",
+  "drillVoices": [
+   "is-IS-GunnarNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "6db8a360-84f9-4813-b6e0-b75aa5432a32",
+    "5a0b4388-241b-433f-b8f1-7fd929e1e622"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs isl_for_eng --orders=42"
+ },
+ {
+  "course": "isl_for_eng",
+  "rowId": "isl_for_eng:pod-1:SC07-S008",
+  "order": 45,
+  "turnClip": "f8a7e981-46ae-41fb-96f5-ab7afda7ea47",
+  "turnVoice": "is-IS-GudrunNeural",
+  "drillVoices": [
+   "is-IS-GunnarNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "297263e8-9412-4645-b804-95e8fd8ff907",
+    "38877ad1-e765-4999-bb6a-5b17f3b8f842"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs isl_for_eng --orders=45"
+ },
+ {
+  "course": "isl_for_eng",
+  "rowId": "isl_for_eng:pod-1:SC07-S011",
+  "order": 48,
+  "turnClip": "c848a627-53e2-4c3f-b0d2-88e49aed96af",
+  "turnVoice": "is-IS-GunnarNeural",
+  "drillVoices": [
+   "is-IS-GudrunNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c7c2b9cf-22d0-45d5-ab0b-3522272fe227",
+    "d870e31b-1a98-46e8-81c0-5dad78f69c6a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs isl_for_eng --orders=48"
+ },
+ {
+  "course": "isl_for_eng",
+  "rowId": "isl_for_eng:pod-1:SC07-S014",
+  "order": 51,
+  "turnClip": "d56e777a-5e2b-4750-a9b4-bb5f1b357f15",
+  "turnVoice": "is-IS-GudrunNeural",
+  "drillVoices": [
+   "is-IS-GunnarNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "5f7fda8b-79b7-400e-94f3-1dd496efa508",
+    "8fbe6f3a-b185-4297-ac25-572b0ff2e2fc"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs isl_for_eng --orders=51"
+ },
+ {
+  "course": "ita_for_jpn",
+  "rowId": "ita_for_jpn:pod-1:SC04-S003",
+  "order": 12,
+  "turnClip": "6be651dc-af4b-48f5-a9f4-f59beb961836",
+  "turnVoice": "eve",
+  "drillVoices": [
+   "x7avnu1k"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3cd7bc44-1618-4c63-8db7-9a4454197d7f",
+    "8c2e5e19-a1ea-4bf8-b79a-4a1def8c6e6d",
+    "ca109351-a348-42ab-992f-2b31022f7561"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ita_for_jpn --orders=12"
+ },
+ {
+  "course": "kor_for_eng",
+  "rowId": "kor_for_eng:pod-1:SC08-S006",
+  "order": 58,
+  "turnClip": "2494c3d0-1df1-4290-b308-9d99fd4f32e5",
+  "turnVoice": "ko-KR-YuJinNeural",
+  "drillVoices": [
+   "bf9fe5b5f981"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f4589c54-09d4-4e3a-bc8a-4124f3c6961a",
+    "8bf79279-f97f-4aab-962a-03e0255485d3"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs kor_for_eng --orders=58"
+ },
+ {
+  "course": "kor_for_eng",
+  "rowId": "kor_for_eng:pod-1:SC14-S002",
+  "order": 132,
+  "turnClip": "8e86a728-e44e-4eef-a2d3-f54ee4993b8f",
+  "turnVoice": "ko-KR-YuJinNeural",
+  "drillVoices": [
+   "bf9fe5b5f981"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "acc314d4-be04-4639-aa1f-ca173b095998",
+    "c382d460-f28b-4044-a2af-f898cdd72d0d"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs kor_for_eng --orders=132"
+ },
+ {
+  "course": "kor_for_eng",
+  "rowId": "kor_for_eng:pod-1:SC14-S009",
+  "order": 139,
+  "turnClip": "5c2fe1ca-ed4f-4522-8507-c74db3f1ec47",
+  "turnVoice": "ko-KR-YuJinNeural",
+  "drillVoices": [
+   "bf9fe5b5f981"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "acc314d4-be04-4639-aa1f-ca173b095998",
+    "39e4f6fa-da7a-44ec-80e1-6218d6e7c2a7"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs kor_for_eng --orders=139"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC03-S001",
+  "order": 7,
+  "turnClip": "40190911-8118-4859-a457-b9dcd525367f",
+  "turnVoice": "lv-LV-EveritaNeural",
+  "drillVoices": [
+   "lv-LV-NilsNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "bcd5dc9a-308d-4e3a-96c0-0791bdd89cd7",
+    "defc4cc1-3e8c-4129-93b1-fc188fca252a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=7"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC07-S001",
+  "order": 28,
+  "turnClip": "79d0d916-440a-4a89-aae7-3b97c997378f",
+  "turnVoice": "lv-LV-EveritaNeural",
+  "drillVoices": [
+   "lv-LV-NilsNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8c882410-ec49-4ec7-8dc5-9f21b2ac1e8b",
+    "defc4cc1-3e8c-4129-93b1-fc188fca252a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=28"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC07-S004",
+  "order": 31,
+  "turnClip": "769fe9f0-cf0a-47a3-b195-921efeeeb769",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7536be05-6f0e-4eee-9228-209a4a950431",
+    "69d0fc58-a461-46a3-879e-e673a0823244"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=31"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC07-S005",
+  "order": 32,
+  "turnClip": "e49fee9f-ec1c-48bb-a755-82e84518e6a6",
+  "turnVoice": "lv-LV-EveritaNeural",
+  "drillVoices": [
+   "lv-LV-NilsNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "efdf2271-119a-4dd3-bb1c-9ab5a9b7fbfe",
+    "9a3cc724-93db-431c-9d32-ec5f62923789"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=32"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC07-S008",
+  "order": 35,
+  "turnClip": "9912c444-9bf3-491c-87e7-fbfd87b6b96b",
+  "turnVoice": "lv-LV-EveritaNeural",
+  "drillVoices": [
+   "lv-LV-NilsNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b43e0483-f928-46cb-a099-d742cb6bd905",
+    "7da4ee52-e031-46bf-b901-5ee6a6bf6767"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=35"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC07-S012",
+  "order": 39,
+  "turnClip": "b5832723-dde1-4348-8429-c34966a5c288",
+  "turnVoice": "lv-LV-EveritaNeural",
+  "drillVoices": [
+   "lv-LV-NilsNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "efdf2271-119a-4dd3-bb1c-9ab5a9b7fbfe",
+    "9636be76-f671-419a-973b-8aefdb3bf58f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=39"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC07-S014",
+  "order": 41,
+  "turnClip": "24a2108c-192f-4ef2-962a-2f8b993c1370",
+  "turnVoice": "lv-LV-EveritaNeural",
+  "drillVoices": [
+   "lv-LV-NilsNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "321c3d51-198b-4454-ad10-a92437d49a82",
+    "7e5ba1ca-d02d-4858-8147-d0d33459fccf"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=41"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC08-S002",
+  "order": 44,
+  "turnClip": "4359beee-e841-4b09-bdda-cfc3464e0b36",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "146d154d-8bfc-4130-a73d-898372895679",
+    "5b23f9b7-80ea-4306-8e54-605115ca4233"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=44"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC08-S012",
+  "order": 54,
+  "turnClip": "30ade555-c5c7-47da-9db5-cb483dc99ca4",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4de98438-d44a-490c-8757-8673e37b376b",
+    "57dd9c08-e8b1-45c1-8683-c5800c394beb"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=54"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC08-S014",
+  "order": 56,
+  "turnClip": "159aefee-e467-4e7c-a6ee-76dafdeeca41",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "6faaa055-f38b-4874-8561-95226beb6638",
+    "e9a724ba-083f-4fdc-ba69-a89ca0514650"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=56"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC09-S001",
+  "order": 59,
+  "turnClip": "d820cd25-4bce-4d37-8183-17ef4ea6d4d6",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "25024a36-24cf-4c1a-b727-0fe54aa8df1c",
+    "0d6aaa24-357c-4259-b26e-3d4c3973c3ab"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=59"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC09-S005",
+  "order": 63,
+  "turnClip": "30b6fb4b-b801-4b4d-8a8e-437351dfe420",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "bef4cc76-165e-4dac-af17-dbe92ac57f40",
+    "946f3d02-0c41-47e0-ae05-500ed85949b5"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=63"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC09-S009",
+  "order": 67,
+  "turnClip": "e9a223f9-8e51-4baf-b1d2-9a2dee66f7db",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "38c1442c-6683-4026-9897-70a9860c6998",
+    "a61fe5a1-554c-4be8-a607-e26f3ce61171"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=67"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC09-S016",
+  "order": 74,
+  "turnClip": "1a8882eb-462a-4559-a54a-c0682a883141",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c804313f-a3c9-41e0-b67a-93d8b4b56f80",
+    "e21522f3-5d5e-4cc3-b287-8b056cb5c1ac"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=74"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC13-S008",
+  "order": 117,
+  "turnClip": "5fbc7f27-6463-4b11-a06f-57ff4316652d",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8efedd21-a0eb-46f5-b1ed-d0a561a17483",
+    "2a381c57-d5b8-4fd9-bd7a-452dd78eb7e4"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=117"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC13-S010",
+  "order": 119,
+  "turnClip": "674fc443-e3c7-45aa-9f4e-7840b35fbd6e",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4c518b32-3674-433d-94f2-3a3cd75d335d",
+    "28fda23f-aac3-413b-939b-6a8791c3a5e4"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=119"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC14-S002",
+  "order": 122,
+  "turnClip": "973289bb-6196-4052-ac6d-aaebdf931310",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9d7666ee-d842-411a-a092-9e1336953bd7",
+    "6a414d99-7f84-4eda-918d-897e687135a3"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=122"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC14-S007",
+  "order": 127,
+  "turnClip": "c7e2e6ec-f748-4c2f-b660-a6c08fc88c86",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9604727b-56bf-410b-8049-27b69033fa05",
+    "5005a506-3804-4c2f-8d8f-46fb850789dd"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=127"
+ },
+ {
+  "course": "lav_for_eng",
+  "rowId": "lav_for_eng:pod-1:SC14-S009",
+  "order": 129,
+  "turnClip": "ee7cf2fc-c194-47c3-89d4-381127316267",
+  "turnVoice": "lv-LV-NilsNeural",
+  "drillVoices": [
+   "lv-LV-EveritaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9d7666ee-d842-411a-a092-9e1336953bd7",
+    "01f6fea4-f2f4-4a71-bbbe-31216b537a66"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lav_for_eng --orders=129"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC03-S001",
+  "order": 7,
+  "turnClip": "b11c7640-a0b1-4057-ad72-14a35f22d703",
+  "turnVoice": "lt-LT-OnaNeural",
+  "drillVoices": [
+   "lt-LT-LeonasNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "5b55cebc-7bd4-4bfa-829d-cc4102ceadf9",
+    "b80b3c57-90e5-4046-bcdd-28bf92207410"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=7"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC07-S001",
+  "order": 28,
+  "turnClip": "b988e6bc-bca0-4535-90c2-3064a9db418a",
+  "turnVoice": "lt-LT-OnaNeural",
+  "drillVoices": [
+   "lt-LT-LeonasNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2bbb201d-2bf7-444e-99d1-8524593a50ce",
+    "b80b3c57-90e5-4046-bcdd-28bf92207410"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=28"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC07-S004",
+  "order": 31,
+  "turnClip": "21b5b63b-10a6-468e-a552-f4016434b10e",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "aefdbf4e-90ce-4ebc-9daa-70f288ed6984",
+    "37ae3a9d-d6fe-41e0-8eb6-35c12783fe04"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=31"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC07-S005",
+  "order": 32,
+  "turnClip": "c9279100-1972-4326-9ec6-57a64c96dc73",
+  "turnVoice": "lt-LT-OnaNeural",
+  "drillVoices": [
+   "lt-LT-LeonasNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f35e7fbe-c057-4a88-86ea-140c5e5300ad",
+    "ace9f894-e9d6-4aed-99b4-885f9ad598b8"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=32"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC07-S008",
+  "order": 35,
+  "turnClip": "7b8ed569-487b-4aeb-9c06-5de08b8f7b7b",
+  "turnVoice": "lt-LT-OnaNeural",
+  "drillVoices": [
+   "lt-LT-LeonasNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "48f2f2d7-5892-4b4a-824a-bb3e657b4c86",
+    "07c8b5e8-ed4b-4744-af01-f069599389bb"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=35"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC07-S012",
+  "order": 39,
+  "turnClip": "6aece6e7-176f-444d-a67a-8fbe797bb3ba",
+  "turnVoice": "lt-LT-OnaNeural",
+  "drillVoices": [
+   "lt-LT-LeonasNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f35e7fbe-c057-4a88-86ea-140c5e5300ad",
+    "dfd5492b-bd75-4bee-abf7-14e65d8736d1"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=39"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC07-S014",
+  "order": 41,
+  "turnClip": "814e0dcb-a3a4-4efe-93d7-c42a5257c5ef",
+  "turnVoice": "lt-LT-OnaNeural",
+  "drillVoices": [
+   "lt-LT-LeonasNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2ed3a014-011d-40c8-b0e6-a2c4d5a5869f",
+    "970a785e-bad5-4487-b0c6-198f0b574b34"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=41"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC08-S002",
+  "order": 44,
+  "turnClip": "5f423b42-e1dc-494e-8da7-b15fcfa33af5",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "6587e0cc-c378-4fb5-a097-c1485602e92c",
+    "0baab3da-4c4a-4206-b8b1-d3ee7567fba3"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=44"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC08-S012",
+  "order": 54,
+  "turnClip": "434cba34-cd5f-4940-83e7-d60d7838365f",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "f7e7a5ec-d0d9-49f3-bbfa-5dbe1b74007e",
+    "4352398c-f8d6-4761-a5e1-866175cce74f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=54"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC08-S014",
+  "order": 56,
+  "turnClip": "60421408-ee01-4616-a974-36ef195ae318",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c812e4aa-0f92-415d-ae2d-cffb5c45de50",
+    "b9df2bd9-e46c-439d-b14e-31131c11b3ed"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=56"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC09-S001",
+  "order": 59,
+  "turnClip": "fcdb58f0-4f91-4ab3-bef8-0605ba144ec2",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "d78b9878-06eb-4681-aa26-83b2290e91c7",
+    "78a86737-2282-4780-8049-16fec5d0497a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=59"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC09-S005",
+  "order": 63,
+  "turnClip": "8c37fc73-598a-49b0-9522-b97659fbc566",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "16a9b8fc-5f63-41e3-8f5d-5d354d5e61b3",
+    "e4820c03-3235-4046-b593-084f99863558"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=63"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC09-S009",
+  "order": 67,
+  "turnClip": "176373c8-682c-4682-935e-3ef2c5e8b5ee",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "5cde0eb6-b5a2-43e2-ad56-c18d445b8e0a",
+    "dd393dbc-b58f-4e66-ade6-a390debed15c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=67"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC09-S016",
+  "order": 74,
+  "turnClip": "acc0a06f-c718-433b-ad1b-2600347f16e8",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "315b1800-c0bb-460c-8f77-90bdb563e88a",
+    "82821124-3398-4beb-afc1-87ba4d539ba3"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=74"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC13-S008",
+  "order": 117,
+  "turnClip": "5731970b-8036-4c03-a2ba-c582bf005f77",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c544895d-e49b-422c-ab2a-a7e29a795dbc",
+    "26e517c4-75e4-4718-b4b7-e90f515617dc"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=117"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC13-S010",
+  "order": 119,
+  "turnClip": "fe30ca6e-db59-46a4-a398-2deec368146b",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "0f7f8209-717e-458f-a404-b6f8859585a0",
+    "96566416-158e-4fef-939b-a81ab6ba2218"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=119"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC14-S002",
+  "order": 122,
+  "turnClip": "5a3fb4ec-6882-4ecf-abfe-3a5460e3e374",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "09084e10-28e6-4280-9a13-1ded6ba1824a",
+    "795a0e8c-fd45-4022-809e-f4c36f5ff9fb"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=122"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC14-S007",
+  "order": 127,
+  "turnClip": "84e6c4af-6df5-4a32-abb7-98c14ec775c0",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "9a217528-adec-4e51-86e2-b8feca92637d",
+    "2b83a804-0613-47fb-b6f3-e3f03214ed0b"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=127"
+ },
+ {
+  "course": "lit_for_eng",
+  "rowId": "lit_for_eng:pod-1:SC14-S009",
+  "order": 129,
+  "turnClip": "b3c4e0e7-6f64-4a1b-804f-851d6c370789",
+  "turnVoice": "lt-LT-LeonasNeural",
+  "drillVoices": [
+   "lt-LT-OnaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "09084e10-28e6-4280-9a13-1ded6ba1824a",
+    "ecdc4f71-f432-4e67-aa5f-59abeffe12b9"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs lit_for_eng --orders=129"
+ },
+ {
+  "course": "nld_for_eng",
+  "rowId": "nld_for_eng:pod-1:SC06-S013",
+  "order": 37,
+  "turnClip": "57f72ae7-ab1b-4375-8b73-dace7b9c3bac",
+  "turnVoice": "a13662ba951c",
+  "drillVoices": [
+   "58d27475085e"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "524e0143-40e3-45a6-b1df-03817b3283fd",
+    "4a11e7b0-83a2-4d3d-9bef-1830b2f8f639",
+    "38deb7a2-69a4-47e0-b32a-34bf71327670",
+    "dd4f09a4-64c2-42ff-a6ce-09c5521b93b9",
+    "46d04b3d-e986-4623-900e-05dfdabf0fed"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs nld_for_eng --orders=37"
+ },
+ {
+  "course": "nld_for_eng",
+  "rowId": "nld_for_eng:pod-1:SC07-S015",
+  "order": 52,
+  "turnClip": "9e8330ab-9488-471b-9fee-48776c8a7ebb",
+  "turnVoice": "a13662ba951c",
+  "drillVoices": [
+   "58d27475085e"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "e48639a1-697b-45da-b7aa-aef66e4f9a12",
+    "38ffad0d-722b-4fa4-8a22-3818ba88a639",
+    "c977a62f-e60e-424d-99b2-b83205c15313",
+    "cea13be6-2e96-4de6-824a-74102044ae63",
+    "51ca931c-fabe-4e61-b8b9-19fb1285b629"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs nld_for_eng --orders=52"
+ },
+ {
+  "course": "nld_for_eng",
+  "rowId": "nld_for_eng:pod-1:SC08-S016",
+  "order": 68,
+  "turnClip": "a688e2b8-915a-447e-abd7-aaf7189ad986",
+  "turnVoice": "a13662ba951c",
+  "drillVoices": [
+   "58d27475085e"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "69d0aa60-45bb-4d34-bad1-12896d3c5f48",
+    "39777cf0-70ab-4d68-9500-84a372c9eac4",
+    "36aa10d8-e050-4b38-8733-0617fe1f8482",
+    "867102d6-f053-4142-8db7-20a51047aa32",
+    "c998a988-c57b-4538-bb15-382d0df3aef9"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs nld_for_eng --orders=68"
+ },
+ {
+  "course": "nld_for_eng",
+  "rowId": "nld_for_eng:pod-1:SC09-S018",
+  "order": 86,
+  "turnClip": "7daa6ef8-ea24-4bcf-848e-dac5eb8847a5",
+  "turnVoice": "a13662ba951c",
+  "drillVoices": [
+   "58d27475085e"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "92bf7a28-e1ce-433c-bb90-3851637957f2",
+    "fc7b7370-9f97-48ae-9038-17d6e1a849c4",
+    "90f19a35-2ad9-44f3-9351-be02a4739640",
+    "075972ab-7f14-4b2d-9f61-267f00495d03",
+    "fb0ac1a0-c3f5-4be2-ae97-4d91a31b9f9e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs nld_for_eng --orders=86"
+ },
+ {
+  "course": "nld_for_eng",
+  "rowId": "nld_for_eng:pod-1:SC10-S010",
+  "order": 96,
+  "turnClip": "92ff758d-7612-482f-8bc3-4c9b1182c239",
+  "turnVoice": "a13662ba951c",
+  "drillVoices": [
+   "58d27475085e"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2c30388c-09d5-4612-abe9-e9a6eb13b8b9",
+    "495ecce7-2a50-47a7-896e-7fa92410caf8",
+    "fb5af032-bc5b-4a29-8872-7f23996ea118",
+    "11a1c937-87cc-4686-9ae7-a66552066eb1",
+    "660c975a-2702-46a5-9783-87e8acf8a586"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs nld_for_eng --orders=96"
+ },
+ {
+  "course": "nld_for_eng",
+  "rowId": "nld_for_eng:pod-1:SC11-S013",
+  "order": 109,
+  "turnClip": "21c6c91e-5725-4b4f-9897-6eb9facccb78",
+  "turnVoice": "a13662ba951c",
+  "drillVoices": [
+   "58d27475085e"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "5de6fbf2-91b3-4f48-b5b9-e0e2525f60cc",
+    "6176dcc9-0477-4ec9-bf38-14847270b4dd",
+    "00b30d00-4f19-4f03-ab03-d457511723da",
+    "91a62c21-0a60-4c89-b390-b6a0f2b229cf",
+    "0b53f648-cf9a-4e59-a059-1b279ad383df"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs nld_for_eng --orders=109"
+ },
+ {
+  "course": "nld_for_eng",
+  "rowId": "nld_for_eng:pod-1:SC13-S011",
+  "order": 130,
+  "turnClip": "b7b53d38-1624-49bf-8438-c6dc02721c5f",
+  "turnVoice": "a13662ba951c",
+  "drillVoices": [
+   "58d27475085e"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "eae31f20-2167-492f-9244-969d44c28b64",
+    "b8b0f88e-f446-48e0-841a-cfd27c08df14",
+    "601fe182-b021-43cb-b7f2-f5d9d3b40b47",
+    "306ffb37-99e6-4516-a0b6-bafc4ce6a133",
+    "3bf01f33-2a53-40b7-adfb-02e8ae558911"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs nld_for_eng --orders=130"
+ },
+ {
+  "course": "nld_for_eng",
+  "rowId": "nld_for_eng:pod-1:SC14-S009",
+  "order": 139,
+  "turnClip": "b4e9ab03-65f7-496a-a24d-401051b27893",
+  "turnVoice": "58d27475085e",
+  "drillVoices": [
+   "a13662ba951c"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "60712feb-6b3f-453e-aecc-ea2b2b66283a",
+    "9a4d5bb3-1d06-4f90-a0a1-b7c3b47bac45"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs nld_for_eng --orders=139"
+ },
+ {
+  "course": "por_br_for_eng",
+  "rowId": "por_br_for_eng:pod-1:SC02-S002",
+  "order": 6,
+  "turnClip": "afea7601-d0ff-41f6-9b81-77d02a4d5618",
+  "turnVoice": "07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+  "drillVoices": [
+   "1cf751f6-8749-43ab-98bd-230dd633abdb"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "777ab3b9-bf39-41c0-bda3-ba725a498417",
+    "ab89094b-e259-4959-a961-acf21d7e29fc"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs por_br_for_eng --orders=6"
+ },
+ {
+  "course": "por_br_for_eng",
+  "rowId": "por_br_for_eng:pod-1:SC07-S004",
+  "order": 41,
+  "turnClip": "a69b9355-9794-4a36-a7fa-b7555f53dbf4",
+  "turnVoice": "07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+  "drillVoices": [
+   "1cf751f6-8749-43ab-98bd-230dd633abdb"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "88aaa378-5bb4-4173-874f-ce92300fd97c",
+    "4899242a-e948-4562-ab38-c673e33560cf"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs por_br_for_eng --orders=41"
+ },
+ {
+  "course": "ron_for_eng",
+  "rowId": "ron_for_eng:pod-1:SC07-S001",
+  "order": 38,
+  "turnClip": "9ea52660-23f9-4b9a-af9a-96aed00af9a9",
+  "turnVoice": "ro-RO-AlinaNeural",
+  "drillVoices": [
+   "ro-RO-EmilNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "0af2ca3a-2e27-4f00-b35f-5328bff78f79",
+    "2695f722-feb7-432c-8469-6394df3335ea"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ron_for_eng --orders=38"
+ },
+ {
+  "course": "ron_for_eng",
+  "rowId": "ron_for_eng:pod-1:SC07-S004",
+  "order": 41,
+  "turnClip": "feda79ec-011f-4c4f-9e31-fddcc66c535c",
+  "turnVoice": "ro-RO-EmilNeural",
+  "drillVoices": [
+   "ro-RO-AlinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c70ef5e5-f313-4106-a5ed-3100fcefc0b6",
+    "db4cec12-7cf6-4736-a734-1a3f8fa45627"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ron_for_eng --orders=41"
+ },
+ {
+  "course": "ron_for_eng",
+  "rowId": "ron_for_eng:pod-1:SC07-S005",
+  "order": 42,
+  "turnClip": "f1c89316-004c-4526-82c1-c627b832738b",
+  "turnVoice": "ro-RO-AlinaNeural",
+  "drillVoices": [
+   "ro-RO-EmilNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "827aac12-f344-4033-8061-a30b61290ab1",
+    "6103cac5-7c24-4e03-8fce-ea89b8b9bde0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ron_for_eng --orders=42"
+ },
+ {
+  "course": "ron_for_eng",
+  "rowId": "ron_for_eng:pod-1:SC07-S008",
+  "order": 45,
+  "turnClip": "5424928c-81a7-41f2-bf11-9752a6405ff1",
+  "turnVoice": "ro-RO-AlinaNeural",
+  "drillVoices": [
+   "ro-RO-EmilNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "00536a9c-12fd-4b41-a3d6-461b6a6195c1",
+    "d9eb26db-26c6-4b2a-8f96-aabf91362c94"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ron_for_eng --orders=45"
+ },
+ {
+  "course": "ron_for_eng",
+  "rowId": "ron_for_eng:pod-1:SC07-S011",
+  "order": 48,
+  "turnClip": "c13229ed-bd8a-4ce5-b5df-7bc1030e703c",
+  "turnVoice": "ro-RO-EmilNeural",
+  "drillVoices": [
+   "ro-RO-AlinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "987dd835-58ae-4173-b33a-43264bb8c0be",
+    "a4696052-16c3-4df0-a44c-4488e71affbb"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ron_for_eng --orders=48"
+ },
+ {
+  "course": "ron_for_eng",
+  "rowId": "ron_for_eng:pod-1:SC07-S012",
+  "order": 49,
+  "turnClip": "ec386c07-eed9-4375-880c-b2cbc15971b9",
+  "turnVoice": "ro-RO-AlinaNeural",
+  "drillVoices": [
+   "ro-RO-EmilNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2efe478c-e461-4fe2-8057-256d19cd2202",
+    "02dbabdc-2d5e-4b92-92df-8fad1fdb9f23"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ron_for_eng --orders=49"
+ },
+ {
+  "course": "ron_for_eng",
+  "rowId": "ron_for_eng:pod-1:SC07-S013",
+  "order": 50,
+  "turnClip": "49f43b65-cb30-4c7d-8459-55fd5e9edf6b",
+  "turnVoice": "ro-RO-EmilNeural",
+  "drillVoices": [
+   "ro-RO-AlinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4ecc77ae-7e17-4299-9f2f-c8449ebf79d0",
+    "5bc339ac-8d53-4ab9-af2b-ad3bfff90912"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ron_for_eng --orders=50"
+ },
+ {
+  "course": "ron_for_eng",
+  "rowId": "ron_for_eng:pod-1:SC07-S014",
+  "order": 51,
+  "turnClip": "f8dc89e2-eded-4dbf-8b66-9a05f3d7bbc7",
+  "turnVoice": "ro-RO-AlinaNeural",
+  "drillVoices": [
+   "ro-RO-EmilNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "1fc2ea67-3da6-4d2a-b00d-ecb3678ce227",
+    "0ee31218-55e7-418f-b84f-1021a7ebfc6a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ron_for_eng --orders=51"
+ },
+ {
+  "course": "spa_mx_for_eng",
+  "rowId": "spa_mx_for_eng:pod-1:SC08-S015",
+  "order": 67,
+  "turnClip": "24909b64-ec31-46fb-820a-8048772b9d25",
+  "turnVoice": "3597a26f-80ef-4bd5-8101-9699bc764917",
+  "drillVoices": [
+   "9b67072c-d46c-465d-87dc-f7a1c6db2bf3"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fb5615ce-8d1c-4a63-b8d1-ec5b9743cd65",
+    "711cc5bb-ea33-4880-8ed6-71fa43fc460d"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs spa_mx_for_eng --orders=67"
+ },
+ {
+  "course": "spa_mx_for_eng",
+  "rowId": "spa_mx_for_eng:pod-1:SC09-S010",
+  "order": 78,
+  "turnClip": "48a71284-b826-4e3a-bd17-b3bcc650d9ee",
+  "turnVoice": "3597a26f-80ef-4bd5-8101-9699bc764917",
+  "drillVoices": [
+   "9b67072c-d46c-465d-87dc-f7a1c6db2bf3"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fd46cc87-34e8-4e50-97d1-1f3d8863713d",
+    "5991d9a3-1b5d-4013-92be-aa1c8b5c958f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs spa_mx_for_eng --orders=78"
+ },
+ {
+  "course": "spa_mx_for_eng",
+  "rowId": "spa_mx_for_eng:pod-1:SC09-S017",
+  "order": 85,
+  "turnClip": "e377ed6e-a61e-49f5-bf06-aaa883dd1b94",
+  "turnVoice": "3597a26f-80ef-4bd5-8101-9699bc764917",
+  "drillVoices": [
+   "9b67072c-d46c-465d-87dc-f7a1c6db2bf3"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "6c147921-2791-450f-b245-f6b65729a797",
+    "a16cc1c6-7f92-4db6-8143-5d52292843aa"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs spa_mx_for_eng --orders=85"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC01-S003",
+  "order": 3,
+  "turnClip": "fd1702c1-954d-46fe-8e1f-66f26531338c",
+  "turnVoice": "eve",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2ad9bad4-c4b9-4838-9a52-bf24f76b48eb",
+    "307ffcfa-7619-4c16-b668-edc6cd84ada4"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=3"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC02-S002",
+  "order": 6,
+  "turnClip": "a9d153da-d04c-470f-8f45-9c64f10701c8",
+  "turnVoice": "908c4626660f",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "ba32f8bd-0bc3-4cbf-808f-1c59c577d14a",
+    "ce905bb4-e08b-44a6-89d6-0f95f358088c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=6"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC03-S001",
+  "order": 7,
+  "turnClip": "9e2321f0-cf50-4995-9d48-81701c6937af",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "6c24facc-de56-4ef6-8bbf-6bb9833c2f5e",
+    "4ca0fd48-a689-4d62-b25b-ef7477b205f2"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=7"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC05-S001",
+  "order": 13,
+  "turnClip": "4197fe2e-cb0d-4e9a-858e-e866cf7176ea",
+  "turnVoice": "eve",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fd7f38e4-82a4-4549-974e-ef0c35980cc2",
+    "b8b9e05b-d418-42f1-8a30-50afffa12445"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=13"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC07-S005",
+  "order": 32,
+  "turnClip": "1412269a-2a13-4f2f-8f53-8c17174196d0",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fb40cde9-6eef-49f6-9346-6c013540b67d",
+    "98d24764-c0cc-4955-b022-8b79f2862063"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=32"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC07-S008",
+  "order": 35,
+  "turnClip": "0ebd48a6-16a8-45a7-bb7a-f123f3735823",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fb40cde9-6eef-49f6-9346-6c013540b67d",
+    "374b14b6-1967-4156-8b39-42547aadfad0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=35"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC07-S012",
+  "order": 39,
+  "turnClip": "f3cd3d53-1fe1-48c7-988e-8995296e1830",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fb40cde9-6eef-49f6-9346-6c013540b67d",
+    "782c3fbd-8da7-4c3b-a992-7337331e0a63"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=39"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC07-S014",
+  "order": 41,
+  "turnClip": "2623da6c-715c-4781-9e18-f402bf8974a3",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b6d35713-4fd1-4d48-aa76-481c02af34fb",
+    "eea717ca-cf34-4a35-a094-6229a59f1d60"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=41"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC08-S006",
+  "order": 48,
+  "turnClip": "df8a9cfe-1c3f-4719-a430-6db0f4c8eb84",
+  "turnVoice": "eve",
+  "drillVoices": [
+   "rex"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4b869c0b-387d-41d3-b47f-1b79ed8b3461",
+    "15cbbaa2-4f05-46dc-82bb-91ec805e71b6"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=48"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC08-S015",
+  "order": 57,
+  "turnClip": "325fcaa6-f7d0-4d06-8841-7b0bb9015e80",
+  "turnVoice": "4ff93971bfdc",
+  "drillVoices": [
+   "eve"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "5c85ad15-716d-406c-9f4a-fe3f4097c024",
+    "ae90ec62-a932-4474-9c1c-ea9ba57c0d93"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=57"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S001",
+  "order": 59,
+  "turnClip": "58c39676-6265-4d7e-af21-02bb14417c52",
+  "turnVoice": "908c4626660f",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a740ff4e-2100-46ba-94b7-8441ddee36e8",
+    "7c420618-bb70-4224-8581-a2c8c60b1691"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=59"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S002",
+  "order": 60,
+  "turnClip": "8ae3cb5b-01f7-4108-9b47-231f40605f8a",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b15483da-c144-47ac-8b4c-5cd96955efad",
+    "33cbdd95-5c1f-4a95-afdb-b060b38e7441",
+    "c05358d5-3cb7-4422-9a81-cfff8ee1383a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=60"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S005",
+  "order": 63,
+  "turnClip": "6084d084-d864-4b31-88df-e686cd7b1a0a",
+  "turnVoice": "908c4626660f",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "8a834f29-0c03-47c0-a278-8024298f66a9",
+    "694e96c3-8095-4cb6-bdef-2fbc9125478e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=63"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S006",
+  "order": 64,
+  "turnClip": "b0e9ddf1-efc6-48d2-819c-1435c3d870e2",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "67e4bbeb-4cbc-4f84-a31e-959c058edc5c",
+    "f2eb8951-e2ed-4526-8c4e-58ec52572a2a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=64"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S008",
+  "order": 66,
+  "turnClip": "1c44394e-5f47-47e4-9ba2-0167090db08c",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "23f3e56a-d3fd-49b7-bc66-a6d370b91b6e",
+    "825018d0-9ba5-409b-88e9-72f1673f276e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=66"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S009",
+  "order": 67,
+  "turnClip": "0fcabd3d-00af-491b-8e2a-bf204559c193",
+  "turnVoice": "908c4626660f",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "69659783-a6bc-4bd7-b430-af8d4cfaaf27",
+    "94df9521-049a-4c9d-9a88-13bc20efa4f3"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=67"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S010",
+  "order": 68,
+  "turnClip": "ef0c0868-cdc1-4dd7-82f0-08c1665ecdd7",
+  "turnVoice": "rex",
+  "drillVoices": [
+   "eve"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "12a78c2d-0691-4f2c-ab7a-c0e71cb2e1c5",
+    "28065f02-06ab-4397-8d58-1473a72aa4ec"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=68"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S011",
+  "order": 69,
+  "turnClip": "8e163cb9-154e-4177-a19e-602ede39fff8",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fb40cde9-6eef-49f6-9346-6c013540b67d",
+    "798c0d88-3e3f-469b-bd2e-329812415cf0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=69"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S014",
+  "order": 72,
+  "turnClip": "9991c7a3-bae4-4564-afe1-833ed1308e0e",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fe25c462-250f-4f9d-a1dd-8efe48450649",
+    "7890f9a5-f08f-4b14-a49f-0219371d044c"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=72"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S015",
+  "order": 73,
+  "turnClip": "d7c9d243-3d20-4519-8a02-e970571811c1",
+  "turnVoice": "ara",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "0ba3fb5c-eef2-4fe4-8804-4b3480ab3a0c",
+    "692a3bf9-79bb-4452-a1e5-fa6fdb8c4dd0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=73"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S016",
+  "order": 74,
+  "turnClip": "f94ffaf3-13ff-4daa-8c7a-6d74a1eec1f4",
+  "turnVoice": "908c4626660f",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "74db57b8-ab40-4dd6-abec-3315ec208311",
+    "288fadf5-810b-4ec5-b2ea-ecd54aa4b7b4"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=74"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC09-S017",
+  "order": 75,
+  "turnClip": "496cc0a5-24a1-4d97-b53b-96d1727e292a",
+  "turnVoice": "rex",
+  "drillVoices": [
+   "eve"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "6a032bb7-d40b-49fe-8b54-4f85b1e373a6",
+    "ea004185-9d05-476c-877f-b846cd7e60d5"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=75"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC10-S001",
+  "order": 77,
+  "turnClip": "7d4a2233-106f-4a6c-9001-945268e8ce80",
+  "turnVoice": "4ff93971bfdc",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "47f8c14d-e646-4dc2-8149-ec93b272d404",
+    "c0ca0a41-a2cc-4a7c-b214-b1abaccaa3d2"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=77"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC10-S003",
+  "order": 79,
+  "turnClip": "dd395ad8-d00a-4c80-9820-6aa74172f249",
+  "turnVoice": "4ff93971bfdc",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "da31db0e-1a69-4d31-a046-3caec94787fa",
+    "9e5ba387-b51e-4ebd-916e-acc717a941fc"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=79"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC10-S007",
+  "order": 83,
+  "turnClip": "d3196a91-5f8d-48f0-bc08-1f8450511864",
+  "turnVoice": "4ff93971bfdc",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "0319b817-3551-4d6f-9abc-95af2a5cd4a0",
+    "0a48289c-3199-4aaa-9b01-a70433e76aed"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=83"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC10-S009",
+  "order": 85,
+  "turnClip": "7a367eb9-8cb1-429d-96c8-d244cb672f8a",
+  "turnVoice": "4ff93971bfdc",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 3,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3631c260-9af4-4667-ada3-d536bae7db4d",
+    "0d1a4e1b-2c42-4897-92ce-fa6be736a5e3",
+    "8cf93d22-beba-421a-bc26-de0994a87cd0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=85"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC12-S001",
+  "order": 100,
+  "turnClip": "89dd1bb4-74ea-4833-bdcf-ae9a69213342",
+  "turnVoice": "rex",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a740ff4e-2100-46ba-94b7-8441ddee36e8",
+    "003d1483-7b4f-406d-83ac-eebb5065d2f2"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=100"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC12-S002",
+  "order": 101,
+  "turnClip": "d92d5557-d2a7-4468-987e-7316a4e3fa2c",
+  "turnVoice": "eve",
+  "drillVoices": [
+   "908c4626660f"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "fb40cde9-6eef-49f6-9346-6c013540b67d",
+    "01e65e4f-8b41-4642-9be7-cc7a114c84d3"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=101"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC12-S009",
+  "order": 108,
+  "turnClip": "5aeb4c69-5b48-4679-b733-6ca6e14d30ed",
+  "turnVoice": "rex",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4351acbd-67d3-4b95-bd5e-6f4c9f8964c8",
+    "38c9ace2-39fb-47ec-a435-bd0cda392b2e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=108"
+ },
+ {
+  "course": "tha_for_eng",
+  "rowId": "tha_for_eng:pod-1:SC14-S001",
+  "order": 121,
+  "turnClip": "0375baa0-ab94-47c8-a69f-099bf60d8626",
+  "turnVoice": "rex",
+  "drillVoices": [
+   "ara"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "a740ff4e-2100-46ba-94b7-8441ddee36e8",
+    "06740ea5-2d8e-4ab0-ba1a-c4ce391558da"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs tha_for_eng --orders=121"
+ },
+ {
+  "course": "ukr_for_eng",
+  "rowId": "ukr_for_eng:pod-1:SC03-S001",
+  "order": 7,
+  "turnClip": "c6a54066-f8fd-43d7-9545-f516294b61b6",
+  "turnVoice": "uk-UA-PolinaNeural",
+  "drillVoices": [
+   "uk-UA-OstapNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "86d06d6d-5796-4d71-a2ea-9e1d5f73f95b",
+    "94792ff7-845f-4af4-8c71-f6be766a652f"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ukr_for_eng --orders=7"
+ },
+ {
+  "course": "ukr_for_eng",
+  "rowId": "ukr_for_eng:pod-1:SC07-S001",
+  "order": 28,
+  "turnClip": "8d600817-a212-49f4-8196-ebaa4497b2e5",
+  "turnVoice": "uk-UA-PolinaNeural",
+  "drillVoices": [
+   "uk-UA-OstapNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "2b4bb9e8-8499-4e2e-ac12-339a8b191d28",
+    "f971aec0-0b6d-45e2-a111-891d1f1e2441"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ukr_for_eng --orders=28"
+ },
+ {
+  "course": "ukr_for_eng",
+  "rowId": "ukr_for_eng:pod-1:SC07-S005",
+  "order": 32,
+  "turnClip": "adc82e61-6354-4c60-86d2-ae48b7324db1",
+  "turnVoice": "uk-UA-PolinaNeural",
+  "drillVoices": [
+   "uk-UA-OstapNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3d074d3b-87a8-4e1c-b6cb-316143ebdbbe",
+    "b60007ea-87ea-48fc-afb8-c6089eb24ed2"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ukr_for_eng --orders=32"
+ },
+ {
+  "course": "ukr_for_eng",
+  "rowId": "ukr_for_eng:pod-1:SC07-S008",
+  "order": 35,
+  "turnClip": "bdbaf711-fd69-4ba3-922e-9e7666131848",
+  "turnVoice": "uk-UA-PolinaNeural",
+  "drillVoices": [
+   "uk-UA-OstapNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "aa0587bd-58f1-4591-95e4-efa67595def2",
+    "62b9d2fa-d9df-4b97-84cb-5d817563f7c4"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ukr_for_eng --orders=35"
+ },
+ {
+  "course": "ukr_for_eng",
+  "rowId": "ukr_for_eng:pod-1:SC07-S012",
+  "order": 39,
+  "turnClip": "9f86f1f5-f92d-40b1-ac5a-f2a6c2ddec87",
+  "turnVoice": "uk-UA-PolinaNeural",
+  "drillVoices": [
+   "uk-UA-OstapNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3d074d3b-87a8-4e1c-b6cb-316143ebdbbe",
+    "561f7e48-9943-4385-a293-98a33e4e19da"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ukr_for_eng --orders=39"
+ },
+ {
+  "course": "ukr_for_eng",
+  "rowId": "ukr_for_eng:pod-1:SC07-S014",
+  "order": 41,
+  "turnClip": "46c1878f-61b6-4fb4-94ae-f1259fe6107b",
+  "turnVoice": "uk-UA-PolinaNeural",
+  "drillVoices": [
+   "uk-UA-OstapNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7e15ea14-3ac7-49c3-9427-f1f3ce59384b",
+    "b7315549-7586-4dd6-aa92-a476ba31b246"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ukr_for_eng --orders=41"
+ },
+ {
+  "course": "ukr_for_eng",
+  "rowId": "ukr_for_eng:pod-1:SC13-S008",
+  "order": 117,
+  "turnClip": "740caed6-cc43-4ec3-a009-5b533cdc2c7c",
+  "turnVoice": "uk-UA-OstapNeural",
+  "drillVoices": [
+   "uk-UA-PolinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "7c1f97b6-7724-4396-9593-21815a429caa",
+    "dbdd583f-333b-4e30-b373-e494ca1769c1"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ukr_for_eng --orders=117"
+ },
+ {
+  "course": "ukr_for_eng",
+  "rowId": "ukr_for_eng:pod-1:SC13-S010",
+  "order": 119,
+  "turnClip": "c81120b5-912d-45ca-b569-47f76ac8a279",
+  "turnVoice": "uk-UA-OstapNeural",
+  "drillVoices": [
+   "uk-UA-PolinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "b263427b-bbee-40f0-85d3-71eb085b4a49",
+    "9c1eb150-8257-43d0-87ce-b00ac299c72d"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ukr_for_eng --orders=119"
+ },
+ {
+  "course": "ukr_for_eng",
+  "rowId": "ukr_for_eng:pod-1:SC14-S002",
+  "order": 122,
+  "turnClip": "9c15d584-7c37-4a08-b3eb-9907937c19ef",
+  "turnVoice": "uk-UA-OstapNeural",
+  "drillVoices": [
+   "uk-UA-PolinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "10ec9a9f-d12c-4117-bea3-11bf3378675c",
+    "f8f05fd3-4841-40ec-8691-33f402599e01"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ukr_for_eng --orders=122"
+ },
+ {
+  "course": "ukr_for_eng",
+  "rowId": "ukr_for_eng:pod-1:SC14-S007",
+  "order": 127,
+  "turnClip": "4ae983f6-cb09-46e1-afc0-14f9433eaf2e",
+  "turnVoice": "uk-UA-OstapNeural",
+  "drillVoices": [
+   "uk-UA-PolinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "c81c537f-5ae4-458d-ad30-685c1877cc21",
+    "17a876b1-200e-4fb6-9855-b61c6540d36d"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ukr_for_eng --orders=127"
+ },
+ {
+  "course": "ukr_for_eng",
+  "rowId": "ukr_for_eng:pod-1:SC14-S009",
+  "order": 129,
+  "turnClip": "41be255e-2333-422d-8a1d-9e51fafd3506",
+  "turnVoice": "uk-UA-OstapNeural",
+  "drillVoices": [
+   "uk-UA-PolinaNeural"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "10ec9a9f-d12c-4117-bea3-11bf3378675c",
+    "b161a3e5-c43a-4ce1-b0a4-2b5888369ce8"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs ukr_for_eng --orders=129"
+ },
+ {
+  "course": "zho_for_eng",
+  "rowId": "zho_for_eng:pod-1:SC06-S013",
+  "order": 37,
+  "turnClip": "ca3dee71-3369-419c-88a0-c7afcbc52d68",
+  "turnVoice": "jpi39icg",
+  "drillVoices": [
+   "33g9t0jl"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "af7e06d3-5905-474a-b982-1b82f15498fb",
+    "206c6f14-cb9d-4d0f-9a9b-3f7831a0bcdb",
+    "33b771f3-66d0-40d1-b9a2-0a0d9322749c",
+    "c1b18d28-5267-4bff-8163-649f8077cb53",
+    "1d5cbe0a-e4f7-4b0a-84a2-b9bb0c5d0197"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs zho_for_eng --orders=37"
+ },
+ {
+  "course": "zho_for_eng",
+  "rowId": "zho_for_eng:pod-1:SC07-S005",
+  "order": 42,
+  "turnClip": "ee3f1179-7c37-4e95-a2aa-338db462ca9d",
+  "turnVoice": "33g9t0jl",
+  "drillVoices": [
+   "jpi39icg"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "0e3a996c-c157-4ab3-9dc8-02910997b25f",
+    "2f004599-cf64-4b9e-a914-5498a6502eb0"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs zho_for_eng --orders=42"
+ },
+ {
+  "course": "zho_for_eng",
+  "rowId": "zho_for_eng:pod-1:SC07-S008",
+  "order": 45,
+  "turnClip": "c1e79463-3a8d-4c67-8fb9-d1e445952d42",
+  "turnVoice": "33g9t0jl",
+  "drillVoices": [
+   "jpi39icg"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "be0fcf09-923d-40da-8c02-6aafd8884eaf",
+    "5822dce6-8e31-46aa-9d3d-6ebd944f5584"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs zho_for_eng --orders=45"
+ },
+ {
+  "course": "zho_for_eng",
+  "rowId": "zho_for_eng:pod-1:SC07-S012",
+  "order": 49,
+  "turnClip": "23199ee1-3cf1-400a-acb1-49cfc4505a24",
+  "turnVoice": "33g9t0jl",
+  "drillVoices": [
+   "jpi39icg"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "3075194c-552d-4b33-a7f3-fa3ffc6623be",
+    "cc23f039-8dc7-41c0-b18a-862b8ac17d2a"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs zho_for_eng --orders=49"
+ },
+ {
+  "course": "zho_for_eng",
+  "rowId": "zho_for_eng:pod-1:SC08-S016",
+  "order": 68,
+  "turnClip": "69038f21-3c02-4d75-9693-6c23c8d56e77",
+  "turnVoice": "jpi39icg",
+  "drillVoices": [
+   "33g9t0jl"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "0b81d5ef-2b16-40e2-a04d-dc0ccc49b056",
+    "8327e68b-75ff-40ca-99b7-761b7e4763d1",
+    "c95a8c14-5f3a-4ef9-bd23-78103e29f3da",
+    "35fad851-3128-4886-b01c-e4f9a63290e3",
+    "3b72fcca-1170-43d2-a8fa-3b26ee12b8ee"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs zho_for_eng --orders=68"
+ },
+ {
+  "course": "zho_for_eng",
+  "rowId": "zho_for_eng:pod-1:SC09-S018",
+  "order": 86,
+  "turnClip": "3f83b8ce-bb35-49d2-89fc-d8ff7f841c58",
+  "turnVoice": "jpi39icg",
+  "drillVoices": [
+   "33g9t0jl"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "22259969-2f7e-436e-b69f-8d958e9133f7",
+    "3b7ccfd7-1096-4604-b3eb-f10156ed8cf0",
+    "97802403-1950-454a-95e1-39ff269b8b94",
+    "c0837bf8-ed6b-4181-b216-cbe4b2962833",
+    "f2fa76d8-521a-4ddc-b424-f3fb6036e901"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs zho_for_eng --orders=86"
+ },
+ {
+  "course": "zho_for_eng",
+  "rowId": "zho_for_eng:pod-1:SC13-S011",
+  "order": 130,
+  "turnClip": "a06865ca-b1da-47a9-b68d-fc3e00a4d781",
+  "turnVoice": "jpi39icg",
+  "drillVoices": [
+   "33g9t0jl"
+  ],
+  "offTurn": 5,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4f79e217-9717-441f-a93a-31973c2c5c2f",
+    "8daa1f0e-392b-4cc6-8476-63454be8c755",
+    "ee36483f-cd1b-438a-8835-57474f4d8ab0",
+    "e8b044b3-b4fa-41bf-93d0-2d8720d79925",
+    "1f373834-2466-4526-b52b-a0835d1f0d10"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs zho_for_eng --orders=130"
+ },
+ {
+  "course": "zho_for_eng",
+  "rowId": "zho_for_eng:pod-1:SC14-S009",
+  "order": 139,
+  "turnClip": "fceacdf5-1121-474c-a7d2-500b345b953c",
+  "turnVoice": "33g9t0jl",
+  "drillVoices": [
+   "jpi39icg"
+  ],
+  "offTurn": 2,
+  "rollback": {
+   "sentence_audio_ids": [
+    "4c63807d-f686-4e25-a5e7-3774b468b179",
+    "f1453189-3e99-4896-863c-6ae54a84770e"
+   ]
+  },
+  "command": "node tools/pods/splice-sentence-clips.cjs zho_for_eng --orders=139"
+ }
+]

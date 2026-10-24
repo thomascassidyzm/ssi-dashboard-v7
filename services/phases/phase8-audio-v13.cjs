@@ -37,6 +37,7 @@ const voicingPolicy = require('../shared/voicing-policy.cjs')
 const trialMode = require('../shared/audio-trial-mode.cjs')
 const introSplice = require('../shared/intro-splice.cjs')
 const { renderClip, rerecordPatch, roleNativeLanguage, RenderRequestError } = require('../shared/audio-render-entry.cjs')
+const drillCutGuard = require('../shared/drill-cut-guard.cjs')
 const { phraseRenderDoor, PHRASE_REUSE_LOOKUP } = require('../shared/phrase-render-door.cjs')
 const chainContext = require('../shared/chain-context.cjs')
 const courseVoiceConfig = require('../shared/course-voice-config.cjs')
@@ -2059,6 +2060,8 @@ app.get('/health', (req, res) => {
     // months ago with nothing to see. Non-zero here means renders were paid for
     // that the store might already have answered.
     reuse: { ...siblingLookupStats },
+    // Provider calls in flight against each provider's process-wide cap (job #394): peak must stay <= max, throttled = 429s seen.
+    providerConcurrency: ttsService.providerConcurrencyStats(),
     // Which commit is THIS PROCESS running? Frozen at require time — see
     // services/shared/build-identity.cjs. The staleness watchdog reads it.
     build: buildIdentity()
@@ -5445,10 +5448,44 @@ async function linkClipForRender({ courseCode, text, language, role, voiceId, le
 // Library first → spend guard → one render (no retries) → master → S3 →
 // course_audio row → clip_index. Orchestration and the rule live in
 // services/shared/audio-render-entry.cjs; this handler only wires its deps to
-// the pieces this file already owns. The text is rendered VERBATIM (no gender
+// the pieces this file already owns (buildRenderDeps, below).
+
+// DRILL IS CUT (job #338): the served pod turn holding a line's words as one of its sentences, for the render route's
+// duplicate-stop (services/shared/drill-cut-guard.cjs). Served = core pod on slug pod-1 (tools/pods/serving-slug.cjs).
+// Fails OPEN with a warning: a missed lookup costs one duplicate take; a thrown one would stop every render.
+let servedPodCache = { at: 0, pods: null }
+async function immersionTurnForRender({ language, text }) {
+  try {
+    const term = drillCutGuard.searchTerm(text)
+    if (!term) return null
+    if (!servedPodCache.pods || Date.now() - servedPodCache.at > 10 * 60 * 1000) {
+      const { data, error } = await supabase.from('listening_pods').select('id, course_code').eq('pod_type', 'core').eq('slug', 'pod-1')
+      if (error) throw new Error(`listening_pods unreadable: ${error.message}`)
+      servedPodCache = { at: Date.now(), pods: data || [] }
+    }
+    const courseOf = new Map(servedPodCache.pods.map((p) => [p.id, p.course_code]))
+    if (!courseOf.size) return null
+    const { data: rows, error } = await supabase.from('listening_pod_sentences')
+      .select('id, pod_id, global_order, target_text, target_audio_id')
+      .in('pod_id', [...courseOf.keys()]).is('variant_key', null).not('target_audio_id', 'is', null)
+      .ilike('target_text', `%${drillCutGuard.likeEscape(term)}%`).limit(200)
+    if (error) throw new Error(`listening_pod_sentences unreadable: ${error.message}`)
+    if (!rows || !rows.length) return null
+    const { data: clips, error: ce } = await supabase.from('course_audio').select('id, language, voice_id').in('id', [...new Set(rows.map((r) => r.target_audio_id))])
+    if (ce) throw new Error(`course_audio unreadable: ${ce.message}`)
+    const clipOf = new Map((clips || []).map((c) => [c.id, c]))
+    return drillCutGuard.findImmersionTurn(rows.map((r) => ({ ...r, course_code: courseOf.get(r.pod_id), clip: clipOf.get(r.target_audio_id) || null })), { language, text })
+  } catch (e) {
+    logger.warn(`[render] drill-cut lookup skipped (fails open): ${e.message}`)
+    return null
+  }
+}
+
+// The render route's deps. The text is rendered VERBATIM (no gender
 // expansion): the caller names the exact words to be spoken.
 function buildRenderDeps() {
   const deps = {
+      immersionTurn: immersionTurnForRender,
       resolve: async ({ courseCode, role, language, voiceId, trial }) => {
         if (isHumanVoiceCourse(courseCode)) throw new RenderRequestError(`${courseCode} is a human-voice-only course — no TTS (Tom's ruling 2026-07-25)`, 409, 'HUMAN_VOICE_COURSE')
         const { data: course } = await supabase.from('courses')

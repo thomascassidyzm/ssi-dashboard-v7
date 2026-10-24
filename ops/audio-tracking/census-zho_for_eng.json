@@ -1,0 +1,6334 @@
+{
+ "scope": "zho_for_eng",
+ "db": "ssi_copy_20261024t033000z",
+ "generatedAt": "2026-10-24T09:12:55.015Z",
+ "summary": {
+  "pods": {
+   "turns": 231,
+   "drillClips": 210,
+   "flags": {
+    "drill-unsplit": 20,
+    "drill-off-turn": 8,
+    "turn-off-speaker": 11
+   },
+   "drillOffTurnClips": 28
+  },
+  "drillTexts": {
+   "texts": 198,
+   "withExtraRecordings": 116,
+   "extraRecordings": 342,
+   "extraUnpointed": 16,
+   "extraChars": 1257
+  },
+  "pointerForks": {
+   "texts": 100,
+   "byCourse": {
+    "zho_for_eng": 100
+   }
+  },
+  "recordingDuplicates": null,
+  "byCourse": {
+   "zho_for_eng": {
+    "turns": 231,
+    "multi": 93,
+    "split": 74,
+    "drillOffTurn": 8,
+    "turnOffSpeaker": 11,
+    "unsplit": 20
+   }
+  }
+ },
+ "turns": [
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC02-S002",
+   "order": 6,
+   "speaker": "Passenger",
+   "sentences": 2,
+   "turnClip": "3176e0ba-1b75-4b51-b0a9-e56587fa4031",
+   "turnVoice": "jpi39icg",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC05-S002",
+   "order": 24,
+   "speaker": "Sarah",
+   "sentences": 3,
+   "turnClip": "cf47e8a3-65ee-48d0-b7f0-555a003287db",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC06-S002",
+   "order": 26,
+   "speaker": "Anna",
+   "sentences": 2,
+   "turnClip": "7fe2f80e-99f2-46ea-900b-be985dda6cda",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC06-S008",
+   "order": 32,
+   "speaker": "Anna",
+   "sentences": 2,
+   "turnClip": "9c0010b0-543a-41c4-b804-b7536991537d",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC06-S012",
+   "order": 36,
+   "speaker": "Anna",
+   "sentences": 2,
+   "turnClip": "8708e97b-0fea-4358-9573-34db5f79bef3",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC06-S013",
+   "order": 37,
+   "speaker": "Narrator",
+   "sentences": 5,
+   "turnClip": "ca3dee71-3369-419c-88a0-c7afcbc52d68",
+   "turnVoice": "jpi39icg",
+   "castVoice": "jpi39icg",
+   "drillCount": 5,
+   "drillVoices": [
+    "33g9t0jl"
+   ],
+   "offTurn": [
+    "af7e06d3-5905-474a-b982-1b82f15498fb",
+    "206c6f14-cb9d-4d0f-9a9b-3f7831a0bcdb",
+    "33b771f3-66d0-40d1-b9a2-0a0d9322749c",
+    "c1b18d28-5267-4bff-8163-649f8077cb53",
+    "1d5cbe0a-e4f7-4b0a-84a2-b9bb0c5d0197"
+   ],
+   "flags": [
+    "drill-off-turn"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC07-S005",
+   "order": 42,
+   "speaker": "Cafe Barista",
+   "sentences": 2,
+   "turnClip": "ee3f1179-7c37-4e95-a2aa-338db462ca9d",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 2,
+   "drillVoices": [
+    "jpi39icg"
+   ],
+   "offTurn": [
+    "0e3a996c-c157-4ab3-9dc8-02910997b25f",
+    "2f004599-cf64-4b9e-a914-5498a6502eb0"
+   ],
+   "flags": [
+    "drill-off-turn"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC07-S008",
+   "order": 45,
+   "speaker": "Cafe Barista",
+   "sentences": 2,
+   "turnClip": "c1e79463-3a8d-4c67-8fb9-d1e445952d42",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 2,
+   "drillVoices": [
+    "jpi39icg"
+   ],
+   "offTurn": [
+    "be0fcf09-923d-40da-8c02-6aafd8884eaf",
+    "5822dce6-8e31-46aa-9d3d-6ebd944f5584"
+   ],
+   "flags": [
+    "drill-off-turn"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC07-S012",
+   "order": 49,
+   "speaker": "Cafe Barista",
+   "sentences": 1,
+   "turnClip": "23199ee1-3cf1-400a-acb1-49cfc4505a24",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 2,
+   "drillVoices": [
+    "jpi39icg"
+   ],
+   "offTurn": [
+    "3075194c-552d-4b33-a7f3-fa3ffc6623be",
+    "cc23f039-8dc7-41c0-b18a-862b8ac17d2a"
+   ],
+   "flags": [
+    "drill-off-turn"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC08-S014",
+   "order": 66,
+   "speaker": "Bar Customer 1",
+   "sentences": 2,
+   "turnClip": "44b37c64-9d53-4357-a1dc-c2cbd9103823",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC08-S016",
+   "order": 68,
+   "speaker": "Narrator",
+   "sentences": 5,
+   "turnClip": "69038f21-3c02-4d75-9693-6c23c8d56e77",
+   "turnVoice": "jpi39icg",
+   "castVoice": "jpi39icg",
+   "drillCount": 5,
+   "drillVoices": [
+    "33g9t0jl"
+   ],
+   "offTurn": [
+    "0b81d5ef-2b16-40e2-a04d-dc0ccc49b056",
+    "8327e68b-75ff-40ca-99b7-761b7e4763d1",
+    "c95a8c14-5f3a-4ef9-bd23-78103e29f3da",
+    "35fad851-3128-4886-b01c-e4f9a63290e3",
+    "3b72fcca-1170-43d2-a8fa-3b26ee12b8ee"
+   ],
+   "flags": [
+    "drill-off-turn"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC09-S001",
+   "order": 69,
+   "speaker": "Diner 1",
+   "sentences": 2,
+   "turnClip": "91a4f42f-72d2-48c1-a178-9ff4e3efb892",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC09-S005",
+   "order": 73,
+   "speaker": "Diner 1",
+   "sentences": 2,
+   "turnClip": "ecf659c8-537c-4f24-9ad7-053cca7e07c1",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC09-S017",
+   "order": 85,
+   "speaker": "Diner 2",
+   "sentences": 2,
+   "turnClip": "29dea8d0-3e74-4d26-9c9d-ce1cce8ce7c8",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC09-S018",
+   "order": 86,
+   "speaker": "Narrator",
+   "sentences": 5,
+   "turnClip": "3f83b8ce-bb35-49d2-89fc-d8ff7f841c58",
+   "turnVoice": "jpi39icg",
+   "castVoice": "jpi39icg",
+   "drillCount": 5,
+   "drillVoices": [
+    "33g9t0jl"
+   ],
+   "offTurn": [
+    "22259969-2f7e-436e-b69f-8d958e9133f7",
+    "3b7ccfd7-1096-4604-b3eb-f10156ed8cf0",
+    "97802403-1950-454a-95e1-39ff269b8b94",
+    "c0837bf8-ed6b-4181-b216-cbe4b2962833",
+    "f2fa76d8-521a-4ddc-b424-f3fb6036e901"
+   ],
+   "flags": [
+    "drill-off-turn"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC10-S009",
+   "order": 95,
+   "speaker": "Customer",
+   "sentences": 3,
+   "turnClip": "7d7a2d87-d3c2-49e3-bbaf-a05eefb68d94",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC11-S002",
+   "order": 98,
+   "speaker": "Receptionist",
+   "sentences": 3,
+   "turnClip": "cdf0eff5-451b-4899-a0b9-e127f8275b97",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC11-S008",
+   "order": 104,
+   "speaker": "Receptionist",
+   "sentences": 2,
+   "turnClip": "361cac7f-15d0-45e9-8425-19fd9bff381f",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC12-S001",
+   "order": 110,
+   "speaker": "Customer",
+   "sentences": 2,
+   "turnClip": "da12e3b9-1322-451d-ae6d-072857b8d956",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC13-S011",
+   "order": 130,
+   "speaker": "Narrator",
+   "sentences": 5,
+   "turnClip": "a06865ca-b1da-47a9-b68d-fc3e00a4d781",
+   "turnVoice": "jpi39icg",
+   "castVoice": "jpi39icg",
+   "drillCount": 5,
+   "drillVoices": [
+    "33g9t0jl"
+   ],
+   "offTurn": [
+    "4f79e217-9717-441f-a93a-31973c2c5c2f",
+    "8daa1f0e-392b-4cc6-8476-63454be8c755",
+    "ee36483f-cd1b-438a-8835-57474f4d8ab0",
+    "e8b044b3-b4fa-41bf-93d0-2d8720d79925",
+    "1f373834-2466-4526-b52b-a0835d1f0d10"
+   ],
+   "flags": [
+    "drill-off-turn"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC14-S002",
+   "order": 132,
+   "speaker": "Driver",
+   "sentences": 2,
+   "turnClip": "9cbf2d14-ee84-49be-9821-218e29539c34",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC14-S009",
+   "order": 139,
+   "speaker": "Driver",
+   "sentences": 2,
+   "turnClip": "fceacdf5-1121-474c-a7d2-500b345b953c",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 2,
+   "drillVoices": [
+    "jpi39icg"
+   ],
+   "offTurn": [
+    "4c63807d-f686-4e25-a5e7-3774b468b179",
+    "f1453189-3e99-4896-863c-6ae54a84770e"
+   ],
+   "flags": [
+    "drill-off-turn"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC16-S009",
+   "order": 160,
+   "speaker": "Staff",
+   "sentences": 1,
+   "turnClip": "549bffad-da5c-4dc9-8f45-58e8ba35d2f2",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "turn-off-speaker"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC17-S002",
+   "order": 164,
+   "speaker": "Staff",
+   "sentences": 1,
+   "turnClip": "18ae54c6-55cd-4a3e-b68d-a5f5f2a05c0a",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "turn-off-speaker"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC17-S004",
+   "order": 166,
+   "speaker": "Staff",
+   "sentences": 1,
+   "turnClip": "18ae54c6-55cd-4a3e-b68d-a5f5f2a05c0a",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "turn-off-speaker"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC17-S005",
+   "order": 167,
+   "speaker": "Staff",
+   "sentences": 1,
+   "turnClip": "ca4bf2d4-35f6-4ecc-9e4f-7f40cde5a504",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "turn-off-speaker"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC17-S009",
+   "order": 171,
+   "speaker": "Interlocutor",
+   "sentences": 1,
+   "turnClip": "6d459863-4746-4107-a28d-84b74a983f50",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "turn-off-speaker"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC21-S005",
+   "order": 211,
+   "speaker": "Interlocutor",
+   "sentences": 1,
+   "turnClip": "8f151928-ee3e-41d1-9ece-3e7a42d8f0cc",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "turn-off-speaker"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC21-S006",
+   "order": 212,
+   "speaker": "Interlocutor",
+   "sentences": 1,
+   "turnClip": "a8be0c06-999e-4710-bc0e-3d9a2bff5cc7",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "turn-off-speaker"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC21-S008",
+   "order": 214,
+   "speaker": "Interlocutor",
+   "sentences": 1,
+   "turnClip": "de3e9d41-e006-4bc8-87b9-9923c8cdec20",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "turn-off-speaker"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC21-S011",
+   "order": 217,
+   "speaker": "Interlocutor",
+   "sentences": 1,
+   "turnClip": "22191f6d-2aa3-41f1-ab7a-79c534303993",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "turn-off-speaker"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC21-S012",
+   "order": 218,
+   "speaker": "Interlocutor",
+   "sentences": 1,
+   "turnClip": "581df6b5-000c-4363-8673-c0ae0dbbf984",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "turn-off-speaker"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC21-S013",
+   "order": 219,
+   "speaker": "Interlocutor",
+   "sentences": 1,
+   "turnClip": "3fe65f97-5ca0-423f-852a-6d604c2b4821",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "jpi39icg",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "turn-off-speaker"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC22-S001",
+   "order": 221,
+   "speaker": "Learner",
+   "sentences": 2,
+   "turnClip": "8765680a-0716-4bae-b168-96cd752d464a",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC22-S003",
+   "order": 223,
+   "speaker": "Learner",
+   "sentences": 3,
+   "turnClip": "f41e2c25-2b1a-47f5-a15f-60291942df1d",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC22-S005",
+   "order": 225,
+   "speaker": "Learner",
+   "sentences": 4,
+   "turnClip": "8d800330-8ba0-406b-af4e-edeb6010c852",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC22-S007",
+   "order": 227,
+   "speaker": "Learner",
+   "sentences": 2,
+   "turnClip": "d038229c-0d76-4600-a8e3-63158f7a6a1f",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC22-S009",
+   "order": 229,
+   "speaker": "Learner",
+   "sentences": 4,
+   "turnClip": "90a2e0ca-22c3-45e0-b74f-5e287bc23244",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  },
+  {
+   "course": "zho_for_eng",
+   "rowId": "zho_for_eng:pod-1:SC22-S011",
+   "order": 231,
+   "speaker": "Learner",
+   "sentences": 3,
+   "turnClip": "3baf1722-2c5b-4532-bc70-2d7dd6ed9a4e",
+   "turnVoice": "33g9t0jl",
+   "castVoice": "33g9t0jl",
+   "drillCount": 0,
+   "drillVoices": [],
+   "offTurn": [],
+   "flags": [
+    "drill-unsplit"
+   ]
+  }
+ ],
+ "drillRecordings": [
+  {
+   "language": "zho",
+   "text": "早上好。",
+   "drillClip": "08f3cb78-f7c2-47a4-813a-137bc9195f4b",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 4,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "923e4ef6-6d69-4405-b5b2-08f29b5f1706",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "3bce2869-ffe3-496d-9bb5-fa6c61b58196",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "fb8a163e-f3cf-4237-9e2d-badc9df455a0",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你怎么样？",
+   "drillClip": "a53a68f2-54c2-496b-b56d-3487094f49ea",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "zh-CN-YunyiMultilingualNeural"
+   ],
+   "extra": [
+    {
+     "id": "c7aaaabf-6592-4067-98d8-d35aaf92fd44",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 5
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你要去上班吗？",
+   "drillClip": "f50f51f8-1fad-4f18-a5ab-3540c2c40566",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "f0de268c-e1b0-4146-80f2-359f9d65f8c0",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "是的，我今天很忙。",
+   "drillClip": "2b5aa7e3-11c6-47a0-b68c-1471f30fa810",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "29d5e287-1cc1-4735-b981-11d67c5f4dbf",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "回见。",
+   "drillClip": "7755b8dc-47da-4d27-9946-a56b05760bb6",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "6da4ebe2-bd01-4d1c-8c99-af6c4ada8d33",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "1ebd0398-956c-49a4-9287-c5b0444d8bc3",
+     "voice": "jpi39icg",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "下午好。",
+   "drillClip": "33e38312-da96-4ea7-8372-ab58b56ae563",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 4,
+   "voices": [
+    "33g9t0jl",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "213e3cc5-9248-41f4-a264-e621053a1706",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "28531b2f-c54a-4582-b482-f80174831617",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "e09fce6c-1551-4b50-b68e-cd3b4f0abd5c",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "外带。",
+   "drillClip": "e1c7717c-e854-45d3-8f03-3b5660365f09",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "ara",
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "9f6311fb-9d20-44a0-84ad-bfe7ab02ea3c",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "b2f690fd-8cee-4db7-a581-23cf46db4b0b",
+     "voice": "jpi39icg",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "谢谢你。",
+   "drillClip": "071f91a2-d120-4fd7-bc51-343323a5441d",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 5,
+   "voices": [
+    "leo",
+    "zh-CN-XiaochenNeural",
+    "ara",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "44883e89-e4be-48de-bc6f-ac3baf9909fb",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "18c13a72-b857-4271-aa08-91f0670f788f",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "06defa2d-c086-4fbf-8609-9177942e48cb",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "749b988d-d75e-4e12-847d-52febf9e7a5f",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "再见。",
+   "drillClip": "40793d1f-6c4b-448a-9198-7226375dfb53",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "ea882d6a-ff49-45e1-a659-0b4af6a2ecda",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你好！",
+   "drillClip": "71026bab-fa4a-4d60-8318-5f735ed0a6f6",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "7d390882-df71-4c54-a541-89164d6d4b85",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "426d91ed-2d4a-4e58-ae53-fff17cb660b2",
+     "voice": "jpi39icg",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我们明天可以聊吗？",
+   "drillClip": "ad1b8e48-96ff-46fd-a5c9-1ba82824e254",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "0ca6524a-b433-486a-af19-1b73993a9a2f",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 9
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "晚上好，莎拉。",
+   "drillClip": "1143a27a-a2ec-4da7-badb-e219b007df03",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "0e2bebe4-3786-4ae7-827c-208c7536ac2f",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你叫什么名字？",
+   "drillClip": "3dd70af7-f47c-4df5-8bf5-13d20af02a73",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 9,
+   "voices": [
+    "jpi39icg",
+    "ara",
+    "leo",
+    "zh-CN-YunyiMultilingualNeural",
+    "zh-CN-XiaoxiaoMultilingualNeural",
+    "zh-CN-XiaochenNeural"
+   ],
+   "extra": [
+    {
+     "id": "187579fb-d752-4f2a-8edb-9d2428352276",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "a793e499-40e2-4ac1-95be-8840959e1866",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "7a0b486d-a734-443e-9d78-51b3e46b6fba",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "5ca4fc23-cf9e-4ab0-91f3-9a781bb9ec34",
+     "voice": "zh-CN-XiaoxiaoMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "9e21ec9b-043d-495f-b6f7-f8e70ec21dc6",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "a4ebce06-659a-4ea7-8f95-e0df711d2404",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "spa_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "020952be-765b-445c-89fd-9ce26ee304a4",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "605bcbdf-1807-4940-be2f-fa0534819143",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "fra_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "很高兴认识你。",
+   "drillClip": "9ece7cab-5761-4965-94a3-8855b69166f8",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "ara",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "0183314d-7ac0-41c2-993b-7ce706ceb638",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    },
+    {
+     "id": "ae3c3e19-29ce-4026-b4a1-123f30d9569f",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我也很高兴认识你。",
+   "drillClip": "024cb44e-21db-4c73-9cf7-780889578750",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "1b42afc1-c7c3-448e-b571-3fd568acb9ab",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "194ea951-ca46-4691-b095-80acd89ece24",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你是哪里人？",
+   "drillClip": "918721b5-dd14-42c9-ad5a-a5d96e902225",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "ara",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "ae6e1037-62e6-4491-b4ef-e9aacc6da411",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    },
+    {
+     "id": "d4c9df40-4c35-4475-8a9a-da7b4100ecca",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你呢？",
+   "drillClip": "56556b68-14ec-4694-bc4c-4675f6a5d712",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 5,
+   "voices": [
+    "ara",
+    "33g9t0jl",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "9ab4a39c-b37f-4778-b99b-a84553a305c8",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "eb87c978-889f-4ffc-8c47-db4c04161b74",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 3
+    },
+    {
+     "id": "895c756c-3092-49c1-aef6-542b5bb6a626",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "b191747a-2fc8-4568-b3e2-0b73a8f6cf1d",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我是法国人。",
+   "drillClip": "b50e6b27-4084-4011-bfc6-e94e60e0d7ad",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "4255c91a-2d48-4166-b071-76b087ac43a5",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 5
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我来这里两年了。",
+   "drillClip": "a69021ab-4ded-4efa-b06d-dea04babfd0e",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "ara",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "b663f943-5a9b-4011-8c35-afb2582007ce",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你是做什么工作的？",
+   "drillClip": "7cf07ce0-68a9-47a3-9cb4-b1a210d3f385",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "94c26c5d-53a8-4ee0-bc38-7cb17bd8503e",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 9
+    },
+    {
+     "id": "32e0f99a-17b3-4926-8883-44010af278f0",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 9
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我在学中文。",
+   "drillClip": "3e19e7e1-bf7f-4a69-b9bb-965b10e10260",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 5,
+   "voices": [
+    "zh-CN-XiaochenNeural",
+    "jpi39icg",
+    "zh-CN-YunfengNeural"
+   ],
+   "extra": [
+    {
+     "id": "85a77692-5e69-4228-849b-516431d530e7",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 5
+    },
+    {
+     "id": "1d934465-65b9-4bce-b9ab-be3dcf01a916",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 5
+    },
+    {
+     "id": "f383e98a-a595-402a-b4ba-1b9acb4d5538",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 5
+    },
+    {
+     "id": "a46ff6a6-0c28-465b-80c0-7999962dc13a",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 5
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "当然可以。",
+   "drillClip": "deed6650-3e3d-435b-975e-6a6cb2d5cfd6",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 4,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "68bd85fb-18d4-43e1-b398-0fb52ed1edd5",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "244ef0e9-33b3-4cca-88ee-7ea60ad22b8f",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "bc22ea0c-4349-4fbc-b1cf-4c9139e47e0d",
+     "voice": "jpi39icg",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我是护士。",
+   "drillClip": "dfd575dc-3b67-4638-8e4c-966fde74a0ef",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "133260a6-af94-450f-b8c2-7ddecd19cbc9",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "b40dce25-ea54-48e1-8d33-55d2217fa76a",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我在医院工作。",
+   "drillClip": "c9e044c8-fcf4-4d24-add5-caabf391cf2e",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "b685e831-74d7-4ace-8ba2-5ea2df041581",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    },
+    {
+     "id": "1d8e4ae4-4aa1-4745-ab26-2d4056a50700",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "医院就在附近。",
+   "drillClip": "48980a81-fa7e-4f77-9a2e-71cf7bd5b708",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "ara",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "659985ad-8985-41ab-b930-3d00a1abca69",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "那你是做什么工作的？",
+   "drillClip": "a28632ed-6904-42e9-b8af-e10634a89609",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "1fae6666-6998-4128-9589-f4a55e1b19da",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 10
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "一。",
+   "drillClip": "af7e06d3-5905-474a-b982-1b82f15498fb",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 9,
+   "voices": [
+    "zh-CN-YunyiMultilingualNeural",
+    "zh-CN-XiaoxiaoMultilingualNeural",
+    "zh-CN-XiaochenNeural",
+    "zh-CN-YunfengNeural",
+    "33g9t0jl",
+    "ara",
+    "leo"
+   ],
+   "extra": [
+    {
+     "id": "2864fa06-86c3-4683-adbc-a9c0639bcadf",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "aa5f9f16-3506-469a-b97a-93d397cb45ab",
+     "voice": "zh-CN-XiaoxiaoMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "acd974e9-0c04-4a62-9c4c-c581826c0593",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "9563775d-ffee-48ba-bb8d-407fd1a413d1",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "3f34dfb8-eb0d-45d1-b36a-a4fa1c84add9",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "d9734d72-262c-45ad-9267-5881024788c0",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "e98d2e41-65ba-4a1a-a891-bf85188fe4f3",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "22432215-eb68-4764-86d5-2fe12b25c129",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "二。",
+   "drillClip": "206c6f14-cb9d-4d0f-9a9b-3f7831a0bcdb",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "zh-CN-YunyiMultilingualNeural"
+   ],
+   "extra": [
+    {
+     "id": "e681de6d-6225-4d33-a08d-e678f260a31b",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "93887ec7-02e0-4e35-b530-9f837ba1599b",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "三。",
+   "drillClip": "33b771f3-66d0-40d1-b9a2-0a0d9322749c",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 6,
+   "voices": [
+    "zh-CN-XiaoxiaoMultilingualNeural",
+    "zh-CN-YunyiMultilingualNeural",
+    "33g9t0jl",
+    "ara",
+    "leo"
+   ],
+   "extra": [
+    {
+     "id": "1b282742-42db-4efd-b268-8165f3c42daa",
+     "voice": "zh-CN-XiaoxiaoMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "5abc49ee-5d98-42fe-9da2-662e64a18739",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "2ec2ea53-f00e-476d-8e4c-7929684eb156",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "e73e310a-45aa-4331-82fd-6c0a1fcc7f78",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "eab5b4c2-b99c-45d1-900e-6882d59c8e25",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "白。",
+   "drillClip": "c1b18d28-5267-4bff-8163-649f8077cb53",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "zh-CN-YunyiMultilingualNeural",
+    "zh-CN-XiaoxiaoMultilingualNeural",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "3869573b-0d0f-44f8-a0f0-c4f27701945e",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "3fbd9851-1d5a-40b8-9e7e-e40e950a93ae",
+     "voice": "zh-CN-XiaoxiaoMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "黑。",
+   "drillClip": "1d5cbe0a-e4f7-4b0a-84a2-b9bb0c5d0197",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 4,
+   "voices": [
+    "leo",
+    "zh-CN-YunyiMultilingualNeural",
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "81dcd17f-405a-4512-8101-cc175889142e",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "90612336-98e8-433e-9cb5-747ffe7ec4ef",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "b36b0145-9da6-44d8-9a4b-7e03302f8709",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "没问题。",
+   "drillClip": "0e3a996c-c157-4ab3-9dc8-02910997b25f",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "33g9t0jl",
+   "recordings": 11,
+   "voices": [
+    "zh-CN-YunyiMultilingualNeural",
+    "leo",
+    "zh-CN-XiaochenNeural",
+    "jpi39icg",
+    "9ab26871",
+    "zh-CN-YunfengNeural",
+    "sal",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "10499a59-eb44-4e20-b0e4-8ad2ed4dbdb7",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "2b53d3fe-1ecd-4e97-846b-18720ba1ef04",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "6fa56c4b-6bdd-47e7-9fdd-6def75018e23",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 3
+    },
+    {
+     "id": "f30e67b2-16a4-49f1-a06d-a3f996e80c7a",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "eng_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "831c2570-44d7-4e68-9c92-3708bb792812",
+     "voice": "9ab26871",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 3
+    },
+    {
+     "id": "d220f276-1f13-4e93-a9b8-557210d79851",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "16478485-a9c0-4bc8-9c80-466161f1046a",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "3b77c10a-60b5-4853-b932-e7bf4b133271",
+     "voice": "sal",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "af471afc-9ebd-48d3-895e-c23185cbad24",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 3
+    },
+    {
+     "id": "79fdd1af-778d-4527-abad-b7bfa5265f26",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "在这儿喝还是外带？",
+   "drillClip": "2f004599-cf64-4b9e-a914-5498a6502eb0",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "33g9t0jl",
+   "recordings": 1,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": []
+  },
+  {
+   "language": "zho",
+   "text": "好的，马上来。",
+   "drillClip": "be0fcf09-923d-40da-8c02-6aafd8884eaf",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "47e312c5-d673-4709-868b-19bcd57010d0",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "还需要别的吗？",
+   "drillClip": "5822dce6-8e31-46aa-9d3d-6ebd944f5584",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "f3e46272-27d2-4b81-9fa3-6cd00d398675",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "可以刷卡吗？",
+   "drillClip": "9e270de1-1038-46cb-8315-3ad818be426b",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 4,
+   "voices": [
+    "jpi39icg",
+    "eve",
+    "ara",
+    "zh-CN-XiaochenNeural"
+   ],
+   "extra": [
+    {
+     "id": "cf781d33-e70a-4630-a8eb-e386a3f03b7c",
+     "voice": "eve",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    },
+    {
+     "id": "37e8d02a-259b-43d9-9a73-68f428caafab",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    },
+    {
+     "id": "cb698d90-b756-47c7-ab1b-b96f7ec53533",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "eng_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你们有扫码付款吗？",
+   "drillClip": "78a10951-e9ae-4b0d-920d-6213f51cf805",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg",
+    "eve"
+   ],
+   "extra": [
+    {
+     "id": "00156a47-4f2f-4669-9001-a6a121251a32",
+     "voice": "eve",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 9
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "当然可以，",
+   "drillClip": "3075194c-552d-4b33-a7f3-fa3ffc6623be",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "33g9t0jl",
+   "recordings": 1,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": []
+  },
+  {
+   "language": "zho",
+   "text": "机器在这里。",
+   "drillClip": "cc23f039-8dc7-41c0-b18a-862b8ac17d2a",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "33g9t0jl",
+   "recordings": 1,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": []
+  },
+  {
+   "language": "zho",
+   "text": "你们要坐下来喝吗？",
+   "drillClip": "638bf1ce-e314-4077-8945-35b2ddaf9903",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "af0a9f07-718c-4f9b-8d4a-47308ec92312",
+     "voice": "jpi39icg",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 9
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "窗边那张桌子空着。",
+   "drillClip": "4c2d1e60-bd29-42da-a131-861c3a738776",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "e96f4f52-df6f-4ce9-9c4e-75b431ec160a",
+     "voice": "jpi39icg",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 8
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "五。",
+   "drillClip": "bc3e39ae-96c7-47ac-8e5f-821bc0b9da13",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 5,
+   "voices": [
+    "33g9t0jl",
+    "zh-CN-YunyiMultilingualNeural",
+    "zh-CN-XiaoxiaoMultilingualNeural",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "47723808-7d65-486a-a3a9-33e79a46a8e8",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 1
+    },
+    {
+     "id": "270be7f6-26cf-4f36-b534-84015252782f",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "296c04dd-dca6-4460-8cea-bf642c45765e",
+     "voice": "zh-CN-XiaoxiaoMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "7d4f938f-f3b7-4418-beb8-664ec5e883f9",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "十。",
+   "drillClip": "e75aebab-cc26-4ff8-8d8c-0857b0eae99d",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 5,
+   "voices": [
+    "zh-CN-YunyiMultilingualNeural",
+    "zh-CN-XiaoxiaoMultilingualNeural",
+    "33g9t0jl",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "8b6a3100-8824-4a0f-b90d-dd085035de8b",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "525b15d1-153f-4b2a-8bc6-13d8532a5312",
+     "voice": "zh-CN-XiaoxiaoMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "f93a57cb-cdf0-4707-9616-cbf75dfe165c",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "70a42de2-240c-401b-9458-018ec7b5815a",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "十五。",
+   "drillClip": "3590b652-4b05-49f1-bf75-105adb859152",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "26727da3-01fc-4228-b0c9-e0a456442369",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "3e4d5c8b-978b-4d47-a4ab-2656bd442fb3",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "红色。",
+   "drillClip": "17d152d7-1da6-48e7-ad62-024c85e56e5b",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 8,
+   "voices": [
+    "ara",
+    "leo",
+    "33g9t0jl",
+    "jpi39icg",
+    "zh-CN-YunyiMultilingualNeural"
+   ],
+   "extra": [
+    {
+     "id": "7f891205-7fb5-46f9-86bd-9e2de8fea6d0",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "d6eda533-9c07-40c6-94e8-f6ece4b3d6fb",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "4a0be538-2b98-487d-ad10-66004edf01a1",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "d2937946-3645-45f8-9765-0b3d2b57396d",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "254959a2-2e81-4cdc-8eb0-b7dddd455bae",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "0941611e-d56a-41c9-9f63-d3dc4713c272",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "b20efb18-ff61-4825-a0b9-236ce4a93c41",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "绿色。",
+   "drillClip": "a469d5a0-3f92-4c73-be87-bb70ecf9aae5",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 8,
+   "voices": [
+    "leo",
+    "zh-CN-YunyiMultilingualNeural",
+    "jpi39icg",
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "30737ab7-eca5-4290-a646-934686eabe41",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "a47e31f8-95a5-4faf-9b87-84ff23811f92",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "1edf0bdf-9e2d-4457-8c8f-ab995155321f",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "1d90f5bd-05d0-4bed-92e6-5330b7311b91",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "3fe2b12e-5103-4ac3-a1a3-3dd3b1f1f841",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "28f09560-6135-43d3-b0bf-91f681fd8e18",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "1e962503-a371-4963-aaaa-4fd65eb352aa",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "晚上好。",
+   "drillClip": "2546b81e-1e99-48b9-9ab2-a2a86ee71346",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 4,
+   "voices": [
+    "jpi39icg",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "e7465802-2553-4577-9a2c-0ee0f28bf353",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 3
+    },
+    {
+     "id": "51968a66-2d3c-45ee-aaed-8cbe9972ee1d",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "2562104e-aea6-41ad-8e2a-713044e32a16",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我能看一下酒水单吗？",
+   "drillClip": "ccf7cdee-7548-489b-9793-d0cdaf77e6f4",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "d18jlf6v"
+   ],
+   "extra": [
+    {
+     "id": "d63019ec-8d24-44fe-bf5f-177552dd87ee",
+     "voice": "d18jlf6v",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 10
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我想要一杯葡萄酒。",
+   "drillClip": "d722485b-e7d6-42b3-b3e4-f3e9b61d484e",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "d18jlf6v"
+   ],
+   "extra": [
+    {
+     "id": "bb52a19a-05cf-4491-b6b6-b674ed2abb8e",
+     "voice": "d18jlf6v",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "9f629b84-a741-4cf1-86d6-dfa4a88b85bb",
+     "voice": "d18jlf6v",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我不确定我饿不饿。",
+   "drillClip": "05bf8a16-64a1-43a2-96a0-62353f77fc02",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "60b9678d-56c9-48f7-830a-4e7959fcfba1",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "37ac2d42-3100-496c-92ea-f4112735a714",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你们有菜单吗？",
+   "drillClip": "6d78f64b-df63-4533-80ff-1fc8c654be59",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "5c0639e6-36df-4ab3-81cd-a14faad93af7",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "a9fe04f1-c55e-4fb1-a83d-3095146dfe03",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "有，当然可以。",
+   "drillClip": "57865ea1-e926-4acc-9b7d-ca723ce49c1d",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "023b9e9a-259e-401a-8df2-38440a3991cf",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "给你。",
+   "drillClip": "bf7e6b9c-ce93-4122-9b0b-11b5c73a2938",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 11,
+   "voices": [
+    "zh-CN-YunyiMultilingualNeural",
+    "zh-CN-XiaochenNeural",
+    "jpi39icg",
+    "zh-CN-YunfengNeural",
+    "zh-CN-XiaoxiaoMultilingualNeural",
+    "ara",
+    "leo"
+   ],
+   "extra": [
+    {
+     "id": "af843dfe-607e-4524-8ff4-8400555812bb",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "89ebe025-e56e-4570-811b-63808f0e957e",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "spa_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "60649442-0fea-4130-99f5-3851c2053a42",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "eng_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "041adb68-2b5d-4d4e-a16d-69abdf5d1ef6",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "e097bec7-bde5-47ff-b8cd-78a2b19b331f",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "b463bd32-617a-4803-9fc3-e00116885c1e",
+     "voice": "zh-CN-XiaoxiaoMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "ae7a3b61-b87d-489b-bf22-3f8ccd9af734",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "0eaf36a5-d82d-47fd-bfe2-304e94740a7c",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "d9042e04-59b6-4af3-8951-961519faf0fe",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "03daff55-90e4-47c4-ad3c-5d5cd6d428fd",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你们有三明治吗？",
+   "drillClip": "e3768877-872e-4eff-94c0-b3eed46b81d0",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "eve",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "c6771817-2993-41f0-87d0-732a9892044f",
+     "voice": "eve",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "2d9813a8-89b6-41b4-9863-7728277e04ff",
+     "voice": "eve",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我想要一个奶酪三明治，麻烦了。",
+   "drillClip": "d0dcf352-5d20-4445-a0d4-a1f7f2af544c",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "eve",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "6d5d6521-e2ae-4998-96ee-cf1b3d8f8a32",
+     "voice": "eve",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 14
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "四。",
+   "drillClip": "0b81d5ef-2b16-40e2-a04d-dc0ccc49b056",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 5,
+   "voices": [
+    "33g9t0jl",
+    "zh-CN-YunyiMultilingualNeural",
+    "ara",
+    "leo"
+   ],
+   "extra": [
+    {
+     "id": "ea88a3ac-6e2a-4387-9d25-41cd29589618",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "ea7a84dd-dec5-49c3-833a-4a450b9e25ef",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "a999ab55-1161-4a73-951c-8589d5a53078",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "b48ba1ce-f440-4bc6-b78a-9903f410b62f",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "六。",
+   "drillClip": "8327e68b-75ff-40ca-99b7-761b7e4763d1",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 7,
+   "voices": [
+    "zh-CN-XiaochenNeural",
+    "leo",
+    "33g9t0jl",
+    "zh-CN-YunfengNeural",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "b8814dd9-4c2f-4916-9b0b-110a25a94f32",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "c3e54631-cdee-4421-9b4f-89f43ecc314a",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "f0202c5f-3da6-4565-9b39-e155f533bfe4",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "cc83120f-708c-4c6b-b463-c9175bed52bb",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "a361186c-93f1-4794-a0bd-a0d59eacc44b",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    },
+    {
+     "id": "a38aecea-f9ff-4db4-9201-14bbd3436b68",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "八。",
+   "drillClip": "c95a8c14-5f3a-4ef9-bd23-78103e29f3da",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "be7f3521-885d-4b26-99b8-64f93d3065ab",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 1
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "蓝色。",
+   "drillClip": "35fad851-3128-4886-b01c-e4f9a63290e3",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 12,
+   "voices": [
+    "leo",
+    "zh-CN-XiaochenNeural",
+    "zh-CN-XiaoxiaoMultilingualNeural",
+    "zh-CN-YunyiMultilingualNeural",
+    "33g9t0jl",
+    "zh-CN-YunfengNeural",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "ddc4bd51-ac9c-405f-9e56-43f2895bea5d",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "3678e00c-08f8-496b-9ad8-b77b0efcc535",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "spa_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "3b722652-264c-4b60-966c-e1055a8858e4",
+     "voice": "zh-CN-XiaoxiaoMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "c59839b3-11c4-4963-8eca-4d01ec4da09e",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "9b4a40ff-7b12-44d5-9b72-b1266819b3de",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "eng_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "784291dc-9ba9-4757-9752-d087813b2e38",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "7fc549c6-2aae-4f99-8ace-e4ee90366138",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "488c39b4-6463-4763-8b92-e916c1e020c1",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "01b3f781-fc81-4155-99c6-6d5de8825966",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "8b5471dd-a3eb-4975-adb4-71758e549f69",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "741838ea-b424-4f3c-8566-97fe8f4bccc7",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "黄色。",
+   "drillClip": "3b72fcca-1170-43d2-a8fa-3b26ee12b8ee",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 7,
+   "voices": [
+    "leo",
+    "zh-CN-YunyiMultilingualNeural",
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "3ae7af99-824c-41a9-8d64-2db19ad4bb3e",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "d81a4a05-681b-4d01-ac15-387a32b0ee0e",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "55479c21-ebe9-4a8e-bff9-2929c5917948",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "69b0b4ed-deb1-41e7-9eb3-7eab18387229",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "4ae97a64-f402-45c5-be31-c83bf5312950",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "48a90fb4-c54d-49ef-a197-b5d6658b6555",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "欢迎光临。",
+   "drillClip": "d59f9f7d-d8a4-44cd-8435-beffe236ac56",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 4,
+   "voices": [
+    "jpi39icg",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "f1b45070-3f11-4251-b49b-490eeaf6971d",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "fab54a9a-7246-4ed9-8032-2b68c06f7d6b",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "87787d72-45de-4591-9676-4ca21a1ef563",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "请跟我来。",
+   "drillClip": "fb4502d7-df0e-419d-96d7-fe17f63fe821",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "edf4ce49-c3e8-4ee8-a4a4-bfaa4375a8b1",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "这是菜单。",
+   "drillClip": "c7241489-9037-4670-8cd4-a844b8a09fff",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "5fe4036a-01f3-4ea3-a6a8-cd2d964fd9fa",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "有的，三文鱼和意式烩饭都是无麸质的。",
+   "drillClip": "15f8b520-cbcc-4fda-b2e0-58c4ec78a718",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "zh-CN-XiaochenNeural",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "72b194f3-5b64-4a0f-bb34-a27e6d7e238a",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "eng_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 17
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "羊肉非常好。",
+   "drillClip": "97e6ffb5-3a9c-44e8-9a4e-d8f9309d3315",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "346b0f96-d167-487e-9c7e-74f2389fc5e0",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 5
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我要羊肉，谢谢。",
+   "drillClip": "7c7a11b9-15a7-40b8-80c5-8b4409c3f981",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "ara",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "c74a68e7-8dc3-4024-9b86-e6e4f4fd42f1",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "再加一份时蔬。",
+   "drillClip": "ed2d8fc0-9278-4dd0-bacb-dfa879c9d368",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "bf2d6a48-fb34-4b59-ac7d-ba459d428c5b",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我要意式烩饭。",
+   "drillClip": "1a871010-15f0-41a8-bb09-8b60bd6b48ac",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "eve",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "106717b5-1b61-4067-859c-b83c5bc4b7f5",
+     "voice": "eve",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "然后先上一份小份绿色沙拉。",
+   "drillClip": "37446e64-687b-4235-897d-52457502b672",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "eve"
+   ],
+   "extra": [
+    {
+     "id": "143ae7d3-c4c8-45d9-a695-7faf743ee4b8",
+     "voice": "eve",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 12
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "好的。",
+   "drillClip": "e93b6e27-aa2c-4943-b53c-e0c45298e041",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 11,
+   "voices": [
+    "jpi39icg",
+    "leo",
+    "zh-CN-XiaochenNeural",
+    "zh-CN-YunyiMultilingualNeural",
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "200491d6-ff33-4529-8be6-21885e64e51a",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "da3b51eb-a916-44d8-a21c-970d53e7072f",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "bd5041a1-d0cd-4425-97cd-6f6bc01fd1d3",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "65b52b7e-cd3a-4ff1-a294-4441c48eb615",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "96c65ad7-fa94-4fc5-89a6-45aaa9c6e945",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "8d233b23-3ed9-49c0-b2fa-7de2785eb15a",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "c0dd0c17-7c1d-46f6-8ac1-f6111356d2f6",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "7b494269-4842-484a-8cb2-3694b8fbfa9d",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "b317d723-f22c-4afc-9182-32439dcbcaf3",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "5dd00bf0-5064-4ec1-8057-03c1bec76283",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "就来两杯咖啡吧，谢谢。",
+   "drillClip": "d86988c3-047a-40c2-bd45-e6b69d80a9d4",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "a9f3e18f-699f-4922-8a88-3b1642b75a5a",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 10
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我要无咖啡因的。",
+   "drillClip": "7f3cfee0-e413-46a7-aa38-e76d58455508",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "ara",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "a297cb1c-5bc9-418a-8b91-ccda4315a33e",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "74463bc2-aad9-47d8-9593-2c9d7e201445",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "七。",
+   "drillClip": "22259969-2f7e-436e-b69f-8d958e9133f7",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 1,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": []
+  },
+  {
+   "language": "zho",
+   "text": "九。",
+   "drillClip": "3b7ccfd7-1096-4604-b3eb-f10156ed8cf0",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 1,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": []
+  },
+  {
+   "language": "zho",
+   "text": "十一。",
+   "drillClip": "97802403-1950-454a-95e1-39ff269b8b94",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 1,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": []
+  },
+  {
+   "language": "zho",
+   "text": "橙色。",
+   "drillClip": "c0837bf8-ed6b-4181-b216-cbe4b2962833",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 1,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": []
+  },
+  {
+   "language": "zho",
+   "text": "紫色。",
+   "drillClip": "f2fa76d8-521a-4ddc-b424-f3fb6036e901",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 1,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": []
+  },
+  {
+   "language": "zho",
+   "text": "谢谢。",
+   "drillClip": "113c6c8e-a166-4f8d-a8ff-b302cf6c7b38",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 11,
+   "voices": [
+    "zh-CN-XiaochenNeural",
+    "zh-CN-YunfengNeural",
+    "ara",
+    "zh-CN-YunyiMultilingualNeural",
+    "33g9t0jl",
+    "leo"
+   ],
+   "extra": [
+    {
+     "id": "e44d8304-7873-4979-979d-9134c0b9db7d",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "ce2ecfc3-9e69-4d1b-ab63-8724d87786fd",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "79b32da6-e9dd-4b0d-9dd4-36125954a1f2",
+     "voice": "ara",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "e53bca4f-55f2-4e6a-9489-f7d920ad5389",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "7f947cc2-343d-4030-a78a-83dd0a12620b",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "d35a5340-0fe0-4b69-b28e-e752b4f1bd9c",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "c2c0521b-d3b6-4dad-bb08-115051f80605",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "7809d7fd-2ade-489d-af55-dfa7e8124b8a",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "d1105031-9790-4ddf-b0d7-32f149e202b5",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "01f7a68e-52df-4555-af86-e1d1ab9416f0",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "那你们有没有儿童用的止痛药？",
+   "drillClip": "cc6e6ce0-3dc5-4cb6-853a-e1bbda85c9ef",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "9ce29dad-d452-489c-884b-b0e8782e8cb2",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 14
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "不客气。",
+   "drillClip": "bd7fadb7-50e4-4a59-a423-facd4297caa6",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "eve"
+   ],
+   "extra": [
+    {
+     "id": "13b9e64e-a708-42e2-81ea-1f36a468002d",
+     "voice": "eve",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "fcb571aa-61a5-4cfd-956e-06dc18e90ebe",
+     "voice": "eve",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你是来这里度假的吗？",
+   "drillClip": "32e0ce61-7074-4f80-9a55-cbf193bdfdaf",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg",
+    "eve"
+   ],
+   "extra": [
+    {
+     "id": "5383d806-8d6c-477b-86c4-a954e9f56bb3",
+     "voice": "eve",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 10
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "你中文说得很好。",
+   "drillClip": "f2790528-34bd-43e0-84a3-2341186ff430",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 5,
+   "voices": [
+    "zh-CN-XiaochenNeural",
+    "zh-CN-YunfengNeural",
+    "jpi39icg",
+    "eve"
+   ],
+   "extra": [
+    {
+     "id": "70d93d01-3e58-441d-ada2-4c64f82aeea6",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "380f99e7-1eaa-43c0-839e-9c1bf5d17442",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "4faed842-5b1d-4ed4-b350-81899643ff6e",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    },
+    {
+     "id": "e4701ba5-0ead-42f3-85eb-0644b5dc9453",
+     "voice": "eve",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 7
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "十二。",
+   "drillClip": "2510e327-93b8-4a8f-8f5a-4c8ae7900cd0",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "d8f0b3ff-9586-4e90-b440-01de40b919f4",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "88f111ad-140c-4829-86fb-853d97c37bc0",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "十三。",
+   "drillClip": "2592d38d-f1a8-4b36-9783-01387b97b0ac",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "4994840f-6d89-43e2-9b7d-44a566069524",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "2952faa4-925f-43df-a547-cbe04ff10cc6",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "十四。",
+   "drillClip": "c46b809a-e9de-44b3-9357-aa2af92aa858",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "5193b293-519d-454d-8969-14d6a154698a",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "16b608a5-9373-4269-9553-bdf1ce7755a7",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "粉红色。",
+   "drillClip": "6819296b-4fcf-4acf-9cc8-5942d7003790",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "0dade7c7-09cb-4820-bd8c-95568b569624",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "灰色。",
+   "drillClip": "83aac242-529d-49fe-b881-9bd81975fd2f",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "100f1c46-ab22-4c23-982f-5e6cf7242c20",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "67ec5687-25b1-47d8-be18-b3ce97a1c303",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "这是我的护照。",
+   "drillClip": "974c0ecf-b18e-4451-a4dd-8d5ba4f465b1",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "35bc982f-0fa6-444b-a9ca-a540c739f387",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "房间在三楼，709号房。",
+   "drillClip": "90bd59ba-2b3c-40e4-b026-d0133dc2452e",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "45a117bd-3086-4277-a368-afc1b9666d9b",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 11
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "太好了。",
+   "drillClip": "42babac5-b628-4873-be62-5d441405c71b",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 16,
+   "voices": [
+    "zh-CN-XiaochenNeural",
+    "ara",
+    "leo",
+    "zh-CN-YunyiMultilingualNeural",
+    "zh-CN-YunfengNeural",
+    "sal",
+    "6997b0ec",
+    "33g9t0jl",
+    "jpi39icg",
+    "d18jlf6v"
+   ],
+   "extra": [
+    {
+     "id": "cf16524a-a32e-4986-bf21-cb750c0c936f",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "f3c7209d-cb18-4373-ac43-9d69124837cc",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "fa50ebfe-5707-4c8b-b3f2-724f1c4954e1",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "d3239785-070b-4718-8709-15a53b76793e",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "510c2b66-275d-4a20-9f8c-dab97d12121a",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 3
+    },
+    {
+     "id": "2f78f08e-26e8-46f8-848f-30e102c851a6",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "e57a4779-f492-4cee-a26a-b9e4435bee13",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "e8c603b5-cc0e-4a98-a43b-c288525c8057",
+     "voice": "sal",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "e6fd1cb6-9103-449a-96f1-405118e98fc0",
+     "voice": "6997b0ec",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 3
+    },
+    {
+     "id": "08298b8d-6ded-4a46-99a0-bac310a1d5aa",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "49638f34-b5fb-45cf-a908-5217652ac8ae",
+     "voice": "d18jlf6v",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "b51e4676-1641-46c6-921c-0a43d2b98efc",
+     "voice": "d18jlf6v",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "196ac4ef-880f-4296-aee9-16f9fb18ab1a",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "fe5ce3a6-de73-4ad7-9be7-7bd81cb563dd",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "6b285d99-f3ef-4c2f-aeaa-72cb670c74c2",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我们可以晚一点退房吗？",
+   "drillClip": "338a5016-ec06-4b0c-b484-2931e9db097b",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "66ea9976-c119-47db-8ceb-b4416999b143",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 11
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "在你房间里的欢迎卡上。",
+   "drillClip": "34793f55-92cc-4fd8-ad8c-9b2ec7aa1b91",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "5056607e-07de-48ab-b2ae-661f19ad0978",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 10
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "祝您入住愉快。",
+   "drillClip": "eb2b831a-fe1b-4c04-a454-7e9affbf2e14",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "ara",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "ac66aabe-eb35-4014-bec6-8cf1009be204",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 6
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "十六。",
+   "drillClip": "71af8a21-e5e5-4293-9b54-137e44c822a3",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "6e0cca2e-6068-4638-827f-2d0d036dc66b",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "b8bce48d-a5c4-4952-83d7-aa86f3ff7705",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "十七。",
+   "drillClip": "50c1f318-a303-484e-9f46-5a85f436a574",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "f331382b-fa25-45d6-b7cf-99e2857409e7",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "ed576f48-8825-46c0-9add-42171bb591f9",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "十八。",
+   "drillClip": "e6ddcc95-71c4-4850-ba4e-74a27c97213e",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "094c1494-9afa-469d-bc50-9cb980e46f6e",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "a09bc028-1a06-4114-97a8-2d78506b511c",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "星期一。",
+   "drillClip": "f1d35a11-978c-4036-a617-d63c1776b525",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 5,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl",
+    "ara",
+    "leo"
+   ],
+   "extra": [
+    {
+     "id": "d762d686-f699-4439-82dd-bf8c26fae16e",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "fd66edb6-dea4-4dca-949c-61a7a32c8736",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "159581e1-dd88-45f9-b67c-da2c68b9495b",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "2e5a48cb-4913-4296-a5fd-c8ca772f013b",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "星期二。",
+   "drillClip": "c233e090-ed1e-423f-a99e-ea8938e41385",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 5,
+   "voices": [
+    "33g9t0jl",
+    "jpi39icg",
+    "leo",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "7044c1ff-0854-4a7f-8bf5-1390b0b44e93",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 3
+    },
+    {
+     "id": "c9c7cea3-91f0-4cdc-b333-774e69fdec84",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "da1b24ef-2a67-47c3-af41-e55117960286",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "c7a1b200-5038-4a6d-8a6d-a98e583d6a96",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我还想买一盒创可贴，可以吗？",
+   "drillClip": "b080b8db-f821-4ca9-98de-9bd3ba86af5d",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "efa8b047-6be9-4b47-9ba3-28752ce88783",
+     "voice": "ara",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 14
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "星期三。",
+   "drillClip": "dd691cd9-d050-4be4-bff3-6c812b96d7e7",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 5,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl",
+    "leo",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "85a042d3-44f9-480c-b9fc-8c19ffbf20c9",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "40a3955e-0348-440a-8c06-02aac14feae3",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "a24faad3-d2a2-4e93-8594-5ae1efce8e2c",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "ed003823-7781-4be2-9873-d282a614347e",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "星期四。",
+   "drillClip": "fba4743f-f632-421d-b23a-b60d40c8c3e9",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "ee2f6140-8a0d-432e-b8a5-8a483ba8f8bf",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "ddbcc374-722c-48c7-9c61-97d5dc6c9326",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "知道，走路大概十分钟。",
+   "drillClip": "6c70fb19-cf59-403f-8b39-cf6aa2c80de7",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "ea8298be-e257-47c1-8db8-6cc0931e1131",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 10
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "沿着这条路一直往前走。",
+   "drillClip": "3f0ccb29-ff91-4bab-b898-bbd33b9085f5",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "8adb9ad5-ae17-4c1d-847b-23760466c627",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 10
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "附近有取款机吗？",
+   "drillClip": "2b02db10-cfdd-4dd9-972b-7ee758c2a36c",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "d18jlf6v"
+   ],
+   "extra": [
+    {
+     "id": "e3fbfaaf-b2ca-4067-9a22-3cf87113e3ad",
+     "voice": "d18jlf6v",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "b3c18f08-ad28-4913-84f0-3f920f8219f9",
+     "voice": "d18jlf6v",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "三十。",
+   "drillClip": "4f79e217-9717-441f-a93a-31973c2c5c2f",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "027a0521-a862-406e-8018-37086f709606",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "四十。",
+   "drillClip": "8daa1f0e-392b-4cc6-8476-63454be8c755",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "26421eba-9be5-4dbf-ba86-c0e334857cc0",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "五十。",
+   "drillClip": "ee36483f-cd1b-438a-8835-57474f4d8ab0",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "a2bc8a07-d3d1-47fc-a9c7-49192e02e1de",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "星期五。",
+   "drillClip": "e8b044b3-b4fa-41bf-93d0-2d8720d79925",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "08cb9c36-ef60-4275-b480-c2b457e6c70c",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "星期六。",
+   "drillClip": "1f373834-2466-4526-b52b-a0835d1f0d10",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "jpi39icg",
+   "recordings": 7,
+   "voices": [
+    "zh-CN-XiaochenNeural",
+    "zh-CN-YunfengNeural",
+    "33g9t0jl",
+    "ara",
+    "leo"
+   ],
+   "extra": [
+    {
+     "id": "bb021a8c-f7e1-4c4b-a334-efbcab5b581a",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "ita_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "152fc5ba-4c5d-49b9-a748-0a493a8603d0",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "ac0fd425-2c84-4e09-a630-448efe748fe3",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "a3e561da-4ceb-490a-a202-658b447d930f",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "6f52492a-cc24-4a9f-ba1e-75a5ba94cffb",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "f1eec49b-0209-4a46-8e57-d05f04f0751f",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "到了。",
+   "drillClip": "b91a69e4-ba5a-4499-ad27-14e0be1126c8",
+   "drillVoice": "33g9t0jl",
+   "turnVoice": "33g9t0jl",
+   "recordings": 5,
+   "voices": [
+    "33g9t0jl",
+    "jpi39icg",
+    "ara",
+    "leo"
+   ],
+   "extra": [
+    {
+     "id": "4fa05595-f9de-435b-a341-dba05e3d13b1",
+     "voice": "jpi39icg",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "708ab9b2-c819-4248-b711-af4d0ea8e53c",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "9595be18-a07d-4bf4-85f9-dfee0478f8fe",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "1ccf083f-5115-4413-971c-0814f1bfdd7a",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "可以，当然可以。",
+   "drillClip": "4c63807d-f686-4e25-a5e7-3774b468b179",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "33g9t0jl",
+   "recordings": 1,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": []
+  },
+  {
+   "language": "zho",
+   "text": "机器就在这儿。",
+   "drillClip": "f1453189-3e99-4896-863c-6ae54a84770e",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "33g9t0jl",
+   "recordings": 1,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": []
+  },
+  {
+   "language": "zho",
+   "text": "一百。",
+   "drillClip": "e84d2fd1-409b-4e02-a7a3-85492b4cbcc0",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 6,
+   "voices": [
+    "ara",
+    "leo",
+    "zh-CN-YunyiMultilingualNeural",
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "67ef1ad9-3e9a-424b-b1f2-ff63db8bd6a3",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "c498715e-1155-41df-9273-eabc0b24158e",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "94a81927-cf92-4400-b5d3-3893419d87d6",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "6beefa7d-2ba7-4e58-a59b-ad358f037fe5",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "94aa041c-1c52-4842-a550-713363bfeb1d",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "二百。",
+   "drillClip": "61fb6113-8b18-46ca-98c9-9fa1f28f1db4",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "4a352d10-6029-4f02-b2ba-83ad2f3da568",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "143c27b0-3aaa-41e9-ba50-3571682a32c6",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "一千。",
+   "drillClip": "fc245eca-f748-40e3-8100-b2aee7873c08",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 8,
+   "voices": [
+    "leo",
+    "zh-CN-YunyiMultilingualNeural",
+    "jpi39icg",
+    "33g9t0jl",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "6f478cbd-353f-4e63-933f-833a6dc0a3e1",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "3be959a4-6fae-45bc-af62-cda975e347a1",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "90b7ebef-1adc-4edb-9ee6-0370be1d898e",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "e83d1d0f-3247-41bd-855a-360a1924c052",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "003361f7-71a6-4a7c-b8cc-b823f675f026",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "c6cc39de-71da-4d50-8304-5481162cd64c",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "defa62a5-10d5-49d3-a55e-6bbb9bc32b53",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "星期天。",
+   "drillClip": "776f01f9-6f24-4ad1-b374-a059cd1ed9d7",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 8,
+   "voices": [
+    "zh-CN-XiaochenNeural",
+    "zh-CN-YunfengNeural",
+    "jpi39icg",
+    "33g9t0jl",
+    "leo",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "3a3eb528-04b8-4437-a89b-475100a66309",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "797a7e62-bd70-4a2c-814d-15dc302be187",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "6af08636-9830-40ac-ac17-a563ef3c8f52",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "08d243c5-8e5b-49c2-a8a5-e14e8565419c",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "eabb503e-df29-4ad4-8b74-916aed8e6a4e",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "da557c08-0ec2-4d6b-9518-bf98e5db552c",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "394d0df0-b634-491c-96c1-9171482772e2",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "十二点。",
+   "drillClip": "4715b512-bd91-4a36-9690-5ab8803676f6",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "393c007e-84ac-42c6-9d83-c9a71e4cac95",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": false,
+     "chars": 3
+    },
+    {
+     "id": "42055112-ff41-4a05-a8d4-0f3bcf5919d0",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "十万。",
+   "drillClip": "f28d2eb0-a85f-4048-a50a-6f9d054d4ee8",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "0154c329-c489-4e9e-933d-8f2e92882787",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "e802149c-a970-478f-b157-7abd3a79d3da",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "六十。",
+   "drillClip": "10e4e831-6d26-42dc-a5e0-37eccdde5911",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "619320d1-720b-4be4-b692-9da7b75108a7",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "2a33183f-a64b-471d-80d2-1a3f31eeab62",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "七十。",
+   "drillClip": "8bddd735-9822-49cc-a813-3b4c90c603d7",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "f7616671-5c84-44fb-ba7b-bf05c34c7fef",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "05b6a988-31a2-4654-9062-8078927a8337",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "一点钟。",
+   "drillClip": "2dd85745-addc-4837-9254-53bb098b0d87",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "jpi39icg",
+    "33g9t0jl"
+   ],
+   "extra": [
+    {
+     "id": "2adcc271-d32b-4099-bc0d-2095e8e6ef10",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    },
+    {
+     "id": "72213613-e752-4a6d-90c7-6045ef37aaac",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 3
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "十一点钟。",
+   "drillClip": "343a8441-59f5-481c-8b24-be4d776619ff",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 3,
+   "voices": [
+    "33g9t0jl",
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "10e4349b-98e5-49f3-8428-073d6bbaa291",
+     "voice": "33g9t0jl",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "154ab01f-fc68-4a6f-9c1a-4cd2ed367e6a",
+     "voice": "33g9t0jl",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "六点。",
+   "drillClip": "25484491-2ecc-4072-b310-8b958fa4cd72",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 11,
+   "voices": [
+    "zh-CN-XiaoxiaoMultilingualNeural",
+    "zh-CN-YunyiMultilingualNeural",
+    "zh-CN-XiaochenNeural",
+    "leo",
+    "zh-CN-YunfengNeural",
+    "jpi39icg",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "79274183-8b17-4c6d-ba39-c5db8eae69ba",
+     "voice": "zh-CN-XiaoxiaoMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "c4c019c2-c067-4ee1-b2e3-20d2b6708bdc",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "0e1d84fe-ac56-443f-82ea-2fc5e5cfa1c0",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "f77b7157-b314-4d2e-9f4c-ac886752d865",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "653ddf92-8843-4990-97e4-48a6f81e519a",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "eng_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "1ec4a82a-10be-47d6-94c5-3768a85191c4",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "5fe39b8a-2f36-4482-9b6f-1c6b0825b272",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "4262eeb1-071a-446a-ac06-68ef20fca040",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "fbe5cd70-a734-4930-9191-b431b7e6550c",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    },
+    {
+     "id": "9510eefe-3b53-421d-a37d-1c1588fc46b1",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 2
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我觉得你做得很好。",
+   "drillClip": "f9667d2d-b7f6-408c-9f60-30c7f9617c80",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 11,
+   "voices": [
+    "zh-CN-YunyiMultilingualNeural",
+    "zh-CN-XiaochenNeural",
+    "leo",
+    "zh-CN-XiaoxiaoMultilingualNeural",
+    "zh-CN-YunfengNeural",
+    "jpi39icg",
+    "ara"
+   ],
+   "extra": [
+    {
+     "id": "facf994a-4760-44b8-ab17-810573dd6673",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "874f82ef-256d-4338-ba0e-f4785df24405",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "f380c180-1ff5-4f90-9ba9-a83d24a23558",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "2a1a29da-6efd-4ea3-a994-0d6c6e1a2e4b",
+     "voice": "zh-CN-XiaoxiaoMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "2c32d8f5-db9d-4a27-9140-db9d94c311fb",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "eng_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "0aff1958-2b3b-4bcb-828d-e8ca391d0b37",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "204f6890-8e58-472c-abb0-d7b7a7577ff5",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "726ed1ae-dbc5-438d-aa65-f07eb330608b",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "5c8f3e57-1df0-476d-8694-2e55bbca60e0",
+     "voice": "ara",
+     "course": "zho_for_hin",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    },
+    {
+     "id": "0109d625-5fdd-4fb8-86a5-771d45391a87",
+     "voice": "leo",
+     "course": "zho_for_hin",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "我很惊讶。",
+   "drillClip": "c679e17b-d6ff-4ab6-b7f9-44c9838a675e",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 8,
+   "voices": [
+    "zh-CN-XiaoxiaoMultilingualNeural",
+    "zh-CN-YunyiMultilingualNeural",
+    "zh-CN-XiaochenNeural",
+    "leo",
+    "ara",
+    "jpi39icg",
+    "zh-CN-YunfengNeural"
+   ],
+   "extra": [
+    {
+     "id": "58fdd56c-e201-4ad8-9e9b-a4e4fff80605",
+     "voice": "zh-CN-XiaoxiaoMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "ed9be7ee-3c6e-4ce5-a15b-d1d4bd72896a",
+     "voice": "zh-CN-YunyiMultilingualNeural",
+     "course": "zho_for_eng",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "fcaa526f-1b56-4a89-8593-399872e654b6",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "deu_for_zho",
+     "role": "known",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "40126506-0b20-416e-99cb-e254eeff631b",
+     "voice": "leo",
+     "course": "zho_for_tam",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "dcb675d7-f484-47ef-a45a-5fd1947f1c02",
+     "voice": "ara",
+     "course": "zho_for_tam",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "226aad87-76e2-4edd-89f0-16f49c38df59",
+     "voice": "zh-CN-XiaochenNeural",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    },
+    {
+     "id": "6544445c-c75e-447c-bf5a-120f434634ee",
+     "voice": "zh-CN-YunfengNeural",
+     "course": "zho_for_jpn",
+     "role": "target2",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 4
+    }
+   ]
+  },
+  {
+   "language": "zho",
+   "text": "学一门新语言很难。",
+   "drillClip": "b7e12ff6-512e-4430-b777-7518bccf31c0",
+   "drillVoice": "jpi39icg",
+   "turnVoice": "jpi39icg",
+   "recordings": 2,
+   "voices": [
+    "jpi39icg"
+   ],
+   "extra": [
+    {
+     "id": "c43c87e4-d948-47c7-8797-5af575f22954",
+     "voice": "jpi39icg",
+     "course": "zho_for_jpn",
+     "role": "target1",
+     "origin": "tts",
+     "pointed": true,
+     "chars": 8
+    }
+   ]
+  }
+ ],
+ "forks": [
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "一起工作会让你非常了解一个人",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "不是这样",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "不，我以前从没见过她",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "不，那没问题",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "今天下午她什么都不想读",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "他今年不需要再买一台电视",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "他们想彼此相爱，但是他们并不开心",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "他们想花更多时间一起见面",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "他们是我不认识的人",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "他们觉得我们需要讨论这个问题",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "他们还没准备好，但是很快就会准备好",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "他刚开始学",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "他想让你昨天告诉我",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "他觉得",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "他说他不需要走路去学校",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "会发生什么",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "但是他们是一起离开的",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "但是我错了",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "你",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "你不应该担心做类似的事",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "你像我以前认识的一个人",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "你喜欢坐公交车，这很有意思",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "你已经做了你需要做的事",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "你觉得",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "你觉得怎么样？",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "你走之前我想让你帮我",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "因为我觉得犯错是件好事",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "她不想显得不友好",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "她差点迷路，因为她向左转而不是右转",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "她很惊讶",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "她说她不想住在城市里",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "她说她需要读同一本书",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "她需要搬到另一个国家",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "如果你能说慢一点就太好了",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "学中文不容易，但是很有意思",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "就是不容易",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "就是这样，如果你懂我的意思",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "并不难",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "很抱歉我看不懂你想给我看的东西",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我不喜欢花太多时间回答",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我不在乎犯错",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我不想把它给他",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我不想问你这个怎么说",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我不担心",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我不是想尽快结束",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我不知道你为什么觉得那这么好",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我不确定我能不能同时帮你",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我不确定我能不能记住整个句子",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我不认识很多会说中文的人",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我不认识那些人",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我买不起",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我们想知道会发生什么",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我们需要在下一个路口向左转",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我告诉过她我的房间号码一次，但是她忘了",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我妈妈喜欢读书",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我当时没在想怎么回答",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我当时觉得那是个好主意",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我很享受和你一起练习说话",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我很惊讶",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我很满意",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我忘了我刚才想说的那个词",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我想喝完咖啡",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我想看一会儿书",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我想知道他知不知道答案",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我想让你告诉我你需要什么",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我想让她帮你处理这些安排",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我感觉比我们在酒吧时更好",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我有一点头绪",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我爸爸不喜欢停止说话",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我现在会说中文",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我目前很开心",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我相信你的主意非常好",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我能记住",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我觉得",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我觉得他需要考虑十个可能的问题",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我觉得你做得很好",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我觉得她不想在家工作",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我觉得她不需要卖掉公司",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我觉得我在很短的时间里做了很多",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我觉得我还没准备好进行对话",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我觉得这很有意思",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我觉得这是个好主意",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "我讨厌惹麻烦，但是那个是我的",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "所以我不需要改变",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "找到答案并不难",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "是的，她是我妈妈的朋友",
+   "t1": "2",
+   "t2": "1"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "是的，这是个好主意",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "比",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "没有人确定该怎么回答这个问题",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "生活并不容易，但是也不是应该容易的",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "经常说比完美更重要",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "觉得",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "这很重要",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "这里很舒服",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "这项练习正在改变我大脑的形状",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "那不是我想说的",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "那很意外",
+   "t1": "1",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "target",
+   "text": "非常感谢",
+   "t1": "2",
+   "t2": "2"
+  },
+  {
+   "course_code": "zho_for_eng",
+   "side": "known",
+   "text": "what's going to happen",
+   "t1": "2",
+   "t2": "0"
+  }
+ ]
+}

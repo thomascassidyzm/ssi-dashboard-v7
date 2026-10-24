@@ -11,6 +11,7 @@
 // Component rows are skipped (the player never plays them). Presentation and known slots are out of scope.
 //   node tools/audio/revoice-seeds-to-cast.cjs --course spa_for_eng [--seeds 100]              # census + cast voices, nothing rendered
 //   RENDER=1 MAX_CHARS=40000 node tools/audio/revoice-seeds-to-cast.cjs --course spa_for_eng    # real: renders in course order, links in batches
+//   PARALLEL=N (default 5) asks in flight per run; Popty's process-wide provider cap (15 for Cartesia) bounds the total across runs
 const path = require('path');
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.psql'), quiet: true });
 
@@ -73,7 +74,9 @@ const isStop = (r) => r.status === 402 || ['DAILY_TOTAL_CAP', 'REPEAT', 'NOT_IN_
 // an answer — a refusal included — is never retried. Repeating a dropped ask is safe: render is library-first and link-clip
 // answers changed:false for a slot that already holds the clip.
 const DROPPED = new Set(['ECONNREFUSED', 'ECONNRESET', 'UND_ERR_SOCKET', 'EPIPE']);
-const isDropped = (r) => r.status === 0 && DROPPED.has(r.body && r.body.error);
+// A 503 from the render route is the same event one hop further in (job #394): production-api is up but phase8, which it
+// proxies to, is mid-restart. With PARALLEL asks in flight, five of those in one restart used to read as '5 failures' and end the run.
+const isDropped = (r) => (r.status === 0 && DROPPED.has(r.body && r.body.error)) || r.status === 503;
 async function postWith(fetchFn, wait, p, body, tries = 8) {
   for (let a = 1; ; a++) {
     let r;
@@ -97,9 +100,25 @@ async function alive(audioId) {
   } catch (e) { return `proxy ${e.name}`; }
 }
 
+/** The line clip-tail-audit.py prints for one clip → null when clean, else why not (a click, or an unmeasurable clip: "cannot measure" refuses). */
+function tailVerdict(line) {
+  let o; try { o = JSON.parse(line); } catch { return 'tail audit printed nothing'; }
+  if (o.error) return `tail audit error ${o.error}`;
+  return o.click ? `tail click (spike ${Number(o.tail_spike).toFixed(1)}, end_abs ${Number(o.end_abs).toFixed(3)})` : null;
+}
+/** AUDIT=1 (job #366): a new clip is audited for tail clicks BEFORE its pointer is swapped in; failing clips stay in the library, the old pointer stays. */
+// Async (job #394): a spawnSync here froze the whole event loop, so no other ask of this run could be in flight during an audit.
+function tailAudit(audioId, revision) {
+  return new Promise((resolve) => {
+    const c = require('child_process').execFile('python3', [path.join(__dirname, 'clip-tail-audit.py')], { encoding: 'utf8', timeout: 120000 }, (_e, stdout) =>
+      resolve(tailVerdict((stdout || '').split('\n').find((l) => l.startsWith('{')) || '')));
+    c.stdin.end(`x,${audioId},${revision || 1}\n`);
+  });
+}
+
 async function main() {
   const arg = (n, d) => { const i = process.argv.indexOf(`--${n}`); return i > 0 ? process.argv[i + 1] : d; };
-  const COURSE = arg('course'); const SEEDS = +arg('seeds', 100);
+  const COURSE = arg('course'); const SEEDS = +arg('seeds', 100); const FROM = +arg('from', 1); // --from N: a second run takes seeds N.. while another owns the lower ones (job #366 beside #339)
   if (!COURSE) throw new Error('--course required');
   const RENDER = process.env.RENDER === '1', MAX = +(process.env.MAX_CHARS || 0);
   const PURPOSE = `job #863: ${COURSE} seeds 1-${SEEDS} target slots onto the course cast voices (Tom 2026-10-12)`;
@@ -113,9 +132,9 @@ async function main() {
 
   const pg = await db.connect();
   const sel = 'seed_number, target_text, target1_audio_id, target2_audio_id';
-  const S = (await pg.query(`SELECT ${sel} FROM course_seeds WHERE course_code=$1 AND seed_number <= $2`, [COURSE, SEEDS])).rows.map((r) => ({ ...r, slot: { seedNumber: r.seed_number } }));
-  const L = (await pg.query(`SELECT lego_id, ${sel} FROM course_legos WHERE course_code=$1 AND seed_number <= $2`, [COURSE, SEEDS])).rows.map((r) => ({ ...r, slot: { legoId: r.lego_id } }));
-  const P = (await pg.query(`SELECT id, ${sel} FROM course_practice_phrases WHERE course_code=$1 AND seed_number <= $2 AND phrase_role <> 'component'`, [COURSE, SEEDS])).rows.map((r) => ({ ...r, slot: { phraseId: r.id } }));
+  const S = (await pg.query(`SELECT ${sel} FROM course_seeds WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { seedNumber: r.seed_number } }));
+  const L = (await pg.query(`SELECT lego_id, ${sel} FROM course_legos WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { legoId: r.lego_id } }));
+  const P = (await pg.query(`SELECT id, ${sel} FROM course_practice_phrases WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3 AND phrase_role <> 'component'`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { phraseId: r.id } }));
   const rows = [...S, ...L, ...P];
   const clips = await db.clipMap(pg, rows.flatMap((r) => [r.target1_audio_id, r.target2_audio_id]), { cols: 'id::text AS id, text, voice_id, origin' });
   await pg.end();
@@ -129,7 +148,7 @@ async function main() {
 
   const ROLLBACK = process.env.ROLLBACK_FILE || evidencePath(`audio/revoice-rollback/${COURSE}-${new Date().toISOString().slice(0, 10)}.jsonl`);
   console.log(`rollback record: ${ROLLBACK}`);
-  const out = { library: 0, rendered: 0, spent: 0, linked: 0, linkRefused: 0, failed: 0, needsGrant: 0, versions: new Set() };
+  const out = { library: 0, rendered: 0, spent: 0, linked: 0, linkRefused: 0, failed: 0, auditFailed: 0, needsGrant: 0, versions: new Set() };
   let pending = [], stopped = null;
   const flush = async () => {
     const links = pending.splice(0);
@@ -143,25 +162,33 @@ async function main() {
     }
     console.log(`  [${new Date().toISOString()}] linked so far ${out.linked}; rendered ${out.rendered} (${out.spent} chars), library ${out.library}`);
   };
-  let n = 0;
-  for (const a of asks) {
-    if (MAX && out.spent + a.chars > MAX) { stopped = `MAX_CHARS ${MAX} reached`; break; }
+  // PARALLEL asks at once (job #394, default 5): three units x 5 + one = 16 callers against Popty's ONE process-wide Cartesia cap of 15
+  // (services/shared/provider-concurrency.cjs), which holds the excess — so the cap, not this number, bounds what reaches Cartesia.
+  const PARALLEL = Math.max(1, +(process.env.PARALLEL || 5));
+  let n = 0, next = 0;
+  const one = async (a) => {
+    if (MAX && out.spent + a.chars > MAX) { stopped = `MAX_CHARS ${MAX} reached`; return; }
     const r = await post('/api/audio/render', { courseCode: COURSE, role: a.role, text: a.text, voiceId: castByRole[a.role], purpose: PURPOSE });
-    if (isStop(r)) { stopped = `REFUSED ${r.status} ${r.body.code || ''} ${r.body.error || ''}`; break; }
+    if (isStop(r)) { stopped = `REFUSED ${r.status} ${r.body.code || ''} ${r.body.error || ''}`; return; }
     // The re-record gate (Tom 2026-10-11) refuses a render that would replace a working clip when no Tom-signed grant covers the course:
     // no library clip of the cast voice exists for these words, so there is nothing to reuse. Zero characters were spent; the ask is
     // counted and skipped (not a failure), so the reusable asks behind it still switch on.
-    if (r.body && r.body.code === 'RERECORD_NOT_PERMITTED') { out.needsGrant++; continue; }
-    if (r.status !== 200 || !r.body.ok) { console.log('  FAIL', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 200)); if (++out.failed >= 5) { stopped = '5 failures'; break; } continue; }
+    if (r.body && r.body.code === 'RERECORD_NOT_PERMITTED') { out.needsGrant++; return; }
+    if (r.status !== 200 || !r.body.ok) { console.log('  FAIL', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 200)); if (++out.failed >= 5) stopped = '5 failures'; return; }
     if (r.body.source === 'rendered') { out.rendered++; out.spent += r.body.charsSpent || 0; } else out.library++;
     const bad = await alive(r.body.audioId);
-    if (bad) { console.log('  VERIFY-FAIL', a.role, JSON.stringify(a.text), r.body.audioId, bad, '— old pointer kept'); continue; }
+    if (bad) { console.log('  VERIFY-FAIL', a.role, JSON.stringify(a.text), r.body.audioId, bad, '— old pointer kept'); return; }
+    if (process.env.AUDIT === '1') {
+      const why = await tailAudit(r.body.audioId, r.body.revision);
+      if (why) { out.auditFailed++; console.log('  AUDIT-FAIL', a.role, JSON.stringify(a.text), r.body.audioId, why, '— old pointer kept'); return; }
+    }
     for (const s of a.slots) pending.push({ ...(s.seedNumber ? { seedNumber: s.seedNumber } : s.legoId ? { legoId: s.legoId } : { phraseId: s.phraseId }), role: s.role, audioId: r.body.audioId, replace: true, expectCurrent: s.current });
     if (++n % LINK_EVERY === 0) await flush();
-  }
+  };
+  await Promise.all(Array.from({ length: Math.min(PARALLEL, asks.length) }, async () => { while (!stopped && next < asks.length) await one(asks[next++]); }));
   await flush();
   const left = asks.length - n;
-  console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}, needing a re-record grant (skipped, 0 chars) ${out.needsGrant}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
+  console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}, tail-audit failed ${out.auditFailed}, needing a re-record grant (skipped, 0 chars) ${out.needsGrant}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith };
+module.exports = { tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
