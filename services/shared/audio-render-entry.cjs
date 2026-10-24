@@ -29,6 +29,7 @@
  */
 const chain = require('./chain-context.cjs')
 const trialMode = require('./audio-trial-mode.cjs')
+const drillCut = require('./drill-cut-guard.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'text', 'purpose', 'requestedBy']
 
@@ -92,6 +93,8 @@ function validate(input) {
  *   speak(text, provider, config, maxRetries) → { audioBuffer, wordBoundaries, existingClip, charsSpent }   the ONE door
  *   store({...req, language, voiceId, audioBuffer, wordBoundaries}) → { audioId, s3Key, durationMs }   master + S3 + course_audio row + clip_index
  *   linkLego({courseCode, legoId, audioId}) → { linked, previous }   optional; presentation role + legoId only, never in a dry run
+ *   immersionTurn({language, text}) → { rowId, order, courseCode, audioId, voiceId } | null   optional; the served pod turn
+ *        holding these words as one of its sentences (job #338: a Drill clip is cut from it, never rendered)
  * Re-record only (replaceAudioId):
  *   loadClip(audioId) → { id, course_code, role, language, voice_id, s3_key, origin } | null
  *   replace({...ident, replaceAudioId, s3Key?, audioBuffer?, wordBoundaries?}) → { audioId, s3Key, durationMs, revision }
@@ -121,6 +124,15 @@ async function renderClip(input, deps) {
     // 1. library first
     const linked = await deps.link(ident)
     if (linked) return bindPresentation(req, { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
+
+    // DRILL IS CUT (job #338, Tom 2026-10-24): one sentence of a served pod turn, in the voice that turn was recorded in,
+    // is cut from that take — never paid for twice. Library first already linked any cut that exists; this stops the
+    // second performance when nobody has cut it yet. Another voice (a main-flow second seat) is not refused here.
+    if (deps.immersionTurn && (req.role === 'target1' || req.role === 'target2')) {
+      const turn = await deps.immersionTurn({ language: r.language, text: req.text })
+      const refusal = drillCut.drillCutRefusal(turn, { voiceId: r.voiceId, text: req.text })
+      if (refusal) throw new RenderRequestError(refusal.message, refusal.status, refusal.code)
+    }
 
     // DICE AND SPLICE (job #516, Tom 2026-10-11): an English-known presentation intro is assembled from existing Charlotte clips
     // (a missing piece is rendered once, here, and shared) — never rendered whole, which the voicing policy refuses. null = not
