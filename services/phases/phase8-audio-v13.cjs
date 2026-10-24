@@ -647,6 +647,9 @@ async function findSiblingCourseClip(courseCode, text, language, voiceId, opts =
       row.s3_key &&
       !String(row.s3_key).startsWith('pending/') &&
       !excluded.has(row.s3_key) &&
+      // A clip a check marked failed (veracity_pass false — the tail-click audit marks its failures this way, job #574) is never
+      // reused; unchecked (null) and passed clips behave as before. clip-library usableClips and clip-index indexEntryFor say the same.
+      row.veracity_pass !== false &&
       (ownCourseOnly ? row.course_code === courseCode : (includeOwnCourse || row.course_code !== courseCode)) &&
       row.text != null && normalizeForAudio(row.text) === want &&
       sameLanguage(language, row.language) &&

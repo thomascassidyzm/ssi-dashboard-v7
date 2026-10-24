@@ -47,6 +47,13 @@ describe('render route library step (#708)', () => {
     expect(s3.putCalls).toEqual([])
   })
 
+  it('a clip marked veracity_pass=false (tail-audit failure) is not linked; an unmarked one still is (#574)', async () => {
+    const bad = await setup([row({ veracity_pass: false })]).phase8.linkClipForRender(ident())
+    expect(bad).toBeNull()
+    const ok = await setup([row({ veracity_pass: null })]).phase8.linkClipForRender(ident())
+    expect(ok).toMatchObject({ audioId: 'a1' })
+  })
+
   it('dry run against another course\'s clip writes nothing', async () => {
     const { phase8, writes } = setup([row({ id: 'b1', course_code: 'other_for_eng', s3_key: 'mastered/SIB.mp3' })])
     const out = await phase8.linkClipForRender(ident({ dryRun: true }))
