@@ -23,7 +23,7 @@ describe('sourceSpan', () => {
   })
   it('bestSource takes only the cast voice and prefers a cut that ends its clip', () => {
     const other = { ...src, id: 'o', text: '我想。', duration_ms: 600, word_timings: { words: ['我', '想'], starts: [0.05, 0.3], ends: [0.28, 0.5] } }
-    const tail = { ...src, id: 't', text: '他说我想', duration_ms: 1200, word_timings: { words: ['他', '说', '我', '想'], starts: [0, 0.2, 0.5, 0.7], ends: [0.18, 0.45, 0.68, 0.95] } }
+    const tail = { ...src, id: 't', text: '他说我想', duration_ms: 1200, word_timings: { words: ['他', '说', '我', '想'], starts: [0, 0.2, 0.6, 0.8], ends: [0.18, 0.45, 0.78, 0.95] } }
     expect(bestSource([src, tail, { ...tail, id: 'x', voice_id: 'old' }], { text: '我想' }, 'v').source.id).toBe('t')
     expect(sourceSpan(other, '我想')).toBeNull() // its words ARE the text: not a cut
   })

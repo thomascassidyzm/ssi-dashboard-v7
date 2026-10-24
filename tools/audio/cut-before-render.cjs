@@ -24,7 +24,9 @@ const { staleAsks, castFromVoiceConfig, postWith } = require('./revoice-seeds-to
 const URL = process.env.POPTY_URL || 'http://localhost:3470';
 const AGENT = 'cut-before-render (job #374)';
 const PUNCT = /[\s\p{P}\p{S}]/u;
-const MIN_GAP = 0.04; // seconds of silence the engine left either side of the cut, unless that side is the clip's own edge
+// Seconds of silence the engine left either side of the cut, unless that side is the clip's own edge. 0.1 by default because
+// Cartesia's zho timings step in 0.08 s frames, so a 0.08 'gap' is usually no pause at all (seen on seeds 600-668, job #374).
+const MIN_GAP = Number(process.env.MIN_GAP) > 0 ? Number(process.env.MIN_GAP) : 0.1;
 
 /**
  * Pure. Where to cut `text` out of a source clip, or null. The source's characters are mapped to its per-character timings
