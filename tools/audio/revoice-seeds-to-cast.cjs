@@ -97,6 +97,18 @@ async function alive(audioId) {
   } catch (e) { return `proxy ${e.name}`; }
 }
 
+/** The line clip-tail-audit.py prints for one clip → null when clean, else why not (a click, or an unmeasurable clip: "cannot measure" refuses). */
+function tailVerdict(line) {
+  let o; try { o = JSON.parse(line); } catch { return 'tail audit printed nothing'; }
+  if (o.error) return `tail audit error ${o.error}`;
+  return o.click ? `tail click (spike ${Number(o.tail_spike).toFixed(1)}, end_abs ${Number(o.end_abs).toFixed(3)})` : null;
+}
+/** AUDIT=1 (job #366): a new clip is audited for tail clicks BEFORE its pointer is swapped in; failing clips stay in the library, the old pointer stays. */
+function tailAudit(audioId, revision) {
+  const r = require('child_process').spawnSync('python3', [path.join(__dirname, 'clip-tail-audit.py')], { input: `x,${audioId},${revision || 1}\n`, encoding: 'utf8', timeout: 120000 });
+  return tailVerdict((r.stdout || '').split('\n').find((l) => l.startsWith('{')) || '');
+}
+
 async function main() {
   const arg = (n, d) => { const i = process.argv.indexOf(`--${n}`); return i > 0 ? process.argv[i + 1] : d; };
   const COURSE = arg('course'); const SEEDS = +arg('seeds', 100);
@@ -129,7 +141,7 @@ async function main() {
 
   const ROLLBACK = process.env.ROLLBACK_FILE || evidencePath(`audio/revoice-rollback/${COURSE}-${new Date().toISOString().slice(0, 10)}.jsonl`);
   console.log(`rollback record: ${ROLLBACK}`);
-  const out = { library: 0, rendered: 0, spent: 0, linked: 0, linkRefused: 0, failed: 0, needsGrant: 0, versions: new Set() };
+  const out = { library: 0, rendered: 0, spent: 0, linked: 0, linkRefused: 0, failed: 0, auditFailed: 0, needsGrant: 0, versions: new Set() };
   let pending = [], stopped = null;
   const flush = async () => {
     const links = pending.splice(0);
@@ -156,12 +168,16 @@ async function main() {
     if (r.body.source === 'rendered') { out.rendered++; out.spent += r.body.charsSpent || 0; } else out.library++;
     const bad = await alive(r.body.audioId);
     if (bad) { console.log('  VERIFY-FAIL', a.role, JSON.stringify(a.text), r.body.audioId, bad, '— old pointer kept'); continue; }
+    if (process.env.AUDIT === '1') {
+      const why = tailAudit(r.body.audioId, r.body.revision);
+      if (why) { out.auditFailed++; console.log('  AUDIT-FAIL', a.role, JSON.stringify(a.text), r.body.audioId, why, '— old pointer kept'); continue; }
+    }
     for (const s of a.slots) pending.push({ ...(s.seedNumber ? { seedNumber: s.seedNumber } : s.legoId ? { legoId: s.legoId } : { phraseId: s.phraseId }), role: s.role, audioId: r.body.audioId, replace: true, expectCurrent: s.current });
     if (++n % LINK_EVERY === 0) await flush();
   }
   await flush();
   const left = asks.length - n;
-  console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}, needing a re-record grant (skipped, 0 chars) ${out.needsGrant}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
+  console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}, tail-audit failed ${out.auditFailed}, needing a re-record grant (skipped, 0 chars) ${out.needsGrant}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith };
+module.exports = { tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

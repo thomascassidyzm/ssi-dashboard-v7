@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'node:module'
-const { rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
+const { tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
 
 // job #864: Popty restarting under an auto-deploy (ECONNREFUSED) is waited out; an answer, a 402 included, comes back first time
 describe('postWith', () => {
@@ -66,5 +66,15 @@ describe('rollbackLines', () => {
       { at: 'T', course: 'ita_for_eng', seedNumber: 3, role: 'target1', old: 'O1', new: 'N1' },
       { at: 'T', course: 'ita_for_eng', phraseId: 'p9', role: 'target2', old: 'O2', new: 'N2' },
     ])
+  })
+})
+
+// job #366: a clip with a tail click (or one the audit cannot measure) is not swapped in
+describe('tailVerdict', () => {
+  it('passes clean, refuses click and unmeasurable', () => {
+    expect(tailVerdict('{"click":false,"tail_spike":3,"end_abs":0.01}')).toBeNull()
+    expect(tailVerdict('{"click":true,"tail_spike":40,"end_abs":0.2}')).toMatch(/tail click/)
+    expect(tailVerdict('{"error":"short"}')).toMatch(/error/)
+    expect(tailVerdict('')).toMatch(/nothing/)
   })
 })
