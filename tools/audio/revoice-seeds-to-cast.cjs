@@ -111,7 +111,7 @@ function tailAudit(audioId, revision) {
 
 async function main() {
   const arg = (n, d) => { const i = process.argv.indexOf(`--${n}`); return i > 0 ? process.argv[i + 1] : d; };
-  const COURSE = arg('course'); const SEEDS = +arg('seeds', 100);
+  const COURSE = arg('course'); const SEEDS = +arg('seeds', 100); const FROM = +arg('from', 1); // --from N: a second run takes seeds N.. while another owns the lower ones (job #366 beside #339)
   if (!COURSE) throw new Error('--course required');
   const RENDER = process.env.RENDER === '1', MAX = +(process.env.MAX_CHARS || 0);
   const PURPOSE = `job #863: ${COURSE} seeds 1-${SEEDS} target slots onto the course cast voices (Tom 2026-10-12)`;
@@ -125,8 +125,8 @@ async function main() {
 
   const pg = await db.connect();
   const sel = 'seed_number, target_text, target1_audio_id, target2_audio_id';
-  const S = (await pg.query(`SELECT ${sel} FROM course_seeds WHERE course_code=$1 AND seed_number <= $2`, [COURSE, SEEDS])).rows.map((r) => ({ ...r, slot: { seedNumber: r.seed_number } }));
-  const L = (await pg.query(`SELECT lego_id, ${sel} FROM course_legos WHERE course_code=$1 AND seed_number <= $2`, [COURSE, SEEDS])).rows.map((r) => ({ ...r, slot: { legoId: r.lego_id } }));
+  const S = (await pg.query(`SELECT ${sel} FROM course_seeds WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { seedNumber: r.seed_number } }));
+  const L = (await pg.query(`SELECT lego_id, ${sel} FROM course_legos WHERE course_code=$1 AND seed_number <= $2 AND seed_number >= $3`, [COURSE, SEEDS, FROM])).rows.map((r) => ({ ...r, slot: { legoId: r.lego_id } }));
   const P = (await pg.query(`SELECT id, ${sel} FROM course_practice_phrases WHERE course_code=$1 AND seed_number <= $2 AND phrase_role <> 'component'`, [COURSE, SEEDS])).rows.map((r) => ({ ...r, slot: { phraseId: r.id } }));
   const rows = [...S, ...L, ...P];
   const clips = await db.clipMap(pg, rows.flatMap((r) => [r.target1_audio_id, r.target2_audio_id]), { cols: 'id::text AS id, text, voice_id, origin' });
