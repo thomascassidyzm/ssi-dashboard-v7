@@ -5,7 +5,7 @@ Job #338, 24 October 2026. Measured on the nightly QA copy (restored 24 Oct 03:3
 ## What the player plays today (from the code)
 
 - **Main flow.** Every line plays the clip its own row points at, one pointer per seat (known, voice 1, voice 2). This is the **default**, which the app calls the house clip.
-- **Choose-voice** is built (`clipCascade.ts`): it plays the learner's chosen voice where the clip index holds those words in that voice, otherwise it plays the default. **It is switched off in every deployed build** (`VITE_CLIP_CASCADE` is not set), so today every learner hears the default.
+- **Choose-voice** is built (`clipCascade.ts`): it plays the learner's chosen voice where the clip index holds those words in that voice, otherwise it plays the default. **It is switched off in deployed builds**: `VITE_CLIP_CASCADE` was not in Vercel's environment when job #301 checked it. So today every learner hears the default.
 - **Pods.** Immersion plays the turn clip. Drill plays the turn's per-sentence clips, or the whole turn when it has none.
 
 ## What is wrong
@@ -29,7 +29,7 @@ Job #338, 24 October 2026. Measured on the nightly QA copy (restored 24 Oct 03:3
 
 ## Landed
 
-- **Duplicate-stop**, on Popty main: the render route now refuses (409 `DRILL_IS_CUT`) to pay for a second recording of a sentence from a served pod turn in that turn's own voice, and names the cut command instead. The same words in another voice (the main flow's second seat) still go through.
+- **Duplicate-stop**, on Popty main and **live** (I checked it with dry runs: a por_for_eng sentence and a por_br_for_eng sentence were both refused, 0 characters spent): the render route now refuses (409 `DRILL_IS_CUT`) to pay for a second recording of a sentence from a served pod turn in that turn's own voice, and names the cut command instead. The same words in another voice (the main flow's second seat) still go through. Gap: the guard covers the render route only, not the older phase8 bulk-fill path.
 - **Census and which-clip tools**, on Popty main: `live-clip-census.cjs` and `live-clip.cjs`.
 - **Learner app**, on staging (PR 1276): pod clips borrowed from another course now carry their revision tag, so a re-recorded clip stops playing its cached old version.
 
