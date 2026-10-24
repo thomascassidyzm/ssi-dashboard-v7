@@ -267,6 +267,44 @@ function measure(pcm, seams) {
   return { joins, tail: { ...tail, endAbs: Math.round(endAbs * 1000) / 1000, click: (tail.spike >= 12 && tail.spikeDb > -50) || endAbs >= 0.05 }, durationMs: Math.round((pcm.length * 1000) / SR) }
 }
 
+
+// ── provenance guard (job #340: "a lot of these really did sound like the same file") ─────────────────────────────
+/**
+ * Pure. A spliced row is only a splice if no piece comes from the target's own clip or from any clip whose TEXT is the
+ * target text (a piece may equal the target text only when it is cut out of a LONGER sentence's clip). Throws.
+ */
+function assertPiecesFromOtherTexts(target, pieces, referenceRef) {
+  for (const p of pieces) {
+    if (p.baseId === target) throw new Error(`piece "${p.text}" of "${target}" is sourced from a clip whose text IS the target`)
+    if (referenceRef && String(p.baseRef).split('.')[0] === String(referenceRef).split('.')[0]) throw new Error(`piece "${p.text}" of "${target}" is sourced from the target's own reference clip ${referenceRef}`)
+  }
+}
+const sha256 = (buf) => require('crypto').createHash('sha256').update(buf).digest('hex')
+/** Max normalised cross-correlation of two signals over lags ±maxLagMs, on a 1-in-8 decimation (≈2 kHz). 1 = same waveform. */
+function waveformSimilarity(a, b, maxLagMs = 300) {
+  const D = 8, da = Float64Array.from({ length: Math.floor(a.length / D) }, (_, i) => a[i * D]), db_ = Float64Array.from({ length: Math.floor(b.length / D) }, (_, i) => b[i * D])
+  const mean = (x) => x.reduce((s, v) => s + v, 0) / (x.length || 1), ma = mean(da), mb = mean(db_)
+  for (let i = 0; i < da.length; i++) da[i] -= ma; for (let i = 0; i < db_.length; i++) db_[i] -= mb
+  const na = Math.sqrt(da.reduce((s, v) => s + v * v, 0)), nb = Math.sqrt(db_.reduce((s, v) => s + v * v, 0))
+  if (!na || !nb) return 0
+  const L = Math.round((maxLagMs / 1000) * (SR / D)); let best = 0
+  for (let lag = -L; lag <= L; lag++) { let s = 0; for (let i = Math.max(0, -lag); i < da.length && i + lag < db_.length; i++) s += da[i] * db_[i + lag]; if (s / (na * nb) > best) best = s / (na * nb) }
+  return best
+}
+const NEAR_IDENTICAL = 0.9
+/** Pure. Verdict on a spliced file against the real recording of the same text. ok=false → the builder refuses the row. */
+function hashVerdict({ splicedBytes, referenceBytes, splicedPcm, referencePcm }) {
+  const v = { fileSha: sha256(splicedBytes), referenceFileSha: sha256(referenceBytes), pcmSha: sha256(Buffer.from(splicedPcm.buffer, splicedPcm.byteOffset, splicedPcm.byteLength)), referencePcmSha: sha256(Buffer.from(referencePcm.buffer, referencePcm.byteOffset, referencePcm.byteLength)), similarity: Math.round(waveformSimilarity(splicedPcm, referencePcm) * 1000) / 1000 }
+  v.ok = v.fileSha !== v.referenceFileSha && v.pcmSha !== v.referencePcmSha && v.similarity < NEAR_IDENTICAL
+  v.verdict = v.ok ? 'differs from whole' : 'IDENTICAL OR NEAR-IDENTICAL TO WHOLE'
+  return v
+}
+/** Pure. Per-piece provenance for the manifest: source clip, source text, character span, seconds in the source clip. */
+function pieceRecord(c, sr = SR) {
+  return { text: c.text, from: c.baseId, fromSlot: c.baseSlot, fromRef: c.baseRef, sourceText: c.baseId, charStart: c.charStart, charEnd: c.charEnd,
+    srcStartSec: Math.round((c.startSample / sr) * 1000) / 1000, srcEndSec: Math.round((c.endSample / sr) * 1000) / 1000 }
+}
+
 // ── I/O ─────────────────────────────────────────────────────────────────────
 
 async function fetchClip(ref, dir) {
@@ -375,6 +413,7 @@ async function cmdBuild() {
     if (!cast.has(t)) { manifest.dropped.push({ text: t, why: 'no cast-voice reference clip in this role' }); continue }
     const pieces = P.cover(P.tokenize(t, lex), ix, { maxPieces: Number(opt('max-pieces', 3)), excludeId: t })
     if (!pieces) { manifest.dropped.push({ text: t, why: 'no cover from other cast-voice clips' }); continue }
+    try { assertPiecesFromOtherTexts(t, pieces.map((p) => ({ ...p, baseRef: cast.get(p.baseId).ref })), cast.get(t).ref) } catch (e) { manifest.dropped.push({ text: t, why: e.message }); continue }
     const cut = []
     let bad = null
     for (const p of pieces) {
@@ -383,7 +422,7 @@ async function cmdBuild() {
       const n = [...p.baseId].length
       // cover() offsets are character offsets; one character is one syllable
       const sp = spanSamples(b.al, b.env, p.start, p.end, n, b.x.length, { keepStart: p.targetInitial, keepEnd: p.targetFinal })
-      cut.push({ ...p, ...sp, pcm: b.x.subarray(sp.start, sp.end), baseSlot: cast.get(p.baseId).slot, baseRef: cast.get(p.baseId).ref })
+      cut.push({ ...p, ...sp, charStart: p.start, charEnd: p.end, startSample: sp.start, endSample: sp.end, pcm: b.x.subarray(sp.start, sp.end), baseSlot: cast.get(p.baseId).slot, baseRef: cast.get(p.baseId).ref })
     }
     if (bad) { manifest.dropped.push({ text: t, why: bad }); continue }
     const j = joinPieces(cut)
@@ -396,9 +435,12 @@ async function cmdBuild() {
     const { masterToHouseLoudness } = require('../../services/audio-processor.cjs')
     await masterToHouseLoudness(wav, mp3, target)
     const m = measure(j.pcm, j.seams)
-    const item = { id: slug, text: t, pieces: cut.map((c) => ({ text: c.text, from: c.baseId, fromSlot: c.baseSlot, fromRef: c.baseRef, startEdge: c.startEdge, endEdge: c.endEdge,
+    const refPcm = await decodeMono(fs.readFileSync(refFile)), splPcm = await decodeMono(fs.readFileSync(mp3))
+    const hv = hashVerdict({ splicedBytes: fs.readFileSync(mp3), referenceBytes: fs.readFileSync(refFile), splicedPcm: splPcm, referencePcm: refPcm })
+    if (!hv.ok) { manifest.dropped.push({ text: t, why: `${hv.verdict} (similarity ${hv.similarity})`, hash: hv }); console.log('REFUSE', t, hv.verdict); continue }
+    const item = { id: slug, text: t, pieces: cut.map((c) => ({ ...pieceRecord(c), startEdge: c.startEdge, endEdge: c.endEdge,
       align: alCache.get(c.baseId).al.source || 'energy', finalMoved: c.baseFinal !== c.targetFinal, ms: Math.round(((c.end - c.start) * 1000) / SR) })), gainsDb: j.gainsDb, ...m,
-      spliced: path.basename(mp3), reference: path.basename(refFile), referenceSlot: cast.get(t).slot, referenceLufs: target }
+      spliced: path.basename(mp3), reference: path.basename(refFile), referenceSlot: cast.get(t).slot, referenceRef: cast.get(t).ref, referenceLufs: target, hash: hv }
     if (flag('asr')) {
       item.asrSpliced = asr(mp3); item.asrReference = asr(refFile)
       item.cerSpliced = Math.round(cer(t, item.asrSpliced) * 100) / 100; item.cerReference = Math.round(cer(t, item.asrReference) * 100) / 100
@@ -412,7 +454,7 @@ async function cmdBuild() {
   console.log(`made ${manifest.made.length}, dropped ${manifest.dropped.length} → ${voiceDir}/manifest.json`)
 }
 
-module.exports = { envelope, syllableBounds, timingBounds, spanSamples, joinPieces, measure, cer }
+module.exports = { assertPiecesFromOtherTexts, hashVerdict, waveformSimilarity, pieceRecord, envelope, syllableBounds, timingBounds, spanSamples, joinPieces, measure, cer }
 if (require.main === module) {
   const cmd = { plan: cmdPlan, bundle: cmdBundle, timings: cmdTimings, build: cmdBuild }[argv[0]]
   if (!cmd) { console.error('usage: dice-splice-zho.cjs plan|bundle|build … (see header)'); process.exit(2) }
