@@ -27,6 +27,17 @@ const fs = require('fs');
 const { evidencePath } = require('../lib/evidence-path.cjs');
 const bare = (v) => String(v || '').replace(/^cartesia_/, '');
 
+/**
+ * The ask a re-voice sends to the render route. A re-voice exists to put a course into its cast voice, so a library clip in any other
+ * voice must be a MISS (then a render), never a relink (job #464). voiceBound is named here on purpose: the route defaults to it
+ * (job #944) but this tool must not depend on a default, and with no cast voice for the role there is nothing to bind to, so it throws.
+ */
+function renderAsk(course, a, castByRole, purpose) {
+  const voiceId = castByRole[a.role];
+  if (!voiceId) throw new Error(`re-voice of ${course}: no cast voice for role ${a.role}; refusing to ask the library for any-voice reuse`);
+  return { courseCode: course, role: a.role, text: a.text, voiceId, voiceBound: true, purpose };
+}
+
 /** One JSONL line per link, carrying the OLD pointer: the whole rollback is linking `old` back over `new`. */
 function rollbackLines(course, links, at) {
   return links.map((l) => JSON.stringify({ at, course, ...(l.seedNumber ? { seedNumber: l.seedNumber } : l.legoId ? { legoId: l.legoId } : { phraseId: l.phraseId }), role: l.role, old: l.expectCurrent, new: l.audioId })).join('\n') + '\n';
@@ -168,7 +179,7 @@ async function main() {
   let n = 0, next = 0;
   const one = async (a) => {
     if (MAX && out.spent + a.chars > MAX) { stopped = `MAX_CHARS ${MAX} reached`; return; }
-    const r = await post('/api/audio/render', { courseCode: COURSE, role: a.role, text: a.text, voiceId: castByRole[a.role], purpose: PURPOSE });
+    const r = await post('/api/audio/render', renderAsk(COURSE, a, castByRole, PURPOSE));
     if (isStop(r)) { stopped = `REFUSED ${r.status} ${r.body.code || ''} ${r.body.error || ''}`; return; }
     // The re-record gate (Tom 2026-10-11) refuses a render that would replace a working clip when no Tom-signed grant covers the course:
     // no library clip of the cast voice exists for these words, so there is nothing to reuse. Zero characters were spent; the ask is
@@ -190,5 +201,5 @@ async function main() {
   const left = asks.length - n;
   console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}, tail-audit failed ${out.auditFailed}, needing a re-record grant (skipped, 0 chars) ${out.needsGrant}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith };
+module.exports = { tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

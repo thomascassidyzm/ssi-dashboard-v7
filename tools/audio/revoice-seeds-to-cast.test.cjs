@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'node:module'
-const { tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
+const { tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
 
 // job #864: Popty restarting under an auto-deploy (ECONNREFUSED) is waited out; an answer, a 402 included, comes back first time
 describe('postWith', () => {
@@ -83,5 +83,14 @@ describe('tailVerdict', () => {
     expect(tailVerdict('{"click":true,"tail_spike":40,"end_abs":0.2}')).toMatch(/tail click/)
     expect(tailVerdict('{"error":"short"}')).toMatch(/error/)
     expect(tailVerdict('')).toMatch(/nothing/)
+  })
+})
+
+// job #464: a re-voice ask is voice-bound to the cast voice, so an old-voice library clip with identical words can never answer it
+describe('renderAsk', () => {
+  it('binds the ask to the cast voice and refuses a role with no cast voice', () => {
+    const ask = renderAsk('zho_for_eng', { role: 'target1', text: '你好' }, { target1: 'cartesia_f9a4' }, 'p')
+    expect(ask).toMatchObject({ voiceId: 'cartesia_f9a4', voiceBound: true })
+    expect(() => renderAsk('zho_for_eng', { role: 'target2', text: '你好' }, { target1: 'cartesia_f9a4' }, 'p')).toThrow(/no cast voice/)
   })
 })
