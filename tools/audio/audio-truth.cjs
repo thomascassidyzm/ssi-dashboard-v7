@@ -20,6 +20,7 @@
  *   no-row         the bundle names an id course_audio does not hold (in this copy)
  *   stale-ref      the bundle's revision suffix differs from the row's current audio_revision
  *   no-audio       the slot has no audio id at all in the bundle
+ *   no-cast        a pod slot: the course cast does not govern pod voices, so only A and B are shown
  *
  *   set -a; . ~/ssi-restore/qa-copy.env; set +a
  *   node tools/audio/audio-truth.cjs --course zho_for_eng --seeds 1-100 [--base https://saysomethingin.app]
@@ -67,6 +68,16 @@ function extractSlots(bundle, { from, to }) {
   for (const l of bundle.legos || []) push('lego', l.legoId, l.seedNumber ?? seedOf(l.legoId), l.ephemeralAudio || l.audio)
   for (const p of bundle.phrases || []) push('phrase', p.phraseId, seedOf(p.legoId), p.audio)
   for (const s of bundle.seeds || []) push('seed', s.seedId, s.seedNumber ?? seedOf(s.seedId), s.audio)
+  // Listening pods ride in the same bundle and are played between rounds; they are not bound to a seed, so every
+  // pod sentence the bundle carries is listed whatever the range. Roles pod-target / pod-known: the course cast does
+  // not govern them (pod voices are chosen per pod), so their cast column is empty.
+  for (const pod of bundle.pods || []) {
+    for (const s of pod.sentences || []) {
+      const key = `${pod.podId}#${s.globalOrder}`
+      slots.push({ kind: 'pod', key, seed: null, role: 'pod-target', ref: s.targetAudio && s.targetAudio.id ? String(s.targetAudio.id) : null })
+      slots.push({ kind: 'pod', key, seed: null, role: 'pod-known', ref: s.knownAudio && s.knownAudio.id ? String(s.knownAudio.id) : null })
+    }
+  }
   return { slots, maxSeed, previewOnly: !!bundle.previewOnly }
 }
 
@@ -98,6 +109,7 @@ function join(slots, clips, cast) {
       recorded_role: row ? row.role : null,
       recorded_course: row ? row.course_code : null,
       s3_key: row ? row.s3_key : null,
+      recorded_duration_ms: row ? row.duration_ms : null,
       cast_voice: castVoice,
       cast_provider: providerOf(castVoice),
     }
@@ -105,6 +117,7 @@ function join(slots, clips, cast) {
     if (!ref) flag = 'no-audio'
     else if (!row) flag = 'no-row'
     else if (row.origin === 'human') flag = 'human'
+    else if (!castVoice) flag = 'no-cast'
     else if (canon(row.voice_id) === canon(castVoice)) flag = 'ok'
     else flag = 'off-cast'
     out.flag = flag
@@ -132,12 +145,12 @@ function markdown({ course, range, base, bundleMeta, cast, agg, rows }) {
   const L = []
   L.push(`# Audio truth — ${course} seeds ${range.from}-${range.to}`, '')
   L.push(`Played from \`${base}/api/courses/${course}/bundle\` (bundle ${bundleMeta.version}, previewOnly=${bundleMeta.previewOnly}, highest seed in bundle ${bundleMeta.maxSeed}).`, '')
-  L.push('Cast today: ' + ROLES.map((r) => `${r} \`${cast[r] || '—'}\``).join(', '), '')
+  L.push('Cast today: ' + ROLES.map((r) => `${r} \`${cast[r] || '—'}\``).join(', ') + ' (pod slots: no course cast)', '')
   L.push(`Slots: ${agg.total}. Flags: ` + Object.entries(agg.byFlag).map(([k, v]) => `${k} ${v}`).join(', ') + `. Stale revision refs: ${agg.staleRefs}.`, '')
   L.push('| role | recorded voice (what plays) | slots |', '|---|---|---|')
   for (const [k, v] of Object.entries(agg.byRoleVoice).sort()) { const [role, voice] = k.split('\t'); L.push(`| ${role} | ${voice} | ${v} |`) }
   L.push('', '| kind | id | seed | role | played id | recorded voice | recorded at | cast | flag |', '|---|---|---|---|---|---|---|---|---|')
-  for (const r of rows) L.push(`| ${r.kind} | ${r.key} | ${r.seed} | ${r.role} | ${r.played_id ? r.played_id.slice(0, 8) : '—'}${r.stale_ref ? ' (stale v' + r.played_revision + ')' : ''} | ${r.recorded_voice || '—'} | ${r.recorded_at ? new Date(r.recorded_at).toISOString().slice(0, 10) : '—'} | ${r.cast_voice || '—'} | ${r.flag} |`)
+  for (const r of rows) L.push(`| ${r.kind} | ${r.key} | ${r.seed ?? '—'} | ${r.role} | ${r.played_id ? r.played_id.slice(0, 8) : '—'}${r.stale_ref ? ' (stale v' + r.played_revision + ')' : ''} | ${r.recorded_voice || '—'} | ${r.recorded_at ? new Date(r.recorded_at).toISOString().slice(0, 10) : '—'} | ${r.cast_voice || '—'} | ${r.flag} |`)
   return L.join('\n') + '\n'
 }
 

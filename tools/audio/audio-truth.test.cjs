@@ -10,6 +10,7 @@ const bundle = {
     { legoId: 'S0150L01', seedNumber: 150, ephemeralAudio: { target1: { id: U(9) } } }],
   phrases: [{ phraseId: 'S0001L01_use_01', legoId: 'S0001L01', audio: { target1: { id: U(4) } } }],
   seeds: [{ seedId: 'S0001', seedNumber: 1, audio: { target2: { id: U(5) } } }],
+  pods: [{ podId: 'zho_for_eng:pod-1', sentences: [{ globalOrder: 1, targetAudio: { id: U(6) }, knownAudio: { id: U(7) } }] }],
 }
 
 describe('audio truth', () => {
@@ -26,6 +27,14 @@ describe('audio truth', () => {
     expect(slots.filter((s) => s.kind === 'phrase').map((s) => s.role)).toEqual(['target1', 'target2', 'known'])
     expect(slots.find((s) => s.kind === 'lego' && s.role === 'presentation').ref).toBeNull()
     expect(slots.some((s) => s.seed === 150)).toBe(false)
+    expect(slots.filter((s) => s.kind === 'pod').map((s) => [s.role, s.ref])).toEqual([['pod-target', U(6)], ['pod-known', U(7)]])
+  })
+  it('shows a pod slot as played and recorded with no course cast', () => {
+    const { slots } = extractSlots(bundle, { from: 1, to: 1 })
+    const rows = join(slots, new Map([[U(6), { voice_id: 'xai_eve', origin: 'tts', audio_revision: 1 }]]), { target1: 'cartesia_x' })
+    const pod = rows.find((r) => r.role === 'pod-target')
+    expect(pod.recorded_provider).toBe('xai')
+    expect(pod.flag).toBe('no-cast')
   })
   it('names providers under the one identity rule', () => {
     expect(providerOf('zh-CN-XiaoxiaoMultilingualNeural')).toBe('azure')
