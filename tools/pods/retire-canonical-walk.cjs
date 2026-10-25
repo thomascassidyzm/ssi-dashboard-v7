@@ -79,6 +79,8 @@ async function readSlug (db, slug) {
 }
 
 const canon = rows => JSON.stringify(rows)
+/** PURE. Same rows, whatever order the deleting statement hands them back in. */
+const sameRows = (a, b) => a.length === b.length && JSON.stringify(a.map(r => JSON.stringify(r)).sort()) === JSON.stringify(b.map(r => JSON.stringify(r)).sort())
 
 async function census (db) {
   const s = await db.query(`select pod_slug, count(*)::int lines, count(distinct scene_number)::int scenes,
@@ -114,8 +116,11 @@ async function retire (db, slug, out, apply) {
   await db.query('begin')
   try {
     for (const t of TABLES) {
-      const r = await db.query(`delete from ${t} where pod_slug = $1`, [slug])
-      if (r.rowCount !== counts[t]) throw new Error(`${t}: deleted ${r.rowCount}, expected ${counts[t]}`)
+      // RETURNING *: what was really deleted, not a count. A Script Lab PATCH landing between the snapshot and this DELETE changes a
+      // row in place (same count) and would be deleted but missing from the restore file; any difference rolls the whole thing back.
+      const r = await db.query(`delete from ${t} where pod_slug = $1 returning *`, [slug])
+      if (r.rows.length !== counts[t]) throw new Error(`${t}: deleted ${r.rows.length}, expected ${counts[t]}`)
+      if (!sameRows(r.rows, snapshot[t])) throw new Error(`${t}: rows changed between the snapshot and the delete (concurrent edit); nothing deleted, re-run`)
     }
     // The proof: the file brings back exactly what was there.
     await db.query('savepoint restore_proof')
@@ -130,7 +135,7 @@ async function retire (db, slug, out, apply) {
   } catch (e) { await db.query('rollback'); throw e }
 }
 
-module.exports = { restoreSql, restoreInserts, TABLES }
+module.exports = { retire, sameRows, restoreSql, restoreInserts, TABLES }
 
 if (require.main === module) {
   (async () => {
