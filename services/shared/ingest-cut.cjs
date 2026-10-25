@@ -123,7 +123,9 @@ async function readClip(db, id) {
 /** This course's clip of these words for this role in this voice, if the library already holds one (the UNIQUE key). */
 async function libraryClip(db, { courseCode, text, language, role, voiceId }) {
   const { data, error } = await db.from('course_audio').select('id').eq('course_code', courseCode).eq('text_normalized', normalizeForAudio(text))
-    .eq('language', language).eq('role', role).eq('voice_id', voiceId).not('s3_key', 'like', 'pending/%').maybeSingle()
+    .eq('language', language).eq('role', role).eq('voice_id', voiceId).not('s3_key', 'like', 'pending/%')
+    // A clip a check marked failed (veracity_pass false — the tail-click audit does) is never handed back; null (unchecked) still reuses. Same rule as phase8's reuse pick.
+    .or('veracity_pass.is.null,veracity_pass.eq.true').maybeSingle()
   if (error) throw new Error(`library lookup failed: ${error.message}`)
   return data ? { audioId: String(data.id) } : null
 }

@@ -23,12 +23,13 @@ function fakeDb(tables) {
     from(table) {
       const filters = []
       let patch = null
-      const rows = () => (tables[table] || []).filter((r) => filters.every(([k, v]) => (v === null ? r[k] == null : String(r[k]) === String(v))))
+      const rows = () => (tables[table] || []).filter((r) => filters.every(([k, v]) => (k === 'veracity_pass' ? r[k] !== false : v === null ? r[k] == null : String(r[k]) === String(v))))
       const b = {
         select() { if (patch) return Promise.resolve(apply()); return b },
         eq(k, v) { filters.push([k, v]); return b },
         is(k, v) { filters.push([k, v]); return b },
         not() { return b },
+        or() { filters.push(['veracity_pass', 'ok']); return b },
         update(p) { patch = p; return b },
         maybeSingle() { return Promise.resolve({ data: rows()[0] || null, error: null }) },
       }
