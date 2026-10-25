@@ -105,16 +105,30 @@ function clipRefs(courseDatas) {
 
 function rowKey(course, kind, id) { return `${course}|${kind}|${id}`; }
 
+/**
+ * A row held for any reason stops being "changing the same way" for every row that shares one of its clips, so those rows hold too —
+ * and so on to a fixpoint. Without this, row A relabels a clip that held row B still points at (B then says words it was never given).
+ */
 function buildOps(course, data, chg, clips, refs) {
-  const changing = new Map(chg.filter((c) => c.kind !== 'lego_component').map((c) => [rowKey(course, c.kind, c.id), c]));
+  const forced = new Map(); // rowKey → why, for rows held in an earlier pass
+  for (;;) {
+    const plan = buildOpsPass(course, data, chg, clips, refs, forced);
+    const fresh = plan.holds.filter((h) => !forced.has(rowKey(course, h.kind, h.id)));
+    if (!fresh.length) return plan;
+    for (const h of fresh) forced.set(rowKey(course, h.kind, h.id), h.why);
+  }
+}
+
+function buildOpsPass(course, data, chg, clips, refs, forced) {
+  const changing = new Map(chg.filter((c) => c.kind !== 'lego_component' && !forced.has(rowKey(course, c.kind, c.id))).map((c) => [rowKey(course, c.kind, c.id), c]));
   const relabel = new Map(); // audio id → new text
   const holds = [];
   const plans = [];
   for (const c of chg) {
     if (c.kind === 'lego_component') continue;
     const rowOps = { c, relinks: [], relabels: [] };
-    let held = null;
-    for (const side of ['known', 'target']) {
+    let held = forced.get(rowKey(course, c.kind, c.id)) || null;
+    for (const side of held ? [] : ['known', 'target']) {
       const newText = side === 'known' ? c.newKnown : c.newTarget;
       if (!newText) continue;
       for (const slot of SLOTS[side]) {
