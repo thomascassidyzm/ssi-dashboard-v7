@@ -148,6 +148,30 @@ function makeBudget(max) {
   };
 }
 
+/** Runs asks PARALLEL at a time under a hard MAX_CHARS cap. doAsk(a, charged) must call charged(n) the moment a response says n chars were
+ *  spent (even one whose storage step then failed: the provider was paid, so the reservation stands). An ask that cannot reserve while others
+ *  are in flight WAITS for them to settle before the run decides to stop: a library hit frees its room, a paid render does not.
+ *  doAsk's third argument stop(reason) ends the run. Returns { next, stopped }. */
+async function runPool(asks, { parallel, budget, max, doAsk }) {
+  let next = 0, inflight = 0, stopped = null; let wake = [];
+  const settled = () => { const w = wake; wake = []; w.forEach((f) => f()); };
+  const worker = async () => {
+    while (!stopped && next < asks.length) {
+      const a = asks[next];
+      if (!budget.reserve(a.chars)) {
+        if (inflight > 0) { await new Promise((r) => wake.push(r)); continue; } // true total unknown until they settle
+        stopped = `MAX_CHARS ${max} reached`; settled(); return;
+      }
+      next++; inflight++;
+      let actual = a.chars; // a throw leaves it unknown whether the provider was paid: keep the worst case
+      try { await doAsk(a, (c) => { actual = c; }, (why) => { stopped = stopped || why; }); } finally { inflight--; budget.settle(a.chars, actual); settled(); }
+    }
+    settled();
+  };
+  await Promise.all(Array.from({ length: Math.min(parallel, asks.length) }, worker));
+  return { next, stopped };
+}
+
 async function main() {
   const arg = (n, d) => { const i = process.argv.indexOf(`--${n}`); return i > 0 ? process.argv[i + 1] : d; };
   const COURSE = arg('course'); const SEEDS = +arg('seeds', 100); const FROM = +arg('from', 1); // --from N: a second run takes seeds N.. while another owns the lower ones (job #366 beside #339)
@@ -181,7 +205,7 @@ async function main() {
   const ROLLBACK = process.env.ROLLBACK_FILE || evidencePath(`audio/revoice-rollback/${COURSE}-${new Date().toISOString().slice(0, 10)}.jsonl`);
   console.log(`rollback record: ${ROLLBACK}`);
   const out = { library: 0, rendered: 0, spent: 0, linked: 0, linkRefused: 0, failed: 0, auditFailed: 0, needsGrant: 0, versions: new Set() };
-  let pending = [], stopped = null;
+  let pending = [];
   const flush = async () => {
     const links = pending.splice(0);
     if (links.length) fs.appendFileSync(ROLLBACK, rollbackLines(COURSE, links, new Date().toISOString()));
@@ -197,22 +221,20 @@ async function main() {
   // PARALLEL asks at once (job #394, default 5): three units x 5 + one = 16 callers against Popty's ONE process-wide Cartesia cap of 15
   // (services/shared/provider-concurrency.cjs), which holds the excess — so the cap, not this number, bounds what reaches Cartesia.
   const PARALLEL = Math.max(1, +(process.env.PARALLEL || 5));
-  let n = 0, next = 0;
+  let n = 0;
   const budget = makeBudget(MAX);
-  const one = async (a) => {
-    if (!budget.reserve(a.chars)) { stopped = `MAX_CHARS ${MAX} reached`; return; }
-    let actual = 0;
-    try { await oneReserved(a, (c) => { actual = c; }); } finally { budget.settle(a.chars, actual); }
-  };
-  const oneReserved = async (a, spentNow) => {
+  const oneReserved = async (a, spentNow, stop) => {
     const r = await post('/api/audio/render', renderAsk(COURSE, a, castByRole, PURPOSE));
-    if (isStop(r)) { stopped = `REFUSED ${r.status} ${r.body.code || ''} ${r.body.error || ''}`; return; }
+    // A response that says chars were spent keeps its reservation whatever happens next (storage / write-back failing after the provider was paid).
+    const paid = +(r.body && r.body.charsSpent) || 0;
+    spentNow(paid); // an answer is known: 0 releases the reservation (library hit, refusal), >0 keeps it
+    if (isStop(r)) { stop(`REFUSED ${r.status} ${r.body.code || ''} ${r.body.error || ''}`); return; }
     // The re-record gate (Tom 2026-10-11) refuses a render that would replace a working clip when no Tom-signed grant covers the course:
     // no library clip of the cast voice exists for these words, so there is nothing to reuse. Zero characters were spent; the ask is
     // counted and skipped (not a failure), so the reusable asks behind it still switch on.
     if (r.body && r.body.code === 'RERECORD_NOT_PERMITTED') { out.needsGrant++; return; }
-    if (r.status !== 200 || !r.body.ok) { console.log('  FAIL', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 200)); if (++out.failed >= 5) stopped = '5 failures'; return; }
-    if (r.body.source === 'rendered') { out.rendered++; out.spent += r.body.charsSpent || 0; spentNow(r.body.charsSpent || 0); } else out.library++;
+    if (r.status !== 200 || !r.body.ok) { console.log('  FAIL', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 200)); if (++out.failed >= 5) stop('5 failures'); return; }
+    if (r.body.source === 'rendered') { out.rendered++; out.spent += r.body.charsSpent || 0; } else out.library++;
     const bad = await alive(r.body.audioId);
     if (bad) { console.log('  VERIFY-FAIL', a.role, JSON.stringify(a.text), r.body.audioId, bad, '— old pointer kept'); return; }
     if (process.env.AUDIT === '1') {
@@ -229,10 +251,11 @@ async function main() {
     for (const s of a.slots) pending.push({ ...(s.seedNumber ? { seedNumber: s.seedNumber } : s.legoId ? { legoId: s.legoId } : { phraseId: s.phraseId }), role: s.role, audioId: r.body.audioId, replace: true, expectCurrent: s.current });
     if (++n % LINK_EVERY === 0) await flush();
   };
-  await Promise.all(Array.from({ length: Math.min(PARALLEL, asks.length) }, async () => { while (!stopped && next < asks.length) await one(asks[next++]); }));
+  const pool = await runPool(asks, { parallel: PARALLEL, budget, max: MAX, doAsk: oneReserved });
+  const stopped = pool.stopped;
   await flush();
   const left = asks.length - n;
   console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}, tail-audit failed ${out.auditFailed}, needing a re-record grant (skipped, 0 chars) ${out.needsGrant}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { makeBudget, auditFailOp, tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk };
+module.exports = { makeBudget, runPool, auditFailOp, tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

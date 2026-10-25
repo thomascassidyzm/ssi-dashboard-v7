@@ -122,3 +122,26 @@ describe('makeBudget', () => {
   })
   it('no cap (0) never refuses', () => { expect(makeBudget(0).reserve(1e9)).toBe(true) })
 })
+
+// #736: MAX_CHARS is a hard cap. Six 20-char renders under MAX_CHARS=100 once charged 120 (a paid render whose storage step failed was released as 0)
+describe('runPool hard cap', () => {
+  const { runPool } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
+  const asks = Array.from({ length: 6 }, (_, i) => ({ chars: 20, i }))
+  const run = async (outcome, parallel = 5) => {
+    const budget = makeBudget(100); let charged = 0
+    const doAsk = async (a, spent) => {
+      await new Promise((r) => setTimeout(r, 5 * (a.i + 1)))
+      const o = outcome(a); spent(o.paid); charged += o.paid
+      if (o.throwAfter) throw new Error('storage failed')
+    }
+    const r = await runPool(asks, { parallel, budget, max: 100, doAsk: async (a, s, st) => { try { await doAsk(a, s, st) } catch (e) { /* tool logs it */ } } })
+    return { charged, ...r }
+  }
+  it('six paid 20-char renders: total charged <= 100', async () => { const r = await run(() => ({ paid: 20 })); expect(r.charged).toBeLessThanOrEqual(100); expect(r.stopped).toMatch(/MAX_CHARS/) })
+  it('a paid render whose storage step fails keeps its reservation', async () => {
+    const r = await run((a) => ({ paid: 20, throwAfter: a.i === 0 })); expect(r.charged).toBeLessThanOrEqual(100)
+  })
+  it('a free library hit releases its reservation and does not stop the run', async () => {
+    const r = await run((a) => ({ paid: a.i === 0 ? 0 : 20 })); expect(r.charged).toBe(100); expect(r.next).toBe(6)
+  })
+})
