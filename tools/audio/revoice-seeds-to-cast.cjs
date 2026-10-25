@@ -137,6 +137,17 @@ function tailAudit(audioId, revision) {
   });
 }
 
+/** MAX_CHARS under PARALLEL asks: each worker reserves its worst case (the ask's chars) BEFORE the POST, so five workers that all see
+ *  spent=0 cannot between them send more than max; settle() swaps the reservation for what was really spent (0 for a library hit). */
+function makeBudget(max) {
+  let held = 0;
+  return {
+    reserve(chars) { if (max && held + chars > max) return false; held += chars; return true; },
+    settle(reserved, actual) { held += (actual || 0) - reserved; },
+    get held() { return held; },
+  };
+}
+
 async function main() {
   const arg = (n, d) => { const i = process.argv.indexOf(`--${n}`); return i > 0 ? process.argv[i + 1] : d; };
   const COURSE = arg('course'); const SEEDS = +arg('seeds', 100); const FROM = +arg('from', 1); // --from N: a second run takes seeds N.. while another owns the lower ones (job #366 beside #339)
@@ -187,8 +198,13 @@ async function main() {
   // (services/shared/provider-concurrency.cjs), which holds the excess — so the cap, not this number, bounds what reaches Cartesia.
   const PARALLEL = Math.max(1, +(process.env.PARALLEL || 5));
   let n = 0, next = 0;
+  const budget = makeBudget(MAX);
   const one = async (a) => {
-    if (MAX && out.spent + a.chars > MAX) { stopped = `MAX_CHARS ${MAX} reached`; return; }
+    if (!budget.reserve(a.chars)) { stopped = `MAX_CHARS ${MAX} reached`; return; }
+    let actual = 0;
+    try { await oneReserved(a, (c) => { actual = c; }); } finally { budget.settle(a.chars, actual); }
+  };
+  const oneReserved = async (a, spentNow) => {
     const r = await post('/api/audio/render', renderAsk(COURSE, a, castByRole, PURPOSE));
     if (isStop(r)) { stopped = `REFUSED ${r.status} ${r.body.code || ''} ${r.body.error || ''}`; return; }
     // The re-record gate (Tom 2026-10-11) refuses a render that would replace a working clip when no Tom-signed grant covers the course:
@@ -196,7 +212,7 @@ async function main() {
     // counted and skipped (not a failure), so the reusable asks behind it still switch on.
     if (r.body && r.body.code === 'RERECORD_NOT_PERMITTED') { out.needsGrant++; return; }
     if (r.status !== 200 || !r.body.ok) { console.log('  FAIL', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 200)); if (++out.failed >= 5) stopped = '5 failures'; return; }
-    if (r.body.source === 'rendered') { out.rendered++; out.spent += r.body.charsSpent || 0; } else out.library++;
+    if (r.body.source === 'rendered') { out.rendered++; out.spent += r.body.charsSpent || 0; spentNow(r.body.charsSpent || 0); } else out.library++;
     const bad = await alive(r.body.audioId);
     if (bad) { console.log('  VERIFY-FAIL', a.role, JSON.stringify(a.text), r.body.audioId, bad, '— old pointer kept'); return; }
     if (process.env.AUDIT === '1') {
@@ -218,5 +234,5 @@ async function main() {
   const left = asks.length - n;
   console.log(`DONE ${COURSE}: rendered ${out.rendered} (${out.spent} chars spent), library ${out.library}, slots linked ${out.linked}, link-refused ${out.linkRefused}, failed ${out.failed}, tail-audit failed ${out.auditFailed}, needing a re-record grant (skipped, 0 chars) ${out.needsGrant}; content_version now ${[...out.versions].pop() || 'unchanged'}; REMAINING ${left} asks${stopped ? `; STOPPED: ${stopped}` : ''}`);
 }
-module.exports = { auditFailOp, tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk };
+module.exports = { makeBudget, auditFailOp, tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

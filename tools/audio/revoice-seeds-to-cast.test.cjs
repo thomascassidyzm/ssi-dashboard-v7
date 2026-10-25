@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'node:module'
-const { tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
+const { makeBudget, tailVerdict, rollbackLines, staleAsks, isStop, castFromVoiceConfig, postWith, renderAsk } = createRequire(import.meta.url)('./revoice-seeds-to-cast.cjs')
 
 // job #864: Popty restarting under an auto-deploy (ECONNREFUSED) is waited out; an answer, a 402 included, comes back first time
 describe('postWith', () => {
@@ -108,4 +108,17 @@ describe('audit-failed clips are excluded from reuse', () => {
     expect(op).toMatchObject({ op: 'audio.update', audio_id: 'c1', set: { veracity_pass: false } })
     expect(pickExistingClip([{ ...base, ...op.set }], want)).toBeNull()
   })
+})
+
+// P1 #10: PARALLEL=5 workers all saw spent=0 and sent five 100-char renders under MAX_CHARS=100
+describe('makeBudget', () => {
+  it('five concurrent 100-char asks under a 100 cap: only one reserves; a settled-to-zero library hit frees its room', () => {
+    const b = makeBudget(100)
+    expect([1, 2, 3, 4, 5].map(() => b.reserve(100))).toEqual([true, false, false, false, false])
+    b.settle(100, 0)
+    expect(b.reserve(100)).toBe(true)
+    b.settle(100, 100)
+    expect(b.reserve(1)).toBe(false)
+  })
+  it('no cap (0) never refuses', () => { expect(makeBudget(0).reserve(1e9)).toBe(true) })
 })
