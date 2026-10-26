@@ -1,0 +1,51 @@
+cym_nv2_for_eng SEED 312 | dy dro di ydy o i fynd â’r dillad glân i fyny’r grisiau | it’s your turn to take the clean clothes upstairs | t1 false t2 false
+cym_nv2_for_eng SEED 1545 | dy dro di ydy hi i fynd â’r dillad glân i fyny’r grisiau | it's your turn to take the clean clothes upstairs | t1 true t2 true
+cym_nv2_for_eng LEGO S1545L03 new=true | i fyny’r grisiau | upstairs | [{"known":"up the stairs","target":"i fyny’r grisiau"}]
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1545L03B03 | i fynd â’r dillad glân i fyny’r grisiau | to take the clean clothes upstairs
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1545L03B04 | cyn i ni symud i fyny’r grisiau | before we move upstairs
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1545L03B01 | symud i fyny’r grisiau | move upstairs
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1545L03B02 | i fyny’r grisiau draw acw | upstairs over there
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1545L03U03 | byddai’n well symud i fyny’r grisiau | it would be better to move upstairs
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1545L03U01 | dw i ddim isio symud i fyny’r grisiau | I don’t want to move upstairs
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1545L03U02 | fedran nhw symud i fyny’r grisiau wyt ti’n meddwl? | could they move upstairs do you think?
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1545L03U05 | maen nhw isio symud i fyny’r grisiau flwyddyn nesa’ | they want to move upstairs next year
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1545L03U07 | fydd hi ddim yn gwrando i fyny’r grisiau | she won’t listen upstairs
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1545L03U04 | o’n i’n arfer byw i fyny’r grisiau ar fy mhen fy hun | I used to live upstairs on my own
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1545L03U06 | dw i’n mynd i symud i fyny’r grisiau heno | I’m going to move upstairs tonight
+cym_nv2_for_eng PHR cym_nv2_for_eng:S1554L01U05 | mae hi’n mynd yn hwyr ond dydy’r tywel ’ma ddim i fyny’r grisiau | it’s getting late but this towel isn’t upstairs
+cym_sv2_for_eng SEED 330 | dy dro di yw e i fynd â’r dillad glân lan staer | it’s your turn to take the clean clothes upstairs | t1 true t2 true
+cym_sv2_for_eng LEGO S0330L04 new=true | lan staer | upstairs | []
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0330L04B01 | dy dro di yw e i fynd â’r dillad glân lan staer | it’s your turn to take the clean clothes upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0330L04B04 | mynd â’r dillad glân lan staer | to take the clean clothes upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0330L04B03 | mae’r dillad glân lan staer | the clean clothes are upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0330L04B05 | byddai fe’n syniad da i fynd lan staer | it would be a good idea to go upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0330L04B06 | ta pwy sy’n moyn mynd â’r dillad glân lan staer | whoever wants to take the clean clothes upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0330L04B02 | dw i’n mynd lan staer | I’m going upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0330L04B07 | ti’n gywir nagw i’n becso os ti’n mynd lan staer | you’re right that I don’t care if you go upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0331L04B02 | mae mwd lan staer | there is mud upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0331L02B02 | mae lan staer yn frwnt | upstairs is dirty
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0331L02B06 | paid trio mynd â’r ci brwnt lan staer | don’t try to take the dirty dog upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0331L01B05 | mae dillad glân y ci lan staer | the dog’s clean clothes are upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0331L01B06 | dy dro di yw e i fynd â’r ci lan staer | it’s your turn to take the dog upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0331L01B04 | mae’r ci lan staer | the dog is upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0333L01B05 | mae’r ci ym mhen arall y stafell lan staer | the dog is at the other end of the room upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0334L01B07 | dw i ’di blino gormod i fynd â’r dillad glân lan staer | I’m too tired to take the clean clothes upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0334L03B03 | mae’r tywel lan staer | the towel is upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S0334L03B05 | mae mwd ar y tywel lan staer | there is mud on the towel upstairs
+cym_sv2_for_eng SEED 1545 | dy dro di yw e i fynd â’r dillad glân lan staer | it's your turn to take the clean clothes upstairs | t1 true t2 true
+cym_sv2_for_eng LEGO S1545L04 new=true | lan staer | upstairs | [{"known":"upstairs","target":"lan staer"}]
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1545L04B04 | yr allweddi lan staer | the keys upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1545L04B02 | mae hi ’di mynd lan staer | she’s gone upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1545L04B03 | lan staer mewn stafell arall | upstairs in another room
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1545L04B01 | mynd â’r dillad glân lan staer | take the clean clothes upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1545L04U01 | mae hi ’di mynd lan staer achos oedd y plant ’di blino | she’s gone upstairs because the children were tired
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1545L04U06 | o’n i’n arfer byw lan staer mewn stafell arall | I used to live upstairs in another room
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1545L04U02 | pam nag wyt ti’n moyn eistedd lan staer? | why don’t you want to sit upstairs?
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1545L04U03 | fydd hi ddim yn mynd â’r dillad glân lan staer | she won’t take the clean clothes upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1545L04U04 | symudon ni lan staer cyn dydd Iau | we moved upstairs before Thursday
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1545L04U05 | sa i wedi gweld yr allweddi lan staer | I haven’t seen the keys upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1556L01B03 | os ti’n moyn maen nhw’n chwarae lan staer | if you want they play upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1556L01U06 | maen nhw’n chwarae lan staer os ŷn nhw’n moyn | they play upstairs if they want
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1557L01B01 | hoffen i ’sen nhw ddim yn chwarae lan staer | I would like them not to play upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1557L01U03 | maen nhw’n chwarae yn yr ardd ond hoffen i ’sen nhw ddim yn chwarae lan staer | they play in the garden but I would like them not to play upstairs
+cym_sv2_for_eng PHR cym_sv2_for_eng:S1591L01B03 | ddilynodd hi fi lan staer | she followed me upstairs

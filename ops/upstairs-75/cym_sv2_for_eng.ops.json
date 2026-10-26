@@ -1,0 +1,2387 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 330,
+   "set": {
+    "target_text": "dy dro di yw e i fynd â’r dillad glân lan stâr"
+   },
+   "expect": {
+    "target_text": "dy dro di yw e i fynd â’r dillad glân lan staer"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0330L04",
+   "set": {
+    "target_text": "lan stâr",
+    "components": []
+   },
+   "expect": {
+    "target_text": "lan staer",
+    "components": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0330L04B01",
+   "set": {
+    "target_text": "dy dro di yw e i fynd â’r dillad glân lan stâr",
+    "decomposition": [
+     {
+      "known": "your turn",
+      "legoId": "S0330L01",
+      "target": "dy dro di",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yw",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " e",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fynd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " â’r",
+      "isGhost": true
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dy dro di yw e i fynd â’r dillad glân lan staer",
+    "decomposition": [
+     {
+      "known": "your turn",
+      "legoId": "S0330L01",
+      "target": "dy dro di",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yw",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " e",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fynd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " â’r",
+      "isGhost": true
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0330L04B04",
+   "set": {
+    "target_text": "mynd â’r dillad glân lan stâr",
+    "decomposition": [
+     {
+      "known": "take the",
+      "legoId": "S0330L02",
+      "target": "mynd â’r",
+      "isGhost": false
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mynd â’r dillad glân lan staer",
+    "decomposition": [
+     {
+      "known": "take the",
+      "legoId": "S0330L02",
+      "target": "mynd â’r",
+      "isGhost": false
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0330L04B03",
+   "set": {
+    "target_text": "mae’r dillad glân lan stâr",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae’r",
+      "isGhost": true
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae’r dillad glân lan staer",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae’r",
+      "isGhost": true
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0330L04B05",
+   "set": {
+    "target_text": "byddai fe’n syniad da i fynd lan stâr",
+    "decomposition": [
+     {
+      "known": "he would",
+      "legoId": "S0063L01",
+      "target": "byddai fe",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "a good idea",
+      "legoId": "S0328L02",
+      "target": " syniad da",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fynd",
+      "isGhost": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "byddai fe’n syniad da i fynd lan staer",
+    "decomposition": [
+     {
+      "known": "he would",
+      "legoId": "S0063L01",
+      "target": "byddai fe",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "a good idea",
+      "legoId": "S0328L02",
+      "target": " syniad da",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fynd",
+      "isGhost": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0330L04B06",
+   "set": {
+    "target_text": "ta pwy sy’n moyn mynd â’r dillad glân lan stâr",
+    "decomposition": [
+     {
+      "known": "whoever",
+      "legoId": "S0329L01",
+      "target": "ta pwy",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " sy’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " moyn",
+      "isGhost": true
+     },
+     {
+      "known": "take the",
+      "legoId": "S0330L02",
+      "target": " mynd â’r",
+      "isGhost": false
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ta pwy sy’n moyn mynd â’r dillad glân lan staer",
+    "decomposition": [
+     {
+      "known": "whoever",
+      "legoId": "S0329L01",
+      "target": "ta pwy",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " sy’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " moyn",
+      "isGhost": true
+     },
+     {
+      "known": "take the",
+      "legoId": "S0330L02",
+      "target": " mynd â’r",
+      "isGhost": false
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0330L04B02",
+   "set": {
+    "target_text": "dw i’n mynd lan stâr",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "dw",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mynd",
+      "isGhost": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n mynd lan staer",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "dw",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mynd",
+      "isGhost": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0330L04B07",
+   "set": {
+    "target_text": "ti’n gywir nagw i’n becso os ti’n mynd lan stâr",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gywir",
+      "isGhost": true
+     },
+     {
+      "known": "that I don’t care",
+      "legoId": "S0326L04",
+      "target": " nagw i’n becso",
+      "isGhost": false
+     },
+     {
+      "known": "if",
+      "legoId": "S0025L02",
+      "target": " os",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mynd",
+      "isGhost": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ti’n gywir nagw i’n becso os ti’n mynd lan staer",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gywir",
+      "isGhost": true
+     },
+     {
+      "known": "that I don’t care",
+      "legoId": "S0326L04",
+      "target": " nagw i’n becso",
+      "isGhost": false
+     },
+     {
+      "known": "if",
+      "legoId": "S0025L02",
+      "target": " os",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mynd",
+      "isGhost": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0331L04B02",
+   "set": {
+    "target_text": "mae mwd lan stâr",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae",
+      "isGhost": true
+     },
+     {
+      "known": "mud",
+      "legoId": "S0331L04",
+      "target": " mwd",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae mwd lan staer",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae",
+      "isGhost": true
+     },
+     {
+      "known": "mud",
+      "legoId": "S0331L04",
+      "target": " mwd",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0331L02B02",
+   "set": {
+    "target_text": "mae lan stâr yn frwnt",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae",
+      "isGhost": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " frwnt",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae lan staer yn frwnt",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae",
+      "isGhost": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " frwnt",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0331L02B06",
+   "set": {
+    "target_text": "paid trio mynd â’r ci brwnt lan stâr",
+    "decomposition": [
+     {
+      "known": "don’t try",
+      "legoId": "S0231L01",
+      "target": "paid trio",
+      "isGhost": false
+     },
+     {
+      "known": "take the",
+      "legoId": "S0330L02",
+      "target": " mynd â’r",
+      "isGhost": false
+     },
+     {
+      "known": "dog",
+      "legoId": "S0331L01",
+      "target": " ci",
+      "isGhost": false
+     },
+     {
+      "known": "dirty",
+      "legoId": "S0331L02",
+      "target": " brwnt",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "paid trio mynd â’r ci brwnt lan staer",
+    "decomposition": [
+     {
+      "known": "don’t try",
+      "legoId": "S0231L01",
+      "target": "paid trio",
+      "isGhost": false
+     },
+     {
+      "known": "take the",
+      "legoId": "S0330L02",
+      "target": " mynd â’r",
+      "isGhost": false
+     },
+     {
+      "known": "dog",
+      "legoId": "S0331L01",
+      "target": " ci",
+      "isGhost": false
+     },
+     {
+      "known": "dirty",
+      "legoId": "S0331L02",
+      "target": " brwnt",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0331L01B05",
+   "set": {
+    "target_text": "mae dillad glân y ci lan stâr",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae",
+      "isGhost": true
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "dog",
+      "legoId": "S0331L01",
+      "target": " ci",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae dillad glân y ci lan staer",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae",
+      "isGhost": true
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "dog",
+      "legoId": "S0331L01",
+      "target": " ci",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0331L01B06",
+   "set": {
+    "target_text": "dy dro di yw e i fynd â’r ci lan stâr",
+    "decomposition": [
+     {
+      "known": "your turn",
+      "legoId": "S0330L01",
+      "target": "dy dro di",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yw",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " e",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fynd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " â’r",
+      "isGhost": true
+     },
+     {
+      "known": "dog",
+      "legoId": "S0331L01",
+      "target": " ci",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dy dro di yw e i fynd â’r ci lan staer",
+    "decomposition": [
+     {
+      "known": "your turn",
+      "legoId": "S0330L01",
+      "target": "dy dro di",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yw",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " e",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fynd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " â’r",
+      "isGhost": true
+     },
+     {
+      "known": "dog",
+      "legoId": "S0331L01",
+      "target": " ci",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0331L01B04",
+   "set": {
+    "target_text": "mae’r ci lan stâr",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae’r",
+      "isGhost": true
+     },
+     {
+      "known": "dog",
+      "legoId": "S0331L01",
+      "target": " ci",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae’r ci lan staer",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae’r",
+      "isGhost": true
+     },
+     {
+      "known": "dog",
+      "legoId": "S0331L01",
+      "target": " ci",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0333L01B05",
+   "set": {
+    "target_text": "mae’r ci ym mhen arall y stafell lan stâr",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae’r",
+      "isGhost": true
+     },
+     {
+      "known": "dog",
+      "legoId": "S0331L01",
+      "target": " ci",
+      "isGhost": false
+     },
+     {
+      "known": "at the other end of",
+      "legoId": "S0333L01",
+      "target": " ym mhen arall",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "room",
+      "legoId": "S0320L03",
+      "target": " stafell",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae’r ci ym mhen arall y stafell lan staer",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae’r",
+      "isGhost": true
+     },
+     {
+      "known": "dog",
+      "legoId": "S0331L01",
+      "target": " ci",
+      "isGhost": false
+     },
+     {
+      "known": "at the other end of",
+      "legoId": "S0333L01",
+      "target": " ym mhen arall",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "room",
+      "legoId": "S0320L03",
+      "target": " stafell",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0334L01B07",
+   "set": {
+    "target_text": "dw i ’di blino gormod i fynd â’r dillad glân lan stâr",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "dw",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "tired",
+      "legoId": "S0334L01",
+      "target": " ’di blino",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "too much",
+      "legoId": "S0128L01",
+      "target": " gormod",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fynd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " â’r",
+      "isGhost": true
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i ’di blino gormod i fynd â’r dillad glân lan staer",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "dw",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "tired",
+      "legoId": "S0334L01",
+      "target": " ’di blino",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "too much",
+      "legoId": "S0128L01",
+      "target": " gormod",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fynd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " â’r",
+      "isGhost": true
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S0330L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0334L03B03",
+   "set": {
+    "target_text": "mae’r tywel lan stâr",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae’r",
+      "isGhost": true
+     },
+     {
+      "known": "towel",
+      "legoId": "S0334L03",
+      "target": " tywel",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae’r tywel lan staer",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae’r",
+      "isGhost": true
+     },
+     {
+      "known": "towel",
+      "legoId": "S0334L03",
+      "target": " tywel",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S0334L03B05",
+   "set": {
+    "target_text": "mae mwd ar y tywel lan stâr",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae",
+      "isGhost": true
+     },
+     {
+      "known": "mud",
+      "legoId": "S0331L04",
+      "target": " mwd",
+      "isGhost": false
+     },
+     {
+      "known": "on",
+      "legoId": "S0291L03",
+      "target": " ar",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "towel",
+      "legoId": "S0334L03",
+      "target": " tywel",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae mwd ar y tywel lan staer",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mae",
+      "isGhost": true
+     },
+     {
+      "known": "mud",
+      "legoId": "S0331L04",
+      "target": " mwd",
+      "isGhost": false
+     },
+     {
+      "known": "on",
+      "legoId": "S0291L03",
+      "target": " ar",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "towel",
+      "legoId": "S0334L03",
+      "target": " tywel",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S0330L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1545,
+   "set": {
+    "target_text": "dy dro di yw e i fynd â’r dillad glân lan stâr"
+   },
+   "expect": {
+    "target_text": "dy dro di yw e i fynd â’r dillad glân lan staer"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1545L04",
+   "set": {
+    "target_text": "lan stâr",
+    "components": [
+     {
+      "known": "upstairs",
+      "target": "lan stâr"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "lan staer",
+    "components": [
+     {
+      "known": "upstairs",
+      "target": "lan staer"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1545L04B04",
+   "set": {
+    "target_text": "yr allweddi lan stâr",
+    "decomposition": [
+     {
+      "known": "the keys",
+      "legoId": "S1512L05",
+      "target": "yr allweddi",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "yr allweddi lan staer",
+    "decomposition": [
+     {
+      "known": "the keys",
+      "legoId": "S1512L05",
+      "target": "yr allweddi",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1545L04B02",
+   "set": {
+    "target_text": "mae hi ’di mynd lan stâr",
+    "decomposition": [
+     {
+      "known": "she’s gone",
+      "legoId": "S1510L01",
+      "target": "mae hi ’di mynd",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae hi ’di mynd lan staer",
+    "decomposition": [
+     {
+      "known": "she’s gone",
+      "legoId": "S1510L01",
+      "target": "mae hi ’di mynd",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1545L04B03",
+   "set": {
+    "target_text": "lan stâr mewn stafell arall",
+    "decomposition": [
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": "lan stâr",
+      "isGhost": false
+     },
+     {
+      "known": "in another room",
+      "legoId": "S1528L04",
+      "target": " mewn stafell arall",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "lan staer mewn stafell arall",
+    "decomposition": [
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": "lan staer",
+      "isGhost": false
+     },
+     {
+      "known": "in another room",
+      "legoId": "S1528L04",
+      "target": " mewn stafell arall",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1545L04B01",
+   "set": {
+    "target_text": "mynd â’r dillad glân lan stâr",
+    "decomposition": [
+     {
+      "known": "take the",
+      "legoId": "S1545L02",
+      "target": "mynd â’r",
+      "isGhost": false
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S1545L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mynd â’r dillad glân lan staer",
+    "decomposition": [
+     {
+      "known": "take the",
+      "legoId": "S1545L02",
+      "target": "mynd â’r",
+      "isGhost": false
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S1545L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1545L04U01",
+   "set": {
+    "target_text": "mae hi ’di mynd lan stâr achos oedd y plant ’di blino",
+    "decomposition": [
+     {
+      "known": "she’s gone",
+      "legoId": "S1510L01",
+      "target": "mae hi ’di mynd",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1022L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "the children were tired",
+      "legoId": "S1455L03",
+      "target": " oedd y plant ’di blino",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae hi ’di mynd lan staer achos oedd y plant ’di blino",
+    "decomposition": [
+     {
+      "known": "she’s gone",
+      "legoId": "S1510L01",
+      "target": "mae hi ’di mynd",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1022L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "the children were tired",
+      "legoId": "S1455L03",
+      "target": " oedd y plant ’di blino",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1545L04U06",
+   "set": {
+    "target_text": "o’n i’n arfer byw lan stâr mewn stafell arall",
+    "decomposition": [
+     {
+      "known": "I used to",
+      "legoId": "S1128L03",
+      "target": "o’n i’n arfer",
+      "isGhost": false
+     },
+     {
+      "known": "to live",
+      "legoId": "S1302L02",
+      "target": " byw",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     },
+     {
+      "known": "in another room",
+      "legoId": "S1528L04",
+      "target": " mewn stafell arall",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "o’n i’n arfer byw lan staer mewn stafell arall",
+    "decomposition": [
+     {
+      "known": "I used to",
+      "legoId": "S1128L03",
+      "target": "o’n i’n arfer",
+      "isGhost": false
+     },
+     {
+      "known": "to live",
+      "legoId": "S1302L02",
+      "target": " byw",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     },
+     {
+      "known": "in another room",
+      "legoId": "S1528L04",
+      "target": " mewn stafell arall",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1545L04U02",
+   "set": {
+    "target_text": "pam nag wyt ti’n moyn eistedd lan stâr?",
+    "decomposition": [
+     {
+      "known": "why",
+      "legoId": "S1021L01",
+      "target": "pam",
+      "isGhost": false
+     },
+     {
+      "known": "don’t you want",
+      "legoId": "S1269L02",
+      "target": " nag wyt ti’n moyn",
+      "isGhost": false
+     },
+     {
+      "known": "to sit",
+      "legoId": "S1500L03",
+      "target": " eistedd",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "pam nag wyt ti’n moyn eistedd lan staer?",
+    "decomposition": [
+     {
+      "known": "why",
+      "legoId": "S1021L01",
+      "target": "pam",
+      "isGhost": false
+     },
+     {
+      "known": "don’t you want",
+      "legoId": "S1269L02",
+      "target": " nag wyt ti’n moyn",
+      "isGhost": false
+     },
+     {
+      "known": "to sit",
+      "legoId": "S1500L03",
+      "target": " eistedd",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1545L04U03",
+   "set": {
+    "target_text": "fydd hi ddim yn mynd â’r dillad glân lan stâr",
+    "decomposition": [
+     {
+      "known": "she won’t",
+      "legoId": "S1533L01",
+      "target": "fydd hi ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "take the",
+      "legoId": "S1545L02",
+      "target": " mynd â’r",
+      "isGhost": false
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S1545L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fydd hi ddim yn mynd â’r dillad glân lan staer",
+    "decomposition": [
+     {
+      "known": "she won’t",
+      "legoId": "S1533L01",
+      "target": "fydd hi ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "take the",
+      "legoId": "S1545L02",
+      "target": " mynd â’r",
+      "isGhost": false
+     },
+     {
+      "known": "clean clothes",
+      "legoId": "S1545L03",
+      "target": " dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1545L04U04",
+   "set": {
+    "target_text": "symudon ni lan stâr cyn dydd Iau",
+    "decomposition": [
+     {
+      "known": "we moved",
+      "legoId": "S1507L01",
+      "target": "symudon ni",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L04",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "symudon ni lan staer cyn dydd Iau",
+    "decomposition": [
+     {
+      "known": "we moved",
+      "legoId": "S1507L01",
+      "target": "symudon ni",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L04",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1545L04U05",
+   "set": {
+    "target_text": "sa i wedi gweld yr allweddi lan stâr",
+    "decomposition": [
+     {
+      "known": "I haven’t seen",
+      "legoId": "S1519L01",
+      "target": "sa i wedi gweld",
+      "isGhost": false
+     },
+     {
+      "known": "the keys",
+      "legoId": "S1512L05",
+      "target": " yr allweddi",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "sa i wedi gweld yr allweddi lan staer",
+    "decomposition": [
+     {
+      "known": "I haven’t seen",
+      "legoId": "S1519L01",
+      "target": "sa i wedi gweld",
+      "isGhost": false
+     },
+     {
+      "known": "the keys",
+      "legoId": "S1512L05",
+      "target": " yr allweddi",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1556L01B03",
+   "set": {
+    "target_text": "os ti’n moyn maen nhw’n chwarae lan stâr",
+    "decomposition": []
+   },
+   "expect": {
+    "target_text": "os ti’n moyn maen nhw’n chwarae lan staer",
+    "decomposition": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1556L01U06",
+   "set": {
+    "target_text": "maen nhw’n chwarae lan stâr os ŷn nhw’n moyn",
+    "decomposition": [
+     {
+      "known": "they play",
+      "legoId": "S1556L01",
+      "target": "maen nhw’n chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     },
+     {
+      "known": "if they want",
+      "legoId": "S1419L01",
+      "target": " os ŷn nhw’n moyn",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "maen nhw’n chwarae lan staer os ŷn nhw’n moyn",
+    "decomposition": [
+     {
+      "known": "they play",
+      "legoId": "S1556L01",
+      "target": "maen nhw’n chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     },
+     {
+      "known": "if they want",
+      "legoId": "S1419L01",
+      "target": " os ŷn nhw’n moyn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01B01",
+   "set": {
+    "target_text": "hoffen i ’sen nhw ddim yn chwarae lan stâr",
+    "decomposition": [
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "hoffen i ’sen nhw ddim yn chwarae lan staer",
+    "decomposition": [
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": "hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1557L01U03",
+   "set": {
+    "target_text": "maen nhw’n chwarae yn yr ardd ond hoffen i ’sen nhw ddim yn chwarae lan stâr",
+    "decomposition": [
+     {
+      "known": "they play",
+      "legoId": "S1556L01",
+      "target": "maen nhw’n chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L03",
+      "target": " yn yr ardd",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S1019L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "maen nhw’n chwarae yn yr ardd ond hoffen i ’sen nhw ddim yn chwarae lan staer",
+    "decomposition": [
+     {
+      "known": "they play",
+      "legoId": "S1556L01",
+      "target": "maen nhw’n chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L03",
+      "target": " yn yr ardd",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S1019L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I would like them not to play",
+      "legoId": "S1557L01",
+      "target": " hoffen i ’sen nhw ddim yn chwarae",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1591L01B03",
+   "set": {
+    "target_text": "ddilynodd hi fi lan stâr",
+    "decomposition": [
+     {
+      "known": "she followed me",
+      "legoId": "S1591L01",
+      "target": "ddilynodd hi fi",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan stâr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddilynodd hi fi lan staer",
+    "decomposition": [
+     {
+      "known": "she followed me",
+      "legoId": "S1591L01",
+      "target": "ddilynodd hi fi",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L04",
+      "target": " lan staer",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "seed",
+   "id": 330,
+   "old": "dy dro di yw e i fynd â’r dillad glân lan staer",
+   "new": "dy dro di yw e i fynd â’r dillad glân lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "lego",
+   "id": "S0330L04",
+   "old": "lan staer",
+   "new": "lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0330L04B01",
+   "old": "dy dro di yw e i fynd â’r dillad glân lan staer",
+   "new": "dy dro di yw e i fynd â’r dillad glân lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0330L04B04",
+   "old": "mynd â’r dillad glân lan staer",
+   "new": "mynd â’r dillad glân lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0330L04B03",
+   "old": "mae’r dillad glân lan staer",
+   "new": "mae’r dillad glân lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0330L04B05",
+   "old": "byddai fe’n syniad da i fynd lan staer",
+   "new": "byddai fe’n syniad da i fynd lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0330L04B06",
+   "old": "ta pwy sy’n moyn mynd â’r dillad glân lan staer",
+   "new": "ta pwy sy’n moyn mynd â’r dillad glân lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0330L04B02",
+   "old": "dw i’n mynd lan staer",
+   "new": "dw i’n mynd lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0330L04B07",
+   "old": "ti’n gywir nagw i’n becso os ti’n mynd lan staer",
+   "new": "ti’n gywir nagw i’n becso os ti’n mynd lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0331L04B02",
+   "old": "mae mwd lan staer",
+   "new": "mae mwd lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0331L02B02",
+   "old": "mae lan staer yn frwnt",
+   "new": "mae lan stâr yn frwnt",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0331L02B06",
+   "old": "paid trio mynd â’r ci brwnt lan staer",
+   "new": "paid trio mynd â’r ci brwnt lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0331L01B05",
+   "old": "mae dillad glân y ci lan staer",
+   "new": "mae dillad glân y ci lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0331L01B06",
+   "old": "dy dro di yw e i fynd â’r ci lan staer",
+   "new": "dy dro di yw e i fynd â’r ci lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0331L01B04",
+   "old": "mae’r ci lan staer",
+   "new": "mae’r ci lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0333L01B05",
+   "old": "mae’r ci ym mhen arall y stafell lan staer",
+   "new": "mae’r ci ym mhen arall y stafell lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0334L01B07",
+   "old": "dw i ’di blino gormod i fynd â’r dillad glân lan staer",
+   "new": "dw i ’di blino gormod i fynd â’r dillad glân lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0334L03B03",
+   "old": "mae’r tywel lan staer",
+   "new": "mae’r tywel lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S0334L03B05",
+   "old": "mae mwd ar y tywel lan staer",
+   "new": "mae mwd ar y tywel lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "seed",
+   "id": 1545,
+   "old": "dy dro di yw e i fynd â’r dillad glân lan staer",
+   "new": "dy dro di yw e i fynd â’r dillad glân lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "lego",
+   "id": "S1545L04",
+   "old": "lan staer",
+   "new": "lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1545L04B04",
+   "old": "yr allweddi lan staer",
+   "new": "yr allweddi lan stâr",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1545L04B02",
+   "old": "mae hi ’di mynd lan staer",
+   "new": "mae hi ’di mynd lan stâr",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1545L04B03",
+   "old": "lan staer mewn stafell arall",
+   "new": "lan stâr mewn stafell arall",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1545L04B01",
+   "old": "mynd â’r dillad glân lan staer",
+   "new": "mynd â’r dillad glân lan stâr",
+   "takes": 2
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1545L04U01",
+   "old": "mae hi ’di mynd lan staer achos oedd y plant ’di blino",
+   "new": "mae hi ’di mynd lan stâr achos oedd y plant ’di blino",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1545L04U06",
+   "old": "o’n i’n arfer byw lan staer mewn stafell arall",
+   "new": "o’n i’n arfer byw lan stâr mewn stafell arall",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1545L04U02",
+   "old": "pam nag wyt ti’n moyn eistedd lan staer?",
+   "new": "pam nag wyt ti’n moyn eistedd lan stâr?",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1545L04U03",
+   "old": "fydd hi ddim yn mynd â’r dillad glân lan staer",
+   "new": "fydd hi ddim yn mynd â’r dillad glân lan stâr",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1545L04U04",
+   "old": "symudon ni lan staer cyn dydd Iau",
+   "new": "symudon ni lan stâr cyn dydd Iau",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1545L04U05",
+   "old": "sa i wedi gweld yr allweddi lan staer",
+   "new": "sa i wedi gweld yr allweddi lan stâr",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1556L01B03",
+   "old": "os ti’n moyn maen nhw’n chwarae lan staer",
+   "new": "os ti’n moyn maen nhw’n chwarae lan stâr",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1556L01U06",
+   "old": "maen nhw’n chwarae lan staer os ŷn nhw’n moyn",
+   "new": "maen nhw’n chwarae lan stâr os ŷn nhw’n moyn",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01B01",
+   "old": "hoffen i ’sen nhw ddim yn chwarae lan staer",
+   "new": "hoffen i ’sen nhw ddim yn chwarae lan stâr",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1557L01U03",
+   "old": "maen nhw’n chwarae yn yr ardd ond hoffen i ’sen nhw ddim yn chwarae lan staer",
+   "new": "maen nhw’n chwarae yn yr ardd ond hoffen i ’sen nhw ddim yn chwarae lan stâr",
+   "takes": 0
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_sv2_for_eng:S1591L01B03",
+   "old": "ddilynodd hi fi lan staer",
+   "new": "ddilynodd hi fi lan stâr",
+   "takes": 0
+  }
+ ],
+ "leftAlone": []
+}
