@@ -1,0 +1,2178 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "seed_number": 1635
+   },
+   "before": {
+    "id": "503db7c5-1322-4391-80d5-73ed9355e0c7",
+    "seed_number": 1635,
+    "target_text": "bag Jane yw hwnna",
+    "known_text": "that is Jane's bag",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "1e92b28f-52b2-4c21-ae51-29e9875c452f"
+   },
+   "after": {
+    "id": "503db7c5-1322-4391-80d5-73ed9355e0c7",
+    "seed_number": 1635,
+    "target_text": "bag Siân yw hwnna",
+    "known_text": "that is Siân's bag",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "lego_id": "S1635L01"
+   },
+   "before": {
+    "id": "6bb5d588-9cd4-4f42-999e-9e438888741e",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": "S1635L01",
+    "target_text": "bag Jane",
+    "known_text": "Jane’s bag",
+    "components": [
+     {
+      "known": "Jane’s bag",
+      "target": "bag Jane"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "e7d35d6d-d18e-4785-8008-8e95cb985c1b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "6bb5d588-9cd4-4f42-999e-9e438888741e",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": "S1635L01",
+    "target_text": "bag Siân",
+    "known_text": "Siân’s bag",
+    "components": [
+     {
+      "known": "Siân’s bag",
+      "target": "bag Siân"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1635L01B02"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1635L01B02",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i angen bag Jane",
+    "known_text": "I need Jane’s bag",
+    "decomposition": [
+     {
+      "known": "I need",
+      "legoId": "S0007L01",
+      "target": "dw i angen",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1635L01B02",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i angen bag Siân",
+    "known_text": "I need Siân’s bag",
+    "decomposition": [
+     {
+      "known": "I need",
+      "legoId": "S0007L01",
+      "target": "dw i angen",
+      "isGhost": false
+     },
+     {
+      "known": "Siân’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Siân",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1635L01B01"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1635L01B01",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n moyn bag Jane",
+    "known_text": "I want Jane’s bag",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "dw i’n moyn",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1635L01B01",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n moyn bag Siân",
+    "known_text": "I want Siân’s bag",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "dw i’n moyn",
+      "isGhost": false
+     },
+     {
+      "known": "Siân’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Siân",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1635L01B03"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1635L01B03",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n gallu gweld bag Jane yn yr ardd",
+    "known_text": "I can see Jane’s bag in the garden",
+    "decomposition": [
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": "dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L03",
+      "target": " yn yr ardd",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1635L01B03",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n gallu gweld bag Siân yn yr ardd",
+    "known_text": "I can see Siân’s bag in the garden",
+    "decomposition": [
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": "dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "Siân’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Siân",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L03",
+      "target": " yn yr ardd",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1635L01B04"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1635L01B04",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "bag Jane yw hwnna",
+    "known_text": "that one’s Jane’s bag",
+    "decomposition": [
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": "bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "that one’s",
+      "legoId": "S0303L01",
+      "target": " yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "1e92b28f-52b2-4c21-ae51-29e9875c452f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1635L01B04",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "bag Siân yw hwnna",
+    "known_text": "that one’s Siân’s bag",
+    "decomposition": [
+     {
+      "known": "Siân’s bag",
+      "legoId": "S1635L01",
+      "target": "bag Siân",
+      "isGhost": false
+     },
+     {
+      "known": "that one’s",
+      "legoId": "S0303L01",
+      "target": " yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1635L01U06"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1635L01U06",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i angen bag Jane am dipyn",
+    "known_text": "I need Jane’s bag for a while",
+    "decomposition": [
+     {
+      "known": "I need",
+      "legoId": "S0007L01",
+      "target": "dw i angen",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "for a while",
+      "legoId": "S0104L02",
+      "target": " am dipyn",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1635L01U06",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i angen bag Siân am dipyn",
+    "known_text": "I need Siân’s bag for a while",
+    "decomposition": [
+     {
+      "known": "I need",
+      "legoId": "S0007L01",
+      "target": "dw i angen",
+      "isGhost": false
+     },
+     {
+      "known": "Siân’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Siân",
+      "isGhost": false
+     },
+     {
+      "known": "for a while",
+      "legoId": "S0104L02",
+      "target": " am dipyn",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1635L01U04"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1635L01U04",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i jyst yn moyn bag Jane",
+    "known_text": "I just want Jane’s bag",
+    "decomposition": [
+     {
+      "known": "I just want",
+      "legoId": "S1562L01",
+      "target": "dw i jyst yn moyn",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1635L01U04",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i jyst yn moyn bag Siân",
+    "known_text": "I just want Siân’s bag",
+    "decomposition": [
+     {
+      "known": "I just want",
+      "legoId": "S1562L01",
+      "target": "dw i jyst yn moyn",
+      "isGhost": false
+     },
+     {
+      "known": "Siân’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Siân",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1635L01U05"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1635L01U05",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "bendigedig bag Jane yw hwnna",
+    "known_text": "great that one’s Jane’s bag",
+    "decomposition": [
+     {
+      "known": "great",
+      "legoId": "S1624L01",
+      "target": "bendigedig",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "that one’s",
+      "legoId": "S0303L01",
+      "target": " yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1635L01U05",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "bendigedig bag Siân yw hwnna",
+    "known_text": "great that one’s Siân’s bag",
+    "decomposition": [
+     {
+      "known": "great",
+      "legoId": "S1624L01",
+      "target": "bendigedig",
+      "isGhost": false
+     },
+     {
+      "known": "Siân’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Siân",
+      "isGhost": false
+     },
+     {
+      "known": "that one’s",
+      "legoId": "S0303L01",
+      "target": " yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1635L01U01"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1635L01U01",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "sa i wedi gweld bag Jane yn y swyddfa",
+    "known_text": "I haven’t seen Jane’s bag in the office",
+    "decomposition": [
+     {
+      "known": "I haven’t seen",
+      "legoId": "S1519L01",
+      "target": "sa i wedi gweld",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "in the office",
+      "legoId": "S1184L02",
+      "target": " yn y swyddfa",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1635L01U01",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "sa i wedi gweld bag Siân yn y swyddfa",
+    "known_text": "I haven’t seen Siân’s bag in the office",
+    "decomposition": [
+     {
+      "known": "I haven’t seen",
+      "legoId": "S1519L01",
+      "target": "sa i wedi gweld",
+      "isGhost": false
+     },
+     {
+      "known": "Siân’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Siân",
+      "isGhost": false
+     },
+     {
+      "known": "in the office",
+      "legoId": "S1184L02",
+      "target": " yn y swyddfa",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1635L01U03"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1635L01U03",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mwy na thebyg bag Jane yw hwnna",
+    "known_text": "probably that one’s Jane’s bag",
+    "decomposition": [
+     {
+      "known": "probably",
+      "legoId": "S0320L01",
+      "target": "mwy na thebyg",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "that one’s",
+      "legoId": "S0303L01",
+      "target": " yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1635L01U03",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mwy na thebyg bag Siân yw hwnna",
+    "known_text": "probably that one’s Siân’s bag",
+    "decomposition": [
+     {
+      "known": "probably",
+      "legoId": "S0320L01",
+      "target": "mwy na thebyg",
+      "isGhost": false
+     },
+     {
+      "known": "Siân’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Siân",
+      "isGhost": false
+     },
+     {
+      "known": "that one’s",
+      "legoId": "S0303L01",
+      "target": " yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1635L01U02"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1635L01U02",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wyt ti ’di ffeindio bag Jane?",
+    "known_text": "have you found Jane’s bag?",
+    "decomposition": [
+     {
+      "known": "have you found",
+      "legoId": "S1559L01",
+      "target": "wyt ti ’di ffeindio",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1635L01U02",
+    "seed_number": 1635,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wyt ti ’di ffeindio bag Siân?",
+    "known_text": "have you found Siân’s bag?",
+    "decomposition": [
+     {
+      "known": "have you found",
+      "legoId": "S1559L01",
+      "target": "wyt ti ’di ffeindio",
+      "isGhost": false
+     },
+     {
+      "known": "Siân’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Siân",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "seed_number": 1636
+   },
+   "before": {
+    "id": "e9bb7c14-876e-4667-afb7-cee6681ec642",
+    "seed_number": 1636,
+    "target_text": "dw i’n meddwl taw bag Jane yw hwnna",
+    "known_text": "I think that that is Jane's bag",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "1dbb0253-9cf5-410e-9efe-ac95e00f0618"
+   },
+   "after": {
+    "id": "e9bb7c14-876e-4667-afb7-cee6681ec642",
+    "seed_number": 1636,
+    "target_text": "dw i’n meddwl taw bag Siân yw hwnna",
+    "known_text": "I think that that is Siân's bag",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "lego_id": "S1636L02"
+   },
+   "before": {
+    "id": "e3647ece-fd65-4346-af3e-b3ffc809978f",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": "S1636L02",
+    "target_text": "taw bag Jane yw hwnna",
+    "known_text": "that that is Jane’s bag",
+    "components": [
+     {
+      "known": "that",
+      "target": "taw"
+     },
+     {
+      "known": "Jane’s bag",
+      "target": "bag Jane"
+     },
+     {
+      "known": "that one’s",
+      "target": "yw hwnna"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "37e1411c-b28d-4435-b529-6c316b358a2e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "e3647ece-fd65-4346-af3e-b3ffc809978f",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": "S1636L02",
+    "target_text": "taw bag Siân yw hwnna",
+    "known_text": "that that is Siân’s bag",
+    "components": [
+     {
+      "known": "that",
+      "target": "taw"
+     },
+     {
+      "known": "Siân’s bag",
+      "target": "bag Siân"
+     },
+     {
+      "known": "that one’s",
+      "target": "yw hwnna"
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1636L02B01"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1636L02B01",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i’n gallu gweld taw bag Jane yw hwnna",
+    "known_text": "I can see that that is Jane’s bag",
+    "decomposition": [
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": "dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1636L02B01",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i’n gallu gweld taw bag Siân yw hwnna",
+    "known_text": "I can see that that is Siân’s bag",
+    "decomposition": [
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": "dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Siân’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Siân yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1636L02B02"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1636L02B02",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "pam wyt ti’n meddwl taw bag Jane yw hwnna?",
+    "known_text": "why do you think that that is Jane’s bag?",
+    "decomposition": [
+     {
+      "known": "why",
+      "legoId": "S0300L01",
+      "target": "pam",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " wyt",
+      "isGhost": true
+     },
+     {
+      "known": "you think",
+      "legoId": "S1135L03",
+      "target": " ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1636L02B02",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "pam wyt ti’n meddwl taw bag Siân yw hwnna?",
+    "known_text": "why do you think that that is Siân’s bag?",
+    "decomposition": [
+     {
+      "known": "why",
+      "legoId": "S0300L01",
+      "target": "pam",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " wyt",
+      "isGhost": true
+     },
+     {
+      "known": "you think",
+      "legoId": "S1135L03",
+      "target": " ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Siân’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Siân yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1636L02B03"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1636L02B03",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ma fe wedi clywed taw bag Jane yw hwnna",
+    "known_text": "he’s heard that that is Jane’s bag",
+    "decomposition": [
+     {
+      "known": "he’s heard",
+      "legoId": "S1598L01",
+      "target": "ma fe wedi clywed",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1636L02B03",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ma fe wedi clywed taw bag Siân yw hwnna",
+    "known_text": "he’s heard that that is Siân’s bag",
+    "decomposition": [
+     {
+      "known": "he’s heard",
+      "legoId": "S1598L01",
+      "target": "ma fe wedi clywed",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Siân’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Siân yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1636L02B04"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1636L02B04",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "sa i’n siŵr taw bag Jane yw hwnna",
+    "known_text": "I’m not convinced that that is Jane’s bag",
+    "decomposition": [
+     {
+      "known": "I’m not convinced",
+      "legoId": "S1571L01",
+      "target": "sa i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1636L02B04",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "sa i’n siŵr taw bag Siân yw hwnna",
+    "known_text": "I’m not convinced that that is Siân’s bag",
+    "decomposition": [
+     {
+      "known": "I’m not convinced",
+      "legoId": "S1571L01",
+      "target": "sa i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Siân’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Siân yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1636L02C02"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1636L02C02",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "bag Jane",
+    "known_text": "Jane’s bag",
+    "decomposition": [
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": "bag Jane",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "e7d35d6d-d18e-4785-8008-8e95cb985c1b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1636L02C02",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "bag Siân",
+    "known_text": "Siân’s bag",
+    "decomposition": [
+     {
+      "known": "Siân’s bag",
+      "legoId": "S1635L01",
+      "target": "bag Siân",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1636L02U04"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1636L02U04",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ta beth ma fe’n dweud sa i’n siŵr taw bag Jane yw hwnna",
+    "known_text": "whatever he says I’m not convinced that that is Jane’s bag",
+    "decomposition": [
+     {
+      "known": "whatever",
+      "legoId": "S0286L03",
+      "target": "ta beth",
+      "isGhost": false
+     },
+     {
+      "known": "he says",
+      "legoId": "S1480L02",
+      "target": " ma fe’n dweud",
+      "isGhost": false
+     },
+     {
+      "known": "I’m not convinced",
+      "legoId": "S1571L01",
+      "target": " sa i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1636L02U04",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ta beth ma fe’n dweud sa i’n siŵr taw bag Siân yw hwnna",
+    "known_text": "whatever he says I’m not convinced that that is Siân’s bag",
+    "decomposition": [
+     {
+      "known": "whatever",
+      "legoId": "S0286L03",
+      "target": "ta beth",
+      "isGhost": false
+     },
+     {
+      "known": "he says",
+      "legoId": "S1480L02",
+      "target": " ma fe’n dweud",
+      "isGhost": false
+     },
+     {
+      "known": "I’m not convinced",
+      "legoId": "S1571L01",
+      "target": " sa i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Siân’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Siân yw hwnna",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1636L02U02"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1636L02U02",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wyt ti’n meddwl taw bag Jane yw hwnna?",
+    "known_text": "do you think that that is Jane’s bag?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "wyt",
+      "isGhost": true
+     },
+     {
+      "known": "you think",
+      "legoId": "S1135L03",
+      "target": " ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1636L02U02",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wyt ti’n meddwl taw bag Siân yw hwnna?",
+    "known_text": "do you think that that is Siân’s bag?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "wyt",
+      "isGhost": true
+     },
+     {
+      "known": "you think",
+      "legoId": "S1135L03",
+      "target": " ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Siân’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Siân yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1636L02U01"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1636L02U01",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ma fe wedi clywed taw bag Jane yw hwnna ond dyw hi ddim yn wir",
+    "known_text": "he’s heard that that is Jane’s bag but it isn’t true",
+    "decomposition": [
+     {
+      "known": "he’s heard",
+      "legoId": "S1598L01",
+      "target": "ma fe wedi clywed",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it isn’t true",
+      "legoId": "S1531L01",
+      "target": " dyw hi ddim yn wir",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1636L02U01",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ma fe wedi clywed taw bag Siân yw hwnna ond dyw hi ddim yn wir",
+    "known_text": "he’s heard that that is Siân’s bag but it isn’t true",
+    "decomposition": [
+     {
+      "known": "he’s heard",
+      "legoId": "S1598L01",
+      "target": "ma fe wedi clywed",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Siân’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Siân yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it isn’t true",
+      "legoId": "S1531L01",
+      "target": " dyw hi ddim yn wir",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1636L02U03"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1636L02U03",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i’n gallu gweld taw bag Jane yw hwnna draw fanco",
+    "known_text": "I can see that that is Jane’s bag over there",
+    "decomposition": [
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": "dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "over there",
+      "legoId": "S0298L04",
+      "target": " draw fanco",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1636L02U03",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i’n gallu gweld taw bag Siân yw hwnna draw fanco",
+    "known_text": "I can see that that is Siân’s bag over there",
+    "decomposition": [
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": "dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Siân’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Siân yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "over there",
+      "legoId": "S0298L04",
+      "target": " draw fanco",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_sv2_for_eng",
+    "id": "cym_sv2_for_eng:S1636L02U05"
+   },
+   "before": {
+    "id": "cym_sv2_for_eng:S1636L02U05",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "diolch dw i’n gallu gweld taw bag Jane yw hwnna nawr",
+    "known_text": "thank you I can see now that that is Jane’s bag",
+    "decomposition": [
+     {
+      "known": "thank you",
+      "legoId": "S1626L02",
+      "target": "diolch",
+      "isGhost": false
+     },
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": " dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " nawr",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_sv2_for_eng:S1636L02U05",
+    "seed_number": 1636,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "diolch dw i’n gallu gweld taw bag Siân yw hwnna nawr",
+    "known_text": "thank you I can see now that that is Siân’s bag",
+    "decomposition": [
+     {
+      "known": "thank you",
+      "legoId": "S1626L02",
+      "target": "diolch",
+      "isGhost": false
+     },
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": " dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Siân’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Siân yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " nawr",
+      "isGhost": false
+     }
+    ],
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1636L02U05",
+   "set": {
+    "known_text": "thank you I can see now that that is Jane’s bag",
+    "target_text": "diolch dw i’n gallu gweld taw bag Jane yw hwnna nawr",
+    "decomposition": [
+     {
+      "known": "thank you",
+      "legoId": "S1626L02",
+      "target": "diolch",
+      "isGhost": false
+     },
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": " dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " nawr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1636L02U03",
+   "set": {
+    "known_text": "I can see that that is Jane’s bag over there",
+    "target_text": "dw i’n gallu gweld taw bag Jane yw hwnna draw fanco",
+    "decomposition": [
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": "dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "over there",
+      "legoId": "S0298L04",
+      "target": " draw fanco",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1636L02U01",
+   "set": {
+    "known_text": "he’s heard that that is Jane’s bag but it isn’t true",
+    "target_text": "ma fe wedi clywed taw bag Jane yw hwnna ond dyw hi ddim yn wir",
+    "decomposition": [
+     {
+      "known": "he’s heard",
+      "legoId": "S1598L01",
+      "target": "ma fe wedi clywed",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it isn’t true",
+      "legoId": "S1531L01",
+      "target": " dyw hi ddim yn wir",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1636L02U02",
+   "set": {
+    "known_text": "do you think that that is Jane’s bag?",
+    "target_text": "wyt ti’n meddwl taw bag Jane yw hwnna?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "wyt",
+      "isGhost": true
+     },
+     {
+      "known": "you think",
+      "legoId": "S1135L03",
+      "target": " ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1636L02U04",
+   "set": {
+    "known_text": "whatever he says I’m not convinced that that is Jane’s bag",
+    "target_text": "ta beth ma fe’n dweud sa i’n siŵr taw bag Jane yw hwnna",
+    "decomposition": [
+     {
+      "known": "whatever",
+      "legoId": "S0286L03",
+      "target": "ta beth",
+      "isGhost": false
+     },
+     {
+      "known": "he says",
+      "legoId": "S1480L02",
+      "target": " ma fe’n dweud",
+      "isGhost": false
+     },
+     {
+      "known": "I’m not convinced",
+      "legoId": "S1571L01",
+      "target": " sa i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1636L02C02",
+   "set": {
+    "known_text": "Jane’s bag",
+    "target_text": "bag Jane",
+    "target2_audio_id": "e7d35d6d-d18e-4785-8008-8e95cb985c1b",
+    "decomposition": [
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": "bag Jane",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1636L02B04",
+   "set": {
+    "known_text": "I’m not convinced that that is Jane’s bag",
+    "target_text": "sa i’n siŵr taw bag Jane yw hwnna",
+    "decomposition": [
+     {
+      "known": "I’m not convinced",
+      "legoId": "S1571L01",
+      "target": "sa i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1636L02B03",
+   "set": {
+    "known_text": "he’s heard that that is Jane’s bag",
+    "target_text": "ma fe wedi clywed taw bag Jane yw hwnna",
+    "decomposition": [
+     {
+      "known": "he’s heard",
+      "legoId": "S1598L01",
+      "target": "ma fe wedi clywed",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1636L02B02",
+   "set": {
+    "known_text": "why do you think that that is Jane’s bag?",
+    "target_text": "pam wyt ti’n meddwl taw bag Jane yw hwnna?",
+    "decomposition": [
+     {
+      "known": "why",
+      "legoId": "S0300L01",
+      "target": "pam",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " wyt",
+      "isGhost": true
+     },
+     {
+      "known": "you think",
+      "legoId": "S1135L03",
+      "target": " ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1636L02B01",
+   "set": {
+    "known_text": "I can see that that is Jane’s bag",
+    "target_text": "dw i’n gallu gweld taw bag Jane yw hwnna",
+    "decomposition": [
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": "dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "that that is Jane’s bag",
+      "legoId": "S1636L02",
+      "target": " taw bag Jane yw hwnna",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "e3647ece-fd65-4346-af3e-b3ffc809978f",
+   "set": {
+    "known_text": "that that is Jane’s bag",
+    "target_text": "taw bag Jane yw hwnna",
+    "components": [
+     {
+      "known": "that",
+      "target": "taw"
+     },
+     {
+      "known": "Jane’s bag",
+      "target": "bag Jane"
+     },
+     {
+      "known": "that one’s",
+      "target": "yw hwnna"
+     }
+    ],
+    "target2_audio_id": "37e1411c-b28d-4435-b529-6c316b358a2e"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1636,
+   "set": {
+    "known_text": "I think that that is Jane's bag",
+    "target_text": "dw i’n meddwl taw bag Jane yw hwnna",
+    "target2_audio_id": "1dbb0253-9cf5-410e-9efe-ac95e00f0618"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1635L01U02",
+   "set": {
+    "known_text": "have you found Jane’s bag?",
+    "target_text": "wyt ti ’di ffeindio bag Jane?",
+    "decomposition": [
+     {
+      "known": "have you found",
+      "legoId": "S1559L01",
+      "target": "wyt ti ’di ffeindio",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1635L01U03",
+   "set": {
+    "known_text": "probably that one’s Jane’s bag",
+    "target_text": "mwy na thebyg bag Jane yw hwnna",
+    "decomposition": [
+     {
+      "known": "probably",
+      "legoId": "S0320L01",
+      "target": "mwy na thebyg",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "that one’s",
+      "legoId": "S0303L01",
+      "target": " yw hwnna",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1635L01U01",
+   "set": {
+    "known_text": "I haven’t seen Jane’s bag in the office",
+    "target_text": "sa i wedi gweld bag Jane yn y swyddfa",
+    "decomposition": [
+     {
+      "known": "I haven’t seen",
+      "legoId": "S1519L01",
+      "target": "sa i wedi gweld",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "in the office",
+      "legoId": "S1184L02",
+      "target": " yn y swyddfa",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1635L01U05",
+   "set": {
+    "known_text": "great that one’s Jane’s bag",
+    "target_text": "bendigedig bag Jane yw hwnna",
+    "decomposition": [
+     {
+      "known": "great",
+      "legoId": "S1624L01",
+      "target": "bendigedig",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "that one’s",
+      "legoId": "S0303L01",
+      "target": " yw hwnna",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1635L01U04",
+   "set": {
+    "known_text": "I just want Jane’s bag",
+    "target_text": "dw i jyst yn moyn bag Jane",
+    "decomposition": [
+     {
+      "known": "I just want",
+      "legoId": "S1562L01",
+      "target": "dw i jyst yn moyn",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1635L01U06",
+   "set": {
+    "known_text": "I need Jane’s bag for a while",
+    "target_text": "dw i angen bag Jane am dipyn",
+    "decomposition": [
+     {
+      "known": "I need",
+      "legoId": "S0007L01",
+      "target": "dw i angen",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "for a while",
+      "legoId": "S0104L02",
+      "target": " am dipyn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1635L01B04",
+   "set": {
+    "known_text": "that one’s Jane’s bag",
+    "target_text": "bag Jane yw hwnna",
+    "target2_audio_id": "1e92b28f-52b2-4c21-ae51-29e9875c452f",
+    "decomposition": [
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": "bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "that one’s",
+      "legoId": "S0303L01",
+      "target": " yw hwnna",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1635L01B03",
+   "set": {
+    "known_text": "I can see Jane’s bag in the garden",
+    "target_text": "dw i’n gallu gweld bag Jane yn yr ardd",
+    "decomposition": [
+     {
+      "known": "I can see",
+      "legoId": "S1585L01",
+      "target": "dw i’n gallu gweld",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     },
+     {
+      "known": "in the garden",
+      "legoId": "S1383L03",
+      "target": " yn yr ardd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1635L01B01",
+   "set": {
+    "known_text": "I want Jane’s bag",
+    "target_text": "dw i’n moyn bag Jane",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "dw i’n moyn",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1635L01B02",
+   "set": {
+    "known_text": "I need Jane’s bag",
+    "target_text": "dw i angen bag Jane",
+    "decomposition": [
+     {
+      "known": "I need",
+      "legoId": "S0007L01",
+      "target": "dw i angen",
+      "isGhost": false
+     },
+     {
+      "known": "Jane’s bag",
+      "legoId": "S1635L01",
+      "target": " bag Jane",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "6bb5d588-9cd4-4f42-999e-9e438888741e",
+   "set": {
+    "known_text": "Jane’s bag",
+    "target_text": "bag Jane",
+    "components": [
+     {
+      "known": "Jane’s bag",
+      "target": "bag Jane"
+     }
+    ],
+    "target2_audio_id": "e7d35d6d-d18e-4785-8008-8e95cb985c1b"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1635,
+   "set": {
+    "known_text": "that is Jane's bag",
+    "target_text": "bag Jane yw hwnna",
+    "target2_audio_id": "1e92b28f-52b2-4c21-ae51-29e9875c452f"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
