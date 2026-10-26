@@ -2293,7 +2293,7 @@ function backDebounced() {
 
 // `target` is the line as it was when the take was CLOSED (take-target.js), never
 // a position: the cursor may be six lines away by the time the blob lands.
-function commit(target, blob, hadSpeech) {
+function commit(target, blob, hadSpeech, advance = null) {
   const found = resolveTakeTarget(target, lines.value)
   // THE WRONG-LINE GUARD. The line is gone or its words changed under the tail:
   // this audio belongs to nothing on the screen, so it is filed under nothing.
@@ -2325,7 +2325,7 @@ function commit(target, blob, hadSpeech) {
   // already refuses to list it twice; this is the last of the three counts that
   // was still double-counting a re-read.
   const firstTakeOfThisLine = !sessionIds.value.includes(line.id)
-  queue.queueTake({ voiceId: props.voiceId, lineId: line.id, text: line.text, blob, micLabel: micLabel() })
+  queue.queueTake({ voiceId: props.voiceId, lineId: line.id, text: line.text, blob, micLabel: micLabel(), advance })
   noteRetake(line.id)
   rememberLocalTake(line.id, blob)
   doneIds.value.add(line.id)
@@ -2422,6 +2422,14 @@ watch(phase, (p) => {
 // false, or null for "no idea". Null is what a meter that is not delivering
 // samples is entitled to say, and it is the only answer that never destroys a
 // performance.
+// ADVANCE TELEMETRY (Aran, 2026-10-26): auto, tap or stop, the ms since the
+// meter last heard speech, and the speech/quiet thresholds then in force. It
+// rides on the take's upload into the server's [BoothTake] line. Never allowed
+// to throw: a telemetry fault must not cost a take or a step forward.
+function advanceInfo(by) {
+  try { return { by, ...recorder.advanceSnapshot() } } catch { return { by } }
+}
+
 function speechVerdict() {
   if (!recorder.meterTrusted.value) return null
   return recorder.lineHasSpeech.value
@@ -2443,6 +2451,8 @@ async function onNext(source = 'tap', to = 'next') {
     // Snapshot BEFORE the next line opens: beginLine() resets it, and the blob
     // does not land for up to a tail-length afterwards.
     const hadSpeech = speechVerdict()
+    // How this line moved on, read at the instant it did (the server logs it).
+    const advance = advanceInfo(source === 'auto' ? 'auto' : 'tap')
     // The blob is not awaited before advancing. endLine() keeps the outgoing
     // recorder running for its tail — that is the whole point of it — so
     // waiting here would put a visible pause on every line for audio that is
@@ -2467,7 +2477,7 @@ async function onNext(source = 'tap', to = 'next') {
       // walking over saved work must never replace it with room tone.
       if (hadSpeech === false) return
       if (hadSpeech === null && target && lines.value.some(l => l.id === target.id && (isRecorded(l) || isPending(l.id)))) return
-      commit(target, blob, hadSpeech)
+      commit(target, blob, hadSpeech, advance)
     })
     if (n === -1) {
       await pending
@@ -2678,6 +2688,7 @@ async function onFinish() {
     }
     const i = index.value
     const hadSpeech = speechVerdict()
+    const advance = advanceInfo('stop')
     const target = takeTargetAt(lines.value, i)
     const blob = await recorder.endLine()
     // Stop pressed on a line nobody read is not a failed take — it is the end
@@ -2685,7 +2696,7 @@ async function onFinish() {
     // But that only holds where the recorder KNOWS nobody read it: if the meter
     // is not reading, a dropped final line is a lost take, and a phantom row on
     // the done screen is the cheaper of the two mistakes.
-    if (hadSpeech !== false) commit(target, blob, hadSpeech)
+    if (hadSpeech !== false) commit(target, blob, hadSpeech, advance)
     // Stopped after reading this line: the next visit opens on the line after it.
     if (hadSpeech === true && nextFlowFrom(i) !== -1) pinCursor(lines.value[nextFlowFrom(i)].id)
     await finish()

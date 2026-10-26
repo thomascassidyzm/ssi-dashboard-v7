@@ -163,6 +163,23 @@ function captureResponse() {
   return { res, captured }
 }
 
+// ADVANCE TELEMETRY (Aran, 2026-10-26). The booth sends, with each take, how
+// its line moved on — advanceBy auto|tap|stop, advanceGapMs (ms from the last
+// frame the meter called speech to the advance), and thrSpeech/thrQuiet (dBFS).
+// Appended to the [BoothTake] line as ' advance=… gapMs=… thrSpeech=… thrQuiet=…'
+// so a stall reads straight off the log. Client words never reach the log raw:
+// anything that is not a known token or a plain number is dropped.
+function boothAdvanceLogFields(body) {
+  if (!body || typeof body !== 'object') return ''
+  const by = ['auto', 'tap', 'stop'].includes(body.advanceBy) ? body.advanceBy : null
+  if (!by) return ''
+  const num = (v) => {
+    const t = typeof v === 'number' && Number.isFinite(v) ? String(v) : v
+    return typeof t === 'string' && /^-?\d{1,7}(\.\d{1,2})?$/.test(t) ? t : '?'
+  }
+  return ` advance=${by} gapMs=${num(body.advanceGapMs)} thrSpeech=${num(body.thrSpeech)} thrQuiet=${num(body.thrQuiet)}`
+}
+
 module.exports = function createRecordistRouter({
   getDb,
   logger = console,
@@ -1980,9 +1997,10 @@ module.exports = function createRecordistRouter({
     let releaseLine = null
     let lockWaitMs = 0
     let logLine = '?'
+    let advanceFields = null
     if (typeof res.on === 'function') {
       res.on('finish', () => {
-        logger.log(`[BoothTake] ${new Date().toISOString()} voice=${req.params.voiceId} line=${logLine} status=${res.statusCode} ms=${Date.now() - tookStart} lockWaitMs=${lockWaitMs} inFlight=${inFlightAtStart}`)
+        logger.log(`[BoothTake] ${new Date().toISOString()} voice=${req.params.voiceId} line=${logLine} status=${res.statusCode} ms=${Date.now() - tookStart} lockWaitMs=${lockWaitMs} inFlight=${inFlightAtStart}${boothAdvanceLogFields(advanceFields)}`)
       })
     }
     try {
@@ -2012,6 +2030,7 @@ module.exports = function createRecordistRouter({
       if (isMultipart) {
         const parsed = await parseMultipartTake(req)
         lineId = parsed.fields.lineId
+        advanceFields = parsed.fields
         text = parsed.fields.text
         device = parsed.fields.device || null
         mimeType = parsed.fields.mimeType || parsed.mimeType || 'audio/webm'
@@ -2024,6 +2043,7 @@ module.exports = function createRecordistRouter({
         // on this estate sends, and refusing it would make the one surface
         // reachable by fewer clients than the five it replaces.
         lineId = req.body.lineId
+        advanceFields = req.body
         text = req.body.text
         mimeType = req.body.mimeType || 'audio/webm'
         device = req.body.device || null
@@ -3006,3 +3026,4 @@ module.exports = function createRecordistRouter({
 
   return router
 }
+module.exports.boothAdvanceLogFields = boothAdvanceLogFields

@@ -197,7 +197,7 @@ export function useRecordistQueue(options = {}) {
    * between "the artist read it" and "it is on the shelf" is the only window in
    * which audio can still be lost.
    */
-  function queueTake({ voiceId: vid, lineId, text, blob, micLabel }) {
+  function queueTake({ voiceId: vid, lineId, text, blob, micLabel, advance }) {
     if (vid) voiceId = vid
     failed.delete(lineId)
     saved.delete(lineId)
@@ -205,7 +205,7 @@ export function useRecordistQueue(options = {}) {
     unsentLines.add(lineId)
     pendingCount.value = unsentLines.size
     return ensureStore()
-      .then(s => s.put({ voiceId: vid || voiceId, lineId, text, blob, device: describeDevice(micLabel) }))
+      .then(s => s.put({ voiceId: vid || voiceId, lineId, text, blob, device: describeDevice(micLabel), advance }))
       .then(async () => { await refreshCounts(); drain() })
       .catch(async err => {
         // The shelf itself refused the take — out of quota, most likely. Never
@@ -221,7 +221,7 @@ export function useRecordistQueue(options = {}) {
           mem.available = false
           store = createTakeStore(mem)
           storePromise = Promise.resolve(store)
-          await store.put({ voiceId: vid || voiceId, lineId, text, blob, device: describeDevice(micLabel) })
+          await store.put({ voiceId: vid || voiceId, lineId, text, blob, device: describeDevice(micLabel), advance })
           await refreshCounts()
         } catch { /* the blob is beyond saving; the words above are all we have */ }
         drain()
@@ -412,6 +412,15 @@ export function useRecordistQueue(options = {}) {
     form.append('lineId', String(item.lineId))
     form.append('text', item.text || '')
     if (item.device) form.append('device', item.device)
+    // ADVANCE TELEMETRY: rides on the upload it describes, so it costs no
+    // request of its own and can never hold the line or the take.
+    const adv = item.advance
+    if (adv && adv.by) {
+      form.append('advanceBy', String(adv.by))
+      if (adv.gapMs != null) form.append('advanceGapMs', String(adv.gapMs))
+      if (adv.thrSpeech != null) form.append('thrSpeech', String(adv.thrSpeech))
+      if (adv.thrQuiet != null) form.append('thrQuiet', String(adv.thrQuiet))
+    }
     const ctl = typeof AbortController === 'function' ? new AbortController() : null
     const timer = ctl ? setTimeout(() => ctl.abort(), UPLOAD_TIMEOUT_MS) : null
     let res

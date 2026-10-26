@@ -303,3 +303,29 @@ describe('a take still waiting on the device can be played back (Aran, 2026-10-1
     q.teardown()
   })
 })
+
+// ADVANCE TELEMETRY (Aran, 2026-10-26, job #99): how the line moved on rides on
+// the take's own upload, so the server's [BoothTake] line can say auto or tap.
+describe('the take carries how its line moved on', () => {
+  it('appends advanceBy / advanceGapMs / thrSpeech / thrQuiet to the upload form', async () => {
+    const { calls } = respond([ok()])
+    const q = queueOn()
+    await q.attach('v1')
+    await q.queueTake({ voiceId: 'v1', lineId: 'L1', blob: blob(), advance: { by: 'auto', gapMs: 1253, thrSpeech: -41.6, thrQuiet: -45.2 } })
+    await settle(q, () => calls.length >= 1)
+    const form = calls[0].init.body
+    expect(form.get('advanceBy')).toBe('auto')
+    expect(form.get('advanceGapMs')).toBe('1253')
+    expect(form.get('thrSpeech')).toBe('-41.6')
+    expect(form.get('thrQuiet')).toBe('-45.2')
+  })
+
+  it('a take without it uploads exactly as before', async () => {
+    const { calls } = respond([ok()])
+    const q = queueOn()
+    await q.attach('v1')
+    await q.queueTake({ voiceId: 'v1', lineId: 'L1', blob: blob() })
+    await settle(q, () => calls.length >= 1)
+    expect(calls[0].init.body.has('advanceBy')).toBe(false)
+  })
+})

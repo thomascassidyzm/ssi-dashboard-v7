@@ -63,12 +63,13 @@ const track = { applyConstraints: async () => {}, getSettings: () => ({ sampleRa
 
 // ── The server: every take POST is held until the test releases it ─────────
 function fakeServer() {
-  const server = { held: [], uploads: [] }
+  const server = { held: [], uploads: [], forms: [] }
   global.fetch = vi.fn(async (url, init = {}) => {
     const u = String(url)
     if ((init.method || 'GET') === 'POST' && u.endsWith(`/api/recording/voice/${VOICE}/take`)) {
       const lineId = init.body.get('lineId')
       server.uploads.push(lineId)
+      server.forms.push(init.body)
       return new Promise((resolve) => {
         server.held.push({ lineId, release: () => resolve({ ok: true, status: 200, headers: { get: () => null }, json: async () => ({ audioId: `aud-${lineId}`, clipUrl: null }) }) })
       })
@@ -196,4 +197,24 @@ describe('a line moves on 1.2 s after the read, whenever the upload queue emptie
       expect(took, `moved on ${took} ms after the read; a drain resetting the quiet clock would make it >= ${drainedAtMs + ADVANCE_AT_MS}`).toBeLessThan(ADVANCE_AT_MS + 200)
     })
   }
+
+  // ADVANCE TELEMETRY (job #99): each take's upload says how its line moved on.
+  it('the take says auto or tap, with the gap from speech and the thresholds', async () => {
+    await read(1500)
+    await quietUntilAdvance(w)
+    await read(1500)
+    await room(300)
+    await w.find('.ctl-next').trigger('click')
+    for (let i = 0; i < 200 && server.forms.length < 2; i++) { await settleUploads(server); await frame(ROOM(i)) }
+    const [auto, tap] = server.forms
+    expect(auto.get('lineId')).toBe('L0')
+    expect(auto.get('advanceBy')).toBe('auto')
+    expect(Number(auto.get('advanceGapMs'))).toBeGreaterThanOrEqual(ADVANCE_AT_MS - 100)
+    expect(Number(auto.get('advanceGapMs'))).toBeLessThan(ADVANCE_AT_MS + 300)
+    expect(Number(auto.get('thrQuiet'))).toBeLessThanOrEqual(Number(auto.get('thrSpeech')))
+    expect(tap.get('lineId')).toBe('L1')
+    expect(tap.get('advanceBy')).toBe('tap')
+    expect(Number(tap.get('advanceGapMs'))).toBeLessThan(ADVANCE_AT_MS)
+    await settleUploads(server)
+  })
 })

@@ -380,6 +380,9 @@ export function useTapRecorder() {
   // is for the eye, this is for the timing decisions.
   let peak = 0
   let lastQuietSince = 0
+  // The last frame on this line the meter called speech; 0 = none yet. Read only
+  // by advanceSnapshot(), the booth's advance telemetry.
+  let lastSpeechAt = 0
   let lineOpenedAt = 0
   // The warm recorder waiting to be promoted at the next boundary, and whether
   // it has heard anything since it was spawned. A dirty standby is never
@@ -623,10 +626,23 @@ export function useTapRecorder() {
     return Math.min(FLOOR_PEAK, Math.max(tf * QUIET_PEAK_RATIO, roomCeil * QUIET_ROOM_MULT))
   }
 
+  // ADVANCE TELEMETRY (Aran, 2026-10-26): what the booth knew at the instant a
+  // line moved on — ms since the meter last heard speech, and both thresholds in
+  // dBFS — so the server's [BoothTake] line can tell a stall from a tap without
+  // anyone replaying raw audio. Read-only: it changes nothing it measures.
+  function advanceSnapshot() {
+    const db = (x) => (x > 0 ? Math.round(200 * Math.log10(x)) / 10 : null)
+    return {
+      gapMs: lastSpeechAt ? Math.max(0, now() - lastSpeechAt) : null,
+      thrSpeech: db(speechFloor()),
+      thrQuiet: db(quietFloor()),
+    }
+  }
+
   function onMeterFrame(p) {
     const t = now()
     if (p > quietFloor()) lastQuietSince = t
-    if (p > speechFloor() && isRecording.value) lineHasSpeech.value = true
+    if (p > speechFloor() && isRecording.value) { lineHasSpeech.value = true; lastSpeechAt = t }
 
     quietMs.value = lineHasSpeech.value ? t - lastQuietSince : 0
 
@@ -707,6 +723,7 @@ export function useTapRecorder() {
     quietMs.value = 0
     lineOpenedAt = now()
     lastQuietSince = now()
+    lastSpeechAt = 0
     isRecording.value = true
   }
 
@@ -787,6 +804,6 @@ export function useTapRecorder() {
     isRecording, level, clipping, devices, appliedSettings, profile, error,
     lineHasSpeech, quietMs, meterTrusted, inputPeak, roomTone,
     listDevices, start, beginLine, endLine, discardLine, stop,
-    activeAgeMs, awaitLeadIn,
+    activeAgeMs, awaitLeadIn, advanceSnapshot,
   }
 }

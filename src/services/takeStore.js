@@ -127,7 +127,7 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
      * A REFUSED take of the same line is superseded too: the re-read is the
      * artist answering the refusal.
      */
-    async put({ voiceId, lineId, text, blob, device }) {
+    async put({ voiceId, lineId, text, blob, device, advance }) {
       for (const rec of await readMeta()) {
         if (rec.voiceId === voiceId && rec.lineId === lineId) await backend.remove(rec.id)
       }
@@ -138,6 +138,8 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
         text: text || '',
         blob,
         device: device || '',
+        // How the line moved on (RecordistRoom advanceInfo) — telemetry only.
+        advance: advance || null,
         status: PENDING,
         attempts: 0,
         lastError: null,

@@ -181,3 +181,27 @@ describe("Aran's room, 2026-10-26: a line moves on within 2s of his last syllabl
     })
   }
 })
+
+// ADVANCE TELEMETRY (job #99): at the instant a line moves on, the recorder can
+// say how long ago it last heard speech and what the two thresholds were — the
+// numbers the [BoothTake] log line carries.
+describe('advanceSnapshot()', () => {
+  it('reports ms since the last speech frame and both thresholds in dBFS', async () => {
+    const c = STALLED_LINES[0]
+    const r = useTapRecorder()
+    await r.start()
+    play(c.peaks.slice(0, c.lineAt).map(p => p / 10000))
+    r.beginLine()
+    expect(r.advanceSnapshot().gapMs).toBeNull()
+    play(c.peaks.slice(c.lineAt, c.readEndsAt + 1).map(p => p / 10000))
+    play(room(75))
+    const s = r.advanceSnapshot()
+    // 75 frames of 16 ms after the read (a room frame could still count as speech).
+    expect(s.gapMs).toBeGreaterThan(0)
+    expect(s.gapMs).toBeLessThanOrEqual(75 * FRAME_MS + FRAME_MS)
+    expect(typeof s.thrSpeech).toBe('number')
+    expect(typeof s.thrQuiet).toBe('number')
+    expect(s.thrQuiet).toBeLessThanOrEqual(s.thrSpeech)
+    expect(s.thrSpeech).toBeLessThan(0)
+  })
+})
