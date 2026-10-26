@@ -1,0 +1,1443 @@
+{
+ "ok": true,
+ "dryRun": true,
+ "applied": false,
+ "event_id": null,
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "seed_number": 1576
+   },
+   "before": {
+    "id": "312eff24-af88-4d7e-a96e-a439eab8ada3",
+    "seed_number": 1576,
+    "target_text": "mae o wedi bod yn ofidus iawn aros",
+    "known_text": "it has been very upsetting waiting",
+    "known_audio_id": null,
+    "target1_audio_id": "4c9ee6a2-235c-411e-b9af-255c53575e9a",
+    "target2_audio_id": "16be9bd8-b1d0-473c-b5dd-688cc3445bad"
+   },
+   "after": {
+    "id": "312eff24-af88-4d7e-a96e-a439eab8ada3",
+    "seed_number": 1576,
+    "target_text": "mae o wedi bod yn annifyr iawn aros",
+    "known_text": "it has been very upsetting waiting",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1576L01"
+   },
+   "before": {
+    "id": "d4b5b0c9-2114-4b4d-a1f0-001afcb7ff9a",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": "S1576L01",
+    "target_text": "ofidus iawn aros",
+    "components": [
+     {
+      "known": "very upsetting",
+      "target": "ofidus iawn"
+     },
+     {
+      "known": "waiting",
+      "target": "aros"
+     }
+    ],
+    "known_text": "very upsetting waiting",
+    "known_audio_id": null,
+    "target1_audio_id": "0098fab7-e74b-4f36-8721-6ed7d7e1ea05",
+    "target2_audio_id": "9b43d640-3102-43fd-aa53-19492424d8e2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "d4b5b0c9-2114-4b4d-a1f0-001afcb7ff9a",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": "S1576L01",
+    "target_text": "annifyr iawn aros",
+    "components": [
+     {
+      "known": "very upsetting",
+      "target": "annifyr iawn"
+     },
+     {
+      "known": "waiting",
+      "target": "aros"
+     }
+    ],
+    "known_text": "very upsetting waiting",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1576L01B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1576L01B03",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fydd hi’n ofidus iawn aros ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hi’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it will be very upsetting waiting on my own",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "4c9274b2-e331-4699-b5c9-32ed3496ddfe",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1576L01B03",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fydd hi’n annifyr iawn aros ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hi’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " annifyr iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it will be very upsetting waiting on my own",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1576L01B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1576L01B01",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "gofidus iawn aros tu allan",
+    "decomposition": [
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": "gofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "outdoors",
+      "legoId": "S1567L02",
+      "target": " tu allan",
+      "isGhost": false
+     }
+    ],
+    "known_text": "very upsetting waiting outdoors",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "8de7e2af-4863-4606-ac08-7687bd9b9328",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1576L01B01",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "annifyr iawn aros tu allan",
+    "decomposition": [
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": "annifyr iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "outdoors",
+      "legoId": "S1567L02",
+      "target": " tu allan",
+      "isGhost": false
+     }
+    ],
+    "known_text": "very upsetting waiting outdoors",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1576L01B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1576L01B02",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "byddai’n ofidus iawn aros",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be very upsetting waiting",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "dec674fc-b3e8-4261-9c68-668d8595cc8f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1576L01B02",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "byddai’n annifyr iawn aros",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " annifyr iawn aros",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be very upsetting waiting",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1576L01B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1576L01B04",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "y bydd o’n ofidus iawn aros yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "that it will be very upsetting waiting late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "8accee34-936d-43c3-8769-2cf35f872f9c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1576L01B04",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "y bydd o’n annifyr iawn aros yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " annifyr iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "that it will be very upsetting waiting late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1576L01C01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1576L01C01",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ofidus iawn",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ofidus",
+      "isGhost": true
+     },
+     {
+      "known": "right",
+      "legoId": "S1543L01",
+      "target": " iawn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "very upsetting",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1576L01C01",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "annifyr iawn",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "annifyr",
+      "isGhost": true
+     },
+     {
+      "known": "right",
+      "legoId": "S1543L01",
+      "target": " iawn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "very upsetting",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1576L01U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1576L01U02",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae arna i ofn y bydd o’n ofidus iawn aros tu allan",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "outdoors",
+      "legoId": "S1567L02",
+      "target": " tu allan",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m afraid that it will be very upsetting waiting outdoors",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1576L01U02",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae arna i ofn y bydd o’n annifyr iawn aros tu allan",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " annifyr iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "outdoors",
+      "legoId": "S1567L02",
+      "target": " tu allan",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m afraid that it will be very upsetting waiting outdoors",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1576L01U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1576L01U04",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "tro nesa’ fydd hi’n ofidus iawn aros ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "next time",
+      "legoId": "S1568L02",
+      "target": "tro nesa’",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hi’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ],
+    "known_text": "next time it will be very upsetting waiting on my own",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1576L01U04",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "tro nesa’ fydd hi’n annifyr iawn aros ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "next time",
+      "legoId": "S1568L02",
+      "target": "tro nesa’",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hi’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " annifyr iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ],
+    "known_text": "next time it will be very upsetting waiting on my own",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1576L01U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1576L01U05",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fydd hi’n ofidus iawn aros yn hwyr yn y nos wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hi’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it will be very upsetting waiting late at night do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1576L01U05",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fydd hi’n annifyr iawn aros yn hwyr yn y nos wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hi’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " annifyr iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it will be very upsetting waiting late at night do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1576L01U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1576L01U06",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "byddai’n ofidus iawn aros ond does dim ots",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it doesn’t matter",
+      "legoId": "S1409L01",
+      "target": " does dim ots",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be very upsetting waiting but it doesn’t matter",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "c0591bb0-1551-461a-b53f-f51a2d9a2010",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1576L01U06",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "byddai’n annifyr iawn aros ond does dim ots",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " annifyr iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it doesn’t matter",
+      "legoId": "S1409L01",
+      "target": " does dim ots",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be very upsetting waiting but it doesn’t matter",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1576L01U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1576L01U01",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n siŵr y bydd o’n ofidus iawn aros am dy docyn",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "for your ticket",
+      "legoId": "S1570L03",
+      "target": " am dy docyn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m sure that it will be very upsetting waiting for your ticket",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "6f59a0a4-3b08-42df-a879-4fb7a545cb51",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1576L01U01",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n siŵr y bydd o’n annifyr iawn aros am dy docyn",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " annifyr iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "for your ticket",
+      "legoId": "S1570L03",
+      "target": " am dy docyn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m sure that it will be very upsetting waiting for your ticket",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1576L01U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1576L01U03",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "oedd rhaid i ni adael achos byddai’n ofidus iawn aros",
+    "decomposition": [
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": "oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we had to leave because it would be very upsetting waiting",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "38819a9a-2a6f-4625-8a2e-0d6072b501e3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1576L01U03",
+    "seed_number": 1576,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "oedd rhaid i ni adael achos byddai’n annifyr iawn aros",
+    "decomposition": [
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": "oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " annifyr iawn aros",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we had to leave because it would be very upsetting waiting",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1576L01U03",
+   "set": {
+    "target_text": "oedd rhaid i ni adael achos byddai’n ofidus iawn aros",
+    "target2_audio_id": "38819a9a-2a6f-4625-8a2e-0d6072b501e3",
+    "decomposition": [
+     {
+      "known": "we had to leave",
+      "legoId": "S1455L01",
+      "target": "oedd rhaid i ni adael",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1576L01U01",
+   "set": {
+    "target_text": "dw i’n siŵr y bydd o’n ofidus iawn aros am dy docyn",
+    "target2_audio_id": "6f59a0a4-3b08-42df-a879-4fb7a545cb51",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "for your ticket",
+      "legoId": "S1570L03",
+      "target": " am dy docyn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1576L01U06",
+   "set": {
+    "target_text": "byddai’n ofidus iawn aros ond does dim ots",
+    "target2_audio_id": "c0591bb0-1551-461a-b53f-f51a2d9a2010",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it doesn’t matter",
+      "legoId": "S1409L01",
+      "target": " does dim ots",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1576L01U05",
+   "set": {
+    "target_text": "fydd hi’n ofidus iawn aros yn hwyr yn y nos wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hi’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1576L01U04",
+   "set": {
+    "target_text": "tro nesa’ fydd hi’n ofidus iawn aros ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "next time",
+      "legoId": "S1568L02",
+      "target": "tro nesa’",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hi’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1576L01U02",
+   "set": {
+    "target_text": "mae arna i ofn y bydd o’n ofidus iawn aros tu allan",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "outdoors",
+      "legoId": "S1567L02",
+      "target": " tu allan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1576L01C01",
+   "set": {
+    "target_text": "ofidus iawn",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ofidus",
+      "isGhost": true
+     },
+     {
+      "known": "right",
+      "legoId": "S1543L01",
+      "target": " iawn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1576L01B04",
+   "set": {
+    "target_text": "y bydd o’n ofidus iawn aros yn hwyr yn y nos",
+    "target2_audio_id": "8accee34-936d-43c3-8769-2cf35f872f9c",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " bydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " o’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1576L01B02",
+   "set": {
+    "target_text": "byddai’n ofidus iawn aros",
+    "target2_audio_id": "dec674fc-b3e8-4261-9c68-668d8595cc8f",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "byddai’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1576L01B01",
+   "set": {
+    "target_text": "gofidus iawn aros tu allan",
+    "target2_audio_id": "8de7e2af-4863-4606-ac08-7687bd9b9328",
+    "decomposition": [
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": "gofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "outdoors",
+      "legoId": "S1567L02",
+      "target": " tu allan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1576L01B03",
+   "set": {
+    "target_text": "fydd hi’n ofidus iawn aros ar fy mhen fy hun",
+    "target2_audio_id": "4c9274b2-e331-4699-b5c9-32ed3496ddfe",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fydd",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hi’n",
+      "isGhost": true
+     },
+     {
+      "known": "very upsetting waiting",
+      "legoId": "S1576L01",
+      "target": " ofidus iawn aros",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "d4b5b0c9-2114-4b4d-a1f0-001afcb7ff9a",
+   "set": {
+    "target_text": "ofidus iawn aros",
+    "components": [
+     {
+      "known": "very upsetting",
+      "target": "ofidus iawn"
+     },
+     {
+      "known": "waiting",
+      "target": "aros"
+     }
+    ],
+    "target1_audio_id": "0098fab7-e74b-4f36-8721-6ed7d7e1ea05",
+    "target2_audio_id": "9b43d640-3102-43fd-aa53-19492424d8e2"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1576,
+   "set": {
+    "target_text": "mae o wedi bod yn ofidus iawn aros",
+    "target1_audio_id": "4c9ee6a2-235c-411e-b9af-255c53575e9a",
+    "target2_audio_id": "16be9bd8-b1d0-473c-b5dd-688cc3445bad"
+   }
+  }
+ ],
+ "undo_file": null,
+ "note": "Dry run: the transaction ran and was rolled back. Send \"apply\": true to commit."
+}
