@@ -1,0 +1,771 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1640L01B03",
+   "set": {
+    "target_text": "ddudon nhw mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddudon nhw yr un coch ydy o",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " yr un coch ydy o",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1640L01B04",
+   "set": {
+    "target_text": "ddudon nhw mai’r un coch ydy o syr",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "sir",
+      "legoId": "S1639L01",
+      "target": " syr",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddudon nhw yr un coch ydy o syr",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " yr un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "sir",
+      "legoId": "S1639L01",
+      "target": " syr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1640L01U02",
+   "set": {
+    "target_text": "ddudon nhw mai’r un coch ydy o ond does dim ots gen i",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I don’t care",
+      "legoId": "S1048L01",
+      "target": " does dim ots gen i",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddudon nhw yr un coch ydy o ond does dim ots gen i",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " yr un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I don’t care",
+      "legoId": "S1048L01",
+      "target": " does dim ots gen i",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1641L02",
+   "set": {
+    "target_text": "mai’r un coch ydy o",
+    "components": [
+     {
+      "known": "that it’s the",
+      "target": "mai’r"
+     },
+     {
+      "known": "red one",
+      "target": "un coch"
+     },
+     {
+      "known": "it is",
+      "target": "ydy o"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mai’r un coch",
+    "components": [
+     {
+      "known": "that it’s the",
+      "target": "mai’r"
+     },
+     {
+      "known": "red one",
+      "target": "un coch"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02B03",
+   "set": {
+    "target_text": "ddudon nhw mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddudon nhw mai’r un coch",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02B01",
+   "set": {
+    "target_text": "mai’r un coch ydy o mwy na thebyg",
+    "decomposition": [
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": "mai’r un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "probably",
+      "legoId": "S0302L01",
+      "target": " mwy na thebyg",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mai’r un coch mwy na thebyg",
+    "decomposition": [
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": "mai’r un coch",
+      "isGhost": false
+     },
+     {
+      "known": "probably",
+      "legoId": "S0302L01",
+      "target": " mwy na thebyg",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02B02",
+   "set": {
+    "target_text": "dw i’n amau mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "I suspect",
+      "legoId": "S1597L01",
+      "target": "dw i’n amau",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n amau mai’r un coch",
+    "decomposition": [
+     {
+      "known": "I suspect",
+      "legoId": "S1597L01",
+      "target": "dw i’n amau",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02B04",
+   "set": {
+    "target_text": "wyt ti’n meddwl mai’r un coch ydy o?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "wyt",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "wyt ti’n meddwl mai’r un coch?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "wyt",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U04",
+   "set": {
+    "target_text": "dyfala pwy ddudodd mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "guess who",
+      "legoId": "S1527L01",
+      "target": "dyfala pwy",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ddudodd",
+      "isGhost": true
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dyfala pwy ddudodd mai’r un coch",
+    "decomposition": [
+     {
+      "known": "guess who",
+      "legoId": "S1527L01",
+      "target": "dyfala pwy",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ddudodd",
+      "isGhost": true
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U05",
+   "set": {
+    "target_text": "fyswn i wedi meddwl mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "I’d have thought",
+      "legoId": "S1565L01",
+      "target": "fyswn i wedi meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fyswn i wedi meddwl mai’r un coch",
+    "decomposition": [
+     {
+      "known": "I’d have thought",
+      "legoId": "S1565L01",
+      "target": "fyswn i wedi meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U03",
+   "set": {
+    "target_text": "dw i’n cael hi’n anodd i gredu mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "I’m finding it hard",
+      "legoId": "S1526L01",
+      "target": "dw i’n cael hi’n anodd",
+      "isGhost": false
+     },
+     {
+      "known": "to believe",
+      "legoId": "S0301L03",
+      "target": " i gredu",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n cael hi’n anodd i gredu mai’r un coch",
+    "decomposition": [
+     {
+      "known": "I’m finding it hard",
+      "legoId": "S1526L01",
+      "target": "dw i’n cael hi’n anodd",
+      "isGhost": false
+     },
+     {
+      "known": "to believe",
+      "legoId": "S0301L03",
+      "target": " i gredu",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U02",
+   "set": {
+    "target_text": "ddudon nhw mai’r un coch ydy o ond dydy o ddim yn wir",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it isn’t true",
+      "legoId": "S1531L01",
+      "target": " dydy o ddim yn wir",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddudon nhw mai’r un coch ond dydy o ddim yn wir",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it isn’t true",
+      "legoId": "S1531L01",
+      "target": " dydy o ddim yn wir",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U06",
+   "set": {
+    "target_text": "oeddat ti’n meddwl mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "you thought",
+      "legoId": "S0211L02",
+      "target": "oeddat ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "oeddat ti’n meddwl mai’r un coch",
+    "decomposition": [
+     {
+      "known": "you thought",
+      "legoId": "S0211L02",
+      "target": "oeddat ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U01",
+   "set": {
+    "target_text": "mae arna i ofn mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae arna i ofn mai’r un coch",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "changed": [
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1640L01B03",
+   "old": "ddudon nhw yr un coch ydy o",
+   "new": "ddudon nhw mai’r un coch ydy o",
+   "takes": [
+    "d08592f4-e150-4b1b-98ac-df1697360498"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1640L01B04",
+   "old": "ddudon nhw yr un coch ydy o syr",
+   "new": "ddudon nhw mai’r un coch ydy o syr",
+   "takes": [
+    "fcf6077f-686b-40bd-8d2e-1cb2478af895"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1640L01U02",
+   "old": "ddudon nhw yr un coch ydy o ond does dim ots gen i",
+   "new": "ddudon nhw mai’r un coch ydy o ond does dim ots gen i",
+   "takes": [
+    "6e61cd3c-9905-4000-b94d-7534fcf91417"
+   ]
+  },
+  {
+   "kind": "lego",
+   "id": "S1641L02",
+   "old": "mai’r un coch",
+   "new": "mai’r un coch ydy o"
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1641L02B03",
+   "old": "ddudon nhw mai’r un coch",
+   "new": "ddudon nhw mai’r un coch ydy o",
+   "takes": [
+    "258b6bcd-70fc-4918-a15c-fa0872437d5c"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1641L02B01",
+   "old": "mai’r un coch mwy na thebyg",
+   "new": "mai’r un coch ydy o mwy na thebyg",
+   "takes": [
+    "99e9fcbf-6d25-4b3b-be7c-e300583364a6"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1641L02B02",
+   "old": "dw i’n amau mai’r un coch",
+   "new": "dw i’n amau mai’r un coch ydy o",
+   "takes": [
+    "b5d34938-0eb9-45be-9383-01488f28d777"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1641L02B04",
+   "old": "wyt ti’n meddwl mai’r un coch?",
+   "new": "wyt ti’n meddwl mai’r un coch ydy o?",
+   "takes": [
+    "7611efdc-6a31-417e-a77a-e5a34447a678"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1641L02U04",
+   "old": "dyfala pwy ddudodd mai’r un coch",
+   "new": "dyfala pwy ddudodd mai’r un coch ydy o",
+   "takes": []
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1641L02U05",
+   "old": "fyswn i wedi meddwl mai’r un coch",
+   "new": "fyswn i wedi meddwl mai’r un coch ydy o",
+   "takes": [
+    "c8395f35-6872-47d0-b9c7-4a9814078b2c"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1641L02U03",
+   "old": "dw i’n cael hi’n anodd i gredu mai’r un coch",
+   "new": "dw i’n cael hi’n anodd i gredu mai’r un coch ydy o",
+   "takes": []
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1641L02U02",
+   "old": "ddudon nhw mai’r un coch ond dydy o ddim yn wir",
+   "new": "ddudon nhw mai’r un coch ydy o ond dydy o ddim yn wir",
+   "takes": []
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1641L02U06",
+   "old": "oeddat ti’n meddwl mai’r un coch",
+   "new": "oeddat ti’n meddwl mai’r un coch ydy o",
+   "takes": [
+    "4a63b9c0-afce-4d77-92aa-071699c48b2f"
+   ]
+  },
+  {
+   "kind": "phrase",
+   "id": "cym_nv2_for_eng:S1641L02U01",
+   "old": "mae arna i ofn mai’r un coch",
+   "new": "mae arna i ofn mai’r un coch ydy o",
+   "takes": [
+    "52dbbc1b-94e2-479d-b250-6c3bd84e0780"
+   ]
+  }
+ ]
+}

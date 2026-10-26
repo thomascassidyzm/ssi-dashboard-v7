@@ -1,0 +1,1343 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "360c0aa6-b3fb-4f77-9fef-9d98d3f31d5d",
+ "results": [
+  {
+   "index": 0,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1640L01B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1640L01B03",
+    "seed_number": 1640,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ddudon nhw yr un coch ydy o",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " yr un coch ydy o",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "d08592f4-e150-4b1b-98ac-df1697360498",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1640L01B03",
+    "seed_number": 1640,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ddudon nhw mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1640L01B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1640L01B04",
+    "seed_number": 1640,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ddudon nhw yr un coch ydy o syr",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " yr un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "sir",
+      "legoId": "S1639L01",
+      "target": " syr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said it’s the red one sir",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "fcf6077f-686b-40bd-8d2e-1cb2478af895",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1640L01B04",
+    "seed_number": 1640,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ddudon nhw mai’r un coch ydy o syr",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "sir",
+      "legoId": "S1639L01",
+      "target": " syr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said it’s the red one sir",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1640L01U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1640L01U02",
+    "seed_number": 1640,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ddudon nhw yr un coch ydy o ond does dim ots gen i",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " yr un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I don’t care",
+      "legoId": "S1048L01",
+      "target": " does dim ots gen i",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said it’s the red one but I don’t care",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "6e61cd3c-9905-4000-b94d-7534fcf91417",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1640L01U02",
+    "seed_number": 1640,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ddudon nhw mai’r un coch ydy o ond does dim ots gen i",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I don’t care",
+      "legoId": "S1048L01",
+      "target": " does dim ots gen i",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said it’s the red one but I don’t care",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1641L02"
+   },
+   "before": {
+    "id": "99d91d74-c762-4e72-90e5-141ed3cde7dc",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": "S1641L02",
+    "target_text": "mai’r un coch",
+    "components": [
+     {
+      "known": "that it’s the",
+      "target": "mai’r"
+     },
+     {
+      "known": "red one",
+      "target": "un coch"
+     }
+    ],
+    "known_text": "that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": "c7cf979a-fb86-4962-8406-9aee8bea8e69",
+    "target2_audio_id": "9c50493f-51d7-4882-9300-748d363de09a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "99d91d74-c762-4e72-90e5-141ed3cde7dc",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": "S1641L02",
+    "target_text": "mai’r un coch ydy o",
+    "components": [
+     {
+      "known": "that it’s the",
+      "target": "mai’r"
+     },
+     {
+      "known": "red one",
+      "target": "un coch"
+     },
+     {
+      "known": "it is",
+      "target": "ydy o"
+     }
+    ],
+    "known_text": "that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1641L02B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1641L02B03",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ddudon nhw mai’r un coch",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "258b6bcd-70fc-4918-a15c-fa0872437d5c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1641L02B03",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ddudon nhw mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1641L02B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1641L02B01",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mai’r un coch mwy na thebyg",
+    "decomposition": [
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": "mai’r un coch",
+      "isGhost": false
+     },
+     {
+      "known": "probably",
+      "legoId": "S0302L01",
+      "target": " mwy na thebyg",
+      "isGhost": false
+     }
+    ],
+    "known_text": "that it’s the red one probably",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "99e9fcbf-6d25-4b3b-be7c-e300583364a6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1641L02B01",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mai’r un coch ydy o mwy na thebyg",
+    "decomposition": [
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": "mai’r un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "probably",
+      "legoId": "S0302L01",
+      "target": " mwy na thebyg",
+      "isGhost": false
+     }
+    ],
+    "known_text": "that it’s the red one probably",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1641L02B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1641L02B02",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i’n amau mai’r un coch",
+    "decomposition": [
+     {
+      "known": "I suspect",
+      "legoId": "S1597L01",
+      "target": "dw i’n amau",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I suspect that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "b5d34938-0eb9-45be-9383-01488f28d777",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1641L02B02",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i’n amau mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "I suspect",
+      "legoId": "S1597L01",
+      "target": "dw i’n amau",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I suspect that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1641L02B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1641L02B04",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wyt ti’n meddwl mai’r un coch?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "wyt",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "do you think that it’s the red one?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "7611efdc-6a31-417e-a77a-e5a34447a678",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1641L02B04",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "wyt ti’n meddwl mai’r un coch ydy o?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "wyt",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "do you think that it’s the red one?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1641L02U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1641L02U04",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dyfala pwy ddudodd mai’r un coch",
+    "decomposition": [
+     {
+      "known": "guess who",
+      "legoId": "S1527L01",
+      "target": "dyfala pwy",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ddudodd",
+      "isGhost": true
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ],
+    "known_text": "guess who said that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1641L02U04",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dyfala pwy ddudodd mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "guess who",
+      "legoId": "S1527L01",
+      "target": "dyfala pwy",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ddudodd",
+      "isGhost": true
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ],
+    "known_text": "guess who said that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1641L02U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1641L02U05",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "fyswn i wedi meddwl mai’r un coch",
+    "decomposition": [
+     {
+      "known": "I’d have thought",
+      "legoId": "S1565L01",
+      "target": "fyswn i wedi meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’d have thought that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "c8395f35-6872-47d0-b9c7-4a9814078b2c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1641L02U05",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "fyswn i wedi meddwl mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "I’d have thought",
+      "legoId": "S1565L01",
+      "target": "fyswn i wedi meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’d have thought that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1641L02U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1641L02U03",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i’n cael hi’n anodd i gredu mai’r un coch",
+    "decomposition": [
+     {
+      "known": "I’m finding it hard",
+      "legoId": "S1526L01",
+      "target": "dw i’n cael hi’n anodd",
+      "isGhost": false
+     },
+     {
+      "known": "to believe",
+      "legoId": "S0301L03",
+      "target": " i gredu",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m finding it hard to believe that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1641L02U03",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i’n cael hi’n anodd i gredu mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "I’m finding it hard",
+      "legoId": "S1526L01",
+      "target": "dw i’n cael hi’n anodd",
+      "isGhost": false
+     },
+     {
+      "known": "to believe",
+      "legoId": "S0301L03",
+      "target": " i gredu",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m finding it hard to believe that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1641L02U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1641L02U02",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ddudon nhw mai’r un coch ond dydy o ddim yn wir",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it isn’t true",
+      "legoId": "S1531L01",
+      "target": " dydy o ddim yn wir",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said that it’s the red one but it isn’t true",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1641L02U02",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ddudon nhw mai’r un coch ydy o ond dydy o ddim yn wir",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it isn’t true",
+      "legoId": "S1531L01",
+      "target": " dydy o ddim yn wir",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they said that it’s the red one but it isn’t true",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1641L02U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1641L02U06",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "oeddat ti’n meddwl mai’r un coch",
+    "decomposition": [
+     {
+      "known": "you thought",
+      "legoId": "S0211L02",
+      "target": "oeddat ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ],
+    "known_text": "you thought that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "4a63b9c0-afce-4d77-92aa-071699c48b2f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1641L02U06",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "oeddat ti’n meddwl mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "you thought",
+      "legoId": "S0211L02",
+      "target": "oeddat ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ],
+    "known_text": "you thought that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1641L02U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1641L02U01",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae arna i ofn mai’r un coch",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m afraid that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "52dbbc1b-94e2-479d-b250-6c3bd84e0780",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1641L02U01",
+    "seed_number": 1641,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae arna i ofn mai’r un coch ydy o",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch ydy o",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m afraid that it’s the red one",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U01",
+   "set": {
+    "target_text": "mae arna i ofn mai’r un coch",
+    "target2_audio_id": "52dbbc1b-94e2-479d-b250-6c3bd84e0780",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U06",
+   "set": {
+    "target_text": "oeddat ti’n meddwl mai’r un coch",
+    "target2_audio_id": "4a63b9c0-afce-4d77-92aa-071699c48b2f",
+    "decomposition": [
+     {
+      "known": "you thought",
+      "legoId": "S0211L02",
+      "target": "oeddat ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U02",
+   "set": {
+    "target_text": "ddudon nhw mai’r un coch ond dydy o ddim yn wir",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it isn’t true",
+      "legoId": "S1531L01",
+      "target": " dydy o ddim yn wir",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U03",
+   "set": {
+    "target_text": "dw i’n cael hi’n anodd i gredu mai’r un coch",
+    "decomposition": [
+     {
+      "known": "I’m finding it hard",
+      "legoId": "S1526L01",
+      "target": "dw i’n cael hi’n anodd",
+      "isGhost": false
+     },
+     {
+      "known": "to believe",
+      "legoId": "S0301L03",
+      "target": " i gredu",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U05",
+   "set": {
+    "target_text": "fyswn i wedi meddwl mai’r un coch",
+    "target2_audio_id": "c8395f35-6872-47d0-b9c7-4a9814078b2c",
+    "decomposition": [
+     {
+      "known": "I’d have thought",
+      "legoId": "S1565L01",
+      "target": "fyswn i wedi meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02U04",
+   "set": {
+    "target_text": "dyfala pwy ddudodd mai’r un coch",
+    "decomposition": [
+     {
+      "known": "guess who",
+      "legoId": "S1527L01",
+      "target": "dyfala pwy",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ddudodd",
+      "isGhost": true
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02B04",
+   "set": {
+    "target_text": "wyt ti’n meddwl mai’r un coch?",
+    "target2_audio_id": "7611efdc-6a31-417e-a77a-e5a34447a678",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "wyt",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02B02",
+   "set": {
+    "target_text": "dw i’n amau mai’r un coch",
+    "target2_audio_id": "b5d34938-0eb9-45be-9383-01488f28d777",
+    "decomposition": [
+     {
+      "known": "I suspect",
+      "legoId": "S1597L01",
+      "target": "dw i’n amau",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02B01",
+   "set": {
+    "target_text": "mai’r un coch mwy na thebyg",
+    "target2_audio_id": "99e9fcbf-6d25-4b3b-be7c-e300583364a6",
+    "decomposition": [
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": "mai’r un coch",
+      "isGhost": false
+     },
+     {
+      "known": "probably",
+      "legoId": "S0302L01",
+      "target": " mwy na thebyg",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1641L02B03",
+   "set": {
+    "target_text": "ddudon nhw mai’r un coch",
+    "target2_audio_id": "258b6bcd-70fc-4918-a15c-fa0872437d5c",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "that it’s the red one",
+      "legoId": "S1641L02",
+      "target": " mai’r un coch",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "99d91d74-c762-4e72-90e5-141ed3cde7dc",
+   "set": {
+    "target_text": "mai’r un coch",
+    "components": [
+     {
+      "known": "that it’s the",
+      "target": "mai’r"
+     },
+     {
+      "known": "red one",
+      "target": "un coch"
+     }
+    ],
+    "target1_audio_id": "c7cf979a-fb86-4962-8406-9aee8bea8e69",
+    "target2_audio_id": "9c50493f-51d7-4882-9300-748d363de09a"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1640L01U02",
+   "set": {
+    "target_text": "ddudon nhw yr un coch ydy o ond does dim ots gen i",
+    "target2_audio_id": "6e61cd3c-9905-4000-b94d-7534fcf91417",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " yr un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I don’t care",
+      "legoId": "S1048L01",
+      "target": " does dim ots gen i",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1640L01B04",
+   "set": {
+    "target_text": "ddudon nhw yr un coch ydy o syr",
+    "target2_audio_id": "fcf6077f-686b-40bd-8d2e-1cb2478af895",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " yr un coch ydy o",
+      "isGhost": false
+     },
+     {
+      "known": "sir",
+      "legoId": "S1639L01",
+      "target": " syr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1640L01B03",
+   "set": {
+    "target_text": "ddudon nhw yr un coch ydy o",
+    "target2_audio_id": "d08592f4-e150-4b1b-98ac-df1697360498",
+    "decomposition": [
+     {
+      "known": "they said",
+      "legoId": "S1449L01",
+      "target": "ddudon nhw",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the red one",
+      "legoId": "S1640L01",
+      "target": " yr un coch ydy o",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ],
+ "undo_file": "2026-10-26T14-19-59-407Z-360c0aa6-b3fb-4f77-9fef-9d98d3f31d5d.json"
+}

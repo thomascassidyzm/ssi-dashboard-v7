@@ -1,0 +1,97 @@
+## cym_nv2_for_eng seeds 984
+seed	214	wyt ti’n siŵr mai dyna ydy’r peth gorau i’w wneud?	|	are you sure that’s the best thing to do?
+phrase	cym_nv2_for_eng:S0214L04U04	wyt ti’n siŵr mai dyna ydy’r peth gorau?	|	are you sure that’s the best thing?
+phrase	cym_nv2_for_eng:S0214L04U02	wyt ti’n siŵr mai dyna ydy’r peth gorau i’w wneud heno?	|	are you sure that’s the best thing to do tonight?
+phrase	cym_nv2_for_eng:S0214L04U03	wyt ti’n siŵr mai dyna ydy’r peth gorau i’w wneud wythnos nesa’?	|	are you sure that’s the best thing to do next week?
+phrase	cym_nv2_for_eng:S0216L01B05	ga i ofyn i ti os wyt ti’n siŵr mai dyna ydy’r peth gorau i’w wneud?	|	can I ask you if you’re sure that’s the best thing to do?
+phrase	cym_nv2_for_eng:S0216L01B04	ga i ofyn i ti os mai dyna ydy’r peth gorau i’w wneud?	|	can I ask you if that’s the best thing to do?
+phrase	cym_nv2_for_eng:S0216L01U14	wyt ti’n siŵr mai dyna ydy’r peth gorau i’w wneud ar y penwythnos?	|	are you sure that’s the best thing to do at the weekend?
+phrase	cym_nv2_for_eng:S0233L01B07	wyt ti’n siŵr mai dyna ydy’r peth gorau i wneud?	|	are you sure that’s the best thing to do?
+seed	1636	dw i’n meddwl mai bag Jane ydy hwnna	|	I think that that is Jane's bag
+lego	S1636L02	mai bag Jane ydy hwnna || comps [{"known":"that","target":"mai"},{"known":"Jane’s bag","target":"bag Jane"},{"known":"that is","target":"ydy hwnna"}]	|	that that is Jane’s bag
+phrase	cym_nv2_for_eng:S1636L02B04	pwy ddudodd mai bag Jane ydy hwnna?	|	who said that that is Jane’s bag?
+phrase	cym_nv2_for_eng:S1636L02B03	wnaethon nhw ddim deud mai bag Jane ydy hwnna	|	they didn’t say that that is Jane’s bag
+phrase	cym_nv2_for_eng:S1636L02B01	mai bag Jane ydy hwnna ond	|	that that is Jane’s bag but
+phrase	cym_nv2_for_eng:S1636L02B02	wyt ti’n meddwl mai bag Jane ydy hwnna?	|	do you think that that is Jane’s bag?
+phrase	cym_nv2_for_eng:S1636L02C01	mai	|	that
+phrase	cym_nv2_for_eng:S1636L02U02	wnaethon nhw ddim deud mai bag Jane ydy hwnna ond o’n i’n gwybod	|	they didn’t say that that is Jane’s bag but I knew
+phrase	cym_nv2_for_eng:S1636L02U03	pwy ddudodd mai bag Jane ydy hwnna neithiwr?	|	who said that that is Jane’s bag last night?
+phrase	cym_nv2_for_eng:S1636L02U04	ond dw i’n amau mai bag Jane ydy hwnna	|	but I suspect that that is Jane’s bag
+phrase	cym_nv2_for_eng:S1636L02U05	dw i’n cael hi’n anodd i gredu mai bag Jane ydy hwnna	|	I’m finding it hard to believe that that is Jane’s bag
+phrase	cym_nv2_for_eng:S1636L02U06	clywes i mai bag Jane ydy hwnna	|	I heard that that is Jane’s bag
+phrase	cym_nv2_for_eng:S1636L02U01	dyfala pwy ddudodd mai bag Jane ydy hwnna	|	guess who said that that is Jane’s bag
+seed	1640	yr un coch ydy o	|	it's the red one
+lego	S1640L01	yr un coch ydy o || comps [{"known":"the red one","target":"yr un coch"},{"known":"it is","target":"ydy o"}]	|	it’s the red one
+phrase	cym_nv2_for_eng:S1640L01B01	bendigedig yr un coch ydy o	|	great it’s the red one
+phrase	cym_nv2_for_eng:S1640L01B03	ddudon nhw yr un coch ydy o	|	they said it’s the red one
+phrase	cym_nv2_for_eng:S1640L01B02	yr un coch ydy o rŵan	|	it’s the red one now
+phrase	cym_nv2_for_eng:S1640L01B04	ddudon nhw yr un coch ydy o syr	|	they said it’s the red one sir
+phrase	cym_nv2_for_eng:S1640L01C01	yr un coch	|	the red one
+phrase	cym_nv2_for_eng:S1640L01U04	bendigedig yr un coch ydy o syr	|	great it’s the red one sir
+phrase	cym_nv2_for_eng:S1640L01U01	dw i ddim isio un o’r rheina achos yr un coch ydy o	|	I don’t want one of those because it’s the red one
+phrase	cym_nv2_for_eng:S1640L01U03	liciwn i un o’r rheina achos yr un coch ydy o	|	I’d like one of those because it’s the red one
+phrase	cym_nv2_for_eng:S1640L01U05	mae arna i ofn mai’r un coch ydy o syr	|	I’m afraid it’s the red one sir
+phrase	cym_nv2_for_eng:S1640L01U02	ddudon nhw yr un coch ydy o ond does dim ots gen i	|	they said it’s the red one but I don’t care
+seed	1641	dw i’n meddwl mai’r un coch ar y gadair yna ydy o	|	I think that it's the red one on that chair
+phrase	cym_nv2_for_eng:S1641L03B02	yr un coch ar y gadair yna	|	the red one on that chair
+lego	S1641L02	mai’r un coch || comps [{"known":"that it’s the","target":"mai’r"},{"known":"red one","target":"un coch"}]	|	that it’s the red one
+phrase	cym_nv2_for_eng:S1641L02B03	ddudon nhw mai’r un coch	|	they said that it’s the red one
+phrase	cym_nv2_for_eng:S1641L02B01	mai’r un coch mwy na thebyg	|	that it’s the red one probably
+phrase	cym_nv2_for_eng:S1641L02B02	dw i’n amau mai’r un coch	|	I suspect that it’s the red one
+phrase	cym_nv2_for_eng:S1641L02B04	wyt ti’n meddwl mai’r un coch?	|	do you think that it’s the red one?
+phrase	cym_nv2_for_eng:S1641L02C01	mai’r	|	that it’s the
+phrase	cym_nv2_for_eng:S1641L02C02	un coch	|	red one
+phrase	cym_nv2_for_eng:S1641L02U04	dyfala pwy ddudodd mai’r un coch	|	guess who said that it’s the red one
+phrase	cym_nv2_for_eng:S1641L02U05	fyswn i wedi meddwl mai’r un coch	|	I’d have thought that it’s the red one
+phrase	cym_nv2_for_eng:S1641L02U03	dw i’n cael hi’n anodd i gredu mai’r un coch	|	I’m finding it hard to believe that it’s the red one
+phrase	cym_nv2_for_eng:S1641L02U02	ddudon nhw mai’r un coch ond dydy o ddim yn wir	|	they said that it’s the red one but it isn’t true
+phrase	cym_nv2_for_eng:S1641L02U06	oeddat ti’n meddwl mai’r un coch	|	you thought that it’s the red one
+phrase	cym_nv2_for_eng:S1641L02U01	mae arna i ofn mai’r un coch	|	I’m afraid that it’s the red one
+## cym_sv2_for_eng seeds 1002
+seed	226	wyt ti’n siŵr taw dyna’r peth gorau i’w wneud?	|	are you sure that’s the best thing to do?
+phrase	cym_sv2_for_eng:S0226L01U03	wyt ti’n siŵr taw dyna’r peth gorau?	|	are you sure that’s the best thing?
+phrase	cym_sv2_for_eng:S0226L01U02	wyt ti’n siŵr taw dyna’r peth gorau i’w wneud heno?	|	are you sure that’s the best thing to do tonight?
+phrase	cym_sv2_for_eng:S0228L01B03	ga i ofyn i ti os wyt ti’n siŵr taw dyna’r peth gorau i’w wneud?	|	can I ask you if you’re sure that’s the best thing to do?
+phrase	cym_sv2_for_eng:S0228L01B02	ga i ofyn i ti os taw dyna’r peth gorau i’w wneud?	|	can I ask you if that’s the best thing to do?
+phrase	cym_sv2_for_eng:S0228L01U14	wyt ti’n siŵr taw dyna’r peth gorau i’w wneud ar y penwythnos?	|	are you sure that’s the best thing to do at the weekend?
+phrase	cym_sv2_for_eng:S0245L01B07	wyt ti’n siŵr taw dyna’r peth gorau i wneud?	|	are you sure that’s the best thing to do?
+seed	1636	dw i’n meddwl taw bag Jane yw hwnna	|	I think that that is Jane's bag
+lego	S1636L02	taw bag Jane yw hwnna || comps [{"known":"that","target":"taw"},{"known":"Jane’s bag","target":"bag Jane"},{"known":"that one’s","target":"yw hwnna"}]	|	that that is Jane’s bag
+phrase	cym_sv2_for_eng:S1636L02B01	dw i’n gallu gweld taw bag Jane yw hwnna	|	I can see that that is Jane’s bag
+phrase	cym_sv2_for_eng:S1636L02B02	pam wyt ti’n meddwl taw bag Jane yw hwnna?	|	why do you think that that is Jane’s bag?
+phrase	cym_sv2_for_eng:S1636L02B03	ma fe wedi clywed taw bag Jane yw hwnna	|	he’s heard that that is Jane’s bag
+phrase	cym_sv2_for_eng:S1636L02B04	sa i’n siŵr taw bag Jane yw hwnna	|	I’m not convinced that that is Jane’s bag
+phrase	cym_sv2_for_eng:S1636L02C01	taw	|	that
+phrase	cym_sv2_for_eng:S1636L02U04	ta beth ma fe’n dweud sa i’n siŵr taw bag Jane yw hwnna	|	whatever he says I’m not convinced that that is Jane’s bag
+phrase	cym_sv2_for_eng:S1636L02U02	wyt ti’n meddwl taw bag Jane yw hwnna?	|	do you think that that is Jane’s bag?
+phrase	cym_sv2_for_eng:S1636L02U01	ma fe wedi clywed taw bag Jane yw hwnna ond dyw hi ddim yn wir	|	he’s heard that that is Jane’s bag but it isn’t true
+phrase	cym_sv2_for_eng:S1636L02U03	dw i’n gallu gweld taw bag Jane yw hwnna draw fanco	|	I can see that that is Jane’s bag over there
+phrase	cym_sv2_for_eng:S1636L02U05	diolch dw i’n gallu gweld taw bag Jane yw hwnna nawr	|	thank you I can see now that that is Jane’s bag
+seed	1640	yr un coch yw e	|	it's the red one
+lego	S1640L01	yr un coch || comps [{"known":"the red one","target":"yr un coch"}]	|	the red one
+phrase	cym_sv2_for_eng:S1640L01B01	yr un coch os gwelwch yn dda	|	the red one please
+phrase	cym_sv2_for_eng:S1640L01B03	yr un coch yw hwnna	|	that one’s the red one
+phrase	cym_sv2_for_eng:S1640L01B02	dw i’n moyn yr un coch	|	I want the red one
+phrase	cym_sv2_for_eng:S1640L01B04	dw i’n gallu gweld yr un coch draw fanco	|	I can see the red one over there
+phrase	cym_sv2_for_eng:S1640L01U05	o’n ni angen yr un coch ar y pryd	|	we needed the red one at the time
+phrase	cym_sv2_for_eng:S1640L01U02	dw i’n dwlu ar yr un coch	|	I love the red one
+phrase	cym_sv2_for_eng:S1640L01U03	ma fe angen yr un coch	|	he needs the red one
+phrase	cym_sv2_for_eng:S1640L01U06	dw i’n moyn yr un coch yn lle un newydd	|	I want the red one instead of a new one
+phrase	cym_sv2_for_eng:S1640L01U01	sa i wedi gweld yr un coch	|	I haven’t seen the red one
+phrase	cym_sv2_for_eng:S1640L01U07	dw i’n gallu gweld yr un coch ond dw i’n moyn un newydd	|	I can see the red one but I want a new one
+phrase	cym_sv2_for_eng:S1640L01U04	pam nag wyt ti’n moyn yr un coch?	|	why don’t you want the red one?
+seed	1641	dw i’n meddwl taw’r un coch ar y gadair ’na yw e	|	I think that it's the red one on that chair
+lego	S1641L02	taw’r un coch || comps [{"known":"that it’s the red one","target":"taw’r un coch"}]	|	that it’s the red one
+phrase	cym_sv2_for_eng:S1641L02B04	dyw hi ddim yn wir taw’r un coch yw e	|	it isn’t true that it’s the red one
+phrase	cym_sv2_for_eng:S1641L02B01	taw’r un coch yn yr ardd yw e	|	that it’s the red one in the garden
+phrase	cym_sv2_for_eng:S1641L02B02	dw i’n amau taw’r un coch yw e	|	I suspect that it’s the red one
+phrase	cym_sv2_for_eng:S1641L02B03	wyt ti’n meddwl taw’r un coch yw e?	|	do you think that it’s the red one?
+phrase	cym_sv2_for_eng:S1641L02U04	ta beth ma fe’n dweud dw i’n amau taw’r un coch draw fanco yw e	|	whatever he says I suspect that it’s the red one over there
+phrase	cym_sv2_for_eng:S1641L02U01	ddwedodd hi wrtha i taw’r un coch yn y swyddfa yw e	|	she told me that it’s the red one in the office
+phrase	cym_sv2_for_eng:S1641L02U06	diolch dw i’n amau taw’r un coch yw e	|	thank you I suspect that it’s the red one
+phrase	cym_sv2_for_eng:S1641L02U05	dw i’n ofni taw’r un coch ym mhen arall y pentref yw e	|	I’m afraid that it’s the red one at the other end of the village
+phrase	cym_sv2_for_eng:S1641L02U02	wyt ti ’di anghofio taw’r un coch yw e?	|	have you forgotten that it’s the red one?
+phrase	cym_sv2_for_eng:S1641L02U03	bendigedig ond sa i’n siŵr taw’r un coch yw e	|	great but I’m not convinced that it’s the red one
+phrase	cym_sv2_for_eng:S1641L03B01	yr un coch ar y gadair ’na	|	the red one on that chair
+phrase	cym_sv2_for_eng:S1643L01B02	yr un coch ŷch chi’n moyn syr?	|	the red one do you want sir?
+phrase	cym_sv2_for_eng:S1651L01B02	be’ ŷch chi’n meddwl madam? yr un coch?	|	what do you think madam? the red one?
