@@ -57,6 +57,7 @@ describe('the render route refuses a second take of a Drill sentence (job #338)'
   })
 })
 
+// Needle + paging for the phase8 immersionTurn lookup (the DB read itself is not unit-tested).
 describe('lookup misses (review 7ad1dfb8)', () => {
   const g = require('./drill-cut-guard.cjs')
   it('needle survives a curly/straight apostrophe difference', () => {
