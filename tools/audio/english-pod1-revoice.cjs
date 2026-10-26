@@ -188,5 +188,21 @@ if (require.main === module) (async () => {
     fs.writeFileSync(path.join(DIR, `link-${apply ? 'applied' : 'dry'}-${Date.now()}.json`), JSON.stringify(report, null, 1))
     return
   }
-  console.error('modes: census | link'); process.exit(1)
+  if (mode === 'verify') {   // READ BACK: every English pod-1 line (main + splits) is Charlotte (f) / Tom-006 (m), text-identical, one voice per speaker-scene
+    const courses = ((process.argv.find(a => a.startsWith('--courses=')) || '').split('=')[1] || '').split(',').filter(Boolean)
+    for (const c of courses) {
+      const p = await podLines(c), gender = speakerGender(p.lines), bad = [], voices = new Map()
+      const want = { f: bare(CHARLOTTE), m: bare(TOM_006) }
+      for (const l of p.lines) for (const part of [{ v: l.oldVoice, t: l.clipText }, ...l.splits.map(s => ({ v: s && s.voice_id, t: s && s.text }))]) {
+        if (!part.t) continue
+        const k = `${l.scene}|${l.speaker}`; (voices.get(k) || voices.set(k, new Set()).get(k)).add(bare(part.v))
+        if (bare(part.v) !== want[gender[l.speaker]]) bad.push({ line: l.id, voice: bare(part.v), want: want[gender[l.speaker]] })
+        else if (norm(part.t) !== norm(part.t === l.clipText ? l.text : part.t)) bad.push({ line: l.id, textMismatch: part.t })
+      }
+      const mixed = [...voices].filter(([, v]) => v.size > 1).map(([k]) => k)
+      console.log(`VERIFY ${c}: lines ${p.lines.length}; wrong-voice ${bad.filter(b => b.voice).length}; clip-text differs from line text (punctuation, as before) ${bad.filter(b => b.textMismatch).length}; mixed speaker-scenes ${mixed.length}`, bad.slice(0, 3))
+    }
+    return
+  }
+  console.error('modes: census | link | verify'); process.exit(1)
 })().catch(e => { console.error(e); process.exit(1) })
