@@ -209,3 +209,20 @@ describe('pod sentence segment arrays (job #864)', () => {
     expect(t.listening_pod_sentences[0].sentence_audio_ids).toEqual([O1, O2])
   })
 })
+
+// Job #357 (English pod-1 re-voice): the English split clips of an X_for_eng line live in sentence_known_audio_ids.
+describe('pod sentence KNOWN segment array (job #357)', () => {
+  const O1 = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', N1 = 'cccccccc-cccc-4ccc-8ccc-cccccccccccc'
+  const id = 'nld_for_eng:pod-1:2'
+  const w = () => ({
+    listening_pods: [{ id: 'nld_for_eng:pod-1', course_code: 'nld_for_eng' }],
+    listening_pod_sentences: [{ id: id, pod_id: 'nld_for_eng:pod-1', target_text: 'Goedemorgen.', target_text_draft: true, sentence_known_audio_ids: [O1] }],
+    course_audio: [{ id: O1, text: 'Good morning.', voice_id: 'xai_bedd6226' }, { id: N1, text: 'Good morning.', voice_id: 'cartesia_71a7ad14' }],
+  })
+  it('replaces a known split clip in place, even while the target text is a draft', async () => {
+    const t = w(); const db = fakeDb(t); bumps.length = 0
+    const out = await linkClips({ db, courseCode: 'nld_for_eng', bump, links: [{ podSentenceId: id, role: 'knownsegment', audioId: N1, replace: true, expectCurrent: O1 }] })
+    expect(out.linked).toBe(1)
+    expect(t.listening_pod_sentences[0].sentence_known_audio_ids).toEqual([N1])
+  })
+})

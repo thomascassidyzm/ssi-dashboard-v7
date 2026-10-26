@@ -27,13 +27,14 @@ const ROLES = ['known', 'target1', 'target2', 'presentation']
 // listening_pod_sentences.target_audio_id / known_audio_id; the sentence must belong to a pod of
 // this course, and a line whose target text is still a DRAFT refuses a target clip unless
 // allowDraft:true — pod audio is never attached to text nobody has read (A-109).
-const POD_ROLES = ['target', 'known', 'segment', 'takeg']
+const POD_ROLES = ['target', 'known', 'segment', 'takeg', 'knownsegment']
 // A pod line's per-sentence clips are ORDERED ARRAYS, not slots (the player plays them when present: learning app
 // podSentenceSplit.ts): sentence_audio_ids ('segment') and takeg_audio_ids ('takeg'). Job #864 (por_for_eng Pod 1 re-voice):
 // an array element is only ever REPLACED, never filled — the link names the element it replaces (replace:true + expectCurrent),
 // and the new clip must say exactly the words of the clip it replaces (a segment's words are one sentence of the line, so the
 // line's text cannot be the check). Every position holding expectCurrent moves; the write is conditional on the whole array.
-const POD_ARRAY_COL = { segment: 'sentence_audio_ids', takeg: 'takeg_audio_ids' }
+// 'knownsegment' (job #357, English pod-1 re-voice): the KNOWN-side twin of 'segment' (sentence_known_audio_ids), same replace-only rules.
+const POD_ARRAY_COL = { segment: 'sentence_audio_ids', takeg: 'takeg_audio_ids', knownsegment: 'sentence_known_audio_ids' }
 const TABLE = { seed: 'course_seeds', lego: 'course_legos', phrase: 'course_practice_phrases', pod_sentence: 'listening_pod_sentences' }
 // course_seeds has no presentation slot; a pod sentence has one target and one known slot.
 const HAS_ROLE = (kind, role) => kind === 'pod_sentence'
@@ -79,7 +80,7 @@ async function linkOne(db, courseCode, link, { dryRun }) {
     const { data: pod, error: podErr } = await db.from('listening_pods').select('id, course_code').eq('id', row.pod_id).maybeSingle()
     if (podErr) return { ...base, ok: false, code: 'READ_FAILED', error: podErr.message }
     if (!pod || pod.course_code !== courseCode) return { ...base, ok: false, code: 'NO_SLOT', error: `${courseCode} has no pod sentence ${slot.label}` }
-    if (link.role !== 'known' && row.target_text_draft && link.allowDraft !== true) {
+    if (link.role !== 'known' && link.role !== 'knownsegment' && row.target_text_draft && link.allowDraft !== true) {
       return { ...base, ok: false, code: 'DRAFT_TEXT', error: `${slot.label} is still a draft; approve its text first, or send allowDraft:true` }
     }
   }
