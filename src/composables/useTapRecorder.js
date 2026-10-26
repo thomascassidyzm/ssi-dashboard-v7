@@ -591,7 +591,14 @@ export function useTapRecorder() {
   // tracked room tone, never more than a real drop under the loudest thing the
   // session has heard, capped at the old absolute threshold for a hot mic, and
   // floored only at "not exactly zero".
+  //
+  // And never under the quiet floor: speech has to clear the room's loud edge as
+  // well as its troughs (job #36, below).
   function speechFloor() {
+    return Math.max(troughFloor(), quietFloor())
+  }
+  // The trough-tracked part of the speech floor: ~12dB over noiseEst.
+  function troughFloor() {
     const room = sessionPeak > 0
       ? Math.min(noiseEst, sessionPeak * NOISE_CEIL_RATIO)
       : noiseEst
@@ -603,9 +610,17 @@ export function useTapRecorder() {
   // -floor value, and never ABOVE the speech floor — the two have to agree about
   // what a given frame is, or a frame could be speech and silence at once and
   // the studio could advance out from under a voice it can still hear.
+  //
+  // That agreement used to be kept by capping THIS floor at the trough-tracked
+  // speech floor. In a room whose upper edge sits within 4dB of 4x its troughs —
+  // Aran's, 2026-10-26, on every frame of a 140-line session — the cap bound all
+  // the time, the roomCeil term never counted, ordinary room frames restarted
+  // the 1.2s quiet clock, and lines moved on seconds late or waited for a tap
+  // (job #36; useTapRecorder.aranroom.test.js replays his takes). The agreement
+  // is now kept from the other side: speechFloor() is lifted to this floor.
   function quietFloor() {
-    const sf = speechFloor()
-    return Math.min(FLOOR_PEAK, sf, Math.max(sf * QUIET_PEAK_RATIO, roomCeil * QUIET_ROOM_MULT))
+    const tf = troughFloor()
+    return Math.min(FLOOR_PEAK, Math.max(tf * QUIET_PEAK_RATIO, roomCeil * QUIET_ROOM_MULT))
   }
 
   function onMeterFrame(p) {
