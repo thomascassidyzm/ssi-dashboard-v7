@@ -16,7 +16,7 @@ const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
 const TOM_006 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
 const TOM_001 = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
 // voices an existing English clip may already speak in, per gender, in order of preference (a speaker keeps ONE of them for the scene)
-const GOOD_VOICES = { f: [CHARLOTTE], m: [TOM_001, TOM_006] }
+const GOOD_VOICES = { f: [CHARLOTTE], m: [TOM_006] }
 // the two xAI clones the pod English is on today; any other voice id is a gender the line does not carry -> resolved by speakerGender
 const OLD = { bedd6226: 'f', gfzdpspr: 'm', '71a7ad14': 'f', '8fef4d59': 'm', d293d509: 'm' }   // Olivia, Tom xAI clone, Charlotte, tom_001, Tom-006
 const bare = v => String(v || '').replace(/^(xai_|cartesia_)/, '').slice(0, 8)
@@ -42,7 +42,7 @@ function speakerGender(lines, fallback = {}) {
 const CURRENT_LINES = 231   // the current English pod-1 text; fewer lines = the old 142-line text
 const get = async p => (await fetch(`${BASE}${p}`, { signal: AbortSignal.timeout(180000) })).json()
 const post = async (p, body, headers = {}) => {
-  const res = await fetch(`${BASE}${p}`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-371-english-pod1', ...headers }, body: JSON.stringify(body), signal: AbortSignal.timeout(180000) })
+  const res = await fetch(`${BASE}${p}`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-440-english-pod1', ...headers }, body: JSON.stringify(body), signal: AbortSignal.timeout(180000) })
   return { status: res.status, body: await res.json().catch(() => ({})) }
 }
 async function englishCourses() {
@@ -107,7 +107,19 @@ function planLink(lines, idx, gender = speakerGender(lines)) {
   }
   return { links, held, gaps }
 }
-module.exports = { englishSources, isAllowedSource, speakerGender, buildIndex, planLink, rolesFor, englishTrack, norm, OLD, GOOD_VOICES }
+/**
+ * Pure. The ONE Popty render request that yields a clip in the wanted voice (job #440, Tom: Charlotte female / Tom-006 male).
+ * The route never takes a hand-picked voice (VOICE_POLICY), so the slot is chosen so the policy itself answers: English-known is Tom-006
+ * whatever the gender, so a male X_for_eng line asks as role known in its own course; Charlotte is the English TARGET female slot, so a female line
+ * asks as target1 of an eng_for_* course (library-first, so the clip is shared, then linked by id). eng_for_X male = target2, female = target1.
+ */
+const FEMALE_HOST = 'eng_for_ita'
+function renderAsk(course, gender, text, purpose = 'english pod-1 revoice (Tom, job 440)') {
+  const englishTarget = course.startsWith('eng_for_')
+  if (gender === 'm') return { courseCode: englishTarget ? course : FEMALE_HOST, role: 'target2', text, purpose, voice: TOM_006 }
+  return { courseCode: englishTarget ? course : FEMALE_HOST, role: 'target1', text, purpose, voice: CHARLOTTE }
+}
+module.exports = { renderAsk, englishSources, isAllowedSource, speakerGender, buildIndex, planLink, rolesFor, englishTrack, norm, OLD, GOOD_VOICES }
 if (require.main === module) (async () => {
   const mode = process.argv[2], has = f => process.argv.includes(f)
   fs.mkdirSync(DIR, { recursive: true })
@@ -140,7 +152,21 @@ if (require.main === module) (async () => {
     const report = {}
     for (const c of courses) {
       const p = await podLines(c); if (!p) { report[c] = { missing: true }; continue }
-      const plan = planLink(p.lines, idx)
+      let plan = planLink(p.lines, idx)
+      if (has('--fill') && !(p.lines.length < CURRENT_LINES)) {   // missing (gender,text): library clip or ONE Popty render each; apply = real, else dry
+        const seen = new Map(); let would = 0, spent = 0, refusals = []
+        for (const g of plan.gaps) {
+          const k = `${g.gender}|${norm(g.text)}`; if (seen.has(k) || (g.gender !== 'm' && g.gender !== 'f')) continue
+          const ask = renderAsk(c, g.gender, g.text, `english pod-1 revoice (Tom, job 440) ${c}`)
+          const res = await post('/api/audio/render', { courseCode: ask.courseCode, role: ask.role, text: ask.text, purpose: ask.purpose, dryRun: !apply })
+          seen.set(k, res.body)
+          if (!res.body.ok) { refusals.push({ text: g.text, status: res.status, body: res.body }); break }   // a refusal is the answer: stop, never retry
+          would += res.body.wouldSpendChars || 0; spent += res.body.charsSpent || 0
+          if (res.body.audioId) idx.set(`${bare(ask.voice)}|${norm(g.text)}`, res.body.audioId)
+        }
+        console.log(`FILL ${c}: asked ${seen.size}; would spend ${would}; spent ${spent}; refusals ${refusals.length}${refusals.length ? ' ' + JSON.stringify(refusals[0]) : ''}`)
+        plan = planLink(p.lines, idx)
+      }
       const wholePodMove = p.lines.length < CURRENT_LINES   // old text: moves whole to the current English pod-1 (Tom, job #414), so its clips are not gaps
       const textInEnglishPod = p.lines.filter(l => anyTexts.has(norm(l.text))).length
       let { links } = plan
