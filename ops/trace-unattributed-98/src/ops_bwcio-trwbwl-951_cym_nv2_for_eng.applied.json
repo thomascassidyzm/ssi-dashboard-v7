@@ -1,0 +1,4333 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "24bb43ac-c8ba-492d-8086-2f2a41854daa",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "seed_number": 1405
+   },
+   "before": {
+    "id": "47395761-2b94-414d-86ba-4bed7c624681",
+    "seed_number": 1405,
+    "target_text": "ddylen ni ofyn os oes rhaid i ni fwcio?",
+    "known_text": "should we ask if we have to book?",
+    "known_audio_id": null,
+    "target1_audio_id": "157057e6-a256-40f6-9b63-3a43bd3b862b",
+    "target2_audio_id": "9e5cc16b-95e1-4a24-b023-9dc4665021fd"
+   },
+   "after": {
+    "id": "47395761-2b94-414d-86ba-4bed7c624681",
+    "seed_number": 1405,
+    "target_text": "ddylen ni ofyn os oes rhaid i ni archebu?",
+    "known_text": "should we ask if we have to book?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1405L01"
+   },
+   "before": {
+    "id": "45f9b320-a42f-4f56-ab31-b3cbe7cde45b",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": "S1405L01",
+    "target_text": "os oes rhaid i ni fwcio",
+    "components": [
+     {
+      "known": "if",
+      "target": "os"
+     },
+     {
+      "known": "do we have to?",
+      "target": "oes rhaid i ni?"
+     },
+     {
+      "known": "book",
+      "target": "fwcio"
+     }
+    ],
+    "known_text": "if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": "b1f4344f-6690-4788-82fb-88bfdae410e5",
+    "target2_audio_id": "c7faf2ce-b419-4021-82d1-3e1bf5eb64f0",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "45f9b320-a42f-4f56-ab31-b3cbe7cde45b",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": "S1405L01",
+    "target_text": "os oes rhaid i ni archebu",
+    "components": [
+     {
+      "known": "if",
+      "target": "os"
+     },
+     {
+      "known": "do we have to?",
+      "target": "oes rhaid i ni?"
+     },
+     {
+      "known": "book",
+      "target": "archebu"
+     }
+    ],
+    "known_text": "if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01B03",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n trio ffeindio allan os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m trying to find out if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "1f4b71d9-3bec-4207-bf8d-4cbf79251067",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01B03",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n trio ffeindio allan os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m trying to find out if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01B02",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ffeindio allan os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": "ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to find out if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "be66a7e9-01c5-4381-a53c-52009f648cb6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01B02",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ffeindio allan os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": "ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to find out if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01B04",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wnest ti ofyn os oes rhaid i ni fwcio cyn dydd Iau?",
+    "decomposition": [
+     {
+      "known": "did you ask",
+      "legoId": "S1382L01",
+      "target": "wnest ti ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "did you ask if we have to book before Thursday?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "62cc7c57-542b-49f1-8fa8-1656b01a48ee",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01B04",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wnest ti ofyn os oes rhaid i ni archebu cyn dydd Iau?",
+    "decomposition": [
+     {
+      "known": "did you ask",
+      "legoId": "S1382L01",
+      "target": "wnest ti ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "did you ask if we have to book before Thursday?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01B01",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "os oes rhaid i ni fwcio heno",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "if we have to book tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "b2623d88-1478-4a3b-8368-c94916a4778c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01B01",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "os oes rhaid i ni archebu heno",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "if we have to book tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01C03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01C03",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fwcio",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fwcio",
+      "isGhost": true
+     }
+    ],
+    "known_text": "book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01C03",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "archebu",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "archebu",
+      "isGhost": true
+     }
+    ],
+    "known_text": "book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01U08"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01U08",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "diolch mi wna i ofyn iddo fo os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "diolch",
+      "isGhost": true
+     },
+     {
+      "known": "I’ll ask him",
+      "legoId": "S1176L01",
+      "target": " mi wna i ofyn iddo fo",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ],
+    "known_text": "thanks I’ll ask him if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01U08",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "diolch mi wna i ofyn iddo fo os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "diolch",
+      "isGhost": true
+     },
+     {
+      "known": "I’ll ask him",
+      "legoId": "S1176L01",
+      "target": " mi wna i ofyn iddo fo",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ],
+    "known_text": "thanks I’ll ask him if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01U03",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wnest ti ofyn os oes rhaid i ni fwcio?",
+    "decomposition": [
+     {
+      "known": "did you ask",
+      "legoId": "S1382L01",
+      "target": "wnest ti ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "did you ask if we have to book?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "4c69e514-2210-4085-8615-25a38d53d521",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01U03",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "wnest ti ofyn os oes rhaid i ni archebu?",
+    "decomposition": [
+     {
+      "known": "did you ask",
+      "legoId": "S1382L01",
+      "target": "wnest ti ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "did you ask if we have to book?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01U05",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ddudodd neb wrthaf fi os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "nobody told me",
+      "legoId": "S1367L01",
+      "target": "ddudodd neb wrthaf fi",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ],
+    "known_text": "nobody told me if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "c2161856-075b-4c2e-b5f5-a17328b99f57",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01U05",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ddudodd neb wrthaf fi os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "nobody told me",
+      "legoId": "S1367L01",
+      "target": "ddudodd neb wrthaf fi",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ],
+    "known_text": "nobody told me if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01U02",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dan ni ddim yn gwybod os oes rhaid i ni fwcio cyn dydd Iau",
+    "decomposition": [
+     {
+      "known": "we don’t know",
+      "legoId": "S0176L01",
+      "target": "dan ni ddim yn gwybod",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we don’t know if we have to book before Thursday",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01U02",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dan ni ddim yn gwybod os oes rhaid i ni archebu cyn dydd Iau",
+    "decomposition": [
+     {
+      "known": "we don’t know",
+      "legoId": "S0176L01",
+      "target": "dan ni ddim yn gwybod",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we don’t know if we have to book before Thursday",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01U04",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mi wna i ofyn iddo fo os oes rhaid i ni fwcio pnawn ’ma",
+    "decomposition": [
+     {
+      "known": "I’ll ask him",
+      "legoId": "S1176L01",
+      "target": "mi wna i ofyn iddo fo",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "this afternoon",
+      "legoId": "S1035L02",
+      "target": " pnawn ’ma",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’ll ask him if we have to book this afternoon",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01U04",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mi wna i ofyn iddo fo os oes rhaid i ni archebu pnawn ’ma",
+    "decomposition": [
+     {
+      "known": "I’ll ask him",
+      "legoId": "S1176L01",
+      "target": "mi wna i ofyn iddo fo",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "this afternoon",
+      "legoId": "S1035L02",
+      "target": " pnawn ’ma",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’ll ask him if we have to book this afternoon",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01U06",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "os oes rhaid i ni fwcio dw i’n mynd i ffonio chdi heno",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": " dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to call you",
+      "legoId": "S1294L03",
+      "target": " ffonio chdi",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "if we have to book I’m going to call you tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01U06",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "os oes rhaid i ni archebu dw i’n mynd i ffonio chdi heno",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": " dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to call you",
+      "legoId": "S1294L03",
+      "target": " ffonio chdi",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "if we have to book I’m going to call you tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01U07"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01U07",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "o’n i isio ffeindio allan os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I wanted to find out if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01U07",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "o’n i isio ffeindio allan os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I wanted to find out if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1405L01U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1405L01U01",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i ddim yn siŵr os oes rhaid i ni fwcio heno",
+    "decomposition": [
+     {
+      "known": "I’m not sure",
+      "legoId": "S0027L02",
+      "target": "dw i ddim yn siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m not sure if we have to book tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "b8aeebe4-602b-4a43-8cd1-327d034a04e3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1405L01U01",
+    "seed_number": 1405,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i ddim yn siŵr os oes rhaid i ni archebu heno",
+    "decomposition": [
+     {
+      "known": "I’m not sure",
+      "legoId": "S0027L02",
+      "target": "dw i ddim yn siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m not sure if we have to book tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "seed_number": 1411
+   },
+   "before": {
+    "id": "339b2e6a-5af2-4e9e-a30b-5702502c2944",
+    "seed_number": 1411,
+    "target_text": "bydden ni’n licio bwcio bwrdd i bedwar heno",
+    "known_text": "we would like to reserve a table for four tonight",
+    "known_audio_id": null,
+    "target1_audio_id": "3c94bfb0-054f-4ce1-a573-d35e09599f95",
+    "target2_audio_id": "9aa5cb09-2875-40d7-8de6-08dec7b28447"
+   },
+   "after": {
+    "id": "339b2e6a-5af2-4e9e-a30b-5702502c2944",
+    "seed_number": 1411,
+    "target_text": "bydden ni’n licio archebu bwrdd i bedwar heno",
+    "known_text": "we would like to reserve a table for four tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1411L02"
+   },
+   "before": {
+    "id": "0c711059-2a97-4968-afa7-6730fba8fcb1",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": "S1411L02",
+    "target_text": "bwcio bwrdd",
+    "components": [
+     {
+      "known": "to book",
+      "target": "bwcio"
+     },
+     {
+      "known": "a table",
+      "target": "bwrdd"
+     }
+    ],
+    "known_text": "to reserve a table",
+    "known_audio_id": null,
+    "target1_audio_id": "61dc666d-e2e3-4f22-baf4-011c671999d5",
+    "target2_audio_id": "718c12b2-791e-48a8-93f7-80b700ba1cf6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "0c711059-2a97-4968-afa7-6730fba8fcb1",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": "S1411L02",
+    "target_text": "archebu bwrdd",
+    "components": [
+     {
+      "known": "to book",
+      "target": "archebu"
+     },
+     {
+      "known": "a table",
+      "target": "bwrdd"
+     }
+    ],
+    "known_text": "to reserve a table",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02B01",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "bwcio bwrdd heno",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to reserve a table tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "6a7fd696-3e14-4b84-87ea-9c7f255712a2",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02B01",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "archebu bwrdd heno",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to reserve a table tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 18,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02B02",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i isio bwcio bwrdd",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I want to reserve a table",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "c599bfb4-c0bc-45d9-ba49-5ef695077bf5",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02B02",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i isio archebu bwrdd",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I want to reserve a table",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 19,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02B03",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ydan ni angen bwcio bwrdd?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "do we need to reserve a table?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "7e1838c3-a1a6-43e7-976e-ab039f65971f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02B03",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ydan ni angen archebu bwrdd?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "do we need to reserve a table?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 20,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02B04",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ddylen ni ddim bwcio bwrdd heno",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we shouldn’t reserve a table tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "7864f8c5-2403-4a7e-a897-9670748f0882",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02B04",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ddylen ni ddim archebu bwrdd heno",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we shouldn’t reserve a table tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 21,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02C01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02C01",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "bwcio",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bwcio",
+      "isGhost": true
+     }
+    ],
+    "known_text": "to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02C01",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "archebu",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "archebu",
+      "isGhost": true
+     }
+    ],
+    "known_text": "to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 22,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02U08"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02U08",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "bydden ni’n bwcio bwrdd ond oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we would reserve a table but she was too busy",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02U08",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "bydden ni’n archebu bwrdd ond oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we would reserve a table but she was too busy",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 23,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02U04",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ydan ni angen bwcio bwrdd nos ’fory?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tomorrow night",
+      "legoId": "S1192L02",
+      "target": " nos ’fory",
+      "isGhost": false
+     }
+    ],
+    "known_text": "do we need to reserve a table tomorrow night?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02U04",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ydan ni angen archebu bwrdd nos ’fory?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tomorrow night",
+      "legoId": "S1192L02",
+      "target": " nos ’fory",
+      "isGhost": false
+     }
+    ],
+    "known_text": "do we need to reserve a table tomorrow night?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 24,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02U07"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02U07",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "o’n i’n trio bwcio bwrdd",
+    "decomposition": [
+     {
+      "known": "I was trying",
+      "legoId": "S0019L01",
+      "target": "o’n i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I was trying to reserve a table",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "923871cd-9445-4c5b-9b91-de7ee5a4f47b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02U07",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "o’n i’n trio archebu bwrdd",
+    "decomposition": [
+     {
+      "known": "I was trying",
+      "legoId": "S0019L01",
+      "target": "o’n i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I was trying to reserve a table",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 25,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02U01",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "byddai’n well bwcio bwrdd cyn dydd Iau",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to reserve a table before Thursday",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "36a0c23d-42ef-4094-93df-37efc692c25f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02U01",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "byddai’n well archebu bwrdd cyn dydd Iau",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to reserve a table before Thursday",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 26,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02U02",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i’n siŵr bo’ ni angen bwcio bwrdd",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "we need",
+      "legoId": "S0174L02",
+      "target": " bo’ ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m sure we need to reserve a table",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "1a06844f-d87b-46b6-bf0a-3890e944ef3e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02U02",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "dw i’n siŵr bo’ ni angen archebu bwrdd",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "we need",
+      "legoId": "S0174L02",
+      "target": " bo’ ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m sure we need to reserve a table",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 27,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02U03",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "doedd o ddim isio bwcio bwrdd nos Wener",
+    "decomposition": [
+     {
+      "known": "he didn’t want",
+      "legoId": "S1069L01",
+      "target": "doedd o ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "on Friday night",
+      "legoId": "S1349L02",
+      "target": " nos Wener",
+      "isGhost": false
+     }
+    ],
+    "known_text": "he didn’t want to reserve a table on Friday night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02U03",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "doedd o ddim isio archebu bwrdd nos Wener",
+    "decomposition": [
+     {
+      "known": "he didn’t want",
+      "legoId": "S1069L01",
+      "target": "doedd o ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "on Friday night",
+      "legoId": "S1349L02",
+      "target": " nos Wener",
+      "isGhost": false
+     }
+    ],
+    "known_text": "he didn’t want to reserve a table on Friday night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 28,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02U05",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ia dw i isio bwcio bwrdd heno",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "yes I want to reserve a table tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02U05",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "ia dw i isio archebu bwrdd heno",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "yes I want to reserve a table tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 29,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L02U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L02U06",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "oedd hi isio bwcio bwrdd nos Sadwrn",
+    "decomposition": [
+     {
+      "known": "she wanted",
+      "legoId": "S0071L01",
+      "target": "oedd hi isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "on Saturday night",
+      "legoId": "S0095L01",
+      "target": " nos Sadwrn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "she wanted to reserve a table on Saturday night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L02U06",
+    "seed_number": 1411,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "oedd hi isio archebu bwrdd nos Sadwrn",
+    "decomposition": [
+     {
+      "known": "she wanted",
+      "legoId": "S0071L01",
+      "target": "oedd hi isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "on Saturday night",
+      "legoId": "S0095L01",
+      "target": " nos Sadwrn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "she wanted to reserve a table on Saturday night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 30,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L03B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L03B02",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "bwcio bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to reserve a table for four",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "183b6468-6345-47b5-a48c-57149ee08cc7",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L03B02",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "archebu bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to reserve a table for four",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 31,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L03B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L03B03",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "bwcio bwrdd i bedwar nos Sadwrn",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "on Saturday night",
+      "legoId": "S0095L01",
+      "target": " nos Sadwrn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to reserve a table for four on Saturday night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "7a363637-ac1d-4601-be83-fd76cc2a3ec4",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L03B03",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "archebu bwrdd i bedwar nos Sadwrn",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "on Saturday night",
+      "legoId": "S0095L01",
+      "target": " nos Sadwrn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to reserve a table for four on Saturday night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 32,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L03B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L03B04",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "bydden ni’n bwcio bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we would reserve a table for four",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "e2b3da8a-eb1b-4e46-b3f9-63592459b235",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L03B04",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "bydden ni’n archebu bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we would reserve a table for four",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 33,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L03U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L03U01",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "dw i’n trio bwcio bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m trying to reserve a table for four",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "88c9f91c-2ff8-4911-b586-4c75f3f3aca3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L03U01",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "dw i’n trio archebu bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m trying to reserve a table for four",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 34,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L03U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L03U02",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ddylen ni ddim bwcio bwrdd i bedwar nos ’fory",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tomorrow night",
+      "legoId": "S1192L02",
+      "target": " nos ’fory",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we shouldn’t reserve a table for four tomorrow night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L03U02",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "ddylen ni ddim archebu bwrdd i bedwar nos ’fory",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tomorrow night",
+      "legoId": "S1192L02",
+      "target": " nos ’fory",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we shouldn’t reserve a table for four tomorrow night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 35,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L03U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L03U03",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "oeddan ni isio bwcio bwrdd i bedwar nos Wener",
+    "decomposition": [
+     {
+      "known": "we wanted",
+      "legoId": "S0182L01",
+      "target": "oeddan ni isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "on Friday night",
+      "legoId": "S1349L02",
+      "target": " nos Wener",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we wanted to reserve a table for four on Friday night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L03U03",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "oeddan ni isio archebu bwrdd i bedwar nos Wener",
+    "decomposition": [
+     {
+      "known": "we wanted",
+      "legoId": "S0182L01",
+      "target": "oeddan ni isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "on Friday night",
+      "legoId": "S1349L02",
+      "target": " nos Wener",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we wanted to reserve a table for four on Friday night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 36,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L03U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L03U04",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "byddai’n well bwcio bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to reserve a table for four",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L03U04",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "byddai’n well archebu bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to reserve a table for four",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 37,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L03U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L03U06",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "byddai’n braf bwcio bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "it would be nice",
+      "legoId": "S1402L01",
+      "target": "byddai’n braf",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be nice to reserve a table for four tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L03U06",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "byddai’n braf archebu bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "it would be nice",
+      "legoId": "S1402L01",
+      "target": "byddai’n braf",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be nice to reserve a table for four tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 38,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1411L03U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1411L03U05",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "oes rhaid bwcio bwrdd i bedwar?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "oes",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " rhaid",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ],
+    "known_text": "is it necessary to reserve a table for four?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "4b4760ff-00e5-4344-93d6-7a2a7d0b3e87",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1411L03U05",
+    "seed_number": 1411,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "oes rhaid archebu bwrdd i bedwar?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "oes",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " rhaid",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ],
+    "known_text": "is it necessary to reserve a table for four?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 39,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1412L01U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1412L01U01",
+    "seed_number": 1412,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fydden ni ddim yn medru bwcio bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "we couldn’t",
+      "legoId": "S1412L01",
+      "target": "fydden ni ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we couldn’t reserve a table for four tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "28e8dc39-14d5-416a-b61d-af24ca72805f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1412L01U01",
+    "seed_number": 1412,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fydden ni ddim yn medru archebu bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "we couldn’t",
+      "legoId": "S1412L01",
+      "target": "fydden ni ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we couldn’t reserve a table for four tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 40,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1433L01U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1433L01U04",
+    "seed_number": 1433,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "doeddan nhw ddim yn medru bwcio bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "they couldn’t",
+      "legoId": "S1433L01",
+      "target": "doeddan nhw ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they couldn’t reserve a table for four tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "4e66e82d-499a-4e5d-95ab-8215e41fbc4a",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1433L01U04",
+    "seed_number": 1433,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "doeddan nhw ddim yn medru archebu bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "they couldn’t",
+      "legoId": "S1433L01",
+      "target": "doeddan nhw ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they couldn’t reserve a table for four tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 41,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1446L01U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1446L01U03",
+    "seed_number": 1446,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae arna i ofn fyddan nhw ddim yn medru bwcio bwrdd heno",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "they won’t be able to",
+      "legoId": "S1446L01",
+      "target": " fyddan nhw ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m afraid they won’t be able to reserve a table tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1446L01U03",
+    "seed_number": 1446,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae arna i ofn fyddan nhw ddim yn medru archebu bwrdd heno",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "they won’t be able to",
+      "legoId": "S1446L01",
+      "target": " fyddan nhw ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " archebu bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m afraid they won’t be able to reserve a table tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 42,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1490L01U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1490L01U02",
+    "seed_number": 1490,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "os oes rhaid i ni fwcio fydda i byth yn hwyr",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "then I will never",
+      "legoId": "S0274L05",
+      "target": " fydda i byth",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hwyr",
+      "isGhost": true
+     }
+    ],
+    "known_text": "if we have to book then I will never be late",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "2c432470-3a0d-44f1-96ce-9e1d86a5c6de",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1490L01U02",
+    "seed_number": 1490,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "os oes rhaid i ni archebu fydda i byth yn hwyr",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni archebu",
+      "isGhost": false
+     },
+     {
+      "known": "then I will never",
+      "legoId": "S0274L05",
+      "target": " fydda i byth",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hwyr",
+      "isGhost": true
+     }
+    ],
+    "known_text": "if we have to book then I will never be late",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 43,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1525L01U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1525L01U06",
+    "seed_number": 1525,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "bydda i’n galw chdi nôl heno i weld os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "I’ll call you back",
+      "legoId": "S1524L01",
+      "target": "bydda i’n galw chdi nôl",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     },
+     {
+      "known": "to check",
+      "legoId": "S0300L04",
+      "target": " i weld",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’ll call you back tonight to check if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1525L01U06",
+    "seed_number": 1525,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "bydda i’n galw chdi nôl heno i weld os oes rhaid i ni archebu",
+    "decomposition": [
+     {
+      "known": "I’ll call you back",
+      "legoId": "S1524L01",
+      "target": "bydda i’n galw chdi nôl",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     },
+     {
+      "known": "to check",
+      "legoId": "S0300L04",
+      "target": " i weld",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni archebu",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’ll call you back tonight to check if we have to book",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1525L01U06",
+   "set": {
+    "target_text": "bydda i’n galw chdi nôl heno i weld os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "I’ll call you back",
+      "legoId": "S1524L01",
+      "target": "bydda i’n galw chdi nôl",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     },
+     {
+      "known": "to check",
+      "legoId": "S0300L04",
+      "target": " i weld",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1490L01U02",
+   "set": {
+    "target_text": "os oes rhaid i ni fwcio fydda i byth yn hwyr",
+    "target2_audio_id": "2c432470-3a0d-44f1-96ce-9e1d86a5c6de",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "then I will never",
+      "legoId": "S0274L05",
+      "target": " fydda i byth",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " yn",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " hwyr",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1446L01U03",
+   "set": {
+    "target_text": "mae arna i ofn fyddan nhw ddim yn medru bwcio bwrdd heno",
+    "decomposition": [
+     {
+      "known": "I’m afraid",
+      "legoId": "S0298L01",
+      "target": "mae arna i ofn",
+      "isGhost": false
+     },
+     {
+      "known": "they won’t be able to",
+      "legoId": "S1446L01",
+      "target": " fyddan nhw ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1433L01U04",
+   "set": {
+    "target_text": "doeddan nhw ddim yn medru bwcio bwrdd i bedwar heno",
+    "target2_audio_id": "4e66e82d-499a-4e5d-95ab-8215e41fbc4a",
+    "decomposition": [
+     {
+      "known": "they couldn’t",
+      "legoId": "S1433L01",
+      "target": "doeddan nhw ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1412L01U01",
+   "set": {
+    "target_text": "fydden ni ddim yn medru bwcio bwrdd i bedwar heno",
+    "target2_audio_id": "28e8dc39-14d5-416a-b61d-af24ca72805f",
+    "decomposition": [
+     {
+      "known": "we couldn’t",
+      "legoId": "S1412L01",
+      "target": "fydden ni ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U05",
+   "set": {
+    "target_text": "oes rhaid bwcio bwrdd i bedwar?",
+    "target2_audio_id": "4b4760ff-00e5-4344-93d6-7a2a7d0b3e87",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "oes",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " rhaid",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U06",
+   "set": {
+    "target_text": "byddai’n braf bwcio bwrdd i bedwar heno",
+    "decomposition": [
+     {
+      "known": "it would be nice",
+      "legoId": "S1402L01",
+      "target": "byddai’n braf",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U04",
+   "set": {
+    "target_text": "byddai’n well bwcio bwrdd i bedwar",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U03",
+   "set": {
+    "target_text": "oeddan ni isio bwcio bwrdd i bedwar nos Wener",
+    "decomposition": [
+     {
+      "known": "we wanted",
+      "legoId": "S0182L01",
+      "target": "oeddan ni isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "on Friday night",
+      "legoId": "S1349L02",
+      "target": " nos Wener",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U02",
+   "set": {
+    "target_text": "ddylen ni ddim bwcio bwrdd i bedwar nos ’fory",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "tomorrow night",
+      "legoId": "S1192L02",
+      "target": " nos ’fory",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03U01",
+   "set": {
+    "target_text": "dw i’n trio bwcio bwrdd i bedwar",
+    "target2_audio_id": "88c9f91c-2ff8-4911-b586-4c75f3f3aca3",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03B04",
+   "set": {
+    "target_text": "bydden ni’n bwcio bwrdd i bedwar",
+    "target2_audio_id": "e2b3da8a-eb1b-4e46-b3f9-63592459b235",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03B03",
+   "set": {
+    "target_text": "bwcio bwrdd i bedwar nos Sadwrn",
+    "target2_audio_id": "7a363637-ac1d-4601-be83-fd76cc2a3ec4",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     },
+     {
+      "known": "on Saturday night",
+      "legoId": "S0095L01",
+      "target": " nos Sadwrn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L03B02",
+   "set": {
+    "target_text": "bwcio bwrdd i bedwar",
+    "target2_audio_id": "183b6468-6345-47b5-a48c-57149ee08cc7",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "for four",
+      "legoId": "S1411L03",
+      "target": " i bedwar",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U06",
+   "set": {
+    "target_text": "oedd hi isio bwcio bwrdd nos Sadwrn",
+    "decomposition": [
+     {
+      "known": "she wanted",
+      "legoId": "S0071L01",
+      "target": "oedd hi isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "on Saturday night",
+      "legoId": "S0095L01",
+      "target": " nos Sadwrn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U05",
+   "set": {
+    "target_text": "ia dw i isio bwcio bwrdd heno",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U03",
+   "set": {
+    "target_text": "doedd o ddim isio bwcio bwrdd nos Wener",
+    "decomposition": [
+     {
+      "known": "he didn’t want",
+      "legoId": "S1069L01",
+      "target": "doedd o ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "on Friday night",
+      "legoId": "S1349L02",
+      "target": " nos Wener",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U02",
+   "set": {
+    "target_text": "dw i’n siŵr bo’ ni angen bwcio bwrdd",
+    "target2_audio_id": "1a06844f-d87b-46b6-bf0a-3890e944ef3e",
+    "decomposition": [
+     {
+      "known": "I’m sure",
+      "legoId": "S1340L01",
+      "target": "dw i’n siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "we need",
+      "legoId": "S0174L02",
+      "target": " bo’ ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U01",
+   "set": {
+    "target_text": "byddai’n well bwcio bwrdd cyn dydd Iau",
+    "target2_audio_id": "36a0c23d-42ef-4094-93df-37efc692c25f",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U07",
+   "set": {
+    "target_text": "o’n i’n trio bwcio bwrdd",
+    "target2_audio_id": "923871cd-9445-4c5b-9b91-de7ee5a4f47b",
+    "decomposition": [
+     {
+      "known": "I was trying",
+      "legoId": "S0019L01",
+      "target": "o’n i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U04",
+   "set": {
+    "target_text": "ydan ni angen bwcio bwrdd nos ’fory?",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tomorrow night",
+      "legoId": "S1192L02",
+      "target": " nos ’fory",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02U08",
+   "set": {
+    "target_text": "bydden ni’n bwcio bwrdd ond oedd hi’n rhy brysur",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "she was too busy",
+      "legoId": "S0236L01",
+      "target": " oedd hi’n rhy brysur",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02C01",
+   "set": {
+    "target_text": "bwcio",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "bwcio",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02B04",
+   "set": {
+    "target_text": "ddylen ni ddim bwcio bwrdd heno",
+    "target2_audio_id": "7864f8c5-2403-4a7e-a897-9670748f0882",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02B03",
+   "set": {
+    "target_text": "ydan ni angen bwcio bwrdd?",
+    "target2_audio_id": "7e1838c3-a1a6-43e7-976e-ab039f65971f",
+    "decomposition": [
+     {
+      "known": "do we need",
+      "legoId": "S1397L01",
+      "target": "ydan ni angen",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02B02",
+   "set": {
+    "target_text": "dw i isio bwcio bwrdd",
+    "target2_audio_id": "c599bfb4-c0bc-45d9-ba49-5ef695077bf5",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": " bwcio bwrdd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1411L02B01",
+   "set": {
+    "target_text": "bwcio bwrdd heno",
+    "target2_audio_id": "6a7fd696-3e14-4b84-87ea-9c7f255712a2",
+    "decomposition": [
+     {
+      "known": "to reserve a table",
+      "legoId": "S1411L02",
+      "target": "bwcio bwrdd",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "0c711059-2a97-4968-afa7-6730fba8fcb1",
+   "set": {
+    "target_text": "bwcio bwrdd",
+    "components": [
+     {
+      "known": "to book",
+      "target": "bwcio"
+     },
+     {
+      "known": "a table",
+      "target": "bwrdd"
+     }
+    ],
+    "target1_audio_id": "61dc666d-e2e3-4f22-baf4-011c671999d5",
+    "target2_audio_id": "718c12b2-791e-48a8-93f7-80b700ba1cf6"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1411,
+   "set": {
+    "target_text": "bydden ni’n licio bwcio bwrdd i bedwar heno",
+    "target1_audio_id": "3c94bfb0-054f-4ce1-a573-d35e09599f95",
+    "target2_audio_id": "9aa5cb09-2875-40d7-8de6-08dec7b28447"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U01",
+   "set": {
+    "target_text": "dw i ddim yn siŵr os oes rhaid i ni fwcio heno",
+    "target2_audio_id": "b8aeebe4-602b-4a43-8cd1-327d034a04e3",
+    "decomposition": [
+     {
+      "known": "I’m not sure",
+      "legoId": "S0027L02",
+      "target": "dw i ddim yn siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U07",
+   "set": {
+    "target_text": "o’n i isio ffeindio allan os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U06",
+   "set": {
+    "target_text": "os oes rhaid i ni fwcio dw i’n mynd i ffonio chdi heno",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": " dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to call you",
+      "legoId": "S1294L03",
+      "target": " ffonio chdi",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U04",
+   "set": {
+    "target_text": "mi wna i ofyn iddo fo os oes rhaid i ni fwcio pnawn ’ma",
+    "decomposition": [
+     {
+      "known": "I’ll ask him",
+      "legoId": "S1176L01",
+      "target": "mi wna i ofyn iddo fo",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "this afternoon",
+      "legoId": "S1035L02",
+      "target": " pnawn ’ma",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U02",
+   "set": {
+    "target_text": "dan ni ddim yn gwybod os oes rhaid i ni fwcio cyn dydd Iau",
+    "decomposition": [
+     {
+      "known": "we don’t know",
+      "legoId": "S0176L01",
+      "target": "dan ni ddim yn gwybod",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U05",
+   "set": {
+    "target_text": "ddudodd neb wrthaf fi os oes rhaid i ni fwcio",
+    "target2_audio_id": "c2161856-075b-4c2e-b5f5-a17328b99f57",
+    "decomposition": [
+     {
+      "known": "nobody told me",
+      "legoId": "S1367L01",
+      "target": "ddudodd neb wrthaf fi",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U03",
+   "set": {
+    "target_text": "wnest ti ofyn os oes rhaid i ni fwcio?",
+    "target2_audio_id": "4c69e514-2210-4085-8615-25a38d53d521",
+    "decomposition": [
+     {
+      "known": "did you ask",
+      "legoId": "S1382L01",
+      "target": "wnest ti ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01U08",
+   "set": {
+    "target_text": "diolch mi wna i ofyn iddo fo os oes rhaid i ni fwcio",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "diolch",
+      "isGhost": true
+     },
+     {
+      "known": "I’ll ask him",
+      "legoId": "S1176L01",
+      "target": " mi wna i ofyn iddo fo",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01C03",
+   "set": {
+    "target_text": "fwcio",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fwcio",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01B01",
+   "set": {
+    "target_text": "os oes rhaid i ni fwcio heno",
+    "target2_audio_id": "b2623d88-1478-4a3b-8368-c94916a4778c",
+    "decomposition": [
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": "os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01B04",
+   "set": {
+    "target_text": "wnest ti ofyn os oes rhaid i ni fwcio cyn dydd Iau?",
+    "target2_audio_id": "62cc7c57-542b-49f1-8fa8-1656b01a48ee",
+    "decomposition": [
+     {
+      "known": "did you ask",
+      "legoId": "S1382L01",
+      "target": "wnest ti ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     },
+     {
+      "known": "before Thursday",
+      "legoId": "S1404L03",
+      "target": " cyn dydd Iau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01B02",
+   "set": {
+    "target_text": "ffeindio allan os oes rhaid i ni fwcio",
+    "target2_audio_id": "be66a7e9-01c5-4381-a53c-52009f648cb6",
+    "decomposition": [
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": "ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1405L01B03",
+   "set": {
+    "target_text": "dw i’n trio ffeindio allan os oes rhaid i ni fwcio",
+    "target2_audio_id": "1f4b71d9-3bec-4207-bf8d-4cbf79251067",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "if we have to book",
+      "legoId": "S1405L01",
+      "target": " os oes rhaid i ni fwcio",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "45f9b320-a42f-4f56-ab31-b3cbe7cde45b",
+   "set": {
+    "target_text": "os oes rhaid i ni fwcio",
+    "components": [
+     {
+      "known": "if",
+      "target": "os"
+     },
+     {
+      "known": "do we have to?",
+      "target": "oes rhaid i ni?"
+     },
+     {
+      "known": "book",
+      "target": "fwcio"
+     }
+    ],
+    "target1_audio_id": "b1f4344f-6690-4788-82fb-88bfdae410e5",
+    "target2_audio_id": "c7faf2ce-b419-4021-82d1-3e1bf5eb64f0"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1405,
+   "set": {
+    "target_text": "ddylen ni ofyn os oes rhaid i ni fwcio?",
+    "target1_audio_id": "157057e6-a256-40f6-9b63-3a43bd3b862b",
+    "target2_audio_id": "9e5cc16b-95e1-4a24-b023-9dc4665021fd"
+   }
+  }
+ ],
+ "undo_file": "2026-10-23T14-24-12-266Z-24bb43ac-c8ba-492d-8086-2f2a41854daa.json"
+}

@@ -1,0 +1,1771 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "84af6725-9548-4a3e-bc96-3ded825a7843",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "seed_number": 1614
+   },
+   "before": {
+    "id": "3d8e40ce-c6b2-461f-b0e9-c22f1a607050",
+    "seed_number": 1614,
+    "target_text": "mae o’n agos at lle mae dy deulu di’n byw",
+    "known_text": "it's near where your family live",
+    "known_audio_id": null,
+    "target1_audio_id": "02c3aa0b-3570-4dd1-a5eb-c62c969ecc97",
+    "target2_audio_id": "923e40e8-d365-4414-8981-1e5d398af557"
+   },
+   "after": {
+    "id": "3d8e40ce-c6b2-461f-b0e9-c22f1a607050",
+    "seed_number": 1614,
+    "target_text": "mae o’n agos at le mae dy deulu di’n byw",
+    "known_text": "it's near where your family live",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L02B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L02B02",
+    "seed_number": 1614,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae o’n agos at lle mae dy deulu di’n byw",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mae",
+      "isGhost": true
+     },
+     {
+      "known": "your family live",
+      "legoId": "S1614L02",
+      "target": " dy deulu di’n byw",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where your family live",
+    "known_audio_id": null,
+    "target1_audio_id": "02c3aa0b-3570-4dd1-a5eb-c62c969ecc97",
+    "target2_audio_id": "923e40e8-d365-4414-8981-1e5d398af557",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L02B02",
+    "seed_number": 1614,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae o’n agos at le mae dy deulu di’n byw",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mae",
+      "isGhost": true
+     },
+     {
+      "known": "your family live",
+      "legoId": "S1614L02",
+      "target": " dy deulu di’n byw",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where your family live",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L02U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L02U05",
+    "seed_number": 1614,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae o’n agos at lle mae dy deulu di’n byw ym mhen arall y pentref",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mae",
+      "isGhost": true
+     },
+     {
+      "known": "your family live",
+      "legoId": "S1614L02",
+      "target": " dy deulu di’n byw",
+      "isGhost": false
+     },
+     {
+      "known": "at the other end of",
+      "legoId": "S1552L02",
+      "target": " ym mhen arall",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pentref",
+      "isGhost": true
+     }
+    ],
+    "known_text": "it’s near where your family live at the other end of the village",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L02U05",
+    "seed_number": 1614,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae o’n agos at le mae dy deulu di’n byw ym mhen arall y pentref",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mae",
+      "isGhost": true
+     },
+     {
+      "known": "your family live",
+      "legoId": "S1614L02",
+      "target": " dy deulu di’n byw",
+      "isGhost": false
+     },
+     {
+      "known": "at the other end of",
+      "legoId": "S1552L02",
+      "target": " ym mhen arall",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pentref",
+      "isGhost": true
+     }
+    ],
+    "known_text": "it’s near where your family live at the other end of the village",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L02U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L02U03",
+    "seed_number": 1614,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae o’n agos at lle mae dy deulu di’n byw ond mae hi mor hwyr",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mae",
+      "isGhost": true
+     },
+     {
+      "known": "your family live",
+      "legoId": "S1614L02",
+      "target": " dy deulu di’n byw",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it’s so late",
+      "legoId": "S1558L01",
+      "target": " mae hi mor hwyr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where your family live but it’s so late",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "e9a4ce82-f58b-433a-a223-c26ffe55ba2c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L02U03",
+    "seed_number": 1614,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "mae o’n agos at le mae dy deulu di’n byw ond mae hi mor hwyr",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mae",
+      "isGhost": true
+     },
+     {
+      "known": "your family live",
+      "legoId": "S1614L02",
+      "target": " dy deulu di’n byw",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it’s so late",
+      "legoId": "S1558L01",
+      "target": " mae hi mor hwyr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where your family live but it’s so late",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1614L01"
+   },
+   "before": {
+    "id": "7eb9a4f2-3a50-45fd-a018-93257c698775",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": "S1614L01",
+    "target_text": "mae o’n agos at lle",
+    "components": [
+     {
+      "known": "it’s near",
+      "target": "mae o’n agos at"
+     },
+     {
+      "known": "where",
+      "target": "lle"
+     }
+    ],
+    "known_text": "it’s near where",
+    "known_audio_id": null,
+    "target1_audio_id": "984b4717-2295-4f84-8bd3-a83fcbc7f955",
+    "target2_audio_id": "a15d3c5d-7151-4577-8ffb-e4d82075c3fa",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "7eb9a4f2-3a50-45fd-a018-93257c698775",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": "S1614L01",
+    "target_text": "mae o’n agos at le",
+    "components": [
+     {
+      "known": "it’s near",
+      "target": "mae o’n agos at"
+     },
+     {
+      "known": "where",
+      "target": "lle"
+     }
+    ],
+    "known_text": "it’s near where",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L01B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L01B02",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae o’n agos at lle mae’r eglwys",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "the church is",
+      "legoId": "S1551L01",
+      "target": " mae’r eglwys",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where the church is",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "3a6b59d2-8111-4ba8-9499-5eb664a6907b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L01B02",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae o’n agos at le mae’r eglwys",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "the church is",
+      "legoId": "S1551L01",
+      "target": " mae’r eglwys",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where the church is",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L01B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L01B01",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae o’n agos at lle wnaeth y cwbl ddechrau",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "it all started",
+      "legoId": "S1601L03",
+      "target": " wnaeth y cwbl ddechrau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where it all started",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "69fa9b31-bb5f-4ccd-8d83-437f7675f3ed",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L01B01",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae o’n agos at le wnaeth y cwbl ddechrau",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "it all started",
+      "legoId": "S1601L03",
+      "target": " wnaeth y cwbl ddechrau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where it all started",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L01B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L01B03",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ond mae o’n agos at lle mae o’n sefyll",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "he’s standing",
+      "legoId": "S0280L01",
+      "target": " mae o’n sefyll",
+      "isGhost": false
+     }
+    ],
+    "known_text": "but it’s near where he’s standing",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "07e48d45-f550-4905-beef-7c3b457031c1",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L01B03",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ond mae o’n agos at le mae o’n sefyll",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "he’s standing",
+      "legoId": "S0280L01",
+      "target": " mae o’n sefyll",
+      "isGhost": false
+     }
+    ],
+    "known_text": "but it’s near where he’s standing",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L01B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L01B04",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mwy na thebyg mae o’n agos at lle wnaeth fy nhaid ymladd",
+    "decomposition": [
+     {
+      "known": "probably",
+      "legoId": "S1613L01",
+      "target": "mwy na thebyg",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "my grandfather fought",
+      "legoId": "S1462L01",
+      "target": " wnaeth fy nhaid ymladd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "probably it’s near where my grandfather fought",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "ca7c9295-8d63-4f08-990e-20f2345c8066",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L01B04",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mwy na thebyg mae o’n agos at le wnaeth fy nhaid ymladd",
+    "decomposition": [
+     {
+      "known": "probably",
+      "legoId": "S1613L01",
+      "target": "mwy na thebyg",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "my grandfather fought",
+      "legoId": "S1462L01",
+      "target": " wnaeth fy nhaid ymladd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "probably it’s near where my grandfather fought",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L01U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L01U05",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "felly mae o’n agos at lle mae’r eglwys ym mhen arall y pentref",
+    "decomposition": [
+     {
+      "known": "so",
+      "legoId": "S1588L01",
+      "target": "felly",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "the church is",
+      "legoId": "S1551L01",
+      "target": " mae’r eglwys",
+      "isGhost": false
+     },
+     {
+      "known": "at the other end of",
+      "legoId": "S1552L02",
+      "target": " ym mhen arall",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pentref",
+      "isGhost": true
+     }
+    ],
+    "known_text": "so it’s near where the church is at the other end of the village",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L01U05",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "felly mae o’n agos at le mae’r eglwys ym mhen arall y pentref",
+    "decomposition": [
+     {
+      "known": "so",
+      "legoId": "S1588L01",
+      "target": "felly",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "the church is",
+      "legoId": "S1551L01",
+      "target": " mae’r eglwys",
+      "isGhost": false
+     },
+     {
+      "known": "at the other end of",
+      "legoId": "S1552L02",
+      "target": " ym mhen arall",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pentref",
+      "isGhost": true
+     }
+    ],
+    "known_text": "so it’s near where the church is at the other end of the village",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L01U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L01U02",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ddylen ni ddim stopio achos mae o’n agos at lle maen nhw’n dal i gwffio efo’i gilydd",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "they still fight",
+      "legoId": "S1410L01",
+      "target": " maen nhw’n dal i gwffio",
+      "isGhost": false
+     },
+     {
+      "known": "with each other",
+      "legoId": "S1517L03",
+      "target": " efo’i gilydd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we shouldn’t stop because it’s near where they still fight with each other",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L01U02",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "ddylen ni ddim stopio achos mae o’n agos at le maen nhw’n dal i gwffio efo’i gilydd",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "they still fight",
+      "legoId": "S1410L01",
+      "target": " maen nhw’n dal i gwffio",
+      "isGhost": false
+     },
+     {
+      "known": "with each other",
+      "legoId": "S1517L03",
+      "target": " efo’i gilydd",
+      "isGhost": false
+     }
+    ],
+    "known_text": "we shouldn’t stop because it’s near where they still fight with each other",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L01U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L01U06",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "does dim ots gen i achos mae o’n agos at lle mae o’n sefyll rŵan",
+    "decomposition": [
+     {
+      "known": "I don’t care",
+      "legoId": "S1561L02",
+      "target": "does dim ots gen i",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "he’s standing",
+      "legoId": "S0280L01",
+      "target": " mae o’n sefyll",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S1606L03",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t care because it’s near where he’s standing now",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L01U06",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "does dim ots gen i achos mae o’n agos at le mae o’n sefyll rŵan",
+    "decomposition": [
+     {
+      "known": "I don’t care",
+      "legoId": "S1561L02",
+      "target": "does dim ots gen i",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "he’s standing",
+      "legoId": "S0280L01",
+      "target": " mae o’n sefyll",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S1606L03",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t care because it’s near where he’s standing now",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L01U07"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L01U07",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "byddai’n well mynd yn syth adre achos mae o’n agos at lle wnaeth hi ddilyn fi",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "she followed me",
+      "legoId": "S1591L01",
+      "target": " wnaeth hi ddilyn fi",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to go straight home because it’s near where she followed me",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L01U07",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "byddai’n well mynd yn syth adre achos mae o’n agos at le wnaeth hi ddilyn fi",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "she followed me",
+      "legoId": "S1591L01",
+      "target": " wnaeth hi ddilyn fi",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to go straight home because it’s near where she followed me",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L01U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L01U04",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae o’n agos at lle oeddan ni’n siarad neithiwr",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "we were talking",
+      "legoId": "S1601L01",
+      "target": " oeddan ni’n siarad",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where we were talking last night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "27c50131-8f99-4888-9c5b-50d8d9060e36",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L01U04",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae o’n agos at le oeddan ni’n siarad neithiwr",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "we were talking",
+      "legoId": "S1601L01",
+      "target": " oeddan ni’n siarad",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where we were talking last night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L01U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L01U01",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "does dim ots achos mae o’n agos at lle wnaeth y cwbl ddechrau",
+    "decomposition": [
+     {
+      "known": "it doesn’t matter",
+      "legoId": "S1409L01",
+      "target": "does dim ots",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "it all started",
+      "legoId": "S1601L03",
+      "target": " wnaeth y cwbl ddechrau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it doesn’t matter because it’s near where it all started",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "4069c3a4-6b4b-4f23-b001-529920ac6fb6",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L01U01",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "does dim ots achos mae o’n agos at le wnaeth y cwbl ddechrau",
+    "decomposition": [
+     {
+      "known": "it doesn’t matter",
+      "legoId": "S1409L01",
+      "target": "does dim ots",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "it all started",
+      "legoId": "S1601L03",
+      "target": " wnaeth y cwbl ddechrau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it doesn’t matter because it’s near where it all started",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1614L01U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1614L01U03",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae o’n agos at lle wnaeth fy nhaid ymladd yn ystod y rhyfel",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "my grandfather fought",
+      "legoId": "S1462L01",
+      "target": " wnaeth fy nhaid ymladd",
+      "isGhost": false
+     },
+     {
+      "known": "during the war",
+      "legoId": "S1462L03",
+      "target": " yn ystod y rhyfel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where my grandfather fought during the war",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "a6f4b3cc-5657-4f80-ae36-8eae1baac652",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1614L01U03",
+    "seed_number": 1614,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae o’n agos at le wnaeth fy nhaid ymladd yn ystod y rhyfel",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at le",
+      "isGhost": false
+     },
+     {
+      "known": "my grandfather fought",
+      "legoId": "S1462L01",
+      "target": " wnaeth fy nhaid ymladd",
+      "isGhost": false
+     },
+     {
+      "known": "during the war",
+      "legoId": "S1462L03",
+      "target": " yn ystod y rhyfel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s near where my grandfather fought during the war",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L01U03",
+   "set": {
+    "target_text": "mae o’n agos at lle wnaeth fy nhaid ymladd yn ystod y rhyfel",
+    "target2_audio_id": "a6f4b3cc-5657-4f80-ae36-8eae1baac652",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "my grandfather fought",
+      "legoId": "S1462L01",
+      "target": " wnaeth fy nhaid ymladd",
+      "isGhost": false
+     },
+     {
+      "known": "during the war",
+      "legoId": "S1462L03",
+      "target": " yn ystod y rhyfel",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L01U01",
+   "set": {
+    "target_text": "does dim ots achos mae o’n agos at lle wnaeth y cwbl ddechrau",
+    "target2_audio_id": "4069c3a4-6b4b-4f23-b001-529920ac6fb6",
+    "decomposition": [
+     {
+      "known": "it doesn’t matter",
+      "legoId": "S1409L01",
+      "target": "does dim ots",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "it all started",
+      "legoId": "S1601L03",
+      "target": " wnaeth y cwbl ddechrau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L01U04",
+   "set": {
+    "target_text": "mae o’n agos at lle oeddan ni’n siarad neithiwr",
+    "target2_audio_id": "27c50131-8f99-4888-9c5b-50d8d9060e36",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "we were talking",
+      "legoId": "S1601L01",
+      "target": " oeddan ni’n siarad",
+      "isGhost": false
+     },
+     {
+      "known": "last night",
+      "legoId": "S0073L03",
+      "target": " neithiwr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L01U07",
+   "set": {
+    "target_text": "byddai’n well mynd yn syth adre achos mae o’n agos at lle wnaeth hi ddilyn fi",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "to go straight home",
+      "legoId": "S1401L02",
+      "target": " mynd yn syth adre",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "she followed me",
+      "legoId": "S1591L01",
+      "target": " wnaeth hi ddilyn fi",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L01U06",
+   "set": {
+    "target_text": "does dim ots gen i achos mae o’n agos at lle mae o’n sefyll rŵan",
+    "decomposition": [
+     {
+      "known": "I don’t care",
+      "legoId": "S1561L02",
+      "target": "does dim ots gen i",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "he’s standing",
+      "legoId": "S0280L01",
+      "target": " mae o’n sefyll",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S1606L03",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L01U02",
+   "set": {
+    "target_text": "ddylen ni ddim stopio achos mae o’n agos at lle maen nhw’n dal i gwffio efo’i gilydd",
+    "decomposition": [
+     {
+      "known": "we shouldn’t",
+      "legoId": "S1404L01",
+      "target": "ddylen ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S1605L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "they still fight",
+      "legoId": "S1410L01",
+      "target": " maen nhw’n dal i gwffio",
+      "isGhost": false
+     },
+     {
+      "known": "with each other",
+      "legoId": "S1517L03",
+      "target": " efo’i gilydd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L01U05",
+   "set": {
+    "target_text": "felly mae o’n agos at lle mae’r eglwys ym mhen arall y pentref",
+    "decomposition": [
+     {
+      "known": "so",
+      "legoId": "S1588L01",
+      "target": "felly",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "the church is",
+      "legoId": "S1551L01",
+      "target": " mae’r eglwys",
+      "isGhost": false
+     },
+     {
+      "known": "at the other end of",
+      "legoId": "S1552L02",
+      "target": " ym mhen arall",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pentref",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L01B04",
+   "set": {
+    "target_text": "mwy na thebyg mae o’n agos at lle wnaeth fy nhaid ymladd",
+    "target2_audio_id": "ca7c9295-8d63-4f08-990e-20f2345c8066",
+    "decomposition": [
+     {
+      "known": "probably",
+      "legoId": "S1613L01",
+      "target": "mwy na thebyg",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "my grandfather fought",
+      "legoId": "S1462L01",
+      "target": " wnaeth fy nhaid ymladd",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L01B03",
+   "set": {
+    "target_text": "ond mae o’n agos at lle mae o’n sefyll",
+    "target2_audio_id": "07e48d45-f550-4905-beef-7c3b457031c1",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": " mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "he’s standing",
+      "legoId": "S0280L01",
+      "target": " mae o’n sefyll",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L01B01",
+   "set": {
+    "target_text": "mae o’n agos at lle wnaeth y cwbl ddechrau",
+    "target2_audio_id": "69fa9b31-bb5f-4ccd-8d83-437f7675f3ed",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "it all started",
+      "legoId": "S1601L03",
+      "target": " wnaeth y cwbl ddechrau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L01B02",
+   "set": {
+    "target_text": "mae o’n agos at lle mae’r eglwys",
+    "target2_audio_id": "3a6b59d2-8111-4ba8-9499-5eb664a6907b",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "the church is",
+      "legoId": "S1551L01",
+      "target": " mae’r eglwys",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "7eb9a4f2-3a50-45fd-a018-93257c698775",
+   "set": {
+    "target_text": "mae o’n agos at lle",
+    "target1_audio_id": "984b4717-2295-4f84-8bd3-a83fcbc7f955",
+    "target2_audio_id": "a15d3c5d-7151-4577-8ffb-e4d82075c3fa"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L02U03",
+   "set": {
+    "target_text": "mae o’n agos at lle mae dy deulu di’n byw ond mae hi mor hwyr",
+    "target2_audio_id": "e9a4ce82-f58b-433a-a223-c26ffe55ba2c",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mae",
+      "isGhost": true
+     },
+     {
+      "known": "your family live",
+      "legoId": "S1614L02",
+      "target": " dy deulu di’n byw",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "it’s so late",
+      "legoId": "S1558L01",
+      "target": " mae hi mor hwyr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L02U05",
+   "set": {
+    "target_text": "mae o’n agos at lle mae dy deulu di’n byw ym mhen arall y pentref",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mae",
+      "isGhost": true
+     },
+     {
+      "known": "your family live",
+      "legoId": "S1614L02",
+      "target": " dy deulu di’n byw",
+      "isGhost": false
+     },
+     {
+      "known": "at the other end of",
+      "legoId": "S1552L02",
+      "target": " ym mhen arall",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " pentref",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1614L02B02",
+   "set": {
+    "target_text": "mae o’n agos at lle mae dy deulu di’n byw",
+    "target1_audio_id": "02c3aa0b-3570-4dd1-a5eb-c62c969ecc97",
+    "target2_audio_id": "923e40e8-d365-4414-8981-1e5d398af557",
+    "decomposition": [
+     {
+      "known": "it’s near where",
+      "legoId": "S1614L01",
+      "target": "mae o’n agos at lle",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mae",
+      "isGhost": true
+     },
+     {
+      "known": "your family live",
+      "legoId": "S1614L02",
+      "target": " dy deulu di’n byw",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1614,
+   "set": {
+    "target_text": "mae o’n agos at lle mae dy deulu di’n byw",
+    "target1_audio_id": "02c3aa0b-3570-4dd1-a5eb-c62c969ecc97",
+    "target2_audio_id": "923e40e8-d365-4414-8981-1e5d398af557"
+   }
+  }
+ ],
+ "undo_file": "2026-10-26T14-00-17-473Z-84af6725-9548-4a3e-bc96-3ded825a7843.json"
+}

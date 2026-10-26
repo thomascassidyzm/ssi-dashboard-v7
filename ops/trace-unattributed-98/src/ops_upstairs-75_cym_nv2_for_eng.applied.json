@@ -1,0 +1,1384 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "c76a5de0-984f-4171-873e-48a86f407e17",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "seed_number": 312
+   },
+   "before": {
+    "id": "d311f8c5-3c22-4832-a93d-a5dcf4bd3e83",
+    "seed_number": 312,
+    "target_text": "dy dro di ydy o i fynd â’r dillad glân i fyny’r grisiau",
+    "known_text": "it’s your turn to take the clean clothes upstairs",
+    "known_audio_id": "d8259824-76ce-4500-924a-1d6218950884",
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "after": {
+    "id": "d311f8c5-3c22-4832-a93d-a5dcf4bd3e83",
+    "seed_number": 312,
+    "target_text": "dy dro di ydy o i fynd â’r dillad glân fyny grisiau",
+    "known_text": "it’s your turn to take the clean clothes upstairs",
+    "known_audio_id": "d8259824-76ce-4500-924a-1d6218950884",
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "seed_number": 1545
+   },
+   "before": {
+    "id": "c49a14a5-2117-4222-a29e-675941c05953",
+    "seed_number": 1545,
+    "target_text": "dy dro di ydy hi i fynd â’r dillad glân i fyny’r grisiau",
+    "known_text": "it's your turn to take the clean clothes upstairs",
+    "known_audio_id": "d8259824-76ce-4500-924a-1d6218950884",
+    "target1_audio_id": "c6ac8bb3-0f81-4ac4-8f8a-6639651e38f7",
+    "target2_audio_id": "169eb4a6-7df6-4584-9b0c-7e8613c8cfd5"
+   },
+   "after": {
+    "id": "c49a14a5-2117-4222-a29e-675941c05953",
+    "seed_number": 1545,
+    "target_text": "dy dro di ydy hi i fynd â’r dillad glân fyny grisiau",
+    "known_text": "it's your turn to take the clean clothes upstairs",
+    "known_audio_id": "d8259824-76ce-4500-924a-1d6218950884",
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1545L03"
+   },
+   "before": {
+    "id": "76f2cdf6-e543-460a-ba3b-9b51d96887ff",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": "S1545L03",
+    "target_text": "i fyny’r grisiau",
+    "components": [
+     {
+      "known": "up the stairs",
+      "target": "i fyny’r grisiau"
+     }
+    ],
+    "known_text": "upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": "63c6c12a-af97-4044-8473-8aaf3728aaf3",
+    "target2_audio_id": "7e7153c1-f06d-46f3-9537-fb191f476763",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "76f2cdf6-e543-460a-ba3b-9b51d96887ff",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": "S1545L03",
+    "target_text": "fyny grisiau",
+    "components": [
+     {
+      "known": "upstairs",
+      "target": "fyny grisiau"
+     }
+    ],
+    "known_text": "upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1545L03B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1545L03B03",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "i fynd â’r dillad glân i fyny’r grisiau",
+    "decomposition": [
+     {
+      "known": "to take the clean clothes",
+      "legoId": "S1545L02",
+      "target": "i fynd â’r dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to take the clean clothes upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "e278f13c-c3fa-42c0-bd80-3e418e01830e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1545L03B03",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "i fynd â’r dillad glân fyny grisiau",
+    "decomposition": [
+     {
+      "known": "to take the clean clothes",
+      "legoId": "S1545L02",
+      "target": "i fynd â’r dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " fyny grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "to take the clean clothes upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1545L03B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1545L03B04",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "cyn i ni symud i fyny’r grisiau",
+    "decomposition": [
+     {
+      "known": "before we",
+      "legoId": "S0263L03",
+      "target": "cyn i ni",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "before we move upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "7391d8fa-8096-4e71-82e2-685e34130c5c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1545L03B04",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "cyn i ni symud fyny grisiau",
+    "decomposition": [
+     {
+      "known": "before we",
+      "legoId": "S0263L03",
+      "target": "cyn i ni",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " fyny grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "before we move upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1545L03B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1545L03B01",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "symud i fyny’r grisiau",
+    "decomposition": [
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": "symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "move upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "048b0868-0cf8-4078-91ef-ba3c6c36b391",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1545L03B01",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "symud fyny grisiau",
+    "decomposition": [
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": "symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " fyny grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "move upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1545L03B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1545L03B02",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "i fyny’r grisiau draw acw",
+    "decomposition": [
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": "i fyny’r grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "over there",
+      "legoId": "S0280L03",
+      "target": " draw acw",
+      "isGhost": false
+     }
+    ],
+    "known_text": "upstairs over there",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "57d48890-d5fb-446a-879c-3df519d6a4f3",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1545L03B02",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "fyny grisiau draw acw",
+    "decomposition": [
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": "fyny grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "over there",
+      "legoId": "S0280L03",
+      "target": " draw acw",
+      "isGhost": false
+     }
+    ],
+    "known_text": "upstairs over there",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1545L03U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1545L03U03",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "byddai’n well symud i fyny’r grisiau",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to move upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "67094554-18a4-4743-a56a-aecf1e194a18",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1545L03U03",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "byddai’n well symud fyny grisiau",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " fyny grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it would be better to move upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1545L03U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1545L03U01",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "dw i ddim isio symud i fyny’r grisiau",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want to move upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "254df464-0142-4c89-bd1d-a2dbc3114073",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1545L03U01",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "dw i ddim isio symud fyny grisiau",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " fyny grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I don’t want to move upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1545L03U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1545L03U02",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "fedran nhw symud i fyny’r grisiau wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fedran",
+      "isGhost": true
+     },
+     {
+      "known": "them",
+      "legoId": "S0188L02",
+      "target": " nhw",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "could they move upstairs do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1545L03U02",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "fedran nhw symud fyny grisiau wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fedran",
+      "isGhost": true
+     },
+     {
+      "known": "them",
+      "legoId": "S0188L02",
+      "target": " nhw",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " fyny grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ],
+    "known_text": "could they move upstairs do you think?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1545L03U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1545L03U05",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "maen nhw isio symud i fyny’r grisiau flwyddyn nesa’",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "next year",
+      "legoId": "S1176L03",
+      "target": " flwyddyn nesa’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they want to move upstairs next year",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1545L03U05",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "maen nhw isio symud fyny grisiau flwyddyn nesa’",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " fyny grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "next year",
+      "legoId": "S1176L03",
+      "target": " flwyddyn nesa’",
+      "isGhost": false
+     }
+    ],
+    "known_text": "they want to move upstairs next year",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1545L03U07"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1545L03U07",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "fydd hi ddim yn gwrando i fyny’r grisiau",
+    "decomposition": [
+     {
+      "known": "she won’t listen",
+      "legoId": "S1533L01",
+      "target": "fydd hi ddim yn gwrando",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "she won’t listen upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "2a9003ec-7d94-40dd-9355-1e94324fc0ef",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1545L03U07",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "fydd hi ddim yn gwrando fyny grisiau",
+    "decomposition": [
+     {
+      "known": "she won’t listen",
+      "legoId": "S1533L01",
+      "target": "fydd hi ddim yn gwrando",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " fyny grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "she won’t listen upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1545L03U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1545L03U04",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "o’n i’n arfer byw i fyny’r grisiau ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I used to",
+      "legoId": "S0307L01",
+      "target": "o’n i’n arfer",
+      "isGhost": false
+     },
+     {
+      "known": "live",
+      "legoId": "S0287L02",
+      "target": " byw",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I used to live upstairs on my own",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1545L03U04",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "o’n i’n arfer byw fyny grisiau ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I used to",
+      "legoId": "S0307L01",
+      "target": "o’n i’n arfer",
+      "isGhost": false
+     },
+     {
+      "known": "live",
+      "legoId": "S0287L02",
+      "target": " byw",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " fyny grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I used to live upstairs on my own",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1545L03U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1545L03U06",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "dw i’n mynd i symud i fyny’r grisiau heno",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m going to move upstairs tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1545L03U06",
+    "seed_number": 1545,
+    "lego_index": 3,
+    "lego_id": null,
+    "target_text": "dw i’n mynd i symud fyny grisiau heno",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " fyny grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m going to move upstairs tonight",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1554L01U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1554L01U05",
+    "seed_number": 1554,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae hi’n mynd yn hwyr ond dydy’r tywel ’ma ddim i fyny’r grisiau",
+    "decomposition": [
+     {
+      "known": "it’s getting late",
+      "legoId": "S1539L02",
+      "target": "mae hi’n mynd yn hwyr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "this towel isn’t",
+      "legoId": "S1554L01",
+      "target": " dydy’r tywel ’ma ddim",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s getting late but this towel isn’t upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1554L01U05",
+    "seed_number": 1554,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "mae hi’n mynd yn hwyr ond dydy’r tywel ’ma ddim fyny grisiau",
+    "decomposition": [
+     {
+      "known": "it’s getting late",
+      "legoId": "S1539L02",
+      "target": "mae hi’n mynd yn hwyr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "this towel isn’t",
+      "legoId": "S1554L01",
+      "target": " dydy’r tywel ’ma ddim",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " fyny grisiau",
+      "isGhost": false
+     }
+    ],
+    "known_text": "it’s getting late but this towel isn’t upstairs",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1554L01U05",
+   "set": {
+    "target_text": "mae hi’n mynd yn hwyr ond dydy’r tywel ’ma ddim i fyny’r grisiau",
+    "decomposition": [
+     {
+      "known": "it’s getting late",
+      "legoId": "S1539L02",
+      "target": "mae hi’n mynd yn hwyr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "this towel isn’t",
+      "legoId": "S1554L01",
+      "target": " dydy’r tywel ’ma ddim",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1545L03U06",
+   "set": {
+    "target_text": "dw i’n mynd i symud i fyny’r grisiau heno",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "tonight",
+      "legoId": "S0089L02",
+      "target": " heno",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1545L03U04",
+   "set": {
+    "target_text": "o’n i’n arfer byw i fyny’r grisiau ar fy mhen fy hun",
+    "decomposition": [
+     {
+      "known": "I used to",
+      "legoId": "S0307L01",
+      "target": "o’n i’n arfer",
+      "isGhost": false
+     },
+     {
+      "known": "live",
+      "legoId": "S0287L02",
+      "target": " byw",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "on my own",
+      "legoId": "S1173L04",
+      "target": " ar fy mhen fy hun",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1545L03U07",
+   "set": {
+    "target_text": "fydd hi ddim yn gwrando i fyny’r grisiau",
+    "target2_audio_id": "2a9003ec-7d94-40dd-9355-1e94324fc0ef",
+    "decomposition": [
+     {
+      "known": "she won’t listen",
+      "legoId": "S1533L01",
+      "target": "fydd hi ddim yn gwrando",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1545L03U05",
+   "set": {
+    "target_text": "maen nhw isio symud i fyny’r grisiau flwyddyn nesa’",
+    "decomposition": [
+     {
+      "known": "they want",
+      "legoId": "S0168L01",
+      "target": "maen nhw isio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "next year",
+      "legoId": "S1176L03",
+      "target": " flwyddyn nesa’",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1545L03U02",
+   "set": {
+    "target_text": "fedran nhw symud i fyny’r grisiau wyt ti’n meddwl?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fedran",
+      "isGhost": true
+     },
+     {
+      "known": "them",
+      "legoId": "S0188L02",
+      "target": " nhw",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1545L03U01",
+   "set": {
+    "target_text": "dw i ddim isio symud i fyny’r grisiau",
+    "target2_audio_id": "254df464-0142-4c89-bd1d-a2dbc3114073",
+    "decomposition": [
+     {
+      "known": "I don’t want",
+      "legoId": "S1538L01",
+      "target": "dw i ddim isio",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1545L03U03",
+   "set": {
+    "target_text": "byddai’n well symud i fyny’r grisiau",
+    "target2_audio_id": "67094554-18a4-4743-a56a-aecf1e194a18",
+    "decomposition": [
+     {
+      "known": "it would be better",
+      "legoId": "S1401L01",
+      "target": "byddai’n well",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1545L03B02",
+   "set": {
+    "target_text": "i fyny’r grisiau draw acw",
+    "target2_audio_id": "57d48890-d5fb-446a-879c-3df519d6a4f3",
+    "decomposition": [
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": "i fyny’r grisiau",
+      "isGhost": false
+     },
+     {
+      "known": "over there",
+      "legoId": "S0280L03",
+      "target": " draw acw",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1545L03B01",
+   "set": {
+    "target_text": "symud i fyny’r grisiau",
+    "target2_audio_id": "048b0868-0cf8-4078-91ef-ba3c6c36b391",
+    "decomposition": [
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": "symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1545L03B04",
+   "set": {
+    "target_text": "cyn i ni symud i fyny’r grisiau",
+    "target2_audio_id": "7391d8fa-8096-4e71-82e2-685e34130c5c",
+    "decomposition": [
+     {
+      "known": "before we",
+      "legoId": "S0263L03",
+      "target": "cyn i ni",
+      "isGhost": false
+     },
+     {
+      "known": "move",
+      "legoId": "S0287L06",
+      "target": " symud",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1545L03B03",
+   "set": {
+    "target_text": "i fynd â’r dillad glân i fyny’r grisiau",
+    "target2_audio_id": "e278f13c-c3fa-42c0-bd80-3e418e01830e",
+    "decomposition": [
+     {
+      "known": "to take the clean clothes",
+      "legoId": "S1545L02",
+      "target": "i fynd â’r dillad glân",
+      "isGhost": false
+     },
+     {
+      "known": "upstairs",
+      "legoId": "S1545L03",
+      "target": " i fyny’r grisiau",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "76f2cdf6-e543-460a-ba3b-9b51d96887ff",
+   "set": {
+    "target_text": "i fyny’r grisiau",
+    "components": [
+     {
+      "known": "up the stairs",
+      "target": "i fyny’r grisiau"
+     }
+    ],
+    "target1_audio_id": "63c6c12a-af97-4044-8473-8aaf3728aaf3",
+    "target2_audio_id": "7e7153c1-f06d-46f3-9537-fb191f476763"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1545,
+   "set": {
+    "target_text": "dy dro di ydy hi i fynd â’r dillad glân i fyny’r grisiau",
+    "target1_audio_id": "c6ac8bb3-0f81-4ac4-8f8a-6639651e38f7",
+    "target2_audio_id": "169eb4a6-7df6-4584-9b0c-7e8613c8cfd5"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 312,
+   "set": {
+    "target_text": "dy dro di ydy o i fynd â’r dillad glân i fyny’r grisiau"
+   }
+  }
+ ],
+ "undo_file": "2026-10-26T14-01-44-415Z-c76a5de0-984f-4171-873e-48a86f407e17.json"
+}
