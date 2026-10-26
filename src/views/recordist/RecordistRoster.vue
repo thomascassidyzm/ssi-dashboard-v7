@@ -50,6 +50,9 @@
         <span class="peek-meta">
           <span v-if="peeked.speaker" class="peek-speaker">{{ peeked.speaker }}</span>
           <span class="peek-state" :class="markClass(peeked)">{{ stateWord(peeked) }}</span>
+          <!-- Tom, Aran and Kai only (job #709): adminEdit is the server's answer, passed down by the
+               booth. In the caption row, so the slot keeps its fixed height. -->
+          <button v-if="adminEdit && isRowLine(peeked.id)" class="peek-admin-edit" type="button" data-test="roster-admin-edit" @click="$emit('admin-edit', peeked.id)">Edit this line</button>
         </span>
         <span class="peek-text">{{ peeked.text }}</span>
         <!-- AND THIS IS THE PRIZE. "I want to read that one again" is what an
@@ -245,6 +248,13 @@
             type="button"
             @click="$emit('play', r.id)"
           >{{ playingId === r.id ? 'Stop' : 'Listen' }}</button>
+          <button
+            v-if="adminEdit && isRowLine(r.id)"
+            class="row-play row-admin-edit"
+            type="button"
+            data-test="row-admin-edit"
+            @click="$emit('admin-edit', r.id)"
+          >Edit</button>
           <!-- The reason a take was rejected used to print here, under the
                row. Tom, 2026-09-02: a line whose take we have ruled unusable
                must read as a line that still needs recording, and nothing more.
@@ -299,9 +309,12 @@ const props = defineProps({
   savedId: { type: String, default: null },
   saving: { type: Boolean, default: false },
   error: { type: String, default: null },
+  // "Edit this line" for a God admin (job #709) — the SERVER's answer, passed down by the booth.
+  adminEdit: { type: Boolean, default: false },
   startOpen: { type: Boolean, default: false },
 })
-const emit = defineEmits(['play', 'edit', 'edit-known', 'save', 'cancel-edit', 'record'])
+const emit = defineEmits(['play', 'edit', 'edit-known', 'save', 'cancel-edit', 'record', 'admin-edit'])
+const isRowLine = (id) => /^(seed|lego|phrase):/.test(String(id || ''))
 
 const open = ref(props.startOpen)
 // WHICH MARK IS OPEN. Two separate pieces of state on purpose: `peekId` is a
@@ -645,6 +658,7 @@ function toggleStrip(key) {
   font-size: 0.98rem;
   line-height: 1.3;
 }
+.peek-admin-edit { margin-left: auto; min-height: 30px; padding: 0 0.6rem; border-radius: 8px; border: 1px solid var(--line, #475569); background: transparent; color: var(--ink, #f1f5f9); font: inherit; font-size: 0.78rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
 .peek-state { font-size: 0.72rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; }
 .peek-record {
   grid-column: 2;

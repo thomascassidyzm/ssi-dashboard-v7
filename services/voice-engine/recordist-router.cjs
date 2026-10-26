@@ -74,6 +74,7 @@ const boothNextPod = require('./booth-next-pod.cjs')
 const boothActorQueue = require('./booth-actor-queue.cjs')
 const boothRerecord = require('./booth-rerecord.cjs')
 const { isRetryableFilingFailure } = require('../script-take-filing.cjs')
+const { createLastGoodCache, rowOrThrow } = require('../shared/last-good-cache.cjs')
 
 /**
  * A TAKE THE DATABASE DID NOT FILE IS NOT A SAVED TAKE (job #261). Its bytes are in S3, but no
@@ -162,6 +163,23 @@ function captureResponse() {
   return { res, captured }
 }
 
+// ADVANCE TELEMETRY (Aran, 2026-10-26). The booth sends, with each take, how
+// its line moved on — advanceBy auto|tap|stop, advanceGapMs (ms from the last
+// frame the meter called speech to the advance), and thrSpeech/thrQuiet (dBFS).
+// Appended to the [BoothTake] line as ' advance=… gapMs=… thrSpeech=… thrQuiet=…'
+// so a stall reads straight off the log. Client words never reach the log raw:
+// anything that is not a known token or a plain number is dropped.
+function boothAdvanceLogFields(body) {
+  if (!body || typeof body !== 'object') return ''
+  const by = ['auto', 'tap', 'stop'].includes(body.advanceBy) ? body.advanceBy : null
+  if (!by) return ''
+  const num = (v) => {
+    const t = typeof v === 'number' && Number.isFinite(v) ? String(v) : v
+    return typeof t === 'string' && /^-?\d{1,7}(\.\d{1,2})?$/.test(t) ? t : '?'
+  }
+  return ` advance=${by} gapMs=${num(body.advanceGapMs)} thrSpeech=${num(body.thrSpeech)} thrQuiet=${num(body.thrQuiet)}`
+}
+
 module.exports = function createRecordistRouter({
   getDb,
   logger = console,
@@ -208,6 +226,24 @@ module.exports = function createRecordistRouter({
     if (!client) throw Object.assign(new Error('Supabase not initialized'), { status: 503 })
     return client
   }
+
+  // THE TAKE PATH RIDES OUT A READ BLIP (job #917, Aran 2026-10-23). Every read below still goes to
+  // the database each time; only when it THROWS is the last answer this process read successfully
+  // used, and only within 10 minutes (shared/last-good-cache.cjs). A successful read always wins,
+  // so a retired voice, a recast slot or a deleted row is honoured as soon as the database answers.
+  const lastGood = createLastGoodCache({ logger, label: 'Recordist' })
+  const COURSE_COLS = 'course_code, voice_config, target_lang, known_lang, dialect'
+  const readCourse = (code) => lastGood.read(`course:${code}`, () =>
+    rowOrThrow(db().from('courses').select(COURSE_COLS).eq('course_code', code).maybeSingle(), 'course lookup'))
+  const readPolicies = () => lastGood.read('policies', () => loadPolicies(db()))
+  /** One content row by id; `invalidIdIsMissing` treats a malformed uuid (22P02) as "no such row". */
+  const readRowById = (table, cols, id, what, { invalidIdIsMissing = false } = {}) =>
+    lastGood.read(`${table}:${id}`, async () => {
+      const { data, error } = await db().from(table).select(cols).eq('id', id).maybeSingle()
+      if (error && !(invalidIdIsMissing && error.code === '22P02')) throw new Error(`${what} failed: ${error.message}`)
+      return data || null
+    })
+
   if (warmPhrasePlan) {
     // Job #337: the language read was cold after every deploy and after every
     // take. Warm it at boot beside the plan, and re-warm it after a take.
@@ -233,7 +269,8 @@ module.exports = function createRecordistRouter({
   /** Resolve :voiceId or answer 404 — the only gate routes 1-3 have, by design. */
   async function recordistOr404(req, res) {
     const course = typeof req.query.course === 'string' && req.query.course.trim() ? req.query.course.trim() : undefined
-    const recordist = await resolveRecordist(db(), req.params.voiceId, { course })
+    const recordist = await lastGood.read(`recordist:${req.params.voiceId}:${course || ''}`,
+      () => resolveRecordist(db(), req.params.voiceId, { course }))
     if (!recordist) {
       res.status(404).json({
         error: `No recording voice ${req.params.voiceId}. A recording link is only live while ` +
@@ -261,9 +298,8 @@ module.exports = function createRecordistRouter({
   // recordist_setup_checks. Everything that asks "is this voice id a pack"
   // asks THIS, so the static pack and the per-artist packs share every branch.
   async function loadSetupRow(voiceId) {
-    const { data, error } = await db().from('recordist_setup_checks').select('*').eq('voice_id', voiceId).maybeSingle()
-    if (error) throw new Error(`setup check read failed: ${error.message}`)
-    return data || null
+    return lastGood.read(`setup:${voiceId}`, () =>
+      rowOrThrow(db().from('recordist_setup_checks').select('*').eq('voice_id', voiceId).maybeSingle(), 'setup check read'))
   }
 
   async function resolveAnyPack(packVoiceId) {
@@ -1011,20 +1047,15 @@ module.exports = function createRecordistRouter({
    * a take into any seed slot of their language.
    */
   async function resolveSeedLine(res, recordist, parsed) {
-    const { data: seed, error: seedErr } = await db()
-      .from('course_seeds')
-      .select('id, course_code, seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
-      .eq('id', parsed.seedId)
-      .maybeSingle()
-    if (seedErr && seedErr.code !== '22P02') throw new Error(`seed lookup failed: ${seedErr.message}`)
+    const seed = await readRowById('course_seeds',
+      'id, course_code, seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id',
+      parsed.seedId, 'seed lookup', { invalidIdIsMissing: true })
     if (!seed) { res.status(404).json({ error: `No seed ${parsed.seedId}` }); return null }
 
-    const { data: course, error: cErr } = await db()
-      .from('courses').select('course_code, voice_config, target_lang, known_lang, dialect').eq('course_code', seed.course_code).maybeSingle()
-    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    const course = await readCourse(seed.course_code)
     if (!course) { res.status(404).json({ error: `No course ${seed.course_code}` }); return null }
 
-    const policies = await loadPolicies(db())
+    const policies = await readPolicies()
     const policy = policies.find((row) => row.language === recordist.language)
     const cast = seedCastEntry(course, policyVoiceList(policy))
 
@@ -1212,9 +1243,7 @@ module.exports = function createRecordistRouter({
     if (pErr) throw new Error(`pod lookup failed: ${pErr.message}`)
     if (!pod) { res.status(404).json({ error: `No pod for line ${parsed.raw}` }); return null }
 
-    const { data: course, error: cErr } = await db()
-      .from('courses').select('course_code, voice_config, target_lang, known_lang').eq('course_code', pod.course_code).maybeSingle()
-    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    const course = await readCourse(pod.course_code)
     if (!course) { res.status(404).json({ error: `No course ${pod.course_code}` }); return null }
 
     // A SOLO-READER POD IS CAST BY ITS READERS. The line has no character to be
@@ -1384,9 +1413,7 @@ module.exports = function createRecordistRouter({
       })
       return null
     }
-    const { data: course, error: cErr } = await db()
-      .from('courses').select('course_code, voice_config, target_lang, known_lang').eq('course_code', parsed.courseCode).maybeSingle()
-    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    const course = await readCourse(parsed.courseCode)
     if (!course) { res.status(404).json({ error: `No course ${parsed.courseCode}` }); return null }
 
     let courseLanguage = null
@@ -1401,7 +1428,7 @@ module.exports = function createRecordistRouter({
 
     // Cast like a seed's target1, because that is what a quarry piece is: the
     // target side of this course, read by whoever reads its target side.
-    const policies = await loadPolicies(db())
+    const policies = await readPolicies()
     const policy = policies.find((row) => row.language === recordist.language)
     const castVoice = seedCastEntry(course, policyVoiceList(policy)).target1
     if (!castVoice || !recordist.spellings.includes(castVoice.voiceId)) {
@@ -1689,12 +1716,9 @@ module.exports = function createRecordistRouter({
    * phrase take here; a live course's phrases are refused outright.
    */
   async function resolvePhraseLine(res, recordist, parsed) {
-    const { data: phrase, error } = await db()
-      .from('course_practice_phrases')
-      .select('id, course_code, seed_number, phrase_role, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
-      .eq('id', parsed.phraseId)
-      .maybeSingle()
-    if (error) throw new Error(`phrase lookup failed: ${error.message}`)
+    const phrase = await readRowById('course_practice_phrases',
+      'id, course_code, seed_number, phrase_role, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id',
+      parsed.phraseId, 'phrase lookup')
     if (!phrase) { res.status(404).json({ error: `No phrase ${parsed.phraseId}` }); return null }
     if (!phraseQueue.isPhraseQueueCourse(phrase.course_code)) {
       res.status(403).json({
@@ -1704,9 +1728,7 @@ module.exports = function createRecordistRouter({
       })
       return null
     }
-    const { data: course, error: cErr } = await db()
-      .from('courses').select('course_code, voice_config, target_lang, known_lang, dialect').eq('course_code', phrase.course_code).maybeSingle()
-    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    const course = await readCourse(phrase.course_code)
     if (!course) { res.status(404).json({ error: `No course ${phrase.course_code}` }); return null }
 
     const sideLang = parsed.role === 'known' ? course.known_lang : course.target_lang
@@ -1716,7 +1738,7 @@ module.exports = function createRecordistRouter({
       res.status(403).json({ error: `That phrase's ${parsed.role} side is ${sideLang}, not ${recordist.language}.`, reason: 'wrong_language', courseCode: phrase.course_code })
       return null
     }
-    const policies = await loadPolicies(db())
+    const policies = await readPolicies()
     const policy = policies.find((row) => row.language === recordist.language)
     const castVoice = seedCastEntry(course, policyVoiceList(policy))[parsed.role]
     if (!castVoice || !recordist.spellings.includes(castVoice.voiceId)) {
@@ -1815,12 +1837,9 @@ module.exports = function createRecordistRouter({
    * sandboxes) take a LEGO take here; a live course's LEGO slots are refused.
    */
   async function resolveLegoLine(res, recordist, parsed) {
-    const { data: lego, error } = await db()
-      .from('course_legos')
-      .select('id, course_code, seed_number, lego_index, lego_id, known_text, target_text, target1_audio_id, target2_audio_id')
-      .eq('id', parsed.legoRowId)
-      .maybeSingle()
-    if (error) throw new Error(`lego lookup failed: ${error.message}`)
+    const lego = await readRowById('course_legos',
+      'id, course_code, seed_number, lego_index, lego_id, known_text, target_text, target1_audio_id, target2_audio_id',
+      parsed.legoRowId, 'lego lookup')
     if (!lego) { res.status(404).json({ error: `No LEGO ${parsed.legoRowId}` }); return null }
     if (!isLegoQueueCourse(lego.course_code)) {
       res.status(403).json({
@@ -1830,9 +1849,7 @@ module.exports = function createRecordistRouter({
       })
       return null
     }
-    const { data: course, error: cErr } = await db()
-      .from('courses').select('course_code, voice_config, target_lang, known_lang, dialect').eq('course_code', lego.course_code).maybeSingle()
-    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    const course = await readCourse(lego.course_code)
     if (!course) { res.status(404).json({ error: `No course ${lego.course_code}` }); return null }
     let courseLanguage = null
     try { courseLanguage = canonicalLanguage(course.target_lang) } catch { courseLanguage = null }
@@ -1840,7 +1857,7 @@ module.exports = function createRecordistRouter({
       res.status(403).json({ error: `That LEGO is ${course.target_lang}, not ${recordist.language}.`, reason: 'wrong_language', courseCode: lego.course_code })
       return null
     }
-    const policies = await loadPolicies(db())
+    const policies = await readPolicies()
     const policy = policies.find((row) => row.language === recordist.language)
     const castVoice = seedCastEntry(course, policyVoiceList(policy))[parsed.role]
     if (!castVoice || !recordist.spellings.includes(castVoice.voiceId)) {
@@ -1988,9 +2005,10 @@ module.exports = function createRecordistRouter({
     let releaseLine = null
     let lockWaitMs = 0
     let logLine = '?'
+    let advanceFields = null
     if (typeof res.on === 'function') {
       res.on('finish', () => {
-        logger.log(`[BoothTake] ${new Date().toISOString()} voice=${req.params.voiceId} line=${logLine} status=${res.statusCode} ms=${Date.now() - tookStart} lockWaitMs=${lockWaitMs} inFlight=${inFlightAtStart}`)
+        logger.log(`[BoothTake] ${new Date().toISOString()} voice=${req.params.voiceId} line=${logLine} status=${res.statusCode} ms=${Date.now() - tookStart} lockWaitMs=${lockWaitMs} inFlight=${inFlightAtStart}${boothAdvanceLogFields(advanceFields)}`)
       })
     }
     try {
@@ -2020,6 +2038,7 @@ module.exports = function createRecordistRouter({
       if (isMultipart) {
         const parsed = await parseMultipartTake(req)
         lineId = parsed.fields.lineId
+        advanceFields = parsed.fields
         text = parsed.fields.text
         device = parsed.fields.device || null
         mimeType = parsed.fields.mimeType || parsed.mimeType || 'audio/webm'
@@ -2032,6 +2051,7 @@ module.exports = function createRecordistRouter({
         // on this estate sends, and refusing it would make the one surface
         // reachable by fewer clients than the five it replaces.
         lineId = req.body.lineId
+        advanceFields = req.body
         text = req.body.text
         mimeType = req.body.mimeType || 'audio/webm'
         device = req.body.device || null
@@ -3014,3 +3034,4 @@ module.exports = function createRecordistRouter({
 
   return router
 }
+module.exports.boothAdvanceLogFields = boothAdvanceLogFields

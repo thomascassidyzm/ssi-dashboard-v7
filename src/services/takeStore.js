@@ -21,15 +21,24 @@
 //   • indexedDbBackend() — the durable shelf. Proved in a real browser, which
 //     is the only place an IndexedDB adapter can honestly be proved.
 //
-// The store is small by construction: one session's takes, each deleted on
-// confirmation. Reading the whole table is cheaper than maintaining indexes.
+// The store was meant to be small — one session's takes, each deleted on
+// confirmation — but a network blip can leave a hundred takes waiting, so the
+// queue's bookkeeping reads a metadata-only copy (META_STORE_NAME) and never
+// the audio (#933).
 
 // A marker a human can grep for in the SERVED bundle to prove this shipped.
 export const DURABLE_TAKES_FEATURE = 'durable-take-store-2026-09-03'
 
 export const DB_NAME = 'ssi-recordist-takes'
 export const STORE_NAME = 'takes'
-export const DB_VERSION = 1
+// Every take minus its blob, written in the SAME transaction as the take, so
+// the two can never disagree about what is on the shelf. `takes` stays the
+// truth: the copy is checked against its keys on every read and repaired from
+// it, so a take can never be invisible to the queue (see getAllMeta).
+export const META_STORE_NAME = 'take-meta'
+// 1 → 2 (#933): adds META_STORE_NAME, filled from the takes already queued in
+// the browser during the upgrade. Nothing in `takes` is touched or deleted.
+export const DB_VERSION = 2
 
 // Status vocabulary. There is deliberately no 'failed' and no 'gave up': a
 // transient failure never leaves 'pending', because there is no give-up point.
@@ -59,10 +68,32 @@ export function backoffFor(attempts, rand = Math.random) {
 }
 
 /**
+ * A take's record WITHOUT its audio. Everything the queue decides — what is
+ * pending, what is refused, what is due next, how many are stale — is decided
+ * from this, and only the take actually going on the wire (or being played
+ * back) has its blob loaded.
+ *
+ * Why (Aran, 2026-10-23, #928/#933): advancing to the next line in the booth
+ * did about six full reads of the shelf, every one loading every unsent take
+ * WITH its audio. After a Supabase blip left ~90 takes queued, every advance
+ * was dragging 90 blobs out of IndexedDB six times over and the booth lagged
+ * between lines. "Reading the whole table is cheaper than maintaining indexes"
+ * stopped being true the day the backlog grew.
+ */
+export function metaOf(rec) {
+  if (!rec) return rec
+  const { blob, ...meta } = rec
+  meta.blobSize = (blob && blob.size) || 0
+  return meta
+}
+
+/**
  * The rules over a backend.
  *
- * backend: { getAll(): Promise<rec[]>, put(rec): Promise<void>,
- *            remove(id): Promise<void>, available: boolean }
+ * backend: { getAllMeta(): Promise<meta[]>, get(id): Promise<rec|null>,
+ *            put(rec): Promise<void>, remove(id): Promise<void>, available }
+ * A backend without getAllMeta/get (the pre-#933 shape) still works, by
+ * reading everything — correct, just slow.
  */
 export function createTakeStore(backend, { now = () => Date.now() } = {}) {
   let seq = 0
@@ -70,6 +101,21 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
     seq += 1
     return `t${now()}-${seq}-${Math.random().toString(36).slice(2, 8)}`
   }
+  const readMeta = () => (backend.getAllMeta
+    ? backend.getAllMeta()
+    : backend.getAll().then(rows => rows.map(metaOf)))
+  const readOne = id => (backend.get
+    ? backend.get(id)
+    : backend.getAll().then(rows => rows.find(r => r.id === id)))
+
+  async function allMeta(voiceId) {
+    const all = await readMeta()
+    const mine = voiceId ? all.filter(r => r.voiceId === voiceId) : all
+    return mine.sort((a, b) => a.createdAt - b.createdAt)
+  }
+  const isPending = r => r.status === PENDING
+  const isDue = (t, skip) => r => (r.nextAttemptAt || 0) <= t && !(skip && skip(r))
+  const STALE_MS = 30 * 24 * 60 * 60 * 1000
 
   return {
     get available() { return !!backend.available },
@@ -81,9 +127,8 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
      * A REFUSED take of the same line is superseded too: the re-read is the
      * artist answering the refusal.
      */
-    async put({ voiceId, lineId, text, blob, device }) {
-      const all = await backend.getAll()
-      for (const rec of all) {
+    async put({ voiceId, lineId, text, blob, device, advance }) {
+      for (const rec of await readMeta()) {
         if (rec.voiceId === voiceId && rec.lineId === lineId) await backend.remove(rec.id)
       }
       const rec = {
@@ -93,6 +138,8 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
         text: text || '',
         blob,
         device: device || '',
+        // How the line moved on (RecordistRoom advanceInfo) — telemetry only.
+        advance: advance || null,
         status: PENDING,
         attempts: 0,
         lastError: null,
@@ -103,28 +150,49 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
       return rec
     },
 
+    /** The full record, audio included, or null if it has left the shelf. */
+    async load(id) {
+      return (await readOne(id)) || null
+    },
+
+    // Everything below answers from METADATA: no audio is read.
     async all(voiceId) {
-      const all = await backend.getAll()
-      const mine = voiceId ? all.filter(r => r.voiceId === voiceId) : all
-      return mine.sort((a, b) => a.createdAt - b.createdAt)
+      return allMeta(voiceId)
     },
 
     async pending(voiceId) {
-      return (await this.all(voiceId)).filter(r => r.status === PENDING)
+      return (await allMeta(voiceId)).filter(isPending)
     },
 
     async refused(voiceId) {
-      return (await this.all(voiceId)).filter(r => r.status === REFUSED)
+      return (await allMeta(voiceId)).filter(r => r.status === REFUSED)
     },
 
     /**
-     * The oldest pending take whose backoff has elapsed. `skip(rec)` passes over
-     * takes the caller already has on the wire, or that share a line or words
-     * with one that is (Phase 1, job #221: two takes in flight at once).
+     * Every count the booth shows, from ONE read of the shelf. This is what
+     * the booth calls on every advance; it used to be three full reads with
+     * audio (pending, refused, stale), on top of the put's own.
+     */
+    async snapshot(voiceId, ageMs = STALE_MS) {
+      const mine = await allMeta(voiceId)
+      const cutoff = now() - ageMs
+      const pending = mine.filter(isPending)
+      return {
+        pending,
+        refused: mine.filter(r => r.status === REFUSED),
+        stale: pending.filter(r => r.createdAt < cutoff),
+      }
+    },
+
+    /**
+     * The oldest pending take whose backoff has elapsed — metadata only; the
+     * caller loads the audio with load(id) when it is actually sending.
+     * `skip(rec)` passes over takes the caller already has on the wire, or
+     * that share a line or words with one that is (Phase 1, job #221: two
+     * takes in flight at once).
      */
     async nextDue(voiceId, { skip } = {}) {
-      const t = now()
-      return (await this.pending(voiceId)).find(r => (r.nextAttemptAt || 0) <= t && !(skip && skip(r))) || null
+      return (await this.pending(voiceId)).find(isDue(now(), skip)) || null
     },
 
     /** When the soonest pending take becomes due, or null if there are none. */
@@ -144,7 +212,7 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
      * whole posture of this file.
      */
     async recordFailure(id, message, rand) {
-      const rec = (await backend.getAll()).find(r => r.id === id)
+      const rec = await readOne(id)
       if (!rec) return null
       rec.attempts = (rec.attempts || 0) + 1
       rec.lastError = message || 'Could not save that take.'
@@ -159,7 +227,7 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
      * a confirmed store or an explicit, human-readable refusal.
      */
     async markRefused(id, message) {
-      const rec = (await backend.getAll()).find(r => r.id === id)
+      const rec = await readOne(id)
       if (!rec) return null
       rec.status = REFUSED
       rec.lastError = message || 'The server would not take that recording.'
@@ -183,9 +251,8 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
      * reached the server is not ours to throw away, whatever its age. This
      * reports them so the booth can say so out loud.
      */
-    async stale(voiceId, ageMs = 30 * 24 * 60 * 60 * 1000) {
-      const cutoff = now() - ageMs
-      return (await this.all(voiceId)).filter(r => r.status === PENDING && r.createdAt < cutoff)
+    async stale(voiceId, ageMs = STALE_MS) {
+      return (await this.snapshot(voiceId, ageMs)).stale
     },
   }
 }
@@ -213,43 +280,123 @@ export function createIndexedDbBackend(idbFactory) {
     dbPromise = new Promise((resolve, reject) => {
       let req
       try { req = idb.open(DB_NAME, DB_VERSION) } catch (err) { reject(err); return }
-      req.onupgradeneeded = () => {
+      req.onupgradeneeded = () => upgrade(req.result, req.transaction)
+      req.onsuccess = () => {
         const db = req.result
-        if (!db.objectStoreNames.contains(STORE_NAME)) {
-          db.createObjectStore(STORE_NAME, { keyPath: 'id' })
-        }
+        // A later version of this page wants to upgrade: let it, and reopen
+        // on our next transaction rather than blocking it for ever.
+        db.onversionchange = () => { try { db.close() } catch { /* already closed */ } dbPromise = null }
+        resolve(db)
       }
-      req.onsuccess = () => resolve(req.result)
       req.onerror = () => reject(req.error || new Error('IndexedDB refused to open'))
       req.onblocked = () => reject(new Error('IndexedDB is blocked by another tab'))
     })
+    // A failed open must not poison every later attempt.
+    dbPromise.catch(() => { dbPromise = null })
     return dbPromise
   }
 
-  function tx(mode, fn) {
+  // The 1 → 2 migration copies, it never moves: every take already queued in
+  // this browser keeps its record in `takes` exactly as it was, and gains a
+  // metadata row beside it. Runs inside the versionchange transaction, so it
+  // either completes whole or the database stays at version 1.
+  function upgrade(db, vtx) {
+    if (!db.objectStoreNames.contains(STORE_NAME)) {
+      db.createObjectStore(STORE_NAME, { keyPath: 'id' })
+    }
+    if (!db.objectStoreNames.contains(META_STORE_NAME)) {
+      const meta = db.createObjectStore(META_STORE_NAME, { keyPath: 'id' })
+      const cur = vtx.objectStore(STORE_NAME).openCursor()
+      cur.onsuccess = () => {
+        const c = cur.result
+        if (!c) return
+        meta.put(metaOf(c.value))
+        c.continue()
+      }
+    }
+  }
+
+  function tx(stores, mode, fn) {
     return open().then(db => new Promise((resolve, reject) => {
-      const t = db.transaction(STORE_NAME, mode)
-      const store = t.objectStore(STORE_NAME)
+      const t = db.transaction(stores, mode)
       let out
-      try { out = fn(store) } catch (err) { reject(err); return }
-      t.oncomplete = () => resolve(out && out.result !== undefined ? out.result : out)
+      try { out = fn(name => t.objectStore(name)) } catch (err) { try { t.abort() } catch { /* gone */ } reject(err); return }
+      // Resolves with whatever fn returned (requests, read their .result) once
+      // the transaction has COMMITTED — never earlier.
+      t.oncomplete = () => resolve(out)
       t.onerror = () => reject(t.error || new Error('IndexedDB write failed'))
       t.onabort = () => reject(t.error || new Error('IndexedDB transaction aborted'))
     }))
   }
+  const BOTH = [STORE_NAME, META_STORE_NAME]
+
+  function put(rec) {
+    return tx(BOTH, 'readwrite', st => {
+      st(STORE_NAME).put(rec)
+      st(META_STORE_NAME).put(metaOf(rec))
+    }).then(() => undefined)
+  }
+  function remove(id) {
+    return tx(BOTH, 'readwrite', st => {
+      st(STORE_NAME).delete(id)
+      st(META_STORE_NAME).delete(id)
+    }).then(() => undefined)
+  }
+
+  /**
+   * Every take's metadata, without its audio. Reads the metadata rows and the
+   * KEYS of `takes` (keys only — no values, no blobs) in one transaction; if
+   * the two ever disagree, `takes` wins: a missing metadata row is rebuilt
+   * from its take and an orphaned one is dropped. That repair should never
+   * run, and is here so that "the queue cannot see a take" is impossible
+   * rather than merely unlikely.
+   */
+  async function getAllMeta() {
+    const got = await tx(BOTH, 'readonly', st => {
+      const o = {}
+      o.meta = st(META_STORE_NAME).getAll()
+      o.keys = st(STORE_NAME).getAllKeys()
+      return o
+    })
+    const meta = got.meta.result || []
+    const keys = new Set(got.keys.result || [])
+    const metaIds = new Set(meta.map(r => r.id))
+    const missing = [...keys].filter(k => !metaIds.has(k))
+    const orphaned = meta.filter(r => !keys.has(r.id)).map(r => r.id)
+    if (!missing.length && !orphaned.length) return meta
+    const rebuilt = []
+    await tx(BOTH, 'readwrite', st => {
+      const takes = st(STORE_NAME)
+      const metaStore = st(META_STORE_NAME)
+      for (const id of orphaned) metaStore.delete(id)
+      for (const id of missing) {
+        const r = takes.get(id)
+        r.onsuccess = () => {
+          if (!r.result) return
+          const m = metaOf(r.result)
+          metaStore.put(m)
+          rebuilt.push(m)
+        }
+      }
+    })
+    return meta.filter(r => keys.has(r.id)).concat(rebuilt)
+  }
 
   return {
     available: true,
-    getAll: () => tx('readonly', s => s.getAll()).then(rows => rows || []),
-    put: rec => tx('readwrite', s => s.put(rec)).then(() => undefined),
-    remove: id => tx('readwrite', s => s.delete(id)).then(() => undefined),
+    getAllMeta,
+    get: id => tx([STORE_NAME], 'readonly', st => st(STORE_NAME).get(id)).then(r => r.result || null),
+    // Everything, audio included. Not on any hot path; kept for diagnosis.
+    getAll: () => tx([STORE_NAME], 'readonly', st => st(STORE_NAME).getAll()).then(r => r.result || []),
+    put,
+    remove,
     // A probe the booth runs once, so "is this device persisting?" is answered
     // by a real write and not by feature detection. `indexedDB` exists in
     // Safari private mode and then throws on the first transaction.
     async probe() {
       const id = `__probe-${Date.now()}`
-      await tx('readwrite', s => s.put({ id, status: '__probe', createdAt: Date.now() }))
-      await tx('readwrite', s => s.delete(id))
+      await put({ id, status: '__probe', createdAt: Date.now() })
+      await remove(id)
       return true
     },
   }
@@ -261,6 +408,8 @@ export function createMemoryBackend(seed = []) {
     available: true,
     memory: true,
     getAll: async () => Array.from(rows.values()).map(r => ({ ...r })),
+    getAllMeta: async () => Array.from(rows.values()).map(metaOf),
+    get: async id => (rows.has(id) ? { ...rows.get(id) } : null),
     put: async rec => { rows.set(rec.id, { ...rec }) },
     remove: async id => { rows.delete(id) },
     probe: async () => true,

@@ -380,6 +380,9 @@ export function useTapRecorder() {
   // is for the eye, this is for the timing decisions.
   let peak = 0
   let lastQuietSince = 0
+  // The last frame on this line the meter called speech; 0 = none yet. Read only
+  // by advanceSnapshot(), the booth's advance telemetry.
+  let lastSpeechAt = 0
   let lineOpenedAt = 0
   // The warm recorder waiting to be promoted at the next boundary, and whether
   // it has heard anything since it was spawned. A dirty standby is never
@@ -591,7 +594,14 @@ export function useTapRecorder() {
   // tracked room tone, never more than a real drop under the loudest thing the
   // session has heard, capped at the old absolute threshold for a hot mic, and
   // floored only at "not exactly zero".
+  //
+  // And never under the quiet floor: speech has to clear the room's loud edge as
+  // well as its troughs (job #36, below).
   function speechFloor() {
+    return Math.max(troughFloor(), quietFloor())
+  }
+  // The trough-tracked part of the speech floor: ~12dB over noiseEst.
+  function troughFloor() {
     const room = sessionPeak > 0
       ? Math.min(noiseEst, sessionPeak * NOISE_CEIL_RATIO)
       : noiseEst
@@ -603,15 +613,36 @@ export function useTapRecorder() {
   // -floor value, and never ABOVE the speech floor — the two have to agree about
   // what a given frame is, or a frame could be speech and silence at once and
   // the studio could advance out from under a voice it can still hear.
+  //
+  // That agreement used to be kept by capping THIS floor at the trough-tracked
+  // speech floor. In a room whose upper edge sits within 4dB of 4x its troughs —
+  // Aran's, 2026-10-26, on every frame of a 140-line session — the cap bound all
+  // the time, the roomCeil term never counted, ordinary room frames restarted
+  // the 1.2s quiet clock, and lines moved on seconds late or waited for a tap
+  // (job #36; useTapRecorder.aranroom.test.js replays his takes). The agreement
+  // is now kept from the other side: speechFloor() is lifted to this floor.
   function quietFloor() {
-    const sf = speechFloor()
-    return Math.min(FLOOR_PEAK, sf, Math.max(sf * QUIET_PEAK_RATIO, roomCeil * QUIET_ROOM_MULT))
+    const tf = troughFloor()
+    return Math.min(FLOOR_PEAK, Math.max(tf * QUIET_PEAK_RATIO, roomCeil * QUIET_ROOM_MULT))
+  }
+
+  // ADVANCE TELEMETRY (Aran, 2026-10-26): what the booth knew at the instant a
+  // line moved on — ms since the meter last heard speech, and both thresholds in
+  // dBFS — so the server's [BoothTake] line can tell a stall from a tap without
+  // anyone replaying raw audio. Read-only: it changes nothing it measures.
+  function advanceSnapshot() {
+    const db = (x) => (x > 0 ? Math.round(200 * Math.log10(x)) / 10 : null)
+    return {
+      gapMs: lastSpeechAt ? Math.max(0, now() - lastSpeechAt) : null,
+      thrSpeech: db(speechFloor()),
+      thrQuiet: db(quietFloor()),
+    }
   }
 
   function onMeterFrame(p) {
     const t = now()
     if (p > quietFloor()) lastQuietSince = t
-    if (p > speechFloor() && isRecording.value) lineHasSpeech.value = true
+    if (p > speechFloor() && isRecording.value) { lineHasSpeech.value = true; lastSpeechAt = t }
 
     quietMs.value = lineHasSpeech.value ? t - lastQuietSince : 0
 
@@ -692,6 +723,7 @@ export function useTapRecorder() {
     quietMs.value = 0
     lineOpenedAt = now()
     lastQuietSince = now()
+    lastSpeechAt = 0
     isRecording.value = true
   }
 
@@ -772,6 +804,6 @@ export function useTapRecorder() {
     isRecording, level, clipping, devices, appliedSettings, profile, error,
     lineHasSpeech, quietMs, meterTrusted, inputPeak, roomTone,
     listDevices, start, beginLine, endLine, discardLine, stop,
-    activeAgeMs, awaitLeadIn,
+    activeAgeMs, awaitLeadIn, advanceSnapshot,
   }
 }

@@ -47,6 +47,15 @@
       <template #top><RerecordCard :rows="rerecordRows" :old-ids="oldRefusedList" @open="openRerecord" @play="playRefused" @play-stored="playStoredTake" @keep="keepMismatch" @clear-old="clearOldRefused" /></template>
     </BoothHome>
 
+    <!-- The line editor (job #709) is never open while the mic is live. -->
+    <BoothLineEditor
+      v-if="lineEditorFor && phase !== 'recording'"
+      :line="lineEditorFor"
+      @close="lineEditorFor = null"
+      @applied="onLineEdited"
+      @undone="onLineEditUndone"
+    />
+
     <!-- ── THE PROMPTER (Aran, 2026-10-14, job #424; design #419 Option A) ──────────────────
          The batch page, the live stage and the done screen are ONE layout, exactly one viewport
          tall, and nothing on them scrolls: the where-am-I row, the line big and centred in what
@@ -179,6 +188,9 @@
                 <p v-if="startKindWords" class="line-kind">{{ startKindWords }}</p>
                 <p class="ready-line" data-test="ready-line">{{ plainText(startLine.text) }}</p>
                 <p v-if="startLine.knownText" class="line-known">{{ plainText(startLine.knownText) }}</p>
+                <!-- EDIT THIS LINE (Aran, 2026-10-15, job #709): Tom, Aran and Kai only — the server
+                     decides (lineEditor), and it is never on the stage while the mic is live. -->
+                <button v-if="lineEditor && isRowLine(startLine)" type="button" class="ble-open" data-test="admin-edit-line" @click="openLineEditor(startLine)">Edit this line</button>
                 <!-- WHERE HE LEFT OFF is not always the first line still owed: say which, and offer both. -->
                 <p v-if="readyIndex !== startIndex" class="ready-where" data-test="ready-where">
                   Line {{ flowPos(readyIndex) }} of {{ flowIndices.length }} · {{ lineStateWords(startLine) }} — where you left off.
@@ -649,6 +661,8 @@
             @edit-known="beginEdit($event, null, 'known')"
             @cancel-edit="cancelEdit"
             @save="saveEdit($event.id, $event.text, $event.side)"
+            :admin-edit="lineEditor"
+            @admin-edit="openLineEditor($event)"
           />
           </div>
 
@@ -743,6 +757,8 @@ import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
 import RawVsProcessed from '@/components/production/autocue/RawVsProcessed.vue'
 import RecordistRoster from './recordist/RecordistRoster.vue'
+import BoothLineEditor from './recordist/BoothLineEditor.vue'
+import { canEditLines, isRowLine } from './recordist/line-edit-api.js'
 import { useSectionCollapse } from './recordist/section-collapse'
 import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStoredClip'
 import { createAdvanceLock } from './recordist/advance-lock'
@@ -2277,7 +2293,7 @@ function backDebounced() {
 
 // `target` is the line as it was when the take was CLOSED (take-target.js), never
 // a position: the cursor may be six lines away by the time the blob lands.
-function commit(target, blob, hadSpeech) {
+function commit(target, blob, hadSpeech, advance = null) {
   const found = resolveTakeTarget(target, lines.value)
   // THE WRONG-LINE GUARD. The line is gone or its words changed under the tail:
   // this audio belongs to nothing on the screen, so it is filed under nothing.
@@ -2309,7 +2325,7 @@ function commit(target, blob, hadSpeech) {
   // already refuses to list it twice; this is the last of the three counts that
   // was still double-counting a re-read.
   const firstTakeOfThisLine = !sessionIds.value.includes(line.id)
-  queue.queueTake({ voiceId: props.voiceId, lineId: line.id, text: line.text, blob, micLabel: micLabel() })
+  queue.queueTake({ voiceId: props.voiceId, lineId: line.id, text: line.text, blob, micLabel: micLabel(), advance })
   noteRetake(line.id)
   rememberLocalTake(line.id, blob)
   doneIds.value.add(line.id)
@@ -2406,6 +2422,14 @@ watch(phase, (p) => {
 // false, or null for "no idea". Null is what a meter that is not delivering
 // samples is entitled to say, and it is the only answer that never destroys a
 // performance.
+// ADVANCE TELEMETRY (Aran, 2026-10-26): auto, tap or stop, the ms since the
+// meter last heard speech, and the speech/quiet thresholds then in force. It
+// rides on the take's upload into the server's [BoothTake] line. Never allowed
+// to throw: a telemetry fault must not cost a take or a step forward.
+function advanceInfo(by) {
+  try { return { by, ...recorder.advanceSnapshot() } } catch { return { by } }
+}
+
 function speechVerdict() {
   if (!recorder.meterTrusted.value) return null
   return recorder.lineHasSpeech.value
@@ -2427,6 +2451,8 @@ async function onNext(source = 'tap', to = 'next') {
     // Snapshot BEFORE the next line opens: beginLine() resets it, and the blob
     // does not land for up to a tail-length afterwards.
     const hadSpeech = speechVerdict()
+    // How this line moved on, read at the instant it did (the server logs it).
+    const advance = advanceInfo(source === 'auto' ? 'auto' : 'tap')
     // The blob is not awaited before advancing. endLine() keeps the outgoing
     // recorder running for its tail — that is the whole point of it — so
     // waiting here would put a visible pause on every line for audio that is
@@ -2451,7 +2477,7 @@ async function onNext(source = 'tap', to = 'next') {
       // walking over saved work must never replace it with room tone.
       if (hadSpeech === false) return
       if (hadSpeech === null && target && lines.value.some(l => l.id === target.id && (isRecorded(l) || isPending(l.id)))) return
-      commit(target, blob, hadSpeech)
+      commit(target, blob, hadSpeech, advance)
     })
     if (n === -1) {
       await pending
@@ -2662,6 +2688,7 @@ async function onFinish() {
     }
     const i = index.value
     const hadSpeech = speechVerdict()
+    const advance = advanceInfo('stop')
     const target = takeTargetAt(lines.value, i)
     const blob = await recorder.endLine()
     // Stop pressed on a line nobody read is not a failed take — it is the end
@@ -2669,7 +2696,7 @@ async function onFinish() {
     // But that only holds where the recorder KNOWS nobody read it: if the meter
     // is not reading, a dropped final line is a lost take, and a phantom row on
     // the done screen is the cheaper of the two mistakes.
-    if (hadSpeech !== false) commit(target, blob, hadSpeech)
+    if (hadSpeech !== false) commit(target, blob, hadSpeech, advance)
     // Stopped after reading this line: the next visit opens on the line after it.
     if (hadSpeech === true && nextFlowFrom(i) !== -1) pinCursor(lines.value[nextFlowFrom(i)].id)
     await finish()
@@ -3483,6 +3510,46 @@ watch([() => recorder.devices.value, selectedDeviceId], () => {
   rememberBoothSettings()
 }, { deep: true })
 
+// ── EDIT THIS LINE (Aran, 2026-10-15, job #709) ─────────────────────────────────────────────
+// The control is drawn only when the SERVER says this session is a God admin (canEditLines); the
+// server refuses anyone else on every read and write. Everything the edit means — the course gate,
+// the tiling check, which takes go back on the queue — is decided server-side
+// (booth-line-edit-router.cjs); the booth only mirrors the answer onto the line on screen.
+const lineEditor = ref(false)
+const lineEditorFor = ref(null)
+// The line as it stood before an edit, so Undo puts the screen back exactly as the door puts the row.
+let lineBeforeEdit = null
+function openLineEditor(lineOrId) {
+  const l = typeof lineOrId === 'string' ? lines.value.find(x => x.id === lineOrId) : lineOrId
+  if (!l || phase.value === 'recording') return
+  lineEditorFor.value = l
+}
+function onLineEdited({ lineId, targetText, knownText, recordings }) {
+  const l = lines.value.find(x => x.id === lineId)
+  if (!l) return
+  lineBeforeEdit = { ...l }
+  // A known-side line reads the English; every other line reads the Welsh, with the other side as its crib.
+  if (l.role === 'known') { l.text = knownText; l.knownText = targetText || null }
+  else { l.text = targetText; l.knownText = knownText || null }
+  // THIS VOICE'S TAKE: back on the list only when the door unlinked it (the words changed).
+  const mine = (recordings || []).find(r => r.slot === l.role)
+  if (mine && mine.fate === 'requeued') {
+    l.recorded = false
+    l.clipUrl = null
+    doneIds.value.delete(lineId)
+    doneIds.value = new Set(doneIds.value)
+  }
+  lines.value = [...lines.value]
+}
+function onLineEditUndone({ lineId }) {
+  const i = lines.value.findIndex(x => x.id === lineId)
+  if (i < 0 || !lineBeforeEdit || lineBeforeEdit.id !== lineId) return
+  Object.assign(lines.value[i], lineBeforeEdit)
+  if (lineBeforeEdit.recorded) doneIds.value = new Set([...doneIds.value, lineId])
+  lineBeforeEdit = null
+  lines.value = [...lines.value]
+}
+
 // NEW WORK WITHOUT A RELOAD (job #804): coming back to the tab, or the window regaining focus,
 // reads the queue again — see recordist/queue-refresh.js for when it never does.
 let boothActive = true
@@ -3501,6 +3568,7 @@ function refreshOnReturn() {
   if (phase.value === 'home') { refreshHome(); refreshRerecord() } else load({ quiet: true })
 }
 onMounted(() => {
+  canEditLines().then((ok) => { lineEditor.value = !!ok })
   document.addEventListener('visibilitychange', refreshOnReturn)
   window.addEventListener('focus', refreshOnReturn)
   window.addEventListener('keydown', onKey)
@@ -4089,6 +4157,9 @@ kbd {
 :root[data-theme="light"] .safety-banner.waiting { background: #dbe9fb; border-color: #2563eb; color: #14306e; }
 :root[data-theme="light"] .safety-banner.risk { background: #fbe2df; border-color: #b91c1c; color: #7a1512; }
 :root[data-theme="light"] .safety-banner.refused { background: #fbeed6; border-color: #b45309; color: #6b3c06; }
+
+/* "Edit this line" (job #709): a quiet text button under the line, readable in both themes. */
+.ble-open { margin-top: 0.6rem; min-height: 44px; padding: 0 0.9rem; border-radius: 10px; border: 1px solid var(--line); background: transparent; color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
 
 /* ── THE PROMPTER (job #424; design #419 Option A, with B's desktop rail and C's done list) ──
    One viewport tall, nothing scrolls: where-am-I row · (live: status row) · the line, centred in
