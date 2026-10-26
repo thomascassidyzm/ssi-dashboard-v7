@@ -56,3 +56,16 @@ describe('the render route refuses a second take of a Drill sentence (job #338)'
     expect(out).toMatchObject({ ok: true })
   })
 })
+
+describe('lookup misses (review 7ad1dfb8)', () => {
+  const g = require('./drill-cut-guard.cjs')
+  it('needle survives a curly/straight apostrophe difference', () => {
+    expect(g.searchSegment("Qu'est-ce que c'est ?")).toBe('est')
+    expect(g.searchSegment("I don't know.")).toBe('know')
+  })
+  it('pages past a single-page limit', async () => {
+    const data = Array.from({ length: 2500 }, (_, i) => i)
+    const out = await g.fetchAllPages(async (a, b) => data.slice(a, b + 1))
+    expect(out).toHaveLength(2500)
+  })
+})

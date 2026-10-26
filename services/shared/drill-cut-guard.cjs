@@ -29,6 +29,27 @@ function searchTerm(text) {
   return String(text || '').trim().replace(/[.!?。？！]+$/, '').trim()
 }
 
+/**
+ * The ILIKE needle. findImmersionTurn compares NORMALISED text, so a needle holding an apostrophe, comma or other
+ * punctuation can miss a pod row that spells it differently (curly vs straight quote) and the second paid take goes
+ * ahead. The longest run of letters/digits survives any such spelling difference; the exact check stays in findImmersionTurn.
+ */
+function searchSegment(text) {
+  const runs = searchTerm(text).split(/[^\p{L}\p{N}\p{M}]+/u).filter(Boolean)
+  return runs.reduce((a, b) => (b.length > a.length ? b : a), '')
+}
+
+/** Every row of a query, page by page (a common sentence matches far more rows than any single-page limit). */
+async function fetchAllPages(page, { size = 1000, max = 20000 } = {}) {
+  const all = []
+  for (let from = 0; from < max; from += size) {
+    const rows = await page(from, from + size - 1)
+    all.push(...(rows || []))
+    if (!rows || rows.length < size) break
+  }
+  return all
+}
+
 /** The words made safe inside an ILIKE '%…%' pattern: \, % and _ are literal. */
 const likeEscape = (s) => String(s).replace(/[\\%_]/g, (m) => '\\' + m)
 
@@ -67,4 +88,4 @@ function drillCutRefusal(turn, { voiceId, text }) {
   }
 }
 
-module.exports = { sentencesOf, searchTerm, likeEscape, voiceKey, findImmersionTurn, drillCutRefusal }
+module.exports = { sentencesOf, searchTerm, searchSegment, fetchAllPages, likeEscape, voiceKey, findImmersionTurn, drillCutRefusal }

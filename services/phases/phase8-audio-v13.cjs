@@ -5459,7 +5459,7 @@ async function linkClipForRender({ courseCode, text, language, role, voiceId, le
 let servedPodCache = { at: 0, pods: null }
 async function immersionTurnForRender({ language, text }) {
   try {
-    const term = drillCutGuard.searchTerm(text)
+    const term = drillCutGuard.searchSegment(text)
     if (!term) return null
     if (!servedPodCache.pods || Date.now() - servedPodCache.at > 10 * 60 * 1000) {
       const { data, error } = await supabase.from('listening_pods').select('id, course_code').eq('pod_type', 'core').eq('slug', 'pod-1')
@@ -5468,11 +5468,14 @@ async function immersionTurnForRender({ language, text }) {
     }
     const courseOf = new Map(servedPodCache.pods.map((p) => [p.id, p.course_code]))
     if (!courseOf.size) return null
-    const { data: rows, error } = await supabase.from('listening_pod_sentences')
-      .select('id, pod_id, global_order, target_text, target_audio_id')
-      .in('pod_id', [...courseOf.keys()]).is('variant_key', null).not('target_audio_id', 'is', null)
-      .ilike('target_text', `%${drillCutGuard.likeEscape(term)}%`).limit(200)
-    if (error) throw new Error(`listening_pod_sentences unreadable: ${error.message}`)
+    const rows = await drillCutGuard.fetchAllPages(async (from, to) => {
+      const { data, error } = await supabase.from('listening_pod_sentences')
+        .select('id, pod_id, global_order, target_text, target_audio_id')
+        .in('pod_id', [...courseOf.keys()]).is('variant_key', null).not('target_audio_id', 'is', null)
+        .ilike('target_text', `%${drillCutGuard.likeEscape(term)}%`).order('id').range(from, to)
+      if (error) throw new Error(`listening_pod_sentences unreadable: ${error.message}`)
+      return data
+    })
     if (!rows || !rows.length) return null
     const { data: clips, error: ce } = await supabase.from('course_audio').select('id, language, voice_id').in('id', [...new Set(rows.map((r) => r.target_audio_id))])
     if (ce) throw new Error(`course_audio unreadable: ${ce.message}`)
