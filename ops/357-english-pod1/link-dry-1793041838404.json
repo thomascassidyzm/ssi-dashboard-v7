@@ -1,0 +1,4395 @@
+{
+ "nld_for_eng": {
+  "wholePodMove": false,
+  "textInEnglishPod": 132,
+  "lines": 231,
+  "planned": 0,
+  "held": 62,
+  "gaps": 493,
+  "linked": 0,
+  "refused": 0,
+  "refusedSample": [],
+  "gapList": [
+   {
+    "line": "nld_for_eng:pod-1:SC01-S001",
+    "scene": 1,
+    "speaker": "Neighbour",
+    "gender": "m",
+    "part": "main",
+    "text": "Good morning, Sarah!"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC01-S003",
+    "scene": 1,
+    "speaker": "Neighbour",
+    "gender": "m",
+    "part": "main",
+    "text": "I'm very well, thank you. Are you going to work?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC01-S003",
+    "scene": 1,
+    "speaker": "Neighbour",
+    "gender": "m",
+    "part": "split0",
+    "text": "I'm very well, thank you."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC01-S003",
+    "scene": 1,
+    "speaker": "Neighbour",
+    "gender": "m",
+    "part": "split1",
+    "text": "Are you going to work?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC01-S002",
+    "scene": 1,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Good morning. How are you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC01-S002",
+    "scene": 1,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split0",
+    "text": "Good morning."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC01-S002",
+    "scene": 1,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split1",
+    "text": "How are you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC01-S004",
+    "scene": 1,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Yes, I've got a busy day today. I hope you have a good day. See you later."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC01-S004",
+    "scene": 1,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split0",
+    "text": "Yes, I've got a busy day today."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC01-S004",
+    "scene": 1,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split1",
+    "text": "I hope you have a good day."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC01-S004",
+    "scene": 1,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split2",
+    "text": "See you later."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC02-S001",
+    "scene": 2,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Excuse me, is this seat taken?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC02-S003",
+    "scene": 2,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "How far is it into town?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC02-S004",
+    "scene": 2,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Can you tell me how far it is into town?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC02-S002",
+    "scene": 2,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "main",
+    "text": "No, it's free. Please, go ahead."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC02-S002",
+    "scene": 2,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "split0",
+    "text": "No, it's free."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC02-S002",
+    "scene": 2,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "split1",
+    "text": "Please, go ahead."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC02-S005",
+    "scene": 2,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "main",
+    "text": "It's not very far. Maybe three or four miles."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC02-S005",
+    "scene": 2,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "split0",
+    "text": "It's not very far."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC02-S005",
+    "scene": 2,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "split1",
+    "text": "Maybe three or four miles."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S001",
+    "scene": 3,
+    "speaker": "Barista",
+    "gender": "m",
+    "part": "main",
+    "text": "Good afternoon. … What can I get you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S001",
+    "scene": 3,
+    "speaker": "Barista",
+    "gender": "m",
+    "part": "split0",
+    "text": "Good afternoon."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S001",
+    "scene": 3,
+    "speaker": "Barista",
+    "gender": "m",
+    "part": "split1",
+    "text": "What can I get you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S006",
+    "scene": 3,
+    "speaker": "Barista",
+    "gender": "m",
+    "part": "main",
+    "text": "No, we've only got drinks."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S007",
+    "scene": 3,
+    "speaker": "Barista",
+    "gender": "m",
+    "part": "main",
+    "text": "Yes, would you like the menu?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S009",
+    "scene": 3,
+    "speaker": "Barista",
+    "gender": "m",
+    "part": "main",
+    "text": "Here's your coffee."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S002",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S002",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split0",
+    "text": "Good afternoon."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S002",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split1",
+    "text": "I'd like a coffee, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S002",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split2",
+    "text": "With milk but with no sugar."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S002",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split3",
+    "text": "To take away."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S003",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Do you have any food?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S004",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Do you have any snacks?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S005",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Do you have crisps, or nuts, or anything?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S008",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Yes, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S010",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Thank you very much. Goodbye."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S010",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split0",
+    "text": "Thank you very much."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC03-S010",
+    "scene": 3,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split1",
+    "text": "Goodbye."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC04-S001",
+    "scene": 4,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "main",
+    "text": "Hello, good evening!"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC04-S003",
+    "scene": 4,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "main",
+    "text": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC04-S003",
+    "scene": 4,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split0",
+    "text": "No, I'm sorry, I'm busy tomorrow."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC04-S003",
+    "scene": 4,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split1",
+    "text": "But let's talk on Saturday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC04-S003",
+    "scene": 4,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split2",
+    "text": "See you then."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC04-S002",
+    "scene": 4,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Hello! I'm sorry, but I can't talk at the moment. I need to go home now. Can we talk tomorrow?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC04-S002",
+    "scene": 4,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split0",
+    "text": "Hello!"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC04-S002",
+    "scene": 4,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split1",
+    "text": "I'm sorry but I can't talk at the moment."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC04-S002",
+    "scene": 4,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split2",
+    "text": "I need to go home now."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC04-S002",
+    "scene": 4,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split3",
+    "text": "Can we talk tomorrow?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC05-S001",
+    "scene": 5,
+    "speaker": "Neighbour",
+    "gender": "m",
+    "part": "main",
+    "text": "Good evening, Sarah. Did you have a long day?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC05-S001",
+    "scene": 5,
+    "speaker": "Neighbour",
+    "gender": "m",
+    "part": "split0",
+    "text": "Good evening, Sarah."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC05-S001",
+    "scene": 5,
+    "speaker": "Neighbour",
+    "gender": "m",
+    "part": "split1",
+    "text": "Did you have a long day?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC05-S002",
+    "scene": 5,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "main",
+    "text": "Yes, very. I'm very tired now. Good night. See you tomorrow."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC05-S002",
+    "scene": 5,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split0",
+    "text": "Yes, very."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC05-S002",
+    "scene": 5,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split1",
+    "text": "I'm very tired now."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC05-S002",
+    "scene": 5,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split2",
+    "text": "Good night."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC05-S002",
+    "scene": 5,
+    "speaker": "Sarah",
+    "gender": "f",
+    "part": "split3",
+    "text": "See you tomorrow."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S001",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "main",
+    "text": "Excuse me. Hello. What's your name?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S001",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split0",
+    "text": "Excuse me."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S001",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split1",
+    "text": "Hello."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S001",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split2",
+    "text": "What's your name?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S003",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "main",
+    "text": "I'm James. Pleased to meet you."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S003",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split0",
+    "text": "I'm James."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S003",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split1",
+    "text": "Pleased to meet you."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S005",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "main",
+    "text": "I'm from Manchester, but I live in London now. And you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S005",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split0",
+    "text": "I'm from Manchester, but I live in London now."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S005",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split1",
+    "text": "And you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S007",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "main",
+    "text": "This is a lovely city. What do you do?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S007",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split0",
+    "text": "This is a lovely city."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S007",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split1",
+    "text": "What do you do?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S009",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "main",
+    "text": "I'm sorry, I didn't understand you. I'm learning Dutch. Could you say that again more slowly?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S009",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split0",
+    "text": "I'm sorry, I didn't understand you."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S009",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split1",
+    "text": "I'm learning Dutch."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S009",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split2",
+    "text": "Could you say that again more slowly?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S011",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "main",
+    "text": "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S011",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split0",
+    "text": "I teach English, but not in a school."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S011",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split1",
+    "text": "I work with adults."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S011",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split2",
+    "text": "I'm on holiday here with my wife and children."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S011",
+    "scene": 6,
+    "speaker": "James",
+    "gender": "m",
+    "part": "split3",
+    "text": "We're having a lovely time."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S002",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "main",
+    "text": "My name is Anna. And you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S002",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split0",
+    "text": "My name is Anna."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S002",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split1",
+    "text": "And you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S004",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "main",
+    "text": "Pleased to meet you too. Where are you from?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S004",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split0",
+    "text": "Pleased to meet you too."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S004",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split1",
+    "text": "Where are you from?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S006",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "main",
+    "text": "I'm from France. I've been here for two years."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S006",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split0",
+    "text": "I'm from France."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S006",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split1",
+    "text": "I've been here for two years."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S008",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "main",
+    "text": "I'm a nurse, at the hospital just round the corner. And you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S008",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split0",
+    "text": "I'm a nurse, at the hospital just round the corner."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S008",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split1",
+    "text": "And you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S010",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "main",
+    "text": "Yes, of course. I'm a nurse. I work at the hospital. It's near here. And what do you do?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S010",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split0",
+    "text": "Yes, of course."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S010",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split1",
+    "text": "I'm a nurse."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S010",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split2",
+    "text": "I work at the hospital."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S010",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split3",
+    "text": "It's near here."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S010",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "split4",
+    "text": "And what do you do?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S012",
+    "scene": 6,
+    "speaker": "Anna",
+    "gender": "f",
+    "part": "main",
+    "text": "How interesting. Well, lovely to meet you."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S013",
+    "scene": 6,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "1. 2. 3. White. Black."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S013",
+    "scene": 6,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "1."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S013",
+    "scene": 6,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "2."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S013",
+    "scene": 6,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "3."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S013",
+    "scene": 6,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "White."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC06-S013",
+    "scene": 6,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split4",
+    "text": "Black."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S001",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "main",
+    "text": "Good morning. What can I get you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S001",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "split0",
+    "text": "Good morning."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S001",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "split1",
+    "text": "What can I get you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S003",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "main",
+    "text": "Do you want regular or large?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S005",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "main",
+    "text": "Of course. Would you like to sit-in or takeaway?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S005",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "split0",
+    "text": "Of course."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S005",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "split1",
+    "text": "Would you like to sit-in or takeaway?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S008",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "main",
+    "text": "Right away. Would you like anything else?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S008",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "split0",
+    "text": "Right away."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S008",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "split1",
+    "text": "Would you like anything else?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S010",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "main",
+    "text": "That's eight pound forty altogether."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S012",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "main",
+    "text": "Of course. There's the machine."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S012",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "split0",
+    "text": "Of course."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S012",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "split1",
+    "text": "There's the machine."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S014",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "main",
+    "text": "Would you like to sit-in? The table by the window is free."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S014",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "split0",
+    "text": "Would you like to sit-in?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S014",
+    "scene": 7,
+    "speaker": "Cafe Barista",
+    "gender": "f",
+    "part": "split1",
+    "text": "The table by the window is free."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S002",
+    "scene": 7,
+    "speaker": "Cafe Customer 1",
+    "gender": "m",
+    "part": "main",
+    "text": "I'd like a black coffee, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S004",
+    "scene": 7,
+    "speaker": "Cafe Customer 1",
+    "gender": "m",
+    "part": "main",
+    "text": "I'd like large, please. With oat milk if you have it."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S004",
+    "scene": 7,
+    "speaker": "Cafe Customer 1",
+    "gender": "m",
+    "part": "split0",
+    "text": "I'd like large, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S004",
+    "scene": 7,
+    "speaker": "Cafe Customer 1",
+    "gender": "m",
+    "part": "split1",
+    "text": "With oat milk if you have it."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S006",
+    "scene": 7,
+    "speaker": "Cafe Customer 1",
+    "gender": "m",
+    "part": "main",
+    "text": "I'd like takeaway, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S007",
+    "scene": 7,
+    "speaker": "Cafe Customer 2",
+    "gender": "m",
+    "part": "main",
+    "text": "Could I have two white coffees and two black coffees and one of those, please?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S009",
+    "scene": 7,
+    "speaker": "Cafe Customer 2",
+    "gender": "m",
+    "part": "main",
+    "text": "Yes, can I have a glass of water as well, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S011",
+    "scene": 7,
+    "speaker": "Cafe Customer 2",
+    "gender": "m",
+    "part": "main",
+    "text": "Could I pay by card? Do you have contactless?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S011",
+    "scene": 7,
+    "speaker": "Cafe Customer 2",
+    "gender": "m",
+    "part": "split0",
+    "text": "Could I pay by card?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S011",
+    "scene": 7,
+    "speaker": "Cafe Customer 2",
+    "gender": "m",
+    "part": "split1",
+    "text": "Do you have contactless?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S013",
+    "scene": 7,
+    "speaker": "Cafe Customer 3",
+    "gender": "m",
+    "part": "main",
+    "text": "Good morning. … Two Americanos and a cup of tea, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S013",
+    "scene": 7,
+    "speaker": "Cafe Customer 3",
+    "gender": "m",
+    "part": "split0",
+    "text": "Good morning."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S013",
+    "scene": 7,
+    "speaker": "Cafe Customer 3",
+    "gender": "m",
+    "part": "split1",
+    "text": "Two Americanos and a cup of tea, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S015",
+    "scene": 7,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "5. 10. 15. Red. Green."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S015",
+    "scene": 7,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "5."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S015",
+    "scene": 7,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "10."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S015",
+    "scene": 7,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "15."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S015",
+    "scene": 7,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "Red."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC07-S015",
+    "scene": 7,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split4",
+    "text": "Green."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S001",
+    "scene": 8,
+    "speaker": "Bartender",
+    "gender": "m",
+    "part": "main",
+    "text": "Good evening. What can I get you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S001",
+    "scene": 8,
+    "speaker": "Bartender",
+    "gender": "m",
+    "part": "split0",
+    "text": "Good evening."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S001",
+    "scene": 8,
+    "speaker": "Bartender",
+    "gender": "m",
+    "part": "split1",
+    "text": "What can I get you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S003",
+    "scene": 8,
+    "speaker": "Bartender",
+    "gender": "m",
+    "part": "main",
+    "text": "We've got a bitter and a stout, and they're both local."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S007",
+    "scene": 8,
+    "speaker": "Bartender",
+    "gender": "m",
+    "part": "main",
+    "text": "We have a house red, a house white, or you could have one of our bottles."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S011",
+    "scene": 8,
+    "speaker": "Bartender",
+    "gender": "m",
+    "part": "main",
+    "text": "Are you eating tonight?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S013",
+    "scene": 8,
+    "speaker": "Bartender",
+    "gender": "m",
+    "part": "main",
+    "text": "Yes, of course. Here it is. The fish and chips are very good."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S013",
+    "scene": 8,
+    "speaker": "Bartender",
+    "gender": "m",
+    "part": "split0",
+    "text": "Yes, of course."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S013",
+    "scene": 8,
+    "speaker": "Bartender",
+    "gender": "m",
+    "part": "split1",
+    "text": "Here it is."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S013",
+    "scene": 8,
+    "speaker": "Bartender",
+    "gender": "m",
+    "part": "split2",
+    "text": "The fish and chips are very good."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S002",
+    "scene": 8,
+    "speaker": "Bar Customer 1",
+    "gender": "f",
+    "part": "main",
+    "text": "I'd like a pint, please. … What ales do you have on?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S002",
+    "scene": 8,
+    "speaker": "Bar Customer 1",
+    "gender": "f",
+    "part": "split0",
+    "text": "I'd like a pint, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S002",
+    "scene": 8,
+    "speaker": "Bar Customer 1",
+    "gender": "f",
+    "part": "split1",
+    "text": "What ales do you have on?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S004",
+    "scene": 8,
+    "speaker": "Bar Customer 1",
+    "gender": "f",
+    "part": "main",
+    "text": "I'd like a pint of the bitter, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S009",
+    "scene": 8,
+    "speaker": "Bar Customer 1",
+    "gender": "f",
+    "part": "main",
+    "text": "Can I have a small glass of red wine?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S012",
+    "scene": 8,
+    "speaker": "Bar Customer 1",
+    "gender": "f",
+    "part": "main",
+    "text": "I'm not sure if I'm hungry. … Do you have a menu?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S012",
+    "scene": 8,
+    "speaker": "Bar Customer 1",
+    "gender": "f",
+    "part": "split0",
+    "text": "I'm not sure if I'm hungry."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S012",
+    "scene": 8,
+    "speaker": "Bar Customer 1",
+    "gender": "f",
+    "part": "split1",
+    "text": "Do you have a menu?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S014",
+    "scene": 8,
+    "speaker": "Bar Customer 1",
+    "gender": "f",
+    "part": "main",
+    "text": "Can we have some bread? … And a bowl of chips for the table."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S014",
+    "scene": 8,
+    "speaker": "Bar Customer 1",
+    "gender": "f",
+    "part": "split0",
+    "text": "Can we have some bread?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S014",
+    "scene": 8,
+    "speaker": "Bar Customer 1",
+    "gender": "f",
+    "part": "split1",
+    "text": "And a bowl of chips for the table."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S005",
+    "scene": 8,
+    "speaker": "Bar Customer 2",
+    "gender": "f",
+    "part": "main",
+    "text": "Can I have a half of cider?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S010",
+    "scene": 8,
+    "speaker": "Bar Customer 2",
+    "gender": "f",
+    "part": "main",
+    "text": "I'd like two more glasses of beer."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S015",
+    "scene": 8,
+    "speaker": "Bar Customer 2",
+    "gender": "f",
+    "part": "main",
+    "text": "Do you have any sandwiches? … I'd like a cheese sandwich, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S015",
+    "scene": 8,
+    "speaker": "Bar Customer 2",
+    "gender": "f",
+    "part": "split0",
+    "text": "Do you have any sandwiches?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S015",
+    "scene": 8,
+    "speaker": "Bar Customer 2",
+    "gender": "f",
+    "part": "split1",
+    "text": "I'd like a cheese sandwich, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S006",
+    "scene": 8,
+    "speaker": "Bar Customer 3",
+    "gender": "f",
+    "part": "main",
+    "text": "Could I see the wine list? … I want a glass of wine."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S006",
+    "scene": 8,
+    "speaker": "Bar Customer 3",
+    "gender": "f",
+    "part": "split0",
+    "text": "Could I see the wine list?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S006",
+    "scene": 8,
+    "speaker": "Bar Customer 3",
+    "gender": "f",
+    "part": "split1",
+    "text": "I want a glass of wine."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S008",
+    "scene": 8,
+    "speaker": "Bar Customer 3",
+    "gender": "f",
+    "part": "main",
+    "text": "I'd like a large glass of white wine, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S016",
+    "scene": 8,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "4. 6. 8. Blue. Yellow."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S016",
+    "scene": 8,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "4."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S016",
+    "scene": 8,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "6."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S016",
+    "scene": 8,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "8."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S016",
+    "scene": 8,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "Blue."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC08-S016",
+    "scene": 8,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split4",
+    "text": "Yellow."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S001",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "main",
+    "text": "Good evening. … We have a booking for two, under the name Davies."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S001",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "split0",
+    "text": "Good evening."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S001",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "split1",
+    "text": "We have a booking for two, under the name Davies."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S005",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "main",
+    "text": "Excuse me - do you have anything gluten-free? … Or for vegetarians?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S005",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "split0",
+    "text": "Excuse me - do you have anything gluten-free?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S005",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "split1",
+    "text": "Or for vegetarians?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S007",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "main",
+    "text": "And what would you recommend tonight?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S009",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "main",
+    "text": "I'll have the lamb, please. … With a side of greens."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S009",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "split0",
+    "text": "I'll have the lamb, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S009",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "split1",
+    "text": "With a side of greens."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S012",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "main",
+    "text": "Could we see the wine list?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S016",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "main",
+    "text": "Just two coffees, please. … Decaf for me."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S016",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "split0",
+    "text": "Just two coffees, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S016",
+    "scene": 9,
+    "speaker": "Diner 1",
+    "gender": "f",
+    "part": "split1",
+    "text": "Decaf for me."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S002",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "main",
+    "text": "Welcome. Please follow me. Here are the menus."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S002",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split0",
+    "text": "Welcome."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S002",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split1",
+    "text": "Please follow me."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S002",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split2",
+    "text": "Here are the menus."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S003",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "main",
+    "text": "Would you like still or sparkling water to start?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S006",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "main",
+    "text": "Yes, the salmon and the risotto are both gluten-free. We also have some salads."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S006",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split0",
+    "text": "Yes, the salmon and the risotto are both gluten-free."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S006",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split1",
+    "text": "We also have some salads."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S008",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "main",
+    "text": "The lamb is excellent. It's been slow-cooked, with rosemary."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S008",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split0",
+    "text": "The lamb is excellent."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S008",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split1",
+    "text": "It's been slow-cooked, with rosemary."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S011",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "main",
+    "text": "Of course. And what would you like to drink?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S011",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split0",
+    "text": "Of course."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S011",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split1",
+    "text": "And what would you like to drink?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S014",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "main",
+    "text": "Excellent choice. I'll bring it right over."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S014",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split0",
+    "text": "Excellent choice."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S014",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split1",
+    "text": "I'll bring it right over."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S015",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "main",
+    "text": "Is everything alright? Do you have any room for dessert?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S015",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split0",
+    "text": "Is everything alright?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S015",
+    "scene": 9,
+    "speaker": "Waiter",
+    "gender": "m",
+    "part": "split1",
+    "text": "Do you have any room for dessert?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S004",
+    "scene": 9,
+    "speaker": "Diner 2",
+    "gender": "f",
+    "part": "main",
+    "text": "We'd like one bottle of sparkling water and one bottle of still water, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S010",
+    "scene": 9,
+    "speaker": "Diner 2",
+    "gender": "f",
+    "part": "main",
+    "text": "And the risotto for me. … With a small green salad to start."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S010",
+    "scene": 9,
+    "speaker": "Diner 2",
+    "gender": "f",
+    "part": "split0",
+    "text": "And the risotto for me."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S010",
+    "scene": 9,
+    "speaker": "Diner 2",
+    "gender": "f",
+    "part": "split1",
+    "text": "With a small green salad to start."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S013",
+    "scene": 9,
+    "speaker": "Diner 2",
+    "gender": "f",
+    "part": "main",
+    "text": "A bottle of the house red would be lovely."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S017",
+    "scene": 9,
+    "speaker": "Diner 2",
+    "gender": "f",
+    "part": "main",
+    "text": "And the bill, when you're ready. … Could we split it?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S017",
+    "scene": 9,
+    "speaker": "Diner 2",
+    "gender": "f",
+    "part": "split0",
+    "text": "And the bill, when you're ready."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S017",
+    "scene": 9,
+    "speaker": "Diner 2",
+    "gender": "f",
+    "part": "split1",
+    "text": "Could we split it?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S018",
+    "scene": 9,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "7. 9. 11. Orange. Purple."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S018",
+    "scene": 9,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "7."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S018",
+    "scene": 9,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "9."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S018",
+    "scene": 9,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "11."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S018",
+    "scene": 9,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "Orange."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC09-S018",
+    "scene": 9,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split4",
+    "text": "Purple."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S001",
+    "scene": 10,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "main",
+    "text": "Excuse me. … Do you have any painkillers?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S001",
+    "scene": 10,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "split0",
+    "text": "Excuse me."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S001",
+    "scene": 10,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "split1",
+    "text": "Do you have any painkillers?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S003",
+    "scene": 10,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "main",
+    "text": "Thank you. … And do you have any painkillers for children?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S003",
+    "scene": 10,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "split0",
+    "text": "Thank you."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S003",
+    "scene": 10,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "split1",
+    "text": "And do you have any painkillers for children?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S005",
+    "scene": 10,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "main",
+    "text": "I also need to get some sunscreen and some toothpaste."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S007",
+    "scene": 10,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "main",
+    "text": "Thank you, you've been very helpful. … I'm very grateful."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S009",
+    "scene": 10,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "main",
+    "text": "That's very kind of you! … Yes, I'm on holiday, and I need to practice more to speak Dutch better. … Thank you very much, and goodbye."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S002",
+    "scene": 10,
+    "speaker": "Assistant",
+    "gender": "m",
+    "part": "main",
+    "text": "Yes, they're down that aisle, on the left."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S004",
+    "scene": 10,
+    "speaker": "Assistant",
+    "gender": "m",
+    "part": "main",
+    "text": "I think so, but you'll have to look to make sure."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S006",
+    "scene": 10,
+    "speaker": "Assistant",
+    "gender": "m",
+    "part": "main",
+    "text": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S008",
+    "scene": 10,
+    "speaker": "Assistant",
+    "gender": "m",
+    "part": "main",
+    "text": "You're welcome. Are you here on holiday? You speak very good Dutch."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S008",
+    "scene": 10,
+    "speaker": "Assistant",
+    "gender": "m",
+    "part": "split0",
+    "text": "you're welcome"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S008",
+    "scene": 10,
+    "speaker": "Assistant",
+    "gender": "m",
+    "part": "split1",
+    "text": "are you here on holiday?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S008",
+    "scene": 10,
+    "speaker": "Assistant",
+    "gender": "m",
+    "part": "split2",
+    "text": "you speak very good Dutch"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S010",
+    "scene": 10,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "12. 13. 14. Pink. Grey."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S010",
+    "scene": 10,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "12."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S010",
+    "scene": 10,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "13."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S010",
+    "scene": 10,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "14."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S010",
+    "scene": 10,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "Pink."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC10-S010",
+    "scene": 10,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split4",
+    "text": "Grey."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S001",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "main",
+    "text": "Good afternoon. I have a booking under the name Jones."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S001",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "split0",
+    "text": "Good afternoon."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S001",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "split1",
+    "text": "I have a booking under the name Jones."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S003",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "main",
+    "text": "Of course. Here's my passport."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S003",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "split0",
+    "text": "Of course."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S003",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "split1",
+    "text": "Here's my passport."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S005",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "main",
+    "text": "Does the room have a view?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S007",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "main",
+    "text": "What time is breakfast served?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S009",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "main",
+    "text": "Wonderful. Is it possible for us to have a late check-out?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S009",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "split0",
+    "text": "Wonderful."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S009",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "split1",
+    "text": "Is it possible for us to have a late check-out?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S011",
+    "scene": 11,
+    "speaker": "Guest",
+    "gender": "m",
+    "part": "main",
+    "text": "And what is the wifi password?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S002",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "main",
+    "text": "Welcome. Yes, you have a double room for three nights. Could I see some ID, please?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S002",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "split0",
+    "text": "Welcome."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S002",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "split1",
+    "text": "Yes, you have a double room for three nights."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S002",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "split2",
+    "text": "Could I see some ID, please?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S004",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "main",
+    "text": "Lovely. The room is on the third floor, room 709."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S004",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "split0",
+    "text": "Lovely."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S004",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "split1",
+    "text": "The room is on the third floor, room 709."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S006",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "main",
+    "text": "Yes, it overlooks the garden."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S008",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "main",
+    "text": "From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S008",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "split0",
+    "text": "From half-past seven until ten o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S008",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "split1",
+    "text": "We have fruit and cereals or a cooked breakfast."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S010",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "main",
+    "text": "Yes, you can stay until midday, no extra charge."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S012",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "main",
+    "text": "It's on the welcome card in your room. Have a lovely stay."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S012",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "split0",
+    "text": "It's on the welcome card in your room."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S012",
+    "scene": 11,
+    "speaker": "Receptionist",
+    "gender": "f",
+    "part": "split1",
+    "text": "Have a lovely stay."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S013",
+    "scene": 11,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "16. 17. 18. Monday. Tuesday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S013",
+    "scene": 11,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "16."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S013",
+    "scene": 11,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "17."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S013",
+    "scene": 11,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "18."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S013",
+    "scene": 11,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "Monday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC11-S013",
+    "scene": 11,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split4",
+    "text": "Tuesday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S001",
+    "scene": 12,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "main",
+    "text": "Good morning. … I'm not feeling great - could you recommend something?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S001",
+    "scene": 12,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "split0",
+    "text": "Good morning."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S001",
+    "scene": 12,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "split1",
+    "text": "I'm not feeling great - could you recommend something?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S003",
+    "scene": 12,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "main",
+    "text": "I've had a headache and a sore throat since yesterday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S005",
+    "scene": 12,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "main",
+    "text": "How often should I take the paracetamol?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S007",
+    "scene": 12,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "main",
+    "text": "Are they all right to take with food?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S009",
+    "scene": 12,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "main",
+    "text": "Thank you. … Could I also get a packet of plasters?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S009",
+    "scene": 12,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "split0",
+    "text": "Thank you."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S009",
+    "scene": 12,
+    "speaker": "Customer",
+    "gender": "f",
+    "part": "split1",
+    "text": "Could I also get a packet of plasters?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S002",
+    "scene": 12,
+    "speaker": "Pharmacist",
+    "gender": "m",
+    "part": "main",
+    "text": "Of course. What are your symptoms?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S002",
+    "scene": 12,
+    "speaker": "Pharmacist",
+    "gender": "m",
+    "part": "split0",
+    "text": "Of course."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S002",
+    "scene": 12,
+    "speaker": "Pharmacist",
+    "gender": "m",
+    "part": "split1",
+    "text": "What are your symptoms?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S004",
+    "scene": 12,
+    "speaker": "Pharmacist",
+    "gender": "m",
+    "part": "main",
+    "text": "Try paracetamol for the headache, and these lozenges for the throat."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S006",
+    "scene": 12,
+    "speaker": "Pharmacist",
+    "gender": "m",
+    "part": "main",
+    "text": "One every four to six hours, no more than eight in a day."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S008",
+    "scene": 12,
+    "speaker": "Pharmacist",
+    "gender": "m",
+    "part": "main",
+    "text": "Yes, with or after food is best."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S010",
+    "scene": 12,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "19. 20. 21. Wednesday. Thursday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S010",
+    "scene": 12,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "19."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S010",
+    "scene": 12,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "20."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S010",
+    "scene": 12,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "21."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S010",
+    "scene": 12,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "Wednesday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC12-S010",
+    "scene": 12,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split4",
+    "text": "Thursday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S001",
+    "scene": 13,
+    "speaker": "Tourist",
+    "gender": "f",
+    "part": "main",
+    "text": "Excuse me, do you know how to get to the nearest supermarket?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S003",
+    "scene": 13,
+    "speaker": "Tourist",
+    "gender": "f",
+    "part": "main",
+    "text": "Past that church?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S006",
+    "scene": 13,
+    "speaker": "Tourist",
+    "gender": "f",
+    "part": "main",
+    "text": "And then?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S008",
+    "scene": 13,
+    "speaker": "Tourist",
+    "gender": "f",
+    "part": "main",
+    "text": "Wonderful. … And is there a cashpoint nearby?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S008",
+    "scene": 13,
+    "speaker": "Tourist",
+    "gender": "f",
+    "part": "split0",
+    "text": "Wonderful."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S008",
+    "scene": 13,
+    "speaker": "Tourist",
+    "gender": "f",
+    "part": "split1",
+    "text": "And is there a cashpoint nearby?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S010",
+    "scene": 13,
+    "speaker": "Tourist",
+    "gender": "f",
+    "part": "main",
+    "text": "Thank you very much. … You've been very helpful."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S010",
+    "scene": 13,
+    "speaker": "Tourist",
+    "gender": "f",
+    "part": "split0",
+    "text": "Thank you very much."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S010",
+    "scene": 13,
+    "speaker": "Tourist",
+    "gender": "f",
+    "part": "split1",
+    "text": "You've been very helpful."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S002",
+    "scene": 13,
+    "speaker": "Local",
+    "gender": "m",
+    "part": "main",
+    "text": "Yes, it's about a ten minute walk. Go straight along this road."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S002",
+    "scene": 13,
+    "speaker": "Local",
+    "gender": "m",
+    "part": "split0",
+    "text": "Yes, it's about a ten minute walk."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S002",
+    "scene": 13,
+    "speaker": "Local",
+    "gender": "m",
+    "part": "split1",
+    "text": "Go straight along this road."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S004",
+    "scene": 13,
+    "speaker": "Local",
+    "gender": "m",
+    "part": "main",
+    "text": "Yes, past the church and the post office."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S005",
+    "scene": 13,
+    "speaker": "Local",
+    "gender": "m",
+    "part": "main",
+    "text": "At the second roundabout, take the first exit."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S007",
+    "scene": 13,
+    "speaker": "Local",
+    "gender": "m",
+    "part": "main",
+    "text": "You'll see the supermarket on your left, just opposite the bus stop."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S009",
+    "scene": 13,
+    "speaker": "Local",
+    "gender": "m",
+    "part": "main",
+    "text": "Yes, there's one on the high street, next to the bakery."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S011",
+    "scene": 13,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "30. 40. 50. Friday. Saturday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S011",
+    "scene": 13,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "30."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S011",
+    "scene": 13,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "40."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S011",
+    "scene": 13,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "50."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S011",
+    "scene": 13,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "Friday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC13-S011",
+    "scene": 13,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split4",
+    "text": "Saturday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S001",
+    "scene": 14,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "main",
+    "text": "Hello. Can you take me to the train station, please?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S001",
+    "scene": 14,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "split0",
+    "text": "Hello."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S001",
+    "scene": 14,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "split1",
+    "text": "Can you take me to the train station, please?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S003",
+    "scene": 14,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "main",
+    "text": "About how long do you think it will take?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S005",
+    "scene": 14,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "main",
+    "text": "Do you know where I can get a ticket in the station?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S008",
+    "scene": 14,
+    "speaker": "Passenger",
+    "gender": "m",
+    "part": "main",
+    "text": "Could I pay by card?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S002",
+    "scene": 14,
+    "speaker": "Driver",
+    "gender": "f",
+    "part": "main",
+    "text": "Yes, of course. … It may take some time, there's a lot of traffic at the moment."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S002",
+    "scene": 14,
+    "speaker": "Driver",
+    "gender": "f",
+    "part": "split0",
+    "text": "Yes, of course."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S002",
+    "scene": 14,
+    "speaker": "Driver",
+    "gender": "f",
+    "part": "split1",
+    "text": "It may take some time, there's a lot of traffic at the moment."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S004",
+    "scene": 14,
+    "speaker": "Driver",
+    "gender": "f",
+    "part": "main",
+    "text": "Perhaps about twenty minutes, if we're not unlucky with the traffic lights."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S006",
+    "scene": 14,
+    "speaker": "Driver",
+    "gender": "f",
+    "part": "main",
+    "text": "Yes, I'll drop you right by the ticket office."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S007",
+    "scene": 14,
+    "speaker": "Driver",
+    "gender": "f",
+    "part": "main",
+    "text": "Here we are. … That's twelve pound fifty."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S007",
+    "scene": 14,
+    "speaker": "Driver",
+    "gender": "f",
+    "part": "split0",
+    "text": "Here we are."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S007",
+    "scene": 14,
+    "speaker": "Driver",
+    "gender": "f",
+    "part": "split1",
+    "text": "That's twelve pound fifty."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S009",
+    "scene": 14,
+    "speaker": "Driver",
+    "gender": "f",
+    "part": "main",
+    "text": "Yes, of course. … The machine is just here."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S009",
+    "scene": 14,
+    "speaker": "Driver",
+    "gender": "f",
+    "part": "split0",
+    "text": "Yes, of course."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S009",
+    "scene": 14,
+    "speaker": "Driver",
+    "gender": "f",
+    "part": "split1",
+    "text": "The machine is just here."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S010",
+    "scene": 14,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "100. 200. 1000. Sunday. 12 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S010",
+    "scene": 14,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "100."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S010",
+    "scene": 14,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "200."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S010",
+    "scene": 14,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "1000."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S010",
+    "scene": 14,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "Sunday."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC14-S010",
+    "scene": 14,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split4",
+    "text": "12 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S001",
+    "scene": 15,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "How much is that?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S002",
+    "scene": 15,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Can you tell me how much that is?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S003",
+    "scene": 15,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "How much does it cost to get a taxi into town?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S004",
+    "scene": 15,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "How much does it cost to get a bus into town?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S005",
+    "scene": 15,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Where can we get a bus?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S006",
+    "scene": 15,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Where can we get a taxi?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S007",
+    "scene": 15,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Four single tickets to town, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S008",
+    "scene": 15,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Two return tickets to town, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S009",
+    "scene": 15,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "I prefer to try to speak your language, I think it's polite."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S010",
+    "scene": 15,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "I'm sorry I can't speak very quickly."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S011",
+    "scene": 15,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "100,000. 60. 70. 1 o'clock. 11 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S011",
+    "scene": 15,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "100,000."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S011",
+    "scene": 15,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "60."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S011",
+    "scene": 15,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "70."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S011",
+    "scene": 15,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "1 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC15-S011",
+    "scene": 15,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split4",
+    "text": "11 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S001",
+    "scene": 16,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "But if you can speak slowly I think we'll be able to manage."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S002",
+    "scene": 16,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "You spoke a little too quickly, so I'm not sure if I understood."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S003",
+    "scene": 16,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Can we try again?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S004",
+    "scene": 16,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Can we see the menu?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S005",
+    "scene": 16,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Can we see the dessert menu also?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S006",
+    "scene": 16,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Do you have anything to eat?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S007",
+    "scene": 16,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Can we pay?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S008",
+    "scene": 16,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Can we pay by card?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S010",
+    "scene": 16,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "I'm sorry, I don't have any cash."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S009",
+    "scene": 16,
+    "speaker": "Staff",
+    "gender": "f",
+    "part": "main",
+    "text": "No, we only take cash."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S011",
+    "scene": 16,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "A million. 80. 90. 2 o'clock. 10 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S011",
+    "scene": 16,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "A million."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S011",
+    "scene": 16,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "80."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S011",
+    "scene": 16,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "90."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S011",
+    "scene": 16,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "2 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC16-S011",
+    "scene": 16,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split4",
+    "text": "10 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S001",
+    "scene": 17,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Is there a cash machine near here?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S003",
+    "scene": 17,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Can we put it on the room, please?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S006",
+    "scene": 17,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "We'll pay by card again, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S007",
+    "scene": 17,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "It's hot today, again."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S008",
+    "scene": 17,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Is the water warm?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S010",
+    "scene": 17,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "It's not bad."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S002",
+    "scene": 17,
+    "speaker": "Staff",
+    "gender": "f",
+    "part": "main",
+    "text": "Do you want to pay by cash or card or put it on the room?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S004",
+    "scene": 17,
+    "speaker": "Staff",
+    "gender": "f",
+    "part": "main",
+    "text": "Would you like to pay by cash or card or on the room?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S005",
+    "scene": 17,
+    "speaker": "Staff",
+    "gender": "f",
+    "part": "main",
+    "text": "Did you want to pay by cash or card?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S009",
+    "scene": 17,
+    "speaker": "Interlocutor",
+    "gender": "f",
+    "part": "main",
+    "text": "No, it's a little cold today."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S011",
+    "scene": 17,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "3 o'clock. 9 o'clock. January. February."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S011",
+    "scene": 17,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "3 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S011",
+    "scene": 17,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "9 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S011",
+    "scene": 17,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "January."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC17-S011",
+    "scene": 17,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "February."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S001",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "That's a bad idea."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S002",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Do you have any orange juice?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S003",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Do you have any apple juice?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S004",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Does the boat leave from here?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S005",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Does the bus leave from here?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S006",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Where does the bus leave from?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S007",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Is that correct? Am I correct?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S007",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split0",
+    "text": "Is that correct?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S007",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split1",
+    "text": "Am I correct?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S008",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Am I wrong about that?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S009",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "I'm sorry, my son lost his ticket."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S010",
+    "scene": 18,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "We have paid, but my daughter has lost her ticket."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S011",
+    "scene": 18,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "4 o'clock. 8 o'clock. March. April."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S011",
+    "scene": 18,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "4 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S011",
+    "scene": 18,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "8 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S011",
+    "scene": 18,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "March."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC18-S011",
+    "scene": 18,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "April."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S001",
+    "scene": 19,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "That makes me happy."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S002",
+    "scene": 19,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "That makes me feel a little worried."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S003",
+    "scene": 19,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "When you talk quickly, it makes me feel stupid."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S004",
+    "scene": 19,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Is it okay if I sit here?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S005",
+    "scene": 19,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Is it okay if we put this here?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S006",
+    "scene": 19,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "I don't want to be late."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S007",
+    "scene": 19,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Are we going to be late?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S008",
+    "scene": 19,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "I promise I won't be late."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S009",
+    "scene": 19,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "I promise we won't be late."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S010",
+    "scene": 19,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "I'd like two scoops of ice-cream, please."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S011",
+    "scene": 19,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "5 o'clock. 7 o'clock. May. June."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S011",
+    "scene": 19,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "5 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S011",
+    "scene": 19,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "7 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S011",
+    "scene": 19,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "May."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC19-S011",
+    "scene": 19,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "June."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S001",
+    "scene": 20,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Can I have one scoop of chocolate and one of strawberry?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S002",
+    "scene": 20,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "And then another cone with one scoop of lemon and one of blueberry."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S003",
+    "scene": 20,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Do you have any ice-cream?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S004",
+    "scene": 20,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Thank you for all your work."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S005",
+    "scene": 20,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "I wish you good luck with everything."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S006",
+    "scene": 20,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Thank you for helping me."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S007",
+    "scene": 20,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Good luck with that!"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S008",
+    "scene": 20,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "That's very kind of you."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S009",
+    "scene": 20,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "You're very kind."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S010",
+    "scene": 20,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Thank you for being so friendly."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S011",
+    "scene": 20,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "6 o'clock. July. August. September."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S011",
+    "scene": 20,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "6 o'clock."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S011",
+    "scene": 20,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "July."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S011",
+    "scene": 20,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "August."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC20-S011",
+    "scene": 20,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split3",
+    "text": "September."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S001",
+    "scene": 21,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "It sounds as though we need to leave soon."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S002",
+    "scene": 21,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "It sounds as though you want us not to do that."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S003",
+    "scene": 21,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Is there a toilet here?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S004",
+    "scene": 21,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Can you tell me where the toilet is?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S007",
+    "scene": 21,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Can you say that again?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S009",
+    "scene": 21,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "What is that?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S010",
+    "scene": 21,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "What is that over there?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S005",
+    "scene": 21,
+    "speaker": "Interlocutor",
+    "gender": "f",
+    "part": "main",
+    "text": "It's down there on the left."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S006",
+    "scene": 21,
+    "speaker": "Interlocutor",
+    "gender": "f",
+    "part": "main",
+    "text": "It's down there on the right."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S008",
+    "scene": 21,
+    "speaker": "Interlocutor",
+    "gender": "f",
+    "part": "main",
+    "text": "Yes, I said it's over there."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S011",
+    "scene": 21,
+    "speaker": "Interlocutor",
+    "gender": "f",
+    "part": "main",
+    "text": "Would you like to order some drinks?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S012",
+    "scene": 21,
+    "speaker": "Interlocutor",
+    "gender": "f",
+    "part": "main",
+    "text": "Do you want to order some drinks first?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S013",
+    "scene": 21,
+    "speaker": "Interlocutor",
+    "gender": "f",
+    "part": "main",
+    "text": "Did you want something to drink first?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S014",
+    "scene": 21,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "main",
+    "text": "October. November. December."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S014",
+    "scene": 21,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split0",
+    "text": "October."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S014",
+    "scene": 21,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split1",
+    "text": "November."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC21-S014",
+    "scene": 21,
+    "speaker": "Narrator",
+    "gender": "m",
+    "part": "split2",
+    "text": "December."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S001",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Would you mind if I tried to practise speaking Dutch with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S001",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split0",
+    "text": "Would you mind if I tried to practise speaking Dutch with you?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S001",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split1",
+    "text": "I haven't been learning for very long, and I still feel a little nervous about speaking with other people."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S003",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S003",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split0",
+    "text": "Thank you, that's good to know."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S003",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split1",
+    "text": "I need to learn more words, and I need to practise listening."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S003",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split2",
+    "text": "I don't understand people very well when they don't speak slowly."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S005",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S005",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split0",
+    "text": "Yes, thank you."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S005",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split1",
+    "text": "It's easier talking to just one person."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S005",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split2",
+    "text": "It's a bit difficult thinking of something to say, though."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S005",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split3",
+    "text": "I'm not sure what to say, but I feel as if I can speak enough to start having conversations."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S007",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S007",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split0",
+    "text": "It's just a little frustrating when I can't think quickly enough to express myself properly."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S007",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split1",
+    "text": "But I know that I need to keep practising if I want to speak more confidently."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S009",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "This is exactly the kind of practice I need. I think I can feel it changing my brain while we're talking! I really appreciate your help. But it's surprising how tired I get when I'm talking in a language I don't speak very well."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S009",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split0",
+    "text": "This is exactly the kind of practice I need."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S009",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split1",
+    "text": "I think I can feel it changing my brain while we're talking!"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S009",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split2",
+    "text": "I really appreciate your help."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S009",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "split3",
+    "text": "But it's surprising how tired I get when I'm talking in a language I don't speak very well."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S011",
+    "scene": 22,
+    "speaker": "Learner",
+    "gender": "f",
+    "part": "main",
+    "text": "It really is. I'm really happy that I can have this much of a conversation. And I hope we'll be able to have more conversations in the future as I keep on getting better."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S002",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "main",
+    "text": "Of course, no problem. You seem to speak it very well. I can understand you easily."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S002",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split0",
+    "text": "Of course, no problem."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S002",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split1",
+    "text": "You seem to speak it very well."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S002",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split2",
+    "text": "I can understand you easily."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S004",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "main",
+    "text": "Am I speaking slowly enough for you now?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S006",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "main",
+    "text": "I think you're doing very well. I'm impressed. I think you're ready to start speaking Dutch to anyone who speaks Dutch."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S006",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split0",
+    "text": "I think you're doing very well."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S006",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split1",
+    "text": "I'm impressed"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S006",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split2",
+    "text": "I think you're ready to start speaking Dutch to anyone who speaks Dutch."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S008",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "main",
+    "text": "You should be confident already. I think you're doing much better than you realise. I feel comfortable speaking with you, and I'm not talking very slowly."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S008",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split0",
+    "text": "You should be confident already."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S008",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split1",
+    "text": "I think you're doing much better than you realise."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S008",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split2",
+    "text": "I feel comfortable speaking with you, and I'm not talking very slowly."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S010",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "main",
+    "text": "I think that's normal. Learning a new language is difficult. But it's so much fun when you start to have conversations, isn't it?"
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S010",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split0",
+    "text": "I think that's normal."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S010",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split1",
+    "text": "Learning a new language is difficult."
+   },
+   {
+    "line": "nld_for_eng:pod-1:SC22-S010",
+    "scene": 22,
+    "speaker": "Friend",
+    "gender": "m",
+    "part": "split2",
+    "text": "But it's so much fun when you start to have conversations, isn't it?"
+   }
+  ],
+  "heldList": [
+   {
+    "key": "1|Neighbour",
+    "speaker": "Neighbour",
+    "scene": 1,
+    "gender": "m",
+    "lines": 2
+   },
+   {
+    "key": "1|Sarah",
+    "speaker": "Sarah",
+    "scene": 1,
+    "gender": "f",
+    "lines": 2
+   },
+   {
+    "key": "2|Sarah",
+    "speaker": "Sarah",
+    "scene": 2,
+    "gender": "f",
+    "lines": 3
+   },
+   {
+    "key": "2|Passenger",
+    "speaker": "Passenger",
+    "scene": 2,
+    "gender": "m",
+    "lines": 2
+   },
+   {
+    "key": "3|Barista",
+    "speaker": "Barista",
+    "scene": 3,
+    "gender": "m",
+    "lines": 4
+   },
+   {
+    "key": "3|Sarah",
+    "speaker": "Sarah",
+    "scene": 3,
+    "gender": "f",
+    "lines": 6
+   },
+   {
+    "key": "4|Friend",
+    "speaker": "Friend",
+    "scene": 4,
+    "gender": "m",
+    "lines": 2
+   },
+   {
+    "key": "4|Sarah",
+    "speaker": "Sarah",
+    "scene": 4,
+    "gender": "f",
+    "lines": 1
+   },
+   {
+    "key": "5|Neighbour",
+    "speaker": "Neighbour",
+    "scene": 5,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "5|Sarah",
+    "speaker": "Sarah",
+    "scene": 5,
+    "gender": "f",
+    "lines": 1
+   },
+   {
+    "key": "6|James",
+    "speaker": "James",
+    "scene": 6,
+    "gender": "m",
+    "lines": 6
+   },
+   {
+    "key": "6|Anna",
+    "speaker": "Anna",
+    "scene": 6,
+    "gender": "f",
+    "lines": 6
+   },
+   {
+    "key": "6|Narrator",
+    "speaker": "Narrator",
+    "scene": 6,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "7|Cafe Barista",
+    "speaker": "Cafe Barista",
+    "scene": 7,
+    "gender": "f",
+    "lines": 7
+   },
+   {
+    "key": "7|Cafe Customer 1",
+    "speaker": "Cafe Customer 1",
+    "scene": 7,
+    "gender": "m",
+    "lines": 3
+   },
+   {
+    "key": "7|Cafe Customer 2",
+    "speaker": "Cafe Customer 2",
+    "scene": 7,
+    "gender": "m",
+    "lines": 3
+   },
+   {
+    "key": "7|Cafe Customer 3",
+    "speaker": "Cafe Customer 3",
+    "scene": 7,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "7|Narrator",
+    "speaker": "Narrator",
+    "scene": 7,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "8|Bartender",
+    "speaker": "Bartender",
+    "scene": 8,
+    "gender": "m",
+    "lines": 5
+   },
+   {
+    "key": "8|Bar Customer 1",
+    "speaker": "Bar Customer 1",
+    "scene": 8,
+    "gender": "f",
+    "lines": 5
+   },
+   {
+    "key": "8|Bar Customer 2",
+    "speaker": "Bar Customer 2",
+    "scene": 8,
+    "gender": "f",
+    "lines": 3
+   },
+   {
+    "key": "8|Bar Customer 3",
+    "speaker": "Bar Customer 3",
+    "scene": 8,
+    "gender": "f",
+    "lines": 2
+   },
+   {
+    "key": "8|Narrator",
+    "speaker": "Narrator",
+    "scene": 8,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "9|Diner 1",
+    "speaker": "Diner 1",
+    "scene": 9,
+    "gender": "f",
+    "lines": 6
+   },
+   {
+    "key": "9|Waiter",
+    "speaker": "Waiter",
+    "scene": 9,
+    "gender": "m",
+    "lines": 7
+   },
+   {
+    "key": "9|Diner 2",
+    "speaker": "Diner 2",
+    "scene": 9,
+    "gender": "f",
+    "lines": 4
+   },
+   {
+    "key": "9|Narrator",
+    "speaker": "Narrator",
+    "scene": 9,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "10|Customer",
+    "speaker": "Customer",
+    "scene": 10,
+    "gender": "f",
+    "lines": 5
+   },
+   {
+    "key": "10|Assistant",
+    "speaker": "Assistant",
+    "scene": 10,
+    "gender": "m",
+    "lines": 4
+   },
+   {
+    "key": "10|Narrator",
+    "speaker": "Narrator",
+    "scene": 10,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "11|Guest",
+    "speaker": "Guest",
+    "scene": 11,
+    "gender": "m",
+    "lines": 6
+   },
+   {
+    "key": "11|Receptionist",
+    "speaker": "Receptionist",
+    "scene": 11,
+    "gender": "f",
+    "lines": 6
+   },
+   {
+    "key": "11|Narrator",
+    "speaker": "Narrator",
+    "scene": 11,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "12|Customer",
+    "speaker": "Customer",
+    "scene": 12,
+    "gender": "f",
+    "lines": 5
+   },
+   {
+    "key": "12|Pharmacist",
+    "speaker": "Pharmacist",
+    "scene": 12,
+    "gender": "m",
+    "lines": 4
+   },
+   {
+    "key": "12|Narrator",
+    "speaker": "Narrator",
+    "scene": 12,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "13|Tourist",
+    "speaker": "Tourist",
+    "scene": 13,
+    "gender": "f",
+    "lines": 5
+   },
+   {
+    "key": "13|Local",
+    "speaker": "Local",
+    "scene": 13,
+    "gender": "m",
+    "lines": 5
+   },
+   {
+    "key": "13|Narrator",
+    "speaker": "Narrator",
+    "scene": 13,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "14|Passenger",
+    "speaker": "Passenger",
+    "scene": 14,
+    "gender": "m",
+    "lines": 4
+   },
+   {
+    "key": "14|Driver",
+    "speaker": "Driver",
+    "scene": 14,
+    "gender": "f",
+    "lines": 5
+   },
+   {
+    "key": "14|Narrator",
+    "speaker": "Narrator",
+    "scene": 14,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "15|Learner",
+    "speaker": "Learner",
+    "scene": 15,
+    "gender": "f",
+    "lines": 10
+   },
+   {
+    "key": "15|Narrator",
+    "speaker": "Narrator",
+    "scene": 15,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "16|Learner",
+    "speaker": "Learner",
+    "scene": 16,
+    "gender": "f",
+    "lines": 9
+   },
+   {
+    "key": "16|Staff",
+    "speaker": "Staff",
+    "scene": 16,
+    "gender": "f",
+    "lines": 1
+   },
+   {
+    "key": "16|Narrator",
+    "speaker": "Narrator",
+    "scene": 16,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "17|Learner",
+    "speaker": "Learner",
+    "scene": 17,
+    "gender": "f",
+    "lines": 6
+   },
+   {
+    "key": "17|Staff",
+    "speaker": "Staff",
+    "scene": 17,
+    "gender": "f",
+    "lines": 3
+   },
+   {
+    "key": "17|Interlocutor",
+    "speaker": "Interlocutor",
+    "scene": 17,
+    "gender": "f",
+    "lines": 1
+   },
+   {
+    "key": "17|Narrator",
+    "speaker": "Narrator",
+    "scene": 17,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "18|Learner",
+    "speaker": "Learner",
+    "scene": 18,
+    "gender": "f",
+    "lines": 10
+   },
+   {
+    "key": "18|Narrator",
+    "speaker": "Narrator",
+    "scene": 18,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "19|Learner",
+    "speaker": "Learner",
+    "scene": 19,
+    "gender": "f",
+    "lines": 10
+   },
+   {
+    "key": "19|Narrator",
+    "speaker": "Narrator",
+    "scene": 19,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "20|Learner",
+    "speaker": "Learner",
+    "scene": 20,
+    "gender": "f",
+    "lines": 10
+   },
+   {
+    "key": "20|Narrator",
+    "speaker": "Narrator",
+    "scene": 20,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "21|Learner",
+    "speaker": "Learner",
+    "scene": 21,
+    "gender": "f",
+    "lines": 7
+   },
+   {
+    "key": "21|Interlocutor",
+    "speaker": "Interlocutor",
+    "scene": 21,
+    "gender": "f",
+    "lines": 6
+   },
+   {
+    "key": "21|Narrator",
+    "speaker": "Narrator",
+    "scene": 21,
+    "gender": "m",
+    "lines": 1
+   },
+   {
+    "key": "22|Learner",
+    "speaker": "Learner",
+    "scene": 22,
+    "gender": "f",
+    "lines": 6
+   },
+   {
+    "key": "22|Friend",
+    "speaker": "Friend",
+    "scene": 22,
+    "gender": "m",
+    "lines": 5
+   }
+  ]
+ }
+}
