@@ -39,6 +39,7 @@ function speakerGender(lines, fallback = {}) {
   }
   return out
 }
+const CURRENT_LINES = 231   // the current English pod-1 text; fewer lines = the old 142-line text
 const get = async p => (await fetch(`${BASE}${p}`, { signal: AbortSignal.timeout(180000) })).json()
 const post = async (p, body, headers = {}) => {
   const res = await fetch(`${BASE}${p}`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-371-english-pod1', ...headers }, body: JSON.stringify(body), signal: AbortSignal.timeout(180000) })
@@ -63,12 +64,17 @@ async function podLines(course) {
 /** role names for the English side: a X_for_eng pod plays English as KNOWN, an eng_for_X pod as TARGET */
 const rolesFor = course => (englishTrack(course) === 'known' ? { main: 'known', split: 'knownsegment' } : { main: 'target', split: 'segment' })
 /** Pure. (voice,text) -> clip id of an existing clip. `pods` = [{lines}] read from source pods; only clips already in a GOOD voice are indexed. */
-function buildIndex(pods) {
+function buildIndex(pods, { anyVoice = false } = {}) {
   const idx = new Map(), ok = new Set([...GOOD_VOICES.f, ...GOOD_VOICES.m].map(bare))
-  const add = (id, voice, text) => { if (!id || !text || !ok.has(bare(voice))) return; const k = `${bare(voice)}|${norm(text)}`; if (!idx.has(k)) idx.set(k, id) }
+  const add = (id, voice, text) => { if (!id || !text || (!anyVoice && !ok.has(bare(voice)))) return; const k = `${bare(voice)}|${norm(text)}`; if (!idx.has(k)) idx.set(k, id) }
   for (const p of pods) for (const l of p.lines) { add(l.clip, l.oldVoice, l.clipText); for (const s of l.splits) add(s && s.id, s && s.voice_id, s && s.text) }
   return idx
 }
+/**
+ * Pure. The source pods for the index are the ENGLISH pod itself: the eng_for_* courses (English is their TARGET track). Job #414: #371
+ * indexed ita_for_eng's pod (an X course speaking English as KNOWN), which is the wrong pod; an X_for_eng course is never a source here.
+ */
+const englishSources = courses => courses.filter(c => c.startsWith('eng_for_'))
 /**
  * Pure. Link plan for one pod. A speaker keeps ONE voice per scene, so a (scene, speaker) is all-or-nothing: it is linked only when ONE good
  * voice has a text-identical existing clip for every line (main clip and each split); otherwise it is HELD whole, and the lines with no clip
@@ -98,7 +104,7 @@ function planLink(lines, idx, gender = speakerGender(lines)) {
   }
   return { links, held, gaps }
 }
-module.exports = { speakerGender, buildIndex, planLink, rolesFor, englishTrack, norm, OLD, GOOD_VOICES }
+module.exports = { englishSources, speakerGender, buildIndex, planLink, rolesFor, englishTrack, norm, OLD, GOOD_VOICES }
 if (require.main === module) (async () => {
   const mode = process.argv[2], has = f => process.argv.includes(f)
   fs.mkdirSync(DIR, { recursive: true })
@@ -120,15 +126,20 @@ if (require.main === module) (async () => {
   }
   if (mode === 'link') {
     const arg = n => (process.argv.find(a => a.startsWith(`--${n}=`)) || '').split('=')[1]
-    const apply = has('--apply'), sources = (arg('source') || 'ita_for_eng').split(','), sceneOnly = arg('only-scene')
+    const apply = has('--apply'), sources = arg('source') ? arg('source').split(',') : englishSources(await englishCourses()), sceneOnly = arg('only-scene')
     const courses = has('--all') ? await englishCourses() : (arg('courses') || '').split(',').filter(Boolean)
     if (!courses.length) { console.error('name --courses=a,b or --all'); process.exit(1) }
     if (apply && (has('--all') || courses.length !== 1 || courses[0] !== 'nld_for_eng')) { console.error('--apply is limited to --courses=nld_for_eng this job'); process.exit(1) }
-    const idx = buildIndex((await Promise.all(sources.map(podLines))).filter(Boolean))
+    if (sources.some(c => !c.startsWith('eng_for_'))) { console.error('--source must be eng_for_* courses: the index is built from the English pod, never an X_for_eng pod'); process.exit(1) }
+    const srcPods = (await Promise.all(sources.map(podLines))).filter(Boolean)
+    const idx = buildIndex(srcPods), anyTexts = new Set([...buildIndex(srcPods, { anyVoice: true }).keys()].map(k => k.slice(k.indexOf('|') + 1)))
+    console.log(`index from ${srcPods.length} English pods (${sources.join(' ')}): ${idx.size} good-voice entries`)
     const report = {}
     for (const c of courses) {
       const p = await podLines(c); if (!p) { report[c] = { missing: true }; continue }
       const plan = planLink(p.lines, idx)
+      const wholePodMove = p.lines.length < CURRENT_LINES   // old text: moves whole to the current English pod-1 (Tom, job #414), so its clips are not gaps
+      const textInEnglishPod = p.lines.filter(l => anyTexts.has(norm(l.text))).length
       let { links } = plan
       if (sceneOnly) { const ids = new Set(p.lines.filter(l => String(l.scene) === sceneOnly).map(l => l.id)); links = links.filter(x => ids.has(x.line)) }
       const r = rolesFor(c), body = links.filter(x => x.old !== x.id).map(x => ({ podSentenceId: x.line, role: x.part === 'main' ? r.main : r.split, audioId: x.id, replace: true, expectCurrent: x.old }))
@@ -142,8 +153,8 @@ if (require.main === module) (async () => {
         const res = await post(`/api/production/${c}/link-clip`, { links: body.slice(0, 500), dryRun: true })
         refused = (res.body.results || []).filter(x => !x.ok); if (!res.body.results) refused.push({ status: res.status, body: res.body })
       }
-      report[c] = { lines: p.lines.length, planned: body.length, held: plan.held.length, gaps: plan.gaps.length, linked, refused: refused.length, refusedSample: refused.slice(0, 3), gapList: plan.gaps, heldList: plan.held }
-      console.log(`${apply ? 'APPLY' : 'DRY'} ${c}: lines ${p.lines.length}; links planned ${body.length}; speaker-scenes held ${plan.held.length}; gap clips ${plan.gaps.length}; linked ${linked}; refused ${refused.length}`)
+      report[c] = { wholePodMove, textInEnglishPod, lines: p.lines.length, planned: body.length, held: plan.held.length, gaps: wholePodMove ? 0 : plan.gaps.length, linked, refused: refused.length, refusedSample: refused.slice(0, 3), gapList: wholePodMove ? [] : plan.gaps, heldList: plan.held }
+      console.log(`${apply ? 'APPLY' : 'DRY'} ${c}: lines ${p.lines.length}; links planned ${body.length}; speaker-scenes held ${plan.held.length}; gap clips ${wholePodMove ? 0 : plan.gaps.length}${wholePodMove ? ' [whole-pod move to current English pod-1]' : ''}; text present in English pod ${textInEnglishPod}/${p.lines.length}; linked ${linked}; refused ${refused.length}`)
     }
     fs.writeFileSync(path.join(DIR, `link-${apply ? 'applied' : 'dry'}-${Date.now()}.json`), JSON.stringify(report, null, 1))
     return
