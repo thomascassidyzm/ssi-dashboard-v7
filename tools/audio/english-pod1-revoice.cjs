@@ -71,10 +71,13 @@ function buildIndex(pods, { anyVoice = false } = {}) {
   return idx
 }
 /**
- * Pure. The source pods for the index are the ENGLISH pod itself: the eng_for_* courses (English is their TARGET track). Job #414: #371
- * indexed ita_for_eng's pod (an X course speaking English as KNOWN), which is the wrong pod; an X_for_eng course is never a source here.
+ * Pure. The source pods for the index. Job #414 found the eng_for_* pods hold no usable current-text clips; Tom's ruling (job #417,
+ * 2026-10-26: "pods are per language, Charlotte already speaks every line"): the current 231-line English pod-1 with Charlotte audio lives
+ * in ita_for_eng, spa_for_eng and nld_for_eng, so the UNION of those three is the source. Any other X_for_eng course is still refused.
  */
-const englishSources = courses => courses.filter(c => c.startsWith('eng_for_'))
+const UNION_SOURCES = ['ita_for_eng', 'spa_for_eng', 'nld_for_eng']
+const englishSources = () => UNION_SOURCES.slice()
+const isAllowedSource = c => UNION_SOURCES.includes(c) || c.startsWith('eng_for_')
 /**
  * Pure. Link plan for one pod. A speaker keeps ONE voice per scene, so a (scene, speaker) is all-or-nothing: it is linked only when ONE good
  * voice has a text-identical existing clip for every line (main clip and each split); otherwise it is HELD whole, and the lines with no clip
@@ -104,7 +107,7 @@ function planLink(lines, idx, gender = speakerGender(lines)) {
   }
   return { links, held, gaps }
 }
-module.exports = { englishSources, speakerGender, buildIndex, planLink, rolesFor, englishTrack, norm, OLD, GOOD_VOICES }
+module.exports = { englishSources, isAllowedSource, speakerGender, buildIndex, planLink, rolesFor, englishTrack, norm, OLD, GOOD_VOICES }
 if (require.main === module) (async () => {
   const mode = process.argv[2], has = f => process.argv.includes(f)
   fs.mkdirSync(DIR, { recursive: true })
@@ -126,11 +129,11 @@ if (require.main === module) (async () => {
   }
   if (mode === 'link') {
     const arg = n => (process.argv.find(a => a.startsWith(`--${n}=`)) || '').split('=')[1]
-    const apply = has('--apply'), sources = arg('source') ? arg('source').split(',') : englishSources(await englishCourses()), sceneOnly = arg('only-scene')
+    const apply = has('--apply'), sources = arg('source') ? arg('source').split(',') : englishSources(), sceneOnly = arg('only-scene')
     const courses = has('--all') ? await englishCourses() : (arg('courses') || '').split(',').filter(Boolean)
     if (!courses.length) { console.error('name --courses=a,b or --all'); process.exit(1) }
-    if (apply && (has('--all') || courses.length !== 1 || courses[0] !== 'nld_for_eng')) { console.error('--apply is limited to --courses=nld_for_eng this job'); process.exit(1) }
-    if (sources.some(c => !c.startsWith('eng_for_'))) { console.error('--source must be eng_for_* courses: the index is built from the English pod, never an X_for_eng pod'); process.exit(1) }
+    if (apply && (has('--all') || courses.length !== 1)) { console.error('--apply takes exactly one named course (batch per course, read each back)'); process.exit(1) }
+    if (sources.some(c => !isAllowedSource(c))) { console.error(`--source must be ${UNION_SOURCES.join(', ')} or eng_for_* courses: no other X_for_eng pod is a source`); process.exit(1) }
     const srcPods = (await Promise.all(sources.map(podLines))).filter(Boolean)
     const idx = buildIndex(srcPods), anyTexts = new Set([...buildIndex(srcPods, { anyVoice: true }).keys()].map(k => k.slice(k.indexOf('|') + 1)))
     console.log(`index from ${srcPods.length} English pods (${sources.join(' ')}): ${idx.size} good-voice entries`)

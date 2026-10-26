@@ -19,8 +19,9 @@ test('links text-identical existing clips; a speaker with one missing line is he
   assert.deepStrictEqual(p.gaps.map(g => g.text).sort(), ['Good morning!', 'Only on Olivia.'].sort())
   assert.strictEqual(p.held.length, 2)
 })
-// Job #414: the source index comes from the English pod (eng_for_*), never from an X_for_eng pod such as ita_for_eng (#371's mistake).
-test('English sources are eng_for_* courses only', () => {
-  const { englishSources } = require('./english-pod1-revoice.cjs')
-  assert.deepStrictEqual(englishSources(['ita_for_eng', 'eng_for_fra', 'nld_for_eng', 'eng_for_deu']), ['eng_for_fra', 'eng_for_deu'])
+// Job #417 (supersedes #414): the source is the UNION of ita/spa/nld_for_eng; any other X_for_eng is refused.
+test('English sources are the ita/spa/nld_for_eng union; other X_for_eng courses are not sources', () => {
+  const { englishSources, isAllowedSource } = require('./english-pod1-revoice.cjs')
+  assert.deepStrictEqual(englishSources(), ['ita_for_eng', 'spa_for_eng', 'nld_for_eng'])
+  assert.ok(isAllowedSource('spa_for_eng') && !isAllowedSource('fra_for_eng'))
 })
