@@ -1,0 +1,1940 @@
+{
+ "ok": true,
+ "dryRun": false,
+ "applied": true,
+ "event_id": "050abbb8-5673-4d89-9007-d2295b838e33",
+ "results": [
+  {
+   "index": 0,
+   "op": "seed.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "seed_number": 1585
+   },
+   "before": {
+    "id": "755130d5-3f36-4945-8ddf-e80e29df7312",
+    "seed_number": 1585,
+    "target_text": "dw i’n medru gweld y mynyddoedd o ffenest fy llofft",
+    "known_text": "I can see the mountains out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": "718aced2-ffba-40f5-8651-01d21717f169",
+    "target2_audio_id": "626b509e-5de4-4563-ac36-7fd75bb16b7d"
+   },
+   "after": {
+    "id": "755130d5-3f36-4945-8ddf-e80e29df7312",
+    "seed_number": 1585,
+    "target_text": "dw i’n medru gweld y mynyddoedd o ffenest fy stafell wely",
+    "known_text": "I can see the mountains out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 1,
+   "op": "lego.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "lego_id": "S1585L01"
+   },
+   "before": {
+    "id": "9e326ae2-5266-41df-928a-a5767c359cde",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": "S1585L01",
+    "target_text": "o ffenest fy llofft",
+    "components": [
+     {
+      "known": "out of",
+      "target": "o"
+     },
+     {
+      "known": "window",
+      "target": "ffenest"
+     },
+     {
+      "known": "my bedroom",
+      "target": "fy llofft"
+     }
+    ],
+    "known_text": "out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": "cc4f2bab-be90-42bf-8fb8-c2fdb0f57f8b",
+    "target2_audio_id": "34b421ce-3f7c-4a51-9b60-7e13c133c47e",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "9e326ae2-5266-41df-928a-a5767c359cde",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": "S1585L01",
+    "target_text": "o ffenest fy stafell wely",
+    "components": [
+     {
+      "known": "out of",
+      "target": "o"
+     },
+     {
+      "known": "window",
+      "target": "ffenest"
+     },
+     {
+      "known": "my bedroom",
+      "target": "fy stafell wely"
+     }
+    ],
+    "known_text": "out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 2,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1585L01B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1585L01B01",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "y mynyddoedd o ffenest fy llofft",
+    "decomposition": [
+     {
+      "known": "the mountains",
+      "legoId": "S1584L02",
+      "target": "y mynyddoedd",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the mountains out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "40e3fe40-205b-443a-ba54-b506268d7d45",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1585L01B01",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "y mynyddoedd o ffenest fy stafell wely",
+    "decomposition": [
+     {
+      "known": "the mountains",
+      "legoId": "S1584L02",
+      "target": "y mynyddoedd",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy stafell wely",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the mountains out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 3,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1585L01B02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1585L01B02",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "o ffenest fy llofft yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": "o ffenest fy llofft",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "out of my bedroom window late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "b5935a43-5933-4b9a-a0d0-38a88565c835",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1585L01B02",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "o ffenest fy stafell wely yn hwyr yn y nos",
+    "decomposition": [
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": "o ffenest fy stafell wely",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ],
+    "known_text": "out of my bedroom window late at night",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 4,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1585L01B03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1585L01B03",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "y goriadau o ffenest fy llofft",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "keys",
+      "legoId": "S0291L07",
+      "target": " goriadau",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the keys out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "bd4f8d9c-50ca-49ba-8fdf-dae6b8a08cfc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1585L01B03",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "y goriadau o ffenest fy stafell wely",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "keys",
+      "legoId": "S0291L07",
+      "target": " goriadau",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy stafell wely",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the keys out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 5,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1585L01B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1585L01B04",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "pen y pentref o ffenest fy llofft",
+    "decomposition": [
+     {
+      "known": "the end of the village",
+      "legoId": "S1550L01",
+      "target": "pen y pentref",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the end of the village out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "adc688f5-d9d0-48c9-86a4-ad12ad54eecf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1585L01B04",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "pen y pentref o ffenest fy stafell wely",
+    "decomposition": [
+     {
+      "known": "the end of the village",
+      "legoId": "S1550L01",
+      "target": "pen y pentref",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy stafell wely",
+      "isGhost": false
+     }
+    ],
+    "known_text": "the end of the village out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 6,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1585L01C03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1585L01C03",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fy llofft",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ],
+    "known_text": "my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1585L01C03",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "fy stafell wely",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " stafell wely",
+      "isGhost": true
+     }
+    ],
+    "known_text": "my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 7,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1585L01U05"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1585L01U05",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "o ffenest fy llofft mae’n fyd mawr",
+    "decomposition": [
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": "o ffenest fy llofft",
+      "isGhost": false
+     },
+     {
+      "known": "it’s a big world",
+      "legoId": "S0262L01",
+      "target": " mae’n fyd mawr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "out of my bedroom window it’s a big world",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "1203c4e2-1761-4ac9-91d6-00242ee5ea4b",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1585L01U05",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "o ffenest fy stafell wely mae’n fyd mawr",
+    "decomposition": [
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": "o ffenest fy stafell wely",
+      "isGhost": false
+     },
+     {
+      "known": "it’s a big world",
+      "legoId": "S0262L01",
+      "target": " mae’n fyd mawr",
+      "isGhost": false
+     }
+    ],
+    "known_text": "out of my bedroom window it’s a big world",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 8,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1585L01U01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1585L01U01",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i heb weld y mynyddoedd o ffenest fy llofft hyd yn hyn",
+    "decomposition": [
+     {
+      "known": "I haven’t seen",
+      "legoId": "S0296L01",
+      "target": "dw i heb weld",
+      "isGhost": false
+     },
+     {
+      "known": "the mountains",
+      "legoId": "S1584L02",
+      "target": " y mynyddoedd",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     },
+     {
+      "known": "yet",
+      "legoId": "S0013L01",
+      "target": " hyd yn hyn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I haven’t seen the mountains out of my bedroom window yet",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1585L01U01",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i heb weld y mynyddoedd o ffenest fy stafell wely hyd yn hyn",
+    "decomposition": [
+     {
+      "known": "I haven’t seen",
+      "legoId": "S0296L01",
+      "target": "dw i heb weld",
+      "isGhost": false
+     },
+     {
+      "known": "the mountains",
+      "legoId": "S1584L02",
+      "target": " y mynyddoedd",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy stafell wely",
+      "isGhost": false
+     },
+     {
+      "known": "yet",
+      "legoId": "S0013L01",
+      "target": " hyd yn hyn",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I haven’t seen the mountains out of my bedroom window yet",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 9,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1585L01U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1585L01U04",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "gad i mi daflu’r goriadau o ffenest fy llofft",
+    "decomposition": [
+     {
+      "known": "let me",
+      "legoId": "S0261L01",
+      "target": "gad i mi",
+      "isGhost": false
+     },
+     {
+      "known": "throw",
+      "legoId": "S0261L02",
+      "target": " daflu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’r",
+      "isGhost": true
+     },
+     {
+      "known": "keys",
+      "legoId": "S0291L07",
+      "target": " goriadau",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     }
+    ],
+    "known_text": "let me throw the keys out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1585L01U04",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "gad i mi daflu’r goriadau o ffenest fy stafell wely",
+    "decomposition": [
+     {
+      "known": "let me",
+      "legoId": "S0261L01",
+      "target": "gad i mi",
+      "isGhost": false
+     },
+     {
+      "known": "throw",
+      "legoId": "S0261L02",
+      "target": " daflu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’r",
+      "isGhost": true
+     },
+     {
+      "known": "keys",
+      "legoId": "S0291L07",
+      "target": " goriadau",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy stafell wely",
+      "isGhost": false
+     }
+    ],
+    "known_text": "let me throw the keys out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 10,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1585L01U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1585L01U02",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "welest ti’r mynyddoedd o ffenest fy llofft?",
+    "decomposition": [
+     {
+      "known": "did you see",
+      "legoId": "S1372L01",
+      "target": "welest ti",
+      "isGhost": false
+     },
+     {
+      "known": "the mountains",
+      "legoId": "S1584L02",
+      "target": "’r mynyddoedd",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "did you see the mountains out of my bedroom window?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "789ad747-fc31-40bd-b941-c29fdf1c404f",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1585L01U02",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "welest ti’r mynyddoedd o ffenest fy stafell wely?",
+    "decomposition": [
+     {
+      "known": "did you see",
+      "legoId": "S1372L01",
+      "target": "welest ti",
+      "isGhost": false
+     },
+     {
+      "known": "the mountains",
+      "legoId": "S1584L02",
+      "target": "’r mynyddoedd",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy stafell wely",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ],
+    "known_text": "did you see the mountains out of my bedroom window?",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 11,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1585L01U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1585L01U03",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n mynd i daflu’r goriadau o ffenest fy llofft",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "throw",
+      "legoId": "S0261L02",
+      "target": " daflu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’r",
+      "isGhost": true
+     },
+     {
+      "known": "keys",
+      "legoId": "S0291L07",
+      "target": " goriadau",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m going to throw the keys out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "d8eede9e-2651-4395-969a-9682380b72fc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1585L01U03",
+    "seed_number": 1585,
+    "lego_index": 1,
+    "lego_id": null,
+    "target_text": "dw i’n mynd i daflu’r goriadau o ffenest fy stafell wely",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "throw",
+      "legoId": "S0261L02",
+      "target": " daflu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’r",
+      "isGhost": true
+     },
+     {
+      "known": "keys",
+      "legoId": "S0291L07",
+      "target": " goriadau",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy stafell wely",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I’m going to throw the keys out of my bedroom window",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 12,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1593L02B01"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1593L02B01",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "oedd dal rhaid i mi rannu fy llofft",
+    "decomposition": [
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": "oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ],
+    "known_text": "I still had to share my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "6fa60276-caff-4b51-84ba-0b4983c2bc2c",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1593L02B01",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "oedd dal rhaid i mi rannu fy stafell wely",
+    "decomposition": [
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": "oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " stafell wely",
+      "isGhost": true
+     }
+    ],
+    "known_text": "I still had to share my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 13,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1593L02B04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1593L02B04",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "achos oedd dal rhaid i mi rannu fy llofft",
+    "decomposition": [
+     {
+      "known": "because",
+      "legoId": "S0031L01",
+      "target": "achos",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ],
+    "known_text": "because I still had to share my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "608654cc-8e37-4e79-9cbf-41f6cc387ffc",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1593L02B04",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "achos oedd dal rhaid i mi rannu fy stafell wely",
+    "decomposition": [
+     {
+      "known": "because",
+      "legoId": "S0031L01",
+      "target": "achos",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " stafell wely",
+      "isGhost": true
+     }
+    ],
+    "known_text": "because I still had to share my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 14,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1593L02U03"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1593L02U03",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "oedd dal rhaid i mi rannu fy llofft yn ystod y rhyfel",
+    "decomposition": [
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": "oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     },
+     {
+      "known": "during the war",
+      "legoId": "S1462L03",
+      "target": " yn ystod y rhyfel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I still had to share my bedroom during the war",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1593L02U03",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "oedd dal rhaid i mi rannu fy stafell wely yn ystod y rhyfel",
+    "decomposition": [
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": "oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " stafell wely",
+      "isGhost": true
+     },
+     {
+      "known": "during the war",
+      "legoId": "S1462L03",
+      "target": " yn ystod y rhyfel",
+      "isGhost": false
+     }
+    ],
+    "known_text": "I still had to share my bedroom during the war",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 15,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1593L02U02"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1593L02U02",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "o’n i isio gadael cartref achos oedd dal rhaid i mi rannu fy llofft",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "leave home",
+      "legoId": "S1588L05",
+      "target": " gadael cartref",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0031L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ],
+    "known_text": "I wanted to leave home because I still had to share my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1593L02U02",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "o’n i isio gadael cartref achos oedd dal rhaid i mi rannu fy stafell wely",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "leave home",
+      "legoId": "S1588L05",
+      "target": " gadael cartref",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0031L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " stafell wely",
+      "isGhost": true
+     }
+    ],
+    "known_text": "I wanted to leave home because I still had to share my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 16,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1593L02U04"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1593L02U04",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "o’n i’n dadlau ond oedd dal rhaid i mi rannu fy llofft",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "o’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " dadlau",
+      "isGhost": true
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ],
+    "known_text": "I was arguing but I still had to share my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "48c7b18c-9fdc-4bbe-84be-7ec8aca83756",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1593L02U04",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "o’n i’n dadlau ond oedd dal rhaid i mi rannu fy stafell wely",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "o’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " dadlau",
+      "isGhost": true
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " stafell wely",
+      "isGhost": true
+     }
+    ],
+    "known_text": "I was arguing but I still had to share my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  },
+  {
+   "index": 17,
+   "op": "phrase.update",
+   "key": {
+    "course_code": "cym_nv2_for_eng",
+    "id": "cym_nv2_for_eng:S1593L02U06"
+   },
+   "before": {
+    "id": "cym_nv2_for_eng:S1593L02U06",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "yn y gorffennol oedd dal rhaid i mi rannu fy llofft",
+    "decomposition": [
+     {
+      "known": "in the past",
+      "legoId": "S1458L02",
+      "target": "yn y gorffennol",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ],
+    "known_text": "in the past I still had to share my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": "8955b766-5cb6-4344-b80e-e1236ccb73bf",
+    "presentation_audio_id": null
+   },
+   "after": {
+    "id": "cym_nv2_for_eng:S1593L02U06",
+    "seed_number": 1593,
+    "lego_index": 2,
+    "lego_id": null,
+    "target_text": "yn y gorffennol oedd dal rhaid i mi rannu fy stafell wely",
+    "decomposition": [
+     {
+      "known": "in the past",
+      "legoId": "S1458L02",
+      "target": "yn y gorffennol",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " stafell wely",
+      "isGhost": true
+     }
+    ],
+    "known_text": "in the past I still had to share my bedroom",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "presentation_audio_id": null
+   },
+   "changed": true
+  }
+ ],
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1593L02U06",
+   "set": {
+    "target_text": "yn y gorffennol oedd dal rhaid i mi rannu fy llofft",
+    "target2_audio_id": "8955b766-5cb6-4344-b80e-e1236ccb73bf",
+    "decomposition": [
+     {
+      "known": "in the past",
+      "legoId": "S1458L02",
+      "target": "yn y gorffennol",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1593L02U04",
+   "set": {
+    "target_text": "o’n i’n dadlau ond oedd dal rhaid i mi rannu fy llofft",
+    "target2_audio_id": "48c7b18c-9fdc-4bbe-84be-7ec8aca83756",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "o’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " i’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " dadlau",
+      "isGhost": true
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1593L02U02",
+   "set": {
+    "target_text": "o’n i isio gadael cartref achos oedd dal rhaid i mi rannu fy llofft",
+    "decomposition": [
+     {
+      "known": "I wanted",
+      "legoId": "S0012L01",
+      "target": "o’n i isio",
+      "isGhost": false
+     },
+     {
+      "known": "leave home",
+      "legoId": "S1588L05",
+      "target": " gadael cartref",
+      "isGhost": false
+     },
+     {
+      "known": "because",
+      "legoId": "S0031L01",
+      "target": " achos",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1593L02U03",
+   "set": {
+    "target_text": "oedd dal rhaid i mi rannu fy llofft yn ystod y rhyfel",
+    "decomposition": [
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": "oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     },
+     {
+      "known": "during the war",
+      "legoId": "S1462L03",
+      "target": " yn ystod y rhyfel",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1593L02B04",
+   "set": {
+    "target_text": "achos oedd dal rhaid i mi rannu fy llofft",
+    "target2_audio_id": "608654cc-8e37-4e79-9cbf-41f6cc387ffc",
+    "decomposition": [
+     {
+      "known": "because",
+      "legoId": "S0031L01",
+      "target": "achos",
+      "isGhost": false
+     },
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": " oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1593L02B01",
+   "set": {
+    "target_text": "oedd dal rhaid i mi rannu fy llofft",
+    "target2_audio_id": "6fa60276-caff-4b51-84ba-0b4983c2bc2c",
+    "decomposition": [
+     {
+      "known": "I still had to share",
+      "legoId": "S1593L02",
+      "target": "oedd dal rhaid i mi rannu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1585L01U03",
+   "set": {
+    "target_text": "dw i’n mynd i daflu’r goriadau o ffenest fy llofft",
+    "target2_audio_id": "d8eede9e-2651-4395-969a-9682380b72fc",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "throw",
+      "legoId": "S0261L02",
+      "target": " daflu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’r",
+      "isGhost": true
+     },
+     {
+      "known": "keys",
+      "legoId": "S0291L07",
+      "target": " goriadau",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1585L01U02",
+   "set": {
+    "target_text": "welest ti’r mynyddoedd o ffenest fy llofft?",
+    "target2_audio_id": "789ad747-fc31-40bd-b941-c29fdf1c404f",
+    "decomposition": [
+     {
+      "known": "did you see",
+      "legoId": "S1372L01",
+      "target": "welest ti",
+      "isGhost": false
+     },
+     {
+      "known": "the mountains",
+      "legoId": "S1584L02",
+      "target": "’r mynyddoedd",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1585L01U04",
+   "set": {
+    "target_text": "gad i mi daflu’r goriadau o ffenest fy llofft",
+    "decomposition": [
+     {
+      "known": "let me",
+      "legoId": "S0261L01",
+      "target": "gad i mi",
+      "isGhost": false
+     },
+     {
+      "known": "throw",
+      "legoId": "S0261L02",
+      "target": " daflu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’r",
+      "isGhost": true
+     },
+     {
+      "known": "keys",
+      "legoId": "S0291L07",
+      "target": " goriadau",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1585L01U01",
+   "set": {
+    "target_text": "dw i heb weld y mynyddoedd o ffenest fy llofft hyd yn hyn",
+    "decomposition": [
+     {
+      "known": "I haven’t seen",
+      "legoId": "S0296L01",
+      "target": "dw i heb weld",
+      "isGhost": false
+     },
+     {
+      "known": "the mountains",
+      "legoId": "S1584L02",
+      "target": " y mynyddoedd",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     },
+     {
+      "known": "yet",
+      "legoId": "S0013L01",
+      "target": " hyd yn hyn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1585L01U05",
+   "set": {
+    "target_text": "o ffenest fy llofft mae’n fyd mawr",
+    "target2_audio_id": "1203c4e2-1761-4ac9-91d6-00242ee5ea4b",
+    "decomposition": [
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": "o ffenest fy llofft",
+      "isGhost": false
+     },
+     {
+      "known": "it’s a big world",
+      "legoId": "S0262L01",
+      "target": " mae’n fyd mawr",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1585L01C03",
+   "set": {
+    "target_text": "fy llofft",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fy",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " llofft",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1585L01B04",
+   "set": {
+    "target_text": "pen y pentref o ffenest fy llofft",
+    "target2_audio_id": "adc688f5-d9d0-48c9-86a4-ad12ad54eecf",
+    "decomposition": [
+     {
+      "known": "the end of the village",
+      "legoId": "S1550L01",
+      "target": "pen y pentref",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1585L01B03",
+   "set": {
+    "target_text": "y goriadau o ffenest fy llofft",
+    "target2_audio_id": "bd4f8d9c-50ca-49ba-8fdf-dae6b8a08cfc",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "y",
+      "isGhost": true
+     },
+     {
+      "known": "keys",
+      "legoId": "S0291L07",
+      "target": " goriadau",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1585L01B02",
+   "set": {
+    "target_text": "o ffenest fy llofft yn hwyr yn y nos",
+    "target2_audio_id": "b5935a43-5933-4b9a-a0d0-38a88565c835",
+    "decomposition": [
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": "o ffenest fy llofft",
+      "isGhost": false
+     },
+     {
+      "known": "late at night",
+      "legoId": "S1556L02",
+      "target": " yn hwyr yn y nos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1585L01B01",
+   "set": {
+    "target_text": "y mynyddoedd o ffenest fy llofft",
+    "target2_audio_id": "40e3fe40-205b-443a-ba54-b506268d7d45",
+    "decomposition": [
+     {
+      "known": "the mountains",
+      "legoId": "S1584L02",
+      "target": "y mynyddoedd",
+      "isGhost": false
+     },
+     {
+      "known": "out of my bedroom window",
+      "legoId": "S1585L01",
+      "target": " o ffenest fy llofft",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "9e326ae2-5266-41df-928a-a5767c359cde",
+   "set": {
+    "target_text": "o ffenest fy llofft",
+    "components": [
+     {
+      "known": "out of",
+      "target": "o"
+     },
+     {
+      "known": "window",
+      "target": "ffenest"
+     },
+     {
+      "known": "my bedroom",
+      "target": "fy llofft"
+     }
+    ],
+    "target1_audio_id": "cc4f2bab-be90-42bf-8fb8-c2fdb0f57f8b",
+    "target2_audio_id": "34b421ce-3f7c-4a51-9b60-7e13c133c47e"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1585,
+   "set": {
+    "target_text": "dw i’n medru gweld y mynyddoedd o ffenest fy llofft",
+    "target1_audio_id": "718aced2-ffba-40f5-8651-01d21717f169",
+    "target2_audio_id": "626b509e-5de4-4563-ac36-7fd75bb16b7d"
+   }
+  }
+ ],
+ "undo_file": "2026-10-26T14-00-01-993Z-050abbb8-5673-4d89-9007-d2295b838e33.json"
+}
