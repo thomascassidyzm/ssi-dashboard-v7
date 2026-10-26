@@ -1,0 +1,164 @@
+# NORTH cym_nv2_for_eng — id<TAB>new known<TAB>new Welsh  (DEL = remove the phrase)
+seed:1639	excuse me, can I sit with you?	esgusodwch fi, ga i eistedd efo chi?
+seed:1642	excuse me, how do you feel?	esgusodwch fi, sut dach chi’n teimlo?	LEGOs: the 'madam' LEGO (S1642L03) goes, and 'excuse me' comes first as a reference to 1639. S1642L02 'how do you feel? = sut dach chi’n teimlo?' is left as it is. It ALREADY clashes with S0103L01 (how do you feel? = sut wyt ti’n teimlo?). That clash was there before this change; gluing 'excuse me' onto it would fix it but means redoing its 7 other phrases. Tell me if you want that.
+seed:1643	excuse me, do you want?	esgusodwch fi, dach chi isio?
+seed:1644	excuse me, could you say that?	esgusodwch fi, fedrwch chi ddeud hynna?
+seed:1645	excuse me, I can help you	esgusodwch fi, mi fedra i helpu chi	LEGOs: the whole line becomes LEGO S1645L02 (see that item), since 'excuse me' can't sit next to 'help you'.
+seed:1646	excuse me, are you doing something?	esgusodwch fi, dach chi’n gwneud rhywbeth?
+seed:1647	excuse me, do you speak it?	esgusodwch fi, dach chi’n siarad hi?
+seed:1648	excuse me, what did you say?	esgusodwch fi, be’ ddudoch chi?
+seed:1649	excuse me, are you ready?	esgusodwch fi, dach chi’n barod?
+seed:1650	excuse me, do you want to go?	esgusodwch fi, dach chi isio mynd?
+seed:1651	excuse me, what do you think?	esgusodwch fi, be’ dach chi’n meddwl?
+seed:1652	excuse me, what do you need?	esgusodwch fi, be’ dach chi angen?
+seed:1653	excuse me, do you mind?	esgusodwch fi, oes ots gynnoch chi?
+seed:1654	excuse me, I’m not sure if I can help you	esgusodwch fi, dw i ddim yn siŵr os medra i helpu chi	LEGOs: the 'sir' reference at the end becomes an 'excuse me' reference at the start.
+seed:1655	excuse me, I think that you’re doing very well	esgusodwch fi, dw i’n meddwl bo’ chi’n gwneud yn dda iawn	LEGOs: the 'madam' reference at the end becomes an 'excuse me' reference at the start.
+lego:S1639L01	excuse me	esgusodwch fi	NEW LEGO in the slot 'sir' had. Splits: excuse = esgusodwch, me = fi. Carries the new introduction.
+lego:S1639L02	excuse me, can I sit with you?	esgusodwch fi, ga i eistedd efo chi?	Was 'with you sir'. 'with you' alone would clash with S0025L02 (with you = efo chdi), so the cue stays glued on, as sir was. Parts: excuse me = esgusodwch fi, can I = ga i, sit = eistedd, with you = efo chi.
+lego:S1642L03	DEL		The 'madam' LEGO goes; seed 1642 uses the 'excuse me' LEGO from 1639 instead.
+lego:S1643L01	excuse me, do you want?	esgusodwch fi, dach chi isio?	Parts: excuse me = esgusodwch fi, do you want? = dach chi isio?
+lego:S1644L01	excuse me, could you say that?	esgusodwch fi, fedrwch chi ddeud hynna?	Parts: excuse me, could you?, say that.
+lego:S1645L02	excuse me, I can help you	esgusodwch fi, mi fedra i helpu chi	Was 'help you madam'. 'excuse me' cannot sit right next to 'help you', so the LEGO takes the whole line. Parts: excuse me, I can = mi fedra i, help you = helpu chi.
+lego:S1646L01	excuse me, are you doing something?	esgusodwch fi, dach chi’n gwneud rhywbeth?	Becomes a question (‘excuse me, you’re doing something’ is not natural). 'you’re doing' alone clashes with S0037L01 (ti’n gwneud).
+lego:S1647L01	excuse me, do you speak it?	esgusodwch fi, dach chi’n siarad hi?	Becomes a question. 'you speak it' alone clashes with S0033L01 (ti’n siarad hi).
+lego:S1648L01	excuse me, what did you say?	esgusodwch fi, be’ ddudoch chi?	Becomes a question. 'what you said' alone clashes with S0039L02 (be’ ddudest ti).
+lego:S1649L01	excuse me, are you ready?	esgusodwch fi, dach chi’n barod?	'are you ready?' alone clashes with S0124L01 (wyt ti’n barod?).
+lego:S1653L01	excuse me, do you mind?	esgusodwch fi, oes ots gynnoch chi?	
+lego:S1650L01	excuse me (reference)	esgusodwch fi	Was a reference to 'madam'; now points at the 'excuse me' LEGO.
+lego:S1651L01	excuse me (reference)	esgusodwch fi	Was a reference to 'madam'.
+lego:S1652L01	excuse me (reference)	esgusodwch fi	Was a reference to 'sir'.
+lego:S1654L04	excuse me (reference)	esgusodwch fi	Was a reference to 'sir' at the END of the seed; 'excuse me' now comes FIRST.
+lego:S1655L03	excuse me (reference)	esgusodwch fi	Was a reference to 'madam' at the end; now first.
+S1639L01B01	excuse me, do you want a cup of tea?	esgusodwch fi, dach chi isio panad o de?
+S1639L01B02	excuse me, what did you say?	esgusodwch fi, be’ ddudoch chi?
+S1639L01B03	excuse me, can I get you something?	esgusodwch fi, ga i nôl rhywbeth i chi?
+S1639L01B04	excuse me, did you want a cup of tea?	esgusodwch fi, oeddach chi isio panad o de?
+S1639L01U02	excuse me, I’m trying, but what did you say?	esgusodwch fi, dw i’n trio, ond be’ ddudoch chi?
+S1639L01U04	excuse me, I don’t want a large glass of water, do you want one?	esgusodwch fi, dw i ddim isio gwydrad mawr o ddŵr, dach chi isio un?
+S1639L01U01	excuse me, I’m afraid it’s getting late, do you want to go?	esgusodwch fi, mae arna i ofn bod hi’n mynd yn hwyr, dach chi isio mynd?
+S1639L01U03	excuse me, it doesn’t matter, I’m not thirsty, but do you want something?	esgusodwch fi, does dim ots, sgen i ddim syched, ond dach chi isio rhywbeth?
+S1639L01U05	excuse me, can I have one of those please? do you want one?	esgusodwch fi, ga i un o’r rheina os gwelwch yn dda? dach chi isio un?
+S1639L01U06	excuse me, what did you say? I wouldn’t have dared	esgusodwch fi, be’ ddudoch chi? fyswn i ddim wedi meiddio
+S1639L02B01	excuse me, can I sit with you?	esgusodwch fi, ga i eistedd efo chi?
+S1639L02B03	excuse me, can I sit with you? I need to sit down	esgusodwch fi, ga i eistedd efo chi? dw i angen eistedd i lawr
+S1639L02B04	excuse me, can I sit with you tonight?	esgusodwch fi, ga i eistedd efo chi heno?
+S1639L02B02	excuse me, can I sit with you, please?	esgusodwch fi, ga i eistedd efo chi, os gwelwch yn dda?
+S1639L02C02	excuse me	esgusodwch fi
+S1639L02U03	excuse me, can I sit with you? they want to sit with you tonight	esgusodwch fi, ga i eistedd efo chi? maen nhw isio eistedd efo chi heno
+S1639L02U01	excuse me, can I sit with you? I’d like to sit outdoors	esgusodwch fi, ga i eistedd efo chi? liciwn i eistedd tu allan
+S1639L02U02	excuse me, can I sit with you? I don’t want to sit outdoors	esgusodwch fi, ga i eistedd efo chi? dw i ddim isio eistedd tu allan
+S1639L02U05	excuse me, can I sit with you? because I’m tired	esgusodwch fi, ga i eistedd efo chi? achos dw i wedi blino
+S1639L02U06	excuse me, can I sit with you? it’s been lovely outdoors	esgusodwch fi, ga i eistedd efo chi? mae hi wedi bod yn hyfryd tu allan
+S1639L02U04	excuse me, can I sit with you? I’d have been with you last night	esgusodwch fi, ga i eistedd efo chi? fyswn i wedi bod efo chi neithiwr
+S1640L01B04	DEL		Without 'sir' this is word-for-word the same as S1640L01B03 (they said it’s the red one), already in this LEGO.
+S1640L01U04	DEL		Without 'sir' this is word-for-word the same as S1640L01B01 (great it’s the red one), already in this LEGO.
+S1640L01U05	I’m afraid it’s the red one	mae arna i ofn mai’r un coch ydy o
+S1642L02B01	excuse me, how do you feel?	esgusodwch fi, sut dach chi’n teimlo?
+S1642L02U01	excuse me, how do you feel after the meal?	esgusodwch fi, sut dach chi’n teimlo ar ôl y pryd o fwyd?
+S1642L02U06	excuse me, how do you feel in the garden?	esgusodwch fi, sut dach chi’n teimlo yn yr ardd?
+S1642L02U03	excuse me, but how do you feel now?	esgusodwch fi, ond sut dach chi’n teimlo rŵan?
+S1642L03B02	DEL
+S1642L03B01	DEL
+S1642L03B03	DEL
+S1642L03B04	DEL
+S1642L03U01	DEL
+S1642L03U02	DEL
+S1642L03U03	DEL
+S1642L03U04	DEL
+S1642L03U05	DEL
+S1642L03U06	DEL
+S1642L03U08	DEL
+S1642L03U07	DEL
+S1643L01B03	excuse me, do you want to go right now?	esgusodwch fi, dach chi isio mynd rŵan hyn?
+S1643L01B04	excuse me, do you want milk? or without sugar?	esgusodwch fi, dach chi isio llefrith? neu heb siwgr?
+S1643L01B02	excuse me, do you want one of those?	esgusodwch fi, dach chi isio un o’r rheina?
+S1643L01C02	excuse me	esgusodwch fi
+S1643L01U05	excuse me, do you want to lie down in the garden?	esgusodwch fi, dach chi isio gorwedd i lawr yn yr ardd?
+S1643L01U06	excuse me, do you want? I don’t care	esgusodwch fi, dach chi isio? does dim ots gen i
+S1643L01U02	I want to drink a large glass of water, excuse me, do you want one?	dw i isio yfed gwydrad mawr o ddŵr, esgusodwch fi, dach chi isio un?
+S1643L01U03	I’m going to look for a shop near the hotel, excuse me, do you want to come?	dw i’n mynd i chwilio am siop yn agos at y gwesty, esgusodwch fi, dach chi isio dod?
+S1643L01U04	I’m not thirsty, but excuse me, do you want something?	sgen i ddim syched, ond esgusodwch fi, dach chi isio rhywbeth?
+S1643L01U01	I don’t want one of those, but excuse me, do you want one?	dw i ddim isio un o’r rheina, ond esgusodwch fi, dach chi isio un?
+S1644L01B01	excuse me, could you say that, please?	esgusodwch fi, fedrwch chi ddeud hynna, os gwelwch yn dda?
+S1644L01B04	excuse me, could you say that? right now?	esgusodwch fi, fedrwch chi ddeud hynna? rŵan hyn?
+S1644L01B02	excuse me, could you say that now?	esgusodwch fi, fedrwch chi ddeud hynna rŵan?
+S1644L01B03	but excuse me, could you say that?	ond esgusodwch fi, fedrwch chi ddeud hynna?
+S1644L01C03	excuse me	esgusodwch fi
+S1644L01U02	excuse me, could you say that? I want to find out	esgusodwch fi, fedrwch chi ddeud hynna? dw i isio ffeindio allan
+S1644L01U04	excuse me, could you say that, please? I’m trying	esgusodwch fi, fedrwch chi ddeud hynna, os gwelwch yn dda? dw i’n trio
+S1644L01U05	but excuse me, could you say that? I want to find out	ond esgusodwch fi, fedrwch chi ddeud hynna? dw i isio ffeindio allan
+S1644L01U06	excuse me, could you say that now? I need to make sure	esgusodwch fi, fedrwch chi ddeud hynna rŵan? dw i angen gwneud yn siŵr
+S1644L01U01	excuse me, could you say that? great	esgusodwch fi, fedrwch chi ddeud hynna? bendigedig
+S1644L01U03	excuse me, could you say that? I need to make sure	esgusodwch fi, fedrwch chi ddeud hynna? dw i angen gwneud yn siŵr
+S1645L02B03	excuse me, I can help you	esgusodwch fi, mi fedra i helpu chi
+S1645L02B01	excuse me, I can help you now	esgusodwch fi, mi fedra i helpu chi rŵan
+S1645L02B02	excuse me, I can help you outdoors	esgusodwch fi, mi fedra i helpu chi tu allan
+S1645L02B04	excuse me, I can help you tonight	esgusodwch fi, mi fedra i helpu chi heno
+S1645L02C02	excuse me	esgusodwch fi
+S1645L02U02	excuse me, I can help you, but could they help you?	esgusodwch fi, mi fedra i helpu chi, ond fedran nhw helpu chi?
+S1645L02U03	excuse me, I can help you, but it’s getting late	esgusodwch fi, mi fedra i helpu chi, ond mae hi’n mynd yn hwyr
+S1645L02U04	excuse me, I can help you, because it’s so late	esgusodwch fi, mi fedra i helpu chi, achos mae hi mor hwyr
+S1645L02U06	excuse me, I can help you, they wanted to help you last night	esgusodwch fi, mi fedra i helpu chi, oeddan nhw isio helpu chi neithiwr
+S1645L02U10	excuse me, I can help you, I’m trying	esgusodwch fi, mi fedra i helpu chi, dw i’n trio
+S1645L02U07	excuse me, I can help you next time, on Tuesday	esgusodwch fi, mi fedra i helpu chi tro nesa’, ddydd Mawrth
+S1645L02U08	excuse me, I can help you after the meal	esgusodwch fi, mi fedra i helpu chi ar ôl y pryd o fwyd
+S1645L02U09	excuse me, I can help you right now, probably	esgusodwch fi, mi fedra i helpu chi rŵan hyn, mwy na thebyg
+S1645L02U01	excuse me, I can help you, they could help you now	esgusodwch fi, mi fedra i helpu chi, mi fedran nhw helpu chi rŵan
+S1645L02U05	excuse me, I can help you now, I wouldn’t have been able to at the time	esgusodwch fi, mi fedra i helpu chi rŵan, fyswn i ddim wedi medru ar y pryd
+S1646L01B02	excuse me, are you doing something?	esgusodwch fi, dach chi’n gwneud rhywbeth?
+S1646L01B03	excuse me, are you doing something at the moment?	esgusodwch fi, dach chi’n gwneud rhywbeth ar hyn o bryd?
+S1646L01B01	but excuse me, are you doing something?	ond esgusodwch fi, dach chi’n gwneud rhywbeth?
+S1646L01B04	excuse me, are you doing something now?	esgusodwch fi, dach chi’n gwneud rhywbeth rŵan?
+S1646L01C03	excuse me	esgusodwch fi
+S1646L01U01	excuse me, are you doing something? I’m going to sit in the garden	esgusodwch fi, dach chi’n gwneud rhywbeth? dw i’n mynd i eistedd yn yr ardd
+S1646L01U04	excuse me, are you doing something? I want to lie down	esgusodwch fi, dach chi’n gwneud rhywbeth? dw i isio gorwedd i lawr
+S1646L01U05	it’s getting late, but excuse me, are you doing something?	mae hi’n mynd yn hwyr, ond esgusodwch fi, dach chi’n gwneud rhywbeth?
+S1646L01U06	excuse me, are you doing something at the moment? I’m going to lie down	esgusodwch fi, dach chi’n gwneud rhywbeth ar hyn o bryd? dw i’n mynd i orwedd i lawr
+S1646L01U02	excuse me, are you doing something? I don’t want to lie down	esgusodwch fi, dach chi’n gwneud rhywbeth? dw i ddim isio gorwedd i lawr
+S1646L01U07	excuse me, are you doing something? great	esgusodwch fi, dach chi’n gwneud rhywbeth? bendigedig
+S1646L01U03	excuse me, are you doing something? I’m tired	esgusodwch fi, dach chi’n gwneud rhywbeth? dw i wedi blino
+S1647L01B02	excuse me, do you speak it at the moment?	esgusodwch fi, dach chi’n siarad hi ar hyn o bryd?
+S1647L01B03	excuse me, do you speak it? I’m trying	esgusodwch fi, dach chi’n siarad hi? dw i’n trio
+S1647L01B04	excuse me, do you speak it now?	esgusodwch fi, dach chi’n siarad hi rŵan?
+S1647L01B01	excuse me, do you speak it?	esgusodwch fi, dach chi’n siarad hi?
+S1647L01C03	excuse me	esgusodwch fi
+S1647L01U01	excuse me, do you speak it? I’m trying, but I’m tired	esgusodwch fi, dach chi’n siarad hi? dw i’n trio, ond dw i wedi blino
+S1647L01U03	excuse me, do you speak it? whatever he says	esgusodwch fi, dach chi’n siarad hi? beth bynnag mae o’n ddeud
+S1647L01U04	excuse me, do you speak it? I’m trying to speak it	esgusodwch fi, dach chi’n siarad hi? dw i’n trio siarad hi
+S1647L01U05	excuse me, do you speak it now? great	esgusodwch fi, dach chi’n siarad hi rŵan? bendigedig
+S1647L01U06	excuse me, do you speak it at the moment? I’m tired	esgusodwch fi, dach chi’n siarad hi ar hyn o bryd? dw i wedi blino
+S1647L01U02	excuse me, do you speak it? can I have one of those, please?	esgusodwch fi, dach chi’n siarad hi? ga i un o’r rheina, os gwelwch yn dda?
+S1648L01B03	excuse me, what did you say?	esgusodwch fi, be’ ddudoch chi?
+S1648L01B01	excuse me, what did you say last night?	esgusodwch fi, be’ ddudoch chi neithiwr?
+S1648L01B02	excuse me, what did you say at the time?	esgusodwch fi, be’ ddudoch chi ar y pryd?
+S1648L01B04	excuse me, what did you say? I don’t care	esgusodwch fi, be’ ddudoch chi? does dim ots gen i
+S1648L01C03	excuse me	esgusodwch fi
+S1648L01U01	excuse me, what did you say? I’m tired	esgusodwch fi, be’ ddudoch chi? dw i wedi blino
+S1648L01U02	excuse me, what did you say at the time? I need to make sure	esgusodwch fi, be’ ddudoch chi ar y pryd? dw i angen gwneud yn siŵr
+S1648L01U03	excuse me, what did you say? I’m finding it hard to believe	esgusodwch fi, be’ ddudoch chi? dw i’n cael hi’n anodd i gredu
+S1648L01U05	excuse me, what did you say last night? I want to find out	esgusodwch fi, be’ ddudoch chi neithiwr? dw i isio ffeindio allan
+S1648L01U04	excuse me, what did you say? I’m trying	esgusodwch fi, be’ ddudoch chi? dw i’n trio
+S1649L01B02	excuse me, are you ready? great	esgusodwch fi, dach chi’n barod? bendigedig
+S1649L01B01	but excuse me, are you ready?	ond esgusodwch fi, dach chi’n barod?
+S1649L01B04	excuse me, are you ready? it’s so late	esgusodwch fi, dach chi’n barod? mae hi mor hwyr
+S1649L01B03	excuse me, are you ready now?	esgusodwch fi, dach chi’n barod rŵan?
+S1649L01C02	excuse me	esgusodwch fi
+S1649L01U01	excuse me, are you ready? it’s getting late	esgusodwch fi, dach chi’n barod? mae hi’n mynd yn hwyr
+S1649L01U02	it’s getting late, but excuse me, are you ready?	mae hi’n mynd yn hwyr, ond esgusodwch fi, dach chi’n barod?
+S1649L01U04	it’s so late, excuse me, are you ready?	mae hi mor hwyr, esgusodwch fi, dach chi’n barod?
+S1649L01U06	excuse me, are you ready now? it’s so late	esgusodwch fi, dach chi’n barod rŵan? mae hi mor hwyr
+S1649L01U03	but excuse me, are you ready? it’s getting late	ond esgusodwch fi, dach chi’n barod? mae hi’n mynd yn hwyr
+S1649L01U05	great, but excuse me, are you ready?	bendigedig, ond esgusodwch fi, dach chi’n barod?
+S1653L01B01	excuse me, do you mind? I’m trying	esgusodwch fi, oes ots gynnoch chi? dw i’n trio
+S1653L01B04	excuse me, do you mind? I’d like one of those	esgusodwch fi, oes ots gynnoch chi? liciwn i un o’r rheina
+S1653L01B03	excuse me, do you mind? I need to lie down	esgusodwch fi, oes ots gynnoch chi? dw i angen gorwedd i lawr
+S1653L01B02	I’m tired, excuse me, do you mind?	dw i wedi blino, esgusodwch fi, oes ots gynnoch chi?
+S1653L01C02	excuse me	esgusodwch fi
+S1653L01U01	I’m not thirsty, excuse me, do you mind?	sgen i ddim syched, esgusodwch fi, oes ots gynnoch chi?
+S1653L01U04	the dog is dirty and wet, excuse me, do you mind?	mae’r ci’n fudr ac yn wlyb, esgusodwch fi, oes ots gynnoch chi?
+S1653L01U02	I’m tired, excuse me, do you mind? I need to lie down in the garden	dw i wedi blino, esgusodwch fi, oes ots gynnoch chi? dw i angen gorwedd i lawr yn yr ardd
+S1653L01U03	excuse me, do you mind? I’m going to sit between the two girls	esgusodwch fi, oes ots gynnoch chi? dw i’n mynd i eistedd rhwng y ddwy hogan
+S1653L01U05	excuse me, do you mind? can I have one of those, please?	esgusodwch fi, oes ots gynnoch chi? ga i un o’r rheina, os gwelwch yn dda?
+S1653L01U06	we needed to stop for a rest, excuse me, do you mind?	oeddan ni angen stopio am saib, esgusodwch fi, oes ots gynnoch chi?
+S1653L01U07	excuse me, do you mind? I’m going to look for the keys	esgusodwch fi, oes ots gynnoch chi? dw i’n mynd i chwilio am y goriadau
