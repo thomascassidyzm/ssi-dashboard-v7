@@ -2566,9 +2566,12 @@ async function buildPhrasePlan(db) {
 function getPhrasePlan(db) {
   let e = PHRASE_PLANS.get(db)
   if (!e) { e = {}; PHRASE_PLANS.set(db, e) }
+  PHRASE_PLAN_DBS.add(db)
   if (e.plan && Date.now() - e.at < PHRASE_PLAN_TTL_MS) return Promise.resolve(e.plan)
   if (!e.building) {
     e.building = buildPhrasePlan(db).then((plan) => {
+      // An edit that landed mid-build dropped this entry: hand the plan to its caller, keep nothing.
+      if (PHRASE_PLANS.get(db) !== e) return plan
       e.plan = plan; e.at = Date.now(); e.building = null
       return plan
     }, (err) => { e.building = null; throw err })
@@ -2582,6 +2585,25 @@ function getPhrasePlan(db) {
 function invalidatePhrasePlan(db) {
   const e = PHRASE_PLANS.get(db)
   if (e) e.at = 0
+}
+
+/**
+ * A COMMITTED COURSE EDIT (edit / edit-batch) changed the words of some lines: forget the
+ * phrase plan outright — not merely stale, so the next read waits for the new words rather than
+ * being served the old ones once more — and every language's cached lines, which in turn drops
+ * each voice's cached booth queue and its Re-record list (recordist-router, job #378/#788).
+ *
+ * Aran, 2026-10-26 (job #113): job #107 edited ten of his phrases and looked at his Re-record
+ * card straight away; it showed Catrin's one changed LEGO but none of his ten, because the
+ * phrase plan (PHRASE_PLAN_TTL_MS) and the booth's queue cache still held the old words, so his
+ * lines still matched his old takes and nothing looked changed. Minutes later they all appeared.
+ * Edits are rare and a reader looks at once, so an edit pays for one cold rebuild.
+ */
+const PHRASE_PLAN_DBS = new Set() // every db a plan was built against (WeakMap cannot be walked)
+function afterCourseContentEdit() {
+  for (const db of PHRASE_PLAN_DBS) PHRASE_PLANS.delete(db)
+  PHRASE_PLAN_DBS.clear()
+  invalidateLanguageQueueCache()
 }
 
 /** A phrase line as isLineRecorded reads it: any copy's slot, or a take of the text. */
@@ -3746,6 +3768,7 @@ module.exports = {
   buildPhrasePlan,
   getPhrasePlan,
   invalidatePhrasePlan,
+  afterCourseContentEdit,
   withPhraseBatch,
   linkPhraseTake,
   phraseLineRecorded,

@@ -23,7 +23,7 @@ const test = require('node:test')
 const assert = require('node:assert')
 const pq = require('./phrase-queue.cjs')
 const createRecordistRouter = require('./recordist-router.cjs')
-const { buildQueue, resolveRecordist, linkSeedTake, linkPhraseTake } = require('./recordist-queue.cjs')
+const { buildQueue, resolveRecordist, linkSeedTake, linkPhraseTake, afterCourseContentEdit } = require('./recordist-queue.cjs')
 
 const CATRIN = 'human_catrinlliar_cym_n'
 const ARAN_CYM = 'human_aran_cym_n'
@@ -368,4 +368,19 @@ test('syntheticSeeds: a slot #606 EMPTIED of synthetic speech is queued for Aran
   const db3 = stubDb(plain)
   const q3 = await buildQueue(db3, await resolveRecordist(db3, ARAN_ENG))
   assert.deepEqual(q3.lines.map((l) => l.text), [], 'without the list, a usable take elsewhere makes it a link, not a line (#588)')
+})
+
+test('a committed course edit reaches the booth on its next load, not minutes later (job #113)', async () => {
+  // Job #107 changed Aran's phrases and his Re-record card still showed the old words: the
+  // phrase plan was cached. The edit engine now calls afterCourseContentEdit (production-api).
+  const db = stubDb(fixture())
+  const catrin = await resolveRecordist(db, CATRIN)
+  const texts = async () => (await buildQueue(db, catrin, { includeRecorded: true })).lines.filter((l) => l.kind === 'phrase').map((l) => l.text)
+  assert.ok((await texts()).includes('mor aml heno'))
+  db.tables.course_practice_phrases.filter((p) => p.target_text === 'mor aml heno').forEach((p) => { p.target_text = 'mor aml heno eto' })
+  assert.ok((await texts()).includes('mor aml heno'), 'without the call the cached plan still holds the old words')
+  afterCourseContentEdit()
+  const after = await texts()
+  assert.ok(after.includes('mor aml heno eto'), 'the edited words are served at once')
+  assert.equal(after.includes('mor aml heno'), false, 'and the old words are gone')
 })

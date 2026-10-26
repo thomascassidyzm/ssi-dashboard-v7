@@ -8371,6 +8371,11 @@ async function runCourseEdit(req, res, ops, { apply, courseCode = req.params.cou
       // learner app keys its cached course bundle on it, and no trigger bumps it.
       await require('./shared/course-version.cjs').bumpCourseVersion(supabaseClient.getClient(), courseCode, 'patch').catch(e =>
         logger.warn(`[course-edit] content_version bump failed for ${courseCode}: ${e.message}`))
+      // ...and nothing moves on a booth either until its cached queues let go of the old words:
+      // a reader's Re-record card shows the change on its very next load (job #113).
+      try { require('./voice-engine/recordist-queue.cjs').afterCourseContentEdit() } catch (e) {
+        logger.warn(`[course-edit] booth queue caches not dropped for ${courseCode}: ${e.message}`)
+      }
       if (onApplied) await Promise.resolve(onApplied(out)).catch(e => logger.warn(`[course-edit] after-apply hook failed for ${courseCode}: ${e.message}`))
       if (out.undo_ops.length) {
         try {
