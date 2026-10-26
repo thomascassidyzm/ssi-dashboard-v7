@@ -1,0 +1,1232 @@
+[
+ {
+  "op": "seed.update",
+  "seed_number": 1624,
+  "set": {
+   "target_text": "yndw, byddai hynna’n fendigedig, os gwelwch yn dda"
+  },
+  "expect": {
+   "target_text": "yndw, byddai hynna’n grêt, os gwelwch yn dda"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S1624L01",
+  "set": {
+   "target_text": "bendigedig",
+   "components": []
+  },
+  "expect": {
+   "target_text": "grêt",
+   "components": null
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1624L01B01",
+  "set": {
+   "target_text": "mae’r ci’n fendigedig",
+   "decomposition": [
+    {
+     "known": "the dog is",
+     "legoId": "S0313L01",
+     "target": "mae’r ci’n",
+     "isGhost": false
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " fendigedig",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "mae’r ci’n grêt",
+   "decomposition": [
+    {
+     "known": "the dog is",
+     "legoId": "S0313L01",
+     "target": "mae’r ci’n",
+     "isGhost": false
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " grêt",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1624L01B03",
+  "set": {
+   "target_text": "bendigedig, ond mae hi’n mynd yn hwyr",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": ",",
+     "isGhost": true
+    },
+    {
+     "known": "but",
+     "legoId": "S0011L01",
+     "target": " ond",
+     "isGhost": false
+    },
+    {
+     "known": "it’s getting late",
+     "legoId": "S1539L02",
+     "target": " mae hi’n mynd yn hwyr",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt, ond mae hi’n mynd yn hwyr",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": ",",
+     "isGhost": true
+    },
+    {
+     "known": "but",
+     "legoId": "S0011L01",
+     "target": " ond",
+     "isGhost": false
+    },
+    {
+     "known": "it’s getting late",
+     "legoId": "S1539L02",
+     "target": " mae hi’n mynd yn hwyr",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1624L01B02",
+  "set": {
+   "target_text": "siop fendigedig yn agos at y gwesty",
+   "decomposition": [
+    {
+     "known": "a shop",
+     "legoId": "S0258L01",
+     "target": "siop",
+     "isGhost": false
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " fendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "near the",
+     "legoId": "S0258L02",
+     "target": " yn agos at y",
+     "isGhost": false
+    },
+    {
+     "known": "hotel",
+     "legoId": "S0258L03",
+     "target": " gwesty",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "siop grêt yn agos at y gwesty",
+   "decomposition": [
+    {
+     "known": "a shop",
+     "legoId": "S0258L01",
+     "target": "siop",
+     "isGhost": false
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " grêt",
+     "isGhost": false
+    },
+    {
+     "known": "near the",
+     "legoId": "S0258L02",
+     "target": " yn agos at y",
+     "isGhost": false
+    },
+    {
+     "known": "hotel",
+     "legoId": "S0258L03",
+     "target": " gwesty",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1624L01B04",
+  "set": {
+   "target_text": "byddai’n fendigedig",
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "byddai’n",
+     "isGhost": true
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " fendigedig",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "byddai’n grêt",
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "byddai’n",
+     "isGhost": true
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " grêt",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1624L01U06",
+  "set": {
+   "target_text": "o’n i’n meddwl bo’ ti’n fendigedig",
+   "decomposition": [
+    {
+     "known": "I thought",
+     "legoId": "S0209L01",
+     "target": "o’n i’n meddwl",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " ti’n",
+     "isGhost": true
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " fendigedig",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "o’n i’n meddwl bo’ ti’n grêt",
+   "decomposition": [
+    {
+     "known": "I thought",
+     "legoId": "S0209L01",
+     "target": "o’n i’n meddwl",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " ti’n",
+     "isGhost": true
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " grêt",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1624L01U01",
+  "set": {
+   "target_text": "gawn ni botel fendigedig o win coch os gwelwch yn dda?",
+   "decomposition": [
+    {
+     "known": "could we have",
+     "legoId": "S1414L01",
+     "target": "gawn ni",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " botel",
+     "isGhost": true
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " fendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " o",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " win",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " coch",
+     "isGhost": true
+    },
+    {
+     "known": "please",
+     "legoId": "S1414L03",
+     "target": " os gwelwch yn dda",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "gawn ni botel grêt o win coch os gwelwch yn dda?",
+   "decomposition": [
+    {
+     "known": "could we have",
+     "legoId": "S1414L01",
+     "target": "gawn ni",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " botel",
+     "isGhost": true
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " grêt",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " o",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " win",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " coch",
+     "isGhost": true
+    },
+    {
+     "known": "please",
+     "legoId": "S1414L03",
+     "target": " os gwelwch yn dda",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1624L01U03",
+  "set": {
+   "target_text": "bendigedig, mi fydda i’n galw chdi’n ôl mewn tri neu bedwar munud",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": ",",
+     "isGhost": true
+    },
+    {
+     "known": "I’ll call you back",
+     "legoId": "S1524L01",
+     "target": " mi fydda i’n galw chdi’n ôl",
+     "isGhost": false
+    },
+    {
+     "known": "in three or four minutes",
+     "legoId": "S1524L02",
+     "target": " mewn tri neu bedwar munud",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt, mi fydda i’n galw chdi’n ôl mewn tri neu bedwar munud",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": ",",
+     "isGhost": true
+    },
+    {
+     "known": "I’ll call you back",
+     "legoId": "S1524L01",
+     "target": " mi fydda i’n galw chdi’n ôl",
+     "isGhost": false
+    },
+    {
+     "known": "in three or four minutes",
+     "legoId": "S1524L02",
+     "target": " mewn tri neu bedwar munud",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1624L01U05",
+  "set": {
+   "target_text": "mwy na thebyg fysen ni wedi prynu tŷ bendigedig yn yr ardal",
+   "decomposition": [
+    {
+     "known": "probably",
+     "legoId": "S0302L01",
+     "target": "mwy na thebyg",
+     "isGhost": false
+    },
+    {
+     "known": "we would have bought",
+     "legoId": "S1612L01",
+     "target": " fysen ni wedi prynu",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tŷ",
+     "isGhost": true
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " yn",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " yr",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " ardal",
+     "isGhost": true
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "mwy na thebyg fysen ni wedi prynu tŷ grêt yn yr ardal",
+   "decomposition": [
+    {
+     "known": "probably",
+     "legoId": "S0302L01",
+     "target": "mwy na thebyg",
+     "isGhost": false
+    },
+    {
+     "known": "we would have bought",
+     "legoId": "S1612L01",
+     "target": " fysen ni wedi prynu",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " tŷ",
+     "isGhost": true
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " grêt",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " yn",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " yr",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " ardal",
+     "isGhost": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1624L01U02",
+  "set": {
+   "target_text": "does dim llwybr bendigedig trwy’r coed",
+   "decomposition": [
+    {
+     "known": "there’s no",
+     "legoId": "S0288L01",
+     "target": "does dim",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " llwybr",
+     "isGhost": true
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " trwy’r",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " coed",
+     "isGhost": true
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "does dim llwybr grêt trwy’r coed",
+   "decomposition": [
+    {
+     "known": "there’s no",
+     "legoId": "S0288L01",
+     "target": "does dim",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " llwybr",
+     "isGhost": true
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " grêt",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " trwy’r",
+     "isGhost": true
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " coed",
+     "isGhost": true
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1624L01U04",
+  "set": {
+   "target_text": "dw i ddim isio gwrando oni bai bo’ nhw’n fendigedig",
+   "decomposition": [
+    {
+     "known": "I don’t want",
+     "legoId": "S0031L03",
+     "target": "dw i ddim isio",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " gwrando",
+     "isGhost": true
+    },
+    {
+     "known": "unless they’re",
+     "legoId": "S1532L01",
+     "target": " oni bai bo’ nhw’n",
+     "isGhost": false
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " fendigedig",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "dw i ddim isio gwrando oni bai bo’ nhw’n grêt",
+   "decomposition": [
+    {
+     "known": "I don’t want",
+     "legoId": "S0031L03",
+     "target": "dw i ddim isio",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " gwrando",
+     "isGhost": true
+    },
+    {
+     "known": "unless they’re",
+     "legoId": "S1532L01",
+     "target": " oni bai bo’ nhw’n",
+     "isGhost": false
+    },
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": " grêt",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1627L01U02",
+  "set": {
+   "target_text": "bendigedig mae dy goffi di’n barod rŵan",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "your coffee is ready",
+     "legoId": "S1627L01",
+     "target": " mae dy goffi di’n barod",
+     "isGhost": false
+    },
+    {
+     "known": "now",
+     "legoId": "S0011L02",
+     "target": " rŵan",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt mae dy goffi di’n barod rŵan",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "your coffee is ready",
+     "legoId": "S1627L01",
+     "target": " mae dy goffi di’n barod",
+     "isGhost": false
+    },
+    {
+     "known": "now",
+     "legoId": "S0011L02",
+     "target": " rŵan",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1629L01U04",
+  "set": {
+   "target_text": "bendigedig efo llefrith os gwelwch yn dda",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "with milk",
+     "legoId": "S1629L01",
+     "target": " efo llefrith",
+     "isGhost": false
+    },
+    {
+     "known": "please",
+     "legoId": "S1414L03",
+     "target": " os gwelwch yn dda",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt efo llefrith os gwelwch yn dda",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "with milk",
+     "legoId": "S1629L01",
+     "target": " efo llefrith",
+     "isGhost": false
+    },
+    {
+     "known": "please",
+     "legoId": "S1414L03",
+     "target": " os gwelwch yn dda",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1639L01B03",
+  "set": {
+   "target_text": "bendigedig syr",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "sir",
+     "legoId": "S1639L01",
+     "target": " syr",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt syr",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "sir",
+     "legoId": "S1639L01",
+     "target": " syr",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1640L01B01",
+  "set": {
+   "target_text": "bendigedig yr un coch ydy o",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "it’s the red one",
+     "legoId": "S1640L01",
+     "target": " yr un coch ydy o",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt yr un coch ydy o",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "it’s the red one",
+     "legoId": "S1640L01",
+     "target": " yr un coch ydy o",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1640L01U04",
+  "set": {
+   "target_text": "bendigedig yr un coch ydy o syr",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "it’s the red one",
+     "legoId": "S1640L01",
+     "target": " yr un coch ydy o",
+     "isGhost": false
+    },
+    {
+     "known": "sir",
+     "legoId": "S1639L01",
+     "target": " syr",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt yr un coch ydy o syr",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "it’s the red one",
+     "legoId": "S1640L01",
+     "target": " yr un coch ydy o",
+     "isGhost": false
+    },
+    {
+     "known": "sir",
+     "legoId": "S1639L01",
+     "target": " syr",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1642L03B02",
+  "set": {
+   "target_text": "bendigedig madam",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "madam",
+     "legoId": "S1642L03",
+     "target": " madam",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt madam",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "madam",
+     "legoId": "S1642L03",
+     "target": " madam",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1644L01U01",
+  "set": {
+   "target_text": "bendigedig fedrwch chi ddeud hynna syr?",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "could you say that sir?",
+     "legoId": "S1644L01",
+     "target": " fedrwch chi ddeud hynna syr?",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt fedrwch chi ddeud hynna syr?",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "could you say that sir?",
+     "legoId": "S1644L01",
+     "target": " fedrwch chi ddeud hynna syr?",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1646L01U07",
+  "set": {
+   "target_text": "bendigedig dach chi’n gwneud rhywbeth syr",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "you’re doing something sir",
+     "legoId": "S1646L01",
+     "target": " dach chi’n gwneud rhywbeth syr",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt dach chi’n gwneud rhywbeth syr",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "you’re doing something sir",
+     "legoId": "S1646L01",
+     "target": " dach chi’n gwneud rhywbeth syr",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1647L01U05",
+  "set": {
+   "target_text": "bendigedig rŵan dach chi’n siarad hi madam",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "now",
+     "legoId": "S0011L02",
+     "target": " rŵan",
+     "isGhost": false
+    },
+    {
+     "known": "you speak it madam",
+     "legoId": "S1647L01",
+     "target": " dach chi’n siarad hi madam",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt rŵan dach chi’n siarad hi madam",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "now",
+     "legoId": "S0011L02",
+     "target": " rŵan",
+     "isGhost": false
+    },
+    {
+     "known": "you speak it madam",
+     "legoId": "S1647L01",
+     "target": " dach chi’n siarad hi madam",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1647L01U02",
+  "set": {
+   "target_text": "bendigedig dach chi’n siarad hi madam ga i un o’r rheina os gwelwch yn dda",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "you speak it madam",
+     "legoId": "S1647L01",
+     "target": " dach chi’n siarad hi madam",
+     "isGhost": false
+    },
+    {
+     "known": "can I have",
+     "legoId": "S1630L01",
+     "target": " ga i",
+     "isGhost": false
+    },
+    {
+     "known": "one of those",
+     "legoId": "S1634L02",
+     "target": " un o’r rheina",
+     "isGhost": false
+    },
+    {
+     "known": "please",
+     "legoId": "S1414L03",
+     "target": " os gwelwch yn dda",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt dach chi’n siarad hi madam ga i un o’r rheina os gwelwch yn dda",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "you speak it madam",
+     "legoId": "S1647L01",
+     "target": " dach chi’n siarad hi madam",
+     "isGhost": false
+    },
+    {
+     "known": "can I have",
+     "legoId": "S1630L01",
+     "target": " ga i",
+     "isGhost": false
+    },
+    {
+     "known": "one of those",
+     "legoId": "S1634L02",
+     "target": " un o’r rheina",
+     "isGhost": false
+    },
+    {
+     "known": "please",
+     "legoId": "S1414L03",
+     "target": " os gwelwch yn dda",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1649L01B02",
+  "set": {
+   "target_text": "bendigedig dach chi’n barod syr?",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "are you ready sir?",
+     "legoId": "S1649L01",
+     "target": " dach chi’n barod syr?",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt dach chi’n barod syr?",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "are you ready sir?",
+     "legoId": "S1649L01",
+     "target": " dach chi’n barod syr?",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1649L01U05",
+  "set": {
+   "target_text": "bendigedig ond dach chi’n barod syr?",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "bendigedig",
+     "isGhost": false
+    },
+    {
+     "known": "but",
+     "legoId": "S0011L01",
+     "target": " ond",
+     "isGhost": false
+    },
+    {
+     "known": "are you ready sir?",
+     "legoId": "S1649L01",
+     "target": " dach chi’n barod syr?",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "grêt ond dach chi’n barod syr?",
+   "decomposition": [
+    {
+     "known": "great",
+     "legoId": "S1624L01",
+     "target": "grêt",
+     "isGhost": false
+    },
+    {
+     "known": "but",
+     "legoId": "S0011L01",
+     "target": " ond",
+     "isGhost": false
+    },
+    {
+     "known": "are you ready sir?",
+     "legoId": "S1649L01",
+     "target": " dach chi’n barod syr?",
+     "isGhost": false
+    }
+   ]
+  }
+ }
+]

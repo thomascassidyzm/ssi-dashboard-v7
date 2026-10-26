@@ -1,0 +1,764 @@
+[
+ {
+  "op": "audio.update",
+  "audio_id": "86935724-c391-446c-8389-1bab55e99d8f",
+  "set": {
+   "text": "o’n i’n gwybod bod y plant wedi’i dorri fo"
+  },
+  "expect": {
+   "text": "o’n i’n gwybod bod y plant wedi’i dorri o"
+  }
+ },
+ {
+  "op": "audio.update",
+  "audio_id": "0e94d762-d4fd-4556-9b46-3248f35f60e9",
+  "set": {
+   "text": "o’n i’n gwybod bod y plant wedi’i dorri fo"
+  },
+  "expect": {
+   "text": "o’n i’n gwybod bod y plant wedi’i dorri o"
+  }
+ },
+ {
+  "op": "audio.update",
+  "audio_id": "1197b15b-7686-46e1-88ce-a0f50705724e",
+  "set": {
+   "text": "wedi’i dorri fo"
+  },
+  "expect": {
+   "text": "wedi’i dorri o"
+  }
+ },
+ {
+  "op": "audio.update",
+  "audio_id": "d234c26a-a9fb-48a8-a6f8-97dd56793109",
+  "set": {
+   "text": "wedi’i dorri fo"
+  },
+  "expect": {
+   "text": "wedi’i dorri o"
+  }
+ },
+ {
+  "op": "audio.update",
+  "audio_id": "f4124fbd-bf39-4ce1-94e8-6e188f61e499",
+  "set": {
+   "text": "wedi’i dorri fo ar y pryd"
+  },
+  "expect": {
+   "text": "wedi’i dorri o ar y pryd"
+  }
+ },
+ {
+  "op": "audio.update",
+  "audio_id": "4a3a95a9-86fb-485a-9cf9-6aa2e6f82eb7",
+  "set": {
+   "text": "wedi’i dorri fo yn yr ardd"
+  },
+  "expect": {
+   "text": "wedi’i dorri o yn yr ardd"
+  }
+ },
+ {
+  "op": "audio.update",
+  "audio_id": "2eabe8f2-13de-43b5-82c6-cb195c708174",
+  "set": {
+   "text": "bo’ nhw wedi’i dorri fo"
+  },
+  "expect": {
+   "text": "bo’ nhw wedi’i dorri o"
+  }
+ },
+ {
+  "op": "audio.update",
+  "audio_id": "acd48e40-c66d-4d54-b9ed-424113af3973",
+  "set": {
+   "text": "o’n i’n gwybod bo’ nhw wedi’i dorri fo"
+  },
+  "expect": {
+   "text": "o’n i’n gwybod bo’ nhw wedi’i dorri o"
+  }
+ },
+ {
+  "op": "audio.update",
+  "audio_id": "43ab9da5-2068-474c-abe2-a7db8e500d63",
+  "set": {
+   "text": "o’n i’n meddwl bo’ nhw wedi’i dorri fo"
+  },
+  "expect": {
+   "text": "o’n i’n meddwl bo’ nhw wedi’i dorri o"
+  }
+ },
+ {
+  "op": "audio.update",
+  "audio_id": "656c3f98-0918-408f-acc3-d2210b654d94",
+  "set": {
+   "text": "clywes i bo’ nhw wedi’i dorri fo"
+  },
+  "expect": {
+   "text": "clywes i bo’ nhw wedi’i dorri o"
+  }
+ },
+ {
+  "op": "audio.update",
+  "audio_id": "b570bbd9-0ff1-4683-a7c4-1f3c7ebc9bce",
+  "set": {
+   "text": "ddudon nhw bo’ nhw wedi’i dorri fo neithiwr"
+  },
+  "expect": {
+   "text": "ddudon nhw bo’ nhw wedi’i dorri o neithiwr"
+  }
+ },
+ {
+  "op": "seed.update",
+  "seed_number": 1622,
+  "set": {
+   "target_text": "o’n i’n gwybod bod y plant wedi’i dorri fo"
+  },
+  "expect": {
+   "target_text": "o’n i’n gwybod bod y plant wedi’i dorri o",
+   "known_audio_id": null,
+   "target1_audio_id": "86935724-c391-446c-8389-1bab55e99d8f",
+   "target2_audio_id": "0e94d762-d4fd-4556-9b46-3248f35f60e9"
+  }
+ },
+ {
+  "op": "lego.update",
+  "lego_id": "S1622L02",
+  "set": {
+   "target_text": "wedi’i dorri fo"
+  },
+  "expect": {
+   "target_text": "wedi’i dorri o",
+   "known_audio_id": null,
+   "target1_audio_id": "1197b15b-7686-46e1-88ce-a0f50705724e",
+   "target2_audio_id": "d234c26a-a9fb-48a8-a6f8-97dd56793109"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1622L02B02",
+  "set": {
+   "target_text": "wedi’i dorri fo ar y pryd",
+   "decomposition": [
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": "wedi’i dorri fo",
+     "isGhost": false
+    },
+    {
+     "known": "at the time",
+     "legoId": "S1603L03",
+     "target": " ar y pryd",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "wedi’i dorri o ar y pryd",
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": "f4124fbd-bf39-4ce1-94e8-6e188f61e499",
+   "decomposition": [
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": "wedi’i dorri o",
+     "isGhost": false
+    },
+    {
+     "known": "at the time",
+     "legoId": "S1603L03",
+     "target": " ar y pryd",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1622L02B03",
+  "set": {
+   "target_text": "wedi’i dorri fo yn yr ardd",
+   "decomposition": [
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": "wedi’i dorri fo",
+     "isGhost": false
+    },
+    {
+     "known": "in the garden",
+     "legoId": "S1383L02",
+     "target": " yn yr ardd",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "wedi’i dorri o yn yr ardd",
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": "4a3a95a9-86fb-485a-9cf9-6aa2e6f82eb7",
+   "decomposition": [
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": "wedi’i dorri o",
+     "isGhost": false
+    },
+    {
+     "known": "in the garden",
+     "legoId": "S1383L02",
+     "target": " yn yr ardd",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1622L02B01",
+  "set": {
+   "target_text": "bo’ nhw wedi’i dorri fo",
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri fo",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "bo’ nhw wedi’i dorri o",
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": "2eabe8f2-13de-43b5-82c6-cb195c708174",
+   "decomposition": [
+    {
+     "known": "",
+     "legoId": null,
+     "target": "bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri o",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1622L02B04",
+  "set": {
+   "target_text": "o’n i’n gwybod bo’ nhw wedi’i dorri fo",
+   "decomposition": [
+    {
+     "known": "I knew",
+     "legoId": "S1622L01",
+     "target": "o’n i’n gwybod",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri fo",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "o’n i’n gwybod bo’ nhw wedi’i dorri o",
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": "acd48e40-c66d-4d54-b9ed-424113af3973",
+   "decomposition": [
+    {
+     "known": "I knew",
+     "legoId": "S1622L01",
+     "target": "o’n i’n gwybod",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri o",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1622L02U03",
+  "set": {
+   "target_text": "dydy o ddim yn wir bo’ nhw wedi’i dorri fo",
+   "decomposition": [
+    {
+     "known": "it isn’t true",
+     "legoId": "S1531L01",
+     "target": "dydy o ddim yn wir",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri fo",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "dydy o ddim yn wir bo’ nhw wedi’i dorri o",
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "decomposition": [
+    {
+     "known": "it isn’t true",
+     "legoId": "S1531L01",
+     "target": "dydy o ddim yn wir",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri o",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1622L02U04",
+  "set": {
+   "target_text": "oeddat ti’n meddwl bo’ nhw wedi’i dorri fo ar y pryd",
+   "decomposition": [
+    {
+     "known": "you thought",
+     "legoId": "S0211L02",
+     "target": "oeddat ti’n meddwl",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri fo",
+     "isGhost": false
+    },
+    {
+     "known": "at the time",
+     "legoId": "S1603L03",
+     "target": " ar y pryd",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "oeddat ti’n meddwl bo’ nhw wedi’i dorri o ar y pryd",
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "decomposition": [
+    {
+     "known": "you thought",
+     "legoId": "S0211L02",
+     "target": "oeddat ti’n meddwl",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri o",
+     "isGhost": false
+    },
+    {
+     "known": "at the time",
+     "legoId": "S1603L03",
+     "target": " ar y pryd",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1622L02U05",
+  "set": {
+   "target_text": "mae arna i ofn bo’ nhw wedi’i dorri fo yn yr ardd",
+   "decomposition": [
+    {
+     "known": "I’m afraid",
+     "legoId": "S0298L01",
+     "target": "mae arna i ofn",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri fo",
+     "isGhost": false
+    },
+    {
+     "known": "in the garden",
+     "legoId": "S1383L02",
+     "target": " yn yr ardd",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "mae arna i ofn bo’ nhw wedi’i dorri o yn yr ardd",
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "decomposition": [
+    {
+     "known": "I’m afraid",
+     "legoId": "S0298L01",
+     "target": "mae arna i ofn",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri o",
+     "isGhost": false
+    },
+    {
+     "known": "in the garden",
+     "legoId": "S1383L02",
+     "target": " yn yr ardd",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1622L02U01",
+  "set": {
+   "target_text": "o’n i’n meddwl bo’ nhw wedi’i dorri fo",
+   "decomposition": [
+    {
+     "known": "I thought",
+     "legoId": "S0209L01",
+     "target": "o’n i’n meddwl",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri fo",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "o’n i’n meddwl bo’ nhw wedi’i dorri o",
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": "43ab9da5-2068-474c-abe2-a7db8e500d63",
+   "decomposition": [
+    {
+     "known": "I thought",
+     "legoId": "S0209L01",
+     "target": "o’n i’n meddwl",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri o",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1622L02U06",
+  "set": {
+   "target_text": "clywes i bo’ nhw wedi’i dorri fo",
+   "decomposition": [
+    {
+     "known": "I heard",
+     "legoId": "S0129L01",
+     "target": "clywes i",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri fo",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "clywes i bo’ nhw wedi’i dorri o",
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": "656c3f98-0918-408f-acc3-d2210b654d94",
+   "decomposition": [
+    {
+     "known": "I heard",
+     "legoId": "S0129L01",
+     "target": "clywes i",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri o",
+     "isGhost": false
+    }
+   ]
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1622L02U02",
+  "set": {
+   "target_text": "ddudon nhw bo’ nhw wedi’i dorri fo neithiwr",
+   "decomposition": [
+    {
+     "known": "they said",
+     "legoId": "S1449L01",
+     "target": "ddudon nhw",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri fo",
+     "isGhost": false
+    },
+    {
+     "known": "last night",
+     "legoId": "S0073L03",
+     "target": " neithiwr",
+     "isGhost": false
+    }
+   ]
+  },
+  "expect": {
+   "target_text": "ddudon nhw bo’ nhw wedi’i dorri o neithiwr",
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": "b570bbd9-0ff1-4683-a7c4-1f3c7ebc9bce",
+   "decomposition": [
+    {
+     "known": "they said",
+     "legoId": "S1449L01",
+     "target": "ddudon nhw",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": " bo’",
+     "isGhost": true
+    },
+    {
+     "known": "them",
+     "legoId": "S0151L02",
+     "target": " nhw",
+     "isGhost": false
+    },
+    {
+     "known": "had broken it",
+     "legoId": "S1622L02",
+     "target": " wedi’i dorri o",
+     "isGhost": false
+    },
+    {
+     "known": "last night",
+     "legoId": "S0073L03",
+     "target": " neithiwr",
+     "isGhost": false
+    }
+   ]
+  }
+ }
+]
