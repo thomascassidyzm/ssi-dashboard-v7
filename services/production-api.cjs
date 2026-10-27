@@ -11393,29 +11393,9 @@ async function loadPublishedManifest(courseCode) {
   throw new Error('No published manifest found. Publish manifest first (Step 3).')
 }
 
-/**
- * Extract all audio UUIDs from a manifest (introduction, encouragements, samples)
- */
-function collectManifestUuids(manifest) {
-  const uuids = []
-  if (manifest.introduction?.id) uuids.push(manifest.introduction.id)
-  for (const enc of manifest.slices[0]?.orderedEncouragements || []) {
-    if (enc.id) uuids.push(enc.id)
-  }
-  for (const enc of manifest.slices[0]?.pooledEncouragements || []) {
-    if (enc.id) uuids.push(enc.id)
-  }
-  for (const enc of manifest.slices[0]?.paywallEncouragements || []) {
-    if (enc.id) uuids.push(enc.id)
-  }
-  const samples = manifest.slices[0]?.samples || {}
-  for (const [text, audioArray] of Object.entries(samples)) {
-    for (const audio of audioArray) {
-      if (audio.id) uuids.push(audio.id)
-    }
-  }
-  return uuids
-}
+// Extract all audio UUIDs from a manifest — lives in s3-deploy-service so
+// tools/audio/verify-export-stage.cjs collects exactly the same set (job #427).
+const { collectManifestUuids } = require('./s3-deploy-service.cjs')
 
 /**
  * Build verification progress callback for verifyProductionDurations
