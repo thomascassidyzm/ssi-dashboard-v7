@@ -155,3 +155,13 @@ describe('calibration (Kai, 2026-10-27): what the recorders SENT is counted apar
     expect(line).not.toContain('0 proofreaders')
   })
 })
+
+describe('agent saves stay short', () => {
+  it('lists the ten busiest courses and folds the rest into one line', () => {
+    const agents = Array.from({ length: 13 }, (_, i) => ({ course_code: `c${i}_for_eng`, actor_kind: 'agent', saves: 2, seeds: i, labels: null }))
+    const md = lib.renderReport({ now: NOW, since: SINCE, gaps: [], recorders: { rows: [] }, builders: { rows: [], idle: [] }, proof: { rows: [], unattributed: {} }, agents })
+    expect(md).toContain('- c12_for_eng: 2 saves, 12 seeds named (agent)')
+    expect(md).not.toContain('- c2_for_eng:')
+    expect(md).toContain('- and 3 more courses: 6 saves, 3 seeds named')
+  })
+})

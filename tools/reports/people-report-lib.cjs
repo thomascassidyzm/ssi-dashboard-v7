@@ -201,6 +201,7 @@ function recorderRows(overview, now, uploads = null) {
       name: a.name || a.voiceId, voiceId: a.voiceId, language: a.languageName || a.language || null, dialect: a.dialect || null,
       week: act.takes7d || 0, allTime: act.takes || 0, archived: act.archivedTakes || 0,
       uploadsWeek: uploads ? sumFor(uploads.week, a) : null, uploadsAll: uploads ? sumFor(uploads.all, a) : null,
+      boothMs7d: act.sessionMs7d || 0, // first-to-last take of each sitting: a floor on time at the booth
       done, total, remaining, last, first: act.firstActive ? Date.parse(act.firstActive) : null,
       stalled: remaining > 0 && (last == null || now - last >= STALL_MS),
       // Nothing assigned and nothing recorded this week: an old or parked voice, listed in one line.
@@ -407,7 +408,8 @@ function renderReport(d) {
   for (const r of (d.recorders.rows || []).filter((x) => !x.dormant)) {
     const head = `**${r.name}**${r.language ? ` (${[r.language, r.dialect].filter(Boolean).join(', ')})` : ''}${r.stalled ? ' — ⚠ STALLED' : ''}`
     L.push(head)
-    if (r.uploadsWeek) L.push(`- This week: ${plural(r.uploadsWeek.takes, 'take')} uploaded from the booth (re-reads included), landing on ${plural(r.uploadsWeek.clips, 'clip')}`)
+    const hrs = r.boothMs7d ? `, over at least ${(r.boothMs7d / 3600e3).toFixed(1)} h at the booth` : ''
+    if (r.uploadsWeek) L.push(`- This week: ${plural(r.uploadsWeek.takes, 'take')} uploaded from the booth (re-reads included), landing on ${plural(r.uploadsWeek.clips, 'clip')}${hrs}`)
     else L.push('- This week: booth uploads could not be read (see the end)')
     L.push(`- New clips stored under this voice this week: ${n(r.week)}${r.uploadsWeek && r.week > r.uploadsWeek.takes ? ' (more clips than takes: one take can be stored for several courses, or cut into several lines)' : ''}`)
     if (r.total) L.push(`- Done ${n(r.done)} of ${n(r.total)} assigned (${pct(r.done, r.total)}), ${n(r.remaining)} left`)
@@ -480,7 +482,12 @@ function renderReport(d) {
   if (d.agents == null) L.push('Could not be read this week.', '')
   else if (!d.agents.length) L.push('None.', '')
   else {
-    for (const a of d.agents) L.push(`- ${a.course_code}: ${plural(a.saves, 'save')}, ${plural(a.seeds, 'seed')} named (${a.actor_kind}${a.labels ? `: ${a.labels}` : ''})`)
+    // The busiest courses by seeds touched, then saves; the long tail is one line, so the section stays short.
+    const AGENT_ROWS = 10
+    const top = [...d.agents].sort((a, b) => (b.seeds - a.seeds) || (b.saves - a.saves))
+    for (const a of top.slice(0, AGENT_ROWS)) L.push(`- ${a.course_code}: ${plural(a.saves, 'save')}, ${plural(a.seeds, 'seed')} named (${a.actor_kind}${a.labels ? `: ${a.labels}` : ''})`)
+    const rest = top.slice(AGENT_ROWS)
+    if (rest.length) L.push(`- and ${plural(rest.length, 'more course')}: ${plural(rest.reduce((s, a) => s + a.saves, 0), 'save')}, ${plural(rest.reduce((s, a) => s + a.seeds, 0), 'seed')} named`)
     L.push('')
   }
 
