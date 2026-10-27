@@ -23,7 +23,14 @@
         "dailyCapChars": 3000000
       }
     },
-    "azure": {},
+    "azure": {
+      "raise": {
+        "dailyCapChars": 700000,
+        "by": "Watson for Tom (2026-10-27, ruling r-2026-10-27: Kai makes Arabic voicing/cost calls; Kai approved 2026-10-27 16:09Z)",
+        "why": "One-off fill of the empty ara_eg_for_eng (Salma/Shakir) and ara_lb_for_eng (Layla/Rami) target slots, ~630,000 characters in total (~$10 Azure), job #450. Not a standing loosening.",
+        "until": "2026-10-29T00:00:00Z"
+      }
+    },
     "elevenlabs": {
       "retired": "ElevenLabs retired (Tom 2026-09-28): \"We don't use Eleven Labs any more.\" Use Cartesia or Azure.",
       "dailyCapChars": 0
