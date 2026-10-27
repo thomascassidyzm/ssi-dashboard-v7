@@ -1,0 +1,13 @@
+[Unit]
+Description=Monday 07:00 UK: Kai's weekly Popty people report (job #501)
+
+[Timer]
+# Kai's brief: "delivered automatically every Monday ~07:00 UK". London time, so BST and GMT both hold.
+OnCalendar=Mon *-*-* 07:00:00 Europe/London
+# A Monday missed while watson-1 was down runs at the next boot rather than waiting a week.
+Persistent=true
+AccuracySec=1min
+Unit=popty-people-report.service
+
+[Install]
+WantedBy=timers.target

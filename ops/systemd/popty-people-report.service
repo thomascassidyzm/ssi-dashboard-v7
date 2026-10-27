@@ -1,0 +1,17 @@
+[Unit]
+Description=Kai's weekly Popty people report: recorders, volunteer builders, proofreading (job #501)
+Documentation=file:///home/tomcassidy/.local/share/popty-people-report/tools/reports/weekly-people-report.cjs
+
+[Service]
+Type=oneshot
+# A USER unit (tomcassidy), unlike Popty's system services: it reads the shared checkout's agent
+# login and posts to the surface with the cron fleet's identity (~/.cs-cron-session), neither of
+# which the popty system user holds. It runs from its own detached origin/main worktree, which the
+# runner fast-forwards before every run (git replaces the file, so the running bash keeps the old one).
+# Install: git -C ~/SSi/ssi-dashboard-v7-clean worktree add --detach ~/.local/share/popty-people-report origin/main
+#          systemctl --user link <that worktree>/ops/systemd/popty-people-report.{service,timer}
+#          systemctl --user enable --now popty-people-report.timer
+ExecStart=/usr/bin/bash %h/.local/share/popty-people-report/tools/reports/run-weekly-people-report.sh
+TimeoutStartSec=15min
+Nice=10
+Slice=cs-workers.slice
