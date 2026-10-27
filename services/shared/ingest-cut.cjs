@@ -218,12 +218,34 @@ function ffmpeg(args, input) {
   if (r.status !== 0) throw new Error(`ffmpeg failed: ${String(r.stderr || '').slice(0, 200)}`)
   return r.stdout
 }
+/**
+ * WAV bytes → MP3 bytes through the real lame binary (CBR, no replaygain, -q 2: ffmpegFilterToLameMp3's arguments).
+ * lame writes to a FILE, not stdout: it seeks back to fill in the Xing/LAME header when it finishes, and on a pipe it
+ * cannot, so the "LAME3.x" encoder tag the export check reads would be missing (missing_encoder_tag).
+ */
+function lameMp3(wav, { bitrate = 96, channels = 1 } = {}) {
+  const fs = require('fs'), os = require('os'), path = require('path')
+  const { LAME_BIN } = require('../audio-processor.cjs')
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ingest-cut-lame-'))
+  const out = path.join(dir, 'cut.mp3')
+  try {
+    const r = require('child_process').spawnSync(LAME_BIN, ['-m', channels === 1 ? 'm' : 'j', '-b', String(bitrate), '--cbr', '--noreplaygain', '-q', '2', '--silent', '-', out],
+      { input: wav, maxBuffer: 64 * 1024 * 1024, timeout: 60000 })
+    if (r.error || r.status !== 0) throw new Error(`lame failed: ${r.error ? r.error.message : String(r.stderr || '').slice(0, 200)}`)
+    return fs.readFileSync(out)
+  } finally { fs.rmSync(dir, { recursive: true, force: true }) }
+}
 const durationOf = (bytes) => ffmpeg(['-i', 'pipe:0', '-f', 's16le', '-ac', '1', '-ar', '48000', 'pipe:1'], bytes).length / 2 / 48000
 
 /**
  * One span of one clip, as mp3 in the course's own format (48 kHz mono 96 kb/s, what mastered Cartesia clips are).
  * A short fade where the cut is mid-recording (8 ms in, 25 ms out) so the edge is not a step; a natural clip edge is
  * kept as recorded. That is a cut's edge, not a join: there is one piece and nothing is placed beside it.
+ *
+ * ENCODED BY THE REAL LAME BINARY, NEVER BY FFMPEG'S MP3 MUXER (job #427). ffmpeg's muxer writes an ID3v2 wrapper and an
+ * "Lavf…" encoder tag, which is the iOS playback bug; export Step 2 (audio-processor checkMp3Format) refuses such a file
+ * as BADLY ENCODED and blocks publishing the whole course. So ffmpeg only filters to WAV here and lame writes the MP3,
+ * with the same arguments as audio-processor's ffmpegFilterToLameMp3. ingest-cut.test.cjs asserts the format.
  */
 function cutSpan(bytes, { startSec, endSec }) {
   const sourceDurationSec = durationOf(bytes)
@@ -231,7 +253,8 @@ function cutSpan(bytes, { startSec, endSec }) {
   const af = [`atrim=start=${startSec.toFixed(4)}:end=${end.toFixed(4)}`, 'asetpts=PTS-STARTPTS']
   if (startSec > 0.001) af.push('afade=t=in:st=0:d=0.008')
   if (end < sourceDurationSec - 0.01) af.push(`afade=t=out:st=${Math.max(0, len - 0.025).toFixed(4)}:d=0.025`)
-  const out = ffmpeg(['-i', 'pipe:0', '-af', af.join(','), '-ar', '48000', '-ac', '1', '-c:a', 'libmp3lame', '-b:a', '96k', '-f', 'mp3', 'pipe:1'], bytes)
+  const wav = ffmpeg(['-i', 'pipe:0', '-af', af.join(','), '-ar', '48000', '-ac', '1', '-f', 'wav', 'pipe:1'], bytes)
+  const out = lameMp3(wav, { bitrate: 96, channels: 1 })
   return { bytes: out, durationSec: durationOf(out), sourceDurationSec }
 }
 

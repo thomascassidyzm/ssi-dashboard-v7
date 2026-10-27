@@ -149,3 +149,23 @@ describe('ingestCut', () => {
     expect(refuseDescriptor({ sourceAudioId: SRC, role: 'target1', startSec: 0, endSec: 0.1 }, {}, {})[0]).toBe('BAD_SPAN')
   })
 })
+
+// Job #427: ita_for_eng export Step 2 refused 26 clips as BADLY ENCODED (ID3v2 wrapper, "Lavf" encoder) — the iOS
+// playback bug. A cut made with ffmpeg's own MP3 muxer had exactly that shape, so every cut this route stored would
+// have blocked its course's export. This holds the cut to the export's own check.
+describe('cutSpan output format', () => {
+  it('is written by the real lame binary: no ID3v2 wrapper, LAME encoder — passes export Step 2', async () => {
+    const fs = require('fs'), os = require('os'), path = require('path')
+    const { checkMp3Format } = require('../audio-processor.cjs')
+    const cut = cutSpan(SOURCE_MP3, { startSec: 0, endSec: 0.8 })
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'cut-format-'))
+    const f = path.join(dir, 'cut.mp3')
+    try {
+      fs.writeFileSync(f, cut.bytes)
+      expect(cut.bytes.subarray(0, 3).toString('latin1')).not.toBe('ID3')
+      const fmt = await checkMp3Format(f)
+      expect(fmt.issues).toEqual([])
+      expect(fmt.encoder).toMatch(/^LAME/)
+    } finally { fs.rmSync(dir, { recursive: true, force: true }) }
+  })
+})

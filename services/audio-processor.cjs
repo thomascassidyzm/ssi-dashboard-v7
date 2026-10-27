@@ -1823,6 +1823,7 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
 module.exports = {
   checkFfmpegInstalled,
   checkLameInstalled,
+  LAME_BIN,
   ffmpegFilterToLameMp3,
   ANTI_CLICK_FADE,
   detectTailClick,
