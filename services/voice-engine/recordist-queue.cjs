@@ -115,6 +115,7 @@ const { soloReaders, isSoloReaderPod } = require('../shared/pod-solo-readers.cjs
 const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
+const englishLegos = require('./english-lego-lines.cjs')
 const { primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
 const langService = require('../language-code-service.cjs')
 
@@ -2932,6 +2933,38 @@ async function fetchRerecordWanted(db, courseCodes) {
 }
 
 /**
+ * THE READS BEHIND THE ENGLISH LEGO CARDS (job #255; the rule is english-lego-lines.cjs): the new LEGOs of this
+ * reader's intro courses, the English of those courses' seeds and practice phrases (their own cards), and the intros
+ * already built in this reader's voice. Held five minutes per course set — the lag the booth's phrase cache already
+ * has; whether a line is RECORDED is not cached here, finishQueue scores it from the takes on every build.
+ * Empty, without a read, for every reader who is no course's intro voice.
+ */
+const ENGLISH_LEGO_TTL_MS = 5 * 60 * 1000
+const englishLegoInputCache = new Map()
+async function fetchEnglishLegoInputs(db, recordist) {
+  const courses = englishLegos.englishLegoCoursesFor(recordist)
+  if (!courses.length) return {}
+  const spellings = recordist.spellings || [recordist.voiceId]
+  const key = `${courses.join(',')}|${spellings.join(',')}`
+  const hit = englishLegoInputCache.get(key)
+  if (hit && Date.now() - hit.at < ENGLISH_LEGO_TTL_MS) return hit.value
+  const read = (table, columns) => pagedRead((from, to) => db.from(table).select(columns).in('course_code', courses).order('id').range(from, to))
+  const [legos, seeds, phrases, intros] = await Promise.all([
+    read('course_legos', 'id, course_code, seed_number, lego_index, lego_id, known_text, is_new, presentation_audio_id'),
+    read('course_seeds', 'id, known_text'),
+    read('course_practice_phrases', 'id, known_text'),
+    pagedRead((from, to) => db.from('course_audio').select('id').eq('role', 'presentation').in('voice_id', spellings).order('id').range(from, to)),
+  ])
+  const value = {
+    legos,
+    otherKnownTexts: [...seeds, ...phrases].map((r) => r.known_text).filter(Boolean),
+    ownIntroIds: new Set(intros.map((r) => String(r.id))),
+  }
+  englishLegoInputCache.set(key, { at: Date.now(), value })
+  return value
+}
+
+/**
  * Build the language-wide queue for one recordist.
  *
  * @param {object} db supabase client
@@ -2945,7 +2978,9 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
   const language = await cachedLanguageLines(db, recordist.language, { quarryMaxSeed, cache: new Map() })
   // By VOICE ID, for a policy voice and a cast-only voice alike (linesForVoice). A voice whose own takes make a
   // course's LEGO intros also reads that course's once-recorded intro pieces first (job #210, intro-piece-lines.cjs).
-  const mine = [...introPieces.introPieceLinesFor(recordist), ...linesForVoice(language, recordist)]
+  // Their English LEGO cards follow (job #255, english-lego-lines.cjs): one English take per new LEGO still owed.
+  const englishLegoLines = englishLegos.englishLegoLinesFor(recordist, await fetchEnglishLegoInputs(db, recordist))
+  const mine = [...introPieces.introPieceLinesFor(recordist), ...linesForVoice(language, recordist), ...englishLegoLines]
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.

@@ -1343,7 +1343,7 @@ function kindWordsFor(l) {
   }
   if (l.kind === 'lego') {
     const which = l.legoId || (l.seedNumber ? `seed ${l.seedNumber}` : null)
-    return `LEGO${which ? ` ${which}` : ''}${l.role === 'target2' ? ' - second voice' : ''}`
+    return `LEGO${which ? ` ${which}` : ''}${l.role === 'target2' ? ' - second voice' : (l.role === 'known' ? ' - English side' : '')}`
   }
   if (l.kind !== 'seed') return null
   if (l.seedExisting) {
@@ -3045,6 +3045,14 @@ function describeTrack(t) {
       short: isNew ? 'New sentences' : 'Sentences', cls: 'k-sent',
       title: `${courseWordsFor(t.courseCode)}: whole sentences`,
       what: isNew ? 'Read each new course sentence once, at your natural pace.' : old.blurb,
+    }
+  }
+  // THE ENGLISH OF THE NEW LEGOs (job #255): read once each; his LEGO intros are spliced from these takes.
+  if (t.kind === 'lego' && t.role === 'known') {
+    return {
+      short: 'English LEGOs', cls: 'k-lego',
+      title: `${courseWordsFor(t.courseCode)}: English LEGOs`,
+      what: 'The English of each new LEGO, read once each at your natural pace. Your LEGO intros are put together from these.',
     }
   }
   if (t.kind === 'lego') {

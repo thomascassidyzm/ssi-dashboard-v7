@@ -72,6 +72,7 @@ const { invalidateArtistSummaries } = require('./booth-artists-summary-cache.cjs
 const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
+const englishLegos = require('./english-lego-lines.cjs')
 const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
 const boothActorQueue = require('./booth-actor-queue.cjs')
@@ -1606,6 +1607,29 @@ module.exports = function createRecordistRouter({
   async function recordIntroPieceTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
     const resolved = introPieces.resolveIntroPiece(parsed, recordist)
     if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'intro', metaKind: 'intro-piece', text, audioBase64, mimeType, device })
+  }
+
+  /**
+   * AN ENGLISH LEGO (job #255, english-lego-lines.cjs): the English of a new LEGO whose intro is spliced from this
+   * voice. Filed as an English known take exactly like an intro piece — it fills no LEGO slot; the splice finds it by
+   * voice and words — and, like every take (job #198), fills any EMPTY seed / phrase known slot of the same words.
+   */
+  async function recordEnglishLegoTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = await resolveEnglishLegoLine(parsed, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'lego', metaKind: 'english-lego', text, audioBase64, mimeType, device,
+      afterFiled: (audioId) => fillSameWordsSlots({ db: db(), recordist, role: 'known', text: resolved.text, audioId, logger }) })
+  }
+
+  async function resolveEnglishLegoLine(parsed, recordist) {
+    const { data, error } = await db().from('course_legos').select('id, course_code, lego_id, known_text').eq('id', parsed.legoRowId).limit(1)
+    if (error) throw new Error(`english LEGO lookup failed: ${error.message}`)
+    return englishLegos.resolveEnglishLego(data && data[0], recordist)
+  }
+
+  /** One English known-side take of fixed words (an intro piece, an English LEGO), through the seed upload seam. */
+  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null }) {
     if (text && text.trim() && text.trim() !== resolved.text) {
       return res.status(409).json({ error: 'The text on this line has changed since the queue was loaded -- reload before recording it.', expected: resolved.text, received: text.trim() })
     }
@@ -1615,11 +1639,11 @@ module.exports = function createRecordistRouter({
       headers: { authorization: req.headers.authorization },
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
-      recordistLineId: parsed.raw,
+      recordistLineId: raw,
       body: {
         audioData: audioBase64,
         mimeType,
-        metadata: { mode: 'script', cadence: 'natural', role: 'known', kind: 'intro-piece', text: resolved.text, voiceId: recordist.voiceId },
+        metadata: { mode: 'script', cadence: 'natural', role: 'known', kind: metaKind, text: resolved.text, voiceId: recordist.voiceId, ...(resolved.legoId ? { legoId: resolved.legoId } : {}) },
         provenance: { recorded_by: recordist.email || recordist.displayName, mode: 'recordist', recording_device: device || null },
       },
     }, innerRes)
@@ -1629,10 +1653,11 @@ module.exports = function createRecordistRouter({
     const filing = captured.body.filing || null
     if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
-    if (!audioId) logger.error(`[Recordist] intro piece take ${parsed.raw} was NOT filed as a clip: ${filing && filing.reason}`)
+    if (!audioId) logger.error(`[Recordist] ${metaKind} take ${raw} was NOT filed as a clip: ${filing && filing.reason}`)
+    else if (afterFiled) await afterFiled(audioId)
     return res.json({
-      ok: true, audioId, kind: 'intro', role: 'known',
-      clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(parsed.raw)}/clip`,
+      ok: true, audioId, kind, role: 'known',
+      clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(raw)}/clip`,
       rawKey: captured.body.rawKey || null,
       filing,
     })
@@ -1642,15 +1667,26 @@ module.exports = function createRecordistRouter({
   async function introPieceClipResponse(req, res, recordist, parsed) {
     const resolved = introPieces.resolveIntroPiece(parsed, recordist)
     if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return knownWordsClipResponse(req, res, recordist, resolved.text)
+  }
+
+  /** Play back an English LEGO (job #255): the same — this voice's newest English take of its words. */
+  async function englishLegoClipResponse(req, res, recordist, parsed) {
+    const resolved = await resolveEnglishLegoLine(parsed, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return knownWordsClipResponse(req, res, recordist, resolved.text)
+  }
+
+  async function knownWordsClipResponse(req, res, recordist, words) {
     const { data, error } = await db()
       .from('course_audio')
       .select('id, s3_key')
       .eq('language', recordist.language)
       .in('voice_id', recordist.spellings)
-      .in('text_normalized', audioKeyCandidates(resolved.text))
+      .in('text_normalized', audioKeyCandidates(words))
       .order('created_at', { ascending: false })
       .limit(1)
-    if (error) throw new Error(`intro piece clip lookup failed: ${error.message}`)
+    if (error) throw new Error(`known take clip lookup failed: ${error.message}`)
     const row = data && data[0]
     if (!row) return res.status(404).json({ error: 'No stored take for this line yet', reason: 'no_take' })
     const url = await s3.getAudioSignedUrl(row.id, 3600, { s3Key: row.s3_key })
@@ -2169,6 +2205,11 @@ module.exports = function createRecordistRouter({
       if (introPieceLine) {
         return await recordIntroPieceTake({ req, res, recordist, parsed: { ...introPieceLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
+      // An ENGLISH LEGO (job #255). `englego:...` is not a uuid either.
+      const englishLegoLine = englishLegos.parseEnglishLegoLineId(lineId)
+      if (englishLegoLine) {
+        return await recordEnglishLegoTake({ req, res, recordist, parsed: { ...englishLegoLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
 
       const quarryLine = parseQuarryLineId(lineId)
       if (quarryLine) {
@@ -2418,6 +2459,8 @@ module.exports = function createRecordistRouter({
 
       const introPieceLine = introPieces.parseIntroPieceLineId(req.params.lineId)
       if (introPieceLine) return await introPieceClipResponse(req, res, recordist, { ...introPieceLine, raw: req.params.lineId })
+      const englishLegoLine = englishLegos.parseEnglishLegoLineId(req.params.lineId)
+      if (englishLegoLine) return await englishLegoClipResponse(req, res, recordist, { ...englishLegoLine, raw: req.params.lineId })
 
       const quarryLine = parseQuarryLineId(req.params.lineId)
       if (quarryLine) return await quarryClipResponse(req, res, recordist, quarryLine)
