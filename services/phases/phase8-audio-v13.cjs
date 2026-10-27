@@ -5509,14 +5509,14 @@ async function writePaidClipRow({ courseCode, text, language, role, voiceId, leg
   return { audioId: row.id, s3Key, durationMs }
 }
 
-/** Length of an S3 object in ms (sox), for an adopted clip the paid-unsaved ledger never recorded. */
+/** Length of an S3 object in ms (the same metadata read masterAudio uses — sox is not installed on watson-1), for an adopted clip the paid-unsaved ledger never recorded. */
 async function objectDurationMs(s3Key) {
   const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: s3Key }))
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'adopt-'))
   try {
     const f = path.join(dir, 'clip.mp3')
     await fs.writeFile(f, Buffer.from(await r.Body.transformToByteArray()))
-    return Math.round((await audioProcessor.getAudioDuration(f)) * 1000)
+    return Math.round((await audioProcessor.getAudioMetadata(f)).duration * 1000)
   } finally { await fs.remove(dir) }
 }
 
