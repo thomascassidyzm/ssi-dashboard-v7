@@ -110,9 +110,14 @@ async function check(course) {
 const LANG = { afr: 'Afrikaans', spa: 'Spanish', fra: 'French', deu: 'German', ita: 'Italian', zho: 'Mandarin Chinese', jpn: 'Japanese', eng: 'English', ara: 'Arabic' }
 function languages(course) { const [t, k] = course.split('_for_'); return { target: LANG[t.split('_')[0]] || t, known: LANG[k] || k } }
 async function callClaude(model, system, user, label) {
-  const dir = process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), '.cs-accounts', 'account-3')
-  const env = { ...process.env, CLAUDE_CONFIG_DIR: dir }
-  const tok = path.join(dir, '.cs-oauth-token'); if (fs.existsSync(tok)) env.CLAUDE_CODE_OAUTH_TOKEN = fs.readFileSync(tok, 'utf8').trim()
+  // command-surface #337: unless the caller pins a config dir, bill through the course builder's account pick
+  // (hammer fills to its 5h window, then normals) rather than claude@ alone
+  let env
+  if (process.env.CLAUDE_CONFIG_DIR) {
+    const dir = process.env.CLAUDE_CONFIG_DIR
+    env = { ...process.env }
+    const tok = path.join(dir, '.cs-oauth-token'); if (fs.existsSync(tok)) env.CLAUDE_CODE_OAUTH_TOKEN = fs.readFileSync(tok, 'utf8').trim()
+  } else env = require('../../../services/shared/claude-config.cjs').claudeEnv(process.env)
   for (const k of ['CLAUDECODE', 'CLAUDE_CODE_ENTRYPOINT', 'CLAUDE_CODE_CHILD_SESSION', 'CLAUDE_CODE_SESSION_ID']) delete env[k]
   const bin = path.join(os.homedir(), '.local/bin/claude')
   for (let attempt = 1; attempt <= 3; attempt++) {

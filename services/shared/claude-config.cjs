@@ -62,7 +62,8 @@ const OAUTH_TOKEN_FILE = path.join(CLAUDE_CONFIG_DIR, '.cs-oauth-token')
  *      gate is out, unless every account is (then the least-filled one runs:
  *      a build is never refused here);
  *   2. the Control panel steer (GET /api/routing, cached, refreshed in the
- *      background): avoid = out unless that empties the set; hammer = first;
+ *      background): avoid = out unless that empties the set; hammer = fill it
+ *      to its five-hour window first, past the 60% gate (#337, see pickAccount);
  *   3. most headroom left (the surface's own min-over-windows figure), then
  *      lowest five-hour pct, then the default token.
  * Unknown gauge → the default token, exactly as before.
@@ -103,19 +104,26 @@ function candidates(dir = TOKENS_DIR) {
 }
 
 // Pure: choose one candidate given the gauge and the steers. Exported for the test.
+// HAMMER = FILL IT UNTIL ITS 5H WINDOW RUNS OUT (Tom 2026-10-27, command-surface #337): a hammered account
+// takes every spawn until its five-hour window is full (HAMMER_FULL_PCT — the surface's hand-over test with
+// a human's 10% reserve), the least-filled hammer first so two hammers fill equally; the 60% gate does not
+// apply to it. Then the normals under the 60% gate, most headroom first; then avoid; never refused.
+const HAMMER_FULL_PCT = 90
 function pickAccount(cands, { usage = {}, steer = {} } = {}) {
   if (!cands.length) return null
   const g = (c) => usage[c.email] || usage[Object.keys(usage).find((k) => k.toLowerCase() === c.email)] || null
   const known = cands.filter((c) => g(c) && Number.isFinite(Number(g(c).five_hour_pct)))
   if (known.length !== cands.length) return cands.find((c) => c.email === DEFAULT_EMAIL) || cands[0]
+  const pct = (c) => Number(g(c).five_hour_pct)
+  const hammers = known.filter((c) => steer[c.email] === 'hammer' && pct(c) < HAMMER_FULL_PCT)
+  if (hammers.length) return [...hammers].sort((a, b) => pct(a) - pct(b) || (b.email === DEFAULT_EMAIL) - (a.email === DEFAULT_EMAIL))[0]
   const narrow = (set, pred) => { const k = set.filter(pred); return k.length ? k : set }
-  let pool = narrow(known, (c) => Number(g(c).five_hour_pct) < FIVE_HOUR_GATE_PCT)
+  let pool = narrow(known, (c) => pct(c) < FIVE_HOUR_GATE_PCT)
   pool = narrow(pool, (c) => steer[c.email] !== 'avoid')
-  const head = (c) => { const h = Number(g(c).headroom); return Number.isFinite(h) ? h : (100 - Number(g(c).five_hour_pct)) / 100 }
+  const head = (c) => { const h = Number(g(c).headroom); return Number.isFinite(h) ? h : (100 - pct(c)) / 100 }
   return [...pool].sort((a, b) =>
-    (steer[b.email] === 'hammer') - (steer[a.email] === 'hammer')
-    || head(b) - head(a)
-    || Number(g(a).five_hour_pct) - Number(g(b).five_hour_pct)
+    head(b) - head(a)
+    || pct(a) - pct(b)
     || (b.email === DEFAULT_EMAIL) - (a.email === DEFAULT_EMAIL))[0]
 }
 
@@ -156,4 +164,4 @@ function claudeConfigExport() {
   ].join(' && ')
 }
 
-module.exports = { CLAUDE_CONFIG_DIR, claudeEnv, claudeConfigExport, pickAccount, candidates, FIVE_HOUR_GATE_PCT }
+module.exports = { CLAUDE_CONFIG_DIR, claudeEnv, claudeConfigExport, pickAccount, candidates, FIVE_HOUR_GATE_PCT, HAMMER_FULL_PCT }
