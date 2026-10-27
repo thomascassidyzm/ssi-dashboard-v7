@@ -35,6 +35,8 @@ const params = require('./params.cjs')
 // knows the base language ('deu'). Everything that steers a render, registers a
 // voice's spoken languages or asks Cartesia a question uses the base.
 const { baseLanguageOfCastKey } = require('../shared/cast-language-key.cjs')
+const { kaiGoFromRequest } = require('../shared/agent-admin-identity.cjs')
+const { castAssignedBy } = require('../shared/voice-cast-gate.cjs')
 const content = require('./content.cjs')
 const registry = require('./registry.cjs')
 const cartesia = require('./cartesia.cjs')
@@ -757,7 +759,7 @@ function mount (app, deps) {
       // taking the vacated rank. A plain upsert of the target rank trips the index (#263).
       const { data: castOut, error } = await supabase().rpc('cast_voice_role', {
         p_slot: slot, p_language: language, p_gender: rowGender, p_rank: r,
-        p_voice_id: slotVoiceId, p_notes: notes, p_assigned_by: who(user),
+        p_voice_id: slotVoiceId, p_notes: notes, p_assigned_by: castAssignedBy(kaiGoFromRequest(req), who(user)),
       })
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
 

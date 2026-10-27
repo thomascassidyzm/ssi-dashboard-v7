@@ -95,11 +95,24 @@ const isBannedVoice = (voiceId) => /^xai_/.test(String(voiceId || ''))
  * assigned_by = the signed-in user (voicelab/router.cjs who(user)).
  */
 const TOM_CAST_IDENTITIES = new Set(['thomas.cassidy+ssi@gmail.com'])
+/**
+ * Kai's casting is a real cast too (r-2026-10-15-kai-can-do-anything-in-popty: Kai's go
+ * satisfies any tom_go gate on Popty; job #174, after #172's ara cast read as draft).
+ * Recognised by IDENTITY only, never by note wording: Kai's own Voice Lab accounts, or a
+ * slot PUT the Kai-ONLY agent key signed (admin:all, agentIdPrefix 'kai'), which the router
+ * stamps 'kai-key:<agent id>' (castAssignedBy). A bare 'agent:kai-…' is NOT Kai: the shared
+ * agent key may sign any id, kai- ids included.
+ */
+const KAI_CAST_IDENTITIES = new Set(['kai@saysomethingin.com', 'kai.saraceno@saysomethingin.com'])
+const KAI_KEY_PREFIX = 'kai-key:'
+const KAI_KEY_AUTHOR = /^kai-key:kai-[a-z0-9_.:-]+$/
+/** The assigned_by a slot PUT records: 'kai-key:<id>' when the Kai-only key signed it (kaiGoFromRequest), else the user. */
+const castAssignedBy = (kaiGoAgent, userIdentity) => (kaiGoAgent ? `${KAI_KEY_PREFIX}${kaiGoAgent}` : userIdentity)
 const DRAFT_NOTE = /^\s*draft casting\b/i
 
 /**
  * Is this voice_language_roles row a cast Tom chose? Not a draft, and either
- * written from Tom's own Voice Lab account, or recorded under a named ruling
+ * written from Tom's own Voice Lab account (or Kai's, or Kai's own agent key — above), or recorded under a named ruling
  * ('tom-ruling-2026-09-03', 'kai-ruling-2026-09-23-charlotte-everywhere' — the
  * English casting rulings), or carrying Tom's ruling in its note ("Tom
  * 2026-09-21: cast Aran's clone as the English guide"). A row a test identity
@@ -111,6 +124,7 @@ function isTomCastRow(row) {
   if (DRAFT_NOTE.test(notes)) return false
   const by = String(row.assigned_by || '').trim().toLowerCase()
   if (TOM_CAST_IDENTITIES.has(by)) return true
+  if (KAI_CAST_IDENTITIES.has(by) || KAI_KEY_AUTHOR.test(by)) return true
   if (/(^|-)ruling-\d{4}-\d{2}-\d{2}/.test(by)) return true
   return /^\s*Tom('s)?\b/.test(notes)
 }
@@ -378,5 +392,5 @@ function limitCastFirst({ cast, uncast, summary }, limit) {
 
 module.exports = {
   limitCastFirst, castAllowsVoice, castKeyOf, castVerdict, partitionByCast, castRowLanguage, assertCastVoice, isCastRefusal, isCartesiaVoice, isAzureVoice,
-  courseCastRow, canonVoice, rowIsForKey, isTomCastRow, courseVoiceProfile, azureOnlyAllows, CastRefusal, useCastRows, useCourseCastRow, useCourseVoiceHolder, useCourseVoiceCensus,
+  courseCastRow, canonVoice, rowIsForKey, isTomCastRow, castAssignedBy, courseVoiceProfile, azureOnlyAllows, CastRefusal, useCastRows, useCourseCastRow, useCourseVoiceHolder, useCourseVoiceCensus,
 }
