@@ -48,27 +48,112 @@ const CLAUDE_CONFIG_DIR =
 
 const OAUTH_TOKEN_FILE = path.join(CLAUDE_CONFIG_DIR, '.cs-oauth-token')
 
+/*
+ * WHICH SSi ACCOUNT PAYS (2026-10-27, command-surface #334). The single
+ * .cs-oauth-token above is claude@'s, so every course build billed claude@
+ * alone, outside the surface router: on 27 Oct one pdc_for_eng build drove
+ * claude@'s five-hour window from 12% to 93% while kai-gmail sat at 3%.
+ * Both are the SSi company pool (Kai/Aran's ruled set), so each spawn now
+ * picks between them. Alternatives live as `<config dir>/tokens/<email>`
+ * (symlinks to the surface's token files); with no tokens/ dir this file
+ * behaves exactly as before. The pick, per spawn:
+ *   1. the surface's own gauge (command-surface/ops/account-usage.json,
+ *      refreshed by its usage sweep) — an account at or past the 60% five-hour
+ *      gate is out, unless every account is (then the least-filled one runs:
+ *      a build is never refused here);
+ *   2. the Control panel steer (GET /api/routing, cached, refreshed in the
+ *      background): avoid = out unless that empties the set; hammer = first;
+ *   3. most headroom left (the surface's own min-over-windows figure), then
+ *      lowest five-hour pct, then the default token.
+ * Unknown gauge → the default token, exactly as before.
+ */
+const TOKENS_DIR = path.join(CLAUDE_CONFIG_DIR, 'tokens')
+const DEFAULT_EMAIL = 'claude@saysomethingin.com'
+const FIVE_HOUR_GATE_PCT = 60
+const USAGE_FILE = process.env.SSI_CLAUDE_USAGE_FILE ||
+  path.join(os.homedir(), 'command-surface', 'ops', 'account-usage.json')
+const ROUTING_URL = process.env.SSI_CLAUDE_ROUTING_URL || 'http://localhost:4317/api/routing'
+
+let steerCache = { at: 0, steers: {} }
+function refreshSteers() {
+  if (typeof fetch !== 'function') return
+  fetch(ROUTING_URL, { signal: AbortSignal.timeout(3000) })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) => {
+      const steers = {}
+      for (const s of (j && j.tom_override && j.tom_override.steers) || []) {
+        if (s && s.email && (!s.until || Date.parse(s.until) > Date.now())) steers[String(s.email).toLowerCase()] = s.steer
+      }
+      steerCache = { at: Date.now(), steers }
+    })
+    .catch(() => {})
+}
+function steers() {
+  if (Date.now() - steerCache.at > 60e3) { steerCache.at = Date.now(); refreshSteers() }
+  return steerCache.steers
+}
+
+function readToken(file) {
+  try { return fs.readFileSync(file, 'utf8').trim() || null } catch { return null }
+}
+function candidates(dir = TOKENS_DIR) {
+  let names = []
+  try { names = fs.readdirSync(dir).filter((n) => n.includes('@')) } catch {}
+  return names.map((email) => ({ email: email.toLowerCase(), file: path.join(dir, email) }))
+}
+
+// Pure: choose one candidate given the gauge and the steers. Exported for the test.
+function pickAccount(cands, { usage = {}, steer = {} } = {}) {
+  if (!cands.length) return null
+  const g = (c) => usage[c.email] || usage[Object.keys(usage).find((k) => k.toLowerCase() === c.email)] || null
+  const known = cands.filter((c) => g(c) && Number.isFinite(Number(g(c).five_hour_pct)))
+  if (known.length !== cands.length) return cands.find((c) => c.email === DEFAULT_EMAIL) || cands[0]
+  const narrow = (set, pred) => { const k = set.filter(pred); return k.length ? k : set }
+  let pool = narrow(known, (c) => Number(g(c).five_hour_pct) < FIVE_HOUR_GATE_PCT)
+  pool = narrow(pool, (c) => steer[c.email] !== 'avoid')
+  const head = (c) => { const h = Number(g(c).headroom); return Number.isFinite(h) ? h : (100 - Number(g(c).five_hour_pct)) / 100 }
+  return [...pool].sort((a, b) =>
+    (steer[b.email] === 'hammer') - (steer[a.email] === 'hammer')
+    || head(b) - head(a)
+    || Number(g(a).five_hour_pct) - Number(g(b).five_hour_pct)
+    || (b.email === DEFAULT_EMAIL) - (a.email === DEFAULT_EMAIL))[0]
+}
+
+function readUsage() {
+  try {
+    const u = JSON.parse(fs.readFileSync(USAGE_FILE, 'utf8'))
+    const out = {}
+    for (const [k, v] of Object.entries(u.accounts || u)) if (k.includes('@') && v && typeof v === 'object') out[k.toLowerCase()] = v
+    return out
+  } catch { return {} }
+}
+
+/** The token file this spawn bills: the picked SSi account, else the default. */
+function tokenFile() {
+  const cands = candidates().filter((c) => readToken(c.file))
+  const c = pickAccount(cands, { usage: readUsage(), steer: steers() })
+  return c ? c.file : OAUTH_TOKEN_FILE
+}
+
 /** Merge the pinned config dir + auth into an env object for spawn/exec. */
 function claudeEnv(base = process.env) {
   const env = { ...base, CLAUDE_CONFIG_DIR }
   delete env.ANTHROPIC_API_KEY
   delete env.CLAUDECODE
-  try {
-    const token = fs.readFileSync(OAUTH_TOKEN_FILE, 'utf8').trim()
-    if (token) env.CLAUDE_CODE_OAUTH_TOKEN = token
-  } catch {
-    // No token file on this machine — keychain/stored credentials apply.
-  }
+  const token = readToken(tokenFile())
+  // No token file on this machine — keychain/stored credentials apply.
+  if (token) env.CLAUDE_CODE_OAUTH_TOKEN = token
   return env
 }
 
 /** Inline `export …` chain (no trailing separator) for shell/iTerm command strings. */
 function claudeConfigExport() {
+  const file = tokenFile()
   return [
     `export CLAUDE_CONFIG_DIR='${CLAUDE_CONFIG_DIR}'`,
     'unset ANTHROPIC_API_KEY CLAUDECODE',
-    `if [ -f '${OAUTH_TOKEN_FILE}' ]; then export CLAUDE_CODE_OAUTH_TOKEN="$(cat '${OAUTH_TOKEN_FILE}')"; fi`,
+    `if [ -f '${file}' ]; then export CLAUDE_CODE_OAUTH_TOKEN="$(cat '${file}')"; fi`,
   ].join(' && ')
 }
 
-module.exports = { CLAUDE_CONFIG_DIR, claudeEnv, claudeConfigExport }
+module.exports = { CLAUDE_CONFIG_DIR, claudeEnv, claudeConfigExport, pickAccount, candidates, FIVE_HOUR_GATE_PCT }
