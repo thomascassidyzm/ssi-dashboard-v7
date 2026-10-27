@@ -166,8 +166,9 @@ describe('RecordistRoom — the prompter layout', () => {
     expect(seen.map(s => s[1])).toEqual(["Dw i'n mynd i ddysgu Cymraeg", 'i ddysgu', 'dysgu Cymraeg', 'Bore da'])
     expect(seen[1][0]).toContain('LEGO')
     expect(seen[2][0]).toContain('Practice phrase')
-    // The line just read sits right under the line being read.
-    expect(w.find('.hear-bar').text()).toContain('dysgu Cymraeg')
+    // Nothing is inserted under the line after a read: the 'Hear stored clip' bar is gone (it made the page jump).
+    expect(w.find('.hear-bar').exists()).toBe(false)
+    expect(w.text()).not.toContain('Hear stored clip')
   })
 
   it('ends on the listen-back list: each take this session with ▶ and Again', async () => {

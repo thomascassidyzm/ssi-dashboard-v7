@@ -238,39 +238,6 @@ describe('RecordistRoom — recording and playing back can never both look live'
     expect(wrapper.find('.mic-word').text()).toContain('Recording')
     expect(wrapper.find('.mic-word').text()).not.toContain('Listening back')
   })
-
-  it('holds the microphone while a stored take plays, and gives the line back when it stops', async () => {
-    stubThreeLineQueue()
-    const wrapper = mount(RecordistRoom, { props: { voiceId: 'test-voice' } })
-    await flushPromises()
-    await wrapper.find('.btn-begin').trigger('click')
-    await flushPromises()
-    // Read the outstanding line so there is a "you just read" take to play.
-    await wrapper.find('.ctl-next').trigger('click')
-    await flushPromises()
-
-    recorderSpies.discardLine.mockClear()
-    recorderSpies.beginLine.mockClear()
-
-    const play = wrapper.find('.hear-bar button')
-    await play.trigger('click')
-    await flushPromises()
-
-    // The capture that was running is thrown away, and the screen says which of
-    // the two things is happening.
-    expect(recorderSpies.discardLine).toHaveBeenCalled()
-    expect(wrapper.find('.mic-word').text()).toBe('Listening back')
-    expect(wrapper.find('.mic').attributes('title')).toBe('Mic paused while you listen')
-    expect(wrapper.find('.meter').classes()).toContain('held')
-
-    // Stop, and the same line is re-opened clean — the playback is discarded
-    // rather than filed as the take.
-    await play.trigger('click')
-    await flushPromises()
-    expect(recorderSpies.beginLine).toHaveBeenCalled()
-    expect(wrapper.find('.mic-word').text()).toContain('Recording')
-    expect(wrapper.find('.mic').attributes('title')).not.toContain('paused')
-  })
 })
 
 
