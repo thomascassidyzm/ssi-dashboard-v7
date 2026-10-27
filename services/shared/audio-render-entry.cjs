@@ -30,6 +30,7 @@
 const chain = require('./chain-context.cjs')
 const trialMode = require('./audio-trial-mode.cjs')
 const drillCut = require('./drill-cut-guard.cjs')
+const paidWrite = require('./paid-write.cjs')
 
 const REQUIRED = ['courseCode', 'role', 'text', 'purpose', 'requestedBy']
 
@@ -73,6 +74,12 @@ function validate(input) {
     // job Tom has approved (tools/tts-cap.cjs approve) spends from its own
     // allowance up to the 300k ceiling instead of the automatic 100k (job #913).
     job: input.job ? String(input.job).slice(0, 100) : null,
+    // ADOPT (job #140): file an object a paid render already put in S3 but could not save a row for. No provider call.
+    adoptS3Key: input.adoptS3Key ? String(input.adoptS3Key) : null,
+  }
+  if (out.adoptS3Key) {
+    if (!paidWrite.isAdoptableKey(out.adoptS3Key)) throw new RenderRequestError('adoptS3Key must be a mastered/<UUID>.mp3 key phase8 wrote', 400, 'BAD_ADOPT_KEY')
+    if (out.trial || out.replaceAudioId || out.spokenText) throw new RenderRequestError('adoptS3Key files one paid-but-unsaved clip — trial, replaceAudioId and spokenText do not apply', 400, 'ADOPT_ALONE')
   }
   if (out.trial && (out.replaceAudioId || out.spokenText || out.legoId)) throw new RenderRequestError('a trial render connects to nothing — replaceAudioId, spokenText and legoId do not apply', 400, 'TRIAL_NO_LINKS')
   if (out.speed != null) {
@@ -93,6 +100,8 @@ function validate(input) {
  *   speak(text, provider, config, maxRetries) → { audioBuffer, wordBoundaries, existingClip, charsSpent }   the ONE door
  *   store({...req, language, voiceId, audioBuffer, wordBoundaries}) → { audioId, s3Key, durationMs }   master + S3 + course_audio row + clip_index
  *   linkLego({courseCode, legoId, audioId}) → { linked, previous }   optional; presentation role + legoId only, never in a dry run
+ *   adopt({...req, language, voiceId, s3Key, dryRun}) → { audioId, s3Key, durationMs }   optional; adoptS3Key only — files an
+ *        object already in S3 as the course_audio row (job #140), no provider call
  *   immersionTurn({language, text}) → { rowId, order, courseCode, audioId, voiceId } | null   optional; the served pod turn
  *        holding these words as one of its sentences (job #338: a Drill clip is cut from it, never rendered)
  * Re-record only (replaceAudioId):
@@ -117,6 +126,7 @@ async function renderClip(input, deps) {
   const req = validate(input)
   return chain.run(`render:${req.requestedBy}`, async () => {
     if (req.trial) return trialRender(req, deps)
+    if (req.adoptS3Key) return adoptPaid(req, deps)
     if (req.replaceAudioId) return rerecord(req, deps)
     const r = await deps.resolve(req)
     const ident = { ...req, language: r.language, voiceId: r.voiceId }
@@ -156,6 +166,23 @@ async function renderClip(input, deps) {
     const stored = await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
     return bindPresentation(req, { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
   })
+}
+
+/**
+ * ADOPT a paid-but-unsaved clip (job #140): the render was paid for, its object is in S3, its course_audio
+ * write failed. Library first (a clip for these words in this voice since → link that, the orphan stays
+ * unused), else deps.adopt files the existing object as the row. Never calls deps.speak: nothing is paid.
+ */
+async function adoptPaid(req, deps) {
+  if (!deps.adopt) throw new RenderRequestError('this service cannot adopt S3 objects', 501, 'NO_ADOPT')
+  const r = await deps.resolve(req)
+  const ident = { ...req, language: r.language, voiceId: r.voiceId }
+  const echo = { purpose: req.purpose, requestedBy: req.requestedBy, adoptS3Key: req.adoptS3Key, charsSpent: 0 }
+  const linked = await deps.link(ident)
+  if (linked) return bindPresentation(req, { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), ...linked, ...echo }, deps)
+  const adopted = await deps.adopt({ ...ident, s3Key: req.adoptS3Key, dryRun: req.dryRun })
+  if (req.dryRun) return { ok: true, source: 'would-adopt', dryRun: true, ...adopted, ...echo }
+  return bindPresentation(req, { ok: true, source: 'adopted', ...adopted, ...echo }, deps)
 }
 
 /**
