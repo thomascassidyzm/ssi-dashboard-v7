@@ -13,3 +13,8 @@ test('groups clips by voice and reports ids with no row', () => {
   assert.strictEqual(r.voices.cartesia_x.length, 1);
   assert.deepStrictEqual(r.missing, ['z']);
 });
+
+test('carries created_at, so a caller can tell a clip that already existed from one rendered later (job #751)', () => {
+  const rows = [{ id: 'a', voice_id: 'cartesia_x', origin: 'tts', role: 'known', course_code: 'c', text: 't', created_at: '2026-10-01T00:00:00Z' }];
+  assert.strictEqual(groupByVoice(['a'], rows).voices.cartesia_x[0].created_at, '2026-10-01T00:00:00Z');
+});

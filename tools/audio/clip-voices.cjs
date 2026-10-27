@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 // READ-ONLY: who made these clips? For each course_audio id (a JSON file: ["<uuid>", ...] or [{audio_id}, ...])
-// prints voice_id, origin, role, course and text, and groups the ids by voice. Built for job #98 (clips a text
+// prints voice_id, origin, role, course, text and created_at (job #751: tells a clip that already existed from one rendered later), and groups the ids by voice. Built for job #98 (clips a text
 // edit unlinked that sit on no booth voice's Re-record card). Reads by primary key through agent-db's door.
 //   node tools/audio/clip-voices.cjs <ids.json> [--out result.json]
 const fs = require('fs');
@@ -16,7 +16,7 @@ function groupByVoice(ids, rows) {
     const r = byId.get(id);
     if (!r) { missing.push(id); continue; }
     const v = r.voice_id || '(none)';
-    (voices[v] ||= []).push({ id, origin: r.origin, role: r.role, course: r.course_code, language: r.language, text: r.text, s3_key: r.s3_key });
+    (voices[v] ||= []).push({ id, origin: r.origin, role: r.role, course: r.course_code, language: r.language, text: r.text, s3_key: r.s3_key, created_at: r.created_at });
   }
   return { voices, missing };
 }
