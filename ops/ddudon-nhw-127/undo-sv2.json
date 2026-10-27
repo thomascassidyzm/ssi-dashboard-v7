@@ -1,0 +1,20 @@
+{
+ "course": "cym_sv2_for_eng",
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1147L03U06",
+   "set": {
+    "target_text": "ddwedodd hi welodd hi fi gyda fy ffrindiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1147L03B04",
+   "set": {
+    "target_text": "ddwedodd hi welodd hi fi"
+   }
+  }
+ ],
+ "apply": true
+}
