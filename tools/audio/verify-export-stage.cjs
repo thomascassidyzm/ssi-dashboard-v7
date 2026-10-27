@@ -38,6 +38,8 @@ async function main() {
   const oi = args.indexOf('--out');
   const out = oi >= 0 ? args.splice(oi, 2)[1] : null;
   if (!args[0]) { console.error('usage: verify-export-stage.cjs <pending_manifest.json> [--out result.json]'); process.exit(64); }
+  // S3 credentials come from the repo .env, as the API's own environment has them (no DB is touched).
+  require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env'), quiet: true });
   const { collectManifestUuids, verifyStageAudio } = require('../../services/s3-deploy-service.cjs');
   const manifest = JSON.parse(fs.readFileSync(args[0], 'utf8'));
   const uuids = collectManifestUuids(manifest);
