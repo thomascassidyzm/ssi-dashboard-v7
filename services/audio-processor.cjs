@@ -15,7 +15,6 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const execAsync = promisify(exec);
-const execFileAsync = promisify(execFile);
 
 // ffmpeg is invoked bare (PATH lookup) throughout this module. A `pm2 restart
 // --update-env` from a shell with a minimal PATH pushes that PATH into the
@@ -198,75 +197,33 @@ async function checkMp3Format(audioPath) {
 }
 
 /**
- * Get audio duration in seconds, measured the way `sox <file> -n stat` does.
- *
- * sox is NOT installed on watson-1 (production Popty). A sox-only version of
- * this function made every file in the legacy export's Stage 2 duration check
- * an error — 0 matched, 0 mismatched, 5,100 errors on ita_for_eng, 2026-10-27
- * (job #176). So ffprobe measures first and sox is only the fallback.
- *
- * The ffprobe measure is NOT ffprobe's format duration. For an MP3, sox's
- * Length is every decoded frame, untrimmed: frames x samples-per-frame / rate.
- * ffprobe's format duration applies LAME's gapless trim and comes out one to
- * two frames (24-36 ms at 48 kHz) shorter. Stage 2 compares at ZERO tolerance
- * and Stage 3 writes S3's measure back into the manifest and
- * course_audio.duration_ms, so a swap to format duration would have silently
- * rewritten ~58% of ita_for_eng's durations (116 of 200 sampled clips store
- * the frame length; the other 84 store the trimmed length phase8 now writes).
- * Changing which length is canonical is a decision, not a tooling swap.
+ * Get audio duration using sox stat (matches original Python workflow)
  *
  * @param {string} audioPath - Path to audio file
  * @returns {Promise<number>} Duration in seconds
  */
 async function getAudioDuration(audioPath) {
-  const failures = [];
   try {
-    return await ffprobeDuration(audioPath);
+    const { stderr } = await execAsync(`sox "${audioPath}" -n stat`);
+
+    // sox stat outputs to stderr
+    const match = stderr.match(/Length \(seconds\):\s+([\d.]+)/);
+
+    if (!match) {
+      throw new Error('Could not parse duration from sox output');
+    }
+
+    const duration = parseFloat(match[1]);
+
+    if (isNaN(duration)) {
+      throw new Error(`Invalid duration value: ${match[1]}`);
+    }
+
+    return duration;
   } catch (error) {
-    failures.push(`ffprobe: ${error.message}`);
+    throw new Error(`Failed to get audio duration with sox: ${error.message}`);
   }
-  try {
-    return await soxDuration(audioPath);
-  } catch (error) {
-    failures.push(`sox: ${error.message}`);
-  }
-  throw new Error(`Failed to get audio duration (${failures.join('; ')})`);
 }
-
-async function ffprobeDuration(audioPath) {
-  const { stdout } = await execFileAsync(DURATION_TOOLS.ffprobe, [
-    '-v', 'error', '-count_packets', '-select_streams', 'a:0',
-    '-show_entries', 'stream=codec_name,sample_rate,nb_read_packets:format=duration',
-    '-of', 'json', audioPath
-  ]);
-  const data = JSON.parse(stdout);
-  const stream = data.streams?.[0] || {};
-  if (stream.codec_name === 'mp3') {
-    const rate = parseInt(stream.sample_rate, 10);
-    const frames = parseInt(stream.nb_read_packets, 10);
-    if (!(rate > 0) || !(frames >= 0)) throw new Error(`unreadable mp3 stream (rate ${stream.sample_rate}, frames ${stream.nb_read_packets})`);
-    // MPEG-1 Layer III carries 1152 samples a frame; MPEG-2/2.5 (under 32 kHz) carry 576.
-    const samplesPerFrame = rate >= 32000 ? 1152 : 576;
-    return Number(((frames * samplesPerFrame) / rate).toFixed(6));
-  }
-  // Uncompressed/other formats have no encoder padding: the container length is sox's length.
-  const duration = parseFloat(data.format?.duration);
-  if (!Number.isFinite(duration)) throw new Error(`could not parse duration from ffprobe output`);
-  return duration;
-}
-
-async function soxDuration(audioPath) {
-  // sox stat writes to stderr
-  const { stderr } = await execFileAsync(DURATION_TOOLS.sox, [audioPath, '-n', 'stat']);
-  const match = stderr.match(/Length \(seconds\):\s+([\d.]+)/);
-  if (!match) throw new Error('could not parse duration from sox output');
-  const duration = parseFloat(match[1]);
-  if (!Number.isFinite(duration)) throw new Error(`invalid duration value: ${match[1]}`);
-  return duration;
-}
-
-// Binary names, overridable so a test can make one tool "missing".
-const DURATION_TOOLS = { ffprobe: 'ffprobe', sox: 'sox' };
 
 /**
  * Time-stretch audio (slow down or speed up without changing pitch)
@@ -1887,7 +1844,6 @@ module.exports = {
   EOS_ARTEFACT_GUARD_MS,
   checkSoxInstalled,
   getAudioDuration,
-  DURATION_TOOLS,
   checkMp3Format,
   timeStretchAudio,
   normalizeAudio,
