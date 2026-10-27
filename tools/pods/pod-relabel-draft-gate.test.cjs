@@ -99,3 +99,22 @@ describe('door 2 — the promote gate refuses unreviewed machine text (job #309)
     expect(promotionBlockers({ rows, srcId, course, fromSlug: 'pod-1-231' })).toEqual([])
   })
 })
+
+describe('draft_side lives in target_text_review, not a column (job #804)', () => {
+  // The live schema has no draft_side column; build-canonical-231-pod.cjs records it inside
+  // target_text_review. A `select *` row therefore never has row.draft_side.
+  it('treats an unapproved row whose review records draft_side as unreviewed', () => {
+    const row = { target_text_draft: false, target_text_approved_at: null,
+      target_text_review: { draft_side: 'known', note: 'machine draft' } }
+    expect(isUnreviewedMachineText(row)).toBe(true)
+  })
+  it('lets an approved row through', () => {
+    const row = { target_text_draft: false, target_text_approved_at: '2026-09-20T00:00:00Z',
+      target_text_review: { draft_side: 'known' } }
+    expect(isUnreviewedMachineText(row)).toBe(false)
+  })
+  it('the readiness SQL never names a draft_side column', () => {
+    const src = require('fs').readFileSync(require('path').join(__dirname, 'pod-switchover.cjs'), 'utf8')
+    expect(src).not.toMatch(/and draft_side is not null/)
+  })
+})

@@ -292,8 +292,10 @@ function planInflightFold ({ course, liveSlug, retiredSlug, promoteTo, plannedKe
 function isUnreviewedMachineText (row) {
   if (!row) return false
   if (row.target_text_draft) return true
-  if (row.draft_side && !row.target_text_approved_at) return true
   const review = row.target_text_review
+  // draft_side is NOT a column: build-canonical-231-pod.cjs records it inside target_text_review.
+  const draftSide = row.draft_side || (review && typeof review === 'object' ? review.draft_side : null)
+  if (draftSide && !row.target_text_approved_at) return true
   if (review && typeof review === 'object') {
     const was = (v) => String(v == null ? '' : v).trim()
     if (was(review.known_text_at_check) && was(review.known_text_at_check) !== was(row.known_text)) return true
@@ -420,7 +422,7 @@ async function main () {
             count(*) filter (where coalesce(btrim(known_text),'') = '') no_known_text,
             count(*) filter (where target_text_draft) draft,
             count(*) filter (where not coalesce(target_text_draft, false)
-                               and draft_side is not null
+                               and target_text_review->>'draft_side' is not null
                                and target_text_approved_at is null) unreviewed,
             count(*) filter (where target_audio_id is null) no_target_audio,
             count(*) filter (where known_audio_id is null) no_known_audio
