@@ -173,3 +173,29 @@ describe('who changed the words', () => {
     ])
   })
 })
+
+describe('one old take is the old words of two edited lines (job #159)', () => {
+  const ph = (id, text) => ({ id: `phrase:${C}:${id}:target2`, kind: 'phrase', courseCode: C, seedNumber: 1642, role: 'target2', text, recorded: false })
+  const b01 = ph('S1642L02B01', 'esgusodwch fi, sut dach chi’n teimlo?')
+  const b03 = ph('S1642L02B03', 'ond sut wyt ti’n teimlo?')
+  // B01 and B03 both used to say "ond sut dach chi'n teimlo?" and shared one recording of it.
+  const take = { id: 't1', text: 'ond sut dach chi’n teimlo?', text_normalized: 'ond sut dach chin teimlo', course_code: C, role: 'target2', seedNumber: 1642, created_at: '2026-10-15T15:46:00Z' }
+  const queue = queueOf([], { allPhraseLines: () => [b01, b03], phraseBatches: [] })
+  const pairIds = (m) => [...m.keys()].sort()
+
+  it('pairTextChanges gives the take to both lines, marking the second as shared', () => {
+    const m = rr.pairTextChanges([b01, b03], new Set(['x']), [take])
+    expect(pairIds(m)).toEqual([b01.id, b03.id].sort())
+    expect(m.shared.size).toBe(1)
+  })
+
+  it('withEditors keeps a shared line only when its own edit came after the take', () => {
+    const list = { items: [
+      { lineId: b01.id, why: 'text_changed', oldText: take.text, recordedAt: take.created_at },
+      { lineId: b03.id, why: 'text_changed', oldText: take.text, recordedAt: take.created_at, sharedTake: true, was: null },
+    ], pool: new Map(), firstIndex: new Map() }
+    const edited = rr.withEditors(list, new Map([[b03.id, { by: 'x', at: '2026-10-27T11:11:00Z' }]]))
+    expect(edited.items.map((i) => i.lineId)).toEqual([b01.id, b03.id])
+    expect(rr.withEditors(list, new Map()).items.map((i) => i.lineId)).toEqual([b01.id])
+  })
+})

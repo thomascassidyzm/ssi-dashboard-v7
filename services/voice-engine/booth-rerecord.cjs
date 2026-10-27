@@ -175,7 +175,27 @@ function pairTextChanges(lines, liveKeys, takes) {
     out.set(p.line.id, p.take)
     usedTakes.add(p.take.id)
   }
+  const claimedByRecorded = new Set()
+  for (const p of pairs) {
+    if (p.line.recorded && out.get(p.line.id) === p.take) claimedByRecorded.add(p.take.id)
+  }
   for (const p of pairs) if (p.line.recorded) out.delete(p.line.id)
+  // ONE OLD TAKE CAN BE THE OLD WORDS OF SEVERAL LINES (job #159). Two lines that said the same words
+  // were served by one recording; when both are edited the take can only be handed to one of them
+  // above, and the other — S1642L02B03 "ond sut wyt ti'n teimlo?", beaten for the take of "ond sut
+  // dach chi'n teimlo?" by B01 — dropped off the card with no old take at all. So a line still
+  // without a take may SHARE the one it most resembles. Shared pairs are marked (`out.shared`), as
+  // they are a guess the editor's time must back: see withEditors.
+  const sharedTakes = new Set()
+  const seen = new Set()
+  for (const p of pairs) {
+    if (p.line.recorded || out.has(p.line.id) || seen.has(p.line.id)) continue
+    seen.add(p.line.id) // pairs are sorted best first: this is the line's best take
+    if (!usedTakes.has(p.take.id) || claimedByRecorded.has(p.take.id) || p.s < 1 + MATCH_SAME_SEED) continue // sharing needs the seed to agree; a take a RECORDED line claimed (job #261) is never shared
+    out.set(p.line.id, p.take)
+    sharedTakes.add(p.line.id)
+  }
+  out.shared = sharedTakes
   return out
 }
 
@@ -238,8 +258,12 @@ function buildRerecordList(queue, takes = [], idx = indexQueue(queue)) {
   const { batches, pool, firstIndex, liveKeys } = idx
   const why = new Map()
   for (const b of batches) for (const l of skippedIn(b.lines)) why.set(l.id, { why: 'skipped' })
-  for (const [id, take] of pairTextChanges([...pool.values()].map((p) => p.line), liveKeys, takes)) {
-    why.set(id, { why: 'text_changed', oldText: take.text, recordedAt: take.created_at || null })
+  const paired = pairTextChanges([...pool.values()].map((p) => p.line), liveKeys, takes)
+  for (const [id, take] of paired) {
+    why.set(id, {
+      why: 'text_changed', oldText: take.text, recordedAt: take.created_at || null,
+      ...(paired.shared && paired.shared.has(id) ? { shared: true, was: why.get(id) || null } : {}),
+    })
   }
   const lines = courseOrder([...why.keys()].map((id) => pool.get(id).line), firstIndex)
   const items = lines.map((l) => {
@@ -252,6 +276,7 @@ function buildRerecordList(queue, takes = [], idx = indexQueue(queue)) {
       knownText: l.knownText || null,
       oldText: w.oldText || null,
       recordedAt: w.recordedAt || null,
+      ...(w.shared ? { sharedTake: true, was: w.was ? w.was.why : null } : {}),
       kind: l.kind || 'pod',
       courseCode: l.courseCode || null,
       seedNumber: l.seedNumber || null,
@@ -357,13 +382,22 @@ function editRowOf(lineId) {
  * was captured", never a guess — Tom, 2026-09-01) is left without one.
  */
 function withEditors(list, editors = new Map()) {
-  return {
-    ...list,
-    items: list.items.map((it) => {
-      const e = it.why === 'text_changed' && editors.get(it.lineId)
-      return e ? { ...it, changedBy: e.by || null, changedAt: e.at || null } : it
-    }),
+  const items = []
+  for (const it of list.items) {
+    const e = it.why === 'text_changed' && editors.get(it.lineId)
+    const out = e ? { ...it, changedBy: e.by || null, changedAt: e.at || null } : it
+    if (it.sharedTake) {
+      // A take shared with another line is a text change only when this line's own edit came after
+      // the take (job #159); with no edit on record it is not claimed.
+      const edited = e && e.at && it.recordedAt && new Date(e.at) > new Date(it.recordedAt)
+      if (!edited) {
+        if (it.was === 'skipped') items.push({ ...it, why: 'skipped', oldText: null, recordedAt: null, sharedTake: undefined, was: undefined })
+        continue
+      }
+    }
+    items.push(out)
   }
+  return { ...list, items }
 }
 
 module.exports = {
