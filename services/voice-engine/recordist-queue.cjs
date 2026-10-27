@@ -2948,20 +2948,34 @@ async function fetchEnglishLegoInputs(db, recordist) {
   const key = `${courses.join(',')}|${spellings.join(',')}`
   const hit = englishLegoInputCache.get(key)
   if (hit && Date.now() - hit.at < ENGLISH_LEGO_TTL_MS) return hit.value
-  const read = (table, columns) => pagedRead((from, to) => db.from(table).select(columns).in('course_code', courses).order('id').range(from, to))
-  const [legos, seeds, phrases, intros] = await Promise.all([
-    read('course_legos', 'id, course_code, seed_number, lego_index, lego_id, known_text, is_new, presentation_audio_id'),
-    read('course_seeds', 'id, known_text'),
-    read('course_practice_phrases', 'id, known_text'),
-    pagedRead((from, to) => db.from('course_audio').select('id').eq('role', 'presentation').in('voice_id', spellings).order('id').range(from, to)),
-  ])
-  const value = {
-    legos,
-    otherKnownTexts: [...seeds, ...phrases].map((r) => r.known_text).filter(Boolean),
-    ownIntroIds: new Set(intros.map((r) => String(r.id))),
+  // INDEX-SHAPED READS ONLY: the first version paged both courses' phrases by id and hit the statement timeout on
+  // staging, taking the whole booth summary down with it. Seeds and LEGOs read in course/seed order (fetchSeeds's
+  // shape), phrases in readCoursePhrases's 50-seed chunks, intro voices by id.
+  try {
+    const [legos, seeds] = await Promise.all([
+      pagedRead((from, to) => db.from('course_legos')
+        .select('id, course_code, seed_number, lego_index, lego_id, known_text, is_new, presentation_audio_id')
+        .in('course_code', courses).order('course_code').order('seed_number').order('lego_index').range(from, to)),
+      fetchSeeds(db, courses),
+    ])
+    const phrases = []
+    for (const c of courses) {
+      const maxSeed = Math.max(0, ...seeds.filter((s) => s.course_code === c).map((s) => s.seed_number))
+      if (maxSeed) phrases.push(...await readCoursePhrases(db, c, maxSeed))
+    }
+    const introVoices = await audioVoiceTextById(db, legos.map((l) => l.presentation_audio_id))
+    const value = {
+      legos,
+      otherKnownTexts: [...seeds, ...phrases].map((r) => r.known_text).filter(Boolean),
+      ownIntroIds: new Set([...introVoices].filter(([, v]) => spellings.includes(v.voice)).map(([id]) => String(id))),
+    }
+    englishLegoInputCache.set(key, { at: Date.now(), value })
+    return value
+  } catch (err) {
+    // An extra card that cannot be read is an absence, never a booth that will not open.
+    console.warn(`[Recordist] English LEGO cards unavailable for ${recordist.voiceId}: ${err.message}`)
+    return hit ? hit.value : {}
   }
-  englishLegoInputCache.set(key, { at: Date.now(), value })
-  return value
 }
 
 /**
