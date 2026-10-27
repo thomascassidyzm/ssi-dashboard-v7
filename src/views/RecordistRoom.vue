@@ -764,6 +764,7 @@ import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStored
 import { createAdvanceLock } from './recordist/advance-lock'
 import { cursorScopeKey, loadCursor, saveCursor, clearCursor } from './recordist/booth-cursor.js'
 import { takeTargetAt, resolveTakeTarget } from './recordist/take-target.js'
+import { twinKey, saidTwinKeys } from './recordist/spoken-words.js'
 import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
@@ -1412,7 +1413,18 @@ function plainText(text) { return segmentsFor(text).map(s => s.text).join('') }
 // A FAILED take is deliberately NOT settled. That line does still need reading,
 // and it is the one case where offering it again is the whole point.
 // A take that saved but did not match its words is not settled either (job #842): it is owed again.
-function isSettled(l) { return (isRecorded(l) && !hasMismatch(l.id)) || isPending(l.id) }
+function ownSettled(l) { return (isRecorded(l) && !hasMismatch(l.id)) || isPending(l.id) }
+// ONE TAKE SERVES EVERY LINE OF THE SAME WORDS (Aran's standing rule, job #198). A seed sentence,
+// the LEGO of exactly its words, a practice phrase that says them: once one is said, its twins are
+// settled too, at once — the server fills their slots from that one take (fillSameWordsSlots).
+// `closingTwinKeys` holds the line he has just moved on from, whose take has not landed yet.
+const closingTwinKeys = ref(new Set())
+const saidKeys = computed(() => saidTwinKeys(lines.value, ownSettled, closingTwinKeys.value))
+function isSettled(l) {
+  if (ownSettled(l)) return true
+  const k = twinKey(l)
+  return !!k && saidKeys.value.has(k)
+}
 
 // THE READING FLOW (Aran, 2026-10-15, job #816: "when I open a new batch, quite often several
 // of them are marked green already ... I'm given those to re-record again in the flow with the
@@ -2460,6 +2472,10 @@ async function onNext(source = 'tap', to = 'next') {
     // tail is done.
     const target = takeTargetAt(lines.value, i)
     const pending = recorder.endLine()
+    // The words he has just said are said: their twins leave the flow BEFORE the next line is
+    // picked (job #198), not when the take lands a tail-length later.
+    const closingKey = hadSpeech === false ? null : twinKey(lines.value[i])
+    if (closingKey) closingTwinKeys.value = new Set([...closingTwinKeys.value, closingKey])
     // ONE LINE ON, never a scan (THE ONE CURSOR). On the last line this is Done.
     const n = to === 'unrecorded' ? nextIndexFrom(i) : nextFlowFrom(i)
     if (n !== -1) {
@@ -2478,6 +2494,12 @@ async function onNext(source = 'tap', to = 'next') {
       if (hadSpeech === false) return
       if (hadSpeech === null && target && lines.value.some(l => l.id === target.id && (isRecorded(l) || isPending(l.id)))) return
       commit(target, blob, hadSpeech, advance)
+    }).finally(() => {
+      // The take has landed (its line is now settled on its own) or was refused (its twins are
+      // owed again): either way the line's own state speaks for its twins from here.
+      if (closingKey && closingTwinKeys.value.has(closingKey)) {
+        const next = new Set(closingTwinKeys.value); next.delete(closingKey); closingTwinKeys.value = next
+      }
     })
     if (n === -1) {
       await pending

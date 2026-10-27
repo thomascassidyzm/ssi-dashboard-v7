@@ -19,7 +19,7 @@
  *   - Component phrases are never played (cycles.ts), so they are never queued.
  *   - A phrase whose text is the LEGO's own (the debut) is never played as a phrase either — the
  *     player claims the debut first — so it is never queued.
- *   - DEDUPED BY EXACT TEXT (normalizeForDb, the seed queue's own key): one take fills every copy.
+ *   - DEDUPED BY SPOKEN WORDS (shared/spoken-words.cjs, job #198; was normalizeForDb): one take fills every copy.
  *     Welsh dedupes within its course (one dialect, one voice); the English known side dedupes
  *     across both courses, because Aran reads it once for North and South. A text needed in
  *     pass 1 anywhere is a pass-1 line; it belongs to the batch of the first seed that needs it.
@@ -37,6 +37,7 @@
 'use strict'
 
 const { normalizeForDb } = require('../shared/text-normalize.cjs')
+const { spokenWordsKey } = require('../shared/spoken-words.cjs')
 
 /** The courses whose practice phrases are recorded in the booth, with the word the reader sees. */
 const PHRASE_QUEUE_COURSES = Object.freeze({
@@ -184,7 +185,8 @@ function courseRoleLines(courseCode, units, role, { holderOf, isMine, flagged = 
       if (!text) return
       const holder = holderOf(u.phrase, role)
       if (holder && !isMine(holder)) return
-      const key = normalizeForDb(text)
+      // Deduped by SPOKEN WORDS (job #198): a '?' or a curly apostrophe is not a second recording.
+      const key = spokenWordsKey(text)
       const copy = { phraseId: u.phrase.id, courseCode, holder: holder || null, flagged: flagged.has(u.phrase.id) }
       const have = lines.get(key)
       if (have) { have.copies.push(copy); return }
@@ -196,7 +198,8 @@ function courseRoleLines(courseCode, units, role, { holderOf, isMine, flagged = 
         text,
         // The crib: the other side of the same phrase.
         knownText: role === 'known' ? (u.phrase.target_text || null) : (u.phrase.known_text || null),
-        textNormalized: key,
+        textNormalized: normalizeForDb(text),
+        wordsKey: key,
         phraseId: u.phrase.id,
         phraseRole: u.phrase.phrase_role === 'use' ? 'use' : 'build',
         seedNumber: u.phrase.seed_number,
@@ -275,9 +278,10 @@ function mergeAcrossCourses(lineLists) {
     (a.readingOrder - b.readingOrder))
   const byText = new Map()
   for (const line of all) {
-    const have = byText.get(line.textNormalized)
+    const k = line.wordsKey || spokenWordsKey(line.text)
+    const have = byText.get(k)
     if (have) { have.copies.push(...line.copies); continue }
-    byText.set(line.textNormalized, { ...line, copies: [...line.copies] })
+    byText.set(k, { ...line, copies: [...line.copies] })
   }
   return [...byText.values()]
 }

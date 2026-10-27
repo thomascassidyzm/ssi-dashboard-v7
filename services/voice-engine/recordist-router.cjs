@@ -62,6 +62,8 @@ const {
   isLegoQueueCourse,
   parseLegoLineId,
   linkLegoTake,
+  fillSameWordsSlots,
+  sameWordsGaps,
   warmLanguageQueues,
   voiceTakes,
 } = require('./recordist-queue.cjs')
@@ -1186,6 +1188,9 @@ module.exports = function createRecordistRouter({
       } catch (linkErr) {
         logger.error(`[Recordist] seed link failed (take is stored and filed): ${linkErr.message}`)
       }
+      // ...and every LEGO / phrase slot of the same spoken words, in any course (job #198: the LEGO
+      // of exactly a seed's words was asked for again straight after the seed, 10 times on 27 Oct).
+      await fillSameWordsSlots({ db: db(), recordist, role: parsed.role, text: resolved.text, audioId, logger })
     } else {
       logger.error(`[Recordist] seed take for ${resolved.seed.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
     }
@@ -1814,6 +1819,8 @@ module.exports = function createRecordistRouter({
       } catch (linkErr) {
         logger.error(`[Recordist] phrase link failed (take is stored and filed): ${linkErr.message}`)
       }
+      // ...and every seed / LEGO slot of the same spoken words (job #198).
+      await fillSameWordsSlots({ db: db(), recordist, role: parsed.role, text: resolved.text, audioId, logger })
     } else {
       logger.error(`[Recordist] phrase take for ${resolved.phrase.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
     }
@@ -1931,6 +1938,8 @@ module.exports = function createRecordistRouter({
       } catch (linkErr) {
         logger.error(`[Recordist] lego link failed (take is stored and filed): ${linkErr.message}`)
       }
+      // ...and every seed / phrase slot of the same spoken words (job #198).
+      await fillSameWordsSlots({ db: db(), recordist, role: parsed.role, text: resolved.text, audioId, logger })
     } else {
       logger.error(`[Recordist] lego take for ${resolved.lego.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
     }
@@ -2464,6 +2473,30 @@ module.exports = function createRecordistRouter({
       res.json({ voiceId: recordist.voiceId, takes })
     } catch (err) {
       logger.error(`[Recordist] latest-takes: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // ── 3a2. the same-words back-fill plan (job #198) ──────────────────────────
+  // Every empty seed / LEGO / phrase slot whose words this voice has already recorded, as edit-door
+  // ops. READ ONLY: tools/recording/fill-same-words-gaps.cjs posts them to the edit door. A signed
+  // agent holding takes:read, or a god admin.
+  router.get('/voice/:voiceId/same-words-gaps', async (req, res) => {
+    try {
+      const agent = req.headers['x-agent-admin'] ? await requireAdminOrAgent(req, res, 'takes:read') : null
+      if (req.headers['x-agent-admin'] && !agent) return
+      let user = agent
+      if (!user) {
+        if (typeof requireDashboardUser !== 'function') return res.status(501).json({ error: 'Sign-in is not wired up on this service.' })
+        user = await requireDashboardUser(req, res)
+        if (!user) return
+        if (!isGodAdmin(user)) return res.status(403).json({ error: 'Admins only.' })
+      }
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+      res.json(await sameWordsGaps({ db: db(), recordist }))
+    } catch (err) {
+      logger.error(`[Recordist] same-words-gaps: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })
     }
   })
