@@ -55,7 +55,7 @@ async function readRecorders() {
 }
 
 const EVENTS_SQL = `
-  SELECT occurred_at, course_code, operation, actor_id, actor_label, actor_role,
+  SELECT occurred_at, course_code, operation, surface, actor_id, actor_label, actor_role, actor_verified,
          scope->'seed_numbers' AS seeds,
          CASE WHEN jsonb_typeof(scope->'lego_ids') = 'array' THEN jsonb_array_length(scope->'lego_ids') ELSE 0 END AS legos,
          CASE WHEN jsonb_typeof(scope->'phrase_ids') = 'array' THEN jsonb_array_length(scope->'phrase_ids') ELSE 0 END AS phrases,
@@ -88,29 +88,70 @@ async function tryQuery(pg, label, sql, params, gaps) {
   }
 }
 
+// What the recorders actually SENT (Kai's calibration check, 2026-10-27): one recording_provenance
+// row per booth upload, re-reads included; quality_notes carries the slot's voice id and the clip it
+// landed on as JSON (services/recording-upload-helpers.cjs buildProvenanceContext). Rows whose notes
+// are not JSON have no voice and are counted under a null voice_id, reported as unattributable.
+const UPLOADS_SQL = `
+  SELECT n.notes->>'voice_id' AS voice_id, count(*)::int AS takes,
+         count(DISTINCT n.notes->>'course_audio_id')::int AS clips, max(p.recorded_at) AS last
+    FROM recording_provenance p
+    CROSS JOIN LATERAL (SELECT CASE WHEN p.quality_notes::text LIKE '{%' THEN p.quality_notes::text::jsonb END AS notes) n
+   WHERE p.recorded_at >= $1
+   GROUP BY 1`
+
+// Saves made by agents and services this week, per course: never anyone's numbers, shown beside them.
+const AGENT_EDITS_SQL = `
+  SELECT e.course_code, e.actor_kind, count(DISTINCT e.id)::int AS saves, count(DISTINCT s.v)::int AS seeds,
+         string_agg(DISTINCT e.actor_label, ', ') AS labels
+    FROM content_edit_events e
+    LEFT JOIN LATERAL jsonb_array_elements_text(
+      CASE WHEN jsonb_typeof(e.scope->'seed_numbers') = 'array' THEN e.scope->'seed_numbers' ELSE '[]'::jsonb END) AS s(v) ON true
+   WHERE e.occurred_at >= $1 AND e.actor_kind <> 'human'
+   GROUP BY 1, 2
+   ORDER BY 3 DESC`
+
 async function gather({ now, days }) {
   const since = now - days * 24 * 3600 * 1000
   const gaps = []
-  const d = { now, since, gaps, recorders: {}, builders: {}, proof: {} }
-
-  try { d.recorders = { rows: lib.recorderRows(await readRecorders(), now) } } catch (e) {
-    d.recorders = { error: `the booth overview could not be built (${e.message}).` }
-  }
+  const d = { now, since, gaps, recorders: {}, builders: {}, proof: {}, agents: null }
 
   const agentDb = require('../../services/shared/agent-db.cjs')
-  let pg
+  let pg = null
   try { pg = await agentDb.connect({ app: 'tool:weekly-people-report' }) } catch (e) {
     const msg = `the database could not be reached (${e.message}).`
     d.builders = { error: msg }; d.proof = { error: msg }
-    return finishGaps(d)
   }
   try {
+    let uploads = null
+    if (pg) {
+      const wk = await tryQuery(pg, 'Booth uploads (recording_provenance)', UPLOADS_SQL, [new Date(since).toISOString()], gaps)
+      const all = wk ? await tryQuery(pg, 'All-time booth uploads (recording_provenance)', UPLOADS_SQL, [new Date(0).toISOString()], gaps) : null
+      if (wk && all) {
+        uploads = { week: lib.uploadMap(wk), all: lib.uploadMap(all) }
+        const anon = wk.filter((r) => !r.voice_id).reduce((s, r) => s + r.takes, 0)
+        if (anon) gaps.push(`${n(anon)} booth uploads this week carry no voice in their provenance notes, so they are not credited to any recorder.`)
+      }
+    }
+    try { d.recorders = { rows: lib.recorderRows(await readRecorders(), now, uploads) } } catch (e) {
+      d.recorders = { error: `the booth overview could not be built (${e.message}).` }
+    }
+    if (d.recorders.rows && uploads) {
+      // Uploads whose voice is no artist the booth lists today: say so rather than drop them.
+      const known = new Set(d.recorders.rows.flatMap((r) => r.spellings || [r.voiceId]))
+      const stray = [...uploads.week.entries()].filter(([v, u]) => v && !known.has(v) && u.takes > 0)
+      if (stray.length) gaps.push(`Booth uploads this week under voices the booth does not list as an artist: ${stray.map(([v, u]) => `${v} ${n(u.takes)}`).join(', ')}.`)
+    }
+    if (!pg) return finishGaps(d)
+
     const users = await tryQuery(pg, 'Popty logins (dashboard_users)', 'SELECT email, name, role, courses, invited_at FROM dashboard_users', [], gaps)
     const events = await tryQuery(pg, 'The edit log (content_edit_events)', EVENTS_SQL, [], gaps)
     // All-time approvals would credit every seed ever approved; the approver can only be read for
     // approvals that are still standing, so all-time is "approved and still approved".
     const approvals = await tryQuery(pg, 'Seed approvals (course_seeds)', APPROVALS_SQL, [new Date(0).toISOString()], gaps)
     const proofFlags = await tryQuery(pg, 'LEGO and phrase proof flags', FLAGS_SQL, [], gaps)
+    const agents = await tryQuery(pg, 'Agent and tool edits (content_edit_events)', AGENT_EDITS_SQL, [new Date(since).toISOString()], gaps)
+    d.agents = agents ? agents.map((a) => ({ ...a, labels: a.labels && a.labels.length > 90 ? `${a.labels.slice(0, 90)}…` : a.labels })) : null
 
     if (!events) d.builders = { error: 'the edit log could not be read.' }
     else d.builders = lib.builderRows(users || [], events, since, now)
@@ -123,14 +164,17 @@ async function gather({ now, days }) {
       d.proof.courseProgress = Object.fromEntries((prog || []).map((r) => [r.course_code, r]))
     }
     if (!users) gaps.push('Without dashboard_users, nobody can be told apart as a builder (role editor), so section 2 is empty for that reason.')
-  } finally { await pg.end().catch(() => {}) }
+  } finally { if (pg) await pg.end().catch(() => {}) }
   return finishGaps(d)
 }
+
+const n = (x) => Number(x || 0).toLocaleString('en-GB')
 
 /** The standing blind spots, said every week so a zero is never mistaken for a fact. */
 function finishGaps(d) {
   d.gaps.push(
-    'Recorders: a re-read of a line replaces its clip in place, so "lines recorded" counts lines read for the first time, not attempts or re-reads.',
+    'Recorders: "takes uploaded" counts every booth upload, re-reads included (recording_provenance). "Clips stored" counts new clip rows under the voice: a re-read replaces its clip in place and adds none, while one take can become several clips (the same words stored for more than one course, or a long take cut into lines). Neither number is an estimate; they answer different questions.',
+    'Proofreading done outside Popty — notes sent in by email or document and applied by agents (Deborah\'s deu_for_eng notes, for example) — is recorded against the agent that applied it, never the proofreader. Popty does not record whose notes an agent was applying, so that work shows only as agent saves in the course (listed above). Flags and notes proofreaders leave themselves on the LEGO and phrase proof pages ARE counted, by their email.',
     'Proofreading: the stand-alone proofread tool (tools/proofread) records neither who approved a seed nor its per-phrase OK/flag ticks in the database — the ticks stay in a file on the machine it runs on. Its approvals are counted per course as "no approver recorded"; its phrase checks and flags are not visible here.',
     'Proofreading: "approved" means approved and still approved now. A seed approved and later unapproved by a fix no longer counts, and the approver is only known when the approval came through a Popty route that records the person.',
     'LEGO and phrase proof flags keep only their latest state, so a flag raised and cleared within the week does not show.',

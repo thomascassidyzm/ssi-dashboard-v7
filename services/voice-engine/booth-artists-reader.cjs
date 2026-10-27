@@ -137,6 +137,9 @@ function createArtistsReader({ getDb, logger = console, now = () => Date.now() }
   function headline(artist, work, t) {
     return {
       voiceId: artist.voiceId,
+      // Every spelling of this voice id (job #501): the people report joins booth uploads
+      // (recording_provenance, keyed by the slot's voice id) to the artist through these.
+      spellings: artist.recordist ? artist.recordist.spellings : [artist.voiceId],
       name: artist.name,
       language: artist.language,
       languageName: artist.languageName,
