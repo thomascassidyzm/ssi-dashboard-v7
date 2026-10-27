@@ -191,7 +191,8 @@ function editOps(p, clips) {
     if (g.sides.known) links.push({ op: 'audio.link', target: 'phrase', phrase_id: pid(g.id), slot: 'known', audio_id: get('known', g.set.known_text) });
     if (g.sides.target) for (const slot of ['target1', 'target2']) links.push({ op: 'audio.link', target: 'phrase', phrase_id: pid(g.id), slot, audio_id: get(slot, g.set.target_text) });
   }
-  for (const s of p.unapprove) ops.push({ op: 'seed.update', seed_number: s.seed_number, set: { approved_at: null }, expect: { approved_at: s.approved_at } });
+  // No before-state on approved_at: the API and the engine spell the same timestamp differently, and clearing it is idempotent.
+  for (const s of p.unapprove) ops.push({ op: 'seed.update', seed_number: s.seed_number, set: { approved_at: null } });
   return ops.concat(links);
 }
 
