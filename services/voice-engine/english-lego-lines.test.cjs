@@ -27,6 +27,16 @@ describe('English LEGO lines', () => {
   ]
   const lines = el.englishLegoLinesFor(ARAN, { legos, otherKnownTexts: ['welsh'], ownIntroIds: new Set(['aran-intro']) })
 
+  it('a LEGO whose old intro (someone else\'s) quotes other English than it says now is wanted again (job #485)', () => {
+    const stale = [
+      lego('t1', 'cym_nv2_for_eng', 4, 1, 'you didn’t get', { presentation_audio_id: 'old' }),
+      lego('t2', 'cym_nv2_for_eng', 4, 2, 'today', { presentation_audio_id: 'ok' }),
+    ]
+    const introTexts = new Map([['old', "The Welsh for 'you didn’t have' is 'chest ti ddim'."], ['ok', "The Welsh for 'today' is 'heddiw'."]])
+    expect(el.englishLegoLinesFor(ARAN, { legos: stale, introTexts }).map((l) => l.id)).toEqual(['englego:t1'])
+    expect(el.englishLegoLinesFor(ARAN, { legos: stale }).map((l) => l.id)).toEqual([])
+  })
+
   it('one line per spoken words, North first, seeds/phrases/old/others-intro LEGOs left off', () => {
     expect(lines.map((l) => [l.id, l.courseCode, l.text])).toEqual([
       ['englego:n1', 'cym_nv2_for_eng', 'I want'],
