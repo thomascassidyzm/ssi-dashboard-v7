@@ -69,6 +69,7 @@ const { enableRewarmAfterInvalidate, onLanguageQueueInvalidated } = require('./r
 const { invalidateArtistSummaries } = require('./booth-artists-summary-cache.cjs')
 const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
+const introPieces = require('./intro-piece-lines.cjs')
 const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
 const boothActorQueue = require('./booth-actor-queue.cjs')
@@ -1593,6 +1594,66 @@ module.exports = function createRecordistRouter({
   }
 
   /**
+   * AN INTRO PIECE (job #210, intro-piece-lines.cjs): "The Welsh for" / "is", read once by the voice whose takes make a
+   * course's LEGO intros. Filed as an English known-side take of that voice, through the same upload seam as a seed;
+   * it fills no slot itself — the intro splice finds it by voice and words.
+   */
+  async function recordIntroPieceTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = introPieces.resolveIntroPiece(parsed, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    if (text && text.trim() && text.trim() !== resolved.text) {
+      return res.status(409).json({ error: 'The text on this line has changed since the queue was loaded -- reload before recording it.', expected: resolved.text, received: text.trim() })
+    }
+    const { res: innerRes, captured } = captureResponse()
+    await handleRecordingUpload({
+      params: { courseCode: resolved.courseCode },
+      headers: { authorization: req.headers.authorization },
+      socket: req.socket,
+      recordistVoiceId: recordist.voiceId,
+      recordistLineId: parsed.raw,
+      body: {
+        audioData: audioBase64,
+        mimeType,
+        metadata: { mode: 'script', cadence: 'natural', role: 'known', kind: 'intro-piece', text: resolved.text, voiceId: recordist.voiceId },
+        provenance: { recorded_by: recordist.email || recordist.displayName, mode: 'recordist', recording_device: device || null },
+      },
+    }, innerRes)
+    if (captured.status >= 400 || !captured.body || !captured.body.success) {
+      return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
+    }
+    const filing = captured.body.filing || null
+    if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
+    const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
+    if (!audioId) logger.error(`[Recordist] intro piece take ${parsed.raw} was NOT filed as a clip: ${filing && filing.reason}`)
+    return res.json({
+      ok: true, audioId, kind: 'intro', role: 'known',
+      clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(parsed.raw)}/clip`,
+      rawKey: captured.body.rawKey || null,
+      filing,
+    })
+  }
+
+  /** Play back an intro piece: this voice's newest English take of the words. */
+  async function introPieceClipResponse(req, res, recordist, parsed) {
+    const resolved = introPieces.resolveIntroPiece(parsed, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    const { data, error } = await db()
+      .from('course_audio')
+      .select('id, s3_key')
+      .eq('language', recordist.language)
+      .in('voice_id', recordist.spellings)
+      .in('text_normalized', audioKeyCandidates(resolved.text))
+      .order('created_at', { ascending: false })
+      .limit(1)
+    if (error) throw new Error(`intro piece clip lookup failed: ${error.message}`)
+    const row = data && data[0]
+    if (!row) return res.status(404).json({ error: 'No stored take for this line yet', reason: 'no_take' })
+    const url = await s3.getAudioSignedUrl(row.id, 3600, { s3Key: row.s3_key })
+    if (req.query.json === '1') return res.json({ audioId: row.id, s3Key: row.s3_key, url, variant: 'processed' })
+    res.redirect(302, url)
+  }
+
+  /**
    * Play back a minimal-set take. Resolved by CLIP IDENTITY rather than by a
    * foreign key, because a fallback word has no row that owns it -- and because
    * the LEGO's own slot may point at somebody else's clip, which is not this
@@ -2094,6 +2155,12 @@ module.exports = function createRecordistRouter({
 
       // A MINIMAL-SET piece. Same reasoning as the seed branch: `quarry:...` is
       // not a uuid, so it must never reach the pod lookup below.
+      // An INTRO PIECE (job #210). `intropiece:...` is not a uuid either.
+      const introPieceLine = introPieces.parseIntroPieceLineId(lineId)
+      if (introPieceLine) {
+        return await recordIntroPieceTake({ req, res, recordist, parsed: { ...introPieceLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
+
       const quarryLine = parseQuarryLineId(lineId)
       if (quarryLine) {
         return await recordQuarryTake({ req, res, recordist, parsed: { ...quarryLine, raw: lineId }, text, audioBase64, mimeType, device })
@@ -2339,6 +2406,9 @@ module.exports = function createRecordistRouter({
 
       const seedLine = parseSeedLineId(req.params.lineId)
       if (seedLine) return await seedClipResponse(req, res, recordist, { ...seedLine, raw: req.params.lineId })
+
+      const introPieceLine = introPieces.parseIntroPieceLineId(req.params.lineId)
+      if (introPieceLine) return await introPieceClipResponse(req, res, recordist, { ...introPieceLine, raw: req.params.lineId })
 
       const quarryLine = parseQuarryLineId(req.params.lineId)
       if (quarryLine) return await quarryClipResponse(req, res, recordist, quarryLine)
