@@ -253,3 +253,27 @@ describe('ell: a Tom-cast Azure row is the cast (job #910)', () => {
     expect(gate.castAllowsVoice('ell', ATHINA, draft)).toMatchObject({ allowed: false, reason: 'draft-cast' })
   })
 })
+
+describe('ara_eg/ara_lb/ara_sy: a Kai-cast Azure row is the cast (job #424)', () => {
+  const SALMA = 'azure_ar-EG-SalmaNeural'
+  const ZAIN = 'cartesia_zain-draft'
+  const rows = [
+    { language: 'ara_eg', voice_id: SALMA, assigned_by: 'kai-key:kai-417-cast', notes: '' },
+    { language: 'ara_eg', voice_id: 'azure_ar-EG-ShakirNeural', assigned_by: 'kai-key:kai-417-cast', notes: '' },
+    { language: 'ara_eg', voice_id: ZAIN, assigned_by: 'e2e@ssi-test.invalid', notes: 'draft casting 2026-10-03' },
+    { language: 'ara_lb', voice_id: 'azure_ar-LB-LaylaNeural', assigned_by: 'kai-key:kai-417-cast', notes: '' },
+    { language: 'ara_sy', voice_id: 'azure_ar-SY-AmanyNeural', assigned_by: 'kai-key:kai-417-cast', notes: '' },
+  ]
+  it('allows the cast Azure voice for each variety, despite a leftover Cartesia draft row', () => {
+    expect(gate.castAllowsVoice('ara_eg', SALMA, rows)).toMatchObject({ allowed: true, draftOnly: [ZAIN] })
+    expect(gate.castAllowsVoice('ara_lb', 'azure_ar-LB-LaylaNeural', rows)).toMatchObject({ allowed: true })
+    expect(gate.castAllowsVoice('ara_sy', 'azure_ar-SY-AmanyNeural', rows)).toMatchObject({ allowed: true })
+  })
+  it('the leftover Cartesia draft voice is still refused', () => {
+    expect(gate.castAllowsVoice('ara_eg', ZAIN, rows)).toMatchObject({ allowed: false, reason: 'not-in-cast' })
+  })
+  it('does not widen plain ara: an Azure row there is still not the cast', () => {
+    const ara = [{ language: 'ara', voice_id: 'azure_ar-SA-ZariyahNeural', assigned_by: 'kai-key:kai-417-cast', notes: '' }]
+    expect(gate.castAllowsVoice('ara', 'azure_ar-SA-ZariyahNeural', ara)).toMatchObject({ allowed: false, reason: 'uncast' })
+  })
+})
