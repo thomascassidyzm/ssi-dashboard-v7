@@ -1,0 +1,64 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1647L01B04",
+   "set": {
+    "known_text": "do you speak Welsh at the moment?",
+    "target_text": "wyt ti’n siarad Cymraeg ar hyn o bryd?"
+   },
+   "expect": {
+    "known_text": "you speak it madam at the moment",
+    "target_text": "ŷch chi’n siarad hi madam ar hyn o bryd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1647L01U04",
+   "set": {
+    "known_text": "so, do you speak Welsh at the moment?",
+    "target_text": "felly, wyt ti’n siarad Cymraeg ar hyn o bryd?"
+   },
+   "expect": {
+    "known_text": "so you speak it madam at the moment",
+    "target_text": "felly ŷch chi’n siarad hi madam ar hyn o bryd"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1647L01U06",
+   "set": {
+    "known_text": "probably, do you speak Welsh?",
+    "target_text": "mwy na thebyg, wyt ti’n siarad Cymraeg?"
+   },
+   "expect": {
+    "known_text": "probably you speak it madam",
+    "target_text": "mwy na thebyg ŷch chi’n siarad hi madam"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1647L01U01",
+   "set": {
+    "known_text": "great, do you speak Welsh? thank you",
+    "target_text": "bendigedig, wyt ti’n siarad Cymraeg? diolch"
+   },
+   "expect": {
+    "known_text": "great you speak it madam thank you",
+    "target_text": "bendigedig ŷch chi’n siarad hi madam diolch"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1647L01U05",
+   "set": {
+    "known_text": "great, do you speak Welsh?",
+    "target_text": "bendigedig, wyt ti’n siarad Cymraeg?"
+   },
+   "expect": {
+    "known_text": "great you speak it madam",
+    "target_text": "bendigedig ŷch chi’n siarad hi madam"
+   }
+  }
+ ]
+}

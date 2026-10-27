@@ -1,0 +1,40 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1647L01B01",
+   "set": {
+    "known_text": "now, do you speak Welsh?",
+    "target_text": "rŵan, wyt ti’n siarad Cymraeg?"
+   },
+   "expect": {
+    "known_text": "now, do you speak Welsh?",
+    "target_text": "rŵan, dach chi’n siarad Cymraeg?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1647L01B02",
+   "set": {
+    "known_text": "at the moment, do you speak Welsh?",
+    "target_text": "ar hyn o bryd, wyt ti’n siarad Cymraeg?"
+   },
+   "expect": {
+    "known_text": "at the moment, do you speak Welsh?",
+    "target_text": "ar hyn o bryd, dach chi’n siarad Cymraeg?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1647L01B04",
+   "set": {
+    "known_text": "probably, do you speak Welsh?",
+    "target_text": "mwy na thebyg, wyt ti’n siarad Cymraeg?"
+   },
+   "expect": {
+    "known_text": "probably, do you speak Welsh?",
+    "target_text": "mwy na thebyg, dach chi’n siarad Cymraeg?"
+   }
+  }
+ ]
+}
