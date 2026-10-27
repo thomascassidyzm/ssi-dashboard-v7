@@ -55,6 +55,7 @@ const { isRetiredPod } = require('../../tools/pods/serving-slug.cjs')
 const voiceConfigService = require('../voice-config-service.cjs')
 const { toBcp47 } = require('../voice-discovery-service.cjs')
 const audioProcessor = require('../audio-processor.cjs')
+const paidWrite = require('../shared/paid-write.cjs')
 // The loudness BAND is read from the gate tier, never restated here — one band,
 // one place, so a course's declared config governs both what is rendered and
 // what is allowed in (see the tier's header).
@@ -5489,6 +5490,36 @@ async function immersionTurnForRender({ language, text }) {
 
 // The render route's deps. The text is rendered VERBATIM (no gender
 // expansion): the caller names the exact words to be spoken.
+/**
+ * The course_audio row (and clip_index entry) for a clip whose object is ALREADY in S3 and PAID FOR (job #140).
+ * A lock wait behind another transaction on the same course is retried (services/shared/paid-write.cjs) rather
+ * than lost; if it still fails, the clip is written to the paid-unsaved ledger so adoptS3Key can file it free.
+ */
+async function writePaidClipRow({ courseCode, text, language, role, voiceId, legoId, s3Key, durationMs, wordBoundaries, wordTimings, adopted = false }) {
+  const { data: row, error } = await paidWrite.writeAfterPaid(() => supabase.from('course_audio').upsert({
+    course_code: courseCode, text, text_normalized: normalizeForAudio(text), language, role, voice_id: voiceId,
+    lego_id: legoId, origin: 'tts', s3_key: s3Key, duration_ms: durationMs, word_boundaries: wordBoundaries || null,
+    word_timings: toWordTimingsColumn(wordTimings), // NULL for non-Cartesia; replaces stale timings on an upsert over new bytes
+  }, { onConflict: 'course_code,text_normalized,language,role,voice_id' }).select().single(), { log: logger, label: `course_audio ${courseCode} ${role} ${s3Key}` })
+  if (error) {
+    if (!adopted) paidWrite.recordPaidUnsaved({ courseCode, role, text, language, voiceId, legoId, s3Key, durationMs, wordBoundaries: wordBoundaries || null, wordTimings: wordTimings || null, error: error.message }, { log: logger })
+    throw new Error(`course_audio write failed after the render was paid for: ${error.message} (object ${s3Key} is in S3 — file it with adoptS3Key, never re-render)`)
+  }
+  await clipIndex.writeThrough(supabase, [{ id: row.id, text, language, voice_id: voiceId, s3_key: s3Key, origin: 'tts' }], adopted ? 'phase8:adopt' : 'phase8:render', logger)
+  return { audioId: row.id, s3Key, durationMs }
+}
+
+/** Length of an S3 object in ms (sox), for an adopted clip the paid-unsaved ledger never recorded. */
+async function objectDurationMs(s3Key) {
+  const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: s3Key }))
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'adopt-'))
+  try {
+    const f = path.join(dir, 'clip.mp3')
+    await fs.writeFile(f, Buffer.from(await r.Body.transformToByteArray()))
+    return Math.round((await audioProcessor.getAudioDuration(f)) * 1000)
+  } finally { await fs.remove(dir) }
+}
+
 function buildRenderDeps() {
   const deps = {
       immersionTurn: immersionTurnForRender,
@@ -5583,14 +5614,19 @@ function buildRenderDeps() {
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
         const s3Key = `mastered/${uuidv4().toUpperCase()}.mp3`
         await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
-        const { data: row, error } = await supabase.from('course_audio').upsert({
-          course_code: courseCode, text, text_normalized: normalizeForAudio(text), language, role, voice_id: voiceId,
-          lego_id: legoId, origin: 'tts', s3_key: s3Key, duration_ms: durationMs, word_boundaries: wordBoundaries || null,
-          word_timings: toWordTimingsColumn(wordTimings), // NULL for non-Cartesia; replaces stale timings on an upsert over new bytes
-        }, { onConflict: 'course_code,text_normalized,language,role,voice_id' }).select().single()
-        if (error) throw new Error(`course_audio write failed after the render was paid for: ${error.message} (object ${s3Key} is in S3)`)
-        await clipIndex.writeThrough(supabase, [{ id: row.id, text, language, voice_id: voiceId, s3_key: s3Key, origin: 'tts' }], 'phase8:render', logger)
-        return { audioId: row.id, s3Key, durationMs }
+        return writePaidClipRow({ courseCode, text, language, role, voiceId, legoId, s3Key, durationMs, wordBoundaries, wordTimings })
+      },
+      // ADOPT (job #140): a paid render whose row never landed — file the S3 object as it is. No provider, no mastering.
+      adopt: async ({ courseCode, text, language, role, voiceId, legoId, s3Key, dryRun }) => {
+        try { await s3.send(new HeadObjectCommand({ Bucket: S3_BUCKET, Key: s3Key })) } catch { throw new RenderRequestError(`${s3Key} is not in S3 — nothing to adopt`, 404, 'NO_OBJECT') }
+        const rec = paidWrite.findPaidUnsaved(s3Key)
+        if (rec && (rec.courseCode !== courseCode || rec.role !== role || rec.text !== text || rec.voiceId !== voiceId)) {
+          throw new RenderRequestError(`${s3Key} was paid for as ${rec.courseCode} ${rec.role} ${rec.voiceId} "${rec.text}" — not this request`, 409, 'ADOPT_MISMATCH')
+        }
+        const durationMs = rec && rec.durationMs ? rec.durationMs : await objectDurationMs(s3Key)
+        if (dryRun) return { s3Key, durationMs, recorded: !!rec }
+        return writePaidClipRow({ courseCode, text, language, role, voiceId, legoId, s3Key, durationMs,
+          wordBoundaries: rec ? rec.wordBoundaries : null, wordTimings: rec ? rec.wordTimings : null, adopted: true })
       },
   }
   // DICE AND SPLICE (job #516, Tom 2026-10-11): an English-known presentation intro is built from existing Charlotte clips.
@@ -5628,10 +5664,10 @@ async function spliceIntroForRoute(req, deps) {
     store: async ({ courseCode, text, legoId, buffer, durationMs, splicedFrom }) => {
       const s3Key = `mastered/${uuidv4().toUpperCase()}.mp3`
       await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
-      const { data: row, error } = await supabase.from('course_audio').upsert({
+      const { data: row, error } = await paidWrite.writeAfterPaid(() => supabase.from('course_audio').upsert({
         course_code: courseCode, text, text_normalized: normalizeForAudio(text), language: 'eng', role: 'presentation', voice_id: charlotte,
         lego_id: legoId, origin: 'tts', s3_key: s3Key, duration_ms: durationMs, word_boundaries: null, spliced_from: splicedFrom,
-      }, { onConflict: 'course_code,text_normalized,language,role,voice_id' }).select().single()
+      }, { onConflict: 'course_code,text_normalized,language,role,voice_id' }).select().single(), { log: logger, label: `spliced intro ${courseCode} ${s3Key}` })
       if (error) throw new Error(`course_audio write failed for the spliced intro: ${error.message} (object ${s3Key} is in S3)`)
       await clipIndex.writeThrough(supabase, [{ id: row.id, text, language: 'eng', voice_id: charlotte, s3_key: s3Key, origin: 'tts' }], 'phase8:splice', logger)
       return { audioId: row.id, s3Key }
