@@ -58,12 +58,19 @@ const RULING = {
   },
 };
 
-// The intro, his own wording, for both courses. NOT written by the tool: Popty has no route that stores a hand-written
-// intro without rendering it (see the tool header). Kept here so the words are not lost.
-const INTRO = "Here's a polite way to get someone's attention, and it's going to help us practise using 'you' in a more formal way. You're used to 'ti' or 'chdi' for the friendly, informal you - to make it formal (or plural, as well) you just change it to 'chi'. So, for 'excuse me', we're going to say 'esgusodwch fi' - if you're talking to a friend, you can say 'esgusoda fi', but we're going to practise the formal one - so any time you hear 'excuse me' in the prompt, you need to use 'chi' for you in the response. So, one last time, for 'excuse me' I want you to say:";
+// The intro, his own wording. NOT written by the tool: Popty has no route that stores a hand-written intro without
+// rendering it (see the tool header). Kept here so the words are not lost. Aran, 2026-10-27: South must NOT say 'chdi'
+// (a North form) — "You're used to 'ti' for the friendly, informal you"; North keeps "'ti' or 'chdi'".
+const INTRO_NORTH = "Here's a polite way to get someone's attention, and it's going to help us practise using 'you' in a more formal way. You're used to 'ti' or 'chdi' for the friendly, informal you - to make it formal (or plural, as well) you just change it to 'chi'. So, for 'excuse me', we're going to say 'esgusodwch fi' - if you're talking to a friend, you can say 'esgusoda fi', but we're going to practise the formal one - so any time you hear 'excuse me' in the prompt, you need to use 'chi' for you in the response. So, one last time, for 'excuse me' I want you to say:";
 
 // The tiling parts of each M LEGO the drafts rewrite, from the drafts' own "Parts:" notes and the LEGO's existing
 // parts (sir/madam swapped for 'excuse me', moved first). South keeps its convention: one part, the whole LEGO.
+const INTROS = {
+  cym_nv2_for_eng: INTRO_NORTH,
+  cym_sv2_for_eng: INTRO_NORTH.replace("You're used to 'ti' or 'chdi' for", "You're used to 'ti' for"),
+};
+if (INTROS.cym_sv2_for_eng.includes('chdi')) throw new Error('South intro must not say chdi (Aran, 2026-10-27)');
+
 const C = (known, target) => ({ known, target });
 const XM = { n: C('excuse me', 'esgusodwch fi'), s: C('excuse me', 'esgusodwch fi') };
 const COMPONENTS = {
@@ -85,4 +92,4 @@ const COMPONENTS = {
   },
 };
 
-module.exports = { RULING, INTRO, COMPONENTS };
+module.exports = { RULING, INTROS, COMPONENTS };
