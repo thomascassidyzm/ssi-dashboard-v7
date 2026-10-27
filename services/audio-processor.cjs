@@ -15,6 +15,8 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
+const { resolveSoxBinary } = require('./shared/sox-binary.cjs');
 
 // ffmpeg is invoked bare (PATH lookup) throughout this module. A `pm2 restart
 // --update-env` from a shell with a minimal PATH pushes that PATH into the
@@ -153,7 +155,7 @@ async function ffmpegFilterToLameMp3(inputPath, outputPath, opts = {}) {
  */
 async function checkSoxInstalled() {
   try {
-    await execAsync('sox --version');
+    await execFileAsync(resolveSoxBinary(), ['--version']);
     return true;
   } catch (error) {
     return false;
@@ -197,14 +199,15 @@ async function checkMp3Format(audioPath) {
 }
 
 /**
- * Get audio duration using sox stat (matches original Python workflow)
+ * Get audio duration using sox stat (matches original Python workflow).
+ * sox only — see shared/sox-binary.cjs for why, and for where the binary is found.
  *
  * @param {string} audioPath - Path to audio file
  * @returns {Promise<number>} Duration in seconds
  */
 async function getAudioDuration(audioPath) {
   try {
-    const { stderr } = await execAsync(`sox "${audioPath}" -n stat`);
+    const { stderr } = await execFileAsync(resolveSoxBinary(), [audioPath, '-n', 'stat']);
 
     // sox stat outputs to stderr
     const match = stderr.match(/Length \(seconds\):\s+([\d.]+)/);

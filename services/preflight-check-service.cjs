@@ -483,11 +483,11 @@ async function checkDependencies() {
  * NON-BLOCKING: Audio generation can proceed without sox, but normalization may be skipped
  */
 async function checkSoxAvailability() {
-  const { execSync } = require('child_process');
+  const { execFileSync } = require('child_process');
+  const { resolveSoxBinary } = require('./shared/sox-binary.cjs');
 
   try {
-    execSync('which sox', { stdio: 'ignore' });
-    const version = execSync('sox --version', { encoding: 'utf8' }).trim();
+    const version = execFileSync(resolveSoxBinary(), ['--version'], { encoding: 'utf8' }).trim();
     return {
       success: true,
       service: 'SoX (Audio Processor)',
@@ -499,7 +499,7 @@ async function checkSoxAvailability() {
       success: true,  // Changed from false - treat as warning
       service: 'SoX (Audio Processor)',
       message: 'Warning: sox not found (audio normalization may be skipped)',
-      warning: 'Install via: brew install sox (macOS) or apt-get install sox (Linux)'
+      warning: 'Install via: brew install sox (macOS), apt-get install sox, or without root: tools/deploy/build-user-sox.sh'
     };
   }
 }
