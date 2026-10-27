@@ -213,6 +213,31 @@ function buildSampleList(uuids, manifest, missingUuids = []) {
 }
 
 /**
+ * Pure. Every audio UUID a legacy manifest names (introduction, encouragements,
+ * samples) — the set export Step 2 verifies. Duplicates are kept, as before.
+ */
+function collectManifestUuids(manifest) {
+  const uuids = []
+  if (manifest.introduction?.id) uuids.push(manifest.introduction.id)
+  for (const enc of manifest.slices[0]?.orderedEncouragements || []) {
+    if (enc.id) uuids.push(enc.id)
+  }
+  for (const enc of manifest.slices[0]?.pooledEncouragements || []) {
+    if (enc.id) uuids.push(enc.id)
+  }
+  for (const enc of manifest.slices[0]?.paywallEncouragements || []) {
+    if (enc.id) uuids.push(enc.id)
+  }
+  const samples = manifest.slices[0]?.samples || {}
+  for (const audioArray of Object.values(samples)) {
+    for (const audio of audioArray) {
+      if (audio.id) uuids.push(audio.id)
+    }
+  }
+  return uuids
+}
+
+/**
  * Batch verify audio files exist in stage bucket
  * @param {Array<string>} uuids - Array of audio UUIDs
  * @param {Object} manifest - Course manifest (for duration verification)
@@ -979,6 +1004,7 @@ async function syncDurationsToDb(courseCode, extractedDurations, results) {
 module.exports = {
   // Stage bucket operations
   checkFileInStage,
+  collectManifestUuids,
   verifyStageAudio,
   listStageAudio,
 
