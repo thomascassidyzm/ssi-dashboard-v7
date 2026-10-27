@@ -91,7 +91,9 @@ function plan(db, { only = null, decomposer = require('../../services/phrase-dec
   const legoById = new Map(db.legos.map((l) => [l.lego_id, l]));
   // EXCLUDE: rows held back by hand (e.g. a clip the route was paid for but could not store — never re-asked, no retries).
   const exclude = new Set(String(process.env.EXCLUDE || '').split(',').filter(Boolean));
-  const fixes = FIXES.filter(([id, cls]) => (!only || cls === only) && !exclude.has(id));
+  // TARGET_ONLY=1: only fixes that leave the English as it is (no English clip needed) — for when English clips cannot be stored.
+  const targetOnly = process.env.TARGET_ONLY === '1';
+  const fixes = FIXES.filter(([id, cls, , fix]) => (!only || cls === only) && !exclude.has(id) && (!targetOnly || (fix && fix[0] === null)));
   const deleting = new Set(fixes.filter((f) => f[3] === null).map((f) => f[0]));
   const updates = new Map();
   const go = [], skipped = [];
