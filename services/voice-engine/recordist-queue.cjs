@@ -2968,6 +2968,7 @@ async function fetchEnglishLegoInputs(db, recordist) {
       legos,
       otherKnownTexts: [...seeds, ...phrases].map((r) => r.known_text).filter(Boolean),
       ownIntroIds: new Set([...introVoices].filter(([, v]) => spellings.includes(v.voice)).map(([id]) => String(id))),
+      introTexts: new Map([...introVoices].map(([id, v]) => [String(id), v.text])),
     }
     englishLegoInputCache.set(key, { at: Date.now(), value })
     return value
