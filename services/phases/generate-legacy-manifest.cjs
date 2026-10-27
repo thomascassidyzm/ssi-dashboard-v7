@@ -659,7 +659,7 @@ function removeOrphanSamples(samples, orphans) {
 /**
  * Run all validations and cleanup. Returns stats object.
  */
-function validateAndCleanManifest(seeds, samples, encouragements) {
+function validateAndCleanManifest(seeds, samples, encouragements, labels = new Map()) {
   const stats = { pass: 1 }
 
   // Pass 1 (and potentially pass 2 for verification)
@@ -671,7 +671,8 @@ function validateAndCleanManifest(seeds, samples, encouragements) {
     const missing = checkMissingSamples(seeds, samples)
     if (missing.length > 0) {
       console.error(`  CRITICAL: ${missing.length} missing samples!`)
-      missing.slice(0, 5).forEach(m => console.error(`    - ${m.type}: "${m.text.substring(0, 50)}..."`))
+      // List EVERY missing text with the seed/LEGO it belongs to, so the slots can be filled
+      missing.forEach(m => console.error(`    - ${m.type} [${labels.get(m.seedId || m.introId) || '?'}]: "${m.text}"`))
       throw new Error(`Legacy export broken: ${missing.length} texts have no sample entry`)
     }
     console.error(`  ✓ No missing samples`)
@@ -1251,6 +1252,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
   const introItems = []
 
   const seeds = []
+  const exportLabels = new Map() // seed/LEGO uuid -> readable id, for the missing-sample report
   const seedNumbers = Array.from(seedMap.keys()).sort((a, b) => a - b)
 
   for (const seedNum of seedNumbers) {
@@ -1262,6 +1264,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
 
     const seedUUID = generateTextUUID(`${seedId}-SEED`)
 
+    exportLabels.set(seedUUID, seedId)
     const seed = {
       id: seedUUID,
       seed_sentence: { canonical: seedData.known_text },
@@ -1305,6 +1308,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
         ? `${dbPresText} ... '${lego.target_text}' ... '${lego.target_text}'`
         : buildPresentation(lego.known_text, lego.target_text, targetLangName)
 
+      exportLabels.set(legoUUID, lego.lego_id)
       const introItem = {
         id: legoUUID,
         node: buildNode(legoUUID, lego.known_text, lego.target_text),
@@ -1410,7 +1414,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
   // 8.3. Validate and clean manifest
   // All samples (content + encouragements + presentations) are now in the dict
   const allEncouragements = [...instructions, ...encouragementsList, ...paywallList]
-  validateAndCleanManifest(seeds, samples, allEncouragements)
+  validateAndCleanManifest(seeds, samples, allEncouragements, exportLabels)
 
   // 8.4. Filter introItems to only include items from remaining seeds
   // (seeds may have been removed during validation)
