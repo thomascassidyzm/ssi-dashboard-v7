@@ -47,6 +47,18 @@ function batchesFor(planned, { apply, chunk = CHUNK } = {}) {
   return out
 }
 
+const MAX_DRIFT_RETRIES = 50
+
+/**
+ * The door refused the batch because op `index`'s slot is no longer empty: drop that op from
+ * `body` (in place) and return it, else null. Pure — tested.
+ */
+function dropDriftedOp(body, status, out) {
+  if (status !== 409 || !out || !Number.isInteger(out.index) || !/before-state drift/.test(String(out.error || ''))) return null
+  const [op] = body.ops.splice(out.index, 1)
+  return op || null
+}
+
 async function main() {
   const a = args(process.argv.slice(2))
   const base = process.env.POPTY_URL || 'http://localhost:3470'
@@ -59,15 +71,25 @@ async function main() {
   for (const courseCode of courses) {
     const planned = plan.byCourse[courseCode]
     const r = report.courses[courseCode] = { planned: planned.length, ok: 0, refused: 0, batches: [], sample: planned.slice(0, 15) }
+    r.alreadyFilled = []
     for (const body of batchesFor(planned, { apply: a.apply })) {
-      const res = await fetch(`${base}/api/production/${encodeURIComponent(courseCode)}/edit-batch`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body),
-      })
-      const out = await res.json().catch(() => ({}))
-      r.batches.push({ status: res.status, dryRun: out.dryRun, event: out.event_id || null, undo: out.undo_file || out.how_to_undo || null, error: out.error || null, code: out.code || null })
-      if (res.ok) r.ok += body.ops.length; else r.refused += body.ops.length
-      console.log(`  ${courseCode}: ${body.ops.length} op(s) → HTTP ${res.status}${out.dryRun === false ? ' APPLIED' : ' dry run'}${out.error ? ` — ${out.error}` : ''}`)
+      // A slot that filled after the plan was read (he may be recording right now; the phrase plan
+      // is cached for minutes) fails its `expect` and the door refuses the whole batch: that op is
+      // dropped — the slot already plays a take — and the rest is sent again.
+      for (let attempt = 0; attempt <= MAX_DRIFT_RETRIES && body.ops.length; attempt++) {
+        const res = await fetch(`${base}/api/production/${encodeURIComponent(courseCode)}/edit-batch`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body),
+        })
+        const out = await res.json().catch(() => ({}))
+        const drift = dropDriftedOp(body, res.status, out)
+        if (drift) { r.alreadyFilled.push(drift); continue }
+        r.batches.push({ status: res.status, dryRun: out.dryRun, event: out.event_id || null, undo: out.undo_file || out.how_to_undo || null, error: out.error || null, code: out.code || null })
+        if (res.ok) r.ok += body.ops.length; else r.refused += body.ops.length
+        console.log(`  ${courseCode}: ${body.ops.length} op(s) → HTTP ${res.status}${out.dryRun === false ? ' APPLIED' : ' dry run'}${out.error ? ` — ${out.error}` : ''}`)
+        break
+      }
     }
+    if (r.alreadyFilled.length) console.log(`  ${courseCode}: ${r.alreadyFilled.length} slot(s) filled since the plan was read — left as they are`)
   }
   const file = evidencePath(`tools/recording/fill-same-words-gaps/${plan.voiceId}-${a.apply ? 'applied' : 'dryrun'}-${Date.now()}.json`)
   fs.mkdirSync(path.dirname(file), { recursive: true })
@@ -77,4 +99,4 @@ async function main() {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message); process.exit(1) })
-module.exports = { batchesFor, args }
+module.exports = { batchesFor, args, dropDriftedOp }
