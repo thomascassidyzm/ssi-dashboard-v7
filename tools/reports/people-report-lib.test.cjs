@@ -14,6 +14,7 @@ const daysAgo = (d) => new Date(NOW - d * 24 * 3600 * 1000).toISOString()
 const users = [
   { email: 'doug@example.org', name: 'Doug', role: 'editor', courses: ['pdc_for_eng'] },
   { email: 'rhys@example.org', name: 'Rhys', role: 'editor', courses: ['cym_n_for_eng'] },
+  { email: 'rhys.other@example.org', name: 'Rhys', role: 'editor', courses: ['cym_n_for_eng'] }, // a second login, same person
   { email: 'kai@saysomethingin.com', name: 'Kai', role: 'admin', courses: '*' },
   { email: 'thomas.cassidy+builder@gmail.com', name: 'Tom Builder', role: 'editor', courses: ['cat_for_eng'] },
 ]
@@ -34,7 +35,7 @@ describe('who is who is discovered, never listed', () => {
   it('builders are the editor-role people with edits; test logins are left out; idle editors are listed', () => {
     const { rows, idle } = lib.builderRows(users, events, SINCE, NOW)
     expect(rows.map((r) => r.name)).toEqual(['Doug'])
-    expect(idle.map((u) => u.name)).toEqual(['Rhys'])
+    expect(idle).toEqual([{ name: 'Rhys', access: 'cym_n_for_eng', logins: 2 }]) // two logins, listed once
     const doug = rows[0]
     expect([...doug.week.seeds].sort()).toEqual(['pdc_for_eng:101', 'pdc_for_eng:102'])
     expect(doug.week.seedsBy.seedText.seeds.size).toBe(2)
@@ -56,10 +57,16 @@ describe('recorders', () => {
       projects: [{ label: 'South Welsh: Pod 1', total: 50, recorded: 10, other: false }],
       activity: { takes: 10, takes7d: 0, lastActive: daysAgo(9) } },
     { voiceId: 'human_test_zzz', name: 'Test', isTest: true, projects: [], activity: {} },
+    { voiceId: 'human_recording', name: 'human_recording', noQueue: true, isTest: false, projects: [], activity: { takes: 1187, takes7d: 0, lastActive: daysAgo(200) } },
   ] }
   it('done/assigned come from queued projects only, and 7+ days idle with lines left is stalled', () => {
     const rows = lib.recorderRows(overview, NOW)
-    expect(rows.map((r) => r.name)).toEqual(['Dan', 'Eleri'])
+    expect(rows.map((r) => r.name)).toEqual(['Dan', 'Eleri', 'human_recording'])
+    expect(rows.map((r) => r.dormant)).toEqual([false, false, true]) // no queue, nothing this week: one line, not a card
+    const md = lib.renderReport({ now: NOW, since: SINCE, gaps: [], recorders: { rows }, builders: { rows: [], idle: [] }, proof: { rows: [], unattributed: {} } })
+    expect(md).toContain('- human_recording: 1,187 takes all-time, last')
+    expect(md).not.toContain('**human_recording**')
+    expect(md).toContain('No seed was approved in any course this week, by anyone.')
     expect(rows[0]).toMatchObject({ week: 12, done: 60, total: 100, remaining: 40, stalled: false })
     expect(rows[1]).toMatchObject({ week: 0, done: 10, total: 50, stalled: true })
   })
