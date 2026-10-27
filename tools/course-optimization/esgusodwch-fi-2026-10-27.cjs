@@ -212,7 +212,8 @@ function plan(course, db, draftsText, { decomposer = require('../../services/phr
     const stale = rows.filter((r) => !want.has(key(reads(r))));
     const missing = set.components.filter((c) => !have.has(key(c)));
     let next = Math.max(...rows.map((r) => Number(sid(r.id).slice(-2)))) + 1;
-    let pos = Math.max(...rows.map((r) => r.position || 0)) + 1;
+    // position is unique per LEGO across every role (course_practice_phrases_course_code_seed_number_lego_index__key)
+    let pos = Math.max(...db.phrases.filter((p) => sid(p.id).startsWith(L)).map((r) => r.position || 0)) + 1;
     for (const c of missing) {
       const dec = decomposer.decomposeAnchored(c.target, vocabFor(Number(L.slice(1, 5))), null, course).blocks;
       const s = stale.shift();
