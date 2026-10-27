@@ -60,7 +60,10 @@ const LANGUAGES = [
   { code: 'jpn', name: 'Japanese', steer: 'ja', catalogue: 'ja', azureLocale: 'ja-JP' },
   { code: 'kor', name: 'Korean', steer: 'ko', catalogue: 'ko', azureLocale: 'ko-KR' },
   { code: 'cmn', name: 'Mandarin', steer: 'zh', catalogue: 'zh-CN', azureLocale: 'zh-CN', aliases: ['zho', 'zh', 'cmn'] },
-  { code: 'ara', name: 'Arabic', steer: 'ar', catalogue: 'ar', azureLocale: 'ar-EG' },
+  // `locale: 'ar'`: without it the runner fell back to azureLocale and steered Cartesia
+  // with 'ar-EG', which Cartesia refuses ("unsupported locale") — every Arabic Cartesia
+  // audition failed (job #158). Bare 'ar' is what the course render path sends.
+  { code: 'ara', name: 'Arabic', steer: 'ar', catalogue: 'ar', azureLocale: 'ar-EG', locale: 'ar' },
   { code: 'hin', name: 'Hindi', steer: 'hi', catalogue: 'hi', azureLocale: 'hi-IN' },
   { code: 'vie', name: 'Vietnamese', steer: 'vi', catalogue: 'vi', azureLocale: 'vi-VN' },
   { code: 'eng', name: 'English', steer: 'en', catalogue: 'en', azureLocale: 'en-GB' },
