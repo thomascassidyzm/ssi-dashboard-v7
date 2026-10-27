@@ -303,32 +303,6 @@
               </ol>
             </div>
           </div>
-          <!-- HEAR THE LINE JUST READ, right under the line and not below the fold. While the
-               upload is in flight it plays the in-browser take and wears RAW LOCAL; once stored
-               it plays the stored bytes (STORED); a failed upload says NOT SAVED. -->
-          <div v-if="lastLine" class="hear-bar">
-            <span class="hear-label">Just read
-              <span class="hear-text">{{ plainText(lastLine.text) }}</span>
-            </span>
-            <div class="hear-actions">
-              <StoredTakeButton
-                :stored-url="storedUrlFor(lastLine.id)"
-                :pending="isPending(lastLine.id)"
-                :failed="hasFailed(lastLine.id)"
-                :local-url="localUrlFor(lastLine.id)"
-                :is-playing="playingId === lastLine.id"
-                @toggle="togglePlay(lastLine.id)"
-              />
-              <button
-                v-if="queue.saved.has(lastLine.id)"
-                class="cmp-btn"
-                :class="{ open: comparingId === lastLine.id }"
-                type="button"
-                @click="toggleCompare(lastLine.id)"
-              >{{ comparingId === lastLine.id ? 'Hide' : 'Raw vs processed' }}</button>
-            </div>
-          </div>
-          <RawVsProcessed v-if="lastLine && comparingId === lastLine.id" :voice-id="voiceId" :line-id="lastLine.id" />
           <p v-if="failedNote" class="note error">{{ failedNote }}</p>
           <p v-if="playbackError" class="note error">{{ playbackError }}</p>
         </main>
@@ -3977,15 +3951,6 @@ kbd {
   color: var(--color-paper-dim, #c1c1bb); opacity: 0.6;
 }
 
-.hear-bar {
-  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
-  padding: 0.6rem 0.75rem; border-radius: 10px;
-  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.14);
-}
-.hear-label { font-size: 0.7rem; color: var(--color-paper-dim, #c1c1bb); min-width: 0; }
-.hear-text { display: block; color: var(--color-paper, #f7f7f2); font-size: 0.85rem; }
-.hear-actions { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
-
 /* THE EXCHANGE AROUND THE LINE. Dimmed, small, and nothing to touch — the line
    being read stays the biggest thing on the screen, and no affordance sits near
    the thumb while the mic is live. Two text lines at most, then it clips. */
@@ -4316,12 +4281,6 @@ kbd {
 .recordist.fit .cue-after { margin-top: 0.75rem; }
 .recordist.fit .upnext { margin-top: 1rem; }
 .recordist.fit .upnext-list li:nth-child(n+2) { display: none; }
-.recordist.fit .hear-bar {
-  flex: none; width: 100%; max-width: 900px; margin: 0 auto 0.4rem; padding: 0.35rem 0.75rem;
-  border-radius: 10px; background: transparent; border: 0;
-}
-.recordist.fit .hear-label { flex: 1; min-width: 0; font-size: 0.8125rem; color: var(--muted, #94a3b8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.recordist.fit .hear-text { display: inline; font-weight: 700; color: var(--ink, #f1f5f9); }
 .recordist.fit .stage > .note, .recordist.fit .stage > .raw-vs-processed { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 1.25rem; }
 
 .meta {
@@ -4545,7 +4504,7 @@ kbd {
 .sheet-close, .grid-toggle, .rc-nav-item, .redo-btn { min-height: 44px; }
 .rc-nav-item { line-height: 44px; }
 .cmp-btn { min-height: 44px; }
-.listen-actions :deep(.stored-take-btn), .hear-bar :deep(.stored-take-btn) { min-height: 44px; }
+.listen-actions :deep(.stored-take-btn) { min-height: 44px; }
 @media (max-width: 480px) {
   .where-more { width: 44px; min-height: 44px; }
 }
@@ -4553,7 +4512,7 @@ kbd {
 /* A LONG WORD WRAPS INSIDE THE SCREEN. A compound or place name wider than a phone
    (Llanfairpwllgwyngyll…) ran off the right edge of the line being read, with no way to see
    the end of it. Breaking inside a word only ever happens when the word cannot fit whole. */
-.line-target, .ready-line, .line-known, .listen-text, .redo-text, .hear-text, .edit-box { overflow-wrap: anywhere; }
+.line-target, .ready-line, .line-known, .listen-text, .redo-text, .edit-box { overflow-wrap: anywhere; }
 
 /* A LINE TALLER THAN THE SPACE LEFT FOR IT SCROLLS; IT NEVER OVERPRINTS. The column's items were
    free to shrink below their own text, so on a short phone (an SE with Safari's bars showing, or a
@@ -4575,7 +4534,6 @@ kbd {
   .recordist.fit .transport .ctl-back, .recordist.fit .transport .ctl-again, .recordist.fit .transport .ctl-next { min-height: 48px; }
   .recordist.fit .ctl-jump { margin-top: 0.4rem; }
   .recordist.fit .transport { padding-top: 0.45rem; }
-  .recordist.fit .hear-bar { padding-top: 0; padding-bottom: 0; margin-bottom: 0.15rem; }
   .recordist.fit .cue-before { margin-bottom: 0.35rem; }
   .recordist.fit .line-kind { margin-bottom: 0.3rem; }
   .recordist.fit .refused-summary { margin-bottom: 0.2rem; }
