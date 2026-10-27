@@ -199,7 +199,9 @@ async function main() {
   const seedRows = JSON.parse(fs.readFileSync(seedsPath, 'utf8')).seeds;
   const approved = new Set(seedRows.filter((s) => s.approved_at).map((s) => s.seed_number));
   const classes = process.env.CLASS ? process.env.CLASS.split(',') : null;
-  const p = plan(db, classes ? VERDICTS.filter((x) => classes.includes(x.cls)) : VERDICTS, only);
+  // SKIP=<ids>: rows held by an earlier run (e.g. a paid render whose clip row the route failed to write) — never re-asked
+  const skip = new Set(process.env.SKIP ? process.env.SKIP.split(',') : []);
+  const p = plan(db, (classes ? VERDICTS.filter((x) => classes.includes(x.cls)) : VERDICTS).filter((x) => !skip.has(x.id)), only);
   const zut = zutGate(db, p);
   const log = { job: '#98', started: new Date().toISOString(), only, classes, zut, plan: p };
   const { evidencePath } = require('../lib/evidence-path.cjs');
@@ -246,13 +248,19 @@ async function main() {
   const clips = new Map(log.asks.filter((a) => a.real && a.real.audioId).map((a) => [`${a.role}\u0000${a.text}`, a.real.audioId]));
   const ops = editOps(p, clips, approved);
   const prev = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops });
-  const silent = (r) => (r.results || []).filter((x) => x.after && ['known_audio_id', 'target1_audio_id', 'target2_audio_id'].some((c) => c in x.after && !x.after[c])).map((x) => x.key);
-  log.preview = { status: prev.status, n: (prev.body.results || []).length, silentAfter: silent(prev.body), error: prev.status === 200 ? undefined : prev.body };
+  // A row's slots are judged on its FINAL state in the batch: the text op nulls a slot and a later audio.link fills it.
+  const silent = (r) => {
+    const fin = new Map();
+    for (const x of r.results || []) { if (!x.after || !x.key) continue; const k = JSON.stringify(x.key); fin.set(k, { ...(fin.get(k) || {}), ...x.after }); }
+    return [...fin].filter(([, a]) => ['known_audio_id', 'target1_audio_id', 'target2_audio_id'].some((c) => c in a && !a[c])).map(([k]) => JSON.parse(k));
+  };
+  log.preview = { status: prev.status, n: (prev.body.results || []).length, silentAfter: silent(prev.body), results: prev.body.results, error: prev.status === 200 ? undefined : prev.body };
   console.log(`edit-batch preview: HTTP ${prev.status}; ${log.preview.n} results; ${log.preview.silentAfter.length} rows would have a silent slot ${JSON.stringify(prev.body.error || '').slice(0, 300)}`);
   if (prev.status !== 200 || prev.body.ok === false) return console.log('preview refused:', save('preview-refused'));
+  if (log.preview.silentAfter.length) return console.log('STOP: a row would end the batch with a silent slot:', JSON.stringify(log.preview.silentAfter).slice(0, 400), save('preview-silent'));
   if (process.env.APPLY_CONFIRM !== '1') return console.log('preview only (APPLY_CONFIRM=1 to commit):', save('preview'));
   const res = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops, apply: true });
-  log.applied = { status: res.status, eventId: res.body.event_id || null, undoFile: res.body.undo_file || null, undo: res.body.undo_ops || null, silentAfter: silent(res.body), error: res.status === 200 ? undefined : res.body };
+  log.applied = { status: res.status, eventId: res.body.event_id || null, undoFile: res.body.undo_file || null, undo: res.body.undo_ops || null, silentAfter: silent(res.body), results: res.body.results, error: res.status === 200 ? undefined : res.body };
   console.log(`edit-batch APPLY: HTTP ${res.status}; event ${log.applied.eventId}; undo_file ${log.applied.undoFile}; ${log.applied.silentAfter.length} rows with a silent slot ${JSON.stringify(res.body.error || '').slice(0, 300)}`);
   console.log('log (undo inside):', save('applied'));
 }
