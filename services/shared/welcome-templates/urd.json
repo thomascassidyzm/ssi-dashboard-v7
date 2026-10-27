@@ -1,0 +1,748 @@
+{
+  "known_language": "urd",
+  "known_language_display": "Urdu",
+  "template": "اس انوکھے کھیل میں تمہارا خیر مقدم ہے جو تمہیں {a_target_speaker} بنانے میں مدد کرے گا۔ یہ اس طرح کام کرتا ہے — پہلے میں تمہیں {in_target} میں کچھ سکھاتی ہوں، پھر میں {in_known} میں کچھ کہتی ہوں اور تمہیں موقع دیتی ہوں کہ تم اسے {in_target} میں اونچی آواز سے بولو۔ پھر {target_speakers} کو غور سے سنو جو تمہارے لیے اس کا نمونہ پیش کریں گے۔ یہ ضروری ہے کہ تم وقفوں میں کچھ بولو، کیونکہ اسی طرح تم سیکھوگے۔ اگر تمہیں یقین نہیں تو بھی جو بن پڑے بولنے کی کوشش کرو — تم سوچوگے بھی نہیں کہ کتنی جلدی تم {in_target} میں بولنے لگوگے۔ تم اسے جتنا زیادہ کھیل سمجھوگے، جتنا مزے سے کھیلوگے، غلطیوں پر جتنا ہنسوگے، اتنا ہی بہتر ہوگا اور اتنی ہی تیزی سے سیکھوگے۔ تو چلو، کھیلنا شروع کرتے ہیں۔",
+  "in_known": "اردو",
+  "targets": {
+    "afb": {
+      "in_target": "خلیجی عربی",
+      "a_target_speaker": "خلیجی عربی بولنے والا",
+      "target_speakers": "خلیجی عربی بولنے والے"
+    },
+    "afr": {
+      "in_target": "افریقانس",
+      "a_target_speaker": "افریقانس بولنے والا",
+      "target_speakers": "افریقانس بولنے والے"
+    },
+    "aii": {
+      "in_target": "آشوری",
+      "a_target_speaker": "آشوری بولنے والا",
+      "target_speakers": "آشوری بولنے والے"
+    },
+    "ain": {
+      "in_target": "آئینو",
+      "a_target_speaker": "آئینو بولنے والا",
+      "target_speakers": "آئینو بولنے والے"
+    },
+    "ajp": {
+      "in_target": "فلسطینی عربی",
+      "a_target_speaker": "فلسطینی عربی بولنے والا",
+      "target_speakers": "فلسطینی عربی بولنے والے"
+    },
+    "amh": {
+      "in_target": "امہاری",
+      "a_target_speaker": "امہاری بولنے والا",
+      "target_speakers": "امہاری بولنے والے"
+    },
+    "apc": {
+      "in_target": "شامی عربی",
+      "a_target_speaker": "شامی عربی بولنے والا",
+      "target_speakers": "شامی عربی بولنے والے"
+    },
+    "ara": {
+      "in_target": "عربی",
+      "a_target_speaker": "جدید معیاری عربی بولنے والا",
+      "target_speakers": "عربی بولنے والے"
+    },
+    "arg": {
+      "in_target": "اراگونی",
+      "a_target_speaker": "اراگونی بولنے والا",
+      "target_speakers": "اراگونی بولنے والے"
+    },
+    "ary": {
+      "in_target": "مراکشی عربی",
+      "a_target_speaker": "مراکشی عربی بولنے والا",
+      "target_speakers": "مراکشی عربی بولنے والے"
+    },
+    "asm": {
+      "in_target": "آسامی",
+      "a_target_speaker": "آسامی بولنے والا",
+      "target_speakers": "آسامی بولنے والے"
+    },
+    "ast": {
+      "in_target": "آستوری",
+      "a_target_speaker": "آستوری بولنے والا",
+      "target_speakers": "آستوری بولنے والے"
+    },
+    "aze": {
+      "in_target": "آذربائیجانی",
+      "a_target_speaker": "آذربائیجانی بولنے والا",
+      "target_speakers": "آذربائیجانی بولنے والے"
+    },
+    "bar": {
+      "in_target": "باویری",
+      "a_target_speaker": "باویری بولنے والا",
+      "target_speakers": "باویری بولنے والے"
+    },
+    "bel": {
+      "in_target": "بیلاروسی",
+      "a_target_speaker": "بیلاروسی بولنے والا",
+      "target_speakers": "بیلاروسی بولنے والے"
+    },
+    "ben": {
+      "in_target": "بنگالی",
+      "a_target_speaker": "بنگالی بولنے والا",
+      "target_speakers": "بنگالی بولنے والے"
+    },
+    "bos": {
+      "in_target": "بوسنیائی",
+      "a_target_speaker": "بوسنیائی بولنے والا",
+      "target_speakers": "بوسنیائی بولنے والے"
+    },
+    "bre": {
+      "in_target": "بریٹن",
+      "a_target_speaker": "بریٹن بولنے والا",
+      "target_speakers": "بریٹن بولنے والے"
+    },
+    "bul": {
+      "in_target": "بلغاری",
+      "a_target_speaker": "بلغاری بولنے والا",
+      "target_speakers": "بلغاری بولنے والے"
+    },
+    "cat": {
+      "in_target": "کاتالان",
+      "a_target_speaker": "کاتالان بولنے والا",
+      "target_speakers": "کاتالان بولنے والے"
+    },
+    "ceb": {
+      "in_target": "سیبوآنو",
+      "a_target_speaker": "سیبوآنو بولنے والا",
+      "target_speakers": "سیبوآنو بولنے والے"
+    },
+    "ces": {
+      "in_target": "چیک",
+      "a_target_speaker": "چیک بولنے والا",
+      "target_speakers": "چیک بولنے والے"
+    },
+    "chr": {
+      "in_target": "چیروکی",
+      "a_target_speaker": "چیروکی بولنے والا",
+      "target_speakers": "چیروکی بولنے والے"
+    },
+    "cmn": {
+      "in_target": "چینی",
+      "a_target_speaker": "چینی بولنے والا",
+      "target_speakers": "چینی بولنے والے"
+    },
+    "cor": {
+      "in_target": "کورنش",
+      "a_target_speaker": "کورنش بولنے والا",
+      "target_speakers": "کورنش بولنے والے"
+    },
+    "cos": {
+      "in_target": "کورسیکن",
+      "a_target_speaker": "کورسیکن بولنے والا",
+      "target_speakers": "کورسیکن بولنے والے"
+    },
+    "csb": {
+      "in_target": "کاشوبی",
+      "a_target_speaker": "کاشوبی بولنے والا",
+      "target_speakers": "کاشوبی بولنے والے"
+    },
+    "cym": {
+      "in_target": "ویلش",
+      "a_target_speaker": "ویلش بولنے والا",
+      "target_speakers": "ویلش بولنے والے"
+    },
+    "dan": {
+      "in_target": "ڈینش",
+      "a_target_speaker": "ڈینش بولنے والا",
+      "target_speakers": "ڈینش بولنے والے"
+    },
+    "deu": {
+      "in_target": "جرمن",
+      "a_target_speaker": "جرمن بولنے والا",
+      "target_speakers": "جرمن بولنے والے"
+    },
+    "deu_AT": {
+      "in_target": "جرمن",
+      "a_target_speaker": "آسٹریائی جرمن بولنے والا",
+      "target_speakers": "جرمن بولنے والے"
+    },
+    "dsb": {
+      "in_target": "زیریں سوربی",
+      "a_target_speaker": "زیریں سوربی بولنے والا",
+      "target_speakers": "زیریں سوربی بولنے والے"
+    },
+    "ell": {
+      "in_target": "یونانی",
+      "a_target_speaker": "یونانی بولنے والا",
+      "target_speakers": "یونانی بولنے والے"
+    },
+    "eng": {
+      "in_target": "انگریزی",
+      "a_target_speaker": "انگریزی بولنے والا",
+      "target_speakers": "انگریزی بولنے والے"
+    },
+    "est": {
+      "in_target": "ایسٹونیائی",
+      "a_target_speaker": "ایسٹونیائی بولنے والا",
+      "target_speakers": "ایسٹونیائی بولنے والے"
+    },
+    "eus": {
+      "in_target": "باسک",
+      "a_target_speaker": "باسک بولنے والا",
+      "target_speakers": "باسک بولنے والے"
+    },
+    "fao": {
+      "in_target": "فیروئیز",
+      "a_target_speaker": "فیروئیز بولنے والا",
+      "target_speakers": "فیروئیز بولنے والے"
+    },
+    "fas": {
+      "in_target": "فارسی",
+      "a_target_speaker": "فارسی بولنے والا",
+      "target_speakers": "فارسی بولنے والے"
+    },
+    "fij": {
+      "in_target": "فجی",
+      "a_target_speaker": "فجی بولنے والا",
+      "target_speakers": "فجی بولنے والے"
+    },
+    "fil": {
+      "in_target": "فلپینو",
+      "a_target_speaker": "فلپینو بولنے والا",
+      "target_speakers": "فلپینو بولنے والے"
+    },
+    "fin": {
+      "in_target": "فنش",
+      "a_target_speaker": "فنش بولنے والا",
+      "target_speakers": "فنش بولنے والے"
+    },
+    "fra": {
+      "in_target": "فرانسیسی",
+      "a_target_speaker": "فرانسیسی بولنے والا",
+      "target_speakers": "فرانسیسی بولنے والے"
+    },
+    "frr": {
+      "in_target": "شمالی فریزیئن",
+      "a_target_speaker": "شمالی فریزیئن بولنے والا",
+      "target_speakers": "شمالی فریزیئن بولنے والے"
+    },
+    "fry": {
+      "in_target": "مغربی فریزیئن",
+      "a_target_speaker": "مغربی فریزیئن بولنے والا",
+      "target_speakers": "مغربی فریزیئن بولنے والے"
+    },
+    "fur": {
+      "in_target": "فریولی",
+      "a_target_speaker": "فریولی بولنے والا",
+      "target_speakers": "فریولی بولنے والے"
+    },
+    "gla": {
+      "in_target": "اسکاٹش گیلک",
+      "a_target_speaker": "اسکاٹش گیلک بولنے والا",
+      "target_speakers": "اسکاٹش گیلک بولنے والے"
+    },
+    "gle": {
+      "in_target": "آئرش",
+      "a_target_speaker": "آئرش بولنے والا",
+      "target_speakers": "آئرش بولنے والے"
+    },
+    "glg": {
+      "in_target": "گالیشیائی",
+      "a_target_speaker": "گالیشیائی بولنے والا",
+      "target_speakers": "گالیشیائی بولنے والے"
+    },
+    "glv": {
+      "in_target": "مینکس",
+      "a_target_speaker": "مینکس بولنے والا",
+      "target_speakers": "مینکس بولنے والے"
+    },
+    "grk": {
+      "in_target": "گریکو",
+      "a_target_speaker": "گریکو بولنے والا",
+      "target_speakers": "گریکو بولنے والے"
+    },
+    "grn": {
+      "in_target": "گوارانی",
+      "a_target_speaker": "گوارانی بولنے والا",
+      "target_speakers": "گوارانی بولنے والے"
+    },
+    "gsw": {
+      "in_target": "سوئس جرمن",
+      "a_target_speaker": "سوئس جرمن بولنے والا",
+      "target_speakers": "سوئس جرمن بولنے والے"
+    },
+    "guj": {
+      "in_target": "گجراتی",
+      "a_target_speaker": "گجراتی بولنے والا",
+      "target_speakers": "گجراتی بولنے والے"
+    },
+    "hak": {
+      "in_target": "ہکا",
+      "a_target_speaker": "ہکا بولنے والا",
+      "target_speakers": "ہکا بولنے والے"
+    },
+    "hau": {
+      "in_target": "ہاؤسا",
+      "a_target_speaker": "ہاؤسا بولنے والا",
+      "target_speakers": "ہاؤسا بولنے والے"
+    },
+    "haw": {
+      "in_target": "ہوائی",
+      "a_target_speaker": "ہوائی بولنے والا",
+      "target_speakers": "ہوائی بولنے والے"
+    },
+    "heb": {
+      "in_target": "عبرانی",
+      "a_target_speaker": "عبرانی بولنے والا",
+      "target_speakers": "عبرانی بولنے والے"
+    },
+    "hin": {
+      "in_target": "ہندی",
+      "a_target_speaker": "ہندی بولنے والا",
+      "target_speakers": "ہندی بولنے والے"
+    },
+    "hrv": {
+      "in_target": "کروشیائی",
+      "a_target_speaker": "کروشیائی بولنے والا",
+      "target_speakers": "کروشیائی بولنے والے"
+    },
+    "hsb": {
+      "in_target": "بالائی سوربی",
+      "a_target_speaker": "بالائی سوربی بولنے والا",
+      "target_speakers": "بالائی سوربی بولنے والے"
+    },
+    "hun": {
+      "in_target": "ہنگری",
+      "a_target_speaker": "ہنگری بولنے والا",
+      "target_speakers": "ہنگری بولنے والے"
+    },
+    "hye": {
+      "in_target": "آرمینیائی",
+      "a_target_speaker": "آرمینیائی بولنے والا",
+      "target_speakers": "آرمینیائی بولنے والے"
+    },
+    "ibo": {
+      "in_target": "ایگبو",
+      "a_target_speaker": "ایگبو بولنے والا",
+      "target_speakers": "ایگبو بولنے والے"
+    },
+    "iku": {
+      "in_target": "اینوکتیتوت",
+      "a_target_speaker": "اینوکتیتوت بولنے والا",
+      "target_speakers": "اینوکتیتوت بولنے والے"
+    },
+    "ind": {
+      "in_target": "انڈونیشیائی",
+      "a_target_speaker": "انڈونیشیائی بولنے والا",
+      "target_speakers": "انڈونیشیائی بولنے والے"
+    },
+    "isl": {
+      "in_target": "آئس لینڈی",
+      "a_target_speaker": "آئس لینڈی بولنے والا",
+      "target_speakers": "آئس لینڈی بولنے والے"
+    },
+    "ita": {
+      "in_target": "اطالوی",
+      "a_target_speaker": "اطالوی بولنے والا",
+      "target_speakers": "اطالوی بولنے والے"
+    },
+    "jav": {
+      "in_target": "جاوانی",
+      "a_target_speaker": "جاوانی بولنے والا",
+      "target_speakers": "جاوانی بولنے والے"
+    },
+    "jpn": {
+      "in_target": "جاپانی",
+      "a_target_speaker": "جاپانی بولنے والا",
+      "target_speakers": "جاپانی بولنے والے"
+    },
+    "kal": {
+      "in_target": "گرین لینڈی",
+      "a_target_speaker": "گرین لینڈی بولنے والا",
+      "target_speakers": "گرین لینڈی بولنے والے"
+    },
+    "kan": {
+      "in_target": "کنڑ",
+      "a_target_speaker": "کنڑ بولنے والا",
+      "target_speakers": "کنڑ بولنے والے"
+    },
+    "kat": {
+      "in_target": "جارجیائی",
+      "a_target_speaker": "جارجیائی بولنے والا",
+      "target_speakers": "جارجیائی بولنے والے"
+    },
+    "kaz": {
+      "in_target": "قازق",
+      "a_target_speaker": "قازق بولنے والا",
+      "target_speakers": "قازق بولنے والے"
+    },
+    "kir": {
+      "in_target": "قرغیز",
+      "a_target_speaker": "قرغیز بولنے والا",
+      "target_speakers": "قرغیز بولنے والے"
+    },
+    "kor": {
+      "in_target": "کوریائی",
+      "a_target_speaker": "کوریائی بولنے والا",
+      "target_speakers": "کوریائی بولنے والے"
+    },
+    "kur": {
+      "in_target": "کردی",
+      "a_target_speaker": "کردی بولنے والا",
+      "target_speakers": "کردی بولنے والے"
+    },
+    "lad": {
+      "in_target": "لادینو",
+      "a_target_speaker": "لادینو بولنے والا",
+      "target_speakers": "لادینو بولنے والے"
+    },
+    "lav": {
+      "in_target": "لاتویائی",
+      "a_target_speaker": "لاتویائی بولنے والا",
+      "target_speakers": "لاتویائی بولنے والے"
+    },
+    "lij": {
+      "in_target": "لیگوری",
+      "a_target_speaker": "لیگوری بولنے والا",
+      "target_speakers": "لیگوری بولنے والے"
+    },
+    "lim": {
+      "in_target": "لمبرگش",
+      "a_target_speaker": "لمبرگش بولنے والا",
+      "target_speakers": "لمبرگش بولنے والے"
+    },
+    "lin": {
+      "in_target": "لنگالا",
+      "a_target_speaker": "لنگالا بولنے والا",
+      "target_speakers": "لنگالا بولنے والے"
+    },
+    "lit": {
+      "in_target": "لتھوانیائی",
+      "a_target_speaker": "لتھوانیائی بولنے والا",
+      "target_speakers": "لتھوانیائی بولنے والے"
+    },
+    "ltz": {
+      "in_target": "لکسمبرگی",
+      "a_target_speaker": "لکسمبرگی بولنے والا",
+      "target_speakers": "لکسمبرگی بولنے والے"
+    },
+    "mal": {
+      "in_target": "ملیالم",
+      "a_target_speaker": "ملیالم بولنے والا",
+      "target_speakers": "ملیالم بولنے والے"
+    },
+    "mar": {
+      "in_target": "مراٹھی",
+      "a_target_speaker": "مراٹھی بولنے والا",
+      "target_speakers": "مراٹھی بولنے والے"
+    },
+    "mkd": {
+      "in_target": "مقدونیائی",
+      "a_target_speaker": "مقدونیائی بولنے والا",
+      "target_speakers": "مقدونیائی بولنے والے"
+    },
+    "moh": {
+      "in_target": "موہاک",
+      "a_target_speaker": "موہاک بولنے والا",
+      "target_speakers": "موہاک بولنے والے"
+    },
+    "mri": {
+      "in_target": "ماؤری",
+      "a_target_speaker": "ماؤری بولنے والا",
+      "target_speakers": "ماؤری بولنے والے"
+    },
+    "msa": {
+      "in_target": "ملائی",
+      "a_target_speaker": "ملائی بولنے والا",
+      "target_speakers": "ملائی بولنے والے"
+    },
+    "nan": {
+      "in_target": "ہوکیئن",
+      "a_target_speaker": "ہوکیئن بولنے والا",
+      "target_speakers": "ہوکیئن بولنے والے"
+    },
+    "nap": {
+      "in_target": "ناپولیتانی",
+      "a_target_speaker": "ناپولیتانی بولنے والا",
+      "target_speakers": "ناپولیتانی بولنے والے"
+    },
+    "nav": {
+      "in_target": "ناواہو",
+      "a_target_speaker": "ناواہو بولنے والا",
+      "target_speakers": "ناواہو بولنے والے"
+    },
+    "nep": {
+      "in_target": "نیپالی",
+      "a_target_speaker": "نیپالی بولنے والا",
+      "target_speakers": "نیپالی بولنے والے"
+    },
+    "nld": {
+      "in_target": "ڈچ",
+      "a_target_speaker": "ڈچ بولنے والا",
+      "target_speakers": "ڈچ بولنے والے"
+    },
+    "nor": {
+      "in_target": "ناروی",
+      "a_target_speaker": "ناروی بولنے والا",
+      "target_speakers": "ناروی بولنے والے"
+    },
+    "nya": {
+      "in_target": "چیچیوا",
+      "a_target_speaker": "چیچیوا بولنے والا",
+      "target_speakers": "چیچیوا بولنے والے"
+    },
+    "oci": {
+      "in_target": "اوکسیتان",
+      "a_target_speaker": "اوکسیتان بولنے والا",
+      "target_speakers": "اوکسیتان بولنے والے"
+    },
+    "oji": {
+      "in_target": "اوجِب وے",
+      "a_target_speaker": "اوجِب وے بولنے والا",
+      "target_speakers": "اوجِب وے بولنے والے"
+    },
+    "pan": {
+      "in_target": "پنجابی",
+      "a_target_speaker": "پنجابی بولنے والا",
+      "target_speakers": "پنجابی بولنے والے"
+    },
+    "pol": {
+      "in_target": "پولش",
+      "a_target_speaker": "پولش بولنے والا",
+      "target_speakers": "پولش بولنے والے"
+    },
+    "por": {
+      "in_target": "پرتگالی",
+      "a_target_speaker": "پرتگالی بولنے والا",
+      "target_speakers": "پرتگالی بولنے والے"
+    },
+    "por_BR": {
+      "in_target": "پرتگالی",
+      "a_target_speaker": "برازیلی پرتگالی بولنے والا",
+      "target_speakers": "پرتگالی بولنے والے"
+    },
+    "por_EU": {
+      "in_target": "پرتگالی",
+      "a_target_speaker": "یورپی پرتگالی بولنے والا",
+      "target_speakers": "پرتگالی بولنے والے"
+    },
+    "pus": {
+      "in_target": "پشتو",
+      "a_target_speaker": "پشتو بولنے والا",
+      "target_speakers": "پشتو بولنے والے"
+    },
+    "que": {
+      "in_target": "کیچوا",
+      "a_target_speaker": "کیچوا بولنے والا",
+      "target_speakers": "کیچوا بولنے والے"
+    },
+    "roh": {
+      "in_target": "رومانش",
+      "a_target_speaker": "رومانش بولنے والا",
+      "target_speakers": "رومانش بولنے والے"
+    },
+    "ron": {
+      "in_target": "رومانیائی",
+      "a_target_speaker": "رومانیائی بولنے والا",
+      "target_speakers": "رومانیائی بولنے والے"
+    },
+    "rus": {
+      "in_target": "روسی",
+      "a_target_speaker": "روسی بولنے والا",
+      "target_speakers": "روسی بولنے والے"
+    },
+    "scn": {
+      "in_target": "سسلیائی",
+      "a_target_speaker": "سسلیائی بولنے والا",
+      "target_speakers": "سسلیائی بولنے والے"
+    },
+    "sco": {
+      "in_target": "اسکاٹس",
+      "a_target_speaker": "اسکاٹس بولنے والا",
+      "target_speakers": "اسکاٹس بولنے والے"
+    },
+    "slk": {
+      "in_target": "سلوواک",
+      "a_target_speaker": "سلوواک بولنے والا",
+      "target_speakers": "سلوواک بولنے والے"
+    },
+    "slv": {
+      "in_target": "سلووینیائی",
+      "a_target_speaker": "سلووینیائی بولنے والا",
+      "target_speakers": "سلووینیائی بولنے والے"
+    },
+    "sme": {
+      "in_target": "شمالی سامی",
+      "a_target_speaker": "شمالی سامی بولنے والا",
+      "target_speakers": "شمالی سامی بولنے والے"
+    },
+    "smj": {
+      "in_target": "لولے سامی",
+      "a_target_speaker": "لولے سامی بولنے والا",
+      "target_speakers": "لولے سامی بولنے والے"
+    },
+    "smn": {
+      "in_target": "اناری سامی",
+      "a_target_speaker": "اناری سامی بولنے والا",
+      "target_speakers": "اناری سامی بولنے والے"
+    },
+    "smo": {
+      "in_target": "ساموائی",
+      "a_target_speaker": "ساموائی بولنے والا",
+      "target_speakers": "ساموائی بولنے والے"
+    },
+    "sms": {
+      "in_target": "اسکولٹ سامی",
+      "a_target_speaker": "اسکولٹ سامی بولنے والا",
+      "target_speakers": "اسکولٹ سامی بولنے والے"
+    },
+    "snd": {
+      "in_target": "سندھی",
+      "a_target_speaker": "سندھی بولنے والا",
+      "target_speakers": "سندھی بولنے والے"
+    },
+    "som": {
+      "in_target": "صومالی",
+      "a_target_speaker": "صومالی بولنے والا",
+      "target_speakers": "صومالی بولنے والے"
+    },
+    "spa": {
+      "in_target": "ہسپانوی",
+      "a_target_speaker": "ہسپانوی بولنے والا",
+      "target_speakers": "ہسپانوی بولنے والے"
+    },
+    "spa_EU": {
+      "in_target": "ہسپانوی",
+      "a_target_speaker": "یورپی ہسپانوی بولنے والا",
+      "target_speakers": "ہسپانوی بولنے والے"
+    },
+    "spa_SA": {
+      "in_target": "ہسپانوی",
+      "a_target_speaker": "جنوبی امریکی ہسپانوی بولنے والا",
+      "target_speakers": "ہسپانوی بولنے والے"
+    },
+    "srd": {
+      "in_target": "سارڈینیائی",
+      "a_target_speaker": "سارڈینیائی بولنے والا",
+      "target_speakers": "سارڈینیائی بولنے والے"
+    },
+    "srp": {
+      "in_target": "صربیائی",
+      "a_target_speaker": "صربیائی بولنے والا",
+      "target_speakers": "صربیائی بولنے والے"
+    },
+    "swa": {
+      "in_target": "سواحلی",
+      "a_target_speaker": "سواحلی بولنے والا",
+      "target_speakers": "سواحلی بولنے والے"
+    },
+    "swe": {
+      "in_target": "سویڈش",
+      "a_target_speaker": "سویڈش بولنے والا",
+      "target_speakers": "سویڈش بولنے والے"
+    },
+    "tah": {
+      "in_target": "تاہیتی",
+      "a_target_speaker": "تاہیتی بولنے والا",
+      "target_speakers": "تاہیتی بولنے والے"
+    },
+    "tam": {
+      "in_target": "تمل",
+      "a_target_speaker": "تمل بولنے والا",
+      "target_speakers": "تمل بولنے والے"
+    },
+    "tel": {
+      "in_target": "تیلگو",
+      "a_target_speaker": "تیلگو بولنے والا",
+      "target_speakers": "تیلگو بولنے والے"
+    },
+    "tha": {
+      "in_target": "تھائی",
+      "a_target_speaker": "تھائی بولنے والا",
+      "target_speakers": "تھائی بولنے والے"
+    },
+    "ton": {
+      "in_target": "ٹونگائی",
+      "a_target_speaker": "ٹونگائی بولنے والا",
+      "target_speakers": "ٹونگائی بولنے والے"
+    },
+    "tur": {
+      "in_target": "ترکی",
+      "a_target_speaker": "ترکی بولنے والا",
+      "target_speakers": "ترکی بولنے والے"
+    },
+    "uig": {
+      "in_target": "اویغور",
+      "a_target_speaker": "اویغور بولنے والا",
+      "target_speakers": "اویغور بولنے والے"
+    },
+    "ukr": {
+      "in_target": "یوکرینی",
+      "a_target_speaker": "یوکرینی بولنے والا",
+      "target_speakers": "یوکرینی بولنے والے"
+    },
+    "urd": {
+      "in_target": "اردو",
+      "a_target_speaker": "اردو بولنے والا",
+      "target_speakers": "اردو بولنے والے"
+    },
+    "vec": {
+      "in_target": "وینیشیائی",
+      "a_target_speaker": "وینیشیائی بولنے والا",
+      "target_speakers": "وینیشیائی بولنے والے"
+    },
+    "vie": {
+      "in_target": "ویتنامی",
+      "a_target_speaker": "ویتنامی بولنے والا",
+      "target_speakers": "ویتنامی بولنے والے"
+    },
+    "vls": {
+      "in_target": "فلیمش",
+      "a_target_speaker": "فلیمش بولنے والا",
+      "target_speakers": "فلیمش بولنے والے"
+    },
+    "wln": {
+      "in_target": "والون",
+      "a_target_speaker": "والون بولنے والا",
+      "target_speakers": "والون بولنے والے"
+    },
+    "wuu": {
+      "in_target": "شنگھائی",
+      "a_target_speaker": "شنگھائی بولنے والا",
+      "target_speakers": "شنگھائی بولنے والے"
+    },
+    "xho": {
+      "in_target": "خوسا",
+      "a_target_speaker": "خوسا بولنے والا",
+      "target_speakers": "خوسا بولنے والے"
+    },
+    "yid": {
+      "in_target": "یدیش",
+      "a_target_speaker": "یدیش بولنے والا",
+      "target_speakers": "یدیش بولنے والے"
+    },
+    "yor": {
+      "in_target": "یوروبا",
+      "a_target_speaker": "یوروبا بولنے والا",
+      "target_speakers": "یوروبا بولنے والے"
+    },
+    "yue": {
+      "in_target": "کینٹونی",
+      "a_target_speaker": "کینٹونی بولنے والا",
+      "target_speakers": "کینٹونی بولنے والے"
+    },
+    "zul": {
+      "in_target": "زولو",
+      "a_target_speaker": "زولو بولنے والا",
+      "target_speakers": "زولو بولنے والے"
+    },
+    "ara_lb": {
+      "in_target": "عربی",
+      "a_target_speaker": "لبنانی عربی بولنے والا",
+      "target_speakers": "عربی بولنے والے"
+    },
+    "ara_sy": {
+      "in_target": "عربی",
+      "a_target_speaker": "شامی عربی بولنے والا",
+      "target_speakers": "عربی بولنے والے"
+    },
+    "ara_eg": {
+      "in_target": "عربی",
+      "a_target_speaker": "مصری عربی بولنے والا",
+      "target_speakers": "عربی بولنے والے"
+    }
+  }
+}

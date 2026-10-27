@@ -1,0 +1,743 @@
+{
+  "known_language": "fil",
+  "known_language_display": "Filipino",
+  "template": "Maligayang pagdating sa kakaibang larong ito na tutulong sa iyo na maging {a_target_speaker}. Ganito ang paraan - magtuturo ako sa iyo ng isang bagay {in_target}, pagkatapos ay magsasabi ako ng isang bagay {in_known} at bibigyan kita ng pagkakataon na sabihin ito nang malakas {in_target}. Pagkatapos, makinig ka nang mabuti sa mga {target_speakers} na magpapakita sa iyo kung paano ito binibigkas. Mahalaga na magsabi ka ng kahit ano sa mga puwang, dahil ganoon ka natututo. Kahit hindi ka sigurado, subukan mong sabihin ang kahit anong kaya mo, at magsisimula kang magsalita {in_target} nang mas maaga kaysa sa inaakala mo. Habang mas tinatrato mo itong isang laro, habang mas masaya ka rito, habang mas tumatawa ka sa mga pagkakamali mo, mas magiging maganda ang takbo nito at mas mabilis kang matututo. Kaya, magsimula na tayong maglaro.",
+  "in_known": "sa Filipino",
+  "targets": {
+    "afb": {
+      "in_target": "sa Gulf Arabic",
+      "a_target_speaker": "nagsasalita ng Gulf Arabic",
+      "target_speakers": "nagsasalita ng Gulf Arabic"
+    },
+    "afr": {
+      "in_target": "sa Afrikaans",
+      "a_target_speaker": "nagsasalita ng Afrikaans",
+      "target_speakers": "nagsasalita ng Afrikaans"
+    },
+    "aii": {
+      "in_target": "sa Suret",
+      "a_target_speaker": "nagsasalita ng Suret",
+      "target_speakers": "nagsasalita ng Suret"
+    },
+    "ain": {
+      "in_target": "sa Ainu",
+      "a_target_speaker": "nagsasalita ng Ainu",
+      "target_speakers": "nagsasalita ng Ainu"
+    },
+    "ajp": {
+      "in_target": "sa Palestinian Arabic",
+      "a_target_speaker": "nagsasalita ng Palestinian Arabic",
+      "target_speakers": "nagsasalita ng Palestinian Arabic"
+    },
+    "amh": {
+      "in_target": "sa Amharic",
+      "a_target_speaker": "nagsasalita ng Amharic",
+      "target_speakers": "nagsasalita ng Amharic"
+    },
+    "apc": {
+      "in_target": "sa Levantine Arabic",
+      "a_target_speaker": "nagsasalita ng Levantine Arabic",
+      "target_speakers": "nagsasalita ng Levantine Arabic"
+    },
+    "ara": {
+      "in_target": "sa Arabic",
+      "a_target_speaker": "isang Modern Standard Arabic speaker",
+      "target_speakers": "nagsasalita ng Arabic"
+    },
+    "arg": {
+      "in_target": "sa Aragonese",
+      "a_target_speaker": "nagsasalita ng Aragonese",
+      "target_speakers": "nagsasalita ng Aragonese"
+    },
+    "ary": {
+      "in_target": "sa Moroccan Arabic",
+      "a_target_speaker": "nagsasalita ng Moroccan Arabic",
+      "target_speakers": "nagsasalita ng Moroccan Arabic"
+    },
+    "asm": {
+      "in_target": "sa Assamese",
+      "a_target_speaker": "nagsasalita ng Assamese",
+      "target_speakers": "nagsasalita ng Assamese"
+    },
+    "ast": {
+      "in_target": "sa Asturian",
+      "a_target_speaker": "nagsasalita ng Asturian",
+      "target_speakers": "nagsasalita ng Asturian"
+    },
+    "aze": {
+      "in_target": "sa Azerbaijani",
+      "a_target_speaker": "nagsasalita ng Azerbaijani",
+      "target_speakers": "nagsasalita ng Azerbaijani"
+    },
+    "bar": {
+      "in_target": "sa Bavarian",
+      "a_target_speaker": "nagsasalita ng Bavarian",
+      "target_speakers": "nagsasalita ng Bavarian"
+    },
+    "bel": {
+      "in_target": "sa Belarusian",
+      "a_target_speaker": "nagsasalita ng Belarusian",
+      "target_speakers": "nagsasalita ng Belarusian"
+    },
+    "ben": {
+      "in_target": "sa Bengali",
+      "a_target_speaker": "nagsasalita ng Bengali",
+      "target_speakers": "nagsasalita ng Bengali"
+    },
+    "bos": {
+      "in_target": "sa Bosnian",
+      "a_target_speaker": "nagsasalita ng Bosnian",
+      "target_speakers": "nagsasalita ng Bosnian"
+    },
+    "bre": {
+      "in_target": "sa Breton",
+      "a_target_speaker": "nagsasalita ng Breton",
+      "target_speakers": "nagsasalita ng Breton"
+    },
+    "bul": {
+      "in_target": "sa Bulgarian",
+      "a_target_speaker": "nagsasalita ng Bulgarian",
+      "target_speakers": "nagsasalita ng Bulgarian"
+    },
+    "cat": {
+      "in_target": "sa Catalan",
+      "a_target_speaker": "nagsasalita ng Catalan",
+      "target_speakers": "nagsasalita ng Catalan"
+    },
+    "ceb": {
+      "in_target": "sa Cebuano",
+      "a_target_speaker": "nagsasalita ng Cebuano",
+      "target_speakers": "nagsasalita ng Cebuano"
+    },
+    "ces": {
+      "in_target": "sa Czech",
+      "a_target_speaker": "nagsasalita ng Czech",
+      "target_speakers": "nagsasalita ng Czech"
+    },
+    "chr": {
+      "in_target": "sa Cherokee",
+      "a_target_speaker": "nagsasalita ng Cherokee",
+      "target_speakers": "nagsasalita ng Cherokee"
+    },
+    "cmn": {
+      "in_target": "sa Chinese",
+      "a_target_speaker": "nagsasalita ng Chinese",
+      "target_speakers": "nagsasalita ng Chinese"
+    },
+    "cor": {
+      "in_target": "sa Cornish",
+      "a_target_speaker": "nagsasalita ng Cornish",
+      "target_speakers": "nagsasalita ng Cornish"
+    },
+    "cos": {
+      "in_target": "sa Corsican",
+      "a_target_speaker": "nagsasalita ng Corsican",
+      "target_speakers": "nagsasalita ng Corsican"
+    },
+    "csb": {
+      "in_target": "sa Kashubian",
+      "a_target_speaker": "nagsasalita ng Kashubian",
+      "target_speakers": "nagsasalita ng Kashubian"
+    },
+    "cym": {
+      "in_target": "sa Welsh",
+      "a_target_speaker": "nagsasalita ng Welsh",
+      "target_speakers": "nagsasalita ng Welsh"
+    },
+    "dan": {
+      "in_target": "sa Danish",
+      "a_target_speaker": "nagsasalita ng Danish",
+      "target_speakers": "nagsasalita ng Danish"
+    },
+    "deu": {
+      "in_target": "sa German",
+      "a_target_speaker": "nagsasalita ng German",
+      "target_speakers": "nagsasalita ng German"
+    },
+    "deu_AT": {
+      "in_target": "sa German",
+      "a_target_speaker": "nagsasalita ng Austrian German",
+      "target_speakers": "nagsasalita ng German"
+    },
+    "dsb": {
+      "in_target": "sa Lower Sorbian",
+      "a_target_speaker": "nagsasalita ng Lower Sorbian",
+      "target_speakers": "nagsasalita ng Lower Sorbian"
+    },
+    "ell": {
+      "in_target": "sa Greek",
+      "a_target_speaker": "nagsasalita ng Greek",
+      "target_speakers": "nagsasalita ng Greek"
+    },
+    "eng": {
+      "in_target": "sa English",
+      "a_target_speaker": "nagsasalita ng English",
+      "target_speakers": "nagsasalita ng English"
+    },
+    "est": {
+      "in_target": "sa Estonian",
+      "a_target_speaker": "nagsasalita ng Estonian",
+      "target_speakers": "nagsasalita ng Estonian"
+    },
+    "eus": {
+      "in_target": "sa Basque",
+      "a_target_speaker": "nagsasalita ng Basque",
+      "target_speakers": "nagsasalita ng Basque"
+    },
+    "fao": {
+      "in_target": "sa Faroese",
+      "a_target_speaker": "nagsasalita ng Faroese",
+      "target_speakers": "nagsasalita ng Faroese"
+    },
+    "fas": {
+      "in_target": "sa Persian",
+      "a_target_speaker": "nagsasalita ng Persian",
+      "target_speakers": "nagsasalita ng Persian"
+    },
+    "fij": {
+      "in_target": "sa Fijian",
+      "a_target_speaker": "nagsasalita ng Fijian",
+      "target_speakers": "nagsasalita ng Fijian"
+    },
+    "fin": {
+      "in_target": "sa Finnish",
+      "a_target_speaker": "nagsasalita ng Finnish",
+      "target_speakers": "nagsasalita ng Finnish"
+    },
+    "fra": {
+      "in_target": "sa French",
+      "a_target_speaker": "nagsasalita ng French",
+      "target_speakers": "nagsasalita ng French"
+    },
+    "frr": {
+      "in_target": "sa North Frisian",
+      "a_target_speaker": "nagsasalita ng North Frisian",
+      "target_speakers": "nagsasalita ng North Frisian"
+    },
+    "fry": {
+      "in_target": "sa West Frisian",
+      "a_target_speaker": "nagsasalita ng West Frisian",
+      "target_speakers": "nagsasalita ng West Frisian"
+    },
+    "fur": {
+      "in_target": "sa Friulian",
+      "a_target_speaker": "nagsasalita ng Friulian",
+      "target_speakers": "nagsasalita ng Friulian"
+    },
+    "gla": {
+      "in_target": "sa Scottish Gaelic",
+      "a_target_speaker": "nagsasalita ng Scottish Gaelic",
+      "target_speakers": "nagsasalita ng Scottish Gaelic"
+    },
+    "gle": {
+      "in_target": "sa Irish",
+      "a_target_speaker": "nagsasalita ng Irish",
+      "target_speakers": "nagsasalita ng Irish"
+    },
+    "glg": {
+      "in_target": "sa Galician",
+      "a_target_speaker": "nagsasalita ng Galician",
+      "target_speakers": "nagsasalita ng Galician"
+    },
+    "glv": {
+      "in_target": "sa Manx",
+      "a_target_speaker": "nagsasalita ng Manx",
+      "target_speakers": "nagsasalita ng Manx"
+    },
+    "grk": {
+      "in_target": "sa Griko",
+      "a_target_speaker": "nagsasalita ng Griko",
+      "target_speakers": "nagsasalita ng Griko"
+    },
+    "grn": {
+      "in_target": "sa Guarani",
+      "a_target_speaker": "nagsasalita ng Guarani",
+      "target_speakers": "nagsasalita ng Guarani"
+    },
+    "gsw": {
+      "in_target": "sa Swiss German",
+      "a_target_speaker": "nagsasalita ng Swiss German",
+      "target_speakers": "nagsasalita ng Swiss German"
+    },
+    "guj": {
+      "in_target": "sa Gujarati",
+      "a_target_speaker": "nagsasalita ng Gujarati",
+      "target_speakers": "nagsasalita ng Gujarati"
+    },
+    "hak": {
+      "in_target": "sa Hakka",
+      "a_target_speaker": "nagsasalita ng Hakka",
+      "target_speakers": "nagsasalita ng Hakka"
+    },
+    "hau": {
+      "in_target": "sa Hausa",
+      "a_target_speaker": "nagsasalita ng Hausa",
+      "target_speakers": "nagsasalita ng Hausa"
+    },
+    "haw": {
+      "in_target": "sa Hawaiian",
+      "a_target_speaker": "nagsasalita ng Hawaiian",
+      "target_speakers": "nagsasalita ng Hawaiian"
+    },
+    "heb": {
+      "in_target": "sa Hebrew",
+      "a_target_speaker": "nagsasalita ng Hebrew",
+      "target_speakers": "nagsasalita ng Hebrew"
+    },
+    "hin": {
+      "in_target": "sa Hindi",
+      "a_target_speaker": "nagsasalita ng Hindi",
+      "target_speakers": "nagsasalita ng Hindi"
+    },
+    "hrv": {
+      "in_target": "sa Croatian",
+      "a_target_speaker": "nagsasalita ng Croatian",
+      "target_speakers": "nagsasalita ng Croatian"
+    },
+    "hsb": {
+      "in_target": "sa Upper Sorbian",
+      "a_target_speaker": "nagsasalita ng Upper Sorbian",
+      "target_speakers": "nagsasalita ng Upper Sorbian"
+    },
+    "hun": {
+      "in_target": "sa Hungarian",
+      "a_target_speaker": "nagsasalita ng Hungarian",
+      "target_speakers": "nagsasalita ng Hungarian"
+    },
+    "hye": {
+      "in_target": "sa Armenian",
+      "a_target_speaker": "nagsasalita ng Armenian",
+      "target_speakers": "nagsasalita ng Armenian"
+    },
+    "ibo": {
+      "in_target": "sa Igbo",
+      "a_target_speaker": "nagsasalita ng Igbo",
+      "target_speakers": "nagsasalita ng Igbo"
+    },
+    "iku": {
+      "in_target": "sa Inuktitut",
+      "a_target_speaker": "nagsasalita ng Inuktitut",
+      "target_speakers": "nagsasalita ng Inuktitut"
+    },
+    "ind": {
+      "in_target": "sa Indonesian",
+      "a_target_speaker": "nagsasalita ng Indonesian",
+      "target_speakers": "nagsasalita ng Indonesian"
+    },
+    "isl": {
+      "in_target": "sa Icelandic",
+      "a_target_speaker": "nagsasalita ng Icelandic",
+      "target_speakers": "nagsasalita ng Icelandic"
+    },
+    "ita": {
+      "in_target": "sa Italian",
+      "a_target_speaker": "nagsasalita ng Italian",
+      "target_speakers": "nagsasalita ng Italian"
+    },
+    "jav": {
+      "in_target": "sa Javanese",
+      "a_target_speaker": "nagsasalita ng Javanese",
+      "target_speakers": "nagsasalita ng Javanese"
+    },
+    "jpn": {
+      "in_target": "sa Japanese",
+      "a_target_speaker": "nagsasalita ng Japanese",
+      "target_speakers": "nagsasalita ng Japanese"
+    },
+    "kal": {
+      "in_target": "sa Greenlandic",
+      "a_target_speaker": "nagsasalita ng Greenlandic",
+      "target_speakers": "nagsasalita ng Greenlandic"
+    },
+    "kan": {
+      "in_target": "sa Kannada",
+      "a_target_speaker": "nagsasalita ng Kannada",
+      "target_speakers": "nagsasalita ng Kannada"
+    },
+    "kat": {
+      "in_target": "sa Georgian",
+      "a_target_speaker": "nagsasalita ng Georgian",
+      "target_speakers": "nagsasalita ng Georgian"
+    },
+    "kaz": {
+      "in_target": "sa Kazakh",
+      "a_target_speaker": "nagsasalita ng Kazakh",
+      "target_speakers": "nagsasalita ng Kazakh"
+    },
+    "kir": {
+      "in_target": "sa Kyrgyz",
+      "a_target_speaker": "nagsasalita ng Kyrgyz",
+      "target_speakers": "nagsasalita ng Kyrgyz"
+    },
+    "kor": {
+      "in_target": "sa Korean",
+      "a_target_speaker": "nagsasalita ng Korean",
+      "target_speakers": "nagsasalita ng Korean"
+    },
+    "kur": {
+      "in_target": "sa Kurdish",
+      "a_target_speaker": "nagsasalita ng Kurdish",
+      "target_speakers": "nagsasalita ng Kurdish"
+    },
+    "lad": {
+      "in_target": "sa Ladino",
+      "a_target_speaker": "nagsasalita ng Ladino",
+      "target_speakers": "nagsasalita ng Ladino"
+    },
+    "lav": {
+      "in_target": "sa Latvian",
+      "a_target_speaker": "nagsasalita ng Latvian",
+      "target_speakers": "nagsasalita ng Latvian"
+    },
+    "lij": {
+      "in_target": "sa Ligurian",
+      "a_target_speaker": "nagsasalita ng Ligurian",
+      "target_speakers": "nagsasalita ng Ligurian"
+    },
+    "lim": {
+      "in_target": "sa Limburgish",
+      "a_target_speaker": "nagsasalita ng Limburgish",
+      "target_speakers": "nagsasalita ng Limburgish"
+    },
+    "lin": {
+      "in_target": "sa Lingala",
+      "a_target_speaker": "nagsasalita ng Lingala",
+      "target_speakers": "nagsasalita ng Lingala"
+    },
+    "lit": {
+      "in_target": "sa Lithuanian",
+      "a_target_speaker": "nagsasalita ng Lithuanian",
+      "target_speakers": "nagsasalita ng Lithuanian"
+    },
+    "ltz": {
+      "in_target": "sa Luxembourgish",
+      "a_target_speaker": "nagsasalita ng Luxembourgish",
+      "target_speakers": "nagsasalita ng Luxembourgish"
+    },
+    "mal": {
+      "in_target": "sa Malayalam",
+      "a_target_speaker": "nagsasalita ng Malayalam",
+      "target_speakers": "nagsasalita ng Malayalam"
+    },
+    "mar": {
+      "in_target": "sa Marathi",
+      "a_target_speaker": "nagsasalita ng Marathi",
+      "target_speakers": "nagsasalita ng Marathi"
+    },
+    "mkd": {
+      "in_target": "sa Macedonian",
+      "a_target_speaker": "nagsasalita ng Macedonian",
+      "target_speakers": "nagsasalita ng Macedonian"
+    },
+    "moh": {
+      "in_target": "sa Mohawk",
+      "a_target_speaker": "nagsasalita ng Mohawk",
+      "target_speakers": "nagsasalita ng Mohawk"
+    },
+    "mri": {
+      "in_target": "sa Maori",
+      "a_target_speaker": "nagsasalita ng Maori",
+      "target_speakers": "nagsasalita ng Maori"
+    },
+    "msa": {
+      "in_target": "sa Malay",
+      "a_target_speaker": "nagsasalita ng Malay",
+      "target_speakers": "nagsasalita ng Malay"
+    },
+    "nan": {
+      "in_target": "sa Hokkien",
+      "a_target_speaker": "nagsasalita ng Hokkien",
+      "target_speakers": "nagsasalita ng Hokkien"
+    },
+    "nap": {
+      "in_target": "sa Neapolitan",
+      "a_target_speaker": "nagsasalita ng Neapolitan",
+      "target_speakers": "nagsasalita ng Neapolitan"
+    },
+    "nav": {
+      "in_target": "sa Navajo",
+      "a_target_speaker": "nagsasalita ng Navajo",
+      "target_speakers": "nagsasalita ng Navajo"
+    },
+    "nep": {
+      "in_target": "sa Nepali",
+      "a_target_speaker": "nagsasalita ng Nepali",
+      "target_speakers": "nagsasalita ng Nepali"
+    },
+    "nld": {
+      "in_target": "sa Dutch",
+      "a_target_speaker": "nagsasalita ng Dutch",
+      "target_speakers": "nagsasalita ng Dutch"
+    },
+    "nor": {
+      "in_target": "sa Norwegian",
+      "a_target_speaker": "nagsasalita ng Norwegian",
+      "target_speakers": "nagsasalita ng Norwegian"
+    },
+    "nya": {
+      "in_target": "sa Chichewa",
+      "a_target_speaker": "nagsasalita ng Chichewa",
+      "target_speakers": "nagsasalita ng Chichewa"
+    },
+    "oci": {
+      "in_target": "sa Occitan",
+      "a_target_speaker": "nagsasalita ng Occitan",
+      "target_speakers": "nagsasalita ng Occitan"
+    },
+    "oji": {
+      "in_target": "sa Ojibwe",
+      "a_target_speaker": "nagsasalita ng Ojibwe",
+      "target_speakers": "nagsasalita ng Ojibwe"
+    },
+    "pan": {
+      "in_target": "sa Punjabi",
+      "a_target_speaker": "nagsasalita ng Punjabi",
+      "target_speakers": "nagsasalita ng Punjabi"
+    },
+    "pol": {
+      "in_target": "sa Polish",
+      "a_target_speaker": "nagsasalita ng Polish",
+      "target_speakers": "nagsasalita ng Polish"
+    },
+    "por": {
+      "in_target": "sa Portuguese",
+      "a_target_speaker": "nagsasalita ng Portuguese",
+      "target_speakers": "nagsasalita ng Portuguese"
+    },
+    "por_BR": {
+      "in_target": "sa Portuguese",
+      "a_target_speaker": "nagsasalita ng Brazilian Portuguese",
+      "target_speakers": "nagsasalita ng Portuguese"
+    },
+    "por_EU": {
+      "in_target": "sa Portuguese",
+      "a_target_speaker": "nagsasalita ng European Portuguese",
+      "target_speakers": "nagsasalita ng Portuguese"
+    },
+    "pus": {
+      "in_target": "sa Pashto",
+      "a_target_speaker": "nagsasalita ng Pashto",
+      "target_speakers": "nagsasalita ng Pashto"
+    },
+    "que": {
+      "in_target": "sa Quechua",
+      "a_target_speaker": "nagsasalita ng Quechua",
+      "target_speakers": "nagsasalita ng Quechua"
+    },
+    "roh": {
+      "in_target": "sa Romansh",
+      "a_target_speaker": "nagsasalita ng Romansh",
+      "target_speakers": "nagsasalita ng Romansh"
+    },
+    "ron": {
+      "in_target": "sa Romanian",
+      "a_target_speaker": "nagsasalita ng Romanian",
+      "target_speakers": "nagsasalita ng Romanian"
+    },
+    "rus": {
+      "in_target": "sa Russian",
+      "a_target_speaker": "nagsasalita ng Russian",
+      "target_speakers": "nagsasalita ng Russian"
+    },
+    "scn": {
+      "in_target": "sa Sicilian",
+      "a_target_speaker": "nagsasalita ng Sicilian",
+      "target_speakers": "nagsasalita ng Sicilian"
+    },
+    "sco": {
+      "in_target": "sa Scots",
+      "a_target_speaker": "nagsasalita ng Scots",
+      "target_speakers": "nagsasalita ng Scots"
+    },
+    "slk": {
+      "in_target": "sa Slovak",
+      "a_target_speaker": "nagsasalita ng Slovak",
+      "target_speakers": "nagsasalita ng Slovak"
+    },
+    "slv": {
+      "in_target": "sa Slovenian",
+      "a_target_speaker": "nagsasalita ng Slovenian",
+      "target_speakers": "nagsasalita ng Slovenian"
+    },
+    "sme": {
+      "in_target": "sa Northern Sami",
+      "a_target_speaker": "nagsasalita ng Northern Sami",
+      "target_speakers": "nagsasalita ng Northern Sami"
+    },
+    "smj": {
+      "in_target": "sa Lule Sami",
+      "a_target_speaker": "nagsasalita ng Lule Sami",
+      "target_speakers": "nagsasalita ng Lule Sami"
+    },
+    "smn": {
+      "in_target": "sa Inari Sami",
+      "a_target_speaker": "nagsasalita ng Inari Sami",
+      "target_speakers": "nagsasalita ng Inari Sami"
+    },
+    "smo": {
+      "in_target": "sa Samoan",
+      "a_target_speaker": "nagsasalita ng Samoan",
+      "target_speakers": "nagsasalita ng Samoan"
+    },
+    "sms": {
+      "in_target": "sa Skolt Sami",
+      "a_target_speaker": "nagsasalita ng Skolt Sami",
+      "target_speakers": "nagsasalita ng Skolt Sami"
+    },
+    "snd": {
+      "in_target": "sa Sindhi",
+      "a_target_speaker": "nagsasalita ng Sindhi",
+      "target_speakers": "nagsasalita ng Sindhi"
+    },
+    "som": {
+      "in_target": "sa Somali",
+      "a_target_speaker": "nagsasalita ng Somali",
+      "target_speakers": "nagsasalita ng Somali"
+    },
+    "spa": {
+      "in_target": "sa Spanish",
+      "a_target_speaker": "nagsasalita ng Spanish",
+      "target_speakers": "nagsasalita ng Spanish"
+    },
+    "spa_EU": {
+      "in_target": "sa Spanish",
+      "a_target_speaker": "nagsasalita ng European Spanish",
+      "target_speakers": "nagsasalita ng Spanish"
+    },
+    "spa_SA": {
+      "in_target": "sa Spanish",
+      "a_target_speaker": "nagsasalita ng South American Spanish",
+      "target_speakers": "nagsasalita ng Spanish"
+    },
+    "srd": {
+      "in_target": "sa Sardinian",
+      "a_target_speaker": "nagsasalita ng Sardinian",
+      "target_speakers": "nagsasalita ng Sardinian"
+    },
+    "srp": {
+      "in_target": "sa Serbian",
+      "a_target_speaker": "nagsasalita ng Serbian",
+      "target_speakers": "nagsasalita ng Serbian"
+    },
+    "swa": {
+      "in_target": "sa Swahili",
+      "a_target_speaker": "nagsasalita ng Swahili",
+      "target_speakers": "nagsasalita ng Swahili"
+    },
+    "swe": {
+      "in_target": "sa Swedish",
+      "a_target_speaker": "nagsasalita ng Swedish",
+      "target_speakers": "nagsasalita ng Swedish"
+    },
+    "tah": {
+      "in_target": "sa Tahitian",
+      "a_target_speaker": "nagsasalita ng Tahitian",
+      "target_speakers": "nagsasalita ng Tahitian"
+    },
+    "tam": {
+      "in_target": "sa Tamil",
+      "a_target_speaker": "nagsasalita ng Tamil",
+      "target_speakers": "nagsasalita ng Tamil"
+    },
+    "tel": {
+      "in_target": "sa Telugu",
+      "a_target_speaker": "nagsasalita ng Telugu",
+      "target_speakers": "nagsasalita ng Telugu"
+    },
+    "tha": {
+      "in_target": "sa Thai",
+      "a_target_speaker": "nagsasalita ng Thai",
+      "target_speakers": "nagsasalita ng Thai"
+    },
+    "ton": {
+      "in_target": "sa Tongan",
+      "a_target_speaker": "nagsasalita ng Tongan",
+      "target_speakers": "nagsasalita ng Tongan"
+    },
+    "tur": {
+      "in_target": "sa Turkish",
+      "a_target_speaker": "nagsasalita ng Turkish",
+      "target_speakers": "nagsasalita ng Turkish"
+    },
+    "uig": {
+      "in_target": "sa Uyghur",
+      "a_target_speaker": "nagsasalita ng Uyghur",
+      "target_speakers": "nagsasalita ng Uyghur"
+    },
+    "ukr": {
+      "in_target": "sa Ukrainian",
+      "a_target_speaker": "nagsasalita ng Ukrainian",
+      "target_speakers": "nagsasalita ng Ukrainian"
+    },
+    "urd": {
+      "in_target": "sa Urdu",
+      "a_target_speaker": "nagsasalita ng Urdu",
+      "target_speakers": "nagsasalita ng Urdu"
+    },
+    "vec": {
+      "in_target": "sa Venetian",
+      "a_target_speaker": "nagsasalita ng Venetian",
+      "target_speakers": "nagsasalita ng Venetian"
+    },
+    "vie": {
+      "in_target": "sa Vietnamese",
+      "a_target_speaker": "nagsasalita ng Vietnamese",
+      "target_speakers": "nagsasalita ng Vietnamese"
+    },
+    "vls": {
+      "in_target": "sa Flemish",
+      "a_target_speaker": "nagsasalita ng Flemish",
+      "target_speakers": "nagsasalita ng Flemish"
+    },
+    "wln": {
+      "in_target": "sa Walloon",
+      "a_target_speaker": "nagsasalita ng Walloon",
+      "target_speakers": "nagsasalita ng Walloon"
+    },
+    "wuu": {
+      "in_target": "sa Shanghainese",
+      "a_target_speaker": "nagsasalita ng Shanghainese",
+      "target_speakers": "nagsasalita ng Shanghainese"
+    },
+    "xho": {
+      "in_target": "sa Xhosa",
+      "a_target_speaker": "nagsasalita ng Xhosa",
+      "target_speakers": "nagsasalita ng Xhosa"
+    },
+    "yid": {
+      "in_target": "sa Yiddish",
+      "a_target_speaker": "nagsasalita ng Yiddish",
+      "target_speakers": "nagsasalita ng Yiddish"
+    },
+    "yor": {
+      "in_target": "sa Yoruba",
+      "a_target_speaker": "nagsasalita ng Yoruba",
+      "target_speakers": "nagsasalita ng Yoruba"
+    },
+    "yue": {
+      "in_target": "sa Cantonese",
+      "a_target_speaker": "nagsasalita ng Cantonese",
+      "target_speakers": "nagsasalita ng Cantonese"
+    },
+    "zul": {
+      "in_target": "sa Zulu",
+      "a_target_speaker": "nagsasalita ng Zulu",
+      "target_speakers": "nagsasalita ng Zulu"
+    },
+    "ara_lb": {
+      "in_target": "sa Arabic",
+      "a_target_speaker": "nagsasalita ng Lebanese Arabic",
+      "target_speakers": "nagsasalita ng Arabic"
+    },
+    "ara_sy": {
+      "in_target": "sa Arabic",
+      "a_target_speaker": "nagsasalita ng Syrian Arabic",
+      "target_speakers": "nagsasalita ng Arabic"
+    },
+    "ara_eg": {
+      "in_target": "sa Arabic",
+      "a_target_speaker": "nagsasalita ng Egyptian Arabic",
+      "target_speakers": "nagsasalita ng Arabic"
+    }
+  }
+}

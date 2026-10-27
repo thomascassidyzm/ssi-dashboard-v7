@@ -1,0 +1,748 @@
+{
+  "known_language": "pan",
+  "known_language_display": "Punjabi",
+  "template": "ਇਸ ਅਨੋਖੇ ਖੇਡ ਵਿੱਚ ਤੇਰਾ ਸੁਆਗਤ ਹੈ, ਜੋ ਤੈਨੂੰ {a_target_speaker} ਬਣਨ ਵਿੱਚ ਮਦਦ ਕਰੇਗਾ। ਇਹ ਇਸ ਤਰ੍ਹਾਂ ਕੰਮ ਕਰਦਾ ਹੈ - ਪਹਿਲਾਂ ਮੈਂ ਤੈਨੂੰ {in_target} ਵਿੱਚ ਕੁਝ ਸਿਖਾਉਂਦੀ ਹਾਂ, ਫਿਰ ਮੈਂ {in_known} ਵਿੱਚ ਕੁਝ ਕਹਿੰਦੀ ਹਾਂ ਅਤੇ ਤੈਨੂੰ ਮੌਕਾ ਦਿੰਦੀ ਹਾਂ ਕਿ ਤੂੰ ਉਸਨੂੰ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ {in_target} ਵਿੱਚ ਬੋਲੇ। ਫਿਰ, {target_speakers} ਨੂੰ ਧਿਆਨ ਨਾਲ ਸੁਣ ਜੋ ਤੇਰੇ ਲਈ ਉਸਦੀ ਨਕਲ ਕਰਕੇ ਦਿਖਾਉਣਗੇ। ਇਹ ਜ਼ਰੂਰੀ ਹੈ ਕਿ ਤੂੰ ਖਾਲੀ ਥਾਵਾਂ ਵਿੱਚ ਕੁਝ ਬੋਲੇ, ਕਿਉਂਕਿ ਇਸ ਤਰ੍ਹਾਂ ਹੀ ਤੂੰ ਸਿੱਖੇਂਗਾ। ਜੇ ਤੈਨੂੰ ਯਕੀਨ ਨਹੀਂ, ਤਾਂ ਵੀ ਜੋ ਬੋਲ ਸਕਦਾ ਹੈਂ ਉਹ ਬੋਲਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰ, ਅਤੇ ਤੂੰ ਸੋਚੇਂਗਾ ਵੀ ਨਹੀਂ ਕਿ ਕਿੰਨੀ ਜਲਦੀ ਤੂੰ {in_target} ਵਿੱਚ ਬੋਲਣ ਲੱਗੇਂਗਾ। ਤੂੰ ਜਿੰਨਾ ਜ਼ਿਆਦਾ ਇਸਨੂੰ ਖੇਡ ਸਮਝੇਂਗਾ, ਜਿੰਨਾ ਮਜ਼ੇ ਨਾਲ ਖੇਡੇਂਗਾ, ਗਲਤੀਆਂ ਉੱਤੇ ਜਿੰਨਾ ਹੱਸੇਂਗਾ, ਉੱਨਾ ਹੀ ਵਧੀਆ ਹੋਵੇਗਾ ਅਤੇ ਉੱਨੀ ਹੀ ਤੇਜ਼ੀ ਨਾਲ ਸਿੱਖੇਂਗਾ। ਤਾਂ ਚੱਲੋ, ਸ਼ੁਰੂ ਕਰਦੇ ਹਾਂ।",
+  "in_known": "ਪੰਜਾਬੀ",
+  "targets": {
+    "afb": {
+      "in_target": "ਖਾੜੀ ਅਰਬੀ",
+      "a_target_speaker": "ਖਾੜੀ ਅਰਬੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਖਾੜੀ ਅਰਬੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "afr": {
+      "in_target": "ਅਫ਼ਰੀਕਾਨਸ",
+      "a_target_speaker": "ਅਫ਼ਰੀਕਾਨਸ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅਫ਼ਰੀਕਾਨਸ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "aii": {
+      "in_target": "ਅੱਸੀਰੀਅਨ",
+      "a_target_speaker": "ਅੱਸੀਰੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅੱਸੀਰੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ain": {
+      "in_target": "ਆਇਨੂ",
+      "a_target_speaker": "ਆਇਨੂ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਆਇਨੂ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ajp": {
+      "in_target": "ਫ਼ਲਸਤੀਨੀ ਅਰਬੀ",
+      "a_target_speaker": "ਫ਼ਲਸਤੀਨੀ ਅਰਬੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਫ਼ਲਸਤੀਨੀ ਅਰਬੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "amh": {
+      "in_target": "ਅਮਹਾਰਿਕ",
+      "a_target_speaker": "ਅਮਹਾਰਿਕ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅਮਹਾਰਿਕ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "apc": {
+      "in_target": "ਲੇਵੈਂਟੀਨ ਅਰਬੀ",
+      "a_target_speaker": "ਲੇਵੈਂਟੀਨ ਅਰਬੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਲੇਵੈਂਟੀਨ ਅਰਬੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ara": {
+      "in_target": "ਅਰਬੀ",
+      "a_target_speaker": "ਆਧੁਨਿਕ ਮਿਆਰੀ ਅਰਬੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅਰਬੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "arg": {
+      "in_target": "ਅਰਾਗੋਨੀ",
+      "a_target_speaker": "ਅਰਾਗੋਨੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅਰਾਗੋਨੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ary": {
+      "in_target": "ਮੋਰੱਕੋੀ ਅਰਬੀ",
+      "a_target_speaker": "ਮੋਰੱਕੋੀ ਅਰਬੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਮੋਰੱਕੋੀ ਅਰਬੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "asm": {
+      "in_target": "ਆਸਾਮੀ",
+      "a_target_speaker": "ਆਸਾਮੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਆਸਾਮੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ast": {
+      "in_target": "ਅਸਤੂਰੀਅਨ",
+      "a_target_speaker": "ਅਸਤੂਰੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅਸਤੂਰੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "aze": {
+      "in_target": "ਅਜ਼ਰਬਾਈਜਾਨੀ",
+      "a_target_speaker": "ਅਜ਼ਰਬਾਈਜਾਨੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅਜ਼ਰਬਾਈਜਾਨੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "bar": {
+      "in_target": "ਬਾਵੇਰੀਅਨ",
+      "a_target_speaker": "ਬਾਵੇਰੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਬਾਵੇਰੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "bel": {
+      "in_target": "ਬੇਲਾਰੂਸੀ",
+      "a_target_speaker": "ਬੇਲਾਰੂਸੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਬੇਲਾਰੂਸੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ben": {
+      "in_target": "ਬੰਗਾਲੀ",
+      "a_target_speaker": "ਬੰਗਾਲੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਬੰਗਾਲੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "bos": {
+      "in_target": "ਬੋਸਨੀਅਨ",
+      "a_target_speaker": "ਬੋਸਨੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਬੋਸਨੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "bre": {
+      "in_target": "ਬ੍ਰੈਟਨ",
+      "a_target_speaker": "ਬ੍ਰੈਟਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਬ੍ਰੈਟਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "bul": {
+      "in_target": "ਬੁਲਗਾਰੀਅਨ",
+      "a_target_speaker": "ਬੁਲਗਾਰੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਬੁਲਗਾਰੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "cat": {
+      "in_target": "ਕਾਤਾਲਾਨ",
+      "a_target_speaker": "ਕਾਤਾਲਾਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕਾਤਾਲਾਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ceb": {
+      "in_target": "ਸੇਬੂਆਨੋ",
+      "a_target_speaker": "ਸੇਬੂਆਨੋ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸੇਬੂਆਨੋ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ces": {
+      "in_target": "ਚੈੱਕ",
+      "a_target_speaker": "ਚੈੱਕ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਚੈੱਕ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "chr": {
+      "in_target": "ਚੈਰੋਕੀ",
+      "a_target_speaker": "ਚੈਰੋਕੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਚੈਰੋਕੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "cmn": {
+      "in_target": "ਚੀਨੀ",
+      "a_target_speaker": "ਚੀਨੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਚੀਨੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "cor": {
+      "in_target": "ਕੋਰਨਿਸ਼",
+      "a_target_speaker": "ਕੋਰਨਿਸ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕੋਰਨਿਸ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "cos": {
+      "in_target": "ਕੋਰਸੀਕਨ",
+      "a_target_speaker": "ਕੋਰਸੀਕਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕੋਰਸੀਕਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "csb": {
+      "in_target": "ਕਸ਼ੂਬੀਅਨ",
+      "a_target_speaker": "ਕਸ਼ੂਬੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕਸ਼ੂਬੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "cym": {
+      "in_target": "ਵੈਲਸ਼",
+      "a_target_speaker": "ਵੈਲਸ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਵੈਲਸ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "dan": {
+      "in_target": "ਡੈਨਿਸ਼",
+      "a_target_speaker": "ਡੈਨਿਸ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਡੈਨਿਸ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "deu": {
+      "in_target": "ਜਰਮਨ",
+      "a_target_speaker": "ਜਰਮਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਜਰਮਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "deu_AT": {
+      "in_target": "ਜਰਮਨ",
+      "a_target_speaker": "ਆਸਟ੍ਰੀਅਨ ਜਰਮਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਜਰਮਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "dsb": {
+      "in_target": "ਲੋਅਰ ਸੋਰਬੀਅਨ",
+      "a_target_speaker": "ਲੋਅਰ ਸੋਰਬੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਲੋਅਰ ਸੋਰਬੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ell": {
+      "in_target": "ਯੂਨਾਨੀ",
+      "a_target_speaker": "ਯੂਨਾਨੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਯੂਨਾਨੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "eng": {
+      "in_target": "ਅੰਗਰੇਜ਼ੀ",
+      "a_target_speaker": "ਅੰਗਰੇਜ਼ੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅੰਗਰੇਜ਼ੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "est": {
+      "in_target": "ਏਸਟੋਨੀਅਨ",
+      "a_target_speaker": "ਏਸਟੋਨੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਏਸਟੋਨੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "eus": {
+      "in_target": "ਬਾਸਕ",
+      "a_target_speaker": "ਬਾਸਕ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਬਾਸਕ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "fao": {
+      "in_target": "ਫ਼ੈਰੋਈਜ਼",
+      "a_target_speaker": "ਫ਼ੈਰੋਈਜ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਫ਼ੈਰੋਈਜ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "fas": {
+      "in_target": "ਫ਼ਾਰਸੀ",
+      "a_target_speaker": "ਫ਼ਾਰਸੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਫ਼ਾਰਸੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "fij": {
+      "in_target": "ਫ਼ਿਜੀਅਨ",
+      "a_target_speaker": "ਫ਼ਿਜੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਫ਼ਿਜੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "fil": {
+      "in_target": "ਫ਼ਿਲੀਪੀਨੋ",
+      "a_target_speaker": "ਫ਼ਿਲੀਪੀਨੋ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਫ਼ਿਲੀਪੀਨੋ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "fin": {
+      "in_target": "ਫ਼ਿਨਿਸ਼",
+      "a_target_speaker": "ਫ਼ਿਨਿਸ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਫ਼ਿਨਿਸ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "fra": {
+      "in_target": "ਫ਼੍ਰੈਂਚ",
+      "a_target_speaker": "ਫ਼੍ਰੈਂਚ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਫ਼੍ਰੈਂਚ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "frr": {
+      "in_target": "ਉੱਤਰੀ ਫ਼੍ਰੀਜ਼ੀਅਨ",
+      "a_target_speaker": "ਉੱਤਰੀ ਫ਼੍ਰੀਜ਼ੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਉੱਤਰੀ ਫ਼੍ਰੀਜ਼ੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "fry": {
+      "in_target": "ਪੱਛਮੀ ਫ਼੍ਰੀਜ਼ੀਅਨ",
+      "a_target_speaker": "ਪੱਛਮੀ ਫ਼੍ਰੀਜ਼ੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਪੱਛਮੀ ਫ਼੍ਰੀਜ਼ੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "fur": {
+      "in_target": "ਫ਼੍ਰੀਉਲੀਅਨ",
+      "a_target_speaker": "ਫ਼੍ਰੀਉਲੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਫ਼੍ਰੀਉਲੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "gla": {
+      "in_target": "ਸਕੌਟਿਸ਼ ਗੈਲਿਕ",
+      "a_target_speaker": "ਸਕੌਟਿਸ਼ ਗੈਲਿਕ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਕੌਟਿਸ਼ ਗੈਲਿਕ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "gle": {
+      "in_target": "ਆਇਰਿਸ਼",
+      "a_target_speaker": "ਆਇਰਿਸ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਆਇਰਿਸ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "glg": {
+      "in_target": "ਗੈਲੀਸ਼ੀਅਨ",
+      "a_target_speaker": "ਗੈਲੀਸ਼ੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਗੈਲੀਸ਼ੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "glv": {
+      "in_target": "ਮੈਂਕਸ",
+      "a_target_speaker": "ਮੈਂਕਸ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਮੈਂਕਸ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "grk": {
+      "in_target": "ਗ੍ਰੀਕੋ",
+      "a_target_speaker": "ਗ੍ਰੀਕੋ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਗ੍ਰੀਕੋ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "grn": {
+      "in_target": "ਗੁਆਰਾਨੀ",
+      "a_target_speaker": "ਗੁਆਰਾਨੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਗੁਆਰਾਨੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "gsw": {
+      "in_target": "ਸਵਿੱਸ ਜਰਮਨ",
+      "a_target_speaker": "ਸਵਿੱਸ ਜਰਮਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਵਿੱਸ ਜਰਮਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "guj": {
+      "in_target": "ਗੁਜਰਾਤੀ",
+      "a_target_speaker": "ਗੁਜਰਾਤੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਗੁਜਰਾਤੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "hak": {
+      "in_target": "ਹੱਕਾ",
+      "a_target_speaker": "ਹੱਕਾ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਹੱਕਾ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "hau": {
+      "in_target": "ਹੌਸਾ",
+      "a_target_speaker": "ਹੌਸਾ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਹੌਸਾ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "haw": {
+      "in_target": "ਹਵਾਈਅਨ",
+      "a_target_speaker": "ਹਵਾਈਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਹਵਾਈਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "heb": {
+      "in_target": "ਹਿਬਰੂ",
+      "a_target_speaker": "ਹਿਬਰੂ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਹਿਬਰੂ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "hin": {
+      "in_target": "ਹਿੰਦੀ",
+      "a_target_speaker": "ਹਿੰਦੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਹਿੰਦੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "hrv": {
+      "in_target": "ਕ੍ਰੋਏਸ਼ੀਅਨ",
+      "a_target_speaker": "ਕ੍ਰੋਏਸ਼ੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕ੍ਰੋਏਸ਼ੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "hsb": {
+      "in_target": "ਅੱਪਰ ਸੋਰਬੀਅਨ",
+      "a_target_speaker": "ਅੱਪਰ ਸੋਰਬੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅੱਪਰ ਸੋਰਬੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "hun": {
+      "in_target": "ਹੰਗੇਰੀਅਨ",
+      "a_target_speaker": "ਹੰਗੇਰੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਹੰਗੇਰੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "hye": {
+      "in_target": "ਅਰਮੇਨੀਅਨ",
+      "a_target_speaker": "ਅਰਮੇਨੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅਰਮੇਨੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ibo": {
+      "in_target": "ਇਗਬੋ",
+      "a_target_speaker": "ਇਗਬੋ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਇਗਬੋ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "iku": {
+      "in_target": "ਇਨੂਕਤੀਤੁਤ",
+      "a_target_speaker": "ਇਨੂਕਤੀਤੁਤ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਇਨੂਕਤੀਤੁਤ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ind": {
+      "in_target": "ਇੰਡੋਨੇਸ਼ੀਅਨ",
+      "a_target_speaker": "ਇੰਡੋਨੇਸ਼ੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਇੰਡੋਨੇਸ਼ੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "isl": {
+      "in_target": "ਆਈਸਲੈਂਡਿਕ",
+      "a_target_speaker": "ਆਈਸਲੈਂਡਿਕ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਆਈਸਲੈਂਡਿਕ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ita": {
+      "in_target": "ਇਤਾਲਵੀ",
+      "a_target_speaker": "ਇਤਾਲਵੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਇਤਾਲਵੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "jav": {
+      "in_target": "ਜਾਵਾਨੀਜ਼",
+      "a_target_speaker": "ਜਾਵਾਨੀਜ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਜਾਵਾਨੀਜ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "jpn": {
+      "in_target": "ਜਾਪਾਨੀ",
+      "a_target_speaker": "ਜਾਪਾਨੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਜਾਪਾਨੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "kal": {
+      "in_target": "ਗ੍ਰੀਨਲੈਂਡਿਕ",
+      "a_target_speaker": "ਗ੍ਰੀਨਲੈਂਡਿਕ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਗ੍ਰੀਨਲੈਂਡਿਕ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "kan": {
+      "in_target": "ਕੰਨੜ",
+      "a_target_speaker": "ਕੰਨੜ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕੰਨੜ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "kat": {
+      "in_target": "ਜਾਰਜੀਅਨ",
+      "a_target_speaker": "ਜਾਰਜੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਜਾਰਜੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "kaz": {
+      "in_target": "ਕਜ਼ਾਖ਼",
+      "a_target_speaker": "ਕਜ਼ਾਖ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕਜ਼ਾਖ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "kir": {
+      "in_target": "ਕਿਰਗਿਜ਼",
+      "a_target_speaker": "ਕਿਰਗਿਜ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕਿਰਗਿਜ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "kor": {
+      "in_target": "ਕੋਰੀਅਨ",
+      "a_target_speaker": "ਕੋਰੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕੋਰੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "kur": {
+      "in_target": "ਕੁਰਦੀ",
+      "a_target_speaker": "ਕੁਰਦੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕੁਰਦੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "lad": {
+      "in_target": "ਲਾਦੀਨੋ",
+      "a_target_speaker": "ਲਾਦੀਨੋ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਲਾਦੀਨੋ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "lav": {
+      "in_target": "ਲਾਤਵੀਅਨ",
+      "a_target_speaker": "ਲਾਤਵੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਲਾਤਵੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "lij": {
+      "in_target": "ਲਿਗੂਰੀਅਨ",
+      "a_target_speaker": "ਲਿਗੂਰੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਲਿਗੂਰੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "lim": {
+      "in_target": "ਲਿੰਬਰਗਿਸ਼",
+      "a_target_speaker": "ਲਿੰਬਰਗਿਸ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਲਿੰਬਰਗਿਸ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "lin": {
+      "in_target": "ਲਿੰਗਾਲਾ",
+      "a_target_speaker": "ਲਿੰਗਾਲਾ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਲਿੰਗਾਲਾ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "lit": {
+      "in_target": "ਲਿਥੁਆਨੀਅਨ",
+      "a_target_speaker": "ਲਿਥੁਆਨੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਲਿਥੁਆਨੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ltz": {
+      "in_target": "ਲਕਸਮਬਰਗੀ",
+      "a_target_speaker": "ਲਕਸਮਬਰਗੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਲਕਸਮਬਰਗੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "mal": {
+      "in_target": "ਮਲਿਆਲਮ",
+      "a_target_speaker": "ਮਲਿਆਲਮ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਮਲਿਆਲਮ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "mar": {
+      "in_target": "ਮਰਾਠੀ",
+      "a_target_speaker": "ਮਰਾਠੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਮਰਾਠੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "mkd": {
+      "in_target": "ਮੈਸੇਡੋਨੀਅਨ",
+      "a_target_speaker": "ਮੈਸੇਡੋਨੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਮੈਸੇਡੋਨੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "moh": {
+      "in_target": "ਮੋਹਾਕ",
+      "a_target_speaker": "ਮੋਹਾਕ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਮੋਹਾਕ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "mri": {
+      "in_target": "ਮਾਓਰੀ",
+      "a_target_speaker": "ਮਾਓਰੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਮਾਓਰੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "msa": {
+      "in_target": "ਮਲੇਅ",
+      "a_target_speaker": "ਮਲੇਅ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਮਲੇਅ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "nan": {
+      "in_target": "ਹੋੱਕੀਅਨ",
+      "a_target_speaker": "ਹੋੱਕੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਹੋੱਕੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "nap": {
+      "in_target": "ਨੇਅਪੋਲੀਟਨ",
+      "a_target_speaker": "ਨੇਅਪੋਲੀਟਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਨੇਅਪੋਲੀਟਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "nav": {
+      "in_target": "ਨਾਵਾਹੋ",
+      "a_target_speaker": "ਨਾਵਾਹੋ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਨਾਵਾਹੋ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "nep": {
+      "in_target": "ਨੇਪਾਲੀ",
+      "a_target_speaker": "ਨੇਪਾਲੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਨੇਪਾਲੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "nld": {
+      "in_target": "ਡੱਚ",
+      "a_target_speaker": "ਡੱਚ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਡੱਚ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "nor": {
+      "in_target": "ਨਾਰਵੇਜੀਅਨ",
+      "a_target_speaker": "ਨਾਰਵੇਜੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਨਾਰਵੇਜੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "nya": {
+      "in_target": "ਚਿਚੇਵਾ",
+      "a_target_speaker": "ਚਿਚੇਵਾ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਚਿਚੇਵਾ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "oci": {
+      "in_target": "ਔਕਸੀਟਾਨ",
+      "a_target_speaker": "ਔਕਸੀਟਾਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਔਕਸੀਟਾਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "oji": {
+      "in_target": "ਓਜਿਬਵੇ",
+      "a_target_speaker": "ਓਜਿਬਵੇ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਓਜਿਬਵੇ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "pan": {
+      "in_target": "ਪੰਜਾਬੀ",
+      "a_target_speaker": "ਪੰਜਾਬੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਪੰਜਾਬੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "pol": {
+      "in_target": "ਪੋਲਿਸ਼",
+      "a_target_speaker": "ਪੋਲਿਸ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਪੋਲਿਸ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "por": {
+      "in_target": "ਪੁਰਤਗਾਲੀ",
+      "a_target_speaker": "ਪੁਰਤਗਾਲੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਪੁਰਤਗਾਲੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "por_BR": {
+      "in_target": "ਪੁਰਤਗਾਲੀ",
+      "a_target_speaker": "ਬ੍ਰਾਜ਼ੀਲੀਅਨ ਪੁਰਤਗਾਲੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਪੁਰਤਗਾਲੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "por_EU": {
+      "in_target": "ਪੁਰਤਗਾਲੀ",
+      "a_target_speaker": "ਯੂਰਪੀਅਨ ਪੁਰਤਗਾਲੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਪੁਰਤਗਾਲੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "pus": {
+      "in_target": "ਪਸ਼ਤੋ",
+      "a_target_speaker": "ਪਸ਼ਤੋ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਪਸ਼ਤੋ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "que": {
+      "in_target": "ਕੁਏਚੂਆ",
+      "a_target_speaker": "ਕੁਏਚੂਆ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕੁਏਚੂਆ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "roh": {
+      "in_target": "ਰੋਮਾਂਸ਼",
+      "a_target_speaker": "ਰੋਮਾਂਸ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਰੋਮਾਂਸ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ron": {
+      "in_target": "ਰੋਮਾਨੀਅਨ",
+      "a_target_speaker": "ਰੋਮਾਨੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਰੋਮਾਨੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "rus": {
+      "in_target": "ਰੂਸੀ",
+      "a_target_speaker": "ਰੂਸੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਰੂਸੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "scn": {
+      "in_target": "ਸਿਸਿਲੀਅਨ",
+      "a_target_speaker": "ਸਿਸਿਲੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਿਸਿਲੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "sco": {
+      "in_target": "ਸਕੌਟਸ",
+      "a_target_speaker": "ਸਕੌਟਸ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਕੌਟਸ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "slk": {
+      "in_target": "ਸਲੋਵਾਕ",
+      "a_target_speaker": "ਸਲੋਵਾਕ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਲੋਵਾਕ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "slv": {
+      "in_target": "ਸਲੋਵੇਨੀਅਨ",
+      "a_target_speaker": "ਸਲੋਵੇਨੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਲੋਵੇਨੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "sme": {
+      "in_target": "ਉੱਤਰੀ ਸਾਮੀ",
+      "a_target_speaker": "ਉੱਤਰੀ ਸਾਮੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਉੱਤਰੀ ਸਾਮੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "smj": {
+      "in_target": "ਲੂਲੇ ਸਾਮੀ",
+      "a_target_speaker": "ਲੂਲੇ ਸਾਮੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਲੂਲੇ ਸਾਮੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "smn": {
+      "in_target": "ਇਨਾਰੀ ਸਾਮੀ",
+      "a_target_speaker": "ਇਨਾਰੀ ਸਾਮੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਇਨਾਰੀ ਸਾਮੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "smo": {
+      "in_target": "ਸਮੋਅਨ",
+      "a_target_speaker": "ਸਮੋਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਮੋਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "sms": {
+      "in_target": "ਸਕੋਲਟ ਸਾਮੀ",
+      "a_target_speaker": "ਸਕੋਲਟ ਸਾਮੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਕੋਲਟ ਸਾਮੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "snd": {
+      "in_target": "ਸਿੰਧੀ",
+      "a_target_speaker": "ਸਿੰਧੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਿੰਧੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "som": {
+      "in_target": "ਸੋਮਾਲੀ",
+      "a_target_speaker": "ਸੋਮਾਲੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸੋਮਾਲੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "spa": {
+      "in_target": "ਸਪੇਨੀ",
+      "a_target_speaker": "ਸਪੇਨੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਪੇਨੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "spa_EU": {
+      "in_target": "ਸਪੇਨੀ",
+      "a_target_speaker": "ਯੂਰਪੀਅਨ ਸਪੇਨੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਪੇਨੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "spa_SA": {
+      "in_target": "ਸਪੇਨੀ",
+      "a_target_speaker": "ਦੱਖਣੀ ਅਮਰੀਕੀ ਸਪੇਨੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਪੇਨੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "srd": {
+      "in_target": "ਸਾਰਦੀਨੀਅਨ",
+      "a_target_speaker": "ਸਾਰਦੀਨੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਾਰਦੀਨੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "srp": {
+      "in_target": "ਸਰਬੀਅਨ",
+      "a_target_speaker": "ਸਰਬੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਰਬੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "swa": {
+      "in_target": "ਸਵਾਹਿਲੀ",
+      "a_target_speaker": "ਸਵਾਹਿਲੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਵਾਹਿਲੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "swe": {
+      "in_target": "ਸਵੀਡਿਸ਼",
+      "a_target_speaker": "ਸਵੀਡਿਸ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸਵੀਡਿਸ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "tah": {
+      "in_target": "ਤਾਹੀਤੀਅਨ",
+      "a_target_speaker": "ਤਾਹੀਤੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਤਾਹੀਤੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "tam": {
+      "in_target": "ਤਾਮਿਲ",
+      "a_target_speaker": "ਤਾਮਿਲ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਤਾਮਿਲ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "tel": {
+      "in_target": "ਤੇਲਗੂ",
+      "a_target_speaker": "ਤੇਲਗੂ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਤੇਲਗੂ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "tha": {
+      "in_target": "ਥਾਈ",
+      "a_target_speaker": "ਥਾਈ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਥਾਈ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ton": {
+      "in_target": "ਟੌਂਗਨ",
+      "a_target_speaker": "ਟੌਂਗਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਟੌਂਗਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "tur": {
+      "in_target": "ਤੁਰਕੀ",
+      "a_target_speaker": "ਤੁਰਕੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਤੁਰਕੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "uig": {
+      "in_target": "ਉਇਗੁਰ",
+      "a_target_speaker": "ਉਇਗੁਰ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਉਇਗੁਰ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ukr": {
+      "in_target": "ਯੂਕਰੇਨੀਅਨ",
+      "a_target_speaker": "ਯੂਕਰੇਨੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਯੂਕਰੇਨੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "urd": {
+      "in_target": "ਉਰਦੂ",
+      "a_target_speaker": "ਉਰਦੂ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਉਰਦੂ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "vec": {
+      "in_target": "ਵੈਨੇਸ਼ੀਅਨ",
+      "a_target_speaker": "ਵੈਨੇਸ਼ੀਅਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਵੈਨੇਸ਼ੀਅਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "vie": {
+      "in_target": "ਵੀਅਤਨਾਮੀ",
+      "a_target_speaker": "ਵੀਅਤਨਾਮੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਵੀਅਤਨਾਮੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "vls": {
+      "in_target": "ਫ਼ਲੇਮਿਸ਼",
+      "a_target_speaker": "ਫ਼ਲੇਮਿਸ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਫ਼ਲੇਮਿਸ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "wln": {
+      "in_target": "ਵਾਲੂਨ",
+      "a_target_speaker": "ਵਾਲੂਨ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਵਾਲੂਨ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "wuu": {
+      "in_target": "ਸ਼ੰਘਾਈਨੀਜ਼",
+      "a_target_speaker": "ਸ਼ੰਘਾਈਨੀਜ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਸ਼ੰਘਾਈਨੀਜ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "xho": {
+      "in_target": "ਕੋਸਾ",
+      "a_target_speaker": "ਕੋਸਾ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕੋਸਾ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "yid": {
+      "in_target": "ਯਿੱਦਿਸ਼",
+      "a_target_speaker": "ਯਿੱਦਿਸ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਯਿੱਦਿਸ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "yor": {
+      "in_target": "ਯੋਰੂਬਾ",
+      "a_target_speaker": "ਯੋਰੂਬਾ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਯੋਰੂਬਾ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "yue": {
+      "in_target": "ਕੈਂਟੋਨੀਜ਼",
+      "a_target_speaker": "ਕੈਂਟੋਨੀਜ਼ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਕੈਂਟੋਨੀਜ਼ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "zul": {
+      "in_target": "ਜ਼ੁਲੂ",
+      "a_target_speaker": "ਜ਼ੁਲੂ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਜ਼ੁਲੂ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ara_lb": {
+      "in_target": "ਅਰਬੀ",
+      "a_target_speaker": "ਲੇਬਾਨੀ ਅਰਬੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅਰਬੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ara_sy": {
+      "in_target": "ਅਰਬੀ",
+      "a_target_speaker": "ਸੀਰੀਅਨ ਅਰਬੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅਰਬੀ ਬੋਲਣ ਵਾਲੇ"
+    },
+    "ara_eg": {
+      "in_target": "ਅਰਬੀ",
+      "a_target_speaker": "ਮਿਸਰੀ ਅਰਬੀ ਬੋਲਣ ਵਾਲਾ",
+      "target_speakers": "ਅਰਬੀ ਬੋਲਣ ਵਾਲੇ"
+    }
+  }
+}

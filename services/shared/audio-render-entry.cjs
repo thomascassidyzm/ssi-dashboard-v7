@@ -32,7 +32,24 @@ const trialMode = require('./audio-trial-mode.cjs')
 const drillCut = require('./drill-cut-guard.cjs')
 const paidWrite = require('./paid-write.cjs')
 
-const REQUIRED = ['courseCode', 'role', 'text', 'purpose', 'requestedBy']
+const REQUIRED = ['courseCode', 'role', 'purpose', 'requestedBy']
+
+/**
+ * SHARED AUDIO (job #464, Kai; Tom's Watson 2026-10-27: one route for audio, r-2026-09-29): the known-language narration
+ * that is not a LEGO slot — the course WELCOME, and the guide lines (ENCOURAGEMENT, INSTRUCTION) every course of one known
+ * language shares. They take the same chain as a target clip: library first, spend guard, one render, write back.
+ *   - spoken in the course's PRESENTATION voice (the known-side narrator; the old welcome-service rule), resolved for that slot;
+ *   - welcome: one per course, a course_audio row role 'welcome' (what the player reads). Its text defaults to the course's
+ *     welcome script (services/shared/welcome-script.cjs). A course that already has a welcome is answered with it — a new
+ *     one is a re-record (replaceAudioId), never a second row;
+ *   - encouragement / instruction: one per (words, known language) in shared_audio (what the player reads), never per course;
+ *     the courseCode only names whose narrator speaks it.
+ */
+const SHARED_ROLES = ['welcome', 'encouragement', 'instruction']
+const LANGUAGE_SHARED_ROLES = ['encouragement', 'instruction']
+const isSharedRole = (role) => SHARED_ROLES.includes(role)
+/** The course slot whose voice a role speaks in: a shared role borrows the presentation narrator's. */
+const voiceSlotFor = (role) => (isSharedRole(role) ? 'presentation' : role)
 
 /** Trial renders may slow a read natively (job #751, Tom 2026-10-12): 0.7-1.0 of the voice's pace. */
 const TRIAL_SPEED_MIN = 0.7, TRIAL_SPEED_MAX = 1.0
@@ -44,12 +61,14 @@ class RenderRequestError extends Error {
 /** Refuse a malformed request before anything is looked up. */
 function validate(input) {
   const missing = REQUIRED.filter(k => !input || input[k] == null || String(input[k]).trim() === '')
+  // A welcome may leave its words to the course's welcome script; every other role names them.
+  if (input && input.role !== 'welcome' && (input.text == null || String(input.text).trim() === '')) missing.splice(2, 0, 'text')
   if (missing.length) throw new RenderRequestError(`missing required field(s): ${missing.join(', ')} — a render says which course, which line, why, and who is asking`)
-  if (String(input.text).length > 1000) throw new RenderRequestError('text longer than 1,000 characters — this is one clip, not a script')
+  if (input.text != null && String(input.text).length > 1000) throw new RenderRequestError('text longer than 1,000 characters — this is one clip, not a script')
   const out = {
     courseCode: String(input.courseCode),
     role: String(input.role),
-    text: String(input.text),
+    text: input.text == null || String(input.text).trim() === '' ? null : String(input.text),
     purpose: String(input.purpose).slice(0, 300),
     requestedBy: String(input.requestedBy).slice(0, 100),
     language: input.language ? String(input.language) : null,
@@ -76,7 +95,13 @@ function validate(input) {
     job: input.job ? String(input.job).slice(0, 100) : null,
     // ADOPT (job #140): file an object a paid render already put in S3 but could not save a row for. No provider call.
     adoptS3Key: input.adoptS3Key ? String(input.adoptS3Key) : null,
+    // INSTRUCTION ONLY (job #464): its place in the ordered sequence the player plays (shared_audio.sequence).
+    sequence: input.sequence == null ? null : Number(input.sequence),
   }
+  if (out.sequence != null && (out.role !== 'instruction' || !Number.isInteger(out.sequence) || out.sequence < 0)) throw new RenderRequestError('sequence is a non-negative integer, for an instruction only', 400, 'BAD_SEQUENCE')
+  if (out.text == null && (out.trial || out.adoptS3Key || out.replaceAudioId)) throw new RenderRequestError('trial, adoptS3Key and replaceAudioId name the words — send text', 400, 'TEXT_REQUIRED')
+  if (isSharedRole(out.role) && (out.trial || out.legoId)) throw new RenderRequestError(`a ${out.role} is no LEGO's and no trial's — legoId and trial do not apply`, 400, 'SHARED_ROLE_ALONE')
+  if (LANGUAGE_SHARED_ROLES.includes(out.role) && (out.replaceAudioId || out.adoptS3Key)) throw new RenderRequestError(`a ${out.role} lives in shared_audio — replaceAudioId and adoptS3Key file course_audio rows`, 400, 'SHARED_ROLE_ALONE')
   if (out.adoptS3Key) {
     if (!paidWrite.isAdoptableKey(out.adoptS3Key)) throw new RenderRequestError('adoptS3Key must be a mastered/<UUID>.mp3 key phase8 wrote', 400, 'BAD_ADOPT_KEY')
     if (out.trial || out.replaceAudioId || out.spokenText) throw new RenderRequestError('adoptS3Key files one paid-but-unsaved clip — trial, replaceAudioId and spokenText do not apply', 400, 'ADOPT_ALONE')
@@ -128,6 +153,7 @@ async function renderClip(input, deps) {
     if (req.trial) return trialRender(req, deps)
     if (req.adoptS3Key) return adoptPaid(req, deps)
     if (req.replaceAudioId) return rerecord(req, deps)
+    if (isSharedRole(req.role)) return renderShared(req, deps)
     // HUMAN-SPLICED INTROS (Aran 2026-10-27, job #210): a course whose intros are made from a human reader's own takes
     // (voicing-policy humanSplicedIntros) is answered here, before any voice is resolved, and never falls through to a
     // render: a missing piece throws INTRO_WAITING. null = not such a course, so the normal path carries on.
@@ -181,13 +207,59 @@ async function renderClip(input, deps) {
 }
 
 /**
+ * A WELCOME, ENCOURAGEMENT or INSTRUCTION (job #464, see SHARED_ROLES). The same four steps as renderClip's main path:
+ * no intro splice, no drill cut, no LEGO. deps (beyond renderClip's):
+ *   welcomeScript(courseCode) → string | null                  the course's welcome words, when the caller sent none
+ *   courseWelcome(courseCode) → { audioId, s3Key, voiceId, durationMs } | null   the course's welcome, if it has one
+ *   linkShared({ text, language, role }) → { audioId, s3Key, voiceId, durationMs } | null   the shared_audio row for these words
+ *   storeShared({ ...ident, audioBuffer?, s3Key?, sequence }) → { audioId, s3Key, durationMs }   master + S3 (unless s3Key) + shared_audio row
+ */
+async function renderShared(req, deps) {
+  const echo = () => ({ purpose: req.purpose, requestedBy: req.requestedBy, role: req.role })
+  if (req.role === 'welcome') {
+    if (!req.text) {
+      req.text = deps.welcomeScript ? await deps.welcomeScript(req.courseCode) : null
+      if (!req.text) throw new RenderRequestError(`no welcome script for ${req.courseCode} — services/shared/welcome-templates has no template for its known language or no slot for its target; send text`, 404, 'NO_WELCOME_SCRIPT')
+      if (req.text.length > 1000) throw new RenderRequestError('the welcome script is longer than 1,000 characters — this is one clip, not a script')
+    }
+    const has = deps.courseWelcome ? await deps.courseWelcome(req.courseCode) : null
+    if (has) return { ok: true, source: 'library', existing: true, ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...has, ...echo(),
+      note: `${req.courseCode} already has a welcome (${has.audioId}) — a new one is a re-record: send replaceAudioId` }
+  }
+  const shared = LANGUAGE_SHARED_ROLES.includes(req.role)
+  if (shared && (!deps.linkShared || !deps.storeShared)) throw new RenderRequestError(`this service cannot file a ${req.role}`, 501, 'NO_SHARED_STORE')
+  const r = await deps.resolve({ ...req, role: voiceSlotFor(req.role) })
+  const ident = { ...req, language: r.language, voiceId: r.voiceId }
+  const said = req.role === 'welcome' ? { text: req.text } : {}
+
+  // 1. library first: a guide line is one row per words and language whoever speaks it; a welcome is a clip like any other.
+  const findLinked = () => (shared ? deps.linkShared(ident) : deps.link(ident))
+  const linked = await findLinked()
+  if (linked) return { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, ...echo(), ...said }
+
+  // 2 + 3. the door → guard → one provider attempt. slotRole is the shared role itself: the voicing policy governs slots only.
+  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job } }
+  const out = await deps.speak(req.text, r.provider, cfg, 1)
+  if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, voiceId: r.voiceId, language: r.language, ...echo(), ...said }
+  if (out.existingClip && !shared) {
+    const again = await deps.link(ident)
+    if (again) return { ok: true, source: 'library', charsSpent: 0, ...again, ...echo(), ...said }
+  }
+  // 4. write back. A guide line the door found in the clip library is filed on that clip's own object: nothing re-uploaded.
+  const stored = shared
+    ? await deps.storeShared({ ...ident, sequence: req.sequence, ...(out.existingClip && out.existingClip.s3_key ? { s3Key: out.existingClip.s3_key, durationMs: out.existingClip.duration_ms || null } : { audioBuffer: out.audioBuffer }) })
+    : await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+  return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, voiceId: r.voiceId, ...stored, ...echo(), ...said }
+}
+
+/**
  * ADOPT a paid-but-unsaved clip (job #140): the render was paid for, its object is in S3, its course_audio
  * write failed. Library first (a clip for these words in this voice since → link that, the orphan stays
  * unused), else deps.adopt files the existing object as the row. Never calls deps.speak: nothing is paid.
  */
 async function adoptPaid(req, deps) {
   if (!deps.adopt) throw new RenderRequestError('this service cannot adopt S3 objects', 501, 'NO_ADOPT')
-  const r = await deps.resolve(req)
+  const r = await deps.resolve({ ...req, role: voiceSlotFor(req.role) })
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   const echo = { purpose: req.purpose, requestedBy: req.requestedBy, adoptS3Key: req.adoptS3Key, charsSpent: 0 }
   const linked = await deps.link(ident)
@@ -231,7 +303,7 @@ async function rerecord(req, deps) {
   if (req.role !== row.role) throw new RenderRequestError(`${req.replaceAudioId} is a ${row.role} clip, request said ${req.role}`, 409, 'WRONG_ROLE')
   if (req.voiceId && req.voiceId !== row.voice_id) throw new RenderRequestError(`a re-record keeps the clip's own voice (${row.voice_id}); voiceId ${req.voiceId} differs`, 409, 'VOICE_MISMATCH')
   const said = req.spokenText || req.text
-  const r = await deps.resolve({ ...req, language: row.language, voiceId: row.voice_id })
+  const r = await deps.resolve({ ...req, role: voiceSlotFor(req.role), language: row.language, voiceId: row.voice_id })
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   // voiceBound + replacing: the door can only answer with a same-voice clip other than the one being replaced.
   // forceRerecord: this IS a re-record whatever words are spoken (spokenText) — one named clip is an INDIVIDUAL re-record, always allowed (Tom 2026-10-16); the permission gate is for batch runs.
@@ -251,7 +323,7 @@ async function rerecord(req, deps) {
  * target1/target2 stay target-language and keep the cast gate's full strictness.
  */
 function roleNativeLanguage(role, course) {
-  return role === 'known' || role === 'presentation' ? course.known_lang : course.target_lang
+  return role === 'known' || role === 'presentation' || isSharedRole(role) ? course.known_lang : course.target_lang
 }
 
 /** The course_audio patch a re-record writes. Timings only when supplied. Note swapClipInPlace nulls word_timings unless the patch brings them (they describe bytes), so every branch that moves s3_key must supply the new bytes' timings. */
@@ -259,4 +331,4 @@ function rerecordPatch({ voiceId, wordBoundaries, wordTimings }) {
   return { origin: 'tts', voice_id: voiceId, ...(wordBoundaries !== undefined && { word_boundaries: wordBoundaries || null }), ...(wordTimings !== undefined && { word_timings: wordTimings || null }) }
 }
 
-module.exports = { rerecordPatch, roleNativeLanguage, renderClip, validate, RenderRequestError }
+module.exports = { rerecordPatch, roleNativeLanguage, renderClip, validate, RenderRequestError, SHARED_ROLES, isSharedRole, voiceSlotFor }

@@ -4563,37 +4563,9 @@ async function getDirectAudioStats(courseCode) {
 // (currently only available in English known-language; see memory/project_paywall_encouragements.md)
 const PAID_TARGET_LANGUAGES = new Set(['eng', 'ara', 'cmn', 'jpn', 'kor', 'ita', 'fra', 'spa', 'por', 'deu'])
 
-/**
- * Render the welcome script text for a given (knownLang, targetLang) pair.
- * Reads the template from scripts/bulk-audio/data/translations/welcomes/{knownLang}.json
- * and substitutes target-specific slots ({a_target_speaker}, {in_target}, etc.).
- * Returns null if the template file or target slots are missing.
- */
-// Course `known_lang` codes don't always match the welcome-translation file naming.
-// e.g., zho (Chinese — used by courses) ↔ cmn.json (Mandarin — file). Most cases match.
-const WELCOME_FILE_ALIAS = { zho: 'cmn' }
-
-function renderWelcomeScript(knownLang, targetLang, targetSuffix = '') {
-  try {
-    const fs = require('fs')
-    const fileLang = WELCOME_FILE_ALIAS[knownLang] || knownLang
-    const p = path.join(__dirname, '..', 'scripts', 'bulk-audio', 'data', 'translations', 'welcomes', `${fileLang}.json`)
-    if (!fs.existsSync(p)) return null
-    const data = JSON.parse(fs.readFileSync(p, 'utf8'))
-    // Dialect-aware lookup: ara_lb_for_eng → try targets["ara_lb"] first, fall back to targets["ara"]
-    const dialectKey = targetSuffix ? `${targetLang}_${targetSuffix}` : null
-    const slots = (dialectKey && data.targets?.[dialectKey]) || data.targets?.[targetLang]
-    if (!data.template || !slots) return null
-    return data.template
-      .replace(/\{a_target_speaker\}/g, slots.a_target_speaker || '')
-      .replace(/\{in_target\}/g, slots.in_target || '')
-      .replace(/\{target_speakers\}/g, slots.target_speakers || '')
-      .replace(/\{in_known\}/g, data.in_known || '')
-  } catch (e) {
-    logger.warn(`renderWelcomeScript(${knownLang}, ${targetLang}, ${targetSuffix}) failed: ${e.message}`)
-    return null
-  }
-}
+// The welcome script's words live in services/shared/welcome-script.cjs (job #464): the render route's
+// role 'welcome' and this status read the same tracked templates.
+const { welcomeScriptFor } = require('./shared/welcome-script.cjs')
 
 // GET /api/production/:courseCode/shared-audio-status
 // Per-bucket status for the dashboard's Shared Audio section.
@@ -4633,8 +4605,7 @@ app.get('/api/production/:courseCode/shared-audio-status', async (req, res) => {
 
     // The text stored on the welcome course_audio row is just "welcome" (a label).
     // The actual spoken script is built from the template + per-target slot fills.
-    const { targetSuffix } = parseCourseCodeSuffixes(courseCode, knownLang, targetLang)
-    const welcomeScript = renderWelcomeScript(knownLang, targetLang, targetSuffix)
+    const welcomeScript = welcomeScriptFor({ course_code: courseCode, known_lang: knownLang, target_lang: targetLang })
 
     res.json({
       knownLang,

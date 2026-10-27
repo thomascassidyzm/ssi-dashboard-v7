@@ -1,0 +1,743 @@
+{
+  "known_language": "cmn",
+  "known_language_display": "Mandarin Chinese",
+  "template": "欢迎来到这个特别的游戏，它会帮助你成为{a_target_speaker}。游戏是这样的：我先用{in_target}教你一些东西，然后我用{in_known}说一些话，给你机会用{in_target}大声说出来。接着，请仔细听{target_speakers}为你做的示范。在空隙的时候说点什么很重要，因为这就是你学习的方式。即使你不确定，也试着说你能说的，你会比想象中更快地开始说{in_target}。你越把它当成游戏，越放松地玩，犯错时越能笑出来，效果就越好，学得就越快。那么，让我们开始吧。",
+  "in_known": "中文",
+  "targets": {
+    "afb": {
+      "in_target": "海湾阿拉伯语",
+      "a_target_speaker": "会说海湾阿拉伯语的人",
+      "target_speakers": "海湾阿拉伯语母语者"
+    },
+    "afr": {
+      "in_target": "南非荷兰语",
+      "a_target_speaker": "会说南非荷兰语的人",
+      "target_speakers": "南非荷兰语母语者"
+    },
+    "aii": {
+      "in_target": "苏雷特语",
+      "a_target_speaker": "会说苏雷特语的人",
+      "target_speakers": "苏雷特语母语者"
+    },
+    "ain": {
+      "in_target": "阿伊努语",
+      "a_target_speaker": "会说阿伊努语的人",
+      "target_speakers": "阿伊努语母语者"
+    },
+    "ajp": {
+      "in_target": "巴勒斯坦阿拉伯语",
+      "a_target_speaker": "会说巴勒斯坦阿拉伯语的人",
+      "target_speakers": "巴勒斯坦阿拉伯语母语者"
+    },
+    "amh": {
+      "in_target": "阿姆哈拉语",
+      "a_target_speaker": "会说阿姆哈拉语的人",
+      "target_speakers": "阿姆哈拉语母语者"
+    },
+    "apc": {
+      "in_target": "黎凡特阿拉伯语",
+      "a_target_speaker": "会说黎凡特阿拉伯语的人",
+      "target_speakers": "黎凡特阿拉伯语母语者"
+    },
+    "ara": {
+      "in_target": "阿拉伯语",
+      "a_target_speaker": "会说现代标准阿拉伯语的人",
+      "target_speakers": "阿拉伯语母语者"
+    },
+    "arg": {
+      "in_target": "阿拉贡语",
+      "a_target_speaker": "会说阿拉贡语的人",
+      "target_speakers": "阿拉贡语母语者"
+    },
+    "ary": {
+      "in_target": "摩洛哥阿拉伯语",
+      "a_target_speaker": "会说摩洛哥阿拉伯语的人",
+      "target_speakers": "摩洛哥阿拉伯语母语者"
+    },
+    "asm": {
+      "in_target": "阿萨姆语",
+      "a_target_speaker": "会说阿萨姆语的人",
+      "target_speakers": "阿萨姆语母语者"
+    },
+    "ast": {
+      "in_target": "阿斯图里亚斯语",
+      "a_target_speaker": "会说阿斯图里亚斯语的人",
+      "target_speakers": "阿斯图里亚斯语母语者"
+    },
+    "aze": {
+      "in_target": "阿塞拜疆语",
+      "a_target_speaker": "会说阿塞拜疆语的人",
+      "target_speakers": "阿塞拜疆语母语者"
+    },
+    "bar": {
+      "in_target": "巴伐利亚语",
+      "a_target_speaker": "会说巴伐利亚语的人",
+      "target_speakers": "巴伐利亚语母语者"
+    },
+    "bel": {
+      "in_target": "白俄罗斯语",
+      "a_target_speaker": "会说白俄罗斯语的人",
+      "target_speakers": "白俄罗斯语母语者"
+    },
+    "ben": {
+      "in_target": "孟加拉语",
+      "a_target_speaker": "会说孟加拉语的人",
+      "target_speakers": "孟加拉语母语者"
+    },
+    "bos": {
+      "in_target": "波斯尼亚语",
+      "a_target_speaker": "会说波斯尼亚语的人",
+      "target_speakers": "波斯尼亚语母语者"
+    },
+    "bre": {
+      "in_target": "布列塔尼语",
+      "a_target_speaker": "会说布列塔尼语的人",
+      "target_speakers": "布列塔尼语母语者"
+    },
+    "bul": {
+      "in_target": "保加利亚语",
+      "a_target_speaker": "会说保加利亚语的人",
+      "target_speakers": "保加利亚语母语者"
+    },
+    "cat": {
+      "in_target": "加泰罗尼亚语",
+      "a_target_speaker": "会说加泰罗尼亚语的人",
+      "target_speakers": "加泰罗尼亚语母语者"
+    },
+    "ceb": {
+      "in_target": "宿务语",
+      "a_target_speaker": "会说宿务语的人",
+      "target_speakers": "宿务语母语者"
+    },
+    "ces": {
+      "in_target": "捷克语",
+      "a_target_speaker": "会说捷克语的人",
+      "target_speakers": "捷克语母语者"
+    },
+    "chr": {
+      "in_target": "切罗基语",
+      "a_target_speaker": "会说切罗基语的人",
+      "target_speakers": "切罗基语母语者"
+    },
+    "cor": {
+      "in_target": "康沃尔语",
+      "a_target_speaker": "会说康沃尔语的人",
+      "target_speakers": "康沃尔语母语者"
+    },
+    "cos": {
+      "in_target": "科西嘉语",
+      "a_target_speaker": "会说科西嘉语的人",
+      "target_speakers": "科西嘉语母语者"
+    },
+    "csb": {
+      "in_target": "卡舒比语",
+      "a_target_speaker": "会说卡舒比语的人",
+      "target_speakers": "卡舒比语母语者"
+    },
+    "cym": {
+      "in_target": "威尔士语",
+      "a_target_speaker": "会说威尔士语的人",
+      "target_speakers": "威尔士语母语者"
+    },
+    "dan": {
+      "in_target": "丹麦语",
+      "a_target_speaker": "会说丹麦语的人",
+      "target_speakers": "丹麦语母语者"
+    },
+    "deu": {
+      "in_target": "德语",
+      "a_target_speaker": "会说德语的人",
+      "target_speakers": "德语母语者"
+    },
+    "deu_AT": {
+      "in_target": "德语",
+      "a_target_speaker": "会说奥地利德语的人",
+      "target_speakers": "德语母语者"
+    },
+    "dsb": {
+      "in_target": "下索布语",
+      "a_target_speaker": "会说下索布语的人",
+      "target_speakers": "下索布语母语者"
+    },
+    "ell": {
+      "in_target": "希腊语",
+      "a_target_speaker": "会说希腊语的人",
+      "target_speakers": "希腊语母语者"
+    },
+    "eng": {
+      "in_target": "英语",
+      "a_target_speaker": "会说英语的人",
+      "target_speakers": "英语母语者"
+    },
+    "est": {
+      "in_target": "爱沙尼亚语",
+      "a_target_speaker": "会说爱沙尼亚语的人",
+      "target_speakers": "爱沙尼亚语母语者"
+    },
+    "eus": {
+      "in_target": "巴斯克语",
+      "a_target_speaker": "会说巴斯克语的人",
+      "target_speakers": "巴斯克语母语者"
+    },
+    "fao": {
+      "in_target": "法罗语",
+      "a_target_speaker": "会说法罗语的人",
+      "target_speakers": "法罗语母语者"
+    },
+    "fas": {
+      "in_target": "波斯语",
+      "a_target_speaker": "会说波斯语的人",
+      "target_speakers": "波斯语母语者"
+    },
+    "fij": {
+      "in_target": "斐济语",
+      "a_target_speaker": "会说斐济语的人",
+      "target_speakers": "斐济语母语者"
+    },
+    "fil": {
+      "in_target": "菲律宾语",
+      "a_target_speaker": "会说菲律宾语的人",
+      "target_speakers": "菲律宾语母语者"
+    },
+    "fin": {
+      "in_target": "芬兰语",
+      "a_target_speaker": "会说芬兰语的人",
+      "target_speakers": "芬兰语母语者"
+    },
+    "fra": {
+      "in_target": "法语",
+      "a_target_speaker": "会说法语的人",
+      "target_speakers": "法语母语者"
+    },
+    "frr": {
+      "in_target": "北弗里斯兰语",
+      "a_target_speaker": "会说北弗里斯兰语的人",
+      "target_speakers": "北弗里斯兰语母语者"
+    },
+    "fry": {
+      "in_target": "西弗里斯兰语",
+      "a_target_speaker": "会说西弗里斯兰语的人",
+      "target_speakers": "西弗里斯兰语母语者"
+    },
+    "fur": {
+      "in_target": "弗留利语",
+      "a_target_speaker": "会说弗留利语的人",
+      "target_speakers": "弗留利语母语者"
+    },
+    "gla": {
+      "in_target": "苏格兰盖尔语",
+      "a_target_speaker": "会说苏格兰盖尔语的人",
+      "target_speakers": "苏格兰盖尔语母语者"
+    },
+    "gle": {
+      "in_target": "爱尔兰语",
+      "a_target_speaker": "会说爱尔兰语的人",
+      "target_speakers": "爱尔兰语母语者"
+    },
+    "glg": {
+      "in_target": "加利西亚语",
+      "a_target_speaker": "会说加利西亚语的人",
+      "target_speakers": "加利西亚语母语者"
+    },
+    "glv": {
+      "in_target": "马恩语",
+      "a_target_speaker": "会说马恩语的人",
+      "target_speakers": "马恩语母语者"
+    },
+    "grk": {
+      "in_target": "格里科语",
+      "a_target_speaker": "会说格里科语的人",
+      "target_speakers": "格里科语母语者"
+    },
+    "grn": {
+      "in_target": "瓜拉尼语",
+      "a_target_speaker": "会说瓜拉尼语的人",
+      "target_speakers": "瓜拉尼语母语者"
+    },
+    "gsw": {
+      "in_target": "瑞士德语",
+      "a_target_speaker": "会说瑞士德语的人",
+      "target_speakers": "瑞士德语母语者"
+    },
+    "guj": {
+      "in_target": "古吉拉特语",
+      "a_target_speaker": "会说古吉拉特语的人",
+      "target_speakers": "古吉拉特语母语者"
+    },
+    "hak": {
+      "in_target": "客家话",
+      "a_target_speaker": "会说客家话的人",
+      "target_speakers": "客家话母语者"
+    },
+    "hau": {
+      "in_target": "豪萨语",
+      "a_target_speaker": "会说豪萨语的人",
+      "target_speakers": "豪萨语母语者"
+    },
+    "haw": {
+      "in_target": "夏威夷语",
+      "a_target_speaker": "会说夏威夷语的人",
+      "target_speakers": "夏威夷语母语者"
+    },
+    "heb": {
+      "in_target": "希伯来语",
+      "a_target_speaker": "会说希伯来语的人",
+      "target_speakers": "希伯来语母语者"
+    },
+    "hin": {
+      "in_target": "印地语",
+      "a_target_speaker": "会说印地语的人",
+      "target_speakers": "印地语母语者"
+    },
+    "hrv": {
+      "in_target": "克罗地亚语",
+      "a_target_speaker": "会说克罗地亚语的人",
+      "target_speakers": "克罗地亚语母语者"
+    },
+    "hsb": {
+      "in_target": "上索布语",
+      "a_target_speaker": "会说上索布语的人",
+      "target_speakers": "上索布语母语者"
+    },
+    "hun": {
+      "in_target": "匈牙利语",
+      "a_target_speaker": "会说匈牙利语的人",
+      "target_speakers": "匈牙利语母语者"
+    },
+    "hye": {
+      "in_target": "亚美尼亚语",
+      "a_target_speaker": "会说亚美尼亚语的人",
+      "target_speakers": "亚美尼亚语母语者"
+    },
+    "ibo": {
+      "in_target": "伊博语",
+      "a_target_speaker": "会说伊博语的人",
+      "target_speakers": "伊博语母语者"
+    },
+    "iku": {
+      "in_target": "因纽特语",
+      "a_target_speaker": "会说因纽特语的人",
+      "target_speakers": "因纽特语母语者"
+    },
+    "ind": {
+      "in_target": "印尼语",
+      "a_target_speaker": "会说印尼语的人",
+      "target_speakers": "印尼语母语者"
+    },
+    "isl": {
+      "in_target": "冰岛语",
+      "a_target_speaker": "会说冰岛语的人",
+      "target_speakers": "冰岛语母语者"
+    },
+    "ita": {
+      "in_target": "意大利语",
+      "a_target_speaker": "会说意大利语的人",
+      "target_speakers": "意大利语母语者"
+    },
+    "jav": {
+      "in_target": "爪哇语",
+      "a_target_speaker": "会说爪哇语的人",
+      "target_speakers": "爪哇语母语者"
+    },
+    "jpn": {
+      "in_target": "日语",
+      "a_target_speaker": "会说日语的人",
+      "target_speakers": "日语母语者"
+    },
+    "kal": {
+      "in_target": "格陵兰语",
+      "a_target_speaker": "会说格陵兰语的人",
+      "target_speakers": "格陵兰语母语者"
+    },
+    "kan": {
+      "in_target": "卡纳达语",
+      "a_target_speaker": "会说卡纳达语的人",
+      "target_speakers": "卡纳达语母语者"
+    },
+    "kat": {
+      "in_target": "格鲁吉亚语",
+      "a_target_speaker": "会说格鲁吉亚语的人",
+      "target_speakers": "格鲁吉亚语母语者"
+    },
+    "kaz": {
+      "in_target": "哈萨克语",
+      "a_target_speaker": "会说哈萨克语的人",
+      "target_speakers": "哈萨克语母语者"
+    },
+    "kir": {
+      "in_target": "吉尔吉斯语",
+      "a_target_speaker": "会说吉尔吉斯语的人",
+      "target_speakers": "吉尔吉斯语母语者"
+    },
+    "kor": {
+      "in_target": "韩语",
+      "a_target_speaker": "会说韩语的人",
+      "target_speakers": "韩语母语者"
+    },
+    "kur": {
+      "in_target": "库尔德语",
+      "a_target_speaker": "会说库尔德语的人",
+      "target_speakers": "库尔德语母语者"
+    },
+    "lad": {
+      "in_target": "拉迪诺语",
+      "a_target_speaker": "会说拉迪诺语的人",
+      "target_speakers": "拉迪诺语母语者"
+    },
+    "lav": {
+      "in_target": "拉脱维亚语",
+      "a_target_speaker": "会说拉脱维亚语的人",
+      "target_speakers": "拉脱维亚语母语者"
+    },
+    "lij": {
+      "in_target": "利古里亚语",
+      "a_target_speaker": "会说利古里亚语的人",
+      "target_speakers": "利古里亚语母语者"
+    },
+    "lim": {
+      "in_target": "林堡语",
+      "a_target_speaker": "会说林堡语的人",
+      "target_speakers": "林堡语母语者"
+    },
+    "lin": {
+      "in_target": "林加拉语",
+      "a_target_speaker": "会说林加拉语的人",
+      "target_speakers": "林加拉语母语者"
+    },
+    "lit": {
+      "in_target": "立陶宛语",
+      "a_target_speaker": "会说立陶宛语的人",
+      "target_speakers": "立陶宛语母语者"
+    },
+    "ltz": {
+      "in_target": "卢森堡语",
+      "a_target_speaker": "会说卢森堡语的人",
+      "target_speakers": "卢森堡语母语者"
+    },
+    "mal": {
+      "in_target": "马拉雅拉姆语",
+      "a_target_speaker": "会说马拉雅拉姆语的人",
+      "target_speakers": "马拉雅拉姆语母语者"
+    },
+    "mar": {
+      "in_target": "马拉地语",
+      "a_target_speaker": "会说马拉地语的人",
+      "target_speakers": "马拉地语母语者"
+    },
+    "mkd": {
+      "in_target": "马其顿语",
+      "a_target_speaker": "会说马其顿语的人",
+      "target_speakers": "马其顿语母语者"
+    },
+    "moh": {
+      "in_target": "莫霍克语",
+      "a_target_speaker": "会说莫霍克语的人",
+      "target_speakers": "莫霍克语母语者"
+    },
+    "mri": {
+      "in_target": "毛利语",
+      "a_target_speaker": "会说毛利语的人",
+      "target_speakers": "毛利语母语者"
+    },
+    "msa": {
+      "in_target": "马来语",
+      "a_target_speaker": "会说马来语的人",
+      "target_speakers": "马来语母语者"
+    },
+    "nan": {
+      "in_target": "闽南语",
+      "a_target_speaker": "会说闽南语的人",
+      "target_speakers": "闽南语母语者"
+    },
+    "nap": {
+      "in_target": "那不勒斯语",
+      "a_target_speaker": "会说那不勒斯语的人",
+      "target_speakers": "那不勒斯语母语者"
+    },
+    "nav": {
+      "in_target": "纳瓦霍语",
+      "a_target_speaker": "会说纳瓦霍语的人",
+      "target_speakers": "纳瓦霍语母语者"
+    },
+    "nep": {
+      "in_target": "尼泊尔语",
+      "a_target_speaker": "会说尼泊尔语的人",
+      "target_speakers": "尼泊尔语母语者"
+    },
+    "nld": {
+      "in_target": "荷兰语",
+      "a_target_speaker": "会说荷兰语的人",
+      "target_speakers": "荷兰语母语者"
+    },
+    "nor": {
+      "in_target": "挪威语",
+      "a_target_speaker": "会说挪威语的人",
+      "target_speakers": "挪威语母语者"
+    },
+    "nya": {
+      "in_target": "齐切瓦语",
+      "a_target_speaker": "会说齐切瓦语的人",
+      "target_speakers": "齐切瓦语母语者"
+    },
+    "oci": {
+      "in_target": "奥克语",
+      "a_target_speaker": "会说奥克语的人",
+      "target_speakers": "奥克语母语者"
+    },
+    "oji": {
+      "in_target": "奥吉布瓦语",
+      "a_target_speaker": "会说奥吉布瓦语的人",
+      "target_speakers": "奥吉布瓦语母语者"
+    },
+    "pan": {
+      "in_target": "旁遮普语",
+      "a_target_speaker": "会说旁遮普语的人",
+      "target_speakers": "旁遮普语母语者"
+    },
+    "pol": {
+      "in_target": "波兰语",
+      "a_target_speaker": "会说波兰语的人",
+      "target_speakers": "波兰语母语者"
+    },
+    "por": {
+      "in_target": "葡萄牙语",
+      "a_target_speaker": "会说葡萄牙语的人",
+      "target_speakers": "葡萄牙语母语者"
+    },
+    "por_BR": {
+      "in_target": "葡萄牙语",
+      "a_target_speaker": "会说巴西葡萄牙语的人",
+      "target_speakers": "葡萄牙语母语者"
+    },
+    "por_EU": {
+      "in_target": "葡萄牙语",
+      "a_target_speaker": "会说欧洲葡萄牙语的人",
+      "target_speakers": "葡萄牙语母语者"
+    },
+    "pus": {
+      "in_target": "普什图语",
+      "a_target_speaker": "会说普什图语的人",
+      "target_speakers": "普什图语母语者"
+    },
+    "que": {
+      "in_target": "克丘亚语",
+      "a_target_speaker": "会说克丘亚语的人",
+      "target_speakers": "克丘亚语母语者"
+    },
+    "roh": {
+      "in_target": "罗曼什语",
+      "a_target_speaker": "会说罗曼什语的人",
+      "target_speakers": "罗曼什语母语者"
+    },
+    "ron": {
+      "in_target": "罗马尼亚语",
+      "a_target_speaker": "会说罗马尼亚语的人",
+      "target_speakers": "罗马尼亚语母语者"
+    },
+    "rus": {
+      "in_target": "俄语",
+      "a_target_speaker": "会说俄语的人",
+      "target_speakers": "俄语母语者"
+    },
+    "scn": {
+      "in_target": "西西里语",
+      "a_target_speaker": "会说西西里语的人",
+      "target_speakers": "西西里语母语者"
+    },
+    "sco": {
+      "in_target": "低地苏格兰语",
+      "a_target_speaker": "会说低地苏格兰语的人",
+      "target_speakers": "低地苏格兰语母语者"
+    },
+    "slk": {
+      "in_target": "斯洛伐克语",
+      "a_target_speaker": "会说斯洛伐克语的人",
+      "target_speakers": "斯洛伐克语母语者"
+    },
+    "slv": {
+      "in_target": "斯洛文尼亚语",
+      "a_target_speaker": "会说斯洛文尼亚语的人",
+      "target_speakers": "斯洛文尼亚语母语者"
+    },
+    "sme": {
+      "in_target": "北萨米语",
+      "a_target_speaker": "会说北萨米语的人",
+      "target_speakers": "北萨米语母语者"
+    },
+    "smj": {
+      "in_target": "吕勒萨米语",
+      "a_target_speaker": "会说吕勒萨米语的人",
+      "target_speakers": "吕勒萨米语母语者"
+    },
+    "smn": {
+      "in_target": "伊纳里萨米语",
+      "a_target_speaker": "会说伊纳里萨米语的人",
+      "target_speakers": "伊纳里萨米语母语者"
+    },
+    "smo": {
+      "in_target": "萨摩亚语",
+      "a_target_speaker": "会说萨摩亚语的人",
+      "target_speakers": "萨摩亚语母语者"
+    },
+    "sms": {
+      "in_target": "斯科尔特萨米语",
+      "a_target_speaker": "会说斯科尔特萨米语的人",
+      "target_speakers": "斯科尔特萨米语母语者"
+    },
+    "snd": {
+      "in_target": "信德语",
+      "a_target_speaker": "会说信德语的人",
+      "target_speakers": "信德语母语者"
+    },
+    "som": {
+      "in_target": "索马里语",
+      "a_target_speaker": "会说索马里语的人",
+      "target_speakers": "索马里语母语者"
+    },
+    "spa": {
+      "in_target": "西班牙语",
+      "a_target_speaker": "会说西班牙语的人",
+      "target_speakers": "西班牙语母语者"
+    },
+    "spa_EU": {
+      "in_target": "西班牙语",
+      "a_target_speaker": "会说欧洲西班牙语的人",
+      "target_speakers": "西班牙语母语者"
+    },
+    "spa_SA": {
+      "in_target": "西班牙语",
+      "a_target_speaker": "会说南美西班牙语的人",
+      "target_speakers": "西班牙语母语者"
+    },
+    "srd": {
+      "in_target": "撒丁语",
+      "a_target_speaker": "会说撒丁语的人",
+      "target_speakers": "撒丁语母语者"
+    },
+    "srp": {
+      "in_target": "塞尔维亚语",
+      "a_target_speaker": "会说塞尔维亚语的人",
+      "target_speakers": "塞尔维亚语母语者"
+    },
+    "swa": {
+      "in_target": "斯瓦希里语",
+      "a_target_speaker": "会说斯瓦希里语的人",
+      "target_speakers": "斯瓦希里语母语者"
+    },
+    "swe": {
+      "in_target": "瑞典语",
+      "a_target_speaker": "会说瑞典语的人",
+      "target_speakers": "瑞典语母语者"
+    },
+    "tah": {
+      "in_target": "塔希提语",
+      "a_target_speaker": "会说塔希提语的人",
+      "target_speakers": "塔希提语母语者"
+    },
+    "tam": {
+      "in_target": "泰米尔语",
+      "a_target_speaker": "会说泰米尔语的人",
+      "target_speakers": "泰米尔语母语者"
+    },
+    "tel": {
+      "in_target": "泰卢固语",
+      "a_target_speaker": "会说泰卢固语的人",
+      "target_speakers": "泰卢固语母语者"
+    },
+    "tha": {
+      "in_target": "泰语",
+      "a_target_speaker": "会说泰语的人",
+      "target_speakers": "泰语母语者"
+    },
+    "ton": {
+      "in_target": "汤加语",
+      "a_target_speaker": "会说汤加语的人",
+      "target_speakers": "汤加语母语者"
+    },
+    "tur": {
+      "in_target": "土耳其语",
+      "a_target_speaker": "会说土耳其语的人",
+      "target_speakers": "土耳其语母语者"
+    },
+    "uig": {
+      "in_target": "维吾尔语",
+      "a_target_speaker": "会说维吾尔语的人",
+      "target_speakers": "维吾尔语母语者"
+    },
+    "ukr": {
+      "in_target": "乌克兰语",
+      "a_target_speaker": "会说乌克兰语的人",
+      "target_speakers": "乌克兰语母语者"
+    },
+    "urd": {
+      "in_target": "乌尔都语",
+      "a_target_speaker": "会说乌尔都语的人",
+      "target_speakers": "乌尔都语母语者"
+    },
+    "vec": {
+      "in_target": "威尼斯语",
+      "a_target_speaker": "会说威尼斯语的人",
+      "target_speakers": "威尼斯语母语者"
+    },
+    "vie": {
+      "in_target": "越南语",
+      "a_target_speaker": "会说越南语的人",
+      "target_speakers": "越南语母语者"
+    },
+    "vls": {
+      "in_target": "弗拉芒语",
+      "a_target_speaker": "会说弗拉芒语的人",
+      "target_speakers": "弗拉芒语母语者"
+    },
+    "wln": {
+      "in_target": "瓦隆语",
+      "a_target_speaker": "会说瓦隆语的人",
+      "target_speakers": "瓦隆语母语者"
+    },
+    "wuu": {
+      "in_target": "吴语",
+      "a_target_speaker": "会说吴语的人",
+      "target_speakers": "吴语母语者"
+    },
+    "xho": {
+      "in_target": "科萨语",
+      "a_target_speaker": "会说科萨语的人",
+      "target_speakers": "科萨语母语者"
+    },
+    "yid": {
+      "in_target": "意第绪语",
+      "a_target_speaker": "会说意第绪语的人",
+      "target_speakers": "意第绪语母语者"
+    },
+    "yor": {
+      "in_target": "约鲁巴语",
+      "a_target_speaker": "会说约鲁巴语的人",
+      "target_speakers": "约鲁巴语母语者"
+    },
+    "yue": {
+      "in_target": "粤语",
+      "a_target_speaker": "会说粤语的人",
+      "target_speakers": "粤语母语者"
+    },
+    "zul": {
+      "in_target": "祖鲁语",
+      "a_target_speaker": "会说祖鲁语的人",
+      "target_speakers": "祖鲁语母语者"
+    },
+    "ara_lb": {
+      "in_target": "阿拉伯语",
+      "a_target_speaker": "会说黎巴嫩阿拉伯语的人",
+      "target_speakers": "阿拉伯语母语者"
+    },
+    "ara_sy": {
+      "in_target": "阿拉伯语",
+      "a_target_speaker": "会说叙利亚阿拉伯语的人",
+      "target_speakers": "阿拉伯语母语者"
+    },
+    "ara_eg": {
+      "in_target": "阿拉伯语",
+      "a_target_speaker": "会说埃及阿拉伯语的人",
+      "target_speakers": "阿拉伯语母语者"
+    }
+  }
+}

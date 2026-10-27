@@ -12,6 +12,9 @@
  *   --job "#913": the job this render belongs to; a Tom-approved job (tools/tts-cap.cjs approve)
  *        spends from its own allowance up to the 300k/day ceiling instead of the automatic 100k.
  *
+ *   SHARED AUDIO (job #464): --role welcome (the course welcome; --text may be left out, the course's welcome script is said),
+ *        --role encouragement | instruction [--sequence N] (shared by every course of that known language, in its presentation voice).
+ *
  *   node tools/audio/render.cjs --course ita_for_eng --role target1 \
  *        --text "ha detto qualcos'altro?" --purpose "kai: seed 376 fix" [--voice <id>] [--lang ita] [--dry-run]
  *
@@ -29,8 +32,9 @@ const body = {
   courseCode: opt('--course'), role: opt('--role'), text: opt('--text'), purpose: opt('--purpose'),
   language: opt('--lang'), voiceId: opt('--voice'), legoId: opt('--lego'), dryRun: argv.includes('--dry-run'),
   voiceBound: !argv.includes('--any-voice'), replaceAudioId: opt('--replace'), spokenText: opt('--spoken'), job: opt('--job'), trial: argv.includes('--trial') || undefined,
+  sequence: opt('--sequence') == null ? undefined : Number(opt('--sequence')),
 }
-const missing = ['courseCode', 'role', 'text', 'purpose'].filter(k => !body[k])
+const missing = ['courseCode', 'role', ...(body.role === 'welcome' ? [] : ['text']), 'purpose'].filter(k => !body[k])
 if (missing.length) { console.error(`usage: render.cjs --course C --role R --text T --purpose P [--voice V] [--lang L] [--lego ID] [--dry-run] [--any-voice] [--replace AUDIO_ID [--spoken TEXT]]\nmissing: ${missing.join(', ')}`); process.exit(1) }
 const base = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 ;(async () => {

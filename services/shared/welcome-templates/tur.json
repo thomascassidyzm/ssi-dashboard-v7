@@ -1,0 +1,743 @@
+{
+  "known_language": "tur",
+  "known_language_display": "Turkish",
+  "template": "Seni {a_target_speaker} olmana yardımcı olacak bu sıra dışı oyuna hoş geldin. Nasıl çalıştığını anlatayım: sana {in_target} bir şeyler öğretiyorum, sonra {in_known} bir şey söylüyorum ve sana bunu {in_target} yüksek sesle söyleme şansı veriyorum. Ardından, sana örnek olacak {target_speakers} dikkatlice dinle. Boşluklarda bir şeyler söylemeniz önemli, çünkü böyle öğrenirsin. Emin olmasan bile, söyleyebildiğini söylemeye çalış, düşündüğünden daha çabuk {in_target} konuşmaya başlayacaksın. Bunu ne kadar çok bir oyun olarak görürsen, ne kadar eğlenceli yaklaşırsan, hata yaptığında ne kadar çok gülersen, o kadar iyi gider ve o kadar hızlı öğrenirsin. Hadi, oynamaya başlayalım.",
+  "in_known": "Türkçe",
+  "targets": {
+    "afb": {
+      "in_target": "Körfez Arapçası",
+      "a_target_speaker": "Körfez Arapçası konuşan biri",
+      "target_speakers": "Körfez Arapçası konuşan kişileri"
+    },
+    "afr": {
+      "in_target": "Afrikaanca",
+      "a_target_speaker": "Afrikaanca konuşan biri",
+      "target_speakers": "Afrikaanca konuşan kişileri"
+    },
+    "aii": {
+      "in_target": "Süryanice",
+      "a_target_speaker": "Süryanice konuşan biri",
+      "target_speakers": "Süryanice konuşan kişileri"
+    },
+    "ain": {
+      "in_target": "Aynu dilinde",
+      "a_target_speaker": "Aynu dili konuşan biri",
+      "target_speakers": "Aynu dili konuşan kişileri"
+    },
+    "ajp": {
+      "in_target": "Filistin Arapçası",
+      "a_target_speaker": "Filistin Arapçası konuşan biri",
+      "target_speakers": "Filistin Arapçası konuşan kişileri"
+    },
+    "amh": {
+      "in_target": "Amharca",
+      "a_target_speaker": "Amharca konuşan biri",
+      "target_speakers": "Amharca konuşan kişileri"
+    },
+    "apc": {
+      "in_target": "Levant Arapçası",
+      "a_target_speaker": "Levant Arapçası konuşan biri",
+      "target_speakers": "Levant Arapçası konuşan kişileri"
+    },
+    "ara": {
+      "in_target": "Arapça",
+      "a_target_speaker": "Modern Standart Arapça konuşan biri",
+      "target_speakers": "Arapça konuşan kişileri"
+    },
+    "arg": {
+      "in_target": "Aragonca",
+      "a_target_speaker": "Aragonca konuşan biri",
+      "target_speakers": "Aragonca konuşan kişileri"
+    },
+    "ary": {
+      "in_target": "Fas Arapçası",
+      "a_target_speaker": "Fas Arapçası konuşan biri",
+      "target_speakers": "Fas Arapçası konuşan kişileri"
+    },
+    "asm": {
+      "in_target": "Assamca",
+      "a_target_speaker": "Assamca konuşan biri",
+      "target_speakers": "Assamca konuşan kişileri"
+    },
+    "ast": {
+      "in_target": "Asturyasça",
+      "a_target_speaker": "Asturyasça konuşan biri",
+      "target_speakers": "Asturyasça konuşan kişileri"
+    },
+    "aze": {
+      "in_target": "Azerbaycanca",
+      "a_target_speaker": "Azerbaycanca konuşan biri",
+      "target_speakers": "Azerbaycanca konuşan kişileri"
+    },
+    "bar": {
+      "in_target": "Bavyeraca",
+      "a_target_speaker": "Bavyeraca konuşan biri",
+      "target_speakers": "Bavyeraca konuşan kişileri"
+    },
+    "bel": {
+      "in_target": "Belarusça",
+      "a_target_speaker": "Belarusça konuşan biri",
+      "target_speakers": "Belarusça konuşan kişileri"
+    },
+    "ben": {
+      "in_target": "Bengalce",
+      "a_target_speaker": "Bengalce konuşan biri",
+      "target_speakers": "Bengalce konuşan kişileri"
+    },
+    "bos": {
+      "in_target": "Boşnakça",
+      "a_target_speaker": "Boşnakça konuşan biri",
+      "target_speakers": "Boşnakça konuşan kişileri"
+    },
+    "bre": {
+      "in_target": "Bretonca",
+      "a_target_speaker": "Bretonca konuşan biri",
+      "target_speakers": "Bretonca konuşan kişileri"
+    },
+    "bul": {
+      "in_target": "Bulgarca",
+      "a_target_speaker": "Bulgarca konuşan biri",
+      "target_speakers": "Bulgarca konuşan kişileri"
+    },
+    "cat": {
+      "in_target": "Katalanca",
+      "a_target_speaker": "Katalanca konuşan biri",
+      "target_speakers": "Katalanca konuşan kişileri"
+    },
+    "ceb": {
+      "in_target": "Sebuanca",
+      "a_target_speaker": "Sebuanca konuşan biri",
+      "target_speakers": "Sebuanca konuşan kişileri"
+    },
+    "ces": {
+      "in_target": "Çekçe",
+      "a_target_speaker": "Çekçe konuşan biri",
+      "target_speakers": "Çekçe konuşan kişileri"
+    },
+    "chr": {
+      "in_target": "Çerokice",
+      "a_target_speaker": "Çerokice konuşan biri",
+      "target_speakers": "Çerokice konuşan kişileri"
+    },
+    "cmn": {
+      "in_target": "Çince",
+      "a_target_speaker": "Çince konuşan biri",
+      "target_speakers": "Çince konuşan kişileri"
+    },
+    "cor": {
+      "in_target": "Kernevekçe",
+      "a_target_speaker": "Kernevekçe konuşan biri",
+      "target_speakers": "Kernevekçe konuşan kişileri"
+    },
+    "cos": {
+      "in_target": "Korsikaca",
+      "a_target_speaker": "Korsikaca konuşan biri",
+      "target_speakers": "Korsikaca konuşan kişileri"
+    },
+    "csb": {
+      "in_target": "Kaşupça",
+      "a_target_speaker": "Kaşupça konuşan biri",
+      "target_speakers": "Kaşupça konuşan kişileri"
+    },
+    "cym": {
+      "in_target": "Galce",
+      "a_target_speaker": "Galce konuşan biri",
+      "target_speakers": "Galce konuşan kişileri"
+    },
+    "dan": {
+      "in_target": "Danca",
+      "a_target_speaker": "Danca konuşan biri",
+      "target_speakers": "Danca konuşan kişileri"
+    },
+    "deu": {
+      "in_target": "Almanca",
+      "a_target_speaker": "Almanca konuşan biri",
+      "target_speakers": "Almanca konuşan kişileri"
+    },
+    "deu_AT": {
+      "in_target": "Almanca",
+      "a_target_speaker": "Avusturya Almancası konuşan biri",
+      "target_speakers": "Almanca konuşan kişileri"
+    },
+    "dsb": {
+      "in_target": "Aşağı Sorbca",
+      "a_target_speaker": "Aşağı Sorbca konuşan biri",
+      "target_speakers": "Aşağı Sorbca konuşan kişileri"
+    },
+    "ell": {
+      "in_target": "Yunanca",
+      "a_target_speaker": "Yunanca konuşan biri",
+      "target_speakers": "Yunanca konuşan kişileri"
+    },
+    "eng": {
+      "in_target": "İngilizce",
+      "a_target_speaker": "İngilizce konuşan biri",
+      "target_speakers": "İngilizce konuşan kişileri"
+    },
+    "est": {
+      "in_target": "Estonca",
+      "a_target_speaker": "Estonca konuşan biri",
+      "target_speakers": "Estonca konuşan kişileri"
+    },
+    "eus": {
+      "in_target": "Baskça",
+      "a_target_speaker": "Baskça konuşan biri",
+      "target_speakers": "Baskça konuşan kişileri"
+    },
+    "fao": {
+      "in_target": "Faroece",
+      "a_target_speaker": "Faroece konuşan biri",
+      "target_speakers": "Faroece konuşan kişileri"
+    },
+    "fas": {
+      "in_target": "Farsça",
+      "a_target_speaker": "Farsça konuşan biri",
+      "target_speakers": "Farsça konuşan kişileri"
+    },
+    "fij": {
+      "in_target": "Fijice",
+      "a_target_speaker": "Fijice konuşan biri",
+      "target_speakers": "Fijice konuşan kişileri"
+    },
+    "fil": {
+      "in_target": "Filipince",
+      "a_target_speaker": "Filipince konuşan biri",
+      "target_speakers": "Filipince konuşan kişileri"
+    },
+    "fin": {
+      "in_target": "Fince",
+      "a_target_speaker": "Fince konuşan biri",
+      "target_speakers": "Fince konuşan kişileri"
+    },
+    "fra": {
+      "in_target": "Fransızca",
+      "a_target_speaker": "Fransızca konuşan biri",
+      "target_speakers": "Fransızca konuşan kişileri"
+    },
+    "frr": {
+      "in_target": "Kuzey Frizce",
+      "a_target_speaker": "Kuzey Frizce konuşan biri",
+      "target_speakers": "Kuzey Frizce konuşan kişileri"
+    },
+    "fry": {
+      "in_target": "Batı Frizce",
+      "a_target_speaker": "Batı Frizce konuşan biri",
+      "target_speakers": "Batı Frizce konuşan kişileri"
+    },
+    "fur": {
+      "in_target": "Friulca",
+      "a_target_speaker": "Friulca konuşan biri",
+      "target_speakers": "Friulca konuşan kişileri"
+    },
+    "gla": {
+      "in_target": "İskoç Galcesi",
+      "a_target_speaker": "İskoç Galcesi konuşan biri",
+      "target_speakers": "İskoç Galcesi konuşan kişileri"
+    },
+    "gle": {
+      "in_target": "İrlandaca",
+      "a_target_speaker": "İrlandaca konuşan biri",
+      "target_speakers": "İrlandaca konuşan kişileri"
+    },
+    "glg": {
+      "in_target": "Galiçyaca",
+      "a_target_speaker": "Galiçyaca konuşan biri",
+      "target_speakers": "Galiçyaca konuşan kişileri"
+    },
+    "glv": {
+      "in_target": "Manksça",
+      "a_target_speaker": "Manksça konuşan biri",
+      "target_speakers": "Manksça konuşan kişileri"
+    },
+    "grk": {
+      "in_target": "Griko dilinde",
+      "a_target_speaker": "Griko dili konuşan biri",
+      "target_speakers": "Griko dili konuşan kişileri"
+    },
+    "grn": {
+      "in_target": "Guaranice",
+      "a_target_speaker": "Guaranice konuşan biri",
+      "target_speakers": "Guaranice konuşan kişileri"
+    },
+    "gsw": {
+      "in_target": "İsviçre Almancası",
+      "a_target_speaker": "İsviçre Almancası konuşan biri",
+      "target_speakers": "İsviçre Almancası konuşan kişileri"
+    },
+    "guj": {
+      "in_target": "Güceratça",
+      "a_target_speaker": "Güceratça konuşan biri",
+      "target_speakers": "Güceratça konuşan kişileri"
+    },
+    "hak": {
+      "in_target": "Hakka dilinde",
+      "a_target_speaker": "Hakka dili konuşan biri",
+      "target_speakers": "Hakka dili konuşan kişileri"
+    },
+    "hau": {
+      "in_target": "Hausa dilinde",
+      "a_target_speaker": "Hausa dili konuşan biri",
+      "target_speakers": "Hausa dili konuşan kişileri"
+    },
+    "haw": {
+      "in_target": "Hawaiice",
+      "a_target_speaker": "Hawaiice konuşan biri",
+      "target_speakers": "Hawaiice konuşan kişileri"
+    },
+    "heb": {
+      "in_target": "İbranice",
+      "a_target_speaker": "İbranice konuşan biri",
+      "target_speakers": "İbranice konuşan kişileri"
+    },
+    "hin": {
+      "in_target": "Hintçe",
+      "a_target_speaker": "Hintçe konuşan biri",
+      "target_speakers": "Hintçe konuşan kişileri"
+    },
+    "hrv": {
+      "in_target": "Hırvatça",
+      "a_target_speaker": "Hırvatça konuşan biri",
+      "target_speakers": "Hırvatça konuşan kişileri"
+    },
+    "hsb": {
+      "in_target": "Yukarı Sorbca",
+      "a_target_speaker": "Yukarı Sorbca konuşan biri",
+      "target_speakers": "Yukarı Sorbca konuşan kişileri"
+    },
+    "hun": {
+      "in_target": "Macarca",
+      "a_target_speaker": "Macarca konuşan biri",
+      "target_speakers": "Macarca konuşan kişileri"
+    },
+    "hye": {
+      "in_target": "Ermenice",
+      "a_target_speaker": "Ermenice konuşan biri",
+      "target_speakers": "Ermenice konuşan kişileri"
+    },
+    "ibo": {
+      "in_target": "İgboca",
+      "a_target_speaker": "İgboca konuşan biri",
+      "target_speakers": "İgboca konuşan kişileri"
+    },
+    "iku": {
+      "in_target": "İnuktitut dilinde",
+      "a_target_speaker": "İnuktitut dili konuşan biri",
+      "target_speakers": "İnuktitut dili konuşan kişileri"
+    },
+    "ind": {
+      "in_target": "Endonezce",
+      "a_target_speaker": "Endonezce konuşan biri",
+      "target_speakers": "Endonezce konuşan kişileri"
+    },
+    "isl": {
+      "in_target": "İzlandaca",
+      "a_target_speaker": "İzlandaca konuşan biri",
+      "target_speakers": "İzlandaca konuşan kişileri"
+    },
+    "ita": {
+      "in_target": "İtalyanca",
+      "a_target_speaker": "İtalyanca konuşan biri",
+      "target_speakers": "İtalyanca konuşan kişileri"
+    },
+    "jav": {
+      "in_target": "Javaca",
+      "a_target_speaker": "Javaca konuşan biri",
+      "target_speakers": "Javaca konuşan kişileri"
+    },
+    "jpn": {
+      "in_target": "Japonca",
+      "a_target_speaker": "Japonca konuşan biri",
+      "target_speakers": "Japonca konuşan kişileri"
+    },
+    "kal": {
+      "in_target": "Grönlandca",
+      "a_target_speaker": "Grönlandca konuşan biri",
+      "target_speakers": "Grönlandca konuşan kişileri"
+    },
+    "kan": {
+      "in_target": "Kannada dilinde",
+      "a_target_speaker": "Kannada dili konuşan biri",
+      "target_speakers": "Kannada dili konuşan kişileri"
+    },
+    "kat": {
+      "in_target": "Gürcüce",
+      "a_target_speaker": "Gürcüce konuşan biri",
+      "target_speakers": "Gürcüce konuşan kişileri"
+    },
+    "kaz": {
+      "in_target": "Kazakça",
+      "a_target_speaker": "Kazakça konuşan biri",
+      "target_speakers": "Kazakça konuşan kişileri"
+    },
+    "kir": {
+      "in_target": "Kırgızca",
+      "a_target_speaker": "Kırgızca konuşan biri",
+      "target_speakers": "Kırgızca konuşan kişileri"
+    },
+    "kor": {
+      "in_target": "Korece",
+      "a_target_speaker": "Korece konuşan biri",
+      "target_speakers": "Korece konuşan kişileri"
+    },
+    "kur": {
+      "in_target": "Kürtçe",
+      "a_target_speaker": "Kürtçe konuşan biri",
+      "target_speakers": "Kürtçe konuşan kişileri"
+    },
+    "lad": {
+      "in_target": "Ladino dilinde",
+      "a_target_speaker": "Ladino dili konuşan biri",
+      "target_speakers": "Ladino dili konuşan kişileri"
+    },
+    "lav": {
+      "in_target": "Letonca",
+      "a_target_speaker": "Letonca konuşan biri",
+      "target_speakers": "Letonca konuşan kişileri"
+    },
+    "lij": {
+      "in_target": "Ligurca",
+      "a_target_speaker": "Ligurca konuşan biri",
+      "target_speakers": "Ligurca konuşan kişileri"
+    },
+    "lim": {
+      "in_target": "Limburgca",
+      "a_target_speaker": "Limburgca konuşan biri",
+      "target_speakers": "Limburgca konuşan kişileri"
+    },
+    "lin": {
+      "in_target": "Lingala dilinde",
+      "a_target_speaker": "Lingala dili konuşan biri",
+      "target_speakers": "Lingala dili konuşan kişileri"
+    },
+    "lit": {
+      "in_target": "Litvanca",
+      "a_target_speaker": "Litvanca konuşan biri",
+      "target_speakers": "Litvanca konuşan kişileri"
+    },
+    "ltz": {
+      "in_target": "Lüksemburgca",
+      "a_target_speaker": "Lüksemburgca konuşan biri",
+      "target_speakers": "Lüksemburgca konuşan kişileri"
+    },
+    "mal": {
+      "in_target": "Malayalam dilinde",
+      "a_target_speaker": "Malayalam dili konuşan biri",
+      "target_speakers": "Malayalam dili konuşan kişileri"
+    },
+    "mar": {
+      "in_target": "Maratça",
+      "a_target_speaker": "Maratça konuşan biri",
+      "target_speakers": "Maratça konuşan kişileri"
+    },
+    "mkd": {
+      "in_target": "Makedonca",
+      "a_target_speaker": "Makedonca konuşan biri",
+      "target_speakers": "Makedonca konuşan kişileri"
+    },
+    "moh": {
+      "in_target": "Mohawk dilinde",
+      "a_target_speaker": "Mohawk dili konuşan biri",
+      "target_speakers": "Mohawk dili konuşan kişileri"
+    },
+    "mri": {
+      "in_target": "Maorice",
+      "a_target_speaker": "Maorice konuşan biri",
+      "target_speakers": "Maorice konuşan kişileri"
+    },
+    "msa": {
+      "in_target": "Malayca",
+      "a_target_speaker": "Malayca konuşan biri",
+      "target_speakers": "Malayca konuşan kişileri"
+    },
+    "nan": {
+      "in_target": "Min Nan dilinde",
+      "a_target_speaker": "Min Nan dili konuşan biri",
+      "target_speakers": "Min Nan dili konuşan kişileri"
+    },
+    "nap": {
+      "in_target": "Napolitanca",
+      "a_target_speaker": "Napolitanca konuşan biri",
+      "target_speakers": "Napolitanca konuşan kişileri"
+    },
+    "nav": {
+      "in_target": "Navahoca",
+      "a_target_speaker": "Navahoca konuşan biri",
+      "target_speakers": "Navahoca konuşan kişileri"
+    },
+    "nep": {
+      "in_target": "Nepalce",
+      "a_target_speaker": "Nepalce konuşan biri",
+      "target_speakers": "Nepalce konuşan kişileri"
+    },
+    "nld": {
+      "in_target": "Hollandaca",
+      "a_target_speaker": "Hollandaca konuşan biri",
+      "target_speakers": "Hollandaca konuşan kişileri"
+    },
+    "nor": {
+      "in_target": "Norveççe",
+      "a_target_speaker": "Norveççe konuşan biri",
+      "target_speakers": "Norveççe konuşan kişileri"
+    },
+    "nya": {
+      "in_target": "Çiçeva dilinde",
+      "a_target_speaker": "Çiçeva dili konuşan biri",
+      "target_speakers": "Çiçeva dili konuşan kişileri"
+    },
+    "oci": {
+      "in_target": "Oksitanca",
+      "a_target_speaker": "Oksitanca konuşan biri",
+      "target_speakers": "Oksitanca konuşan kişileri"
+    },
+    "oji": {
+      "in_target": "Ojibve dilinde",
+      "a_target_speaker": "Ojibve dili konuşan biri",
+      "target_speakers": "Ojibve dili konuşan kişileri"
+    },
+    "pan": {
+      "in_target": "Pencapça",
+      "a_target_speaker": "Pencapça konuşan biri",
+      "target_speakers": "Pencapça konuşan kişileri"
+    },
+    "pol": {
+      "in_target": "Lehçe",
+      "a_target_speaker": "Lehçe konuşan biri",
+      "target_speakers": "Lehçe konuşan kişileri"
+    },
+    "por": {
+      "in_target": "Portekizce",
+      "a_target_speaker": "Portekizce konuşan biri",
+      "target_speakers": "Portekizce konuşan kişileri"
+    },
+    "por_BR": {
+      "in_target": "Portekizce",
+      "a_target_speaker": "Brezilya Portekizcesi konuşan biri",
+      "target_speakers": "Portekizce konuşan kişileri"
+    },
+    "por_EU": {
+      "in_target": "Portekizce",
+      "a_target_speaker": "Avrupa Portekizcesi konuşan biri",
+      "target_speakers": "Portekizce konuşan kişileri"
+    },
+    "pus": {
+      "in_target": "Peştuca",
+      "a_target_speaker": "Peştuca konuşan biri",
+      "target_speakers": "Peştuca konuşan kişileri"
+    },
+    "que": {
+      "in_target": "Keçuaca",
+      "a_target_speaker": "Keçuaca konuşan biri",
+      "target_speakers": "Keçuaca konuşan kişileri"
+    },
+    "roh": {
+      "in_target": "Romançça",
+      "a_target_speaker": "Romançça konuşan biri",
+      "target_speakers": "Romançça konuşan kişileri"
+    },
+    "ron": {
+      "in_target": "Rumence",
+      "a_target_speaker": "Rumence konuşan biri",
+      "target_speakers": "Rumence konuşan kişileri"
+    },
+    "rus": {
+      "in_target": "Rusça",
+      "a_target_speaker": "Rusça konuşan biri",
+      "target_speakers": "Rusça konuşan kişileri"
+    },
+    "scn": {
+      "in_target": "Sicilyaca",
+      "a_target_speaker": "Sicilyaca konuşan biri",
+      "target_speakers": "Sicilyaca konuşan kişileri"
+    },
+    "sco": {
+      "in_target": "İskoçça",
+      "a_target_speaker": "İskoçça konuşan biri",
+      "target_speakers": "İskoçça konuşan kişileri"
+    },
+    "slk": {
+      "in_target": "Slovakça",
+      "a_target_speaker": "Slovakça konuşan biri",
+      "target_speakers": "Slovakça konuşan kişileri"
+    },
+    "slv": {
+      "in_target": "Slovence",
+      "a_target_speaker": "Slovence konuşan biri",
+      "target_speakers": "Slovence konuşan kişileri"
+    },
+    "sme": {
+      "in_target": "Kuzey Saamicesi",
+      "a_target_speaker": "Kuzey Saamicesi konuşan biri",
+      "target_speakers": "Kuzey Saamicesi konuşan kişileri"
+    },
+    "smj": {
+      "in_target": "Lule Saamicesi",
+      "a_target_speaker": "Lule Saamicesi konuşan biri",
+      "target_speakers": "Lule Saamicesi konuşan kişileri"
+    },
+    "smn": {
+      "in_target": "İnari Saamicesi",
+      "a_target_speaker": "İnari Saamicesi konuşan biri",
+      "target_speakers": "İnari Saamicesi konuşan kişileri"
+    },
+    "smo": {
+      "in_target": "Samoaca",
+      "a_target_speaker": "Samoaca konuşan biri",
+      "target_speakers": "Samoaca konuşan kişileri"
+    },
+    "sms": {
+      "in_target": "Skolt Saamicesi",
+      "a_target_speaker": "Skolt Saamicesi konuşan biri",
+      "target_speakers": "Skolt Saamicesi konuşan kişileri"
+    },
+    "snd": {
+      "in_target": "Sindice",
+      "a_target_speaker": "Sindice konuşan biri",
+      "target_speakers": "Sindice konuşan kişileri"
+    },
+    "som": {
+      "in_target": "Somalice",
+      "a_target_speaker": "Somalice konuşan biri",
+      "target_speakers": "Somalice konuşan kişileri"
+    },
+    "spa": {
+      "in_target": "İspanyolca",
+      "a_target_speaker": "İspanyolca konuşan biri",
+      "target_speakers": "İspanyolca konuşan kişileri"
+    },
+    "spa_EU": {
+      "in_target": "İspanyolca",
+      "a_target_speaker": "Avrupa İspanyolcası konuşan biri",
+      "target_speakers": "İspanyolca konuşan kişileri"
+    },
+    "spa_SA": {
+      "in_target": "İspanyolca",
+      "a_target_speaker": "Güney Amerika İspanyolcası konuşan biri",
+      "target_speakers": "İspanyolca konuşan kişileri"
+    },
+    "srd": {
+      "in_target": "Sardunyaca",
+      "a_target_speaker": "Sardunyaca konuşan biri",
+      "target_speakers": "Sardunyaca konuşan kişileri"
+    },
+    "srp": {
+      "in_target": "Sırpça",
+      "a_target_speaker": "Sırpça konuşan biri",
+      "target_speakers": "Sırpça konuşan kişileri"
+    },
+    "swa": {
+      "in_target": "Svahilice",
+      "a_target_speaker": "Svahilice konuşan biri",
+      "target_speakers": "Svahilice konuşan kişileri"
+    },
+    "swe": {
+      "in_target": "İsveççe",
+      "a_target_speaker": "İsveççe konuşan biri",
+      "target_speakers": "İsveççe konuşan kişileri"
+    },
+    "tah": {
+      "in_target": "Tahitice",
+      "a_target_speaker": "Tahitice konuşan biri",
+      "target_speakers": "Tahitice konuşan kişileri"
+    },
+    "tam": {
+      "in_target": "Tamilce",
+      "a_target_speaker": "Tamilce konuşan biri",
+      "target_speakers": "Tamilce konuşan kişileri"
+    },
+    "tel": {
+      "in_target": "Telugu dilinde",
+      "a_target_speaker": "Telugu dili konuşan biri",
+      "target_speakers": "Telugu dili konuşan kişileri"
+    },
+    "tha": {
+      "in_target": "Tayca",
+      "a_target_speaker": "Tayca konuşan biri",
+      "target_speakers": "Tayca konuşan kişileri"
+    },
+    "ton": {
+      "in_target": "Tongaca",
+      "a_target_speaker": "Tongaca konuşan biri",
+      "target_speakers": "Tongaca konuşan kişileri"
+    },
+    "uig": {
+      "in_target": "Uygurca",
+      "a_target_speaker": "Uygurca konuşan biri",
+      "target_speakers": "Uygurca konuşan kişileri"
+    },
+    "ukr": {
+      "in_target": "Ukraynaca",
+      "a_target_speaker": "Ukraynaca konuşan biri",
+      "target_speakers": "Ukraynaca konuşan kişileri"
+    },
+    "urd": {
+      "in_target": "Urduca",
+      "a_target_speaker": "Urduca konuşan biri",
+      "target_speakers": "Urduca konuşan kişileri"
+    },
+    "vec": {
+      "in_target": "Venedikçe",
+      "a_target_speaker": "Venedikçe konuşan biri",
+      "target_speakers": "Venedikçe konuşan kişileri"
+    },
+    "vie": {
+      "in_target": "Vietnamca",
+      "a_target_speaker": "Vietnamca konuşan biri",
+      "target_speakers": "Vietnamca konuşan kişileri"
+    },
+    "vls": {
+      "in_target": "Flamanca",
+      "a_target_speaker": "Flamanca konuşan biri",
+      "target_speakers": "Flamanca konuşan kişileri"
+    },
+    "wln": {
+      "in_target": "Valonca",
+      "a_target_speaker": "Valonca konuşan biri",
+      "target_speakers": "Valonca konuşan kişileri"
+    },
+    "wuu": {
+      "in_target": "Şanghayca",
+      "a_target_speaker": "Şanghayca konuşan biri",
+      "target_speakers": "Şanghayca konuşan kişileri"
+    },
+    "xho": {
+      "in_target": "Zosa dilinde",
+      "a_target_speaker": "Zosa dili konuşan biri",
+      "target_speakers": "Zosa dili konuşan kişileri"
+    },
+    "yid": {
+      "in_target": "Yidişçe",
+      "a_target_speaker": "Yidişçe konuşan biri",
+      "target_speakers": "Yidişçe konuşan kişileri"
+    },
+    "yor": {
+      "in_target": "Yorubaca",
+      "a_target_speaker": "Yorubaca konuşan biri",
+      "target_speakers": "Yorubaca konuşan kişileri"
+    },
+    "yue": {
+      "in_target": "Kantonca",
+      "a_target_speaker": "Kantonca konuşan biri",
+      "target_speakers": "Kantonca konuşan kişileri"
+    },
+    "zul": {
+      "in_target": "Zuluca",
+      "a_target_speaker": "Zuluca konuşan biri",
+      "target_speakers": "Zuluca konuşan kişileri"
+    },
+    "ara_lb": {
+      "in_target": "Arapça",
+      "a_target_speaker": "Lübnan Arapçası konuşan biri",
+      "target_speakers": "Arapça konuşan kişileri"
+    },
+    "ara_sy": {
+      "in_target": "Arapça",
+      "a_target_speaker": "Suriye Arapçası konuşan biri",
+      "target_speakers": "Arapça konuşan kişileri"
+    },
+    "ara_eg": {
+      "in_target": "Arapça",
+      "a_target_speaker": "Mısır Arapçası konuşan biri",
+      "target_speakers": "Arapça konuşan kişileri"
+    }
+  }
+}

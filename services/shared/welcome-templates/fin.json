@@ -1,0 +1,743 @@
+{
+  "known_language": "fin",
+  "known_language_display": "Finnish",
+  "template": "Tervetuloa tähän epätavalliseen peliin, joka auttaa sinua tulemaan {a_target_speaker}. Näin se toimii - opetan sinulle jotain {in_target}, sitten sanon jotain {in_known} ja annan sinulle mahdollisuuden sanoa sen ääneen {in_target}. Sen jälkeen kuuntelet tarkasti {target_speakers}, jotka näyttävät sinulle mallia. On tärkeää, että sanot jotain tauoissa, koska näin opit. Vaikka et olisi varma, yritä sanoa mitä vain pystyt, ja huomaat puhuvasi {in_target} nopeammin kuin uskotkaan. Mitä enemmän kohtelet tätä pelinä, mitä leikkisämmin suhtaudut siihen, mitä enemmän naurat virheillesi, sitä paremmin se sujuu ja sitä nopeammin opit. Aloitetaan siis pelaaminen.",
+  "in_known": "suomeksi",
+  "targets": {
+    "afb": {
+      "in_target": "persianlahden arabiaksi",
+      "a_target_speaker": "persianlahden arabian puhujaksi",
+      "target_speakers": "persianlahden arabian puhujia"
+    },
+    "afr": {
+      "in_target": "afrikaansiksi",
+      "a_target_speaker": "afrikaansin puhujaksi",
+      "target_speakers": "afrikaansin puhujia"
+    },
+    "aii": {
+      "in_target": "suretiksi",
+      "a_target_speaker": "suretin puhujaksi",
+      "target_speakers": "suretin puhujia"
+    },
+    "ain": {
+      "in_target": "ainuksi",
+      "a_target_speaker": "ainun puhujaksi",
+      "target_speakers": "ainun puhujia"
+    },
+    "ajp": {
+      "in_target": "palestiinanarabiaksi",
+      "a_target_speaker": "palestiinanarabian puhujaksi",
+      "target_speakers": "palestiinanarabian puhujia"
+    },
+    "amh": {
+      "in_target": "amharaksi",
+      "a_target_speaker": "amharan puhujaksi",
+      "target_speakers": "amharan puhujia"
+    },
+    "apc": {
+      "in_target": "levanttinarabiaksi",
+      "a_target_speaker": "levanttinarabian puhujaksi",
+      "target_speakers": "levanttinarabian puhujia"
+    },
+    "ara": {
+      "in_target": "arabiaksi",
+      "a_target_speaker": "modernin yleisarabian puhujaksi",
+      "target_speakers": "arabian puhujia"
+    },
+    "arg": {
+      "in_target": "aragoniksi",
+      "a_target_speaker": "aragonin puhujaksi",
+      "target_speakers": "aragonin puhujia"
+    },
+    "ary": {
+      "in_target": "marokonarabiaksi",
+      "a_target_speaker": "marokonarabian puhujaksi",
+      "target_speakers": "marokonarabian puhujia"
+    },
+    "asm": {
+      "in_target": "assamiksi",
+      "a_target_speaker": "assamin puhujaksi",
+      "target_speakers": "assamin puhujia"
+    },
+    "ast": {
+      "in_target": "asturiaksi",
+      "a_target_speaker": "asturian puhujaksi",
+      "target_speakers": "asturian puhujia"
+    },
+    "aze": {
+      "in_target": "azerbaidžaniksi",
+      "a_target_speaker": "azerbaidžanin puhujaksi",
+      "target_speakers": "azerbaidžanin puhujia"
+    },
+    "bar": {
+      "in_target": "baieriksi",
+      "a_target_speaker": "baierin puhujaksi",
+      "target_speakers": "baierin puhujia"
+    },
+    "bel": {
+      "in_target": "valkovenäjäksi",
+      "a_target_speaker": "valkovenäjän puhujaksi",
+      "target_speakers": "valkovenäjän puhujia"
+    },
+    "ben": {
+      "in_target": "bengaliksi",
+      "a_target_speaker": "bengalin puhujaksi",
+      "target_speakers": "bengalin puhujia"
+    },
+    "bos": {
+      "in_target": "bosniaksi",
+      "a_target_speaker": "bosnian puhujaksi",
+      "target_speakers": "bosnian puhujia"
+    },
+    "bre": {
+      "in_target": "bretoniksi",
+      "a_target_speaker": "bretonin puhujaksi",
+      "target_speakers": "bretonin puhujia"
+    },
+    "bul": {
+      "in_target": "bulgariaksi",
+      "a_target_speaker": "bulgarian puhujaksi",
+      "target_speakers": "bulgarian puhujia"
+    },
+    "cat": {
+      "in_target": "katalaniksi",
+      "a_target_speaker": "katalaanin puhujaksi",
+      "target_speakers": "katalaanin puhujia"
+    },
+    "ceb": {
+      "in_target": "cebuanoksi",
+      "a_target_speaker": "cebuanon puhujaksi",
+      "target_speakers": "cebuanon puhujia"
+    },
+    "ces": {
+      "in_target": "tshekiksi",
+      "a_target_speaker": "tshekin puhujaksi",
+      "target_speakers": "tshekin puhujia"
+    },
+    "chr": {
+      "in_target": "cherokiksi",
+      "a_target_speaker": "cherokin puhujaksi",
+      "target_speakers": "cherokin puhujia"
+    },
+    "cmn": {
+      "in_target": "kiinaksi",
+      "a_target_speaker": "kiinan puhujaksi",
+      "target_speakers": "kiinan puhujia"
+    },
+    "cor": {
+      "in_target": "korniksi",
+      "a_target_speaker": "kornin puhujaksi",
+      "target_speakers": "kornin puhujia"
+    },
+    "cos": {
+      "in_target": "korsikaksi",
+      "a_target_speaker": "korsikan puhujaksi",
+      "target_speakers": "korsikan puhujia"
+    },
+    "csb": {
+      "in_target": "kašubiksi",
+      "a_target_speaker": "kašubin puhujaksi",
+      "target_speakers": "kašubin puhujia"
+    },
+    "cym": {
+      "in_target": "walesiksi",
+      "a_target_speaker": "walesin puhujaksi",
+      "target_speakers": "walesin puhujia"
+    },
+    "dan": {
+      "in_target": "tanskaksi",
+      "a_target_speaker": "tanskan puhujaksi",
+      "target_speakers": "tanskan puhujia"
+    },
+    "deu": {
+      "in_target": "saksaksi",
+      "a_target_speaker": "saksan puhujaksi",
+      "target_speakers": "saksan puhujia"
+    },
+    "deu_AT": {
+      "in_target": "saksaksi",
+      "a_target_speaker": "itävallansaksan puhujaksi",
+      "target_speakers": "saksan puhujia"
+    },
+    "dsb": {
+      "in_target": "alasorbiaksi",
+      "a_target_speaker": "alasorbin puhujaksi",
+      "target_speakers": "alasorbin puhujia"
+    },
+    "ell": {
+      "in_target": "kreikaksi",
+      "a_target_speaker": "kreikan puhujaksi",
+      "target_speakers": "kreikan puhujia"
+    },
+    "eng": {
+      "in_target": "englanniksi",
+      "a_target_speaker": "englannin puhujaksi",
+      "target_speakers": "englannin puhujia"
+    },
+    "est": {
+      "in_target": "viroksi",
+      "a_target_speaker": "viron puhujaksi",
+      "target_speakers": "viron puhujia"
+    },
+    "eus": {
+      "in_target": "baskiksi",
+      "a_target_speaker": "baskin puhujaksi",
+      "target_speakers": "baskin puhujia"
+    },
+    "fao": {
+      "in_target": "fääriksi",
+      "a_target_speaker": "fäärin puhujaksi",
+      "target_speakers": "fäärin puhujia"
+    },
+    "fas": {
+      "in_target": "persiaksi",
+      "a_target_speaker": "persian puhujaksi",
+      "target_speakers": "persian puhujia"
+    },
+    "fij": {
+      "in_target": "fidžiksi",
+      "a_target_speaker": "fidžin puhujaksi",
+      "target_speakers": "fidžin puhujia"
+    },
+    "fil": {
+      "in_target": "filipinoksi",
+      "a_target_speaker": "filipinon puhujaksi",
+      "target_speakers": "filipinon puhujia"
+    },
+    "fra": {
+      "in_target": "ranskaksi",
+      "a_target_speaker": "ranskan puhujaksi",
+      "target_speakers": "ranskan puhujia"
+    },
+    "frr": {
+      "in_target": "pohjoisfriisiksi",
+      "a_target_speaker": "pohjoisfrisin puhujaksi",
+      "target_speakers": "pohjoisfrisin puhujia"
+    },
+    "fry": {
+      "in_target": "länsifriisiksi",
+      "a_target_speaker": "länsifrisin puhujaksi",
+      "target_speakers": "länsifrisin puhujia"
+    },
+    "fur": {
+      "in_target": "friuliksi",
+      "a_target_speaker": "friulin puhujaksi",
+      "target_speakers": "friulin puhujia"
+    },
+    "gla": {
+      "in_target": "skottigaeliksi",
+      "a_target_speaker": "skottigaelin puhujaksi",
+      "target_speakers": "skottigaelin puhujia"
+    },
+    "gle": {
+      "in_target": "iiriksi",
+      "a_target_speaker": "iirin puhujaksi",
+      "target_speakers": "iirin puhujia"
+    },
+    "glg": {
+      "in_target": "galiciaksi",
+      "a_target_speaker": "galician puhujaksi",
+      "target_speakers": "galician puhujia"
+    },
+    "glv": {
+      "in_target": "manksiksi",
+      "a_target_speaker": "manksin puhujaksi",
+      "target_speakers": "manksin puhujia"
+    },
+    "grk": {
+      "in_target": "grikoksi",
+      "a_target_speaker": "grikon puhujaksi",
+      "target_speakers": "grikon puhujia"
+    },
+    "grn": {
+      "in_target": "guaraniksi",
+      "a_target_speaker": "guaranin puhujaksi",
+      "target_speakers": "guaranin puhujia"
+    },
+    "gsw": {
+      "in_target": "sveitsinsaksaksi",
+      "a_target_speaker": "sveitsinsaksan puhujaksi",
+      "target_speakers": "sveitsinsaksan puhujia"
+    },
+    "guj": {
+      "in_target": "gudžaratiksi",
+      "a_target_speaker": "gudžaratin puhujaksi",
+      "target_speakers": "gudžaratin puhujia"
+    },
+    "hak": {
+      "in_target": "hakaksi",
+      "a_target_speaker": "hakan puhujaksi",
+      "target_speakers": "hakan puhujia"
+    },
+    "hau": {
+      "in_target": "hausaksi",
+      "a_target_speaker": "hausan puhujaksi",
+      "target_speakers": "hausan puhujia"
+    },
+    "haw": {
+      "in_target": "havaijiksi",
+      "a_target_speaker": "havaijin puhujaksi",
+      "target_speakers": "havaijin puhujia"
+    },
+    "heb": {
+      "in_target": "hepreaksi",
+      "a_target_speaker": "heprean puhujaksi",
+      "target_speakers": "heprean puhujia"
+    },
+    "hin": {
+      "in_target": "hindiksi",
+      "a_target_speaker": "hindin puhujaksi",
+      "target_speakers": "hindin puhujia"
+    },
+    "hrv": {
+      "in_target": "kroatiaksi",
+      "a_target_speaker": "kroatian puhujaksi",
+      "target_speakers": "kroatian puhujia"
+    },
+    "hsb": {
+      "in_target": "yläsorbiaksi",
+      "a_target_speaker": "yläsorbin puhujaksi",
+      "target_speakers": "yläsorbin puhujia"
+    },
+    "hun": {
+      "in_target": "unkariksi",
+      "a_target_speaker": "unkarin puhujaksi",
+      "target_speakers": "unkarin puhujia"
+    },
+    "hye": {
+      "in_target": "armeniaksi",
+      "a_target_speaker": "armenian puhujaksi",
+      "target_speakers": "armenian puhujia"
+    },
+    "ibo": {
+      "in_target": "igboksi",
+      "a_target_speaker": "igbon puhujaksi",
+      "target_speakers": "igbon puhujia"
+    },
+    "iku": {
+      "in_target": "inuktitutiksi",
+      "a_target_speaker": "inuktitutin puhujaksi",
+      "target_speakers": "inuktitutin puhujia"
+    },
+    "ind": {
+      "in_target": "indonesiaksi",
+      "a_target_speaker": "indonesian puhujaksi",
+      "target_speakers": "indonesian puhujia"
+    },
+    "isl": {
+      "in_target": "islanniksi",
+      "a_target_speaker": "islannin puhujaksi",
+      "target_speakers": "islannin puhujia"
+    },
+    "ita": {
+      "in_target": "italiaksi",
+      "a_target_speaker": "italian puhujaksi",
+      "target_speakers": "italian puhujia"
+    },
+    "jav": {
+      "in_target": "jaavaksi",
+      "a_target_speaker": "jaavan puhujaksi",
+      "target_speakers": "jaavan puhujia"
+    },
+    "jpn": {
+      "in_target": "japaniksi",
+      "a_target_speaker": "japanin puhujaksi",
+      "target_speakers": "japanin puhujia"
+    },
+    "kal": {
+      "in_target": "grönlanniksi",
+      "a_target_speaker": "grönlannin puhujaksi",
+      "target_speakers": "grönlannin puhujia"
+    },
+    "kan": {
+      "in_target": "kannadaksi",
+      "a_target_speaker": "kannadan puhujaksi",
+      "target_speakers": "kannadan puhujia"
+    },
+    "kat": {
+      "in_target": "georgiaksi",
+      "a_target_speaker": "georgian puhujaksi",
+      "target_speakers": "georgian puhujia"
+    },
+    "kaz": {
+      "in_target": "kazakiksi",
+      "a_target_speaker": "kazakin puhujaksi",
+      "target_speakers": "kazakin puhujia"
+    },
+    "kir": {
+      "in_target": "kirgiisiksi",
+      "a_target_speaker": "kirgiisin puhujaksi",
+      "target_speakers": "kirgiisin puhujia"
+    },
+    "kor": {
+      "in_target": "koreaksi",
+      "a_target_speaker": "korean puhujaksi",
+      "target_speakers": "korean puhujia"
+    },
+    "kur": {
+      "in_target": "kurdiksi",
+      "a_target_speaker": "kurdin puhujaksi",
+      "target_speakers": "kurdin puhujia"
+    },
+    "lad": {
+      "in_target": "ladinoksi",
+      "a_target_speaker": "ladinon puhujaksi",
+      "target_speakers": "ladinon puhujia"
+    },
+    "lav": {
+      "in_target": "latviaksi",
+      "a_target_speaker": "latvian puhujaksi",
+      "target_speakers": "latvian puhujia"
+    },
+    "lij": {
+      "in_target": "liguriaksi",
+      "a_target_speaker": "ligurian puhujaksi",
+      "target_speakers": "ligurian puhujia"
+    },
+    "lim": {
+      "in_target": "limburgiksi",
+      "a_target_speaker": "limburgin puhujaksi",
+      "target_speakers": "limburgin puhujia"
+    },
+    "lin": {
+      "in_target": "lingalaksi",
+      "a_target_speaker": "lingalan puhujaksi",
+      "target_speakers": "lingalan puhujia"
+    },
+    "lit": {
+      "in_target": "liettuaksi",
+      "a_target_speaker": "liettuan puhujaksi",
+      "target_speakers": "liettuan puhujia"
+    },
+    "ltz": {
+      "in_target": "luxemburgiksi",
+      "a_target_speaker": "luxemburgin puhujaksi",
+      "target_speakers": "luxemburgin puhujia"
+    },
+    "mal": {
+      "in_target": "malajaamiksi",
+      "a_target_speaker": "malajaamin puhujaksi",
+      "target_speakers": "malajaamin puhujia"
+    },
+    "mar": {
+      "in_target": "marathiksi",
+      "a_target_speaker": "marathin puhujaksi",
+      "target_speakers": "marathin puhujia"
+    },
+    "mkd": {
+      "in_target": "makedoniaksi",
+      "a_target_speaker": "makedonian puhujaksi",
+      "target_speakers": "makedonian puhujia"
+    },
+    "moh": {
+      "in_target": "mohawkiksi",
+      "a_target_speaker": "mohawkin puhujaksi",
+      "target_speakers": "mohawkin puhujia"
+    },
+    "mri": {
+      "in_target": "maoriksi",
+      "a_target_speaker": "maorin puhujaksi",
+      "target_speakers": "maorin puhujia"
+    },
+    "msa": {
+      "in_target": "malaijaksi",
+      "a_target_speaker": "malaijin puhujaksi",
+      "target_speakers": "malaijin puhujia"
+    },
+    "nan": {
+      "in_target": "hokkieniksi",
+      "a_target_speaker": "hokkienin puhujaksi",
+      "target_speakers": "hokkienin puhujia"
+    },
+    "nap": {
+      "in_target": "napoliksi",
+      "a_target_speaker": "napolin puhujaksi",
+      "target_speakers": "napolin puhujia"
+    },
+    "nav": {
+      "in_target": "navajoksi",
+      "a_target_speaker": "navajon puhujaksi",
+      "target_speakers": "navajon puhujia"
+    },
+    "nep": {
+      "in_target": "nepaliksi",
+      "a_target_speaker": "nepalin puhujaksi",
+      "target_speakers": "nepalin puhujia"
+    },
+    "nld": {
+      "in_target": "hollanniksi",
+      "a_target_speaker": "hollannin puhujaksi",
+      "target_speakers": "hollannin puhujia"
+    },
+    "nor": {
+      "in_target": "norjaksi",
+      "a_target_speaker": "norjan puhujaksi",
+      "target_speakers": "norjan puhujia"
+    },
+    "nya": {
+      "in_target": "tshewaksi",
+      "a_target_speaker": "tshewan puhujaksi",
+      "target_speakers": "tshewan puhujia"
+    },
+    "oci": {
+      "in_target": "oksitaaniksi",
+      "a_target_speaker": "oksitaanin puhujaksi",
+      "target_speakers": "oksitaanin puhujia"
+    },
+    "oji": {
+      "in_target": "ojibweksi",
+      "a_target_speaker": "ojibwen puhujaksi",
+      "target_speakers": "ojibwen puhujia"
+    },
+    "pan": {
+      "in_target": "pandžabiksi",
+      "a_target_speaker": "pandžabin puhujaksi",
+      "target_speakers": "pandžabin puhujia"
+    },
+    "pol": {
+      "in_target": "puolaksi",
+      "a_target_speaker": "puolan puhujaksi",
+      "target_speakers": "puolan puhujia"
+    },
+    "por": {
+      "in_target": "portugaliksi",
+      "a_target_speaker": "portugalin puhujaksi",
+      "target_speakers": "portugalin puhujia"
+    },
+    "por_BR": {
+      "in_target": "portugaliksi",
+      "a_target_speaker": "brasilianportugalin puhujaksi",
+      "target_speakers": "portugalin puhujia"
+    },
+    "por_EU": {
+      "in_target": "portugaliksi",
+      "a_target_speaker": "euroopanportugalin puhujaksi",
+      "target_speakers": "portugalin puhujia"
+    },
+    "pus": {
+      "in_target": "pashtoksi",
+      "a_target_speaker": "pashton puhujaksi",
+      "target_speakers": "pashton puhujia"
+    },
+    "que": {
+      "in_target": "ketšuaksi",
+      "a_target_speaker": "ketšuan puhujaksi",
+      "target_speakers": "ketšuan puhujia"
+    },
+    "roh": {
+      "in_target": "retoromaaniksi",
+      "a_target_speaker": "retromaanin puhujaksi",
+      "target_speakers": "retromaanin puhujia"
+    },
+    "ron": {
+      "in_target": "romaniaksi",
+      "a_target_speaker": "romanian puhujaksi",
+      "target_speakers": "romanian puhujia"
+    },
+    "rus": {
+      "in_target": "venäjäksi",
+      "a_target_speaker": "venäjän puhujaksi",
+      "target_speakers": "venäjän puhujia"
+    },
+    "scn": {
+      "in_target": "sisiliaksi",
+      "a_target_speaker": "sisilian puhujaksi",
+      "target_speakers": "sisilian puhujia"
+    },
+    "sco": {
+      "in_target": "skotiksi",
+      "a_target_speaker": "skotin puhujaksi",
+      "target_speakers": "skotin puhujia"
+    },
+    "slk": {
+      "in_target": "slovakiksi",
+      "a_target_speaker": "slovakin puhujaksi",
+      "target_speakers": "slovakin puhujia"
+    },
+    "slv": {
+      "in_target": "sloveniaksi",
+      "a_target_speaker": "slovenian puhujaksi",
+      "target_speakers": "slovenian puhujia"
+    },
+    "sme": {
+      "in_target": "pohjoissaameksi",
+      "a_target_speaker": "pohjoissaamen puhujaksi",
+      "target_speakers": "pohjoissaamen puhujia"
+    },
+    "smj": {
+      "in_target": "luulajansaameksi",
+      "a_target_speaker": "luulajansaamen puhujaksi",
+      "target_speakers": "luulajansaamen puhujia"
+    },
+    "smn": {
+      "in_target": "inarinsaameksi",
+      "a_target_speaker": "inarinsaamen puhujaksi",
+      "target_speakers": "inarinsaamen puhujia"
+    },
+    "smo": {
+      "in_target": "samoaksi",
+      "a_target_speaker": "samoan puhujaksi",
+      "target_speakers": "samoan puhujia"
+    },
+    "sms": {
+      "in_target": "koltansaameksi",
+      "a_target_speaker": "koltansaamen puhujaksi",
+      "target_speakers": "koltansaamen puhujia"
+    },
+    "snd": {
+      "in_target": "sindhiksi",
+      "a_target_speaker": "sindhin puhujaksi",
+      "target_speakers": "sindhin puhujia"
+    },
+    "som": {
+      "in_target": "somaliksi",
+      "a_target_speaker": "somalin puhujaksi",
+      "target_speakers": "somalin puhujia"
+    },
+    "spa": {
+      "in_target": "espanjaksi",
+      "a_target_speaker": "espanjan puhujaksi",
+      "target_speakers": "espanjan puhujia"
+    },
+    "spa_EU": {
+      "in_target": "espanjaksi",
+      "a_target_speaker": "euroopanespanjan puhujaksi",
+      "target_speakers": "espanjan puhujia"
+    },
+    "spa_SA": {
+      "in_target": "espanjaksi",
+      "a_target_speaker": "eteläamerikkanespanjan puhujaksi",
+      "target_speakers": "espanjan puhujia"
+    },
+    "srd": {
+      "in_target": "sardianiaksi",
+      "a_target_speaker": "sardinian puhujaksi",
+      "target_speakers": "sardinian puhujia"
+    },
+    "srp": {
+      "in_target": "serbiaksi",
+      "a_target_speaker": "serbian puhujaksi",
+      "target_speakers": "serbian puhujia"
+    },
+    "swa": {
+      "in_target": "swahiliksi",
+      "a_target_speaker": "swahilin puhujaksi",
+      "target_speakers": "swahilin puhujia"
+    },
+    "swe": {
+      "in_target": "ruotsiksi",
+      "a_target_speaker": "ruotsin puhujaksi",
+      "target_speakers": "ruotsin puhujia"
+    },
+    "tah": {
+      "in_target": "tahitiksi",
+      "a_target_speaker": "tahitin puhujaksi",
+      "target_speakers": "tahitin puhujia"
+    },
+    "tam": {
+      "in_target": "tamiliksi",
+      "a_target_speaker": "tamilin puhujaksi",
+      "target_speakers": "tamilin puhujia"
+    },
+    "tel": {
+      "in_target": "teluguksi",
+      "a_target_speaker": "telugun puhujaksi",
+      "target_speakers": "telugun puhujia"
+    },
+    "tha": {
+      "in_target": "thaiksi",
+      "a_target_speaker": "thain puhujaksi",
+      "target_speakers": "thain puhujia"
+    },
+    "ton": {
+      "in_target": "tongaksi",
+      "a_target_speaker": "tongan puhujaksi",
+      "target_speakers": "tongan puhujia"
+    },
+    "tur": {
+      "in_target": "turkiksi",
+      "a_target_speaker": "turkin puhujaksi",
+      "target_speakers": "turkin puhujia"
+    },
+    "uig": {
+      "in_target": "uiguuriksi",
+      "a_target_speaker": "uiguurin puhujaksi",
+      "target_speakers": "uiguurin puhujia"
+    },
+    "ukr": {
+      "in_target": "ukrainaksi",
+      "a_target_speaker": "ukrainan puhujaksi",
+      "target_speakers": "ukrainan puhujia"
+    },
+    "urd": {
+      "in_target": "urduksi",
+      "a_target_speaker": "urdun puhujaksi",
+      "target_speakers": "urdun puhujia"
+    },
+    "vec": {
+      "in_target": "venetsiaksi",
+      "a_target_speaker": "venetsian puhujaksi",
+      "target_speakers": "venetsian puhujia"
+    },
+    "vie": {
+      "in_target": "vietnamiksi",
+      "a_target_speaker": "vietnamin puhujaksi",
+      "target_speakers": "vietnamin puhujia"
+    },
+    "vls": {
+      "in_target": "flaamiksi",
+      "a_target_speaker": "flaamin puhujaksi",
+      "target_speakers": "flaamin puhujia"
+    },
+    "wln": {
+      "in_target": "valloniaksi",
+      "a_target_speaker": "vallonian puhujaksi",
+      "target_speakers": "vallonian puhujia"
+    },
+    "wuu": {
+      "in_target": "shanghaiksi",
+      "a_target_speaker": "shanghain puhujaksi",
+      "target_speakers": "shanghain puhujia"
+    },
+    "xho": {
+      "in_target": "xhosaksi",
+      "a_target_speaker": "xhosan puhujaksi",
+      "target_speakers": "xhosan puhujia"
+    },
+    "yid": {
+      "in_target": "jiddišiksi",
+      "a_target_speaker": "jiddišin puhujaksi",
+      "target_speakers": "jiddišin puhujia"
+    },
+    "yor": {
+      "in_target": "jorubaksi",
+      "a_target_speaker": "joruban puhujaksi",
+      "target_speakers": "joruban puhujia"
+    },
+    "yue": {
+      "in_target": "kantoninkiinaksi",
+      "a_target_speaker": "kantoninkiinan puhujaksi",
+      "target_speakers": "kantoninkiinan puhujia"
+    },
+    "zul": {
+      "in_target": "zuluksi",
+      "a_target_speaker": "zulun puhujaksi",
+      "target_speakers": "zulun puhujia"
+    },
+    "ara_lb": {
+      "in_target": "arabiaksi",
+      "a_target_speaker": "libanonin arabian puhujaksi",
+      "target_speakers": "arabian puhujia"
+    },
+    "ara_sy": {
+      "in_target": "arabiaksi",
+      "a_target_speaker": "syyrian arabian puhujaksi",
+      "target_speakers": "arabian puhujia"
+    },
+    "ara_eg": {
+      "in_target": "arabiaksi",
+      "a_target_speaker": "egyptinarabian puhujaksi",
+      "target_speakers": "arabian puhujia"
+    }
+  }
+}

@@ -1,0 +1,748 @@
+{
+  "known_language": "ben",
+  "known_language_display": "Bengali",
+  "template": "এই অসাধারণ খেলায় তোমাকে স্বাগত জানাই, যা তোমাকে {a_target_speaker} হয়ে উঠতে সাহায্য করবে। এটা এভাবে কাজ করে — প্রথমে আমি তোমাকে {in_target} কিছু শেখাই, তারপর আমি {in_known} কিছু বলি আর তোমাকে সুযোগ দিই সেটা জোরে জোরে {in_target} বলার। এরপর, {target_speakers} কথা মনোযোগ দিয়ে শোনো, যারা তোমার জন্য সেটা বলে দেখাবে। ফাঁকা জায়গাগুলোতে কিছু একটা বলা খুব জরুরি, কারণ এভাবেই তুমি শিখবে। যদি নিশ্চিত না থাকো, তবুও যা পারো বলার চেষ্টা করো — দেখবে ভাবতেও পারোনি এত তাড়াতাড়ি {in_target} বলতে শুরু করে দিয়েছ। এটাকে যত বেশি খেলা মনে করবে, যত মজা নিয়ে খেলবে, ভুল করলে যত হাসবে, ততই ভালো হবে আর ততই তাড়াতাড়ি শিখবে। তাহলে, চলো শুরু করি।",
+  "in_known": "বাংলায়",
+  "targets": {
+    "afb": {
+      "in_target": "গালফ আরবিতে",
+      "a_target_speaker": "একজন গালফ আরবি ভাষী",
+      "target_speakers": "গালফ আরবি ভাষীদের"
+    },
+    "afr": {
+      "in_target": "আফ্রিকান্সে",
+      "a_target_speaker": "একজন আফ্রিকান্স ভাষী",
+      "target_speakers": "আফ্রিকান্স ভাষীদের"
+    },
+    "aii": {
+      "in_target": "অ্যাসিরিয়ানে",
+      "a_target_speaker": "একজন অ্যাসিরিয়ান ভাষী",
+      "target_speakers": "অ্যাসিরিয়ান ভাষীদের"
+    },
+    "ain": {
+      "in_target": "আইনুতে",
+      "a_target_speaker": "একজন আইনু ভাষী",
+      "target_speakers": "আইনু ভাষীদের"
+    },
+    "ajp": {
+      "in_target": "ফিলিস্তিনি আরবিতে",
+      "a_target_speaker": "একজন ফিলিস্তিনি আরবি ভাষী",
+      "target_speakers": "ফিলিস্তিনি আরবি ভাষীদের"
+    },
+    "amh": {
+      "in_target": "আমহারিকে",
+      "a_target_speaker": "একজন আমহারিক ভাষী",
+      "target_speakers": "আমহারিক ভাষীদের"
+    },
+    "apc": {
+      "in_target": "লেভান্তিয়ান আরবিতে",
+      "a_target_speaker": "একজন লেভান্তিয়ান আরবি ভাষী",
+      "target_speakers": "লেভান্তিয়ান আরবি ভাষীদের"
+    },
+    "ara": {
+      "in_target": "আরবিতে",
+      "a_target_speaker": "একজন আধুনিক প্রমিত আরবি ভাষী",
+      "target_speakers": "আরবি ভাষীদের"
+    },
+    "arg": {
+      "in_target": "আরাগোনিজে",
+      "a_target_speaker": "একজন আরাগোনিজ ভাষী",
+      "target_speakers": "আরাগোনিজ ভাষীদের"
+    },
+    "ary": {
+      "in_target": "মরক্কান আরবিতে",
+      "a_target_speaker": "একজন মরক্কান আরবি ভাষী",
+      "target_speakers": "মরক্কান আরবি ভাষীদের"
+    },
+    "asm": {
+      "in_target": "অসমিয়াতে",
+      "a_target_speaker": "একজন অসমিয়া ভাষী",
+      "target_speakers": "অসমিয়া ভাষীদের"
+    },
+    "ast": {
+      "in_target": "অস্তুরিয়ানে",
+      "a_target_speaker": "একজন অস্তুরিয়ান ভাষী",
+      "target_speakers": "অস্তুরিয়ান ভাষীদের"
+    },
+    "aze": {
+      "in_target": "আজারবাইজানিতে",
+      "a_target_speaker": "একজন আজারবাইজানি ভাষী",
+      "target_speakers": "আজারবাইজানি ভাষীদের"
+    },
+    "bar": {
+      "in_target": "বাভারিয়ানে",
+      "a_target_speaker": "একজন বাভারিয়ান ভাষী",
+      "target_speakers": "বাভারিয়ান ভাষীদের"
+    },
+    "bel": {
+      "in_target": "বেলারুশিয়ানে",
+      "a_target_speaker": "একজন বেলারুশিয়ান ভাষী",
+      "target_speakers": "বেলারুশিয়ান ভাষীদের"
+    },
+    "ben": {
+      "in_target": "বাংলায়",
+      "a_target_speaker": "একজন বাংলা ভাষী",
+      "target_speakers": "বাংলা ভাষীদের"
+    },
+    "bos": {
+      "in_target": "বসনিয়ানে",
+      "a_target_speaker": "একজন বসনিয়ান ভাষী",
+      "target_speakers": "বসনিয়ান ভাষীদের"
+    },
+    "bre": {
+      "in_target": "ব্রেটনে",
+      "a_target_speaker": "একজন ব্রেটন ভাষী",
+      "target_speakers": "ব্রেটন ভাষীদের"
+    },
+    "bul": {
+      "in_target": "বুলগেরিয়ানে",
+      "a_target_speaker": "একজন বুলগেরিয়ান ভাষী",
+      "target_speakers": "বুলগেরিয়ান ভাষীদের"
+    },
+    "cat": {
+      "in_target": "কাতালানে",
+      "a_target_speaker": "একজন কাতালান ভাষী",
+      "target_speakers": "কাতালান ভাষীদের"
+    },
+    "ceb": {
+      "in_target": "সেবুয়ানোতে",
+      "a_target_speaker": "একজন সেবুয়ানো ভাষী",
+      "target_speakers": "সেবুয়ানো ভাষীদের"
+    },
+    "ces": {
+      "in_target": "চেকে",
+      "a_target_speaker": "একজন চেক ভাষী",
+      "target_speakers": "চেক ভাষীদের"
+    },
+    "chr": {
+      "in_target": "চেরোকিতে",
+      "a_target_speaker": "একজন চেরোকি ভাষী",
+      "target_speakers": "চেরোকি ভাষীদের"
+    },
+    "cmn": {
+      "in_target": "চীনা ভাষায়",
+      "a_target_speaker": "একজন চীনা ভাষী",
+      "target_speakers": "চীনা ভাষীদের"
+    },
+    "cor": {
+      "in_target": "কর্নিশে",
+      "a_target_speaker": "একজন কর্নিশ ভাষী",
+      "target_speakers": "কর্নিশ ভাষীদের"
+    },
+    "cos": {
+      "in_target": "কর্সিকানে",
+      "a_target_speaker": "একজন কর্সিকান ভাষী",
+      "target_speakers": "কর্সিকান ভাষীদের"
+    },
+    "csb": {
+      "in_target": "কাশুবিয়ানে",
+      "a_target_speaker": "একজন কাশুবিয়ান ভাষী",
+      "target_speakers": "কাশুবিয়ান ভাষীদের"
+    },
+    "cym": {
+      "in_target": "ওয়েলশে",
+      "a_target_speaker": "একজন ওয়েলশ ভাষী",
+      "target_speakers": "ওয়েলশ ভাষীদের"
+    },
+    "dan": {
+      "in_target": "ড্যানিশে",
+      "a_target_speaker": "একজন ড্যানিশ ভাষী",
+      "target_speakers": "ড্যানিশ ভাষীদের"
+    },
+    "deu": {
+      "in_target": "জার্মানে",
+      "a_target_speaker": "একজন জার্মান ভাষী",
+      "target_speakers": "জার্মান ভাষীদের"
+    },
+    "deu_AT": {
+      "in_target": "জার্মানে",
+      "a_target_speaker": "একজন অস্ট্রিয়ান জার্মান ভাষী",
+      "target_speakers": "জার্মান ভাষীদের"
+    },
+    "dsb": {
+      "in_target": "লোয়ার সর্বিয়ানে",
+      "a_target_speaker": "একজন লোয়ার সর্বিয়ান ভাষী",
+      "target_speakers": "লোয়ার সর্বিয়ান ভাষীদের"
+    },
+    "ell": {
+      "in_target": "গ্রিকে",
+      "a_target_speaker": "একজন গ্রিক ভাষী",
+      "target_speakers": "গ্রিক ভাষীদের"
+    },
+    "eng": {
+      "in_target": "ইংরেজিতে",
+      "a_target_speaker": "একজন ইংরেজি ভাষী",
+      "target_speakers": "ইংরেজি ভাষীদের"
+    },
+    "est": {
+      "in_target": "এস্তোনিয়ানে",
+      "a_target_speaker": "একজন এস্তোনিয়ান ভাষী",
+      "target_speakers": "এস্তোনিয়ান ভাষীদের"
+    },
+    "eus": {
+      "in_target": "বাস্কে",
+      "a_target_speaker": "একজন বাস্ক ভাষী",
+      "target_speakers": "বাস্ক ভাষীদের"
+    },
+    "fao": {
+      "in_target": "ফারোয়িজে",
+      "a_target_speaker": "একজন ফারোয়িজ ভাষী",
+      "target_speakers": "ফারোয়িজ ভাষীদের"
+    },
+    "fas": {
+      "in_target": "ফারসিতে",
+      "a_target_speaker": "একজন ফারসি ভাষী",
+      "target_speakers": "ফারসি ভাষীদের"
+    },
+    "fij": {
+      "in_target": "ফিজিয়ানে",
+      "a_target_speaker": "একজন ফিজিয়ান ভাষী",
+      "target_speakers": "ফিজিয়ান ভাষীদের"
+    },
+    "fil": {
+      "in_target": "ফিলিপিনোতে",
+      "a_target_speaker": "একজন ফিলিপিনো ভাষী",
+      "target_speakers": "ফিলিপিনো ভাষীদের"
+    },
+    "fin": {
+      "in_target": "ফিনিশে",
+      "a_target_speaker": "একজন ফিনিশ ভাষী",
+      "target_speakers": "ফিনিশ ভাষীদের"
+    },
+    "fra": {
+      "in_target": "ফরাসিতে",
+      "a_target_speaker": "একজন ফরাসি ভাষী",
+      "target_speakers": "ফরাসি ভাষীদের"
+    },
+    "frr": {
+      "in_target": "উত্তর ফ্রিজিয়ানে",
+      "a_target_speaker": "একজন উত্তর ফ্রিজিয়ান ভাষী",
+      "target_speakers": "উত্তর ফ্রিজিয়ান ভাষীদের"
+    },
+    "fry": {
+      "in_target": "পশ্চিম ফ্রিজিয়ানে",
+      "a_target_speaker": "একজন পশ্চিম ফ্রিজিয়ান ভাষী",
+      "target_speakers": "পশ্চিম ফ্রিজিয়ান ভাষীদের"
+    },
+    "fur": {
+      "in_target": "ফ্রিউলিয়ানে",
+      "a_target_speaker": "একজন ফ্রিউলিয়ান ভাষী",
+      "target_speakers": "ফ্রিউলিয়ান ভাষীদের"
+    },
+    "gla": {
+      "in_target": "স্কটিশ গেলিকে",
+      "a_target_speaker": "একজন স্কটিশ গেলিক ভাষী",
+      "target_speakers": "স্কটিশ গেলিক ভাষীদের"
+    },
+    "gle": {
+      "in_target": "আইরিশে",
+      "a_target_speaker": "একজন আইরিশ ভাষী",
+      "target_speakers": "আইরিশ ভাষীদের"
+    },
+    "glg": {
+      "in_target": "গ্যালিশিয়ানে",
+      "a_target_speaker": "একজন গ্যালিশিয়ান ভাষী",
+      "target_speakers": "গ্যালিশিয়ান ভাষীদের"
+    },
+    "glv": {
+      "in_target": "ম্যাংকসে",
+      "a_target_speaker": "একজন ম্যাংকস ভাষী",
+      "target_speakers": "ম্যাংকস ভাষীদের"
+    },
+    "grk": {
+      "in_target": "গ্রিকোতে",
+      "a_target_speaker": "একজন গ্রিকো ভাষী",
+      "target_speakers": "গ্রিকো ভাষীদের"
+    },
+    "grn": {
+      "in_target": "গুয়ারানিতে",
+      "a_target_speaker": "একজন গুয়ারানি ভাষী",
+      "target_speakers": "গুয়ারানি ভাষীদের"
+    },
+    "gsw": {
+      "in_target": "সুইস জার্মানে",
+      "a_target_speaker": "একজন সুইস জার্মান ভাষী",
+      "target_speakers": "সুইস জার্মান ভাষীদের"
+    },
+    "guj": {
+      "in_target": "গুজরাটিতে",
+      "a_target_speaker": "একজন গুজরাটি ভাষী",
+      "target_speakers": "গুজরাটি ভাষীদের"
+    },
+    "hak": {
+      "in_target": "হাক্কাতে",
+      "a_target_speaker": "একজন হাক্কা ভাষী",
+      "target_speakers": "হাক্কা ভাষীদের"
+    },
+    "hau": {
+      "in_target": "হাউসাতে",
+      "a_target_speaker": "একজন হাউসা ভাষী",
+      "target_speakers": "হাউসা ভাষীদের"
+    },
+    "haw": {
+      "in_target": "হাওয়াইয়ানে",
+      "a_target_speaker": "একজন হাওয়াইয়ান ভাষী",
+      "target_speakers": "হাওয়াইয়ান ভাষীদের"
+    },
+    "heb": {
+      "in_target": "হিব্রুতে",
+      "a_target_speaker": "একজন হিব্রু ভাষী",
+      "target_speakers": "হিব্রু ভাষীদের"
+    },
+    "hin": {
+      "in_target": "হিন্দিতে",
+      "a_target_speaker": "একজন হিন্দি ভাষী",
+      "target_speakers": "হিন্দি ভাষীদের"
+    },
+    "hrv": {
+      "in_target": "ক্রোয়েশিয়ানে",
+      "a_target_speaker": "একজন ক্রোয়েশিয়ান ভাষী",
+      "target_speakers": "ক্রোয়েশিয়ান ভাষীদের"
+    },
+    "hsb": {
+      "in_target": "আপার সর্বিয়ানে",
+      "a_target_speaker": "একজন আপার সর্বিয়ান ভাষী",
+      "target_speakers": "আপার সর্বিয়ান ভাষীদের"
+    },
+    "hun": {
+      "in_target": "হাঙ্গেরিয়ানে",
+      "a_target_speaker": "একজন হাঙ্গেরিয়ান ভাষী",
+      "target_speakers": "হাঙ্গেরিয়ান ভাষীদের"
+    },
+    "hye": {
+      "in_target": "আর্মেনিয়ানে",
+      "a_target_speaker": "একজন আর্মেনিয়ান ভাষী",
+      "target_speakers": "আর্মেনিয়ান ভাষীদের"
+    },
+    "ibo": {
+      "in_target": "ইগবোতে",
+      "a_target_speaker": "একজন ইগবো ভাষী",
+      "target_speakers": "ইগবো ভাষীদের"
+    },
+    "iku": {
+      "in_target": "ইনুকতিতুতে",
+      "a_target_speaker": "একজন ইনুকতিতুত ভাষী",
+      "target_speakers": "ইনুকতিতুত ভাষীদের"
+    },
+    "ind": {
+      "in_target": "ইন্দোনেশিয়ানে",
+      "a_target_speaker": "একজন ইন্দোনেশিয়ান ভাষী",
+      "target_speakers": "ইন্দোনেশিয়ান ভাষীদের"
+    },
+    "isl": {
+      "in_target": "আইসল্যান্ডিকে",
+      "a_target_speaker": "একজন আইসল্যান্ডিক ভাষী",
+      "target_speakers": "আইসল্যান্ডিক ভাষীদের"
+    },
+    "ita": {
+      "in_target": "ইতালিয়ানে",
+      "a_target_speaker": "একজন ইতালিয়ান ভাষী",
+      "target_speakers": "ইতালিয়ান ভাষীদের"
+    },
+    "jav": {
+      "in_target": "জাভানিজে",
+      "a_target_speaker": "একজন জাভানিজ ভাষী",
+      "target_speakers": "জাভানিজ ভাষীদের"
+    },
+    "jpn": {
+      "in_target": "জাপানিতে",
+      "a_target_speaker": "একজন জাপানি ভাষী",
+      "target_speakers": "জাপানি ভাষীদের"
+    },
+    "kal": {
+      "in_target": "গ্রিনল্যান্ডিকে",
+      "a_target_speaker": "একজন গ্রিনল্যান্ডিক ভাষী",
+      "target_speakers": "গ্রিনল্যান্ডিক ভাষীদের"
+    },
+    "kan": {
+      "in_target": "কন্নড়ে",
+      "a_target_speaker": "একজন কন্নড় ভাষী",
+      "target_speakers": "কন্নড় ভাষীদের"
+    },
+    "kat": {
+      "in_target": "জর্জিয়ানে",
+      "a_target_speaker": "একজন জর্জিয়ান ভাষী",
+      "target_speakers": "জর্জিয়ান ভাষীদের"
+    },
+    "kaz": {
+      "in_target": "কাজাখে",
+      "a_target_speaker": "একজন কাজাখ ভাষী",
+      "target_speakers": "কাজাখ ভাষীদের"
+    },
+    "kir": {
+      "in_target": "কিরগিজে",
+      "a_target_speaker": "একজন কিরগিজ ভাষী",
+      "target_speakers": "কিরগিজ ভাষীদের"
+    },
+    "kor": {
+      "in_target": "কোরিয়ানে",
+      "a_target_speaker": "একজন কোরিয়ান ভাষী",
+      "target_speakers": "কোরিয়ান ভাষীদের"
+    },
+    "kur": {
+      "in_target": "কুর্দিতে",
+      "a_target_speaker": "একজন কুর্দি ভাষী",
+      "target_speakers": "কুর্দি ভাষীদের"
+    },
+    "lad": {
+      "in_target": "লাদিনোতে",
+      "a_target_speaker": "একজন লাদিনো ভাষী",
+      "target_speakers": "লাদিনো ভাষীদের"
+    },
+    "lav": {
+      "in_target": "লাটভিয়ানে",
+      "a_target_speaker": "একজন লাটভিয়ান ভাষী",
+      "target_speakers": "লাটভিয়ান ভাষীদের"
+    },
+    "lij": {
+      "in_target": "লিগুরিয়ানে",
+      "a_target_speaker": "একজন লিগুরিয়ান ভাষী",
+      "target_speakers": "লিগুরিয়ান ভাষীদের"
+    },
+    "lim": {
+      "in_target": "লিম্বার্গিশে",
+      "a_target_speaker": "একজন লিম্বার্গিশ ভাষী",
+      "target_speakers": "লিম্বার্গিশ ভাষীদের"
+    },
+    "lin": {
+      "in_target": "লিঙ্গালাতে",
+      "a_target_speaker": "একজন লিঙ্গালা ভাষী",
+      "target_speakers": "লিঙ্গালা ভাষীদের"
+    },
+    "lit": {
+      "in_target": "লিথুয়ানিয়ানে",
+      "a_target_speaker": "একজন লিথুয়ানিয়ান ভাষী",
+      "target_speakers": "লিথুয়ানিয়ান ভাষীদের"
+    },
+    "ltz": {
+      "in_target": "লাক্সেমবার্গিশে",
+      "a_target_speaker": "একজন লাক্সেমবার্গিশ ভাষী",
+      "target_speakers": "লাক্সেমবার্গিশ ভাষীদের"
+    },
+    "mal": {
+      "in_target": "মালয়ালমে",
+      "a_target_speaker": "একজন মালয়ালম ভাষী",
+      "target_speakers": "মালয়ালম ভাষীদের"
+    },
+    "mar": {
+      "in_target": "মারাঠিতে",
+      "a_target_speaker": "একজন মারাঠি ভাষী",
+      "target_speakers": "মারাঠি ভাষীদের"
+    },
+    "mkd": {
+      "in_target": "মেসিডোনিয়ানে",
+      "a_target_speaker": "একজন মেসিডোনিয়ান ভাষী",
+      "target_speakers": "মেসিডোনিয়ান ভাষীদের"
+    },
+    "moh": {
+      "in_target": "মোহকে",
+      "a_target_speaker": "একজন মোহক ভাষী",
+      "target_speakers": "মোহক ভাষীদের"
+    },
+    "mri": {
+      "in_target": "মাওরিতে",
+      "a_target_speaker": "একজন মাওরি ভাষী",
+      "target_speakers": "মাওরি ভাষীদের"
+    },
+    "msa": {
+      "in_target": "মালয়ে",
+      "a_target_speaker": "একজন মালয় ভাষী",
+      "target_speakers": "মালয় ভাষীদের"
+    },
+    "nan": {
+      "in_target": "হোক্কিয়েনে",
+      "a_target_speaker": "একজন হোক্কিয়েন ভাষী",
+      "target_speakers": "হোক্কিয়েন ভাষীদের"
+    },
+    "nap": {
+      "in_target": "নেয়াপোলিটানে",
+      "a_target_speaker": "একজন নেয়াপোলিটান ভাষী",
+      "target_speakers": "নেয়াপোলিটান ভাষীদের"
+    },
+    "nav": {
+      "in_target": "নাভাহোতে",
+      "a_target_speaker": "একজন নাভাহো ভাষী",
+      "target_speakers": "নাভাহো ভাষীদের"
+    },
+    "nep": {
+      "in_target": "নেপালিতে",
+      "a_target_speaker": "একজন নেপালি ভাষী",
+      "target_speakers": "নেপালি ভাষীদের"
+    },
+    "nld": {
+      "in_target": "ডাচে",
+      "a_target_speaker": "একজন ডাচ ভাষী",
+      "target_speakers": "ডাচ ভাষীদের"
+    },
+    "nor": {
+      "in_target": "নরওয়েজিয়ানে",
+      "a_target_speaker": "একজন নরওয়েজিয়ান ভাষী",
+      "target_speakers": "নরওয়েজিয়ান ভাষীদের"
+    },
+    "nya": {
+      "in_target": "চিচেওয়াতে",
+      "a_target_speaker": "একজন চিচেওয়া ভাষী",
+      "target_speakers": "চিচেওয়া ভাষীদের"
+    },
+    "oci": {
+      "in_target": "অক্সিতানে",
+      "a_target_speaker": "একজন অক্সিতান ভাষী",
+      "target_speakers": "অক্সিতান ভাষীদের"
+    },
+    "oji": {
+      "in_target": "ওজিবওয়েতে",
+      "a_target_speaker": "একজন ওজিবওয়ে ভাষী",
+      "target_speakers": "ওজিবওয়ে ভাষীদের"
+    },
+    "pan": {
+      "in_target": "পাঞ্জাবিতে",
+      "a_target_speaker": "একজন পাঞ্জাবি ভাষী",
+      "target_speakers": "পাঞ্জাবি ভাষীদের"
+    },
+    "pol": {
+      "in_target": "পোলিশে",
+      "a_target_speaker": "একজন পোলিশ ভাষী",
+      "target_speakers": "পোলিশ ভাষীদের"
+    },
+    "por": {
+      "in_target": "পর্তুগিজে",
+      "a_target_speaker": "একজন পর্তুগিজ ভাষী",
+      "target_speakers": "পর্তুগিজ ভাষীদের"
+    },
+    "por_BR": {
+      "in_target": "পর্তুগিজে",
+      "a_target_speaker": "একজন ব্রাজিলিয়ান পর্তুগিজ ভাষী",
+      "target_speakers": "পর্তুগিজ ভাষীদের"
+    },
+    "por_EU": {
+      "in_target": "পর্তুগিজে",
+      "a_target_speaker": "একজন ইউরোপীয় পর্তুগিজ ভাষী",
+      "target_speakers": "পর্তুগিজ ভাষীদের"
+    },
+    "pus": {
+      "in_target": "পাশতোতে",
+      "a_target_speaker": "একজন পাশতো ভাষী",
+      "target_speakers": "পাশতো ভাষীদের"
+    },
+    "que": {
+      "in_target": "কেচুয়াতে",
+      "a_target_speaker": "একজন কেচুয়া ভাষী",
+      "target_speakers": "কেচুয়া ভাষীদের"
+    },
+    "roh": {
+      "in_target": "রোমানশে",
+      "a_target_speaker": "একজন রোমানশ ভাষী",
+      "target_speakers": "রোমানশ ভাষীদের"
+    },
+    "ron": {
+      "in_target": "রোমানিয়ানে",
+      "a_target_speaker": "একজন রোমানিয়ান ভাষী",
+      "target_speakers": "রোমানিয়ান ভাষীদের"
+    },
+    "rus": {
+      "in_target": "রাশিয়ানে",
+      "a_target_speaker": "একজন রাশিয়ান ভাষী",
+      "target_speakers": "রাশিয়ান ভাষীদের"
+    },
+    "scn": {
+      "in_target": "সিসিলিয়ানে",
+      "a_target_speaker": "একজন সিসিলিয়ান ভাষী",
+      "target_speakers": "সিসিলিয়ান ভাষীদের"
+    },
+    "sco": {
+      "in_target": "স্কটসে",
+      "a_target_speaker": "একজন স্কটস ভাষী",
+      "target_speakers": "স্কটস ভাষীদের"
+    },
+    "slk": {
+      "in_target": "স্লোভাকে",
+      "a_target_speaker": "একজন স্লোভাক ভাষী",
+      "target_speakers": "স্লোভাক ভাষীদের"
+    },
+    "slv": {
+      "in_target": "স্লোভেনিয়ানে",
+      "a_target_speaker": "একজন স্লোভেনিয়ান ভাষী",
+      "target_speakers": "স্লোভেনিয়ান ভাষীদের"
+    },
+    "sme": {
+      "in_target": "নর্দার্ন সামিতে",
+      "a_target_speaker": "একজন নর্দার্ন সামি ভাষী",
+      "target_speakers": "নর্দার্ন সামি ভাষীদের"
+    },
+    "smj": {
+      "in_target": "লুলে সামিতে",
+      "a_target_speaker": "একজন লুলে সামি ভাষী",
+      "target_speakers": "লুলে সামি ভাষীদের"
+    },
+    "smn": {
+      "in_target": "ইনারি সামিতে",
+      "a_target_speaker": "একজন ইনারি সামি ভাষী",
+      "target_speakers": "ইনারি সামি ভাষীদের"
+    },
+    "smo": {
+      "in_target": "সামোয়ানে",
+      "a_target_speaker": "একজন সামোয়ান ভাষী",
+      "target_speakers": "সামোয়ান ভাষীদের"
+    },
+    "sms": {
+      "in_target": "স্কোল্ট সামিতে",
+      "a_target_speaker": "একজন স্কোল্ট সামি ভাষী",
+      "target_speakers": "স্কোল্ট সামি ভাষীদের"
+    },
+    "snd": {
+      "in_target": "সিন্ধিতে",
+      "a_target_speaker": "একজন সিন্ধি ভাষী",
+      "target_speakers": "সিন্ধি ভাষীদের"
+    },
+    "som": {
+      "in_target": "সোমালিতে",
+      "a_target_speaker": "একজন সোমালি ভাষী",
+      "target_speakers": "সোমালি ভাষীদের"
+    },
+    "spa": {
+      "in_target": "স্প্যানিশে",
+      "a_target_speaker": "একজন স্প্যানিশ ভাষী",
+      "target_speakers": "স্প্যানিশ ভাষীদের"
+    },
+    "spa_EU": {
+      "in_target": "স্প্যানিশে",
+      "a_target_speaker": "একজন ইউরোপীয় স্প্যানিশ ভাষী",
+      "target_speakers": "স্প্যানিশ ভাষীদের"
+    },
+    "spa_SA": {
+      "in_target": "স্প্যানিশে",
+      "a_target_speaker": "একজন দক্ষিণ আমেরিকান স্প্যানিশ ভাষী",
+      "target_speakers": "স্প্যানিশ ভাষীদের"
+    },
+    "srd": {
+      "in_target": "সার্ডিনিয়ানে",
+      "a_target_speaker": "একজন সার্ডিনিয়ান ভাষী",
+      "target_speakers": "সার্ডিনিয়ান ভাষীদের"
+    },
+    "srp": {
+      "in_target": "সার্বিয়ানে",
+      "a_target_speaker": "একজন সার্বিয়ান ভাষী",
+      "target_speakers": "সার্বিয়ান ভাষীদের"
+    },
+    "swa": {
+      "in_target": "সোয়াহিলিতে",
+      "a_target_speaker": "একজন সোয়াহিলি ভাষী",
+      "target_speakers": "সোয়াহিলি ভাষীদের"
+    },
+    "swe": {
+      "in_target": "সুইডিশে",
+      "a_target_speaker": "একজন সুইডিশ ভাষী",
+      "target_speakers": "সুইডিশ ভাষীদের"
+    },
+    "tah": {
+      "in_target": "তাহিতিয়ানে",
+      "a_target_speaker": "একজন তাহিতিয়ান ভাষী",
+      "target_speakers": "তাহিতিয়ান ভাষীদের"
+    },
+    "tam": {
+      "in_target": "তামিলে",
+      "a_target_speaker": "একজন তামিল ভাষী",
+      "target_speakers": "তামিল ভাষীদের"
+    },
+    "tel": {
+      "in_target": "তেলুগুতে",
+      "a_target_speaker": "একজন তেলুগু ভাষী",
+      "target_speakers": "তেলুগু ভাষীদের"
+    },
+    "tha": {
+      "in_target": "থাইতে",
+      "a_target_speaker": "একজন থাই ভাষী",
+      "target_speakers": "থাই ভাষীদের"
+    },
+    "ton": {
+      "in_target": "টোঙ্গানে",
+      "a_target_speaker": "একজন টোঙ্গান ভাষী",
+      "target_speakers": "টোঙ্গান ভাষীদের"
+    },
+    "tur": {
+      "in_target": "তুর্কিতে",
+      "a_target_speaker": "একজন তুর্কি ভাষী",
+      "target_speakers": "তুর্কি ভাষীদের"
+    },
+    "uig": {
+      "in_target": "উইঘুরে",
+      "a_target_speaker": "একজন উইঘুর ভাষী",
+      "target_speakers": "উইঘুর ভাষীদের"
+    },
+    "ukr": {
+      "in_target": "ইউক্রেনিয়ানে",
+      "a_target_speaker": "একজন ইউক্রেনিয়ান ভাষী",
+      "target_speakers": "ইউক্রেনিয়ান ভাষীদের"
+    },
+    "urd": {
+      "in_target": "উর্দুতে",
+      "a_target_speaker": "একজন উর্দু ভাষী",
+      "target_speakers": "উর্দু ভাষীদের"
+    },
+    "vec": {
+      "in_target": "ভেনেশিয়ানে",
+      "a_target_speaker": "একজন ভেনেশিয়ান ভাষী",
+      "target_speakers": "ভেনেশিয়ান ভাষীদের"
+    },
+    "vie": {
+      "in_target": "ভিয়েতনামিতে",
+      "a_target_speaker": "একজন ভিয়েতনামি ভাষী",
+      "target_speakers": "ভিয়েতনামি ভাষীদের"
+    },
+    "vls": {
+      "in_target": "ফ্লেমিশে",
+      "a_target_speaker": "একজন ফ্লেমিশ ভাষী",
+      "target_speakers": "ফ্লেমিশ ভাষীদের"
+    },
+    "wln": {
+      "in_target": "ওয়ালুনে",
+      "a_target_speaker": "একজন ওয়ালুন ভাষী",
+      "target_speakers": "ওয়ালুন ভাষীদের"
+    },
+    "wuu": {
+      "in_target": "সাংহাইনিজে",
+      "a_target_speaker": "একজন সাংহাইনিজ ভাষী",
+      "target_speakers": "সাংহাইনিজ ভাষীদের"
+    },
+    "xho": {
+      "in_target": "খোসাতে",
+      "a_target_speaker": "একজন খোসা ভাষী",
+      "target_speakers": "খোসা ভাষীদের"
+    },
+    "yid": {
+      "in_target": "ইদিশে",
+      "a_target_speaker": "একজন ইদিশ ভাষী",
+      "target_speakers": "ইদিশ ভাষীদের"
+    },
+    "yor": {
+      "in_target": "ইওরুবাতে",
+      "a_target_speaker": "একজন ইওরুবা ভাষী",
+      "target_speakers": "ইওরুবা ভাষীদের"
+    },
+    "yue": {
+      "in_target": "ক্যান্টোনিজে",
+      "a_target_speaker": "একজন ক্যান্টোনিজ ভাষী",
+      "target_speakers": "ক্যান্টোনিজ ভাষীদের"
+    },
+    "zul": {
+      "in_target": "জুলুতে",
+      "a_target_speaker": "একজন জুলু ভাষী",
+      "target_speakers": "জুলু ভাষীদের"
+    },
+    "ara_lb": {
+      "in_target": "আরবিতে",
+      "a_target_speaker": "একজন লেবানিজ আরবি ভাষী",
+      "target_speakers": "আরবি ভাষীদের"
+    },
+    "ara_sy": {
+      "in_target": "আরবিতে",
+      "a_target_speaker": "একজন সিরিয়ান আরবি ভাষী",
+      "target_speakers": "আরবি ভাষীদের"
+    },
+    "ara_eg": {
+      "in_target": "আরবিতে",
+      "a_target_speaker": "একজন মিশরীয় আরবি ভাষী",
+      "target_speakers": "আরবি ভাষীদের"
+    }
+  }
+}

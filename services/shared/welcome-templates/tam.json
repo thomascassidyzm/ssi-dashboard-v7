@@ -1,0 +1,743 @@
+{
+  "known_language": "tam",
+  "known_language_display": "Tamil",
+  "template": "{a_target_speaker} ஆவதற்கு உதவும் இந்த வித்தியாசமான விளையாட்டுக்கு வரவேற்கிறோம். இது எப்படி வேலை செய்கிறது என்றால் - முதலில் நான் உங்களுக்கு {in_target} மொழியில் ஏதாவது கற்றுத் தருவேன், பிறகு நான் {in_known} மொழியில் ஏதாவது சொல்வேன், அதை நீங்கள் {in_target} மொழியில் சத்தமாகச் சொல்ல வாய்ப்பு தருவேன். பிறகு, {target_speakers} உங்களுக்காக எப்படிச் சொல்ல வேண்டும் என்று காட்டுவார்கள், கவனமாகக் கேளுங்கள். இடைவெளிகளில் ஏதாவது சொல்வது முக்கியம், ஏனென்றால் அப்படித்தான் நீங்கள் கற்றுக்கொள்வீர்கள். உறுதியாகத் தெரியாவிட்டாலும், உங்களால் என்ன சொல்ல முடியுமோ அதைச் சொல்ல முயற்சி செய்யுங்கள், நீங்கள் நினைப்பதை விட விரைவாக {in_target} மொழியில் பேச ஆரம்பிப்பீர்கள். இதை ஒரு விளையாட்டாக நினைக்க நினைக்க, விளையாட்டுத்தனமாக இருக்க இருக்க, தவறு செய்யும்போது சிரிக்க சிரிக்க, எல்லாம் நன்றாகப் போகும், வேகமாகக் கற்றுக்கொள்வீர்கள். சரி, விளையாட ஆரம்பிக்கலாம்.",
+  "in_known": "தமிழ்",
+  "targets": {
+    "afb": {
+      "in_target": "வளைகுடா அரபு",
+      "a_target_speaker": "வளைகுடா அரபு மொழி பேசுபவர்",
+      "target_speakers": "வளைகுடா அரபு மொழி பேசுபவர்கள்"
+    },
+    "afr": {
+      "in_target": "ஆஃப்ரிகான்ஸ்",
+      "a_target_speaker": "ஆஃப்ரிகான்ஸ் மொழி பேசுபவர்",
+      "target_speakers": "ஆஃப்ரிகான்ஸ் மொழி பேசுபவர்கள்"
+    },
+    "aii": {
+      "in_target": "அசிரிய",
+      "a_target_speaker": "அசிரிய மொழி பேசுபவர்",
+      "target_speakers": "அசிரிய மொழி பேசுபவர்கள்"
+    },
+    "ain": {
+      "in_target": "ஐனு",
+      "a_target_speaker": "ஐனு மொழி பேசுபவர்",
+      "target_speakers": "ஐனு மொழி பேசுபவர்கள்"
+    },
+    "ajp": {
+      "in_target": "பாலஸ்தீன அரபு",
+      "a_target_speaker": "பாலஸ்தீன அரபு மொழி பேசுபவர்",
+      "target_speakers": "பாலஸ்தீன அரபு மொழி பேசுபவர்கள்"
+    },
+    "amh": {
+      "in_target": "அம்ஹாரிக்",
+      "a_target_speaker": "அம்ஹாரிக் மொழி பேசுபவர்",
+      "target_speakers": "அம்ஹாரிக் மொழி பேசுபவர்கள்"
+    },
+    "apc": {
+      "in_target": "லெவண்டைன் அரபு",
+      "a_target_speaker": "லெவண்டைன் அரபு மொழி பேசுபவர்",
+      "target_speakers": "லெவண்டைன் அரபு மொழி பேசுபவர்கள்"
+    },
+    "ara": {
+      "in_target": "அரபு",
+      "a_target_speaker": "நவீன நிலையான அரபு மொழி பேசுபவராக",
+      "target_speakers": "அரபு மொழி பேசுபவர்கள்"
+    },
+    "arg": {
+      "in_target": "அரகோனிய",
+      "a_target_speaker": "அரகோனிய மொழி பேசுபவர்",
+      "target_speakers": "அரகோனிய மொழி பேசுபவர்கள்"
+    },
+    "ary": {
+      "in_target": "மொராக்கோ அரபு",
+      "a_target_speaker": "மொராக்கோ அரபு மொழி பேசுபவர்",
+      "target_speakers": "மொராக்கோ அரபு மொழி பேசுபவர்கள்"
+    },
+    "asm": {
+      "in_target": "அசாமிய",
+      "a_target_speaker": "அசாமிய மொழி பேசுபவர்",
+      "target_speakers": "அசாமிய மொழி பேசுபவர்கள்"
+    },
+    "ast": {
+      "in_target": "ஆஸ்டூரிய",
+      "a_target_speaker": "ஆஸ்டூரிய மொழி பேசுபவர்",
+      "target_speakers": "ஆஸ்டூரிய மொழி பேசுபவர்கள்"
+    },
+    "aze": {
+      "in_target": "அசர்பைஜானிய",
+      "a_target_speaker": "அசர்பைஜானிய மொழி பேசுபவர்",
+      "target_speakers": "அசர்பைஜானிய மொழி பேசுபவர்கள்"
+    },
+    "bar": {
+      "in_target": "பவேரிய",
+      "a_target_speaker": "பவேரிய மொழி பேசுபவர்",
+      "target_speakers": "பவேரிய மொழி பேசுபவர்கள்"
+    },
+    "bel": {
+      "in_target": "பெலாரூசிய",
+      "a_target_speaker": "பெலாரூசிய மொழி பேசுபவர்",
+      "target_speakers": "பெலாரூசிய மொழி பேசுபவர்கள்"
+    },
+    "ben": {
+      "in_target": "வங்காள",
+      "a_target_speaker": "வங்காள மொழி பேசுபவர்",
+      "target_speakers": "வங்காள மொழி பேசுபவர்கள்"
+    },
+    "bos": {
+      "in_target": "போஸ்னிய",
+      "a_target_speaker": "போஸ்னிய மொழி பேசுபவர்",
+      "target_speakers": "போஸ்னிய மொழி பேசுபவர்கள்"
+    },
+    "bre": {
+      "in_target": "பிரெட்டன்",
+      "a_target_speaker": "பிரெட்டன் மொழி பேசுபவர்",
+      "target_speakers": "பிரெட்டன் மொழி பேசுபவர்கள்"
+    },
+    "bul": {
+      "in_target": "பல்கேரிய",
+      "a_target_speaker": "பல்கேரிய மொழி பேசுபவர்",
+      "target_speakers": "பல்கேரிய மொழி பேசுபவர்கள்"
+    },
+    "cat": {
+      "in_target": "கட்டலான்",
+      "a_target_speaker": "கட்டலான் மொழி பேசுபவர்",
+      "target_speakers": "கட்டலான் மொழி பேசுபவர்கள்"
+    },
+    "ceb": {
+      "in_target": "செபுவானோ",
+      "a_target_speaker": "செபுவானோ மொழி பேசுபவர்",
+      "target_speakers": "செபுவானோ மொழி பேசுபவர்கள்"
+    },
+    "ces": {
+      "in_target": "செக்",
+      "a_target_speaker": "செக் மொழி பேசுபவர்",
+      "target_speakers": "செக் மொழி பேசுபவர்கள்"
+    },
+    "chr": {
+      "in_target": "செரோக்கி",
+      "a_target_speaker": "செரோக்கி மொழி பேசுபவர்",
+      "target_speakers": "செரோக்கி மொழி பேசுபவர்கள்"
+    },
+    "cmn": {
+      "in_target": "சீன",
+      "a_target_speaker": "சீன மொழி பேசுபவர்",
+      "target_speakers": "சீன மொழி பேசுபவர்கள்"
+    },
+    "cor": {
+      "in_target": "கார்னிஷ்",
+      "a_target_speaker": "கார்னிஷ் மொழி பேசுபவர்",
+      "target_speakers": "கார்னிஷ் மொழி பேசுபவர்கள்"
+    },
+    "cos": {
+      "in_target": "கார்சிகன்",
+      "a_target_speaker": "கார்சிகன் மொழி பேசுபவர்",
+      "target_speakers": "கார்சிகன் மொழி பேசுபவர்கள்"
+    },
+    "csb": {
+      "in_target": "கஷூபிய",
+      "a_target_speaker": "கஷூபிய மொழி பேசுபவர்",
+      "target_speakers": "கஷூபிய மொழி பேசுபவர்கள்"
+    },
+    "cym": {
+      "in_target": "வேல்ஷ்",
+      "a_target_speaker": "வேல்ஷ் மொழி பேசுபவர்",
+      "target_speakers": "வேல்ஷ் மொழி பேசுபவர்கள்"
+    },
+    "dan": {
+      "in_target": "டேனிஷ்",
+      "a_target_speaker": "டேனிஷ் மொழி பேசுபவர்",
+      "target_speakers": "டேனிஷ் மொழி பேசுபவர்கள்"
+    },
+    "deu": {
+      "in_target": "ஜெர்மன்",
+      "a_target_speaker": "ஜெர்மன் மொழி பேசுபவர்",
+      "target_speakers": "ஜெர்மன் மொழி பேசுபவர்கள்"
+    },
+    "deu_AT": {
+      "in_target": "ஜெர்மன்",
+      "a_target_speaker": "ஆஸ்திரிய ஜெர்மன் மொழி பேசுபவர்",
+      "target_speakers": "ஜெர்மன் மொழி பேசுபவர்கள்"
+    },
+    "dsb": {
+      "in_target": "கீழ் சோர்பியன்",
+      "a_target_speaker": "கீழ் சோர்பியன் மொழி பேசுபவர்",
+      "target_speakers": "கீழ் சோர்பியன் மொழி பேசுபவர்கள்"
+    },
+    "ell": {
+      "in_target": "கிரேக்க",
+      "a_target_speaker": "கிரேக்க மொழி பேசுபவர்",
+      "target_speakers": "கிரேக்க மொழி பேசுபவர்கள்"
+    },
+    "eng": {
+      "in_target": "ஆங்கில",
+      "a_target_speaker": "ஆங்கில மொழி பேசுபவர்",
+      "target_speakers": "ஆங்கில மொழி பேசுபவர்கள்"
+    },
+    "est": {
+      "in_target": "எஸ்தோனிய",
+      "a_target_speaker": "எஸ்தோனிய மொழி பேசுபவர்",
+      "target_speakers": "எஸ்தோனிய மொழி பேசுபவர்கள்"
+    },
+    "eus": {
+      "in_target": "பாஸ்க்",
+      "a_target_speaker": "பாஸ்க் மொழி பேசுபவர்",
+      "target_speakers": "பாஸ்க் மொழி பேசுபவர்கள்"
+    },
+    "fao": {
+      "in_target": "ஃபரோயீஸ்",
+      "a_target_speaker": "ஃபரோயீஸ் மொழி பேசுபவர்",
+      "target_speakers": "ஃபரோயீஸ் மொழி பேசுபவர்கள்"
+    },
+    "fas": {
+      "in_target": "பாரசீக",
+      "a_target_speaker": "பாரசீக மொழி பேசுபவர்",
+      "target_speakers": "பாரசீக மொழி பேசுபவர்கள்"
+    },
+    "fij": {
+      "in_target": "ஃபிஜி",
+      "a_target_speaker": "ஃபிஜி மொழி பேசுபவர்",
+      "target_speakers": "ஃபிஜி மொழி பேசுபவர்கள்"
+    },
+    "fil": {
+      "in_target": "ஃபிலிப்பினோ",
+      "a_target_speaker": "ஃபிலிப்பினோ மொழி பேசுபவர்",
+      "target_speakers": "ஃபிலிப்பினோ மொழி பேசுபவர்கள்"
+    },
+    "fin": {
+      "in_target": "ஃபின்னிஷ்",
+      "a_target_speaker": "ஃபின்னிஷ் மொழி பேசுபவர்",
+      "target_speakers": "ஃபின்னிஷ் மொழி பேசுபவர்கள்"
+    },
+    "fra": {
+      "in_target": "பிரெஞ்சு",
+      "a_target_speaker": "பிரெஞ்சு மொழி பேசுபவர்",
+      "target_speakers": "பிரெஞ்சு மொழி பேசுபவர்கள்"
+    },
+    "frr": {
+      "in_target": "வடக்கு ஃப்ரிசியன்",
+      "a_target_speaker": "வடக்கு ஃப்ரிசியன் மொழி பேசுபவர்",
+      "target_speakers": "வடக்கு ஃப்ரிசியன் மொழி பேசுபவர்கள்"
+    },
+    "fry": {
+      "in_target": "மேற்கு ஃப்ரிசியன்",
+      "a_target_speaker": "மேற்கு ஃப்ரிசியன் மொழி பேசுபவர்",
+      "target_speakers": "மேற்கு ஃப்ரிசியன் மொழி பேசுபவர்கள்"
+    },
+    "fur": {
+      "in_target": "ஃப்ரியூலியன்",
+      "a_target_speaker": "ஃப்ரியூலியன் மொழி பேசுபவர்",
+      "target_speakers": "ஃப்ரியூலியன் மொழி பேசுபவர்கள்"
+    },
+    "gla": {
+      "in_target": "ஸ்காட்டிஷ் கேலிக்",
+      "a_target_speaker": "ஸ்காட்டிஷ் கேலிக் மொழி பேசுபவர்",
+      "target_speakers": "ஸ்காட்டிஷ் கேலிக் மொழி பேசுபவர்கள்"
+    },
+    "gle": {
+      "in_target": "ஐரிஷ்",
+      "a_target_speaker": "ஐரிஷ் மொழி பேசுபவர்",
+      "target_speakers": "ஐரிஷ் மொழி பேசுபவர்கள்"
+    },
+    "glg": {
+      "in_target": "கலீசிய",
+      "a_target_speaker": "கலீசிய மொழி பேசுபவர்",
+      "target_speakers": "கலீசிய மொழி பேசுபவர்கள்"
+    },
+    "glv": {
+      "in_target": "மேங்க்ஸ்",
+      "a_target_speaker": "மேங்க்ஸ் மொழி பேசுபவர்",
+      "target_speakers": "மேங்க்ஸ் மொழி பேசுபவர்கள்"
+    },
+    "grk": {
+      "in_target": "கிரிக்கோ",
+      "a_target_speaker": "கிரிக்கோ மொழி பேசுபவர்",
+      "target_speakers": "கிரிக்கோ மொழி பேசுபவர்கள்"
+    },
+    "grn": {
+      "in_target": "குவாரனி",
+      "a_target_speaker": "குவாரனி மொழி பேசுபவர்",
+      "target_speakers": "குவாரனி மொழி பேசுபவர்கள்"
+    },
+    "gsw": {
+      "in_target": "சுவிஸ் ஜெர்மன்",
+      "a_target_speaker": "சுவிஸ் ஜெர்மன் மொழி பேசுபவர்",
+      "target_speakers": "சுவிஸ் ஜெர்மன் மொழி பேசுபவர்கள்"
+    },
+    "guj": {
+      "in_target": "குஜராத்தி",
+      "a_target_speaker": "குஜராத்தி மொழி பேசுபவர்",
+      "target_speakers": "குஜராத்தி மொழி பேசுபவர்கள்"
+    },
+    "hak": {
+      "in_target": "ஹக்கா",
+      "a_target_speaker": "ஹக்கா மொழி பேசுபவர்",
+      "target_speakers": "ஹக்கா மொழி பேசுபவர்கள்"
+    },
+    "hau": {
+      "in_target": "ஹவுசா",
+      "a_target_speaker": "ஹவுசா மொழி பேசுபவர்",
+      "target_speakers": "ஹவுசா மொழி பேசுபவர்கள்"
+    },
+    "haw": {
+      "in_target": "ஹவாய்",
+      "a_target_speaker": "ஹவாய் மொழி பேசுபவர்",
+      "target_speakers": "ஹவாய் மொழி பேசுபவர்கள்"
+    },
+    "heb": {
+      "in_target": "எபிரேய",
+      "a_target_speaker": "எபிரேய மொழி பேசுபவர்",
+      "target_speakers": "எபிரேய மொழி பேசுபவர்கள்"
+    },
+    "hin": {
+      "in_target": "இந்தி",
+      "a_target_speaker": "இந்தி மொழி பேசுபவர்",
+      "target_speakers": "இந்தி மொழி பேசுபவர்கள்"
+    },
+    "hrv": {
+      "in_target": "குரோஷிய",
+      "a_target_speaker": "குரோஷிய மொழி பேசுபவர்",
+      "target_speakers": "குரோஷிய மொழி பேசுபவர்கள்"
+    },
+    "hsb": {
+      "in_target": "மேல் சோர்பியன்",
+      "a_target_speaker": "மேல் சோர்பியன் மொழி பேசுபவர்",
+      "target_speakers": "மேல் சோர்பியன் மொழி பேசுபவர்கள்"
+    },
+    "hun": {
+      "in_target": "ஹங்கேரிய",
+      "a_target_speaker": "ஹங்கேரிய மொழி பேசுபவர்",
+      "target_speakers": "ஹங்கேரிய மொழி பேசுபவர்கள்"
+    },
+    "hye": {
+      "in_target": "ஆர்மீனிய",
+      "a_target_speaker": "ஆர்மீனிய மொழி பேசுபவர்",
+      "target_speakers": "ஆர்மீனிய மொழி பேசுபவர்கள்"
+    },
+    "ibo": {
+      "in_target": "இக்போ",
+      "a_target_speaker": "இக்போ மொழி பேசுபவர்",
+      "target_speakers": "இக்போ மொழி பேசுபவர்கள்"
+    },
+    "iku": {
+      "in_target": "இனுக்டிடட்",
+      "a_target_speaker": "இனுக்டிடட் மொழி பேசுபவர்",
+      "target_speakers": "இனுக்டிடட் மொழி பேசுபவர்கள்"
+    },
+    "ind": {
+      "in_target": "இந்தோனேசிய",
+      "a_target_speaker": "இந்தோனேசிய மொழி பேசுபவர்",
+      "target_speakers": "இந்தோனேசிய மொழி பேசுபவர்கள்"
+    },
+    "isl": {
+      "in_target": "ஐஸ்லாந்திய",
+      "a_target_speaker": "ஐஸ்லாந்திய மொழி பேசுபவர்",
+      "target_speakers": "ஐஸ்லாந்திய மொழி பேசுபவர்கள்"
+    },
+    "ita": {
+      "in_target": "இத்தாலிய",
+      "a_target_speaker": "இத்தாலிய மொழி பேசுபவர்",
+      "target_speakers": "இத்தாலிய மொழி பேசுபவர்கள்"
+    },
+    "jav": {
+      "in_target": "ஜாவா",
+      "a_target_speaker": "ஜாவா மொழி பேசுபவர்",
+      "target_speakers": "ஜாவா மொழி பேசுபவர்கள்"
+    },
+    "jpn": {
+      "in_target": "ஜப்பானிய",
+      "a_target_speaker": "ஜப்பானிய மொழி பேசுபவர்",
+      "target_speakers": "ஜப்பானிய மொழி பேசுபவர்கள்"
+    },
+    "kal": {
+      "in_target": "கிரீன்லாந்திய",
+      "a_target_speaker": "கிரீன்லாந்திய மொழி பேசுபவர்",
+      "target_speakers": "கிரீன்லாந்திய மொழி பேசுபவர்கள்"
+    },
+    "kan": {
+      "in_target": "கன்னட",
+      "a_target_speaker": "கன்னட மொழி பேசுபவர்",
+      "target_speakers": "கன்னட மொழி பேசுபவர்கள்"
+    },
+    "kat": {
+      "in_target": "ஜார்ஜிய",
+      "a_target_speaker": "ஜார்ஜிய மொழி பேசுபவர்",
+      "target_speakers": "ஜார்ஜிய மொழி பேசுபவர்கள்"
+    },
+    "kaz": {
+      "in_target": "கசாக்",
+      "a_target_speaker": "கசாக் மொழி பேசுபவர்",
+      "target_speakers": "கசாக் மொழி பேசுபவர்கள்"
+    },
+    "kir": {
+      "in_target": "கிர்கிஸ்",
+      "a_target_speaker": "கிர்கிஸ் மொழி பேசுபவர்",
+      "target_speakers": "கிர்கிஸ் மொழி பேசுபவர்கள்"
+    },
+    "kor": {
+      "in_target": "கொரிய",
+      "a_target_speaker": "கொரிய மொழி பேசுபவர்",
+      "target_speakers": "கொரிய மொழி பேசுபவர்கள்"
+    },
+    "kur": {
+      "in_target": "குர்திஷ்",
+      "a_target_speaker": "குர்திஷ் மொழி பேசுபவர்",
+      "target_speakers": "குர்திஷ் மொழி பேசுபவர்கள்"
+    },
+    "lad": {
+      "in_target": "லாடினோ",
+      "a_target_speaker": "லாடினோ மொழி பேசுபவர்",
+      "target_speakers": "லாடினோ மொழி பேசுபவர்கள்"
+    },
+    "lav": {
+      "in_target": "லாத்வியன்",
+      "a_target_speaker": "லாத்வியன் மொழி பேசுபவர்",
+      "target_speakers": "லாத்வியன் மொழி பேசுபவர்கள்"
+    },
+    "lij": {
+      "in_target": "லிகூரிய",
+      "a_target_speaker": "லிகூரிய மொழி பேசுபவர்",
+      "target_speakers": "லிகூரிய மொழி பேசுபவர்கள்"
+    },
+    "lim": {
+      "in_target": "லிம்பர்கிஷ்",
+      "a_target_speaker": "லிம்பர்கிஷ் மொழி பேசுபவர்",
+      "target_speakers": "லிம்பர்கிஷ் மொழி பேசுபவர்கள்"
+    },
+    "lin": {
+      "in_target": "லிங்காலா",
+      "a_target_speaker": "லிங்காலா மொழி பேசுபவர்",
+      "target_speakers": "லிங்காலா மொழி பேசுபவர்கள்"
+    },
+    "lit": {
+      "in_target": "லிதுவேனிய",
+      "a_target_speaker": "லிதுவேனிய மொழி பேசுபவர்",
+      "target_speakers": "லிதுவேனிய மொழி பேசுபவர்கள்"
+    },
+    "ltz": {
+      "in_target": "லக்சம்பர்கிஷ்",
+      "a_target_speaker": "லக்சம்பர்கிஷ் மொழி பேசுபவர்",
+      "target_speakers": "லக்சம்பர்கிஷ் மொழி பேசுபவர்கள்"
+    },
+    "mal": {
+      "in_target": "மலையாள",
+      "a_target_speaker": "மலையாள மொழி பேசுபவர்",
+      "target_speakers": "மலையாள மொழி பேசுபவர்கள்"
+    },
+    "mar": {
+      "in_target": "மராத்தி",
+      "a_target_speaker": "மராத்தி மொழி பேசுபவர்",
+      "target_speakers": "மராத்தி மொழி பேசுபவர்கள்"
+    },
+    "mkd": {
+      "in_target": "மாசிடோனிய",
+      "a_target_speaker": "மாசிடோனிய மொழி பேசுபவர்",
+      "target_speakers": "மாசிடோனிய மொழி பேசுபவர்கள்"
+    },
+    "moh": {
+      "in_target": "மொஹாக்",
+      "a_target_speaker": "மொஹாக் மொழி பேசுபவர்",
+      "target_speakers": "மொஹாக் மொழி பேசுபவர்கள்"
+    },
+    "mri": {
+      "in_target": "மாவோரி",
+      "a_target_speaker": "மாவோரி மொழி பேசுபவர்",
+      "target_speakers": "மாவோரி மொழி பேசுபவர்கள்"
+    },
+    "msa": {
+      "in_target": "மலாய்",
+      "a_target_speaker": "மலாய் மொழி பேசுபவர்",
+      "target_speakers": "மலாய் மொழி பேசுபவர்கள்"
+    },
+    "nan": {
+      "in_target": "மின் நான்",
+      "a_target_speaker": "மின் நான் மொழி பேசுபவர்",
+      "target_speakers": "மின் நான் மொழி பேசுபவர்கள்"
+    },
+    "nap": {
+      "in_target": "நேபோலிடன்",
+      "a_target_speaker": "நேபோலிடன் மொழி பேசுபவர்",
+      "target_speakers": "நேபோலிடன் மொழி பேசுபவர்கள்"
+    },
+    "nav": {
+      "in_target": "நவாஹோ",
+      "a_target_speaker": "நவாஹோ மொழி பேசுபவர்",
+      "target_speakers": "நவாஹோ மொழி பேசுபவர்கள்"
+    },
+    "nep": {
+      "in_target": "நேபாள",
+      "a_target_speaker": "நேபாள மொழி பேசுபவர்",
+      "target_speakers": "நேபாள மொழி பேசுபவர்கள்"
+    },
+    "nld": {
+      "in_target": "டச்சு",
+      "a_target_speaker": "டச்சு மொழி பேசுபவர்",
+      "target_speakers": "டச்சு மொழி பேசுபவர்கள்"
+    },
+    "nor": {
+      "in_target": "நார்வேஜிய",
+      "a_target_speaker": "நார்வேஜிய மொழி பேசுபவர்",
+      "target_speakers": "நார்வேஜிய மொழி பேசுபவர்கள்"
+    },
+    "nya": {
+      "in_target": "சிசேவா",
+      "a_target_speaker": "சிசேவா மொழி பேசுபவர்",
+      "target_speakers": "சிசேவா மொழி பேசுபவர்கள்"
+    },
+    "oci": {
+      "in_target": "ஆக்ஸிடன்",
+      "a_target_speaker": "ஆக்ஸிடன் மொழி பேசுபவர்",
+      "target_speakers": "ஆக்ஸிடன் மொழி பேசுபவர்கள்"
+    },
+    "oji": {
+      "in_target": "ஒஜிப்வே",
+      "a_target_speaker": "ஒஜிப்வே மொழி பேசுபவர்",
+      "target_speakers": "ஒஜிப்வே மொழி பேசுபவர்கள்"
+    },
+    "pan": {
+      "in_target": "பஞ்சாபி",
+      "a_target_speaker": "பஞ்சாபி மொழி பேசுபவர்",
+      "target_speakers": "பஞ்சாபி மொழி பேசுபவர்கள்"
+    },
+    "pol": {
+      "in_target": "போலிஷ்",
+      "a_target_speaker": "போலிஷ் மொழி பேசுபவர்",
+      "target_speakers": "போலிஷ் மொழி பேசுபவர்கள்"
+    },
+    "por": {
+      "in_target": "போர்த்துகீசிய",
+      "a_target_speaker": "போர்த்துகீசிய மொழி பேசுபவர்",
+      "target_speakers": "போர்த்துகீசிய மொழி பேசுபவர்கள்"
+    },
+    "por_BR": {
+      "in_target": "போர்த்துகீசிய",
+      "a_target_speaker": "பிரேசிலிய போர்த்துகீசிய மொழி பேசுபவர்",
+      "target_speakers": "போர்த்துகீசிய மொழி பேசுபவர்கள்"
+    },
+    "por_EU": {
+      "in_target": "போர்த்துகீசிய",
+      "a_target_speaker": "ஐரோப்பிய போர்த்துகீசிய மொழி பேசுபவர்",
+      "target_speakers": "போர்த்துகீசிய மொழி பேசுபவர்கள்"
+    },
+    "pus": {
+      "in_target": "பஷ்தூ",
+      "a_target_speaker": "பஷ்தூ மொழி பேசுபவர்",
+      "target_speakers": "பஷ்தூ மொழி பேசுபவர்கள்"
+    },
+    "que": {
+      "in_target": "கெச்சுவா",
+      "a_target_speaker": "கெச்சுவா மொழி பேசுபவர்",
+      "target_speakers": "கெச்சுவா மொழி பேசுபவர்கள்"
+    },
+    "roh": {
+      "in_target": "ரோமான்ஷ்",
+      "a_target_speaker": "ரோமான்ஷ் மொழி பேசுபவர்",
+      "target_speakers": "ரோமான்ஷ் மொழி பேசுபவர்கள்"
+    },
+    "ron": {
+      "in_target": "ருமேனிய",
+      "a_target_speaker": "ருமேனிய மொழி பேசுபவர்",
+      "target_speakers": "ருமேனிய மொழி பேசுபவர்கள்"
+    },
+    "rus": {
+      "in_target": "ரஷ்ய",
+      "a_target_speaker": "ரஷ்ய மொழி பேசுபவர்",
+      "target_speakers": "ரஷ்ய மொழி பேசுபவர்கள்"
+    },
+    "scn": {
+      "in_target": "சிசிலியன்",
+      "a_target_speaker": "சிசிலியன் மொழி பேசுபவர்",
+      "target_speakers": "சிசிலியன் மொழி பேசுபவர்கள்"
+    },
+    "sco": {
+      "in_target": "ஸ்காட்ஸ்",
+      "a_target_speaker": "ஸ்காட்ஸ் மொழி பேசுபவர்",
+      "target_speakers": "ஸ்காட்ஸ் மொழி பேசுபவர்கள்"
+    },
+    "slk": {
+      "in_target": "ஸ்லோவாக்",
+      "a_target_speaker": "ஸ்லோவாக் மொழி பேசுபவர்",
+      "target_speakers": "ஸ்லோவாக் மொழி பேசுபவர்கள்"
+    },
+    "slv": {
+      "in_target": "ஸ்லோவேனிய",
+      "a_target_speaker": "ஸ்லோவேனிய மொழி பேசுபவர்",
+      "target_speakers": "ஸ்லோவேனிய மொழி பேசுபவர்கள்"
+    },
+    "sme": {
+      "in_target": "வடக்கு சாமி",
+      "a_target_speaker": "வடக்கு சாமி மொழி பேசுபவர்",
+      "target_speakers": "வடக்கு சாமி மொழி பேசுபவர்கள்"
+    },
+    "smj": {
+      "in_target": "லூலே சாமி",
+      "a_target_speaker": "லூலே சாமி மொழி பேசுபவர்",
+      "target_speakers": "லூலே சாமி மொழி பேசுபவர்கள்"
+    },
+    "smn": {
+      "in_target": "இனாரி சாமி",
+      "a_target_speaker": "இனாரி சாமி மொழி பேசுபவர்",
+      "target_speakers": "இனாரி சாமி மொழி பேசுபவர்கள்"
+    },
+    "smo": {
+      "in_target": "சமோவா",
+      "a_target_speaker": "சமோவா மொழி பேசுபவர்",
+      "target_speakers": "சமோவா மொழி பேசுபவர்கள்"
+    },
+    "sms": {
+      "in_target": "ஸ்கோல்ட் சாமி",
+      "a_target_speaker": "ஸ்கோல்ட் சாமி மொழி பேசுபவர்",
+      "target_speakers": "ஸ்கோல்ட் சாமி மொழி பேசுபவர்கள்"
+    },
+    "snd": {
+      "in_target": "சிந்தி",
+      "a_target_speaker": "சிந்தி மொழி பேசுபவர்",
+      "target_speakers": "சிந்தி மொழி பேசுபவர்கள்"
+    },
+    "som": {
+      "in_target": "சோமாலிய",
+      "a_target_speaker": "சோமாலிய மொழி பேசுபவர்",
+      "target_speakers": "சோமாலிய மொழி பேசுபவர்கள்"
+    },
+    "spa": {
+      "in_target": "ஸ்பானிஷ்",
+      "a_target_speaker": "ஸ்பானிஷ் மொழி பேசுபவர்",
+      "target_speakers": "ஸ்பானிஷ் மொழி பேசுபவர்கள்"
+    },
+    "spa_EU": {
+      "in_target": "ஸ்பானிஷ்",
+      "a_target_speaker": "ஐரோப்பிய ஸ்பானிஷ் மொழி பேசுபவர்",
+      "target_speakers": "ஸ்பானிஷ் மொழி பேசுபவர்கள்"
+    },
+    "spa_SA": {
+      "in_target": "ஸ்பானிஷ்",
+      "a_target_speaker": "தென் அமெரிக்க ஸ்பானிஷ் மொழி பேசுபவர்",
+      "target_speakers": "ஸ்பானிஷ் மொழி பேசுபவர்கள்"
+    },
+    "srd": {
+      "in_target": "சார்டினியன்",
+      "a_target_speaker": "சார்டினியன் மொழி பேசுபவர்",
+      "target_speakers": "சார்டினியன் மொழி பேசுபவர்கள்"
+    },
+    "srp": {
+      "in_target": "செர்பிய",
+      "a_target_speaker": "செர்பிய மொழி பேசுபவர்",
+      "target_speakers": "செர்பிய மொழி பேசுபவர்கள்"
+    },
+    "swa": {
+      "in_target": "சுவாஹிலி",
+      "a_target_speaker": "சுவாஹிலி மொழி பேசுபவர்",
+      "target_speakers": "சுவாஹிலி மொழி பேசுபவர்கள்"
+    },
+    "swe": {
+      "in_target": "ஸ்வீடிஷ்",
+      "a_target_speaker": "ஸ்வீடிஷ் மொழி பேசுபவர்",
+      "target_speakers": "ஸ்வீடிஷ் மொழி பேசுபவர்கள்"
+    },
+    "tah": {
+      "in_target": "தஹிதிய",
+      "a_target_speaker": "தஹிதிய மொழி பேசுபவர்",
+      "target_speakers": "தஹிதிய மொழி பேசுபவர்கள்"
+    },
+    "tel": {
+      "in_target": "தெலுங்கு",
+      "a_target_speaker": "தெலுங்கு மொழி பேசுபவர்",
+      "target_speakers": "தெலுங்கு மொழி பேசுபவர்கள்"
+    },
+    "tha": {
+      "in_target": "தாய்",
+      "a_target_speaker": "தாய் மொழி பேசுபவர்",
+      "target_speakers": "தாய் மொழி பேசுபவர்கள்"
+    },
+    "ton": {
+      "in_target": "தொங்கா",
+      "a_target_speaker": "தொங்கா மொழி பேசுபவர்",
+      "target_speakers": "தொங்கா மொழி பேசுபவர்கள்"
+    },
+    "tur": {
+      "in_target": "துருக்கிய",
+      "a_target_speaker": "துருக்கிய மொழி பேசுபவர்",
+      "target_speakers": "துருக்கிய மொழி பேசுபவர்கள்"
+    },
+    "uig": {
+      "in_target": "உய்குர்",
+      "a_target_speaker": "உய்குர் மொழி பேசுபவர்",
+      "target_speakers": "உய்குர் மொழி பேசுபவர்கள்"
+    },
+    "ukr": {
+      "in_target": "உக்ரேனிய",
+      "a_target_speaker": "உக்ரேனிய மொழி பேசுபவர்",
+      "target_speakers": "உக்ரேனிய மொழி பேசுபவர்கள்"
+    },
+    "urd": {
+      "in_target": "உருது",
+      "a_target_speaker": "உருது மொழி பேசுபவர்",
+      "target_speakers": "உருது மொழி பேசுபவர்கள்"
+    },
+    "vec": {
+      "in_target": "வெனிசிய",
+      "a_target_speaker": "வெனிசிய மொழி பேசுபவர்",
+      "target_speakers": "வெனிசிய மொழி பேசுபவர்கள்"
+    },
+    "vie": {
+      "in_target": "வியட்நாம்",
+      "a_target_speaker": "வியட்நாம் மொழி பேசுபவர்",
+      "target_speakers": "வியட்நாம் மொழி பேசுபவர்கள்"
+    },
+    "vls": {
+      "in_target": "ஃப்ளெமிஷ்",
+      "a_target_speaker": "ஃப்ளெமிஷ் மொழி பேசுபவர்",
+      "target_speakers": "ஃப்ளெமிஷ் மொழி பேசுபவர்கள்"
+    },
+    "wln": {
+      "in_target": "வாலூன்",
+      "a_target_speaker": "வாலூன் மொழி பேசுபவர்",
+      "target_speakers": "வாலூன் மொழி பேசுபவர்கள்"
+    },
+    "wuu": {
+      "in_target": "ஷாங்ஹாய்",
+      "a_target_speaker": "ஷாங்ஹாய் மொழி பேசுபவர்",
+      "target_speakers": "ஷாங்ஹாய் மொழி பேசுபவர்கள்"
+    },
+    "xho": {
+      "in_target": "கோசா",
+      "a_target_speaker": "கோசா மொழி பேசுபவர்",
+      "target_speakers": "கோசா மொழி பேசுபவர்கள்"
+    },
+    "yid": {
+      "in_target": "யிடிஷ்",
+      "a_target_speaker": "யிடிஷ் மொழி பேசுபவர்",
+      "target_speakers": "யிடிஷ் மொழி பேசுபவர்கள்"
+    },
+    "yor": {
+      "in_target": "யோருபா",
+      "a_target_speaker": "யோருபா மொழி பேசுபவர்",
+      "target_speakers": "யோருபா மொழி பேசுபவர்கள்"
+    },
+    "yue": {
+      "in_target": "காண்டனீஸ்",
+      "a_target_speaker": "காண்டனீஸ் மொழி பேசுபவர்",
+      "target_speakers": "காண்டனீஸ் மொழி பேசுபவர்கள்"
+    },
+    "zul": {
+      "in_target": "ஜுலு",
+      "a_target_speaker": "ஜுலு மொழி பேசுபவர்",
+      "target_speakers": "ஜுலு மொழி பேசுபவர்கள்"
+    },
+    "ara_lb": {
+      "in_target": "அரபு",
+      "a_target_speaker": "லெபனான் அரபு மொழி பேசுபவர்",
+      "target_speakers": "அரபு மொழி பேசுபவர்கள்"
+    },
+    "ara_sy": {
+      "in_target": "அரபு",
+      "a_target_speaker": "சிரிய அரபு மொழி பேசுபவர்",
+      "target_speakers": "அரபு மொழி பேசுபவர்கள்"
+    },
+    "ara_eg": {
+      "in_target": "அரபு",
+      "a_target_speaker": "எகிப்திய அரபு மொழி பேசுபவர்",
+      "target_speakers": "அரபு மொழி பேசுபவர்கள்"
+    }
+  }
+}

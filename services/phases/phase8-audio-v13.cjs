@@ -5522,6 +5522,57 @@ async function objectDurationMs(s3Key) {
   } finally { await fs.remove(dir) }
 }
 
+/**
+ * The render route's SHARED AUDIO deps (job #464, services/shared/audio-render-entry.cjs renderShared): a course welcome is a
+ * course_audio row role 'welcome' (deps.store, like any clip); an encouragement or instruction is a shared_audio row per
+ * (words, known language), which is what the player reads. A shared_audio row is INSERTED, never upserted: an existing row
+ * for the same words is the library's answer (linkShared), so a write that collides is a race to report, never a quiet
+ * repoint of a clip learners already hear.
+ */
+function sharedAudioDeps() {
+  const { welcomeScriptFor } = require('../shared/welcome-script.cjs')
+  return {
+    welcomeScript: async (courseCode) => {
+      const { data: course, error } = await supabase.from('courses').select('course_code, known_lang, target_lang').eq('course_code', courseCode).maybeSingle()
+      if (error) throw new Error(`courses unreadable: ${error.message}`)
+      return welcomeScriptFor(course)
+    },
+    courseWelcome: async (courseCode) => {
+      const { data, error } = await supabase.from('course_audio').select('id, s3_key, voice_id, duration_ms')
+        .eq('course_code', courseCode).eq('role', 'welcome').not('s3_key', 'like', 'pending/%').limit(1)
+      if (error) throw new Error(`course_audio unreadable (welcome): ${error.message}`)
+      const row = (data || [])[0]
+      return row && row.s3_key ? { audioId: row.id, s3Key: row.s3_key, voiceId: row.voice_id, durationMs: row.duration_ms } : null
+    },
+    linkShared: async ({ text, language, role }) => {
+      const keys = [...new Set([normalizeForAudio(text), ...audioKeyCandidates(normalizeForAudio(text))])]
+      const { data, error } = await supabase.from('shared_audio').select('id, s3_key, voice_id, duration_ms, sequence')
+        .eq('audio_type', role).eq('language', language).in('text_normalized', keys).limit(1)
+      if (error) throw new Error(`shared_audio unreadable: ${error.message}`)
+      const row = (data || [])[0]
+      return row ? { audioId: row.id, s3Key: row.s3_key, voiceId: row.voice_id, durationMs: row.duration_ms, sequence: row.sequence } : null
+    },
+    storeShared: async ({ text, language, role, voiceId, audioBuffer, s3Key: existingKey, durationMs: existingMs, sequence }) => {
+      let s3Key = existingKey, durationMs = existingMs || null
+      if (!s3Key) {
+        const m = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
+        durationMs = m.durationMs
+        s3Key = `mastered/${uuidv4().toUpperCase()}.mp3`
+        await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: m.buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
+      }
+      const { data: row, error } = await paidWrite.writeAfterPaid(() => supabase.from('shared_audio').insert({
+        text, text_normalized: normalizeForAudio(text), language, audio_type: role, voice_id: voiceId, origin: 'tts',
+        s3_key: s3Key, duration_ms: durationMs, ...(sequence != null ? { sequence } : {}),
+      }).select('id').single(), { log: logger, label: `shared_audio ${language} ${role} ${s3Key}` })
+      if (error) {
+        if (!existingKey) paidWrite.recordPaidUnsaved({ courseCode: null, role, text, language, voiceId, legoId: null, s3Key, durationMs, wordBoundaries: null, wordTimings: null, error: `shared_audio: ${error.message}` }, { log: logger })
+        throw new Error(`shared_audio write failed${existingKey ? '' : ' after the render was paid for'}: ${error.message} (object ${s3Key} is in S3 — never re-render it)`)
+      }
+      return { audioId: row.id, s3Key, durationMs }
+    },
+  }
+}
+
 function buildRenderDeps() {
   const deps = {
       immersionTurn: immersionTurnForRender,
@@ -5631,6 +5682,7 @@ function buildRenderDeps() {
           wordBoundaries: rec ? rec.wordBoundaries : null, wordTimings: rec ? rec.wordTimings : null, adopted: true })
       },
   }
+  Object.assign(deps, sharedAudioDeps())
   // DICE AND SPLICE (job #516, Tom 2026-10-11): an English-known presentation intro is built from existing Charlotte clips.
   deps.spliceIntro = (req) => spliceIntroForRoute(req, deps)
   // HUMAN-SPLICED INTROS (Aran 2026-10-27, job #210): cym_nv2/sv2 intros in Aran's own voice, from his takes — never rendered.
