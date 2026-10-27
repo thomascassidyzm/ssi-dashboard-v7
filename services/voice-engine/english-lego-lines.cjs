@@ -11,10 +11,6 @@
  * not yet made by anyone else (presentation_audio_id empty, or held by an intro of THIS voice — so a LEGO stays on its
  * card, counted recorded, once its intro is built, rather than shrinking the card).
  *
- * A STALE INTRO COUNTS AS NOT MADE (job #485): a LEGO whose intro was made by someone else but QUOTES other English than
- * the LEGO says now (its words were edited after the intro — "you didn't have" → "you didn't get") is wanted too: the
- * old intro says the old words and the English take it lost is the one he is asked for.
- *
  * NEVER ASKED TWICE (job #198's spoken-words key, shared/spoken-words.cjs): a LEGO whose English is the same spoken
  * words as a seed or practice phrase of these courses is already on that card and is left off this one; North and
  * South LEGOs of the same words are ONE line, filed on the first course's card (config order: North), whose take
@@ -31,7 +27,6 @@
 
 const humanIntro = require('../shared/human-intro-splice.cjs')
 const { spokenWordsKey } = require('../shared/spoken-words.cjs')
-const { quotes } = require('../shared/intro-mirror.cjs')
 
 const ENGLISH_LEGO_PREFIX = 'englego:'
 
@@ -63,13 +58,7 @@ function englishLegoCoursesFor(recordist, table) {
  * @param {Set<string>} [input.ownIntroIds]  presentation clip ids voiced by this reader (an intro already built from his takes)
  * @param {object} [table] humanSplicedIntros (tests)
  */
-/** The intro clip's text quotes a chunk of English, and not this LEGO's current words. */
-function introIsStale(introText, knownText) {
-  const t = String(introText || '')
-  return /['‘’"“”]/u.test(t) && !quotes(t, String(knownText || ''))
-}
-
-function englishLegoLinesFor(recordist, { legos = [], otherKnownTexts = [], ownIntroIds = new Set(), introTexts = new Map() } = {}, table) {
+function englishLegoLinesFor(recordist, { legos = [], otherKnownTexts = [], ownIntroIds = new Set() } = {}, table) {
   const courses = englishLegoCoursesFor(recordist, table)
   if (!courses.length) return []
   const rank = new Map(courses.map((c, i) => [c, i]))
@@ -82,8 +71,7 @@ function englishLegoLinesFor(recordist, { legos = [], otherKnownTexts = [], ownI
   }
   const wanted = legos
     .filter((l) => rank.has(l.course_code) && l.is_new)
-    .filter((l) => !l.presentation_audio_id || ownIntroIds.has(String(l.presentation_audio_id)) ||
-      introIsStale(introTexts.get(String(l.presentation_audio_id)), l.known_text))
+    .filter((l) => !l.presentation_audio_id || ownIntroIds.has(String(l.presentation_audio_id)))
     .sort((a, b) => (rank.get(a.course_code) - rank.get(b.course_code)) || (a.seed_number - b.seed_number) || (a.lego_index - b.lego_index))
   const seen = new Map()
   const out = []
@@ -129,4 +117,4 @@ function resolveEnglishLego(lego, recordist, table) {
   return text ? { courseCode: lego.course_code, legoId: lego.lego_id || null, text } : null
 }
 
-module.exports = { introIsStale, ENGLISH_LEGO_PREFIX, englishLegoLineId, parseEnglishLegoLineId, englishLegoCoursesFor, englishLegoLinesFor, resolveEnglishLego }
+module.exports = { ENGLISH_LEGO_PREFIX, englishLegoLineId, parseEnglishLegoLineId, englishLegoCoursesFor, englishLegoLinesFor, resolveEnglishLego }
