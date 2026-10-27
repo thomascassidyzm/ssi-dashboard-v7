@@ -10,7 +10,7 @@ const BATCH_LINES = 100
 
 export function trackKeyOf(line) {
   const kind = line.kind || 'pod'
-  if (kind === 'phrase') return `phrase.${line.phrasePass || 1}`
+  if (kind === 'phrase') return line.phraseTrack || `phrase.${line.phrasePass || 1}`
   if (kind === 'seed') return `seed.${line.courseCode || 'all'}`
   if ((kind === 'pod' || kind === 'takeg') && line.podSlug) return `pod.${line.podSlug}`
   return `${kind}.${line.courseCode || 'all'}`

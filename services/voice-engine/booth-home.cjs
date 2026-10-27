@@ -20,7 +20,39 @@
  */
 'use strict'
 
-const { isPhraseQueueCourse } = require('./phrase-queue.cjs')
+const { isPhraseQueueCourse, PHRASE_QUEUE_COURSES } = require('./phrase-queue.cjs')
+
+/**
+ * ONE PHRASE CARD PER COURSE AND PASS (Aran, 2026-10-27, job #179). A reader of BOTH relaunch
+ * courses — his English booth reads the English of North and South — had one card per pass
+ * holding both courses' batches, titled after its first (North): 7,658 South lines sat on
+ * "North practice phrases pass 1". Each course now has its own card per pass.
+ *
+ * The key of a reader's FIRST phrase course (PHRASE_QUEUE_COURSES order) stays `phrase.<pass>`,
+ * so every existing address, tick and stored batch place keeps meaning what it meant (Catrin's
+ * and Dan's single-course cards, Aran's North); a further course is `phrase.<pass>.<courseCode>`.
+ * Identical English across courses is still ONE line (phrase-queue mergeAcrossCourses), on the
+ * card of the batch that reaches it first, and its one take fills both courses' slots.
+ */
+function primaryPhraseCourse(phraseBatchesOrLines) {
+  const have = new Set((phraseBatchesOrLines || []).map((b) => b.courseCode))
+  return Object.keys(PHRASE_QUEUE_COURSES).find((c) => have.has(c)) || null
+}
+function phraseTrackKey(pass, courseCode, primary) {
+  return !courseCode || courseCode === primary ? `phrase.${pass}` : `phrase.${pass}.${courseCode}`
+}
+/** `phrase.<pass>[.<courseCode>]` → {pass, courseCode}; a bare key is the primary course. */
+function parsePhraseTrackKey(key, primary) {
+  const [, pass, ...rest] = String(key).split('.')
+  return { pass: Number(pass), courseCode: rest.length ? rest.join('.') : primary }
+}
+/** The plan batches one phrase card holds, in card order (card batch n = index + 1). */
+function phraseBatchesOfTrack(key, phraseBatches) {
+  if (!Array.isArray(phraseBatches)) return []
+  const primary = primaryPhraseCourse(phraseBatches)
+  const { pass, courseCode } = parsePhraseTrackKey(key, primary)
+  return phraseBatches.filter((b) => b.pass === pass && (!courseCode || b.courseCode === courseCode))
+}
 
 /**
  * New sentences are read in batches of this many lines (Aran, 2026-10-14: "split the 640 new
@@ -46,7 +78,7 @@ function batchSizeOf(key) {
 /** Which card a wire line belongs to. URL-safe: course codes and pod slugs are [a-z0-9_-]. */
 function trackKeyOf(line) {
   const kind = line.kind || 'pod'
-  if (kind === 'phrase') return `phrase.${line.phrasePass || 1}`
+  if (kind === 'phrase') return line.phraseTrack || `phrase.${line.phrasePass || 1}`
   if (kind === 'seed') return `seed.${line.courseCode || 'all'}`
   // A Take G line is the same pod line read with gaps, queued straight after it, so it is part
   // of its pod's script rather than a card of its own.
@@ -111,16 +143,18 @@ function buildHomeTracks(lines, phrases = null, phraseBatches = null) {
     })
   }
   if (phrases && !phrases.unavailable && Array.isArray(phraseBatches) && phraseBatches.length) {
-    for (const pass of [1, 2]) {
-      const mine = phraseBatches.filter((b) => b.pass === pass)
+    const primary = primaryPhraseCourse(phraseBatches)
+    const courses = Object.keys(PHRASE_QUEUE_COURSES).filter((c) => phraseBatches.some((b) => b.courseCode === c))
+    for (const pass of [1, 2]) for (const courseCode of courses) {
+      const mine = phraseBatches.filter((b) => b.pass === pass && b.courseCode === courseCode)
       if (!mine.length) continue
       const total = mine.reduce((n, b) => n + b.total, 0)
       const recorded = mine.reduce((n, b) => n + b.recorded, 0)
       tracks.push({
-        key: `phrase.${pass}`,
+        key: phraseTrackKey(pass, courseCode, primary),
         kind: 'phrase',
         pass,
-        courseCode: mine[0].courseCode,
+        courseCode,
         total,
         recorded,
         // Every batch of the plan can be opened (job #697); `current` marks the one the queue
@@ -157,7 +191,7 @@ const isServedPhraseBatch = (phrases, pass, b) =>
 function servedPhraseBatchN(trackKey, phrases, phraseBatches) {
   const pass = Number(String(trackKey).split('.')[1])
   if (!phrases || phrases.unavailable || !Array.isArray(phraseBatches)) return null
-  const i = phraseBatches.filter((b) => b.pass === pass).findIndex((b) => isServedPhraseBatch(phrases, pass, b))
+  const i = phraseBatchesOfTrack(trackKey, phraseBatches).findIndex((b) => isServedPhraseBatch(phrases, pass, b))
   return i >= 0 ? i + 1 : null
 }
 
@@ -171,7 +205,7 @@ function servedPhraseBatchN(trackKey, phrases, phraseBatches) {
 function openPhraseBatch(trackLines, trackKey, n, ctx = {}) {
   if (n === servedPhraseBatchN(trackKey, ctx.phrases, ctx.phraseBatches)) return { lines: trackLines, summary: ctx.phrases }
   const pass = Number(trackKey.split('.')[1])
-  const entry = Array.isArray(ctx.phraseBatches) ? ctx.phraseBatches.filter((b) => b.pass === pass)[n - 1] : null
+  const entry = phraseBatchesOfTrack(trackKey, ctx.phraseBatches)[n - 1] || null
   if (!entry || typeof ctx.openPhraseBatch !== 'function') return null
   const got = ctx.openPhraseBatch({ pass, batch: entry.batch, courseCode: entry.courseCode })
   return got && got.summary ? got : null
@@ -224,4 +258,4 @@ function withLastKnownSections(tracks, partial, lastKnown) {
   return carried.length ? [...tracks, ...carried] : tracks
 }
 
-module.exports = { partialKinds, withLastKnownSections, SEED_BATCH_LINES, LEGO_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch, openPhraseBatch, servedPhraseBatchN }
+module.exports = { primaryPhraseCourse, phraseTrackKey, parsePhraseTrackKey, phraseBatchesOfTrack, partialKinds, withLastKnownSections, SEED_BATCH_LINES, LEGO_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch, openPhraseBatch, servedPhraseBatchN }

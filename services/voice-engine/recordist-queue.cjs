@@ -113,6 +113,7 @@ const { isLineRecorded } = require('./take-selection.cjs')
 const { soloReaders, isSoloReaderPod } = require('../shared/pod-solo-readers.cjs')
 const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
+const { primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
 const langService = require('../language-code-service.cjs')
 
 /**
@@ -2618,8 +2619,11 @@ function phraseLineRecorded(line, recordedKeys, spellings) {
   }, { recordedKeys, spellings })
 }
 
-/** One served phrase line, on the wire in finishQueue's shape. */
-function phraseWireLine(line, recordist) {
+/**
+ * One served phrase line, on the wire in finishQueue's shape. `primary` is the reader's first
+ * phrase course: the line names its home card (booth-home phraseTrackKey, job #179).
+ */
+function phraseWireLine(line, recordist, primary = null) {
   return {
     id: line.id,
     order: Number.MAX_SAFE_INTEGER,
@@ -2649,6 +2653,7 @@ function phraseWireLine(line, recordist) {
     duplicateSentenceIds: [],
     phrasePass: line.pass,
     phraseBatch: line.batch,
+    phraseTrack: phraseTrackKey(line.pass, line.courseCode, primary || line.courseCode),
     phraseRole: line.phraseRole,
   }
 }
@@ -2668,6 +2673,7 @@ async function withPhraseBatch(db, recordist, queue, { includeRecorded = false, 
     if (!mine.length) return queue
     const keys = recordedKeys || await recordedTextKeys(db, recordist)
     const isRec = (l) => phraseLineRecorded(l, keys, recordist.spellings)
+    const primary = primaryPhraseCourse(mine)
     const { lines, summary } = phraseQueue.servePhraseBatch(mine, isRec, plan.batchCounts)
     // Every batch, counted, for the booth's home screen (job #347). Serves nothing.
     queue.phraseBatches = phraseQueue.phraseBatchList(mine, isRec)
@@ -2679,7 +2685,7 @@ async function withPhraseBatch(db, recordist, queue, { includeRecorded = false, 
       configurable: true,
       value: (want) => {
         const got = phraseQueue.servePhraseBatch(mine, isRec, plan.batchCounts, want)
-        return { summary: got.summary, lines: got.lines.map((l) => phraseWireLine(l, recordist)) }
+        return { summary: got.summary, lines: got.lines.map((l) => phraseWireLine(l, recordist, primary)) }
       },
     })
     // EVERY PHRASE LINE OF THIS READER, recorded flag set, in served order (job #788): the
@@ -2691,12 +2697,12 @@ async function withPhraseBatch(db, recordist, queue, { includeRecorded = false, 
       configurable: true,
       value: () => phraseQueue.servedOrder(mine)
         .filter((l) => !l.copies.every((c) => c.flagged))
-        .map((l) => phraseWireLine({ ...l, recorded: isRec(l) }, recordist)),
+        .map((l) => phraseWireLine({ ...l, recorded: isRec(l) }, recordist, primary)),
     })
     let recorded = 0
     for (const line of lines) {
       if (line.recorded) recorded += 1
-      if (!line.recorded || includeRecorded) queue.lines.push(phraseWireLine(line, recordist))
+      if (!line.recorded || includeRecorded) queue.lines.push(phraseWireLine(line, recordist, primary))
     }
     queue.total += lines.length
     queue.recorded += recorded

@@ -135,4 +135,39 @@ assert.deepStrictEqual(selectBatch(withLegos, 'lego.cym_sv2_for_eng', 13).map((l
   assert.strictEqual(bh.withLastKnownSections(failed, [], good), failed, 'a full answer is its own')
 }
 
+// ONE PHRASE CARD PER COURSE AND PASS (Aran, 2026-10-27, job #179): his English booth reads the
+// known side of North AND South, and both courses' batches sat on one card per pass, titled
+// North. Each course now has its own pass-1 and pass-2 card; the first course keeps the old key.
+{
+  const bh = require('./booth-home.cjs')
+  const N = 'cym_nv2_for_eng'
+  const S = 'cym_sv2_for_eng'
+  const b = (pass, batch, courseCode, total, recorded) => ({ pass, batch, courseCode, courseLabel: courseCode === N ? 'North' : 'South', firstSeed: 1, lastSeed: 9, total, recorded, held: 0 })
+  // Served order (phraseBatchList): pass, batch, course — North 1, South 1, North 2, …
+  const both = [b(1, 1, N, 198, 198), b(1, 1, S, 163, 0), b(1, 2, N, 196, 4), b(2, 1, N, 150, 2), b(2, 1, S, 170, 0)]
+  const served = { pass: 1, batch: 1, courseCode: S }
+  const t = bh.buildHomeTracks([], served, both).filter((x) => x.kind === 'phrase')
+  assert.deepStrictEqual(t.map((x) => [x.key, x.courseCode, x.pass, x.total, x.recorded]), [
+    ['phrase.1', N, 1, 394, 202],
+    [`phrase.1.${S}`, S, 1, 163, 0],
+    ['phrase.2', N, 2, 150, 2],
+    [`phrase.2.${S}`, S, 2, 170, 0],
+  ], 'North and South each get a pass-1 and a pass-2 card')
+  assert.ok(t.every((x) => x.batches.every((y) => y.courseCode === x.courseCode)), 'no card holds another course\'s batch')
+  assert.deepStrictEqual(t[1].batches.map((y) => [y.n, y.current]), [[1, true]], 'the served South batch is South card batch 1')
+  assert.strictEqual(bh.servedPhraseBatchN(`phrase.1.${S}`, served, both), 1)
+  assert.strictEqual(bh.servedPhraseBatchN('phrase.1', served, both), null, 'the North card is not serving')
+  // A wire line names its card; opening South batch 1 returns the served lines.
+  const wire = { id: 'phrase:s1:known', kind: 'phrase', phrasePass: 1, phraseTrack: bh.phraseTrackKey(1, S, N), courseCode: S, recorded: false }
+  assert.strictEqual(bh.trackKeyOf(wire), `phrase.1.${S}`)
+  assert.deepStrictEqual(bh.selectBatch([wire], `phrase.1.${S}`, 1, { phrases: served, phraseBatches: both }).map((l) => l.id), ['phrase:s1:known'])
+  // North card batch 2 is the plan's North batch 2 (it was card batch 3 when South sat between).
+  let asked = null
+  bh.selectBatch([wire], 'phrase.1', 2, { phrases: served, phraseBatches: both, openPhraseBatch: (w) => { asked = w; return { lines: [], summary: {} } } })
+  assert.deepStrictEqual(asked, { pass: 1, batch: 2, courseCode: N })
+  // A one-course reader (Dan, South only) keeps the bare keys it always had.
+  const dan = bh.buildHomeTracks([], served, [b(1, 1, S, 163, 0), b(2, 1, S, 170, 0)]).map((x) => x.key)
+  assert.deepStrictEqual(dan, ['phrase.1', 'phrase.2'])
+}
+
 console.log('booth-home: all assertions passed')
