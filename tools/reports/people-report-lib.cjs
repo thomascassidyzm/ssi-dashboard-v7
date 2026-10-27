@@ -66,7 +66,7 @@ const pct = (done, total) => (total > 0 ? `${Math.floor((100 * done) / total)}%`
 const plural = (k, one, many = `${one}s`) => `${n(k)} ${k === 1 ? one : many}`
 
 /** [1,2,3,7,9,10] → "S1–3, S7, S9–10" (seed numbers, ascending, ranges collapsed). */
-function seedRanges(nums, max = 12) {
+function seedRanges(nums, max = 8) {
   const s = [...new Set(nums.map(Number).filter(Number.isFinite))].sort((a, b) => a - b)
   const runs = []
   for (const x of s) {
@@ -161,6 +161,8 @@ function recorderRows(overview, now) {
       week: act.takes7d || 0, allTime: act.takes || 0, archived: act.archivedTakes || 0,
       done, total, remaining, last, first: act.firstActive ? Date.parse(act.firstActive) : null,
       stalled: remaining > 0 && (last == null || now - last >= STALL_MS),
+      // Nothing assigned and nothing recorded this week: an old or parked voice, listed in one line.
+      dormant: total === 0 && !(act.takes7d > 0),
       noQueue: !!a.noQueue, queueUnavailable: !!a.queueUnavailable,
       projects: projects.map((p) => ({ label: p.label, done: p.recorded || 0, total: p.total, week: (p.activity && p.activity.takes7d) || 0 })),
     }
@@ -199,7 +201,15 @@ function builderRows(users, events, since, now) {
     name: t.person.name, email: t.person.email, access: courseAccess(t.person.courses),
     week: t.week, all: t.all, weekSeedsByCourse: t.weekSeedsByCourse, last: t.all.last,
   })).sort((a, b) => (b.week.events - a.week.events) || ((b.last || 0) - (a.last || 0)))
-  return { rows, idle: idle.map((u) => ({ name: u.name || u.email, email: u.email, access: courseAccess(u.courses), invited: u.invited_at })) }
+  // One person can hold two logins (two emails, same name and courses): listed once, with the count.
+  const idleBy = new Map()
+  for (const u of idle) {
+    const row = { name: u.name || u.email, access: courseAccess(u.courses), logins: 1 }
+    const k = `${String(row.name).toLowerCase()}\u0000${row.access}`
+    if (idleBy.has(k)) idleBy.get(k).logins += 1
+    else idleBy.set(k, row)
+  }
+  return { rows, idle: [...idleBy.values()] }
 }
 
 function courseAccess(courses) {
@@ -344,7 +354,8 @@ function renderReport(d) {
   L.push('## 1. Recorders', '')
   if (d.recorders.error) L.push(`**Not available this week:** ${d.recorders.error}`, '')
   else if (!d.recorders.rows.length) L.push('No recording artists found in the booth.', '')
-  for (const r of d.recorders.rows || []) {
+  const dormant = (d.recorders.rows || []).filter((r) => r.dormant)
+  for (const r of (d.recorders.rows || []).filter((x) => !x.dormant)) {
     const head = `**${r.name}**${r.language ? ` (${[r.language, r.dialect].filter(Boolean).join(', ')})` : ''}${r.stalled ? ' — ⚠ STALLED' : ''}`
     L.push(head)
     L.push(`- This week: ${plural(r.week, 'line')} recorded`)
@@ -354,6 +365,11 @@ function renderReport(d) {
     L.push(`- Last active: ${when(r.last, now)}${r.stalled ? ` — no takes for ${r.last ? Math.floor((now - r.last) / DAY_MS) + ' days' : 'ever'} with ${n(r.remaining)} lines left` : ''}`)
     for (const p of r.projects) L.push(`  - ${p.label}: ${n(p.done)}/${n(p.total)} (${pct(p.done, p.total)})${p.week ? `, ${n(p.week)} this week` : ''}`)
     if (r.queueUnavailable) L.push('  - (the booth could not build this queue today, so lines done/assigned are missing)')
+    L.push('')
+  }
+  if (dormant.length) {
+    L.push('Not recording now (no lines assigned, nothing this week):')
+    for (const r of dormant) L.push(`- ${r.name}${r.language ? ` (${r.language})` : ''}: ${plural(r.allTime, 'take')} all-time, last ${when(r.last, now)}`)
     L.push('')
   }
 
@@ -371,7 +387,7 @@ function renderReport(d) {
     }
     if (d.builders.idle.length) {
       L.push('Builder access, no recorded edits ever:')
-      for (const u of d.builders.idle) L.push(`- ${u.name}${u.access ? ` (access: ${u.access})` : ''}`)
+      for (const u of d.builders.idle) L.push(`- ${u.name}${u.access ? ` (access: ${u.access})` : ''}${u.logins > 1 ? ` — ${u.logins} logins` : ''}`)
       L.push('')
     }
   }
@@ -388,11 +404,13 @@ function renderReport(d) {
       L.push(`**${name}** — last active ${when(last, now)}`)
       for (const r of rows) {
         const prog = d.proof.courseProgress && d.proof.courseProgress[r.course]
-        L.push(`- ${r.course}: this week ${proofLine(r.week)}; all-time ${proofLine(r.all)}${prog ? ` · course ${n(prog.approved)}/${n(prog.total)} seeds approved` : ''}`)
+        L.push(`- ${r.course}: ${proofLine(r.week)} this week; all-time ${proofLine(r.all)}${prog ? ` · course ${n(prog.approved)}/${n(prog.total)} seeds approved` : ''}`)
       }
       L.push('')
     }
     const un = Object.entries(d.proof.unattributed || {}).filter(([, u]) => u.week > 0)
+    const namedWeek = d.proof.rows.reduce((s, r) => s + r.week.approved.size, 0)
+    if (!un.length && !namedWeek) L.push('No seed was approved in any course this week, by anyone.', '')
     if (un.length) {
       L.push('Seeds approved this week with **no approver recorded** (the stand-alone proofread tool does not record who):')
       for (const [course, u] of un) {
@@ -410,7 +428,7 @@ function renderReport(d) {
 }
 
 function summaryLine(d) {
-  const rec = d.recorders.rows || []
+  const rec = (d.recorders.rows || []).filter((r) => !r.dormant)
   const recLines = rec.reduce((s, r) => s + r.week, 0)
   const activeRec = rec.filter((r) => r.week > 0).length
   const stalled = rec.filter((r) => r.stalled).map((r) => r.name)
