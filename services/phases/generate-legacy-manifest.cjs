@@ -164,13 +164,45 @@ function indexPresentationsByLego(records, legos) {
   const byLego = new Map()
   for (const r of records || []) {
     if (r.id) byId.set(String(r.id).toLowerCase(), r)
-    if (r.role === 'presentation' && r.lego_id && mastered(r)) byLego.set(r.lego_id, r)
+    // a _foreign row's lego_id is another course's LEGO numbering — never an intro here
+    if (r.role === 'presentation' && r.lego_id && !r._foreign && mastered(r)) byLego.set(r.lego_id, r)
   }
   for (const lego of legos || []) {
     const slot = lego.presentation_audio_id && byId.get(String(lego.presentation_audio_id).toLowerCase())
     if (mastered(slot)) byLego.set(lego.lego_id, slot)
   }
   return byLego
+}
+
+/** Pure. Linked ids the course's own course_audio rows do not hold (a shared clip filed under another course). */
+function linkedIdsNotLoaded(records, linkedIds) {
+  const have = new Set((records || []).map((r) => String(r.id).toLowerCase()))
+  return [...(linkedIds || [])].filter((id) => !have.has(id))
+}
+
+/**
+ * Linked clips filed under ANOTHER course_code. The known side is shared: ita_for_eng's
+ * "Blue" slot links Tom-006's clip filed under fra_for_eng, so a course-only load never
+ * sees it and an unlinked ita row of the same words speaks instead (job #427). Marked
+ * _foreign so their lego_id stamps never name an intro in this course.
+ */
+async function loadLinkedAudioOutsideCourse(records, linkedIds) {
+  const client = supabaseClient.getClient()
+  const ids = linkedIdsNotLoaded(records, linkedIds)
+  if (!client || ids.length === 0) return []
+  const out = []
+  for (let i = 0; i < ids.length; i += 200) {
+    const { data, error } = await client
+      .from('course_audio')
+      .select('id, text, text_normalized, language, role, duration_ms, lego_id, s3_key')
+      .in('id', ids.slice(i, i + 200))
+    if (error) {
+      console.error('  Warning: Could not load linked audio outside the course:', error.message)
+      break
+    }
+    for (const r of data || []) out.push({ ...r, _foreign: true })
+  }
+  return out
 }
 
 // =============================================================================
@@ -1238,15 +1270,17 @@ async function generateLegacyManifest(courseCode, options = {}) {
   console.error(`  Release target: ${releaseTarget} seeds`)
 
   // 2. Load data from database (limited to release target)
-  const [dbSeeds, dbLegos, dbPhrases, dbAudio] = await Promise.all([
+  const [dbSeeds, dbLegos, dbPhrases, dbCourseAudio] = await Promise.all([
     loadSeedsFromDB(courseCode, releaseTarget),
     loadLegosFromDB(courseCode, releaseTarget),
     loadPracticePhrasesFromDB(courseCode, releaseTarget),
     loadAudioFromDB(courseCode)
   ])
 
-  console.error(`  Database: ${dbSeeds?.length || 0} seeds, ${dbLegos?.length || 0} LEGOs, ${dbPhrases?.length || 0} phrases, ${dbAudio?.length || 0} audio`)
   const linkedAudioIds = collectLinkedAudioIds(dbSeeds, dbLegos, dbPhrases)
+  const dbForeignLinked = dbCourseAudio ? await loadLinkedAudioOutsideCourse(dbCourseAudio, linkedAudioIds) : []
+  const dbAudio = dbCourseAudio ? dbCourseAudio.concat(dbForeignLinked) : dbCourseAudio
+  console.error(`  Database: ${dbSeeds?.length || 0} seeds, ${dbLegos?.length || 0} LEGOs, ${dbPhrases?.length || 0} phrases, ${dbAudio?.length || 0} audio (${dbForeignLinked.length} linked clips filed under another course)`)
 
   // 3. Load welcome and encouragements from database
   const { welcome, instructions, encouragements: encouragementsList, paywallEncouragements: paywallList } = await loadWelcomeAndEncouragements(courseCode, knownLang, targetLang)
@@ -1894,6 +1928,7 @@ module.exports = {
   collectLinkedAudioIds,
   indexAudioByText,
   indexPresentationsByLego,
+  linkedIdsNotLoaded,
   buildSamplesDictionary,
   generateCombinedPresentations,
   getCombinedVoiceSig,

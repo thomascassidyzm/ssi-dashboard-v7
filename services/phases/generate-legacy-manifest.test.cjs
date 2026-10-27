@@ -6,7 +6,7 @@
  * course_audio.lego_id stamp.
  */
 import { describe, it, expect } from 'vitest'
-const { collectLinkedAudioIds, indexAudioByText, indexPresentationsByLego, buildSamplesDictionary } = require('./generate-legacy-manifest.cjs')
+const { collectLinkedAudioIds, indexAudioByText, indexPresentationsByLego, linkedIdsNotLoaded, buildSamplesDictionary } = require('./generate-legacy-manifest.cjs')
 
 const LINKED = '5710322d-4a2b-4888-9a48-a17347e4d6d7' // S0316L02 target1 slot
 const ORPHAN = '22ee8de7-fa06-4579-9a15-50789b3a05cb' // June stage-0 row, no slot
@@ -35,6 +35,21 @@ describe('legacy export: the linked clip speaks for a text', () => {
 
   it("a LEGO's presentation is the clip its slot links, even with no lego_id stamp", () => {
     expect(indexPresentationsByLego(audio, legos).get('S0054L05')?.id).toBe('04533962-199e-4920-8b9e-7cfbd663d224')
+  })
+
+  it('a known clip linked from another course (shared Tom-006 "blue", filed under fra_for_eng) is fetched and wins', () => {
+    const BLUE = '6b6efac1-9375-4bcf-b339-11c9f93206b5', ORPH = '35f799a9-68ab-4e3e-9a23-a15f14e09bf2'
+    const own = [{ id: ORPH, text_normalized: 'blue.', language: 'eng', role: 'known', s3_key: `mastered/${ORPH.toUpperCase()}.mp3` }]
+    const ids = collectLinkedAudioIds([], [{ lego_id: 'S0257L01', known_audio_id: BLUE }], [])
+    expect(linkedIdsNotLoaded(own, ids)).toEqual([BLUE])
+    const pool = own.concat([{ id: BLUE, text_normalized: 'blue', language: 'eng', role: 'known', s3_key: 'mastered/B3CA12A3-95C4-4634-967C-8C8F2835251F.mp3', _foreign: true }])
+    const { samples } = buildSamplesDictionary(pool, [{ text: 'blue', isKnown: true }], 'eng', 'ita', ids)
+    expect(samples.blue.map((s) => s.id)).toEqual(['B3CA12A3-95C4-4634-967C-8C8F2835251F'])
+  })
+
+  it("another course's lego_id stamp never names an intro here", () => {
+    const foreign = [{ id: 'f1', role: 'presentation', lego_id: 'S0054L05', s3_key: 'mastered/F1.mp3', _foreign: true }]
+    expect(indexPresentationsByLego(foreign, [{ lego_id: 'S0054L05', presentation_audio_id: null }]).has('S0054L05')).toBe(false)
   })
 
   it('a pending slot clip is not a presentation; the lego_id stamp is the fallback', () => {
