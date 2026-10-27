@@ -279,7 +279,28 @@ function staleClips(dump, lib = {}) {
   return out;
 }
 
-module.exports = { LEGOS, ROWS, DELETES, applyPlan, invariants, checkPlan, asks, editOps, staleClips };
+/** Step 2 (Kai, 2026-10-27, after the text landed: "you MAY now render"): every slot the fix left EMPTY on a fresh dump —
+ *  the owned LEGOs (incl. their intros) and the ROWS — as one ask per distinct (role, words). Untouched rows are never
+ *  asked for, so nothing else is re-voiced. Pure. */
+const introLine = (known) => `The German for: '${known}', is:`;
+function fillAsks(d) {
+  const m = new Map();
+  const add = (role, text, target, legoId) => {
+    const k = `${role}\u0000${text}\u0000${role === 'presentation' ? legoId : ''}`;
+    if (!m.has(k)) m.set(k, { role, text, ...(role === 'presentation' ? { legoId } : {}), slots: [] });
+    m.get(k).slots.push(target);
+  };
+  const ownedLegos = new Set([...LEGOS.map((l) => l.id), 'S0589L04']);
+  for (const l of d.legos.filter((x) => ownedLegos.has(x.lego_id))) {
+    for (const [slot, col] of Object.entries(SLOT_COL)) if (!l[col]) add(slot, slot === 'known' ? l.known_text : l.target_text, { target: 'lego', lego_id: l.lego_id, slot }, l.lego_id);
+    if (!l.presentation_audio_id) add('presentation', introLine(l.known_text), { target: 'lego', lego_id: l.lego_id, slot: 'presentation' }, l.lego_id);
+  }
+  const rows = new Set(ROWS.map((r) => r[0]));
+  for (const p of d.phrases.filter((x) => rows.has(sid(x.id)))) for (const [slot, col] of Object.entries(SLOT_COL)) if (!p[col]) add(slot, slot === 'known' ? p.known_text : p.target_text, { target: 'phrase', phrase_id: p.id, slot });
+  return [...m.values()];
+}
+
+module.exports = { LEGOS, ROWS, DELETES, applyPlan, invariants, checkPlan, asks, editOps, staleClips, fillAsks, introLine };
 
 // ── I/O ──────────────────────────────────────────────────────────────────────────────────────────────────
 async function lookup(dump) {
@@ -315,6 +336,35 @@ if (require.main === module) {
       console.log(`${res.log.length} asks, ${Object.keys(res.lib).length} library hits`);
     } else if (cmd === 'ops') {
       const ops = editOps(dump, Number(opt('--seed')), lib); fs.writeFileSync(opt('--out') || 'ops.json', JSON.stringify({ ops }, null, 1)); console.log(`${ops.length} ops`);
+    } else if (cmd === 'fill') {
+      // dry run always; RENDER=1 renders (one try each, a refusal is the answer and is never retried); then the links
+      const RENDER = process.env.RENDER === '1', MAX = +(process.env.MAX_CHARS || 6000);
+      const list = fillAsks(dump); const log = [];
+      const call = async (a, dryRun) => {
+        for (let t = 0; t < 10; t++) {
+          try {
+            const r = await fetch(`${POPTY}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT },
+              body: JSON.stringify({ courseCode: COURSE, role: a.role, text: a.text, purpose: `job #499 Deborah 585-590: fill ${a.slots.length} slot(s) left empty by the text fix (Kai approved)`, ...(a.legoId ? { legoId: a.legoId } : {}), ...(dryRun ? { dryRun: true } : {}) }) });
+            return { status: r.status, body: await r.json().catch(() => ({})) };
+          } catch (e) { if (!dryRun && t > 0) return { status: 0, body: { error: 'connection lost mid-render' } }; await new Promise((ok) => setTimeout(ok, 6000)); }
+        }
+        return { status: 0, body: { error: 'unreachable' } };
+      };
+      let chars = 0;
+      for (const a of list) { const r = await call(a, true); const w = r.body.ok && r.body.source !== 'library' ? (r.body.wouldSpendChars || a.text.length) : 0; chars += w;
+        log.push({ ...a, dry: { status: r.status, source: r.body.source, voiceId: r.body.voiceId, chars: w, error: r.body.ok ? undefined : r.body } }); }
+      const refusedDry = log.filter((a) => a.dry.error);
+      console.log(`${list.length} clips for ${list.reduce((n, a) => n + a.slots.length, 0)} slots; ${chars} chars to render; ${refusedDry.length} refused in dry run`);
+      for (const a of refusedDry) console.log('  REFUSED (dry)', a.role, JSON.stringify(a.text), JSON.stringify(a.dry.error).slice(0, 300));
+      const voices = {}; for (const a of log) voices[`${a.role}:${a.dry.voiceId}`] = (voices[`${a.role}:${a.dry.voiceId}`] || 0) + 1; console.log('voices', JSON.stringify(voices));
+      if (RENDER && chars <= MAX) {
+        for (const a of log.filter((x) => !x.dry.error)) { const r = await call(a, false); a.real = { status: r.status, source: r.body.source, audioId: r.body.audioId, chars: r.body.charsSpent, error: r.body.ok ? undefined : r.body };
+          console.log(a.real.error ? 'REFUSED' : a.real.source, a.role, JSON.stringify(a.text), a.real.audioId || JSON.stringify(a.real.error).slice(0, 300)); }
+        const ops = []; for (const a of log) if (a.real && a.real.audioId) for (const sl of a.slots) ops.push({ op: 'audio.link', ...sl, audio_id: a.real.audioId });
+        fs.writeFileSync(opt('--out') || 'fill-ops.json', JSON.stringify({ ops }, null, 1));
+        console.log(`spent ${log.reduce((n, a) => n + ((a.real && a.real.chars) || 0), 0)} chars; ${ops.length} link ops → ${opt('--out') || 'fill-ops.json'}`);
+      } else if (RENDER) console.log(`STOP: ${chars} > MAX_CHARS ${MAX}`);
+      fs.writeFileSync((opt('--out') || 'fill-ops.json') + '.log.json', JSON.stringify(log, null, 1));
     } else if (cmd === 'stale') {
       console.log(JSON.stringify(staleClips(dump, lib), null, 1));
     }
