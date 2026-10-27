@@ -89,7 +89,9 @@ function clashes(all, row) {
 function plan(db, { only = null, decomposer = require('../../services/phrase-decomposer.cjs'), tw = require('../../services/course-builder/lib/taught-words.cjs') } = {}) {
   const live = new Map(db.phrases.map((p) => [sid(p.id), p]));
   const legoById = new Map(db.legos.map((l) => [l.lego_id, l]));
-  const fixes = FIXES.filter(([, cls]) => !only || cls === only);
+  // EXCLUDE: rows held back by hand (e.g. a clip the route was paid for but could not store — never re-asked, no retries).
+  const exclude = new Set(String(process.env.EXCLUDE || '').split(',').filter(Boolean));
+  const fixes = FIXES.filter(([id, cls]) => (!only || cls === only) && !exclude.has(id));
   const deleting = new Set(fixes.filter((f) => f[3] === null).map((f) => f[0]));
   const updates = new Map();
   const go = [], skipped = [];
