@@ -1,0 +1,57 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1647L01B01",
+   "set": {
+    "known_text": "now, do you speak Welsh?",
+    "target_text": "rŵan, dach chi’n siarad Cymraeg?"
+   },
+   "expect": {
+    "known_text": "now you speak it madam",
+    "target_text": "rŵan dach chi’n siarad hi madam"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1647L01B02",
+   "set": {
+    "known_text": "at the moment, do you speak Welsh?",
+    "target_text": "ar hyn o bryd, dach chi’n siarad Cymraeg?"
+   },
+   "expect": {
+    "known_text": "at the moment you speak it madam",
+    "target_text": "ar hyn o bryd dach chi’n siarad hi madam"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1647L01B04",
+   "set": {
+    "known_text": "probably, do you speak Welsh?",
+    "target_text": "mwy na thebyg, dach chi’n siarad Cymraeg?"
+   },
+   "expect": {
+    "known_text": "probably you speak it madam",
+    "target_text": "mwy na thebyg dach chi’n siarad hi madam"
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "cym_nv2_for_eng:S1642L03U01",
+   "expect": {
+    "known_text": "but madam it’s so late",
+    "target_text": "ond madam mae hi mor hwyr"
+   }
+  },
+  {
+   "op": "lego.delete",
+   "lego_id": "S1642L03",
+   "cascade_phrases": true,
+   "expect": {
+    "known_text": "madam",
+    "target_text": "madam"
+   }
+  }
+ ]
+}
