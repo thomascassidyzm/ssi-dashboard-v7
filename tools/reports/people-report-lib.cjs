@@ -109,7 +109,7 @@ function peopleIndex(users, events) {
 }
 
 function emptyTally() {
-  return { events: 0, seeds: new Set(), seedsBy: {}, legos: 0, phrases: 0, courses: new Set(), other: {}, first: null, last: null }
+  return { events: 0, seeds: new Set(), seedsBy: {}, legos: 0, phrases: 0, courses: new Set(), other: {}, surfaces: {}, unverified: 0, first: null, last: null }
 }
 
 /** Fold one edit event into a tally: seeds per group, LEGO/phrase row counts, courses, first/last. */
@@ -134,6 +134,10 @@ function addEvent(t, e) {
   if (g === 'phraseEdit') t.phrases += Math.max(1, Number(e.phrases) || 0)
   else t.phrases += Number(e.phrases) || 0
   if (g === 'other') t.other[e.operation] = (t.other[e.operation] || 0) + 1
+  // Which Popty door the save came through, and whether the session was verified: the proof that a
+  // builder's numbers are their own clicks, not an agent's batch made on someone's behalf.
+  if (e.surface) t.surfaces[e.surface] = (t.surfaces[e.surface] || 0) + 1
+  if (e.actor_verified === false) t.unverified += 1
   return t
 }
 
@@ -146,9 +150,45 @@ const groupEvents = (t, group) => (t.seedsBy[group] ? t.seedsBy[group].events : 
  * One row per recording artist, from the booth's own overview (booth-artists-reader.cjs). Lines done
  * and lines assigned are the sum of the artist's PROJECTS that have a queue (the booth home cards),
  * so a take of an old line nobody asks for any more counts as a take but not as progress.
+ *
+ * TWO COUNTS FOR "THIS WEEK", never blended (Kai's calibration check, 2026-10-27: 11,798 lines in a
+ * week looked implausible). `week` is NEW CLIPS STORED under the voice (course_audio rows created in
+ * the window — the booth overview's takes7d); a clip row is per course, role and voice, and long
+ * takes are cut into many clips, so one reading can be several clips. `uploads` is what the recorder
+ * actually SENT from the booth: recording_provenance rows (one per upload, re-reads included, every
+ * upload door goes through handleRecordingUpload) joined to the artist by voice spelling, with the
+ * distinct clips those uploads landed on. When the two disagree the report prints both.
+ * @param {object} uploads { week: Map<voiceId,{takes,clips,last}>, all: Map<…> } or null if unread
  */
-function recorderRows(overview, now) {
+/** recording_provenance aggregate rows {voice_id, takes, clips, last} → Map by base voice id. */
+function uploadMap(rows) {
+  const m = new Map()
+  for (const r of rows || []) {
+    const v = String(r.voice_id || '').replace(/^human_archived-[0-9a-f]+-/i, '')
+    const e = m.get(v) || { takes: 0, clips: 0, last: null }
+    e.takes += Number(r.takes) || 0
+    e.clips += Number(r.clips) || 0
+    const l = r.last ? new Date(r.last).toISOString() : null
+    if (l && (!e.last || l > e.last)) e.last = l
+    m.set(v, e)
+  }
+  return m
+}
+
+function recorderRows(overview, now, uploads = null) {
   const artists = ((overview && overview.artists) || []).filter((a) => !a.isTest)
+  const sumFor = (map, a) => {
+    if (!map) return null
+    const out = { takes: 0, clips: 0, last: null }
+    const spellings = new Set([a.voiceId, ...(a.spellings || [])])
+    for (const sp of spellings) {
+      const u = map.get(sp)
+      if (!u) continue
+      out.takes += u.takes; out.clips += u.clips
+      if (u.last) out.last = Math.max(out.last || 0, Date.parse(u.last))
+    }
+    return out
+  }
   return artists.map((a) => {
     const projects = (a.projects || []).filter((p) => !p.other && Number.isFinite(p.total) && p.total > 0)
     const total = projects.reduce((s, p) => s + p.total, 0)
@@ -157,12 +197,14 @@ function recorderRows(overview, now) {
     const last = act.lastActive ? Date.parse(act.lastActive) : null
     const remaining = Math.max(0, total - done)
     return {
+      spellings: a.spellings || [a.voiceId],
       name: a.name || a.voiceId, voiceId: a.voiceId, language: a.languageName || a.language || null, dialect: a.dialect || null,
       week: act.takes7d || 0, allTime: act.takes || 0, archived: act.archivedTakes || 0,
+      uploadsWeek: uploads ? sumFor(uploads.week, a) : null, uploadsAll: uploads ? sumFor(uploads.all, a) : null,
       done, total, remaining, last, first: act.firstActive ? Date.parse(act.firstActive) : null,
       stalled: remaining > 0 && (last == null || now - last >= STALL_MS),
       // Nothing assigned and nothing recorded this week: an old or parked voice, listed in one line.
-      dormant: total === 0 && !(act.takes7d > 0),
+      dormant: total === 0 && !(act.takes7d > 0) && !(uploads && (sumFor(uploads.week, a) || {}).takes > 0),
       noQueue: !!a.noQueue, queueUnavailable: !!a.queueUnavailable,
       projects: projects.map((p) => ({ label: p.label, done: p.recorded || 0, total: p.total, week: (p.activity && p.activity.takes7d) || 0 })),
     }
@@ -339,6 +381,13 @@ function buildLine(t) {
   return bits.length ? bits.join(', ') : 'no edits'
 }
 
+/** "PATCH /api/seed/:courseCode/:seedNumber ×290, signed in" — the doors a person's saves came through. */
+function surfaceLine(t) {
+  const doors = Object.entries(t.surfaces).sort((a, b) => b[1] - a[1]).map(([s, k]) => `${s.replace(/^[a-z-]+:/, '')} ×${n(k)}`)
+  const who = t.unverified ? `${n(t.unverified)} of ${n(t.events)} saves NOT from a verified sign-in` : 'all from their own verified sign-in'
+  return `${doors.join(', ') || 'unknown door'}; ${who}`
+}
+
 /**
  * The whole report as phone-readable markdown, and the one-line summary posted with its link.
  * @param {object} d { now, since, recorders, builders, proof, gaps: string[], sources }
@@ -358,10 +407,12 @@ function renderReport(d) {
   for (const r of (d.recorders.rows || []).filter((x) => !x.dormant)) {
     const head = `**${r.name}**${r.language ? ` (${[r.language, r.dialect].filter(Boolean).join(', ')})` : ''}${r.stalled ? ' — ⚠ STALLED' : ''}`
     L.push(head)
-    L.push(`- This week: ${plural(r.week, 'line')} recorded`)
+    if (r.uploadsWeek) L.push(`- This week: ${plural(r.uploadsWeek.takes, 'take')} uploaded from the booth (re-reads included), landing on ${plural(r.uploadsWeek.clips, 'clip')}`)
+    else L.push('- This week: booth uploads could not be read (see the end)')
+    L.push(`- New clips stored under this voice this week: ${n(r.week)}${r.uploadsWeek && r.week > r.uploadsWeek.takes ? ' (more clips than takes: one take can be stored for several courses, or cut into several lines)' : ''}`)
     if (r.total) L.push(`- Done ${n(r.done)} of ${n(r.total)} assigned (${pct(r.done, r.total)}), ${n(r.remaining)} left`)
     else L.push(r.noQueue ? '- No queue in the booth now (an older voice with takes only)' : '- No lines assigned in the booth now')
-    L.push(`- All-time: ${plural(r.allTime, 'take')}${r.archived ? ` (${n(r.archived)} later archived by re-record all)` : ''}, since ${when(r.first, now)}`)
+    L.push(`- All-time: ${r.uploadsAll ? `${plural(r.uploadsAll.takes, 'booth upload')}, ` : ''}${plural(r.allTime, 'clip')} stored${r.archived ? ` (${n(r.archived)} later archived by re-record all)` : ''}, since ${when(r.first, now)}`)
     L.push(`- Last active: ${when(r.last, now)}${r.stalled ? ` — no takes for ${r.last ? Math.floor((now - r.last) / DAY_MS) + ' days' : 'ever'} with ${n(r.remaining)} lines left` : ''}`)
     for (const p of r.projects) L.push(`  - ${p.label}: ${n(p.done)}/${n(p.total)} (${pct(p.done, p.total)})${p.week ? `, ${n(p.week)} this week` : ''}`)
     if (r.queueUnavailable) L.push('  - (the booth could not build this queue today, so lines done/assigned are missing)')
@@ -369,7 +420,7 @@ function renderReport(d) {
   }
   if (dormant.length) {
     L.push('Not recording now (no lines assigned, nothing this week):')
-    for (const r of dormant) L.push(`- ${r.name}${r.language ? ` (${r.language})` : ''}: ${plural(r.allTime, 'take')} all-time, last ${when(r.last, now)}`)
+    for (const r of dormant) L.push(`- ${r.name}${r.language ? ` (${r.language})` : ''}: ${plural(r.allTime, 'clip')} all-time, last ${when(r.last, now)}`)
     L.push('')
   }
 
@@ -382,6 +433,7 @@ function renderReport(d) {
       L.push(`**${b.name}** — ${[...b.all.courses].join(', ') || 'no course'}${b.access ? ` (access: ${b.access})` : ''}`)
       L.push(`- This week: ${b.week.events ? buildLine(b.week) : 'no edits'}`)
       for (const [course, seeds] of Object.entries(b.weekSeedsByCourse)) if (seeds.length) L.push(`  - ${course} seeds changed: ${seedRanges(seeds)}`)
+      if (b.week.events) L.push(`  - how: ${surfaceLine(b.week)}`)
       L.push(`- All-time: ${buildLine(b.all)}, ${plural(b.all.events, 'save')}`)
       L.push(`- Last active: ${when(b.last, now)}`, '')
     }
@@ -398,6 +450,7 @@ function renderReport(d) {
   else {
     const byPerson = new Map()
     for (const r of d.proof.rows) { if (!byPerson.has(r.name)) byPerson.set(r.name, []); byPerson.get(r.name).push(r) }
+    L.push('Only proofreading done INSIDE Popty under the proofreader\'s own login is named here. Notes a proofreader sends in (Deborah\'s deu_for_eng notes, for instance) are applied by agents, so Popty records the agent, not the proofreader — see "Edits by agents" below.', '')
     if (!byPerson.size) L.push('No proofreading recorded against a named person, ever.', '')
     for (const [name, rows] of byPerson) {
       const last = Math.max(...rows.map((r) => r.last || 0)) || null
@@ -421,6 +474,16 @@ function renderReport(d) {
     }
   }
 
+  // Not a person's work, and never counted as anyone's: shown so a builder's or proofreader's
+  // numbers can be told apart from batches agents ran (Kai's calibration check, 2026-10-27).
+  L.push('## Edits by agents and tools this week (not counted above)', '')
+  if (d.agents == null) L.push('Could not be read this week.', '')
+  else if (!d.agents.length) L.push('None.', '')
+  else {
+    for (const a of d.agents) L.push(`- ${a.course_code}: ${plural(a.saves, 'save')}, ${plural(a.seeds, 'seed')} named (${a.actor_kind}${a.labels ? `: ${a.labels}` : ''})`)
+    L.push('')
+  }
+
   L.push('## What this report cannot see', '')
   for (const g of d.gaps) L.push(`- ${g}`)
   L.push('', `_Generated by tools/reports/weekly-people-report.cjs (Popty), ${new Date(now).toISOString()}._`)
@@ -429,8 +492,10 @@ function renderReport(d) {
 
 function summaryLine(d) {
   const rec = (d.recorders.rows || []).filter((r) => !r.dormant)
-  const recLines = rec.reduce((s, r) => s + r.week, 0)
-  const activeRec = rec.filter((r) => r.week > 0).length
+  const haveUploads = rec.length > 0 && rec.every((r) => r.uploadsWeek)
+  const recTakes = rec.reduce((s, r) => s + (r.uploadsWeek ? r.uploadsWeek.takes : 0), 0)
+  const recClips = rec.reduce((s, r) => s + r.week, 0)
+  const activeRec = rec.filter((r) => r.week > 0 || (r.uploadsWeek && r.uploadsWeek.takes > 0)).length
   const stalled = rec.filter((r) => r.stalled).map((r) => r.name)
   const bRows = (d.builders.rows || []).filter((b) => b.week.events > 0)
   const bSeeds = bRows.reduce((s, b) => s + b.week.seeds.size, 0)
@@ -438,15 +503,20 @@ function summaryLine(d) {
   const approvedNamed = pRows.reduce((s, r) => s + r.week.approved.size, 0)
   const approvedAnon = Object.values(d.proof.unattributed || {}).reduce((s, u) => s + u.week, 0)
   const bits = [
-    d.recorders.error ? 'recorders: not available' : `${activeRec}/${rec.length} recorders active, ${n(recLines)} lines${stalled.length ? ` (stalled: ${stalled.join(', ')})` : ''}`,
-    d.builders.error ? 'builders: not available' : `${bRows.length} builder${bRows.length === 1 ? '' : 's'} active, ${plural(bSeeds, 'seed')} changed`,
-    d.proof.error ? 'proofreading: not available' : `${new Set(pRows.map((r) => r.name)).size} proofreaders active, ${n(approvedNamed + approvedAnon)} seeds approved`,
+    d.recorders.error ? 'recorders: not available'
+      : `${activeRec}/${rec.length} recorders active, ${haveUploads ? `${n(recTakes)} booth takes uploaded (${n(recClips)} clips stored)` : `${n(recClips)} clips stored (booth uploads unreadable)`}${stalled.length ? `, stalled: ${stalled.join(', ')}` : ''}`,
+    d.builders.error ? 'builders: not available'
+      : `${bRows.length ? bRows.map((b) => `${b.name} ${plural(b.week.seeds.size, 'seed')}`).join(', ') : 'no volunteer builder edits'}`,
+    d.proof.error ? 'proofreading: not available'
+      : pRows.length || approvedAnon
+        ? `proofreading: ${[...new Set(pRows.map((r) => r.name))].join(', ') || 'unnamed'}, ${n(approvedNamed + approvedAnon)} seeds approved`
+        : 'no proofreading recorded in Popty (notes applied by agents are not named — see report)',
   ]
   return `Weekly people report (${when(d.since, d.now)} – ${when(d.now, d.now)}): ${bits.join('; ')}.`
 }
 
 module.exports = {
   OP_GROUPS, PROOF_GROUPS, STALL_MS, APPROVAL_MATCH_MS,
-  opGroup, isTestPerson, seedRanges, peopleIndex, addEvent, emptyTally,
+  opGroup, isTestPerson, seedRanges, peopleIndex, addEvent, emptyTally, uploadMap, surfaceLine,
   recorderRows, builderRows, proofRows, approvalActor, renderReport, summaryLine, when,
 }
