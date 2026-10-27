@@ -110,6 +110,70 @@ function uuidFromS3Key(s3Key) {
 }
 
 // =============================================================================
+// WHICH CLIP SPEAKS A TEXT — THE ONE THE COURSE LINKS (job #427, 2026-10-27)
+// =============================================================================
+// The legacy manifest keys audio by TEXT, but course_audio holds every clip ever
+// filed for a course, linked or not. Indexing all of them last-row-wins let an
+// UNLINKED clip speak for a text the course's own slots say something else for:
+// on ita_for_eng 22 orphan June 2026 stage-0 rows ("Lunedì.", "Twenty."; xAI
+// voices, Mac-ffmpeg encoded, no slot points at them) won over the linked cast
+// clips, and export Step 2 refused them as BADLY ENCODED. The same habit missed
+// 7 presentations: they were found only by the course_audio.lego_id stamp, and
+// the clips the LEGOs' presentation_audio_id slots hold carry no such stamp, so
+// "missing presentation" was reported for LEGOs whose intro was linked and live.
+// Rule: a clip a seed/LEGO/phrase slot links beats one none does; a LEGO's
+// presentation is the clip its slot links, the lego_id stamp only a fallback.
+
+const SLOT_COLUMNS = ['known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id']
+
+/** Pure. Every audio id a seed/LEGO/phrase slot links, lower-cased. */
+function collectLinkedAudioIds(...rowLists) {
+  const ids = new Set()
+  for (const rows of rowLists) {
+    for (const row of rows || []) {
+      for (const col of SLOT_COLUMNS) if (row[col]) ids.add(String(row[col]).toLowerCase())
+    }
+  }
+  return ids
+}
+
+/**
+ * Pure. (normalized text|language|role) -> record. A linked record is never
+ * displaced by an unlinked one; otherwise the later record wins, as before.
+ */
+function indexAudioByText(records, linkedIds = null, { skipPending = false } = {}) {
+  const lookup = new Map()
+  const isLinked = (r) => !!(linkedIds && r.id && linkedIds.has(String(r.id).toLowerCase()))
+  for (const record of records || []) {
+    if (skipPending && record.s3_key?.startsWith('pending/')) continue
+    const key = `${normalizeTextForAudio(record.text_normalized)}|${record.language}|${record.role}`
+    const held = lookup.get(key)
+    if (held && isLinked(held) && !isLinked(record)) continue
+    lookup.set(key, record)
+  }
+  return lookup
+}
+
+/**
+ * Pure. lego_id -> mastered presentation record: the clip the LEGO's
+ * presentation_audio_id slot links first, the course_audio.lego_id stamp second.
+ */
+function indexPresentationsByLego(records, legos) {
+  const mastered = (r) => r && r.s3_key && !r.s3_key.startsWith('pending/')
+  const byId = new Map()
+  const byLego = new Map()
+  for (const r of records || []) {
+    if (r.id) byId.set(String(r.id).toLowerCase(), r)
+    if (r.role === 'presentation' && r.lego_id && mastered(r)) byLego.set(r.lego_id, r)
+  }
+  for (const lego of legos || []) {
+    const slot = lego.presentation_audio_id && byId.get(String(lego.presentation_audio_id).toLowerCase())
+    if (mastered(slot)) byLego.set(lego.lego_id, slot)
+  }
+  return byLego
+}
+
+// =============================================================================
 // DATABASE LOADERS
 // =============================================================================
 
@@ -124,7 +188,7 @@ async function loadSeedsFromDB(courseCode, releaseTarget = 260) {
 
   const { data, error } = await client
     .from('course_seeds')
-    .select('seed_number, seed_id, known_text, target_text')
+    .select('seed_number, seed_id, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
     .eq('course_code', courseCode)
     .eq('status', 'released')
     .lte('seed_number', releaseTarget)
@@ -149,7 +213,7 @@ async function loadLegosFromDB(courseCode, releaseTarget = 260) {
 
   const { data, error } = await client
     .from('course_legos')
-    .select('seed_number, lego_index, lego_id, type, is_new, known_text, target_text')
+    .select('seed_number, lego_index, lego_id, type, is_new, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id')
     .eq('course_code', courseCode)
     .lte('seed_number', releaseTarget)
     .order('seed_number')
@@ -174,7 +238,7 @@ async function loadPracticePhrasesFromDB(courseCode, releaseTarget = 260) {
 
   const { data, error } = await client
     .from('course_practice_phrases')
-    .select('seed_number, lego_index, word_count, known_text, target_text, position, phrase_role')
+    .select('seed_number, lego_index, word_count, known_text, target_text, position, phrase_role, known_audio_id, target1_audio_id, target2_audio_id')
     .eq('course_code', courseCode)
     .lte('seed_number', releaseTarget)
     .order('seed_number')
@@ -745,7 +809,7 @@ function validateAndCleanManifest(seeds, samples, encouragements, labels = new M
 // SAMPLES BUILDER
 // =============================================================================
 
-function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang) {
+function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang, linkedIds = null) {
   const samples = {}
   // Per-role lookup failures — text appears in the manifest but no audio was
   // found for that role. Caused by audio drift (target_text changed after
@@ -761,13 +825,8 @@ function buildSamplesDictionary(audioRecords, allTexts, knownLang, targetLang) {
 
   // Build lookup by normalized text + language + role
   // Use punctuation-stripped normalization to match phase 8 audio generation
-  const audioLookup = new Map()
-  for (const record of audioRecords) {
-    // Normalize the stored text_normalized to strip punctuation (matching phase8 logic)
-    const normalizedKey = normalizeTextForAudio(record.text_normalized)
-    const key = `${normalizedKey}|${record.language}|${record.role}`
-    audioLookup.set(key, record)
-  }
+  // A clip a course slot links wins over an unlinked one (see indexAudioByText).
+  const audioLookup = indexAudioByText(audioRecords, linkedIds)
 
   // Process each unique text
   for (const { text, isKnown } of allTexts) {
@@ -1187,6 +1246,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
   ])
 
   console.error(`  Database: ${dbSeeds?.length || 0} seeds, ${dbLegos?.length || 0} LEGOs, ${dbPhrases?.length || 0} phrases, ${dbAudio?.length || 0} audio`)
+  const linkedAudioIds = collectLinkedAudioIds(dbSeeds, dbLegos, dbPhrases)
 
   // 3. Load welcome and encouragements from database
   const { welcome, instructions, encouragements: encouragementsList, paywallEncouragements: paywallList } = await loadWelcomeAndEncouragements(courseCode, knownLang, targetLang)
@@ -1340,7 +1400,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
   // 8. Build samples dictionary
   const textsArray = Array.from(allTexts).map(s => JSON.parse(s))
   console.error(`  Collected ${textsArray.length} unique texts for samples`)
-  const { samples, missingSamples } = buildSamplesDictionary(dbAudio, textsArray, knownLang, targetLang)
+  const { samples, missingSamples } = buildSamplesDictionary(dbAudio, textsArray, knownLang, targetLang, linkedAudioIds)
   console.error(`  Built samples dictionary with ${Object.keys(samples).length} entries`)
 
   // Surface per-role lookup failures. A text can have e.g. target1 audio but
@@ -1442,14 +1502,7 @@ async function generateLegacyManifest(courseCode, options = {}) {
       console.error(`\n  Using existing presentations as-is (${introItems.length} items, skipping target concatenation)...`)
 
       // Build presentation lookup: lego_id -> record (mastered only)
-      const presentationByLegoId = new Map()
-      if (dbAudio) {
-        for (const record of dbAudio) {
-          if (record.role === 'presentation' && record.lego_id && !record.s3_key?.startsWith('pending/')) {
-            presentationByLegoId.set(record.lego_id, record)
-          }
-        }
-      }
+      const presentationByLegoId = indexPresentationsByLego(dbAudio, dbLegos)
       console.error(`  Found ${presentationByLegoId.size} existing presentation audio records`)
 
       let linked = 0, missing = 0
@@ -1490,29 +1543,10 @@ async function generateLegacyManifest(courseCode, options = {}) {
       // Normal path: concatenate narration + target1 + target2
       console.error(`\n  Generating combined presentation audio (${introItems.length} items)...`)
 
-      // Build audio lookup map: (text_normalized|language|role) -> record
-      const audioLookup = new Map()
-      // Build presentation lookup map: lego_id -> record (presentation audio uses lego_id)
-      // IMPORTANT: Only include mastered audio, not pending placeholders
-      const presentationByLegoId = new Map()
-      if (dbAudio) {
-        for (const record of dbAudio) {
-          // Skip pending audio - these are placeholders without real files
-          const isPending = record.s3_key?.startsWith('pending/')
-
-          // For presentation role, index by lego_id (only mastered)
-          if (record.role === 'presentation' && record.lego_id && !isPending) {
-            presentationByLegoId.set(record.lego_id, record)
-          }
-          // Also index by text for target1/target2 lookup (only mastered)
-          // Use normalizeTextForAudio to strip punctuation for consistent matching
-          if (!isPending) {
-            const normalizedText = normalizeTextForAudio(record.text_normalized)
-            const key = `${normalizedText}|${record.language}|${record.role}`
-            audioLookup.set(key, record)
-          }
-        }
-      }
+      // (text|language|role) -> mastered record, a slot-linked clip first; and
+      // lego_id -> the presentation the LEGO's slot links (see indexAudioByText).
+      const audioLookup = indexAudioByText(dbAudio, linkedAudioIds, { skipPending: true })
+      const presentationByLegoId = indexPresentationsByLego(dbAudio, dbLegos)
       console.error(`  Audio lookup: ${audioLookup.size} by text, ${presentationByLegoId.size} presentations by lego_id`)
 
       const { results: combinedPresentationMap, errors: combErrors, skipped: combSkipped } = await generateCombinedPresentations(
@@ -1857,6 +1891,10 @@ if (require.main === module) {
 
 module.exports = {
   generateLegacyManifest,
+  collectLinkedAudioIds,
+  indexAudioByText,
+  indexPresentationsByLego,
+  buildSamplesDictionary,
   generateCombinedPresentations,
   getCombinedVoiceSig,
   validateManifest,
