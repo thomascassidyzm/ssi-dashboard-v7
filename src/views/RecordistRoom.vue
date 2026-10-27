@@ -1107,6 +1107,9 @@ const SECTION_ORDER = [
   // AFTER THE SEEDS, because a phrase is built from a seed's LEGOs. One batch at
   // a time (job #619); the heading names the pass and the batch (rosterSections).
   { key: 'phrase', heading: 'PRACTICE PHRASES', blurb: 'Practice phrases, in course order, one batch at a time. The first pass is the phrases the app plays first; the rest come on a second pass later.' },
+  // THE ONCE-RECORDED INTRO PIECES (job #210): every LEGO intro of the new North and South courses is spliced from these
+  // two takes, his English take of the LEGO and the Welsh — read once each, for both courses.
+  { key: 'intro', heading: 'Intro pieces', blurb: 'Two short pieces, read once each: every LEGO intro in the new North and South courses is put together from them — "The Welsh for" + your English LEGO + "is" + the Welsh. Read them the way you would say them in an intro.' },
 ]
 // ONE POD IS NOT EVERY POD. Tom, 2026-09-04: "Aran's lines are now confusing -
 // this special senedd pod lines are mixed in with his recorded already POD

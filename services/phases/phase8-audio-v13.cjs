@@ -36,6 +36,8 @@ const clipIndex = require('../shared/clip-index.cjs')
 const voicingPolicy = require('../shared/voicing-policy.cjs')
 const trialMode = require('../shared/audio-trial-mode.cjs')
 const introSplice = require('../shared/intro-splice.cjs')
+const humanIntro = require('../shared/human-intro-splice.cjs')
+const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 const { renderClip, rerecordPatch, roleNativeLanguage, RenderRequestError } = require('../shared/audio-render-entry.cjs')
 const drillCutGuard = require('../shared/drill-cut-guard.cjs')
 const { phraseRenderDoor, PHRASE_REUSE_LOOKUP } = require('../shared/phrase-render-door.cjs')
@@ -5631,7 +5633,76 @@ function buildRenderDeps() {
   }
   // DICE AND SPLICE (job #516, Tom 2026-10-11): an English-known presentation intro is built from existing Charlotte clips.
   deps.spliceIntro = (req) => spliceIntroForRoute(req, deps)
+  // HUMAN-SPLICED INTROS (Aran 2026-10-27, job #210): cym_nv2/sv2 intros in Aran's own voice, from his takes — never rendered.
+  deps.humanIntro = (req) => humanIntroForRoute(req)
   return deps
+}
+
+/**
+ * One human-spliced intro (services/shared/human-intro-splice.cjs) with this service's own reads and writes. Null for a
+ * course not in voicing-policy humanSplicedIntros. Reads by key only; the stored clip is a course_audio row of the human
+ * voice, origin human, spliced_from naming every take it is made of; the LEGO's presentation slot is filled only if EMPTY.
+ */
+async function humanIntroForRoute(req) {
+  if (!humanIntro.humanIntroConfig(req.courseCode)) return null
+  const hooks = {
+    loadLego: async (courseCode, legoId) => {
+      const { data, error } = await supabase.from('course_legos').select('lego_id, known_text, target_text, target1_audio_id, presentation_audio_id')
+        .eq('course_code', courseCode).eq('lego_id', legoId).maybeSingle()
+      if (error) throw new Error(`course_legos unreadable: ${error.message}`)
+      return data
+    },
+    // This voice's English takes of these words, any course and any slot but an intro, newest first per wording.
+    findTakes: async (voiceId, texts) => {
+      const keys = [...new Set(texts.flatMap((t) => audioKeyCandidates(normalizeForAudio(t))))]
+      const out = new Map()
+      if (!keys.length) return out
+      const { data, error } = await supabase.from('course_audio').select('id, s3_key, text, text_normalized, created_at')
+        .eq('language', 'eng').in('voice_id', voiceSpellings(voiceId)).in('text_normalized', keys).neq('role', 'presentation')
+        .order('created_at', { ascending: false })
+      if (error) throw new Error(`take lookup failed: ${error.message}`)
+      for (const row of data || []) if (!out.has(row.text_normalized) && row.s3_key && !row.s3_key.startsWith('pending/')) out.set(row.text_normalized, row)
+      return out
+    },
+    loadClip: async (id) => {
+      const { data, error } = await supabase.from('course_audio').select('id, s3_key, text, origin').eq('id', id).maybeSingle()
+      if (error) throw new Error(`course_audio unreadable: ${error.message}`)
+      return data
+    },
+    findIntro: async (courseCode, text, voiceId) => {
+      const { data, error } = await supabase.from('course_audio').select('id, s3_key').eq('course_code', courseCode).eq('role', 'presentation')
+        .eq('language', 'eng').eq('voice_id', voiceId).eq('text_normalized', normalizeForAudio(text)).maybeSingle()
+      if (error) throw new Error(`intro lookup failed: ${error.message}`)
+      return data && data.s3_key && !data.s3_key.startsWith('pending/') ? data : null
+    },
+    fetchObject: async (key) => {
+      const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: key }))
+      return Buffer.from(await r.Body.transformToByteArray())
+    },
+    decode: introSplice.decodeMono,
+    join: introSplice.joinPcm,
+    encode: introSplice.encodeWav,
+    master: async (wav, text) => masterAudio(wav, text, {}),
+    store: async ({ courseCode, text, legoId, voiceId, buffer, durationMs, splicedFrom }) => {
+      const s3Key = `mastered/${uuidv4().toUpperCase()}.mp3`
+      await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
+      const { data: row, error } = await supabase.from('course_audio').upsert({
+        course_code: courseCode, text, text_normalized: normalizeForAudio(text), language: 'eng', role: 'presentation', voice_id: voiceId,
+        lego_id: legoId, origin: 'human', s3_key: s3Key, duration_ms: durationMs, word_boundaries: null, spliced_from: splicedFrom,
+      }, { onConflict: 'course_code,text_normalized,language,role,voice_id' }).select().single()
+      if (error) throw new Error(`course_audio write failed for the human intro: ${error.message} (object ${s3Key} is in S3)`)
+      await clipIndex.writeThrough(supabase, [{ id: row.id, text, language: 'eng', voice_id: voiceId, s3_key: s3Key, origin: 'human' }], 'phase8:human-intro', logger)
+      return { audioId: row.id, s3Key }
+    },
+    // FILL ONLY: an intro already linked (anyone's) is never displaced.
+    linkFill: async (courseCode, legoId, audioId) => {
+      const { data, error } = await supabase.from('course_legos').update({ presentation_audio_id: audioId })
+        .eq('course_code', courseCode).eq('lego_id', legoId).is('presentation_audio_id', null).select('lego_id')
+      if (error) throw new Error(`course_legos.presentation_audio_id link failed: ${error.message}`)
+      return { linked: !!(data && data.length) }
+    },
+  }
+  return humanIntro.buildHumanIntro({ courseCode: req.courseCode, legoId: req.legoId, text: req.text, dryRun: req.dryRun }, hooks)
 }
 
 /**
@@ -5691,7 +5762,7 @@ app.post('/render', async (req, res) => {
     const out = await renderClip(req.body || {}, buildRenderDeps())
     res.json(out)
   } catch (error) {
-    if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
+    if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message, ...(error.waitingOn ? { waitingOn: error.waitingOn } : {}), ...(error.expected ? { expected: error.expected } : {}) })
     if (error && error.name === 'TrialRefusal') return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
     if (error && error.code === 'RERECORD_NOT_PERMITTED') return res.status(403).json({ ok: false, code: error.code, error: error.message })
     // A spend-guard refusal is a 402 carrying its own code; anything else is a 500.

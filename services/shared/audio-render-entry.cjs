@@ -128,6 +128,18 @@ async function renderClip(input, deps) {
     if (req.trial) return trialRender(req, deps)
     if (req.adoptS3Key) return adoptPaid(req, deps)
     if (req.replaceAudioId) return rerecord(req, deps)
+    // HUMAN-SPLICED INTROS (Aran 2026-10-27, job #210): a course whose intros are made from a human reader's own takes
+    // (voicing-policy humanSplicedIntros) is answered here, before any voice is resolved, and never falls through to a
+    // render: a missing piece throws INTRO_WAITING. null = not such a course, so the normal path carries on.
+    if (req.role === 'presentation' && deps.humanIntro) {
+      try {
+        const built = await deps.humanIntro(req)
+        if (built) return { purpose: req.purpose, requestedBy: req.requestedBy, ...built }
+      } catch (e) {
+        if (e && e.code && e.status) throw Object.assign(new RenderRequestError(e.message, e.status, e.code), e.waitingOn ? { waitingOn: e.waitingOn } : {}, e.expected ? { expected: e.expected } : {})
+        throw e
+      }
+    }
     const r = await deps.resolve(req)
     const ident = { ...req, language: r.language, voiceId: r.voiceId }
 

@@ -114,6 +114,7 @@ const { spokenWordsKey, sameSpokenWords } = require('../shared/spoken-words.cjs'
 const { soloReaders, isSoloReaderPod } = require('../shared/pod-solo-readers.cjs')
 const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
+const introPieces = require('./intro-piece-lines.cjs')
 const { primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
 const langService = require('../language-code-service.cjs')
 
@@ -2942,8 +2943,9 @@ async function fetchRerecordWanted(db, courseCodes) {
  */
 async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSeed, maskRejectedHistory = true } = {}) {
   const language = await cachedLanguageLines(db, recordist.language, { quarryMaxSeed, cache: new Map() })
-  // By VOICE ID, for a policy voice and a cast-only voice alike (linesForVoice).
-  const mine = linesForVoice(language, recordist)
+  // By VOICE ID, for a policy voice and a cast-only voice alike (linesForVoice). A voice whose own takes make a
+  // course's LEGO intros also reads that course's once-recorded intro pieces first (job #210, intro-piece-lines.cjs).
+  const mine = [...introPieces.introPieceLinesFor(recordist), ...linesForVoice(language, recordist)]
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.
