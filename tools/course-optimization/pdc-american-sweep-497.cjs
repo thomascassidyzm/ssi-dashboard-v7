@@ -81,9 +81,31 @@ async function main() {
   console.log(`plan: ${p.ops.length} ops; changes ${JSON.stringify(by)}; ${p.seeds.length} seeds unapproved`);
   if (mode === 'plan') { fs.writeFileSync(path.join(process.env.CS_SCRATCH || '.', 'pdc-plan.json'), JSON.stringify(p)); return; }
   const apply = mode === 'apply' && process.env.APPLY_CONFIRM === '1';
-  const res = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops: p.ops, ...(apply ? { apply: true } : {}) });
-  console.log(`${apply ? 'APPLY' : 'dry run'} HTTP ${res.status} ${JSON.stringify(res.body).slice(0, 1200)}`);
-  if (apply) fs.writeFileSync(path.join(process.env.LOG_DIR || process.cwd(), `pdc-american-sweep-applied-${Date.now()}.json`), JSON.stringify({ res: res.body, changes: p.changes }, null, 1));
+  // Popty's API restarts every few minutes on this host, and one 873-op request outlives that; so one request per ~100 ops, grouped
+  // by seed (a seed's unapprove goes with its edits). Every op carries an `expect`, so a chunk re-posted after a dropped
+  // connection is refused as drift if it had in fact applied — never applied twice. A chunk that did not apply is retried.
+  const log = [];
+  for (const [i, ops] of chunks(p.ops).entries()) {
+    let res;
+    for (let attempt = 1; attempt <= 6; attempt++) {
+      try { res = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops, ...(apply ? { apply: true } : {}) }); break; }
+      catch (e) { console.log(`chunk ${i} attempt ${attempt}: ${e.cause?.code || e.message}`); await new Promise((r) => setTimeout(r, 15000)); }
+    }
+    console.log(`${apply ? 'APPLY' : 'dry run'} chunk ${i} (${ops.length} ops) HTTP ${res?.status} ${res?.body?.ok === true ? 'ok event ' + res.body.event_id : JSON.stringify(res?.body).slice(0, 500)}`);
+    log.push({ chunk: i, status: res?.status, event_id: res?.body?.event_id, undo: res?.body?.undo_ops || res?.body?.undo });
+    if (!res || res.status !== 200) { console.log('stopping: chunk failed'); break; }
+  }
+  if (apply) fs.writeFileSync(path.join(process.env.LOG_DIR || process.cwd(), `pdc-american-sweep-applied-${Date.now()}.json`), JSON.stringify({ log, changes: p.changes }, null, 1));
+}
+
+const opSeed = (o) => o.seed_number ?? Number((o.phrase_id || o.lego_id).split(':').pop().slice(1, 5));
+function chunks(ops, size = 100) {
+  const bySeed = new Map();
+  for (const o of ops) { const k = opSeed(o); if (!bySeed.has(k)) bySeed.set(k, []); bySeed.get(k).push(o); }
+  const out = []; let cur = [];
+  for (const [, g] of [...bySeed.entries()].sort((a, b) => a[0] - b[0])) { if (cur.length && cur.length + g.length > size) { out.push(cur); cur = []; } cur.push(...g); }
+  if (cur.length) out.push(cur);
+  return out;
 }
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
-module.exports = { americanise, isQuestionRow, plan };
+module.exports = { americanise, isQuestionRow, plan, chunks };
