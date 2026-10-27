@@ -7,7 +7,7 @@
          that had already been thrown away after three failed tries, and Aran
          finished a ~250-line session unable to tell. The three states below are
          genuinely different things and they must never be worded the same. -->
-    <div v-if="safetyBanner" class="safety-banner" :class="[safetyBanner.cls, { slim: phase === 'home' && safetyBanner.cls === 'waiting' }]" data-test="safety-banner">
+    <div class="safety-banner" :class="[safetyBanner.cls, { slim: phase === 'home' && (safetyBanner.cls === 'waiting' || safetyBanner.cls === 'done') }]" data-test="safety-banner">
       <strong :title="safetyBanner.detail">{{ safetyBanner.head }}</strong>
       <span>{{ safetyBanner.detail }}</span>
     </div>
@@ -2041,7 +2041,9 @@ const safetyBanner = computed(() => {
         : 'Saved on this device and uploading now. Nothing is lost if you close this page.',
     }
   }
-  return null
+  // Never null (Aran, job #340): the line is always on screen, so uploads catching up changes its
+  // words and colour but never its height — nothing below it jumps.
+  return { cls: 'done', head: 'All takes uploaded, brilliant work!', detail: 'Everything you have recorded is safely on the server.' }
 })
 
 const doneHeadline = computed(() => {
@@ -3657,6 +3659,11 @@ onDeactivated(() => {
   line-height: 1.45;
   border: 1px solid transparent;
 }
+/* FIXED HEIGHT IN EVERY STATE (job #340): uploading N / all uploaded / at risk / refused all occupy
+   the same box, so the page below never moves when the words change. Detail is clamped, never grown. */
+.safety-banner { height: 5rem; box-sizing: border-box; overflow: hidden; justify-content: center; }
+.safety-banner span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.safety-banner.done { background: #10301f; border-color: #2f9e62; color: #d6f5e3; }
 .safety-banner strong { font-size: 0.92rem; font-weight: 600; }
 /* No opacity on the detail line. "Nothing is lost if you close this page" is
    the sentence that decides whether an artist closes the tab on a session's
@@ -4152,6 +4159,7 @@ kbd {
 :root[data-theme="light"] .ctl-pause:not(.paused) { border-color: var(--line); }
 /* The safety banner again, for white. Same three-way distinction, same hues,
    inverted weight: deep ink on a pale wash instead of pale ink on a deep one. */
+:root[data-theme="light"] .safety-banner.done { background: #dcf3e5; border-color: #15803d; color: #0f4a26; }
 :root[data-theme="light"] .safety-banner.waiting { background: #dbe9fb; border-color: #2563eb; color: #14306e; }
 :root[data-theme="light"] .safety-banner.risk { background: #fbe2df; border-color: #b91c1c; color: #7a1512; }
 :root[data-theme="light"] .safety-banner.refused { background: #fbeed6; border-color: #b45309; color: #6b3c06; }
@@ -4170,14 +4178,16 @@ kbd {
   height: calc(100dvh - var(--app-navbar-height, 0px)); min-height: 0;
   overflow: hidden;
 }
-.recordist.fit > .safety-banner { flex: none; margin: 0.5rem 0.75rem 0; padding: 0.45rem 0.75rem; }
+.recordist.fit > .safety-banner { flex: none; margin: 0.5rem 0.75rem 0; padding: 0.45rem 0.75rem; height: 4.6rem; }
 /* While he reads, an upload that is simply on its way is one line, not three: takes go up after
    every line, and the reassurance is said in full on the batch page and the done screen. A take
    at risk or refused keeps its whole sentence. */
-.recordist.fit.live > .safety-banner.waiting { flex-direction: row; padding: 0.3rem 0.75rem; }
-.recordist.fit.live > .safety-banner.waiting span { display: none; }
+.recordist.fit.live > .safety-banner.waiting,
+.recordist.fit.live > .safety-banner.done { flex-direction: row; align-items: center; padding: 0.3rem 0.75rem; height: 2.2rem; }
+.recordist.fit.live > .safety-banner.waiting span,
+.recordist.fit.live > .safety-banner.done span { display: none; }
 /* On the home page the uploading notice is ONE slim line (Aran, 2026-10-15, job #806); the detail stays in the title. */
-.safety-banner.slim { flex-direction: row; padding: 0.3rem 0.75rem; }
+.safety-banner.slim { flex-direction: row; align-items: center; padding: 0.3rem 0.75rem; height: 2.2rem; }
 .safety-banner.slim span { display: none; }
 
 .where {

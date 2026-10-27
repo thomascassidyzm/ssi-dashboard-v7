@@ -78,7 +78,7 @@ describe('booth home — refused takes are rows of the one Re-record card', () =
     expect(w.findAll('[data-test="rerecord-card"]')).toHaveLength(1)
     expect(w.find('[data-test="refused-list"]').exists()).toBe(false)
     expect(w.findAll('[data-test^="refused-row-"]')).toHaveLength(0)
-    expect(w.find('.safety-banner').exists()).toBe(false)
+    expect(w.find('.safety-banner.done').exists()).toBe(true) // calm fixed-height line (job #340)
     // 1 skipped (s3) + 2 refused on lines still in the queue = 3; the 3rd refused take is old.
     expect(card(w).find('[data-test="rerecord-count"]').text()).toBe('3 lines to re-record')
     expect(card(w).find('[data-test="rerecord-breakdown"]').text()).toBe("2 didn't save · 1 skipped")

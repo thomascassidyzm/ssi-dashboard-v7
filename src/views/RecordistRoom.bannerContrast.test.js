@@ -25,7 +25,7 @@ beforeEach(() => { if (typeof localStorage === 'undefined') return; for (const k
 
 const css = readFileSync(fileURLToPath(new URL('./RecordistRoom.vue', import.meta.url)), 'utf8')
 
-const VARIANTS = ['waiting', 'risk', 'refused']
+const VARIANTS = ['waiting', 'risk', 'refused', 'done']
 const AA_NORMAL_TEXT = 4.5
 
 function ruleFor(variant, theme) {

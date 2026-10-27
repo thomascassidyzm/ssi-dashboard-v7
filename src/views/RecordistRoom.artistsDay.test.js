@@ -135,7 +135,7 @@ function counts(w) {
 }
 function banner(w) {
   const b = w.find('.safety-banner')
-  return b.exists() ? { cls: b.classes().filter(c => c !== 'safety-banner').join(' '), text: b.text() } : null
+  return b.exists() && !b.classes().includes('done') ? { cls: b.classes().filter(c => c !== 'safety-banner').join(' '), text: b.text() } : null
 }
 function refusedListed(w) {
   return w.findAll('.redo-list li').map(li => ({ text: li.find('.redo-text').text(), why: li.find('.redo-why').text() }))
