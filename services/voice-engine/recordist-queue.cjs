@@ -2862,7 +2862,8 @@ async function sameWordsGaps({ db, recordist }) {
     for (const line of recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])) {
       for (const c of line.copies) {
         if (c.holder) continue
-        op(c.courseCode, 'phrase', line.role, line.text, { target: 'phrase', phrase_id: c.phraseId })
+        // The copy's OWN words: copies merged across courses may differ in punctuation (job #198).
+        op(c.courseCode, 'phrase', line.role, c.text || line.text, { target: 'phrase', phrase_id: c.phraseId })
       }
     }
   }

@@ -187,7 +187,7 @@ function courseRoleLines(courseCode, units, role, { holderOf, isMine, flagged = 
       if (holder && !isMine(holder)) return
       // Deduped by SPOKEN WORDS (job #198): a '?' or a curly apostrophe is not a second recording.
       const key = spokenWordsKey(text)
-      const copy = { phraseId: u.phrase.id, courseCode, holder: holder || null, flagged: flagged.has(u.phrase.id) }
+      const copy = { phraseId: u.phrase.id, courseCode, text, holder: holder || null, flagged: flagged.has(u.phrase.id) }
       const have = lines.get(key)
       if (have) { have.copies.push(copy); return }
       lines.set(key, {

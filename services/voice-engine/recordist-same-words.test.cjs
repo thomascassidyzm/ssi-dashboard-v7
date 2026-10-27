@@ -160,6 +160,8 @@ describe('recorded means "these words have a take", whichever line asked for the
     const lines = phraseQueue.courseRoleLines(NV2, units, 'target2', { holderOf: () => '', isMine: () => true })
     expect(lines.length).toBe(1)
     expect(lines[0].copies.map((c) => c.phraseId)).toEqual([`${NV2}:p1`, `${NV2}:p2`])
+    // each copy keeps its own words, so the edit door can check a link against them
+    expect(lines[0].copies.map((c) => c.text)).toEqual(['Dach chi’n barod rŵan?', "dach chi'n barod rŵan"])
   })
 })
 
