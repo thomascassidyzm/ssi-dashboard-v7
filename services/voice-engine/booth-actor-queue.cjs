@@ -37,6 +37,7 @@
  */
 'use strict'
 
+const { primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
 const POD_KINDS = new Set(['pod', 'takeg'])
 
 const ACTOR_QUEUES = {
@@ -174,13 +175,14 @@ function nextStepFor(voiceId, lines, currentStep, queues = ACTOR_QUEUES, { phras
   const here = at === -1 ? null : steps[at]
   const batches = here ? planFor(here) : null
   if (batches) {
-    const numbered = batches.map((b) => ({ b, n: batches.filter((x) => x.pass === b.pass).indexOf(b) + 1 }))
+    // Numbered per card (course and pass), as the home screen's cards number them (job #179).
+    const numbered = batches.map((b) => ({ b, n: batches.filter((x) => x.pass === b.pass && x.courseCode === b.courseCode).indexOf(b) + 1 }))
     const served = numbered.findIndex(({ b }) => b.pass === phrases.pass && b.batch === phrases.batch && b.courseCode === phrases.courseCode)
     const pick = numbered.slice(served + 1).find(({ b }) => owed(b) > 0)
     if (pick) {
       const left = owed(pick.b)
       const label = `${here.title}, pass ${pick.b.pass} batch ${pick.n} (${left})`
-      laterBatch = { ...tally[at], label, podTitle: label, track: `phrase.${pick.b.pass}`, batch: pick.n, remaining: left }
+      laterBatch = { ...tally[at], label, podTitle: label, track: phraseTrackKey(pick.b.pass, pick.b.courseCode, primaryPhraseCourse(plan)), batch: pick.n, remaining: left }
     }
   }
   return {

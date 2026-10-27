@@ -115,8 +115,9 @@ export function placeFromEntry(e) {
  */
 export function trackLocked(t, tracks) {
   if (t.kind !== 'phrase' || t.pass !== 2) return false
-  const p1 = tracks.find((x) => x.key === 'phrase.1')
-  return !!(p1 && !isFinished(p1))
+  // Pass 2 opens when pass 1 is finished everywhere — the server's rule spans every course, and
+  // since job #179 a two-course reader has a pass-1 card per course.
+  return tracks.some((x) => x.kind === 'phrase' && x.pass === 1 && !isFinished(x))
 }
 /** Is this the batch Up next may recommend? Sentences and LEGOs: any; phrases: the served one. */
 export function batchRecommendable(t, b, tracks) {

@@ -29,7 +29,7 @@
  */
 'use strict'
 
-const { trackKeyOf, chunkTrack } = require('./booth-home.cjs')
+const { trackKeyOf, chunkTrack, primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
 const { audioKeyCandidates, normalizeForAudio } = require('../shared/text-normalize.cjs')
 
 /** The track key of the re-record batch itself (`?track=rerecord&batch=1`). */
@@ -59,12 +59,15 @@ function batchesOf(queueLines, phraseLines = [], phraseBatches = []) {
     if (!groups.has(g)) groups.set(g, [])
     groups.get(g).push(l)
   }
-  for (const pass of [1, 2]) {
-    const mine = (phraseBatches || []).filter((b) => b.pass === pass)
-    mine.forEach((b, i) => {
-      const lines = groups.get(`${pass}\u0000${b.batch}\u0000${b.courseCode}`)
-      if (lines && lines.length) out.push({ track: `phrase.${pass}`, batch: i + 1, lines })
-    })
+  // One card per course and pass, numbered as the home card numbers them (booth-home, job #179).
+  const primary = primaryPhraseCourse(phraseBatches)
+  const cardN = new Map()
+  for (const b of phraseBatches || []) {
+    const track = phraseTrackKey(b.pass, b.courseCode, primary)
+    const n = (cardN.get(track) || 0) + 1
+    cardN.set(track, n)
+    const lines = groups.get(`${b.pass}\u0000${b.batch}\u0000${b.courseCode}`)
+    if (lines && lines.length) out.push({ track, batch: n, lines })
   }
   return out
 }
