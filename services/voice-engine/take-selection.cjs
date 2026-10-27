@@ -64,6 +64,20 @@
 'use strict'
 
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
+const { spokenWordsKey } = require('../shared/spoken-words.cjs')
+
+/**
+ * Every key a text is matched on when asking "has this voice said these words": the audio
+ * identity keys AND the spoken-words key (shared/spoken-words.cjs). Both sides of a match — the
+ * recordist's key set and the line — are built with this, so a take of "dach chi'n barod" counts
+ * for a line reading "Dach chi’n barod?" (Aran's rule: punctuation and case never re-ask, job #198).
+ */
+function wordKeys(text) {
+  const out = audioKeyCandidates(text)
+  const k = spokenWordsKey(text)
+  if (k && !out.includes(k)) out.push(k)
+  return out
+}
 
 /**
  * Is this line RECORDED for this recordist — does the server hold a confirmed
@@ -87,7 +101,18 @@ function isLineRecorded(line, { recordedKeys, spellings }) {
   // what the splicer will cut from: a natural-pace take of the same words on a
   // pod line is a different line, not this one. So a LEGO piece is scored by
   // its slot alone (null on a fallback WORD, which owns no row).
-  if (Array.isArray(line.slotFilledBy)) return line.slotFilledBy.some(mine)
+  //
+  // A BOOTH LEGO (kind 'lego', read at natural pace) is the exception, and `byWords` says so: it is
+  // ONE recording with any line of exactly its words (Aran, 2026-10-15: "If a whole sentence is
+  // exactly the same as a lego, we should definitely use the same recording for both"; job #198:
+  // the seed take landed, then the LEGO of the same words was asked for again, 10 times on 27 Oct).
+  // A stored take of its words is a confirmed upload; the take route fills its slot from that take
+  // (fillSameWordsSlots) and tools/recording/fill-same-words-gaps.cjs closes older gaps.
+  if (Array.isArray(line.slotFilledBy)) {
+    if (line.slotFilledBy.some(mine)) return true
+    if (!line.byWords) return false
+    return !!recordedKeys && wordKeys(line.text).some((k) => recordedKeys.has(k))
+  }
   const slots = [
     ...(Array.isArray(line.seedFilledBy) ? line.seedFilledBy : []),
     ...(Array.isArray(line.filledBy) ? line.filledBy : []),
@@ -101,7 +126,7 @@ function isLineRecorded(line, { recordedKeys, spellings }) {
   // and must, for a line whose slot is deliberately not filled by the take (a
   // synthetic-held slot while replacement is switched off).
   if (line.role === 'known' && !line.knownByText) return false
-  if (recordedKeys && audioKeyCandidates(line.text).some((k) => recordedKeys.has(k))) return true
+  if (recordedKeys && wordKeys(line.text).some((k) => recordedKeys.has(k))) return true
   return false
 }
 
@@ -190,4 +215,4 @@ function pickCurrentTake(rows) {
   }, null)
 }
 
-module.exports = { isLineRecorded, lineHasTake, pickCurrentTake, resolveCurrentClip }
+module.exports = { wordKeys, isLineRecorded, lineHasTake, pickCurrentTake, resolveCurrentClip }

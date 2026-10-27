@@ -109,7 +109,8 @@ const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 const { normalizeForDb, normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { canonicalSpeakerName } = require('./pods-registration.cjs')
 const { canonicalDialect, courseDialect, bucketKey } = require('../shared/dialect.cjs')
-const { isLineRecorded } = require('./take-selection.cjs')
+const { isLineRecorded, wordKeys } = require('./take-selection.cjs')
+const { spokenWordsKey, sameSpokenWords } = require('../shared/spoken-words.cjs')
 const { soloReaders, isSoloReaderPod } = require('../shared/pod-solo-readers.cjs')
 const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
@@ -1122,8 +1123,9 @@ function legoTakeIsCastVoices(heldBy, castEntry) {
  * different recording (#818), and this test is where that line is drawn.
  */
 function legoClipSaysText(clipText, legoText) {
-  const have = normalizeForAudio(String(clipText || ''))
-  return !!have && have === normalizeForAudio(String(legoText || ''))
+  // SAME SPOKEN WORDS, not the same characters (job #198): a slot holding his take of
+  // "esgusodwch fi, dach chi'n barod?" is a take of the LEGO "esgusodwch fi dach chi’n barod".
+  return sameSpokenWords(clipText, legoText)
 }
 
 /** This language's policy voices, and every spelling any of them answers to. */
@@ -2132,7 +2134,8 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
           // asking for this voice (Aran reads the North English prompts).
           if (crossCourse && !syntheticHeld && audioKeyCandidates(text).some((k) => knownTaken.has(k))) { knownLinkable += 1; continue }
           const fkVoice = clipVoice.get(seed[`${role}_audio_id`]) || null
-          const key = `${voiceId}\u0000${role} ${normalizeForDb(text)}`
+          // Collapsed by SPOKEN WORDS (job #198): "she’s gone…" and "she's gone…" are one line.
+          const key = `${voiceId}\u0000${role} ${spokenWordsKey(text)}`
           const position = seedPosition(seed, runningOrder)
           if (seedSeen.has(key)) {
             const rep = seedSeen.get(key)
@@ -2185,6 +2188,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             // may vouch for it (take-selection knownByText): such a slot is not
             // moved by the take while the switch is off, so the slot cannot.
             ...(syntheticHeld ? { syntheticHeld: 1, knownByText: role === 'known' } : {}),
+            // A KNOWN SIDE READ ACROSS COURSES is read by a voice of the known language, whose own
+            // key set vouches for the words (job #198: "he needs to look for work", read for North
+            // at 11:00 and asked for again on the South card at 11:07, 27 Oct).
+            ...(crossCourse ? { knownByText: true } : {}),
           }
           seedSeen.set(key, line)
           byBucket.get(bucket).push(line)
@@ -2246,7 +2253,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
         if (clip && !legoTakeIsCastVoices(heldBy, cast[role])) continue
         // His voice but not these words (job #818): listed, and still to record.
         const held = !!clip && legoClipSaysText(clip.text, text)
-        const key = `${voiceId}\u0000${role} ${normalizeForDb(text)}`
+        const key = `${voiceId}\u0000${role} ${spokenWordsKey(text)}`
         if (legoSeen.has(key)) {
           const rep = legoSeen.get(key)
           rep.duplicateOf.push({ legoRowId: lego.id, courseCode: lego.course_code, role })
@@ -2272,6 +2279,9 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
           legoId: lego.lego_id || null,
           seedNumber: lego.seed_number,
           slotFilledBy: [],
+          // ONE RECORDING FOR THE SAME WORDS (Aran; take-selection isLineRecorded, job #198): a
+          // take of exactly these words — a seed, a phrase, another course — records this LEGO too.
+          byWords: true,
           rerecordWanted: false,
         }
         legoSeen.set(key, line)
@@ -2745,6 +2755,157 @@ async function linkPhraseTake({ db, recordist, phraseId, role, audioId, logger =
 }
 
 /**
+ * Every EMPTY phrase slot of this voice's phrase plan whose words are the take's spoken words
+ * (job #198), on the same side (target or known), pointed at the take: a seed or LEGO take reaching
+ * the practice phrases that say exactly those words. Fill-empty only, conditional on `slot IS NULL`.
+ */
+async function linkPhraseSlotsByWords({ db, recordist, role, text, audioId, logger = console }) {
+  const out = { linked: [] }
+  const key = spokenWordsKey(text)
+  if (!audioId || !key) return out
+  const langs = await phraseQueueLanguages(db)
+  if (!langs.has(recordist.language)) return out
+  const plan = await getPhrasePlan(db)
+  const side = (r) => (r === 'known' ? 'known' : 'target')
+  const lines = recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])
+    .filter((l) => side(l.role) === side(role) && spokenWordsKey(l.text) === key)
+  for (const line of lines) {
+    const col = `${line.role}_audio_id`
+    for (const c of line.copies) {
+      if (c.holder) continue
+      const { data, error } = await db.from('course_practice_phrases')
+        .update({ [col]: audioId }).eq('id', c.phraseId).is(col, null).select('id, course_code')
+      if (error) { logger.error(`[Recordist] phrase link failed for ${c.phraseId}: ${error.message}`); continue }
+      for (const row of data || []) out.linked.push({ phraseId: row.id, courseCode: row.course_code })
+    }
+  }
+  if (out.linked.length) invalidatePhrasePlan(db)
+  return out
+}
+
+/**
+ * THE BACK-FILL PLAN (job #198): every EMPTY seed, LEGO and practice-phrase slot this voice is cast
+ * on whose words it has ALREADY recorded — takes made before fillSameWordsSlots existed — as
+ * edit-door ops (POST /api/production/:course/edit-batch, `audio.link`). Reads only; writes nothing.
+ * The take chosen for a slot is this voice's newest take of the same spoken words on the same side.
+ * Each op carries `expect: {<slot>: null}` so the door refuses it if the slot filled meanwhile, and
+ * `allow_text_mismatch` only where the clip's words differ from the slot's by case/punctuation alone
+ * (the door's own check is the audio key, which keeps a '?' — Aran's rule keeps the take).
+ * tools/recording/fill-same-words-gaps.cjs reads this through
+ * GET /api/recording/voice/:voiceId/same-words-gaps and posts the ops, dry run first.
+ */
+async function sameWordsGaps({ db, recordist }) {
+  const side = (r) => (r === 'known' ? 'known' : 'target')
+  const takes = []
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await db.from('course_audio')
+      .select('id, text, role, created_at')
+      .eq('language', recordist.language)
+      .in('voice_id', recordist.spellings)
+      .order('id')
+      .range(from, from + 999)
+    if (error) throw new Error(`voice takes read failed: ${error.message}`)
+    takes.push(...(data || []))
+    if (!data || data.length < 1000) break
+  }
+  const takeFor = new Map() // side|words -> newest take
+  for (const t of takes) {
+    const k = spokenWordsKey(t.text)
+    if (!k) continue
+    const key = `${side(t.role)}|${k}`
+    const have = takeFor.get(key)
+    if (!have || String(t.created_at || '') > String(have.created_at || '')) takeFor.set(key, t)
+  }
+  const ops = []
+  const op = (courseCode, slot, role, slotText, target) => {
+    const take = takeFor.get(`${side(role)}|${spokenWordsKey(slotText)}`)
+    if (!take) return
+    ops.push({
+      courseCode,
+      words: slotText,
+      takeText: take.text,
+      op: {
+        op: 'audio.link', ...target, slot: role, audio_id: take.id,
+        expect: { [`${role}_audio_id`]: null },
+        ...(normalizeForDb(String(take.text || '').trim()) !== normalizeForDb(String(slotText || '').trim()) ? { allow_text_mismatch: true } : {}),
+      },
+    })
+  }
+
+  const courses = await coursesForLanguage(db, recordist.language)
+  const { known } = await castOnKnownSideCourses(db, recordist.language)
+  const all = [...courses]
+  for (const [code, c] of known) if (!all.some((x) => x.course_code === code)) all.push(c)
+  const { voices: policyVoices } = await policyVoicesForLanguage(db, recordist.language)
+  const castTo = (role, legoOnly = false) => all.filter((c) => {
+    if (legoOnly && !isLegoQueueCourse(c.course_code)) return false
+    const cast = seedCastEntry(c, policyVoices)[role]
+    return !!cast && recordist.spellings.includes(cast.voiceId)
+  }).map((c) => c.course_code)
+
+  for (const role of ['known', ...SEED_TARGET_ROLES]) {
+    const codes = castTo(role)
+    for (const s of await fetchSeeds(db, codes)) {
+      if (s[`${role}_audio_id`]) continue
+      const text = String((role === 'known' ? s.known_text : s.target_text) || '').trim()
+      if (text) op(s.course_code, 'seed', role, text, { target: 'seed', seed_number: s.seed_number })
+    }
+    if (role === 'known') continue
+    for (const l of await fetchLegos(db, castTo(role, true))) {
+      if (l[`${role}_audio_id`] || !l.lego_id) continue
+      const text = String(l.target_text || '').trim()
+      if (text) op(l.course_code, 'lego', role, text, { target: 'lego', lego_id: l.lego_id })
+    }
+  }
+  const langs = await phraseQueueLanguages(db)
+  if (langs.has(recordist.language)) {
+    const plan = await getPhrasePlan(db)
+    for (const line of recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])) {
+      for (const c of line.copies) {
+        if (c.holder) continue
+        // The copy's OWN words: copies merged across courses may differ in punctuation (job #198).
+        op(c.courseCode, 'phrase', line.role, c.text || line.text, { target: 'phrase', phrase_id: c.phraseId })
+      }
+    }
+  }
+  const byCourse = {}
+  for (const o of ops) (byCourse[o.courseCode] = byCourse[o.courseCode] || []).push(o)
+  return { voiceId: recordist.voiceId, takes: takes.length, slots: ops.length, byCourse }
+}
+
+/**
+ * ONE TAKE, EVERY SLOT OF THE SAME WORDS (Aran's standing rule; job #198). After a take has been
+ * filed and linked to its own line's copies, the same take fills every OTHER kind of slot this
+ * voice is cast on whose words are the same spoken words: a seed take reaches the LEGO of exactly
+ * its words and the practice phrases that say them, a LEGO or phrase take reaches the seed, and so
+ * on, in every course of the language (the known side: across the castOn courses). On 27 Oct he
+ * read 14 lines a second time because each kind only ever filled its own kind.
+ *
+ * FILL-EMPTY ONLY: a slot that holds any clip — his own earlier take included — is left exactly as
+ * it is, by a conditional write. Both target roles are tried (a voice cast on target1 in one course
+ * and target2 in another reads the same words once); each linker keeps to the courses whose slot
+ * names this voice. Pod lines are not touched here: they have their own propagation, and a pod line
+ * already counts as recorded by its words. Never throws — the take is already safe.
+ */
+async function fillSameWordsSlots({ db, recordist, role, text, audioId, logger = console }) {
+  const out = { seeds: 0, legos: 0, phrases: 0 }
+  if (!audioId || !spokenWordsKey(text)) return out
+  const roles = role === 'known' ? ['known'] : SEED_TARGET_ROLES
+  const step = async (name, fn) => {
+    try { out[name] += (await fn()).linked.length } catch (err) { logger.error(`[Recordist] same-words ${name} fill failed (take is stored): ${err.message}`) }
+  }
+  for (const r of roles) {
+    await step('seeds', () => linkSeedSlotsByWords({ db, recordist, role: r, text, audioId, fillOnly: true, logger }))
+    if (r !== 'known') await step('legos', () => linkLegoSlotsByWords({ db, recordist, role: r, text, audioId, fillOnly: true, logger }))
+  }
+  await step('phrases', () => linkPhraseSlotsByWords({ db, recordist, role, text, audioId, logger }))
+  if (out.seeds + out.legos + out.phrases) {
+    logger.log(`[Recordist] same-words fill ${recordist.voiceId} "${String(text).slice(0, 40)}": ${out.seeds} seed, ${out.legos} LEGO, ${out.phrases} phrase slot(s) now play this take`)
+  }
+  return out
+}
+
+/**
  * Clips flagged as needing a new take, for the given courses. Paged, because the
  * flag is deliberately not limited to any one content type and a bad day could
  * flag thousands.
@@ -3061,7 +3222,8 @@ async function recordedTextKeys(db, recordist) {
     }
     if (error) throw new Error(`recorded lookup failed: ${error.message}`)
     for (const row of data || []) {
-      for (const key of audioKeyCandidates(row.text_normalized)) keys.add(key)
+      // Audio keys AND the spoken-words key (take-selection wordKeys, job #198).
+      for (const key of wordKeys(row.text_normalized)) keys.add(key)
     }
     if (!data || data.length < PAGE) break
   }
@@ -3477,7 +3639,19 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
 
   const text = String((role === 'known' ? seed.known_text : seed.target_text) || '').trim()
   if (!text) return out
-  const key = normalizeForDb(text)
+  return linkSeedSlotsByWords({ db, recordist, role, text, audioId, logger })
+}
+
+/**
+ * linkSeedTake's body, keyed by WORDS rather than by one seed (job #198): every seed slot `role`
+ * of this voice's cast courses whose text says the same spoken words (shared/spoken-words.cjs) is
+ * pointed at the take. `fillOnly` (the cross-kind fill: a LEGO or phrase take reaching seeds)
+ * fills EMPTY slots only, by a conditional write, and moves nothing that holds a clip.
+ */
+async function linkSeedSlotsByWords({ db, recordist, role, text, audioId, fillOnly = false, logger = console }) {
+  const out = { linked: [] }
+  const key = spokenWordsKey(text)
+  if (!audioId || !key) return out
 
   const courses = await coursesForLanguage(db, recordist.language)
   // THE KNOWN SIDE OF ANOTHER LANGUAGE'S COURSES, where a castOn names this
@@ -3507,7 +3681,7 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   const owners = new Map()
   const candidates = siblings.filter((row) => {
     const rowText = String((role === 'known' ? row.known_text : row.target_text) || '').trim()
-    return rowText && normalizeForDb(rowText) === key
+    return rowText && spokenWordsKey(rowText) === key
   })
   const held = candidates.map((row) => row[`${role}_audio_id`]).filter(Boolean)
   if (held.length) {
@@ -3518,6 +3692,7 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   for (const row of candidates) {
     const current = row[`${role}_audio_id`]
     if (current === audioId) continue
+    if (current && fillOnly) continue
     // FILL-ONLY (castOnEntries): a policy-side cast fills empty slots and moves
     // nothing — not an imported clip, not a synthesised one, not anybody's.
     if (current && fillOnlyCourses.has(row.course_code)) continue
@@ -3540,9 +3715,13 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
       }
       logger.log(`[Recordist] seed ${row.id} ${role} held by ${holder || 'an unknown voice'} -- replaced by ${recordist.voiceId}'s take (old clip kept)`)
     }
-    const { error } = await db
-      .from('course_seeds').update({ [`${role}_audio_id`]: audioId }).eq('id', row.id)
+    let upd = db.from('course_seeds').update({ [`${role}_audio_id`]: audioId }).eq('id', row.id)
+    // A cross-kind fill is conditional on the slot still being empty: a take landing at the same
+    // moment is never overwritten.
+    if (fillOnly) upd = upd.is(`${role}_audio_id`, null).select('id')
+    const { data, error } = await upd
     if (error) { logger.error(`[Recordist] seed link failed for ${row.id}: ${error.message}`); continue }
+    if (fillOnly && !(data && data.length)) continue // filled by somebody else meanwhile
     out.linked.push({ seedId: row.id, courseCode: row.course_code, from: current || null })
   }
   if (out.linked.length) invalidateLanguageQueueCache(recordist.language)
@@ -3566,7 +3745,19 @@ async function linkLegoTake({ db, recordist, legoRowId, role, audioId, logger = 
     .select('id, course_code, target_text').eq('id', legoRowId).maybeSingle()
   if (error) throw new Error(`lego read failed: ${error.message}`)
   if (!lego || !isLegoQueueCourse(lego.course_code)) return out
-  const key = normalizeForDb(String(lego.target_text || '').trim())
+  return linkLegoSlotsByWords({ db, recordist, role, text: lego.target_text, audioId, inCourse: lego.course_code, logger })
+}
+
+/**
+ * linkLegoTake's body, keyed by WORDS (job #198): every LEGO slot `role` of this voice's cast
+ * LEGO-queue courses whose text says the same spoken words is pointed at the take. `inCourse`
+ * (the LEGO's own take) refuses unless that course is cast to this voice; `fillOnly` (a seed or
+ * phrase take reaching LEGOs) fills EMPTY slots only and never moves his own earlier LEGO take.
+ */
+async function linkLegoSlotsByWords({ db, recordist, role, text, audioId, inCourse = null, fillOnly = false, logger = console }) {
+  const out = { linked: [] }
+  if (!audioId || !SEED_TARGET_ROLES.includes(role)) return out
+  const key = spokenWordsKey(String(text || '').trim())
   if (!key) return out
 
   const courses = await coursesForLanguage(db, recordist.language)
@@ -3576,18 +3767,19 @@ async function linkLegoTake({ db, recordist, legoRowId, role, audioId, logger = 
     const cast = seedCastEntry(c, policyVoices)[role]
     return !!cast && recordist.spellings.includes(cast.voiceId)
   }).map((c) => c.course_code)
-  if (!mine.includes(lego.course_code)) return out
+  if (inCourse && !mine.includes(inCourse)) return out
+  if (!mine.length) return out
 
   const col = `${role}_audio_id`
   const sameText = (await fetchLegos(db, mine))
-    .filter((r) => r[col] !== audioId && normalizeForDb(String(r.target_text || '').trim()) === key)
+    .filter((r) => r[col] !== audioId && spokenWordsKey(String(r.target_text || '').trim()) === key)
   // A RE-READ MOVES THIS VOICE'S OWN SLOT (job #791). A LEGO he has recorded now
   // stays on his list as recorded, with Again on it; a fill-only link would file
   // the new take and leave the slot on the old one, so Again would change nothing
   // the learner hears. A slot held by anybody else's clip is still never moved,
   // and the update is conditional on the slot still holding what was read.
-  const heldVoice = await audioVoicesById(db, sameText.map((r) => r[col]))
-  const copies = sameText.filter((r) => !r[col] || recordist.spellings.includes(heldVoice.get(r[col])))
+  const heldVoice = fillOnly ? new Map() : await audioVoicesById(db, sameText.map((r) => r[col]))
+  const copies = sameText.filter((r) => !r[col] || (!fillOnly && recordist.spellings.includes(heldVoice.get(r[col]))))
   for (const row of copies) {
     let upd = db.from('course_legos').update({ [col]: audioId }).eq('id', row.id)
     upd = row[col] ? upd.eq(col, row[col]) : upd.is(col, null)
@@ -3743,6 +3935,13 @@ module.exports = {
   legoLineId,
   parseLegoLineId,
   linkLegoTake,
+  // One take, every slot of the same spoken words (job #198).
+  linkSeedSlotsByWords,
+  linkLegoSlotsByWords,
+  linkPhraseSlotsByWords,
+  fillSameWordsSlots,
+  sameWordsGaps,
+  legoClipSaysText,
   seedCastEntry,
   castOnEntries,
   castOnKnownSideCourses,

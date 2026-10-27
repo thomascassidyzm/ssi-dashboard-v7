@@ -30,7 +30,10 @@
 'use strict'
 
 const { trackKeyOf, chunkTrack, primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
-const { audioKeyCandidates, normalizeForAudio } = require('../shared/text-normalize.cjs')
+const { normalizeForAudio } = require('../shared/text-normalize.cjs')
+// Audio keys + spoken-words key (job #198): a take whose words differ from a live line only by
+// case or punctuation is that line's take, never an orphan offered as a "text change".
+const { wordKeys } = require('./take-selection.cjs')
 
 /** The track key of the re-record batch itself (`?track=rerecord&batch=1`). */
 const RERECORD_TRACK = 'rerecord'
@@ -152,7 +155,7 @@ function takeRoleOf(line) {
  * @returns {Map<string, object>} lineId -> the take it used to be (unrecorded lines only)
  */
 function pairTextChanges(lines, liveKeys, takes) {
-  const orphans = (takes || []).filter((t) => !audioKeyCandidates(t.text_normalized || t.text).some((k) => liveKeys.has(k)))
+  const orphans = (takes || []).filter((t) => !wordKeys(t.text_normalized || t.text).some((k) => liveKeys.has(k)))
   if (!orphans.length || !lines.some((l) => !l.recorded)) return new Map()
   const byCourse = new Map()
   for (const t of orphans) {
@@ -241,14 +244,14 @@ function indexQueue(queue) {
   const liveKeys = new Set()
   const courses = new Set()
   for (const { line } of pool.values()) {
-    for (const k of audioKeyCandidates(line.text)) liveKeys.add(k)
+    for (const k of wordKeys(line.text)) liveKeys.add(k)
     if (!line.recorded && line.courseCode) courses.add(line.courseCode)
   }
   return { batches, pool, firstIndex, liveKeys, courses: [...courses] }
 }
 
 /** Is this stored take an orphan: do its words belong to no line of this reader any more? */
-const isOrphanTake = (idx, take) => !audioKeyCandidates(take.text_normalized || take.text).some((k) => idx.liveKeys.has(k))
+const isOrphanTake = (idx, take) => !wordKeys(take.text_normalized || take.text).some((k) => idx.liveKeys.has(k))
 
 /**
  * THE LIST. `queue` is buildQueue's result (lines with recorded ones included; `allPhraseLines`
