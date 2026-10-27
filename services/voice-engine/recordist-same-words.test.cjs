@@ -163,6 +163,21 @@ describe('recorded means "these words have a take", whichever line asked for the
   })
 })
 
+describe('English known side across North and South (job #218)', () => {
+  const line = (course, text, phraseId) => ({
+    role: 'known', pass: 1, batch: 1, courseCode: course, text, readingOrder: 1,
+    copies: [{ phraseId, courseCode: course, holder: null, flagged: false }],
+  })
+  it('a curly-vs-straight apostrophe or a comma is ONE English line asked once, crediting both courses', () => {
+    const merged = phraseQueue.mergeAcrossCourses([
+      [line('cym_nv2_for_eng', 'I don’t know, really', 'n1'), line('cym_nv2_for_eng', 'Where’s he gone?', 'n2')],
+      [line('cym_sv2_for_eng', "I don't know really", 's1'), line('cym_sv2_for_eng', "Where's he gone?", 's2')],
+    ])
+    expect(merged.length).toBe(2)
+    expect(merged.map((l) => l.copies.map((c) => c.phraseId).sort())).toEqual([['n1', 's1'], ['n2', 's2']])
+  })
+})
+
 describe('the take route fills every empty slot of the same words', () => {
   it('a seed take fills the empty LEGO slot of exactly its words, and only that one', async () => {
     const tables = fixture()
