@@ -2540,6 +2540,47 @@ module.exports = function createRecordistRouter({
   // recordings. The booth page never calls it — only /admin/recording does —
   // so it needs a signed-in caller who either reads this voice themselves
   // (voicesForEmail, the same resolution /mine uses) or is a God admin.
+  // Read-only: takes a voice stored per UTC day, newest day first. Same auth as latest-takes
+  // (latest-takes caps at 50, so "which days did they record" needs this).
+  router.get('/voice/:voiceId/take-days', async (req, res) => {
+    try {
+      if (typeof requireDashboardUser !== 'function') {
+        return res.status(501).json({ error: 'Sign-in is not wired up on this service.' })
+      }
+      const agent = req.headers['x-agent-admin'] ? await requireAdminOrAgent(req, res, 'takes:read') : null
+      if (req.headers['x-agent-admin'] && !agent) return
+      const user = agent || await requireDashboardUser(req, res)
+      if (!user) return
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+      if (!agent && !isGodAdmin(user)) {
+        const mine = await voicesForEmail(db(), user.email)
+        const spellings = new Set([recordist.voiceId, ...(recordist.spellings || [])])
+        if (!mine.some((v) => spellings.has(v.voiceId))) {
+          return res.status(403).json({ error: 'You can only see your own recent takes.' })
+        }
+      }
+      const days = {}
+      let total = 0
+      for (let from = 0; from < 20000; from += 1000) {
+        const { data, error } = await db()
+          .from('course_audio')
+          .select('created_at')
+          .eq('language', recordist.language)
+          .in('voice_id', recordist.spellings)
+          .order('created_at', { ascending: false })
+          .range(from, from + 999)
+        if (error) throw new Error(`take days read failed: ${error.message}`)
+        for (const r of data || []) { const d = String(r.created_at).slice(0, 10); days[d] = (days[d] || 0) + 1; total++ }
+        if (!data || data.length < 1000) break
+      }
+      res.json({ voiceId: recordist.voiceId, total, days: Object.entries(days).map(([date, takes]) => ({ date, takes })) })
+    } catch (err) {
+      logger.error(`[Recordist] take-days: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
   router.get('/voice/:voiceId/latest-takes', async (req, res) => {
     try {
       if (typeof requireDashboardUser !== 'function') {
