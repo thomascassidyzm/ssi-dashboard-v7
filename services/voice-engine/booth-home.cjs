@@ -108,6 +108,19 @@ function groupTracks(lines) {
 const countRecorded = (lines) => lines.reduce((n, l) => n + (l.recorded ? 1 : 0), 0)
 
 /**
+ * WHERE AN UNFINISHED SCRIPT PICKS UP (Kai, 2026-10-28, job #8·AA): Dan read 68 of his 91 Pod 1
+ * lines, went on to new sentences, and nothing on his home said 22 were still owed from scene 15.
+ * The first unrecorded line of a script batch — its place in the batch (`at`, 1-based), its pod
+ * order and its scene — or null when every line is recorded. Read only; decides nothing.
+ */
+function firstLeftOf(lines) {
+  const i = lines.findIndex((l) => !l.recorded)
+  if (i === -1) return null
+  const l = lines[i]
+  return { at: i + 1, order: l.order == null ? null : l.order, scene: l.scene == null ? null : l.scene }
+}
+
+/**
  * The home screen's whole payload.
  *
  * @param {object[]} lines the queue's wire lines, recorded ones INCLUDED, in queue order
@@ -124,7 +137,9 @@ function buildHomeTracks(lines, phrases = null, phraseBatches = null) {
     const batches = chunkTrack(key, trackLines).map((b, i) => {
       const from = at + 1
       at += b.length
-      return { n: i + 1, from, to: at, total: b.length, recorded: countRecorded(b) }
+      const out = { n: i + 1, from, to: at, total: b.length, recorded: countRecorded(b) }
+      if (key.startsWith('pod.')) out.firstLeft = firstLeftOf(b)
+      return out
     })
     tracks.push({
       key,
@@ -260,4 +275,5 @@ function withLastKnownSections(tracks, partial, lastKnown) {
   return carried.length ? [...tracks, ...carried] : tracks
 }
 
-module.exports = { primaryPhraseCourse, phraseTrackKey, parsePhraseTrackKey, phraseBatchesOfTrack, partialKinds, withLastKnownSections, SEED_BATCH_LINES, LEGO_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch, openPhraseBatch, servedPhraseBatchN }
+module.exports = {
+  firstLeftOf, primaryPhraseCourse, phraseTrackKey, parsePhraseTrackKey, phraseBatchesOfTrack, partialKinds, withLastKnownSections, SEED_BATCH_LINES, LEGO_BATCH_LINES, trackKeyOf, chunkTrack, buildHomeTracks, selectBatch, openPhraseBatch, servedPhraseBatchN }

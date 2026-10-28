@@ -1669,6 +1669,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       podSlug: pod.slug || null,
       podTitle: pod.title || null,
       order: s.global_order,
+      scene: s.scene_number == null ? null : s.scene_number,
       // Immediately after its own natural line: every other kind leaves
       // seedOrder at 0, so 1 puts the gapped read second and nothing else moves.
       seedOrder: 1,
@@ -1896,6 +1897,9 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       podSlug: pod.slug || null,
       podTitle: pod.title || null,
       order: s.global_order,
+      // Which scene it is in, so the booth home can say where an unfinished pod picks up
+      // ("starting scene 15": booth-home.cjs firstLeftOf, job #8·AA).
+      scene: s.scene_number == null ? null : s.scene_number,
       text,
       knownText: s.known_text || null,
       speaker: s.speaker,
