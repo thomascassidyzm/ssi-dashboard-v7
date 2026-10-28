@@ -1,0 +1,1220 @@
+{
+ "event_id": "bff34293-4c6a-4d4e-82c7-c55ee01417c5",
+ "undo_file": "2026-10-28T16-46-26-752Z-bff34293-4c6a-4d4e-82c7-c55ee01417c5.json",
+ "undo_ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0032L03B04",
+   "set": {
+    "known_text": "can show me something",
+    "target_text": "my wat sjen litte kin",
+    "word_count": 21,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0029L04U05",
+    "seed_number": 29,
+    "lego_index": 4,
+    "position": 10,
+    "known_text": "it's useful to speak better",
+    "target_text": "it is nuttich om better te praten",
+    "word_count": 33,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "scored_at": "2026-10-28T16:03:57.409Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T16:03:57.460Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0029L04U04",
+   "set": {
+    "known_text": "I'm trying to speak better",
+    "target_text": "ik besykje better te praten",
+    "word_count": 27,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0029L04B03",
+   "set": {
+    "known_text": "to try to speak better",
+    "target_text": "besykje better te praten",
+    "word_count": 24,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0029L02U06",
+   "set": {
+    "target_text": "ik besykje te learen en ik sjoch dernei út om te praten mei minsken dy't Frysk prate"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0028L04U03",
+   "set": {
+    "target_text": "silstû besykje te begjinnen mei praten yn it Frysk"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0028L03U06",
+    "seed_number": 28,
+    "lego_index": 3,
+    "position": 12,
+    "known_text": "you want to practise speaking as soon as you can because you want to meet people",
+    "target_text": "dû wolst sa gau mooglik it praten oefenje om't dû minsken moetsje wolst",
+    "word_count": 71,
+    "lego_count": 16,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-10-28T15:54:37.738Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T15:54:37.778Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "start",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0027L04U04",
+   "set": {
+    "target_text": "ik sil myn bêst dwaan om te antwurdzjen yn it Frysk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0027L04B03",
+   "set": {
+    "target_text": "hast klear om te antwurdzjen yn it Frysk"
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "2fcbfc69-1b7b-428f-b635-819fed51b1fa",
+   "set": {
+    "known_text": "too much time",
+    "target_text": "te lang oer",
+    "components": [
+     {
+      "known": "too long",
+      "target": "te lang"
+     },
+     {
+      "known": "over",
+      "target": "oer"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L04U05",
+   "set": {
+    "known_text": "we want to know whether I'm nearly ready to go",
+    "target_text": "wy wolle witte oft ik hast klear bin om te gean",
+    "word_count": 47,
+    "lego_count": 10
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L04U04",
+   "set": {
+    "known_text": "I'm going to say whether I'm nearly ready to go",
+    "target_text": "ik sil sizze oft ik hast klear bin om te gean",
+    "word_count": 45,
+    "lego_count": 10
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L04U03",
+   "set": {
+    "known_text": "he wants to come back later on because I'm nearly ready to go",
+    "target_text": "hy wol letter weromkomme om't ik hast klear bin om te gean",
+    "word_count": 58,
+    "lego_count": 13
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L04U02",
+   "set": {
+    "known_text": "because I'm nearly ready to go I want to stop talking",
+    "target_text": "om't ik hast klear bin om te gean wol ik ophâlde mei praten",
+    "word_count": 59,
+    "lego_count": 11
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L04U01",
+   "set": {
+    "known_text": "I'm not sure if I'm nearly ready to go but I want to try",
+    "target_text": "ik bin der net wis fan oft ik hast klear bin om te gean mar ik wol besykje",
+    "word_count": 74
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L04B03",
+   "set": {
+    "known_text": "she wants to find out whether I'm nearly ready to go",
+    "target_text": "sy wol witte oft ik hast klear bin om te gean",
+    "lego_count": 11
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L04B02",
+   "set": {
+    "known_text": "whether I'm nearly ready to go",
+    "target_text": "oft ik hast klear bin om te gean",
+    "word_count": 32,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L04B01",
+   "set": {
+    "known_text": "because I'm nearly ready to go",
+    "target_text": "om't ik hast klear bin om te gean",
+    "word_count": 33,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "23e1ae4c-a884-46ef-8c42-05686534870e",
+   "set": {
+    "known_text": "I'm nearly ready to go",
+    "target_text": "ik hast klear bin om te gean",
+    "components": [
+     {
+      "known": "I",
+      "target": "ik"
+     },
+     {
+      "known": "nearly",
+      "target": "hast"
+     },
+     {
+      "known": "ready",
+      "target": "klear"
+     },
+     {
+      "known": "am",
+      "target": "bin"
+     },
+     {
+      "known": "in order to go",
+      "target": "om te gean"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02U06",
+   "set": {
+    "known_text": "we want to meet each other this evening because I have the feeling that he's not going to come back tomorrow",
+    "target_text": "wy wolle inoar fan 'e jûn moetsje om't ik it gefoel ha dat hy moarn net weromkomme sil",
+    "word_count": 86,
+    "lego_count": 21
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02U05",
+   "set": {
+    "known_text": "I'd like to practise speaking because I have the feeling that I'm going to be able to remember easily",
+    "target_text": "ik wol graach it praten oefenje om't ik it gefoel ha dat ik maklik ûnthâlde kinne sil",
+    "word_count": 85,
+    "lego_count": 19
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02U04",
+   "set": {
+    "known_text": "I'm going to try as hard as I can because I have the feeling that she's going to help me",
+    "target_text": "ik sil hurd myn bêst dwaan om't ik it gefoel ha dat sy my helpe sil",
+    "word_count": 67
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02U03",
+   "set": {
+    "known_text": "are you going to help me because I have the feeling that he's not going to come back",
+    "target_text": "silstû my helpe om't ik it gefoel ha dat hy net weromkomme sil",
+    "word_count": 62,
+    "lego_count": 18
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02U02",
+   "set": {
+    "known_text": "I'm going to start soon because I have the feeling that she's going to come back later on",
+    "target_text": "ik begjin aanst om't ik it gefoel ha dat sy letter weromkomme sil",
+    "word_count": 65,
+    "lego_count": 18
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02U01",
+   "set": {
+    "known_text": "I don't want to stop talking because I have the feeling that I can remember the whole sentence",
+    "target_text": "ik wol net ophâlde mei praten om't ik it gefoel ha dat ik de hiele sin noch wit",
+    "word_count": 79,
+    "lego_count": 18
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02B04",
+   "set": {
+    "known_text": "because I have the feeling that I must go",
+    "target_text": "om't ik it gefoel ha dat ik gean moat",
+    "word_count": 37,
+    "lego_count": 9
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02B02",
+   "set": {
+    "known_text": "when I have the feeling that",
+    "target_text": "as ik it gefoel ha dat",
+    "word_count": 22,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L02B01",
+   "set": {
+    "known_text": "I'm going to start soon because I have the feeling that",
+    "target_text": "ik begjin aanst om't ik it gefoel ha dat",
+    "word_count": 40,
+    "lego_count": 11
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "03618bc2-6cd0-4c50-8350-1eaaf0e5cad8",
+   "set": {
+    "known_text": "I have the feeling that",
+    "target_text": "ik it gefoel ha dat",
+    "components": [
+     {
+      "known": "I",
+      "target": "ik"
+     },
+     {
+      "known": "the feeling",
+      "target": "it gefoel"
+     },
+     {
+      "known": "have",
+      "target": "ha"
+     },
+     {
+      "known": "that",
+      "target": "dat"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0026L01U02",
+   "set": {
+    "known_text": "you want to learn quickly and I like it when you speak with me",
+    "target_text": "dû wolst fluch leare en ik fyn it noflik as dû mei my praatst",
+    "word_count": 61,
+    "lego_count": 14
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0024L03U03",
+    "seed_number": 24,
+    "lego_index": 3,
+    "position": 9,
+    "known_text": "I'm not sure if I'm going to be able to remember the whole sentence",
+    "target_text": "ik bin der net wis fan oft ik de hiele sin ûnthâlde kinne sil",
+    "word_count": 61,
+    "lego_count": 14,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-10-28T15:24:06.119Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T15:24:06.175Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U06",
+   "set": {
+    "known_text": "I'm going to start soon but I'm not going to do it all day",
+    "target_text": "ik begjin aanst mar ik sil it net de hiele dei dwaan",
+    "word_count": 52,
+    "lego_count": 14
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U05",
+   "set": {
+    "known_text": "I'm not going to practise it with everyone else",
+    "target_text": "ik sil it net mei eltsenien oefenje",
+    "word_count": 35,
+    "lego_count": 9
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U04",
+   "set": {
+    "known_text": "I'm not going to say it quickly",
+    "target_text": "ik sil it net fluch sizze",
+    "word_count": 25,
+    "lego_count": 7
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U03",
+   "set": {
+    "known_text": "I'm not going to do it all day",
+    "target_text": "ik sil it net de hiele dei dwaan",
+    "word_count": 32,
+    "lego_count": 8
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U02",
+   "set": {
+    "known_text": "she wants to find out but I'm not going to say it",
+    "target_text": "sy wol witte mar ik sil it net sizze",
+    "word_count": 36,
+    "lego_count": 12
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04U01",
+   "set": {
+    "known_text": "I'm going to do my best but I'm not going to say it in Frisian",
+    "target_text": "ik sil myn bêst dwaan mar ik sil it net yn it Frysk sizze",
+    "word_count": 57,
+    "lego_count": 15
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04B04",
+   "set": {
+    "known_text": "and I'm not going to do it",
+    "target_text": "en ik sil it net dwaan",
+    "word_count": 22,
+    "lego_count": 7
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04B03",
+   "set": {
+    "known_text": "I'm not going to practise it",
+    "target_text": "ik sil it net oefenje",
+    "word_count": 21,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04B02",
+   "set": {
+    "known_text": "but I'm not going to guess it",
+    "target_text": "mar ik sil it net riede",
+    "word_count": 23,
+    "lego_count": 7
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0024L04B01",
+   "set": {
+    "known_text": "I'm not going to say it",
+    "target_text": "ik sil it net sizze",
+    "word_count": 19,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "f017f115-c30b-4bd6-9432-8ae710f2b961",
+   "set": {
+    "known_text": "I'm not going to … it",
+    "target_text": "ik sil it net",
+    "components": [
+     {
+      "known": "I'm going to",
+      "target": "ik sil"
+     },
+     {
+      "known": "it",
+      "target": "it"
+     },
+     {
+      "known": "not",
+      "target": "net"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0023L03U08",
+    "seed_number": 23,
+    "lego_index": 3,
+    "position": 14,
+    "known_text": "I'm going to start talking more soon",
+    "target_text": "ik begjin aanst mear te praten",
+    "word_count": 30,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "scored_at": "2026-10-28T15:10:16.928Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T15:10:16.966Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0023L03U03",
+   "set": {
+    "known_text": "he wants to try to talk more with people who speak Frisian",
+    "target_text": "hy wol besykje mear te praten mei minsken dy't Frysk prate",
+    "word_count": 58,
+    "lego_count": 12
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0022L01B04",
+   "set": {
+    "known_text": "he wants to come back because",
+    "target_text": "hy wol weromkomme om't",
+    "word_count": 22,
+    "lego_count": 6
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0022L01B03",
+   "set": {
+    "known_text": "I don't want to stop talking because",
+    "target_text": "ik wol net ophâlde mei praten om't",
+    "word_count": 34,
+    "lego_count": 7
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0022L01B01",
+   "set": {
+    "known_text": "I'm going to practise because",
+    "target_text": "ik sil oefenje om't",
+    "word_count": 19,
+    "lego_count": 5
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0021L03B01",
+   "set": {
+    "known_text": "can say her name",
+    "target_text": "har namme sizze kin",
+    "word_count": 19,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0019L01B04",
+    "seed_number": 19,
+    "lego_index": 1,
+    "position": 4,
+    "known_text": "I'm going to try but",
+    "target_text": "ik sil besykje mar",
+    "word_count": 18,
+    "lego_count": 5,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T14:47:47.844Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0019L01B02",
+    "seed_number": 19,
+    "lego_index": 1,
+    "position": 2,
+    "known_text": "I'm trying but",
+    "target_text": "ik besykje mar",
+    "word_count": 14,
+    "lego_count": 3,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T14:47:47.844Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "375567e8-a4e0-4fe8-a627-06c2250ec87c",
+   "set": {
+    "known_text": "you to speak with me",
+    "target_text": "mei my praatst",
+    "components": [
+     {
+      "known": "with me",
+      "target": "mei my"
+     },
+     {
+      "known": "you to speak",
+      "target": "praatst"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0013L03B01",
+   "set": {
+    "known_text": "can speak very well",
+    "target_text": "hiel goed prate kin",
+    "word_count": 19,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0013L01U06",
+    "seed_number": 13,
+    "lego_index": 1,
+    "position": 12,
+    "known_text": "I'm not sure if you speak in Frisian with someone else",
+    "target_text": "ik bin der net wis fan oft dû praatst yn it Frysk mei in oar",
+    "word_count": 60,
+    "lego_count": 11,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-10-28T13:42:35.932Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T13:42:35.971Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0013L01U04",
+    "seed_number": 13,
+    "lego_index": 1,
+    "position": 10,
+    "known_text": "I'm not sure if you speak with someone else",
+    "target_text": "ik bin der net wis fan oft dû praatst mei in oar",
+    "word_count": 48,
+    "lego_count": 9,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 7,
+     "format": "build_use",
+     "scored_at": "2026-10-28T13:42:35.932Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T13:42:35.971Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0013L01B04",
+    "seed_number": 13,
+    "lego_index": 1,
+    "position": 6,
+    "known_text": "I'm not sure if you speak",
+    "target_text": "ik bin der net wis fan oft dû praatst",
+    "word_count": 37,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T13:42:35.971Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0012L02B02",
+   "set": {
+    "known_text": "I'm trying to guess",
+    "target_text": "ik besykje te riede",
+    "word_count": 19,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0012L02B01",
+   "set": {
+    "known_text": "can guess",
+    "target_text": "riede kin",
+    "word_count": 9,
+    "lego_count": 2
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0010L04B01",
+    "seed_number": 10,
+    "lego_index": 4,
+    "position": 4,
+    "known_text": "if I can remember the whole sentence",
+    "target_text": "oft ik de hiele sin noch wit",
+    "word_count": 28,
+    "lego_count": 7,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "format": "build_use"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T13:29:02.101Z",
+    "target_syllable_count": null,
+    "phrase_role": "build",
+    "connected_lego_ids": [],
+    "lego_position": "middle",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "c7d2b2db-0fb6-4adf-b870-de37260e5343",
+   "set": {
+    "known_text": "I can remember the whole sentence",
+    "target_text": "ik de hiele sin noch wit",
+    "components": [
+     {
+      "known": "I",
+      "target": "ik"
+     },
+     {
+      "known": "the whole sentence",
+      "target": "de hiele sin"
+     },
+     {
+      "known": "can remember",
+      "target": "noch wit"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L02U05",
+   "set": {
+    "target_text": "besykje út te lizzen yn it Frysk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L02U02",
+   "set": {
+    "target_text": "kin ik besykje út te lizzen yn it Frysk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L02U01",
+   "set": {
+    "target_text": "ik sil besykje út te lizzen yn it Frysk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0008L02B04",
+   "set": {
+    "target_text": "ik wol besykje út te lizzen yn it Frysk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03U01",
+   "set": {
+    "known_text": "I'm going to try as hard as I can with speaking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0007L03B04",
+   "set": {
+    "known_text": "to try as hard as I can with speaking"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L02U06",
+   "set": {
+    "target_text": "ik besykje mei dy op in wurd te kommen yn it Frysk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L02U05",
+   "set": {
+    "target_text": "ik besykje no op in wurd te kommen yn it Frysk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L02U01",
+   "set": {
+    "target_text": "ik besykje op in wurd te kommen yn it Frysk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L02B01",
+   "set": {
+    "target_text": "op in wurd te kommen yn it Frysk"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L01U06",
+   "set": {
+    "known_text": "i'm going to say a word in frisian now",
+    "target_text": "ik sil no in wurd yn it frysk sizze"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L01U05",
+   "set": {
+    "known_text": "i must practise a word as often as possible"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L01U04",
+   "set": {
+    "known_text": "can i say a word in frisian",
+    "target_text": "kin ik in wurd yn it frysk sizze"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L01U03",
+   "set": {
+    "known_text": "i'm trying to learn a word in frisian",
+    "target_text": "ik besykje in wurd yn it frysk te learen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L01U02",
+   "set": {
+    "known_text": "i'm going to practise a word with you"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L01U01",
+   "set": {
+    "known_text": "i want to practise a word with someone else"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L01B04",
+   "set": {
+    "known_text": "i'm trying to learn a word"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L01B03",
+   "set": {
+    "known_text": "i'm going to practise a word"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0006L01B02",
+   "set": {
+    "known_text": "to say a word in frisian",
+    "target_text": "in wurd yn it frysk sizze"
+   }
+  },
+  {
+   "op": "phrase.insert",
+   "row": {
+    "id": "fry_for_eng:S0004L04U06",
+    "seed_number": 4,
+    "lego_index": 4,
+    "position": 9,
+    "known_text": "how to say something in Frisian",
+    "target_text": "hoe't ik wat yn it Frysk sizze moat",
+    "word_count": 35,
+    "lego_count": 6,
+    "difficulty": null,
+    "register": null,
+    "metadata": {
+     "score": 8,
+     "format": "build_use",
+     "scored_at": "2026-10-28T00:20:16.604Z"
+    },
+    "status": "draft",
+    "release_batch": null,
+    "created_at": "2026-10-28T00:20:16.645Z",
+    "target_syllable_count": null,
+    "phrase_role": "use",
+    "connected_lego_ids": [],
+    "lego_position": "end",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "qa_checked": null,
+    "target1_duration_ms": null,
+    "target2_duration_ms": null,
+    "lego_id": null,
+    "target_text_roman": null,
+    "target_phrase_id": null,
+    "presentation_audio_id": null,
+    "introduce": true,
+    "decomposition": null,
+    "decomposition_course_version": null,
+    "display_tiling": null,
+    "display_tiling_version": null,
+    "known_gloss_segments": null
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0004L02B01",
+   "set": {
+    "known_text": "can speak in Frisian",
+    "target_text": "yn it Frysk prate kin",
+    "word_count": 21,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0003L02U03"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0003L02U02"
+  },
+  {
+   "op": "phrase.delete",
+   "phrase_id": "fry_for_eng:S0003L02U01"
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0003L02B02",
+   "set": {
+    "known_text": "can speak with you",
+    "target_text": "mei dy prate kin",
+    "word_count": 16,
+    "lego_count": 4
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0003L02B01",
+   "set": {
+    "known_text": "can speak Frisian",
+    "target_text": "Frysk prate kin",
+    "word_count": 15,
+    "lego_count": 3
+   }
+  },
+  {
+   "op": "lego.update",
+   "id": "4b47450e-b9d9-43d5-b642-6c6e1abafda5",
+   "set": {
+    "type": "M",
+    "known_text": "can speak",
+    "target_text": "prate kin",
+    "components": [
+     {
+      "known": "speak",
+      "target": "prate"
+     },
+     {
+      "known": "can",
+      "target": "kin"
+     }
+    ]
+   }
+  }
+ ]
+}
