@@ -84,7 +84,10 @@ it.skipIf(!FILE)('replays a real session: every read still advances on time, a b
     })
   }
   if (process.env.BOOTH_REPLAY_OUT) writeFileSync(process.env.BOOTH_REPLAY_OUT, JSON.stringify(rows, null, 1))
-  const real = rows.filter((x) => !x.refused && x.liveAt != null)
+  // A line that moved on by itself ends ~TAIL_MS (56 frames) after its last crossing; one whose
+  // last crossing sits further back was tapped on (or held), so its crossing is a pre-roll blip.
+  const AUTO_TAIL_FRAMES = 90
+  const real = rows.filter((x) => !x.refused && x.liveAt != null && x.frames - x.liveAt <= AUTO_TAIL_FRAMES)
   const v = real.map((x) => x.voicedAtLive).sort((a, b) => a - b)
   const q = (f) => v[Math.floor(v.length * f)]
   console.log(`MIN_VOICED_MS=${MIN_VOICED_MS} takes=${rows.length} accepted+auto=${real.length} refused=${rows.filter((x) => x.refused).length}`)
@@ -94,9 +97,8 @@ it.skipIf(!FILE)('replays a real session: every read still advances on time, a b
   if (process.env.BOOTH_REPLAY_REPORT_ONLY) return
   // Every accepted take still advances on exactly the frame it did before.
   for (const x of real) expect(x.advancesWithGate, x.id).toBe(true)
-  // A take refused as steady noise with no speech never auto-advances.
-  for (const x of rows.filter((y) => y.refused === 'steady_noise_no_speech')) {
-    expect(x.liveAt, `${x.id} would have advanced without the gate`).not.toBeNull()
+  // A take refused as steady noise with no speech, that moved on by itself, now never does.
+  for (const x of rows.filter((y) => y.refused === 'steady_noise_no_speech' && y.liveAt != null)) {
     expect(x.voicedTotal, x.id).toBeLessThan(MIN_VOICED_MS)
   }
 }, 120_000)

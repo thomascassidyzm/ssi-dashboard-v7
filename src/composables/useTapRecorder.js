@@ -244,10 +244,12 @@ export const COLD_START_SETTLE_MS = PRE_ROLL_MIN_MS
 // the speech floor, summed across the line (not consecutive: a read is syllables
 // and gaps). Nothing else reads it — capture, upload, commit(), Next, Again and
 // the 1.2 s quiet gap are exactly as they were; a tap still moves on from any
-// line. Replayed over his 346 raw takes of that day
-// (tools/recording/booth-take-meter-frames.cjs + useTapRecorder.replay.test.js),
-// every real read had far more than this by the time it would have advanced and
-// the phantom had one frame.
+// line. Replayed over his 2,800 raw staging takes of 25-28 Oct
+// (tools/recording/booth-take-meter-frames.cjs + useTapRecorder.replay.test.js):
+// of the 2,548 accepted takes that moved on by themselves, the least-voiced had
+// 560 ms by its advance (0.5th percentile 896, median 2,368); the four takes the
+// server refused as no speech / a cut-off blip that had moved on by themselves
+// had 32, 32, 80 and 96 ms. 250 sits between the two with room either side.
 export const MIN_VOICED_MS = 250
 // A meter frame counts for at most this long towards voicedMs. requestAnimation
 // Frame runs at ~16 ms, but a throttled tab can deliver one frame after a long
