@@ -5529,7 +5529,8 @@ async function writePaidClipRow({ courseCode, text, language, role, voiceId, leg
     throw new Error(`course_audio write failed after the render was paid for: ${error.message} (object ${s3Key} is in S3 — file it with adoptS3Key, never re-render)`)
   }
   await clipIndex.writeThrough(supabase, [{ id: row.id, text, language, voice_id: voiceId, s3_key: s3Key, origin: 'tts' }], adopted ? 'phase8:adopt' : 'phase8:render', logger)
-  return { audioId: row.id, s3Key, durationMs }
+  // revision: the new audio_revision when this swapped onto an existing row (the learner ref is now <uuid>.v<revision>); null for a new row.
+  return { audioId: row.id, s3Key, durationMs, revision: row.revision ?? null }
 }
 
 /** Length of an S3 object in ms (the same metadata read masterAudio uses — sox is not installed on watson-1), for an adopted clip the paid-unsaved ledger never recorded. */

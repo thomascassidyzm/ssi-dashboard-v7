@@ -166,5 +166,6 @@ describe('phase8 writePaidClipRow is versioned (job #74·AA)', () => {
     expect(start).toBeGreaterThan(0)
     expect(body).toContain('writeOrSwapClip(')
     expect(body).not.toMatch(/\.upsert\(/)
+    expect(body).toMatch(/revision: row\.revision/)   // the caller can see the swap landed
   })
 })
