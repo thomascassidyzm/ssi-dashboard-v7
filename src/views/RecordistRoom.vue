@@ -221,7 +221,7 @@
                thing up here is this ONE slim bar, and it never sits over the line. It replaced a
                stack of red notices, one per refused take, that hid the line being read (#679). -->
           <p v-if="refusedInBatch.length" class="refused-summary" :class="{ quiet: refusedAllNoSpeech }" role="status" data-test="refused-summary">
-            <span v-if="refusedAllNoSpeech">No speech heard on {{ refusedInBatch.length === 1 ? '1 line' : refusedInBatch.length + ' lines' }} — read {{ refusedInBatch.length === 1 ? 'it' : 'them' }} again</span>
+            <span v-if="refusedAllNoSpeech">No speech heard on {{ refusedInBatch.length === 1 ? '1 line' : refusedInBatch.length + ' lines' }}</span>
             <span v-else>{{ refusedInBatch.length }} {{ refusedInBatch.length === 1 ? 'line needs' : 'lines need' }} re-recording</span>
             <template v-if="firstRefusedIndex !== index">
               ·

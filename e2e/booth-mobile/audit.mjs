@@ -26,8 +26,13 @@ const ENGINES = arg('engines', 'chromium,webkit').split(',')
 const ONLY = arg('only', '') // comma list of scenario names
 // 375x548 is an iPhone SE's VISIBLE height in Safari with both bars showing: the honest small case.
 const SIZES = (arg('sizes', '375x667,390x844,360x800,844x390,375x548')).split(',').map((s) => s.split('x').map(Number))
-// --base https://staging.popty.app audits a build that has not reached main (e.g. job #709's line editor).
+// --base https://staging.popty.app --api https://watson-1.tail4968cb.ts.net:8443 audits a build that
+// has not reached main (e.g. job #709's line editor, job #915's no-speech note).
 const BASE = arg('base', 'https://popty.app')
+// The API's origin, when it is not the page's: staging.popty.app's SPA calls its API on the tailnet
+// (https://watson-1.tail4968cb.ts.net:8443), so the fixtures below must answer that origin too (job #915).
+const API = arg('api', BASE)
+const ours = (url) => url.origin === BASE || url.origin === API
 // THE DESKTOP GRID (job #286) is measured at desktop sizes, not phone ones, with batches this long.
 // 1600x830 is Aran's Chromebook's page inside Chrome; 1366x600 and 1280x520 make the squares shrink.
 const DESKTOP_SIZES = (arg('desktop-sizes', '1600x1000,1366x768,1600x830,1366x600,1280x520')).split(',').map((s) => s.split('x').map(Number))
@@ -299,7 +304,7 @@ async function scenarioStress(browser, engine, size) {
   let lastQueue = null
   let refusedOnce = false
   const answer = async (req, url, route) => {
-    if (url.origin !== BASE) return false
+    if (!ours(url)) return false
     const p = url.pathname
     // the first take is refused (answered here, never sent) with the server's real no-speech 422 —
     // the one a blip used to cause, drawn as a small grey note since job #915; the rest stay "still to upload"
@@ -309,7 +314,7 @@ async function scenarioStress(browser, engine, size) {
     if (p === `/api/recording/voice/${VOICE}/summary`) { const r = await route.fetch(); await route.fulfill({ response: r, json: stressSummary(await r.json()) }); return true }
     if (p === `/api/recording/voice/${VOICE}`) { const r = await route.fetch(); lastQueue = stressQueue(await r.json()); await route.fulfill({ response: r, json: lastQueue }); return true }
     if (p === `/api/recording/voice/${VOICE}/rerecord`) {
-      if (!lastQueue) { const r = await route.fetch({ url: `${BASE}/api/recording/voice/${VOICE}?includeRecorded=1` }); lastQueue = stressQueue(await r.json()) }
+      if (!lastQueue) { const r = await route.fetch({ url: `${API}/api/recording/voice/${VOICE}?includeRecorded=1` }); lastQueue = stressQueue(await r.json()) }
       await route.fulfill({ json: stressRerecord(lastQueue) }); return true
     }
     return false
@@ -358,7 +363,7 @@ async function scenarioStress(browser, engine, size) {
 async function scenarioDone(browser, engine, size) {
   // One line owed: read it, Next, and the batch is done.
   const answer = async (req, url, route) => {
-    if (url.origin !== BASE || req.method() !== 'GET') return false
+    if (!ours(url) || req.method() !== 'GET') return false
     if (url.pathname === `/api/recording/voice/${VOICE}`) {
       const r = await route.fetch(); const j = await r.json()
       let kept = false
@@ -518,7 +523,7 @@ async function scenarioEditor(browser, engine, size) {
 async function scenarioNextBatch(browser, engine, size) {
   for (const left of [true, false]) {
     const answer = async (req, url, route) => {
-      if (url.origin !== BASE || req.method() !== 'GET') return false
+      if (!ours(url) || req.method() !== 'GET') return false
       if (url.pathname === `/api/recording/voice/${VOICE}/summary`) {
         const r = await route.fetch(); const j = await r.json()
         const b = (n, recorded, extra = {}) => ({ n, batch: n, total: 30, recorded, ...extra })
@@ -528,7 +533,7 @@ async function scenarioNextBatch(browser, engine, size) {
         await route.fulfill({ response: r, json: j }); return true
       }
       if (url.pathname === `/api/recording/voice/${VOICE}`) {
-        const r = await route.fetch({ url: `${BASE}/api/recording/voice/${VOICE}?includeRecorded=1&pod=pod-1&course=zzz_test2_for_eng&batch=1` }); const j = await r.json()
+        const r = await route.fetch({ url: `${API}/api/recording/voice/${VOICE}?includeRecorded=1&pod=pod-1&course=zzz_test2_for_eng&batch=1` }); const j = await r.json()
         j.lines.forEach((l) => { l.recorded = true }); j.recorded = j.total; j.remaining = 0; j.track = 'phrase.1'; j.batch = 2
         await route.fulfill({ response: r, json: j }); return true
       }
@@ -575,7 +580,7 @@ function railMeasure() {
 async function scenarioDesktopGrid(browser, engine, size) {
   for (const n of GRID_LINES) {
     const answer = async (req, url, route) => {
-      if (url.origin !== BASE || req.method() !== 'GET') return false
+      if (!ours(url) || req.method() !== 'GET') return false
       if (url.pathname === `/api/recording/voice/${VOICE}`) {
         const r = await route.fetch(); const j = await r.json()
         const base = j.lines.map((l) => ({ ...l, recorded: false }))
@@ -604,9 +609,9 @@ async function scenarioDesktopGrid(browser, engine, size) {
 
 // fixtures for the fully-mocked team booth: Tom's test voice's real answers, captured once
 if (!existsSync(join(OUT, '..', 'fixtures-summary.json'))) {
-  const s = await (await fetch(`${BASE}/api/recording/voice/${VOICE}/summary`)).json()
+  const s = await (await fetch(`${API}/api/recording/voice/${VOICE}/summary`)).json()
   writeFileSync(join(OUT, '..', 'fixtures-summary.json'), JSON.stringify(stressSummary(s)))
-  const q = await (await fetch(`${BASE}/api/recording/voice/${VOICE}?includeRecorded=1&pod=pod-1&course=zzz_test2_for_eng&batch=1`)).json()
+  const q = await (await fetch(`${API}/api/recording/voice/${VOICE}?includeRecorded=1&pod=pod-1&course=zzz_test2_for_eng&batch=1`)).json()
   writeFileSync(join(OUT, '..', 'fixtures-queue.json'), JSON.stringify(q))
 }
 
@@ -614,7 +619,10 @@ const SCEN = { real: scenarioReal, stress: scenarioStress, done: scenarioDone, n
 // The editor is only on builds that carry job #709; it is run when asked for (--only editor).
 if (!ONLY) delete SCEN.editor
 for (const engine of ENGINES) {
-  const browser = await (engine === 'webkit' ? webkit : chromium).launch(engine === 'chromium' ? { args: ['--use-fake-ui-for-media-stream', '--autoplay-policy=no-user-gesture-required'] } : {})
+  const browser = await (engine === 'webkit' ? webkit : chromium).launch(engine === 'chromium' ? { args: ['--use-fake-ui-for-media-stream', '--autoplay-policy=no-user-gesture-required',
+    // staging.popty.app's API is on a 100.x tailnet address, which Chromium's local-network block
+    // refuses ("Failed to fetch"); iPhone Safari does not. Same flags as e2e/booth-auto-advance-live (job #915).
+    '--disable-features=LocalNetworkAccessChecks,PrivateNetworkAccessSendPreflights,PrivateNetworkAccessRespectPreflightResults,BlockInsecurePrivateNetworkRequests'] } : {})
   for (const size of SIZES) {
     for (const [k, fn] of Object.entries(SCEN)) if (!ONLY || ONLY.split(',').includes(k)) await fn(browser, engine, size)
   }
