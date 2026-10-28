@@ -118,7 +118,40 @@ function withPlaybackSpeed(voiceConfig, slot, speed) {
   return vc
 }
 
+/**
+ * THE CAST VOICE'S OWN ELEVENLABS SETTINGS (Kai 2026-10-28, job #76·AA): deu_at target1 is cast as Tamara on
+ * ElevenLabs v4 Turbo at stability 1.0 — the settings of the 737 clips Kai approved by ear (trial jobs #23/#47·AA).
+ * Until this, a COURSE render dropped them: phase8's render route sent no model and no stability, so every course
+ * clip came out eleven_multilingual_v2 at 0.5 whatever the cast said.
+ *
+ * Read from the slot's own `settings` in voice_config: `model` (an ElevenLabs model id from the same allow-list the
+ * trial lane uses), `stability`, `similarityBoost` (0..1). Only what the config SAYS comes back, so a course whose
+ * config names none of them renders exactly as before (generateElevenLabs' own defaults: multilingual_v2, 0.5, 0.75).
+ * A model off the allow-list throws: a typo in a cast must not quietly fall back to another model.
+ *
+ * @param {object} voice  one slot of voice_config.voices (e.g. voices.target1)
+ * @returns {{ modelId?: string, stability?: number, similarityBoost?: number }}
+ */
+function elevenLabsCastSettings(voice) {
+  const s = (voice && typeof voice === 'object' && voice.settings) || {}
+  const out = {}
+  if (s.model != null) {
+    const { ELEVENLABS_TRIAL_MODELS } = require('./audio-trial-mode.cjs')
+    const m = String(s.model)
+    if (!ELEVENLABS_TRIAL_MODELS.includes(m)) throw new Error(`voice_config names ElevenLabs model "${m}" — not one of ${ELEVENLABS_TRIAL_MODELS.join(', ')}; fix the cast, nothing is rendered on a guessed model`)
+    out.modelId = m
+  }
+  for (const [key, to] of [['stability', 'stability'], ['similarityBoost', 'similarityBoost']]) {
+    if (s[key] == null) continue
+    const n = Number(s[key])
+    if (!Number.isFinite(n) || n < 0 || n > 1) throw new Error(`voice_config settings.${key} must be between 0 and 1, got ${s[key]}`)
+    out[to] = n
+  }
+  return out
+}
+
 module.exports = {
+  elevenLabsCastSettings,
   TARGET_SLOTS,
   KNOWN_SPEED,
   MIN_PLAYBACK_SPEED,

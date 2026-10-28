@@ -5619,7 +5619,8 @@ function buildRenderDeps() {
         const speed = courseVoiceConfig.renderSpeedFor(vc, role)
         const providerConfig =
           provider === 'azure' ? { subscriptionKey: process.env.AZURE_SPEECH_KEY, region: process.env.AZURE_SPEECH_REGION || 'westeurope', voiceName: held, speed }
-          : provider === 'elevenlabs' ? { apiKey: process.env.ELEVENLABS_API_KEY, voiceId: held, speed }
+          // The slot's cast settings (model, stability) ride along only when the voice rendering IS the slot's cast voice (job #76·AA).
+          : provider === 'elevenlabs' ? { apiKey: process.env.ELEVENLABS_API_KEY, voiceId: held, speed, ...(String(settings.voiceId || '').replace(/^elevenlabs_/, '') === held ? courseVoiceConfig.elevenLabsCastSettings(settings) : {}) }
           : provider === 'xai' ? { voiceId: held, language: toBcp47(lang) }
           : provider === 'cartesia' ? { apiKey: process.env.CARTESIA_API_KEY, voiceId: held, locale: ttsLocaleForRole(course, role, lang), speed, wordTimings: true /* #643: word-by-word display needs timings on every Cartesia clip */ }
           : null
