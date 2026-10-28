@@ -28,6 +28,7 @@
  * end to end without a provider. Nothing here spends a character on its own.
  */
 const chain = require('./chain-context.cjs')
+const adoptException = require('./adopt-exception.cjs')
 const trialMode = require('./audio-trial-mode.cjs')
 const drillCut = require('./drill-cut-guard.cjs')
 const paidWrite = require('./paid-write.cjs')
@@ -108,7 +109,14 @@ function validate(input) {
   if (isSharedRole(out.role) && (out.trial || out.legoId)) throw new RenderRequestError(`a ${out.role} is no LEGO's and no trial's — legoId and trial do not apply`, 400, 'SHARED_ROLE_ALONE')
   if (LANGUAGE_SHARED_ROLES.includes(out.role) && (out.replaceAudioId || out.adoptS3Key)) throw new RenderRequestError(`a ${out.role} lives in shared_audio — replaceAudioId and adoptS3Key file course_audio rows`, 400, 'SHARED_ROLE_ALONE')
   if (out.adoptS3Key) {
-    if (!paidWrite.isAdoptableKey(out.adoptS3Key)) throw new RenderRequestError('adoptS3Key must be a mastered/<UUID>.mp3 key phase8 wrote', 400, 'BAD_ADOPT_KEY')
+    // ONE-OFF EXCEPTION (r-2026-10-28 deu_at Tamara 732, services/shared/adopt-exception.cjs): a listed trial key, for its
+    // exact course/role/words only. Anything not on that list is still refused here.
+    const ex = adoptException.exceptionFor(out.adoptS3Key)
+    if (!paidWrite.isAdoptableKey(out.adoptS3Key) && !ex) throw new RenderRequestError('adoptS3Key must be a mastered/<UUID>.mp3 key phase8 wrote', 400, 'BAD_ADOPT_KEY')
+    if (ex) {
+      const why = adoptException.mismatch(ex, out)
+      if (why) throw new RenderRequestError(`${out.adoptS3Key} is adoptable only under ${ex.ruling}: ${why}`, 400, 'ADOPT_EXCEPTION_MISMATCH')
+    }
     if (out.trial || out.replaceAudioId || out.spokenText) throw new RenderRequestError('adoptS3Key files one paid-but-unsaved clip — trial, replaceAudioId and spokenText do not apply', 400, 'ADOPT_ALONE')
   }
   if (out.trial && (out.replaceAudioId || out.spokenText || out.legoId)) throw new RenderRequestError('a trial render connects to nothing — replaceAudioId, spokenText and legoId do not apply', 400, 'TRIAL_NO_LINKS')
@@ -275,6 +283,16 @@ async function adoptPaid(req, deps) {
   const r = await deps.resolve({ ...req, role: voiceSlotFor(req.role) })
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   const echo = { purpose: req.purpose, requestedBy: req.requestedBy, adoptS3Key: req.adoptS3Key, charsSpent: 0 }
+  // An exception adopt files THE clip Kai picked: the resolved voice must be the listed one, and the library is not asked
+  // (it would answer with some other clip of the words). phase8 slows it and files it under a fresh mastered/ key.
+  const ex = adoptException.exceptionFor(req.adoptS3Key)
+  if (ex) {
+    const why = adoptException.mismatch(ex, { ...req, voiceId: r.voiceId })
+    if (why) throw new RenderRequestError(`${req.adoptS3Key} is adoptable only under ${ex.ruling}: ${why}`, 400, 'ADOPT_EXCEPTION_MISMATCH')
+    const adopted = await deps.adopt({ ...ident, s3Key: req.adoptS3Key, dryRun: req.dryRun, exception: ex })
+    if (req.dryRun) return { ok: true, source: 'would-adopt', dryRun: true, exception: ex.ruling, ...adopted, ...echo }
+    return bindPresentation(req, { ok: true, source: 'adopted', exception: ex.ruling, ...adopted, ...echo }, deps)
+  }
   const linked = await deps.link(ident)
   if (linked) return bindPresentation(req, { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), ...linked, ...echo }, deps)
   const adopted = await deps.adopt({ ...ident, s3Key: req.adoptS3Key, dryRun: req.dryRun })

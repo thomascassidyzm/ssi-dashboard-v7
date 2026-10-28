@@ -91,3 +91,47 @@ describe('adoptS3Key files a paid-but-unsaved clip and pays nothing', () => {
     await expect(renderClip(req({ adoptS3Key: 'samples/x.mp3' }), d)).rejects.toMatchObject({ code: 'BAD_ADOPT_KEY' })
   })
 })
+
+describe('the one-off adopt exception (r-2026-10-28 deu_at Tamara 732)', () => {
+  const ex = require('./shared/adopt-exception-r-2026-10-28-deu-at-tamara-732.json')
+  const listed = ex.clips.find(c => c.text === 'nervös')
+  const TAMARA = 'elevenlabs_Zq8xdM7UEWBINjdZQdBE'
+  const req = (o = {}) => ({ courseCode: 'deu_at_for_eng', role: 'target1', text: listed.text, purpose: 'r-2026-10-28', requestedBy: 't', adoptS3Key: listed.key, voiceId: TAMARA, ...o })
+  const deps = (over = {}) => {
+    const seen = { adopted: [], linked: 0 }
+    return { seen, deps: {
+      resolve: async (r) => ({ language: 'deu', voiceId: r.voiceId || 'cartesia_vreni', provider: 'elevenlabs', providerConfig: {} }),
+      link: async () => { seen.linked++; return { audioId: 'LIB', s3Key: 'mastered/LIB.mp3' } },
+      speak: async () => { throw new Error('no provider call on an adopt') },
+      adopt: async (x) => { seen.adopted.push(x); return x.dryRun ? { s3Key: null } : { audioId: 'NEW', s3Key: 'mastered/NEW.mp3', durationMs: 900 } },
+      ...over,
+    } }
+  }
+
+  it('lists exactly 732 trial keys and none of the five Kai excluded', () => {
+    expect(ex.clips).toHaveLength(732)
+    expect(new Set(ex.clips.map(c => c.key)).size).toBe(732)
+    for (const w of ['hoiten', 'mitm', 'rotn', 'gebn', 'gmoant']) expect(ex.clips.some(c => c.text === w)).toBe(false)
+    expect(ex.clips.every(c => /^trial\/[0-9A-F-]{36}\.mp3$/.test(c.key))).toBe(true)
+  })
+
+  it('adopts a listed key, skipping the library, with the exception (and its 0.85) handed to phase8', async () => {
+    const { deps: d, seen } = deps()
+    const out = await renderClip(req(), d)
+    expect(out).toMatchObject({ ok: true, source: 'adopted', s3Key: 'mastered/NEW.mp3', exception: ex.ruling })
+    expect(seen.linked).toBe(0)
+    expect(seen.adopted[0].exception).toMatchObject({ speed: 0.85, courseCode: 'deu_at_for_eng' })
+  })
+
+  it('still refuses a trial key that is NOT on the list', async () => {
+    const { deps: d } = deps()
+    await expect(renderClip(req({ adoptS3Key: 'trial/00000000-0000-0000-0000-000000000000.mp3' }), d)).rejects.toMatchObject({ code: 'BAD_ADOPT_KEY' })
+  })
+
+  it('refuses a listed key for another course, other words or another voice', async () => {
+    const { deps: d } = deps()
+    await expect(renderClip(req({ courseCode: 'deu_for_eng' }), d)).rejects.toMatchObject({ code: 'ADOPT_EXCEPTION_MISMATCH' })
+    await expect(renderClip(req({ text: 'reden' }), d)).rejects.toMatchObject({ code: 'ADOPT_EXCEPTION_MISMATCH' })
+    await expect(renderClip(req({ voiceId: undefined }), d)).rejects.toMatchObject({ code: 'ADOPT_EXCEPTION_MISMATCH' })
+  })
+})
