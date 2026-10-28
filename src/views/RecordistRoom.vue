@@ -220,8 +220,9 @@
                next unrecorded, and shown like any other line with one small reason under it. The only
                thing up here is this ONE slim bar, and it never sits over the line. It replaced a
                stack of red notices, one per refused take, that hid the line being read (#679). -->
-          <p v-if="refusedInBatch.length" class="refused-summary" role="status" data-test="refused-summary">
-            <span>{{ refusedInBatch.length }} {{ refusedInBatch.length === 1 ? 'line needs' : 'lines need' }} re-recording</span>
+          <p v-if="refusedInBatch.length" class="refused-summary" :class="{ quiet: refusedAllNoSpeech }" role="status" data-test="refused-summary">
+            <span v-if="refusedAllNoSpeech">No speech heard on {{ refusedInBatch.length === 1 ? '1 line' : refusedInBatch.length + ' lines' }} — read {{ refusedInBatch.length === 1 ? 'it' : 'them' }} again</span>
+            <span v-else>{{ refusedInBatch.length }} {{ refusedInBatch.length === 1 ? 'line needs' : 'lines need' }} re-recording</span>
             <template v-if="firstRefusedIndex !== index">
               ·
               <button type="button" class="refused-go" data-test="refused-go-first"
@@ -282,7 +283,7 @@
                    2026-09-02). A refusal is not a verdict on a stored take — nothing was stored —
                    so a refused line says why in one small line, under the words, never over them
                    (Aran, 2026-10-15). -->
-              <p v-if="currentRefusedWhy" class="refused-why" data-test="refused-why"
+              <p v-if="currentRefusedWhy" class="refused-why" :class="{ quiet: currentRefusedNoSpeech }" data-test="refused-why"
                  :title="queue.failed.get(current.id) || (textCheckFails.get(current.id) || {}).reason || null">{{ currentRefusedWhy }}</p>
             </div>
             <!-- AND THE LINE AFTER IT. Same rules. -->
@@ -724,7 +725,7 @@
 import { ref, computed, onMounted, onBeforeUnmount, onActivated, onDeactivated, watch, nextTick, inject } from 'vue'
 import { routerKey, routeLocationKey } from 'vue-router'
 import { recordingApiBase as apiBase, withBoothKey } from '@/services/recordingApi'
-import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecorder'
+import { useTapRecorder, resolveCaptureProfile, MIN_VOICED_MS } from '@/composables/useTapRecorder'
 import { loadBoothSettings, saveBoothSettings, micKeyFor } from './recordist/booth-settings.js'
 import { useRecordistQueue, DURABLE_TAKES_FEATURE } from '@/composables/useRecordistQueue'
 import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
@@ -743,7 +744,7 @@ import { recordedSections } from './recordist/recorded-sections.js'
 import { rememberBooth } from './recordist/booth-pointer.js'
 import { boothCourseChip, boothPodChip, boothPodHeading, boothCourseWords, isBoothNewCourse } from './recordist/booth-chip-titles.js'
 import BoothHome from './recordist/BoothHome.vue'
-import { refusedLineWords, placeLines, goneRefusedLineIds } from './recordist/refused-takes.js'
+import { refusedLineWords, isNoSpeechRefusal, placeLines, goneRefusedLineIds } from './recordist/refused-takes.js'
 import RerecordCard from './recordist/RerecordCard.vue'
 import { mergeRerecord, oldRefusedIds, alsoIds } from './recordist/rerecord-list.js'
 import { applyFailures, mismatchLineWords } from './recordist/text-check-failures.js'
@@ -2143,6 +2144,11 @@ const refusedInBatch = computed(() =>
   lines.value.map((l, i) => ({ l, i })).filter(({ l }) => (hasFailed(l.id) && !isRecorded(l) && !isPending(l.id)) || hasMismatch(l.id))
 )
 const firstRefusedIndex = computed(() => (refusedInBatch.value.length ? refusedInBatch.value[0].i : -1))
+// Every refused line here was refused for having no speech on it (a blip moved it on, or only the
+// room was heard): nothing was lost, so the bar is a small grey note, not a red one (job #915).
+const isNoSpeechLine = (l) => hasFailed(l.id) && !hasMismatch(l.id) && isNoSpeechRefusal(queue.failed.get(l.id))
+const refusedAllNoSpeech = computed(() => refusedInBatch.value.length > 0 && refusedInBatch.value.every(({ l }) => isNoSpeechLine(l)))
+const currentRefusedNoSpeech = computed(() => !!current.value && isNoSpeechLine(current.value))
 const currentRefusedWhy = computed(() => {
   const l = current.value
   if (l && hasMismatch(l.id) && !(hasFailed(l.id) && !isRecorded(l))) return mismatchLineWords(textCheckFails.value.get(l.id))
@@ -2558,6 +2564,10 @@ watch(() => recorder.quietMs.value, (ms) => {
   // take coming out of the phone speaker would advance the queue for them.
   if (micHeld.value || playingId.value) return
   if (!recorder.lineHasSpeech.value) return
+  // A BLIP IS NOT A READ (Aran, 2026-10-28, job #915): one loud frame sets
+  // lineHasSpeech; a quiet may only end the line once MIN_VOICED_MS of it was
+  // voiced. Taps are untouched — this is the auto-advance gate alone.
+  if (recorder.voicedMs.value < MIN_VOICED_MS) return
   // A SILENCE NEVER ENDS THE BATCH (Aran, live, 2026-10-15 15:09 BST, batch 5): on
   // the last line he pressed Again, began reading, drew breath — and the booth
   // jumped to the finished screen mid-sentence, because a quiet on the LAST line
@@ -3690,6 +3700,10 @@ onDeactivated(() => {
 .refused-why { margin: 0.5rem 0 0; font-size: 0.85rem; color: #fca5a5; }
 :root[data-theme="light"] .refused-summary { color: #991b1b; background: #fef2f2; border-color: #fca5a5; }
 :root[data-theme="light"] .refused-why { color: #b91c1c; }
+/* No speech heard (job #915): plain small grey text, no pill, no red — in either theme. */
+.refused-summary.quiet { color: #a3a3a3; background: none; border-color: transparent; }
+.refused-why.quiet { color: #a3a3a3; }
+:root[data-theme="light"] .refused-summary.quiet, :root[data-theme="light"] .refused-why.quiet { color: #525252; background: none; border-color: transparent; }
 .safety-banner.refused { background: #3a2a0d; border-color: #e8a02a; color: #ffe9c2; }
 /* ONE BATCH (job #347): where he is and the way back to the home screen. */
 .batch-head { margin: -0.4rem 0 0.9rem; }

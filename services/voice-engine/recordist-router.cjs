@@ -170,7 +170,7 @@ function captureResponse() {
 // ADVANCE TELEMETRY (Aran, 2026-10-26). The booth sends, with each take, how
 // its line moved on — advanceBy auto|tap|stop, advanceGapMs (ms from the last
 // frame the meter called speech to the advance), and thrSpeech/thrQuiet (dBFS).
-// Appended to the [BoothTake] line as ' advance=… gapMs=… thrSpeech=… thrQuiet=…'
+// Appended to the [BoothTake] line as ' advance=… gapMs=… thrSpeech=… thrQuiet=… voicedMs=…'
 // so a stall reads straight off the log. Client words never reach the log raw:
 // anything that is not a known token or a plain number is dropped.
 function boothAdvanceLogFields(body) {
@@ -181,7 +181,10 @@ function boothAdvanceLogFields(body) {
     const t = typeof v === 'number' && Number.isFinite(v) ? String(v) : v
     return typeof t === 'string' && /^-?\d{1,7}(\.\d{1,2})?$/.test(t) ? t : '?'
   }
-  return ` advance=${by} gapMs=${num(body.advanceGapMs)} thrSpeech=${num(body.thrSpeech)} thrQuiet=${num(body.thrQuiet)}`
+  // voicedMs (job #915): how much of the line the meter called speech; a line
+  // under MIN_VOICED_MS (useTapRecorder.js) can only have moved on by a tap.
+  const voiced = body.voicedMs != null ? ` voicedMs=${num(body.voicedMs)}` : ''
+  return ` advance=${by} gapMs=${num(body.advanceGapMs)} thrSpeech=${num(body.thrSpeech)} thrQuiet=${num(body.thrQuiet)}${voiced}`
 }
 
 module.exports = function createRecordistRouter({

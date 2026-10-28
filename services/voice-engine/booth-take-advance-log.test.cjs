@@ -105,3 +105,10 @@ test('client words never reach the log raw', () => {
   assert.equal(f({ advanceBy: 'auto\nFAKE' }), '')
   assert.equal(f({ advanceBy: 'auto', advanceGapMs: '12 status=500', thrSpeech: -38.5, thrQuiet: 'x' }), ' advance=auto gapMs=? thrSpeech=-38.5 thrQuiet=?')
 })
+
+// voicedMs (job #915): how much of the line the meter called speech rides on the same line.
+test('a take that says how much of it was voiced logs voicedMs', async () => {
+  const line = await takeLogLine({ advanceBy: 'auto', advanceGapMs: '1216', thrSpeech: '-34', thrQuiet: '-34', voicedMs: '2384' })
+  assert.match(line, / advance=auto gapMs=1216 thrSpeech=-34 thrQuiet=-34 voicedMs=2384$/)
+  assert.equal(createRecordistRouter.boothAdvanceLogFields({ advanceBy: 'tap', voicedMs: '32 x' }), ' advance=tap gapMs=? thrSpeech=? thrQuiet=? voicedMs=?')
+})

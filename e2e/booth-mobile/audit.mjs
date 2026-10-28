@@ -301,8 +301,9 @@ async function scenarioStress(browser, engine, size) {
   const answer = async (req, url, route) => {
     if (url.origin !== BASE) return false
     const p = url.pathname
-    // the first take is refused (answered here, never sent); the rest stay "still to upload"
-    if (req.method() === 'POST' && p.endsWith('/take') && !refusedOnce) { refusedOnce = true; await route.fulfill({ status: 422, json: { error: 'That take was silent — nothing was heard. Please read it again.' } }); return true }
+    // the first take is refused (answered here, never sent) with the server's real no-speech 422 —
+    // the one a blip used to cause, drawn as a small grey note since job #915; the rest stay "still to upload"
+    if (req.method() === 'POST' && p.endsWith('/take') && !refusedOnce) { refusedOnce = true; await route.fulfill({ status: 422, json: { error: "We couldn't hear your voice on that one - it sounded like background noise. Please try again somewhere quiet.", noSpeech: true, reason: 'steady_noise_no_speech' } }); return true }
     if (req.method() !== 'GET') return false
     if (p === `/api/recording/voice/${VOICE}/tabs`) { await route.fulfill({ json: stressTabs() }); return true }
     if (p === `/api/recording/voice/${VOICE}/summary`) { const r = await route.fetch(); await route.fulfill({ response: r, json: stressSummary(await r.json()) }); return true }
