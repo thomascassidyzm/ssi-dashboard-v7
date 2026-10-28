@@ -1,0 +1,52 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0004L02B04",
+   "expect": {
+    "known_text": "to learn in Frisian",
+    "target_text": "yn it Frysk te learen"
+   },
+   "set": {
+    "known_text": "I'm trying to learn in Frisian",
+    "target_text": "ik besykje yn it Frysk te learen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0046L02B04",
+   "expect": {
+    "known_text": "to explain her mistakes",
+    "target_text": "har flaters út te lizzen"
+   },
+   "set": {
+    "known_text": "I'm trying to explain her mistakes",
+    "target_text": "ik besykje har flaters út te lizzen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0052L04B02",
+   "expect": {
+    "known_text": "to explain to his friend",
+    "target_text": "oan syn freon út te lizzen"
+   },
+   "set": {
+    "known_text": "to try to explain to his friend",
+    "target_text": "besykje oan syn freon út te lizzen"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "fry_for_eng:S0089L02B01",
+   "expect": {
+    "known_text": "to finish in a short time",
+    "target_text": "yn koarte tiid klear te wêzen"
+   },
+   "set": {
+    "known_text": "to try to finish in a short time",
+    "target_text": "besykje yn koarte tiid klear te wêzen"
+   }
+  }
+ ]
+}
