@@ -6,7 +6,9 @@
  * (audio-trial-mode.assertNotTrial). On 2026-10-28 Kai approved (17:30Z) and Tom said YES (~17:52Z, relayed by his
  * Watson) to ONE exception: exactly the 732 hand-checked Tamara trial clips listed in
  * adopt-exception-r-2026-10-28-deu-at-tamara-732.json, into deu_at_for_eng target1, stored at NATURAL speed (the
- * evening correction: the app applies speed at run-time, so nothing is baked in).
+ * evening correction: the app applies speed at run-time, so nothing is baked in). Kai 18:28Z extended it to 737: the
+ * five he first excluded (hoiten, mitm, rotn, gebn, gmoant) as their variant-D re-tries from job #51·AA — the file
+ * keeps its 732 name so the ruling string stays the one already stamped on the adopted clips.
  *
  * This is an ALLOW-LIST, not a trial-key path. A key is adoptable here only if it is on the list AND the request is
  * for that list's course, role, voice and that key's exact words. Everything else is still BAD_ADOPT_KEY. The adopt

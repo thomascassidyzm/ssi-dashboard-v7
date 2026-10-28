@@ -108,11 +108,28 @@ describe('the one-off adopt exception (r-2026-10-28 deu_at Tamara 732)', () => {
     } }
   }
 
-  it('lists exactly 732 trial keys and none of the five Kai excluded', () => {
-    expect(ex.clips).toHaveLength(732)
-    expect(new Set(ex.clips.map(c => c.key)).size).toBe(732)
-    for (const w of ['hoiten', 'mitm', 'rotn', 'gebn', 'gmoant']) expect(ex.clips.some(c => c.text === w)).toBe(false)
+  it('lists exactly 737 trial keys: the 732, plus the five Kai first excluded as their variant-D re-tries (#51·AA)', () => {
+    expect(ex.clips).toHaveLength(737)
+    expect(new Set(ex.clips.map(c => c.key)).size).toBe(737)
+    expect(new Set(ex.clips.map(c => c.text)).size).toBe(737)
+    // Kai 2026-10-28 18:28Z picked D for these five, and Tom's exception was extended to them — those keys and no others.
+    const D = {
+      hoiten: 'trial/50EFD790-8C3E-4E5E-82D0-63875B74A701.mp3',
+      mitm: 'trial/161B7670-1E9A-4FF3-A403-08ED21C27986.mp3',
+      rotn: 'trial/6269683E-C4CE-4B02-A289-F62D0AC3F649.mp3',
+      gebn: 'trial/CA46A701-8857-4476-82AC-9C99DC11838B.mp3',
+      gmoant: 'trial/7FA2127E-AA7D-4FD9-B989-D136FFE46FBB.mp3',
+    }
+    for (const [w, key] of Object.entries(D)) expect(ex.clips.filter(c => c.text === w).map(c => c.key)).toEqual([key])
     expect(ex.clips.every(c => /^trial\/[0-9A-F-]{36}\.mp3$/.test(c.key))).toBe(true)
+  })
+
+  it('adopts a variant-D key for its own course word (the IPA it was rendered from is not the slot text)', async () => {
+    const { deps: d, seen } = deps()
+    const D = ex.clips.find(c => c.text === 'hoiten')
+    const out = await renderClip(req({ text: 'hoiten', adoptS3Key: D.key }), d)
+    expect(out).toMatchObject({ ok: true, source: 'adopted' })
+    expect(seen.adopted[0].exception).toMatchObject({ speed: 1 })
   })
 
   it('adopts a listed key, skipping the library, with the exception handed to phase8 at NATURAL speed (1), never a baked slow-down', async () => {
