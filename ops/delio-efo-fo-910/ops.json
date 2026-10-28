@@ -1,0 +1,110 @@
+[
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1204L03B01",
+  "set": {
+   "known_text": "to deal with it today",
+   "target_text": "delio efo fo heddiw"
+  },
+  "expect": {
+   "known_text": "to deal today",
+   "target_text": "delio heddiw"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1204L03B03",
+  "set": {
+   "known_text": "I’m going to deal with it on my own",
+   "target_text": "dw i’n mynd i ddelio efo fo ar fy mhen fy hun"
+  },
+  "expect": {
+   "known_text": "I’m going to deal on my own",
+   "target_text": "dw i’n mynd i ddelio ar fy mhen fy hun"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1204L03B04",
+  "set": {
+   "known_text": "you could deal with it later",
+   "target_text": "mi fedri di ddelio efo fo nes ymlaen"
+  },
+  "expect": {
+   "known_text": "you could deal later",
+   "target_text": "mi fedri di ddelio nes ymlaen"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1204L03U01",
+  "set": {
+   "known_text": "thank you but I’d better deal with it on my own",
+   "target_text": "diolch yn fawr ond well i mi ddelio efo fo ar fy mhen fy hun"
+  },
+  "expect": {
+   "known_text": "thank you but I’d better deal on my own",
+   "target_text": "diolch yn fawr ond well i mi ddelio ar fy mhen fy hun"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1204L03U02",
+  "set": {
+   "known_text": "I’m not going to deal with it today",
+   "target_text": "dw i ddim yn mynd i ddelio efo fo heddiw"
+  },
+  "expect": {
+   "known_text": "I’m not going to deal today",
+   "target_text": "dw i ddim yn mynd i ddelio heddiw"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1204L03U03",
+  "set": {
+   "known_text": "he’s going to deal with it tomorrow afternoon",
+   "target_text": "mae o’n mynd i ddelio efo fo pnawn ’fory"
+  },
+  "expect": {
+   "known_text": "he’s going to deal tomorrow afternoon",
+   "target_text": "mae o’n mynd i ddelio pnawn ’fory"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1204L03U04",
+  "set": {
+   "known_text": "I was going to deal with it but I’m busy today",
+   "target_text": "o’n i’n mynd i ddelio efo fo ond dw i’n brysur heddiw"
+  },
+  "expect": {
+   "known_text": "I was going to deal but I’m busy today",
+   "target_text": "o’n i’n mynd i ddelio ond dw i’n brysur heddiw"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1204L03U05",
+  "set": {
+   "known_text": "we must deal with it in time",
+   "target_text": "rhaid i ni ddelio efo fo mewn pryd"
+  },
+  "expect": {
+   "known_text": "we must deal in time",
+   "target_text": "rhaid i ni ddelio mewn pryd"
+  }
+ },
+ {
+  "op": "phrase.update",
+  "phrase_id": "cym_nv2_for_eng:S1204L03U06",
+  "set": {
+   "known_text": "I still must deal with it next week",
+   "target_text": "mae dal rhaid i mi ddelio efo fo wythnos nesa’"
+  },
+  "expect": {
+   "known_text": "I still must deal next week",
+   "target_text": "mae dal rhaid i mi ddelio wythnos nesa’"
+  }
+ }
+]
