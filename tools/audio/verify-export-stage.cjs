@@ -11,12 +11,18 @@
  * only by the Step 2 button; this answers "will it pass?" without the API.
  *
  *   node tools/audio/verify-export-stage.cjs <pending_manifest.json> [--out result.json]
+ *   exit 0 = would pass; exit 2 = would fail (incl. "audio length/format check could not run: <reason>")
  *   (the API keeps it at <prod checkout>/temp/course_export_states/<course>_pending_manifest.json)
  */
 const fs = require('fs');
+const { stageVerdict } = require('../../services/shared/export-audio-check.cjs');
 
-/** Pure. The verdict line Step 2 would reach: missing and badly encoded both block. */
+/**
+ * Pure. The verdict line Step 2 would reach: missing, badly encoded, and a length/format check that
+ * errored or did not run all block (job #994 — no sox used to pass on file presence alone).
+ */
 function summarise(r) {
+  const v = stageVerdict(r);
   const formatBad = [...new Set((r.formatFailDetails || []).map((f) => String(f.uuid).toUpperCase()))];
   return {
     total: r.total,
@@ -26,10 +32,13 @@ function summarise(r) {
     durationChecked: r.durationChecked,
     durationMismatched: r.durationMismatched, // Step 2 auto-fixes these; they do not block
     durationErrors: r.durationErrors,
+    durationErrorExamples: (r.durationErrorDetails || []).slice(0, 5),
     formatChecked: r.formatChecked,
     formatFailed: r.formatFailed,
     formatBadUuids: formatBad,
-    wouldPass: r.missing === 0 && (r.formatFailed || 0) === 0 && !r.durationCheckFailed,
+    audioCheckGap: v.audioCheckGap,
+    reasons: v.reasons,
+    wouldPass: v.verified,
   };
 }
 
@@ -48,8 +57,9 @@ async function main() {
     if (checked - last >= 2000 || checked === total) { last = checked; console.error(`[${phase}] ${checked}/${total}`); }
   }, { checkDurations: true, durationTolerance: 0 });
   const s = summarise(r);
-  if (out) fs.writeFileSync(out, JSON.stringify({ summary: s, formatFailDetails: r.formatFailDetails || [] }, null, 2));
+  if (out) fs.writeFileSync(out, JSON.stringify({ summary: s, formatFailDetails: r.formatFailDetails || [], durationMismatchDetails: r.durationMismatchDetails || [], durationErrorDetails: r.durationErrorDetails || [] }, null, 2));
   console.log(JSON.stringify(s, null, 2));
+  if (!s.wouldPass) process.exitCode = 2;
 }
 
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

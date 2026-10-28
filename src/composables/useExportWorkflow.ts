@@ -48,6 +48,8 @@ export interface S3VerificationResult {
   durationErrors?: number
   durationCheckFailed?: boolean
   durationCheckError?: string
+  /** Why the length/format check did not run in full, or null (server: shared/export-audio-check.cjs) */
+  audioCheckGap?: string | null
   durationsFixed?: number
   durationFixErrors?: number
   durationMismatchDetails?: Array<{
@@ -435,7 +437,8 @@ export function useExportWorkflow(courseCode: string) {
           state.value.s3Verification = freshState.s3Verification || null
         } catch (e) {
           // Fallback: use data from the event
-          state.value.s3Verified = (data.missing === 0 && data.durationMismatched === 0)
+          // Never infer a pass client-side: the server's verdict also covers a check that could not run (job #994)
+          state.value.s3Verified = false
         }
         isLoading.value = false
       }
@@ -832,7 +835,7 @@ export function useExportWorkflow(courseCode: string) {
       // and s3Verify:completed will refresh the final state
       const hasMismatches = (data.durationMismatched || 0) > 0
       if (!hasMismatches) {
-        state.value.s3Verified = data.missing === 0
+        state.value.s3Verified = data.s3Verified === true // server verdict, incl. "check could not run" (job #994)
         state.value.s3VerifiedAt = new Date().toISOString()
         state.value.s3Verification = data
       }

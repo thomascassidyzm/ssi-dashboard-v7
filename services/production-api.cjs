@@ -10006,6 +10006,18 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
 // =============================================================================
 
 const s3DeployService = require('./s3-deploy-service.cjs')
+const exportAudioCheck = require('./shared/export-audio-check.cjs')
+
+// Kai 2026-10-28 (job #994): no legacy export unless Step 2's length/format check ran in full.
+function legacyExportAudioGate (courseCode) {
+  return exportAudioCheck.legacyExportAudioGate(async () => {
+    if (!supabaseClient.isInitialized()) throw new Error('Supabase not initialized')
+    const { data, error } = await supabaseClient.getClient()
+      .from('course_export_states').select('s3_verification').eq('course_code', courseCode).maybeSingle()
+    if (error) throw error
+    return data?.s3_verification || null
+  })
+}
 
 // GET /api/production/:courseCode/export-state
 // Get current export workflow state for a course
@@ -10484,6 +10496,13 @@ app.post('/api/production/:courseCode/publish-manifest', async (req, res) => {
 
     const manifest = await fs.readJson(manifestPath)
 
+    // Refuse to publish a manifest whose audio length/format check did not run (job #994).
+    const audioGate = await legacyExportAudioGate(courseCode)
+    if (audioGate) {
+      logger.warn(`[PUBLISH] Refused for ${courseCode}: ${audioGate.error}`)
+      return res.status(412).json(audioGate)
+    }
+
     // Block publishing if any samples have duration 0 (combined presentations not yet fixed)
     const zeroDurationSamples = []
     const manifestSamples = manifest.slices?.[0]?.samples || {}
@@ -10712,6 +10731,13 @@ app.post('/api/production/:courseCode/stage-deploy', async (req, res) => {
 
     if (!supabaseClient.isInitialized()) {
       return res.status(503).json({ error: 'Supabase not initialized' })
+    }
+
+    // Refuse to deploy to the legacy app when the audio length/format check did not run (job #994).
+    const audioGate = await legacyExportAudioGate(courseCode)
+    if (audioGate) {
+      logger.warn(`[StageDeploy] Refused for ${courseCode}: ${audioGate.error}`)
+      return res.status(412).json(audioGate)
     }
 
     // Derive the courseConfigsId (e.g. fra_ca_for_eng -> en-fr-ca)
@@ -11140,6 +11166,11 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
     }
 
     const results = { ...verifyResults }
+    // A check that errored or was skipped is a FAIL (Kai 2026-10-28, job #994): record why, so the
+    // UI, the response and the publish gate all read the same reason.
+    const stage2Verdict = exportAudioCheck.stageVerdict(results)
+    results.audioCheckGap = stage2Verdict.audioCheckGap
+    if (results.audioCheckGap) logger.error(`[VERIFY-S3] ${courseCode}: ${exportAudioCheck.audioCheckMessage(results.audioCheckGap)}`)
 
     // Save state after Stage 2 (database-first)
     const supabase = supabaseClient.getClient()
@@ -11154,7 +11185,7 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
 
     // Send immediate response after Stage 2 - don't block the UI
     logger.info(`[VERIFY-S3] Stages 1-2 complete, starting auto-fix in background`)
-    res.json(results)
+    res.json({ ...results, s3Verified: results.durationMismatched > 0 ? false : stage2Verdict.verified })
 
     // Stage 3 & 4: Auto-fix and verify in BACKGROUND (async, non-blocking)
     if (results.durationMismatched > 0) {
@@ -11286,7 +11317,8 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
           // Update final state (database-first)
           // Format failures (ID3v2 / non-LAME encoding) block verification — they're
           // the iOS-playback bug and must be fixed before publishing.
-          const s3Verified = results.missing === 0 && verifyMismatched === 0 && (results.formatFailed || 0) === 0
+          // ...and so does a length/format check that did not run on every file (job #994).
+          const s3Verified = exportAudioCheck.stageVerdict(results, { stillMismatched: verifyMismatched }).verified
           await supabase
             .from('course_export_states')
             .update({
@@ -11309,8 +11341,9 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
         }
       })
     } else {
-      // No duration mismatches — but format failures (ID3v2 / non-LAME) still block.
-      const s3Verified = results.missing === 0 && (results.formatFailed || 0) === 0
+      // No duration mismatches — but format failures (ID3v2 / non-LAME) still block, and so does a
+      // check that errored or was skipped: no sox used to read as "0 mismatched" here (job #994).
+      const s3Verified = stage2Verdict.verified
       await supabase
         .from('course_export_states')
         .update({
@@ -14165,6 +14198,12 @@ httpServer.listen(PORT, HOST, () => {
   takeTextCheck.recoverAtBoot(textChecks, { logger })
   logger.log(`WebSocket path: /api/production/websocket`)
   scheduleNightlyArchive()
+  // Export Step 2 needs sox (with MP3) + ffprobe. Say so at boot; every Step 2 run re-checks and
+  // fails closed without them (job #994) — the API itself still starts, it serves far more than export.
+  exportAudioCheck.audioToolsPreflight().then(({ ok, reason }) => {
+    if (ok) logger.log('Export audio check tools present (sox with MP3, ffprobe)')
+    else logger.error(`EXPORT STEP 2 WILL FAIL: ${reason} — no course can be verified or exported to the legacy app until this is fixed`)
+  })
 })
 
 module.exports = { app, io, emitToRoom }

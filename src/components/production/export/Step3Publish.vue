@@ -44,6 +44,9 @@
         <p v-if="verification?.durationsFixed && verification?.verifyFixed?.mismatched !== 0" class="text-sm text-ink">
           Step 2 is currently auto-fixing {{ verification.durationsFixed }} duration mismatches. Please wait for it to complete and verify.
         </p>
+        <p v-else-if="verification?.audioCheckGap" class="text-sm text-ink">
+          Audio length/format check could not run: {{ verification.audioCheckGap }}. Re-run Step 2 once it can — this cannot be overridden.
+        </p>
         <p v-else-if="!verificationOverride" class="text-sm text-ink">
           Go back to Step 2 and verify that all audio durations match the manifest before publishing.
         </p>
@@ -51,7 +54,8 @@
           This ensures the learning app receives accurate duration metadata.
         </p>
         <!-- Override option -->
-        <label v-if="!verificationOverride && !(verification?.durationsFixed && verification?.verifyFixed?.mismatched !== 0)" class="flex items-center gap-2 mt-3 pt-3 border-t border-red-800/50 cursor-pointer group">
+        <!-- No override when the check did not run (Kai 2026-10-28, job #994); the server refuses it too -->
+        <label v-if="!verificationOverride && !verification?.audioCheckGap && !(verification?.durationsFixed && verification?.verifyFixed?.mismatched !== 0)" class="flex items-center gap-2 mt-3 pt-3 border-t border-red-800/50 cursor-pointer group">
           <input
             v-model="verificationOverride"
             type="checkbox"
