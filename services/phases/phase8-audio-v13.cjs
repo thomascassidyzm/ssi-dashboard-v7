@@ -5497,18 +5497,40 @@ async function immersionTurnForRender({ language, text }) {
  * A lock wait behind another transaction on the same course is retried (services/shared/paid-write.cjs) rather
  * than lost; if it still fails, the clip is written to the paid-unsaved ledger so adoptS3Key can file it free.
  */
+// VERSIONED, NOT UPSERTED (job #74·AA, 2026-10-28). This used to be a plain upsert on the clip identity, so a write that
+// landed on an EXISTING row (the #63·AA re-adopt of the 732 Tamara clips at natural speed) moved s3_key under an unchanged
+// audio_revision: the learner address <uuid>.v<rev> stayed the same, and a device that had already played the clip kept the
+// old bytes (immutable HTTP cache, IndexedDB AudioCache keyed on the ref). writeOrSwapClip inserts a new identity and, for an
+// existing one, swaps through swapClipInPlace — revision + 1 and a course_audio_revisions history row.
 async function writePaidClipRow({ courseCode, text, language, role, voiceId, legoId, s3Key, durationMs, wordBoundaries, wordTimings, adopted = false }) {
-  const { data: row, error } = await paidWrite.writeAfterPaid(() => supabase.from('course_audio').upsert({
-    course_code: courseCode, text, text_normalized: normalizeForAudio(text), language, role, voice_id: voiceId,
-    lego_id: legoId, origin: 'tts', s3_key: s3Key, duration_ms: durationMs, word_boundaries: wordBoundaries || null,
-    word_timings: toWordTimingsColumn(wordTimings), // NULL for non-Cartesia; replaces stale timings on an upsert over new bytes
-  }, { onConflict: 'course_code,text_normalized,language,role,voice_id' }).select().single(), { log: logger, label: `course_audio ${courseCode} ${role} ${s3Key}` })
+  const cols = {
+    lego_id: legoId, origin: 'tts', duration_ms: durationMs, word_boundaries: wordBoundaries || null,
+    word_timings: toWordTimingsColumn(wordTimings), // NULL for non-Cartesia; replaces stale timings on a write over new bytes
+  }
+  const attempt = async () => {
+    try {
+      const out = await writeOrSwapClip({
+        supabase,
+        identity: { course_code: courseCode, text_normalized: normalizeForAudio(text), language, role, voice_id: voiceId, text },
+        insertRow: { course_code: courseCode, text, text_normalized: normalizeForAudio(text), language, role, voice_id: voiceId, s3_key: s3Key, ...cols },
+        swapPatch: { text, ...cols },
+        newS3Key: s3Key, durationMs,
+        source: adopted ? 'phase8:adopt' : 'phase8:render',
+        acceptedBy: adopted ? 'phase8 /api/audio/render adoptS3Key' : 'phase8 /api/audio/render',
+        reason: adopted ? `adopted ${s3Key}` : 'render over an existing clip identity',
+        logger,
+      })
+      return { data: { id: out.audioId, revision: out.revision }, error: null }
+    } catch (e) { return { data: null, error: e } }
+  }
+  const { data: row, error } = await paidWrite.writeAfterPaid(attempt, { log: logger, label: `course_audio ${courseCode} ${role} ${s3Key}` })
   if (error) {
     if (!adopted) paidWrite.recordPaidUnsaved({ courseCode, role, text, language, voiceId, legoId, s3Key, durationMs, wordBoundaries: wordBoundaries || null, wordTimings: wordTimings || null, error: error.message }, { log: logger })
     throw new Error(`course_audio write failed after the render was paid for: ${error.message} (object ${s3Key} is in S3 — file it with adoptS3Key, never re-render)`)
   }
   await clipIndex.writeThrough(supabase, [{ id: row.id, text, language, voice_id: voiceId, s3_key: s3Key, origin: 'tts' }], adopted ? 'phase8:adopt' : 'phase8:render', logger)
-  return { audioId: row.id, s3Key, durationMs }
+  // revision: the new audio_revision when this swapped onto an existing row (the learner ref is now <uuid>.v<revision>); null for a new row.
+  return { audioId: row.id, s3Key, durationMs, revision: row.revision ?? null }
 }
 
 /** Length of an S3 object in ms (the same metadata read masterAudio uses — sox is not installed on watson-1), for an adopted clip the paid-unsaved ledger never recorded. */
