@@ -1,0 +1,154 @@
+{
+ "ops": [
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1274L03B01",
+   "set": {
+    "target_text": "dod i helpu mewn cwpl o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "dod i helpu mewn cwpl o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1274L03B02",
+   "set": {
+    "target_text": "mewn cwpl o ddiwrnodiau bydda i’n gallu"
+   },
+   "expect": {
+    "target_text": "mewn cwpl o ddyddiau bydda i’n gallu"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1274L03B03",
+   "set": {
+    "target_text": "byddi di’n cwpla mewn cwpl o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "byddi di’n cwpla mewn cwpl o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1274L03B04",
+   "set": {
+    "target_text": "mynd i dŷ bwyta mewn cwpl o ddiwrnodiau gyda ti"
+   },
+   "expect": {
+    "target_text": "mynd i dŷ bwyta mewn cwpl o ddyddiau gyda ti"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1274L03U01",
+   "set": {
+    "target_text": "wrth gwrs bydda i’n gallu dod i helpu mewn cwpl o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "wrth gwrs bydda i’n gallu dod i helpu mewn cwpl o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1274L03U02",
+   "set": {
+    "target_text": "dw i’n gobeithio byddi di’n cwpla mewn cwpl o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "dw i’n gobeithio byddi di’n cwpla mewn cwpl o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1274L03U03",
+   "set": {
+    "target_text": "fydda i ddim yn gallu dy weld di mewn cwpl o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "fydda i ddim yn gallu dy weld di mewn cwpl o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1274L03U04",
+   "set": {
+    "target_text": "mewn cwpl o ddiwrnodiau bydda i’n gallu ymlacio"
+   },
+   "expect": {
+    "target_text": "mewn cwpl o ddyddiau bydda i’n gallu ymlacio"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1274L03U05",
+   "set": {
+    "target_text": "bydda i’n gallu dod i helpu mewn cwpl o ddiwrnodiau ond dw i’n brysur nos ’fory"
+   },
+   "expect": {
+    "target_text": "bydda i’n gallu dod i helpu mewn cwpl o ddyddiau ond dw i’n brysur nos ’fory"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1274L03U06",
+   "set": {
+    "target_text": "gofynna i iddo fe os bydd e’n gallu dod i helpu mewn cwpl o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "gofynna i iddo fe os bydd e’n gallu dod i helpu mewn cwpl o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1274L03U07",
+   "set": {
+    "target_text": "oes rhaid i ti ddod gyda ni mewn cwpl o ddiwrnodiau?"
+   },
+   "expect": {
+    "target_text": "oes rhaid i ti ddod gyda ni mewn cwpl o ddyddiau?"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1294L02B04",
+   "set": {
+    "target_text": "dy ffonio di mewn cwpl o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "dy ffonio di mewn cwpl o ddyddiau"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_sv2_for_eng:S1326L03U06",
+   "set": {
+    "target_text": "yn anffodus mae hi angen gwerthu’r cwmni mewn cwpl o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "yn anffodus mae hi angen gwerthu’r cwmni mewn cwpl o ddyddiau"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1274,
+   "set": {
+    "target_text": "oes rhaid i ti adael mewn cwpl o ddiwrnodiau?"
+   },
+   "expect": {
+    "target_text": "oes rhaid i ti adael mewn cwpl o ddyddiau?"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1274L03",
+   "set": {
+    "target_text": "mewn cwpl o ddiwrnodiau"
+   },
+   "expect": {
+    "target_text": "mewn cwpl o ddyddiau"
+   }
+  }
+ ]
+}
