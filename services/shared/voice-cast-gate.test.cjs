@@ -277,3 +277,18 @@ describe('ara_eg/ara_lb/ara_sy: a Kai-cast Azure row is the cast (job #424)', ()
     expect(gate.castAllowsVoice('ara', 'azure_ar-SA-ZariyahNeural', ara)).toMatchObject({ allowed: false, reason: 'uncast' })
   })
 })
+
+describe('deu_at: a Kai-cast ElevenLabs row is the cast (job #57·AA)', () => {
+  const TAMARA = 'elevenlabs_Zq8xdM7UEWBINjdZQdBE'
+  const rows = [{ language: 'deu_at', voice_id: TAMARA, assigned_by: 'kai-key:kai-57-cast', notes: '' }]
+  it('allows the cast ElevenLabs voice for deu_at', () => {
+    expect(gate.castAllowsVoice('deu_at', TAMARA, rows)).toMatchObject({ allowed: true, cast: [TAMARA] })
+  })
+  it('an uncast ElevenLabs voice is still refused for deu_at', () => {
+    expect(gate.castAllowsVoice('deu_at', 'elevenlabs_someoneElse', rows)).toMatchObject({ allowed: false, reason: 'not-in-cast' })
+  })
+  it('does not widen plain deu: an ElevenLabs row there is still not the cast', () => {
+    const deu = [{ language: 'deu', voice_id: TAMARA, assigned_by: 'kai-key:kai-57-cast', notes: '' }]
+    expect(gate.castAllowsVoice('deu', TAMARA, deu)).toMatchObject({ allowed: false, reason: 'uncast' })
+  })
+})
