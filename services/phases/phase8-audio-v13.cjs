@@ -5672,9 +5672,11 @@ function buildRenderDeps() {
       // ADOPT (job #140): a paid render whose row never landed — file the S3 object as it is. No provider, no mastering.
       adopt: async ({ courseCode, text, language, role, voiceId, legoId, s3Key, dryRun, exception }) => {
         try { await s3.send(new HeadObjectCommand({ Bucket: S3_BUCKET, Key: s3Key })) } catch { throw new RenderRequestError(`${s3Key} is not in S3 — nothing to adopt`, 404, 'NO_OBJECT') }
-        // ONE-OFF EXCEPTION (r-2026-10-28 deu_at Tamara 732, shared/adopt-exception.cjs): the listed trial object is slowed to
-        // the exception's speed with audioProcessor.timeStretchAudio and stored as a NEW mastered/<UUID>.mp3; that key is what
-        // the course_audio row names. The trial object is left as it is, and no row ever points under trial/.
+        // ONE-OFF EXCEPTION (r-2026-10-28 deu_at Tamara 732, shared/adopt-exception.cjs): the listed trial object is copied to a
+        // NEW mastered/<UUID>.mp3 and that key is what the course_audio row names; the trial object is left as it is, and no row
+        // ever points under trial/. At the exception's speed 1 (NATURAL, the ruling) the bytes are stored unchanged: the app
+        // applies speed at run-time (Easy 0.8, Fast 0.9), so a baked slow-down would compound with it. A speed other than 1
+        // would be applied with audioProcessor.timeStretchAudio.
         if (exception) {
           if (dryRun) return { s3Key: null, fromTrialKey: s3Key, speed: exception.speed, wouldStore: 'mastered/<new UUID>.mp3' }
           const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: s3Key }))
@@ -5682,7 +5684,8 @@ function buildRenderDeps() {
           try {
             const inF = path.join(dir, 'in.mp3'), outF = path.join(dir, 'out.mp3')
             await fs.writeFile(inF, Buffer.from(await r.Body.transformToByteArray()))
-            await audioProcessor.timeStretchAudio(inF, outF, 1 / exception.speed) // factor > 1 = slower; 1/0.85 plays at 0.85
+            if (exception.speed === 1) await fs.copyFile(inF, outF)
+            else await audioProcessor.timeStretchAudio(inF, outF, 1 / exception.speed) // factor > 1 = slower
             const durationMs = Math.round((await audioProcessor.getAudioMetadata(outF)).duration * 1000)
             const newKey = `mastered/${uuidv4().toUpperCase()}.mp3`
             await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: newKey, Body: await fs.readFile(outF), ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))

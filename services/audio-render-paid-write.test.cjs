@@ -115,12 +115,12 @@ describe('the one-off adopt exception (r-2026-10-28 deu_at Tamara 732)', () => {
     expect(ex.clips.every(c => /^trial\/[0-9A-F-]{36}\.mp3$/.test(c.key))).toBe(true)
   })
 
-  it('adopts a listed key, skipping the library, with the exception (and its 0.85) handed to phase8', async () => {
+  it('adopts a listed key, skipping the library, with the exception handed to phase8 at NATURAL speed (1), never a baked slow-down', async () => {
     const { deps: d, seen } = deps()
     const out = await renderClip(req(), d)
     expect(out).toMatchObject({ ok: true, source: 'adopted', s3Key: 'mastered/NEW.mp3', exception: ex.ruling })
     expect(seen.linked).toBe(0)
-    expect(seen.adopted[0].exception).toMatchObject({ speed: 0.85, courseCode: 'deu_at_for_eng' })
+    expect(seen.adopted[0].exception).toMatchObject({ speed: 1, courseCode: 'deu_at_for_eng' })
   })
 
   it('still refuses a trial key that is NOT on the list', async () => {

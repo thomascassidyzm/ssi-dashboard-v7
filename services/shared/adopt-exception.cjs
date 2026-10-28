@@ -5,11 +5,12 @@
  * mastered/<UUID>.mp3 key phase8 wrote (paid-write.isAdoptableKey), and every repoint path refuses a trial/ key
  * (audio-trial-mode.assertNotTrial). On 2026-10-28 Kai approved (17:30Z) and Tom said YES (~17:52Z, relayed by his
  * Watson) to ONE exception: exactly the 732 hand-checked Tamara trial clips listed in
- * adopt-exception-r-2026-10-28-deu-at-tamara-732.json, into deu_at_for_eng target1, each slowed to 0.85.
+ * adopt-exception-r-2026-10-28-deu-at-tamara-732.json, into deu_at_for_eng target1, stored at NATURAL speed (the
+ * evening correction: the app applies speed at run-time, so nothing is baked in).
  *
  * This is an ALLOW-LIST, not a trial-key path. A key is adoptable here only if it is on the list AND the request is
  * for that list's course, role, voice and that key's exact words. Everything else is still BAD_ADOPT_KEY. The adopt
- * itself never files the trial object: phase8 slows it, stores the result as a fresh mastered/<UUID>.mp3, and files
+ * itself never files the trial object: phase8 copies it, stores the result as a fresh mastered/<UUID>.mp3, and files
  * THAT — so no course_audio row ever points under trial/, and assertNotTrial keeps guarding every other path.
  */
 const tamara732 = require('./adopt-exception-r-2026-10-28-deu-at-tamara-732.json')
