@@ -1,0 +1,4229 @@
+{
+ "ops": [
+  {
+   "op": "seed.update",
+   "seed_number": 262,
+   "set": {
+    "target_text": "mae’n fyd mawr ond dydy hynna ddim yn golygu na fedrwn ni ei newid"
+   },
+   "expect": {
+    "target_text": "mae’n fyd mawr ond dydy hynna ddim yn meddwl na fedrwn ni ei newid",
+    "known_text": "it’s a big world but that doesn’t mean we can’t change it"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S0262L03",
+   "set": {
+    "target_text": "golygu"
+   },
+   "expect": {
+    "target_text": "meddwl",
+    "known_text": "mean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0262L03B02",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl",
+    "known_text": "that doesn’t mean",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false,
+      "isSalient": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0262L03B05",
+   "set": {
+    "target_text": "mae’n fyd mawr ond dydy hynna ddim yn golygu unrhywbeth",
+    "decomposition": [
+     {
+      "known": "it’s a big world",
+      "legoId": "S0262L01",
+      "target": "mae’n fyd mawr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "anything",
+      "legoId": "S0029L01",
+      "target": " unrhywbeth",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae’n fyd mawr ond dydy hynna ddim yn meddwl unrhywbeth",
+    "known_text": "it’s a big world but that doesn’t mean anything",
+    "decomposition": [
+     {
+      "known": "it’s a big world",
+      "legoId": "S0262L01",
+      "target": "mae’n fyd mawr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "anything",
+      "legoId": "S0029L01",
+      "target": " unrhywbeth",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0262L03B03",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu byddet ti’n helpu",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "you’d help",
+      "legoId": "S0257L02",
+      "target": " byddet ti’n helpu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl byddet ti’n helpu",
+    "known_text": "that doesn’t mean you’d help",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "you’d help",
+      "legoId": "S0257L02",
+      "target": " byddet ti’n helpu",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0262L03B04",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu unrhywbeth",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "anything",
+      "legoId": "S0029L01",
+      "target": " unrhywbeth",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl unrhywbeth",
+    "known_text": "that doesn’t mean anything",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "anything",
+      "legoId": "S0029L01",
+      "target": " unrhywbeth",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0262L04B01",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu na fedrwn ni siarad",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " siarad",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl na fedrwn ni siarad",
+    "known_text": "that doesn’t mean we can’t speak",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " siarad",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0262L04B02",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu na fedrwn ni ymarfer",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to practice",
+      "legoId": "S0004L01",
+      "target": " ymarfer",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl na fedrwn ni ymarfer",
+    "known_text": "that doesn’t mean we can’t practise",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "to practice",
+      "legoId": "S0004L01",
+      "target": " ymarfer",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0263L01B03",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu na fedrwn ni ei newid",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "change it",
+      "legoId": "S0262L05",
+      "target": " ei newid",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl na fedrwn ni ei newid",
+    "known_text": "that doesn’t mean we can’t change it",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "change it",
+      "legoId": "S0262L05",
+      "target": " ei newid",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0264L01B06",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu rhan o’r gwesty",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": " rhan o’r",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "hotel",
+      "legoId": "S0258L03",
+      "target": " gwesty",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl rhan o’r gwesty",
+    "known_text": "that doesn’t mean part of the hotel",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "part of the",
+      "legoId": "S0264L01",
+      "target": " rhan o’r",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "hotel",
+      "legoId": "S0258L03",
+      "target": " gwesty",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0264L03B01",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu stopio am saib",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl stopio am saib",
+    "known_text": "that doesn’t mean stopping for a rest",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "to stop",
+      "legoId": "S0031L02",
+      "target": " stopio",
+      "isGhost": false
+     },
+     {
+      "known": "for a rest",
+      "legoId": "S0263L04",
+      "target": " am saib",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0266L05B05",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu nad ydan ni ddim yn barod",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "that we don’t",
+      "legoId": "S0264L03",
+      "target": " nad ydan ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "already",
+      "legoId": "S0099L03",
+      "target": " yn barod",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl nad ydan ni ddim yn barod",
+    "known_text": "that doesn’t mean that we don’t already",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that we don’t",
+      "legoId": "S0264L03",
+      "target": " nad ydan ni ddim",
+      "isGhost": false
+     },
+     {
+      "known": "already",
+      "legoId": "S0099L03",
+      "target": " yn barod",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0266L06B04",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu ychydig o gardiau post",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "some postcards",
+      "legoId": "S0258L06",
+      "target": " ychydig o gardiau post",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl ychydig o gardiau post",
+    "known_text": "that doesn’t mean some postcards",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "some postcards",
+      "legoId": "S0258L06",
+      "target": " ychydig o gardiau post",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0268L02B01",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu medra i siarad",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "I can",
+      "legoId": "S0258L04",
+      "target": " medra i",
+      "isGhost": false
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " siarad",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl medra i siarad",
+    "known_text": "that doesn’t mean I can speak",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "I can",
+      "legoId": "S0258L04",
+      "target": " medra i",
+      "isGhost": false
+     },
+     {
+      "known": "to speak",
+      "legoId": "S0001L02",
+      "target": " siarad",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0268L01B02",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu bo’ ni’n gorffen",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "that we finish",
+      "legoId": "S0171L02",
+      "target": " bo’ ni’n gorffen",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl bo’ ni’n gorffen",
+    "known_text": "that doesn’t mean that we finish",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that we finish",
+      "legoId": "S0171L02",
+      "target": " bo’ ni’n gorffen",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S0275L02B04",
+   "set": {
+    "target_text": "pa un o’r llefydd yna wyt ti’n ei olygu?",
+    "decomposition": [
+     {
+      "known": "which",
+      "legoId": "S0275L01",
+      "target": "pa un",
+      "isGhost": false
+     },
+     {
+      "known": "of those places",
+      "legoId": "S0275L02",
+      "target": " o’r llefydd yna",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n ei olygu?",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "pa un o’r llefydd yna wyt ti’n meddwl?",
+    "known_text": "which of those places do you mean?",
+    "decomposition": [
+     {
+      "known": "which",
+      "legoId": "S0275L01",
+      "target": "pa un",
+      "isGhost": false
+     },
+     {
+      "known": "of those places",
+      "legoId": "S0275L02",
+      "target": " o’r llefydd yna",
+      "isGhost": false,
+      "isSalient": true
+     },
+     {
+      "known": "do you think?",
+      "legoId": "S0202L02",
+      "target": " wyt ti’n meddwl?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1008,
+   "set": {
+    "target_text": "dw i’n mynd i drio esbonio be’ dw i’n ei olygu"
+   },
+   "expect": {
+    "target_text": "dw i’n mynd i drio esbonio be’ dw i’n meddwl",
+    "known_text": "I'm going to try to explain what I mean"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1008L03",
+   "set": {
+    "target_text": "be’ dw i’n ei olygu",
+    "components": [
+     {
+      "known": "what",
+      "target": "be’"
+     },
+     {
+      "known": "I mean",
+      "target": "dw i’n ei olygu"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "be’ dw i’n meddwl",
+    "known_text": "what I mean",
+    "components": [
+     {
+      "known": "what",
+      "target": "be’"
+     },
+     {
+      "known": "I mean",
+      "target": "dw i’n meddwl"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03B01",
+   "set": {
+    "target_text": "esbonio be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": "esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "esbonio be’ dw i’n meddwl",
+    "known_text": "to explain what I mean",
+    "decomposition": [
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": "esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03B02",
+   "set": {
+    "target_text": "be’ dw i’n ei olygu yn y Gymraeg",
+    "decomposition": [
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": "be’ dw i’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "in Welsh",
+      "legoId": "S0009L03",
+      "target": " yn y Gymraeg",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "be’ dw i’n meddwl yn y Gymraeg",
+    "known_text": "what I mean in Welsh",
+    "decomposition": [
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": "be’ dw i’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "in Welsh",
+      "legoId": "S0009L03",
+      "target": " yn y Gymraeg",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03B03",
+   "set": {
+    "target_text": "esbonio be’ dw i’n ei olygu rŵan",
+    "decomposition": [
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": "esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "esbonio be’ dw i’n meddwl rŵan",
+    "known_text": "to explain what I mean now",
+    "decomposition": [
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": "esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03B04",
+   "set": {
+    "target_text": "dw i’n trio esbonio be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n trio esbonio be’ dw i’n meddwl",
+    "known_text": "I’m trying to explain what I mean",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03C02",
+   "set": {
+    "target_text": "dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "dw i’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ei",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n meddwl",
+    "known_text": "I mean",
+    "decomposition": [
+     {
+      "known": "I think",
+      "legoId": "S0024L02",
+      "target": "dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03U07",
+   "set": {
+    "target_text": "rhaid i mi esbonio be’ dw i’n ei olygu heddiw",
+    "decomposition": [
+     {
+      "known": "I must",
+      "legoId": "S0020L01",
+      "target": "rhaid i mi",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "today",
+      "legoId": "S0083L02",
+      "target": " heddiw",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "rhaid i mi esbonio be’ dw i’n meddwl heddiw",
+    "known_text": "I must explain what I mean today",
+    "decomposition": [
+     {
+      "known": "I must",
+      "legoId": "S0020L01",
+      "target": "rhaid i mi",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "today",
+      "legoId": "S0083L02",
+      "target": " heddiw",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03U01",
+   "set": {
+    "target_text": "dw i’n mynd i esbonio be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n mynd i esbonio be’ dw i’n meddwl",
+    "known_text": "I’m going to explain what I mean",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03U04",
+   "set": {
+    "target_text": "well i mi esbonio be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "I’d better",
+      "legoId": "S0011L03",
+      "target": "well i mi",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "well i mi esbonio be’ dw i’n meddwl",
+    "known_text": "I’d better explain what I mean",
+    "decomposition": [
+     {
+      "known": "I’d better",
+      "legoId": "S0011L03",
+      "target": "well i mi",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03U02",
+   "set": {
+    "target_text": "fedra i ddim esbonio be’ dw i’n ei olygu yn y Gymraeg",
+    "decomposition": [
+     {
+      "known": "I can’t",
+      "legoId": "S0006L01",
+      "target": "fedra i ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "in Welsh",
+      "legoId": "S0009L03",
+      "target": " yn y Gymraeg",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fedra i ddim esbonio be’ dw i’n meddwl yn y Gymraeg",
+    "known_text": "I can’t explain what I mean in Welsh",
+    "decomposition": [
+     {
+      "known": "I can’t",
+      "legoId": "S0006L01",
+      "target": "fedra i ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "in Welsh",
+      "legoId": "S0009L03",
+      "target": " yn y Gymraeg",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03U03",
+   "set": {
+    "target_text": "dw i isio esbonio be’ dw i’n ei olygu ond fedra i ddim",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I can’t",
+      "legoId": "S0006L01",
+      "target": " fedra i ddim",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i isio esbonio be’ dw i’n meddwl ond fedra i ddim",
+    "known_text": "I want to explain what I mean but I can’t",
+    "decomposition": [
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": "dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I can’t",
+      "legoId": "S0006L01",
+      "target": " fedra i ddim",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03U05",
+   "set": {
+    "target_text": "o’n i’n trio esbonio be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "I was trying",
+      "legoId": "S0019L01",
+      "target": "o’n i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "o’n i’n trio esbonio be’ dw i’n meddwl",
+    "known_text": "I was trying to explain what I mean",
+    "decomposition": [
+     {
+      "known": "I was trying",
+      "legoId": "S0019L01",
+      "target": "o’n i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1008L03U06",
+   "set": {
+    "target_text": "dw i angen esbonio be’ dw i’n ei olygu bach yn arafach",
+    "decomposition": [
+     {
+      "known": "I need",
+      "legoId": "S0007L01",
+      "target": "dw i angen",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "a bit more slowly",
+      "legoId": "S0050L01",
+      "target": " bach yn arafach",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i angen esbonio be’ dw i’n meddwl bach yn arafach",
+    "known_text": "I need to explain what I mean a bit more slowly",
+    "decomposition": [
+     {
+      "known": "I need",
+      "legoId": "S0007L01",
+      "target": "dw i angen",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "a bit more slowly",
+      "legoId": "S0050L01",
+      "target": " bach yn arafach",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1011L01U01",
+   "set": {
+    "target_text": "liciwn i fedru esbonio be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "I’d like to be able to",
+      "legoId": "S1011L01",
+      "target": "liciwn i fedru",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "liciwn i fedru esbonio be’ dw i’n meddwl",
+    "known_text": "I’d like to be able to explain what I mean",
+    "decomposition": [
+     {
+      "known": "I’d like to be able to",
+      "legoId": "S1011L01",
+      "target": "liciwn i fedru",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1011L03U02",
+   "set": {
+    "target_text": "ar ôl i ti orffen dw i’n mynd i esbonio be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "after you finish",
+      "legoId": "S1011L03",
+      "target": "ar ôl i ti orffen",
+      "isGhost": false
+     },
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": " dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ar ôl i ti orffen dw i’n mynd i esbonio be’ dw i’n meddwl",
+    "known_text": "after you finish I’m going to explain what I mean",
+    "decomposition": [
+     {
+      "known": "after you finish",
+      "legoId": "S1011L03",
+      "target": "ar ôl i ti orffen",
+      "isGhost": false
+     },
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": " dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1024L01B04",
+   "set": {
+    "target_text": "dw i ddim yn mynd i esbonio be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "I’m not going to",
+      "legoId": "S1024L01",
+      "target": "dw i ddim yn mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i ddim yn mynd i esbonio be’ dw i’n meddwl",
+    "known_text": "I’m not going to explain what I mean",
+    "decomposition": [
+     {
+      "known": "I’m not going to",
+      "legoId": "S1024L01",
+      "target": "dw i ddim yn mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1032L01B01",
+   "set": {
+    "target_text": "dangos be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "to show",
+      "legoId": "S1032L01",
+      "target": "dangos",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dangos be’ dw i’n meddwl",
+    "known_text": "to show what I mean",
+    "decomposition": [
+     {
+      "known": "to show",
+      "legoId": "S1032L01",
+      "target": "dangos",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1032L01U04",
+   "set": {
+    "target_text": "dw i’n trio dangos be’ dw i’n ei olygu yn y Gymraeg",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to show",
+      "legoId": "S1032L01",
+      "target": " dangos",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "in Welsh",
+      "legoId": "S0009L03",
+      "target": " yn y Gymraeg",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n trio dangos be’ dw i’n meddwl yn y Gymraeg",
+    "known_text": "I’m trying to show what I mean in Welsh",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to show",
+      "legoId": "S1032L01",
+      "target": " dangos",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "in Welsh",
+      "legoId": "S0009L03",
+      "target": " yn y Gymraeg",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1049,
+   "set": {
+    "target_text": "mae o fel hyn, os ti’n gwybod be’ dw i’n ei olygu"
+   },
+   "expect": {
+    "target_text": "mae o fel hyn, os ti’n gwybod be’ dw i’n meddwl",
+    "known_text": "it's like this, if you know what I mean"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1049L03",
+   "set": {
+    "target_text": "be’ dw i’n ei olygu",
+    "components": [
+     {
+      "known": "what I mean",
+      "target": "be’ dw i’n ei olygu"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "be’ dw i’n meddwl",
+    "known_text": "what I mean",
+    "components": [
+     {
+      "known": "what I mean",
+      "target": "be’ dw i’n meddwl"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1052L01U04",
+   "set": {
+    "target_text": "dw i’n mynd i sgwennu be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to write",
+      "legoId": "S1052L01",
+      "target": " sgwennu",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n mynd i sgwennu be’ dw i’n meddwl",
+    "known_text": "I’m going to write what I mean",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to write",
+      "legoId": "S1052L01",
+      "target": " sgwennu",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1082L03U06",
+   "set": {
+    "target_text": "dw i’n mynd i esbonio be’ dw i’n ei olygu pam ddim?",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "why not?",
+      "legoId": "S1082L03",
+      "target": " pam ddim?",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n mynd i esbonio be’ dw i’n meddwl pam ddim?",
+    "known_text": "I’m going to explain what I mean. why not?",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "why not?",
+      "legoId": "S1082L03",
+      "target": " pam ddim?",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1119L03U02",
+   "set": {
+    "target_text": "cyn i ti adael, dw i isio esbonio be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "before you leave",
+      "legoId": "S1119L03",
+      "target": "cyn i ti adael",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": ",",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "cyn i ti adael, dw i isio esbonio be’ dw i’n meddwl",
+    "known_text": "before you leave, I want to explain what I mean",
+    "decomposition": [
+     {
+      "known": "before you leave",
+      "legoId": "S1119L03",
+      "target": "cyn i ti adael",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": ",",
+      "isGhost": true
+     },
+     {
+      "known": "I want",
+      "legoId": "S0001L01",
+      "target": " dw i isio",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1143L01B04",
+   "set": {
+    "target_text": "achos mae o’r un peth â be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": "achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the same thing as",
+      "legoId": "S1143L01",
+      "target": " mae o’r un peth â",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "achos mae o’r un peth â be’ dw i’n meddwl",
+    "known_text": "because it’s the same thing as what I mean",
+    "decomposition": [
+     {
+      "known": "because",
+      "legoId": "S0313L03",
+      "target": "achos",
+      "isGhost": false
+     },
+     {
+      "known": "it’s the same thing as",
+      "legoId": "S1143L01",
+      "target": " mae o’r un peth â",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1153L02B03",
+   "set": {
+    "target_text": "esbonio’n union be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": "esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "exactly",
+      "legoId": "S0295L05",
+      "target": "’n union",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "esbonio’n union be’ dw i’n meddwl",
+    "known_text": "to explain exactly what I mean",
+    "decomposition": [
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": "esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "exactly",
+      "legoId": "S0295L05",
+      "target": "’n union",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1153L02U06",
+   "set": {
+    "target_text": "dim problem dw i’n mynd i esbonio’n union be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "no problem",
+      "legoId": "S1141L01",
+      "target": "dim problem",
+      "isGhost": false
+     },
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": " dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "exactly",
+      "legoId": "S0295L05",
+      "target": "’n union",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dim problem dw i’n mynd i esbonio’n union be’ dw i’n meddwl",
+    "known_text": "no problem I’m going to explain exactly what I mean",
+    "decomposition": [
+     {
+      "known": "no problem",
+      "legoId": "S1141L01",
+      "target": "dim problem",
+      "isGhost": false
+     },
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": " dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "exactly",
+      "legoId": "S0295L05",
+      "target": "’n union",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1157L01U05",
+   "set": {
+    "target_text": "fydda i ddim yn medru esbonio be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "I won’t be able to",
+      "legoId": "S1157L01",
+      "target": "fydda i ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fydda i ddim yn medru esbonio be’ dw i’n meddwl",
+    "known_text": "I won’t be able to explain what I mean",
+    "decomposition": [
+     {
+      "known": "I won’t be able to",
+      "legoId": "S1157L01",
+      "target": "fydda i ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "to explain",
+      "legoId": "S0184L02",
+      "target": " esbonio",
+      "isGhost": false
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1250L04U03",
+   "set": {
+    "target_text": "cyn i mi ateb dw i isio esbonio be’ dw i’n ei olygu"
+   },
+   "expect": {
+    "target_text": "cyn i mi ateb dw i isio esbonio be’ dw i’n meddwl",
+    "known_text": "before I answer I want to explain what I mean"
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1263,
+   "set": {
+    "target_text": "dw i ddim yn gwybod pwy ti’n ei olygu"
+   },
+   "expect": {
+    "target_text": "dw i ddim yn gwybod pwy ti’n meddwl",
+    "known_text": "I don't know who you mean"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1263L02",
+   "set": {
+    "target_text": "pwy ti’n ei olygu",
+    "components": [
+     {
+      "known": "who",
+      "target": "pwy"
+     },
+     {
+      "known": "you mean",
+      "target": "ti’n ei olygu"
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "pwy ti’n meddwl",
+    "known_text": "who you mean",
+    "components": [
+     {
+      "known": "who",
+      "target": "pwy"
+     },
+     {
+      "known": "you mean",
+      "target": "ti’n meddwl"
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1263L02B02",
+   "set": {
+    "target_text": "cofio pwy ti’n ei olygu",
+    "decomposition": [
+     {
+      "known": "to remember",
+      "legoId": "S0006L02",
+      "target": "cofio",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "cofio pwy ti’n meddwl",
+    "known_text": "to remember who you mean",
+    "decomposition": [
+     {
+      "known": "to remember",
+      "legoId": "S0006L02",
+      "target": "cofio",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1263L02B01",
+   "set": {
+    "target_text": "pwy ti’n ei olygu rŵan",
+    "decomposition": [
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": "pwy ti’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "pwy ti’n meddwl rŵan",
+    "known_text": "who you mean now",
+    "decomposition": [
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": "pwy ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1263L02B03",
+   "set": {
+    "target_text": "dw i’n trio cofio pwy ti’n ei olygu",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to remember",
+      "legoId": "S0006L02",
+      "target": " cofio",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n trio cofio pwy ti’n meddwl",
+    "known_text": "I’m trying to remember who you mean",
+    "decomposition": [
+     {
+      "known": "I’m trying",
+      "legoId": "S0002L02",
+      "target": "dw i’n trio",
+      "isGhost": false
+     },
+     {
+      "known": "to remember",
+      "legoId": "S0006L02",
+      "target": " cofio",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1263L02B04",
+   "set": {
+    "target_text": "dw i ddim yn siŵr pwy ti’n ei olygu rŵan",
+    "decomposition": [
+     {
+      "known": "I’m not sure",
+      "legoId": "S0027L02",
+      "target": "dw i ddim yn siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i ddim yn siŵr pwy ti’n meddwl rŵan",
+    "known_text": "I’m not sure who you mean now",
+    "decomposition": [
+     {
+      "known": "I’m not sure",
+      "legoId": "S0027L02",
+      "target": "dw i ddim yn siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1263L02C02",
+   "set": {
+    "target_text": "ti’n ei olygu",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " ei",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ti’n meddwl",
+    "known_text": "you mean",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ti’n",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1263L02U03",
+   "set": {
+    "target_text": "fedra i ddim cofio pwy ti’n ei olygu rŵan",
+    "decomposition": [
+     {
+      "known": "I can’t",
+      "legoId": "S0006L01",
+      "target": "fedra i ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to remember",
+      "legoId": "S0006L02",
+      "target": " cofio",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fedra i ddim cofio pwy ti’n meddwl rŵan",
+    "known_text": "I can’t remember who you mean now",
+    "decomposition": [
+     {
+      "known": "I can’t",
+      "legoId": "S0006L01",
+      "target": "fedra i ddim",
+      "isGhost": false
+     },
+     {
+      "known": "to remember",
+      "legoId": "S0006L02",
+      "target": " cofio",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "now",
+      "legoId": "S0011L02",
+      "target": " rŵan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1263L02U01",
+   "set": {
+    "target_text": "dan ni ddim yn gwybod pwy ti’n ei olygu",
+    "decomposition": [
+     {
+      "known": "we don’t know",
+      "legoId": "S0176L01",
+      "target": "dan ni ddim yn gwybod",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dan ni ddim yn gwybod pwy ti’n meddwl",
+    "known_text": "we don’t know who you mean",
+    "decomposition": [
+     {
+      "known": "we don’t know",
+      "legoId": "S0176L01",
+      "target": "dan ni ddim yn gwybod",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1263L02U04",
+   "set": {
+    "target_text": "mae hi isio ffeindio allan pwy ti’n ei olygu",
+    "decomposition": [
+     {
+      "known": "she wants",
+      "legoId": "S0069L01",
+      "target": "mae hi isio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae hi isio ffeindio allan pwy ti’n meddwl",
+    "known_text": "she wants to find out who you mean",
+    "decomposition": [
+     {
+      "known": "she wants",
+      "legoId": "S0069L01",
+      "target": "mae hi isio",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1263L02U05",
+   "set": {
+    "target_text": "dw i’n mynd i ffeindio allan pwy ti’n ei olygu cyn y penwythnos",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "before the weekend",
+      "legoId": "S1237L02",
+      "target": " cyn y penwythnos",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dw i’n mynd i ffeindio allan pwy ti’n meddwl cyn y penwythnos",
+    "known_text": "I’m going to find out who you mean before the weekend",
+    "decomposition": [
+     {
+      "known": "I’m going to",
+      "legoId": "S0003L01",
+      "target": "dw i’n mynd i",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "before the weekend",
+      "legoId": "S1237L02",
+      "target": " cyn y penwythnos",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1263L02U06",
+   "set": {
+    "target_text": "diolch yn fawr ond dw i ddim yn siŵr pwy ti’n ei olygu",
+    "decomposition": [
+     {
+      "known": "thank you",
+      "legoId": "S0057L01",
+      "target": "diolch yn fawr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I’m not sure",
+      "legoId": "S0027L02",
+      "target": " dw i ddim yn siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "diolch yn fawr ond dw i ddim yn siŵr pwy ti’n meddwl",
+    "known_text": "thank you but I’m not sure who you mean",
+    "decomposition": [
+     {
+      "known": "thank you",
+      "legoId": "S0057L01",
+      "target": "diolch yn fawr",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "I’m not sure",
+      "legoId": "S0027L02",
+      "target": " dw i ddim yn siŵr",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1263L02U02",
+   "set": {
+    "target_text": "fedri di ddeud pwy ti’n ei olygu?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fedri",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " di",
+      "isGhost": true
+     },
+     {
+      "known": "to say",
+      "legoId": "S1004L02",
+      "target": " ddeud",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n ei olygu",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fedri di ddeud pwy ti’n meddwl?",
+    "known_text": "could you say who you mean?",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "fedri",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " di",
+      "isGhost": true
+     },
+     {
+      "known": "to say",
+      "legoId": "S1004L02",
+      "target": " ddeud",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "?",
+      "isGhost": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1282L01U02",
+   "set": {
+    "target_text": "ia ond dydy hynna ddim yn union be’ dw i’n ei olygu",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " union",
+      "isGhost": true
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ia ond dydy hynna ddim yn union be’ dw i’n meddwl",
+    "known_text": "yes but that’s not exactly what I mean",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " union",
+      "isGhost": true
+     },
+     {
+      "known": "what I mean",
+      "legoId": "S1008L03",
+      "target": " be’ dw i’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1380L01B01",
+   "set": {
+    "target_text": "wnes i ofyn pwy ti’n ei olygu",
+    "decomposition": [
+     {
+      "known": "I asked",
+      "legoId": "S1380L01",
+      "target": "wnes i ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n ei olygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "wnes i ofyn pwy ti’n meddwl",
+    "known_text": "I asked who you mean",
+    "decomposition": [
+     {
+      "known": "I asked",
+      "legoId": "S1380L01",
+      "target": "wnes i ofyn",
+      "isGhost": false
+     },
+     {
+      "known": "who you mean",
+      "legoId": "S1263L02",
+      "target": " pwy ti’n meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1432,
+   "set": {
+    "target_text": "mi fydden nhw’n medru golygu bo’ nhw isio i ti ofyn"
+   },
+   "expect": {
+    "target_text": "mi fydden nhw’n medru meddwl bo’ nhw isio i ti ofyn",
+    "known_text": "they could mean that they want you to ask"
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1432L01",
+   "set": {
+    "target_text": "golygu"
+   },
+   "expect": {
+    "target_text": "meddwl",
+    "known_text": "mean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1432L01B01",
+   "set": {
+    "target_text": "golygu bo’ nhw wedi diflasu",
+    "decomposition": [
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": "golygu",
+      "isGhost": false
+     },
+     {
+      "known": "that they’re bored",
+      "legoId": "S1427L02",
+      "target": " bo’ nhw wedi diflasu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "meddwl bo’ nhw wedi diflasu",
+    "known_text": "mean that they’re bored",
+    "decomposition": [
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": "meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that they’re bored",
+      "legoId": "S1427L02",
+      "target": " bo’ nhw wedi diflasu",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1432L01B02",
+   "set": {
+    "target_text": "mi fyddai hi’n medru golygu",
+    "decomposition": [
+     {
+      "known": "she could",
+      "legoId": "S1310L01",
+      "target": "mi fyddai hi’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mi fyddai hi’n medru meddwl",
+    "known_text": "she could mean",
+    "decomposition": [
+     {
+      "known": "she could",
+      "legoId": "S1310L01",
+      "target": "mi fyddai hi’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1432L01B04",
+   "set": {
+    "target_text": "mi fydden ni’n medru golygu bod hi’n iawn",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mi",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " medru",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "she was right",
+      "legoId": "S1387L01",
+      "target": " bod hi’n iawn",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mi fydden ni’n medru meddwl bod hi’n iawn",
+    "known_text": "we could mean she was right",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "mi",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " medru",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "she was right",
+      "legoId": "S1387L01",
+      "target": " bod hi’n iawn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1432L01U01",
+   "set": {
+    "target_text": "mi fyddai hi’n medru golygu bo’ nhw wedi diflasu",
+    "decomposition": [
+     {
+      "known": "she could",
+      "legoId": "S1310L01",
+      "target": "mi fyddai hi’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "that they’re bored",
+      "legoId": "S1427L02",
+      "target": " bo’ nhw wedi diflasu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mi fyddai hi’n medru meddwl bo’ nhw wedi diflasu",
+    "known_text": "she could mean that they’re bored",
+    "decomposition": [
+     {
+      "known": "she could",
+      "legoId": "S1310L01",
+      "target": "mi fyddai hi’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that they’re bored",
+      "legoId": "S1427L02",
+      "target": " bo’ nhw wedi diflasu",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1432L01U02",
+   "set": {
+    "target_text": "doedd o ddim yn medru golygu bo’ nhw wedi diflasu",
+    "decomposition": [
+     {
+      "known": "he couldn’t",
+      "legoId": "S1311L01",
+      "target": "doedd o ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "that they’re bored",
+      "legoId": "S1427L02",
+      "target": " bo’ nhw wedi diflasu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "doedd o ddim yn medru meddwl bo’ nhw wedi diflasu",
+    "known_text": "he couldn’t mean that they’re bored",
+    "decomposition": [
+     {
+      "known": "he couldn’t",
+      "legoId": "S1311L01",
+      "target": "doedd o ddim yn medru",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that they’re bored",
+      "legoId": "S1427L02",
+      "target": " bo’ nhw wedi diflasu",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1432L01U06",
+   "set": {
+    "target_text": "mae’n ddrwg gen i ond mi fyddai hi’n medru golygu bo’ ti wedi’u gadael nhw yn y gwaith",
+    "decomposition": [
+     {
+      "known": "I’m sorry",
+      "legoId": "S0054L02",
+      "target": "mae’n ddrwg gen i",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "she could",
+      "legoId": "S1310L01",
+      "target": " mi fyddai hi’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "you left them",
+      "legoId": "S1185L02",
+      "target": " bo’ ti wedi’u gadael nhw",
+      "isGhost": false
+     },
+     {
+      "known": "at work",
+      "legoId": "S1185L03",
+      "target": " yn y gwaith",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "mae’n ddrwg gen i ond mi fyddai hi’n medru meddwl bo’ ti wedi’u gadael nhw yn y gwaith",
+    "known_text": "I’m sorry but she could mean you left them at work",
+    "decomposition": [
+     {
+      "known": "I’m sorry",
+      "legoId": "S0054L02",
+      "target": "mae’n ddrwg gen i",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "she could",
+      "legoId": "S1310L01",
+      "target": " mi fyddai hi’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "you left them",
+      "legoId": "S1185L02",
+      "target": " bo’ ti wedi’u gadael nhw",
+      "isGhost": false
+     },
+     {
+      "known": "at work",
+      "legoId": "S1185L03",
+      "target": " yn y gwaith",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1432L01U04",
+   "set": {
+    "target_text": "ddudodd hi na fyddai fo’n medru golygu bod hi’n iawn",
+    "decomposition": [
+     {
+      "known": "she said",
+      "legoId": "S0080L01",
+      "target": "ddudodd hi",
+      "isGhost": false
+     },
+     {
+      "known": "that he couldn’t",
+      "legoId": "S1313L01",
+      "target": " na fyddai fo’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "she was right",
+      "legoId": "S1387L01",
+      "target": " bod hi’n iawn",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ddudodd hi na fyddai fo’n medru meddwl bod hi’n iawn",
+    "known_text": "she said that he couldn’t mean she was right",
+    "decomposition": [
+     {
+      "known": "she said",
+      "legoId": "S0080L01",
+      "target": "ddudodd hi",
+      "isGhost": false
+     },
+     {
+      "known": "that he couldn’t",
+      "legoId": "S1313L01",
+      "target": " na fyddai fo’n medru",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "she was right",
+      "legoId": "S1387L01",
+      "target": " bod hi’n iawn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1432L01U05",
+   "set": {
+    "target_text": "ia mi fydden ni’n medru golygu bod hi’n iawn",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mi",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " medru",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "she was right",
+      "legoId": "S1387L01",
+      "target": " bod hi’n iawn",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ia mi fydden ni’n medru meddwl bod hi’n iawn",
+    "known_text": "yes we could mean she was right",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " mi",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " fydden",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": "’n",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " medru",
+      "isGhost": true
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "she was right",
+      "legoId": "S1387L01",
+      "target": " bod hi’n iawn",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "seed.update",
+   "seed_number": 1469,
+   "set": {
+    "target_text": "ond dydy hynna ddim yn golygu na fedrwn ni ei newid"
+   },
+   "expect": {
+    "target_text": "ond dydy hynna ddim yn meddwl na fedrwn ni ei newid",
+    "known_text": "but that doesn't mean we can't change it"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1469L02B01",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl",
+    "known_text": "that doesn’t mean",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1469L02B02",
+   "set": {
+    "target_text": "ond dydy hynna ddim yn golygu",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ond dydy hynna ddim yn meddwl",
+    "known_text": "but that doesn’t mean",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1469L04B01",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu na fedrwn ni",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl na fedrwn ni",
+    "known_text": "that doesn’t mean we can’t",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1469L04U02",
+   "set": {
+    "target_text": "ond dydy hynna ddim yn golygu na fedrwn ni ffeindio allan",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ond dydy hynna ddim yn meddwl na fedrwn ni ffeindio allan",
+    "known_text": "but that doesn’t mean we can’t find out",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "to find out",
+      "legoId": "S0246L01",
+      "target": " ffeindio allan",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1469L04U06",
+   "set": {
+    "target_text": "ia ond dydy hynna ddim yn golygu na fedrwn ni newid",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "to change",
+      "legoId": "S0179L01",
+      "target": " newid",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ia ond dydy hynna ddim yn meddwl na fedrwn ni newid",
+    "known_text": "yes but that doesn’t mean we can’t change",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "ia",
+      "isGhost": true
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "to change",
+      "legoId": "S0179L01",
+      "target": " newid",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "lego.update",
+   "lego_id": "S1469L03",
+   "set": {
+    "target_text": "golygu"
+   },
+   "expect": {
+    "target_text": "meddwl",
+    "known_text": "mean"
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1481L02U05",
+   "set": {
+    "target_text": "ond dydy hynna ddim yn golygu na fedrwn ni newid y gwaith sydd ar ôl i ni",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "to change",
+      "legoId": "S0179L01",
+      "target": " newid",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gwaith",
+      "isGhost": true
+     },
+     {
+      "known": "we have left",
+      "legoId": "S0269L02",
+      "target": " sydd ar ôl i ni",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ond dydy hynna ddim yn meddwl na fedrwn ni newid y gwaith sydd ar ôl i ni",
+    "known_text": "but that doesn’t mean we can’t change the job we have left",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "to change",
+      "legoId": "S0179L01",
+      "target": " newid",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " y",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " gwaith",
+      "isGhost": true
+     },
+     {
+      "known": "we have left",
+      "legoId": "S0269L02",
+      "target": " sydd ar ôl i ni",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1482L02U02",
+   "set": {
+    "target_text": "dydy hynna ddim yn golygu nad ydyn nhw ddim efo ni",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "that they’re not",
+      "legoId": "S0269L03",
+      "target": " nad ydyn nhw ddim",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " efo",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "dydy hynna ddim yn meddwl nad ydyn nhw ddim efo ni",
+    "known_text": "that doesn’t mean that they’re not with us",
+    "decomposition": [
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": "dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "that they’re not",
+      "legoId": "S0269L03",
+      "target": " nad ydyn nhw ddim",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " efo",
+      "isGhost": true
+     },
+     {
+      "known": "us",
+      "legoId": "S0172L02",
+      "target": " ni",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1530L02U07",
+   "set": {
+    "target_text": "ond dydy hynna ddim yn golygu na fedrwn ni eu cyfrif nhw",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "count them",
+      "legoId": "S1530L02",
+      "target": " eu cyfrif nhw",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "ond dydy hynna ddim yn meddwl na fedrwn ni eu cyfrif nhw",
+    "known_text": "but that doesn't mean we can't count them",
+    "decomposition": [
+     {
+      "known": "but",
+      "legoId": "S0307L03",
+      "target": "ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "count them",
+      "legoId": "S1530L02",
+      "target": " eu cyfrif nhw",
+      "isGhost": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "phrase.update",
+   "phrase_id": "cym_nv2_for_eng:S1533L01U07",
+   "set": {
+    "target_text": "fydd hi ddim yn gwrando ond dydy hynna ddim yn golygu na fedrwn ni ei newid",
+    "decomposition": [
+     {
+      "known": "she won’t listen",
+      "legoId": "S1533L01",
+      "target": "fydd hi ddim yn gwrando",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " golygu",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "change it",
+      "legoId": "S0262L05",
+      "target": " ei newid",
+      "isGhost": false
+     }
+    ]
+   },
+   "expect": {
+    "target_text": "fydd hi ddim yn gwrando ond dydy hynna ddim yn meddwl na fedrwn ni ei newid",
+    "known_text": "she won’t listen but that doesn’t mean we can’t change it",
+    "decomposition": [
+     {
+      "known": "she won’t listen",
+      "legoId": "S1533L01",
+      "target": "fydd hi ddim yn gwrando",
+      "isGhost": false
+     },
+     {
+      "known": "but",
+      "legoId": "S0011L01",
+      "target": " ond",
+      "isGhost": false
+     },
+     {
+      "known": "that doesn’t",
+      "legoId": "S0262L02",
+      "target": " dydy hynna ddim yn",
+      "isGhost": false
+     },
+     {
+      "known": "mean",
+      "legoId": "S0262L03",
+      "target": " meddwl",
+      "isGhost": false
+     },
+     {
+      "known": "we can’t",
+      "legoId": "S0262L04",
+      "target": " na fedrwn ni",
+      "isGhost": false
+     },
+     {
+      "known": "change it",
+      "legoId": "S0262L05",
+      "target": " ei newid",
+      "isGhost": false
+     }
+    ]
+   }
+  }
+ ]
+}
