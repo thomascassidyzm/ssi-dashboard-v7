@@ -1150,6 +1150,8 @@ This section exists because most damage in this system comes from fixes that wer
 
 **Kai's languages:** fluent and can rule on grammar/phrasing/taste — **Finnish, Italian, Welsh, English**. Can follow, but cannot advise on correctness — **Irish, Spanish, German, Japanese**. Everything else needs full scaffolding or he cannot engage. **Deborah** is the other native-level resource: fluent Spanish and Welsh, strong German and Basque, good French and Japanese.
 
+**A native-speaker volunteer's own text saves count as approved (Kai, 2026-10-28):** Auke is a Frisian speaker, so the `fry_for_eng` seeds whose latest text save is Auke's own are approved; seeds an agent wrote or re-saved after him, or that he never touched, stay unapproved · applied by `tools/course-optimization/approve-seeds-by-latest-editor.cjs` (approver recorded as `kai-ruling: native-speaker seed approval`, the route cannot name Auke).
+
 **Explicitly his:**
 - Whether a phrase sounds natural, in a language he has.
 - Rewrites and deletions of phrases (report, don't apply silently — R0.3).
