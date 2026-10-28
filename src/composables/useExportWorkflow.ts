@@ -798,7 +798,7 @@ export function useExportWorkflow(courseCode: string) {
     try {
       connectWebSocket()
 
-      // Use 20-minute timeout for verify-s3 (large courses need more time)
+      // The POST only starts the run now, so this timeout covers starting it, not the 30-40 min check.
       const apiBase = getApiBaseUrl()
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), 1200000) // 20 minutes
@@ -826,6 +826,13 @@ export function useExportWorkflow(courseCode: string) {
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({ error: 'Request failed' }))
         throw new Error(errorData.error || 'Request failed')
+      }
+
+      // 202: Step 2 now runs in a background worker (it outlives API restarts, job #27). Progress
+      // arrives on s3Verify:progress and the result on s3Verify:completed, which refreshes state.
+      if (response.status === 202) {
+        alreadyRunning = true
+        return null
       }
 
       const data = await response.json()

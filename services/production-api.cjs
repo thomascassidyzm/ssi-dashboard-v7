@@ -11105,7 +11105,47 @@ app.post('/api/production/:courseCode/stage-restart/cancel', async (req, res) =>
 
 
 // POST /api/production/:courseCode/verify-s3
-// Step 2: Verify stage audio exists and durations match manifest
+// Step 2: Verify stage audio exists and durations match manifest.
+// The run takes 30-40 min and every main push restarts this API, so it is NOT done here (job #27): a
+// detached worker (tools/audio/export-step2-worker.cjs; unit has KillMode=process, so it survives a
+// restart) does the whole of Step 2 and this process only starts it and relays its progress file.
+const EXPORT_STATE_DIR = path.join(__dirname, '../temp/course_export_states')
+const step2State = require('./shared/export-step2-state.cjs')
+
+// Relay the worker's progress file to the dashboard sockets until the run ends. Also called at boot
+// for runs that were already going when the API restarted.
+function watchStep2Run(courseCode) {
+  if (runningVerifications.get(courseCode)?.watching) return
+  const entry = runningVerifications.get(courseCode) || { startedAt: Date.now() }
+  entry.watching = true
+  runningVerifications.set(courseCode, entry)
+  let lastSent = ''
+  const tick = () => {
+    const run = step2State.readRun(EXPORT_STATE_DIR, courseCode)
+    if (!run) { runningVerifications.delete(courseCode); return clearInterval(timer) }
+    entry.startedAt = run.startedAt || entry.startedAt
+    entry.pid = run.pid
+    if (run.status === 'running') {
+      const msg = JSON.stringify(run.progress)
+      if (msg !== lastSent) { lastSent = msg; io.emit('s3Verify:progress', { courseCode, ...run.progress }) }
+      return
+    }
+    clearInterval(timer)
+    runningVerifications.delete(courseCode)
+    if (run.status === 'completed') {
+      logger.info(`[VERIFY-S3] All stages complete for ${courseCode}`)
+      io.emit('s3Verify:completed', { courseCode, ...run.results, s3Verified: run.s3Verified })
+    } else if (run.status === 'cancelled') {
+      io.emit('s3Verify:cancelled', { courseCode })
+    } else {
+      logger.error(`[VERIFY-S3] ${courseCode} failed: ${run.error}`)
+      io.emit('s3Verify:error', { courseCode, error: run.error })
+    }
+  }
+  const timer = setInterval(tick, 2000)
+  tick()
+}
+
 app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -11114,276 +11154,67 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
       return res.status(503).json({ error: 'Supabase not initialized' })
     }
 
-    // Check if verification is already running for this course
-    const running = runningVerifications.get(courseCode)
-    if (running) {
-      const elapsed = Math.round((Date.now() - running.startedAt) / 1000)
+    // One run per course: a live worker (ours, or one that outlived an API restart) wins.
+    const existing = step2State.readRun(EXPORT_STATE_DIR, courseCode)
+    if (existing?.status === 'running') {
+      const elapsed = Math.round((Date.now() - existing.startedAt) / 1000)
       logger.info(`[VERIFY-S3] Verification already running for ${courseCode} (${elapsed}s elapsed), skipping duplicate request`)
-      return res.status(409).json({
-        error: 'Verification already in progress',
-        alreadyRunning: true,
-        elapsedSeconds: elapsed
-      })
+      watchStep2Run(courseCode)
+      return res.status(409).json({ error: 'Verification already in progress', alreadyRunning: true, elapsedSeconds: elapsed })
     }
 
-    // Mark verification as running with abort controller
-    const abortController = new AbortController()
-    runningVerifications.set(courseCode, { startedAt: Date.now(), abortController })
-
-    // Load manifest from temp/course_export_states
-    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
+    const manifestPath = path.join(EXPORT_STATE_DIR, `${courseCode}_pending_manifest.json`)
     if (!fs.existsSync(manifestPath)) {
-      runningVerifications.delete(courseCode)
       return res.status(404).json({ error: 'No pending manifest found. Generate manifest first.' })
     }
 
-    const pendingManifest = await fs.readJson(manifestPath)
-
-    const uuids = collectManifestUuids(pendingManifest)
-    logger.info(`Verifying ${uuids.length} audio files for ${courseCode}`)
-
-    // Stage 1: Existence check + Stage 2: Duration verification
-    const verifyResults = await s3DeployService.verifyStageAudio(
-      uuids,
-      pendingManifest,
-      (phase, checked, total, ...phaseData) => {
-        if (phase === 'existence') {
-          io.emit('s3Verify:progress', { courseCode, phase: 'existence', checked, total })
-        } else if (phase === 'duration') {
-          const [matched, mismatched, errors] = phaseData
-          io.emit('s3Verify:progress', {
-            courseCode, phase: 'duration', checked, total, matched, mismatched, errors
-          })
-        }
-      },
-      { checkDurations: true, durationTolerance: 0, signal: abortController.signal }
-    )
-
-    // Check if cancelled
-    if (verifyResults.cancelled) {
-      runningVerifications.delete(courseCode)
-      return res.json({ cancelled: true, message: 'Verification cancelled' })
-    }
-
-    const results = { ...verifyResults }
-    // A check that errored or was skipped is a FAIL (Kai 2026-10-28, job #994): record why, so the
-    // UI, the response and the publish gate all read the same reason.
-    const stage2Verdict = exportAudioCheck.stageVerdict(results)
-    results.audioCheckGap = stage2Verdict.audioCheckGap
-    if (results.audioCheckGap) logger.error(`[VERIFY-S3] ${courseCode}: ${exportAudioCheck.audioCheckMessage(results.audioCheckGap)}`)
-
-    // Save state after Stage 2 (database-first)
-    const supabase = supabaseClient.getClient()
-    await supabase
-      .from('course_export_states')
-      .upsert({
-        course_code: courseCode,
-        s3_verification: results,
-        s3_verified: false, // Not verified yet until auto-fix completes
-        updated_at: new Date().toISOString()
-      }, { onConflict: 'course_code' })
-
-    // Send immediate response after Stage 2 - don't block the UI
-    logger.info(`[VERIFY-S3] Stages 1-2 complete, starting auto-fix in background`)
-    res.json({ ...results, s3Verified: results.durationMismatched > 0 ? false : stage2Verdict.verified })
-
-    // Stage 3 & 4: Auto-fix and verify in BACKGROUND (async, non-blocking)
-    if (results.durationMismatched > 0) {
-      setImmediate(async () => {
-        try {
-          if (abortController.signal.aborted) {
-            logger.info(`[AUTO-FIX] Skipped - verification was cancelled`)
-            runningVerifications.delete(courseCode)
-            return
-          }
-          logger.info(`[AUTO-FIX] Starting background auto-fix for ${results.durationMismatched} duration mismatches`)
-          io.emit('s3Verify:progress', { courseCode, phase: 'fixing', checked: 0, total: results.durationMismatched })
-
-          // Save extracted S3 durations to temp file
-          const durationsPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_extracted_durations.json`)
-          const durationsObj = Object.fromEntries(verifyResults.extractedDurations || new Map())
-          await fs.writeJson(durationsPath, durationsObj, { spaces: 2 })
-          logger.info(`[AUTO-FIX] Saved ${Object.keys(durationsObj).length} extracted durations`)
-
-          // Run auto-fix with pre-extracted durations (should be instant).
-          // Pass courseCode so course_audio.duration_ms is also synced — prevents
-          // a subsequent Step 1 run from re-introducing the stale values.
-          const fixResults = await s3DeployService.autoFixDurations(
-            uuids,
-            pendingManifest,
-            (phase, checked, total, fixed, errors) => {
-              io.emit('s3Verify:progress', {
-                courseCode, phase: 'fixing', checked, total, fixed, errors
-              })
-            },
-            verifyResults.extractedDurations,
-            { courseCode }
-          )
-
-          logger.info(`[AUTO-FIX] Fixed ${fixResults.fixed} manifest durations, ${fixResults.errors} errors. DB sync: ${fixResults.dbRowsUpdated} rows updated, ${fixResults.dbAlreadyCorrect} already correct, ${fixResults.dbErrors} errors`)
-
-          // Save updated manifest
-          await fs.writeJson(manifestPath, fixResults.updatedManifest, { spaces: 2 })
-          results.durationsFixed = fixResults.fixed
-          results.durationFixErrors = fixResults.errors
-          results.dbRowsUpdated = fixResults.dbRowsUpdated
-          results.dbAlreadyCorrect = fixResults.dbAlreadyCorrect
-          results.dbErrors = fixResults.dbErrors
-
-          // Stage 4: Verify fixed durations
-          logger.info(`[VERIFY-FIX] Verifying ${fixResults.fixed} fixed durations`)
-          io.emit('s3Verify:progress', { courseCode, phase: 'verifying', checked: 0, total: fixResults.fixed })
-
-          const fixedManifest = fixResults.updatedManifest
-          const extractedDurations = await fs.readJson(durationsPath)
-
-          let verifyChecked = 0
-          let verifyMatched = 0
-          let verifyMismatched = 0
-          const verifyMismatchDetails = []
-          let progressCounter = 0
-
-          // Check all fixed durations with progress updates
-          const checkSample = (uuid, manifestDuration) => {
-            verifyChecked++
-            progressCounter++
-            const s3Duration = extractedDurations[uuid]
-
-            if (s3Duration !== undefined) {
-              const diff = Math.abs(manifestDuration - s3Duration)
-              if (diff < 0.001) {
-                verifyMatched++
-              } else {
-                verifyMismatched++
-                verifyMismatchDetails.push({
-                  uuid,
-                  manifestDuration,
-                  s3Duration,
-                  difference: diff
-                })
-              }
-            }
-
-            // Send progress update every 100 samples
-            if (progressCounter % 100 === 0) {
-              io.emit('s3Verify:progress', {
-                courseCode, phase: 'verifying', checked: verifyChecked, total: fixResults.fixed,
-                matched: verifyMatched, mismatched: verifyMismatched
-              })
-            }
-          }
-
-          // Check introduction
-          if (fixedManifest.introduction?.id && fixedManifest.introduction?.duration) {
-            checkSample(fixedManifest.introduction.id, fixedManifest.introduction.duration)
-          }
-
-          // Check encouragements
-          for (const enc of fixedManifest.slices[0]?.orderedEncouragements || []) {
-            if (enc.id && enc.duration) checkSample(enc.id, enc.duration)
-          }
-          for (const enc of fixedManifest.slices[0]?.pooledEncouragements || []) {
-            if (enc.id && enc.duration) checkSample(enc.id, enc.duration)
-          }
-          for (const enc of fixedManifest.slices[0]?.paywallEncouragements || []) {
-            if (enc.id && enc.duration) checkSample(enc.id, enc.duration)
-          }
-
-          // Check samples
-          for (const audioArray of Object.values(fixedManifest.slices[0]?.samples || {})) {
-            for (const audio of audioArray) {
-              if (audio.id && audio.duration) checkSample(audio.id, audio.duration)
-            }
-          }
-
-          // Final progress update
-          io.emit('s3Verify:progress', {
-            courseCode, phase: 'verifying', checked: verifyChecked, total: verifyChecked,
-            matched: verifyMatched, mismatched: verifyMismatched
-          })
-
-          logger.info(`[VERIFY-FIX] Verification complete: ${verifyMatched} matched, ${verifyMismatched} mismatched`)
-
-          results.verifyFixed = {
-            checked: verifyChecked,
-            matched: verifyMatched,
-            mismatched: verifyMismatched,
-            mismatchDetails: verifyMismatchDetails
-          }
-
-          // Clean up temp durations file
-          await fs.remove(durationsPath)
-
-          // Update final state (database-first)
-          // Format failures (ID3v2 / non-LAME encoding) block verification — they're
-          // the iOS-playback bug and must be fixed before publishing.
-          // ...and so does a length/format check that did not run on every file (job #994).
-          const s3Verified = exportAudioCheck.stageVerdict(results, { stillMismatched: verifyMismatched }).verified
-          await supabase
-            .from('course_export_states')
-            .update({
-              s3_verification: results,
-              s3_verified: s3Verified,
-              s3_verified_at: s3Verified ? new Date().toISOString() : null,
-              updated_at: new Date().toISOString()
-            })
-            .eq('course_code', courseCode)
-
-          // Notify completion
-          logger.info(`[VERIFY-S3] All stages complete for ${courseCode}`)
-          io.emit('s3Verify:completed', { courseCode, ...results })
-          runningVerifications.delete(courseCode)
-
-        } catch (err) {
-          logger.error(`[AUTO-FIX] Background error for ${courseCode}:`, err)
-          io.emit('s3Verify:error', { courseCode, error: err.message })
-          runningVerifications.delete(courseCode)
-        }
-      })
-    } else {
-      // No duration mismatches — but format failures (ID3v2 / non-LAME) still block, and so does a
-      // check that errored or was skipped: no sox used to read as "0 mismatched" here (job #994).
-      const s3Verified = stage2Verdict.verified
-      await supabase
-        .from('course_export_states')
-        .update({
-          s3_verification: results,
-          s3_verified: s3Verified,
-          s3_verified_at: s3Verified ? new Date().toISOString() : null,
-          updated_at: new Date().toISOString()
-        })
-        .eq('course_code', courseCode)
-
-      io.emit('s3Verify:completed', { courseCode, ...results })
-      runningVerifications.delete(courseCode)
-    }
-
+    const startedAt = Date.now()
+    step2State.writeRun(EXPORT_STATE_DIR, courseCode, { courseCode, status: 'running', startedAt, pid: null, progress: { phase: 'existence', checked: 0, total: 0 } })
+    const logFile = path.join(EXPORT_STATE_DIR, `${courseCode}_step2_worker.log`)
+    const out = fs.openSync(logFile, 'a')
+    const child = require('child_process').spawn(process.execPath, [path.join(__dirname, '../tools/audio/export-step2-worker.cjs'), courseCode, EXPORT_STATE_DIR], {
+      detached: true, stdio: ['ignore', out, out], env: process.env, cwd: path.join(__dirname, '..')
+    })
+    fs.closeSync(out)
+    child.unref()
+    step2State.writeRun(EXPORT_STATE_DIR, courseCode, { courseCode, status: 'running', startedAt, pid: child.pid, progress: { phase: 'existence', checked: 0, total: 0 } })
+    logger.info(`[VERIFY-S3] ${courseCode}: Step 2 worker started (pid ${child.pid}), log ${logFile}`)
+    watchStep2Run(courseCode)
+    res.status(202).json({ started: true, pid: child.pid, message: 'Verification running in the background; progress arrives on s3Verify:progress, the result on s3Verify:completed' })
   } catch (error) {
-    if (abortController.signal.aborted) {
-      logger.info(`[VERIFY-S3] Cancelled for ${courseCode}`)
-      runningVerifications.delete(courseCode)
-      return res.json({ cancelled: true, message: 'Verification cancelled' })
-    }
-    logger.error(`Verify S3 error for ${courseCode}:`, error)
-    runningVerifications.delete(courseCode)
+    logger.error(`Verify S3 start error for ${req.params.courseCode}:`, error)
     res.status(500).json({ error: error.message })
   }
 })
+
+// GET /api/production/:courseCode/verify-s3 — where the run stands (survives API restarts)
+app.get('/api/production/:courseCode/verify-s3', (req, res) => {
+  const run = step2State.readRun(EXPORT_STATE_DIR, req.params.courseCode)
+  if (!run) return res.status(404).json({ error: 'No Step 2 run recorded for this course' })
+  const { results, ...rest } = run
+  res.json(rest)
+})
+
+// After an API restart, pick up runs whose worker is still going.
+try {
+  for (const f of fs.readdirSync(EXPORT_STATE_DIR)) {
+    const m = f.match(/^(.+)_step2_run\.json$/)
+    if (m && step2State.readRun(EXPORT_STATE_DIR, m[1])?.status === 'running') watchStep2Run(m[1])
+  }
+} catch (e) { /* no state dir yet */ }
 
 // DELETE /api/production/:courseCode/verify-s3
 // Cancel a running S3 verification
 app.delete('/api/production/:courseCode/verify-s3', (req, res) => {
   const { courseCode } = req.params
-  const running = runningVerifications.get(courseCode)
+  const run = step2State.readRun(EXPORT_STATE_DIR, courseCode)
 
-  if (!running) {
+  if (run?.status !== 'running') {
     return res.status(404).json({ error: 'No verification running for this course' })
   }
 
   logger.info(`[VERIFY-S3] Cancelling verification for ${courseCode}`)
-  running.abortController.abort()
-  runningVerifications.delete(courseCode)
-  io.emit('s3Verify:cancelled', { courseCode })
+  try { if (run.pid) process.kill(run.pid, 'SIGTERM') } catch (e) { logger.warn(`[VERIFY-S3] kill ${run.pid}: ${e.message}`) }
   res.json({ cancelled: true, message: `Verification cancelled for ${courseCode}` })
 })
 
