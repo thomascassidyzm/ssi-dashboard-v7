@@ -3100,6 +3100,10 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         podId: line.podId || null,
         podSlug: line.podSlug || null,
         podTitle: line.podTitle || null,
+        // The pod line's scene, carried through so the booth home can say where an unfinished
+        // pod picks up ("Starts at scene 15", booth-home.cjs firstLeftOf, job #8·AA). Dropped
+        // here until job #44·AA, so Dan's live card read "Starts at line 69 of 90" with no scene.
+        scene: line.scene == null ? null : line.scene,
         role: line.role || null,
         rerecordReason: masked ? null : (line.rerecordReason || null),
         // Which seed sentence this is, for the surface to say so in words. Null
@@ -3955,6 +3959,8 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
 }
 
 module.exports = {
+  // Exported for the wire-shape test (recordist-queue-scene-wire.test.cjs).
+  finishQueue,
   assignedLanguages,
   voiceTakes,
   clearRerecordWants,
