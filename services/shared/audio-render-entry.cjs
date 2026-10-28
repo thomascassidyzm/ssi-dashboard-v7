@@ -79,6 +79,11 @@ function validate(input) {
     trial: input.trial === true,
     // TRIAL ONLY (job #751): a native speed for the provider (Cartesia generation_config.speed) instead of a time-stretch. Null = the voice's own speed.
     speed: input.speed == null ? null : Number(input.speed),
+    // TRIAL ONLY (job #23): who started this trial — a person; the lane never runs unattended (r-2026-10-13).
+    startedBy: input.startedBy ? String(input.startedBy).slice(0, 100) : null,
+    // TRIAL ONLY, ELEVENLABS (job #23): the model (allow-list) and voice_settings passed through to the provider.
+    model: input.model == null || input.model === '' ? null : String(input.model),
+    voiceSettings: input.voiceSettings == null ? null : input.voiceSettings,
     // Answer only with a clip in THIS voice. A two-voice phrase's male and female
     // slots are told apart by voice alone; any-voice reuse files one in the other.
     // DEFAULT ON (job #944): reuse matches voice identity; only an explicit voiceBound:false opts out.
@@ -107,6 +112,14 @@ function validate(input) {
     if (out.trial || out.replaceAudioId || out.spokenText) throw new RenderRequestError('adoptS3Key files one paid-but-unsaved clip — trial, replaceAudioId and spokenText do not apply', 400, 'ADOPT_ALONE')
   }
   if (out.trial && (out.replaceAudioId || out.spokenText || out.legoId)) throw new RenderRequestError('a trial render connects to nothing — replaceAudioId, spokenText and legoId do not apply', 400, 'TRIAL_NO_LINKS')
+  if ((out.model || out.voiceSettings || out.startedBy) && !out.trial) throw new RenderRequestError('model, voiceSettings and startedBy are trial-only — a course render speaks the course voice as cast', 400, 'TRIAL_ONLY_OPTION')
+  if (out.trial) {
+    // STARTED, NEVER UNATTENDED (job #23, r-2026-10-13): a trial names a person or a job, and keeps to one-off clips.
+    if (!out.startedBy && !out.job) throw new RenderRequestError('a trial render names who started it — startedBy (a person) or job ("#23")', 400, 'TRIAL_NEEDS_STARTER')
+    const cap = trialMode.maxCharsPerCall()
+    if (out.text && out.text.length > cap) throw new RenderRequestError(`a trial render is one short clip — ${out.text.length} characters is over the ${cap}-character per-call trial cap; bulk work needs Tom`, 400, 'TRIAL_CALL_CAP')
+    try { out.model = trialMode.checkModel(out.model); out.voiceSettings = trialMode.checkVoiceSettings(out.voiceSettings) } catch (e) { throw new RenderRequestError(e.message, e.status || 400, e.code || 'BAD_REQUEST') }
+  }
   if (out.speed != null) {
     if (!out.trial) throw new RenderRequestError('speed is a trial-only option — a course render speaks at the course voice\'s own speed', 400, 'SPEED_TRIAL_ONLY')
     if (!(out.speed >= TRIAL_SPEED_MIN && out.speed <= TRIAL_SPEED_MAX)) throw new RenderRequestError(`speed must be between ${TRIAL_SPEED_MIN} and ${TRIAL_SPEED_MAX}`, 400, 'BAD_SPEED')
@@ -281,12 +294,23 @@ async function trialRender(req, deps) {
   // library (keyed on text+voice) must not answer it: door.skipLibrary. Unset keeps the normal trial path, library hit and all.
   const slowed = req.speed != null
   // Only Cartesia takes a native speed; tts-service never sends it to ElevenLabs, so honouring it would echo a speed we did not buy.
-  if (slowed && r.provider !== 'cartesia') throw new RenderRequestError(`native trial speed is Cartesia-only — ${r.provider} voices cannot take speed ${req.speed}`, 400, 'SPEED_PROVIDER_UNSUPPORTED')
-  const cfg = { ...r.providerConfig, ...(slowed ? { speed: req.speed } : {}), door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, skipLibrary: slowed, job: req.job } }
+  if (slowed && r.provider !== 'cartesia') throw new RenderRequestError(`native trial speed is Cartesia-only — ${r.provider} voices take voiceSettings.speed instead`, 400, 'SPEED_PROVIDER_UNSUPPORTED')
+  // ELEVENLABS PASS-THROUGH (job #23): model + voice_settings reach the provider only on a trial. Either one makes a different
+  // recording of the same words, so — like an explicit speed — the library (keyed on text+voice) must not answer it.
+  const tuned = !!(req.model || req.voiceSettings)
+  if (tuned && r.provider !== 'elevenlabs') throw new RenderRequestError(`model and voiceSettings are ElevenLabs-only — ${r.voiceId} is a ${r.provider} voice`, 400, 'MODEL_PROVIDER_UNSUPPORTED')
+  const elSpeed = req.voiceSettings && req.voiceSettings.speed != null ? req.voiceSettings.speed : null
+  const cfg = {
+    ...r.providerConfig,
+    ...(slowed ? { speed: req.speed } : {}),
+    // speed on the config is what the spend guard's repeat key reads: a 0.85 read is counted apart from a 1.0 one.
+    ...(tuned ? { modelId: req.model || undefined, voiceSettings: req.voiceSettings || undefined, speed: elSpeed != null ? elSpeed : 1 } : {}),
+    door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, skipLibrary: slowed || tuned, audioTags: trialMode.audioTagsAllowed(req.model), job: req.job },
+  }
   const out = await deps.speak(req.text, r.provider, cfg, 1)
-  const echo = { trial: true, ...(slowed ? { speed: req.speed } : {}), purpose: req.purpose, requestedBy: req.requestedBy, voiceId: r.voiceId, language: r.language }
+  const echo = { trial: true, ...(slowed ? { speed: req.speed } : {}), ...(req.model ? { model: req.model } : {}), ...(req.voiceSettings ? { voiceSettings: req.voiceSettings } : {}), purpose: req.purpose, requestedBy: req.requestedBy, ...(req.startedBy ? { startedBy: req.startedBy } : {}), ...(req.job ? { job: req.job } : {}), voiceId: r.voiceId, provider: r.provider, language: r.language }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
-  const stored = await deps.storeTrial({ ...ident, speed: slowed ? req.speed : null, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
+  const stored = await deps.storeTrial({ ...ident, speed: slowed ? req.speed : (elSpeed != null && elSpeed !== 1 ? elSpeed : null), audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...stored, ...echo }
 }
 

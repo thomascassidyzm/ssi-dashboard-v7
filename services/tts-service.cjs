@@ -125,9 +125,10 @@ function assertAudibleResponse(buffer, { provider, bytesPerSecond, text, voiceId
  * is never retried. The "(422)" marker makes isRetriableTtsError treat it as a
  * client error; `code` lets a caller record it against the row.
  */
-function assertSpeakableExample(text) {
+function assertSpeakableExample(text, { audioTags = false } = {}) {
   // The curated cues ([pause], [break], <break/>) are stage directions, not labels.
-  const t = stripSynthesisCues(text);
+  // A TRIAL on an audio-tag model (eleven_v3/v4, job #23) may also carry [slowly]-style tags: the model acts on them.
+  const t = stripSynthesisCues(audioTags ? require('./shared/audio-trial-mode.cjs').stripAudioTags(text) : text);
   const label = /[\[\]{}]/.test(t);
   const markerOnly = !/[\p{L}\p{N}]/u.test(t);
   if (!label && !markerOnly) return;
@@ -325,14 +326,17 @@ async function generateElevenLabs(text, config) {
       'Content-Type': 'application/json',
       'xi-api-key': apiKey
     },
+    // A TRIAL render (job #23, services/shared/audio-trial-mode.cjs) may name the model and voice_settings, checked against
+    // the allow-list and ranges in the entry; a course render sends neither and stays on eleven_multilingual_v2 as before.
     body: JSON.stringify({
       text: text,
-      model_id: 'eleven_multilingual_v2',
+      model_id: config.modelId || 'eleven_multilingual_v2',
       voice_settings: {
         stability: stability,
         similarity_boost: similarityBoost,
         style: 0,
-        use_speaker_boost: true
+        use_speaker_boost: true,
+        ...(config.voiceSettings || {})
       }
     })
   });
@@ -919,6 +923,8 @@ async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = 
       ticket,
       // A native speed is a different recording: the repeat limit counts it apart (trial renders, job #751).
       speed: config.speed,
+      // A trial's ElevenLabs model is a different recording too (job #23): counted apart from the house model.
+      model: config.modelId || null,
     });
     doorStats.providerCalls++;
     doorStats.providerChars += String(text).length;
@@ -1020,10 +1026,10 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
   if (!text || String(text).trim() === '') {
     throw new Error('Text cannot be empty');
   }
-  assertSpeakableExample(text);
+  const door = config.door || {};
+  assertSpeakableExample(text, { audioTags: !!(door.trial && door.audioTags) });
   await assertMayRender(provider, config);
 
-  const door = config.door || {};
   const { language, voiceId } = identityFromConfig(provider, config);
   if (!language || !voiceId) {
     if (provider === 'cartesia' && !(config.locale || config.language) && !door.language) {

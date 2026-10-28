@@ -7,8 +7,11 @@
  *   RE-RECORD one clip in its own voice (make-before-break, old object kept, next audio_revision):
  *        node tools/audio/render.cjs --course C --role R --text STORED_TEXT --replace <course_audio id> [--spoken "what to say"] --purpose P
  *   --voice-bound: answer only with a clip in this voice (a two-voice phrase's slots).
- *   --trial: TRIAL render (job #748, until 2026-10-19): any voice, any text, no cast/voicing/rerecord gates; the clip is stored apart
- *        (id trial_<UUID>, answer carries playPath /api/audio/trial/<id>) and is NEVER connected to a course. The daily cap still applies.
+ *   --trial: TRIAL render (job #748; a standing lane since job #23, 2026-10-28): any voice, any text, no cast/voicing/rerecord gates; the
+ *        clip is stored apart (id trial_<UUID>, answer carries playPath /api/audio/trial/<id>) and is NEVER connected to a course. The
+ *        daily cap still applies, and each trial call is capped (300 chars). A trial names who started it: --started-by NAME or --job "#NN".
+ *        ElevenLabs only: --model eleven_v3|eleven_v4|eleven_v4_turbo|eleven_multilingual_v2 and
+ *        --voice-settings '{"stability":0.5,"similarity_boost":0.75,"speed":0.85,"style":0}'. Cartesia: --speed 0.7..1.
  *   --job "#913": the job this render belongs to; a Tom-approved job (tools/tts-cap.cjs approve)
  *        spends from its own allowance up to the 300k/day ceiling instead of the automatic 100k.
  *
@@ -33,6 +36,8 @@ const body = {
   language: opt('--lang'), voiceId: opt('--voice'), legoId: opt('--lego'), dryRun: argv.includes('--dry-run'),
   voiceBound: !argv.includes('--any-voice'), replaceAudioId: opt('--replace'), spokenText: opt('--spoken'), job: opt('--job'), trial: argv.includes('--trial') || undefined,
   sequence: opt('--sequence') == null ? undefined : Number(opt('--sequence')),
+  startedBy: opt('--started-by'), model: opt('--model'), speed: opt('--speed') == null ? undefined : Number(opt('--speed')),
+  voiceSettings: opt('--voice-settings') == null ? undefined : JSON.parse(opt('--voice-settings')),
 }
 const missing = ['courseCode', 'role', ...(body.role === 'welcome' ? [] : ['text']), 'purpose'].filter(k => !body[k])
 if (missing.length) { console.error(`usage: render.cjs --course C --role R --text T --purpose P [--voice V] [--lang L] [--lego ID] [--dry-run] [--any-voice] [--replace AUDIO_ID [--spoken TEXT]]\nmissing: ${missing.join(', ')}`); process.exit(1) }
