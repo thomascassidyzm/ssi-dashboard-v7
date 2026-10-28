@@ -108,6 +108,25 @@ test('a God admin hears any artist; a plain admin hears only their own', async (
   assert.strictEqual((await get('human_dan_cym_s', 'nick')).status, 403)
 })
 
+test('take-days groups a voice’s takes by day, behind the same sign-in gate', async () => {
+  const app = express()
+  app.use('/api/recording', createRecordistRouter({
+    getDb: stubDb,
+    requireDashboardUser,
+    requireAdmin: requireDashboardUser,
+    logger: { log() {}, warn() {}, error() {} },
+    s3: { getAudioSignedUrl: async () => null },
+  }))
+  const server = app.listen(0)
+  try {
+    const url = `http://127.0.0.1:${server.address().port}/api/recording/voice/human_dan_cym_s/take-days`
+    assert.strictEqual((await fetch(url)).status, 401)
+    const r = await fetch(url, { headers: { Authorization: 'Bearer dan' } })
+    assert.strictEqual(r.status, 200)
+    assert.deepStrictEqual((await r.json()).days, [{ date: '2026-10-14', takes: 1 }])
+  } finally { server.close() }
+})
+
 test('the God-admin list is pinned', () => {
   assert.deepStrictEqual([...GOD_ADMIN_EMAILS].sort(), ['aran@hey.com', 'kai@saysomethingin.com', 'thomas.cassidy+ssi@gmail.com'])
 })
