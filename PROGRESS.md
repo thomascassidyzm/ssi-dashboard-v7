@@ -1,2 +1,3 @@
 - 1 done: Popty stage deploy = services/stage-deploy.py piped over ssh to ssi@apidev, drives ./check -e stage deploy; deletion logic lives in apidev's deploy.rb, not in Popty (GAP). No live manifest deploy in Popty; Step 4 only copies audio ssi-audio-stage -> ssiborg-assets.
 - 3 done: GAP - nothing in Popty shows whether stage progress is separate from live; only the stage-only deploy and the word 'stage' in ./check -e stage.
+- 4-6 done: taxonomy, gate design, SSH commands + Iban questions; published https://watson-1.tail4968cb.ts.net:10000/d/7f88f727
