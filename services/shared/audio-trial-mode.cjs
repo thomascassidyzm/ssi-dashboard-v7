@@ -94,8 +94,11 @@ function checkVoiceSettings(vs) {
   return Object.keys(out).length ? out : null
 }
 
+/** Kai 2026-10-28 (job #23): max stability always for phrase generation — an ElevenLabs trial that does not set stability sends 1.0.
+ *  TRIAL LANE ONLY: the course path (tts-service generateElevenLabs) still sends its own 0.5 default; changing that is a separate go. */
+const TRIAL_DEFAULT_STABILITY = 1.0
 const audioTagsAllowed = model => AUDIO_TAG_MODELS.includes(String(model || ''))
 /** Strip [audio tags] (letters, spaces, commas, hyphens, apostrophes; ≤40 chars) — what the speakable check sees on a tag-reading trial. */
 const stripAudioTags = text => String(text == null ? '' : text).replace(/\[[\p{L} ,'-]{1,40}\]/gu, ' ')
 
-module.exports = { TrialRefusal, assertTrialOpen, maxCharsPerCall, checkModel, checkVoiceSettings, audioTagsAllowed, stripAudioTags, ELEVENLABS_TRIAL_MODELS, AUDIO_TAG_MODELS, DEFAULT_MAX_CHARS_PER_CALL, assertNotTrial, isTrialRef, trialKey, trialIdFromKey, keyFromTrialId, expires, TRIAL_ID_PREFIX, TRIAL_KEY_PREFIX }
+module.exports = { TRIAL_DEFAULT_STABILITY, TrialRefusal, assertTrialOpen, maxCharsPerCall, checkModel, checkVoiceSettings, audioTagsAllowed, stripAudioTags, ELEVENLABS_TRIAL_MODELS, AUDIO_TAG_MODELS, DEFAULT_MAX_CHARS_PER_CALL, assertNotTrial, isTrialRef, trialKey, trialIdFromKey, keyFromTrialId, expires, TRIAL_ID_PREFIX, TRIAL_KEY_PREFIX }

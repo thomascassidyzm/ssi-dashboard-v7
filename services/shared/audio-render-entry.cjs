@@ -300,15 +300,19 @@ async function trialRender(req, deps) {
   const tuned = !!(req.model || req.voiceSettings)
   if (tuned && r.provider !== 'elevenlabs') throw new RenderRequestError(`model and voiceSettings are ElevenLabs-only — ${r.voiceId} is a ${r.provider} voice`, 400, 'MODEL_PROVIDER_UNSUPPORTED')
   const elSpeed = req.voiceSettings && req.voiceSettings.speed != null ? req.voiceSettings.speed : null
+  // MAX STABILITY BY DEFAULT (Kai 2026-10-28): every ElevenLabs trial that reaches the provider sends stability 1.0 unless it names
+  // one. Only an EXPLICIT model/voiceSettings skips the library: a plain trial is still answered by an existing clip of the words.
+  const elSettings = r.provider === 'elevenlabs' ? { stability: trialMode.TRIAL_DEFAULT_STABILITY, ...(req.voiceSettings || {}) } : null
   const cfg = {
     ...r.providerConfig,
     ...(slowed ? { speed: req.speed } : {}),
+    ...(elSettings ? { voiceSettings: elSettings } : {}),
     // speed on the config is what the spend guard's repeat key reads: a 0.85 read is counted apart from a 1.0 one.
-    ...(tuned ? { modelId: req.model || undefined, voiceSettings: req.voiceSettings || undefined, speed: elSpeed != null ? elSpeed : 1 } : {}),
+    ...(tuned ? { modelId: req.model || undefined, speed: elSpeed != null ? elSpeed : 1 } : {}),
     door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, trial: true, skipLibrary: slowed || tuned, audioTags: trialMode.audioTagsAllowed(req.model), job: req.job },
   }
   const out = await deps.speak(req.text, r.provider, cfg, 1)
-  const echo = { trial: true, ...(slowed ? { speed: req.speed } : {}), ...(req.model ? { model: req.model } : {}), ...(req.voiceSettings ? { voiceSettings: req.voiceSettings } : {}), purpose: req.purpose, requestedBy: req.requestedBy, ...(req.startedBy ? { startedBy: req.startedBy } : {}), ...(req.job ? { job: req.job } : {}), voiceId: r.voiceId, provider: r.provider, language: r.language }
+  const echo = { trial: true, ...(slowed ? { speed: req.speed } : {}), ...(req.model ? { model: req.model } : {}), ...(elSettings ? { voiceSettings: elSettings } : {}), purpose: req.purpose, requestedBy: req.requestedBy, ...(req.startedBy ? { startedBy: req.startedBy } : {}), ...(req.job ? { job: req.job } : {}), voiceId: r.voiceId, provider: r.provider, language: r.language }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
   const stored = await deps.storeTrial({ ...ident, speed: slowed ? req.speed : (elSpeed != null && elSpeed !== 1 ? elSpeed : null), audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...stored, ...echo }

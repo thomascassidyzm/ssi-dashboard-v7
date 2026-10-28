@@ -198,6 +198,21 @@ describe('standing trial lane (job #23)', () => {
     expect(out).toMatchObject({ ok: true, trial: true, model: 'eleven_v4', voiceSettings: { speed: 0.85 }, provider: 'elevenlabs' })
   })
 
+  it('an ElevenLabs trial defaults stability to 1.0 (Kai 2026-10-28) unless it names one; a plain trial keeps library-first', async () => {
+    const { svc, bodies } = door()
+    let seen = null
+    const spy = { resolve: eleven, speak: (t, p, c, n) => { seen = c; return svc.speak(t, p, c, n) } }
+    const plain = await renderClip(ask({ trial: true, text: 'rotn' }), deps(svc, spy))
+    expect(bodies[0].body.voice_settings.stability).toBe(1)
+    expect(seen.door.skipLibrary).toBe(false)
+    expect(plain.voiceSettings).toEqual({ stability: 1 })
+    await renderClip(ask({ trial: true, text: 'wolln', model: 'eleven_v4' }), deps(svc, spy))
+    expect(bodies[1].body.voice_settings.stability).toBe(1)
+    await renderClip(ask({ trial: true, text: 'siech', voiceSettings: { stability: 0.3 } }), deps(svc, spy))
+    expect(bodies[2].body.voice_settings.stability).toBe(0.3)
+    expect(trialMode.TRIAL_DEFAULT_STABILITY).toBe(1)
+  })
+
   it('a course (non-trial) ElevenLabs render is unchanged: eleven_multilingual_v2, house settings', async () => {
     const { svc, bodies } = door()
     // straight through the door (the cast gate would refuse this uncast voice on the entry); trial door bypasses the gates only
