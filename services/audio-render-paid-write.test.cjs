@@ -152,3 +152,19 @@ describe('the one-off adopt exception (r-2026-10-28 deu_at Tamara 732)', () => {
     await expect(renderClip(req({ voiceId: undefined }), d)).rejects.toMatchObject({ code: 'ADOPT_EXCEPTION_MISMATCH' })
   })
 })
+
+describe('phase8 writePaidClipRow is versioned (job #74·AA)', () => {
+  // A write that lands on an EXISTING clip identity (a re-adopt, a render over a held row) must move audio_revision, or a
+  // learner who already played the clip keeps the old bytes: the app addresses it as <uuid>.v<rev> under an immutable HTTP
+  // cache and an IndexedDB AudioCache keyed on that ref. #63·AA's re-adopt of the 732 Tamara clips was an unversioned upsert.
+  const fs = require('fs'), path = require('path')
+  const src = fs.readFileSync(path.join(__dirname, 'phases/phase8-audio-v13.cjs'), 'utf8')
+  const start = src.indexOf('async function writePaidClipRow(')
+  const body = src.slice(start, src.indexOf('\n}\n', start))
+
+  it('goes through writeOrSwapClip (insert, or swapClipInPlace with revision + 1) and never upserts course_audio', () => {
+    expect(start).toBeGreaterThan(0)
+    expect(body).toContain('writeOrSwapClip(')
+    expect(body).not.toMatch(/\.upsert\(/)
+  })
+})
