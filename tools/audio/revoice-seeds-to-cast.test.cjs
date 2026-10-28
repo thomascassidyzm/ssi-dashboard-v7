@@ -64,6 +64,30 @@ describe('revoice-seeds-to-cast', () => {
   })
 })
 
+// job #76·AA: deu_at target1 is Kai's ElevenLabs Tamara (cast gate CAST_ANY_PROVIDER); target2 stays as it is
+describe('castFromVoiceConfig — a non-Cartesia cast on a CAST_ANY_PROVIDER course, one role', () => {
+  const vc = { resolved: { voices: {
+    target1: { provider: 'elevenlabs', voiceId: 'elevenlabs_Zq8xdM7UEWBINjdZQdBE' },
+    target2: { provider: 'cartesia', voiceId: 'f6f3' },
+  } } }
+  it('takes the ElevenLabs cast only when the course allows any provider', () => {
+    expect(castFromVoiceConfig(vc, { roles: ['target1'], anyProvider: true })).toEqual({ castByRole: { target1: 'elevenlabs_Zq8xdM7UEWBINjdZQdBE' }, missing: null })
+    expect(castFromVoiceConfig(vc, { roles: ['target1'] }).missing.role).toBe('target1')
+  })
+  it('deu_at is in the cast gate set and plain deu is not', () => {
+    const { CAST_ANY_PROVIDER } = createRequire(import.meta.url)('../../services/shared/voice-cast-gate.cjs')
+    expect(CAST_ANY_PROVIDER.has('deu_at')).toBe(true)
+    expect(CAST_ANY_PROVIDER.has('deu')).toBe(false)
+  })
+  it('a slot already on Tamara is not stale; a Vreni slot is; the job rides on the ask', () => {
+    const clips = new Map([['t', { id: 't', voice_id: 'elevenlabs_Zq8xdM7UEWBINjdZQdBE', origin: 'tts' }], ['v', { id: 'v', voice_id: 'cartesia_40e0', origin: 'tts' }]])
+    const rows = [{ seed_number: 1, target_text: 'wü', target1_audio_id: 't', slot: { legoId: 'S0001L02' } }, { seed_number: 1, target_text: 'i wü', target1_audio_id: 'v', slot: { legoId: 'S0001L01' } }]
+    const asks = staleAsks(rows, clips, { target1: 'elevenlabs_Zq8xdM7UEWBINjdZQdBE', target2: 'cartesia_f6f3' })
+    expect(asks.filter((a) => a.role === 'target1').map((a) => a.text)).toEqual(['i wü'])
+    expect(renderAsk('deu_at_for_eng', asks[0], { target1: 'elevenlabs_Zq8xdM7UEWBINjdZQdBE' }, 'p', '#76')).toMatchObject({ job: '#76', voiceBound: true })
+  })
+})
+
 // Tom 2026-10-17: every repoint keeps the old pointer so any course can be rolled back
 describe('rollbackLines', () => {
   it('records old and new pointer per slot, one JSON line each', () => {

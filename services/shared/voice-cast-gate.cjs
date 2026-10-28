@@ -396,6 +396,7 @@ function limitCastFirst({ cast, uncast, summary }, limit) {
 }
 
 module.exports = {
+  CAST_ANY_PROVIDER,
   limitCastFirst, castAllowsVoice, castKeyOf, castVerdict, partitionByCast, castRowLanguage, assertCastVoice, isCastRefusal, isCartesiaVoice, isAzureVoice,
   courseCastRow, canonVoice, rowIsForKey, isTomCastRow, castAssignedBy, courseVoiceProfile, azureOnlyAllows, CastRefusal, useCastRows, useCourseCastRow, useCourseVoiceHolder, useCourseVoiceCensus,
 }
