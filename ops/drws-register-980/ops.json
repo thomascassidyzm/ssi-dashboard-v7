@@ -1,0 +1,4 @@
+{"ops":[{"op":"phrase.update","phrase_id":"cym_nv2_for_eng:S1512L02U01",
+"set":{"known_text":"let me hold the door open","target_text":"gad i mi ddal y drws ar agor",
+"decomposition":[{"known":"let me","legoId":"S0261L01","target":"gad i mi","isGhost":false},{"known":"hold the door open","legoId":"S1512L02","target":" ddal y drws ar agor","isGhost":false}]},
+"expect":{"known_text":"let me hold the door open please","target_text":"gad i mi ddal y drws ar agor os gwelwch yn dda"}}]}
