@@ -2603,17 +2603,35 @@ function getPhrasePlan(db) {
   if (!e) { e = {}; PHRASE_PLANS.set(db, e) }
   PHRASE_PLAN_DBS.add(db)
   if (e.plan && Date.now() - e.at < PHRASE_PLAN_TTL_MS) return Promise.resolve(e.plan)
+  // A COLD PLAN THAT JUST FAILED IS NOT REBUILT BY THE NEXT CALLER (Aran's slow booth, 2026-10-29, job #602): with no
+  // plan in hand, every caller waited out a full build that hit the statement timeout (~5 s, twice per take), and
+  // since nothing was cached the next take paid it again. Inside this window the failure is replayed at once.
+  if (!e.plan && !e.building && e.failedAt && Date.now() - e.failedAt < PHRASE_PLAN_FAIL_COOLDOWN_MS) return Promise.reject(e.failure)
   if (!e.building) {
     e.building = buildPhrasePlan(db).then((plan) => {
       // An edit that landed mid-build dropped this entry: hand the plan to its caller, keep nothing.
       if (PHRASE_PLANS.get(db) !== e) return plan
-      e.plan = plan; e.at = Date.now(); e.building = null
+      e.plan = plan; e.at = Date.now(); e.building = null; e.failedAt = 0; e.failure = null
       return plan
-    }, (err) => { e.building = null; throw err })
+    }, (err) => { e.building = null; e.failedAt = Date.now(); e.failure = err; throw err })
     // A background refresh that fails must not become an unhandled rejection.
     if (e.plan) e.building.catch((err) => console.warn(`[Recordist] phrase plan refresh failed: ${err.message}`))
   }
   return e.plan ? Promise.resolve(e.plan) : e.building
+}
+
+const PHRASE_PLAN_FAIL_COOLDOWN_MS = 30_000
+
+/**
+ * The plan if one is cached (stale is fine), else null — never waits for a build. A cold plan is started in the
+ * background so the next reader finds it. For best-effort writes that run inside a booth take's reply: a take must
+ * not wait on (or be slowed by a failing) whole-estate plan build (job #602).
+ */
+function peekPhrasePlan(db) {
+  const e = PHRASE_PLANS.get(db)
+  const plan = e && e.plan ? e.plan : null
+  getPhrasePlan(db).catch(() => {})
+  return plan
 }
 
 /** Mark the plan stale (a phrase take landed): the next read refreshes it behind the stale copy. */
@@ -2799,7 +2817,10 @@ async function linkPhraseSlotsByWords({ db, recordist, role, text, audioId, logg
   if (!audioId || !key) return out
   const langs = await phraseQueueLanguages(db)
   if (!langs.has(recordist.language)) return out
-  const plan = await getPhrasePlan(db)
+  // No plan in hand: skip. This is a fill-empty-only extra on a take that is already stored; the same-words back-fill
+  // (sameWordsGaps / tools/recording/fill-same-words-gaps.cjs) picks up any slot missed here.
+  const plan = peekPhrasePlan(db)
+  if (!plan) { logger.warn('[Recordist] phrase plan not ready — same-words phrase fill skipped for this take (back-fill covers it)'); return out }
   const side = (r) => (r === 'known' ? 'known' : 'target')
   const lines = recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])
     .filter((l) => side(l.role) === side(role) && spokenWordsKey(l.text) === key)
@@ -4428,6 +4449,7 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
 }
 
 module.exports = {
+  peekPhrasePlan,
   // The Introductions card's reads (job #587).
   fetchIntroSentenceInputs,
   invalidateIntroSentenceInputs,
