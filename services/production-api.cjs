@@ -1874,7 +1874,10 @@ async function proxyCourseBuilder(req, res) {
         }),
         ...(req.headers['x-agent-id'] ? { 'x-agent-id': req.headers['x-agent-id'] } : {}),
         ...(req.headers['x-agent-role'] ? { 'x-agent-role': req.headers['x-agent-role'] } : {}),
-        ...(req.headers['x-service-name'] ? { 'x-service-name': req.headers['x-service-name'] } : {})
+        ...(req.headers['x-service-name'] ? { 'x-service-name': req.headers['x-service-name'] } : {}),
+        // Who is at the keyboard, as THIS gate verified it (never the client's own claim): the
+        // course builder records it on build starts/stops so "Stopped by …" names a person (job #482).
+        ...(req.dashboardUser?.email ? { 'x-dashboard-user': String(req.dashboardUser.email) } : {})
       },
       body
     }
@@ -2594,9 +2597,12 @@ app.post('/api/mission-control/jobs/:jobId/stop', requireDashboardUserOrLoopback
   if (jobType === 'build') {
     // Proxy to course-builder
     try {
+      // Say who stopped it (job #482): the build row and the page show "Stopped by …".
+      const u = req.dashboardUser || null
+      const by = (u && (u.email || u.name || u.display_name)) || req.get('x-agent-id') || null
       const response = await fetch(`${COURSE_BUILDER_URL}/api/build/stop/${courseCode}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json', ...(by ? { 'x-stopped-by': String(by) } : {}) }
       })
       const data = await response.json()
       return res.json({ success: data.ok, ...data })
