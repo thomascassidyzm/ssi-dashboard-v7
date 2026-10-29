@@ -42,6 +42,12 @@ describe('Introductions lines', () => {
     ])
     expect(lines.every((l) => l.kind === 'introsentence' && l.role === 'presentation')).toBe(true)
   })
+  it('ordered by where the seed is SERVED (running order), not by seed number', () => {
+    const woven = [lego('a', 'cym_nv2_for_eng', 76, 1, 'he wanted', 'oedd o isio'), lego('b', 'cym_nv2_for_eng', 1036, 2, 'the story', 'y stori')]
+    const served = new Map([[76, 40], [1036, 12]])
+    const got = is.introSentenceLinesFor(ARAN, { legos: woven, positionOf: (l) => served.get(l.seed_number) })
+    expect(got.map((l) => l.legoId)).toEqual(['S1036L02', 'S0076L01'])
+  })
   it('identical intros in North and South are ONE line; its take fills both (alsoFills)', () => {
     expect(lines[0].duplicateOf).toEqual([{ legoRowId: 's1', courseCode: 'cym_sv2_for_eng', legoId: 'S0001L01', presentationAudioId: null }])
     expect(lines[1].duplicateOf).toEqual([{ legoRowId: 's2', courseCode: 'cym_sv2_for_eng', legoId: 'S0001L02', presentationAudioId: 'aran-splice' }])

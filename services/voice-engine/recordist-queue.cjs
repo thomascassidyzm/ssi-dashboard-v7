@@ -3170,7 +3170,11 @@ async function fetchIntroSentenceInputs(db, recordist, { fresh = false } = {}) {
       if (error) throw new Error(`intro clip read failed: ${error.message}`)
       for (const r of data || []) introClips.set(String(r.id), { voice: r.voice_id, spliced: Array.isArray(r.spliced_from) ? r.spliced_from.length > 0 : !!r.spliced_from })
     }
-    const value = { legos, introClips }
+    // RUNNING ORDER, not seed number (job #587 follow-up): the v2 courses serve woven-in new seeds early, so seed
+    // numbers put S1036 after S0076 although a learner meets it far sooner. Same position the seed card uses.
+    const runningOrder = await fetchRunningOrder(db, courses)
+    const positionOf = (l) => seedPosition(l, runningOrder)
+    const value = { legos, introClips, positionOf }
     introSentenceInputCache.set(key, { at: Date.now(), value })
     return value
   } catch (err) {

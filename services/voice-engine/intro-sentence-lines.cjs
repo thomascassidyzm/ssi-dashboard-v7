@@ -17,8 +17,9 @@
  * stored under, so the take is the same clip identity a splice would have been (and swaps a spliced row in place,
  * versioned, when one exists). The booth renders the markup (RecordistRoom segmentsFor); he reads the words.
  *
- * ORDER: course running order, earliest first — seed, then LEGO, North before South at the same place — so he can
- * record the start of the course first. ONE CARD for both courses (booth-home trackKeyOf 'introsentence.all'), in
+ * ORDER: course running order, earliest first — the seed's SERVED position (course_running_order, the order the player
+ * walks; seed number only on a course with no running order; seeds an order leaves out go last), then LEGO, North
+ * before South at the same place — so he can record the start of the course first. ONE CARD for both courses (booth-home trackKeyOf 'introsentence.all'), in
  * batches of 100.
  *
  * FOLDED: an intro whose words are identical in North and South (or twice in one course) is ONE line, on the earliest
@@ -68,9 +69,10 @@ function introTextOf(cfg, lego) {
  * @param {object} input
  * @param {object[]} input.legos  course_legos rows {id, course_code, seed_number, lego_index, lego_id, known_text, target_text, is_new, presentation_audio_id}
  * @param {Map<string,{voice:string, spliced:boolean}>} input.introClips  the clips in those presentation slots, by id
+ * @param {(lego:object) => number} [input.positionOf]  where the LEGO's seed is served (recordist-queue seedPosition)
  * @param {object} [table] humanSplicedIntros (tests)
  */
-function introSentenceLinesFor(recordist, { legos = [], introClips = new Map() } = {}, table) {
+function introSentenceLinesFor(recordist, { legos = [], introClips = new Map(), positionOf = (l) => l.seed_number } = {}, table) {
   const courses = introSentenceCoursesFor(recordist, table)
   if (!courses.length) return []
   const spellings = recordist.spellings || [recordist.voiceId]
@@ -80,7 +82,9 @@ function introSentenceLinesFor(recordist, { legos = [], introClips = new Map() }
   const wanted = legos
     .filter((l) => cfgOf.has(l.course_code) && l.is_new)
     .filter((l) => { if (!l.presentation_audio_id) return true; const c = held(l.presentation_audio_id); return !!c && spellings.includes(c.voice) })
-    .sort((a, b) => (a.seed_number - b.seed_number) || (a.lego_index - b.lego_index) || (rank.get(a.course_code) - rank.get(b.course_code)))
+    .map((l) => ({ l, at: positionOf(l) }))
+    .sort((a, b) => (a.at - b.at) || (a.l.lego_index - b.l.lego_index) || (rank.get(a.l.course_code) - rank.get(b.l.course_code)))
+    .map((x) => x.l)
   const byKey = new Map()
   const out = []
   for (const l of wanted) {
