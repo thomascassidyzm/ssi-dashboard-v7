@@ -73,6 +73,7 @@ const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
+const videoVoiceovers = require('./video-voiceover-lines.cjs')
 const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
 const boothActorQueue = require('./booth-actor-queue.cjs')
@@ -1617,6 +1618,18 @@ module.exports = function createRecordistRouter({
   }
 
   /**
+   * A VIDEO VOICEOVER LINE (job #572, video-voiceover-lines.cjs): one step of a video's narration in this voice. Filed
+   * as an English known take through the same seam, credited to THIS voice whatever the filing course casts on its
+   * known slot (libraryArtistVoiceId), with metadata kind 'known' so the speech gate and script check hear English.
+   * No afterFiled: a voiceover take fills no learner slot, ever.
+   */
+  async function recordVoiceoverTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = videoVoiceovers.resolveVoiceoverLine(parsed, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'voiceover', metaKind: 'known', artistVoiceId: recordist.voiceId, text, audioBase64, mimeType, device })
+  }
+
+  /**
    * AN ENGLISH LEGO (job #255, english-lego-lines.cjs): the English of a new LEGO whose intro is spliced from this
    * voice. Filed as an English known take exactly like an intro piece — it fills no LEGO slot; the splice finds it by
    * voice and words — and, like every take (job #198), fills any EMPTY seed / phrase known slot of the same words.
@@ -1635,7 +1648,7 @@ module.exports = function createRecordistRouter({
   }
 
   /** One English known-side take of fixed words (an intro piece, an English LEGO), through the seed upload seam. */
-  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null }) {
+  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null, artistVoiceId = null }) {
     if (text && text.trim() && text.trim() !== resolved.text) {
       return res.status(409).json({ error: 'The text on this line has changed since the queue was loaded -- reload before recording it.', expected: resolved.text, received: text.trim() })
     }
@@ -1646,6 +1659,7 @@ module.exports = function createRecordistRouter({
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
       recordistLineId: raw,
+      ...(artistVoiceId ? { libraryArtistVoiceId: artistVoiceId } : {}),
       body: {
         audioData: audioBase64,
         mimeType,
@@ -2211,6 +2225,11 @@ module.exports = function createRecordistRouter({
       if (introPieceLine) {
         return await recordIntroPieceTake({ req, res, recordist, parsed: { ...introPieceLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
+      // A VIDEO VOICEOVER line (job #572). `voiceover:...` is not a uuid either.
+      const voiceoverLine = videoVoiceovers.parseVoiceoverLineId(lineId)
+      if (voiceoverLine) {
+        return await recordVoiceoverTake({ req, res, recordist, parsed: { ...voiceoverLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
       // An ENGLISH LEGO (job #255). `englego:...` is not a uuid either.
       const englishLegoLine = englishLegos.parseEnglishLegoLineId(lineId)
       if (englishLegoLine) {
@@ -2465,6 +2484,12 @@ module.exports = function createRecordistRouter({
 
       const introPieceLine = introPieces.parseIntroPieceLineId(req.params.lineId)
       if (introPieceLine) return await introPieceClipResponse(req, res, recordist, { ...introPieceLine, raw: req.params.lineId })
+      const voiceoverLine = videoVoiceovers.parseVoiceoverLineId(req.params.lineId)
+      if (voiceoverLine) {
+        const resolved = videoVoiceovers.resolveVoiceoverLine(voiceoverLine, recordist)
+        if (!resolved) return res.status(404).json({ error: `No line ${req.params.lineId}` })
+        return await knownWordsClipResponse(req, res, recordist, resolved.text)
+      }
       const englishLegoLine = englishLegos.parseEnglishLegoLineId(req.params.lineId)
       if (englishLegoLine) return await englishLegoClipResponse(req, res, recordist, { ...englishLegoLine, raw: req.params.lineId })
 
