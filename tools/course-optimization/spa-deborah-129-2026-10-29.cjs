@@ -38,7 +38,8 @@ const AGENT = 'spa-deborah-129 (job #425)';
 const PURPOSE = 'job #425 spa_for_eng Deborah 129 naturalness answers (Kai 29 Oct) — dry run for Kai\'s spend decision';
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '');
 const USE_FLOOR = 4;
-const BATCH = 250;
+// One transaction per batch: at ~0.7 s per op (the text-change audio triggers), 115 ops hit the statement cap; 25 do not.
+const BATCH = Number(process.env.BATCH) || 25;
 
 const pid = (id) => `${COURSE}:${id}`;
 const sid = (id) => String(id).split(':').pop();
