@@ -2436,10 +2436,31 @@ async function allPages(build) {
   const out = []
   for (let from = 0; ; from += 1000) {
     let { data, error } = await build(from, from + 999)
-    if (error) ({ data, error } = await build(from, from + 999))
+    // Three tries, not two (Eleri, 2026-10-29): on a slow database a page that timed out once
+    // often answers the second or third time, and one lost page throws the whole plan away.
+    for (let again = 0; error && again < 2; again += 1) ({ data, error } = await build(from, from + 999))
     if (error) throw new Error(error.message)
     out.push(...(data || []))
     if (!data || data.length < 1000) return out
+  }
+}
+
+/**
+ * Every row of a read ordered by `id`, a page at a time by KEYSET (`id > last`), not OFFSET: each
+ * page is an index range, so page 30 costs what page 1 does. An OFFSET page re-sorts everything
+ * before it, which is what the course_audio read in buildPhrasePlan did on every attempt.
+ * `build(afterId)` returns the query for one page (already ordered by id, limited to 1000).
+ */
+async function allKeyset(build) {
+  const out = []
+  let last = null
+  for (;;) {
+    let { data, error } = await build(last)
+    for (let again = 0; error && again < 2; again += 1) ({ data, error } = await build(last))
+    if (error) throw new Error(error.message)
+    out.push(...(data || []))
+    if (!data || data.length < 1000) return out
+    last = data[data.length - 1].id
   }
 }
 
@@ -2488,15 +2509,30 @@ async function phraseQueueLanguages(db) {
  * the course's voice_config, the known side from a castOn of the known
  * language's policy — so a phrase is read by exactly who reads its seed.
  */
-async function buildPhrasePlan(db) {
-  const policies = await loadPolicies(db)
+async function buildPhrasePlan(db, memo = new Map()) {
+  // A RETRY RESUMES (Eleri, 2026-10-29). On a database too slow to read the whole plan inside its
+  // 8 s statement cap, a build that throws away every read it made when one read fails never
+  // finishes — the booth then served `phrases: {unavailable}` to everyone for as long as that
+  // lasted, and a practice-phrase batch opened as an empty "all done". Each read is kept in `memo`
+  // (held by getPhrasePlan, dropped with the plan) so the next attempt only redoes what failed.
+  const stage = async (key, read) => {
+    if (memo.has(key)) return memo.get(key)
+    let got
+    try { got = await read() } catch (err) { throw new Error(`phrase plan read '${key}': ${err.message}`) }
+    memo.set(key, got)
+    return got
+  }
+  const policies = await stage('policies', () => loadPolicies(db))
   const voicesFor = (lang) => policyVoiceList(policies.find((row) => {
     try { return canonicalLanguage(row.language) === lang } catch { return false }
   }))
-  const { data: courses, error } = await db.from('courses')
-    .select('course_code, voice_config, target_lang, known_lang, dialect')
-    .in('course_code', Object.keys(phraseQueue.PHRASE_QUEUE_COURSES))
-  if (error) throw new Error(`phrase course read failed: ${error.message}`)
+  const courses = await stage('courses', async () => {
+    const { data, error } = await db.from('courses')
+      .select('course_code, voice_config, target_lang, known_lang, dialect')
+      .in('course_code', Object.keys(phraseQueue.PHRASE_QUEUE_COURSES))
+    if (error) throw new Error(`phrase course read failed: ${error.message}`)
+    return data
+  })
 
   const casts = []
   const allSpellings = new Set()
@@ -2521,8 +2557,10 @@ async function buildPhrasePlan(db) {
   // (an imported original, a synthetic clip) and is never this queue's work.
   const ownClips = new Map()
   if (allSpellings.size) {
-    const rows = await allPages((a, b) => db.from('course_audio').select('id, voice_id')
-      .in('voice_id', [...allSpellings]).order('id').range(a, b))
+    const rows = await stage('own-clips', () => allKeyset((after) => {
+      const q = db.from('course_audio').select('id, voice_id').in('voice_id', [...allSpellings]).order('id').limit(1000)
+      return after === null ? q : q.gt('id', after)
+    }))
     for (const r of rows) ownClips.set(r.id, r.voice_id)
   }
 
@@ -2533,17 +2571,17 @@ async function buildPhrasePlan(db) {
   await Promise.all(casts.map(async ({ course, roles }) => {
     const code = course.course_code
     const [order, legos, flags] = await Promise.all([
-      allPages((a, b) => db.from('course_running_order').select('seed_number, position')
-        .eq('course_code', code).order('position').range(a, b)),
-      allPages((a, b) => db.from('course_legos').select('seed_number, lego_index, is_new, known_text, target_text')
-        .eq('course_code', code).order('seed_number').order('lego_index').range(a, b)),
-      allPages((a, b) => db.from('phrase_proof_flags').select('phrase_id, flagged')
-        .eq('course_code', code).order('phrase_id').range(a, b)),
+      stage(`order:${code}`, () => allPages((a, b) => db.from('course_running_order').select('seed_number, position')
+        .eq('course_code', code).order('position').range(a, b))),
+      stage(`legos:${code}`, () => allPages((a, b) => db.from('course_legos').select('seed_number, lego_index, is_new, known_text, target_text')
+        .eq('course_code', code).order('seed_number').order('lego_index').range(a, b))),
+      stage(`flags:${code}`, () => allPages((a, b) => db.from('phrase_proof_flags').select('phrase_id, flagged')
+        .eq('course_code', code).order('phrase_id').range(a, b))),
     ])
     const positions = new Map()
     for (const o of order) if (!positions.has(o.seed_number)) positions.set(o.seed_number, o.position)
     const maxSeed = order.reduce((m, o) => Math.max(m, o.seed_number), 0)
-    const phrases = maxSeed ? await readCoursePhrases(db, code, maxSeed) : []
+    const phrases = maxSeed ? await stage(`phrases:${code}`, () => readCoursePhrases(db, code, maxSeed)) : []
     const planRoles = {}
     for (const [role, r] of Object.entries(roles)) {
       planRoles[role] = {
@@ -2586,10 +2624,12 @@ function getPhrasePlan(db) {
   PHRASE_PLAN_DBS.add(db)
   if (e.plan && Date.now() - e.at < PHRASE_PLAN_TTL_MS) return Promise.resolve(e.plan)
   if (!e.building) {
-    e.building = buildPhrasePlan(db).then((plan) => {
+    // The reads of a failed attempt are kept for five minutes so the next attempt resumes (buildPhrasePlan).
+    if (!e.memo || Date.now() - e.memoAt > PHRASE_PLAN_TTL_MS) { e.memo = new Map(); e.memoAt = Date.now() }
+    e.building = buildPhrasePlan(db, e.memo).then((plan) => {
       // An edit that landed mid-build dropped this entry: hand the plan to its caller, keep nothing.
       if (PHRASE_PLANS.get(db) !== e) return plan
-      e.plan = plan; e.at = Date.now(); e.building = null
+      e.plan = plan; e.at = Date.now(); e.building = null; e.memo = null
       return plan
     }, (err) => { e.building = null; throw err })
     // A background refresh that fails must not become an unhandled rejection.
@@ -2601,7 +2641,7 @@ function getPhrasePlan(db) {
 /** Mark the plan stale (a phrase take landed): the next read refreshes it behind the stale copy. */
 function invalidatePhrasePlan(db) {
   const e = PHRASE_PLANS.get(db)
-  if (e) e.at = 0
+  if (e) { e.at = 0; e.memo = null } // reads kept from a failed build would carry the old slots
 }
 
 /**
@@ -4031,11 +4071,11 @@ module.exports = {
   audioOriginsById,
   SYNTHETIC_MODES,
   // Practice phrases (job #619).
-  buildPhrasePlan,
-  getPhrasePlan,
   invalidatePhrasePlan,
   afterCourseContentEdit,
   withPhraseBatch,
+  buildPhrasePlan,
+  getPhrasePlan,
   linkPhraseTake,
   phraseLineRecorded,
 }

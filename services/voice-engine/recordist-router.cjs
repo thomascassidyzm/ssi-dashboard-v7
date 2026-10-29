@@ -809,6 +809,12 @@ module.exports = function createRecordistRouter({
       // header then describes the batch opened, not the one the queue serves. Read-only.
       const phraseCtx = { phrases: queue.phrases, phraseBatches: queue.phraseBatches, openPhraseBatch: queue.openPhraseBatch }
       const batchN = parseInt(req.query.batch, 10)
+      // A PHRASE BATCH WHOSE PLAN COULD NOT BE READ IS NOT AN EMPTY BATCH (Eleri, 2026-10-29): the
+      // booth took the empty answer for "everything read" while the home screen still showed
+      // thousands owed. Say so, and let the booth tell her to try again in a minute.
+      if (trackScope && trackScope.startsWith('phrase.') && queue.phrases && queue.phrases.unavailable) {
+        return res.status(503).json({ error: 'The practice phrases are still loading. Please try again in a minute.', retryable: true, track: trackScope })
+      }
       const openedPhrase = trackScope && trackScope.startsWith('phrase.')
         ? boothHome.openPhraseBatch(inScope(queue.lines).filter((l) => boothHome.trackKeyOf(l) === trackScope), trackScope, Number.isFinite(batchN) && batchN >= 1 ? batchN : 1, phraseCtx)
         : null

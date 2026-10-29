@@ -58,6 +58,7 @@ function stubDb(tables, writes = []) {
         eq(col, val) { filters.push((r) => r[col] === val); return q },
         in(col, vals) { filters.push((r) => vals.includes(r[col])); return q },
         is(col, val) { filters.push((r) => (val === null ? r[col] == null : r[col] === val)); return q },
+        gt(col, val) { filters.push((r) => r[col] > val); return q },
         gte(col, val) { filters.push((r) => r[col] >= val); return q },
         lt(col, val) { filters.push((r) => r[col] < val); return q },
         not(col, op, val) { if (op === 'is' && val === null) filters.push((r) => r[col] != null); return q },
@@ -461,4 +462,55 @@ test('the take route: a take filed as course_read_failed is a 503, never a silen
   const r = await take(CATRIN, `phrase:${N}:S1001L01B03:target1`, fixture(), unfiled)
   assert.equal(r.status, 503)
   assert.equal(r.body.retryable, true)
+})
+
+// Eleri, 2026-10-29: the database was too slow to read the whole phrase plan inside its statement
+// cap, every attempt threw its reads away and started again, and the booth served `phrases:
+// {unavailable}` — a phrase batch then opened empty as "all done" while the home showed thousands owed.
+function countingDb(tables, state) {
+  const inner = stubDb(tables)
+  const calls = {}
+  return {
+    calls,
+    from(table) {
+      calls[table] = (calls[table] || 0) + 1
+      if (state.failTable !== table) return inner.from(table)
+      const failed = { data: null, error: { message: 'canceling statement due to statement timeout' } }
+      const q = {}
+      for (const m of ['select', 'eq', 'in', 'gte', 'gt', 'lt', 'order', 'limit', 'range']) q[m] = () => q
+      q.then = (resolve, reject) => Promise.resolve(failed).then(resolve, reject)
+      return q
+    },
+  }
+}
+
+test('a phrase plan that timed out half way resumes: the reads it made are not made again (Eleri, 2026-10-29)', async () => {
+  const { getPhrasePlan } = require('./recordist-queue.cjs')
+  const state = { failTable: 'course_practice_phrases' }
+  const db = countingDb(fixture(), state)
+  await assert.rejects(() => getPhrasePlan(db), /phrase plan read 'phrases:/)
+  const legosAfterFailure = db.calls.course_legos
+  state.failTable = null
+  const plan = await getPhrasePlan(db)
+  assert.ok(plan.byVoice.size > 0, 'the second attempt finishes')
+  assert.equal(db.calls.course_legos, legosAfterFailure, 'and does not read the LEGOs again')
+  afterCourseContentEdit()
+})
+
+test('a phrase batch opened while the plan cannot be read is a 503 to retry, never an empty "all done" (Eleri, 2026-10-29)', async () => {
+  const state = { failTable: 'course_practice_phrases' }
+  const db = countingDb(fixture(), state)
+  const router = createRecordistRouter({ getDb: () => db, logger: QUIET, s3: {}, handleRecordingUpload: async () => {} })
+  const layer = router.stack.find((l) => l.route && l.route.path === '/voice/:voiceId' && l.route.methods.get)
+  const out = {}
+  const settled = new Promise((resolve) => {
+    out.res = { status(c) { out.status = c; return out.res }, json(b) { out.body = b; resolve(); return out.res }, set() { return out.res }, setHeader() {} }
+  })
+  await layer.route.stack[0].handle({
+    params: { voiceId: CATRIN }, query: { includeRecorded: '1', track: 'phrase.1', batch: '1' }, headers: {}, socket: {}, method: 'GET', originalUrl: `/voice/${CATRIN}`,
+  }, out.res)
+  await settled
+  assert.equal(out.status, 503)
+  assert.equal(out.body.retryable, true)
+  afterCourseContentEdit()
 })
