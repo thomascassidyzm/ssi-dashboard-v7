@@ -171,13 +171,25 @@ function checks(dump, ops) {
   return problems;
 }
 
+/** STEP 2 (after the first apply, event b4041ed6): the course validator wants 5+ USE rows under a debut LEGO; L02 and L03 had 4. */
+const STEP2 = [
+  [2, 8, 'इसीलिए मैं पिछली बार से बेहतर कर रहा हूँ।', "that is why I'm doing better than last time", 'm'],
+  [3, 8, 'इसीलिए मैं उससे बेहतर कर रही हूँ जो मैं कल थी।', "that is why I'm doing better than I was yesterday", 'f'],
+];
+function buildStep2(dump) {
+  const tmpl = dump.phrases.find((p) => p.id.endsWith('S0117L01B01'));
+  return STEP2.map(([legoIdx, position, known, target, gender]) => ({ op: 'phrase.insert',
+    row: phraseRow(tmpl, { seed: 117, legoIndex: legoIdx, id: `S0117L0${legoIdx}U${String(position - 3).padStart(2, '0')}`, role: 'use', position, known, target, gender }) }));
+}
+
 async function post(body) {
   const r = await fetch(`${POPTY}/api/production/${COURSE}/edit-batch`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body), signal: AbortSignal.timeout(180000) });
   return { status: r.status, body: await r.json().catch(() => ({})) };
 }
 async function main() {
   const [dumpPath, seedsPath] = process.argv.slice(2);
-  const { ops, log } = build(JSON.parse(fs.readFileSync(dumpPath, 'utf8')), JSON.parse(fs.readFileSync(seedsPath, 'utf8')));
+  const step2 = process.env.STEP === '2';
+  const { ops, log } = step2 ? { ops: buildStep2(JSON.parse(fs.readFileSync(dumpPath, 'utf8'))), log: [] } : build(JSON.parse(fs.readFileSync(dumpPath, 'utf8')), JSON.parse(fs.readFileSync(seedsPath, 'utf8')));
   const problems = checks(JSON.parse(fs.readFileSync(dumpPath, 'utf8')), ops);
   console.log(log.join('\n'), `\n${ops.length} ops`);
   if (problems.length) { console.log('OFFLINE PROBLEMS:\n' + problems.join('\n')); if (!process.env.IGNORE_PROBLEMS) process.exit(1); }
@@ -189,4 +201,4 @@ async function main() {
   fs.writeFileSync(`${process.env.CS_SCRATCH || '.'}/applied.json`, JSON.stringify(res.body));
 }
 if (require.main === module) main().catch((e) => { console.error(e.message); process.exit(1); });
-module.exports = { build, checks };
+module.exports = { build, checks, buildStep2, L02_BUILD, L02_USE, L03_BUILD, L03_USE, L04_PLAIN_USE, SEED_117 };
