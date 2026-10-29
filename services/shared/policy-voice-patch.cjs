@@ -63,4 +63,58 @@ function patchVoiceSlot(voices, voiceId, { email, active, slot } = {}) {
   return { ok: true, voices: { ...voices, [key]: next }, slot: key, changed };
 }
 
-module.exports = { patchVoiceSlot, withoutRetired, normaliseEmail };
+// The entry fields a new slot may carry. Anything else is refused rather than stored unread.
+const ADDABLE_FIELDS = ['name', 'gender', 'voiceId', 'dialect', 'aliases', 'email', 'onlyCastOn', 'castOn', 'podEnglishOn'];
+
+/**
+ * ADD ONE VOICE SLOT without rewriting the list (job #562, 2026-10-29: Catrin's English voice for the women's lines of
+ * Pod 1 English). The per-voice PATCH above can only edit a slot that exists, and PUT replaces every reader at once, so
+ * an agent had no door to add a reader. Refuses an occupied slot, a voice id (or alias) another slot already holds, a
+ * gender that contradicts the slot key, and a second voice in one (dialect, gender) bucket — the same rules PUT applies.
+ * A cast-on-only entry (onlyCastOn) reads only what it is cast on and holds no bucket, exactly as the queue treats it.
+ *
+ * @param {object} voices the policy's current `voices`
+ * @param {string} slot 'm' | 'f' | 'm:<tag>' | 'f:<tag>'
+ * @param {object} entry the new entry
+ * @param {Function} bucketOf (dialect, gender) -> bucket key (shared/dialect.cjs bucketKey)
+ * @returns {{ok:true, voices:object, slot:string, entry:object}|{ok:false, status:number, error:string}}
+ */
+function addVoiceSlot(voices, slot, entry, bucketOf) {
+  const current = voices && typeof voices === 'object' ? voices : {};
+  const key = String(slot || '').trim();
+  const gender = key.split(':')[0];
+  if (!/^[mf](:[a-z0-9_-]+)?$/.test(key)) return { ok: false, status: 400, error: `slot must be 'm', 'f', 'm:<tag>' or 'f:<tag>' (got ${slot})` };
+  if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return { ok: false, status: 400, error: 'entry must be an object' };
+  const unknown = Object.keys(entry).filter((k) => !ADDABLE_FIELDS.includes(k));
+  if (unknown.length) return { ok: false, status: 400, error: `entry cannot carry ${unknown.join(', ')} (allowed: ${ADDABLE_FIELDS.join(', ')})` };
+  const voiceId = String(entry.voiceId || '').trim();
+  if (!voiceId) return { ok: false, status: 400, error: 'entry.voiceId required' };
+  if (entry.gender !== undefined && String(entry.gender).toLowerCase() !== gender) {
+    return { ok: false, status: 400, error: `entry.gender (${entry.gender}) contradicts the slot ${key}` };
+  }
+  if (current[key]) return { ok: false, status: 409, error: `slot ${key} is already held by ${current[key].voiceId}` };
+  for (const [k, e] of Object.entries(current)) {
+    if (!e) continue;
+    if (e.voiceId === voiceId || (Array.isArray(e.aliases) && e.aliases.includes(voiceId))) {
+      return { ok: false, status: 409, error: `${voiceId} is already in slot ${k}` };
+    }
+  }
+  if (entry.onlyCastOn !== true && typeof bucketOf === 'function') {
+    const mine = bucketOf(entry.dialect, gender);
+    for (const [k, e] of Object.entries(current)) {
+      if (!e || e.onlyCastOn === true || e.active === false) continue;
+      if (bucketOf(e.dialect, String(e.gender || k.split(':')[0]).toLowerCase()) === mine) {
+        return { ok: false, status: 409, error: `slot ${k} already holds the bucket ${mine} — one voice per gender per dialect` };
+      }
+    }
+  }
+  const next = { ...entry, voiceId, gender };
+  if (entry.email !== undefined) {
+    const e = normaliseEmail(entry.email);
+    if (!e) return { ok: false, status: 400, error: 'email is not an address' };
+    next.email = e;
+  }
+  return { ok: true, voices: { ...current, [key]: next }, slot: key, entry: next };
+}
+
+module.exports = { patchVoiceSlot, addVoiceSlot, withoutRetired, normaliseEmail };
