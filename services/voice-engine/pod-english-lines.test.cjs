@@ -15,8 +15,9 @@ const PODS = [
   { id: 'cym_n_for_eng:pod-1', course_code: 'cym_n_for_eng', slug: 'pod-1', title: 'North Pod 1' },
   { id: 'cym_s_for_eng:pod-1', course_code: 'cym_s_for_eng', slug: 'pod-1', title: 'South Pod 1' },
 ]
+// Scene 9, not scene 1: scene 1/5 rows of these pods carry a pending Siân swap (pod-text-swaps.cjs, job #551).
 const s = (pod, n, known, target, audio = null) => ({
-  id: `${pod}:SC01-S00${n}`, pod_id: pod, global_order: n, speaker: 'Neighbour', known_text: known, target_text: target, known_audio_id: audio,
+  id: `${pod}:SC09-S00${n}`, pod_id: pod, global_order: n, speaker: 'Neighbour', known_text: known, target_text: target, known_audio_id: audio,
 })
 const N = 'cym_n_for_eng:pod-1', S = 'cym_s_for_eng:pod-1'
 
@@ -39,8 +40,8 @@ describe('Pod 1 English card', () => {
     const lines = pe.podEnglishLinesFor(ARAN, { podIds: [N, S], pods: PODS, sentences, slotVoiceById })
     expect(lines.map((l) => l.text)).toEqual(['Good morning, Sarah!', 'How are you?', 'Fine, thanks.'])
     const [shared, nOnly, sOnly] = lines
-    expect(shared.id).toBe(pe.podEnglishLineId(`${N}:SC01-S001`))
-    expect(shared.duplicateOf).toEqual([{ sentenceId: `${S}:SC01-S001`, courseCode: 'cym_s_for_eng' }])
+    expect(shared.id).toBe(pe.podEnglishLineId(`${N}:SC09-S001`))
+    expect(shared.duplicateOf).toEqual([{ sentenceId: `${S}:SC09-S001`, courseCode: 'cym_s_for_eng' }])
     expect(shared.filledBy).toEqual(['xai_bedd6226', null])
     expect(nOnly.duplicateOf).toEqual([])
     expect(sOnly.courseCode).toBe('cym_s_for_eng')
@@ -73,7 +74,7 @@ describe('Pod 1 English card', () => {
   })
 
   it('resolves a take only on a pod this reader is cast on', () => {
-    const row = { id: `${S}:SC01-S001`, pod_id: S, known_text: ' Good morning, Sarah! ' }
+    const row = { id: `${S}:SC09-S001`, pod_id: S, known_text: ' Good morning, Sarah! ' }
     expect(pe.resolvePodEnglish(row, ARAN, POLICY)).toEqual({ courseCode: 'cym_s_for_eng', sentenceId: row.id, text: 'Good morning, Sarah!' })
     expect(pe.resolvePodEnglish({ ...row, pod_id: 'cym_s_for_eng:health' }, ARAN, POLICY)).toBeNull()
     expect(pe.resolvePodEnglish(row, { voiceId: 'x', spellings: ['x'] }, POLICY)).toBeNull()

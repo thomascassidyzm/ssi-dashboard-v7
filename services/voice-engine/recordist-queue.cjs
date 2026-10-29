@@ -121,6 +121,7 @@ const { linkClips } = require('../shared/link-clip.cjs')
 const { isHumanClip } = require('../shared/human-take-guard.cjs')
 const { recordContentEdit } = require('../shared/content-edit-log.cjs')
 const { serviceIdentity } = require('../shared/editor-identity.cjs')
+const podTextSwaps = require('./pod-text-swaps.cjs')
 const { primaryPhraseCourse, phraseTrackKey } = require('./booth-home.cjs')
 const langService = require('../language-code-service.cjs')
 
@@ -2894,7 +2895,7 @@ async function sameWordsGaps({ db, recordist }) {
  * already counts as recorded by its words. Never throws — the take is already safe.
  */
 async function fillSameWordsSlots({ db, recordist, role, text, audioId, logger = console }) {
-  const out = { seeds: 0, legos: 0, phrases: 0, pods: 0, podsReplaced: 0 }
+  const out = { seeds: 0, legos: 0, phrases: 0, pods: 0, swaps: 0, podsReplaced: 0 }
   if (!audioId || !spokenWordsKey(text)) return out
   const roles = role === 'known' ? ['known'] : SEED_TARGET_ROLES
   const step = async (name, fn) => {
@@ -2905,12 +2906,15 @@ async function fillSameWordsSlots({ db, recordist, role, text, audioId, logger =
     if (r !== 'known') await step('legos', () => linkLegoSlotsByWords({ db, recordist, role: r, text, audioId, fillOnly: true, logger }))
   }
   await step('phrases', () => linkPhraseSlotsByWords({ db, recordist, role, text, audioId, logger }))
+  // MAKE-BEFORE-BREAK POD SWAPS (job #551, pod-text-swaps.cjs): a pod row waiting for new words takes them and this
+  // take in one statement. Before the English fill below, so a swapped row is never also "filled".
+  await step('swaps', () => applyPodTextSwaps({ db, recordist, role, text, audioId, logger }))
   // The Pod 1 English card's known slots (job #537): the pod's own English, filled by any card's take of its words.
   if (role === 'known') await step('pods', () => linkPodEnglishSlotsByWords({ db, recordist, text, audioId, logger }))
   // ...and North's SYNTHETIC Pod 1 English moves to his takes (Aran 2026-10-29, job #555): every line he has a take for.
   if (role === 'known') await step('podsReplaced', () => replaceSyntheticPodEnglish({ db, recordist, logger }))
-  if (out.seeds + out.legos + out.phrases + out.pods + out.podsReplaced) {
-    logger.log(`[Recordist] same-words fill ${recordist.voiceId} "${String(text).slice(0, 40)}": ${out.seeds} seed, ${out.legos} LEGO, ${out.phrases} phrase, ${out.pods} pod English slot(s) now play this take; ${out.podsReplaced} synthetic pod English slot(s) replaced by his takes`)
+  if (out.seeds + out.legos + out.phrases + out.pods + out.swaps + out.podsReplaced) {
+    logger.log(`[Recordist] same-words fill ${recordist.voiceId} "${String(text).slice(0, 40)}": ${out.seeds} seed, ${out.legos} LEGO, ${out.phrases} phrase, ${out.pods} pod English slot(s), ${out.swaps} pod swap(s) now play this take; ${out.podsReplaced} synthetic pod English slot(s) replaced by his takes`)
   }
   return out
 }
@@ -3113,6 +3117,114 @@ async function replaceSyntheticPodEnglishNow({ db, recordist, logger = console, 
 }
 
 /**
+ * The rows and pods behind the pending pod swaps (job #551, pod-text-swaps.cjs) — a handful of rows, read by id.
+ * Cached briefly like the card inputs and dropped the moment a swap is applied; an unreadable swap is an absent line,
+ * never a booth that will not open.
+ */
+let podSwapInputCache = null
+async function fetchPodSwapInputs(db, { fresh = false } = {}) {
+  if (!fresh && podSwapInputCache && Date.now() - podSwapInputCache.at < ENGLISH_LEGO_TTL_MS) return podSwapInputCache.value
+  const ids = podTextSwaps.swapSentenceIds()
+  const podIds = [...new Set(ids.map(podTextSwaps.podOfSentence))]
+  const { data: rows, error } = await db.from('listening_pod_sentences')
+    .select('id, pod_id, global_order, speaker, target_text, known_text, target_audio_id, known_audio_id').in('id', ids)
+  if (error) throw new Error(`pod swap rows read failed: ${error.message}`)
+  const { data: pods, error: podErr } = await db.from('listening_pods').select('id, slug, title').in('id', podIds)
+  if (podErr) throw new Error(`pod swap pods read failed: ${podErr.message}`)
+  const value = { rows: rows || [], pods: pods || [] }
+  podSwapInputCache = { at: Date.now(), value }
+  return value
+}
+
+async function podSwapLinesFor(db, recordist) {
+  try {
+    return podTextSwaps.podSwapLinesFor(recordist, await fetchPodSwapInputs(db))
+  } catch (err) {
+    console.warn(`[Recordist] pod swap lines unavailable for ${recordist.voiceId}: ${err.message}`)
+    return []
+  }
+}
+
+/**
+ * APPLY THE POD SWAPS THIS TAKE FULFILS (job #551). Rows are read FRESH; each pending swap of this voice, side and
+ * spoken words is ONE conditional UPDATE — new words and this take together, only while the row still says the old
+ * words (pod-text-swaps swapWrite) — so the pod never holds new words without audio. A row that has moved on is left
+ * alone and reported. Nothing is deleted: the old clip keeps its row and file. Returns {linked, skipped}.
+ */
+async function applyPodTextSwaps({ db, recordist, role, text, audioId, logger = console }) {
+  const out = { linked: [], skipped: [] }
+  if (!audioId || !spokenWordsKey(text)) return out
+  const side = role === 'known' ? 'known' : 'target'
+  const spellings = recordist.spellings || [recordist.voiceId]
+  if (!podTextSwaps.POD_TEXT_SWAPS.some((s) => s.side === side && podTextSwaps.isSwapVoice(s, spellings))) return out
+  const { rows } = await fetchPodSwapInputs(db, { fresh: true })
+  const rowsById = new Map(rows.map((r) => [r.id, r]))
+  for (const swap of podTextSwaps.swapsForTake({ spellings, side, text, rowsById })) {
+    const w = podTextSwaps.swapWrite(swap, audioId)
+    let q = db.from('listening_pod_sentences').update(w.set).eq('id', w.id)
+    for (const [col, val] of Object.entries(w.where)) q = q.eq(col, val)
+    const { data, error } = await q.select('id')
+    if (error) {
+      logger.error(`[PodSwap] ${w.id} ${side} failed: ${error.message} (pod unchanged)`)
+      out.skipped.push({ sentenceId: w.id, side, reason: error.message })
+      continue
+    }
+    if (!data || !data.length) {
+      logger.warn(`[PodSwap] ${w.id} ${side} no longer says "${swap.from}" — left as it is`)
+      out.skipped.push({ sentenceId: w.id, side, reason: 'drifted' })
+      continue
+    }
+    const was = rowsById.get(swap.sentenceId)[podTextSwaps.AUDIO_COL[side]] || null
+    logger.log(`[PodSwap] ${w.id} ${side}: "${swap.from}" -> "${swap.to}", audio ${was} -> ${audioId} (${recordist.voiceId}; old clip kept, unlinked)`)
+    out.linked.push({ sentenceId: w.id, side, from: swap.from, to: swap.to, audioId, replacedAudioId: was })
+  }
+  if (out.linked.length) {
+    podSwapInputCache = null
+    podEnglishInputCache.clear()
+    invalidateLanguageQueueCache()
+  }
+  return out
+}
+
+/**
+ * WHERE EVERY POD SWAP STANDS, and — with apply — the fallback that applies any pending swap whose take already exists
+ * (job #551; POST /api/admin/pod-text-swaps). The take is the swap voice's newest HUMAN clip of the new words; with
+ * none, the swap stays pending and the pod is untouched. Applying goes through applyPodTextSwaps, the same one-statement
+ * write a booth take triggers. Returns one entry per swap.
+ */
+async function podTextSwapReport(db, { apply = false, logger = console } = {}) {
+  const { rows } = await fetchPodSwapInputs(db, { fresh: true })
+  const rowsById = new Map(rows.map((r) => [r.id, r]))
+  const out = []
+  for (const swap of podTextSwaps.POD_TEXT_SWAPS) {
+    const row = rowsById.get(swap.sentenceId)
+    const textCol = podTextSwaps.TEXT_COL[swap.side]
+    const audioCol = podTextSwaps.AUDIO_COL[swap.side]
+    const entry = { sentenceId: swap.sentenceId, side: swap.side, voiceId: swap.voiceId, from: swap.from, to: swap.to,
+      state: row ? podTextSwaps.swapState(swap, row) : 'missing', podText: row ? row[textCol] : null, podAudioId: row ? row[audioCol] : null, take: null }
+    const { data: takes, error } = await db.from('course_audio').select('id, voice_id, origin, text, created_at')
+      .eq('voice_id', swap.voiceId).eq('origin', 'human').in('text_normalized', audioKeyCandidates(swap.to))
+      .order('created_at', { ascending: false }).limit(1)
+    if (error) throw new Error(`pod swap take lookup failed: ${error.message}`)
+    entry.take = takes && takes[0] ? takes[0] : null
+    if (apply && entry.state === 'pending' && entry.take) {
+      const r = await applyPodTextSwaps({ db, recordist: { voiceId: swap.voiceId, spellings: [swap.voiceId] },
+        role: swap.side === 'known' ? 'known' : 'target1', text: swap.to, audioId: entry.take.id, logger })
+      entry.applied = r.linked.filter((l) => l.sentenceId === swap.sentenceId)
+      entry.skipped = r.skipped.filter((l) => l.sentenceId === swap.sentenceId)
+      if (r.linked.length) {
+        const fresh = await fetchPodSwapInputs(db, { fresh: true })
+        for (const fr of fresh.rows) rowsById.set(fr.id, fr)
+        const now = rowsById.get(swap.sentenceId)
+        Object.assign(entry, { state: now ? podTextSwaps.swapState(swap, now) : 'missing', podText: now && now[textCol], podAudioId: now && now[audioCol] })
+      }
+    }
+    out.push(entry)
+  }
+  return out
+}
+
+/**
  * Build the language-wide queue for one recordist.
  *
  * @param {object} db supabase client
@@ -3130,7 +3242,9 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
   const englishLegoLines = englishLegos.englishLegoLinesFor(recordist, await fetchEnglishLegoInputs(db, recordist))
   // The Pod 1 English card (job #537, pod-english-lines.cjs): North and South Pod 1's English, one line per spoken words.
   const podEnglishLines = podEnglish.podEnglishLinesFor(recordist, await fetchPodEnglishInputs(db, recordist))
-  const mine = [...introPieces.introPieceLinesFor(recordist), ...linesForVoice(language, recordist), ...englishLegoLines, ...podEnglishLines]
+  // Pod lines waiting on new words (job #551, pod-text-swaps.cjs): the new Welsh, read before the pod is changed.
+  const podSwapLines = await podSwapLinesFor(db, recordist)
+  const mine = [...introPieces.introPieceLinesFor(recordist), ...podSwapLines, ...linesForVoice(language, recordist), ...englishLegoLines, ...podEnglishLines]
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.
@@ -3248,6 +3362,8 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // Which kind of quarry piece: a LEGO of the course, or a single word no
         // LEGO covers. Null on every other kind of line.
         quarrySource: line.quarrySource || null,
+        // On a 'podswap' line (job #551): the words this line replaces in the pod once it is recorded.
+        replacesText: line.kind === 'podswap' ? (line.replacesText || null) : null,
         // The LEGO's own id (S0181L02) on a 'lego' line, so the booth can say
         // which piece of which seed it is. Null on every other kind.
         legoId: line.kind === 'lego' ? (line.legoId || null) : null,
@@ -4134,6 +4250,9 @@ module.exports = {
   linkPodEnglishSlotsByWords,
   replaceSyntheticPodEnglish,
   replaceSyntheticPodEnglishNow,
+  fetchPodSwapInputs,
+  applyPodTextSwaps,
+  podTextSwapReport,
   policyVoicesForLanguage,
   isRecordableSeed,
   seedPosition,

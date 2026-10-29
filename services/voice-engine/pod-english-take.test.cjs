@@ -17,7 +17,8 @@ const N = 'cym_n_for_eng:pod-1', S = 'cym_s_for_eng:pod-1'
 const QUIET = { log() {}, info() {}, warn() {}, error() {} }
 
 function fixture() {
-  const sent = (pod, n, known, audio = null) => ({ id: `${pod}:SC01-S00${n}`, pod_id: pod, global_order: n, speaker: 'Neighbour', target_text: 'Bore da!', known_text: known, known_audio_id: audio })
+  // Scene 9, not scene 1: scene 1/5 rows of these pods carry a pending Siân swap (pod-text-swaps.cjs, job #551).
+  const sent = (pod, n, known, audio = null) => ({ id: `${pod}:SC09-S00${n}`, pod_id: pod, global_order: n, speaker: 'Neighbour', target_text: 'Bore da!', known_text: known, known_audio_id: audio })
   return {
     language_recording_policy: [{ language: 'eng', human_only: false, voices: {
       m: { name: 'Aran', gender: 'm', voiceId: ARAN, onlyCastOn: true, email: 'aran@hey.com',
@@ -101,21 +102,21 @@ const slot = (tables, id) => tables.listening_pod_sentences.find((s) => s.id ===
 describe('a Pod 1 English take', () => {
   it('files as his English known take and fills South\'s empty slot of the same words; North\'s synthetic clip stays', async () => {
     const tables = fixture()
-    const out = await postTake(tables, `podeng:${N}:SC01-S001`, 'Good morning, Sarah!')
+    const out = await postTake(tables, `podeng:${N}:SC09-S001`, 'Good morning, Sarah!')
     expect(out.status || 200).toBe(200)
     expect(out.body).toMatchObject({ ok: true, audioId: 'filed1', role: 'known' })
     expect(out.filedMeta).toMatchObject({ role: 'known', kind: 'pod-english', text: 'Good morning, Sarah!', voiceId: ARAN })
-    expect(slot(tables, `${S}:SC01-S001`)).toBe('filed1')
-    expect(slot(tables, `${N}:SC01-S001`)).toBe('tts-olivia')
-    expect(slot(tables, `${S}:SC01-S002`)).toBeNull()
+    expect(slot(tables, `${S}:SC09-S001`)).toBe('filed1')
+    expect(slot(tables, `${N}:SC09-S001`)).toBe('tts-olivia')
+    expect(slot(tables, `${S}:SC09-S002`)).toBeNull()
     // Not a card pod: the health pod's line of the same words is left alone.
-    expect(slot(tables, 'cym_s_for_eng:health:SC01-S001')).toBeNull()
+    expect(slot(tables, 'cym_s_for_eng:health:SC09-S001')).toBeNull()
   })
 
   it('is refused on a pod that is not on the card, and on changed words', async () => {
     const tables = fixture()
-    expect((await postTake(tables, 'podeng:cym_s_for_eng:health:SC01-S001', 'Good morning, Sarah!')).status).toBe(404)
-    expect((await postTake(tables, `podeng:${S}:SC01-S002`, 'Fine thanks, you?')).status).toBe(409)
-    expect(slot(tables, `${S}:SC01-S002`)).toBeNull()
+    expect((await postTake(tables, 'podeng:cym_s_for_eng:health:SC09-S001', 'Good morning, Sarah!')).status).toBe(404)
+    expect((await postTake(tables, `podeng:${S}:SC09-S002`, 'Fine thanks, you?')).status).toBe(409)
+    expect(slot(tables, `${S}:SC09-S002`)).toBeNull()
   })
 })

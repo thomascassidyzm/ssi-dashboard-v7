@@ -5193,6 +5193,27 @@ app.patch('/api/admin/pod-sentences/:id', async (req, res) => {
   }
 })
 
+// GET|POST /api/admin/pod-text-swaps — make-before-break pod word changes (job #551,
+// voice-engine/pod-text-swaps.cjs). GET: where each swap stands and whether its take
+// exists. POST {"apply":true}: apply every pending swap whose take already exists
+// (the same one-statement text+audio write a booth take triggers); without apply,
+// a dry run that is the GET. The booth applies them by itself; this is the fallback.
+async function podTextSwapsRoute(req, res) {
+  const who = await requireAdmin(req, res)
+  if (!who) return
+  const apply = req.method === 'POST' && req.body && req.body.apply === true
+  try {
+    const swaps = await require('./voice-engine/recordist-queue.cjs').podTextSwapReport(supabaseClient.getClient(), { apply, logger })
+    if (apply) logger.info(`[PodSwap] admin apply by ${who.email || who.agentId || who.id || '?'}: ${swaps.filter((s) => s.applied && s.applied.length).length} applied`)
+    res.json({ ok: true, apply, swaps })
+  } catch (e) {
+    logger.error('[PodSwap] route error:', e?.message || e)
+    res.status(500).json({ error: e?.message || 'unknown error' })
+  }
+}
+app.get('/api/admin/pod-text-swaps', podTextSwapsRoute)
+app.post('/api/admin/pod-text-swaps', podTextSwapsRoute)
+
 // GET /api/admin/pods/:courseCode/audio-plan — what pod audio is missing.
 // Thin passthrough to Phase 8's /plan-pods (port 3465). Optional ?slug=<slug>
 // scopes to one pod (Phase 8's route takes a comma-separated ?pods=<id> list,

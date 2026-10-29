@@ -85,6 +85,8 @@ function trackKeyOf(line) {
   if ((kind === 'pod' || kind === 'takeg') && line.podSlug) return `pod.${line.podSlug}`
   // Pod 1 English (job #537): one card for North and South, whichever course a line's first copy is in.
   if (kind === 'podknown' && line.podSlug) return `podknown.${line.podSlug}`
+  // Pod lines waiting on new words (job #551): one card, North and South, ahead of the pod change.
+  if (kind === 'podswap' && line.podSlug) return `podswap.${line.podSlug}`
   return `${kind}.${line.courseCode || 'all'}`
 }
 

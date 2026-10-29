@@ -20,8 +20,9 @@
 export const batchTickId = (trackKey, n) => `${trackKey}#${n}`
 
 // Pod 1 English (job #537) is new reading too: its card sits with the new work, after the phrases.
+// Pod lines waiting on new words (job #551) are new reading too, and go first: the pod changes when they are read.
 export const isNewWork = (t) =>
-  t.kind === 'phrase' || t.kind === 'podknown' || (t.kind === 'lego' && !!t.newCourse) || (t.kind === 'seed' && (t.newCourse || t.seedExisting === false))
+  t.kind === 'phrase' || t.kind === 'podknown' || t.kind === 'podswap' || (t.kind === 'lego' && !!t.newCourse) || (t.kind === 'seed' && (t.newCourse || t.seedExisting === false))
 
 /** A piece of work cut into batches the reader ticks one by one (sentences, LEGOs). */
 export const hasBatchTicks = (t) => (t.kind === 'seed' || t.kind === 'lego') && (t.batches || []).length > 1
@@ -130,7 +131,7 @@ export function batchOpenable() { return true }
 
 /** Up next's order: new sentences, then LEGOs, then practice phrases (pass 1, pass 2), then the rest. */
 export function orderedTracks(tracks) {
-  const rank = (t) => (t.kind === 'seed' && isNewWork(t) ? 0 : t.kind === 'lego' && isNewWork(t) ? 1 : t.kind === 'phrase' ? 2 : 3)
+  const rank = (t) => (t.kind === 'podswap' ? -1 : t.kind === 'seed' && isNewWork(t) ? 0 : t.kind === 'lego' && isNewWork(t) ? 1 : t.kind === 'phrase' ? 2 : 3)
   return tracks.map((t, i) => ({ t, i })).sort((a, b) => (rank(a.t) - rank(b.t)) || (a.i - b.i)).map((x) => x.t)
 }
 

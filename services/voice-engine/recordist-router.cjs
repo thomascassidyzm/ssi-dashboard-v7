@@ -75,6 +75,7 @@ const phraseQueue = require('./phrase-queue.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
 const podEnglish = require('./pod-english-lines.cjs')
+const podTextSwaps = require('./pod-text-swaps.cjs')
 const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
 const boothActorQueue = require('./booth-actor-queue.cjs')
@@ -1652,6 +1653,31 @@ module.exports = function createRecordistRouter({
     return knownWordsClipResponse(req, res, recordist, resolved.text)
   }
 
+  /**
+   * A POD SWAP line (job #551, pod-text-swaps.cjs): the NEW words of a pod line, read before the pod changes. Filed as
+   * an ordinary Welsh take of those words (script seam, role target1, under the line's course); then fillSameWordsSlots
+   * runs applyPodTextSwaps, which puts the new words AND this take into every pod row waiting on them — North and South —
+   * in one conditional write per row. If the take is not filed, nothing in the pod moves.
+   */
+  async function recordPodSwapTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = await resolvePodSwapLine(parsed, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'podswap', metaKind: 'pod-swap', role: 'target1', text, audioBase64, mimeType, device,
+      afterFiled: (audioId) => fillSameWordsSlots({ db: db(), recordist, role: 'target1', text: resolved.text, audioId, logger }) })
+  }
+
+  async function resolvePodSwapLine(parsed, recordist) {
+    const { data, error } = await db().from('listening_pod_sentences').select('id, pod_id, target_text, known_text').eq('id', parsed.sentenceId).limit(1)
+    if (error) throw new Error(`pod swap lookup failed: ${error.message}`)
+    return podTextSwaps.resolvePodSwap(parsed, recordist, data && data[0])
+  }
+
+  async function podSwapClipResponse(req, res, recordist, parsed) {
+    const resolved = await resolvePodSwapLine(parsed, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return knownWordsClipResponse(req, res, recordist, resolved.text)
+  }
+
   async function resolveEnglishLegoLine(parsed, recordist) {
     const { data, error } = await db().from('course_legos').select('id, course_code, lego_id, known_text').eq('id', parsed.legoRowId).limit(1)
     if (error) throw new Error(`english LEGO lookup failed: ${error.message}`)
@@ -1659,7 +1685,7 @@ module.exports = function createRecordistRouter({
   }
 
   /** One English known-side take of fixed words (an intro piece, an English LEGO), through the seed upload seam. */
-  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null }) {
+  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null, role = 'known' }) {
     if (text && text.trim() && text.trim() !== resolved.text) {
       return res.status(409).json({ error: 'The text on this line has changed since the queue was loaded -- reload before recording it.', expected: resolved.text, received: text.trim() })
     }
@@ -1673,7 +1699,7 @@ module.exports = function createRecordistRouter({
       body: {
         audioData: audioBase64,
         mimeType,
-        metadata: { mode: 'script', cadence: 'natural', role: 'known', kind: metaKind, text: resolved.text, voiceId: recordist.voiceId, ...(resolved.legoId ? { legoId: resolved.legoId } : {}) },
+        metadata: { mode: 'script', cadence: 'natural', role, kind: metaKind, text: resolved.text, voiceId: recordist.voiceId, ...(resolved.legoId ? { legoId: resolved.legoId } : {}) },
         provenance: { recorded_by: recordist.email || recordist.displayName, mode: 'recordist', recording_device: device || null },
       },
     }, innerRes)
@@ -1684,9 +1710,10 @@ module.exports = function createRecordistRouter({
     if (isRetryableFilingFailure(filing)) return refuseUnfiledTake(res, recordist, filing)
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     if (!audioId) logger.error(`[Recordist] ${metaKind} take ${raw} was NOT filed as a clip: ${filing && filing.reason}`)
-    else if (afterFiled) await afterFiled(audioId)
+    const after = audioId && afterFiled ? await afterFiled(audioId) : null
     return res.json({
-      ok: true, audioId, kind, role: 'known',
+      ok: true, audioId, kind, role,
+      ...(after && after.swaps ? { podSwaps: after.swaps } : {}),
       clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(raw)}/clip`,
       rawKey: captured.body.rawKey || null,
       filing,
@@ -2245,6 +2272,11 @@ module.exports = function createRecordistRouter({
       if (podEnglishLine) {
         return await recordPodEnglishTake({ req, res, recordist, parsed: { ...podEnglishLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
+      // POD SWAP (job #551). `podswap:...` is not a uuid either.
+      const podSwapLine = podTextSwaps.parsePodSwapLineId(lineId)
+      if (podSwapLine) {
+        return await recordPodSwapTake({ req, res, recordist, parsed: { ...podSwapLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
 
       const quarryLine = parseQuarryLineId(lineId)
       if (quarryLine) {
@@ -2498,6 +2530,8 @@ module.exports = function createRecordistRouter({
       if (englishLegoLine) return await englishLegoClipResponse(req, res, recordist, { ...englishLegoLine, raw: req.params.lineId })
       const podEnglishLine = podEnglish.parsePodEnglishLineId(req.params.lineId)
       if (podEnglishLine) return await podEnglishClipResponse(req, res, recordist, { ...podEnglishLine, raw: req.params.lineId })
+      const podSwapLine = podTextSwaps.parsePodSwapLineId(req.params.lineId)
+      if (podSwapLine) return await podSwapClipResponse(req, res, recordist, { ...podSwapLine, raw: req.params.lineId })
 
       const quarryLine = parseQuarryLineId(req.params.lineId)
       if (quarryLine) return await quarryClipResponse(req, res, recordist, quarryLine)
@@ -2751,6 +2785,13 @@ module.exports = function createRecordistRouter({
         return res.status(403).json({
           error: 'That is the English of a Pod 1 line in North and South -- its words are changed on the pod page, not from the booth.',
           reason: 'pod_english_line',
+        })
+      }
+      // A POD SWAP line (job #551) carries words decided by a ruling, waiting to go into the pod.
+      if (podTextSwaps.parsePodSwapLineId(lineId)) {
+        return res.status(403).json({
+          error: 'That line carries the new words for a pod line; they go into the pod when you record it, and are not changed from the booth.',
+          reason: 'pod_swap_line',
         })
       }
       // A TAKE G is the same sentence read a second way. Its text is the
