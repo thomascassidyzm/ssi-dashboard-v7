@@ -3056,11 +3056,13 @@ function describeTrack(t) {
       what: 'Pod 1 lines whose words are changing. The pod keeps its old words and recording until you record these; then both change together, North and South.',
     }
   }
+  // Read by the speaker's gender (Aran, 2026-10-29, job #562): the women's lines are Catrin's card.
   if (t.kind === 'podknown') {
+    const which = t.speakerGender === 'f' ? 'female' : t.speakerGender === 'm' ? 'male' : null
     return {
-      short: 'Pod 1 English', cls: 'k-sent',
-      title: 'Pod 1 English — North and South',
-      what: 'The English of every Pod 1 line, read once each at your natural pace. One take serves both North and South.',
+      short: which ? `Pod 1 English (${which} lines)` : 'Pod 1 English', cls: 'k-sent',
+      title: which ? `Pod 1 English (${which} lines)` : 'Pod 1 English — North and South',
+      what: `The English of the Pod 1 lines${which ? ` spoken by ${which === 'female' ? 'women' : 'men'}` : ''}, read once each at your natural pace. One take serves North and South wherever both have this line.`,
     }
   }
   if (t.kind === 'lego') {

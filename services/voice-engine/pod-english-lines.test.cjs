@@ -5,7 +5,8 @@ const pe = require('./pod-english-lines.cjs')
 const boothHome = require('./booth-home.cjs')
 const { isLineRecorded } = require('./take-selection.cjs')
 
-const ARAN = { voiceId: 'human_aran_eng', spellings: ['human_aran_eng'] }
+const ARAN = { voiceId: 'human_aran_eng', spellings: ['human_aran_eng'], gender: 'm' }
+const CAST = { cym_n_for_eng: { Neighbour: { gender: 'm' } }, cym_s_for_eng: { Neighbour: { gender: 'm' } } }
 const POLICY = [{ voiceId: 'human_aran_eng', aliases: [], castOn: [
   { courseCode: 'cym_n_for_eng', role: 'known', synthetic: 'queue' },
   { courseCode: 'cym_s_for_eng', role: 'known' },
@@ -37,7 +38,7 @@ describe('Pod 1 English card', () => {
       s(S, 3, '', 'Ta-ra!'),
     ]
     const slotVoiceById = new Map([['tts-1', 'xai_bedd6226'], ['tts-2', 'xai_bedd6226']])
-    const lines = pe.podEnglishLinesFor(ARAN, { podIds: [N, S], pods: PODS, sentences, slotVoiceById })
+    const lines = pe.podEnglishLinesFor(ARAN, { podIds: [N, S], pods: PODS, sentences, slotVoiceById, podCastByCourse: CAST })
     expect(lines.map((l) => l.text)).toEqual(['Good morning, Sarah!', 'How are you?', 'Fine, thanks.'])
     const [shared, nOnly, sOnly] = lines
     expect(shared.id).toBe(pe.podEnglishLineId(`${N}:SC09-S001`))
@@ -50,7 +51,7 @@ describe('Pod 1 English card', () => {
   })
 
   it('is ONE card in the booth home, keyed by pod slug, read whole', () => {
-    const lines = pe.podEnglishLinesFor(ARAN, { podIds: [N, S], pods: PODS, sentences: [s(N, 1, 'Hi.', 'Haia.'), s(S, 2, 'Bye.', 'Hwyl.')] })
+    const lines = pe.podEnglishLinesFor(ARAN, { podIds: [N, S], pods: PODS, podCastByCourse: CAST, sentences: [s(N, 1, 'Hi.', 'Haia.'), s(S, 2, 'Bye.', 'Hwyl.')] })
     expect(lines.map((l) => boothHome.trackKeyOf(l))).toEqual(['podknown.pod-1', 'podknown.pod-1'])
     const tracks = boothHome.buildHomeTracks(lines.map((l) => ({ ...l, recorded: false })))
     expect(tracks).toHaveLength(1)
@@ -60,7 +61,7 @@ describe('Pod 1 English card', () => {
   it('counts as recorded when he has said the words anywhere, or his take fills any copy; synthetic North does not count', () => {
     const [line] = pe.podEnglishLinesFor(ARAN, { podIds: [N, S], pods: PODS,
       sentences: [s(N, 1, 'Good morning, Sarah!', 'Bore da!', 'tts-1'), s(S, 1, 'Good morning, Sarah!', 'Bore da!')],
-      slotVoiceById: new Map([['tts-1', 'xai_bedd6226']]) })
+      slotVoiceById: new Map([['tts-1', 'xai_bedd6226']]), podCastByCourse: CAST })
     const spellings = ARAN.spellings
     expect(isLineRecorded(line, { recordedKeys: new Set(), spellings })).toBe(false)
     expect(isLineRecorded(line, { recordedKeys: new Set(['good morning, sarah!', 'good morning sarah']), spellings })).toBe(true)
@@ -75,7 +76,7 @@ describe('Pod 1 English card', () => {
 
   it('resolves a take only on a pod this reader is cast on', () => {
     const row = { id: `${S}:SC09-S001`, pod_id: S, known_text: ' Good morning, Sarah! ' }
-    expect(pe.resolvePodEnglish(row, ARAN, POLICY)).toEqual({ courseCode: 'cym_s_for_eng', sentenceId: row.id, text: 'Good morning, Sarah!' })
+    expect(pe.resolvePodEnglish({ ...row, speaker: 'Neighbour' }, ARAN, POLICY, CAST)).toEqual({ courseCode: 'cym_s_for_eng', sentenceId: row.id, text: 'Good morning, Sarah!' })
     expect(pe.resolvePodEnglish({ ...row, pod_id: 'cym_s_for_eng:health' }, ARAN, POLICY)).toBeNull()
     expect(pe.resolvePodEnglish(row, { voiceId: 'x', spellings: ['x'] }, POLICY)).toBeNull()
   })

@@ -70,7 +70,9 @@ describe('pod text swaps — pending', () => {
   })
 
   it('the Pod 1 English card reads North\'s pending English as Siân, so it collapses with South\'s line', () => {
-    const lines = pe.podEnglishLinesFor(ARAN_ENG, { podIds: ['cym_n_for_eng:pod-1', 'cym_s_for_eng:pod-1'], pods: PODS, sentences: liveRows() })
+    const cast = { Neighbour: { gender: 'm' } }
+    const lines = pe.podEnglishLinesFor({ ...ARAN_ENG, gender: 'm' }, { podIds: ['cym_n_for_eng:pod-1', 'cym_s_for_eng:pod-1'], pods: PODS, sentences: liveRows(),
+      podCastByCourse: { cym_n_for_eng: cast, cym_s_for_eng: cast } })
     expect(lines.map((l) => l.text)).toEqual(['Good morning, Siân!', 'Good evening, Siân. … Did you have a long day?'])
     expect(lines.every((l) => l.duplicateOf.length === 1)).toBe(true)
     expect(lines.some((l) => /Sarah/.test(l.text))).toBe(false)
