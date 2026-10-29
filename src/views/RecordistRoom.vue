@@ -1085,6 +1085,8 @@ const SECTION_ORDER = [
   // THE ONCE-RECORDED INTRO PIECES (job #210): every LEGO intro of the new North and South courses is spliced from these
   // two takes, his English take of the LEGO and the Welsh — read once each, for both courses.
   // POD 1 ENGLISH (job #537): the English side of the Pod 1 conversations, North and South on one card.
+  // POD 1 NEW WORDS (job #551): pod lines whose words are changing; the pod takes the new words with this take.
+  { key: 'podswap', heading: 'POD 1 · NEW WORDS', blurb: 'Pod 1 lines with new words. The pod keeps the old words and recording until you record these, then changes, North and South at once.' },
   { key: 'podknown', heading: 'POD 1 ENGLISH', blurb: 'The English of every Pod 1 line, read once each at your natural pace. One take serves both North and South.' },
   { key: 'intro', heading: 'Intro pieces', blurb: 'Two short pieces, read once each: every LEGO intro in the new North and South courses is put together from them — "The Welsh for" + your English LEGO + "is" + the Welsh. Read them the way you would say them in an intro.' },
 ]
@@ -1319,6 +1321,7 @@ function kindWordsFor(l) {
     return `Practice phrase${where ? ` · ${where}` : ''}${side}`
   }
   if (l.kind === 'podknown') return `Pod 1 English${l.speaker ? ` · ${l.speaker}` : ''} - North and South`
+  if (l.kind === 'podswap') return `Pod 1 new words${l.speaker ? ` · ${l.speaker}` : ''}${l.replacesText ? ` - replaces "${l.replacesText}"` : ''}`
   if (l.kind === 'lego') {
     const which = l.legoId || (l.seedNumber ? `seed ${l.seedNumber}` : null)
     return `LEGO${which ? ` ${which}` : ''}${l.role === 'target2' ? ' - second voice' : (l.role === 'known' ? ' - English side' : '')}`
@@ -3045,6 +3048,14 @@ function describeTrack(t) {
     }
   }
   // POD 1 ENGLISH (Aran, 2026-10-29, job #537): the English of every Pod 1 line, one take serving North and South.
+  // POD 1 NEW WORDS (Aran, 2026-10-29, job #551): read first; each take changes the pod's words and recording together.
+  if (t.kind === 'podswap') {
+    return {
+      short: 'Pod 1 new words', cls: 'k-sent',
+      title: 'Pod 1 — new words, North and South',
+      what: 'Pod 1 lines whose words are changing. The pod keeps its old words and recording until you record these; then both change together, North and South.',
+    }
+  }
   if (t.kind === 'podknown') {
     return {
       short: 'Pod 1 English', cls: 'k-sent',
@@ -3309,7 +3320,7 @@ const batchHeader = computed(() => {
   if (!t) return phase.value === 'loading' ? 'Opening your batch…' : left
   const b = t.batches.find(x => x.n === batchScope.value.batch)
   // Pod 1 English spans North and South, so no one course's words head it (job #537).
-  const parts = [t.kind === 'podknown' ? null : courseWordsFor(t.courseCode), t.short]
+  const parts = [t.kind === 'podknown' || t.kind === 'podswap' ? null : courseWordsFor(t.courseCode), t.short]
   // WHICH LANGUAGE, in so many words (job #392): with Welsh and English one tab apart, the header
   // says it, unless the course words already begin with it ("English for New Welsh — North").
   const h = homeSummary.value

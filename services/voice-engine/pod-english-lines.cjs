@@ -28,6 +28,9 @@
 'use strict'
 
 const { spokenWordsKey } = require('../shared/spoken-words.cjs')
+// A row whose English is waiting on a make-before-break swap (job #551) is offered with its NEW words: North's
+// "Good morning, Sarah!" reads as "Good morning, Siân!" here, and so collapses with South's line of those words.
+const { withPendingText } = require('./pod-text-swaps.cjs')
 
 const POD_ENGLISH_PREFIX = 'podeng:'
 
@@ -76,6 +79,7 @@ function podEnglishLinesFor(recordist, { podIds = [], pods = [], sentences = [],
   const rank = new Map(podIds.map((p, i) => [p, i]))
   const podById = new Map(pods.map((p) => [p.id, p]))
   const wanted = sentences
+    .map((s) => withPendingText(s))
     .filter((s) => rank.has(s.pod_id) && podById.has(s.pod_id))
     .sort((a, b) => (rank.get(a.pod_id) - rank.get(b.pod_id)) || (a.global_order - b.global_order) || String(a.id).localeCompare(String(b.id)))
   const seen = new Map()
@@ -127,7 +131,7 @@ function podEnglishLinesFor(recordist, { podIds = [], pods = [], sentences = [],
 function resolvePodEnglish(sentence, recordist, policyVoices) {
   if (!sentence || !recordist) return null
   if (!podEnglishPodsFor(recordist, policyVoices).includes(sentence.pod_id)) return null
-  const text = String(sentence.known_text || '').trim()
+  const text = String(withPendingText(sentence).known_text || '').trim()
   return text ? { courseCode: courseOfPod(sentence.pod_id), sentenceId: sentence.id, text } : null
 }
 
