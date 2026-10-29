@@ -64,6 +64,7 @@ const {
   parseLegoLineId,
   linkLegoTake,
   fillSameWordsSlots,
+  sweepPodEnglishAtBoot,
   sameWordsGaps,
   warmLanguageQueues,
   voiceTakes,
@@ -263,6 +264,9 @@ module.exports = function createRecordistRouter({
       try { getPhrasePlan(db()).catch((e) => logger.warn(`[Recordist] phrase plan warm failed: ${e.message}`)) } catch (e) { logger.warn(`[Recordist] phrase plan warm skipped: ${e.message}`) }
     }, 15_000)
     if (typeof t.unref === 'function') t.unref()
+    // Pod 1 English (jobs #555, #570): the replace and sentence-cut sweeps once after boot, then after every take.
+    const p = setTimeout(() => { try { sweepPodEnglishAtBoot({ db: db(), logger }) } catch (e) { logger.warn(`[Recordist] Pod English boot sweep skipped: ${e.message}`) } }, 60_000)
+    if (typeof p.unref === 'function') p.unref()
   }
 
   const keys = boothKeys || boothLinks.createBoothKeyStore({ getDb })

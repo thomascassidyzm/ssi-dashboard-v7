@@ -19,6 +19,7 @@
  */
 const { normalizeForDb } = require('./text-normalize.cjs')
 const { bumpCourseVersion } = require('./course-version.cjs')
+const { podSentencesOf } = require('./pod-sentence-split.cjs')
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 const LEGO_ID = /^S(\d{4})L(\d{2})$/
@@ -131,11 +132,19 @@ async function arrayLink(db, link, row, arrayCol, clip, base, { dryRun, table })
   }
   const { data: was, error: wasErr } = await db.from('course_audio').select('id, text').eq('id', old).maybeSingle()
   if (wasErr) return { ...out, ok: false, code: 'READ_FAILED', error: wasErr.message }
-  if (!was || normalizeForDb(String(was.text || '')) !== normalizeForDb(String(clip.text || ''))) {
+  // A KNOWN sentence clip may also be replaced by a clip saying ITS OWN sentence of the line, when the clip it replaces
+  // says something else (job #570: North Pod 1 SC01-S004's third English clip said "Goodbye." for "See you later.").
+  // The line's sentences are the player's (pod-sentence-split.cjs), and they must number exactly the array's clips, so a
+  // position always means one sentence; the line's English then rides into the write as a guard.
+  const sentences = link.role === 'knownsegment' ? podSentencesOf(row.known_text) : []
+  const ownSentence = sentences.length === arr.length ? sentences[arr.indexOf(old)] : null
+  const saysOwnSentence = ownSentence != null && normalizeForDb(ownSentence) === normalizeForDb(String(clip.text || ''))
+  if (!saysOwnSentence && (!was || normalizeForDb(String(was.text || '')) !== normalizeForDb(String(clip.text || '')))) {
     return { ...out, ok: false, code: 'TEXT_MISMATCH', error: `clip says "${clip.text}", the clip it replaces says "${was ? was.text : '(missing)'}"` }
   }
   if (dryRun) return { ...out, ok: true, changed: true, dryRun: true }
   const guards = [['target_text', row.target_text ?? null], ['target_text_draft', row.target_text_draft ?? null]]
+  if (link.role === 'knownsegment') guards.push(['known_text', row.known_text ?? null])
   return { ...out, ok: true, changed: true, rowId: row.id, table, col: arrayCol, kind: 'pod_sentence', guards, arrayBefore: arr }
 }
 

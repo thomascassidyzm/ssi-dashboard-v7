@@ -118,6 +118,7 @@ const { isReplaceableStandIn, isCloneStandInCourse } = require('../shared/aran-c
 const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
 const podEnglish = require('./pod-english-lines.cjs')
+const podSplitCuts = require('./pod-english-split-cuts.cjs')
 const { linkClips } = require('../shared/link-clip.cjs')
 const { isHumanClip } = require('../shared/human-take-guard.cjs')
 const { recordContentEdit } = require('../shared/content-edit-log.cjs')
@@ -2942,6 +2943,9 @@ async function fillSameWordsSlots({ db, recordist, role, text, audioId, logger =
   if (role === 'known') await step('pods', () => linkPodEnglishSlotsByWords({ db, recordist, text, audioId, logger }))
   // ...and North's SYNTHETIC Pod 1 English moves to his takes (Aran 2026-10-29, job #555): every line he has a take for.
   if (role === 'known') await step('podsReplaced', () => replaceSyntheticPodEnglish({ db, recordist, logger }))
+  // ...and the lines heard sentence by sentence get his take cut into their sentences (Aran 2026-10-29, job #570). Not
+  // awaited: the take's reply never waits on ffmpeg; the chain keeps it after the replace sweep it depends on.
+  if (role === 'known') cutPodEnglishSplits({ db, recordist, logger }).catch((err) => logger.error(`[Recordist] pod English split cut failed (take is stored): ${err.message}`))
   if (out.seeds + out.legos + out.phrases + out.pods + out.swaps + out.podsReplaced) {
     logger.log(`[Recordist] same-words fill ${recordist.voiceId} "${String(text).slice(0, 40)}": ${out.seeds} seed, ${out.legos} LEGO, ${out.phrases} phrase, ${out.pods} pod English slot(s), ${out.swaps} pod swap(s) now play this take; ${out.podsReplaced} synthetic pod English slot(s) replaced by his takes`)
   }
@@ -3143,6 +3147,115 @@ async function replaceSyntheticPodEnglishNow({ db, recordist, logger = console, 
     logger.log(`[Recordist] pod English replace ${recordist.voiceId}: ${out.linked.length} synthetic slot(s) now play his takes (${out.linked.map((x) => x.sentenceId).join(', ')})`)
   }
   return out
+}
+
+/**
+ * NORTH POD 1'S SENTENCE CLIPS CUT FROM HIS TAKE (Aran, 2026-10-29 14:59Z, job #570; the rules are pod-english-split-cuts.cjs,
+ * the audio pod-english-split-audio.cjs). Runs after every replace sweep above, so a line whose whole English has just
+ * become his take is cut into its sentences, and each synthetic sentence clip moves to his piece through link-clip
+ * (knownsegment, replace + expectCurrent: conditional on the array still holding the clip read). Also re-cuts a sentence
+ * clip whose words are not its sentence of the line (SC01-S004's "Goodbye.") from that line's own whole clip.
+ *
+ * NOT AWAITED BY THE TAKE: cutting is seconds of ffmpeg and S3 per line, and the booth reply must not wait for it. One
+ * sweep at a time per process. A cut the judge refuses is remembered for that take, so it is not re-cut on every take,
+ * and is logged as "split cut left synthetic" — the list for Aran. No clip is deleted: the synthetic ones stay, unattached.
+ */
+let podSplitCutChain = Promise.resolve()
+const podSplitCutRefused = new Map() // `${sentenceId}|${sourceClipId}|${s3Key}` -> why
+function cutPodEnglishSplits(args) {
+  const run = podSplitCutChain.then(() => cutPodEnglishSplitsNow(args))
+  podSplitCutChain = run.catch(() => {})
+  return run
+}
+
+async function cutPodEnglishSplitsNow({ db, recordist, logger = console, link = linkClips, audio = null }) {
+  const out = { linked: [], refused: [], leftSynthetic: [] }
+  const { voices } = await policyVoicesForLanguage(db, recordist.language)
+  const podIds = podEnglish.podEnglishPodsFor(recordist, voices, podEnglish.POD_ENGLISH_REPLACE_PODS)
+  if (!podIds.length) return out
+  const sentences = await pagedRead((from, to) => db.from('listening_pod_sentences')
+    .select('id, pod_id, speaker, known_text, known_audio_id, sentence_audio_ids, sentence_known_audio_ids')
+    .in('pod_id', podIds).order('id').range(from, to))
+  const { data: courses, error: courseErr } = await db.from('courses').select('course_code, voice_config')
+    .in('course_code', [...new Set(podIds.map((p) => String(p).split(':')[0]))])
+  if (courseErr) throw new Error(`pod split cut course read failed: ${courseErr.message}`)
+  const podCastByCourse = Object.fromEntries((courses || []).map((c) => [c.course_code, (c.voice_config && c.voice_config.podCast) || null]))
+  const ids = [...new Set(sentences.flatMap((s) => [s.known_audio_id, ...(Array.isArray(s.sentence_known_audio_ids) ? s.sentence_known_audio_ids : [])]).filter(Boolean))]
+  const clipById = new Map()
+  for (let i = 0; i < ids.length; i += 100) {
+    const { data, error } = await db.from('course_audio').select('id, voice_id, origin, text, s3_key').in('id', ids.slice(i, i + 100))
+    if (error) throw new Error(`pod split cut clip read failed: ${error.message}`)
+    for (const c of data || []) clipById.set(c.id, c)
+  }
+  const gender = recordist.gender || ((voices.find((v) => v.voiceId === recordist.voiceId) || {}).gender) || null
+  const { cuts } = podSplitCuts.planSplitCuts({ podIds, sentences, clipById, podCastByCourse, castEntryFor, recordist: { ...recordist, gender } })
+  const cutIds = new Set(cuts.map((c) => c.sentenceId))
+  const { repairs } = podSplitCuts.planWrongWordRepairs({ podIds, sentences, clipById })
+  const work = [...cuts, ...repairs.filter((r) => !cutIds.has(r.sentenceId))]
+  if (!work.length) return out
+  const io = audio || require('./pod-english-split-audio.cjs').createSplitCutAudio({ db })
+  const byCourse = new Map()
+  for (const w of work) {
+    const memo = `${w.sentenceId}|${w.source.id}|${w.source.s3_key}`
+    if (podSplitCutRefused.has(memo)) { out.leftSynthetic.push({ sentenceId: w.sentenceId, why: podSplitCutRefused.get(memo) }); continue }
+    try {
+      const { splice, buffers } = await io.cut(await io.fetch(w.source), w.sentences.length)
+      const verdict = podSplitCuts.judgeCut(w.sentences, splice)
+      if (!verdict.ok) {
+        podSplitCutRefused.set(memo, verdict.why)
+        out.leftSynthetic.push({ sentenceId: w.sentenceId, why: verdict.why })
+        logger.warn(`[Recordist] pod English split cut left synthetic ${w.sentenceId}: ${verdict.why}`)
+        continue
+      }
+      for (const { index, current } of w.replace) {
+        const stored = await io.store({ courseCode: w.courseCode, text: w.sentences[index], voiceId: w.source.voice_id, origin: w.source.origin,
+          buffer: buffers[index], durationMs: Math.round(splice.pieces[index].dur * 1000), cutFrom: w.source.id })
+        byCourse.set(w.courseCode, [...(byCourse.get(w.courseCode) || []),
+          { podSentenceId: w.sentenceId, role: 'knownsegment', audioId: stored.audioId, replace: true, expectCurrent: current }])
+      }
+    } catch (err) {
+      logger.error(`[Recordist] pod English split cut failed for ${w.sentenceId} (nothing linked): ${err.message}`)
+      out.refused.push({ sentenceId: w.sentenceId, code: 'CUT_FAILED', error: err.message })
+    }
+  }
+  const identity = serviceIdentity(`booth:${recordist.voiceId}:pod-english-split-cut`)
+  for (const [courseCode, links] of byCourse) {
+    const recordEdit = ({ scope, detail }) => recordContentEdit(db, {
+      identity, courseCode, operation: 'update', scope, detail,
+      surface: 'recordist booth take -> link-clip (Pod 1 English sentence clips cut from his take, Aran 2026-10-29, job #570)',
+    })
+    const r = await link({ db, courseCode, links, recordEdit })
+    for (const x of r.results || []) {
+      if (x.ok && x.changed) out.linked.push({ sentenceId: x.slot, courseCode, before: x.before, after: x.audioId })
+      else if (!x.ok) out.refused.push({ sentenceId: x.slot, code: x.code, error: x.error })
+    }
+    if (r.error) logger.error(`[Recordist] pod English split cut ${courseCode}: ${r.code} ${r.error}`)
+  }
+  for (const x of out.refused) logger.warn(`[Recordist] pod English split cut refused ${x.sentenceId}: ${x.code} ${x.error}`)
+  if (out.linked.length) {
+    podEnglishInputCache.clear()
+    logger.log(`[Recordist] pod English split cut ${recordist.voiceId}: ${out.linked.length} sentence clip(s) now cut from the line's own take (${[...new Set(out.linked.map((x) => x.sentenceId))].join(', ')})`)
+  }
+  return out
+}
+
+/**
+ * The same two sweeps once at boot (job #570), for every reader cast on a replace pod's English: takes he gave while the
+ * service ran older code move without waiting for his next take. Never throws.
+ */
+async function sweepPodEnglishAtBoot({ db, logger = console }) {
+  try {
+    const { voices } = await policyVoicesForLanguage(db, 'eng')
+    for (const v of voices) {
+      if (!podEnglish.podEnglishPodsFor({ voiceId: v.voiceId, spellings: [v.voiceId] }, voices, podEnglish.POD_ENGLISH_REPLACE_PODS).length) continue
+      const recordist = await resolveRecordist(db, v.voiceId)
+      if (!recordist) continue
+      await replaceSyntheticPodEnglish({ db, recordist, logger })
+      await cutPodEnglishSplits({ db, recordist, logger })
+    }
+  } catch (err) {
+    logger.error(`[Recordist] Pod English boot sweep failed: ${err.message}`)
+  }
 }
 
 /**
@@ -4284,6 +4397,9 @@ module.exports = {
   linkPodEnglishSlotsByWords,
   replaceSyntheticPodEnglish,
   replaceSyntheticPodEnglishNow,
+  cutPodEnglishSplits,
+  cutPodEnglishSplitsNow,
+  sweepPodEnglishAtBoot,
   fetchPodSwapInputs,
   applyPodTextSwaps,
   podTextSwapReport,
