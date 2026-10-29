@@ -144,6 +144,7 @@ async function knownGenderContextFor(courseCode, voices) {
 }
 const knownVoiceEntryForClip = knownVoiceGender.knownVoiceEntryForClip
 const knownVoiceIdForClip = knownVoiceGender.knownVoiceIdForClip
+const { knownGenderVoiceId } = require('../shared/render-known-gender-voice.cjs')
 const { selectProvider } = require('../shared/tts-provider-policy.cjs')
 
 /**
@@ -5599,7 +5600,7 @@ function sharedAudioDeps() {
 function buildRenderDeps() {
   const deps = {
       immersionTurn: immersionTurnForRender,
-      resolve: async ({ courseCode, role, language, voiceId, trial }) => {
+      resolve: async ({ courseCode, role, language, voiceId, trial, text, legoId }) => {
         // A human-voice course is refused whole, except the one slot aran-clone-standin.cjs opens (Aran 2026-10-29, job #557:
         // the nv2/sv2 English known side, in his own clone). The slot's language is the one stated, else the role's own side,
         // which needs the course row — so a human-voice course outside the stand-in list is refused before it is even read.
@@ -5612,6 +5613,8 @@ function buildRenderDeps() {
         course.voice_config = await voiceConfigService.resolveVoiceConfig({ voiceConfig: course.voice_config, course, courseCode })
         const vc = course.voice_config || {}
         const settings = vc.voices?.[role] || {}
+        // A gendered known line speaks in its own gender's voice, as phase8 /generate does (job #710; services/shared/render-known-gender-voice.cjs).
+        voiceId = await knownGenderVoiceId({ courseCode, voices: vc.voices, role, text, legoId, voiceId, trial, loadCtx: knownGenderContextFor })
         // ONE VOICE PER SLOT (Tom 2026-10-12 16:17Z, services/shared/resolve-voice.cjs): where the coded policy answers, the voice is
         // resolveVoice's — never the caller's pick, the course's habit (courseEnglishVoice) or the stored config. A named voice that
         // differs is refused HERE, before the library is asked, so no wrong-voice clip is ever linked; an uncast target refuses.
