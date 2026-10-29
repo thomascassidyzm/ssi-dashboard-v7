@@ -149,6 +149,7 @@ export default defineConfig({
       'services/voice-engine/booth-home.test.cjs',
       'services/voice-engine/booth-home-pod-priority.test.cjs',
       'services/voice-engine/recordist-queue-scene-wire.test.cjs',
+      'services/voice-engine/intro-sentence-take.test.cjs',
       'services/voice-engine/booth-queue-cache.test.cjs',
       'services/voice-engine/booth-tabs.test.cjs',
       'services/voice-engine/booth-line-edit-router.test.cjs',

@@ -13,11 +13,12 @@ export function trackKeyOf(line) {
   if (kind === 'phrase') return line.phraseTrack || `phrase.${line.phrasePass || 1}`
   if (kind === 'seed') return `seed.${line.courseCode || 'all'}`
   if ((kind === 'pod' || kind === 'takeg') && line.podSlug) return `pod.${line.podSlug}`
+  if (kind === 'introsentence') return 'introsentence.all'
   return `${kind}.${line.courseCode || 'all'}`
 }
 
 function batchSizeOf(key) {
-  return key.startsWith('seed.') || key.startsWith('lego.') ? BATCH_LINES : 0
+  return key.startsWith('seed.') || key.startsWith('lego.') || key.startsWith('introsentence.') ? BATCH_LINES : 0
 }
 
 /** lineId → { track, batch } over the whole queue (recorded lines included). */
@@ -101,6 +102,14 @@ export function shortRefusalReason(text) {
 }
 export function refusedLineWords(text) {
   return `Last take didn't save: ${shortRefusalReason(text)}`
+}
+
+// NO SPEECH HEARD IS NOT AN ALARM (Aran, 2026-10-28, job #915). A take refused because nothing
+// was said on it — a blip moved the line on, or the mic heard only the room — has lost nothing:
+// he just reads the line again. So the booth says it in a small grey note, never a red bar.
+const NO_SPEECH_REASONS = new Set(['no speech heard', 'only background noise heard'])
+export function isNoSpeechRefusal(text) {
+  return NO_SPEECH_REASONS.has(shortRefusalReason(text))
 }
 
 /**

@@ -420,6 +420,7 @@ export function useRecordistQueue(options = {}) {
       if (adv.gapMs != null) form.append('advanceGapMs', String(adv.gapMs))
       if (adv.thrSpeech != null) form.append('thrSpeech', String(adv.thrSpeech))
       if (adv.thrQuiet != null) form.append('thrQuiet', String(adv.thrQuiet))
+      if (adv.voicedMs != null) form.append('voicedMs', String(adv.voicedMs))
     }
     const ctl = typeof AbortController === 'function' ? new AbortController() : null
     const timer = ctl ? setTimeout(() => ctl.abort(), UPLOAD_TIMEOUT_MS) : null

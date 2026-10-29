@@ -10,6 +10,9 @@ const { isLineRecorded } = require('./take-selection.cjs')
 const { spokenWordsKey } = require('../shared/spoken-words.cjs')
 
 const ARAN = { voiceId: 'human_aran_eng', spellings: ['human_aran_eng'] }
+// The splice switched ON, as it was from job #210 to job #587; the live config has it off (last test).
+const rule = { voiceId: 'human_aran_eng', fragment: 'The Welsh for', joiner: 'is', withTarget: true, splice: true }
+const SPLICE_ON = { cym_nv2_for_eng: rule, cym_sv2_for_eng: rule }
 const lego = (id, course_code, seed_number, lego_index, known_text, extra = {}) =>
   ({ id, course_code, seed_number, lego_index, lego_id: `S${String(seed_number).padStart(4, '0')}L0${lego_index}`, known_text, is_new: true, presentation_audio_id: null, ...extra })
 
@@ -25,7 +28,7 @@ describe('English LEGO lines', () => {
     lego('s2', 'cym_sv2_for_eng', 2, 1, 'with you'),
     lego('x1', 'cym_n_for_eng', 1, 1, 'live course'),
   ]
-  const lines = el.englishLegoLinesFor(ARAN, { legos, otherKnownTexts: ['welsh'], ownIntroIds: new Set(['aran-intro']) })
+  const lines = el.englishLegoLinesFor(ARAN, { legos, otherKnownTexts: ['welsh'], ownIntroIds: new Set(['aran-intro']) }, SPLICE_ON)
 
   it('one line per spoken words, North first, seeds/phrases/old/others-intro LEGOs left off', () => {
     expect(lines.map((l) => [l.id, l.courseCode, l.text])).toEqual([
@@ -50,12 +53,17 @@ describe('English LEGO lines', () => {
   })
 
   it('nobody else gets them, and the take route resolves only his', () => {
-    expect(el.englishLegoLinesFor({ voiceId: 'human_dan_cym_n', spellings: ['human_dan_cym_n'] }, { legos })).toEqual([])
-    expect(el.englishLegoLinesFor({ ...ARAN, castCourses: ['cym_sv2_for_eng'] }, { legos }).map((l) => l.id)).toEqual(['englego:s1', 'englego:s2'])
+    expect(el.englishLegoLinesFor({ voiceId: 'human_dan_cym_n', spellings: ['human_dan_cym_n'] }, { legos }, SPLICE_ON)).toEqual([])
+    expect(el.englishLegoLinesFor({ ...ARAN, castCourses: ['cym_sv2_for_eng'] }, { legos }, SPLICE_ON).map((l) => l.id)).toEqual(['englego:s1', 'englego:s2'])
     expect(el.parseEnglishLegoLineId('englego:abc-123')).toEqual({ legoRowId: 'abc-123' })
     expect(el.parseEnglishLegoLineId('lego:abc:target1')).toBe(null)
     expect(el.resolveEnglishLego(legos[1], ARAN)).toEqual({ courseCode: 'cym_nv2_for_eng', legoId: 'S0001L01', text: 'I want' })
     expect(el.resolveEnglishLego(legos[8], ARAN)).toBe(null)
     expect(el.resolveEnglishLego(legos[1], { voiceId: 'human_dan_cym_n', spellings: ['human_dan_cym_n'] })).toBe(null)
+  })
+
+  it('with the splice off (Aran 2026-10-29, job #587) the cards are gone, but a take already on his phone still files', () => {
+    expect(el.englishLegoLinesFor(ARAN, { legos, otherKnownTexts: ['welsh'] })).toEqual([])
+    expect(el.resolveEnglishLego(legos[1], ARAN)).toEqual({ courseCode: 'cym_nv2_for_eng', legoId: 'S0001L01', text: 'I want' })
   })
 })
