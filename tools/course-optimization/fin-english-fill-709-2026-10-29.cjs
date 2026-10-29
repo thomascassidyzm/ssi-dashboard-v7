@@ -10,7 +10,7 @@
 // HELD, never rendered: any text carrying brackets — "(formal)" would be read aloud (Kai: no English brackets in narration).
 //
 //   node …cjs plan <dir> [--seeds 1-20]                     known-plan.json + intro-plan.json (intro text = presentation-author's)
-//   node …cjs known dry|render <dir> [--seeds a-b] [--limit N]   one call per distinct text → <dir>/known-render.jsonl (resumes)
+//   node …cjs known dry|render <dir> [--seeds a-b] [--limit N] [--library-only]   one call per distinct text → <dir>/known-render.jsonl (resumes)
 //   node …cjs known link-dry|link <dir> [--seeds a-b]       link-clip for every still-empty slot whose text has a logged clip
 //   node …cjs intro dry|render <dir> [--seeds a-b]          one call per LEGO with legoId (binds it) → <dir>/intro-render.jsonl
 // A refusal (403, e.g. RERECORD_NOT_PERMITTED) is that text's answer: logged, never retried, the run carries on.
@@ -32,6 +32,8 @@ const args = process.argv.slice(2);
 const flag = (f) => (args.includes(f) ? args[args.indexOf(f) + 1] : null);
 const seedRange = () => { const r = flag('--seeds'); if (!r) return null; const [a, b] = r.split('-').map(Number); return [a, b || a]; };
 const inRange = (n, r) => !r || (n >= r[0] && n <= r[1]);
+// A logged call is ANSWERED (skipped on resume) when it got a clip or a refusal; a 402 spend cap or a dropped connection is asked again.
+const answered = (l) => l.status !== 0 && l.status !== 402;
 const readLog = (f) => (fs.existsSync(f) ? fs.readFileSync(f, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)) : []);
 
 async function seeds() {
@@ -113,8 +115,10 @@ async function planIntros(all, range) {
   if (mode === 'known' && (a === 'dry' || a === 'render')) {
     const dir = b, range = seedRange(), li = flag('--limit'), limit = li ? Number(li) : Infinity;
     const log = path.join(dir, a === 'dry' ? 'known-dry.jsonl' : 'known-render.jsonl');
-    const seen = new Set(readLog(log).filter((l) => l.status !== 0).map((l) => l.text));
-    const texts = [...new Set(JSON.parse(fs.readFileSync(path.join(dir, 'known-plan.json'), 'utf8')).filter((x) => !x.held && inRange(x.seed, range)).map((x) => x.text))];
+    const seen = new Set(readLog(log).filter(answered).map((l) => l.text));
+    // --library-only: ask only the texts the dry run found in the library (free), so a spent daily cap does not hold them back.
+    const free = args.includes('--library-only') ? new Set(readLog(path.join(dir, 'known-dry.jsonl')).filter((l) => l.status === 200 && l.body.source === 'library').map((l) => l.text)) : null;
+    const texts = [...new Set(JSON.parse(fs.readFileSync(path.join(dir, 'known-plan.json'), 'utf8')).filter((x) => !x.held && inRange(x.seed, range) && (!free || free.has(x.text))).map((x) => x.text))];
     let n = 0; const tally = {};
     for (const text of texts) {
       if (seen.has(text)) continue; if (n++ >= limit) break;
@@ -145,7 +149,7 @@ async function planIntros(all, range) {
   if (mode === 'intro' && (a === 'dry' || a === 'render')) {
     const dir = b, range = seedRange();
     const log = path.join(dir, a === 'dry' ? 'intro-dry.jsonl' : 'intro-render.jsonl');
-    const seen = new Set(readLog(log).filter((l) => l.status !== 0).map((l) => l.lego_id));
+    const seen = new Set(readLog(log).filter(answered).map((l) => l.lego_id));
     const rows = JSON.parse(fs.readFileSync(path.join(dir, 'intro-plan.json'), 'utf8')).filter((x) => !x.held && inRange(x.seed_number, range));
     let n = 0; const tally = {};
     for (const x of rows) {

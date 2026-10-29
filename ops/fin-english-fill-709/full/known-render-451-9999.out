@@ -1,0 +1,5 @@
+[language-code-service] Loaded 496 language codes from CSV
+[language-code-service] TTS configured: 84 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 107 total (110 from CSV)
+STOP 402 {"ok":false,"code":"DAILY_CAP","error":"TTS spend guard (402) DAILY_CAP: today's spend across all TTS providers is 999995 chars; this call (27) would pass the combined daily cap of 1000000. HELD: Tom ruled 2026-10-07 (job #147, r-2026-10-07-tts-daily-cap-is-a-runaway): the automatic daily TTS cap is
+known render asked 1 of 2602 {"402 DAILY_CAP":1}

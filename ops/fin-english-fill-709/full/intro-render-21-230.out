@@ -1,0 +1,5 @@
+[language-code-service] Loaded 496 language codes from CSV
+[language-code-service] TTS configured: 84 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 107 total (110 from CSV)
+STOP 402 {"ok":false,"code":"DAILY_TOTAL_CAP","error":"TTS spend guard (402) DAILY_TOTAL_CAP: daily audio cap reached; only Tom can approve more (999921 chars spent today across all providers outside Tom-approved runs, this call is 103, the cap is 1000000; UTC day). Do not retry and do not split the job."}
+intro render asked 173 of 516 {"rendered":172,"402 DAILY_TOTAL_CAP":1}
