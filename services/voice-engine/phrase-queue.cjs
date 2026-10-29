@@ -175,19 +175,24 @@ function orderCoursePhrases({ positions, legos, phrases }) {
  * @param {string} role target1 | target2 | known
  * @param {(phrase) => string|null} holderOf the voice id holding this copy's slot, '' when empty
  * @param {(voiceId) => boolean} isMine
+ * @param {(phrase, role) => string|null} [standInOf] the clip id when this copy's slot holds a STAND-IN a take
+ *   replaces (Aran's clone on the nv2/sv2 English known side, job #557): such a copy is work exactly like an
+ *   empty one — holder null, so it is not "recorded" by its slot — and carries `standIn` so the linker swaps
+ *   that clip, and only that clip, for the take.
  */
-function courseRoleLines(courseCode, units, role, { holderOf, isMine, flagged = new Set() }) {
+function courseRoleLines(courseCode, units, role, { holderOf, isMine, flagged = new Set(), standInOf = () => null }) {
   const lines = new Map()
   for (const pass of [1, 2]) {
     units.forEach((u, i) => {
       if (u.pass !== pass) return
       const text = roleText(u.phrase, role)
       if (!text) return
-      const holder = holderOf(u.phrase, role)
+      const standIn = standInOf(u.phrase, role) || null
+      const holder = standIn ? '' : holderOf(u.phrase, role)
       if (holder && !isMine(holder)) return
       // Deduped by SPOKEN WORDS (job #198): a '?' or a curly apostrophe is not a second recording.
       const key = spokenWordsKey(text)
-      const copy = { phraseId: u.phrase.id, courseCode, text, holder: holder || null, flagged: flagged.has(u.phrase.id) }
+      const copy = { phraseId: u.phrase.id, courseCode, text, holder: holder || null, flagged: flagged.has(u.phrase.id), ...(standIn ? { standIn } : {}) }
       const have = lines.get(key)
       if (have) { have.copies.push(copy); return }
       lines.set(key, {
@@ -250,7 +255,7 @@ function planCourse({ courseCode, positions, legos, phrases, roles, flagged }) {
   const { units, unplayed, notNewLego } = orderCoursePhrases({ positions, legos, phrases })
   const linesByRole = {}
   for (const [role, cast] of Object.entries(roles)) {
-    linesByRole[role] = courseRoleLines(courseCode, units, role, { holderOf: cast.holderOf, isMine: cast.isMine, flagged })
+    linesByRole[role] = courseRoleLines(courseCode, units, role, { holderOf: cast.holderOf, isMine: cast.isMine, flagged, standInOf: cast.standInOf })
   }
   const cutRoles = ['target1', 'target2'].filter((r) => roles[r])
   const cutOn = cutRoles.length ? cutRoles : Object.keys(roles)
