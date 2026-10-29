@@ -35,8 +35,16 @@ describe('who counts', () => {
 
 describe('resolveVoice never answers a Tom clone for a Welsh course', () => {
   it('English known side: refused (was Tom-006)', () => {
+    // cym_nv2/sv2 are the stand-in courses (Aran 2026-10-29, job #557): their English known side is Aran's own clone — still never Tom's.
+    const standIn = ['cym_nv2_for_eng', 'cym_sv2_for_eng']
     for (const c of WELSH.filter(c => c.known_lang === 'eng')) {
-      expect(resolveVoice({ course: c, role: 'known' }, null)).toMatchObject({ status: 'refuse', reason: 'tom-clone-welsh', rule: 'welsh-no-tom-clone' })
+      const res = resolveVoice({ course: c, role: 'known' }, null)
+      if (standIn.includes(c.course_code)) {
+        expect(res).toMatchObject({ status: 'voice', rule: 'aran-clone-standin' })
+        expect(isTomCloneVoice(res.voiceId)).toBe(false)
+      } else {
+        expect(res).toMatchObject({ status: 'refuse', reason: 'tom-clone-welsh', rule: 'welsh-no-tom-clone' })
+      }
     }
   })
   it('the same rule still answers Tom-006 for a non-Welsh course', () => {
