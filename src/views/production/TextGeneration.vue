@@ -261,12 +261,45 @@
               <div>
                 <div class="text-sm font-medium text-ink">Build Team</div>
                 <div class="text-xs text-faint">{{ buildTeamSubtitle }}</div>
+                <!-- How the last build ended, in plain English (job #482) -->
+                <div
+                  v-if="buildLastStop?.message && buildJob !== 'running' && buildJob !== 'checking' && !stageComplete('build-team')"
+                  class="text-xs mt-0.5"
+                  :class="buildLastStop.stop_reason === 'done' ? 'text-emerald-400' : 'text-amber-400'"
+                  data-testid="build-stop-reason"
+                >{{ buildLastStop.message }}</div>
               </div>
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs font-mono text-ink">{{ progress.currentSeed || 0 }}/{{ seedCount }}</span>
               <span v-if="stageComplete('build-team')" class="stage-badge-complete">Done</span>
               <span v-else-if="stageLocked('build-team')" class="stage-badge-locked">Locked</span>
+              <!-- Job #482: nothing to press until the course builder has said what is running -->
+              <template v-else-if="buildJob === 'checking'">
+                <span class="text-xs text-faint" data-testid="build-checking">Checking build status…</span>
+                <button
+                  disabled
+                  data-testid="build-start"
+                  class="px-3 py-1 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 opacity-50 cursor-not-allowed text-xs font-medium rounded-lg"
+                >{{ buildTeamButtonLabel }}</button>
+              </template>
+              <template v-else-if="buildJob === 'running' || buildJob === 'stuck' || buildJob === 'paused'">
+                <span v-if="buildJob === 'paused'" class="text-xs text-amber-400">Paused</span>
+                <span v-else-if="buildActive" class="text-xs text-emerald-400">Building — last seed {{ buildLastActivity }}</span>
+                <span v-else class="text-xs text-emerald-400" data-testid="build-running">Build running{{ buildLastActivity ? ` — last seed ${buildLastActivity}` : '' }}</span>
+                <button
+                  v-if="buildJob === 'paused'"
+                  @click="startBuildTeam"
+                  :disabled="buildTeamStarting"
+                  class="px-2 py-0.5 bg-emerald-600/20 border border-emerald-500/50 text-emerald-400 hover:border-emerald-400/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                >{{ buildTeamStarting ? 'Spawning...' : 'Resume now' }}</button>
+                <button
+                  @click="stopBuilder"
+                  :disabled="buildStopping"
+                  data-testid="build-stop"
+                  class="px-2 py-0.5 bg-surface-3/20 border border-line/50 text-ink hover:border-line/70 disabled:opacity-50 text-xs font-medium rounded-lg transition-all"
+                >{{ buildStopping ? 'Stopping…' : buildJob === 'paused' ? 'Cancel auto-resume' : 'Stop' }}</button>
+              </template>
               <span v-else-if="buildActive" class="text-xs text-emerald-400">
                 Building — last seed {{ buildLastActivity }}
               </span>
@@ -651,6 +684,7 @@ import { useRouter } from 'vue-router'
 import { getApiUrl, fetchJson } from '@/services/api'
 import { dirFor } from '@/utils/textDirection.js'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
+import { nextJobStatus } from '@/services/build-status-view'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getSeedGrid as sbGetSeedGrid, getSeedDetail, getGenderPairs } from '@/services/supabase'
 import GenderPairText from '@/components/production/GenderPairText.vue'
 import FilterSelect from '@/components/ui/FilterSelect.vue'
@@ -735,6 +769,13 @@ const translateSpawned = ref(false)
 const translateResetting = ref(false)
 const buildTeamStarting = ref(false)
 const buildTeamSpawned = ref(false)
+// The course builder's own answer about this course's build (job #482). 'checking' until the
+// first /api/build/status reply: before it, the page cannot know whether a build is already
+// running, and an enabled Start there is how fry_for_eng got a second orchestrator (28 Oct).
+const buildJob = ref('checking') // checking | idle | running | stuck | paused
+const buildLastStop = ref(null)
+const buildStopping = ref(false)
+let buildStatusTimer = null
 const finalPassStarting = ref(false)
 const finalPassSpawned = ref(false)
 
@@ -1363,9 +1404,27 @@ async function startBuildTeam() {
       showActionError(`Build team failed: ${result.error}`)
     }
   } catch (err) {
+    // A 409 here means a build for this course is already running (job #482).
     showActionError(`Build team failed: ${err.message}`)
   } finally {
     buildTeamStarting.value = false
+    fetchBuildStatus()
+  }
+}
+
+/** Ask the course builder (through the production-api proxy) what this course's build is doing. */
+async function fetchBuildStatus() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode || isCreateMode.value) return null
+  try {
+    const data = await fetchJson(`${getApiUrl()}/api/build/status/${courseCode}`)
+    buildJob.value = nextJobStatus(buildJob.value, data)
+    buildLastStop.value = data.active ? null : (data.last_stop || null)
+    if (!data.active) buildTeamSpawned.value = false
+    return data
+  } catch (err) {
+    console.warn('[TextGeneration] build status poll failed:', err.message)
+    return null
   }
 }
 
@@ -1588,15 +1647,22 @@ async function startGenderPrep() {
 
 
 async function stopBuilder() {
+  buildStopping.value = true
   try {
     const apiBase = getApiUrl()
-    await fetch(`${apiBase}/api/build/stop/${effectiveCourseCode.value}`, {
+    const resp = await fetch(`${apiBase}/api/build/stop/${effectiveCourseCode.value}`, {
       method: 'POST',
       headers: {}
     })
+    const data = await resp.json().catch(() => ({}))
+    if (data && data.ok === false && data.error) showActionError(`Stop: ${data.error}`)
     progress.value.status = 'idle'
+    buildTeamSpawned.value = false
   } catch (error) {
     showActionError(`Failed to stop builder: ${error.message}`)
+  } finally {
+    buildStopping.value = false
+    fetchBuildStatus()
   }
 }
 
@@ -1960,8 +2026,19 @@ async function loadLanguages() {
 }
 
 // Lifecycle
+// A different course on the same page instance: back to 'checking' until its builder answers.
+watch(effectiveCourseCode, (code, prev) => {
+  if (!code || code === prev) return
+  buildJob.value = 'checking'
+  buildLastStop.value = null
+  fetchBuildStatus()
+})
+
 onMounted(async () => {
   startPolling()
+  if (isCreateMode.value) buildJob.value = 'idle'
+  fetchBuildStatus()
+  buildStatusTimer = setInterval(fetchBuildStatus, 15000)
   if (!isCreateMode.value) {
     // Fetch seed grid and progress immediately (buildMonitor watcher may miss initial load)
     if (isSupabaseConfigured()) {
@@ -1980,6 +2057,7 @@ onMounted(async () => {
 
 onUnmounted(() => {
   stopPolling()
+  if (buildStatusTimer) { clearInterval(buildStatusTimer); buildStatusTimer = null }
   if (tickInterval) { clearInterval(tickInterval); tickInterval = null }
 })
 </script>

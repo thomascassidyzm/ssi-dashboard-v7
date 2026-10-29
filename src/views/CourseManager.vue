@@ -376,7 +376,7 @@
 
       <!-- Job Control -->
       <section
-        v-if="jobStatus !== 'idle' || hasWorkToDo"
+        v-if="jobStatus !== 'idle' || hasWorkToDo || lastStop?.message || startError"
         class="bg-surface/30 border border-line/50 rounded-lg p-6"
       >
         <div class="flex items-center justify-between">
@@ -391,11 +391,25 @@
               </span>
             </div>
 
-            <div v-if="jobStatus === 'running'" class="text-sm text-muted space-y-1">
+            <div v-if="jobStatus === 'checking'" class="text-sm text-muted" data-testid="build-checking">
+              Checking build status…
+            </div>
+
+            <div v-else-if="jobStatus === 'running'" class="text-sm text-muted space-y-1">
               <div>Elapsed: <span class="font-mono text-ink">{{ elapsedTime }}</span></div>
               <div v-if="buildMode === 'phases'">Workers: <span class="font-mono text-ink">{{ activeWorkers }} active</span></div>
               <div v-if="buildMode === 'builder'">Seed: <span class="font-mono text-ink">{{ builderProgress.currentSeed }} / {{ builderProgress.totalSeeds }}</span></div>
               <div v-if="lastActivityAgo">Last activity: <span class="font-mono text-ink">{{ lastActivityAgo }}</span></div>
+            </div>
+
+            <!-- How the last build ended, in plain English (job #482) -->
+            <div
+              v-else-if="buildMode === 'builder' && lastStop?.message"
+              class="text-sm"
+              :class="lastStop.stop_reason === 'done' ? 'text-emerald-400' : 'text-amber-400'"
+              data-testid="build-stop-reason"
+            >
+              {{ lastStop.message }}
             </div>
 
             <div v-else-if="hasWorkToDo" class="text-sm text-muted">
@@ -406,6 +420,8 @@
                 {{ nextActionDescription }}
               </template>
             </div>
+
+            <div v-if="startError" class="mt-2 text-sm text-red-400" data-testid="build-start-error">{{ startError }}</div>
           </div>
 
           <div class="flex gap-3">
@@ -432,13 +448,15 @@
               Execute {{ nextPhaseAction }}
             </button>
 
-            <!-- BUILDER MODE: Start Button -->
+            <!-- BUILDER MODE: Start Button — disabled until the first status answer (job #482) -->
             <button
-              v-if="buildMode === 'builder' && jobStatus === 'idle' && canStartBuilder"
+              v-if="buildMode === 'builder' && controls.start.show"
               @click="startCourseBuilder"
-              class="px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white font-medium rounded-lg transition-colors"
+              :disabled="controls.start.disabled"
+              data-testid="build-start"
+              class="px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
             >
-              Start Course Builder
+              {{ controls.start.label }}
             </button>
 
             <!-- Cancel Preview Button -->
@@ -464,14 +482,15 @@
               <span>{{ clearingStale ? 'Clearing...' : 'Clear Stale Job' }}</span>
             </button>
 
-            <!-- Stop Button -->
+            <!-- Stop Button — disabled until the first status answer (job #482) -->
             <button
-              v-if="jobStatus === 'running'"
+              v-if="buildMode === 'builder' ? controls.stop.show : jobStatus === 'running'"
               @click="stopJob"
-              :disabled="jobStatus === 'stopping'"
-              class="px-5 py-2.5 bg-surface-2 hover:bg-surface-3 disabled:opacity-50 text-ink font-medium rounded-lg transition-colors"
+              :disabled="controls.stop.disabled"
+              data-testid="build-stop"
+              class="px-5 py-2.5 bg-surface-2 hover:bg-surface-3 disabled:opacity-50 disabled:cursor-not-allowed text-ink font-medium rounded-lg transition-colors"
             >
-              {{ jobStatus === 'stopping' ? 'Stopping...' : 'Stop Job' }}
+              {{ controls.stop.label }}
             </button>
 
             <!-- Force Kill Button -->
@@ -794,6 +813,7 @@ import { io } from 'socket.io-client'
 import { LanguageBriefEditor } from '../components/generation'
 import { getApiUrl } from '@/services/api'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
+import { nextJobStatus, buildControls, statusBadgeText } from '@/services/build-status-view'
 import { useCourses } from '../composables/useCourses'
 import FilterSelect from '../components/ui/FilterSelect.vue'
 
@@ -838,7 +858,13 @@ const stats = ref([
 ])
 
 // Job state
-const jobStatus = ref('idle') // idle, running, stopping, stuck
+// 'checking' until the first /api/build/status answer (job #482): before that the page does
+// not know whether a build is running, so it must not offer Start (a second orchestrator).
+const jobStatus = ref('checking') // checking, idle, running, stopping, stuck, paused
+const lastStop = ref(null)
+const startError = ref(null)
+const starting = ref(false)
+let buildStatusTimer = null
 const activeWorkers = ref(0)
 const jobStartTime = ref(null)
 const lastProgressAt = ref(null)
@@ -1194,6 +1220,8 @@ const canStartBuilder = computed(() => {
   return builderProgress.value.status !== 'complete' && builderProgress.value.status !== 'running'
 })
 
+const controls = computed(() => buildControls(jobStatus.value, { starting: starting.value, canStart: canStartBuilder.value }))
+
 // Unified: has work to do based on mode
 const hasWorkToDo = computed(() => {
   if (buildMode.value === 'builder') {
@@ -1240,9 +1268,7 @@ const statusLabel = computed(() => {
     const activePhase = phases.value.find(p => p.status === 'running')
     return activePhase ? `Phase ${activePhase.number} Running` : 'Running'
   }
-  if (jobStatus.value === 'stopping') return 'Stopping...'
-  if (jobStatus.value === 'stuck') return 'Stuck'
-  return ''
+  return statusBadgeText(jobStatus.value)
 })
 
 const statusBadgeClass = computed(() => {
@@ -1250,6 +1276,7 @@ const statusBadgeClass = computed(() => {
     case 'running': return 'bg-blue-500/20 border border-blue-500/30 text-blue-400'
     case 'stopping': return 'bg-amber-500/20 border border-amber-500/30 text-amber-400'
     case 'stuck': return 'bg-red-500/20 border border-red-500/30 text-red-400'
+    case 'paused': return 'bg-amber-500/20 border border-amber-500/30 text-amber-400'
     default: return 'bg-surface-2/50 text-muted'
   }
 })
@@ -1259,6 +1286,8 @@ const statusDotClass = computed(() => {
     case 'running': return 'bg-blue-500 animate-pulse'
     case 'stopping': return 'bg-amber-500'
     case 'stuck': return 'bg-red-500'
+    case 'paused': return 'bg-amber-500'
+    case 'checking': return 'bg-surface-3 animate-pulse'
     default: return 'bg-surface-3'
   }
 })
@@ -1677,13 +1706,61 @@ async function startPhase() {
   }
 }
 
+/**
+ * Poll the course builder for this course's build state (job #482). Nothing polled it
+ * before, so a reloaded page could not see a running build. Runs on mount and every 15 s.
+ */
+async function fetchBuildStatus() {
+  const code = props.courseCode || route.params.courseCode
+  if (!code) return null
+  try {
+    // Through the production-api proxy (/api/build/* → course builder), like the Production
+    // Suite: VITE_COURSE_BUILDER_API_URL is unset on Vercel, so the builder URL this page uses
+    // elsewhere is http://localhost:3471 — unreachable from anyone's browser but watson-1's.
+    const resp = await fetch(`${localStorage.getItem('api_base_url') || getApiUrl()}/api/build/status/${code}`)
+    if (!resp.ok) throw new Error(`status ${resp.status}`)
+    const data = await resp.json()
+    jobStatus.value = nextJobStatus(jobStatus.value, data)
+    lastStop.value = data.active ? null : (data.last_stop || null)
+    if (data.progress) {
+      builderProgress.value.currentSeed = data.progress.completed || 0
+      builderProgress.value.totalSeeds = data.build?.total_seeds || data.progress.total || seedCount.value
+    }
+    if (data.active) {
+      builderProgress.value.status = 'running'
+      if (data.build?.started_at && !jobStartTime.value) jobStartTime.value = Date.parse(data.build.started_at)
+    } else {
+      builderProgress.value.status = data.progress?.isComplete ? 'complete' : 'idle'
+      jobStartTime.value = null
+    }
+    return data
+  } catch (err) {
+    console.warn('[CourseManager] build status poll failed:', err.message)
+    return null
+  }
+}
+
+function startBuildStatusPolling() {
+  stopBuildStatusPolling()
+  fetchBuildStatus()
+  buildStatusTimer = setInterval(fetchBuildStatus, 15000)
+}
+
+function stopBuildStatusPolling() {
+  if (buildStatusTimer) clearInterval(buildStatusTimer)
+  buildStatusTimer = null
+}
+
 async function startCourseBuilder() {
   const code = props.courseCode || route.params.courseCode
   if (!code) return
+  if (controls.value.start.disabled) return
 
+  starting.value = true
+  startError.value = null
   try {
-    const builderApiUrl = import.meta.env.VITE_COURSE_BUILDER_API_URL || 'http://localhost:3471'
-    const response = await fetch(`${builderApiUrl}/api/build/team-start/${code}`, {
+    // Proxy, not localhost:3471 — see fetchBuildStatus.
+    const response = await fetch(`${localStorage.getItem('api_base_url') || getApiUrl()}/api/build/team-start/${code}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1697,10 +1774,13 @@ async function startCourseBuilder() {
 
     if (!response.ok) {
       const errData = await response.json().catch(() => ({}))
+      // 409 = a build is already running for this course: say so, and show it (job #482).
+      if (response.status === 409) await fetchBuildStatus()
       throw new Error(errData.error || 'Failed to start course builder')
     }
 
     const result = await response.json()
+    lastStop.value = null
 
     builderProgress.value = {
       status: 'running',
@@ -1717,7 +1797,10 @@ async function startCourseBuilder() {
 
   } catch (error) {
     console.error('Failed to start course builder:', error)
+    startError.value = error.message
     addEvent(`Error: ${error.message}`)
+  } finally {
+    starting.value = false
   }
 }
 
@@ -1769,10 +1852,12 @@ async function stopJob() {
       addEvent('Job stopped')
     }
 
-    // Reset to idle - the job is stopped (or was never running)
+    // Reset to idle - the job is stopped (or was never running) — then ask the builder
+    // what actually happened, so the page shows "Stopped by …" (job #482).
     jobStatus.value = 'idle'
     jobStartTime.value = null
     stopRequestedAt.value = null
+    if (buildMode.value === 'builder') fetchBuildStatus()
 
   } catch (error) {
     console.error('Failed to stop job:', error)
@@ -1969,16 +2054,19 @@ onMounted(() => {
     // Management mode - collapse config, start polling and WebSocket
     configExpanded.value = false
     startPolling()
+    startBuildStatusPolling()
     connectWebSocket()
     fetchCalibrationReview()
   } else {
-    // Creation mode - expand config
+    // Creation mode - expand config (no course yet, so nothing to check)
+    jobStatus.value = 'idle'
     configExpanded.value = true
   }
 })
 
 onUnmounted(() => {
   stopPolling()
+  stopBuildStatusPolling()
   disconnectWebSocket()
 })
 
@@ -1991,11 +2079,17 @@ watch(() => route.params.courseCode, (newCode, oldCode) => {
 
   if (newCode) {
     configExpanded.value = false
+    jobStatus.value = 'checking'
+    lastStop.value = null
+    startError.value = null
     startPolling()
+    startBuildStatusPolling()
     connectWebSocket()
   } else {
     stopPolling()
+    stopBuildStatusPolling()
     disconnectWebSocket()
+    jobStatus.value = 'idle'
     configExpanded.value = true
   }
 })

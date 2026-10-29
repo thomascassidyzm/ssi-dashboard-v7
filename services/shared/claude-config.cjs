@@ -136,11 +136,43 @@ function readUsage() {
   } catch { return {} }
 }
 
+/**
+ * The account a spawn bills: { email, file }. `exclude` (emails) drops accounts a caller knows
+ * are spent — the course builder passes the account that just hit its usage limit when it
+ * restarts a build (job #482). If excluding leaves nothing, the unfiltered pick stands: a
+ * build is never refused here. email is null when the default token is used.
+ */
+function pickSpawnAccount({ exclude = [] } = {}) {
+  const ex = new Set(exclude.filter(Boolean).map((e) => String(e).toLowerCase()))
+  const all = candidates().filter((c) => readToken(c.file))
+  const kept = all.filter((c) => !ex.has(c.email))
+  const opts = { usage: readUsage(), steer: steers() }
+  const c = pickAccount(kept.length ? kept : all, opts)
+  return c ? { email: c.email, file: c.file } : { email: null, file: OAUTH_TOKEN_FILE }
+}
+
+/**
+ * Another SSi account worth switching to right now, or null: not excluded, has a token, and
+ * its five-hour window is not already full by the surface's gauge (unknown gauge counts as
+ * usable). Only the accounts in <config dir>/tokens are ever considered — on watson-1 those
+ * are claude@ and kai-gmail, the SSi pool; Tom's personal accounts are never in that dir.
+ */
+function alternativeAccount({ exclude = [] } = {}) {
+  const ex = new Set(exclude.filter(Boolean).map((e) => String(e).toLowerCase()))
+  const usage = readUsage()
+  const ok = candidates().filter((c) => !ex.has(c.email) && readToken(c.file)).filter((c) => {
+    const g = usage[c.email]
+    const pct = g ? Number(g.five_hour_pct) : NaN
+    return !Number.isFinite(pct) || pct < HAMMER_FULL_PCT
+  })
+  if (!ok.length) return null
+  const c = pickAccount(ok, { usage, steer: steers() })
+  return c ? c.email : null
+}
+
 /** The token file this spawn bills: the picked SSi account, else the default. */
 function tokenFile() {
-  const cands = candidates().filter((c) => readToken(c.file))
-  const c = pickAccount(cands, { usage: readUsage(), steer: steers() })
-  return c ? c.file : OAUTH_TOKEN_FILE
+  return pickSpawnAccount().file
 }
 
 /** Merge the pinned config dir + auth into an env object for spawn/exec. */
@@ -154,14 +186,32 @@ function claudeEnv(base = process.env) {
   return env
 }
 
-/** Inline `export …` chain (no trailing separator) for shell/iTerm command strings. */
-function claudeConfigExport() {
-  const file = tokenFile()
-  return [
+/**
+ * Inline `export …` chain (no trailing separator) for shell/iTerm command strings, plus the
+ * account it bills.
+ *
+ * CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0 (job #482): a headless CLI whose turn has ended
+ * stops its still-running background tasks after 10 minutes (the CLI's own default ceiling,
+ * 600000 ms in 2.1.312; its notice says "Set CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0 to wait
+ * indefinitely"). The build orchestrator starts its Opus builder as a background subagent
+ * and ends its turn, so every long build was cut off ten minutes in — fry_for_eng stopped at
+ * 4/300 on 28 Oct that way. 0 makes the CLI wait for the builder however long it runs.
+ * Stop (/build/stop) now kills the process tree, so an indefinite wait can always be ended.
+ */
+function claudeSpawnSetup({ exclude = [] } = {}) {
+  const { email, file } = pickSpawnAccount({ exclude })
+  const exportCmd = [
     `export CLAUDE_CONFIG_DIR='${CLAUDE_CONFIG_DIR}'`,
     'unset ANTHROPIC_API_KEY CLAUDECODE',
+    `export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=${BG_WAIT_CEILING_MS}`,
     `if [ -f '${file}' ]; then export CLAUDE_CODE_OAUTH_TOKEN="$(cat '${file}')"; fi`,
   ].join(' && ')
+  return { exportCmd, email }
+}
+const BG_WAIT_CEILING_MS = 0
+
+function claudeConfigExport(opts) {
+  return claudeSpawnSetup(opts).exportCmd
 }
 
-module.exports = { CLAUDE_CONFIG_DIR, claudeEnv, claudeConfigExport, pickAccount, candidates, FIVE_HOUR_GATE_PCT, HAMMER_FULL_PCT }
+module.exports = { CLAUDE_CONFIG_DIR, claudeEnv, claudeConfigExport, claudeSpawnSetup, pickSpawnAccount, alternativeAccount, pickAccount, candidates, FIVE_HOUR_GATE_PCT, HAMMER_FULL_PCT, BG_WAIT_CEILING_MS }
