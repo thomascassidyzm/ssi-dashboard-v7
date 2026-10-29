@@ -9,7 +9,8 @@ const fs = require('fs');
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '');
 const AGENT = 'kai-563-hin-cast-and-fill';
 const PURPOSE = 'job #563 Hindi cast-and-fill (Kai 29 Oct 2026)';
-const slotOf = (id) => /^S\d{4}$/.test(id) ? { seedNumber: Number(id.slice(1)) } : /^S\d{4}L\d{2}$/.test(id) ? { legoId: id } : { phraseId: id };
+// A practice phrase's id is '<course>:<id>' (course_practice_phrases.id); the lists carry the bare form.
+const slotOf = (id, course) => /^S\d{4}$/.test(id) ? { seedNumber: Number(id.slice(1)) } : /^S\d{4}L\d{2}$/.test(id) ? { legoId: id } : { phraseId: id.includes(':') ? id : `${course}:${id}` };
 
 async function efhKnownEmpties() {
   const j = await (await fetch(`${POPTY}/api/production/eng_for_hin/seeds`)).json();
@@ -70,10 +71,16 @@ const call = async (path, body) => {
     const clip = new Map(); for (const l of fs.readFileSync(log, 'utf8').split('\n').filter(Boolean).map((x) => JSON.parse(x))) if (l.body && l.body.audioId && !l.body.dryRun) clip.set(l.k, l.body.audioId);
     const s = (await slots(set, c)).filter((x) => clip.has(`${x.course}\0${x.role}\0${x.text}`));
     const course = s.length ? s[0].course : null;
-    const links = s.map((x) => ({ ...slotOf(x.id), role: x.role, audioId: clip.get(`${x.course}\0${x.role}\0${x.text}`) }));
-    const r = await call(`/api/production/${course}/link-clip`, { links, dryRun: mode === 'link-dry' });
-    const bad = (r.body.results || []).filter((x) => !x.ok);
-    console.log(r.status, 'links', links.length, 'ok', (r.body.results || []).length - bad.length, 'linked', r.body.linked, 'refused', JSON.stringify(bad.slice(0, 5)));
+    const links = s.map((x) => ({ ...slotOf(x.id, x.course), role: x.role, audioId: clip.get(`${x.course}\0${x.role}\0${x.text}`) }));
+    // link-clip takes at most 500 links a request.
+    let ok = 0, linked = 0; const bad = []; let status = 0;
+    for (let i = 0; i < links.length; i += 400) {
+      const r = await call(`/api/production/${course}/link-clip`, { links: links.slice(i, i + 400), dryRun: mode === 'link-dry' });
+      status = r.status; ok += (r.body.results || []).filter((x) => x.ok).length; linked += r.body.linked || 0; bad.push(...(r.body.results || []).filter((x) => !x.ok));
+      if (!r.body.results) { console.log(r.status, JSON.stringify(r.body).slice(0, 300)); break; }
+    }
+    const codes = {}; for (const x of bad) codes[x.code] = (codes[x.code] || 0) + 1;
+    console.log(status, 'links', links.length, 'ok', ok, 'linked', linked, 'refused', bad.length, JSON.stringify(codes), JSON.stringify(bad.slice(0, 3)));
     return;
   }
   console.error('usage: plan | dry|render | link-dry|link'); process.exit(1);
