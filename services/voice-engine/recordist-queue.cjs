@@ -343,7 +343,7 @@ async function resolveRecordist(db, voiceIdParam, { cache, course } = {}) {
         // every door that already confines a cast-only voice (castCourses):
         // the queue's course list, the booth arrival, the re-record take.
         ...(entry.onlyCastOn === true
-          ? { castCourses: [...new Set(castOnEntries(entry.castOn).map((c) => c.courseCode))] }
+          ? { castCourses: [...new Set([...castOnEntries(entry.castOn).map((c) => c.courseCode), ...podEnglish.podEnglishOnEntries(entry.podEnglishOn)])] }
           : {}),
       }
     }
@@ -1087,6 +1087,9 @@ function policyVoiceList(policy) {
       // without this, every gender-only male pod cast on an eng_for_* course
       // would route to him through policyByBucket (lineVoiceId rule 3).
       onlyCastOn: entry.onlyCastOn === true,
+      // The Pod 1 English card ALONE (job #562, pod-english-lines.cjs): Catrin's English voice reads the women's lines
+      // of Pod 1 English and no seed, phrase or LEGO of those courses, so it is not a castOn.
+      podEnglishOn: podEnglish.podEnglishOnEntries(entry.podEnglishOn),
     })
   }
   return out
@@ -3030,6 +3033,21 @@ async function fetchEnglishLegoInputs(db, recordist) {
  * an absence, never a booth that will not open.
  */
 const podEnglishInputCache = new Map()
+
+/**
+ * courseCode → voice_config.podCast for the Pod 1 English courses: who each pod character is, and their gender (job #562).
+ * Throws on a failed read — a card or a link built without the cast would be built on guessed speakers.
+ */
+async function fetchPodCastByCourse(db, courseCodes) {
+  const codes = [...new Set((courseCodes || []).filter(Boolean))]
+  if (!codes.length) return {}
+  const { data, error } = await db.from('courses').select('course_code, voice_config').in('course_code', codes)
+  if (error) throw new Error(`pod cast read failed: ${error.message}`)
+  const out = {}
+  for (const row of data || []) out[row.course_code] = (row.voice_config && row.voice_config.podCast) || {}
+  return out
+}
+
 async function fetchPodEnglishInputs(db, recordist) {
   const { voices } = await policyVoicesForLanguage(db, recordist.language)
   const podIds = podEnglish.podEnglishPodsFor(recordist, voices)
@@ -3044,7 +3062,8 @@ async function fetchPodEnglishInputs(db, recordist) {
       .select('id, pod_id, global_order, speaker, target_text, known_text, known_audio_id')
       .in('pod_id', podIds).order('id').range(from, to))
     const slotVoiceById = await fetchClipVoices(db, sentences.map((s) => s.known_audio_id))
-    const value = { podIds, pods: pods || [], sentences, slotVoiceById }
+    const podCastByCourse = await fetchPodCastByCourse(db, (pods || []).map((p) => p.course_code))
+    const value = { podIds, pods: pods || [], sentences, slotVoiceById, podCastByCourse }
     podEnglishInputCache.set(key, { at: Date.now(), value })
     return value
   } catch (err) {
@@ -3065,10 +3084,12 @@ async function linkPodEnglishSlotsByWords({ db, recordist, text, audioId, logger
   const out = { linked: [] }
   const key = spokenWordsKey(text)
   if (!audioId || !key) return out
-  const { podIds, sentences } = await fetchPodEnglishInputs(db, recordist)
+  const { podIds, sentences, podCastByCourse } = await fetchPodEnglishInputs(db, recordist)
   if (!podIds || !podIds.length) return out
   for (const s of sentences || []) {
     if (s.known_audio_id || spokenWordsKey(s.known_text) !== key) continue
+    // Only a copy whose speaker is of this reader's gender (job #562): Aran's take never fills a woman's line.
+    if (!podEnglish.isReadersGender(s, recordist, podCastByCourse)) continue
     const { data, error } = await db.from('listening_pod_sentences')
       .update({ known_audio_id: audioId })
       .eq('id', s.id).is('known_audio_id', null).eq('known_text', s.known_text)
@@ -3102,11 +3123,17 @@ function replaceSyntheticPodEnglish(args) {
 async function replaceSyntheticPodEnglishNow({ db, recordist, logger = console, link = linkClips }) {
   const out = { linked: [], refused: [] }
   const { voices } = await policyVoicesForLanguage(db, recordist.language)
-  const podIds = podEnglish.podEnglishPodsFor(recordist, voices, podEnglish.POD_ENGLISH_REPLACE_PODS)
+  // Every card pod (job #562): North's synthetic clips (POD_ENGLISH_REPLACE_PODS) and, on any card pod, a slot still holding
+  // a take of a reader of the other gender. Only copies of this reader's gender move (planPodEnglishReplacements).
+  const podIds = podEnglish.podEnglishPodsFor(recordist, voices)
   if (!podIds.length) return out
   const sentences = await pagedRead((from, to) => db.from('listening_pod_sentences')
-    .select('id, pod_id, known_text, known_audio_id')
+    .select('id, pod_id, speaker, known_text, known_audio_id')
     .in('pod_id', podIds).order('id').range(from, to))
+  const podCastByCourse = await fetchPodCastByCourse(db, podIds.map((p) => p.split(':')[0]))
+  const genderOf = (s) => podEnglish.podSpeakerGender(s, podCastByCourse)
+  const readerGender = String(recordist.gender || '').toLowerCase()
+  const wrongVoices = podEnglish.podEnglishReaderGenders(voices)
   const currentIds = [...new Set(sentences.map((s) => s.known_audio_id).filter(Boolean))]
   const currentById = new Map()
   for (let i = 0; i < currentIds.length; i += 100) {
@@ -3115,7 +3142,13 @@ async function replaceSyntheticPodEnglishNow({ db, recordist, logger = console, 
     for (const c of data || []) currentById.set(c.id, c)
   }
   // Only lines still holding a readable synthetic clip need a take looked up.
-  const open = sentences.filter((s) => { const c = currentById.get(s.known_audio_id); return c && !isHumanClip(c) })
+  const open = sentences.filter((s) => {
+    const c = currentById.get(s.known_audio_id)
+    if (!c || genderOf(s) !== readerGender) return false
+    if (!isHumanClip(c)) return podEnglish.POD_ENGLISH_REPLACE_PODS.includes(s.pod_id)
+    const heldBy = wrongVoices.get(c.voice_id)
+    return !!heldBy && heldBy !== readerGender
+  })
   const keys = [...new Set(open.flatMap((s) => audioKeyCandidates(String(s.known_text || '').trim())).filter(Boolean))]
   const takes = []
   for (let i = 0; i < keys.length; i += 50) {
@@ -3124,7 +3157,7 @@ async function replaceSyntheticPodEnglishNow({ db, recordist, logger = console, 
     if (error) throw new Error(`pod English take lookup failed: ${error.message}`)
     takes.push(...(data || []))
   }
-  const { links } = podEnglish.planPodEnglishReplacements({ podIds, sentences: open, currentById, takes })
+  const { links } = podEnglish.planPodEnglishReplacements({ podIds, sentences: open, currentById, takes, genderOf, readerGender, wrongVoices })
   if (!links.length) return out
   const byCourse = new Map()
   for (const l of links) byCourse.set(l.courseCode, [...(byCourse.get(l.courseCode) || []), l])
@@ -3506,6 +3539,8 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         quarrySource: line.quarrySource || null,
         // On a 'podswap' line (job #551): the words this line replaces in the pod once it is recorded.
         replacesText: line.kind === 'podswap' ? (line.replacesText || null) : null,
+        // On a 'podknown' line (job #562): the gender of the character who speaks it — the booth names the card from it.
+        speakerGender: line.kind === 'podknown' ? (line.speakerGender || null) : null,
         // The LEGO's own id (S0181L02) on a 'lego' line, so the booth can say
         // which piece of which seed it is. Null on every other kind.
         legoId: line.kind === 'lego' ? (line.legoId || null) : null,
@@ -4394,6 +4429,7 @@ module.exports = {
   castOnEntries,
   castOnKnownSideCourses,
   fetchPodEnglishInputs,
+  fetchPodCastByCourse,
   linkPodEnglishSlotsByWords,
   replaceSyntheticPodEnglish,
   replaceSyntheticPodEnglishNow,

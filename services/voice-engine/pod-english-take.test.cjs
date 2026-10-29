@@ -26,8 +26,8 @@ function fixture() {
     } }],
     dashboard_users: [],
     courses: [
-      { course_code: 'cym_n_for_eng', target_lang: 'cym', known_lang: 'eng', dialect: 'north', voice_config: {} },
-      { course_code: 'cym_s_for_eng', target_lang: 'cym', known_lang: 'eng', dialect: 'south', voice_config: {} },
+      { course_code: 'cym_n_for_eng', target_lang: 'cym', known_lang: 'eng', dialect: 'north', voice_config: { podCast: { Neighbour: { gender: 'm' } } } },
+      { course_code: 'cym_s_for_eng', target_lang: 'cym', known_lang: 'eng', dialect: 'south', voice_config: { podCast: { Neighbour: { gender: 'm' } } } },
     ],
     listening_pods: [
       { id: N, course_code: 'cym_n_for_eng', slug: 'pod-1', title: 'North Pod 1' },

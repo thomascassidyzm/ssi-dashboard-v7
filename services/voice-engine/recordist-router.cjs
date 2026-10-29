@@ -37,6 +37,7 @@ const {
   resolveRecordist,
   voicesForEmail,
   policyVoicesForLanguage,
+  fetchPodCastByCourse,
   buildQueue,
   buildCoverage,
   loadPolicies,
@@ -1645,10 +1646,13 @@ module.exports = function createRecordistRouter({
   }
 
   async function resolvePodEnglishLine(parsed, recordist) {
-    const { data, error } = await db().from('listening_pod_sentences').select('id, pod_id, known_text').eq('id', parsed.sentenceId).limit(1)
+    const { data, error } = await db().from('listening_pod_sentences').select('id, pod_id, speaker, known_text').eq('id', parsed.sentenceId).limit(1)
     if (error) throw new Error(`pod English lookup failed: ${error.message}`)
     const { voices } = await policyVoicesForLanguage(db(), recordist.language)
-    return podEnglish.resolvePodEnglish(data && data[0], recordist, voices)
+    // A line of a character of the other gender is not this reader's (job #562): 404, never filed.
+    const row = data && data[0]
+    const podCastByCourse = row ? await fetchPodCastByCourse(db(), [String(row.pod_id).split(':')[0]]) : {}
+    return podEnglish.resolvePodEnglish(row, recordist, voices, podCastByCourse)
   }
 
   async function podEnglishClipResponse(req, res, recordist, parsed) {

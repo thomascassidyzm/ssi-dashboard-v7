@@ -138,6 +138,8 @@ function buildHomeTracks(lines, phrases = null, phraseBatches = null) {
       podTitle: first.podTitle || null,
       // Which side the card reads: 'known' on Aran's English LEGO cards (job #255), so the booth can name them.
       role: first.role || null,
+      // Pod 1 English is read by gender (job #562): 'f' names Catrin's card "Pod 1 English (female lines)".
+      ...(first.kind === 'podknown' ? { speakerGender: first.speakerGender || null } : {}),
       // A sentence of a course whose phrases this booth records (the v2 relaunch sandboxes) is
       // NEW reading, even though its seed row already exists in that course. #335 found these
       // 640 new North sentences filed under "seeds already in the course — not new".
