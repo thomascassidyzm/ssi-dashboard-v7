@@ -60,10 +60,6 @@ const call = async (path, body) => {
         if (r.status !== 0) break;
         await new Promise((res) => setTimeout(res, 45000));
       }
-      // Job #624 (Tom r-2026-09-26: reuse any existing clip for the language+text, in any voice): a RERECORD_NOT_PERMITTED refusal NAMES the working clip
-      // that already says these words (in another voice). That clip is the answer — log it as the clip to link, and carry on; nothing is rendered.
-      const held = r.status === 403 && r.body && r.body.code === 'RERECORD_NOT_PERMITTED' && /working clip \(([0-9a-f-]{36})/.exec(r.body.error || '');
-      if (held) r = { status: 200, body: { ok: true, source: 'library', existing: true, audioId: held[1], charsSpent: 0 } };
       fs.appendFileSync(log, JSON.stringify({ k, course: x.course, role: x.role, text: x.text, status: r.status, body: r.body }) + '\n');
       if (r.status !== 200) { console.log('STOP', r.status, JSON.stringify(r.body).slice(0, 300)); break; }
     }
@@ -72,7 +68,7 @@ const call = async (path, body) => {
   }
   if (mode === 'link-dry' || mode === 'link') {
     const log = a, set = b;
-    const clip = new Map(); for (const l of fs.readFileSync(log, 'utf8').split('\n').filter(Boolean).map((x) => JSON.parse(x))) if (l.body && l.body.audioId && (!l.body.dryRun || l.body.existing)) clip.set(l.k, l.body.audioId);
+    const clip = new Map(); for (const l of fs.readFileSync(log, 'utf8').split('\n').filter(Boolean).map((x) => JSON.parse(x))) if (l.body && l.body.audioId && !l.body.dryRun) clip.set(l.k, l.body.audioId);
     const s = (await slots(set, c)).filter((x) => clip.has(`${x.course}\0${x.role}\0${x.text}`));
     const course = s.length ? s[0].course : null;
     const links = s.map((x) => ({ ...slotOf(x.id, x.course), role: x.role, audioId: clip.get(`${x.course}\0${x.role}\0${x.text}`) }));
