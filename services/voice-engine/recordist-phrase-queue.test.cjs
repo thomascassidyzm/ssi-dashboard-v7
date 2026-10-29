@@ -525,3 +525,100 @@ test('the phrase plan reads clips by the ids its slots name, never by scanning c
   assert.ok(!scans.includes('voice_id'), 'no scan of the clip table by voice: nothing indexes it')
   afterCourseContentEdit()
 })
+
+// ── ARAN'S CLONE AS A STAND-IN (Aran 2026-10-29, job #557; services/shared/aran-clone-standin.cjs) ──────────
+// On cym_nv2/sv2's English known side a slot holding his clone (aran_english_003) stays in his queue, and his
+// take REPLACES it — on a write conditional on that exact clip, the clone kept in course_audio. Nothing else
+// moves: another synthetic voice's clip, a human take, the live courses.
+const CLONE = 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe'
+const CHARLOTTE_V = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
+
+test('stand-in: a clone-held nv2 phrase stays queued for Aran and his take replaces it; a Charlotte-held one is never work', async () => {
+  const t = fixture()
+  const byId = (id) => t.course_practice_phrases.find((p) => p.id === id)
+  byId(`${N}:S1001L01B05`).known_audio_id = 'clone_tonight'       // "as often tonight" — also S0002L01U02, empty
+  byId(`${N}:S1001L01B04`).known_audio_id = 'charlotte_practise'  // "to practise as often"
+  t.course_audio.push(
+    { id: 'clone_tonight', course_code: N, voice_id: CLONE, language: 'eng', role: 'known', origin: 'tts', text_normalized: 'as often tonight' },
+    { id: 'charlotte_practise', course_code: N, voice_id: CHARLOTTE_V, language: 'eng', role: 'known', origin: 'tts', text_normalized: 'to practise as often' },
+  )
+  const db = stubDb(t)
+  const aran = await resolveRecordist(db, ARAN_ENG)
+  const q = await buildQueue(db, aran, { includeRecorded: true })
+  const lines = q.lines.filter((l) => l.kind === 'phrase')
+  const tonight = lines.find((l) => l.text === 'as often tonight')
+  assert.ok(tonight, 'the clone-held line is still Aran\'s work')
+  assert.equal(tonight.recorded, false, 'a clone in the slot is not his recording')
+  assert.equal(lines.some((l) => l.text === 'to practise as often'), false, 'a Charlotte-held slot is not his work')
+
+  const out = await linkPhraseTake({ db, recordist: aran, phraseId: `${N}:S1001L01B05`, role: 'known', audioId: 'aran_tonight', logger: QUIET })
+  assert.deepEqual(out.linked.map((l) => [l.phraseId, l.replaced || null]).sort(), [
+    [`${N}:S0002L01U02`, null], [`${N}:S1001L01B05`, 'clone_tonight'],
+  ].sort(), 'the empty copy is filled and the clone copy replaced')
+  assert.equal(byId(`${N}:S1001L01B05`).known_audio_id, 'aran_tonight')
+  assert.equal(byId(`${N}:S1001L01B04`).known_audio_id, 'charlotte_practise', 'Charlotte untouched')
+  assert.ok(t.course_audio.some((c) => c.id === 'clone_tonight'), 'make-before-break: the clone clip is kept, only unlinked')
+  afterCourseContentEdit()
+})
+
+test('stand-in: a slot that moved off the clone after the plan was read is never overwritten', async () => {
+  const t = fixture()
+  const p = t.course_practice_phrases.find((x) => x.id === `${N}:S1001L01B05`)
+  p.known_audio_id = 'clone_tonight'
+  t.course_audio.push({ id: 'clone_tonight', course_code: N, voice_id: CLONE, language: 'eng', role: 'known', origin: 'tts', text_normalized: 'as often tonight' })
+  const db = stubDb(t)
+  const aran = await resolveRecordist(db, ARAN_ENG)
+  await buildQueue(db, aran)
+  p.known_audio_id = 'someone_else'
+  const out = await linkPhraseTake({ db, recordist: aran, phraseId: `${N}:S1001L01B05`, role: 'known', audioId: 'aran_tonight', logger: QUIET })
+  assert.equal(out.linked.some((l) => l.phraseId === p.id), false)
+  assert.equal(p.known_audio_id, 'someone_else')
+  afterCourseContentEdit()
+})
+
+function standInSeedFixture() {
+  return {
+    language_recording_policy: [
+      { language: 'eng', human_only: false, voices: {
+        'm:known': { name: 'Aran', gender: 'm', voiceId: ARAN_ENG, onlyCastOn: true, castOn: [
+          { courseCode: N, role: 'known' }, { courseCode: 'cym_n_for_eng', role: 'known' },
+        ] },
+      } },
+    ],
+    dashboard_users: [],
+    courses: [
+      { course_code: N, target_lang: 'cym', known_lang: 'eng', dialect: 'north', voice_config: null },
+      { course_code: 'cym_n_for_eng', target_lang: 'cym', known_lang: 'eng', dialect: 'north', voice_config: null },
+    ],
+    listening_pods: [],
+    listening_pod_sentences: [],
+    course_running_order: [],
+    course_seeds: [
+      { id: 'v1', course_code: N, seed_number: 1, status: 'released', target_text: 'Helo', known_text: 'Hello', known_audio_id: 'clone_hello', target1_audio_id: null, target2_audio_id: null },
+      { id: 'v2', course_code: N, seed_number: 2, status: 'released', target_text: 'Diolch', known_text: 'Thank you', known_audio_id: 'charlotte_thanks', target1_audio_id: null, target2_audio_id: null },
+      // The LIVE course is not a stand-in course: a clone clip there (none exists) would be nobody's to move.
+      { id: 'live1', course_code: 'cym_n_for_eng', seed_number: 1, status: 'released', target_text: 'Helo', known_text: 'Hello', known_audio_id: 'clone_live', target1_audio_id: null, target2_audio_id: null },
+    ],
+    course_audio: [
+      { id: 'clone_hello', course_code: N, voice_id: CLONE, language: 'eng', role: 'known', origin: 'tts', text_normalized: 'hello', duration_ms: 800 },
+      { id: 'charlotte_thanks', course_code: N, voice_id: CHARLOTTE_V, language: 'eng', role: 'known', origin: 'tts', text_normalized: 'thank you', duration_ms: 800 },
+      { id: 'clone_live', course_code: 'cym_n_for_eng', voice_id: CLONE, language: 'eng', role: 'known', origin: 'tts', text_normalized: 'hello', duration_ms: 800 },
+    ],
+  }
+}
+
+test('stand-in: a clone-held nv2 seed is queued without any castOn switch, and the take replaces it — never Charlotte, never the live course', async () => {
+  const t = standInSeedFixture()
+  const db = stubDb(t)
+  const aran = await resolveRecordist(db, ARAN_ENG)
+  const q = await buildQueue(db, aran)
+  assert.deepEqual(q.lines.filter((l) => l.kind === 'seed').map((l) => `${l.courseCode}:${l.text}`), [`${N}:Hello`], 'the clone-held nv2 seed only')
+  t.course_audio.push({ id: 'aran_hello', course_code: N, voice_id: ARAN_ENG, language: 'eng', role: 'known', origin: 'human', text_normalized: 'hello' })
+  const out = await linkSeedTake({ db, recordist: aran, seedId: 'v1', role: 'known', audioId: 'aran_hello', logger: QUIET })
+  assert.deepEqual(out.linked.map((l) => [l.seedId, l.from]), [['v1', 'clone_hello']])
+  assert.equal(t.course_seeds.find((s) => s.id === 'v1').known_audio_id, 'aran_hello')
+  assert.equal(t.course_seeds.find((s) => s.id === 'live1').known_audio_id, 'clone_live', 'the live course is not a stand-in course')
+  assert.ok(t.course_audio.some((c) => c.id === 'clone_hello'), 'the clone clip is kept')
+  const after = await buildQueue(stubDb(t), aran)
+  assert.deepEqual(after.lines.filter((l) => l.kind === 'seed').map((l) => l.text), [], 'replaced: no longer asked for')
+})

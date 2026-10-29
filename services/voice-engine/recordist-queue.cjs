@@ -114,6 +114,7 @@ const { spokenWordsKey, sameSpokenWords } = require('../shared/spoken-words.cjs'
 const { soloReaders, isSoloReaderPod } = require('../shared/pod-solo-readers.cjs')
 const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
+const { isReplaceableStandIn } = require('../shared/aran-clone-standin.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
 const videoVoiceovers = require('./video-voiceover-lines.cjs')
@@ -2132,7 +2133,11 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
           // FILL-ONLY: a policy-side cast never asks for a slot that already
           // holds a clip, whoever's (castOnEntries) -- unless the cast says to
           // queue a slot held only by SYNTHETIC speech (SYNTHETIC_MODES).
-          const syntheticHeld = !!(cast.fillOnly && cast.synthetic &&
+          // A STAND-IN (Aran's clone on the nv2/sv2 English known side, job #557) is queued the same way, castOn
+          // switch or not — and, unlike a synthetic holder, his take REPLACES it (linkSeedSlotsByWords).
+          const standInHeld = !!(cast.fillOnly && seed[`${role}_audio_id`] &&
+            isReplaceableStandIn({ courseCode, role, voiceId: clipVoice.get(seed[`${role}_audio_id`]) }))
+          const syntheticHeld = standInHeld || !!(cast.fillOnly && cast.synthetic &&
             (syntheticIds.has(seed[`${role}_audio_id`]) || (cast.syntheticSeeds && cast.syntheticSeeds.has(seed.id))))
           if (cast.fillOnly && seed[`${role}_audio_id`] && !syntheticHeld) continue
           // A synthetic-held line is queued even where some other human take of
@@ -2593,6 +2598,9 @@ async function buildPhrasePlan(db, memo = new Map()) {
       planRoles[role] = {
         holderOf: (p, rl) => { const id = p[`${rl}_audio_id`]; return id ? (ownClips.get(id) || 'other') : '' },
         isMine: (v) => r.spellings.includes(v),
+        // A STAND-IN (Aran's clone on the nv2/sv2 English known side, job #557) is still this reader's work: the
+        // line stays queued, and his take replaces that clip (linkPhraseTake). Any other voice's clip is not work.
+        standInOf: (p, rl) => { const id = p[`${rl}_audio_id`]; return id && isReplaceableStandIn({ courseCode: code, role: rl, voiceId: voiceOf.get(id) }) ? id : null },
       }
     }
     const plan = phraseQueue.planCourse({
@@ -2782,9 +2790,20 @@ async function withPhraseBatch(db, recordist, queue, { includeRecorded = false, 
 }
 
 /**
+ * THE CONDITION ON A PHRASE-SLOT WRITE: the slot is still empty — or, for a copy the plan read as holding a
+ * STAND-IN (Aran's clone on the nv2/sv2 English known side, job #557), it still holds exactly that clip. So a
+ * take replaces the clone make-before-break (the take is filed before any linker runs; the clone clip is only
+ * unlinked, never deleted), and a slot that gained ANY other clip since the plan was read is never overwritten.
+ */
+function fillOrReplaceStandIn(update, col, copy) {
+  return copy && copy.standIn ? update.eq(col, copy.standIn) : update.is(col, null)
+}
+
+/**
  * Point every EMPTY slot of this phrase line's copies at a new take. FILL-EMPTY
  * ONLY, by a conditional update (`slot IS NULL`), so a slot that gained a clip
  * since the plan was read — anybody's — is never overwritten. Nothing is deleted.
+ * The one exception is a stand-in clone clip (fillOrReplaceStandIn), replaced on that exact clip only.
  * The copies come from the server's own plan, never from the client.
  */
 async function linkPhraseTake({ db, recordist, phraseId, role, audioId, logger = console }) {
@@ -2793,13 +2812,13 @@ async function linkPhraseTake({ db, recordist, phraseId, role, audioId, logger =
   const plan = await getPhrasePlan(db)
   const mine = recordist.spellings.flatMap((sp) => plan.byVoice.get(sp) || [])
   const line = mine.find((l) => l.role === role && l.copies.some((c) => c.phraseId === phraseId))
-  const copies = line ? line.copies.map((c) => c.phraseId) : [phraseId]
+  const copies = line ? line.copies : [{ phraseId }]
   const col = `${role}_audio_id`
-  for (const id of copies) {
-    const { data, error } = await db.from('course_practice_phrases')
-      .update({ [col]: audioId }).eq('id', id).is(col, null).select('id, course_code')
-    if (error) { logger.error(`[Recordist] phrase link failed for ${id}: ${error.message}`); continue }
-    for (const row of data || []) out.linked.push({ phraseId: row.id, courseCode: row.course_code })
+  for (const c of copies) {
+    const { data, error } = await fillOrReplaceStandIn(db.from('course_practice_phrases').update({ [col]: audioId }).eq('id', c.phraseId), col, c)
+      .select('id, course_code')
+    if (error) { logger.error(`[Recordist] phrase link failed for ${c.phraseId}: ${error.message}`); continue }
+    for (const row of data || []) out.linked.push({ phraseId: row.id, courseCode: row.course_code, ...(c.standIn ? { replaced: c.standIn } : {}) })
   }
   invalidatePhrasePlan(db)
   return out
@@ -2824,10 +2843,10 @@ async function linkPhraseSlotsByWords({ db, recordist, role, text, audioId, logg
     const col = `${line.role}_audio_id`
     for (const c of line.copies) {
       if (c.holder) continue
-      const { data, error } = await db.from('course_practice_phrases')
-        .update({ [col]: audioId }).eq('id', c.phraseId).is(col, null).select('id, course_code')
+      const { data, error } = await fillOrReplaceStandIn(db.from('course_practice_phrases').update({ [col]: audioId }).eq('id', c.phraseId), col, c)
+        .select('id, course_code')
       if (error) { logger.error(`[Recordist] phrase link failed for ${c.phraseId}: ${error.message}`); continue }
-      for (const row of data || []) out.linked.push({ phraseId: row.id, courseCode: row.course_code })
+      for (const row of data || []) out.linked.push({ phraseId: row.id, courseCode: row.course_code, ...(c.standIn ? { replaced: c.standIn } : {}) })
     }
   }
   if (out.linked.length) invalidatePhrasePlan(db)
@@ -2868,16 +2887,18 @@ async function sameWordsGaps({ db, recordist }) {
     if (!have || String(t.created_at || '') > String(have.created_at || '')) takeFor.set(key, t)
   }
   const ops = []
-  const op = (courseCode, slot, role, slotText, target) => {
+  // `standIn`: the slot holds Aran's clone (job #557) — the op replaces exactly that clip, so it expects it.
+  const op = (courseCode, slot, role, slotText, target, standIn = null) => {
     const take = takeFor.get(`${side(role)}|${spokenWordsKey(slotText)}`)
     if (!take) return
     ops.push({
       courseCode,
       words: slotText,
       takeText: take.text,
+      ...(standIn ? { replacesStandIn: standIn } : {}),
       op: {
         op: 'audio.link', ...target, slot: role, audio_id: take.id,
-        expect: { [`${role}_audio_id`]: null },
+        expect: { [`${role}_audio_id`]: standIn || null },
         ...(normalizeForDb(String(take.text || '').trim()) !== normalizeForDb(String(slotText || '').trim()) ? { allow_text_mismatch: true } : {}),
       },
     })
@@ -2896,10 +2917,15 @@ async function sameWordsGaps({ db, recordist }) {
 
   for (const role of ['known', ...SEED_TARGET_ROLES]) {
     const codes = castTo(role)
-    for (const s of await fetchSeeds(db, codes)) {
-      if (s[`${role}_audio_id`]) continue
+    const seeds = await fetchSeeds(db, codes)
+    // Filled seed slots that hold a STAND-IN (job #557) are still back-fill work: read their clips' voices.
+    const heldVoice = role === 'known' ? await audioVoicesById(db, seeds.map((s) => s.known_audio_id)) : new Map()
+    for (const s of seeds) {
+      const held = s[`${role}_audio_id`]
+      const standIn = held && isReplaceableStandIn({ courseCode: s.course_code, role, voiceId: heldVoice.get(held) }) ? held : null
+      if (held && !standIn) continue
       const text = String((role === 'known' ? s.known_text : s.target_text) || '').trim()
-      if (text) op(s.course_code, 'seed', role, text, { target: 'seed', seed_number: s.seed_number })
+      if (text) op(s.course_code, 'seed', role, text, { target: 'seed', seed_number: s.seed_number }, standIn)
     }
     if (role === 'known') continue
     for (const l of await fetchLegos(db, castTo(role, true))) {
@@ -2915,7 +2941,7 @@ async function sameWordsGaps({ db, recordist }) {
       for (const c of line.copies) {
         if (c.holder) continue
         // The copy's OWN words: copies merged across courses may differ in punctuation (job #198).
-        op(c.courseCode, 'phrase', line.role, c.text || line.text, { target: 'phrase', phrase_id: c.phraseId })
+        op(c.courseCode, 'phrase', line.role, c.text || line.text, { target: 'phrase', phrase_id: c.phraseId }, c.standIn || null)
       }
     }
   }
@@ -3798,10 +3824,13 @@ async function linkSeedSlotsByWords({ db, recordist, role, text, audioId, fillOn
   for (const row of candidates) {
     const current = row[`${role}_audio_id`]
     if (current === audioId) continue
-    if (current && fillOnly) continue
+    // A STAND-IN (Aran's clone on the nv2/sv2 English known side, job #557) is the one filled slot a take
+    // replaces even here — on a conditional write against that exact clip, the clone kept in course_audio.
+    const standIn = !!current && isReplaceableStandIn({ courseCode: row.course_code, role, voiceId: owners.get(current) })
+    if (current && fillOnly && !standIn) continue
     // FILL-ONLY (castOnEntries): a policy-side cast fills empty slots and moves
     // nothing — not an imported clip, not a synthesised one, not anybody's.
-    if (current && fillOnlyCourses.has(row.course_code)) continue
+    if (current && fillOnlyCourses.has(row.course_code) && !standIn) continue
     const holder = owners.get(current) || null
     if (current && !recordist.spellings.includes(holder)) {
       // ANOTHER RECORDIST'S CLIP IS NOT OURS TO MOVE, and that is still the
@@ -3824,10 +3853,12 @@ async function linkSeedSlotsByWords({ db, recordist, role, text, audioId, fillOn
     let upd = db.from('course_seeds').update({ [`${role}_audio_id`]: audioId }).eq('id', row.id)
     // A cross-kind fill is conditional on the slot still being empty: a take landing at the same
     // moment is never overwritten.
-    if (fillOnly) upd = upd.is(`${role}_audio_id`, null).select('id')
+    const conditional = fillOnly || standIn
+    if (standIn) upd = upd.eq(`${role}_audio_id`, current).select('id')
+    else if (fillOnly) upd = upd.is(`${role}_audio_id`, null).select('id')
     const { data, error } = await upd
     if (error) { logger.error(`[Recordist] seed link failed for ${row.id}: ${error.message}`); continue }
-    if (fillOnly && !(data && data.length)) continue // filled by somebody else meanwhile
+    if (conditional && !(data && data.length)) continue // filled (or re-filled) by somebody else meanwhile
     out.linked.push({ seedId: row.id, courseCode: row.course_code, from: current || null })
   }
   if (out.linked.length) invalidateLanguageQueueCache(recordist.language)

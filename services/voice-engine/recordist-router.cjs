@@ -113,7 +113,7 @@ const {
   buildPackQueue,
 } = require('./clone-source-store.cjs')
 const { canonicalLanguage, canonicalVoiceId, ClipIdentityError } = require('../shared/clip-identity.cjs')
-const { patchVoiceSlot } = require('../shared/policy-voice-patch.cjs')
+const { patchVoiceSlot, addVoiceSlot } = require('../shared/policy-voice-patch.cjs')
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { resolveCurrentClip } = require('./take-selection.cjs')
 const { bucketKey } = require('../shared/dialect.cjs')
@@ -3246,6 +3246,50 @@ module.exports = function createRecordistRouter({
       res.json({ ok: true, language, slot: out.slot, voiceId: req.params.voiceId, changed: out.changed, by: who.email })
     } catch (err) {
       logger.error(`[Recordist] voice slot patch: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // ── 5c. ADD one voice slot, without rewriting the list (job #562) ──────────
+  // POST /languages/:language/voice  { slot, entry }
+  // Every other reader is carried over untouched (policy-voice-patch addVoiceSlot); the voice id must be spellable and
+  // consented, as PUT requires; compare-and-swap on updated_at, like the PATCH above.
+  router.post('/languages/:language/voice', async (req, res) => {
+    try {
+      const who = await requireAdminOrAgent(req, res, 'voice-slot:write')
+      if (!who) return
+      let language
+      try { language = canonicalLanguage(req.params.language) } catch (e) {
+        if (e instanceof ClipIdentityError) return res.status(400).json({ error: e.message })
+        throw e
+      }
+      const { slot, entry } = req.body || {}
+      try { canonicalVoiceId(String((entry && entry.voiceId) || '')) } catch (e) {
+        return res.status(400).json({ error: `entry.voiceId: ${e.message}` })
+      }
+      const { data: row, error: readErr } = await db()
+        .from('language_recording_policy').select('*').eq('language', language).maybeSingle()
+      if (readErr) throw new Error(`policy read failed: ${readErr.message}`)
+      if (!row) return res.status(404).json({ error: `no recording policy for ${language}` })
+      const out = addVoiceSlot(row.voices, slot, entry, bucketKey)
+      if (!out.ok) return res.status(out.status).json({ error: out.error })
+      try {
+        await consentGate.assertConsented(out.entry.voiceId, { db: db(), context: `${language} recording policy ${out.slot}` })
+      } catch (err) {
+        return res.status(err.status || 409).json({ error: err.message, code: err.code || 'NO_RECORDED_CONSENT', slot: out.slot, voiceId: out.entry.voiceId })
+      }
+      const { data, error } = await db()
+        .from('language_recording_policy')
+        .update({ voices: out.voices })
+        .eq('language', language).eq('updated_at', row.updated_at)
+        .select('language').maybeSingle()
+      if (error) throw new Error(`policy write failed: ${error.message}`)
+      if (!data) return res.status(409).json({ error: 'the policy changed while this was applied — read it again and retry' })
+      invalidateLanguageQueueCache()
+      logger.log(`[Recordist] voice slot added ${language}/${out.slot} ${out.entry.voiceId} by ${who.email}`)
+      res.json({ ok: true, language, slot: out.slot, voiceId: out.entry.voiceId, entry: { ...out.entry, ...(out.entry.email ? { email: '(set)' } : {}) }, by: who.email })
+    } catch (err) {
+      logger.error(`[Recordist] voice slot add: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })
     }
   })
