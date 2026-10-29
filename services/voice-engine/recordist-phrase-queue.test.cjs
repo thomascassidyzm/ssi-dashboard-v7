@@ -530,7 +530,7 @@ test('the phrase plan reads clips by the ids its slots name, never by scanning c
 // On cym_nv2/sv2's English known side a slot holding his clone (aran_english_003) stays in his queue, and his
 // take REPLACES it — on a write conditional on that exact clip, the clone kept in course_audio. Nothing else
 // moves: another synthetic voice's clip, a human take, the live courses.
-const CLONE = 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe'
+const CLONE = require('../shared/aran-clone-standin.cjs').STANDIN_VOICE // the switchable stand-in voice
 const CHARLOTTE_V = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
 
 test('stand-in: a clone-held nv2 phrase stays queued for Aran and his take replaces it; a Charlotte-held one is never work', async () => {

@@ -9,7 +9,7 @@ import hv from './human-voice-courses.cjs'
 import rv from './resolve-voice.cjs'
 import policy from './voicing-policy.cjs'
 import providerPolicy from './tts-provider-policy.cjs'
-const { ARAN_ENGLISH_CLONE, isCloneStandInSlot, isReplaceableStandIn } = standIn
+const { STANDIN_VOICE: ARAN_ENGLISH_CLONE, isCloneStandInSlot, isReplaceableStandIn } = standIn  // the switchable voice
 const { isHumanVoiceSlotBlocked, isHumanVoiceCourse } = hv
 const { resolveVoice, checkPointer, TOM_006 } = rv
 const { checkRender } = policy
