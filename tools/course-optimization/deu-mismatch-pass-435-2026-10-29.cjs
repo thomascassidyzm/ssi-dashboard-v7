@@ -286,7 +286,8 @@ function renderAsks(db, data = D) {
   for (const [id, , , fix] of data.LEGO_FIXES || []) {
     const l = db.legos.find((x) => x.lego_id === id); if (!l) continue;
     slots(l, fix, { target: 'lego', lego_id: id });
-    if (l.is_new && fix[0] !== null && l.known_text === fix[0]) {
+    // an intro already linked since the apply (e.g. the same LEGO's existing intro) needs no new clip
+    if (l.is_new && fix[0] !== null && l.known_text === fix[0] && !l.presentation_audio_id) {
       const k = `presentation\u0000${introLine(l.known_text)}`;
       if (!m.has(k)) m.set(k, { role: 'presentation', text: introLine(l.known_text), legoId: id, slots: [] });
       m.get(k).slots.push({ target: { target: 'lego', lego_id: id }, current: l.presentation_audio_id });
