@@ -230,35 +230,44 @@ function clipAsks(p, seedFilter = null) {
   return [...m.values()].map((a) => ({ ...a, seeds: [...a.seeds] }));
 }
 
-/** The edit-batch ops. `clips`: Map role\0text -> audio_id. Text first, then the new clips, same transaction. */
-function editOps(p, clips, seeds) {
-  const inSeed = (n) => !seeds || seeds.includes(n);
+/** The edit-batch ops as self-contained UNITS (a row's text edit and its new clips travel together: make-before-break). */
+function editUnits(p, clips) {
   const get = (role, text) => { const a = clips.get(`${role}\u0000${text}`); if (!a) throw new Error(`no clip for ${role} "${text}"`); return a; };
-  const ops = [], links = [];
-  for (const g of p.legoGo.filter((x) => inSeed(x.seed))) {
+  const units = [];
+  for (const g of p.legoGo) {
     const set = { target_text: g.after.target_text, target_text_roman: null };
     if (JSON.stringify(g.after.components) !== JSON.stringify(g.before.components)) set.components = g.after.components;
-    ops.push({ op: 'lego.update', lego_id: g.lid, set, expect: { target_text: g.before.target_text } });
-    if (g.before.presentation_audio_id) links.push({ op: 'audio.link', target: 'lego', lego_id: g.lid, slot: 'presentation', audio_id: g.before.presentation_audio_id });
-    for (const slot of ['target1', 'target2']) links.push({ op: 'audio.link', target: 'lego', lego_id: g.lid, slot, audio_id: get(slot, g.after.target_text) });
+    const u = [{ op: 'lego.update', lego_id: g.lid, set, expect: { target_text: g.before.target_text } }];
+    // the LEGO text-change trigger drops presentation_audio_id though the intro is English only: same clip back, same transaction
+    if (g.before.presentation_audio_id) u.push({ op: 'audio.link', target: 'lego', lego_id: g.lid, slot: 'presentation', audio_id: g.before.presentation_audio_id });
+    for (const slot of ['target1', 'target2']) u.push({ op: 'audio.link', target: 'lego', lego_id: g.lid, slot, audio_id: get(slot, g.after.target_text) });
+    units.push(u);
   }
   for (const [id, e] of p.compGo) {
-    if (!inSeed(e.p.seed_number)) continue;
-    if (e.del) ops.push({ op: 'phrase.delete', phrase_id: pid(id), expect: { target_text: e.p.target_text } });
-    else ops.push({ op: 'phrase.update', phrase_id: pid(id), set: e.set, expect: { target_text: e.p.target_text } });
+    if (e.del) units.push([{ op: 'phrase.delete', phrase_id: pid(id), expect: { target_text: e.p.target_text } }]);
+    else units.push([{ op: 'phrase.update', phrase_id: pid(id), set: e.set, expect: { target_text: e.p.target_text } }]);
   }
-  for (const g of p.phraseGo.filter((x) => inSeed(x.p.seed_number))) {
-    ops.push({ op: 'phrase.update', phrase_id: pid(g.id), set: g.set, expect: { target_text: g.p.target_text } });
-    for (const slot of ['target1', 'target2']) links.push({ op: 'audio.link', target: 'phrase', phrase_id: pid(g.id), slot, audio_id: get(slot, g.set.target_text) });
+  for (const g of p.phraseGo) {
+    const u = [{ op: 'phrase.update', phrase_id: pid(g.id), set: g.set, expect: { target_text: g.p.target_text } }];
+    for (const slot of ['target1', 'target2']) u.push({ op: 'audio.link', target: 'phrase', phrase_id: pid(g.id), slot, audio_id: get(slot, g.set.target_text) });
+    units.push(u);
   }
-  const touched = new Set([...p.legoGo.filter((x) => inSeed(x.seed)).map((x) => x.seed), ...p.phraseGo.filter((x) => inSeed(x.p.seed_number)).map((x) => x.p.seed_number)]);
-  for (const n of p.unapprove.filter((x) => touched.has(x))) ops.push({ op: 'seed.update', seed_number: n, set: { approved_at: null } });
-  return ops.concat(links);
+  // No before-state on approved_at: the API and the engine spell the same timestamp differently, and clearing it is idempotent.
+  for (const n of p.unapprove) units.push([{ op: 'seed.update', seed_number: n, set: { approved_at: null } }]);
+  return units;
+}
+const editOps = (p, clips) => editUnits(p, clips).flat();
+/** Pack units into batches of at most `max` ops (the text-change audio triggers cost ~0.7 s an op; big transactions hit the statement cap). */
+function pack(units, max = Number(process.env.BATCH) || 24) {
+  const out = []; let cur = [];
+  for (const u of units) { if (cur.length && cur.length + u.length > max) { out.push(cur); cur = []; } cur = cur.concat(u); }
+  if (cur.length) out.push(cur);
+  return out;
 }
 
 async function post(url, body) {
   try {
-    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT, 'x-agent-role': 'kai' }, body: JSON.stringify(body), signal: AbortSignal.timeout(300000) });
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Connection': 'close', 'x-agent-id': AGENT, 'x-agent-role': 'kai' }, body: JSON.stringify(body), signal: AbortSignal.timeout(300000) });
     return { status: r.status, body: await r.json().catch(() => ({})) };
   } catch (e) { return { status: 0, body: { ok: false, error: String((e.cause && e.cause.code) || e.name) } }; }
 }
@@ -299,7 +308,7 @@ async function main() {
     let dry = cache.get(k);
     for (let t = 0; !dry && t < 3; t++) {
       const d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, dryRun: true });
-      if (d.status === 0) continue;
+      if (d.status === 0) { await new Promise((r) => setTimeout(r, 3000 * (t + 1))); continue; }
       const ok = d.status === 200 && d.body.ok;
       const existing = !ok && d.body.code === 'RERECORD_NOT_PERMITTED' ? existingClipOf(d.body.error) : null;
       dry = { status: d.status, source: existing ? 'existing-clip' : d.body.source, voiceId: d.body.voiceId, chars: ok && d.body.source !== 'library' ? (d.body.wouldSpendChars || a.text.length) : 0, existing, audioId: d.body.audioId, error: ok || existing ? undefined : d.body };
@@ -320,24 +329,44 @@ async function main() {
   if (toRender.length > MAX) { console.log(`STOP: ${toRender.length} clips to render > ${MAX}; nothing rendered`); return console.log(save('stopped', log)); }
   for (const a of log.asks) {
     if (a.dry.existing) { a.real = { source: 'existing-clip', audioId: a.dry.existing.audioId, charsSpent: 0 }; continue; }
-    const r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE });
+    let r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE });
+    if (r.status === 0) {
+      // A dropped connection is not a refusal and not an answer. Ask the library (dry run) whether the render happened; render
+      // again only if it demonstrably did not, so a clip is never paid for twice.
+      await new Promise((res) => setTimeout(res, 8000));
+      const chk = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, dryRun: true });
+      if (chk.status === 200 && chk.body.source === 'library' && chk.body.audioId) r = { status: 200, body: { ok: true, source: 'library', audioId: chk.body.audioId, charsSpent: 0, voiceId: chk.body.voiceId } };
+      else if (chk.status === 200 && chk.body.source === 'would-render') r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE });
+    }
+    // The door refuses to re-record words that already have a working clip (Tom 2026-10-11): that clip, filed by an earlier pass of THIS run, is the one to link.
+    const had = r.status === 403 && r.body.code === 'RERECORD_NOT_PERMITTED' ? existingClipOf(r.body.error) : null;
+    if (had) r = { status: 200, body: { ok: true, source: 'existing-clip', audioId: had.audioId, voiceId: had.voiceId, charsSpent: 0 } };
     a.real = { status: r.status, source: r.body.source, audioId: r.body.audioId, voiceId: r.body.voiceId, charsSpent: r.body.charsSpent, error: r.status === 200 && r.body.ok ? undefined : r.body };
     if (a.real.error) { console.log('  REFUSED', a.role, JSON.stringify(a.text), r.status, JSON.stringify(r.body).slice(0, 300)); return console.log(save('render-refused', log)); }
   }
   log.charsSpent = log.asks.reduce((s, a) => s + ((a.real && a.real.charsSpent) || 0), 0);
   console.log(`rendered/linked: ${log.charsSpent} chars spent`);
   const clips = new Map(log.asks.map((a) => [`${a.role}\u0000${a.text}`, a.real.audioId]));
-  const ops = editOps(p, clips); // the plan was already restricted to --seeds
-  log.ops = ops;
-  const dry = await postSigned(`/api/production/${COURSE}/edit-batch`, { ops });
-  log.editDry = { status: dry.status, error: dry.body.error, code: dry.body.code, index: dry.body.index, results: (dry.body.results || []).length };
-  console.log(`edit-batch dry run: ${dry.status} ${dry.body.error || ''} (${log.editDry.results} results)`);
-  if (dry.status !== 200 || process.env.APPLY_CONFIRM !== '1') return console.log(save(dry.status === 200 ? 'previewed' : 'edit-refused', log));
-  const ap = await postSigned(`/api/production/${COURSE}/edit-batch`, { ops, apply: true });
-  log.apply = { status: ap.status, event_id: ap.body.event_id, undo_file: ap.body.undo_file, error: ap.body.error, code: ap.body.code };
-  console.log(`edit-batch APPLY: ${ap.status} event ${ap.body.event_id} undo ${ap.body.undo_file} ${ap.body.error || ''}`);
-  console.log(save(ap.status === 200 ? 'applied' : 'apply-refused', log));
-  if (ap.status !== 200) process.exitCode = 1;
+  const batches = pack(editUnits(p, clips));
+  log.batches = [];
+  console.log(`${batches.length} batches, ${batches.reduce((n, b) => n + b.length, 0)} ops`);
+  for (let i = 0; i < batches.length; i++) {
+    const dry = await postSigned(`/api/production/${COURSE}/edit-batch`, { ops: batches[i] });
+    const entry = { n: i + 1, ops: batches[i].length, dry: { status: dry.status, error: dry.body.error, code: dry.body.code, index: dry.body.index } };
+    log.batches.push(entry);
+    if (dry.status !== 200) { console.log(`batch ${i + 1}: dry run REFUSED ${dry.status} ${dry.body.error || ''} (op ${dry.body.index}); nothing further applied`); process.exitCode = 1; break; }
+  }
+  const dryOk = log.batches.length === batches.length && log.batches.every((b) => b.dry.status === 200);
+  console.log(`edit-batch dry runs: ${dryOk ? 'all ' + batches.length + ' clean' : 'NOT clean'}`);
+  if (!dryOk || process.env.APPLY_CONFIRM !== '1') return console.log(save(dryOk ? 'previewed' : 'edit-refused', log));
+  for (let i = 0; i < batches.length; i++) {
+    const ap = await postSigned(`/api/production/${COURSE}/edit-batch`, { ops: batches[i], apply: true });
+    log.batches[i].apply = { status: ap.status, event_id: ap.body.event_id, undo_file: ap.body.undo_file, error: ap.body.error, code: ap.body.code };
+    console.log(`batch ${i + 1}/${batches.length} APPLY ${ap.status} event ${ap.body.event_id} undo ${ap.body.undo_file} ${ap.body.error || ''}`);
+    fs.writeFileSync(path.join(out, `kor565-applied-progress-${stamp}.json`), JSON.stringify(log, null, 2));
+    if (ap.status !== 200) { process.exitCode = 1; break; }
+  }
+  console.log(save('applied', log));
 }
 if (require.main === module) main().catch((e) => { console.error(e.stack || e.message); process.exit(1); });
-module.exports = { plan, clipAsks, editOps };
+module.exports = { plan, clipAsks, editOps, editUnits, pack };
