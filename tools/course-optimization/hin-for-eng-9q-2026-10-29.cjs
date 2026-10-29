@@ -119,7 +119,7 @@ function planQ1(live) {
 const FEM_TO_MASC = [[/पूछूँगी/g, 'पूछूँगा'], [/सकती हूँ/g, 'सकता हूँ']];
 const unfem = (t) => FEM_TO_MASC.reduce((x, [re, to]) => x.replace(re, to), t);
 // H-SIR-MADAM-AGREEMENT: she put a comma before every vocative सर/मैडम; seed 645 is the one row here that has one.
-const commaBeforeVocative = (t) => t.replace(/ (मैडम|सर)/g, ', $1');
+const commaBeforeVocative = (t) => t.replace(/(?<!,) (मैडम|सर)/g, ', $1');
 const unfemRoman = (r) => (r ? r.replace(/poochhoong(i|ee)/g, 'poochhoonga').replace(/sakti hoon/g, 'sakta hoon') : r);
 function planQ3(live) {
   const P = new Plan(live, 'q3 seeds 177/645');
@@ -181,9 +181,10 @@ function planQ5Forms(live, P) {
   for (const r of P28) {
     const p = live.phrases.find((x) => x.id === `${COURSE}:${r.id}`);
     if (!p) throw new Error(`P28 row ${r.id} not found`);
-    if (!p.target_text.includes(r.from)) { if (p.target_text.includes(r.to)) continue; throw new Error(`P28 row ${r.id}: neither "${r.from}" nor "${r.to}" in "${p.target_text}"`); }
-    const t = p.target_text.replace(r.from, r.to);
-    const dec = mapTiles(p.decomposition, (x) => x.replace(r.from, r.to), 'target');
+    const fromRe = new RegExp(esc(r.from) + (r.from === 'पिता' ? '(?!जी)' : ''));
+    if (!fromRe.test(p.target_text)) { if (dot(p.target_text).includes(dot(r.to))) continue; throw new Error(`P28 row ${r.id}: neither "${r.from}" nor "${r.to}" in "${p.target_text}"`); }
+    const t = p.target_text.replace(fromRe, r.to);
+    const dec = mapTiles(p.decomposition, (x) => x.replace(fromRe, r.to), 'target');
     P.phrase(p, { target_text: t, ...(r.roman ? { target_text_roman: r.roman } : r.rom && p.target_text_roman ? { target_text_roman: p.target_text_roman.replace(r.rom[0], r.rom[1]) } : {}), ...(tilingOk(dec, t) ? { decomposition: dec } : {}) }, `P28 — ${r.why}`);
   }
 }
@@ -212,7 +213,7 @@ function planQ6(live) {
   for (const [short, row] of Object.entries(Q6_ROWS)) {
     if (!row) continue;
     const p = live.phrases.find((x) => x.id === `${COURSE}:${short}`);
-    P.phrase(p, { known_text: row[0], target_text: row[1], target_text_roman: row[2], decomposition: null }, 'Q6: basket re-made to contain the new LEGO on both sides');
+    P.phrase(p, { known_text: row[0], target_text: row[1], target_text_roman: row[2] }, 'Q6: basket re-made to contain the new LEGO on both sides');
   }
   return P.finish();
 }

@@ -20,3 +20,6 @@ APPLIED 29 Oct via edit-batch (undo files in Popty's course-edit undo dir):
 TODO: Q6 decompositions, Q1 nukta, gender expansions, checker + judged pass, audio list, queue audio pass.
  Q6 decompositions: events 29008b33, f847ad43, e5e325e4 (recompute-decompositions)
  Q1 events 5deba259 + f8d1fda2 (384 rows, 42 seeds unapproved)
+ Gender expansions: 51 inserted, event 977810d6; speaker-gender --check 0 of 793 missing. Audio pass queued (touched pending request).
+ Checker (deterministic) on 446 changed rows: 0 fix-severity hits; 17 pre-existing flags listed in report. Judged pass on the 65 non-nukta rows: see report.
+ Audio to re-render list: ~/ssi-evidence/ssi-dashboard-v7/tools/course-optimization/hin-for-eng-9q-2026-10-29/audio-to-rerender.json
