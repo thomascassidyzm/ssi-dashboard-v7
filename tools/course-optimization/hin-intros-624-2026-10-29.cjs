@@ -15,6 +15,7 @@ const AGENT = 'kai-624-hin-intros';
 const PURPOSE = 'job #624 Hindi presentation intros (Kai 29 Oct 2026)';
 // The active English-known template (presentation_templates, known_lang eng), as every linked eng intro reads: "The Italian for: 'seem', as in — '…', is:".
 const ENG_TEMPLATE = "The {target_lang_name} for: '{known}', as in — '{seed}', is:";
+const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121';
 const EFH_LEGOS = ['S0117L03', 'S0607L02'];
 
 const getJson = async (p) => (await fetch(`${POPTY}${p}`)).json();
@@ -55,6 +56,13 @@ function planEfh(planFile) {
     const seen = new Set(fs.existsSync(b) ? fs.readFileSync(b, 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)).filter((l) => l.status !== 0).map((l) => `${l.course}/${l.lego_id}`) : []);
     for (const r of rows) {
       if (seen.has(`${r.course}/${r.lego_id}`)) continue;
+      // Job #705: the intro splicer renders a MISSING English piece as role 'known' in Charlotte, but resolveVoice says a hin_for_eng
+      // English known slot is Tom-006, so the route refuses it (VOICE_POLICY). Until the splicer asks as role 'presentation' (which
+      // resolves to Charlotte for a non-Tom-006 course), render each missing piece ourselves that way; the splice then finds it.
+      if (mode === 'render' && r.course === 'hin_for_eng') {
+        const d = await post('/api/audio/render', { courseCode: r.course, role: 'presentation', legoId: r.lego_id, text: r.text, purpose: PURPOSE, dryRun: true });
+        for (const text of d.body.missing || []) await post('/api/audio/render', { courseCode: r.course, role: 'presentation', text, voiceId: CHARLOTTE, purpose: `${PURPOSE}: spliced intro piece` });
+      }
       let res; // a dropped connection (Popty restarts on deploy) asks the SAME words again: library-first, so never paid twice
       for (let t = 0; t < 10; t++) {
         try { res = await post('/api/audio/render', { courseCode: r.course, role: 'presentation', legoId: r.lego_id, text: r.text, purpose: PURPOSE, dryRun: mode === 'dry' }); } catch (e) { res = { status: 0, body: { error: String(e.name) } }; }
