@@ -87,6 +87,21 @@ function isHumanVoiceCourse(courseCode) {
 }
 
 /**
+ * THE ONE SLOT-LEVEL EXCEPTION (Aran 2026-10-29, job #557; services/shared/aran-clone-standin.cjs): the English
+ * KNOWN slot of cym_nv2_for_eng / cym_sv2_for_eng may be spoken by Aran's own clone as a stand-in until his real
+ * take replaces it. Everything else about a human-voice course — every Welsh slot, the live cym_n/cym_s courses,
+ * every other cym_* course, intros — is exactly as blocked as isHumanVoiceCourse says. The render resolver and
+ * the provider ladder ask THIS, never isHumanVoiceCourse alone, when they know the slot.
+ *
+ * @param {{courseCode:string, role:string, language:string}} slot - language as resolved for the slot (stated or the role's own side)
+ * @returns {boolean} true if no TTS may be rendered for this slot
+ */
+function isHumanVoiceSlotBlocked({ courseCode, role, language } = {}) {
+  if (!isHumanVoiceCourse(courseCode)) return false
+  return !require('./aran-clone-standin.cjs').isCloneStandInSlot({ courseCode, role, language })
+}
+
+/**
  * @param {string} lang - a target language code as stored in courses.target_lang
  * @returns {boolean} true if that language is human-voiced only (no TTS ever)
  */
@@ -147,6 +162,7 @@ module.exports = {
   HUMAN_VOICE_COURSES,
   HUMAN_VOICE_TARGET_LANGS,
   isHumanVoiceCourse,
+  isHumanVoiceSlotBlocked,
   isHumanVoiceLang,
   renderableLangSql,
   assertNoHumanVoiceInQueue,

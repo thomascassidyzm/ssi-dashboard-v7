@@ -203,7 +203,8 @@ function decideProvider(voiceSettings = {}, { courseCode, language, role, explic
   }
   return decision.provider
 }
-const { isHumanVoiceCourse, HUMAN_VOICE_TARGET_LANGS } = require('../shared/human-voice-courses.cjs')
+const { isHumanVoiceCourse, isHumanVoiceSlotBlocked, HUMAN_VOICE_TARGET_LANGS } = require('../shared/human-voice-courses.cjs')
+const { isCloneStandInCourse } = require('../shared/aran-clone-standin.cjs')
 const logger = createLogger('Phase8-Audio-v13')
 const { bulkGetRegenerationCounts } = require('../supabase-client.cjs')
 const { toIso3, getName: getLangEnglishName, databaseToManifest, getAzureLocale } = require('../language-code-service.cjs')
@@ -5577,11 +5578,15 @@ function buildRenderDeps() {
   const deps = {
       immersionTurn: immersionTurnForRender,
       resolve: async ({ courseCode, role, language, voiceId, trial }) => {
-        if (isHumanVoiceCourse(courseCode)) throw new RenderRequestError(`${courseCode} is a human-voice-only course — no TTS (Tom's ruling 2026-07-25)`, 409, 'HUMAN_VOICE_COURSE')
+        // A human-voice course is refused whole, except the one slot aran-clone-standin.cjs opens (Aran 2026-10-29, job #557:
+        // the nv2/sv2 English known side, in his own clone). The slot's language is the one stated, else the role's own side,
+        // which needs the course row — so a human-voice course outside the stand-in list is refused before it is even read.
+        if (isHumanVoiceCourse(courseCode) && !isCloneStandInCourse(courseCode)) throw new RenderRequestError(`${courseCode} is a human-voice-only course — no TTS (Tom's ruling 2026-07-25)`, 409, 'HUMAN_VOICE_COURSE')
         const { data: course } = await supabase.from('courses')
           .select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect')
           .eq('course_code', courseCode).single()
         if (!course) throw new RenderRequestError(`Course not found: ${courseCode}`, 404, 'NO_COURSE')
+        if (isHumanVoiceSlotBlocked({ courseCode, role, language: language || roleNativeLanguage(role, course) })) throw new RenderRequestError(`${courseCode} ${role} is human-voice only — no TTS (Tom's ruling 2026-07-25); only its English known side may stand in, in Aran's own clone (Aran 2026-10-29, job #557)`, 409, 'HUMAN_VOICE_COURSE')
         course.voice_config = await voiceConfigService.resolveVoiceConfig({ voiceConfig: course.voice_config, course, courseCode })
         const vc = course.voice_config || {}
         const settings = vc.voices?.[role] || {}
