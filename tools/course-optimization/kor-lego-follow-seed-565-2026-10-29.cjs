@@ -16,10 +16,10 @@
 //   node …cjs check  <seeds.json> [--seeds 74,83]      # plan + gates (pure, no network); writes plan + a reading sheet
 //   node …cjs audio  <seeds.json> [--seeds …]          # + the audio route's DRY RUN for every changed slot (counts clips)
 //   RENDER=1 [APPLY_CONFIRM=1] node …cjs run <seeds.json> --seeds 74,83   # real renders (library first), then edit-batch dry run / apply
-//   node …cjs verify <seeds.json> --seeds …            # on a fresh dump: text + clips of every applied row
+//   node …cjs verify <seeds.json> --plan <plan.json from check, pre-apply> --clips <{audio_id: text}>   # fresh dump: text + clips of every changed row
 const fs = require('fs');
 const path = require('path');
-const { COURSE, D, HOLD, FIXES } = require('./kor-lego-follow-seed-565-2026-10-29.data.cjs');
+const { COURSE, D, HOLD, FIXES, DELETES } = require('./kor-lego-follow-seed-565-2026-10-29.data.cjs');
 const { holdsInOrder, fromApi } = require('./spa-close-read-153-200-2026-10-27.cjs');
 
 const AGENT = 'kor-lego-follow-seed-565 (job #565, Kai key)';
@@ -143,15 +143,27 @@ function plan(db, { only = null, decomposer: dz = require('../../services/phrase
     if (o !== nw && !nw.includes(o) && target.includes(o)) out.notes.push({ phrase: fid, why: `still carries the old text of ${glid} ("${o}"): ${target}` });
   }
 
+  // 3c. pre-existing gate failures cleared by deleting one practice phrase (DELETES): such a phrase is not rewritten, it goes.
+  const delGo = [];
+  for (const [did, why] of DELETES) {
+    const p = db.phrases.find((x) => sid(x.id) === did);
+    const owner = legoNext.has(did.slice(0, 8));
+    if (!owner || !p) continue;
+    if (p.phrase_role !== 'use') { out.skipped.push({ phrase: did, why: `DELETES: not a use phrase (${p.phrase_role})` }); continue; }
+    phraseNext.delete(did);
+    delGo.push({ id: did, p, why });
+  }
+
   // 4. P17 + decomposition + P1 + ZUT, per phrase
   const tag = (key, r, role) => ({ key, known_text: r.known_text, target_text: r.target_text, phrase_role: role });
   const before = [...db.seeds.map((s) => tag(`seed ${s.seed_number}`, s, 'seed')), ...db.legos.map((l) => tag(l.lego_id, l, 'lego')), ...db.phrases.map((p) => tag(sid(p.id), p, p.phrase_role))];
   const after = [...db.seeds.map((s) => tag(`seed ${s.seed_number}`, s, 'seed')), ...legosAfter.map((l) => tag(l.lego_id, l, 'lego')),
-    ...db.phrases.map((p) => { const nx = phraseNext.get(sid(p.id)); const ce = edits.get(sid(p.id)); return tag(sid(p.id), { known_text: p.known_text, target_text: nx ? nx.target : (ce && ce.set && ce.set.target_text) || p.target_text }, p.phrase_role); })];
+    ...db.phrases.filter((p) => !delGo.some((g) => g.id === sid(p.id))).map((p) => { const nx = phraseNext.get(sid(p.id)); const ce = edits.get(sid(p.id)); return tag(sid(p.id), { known_text: p.known_text, target_text: nx ? nx.target : (ce && ce.set && ce.set.target_text) || p.target_text }, p.phrase_role); })];
   const zb = zutIndex(before), za = zutIndex(after);
   const blocked = new Set(); // legos whose change cannot go because a phrase using it fails a gate
   const phraseGo = [];
   for (const [id, { p, target, uses }] of [...phraseNext].sort((a, b) => a[0].localeCompare(b[0]))) {
+    if (HOLD[p.seed_number]) { out.notes.push({ phrase: id, why: `HELD seed ${p.seed_number}: this phrase uses a changed LEGO but its seed is held, so it is left untouched: ${p.target_text}` }); continue; }
     const own = id.slice(0, 8);
     const parentRow = lego2.get(own);
     const dec = decompose(target, vocab(p.seed_number), { lego_id: parentRow.lego_id, target_text: parentRow.target_text, known_text: parentRow.known_text }, COURSE);
@@ -206,7 +218,8 @@ function plan(db, { only = null, decomposer: dz = require('../../services/phrase
   }
 
   // 6. O5: every seed whose rows change is unapproved
-  const seedsTouched = new Set([...okLegos.map((g) => g.seed), ...phraseOk.map((g) => g.p.seed_number)]);
+  const delOk = delGo.filter((g) => okLegoIds.has(g.id.slice(0, 8)));
+  const seedsTouched = new Set([...okLegos.map((g) => g.seed), ...phraseOk.map((g) => g.p.seed_number), ...delOk.map((g) => g.p.seed_number)]);
   const unapprove = [...seedsTouched].filter((n) => seedBy.get(n) && seedBy.get(n).approved_at).sort((a, b) => a - b);
 
   // 7. per-seed summary
@@ -218,7 +231,8 @@ function plan(db, { only = null, decomposer: dz = require('../../services/phrase
       knockOn: phraseOk.filter((g) => !g.own && g.uses.some((u) => legoNext.get(u).seed === d.S)).length,
     });
   }
-  return { ...out, legoGo: okLegos, phraseGo: phraseOk, compGo: compOk, unapprove, textHits, seedsTouched: [...seedsTouched].sort((a, b) => a - b) };
+  const seedText = Object.fromEntries([...seedsTouched].filter((n) => seedBy.has(n)).map((n) => [n, seedBy.get(n).target_text]));
+  return { ...out, legoGo: okLegos, phraseGo: phraseOk, compGo: compOk, delGo: delOk, unapprove, textHits, seedsTouched: [...seedsTouched].sort((a, b) => a - b), seedText };
 }
 
 /** Per-seed clip asks (target1+target2 for each changed LEGO and phrase; component rows are tiles, never played). */
@@ -247,6 +261,7 @@ function editUnits(p, clips) {
     if (e.del) units.push([{ op: 'phrase.delete', phrase_id: pid(id), expect: { target_text: e.p.target_text } }]);
     else units.push([{ op: 'phrase.update', phrase_id: pid(id), set: e.set, expect: { target_text: e.p.target_text } }]);
   }
+  for (const g of p.delGo || []) units.push([{ op: 'phrase.delete', phrase_id: pid(g.id), expect: { target_text: g.p.target_text } }]);
   for (const g of p.phraseGo) {
     const u = [{ op: 'phrase.update', phrase_id: pid(g.id), set: g.set, expect: { target_text: g.p.target_text } }];
     for (const slot of ['target1', 'target2']) u.push({ op: 'audio.link', target: 'phrase', phrase_id: pid(g.id), slot, audio_id: get(slot, g.set.target_text) });
@@ -263,6 +278,49 @@ function pack(units, max = Number(process.env.BATCH) || 24) {
   for (const u of units) { if (cur.length && cur.length + u.length > max) { out.push(cur); cur = []; } cur = cur.concat(u); }
   if (cur.length) out.push(cur);
   return out;
+}
+
+/**
+ * Read back a pass on a FRESH dump (pure; clipText(audioId) -> the words that clip says, or null):
+ * every changed LEGO has the planned Korean + components and all of target1/target2/presentation linked; every rewritten phrase has
+ * the planned Korean and both target clips say exactly that; deleted rows are gone; touched seeds keep their text and are unapproved.
+ * `plan` is the saved output of `check` for the same seeds (it carries the expected rows).
+ */
+async function verify(db, plan, clipText) {
+  const ok = [], bad = [];
+  const rec = (good, id, what) => (good ? ok : bad).push({ id, what });
+  const lego = new Map(db.legos.map((l) => [l.lego_id, l]));
+  const phr = new Map(db.phrases.map((x) => [sid(x.id), x]));
+  const seed = new Map(db.seeds.map((x) => [x.seed_number, x]));
+  const says = async (aid, text) => { const t = aid ? await clipText(aid) : null; return t && ntStrict(t) === ntStrict(text) ? null : `${aid || 'NO CLIP'} says ${JSON.stringify(t)}`; };
+  for (const g of plan.legoGo) {
+    const l = lego.get(g.lid), want = g.after;
+    if (!l) { rec(false, g.lid, 'LEGO gone'); continue; }
+    const problems = [];
+    if (l.target_text !== want.target_text) problems.push(`target_text is ${JSON.stringify(l.target_text)}`);
+    if (JSON.stringify((l.components || []).map((c) => [c.known, c.target])) !== JSON.stringify((want.components || []).map((c) => [c.known, c.target]))) problems.push('components differ from plan');
+    if (g.before.presentation_audio_id && l.presentation_audio_id !== g.before.presentation_audio_id) problems.push(`presentation clip ${l.presentation_audio_id} (was ${g.before.presentation_audio_id})`);
+    for (const slot of ['target1_audio_id', 'target2_audio_id']) { const e = await says(l[slot], want.target_text); if (e) problems.push(`${slot}: ${e}`); }
+    rec(!problems.length, g.lid, problems.join('; ') || 'LEGO text + components + clips match');
+  }
+  for (const g of plan.phraseGo) {
+    const x = phr.get(g.id);
+    if (!x) { rec(false, g.id, 'phrase gone'); continue; }
+    const problems = [];
+    if (x.target_text !== g.set.target_text) problems.push(`target_text is ${JSON.stringify(x.target_text)}`);
+    if (x.known_text !== g.p.known_text) problems.push('English changed');
+    for (const slot of ['target1_audio_id', 'target2_audio_id']) { const e = await says(x[slot], g.set.target_text); if (e) problems.push(`${slot}: ${e}`); }
+    rec(!problems.length, g.id, problems.join('; ') || 'phrase text + clips match');
+  }
+  for (const [id, e] of plan.compGo) {
+    const x = phr.get(id);
+    if (e.del) { rec(!x, id, x ? 'component row still present' : 'component deleted'); continue; }
+    rec(x && (!e.set.target_text || x.target_text === e.set.target_text) && (!e.set.known_text || x.known_text === e.set.known_text), id, x ? 'component row read back' : 'component gone');
+  }
+  for (const g of plan.delGo || []) rec(!phr.get(g.id), g.id, phr.get(g.id) ? 'phrase still present' : 'phrase deleted');
+  for (const n of plan.unapprove) { const s = seed.get(n); rec(s && !s.approved_at, `seed ${n}`, s && !s.approved_at ? 'unapproved' : 'still approved'); }
+  for (const [n, t] of Object.entries(plan.seedText || {})) rec(seed.get(+n) && seed.get(+n).target_text === t, `seed ${n} text`, seed.get(+n) && seed.get(+n).target_text === t ? 'seed text untouched' : 'SEED TEXT CHANGED');
+  return { ok, bad };
 }
 
 async function post(url, body) {
@@ -287,13 +345,23 @@ async function main() {
   const [mode, file] = args;
   const flag = (f) => (args.includes(f) ? args[args.indexOf(f) + 1] : null);
   const only = flag('--seeds') ? flag('--seeds').split(',').map(Number) : null;
-  if (!mode || !file) throw new Error('usage: check|audio|run <seeds.json> [--seeds 74,83]');
+  if (!['check', 'audio', 'run', 'verify'].includes(mode) || !file) throw new Error('usage: check|audio|run <seeds.json> [--seeds 74,83] | verify <seeds.json> --plan <check plan.json> --clips <clip text map.json>');
   const db = fromApi(JSON.parse(fs.readFileSync(file, 'utf8')));
   const out = process.env.LOG_DIR || process.cwd();
   const stamp = new Date().toISOString().replace(/[:.]/g, '-');
   const save = (n, log) => { const f = path.join(out, `kor565-${n}-${stamp}.json`); fs.writeFileSync(f, JSON.stringify(log, null, 2)); return f; };
+  if (mode === 'verify') {
+    if (!flag('--plan') || !flag('--clips')) throw new Error('verify needs --plan <plan from check on the PRE-apply dump> and --clips <{audio_id: text} map, from tools/audio/clip-voices.cjs>');
+    const pl = JSON.parse(fs.readFileSync(flag('--plan'), 'utf8')), ids = JSON.parse(fs.readFileSync(flag('--clips'), 'utf8'));
+    const r = await verify(db, pl, async (a) => ids[a] ?? null);
+    console.log(`verify: ${r.ok.length} ok, ${r.bad.length} bad`);
+    for (const b of r.bad) console.log('  BAD', b.id, b.what);
+    console.log('verify log:', save('verify', r));
+    if (r.bad.length) process.exitCode = 1;
+    return;
+  }
   const p = plan(db, { only });
-  console.log(`plan: ${p.legoGo.length} LEGOs, ${p.phraseGo.length} phrases (${p.phraseGo.filter((g) => !g.own).length} knock-on in other baskets), ${p.compGo.length} component rows, ${p.unapprove.length} seeds to unapprove, ${p.skipped.length} skipped, ${p.held.length} held, ${p.textHits.length} text-only hits to read`);
+  console.log(`plan: ${p.legoGo.length} LEGOs, ${p.phraseGo.length} phrases (${p.phraseGo.filter((g) => !g.own).length} knock-on in other baskets), ${p.compGo.length} component rows, ${p.delGo.length} phrase deletes, ${p.unapprove.length} seeds to unapprove, ${p.skipped.length} skipped, ${p.held.length} held, ${p.textHits.length} text-only hits to read`);
   for (const s of p.skipped) console.log('  SKIP', JSON.stringify(s));
   if (mode === 'check') return console.log('plan file:', save('plan', p));
 
@@ -369,4 +437,4 @@ async function main() {
   console.log(save('applied', log));
 }
 if (require.main === module) main().catch((e) => { console.error(e.stack || e.message); process.exit(1); });
-module.exports = { plan, clipAsks, editOps, editUnits, pack };
+module.exports = { plan, clipAsks, editOps, editUnits, pack, verify };

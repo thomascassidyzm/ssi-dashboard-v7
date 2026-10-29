@@ -91,6 +91,13 @@ const FIXES = [
   ...['S0381L03B03', 'S0381L03U01', 'S0381L03U05', 'S0381L02U04', 'S0381L02U02'].map((id) => [id, '싶은지', '싶어하는지']),
 ];
 
+// Pre-existing gate failures (job #703) that a DELETE of one practice phrase clears and that stay within taught material.
+// [phrase id, why]. A phrase may go (a LEGO may not); each is deleted only if it still exists and is a USE phrase.
+const DELETES = [
+  ['S0136L01U08', 'use phrase "물론 이해해요" teaches 이해해요, which is not taught at seed 136 (vocab gate failed before the pass too)'],
+  ['S0083L03U01', 'use phrase repeats BUILD S0083L03B03 word for word, in Korean and English (duplicate gate failed before the pass too)'],
+];
+
 const HOLD = {
   77: 'the seed splits "how quickly I\'m starting to understand" differently from the LEGO (known side of S0077L02 would change, so its English intro clip too). Needs the intro line authored.',
   92: 'seed has "잠시 동안" (for a while) where the LEGO S0092L02 is "좀 더" (for a while longer): known side of the LEGO changes, so its English intro clip too.',
@@ -104,4 +111,4 @@ const HOLD = {
   633: 'the seed Korean 큰 물 한 잔이면 ("big water, one glass") is not how Korean says a large glass of water (큰 컵 / 큰 잔). The seed itself may be wrong.',
   662: 'S0662 LEGOs are all not-new duplicates (여러분 / 그걸 / 말해요) and the seed adds 다 and 그거 — a not-new LEGO cannot be rewritten; needs a new LEGO design.',
 };
-module.exports = { COURSE: 'kor_for_eng', D, HOLD, FIXES };
+module.exports = { COURSE: 'kor_for_eng', D, HOLD, FIXES, DELETES };
