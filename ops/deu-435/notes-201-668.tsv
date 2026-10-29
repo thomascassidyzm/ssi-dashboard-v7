@@ -171,3 +171,55 @@ H	seed 339	which-side	nein, ich denke, er hat sich ziemlich schwer verletzt	Seed
 F	S0341L02U02	en-calque	I think she met someone a few days ago	=	"has met someone a few days ago" is not English; German perfect is fine
 F	S0342L01B02	en-dropped	met someone who said something	=	German "jemanden getroffen, der etwas gesagt hat" has "met"
 F	S0339L01U04	mismatch	I think the group can play quite badly	=	German "ziemlich schlecht spielen kann" has "can"; English said "plays"
+F	seed 347	mismatch	he wanted to know what happened a week ago	=	Seed German "was vor einer Woche passiert ist" (= what happened), its LEGO S0347L03 "what happened"; English said "what was happening"
+H	S0351L02B01	lego-gloss	to leave me on my own | mich allein lassen	LEGO "to leave me alone | mich allein lassen": in English "leave me alone" usually means "stop bothering me" (= "lass mich in Ruhe"). Seed 351 says "on my own". Re-gloss? (Kai's call)
+F	S0354L02B02	mismatch	to appear angry	=	German "wütend wirken" is the infinitive; English said "appears angry"
+F	S0354L02B03	mismatch	did not need to appear angry	=	German "musste" is past; English said "does not need"
+F	S0358L02U05	en-extra	I think the top is quite valuable	=	German "dass die Spitze ziemlich wertvoll ist" has no "being at"
+F	S0358L03U03	mismatch	I am sure that she could reach the top if she wanted to	=	German "wenn sie es wollte"; English said "if she tried"
+H	S0364L03U03	naturalness	ich denke, dass sie diesen Ort ziemlich gern mochte	"liked that place quite a lot | diesen Ort ziemlich mochte" — natural?
+F	S0369L01U04	de-dropped	=	ich denke, dass es mehrere Sachen zu sehen gibt	English "several things"; German had no noun ("mehrere zu sehen")
+F	S0369L01U05	de-dropped	=	ich denke, dass es mehrere Sachen zu besprechen gibt	English "several things"; German had no noun ("mehrere zu besprechen")
+H	seed 374	naturalness	ja, ich fand es sehr schön / ja, ich fand es wunderschön	"sehr wunderschön" (seed 374, LEGO S0374L01 and its basket; also S0373L01U05 "ziemlich wunderschön") — wunderschön already means "very beautiful". Use "sehr schön" or bare "wunderschön"? S0374L01B03 "I thought it was | ich fand es sehr" carries the extra "sehr" too.
+F	S0376L02U02	mismatch	nobody told me that she didn't go anywhere	=	German "dass sie nirgendwohin gegangen ist" (she went nowhere); English said "she went anywhere"
+F	S0376L02U06	de-wrong-verb	=	ich dachte, dass sie letzten Monat nirgendwohin gegangen war	"I thought" (believed) is "ich dachte"; "ich fand, dass" means "I was of the opinion / found"
+F	S0378L03U06	de-wrong-verb	=	sie dachte, dass sie nicht genug Geld für Urlaub hatte	"she thought" (believed) = "sie dachte"; "sie fand" is an opinion verb
+F	S0379L03U04	de-wrong-verb	=	sie dachte, dass sie genug Geld hatte, nach Afrika zu reisen	"she thought" (believed) = "sie dachte"
+F	S0382L01U05	de-wrong-verb	=	ich dachte, dass ich wusste, wohin sie gegangen war	"I thought" (believed) = "ich dachte"
+F	S0382L02U05	de-wrong-verb	I thought she did not know where she wanted to put it	ich dachte, dass sie nicht wusste, wo sie es hinstellen wollte	"I thought" (believed) = "ich dachte"; English said "where to put it", German "where she wanted to put it"
+F	S0383L02U05	de-wrong-verb	=	ich dachte, dass sie es nicht in den Garten stellen wollte	"I thought" (believed) = "ich dachte"
+F	S0385L01U04	de-wrong-verb	=	ich dachte, dass sie schon zugestimmt hatte	"I thought" (believed) = "ich dachte"
+H	S0377L02U04	de-grammar	…, dass sie an einen neuen Ort gehen wollte / …, dass sie an einen wichtigen Ort gegangen war	"irgendwohin Neues" (U04) and "irgendwohin Wichtiges" (U06) are not German. Rewrite as suggested, or drop the adjective from both sides?
+H	S0378L02U04	de-grammar	ich wusste, dass es nicht genug Geld gab	"there was not enough money | dass es nicht genug Geld war" — "es gab" (there was), not "es war"?
+F	S0378L03U05	en-dropped	I did not travel anywhere last year because I did not have enough money for holiday	=	German "nirgendwohin gefahren"; English had no "anywhere"
+H	S0379L01B03	lego-gloss	I was lucky | ich hatte das Glück	LEGO "luck | Glück" basket: "I had the luck to see it", "she had the luck to go to the cinema" — calqued English (seed 379 says "I was lucky enough"). Re-gloss the English to "was lucky enough"? (Kai's call)
+F	S0379L03U05	en-extra	I think she had the luck to travel somewhere	=	German "irgendwohin zu reisen" has no "beautiful"
+F	S0387L02U02	en-extra	I thought she was not right	=	German "dass sie nicht recht hatte" has no "about it"
+H	S0388L02B01	lego-structure	(Kai's call)	LEGO S0388L02 "that person | diese Person" has a basket of bare "this | diese" rows ("I think this is quite important | ich denke, dass diese ziemlich wichtig ist") — no row holds "that person", and "diese" alone reads as "this (one, feminine)". Rebuild the basket on "that person"?
+F	S0388L03B01	de-dropped	=	du arbeitest	English "you work"; German had only "arbeitest"
+F	S0390L02U06	en-extra	I knew that she was near the entrance	=	German "dass sie in der Nähe des Eingangs war" has no "standing"
+H	S0392L01B01	demonstrative	A: German "dieses Kind / dieser Junge / dieses Mädchen" / B: English "the child / the boy / the girl"	"that child | das Kind" (S0392L01), "that boy | der Junge" (S0393L01), "that girl | das Mädchen" (S0394L01) teach "that" = der/das, while "that man | dieser Mann" (S0227) and "that woman | diese Frau" (S0229) use dies-. Which side?
+F	S0400L01U06	mismatch	I think all wanted to go later	=	German "alle später gehen wollten"; English said "all were going later"
+F	S0400L03B02	mismatch	to eat something	=	German "etwas essen" is the verb phrase; English "something to eat" is a noun phrase (= etwas zu essen)
+F	S0400L03B03	mismatch	she needed to eat something soon	=	German "sie musste bald etwas essen"; English said "needed something to eat"
+F	S0401L04U21	delete	DEL	DEL	"to home" is not English; the pair "home | nach Hause" is already S0401L04B01
+H	S0402L01U02	naturalness	ich habe gefragt, ob wir irgendwohin gehen können	"if there was somewhere to go | ob es irgendwo zu gehen gibt" — natural German?
+F	S0402L02U02	mismatch	I asked if we wanted to go somewhere for food	=	German "ob wir … gehen wollten"; English said "if we would go"
+H	S0404L02B02	lego-structure	(Kai's call)	LEGO S0404L02 "before | vor" is from "before Thursday" (time), but its basket drills place: "right before the road | direkt vor der Straße", "we are right before the post | direkt vor der Post" — English "before" for "in front of", and "the post" for the post office. Rebuild the basket on time ("before Thursday", "before the weekend")?
+F	S0406L01U05	en-extra	I think we should be sure	=	German "dass wir uns sicher sein sollten" has no "about that"
+F	S0406L01U06	en-extra	I knew she was sure	=	German "dass sie sich sicher war" has no "about that"
+F	seed 408	mismatch	yes that's the best way to have a happy family	=	Seed German "eine glückliche Familie zu haben" (have); English said "make"
+F	S0403L02U02	mismatch	I asked if we can stay as long as possible	=	German "ob wir … bleiben können" (can); English said "could" (könnten not taught by 403)
+H	S0412L02B01	lego-gloss	them | ihnen (English "tell them", "give them")	LEGO "to them | ihnen" makes every basket row say "tell to them": "I think we should tell to them", "I knew we had to tell to them" (U01-U06) — not English. Re-gloss the LEGO English to "them" (dative), so the rows read "tell them"? (Kai's call; S0241L01 "to him | ihm" is the same shape but its rows read naturally)
+F	S0412L03U01	en-dropped	I think we should not allow that	=	German "dass wir das nicht erlauben sollten" has "das"
+F	S0412L03U02	en-dropped	I thought we had to allow that	=	German "dass wir das erlauben müssen" has "das"
+F	S0412L03U03	en-dropped	she told me we should not allow that	=	German "dass wir das nicht erlauben sollten" has "das"
+F	S0412L03U06	delete	DEL	DEL	English "had to not allow to them" is not English and the German says "did not have to allow"; basket keeps 5 USE
+F	S0412L05B02	en-calque	allow them to win	=	English said "allow to them to win"
+F	S0412L05U06	mismatch	I knew we did not have to allow them to win	=	German "nicht erlauben müssen" = did not have to allow; English said "had to not allow"
+F	S0413L02U05	mismatch	I think we all might fall	=	German "ich denke, dass wir alle fallen könnten"; English said "I think all thought we might fall"
+F	S0413L05B04	k45	=	wir könnten den Rand sehen	K45: "konnte" never without a past marker; bare "we could see" is könnten
+H	S0414L01U01	naturalness	(delete, or rewrite the basket)	Basket "please | bitte": "I think we should please go | ich denke, dass wir bitte gehen sollten", "I knew we had to go please | … bitte gehen müssen", "please could we stay | bitte könnten wir bleiben" — "bitte" inside reported clauses is odd in both languages. Rewrite the basket around requests ("könnten wir bitte …?")?
+F	S0414L01U06	mismatch	I thought all wanted to go please	=	German "ich dachte"; English said "I think"
+F	S0420L03U05	mismatch	I think all wanted him to be able to stay	=	German "dass er bleiben kann"; English had no "be able to"
+H	S0419L01U03	mismatch	ich dachte, dass die Leute sie mögen würden (würden not taught by 419)	"the people would like them | dass die Leute sie mögen wollten" (U03, U04, U06): "mögen wollten" = "wanted to like". Use "mögen würden", or rewrite the English?
