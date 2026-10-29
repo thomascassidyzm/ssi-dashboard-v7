@@ -3426,6 +3426,8 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         quarrySource: line.quarrySource || null,
         // On a 'podswap' line (job #551): the words this line replaces in the pod once it is recorded.
         replacesText: line.kind === 'podswap' ? (line.replacesText || null) : null,
+        // On a 'podknown' line (job #562): the gender of the character who speaks it — the booth names the card from it.
+        speakerGender: line.kind === 'podknown' ? (line.speakerGender || null) : null,
         // The LEGO's own id (S0181L02) on a 'lego' line, so the booth can say
         // which piece of which seed it is. Null on every other kind.
         legoId: line.kind === 'lego' ? (line.legoId || null) : null,
