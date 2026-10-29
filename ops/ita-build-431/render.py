@@ -1,6 +1,6 @@
 import json,os,sys,urllib.request
 S=os.environ.get('CS_SCRATCH') or os.path.dirname(os.path.abspath(__file__))
-d=json.load(open(S+'/dry.json')); r=[o for o in d if o['status']=='render']
+d=json.load(open(S+'/dry.json')); r=[o for o in d if o['status']=='render' or o['status'].startswith('refused')]
 done=json.load(open(S+'/rendered.json')) if os.path.exists(S+'/rendered.json') else {}
 sel=sys.argv[1]
 if sel=='sample':
