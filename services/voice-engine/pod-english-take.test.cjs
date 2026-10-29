@@ -1,5 +1,6 @@
 // A Pod 1 English take (job #537) fills every EMPTY known slot of its words in North and South Pod 1, and never
-// displaces a filled one (North's synthetic English stays until a separate, approved replacement).
+// displaces a filled one by the fill itself. North's synthetic English is replaced by a separate sweep (job #555,
+// pod-english-replace.test.cjs); this fixture's North line is SC01-S001, which that sweep leaves to job #551.
 //   npx vitest run services/voice-engine/pod-english-take.test.cjs
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'module'
