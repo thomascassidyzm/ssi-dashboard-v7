@@ -23,6 +23,8 @@
 //   APPLY_CONFIRM=1 node …cjs apply <seeds.json>  # + apply (each answer carries event_id + undo_file)
 //   node …cjs audio <seeds.json>                  # the audio route's DRY RUN for every changed slot (no render)
 //   node …cjs verify <seeds.json>                 # on a fresh read: every fix that went reads its new text
+//   MAX_CHARS=<headroom> [RENDER_CONFIRM=1] node …cjs render <fresh seeds.json>  # after apply: library-first, then render the
+//                                                 WHOLE set only if it fits MAX_CHARS (Kai 10:43Z; never split), link every slot
 const fs = require('fs');
 const path = require('path');
 const D = require('./deu-mismatch-pass-435-2026-10-29.data.cjs');
@@ -256,6 +258,29 @@ function clipAsks(p) {
   return [...m.values()];
 }
 
+/** After apply: every slot of an applied fix (phrase, seed, LEGO) whose row now reads the fix's text, as (role, text) → slots. */
+function renderAsks(db, data = D) {
+  const m = new Map();
+  const add = (role, text, target, current) => { const k = `${role}\u0000${text}`; if (!m.has(k)) m.set(k, { role, text, slots: [] }); m.get(k).slots.push({ target, current }); };
+  const slots = (row, fix, target) => {
+    if (fix[0] !== null && row.known_text === fix[0]) add('known', row.known_text, target, row.known_audio_id);
+    if (fix[1] !== null && row.target_text === fix[1]) for (const r of ['target1', 'target2']) add(r, row.target_text, target, row[`${r}_audio_id`]);
+  };
+  const ph = new Map(db.phrases.map((p) => [sid(p.id), p]));
+  for (const [id, , , fix] of data.FIXES) { const p = ph.get(id); if (p && fix) slots(p, fix, { target: 'phrase', phrase_id: pid(id) }); }
+  for (const [n, , , fix] of data.SEED_FIXES || []) {
+    const s = db.seeds.find((x) => x.seed_number === n); if (!s) continue;
+    slots(s, fix, { target: 'seed', seed_number: n });
+    for (const p of db.phrases) if (p.phrase_role !== 'component' && !data.FIXES.some((f) => f[0] === sid(p.id)) && nk(p.known_text) === nk(s.known_text) && ntStrict(p.target_text) === ntStrict(s.target_text)) slots(p, fix, { target: 'phrase', phrase_id: p.id });
+  }
+  for (const [id, , , fix] of data.LEGO_FIXES || []) { const l = db.legos.find((x) => x.lego_id === id); if (l) slots(l, fix, { target: 'lego', lego_id: id }); }
+  return [...m.values()];
+}
+function existingClipOf(message) {
+  const m = /already has a working clip \(([0-9a-f-]{36}) in ([^)\s]+)\)/.exec(String(message || ''));
+  return m ? { audioId: m[1], voiceId: m[2] } : null;
+}
+
 async function post(url, body) {
   try {
     const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': AGENT }, body: JSON.stringify(body), signal: AbortSignal.timeout(300000) });
@@ -308,6 +333,40 @@ async function main() {
     log.sum = sum;
     console.log('audio dry run:', JSON.stringify(sum));
     return console.log(save('audio', log));
+  }
+
+  if (mode === 'render') {
+    // Kai 2026-10-29 10:43Z: render the applied fixes if the WHOLE set fits under the day's cap — never split to fit.
+    // Run after `apply`, on a FRESH seeds.json: the plan is then empty, so the asks come from the applied fixes' new text.
+    const asks = renderAsks(db);
+    const log = { job: '#435', mode: 'render', asks: [] };
+    for (const a of asks) {
+      const d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, dryRun: true });
+      const existing = d.body.code === 'RERECORD_NOT_PERMITTED' ? existingClipOf(d.body.error) : null;
+      log.asks.push({ ...a, dry: { status: d.status, ok: !!d.body.ok, source: existing ? 'existing-clip' : d.body.source, audioId: d.body.audioId || (existing && existing.audioId), chars: d.body.ok && d.body.source !== 'library' ? (d.body.wouldSpendChars || a.text.length) : 0, error: d.body.ok || existing ? undefined : d.body } });
+    }
+    const chars = log.asks.reduce((s, a) => s + a.dry.chars, 0), refused = log.asks.filter((a) => a.dry.error);
+    const max = Number(process.env.MAX_CHARS);
+    console.log(`render dry run: ${asks.length} asks, ${log.asks.filter((a) => a.dry.source === 'library' || a.dry.source === 'existing-clip').length} already owned, ${chars} chars to render, ${refused.length} refused; headroom given ${max}`);
+    if (!Number.isFinite(max) || chars > max || refused.length) { console.log('STOP: nothing rendered (no MAX_CHARS, over it, or a refusal) — whole set or nothing'); return console.log(save('render-stopped', log)); }
+    if (process.env.RENDER_CONFIRM === '1') for (const a of log.asks) {
+      if (a.dry.source === 'library' || a.dry.source === 'existing-clip') { a.audioId = a.dry.audioId; continue; }
+      const r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE.replace('dry run for Kai\'s spend decision', 'render approved by Kai 10:43Z') });
+      a.real = { status: r.status, source: r.body.source, audioId: r.body.audioId, chars: r.body.charsSpent, error: r.body.ok ? undefined : r.body };
+      if (a.real.error) { console.log('REFUSED — no retry:', a.role, JSON.stringify(a.text), JSON.stringify(r.body).slice(0, 300)); break; }
+      a.audioId = r.body.audioId;
+    }
+    const ops = [];
+    for (const a of log.asks) if (a.audioId) for (const w of a.slots) if (w.current !== a.audioId) ops.push({ op: 'audio.link', ...w.target, slot: a.role, audio_id: a.audioId });
+    log.linkOps = ops.length; log.links = [];
+    for (let i = 0; i < ops.length && process.env.RENDER_CONFIRM === '1'; i += BATCH) {
+      const ap = await post(`${POPTY}/api/production/${COURSE}/edit-batch`, { ops: ops.slice(i, i + BATCH), apply: true });
+      log.links.push({ status: ap.status, event_id: ap.body.event_id, error: ap.body.error });
+      console.log(`link batch ${i / BATCH + 1}: ${ap.status} event ${ap.body.event_id} ${ap.body.error || ''}`);
+    }
+    log.charsSpent = log.asks.reduce((s, a) => s + ((a.real && a.real.chars) || 0), 0);
+    console.log(`rendered: ${log.charsSpent} chars; ${ops.length} slot links`);
+    return console.log(save('render', log));
   }
 
   const batches = editBatches(p);
