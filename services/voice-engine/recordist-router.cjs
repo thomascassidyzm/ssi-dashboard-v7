@@ -73,6 +73,7 @@ const { createBoothQueueCache } = require('./booth-queue-cache.cjs')
 const phraseQueue = require('./phrase-queue.cjs')
 const introPieces = require('./intro-piece-lines.cjs')
 const englishLegos = require('./english-lego-lines.cjs')
+const videoVoiceovers = require('./video-voiceover-lines.cjs')
 const boothHome = require('./booth-home.cjs')
 const boothNextPod = require('./booth-next-pod.cjs')
 const boothActorQueue = require('./booth-actor-queue.cjs')
@@ -112,7 +113,7 @@ const {
   buildPackQueue,
 } = require('./clone-source-store.cjs')
 const { canonicalLanguage, canonicalVoiceId, ClipIdentityError } = require('../shared/clip-identity.cjs')
-const { patchVoiceSlot } = require('../shared/policy-voice-patch.cjs')
+const { patchVoiceSlot, addVoiceSlot } = require('../shared/policy-voice-patch.cjs')
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { resolveCurrentClip } = require('./take-selection.cjs')
 const { bucketKey } = require('../shared/dialect.cjs')
@@ -1617,6 +1618,18 @@ module.exports = function createRecordistRouter({
   }
 
   /**
+   * A VIDEO VOICEOVER LINE (job #572, video-voiceover-lines.cjs): one step of a video's narration in this voice. Filed
+   * as an English known take through the same seam, credited to THIS voice whatever the filing course casts on its
+   * known slot (libraryArtistVoiceId), with metadata kind 'known' so the speech gate and script check hear English.
+   * No afterFiled: a voiceover take fills no learner slot, ever.
+   */
+  async function recordVoiceoverTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = videoVoiceovers.resolveVoiceoverLine(parsed, recordist)
+    if (!resolved) return res.status(404).json({ error: `No line ${parsed.raw}` })
+    return fileKnownWordsTake({ req, res, recordist, raw: parsed.raw, resolved, kind: 'voiceover', metaKind: 'known', artistVoiceId: recordist.voiceId, text, audioBase64, mimeType, device })
+  }
+
+  /**
    * AN ENGLISH LEGO (job #255, english-lego-lines.cjs): the English of a new LEGO whose intro is spliced from this
    * voice. Filed as an English known take exactly like an intro piece — it fills no LEGO slot; the splice finds it by
    * voice and words — and, like every take (job #198), fills any EMPTY seed / phrase known slot of the same words.
@@ -1635,7 +1648,7 @@ module.exports = function createRecordistRouter({
   }
 
   /** One English known-side take of fixed words (an intro piece, an English LEGO), through the seed upload seam. */
-  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null }) {
+  async function fileKnownWordsTake({ req, res, recordist, raw, resolved, kind, metaKind, text, audioBase64, mimeType, device, afterFiled = null, artistVoiceId = null }) {
     if (text && text.trim() && text.trim() !== resolved.text) {
       return res.status(409).json({ error: 'The text on this line has changed since the queue was loaded -- reload before recording it.', expected: resolved.text, received: text.trim() })
     }
@@ -1646,6 +1659,7 @@ module.exports = function createRecordistRouter({
       socket: req.socket,
       recordistVoiceId: recordist.voiceId,
       recordistLineId: raw,
+      ...(artistVoiceId ? { libraryArtistVoiceId: artistVoiceId } : {}),
       body: {
         audioData: audioBase64,
         mimeType,
@@ -2211,6 +2225,11 @@ module.exports = function createRecordistRouter({
       if (introPieceLine) {
         return await recordIntroPieceTake({ req, res, recordist, parsed: { ...introPieceLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
+      // A VIDEO VOICEOVER line (job #572). `voiceover:...` is not a uuid either.
+      const voiceoverLine = videoVoiceovers.parseVoiceoverLineId(lineId)
+      if (voiceoverLine) {
+        return await recordVoiceoverTake({ req, res, recordist, parsed: { ...voiceoverLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
       // An ENGLISH LEGO (job #255). `englego:...` is not a uuid either.
       const englishLegoLine = englishLegos.parseEnglishLegoLineId(lineId)
       if (englishLegoLine) {
@@ -2465,6 +2484,12 @@ module.exports = function createRecordistRouter({
 
       const introPieceLine = introPieces.parseIntroPieceLineId(req.params.lineId)
       if (introPieceLine) return await introPieceClipResponse(req, res, recordist, { ...introPieceLine, raw: req.params.lineId })
+      const voiceoverLine = videoVoiceovers.parseVoiceoverLineId(req.params.lineId)
+      if (voiceoverLine) {
+        const resolved = videoVoiceovers.resolveVoiceoverLine(voiceoverLine, recordist)
+        if (!resolved) return res.status(404).json({ error: `No line ${req.params.lineId}` })
+        return await knownWordsClipResponse(req, res, recordist, resolved.text)
+      }
       const englishLegoLine = englishLegos.parseEnglishLegoLineId(req.params.lineId)
       if (englishLegoLine) return await englishLegoClipResponse(req, res, recordist, { ...englishLegoLine, raw: req.params.lineId })
 
@@ -3221,6 +3246,50 @@ module.exports = function createRecordistRouter({
       res.json({ ok: true, language, slot: out.slot, voiceId: req.params.voiceId, changed: out.changed, by: who.email })
     } catch (err) {
       logger.error(`[Recordist] voice slot patch: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // ── 5c. ADD one voice slot, without rewriting the list (job #562) ──────────
+  // POST /languages/:language/voice  { slot, entry }
+  // Every other reader is carried over untouched (policy-voice-patch addVoiceSlot); the voice id must be spellable and
+  // consented, as PUT requires; compare-and-swap on updated_at, like the PATCH above.
+  router.post('/languages/:language/voice', async (req, res) => {
+    try {
+      const who = await requireAdminOrAgent(req, res, 'voice-slot:write')
+      if (!who) return
+      let language
+      try { language = canonicalLanguage(req.params.language) } catch (e) {
+        if (e instanceof ClipIdentityError) return res.status(400).json({ error: e.message })
+        throw e
+      }
+      const { slot, entry } = req.body || {}
+      try { canonicalVoiceId(String((entry && entry.voiceId) || '')) } catch (e) {
+        return res.status(400).json({ error: `entry.voiceId: ${e.message}` })
+      }
+      const { data: row, error: readErr } = await db()
+        .from('language_recording_policy').select('*').eq('language', language).maybeSingle()
+      if (readErr) throw new Error(`policy read failed: ${readErr.message}`)
+      if (!row) return res.status(404).json({ error: `no recording policy for ${language}` })
+      const out = addVoiceSlot(row.voices, slot, entry, bucketKey)
+      if (!out.ok) return res.status(out.status).json({ error: out.error })
+      try {
+        await consentGate.assertConsented(out.entry.voiceId, { db: db(), context: `${language} recording policy ${out.slot}` })
+      } catch (err) {
+        return res.status(err.status || 409).json({ error: err.message, code: err.code || 'NO_RECORDED_CONSENT', slot: out.slot, voiceId: out.entry.voiceId })
+      }
+      const { data, error } = await db()
+        .from('language_recording_policy')
+        .update({ voices: out.voices })
+        .eq('language', language).eq('updated_at', row.updated_at)
+        .select('language').maybeSingle()
+      if (error) throw new Error(`policy write failed: ${error.message}`)
+      if (!data) return res.status(409).json({ error: 'the policy changed while this was applied — read it again and retry' })
+      invalidateLanguageQueueCache()
+      logger.log(`[Recordist] voice slot added ${language}/${out.slot} ${out.entry.voiceId} by ${who.email}`)
+      res.json({ ok: true, language, slot: out.slot, voiceId: out.entry.voiceId, entry: { ...out.entry, ...(out.entry.email ? { email: '(set)' } : {}) }, by: who.email })
+    } catch (err) {
+      logger.error(`[Recordist] voice slot add: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })
     }
   })

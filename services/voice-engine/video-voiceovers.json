@@ -1,0 +1,32 @@
+{
+  "_comment": "Voiceover scripts read in a human voice on the booth (video-voiceover-lines.cjs) and laid onto their video by tools/video/neath-walkthrough/voiceover.py. One line per caption step; `segment` names the stretch of the video the line is spoken over, `aimSec` is the natural length shown to the reader, `fitSec` the longest take the segment holds (the composer asserts every segment is at least fitSec + 0.5 s). These are NOT course content: a take files as an English clip of the voice and is linked to no learner slot.",
+  "videos": [
+    {
+      "slug": "neath-video",
+      "title": "Neath video",
+      "about": "The NPTC walkthrough video (job #542): one line per caption step, read over the screen it describes. Aran, 2026-10-29: in his own voice, never a clone or TTS.",
+      "voiceIds": ["human_aran_eng"],
+      "fileUnder": "cym_nv2_for_eng",
+      "lines": [
+        { "key": "title", "segment": "title", "label": "Title card", "aimSec": 3, "fitSec": 4.0, "text": "Here's how to get started with SaySomethingin." },
+        { "key": "staff-part", "segment": "card-staff", "label": "Part 1 card", "aimSec": 1.5, "fitSec": 2.0, "text": "Part one: staff." },
+        { "key": "staff-1", "segment": "staff:1", "label": "Staff, step 1", "aimSec": 7, "fitSec": 11.0, "text": "Open the teacher link your administrator sent you. Type your name and your staff email, then tap Continue." },
+        { "key": "staff-2", "segment": "staff:2", "label": "Staff, step 2", "aimSec": 6.5, "fitSec": 12.0, "text": "Next, you'll be asked to set a password. You can't skip this step, so choose one you'll remember." },
+        { "key": "staff-3", "segment": "staff:3", "label": "Staff, step 3", "aimSec": 10, "fitSec": 19.0, "text": "You'll land on My Classes. Tap New class, give it a name, pick the course, and tap Create Class. Your class will show as Welsh (South)." },
+        { "key": "staff-4", "segment": "staff:4", "label": "Staff, step 4", "aimSec": 6, "fitSec": 13.0, "text": "Open your class and tap Manage class. In the Invite students box, tap Copy invite link." },
+        { "key": "staff-5", "segment": "staff:5", "label": "Staff, step 5", "aimSec": 4, "fitSec": 5.2, "text": "If a box asks 'Can we reach you here?', you can tap Not now." },
+        { "key": "staff-4b", "segment": "staff:4b", "label": "Staff, step 4 (link copied)", "aimSec": 2.8, "fitSec": 4.2, "text": "Then post the link on your class Teams page." },
+        { "key": "staff-4x", "segment": "staff:4x", "label": "Staff, good to know", "aimSec": 4.5, "fitSec": 6.2, "text": "For one shared link, always use Manage class, not the Invite students button." },
+        { "key": "staff-6", "segment": "staff:6", "label": "Staff, step 6", "aimSec": 10, "fitSec": 23.5, "text": "To learn together, tap Play as class and share your screen. Students can also work at their own pace, with headphones in. Tap End session when you're finished." },
+        { "key": "students-part", "segment": "card-students", "label": "Part 2 card", "aimSec": 1.5, "fitSec": 2.0, "text": "Part two: students." },
+        { "key": "students-1", "segment": "students:1", "label": "Students, step 1", "aimSec": 2.5, "fitSec": 4.0, "text": "Open the link your lecturer shared." },
+        { "key": "students-2", "segment": "students:2", "label": "Students, step 2", "aimSec": 10, "fitSec": 12.6, "text": "Type your name. The email box says Optional, but please type your college email, so you can sign back in on any device. Then tap Start learning." },
+        { "key": "students-3", "segment": "students:3", "label": "Students, step 3", "aimSec": 2.5, "fitSec": 4.5, "text": "That's it. You're in, and ready to go." },
+        { "key": "students-3x", "segment": "students:3x", "label": "Students, class list", "aimSec": 3, "fitSec": 5.2, "text": "Your lecturer will see your name on the class list." },
+        { "key": "tip-codes", "segment": "tip", "label": "Tip: sign-in codes", "aimSec": 5.5, "fitSec": 7.5, "text": "Sign-in codes come by email. If one doesn't arrive, check your junk or quarantine folder." },
+        { "key": "tip-stuck", "segment": "tip2", "label": "Tips: if you get stuck", "aimSec": 11, "fitSec": 12.5, "text": "Three quick tips. Join on the device you'll learn on. Type your college email. And if you ever see 'Too many tries', wait a few minutes, or switch to mobile data." },
+        { "key": "end", "segment": "end", "label": "End card", "aimSec": 2.5, "fitSec": 3.5, "text": "You're all set. Enjoy learning Welsh!" }
+      ]
+    }
+  ]
+}

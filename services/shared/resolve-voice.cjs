@@ -36,6 +36,7 @@ const { isTomCastRow, rowIsForKey } = require('./voice-cast-gate.cjs')
 const voicingConfig = require('./voicing-policy.config.json')
 const { isTomCloneVoice, isWelshCourse, WELSH_TOM_MESSAGE } = require('./welsh-no-tom-clone.cjs')
 const { assertNotReplacingHuman } = require('./human-take-guard.cjs')
+const aranStandIn = require('./aran-clone-standin.cjs')
 
 const TOM_006 = 'cartesia_d293d509-eb96-4df4-8cfd-80a693aa49a9'
 const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
@@ -58,6 +59,8 @@ const EXPECTED_ENGLISH_TARGET = Object.freeze({ f: CHARLOTTE, m: TOM_006 })
 const POLICY = Object.freeze([
   { rule: 'welsh-no-tom-clone', when: 'ANY slot of a Welsh course (cym in the code or either language) whose answer would be a Tom clone', voice: 'REFUSE — never a Tom clone, never a guess',
     ruling: 'r-2026-10-13-hard-rule-tom-s-voice-clone ("my clone should never have been used for anything in the WELSH courses")' },
+  { rule: 'aran-clone-standin', when: `known, English, on ${aranStandIn.ARAN_CLONE_STANDIN_COURSES.join(' / ')} only`, voice: "Aran's clone aran_english_003 (a stand-in his real take replaces)",
+    ruling: aranStandIn.RULING },
   { rule: 'english-known', when: 'English is the KNOWN language, any course, any gender', voice: 'Tom-006',
     ruling: 'r-2026-10-12-in-the-premium-x-for-eng (+ Tom 2026-10-12 16:17Z brief: "English as KNOWN language in ANY course: Tom-006, always")' },
   { rule: 'english-target', when: 'English is the TARGET (eng_for_X), target1/target2', voice: 'English cast at the slot gender: Charlotte (f) / Tom-006 (m)',
@@ -136,6 +139,8 @@ function resolveVoiceUnguarded({ course, role, language = null, gender = null } 
     return TOM006_INTRO_COURSES.includes(course.course_code) ? voice(TOM_006, 'intro-tom006') : voice(CHARLOTTE, 'intro-charlotte')
   }
   if (role === 'known') {
+    // Before english-known: on the two stand-in courses the English known side is Aran's clone, never Tom-006 (which the Welsh rule refuses).
+    if (lang === 'eng' && aranStandIn.isCloneStandInSlot({ course, role, language: lang })) return voice(aranStandIn.STANDIN_VOICE, 'aran-clone-standin')
     if (lang === 'eng') return voice(TOM_006, 'english-known')
     return noRuling(`known side in ${lang} — no ruling covers a non-English known voice`)
   }

@@ -1083,6 +1083,8 @@ const SECTION_ORDER = [
   { key: 'phrase', heading: 'PRACTICE PHRASES', blurb: 'Practice phrases, in course order, one batch at a time. The first pass is the phrases the app plays first; the rest come on a second pass later.' },
   // THE ONCE-RECORDED INTRO PIECES (job #210): every LEGO intro of the new North and South courses is spliced from these
   // two takes, his English take of the LEGO and the Welsh — read once each, for both courses.
+  // A VIDEO'S NARRATION (job #572, video-voiceover-lines.cjs): one line per step of the video, each timed.
+  { key: 'voiceover', heading: 'Video voiceover', blurb: 'The voiceover for a short video, one line per step. Under each line is roughly how long it should take, and the most it can run.' },
   { key: 'intro', heading: 'Intro pieces', blurb: 'Two short pieces, read once each: every LEGO intro in the new North and South courses is put together from them — "The Welsh for" + your English LEGO + "is" + the Welsh. Read them the way you would say them in an intro.' },
 ]
 // ONE POD IS NOT EVERY POD. Tom, 2026-09-04: "Aran's lines are now confusing -
@@ -1314,6 +1316,12 @@ function kindWordsFor(l) {
     const side = l.role === 'known' ? ' - English side' : (l.role === 'target2' ? ' - second voice' : '')
     const where = phrasePlaceWords(l.phrasePass, l.phraseBatch)
     return `Practice phrase${where ? ` · ${where}` : ''}${side}`
+  }
+  // A VIDEO VOICEOVER line (job #572): which step it is and how long it may run, e.g.
+  // "Neath video · Staff, step 1 · about 7 s, no more than 11 s".
+  if (l.kind === 'voiceover' && l.voiceover) {
+    const v = l.voiceover
+    return `${v.video} · ${v.label} · about ${v.aimSec} s, no more than ${v.fitSec} s`
   }
   if (l.kind === 'lego') {
     const which = l.legoId || (l.seedNumber ? `seed ${l.seedNumber}` : null)
@@ -3021,6 +3029,14 @@ function describeTrack(t) {
       short: isNew ? 'New sentences' : 'Sentences', cls: 'k-sent',
       title: `${courseWordsFor(t.courseCode)}: whole sentences`,
       what: isNew ? 'Read each new course sentence once, at your natural pace.' : old.blurb,
+    }
+  }
+  // A VIDEO'S NARRATION (job #572): the card is the video's own name ("Neath video"), carried as podTitle.
+  if (t.kind === 'voiceover') {
+    return {
+      short: 'Video', cls: 'k-other',
+      title: t.podTitle || 'Video voiceover',
+      what: 'The voiceover for a short video, one line per step. Read each at a relaxed, friendly pace; under each line is roughly how long it should take, and the most it can run before it spills into the next step.',
     }
   }
   // THE ENGLISH OF THE NEW LEGOs (job #255): read once each; his LEGO intros are spliced from these takes.

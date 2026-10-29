@@ -52,8 +52,10 @@
 
 const {
   isHumanVoiceCourse,
+  isHumanVoiceSlotBlocked,
   isHumanVoiceLang,
 } = require('./human-voice-courses.cjs');
+const aranCloneStandIn = require('./aran-clone-standin.cjs');
 
 /**
  * Cartesia's published language list.
@@ -278,7 +280,11 @@ function selectProvider(input = {}, opts = {}) {
   // human-voiced content. tts-service.assertNotHumanVoiceCourse still fires
   // independently at the render chokepoint — this is the earlier of the two,
   // not a replacement for it.
-  if (isHumanVoiceCourse(courseCode) || isHumanVoiceLang(language)) {
+  // The slot-level form: the nv2/sv2 English known side spoken by Aran's own clone (Aran 2026-10-29, job #557,
+  // services/shared/aran-clone-standin.cjs) is the one slot of a human-voice course that passes, and only in that voice.
+  const standIn = !!courseCode && isHumanVoiceCourse(courseCode) && !isHumanVoiceSlotBlocked({ courseCode, role: input.role, language })
+    && aranCloneStandIn.isStandInVoice(voiceId)
+  if ((isHumanVoiceCourse(courseCode) && !standIn) || isHumanVoiceLang(language)) {
     throw new ProviderPolicyError(
       `Human-voice content (403): ${courseCode || language} is human-recorded only — ` +
       'no TTS provider may be selected for it, ever (Tom 2026-07-25, 2026-07-27, ' +
