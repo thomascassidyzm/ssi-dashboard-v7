@@ -169,7 +169,8 @@ function plan(db, { data = D, decomposer: dz = require('../../services/phrase-de
     const z = zutNew(id, { known_text: p.known_text, target_text: p.target_text }, { known_text: known, target_text: target });
     if (z.hard.length) problems.push(`ZUT new clash: ${z.hard.slice(0, 4).join(' ; ')}${z.hard.length > 4 ? ` (+${z.hard.length - 4})` : ''}`);
     if (z.soft.length) notes.push({ id, why: `same German, other English (allowed): ${z.soft.slice(0, 3).join(' ; ')}` });
-    const twin = afterRows.find((r) => r.key !== id && r.key.startsWith(legoId) && r.phrase_role !== 'component' && nk(r.known_text) === nk(known) && ntStrict(r.target_text) === ntStrict(target));
+    // a BUILD row that says exactly its LEGO is normal (B01 usually does); only another PHRASE in the basket is a twin
+    const twin = afterRows.find((r) => r.key !== id && r.key !== legoId && r.key.startsWith(legoId) && r.phrase_role !== 'component' && nk(r.known_text) === nk(known) && ntStrict(r.target_text) === ntStrict(target));
     if (twin) problems.push(`duplicate of ${twin.key}`);
     if (problems.length) { skipped.push({ id, cls, from: [p.known_text, p.target_text], to: [known, target], why: problems.join(' | ') }); continue; }
     const set = {};
@@ -212,7 +213,10 @@ function plan(db, { data = D, decomposer: dz = require('../../services/phrase-de
       const ps = sid(p.id); if (!ps.startsWith(id) || p.phrase_role === 'component' || deleting.has(ps)) continue;
       const g = go.find((x) => x.id === ps && x.kind === 'update');
       const k = g && g.set.known_text ? g.set.known_text : p.known_text, t = g && g.set.target_text ? g.set.target_text : p.target_text;
-      if (!holdsInOrder(k, la.known_text) || !holdsInOrder(t, la.target_text)) lost.push(`${ps}: ${k} | ${t}`);
+      // regression only: a row that held the LEGO before must still hold it (rows that never held it are not made worse)
+      const lb = l.before;
+      const heldBefore = holdsInOrder(p.known_text, lb.known_text) && holdsInOrder(p.target_text, lb.target_text);
+      if (heldBefore && (!holdsInOrder(k, la.known_text) || !holdsInOrder(t, la.target_text))) lost.push(`${ps}: ${k} | ${t}`);
     }
     if (lost.length) { skipped.push({ id, cls: l.cls, why: `knock-on: ${lost.length} basket row(s) would not hold the new LEGO: ${lost.slice(0, 3).join(' ; ')}` }); continue; }
     legoGo.push({ id, ...l });
@@ -254,9 +258,15 @@ function clipAsks(p) {
   const both = (t, w) => { add('target1', t, w); add('target2', t, w); };
   for (const g of p.go) if (g.kind === 'update') { if (g.sides.known) add('known', g.set.known_text, g.id); if (g.sides.target) both(g.set.target_text, g.id); }
   for (const s of p.seedGo) { if (s.known !== s.before.known_text) add('known', s.known, `seed ${s.before.seed_number}`); if (s.target !== s.before.target_text) both(s.target, `seed ${s.before.seed_number}`); }
-  for (const l of p.legoGo) { if (l.set.known_text) add('known', l.set.known_text, l.id); if (l.set.target_text) both(l.set.target_text, l.id); }
+  for (const l of p.legoGo) {
+    if (l.set.known_text) add('known', l.set.known_text, l.id);
+    if (l.set.target_text) both(l.set.target_text, l.id);
+    // presentations mirror the LEGO (Kai): a new LEGO whose words change gets a new intro (the old one is unlinked)
+    if (l.before.is_new && (l.set.known_text || l.set.target_text)) add('presentation', introLine(l.set.known_text || l.before.known_text), l.id);
+  }
   return [...m.values()];
 }
+const introLine = (known) => `The German for: '${known}', is:`;
 
 /** After apply: every slot of an applied fix (phrase, seed, LEGO) whose row now reads the fix's text, as (role, text) → slots. */
 function renderAsks(db, data = D) {
@@ -273,7 +283,15 @@ function renderAsks(db, data = D) {
     slots(s, fix, { target: 'seed', seed_number: n });
     for (const p of db.phrases) if (p.phrase_role !== 'component' && !data.FIXES.some((f) => f[0] === sid(p.id)) && nk(p.known_text) === nk(s.known_text) && ntStrict(p.target_text) === ntStrict(s.target_text)) slots(p, fix, { target: 'phrase', phrase_id: p.id });
   }
-  for (const [id, , , fix] of data.LEGO_FIXES || []) { const l = db.legos.find((x) => x.lego_id === id); if (l) slots(l, fix, { target: 'lego', lego_id: id }); }
+  for (const [id, , , fix] of data.LEGO_FIXES || []) {
+    const l = db.legos.find((x) => x.lego_id === id); if (!l) continue;
+    slots(l, fix, { target: 'lego', lego_id: id });
+    if (l.is_new && fix[0] !== null && l.known_text === fix[0]) {
+      const k = `presentation\u0000${introLine(l.known_text)}`;
+      if (!m.has(k)) m.set(k, { role: 'presentation', text: introLine(l.known_text), legoId: id, slots: [] });
+      m.get(k).slots.push({ target: { target: 'lego', lego_id: id }, current: l.presentation_audio_id });
+    }
+  }
   return [...m.values()];
 }
 function existingClipOf(message) {
@@ -321,7 +339,7 @@ async function main() {
     const log = { job: '#435', mode: 'audio-dry-run', asks: [] };
     let i = 0;
     const worker = async () => { while (i < asks.length) { const a = asks[i++];
-      const d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, dryRun: true });
+      const d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.role === 'presentation' ? { legoId: a.where[0] } : {}), purpose: PURPOSE, dryRun: true });
       log.asks.push({ role: a.role, text: a.text, where: a.where, status: d.status, body: d.body }); } };
     await Promise.all([1, 2, 3, 4].map(worker));
     const sum = { asks: asks.length, library: 0, render: 0, chars: 0, refused: 0 };
@@ -341,7 +359,7 @@ async function main() {
     const asks = renderAsks(db);
     const log = { job: '#435', mode: 'render', asks: [] };
     for (const a of asks) {
-      const d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE, dryRun: true });
+      const d = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE, dryRun: true });
       const existing = d.body.code === 'RERECORD_NOT_PERMITTED' ? existingClipOf(d.body.error) : null;
       log.asks.push({ ...a, dry: { status: d.status, ok: !!d.body.ok, source: existing ? 'existing-clip' : d.body.source, audioId: d.body.audioId || (existing && existing.audioId), chars: d.body.ok && d.body.source !== 'library' ? (d.body.wouldSpendChars || a.text.length) : 0, error: d.body.ok || existing ? undefined : d.body } });
     }
@@ -351,7 +369,7 @@ async function main() {
     if (!Number.isFinite(max) || chars > max || refused.length) { console.log('STOP: nothing rendered (no MAX_CHARS, over it, or a refusal) — whole set or nothing'); return console.log(save('render-stopped', log)); }
     if (process.env.RENDER_CONFIRM === '1') for (const a of log.asks) {
       if (a.dry.source === 'library' || a.dry.source === 'existing-clip') { a.audioId = a.dry.audioId; continue; }
-      const r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, purpose: PURPOSE.replace('dry run for Kai\'s spend decision', 'render approved by Kai 10:43Z') });
+      const r = await post(`${POPTY}/api/audio/render`, { courseCode: COURSE, role: a.role, text: a.text, ...(a.legoId ? { legoId: a.legoId } : {}), purpose: PURPOSE.replace('dry run for Kai\'s spend decision', 'render approved by Kai 10:43Z') });
       a.real = { status: r.status, source: r.body.source, audioId: r.body.audioId, chars: r.body.charsSpent, error: r.body.ok ? undefined : r.body };
       if (a.real.error) { console.log('REFUSED — no retry:', a.role, JSON.stringify(a.text), JSON.stringify(r.body).slice(0, 300)); break; }
       a.audioId = r.body.audioId;

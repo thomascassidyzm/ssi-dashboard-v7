@@ -14,7 +14,7 @@ H	S0205L02U09	tense	Sie hat gesagt, das Wort, das ich brauchte, war im Buch auf 
 H	S0205L02U12	naturalness	Ich war zu nervös, um zu sprechen	Is "zu nervös zu sprechen" OK, or does it need "um zu"?
 H	S0205L03B01	lego-gloss	that I was trying to say | das ich sagen wollte	LEGO "I was trying to say | das ich sagen wollte": German carries the relative "das" (K48) and says "wanted to", English has neither. Grow the English to "that I was trying to say"? (Kai's call)
 H	S0206L01U08	word-order	Die Gelegenheit, mit anderen Leuten sprechen zu üben, ist sehr hilfreich	"sprechen zu üben mit anderen Leuten" — should "mit anderen Leuten" move before "sprechen zu üben"?
-H	S0206L01U09	vorhin	Ich hatte vorher nicht die Gelegenheit, sprechen zu üben	English "before", German "vorhin" (a little while ago) at the end. Should it be "vorher", earlier in the sentence?
+F	S0206L01U09	mismatch	I didn't have the chance to practise speaking earlier	=	vorhin is taught as "earlier" (S0143L02), not "before"
 F	S0208L01B02	delete	DEL	DEL	exact duplicate of S0208L01B01 in the same basket
 H	S0209L01B02	word-order	Mit dir Zeit verbringen	"Zeit verbringen mit dir" — natural, or "mit dir Zeit verbringen"?
 H	S0209L01U08	mismatch	Wir hofften, noch eine Woche hier Zeit verbringen zu können	"für eine andere Woche" reads "for a different week"; English says "another week". Use "noch eine Woche"?
@@ -128,7 +128,7 @@ F	S0283L02U09	delete	DEL	DEL	English and German say different things ("was hopin
 F	S0283L02U10	mismatch	They wanted to know if the friends speak about us when we are not there with them	=	German "die Freunde"; English said "our friends"
 F	S0286L01U04	mismatch	I think people who like speaking German want to watch television with us	=	German "wollen mit uns fernsehen"; English said "would like to watch films"
 F	S0287L01B02	delete	DEL	DEL	exact duplicate of S0287L01B01
-H	S0283L01U06	vorhin	Welche deiner Ideen haben vorher gut für dich funktioniert?	Same "before | vorhin" question (also word order: vorhin after "für dich").
+F	S0283L01U06	mismatch	Which of your ideas worked well for you earlier	=	vorhin is taught as "earlier" (S0143L02), not "before"
 F	S0288L01B02	en-extra	Most people I know are busy right now	=	German "sind beschäftigt jetzt" has no "today"
 F	S0288L01B04	en-extra	Most people I know think this is interesting	=	German "das ist interessant" has no "very"
 F	S0289L01B02	delete	DEL	DEL	exact duplicate of S0289L01B01
@@ -152,7 +152,7 @@ F	S0296L01B02	delete	DEL	DEL	exact duplicate of S0296L01B01
 F	S0296L01U09	mismatch	I said that I needed a little more time to understand what they wanted to say	=	German "was sie sagen wollten"; English said "what they were saying"
 F	S0298L01B02	delete	DEL	DEL	exact duplicate of S0298L01B01
 H	S0298L02U05	de-grammar	…, als ich sie danach gefragt habe	"when I asked her about it | als ich sie darüber wissen wollte" — broken German. Use "gefragt habe"?
-H	S0298L02U07	vorhin	… weil er vorher schon alles gesagt hat	Same "before | vorhin" question.
+F	S0298L02U07	mismatch	He has nothing left to say because he already said everything earlier	=	vorhin is taught as "earlier" (S0143L02), not "before"
 H	S0299L03B01	lego-gloss	half | die Hälfte (English "half of the food", "half of the money")	LEGO "the half | die Hälfte" makes the English say "I only want the half of the food", "give you the half of the money" (U01, U03, U04, U06, U08) — unnatural English. Re-gloss the LEGO English to "half"? (Kai's call)
 H	S0304L01B01	lego-gloss	work | arbeiten (already taught) — or merge into "to work from home"	LEGO "to do work | arbeiten" makes the English say "she does not want to do work today", "I would like to do work with you". Not natural English. Re-gloss? (Kai's call)
 H	S0309L02B01	lego-gloss	never | noch nie (English "I have never worked from home")	LEGO "never before | noch nie" puts "before" in the middle of every English row: "I have never before worked from home", "have you never before said that?" — unnatural English. Re-gloss to "never" / move "before" to the end? (Kai's call)
@@ -330,3 +330,97 @@ F	S0518L05U04	de-grammar	=	er kann es sich nicht vorstellen	reflexive "sich vors
 F	S0518L05U05	de-grammar	=	ich kann mir nicht vorstellen, das gleiche Problem zu haben	reflexive "sich vorstellen"
 F	S0518L05U06	de-grammar	=	sie kann sich nicht vorstellen, das Problem zu haben	reflexive "sich vorstellen"
 F	S0518L05U07	de-grammar	=	kann sie sich das vorstellen?	reflexive "sich vorstellen"
+F	S0520L03U01	en-extra	it might be	=	German "es könnte sein" has no "possible"
+F	S0520L04B03	mismatch	happened to the whole family	=	German "der ganzen Familie passiert"; English said "it affected"
+H	S0521L01B01	lego-gloss	afraid | Angst (haben)	LEGO "fear | Angst" makes English "I have so much fear" (U05), "does she have fear?" (U06), "we all have fear" (U07). Re-gloss to "afraid" so the English reads "I am so afraid"? (Kai's call)
+F	S0522L02B01	mismatch	very stupid	=	German "sehr dumm" (very); English said "really"
+F	S0522L02U04	mismatch	she says it is stupid too	=	German "sie sagt, es ist auch dumm"; English said "she also thinks"
+F	S0522L02U05	mismatch	that is very stupid	=	German "sehr dumm"; English said "really"
+F	S0522L02U07	mismatch	that was very stupid	=	German "sehr dumm"; English said "really"
+F	S0522L04U04	mismatch	she told the truth too	=	German "auch" (too); English said "again"
+H	seed 522	de-grammar	lass uns uns darauf einigen, dass es dumm war, die Wahrheit zu sagen / einigen wir uns darauf, dass …	Seed 522 and LEGO S0522L05 "to agree | einigen": "sich einigen" is reflexive — "lass uns einigen" (U02, U05), "sie haben einigen" (B02, = "they agreed"; should be "sie haben sich geeinigt"), "wir können einigen" (B03), "dass wir einigen" (U03). Which German for "let's agree that …"? ("zustimmen" is taught at S0384)
+F	S0523L01U03	en-dropped	instead of staying here she went	=	German "statt hier zu bleiben" has "hier"
+H	S0523L01U01	de-grammar	stattdessen / statt dessen	"instead of that | statt das" (U01), "instead of that she did this | statt das hat sie das gemacht" (U02), "instead of that she tried | statt das hat sie versucht" (U07) — German needs "stattdessen". Use it?
+H	S0524L01B01	lego-structure	(Kai's call)	LEGO S0524L01 "call you | rufe dich" has a basket of bare "you | dich" rows ("I need you", "she found you") — none says "call you". Rebuild the basket on "call you"?
+F	S0524L04U04	mismatch	she did that in a few minutes	=	German "in ein paar Minuten" (a few); English said "several"
+F	S0524L04U07	mismatch	can you do it in a few minutes?	=	German "in ein paar Minuten"; English said "several"
+H	S0527L01B03	naturalness	sie hat mir eine Geschichte erzählt	Same "eine Geschichte sagen" question as S0272L02B03: S0527L01B03 "she told me a story | … gesagt" and U07 "she can tell a story | … sagen", one LEGO before "erzählt" is taught (S0527L02).
+F	S0529L03U07	mismatch	you all try that here	=	German "ihr alle versucht das hier"; English said "you all are here to try"
+F	S0531L04U07	mismatch	for her it is true	=	German "das stimmt für sie"; English said "she thinks it is true"
+F	S0533L01U06	mismatch	she said a word	=	German "sie hat ein Wort gesagt"; English said "told"
+F	S0533L01U07	mismatch	=	sie wird das Wort finden	English "she will find the word"; German was future perfect ("wird … gefunden haben")
+F	S0533L02U04	mismatch	she will find every word	=	German "jedes Wort"; English said "the word" (and "the word" now belongs to S0533L01U07)
+F	S0533L05U03	mismatch	she can hear every word you say	=	German "sie kann jedes Wort hören"; English said "she hears"
+F	S0534L03U06	mismatch	she told me the weather	=	German "sie hat mir das Wetter gesagt" has no "about"
+H	S0534L03U02	naturalness	wie ist das Wetter?	"what is the weather? | was ist das Wetter?" — German asks "wie ist das Wetter?". Also U03 "das Wetter ist hier", U05 "sie hat das Wetter hier" say nothing. Rewrite the basket?
+F	S0535L03U04	de-dropped	=	sie hat alle falschen Sachen gefunden	English "all the wrong things"; German had no noun ("alle falschen")
+F	seed 541	en-extra	it's a good idea to breathe slowly	=	Seed German "langsam zu atmen" has no "try"
+H	S0542L01B01	lego-gloss	whenever | immer wenn	LEGO "whenever | immer": "immer" alone is "always"; the basket mixes "always | immer" (B01, B02, U03-U07) with "whenever | immer wenn" (B03, B04, U01, U02, U08). Re-cut as "whenever | immer wenn" (and "always" already taught?) (Kai's call)
+F	S0545L04U05	mismatch	she will bring the clean clothes upstairs	=	German "nach oben bringen"; English said "put"
+F	S0545L05	en-calque	turn	=	LEGO English "turn up" (= arrive) is wrong for "dran" (it's your turn); B01 already reads "turn | dran"
+F	S0548L02B03	mismatch	she wants a moment	=	German "sie will einen Moment"; English said "she needs one moment"
+F	S0548L04U04	delete	DEL	DEL	same English as S0548L04U06 ("I feel angry at the moment") with a different German word order: one English, two Germans
+F	S0552L01U04	delete	DEL	DEL	exact duplicate of S0552L01U03
+H	S0554L01U01	lego-structure	(Kai's call)	LEGO S0554L01 "this towel | dieses Handtuch" has a basket of bare "this | dieses" rows: "this is ugly | dieses ist hässlich", "this is good | dieses ist gut" — German says "das ist …" here. Same shape as S0388L02. Rebuild the basket on "this towel"?
+F	S0556L01U06	en-calque	they always play music	=	"they play music always" is not natural English
+F	S0556L01U07	de-word-order	=	sie spielen Musik in der Nacht	the same English is "sie spielen Musik in der Nacht" in S0556L02U01 and S0556L03U07: one English, two word orders
+F	S0556L02U02	de-dropped	=	sie ist in der Nacht ausgegangen	English "went out"; German "gegangen" (went/left). "ausgegangen" is taught (S0215)
+F	S0558L01U06	de-dropped	=	sie ist in der Nacht ausgegangen	English "went out"; German "gegangen"
+F	S0558L01U05	mismatch	she is there at night	=	German "sie ist in der Nacht da"; English said "she is out"
+H	S0558L01B01	lego-structure	(Kai's call)	Seed 558's only new LEGO is "the | der" — a bare article (K47). Its basket is really "at night | in der Nacht". Re-cut as "so late at night | so spät in der Nacht"?
+H	S0557L02U01	naturalness	sie würden keine laute Musik spielen / sie würden keine Musik spielen	"sie würden nicht laute Musik spielen" (S0557L02U01), "nicht Musik spielen" (U03, S0557L03U02) — must it be "keine"?
+H	S0557L03B01	lego-gloss	I wish | ich wünschte	LEGO "I wished | ich wünschte": "ich wünschte" here is the subjunctive "I wish" (seed 557), but the LEGO and its basket say "I wished" (past): "I wished they would stop playing". Re-gloss to "I wish"? (Kai's call)
+H	S0559L02B03	naturalness	sie ist den Weg entlang gegangen	"she went along the path | sie ist durch den Weg gegangen" — "durch den Weg" = through the path. Also U03 "she went through | sie ist durch gegangen". Rewrite?
+F	S0563L01U05	mismatch	=	sie kann das ein bisschen länger machen	English "a bit longer"; German said "noch länger" (even longer). "ein bisschen länger" is taught (S0276)
+F	S0566L03U05	mismatch	she made a choice without help	=	German "eine Wahl" (a choice); English said "her choice"
+F	S0567L05U01	delete	DEL	DEL	same English as S0567L05B03 ("she was with the children while playing") with a different German ("bei" vs "mit den Kindern"): one English, two Germans
+H	S0568L03B02	consistency	beim nächsten Mal / das nächste Mal	"the next time" is "beim nächsten Mal" (LEGO S0568L03) and "das nächste Mal" (S0568L02U01, S0568L03U02); "next time" is "nächstes Mal" (S0568L02B02) and "nächsten Mal" (S0568L03B02, missing "beim"); S0568L03B04 English "at the next time" is not English. Which German for which English?
+F	S0568L04U01	mismatch	she wants to meet us	=	German "sie will uns treffen" = she wants to meet us; English said "she wants us to meet"
+F	S0568L04B03	mismatch	he wants to meet us	=	German "er will uns treffen"; English said "he wants us to meet"
+F	S0568L04U03	mismatch	she said she wants to meet us	=	German "sie will uns treffen"
+F	S0568L04U07	mismatch	she wants to meet us here	=	German "sie will uns hier treffen"
+F	S0568L04U02	delete	DEL	DEL	"I want us to meet | ich will uns treffen": the German says "I want to meet us" — no sense in either reading
+F	S0568L04U05	delete	DEL	DEL	"I expect us to meet | ich erwarte, uns zu treffen": the German says "I expect to meet us"
+F	S0569L02	en-calque	much	=	LEGO English "much lot" is two glosses glued together
+H	S0569L05B02	naturalness	er hat sich entschieden, zu zahlen	"he has decided to pay | er hat entschieden zu zahlen" (S0569L05B02, U03, U04, U07; seed 569 "hast du entschieden, wie viel …") — with a following clause, is it "sich entscheiden"?
+H	S0572L03U02	de-grammar	sie hat nach dem letzten Mal gefragt	"she asked about the last time | sie hat gefragt, über das letzte Mal" (U02, U07) — not German. Rewrite as suggested?
+H	S0573L02B01	lego-structure	(Kai's call)	LEGO S0573L02 "of | von" is a bare preposition (K47); its basket "she talks of that | sie redet von dem" is odd in both languages. Merge into "the kind of thing | die Art von Sache" (L03)?
+F	S0573L02U05	mismatch	she does not want to talk of that	=	German "sie will nicht" (want); English said "will not"
+H	seed 573	naturalness	… die die Feiertage zu etwas ganz Besonderem macht / … sind für jeden etwas ganz Besonderes	"sehr besonders" (seed 573, seed 574 "die Feiertage sind sehr besonders für jeden", S0573L05 basket) — "besonders" is an adverb ("particularly"); is "sehr besonders" acceptable German?
+F	S0578L02U03	en-dropped	she wants to be somewhere warmer	=	German "sie will irgendwo wärmer sein" has "sein"
+H	S0579L01B02	word-order	er macht das oft / sie will das oft / sie macht das oft	"er macht oft das" (S0579L01B02, B03 "sie will oft das", U03, U05) — the pronoun "das" normally comes before "oft". Reorder?
+F	S0579L01U06	mismatch	she often wants to try that	=	German "sie will das oft versuchen" has "das" and no "again"
+F	S0582L01U05	en-dropped	she wants to know what it was like to grow up here	=	German "wie es war, hier aufzuwachsen" has "to grow up here"
+F	S0584L01U04	de-grammar	=	jeder Morgen ist besonders	subject is nominative: "jeder Morgen", not "jeden Morgen"
+F	S0587L04B02	mismatch	we had that there	=	German "wir hatten das dort"; English said "something"
+F	S0589L03U01	de-dropped	=	sie hat es gerade gesehen	English "seen it"; German had no "es"
+F	S0589L03U05	de-dropped	=	sie hat es gerade gefunden	English "found it"; German had no "es"
+F	S0589L03B03	de-dropped	=	er hat es gerade gesagt	English "said it"; German had no "es"
+H	S0589L03U06	naturalness	sie möchte nur wissen	"she would just like to know | sie möchte gerade wissen" — "gerade" means "just now", not "only". Use "nur"?
+F	S0592L02	en-calque	main road	=	LEGO English "main road street" is two glosses glued together
+H	seed 593	naturalness	egal wie viel ich gestritten / protestiert habe, …	"however much I argued | egal wie viel ich argumentiert habe" (seed 593, S0593L02 "argued | argumentiert" and its basket) — "argumentieren" is "to make an argument"; for a child protesting, is it "gestritten" / "protestiert"? ("to argue | streiten" is taught at S0501)
+F	S0594L01B03	mismatch	he would like my toys	=	German "er möchte" (would like); English said "likes"
+F	S0594L01U01	mismatch	she would like my toys	=	German "sie möchte"; English said "likes"
+F	S0594L01U04	mismatch	she said she would like my toys	=	German "sie möchte"; English said "likes"
+F	S0595L03B02	de-grammar	=	sie will sich auch hinlegen	"hinlegen" (lie down) is reflexive, as everywhere else in the basket
+F	S0596L02U07	delete	DEL	DEL	English "she stayed there for a while" but German "sie war eine Weile dort" = S0596L02U02's meaning; fixing the English would give one English two Germans
+H	seed 599	naturalness	Ich wäre gern gefahren, wenn du es mir gesagt hättest	"I'd have been happy to drive | Ich wäre glücklich gewesen zu fahren" (seed 599, S0599L03U04 "sie wäre glücklich zu fahren", S0599L01U04) — "happy to" is "gern", not "glücklich … zu". Rewrite?
+F	S0600L01U02	mismatch	she drove before	=	German "sie ist früher gefahren" (perfect = drove); English said "had driven before"
+F	S0603L03U05	mismatch	she was tired and didn't find it anywhere	=	German "hat es nirgendwo gefunden"; English said "found nothing"
+H	S0603L03B03	k45	ich konnte es nirgendwo finden → ich habe es nirgendwo gefunden / gestern konnte ich es nirgendwo finden	K45: "I could find it nowhere | ich konnte es nirgendwo finden" (B03) and "she could go nowhere | sie konnte nirgendwo gehen" (U03) use bare "konnte" with no past marker; the English is also calqued ("couldn't … anywhere"). Rewrite with a past marker?
+F	S0606L01	en-calque	back then	=	LEGO English "back then that time" is two glosses glued together
+F	S0606L01U06	mismatch	we had more back then	=	German "wir hatten"; English said "she had"
+F	S0606L02B02	mismatch	I would have known that	=	German "ich hätte das gewusst" (would have); English said "I had known"
+H	seed 608	naturalness	es wäre das Vernünftigste gewesen / das Vernünftigste wäre gewesen, zu fragen	"the sensible thing to do | die vernünftige Sache zu tun" (seeds 608, 609 and the S0608L02 basket) — a calque of English "thing to do". Natural German?
+H	seed 614	naturalness	es ist in der Nähe von dort, wo deine Familie lebt / es ist in der Nähe, wo deine Familie lebt	Seed 614 (and S0614L04U01): "in der Nähe von wo deine Familie lebt" — "von wo" is a calque. Natural German?
+H	S0616L02B02	de-grammar	er hat auch darüber nachgedacht	Basket S0616L02 ("you thought that | du das gedacht hast"): "er hat auch darüber gedacht" (B02, B03, U02-U05, U07) and "sie hat über alles gedacht" (U06) — "think about" is "nachdenken über" (taught S0565). The rows cannot change to "nachgedacht" without leaving the LEGO "gedacht". Rebuild the basket on "dass du das gedacht hast"?
+H	seed 619	naturalness	es ist lange her, dass wir uns gesehen haben	"it's a long time since … | es ist eine lange Zeit, seit wir uns gesehen haben" (seeds 619, 620; S0619L01U06) — natural German says "es ist lange her, dass/seit …". Rewrite?
+F	S0627L01U05	de-grammar	she found your house	sie hat dein Haus gefunden	"sie hat dein Kaffee gefunden" is the wrong case (deinen Kaffee), and "deinen" would not hold the LEGO "dein"; "your house | dein Haus" (U02) keeps both
+H	S0639L01U02	register	she wants to stay with you, sir	Basket S0639L01 "with you sir | mit Ihnen, mein Herr": the rows use formal "Ihnen" but their English has no "sir" ("she wants to stay with you | sie will mit Ihnen bleiben", U02-U07, B02, B03), so "with you" is taught as both "mit dir" and "mit Ihnen" (formal-register rule). Add "sir" to the English?
+H	S0642L01B02	lego-structure	(Kai's call)	LEGO S0642L01 "gracious | gnädige" (from "madam | gnädige Frau"): its basket says "she is a dear lady | sie ist eine gnädige Frau" (B02, B03, U03, U05, U06) — "gnädige Frau" is only a form of address, so these rows teach something no German says. Rebuild the basket on the address "…, gnädige Frau"?
+H	seed 643	which-side	do you want it, sir? / wollen Sie das, mein Herr?	Seed 643 "do you want sir? | wollen Sie, mein Herr" and seed 658 "do you all want? | wollt ihr alle?" — neither side has an object. Add one?
+F	S0644L01U02	mismatch	could they do it?	=	German "könnten sie" is plural (they); English said "she"
+F	S0644L01U07	mismatch	could they also do it?	=	German "könnten sie" is plural (they); English said "she"
+F	S0654L01B03	en-calque	I also told myself that	=	German "ich habe mir auch das gesagt" (told myself); English said "told me"
+H	seed 655	de-grammar	Ich denke, dass Sie das sehr gut machen, gnädige Frau	Seed 655 "dass Sie sehr gut machen" has no object for "machen". Add "das"? (or "dass Sie sich sehr gut machen")
+H	seed 661	lego-structure	(Kai's call)	Seed 661 "you're all doing something | ihr macht alle etwas" has no LEGOs at all.

@@ -61,3 +61,19 @@ test('a seed fix takes its P26 copy along; deletes keep the USE floor', () => {
   assert.ok(p.go.some((g) => g.id === 'S0118L02U05' && g.set.known_text === 'Back then we were happy'));
   assert.match(p.skipped.find((s) => s.id === 'S0118L02U04').why, /floor/);
 });
+
+test('a BUILD row fixed to read exactly its LEGO is not a "duplicate" of the LEGO row', () => {
+  const c = course();
+  c.phrases = c.phrases.filter((q) => q.id !== 'deu_for_eng:S0118L02B01');
+  c.phrases.push(P('S0118L02B02', 'build', 'we were', 'wir'));
+  const p = plan(c, { data: { FIXES: [['S0118L02B02', 'de-dropped', ['we were', 'wir'], [null, 'wir waren'], 'x']] }, decomposer, tw });
+  assert.deepStrictEqual(p.go.map((g) => g.id), ['S0118L02B02']);
+});
+
+test('a LEGO re-gloss is refused only for rows that held the old LEGO and lose it (regression), not rows that never held it', () => {
+  const c = course();
+  c.legos[0] = { ...c.legos[0], known_text: 'we were then', target_text: 'wir waren' };
+  c.phrases.push(P('S0118L02U08', 'use', 'We are glad', 'Wir sind froh')); // never held the LEGO, before or after
+  const p = plan(c, { data: { LEGO_FIXES: [['S0118L02', 'en-calque', ['we were then', 'wir waren'], ['we were', null], 'x']] }, decomposer, tw });
+  assert.strictEqual(p.legoGo.length, 1, JSON.stringify(p.skipped));
+});
